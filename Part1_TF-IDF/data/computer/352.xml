@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  技校学生学习PLC的兴趣培养
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_kjzx200904180" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(16)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%91%a3%e6%b5%b7%e6%96%8c%22&amp;f=detail.expert">
+                董海斌
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%92%b2%e7%8e%89%e5%85%b4%22&amp;f=detail.expert">
+                蒲玉兴
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e5%b9%bf%e5%85%b5%22&amp;f=detail.expert">
+                李广兵
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%8b%8f%e4%b9%90%22&amp;f=detail.expert">
+                苏乐
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22SU+Le%22&amp;f=detail.expert">
+                SU Le
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%b7%a6%e9%94%90%22&amp;f=detail.expert">
+                左锐
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZUO+Rui%22&amp;f=detail.expert">
+                ZUO Rui
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e5%be%b7%e5%86%9b%22&amp;f=detail.expert">
+                王德军
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22WANG+De-jun%22&amp;f=detail.expert">
+                WANG De-jun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e6%8c%af%e6%9d%b0%22&amp;f=detail.expert">
+                刘振杰
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%b8%81%e4%bc%9f%e9%9b%84%22&amp;f=detail.expert">
+                丁伟雄
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%a8%e4%bc%9f%e9%b8%bf%22&amp;f=detail.expert">
+                杨伟鸿
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%8d%a2%e5%bf%97%e7%8f%8d%22&amp;f=detail.expert">
+                卢志珍
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%86%e4%ba%91%22&amp;f=detail.expert">
+                陆云
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LU+Yun%22&amp;f=detail.expert">
+                LU Yun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%83%a1%e7%ba%a2%e6%9e%97%22&amp;f=detail.expert">
+                胡红林
+              </a>
+              <ul>
+                <h3>
+                  相关机构(11条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%94%90%e9%92%a2%e5%be%ae%e5%b0%94%e8%87%aa%e5%8a%a8%e5%8c%96%e5%85%ac%e5%8f%b8%e5%8a%a8%e5%8a%9b%e7%bb%b4%e6%a3%80%e4%b8%ad%e5%bf%83%2c%e6%b2%b3%e5%8c%97%e5%94%90%e5%b1%b1%2c063000%22&amp;f=detail.agency">
+                    唐钢微尔自动化公司动力维检中心,河北唐山,063000
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%95%bf%e6%b2%99%e8%88%aa%e7%a9%ba%e8%81%8c%e4%b8%9a%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%2c%e6%b9%96%e5%8d%97%2c%e9%95%bf%e6%b2%99%2c410124%22&amp;f=detail.agency">
+                    长沙航空职业技术学院,湖南,长沙,410124
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%8a%e6%b5%b7%e9%94%85%e7%82%89%e5%8e%82%e6%9c%89%e9%99%90%e5%85%ac%e5%8f%b8%2c%e4%b8%8a%e6%b5%b7%2c200245%22&amp;f=detail.agency">
+                    上海锅炉厂有限公司,上海,200245
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%97%a0%e9%94%a1%e4%b8%9c%e9%9b%84%e9%87%8d%e5%9e%8b%e7%94%b5%e7%82%89%e6%9c%89%e9%99%90%e5%85%ac%e5%8f%b8%2c%e6%b1%9f%e8%8b%8f%2c%e6%97%a0%e9%94%a1%2c214081%22&amp;f=detail.agency">
+                    无锡东雄重型电炉有限公司,江苏,无锡,214081
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%93%88%e5%b0%94%e6%bb%a8%e5%a8%81%e5%85%8b%e7%a7%91%e6%8a%80%e8%82%a1%e4%bb%bd%e6%9c%89%e9%99%90%e5%85%ac%e5%8f%b8%2c%e9%bb%91%e9%be%99%e6%b1%9f%2c%e5%93%88%e5%b0%94%e6%bb%a8%2c150090%22&amp;f=detail.agency">
+                    哈尔滨威克科技股份有限公司,黑龙江,哈尔滨,150090
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%a4%a9%e6%b4%a5%e7%ac%ac%e4%b8%80%e6%9c%ba%e5%ba%8a%e6%80%bb%e5%8e%82%e6%9c%ba%e5%ba%8a%e5%88%b6%e9%80%a0%e5%8e%82+300180%22&amp;f=detail.agency">
+                    天津第一机床总厂机床制造厂 300180
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%bd%9b%e5%b1%b1%e7%a7%91%e5%ad%a6%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%e5%b7%a5%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    佛山科学技术学院工学院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e7%9f%b3%e6%b9%be%e7%be%8e%e6%9c%af%e9%99%b6%e7%93%b7%e5%8e%82%2c528000%22&amp;f=detail.agency">
+                    石湾美术陶瓷厂,528000
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b1%9f%e5%8d%97%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    江南大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b7%ae%e5%8c%97%e9%be%99%e6%b3%a2%e7%94%b5%e6%b0%94%e6%9c%89%e9%99%90%e5%85%ac%e5%8f%b8%e7%94%9f%e4%ba%a7%e6%8a%80%e6%9c%af%e9%83%a8%2c%e5%ae%89%e5%be%bd%2c%e6%b7%ae%e5%8c%97%2c235000%22&amp;f=detail.agency">
+                    淮北龙波电气有限公司生产技术部,安徽,淮北,235000
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%82%a2%e5%8f%b0%e5%ad%a6%e9%99%a2%e7%89%a9%e7%90%86%e7%b3%bb%2c%e6%b2%b3%e5%8c%97%2c%e9%82%a2%e5%8f%b0%2c054001%22&amp;f=detail.agency">
+                    邢台学院物理系,河北,邢台,054001
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-kjzx.aspx">
+                科技资讯
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/kjzx/2009-4.aspx">
+                2009年4期
+              </a>
+               &gt; 技校学生学习PLC的兴趣培养
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              技校学生学习PLC的兴趣培养
+            </h1>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/技校学生学习PLC的兴趣培养.aspx?ID=Periodical_kjzx200904180" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_kjzx200904180.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_kjzx200904180" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              PLC技术已成为各类职业技术学校电子与电气专生的一门必修课,且在职业技能鉴定中可编程序控制器也逐渐成为指定的考核内容.那么,究竟如何才能培养学生的学习兴趣,真正做到有效地提高PLC的教学质量,从而学以至用?将从以下几点阐述.
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e6%9d%8e%e6%96%b0%e4%bc%9a%22++DBID%3aWF_QK">
+                  李新会
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                河南化学工业高级技工学校,河南开封,475002 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-kjzx.aspx">
+                  科技资讯
+                </a>
+                 
+                <span class="green-border" visible="False">
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-kjzx.aspx">
+                  SCIENCE &amp; TECHNOLOGY INFORMATION
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/kjzx/2009-4.aspx">
+                  2009 (4)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8f%af%e7%bc%96%e7%a8%8b%e5%ba%8f%e6%8e%a7%e5%88%b6%e5%99%a8%22++DBID%3aWF_QK">
+                  可编程序控制器 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%8f%af%e7%bc%96%e7%a8%8b%e5%ba%8f%e6%8e%a7%e5%88%b6%e5%99%a8" title="可编程序控制器的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22PLC%22++DBID%3aWF_QK">
+                  PLC 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=PLC" title="PLC的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%85%b4%e8%b6%a3%22++DBID%3aWF_QK">
+                  兴趣 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%85%b4%e8%b6%a3" title="兴趣的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                G71  G64 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%8a%80%e6%a0%a1%22++DBID%3aWF_QK">
+                  技校
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ad%a6%e7%94%9f%e5%ad%a6%e4%b9%a0%22++DBID%3aWF_QK">
+                  学生学习
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22PLC%e6%8a%80%e6%9c%af%22++DBID%3aWF_QK">
+                  PLC技术
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8f%af%e7%bc%96%e7%a8%8b%e5%ba%8f%e6%8e%a7%e5%88%b6%e5%99%a8%22++DBID%3aWF_QK">
+                  可编程序控制器
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%81%8c%e4%b8%9a%e6%8a%80%e6%9c%af%e5%ad%a6%e6%a0%a1%22++DBID%3aWF_QK">
+                  职业技术学校
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%81%8c%e4%b8%9a%e6%8a%80%e8%83%bd%e9%89%b4%e5%ae%9a%22++DBID%3aWF_QK">
+                  职业技能鉴定
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ad%a6%e4%b9%a0%e5%85%b4%e8%b6%a3%22++DBID%3aWF_QK">
+                  学习兴趣
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9f%b9%e5%85%bb%e5%ad%a6%e7%94%9f%22++DBID%3aWF_QK">
+                  培养学生
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%80%83%e6%a0%b8%e5%86%85%e5%ae%b9%22++DBID%3aWF_QK">
+                  考核内容
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%95%99%e5%ad%a6%e8%b4%a8%e9%87%8f%22++DBID%3aWF_QK">
+                  教学质量
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%bf%85%e4%bf%ae%e8%af%be%22++DBID%3aWF_QK">
+                  必修课
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%94%b5%e5%ad%90%22++DBID%3aWF_QK">
+                  电子
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/10.3969/j.issn.1672-3791.2009.04.180">
+                  10.3969/j.issn.1672-3791.2009.04.180
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(10条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jsjgprjyyy201119097.aspx">
+                    可编程序控制器（西门子S7400H PLC）在电气控制中应用
+                  </a>
+                  <span>
+                     - 计算机光盘软件与应用2011(19)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jsjgprjyyy201119097.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_cshkzyjsxyxb200301004.aspx">
+                    可编程序控制器(PLC)教学实践
+                  </a>
+                  <span>
+                     - 长沙航空职业技术学院学报2003,3(1)
+                  </span>
+                  <a href="/Service/File/download/Periodical_cshkzyjsxyxb200301004.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_gljs200107004.aspx">
+                    立式成排弯管机数显表和可编程序控制器(PLC)应用
+                  </a>
+                  <span>
+                     - 锅炉技术2001,32(7)
+                  </span>
+                  <a href="/Service/File/download/Periodical_gljs200107004.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_hbyj200605022.aspx">
+                    西门子PLC可编程序控制器的抗干扰分析
+                  </a>
+                  <span>
+                     - 河北冶金2006(5)
+                  </span>
+                  <a href="/Service/File/download/Periodical_hbyj200605022.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_hebzc200504026.aspx">
+                    经济型数控系统与可编程序控制器(PLC)接口设计
+                  </a>
+                  <span>
+                     - 哈尔滨轴承2005,26(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_hebzc200504026.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  会议论文           
+        
+                  <a href="/D/Conference_6524078.aspx">
+                    OMROR CQM1H可编程序控制器在进口研齿机改造中的应用
+                  </a>
+                  <span>
+                    2007第七届全国数控装备使用、维修与改造经验交流会2007
+                  </span>
+                  <a href="/Service/File/download/Conference_6524078.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_fstc200208013.aspx">
+                    PLC可编程序控制器在陶泥投料系统中的应用
+                  </a>
+                  <span>
+                     - 佛山陶瓷2002(8)
+                  </span>
+                  <a href="/Service/File/download/Periodical_fstc200208013.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1398792.aspx">
+                    基于PLC的全自动包装码垛生产线控制系统设计
+                  </a>
+                  <span>
+                    2008
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1398792.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_dqkg200502015.aspx">
+                    可编程序控制器(PLC)在电气控制中的应用
+                  </a>
+                  <span>
+                     - 电气开关2005,43(2)
+                  </span>
+                  <a href="/Service/File/download/Periodical_dqkg200502015.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_xtxyxb200404025.aspx">
+                    PLC可编程序控制器OUT指令的应用与注意事项
+                  </a>
+                  <span>
+                     - 邢台学院学报2004,19(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_xtxyxb200404025.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_kjzx200904180' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+                     北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_6.gif" style="border-width:0px;" /><img src="Images/NUM_3.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

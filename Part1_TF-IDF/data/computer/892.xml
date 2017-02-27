@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  网络人际交往对专科生心理健康影响的研究
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Thesis.aspx?ID=Thesis_Y793930" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3NjkzMjA0MzJkZKKxh/AscG2ISDUAcrB9sli6vKjo"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt;  
+              <a href="/C/Thesis.aspx">
+                学位论文
+              </a>
+               &gt; 
+    
+              <a href="/S/Paper.aspx?q=%e4%b8%93%e4%b8%9a%3a%22%e5%ba%94%e7%94%a8%e5%bf%83%e7%90%86%e5%ad%a6%22">
+                应用心理学
+              </a>
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" id="relblogbtn" value="相关博文"/>
+            </p>
+            <h1>
+              网络人际交往对专科生心理健康影响的研究
+            </h1>
+            <p class="title-height">
+            </p>
+            <p id="ctl00_LeftContentPlaceHolder_fulltext">
+              <!--按章节浏览-->              <!--打包下载-->              <!--查看全文-->              <a class="seeft" href="/Service/File/view/网络人际交往对专科生心理健康影响的研究.aspx?ID=Thesis_Y793930">
+              </a>
+              <!--下载全文-->              <a class="downloadft" href="/Service/File/download/Thesis_Y793930.aspx">
+              </a>
+            </p>
+            <p>
+              <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Thesis_Y793930" class="export">
+              </a>
+            </p>
+            <p id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </p>
+            <p class="abstracts">
+              信息网络技术的高速发展，特别是互联网的日益普及，使人类步入了网络世界，而这个网络世界正以几何级数在膨胀，以其无法估计的巨大力量冲击着人类原有的人际交往方式。作为新世纪的大学生对网络人际交往有特别的情缘，网络人际交往如同对待其它新生事物一样特别容易接受，加之网络人际交往的诸多特点，又恰好迎合了大学生的思维、心理和行为特征，因而他们对网络人际交往情有独钟，趋之若鹜、纷纷触网、不能自拔。网络人际交往对专科生起到巨大的促进作用的同时，诸多的消极面也初露端倪，并影响着专科生的心理健康。
+    本文针对网络人际交往对专科生心理健康影响展开研究，研究的目的是探讨网络人际交往对专科生心理健康有哪些负面的影响。所选择的被试是南平师范高等专科学校的大一、大二、大三的文理科生。研究采用问卷法，针对网络人际关系成瘾对其孤独、焦虑、抑郁、人际关系敏感、敌意等心理健康的五个方面进行分析。
+    研究结果表明，网络人际交往对专科生心理健康有重要的影响：1.专科生网络关系成瘾主要是迷恋于网上聊天和结交网友；网上游戏、色情、赌博只占极少数；相当一部分专科生能够很好利用网络搜索资料；避免网络对其心理健康的负面影响。
+    2.专科生的网络关系成瘾与他们的孤独感、抑郁之间存在密切相关；女生与焦虑、人际关系敏感之间存在中度相关；与敌意之间存在低度相关。而男生与焦虑、敌意之间存在中度相关，与人际关系敏感之间存在低度相关。
+    3.专科生网络关系成瘾组被试与不成瘾组被试在孤独感、抑郁方面存在极其显著的差异；女生在焦虑、人际关系敏感方面存在显著的差异，敌意方面也存在差异；而男生在焦虑、敌意方面存在显著的差异，与人际关系敏感也存在差异。
+    4.专科生网络关系成瘾的高分组被试与低分组被试在孤独感、抑郁方面存在极其显著的差异；女生在焦虑、人际关系敏感方面存在显著的差异，在敌意方面也存在差异；而男生在焦虑、敌意方面存在显著的差异，在人际关系敏感方面也存在差异。
+    
+            </p>
+            <dl id="perildical2_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e4%bd%99%e5%bb%ba%e6%9e%97%22++DBID%3aWF_XW">
+                  余建林
+                </a>
+                 
+              </dd>
+              <dt>
+                学科专业：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=AuthorSubject+%3a+%e5%ba%94%e7%94%a8%e5%bf%83%e7%90%86%e5%ad%a6++DBID%3aWF_XW">
+                  应用心理学
+                </a>
+                 
+              </dd>
+              <dt>
+                授予学位：
+              </dt>
+              <dd>
+                硕士 
+              </dd>
+              <dt>
+                学位授予单位：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=School+%3a+%e5%8d%8e%e4%b8%9c%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6++DBID%3aWF_XW">
+                  华东师范大学
+                </a>
+                 
+              </dd>
+              <dt>
+                导师姓名：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=Teacher+%3a+%e5%b4%94%e4%b8%bd%e5%a8%9f++DBID%3aWF_XW">
+                  崔丽娟
+                </a>
+                 
+              </dd>
+              <dt>
+                学位年度：
+              </dt>
+              <dd>
+                2004 
+              </dd>
+              <dt>
+                研究方向：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                语 种：
+              </dt>
+              <dd>
+                chi 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                G444  TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%b8%93%e7%a7%91%e7%94%9f%22++DBID%3aWF_XW">
+                  专科生
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e4%b8%93%e7%a7%91%e7%94%9f" title="专科生的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e6%88%90%e7%98%be%22++DBID%3aWF_XW">
+                  网络成瘾
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%bd%91%e7%bb%9c%e6%88%90%e7%98%be" title="网络成瘾的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%bf%83%e7%90%86%e5%81%a5%e5%ba%b7%22++DBID%3aWF_XW">
+                  心理健康
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%bf%83%e7%90%86%e5%81%a5%e5%ba%b7" title="心理健康的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e4%ba%ba%e9%99%85%e4%ba%a4%e5%be%80%22++DBID%3aWF_XW">
+                  网络人际交往
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%bd%91%e7%bb%9c%e4%ba%ba%e9%99%85%e4%ba%a4%e5%be%80" title="网络人际交往的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e4%ba%ba%e9%99%85%e4%ba%a4%e5%be%80%22++DBID%3aWF_XW">
+                  网络人际交往
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%af%b9%e4%b8%93%e7%a7%91%e7%94%9f%22++DBID%3aWF_XW">
+                  对专科生
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%bf%83%e7%90%86%e5%81%a5%e5%ba%b7%22++DBID%3aWF_XW">
+                  心理健康
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e4%ba%ba%e9%99%85%e5%85%b3%e7%b3%bb%22++DBID%3aWF_XW">
+                  网络人际关系
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e5%85%b3%e7%b3%bb%22++DBID%3aWF_XW">
+                  网络关系
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%84%a6%e8%99%91%22++DBID%3aWF_XW">
+                  焦虑
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%88%90%e7%98%be%22++DBID%3aWF_XW">
+                  成瘾
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ad%a4%e7%8b%ac%e6%84%9f%22++DBID%3aWF_XW">
+                  孤独感
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%8a%91%e9%83%81%22++DBID%3aWF_XW">
+                  抑郁
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e4%b8%96%e7%95%8c%22++DBID%3aWF_XW">
+                  网络世界
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%e7%bd%91%e7%bb%9c%e6%8a%80%e6%9c%af%22++DBID%3aWF_XW">
+                  信息网络技术
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%a5%b3%e7%94%9f%22++DBID%3aWF_XW">
+                  女生
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%94%b7%e7%94%9f%22++DBID%3aWF_XW">
+                  男生
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%ab%98%e7%ad%89%e4%b8%93%e7%a7%91%e5%ad%a6%e6%a0%a1%22++DBID%3aWF_XW">
+                  高等专科学校
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%a4%a7%e5%ad%a6%e7%94%9f%22++DBID%3aWF_XW">
+                  大学生
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%a1%8c%e4%b8%ba%e7%89%b9%e5%be%81%22++DBID%3aWF_XW">
+                  行为特征
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e4%b8%8a%e8%81%8a%e5%a4%a9%22++DBID%3aWF_XW">
+                  网上聊天
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e6%90%9c%e7%b4%a2%22++DBID%3aWF_XW">
+                  网络搜索
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%b7%a8%e5%a4%a7%e5%8a%9b%e9%87%8f%22++DBID%3aWF_XW">
+                  巨大力量
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%ba%a4%e5%be%80%e6%96%b9%e5%bc%8f%22++DBID%3aWF_XW">
+                  交往方式
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="relatitle">
+                <a id="a">
+                </a>
+                <span>
+                  相似文献
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+            </div>
+            <div class="Cited1" id="relblog">
+              <div class="td-blue" id="relblogtitle">
+                <a id="f">
+                </a>
+                <span>
+                  相关博文
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Thesis_Y793930' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C2DFB57C"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL6l6SgDQL+yqGTDgLNsI6nCxf0Odt44GD82o8PpTcTt8KeqUZc"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

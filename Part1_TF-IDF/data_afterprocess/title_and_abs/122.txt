@@ -1,0 +1,3 @@
+工程制图课件的自主学习技术研究  THE TECHNIQUE RESEARCH ON THE STUDENT INDEPENDENCE STUDY OF THE ENGINEERING DRAWING COURSEWASE
+              通过引入复合类似度方法和图像识别技术,使得烦琐的工程制图作业批改能利用计算机完成.工程制图作业批改系统是在Visual Basic5.0环境下开发完成的.
+            

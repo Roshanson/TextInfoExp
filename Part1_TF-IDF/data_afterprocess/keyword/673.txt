@@ -1,0 +1,1 @@
+Adaboost算法    SVM算法    交通标志识别    智能汽车    Adaboost algorithm    SVM algorithm    traffic sign recognition    Smart car   

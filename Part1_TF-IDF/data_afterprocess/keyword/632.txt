@@ -1,0 +1,1 @@
+单片机应用系统    键盘接口    独立式按键    矩阵式按键    application system of MCU    keyboard interfaces    separate button    matrix button   

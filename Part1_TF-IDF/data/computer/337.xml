@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  云计算及其在测试领域的应用探索  Cloud Computing and Exploration of Its Application to Test Realm
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_kjgcdxxb2015010013" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(16)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9e%97%e8%b6%85%e8%8b%b1%22&amp;f=detail.expert">
+                林超英
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e5%bf%97%e5%88%9a%22&amp;f=detail.expert">
+                李志刚
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%86%af%e4%ba%9a%e5%a8%9c%22&amp;f=detail.expert">
+                冯亚娜
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LI+Zhi-gang%22&amp;f=detail.expert">
+                LI Zhi-gang
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22FENG+Ya-na%22&amp;f=detail.expert">
+                FENG Ya-na
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e4%b8%80%e9%a9%b0%22&amp;f=detail.expert">
+                张一驰
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%b9%94%e5%86%b0%e7%90%b4%22&amp;f=detail.expert">
+                乔冰琴
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%bd%99%e6%b4%aa%e6%88%90%22&amp;f=detail.expert">
+                余洪成
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%8f%b2%e4%b9%a0%e9%98%b3%22&amp;f=detail.expert">
+                史习阳
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e9%92%b0%22&amp;f=detail.expert">
+                王钰
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22WANG+Yu%22&amp;f=detail.expert">
+                WANG Yu
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e6%96%87%e6%96%8c%22&amp;f=detail.expert">
+                王文斌
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e6%96%b9%e8%88%9f%22&amp;f=detail.expert">
+                刘方舟
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e9%9b%aa%22&amp;f=detail.expert">
+                刘雪
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%92%9f%e5%8d%8e%22&amp;f=detail.expert">
+                钟华
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%81%e6%8c%af%e5%86%9b%22&amp;f=detail.expert">
+                刁振军
+              </a>
+              <ul>
+                <h3>
+                  相关机构(11条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b9%bf%e4%b8%9c%e7%9c%81%e8%bd%bb%e5%b7%a5%e4%b8%9a%e9%ab%98%e7%ba%a7%e6%8a%80%e5%b7%a5%e5%ad%a6%e6%a0%a1%2c%e5%b9%bf%e5%b7%9e%2c510315%22&amp;f=detail.agency">
+                    广东省轻工业高级技工学校,广州,510315
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%bb%91%e9%be%99%e6%b1%9f%e7%9c%81%e7%94%b5%e5%ad%90%e4%bf%a1%e6%81%af%e4%ba%a7%e5%93%81%e7%9b%91%e7%9d%a3%e6%a3%80%e9%aa%8c%e9%99%a2%2c%e5%93%88%e5%b0%94%e6%bb%a8%2c150090%22&amp;f=detail.agency">
+                    黑龙江省电子信息产品监督检验院,哈尔滨,150090
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%8e%e4%b8%ad%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    华中师范大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b1%b1%e8%a5%bf%e7%9c%81%e8%b4%a2%e6%94%bf%e7%a8%8e%e5%8a%a1%e4%b8%93%e7%a7%91%e5%ad%a6%e6%a0%a1%2c%e5%b1%b1%e8%a5%bf%e5%a4%aa%e5%8e%9f%2c030024%22&amp;f=detail.agency">
+                    山西省财政税务专科学校,山西太原,030024
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e4%ba%ac%e9%82%ae%e7%94%b5%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    南京邮电大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%90%8c%e6%b5%8e%e5%a4%a7%e5%ad%a6%e8%bd%af%e4%bb%b6%e5%ad%a6%e9%99%a2%2c%e4%b8%8a%e6%b5%b7%2c201804%22&amp;f=detail.agency">
+                    同济大学软件学院,上海,201804
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%b4%b5%e5%b7%9e%e5%b7%a5%e4%b8%9a%e8%81%8c%e4%b8%9a%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%2c%e8%b4%b5%e9%98%b3%2c550008%22&amp;f=detail.agency">
+                    贵州工业职业技术学院,贵阳,550008
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e5%ae%89%e7%a7%91%e6%8a%80%e4%ba%a7%e4%b8%9a%e5%8f%91%e5%b1%95%e4%b8%ad%e5%bf%83%2c%e8%a5%bf%e5%ae%89%2c710075%22&amp;f=detail.agency">
+                    西安科技产业发展中心,西安,710075
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e5%ae%89863%e8%bd%af%e4%bb%b6%e5%ad%b5%e5%8c%96%e5%99%a8%e6%9c%89%e9%99%90%e5%85%ac%e5%8f%b8%2c%e8%a5%bf%e5%ae%89%2c710075%22&amp;f=detail.agency">
+                    西安863软件孵化器有限公司,西安,710075
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%9c%e5%8d%8e%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    东华大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e5%ae%89%e5%b7%a5%e4%b8%9a%e5%a4%a7%e5%ad%a6+%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%a7%91%e5%ad%a6%e4%b8%8e%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%2c%e9%99%95%e8%a5%bf+%e8%a5%bf%e5%ae%89%2c710021%22&amp;f=detail.agency">
+                    西安工业大学 计算机科学与工程学院,陕西 西安,710021
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-kjgcdxxb.aspx">
+                空军工程大学学报（自然科学版）
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/kjgcdxxb/2015-1.aspx">
+                2015年1期
+              </a>
+               &gt; 云计算及其在测试领域的应用探索
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              云计算及其在测试领域的应用探索
+            </h1>
+            <h2>
+              Cloud Computing and Exploration of Its Application to Test Realm
+            </h2>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/云计算及其在测试领域的应用探索.aspx?ID=Periodical_kjgcdxxb2015010013" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_kjgcdxxb2015010013.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_kjgcdxxb2015010013" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              云计算是传统计算机技术和网络技术发展融合的产物，其核心思想是将大量用网络连接的计算资源统一管理和调度，构成一个计算资源池向用户提供按需服务。云计算的出现和快速发展为测试领域带来了新的机遇。首先介绍了云计算的定义和基本特征、服务模型及部署模型，划分了体系结构；其次从软件测试、硬件测试和自动测试系统3个方面，论述云计算在测试领域的应用需求及优势特点，给出一种基于云计算的自动测试系统架构方案；最后展望云计算在测试领域的应用前景，并提出了所面临的安全性、服务模式及适用范围等需要解决的问题。
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e8%82%96%e6%98%8e%e6%b8%85%22++DBID%3aWF_QK">
+                  肖明清
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e6%9d%a8%e5%8f%ac%22++DBID%3aWF_QK">
+                  杨召
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e8%96%9b%e8%be%89%e8%be%89%22++DBID%3aWF_QK">
+                  薛辉辉
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%94%90%e5%b8%8c%e6%b5%aa%22++DBID%3aWF_QK">
+                  唐希浪
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e9%82%93%e4%bf%8a%22++DBID%3aWF_QK">
+                  邓俊
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22XIAO+Ming-qing%22++DBID%3aWF_QK">
+                  XIAO Ming-qing
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22YANG+Zhao%22++DBID%3aWF_QK">
+                  YANG Zhao
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22XUE+Hui-hui%22++DBID%3aWF_QK">
+                  XUE Hui-hui
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22TANG+Xi-lang%22++DBID%3aWF_QK">
+                  TANG Xi-lang
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22DENG+Jun%22++DBID%3aWF_QK">
+                  DENG Jun
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                空军工程大学航空航天工程学院，陕西西安，710038 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-kjgcdxxb.aspx">
+                  空军工程大学学报（自然科学版）
+                </a>
+                 
+                <span class="green-border" visible="True">
+                  <span title="被中信所《中国科技期刊引证报告》收录">
+                    ISTIC
+                  </span>
+                  <span title="被北京大学《中文核心期刊要目总览》收录">
+                    PKU
+                  </span>
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-kjgcdxxb.aspx">
+                  Journal of Air Force Engineering University (Natural Science Edition)
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/kjgcdxxb/2015-1.aspx">
+                  2015 (1)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%ba%91%e8%ae%a1%e7%ae%97%22++DBID%3aWF_QK">
+                  云计算 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e4%ba%91%e8%ae%a1%e7%ae%97" title="云计算的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95%22++DBID%3aWF_QK">
+                  软件测试 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%bd%af%e4%bb%b6%e6%b5%8b%e8%af%95" title="软件测试的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%a1%ac%e4%bb%b6%e6%b5%8b%e8%af%95%22++DBID%3aWF_QK">
+                  硬件测试 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%a1%ac%e4%bb%b6%e6%b5%8b%e8%af%95" title="硬件测试的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%87%aa%e5%8a%a8%e6%b5%8b%e8%af%95%e7%b3%bb%e7%bb%9f%22++DBID%3aWF_QK">
+                  自动测试系统 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%87%aa%e5%8a%a8%e6%b5%8b%e8%af%95%e7%b3%bb%e7%bb%9f" title="自动测试系统的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ba%94%e7%94%a8%e6%8e%a2%e7%b4%a2%22++DBID%3aWF_QK">
+                  应用探索 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%ba%94%e7%94%a8%e6%8e%a2%e7%b4%a2" title="应用探索的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22cloud+computing%22++DBID%3aWF_QK">
+                  cloud computing 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=cloud+computing" title="cloud computing的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22software+test%22++DBID%3aWF_QK">
+                  software test 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=software+test" title="software test的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22hardware+test%22++DBID%3aWF_QK">
+                  hardware test 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=hardware+test" title="hardware test的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22automatic+test+system%22++DBID%3aWF_QK">
+                  automatic test system 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=automatic+test+system" title="automatic test system的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22application+exploration%22++DBID%3aWF_QK">
+                  application exploration 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=application+exploration" title="application exploration的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/10.3969/j.issn.1009-3516.2015.01.012">
+                  10.3969/j.issn.1009-3516.2015.01.012
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(10条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jsjgprjyyy201307181.aspx">
+                    云计算信息技术下软件测试的前沿性拓展探究
+                  </a>
+                  <span>
+                     - 计算机光盘软件与应用2013(7)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jsjgprjyyy201307181.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_xxjs201308052.aspx">
+                    云计算虚拟环境下第三方软件测试环境研究
+                  </a>
+                  <span>
+                     - 信息技术2013(8)
+                  </span>
+                  <a href="/Service/File/download/Periodical_xxjs201308052.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y2352528.aspx">
+                    云计算环境下的“测试即服务”模式及其实现
+                  </a>
+                  <span>
+                    2013
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y2352528.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_scczswzkxxxb201402017.aspx">
+                    云计算在软件测试教学中的应用研究
+                  </a>
+                  <span>
+                     - 山西财政税务专科学校学报2014,16(2)
+                  </span>
+                  <a href="/Service/File/download/Periodical_scczswzkxxxb201402017.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D470722.aspx">
+                    一种基于云计算的软件测试方法研究
+                  </a>
+                  <span>
+                    2013
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D470722.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_guig201409054.aspx">
+                    基于云计算环境下的软件测试探讨
+                  </a>
+                  <span>
+                     - 硅谷2014(9)
+                  </span>
+                  <a href="/Service/File/download/Periodical_guig201409054.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_xdjsj-xby201302013.aspx">
+                    基于云计算的软件测试
+                  </a>
+                  <span>
+                     - 现代计算机（专业版）2013(2)
+                  </span>
+                  <a href="/Service/File/download/Periodical_xdjsj-xby201302013.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jsjgprjyyy201317032.aspx">
+                    基于云计算平台的软件测试策略
+                  </a>
+                  <span>
+                     - 计算机光盘软件与应用2013(17)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jsjgprjyyy201317032.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y2265111.aspx">
+                    基于云计算的软件测试服务研究
+                  </a>
+                  <span>
+                    2011
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y2265111.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_qgsj201434066.aspx">
+                    云计算在软件测试服务中的应用研究
+                  </a>
+                  <span>
+                     - 科技创新与应用2014(34)
+                  </span>
+                  <a href="/Service/File/download/Periodical_qgsj201434066.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_kjgcdxxb2015010013' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_6.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

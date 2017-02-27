@@ -1,0 +1,3 @@
+建构主义理论在大学计算机课程教学中的应用  Application of Constructivism Theory on Computer Instruction in University
+              本文从建构主义的教学模式与教学方法入手,改进了传统的计算机课程教学设计的方法与步骤,并提出在建构主义学习环境下如何进行教学目标分析、情境创设、信息资源设计、自主学习设计、协作学习环境设计、学习效果评价设计和强化练习设计.
+            

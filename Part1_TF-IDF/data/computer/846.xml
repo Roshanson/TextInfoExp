@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  基于社会网络的信息传播度量模型
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Thesis.aspx?ID=Thesis_D411588" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3NjkzMjA0MzJkZKKxh/AscG2ISDUAcrB9sli6vKjo"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt;  
+              <a href="/C/Thesis.aspx">
+                学位论文
+              </a>
+               &gt; 
+    
+              <a href="/S/Paper.aspx?q=%e4%b8%93%e4%b8%9a%3a%22%e8%ae%a1%e7%ae%97%e6%9c%ba%e5%ba%94%e7%94%a8%e6%8a%80%e6%9c%af%22">
+                计算机应用技术
+              </a>
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" id="relblogbtn" value="相关博文"/>
+            </p>
+            <h1>
+              基于社会网络的信息传播度量模型
+            </h1>
+            <p class="title-height">
+            </p>
+            <p id="ctl00_LeftContentPlaceHolder_fulltext">
+              <!--按章节浏览-->              <!--打包下载-->              <!--查看全文-->              <a class="seeft" href="/Service/File/view/基于社会网络的信息传播度量模型.aspx?ID=Thesis_D411588">
+              </a>
+              <!--下载全文-->              <a class="downloadft" href="/Service/File/download/Thesis_D411588.aspx">
+              </a>
+            </p>
+            <p>
+              <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Thesis_D411588" class="export">
+              </a>
+            </p>
+            <p id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </p>
+            <p class="abstracts">
+              在信息时代的今天,社会网络已经成为人类共创信息与共享信息的平台,信息在网络中的传播对社会发展产生的作用和影响与日俱增。快速有效地预测信息传播的范围,研究影响信息传播的各种因素,揭示用户间信息的传播规律,有利于及时掌握和控制信息传播的影响范围。
+              <br/>
+              　　从社会关系的角度出发,在分析社会网络模型和信息传播模式的基础上,给出了社会网络的形式化描述,定义了社会网络中的社会关系、潜在关系以及关系层次、社会关系强度的基本概念,提出了社会关系强度以及社会网络信息传播能力的量化度量方法。
+              <br/>
+              　　信息在复杂的社会网络中传播时,用户得到信息的概率是动态变化的。为了揭示信息的传播规律,以社会网络社会关系强度P、社会网络潜在关系强度Q、社会网络信息传播能力W为基础,构建了社会网络信息传播度量模型。然后,详细描述了度量模型的算法过程。在WindowsXP环境下,采用C++语言对算法进行了编程实现;通过用颜色代表社会网络用户可能收到消息的概率,实现了用模型动态模拟信息在社会网络的传播过程;提出了社会网络描述模型优化规则,实现了社会网络关系的优化,降低了模型计算复杂度。
+              <br/>
+              　　为了检验模型的科学性和有效性,以华中科技大学计算机学院硕士1009班同学作为实验对象,通过测量班级成员的社会网络关系强度,计算班级成员的潜在关系强度,分析信息在班级网络中的传播情况,对模型进行了验证和模拟实验。实验表明社会关系强度越大,网络的信息传递的概率越大,也就意味着网络的信息传递能力越强。
+            </p>
+            <dl id="perildical2_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%ad%9f%e4%bc%9f%e7%94%9f%22++DBID%3aWF_XW">
+                  孟伟生
+                </a>
+                 
+              </dd>
+              <dt>
+                学科专业：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=AuthorSubject+%3a+%e8%ae%a1%e7%ae%97%e6%9c%ba%e5%ba%94%e7%94%a8%e6%8a%80%e6%9c%af++DBID%3aWF_XW">
+                  计算机应用技术
+                </a>
+                 
+              </dd>
+              <dt>
+                授予学位：
+              </dt>
+              <dd>
+                硕士 
+              </dd>
+              <dt>
+                学位授予单位：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=School+%3a+%e5%8d%8e%e4%b8%ad%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6++DBID%3aWF_XW">
+                  华中科技大学
+                </a>
+                 
+              </dd>
+              <dt>
+                导师姓名：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=Teacher+%3a+%e7%94%98%e6%97%a9%e6%96%8c++DBID%3aWF_XW">
+                  甘早斌
+                </a>
+                 
+              </dd>
+              <dt>
+                学位年度：
+              </dt>
+              <dd>
+                2013 
+              </dd>
+              <dt>
+                研究方向：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                语 种：
+              </dt>
+              <dd>
+                chi 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP393.094  TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%a4%be%e4%bc%9a%e7%bd%91%e7%bb%9c%22++DBID%3aWF_XW">
+                  社会网络
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%a4%be%e4%bc%9a%e7%bd%91%e7%bb%9c" title="社会网络的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%85%b3%e7%b3%bb%e5%bc%ba%e5%ba%a6%22++DBID%3aWF_XW">
+                  关系强度
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%85%b3%e7%b3%bb%e5%bc%ba%e5%ba%a6" title="关系强度的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%e4%bc%a0%e6%92%ad%22++DBID%3aWF_XW">
+                  信息传播
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e4%bf%a1%e6%81%af%e4%bc%a0%e6%92%ad" title="信息传播的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ba%a6%e9%87%8f%e6%a8%a1%e5%9e%8b%22++DBID%3aWF_XW">
+                  度量模型
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%ba%a6%e9%87%8f%e6%a8%a1%e5%9e%8b" title="度量模型的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%a4%be%e4%bc%9a%e7%bd%91%e7%bb%9c%e5%85%b3%e7%b3%bb%22++DBID%3aWF_XW">
+                  社会网络关系
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e4%bf%a1%e6%81%af%e4%bc%a0%e6%92%ad%22++DBID%3aWF_XW">
+                  网络信息传播
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%85%b3%e7%b3%bb%e5%bc%ba%e5%ba%a6%22++DBID%3aWF_XW">
+                  关系强度
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%a4%be%e4%bc%9a%e5%85%b3%e7%b3%bb%22++DBID%3aWF_XW">
+                  社会关系
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ba%a6%e9%87%8f%e6%a8%a1%e5%9e%8b%22++DBID%3aWF_XW">
+                  度量模型
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%bd%9c%e5%9c%a8%e5%85%b3%e7%b3%bb%22++DBID%3aWF_XW">
+                  潜在关系
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%e4%bc%a0%e9%80%92%22++DBID%3aWF_XW">
+                  信息传递
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bc%a0%e6%92%ad%e8%83%bd%e5%8a%9b%22++DBID%3aWF_XW">
+                  传播能力
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bc%a0%e6%92%ad%e8%a7%84%e5%be%8b%22++DBID%3aWF_XW">
+                  传播规律
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%8f%ad%e7%ba%a7%e6%88%90%e5%91%98%22++DBID%3aWF_XW">
+                  班级成员
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%e4%bc%a0%e6%92%ad%e6%a8%a1%e5%bc%8f%22++DBID%3aWF_XW">
+                  信息传播模式
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ae%9e%e9%aa%8c%22++DBID%3aWF_XW">
+                  实验
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="relatitle">
+                <a id="a">
+                </a>
+                <span>
+                  相似文献
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+            </div>
+            <div class="Cited1" id="relblog">
+              <div class="td-blue" id="relblogtitle">
+                <a id="f">
+                </a>
+                <span>
+                  相关博文
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Thesis_D411588' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_3.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C2DFB57C"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL6l6SgDQL+yqGTDgLNsI6nCxf0Odt44GD82o8PpTcTt8KeqUZc"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

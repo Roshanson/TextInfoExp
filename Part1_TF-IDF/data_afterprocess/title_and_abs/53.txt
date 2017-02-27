@@ -1,0 +1,3 @@
+RFID技术在物流行业中的应用框架研究  Research of application framework of RFID technology in logistics industry
+              RFID技术与EPC标准相结合,能够自动识别目标对象并获取相关数据,便于通过互联网实现物流跟踪和实时监控.分析了RFID技术在物流行业的发展和应用前景,通过对现代物流应用及特点进行剖析,提出面向物流应用的分层RFID应用框架,可以为不同的应用领域提供集成平台与解决方案,该框架具有通用性.
+            

@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  可分析集合、笛卡尔逻辑和命题的可推导性关系  Analytical sets, Cartesian logic and dialectical relations on propositions
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_ranj201201004" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(10)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%82%96%e5%a5%9a%e5%ae%89%22&amp;f=detail.expert">
+                肖奚安
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%ae%8b%e6%96%b9%e6%95%8f%22&amp;f=detail.expert">
+                宋方敏
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%a1%be%e7%ba%a2%e8%8a%b3%22&amp;f=detail.expert">
+                顾红芳
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%ae%ab%e5%ae%81%e7%94%9f%22&amp;f=detail.expert">
+                宫宁生
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9c%b1%e6%a2%a7%e6%a7%9a%22&amp;f=detail.expert">
+                朱梧槚
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Zhu+Wujia%22&amp;f=detail.expert">
+                Zhu Wujia
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Xiao+Xi" an%22&f="detail.expert'">
+                Xiao Xi'an
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Song+Fangmin%22&amp;f=detail.expert">
+                Song Fangmin
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Gong+Ningsheng%22&amp;f=detail.expert">
+                Gong Ningsheng
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%91%a8%e5%8b%87%22&amp;f=detail.expert">
+                周勇
+              </a>
+              <ul>
+                <h3>
+                  相关机构(12条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%9b%bd%e4%ba%ba%e6%b0%91%e8%a7%a3%e6%94%be%e5%86%9b%e7%90%86%e5%b7%a5%e5%a4%a7%e5%ad%a6%e7%90%86%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210016%ef%bc%9b%e5%8d%97%e4%ba%ac%e8%88%aa%e7%a9%ba%e8%88%aa%e5%a4%a9%e5%a4%a7%e5%ad%a6%e4%bf%a1%e6%81%af%e7%a7%91%e5%ad%a6%e4%b8%8e%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210016%22&amp;f=detail.agency">
+                    中国人民解放军理工大学理学院,南京,210016；南京航空航天大学信息科学与技术学院,南京,210016
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e4%ba%ac%e5%a4%a7%e5%ad%a6%e8%ae%a1%e7%ae%97%e6%9c%ba%e8%bd%af%e4%bb%b6%e6%96%b0%e6%8a%80%e6%9c%af%e5%9b%bd%e5%ae%b6%e9%87%8d%e7%82%b9%e5%ae%9e%e9%aa%8c%e5%ae%a4%2c%e5%8d%97%e4%ba%ac%2c210093%22&amp;f=detail.agency">
+                    南京大学计算机软件新技术国家重点实验室,南京,210093
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%9b%bd%e4%ba%ba%e6%b0%91%e8%a7%a3%e6%94%be%e5%86%9b%e7%90%86%e5%b7%a5%e5%a4%a7%e5%ad%a6%e7%90%86%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210016%22&amp;f=detail.agency">
+                    中国人民解放军理工大学理学院,南京,210016
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e4%ba%ac%e5%b7%a5%e4%b8%9a%e5%a4%a7%e5%ad%a6%e4%bf%a1%e6%81%af%e7%a7%91%e5%ad%a6%e4%b8%8e%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210093%ef%bc%9b%e5%8d%97%e4%ba%ac%e8%88%aa%e7%a9%ba%e8%88%aa%e5%a4%a9%e5%a4%a7%e5%ad%a6%e4%bf%a1%e6%81%af%e7%a7%91%e5%ad%a6%e4%b8%8e%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210016%22&amp;f=detail.agency">
+                    南京工业大学信息科学与工程学院,南京,210093；南京航空航天大学信息科学与技术学院,南京,210016
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e4%ba%ac%e8%88%aa%e7%a9%ba%e8%88%aa%e5%a4%a9%e5%a4%a7%e5%ad%a6%e4%bf%a1%e6%81%af%e7%a7%91%e5%ad%a6%e4%b8%8e%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210016%ef%bc%9b%e5%8d%97%e4%ba%ac%e5%a4%a7%e5%ad%a6%e8%ae%a1%e7%ae%97%e6%9c%ba%e8%bd%af%e4%bb%b6%e6%96%b0%e6%8a%80%e6%9c%af%e5%9b%bd%e5%ae%b6%e9%87%8d%e7%82%b9%e5%ae%9e%e9%aa%8c%e5%ae%a4%2c%e5%8d%97%e4%ba%ac%2c210093%22&amp;f=detail.agency">
+                    南京航空航天大学信息科学与技术学院,南京,210016；南京大学计算机软件新技术国家重点实验室,南京,210093
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e4%ba%ac%e8%88%aa%e7%a9%ba%e8%88%aa%e5%a4%a9%e5%a4%a7%e5%ad%a6%e4%bf%a1%e6%81%af%e7%a7%91%e5%ad%a6%e4%b8%8e%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210016%3b%e5%8d%97%e4%ba%ac%e5%a4%a7%e5%ad%a6%e8%ae%a1%e7%ae%97%e6%9c%ba%e8%bd%af%e4%bb%b6%e6%96%b0%e6%8a%80%e6%9c%af%e5%9b%bd%e5%ae%b6%e9%87%8d%e7%82%b9%e5%ae%9e%e9%aa%8c%e5%ae%a4%2c%e5%8d%97%e4%ba%ac%2c210093%22&amp;f=detail.agency">
+                    南京航空航天大学信息科学与技术学院,南京,210016;南京大学计算机软件新技术国家重点实验室,南京,210093
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%9b%bd%e4%ba%ba%e6%b0%91%e8%a7%a3%e6%94%be%e5%86%9b%e7%90%86%e5%b7%a5%e5%a4%a7%e5%ad%a6%e7%90%86%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210016%3b%e5%8d%97%e4%ba%ac%e8%88%aa%e7%a9%ba%e8%88%aa%e5%a4%a9%e5%a4%a7%e5%ad%a6%e4%bf%a1%e6%81%af%e7%a7%91%e5%ad%a6%e4%b8%8e%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210016%22&amp;f=detail.agency">
+                    中国人民解放军理工大学理学院,南京,210016;南京航空航天大学信息科学与技术学院,南京,210016
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e4%ba%ac%e5%b7%a5%e4%b8%9a%e5%a4%a7%e5%ad%a6%e4%bf%a1%e6%81%af%e7%a7%91%e5%ad%a6%e4%b8%8e%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210009%ef%bc%9b%e5%8d%97%e4%ba%ac%e8%88%aa%e7%a9%ba%e8%88%aa%e5%a4%a9%e5%a4%a7%e5%ad%a6%e4%bf%a1%e6%81%af%e7%a7%91%e5%ad%a6%e4%b8%8e%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210016%22&amp;f=detail.agency">
+                    南京工业大学信息科学与工程学院,南京,210009；南京航空航天大学信息科学与技术学院,南京,210016
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e4%ba%ac%e5%a4%a7%e5%ad%a6%e8%ae%a1%e7%ae%97%e6%9c%ba%e8%bd%af%e4%bb%b6%e6%96%b0%e6%8a%80%e6%9c%af%e5%9b%bd%e5%ae%b6%e9%87%8d%e7%82%b9%e5%ae%9e%e9%aa%8c%e5%ae%a4%22&amp;f=detail.agency">
+                    南京大学计算机软件新技术国家重点实验室
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%9b%bd%e4%ba%ba%e6%b0%91%e8%a7%a3%e6%94%be%e5%86%9b%e7%90%86%e5%b7%a5%e5%a4%a7%e5%ad%a6%e7%90%86%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    中国人民解放军理工大学理学院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e4%ba%ac%e5%b7%a5%e4%b8%9a%e5%a4%a7%e5%ad%a6%e4%bf%a1%e6%81%af%e7%a7%91%e5%ad%a6%e4%b8%8e%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    南京工业大学信息科学与工程学院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e4%ba%ac%e8%88%aa%e7%a9%ba%e8%88%aa%e5%a4%a9%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    南京航空航天大学
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-ranj.aspx">
+                软件
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/ranj/2012-1.aspx">
+                2012年1期
+              </a>
+               &gt; 可分析集合、笛卡尔逻辑和命题的可推导性关系
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              可分析集合、笛卡尔逻辑和命题的可推导性关系
+            </h1>
+            <h2>
+              Analytical sets, Cartesian logic and dialectical relations on propositions
+            </h2>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/可分析集合、笛卡尔逻辑和命题的可推导性关系.aspx?ID=Periodical_ranj201201004" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_ranj201201004.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_ranj201201004" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              本文在ZFC公理系统的基础上,首先提出可分析集合的概念且可表达为p={x｜x∈p}.然后给出受囿变量的定义,引入笛卡尔逻辑以使逻辑的概念像算法的概念一样精确化而成为明确的数学对象,不仅足以适应代数和分析的要求,而且充分满足经典和非经典逻辑的需要,并探讨命题间的可推导性关系,包括:对立、排中、重言、归谬、反对、矛盾、存在、全称、独立、同一和不矛盾.进而,讨论一些逻辑运算和有关的逻辑问题,并进一步阐述可分析集合的几个基本关系和基本运算.
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e8%b5%b5%e5%b3%b0%22++DBID%3aWF_QK">
+                  赵峰
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22ZHAO+Feng%22++DBID%3aWF_QK">
+                  ZHAO Feng
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                山西焦煤汾西矿业集团 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-ranj.aspx">
+                  软件
+                </a>
+                 
+                <span class="green-border" visible="False">
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-ranj.aspx">
+                  computer engineering &amp; Software
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/ranj/2012-1.aspx">
+                  2012 33(1)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-05  O14 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%ae%a1%e7%ae%97%e6%9c%ba%e8%bd%af%e4%bb%b6%22++DBID%3aWF_QK">
+                  计算机软件 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%ae%a1%e7%ae%97%e6%9c%ba%e8%bd%af%e4%bb%b6" title="计算机软件的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%85%ac%e7%90%86%e9%9b%86%e5%90%88%e8%ae%ba%22++DBID%3aWF_QK">
+                  公理集合论 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%85%ac%e7%90%86%e9%9b%86%e5%90%88%e8%ae%ba" title="公理集合论的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8f%af%e5%88%86%e6%9e%90%e9%9b%86%e5%90%88%22++DBID%3aWF_QK">
+                  可分析集合 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%8f%af%e5%88%86%e6%9e%90%e9%9b%86%e5%90%88" title="可分析集合的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8f%98%e9%87%8f%22++DBID%3aWF_QK">
+                  变量 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%8f%98%e9%87%8f" title="变量的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8f%97%e5%9b%bf%e5%8f%98%e9%87%8f%22++DBID%3aWF_QK">
+                  受囿变量 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%8f%97%e5%9b%bf%e5%8f%98%e9%87%8f" title="受囿变量的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%ac%9b%e5%8d%a1%e5%b0%94%e9%80%bb%e8%be%91%22++DBID%3aWF_QK">
+                  笛卡尔逻辑 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%ac%9b%e5%8d%a1%e5%b0%94%e9%80%bb%e8%be%91" title="笛卡尔逻辑的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%91%bd%e9%a2%98%e7%9a%84%e5%8f%af%e6%8e%a8%e5%af%bc%e6%80%a7%e5%85%b3%e7%b3%bb%22++DBID%3aWF_QK">
+                  命题的可推导性关系 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%91%bd%e9%a2%98%e7%9a%84%e5%8f%af%e6%8e%a8%e5%af%bc%e6%80%a7%e5%85%b3%e7%b3%bb" title="命题的可推导性关系的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%22++DBID%3aWF_QK">
+                  逻辑运算 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97" title="逻辑运算的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                TP3  TP1 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%88%86%e6%9e%90%22++DBID%3aWF_QK">
+                  分析
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%9b%86%e5%90%88%22++DBID%3aWF_QK">
+                  集合
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%ac%9b%e5%8d%a1%e5%b0%94%22++DBID%3aWF_QK">
+                  笛卡尔
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%9d%9e%e7%bb%8f%e5%85%b8%e9%80%bb%e8%be%91%22++DBID%3aWF_QK">
+                  非经典逻辑
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%91%bd%e9%a2%98%22++DBID%3aWF_QK">
+                  命题
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8f%af%e6%8e%a8%e5%af%bc%e6%80%a7%22++DBID%3aWF_QK">
+                  可推导性
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%85%b3%e7%b3%bb%22++DBID%3aWF_QK">
+                  关系
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b3%95%e7%9a%84%e6%a6%82%e5%bf%b5%22++DBID%3aWF_QK">
+                  法的概念
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8f%98%e9%87%8f%e7%9a%84%e5%ae%9a%e4%b9%89%22++DBID%3aWF_QK">
+                  变量的定义
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%95%b0%e5%ad%a6%e5%af%b9%e8%b1%a1%22++DBID%3aWF_QK">
+                  数学对象
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%9f%9b%e7%9b%be%22++DBID%3aWF_QK">
+                  矛盾
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%22++DBID%3aWF_QK">
+                  逻辑运算
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%80%bb%e8%be%91%e9%97%ae%e9%a2%98%22++DBID%3aWF_QK">
+                  逻辑问题
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9f%ba%e6%9c%ac%e8%bf%90%e7%ae%97%22++DBID%3aWF_QK">
+                  基本运算
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%85%ac%e7%90%86%e7%b3%bb%e7%bb%9f%22++DBID%3aWF_QK">
+                  公理系统
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%b2%be%e7%a1%ae%e5%8c%96%22++DBID%3aWF_QK">
+                  精确化
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%87%8d%e8%a8%80%22++DBID%3aWF_QK">
+                  重言
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%ae%a8%e8%ae%ba%22++DBID%3aWF_QK">
+                  讨论
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9f%ba%e7%a1%80%22++DBID%3aWF_QK">
+                  基础
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%af%b9%e7%ab%8b%22++DBID%3aWF_QK">
+                  对立
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/10.3969/j.issn.1003-6970.2012.01.004">
+                  10.3969/j.issn.1003-6970.2012.01.004
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(7条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_njhkht200204002.aspx">
+                    无穷观问题的研究(Ⅴ)--一个兼容实无限与潜无限的公理集合论系统APAS
+                  </a>
+                  <span>
+                     - 南京航空航天大学学报2002,34(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_njhkht200204002.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_njhkht200202001.aspx">
+                    无穷观问题的研究(I)——历史的回顾与思考
+                  </a>
+                  <span>
+                     - 南京航空航天大学学报2002,34(2)
+                  </span>
+                  <a href="/Service/File/download/Periodical_njhkht200202001.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_njhkht200203001.aspx">
+                    无穷观问题的研究(Ⅱ)——从Hausdorff的直觉和Poincaré的名言到Brouwer剧场现象
+                  </a>
+                  <span>
+                     - 南京航空航天大学学报2002,34(3)
+                  </span>
+                  <a href="/Service/File/download/Periodical_njhkht200203001.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_njhkht200204001.aspx">
+                    无穷观问题的研究(Ⅳ)--自然数系统与无穷公理
+                  </a>
+                  <span>
+                     - 南京航空航天大学学报2002,34(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_njhkht200204001.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_njhkht200203002.aspx">
+                    无穷观问题的研究(Ⅲ)——‘每一'与‘所有'
+                  </a>
+                  <span>
+                     - 南京航空航天大学学报2002,34(3)
+                  </span>
+                  <a href="/Service/File/download/Periodical_njhkht200203002.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_kx200602007.aspx">
+                    可数集合的无穷观问题
+                  </a>
+                  <span>
+                     - 科学（上海）2006,58(2)
+                  </span>
+                  <a href="/Service/File/download/Periodical_kx200602007.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y372903.aspx">
+                    中介粗集及其在数据挖掘中的应用
+                  </a>
+                  <span>
+                    2001
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y372903.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_ranj201201004' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

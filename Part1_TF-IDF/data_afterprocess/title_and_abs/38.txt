@@ -1,0 +1,3 @@
+基于SOA的毕业信息管理系统的设计与实现  Design and realization of graduate information management system base on SOA
+              以SOA为系统架构指导思想，对毕业信息管理系统进行系统设计，根据对系统的功能分析，提出了系统的业务架构模型、逻辑架构模型，并对系统具体业务流程进行设计。在设计的基础上以JSP为平台、以JAVA作为编程语言开发了毕业信息管理系统，探讨了基于JSP的Web服务的实现和调用以及服务的编排．最终以服务集成的方式完成系统的开发。
+            

@@ -1,0 +1,3 @@
+求解带平衡约束圆形packing问题的改进人工蜂群算法  Exploring Improved Artificial Bee Colony Algorithm for Solving Circle Packing Problem with Equilibrium Constraints
+              圆形packing问题是一个著名的NP难题，求解该问题具有很高的理论与实用价值。首先将趋势外推原理和微调算子引入人工蜂群算法，对其搜索的随机性进行有效的引导优化，然后将改进后的人工蜂群算法应用于带平衡约束的圆形布局的参数优化，并在文后采用3个典型实例进行了数值实验。结果表明新算法解决带平衡约束的圆形packing问题具有较强的寻优能力和较高的寻优效率，是一种实用的方法。
+            

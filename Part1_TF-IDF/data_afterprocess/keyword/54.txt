@@ -1,0 +1,1 @@
+小波变换    阈值法    小波去噪    阈值系数测试    wavelet transform    threshold method    wavelet denoising    threshold coefficient   

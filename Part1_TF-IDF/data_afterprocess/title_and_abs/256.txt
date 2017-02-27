@@ -1,0 +1,3 @@
+面向行人导航的RMLT DR算法研究与实现  RMLT DR Algorithm's Research and Implementation in Pedestrian Navigation System
+              DR算法是行人导航中最常用的一种推算算法.分析常规DR算法,针对行人导航中DR算法是固定阈值,不能根据行人环境不同而自动调整阈值,导致行人定位精确度不高的缺点,提出了基于雷达的多级阈值DR算法,即RMLT DR算法.通过仿真模拟实验,对比分析了RMLT DR算法和常规DR算法的定位结果.验证了行人行走过程中,RMLT DR算法可以根据周围的环境自动选择阙值大小,具有更高的精确度.
+            

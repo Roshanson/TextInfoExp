@@ -1,0 +1,3 @@
+混合式学习在数据库技术课程中的应用研究与实践  Research and Practice on the Application of Blended Learning in the Course of Database Technology
+              混合式学习融合了传统课堂学习和网络学习的优势，弥补各自的不足，其目标就是为学生提供更好的学习条件，从而提高其基本学习技能、创新思维能力、人际交往与合作能力[1]。本文主要探讨混合式学习在数据库技术课程中的应用与实践。
+            

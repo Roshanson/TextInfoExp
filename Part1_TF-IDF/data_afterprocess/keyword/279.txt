@@ -1,0 +1,1 @@
+蛋白质复合体    蛋白质相互作用    蛋白质复合体模块度函数    初始模块    BMM算法    protein complex    protein-protein interaction (PPI)    protein complexes modularity function    initial module    based on protein complexes modularity function for merging modules (BMM) algorithm   

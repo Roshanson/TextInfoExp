@@ -1,0 +1,3 @@
+浅论智能建筑的系统集成  AN ANALYSIS OF SYSTEM INTEGRATION OF INTELLIGENT BUILDING
+              本文对智能建筑系统集成的特征、内涵进行了探讨,阐明智能建筑系统集成不仅是信息技术的集成,而且是建筑技术与信息技术的有机结合,提出了对智能建筑的应用和开发研究是当务之急.
+            

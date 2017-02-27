@@ -1,0 +1,3 @@
+J2ME技术在农业氮素平衡施肥中的应用研究  Applied Research of J2ME Technology in the Agricultural N Balance Fertilizer
+              通过对J2ME技术在农业氮肥平衡推荐中的应用研究,拓宽了智能手机的应用范围.同时,对研究中所涉及到的关键技术也进行了探讨,如选用氮肥平衡模型,使用JSR-179获取坐标位置,应用坐标转换模型进行坐标转换,使用Servlet与J2ME通讯,以及利用ArcGIS SERVER发布地图服务等.最后,通过应用实例证明了该技术的可行性并预测到该技术在未来农业上的良好应用前景.
+            

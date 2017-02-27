@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  自治区林业厅和百色市达成助农增收扶贫攻坚及项目开发合作意向
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_gxly201204026" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(13)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%8b%8f%e9%99%86%22&amp;f=detail.expert">
+                苏陆
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%b8%88%e6%b0%b8%e5%bf%97%22&amp;f=detail.expert">
+                师永志
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e6%98%8e%e6%b3%89%22&amp;f=detail.expert">
+                王明泉
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%83%a1%e5%85%b4%e7%90%83%22&amp;f=detail.expert">
+                胡兴球
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e7%bb%b4%e6%9e%9c%22&amp;f=detail.expert">
+                刘维果
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e5%93%b2%22&amp;f=detail.expert">
+                王哲
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%82%96%e5%bf%97%e8%bf%9c%22&amp;f=detail.expert">
+                肖志远
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%bb%a3%e7%87%95%22&amp;f=detail.expert">
+                代燕
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%b4%aa%e6%b5%b7%e5%a8%9f%22&amp;f=detail.expert">
+                洪海娟
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e5%a4%a9%e7%90%86%22&amp;f=detail.expert">
+                张天理
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Zhang+Tianli%22&amp;f=detail.expert">
+                Zhang Tianli
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%a2%81%e8%8e%89%e5%a8%9c%22&amp;f=detail.expert">
+                梁莉娜
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%be%9b%e8%8c%b9%22&amp;f=detail.expert">
+                辛茹
+              </a>
+              <ul>
+                <h3>
+                  相关机构(9条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%8a%e6%b5%b7%e4%ba%a4%e9%80%9a%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    上海交通大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e5%8d%8e%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    西华大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b2%b3%e6%b5%b7%e5%a4%a7%e5%ad%a6%e5%95%86%e5%ad%a6%e9%99%a2%2c%e6%b1%9f%e8%8b%8f+%e5%8d%97%e4%ba%ac%2c211100%22&amp;f=detail.agency">
+                    河海大学商学院,江苏 南京,211100
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%8e%e4%b8%ad%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    华中科技大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%96%b0%e7%96%86%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6%e5%9c%b0%e7%90%86%e7%a7%91%e5%ad%a6%e4%b8%8e%e6%97%85%e6%b8%b8%e5%ad%a6%e9%99%a2%2c%e6%96%b0%e7%96%86%2c%e4%b9%8c%e9%b2%81%e6%9c%a8%e9%bd%90%2c830054%22&amp;f=detail.agency">
+                    新疆师范大学地理科学与旅游学院,新疆,乌鲁木齐,830054
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b5%99%e6%b1%9f%e5%b7%a5%e4%b8%9a%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    浙江工业大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e7%94%98%e8%82%83%e7%9c%81%e7%a7%91%e5%ad%a6%e6%8a%80%e6%9c%af%e5%8e%85%2c%e7%94%98%e8%82%83%2c%e5%85%b0%e5%b7%9e%2c730030%22&amp;f=detail.agency">
+                    甘肃省科学技术厅,甘肃,兰州,730030
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e5%8d%97%e8%b4%a2%e7%bb%8f%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    西南财经大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b9%8c%e9%b2%81%e6%9c%a8%e9%bd%90%e5%b8%82%e5%a4%a7%e6%b5%a6%e6%b2%9f%e5%9b%ba%e4%bd%93%e5%ba%9f%e7%89%a9%e7%bb%bc%e5%90%88%e5%a4%84%e7%90%86%e5%9c%ba+%e6%96%b0%e7%96%86+%e4%b9%8c%e9%b2%81%e6%9c%a8%e9%bd%90+830009%22&amp;f=detail.agency">
+                    乌鲁木齐市大浦沟固体废物综合处理场 新疆 乌鲁木齐 830009
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-gxly.aspx">
+                广西林业
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/gxly/2012-4.aspx">
+                2012年4期
+              </a>
+               &gt; 自治区林业厅和百色市达成助农增收扶贫攻坚及项目开发合作意向
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              自治区林业厅和百色市达成助农增收扶贫攻坚及项目开发合作意向
+            </h1>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/自治区林业厅和百色市达成助农增收扶贫攻坚及项目开发合作意向.aspx?ID=Periodical_gxly201204026" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_gxly201204026.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_gxly201204026" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              2012年3月31日，自治区林业厅副厅长韦纯良、总工程师蒋桂雄与百色市副市长罗试坚出席林业项目合作座谈会并达成助农增收、扶贫攻坚及项目开发等方面的合作意向。
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%ae%8b%e6%83%a0%e7%83%ad%22++DBID%3aWF_QK">
+                  宋惠热
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e9%bb%84%e4%bd%a9%e7%91%9c%22++DBID%3aWF_QK">
+                  黄佩瑜
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                不详 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-gxly.aspx">
+                  广西林业
+                </a>
+                 
+                <span class="green-border" visible="False">
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-gxly.aspx">
+                  Forestry of GuangXi
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/gxly/2012-4.aspx">
+                  2012 (4)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%a1%b9%e7%9b%ae%e5%90%88%e4%bd%9c%22++DBID%3aWF_QK">
+                  项目合作 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e9%a1%b9%e7%9b%ae%e5%90%88%e4%bd%9c" title="项目合作的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%a1%b9%e7%9b%ae%e5%bc%80%e5%8f%91%22++DBID%3aWF_QK">
+                  项目开发 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e9%a1%b9%e7%9b%ae%e5%bc%80%e5%8f%91" title="项目开发的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%89%b6%e8%b4%ab%e6%94%bb%e5%9d%9a%22++DBID%3aWF_QK">
+                  扶贫攻坚 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%89%b6%e8%b4%ab%e6%94%bb%e5%9d%9a" title="扶贫攻坚的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%9e%97%e4%b8%9a%e5%8e%85%22++DBID%3aWF_QK">
+                  林业厅 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%9e%97%e4%b8%9a%e5%8e%85" title="林业厅的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%99%be%e8%89%b2%e5%b8%82%22++DBID%3aWF_QK">
+                  百色市 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%99%be%e8%89%b2%e5%b8%82" title="百色市的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%87%aa%e6%b2%bb%e5%8c%ba%22++DBID%3aWF_QK">
+                  自治区 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%87%aa%e6%b2%bb%e5%8c%ba" title="自治区的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%84%8f%e5%90%91%22++DBID%3aWF_QK">
+                  意向 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%84%8f%e5%90%91" title="意向的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%80%bb%e5%b7%a5%e7%a8%8b%e5%b8%88%22++DBID%3aWF_QK">
+                  总工程师 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%80%bb%e5%b7%a5%e7%a8%8b%e5%b8%88" title="总工程师的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                F30  D63 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%87%aa%e6%b2%bb%e5%8c%ba%22++DBID%3aWF_QK">
+                  自治区
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%9e%97%e4%b8%9a%22++DBID%3aWF_QK">
+                  林业
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%99%be%e8%89%b2%e5%b8%82%22++DBID%3aWF_QK">
+                  百色市
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8a%a9%e5%86%9c%e5%a2%9e%e6%94%b6%22++DBID%3aWF_QK">
+                  助农增收
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%89%b6%e8%b4%ab%e6%94%bb%e5%9d%9a%22++DBID%3aWF_QK">
+                  扶贫攻坚
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%a1%b9%e7%9b%ae%e5%bc%80%e5%8f%91%22++DBID%3aWF_QK">
+                  项目开发
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%a1%b9%e7%9b%ae%e5%90%88%e4%bd%9c%22++DBID%3aWF_QK">
+                  项目合作
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%90%88%e4%bd%9c%e6%84%8f%e5%90%91%22++DBID%3aWF_QK">
+                  合作意向
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%b7%a5%e7%a8%8b%e5%b8%88%22++DBID%3aWF_QK">
+                  工程师
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%b8%82%e9%95%bf%22++DBID%3aWF_QK">
+                  市长
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/10.3969/j.issn.1004-0390.2012.04.026">
+                  10.3969/j.issn.1004-0390.2012.04.026
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(9条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D120294.aspx">
+                    IT合作项目的风险性研究
+                  </a>
+                  <span>
+                    2009
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D120294.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1556067.aspx">
+                    企业科技项目合作开发模式评价与选择研究
+                  </a>
+                  <span>
+                    2009
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1556067.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_xmgljs201404021.aspx">
+                    上合组织在额尔齐斯河水资源合作项目开发中的作用分析
+                  </a>
+                  <span>
+                     - 项目管理技术2014,12(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_xmgljs201404021.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D190842.aspx">
+                    DHCPv6中事件处理和配置管理的设计与实现
+                  </a>
+                  <span>
+                    2011
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D190842.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_ncsthj200904001.aspx">
+                    干旱区大型养殖场CDM项目开发与温室气体减排量估算
+                  </a>
+                  <span>
+                     - 生态与农村环境学报2009,25(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_ncsthj200904001.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1341048.aspx">
+                    清洁发展机制（CDM）研究
+                  </a>
+                  <span>
+                    2008
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1341048.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_gskj200508002.aspx">
+                    抓住机遇,利用机制加快甘肃CDM项目开发进程
+                  </a>
+                  <span>
+                     - 甘肃科技2005,21(8)
+                  </span>
+                  <a href="/Service/File/download/Periodical_gskj200508002.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1446926.aspx">
+                    东北亚地区经济合作研究——现状、问题、突破方向的选择
+                  </a>
+                  <span>
+                    2009
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1446926.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_tzyhz201403204.aspx">
+                    浅谈填埋沼气利用与CDM项目开发的系统机制设想
+                  </a>
+                  <span>
+                     - 投资与合作2014(3)
+                  </span>
+                  <a href="/Service/File/download/Periodical_tzyhz201403204.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_gxly201204026' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_3.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

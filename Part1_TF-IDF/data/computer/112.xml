@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  生物信息学与重复序列分析  Bioinformatics and analysis of the repeated sequence
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_gxnyswkx200201014" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(45)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%ba%93%e6%b6%9b%22&amp;f=detail.expert">
+                亓涛
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%86%af%e6%98%a5%e7%90%bc%22&amp;f=detail.expert">
+                冯春琼
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%82%b9%e4%ba%9a%e5%85%89%22&amp;f=detail.expert">
+                邹亚光
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e9%93%81%e6%b1%82%22&amp;f=detail.expert">
+                李铁求
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%91%a8%e5%85%b6%e8%b5%b5%22&amp;f=detail.expert">
+                周其赵
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e9%a3%9e%22&amp;f=detail.expert">
+                李飞
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%a2%81%e7%88%bd%22&amp;f=detail.expert">
+                梁爽
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%af%9b%e5%90%91%e6%98%8e%22&amp;f=detail.expert">
+                毛向明
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22FENG+Chun-qiong%22&amp;f=detail.expert">
+                FENG Chun-qiong
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZOU+Ya-guang%22&amp;f=detail.expert">
+                ZOU Ya-guang
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LI+Tie-qiu%22&amp;f=detail.expert">
+                LI Tie-qiu
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHOU+Qi-zhao%22&amp;f=detail.expert">
+                ZHOU Qi-zhao
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LI+Fei%22&amp;f=detail.expert">
+                LI Fei
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LIANG+Shuang%22&amp;f=detail.expert">
+                LIANG Shuang
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22MAO+Xiang-ming%22&amp;f=detail.expert">
+                MAO Xiang-ming
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%9b%b8%e7%8e%89%e6%9f%b1%22&amp;f=detail.expert">
+                相玉柱
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9b%b9%e9%98%b3%22&amp;f=detail.expert">
+                曹阳
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%83%91%e5%aa%9b%e5%aa%9b%22&amp;f=detail.expert">
+                郑媛媛
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%96%b9%e6%9f%8f%e5%b1%b1%22&amp;f=detail.expert">
+                方柏山
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e5%a4%a7%e7%a6%8f%22&amp;f=detail.expert">
+                陈大福
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e8%8c%82%e5%b9%bf%22&amp;f=detail.expert">
+                王茂广
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%ba%8e%e9%a2%96%e5%bd%a6%22&amp;f=detail.expert">
+                于颖彦
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%ae%a1%e9%aa%8f%22&amp;f=detail.expert">
+                计骏
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%bd%98%e7%8e%89%e7%94%b3%22&amp;f=detail.expert">
+                潘玉申
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e7%82%b3%e4%ba%9a%22&amp;f=detail.expert">
+                刘炳亚
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9c%b1%e6%ad%a3%e7%ba%b2%22&amp;f=detail.expert">
+                朱正纲
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9e%97%e8%a8%80%e7%ae%b4%22&amp;f=detail.expert">
+                林言箴
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22YU+Ying-yan%22&amp;f=detail.expert">
+                YU Ying-yan
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22JI+Jun%22&amp;f=detail.expert">
+                JI Jun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22PAN+Yu-shen%22&amp;f=detail.expert">
+                PAN Yu-shen
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LIU+Bing-ya%22&amp;f=detail.expert">
+                LIU Bing-ya
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHU+Zheng-gang%22&amp;f=detail.expert">
+                ZHU Zheng-gang
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LIN+Yan-zhen%22&amp;f=detail.expert">
+                LIN Yan-zhen
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%83%a1%e6%98%87%22&amp;f=detail.expert">
+                胡昇
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9c%b1%e9%9d%9e%e7%99%bd%22&amp;f=detail.expert">
+                朱非白
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9c%b1%e8%90%a7%22&amp;f=detail.expert">
+                朱萧
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%9f%a6%e9%95%bf%e5%85%83%22&amp;f=detail.expert">
+                韦长元
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%a6%83%e5%ba%86%e6%b4%aa%22&amp;f=detail.expert">
+                覃庆洪
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%bb%83%e6%96%8c%22&amp;f=detail.expert">
+                练斌
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHU+Fei-bai%22&amp;f=detail.expert">
+                ZHU Fei-bai
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHU+Xiao%22&amp;f=detail.expert">
+                ZHU Xiao
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22WEI+Chang-yuan%22&amp;f=detail.expert">
+                WEI Chang-yuan
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22QIN+Qing-hong%22&amp;f=detail.expert">
+                QIN Qing-hong
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LIAN+Bin%22&amp;f=detail.expert">
+                LIAN Bin
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%ae%8b%e5%bf%97%e6%97%ba%22&amp;f=detail.expert">
+                宋志旺
+              </a>
+              <ul>
+                <h3>
+                  相关机构(12条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e6%96%b9%e5%8c%bb%e7%a7%91%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    南方医科大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e6%96%b9%e5%8c%bb%e7%a7%91%e5%a4%a7%e5%ad%a6%e5%9f%ba%e5%9b%a0%e5%b7%a5%e7%a8%8b%e7%a0%94%e7%a9%b6%e6%89%80%2c%e5%b9%bf%e4%b8%9c%2c%e5%b9%bf%e5%b7%9e%2c510515%22&amp;f=detail.agency">
+                    南方医科大学基因工程研究所,广东,广州,510515
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e6%96%b9%e5%8c%bb%e7%a7%91%e5%a4%a7%e5%ad%a6%e5%8d%97%e6%96%b9%e5%8c%bb%e9%99%a2%e5%8f%a3%e8%85%94%e7%a7%91%2c%e5%b9%bf%e4%b8%9c%2c%e5%b9%bf%e5%b7%9e%2c510515%22&amp;f=detail.agency">
+                    南方医科大学南方医院口腔科,广东,广州,510515
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e6%96%b9%e5%8c%bb%e7%a7%91%e5%a4%a7%e5%ad%a6%e5%8d%97%e6%96%b9%e5%8c%bb%e9%99%a2%e6%b3%8c%e5%b0%bf%e5%a4%96%e7%a7%91%2c%e5%b9%bf%e4%b8%9c%2c%e5%b9%bf%e5%b7%9e%2c510515%22&amp;f=detail.agency">
+                    南方医科大学南方医院泌尿外科,广东,广州,510515
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b1%b1%e4%b8%9c%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    山东大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%8e%e4%be%a8%e5%a4%a7%e5%ad%a6%e7%94%9f%e7%89%a9%e5%b7%a5%e7%a8%8b%e4%b8%8e%e6%8a%80%e6%9c%af%e7%b3%bb%2c%e7%a6%8f%e5%bb%ba%2c%e6%b3%89%e5%b7%9e%2c362011%22&amp;f=detail.agency">
+                    华侨大学生物工程与技术系,福建,泉州,362011
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b5%99%e6%b1%9f%e5%a4%a7%e5%ad%a6%e5%8a%a8%e7%89%a9%e7%a7%91%e5%ad%a6%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    浙江大学动物科学学院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e5%8d%97%e5%86%9c%e4%b8%9a%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    西南农业大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%8a%e6%b5%b7%e4%ba%a4%e9%80%9a%e5%a4%a7%e5%ad%a6%e5%8c%bb%e5%ad%a6%e9%99%a2%e9%99%84%e5%b1%9e%e7%91%9e%e9%87%91%e5%8c%bb%e9%99%a2%e5%a4%96%e7%a7%91%2c%e4%b8%8a%e6%b5%b7%e6%b6%88%e5%8c%96%e5%a4%96%e7%a7%91%e7%a0%94%e7%a9%b6%e6%89%80%2c%e4%b8%8a%e6%b5%b7%2c200025%22&amp;f=detail.agency">
+                    上海交通大学医学院附属瑞金医院外科,上海消化外科研究所,上海,200025
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b9%bf%e8%a5%bf%e5%8c%bb%e7%a7%91%e5%a4%a7%e5%ad%a6%e7%a0%94%e7%a9%b6%e7%94%9f%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e5%ae%81%e5%b8%82%2c530021%22&amp;f=detail.agency">
+                    广西医科大学研究生学院,南宁市,530021
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b9%bf%e8%a5%bf%e5%8c%bb%e7%a7%91%e5%a4%a7%e5%ad%a6%e9%99%84%e5%b1%9e%e8%82%bf%e7%98%a4%e5%8c%bb%e9%99%a2%2c%e5%8d%97%e5%ae%81%e5%b8%82%2c530021%22&amp;f=detail.agency">
+                    广西医科大学附属肿瘤医院,南宁市,530021
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%8b%8f%e5%b7%9e%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    苏州大学
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-gxnyswkx.aspx">
+                广西农业生物科学
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/gxnyswkx/2002-1.aspx">
+                2002年1期
+              </a>
+               &gt; 生物信息学与重复序列分析
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              生物信息学与重复序列分析
+            </h1>
+            <h2>
+              Bioinformatics and analysis of the repeated sequence
+            </h2>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/生物信息学与重复序列分析.aspx?ID=Periodical_gxnyswkx200201014" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_gxnyswkx200201014.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_gxnyswkx200201014" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              介绍了生物信息学的含义、主要内容和研究方法;阐明研究重复序列的重要意义,并对热球菌的重复序列作了分析.
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e9%9f%a6%e8%8a%b3%e8%90%8d%22++DBID%3aWF_QK">
+                  韦芳萍
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e9%99%88%e5%85%89%e6%97%a8%22++DBID%3aWF_QK">
+                  陈光旨
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e6%88%9a%e7%bb%a7%22++DBID%3aWF_QK">
+                  戚继
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                韦芳萍,陈光旨(广西大学,理学院,广西,南宁,530005)
+                <br/>
+                戚继(中科院,理论物理研究所,北京,100080) 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-gxnyswkx.aspx">
+                  广西农业生物科学
+                </a>
+                 
+                <span class="green-border" visible="True">
+                  <span title="被中信所《中国科技期刊引证报告》收录">
+                    ISTIC
+                  </span>
+                  <span title="被北京大学《中文核心期刊要目总览》收录">
+                    PKU
+                  </span>
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-gxnyswkx.aspx">
+                  JOURNAL OF GUANGXI AGRICULTURAL AND BIOLOGICAL SCIENCE
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/gxnyswkx/2002-1.aspx">
+                  2002 21(1)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%94%9f%e7%89%a9%e4%bf%a1%e6%81%af%e5%ad%a6%22++DBID%3aWF_QK">
+                  生物信息学 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%94%9f%e7%89%a9%e4%bf%a1%e6%81%af%e5%ad%a6" title="生物信息学的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9f%ba%e5%9b%a0%22++DBID%3aWF_QK">
+                  基因 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%9f%ba%e5%9b%a0" title="基因的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%95%b0%e6%8d%ae%e5%ba%93%22++DBID%3aWF_QK">
+                  数据库 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%95%b0%e6%8d%ae%e5%ba%93" title="数据库的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%87%8d%e5%a4%8d%e5%ba%8f%e5%88%97%22++DBID%3aWF_QK">
+                  重复序列 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e9%87%8d%e5%a4%8d%e5%ba%8f%e5%88%97" title="重复序列的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%94%9f%e7%89%a9%e4%bf%a1%e6%81%af%e5%ad%a6%22++DBID%3aWF_QK">
+                  生物信息学
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%87%8d%e5%a4%8d%e5%ba%8f%e5%88%97%22++DBID%3aWF_QK">
+                  重复序列
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%90%83%e8%8f%8c%22++DBID%3aWF_QK">
+                  球菌
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%96%b9%e6%b3%95%22++DBID%3aWF_QK">
+                  方法
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/">
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(10条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1145510.aspx">
+                    IL-18基因单核苷酸多态性生物信息学研究与临床评价
+                  </a>
+                  <span>
+                    2007
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1145510.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_dyjydxxb200902001.aspx">
+                    基于生物信息学的精子特异表达基因的挖掘
+                  </a>
+                  <span>
+                     - 南方医科大学学报2009,29(2)
+                  </span>
+                  <a href="/Service/File/download/Periodical_dyjydxxb200902001.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y2331443.aspx">
+                    结合生物信息学及生物学实验筛选并鉴定前列腺癌转移抑制基因的研究
+                  </a>
+                  <span>
+                    2013
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y2331443.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_swxxx200404006.aspx">
+                    用生物信息学软件分析风信子HPI1基因及其产物蛋白
+                  </a>
+                  <span>
+                     - 生物信息学2004,2(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_swxxx200404006.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y674904.aspx">
+                    蜜蜂（Apis mellifera）ant基因和vha16基因的克隆及其功能预测的生物信息学研究
+                  </a>
+                  <span>
+                    2004
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y674904.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y608328.aspx">
+                    S-受体激酶信号传导元件THL2和MOD编码基因的克隆测序及生物信息学初探
+                  </a>
+                  <span>
+                    2004
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y608328.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_wkllysj200606015.aspx">
+                    胃癌中IRX1基因的表达及生物信息学功能预测
+                  </a>
+                  <span>
+                     - 外科理论与实践2006,11(6)
+                  </span>
+                  <a href="/Service/File/download/Periodical_wkllysj200606015.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y2406034.aspx">
+                    基于生物信息学技术筛选慢性乙型肝炎血液相关基因的研究
+                  </a>
+                  <span>
+                    2013
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y2406034.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_gxyx201301007.aspx">
+                    生物信息学方法筛选乳腺癌关键基因初探
+                  </a>
+                  <span>
+                     - 广西医学2013,35(1)
+                  </span>
+                  <a href="/Service/File/download/Periodical_gxyx201301007.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y2121623.aspx">
+                    应用生物信息学技术探讨P53基因第72号密码子、XRCC1基因第399号密码子多态性与脑胶质瘤易感性的关系
+                  </a>
+                  <span>
+                    2012
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y2121623.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_gxnyswkx200201014' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_9.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

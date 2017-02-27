@@ -1,0 +1,3 @@
+从计算机病毒肆虐谈计算机安全教育  A Probe into Computer Security Education from Outbreak of Computer Virus
+              针对当前计算机不安全因素的急剧增多和计算机安全教育的滞后现状,提出了适应时代需要的计算机安全教育框架.
+            

@@ -1,0 +1,3 @@
+基于CDAN技术与BP算法的棉花病虫害入侵检测-预报系统模型  The model of cotton intrusion detection system based on the CDAN technology and BP algorithm
+              为了提高棉花生产的信息化和棉花病虫害预报的效率与智能性,针对棉花病虫害入侵产生因素的多维性,对棉花叶面信息表现的时序、棉花叶面的状态在时间和空间域中表现出的紧密相关性进行了分析,把人工神经网中的BP神经网络算法和信息安全领域中的入侵检测技术CDAN引进来,构造成基于CDAN技术与BP神经网络的棉花病虫入侵检测一预报系统.
+            

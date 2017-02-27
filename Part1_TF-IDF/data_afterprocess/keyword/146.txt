@@ -1,0 +1,1 @@
+红外辐射特征    K均值    局部最优    infrared radiation characteristics    K-means    local optimization   

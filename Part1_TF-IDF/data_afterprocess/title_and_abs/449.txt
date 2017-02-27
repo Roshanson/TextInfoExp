@@ -1,0 +1,3 @@
+IPv6组播的流媒体传输原理及应用研究  Research on the Rinciples and Applications of Streaming Based on IPv6 Multicast Technology
+              本文主要对IPv6组播技术的流媒体传输原理和应用进行研究.结合军事指控系统对于视频等流媒体传输高质量低延时等要求,分析并介绍了IPv6组播技术中的QoS以及流标签原理应用及特点,为IPv6组播技术在流媒体传输应用研究方面提供经验.
+            

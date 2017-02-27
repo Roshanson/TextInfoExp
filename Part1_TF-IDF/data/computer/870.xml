@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  国内应届高校毕业生网络求职行为研究
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Thesis.aspx?ID=Thesis_Y1671857" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3NjkzMjA0MzJkZKKxh/AscG2ISDUAcrB9sli6vKjo"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(13)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e8%8b%b1%22&amp;f=detail.expert">
+                陈英
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%83%a1%e7%bb%aa%22&amp;f=detail.expert">
+                胡绪
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%90%91%e6%9c%ac%e7%a7%91%22&amp;f=detail.expert">
+                向本科
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%bc%8d%e6%b2%bb%e5%b9%b3%22&amp;f=detail.expert">
+                伍治平
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%a2%81%e5%ba%86%e5%ae%8f%22&amp;f=detail.expert">
+                袁庆宏
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e6%98%8c%e8%8b%b9%22&amp;f=detail.expert">
+                刘昌苹
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%8b%97%e7%9b%8a%e8%90%8d%22&amp;f=detail.expert">
+                苗益萍
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e5%9f%b9%e5%9f%b9%22&amp;f=detail.expert">
+                刘培培
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%90%b4%e6%95%8f%e4%bd%b3%22&amp;f=detail.expert">
+                吴敏佳
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e8%90%8c%22&amp;f=detail.expert">
+                李萌
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%b8%a5%e6%98%8a%e5%a4%a9%22&amp;f=detail.expert">
+                严昊天
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e5%ae%81%22&amp;f=detail.expert">
+                李宁
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9b%be%e5%87%a4%e5%a9%b5%22&amp;f=detail.expert">
+                曾凤婵
+              </a>
+              <ul>
+                <h3>
+                  相关机构(6条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e5%8d%97%e5%a4%a7%e5%ad%a6%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%b8%8e%e4%bf%a1%e6%81%af%e7%a7%91%e5%ad%a6%e5%ad%a6%e9%99%a2%2c%e9%87%8d%e5%ba%86%2c400715%22&amp;f=detail.agency">
+                    西南大学计算机与信息科学学院,重庆,400715
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%9b%9b%e5%b7%9d%e8%81%8c%e4%b8%9a%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%2c%e5%9b%9b%e5%b7%9d%e9%81%82%e5%ae%81%2c629000%22&amp;f=detail.agency">
+                    四川职业技术学院,四川遂宁,629000
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e5%bc%80%e5%a4%a7%e5%ad%a6%e5%95%86%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    南开大学商学院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e4%ba%ac%e8%88%aa%e7%a9%ba%e8%88%aa%e5%a4%a9%e5%a4%a7%e5%ad%a6%e9%87%91%e5%9f%8e%e5%ad%a6%e9%99%a2%2c%e6%b1%9f%e8%8b%8f+%e5%8d%97%e4%ba%ac%2c211156%22&amp;f=detail.agency">
+                    南京航空航天大学金城学院,江苏 南京,211156
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%bb%84%e5%86%88%e8%81%8c%e4%b8%9a%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    黄冈职业技术学院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8c%97%e4%ba%ac%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    北京师范大学
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt;  
+              <a href="/C/Thesis.aspx">
+                学位论文
+              </a>
+               &gt; 
+    
+              <a href="/S/Paper.aspx?q=%e4%b8%93%e4%b8%9a%3a%22%e6%83%85%e6%8a%a5%e5%ad%a6%22">
+                情报学
+              </a>
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              国内应届高校毕业生网络求职行为研究
+            </h1>
+            <p class="title-height">
+            </p>
+            <p id="ctl00_LeftContentPlaceHolder_fulltext">
+              <!--按章节浏览-->              <!--打包下载-->              <!--查看全文-->              <a class="seeft" href="/Service/File/view/国内应届高校毕业生网络求职行为研究.aspx?ID=Thesis_Y1671857">
+              </a>
+              <!--下载全文-->              <a class="downloadft" href="/Service/File/download/Thesis_Y1671857.aspx">
+              </a>
+            </p>
+            <p>
+              <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Thesis_Y1671857" class="export">
+              </a>
+            </p>
+            <p id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </p>
+            <p class="abstracts">
+              本文以应届高校毕业生为研究对象，对其网络求职行为进行了实证研究。
+              <br/>
+              　　
+ 首先在文献调研、访谈的基础上提出了应届高校毕业生网络求职强度的5个测量维度，结合问卷调查数据，利用统计分析方法，探讨了网络求职强度与网络求职结果的相关关系、不同人口统计学特征的毕业生在网络求职强度和网络求职结果上存在的差异，从而得出以下主要研究结论：
+              <br/>
+              　　
+ ①网络求职强度可以从5个维度进行测量：网络求职时间花费、网络求职频率、电子简历及求职信准备、网络求职广度、笔试/面试准备。
+              <br/>
+              　　
+ ②不同性别、学历层次、英语水平、计算机水平的毕业生网络求职强度和网络求职结果均存在差异，只是差异的大小不同而已。
+              <br/>
+              　　
+ ③网络求职强度各维度与网络求职结果之间存在着显著的相关关系，其中，网络求职时间花费、网络求职频率、电子简历及求职信准备、网络求职广度与获得笔试/面试职位数量正相关；网络求职时间花费、网络求职广度与网投效率相关关系显著；网络求职时间花费、网络求职频率、电子简历及求职信准备与等待笔试/面试时间长短相关；网络求职时间花费、电子简历及求职信准备、网络求职广度与获得职位录用数量正相关；笔试/面试准备强度与获得职位录用数量显著相关。本文提出了6点针对正在求职的毕业生和在校大学生的网络求职建议。
+            </p>
+            <dl id="perildical2_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e9%99%88%e5%a8%9f%22++DBID%3aWF_XW">
+                  陈娟
+                </a>
+                 
+              </dd>
+              <dt>
+                学科专业：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=AuthorSubject+%3a+%e6%83%85%e6%8a%a5%e5%ad%a6++DBID%3aWF_XW">
+                  情报学
+                </a>
+                 
+              </dd>
+              <dt>
+                授予学位：
+              </dt>
+              <dd>
+                硕士 
+              </dd>
+              <dt>
+                学位授予单位：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=School+%3a+%e8%a5%bf%e5%8d%97%e5%a4%a7%e5%ad%a6++DBID%3aWF_XW">
+                  西南大学
+                </a>
+                 
+              </dd>
+              <dt>
+                导师姓名：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=Teacher+%3a+%e9%83%91%e5%ae%8f++DBID%3aWF_XW">
+                  郑宏
+                </a>
+                 
+              </dd>
+              <dt>
+                学位年度：
+              </dt>
+              <dd>
+                2010 
+              </dd>
+              <dt>
+                研究方向：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                语 种：
+              </dt>
+              <dd>
+                chi 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                G645.5  TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%ab%98%e6%a0%a1%e6%af%95%e4%b8%9a%e7%94%9f%22++DBID%3aWF_XW">
+                  高校毕业生
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e9%ab%98%e6%a0%a1%e6%af%95%e4%b8%9a%e7%94%9f" title="高校毕业生的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e6%b1%82%e8%81%8c%22++DBID%3aWF_XW">
+                  网络求职
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%bd%91%e7%bb%9c%e6%b1%82%e8%81%8c" title="网络求职的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b1%82%e8%81%8c%e8%a1%8c%e4%b8%ba%22++DBID%3aWF_XW">
+                  求职行为
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%b1%82%e8%81%8c%e8%a1%8c%e4%b8%ba" title="求职行为的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e6%8a%95%e6%95%88%e7%8e%87%22++DBID%3aWF_XW">
+                  网投效率
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%bd%91%e6%8a%95%e6%95%88%e7%8e%87" title="网投效率的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%af%95%e4%b8%9a%e7%94%9f%22++DBID%3aWF_XW">
+                  毕业生
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e6%b1%82%e8%81%8c%22++DBID%3aWF_XW">
+                  网络求职
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%bc%ba%e5%ba%a6%22++DBID%3aWF_XW">
+                  强度
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b1%82%e8%81%8c%e4%bf%a1%22++DBID%3aWF_XW">
+                  求职信
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%9b%b8%e5%85%b3%e5%85%b3%e7%b3%bb%22++DBID%3aWF_XW">
+                  相关关系
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%9d%a2%e8%af%95%e5%87%86%e5%a4%87%22++DBID%3aWF_XW">
+                  面试准备
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%ae%80%e5%8e%86%22++DBID%3aWF_XW">
+                  简历
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%94%b5%e5%ad%90%22++DBID%3aWF_XW">
+                  电子
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%ac%94%e8%af%95%22++DBID%3aWF_XW">
+                  笔试
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ae%9e%e8%af%81%e7%a0%94%e7%a9%b6%22++DBID%3aWF_XW">
+                  实证研究
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b1%82%e8%81%8c%e8%a1%8c%e4%b8%ba%22++DBID%3aWF_XW">
+                  求职行为
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%a2%91%e7%8e%87%22++DBID%3aWF_XW">
+                  频率
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9c%a8%e6%a0%a1%e5%a4%a7%e5%ad%a6%e7%94%9f%22++DBID%3aWF_XW">
+                  在校大学生
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%8b%b1%e8%af%ad%e6%b0%b4%e5%b9%b3%22++DBID%3aWF_XW">
+                  英语水平
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%a0%94%e7%a9%b6%e5%af%b9%e8%b1%a1%22++DBID%3aWF_XW">
+                  研究对象
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ad%a6%e5%8e%86%e5%b1%82%e6%ac%a1%22++DBID%3aWF_XW">
+                  学历层次
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%96%87%e7%8c%ae%e8%b0%83%e7%a0%94%22++DBID%3aWF_XW">
+                  文献调研
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%ba%ba%e5%8f%a3%e7%bb%9f%e8%ae%a1%22++DBID%3aWF_XW">
+                  人口统计
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%bd%95%e7%94%a8%22++DBID%3aWF_XW">
+                  录用
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%88%a9%e7%94%a8%e7%bb%9f%e8%ae%a1%22++DBID%3aWF_XW">
+                  利用统计
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(6条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_xnnydxxb-shkx201207053.aspx">
+                    高校学生网络求职安全意识及其培养
+                  </a>
+                  <span>
+                     - 西南农业大学学报：社会科学版2012,10(7)
+                  </span>
+                  <a href="/Service/File/download/Periodical_xnnydxxb-shkx201207053.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_gxjyyj200906170.aspx">
+                    高校毕业生网络求职初探
+                  </a>
+                  <span>
+                     - 世界华商经济年鉴·高校教育研究2009(6)
+                  </span>
+                  <a href="/Service/File/download/Periodical_gxjyyj200906170.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_xzqykj200921260.aspx">
+                    国内外网络招聘行业现状分析——兼论我国高校毕业生网络求职概况
+                  </a>
+                  <span>
+                     - 中小企业管理与科技2009(21)
+                  </span>
+                  <a href="/Service/File/download/Periodical_xzqykj200921260.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_qnyshh201412039.aspx">
+                    大学生网络求职调查分析
+                  </a>
+                  <span>
+                     - 青年与社会2014(12)
+                  </span>
+                  <a href="/Service/File/download/Periodical_qnyshh201412039.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_zgqgjy200801037.aspx">
+                    浅议大学生网络求职与招聘
+                  </a>
+                  <span>
+                     - 中国轻工教育2008(1)
+                  </span>
+                  <a href="/Service/File/download/Periodical_zgqgjy200801037.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1771749.aspx">
+                    个体特征、求职渠道与大学生就业
+                  </a>
+                  <span>
+                    2010
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1771749.aspx" style="display:none" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Thesis_Y1671857' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C2DFB57C"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL6l6SgDQL+yqGTDgLNsI6nCxf0Odt44GD82o8PpTcTt8KeqUZc"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+AutoCAD中首尾相连线段转换为多段线方法的研究  Research on Methods of End-To-End Line Segment to Poly-line in AutoCAD
+              基于Visual C#语言及ActiveX Automation技术,研究AutoCAD中首尾相连线段转换为多段线的方法.首先读取首尾相连线段集的端点,然后将读取到的端点即多段线的节点存入数组中,最后调用ActiveX Automation中现有的函数生成多段线.实验证明该方法能够成功地将多组首尾相连线段转换成一条或几条多段线,比AutoCAD中PE命令简单方便,且具有更好的执行效率.
+            

@@ -1,0 +1,3 @@
+基于项目化教学的键盘接口技术教学设计与实现  ON THE TEACHING DESIGN AND IMPLEMENTATION OF KEYBOARD INTERFACE TECHNOLOGY BASED ON PROJECT TECHING
+              单片机应用系统经常需要与外部设备数据通信，键盘作为单片机应用系统中常用必备的输入设备，有很强的通用性。本文采用项目化教学方案设计，从独立式按键设计、一键多功能按键设计、矩阵式按键设计以及中断矩阵式按键设计四个方面开展键盘接口技术的教学设计与实现，以便让学生可以较轻松容易的掌握键盘接口技术，以达到良好的教学效果。
+            

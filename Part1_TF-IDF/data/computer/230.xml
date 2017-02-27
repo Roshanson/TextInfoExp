@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  《计算机网络基础》课程教学改革研究与实践  "Computer Network Basis"Teaching Reform and Practice
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_jsjgprjyyy201010145" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(8)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e6%99%93%e6%98%8e%22&amp;f=detail.expert">
+                陈晓明
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%a9%ac%e5%9b%bd%e6%b3%b0%22&amp;f=detail.expert">
+                马国泰
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%bd%97%e6%99%93%e4%b8%9c%22&amp;f=detail.expert">
+                罗晓东
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%bd%97%e4%b8%b9%22&amp;f=detail.expert">
+                罗丹
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%86%af%e7%a3%8a%22&amp;f=detail.expert">
+                冯磊
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e5%a8%9f%22&amp;f=detail.expert">
+                陈娟
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%91%9b%e6%96%87%e8%8a%b9%22&amp;f=detail.expert">
+                葛文芹
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%b0%a2%e5%8d%ab%e4%b8%9c%22&amp;f=detail.expert">
+                谢卫东
+              </a>
+              <ul>
+                <h3>
+                  相关机构(6条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%bb%94%e4%b8%9c%e5%8d%97%e6%b0%91%e6%97%8f%e8%81%8c%e4%b8%9a%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%2c%e8%b4%b5%e5%b7%9e%e5%87%af%e9%87%8c%2c556000%22&amp;f=detail.agency">
+                    黔东南民族职业技术学院,贵州凯里,556000
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%96%b0%e7%96%86%e5%86%9c%e4%b8%9a%e8%81%8c%e4%b8%9a%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    新疆农业职业技术学院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%96%b0%e7%96%86%e5%86%9c%e4%b8%9a%e8%81%8c%e4%b8%9a%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%e4%bf%a1%e6%81%af%e6%8a%80%e6%9c%af%e5%88%86%e9%99%a2%22&amp;f=detail.agency">
+                    新疆农业职业技术学院信息技术分院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%ab%98%e7%a2%91%e5%ba%97%e5%b8%82%e8%81%8c%e6%95%99%e4%b8%ad%e5%bf%83%22&amp;f=detail.agency">
+                    高碑店市职教中心
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%87%8d%e5%ba%86%e5%b8%82%e7%ab%8b%e4%bf%a1%e8%81%8c%e4%b8%9a%e6%95%99%e8%82%b2%e4%b8%ad%e5%bf%83%2c%e9%87%8d%e5%ba%86%2c400036%22&amp;f=detail.agency">
+                    重庆市立信职业教育中心,重庆,400036
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b1%9f%e8%8b%8f%e7%9c%81%e6%83%a0%e5%b1%b1%e8%81%8c%e6%95%99%e4%b8%ad%e5%bf%83%e6%a0%a1%22&amp;f=detail.agency">
+                    江苏省惠山职教中心校
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-jsjgprjyyy.aspx">
+                计算机光盘软件与应用
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/jsjgprjyyy/2010-10.aspx">
+                2010年10期
+              </a>
+               &gt; 《计算机网络基础》课程教学改革研究与实践
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              《计算机网络基础》课程教学改革研究与实践
+            </h1>
+            <h2>
+              "Computer Network Basis"Teaching Reform and Practice
+            </h2>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/《计算机网络基础》课程教学改革研究与实践.aspx?ID=Periodical_jsjgprjyyy201010145" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_jsjgprjyyy201010145.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_jsjgprjyyy201010145" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              本文描述了计算机网络基础课程基于工学结合、行到导向的改革思路与课程教学目标,通过广泛调研,围绕完成课程任务所需的知识、能力和素质要求对教学内容进行选取.教学组织与安排主要体现以学生为中心的教学设计等培养的学生在企业中能很快发挥作用.
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e9%a9%ac%e5%9b%bd%e6%b3%b0%22++DBID%3aWF_QK">
+                  马国泰
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22Ma+Guotai%22++DBID%3aWF_QK">
+                  Ma Guotai
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                新疆农业职业技术学院,新疆昌吉,831100 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-jsjgprjyyy.aspx">
+                  计算机光盘软件与应用
+                </a>
+                 
+                <span class="green-border" visible="False">
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-jsjgprjyyy.aspx">
+                  COMPUTER CD SOFTWARE AND APPLICATIONS
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/jsjgprjyyy/2010-10.aspx">
+                  2010 (10)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-0 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e5%9f%ba%e7%a1%80%22++DBID%3aWF_QK">
+                  计算机网络基础 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e5%9f%ba%e7%a1%80" title="计算机网络基础的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%a1%8c%e5%8a%a8%e5%af%bc%e5%90%91%22++DBID%3aWF_QK">
+                  行动导向 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%a1%8c%e5%8a%a8%e5%af%bc%e5%90%91" title="行动导向的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bb%bb%e5%8a%a1%e9%a9%b1%e5%8a%a8%22++DBID%3aWF_QK">
+                  任务驱动 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e4%bb%bb%e5%8a%a1%e9%a9%b1%e5%8a%a8" title="任务驱动的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                G71  U65 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%22++DBID%3aWF_QK">
+                  计算机网络
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e5%9f%ba%e7%a1%80%22++DBID%3aWF_QK">
+                  网络基础
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%af%be%e7%a8%8b%e6%95%99%e5%ad%a6%e7%9b%ae%e6%a0%87%22++DBID%3aWF_QK">
+                  课程教学目标
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%94%b9%e9%9d%a9%e7%a0%94%e7%a9%b6%22++DBID%3aWF_QK">
+                  改革研究
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ae%9e%e8%b7%b5%22++DBID%3aWF_QK">
+                  实践
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22Basis%22++DBID%3aWF_QK">
+                  Basis
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22Network%22++DBID%3aWF_QK">
+                  Network
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22Practice%22++DBID%3aWF_QK">
+                  Practice
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22Reform%22++DBID%3aWF_QK">
+                  Reform
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bb%a5%e5%ad%a6%e7%94%9f%e4%b8%ba%e4%b8%ad%e5%bf%83%22++DBID%3aWF_QK">
+                  以学生为中心
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%b4%a0%e8%b4%a8%e8%a6%81%e6%b1%82%22++DBID%3aWF_QK">
+                  素质要求
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%95%99%e5%ad%a6%e7%bb%84%e7%bb%87%22++DBID%3aWF_QK">
+                  教学组织
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%95%99%e5%ad%a6%e8%ae%be%e8%ae%a1%22++DBID%3aWF_QK">
+                  教学设计
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%95%99%e5%ad%a6%e5%86%85%e5%ae%b9%22++DBID%3aWF_QK">
+                  教学内容
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9f%ba%e7%a1%80%e8%af%be%e7%a8%8b%22++DBID%3aWF_QK">
+                  基础课程
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%b7%a5%e5%ad%a6%e7%bb%93%e5%90%88%22++DBID%3aWF_QK">
+                  工学结合
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%94%b9%e9%9d%a9%e6%80%9d%e8%b7%af%22++DBID%3aWF_QK">
+                  改革思路
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8f%91%e6%8c%a5%e4%bd%9c%e7%94%a8%22++DBID%3aWF_QK">
+                  发挥作用
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%9f%a5%e8%af%86%22++DBID%3aWF_QK">
+                  知识
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bc%81%e4%b8%9a%22++DBID%3aWF_QK">
+                  企业
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/">
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(5条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_hbydjs201303085.aspx">
+                    行动导向教学在《计算机网络基础》教学中的应用——组建小型局域网教学设计
+                  </a>
+                  <span>
+                     - 信息通信2013(3)
+                  </span>
+                  <a href="/Service/File/download/Periodical_hbydjs201303085.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_gdzyjy201012020.aspx">
+                    《计算机网络基础》课程教学改革研究与实践
+                  </a>
+                  <span>
+                     - 幸福生活指南·高等职业教育2010(12)
+                  </span>
+                  <a href="/Service/File/download/Periodical_gdzyjy201012020.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_tjygl201304093.aspx">
+                    基于行动导向《计算机网络基础》课程教学方法探索
+                  </a>
+                  <span>
+                     - 统计与管理2013(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_tjygl201304093.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_gyhxxhjy201307016.aspx">
+                    基于行动导向的“计算机网络基础”课程教学方法初探
+                  </a>
+                  <span>
+                     - 工业和信息化教育2013(7)
+                  </span>
+                  <a href="/Service/File/download/Periodical_gyhxxhjy201307016.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jxzyjy200806027.aspx">
+                    行动导向教学模式在网络基础课上的应用
+                  </a>
+                  <span>
+                     - 机械职业教育2008(6)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jxzyjy200806027.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_jsjgprjyyy201010145' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /><img src="Images/NUM_4.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

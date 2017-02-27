@@ -1,0 +1,3 @@
+集散控制手自动操作站的仿真  The Imitation of Manual Acting and Automatic Operation Station with Concentrated and Dispersive Controlling
+              基于仿真支撑平台的DCS手自动操作控制算法的仿真过程及步骤,阐述了此算法在仿真机开发中的应用方法.仿真支撑系统的内核主要有模型数据库,算法数据库,模型的执行与调度,进程、线程的管理与调度等部分构成.
+            

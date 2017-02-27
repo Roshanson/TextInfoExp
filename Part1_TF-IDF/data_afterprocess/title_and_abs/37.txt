@@ -1,0 +1,3 @@
+计量标准测量过程的统计控制的应用  Applications of statistical control in measurement process based on measurement standards
+              依据JJF1033—2008（计量标准考核规范》的考核已经更加科学规范化，计量标准的测量过程统计控制得到推广和应用，笔者主要介绍金堆域钼业公司计量标准测量过程控制实例应用，控制的特点及如何利用控制达到质量要求，该方法证明能满足控制的实际要求。
+            

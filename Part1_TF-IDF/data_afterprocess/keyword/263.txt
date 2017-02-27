@@ -1,0 +1,1 @@
+P2P流媒体    节点选择    直觉模糊集    得分函数    P2P streaming media    Node selection    Intuitionistic fuzzy sets    Scoring function   

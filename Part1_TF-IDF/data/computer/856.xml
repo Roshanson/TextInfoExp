@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  传统·现代·亲和力——网络游戏《诛仙》艺术设计中的民族文化研究
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Thesis.aspx?ID=Thesis_Y1369338" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3NjkzMjA0MzJkZKKxh/AscG2ISDUAcrB9sli6vKjo"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(7)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e8%b4%ba%e5%86%9b%22&amp;f=detail.expert">
+                张贺军
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e8%83%9c%e6%9e%9d%22&amp;f=detail.expert">
+                刘胜枝
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e8%92%99%22&amp;f=detail.expert">
+                张蒙
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e5%8a%9b%e5%a8%9f%22&amp;f=detail.expert">
+                张力娟
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%ad%99%e5%81%a5%22&amp;f=detail.expert">
+                孙健
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%98%bf%e8%b4%b5%22&amp;f=detail.expert">
+                阿贵
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e4%bc%9f%e5%b9%b3%22&amp;f=detail.expert">
+                王伟平
+              </a>
+              <ul>
+                <h3>
+                  相关机构(7条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8c%97%e4%ba%ac%e9%82%ae%e7%94%b5%e5%a4%a7%e5%ad%a6%e4%ba%ba%e6%96%87%e5%ad%a6%e9%99%a2%2c%e5%8c%97%e4%ba%ac%2c100876%22&amp;f=detail.agency">
+                    北京邮电大学人文学院,北京,100876
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e7%bd%91%e7%bb%9c%e7%b3%bb%e7%bb%9f%e4%b8%8e%e7%bd%91%e7%bb%9c%e6%96%87%e5%8c%96%e5%8c%97%e4%ba%ac%e5%b8%82%e9%87%8d%e7%82%b9%e5%ae%9e%e9%aa%8c%e5%ae%a4%e5%8c%97%e4%ba%ac%e9%82%ae%e7%94%b5%e5%a4%a7%e5%ad%a6%2c%e5%8c%97%e4%ba%ac%2c100876%22&amp;f=detail.agency">
+                    网络系统与网络文化北京市重点实验室北京邮电大学,北京,100876
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8c%97%e4%ba%ac%e9%82%ae%e7%94%b5%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    北京邮电大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%83%91%e5%b7%9e%e5%b8%88%e8%8c%83%e5%ad%a6%e9%99%a2%e9%9f%b3%e4%b9%90%e7%b3%bb%22&amp;f=detail.agency">
+                    郑州师范学院音乐系
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%9c%e5%8c%97%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    东北师范大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8c%97%e4%ba%ac%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    北京大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b1%b1%e4%b8%9c%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    山东师范大学
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt;  
+              <a href="/C/Thesis.aspx">
+                学位论文
+              </a>
+               &gt; 
+    
+              <a href="/S/Paper.aspx?q=%e4%b8%93%e4%b8%9a%3a%22%e5%b9%bf%e6%92%ad%e7%94%b5%e8%a7%86%e8%89%ba%e6%9c%af%e5%ad%a6%22">
+                广播电视艺术学
+              </a>
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              传统·现代·亲和力——网络游戏《诛仙》艺术设计中的民族文化研究
+            </h1>
+            <p class="title-height">
+            </p>
+            <p id="ctl00_LeftContentPlaceHolder_fulltext">
+              <!--按章节浏览-->              <!--打包下载-->              <!--查看全文-->              <a class="seeft" href="/Service/File/view/传统·现代·亲和力——网络游戏《诛仙》艺术设计中的民族文化研究.aspx?ID=Thesis_Y1369338">
+              </a>
+              <!--下载全文-->              <a class="downloadft" href="/Service/File/download/Thesis_Y1369338.aspx">
+              </a>
+            </p>
+            <p>
+              <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Thesis_Y1369338" class="export">
+              </a>
+            </p>
+            <p id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </p>
+            <p class="abstracts">
+              近年来，由于世界网络游戏产业的迅速发展，为相关产业带来了巨大的经济效益。
+    本论文以国内网络游戏的经典之作《诛仙》为例，对我国网络游戏艺术设计及相关美学风格进行了深入剖析，提出了自己独到的看法和见解。第一章绪论中对网络游戏的基本知识、相关概念、国内外研究发展概况和其自身特点做了一些介绍，结合我国目前成功运营的网络游戏《诛仙》的艺术设计风格，对国内外相关网络游戏做了一些比较论证。第二章至第四章主要针对《诛仙》的角色、场景和布局进行了详细系统的论证，并对影响其设计风格相关的道具、服饰和音乐等进行了综合分析。第五章通过对《诛仙》艺术设计的思考，提出了笔者自己对中国正在蓬勃发展的网络游戏产业的一些新思路。
+    本论文通过对《诛仙》3D网络游戏艺术设计的风格研究，紧扣我国当前网络游戏市场开发的现实，从网络游戏的设计开发、民族风格和政策机制三个方面提出了相应的改革方案。尤其难能可贵的是，作者结合自己毕业设计创作的《炎黄》网络游戏的艺术设计，开创性地提出了网络游戏中的亲和力思想，值得业内人士参考。
+
+            </p>
+            <dl id="perildical2_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e9%bb%84%e5%85%83%e7%a6%8f%22++DBID%3aWF_XW">
+                  黄元福
+                </a>
+                 
+              </dd>
+              <dt>
+                学科专业：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=AuthorSubject+%3a+%e5%b9%bf%e6%92%ad%e7%94%b5%e8%a7%86%e8%89%ba%e6%9c%af%e5%ad%a6++DBID%3aWF_XW">
+                  广播电视艺术学
+                </a>
+                 
+              </dd>
+              <dt>
+                授予学位：
+              </dt>
+              <dd>
+                硕士 
+              </dd>
+              <dt>
+                学位授予单位：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=School+%3a+%e4%b8%8a%e6%b5%b7%e5%a4%a7%e5%ad%a6++DBID%3aWF_XW">
+                  上海大学
+                </a>
+                 
+              </dd>
+              <dt>
+                导师姓名：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=Teacher+%3a+%e5%bc%a0%e5%86%9b++DBID%3aWF_XW">
+                  张军
+                </a>
+                 
+              </dd>
+              <dt>
+                学位年度：
+              </dt>
+              <dd>
+                2008 
+              </dd>
+              <dt>
+                研究方向：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                语 种：
+              </dt>
+              <dd>
+                chi 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-05  J904  G899 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e6%b8%b8%e6%88%8f%22++DBID%3aWF_XW">
+                  网络游戏
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%bd%91%e7%bb%9c%e6%b8%b8%e6%88%8f" title="网络游戏的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e3%80%8a%e8%af%9b%e4%bb%99%e3%80%8b%22++DBID%3aWF_XW">
+                  《诛仙》
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e3%80%8a%e8%af%9b%e4%bb%99%e3%80%8b" title="《诛仙》的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%89%ba%e6%9c%af%e8%ae%be%e8%ae%a1%22++DBID%3aWF_XW">
+                  艺术设计
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%89%ba%e6%9c%af%e8%ae%be%e8%ae%a1" title="艺术设计的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b0%91%e6%97%8f%e6%96%87%e5%8c%96%22++DBID%3aWF_XW">
+                  民族文化
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%b0%91%e6%97%8f%e6%96%87%e5%8c%96" title="民族文化的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%ba%b2%e5%92%8c%e5%8a%9b%22++DBID%3aWF_XW">
+                  亲和力
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e6%b8%b8%e6%88%8f%22++DBID%3aWF_XW">
+                  网络游戏
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b8%b8%e6%88%8f%e8%89%ba%e6%9c%af%e8%ae%be%e8%ae%a1%22++DBID%3aWF_XW">
+                  游戏艺术设计
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b0%91%e6%97%8f%e9%a3%8e%e6%a0%bc%22++DBID%3aWF_XW">
+                  民族风格
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%ae%be%e8%ae%a1%e9%a3%8e%e6%a0%bc%22++DBID%3aWF_XW">
+                  设计风格
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b8%b8%e6%88%8f%e4%ba%a7%e4%b8%9a%22++DBID%3aWF_XW">
+                  游戏产业
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bb%bc%e5%90%88%e5%88%86%e6%9e%90%22++DBID%3aWF_XW">
+                  综合分析
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%87%aa%e8%ba%ab%e7%89%b9%e7%82%b9%22++DBID%3aWF_XW">
+                  自身特点
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%94%bf%e7%ad%96%e6%9c%ba%e5%88%b6%22++DBID%3aWF_XW">
+                  政策机制
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%9b%b8%e5%85%b3%e6%a6%82%e5%bf%b5%22++DBID%3aWF_XW">
+                  相关概念
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%b8%82%e5%9c%ba%e5%bc%80%e5%8f%91%22++DBID%3aWF_XW">
+                  市场开发
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%ae%be%e8%ae%a1%e5%bc%80%e5%8f%91%22++DBID%3aWF_XW">
+                  设计开发
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%ae%be%e8%ae%a1%e5%88%9b%e4%bd%9c%22++DBID%3aWF_XW">
+                  设计创作
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%be%8e%e5%ad%a6%e9%a3%8e%e6%a0%bc%22++DBID%3aWF_XW">
+                  美学风格
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%af%94%e8%be%83%e8%ae%ba%e8%af%81%22++DBID%3aWF_XW">
+                  比较论证
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%ae%ba%e6%96%87%22++DBID%3aWF_XW">
+                  论文
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bb%8f%e6%b5%8e%e6%95%88%e7%9b%8a%22++DBID%3aWF_XW">
+                  经济效益
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bb%93%e5%90%88%22++DBID%3aWF_XW">
+                  结合
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9f%ba%e6%9c%ac%e7%9f%a5%e8%af%86%22++DBID%3aWF_XW">
+                  基本知识
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%94%b9%e9%9d%a9%e6%96%b9%e6%a1%88%22++DBID%3aWF_XW">
+                  改革方案
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(9条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_bjyddxxb-shkxb201201006.aspx">
+                    从人物角色看网络游戏对小说文学性的消解——以小说《诛仙》及其同名网络游戏为例
+                  </a>
+                  <span>
+                     - 北京邮电大学学报：社会科学版2012,14(1)
+                  </span>
+                  <a href="/Service/File/download/Periodical_bjyddxxb-shkxb201201006.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_dnm201202118.aspx">
+                    五年相伴，我的《诛仙》我的梦
+                  </a>
+                  <span>
+                     - 电脑迷2012(2)
+                  </span>
+                  <a href="/Service/File/download/Periodical_dnm201202118.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y2288421.aspx">
+                    网络游戏改编对小说文学性的消解——以网络游戏《诛仙》为例
+                  </a>
+                  <span>
+                    2012
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y2288421.aspx" style="display:none" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_yspl201010006.aspx">
+                    从《诛仙2》看中国网络游戏原创音乐现状
+                  </a>
+                  <span>
+                     - 艺术评论2010(10)
+                  </span>
+                  <a href="/Service/File/download/Periodical_yspl201010006.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1805720.aspx">
+                    从《诛仙2》看网络游戏中的人际交往
+                  </a>
+                  <span>
+                    2010
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1805720.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_sztx200811046.aspx">
+                    网络游戏 神剑诛仙 初级攻略指引
+                  </a>
+                  <span>
+                     - 数字通信2008(11)
+                  </span>
+                  <a href="/Service/File/download/Periodical_sztx200811046.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y9034743.aspx">
+                    中、西方奇幻题材网络游戏中的文化要素对比研究——以《魔兽世界》与《诛仙》为例
+                  </a>
+                  <span>
+                    2008
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y9034743.aspx" style="display:none" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_dnzsyjs200706066.aspx">
+                    完美时空公司副总裁专访:龙跃四海尽《武林》,凤舞九霄皆《诛仙》——《完美世界》
+                  </a>
+                  <span>
+                     - 电脑知识与技术（经验技巧）2007(6)
+                  </span>
+                  <a href="/Service/File/download/Periodical_dnzsyjs200706066.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D210778.aspx">
+                    国产网络游戏现状及问题对策
+                  </a>
+                  <span>
+                    2012
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D210778.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Thesis_Y1369338' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_3.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C2DFB57C"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL6l6SgDQL+yqGTDgLNsI6nCxf0Odt44GD82o8PpTcTt8KeqUZc"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

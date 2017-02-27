@@ -1,0 +1,3 @@
+EPC项目的IT应用管理研究  Research on IT Applications and Management in EPC Project
+              介绍了IT应用和管理在EPC项目中的地位和作用,结合IT应用管理的工作范围,阐述了EPC项目中IT的工作内容及解决方案,重点分析了AD域、数字专线在广域网架构中的实现方法和作用.同时,运用基于数字专线的语音系统,解决和优化EPC项目通讯需求,以达到实现EPC项目信息化的目的.
+            

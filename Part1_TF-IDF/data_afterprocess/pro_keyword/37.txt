@@ -1,0 +1,197 @@
+
+
+                作 者：
+              
+
+
+                  贠芳侠
+                
+
+                  邵坤鹏
+                
+
+                  刘迪
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                陕西华县金堆城钼业股份有限公司陕西渭南714102 
+              
+
+                刊 名：
+              
+
+
+                  电子设计工程
+                
+                 
+                
+
+
+
+                英文刊名：
+              
+
+
+                  Electronic Design Engineering
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2011 19(17)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-0 
+              
+
+                关键词：
+              
+
+
+                  计量标准 
+                
+
+
+                  
+                
+                  测量过程 
+                
+
+
+                  
+                
+                  统计控制 
+                
+
+
+                  
+                
+                  控制图 
+                
+
+
+                  
+                
+                  measurement standards 
+                
+
+
+                  
+                
+                  measurement process 
+                
+
+
+                  
+                
+                  statistical control 
+                
+
+
+                  
+                
+                  control charts 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                TB9  V24 
+              
+
+                机标关键词：
+              
+
+
+                  计量标准
+                
+
+                  测量过程控制
+                
+
+                  过程统计控制
+                
+
+                  based
+                
+
+                  Statistical control
+                
+
+                  application example
+                
+
+                  quality control
+                
+
+                  control method
+                
+
+                  推广和应用
+                
+
+                  科学规范化
+                
+
+                  appraisal
+                
+
+                  质量要求
+                
+
+                  实例应用
+                
+
+                  考核规范
+                
+
+                  证明
+                
+
+                  特点
+                
+
+                  钼业
+                
+
+                  公司
+                
+
+                  方法
+                
+                 
+              
+
+                基金项目：
+              
+
+                 
+              
+
+                DOI：
+              
+
+
+                  10.3969/j.issn.1674-6236.2011.17.031
+                
+                 
+              

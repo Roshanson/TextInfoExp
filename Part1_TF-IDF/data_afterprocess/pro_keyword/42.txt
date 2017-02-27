@@ -1,0 +1,197 @@
+
+
+                作 者：
+              
+
+
+                  焦蕾
+                
+
+                  殷锋社
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                陕西工业职业技术学院,陕西咸阳,712000 
+              
+
+                刊 名：
+              
+
+
+                  电子设计工程
+                
+                 
+                
+
+
+
+                英文刊名：
+              
+
+
+                  Electronic Design Engineering
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2012 20(5)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-05 
+              
+
+                关键词：
+              
+
+
+                  图片检索 
+                
+
+
+                  
+                
+                  搜索引擎 
+                
+
+
+                  
+                
+                  关键技术 
+                
+
+
+                  
+                
+                  总体结构图 
+                
+
+
+                  
+                
+                  image retrieval 
+                
+
+
+                  
+                
+                  search engine 
+                
+
+
+                  
+                
+                  key technology 
+                
+
+
+                  
+                
+                  system structure diagram 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                TP3  G25 
+              
+
+                机标关键词：
+              
+
+
+                  图像搜索引擎
+                
+
+                  搜索引擎检索
+                
+
+                  模式分析
+                
+
+                  search engine
+                
+
+                  image
+                
+
+                  design
+                
+
+                  information extraction
+                
+
+                  图片检索
+                
+
+                  检索模式
+                
+
+                  analysis
+                
+
+                  key technology
+                
+
+                  realization
+                
+
+                  总体结构图
+                
+
+                  structure
+                
+
+                  相关信息
+                
+
+                  提取信息
+                
+
+                  关键技术
+                
+
+                  provided
+                
+
+                  HTML文档
+                
+
+                  Web图片
+                
+                 
+              
+
+                基金项目：
+              
+
+                 
+              
+
+                DOI：
+              
+
+
+                  10.3969/j.issn.1674-6236.2012.05.051
+                
+                 
+              

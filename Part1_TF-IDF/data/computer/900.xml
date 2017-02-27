@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  人格与搜索行为关系之研究——北京大学在校生搜索引擎使用的实证分析
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Thesis.aspx?ID=Thesis_Y9012710" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3NjkzMjA0MzJkZKKxh/AscG2ISDUAcrB9sli6vKjo"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt;  
+              <a href="/C/Thesis.aspx">
+                学位论文
+              </a>
+               &gt; 
+    
+              <a href="/S/Paper.aspx?q=%e4%b8%93%e4%b8%9a%3a%22%e6%83%85%e6%8a%a5%e5%ad%a6%22">
+                情报学
+              </a>
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" id="relblogbtn" value="相关博文"/>
+            </p>
+            <h1>
+              人格与搜索行为关系之研究——北京大学在校生搜索引擎使用的实证分析
+            </h1>
+            <p class="title-height">
+            </p>
+            <p>
+              <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Thesis_Y9012710" class="export">
+              </a>
+            </p>
+            <p id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </p>
+            <p class="abstracts">
+              搜索引擎已经演变为人们生活中不可或缺的信息搜索工具，大量的研究从系统和用户的角度关注如何改进搜索引擎的性能，提高检索结果的相关性。从用户角度出发，信息搜索行为是一个充满不确定性的过程，与用户的个人特质密切相关。人格心理学认为人格是个性心理特征最鲜明的表现，是个体行为的281动因之一。而以往的研究鲜有探讨人格与网络用户搜索行为之间的关系，因此本文试图从人格的角度去分析不同网络用户在信息搜索行为上的差异，进而了解网络用户的搜索行为及其与人格的关系。
+              <br/>
+              　　
+ 此次研究面向北京大学在校生共发放了300份问卷，收回有效问卷281份。每个被访问者均被要求完成大五人格量表(NEO-FFI)和一份有关搜索行为的问卷。通过对收回的数据进行方差分析、相关性分析以及因子分析，发现不同人口统计学特征的网络用户在人格和搜索行为上都存在显著差异。此外，网络用户的搜索行为呈现积极搜索、熟练搜索、保守搜索和失望搜索四种模式。积极搜索表征用户搜索过程中积极的心态和主动的行为，熟练搜索表征用户搜索过程中使用搜索引擎的熟练程度，保守搜索表征搜索行为中一种保守的行为和心态，而失望搜索表征用户在搜索过程中的负面情绪。这四种模式中积极搜索与人格最为相关，保守搜索只与外向性和严谨性这两个维度相关，失望搜索与和善性呈较弱的负相关关系，而熟练搜索不受人格的影响。
+              <br/>
+              　　
+ 研究结果表明人格与搜索行为显著相关，人格不仅影响网络用户对互联网信息的信赖度，还影响网络用户愿意在搜索引擎上花费的精力以及对搜索引擎的忠诚度和满意度。此外，一些行为变量如检索策略、关键词的使用、相关性判断、搜索习惯等也与人格存在显著的相关性。
+            </p>
+            <dl id="perildical2_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%88%98%e7%90%b3%22++DBID%3aWF_XW">
+                  刘琳
+                </a>
+                 
+              </dd>
+              <dt>
+                学科专业：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=AuthorSubject+%3a+%e6%83%85%e6%8a%a5%e5%ad%a6++DBID%3aWF_XW">
+                  情报学
+                </a>
+                 
+              </dd>
+              <dt>
+                授予学位：
+              </dt>
+              <dd>
+                硕士 
+              </dd>
+              <dt>
+                学位授予单位：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=School+%3a+%e5%8c%97%e4%ba%ac%e5%a4%a7%e5%ad%a6++DBID%3aWF_XW">
+                  北京大学
+                </a>
+                 
+              </dd>
+              <dt>
+                导师姓名：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=Teacher+%3a+%e7%8e%8b%e7%9b%8a%e6%98%8e++DBID%3aWF_XW">
+                  王益明
+                </a>
+                 
+              </dd>
+              <dt>
+                学位年度：
+              </dt>
+              <dd>
+                2009 
+              </dd>
+              <dt>
+                研究方向：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                语 种：
+              </dt>
+              <dd>
+                chi 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP393.07  TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%ba%ba%e6%a0%bc%e5%bf%83%e7%90%86%e5%ad%a6%22++DBID%3aWF_XW">
+                  人格心理学
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%22++DBID%3aWF_XW">
+                  搜索引擎
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%a1%8c%e4%b8%ba%e5%85%b3%e7%b3%bb%22++DBID%3aWF_XW">
+                  行为关系
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8c%97%e4%ba%ac%22++DBID%3aWF_XW">
+                  北京
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%a4%a7%e5%ad%a6%e5%9c%a8%e6%a0%a1%e7%94%9f%22++DBID%3aWF_XW">
+                  大学在校生
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%e6%90%9c%e7%b4%a2%e8%a1%8c%e4%b8%ba%22++DBID%3aWF_XW">
+                  信息搜索行为
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e7%94%a8%e6%88%b7%22++DBID%3aWF_XW">
+                  网络用户
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%90%9c%e7%b4%a2%e8%bf%87%e7%a8%8b%22++DBID%3aWF_XW">
+                  搜索过程
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%90%9c%e7%b4%a2%e8%a1%a8%22++DBID%3aWF_XW">
+                  搜索表
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9b%9b%e7%a7%8d%e6%a8%a1%e5%bc%8f%22++DBID%3aWF_XW">
+                  四种模式
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%9b%b8%e5%85%b3%e6%80%a7%e5%88%86%e6%9e%90%22++DBID%3aWF_XW">
+                  相关性分析
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%a1%a8%e5%be%81%22++DBID%3aWF_XW">
+                  表征
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%ba%ba%e5%8f%a3%e7%bb%9f%e8%ae%a1%e5%ad%a6%e7%89%b9%e5%be%81%22++DBID%3aWF_XW">
+                  人口统计学特征
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%be%81%e7%94%a8%22++DBID%3aWF_XW">
+                  征用
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%94%a8%e6%88%b7%e6%90%9c%e7%b4%a2%e8%a1%8c%e4%b8%ba%22++DBID%3aWF_XW">
+                  用户搜索行为
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%97%ae%e5%8d%b7%22++DBID%3aWF_XW">
+                  问卷
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%94%a8%e6%88%b7%e8%a7%92%e5%ba%a6%22++DBID%3aWF_XW">
+                  用户角度
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%b8%aa%e6%80%a7%e5%bf%83%e7%90%86%e7%89%b9%e5%be%81%22++DBID%3aWF_XW">
+                  个性心理特征
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%a1%8c%e4%b8%ba%e5%92%8c%e5%bf%83%e6%80%81%22++DBID%3aWF_XW">
+                  行为和心态
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%9b%b8%e5%85%b3%e6%80%a7%e5%88%a4%e6%96%ad%22++DBID%3aWF_XW">
+                  相关性判断
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="relatitle">
+                <a id="a">
+                </a>
+                <span>
+                  相似文献
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+            </div>
+            <div class="Cited1" id="relblog">
+              <div class="td-blue" id="relblogtitle">
+                <a id="f">
+                </a>
+                <span>
+                  相关博文
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Thesis_Y9012710' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /><img src="Images/NUM_9.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C2DFB57C"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL6l6SgDQL+yqGTDgLNsI6nCxf0Odt44GD82o8PpTcTt8KeqUZc"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

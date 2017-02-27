@@ -1,0 +1,3 @@
+单片机在中药材水份测量应用方面的研究  The research at the aspect that Chinese medicine material moisture content is measured the application of omebard computer
+              单片机是现代智能化仪器的核心,而51单片机是我国大力推行的一种单片机机型,采用51单片机在中药材水份测量方面应用研究,不仅在理论上,而且在实践上也取得了可喜的进步.尤其是采用了新型的电容传感方式,使机械加工都相对简单容易了,而且可以向其它应用领域扩展.
+            

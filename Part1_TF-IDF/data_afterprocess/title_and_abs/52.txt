@@ -1,0 +1,3 @@
+RFID技术在仓储物流行业中的应用研究  Research of application of RFID technology in logistics industry
+              RFID技术是21世纪最有发展前景的信息技术之一.随着与传统网络的结合,RFID技术展现出巨大的市场应用潜力,特别在库存和物流管理领域,RFID的应用价值巨大.分析了RFID技术应用工作流程、RFID技术应用工作原理、RFID技术应用特点,并实现了PC与RFID识别读写器串行通讯.对于其它厂家的PLC和RFID系统也有一定的参考价值,对于促进该技术的推广应用具有一定的积极意义.
+            

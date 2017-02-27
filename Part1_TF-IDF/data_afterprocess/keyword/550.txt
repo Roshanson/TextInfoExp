@@ -1,0 +1,1 @@
+夏季雨型预报    模糊支持向量机    多分类    summer rainfall pattern prognostic    fuzzy support vector machine    multi-class classification   

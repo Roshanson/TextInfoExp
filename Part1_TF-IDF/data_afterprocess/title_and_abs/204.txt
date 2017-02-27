@@ -1,0 +1,3 @@
+虚拟现实建立动态场景的研究  A Study of Bilding Dynamic Scene by VRML
+              随着虚拟现实技术的发展,对虚拟现实场景不仅要求有逼真的效果,同时还要求有生动的交互功能,而VRML(Vitual Reality Modeling Language)与Java的结合是目前常用的交互式虚拟现实技术.文章系统介绍了虚拟现实建模语言VRML,采用JAVA做为脚本建立动态场景的原因并具体介绍了VRML与Java结合建立动态交互场景的两种方式,以及JSAI和EAI的区别.
+            

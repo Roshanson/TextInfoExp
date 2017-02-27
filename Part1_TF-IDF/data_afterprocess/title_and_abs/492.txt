@@ -1,0 +1,3 @@
+如何应对软件项目中的人事变更  How to Deal With Staff Change of Software Project Development
+              影响项目开发进度与成本的原因是综合性的.其中人事变更对项目进度和成本的影响最大.从人事变更的类型、危害和应对措施等方面,分析了影响项目进度和成本的主要因素并提出了解决方案.
+            

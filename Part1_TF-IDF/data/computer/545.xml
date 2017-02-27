@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  人的视觉-眼动系统的研究
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_rlgxx200004012" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(44)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e8%89%b3%e5%ae%8f%22&amp;f=detail.expert">
+                张艳宏
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e4%bf%9d%e5%bb%b6%22&amp;f=detail.expert">
+                刘保延
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e5%bf%97%e9%a1%ba%22&amp;f=detail.expert">
+                刘志顺
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%bd%95%e4%b8%bd%e4%ba%91%22&amp;f=detail.expert">
+                何丽云
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e4%b8%bd%e5%b9%b3%22&amp;f=detail.expert">
+                王丽平
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e6%b3%93%22&amp;f=detail.expert">
+                刘泓
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e7%9c%9f%22&amp;f=detail.expert">
+                陈真
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%ae%8b%e6%a1%82%e8%8a%b9%22&amp;f=detail.expert">
+                宋桂芹
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHANG+Yan-hong%22&amp;f=detail.expert">
+                ZHANG Yan-hong
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LIU+Bao-yan%22&amp;f=detail.expert">
+                LIU Bao-yan
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LIU+Zhi-shun%22&amp;f=detail.expert">
+                LIU Zhi-shun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22HE+Li-yun%22&amp;f=detail.expert">
+                HE Li-yun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22WANG+Li-ping%22&amp;f=detail.expert">
+                WANG Li-ping
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LIU+Hong%22&amp;f=detail.expert">
+                LIU Hong
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22CHEN+Zhen%22&amp;f=detail.expert">
+                CHEN Zhen
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22SONG+Gui-qin%22&amp;f=detail.expert">
+                SONG Gui-qin
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%b8%81%e5%9c%a3%22&amp;f=detail.expert">
+                丁圣
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%8d%a2%e6%b8%85%e5%8d%8e%22&amp;f=detail.expert">
+                卢清华
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e5%ae%aa%e6%b0%91%22&amp;f=detail.expert">
+                张宪民
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%8c%83%e5%bd%a6%e6%96%8c%22&amp;f=detail.expert">
+                范彦斌
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LU+Qinghua%22&amp;f=detail.expert">
+                LU Qinghua
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHANG+Xianmin%22&amp;f=detail.expert">
+                ZHANG Xianmin
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22FAN+Yanbin%22&amp;f=detail.expert">
+                FAN Yanbin
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e5%b0%8f%e8%8b%97%22&amp;f=detail.expert">
+                张小苗
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LU+Qing-hua%22&amp;f=detail.expert">
+                LU Qing-hua
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22FAN+Yan-bin%22&amp;f=detail.expert">
+                FAN Yan-bin
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHANG+Xian-min%22&amp;f=detail.expert">
+                ZHANG Xian-min
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%b1%88%e7%8e%89%e7%a6%8f%22&amp;f=detail.expert">
+                屈玉福
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e5%8a%b2%e5%b5%98%22&amp;f=detail.expert">
+                李劲嵘
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e7%bb%8d%e5%85%b5%22&amp;f=detail.expert">
+                张绍兵
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%86%8a%e6%98%be%e5%90%8d%22&amp;f=detail.expert">
+                熊显名
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%92%8b%e6%9b%b2%e5%8d%9a%22&amp;f=detail.expert">
+                蒋曲博
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e6%96%87%e6%b6%9b%22&amp;f=detail.expert">
+                张文涛
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%83%a1%e6%94%be%e8%8d%a3%22&amp;f=detail.expert">
+                胡放荣
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHANG+Shao-bing%22&amp;f=detail.expert">
+                ZHANG Shao-bing
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22XIONG+Xian-ming%22&amp;f=detail.expert">
+                XIONG Xian-ming
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22JIANG+Qu-bo%22&amp;f=detail.expert">
+                JIANG Qu-bo
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHANG+Wen-tao%22&amp;f=detail.expert">
+                ZHANG Wen-tao
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22HU+Fang-rong%22&amp;f=detail.expert">
+                HU Fang-rong
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%a8%e5%b0%8f%e5%b9%b3%22&amp;f=detail.expert">
+                杨小平
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%ad%99%e5%9b%bd%e7%a5%a5%22&amp;f=detail.expert">
+                孙国祥
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22YANG+Xiao-ping%22&amp;f=detail.expert">
+                YANG Xiao-ping
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22SUN+Guo-xiang%22&amp;f=detail.expert">
+                SUN Guo-xiang
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%a7%9c%e6%ac%a3%22&amp;f=detail.expert">
+                姜欣
+              </a>
+              <ul>
+                <h3>
+                  相关机构(16条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%9b%bd%e4%b8%ad%e5%8c%bb%e7%a7%91%e5%ad%a6%e9%99%a2%e4%b8%ad%e5%8c%bb%e4%b8%b4%e5%ba%8a%e5%9f%ba%e7%a1%80%e5%8c%bb%e5%ad%a6%e7%a0%94%e7%a9%b6%e6%89%80%e4%b8%b4%e5%ba%8a%e8%af%84%e4%bb%b7%e4%b8%ad%e5%bf%83%2c%e5%8c%97%e4%ba%ac%2c100700%22&amp;f=detail.agency">
+                    中国中医科学院中医临床基础医学研究所临床评价中心,北京,100700
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%9b%bd%e4%b8%ad%e5%8c%bb%e7%a7%91%e5%ad%a6%e9%99%a2%2c%e5%8c%97%e4%ba%ac%2c100700%22&amp;f=detail.agency">
+                    中国中医科学院,北京,100700
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%9b%bd%e4%b8%ad%e5%8c%bb%e7%a7%91%e5%ad%a6%e9%99%a2%e5%b9%bf%e5%ae%89%e9%97%a8%e5%8c%bb%e9%99%a2%2c%e5%8c%97%e4%ba%ac%2c100700%22&amp;f=detail.agency">
+                    中国中医科学院广安门医院,北京,100700
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8c%97%e4%ba%ac%e4%b8%ad%e5%8c%bb%e8%8d%af%e5%a4%a7%e5%ad%a6%e9%99%84%e5%b1%9e%e6%8a%a4%e5%9b%bd%e5%af%ba%e4%b8%ad%e5%8c%bb%e9%99%a2%2c%e5%8c%97%e4%ba%ac%2c100700%22&amp;f=detail.agency">
+                    北京中医药大学附属护国寺中医院,北京,100700
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%a6%96%e9%83%bd%e5%8c%bb%e7%a7%91%e5%a4%a7%e5%ad%a6%e5%ae%a3%e6%ad%a6%e5%8c%bb%e9%99%a2%2c%e5%8c%97%e4%ba%ac%2c100700%22&amp;f=detail.agency">
+                    首都医科大学宣武医院,北京,100700
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8c%97%e4%ba%ac%e7%94%b5%e5%8a%9b%e5%8c%bb%e9%99%a2%2c%e5%8c%97%e4%ba%ac%2c100700%22&amp;f=detail.agency">
+                    北京电力医院,北京,100700
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%9d%92%e5%b2%9b%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    青岛大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%bd%9b%e5%b1%b1%e7%a7%91%e5%ad%a6%e6%8a%80%e6%9c%af%e5%ad%a6%e9%99%a2%e6%9c%ba%e7%94%b5%e7%b3%bb%2c%e4%bd%9b%e5%b1%b1%2c528000%22&amp;f=detail.agency">
+                    佛山科学技术学院机电系,佛山,528000
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%8e%e5%8d%97%e7%90%86%e5%b7%a5%e5%a4%a7%e5%ad%a6%e6%9c%ba%e6%a2%b0%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%2c%e5%b9%bf%e5%b7%9e%2c510640%22&amp;f=detail.agency">
+                    华南理工大学机械工程学院,广州,510640
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%9b%bd%e9%98%b2%e7%a7%91%e5%ad%a6%e6%8a%80%e6%9c%af%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    国防科学技术大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%bd%9b%e5%b1%b1%e7%a7%91%e6%8a%80%e5%ad%a6%e9%99%a2%e6%9c%ba%e7%94%b5%e7%b3%bb%2c%e5%b9%bf%e4%b8%9c%e4%bd%9b%e5%b1%b1%2c528000%22&amp;f=detail.agency">
+                    佛山科技学院机电系,广东佛山,528000
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%8e%e5%8d%97%e7%90%86%e5%b7%a5%e5%a4%a7%e5%ad%a6%e6%9c%ba%e6%a2%b0%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%2c%e5%b9%bf%e4%b8%9c%e5%b9%bf%e5%b7%9e%2c510640%22&amp;f=detail.agency">
+                    华南理工大学机械工程学院,广东广州,510640
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%93%88%e5%b0%94%e6%bb%a8%e5%b7%a5%e4%b8%9a%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    哈尔滨工业大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%b1%b1%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    中山大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%a1%82%e6%9e%97%e7%94%b5%e5%ad%90%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%e7%94%b5%e5%ad%90%e5%b7%a5%e7%a8%8b%e4%b8%8e%e8%87%aa%e5%8a%a8%e5%8c%96%e5%ad%a6%e9%99%a2%2c%e6%a1%82%e6%9e%97%2c541004%22&amp;f=detail.agency">
+                    桂林电子科技大学电子工程与自动化学院,桂林,541004
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%93%88%e5%b0%94%e6%bb%a8%e5%b7%a5%e4%b8%9a%e5%a4%a7%e5%ad%a6%e6%b7%b1%e5%9c%b3%e7%a0%94%e7%a9%b6%e7%94%9f%e9%99%a2%2c%e5%b9%bf%e4%b8%9c%e6%b7%b1%e5%9c%b3%2c518055%22&amp;f=detail.agency">
+                    哈尔滨工业大学深圳研究生院,广东深圳,518055
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-rlgxx.aspx">
+                人类工效学
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/rlgxx/2000-4.aspx">
+                2000年4期
+              </a>
+               &gt; 人的视觉-眼动系统的研究
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              人的视觉-眼动系统的研究
+            </h1>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/人的视觉-眼动系统的研究.aspx?ID=Periodical_rlgxx200004012" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_rlgxx200004012.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_rlgxx200004012" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              对眼动的国内外发展状况及其基本形式、特点进行了分析研究,并对眼动测量方法的具体优点进行了较深入的探讨,为下一步实现对人机交互中视觉的实时测量分析打下了基础.
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%88%98%e4%bc%9f%22++DBID%3aWF_QK">
+                  刘伟
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e8%a2%81%e4%bf%ae%e5%b9%b2%22++DBID%3aWF_QK">
+                  袁修干
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                北京航空航天大学飞行器设计与应用力学系,北京 100083 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-rlgxx.aspx">
+                  人类工效学
+                </a>
+                 
+                <span class="green-border" visible="True">
+                  <span title="被中信所《中国科技期刊引证报告》收录">
+                    ISTIC
+                  </span>
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-rlgxx.aspx">
+                  ERGONOMICS
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/rlgxx/2000-4.aspx">
+                  2000 6(4)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%a7%86%e8%a7%89%22++DBID%3aWF_QK">
+                  视觉 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%a7%86%e8%a7%89" title="视觉的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b5%8b%e9%87%8f%22++DBID%3aWF_QK">
+                  测量 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%b5%8b%e9%87%8f" title="测量的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%9c%bc%e5%8a%a8%22++DBID%3aWF_QK">
+                  眼动 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%9c%bc%e5%8a%a8" title="眼动的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                TN9 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%ba%ba%e7%9a%84%e8%a7%86%e8%a7%89%22++DBID%3aWF_QK">
+                  人的视觉
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%ba%ba%e6%9c%ba%e4%ba%a4%e4%ba%92%22++DBID%3aWF_QK">
+                  人机交互
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9f%ba%e6%9c%ac%e5%bd%a2%e5%bc%8f%22++DBID%3aWF_QK">
+                  基本形式
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8f%91%e5%b1%95%e7%8a%b6%e5%86%b5%22++DBID%3aWF_QK">
+                  发展状况
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b5%8b%e9%87%8f%e5%88%86%e6%9e%90%22++DBID%3aWF_QK">
+                  测量分析
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b5%8b%e9%87%8f%e6%96%b9%e6%b3%95%22++DBID%3aWF_QK">
+                  测量方法
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ae%9e%e6%97%b6%22++DBID%3aWF_QK">
+                  实时
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9f%ba%e7%a1%80%22++DBID%3aWF_QK">
+                  基础
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9b%bd%e5%86%85%22++DBID%3aWF_QK">
+                  国内
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/10.3969/j.issn.1006-8309.2000.04.012">
+                  10.3969/j.issn.1006-8309.2000.04.012
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(10条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_zgxwyxkx201109030.aspx">
+                    视觉模拟测量和利克特测量用于评价中风痉挛性瘫痪患者报告结局的比较
+                  </a>
+                  <span>
+                     - 中华行为医学与脑科学杂志2011,20(9)
+                  </span>
+                  <a href="/Service/File/download/Periodical_zgxwyxkx201109030.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y738512.aspx">
+                    视觉坐标测量机模型的研究
+                  </a>
+                  <span>
+                    2005
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y738512.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jxgcxb200902028.aspx">
+                    基于计算机微视觉的鲁棒多尺度平面微运动测量
+                  </a>
+                  <span>
+                     - 机械工程学报2009,45(2)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jxgcxb200902028.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1523874.aspx">
+                    机载视觉着陆导航测量方法及关键技术研究
+                  </a>
+                  <span>
+                    2008
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1523874.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jxkf200712031.aspx">
+                    计算机微视觉在微运动测量中的应用
+                  </a>
+                  <span>
+                     - 机电工程技术2007,36(12)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jxkf200712031.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y656631.aspx">
+                    视觉坐标测量机三维动态测量技术的研究
+                  </a>
+                  <span>
+                    2004
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y656631.aspx" style="display:none" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1840451.aspx">
+                    双眼分离感知模式下运动觉检测在正常人与弱视患者双眼视功能评估中的应用
+                  </a>
+                  <span>
+                    2010
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1840451.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jgjs201304024.aspx">
+                    基于靶标的三目视觉3维坐标测量系统
+                  </a>
+                  <span>
+                     - 激光技术2013(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jgjs201304024.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jsjfz201206043.aspx">
+                    基于手眼视觉的两种目标位姿测量法仿真分析
+                  </a>
+                  <span>
+                     - 计算机仿真2012(6)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jsjfz201206043.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1523533.aspx">
+                    基于摄像测量的路面平整度检测和起吊设备的智能视觉研究
+                  </a>
+                  <span>
+                    2008
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1523533.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_rlgxx200004012' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_3.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

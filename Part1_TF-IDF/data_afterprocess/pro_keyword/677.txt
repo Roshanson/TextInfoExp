@@ -1,0 +1,200 @@
+
+
+                作 者：
+              
+
+
+                  纪钢
+                
+
+                  彭丽丽
+                
+
+                  王平
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                重庆理工大学计算机科学与工程学院,重庆,400054 
+              
+
+                刊 名：
+              
+
+
+                  重庆理工大学学报：自然科学
+                
+                 
+                
+
+
+
+                英文刊名：
+              
+
+
+                  Journal of Chongqing Institute of Technology
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2012 26(7)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-05 
+              
+
+                关键词：
+              
+
+
+                  腐蚀产物颜色 
+                
+
+
+                  
+                
+                  腐蚀特征分割 
+                
+
+
+                  
+                
+                  颜色相似度 
+                
+
+
+                  
+                
+                  图谱信息表 
+                
+
+
+                  
+                
+                  corrosion products color 
+                
+
+
+                  
+                
+                  corrosion feature segmentation 
+                
+
+
+                  
+                
+                  color similarity 
+                
+
+
+                  
+                
+                  map information table 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                TG1  TP3 
+              
+
+                机标关键词：
+              
+
+
+                  腐蚀产物
+                
+
+                  颜色分析
+                
+
+                  材料腐蚀
+                
+
+                  腐蚀程度
+                
+
+                  评定方法
+                
+
+                  Corrosion Products
+                
+
+                  corrosion products
+                
+
+                  corrosion degree
+                
+
+                  腐蚀等级
+                
+
+                  颜色值
+                
+
+                  颜色特征
+                
+
+                  特征区域
+                
+
+                  腐蚀区域
+                
+
+                  标准颜色
+                
+
+                  map information
+                
+
+                  average color
+                
+
+                  相似度计算
+                
+
+                  信息表
+                
+
+                  数据来源
+                
+
+                  机器识别
+                
+                 
+              
+
+                基金项目：
+              
+
+                 
+              
+
+                DOI：
+              
+
+
+                  10.3969/j.issn.1674-8425-B.2012.07.015
+                
+                 
+              

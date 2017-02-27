@@ -1,0 +1,3 @@
+基于RAID的磁盘存储系统的设计与实现  Design and Realization of the Disk Storage System Based on RAID
+              本文通过对某证券公司的磁盘存储系统的需求进行分析,结合现有的RAID技术,提出了一种高效可靠的基于RAI D的磁盘存储系统方案,并详细介绍了如何实现该方案.
+            

@@ -1,0 +1,3 @@
+信息需求与会计信息系统发展初探  Information Requirement and the Development of Accounting Information System
+              信息需求是推动会计信息系统发展的直接动力,但信息需求的扩张受到信息技术和管理认知水平的制约.因此,文章针对日益增多的信息需求群体和复杂多变的信息需求内容与现行会计信息系统之间的矛盾,提出了向"管理一体化发展"的实现思路.
+            

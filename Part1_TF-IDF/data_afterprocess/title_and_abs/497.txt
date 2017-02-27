@@ -1,0 +1,3 @@
+WebGIS系统对GML国际标准的支持研究
+              WebGIS即互联网地理信息系统,WebGIS技术的发展伴随着技术标准的发展,常见的国际标准如OpenLS、WMS、WFS、GML等,使得WebGIS系统更高效、更灵活.通过WebGIS系统对GML国际标准的支持,增强了WebGIS系统的可移植性和可扩展性.
+            

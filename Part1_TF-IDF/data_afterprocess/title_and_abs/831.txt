@@ -1,0 +1,3 @@
+基于神经网络规则抽取的产品服务配置规则获取  Product Service Configuration Rules Acquisition Based on Rule Extraction from Neural Networks
+              针对由混合配置前件导致的大量耦合的、相互关联的复杂规则,提出了LC神经网络和RULEX算法联合实施下基于历史数据的个性化产品服务配置规则获取方法,包括基于LC的规则构造和知识发现,基于RULEX的规则抽取,网络模块的划分与提炼,以及配置规则适应度评价.最终通过楼宇控制产品服务说明了该方法具有较好的网络训练效率和规则复杂度.
+            

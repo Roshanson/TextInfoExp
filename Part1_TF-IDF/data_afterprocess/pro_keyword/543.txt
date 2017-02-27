@@ -1,0 +1,212 @@
+
+
+                作 者：
+              
+
+
+                  沈来信
+                
+
+                  杨帆
+                
+
+                  方磊
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                黄山学院信息工程学院,安徽黄山,245021 
+              
+
+                刊 名：
+              
+
+
+                  黄山学院学报
+                
+                 
+                
+
+
+
+                英文刊名：
+              
+
+
+                  Journal of Huangshan University
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2011 13(5)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-0 
+              
+
+                关键词：
+              
+
+
+                  网络情景 
+                
+
+
+                  
+                
+                  分类分层次 
+                
+
+
+                  
+                
+                  应用能力 
+                
+
+
+                  
+                
+                  自主学习 
+                
+
+
+                  
+                
+                  协作式 
+                
+
+
+                  
+                
+                  network scenario 
+                
+
+
+                  
+                
+                  multi-class and multi-level 
+                
+
+
+                  
+                
+                  application ability 
+                
+
+
+                  
+                
+                  autonomous learning 
+                
+
+
+                  
+                
+                  collaborative 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                G43  G4 
+              
+
+                机标关键词：
+              
+
+
+                  计算机
+                
+
+                  公共课程
+                
+
+                  开放式
+                
+
+                  网络教学平台
+                
+
+                  设计
+                
+
+                  Public
+                
+
+                  Teaching
+                
+
+                  Network
+                
+
+                  Open
+                
+
+                  Implementation
+                
+
+                  practical teaching
+                
+
+                  the students
+                
+
+                  autonomous learning
+                
+
+                  network resources
+                
+
+                  学生自主学习
+                
+
+                  教学效果
+                
+
+                  teachers
+                
+
+                  learning ability
+                
+
+                  分层次教学模式
+                
+
+                  应用能力培养
+                
+                 
+              
+
+                基金项目：
+              
+
+                黄山学院教学研究项目 
+              
+
+                DOI：
+              
+
+
+                  10.3969/j.issn.1672-447X.2011.05.033
+                
+                 
+              

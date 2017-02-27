@@ -1,0 +1,1 @@
+异常检测    统计方法    神经网络方法    基于规则的方法    支持向量机    novelty detection    statistical approaches    neural network approaches    rule-based approach    SVM approach   

@@ -1,0 +1,184 @@
+
+
+                作 者：
+              
+
+
+                  纪求华
+                
+
+                  JI Qiu-hua
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                广州杰赛科技股份有限公司,广东广州,510310 
+              
+
+                刊 名：
+              
+
+
+                  移动通信
+                
+                 
+                
+
+                    ISTIC
+                  
+
+
+
+                英文刊名：
+              
+
+
+                  Mobile Communications
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2014 (10)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-0 
+              
+
+                关键词：
+              
+
+
+                  云操作系统 
+                
+
+
+                  
+                
+                  安全体系结构 
+                
+
+
+                  
+                
+                  API安全管理 
+                
+
+
+                  
+                
+                  cloud operating system 
+                
+
+
+                  
+                
+                  security architecture 
+                
+
+
+                  
+                
+                  API security management 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                TP3  TV6 
+              
+
+                机标关键词：
+              
+
+
+                  操作系统
+                
+
+                  安全加固
+                
+
+                  术探讨
+                
+
+                  operating system
+                
+
+                  云计算
+                
+
+                  security architecture
+                
+
+                  security management
+                
+
+                  加固技术
+                
+
+                  network security
+                
+
+                  用户选择
+                
+
+                  系统安全
+                
+
+                  网络安全
+                
+
+                  体系结构
+                
+
+                  计算服务
+                
+
+                  计算安全
+                
+
+                  基础环境
+                
+
+                  安全问题
+                
+
+                  安全管理
+                
+
+                  虚拟
+                
+                 
+              
+
+                基金项目：
+              
+
+                 
+              
+
+                DOI：
+              
+
+
+
+                 
+              

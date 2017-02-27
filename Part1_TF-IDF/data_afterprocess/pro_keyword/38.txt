@@ -1,0 +1,199 @@
+
+
+                作 者：
+              
+
+
+                  曲蕴慧
+                
+
+                  白新国
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                曲蕴慧(西安医学院公共课部计算机教研室,陕西西安,710021)
+                
+                白新国(西安工程大学计算机科学学院,陕西西安,710048) 
+              
+
+                刊 名：
+              
+
+
+                  电子设计工程
+                
+                 
+                
+
+
+
+                英文刊名：
+              
+
+
+                  Electronic Design Engineering
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2011 19(19)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-05 
+              
+
+                关键词：
+              
+
+
+                  SOA 
+                
+
+
+                  
+                
+                  JSP 
+                
+
+
+                  
+                
+                  信息管理 
+                
+
+
+                  
+                
+                  服务 
+                
+
+
+                  
+                
+                  SOA 
+                
+
+
+                  
+                
+                  JSP 
+                
+
+
+                  
+                
+                  information management 
+                
+
+
+                  
+                
+                  service 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                TP3  G43 
+              
+
+                机标关键词：
+              
+
+
+                  SOA
+                
+
+                  毕业
+                
+
+                  信息管理系统
+                
+
+                  系统设计
+                
+
+                  base
+                
+
+                  information management system
+                
+
+                  realization
+                
+
+                  Web services
+                
+
+                  frame model
+                
+
+                  programming language
+                
+
+                  架构模型
+                
+
+                  business process
+                
+
+                  服务集成
+                
+
+                  JSP
+                
+
+                  design
+                
+
+                  transfer of
+                
+
+                  paper
+                
+
+                  Based
+                
+
+                  指导思想
+                
+
+                  业务流程
+                
+                 
+              
+
+                基金项目：
+              
+
+                 
+              
+
+                DOI：
+              
+
+
+                  10.3969/j.issn.1674-6236.2011.19.013
+                
+                 
+              

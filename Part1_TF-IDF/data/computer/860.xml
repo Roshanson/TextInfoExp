@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  基于组合权衡的IT项目投资决策模型及方法研究
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Thesis.aspx?ID=Thesis_Y1399581" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3NjkzMjA0MzJkZKKxh/AscG2ISDUAcrB9sli6vKjo"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(32)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e5%bf%b5%e6%96%b0%22&amp;f=detail.expert">
+                王念新
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%bb%b2%e4%bc%9f%e4%bf%8a%22&amp;f=detail.expert">
+                仲伟俊
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%a2%85%e5%a7%9d%e5%a8%a5%22&amp;f=detail.expert">
+                梅姝娥
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Wang+Nianxin%22&amp;f=detail.expert">
+                Wang Nianxin
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Zhong+Weijun%22&amp;f=detail.expert">
+                Zhong Weijun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Mei+Shue%22&amp;f=detail.expert">
+                Mei Shue
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%b7%a9%e8%a7%81%e5%88%9a%22&amp;f=detail.expert">
+                巩见刚
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%b8%81%e5%a0%83%22&amp;f=detail.expert">
+                丁堃
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22GONG+Jiangang%22&amp;f=detail.expert">
+                GONG Jiangang
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22DING+Kun%22&amp;f=detail.expert">
+                DING Kun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e4%b8%9c%e6%b8%85%22&amp;f=detail.expert">
+                王东清
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22WANG+Dong-qing%22&amp;f=detail.expert">
+                WANG Dong-qing
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%bd%99%e7%bf%a0%e7%8e%b2%22&amp;f=detail.expert">
+                余翠玲
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e7%87%95%22&amp;f=detail.expert">
+                张燕
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%91%a3%e7%8e%89%e7%90%a6%22&amp;f=detail.expert">
+                董玉琦
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e7%82%9c%22&amp;f=detail.expert">
+                王炜
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Zhang+Yan%22&amp;f=detail.expert">
+                Zhang Yan
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Dong+Yuqi%22&amp;f=detail.expert">
+                Dong Yuqi
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Wang+Wei%22&amp;f=detail.expert">
+                Wang Wei
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e5%bf%86%22&amp;f=detail.expert">
+                王忆
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%91%a8%e5%bb%ba%22&amp;f=detail.expert">
+                周建
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%ad%9f%e5%9c%86%e5%9c%86%22&amp;f=detail.expert">
+                孟圆圆
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e5%b0%8f%e5%85%83%22&amp;f=detail.expert">
+                刘小元
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHOU+Jian%22&amp;f=detail.expert">
+                ZHOU Jian
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22MENG+Yuanyuan%22&amp;f=detail.expert">
+                MENG Yuanyuan
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LIU+Xiaoyuan%22&amp;f=detail.expert">
+                LIU Xiaoyuan
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%ae%b8%e9%87%91%e5%8f%b6%22&amp;f=detail.expert">
+                许金叶
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e5%9f%b9%22&amp;f=detail.expert">
+                张培
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Norshidah+Mohamed%22&amp;f=detail.expert">
+                Norshidah Mohamed
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Ramlah+Hussein%22&amp;f=detail.expert">
+                Ramlah Hussein
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Abdul+Rahman%22&amp;f=detail.expert">
+                Abdul Rahman
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Zubaidah+Muataz+Hazza%22&amp;f=detail.expert">
+                Zubaidah Muataz Hazza
+              </a>
+              <ul>
+                <h3>
+                  相关机构(11条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%9c%e5%8d%97%e5%a4%a7%e5%ad%a6%e7%bb%8f%e6%b5%8e%e7%ae%a1%e7%90%86%e5%ad%a6%e9%99%a2%2c%e5%8d%97%e4%ba%ac%2c210096%22&amp;f=detail.agency">
+                    东南大学经济管理学院,南京,210096
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%a4%a7%e8%bf%9e%e7%90%86%e5%b7%a5%e5%a4%a7%e5%ad%a6+%e7%a7%91%e5%ad%a6%e5%ad%a6%e4%b8%8e%e7%a7%91%e6%8a%80%e7%ae%a1%e7%90%86%e7%a0%94%e7%a9%b6%e6%89%80%2c%e8%be%bd%e5%ae%81+%e5%a4%a7%e8%bf%9e%2c116023%22&amp;f=detail.agency">
+                    大连理工大学 科学学与科技管理研究所,辽宁 大连,116023
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%8d%97%e5%a4%a7%e5%ad%a6%e5%95%86%e5%ad%a6%e9%99%a2%2c%e6%b9%96%e5%8d%97+%e9%95%bf%e6%b2%99%2c410083%22&amp;f=detail.agency">
+                    中南大学商学院,湖南 长沙,410083
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%90%89%e6%9e%97%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    吉林大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%96%b0%e7%96%86%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6+%e6%95%99%e8%82%b2%e7%a7%91%e5%ad%a6%e5%ad%a6%e9%99%a2%2c%e6%96%b0%e7%96%86+%e4%b9%8c%e9%b2%81%e6%9c%a8%e9%bd%90%2c830054%22&amp;f=detail.agency">
+                    新疆师范大学 教育科学学院,新疆 乌鲁木齐,830054
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%8a%e6%b5%b7%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6+%e6%95%99%e8%82%b2%e6%8a%80%e6%9c%af%e7%b3%bb%2c%e4%b8%8a%e6%b5%b7%2c200234%22&amp;f=detail.agency">
+                    上海师范大学 教育技术系,上海,200234
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%be%bd%e5%ae%81%e5%85%ac%e5%ae%89%e5%8f%b8%e6%b3%95%e7%ae%a1%e7%90%86%e5%b9%b2%e9%83%a8%e5%ad%a6%e9%99%a2%2c%e8%be%bd%e5%ae%81%e6%b2%88%e9%98%b3%2c110161%22&amp;f=detail.agency">
+                    辽宁公安司法管理干部学院,辽宁沈阳,110161
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e5%bc%80%e5%a4%a7%e5%ad%a6%e5%95%86%e5%ad%a6%e9%99%a2%e5%85%ac%e5%8f%b8%e6%b2%bb%e7%90%86%e7%a0%94%e7%a9%b6%e4%b8%ad%e5%bf%83%2c%e5%a4%a9%e6%b4%a5%e5%b8%82%2c300071%22&amp;f=detail.agency">
+                    南开大学商学院公司治理研究中心,天津市,300071
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%8a%e6%b5%b7%e5%a4%a7%e5%ad%a6%2c%e5%9b%bd%e9%99%85%e5%b7%a5%e5%95%86%e4%b8%8e%e7%ae%a1%e7%90%86%e5%ad%a6%e9%99%a2%2c%e4%b8%8a%e6%b5%b7%2c200444%22&amp;f=detail.agency">
+                    上海大学,国际工商与管理学院,上海,200444
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b2%b3%e5%8c%97%e5%b7%a5%e4%b8%9a%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    河北工业大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22International+Islamic+University+Malaysia+KL%2c+Malaysia%22&amp;f=detail.agency">
+                    International Islamic University Malaysia KL, Malaysia
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt;  
+              <a href="/C/Thesis.aspx">
+                学位论文
+              </a>
+               &gt; 
+    
+              <a href="/S/Paper.aspx?q=%e4%b8%93%e4%b8%9a%3a%22%e4%bf%a1%e6%81%af%e7%ae%a1%e7%90%86%e4%b8%8e%e4%bf%a1%e6%81%af%e7%b3%bb%e7%bb%9f%22">
+                信息管理与信息系统
+              </a>
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              基于组合权衡的IT项目投资决策模型及方法研究
+            </h1>
+            <p class="title-height">
+            </p>
+            <p id="ctl00_LeftContentPlaceHolder_fulltext">
+              <!--按章节浏览-->              <!--打包下载-->              <!--查看全文-->              <a class="seeft" href="/Service/File/view/基于组合权衡的IT项目投资决策模型及方法研究.aspx?ID=Thesis_Y1399581">
+              </a>
+              <!--下载全文-->              <a class="downloadft" href="/Service/File/download/Thesis_Y1399581.aspx">
+              </a>
+            </p>
+            <p>
+              <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Thesis_Y1399581" class="export">
+              </a>
+            </p>
+            <p id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </p>
+            <p class="abstracts">
+              信息技术(InformationTechnology,IT)投资的快速增长和高投资失败率使得IT项目投资决策面临挑战，但针对决策模型及方法的研究仍存在不足：(1)模型设计缺乏系统地考虑IT项目投资决策活动与其它信息化建设相关活动的融合和协调，忽略在整体条件下对IT项目进行成本、收益和风险的权衡；(2)对IT项目投资的战略作用关注不足，未能刻画企业战略与IT项目目标的动态对应；(3)缺少对主观政治因素影响决策过程的控制方法的研究；(4)把IT项目投资决策简单等同于IT项目投资评估，且过分依赖基于财务的评估方法。
+    通过文献综述和对IT项目投资决策的系统思考，总结良好IT项目投资决策模型及方法应具备的特征；从IT治理框架和组合管理模型中得到启示，构建基于组合权衡的IT项目投资决策模型，并对其进行解释和特点分析；根据这个模型，从系统方法中硬系统思考和软系统思考两个方面阐述模型在实践中的应用，得到IT项目投资决策的运用步骤和具体方法；最后利用案例说明提出模型及方法的可行性。
+    本文主要成果：(1)基于组合权衡的IT项目投资决策模型。把单独IT项目置于项目组合的环境中分析，在最大化战略对应度和财务收益双目标条件下实现IT项目投资成本、风险及收益的权衡，并考虑不同利益相关者对决策过程的影响。(2)上述模型在实践运用中的具体方法，包括关联的两方面：一个是模型实现决策功能的相关步骤、算法和说明；另一个是鼓励、规范不同利益相关者参与决策过程的决策权分配矩阵方法。研究过程中还得到了良好IT项目投资决策模型及方法的特征和设计原则，以及对网络分析法、实物期权、多目标规划等方法的融合和拓展。
+    本文创新点：(1)决策模型的设计体现了价值治理、组合管理、投资管理三者共同驱动IT投资价值实现的系统思想。(2)提出了用以分析和规范不同利益相关者参与IT项目投资决策过程的决策权分配矩阵方法。(3)通过决策模型中模糊多目标线性规划的构建、求解，以及对求解结果的假设分析，在具体方法上实现对IT项目投资组合成本、收益和风险的权衡。
+            </p>
+            <dl id="perildical2_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%a4%8f%e5%bf%97%e6%9d%b0%22++DBID%3aWF_XW">
+                  夏志杰
+                </a>
+                 
+              </dd>
+              <dt>
+                学科专业：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=AuthorSubject+%3a+%e4%bf%a1%e6%81%af%e7%ae%a1%e7%90%86%e4%b8%8e%e4%bf%a1%e6%81%af%e7%b3%bb%e7%bb%9f++DBID%3aWF_XW">
+                  信息管理与信息系统
+                </a>
+                 
+              </dd>
+              <dt>
+                授予学位：
+              </dt>
+              <dd>
+                博士 
+              </dd>
+              <dt>
+                学位授予单位：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=School+%3a+%e5%90%8c%e6%b5%8e%e5%a4%a7%e5%ad%a6%e7%bb%8f%e6%b5%8e%e4%b8%8e%e7%ae%a1%e7%90%86%e5%ad%a6%e9%99%a2++DBID%3aWF_XW">
+                  同济大学经济与管理学院
+                </a>
+                 
+              </dd>
+              <dt>
+                导师姓名：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=Teacher+%3a+%e8%83%a1%e5%85%8b%e7%91%be++DBID%3aWF_XW">
+                  胡克瑾
+                </a>
+                 
+              </dd>
+              <dt>
+                学位年度：
+              </dt>
+              <dd>
+                2008 
+              </dd>
+              <dt>
+                研究方向：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                语 种：
+              </dt>
+              <dd>
+                chi 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                F062.4  TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%e6%8a%80%e6%9c%af%22++DBID%3aWF_XW">
+                  信息技术
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e4%bf%a1%e6%81%af%e6%8a%80%e6%9c%af" title="信息技术的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22IT%22++DBID%3aWF_XW">
+                  IT
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=IT" title="IT的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%a1%b9%e7%9b%ae%e6%8a%95%e8%b5%84%22++DBID%3aWF_XW">
+                  项目投资
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e9%a1%b9%e7%9b%ae%e6%8a%95%e8%b5%84" title="项目投资的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%8a%95%e8%b5%84%e5%86%b3%e7%ad%96%e6%a8%a1%e5%9e%8b%22++DBID%3aWF_XW">
+                  投资决策模型
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%8a%95%e8%b5%84%e5%86%b3%e7%ad%96%e6%a8%a1%e5%9e%8b" title="投资决策模型的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86%22++DBID%3aWF_XW">
+                  项目管理
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86" title="项目管理的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bb%84%e5%90%88%e7%ae%a1%e7%90%86%22++DBID%3aWF_XW">
+                  组合管理
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%9d%83%e8%a1%a1%22++DBID%3aWF_XW">
+                  权衡
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%a1%b9%e7%9b%ae%e6%8a%95%e8%b5%84%e5%86%b3%e7%ad%96%22++DBID%3aWF_XW">
+                  项目投资决策
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%8a%95%e8%b5%84%e5%86%b3%e7%ad%96%e6%a8%a1%e5%9e%8b%22++DBID%3aWF_XW">
+                  投资决策模型
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%85%b7%e4%bd%93%e6%96%b9%e6%b3%95%22++DBID%3aWF_XW">
+                  具体方法
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%8a%95%e8%b5%84%e5%86%b3%e7%ad%96%e8%bf%87%e7%a8%8b%22++DBID%3aWF_XW">
+                  投资决策过程
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%88%a9%e7%9b%8a%e7%9b%b8%e5%85%b3%e8%80%85%22++DBID%3aWF_XW">
+                  利益相关者
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%b3%bb%e7%bb%9f%e6%80%9d%e8%80%83%22++DBID%3aWF_XW">
+                  系统思考
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%94%b6%e7%9b%8a%e5%92%8c%e9%a3%8e%e9%99%a9%22++DBID%3aWF_XW">
+                  收益和风险
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%86%b3%e7%ad%96%e6%9d%83%e5%88%86%e9%85%8d%22++DBID%3aWF_XW">
+                  决策权分配
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e5%88%86%e6%9e%90%e6%b3%95%22++DBID%3aWF_XW">
+                  网络分析法
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%a8%a1%e7%b3%8a%e5%a4%9a%e7%9b%ae%e6%a0%87%e7%ba%bf%e6%80%a7%e8%a7%84%e5%88%92%22++DBID%3aWF_XW">
+                  模糊多目标线性规划
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%9f%a9%e9%98%b5%e6%96%b9%e6%b3%95%22++DBID%3aWF_XW">
+                  矩阵方法
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%a1%b9%e7%9b%ae%e6%8a%95%e8%b5%84%e8%af%84%e4%bc%b0%22++DBID%3aWF_XW">
+                  项目投资评估
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%88%90%e6%9c%ac%22++DBID%3aWF_XW">
+                  成本
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b2%bb%e7%90%86%e6%a1%86%e6%9e%b6%22++DBID%3aWF_XW">
+                  治理框架
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%e5%8c%96%e5%bb%ba%e8%ae%be%22++DBID%3aWF_XW">
+                  信息化建设
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%a4%9a%e7%9b%ae%e6%a0%87%e8%a7%84%e5%88%92%22++DBID%3aWF_XW">
+                  多目标规划
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%b8%bb%e8%a6%81%e6%88%90%e6%9e%9c%22++DBID%3aWF_XW">
+                  主要成果
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%94%bf%e6%b2%bb%e5%9b%a0%e7%b4%a0%22++DBID%3aWF_XW">
+                  政治因素
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(10条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_dndxxb-e200801025.aspx">
+                    基于信息技术应用能力的信息技术影响企业竞争力的过程模型
+                  </a>
+                  <span>
+                     - 东南大学学报（英文版）2008,24(1)
+                  </span>
+                  <a href="/Service/File/download/Periodical_dndxxb-e200801025.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_kxxykxjsgl201406003.aspx">
+                    本土情境下技术优势、环境竞争性以及组织信息密度与信息技术吸收的关系研究
+                  </a>
+                  <span>
+                     - 科学学与科学技术管理2014(6)
+                  </span>
+                  <a href="/Service/File/download/Periodical_kxxykxjsgl201406003.aspx" style="display:none" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jsjjyglyj201310009.aspx">
+                    企业信息技术投资绩效的形成机理--基于能力理论的解析
+                  </a>
+                  <span>
+                     - 技术经济与管理研究2013(10)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jsjjyglyj201310009.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_W2037025.aspx">
+                    信息技术吸纳能力理论模型与实证研究
+                  </a>
+                  <span>
+                    2010
+                  </span>
+                  <a href="/Service/File/zip/Thesis_W2037025.aspx" style="display:none" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_zgdhjy201409007.aspx">
+                    基于层次分析法的高中信息技术教师专业知识水平评价*--以东北地区为例
+                  </a>
+                  <span>
+                     - 中国电化教育2014(9)
+                  </span>
+                  <a href="/Service/File/download/Periodical_zgdhjy201409007.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_lngasfglgbxyxb201201033.aspx">
+                    新一代信息技术引领高职IT教育模式的变革
+                  </a>
+                  <span>
+                     - 辽宁公安司法管理干部学院学报2012(1)
+                  </span>
+                  <a href="/Service/File/download/Periodical_lngasfglgbxyxb201201033.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jjyglyj200908004.aspx">
+                    公司现金持有与行业差异、股权结构的关系研究——信息技术类与非信息技术类上市公司的比较
+                  </a>
+                  <span>
+                     - 经济与管理研究2009(8)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jjyglyj200908004.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_zgkjdsh200815006.aspx">
+                    IT治理及其思路:"信息技术生产率佯谬"的治理
+                  </a>
+                  <span>
+                     - 中国管理信息化2008(15)
+                  </span>
+                  <a href="/Service/File/download/Periodical_zgkjdsh200815006.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D048923.aspx">
+                    企业信息技术外包决策模型与仿真研究
+                  </a>
+                  <span>
+                    2008
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D048923.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  会议论文           
+        
+                  <a href="/D/Conference_WFHYXW375125.aspx">
+                    A Descriptive Analysis of IT Adoption in Malaysian Small Software Firms
+                  </a>
+                  <span>
+                    2009 2nd IEEE International Conference on Computer Science and Information Technology(第二届计算机科学与信息技术国际会议 ICCSIT2009)2009
+                  </span>
+                  <a href="/Service/File/download/Conference_WFHYXW375125.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Thesis_Y1399581' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_6.gif" style="border-width:0px;" /><img src="Images/NUM_9.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C2DFB57C"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL6l6SgDQL+yqGTDgLNsI6nCxf0Odt44GD82o8PpTcTt8KeqUZc"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

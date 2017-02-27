@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  面向视觉手势交互的映射关系自适应调整  Adaptive Adjustment of Control-Display Mapping Relationship for Visual Gesture Interaction
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_hnlgdxxb201408009" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(28)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%be%90%e6%98%8e%e4%ba%ae%22&amp;f=detail.expert">
+                徐明亮
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%bb%8e%e6%98%8e%22&amp;f=detail.expert">
+                黎明
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%8d%a2%e6%98%8e%22&amp;f=detail.expert">
+                卢明
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e6%98%8a%22&amp;f=detail.expert">
+                陈昊
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%bb%8e%e6%94%bf%e7%a7%80%22&amp;f=detail.expert">
+                黎政秀
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LI+Ming%22&amp;f=detail.expert">
+                LI Ming
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LU+Ming%22&amp;f=detail.expert">
+                LU Ming
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22CHEN+Hao%22&amp;f=detail.expert">
+                CHEN Hao
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LI+Zheng-Xiu%22&amp;f=detail.expert">
+                LI Zheng-Xiu
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%a7%a6%e4%b8%b9%e9%98%b3%22&amp;f=detail.expert">
+                秦丹阳
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%a2%81%e7%90%9b%e5%8d%8e%22&amp;f=detail.expert">
+                梁琛华
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%b8%b8%e9%9d%92%22&amp;f=detail.expert">
+                常青
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%83%a1%e8%b0%8b%e6%b3%95%22&amp;f=detail.expert">
+                胡谋法
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LIANG+Chenhua%22&amp;f=detail.expert">
+                LIANG Chenhua
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22CHANG+Qing%22&amp;f=detail.expert">
+                CHANG Qing
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22HU+Moufa%22&amp;f=detail.expert">
+                HU Moufa
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e4%bc%9f%22&amp;f=detail.expert">
+                李伟
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e9%ad%8f%22&amp;f=detail.expert">
+                陈魏
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%bd%95%e5%89%91%e6%98%a5%22&amp;f=detail.expert">
+                何剑春
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%8d%a2%e9%9b%aa%e8%90%8d%22&amp;f=detail.expert">
+                卢雪萍
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%8f%b6%e5%86%9b%22&amp;f=detail.expert">
+                叶军
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22He+Jianchun%22&amp;f=detail.expert">
+                He Jianchun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Lu+Xueping%22&amp;f=detail.expert">
+                Lu Xueping
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Ye+Jun%22&amp;f=detail.expert">
+                Ye Jun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%b1%95%e7%ba%a2%e8%8b%b1%22&amp;f=detail.expert">
+                展红英
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%83%ad%e7%ab%8b%22&amp;f=detail.expert">
+                郭立
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%a6%b9%e7%89%9b%e4%ba%91%22&amp;f=detail.expert">
+                禹牛云
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9c%b1%e9%a2%96%e5%90%88%22&amp;f=detail.expert">
+                朱颖合
+              </a>
+              <ul>
+                <h3>
+                  相关机构(11条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b1%9f%e5%8d%97%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    江南大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e6%98%8c%e8%88%aa%e7%a9%ba%e5%a4%a7%e5%ad%a6+%e6%97%a0%e6%8d%9f%e6%a3%80%e6%b5%8b%e6%8a%80%e6%9c%af%e6%95%99%e8%82%b2%e9%83%a8%e9%87%8d%e7%82%b9%e5%ae%9e%e9%aa%8c%e5%ae%a4+%e5%8d%97%e6%98%8c330063%22&amp;f=detail.agency">
+                    南昌航空大学 无损检测技术教育部重点实验室 南昌330063
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%95%bf%e5%ae%89%e5%a4%a7%e5%ad%a6+%e6%b1%bd%e8%bd%a6%e5%ad%a6%e9%99%a2+%e8%a5%bf%e5%ae%89710018%22&amp;f=detail.agency">
+                    长安大学 汽车学院 西安710018
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%93%88%e5%b0%94%e6%bb%a8%e5%b7%a5%e4%b8%9a%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    哈尔滨工业大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%9b%bd%e9%98%b2%e7%a7%91%e5%ad%a6%e6%8a%80%e6%9c%af%e5%a4%a7%e5%ad%a6+ATR%e9%87%8d%e7%82%b9%e5%ae%9e%e9%aa%8c%e5%ae%a4%2c%e6%b9%96%e5%8d%97+%e9%95%bf%e6%b2%99%2c410073%22&amp;f=detail.agency">
+                    国防科学技术大学 ATR重点实验室,湖南 长沙,410073
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%87%8d%e5%ba%86%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    重庆大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%a6%96%e9%83%bd%e7%bb%8f%e6%b5%8e%e8%b4%b8%e6%98%93%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    首都经济贸易大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e7%bb%8d%e5%85%b4%e6%96%87%e7%90%86%e5%ad%a6%e9%99%a2%2c%e5%b7%a5%e5%ad%a6%e9%99%a2%2c%e6%b5%99%e6%b1%9f%2c%e7%bb%8d%e5%85%b4%2c312000%22&amp;f=detail.agency">
+                    绍兴文理学院,工学院,浙江,绍兴,312000
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e7%94%b5%e5%ad%90%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    电子科技大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%8d%97%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    中南大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%9d%ad%e5%b7%9e%e7%94%b5%e5%ad%90%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%2c%e8%87%aa%e5%8a%a8%e5%8c%96%e5%ad%a6%e9%99%a2%2c%e7%94%9f%e7%89%a9%e5%8c%bb%e5%ad%a6%e5%b7%a5%e7%a8%8b%e7%a0%94%e7%a9%b6%e6%89%80%2c%e6%b5%99%e6%b1%9f%2c%e6%9d%ad%e5%b7%9e%2c310018%22&amp;f=detail.agency">
+                    杭州电子科技大学,自动化学院,生物医学工程研究所,浙江,杭州,310018
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-hnlgdxxb.aspx">
+                华南理工大学学报（自然科学版）
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/hnlgdxxb/2014-8.aspx">
+                2014年8期
+              </a>
+               &gt; 面向视觉手势交互的映射关系自适应调整
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              面向视觉手势交互的映射关系自适应调整
+            </h1>
+            <h2>
+              Adaptive Adjustment of Control-Display Mapping Relationship for Visual Gesture Interaction
+            </h2>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/面向视觉手势交互的映射关系自适应调整.aspx?ID=Periodical_hnlgdxxb201408009" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_hnlgdxxb201408009.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_hnlgdxxb201408009" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              在基于机器视觉手势交互中经常需要大幅度手部移动,合适的映射关系对于用户在较舒适的操作范围内完成交互任务是十分必要的.文中结合用户的交互心理测试,提出一种基于用户操作特点的映射关系自适应调整方法:基于Borg's CR-10尺度心理感知实验测试用户的手部移动的感知,根据人体工程学建立一种基于速度调整的映射方程;根据交互过程中的用户手部移动情况,在每次连续交互操作结束后对映射方程进行调整.此外利用Kinect搭建用户测试系统测试该调整方法性能.实验结果表明,文中提出的映射关系调整方法能有效降低用户大幅度手部移动的几率,同时保持了用户的操作表现.
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e6%a2%81%e5%8d%93%e9%94%90%22++DBID%3aWF_QK">
+                  梁卓锐
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%be%90%e5%90%91%e6%b0%91%22++DBID%3aWF_QK">
+                  徐向民
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22Liang+Zhuo-rui%22++DBID%3aWF_QK">
+                  Liang Zhuo-rui
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22Xu+Xiang-min%22++DBID%3aWF_QK">
+                  Xu Xiang-min
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                华南理工大学电子与信息学院,广东广州,510640 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-hnlgdxxb.aspx">
+                  华南理工大学学报（自然科学版）
+                </a>
+                 
+                <span class="green-border" visible="True">
+                  <span title="被中信所《中国科技期刊引证报告》收录">
+                    ISTIC
+                  </span>
+                  <span title="被EI收录">
+                    EI
+                  </span>
+                  <span title="被北京大学《中文核心期刊要目总览》收录">
+                    PKU
+                  </span>
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-hnlgdxxb.aspx">
+                  Journal of South China University of Technology(Natural Science Edition)
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/hnlgdxxb/2014-8.aspx">
+                  2014 42(8)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%98%a0%e5%b0%84%e5%85%b3%e7%b3%bb%22++DBID%3aWF_QK">
+                  映射关系 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%98%a0%e5%b0%84%e5%85%b3%e7%b3%bb" title="映射关系的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%87%aa%e9%80%82%e5%ba%94%e8%b0%83%e6%95%b4%22++DBID%3aWF_QK">
+                  自适应调整 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%87%aa%e9%80%82%e5%ba%94%e8%b0%83%e6%95%b4" title="自适应调整的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%93%8d%e4%bd%9c%e7%a9%ba%e9%97%b4%22++DBID%3aWF_QK">
+                  操作空间 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%93%8d%e4%bd%9c%e7%a9%ba%e9%97%b4" title="操作空间的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%a7%86%e8%a7%89%e6%89%8b%e5%8a%bf%e4%ba%a4%e4%ba%92%22++DBID%3aWF_QK">
+                  视觉手势交互 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%a7%86%e8%a7%89%e6%89%8b%e5%8a%bf%e4%ba%a4%e4%ba%92" title="视觉手势交互的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22mapping+relationship%22++DBID%3aWF_QK">
+                  mapping relationship 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=mapping+relationship" title="mapping relationship的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22adaptive+adjustment%22++DBID%3aWF_QK">
+                  adaptive adjustment 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=adaptive+adjustment" title="adaptive adjustment的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22operation+space%22++DBID%3aWF_QK">
+                  operation space 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=operation+space" title="operation space的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22visual+gesture+interaction%22++DBID%3aWF_QK">
+                  visual gesture interaction 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=visual+gesture+interaction" title="visual gesture interaction的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                广东省重大科技专项 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/10.3969/j.issn.1000-565X.2014.08.009">
+                  10.3969/j.issn.1000-565X.2014.08.009
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(10条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1661965.aspx">
+                    强化学习及其应用研究
+                  </a>
+                  <span>
+                    2010
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1661965.aspx" style="display:none" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_mssbyrgzn201310008.aspx">
+                    基于线性映射的多物种捕食元胞遗传算法
+                  </a>
+                  <span>
+                     - 模式识别与人工智能2013(10)
+                  </span>
+                  <a href="/Service/File/download/Periodical_mssbyrgzn201310008.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D263834.aspx">
+                    移动Ad Hoc网络自适应路由算法研究
+                  </a>
+                  <span>
+                    2011
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D263834.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_xddzjs201401005.aspx">
+                    基于加权Hu矩和HOG特征的自适应融合人体行为识别新方法
+                  </a>
+                  <span>
+                     - 现代电子技术2014(1)
+                  </span>
+                  <a href="/Service/File/download/Periodical_xddzjs201401005.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D018844.aspx">
+                    基于免疫机理的可重构诊断系统研究
+                  </a>
+                  <span>
+                    2005
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D018844.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D081338.aspx">
+                    基于神经网络的煤矿安全综合评价模型研究
+                  </a>
+                  <span>
+                    2010
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D081338.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_sxwlxyxb201110008.aspx">
+                    CONN在无梭织机动态张力控制中的应用
+                  </a>
+                  <span>
+                     - 绍兴文理学院学报2011,31(10)
+                  </span>
+                  <a href="/Service/File/download/Periodical_sxwlxyxb201110008.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D499331.aspx">
+                    相控阵雷达系统实时任务负载分配仿真研究
+                  </a>
+                  <span>
+                    2014
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D499331.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y835422.aspx">
+                    深部硬岩岩爆倾向性动态预测模型及其应用
+                  </a>
+                  <span>
+                    2004
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y835422.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_zgsy-xby201001031.aspx">
+                    变论域自适应模糊PID控制器的设计与仿真
+                  </a>
+                  <span>
+                     - 中国水运（下半月）2010,10(1)
+                  </span>
+                  <a href="/Service/File/download/Periodical_zgsy-xby201001031.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_hnlgdxxb201408009' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_4.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+一种蛋白质复合体模块度函数及其识别算法  On Protein Complexes Identifying Algorithm Based on the Novel Modularity Function
+              蛋白质复合体对于研究细胞活动具有重要意义.随着新的生物实验技术的不断出现,产生了大量的蛋白质相互作用网络.通过对蛋白质相互作用网络进行聚类识别蛋白质复合体是当前研究热点.然而,目前大多数蛋白质复合体识别算法的性能不够理想.为此,提出了蛋白质复合体模块度函数(PQ),并在此基础上提出了基于蛋白质复合体模块度函数的模块合并(based on protein complexes modularity function for merging modules,BMM)算法.BMM算法首先识别网络中一些稠密子图作为初始模块,然后依据PQ函数对这些初始模块进行合并,最终得到了质量较高的蛋白质复合体.将识别出的复合体分别与2种已知的蛋白质复合体数据集进行比对,结果表明BMM算法具有很好的识别性能.此外,与其他最新的识别算法相比,BMM算法的识别准确率较高.
+            

@@ -1,0 +1,3 @@
+基于PC的刚～柔耦合隔振系统功率流测试仪器  PC-based power flow instrumentation for FBRE coupled isolation system
+              针对刚性设备～柔性基础组成的耦合隔振系统,本文提出了一种信噪比较高的功率流测试方案;利用C语言和Matlab工具箱开发了一套基于PC的功率流测试仪器,并已成功应用于-浮筏模型上.
+            

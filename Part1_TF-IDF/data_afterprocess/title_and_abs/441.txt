@@ -1,0 +1,3 @@
+高分子科学中的计算机模拟  COMPUTER SIMULATION OF POLYMER SCIENCE
+              综述了计算机模拟在高分子科学中的发展和现状,介绍了它的研究方法及研究领域,并指出了它的发展方向.
+            

@@ -1,0 +1,3 @@
+Zemax扩展程序的Visual C++编写实例  A example of extension program of Zemax compiled with Visual C++
+              Zemax具有一个很强大的功能,它允许其他程序和它建立接口,以达到交换数据的目的.为了解析Zemax和其他程序间的通讯关系,阐明其间内在的本质原理,选用软件自带的一个文件,并使其和使用Visual C++软件编译的一个客户程序建立通讯关系,结果以Zemax文本的形式显示.因此,通过编写外部扩展程序,可以进行自定义的数据分析和结果显示.可见,在很多情况下可以通过编写比较复杂的外部程序来拓展Zemax分析系统的功能.
+            

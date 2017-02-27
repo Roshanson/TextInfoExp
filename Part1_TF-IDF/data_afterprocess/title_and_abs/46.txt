@@ -1,0 +1,3 @@
+基于PMML数据挖掘应用研究  Research and application of data mining based on PMML
+              在理论研究的基础上,介绍了预测模型标记语言（PMML）,探讨了PMML标准在数据挖掘系统中的应用,提出了基于PMML的语法描述,并对挖掘系统中的PMML标准进行了详细分析。最后对PMML在数据挖掘中的应用前景进行了展望,并能对用户进行智能及个性化设计提供依据。
+            

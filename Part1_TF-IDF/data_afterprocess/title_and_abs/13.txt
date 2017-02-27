@@ -1,0 +1,3 @@
+微机接口技术的新教学体系探讨  The Discussion of New Teaching System about Microconputer Interface Technique
+              该文提出接口技术的新教学体系,它的核心是一切接口技术概念源于CPU的工作:由CPU工作过程推出总线信号,再由总线信号推出接口芯片与总线的连接.这种教学体系有利于学生高屋建瓴的学习本课.
+            

@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  结合信息与计算科学专业谈当前高校专业建设的问题解析与对策  Analysis and Countermeasures of Problems in Specialty Construction in Universities in the Light of Information and Computer Science Specialty
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_sygdzkxxxb201103005" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(26)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9b%be%e7%8e%89%e5%8d%8e%22&amp;f=detail.expert">
+                曾玉华
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZENG+Yu-hua%22&amp;f=detail.expert">
+                ZENG Yu-hua
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e6%b5%a9%e6%ad%a6%22&amp;f=detail.expert">
+                刘浩武
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%9a%86%e5%b9%bf%e5%ba%86%22&amp;f=detail.expert">
+                隆广庆
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%ba%9e%e5%8d%9a%22&amp;f=detail.expert">
+                庞博
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LONG+Guang-qing%22&amp;f=detail.expert">
+                LONG Guang-qing
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22PANG+Bo%22&amp;f=detail.expert">
+                PANG Bo
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%82%93%e5%bb%b7%e5%8b%87%22&amp;f=detail.expert">
+                邓廷勇
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%be%af%e4%b8%bd%e8%8b%b1%22&amp;f=detail.expert">
+                侯丽英
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e5%a7%ae%e5%a5%bd%22&amp;f=detail.expert">
+                张姮好
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%ad%99%e4%b8%bd%e8%8b%b1%22&amp;f=detail.expert">
+                孙丽英
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%96%b9%e8%b4%a4%e6%96%87%22&amp;f=detail.expert">
+                方贤文
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%ae%b8%e5%bf%97%e6%89%8d%22&amp;f=detail.expert">
+                许志才
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%ae%b8%e5%b3%b0%22&amp;f=detail.expert">
+                许峰
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Fang+Xianwen%22&amp;f=detail.expert">
+                Fang Xianwen
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Xu+Zhicai%22&amp;f=detail.expert">
+                Xu Zhicai
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Xu+Feng%22&amp;f=detail.expert">
+                Xu Feng
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%bd%99%e5%bb%ba%e5%9d%a4%22&amp;f=detail.expert">
+                余建坤
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22YU+Jian-kun%22&amp;f=detail.expert">
+                YU Jian-kun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e5%ae%b6%e5%86%9b%22&amp;f=detail.expert">
+                王家军
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e9%a6%99%e4%ba%91%22&amp;f=detail.expert">
+                张香云
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22WANG+Jia-jun%22&amp;f=detail.expert">
+                WANG Jia-jun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHANG+Xiang-yun%22&amp;f=detail.expert">
+                ZHANG Xiang-yun
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e4%b8%b0%e6%95%88%22&amp;f=detail.expert">
+                王丰效
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%82%93%e6%96%b9%e5%ae%89%22&amp;f=detail.expert">
+                邓方安
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e9%9c%b2%22&amp;f=detail.expert">
+                陈露
+              </a>
+              <ul>
+                <h3>
+                  相关机构(11条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b9%96%e5%8d%97%e7%ac%ac%e4%b8%80%e5%b8%88%e8%8c%83%e5%ad%a6%e9%99%a2%e6%95%b0%e5%ad%a6%e7%b3%bb%2c%e6%b9%96%e5%8d%97%e9%95%bf%e6%b2%99%2c410205%22&amp;f=detail.agency">
+                    湖南第一师范学院数学系,湖南长沙,410205
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b2%b3%e6%ba%90%e7%90%86%e5%b7%a5%e5%ad%a6%e6%a0%a1%22&amp;f=detail.agency">
+                    河源理工学校
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b9%bf%e8%a5%bf%e5%b8%88%e8%8c%83%e5%ad%a6%e9%99%a2%e6%95%b0%e5%ad%a6%e7%a7%91%e5%ad%a6%e5%ad%a6%e9%99%a2%2c%e5%b9%bf%e8%a5%bf%e5%8d%97%e5%ae%81%2c530001%22&amp;f=detail.agency">
+                    广西师范学院数学科学学院,广西南宁,530001
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%bb%91%e9%be%99%e6%b1%9f%e5%85%ab%e4%b8%80%e5%86%9c%e5%9e%a6%e5%a4%a7%e5%ad%a6%e6%96%87%e7%90%86%e5%ad%a6%e9%99%a2%2c%e9%bb%91%e9%be%99%e6%b1%9f%2c%e5%a4%a7%e5%ba%86%2c163319%22&amp;f=detail.agency">
+                    黑龙江八一农垦大学文理学院,黑龙江,大庆,163319
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e7%bb%a5%e5%8c%96%e5%ad%a6%e9%99%a2%e6%95%b0%e5%ad%a6%e7%b3%bb%2c%e9%bb%91%e9%be%99%e6%b1%9f%2c%e7%bb%a5%e5%8c%96%2c152061%22&amp;f=detail.agency">
+                    绥化学院数学系,黑龙江,绥化,152061
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b9%bf%e4%b8%9c%e9%87%91%e8%9e%8d%e5%ad%a6%e9%99%a2%e5%ba%94%e7%94%a8%e6%95%b0%e5%ad%a6%e7%b3%bb%2c%e5%b9%bf%e5%b7%9e%2c510521%22&amp;f=detail.agency">
+                    广东金融学院应用数学系,广州,510521
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%ae%89%e5%be%bd%e7%90%86%e5%b7%a5%e5%a4%a7%e5%ad%a6%2c%e6%95%b0%e7%90%86%e7%b3%bb%2c%e5%ae%89%e5%be%bd%2c%e6%b7%ae%e5%8d%97%2c232001%22&amp;f=detail.agency">
+                    安徽理工大学,数理系,安徽,淮南,232001
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%bb%81%e5%b7%9e%e5%ad%a6%e9%99%a2%2c%e5%ae%89%e5%be%bd%2c%e6%bb%81%e5%b7%9e%2c239012%22&amp;f=detail.agency">
+                    滁州学院,安徽,滁州,239012
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%ba%91%e5%8d%97%e8%b4%a2%e7%bb%8f%e5%a4%a7%e5%ad%a6%2c%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%a7%91%e5%ad%a6%e7%b3%bb%2c%e4%ba%91%e5%8d%97%2c%e6%98%86%e6%98%8e%2c650221%22&amp;f=detail.agency">
+                    云南财经大学,计算机科学系,云南,昆明,650221
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b5%99%e6%b1%9f%e6%9e%97%e5%ad%a6%e9%99%a2%2c%e7%90%86%e5%ad%a6%e9%99%a2%2c%e6%b5%99%e6%b1%9f%2c%e4%b8%b4%e5%ae%89%2c311300%22&amp;f=detail.agency">
+                    浙江林学院,理学院,浙江,临安,311300
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%99%95%e8%a5%bf%e7%90%86%e5%b7%a5%e5%ad%a6%e9%99%a2%2c%e6%95%b0%e5%ad%a6%e7%b3%bb%2c%e9%99%95%e8%a5%bf%2c%e6%b1%89%e4%b8%ad%2c723000%22&amp;f=detail.agency">
+                    陕西理工学院,数学系,陕西,汉中,723000
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-sygdzkxxxb.aspx">
+                邵阳学院学报（自然科学版）
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/sygdzkxxxb/2011-3.aspx">
+                2011年3期
+              </a>
+               &gt; 结合信息与计算科学专业谈当前高校专业建设的问题解析与对策
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              结合信息与计算科学专业谈当前高校专业建设的问题解析与对策
+            </h1>
+            <h2>
+              Analysis and Countermeasures of Problems in Specialty Construction in Universities in the Light of Information and Computer Science Specialty
+            </h2>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/结合信息与计算科学专业谈当前高校专业建设的问题解析与对策.aspx?ID=Periodical_sygdzkxxxb201103005" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_sygdzkxxxb201103005.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_sygdzkxxxb201103005" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              针对目前各高校信息与计算科学专业存在的问题进行了详细分析,提出了专业建设对策,及怎样在实践中重视处理好高校专业建设与高校其它工作的关系,为高校相关学科、专业建设提供了一点有益的思路.
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%88%98%e6%b0%b4%e5%bc%ba%22++DBID%3aWF_QK">
+                  刘水强
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e4%bc%8d%e9%9b%81%e9%b9%8f%22++DBID%3aWF_QK">
+                  伍雁鹏
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e8%b0%a2%e6%96%87%e5%b9%b3%22++DBID%3aWF_QK">
+                  谢文平
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                刘水强,伍雁鹏(邵阳学院网络信息中心,湖南邵阳,422004)
+                <br/>
+                谢文平(邵阳学院理学与信息科学系,湖南邵阳,422004) 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-sygdzkxxxb.aspx">
+                  邵阳学院学报：自然科学版
+                </a>
+                 
+                <span class="green-border" visible="False">
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-sygdzkxxxb.aspx">
+                  Journal of Shaoyang University:Science and Technology
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/sygdzkxxxb/2011-3.aspx">
+                  2011 08(3)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%e4%b8%8e%e8%ae%a1%e7%ae%97%e7%a7%91%e5%ad%a6%22++DBID%3aWF_QK">
+                  信息与计算科学 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e4%bf%a1%e6%81%af%e4%b8%8e%e8%ae%a1%e7%ae%97%e7%a7%91%e5%ad%a6" title="信息与计算科学的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%b8%93%e4%b8%9a%e5%bb%ba%e8%ae%be%22++DBID%3aWF_QK">
+                  专业建设 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e4%b8%93%e4%b8%9a%e5%bb%ba%e8%ae%be" title="专业建设的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%ad%a6%e7%a7%91%e5%bb%ba%e8%ae%be%22++DBID%3aWF_QK">
+                  学科建设 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%ad%a6%e7%a7%91%e5%bb%ba%e8%ae%be" title="学科建设的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22information+and+computing+science%22++DBID%3aWF_QK">
+                  information and computing science 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=information+and+computing+science" title="information and computing science的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22specialty+construction%22++DBID%3aWF_QK">
+                  specialty construction 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=specialty+construction" title="specialty construction的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22discipline+construction%22++DBID%3aWF_QK">
+                  discipline construction 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=discipline+construction" title="discipline construction的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                H05  H0 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%22++DBID%3aWF_QK">
+                  信息
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%ae%a1%e7%ae%97%e7%a7%91%e5%ad%a6%e4%b8%93%e4%b8%9a%22++DBID%3aWF_QK">
+                  计算科学专业
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%ab%98%e6%a0%a1%22++DBID%3aWF_QK">
+                  高校
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%b8%93%e4%b8%9a%e5%bb%ba%e8%ae%be%22++DBID%3aWF_QK">
+                  专业建设
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%97%ae%e9%a2%98%e8%a7%a3%e6%9e%90%22++DBID%3aWF_QK">
+                  问题解析
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%bb%ba%e8%ae%be%e5%af%b9%e7%ad%96%22++DBID%3aWF_QK">
+                  建设对策
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22Computer+Science%22++DBID%3aWF_QK">
+                  Computer Science
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22Information%22++DBID%3aWF_QK">
+                  Information
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22Light%22++DBID%3aWF_QK">
+                  Light
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22Problems%22++DBID%3aWF_QK">
+                  Problems
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22computer+science%22++DBID%3aWF_QK">
+                  computer science
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22information%22++DBID%3aWF_QK">
+                  information
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22deal+with%22++DBID%3aWF_QK">
+                  deal with
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%9b%b8%e5%85%b3%e5%ad%a6%e7%a7%91%22++DBID%3aWF_QK">
+                  相关学科
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22solution%22++DBID%3aWF_QK">
+                  solution
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22practice%22++DBID%3aWF_QK">
+                  practice
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22related%22++DBID%3aWF_QK">
+                  related
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22improve%22++DBID%3aWF_QK">
+                  improve
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22Chinese%22++DBID%3aWF_QK">
+                  Chinese
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%80%9d%e8%b7%af%22++DBID%3aWF_QK">
+                  思路
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                邵阳学院校级教改课题 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/10.3969/j.issn.1672-7010.2011.03.005">
+                  10.3969/j.issn.1672-7010.2011.03.005
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(9条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_hndysfxb201306011.aspx">
+                    关于高师院校信息与计算科学专业建设的思考
+                  </a>
+                  <span>
+                     - 湖南第一师范学院学报2013,13(6)
+                  </span>
+                  <a href="/Service/File/download/Periodical_hndysfxb201306011.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jsjgprjyyy201313125.aspx">
+                    关于信息与计算科学专业建设的几点思考
+                  </a>
+                  <span>
+                     - 计算机光盘软件与应用2013(13)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jsjgprjyyy201313125.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_gxkxyxb200902019.aspx">
+                    西部高等院校信息与计算科学专业建设问题与措施
+                  </a>
+                  <span>
+                     - 广西科学院学报2009,25(2)
+                  </span>
+                  <a href="/Service/File/download/Periodical_gxkxyxb200902019.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_lngxyxb-shkx200904042.aspx">
+                    农业院校信息与计算科学专业建设与"建构主义"教学模式
+                  </a>
+                  <span>
+                     - 辽宁工业大学学报（社会科学版）2009,11(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_lngxyxb-shkx200904042.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_dxsx201302001.aspx">
+                    财经类本科院校信息与计算科学专业建设和发展中的若干问题与对策研究
+                  </a>
+                  <span>
+                     - 大学数学2013,29(2)
+                  </span>
+                  <a href="/Service/File/download/Periodical_dxsx201302001.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_czszxy200603013.aspx">
+                    信息与计算科学专业建设的探索与思考
+                  </a>
+                  <span>
+                     - 滁州学院学报2006,8(3)
+                  </span>
+                  <a href="/Service/File/download/Periodical_czszxy200603013.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_yncmxyxb200603037.aspx">
+                    财经类院校信息与计算科学专业建设的思考
+                  </a>
+                  <span>
+                     - 云南财经大学学报2006,22(3)
+                  </span>
+                  <a href="/Service/File/download/Periodical_yncmxyxb200603037.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_hljgjyj200606041.aspx">
+                    "信息与计算科学"专业建设的探索与实践
+                  </a>
+                  <span>
+                     - 黑龙江高教研究2006(6)
+                  </span>
+                  <a href="/Service/File/download/Periodical_hljgjyj200606041.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_kszk200814137.aspx">
+                    信息与计算科学专业建设的实践与探索
+                  </a>
+                  <span>
+                     - 考试周刊2008(14)
+                  </span>
+                  <a href="/Service/File/download/Periodical_kszk200814137.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_sygdzkxxxb201103005' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_6.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_6.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

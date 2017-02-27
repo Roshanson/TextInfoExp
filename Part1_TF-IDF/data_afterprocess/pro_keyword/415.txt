@@ -1,0 +1,199 @@
+
+
+                作 者：
+              
+
+
+                  陈璟
+                
+
+                  阮月丽
+                
+
+                  余恒建
+                
+
+                  梁健
+                
+
+                  陈四新
+                
+
+                  黄学通
+                
+
+                  韩林
+                
+
+                  邓昌建
+                
+
+                  CHEN Jing
+                
+
+                  RUAN Yue-li
+                
+
+                  YU Heng-jian
+                
+
+                  LIANG Jian
+                
+
+                  CHEN Si-xin
+                
+
+                  HUANG Xue-tong
+                
+
+                  HAN Lin
+                
+
+                  DENG Chang-jian
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                陈璟,CHEN Jing(柳州职业技术学院机电工程系,广西 柳州,545005)
+                
+                阮月丽,余恒建,RUAN Yue-li,YU Heng-jian(柳州城市职业学院机电与汽车工程系,广西 柳州,545036)
+                
+                梁健,陈四新,黄学通,韩林,LIANG Jian,CHEN Si-xin,HUANG Xue-tong,HAN Lin(柳州市豪杰特化工机械有限责任公司技术中心,广西 柳州,545005)
+                
+                邓昌建,DENG Chang-jian(广西新维力科技有限公司技术中心,广西 桂林,541004) 
+              
+
+                刊 名：
+              
+
+
+                  粘接
+                
+                 
+                
+
+                    ISTIC
+                  
+
+
+
+                英文刊名：
+              
+
+
+                  Adhesion
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2014 (10)
+                
+                 
+              
+
+                分类号：
+              
+
+                TQ430.5  TP3-05 
+              
+
+                关键词：
+              
+
+
+                  胶粘剂制备 
+                
+
+
+                  
+                
+                  乳化头 
+                
+
+
+                  
+                
+                  Flow Simulation 
+                
+
+
+                  
+                
+                  流体分析 
+                
+
+
+                  
+                
+                  CFD 
+                
+
+
+                  
+                
+                  adhesives production 
+                
+
+
+                  
+                
+                  emulsifying head 
+                
+
+
+                  
+                
+                  flow simulation 
+                
+
+
+                  
+                
+                  fluid analysis 
+                
+
+
+                  
+                
+                  CFD 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                 
+              
+
+                机标关键词：
+              
+
+                 
+              
+
+                基金项目：
+              
+
+                2014年广西高校科研项目，2014年广西新产品新技术产业化项目，2013年广西区工信委企业技术改造专项资金(桂工信投资【2013】258)资助。 
+              
+
+                DOI：
+              
+
+
+
+                 
+              

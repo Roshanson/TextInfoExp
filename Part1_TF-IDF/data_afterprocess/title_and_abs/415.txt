@@ -1,0 +1,3 @@
+基于CFD技术优化乳化头转子结构  Optimization of rotor structure of emulsifying head by CFD technology
+              应用SolidWorks Flow Simulation对一款乳化头4个不同转子结构进行了CFD分析，通过仿真计算，直观地获得了釜内不同乳化头周围的流体速度分布云图和流线轨迹；通过粒子示踪法，模拟了制胶物料在乳化头作用下的分布状态；最后在乳化头出料口外定距设定一草绘面获取该面上的平均速度，以定量预测对比不同转子结构的乳化效果。通过CFD分析，可从4个方案中选择最佳结构，达到优化转子的目的。
+            

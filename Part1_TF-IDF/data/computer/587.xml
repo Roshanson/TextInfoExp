@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  网络环境下图书馆资源共建共享
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_sj-kjzh201009002" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(14)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%8d%a2%e8%8e%b9%22&amp;f=detail.expert">
+                卢莹
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e5%aa%9b%22&amp;f=detail.expert">
+                张媛
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9b%b9%e4%ba%ae%22&amp;f=detail.expert">
+                曹亮
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22CAO+Liang%22&amp;f=detail.expert">
+                CAO Liang
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e5%b0%8f%e7%92%90%22&amp;f=detail.expert">
+                王小璐
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%bb%bb%e4%bc%9f%22&amp;f=detail.expert">
+                任伟
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e5%bf%b5%22&amp;f=detail.expert">
+                刘念
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%a8%e8%b6%85%22&amp;f=detail.expert">
+                杨超
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%bd%97%e6%b0%b8%e7%a6%84%22&amp;f=detail.expert">
+                罗永禄
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Luo+Yonglu%22&amp;f=detail.expert">
+                Luo Yonglu
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%b1%bb%e6%88%90%e4%bc%9f%22&amp;f=detail.expert">
+                类成伟
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%83%a1%e8%8b%b1%e8%b4%a2%22&amp;f=detail.expert">
+                胡英财
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%8f%b2%e7%90%b3%e7%90%b3%22&amp;f=detail.expert">
+                史琳琳
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%bb%98%e7%a7%80%e7%ba%a2%22&amp;f=detail.expert">
+                默秀红
+              </a>
+              <ul>
+                <h3>
+                  相关机构(11条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b9%bf%e8%a5%bf%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e5%b9%bf%e8%a5%bf%e5%8d%97%e5%ae%81%2c530022%22&amp;f=detail.agency">
+                    广西图书馆,广西南宁,530022
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%ad%a6%e8%ad%a6%e5%b7%a5%e7%a8%8b%e5%a4%a7%e5%ad%a6%e8%ae%ad%e7%bb%83%e9%83%a8%e5%9b%be%e4%b9%a6%e9%a6%86%e9%99%95%e8%a5%bf+%e8%a5%bf%e5%ae%89+710086%22&amp;f=detail.agency">
+                    武警工程大学训练部图书馆陕西 西安 710086
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%9b%9b%e5%b7%9d%e7%90%86%e5%b7%a5%e5%ad%a6%e9%99%a2%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e8%87%aa%e8%b4%a1%2c643000%22&amp;f=detail.agency">
+                    四川理工学院图书馆,自贡,643000
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%ad%a6%e6%b1%89%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%e5%9f%8e%e5%b8%82%e5%ad%a6%e9%99%a2%e5%9b%be%e4%b9%a6%e9%a6%86+%e6%b9%96%e5%8c%97%e6%ad%a6%e6%b1%89430083%22&amp;f=detail.agency">
+                    武汉科技大学城市学院图书馆 湖北武汉430083
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e5%ae%89%e7%94%b5%e5%ad%90%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e9%99%95%e8%a5%bf%e8%a5%bf%e5%ae%89%2c710071%22&amp;f=detail.agency">
+                    西安电子科技大学图书馆,陕西西安,710071
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e5%ae%89%e5%bb%ba%e7%ad%91%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e9%99%95%e8%a5%bf%e8%a5%bf%e5%ae%89%2c710055%22&amp;f=detail.agency">
+                    西安建筑科技大学图书馆,陕西西安,710055
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%9d%92%e5%b2%9b%e5%b8%82%e5%a7%94%e5%85%9a%e6%a0%a1%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e5%b1%b1%e4%b8%9c%2c266071%22&amp;f=detail.agency">
+                    青岛市委党校图书馆,山东,266071
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e4%ba%ac%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    西京学院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b9%bf%e4%b8%9c%e7%9c%81%e7%9f%b3%e6%b2%b9%e5%8c%96%e5%b7%a5%e8%81%8c%e4%b8%9a%e6%8a%80%e6%9c%af%e5%ad%a6%e6%a0%a1%2c%e5%b9%bf%e4%b8%9c%e4%bd%9b%e5%b1%b1%2c528225%22&amp;f=detail.agency">
+                    广东省石油化工职业技术学校,广东佛山,528225
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b1%b1%e4%b8%9c%e5%a4%a7%e5%ad%a6%e5%a8%81%e6%b5%b7%e5%88%86%e6%a0%a1%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e5%b1%b1%e4%b8%9c%2c%e5%a8%81%e6%b5%b7%2c264209%22&amp;f=detail.agency">
+                    山东大学威海分校图书馆,山东,威海,264209
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b2%b3%e5%8c%97%e6%94%bf%e6%b3%95%e8%81%8c%e4%b8%9a%e5%ad%a6%e9%99%a2%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e6%b2%b3%e5%8c%97%e7%9c%81%e7%9f%b3%e5%ae%b6%e5%ba%84%e5%b8%82%2c050061%22&amp;f=detail.agency">
+                    河北政法职业学院图书馆,河北省石家庄市,050061
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-sj-kjzh.aspx">
+                其它
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/sj-kjzh/2010-9.aspx">
+                2010年9期
+              </a>
+               &gt; 网络环境下图书馆资源共建共享
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              网络环境下图书馆资源共建共享
+            </h1>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/网络环境下图书馆资源共建共享.aspx?ID=Periodical_sj-kjzh201009002" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_sj-kjzh201009002.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_sj-kjzh201009002" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              为更好地为读者服务,图书馆需要在信息资源库的建设,提供服务项目,对用户的培训,建立服务质量评价体系,以及服务规范等方面加强工作,切实推进资源共享的各方面工作,实现最大程度的资源共享.
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e9%99%88%e6%b5%b7%e8%8a%b1%22++DBID%3aWF_QK">
+                  陈海花
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                宁夏吴忠,宁夏民族职业技术学院图书馆,751100 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-sj-kjzh.aspx">
+                  沙棘(科教纵横)
+                </a>
+                 
+                <span class="green-border" visible="False">
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-sj-kjzh.aspx">
+                  HIPPOPHAE
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/sj-kjzh/2010-9.aspx">
+                  2010 (9)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-0 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e7%8e%af%e5%a2%83%22++DBID%3aWF_QK">
+                  网络环境 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%bd%91%e7%bb%9c%e7%8e%af%e5%a2%83" title="网络环境的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9b%be%e4%b9%a6%e9%a6%86%22++DBID%3aWF_QK">
+                  图书馆 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%9b%be%e4%b9%a6%e9%a6%86" title="图书馆的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%b5%84%e6%ba%90%22++DBID%3aWF_QK">
+                  资源 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%b5%84%e6%ba%90" title="资源的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%85%b1%e5%bb%ba%22++DBID%3aWF_QK">
+                  共建 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%85%b1%e5%bb%ba" title="共建的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%85%b1%e4%ba%ab%22++DBID%3aWF_QK">
+                  共享 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%85%b1%e4%ba%ab" title="共享的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                G25  H31 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e7%bb%9c%e7%8e%af%e5%a2%83%e4%b8%8b%22++DBID%3aWF_QK">
+                  网络环境下
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9b%be%e4%b9%a6%e9%a6%86%22++DBID%3aWF_QK">
+                  图书馆
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%b5%84%e6%ba%90%e5%85%b1%e4%ba%ab%22++DBID%3aWF_QK">
+                  资源共享
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%b8%ba%e8%af%bb%e8%80%85%e6%9c%8d%e5%8a%a1%22++DBID%3aWF_QK">
+                  为读者服务
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%b4%a8%e9%87%8f%e8%af%84%e4%bb%b7%e4%bd%93%e7%b3%bb%22++DBID%3aWF_QK">
+                  质量评价体系
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%e8%b5%84%e6%ba%90%e5%ba%93%22++DBID%3aWF_QK">
+                  信息资源库
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%9c%8d%e5%8a%a1%e9%a1%b9%e7%9b%ae%22++DBID%3aWF_QK">
+                  服务项目
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%9c%8d%e5%8a%a1%e8%a7%84%e8%8c%83%22++DBID%3aWF_QK">
+                  服务规范
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9f%b9%e8%ae%ad%22++DBID%3aWF_QK">
+                  培训
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%bb%ba%e8%ae%be%22++DBID%3aWF_QK">
+                  建设
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/">
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(10条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_huaz201219258.aspx">
+                    网络环境下如何加强图书馆读者服务创新工作
+                  </a>
+                  <span>
+                     - 华章2012(19)
+                  </span>
+                  <a href="/Service/File/download/Periodical_huaz201219258.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_zgwfsb201404513.aspx">
+                    当代网络环境下图书馆创新业务的建设
+                  </a>
+                  <span>
+                     - 中国文房四宝2014(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_zgwfsb201404513.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_nytsqbxk201005088.aspx">
+                    高校网络环境下图书馆服务模式的转变与对策——以四川理工学院图书馆为例
+                  </a>
+                  <span>
+                     - 农业图书情报学刊2010,22(5)
+                  </span>
+                  <a href="/Service/File/download/Periodical_nytsqbxk201005088.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_sq-zh201322060.aspx">
+                    走有特色的图书馆网络化服务创新之路—试论网络环境下独立学院图书馆读者服务发展趋
+                  </a>
+                  <span>
+                     - 商情2013(22)
+                  </span>
+                  <a href="/Service/File/download/Periodical_sq-zh201322060.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_nytsqbxk201210052.aspx">
+                    网络环境下的图书馆服务理念探讨
+                  </a>
+                  <span>
+                     - 农业图书情报学刊2012,24(10)
+                  </span>
+                  <a href="/Service/File/download/Periodical_nytsqbxk201210052.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_qbts200604018.aspx">
+                    网络环境下图书馆信息资源优化整合的趋势--以江西省图书馆为例
+                  </a>
+                  <span>
+                     - 情报探索2006(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_qbts200604018.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_caiz201428281.aspx">
+                    基于网络环境的图书馆编目工作探讨
+                  </a>
+                  <span>
+                     - 才智2014(28)
+                  </span>
+                  <a href="/Service/File/download/Periodical_caiz201428281.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_juanz201304003.aspx">
+                    网络环境下图书馆发展研究
+                  </a>
+                  <span>
+                     - 卷宗2013(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_juanz201304003.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_zgxjsxcpjx201117231.aspx">
+                    网络环境下图书馆文献资源的发展趋势与图书馆信息服务工作
+                  </a>
+                  <span>
+                     - 中国新技术新产品2011(17)
+                  </span>
+                  <a href="/Service/File/download/Periodical_zgxjsxcpjx201117231.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_hbkjty201103029.aspx">
+                    网络环境下高校图书馆纸质期刊阅览服务工作创新探讨——以河北政法职业学院图书馆为例
+                  </a>
+                  <span>
+                     - 河北科技图苑2011,24(3)
+                  </span>
+                  <a href="/Service/File/download/Periodical_hbkjty201103029.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_sj-kjzh201009002' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /><img src="Images/NUM_3.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_4.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

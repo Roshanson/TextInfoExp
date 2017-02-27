@@ -1,0 +1,3 @@
+基于绩效偏差阈值的军用软件项目挣值管理研究  The Study of Military Software Project Earned Value Management Based on Performance Deviation Threshold
+              针对军用软件项目管理中进度控制困难的问题,在分析挣值管理理论的基础上,建立了军用软件项目挣值管理流程.研究了基于成本的进度控制方法,提出了基于绩效偏差阈值与关键路径的进度控制算法,并在实际项目中进行了应用.实践结果证明了算法的有效性,对于加强军用软件项目进度管理、提高项目管理质量有一定参考价值.
+            

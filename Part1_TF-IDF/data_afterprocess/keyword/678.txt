@@ -1,0 +1,1 @@
+Job—Shop调度    多目标    并行机    混合遗传算法    Job-Shop scheduling    muhi-objective    multi machine    hybrid genetic algorithm   

@@ -1,0 +1,176 @@
+
+
+                作 者：
+              
+
+
+                  郭茂祖
+                
+
+                  代启国
+                
+
+                  徐立秋
+                
+
+                  刘晓燕
+                
+
+                  Guo Maozu
+                
+
+                  Dai Qiguo
+                
+
+                  Xu Liqiu
+                
+
+                  Liu Xiaoyan
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                哈尔滨工业大学计算机科学与技术学院 哈尔滨 150001 
+              
+
+                刊 名：
+              
+
+
+                  计算机研究与发展
+                
+                 
+                
+
+                    ISTIC
+                  
+
+                    EI
+                  
+
+                    PKU
+                  
+
+
+
+                英文刊名：
+              
+
+
+                  Journal of Computer Research and Development
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2014 51(10)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP18  TP391  TP3-05 
+              
+
+                关键词：
+              
+
+
+                  蛋白质复合体 
+                
+
+
+                  
+                
+                  蛋白质相互作用 
+                
+
+
+                  
+                
+                  蛋白质复合体模块度函数 
+                
+
+
+                  
+                
+                  初始模块 
+                
+
+
+                  
+                
+                  BMM算法 
+                
+
+
+                  
+                
+                  protein complex 
+                
+
+
+                  
+                
+                  protein-protein interaction (PPI) 
+                
+
+
+                  
+                
+                  protein complexes modularity function 
+                
+
+
+                  
+                
+                  initial module 
+                
+
+
+                  
+                
+                  based on protein complexes modularity function for merging modules (BMM) algorithm 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                 
+              
+
+                机标关键词：
+              
+
+                 
+              
+
+                基金项目：
+              
+
+                国家自然科学基金项目，高等学校博士学科点专项科研基金项目 
+              
+
+                DOI：
+              
+
+
+                  10.7544/issn1000-1239.2014.20130538
+                
+                 
+              

@@ -1,0 +1,1 @@
+自然语言处理    机器翻译    句法对齐    翻译规则抽取    解码    Natural Language Processing    Machine Translation    Syntactic Alignment    Translation Rule Extraction    Decoding   

@@ -1,0 +1,3 @@
+视频技术在反事故演习调度系统的应用  The Implementation of Video Technology in Anti-accident Exercises Dispatch System
+              针对反事故演习对保证电网安全稳定运行的重要性,介绍了视频联合反事故演习系统的概况及体系结构、功能和特点,讨论了系统3个主要软件模块开发的关键技术.系统采用视频数字化和微软的NetMeeting技术,为电力反事故演习用户提供可视的交互手段,通过NetMeeting提供的COM技术灵活实现了用于满足电力演习的通信模块,通过专用的视频编解码技术实现了演习场景和调度人员的同步远程传输.
+            

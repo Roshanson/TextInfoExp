@@ -1,0 +1,3 @@
+谈PBL学习模式在《计算机应用基础》课程中的应用  The Discussion on Problem-based Learning Application in Computer Application Education
+              本文通过探索基于PBL 的学习方法在高校非计算机专业教学中的应用,详细介绍了PBL学习模式在计算机基础教学中的设计思路、设计原则,并以实例进行了应用研究,以促进计算机课堂教学的改革和发展.
+            

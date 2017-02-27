@@ -1,0 +1,3 @@
+数据通信与计算机通信网实验教学改革与实践  The reform and practice of data and computer communications network experiment teaching
+              从培养本科学生的创新精神和实践能力出发,针对数据通信与计算机通信网课程实验教学现状,提出了实验课程的建设思路,重点从实验内容改革、实验室运行模式以及实验教学的组织方面提出一系列改革措施,并通过实验教学实践得以证实.
+            

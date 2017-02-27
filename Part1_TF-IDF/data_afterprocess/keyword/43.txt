@@ -1,0 +1,1 @@
+多播通信    通信模式    路由策略    路由模型    QMRI算法    muhicast communication    communication model    routing    routing model    QMRI algorithm   

@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  浅论大学生的信息素质教育  A Study on the Information Quality Education of College Students
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_whzyjsxyxb200303006" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(21)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%b4%be%e6%99%93%e7%87%95%22&amp;f=detail.expert">
+                贾晓燕
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22JIA+Xiao-yan%22&amp;f=detail.expert">
+                JIA Xiao-yan
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e5%a3%ab%e9%9d%96%22&amp;f=detail.expert">
+                张士靖
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e5%a8%9c%22&amp;f=detail.expert">
+                刘娜
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%b0%a2%e5%bf%97%e8%80%98%22&amp;f=detail.expert">
+                谢志耘
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%96%9b%e9%9d%99%22&amp;f=detail.expert">
+                薛静
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e7%8e%b2%22&amp;f=detail.expert">
+                张玲
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%b8%81%e9%9d%99%e8%8a%9d%22&amp;f=detail.expert">
+                丁静芝
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22DING+Jing-zhi%22&amp;f=detail.expert">
+                DING Jing-zhi
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%82%b1%e4%bd%b3%e4%bd%b3%22&amp;f=detail.expert">
+                邱佳佳
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%9f%b3%e6%b4%aa%e5%8f%91%22&amp;f=detail.expert">
+                石洪发
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bb%96%e8%bf%8e%e7%ba%a2%22&amp;f=detail.expert">
+                廖迎红
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22SHI+Hong-fa%22&amp;f=detail.expert">
+                SHI Hong-fa
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LIAO+Yin-hong%22&amp;f=detail.expert">
+                LIAO Yin-hong
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%8d%b1%e9%9d%a9%22&amp;f=detail.expert">
+                危革
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22WEI+Ge%22&amp;f=detail.expert">
+                WEI Ge
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e5%b3%a5%e5%b5%98%22&amp;f=detail.expert">
+                张峥嵘
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%a7%9c%e6%bb%a6%e7%94%9f%22&amp;f=detail.expert">
+                姜滦生
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Jiang+Luansheng%22&amp;f=detail.expert">
+                Jiang Luansheng
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%96%bb%e8%8d%a3%e6%98%a5%22&amp;f=detail.expert">
+                喻荣春
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e5%b0%8f%e8%90%8d%22&amp;f=detail.expert">
+                李小萍
+              </a>
+              <ul>
+                <h3>
+                  相关机构(13条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%8e%e4%b8%ad%e5%86%9c%e4%b8%9a%e5%a4%a7%e5%ad%a6%2c%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e6%b9%96%e5%8c%97%2c%e6%ad%a6%e6%b1%89%2c430070%22&amp;f=detail.agency">
+                    华中农业大学,图书馆,湖北,武汉,430070
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%8e%e4%b8%ad%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%e5%90%8c%e6%b5%8e%e5%8c%bb%e5%ad%a6%e9%99%a2%e5%8c%bb%e8%8d%af%e4%bf%a1%e6%81%af%e7%b3%bb%2c%e6%b9%96%e5%8c%97%2c%e6%ad%a6%e6%b1%89%2c430030%22&amp;f=detail.agency">
+                    华中科技大学同济医学院医药信息系,湖北,武汉,430030
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8c%97%e4%ba%ac%e5%a4%a7%e5%ad%a6%e5%8c%bb%e5%ad%a6%e9%83%a8%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e5%8c%97%e4%ba%ac%2c100083%22&amp;f=detail.agency">
+                    北京大学医学部图书馆,北京,100083
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%a4%a9%e6%b4%a5%e8%81%8c%e4%b8%9a%e5%a4%a7%e5%ad%a6%2c%e5%a4%a9%e6%b4%a5%e5%b8%82%2c300402%22&amp;f=detail.agency">
+                    天津职业大学,天津市,300402
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b2%b3%e5%8c%97%e7%bb%8f%e8%b4%b8%e5%a4%a7%e5%ad%a6%2c%e6%b2%b3%e5%8c%97%2c%e7%9f%b3%e5%ae%b6%e5%ba%84%2c050061%22&amp;f=detail.agency">
+                    河北经贸大学,河北,石家庄,050061
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a1%a1%e6%b0%b4%e5%ad%a6%e9%99%a2%2c%e7%bb%8f%e6%b5%8e%e7%ae%a1%e7%90%86%e5%ad%a6%e9%99%a2%2c%e6%b2%b3%e5%8c%97%2c%e8%a1%a1%e6%b0%b4%2c053000%22&amp;f=detail.agency">
+                    衡水学院,经济管理学院,河北,衡水,053000
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b9%96%e5%8d%97%e7%a7%91%e6%8a%80%e5%ad%a6%e9%99%a2%e5%9b%be%e4%b9%a6%e9%a6%86+%e6%b9%96%e5%8d%97+%e6%b0%b8%e5%b7%9e%2c425199%22&amp;f=detail.agency">
+                    湖南科技学院图书馆 湖南 永州,425199
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%b4%b5%e5%b7%9e%e7%9c%81%e6%af%95%e8%8a%82%e5%ad%a6%e9%99%a2%2c%e6%af%95%e8%8a%82%2c551700%22&amp;f=detail.agency">
+                    贵州省毕节学院,毕节,551700
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%80%80%e5%8c%96%e5%ad%a6%e9%99%a2%e6%95%b0%e5%ad%a6%e4%b8%8e%e5%ba%94%e7%94%a8%e6%95%b0%e5%ad%a6%e7%b3%bb%2c%e6%b9%96%e5%8d%97%e6%80%80%e5%8c%96%2c418008%22&amp;f=detail.agency">
+                    怀化学院数学与应用数学系,湖南怀化,418008
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%9c%e5%8c%97%e6%9e%97%e4%b8%9a%e5%a4%a7%e5%ad%a6%2c%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e5%93%88%e5%b0%94%e6%bb%a8%2c150040%22&amp;f=detail.agency">
+                    东北林业大学,图书馆,哈尔滨,150040
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e7%87%95%e5%b1%b1%e5%a4%a7%e5%ad%a6%2c%e9%87%8c%e4%bb%81%e5%ad%a6%e9%99%a2%2c%e6%b2%b3%e5%8c%97%2c%e7%a7%a6%e7%9a%87%e5%b2%9b%2c066004%22&amp;f=detail.agency">
+                    燕山大学,里仁学院,河北,秦皇岛,066004
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b1%9f%e8%a5%bf%e7%bb%8f%e6%b5%8e%e7%ae%a1%e7%90%86%e5%b9%b2%e9%83%a8%e5%ad%a6%e9%99%a2%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e6%b1%9f%e8%a5%bf%2c%e5%8d%97%e6%98%8c%2c330300%22&amp;f=detail.agency">
+                    江西经济管理干部学院图书馆,江西,南昌,330300
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b1%9f%e8%a5%bf%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6%e5%9b%be%e4%b9%a6%e9%a6%86%2c%e6%b1%9f%e8%a5%bf%2c%e5%8d%97%e6%98%8c%2c330027%22&amp;f=detail.agency">
+                    江西师范大学图书馆,江西,南昌,330027
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-whzyjsxyxb.aspx">
+                武汉职业技术学院学报
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/whzyjsxyxb/2003-3.aspx">
+                2003年3期
+              </a>
+               &gt; 浅论大学生的信息素质教育
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              浅论大学生的信息素质教育
+            </h1>
+            <h2>
+              A Study on the Information Quality Education of College Students
+            </h2>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/浅论大学生的信息素质教育.aspx?ID=Periodical_whzyjsxyxb200303006" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_whzyjsxyxb200303006.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_whzyjsxyxb200303006" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              本文阐述了图书馆对学生进行信息素质教育的必要性,以及利用自身优势进行信息素质教育的方法.
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%bc%a0%e8%8e%89%22++DBID%3aWF_QK">
+                  张莉
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22ZHANG+Li%22++DBID%3aWF_QK">
+                  ZHANG Li
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                湖北经济学院,湖北,武汉,430077 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-whzyjsxyxb.aspx">
+                  武汉职业技术学院学报
+                </a>
+                 
+                <span class="green-border" visible="False">
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-whzyjsxyxb.aspx">
+                  JOURNAL OF WUHAN TECHNICAL COLLEGE
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/whzyjsxyxb/2003-3.aspx">
+                  2003 2(3)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%a4%a7%e5%ad%a6%e7%94%9f%22++DBID%3aWF_QK">
+                  大学生 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%a4%a7%e5%ad%a6%e7%94%9f" title="大学生的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%e7%b4%a0%e8%b4%a8%22++DBID%3aWF_QK">
+                  信息素质 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e4%bf%a1%e6%81%af%e7%b4%a0%e8%b4%a8" title="信息素质的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%95%99%e8%82%b2%22++DBID%3aWF_QK">
+                  教育 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%95%99%e8%82%b2" title="教育的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                G81  G64 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%a4%a7%e5%ad%a6%e7%94%9f%22++DBID%3aWF_QK">
+                  大学生
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%bf%a1%e6%81%af%e7%b4%a0%e8%b4%a8%e6%95%99%e8%82%b2%22++DBID%3aWF_QK">
+                  信息素质教育
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22College+Students%22++DBID%3aWF_QK">
+                  College Students
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9b%be%e4%b9%a6%e9%a6%86%22++DBID%3aWF_QK">
+                  图书馆
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%96%b9%e6%b3%95%22++DBID%3aWF_QK">
+                  方法
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/10.3969/j.issn.1671-931X.2003.03.006">
+                  10.3969/j.issn.1671-931X.2003.03.006
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(10条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jsjyny200708038.aspx">
+                    浅论信息素质与大学生信息素质的培养
+                  </a>
+                  <span>
+                     - 农业网络信息2007(8)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jsjyny200708038.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_tsglt200804004.aspx">
+                    一个独特的大学生信息素质评价案例——美国加弗大学信息素质评价方法探析
+                  </a>
+                  <span>
+                     - 图书馆论坛2008,28(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_tsglt200804004.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_tjzydxxb200402015.aspx">
+                    浅谈信息素质与大学生信息素质的培养
+                  </a>
+                  <span>
+                     - 天津职业大学学报2004,13(2)
+                  </span>
+                  <a href="/Service/File/download/Periodical_tjzydxxb200402015.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_hsszxb201005024.aspx">
+                    大学生信息素质现状与对策研究——以衡水学院信息管理专业为例
+                  </a>
+                  <span>
+                     - 衡水学院学报2010,12(5)
+                  </span>
+                  <a href="/Service/File/download/Periodical_hsszxb201005024.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_wsbl-ll201406024.aspx">
+                    “浅阅读”时代高校图书馆应对大学生信息素质缺失的策略
+                  </a>
+                  <span>
+                     - 文史博览（理论）2014(6)
+                  </span>
+                  <a href="/Service/File/download/Periodical_wsbl-ll201406024.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_nytsqbxk201003038.aspx">
+                    欠发达地区地方院校大学生信息素质状况调查与思考
+                  </a>
+                  <span>
+                     - 农业图书情报学刊2010,22(3)
+                  </span>
+                  <a href="/Service/File/download/Periodical_nytsqbxk201003038.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_hhxyxb201307040.aspx">
+                    高校图书馆如何提高大学生信息素质
+                  </a>
+                  <span>
+                     - 怀化学院学报2013(7)
+                  </span>
+                  <a href="/Service/File/download/Periodical_hhxyxb201307040.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_hnsfdxxb-zxshkxb201004071.aspx">
+                    网络环境下大学生信息素质的培养与提高
+                  </a>
+                  <span>
+                     - 河南师范大学学报（哲学社会科学版）2010,37(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_hnsfdxxb-zxshkxb201004071.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jiaoxyj200604019.aspx">
+                    提高大学生信息素质方法初探
+                  </a>
+                  <span>
+                     - 教学研究2006,29(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jiaoxyj200604019.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_ncgzxb200403031.aspx">
+                    大学生的信息素质与高校图书馆信息素质教育的开展
+                  </a>
+                  <span>
+                     - 南昌高专学报2004,19(3)
+                  </span>
+                  <a href="/Service/File/download/Periodical_ncgzxb200403031.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_whzyjsxyxb200303006' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_9.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

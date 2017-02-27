@@ -1,0 +1,200 @@
+
+
+                作 者：
+              
+
+
+                  廖正湘
+                
+
+                  陈元枝
+                
+
+                  李强
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                桂林电子科技大学电子工程与自动化学院,广西桂林,541004 
+              
+
+                刊 名：
+              
+
+
+                  大众科技
+                
+                 
+                
+
+
+
+                英文刊名：
+              
+
+
+                  Popular science & technology
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2011 (10)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-05 
+              
+
+                关键词：
+              
+
+
+                  肤色分割 
+                
+
+
+                  
+                
+                  模板匹配 
+                
+
+
+                  
+                
+                  人眼定位 
+                
+
+
+                  
+                
+                  人脸检测 
+                
+
+
+                  
+                
+                  Color segmentation 
+                
+
+
+                  
+                
+                  template matching 
+                
+
+
+                  
+                
+                  eye positioning 
+                
+
+
+                  
+                
+                  face detection 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                TP3  TN9 
+              
+
+                机标关键词：
+              
+
+
+                  肤色建模
+                
+
+                  人眼定位
+                
+
+                  人脸图像
+                
+
+                  检测方法
+                
+
+                  detection method
+                
+
+                  face detection
+                
+
+                  modeling
+                
+
+                  precise positioning
+                
+
+                  color segmentation
+                
+
+                  template matching
+                
+
+                  Ycrcb色彩空间
+                
+
+                  color space
+                
+
+                  color image
+                
+
+                  形态学算法
+                
+
+                  模板匹配法
+                
+
+                  眼睛
+                
+
+                  消除噪声
+                
+
+                  实验结果
+                
+
+                  人脸检测
+                
+
+                  results
+                
+                 
+              
+
+                基金项目：
+              
+
+                 
+              
+
+                DOI：
+              
+
+
+                  10.3969/j.issn.1008-1151.2011.10.016
+                
+                 
+              

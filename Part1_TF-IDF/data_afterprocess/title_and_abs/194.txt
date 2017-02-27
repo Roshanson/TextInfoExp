@@ -1,0 +1,3 @@
+基于OpenCms网站内容管理系统的比较研究  Comparison and Research Based on OpenCms Web Content Management System
+              通过对基于OpenCms内容管理系统的探讨,分析了目前国内外的主流网站内容管理系统,并对其进行比较研究；对如何评价内容管理系统提出几点建议.
+            

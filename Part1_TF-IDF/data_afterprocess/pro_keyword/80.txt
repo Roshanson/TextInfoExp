@@ -1,0 +1,232 @@
+
+
+                作 者：
+              
+
+
+                  巩林明
+                
+
+                  张振国
+                
+
+                  GONG Lin-ming
+                
+
+                  ZHANG Zhen-guo
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                巩林明,GONG Lin-ming(陕西科技大学,陕西,西安,71000;石河子大学,新疆,石河子,83200)
+                
+                张振国,ZHANG Zhen-guo(陕西科技大学,陕西,西安,71000) 
+              
+
+                刊 名：
+              
+
+
+                  广东农业科学
+                
+                 
+                
+
+                    PKU
+                  
+
+
+
+                英文刊名：
+              
+
+
+                  GUANGDONG AGRICULTURAL SCIENCES
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2009 (7)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-05  S126 
+              
+
+                关键词：
+              
+
+
+                  病虫入侵检测 
+                
+
+
+                  
+                
+                  BP神经网络 
+                
+
+
+                  
+                
+                  异常检测 
+                
+
+
+                  
+                
+                  规则库 
+                
+
+
+                  
+                
+                  门限检测 
+                
+
+
+                  
+                
+                  时序 
+                
+
+
+                  
+                
+                  pest and diseases intrusion detection 
+                
+
+
+                  
+                
+                  BP neural network 
+                
+
+
+                  
+                
+                  anomaly detection 
+                
+
+
+                  
+                
+                  rule set 
+                
+
+
+                  
+                
+                  threshold detection 
+                
+
+
+                  
+                
+                  time thread 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                S43  TP1 
+              
+
+                机标关键词：
+              
+
+
+                  入侵检测技术
+                
+
+                  神经网络算法
+                
+
+                  棉花病虫害
+                
+
+                  病虫害预报
+                
+
+                  系统模型
+                
+
+                  BP algorithm
+                
+
+                  technology
+                
+
+                  based
+                
+
+                  intrusion detection system
+                
+
+                  information
+                
+
+                  neural network algorithm
+                
+
+                  cotton production
+                
+
+                  spatial domain
+                
+
+                  信息安全领域
+                
+
+                  insect pest
+                
+
+                  人工神经网
+                
+
+                  预报系统
+                
+
+                  叶面
+                
+
+                  信息表现
+                
+
+                  棉花生产
+                
+                 
+              
+
+                基金项目：
+              
+
+                 
+              
+
+                DOI：
+              
+
+
+                  10.3969/j.issn.1004-874X.2009.07.079
+                
+                 
+              

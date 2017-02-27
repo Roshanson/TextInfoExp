@@ -1,0 +1,3 @@
+ActiveX在LabVIEW下的事件回调和数据传递  Realization of ActiveX event callback and data transfer in LabVIEW
+              本文介绍了ActiveX控件的特点,阐述了LabVIEW7.1下ActiveX控件的使用原理及其事件回调的注册方法,解决了事件回调编程中的数据传递难题,保证了数据的实时传输和数据处理,避免了数据的丢失和数据覆盖.本文以MSCOMM32控件为例,介绍了MSCOMM32在LabVIEW下的事件回调和数据传递技巧,具有技术的通用性,对扩展LabVIEW自身功能具有应用价值和参考价值.
+            

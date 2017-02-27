@@ -1,0 +1,3 @@
+傅里叶识别分析在赤潮生物自动识别中的应用研究  FOURIER RECOGNITION ANALYSIS IN THE APPLICATION OF AUTOMATIC RECOGNITION RED TIDE ORGANISMS
+              本文研究了赤潮优势种识别技术,并实际运用于厦门大学流式细胞技术的赤潮实时监控系统FCAM.使用傅里叶形状特征描述子分析结合SVM算法作分类计算,通过对2009年4～10月厦门海域6种最常见的赤潮优势种的3000个样本为专门研究,并结合另外2种描述子算法将实验结果的识别精度提高到95.8％,具备较好的代表性.
+            

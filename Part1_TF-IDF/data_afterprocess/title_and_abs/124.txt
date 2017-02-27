@@ -1,0 +1,3 @@
+构建林业WebGIS系统的研究  A STUDY ON DESIGNING OF FORESTRY WebGIS
+              总结了WebGIS的发展、概念和特点,分析了WebGIS的设计思想和原理,最后给出了利用Mapxtreme建立林业WebGIS系统的解决方案.
+            

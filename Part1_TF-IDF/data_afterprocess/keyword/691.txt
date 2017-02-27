@@ -1,0 +1,1 @@
+约束圆形布局问题    人工蜂群算法    布局优化    启发式算法    algorithms    constrained optimization    efficiency    heuristic algorithms    MATLAB    particle swarm opti-mization ( PSO)    circle packing problem with equilibrium constraints    improved artificial bee colony ( IABC) algorithm   

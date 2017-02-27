@@ -1,0 +1,196 @@
+
+
+                作 者：
+              
+
+
+                  朱靖波
+                
+
+                  肖桐
+                
+
+                  Zhu Jingbo
+                
+
+                  Xiao Tong
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                东北大学信息学院,沈阳,110819 
+              
+
+                刊 名：
+              
+
+
+                  新型工业化
+                
+                 
+                
+
+
+
+                英文刊名：
+              
+
+
+                  New Industrialization Straregy
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2012 (1)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-05 
+              
+
+                关键词：
+              
+
+
+                  自然语言处理 
+                
+
+
+                  
+                
+                  机器翻译 
+                
+
+
+                  
+                
+                  句法对齐 
+                
+
+
+                  
+                
+                  翻译规则抽取 
+                
+
+
+                  
+                
+                  解码 
+                
+
+
+                  
+                
+                  Natural Language Processing 
+                
+
+
+                  
+                
+                  Machine Translation 
+                
+
+
+                  
+                
+                  Syntactic Alignment 
+                
+
+
+                  
+                
+                  Translation Rule Extraction 
+                
+
+
+                  
+                
+                  Decoding 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                TP3  H08 
+              
+
+                机标关键词：
+              
+
+
+                  句法树
+                
+
+                  统计机器翻译
+                
+
+                  问题分析
+                
+
+                  machine translation
+                
+
+                  language modeling
+                
+
+                  语言模型
+                
+
+                  研究方向
+                
+
+                  文本
+                
+
+                  解决方案
+                
+
+                  重构
+                
+
+                  实验
+                
+
+                  解码
+                
+
+                  基础
+                
+
+                  对齐
+                
+                 
+              
+
+                基金项目：
+              
+
+                高等学校博士学科点专项科研基金资助课题 
+              
+
+                DOI：
+              
+
+
+
+                 
+              

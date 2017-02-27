@@ -1,0 +1,209 @@
+
+
+                作 者：
+              
+
+
+                  丁雪梅
+                
+
+                  陈贝贝
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                福建师范大学软件学院,福建福州,350108 
+              
+
+                刊 名：
+              
+
+
+                  莆田学院学报
+                
+                 
+                
+
+
+
+                英文刊名：
+              
+
+
+                  journal of putian university
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2012 19(2)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-05 
+              
+
+                关键词：
+              
+
+
+                  异常检测 
+                
+
+
+                  
+                
+                  统计方法 
+                
+
+
+                  
+                
+                  神经网络方法 
+                
+
+
+                  
+                
+                  基于规则的方法 
+                
+
+
+                  
+                
+                  支持向量机 
+                
+
+
+                  
+                
+                  novelty detection 
+                
+
+
+                  
+                
+                  statistical approaches 
+                
+
+
+                  
+                
+                  neural network approaches 
+                
+
+
+                  
+                
+                  rule-based approach 
+                
+
+
+                  
+                
+                  SVM approach 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                G4  TP3 
+              
+
+                机标关键词：
+              
+
+
+                  基于标准
+                
+
+                  数据集
+                
+
+                  异常检测技术
+                
+
+                  实验分析
+                
+
+                  Benchmark
+                
+
+                  Based
+                
+
+                  Experimental Analysis
+                
+
+                  异常检测算法
+                
+
+                  novelty detection
+                
+
+                  Gaussian Mixture
+                
+
+                  Operating Characteristics
+                
+
+                  experimental analysis
+                
+
+                  different
+                
+
+                  the differences
+                
+
+                  performance
+                
+
+                  literature
+                
+
+                  comparison
+                
+
+                  algorithms
+                
+
+                  benchmark
+                
+
+                  性能
+                
+                 
+              
+
+                基金项目：
+              
+
+                福建省教育厅科研基金资助项目 
+              
+
+                DOI：
+              
+
+
+                  10.3969/j.issn.1672-4143.2012.02.013
+                
+                 
+              

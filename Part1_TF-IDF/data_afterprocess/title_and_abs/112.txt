@@ -1,0 +1,3 @@
+生物信息学与重复序列分析  Bioinformatics and analysis of the repeated sequence
+              介绍了生物信息学的含义、主要内容和研究方法;阐明研究重复序列的重要意义,并对热球菌的重复序列作了分析.
+            

@@ -1,0 +1,3 @@
+会计实验电算化的探讨  On the experiment of accounting computerization
+              探讨会计实验电算化应具备的实验环境、实验方法、实验内容和实验要解决的问题,并对计算机技术运用到会计实验课程之中,进行了尝试和研究.
+            

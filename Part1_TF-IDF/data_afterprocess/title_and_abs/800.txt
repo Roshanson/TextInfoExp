@@ -1,0 +1,3 @@
+智能化棉业信息与科技服务网络平台研究与应用  Study on Intellectual Net-Platform of Information and Sci-Tech Service for Cotton Industry and Its Application
+              运用人工智能、计算机网络、WebGIS,数据库、多媒体等技术,研制了"安徽省棉业智能化信息系统",该系统主要包括:安徽省棉花生产信息采集发布系统(安徽省棉花预警信息系统)、棉花栽培专家系统、远程科技服务系统、棉花病虫害灾变预警WebGIS系统、信息发布系统、信息采集上报系统、会员服务系统、棉花及相关产业资讯和市场信息动态数据库等,将各子系统进行集成、整合,以Internet为平台,以"安徽棉网(www.ahcotton.cn)"网站为载体.该系统既可提供广泛的信息服务,又可提供智能化和远程化的科技服务.
+            

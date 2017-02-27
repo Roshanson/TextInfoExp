@@ -1,0 +1,191 @@
+
+
+                作 者：
+              
+
+
+                  王石榴
+                
+
+                  WANG Shiliu
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                嘉应学院学报编辑部,广东梅州,514015 
+              
+
+                刊 名：
+              
+
+
+                  华南师范大学学报（自然科学版）
+                
+                 
+                
+
+                    ISTIC
+                  
+
+                    PKU
+                  
+
+
+
+                英文刊名：
+              
+
+
+                  Journal of South China Normal University (Natural Science Edition)
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2013 (5)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-05 
+              
+
+                关键词：
+              
+
+
+                  体感仿真算法 
+                
+
+
+                  
+                
+                  Steward动感平台 
+                
+
+
+                  
+                
+                  数值化算法 
+                
+
+
+                  
+                
+                  somatosensory simulation algorithm 
+                
+
+
+                  
+                
+                  Steward motion platform 
+                
+
+
+                  
+                
+                  numerical algorithm 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                TP3  TP2 
+              
+
+                机标关键词：
+              
+
+
+                  动感平台
+                
+
+                  仿真
+                
+
+                  数值化
+                
+
+                  算法研究
+                
+
+                  Washout Filter
+                
+
+                  degrees of freedom
+                
+
+                  transfer function
+                
+
+                  attitude control
+                
+
+                  sports attitude
+                
+
+                  体感模拟算法
+                
+
+                  纵向加速度
+                
+
+                  低通滤波器
+                
+
+                  姿态控制
+                
+
+                  运动姿态
+                
+
+                  实时模拟
+                
+
+                  实例验证
+                
+
+                  滤波方法
+                
+
+                  六自由度
+                
+
+                  函数转换
+                
+
+                  差分方程
+                
+                 
+              
+
+                基金项目：
+              
+
+                广东省科技计划项目(2012B060200013)；梅州市科技计划项目 
+              
+
+                DOI：
+              
+
+
+                  10.6054/j.jscnun.2013.07.008
+                
+                 
+              

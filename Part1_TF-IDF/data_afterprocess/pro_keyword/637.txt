@@ -1,0 +1,166 @@
+
+
+                作 者：
+              
+
+
+                  蒋方纯
+                
+                
+
+
+ 
+              
+
+                作者单位：
+              
+
+                深圳信息职业技术学院数字媒体学院,广东深圳,518172 
+              
+
+                刊 名：
+              
+
+
+                  深圳信息职业技术学院学报
+                
+                 
+                
+
+
+
+                英文刊名：
+              
+
+
+                  Journal of Shenzhen Institute of Information Technology
+                
+                 
+              
+
+                年，卷(期)：
+              
+
+
+                  2012 10(3)
+                
+                 
+              
+
+                分类号：
+              
+
+                TP3-0 
+              
+
+                关键词：
+              
+
+
+                  特征缺失 
+                
+
+
+                  
+                
+                  特征向量 
+                
+
+
+                  
+                
+                  不完整数据 
+                
+
+
+                  
+                
+                  机器学习 
+                
+
+
+                  
+                
+                  feature missing 
+                
+
+
+                  
+                
+                  feature vector 
+                
+
+
+                  
+                
+                  incomplete data 
+                
+
+
+                  
+                
+                  machine learning 
+                
+
+
+                 
+              
+
+                机标分类号：
+              
+
+                P5  G64 
+              
+
+                机标关键词：
+              
+
+
+                  机器学习
+                
+
+                  应用
+                
+
+                  特征
+                
+
+                  research and development
+                
+
+                  machine learning
+                
+
+                  基础与发展
+                
+
+                  实现工具
+                
+
+                  处理方法
+                
+
+                  mode of
+                
+
+                  种类
+                
+
+                  模式
+                
+                 
+              
+
+                基金项目：
+              
+
+                广东省自然科学基金项目 
+              
+
+                DOI：
+              
+
+
+
+                 
+              

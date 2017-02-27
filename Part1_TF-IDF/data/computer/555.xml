@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  数值天气预报系统中网格工作流的portlet实现
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Conference.aspx?ID=Conference_6331200" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNTc5NjU2OTAyZGSxi5Uxlyk0BDDVmKN7sX4zPGAR6w=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(24)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%b0%a2%e7%9f%a5%e7%9c%9f%22&amp;f=detail.expert">
+                谢知真
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%a9%ac%e4%b8%96%e9%be%99%22&amp;f=detail.expert">
+                马世龙
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%bc%8a%e8%83%9c%e4%bc%9f%22&amp;f=detail.expert">
+                伊胜伟
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22XIE+Zhi-zhen%22&amp;f=detail.expert">
+                XIE Zhi-zhen
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22MA+Shi-long%22&amp;f=detail.expert">
+                MA Shi-long
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22YI+Sheng-wei%22&amp;f=detail.expert">
+                YI Sheng-wei
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e6%98%a5%e5%b9%b3%22&amp;f=detail.expert">
+                陈春平
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%88%b4%e6%af%85%22&amp;f=detail.expert">
+                戴毅
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%90%91%e5%9f%b9%e7%b4%a0%22&amp;f=detail.expert">
+                向培素
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%94%b0%e7%8f%82%22&amp;f=detail.expert">
+                田珂
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%bb%84%e5%8b%a4%e7%8f%8d%22&amp;f=detail.expert">
+                黄勤珍
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22XIANG+Pei-su%22&amp;f=detail.expert">
+                XIANG Pei-su
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22TIAN+Ke%22&amp;f=detail.expert">
+                TIAN Ke
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22HUANG+Qin-zhen%22&amp;f=detail.expert">
+                HUANG Qin-zhen
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%ad%a6%e8%81%aa%22&amp;f=detail.expert">
+                武聪
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%83%ad%e5%ae%8f%e5%a8%9f%22&amp;f=detail.expert">
+                郭宏娟
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e6%96%87%e8%bf%9c%22&amp;f=detail.expert">
+                刘文远
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e5%ae%8f%e8%89%b3%22&amp;f=detail.expert">
+                王宏艳
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e8%8e%89%22&amp;f=detail.expert">
+                李莉
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e9%87%91%e5%bf%a0%22&amp;f=detail.expert">
+                李金忠
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e7%84%95%e5%bd%ac%22&amp;f=detail.expert">
+                王焕彬
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%a4%8f%e9%9d%96%e6%b3%a2%22&amp;f=detail.expert">
+                夏靖波
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Wang+Huanbin%22&amp;f=detail.expert">
+                Wang Huanbin
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Xia+Jingbo%22&amp;f=detail.expert">
+                Xia Jingbo
+              </a>
+              <ul>
+                <h3>
+                  相关机构(9条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8c%97%e4%ba%ac%e8%88%aa%e7%a9%ba%e8%88%aa%e5%a4%a9%e5%a4%a7%e5%ad%a6%e8%bd%af%e4%bb%b6%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83%e5%9b%bd%e5%ae%b6%e9%87%8d%e7%82%b9%e5%ae%9e%e9%aa%8c%e5%ae%a4%2c%e5%8c%97%e4%ba%ac%2c100083%22&amp;f=detail.agency">
+                    北京航空航天大学软件开发环境国家重点实验室,北京,100083
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%87%8d%e5%ba%86%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    重庆大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%8a%e6%b5%b7%e4%ba%a4%e9%80%9a%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    上海交通大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e5%8d%97%e6%b0%91%e6%97%8f%e5%a4%a7%e5%ad%a6%2c%e7%94%b5%e6%b0%94%e4%bf%a1%e6%81%af%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%2c%e5%9b%9b%e5%b7%9d%2c%e6%88%90%e9%83%bd%2c610041%22&amp;f=detail.agency">
+                    西南民族大学,电气信息工程学院,四川,成都,610041
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%85%b4%e9%80%9a%e8%ae%af%2c%e6%88%90%e9%83%bd%e7%a0%94%e7%a9%b6%e6%89%80%2c%e5%9b%9b%e5%b7%9d%2c%e6%88%90%e9%83%bd%2c610041%22&amp;f=detail.agency">
+                    中兴通讯,成都研究所,四川,成都,610041
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e7%87%95%e5%b1%b1%e5%a4%a7%e5%ad%a6%e7%bb%8f%e6%b5%8e%e7%ae%a1%e7%90%86%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    燕山大学经济管理学院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%85%b0%e5%b7%9e%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    兰州大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b9%bf%e8%a5%bf%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    广西大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e7%a9%ba%e5%86%9b%e5%b7%a5%e7%a8%8b%e5%a4%a7%e5%ad%a6%e7%94%b5%e8%ae%af%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%2c%e9%99%95%e8%a5%bf%2c%e8%a5%bf%e5%ae%89%2c710077%22&amp;f=detail.agency">
+                    空军工程大学电讯工程学院,陕西,西安,710077
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Conference.aspx">
+                会议论文
+              </a>
+               &gt; 
+              <a href="/S/Paper.aspx?q=%e4%bc%9a%e8%ae%ae%e5%90%8d%e7%a7%b0%3a%222005%e4%b8%ad%e5%9b%bd%e8%ae%a1%e7%ae%97%e6%9c%ba%e5%a4%a7%e4%bc%9a%22">
+                2005中国计算机大会
+              </a>
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              数值天气预报系统中网格工作流的portlet实现
+            </h1>
+            <div class="title-height">
+            </div>
+            <p>
+              <a class="seeft" href="/Service/File/view/数值天气预报系统中网格工作流的portlet实现.aspx?ID=Conference_6331200">
+              </a>
+              <a class="downloadft" href="/Service/File/download/Conference_6331200.aspx">
+              </a>
+            </p>
+            <p>
+              <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Conference_6331200" class="export">
+              </a>
+            </p>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              网格计算和工作流技术日益成为研究的重点，在科学计算，尤其在气象领域中，将网格技术和工作流技术结合起来一起解决复杂的数值天气预报问题已经成为了必然趋势。本文研究了将网格工作流和 portlet技术的结合，提出一种将网格工作流应用到数值天气预报系统中的具体的解决方案，解决了将网格和工作流结合到网格环境中所必须解决的相关问题。
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%88%98%e7%81%bf%e7%81%bf%22++DBID%3aWF_HY">
+                  刘灿灿
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%bc%a0%e5%8d%ab%e6%b0%91%22++DBID%3aWF_HY">
+                  张卫民
+                </a>
+                 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                国防科技大学计算机学院，长沙410073 
+              </dd>
+              <dt>
+                母体文献：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                会议名称：
+              </dt>
+              <dd>
+                2005中国计算机大会  
+              </dd>
+              <dt>
+                会议时间：
+              </dt>
+              <dd>
+                2005年10月13日 
+              </dd>
+              <dt>
+                会议地点：
+              </dt>
+              <dd>
+                武汉 
+              </dd>
+              <dt>
+                主办单位：
+              </dt>
+              <dd>
+                中国计算机学会 
+              </dd>
+              <dt>
+                语 种：
+              </dt>
+              <dd>
+                chi 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%bd%91%e6%a0%bc%e5%b7%a5%e4%bd%9c%e6%b5%81%22++DBID%3aWF_HY">
+                  网格工作流
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%bd%91%e6%a0%bc%e5%b7%a5%e4%bd%9c%e6%b5%81" title="网格工作流的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%ae%a1%e7%90%86%e7%b3%bb%e7%bb%9f%22++DBID%3aWF_HY">
+                  工作流管理系统
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%ae%a1%e7%90%86%e7%b3%bb%e7%bb%9f" title="工作流管理系统的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22portlet%22++DBID%3aWF_HY">
+                  portlet
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=portlet" title="portlet的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+            </dl>
+            <div class="clear-float">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(9条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jsjgcysj200821045.aspx">
+                    面向地震网络计算的网格工作流管理系统
+                  </a>
+                  <span>
+                     - 计算机工程与设计2008,29(21)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jsjgcysj200821045.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D456748.aspx">
+                    基于Petri网的网格工作流研究
+                  </a>
+                  <span>
+                    2006
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D456748.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D030679.aspx">
+                    自动配置的网格工作流服务器的研究与实现
+                  </a>
+                  <span>
+                    2006
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D030679.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_wdzxyjsj200710023.aspx">
+                    网格工作流动态调度研究
+                  </a>
+                  <span>
+                     - 微电子学与计算机2007,24(10)
+                  </span>
+                  <a href="/Service/File/download/Periodical_wdzxyjsj200710023.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D321581.aspx">
+                    基于网格工作流的协同应用研究
+                  </a>
+                  <span>
+                    2008
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D321581.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_jcyxx-xxk201110174.aspx">
+                    基于网格工作流的城市管理系统
+                  </a>
+                  <span>
+                     - 决策与信息：下旬2011(10)
+                  </span>
+                  <a href="/Service/File/download/Periodical_jcyxx-xxk201110174.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1515775.aspx">
+                    面向e-Science应用网格工作流管理系统
+                  </a>
+                  <span>
+                    2009
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1515775.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1599839.aspx">
+                    QoS优化的网格工作流调度算法研究
+                  </a>
+                  <span>
+                    2009
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1599839.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_zdhyb200801013.aspx">
+                    网格工作流在军事信息网格中的应用研究
+                  </a>
+                  <span>
+                     - 自动化仪表2008,29(1)
+                  </span>
+                  <a href="/Service/File/download/Periodical_zdhyb200801013.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Conference_6331200' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="84ABFE16"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwK+5IqWCgL+yqGTDgLNsI6nC6FmP1cvEutVOGJRILNxHTgAbamP"/>
+      </div>
+    </form>
+  </body>
+</html>

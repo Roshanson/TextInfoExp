@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  基于可用性的软件人机界面设计研究
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Thesis.aspx?ID=Thesis_Y2308109" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3NjkzMjA0MzJkZKKxh/AscG2ISDUAcrB9sli6vKjo"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(14)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%bb%84%e6%9c%aa%e4%b9%8b%22&amp;f=detail.expert">
+                黄未之
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e9%9b%aa%e5%a8%87%22&amp;f=detail.expert">
+                李雪娇
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e4%b8%bd%e8%90%8d%22&amp;f=detail.expert">
+                刘丽萍
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e9%bb%8e%e9%99%b5%22&amp;f=detail.expert">
+                陈黎陵
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%b2%88%e5%a9%95%22&amp;f=detail.expert">
+                沈婕
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%96%bd%e4%bf%8a%e9%a3%9e%22&amp;f=detail.expert">
+                施俊飞
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%8e%8b%e7%be%8e%e7%8f%8d%22&amp;f=detail.expert">
+                王美珍
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Shen+Jie%22&amp;f=detail.expert">
+                Shen Jie
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Shi+Junfei%22&amp;f=detail.expert">
+                Shi Junfei
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Wang+Meizhen%22&amp;f=detail.expert">
+                Wang Meizhen
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e4%b8%9a%e6%ac%a3%22&amp;f=detail.expert">
+                陈业欣
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e6%9e%ab%22&amp;f=detail.expert">
+                刘枫
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e6%ba%90%22&amp;f=detail.expert">
+                张源
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%91%a8%e7%8e%b2%22&amp;f=detail.expert">
+                周玲
+              </a>
+              <ul>
+                <h3>
+                  相关机构(8条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%9c%e5%8d%8e%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    东华大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%8a%e6%b5%b7%e4%ba%a4%e9%80%9a%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    上海交通大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b2%b3%e5%8d%97%e7%bb%8f%e8%b4%b8%e8%81%8c%e4%b8%9a%e5%ad%a6%e9%99%a2%2c%e6%b2%b3%e5%8d%97+%e9%83%91%e5%b7%9e%2c450099%22&amp;f=detail.agency">
+                    河南经贸职业学院,河南 郑州,450099
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8d%97%e4%ba%ac%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6%e5%9c%b0%e7%90%86%e7%a7%91%e5%ad%a6%e5%ad%a6%e9%99%a2%2c%e6%b1%9f%e8%8b%8f%2c%e5%8d%97%e4%ba%ac%2c210046%22&amp;f=detail.agency">
+                    南京师范大学地理科学学院,江苏,南京,210046
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%99%95%e8%a5%bf%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    陕西科技大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8c%97%e4%ba%ac%e5%bb%ba%e7%ad%91%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    北京建筑工程学院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e8%a5%bf%e5%ae%89%e5%b7%a5%e7%a8%8b%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    西安工程大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e9%95%bf%e6%b2%99%e7%90%86%e5%b7%a5%e5%a4%a7%e5%ad%a6%e8%ae%be%e8%ae%a1%e8%89%ba%e6%9c%af%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    长沙理工大学设计艺术学院
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt;  
+              <a href="/C/Thesis.aspx">
+                学位论文
+              </a>
+               &gt; 
+    
+              <a href="/S/Paper.aspx?q=%e4%b8%93%e4%b8%9a%3a%22%e8%ae%be%e8%ae%a1%e5%ad%a6%22">
+                设计学
+              </a>
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              基于可用性的软件人机界面设计研究
+            </h1>
+            <p class="title-height">
+            </p>
+            <p id="ctl00_LeftContentPlaceHolder_fulltext">
+              <!--按章节浏览-->              <!--打包下载-->              <!--查看全文-->              <a class="seeft" href="/Service/File/view/基于可用性的软件人机界面设计研究.aspx?ID=Thesis_Y2308109">
+              </a>
+              <!--下载全文-->              <a class="downloadft" href="/Service/File/download/Thesis_Y2308109.aspx">
+              </a>
+            </p>
+            <p>
+              <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Thesis_Y2308109" class="export">
+              </a>
+            </p>
+            <p id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </p>
+            <p class="abstracts">
+              计算机不断的更新换代引发了软件功能开发的多样性和全面性，伴随着软件功能的增强其复杂性也随之上升，如果软件过于复杂则会给用户的使用带来一些麻烦，这些都是因为软件的功能越强使用的难度就越大。而且新的交互技术不断的发展，给人们带来实际的便利，同时也带来了使用上的不便。关于当今人机界面的范畴已经在社会的各个领域中出现，如工业生产、家庭的生活、学习中和业余娱乐中。人们总是会很好奇新的软件会有怎样的新功能，与过去的软件相比会有怎么的新交互体验。但是人们在实际使用后，往往感受的不是新功能带来的新体验，而是受挫于因为功能过于复杂而导致不会操作新的软件产品，从而没有给用户带来好的交互体验。
+              <br/>
+              　　
+ 本文研究的主要内容是基于可用性工程学理论，对在软件的人机界面设计中出现交互问题加以解决，目前软件用户界面中主要存在的问题是随着软件的功能多样化和复杂化，同时也提升了不同程度用户的使用难度有所增加。可用性理论是基于“以人为本”的核心理念，通过可用性方法在人机界面中的运用达到“机为人用，自然和谐”良好的交互体验。在软件的研发设计的整个周期中都遵循可用性原则，通过对潜在用户的调查分析，将分析调查结果结合可用性原则指导设计软件界面的原型设计，使整个界面系统中的元素、色彩和结构具有统一性和标准性，并且使界面中的设计符合人机工程学。在界面设计完成后，应用可用性测试评估方法对设计的出的界面进行评估，对发现的可用性问题再进行修改设计，尽量降低软件界面在实际使用中可能存在的可用性问题。并在软件产品投入实际使用后，继续保持收集人们在使用过程中的可用性问题，通过迭代设计不断完善每一代的软件界面设计，减少在界面以后的升级换代中存在的用户操作问题。使用户在操作新软件时有好的主管满意度，并在使用新软件时能够保证新软件具有易学、易用和出错低等的优点，让用户在使用新软件时获得应有的新交互体验。
+              <br/>
+              　　
+ 本文研究内容主要由四个部分组成:
+              <br/>
+              　　
+ 第一部分、使用可用性的核心思想先要调查用户的分类，调查的用户尽可能是软件使用的潜在用户。通过收集分析用户的背景信息，以及研究用户在日常使用软件界面时的习惯和特点。针对潜在的用户进行问卷调查和访谈，收集用户信息，并将收集的信息运用统计学原理进行分析归纳，在收集来的信息通常是用户感性上的回答结果，所以要通过一些算法转换得出可靠的用户信息数据。
+              <br/>
+              　　
+ 第二部分、是研究界面设计的周期中可用性发挥的指导作用。
+              <br/>
+              　　
+ 第三部分、可用性在界面设计中的具体应用准则，界面设计中许多细节设计，如菜单的横向与纵向的设计等。
+              <br/>
+              　　
+ 第四部分、是对软件最终的测试，综合利用不同的方法与模型进一步的发现界面中被忽略的可用性问题，并及时的进行合理的改进设计。
+              <br/>
+              　　
+ 第五部分、研究应用部分，对已有的“智能化粮食库存实时监测与综合管理系统开发”界面进行优缺点分析，建立GOMS用户模型并进行可用性评估，从软件的功能和界面两个角度重新进行构建和设计，最终设计出可以让不同程度用户易学易用的软件界面，满足用户在实际工作中的对软件的不同需求。
+            </p>
+            <dl id="perildical2_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e9%99%88%e5%81%a5%22++DBID%3aWF_XW">
+                  陈健
+                </a>
+                 
+              </dd>
+              <dt>
+                学科专业：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=AuthorSubject+%3a+%e8%ae%be%e8%ae%a1%e5%ad%a6++DBID%3aWF_XW">
+                  设计学
+                </a>
+                 
+              </dd>
+              <dt>
+                授予学位：
+              </dt>
+              <dd>
+                硕士 
+              </dd>
+              <dt>
+                学位授予单位：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=School+%3a+%e9%99%95%e8%a5%bf%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6++DBID%3aWF_XW">
+                  陕西科技大学
+                </a>
+                 
+              </dd>
+              <dt>
+                导师姓名：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=Teacher+%3a+%e4%bb%bb%e5%b7%a5%e6%98%8c++DBID%3aWF_XW">
+                  任工昌
+                </a>
+                 
+              </dd>
+              <dt>
+                学位年度：
+              </dt>
+              <dd>
+                2013 
+              </dd>
+              <dt>
+                研究方向：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                语 种：
+              </dt>
+              <dd>
+                chi 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP311.52  TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8f%af%e7%94%a8%e6%80%a7%22++DBID%3aWF_XW">
+                  可用性
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e5%8f%af%e7%94%a8%e6%80%a7" title="可用性的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%95%8c%e9%9d%a2%e8%ae%be%e8%ae%a1%22++DBID%3aWF_XW">
+                  界面设计
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e7%95%8c%e9%9d%a2%e8%ae%be%e8%ae%a1" title="界面设计的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%bd%af%e4%bb%b6%e7%b3%bb%e7%bb%9f%22++DBID%3aWF_XW">
+                  软件系统
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%bd%af%e4%bb%b6%e7%b3%bb%e7%bb%9f" title="软件系统的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%89%ba%e6%9c%af%e9%a3%8e%e6%a0%bc%22++DBID%3aWF_XW">
+                  艺术风格
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e8%89%ba%e6%9c%af%e9%a3%8e%e6%a0%bc" title="艺术风格的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%ba%ba%e6%9c%ba%e5%b7%a5%e7%a8%8b%e5%ad%a6%22++DBID%3aWF_XW">
+                  人机工程学
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e4%ba%ba%e6%9c%ba%e5%b7%a5%e7%a8%8b%e5%ad%a6" title="人机工程学的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8f%af%e7%94%a8%e6%80%a7%e5%8e%9f%e5%88%99%22++DBID%3aWF_XW">
+                  可用性原则
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%bd%af%e4%bb%b6%e7%95%8c%e9%9d%a2%e8%ae%be%e8%ae%a1%22++DBID%3aWF_XW">
+                  软件界面设计
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%ba%ba%e6%9c%ba%e7%95%8c%e9%9d%a2%e8%ae%be%e8%ae%a1%22++DBID%3aWF_XW">
+                  人机界面设计
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%ba%a4%e4%ba%92%e4%bd%93%e9%aa%8c%22++DBID%3aWF_XW">
+                  交互体验
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%bd%af%e4%bb%b6%e5%8a%9f%e8%83%bd%22++DBID%3aWF_XW">
+                  软件功能
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%80%a7%e9%97%ae%e9%a2%98%22++DBID%3aWF_XW">
+                  性问题
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%94%a8%e6%88%b7%e4%bf%a1%e6%81%af%22++DBID%3aWF_XW">
+                  用户信息
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%88%86%e6%9e%90%22++DBID%3aWF_XW">
+                  分析
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%b0%83%e6%9f%a5%22++DBID%3aWF_XW">
+                  调查
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%bd%af%e4%bb%b6%e4%ba%a7%e5%93%81%22++DBID%3aWF_XW">
+                  软件产品
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%bd%9c%e5%9c%a8%e7%94%a8%e6%88%b7%22++DBID%3aWF_XW">
+                  潜在用户
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%bd%af%e4%bb%b6%e7%94%a8%e6%88%b7%e7%95%8c%e9%9d%a2%22++DBID%3aWF_XW">
+                  软件用户界面
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(9条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1441676.aspx">
+                    Web界面设计语义及可用性研究
+                  </a>
+                  <span>
+                    2007
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1441676.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D452185.aspx">
+                    基于可用性工程的网站界面设计
+                  </a>
+                  <span>
+                    2009
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D452185.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_ezdxxb201406035.aspx">
+                    浅谈Web界面设计中的简易可用性评估
+                  </a>
+                  <span>
+                     - 鄂州大学学报2014(6)
+                  </span>
+                  <a href="/Service/File/download/Periodical_ezdxxb201406035.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D068457.aspx">
+                    以用户为中心的网络相册界面设计可用性研究
+                  </a>
+                  <span>
+                    2009
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D068457.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_njsdxbz200803025.aspx">
+                    基于可用性工程思想的网络地图界面设计——以南京师范大学校园网络地图为例
+                  </a>
+                  <span>
+                     - 南京师大学报(自然科学版)2008,31(3)
+                  </span>
+                  <a href="/Service/File/download/Periodical_njsdxbz200803025.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1974170.aspx">
+                    绘画风格WEB界面设计及其可用性研究
+                  </a>
+                  <span>
+                    2011
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1974170.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1897006.aspx">
+                    老年人可用性信息安电界面设计方法研究
+                  </a>
+                  <span>
+                    2011
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1897006.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y1191748.aspx">
+                    基于虚拟技术的产品可用性设计研究与应用
+                  </a>
+                  <span>
+                    2007
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y1191748.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_scxdh200806110.aspx">
+                    网站的可用性界面设计初探
+                  </a>
+                  <span>
+                     - 商场现代化2008(6)
+                  </span>
+                  <a href="/Service/File/download/Periodical_scxdh200806110.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Thesis_Y2308109' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_6.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_6.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C2DFB57C"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL6l6SgDQL+yqGTDgLNsI6nCxf0Odt44GD82o8PpTcTt8KeqUZc"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+中央监护系统的发展趋势与网络开发  Developmental trend & network exploitation of central monitoring system
+              本文简要地介绍了中央监护系统目前的发展趋势和网络开发状况,并对其以后的发展动态进行了初步分析.
+            

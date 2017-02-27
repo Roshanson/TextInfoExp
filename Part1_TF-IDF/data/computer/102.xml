@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="ctl00_Head1">
+    <title>
+      
+	  利用3DMine软件建立矿山地质三维模型  3DMine software applied in establishment of 3D mine geological model
+
+    </title>
+    <link href="Css/detail_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Images/wflogo.ico"/>
+    <script type="text/javascript" id="sgst-stat" src=" http://stat.sgst.cn/t.js?ff80808143a0c6790143a0d5f44a0048">
+    </script>
+    <script src="/D/Script/jquery-1.3.2.min.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript" src="/D/Script/detail-1.0.js">
+    </script>
+  </head>
+  <body>
+    <form name="aspnetForm" method="post" action="Periodical.aspx?ID=Periodical_gwjsks200905023" id="aspnetForm">
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzMzNzExNTgyZGSsBKTeHYtV7Izwma6Wxbf3oMqUGw=="/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+
+      </script>
+      <!-- header开始 -->      <a id="header">
+      </a>
+      <div id="content_div">
+        <div id="TopNav">
+          <div id="headerlogo">
+            <p>
+              <a id="ctl00_CNLinkButton" class="jiantipic" href="javascript:__doPostBack('ctl00$CNLinkButton','')">
+              </a>
+                |  
+                
+              <a id="ctl00_TWLinkButton" href="javascript:__doPostBack('ctl00$TWLinkButton','')">
+                繁體中文
+              </a>
+                
+            </p>
+            <a href="/" class="wflogo" title="万方数据知识服务平台">
+            </a>
+          </div>
+          <div id="headertext">
+            <p>
+              <a id="ctl00_SiteMapRepeater_ctl00_Link" href="/Default.aspx">
+                首页
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl02_Link" href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl04_Link" href="/C/Thesis.aspx">
+                学位论文
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl06_Link" href="/C/Conference.aspx">
+                学术会议
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl08_Link" href="/C/Patent.aspx">
+                中外专利
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl10_Link" href="/C/Cstad.aspx">
+                科技成果
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl12_Link" href="/C/Standard.aspx">
+                中外标准
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl14_Link" href="/C/Claw.aspx">
+                法律法规
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl16_Link" href="/C/Science.aspx">
+                科技文献
+              </a>
+                |  
+              <a id="ctl00_SiteMapRepeater_ctl18_Link" href="/librarian/Default.aspx">
+                查新咨询服务中心
+              </a>
+            </p>
+            <!--登录开始-->            <p>
+            </p>
+            <!--登录结束-->          </div>
+          <div class="clear-float">
+          </div>
+        </div>
+        <!--header结束-->        <div class="search_div">
+          <div class="search2">
+            <input class="searchbox2" id="tbxQuery" type="text" value="" onkeypress="javascript:if(event.keyCode==13){search('/S/'); return false;}"/>
+              
+    
+            <input id="Search_Button" type="button" value="检 索" class="button4" onclick="javascript:search('/S/');return false;"/>
+                 
+    
+            <a href="/S/PaperAdvancedSearch.aspx">
+              高级检索
+            </a>
+               
+    
+            <a target="_blank" href="/help/index2.html">
+              帮助
+            </a>
+          </div>
+          <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function search(domainUrl) {
+        var query = $.trim($("#tbxQuery").val());
+        if (query == "") {
+            alert('检索表达式为空！请重新输入。');
+            return false;
+        }
+        var url = domainUrl + "Paper" + ".aspx?q=" + encodeURIComponent(query) + "&n=10&f=top";
+        window.open(url, "_blank");
+        return true;  
+    }
+      
+
+//]]>
+          </script>
+        </div>
+        <div class="clear-float">
+        </div>
+        <div id="detail_rightcontent">
+          <div class="addto">
+            <a class="add-star" href="javascript:addBrowserFavorite();">
+            </a>
+            <br/>
+            <a href="javascript:addYahooFavorite();" class="add-yahoo">
+            </a>
+            <br/>
+            <a href="javascript:addBaiduFavorite();" class="add-baidu">
+            </a>
+          </div>
+          <div id="relotr">
+            <div id="RelatedContent" class="detail_right">
+              <h3>
+                相关专家(26)
+              </h3>
+              <a href="/S/paper.aspx?q=Author%3a%22%e7%94%b0%e9%9b%a8%22&amp;f=detail.expert">
+                田雨
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%a7%9c%e5%b2%a9%22&amp;f=detail.expert">
+                姜岩
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%8d%a2%e7%a7%80%e5%b1%b1%22&amp;f=detail.expert">
+                卢秀山
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Tian+Yu%22&amp;f=detail.expert">
+                Tian Yu
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Jiang+Yan%22&amp;f=detail.expert">
+                Jiang Yan
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22Lu+Xiushan%22&amp;f=detail.expert">
+                Lu Xiushan
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%91%a8%e6%85%a7%22&amp;f=detail.expert">
+                周慧
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%88%98%e5%88%9a%22&amp;f=detail.expert">
+                刘刚
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22ZHOU+Hui%22&amp;f=detail.expert">
+                ZHOU Hui
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22LIU+Gang%22&amp;f=detail.expert">
+                LIU Gang
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e6%b4%8b%22&amp;f=detail.expert">
+                张洋
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%bc%a0%e6%b4%aa%e6%b3%a2%22&amp;f=detail.expert">
+                张洪波
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e7%a7%8b%e8%ae%a1%22&amp;f=detail.expert">
+                陈秋计
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%85%9a%e7%86%99%e5%87%af%22&amp;f=detail.expert">
+                党熙凯
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%83%9d%e6%b5%b7%e5%af%8c%22&amp;f=detail.expert">
+                郝海富
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e7%a7%8b%e6%88%90%22&amp;f=detail.expert">
+                陈秋成
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e8%83%9c%e8%be%89%22&amp;f=detail.expert">
+                李胜辉
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e5%8f%b6%e4%bc%9a%e5%b8%88%22&amp;f=detail.expert">
+                叶会师
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e5%9b%bd%e9%91%ab%22&amp;f=detail.expert">
+                李国鑫
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%a2%81%e6%b5%b7%e6%b6%9b%22&amp;f=detail.expert">
+                袁海涛
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e9%99%88%e5%ae%9c%e9%87%91%22&amp;f=detail.expert">
+                陈宜金
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e8%83%a1%e8%b6%85%22&amp;f=detail.expert">
+                胡超
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22TIAN+Yu%22&amp;f=detail.expert">
+                TIAN Yu
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e4%bb%b2%e6%b7%91%e5%a7%ae%22&amp;f=detail.expert">
+                仲淑姮
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%9d%8e%e6%a2%85%22&amp;f=detail.expert">
+                李梅
+              </a>
+               、
+              <a href="/S/paper.aspx?q=Author%3a%22%e6%af%9b%e5%96%84%e5%90%9b%22&amp;f=detail.expert">
+                毛善君
+              </a>
+              <ul>
+                <h3>
+                  相关机构(13条)
+                </h3>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b1%b1%e4%b8%9c%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%e6%b5%8b%e7%bb%98%e7%a7%91%e5%ad%a6%e4%b8%8e%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%22&amp;f=detail.agency">
+                    山东科技大学测绘科学与工程学院
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%9b%bd%e5%9c%b0%e8%b4%a8%e5%a4%a7%e5%ad%a6%2c%e8%b5%84%e6%ba%90%e5%ad%a6%e9%99%a2%e4%bf%a1%e6%81%af%e6%89%80%2c%e6%b9%96%e5%8c%97%2c%e6%ad%a6%e6%b1%89%2c430074%22&amp;f=detail.agency">
+                    中国地质大学,资源学院信息所,湖北,武汉,430074
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b1%b1%e4%b8%9c%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    山东科技大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%9b%bd%e7%9f%bf%e4%b8%9a%e5%a4%a7%e5%ad%a6%e5%8c%97%e4%ba%ac%e6%a0%a1%e5%8c%ba%2c%e5%8c%97%e4%ba%ac%2c100083%3b%e4%b8%ad%e5%9b%bd%e7%9f%b3%e6%b2%b9%e9%9b%86%e5%9b%a2%e5%b7%a5%e7%a8%8b%e8%ae%be%e8%ae%a1%e6%9c%89%e9%99%90%e8%b4%a3%e4%bb%bb%e5%85%ac%e5%8f%b8%e5%8d%8e%e5%8c%97%e5%88%86%e5%85%ac%e5%8f%b8%2c%e6%b2%b3%e5%8c%97%2c%e4%bb%bb%e4%b8%98%e5%b8%82%2c062552%22&amp;f=detail.agency">
+                    中国矿业大学北京校区,北京,100083;中国石油集团工程设计有限责任公司华北分公司,河北,任丘市,062552
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b2%b3%e5%8d%97%e7%90%86%e5%b7%a5%e5%a4%a7%e5%ad%a6%e6%b5%8b%e7%bb%98%e5%b7%a5%e7%a8%8b%e7%b3%bb%2c%e6%b2%b3%e5%8d%97%2c%e7%84%a6%e4%bd%9c%e5%b8%82%2c454000%22&amp;f=detail.agency">
+                    河南理工大学测绘工程系,河南,焦作市,454000
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e9%93%81%e5%8d%81%e4%b8%83%e5%b1%80%e9%9b%86%e5%9b%a2%e5%85%ac%e5%8f%b8%2c%e5%b1%b1%e8%a5%bf%2c%e5%a4%aa%e5%8e%9f%2c030006%22&amp;f=detail.agency">
+                    中铁十七局集团公司,山西,太原,030006
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b2%b3%e5%8c%97%e9%92%a2%e9%93%81%e9%9b%86%e5%9b%a2%e7%9f%bf%e4%b8%9a%e5%85%ac%e5%8f%b8%e5%8f%b8%e5%ae%b6%e8%90%a5%e9%93%81%e7%9f%bf%e6%9c%89%e9%99%90%e8%b4%a3%e4%bb%bb%e5%85%ac%e5%8f%b8%2c%e6%b2%b3%e5%8c%97%e6%bb%a6%e5%8e%bf+063701%22&amp;f=detail.agency">
+                    河北钢铁集团矿业公司司家营铁矿有限责任公司,河北滦县 063701
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%9b%bd%e7%9f%bf%e4%b8%9a%e5%a4%a7%e5%ad%a6%ef%bc%88%e5%8c%97%e4%ba%ac%ef%bc%89%e5%9c%b0%e7%90%83%e7%a7%91%e5%ad%a6%e4%b8%8e%e6%b5%8b%e7%bb%98%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%2c%e5%8c%97%e4%ba%ac%2c100083%22&amp;f=detail.agency">
+                    中国矿业大学（北京）地球科学与测绘工程学院,北京,100083
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8c%97%e4%ba%ac%e5%a8%81%e8%bf%9c%e5%9b%be%e6%98%93%e6%95%b0%e5%ad%97%e7%a7%91%e6%8a%80%e6%9c%89%e9%99%90%e5%85%ac%e5%8f%b8%2c%e5%8c%97%e4%ba%ac%2c100044%22&amp;f=detail.agency">
+                    北京威远图易数字科技有限公司,北京,100044
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e6%b9%96%e5%8d%97%e5%a4%a7%e5%ad%a6%22&amp;f=detail.agency">
+                    湖南大学
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%b1%b1%e4%b8%9c%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%a6%e6%b5%8b%e7%bb%98%e7%a7%91%e5%ad%a6%e4%b8%8e%e5%b7%a5%e7%a8%8b%e5%ad%a6%e9%99%a2%2c%e5%b1%b1%e4%b8%9c%2c%e9%9d%92%e5%b2%9b%2c266510%22&amp;f=detail.agency">
+                    山东科技大学测绘科学与工程学院,山东,青岛,266510
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e4%b8%ad%e5%9b%bd%e7%9f%bf%e4%b8%9a%e5%a4%a7%e5%ad%a6(%e5%8c%97%e4%ba%ac)%22&amp;f=detail.agency">
+                    中国矿业大学(北京)
+                  </a>
+                </li>
+                <li>
+                  <a href="/S/paper.aspx?f=detail.agency&amp;q=Organization%3a%22%e5%8c%97%e4%ba%ac%e5%a4%a7%e5%ad%a6%2c%e9%81%a5%e6%84%9f%e4%b8%8e%e5%9c%b0%e7%90%86%e4%bf%a1%e6%81%af%e7%b3%bb%e7%bb%9f%e7%a0%94%e7%a9%b6%e6%89%80%2c%e5%8c%97%e4%ba%ac%2c100871%22&amp;f=detail.agency">
+                    北京大学,遥感与地理信息系统研究所,北京,100871
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="detail_leftcontent">
+          <p class="BreadcrumbNav">
+            <span>
+              <a href="/">
+                首页
+              </a>
+               &gt; 
+              <a href="/C/Periodical.aspx">
+                学术期刊
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical-gwjsks.aspx">
+                矿业工程
+              </a>
+               &gt; 
+              <a style="text-decoration:none;" href="/C/periodical/gwjsks/2009-5.aspx">
+                2009年5期
+              </a>
+               &gt; 利用3DMine软件建立矿山地质三维模型
+            </span>
+          </p>
+          <div class="detail_div">
+            <p class="per_button">
+              <input name="Submit" type="button" onclick="window.open('#a','_self')" class="button-white" id="crbtn" value="相似文献"/>
+              <input name="Submit" type="button" onclick="window.open('#b','_self')" class="button-white" id="refbtn" value="参考文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#c','_self')" class="button-white" id="citedbtn" value="引证文献" style="display: none;"/>
+              <input name="Submit" type="button" onclick="window.open('#f','_self')" class="button-white" id="relblogbtn" value="相关博文" style="display: none;"/>
+            </p>
+            <h1>
+              利用3DMine软件建立矿山地质三维模型
+            </h1>
+            <h2>
+              3DMine software applied in establishment of 3D mine geological model
+            </h2>
+            <div id="ctl00_LeftContentPlaceHolder_periodical">
+              <p id="fulltext" style="visibility:visible">
+                <a href="/Service/File/view/利用3DMine软件建立矿山地质三维模型.aspx?ID=Periodical_gwjsks200905023" class="seeft">
+                </a>
+                <a href="/Service/File/download/Periodical_gwjsks200905023.aspx" class="downloadft">
+                </a>
+              </p>
+            </div>
+            <div>
+              <p>
+                <a href="/Service/ResourcesExport/ResourcesExport.aspx?rs=Periodical_gwjsks200905023" class="export">
+                </a>
+              </p>
+            </div>
+            <div id="downloadpdf">
+              <a href="/Service/Readerdownload.aspx">
+                下载PDF阅读器
+              </a>
+            </div>
+            <p class="abstracts">
+              介绍了利用3DMine软件分层建立了矿山地质三维模型,实现了地质模型的动态显示与基本三维分析功能.该模型可广泛应用于测量、地质和采矿等工作中.
+            </p>
+            <dl id="perildical_dl">
+              <dt>
+                作 者：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%88%98%e4%ba%91%22++DBID%3aWF_QK">
+                  刘云
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e7%9b%96%e4%bf%8a%e9%b9%8f%22++DBID%3aWF_QK">
+                  盖俊鹏
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22%e5%88%98%e9%a2%96%22++DBID%3aWF_QK">
+                  刘颖
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22LIU+Yun%22++DBID%3aWF_QK">
+                  LIU Yun
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22GAI+Jun-peng%22++DBID%3aWF_QK">
+                  GAI Jun-peng
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e4%bd%9c%e8%80%85+%3a+%22LIU+Ying%22++DBID%3aWF_QK">
+                  LIU Ying
+                </a>
+                
+
+
+ 
+              </dd>
+              <dt>
+                作者单位：
+              </dt>
+              <dd>
+                鞍钢矿业公司大孤山铁矿,辽宁,鞍山,114046 
+              </dd>
+              <dt>
+                刊 名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-gwjsks.aspx">
+                  矿业工程
+                </a>
+                 
+                <span class="green-border" visible="False">
+                </span>
+              </dd>
+              <dt>
+                英文刊名：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical-gwjsks.aspx">
+                  MINING ENGINEERING
+                </a>
+                 
+              </dd>
+              <dt>
+                年，卷(期)：
+              </dt>
+              <dd>
+                <a style="text-decoration:none;" href="/C/periodical/gwjsks/2009-5.aspx">
+                  2009 7(5)
+                </a>
+                 
+              </dd>
+              <dt>
+                分类号：
+              </dt>
+              <dd>
+                TP3-05 
+              </dd>
+              <dt>
+                关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22GIS%22++DBID%3aWF_QK">
+                  GIS 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=GIS" title="GIS的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%95%b0%e5%ad%97%e7%9f%bf%e5%b1%b1%22++DBID%3aWF_QK">
+                  数字矿山 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e6%95%b0%e5%ad%97%e7%9f%bf%e5%b1%b1" title="数字矿山的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%b8%89%e7%bb%b4%22++DBID%3aWF_QK">
+                  三维 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=%e4%b8%89%e7%bb%b4" title="三维的知识脉络">
+                </a>
+                  
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%223DMine%22++DBID%3aWF_QK">
+                  3DMine 
+                </a>
+                <a href="http://trend.wanfangdata.com.cn/Default.aspx?wd=3DMine" title="3DMine的知识脉络">
+                </a>
+                 
+              </dd>
+              <dt>
+                机标分类号：
+              </dt>
+              <dd>
+                TP3  TM7 
+              </dd>
+              <dt>
+                机标关键词：
+              </dt>
+              <dd>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e8%bd%af%e4%bb%b6%e5%88%86%e5%b1%82%22++DBID%3aWF_QK">
+                  软件分层
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e7%9f%bf%e5%b1%b1%e5%9c%b0%e8%b4%a8%22++DBID%3aWF_QK">
+                  矿山地质
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%b8%89%e7%bb%b4%e6%a8%a1%e5%9e%8b%22++DBID%3aWF_QK">
+                  三维模型
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22geological+model%22++DBID%3aWF_QK">
+                  geological model
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e4%b8%89%e7%bb%b4%e5%88%86%e6%9e%90%22++DBID%3aWF_QK">
+                  三维分析
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8a%a8%e6%80%81%e6%98%be%e7%a4%ba%22++DBID%3aWF_QK">
+                  动态显示
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%9c%b0%e8%b4%a8%e6%a8%a1%e5%9e%8b%22++DBID%3aWF_QK">
+                  地质模型
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e5%8a%9f%e8%83%bd%22++DBID%3aWF_QK">
+                  功能
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e6%b5%8b%e9%87%8f%22++DBID%3aWF_QK">
+                  测量
+                </a>
+                <a href="/S/paper.aspx?f=detail&amp;n=10&amp;q=%e5%85%b3%e9%94%ae%e8%af%8d+%3a+%22%e9%87%87%e7%9f%bf%22++DBID%3aWF_QK">
+                  采矿
+                </a>
+                 
+              </dd>
+              <dt>
+                基金项目：
+              </dt>
+              <dd>
+                 
+              </dd>
+              <dt>
+                DOI：
+              </dt>
+              <dd>
+                <a href="http://doi.wanfangdata.com.cn/10.3969/j.issn.1671-8550.2009.05.023">
+                  10.3969/j.issn.1671-8550.2009.05.023
+                </a>
+                 
+              </dd>
+            </dl>
+            <div class="Cited1">
+            </div>
+            <div class="Cited1" id="crlrs">
+              <div class="td-blue" id="controlHeader">
+                <a id="a">
+                </a>
+                <span id="corcount">
+                  相似文献(10条)
+                </span>
+                <a href="#header" title="返回顶部" class="top">
+                </a>
+              </div>
+              <ol class="cited_ol">
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_mkxdh200804029.aspx">
+                    基于GIS的数字矿山实验室建设研究
+                  </a>
+                  <span>
+                     - 煤矿现代化2008(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_mkxdh200804029.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_dlkjxx200801031.aspx">
+                    数字矿山中异构GIS数据自动转换与应用
+                  </a>
+                  <span>
+                     - 地理空间信息2008,6(1)
+                  </span>
+                  <a href="/Service/File/download/Periodical_dlkjxx200801031.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_Y2434626.aspx">
+                    基于GIS的数字矿山系统的设计与实现
+                  </a>
+                  <span>
+                    2013
+                  </span>
+                  <a href="/Service/File/zip/Thesis_Y2434626.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_caikjs200504014.aspx">
+                    网格GIS的发展现状及其在数字矿山中的应用
+                  </a>
+                  <span>
+                     - 采矿技术2005,5(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_caikjs200504014.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  会议论文           
+        
+                  <a href="/D/Conference_7556820.aspx">
+                    基于GIS的数字矿山研究
+                  </a>
+                  <span>
+                    2011矿山企业节能减排、循环经济与绿色矿山建设经验交流会2011
+                  </span>
+                  <a href="/Service/File/download/Conference_7556820.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_hljkjxx201123066.aspx">
+                    基于三维GIS的数字矿山综合管理系统的研究和应用
+                  </a>
+                  <span>
+                     - 黑龙江科技信息2011(23)
+                  </span>
+                  <a href="/Service/File/download/Periodical_hljkjxx201123066.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  学位论文           
+        
+                  <a href="/D/Thesis_D041113.aspx">
+                    基于GIS的数字矿山岩层可视化混合构模方法的研究
+                  </a>
+                  <span>
+                    2007
+                  </span>
+                  <a href="/Service/File/zip/Thesis_D041113.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_gwjsks200804027.aspx">
+                    基于GIS软件的数字矿山实验室构建分析与设计
+                  </a>
+                  <span>
+                     - 矿业工程2008,6(4)
+                  </span>
+                  <a href="/Service/File/download/Periodical_gwjsks200804027.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  会议论文           
+        
+                  <a href="/D/Conference_6033118.aspx">
+                    适于"数字矿山"的GIS数据仓库模型初探
+                  </a>
+                  <span>
+                    2005年全国矿产资源高效开发与循环经济高级论坛
+                  </span>
+                  <a href="/Service/File/download/Conference_6033118.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+                <li>
+                  期刊论文           
+        
+                  <a href="/D/Periodical_mtkxjs200408015.aspx">
+                    数字矿山中3DGIS关键技术研究
+                  </a>
+                  <span>
+                     - 煤炭科学技术2004,32(8)
+                  </span>
+                  <a href="/Service/File/download/Periodical_mtkxjs200408015.aspx" style="visibility:visible" class="pdf_ctrl">
+                    <img src="/D/Images/pdf.jpg"/>
+                  </a>
+                </li>
+              </ol>
+            </div>
+            <div class="Cited1">
+            </div>
+            <script language="javascript" type="text/javascript">
+//<![CDATA[
+
+    function loadRel() {
+        GetRelated('CorrelatedResources.aspx', { ID: 'Periodical_gwjsks200905023' }, ['#crlrs', '#relotr', '#relblog'], function(isLoadSuc) {
+            if (!isLoadSuc) {
+                $('#crbtn').remove();
+            }
+            $('#relatitle').remove();
+            $('#relblogtitle').remove();
+            hidemore('moreRelatedBlogButton', 'ismoreRelatedBlog');
+        });
+    }
+    $(document).ready(function() {
+        loadRel();
+    });
+
+//]]>
+            </script>
+          </div>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+      <!-- footer 开始 -->      <div id="footer_mirror">
+        <p>
+          <a href="/Service/Announce.aspx">
+            知识产权声明
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            服务承诺
+          </a>
+            |  
+            
+          <a href="/Others/Links.aspx">
+            友情链接
+          </a>
+            |  
+            
+          <a href="/AboutUs/ContactUs.aspx">
+            联系我们
+          </a>
+            |  
+            
+          <a href="/zhaopin.html">
+            人才招聘
+          </a>
+            |  
+            
+          <a href="/Service/Services.aspx">
+            客户服务
+          </a>
+            |  
+            
+          <a href="/AboutUs/Default.aspx">
+            关于我们
+          </a>
+            |  
+            
+          <a href="/SiteMap.aspx">
+             站点地图
+          </a>
+            |  
+            
+          <a href="/Help/index.html">
+            使用帮助
+          </a>
+        </p>
+        <p>
+          
+                            北京万方数据股份有限公司 版权所有   上海市研发公共服务平台管理中心 维护 
+          <br/>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright2">
+              地址：上海市钦州路100号2号楼4楼 传真：021-54065110 邮箱：admin@sgst.cn
+            </span>
+          </font>
+          <font color="#000000">
+            <span id="ctl00_ctl11_LiteralCopyright">
+              服务热线：800-820-5114 / 400-820-5114(手机),未开通800业务地区的用户请拨打021-54594730
+            </span>
+          </font>
+          <!--&nbsp;
+                           <span id="ctl00_ctl11_ImageWebSiteCounterControl1"><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_2.gif" style="border-width:0px;" /><img src="Images/NUM_8.gif" style="border-width:0px;" /><img src="Images/NUM_1.gif" style="border-width:0px;" /><img src="Images/NUM_5.gif" style="border-width:0px;" /><img src="Images/NUM_7.gif" style="border-width:0px;" /><img src="Images/NUM_6.gif" style="border-width:0px;" /><img src="Images/NUM_0.gif" style="border-width:0px;" /></span>-->        </p>
+        <div id="bootom_info">
+          <a href="http://www.alexa.com/data/details/main?url=http://www.sgst.cn" class="AlexaSiteStatsWidget">
+            <img src="http://xsltcache.alexa.com/site_stats/gif/s/a/d3d3LnNnc3QuY24=/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.sgst.cn"/>
+          </a>
+          <script type="text/javascript" language="JavaScript" src="http://xslt.alexa.com/site_stats/js/s/a?url=www.sgst.cn">
+          </script>
+          <script type="text/javascript">
+//<![CDATA[
+
+(function() {
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var u = _protocol + "stat.sgst.cn/";
+var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.id='sgst-stat'; g.defer=true; g.async=true; g.src=u+'t.js?ff80808143a0c6790143a0d5f44a0048';
+s.parentNode.insertBefore(g,s);
+})();
+
+//]]>
+          </script>
+          <script>
+//<![CDATA[
+
+var domain = "sgst.cn";
+ var sub = "lib-wf";
+ if(location.host!=sub+"."+domain) {
+    alert("您即将访问上海研发公共服务平台万方文献，只要注册成为研发平台用户即可【免费】使用万方文献、CNKI、标准文献、外文期刊、数字图书等各类海量资源");
+    location.host=sub+"."+domain;
+ }
+
+//]]>
+          </script>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6BDC067D"/>
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL1tNmTDgL+yqGTDgLNsI6nC995rw5eC8pll6X7xd1Gw4vwsR1f"/>
+      </div>
+      <script type="text/javascript">
+
+//<![CDATA[
+document.getElementById('refbtn').style.display='none';document.getElementById('citedbtn').style.display='none';//]]>
+
+      </script>
+    </form>
+  </body>
+</html>

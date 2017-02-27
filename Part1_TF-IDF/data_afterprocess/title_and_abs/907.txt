@@ -1,0 +1,3 @@
+CTI技术在调度电话自动呼测中的应用  An application of CTI to the connection auto-test of power dispatching telephone
+              简要介绍了CTI技术，在对电力系统调度电话试通工作的现状进行介绍的基础上，结合CTI技术的特点，提出了利用基于CTI技术的电力调度电话自动呼测实现对电力调度电话自动测试的思路。
+            

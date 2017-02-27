@@ -1,0 +1,3 @@
+构建计算(机)哲学体系的探索研究  On Constructing Computation Philosophy System
+              分析了计算教育的现状,给出了计算哲学的概念,提出了计算哲学的基本框架,探讨了构建计算哲学的客观依据和现实意义.
+            
