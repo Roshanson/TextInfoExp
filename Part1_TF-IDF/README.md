@@ -1,3 +1,7 @@
+#####文件说明
+     data文件夹存放源数据
+     data_afterprocess文件夹存放各种中间结果
+
 
 ###1  对于原始数据(data/computer中的xml文件)进行预处理
        通过运行abstracts.py,将源数据进行清洗，得到每个数据的标题和摘要（生成title_and_abstracts文件）。
