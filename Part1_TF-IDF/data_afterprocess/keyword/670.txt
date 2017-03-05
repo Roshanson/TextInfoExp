@@ -1,1 +1,0 @@
-离散点    空间插值    气象要素    自适应    discrete points    spatial interpolation    meteorological elements    self-adaptive   

@@ -1,1 +1,0 @@
-串行通信    中断    ACTIVEX    MSCOMM32.OCX    LabVIEW   

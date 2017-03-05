@@ -1,1 +1,0 @@
-LTE    SNR    虚拟MIMO    多用户配对    Long term evolution(LTE)    SNR    Virtual    MIMO    Multi-user pairing   

@@ -1,1 +1,0 @@
-病虫入侵检测    BP神经网络    异常检测    规则库    门限检测    时序    pest and diseases intrusion detection    BP neural network    anomaly detection    rule set    threshold detection    time thread   

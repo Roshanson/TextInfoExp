@@ -1,1 +1,0 @@
-小生境    粒子群    二维不规则    离散化    排样    niche    particle swarm    two-dimensional irregular    discrete    nesting   

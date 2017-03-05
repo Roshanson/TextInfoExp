@@ -1,1 +1,0 @@
-向量网    平均向量地址长度    BRITE    网络仿真    vector network    average length of vector address    BRITE    network simulation   

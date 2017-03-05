@@ -1,1 +1,0 @@
-人脸识别    K-L变换    神经网络    隐马尔科夫模型    face recognition    K-L transform    neural network 

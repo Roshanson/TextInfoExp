@@ -1,1 +1,0 @@
-腐蚀产物颜色    腐蚀特征分割    颜色相似度    图谱信息表    corrosion products color    corrosion feature segmentation    color similarity    map information table   

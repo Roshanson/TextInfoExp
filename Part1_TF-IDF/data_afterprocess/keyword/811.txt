@@ -1,1 +1,0 @@
-Agent结构    结构模型    形式化描述    映射问题    Agent structure    structure model    formal description    mapping problem   

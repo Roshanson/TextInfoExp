@@ -1,1 +1,0 @@
-数字证书    一次一密    pkcs#12    PFX 口令保护机制    网络身份认证    智能手机终端    digital certificates    OTP    pkcs#12    PFX Password protection mechanisms    network authentication    smart mobile terminals   

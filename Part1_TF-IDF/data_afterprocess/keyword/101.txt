@@ -1,1 +1,0 @@
-ActiveX    LabVIEW    事件回调    同步技术   
