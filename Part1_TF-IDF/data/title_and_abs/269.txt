@@ -1,0 +1,3 @@
+物联网技术在检察工作中的应用构想  Application Vision about Internet of Things Technology in Procuratorial Work
+              介绍了物联网的基本概念及相关技术.结合检察机关信息化建设工作现状,针对讯问录像、车辆管理、涉密资产管理提出了物联网技术的应用构想.利用物联网技术实现智能检察,为落实检察机关科技强检战略开辟了一条新思路.
+            

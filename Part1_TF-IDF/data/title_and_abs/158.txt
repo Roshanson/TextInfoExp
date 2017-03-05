@@ -1,0 +1,3 @@
+Steward 动感平台体感仿真数值化算法研究  Research of Steward Motion Platform Somatosensory Simulation Numerical Algorithm
+              为实现六自由度Steward动感平台的姿态控制，实时模拟驾驶舱的运动姿态，选择Washout Filte的滤波方法作为体感模拟算法，推导Washout Filter的高通、低通滤波器的传递函数转换为差分方程的算法及纵向加速度倾斜策略、俯仰策略等，并用实例验证了算法的正确性。
+            

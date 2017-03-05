@@ -1,0 +1,3 @@
+高职计算机网络课程问题化与实践化相结合教学方法探究  Computer network curriculum in higher vocational colleges and the practice of combining teaching methods
+              计算机网络课程是实践性很强的课程,学生在学习理论知识后,实践动手能力及处理问题的能力往往很不理想,对此,结合计算机网络课程实际情况,采取了问题化教学和实践教学相结合的方法进行教学,有针对性地提出了一些解决策略和具体实施方案.
+            

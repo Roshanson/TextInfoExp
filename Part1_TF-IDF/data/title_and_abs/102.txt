@@ -1,0 +1,3 @@
+利用3DMine软件建立矿山地质三维模型  3DMine software applied in establishment of 3D mine geological model
+              介绍了利用3DMine软件分层建立了矿山地质三维模型,实现了地质模型的动态显示与基本三维分析功能.该模型可广泛应用于测量、地质和采矿等工作中.
+            

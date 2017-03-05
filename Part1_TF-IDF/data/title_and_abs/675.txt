@@ -1,0 +1,3 @@
+浅谈高职学院计算机机房管理与维护运行模式  Higher Vocational Colleges Computer Room Management and Maintenance Analysis
+              计算机机房在高职学院的教学中占有重要的地位,是学生实践学习不可缺少的重要学习基地.良好的机房的管理与维护工作,是促进高职学院网络教学和培养学生职业技能与操作能力的保证.文中通过对高职学院机房运行模式的分析,探索科学的机房管理与维护方法.
+            

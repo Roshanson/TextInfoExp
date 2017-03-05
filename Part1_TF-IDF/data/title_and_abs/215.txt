@@ -1,0 +1,3 @@
+面向明细报表的BOM模型的研究与应用  Research and application of BOM module of report management system
+              在详细分析了明细报表特点的基础上,采用企业资源计划(emerprise resource plan,ERP)中物料清单(bill of material,BOM)模型的设计思想,设计并开发了某电力公司的报表管理系统.该系统针对传统报表"黏度过高"的缺点,采用表示层与逻辑层相分离的策略,极大地提高了系统的可复用性和可维护性.
+            

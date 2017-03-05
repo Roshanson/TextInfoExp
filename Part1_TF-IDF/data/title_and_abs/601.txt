@@ -1,0 +1,3 @@
+基于GPL软件的小型生物实验室计算服务解决方案  A solution of computing service base on GPL for small biological laboratory
+              针对小型实验室特点和实际需要,提出并实现一个以服务器-客户机模式,涵盖web服务,生物序列分析,生物芯片数据分析,实验数据统计处理,文献服务等计算机辅助的通用解决方案.该解决方案已经应用在批量ESTs电子注释和寄生虫病分子诊断的靶序列筛选上.可作为小型实验室生物信息学基础设施部署.
+            

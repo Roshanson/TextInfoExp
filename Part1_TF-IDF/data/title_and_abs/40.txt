@@ -1,0 +1,3 @@
+基于多Agent的消费者需求代理系统分析与研究  Consumer demand for agent system based on multi-Agent analysis and research
+              从电子商务环境下不同消费者生命周期阶段的消费者需求特点出发,充分考虑消费者的个人偏好,以消费者需求为导向建立了基于多Agent的消费者需求代理系统,充分满足不同生命周期阶段的消费者个性化需求,提出了需求代理工作流程。
+            

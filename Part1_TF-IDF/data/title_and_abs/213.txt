@@ -1,0 +1,3 @@
+经典逻辑门与量子逻辑门之比较  Comparison of Classical Logic Gates with Quantum Logic Gates
+              本文通过经典逻辑门与量子逻辑门之比较,论述了量子计算的特点、量子算法的巨大威力及量子逻辑门的实现问题.
+            

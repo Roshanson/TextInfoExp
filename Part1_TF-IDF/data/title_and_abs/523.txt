@@ -1,0 +1,3 @@
+基于开源云技术的高可用Web应用云研究  The Research of High-Available Web Application Cloud Based on the Open Source Cloud Computing Technology
+              Web应用已成为当前主流的计算机服务方式，其数量与用户量已远远超过客户端程序。Web后端如何适应Web应用访问量迅速增加或减少带来的负载波动成为了当前的主要问题。而传统的分层架构企业级应用服务器集群方案存在一定的伸缩限制、高代价等缺陷。基于云计算的基本特征提出一种新的高可用Web应用云SPI（SaaS-Paas-IaaS）架构模型方案，基于Openstack的硬件资源管理、Cloudify的平台服务实现SPI模型，提供弹性Web应用运行平台，能较好解决前述问题。
+            

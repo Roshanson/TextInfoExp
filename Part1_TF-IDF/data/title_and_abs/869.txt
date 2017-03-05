@@ -1,0 +1,3 @@
+基于标准数据集的异常检测技术综述与实验分析  A Review of Novelty Detection and Experimental Analysis Based on Benchmark Datasets
+              为了研究目前主流的异常检测算法,并了解基于相同数据集的异常检测算法之间性能的差异,首先简要分类综述现有异常检测技术,然后着重实验分析,选取5个具有代表性的异常检测算法,应用于10组不同维数和大小的标准数据集上,执行误差性能（FNR,FPR,AUC）对比,最后试验结果表明,基于统计的高斯混合（Gaussian Mixture）算法具有较大优势。
+            

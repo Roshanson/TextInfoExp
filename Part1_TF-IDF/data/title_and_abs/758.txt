@@ -1,0 +1,3 @@
+怎样用FTP命令获取CT数字图像  How to acquire digital images of Computerized Tomography with FTP
+              本文介绍如何通过基于TCP/IP协议的以太网,采用FTP命令将位于CT工作站上的医学图像下载到PC机上的方法.此法简单易行,不损失任何影像数据,有助于普通医院实现医学数字图像的微机化、自动化、网络化归档管理.
+            

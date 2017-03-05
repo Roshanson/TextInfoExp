@@ -1,0 +1,3 @@
+Modelica语言在电路建模与仿真中的应用  Application in Modeling and Simulation of Circuit with Modelica
+              Modelica 语言是一种面向对象的非因果物理建模语言.本文通过一个简单电路阐述了该建模语言的主要特点和优势,并建立了一个三相桥式全波整流器仿真模型,给出了相应的三相电压及电流变化曲线,验证了该模型的工作机理.
+            

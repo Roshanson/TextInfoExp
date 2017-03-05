@@ -1,0 +1,3 @@
+计算机基础课程教学过程的优化  On Teaching Process Optimization in Computer Basic Course
+              分析高校计算机基础课程教学中存在的问题,提出以系统工程思想为指导,实现教学过程的最优化,并给出了具体的实施办法.
+            

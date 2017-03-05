@@ -1,0 +1,3 @@
+三维重建技术在全级配混凝土骨料随机分布中的研究与应用  Research and Application on 3-D Reconstructed Technology of Random Distribution of Aggregates in Fully-graded Concrete
+              介绍了三维重建的几种方法,分析比较了这些方法的特点,并对由切片和CT扫描获得的图像进行三维重建作了重点介绍.在混凝土各项性能研究中,混凝土的级配、骨料含量及其分布模型对混凝土的力学性能有很大的影响,本文提出了采用试验和数字图形处理相结合的方法对全级配混凝土骨料进行三维重建,分析阐述了其具体的重建过程.通过建立接近现实的混凝土骨料模型,可以使用有限元进一步研究混凝土的性质及其发生的各种变化.
+            

@@ -1,0 +1,3 @@
+量子纠错与经典纠错的比较  Comparison of quantum error correction and classical error correction
+              量子计算机利用其量子位态特有的相干叠加和纠缠性,使得在某些问题的处理上优于经典计算机,同时也导致量子计算过程中的出错图样不同于经典计算.讨论了二者的区别,在此基础上详细介绍了量子计算机中开发的量子纠错方案.
+            

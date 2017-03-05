@@ -1,0 +1,3 @@
+地方高校电信专业本科计算机能力的构成与培养  The Structure and Training of Computer Ability of Undergraduate Majoring in Electrical Specialty in Local Colleges
+              本文论述了计算机能力的概念.通过计算机科学与技术发展和信息化社会对地方高校电子信息专业学生计算机能力的需求分析,提出地方高校电信专业计算机能力的层次型结构与课程体系,并提出实践中需要注意的主要问题.
+            

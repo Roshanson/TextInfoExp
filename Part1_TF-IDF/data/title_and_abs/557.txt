@@ -1,0 +1,3 @@
+基于VB的学生成绩管理系统设计与实现  Study on DBMS of Student Score Based on VB
+              阐述了在VB中应用Active X数据对象(ADO)开发"学生成绩数据管理系统"的关键技术与实现方法,并分析了该数据管理系统的总体设计结构.
+            

@@ -1,0 +1,3 @@
+数字电路实验在微机上的实现  The realization of digital circuit experiment on computer
+              将数字电路实验与计算机结合起来,利用计算机实现电路仿真实验,扩展实验者的知识面,培养和训练学习者自行设计、制作各种功能的电路.
+            

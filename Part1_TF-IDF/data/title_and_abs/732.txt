@@ -1,0 +1,3 @@
+智能远程育人管理系统的研究与设计  The Research and Design of the Intelligent Long-distance Education and Management System
+              随着信息技术的不断发展,交互式多媒体远程教育系统已成为研究热点,但实现因材施育的智能管理系统对目前来说还是一个挑战.本文基于远程教育技术和传统的德育管理手段,充分利用计算机资源,动态追踪学生历程信息,运用数据挖掘技术,提出智能远程育人管理系统的结构模型及其解决方案.
+            

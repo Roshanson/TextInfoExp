@@ -1,0 +1,3 @@
+基于隐马尔可夫模型的汉语非嵌套名词短语识别  Chinese Non-recursive Noun Phrase Identification Based on Hidden Markov Model
+              文章以哈工大和北大语料库为基础,建立了一个基于隐马尔可夫模型的现代汉语非嵌套名词短语识别模型.实验结果表明,该模型具有一定的可行性、创新性和高效性,有较高的正确率和召回率.
+            

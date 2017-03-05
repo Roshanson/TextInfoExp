@@ -1,0 +1,3 @@
+如何提高计算机的启动速度  How to Improve the Speed of Computer's Starting System
+              本文详细分析了影响计算机启动速度的各种因素,提出了解决方法.
+            

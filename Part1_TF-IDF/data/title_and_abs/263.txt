@@ -1,0 +1,3 @@
+P2P流媒体系统中基于直觉模糊集的节点选择策略  Node Selection Strategy Based on Intuitionistic Fuzzy Sets in P2P Streaming Media System
+              通过对非结构化P2P网络中的随机节点选择算法进行研究,运用模糊理论中的直觉模糊集概念提出了基于得分函数的节点选择策略,以克服传统策略的随机性和盲目性.采取对节点的可靠度进行得分排序的方法,充分利用了能力强的节点,其具有良好的适应性,可反映P2P网络中节点和资源的动态性,提高了系统的整体效率.
+            

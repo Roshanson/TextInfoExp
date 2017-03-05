@@ -7,11 +7,15 @@ from bs4 import BeautifulSoup
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
+base_path = os.getcwd().replace('\\','/')
+print base_path
+
+
 # path='/home/mbtrec/mhwang/pro/computer/'
-path = 'C:/Users/kaifun/Desktop/ass_TIP/TextInfoProcess/Test_one_TF-IDF/data/computer/'  # 原始数据
-path1 = 'C:/Users/kaifun/Desktop/ass_TIP/TextInfoProcess/Test_one_TF-IDF/data_afterprocess/title_and_abs/'  # 处理后的标题和摘要
-newpath = 'C:/Users/kaifun/Desktop/ass_TIP/TextInfoProcess/Test_one_TF-IDF/data_afterprocess/pro_keyword/'
-newpath2 = 'C:/Users/kaifun/Desktop/ass_TIP/TextInfoProcess/Test_one_TF-IDF/data_afterprocess/keyword/'
+path = base_path+'/data/computer/'  # 原始数据
+path1 = base_path+'/data/title_and_abs/'  # 处理后的标题和摘要
+newpath = base_path+'/data/pro_keyword/'
+newpath2 = base_path+'/data/keyword/'
 
 filelist = os.listdir(path)  # 取得当前路径下的所有文件
 
@@ -73,4 +77,4 @@ def get_keyword():
 
 if __name__ == '__main__':
     get_text()
-    get_keyword()
+    # get_keyword()

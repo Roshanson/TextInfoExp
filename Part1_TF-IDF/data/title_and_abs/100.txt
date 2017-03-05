@@ -1,0 +1,3 @@
+基于MScomm32和LabVIEW的串口通信技术  Serial communication technique based on MSCOMM32 and LabVIEW
+              串行通信是一种常用的数据传输方法,它用于计算机与外设,或者计算机与计算机之间的通信.文中针对串口通信技术,详细介绍串口通信控件MSCOMM32.OCX在LabVIEW7.1下的使用方法,并介绍串行通信中断接收及数据处理的技巧.该项技术已成功运用到实际工作中.
+            

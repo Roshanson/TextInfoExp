@@ -1,0 +1,3 @@
+高性能计算平台在铜铁薄板热轧复合数值模拟中的应用  Numerical Simulation of Cu/Fe/Cu Thin Plate Hot-roll Bonding Based on the Platform of High Performance Computation
+              基于高性能计算平台,利用ABAQUS有限元软件首次对Cu/Fe/Cu薄板进行了热轧复合模拟.应用高性能计算平台不仅大大地提高了计算效率,而且还提高了计算精度.通过模拟仿真,获得了轧制复合过程的应力应变场和温度场变化,对热轧过程有更清晰的认识；通过与实验对比,数值模拟与实验结果吻合良好,复合板各层厚度变化误差在5％左右,可对原始板料的厚度提供参考,同时对工艺的制定提供良好的理论指导.
+            

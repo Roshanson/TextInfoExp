@@ -1,0 +1,3 @@
+DNA计算原理、模型及进展  DNA Computing Principle,Model and Advance
+              近几年,DNA计算是诸多学科研究的一个热点.编码与模型选择是DNA计算的核心.本文综述了DNA计算原理,讨论了目前常用计算模型及进展.
+            

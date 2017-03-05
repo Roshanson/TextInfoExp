@@ -1,0 +1,3 @@
+基于嵌入式系统的Bootloader分析与设计  Analysis and Design of Bootloader Based on Embedded System
+              Bootloader的开发是嵌入式系统整个开发过程中的重要环节.总结了基于S3C4510B芯片的Bootloader代码设计的一般流程,具体说明了Bootloader完成的主要任务,给出了S3C4510B在基于Linux操作系统的嵌入式应用中,Bootloader的引导过程及关键技术和代码.
+            

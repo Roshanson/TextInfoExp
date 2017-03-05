@@ -1,0 +1,3 @@
+面向对象程序设计课程教学改革的研究与实践  The Research and Practice of Object-oriented Program Design in Teaching Reformation
+              从面向对象教学面临的困境入手，结合学生的学习心理和认知规律，分析了产生问题的主客观原因，提出了“先过程，后对象”的教学理念，从教材建设、教学内容安排上阐述了教学内容的具体组织实施过程；从教学思路、教学观念、教学手段几方面探讨了教学方法的改革。
+            

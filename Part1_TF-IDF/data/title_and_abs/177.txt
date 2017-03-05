@@ -1,0 +1,3 @@
+云计算在科研信息化建设中的应用  The Application of Cloud Computing in Scientific Research Information Construction
+              分析了当前科研单位信息化建设中存在的问题和困难,提出了云计算在科研信息化建设中的应用模式,介绍了云计算数据中心的服务和优势特点,并阐述了云环境下科研单位应当注意和协调的几个问题.
+            

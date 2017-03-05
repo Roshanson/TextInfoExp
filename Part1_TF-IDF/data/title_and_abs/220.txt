@@ -1,0 +1,3 @@
+并行机环境下的多目标Job—Shop调度问题研究  Job_Shop scheduling problem in parallel machine environment under the multi-target
+              分析并讨论了带调整时间即换模具时间，综合考虑工件完工时间、不同交货期窗口下的提前／拖期惩罚、并行机环境下的多目标Job—Shop调度问题，提出了一种基于不同工件工序排序的染色体编码方式，利用稳步遗传算法求解，并融合变邻域搜索和依角度聚类的方法，使得求得的Pareto解集在质量和分布上均有较好的效果。仿真实验表明了此种算法的可行性和有效性。
+            

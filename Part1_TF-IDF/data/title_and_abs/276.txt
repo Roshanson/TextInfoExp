@@ -1,0 +1,3 @@
+省实验教学示范中心网站的设计与实现  Design and implementation of the website indemonstration center of experimental teaching in Zhejiang province
+              实验教学管理是高等院校管理的一个重要的环节，网络化的管理在一定程度上反映出学校现代化管理水平。以省实验教学示范中心网站管理为例，阐述了基于网络的实验教学管理系统主要开发技术、功能构成、系统设计方案等。根据该方案构建的网站功能完备，运行稳定，达到了设备资源共享、信息共享、机房预约，方便教学、加强师生交流、提高管理效率的目的。
+            

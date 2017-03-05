@@ -1,0 +1,3 @@
+工科数学课件制作与教学实践初探  The lesson software of Mathematics for Technology And Pactising Quest in Teaching
+              教育技术的多媒体化与网络化,及其在教学上应用与研究是当前教学改革的热点.利用先进的软件工具,制作实用的课件并应用于教学是改变教学面貌,加大课堂信息量,发挥学生主体作用,提高教学质量的有效手段.本文从自制工科数学教学软件、课堂教学受益及使用启示三个方面进行初步探索.
+            

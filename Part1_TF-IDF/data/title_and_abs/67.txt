@@ -1,0 +1,3 @@
+Electronics Workbench在电子线路故障分析中的应用  The Application of Electronics WorkBench in The Electronic Circuit Breakdown Analysis
+              加拿大IIT公司的EDA软件Electronics Workbench,在电子线路的仿真方面,具有 独特的优势.将其应用于电子线路教学中的故障分析,可实现理论教学、演示实验、实验模拟的一体化.
+            

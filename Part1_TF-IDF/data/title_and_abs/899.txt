@@ -1,0 +1,3 @@
+学习路径图在网络设备技术教学中的应用研究  Application of the Learning Path Map to the teaching of Network Equipment Technology
+              学习路径图理论应用于网络设备技术教学中,就是将基于＂能力模型＂教学模式改为基于＂任务模型＂教学模式,让学生在一系列教学任务中不光学习到相关技能,也收获了解决实际问题的能力。
+            

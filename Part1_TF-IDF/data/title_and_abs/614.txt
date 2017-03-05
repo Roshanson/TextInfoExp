@@ -1,0 +1,3 @@
+采矿工程三维可视化虚拟实验室建设  Construction of virtualization laboratory with 3D visualization concept for mining engineering
+              分析了采矿工程实验室建设的现状及其存在的问题;通过介绍虚拟现实技术的本质涵义和分析其在教育领域中价值,提出建立基于三维可视化技术的采矿工程虚拟实验室并确定其基本功能,为采矿工程实验室建设开辟一条崭新途径.
+            

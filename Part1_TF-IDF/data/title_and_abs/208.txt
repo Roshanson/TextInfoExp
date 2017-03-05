@@ -1,0 +1,3 @@
+人脸与声音结合的矿井人员签到识别  Face and Voice Recognition Algorithms of Sign-in System for Underground Coalmine
+              矿井时有安全事故发生,签到管理系统可及时、准确掌握人员出入人员状况,保障矿井安全生产,方便及时救援.针对传统签到管理系统用于矿井,遇到光线昏暗、人脸易附着粉尘、干扰噪音等因素影响,签到识别方法检测率低,提出了—种根据KL变换(Karhunen-Loeve Transform)和TAN分类(Tree-Augmented Naive Bayesian network)相结合的人脸识别,并辅以声音识别的方法.通过形态学滤波变换快速去掉大部分无用背景,使处理更快速,特征点更突出;自动根据具体环境选择图像识别或声音识别,使识别准确率更高.仿真结果表明:结合声音的系统识别方法既减小了计算复杂度,又提高了人员识别率,还增强了适应性.
+            

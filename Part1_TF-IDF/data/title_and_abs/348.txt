@@ -1,0 +1,3 @@
+聚类分析方法研究及在中医药领域的应用探索  Cluster Analysis method the research and explore application in the field of Traditional-Chinese medicine
+              文章对聚类分析方法进行了简要介绍,并主要对其中的层次聚类方法进行了研究,将该方法引入到中医药领域中,以治疗糖尿病的中药为试验数据,对中药的性味作了聚类,初步取得了符合中医理论的结果,对数据挖掘在中医药中的应用做了有益的探索.
+            

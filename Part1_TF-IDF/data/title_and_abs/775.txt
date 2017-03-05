@@ -1,0 +1,3 @@
+功能安全通信行规PROFIsafe V2.0的介绍  PROFIsafe V2.0 Profile for Functional Safety Communication
+              由PNO发布的最新版PROFIsafe安全行规(V2.0)描述了安全外围设备和安全控制器间的通信.它是对标准Profibus-DP和Profinet IO的补充技术,用于减少安全控制器和安全设备间数据传输的失效率和错误率,以达到或超过相关标准要求等级.通过介绍新版PROFIsafe安全行规(V2.0)特殊的操作模式、安全通信原理、通信特征和通信结构,说明PROFIsafe V2.0安全通信技术的技术先进性和适用广泛性.
+            

@@ -1,0 +1,3 @@
+数据挖掘在客户关系管理中的应用研究  Application of data mining i n Customer Relationship Management
+              企业之间市场竞争的焦点从产品质量的竞争转移到客户资源的争夺,为了从客户数据中找出对企业有价值的信息,概述了数据挖掘技术的方法、工具和流程；总结了如何在CRM应用数据挖掘技术.
+            

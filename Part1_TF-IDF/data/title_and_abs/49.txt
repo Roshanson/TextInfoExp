@@ -1,0 +1,3 @@
+Agent结构的形式化描述分析及研究  Analysis and research of the structure of Agent formal description
+              Agent结构描述存在抽象、复杂和不完整等问题，很难应用于实际Agent的构造。基于物理和设计立场，提出一种新的Agent结构模型，并作了形式化描述。解决了Agent模型与具体Agent结构、行为和目标的映射问题。构造的电子谈判实例验证了它的正确性和有效性。
+            

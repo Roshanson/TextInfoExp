@@ -1,0 +1,3 @@
+浅论纯数学与计算机技术关系的发展趋势  On the Development Tendency of the Relation between Pure Mathematics and Computers
+              数学是科学的基础,计算机是科学进步的代表,二者相互影响.随着科学技术飞速发展,二者未来的关系及命运如何,试从纯数学方面来探析.
+            

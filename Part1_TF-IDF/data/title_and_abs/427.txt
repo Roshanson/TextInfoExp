@@ -1,0 +1,3 @@
+基于MATLAB软件对抽油机悬点运动规律的仿真研究  Simulation analysis on Motion Law of Pumping Unit Hanging Point Based on MATLAB
+              抽油机悬点运动参数的变化规律与各连接件长度之间存在一定的函数关系.基于MATLAB软件的仿真工具箱对建立的数学模型进行数值分析,直观揭示了悬点运动参数变化规律.对抽油机机型的改进和优化,都有一定辅助分析作用和参考价值,应用于实际工作中节省了大量设计和计算时间,提高工作效率.
+            

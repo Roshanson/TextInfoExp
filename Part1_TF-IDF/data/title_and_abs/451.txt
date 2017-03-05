@@ -1,0 +1,3 @@
+基于嵌入式技术的工业通信管理机的开发及应用  Based on Embedded Technology Communication Management Machine Development and Application
+              本文主要对嵌入式技术系统、嵌入式工业通信管理机的开发及其应用进行研究,重点分析了嵌入式工业通信管理机的设计构想、应用功能开发,并结合实际工程应用情况,对未来工业通信管理机的发展进行展望,以供参考.
+            

@@ -1,0 +1,3 @@
+基于client/server数据完整性约束的实现技术  Realizing of technology based on client/server data integral restriction
+              本论文主要讨论基于Client/Server数据完整性约束及其如何实施企业业务规则,并以SQLServer和PowerBuilder为例,介绍了数据完整性约束性实现技术.
+            

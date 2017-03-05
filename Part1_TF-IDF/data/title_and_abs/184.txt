@@ -1,0 +1,3 @@
+疾病预防控制地理信息系统的应用研究  Application study on the Disease Control GIS Platform
+              目的提出疾病控制地理信息系统平台的概念,并以此概念做个模型,并对深入应用进行了一些探索和研究.方法采用MapInfo MapXtreme for Java进行开发,结合Jbuilder等工具.结果研制出了五大功能模块,基本上涵盖了流行病常用的地图分析功能.结论经过半年的调试和试运行,该原型的是稳定的.
+            

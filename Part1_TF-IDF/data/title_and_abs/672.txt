@@ -1,0 +1,3 @@
+基于Web Service的CAPP系统的研究  Research on CAPP System Based on Web Service
+              对CAPP系统的发展进行了分析,针对要提高CAPP系统的协同化和实用化水平,论述了基于Web Service的CAPP系统的设计体系结构,详细介绍了该系统的各功能模块,采用XML对CAPP中的工艺规程数据进行了详细描述.基于Web Service的CAPP系统从底层改变CAPP系统的模型,为真正实现CSCW的CAPP系统提供了新的手段.
+            

@@ -1,0 +1,3 @@
+基于发布订阅的P2P流媒体资源定位算法  P2P Streaming Media Resource Location Algorithm Based on publish/subscribe
+              现有的P2P流媒体资源定位算法中,多以主动查询为主,尤其是在非结构化网络中,搜索效率低下,资源耗费巨大,最终导致用户延迟播放.基于发布订阅的定位算法-PSS,通过快速预取的思想,结合视频块的优先级,可有效解决该问题,使播放连续度明显提高,搜索消耗明显降低.
+            

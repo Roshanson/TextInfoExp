@@ -1,0 +1,3 @@
+基于 SNR的 LTE上行虚拟 MIMO 多用户配对算法研究  RESEARCH ON SNR-BASED MULTI-USER PAIRING ALGORITHM FOR VIRTUAL MIMO IN LTE UPLINK SYSTEM
+              针对LTE系统上行链路中的虚拟MIMO（ Multil-input Mutil-output）（ VMIMO）多用户配对问题，首先构建一个VMIMO系统模型，参考用户配对前后的输出信噪比，对常见的随机配对、正交配对、交叉容量配对及最大容量配对算法进行理论上的推导分析；然后就系统容量、容量损耗、用户公平性及计算复杂程度四项性能指标进行仿真对比。结果表明正交配对算法的计算复杂程度与配对用户数无关，并且随着基站侧接收天线的增多，算法的复杂程度反而有所下降。与其他三种配对算法相比较，正交配对算法系统合容量、用户容量损耗与用户公平性三者间取得了较好的平衡，有利于充分发挥VMIMO技术的优势。
+            

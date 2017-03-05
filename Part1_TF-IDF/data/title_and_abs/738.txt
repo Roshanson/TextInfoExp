@@ -1,0 +1,3 @@
+Ajax对Web应用程序安全的影响  Ajax's Challenge on Web Application Security
+              Ajax是一个相对年轻的技术,Ajax的广泛应用,给Web应用程序的安全性带来了新的挑战.论文探讨了Ajax技术对Web应用程序安全性的影响,并阐述了如何尽可能地减少其对安全的负面影响.之后又进一步探讨了脚本客户端和服务器端建立安全连接的三种方式,并做了比较和分析.
+            

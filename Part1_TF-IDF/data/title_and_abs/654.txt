@@ -1,0 +1,3 @@
+关于建立我国电子商务支付系统问题  Problems of Building the Payment System of Electronic Business in China
+              论述了在我国建立电子商务支付系统的必要性和可行性，讨论了我国电子商务支付系统应具有的特点和功能，给出了我国电子商务支付系统的简单模式，并分析了在我国实现电子商务支付应具备的条件。
+            

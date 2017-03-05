@@ -1,0 +1,3 @@
+基于VC++6.0的串口实时数据采集及实时曲线显示  The Sampling of Real Time Data Through Serial Port and Displaying of Curved Line In VC + + 6.0
+              介绍在windows 98/2000环境下,如何利用VC++6.0通过microsoft公司提供的MSComm通讯控件、MSChart图表控件来实现串口实时数据采集、实时曲线绘制以及曲线满屏处理,并给出相应的数据处理程序.
+            

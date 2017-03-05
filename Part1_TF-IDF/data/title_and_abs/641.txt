@@ -1,0 +1,3 @@
+浅谈高职院校软件产业低端人才的培养  The Education of Jr. Programmer in Software Industry in the Higher Professional Colleges
+              当前我国软件产业发展迅速,但软件从业人员匮乏,尤其是软件"高端人才"和"低端人才"严重短缺.研究解决策略,应考虑高职院校软件产业"低端人才"培养的实践运作、三段式教学体系结构及多种教学方法的探索.
+            

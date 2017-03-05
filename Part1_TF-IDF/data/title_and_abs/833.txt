@@ -1,0 +1,3 @@
+3D地震反射面自动构造的地质结构快速解释方法  Fast structural interpretation method based on automatic construction of 3D seismic reflecting surface
+              计算机辅助地震数据自动解释是提高地震数据解释精度和速度的重要工具.讨论基于全层位追踪及3D地震反射面自动构造的地质构造解释方法的研究和实现.包括地震特征数据提取,波阻抗层位追踪和3D地震反射面生成.方法将波阻抗层位视为3D地震反射面与测线平面上的交线,以此为基础直接构造3D地震反射面,直接对3D反射面操作以得到构造解释结果.从而充分地利用地震数据信息,提高解释的精度和速度.
+            

@@ -1,0 +1,3 @@
+Scrum在智能工控中的探索应用  Scrum in the exploration of intelligent industrial control applications
+              交互是敏捷开发的核心,并以迭代循序和渐进为实施的准则.在现代工控中,实现PC和设备Master、Slave通信机制,设计一个高效可靠,利于敏捷开发策略的通信框架在工业应用领域的价值愈加凸显.本文所设计实现的通信机制在接口层次化,模块化的基础上设计实现,现已应用于企业生产中,在不断拥抱变化,响应变化的企业竞争中展示出巨大优势.
+            

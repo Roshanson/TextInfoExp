@@ -1,0 +1,3 @@
+Web技术在丰满发电厂档案管理系统中的应用  Application of Web Technology in Archives Management System in Fengman Power Plant
+              本文论述了企业档案管理系统的分析和设计过程,研究并给出了基于Web服务的解决方案与相应的实现.
+            

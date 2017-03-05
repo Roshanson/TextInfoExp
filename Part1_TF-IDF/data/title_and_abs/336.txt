@@ -1,0 +1,3 @@
+XML约束的规范化研究  Research on Normalization of XML Based on Constraints
+              本文从数据库设计的角度出发,对XML数据的约束进行深入的研究,提出了基于路径表达式和树模型的XML函数依赖.对于利用XML实现异构数据库的交换技术上,不仅在理论上具有指导价值,而且在实际应用中也具有现实意义和实用价值.
+            
