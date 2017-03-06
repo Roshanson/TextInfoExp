@@ -11,11 +11,12 @@ sys.setdefaultencoding('utf-8')
 
 
 def com_tf():
-    f = open('data/7s.txt')
+    f = open('data/7s.txt','r')
     data = f.read()
 
     data_temp = data.decode('utf-8')                            # 转换为unicode编码形式
     data = ''.join(re.findall(u'[\u4e00-\u9fff]+', data_temp))  # 必须为unicode类型。取出所有中文字符
+    # sts = data.translate(None, string.punctuation)  # 删除英文的标点符号
 
     data2 = jieba.cut(data)  # 分词
     data3 = " ".join(data2)  # 结果转换为字符串
