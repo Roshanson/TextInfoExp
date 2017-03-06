@@ -13,9 +13,10 @@
 ###4  使用GitHub获取代码
          4.1  安装git    https://git-scm.com/
          4.2  登陆自己的GitHub账号，找到 https://github.com/Roshanson/TextInfoExp ，点击fork，
-         得到项目的复制。（直接下载放进pycharm也可以，不过不推荐）
-         4.3  打开pycharm，依次在菜单栏点击  VCS   checkout from version control   GitHub，
+         得到项目的复制。    （刚开始也可以直接下载zip包放进pycharm）
+         4.3  打开pycharm，首先设置git的位置及github账号，点击Test都通过后继续，依次在菜单栏点击  VCS   checkout from version control   GitHub，
          登陆自己的账号后选择相应的项目，得到代码。
+         
   
   
  

@@ -24,10 +24,10 @@ def com_tf():
     open('data/7temp.txt', 'w').write(data3)   # 分词结果写入7temp.txt
 
     wlist = data3.split()        # 将分词结果切割为列表
-    num_list = Counter(wlist)    # 统计词频
+    num_dict = Counter(wlist)    # 统计词频
     # print num_list
     # 统计结果写入result.txt
-    for (k, v) in num_list.items():
+    for (k, v) in num_dict.items():
         open('data/result.txt', 'a+').write(str(k) + ' ' + str(v) + '\n')
 
 if __name__ == '__main__':
