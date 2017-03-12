@@ -1,0 +1,172 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年　第36卷　第11期　Vol.36　No.11　1999
+
+
+
+嵌入式微处理器NCS保护方式的异常与中断研究
+李树国　高德远　聂培琴　刘诗斌
+摘　要：保护方式下的异常与中断管理是微处理器设计的重要组成部分.文中探讨了异常与中断的数据结构、定义、表，给出了保护方式下的异常与中断管理算法；提出了异常/中断管理单元(EIMU)的细胞群结构，并指出细胞是异常/中断管理单元的基本测试单位；系统评价了任务门，中断门/陷阱门区别及优缺点.最后用EDA工具MENTOR GRAPHICS 对异常与中断管理单元及其算法的RTL级VHDL描述进行综合与仿真，验证了其正确性与有效性.
+关键词：异常/中断管理单元(EIMU),中断门, 陷阱门, 任务门, 细胞 
+中图法分类号：TP368.1
+RESEARCH ON EXCEPTION AND INTERRUPT OF EMBEDDED
+MICROPROCESSOR NCS IN PROTECTED-MODE
+LI Shu-Guo　GAO De-Yuan　LIU Shi-Bin 
+(Aviation Microelectronic Center，Northwestern Polytechnical Uni versity, Xi'an 710072)
+NIE Pei-Qin
+(Information & Control Department, Shandong University of Builing Materials, Jinan 250022)
+Abstract　After definition and data structure in exception/inte rrupt management are analyzed,an algorithm is given to deal with the exceptio n/interrupt.In the algorithm there are two mechanisms to answer exception/inter rupt: one is to utilize a trap/interrupt gate in current task, the other is to u tilize a task gate in another task. As a results, exception or interrupt which c an not be processed in currentРtask may use task gate to handle in another task. On the other hand, a basic test unit-cell is deduced to genera te Boolean value for cell test to control branch in the microprogram. With cell extracted from the algorithm, a kind of cell group structure is put forward to e stablish exception/interrupt management unit (EIMU). The VHDL RTL description f or EIMU and the algorithm is synthesized and simulated in MENTOR GRAPHICS and it s simulation proves its validity.
+Key words　exception/interrupt management unit (EIMU), interr upt gate, trap gate, task gate, cell
+　　嵌入式16位微处理器在军事和民用领域都有着广泛的应用，研制具有我国自主版权的微处理 器在当今具有重大意义.西工大航空微电子中心结合国防及航空应用的高可靠性、抗干扰性 、实时检测、故障恢复及容错等特点，依照国防及航空技术规格要求，设计了机载嵌入式16位拥有保护机制的微处理器.该微处理器集异常与中断、实虚模式、多任务管理［1］、内存保护［2］等嵌入在芯片内.
+　　嵌入式微处理器保护模式下异常/中断与实模式下的异常/中断具有很大的不同，这是因为 访问保护模式下的异常/中断的程序应具有规定的特权级，而实模式下无此限制； 其次，保护模式可寻址微处理器整个虚拟空间，而实模式仅能寻址局部物理空间；再次，保护模式给那些不能由中断处理程序恢复的故障提供了用任务恢复的可能性，而实模式下则不能. 因此，研究保护模式下的异常/中断对机载嵌入式微处理器来说意义重大.
+1　保护方式下的异常与中断的定义
+　　异常/中断强使微处理器的执行转移到另一个任务或过程.异常是由指令引起的，而中断则是 由外设引起的. 通常，异常和中断是以应用程序透明的方式执行的.
+　　支持保护方式异常/中断的数据结构［3，4］是中断门、陷阱门、任务门、中断描述符表(GDT)、局部描述符表(LDT)、任务状态段(TSS)、任务状态段描述符、中断描述符表寄存器(GDTR)和局部描述表寄存器(LDTR)等.使用这些结构，处理器能对保护方式的异常和中断进行响应与处理.
+1.1　段选择子的定义Selector
+　　嵌入式微处理器NCS采用段式存储器管理，段的控制信息用连续的8个字节来表示，这8个字节称为描述符(descriptor).段选择子指定描述符表及该表中的描述符.段选择子含有3个字段见图1， TI描述符表指示符(GDT或LDT). INDEX寻址描述符表(GDT或LDT)内索引值. RPL (requestor privilege level)请求者的特权级，RPL被用来防止出现较低特权级的程序使用较高特权级的程序去访问被保护的数据.
+
+
+图1　选择子格式
+1.2　中断门、陷阱门和任务门的定义(interrupt gate，trap gate and task gate)
+　　描述符分两类，一类称作一般的段描述符，如代码段、数据段描述符等；另一类属于控制转移的特殊描述符，一般称这类描述符为门，如中断门和陷阱门等.当中断或异常发生时，陷阱门/中断门控制程序的转移.陷阱门/中断门的格式见图2. 门中的选择子指明在GDT或LDT表寻址描述符的索引值；偏移量即异常/中断处理程序起始点；xx无关项；属性字段中P：存在位；00111和00110分别是陷阱门和中断门标志；DPL是程序访问陷阱门或中断门的最低特权级.
+
+
+图2　中断门和陷阱门
+　　如果在中断描述符表IDT(interrupt descriptor table)的槽位中定义任务门时，则不执 行中断处理，而执行任务切换.这对那些不能用陷阱门或中断门处理的故障和异常，提供了用任务门修复故障的可能性.任务门提供对任务状态段间接的，受保护的访问.图3示出了任务门的组成.任务门属性中DPL是程序访问任务门的最低特权级. TSS选择子即在GDT表中寻址TSS描述符索引值.
+
+
+图3　任务门描述符
+1.3　任务状态段寄存器TR (task register)定义
+　　在用任务门处理异常/中断时，需用任务状态段寄存器(TR)来寻址TSS段(task statese gment段，它记载一个任务的上下文环境).TR分两部分组成，见图4，一部分存放16位的选择子简TR.selector，另一部分是TR选择子所对应的TR.CACHE(48位)，用于存放由选择子所索引的TSS段描述符.
+
+
+图4　任务寄存器TR
+1.4　异常保护的定义
+　　异常保护是在描述符不正确，对TSS访问或特权级规则有所违反时产生的异常中断.异常保护 是保护模下存储器管理与任务管理的异常中断，只适用于保护模式.异常保护的种类列于表1.在保护模式中，嵌入式微处理器NCS异常/中断的处理程序不仅提供了返回地址，而且还提供了错误码.错误码指明了误的性质，但用任务门进行中断处理时仅压入错误码而不压入返回地址.
+表1　异常保护的种类
+
+中断类型保护种类出错代码压栈地址
+8双重错0异常指令地址
+10不正确的TSS非0异常指令地址
+11段不存在非0异常指令地址
+12堆栈出错非0异常指令地址
+13一般保护错非0异常指令地址
+
+2　异常与中断管理算法 
+2.1　异常/中断管理的数据结构：表结构及表寄存器
+　　保护模式下的段式存储器管理的每个段都对应一个描述符，所有的段描述符根据用途不同分 别存放在系统的3张表IDT，GDT和LDT中. IDT(interrupt descriptor table)中断描述符表，GDT(global descriptor table)全局描述符表，LDT(local descriptor table)局部描述符表，它们都被定义在存储器中. GDT，LDT和IDT每个表空间可达64K字节，最多可定义216/23=213(8192)个描述符；IDT表整个系统仅有一张，主要用于存放 中断门、陷阱门和任务门，以进行中断处理或故障恢复.GDT表整个系统仅有一张主要用来存 放系统代码段和数据段描述符、任务门等；LDT表每个任务一张主要用于存放局部的代码段 和数据段描述符、调用门等.
+　　IDTR (interrupt descriptor table register) 中断描述符表寄存器，GDTR(globalde scriptor table register)全局描述符表寄存器它们分别用于存放IDT或GDT的24位线性表基地址及其表限.LDTR (local descriptor table register)局部描述符表寄存器用于存放寻址当前任务的LDT表的选择子，LDTR.CACHE 用于存放由选择子所指定GDT中的描述符，见图5.
+
+
+图5　GDTR，IDTR，LDTR寄存器
+2.2　异常与中断管理算法
+　　基于上述数据结构及定义，我们给出微处理器异常与中断的管理算法.算法自顶向下分4个 层次，(1)顶层：取指令执行指令循环算法Fetch_executeloop_algorithm，清EXT并保存IP的值，为要发生异常/ 中断作准备；(2)驱动层：Drive_save_algorithm，恢复IP，置错误码并驱动支持层；(3)支持层：gate_sort_algorithm 门分类算法；(4)底层：当前任务的中断/陷阱门处理法Exception_interrupt_gate_algorithm和任务门处理算法Task_gate_algorithm.
+　　(1)顶层Fetch_execute_loop_algorithm(模拟微处理器NCS取指令执行指令的过程)
+　　步骤1：EXT<=0；
+　　步骤2：old_IP<=IP；
+　　步骤3：取指令Fetch_instruction ( )；
+　　步骤4：执行指令 Execute ( )；
+　　步骤5：Goto 步骤1.
+　　(2)驱动层：Drive_save_algorith m
+　　顶层算法若步骤4执行的指令是INT指令，Vecnumber由INT指令的操作数获得；若步骤4 执行 的指令发生异常，Vecnumber由预先定义的异常矢量表(见表1)获得；若步骤4执行完指令 后，微处理器检测外部中断请求，Vecnumber由外设提供.
+输入参数：Vecnumber 异常的矢量号
+　　步骤1：置出错码的末位，即 ErrorcodeErrorcode&0FFFEH|EXT；
+　　步骤2：回退指令指针，使其指向产生故障的指令，即 IPold_IP；
+　　步骤3：调用门分类算法 即 CALL gate_sort_algorithm；
+　　步骤4：出错码压栈；
+　　步骤5：转移到顶层　Fetch_execute_loop_algorithm 的步骤1；
+　　步骤6：结束.
+　　(3) 支持层：门分类算法gate_sort_agorithm
+　　步骤1：检查IDT表的越界；即若中断矢量×8+7≤IDTR.limit(中断矢量表表长)，顺 序执行；否则，报告异常；
+　　步骤2： 以中断矢量×8+IDTR.base为地址得描述符；
+　　步骤3：若描述符中的DPL不小于当前运行程序的特权级CPL，即DPL≥CPL且描述符为任务门 或中断门或陷阱门，则顺序执行；否则，报告异常；
+　　步骤4： 若为中断/陷阱门，则转入当前任务中断/陷阱门处理算法(Exception_interrupt_gate_al gorithm)；若为任务门则转入任务门处理算法(Task_gate_algorithm)；
+　　步骤5：结束.
+　　(4) 底层：
+　　① 当前任务的中断/陷阱门处理算法Exception_interrupt_gate_algorithm
+　　步骤1：取中断/陷阱门中的选择子，并以选择子×8+GDTR.base(LDTR.base)为地址得段描 述符；
+　　步骤2：若为代码段描述符(代码段描述符含有段基址、属性和段界)，则将其装入CS.CACH E，顺序执行，否则，报告异常；
+　　步骤3：若中断/陷阱门的偏移量不大于代码段的描述符的界，顺序执行；否则，报告异常 ；
+　　步骤4：将标志寄存器FLAGS和返回地址压入堆栈并清цLAG.TF及FLAG.NT；
+　　步骤5：测试中断/陷阱的标志(见图2的属性字段)，若为中断门，清FLAG.IF 位；若为陷 阱门，不改变FLAG.IF位；顺序执行；
+　　步骤6：将中断/陷阱门的选择子加载到CS.selector；
+　　步骤7：结束.
+　　② 任务门调度算法：Task_gate_algorithm
+　　若IDT表中的槽位中存放的是任务门时，它可进行任务切换，在另一任务进行异常/中断处理 .这对那些不能在当前任务进行的异常/中断处理提供了另一任务环境恢复的可能性.
+　　步骤1：检查任务状态段长度，若大于43，顺序执行；否则报告异常；
+　　步骤2：当前的机器状态保存在老任务的TSS中；
+　　步骤3：把新任务TSS描述符的选择子送入TR.selector，并由系统依照TR.selector自动加载 新任务的TSS段的描述符到TR.CACHE；
+　　步骤4：把除CS，SS，DS，ES之外新任务TSS段的内容，装入微处理器的硬件寄存器；
+　　步骤5：若链接，老任务的TSS选择子存入新任务的TSS中，置嵌套位，新任务的描述符置“ 忙”标记；若解链, 老任务的TSS的描述符标为“非忙”；若无链接，老任务的TSS的描述符标为“非忙”，新任务的TSS描述符标为“忙”；
+　　步骤6：将TSS段偏移量42处的LDT选择子送入LDTR，并将该选择子×8与GDTR的表基址相加来寻址GDT表的LDT描述符并将LDT 描述符送入LDTR.CACHE.
+　　步骤7： 新任务的段CS，SS，DS，ES选择子装入微处理器段寄存器，并由系统自动加载各自 的描述符到相应的CACHE.
+　　步骤8：结束.
+　　异常/中断调用示例见图6中①～⑥所示：
+　　① Vecnumber×8+IDTR.base得中断/陷阱门；
+　　② 从中断/陷阱门中取选择子，并将选择子×8+GDT或LDT.base寻址代码段描述符；
+　　③ 将代码段描述符加载到段寄存器高速缓存器CS.CACHE中；
+　　④ 把中断/陷阱门的选择子装入段寄存器CS.selector；
+　　⑤从CS.CACHE中得到代码段基地址；
+　　⑥ 将中断门/陷阱门的偏移量加上CS.CACHE中的段基址，得异常/中断代码段执行的起始位 置.
+
+
+图6　中断或异常过程的调用
+3　异常/中断管理单元EIMU的设计
+3.1　异常/中断管理单元的基本测试单位―细胞
+　　异常/中断管理单元是保护模式异常/中断管理的控制机构，它主要是在异常/中断时实施特 权级检查，IDT表越界比较，描述符的分类等.我们列举中断异常处理单元所进行的各种测试 ，给每种测试建立一个基本的测试单位称细胞.例如：进入IDT表时，必须满足Vecnumber×8 +7≤IDTR.limit，Vecnumber中断矢量，IDTR.limit 中断矢量表的表限.实现此关系式的细 胞cell见图7.
+
+
+图7　基本测试单位―细胞
+3.2　异常/中断管理单元细胞群结构
+　　对异常/中断管理单元中的任一测试celli, 1≤i≤n, n细胞数. 根据功能不同也建立各自的细胞体，则构成细胞群集合C.
+　　cell若cell∈C , 合并同类项(细胞功能相同，输入端数目相同)得子集C′，那么C′C，则C′为真子集即测试单元的终结细胞群集合. 
+　　在微处理器的每个控制步中，细胞群中的个体仅能有一个处于激活状态(有效)，其它应为睡眠状态.这可采用多选一电路来控制，以激活所选择的测试细胞.图8中表示测试细胞.被测数据由DBUS送至暂存器temp1,temp2中.控制信号由控制总 线CBUS送至控制电路以选择某个测试细胞，该细胞测试的布尔值可控制异常 /中断微程序的转移.
+
+
+图8　异常/中断管 理单元细胞群
+3.3　微处理器中的异常/中断管理单元EIMU
+　　机载嵌入式16位微处理器NCS体系结构，采用三级流水［5，6］，即指令预取指令译码指令执行.它由6个部件构成见图9，分别是异常/中断管理单元EIMU、地址单元AU、算术逻辑单元ALU、微程序控制单元MCU、指令译码单元IU和接口单元I/O.异常/中断管理单元EIMU与其它部件的关系见图9.
+
+
+图9　16位嵌入式机载微处 理器NCS体系结构
+　　异常/中断管理单元EIMU的数据通路和控制通路：首先，被测数据从DBUS漠送至EIMU的暂存 器；其次，微指令从微程序控制单元MCU送至控制总线CBUS来选择EIMU来选择某个细胞cell进行测试；再次，经测试所形成的状态位又送回微程序控制单元MCU，MCU根据微程序状态位确定微程序的走向，从而达到了以细胞测试结果控制微程序转移的目的.
+4　任务门、中断门和陷阱门的比较及仿真结果
+4.1　任务门、中断门和陷阱门的比较
+　　嵌入缏微处理器NCS允许使用陷阱门/中断门由当前任务进行异常/中断处理，也允许通过 使用任务门由另外一个任务进行异常/中断处理.在当前任务内缂常/中断处理程序较为简单 ，并可以很快地转移到处理程序.但处理程序要负责保存及恢复处理器的寄存器内容.转到不 同任务的异常/中断处理程序要花费较长的时间，这时，保存及恢复寄存器内容的开销是作 为任务切换的一部分处理.使用当前任务内的异常/中断处理程序，在中断和异常信号产生时 ，对正执行的任务状态可直接进行访问，但是，这要求每个任务内都包含一个异常/中断处 理程序.使用独立的任务来处理异常和中断，使异常/中断处理程序得到较好的隔离，但在中 断和异常信号产生时，对任务状态的访问变得较为复杂.
+　　无效的TSS异常、双重错翅须由任务门进行处理，以保证异常/中断处理程序有一个有效的任 务环境.其它的异常通常在当前任务环境内进行处理.在当前任务内异常被检测并且不必屏蔽中断，所以最好使用陷阱门.由陷阱门指向的异常处理程序，是一个由所有任务共享的过程. 所以，该处理程序最好至于全局地址空间之内.如果各个任务要求有不同的处理程序，则全局异常处理程序，保存一个处理程序的入口表，并为引起异常的任务调用相应的处理程序 .
+　　中断通常与正执行的任务没有关系，并可能从使用任务门提供的任务隔离中获得好处.要求 较快响应的中断，通过中断门可以得到较好的处理.没有使用任务切换机制的系统，也将使用中断门.因为中断可以在任意时刻产生，所以， 通过中断门访问的中断处理程序，必须置于全局地址空间中.这些处理程序对于所有的任务都是可寻址的.
+　　当中断和异常被接受时，使用任务门可提供一个任务处理程序的自动调度.这种任务调度由 微处理器NCS硬件直接执行.这就为处理程序提供了一个快速的任务切换.
+4.2　仿真结果
+　　16位机载嵌入式微处理器NCS异常/中断管理单元EIMU的设计方案及算法已实现了RTL级的VHD L描述，经MENTOR GRAPHICS工具仿真，嵌入式微处理器NCS在① INT指令；② 指令异常；③ 外设中断3种情形在相同或不相同特权级下仿真结果见表2.这一结果优于文献［3］Intel公司16位微处理器iAPX异常/中断处理周期，用MENTOR GRAPHICS工具综合EIMU面积低于3500个等效门. 又将EIMU管理单元与微处理器NCS的其它部件联调，微处理器NCS 指令集运行正确验证了异常/中断管理结构及其算法正确性与有效性.
+表2　INT指令、异常与中断仿真结果
+
+异常/中断类型门特权级异常/中断处理周期
+INT指令中断/陷阱相同转移38
+INT指令中断/陷阱不相同转移79
+INT指令任务门同或不同转移163
+指令异常中断/陷阱相同转移39
+指令异常中断/陷阱不相同转移80
+指令异常任务门同或不同转移165
+外设中断中断/陷阱相同转移41＋n
+外设中断中断/陷阱不相同转移82＋n
+外设中断任务门同或不同转移167＋n
+
+　　n依赖于外设速度不同而需额外添加的处理周期 
+5　结束语
+　　异常/中断管理单元EIMU及其算法是拥有保护模式微处理器不可缺少的组成部分，EIMU结构 及其算法在硬件芯片级为当前任务或另一任务异常/中断的管理提供了硬件环境.异常/中断 管理单元的细胞群结构及其算法的VHDL描述的仿真成功，为探索拥有保护机制的微 处理器保护测试电路设计奠定了基础.异常/中断管理设计方案及算法的提出、设计、实现使 拥有我国自主版权的微处理器设计领域［7］又迈出了一步.
+作者简介：李树国，男，1963年12月生，博士研究生，主要研究方向为计算机体系结构和ASIC系统设计.
+　　　　　高德远，男，1946年生，教授，博士 生导师，主要研究方向为计算机体系结构、VLSI、ASIC系统设计等.
+　　　　　聂培琴，女，1965年生，讲师，主要从事系统软件研制开发工作.
+　　　　　刘诗斌，男，1961年生，博士研究生，主要研究方向为无人机导航及控制.
+作者单位：李树国　高德远　刘诗斌　西北工业大学航空微电子中心　西安　710072
+　　　　　聂培琴　山东建筑材料工业学院信息与控制系　济南　250022
+参考文献
+1　Veronis A. Survey of Advanced Microprocessors. New York: Van Nostrand Reinhold, 1991
+2　Heller P, Childs R. Memory protection moves onto 16-bit microprocessor chip. Electronics, 1982, 55(4): 133～137
+3　Intel Corporation. Microprocessor and peripheral handbook. Santa Clara: Intel Corporation. 1988
+4　Intel Corporation. Pentium Family User's Manual. Santa Clara: Intel Corporation 1994
+5　Luigi Ciminiera, Adriano Valenzano. Advanced Microprocessor Architectures. New York: Addison-Wesley, 1987
+6　Stallings W. Computer Organization and Architecture. Englewood Cliffs: Prentice Hall, 1996
+7　任恭海. 32位嵌入式航空机载RISC微处理器的研究及系统设计［博士论文］. 西北工业大学, 西安，1996
+　　(Ren Gonghai. Research and system design on 32 bit aviation airborne embedded microprocessor［Ph D dissertation］. Northwestern Polytechnical University, Xi'an， 1996)
+原稿收到日期：1999-02-03；修改稿收到日期 ：1999-06-30. 

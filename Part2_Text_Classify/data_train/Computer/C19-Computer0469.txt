@@ -1,0 +1,92 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.360-364
+
+
+
+结构不确定性系统的敏感性分析
+高志伟　王先来　王德贤
+摘　要　讨论了控制对象和控制器同时存在稳定反馈结构不确定性的鲁棒稳定性和性能敏感性问题，给出了摄动系统鲁棒稳定的充分条件，得到了敏感函数矩阵和闭环传递函数矩阵H∞的摄动上界.这里控制器并不要求是真稳定的，因此得到的结果较有一般性.
+关键词　结构不确定性，稳定反馈摄动，敏感函数矩阵，H∞摄动界.
+SENSITIVITY ANALYSIS OF SYSTEMS UNDER STABLE
+FEEDBACK STRUCTURED UNCERTAINTY
+GAO Zhiwei　WANG Xianlai　WANG Dexian
+(School of Electrical Automation and Energy Engineering, Tianjin University, Tianjing　300072)
+Abstract　In this paper, the problem of the stability robustness and the performance sensitivity is investigated for systems under stable feedback structured uncertainties both on the plant G and the feedback controller K simultaneously. Sufficient conditions for the robust stability and the upper bounds for the sensitivity function matrix and the closed-loop transfer function matrix are given in terms of H∞-norms. The controller K does not need to be proper and stable,therefore the results obtained here is of general sense.
+Key words　Structured uncertainty, stable feedback uncertainty, sensitivity function matrix, perturbed bounds.
+1　引言
+　　众所周知，结构不确定性或摄动在实际系统中是广泛存在的.因此，系统的鲁棒控制研究20多年来一直受到普遍的关注［1，2］.不难看出，即使在某种结构不确定性或摄动的干扰下，系统能够鲁棒稳定，但是系统的性能指标却在摄动下发生了变化，以至于不一定能够满足原来的性能要求.因而，系统的性能对于结构不确定性或摄动的敏感程度如何，显然是一个有意义的研究问题.文［3］分别分析了控制对象存在加摄动、输入乘摄动、输出乘摄动以及控制器存在加摄动的不确定性系统的性能敏感性问题.文［4，5］则把文［3］中提出的四种结构不确定性放在一起同时考虑，扩展了文［3］的结果.稳定反馈摄动是在实际系统中广泛存在的另一种典型的结构不确定性，文［6］讨论了这种摄动结构.然而，文［6］假定控制器是真稳定的，这样得到的结果难免有些局限性.为了使得到的结果较有一般性，本文将取消对控制器的限制，即这里假定控制对象和控制器同时存在稳定反馈结构不确定性，而且控制对象和控制器都可以是非真稳定的有理矩阵.　　
+
+
+图1　名义系统Σ(G，K)
+2　预备知识
+　　考虑图1所示的名义系统和图2所示的稳定反馈结构不确定性，图中G和K分别表示控制对象和控制器的传递函数矩阵.反馈摄动Δgf和Δkf均为真稳定的.记RH∞为真稳定有理函数矩阵的集合，则Δgf，Δkf∈RH∞.
+　　令是控制对象在RH∞上的左互质分式表达；(U，V)是反馈控制器K=UV-1的右互质分式表达［1～3］.那么，名义系统Σ(G，K)的传递函数矩阵为
+　　　(1)
+其中I为单位矩阵，
+
+
+图2　结构不确定性
+　　名义系统Σ(G，K)的敏感函数矩阵定义为
+　　　(2)
+　　显然，H(G，K)∈RH∞的充要条件就是为了后面讨论有意义及叙述方便，给出如下重要假设.
+　　假设1.
+　　　(3)，(4)，(5)
+　　式(3)保证了名义系统Σ(G，K)是真稳的，即H(G，K)∈RH∞；同时式(3)也使名义系统Σ(G，K)的敏感函数矩阵S和闭环传递函数矩阵H(G，K)的表达式(1)和(2)得到了简化；式(3)也保证了S∈RH∞.式(4)和(5)定义了名义系统Σ(G，K)的敏感函数矩阵S和闭环传递函数矩阵H(G，K)的H∞上限.
+　　与名义系统相对应，这里用Σ(GΔ，KΔ)，H(GΔ，KΔ)，SΔ，GΔ，KΔ来分别表示稳定反馈不确定性(图2)系统、摄动传递函数矩阵、摄动敏感函数矩阵、摄动控制对象和摄动控制器的传递函数矩阵.
+3　主要结果
+　　定理1.图1所示系统同时具有图2所示的两种结构不确定性，并有假设1成立，如果
+　　　(6)，(7)
+　　　(8)，(9)
+其中α和β是非负常数，则
+　　1)摄动系统Σ(GΔ，KΔ)的敏感函数矩阵SΔ保持真稳定，且
+　　　(10)
+　　2)摄动系统Σ(GΔ，KΔ)的闭环传递函数矩阵H(GΔ，KΔ)保持真稳定，且
+(11)
+　　证明.
+　　1)由图1和图2有
+　　　(12)
+KΔ=K(I-ΔkfK)-1=U(V-ΔkfU)-1，　　　(13)
+则
+　　　(14)
+其中且在式(14)的推导过程中用到了式(3).
+　　由式(14)进而有
+　　　(15)
+　　由条件(6)～(9)有
+(16)
+　　由式(16)即有(I-Δ*)-1∈RH∞，由式(15)进而有SΔ∈RH∞.
+　　令Z=(I-Δ)-1，则
+　　　(17)
+其中S=VM(见式(2)和(3)).又知
+　　　(18)
+则由式(16)～(18)以及定理的前提假设
+　　　(19)
+显然式(19)与式(10)完全等价.
+　　2)不等式(11)的证明思路与上面类似，为节约篇幅，下面的叙述将较简洁.因为‖Z‖∞≤则
+　　　(20)
+　　　(21)
+　　　(22)
+(23)
+将式(20)～(23)代入不等式‖H(GΔ，KΔ)‖∞≤‖H(G,K)‖∞+max‖Δ11‖∞，‖Δ22‖∞+max‖Δ12‖∞，‖Δ21‖∞中去，便可得到式(11).
+　　说明.
+　　(a)在上述定理中，若h=0，则由式(8)可推出α=β=0，即稳定反馈结构不确定性Δgf和Δkf均不存在.此时，由式(10)和(11)可看出‖SΔ‖∞≤η，‖H(GΔ，KΔ)‖∞≤γ，即退化为名义系统的上限(式(4)和(5)).若h→1，在条件(6)～(9)下，摄动系统的敏感函数矩阵SΔ和闭环传递函数矩阵H(GΔ，KΔ)仍是真稳的，但由式(10)和(11)可以看出，SΔ和H(GΔ，KΔ)的H∞摄动上界趋于无穷大，这时的摄动上界显然没有实际意义.若h充分小，SΔ和H(GΔ，KΔ)的H∞摄动上界便可以足够精确的逼近相应的性能指标.
+　　(b)若稳定反馈不确定性Δgf和Δkf是单独出现时，只需令α和β为零，便可得到相应的鲁棒稳定充分条件和系统性能指标的摄动上界.
+　　(c)在本文的分析过程中，恒等式(I-GK)-1G=G(I-KG)-1经常被用到，本文把它当作基本的矩阵知识，没有具体指出和说明.
+4　结束语
+　　当稳定反馈摄动与其他几种典型摄动，诸如加、输入乘和输出乘等摄动同时存在时，如何给出较少保守性的鲁棒稳定条件和性能函数的摄动上界，仍有待进一步研究.
+国家自然科学基金(No.69874027)资助项目.
+　　高志伟　1965年生，博士，天津大学控制理论和控制工程学科副教授.研究方向为奇异系统、分散控制、鲁棒控制等.
+　　王先来　1946年生，天津大学自动化学院教授，博士生导师.研究方向为自适应控制、模式识别与智能系统等.
+　　王德贤　1973年生，1999年3月于天津大学获硕士学位，现为东方电子集团计算机软件设计工程师.感兴趣的研究方向为广义系统的强稳定和计算机软件工程.
+高志伟（天津大学自动化与能源工程学院　天津　300072）
+王先来（天津大学自动化与能源工程学院　天津　300072）
+王德贤（天津大学自动化与能源工程学院　天津　300072）
+参考文献
+［1］　Francis B A. A Course in H∞ Control Theory, Berlin:Springer-Verlag,1987
+［2］　Vidyasagar M. Control System Synthesis:A Factorization Approach, Cambridge:MIT Press,1985
+［3］　Shao Z, Sawan M J. Sensitivity analysis for systems with structured uncertainty.Int. J. Systems Science,1994，25(6)：1093～1103
+［4］　Zheng P E, Gao Z W et al. sensitivity analysis of systems with all types of structured uncertainty. Systems Analysis Modelling Simulation,1997,29(3)：207～217
+［5］　Gao Z W. Analysis for performance sensitivity of systems with structured uncertainty.Control and Intelligent Systems,1998，26(3)：73～76
+［6］　Gao Z W, Zheng P E, Wang X L. Performance sensitivity analysis for linear systems with stable feedback perturbations，Journal of Systems Science and Systems Engineering,1999，8(4)
+收稿日期　1997-11-21
+修稿日期　1998-12-03

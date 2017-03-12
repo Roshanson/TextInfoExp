@@ -1,0 +1,83 @@
+微型机与应用
+WEIXINGJI YU YINGYONG
+2000　Vol.19　No.5　P.36-37,38
+
+
+
+
+Java和JavaScript在WWW信息服务中的应用（一）
+刘东波
+摘 要：JavaScript、Java applets和JavaBeans在WWW应用开发中的作用及其相互关系。
+关键词：Java语言 Java Applet Java Beans JavaScript WWW
+　　WWW是目前Internet上发展最快的技术领域，也是Internet网上最重要的信息检索手段。早期的Web网页主要用来显示静态信息，后来由于CGI技术，特别是Java和JavaScript技术的引入，使得Web网页可以方便地传播动态信息。借助Java和JavaScript语言，可以设计出具有动画、声音、图形／图像和各种特殊效果的网页。
+　　WWW的主要内容包括超文本传输协议HTTP、超文本标记语言HTML、通用网关接口CGI、Java和JavaScript语言等。
+　　HTTP是一个专门为Web服务器和Web浏览器之间交换数据而设计的网络协议。它通过指定统一资源定位符（URLs）使客户端的浏览器与服务器上的Web资源建立链接关系，从而奠定了用户对Internet／Intranet透明访问的基础。
+　　HTML是WWW采用的通用标记语言，它用来创建Web网页和控制Web信息显示格式。HTML不是编程语言，而是一种描述语言。最新的HTML 4．0增强了对多媒体、表及多国语言的支持能力。
+　　CGI是通用网关接口（Common Gateway Interface）的简称，它是Web服务器与外部程序之间的通信接口。服务器并不关心外部应用程序是用什么语言（如C、C＋＋、Pascal、Delphi或Perl）编写的，它只是负责接收用户输入的信息，并把CGI程序所产生的结果--HTML文档或其它符合HTTP规定的文件回传给客户。事实上，CGI是动态Web网页制作的第一步，但由于CGI程序实现比较困难，而且效率不高，所以它已经逐渐被新的技术所取代。
+　　Java是由SUN公司开发的面向对象（Object－oriented）的程序设计语言。Java实质上是一种解释型的编程语言，它的解释器就是Java虚拟机JVM（Java Virtual Machine）。Java可用于各种不同的处理器环境，尤其是可以嵌入Web网页中，从而使Web浏览器（如Netscape Navigator和Microsoft Internet Explorer）能够执行Java代码。由于Java语言本身就是为网络而设计的，所以可移植性是它的重要特点。用Java语言编写的程序一旦完成即可在各种不同的平台上运行。除了可移植性以外，Java的安全性和防病毒能力也很强，因此，特别适用于WWW应用开发。
+　　JavaScript是由SUN公司和Netscape公司共同研制的基于对象的语言，它继承了Java语言的表达式和控制语句，而舍弃了Java中最复杂的类（Class）定义和继承等成分。这种简化并不影响它在WWW中发挥重要作用，相反，因为有了JavaScript，一般的网页设计者可以十分容易地实现过去只有靠专业程序员编制复杂的CGI程序才能完成的功能，从而使Web技术得到进一步普及。JavaScript语言比Java语言简单得多，且与HTML语言的结合非常紧密，操作Web对象十分方便。JavaScript刚开始只是在客户端使用，后来已经用作Netscape LiveWrite等开发工具的脚本语言。它不仅保持了JavaScript控制HTML文档对象的能力，还增加了数据库连接和文件访问功能，从而增强了Web服务器的能力。
+　　本文对JavaScript、Java applets和JavaBeans在WWW应用开发中的作用及其相互关系作一介绍。
+1 用JavaScript开发WWW应用
+　　JavaScript可看成是一组编程命令和指令，它们主要用来增强对HTML网页的操作与控制。通过在网页中嵌入JavaScript命令，可以改变页面显示的外观、增加或减少网页内容、控制Web服务器的操作、连接数据库并进行事务处理、实现与用户的动态交互等等。
+　　JavaScript与其它语言最大的区别在于它与WWW的紧密结合方式。CGI脚本或Java applets等都是以独立的文件形式存在的，而JavaScript代码则可以完全嵌入HTML文档，因此可以把JavaScript看成是对HTML语言的扩充。在实际应用中，可以用JavaScript对Web网页的外观和内容进行基于程序控制的修改和操纵。
+　　JavaScript分为二大部分：服务器端JavaScript用＜SERVER＞和＜／SERVER＞标记来标识；客户端JavaScript用＜SCRIPT＞和＜／SCRIPT＞标记来标识。前者用于编写在Web服务器上执行的程序代码，后者用于编写在Web浏览器上执行的程序代码。
+　　编写客户端JavaScript比较简单，在开发WWW应用时通常用它来控制HTML网页外观的变化，对交互窗口的数据进行合法性检查，以及实现简单算法。例如，下面的客户端JavaScript程序用来显示1～10之间的所有偶数。
+　　＜SCRIPT LANGUAGE＝″JavaScript″＞
+　　for（i＝1；i＜＝10；i＋＋）｛
+　　if（i％2 ！＝0） continue
+　　document．write（i＋ ″＜BR＞″）
+　　｝
+　　＜／SCRIPT＞
+　　无需经过编译，Web浏览器可以直接解释执行嵌入在HTML文档中的客户端JavaScript程序。
+　　编写服务器端JavaScript相对复杂一些，虽然服务器端JavaScript也可以嵌入HTML文档，但必须通过LiveWire编译器把这种代码编译成字节代码（．web文件），并作为Web服务器上的应用才能在浏览器中执行。服务器端JavaScript除了具备客户端JavaScript同样的基本功能外，特别用来扩展Web服务器的功能。这些功能主要包括数据库连接和事务处理能力、服务器端文件访问能力、以及连接外部动态函数库（dll）的能力。
+　　Netscape LiveWire具有数据库连接能力，它可以直接与Informix、Oracle、Sybase等数据库连接，也可以通过ODBC连接其它数据库。利用LiveWire的database对象，可以开发Web数据库应用。例如，下面这段代码通过database对象的connect方法连接ORACLE数据库；通过database对象的cursor方法查询数据库中的数据，并将结果以表格形式输出。
+　　＜SERVER＞
+　　／／连接ORACLE数据库
+　　if（！database．connected（））
+　　　　　database．connect（″ORACLE″，″MyOracle，″demo″，
+　　　　　　　　　　　　　　″demo，″）；
+　　／／查询当前数据库的table表，建立数据库光标cur＿results
+　　SQLstmt＝″SELECT col1，col2，col3 FROM table″；
+　　cur＿results＝database．cursor（SQLstmt）；
+　　／／以表格形式输出查询结果
+　　document．write（″＜TABLE＞″）while （cur＿results．next（）） document．wirte（″＜TR＞＜TD＞″
+　　　　＋cur＿results［0］＋″＜／TD＞＜TD＞″ 
+　　　　＋cur＿results［1］＋″＜／TD＞＜TD＞″＋cur＿results［2］＋″＜／
+　　　　　　　TD＞＜／TR＞″）；
+　　｝
+　　document．write（″＜／TABLE＞″）
+　　／／关闭数据库光标cur＿results
+　　cur＿results．close（）；
+　　＜／SERVER＞
+2 用Java Applets开发WWW应用
+　　尽管JavaScript具有很强的功能，而且使用比较方便，但它毕竟不是一种独立完整的编程语言，它在很大程度上受到WWW环境的制约。如果要在WWW上增加新的功能，就需要借助Java语言了。
+　　Java与C＋＋、Ada等语言相似，是一种面向对象的编程语言，它最大的特点是可移植性。在Internet上有各种各样的计算机平台，它们使用不同的操作系统，用C＋＋语言编写的程序需要经过特殊的修改才能适应不同平台的要求，而用Java写一个程序，无需任何修改即可在各种不同的计算机平台上运行。为了做到这一点，Java程序被编译成一种称为中性结构的字节代码形式。这种字节代码程序不依赖于特定的平台，但它的执行需要Java虚拟机（JVM）的支持。目前Windows 9x、Windows NT、Macintosh以及各种版本的Unix操作系统都支持JVM。
+　　分布式编程能力是Java的又一个特点，这使得它成为实现WWW应用的有力工具。事实上，在Internet／Intranet上，Java程序可以无需用户介入而从一台计算机系统传输到另一台计算机系统。由于使用了所谓的中性应用程序技术，所以完全不必考虑传输到的计算机系统的类型。当这个特点与Navigator浏览器结合起来之后，Java强大的功能得到了充分的发挥。
+　　Java程序通常分为二大类：一类是独立的Java程序，这种程序的执行不依赖于Web浏览器；另一类是嵌入网页里的Java applets，在浏览器中执行。1个Java applet从创建到执行的过程大致如下：
+　　（1）用Java语言编写applet源程序，并将其编译成字节代码。下面的PicApplet．java是一个用于显示图像的applet源程序，与之相应的字节代码为PicApplet．class。
+　　package ldb．applet；
+　　import java．awt．Graphics；
+　　import java．awt．Image；
+　　public class PicApplet extends java．applet．Applet｛
+　　　private Image imagePic；
+　　　public void init（）｛
+　　　　imagePic＝getlmage（getDocumentBase（），″picture．jpg″）；
+　　　｝
+　　　public void paint（Graphics g）｛
+　　　　g．drawImage（imagePic，0，0，this）；
+　　　｝
+　　｝
+　　（2）通过＜APPLET＞标记将Java applet字节代码嵌入HTML网页中。下面的HTML文档picapplet．html嵌入了PicApplet．class。
+　　＜HTML＞
+　　＜HEAD＞
+　　＜TITLE＞Java Applet＜／TITLE＞
+　　＜／HEAD＞
+　　＜BODY＞
+　　＜APPLET CODE＝″ldb．applet．PicApplet．class″WITH ＝120 HEIGHT＝120＞
+　　＜／APPLET＞
+　　＜／BODY＞
+　　＜／HTML＞
+　　（3）在Java兼容的浏览器中浏览网页并执行Java applets。
+- 未完待续 - 
+刘东波（中国电子设备系统工程公司研究所100039）
+收稿日期：1999－12－11

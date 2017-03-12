@@ -1,0 +1,91 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年　第25卷　第5期　Vol.25 No.5 1999
+
+
+
+挖掘机器人作业过程中局部自主避障控制1)
+杨　毅　冯培恩　高　宇
+摘　要　研究了挖掘机器人如何探测和处置力与几何障碍，阐述了挖掘机器人的避障方法.在事先规划机器人挖掘和运土路径时，不考虑意外出现的障碍物；而在挖掘过程中，模糊局部自主控制器将油缸压力、压力变化和位移信息作为模糊控制规则的输入量，产生处理力障碍的控制信号.在运土过程中，通过构造几何障碍物前的“虚拟阻力区”和采用阻抗控制，实现障碍的自主回避.实验表明所提出的方法是可行的.
+关键词　挖掘机器人，虚拟阻力，阻抗控制，实时避障.
+SEMIAUTONOMOUS OBSTACLE AVOIDANCE FOR
+AN EXCAVATINGROBOT
+YANG Yi　FENG Pei'en　GAO Yu
+(The State Key Laboratory of Fluid Power Transmission and Control,The Institute of Machine Design,
+Zhejiang University,Hangzhou　310027)
+Abstract　How to detect and handle force and geometric obstacles is one of the major problems for excavatingrobots in difficult working conditions.In this paper,methods for an excavatingrobot to semi-autonomously avoid obstacles which are not predicted along the preplanned paths for digging and transport are presented.During the digging process,a fuzzy semiautonomous controller takes the information of the pressures of cylinders,their derivatives and angular displacements as input to the fuzzy control rules and generates fuzzy output to the excavatingrobot handling the force obstacle.And during the transport process,a “virtual resistance force region”in front of a geometric obstacle is invented and an impedance control is specified to produce the desired behavior to avoid the obstacle.Experiments show the proposed methods are feasible.
+Key words　Excavatingrobot,fuzzy logic control,semiautonomous,impedance control.
+1　引　言
+　　挖掘机器人通常在非结构化环境中工作，其作业对象的几何、力学特性复杂多变，随时可能遇到无法预见的工况，例如巨石障碍、塌方等.因而难以事先规划出能回避意外障碍的作业路径.本文在前期工作［1―3］基础上提出了作业过程避障方法：即在事先规划挖掘和运土路径时，不考虑意外出现的障碍物；而在挖掘过程中，根据压力和位移传感器的反馈信息，利用模糊控制机理进行动态挖掘阻力的推理和判断，通过启发式试探，实现局部自主地避障；运土过程则利用超声波测距传感器，获取障碍信息，构造障碍物前的“虚拟阻力区”，采用阻抗控制，实现障碍的自主回避.
+2　挖掘过程中力障碍的局部自主回避
+　　挖掘过程中力障碍模糊局部自主避障控制系统的结构如图1所示.
+
+
+图1　模糊局部自主控制系统的结构
+2.1　输入量和输出量的确定
+　　文献［4］中采用了力和加速度传感器测定地下障碍物，但该方法的传感器安装还难以推向实用.本文研究中采用安置在液压系统中的压力传感器和各关节上的角位移传感器对阻力和位移进行实时监测.实验表明油缸压力、压力变化和位移的信息能反映出挖掘的状态，将它们作为模糊控制器中的输入变量
+S=［p2,p3,p4,θ2,θ3,θ4,Δp2,Δp3,Δp4］,　(1)
+式中pi,θi,(i=2,3,4)分别为动臂、斗杆和铲斗油缸的压力及各关节的角位移值，Δpi为各油缸压力变化，Δpi=pi(k+1)-pi(k),k为第k次采样.
+　　选择铲斗斗齿的位置与速度增量为输出量，输出数据空间表示为
+T=［Δx,Δz,Δvx,Δvz］,　(2)
+式中ΔX(Δx,Δz)为位置增量，ΔV(Δvx,Δvz)为速度增量.
+　　各输入量和输出量分别被归一化在论域［0，1］，［-1，1］中，并分别采用模糊状态变量为｛ST(很小)，SR(较小)，S(小)，M(中)，L(大)，LR(较大)，LT(很大)｝和｛NL(负大)，NM(负中)，NS(负小)，ZE(零)，PS(正小)，PM(正中)，PL(正大)｝的三角形模糊隶属函数.
+2.2　模糊控制规则与推理
+　　模糊规则体现了挖掘过程的基本控制策略，是在多次实验的基础上总结得到的，并将在今后实践中得到不断完善.以斗杆挖掘方式为例，控制规则为
+　　规则1.若p3大，Δp3不大，且θ3已较大，则+Δz小量；
+　　规则2.若p3大，Δp3大，则存在障碍物，如较大石头；
+　　规则3.若障碍物存在，且θ3较大，则+Δz中量，以避开障碍；
+　　规则4.若障碍物存在，且θ3不大，则-Δz中量，欲将石头挖出；
+　　规则5.若执行规则4数次后无效，障碍难以克服，则返回开挖点；
+　　规则6.若p3小，则ΔV增加小量.
+　　在控制器中采用minmax推理方法，即先在推理前提中选取各个条件中隶属度最小的值(“最不适配”的隶属度)作为这条规则的适配程度，以得到这条规则的结论，再对各个规则的结论综合选取最大适配度的部分.
+3　运送过程中基于虚拟阻力的几何障碍回避 
+3.1　假设
+　　障碍物是连续的空间几何物体，障碍面为平面，且垂直于地面；在运土过程中，铲斗先于斗杆、动臂遇到障碍物；暂不考虑障碍物的厚度变化；已初步规划出运土起始点至目标卸载点间不考虑障碍的路径与轨迹.
+3.2　“阻力区”的虚构
+　　假想在几何障碍物前的一定距离内存在着一个“阻力区”(非主动能量源)，如图2所示.设定一距离阈值d0，当超声波距离传感器测得机器人铲斗与障碍物距离小于此阈值时，即认为进入“阻力区”.所受“阻力”的大小与机器人铲斗在该方向上的速度成正比.为避免碰撞障碍物，假想距离障碍面Δd处存在一个“高刚度系数表面”.
+
+
+图2　“阻力”区示意图
+3.3　避障的控制策略［5］
+　　在运土过程中未遇障碍时，挖掘机器人被视为阻抗，即具有较高的刚性环境被视为导纳，以使铲斗齿尖紧密地跟踪期望的轨迹.当接近障碍时，机器人在“阻力”的作用下，垂直障碍面方向的速度减慢，阻抗被调小，其他方向的速度及阻抗不变.当机器人到达“高刚度表面”时，速度减至零；垂直障碍面方向的阻抗也相应为零，以保证“接触力甚小”.若此时机器人铲斗的高度低于目标点的高度时，则沿此“表面”自动向上运动，直至超出障碍的高度后，机器人的阻抗恢复到原来在自由空间时的值，再向目标点运行.若障碍高于目标点的卸载高度，当铲斗运行高度达到目标点的高度后，在原目标高度上增加Δh，作为临时目标高度，使铲斗在满足提升规则的前提下继续向上运动.如此重复，直至超出障碍的高度.再以其为起点，按无障方式，向目标点运动.
+3.4　控制回路
+　　在本文研究中，机器人回转关节的控制回路如图3所示.
+
+
+图3　回转关节避障控制回路
+　　在控制回路中控制力矩
+　(3)
+式中θ1,θ1d分别为回转角位移的当前值和给定值；分别为角速度的当前值和给定值；分别为回转关节的阻尼系数和刚度系数，设
+
+
+其中d为超声传感器所测障碍距离；d0,Δd见第3.2节.
+　　τr为铲斗进入“阻力区”的虚拟“阻力矩”τr=fr.l,l为斗齿至回转中心的距离，,(γ：比例常数).
+4　实验结果
+　　根据上述机理，在作者研制的挖掘机器人实验台上建立了自主避障控制器，并进行了实验研究.
+4.1　挖掘过程的实验
+　　将较大的石头埋于不同的位置进行挖掘实验.图4表示其中几个典型挖掘过程的实验结果.当阻力不大时，实际的挖掘路径与预期的路径基本吻合如图4a所示.若规划的挖掘深度较大，阻力大或遇到石头时，挖掘机器人根据压力、压力变化和位移信息，自主地修正路径.例如，当已挖路径较长时，遇到较大石头，则铲斗向上运动，以避开石头如图4b所示；若已挖路径不长时，遇到石头，铲斗则向下运动，以将不大的石头一起挖出如图4c所示；若通过多次改变路径的尝试，不能挖出石头，即阻力仍很大，则返回开挖点如图4d所示.实验结果初步表明自主避障控制使挖掘机器人在一些典型的挖掘过程中能根据实际工作情况修正预期的运动状态.
+
+
+图4　典型挖掘的实验结果
+注.曲线1表示预期的路径，曲线2表示实际的路径.
+4.2　运土过程的实验
+　　采用平板、纸箱等作为运土过程中的障碍进行避障实验.结果表明所提出的方法有较好的实时性.这对于避免铲斗与卸载卡车箱壁或矮墙基的碰撞颇为有效.图5为运土过程避障实验的照片.
+
+
+图5　挖掘机器人运土过程中的避障实验
+5　小　结
+　　作者提出并在实验中验证了挖掘机器人作业过程中的局部自主避障方法.这些方法还有待于继续完善.例如，挖掘过程避障的模糊控制知识还需进一步丰富，以适应复杂多变的作业对象；运土过程中几何障碍的识别能力需进一步提高，以适应回避不同几何形状障碍的需要.
+1）高等学校博士学科点基金（221D96062003）、曹光彪科学基金（96033521）资助项目．
+作者简介：杨　毅　1952年生.浙江大学副教授、博士.1994―1996在加拿大多伦多大学机器人与自动化实验室从事机器人研究.已在国内外发表论文15篇.曾获国家和省部级教学及科技成果奖三项.目前主要研究方向为机电一体化和机器人.
+　　　　　冯培恩　1943年生.1985年获柏林工业大学工学博士学位.现为浙江大学教授、博士生导师.已在国内外发表著译140种，其中包括书五本.曾获国家和省部级教学和科技成果及荣誉奖10项.目前主要研究方向为设计自动化和机电一体化.
+　　　　　高　宇　1972年生.浙江大学机械设计实验室技术员.主要从事机电一体化方向的实验研究.已发表论文10篇.
+作者单位：浙江大学流体传动与控制国家重点实验室，机械设计研究所　杭州　310027
+参考文献
+1　冯培恩，孙守迁，杨　毅，齐中伟.液压挖掘机微机操纵规划控制技术的研究.自动化学报，1995，21(1)：33―38
+2　王　华，喻开安，冯培恩，杨　毅，高　宇.挖掘机器人满斗运土和空斗返回过程的避障.建筑机械，1995，(10)：26―28
+3　Feng Peien,Yang Yi,Sun Shouqian,Qi Zhongwei.Research on control method of planning level for excavatingrobot.In:Proceedings of the 9th International Symposium on Automation and Robotics in Construction. 1992,Tokyo,Japan.777―786
+4　Huang D,Bernold L E.Robotic rock handling during backhoe excavation,Automation and Robotics in Construction X,Elsevier Science Publishers,1993,355―362
+5　Neville Hogan.Impedance control:An approach to manipulation:Part Ⅲ―Applications.Journal of Dynamic Systems,measurement,and control,1985,107:17―23
+收稿日期：1997-08-29
+修稿日期：1998-06-10

@@ -1,0 +1,87 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+多层感知器的局部化设计1）
+许　力
+　　摘　要　结合前馈网络的全局化设计和局部化设计的各自特点，提出一种由多个既独立又关联的同构子网络构成的局部化多层感知器.仿真结果表明，该网络对复杂非线性系统具有良好的学习性能，并适用于学习控制的直接逆模型法和远程学习法.
+　　关键词　多层感知器，局部化设计，CMAC网络.
+A LOCAL DESIGN FOR MULTI-LAYER PERCEPTRON
+XU LI
+(Department of Electrical Engineering, Zhejiang University, Hangzhou 310027)
+　　Abstract　By syncretizing the global design and local design of feedforward neural networks, this paper proposes a localized multi-layer Perceptron (LMLP), which is constructed by a set of distributively associated subnets with the same structure. Simulation results show that this network has strong learning capacity for complex nonlinear systems, and is applicable for real-time learning control, by using either direct inverse modeling or distal learning strategy.
+　　Key words　 Multilayer perceptron, local design, CMAC network.
+　　1　引言
+　　全局化设计和局部化设计是前馈网络的两种不同的设计方法.作为全局性网络的典型代表，多层感知器(MLP，又称BP网)的输出受所有权值的影响，因而学习缓慢，较适合于对固定样本集的学习；局部性网络以CMAC［2,3］为代表，其输出在任何时刻只与部分权值即一个子网络相关，所以有较快的学习速度，较适合于实时控制［1］.另一方面，尽管MLP能逼近任意Borel可测函数［7］，但当样本在局部区域存在较大差异时，网络的训练通常变得非常困难［8］；CMAC虽能较好地处理学习的局部性问题，但因其输入只是用来确定各子网络存贮单元的地址，而与输出值无直接关系.这样，CMAC对每个输入子空间中的信号进行“多到一”的映射，因而存在着所谓“分辨率”的问题［10］.同时，这种映射使得输出误差难以反向传播到输入端，所以不能用于远程学习控制［6］.从理论上讲，一种得益于这两种设计方法的混合型结构是存在的，但其具体实现有待研究［1］.
+　　这里提出的局部化多层感知器(Localized Multi-Layer Perceptron, LMLP)融合MLP与CMAC的各自特点，是对文献［12］提出的初步设想的一种完善.文中着重研究该网络在复杂非线性系统的在线学习控制中的应用.
+　　2　局部化的多层感知器
+　　2.1　LMLP的结构和原理
+　　设计的基本思想是，由N个输入变量(x1,x2,…，xN)构成的输入空间S被剖分为n个输入子空间(S1,S2,…，Sn)，不同的子空间用不同的子网络来处理，而每个子网络均采用MLP或其类似形式.整个网络就由这n个既相互关联又相对独立的子网络(SN1，SN2，…，SNn)构成.
+　　在图1和2所示的原理图中，LMLP具有N个输入单元、m个隐单元和M个输出单元.每个隐单元只能处于两种状态之一：“激活”或“禁止”.每个子网络占用m*个隐单元，不同子网络的差异仅在于其m个隐单元在整个隐含层中的位置不同，而位置由网络协调器来确定.
+
+图1　LMLP原理图
+
+图2　网络协调器原理图
+　　设每个输入变量被划分成Rj(j=1,2,…，N)个不同的区域，则由N个输入变量构成n个子空间，其中
+n=R1×R2×…×RN 　　　　　　　　　　　　　　　(1)
+每个子空间对应一个子网络，而每个子网络对应m*个隐单元(图2中m=3).以V表示按Si→m(i=1,2,…,n)顺序映射而建立的虚拟隐含层位置表，Pij表示子网络SNi中第j个隐单元的位置，则｛Pi1,Pi2，…，Pim*｝V就表示SNi中所有隐单元在V中的位置集合，记为｛SNi｝V.在图2中，｛SN1｝V=｛1，2，3｝V，｛SN2｝V=｛2，3，4｝V，｛SNn｝V=｛mV-2,mV-1,mV｝V，这里mV 是V中位置单元的总数.
+　　设相邻子网络中不同的隐单元个数为ρ(图2中　ρ=1),则mV应满足
+mV≥(n-1)ρ+m*.　　　　　　　　　　　　　　　(2)
+显然，其数值可能会非常大，为使实际隐含层H的单元个数m不至于太大，这里采用在CMAC中已有成功应用的杂凑编码(hash-coding)技术［5］来实现从mV到m的“多到少”的映射.于是，SNi的隐单元在实际隐含层中的位置｛SNi｝H=｛Pi1，Pi2,…，Pim｝H可由下列映射确定
+Si→｛SNi｝V→｛SNi｝H，i=1,2,…,n.
+这样，子网络SNi就由｛SNi｝H所确定的隐单元、连同为所有子网络公用的输入层和输出层构成.例如，在图2中｛SN1｝H=｛2，4，m-2｝H，｛SN2｝H=｛4，m-2,m｝H，｛SNn｝H=｛3，5，m-2｝H.显然，SN1与SN2具有二个公共单元，而SN2与SNn公用一个隐单元.图2的输出就是确定SN1的隐单元位置时的情形.
+　　综上所述，在任何时刻，只有m*个隐单元被网络协调器“激活”，即只有一个子网络在工作，其余的隐单元均被“禁止”.各子网络相对独立，没有两个子网络完全一样；又没有一个子网络是完全独立的；整个网络呈一种部分连接状态，兼顾了学习的分断性(dichotomization)和记忆的联想性(generalization).有关参数的取值，建议取m≈10 m*，而m*的数值视具体情况而定.
+　　本文忽略杂凑映射可能产生的映射冲突，有关这方面的讨论详见文［2，9］.各子网络的隐单元个数不一定要相同，限于篇幅，在此不作讨论.另外，参量ρ可取其它数值，这里只考虑ρ=1的情况.
+　　2.2　LMLP的两种形式
+　　LMLP的子网络采用MLP或其类似形式，这里考虑两种极端情形：(a)LMLP-I，其子网络采用常规的多输入多输出(MIMO)的MLP；(b)LMLP-Ⅱ，其子网络采用多输入单输出(MISO)的MLP结构.
+　　常规MLP是指输入层和输出层均采用等值函数作为激发函数，而隐含层则采用Sigmoid函数，其结构和算法在许多文献中已有介绍.
+　　下面介绍LMLP-Ⅱ的子网络.具有一个隐含层的常规MLP有两组权值，分别连接输入-隐含层和隐含-输出层，计算量相对较大.同时，许多实际系统是MISO的，而即便是MIMO系统也可用多个MISO系统来表达.所以，LMLP-Ⅱ的子网络采用只有一组可调权值的MISO结构，连接隐含-输出层的权值不作修正.根据梯度法并参考CMAC的工作原理，可得其算法如下：
+　　前向计算，
+
+　　反向修正，
+δj=(y*－y)/m*,
+wij=wij+αδjxi，
+θj=θj+βδj,
+
+其中　xi为第i个输入变量，yj为第j个隐单元的输出，而wij为连接第i个输入单元和第j个隐单元的权值，α和β是学习因子.由于需修正的权值只有一组，且各单元均采用线性激发函数，因而可显著减少计算量.
+　　需要说明的是，这里只列举了子网络的两种极端情形，而事实上，对其它MLP类的形式也同样适用.
+　　2.3　基于LMLP的学习控制
+　　监督式学习控制策略可分为两大类［6］，即直接逆模型法［4，11］和远程学习法(Distal Learning)［6］.其作用都是要寻找被控对象从状态空间到控制空间的逆模型.直接逆模型法存在“中凸性”(Convexity)问题［6］，即被控对象是关于控制空间到状态空间的“多到一”的映射，它只能给出关于控制空间某个区域的平均值，所以可能会找不到逆模型；而远程学习法求得的是某个具体的逆模型.
+　　在上述两种控制方法中，LMLP的应用没有任何特殊要求，相应地用LMLP代替文［4，11］中的CMAC或文［6］中的BP网即可.这里采用两条辅助措施：(1)给神经网络控制器叠加一个简单的比例控制器；(2)引入极值控制，当输出误差超出某个允许范围时，就采取最大或最小的控制量.
+　　仿真用被控对象是化工过程CSTR［11］，其无量纲化数学模型为
+
+其中　Da=3.0;β=1.5;γ=22.9;H=2.55;状态变量x1和 x2分别为反应转化率和反应温度；控制变量u1和u2分别代表进料流量和冷却剂温度，u1通常固定为1.0；x1又是输出变量，反映了产品的质量.
+　　3　仿真计算
+　　以CSTR系统为例，研究LMLP在学习控制中的应用.跟踪的目标是上、下幅值分别为0.965和0.935的方波.控制周期T为20秒，学习周期为200个控制周期，比例控制系数为80，极值控制的阈值为±0.01，网络输入变量(x1,x2,Δx1,u2)分别划分为(60，14，4，4)个子区域.(m*，m)统一选为(30，200).网络权值都初始化为小的随机数，作为对照的MLP采用30个隐单元.
+　　3.1　直接逆模型法
+　　由(x1,x2,Δx1)构成的控制器网络的输入空间被划分为3360(60×14×4)个子空间.图3所示为前5个学习周期的跟踪情况.由于“中凸性”问题，基于CMAC的系统在第四、五个学习周期下幅值处的响应偏离已经跟踪上的期望值，类似的情况也出现在LMLP-Ⅰ中.基于LMLP-Ⅱ的系统，则从第二个学习周期起就一直表现出良好的跟踪性能.
+
+图3　直接逆模型法
+　　3.2　远程学习法
+　　控制器网络和前向网络的输入分别为(x1,x2,Δx1)和(x1,x2,u2)，各被划分成3360个子空间.图4表明，远程学习法能很好地解决“中凸性”问题，因而基于LMLP两种形式的控制系统均表现为逐步改善的跟踪性能.其中基于LMLP-Ⅰ的系统从第四个周期起完全跟上，优于LMLP-Ⅱ.图5表明，基于常规MLP的控制系统在跟踪方波时存在着困难.
+
+图4　远程学习法
+
+图5　基于MLP的学习控制
+　　4　讨论
+　　LMLP采用类似于CMAC确定存贮单元地址的方法来确定各子网络的隐单元在隐含层中的位置，其子网络采用MLP类的形式.所以，对各输入子空间内的信号均实现“一到一”的映射.其中LMLP-Ⅰ的子网络实现非线性映射，而LMLP-Ⅱ的子网络则为线性逼近，但计算量小.从总体上讲，LMLP-Ⅰ的非线性逼近能力强于LMLP-Ⅱ，但是，当对象的输入输出在各子空间呈线性或近似线性关系时，LMLP-Ⅱ的学习能力可能强于LMLP-Ⅰ.
+　　MLP的完全联结机制，使其动态响应能力较弱，对跳变样本的学习缓慢.CMAC充分考虑学习的局部性问题，因而有较强的动态响应能力，但其学习能力与分辨率密切相关.由于采用相似的子网络分配原则，LMLP与CMAC均表现为相似的动态响应能力，但LMLP的“一到一”的映射机理使它具有更强的学习能力.对于LMLP子网络的结构和关联形式仍需做进一步地研究.
+1)国家自然科学基金和国防科委预研基金资助课题.
+作者简介：许　力　1964年生，分别于1986年和1989年在浙江大学电机系获学士和硕士学位，现为浙江大学电机系副教授、博士生.主要研究领域是专家系统、模糊控制、神经网络和学习控制.
+作者单位：浙江大学电机系　杭州　310027
+参考文献
+　［1］Werbos P J. Neurocontrol and elastic fuzzy logic:capabilities, concept, and applications. IEEE Trans. Industr. Electronics, 1993, 40(2):170-180.
+　［2］Albus J S. A new approach to the manipulator control:The cerebellar model articulation controller. Trans. ASME, J. Dyn. Syst. Meas. Contr., 1975, 97:220-227.
+　［3］Albus J S. Data storage in the cerebellar model articulation controller. Trans. ASME, J. Dyn. Sys. Meas. Contr., 1975, 97:228-233.
+　［4］Miller Ⅲ,W T. Real-time application of neural networks for sensor-based control of robots with vision. IEEE Trans. SMC, 1989, 19(4):825-831.
+　［5］Knuth D. Sorting and searching. The Art of Computer Programming, Addison-　Wesley, henlo Park, Calif., 1973, (3):506.
+　［6］Jordan M I, Rumelhart D E. Forward models:supervised learning with a distal teacher. Cognitive Sci., 1992, 16:307-354
+　［7］Hornik K. Multilayer feedforward networks are universal approximators. Neural Networks, 1989, (2):359-366.
+　［8］Jacobs R A, Jordan M I. Learning piecewise control strategies in a modular neural network architecture. IEEE Trans SMC, 1993, 23(2):337-345.
+　［9］Wong Y F, Sideris A. Learning convergence in the cerebellar model articulation controller. IEEE Trans. Neural Networks, 1992, 3(1):115-121.
+　［10］Chow M Y, Menozzi A. A self-organized CMAC controller. Proc. IEEE Int'l Conf. on Industr. Tech., Guangzhou, China, Dec., 1994, 68-72.
+　［11］Xu L, Jiang J P, Zhu J. Supervised learning control of a nonlinear polymerisation reactor using the CMAC neural network for knowledge storage. IEE Proc.-Control Theory Appl., 1994, 141(1):33-38.
+　［12］许力.一种局部化的反向传播网络.控制与决策，1995，10(2)：148-152.
+收稿日期　1994-06-06

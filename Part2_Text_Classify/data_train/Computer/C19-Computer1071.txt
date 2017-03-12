@@ -1,0 +1,77 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  Vol.24  No.5 1998
+
+
+
+非线性系统的PD型迭代学习控制1)
+孙明轩　黄宝健　张学智
+关键词　初始条件问题，迭代学习控制，非线性系统.
+PD-TYPE ITERATIVE LEARNING CONTROL FOR 
+A CLASS OF NONLINEAR SYSTEMS
+SUN MINGXUAN　　HUANG BAOJIAN　　ZHANG XUEZHI
+(Xi'an Institute of Technology, Xi'an　710032)
+Key words　Initial condition problem, iterative learning control, nonliear systems.
+1　引言
+　　运用迭代学习控制技术设计控制器时，只需要通过重复操作获得的受控对象的误差或误差导数信号.在这种控制技术中，迭代需从某初始点起进行.初始点指初始状态或初始输出.所谓初始条件是指在每次迭代时，为保证控制系统的收敛性，对系统迭代初始点的重复定位操作所限定的条件.一种常见的初始条件是在每次迭代时，保证迭代初态与期望初态一致［1，2］.但实际的重复定位操作往往会导致迭代初态相对于期望初态产生偏移.目前，在已发表的文献中，没有给出过存在初态偏移情形下D型或PD型非线性迭代学习控制系统的极限轨迹［3，4］.然而，给出其极限轨迹可使人们认识到初态偏移对系统跟踪性能的影响.
+2　主要结果
+　　考虑在重复操作环境中运行的非线性系统
+k(t)=f(xk(t),t)+B(xk(t),t)uk(t),　(1a)
+yk(t)=g(xk(t),t),　　(1b)
+式中t∈［0,T］，下标k记迭代次数；xk(t)∈Rn，uk(t)∈Rr,yk(t)∈Rm分别为系统的状态、控制和输出向量.f:Rn×［0，T］→Rn，B：Rn×［0,T］→Rn×r关于t分段连续，g=［g1，…，gm］T：Rn×［0,T］→Rm关于t,x可微.
+　　采用PD型学习律
+uk+1(t)=uk(t)+Γ(yk(t),t)(k(t)+Lek(t))，　　(2)
+式中ek(t)=yd(t)-yk(t),yd(t)为给定的期望轨迹.Γ(.，.)∈Rr×m，L∈Rm×m为增益矩阵.
+　　引理1.对于x1,x2∈Rn及t∈［0,T］,存在常数ξi∈［0，1］，i=1,2,…,m，使得
+
+　　引理2.实数序列｛ak｝定义为ak+1≤ρak+bk，k=0，1，2，…，其中，｛bk｝为给定的实数干扰序列.若0≤ρ＜1，且
+　　证明.作变换.这样，对于任意的k≥1，有
+
+由于0≤ρ＜1，则
+
+因此，结合sk的定义，可证得结论.
+　　定理1.若由(1)，(2)式描述的迭代学习控制系统满足
+　　A1)　 对于任意给定的初态x0，yd(t)=yd(t)+e-Lt(g(x0,0)-yd(0))，t∈［0,T］可达；
+　　A2)　f(.，.)，B(.，.),gt(.，.)，gx(.，.)关于x满足一致全局Lipschitz条件；
+　　A3)　B(.，.),gx(.，.)在Rn×［0,T］上有界；
+　　A4)　存在增益矩阵Γ(.，.)∈Rr×m，使得‖I-Γ(g(x,t),t)gx(x,t)B(x,t)‖∞≤ρ＜1，　(x,t)∈Rn×［0,T］；
+　　A5)　系统初态渐近重复limk→∞xk(0)=x°,则limk→∞yk(t)=y*d(t),t∈［0,T］.
+　　证明.取一控制输入u*d(t),t∈［0,T］使得系统初态位于x0时的输出为yd(t)，相应的状态记为x*d(t).为了简便，下面略写函数的时间变量t，并记Δu*k(t)=u*d(t)-uk(t),e*k(t)=yd(t)-yk(t),Δx*k(t)=x*d(t)-xk(t).由(1)式、(2)式及引理1知
+ 　　(3)
+式中ξi∈［0,1］，i=1,2,…，m.计算(3)式两端的λ范数，可得
+　　(4)
+式中，γ=bг(kgt+kgxbd+bgx(kf+kBbud)+bLbgx).其中0＜kh＜∞，h∈｛f,B,gt,gx｝为相应函数的Lipschitz常数，0＜bh＜∞，h∈(B,gx)为相应函数的一致界，
+
+　　下面利用状态方程(1a)，给出关于迭代状态的估计
+
+
+　　　　　B(xk(τ)，τ)‖∞‖ud(τ)‖∞+‖B(xk(τ)，τ)‖∞‖Δuk(τ)‖∞)dτ.
+　　计算上式两端的λ范数，可得
+　　(5)
+式中取λ足够大，使得
+1-(kf+kBbud)O(λ－1)＞0.
+将(5)式代入(4)式
+　　(6)
+式中.当选择λ足够大时，ρ＜1蕴涵.因此，由引理2知
+　　(7)
+又由及初始条件A5)知，此即证得证毕.
+　　上述定理表明，当选取－L为稳定矩阵时可改善系统的跟踪性能；通过在给定的期望轨迹前拼接一段轨迹，即可实现给定轨迹的跟踪.做到这一点只要求迭代足够多次后保证初始条件是渐近重复的.进一步容易给出以下推论.
+　　推论1.若由(1)，(2)式描述的迭代学习控制系统满足假设(A1)―(A4)，并且
+
+成立，则系统迭代输出误差一致收敛，即
+
+　　推论2.对于由(1)，(2)式描述的学习控制系统施加D型学习律
+uk+1(t)=uk(t)+Γ(yk(t),t)k(t),
+如果该学习控制系统满足假设(A1)―(A4)，则有
+
+推论2推广了文献［2］的收敛性结果，这对于机器人控制系统是有实际意义的.
+3　结论
+　　在D型学习律作用下，文中所讨论的非线性系统的迭代输出会收敛于一极限轨迹，它与期望输出轨迹存在一恒定偏差.PD型学习律作用下的极限轨迹表明，通过在学习律中增加P型成份，可有效地减小这种偏差.这一结果是在初态渐近重复的条件下得到的.进一步地，当初始输出满足渐近严格重复时可保证系统迭代输出误差的一致收敛性.它放宽了现有文献中对每一次迭代所要求的一致性初始条件.这种渐近条件使得操作者在线调整初始点以提高跟踪精度的做法在理论上得到保证.因此，采用这种学习律是抑制初始点偏移影响的一种有效手段.
+1)国家自然科学基金资助项目.
+作者单位：(西安工业学院电子系　西安　710032)
+参考文献
+　1　Arimoto S, Kawamura S, Miyazaki F. Bettering operation of robots by learning. J. of Robotic Systems, 1984, 1(2):123_140
+　2　Hauser J. Learning Control for a Class of Nonlinear Systems. In: Proc. of the 26th IEEE Conf. on Decision and Control, Los Angeles, CA. 1987:859―860
+　3　Porter B, Mohamed S S. Iterative learning control of partially irregular multivariable plants with initial state shifting. Int. J. of Systems Science, 1991,22(2):229―235
+　4　Lee H S, Bien Z. Study on robustness of iterative learning control with non-zero initial error. Int. J. of Control, 1996,64(3):345―359
+收稿日期　1996－07－25

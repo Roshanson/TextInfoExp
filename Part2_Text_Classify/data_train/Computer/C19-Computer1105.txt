@@ -1,0 +1,87 @@
+自动化学报
+AGTA AUTOMATICA SINICA
+1999年 第25卷 第2期 Vol.25 No.2 1999
+
+
+
+
+
+Q学习算法在库存控制中的应用1)
+蒋国飞　吴沧浦
+摘　要　Q学习算法是Watkins提出的求解信息不完全马尔可夫决策问题的一种强化学习方法.这里提出了一种新的探索策略，并将该策略和Q学习算法有效结合来求解一类典型的有连续状态和决策空间的库存控制问题.仿真表明，该方法所求解的控制策略和用值迭代法在模型已知的情况下所求得的最优策略非常逼近，从而证实了Q学习算法在一些系统模型未知的工程控制问题中的应用潜力.
+关键词　Q学习，马尔可夫决策过程，库存控制，连续状态和决策空间，探索策略.
+INVENTORY CONTROL USING Q-LEARNING
+JIANG Guofei Wu Cangpu
+(Department of Automatic Control, Beijing Institute of Technology, Beijing 100081)
+Abstract　Q-learning is a reinforcement learning method to solve Markovian decision problems with incomplete information. In this paper, we present a novel exploration strategy and use Q-learning method with this strategy to solve a typical inventory control problem with continuous state and decision space. Simulation results are included to show that the optimal policy given by Q-learning can well approximate to the accurate one.
+Key words　Q-learning, Markovian decision problem, inventory control, continuous state and decision space, exploration strategy.
+1　引言
+　　Q学习算法是求解信息不完全马尔可夫决策问题的一种有效的强化学习方法.自从Watkins［1］在1989年提出Q学习算法并证明了其收敛性后，该算法在强化学习研究领域中得到了人们的普遍关注.然而，目前对Q学习算法的应用研究还很不够，基本上限于人工智能方面，如最短路径搜索问题［1，2］、动物觅食游戏［3］等，实际应用的例子很少；另一方面对该算法的研究也只局限于一些离散状态和决策空间.迄今为止还没有见到在连续状态和决策空间上应用的例子，而实际应用中许多随机控制系统的状态和决策是连续的.本文通过离散化问题的状态和决策空间，提出用Q学习算法来求解运筹学中一类典型的有连续状态和决策空间的库存控制问题，同时针对决策空间离散化后可行控制数目较大的情况，提出了一种新的探索策略，来对控制和探索之间的冲突进行有效的折衷.
+　　先简述有限马尔可夫决策问题的模型如下：在每个时间步k=1,2,…,控制器观察马氏过程的状态为xk，选择决策ak，收到即时报酬rk，并使系统转移到下一个状态yk,转移概率为Pxk,yk(ak).控制目的是寻求一最优控制策略，使报酬函数最大，其中0≤γ≤1为折扣因子.
+　　在一些实际例子中，状态转移概率和所获报酬是未知的，求解这类信息不完全的马氏决策问题有两种主要方法：贝叶斯方法和非贝叶斯方法.而非贝叶斯方法又分为直接法和非直接法.直接法是不估计系统模型而直接基于观察值来求解最优策略［2］.Q学习算法属于直接法.
+　　给定一个策略π，定义Q值为在状态x，控制a及后续策略π下的报酬折扣和的期望.即
+
+(1)
+其中　学习就是要在转移概率和所获报酬未知的情况下估计最优策略的Q值.定义其中π*表示最优策略.
+　　在线Q学习方法实现如下：在每个时间步k，观察当前状态xk，选择和执行控制ak，再观察后继状态yk及接受即时报酬rk，然后根据下式调整Qk-1值：
+
+(2)
+其中　αk为学习因子，
+　　Watkins［1］证明了学习因子序列｛αk｝在满足一定的条件下，如果任一个(x,a)二元组能用方程(2)进行无穷多次迭代，则当k→∞时，Qk(x,a)以概率1收敛于Q*(x,a).
+2　库存控制及其有限马氏决策过程模型
+　　设xk是产品在k段开始时的库存量，uk是k段开始时的订货量(假设订了货即可立即交货)，wk是k段中的需求量，是一个随机变量，R是产品的仓库库存限量.h(h≥0)是单位产品的库存费用,p(p＞0)是单位产品的脱需费用，c(c＞0)是单位产品的订货费用.假定如需求量超出可能的供应量时，不允许先记帐而后补，即xk不允许取负值.此时可建立库存优化控制问题的模型如下：
+　　1)状态转移规律由下列方程确定
+
+(3)
+　　2) wk(k=0,1,…)的概率分布相同且相互独立；
+　　3) 控制的目的是选择订货策略uk(xk)来极小化指标函数
+
+(4)
+其中γ为折扣因子，C(u)为如下定义函数：
+
+(5)
+　　如果产品的仓库库存没有限量(即取消(3)式中的约束xk+uk≤R)，Bertsekas在文献［4］中证明了当p＞c时可求得以上问题的最优策略为
+
+(6)
+其中S*为函数的极小点，而为满足G(y)=K+G(S*)的y的最小值.
+　　用Q学习算法求解马氏决策问题，不须知道过程的状态转移规律，只要在决策过程中能观测到系统的四元组序列(xk,uk,r(xk,uk),yk)(其中xk为当前状态，uk为当前控制，r(xk,uk)为在系统状态xk上执行控制uk后得到的报酬，yk为后继状态.)，就能通过学习求得问题的最优策略.在仿真中，以上所建立的库存控制模型代表实际过程向Q学习提供这个四元组序列.而在实际应用中，在线Q学习算法可以直接从系统观测这个四元组序列.
+　　要应用Q学习方法来求解以上有连续状态和决策空间的库存控制问题，首先需将状态和决策空间离散化后建立一个信息不完全的有限马尔可夫决策过程.设将状态离散化成N段，x=0,1，…，i,…,j,…,N;将控制离散化成M段，u=0,1,…,k,…,M；格子点间距为L.wk为一个连续的随机变量，不需要离散化.这样就可以推出即时报酬r(i,k)=C(k.L)+h max(0,i.L+k.L-wk)+p max(0,wk-i.L-k.L)；状态转移概率Pij(k)=P(j.L≤max(0,i.L+k.L-wk)＜(j+1).L).然而由于随机需求量wk的概率分布是未知的，所以式中的Pij(k)实际上也是未知的.在仿真中系统状态根据式(3)进行转移并集结到相应的格子点上.在决策空间离散化后，为了加快Q学习算法的收敛速度和求得最优策略，下面提出了一种新的探索策略来选择控制行为.
+3　探索策略
+　　在Q学习方法的实现中，有多种探索方法［5］.但最为常用的是Boltzmann分布探索.假定在时间步k时，状态为xk,控制a∈A(xk)，A(xk)是状态为xk时的控制集合.定义E(a)=Q(xk,a)，a∈A(xk).则控制器用以下概率来选择控制a
+
+(7)
+其中T为温度因子，随着学习进行而逐渐衰减.
+　　根据Boltzmann分布探索方法的特点，在其基础上提出了一种新的基于计数器的直接探索方法.在每个时间步k，控制器用以下概率来选择控制a
+
+(8)
+其中Pexp loit(a)为Boltzmann分布探索，如式(7)所示.式(8)中的Γ(0＜Γ＜1)选一固定值或一简单的分段函数.而式(8)中的Pexp lore(a)由下式确定
+
+(9)
+其中
+
+(10)
+(10)式中n(xk,a)为到时间步k为止，系统在状态xk执行控制ak的次数.α,β为常数且满足α＞0,β＞0.参数m(m＞0)随学习进行而逐渐衰减到零.由于0≤Pexp lore(a)≤1,0≤Pexp loit(a)≤1,由(8)式显然可证0≤P(a)≤1及在学习过程的初始阶段，对a∈A(xk)，式(7)中的温度T和式(10)中的参数m越大，Pexp loit(a)分布越均匀而Pexp lore(a)的分布越有差异，此时系统将主要根据Pexp lore(a)来选择控制行为，从而保证环境被充分探索和获取各种控制经验.随着学习的进行，T，m逐渐衰减，a∈A(xk),Eexp lore(a)的值将逐渐趋向一致，从而使Eexp loit(a)分布越有差异而Eexp lore(a)的分布越为均匀，此时代表控制经验的Eexp loit在控制行为a的选择中逐渐增加了作用而代表环境探索的Eexp lore逐渐减少作用，从而增加已有控制经验的利用和改善系统控制性能.随着学习的进一步进行，m,T将趋向于零，a∈A(xk)，为集合A(xk)中控制的个数，此时系统将主要根据Pexp loit(a)来选择控制行为，从而来充分利用控制经验和保证算法的收敛速度.在m,T都趋于零时探索策略实质上已变成一半均匀分布探索，即以概率值为Γ选择对应Q值最大的控制，而以概率值为1-Γ随机均匀地在所有可行控制中进行选择，这样在学习过程的最后阶段一方面能保证算法的收敛速度，另一方面也仍然保留了对环境的一定探索以求得最优策略.
+4　仿真及结果
+　　在仿真实例中，产品的仓库库存限量R=100.0，单位产品的库存费用h=1.0,单位产品的脱需费用p=9.0，单位产品的订货费用c=2.0，订货固定费用K=0.0.折扣因子γ=0.90.随机需求wk服从(50，102)的正态分布.在模型已知时，将状态、控制分别离散化成N=M=50段，格子点间距为L=2.0，用值迭代法求得问题的最优策略如图1所示.同时在模型未知时，将状态、控制分别离散化成N=M=25段，格子点间距为L=4.0.Q学习方法结合新的基于计数器的探索方法在经过15.9万次迭代后求得问题的控制策略如图2所示，继续迭代控制策略可收敛到图1所示的最优策略.而Q学习方法结合Boltzmann分布探索在经过32.4万次迭代后求得问题的控制策略如图3所示，但该方法在经过上千万次迭代后仍然不能完全收敛到问题的最优策略.图1-3中u(x)表示控制策略，x表示状态.
+
+　　图1　　　　　　　　　图2　　　　　　　　　图3
+注．图1 设模型已知时，用值迭代法求解的最优策略　N=M=50 L=2.0；
+　　图2 设模型未知时，用Q学习算法结合新的探索策略求解的控制策略　N=M=25 L=4.0；
+　　图3 设模型未知时，用Q学习算法结合Boltzmann分布探索策略求解的控制策略　N=M=25 L=4.0.
+　　比较图1、图2可知，Q学习算法所求得的控制策略和在模型已知的情况下用值迭代法求得问题的最优策略非常逼近，均为(6)式所示的S*策略，S*约为60.0.而且仿真表明通过Q学习的继续迭代，图2所示的控制策略可以收敛到最优策略.这一结果说明了在系统模型未知的情况下，通过离散化问题的状态和决策空间，可以用Q学习算法来求解某些有连续状态和决策空间的马氏决策问题的最优策略.同时通过比较图2、图3可知，新的探索策略和Boltzmann分布探索相比，不仅提高了学习速度而且求解的控制策略明显更逼近最优解以至能收敛到最优解.
+5　结语
+　　本文讨论了Q学习算法及相关的探索技术，提出了一种新的探索策略并将该策略和Q学习算法有效结合来求解一类典型的有连续状态和决策空间的库存控制问题.仿真表明：该方法所求解的控制策略和用值迭代法在模型已知的情况下所求得的最优策略非常逼近，从而证实了Q学习算法在一些系统模型未知的工程控制问题中的应用潜力.
+1) 国家自然科学基金资助项目.
+作者简介：蒋国飞　1971年生，1993年毕业于北京理工大学自动控制系.现为北京理工大学博士生.主要研究方向是最优控制和智能控制等.
+　　吴沧浦　简介见本刊第20卷第6期.
+作者单位：北京理工大学自动控制系　北京　100081
+参考文献
+1　Watkins C J C H. Learning from delayed rewards. Ph.D.Dissertation, King's College, UK, 1989
+2　Barto A G, Bradtke S J, Singh S P. Learning to act using real-time dynamic programming. Artificial Intelligence, 1995, 72: 81-135
+3　Lin L J. Self-improving reactive agents based on reinforcement learning, planning and teaching. Machine Learning, 1992, 8: 293-321
+4　Berstekas D P. Dynamic Programming and Stochastic Control.New York： Academic Press,1976
+5　Thrun S B. The role of exploration in learning control. Handbook of Intelligent Control: Neural, Fuzzy and Adaptive Approaches. NY：Vanostrand Reinhold,1992
+6　Sutton R S, Barto A G, Williams R J. Reinforcement learning is direct adaptive optimal control. IEEE Control System Magazine, 1992, 12(2):19-22
+7　Peng J. Efficient dynamic programming-based learning for control. Ph.D.thesis, Northeastern University, USA, 1993
+收稿日期　1997-04-14
+收修改稿日期　1997-11-10

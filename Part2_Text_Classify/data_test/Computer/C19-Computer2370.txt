@@ -1,0 +1,118 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第9期 Vol.36 No.9 1999
+
+
+
+网络交通自相似特性的分析及应用――具有单一登录点的机群网络服务器的性能评测
+赵晓芳　刘欣　徐志伟
+摘　要　自相似过程很好地描述了网络服务的访问模型，因此也为开发、模拟和测试与网络服务相关的系统提供了一个很好的理论基础.网络应用的不断发展促进了机群系统网络服务器的应用.将自相似过程用于网络服务器的访问过程，指导机群网络服务器，特别是服务器单一登录点系统的设计，有助于提高整个系统的性能.文中首先介绍机群网络服务器的用户访问模型――自相似过程，然后通过分析网络信息的轨迹确定可能影响系统性能的因素.在这些工作的基础上，根据己有文献中所提出的ON/OFF信号源叠加模型，简单而实用地生成具有自相似特性的测试数据，并用生成数据对一个由12台曙光天演计算机组成的、具有单一登录点的机群网络服务器系统进行性能测试.
+关键词　单一登录点，自相似过程，网络服务器，Pareto分布，机群
+中图法分类号　TP393
+ANALYSIS AND APPLICATION OF THE SELF-SIMILARITY IN NETWORK TRAFFIC――THE PERFORMANCE TEST OFCLUSTERED WWW SERVERS WITH A SINGLE ENTRY POINT
+ZHAO Xiao-Fang, LIU Xin, and XU Zhi-Wei 
+(Institute of Computing Technology, The Chinese Academy of Sciences, Beijing 100080)
+Abstract　Network traffic process is not the same with the traditional Poisson process but behaves like self-similar. This fact offers a different theoretical foundation in developing, simulating, and testing network service systems. Also, network applications' further expansion implies cluster of multiple servers to be adopted to fit its needs. Being put to use self-similar model in the access process of network service can guide the design of the clustered network servers, especially for the strategy of single entry point of the cluster. In this paper, the network traffic model――self-similar process is introduced first, and then a simple and useful method is presented for generating the self-similar network traffic, then some network traffic traces in order to get some features which do effect on performance are analyzed. Finally, a set of data with self-similar is generated, and used in testing the performance of clustered WWW servers with a single entry point. 
+Key words　single entry point, self-similar process, WWW server, Pareto distribution, cluster
+1　引言
+　　近几年来，网络应用的发展异常迅猛，用户数量呈指数增长，而网络服务器的性能很难跟上这一增长速度.机群是一组物理上通过局域网络或高带宽的交叉开关连接起来的计算机集合，这里每个计算机称为一个结点.机群系统的可扩展性得益于可以在需要时随机添加结点以扩充系统的容量和能力.一个可扩展的机群环境加上有效的中间件和负载平衡机制无疑是网络服务器的上佳选择.
+　　机群系统作为一个网络服务器需要提供对用户的透明性，即用户看到的是一个具有单一IP地址或域名的服务器而不是一个多结点的局域网，单一登录点技术的采用正是为了这一目的.单一登录点的实现技术有几种，包括DNS，NAT和Router，曙光机群系统中采用路由方法自行开发实现这一功能，我们称为PowerRouter.
+　　以路由的方法在机群系统结点上实现的单一登录点技术不仅仅为用户提供一个虚拟的IP，还起到监控系统和负载平衡的作用.这是因为，机群作为网络服务器，单一登录点是用户访问机群的唯一入口，同时机群内部各结点的任务来源于单一登录点的分派，因此，只有单一登录点明了系统内各结点的状态并实现适当的负载平衡机制，机群才会有很高的性能.
+　　脱离应用来探讨系统的性能是不切实际的.只有在对应用透彻理解的基础上才能设计出高性能的系统.网络交通有着与其它应用不同的特点.近年来的很多工作说明网络交通模型与传统的指数分布不相符合，而是表现为自相似过程（self-similar process）［1，2］.自相似过程已很难用排队论直接进行建模和分析，因此，要分析网络交通模型，模拟和实测是可选的两种方法.在本文的工作中采用了后一种方法，人工生成具有自相似特性的测试数据并在一个由12台曙光天演计算机组成的系统平台上进行性能测试和分析.
+　　本文的第2、第3部分介绍自相似随机过程和自相似数据的生成方法.第4部分分析网络应用轨迹.第5部分是测试系统实际的测试情况和分析.结论在第6部分.
+2　自相似过程
+　　近几年来,对网络应用模式的分析表明，Self-Similar随机过程比传统的泊松过程能更好地符合网络包到达过程的统计规律.Self-Similar模型的优点在于它能更好地体现网络包到达的长期依赖性(long-range-dependence).而传统的泊松过程则局限于网络应用的短期依赖性(short-range-dependence).下面我们将简要地介绍Self-Similar过程以及网络传输中的Self-Similar过程.
+　　所谓自相似,直观地说就是一组序列在很长的时间范围内表现出结构上的相似性. 从图1“Ethernet网络应用轨迹”就可以发现这种相似性. 图中的数据是从文献［3］中抽取出来的，图1(a)和图1(b)分别为10秒内和30秒内服务请求到达服务器的数目.
+
+图 1　Ethernet网络应用轨迹
+定义1.自相似随机过程. 设X是一个广义平稳随机过程，其均值为μ,方差为δ2，自相关函数为ρ(τ).如果ρ(τ)具有以下形式：
+ρ(τ)→τ-βL(τ), as τ→∞
+(1)
+其中L(τ) 是一个在趋于无穷大时缓慢变化的函数，即，对所有的x＞0(例如: L(τ)=limτ→∞Const或 L(τ)=log(τ)).现将X分为大小为m、非交叠的子块(聚合过程)，用表示每个子块的均值所组成的随机过程，即
+X(m)(t)=(1/m)(Xtm-m+1+Xtm-m+2+…+Xtm)
+每一个m，X(m)都表示一个广义平稳随机过程，而ρ(m)(τ)表示X(m)的自相关函数.如果对所有的m，聚合过程X(m)有着和X完全相同的自相关函数：
+ρ(m)(τ)=ρ(τ), 对所有的m=1,2，…，
+则称X为一个(严格二阶)自相似的随机过程，其自相似系数为H=1-β/2.换句话说，如果X的聚合过程就其一阶、二阶特性来说和X是没有差别的，我们就可以称X为(严格二阶)自相似的随机过程.
+　　定义2.长期依赖性(long-range-dependence).如果一个随机过程满足式(1)，我们就称此随机过程有长期依赖性.这类随机过程的特征就是其自相关函数在τ增加时以双曲函数衰减.我们很容易证明其自相关函数是不可累加的，即 ∑τρ(τ)=∞.而我们经常使用的短期依赖随机过程的自相关函数在τ增加时都是以指数函数衰减(例如ρ(τ)～c-τ,当τ→∞)，而且是可累加的,即∑τρ(τ)<∞.这种自相关系数的不可累加性正是长期依赖随机过程的直观表现: 虽然在τ很大时单个的ρ(τ)也很小，但它们的累积效应是不可忽视的，这种累积效果将使它们和短期依赖随机过程有很大的区别.
+　　网络交通表现出明显的自相似性.很多相似的研究也表明Ethernet网络交通确实存在明显的自相似特性：IP包的到达、TCP连接请求的到达、TCP连接的持续时间等.为什么会有这种自相似性？怎么解释这种现象? 其实人们很早就在别的领域观察和研究自相似过程，也有人在计算机领域提出这种观点，由于没有合适的物理解释，如文献［4］，自相似过程在网络传输和性能分析中未能得到广泛应用［5］.文献［6］提出了一种严格交替的ON/OFF源的叠加模型，有效的解释了Ethernet网络交通的自相似特性，这也是本文生成网络交通数据的理论依据.
+　　自相似过程能更好地体现网络交通的long-range-dependent特性，但是它能对我们系统的设计和性能分析带来什么好处呢？自相似过程虽然不是很复杂，但和传统的泊松分布和指数分布比起来，对它的研究还不是很透彻.下面是目前的一些研究结论.
+　　网络交通中的自相似特性将使得系统中的排队性能(比如队列的长度分布)和传统的网络交通模型(马尔可夫模型)有显著的不同.在传统的马尔可夫模型中，队列长度的分布将以指数函数(λ-t, t->∞)迅速减小，而在自相似模型中，是以远为缓慢的幂函数(t-H, 0<H<2, t->∞)减小，其衰减速度依赖于Hurst效果.在系统建模中，如果忽略自相似特性将导致对系统性能的过分乐观估计，在系统性能测试中也会由于输入数据的不合理而不能有效地测量系统的性能，从而在最后的实际系统中将不能达到原有设计的服务质量(quality-of-service) 要求.
+3 自相似数据的生成
+　　Ethernet的网络交通可以看做由很多个互相独立而且相同(independent and identically distributed)的信号源所产生的交通的叠加.每个信号源都交替地处于ON/OFF状态，处于ON状态的信号源按照固定频率产生网络交通，而处于OFF状态的信号源不产生任何网络交通分布.这些信号源处于ON状态的时间分布(ON-period)和处于OFF状态的时间分布(OFF-period)分别是互相独立而且是相同的(ON状态的时间分布可以和OFF状态的时间分布不同).在Willinger和Taqqu［6］的模型中，它们都表现出一种“Noah效应”：就是ON-period和OFF-period都有可能非常长，而且出现的概率使得这种情况不能被忽略.正是这种Noah效应使得多个ON/OFF信号源的叠加所产生的网络交通表现出自相似特性.在数学上我们可以用Pareto分布来表示Noah效应.Pareto分布的密度函数为
+f(x)=αx-(α+1)
+其中α为Noah效应的一个度量.而且，Noah效应的度量α与自相似过程的度量H之间存在如下关系：
+
+其中αmin为ON　period和OFF　period的Noah效应α的最小值.这种Ethernet的ON/OFF模型是非常直观的，因为Ethernet上的交通就是由一个个独立的信号源组成的，只是我们忽略了其底层的MAC访问特性.但是，为什么单个的ON/OFF信号源的ON-period和OFF　period会表现出Noah效应? 这主要是由于应用级的特性决定的：
+　　(1) 在一些文件服务器中的文件大小分布具有Noah效应［7］；
+　　(2) 一个典型的UNIX进程所用CPU时间具有类似Pareto的分布［8］；
+　　(3) 有关ISDN办公自动化的应用表明人机交互将在很长的一段时间内持续,所以许多用户请求模式具有无限方差分布；
+　　(4) 在许多WWW服务器上的文件大小分布具有Noah效应，而且用户端的Cache使得真正在网上传输的文件大小也表现出Noah效应［2］.
+这些特性决定了单个ON/OFF信号源的ON-period和OFF-period具有Noah效应，同时也决定了它们的叠加导致了Ethernet网络交通的Joseph效应(自相似).
+　　勿庸质疑，当前的计算机网络交通是非常复杂的.人们很自然地认为为了有效地表示所观察到的复杂性，网络交通的数学模型必须非常复杂，需要许多参数来表达各个细节.然而，这种复杂的数学模型将对后续的网络分析和评价造成很大的困难，而且往往使我们无法对其所需的参数给出正确合理的估计.现在根据ON/OFF模型，我们只需要Noah效应的度量α这一个参数就能有效的表达当前网络交通的一个基本特性.同时，使用多个具有Noah效应的ON/OFF信号源的叠加模型作为网络交通模型, 我们给出了一种很自然的网络交通的人工合成方法.在PowerRouter的性能测试中, 我们将使用这种人工生成的网络交通作为系统的输入.数据生成的算法如下：
+　　(1) Pareto分布的随机序列的生成(反函数法)
+　　Pareto分布的概率密度函数为
+f(x)=αx-(α+1)
+其分布函数为
+F(x)=1-x-α
+分布函数的反函数为
+
+当x为(0,1)上的均匀分布的随机变量时，F-1(x)即为Pareto分布的随机变量.
+　　(2) 具有Noah效应的单个ON/OFF信号源
+　　ON/OFF信号源的ON-period和OFF-period是交替出现的，设ON-period的Noah效应度量为αON，其对应的随机序列为 X0，X1，X2，…，Xn；而OFF-period的Noah效应度量为αOFF，其对应的随机序列为 Y0,Y1,Y2,…，Yn.则单个ON/OFF信号源的交通启动点(对应与用户请求的发生时刻)序列{Zn}为
+
+在实际计算中,我们根据对现有的数据［3，9］的分析和简单的拟合检测，确定αON=1.75, αOFF=1.25.
+　　(3) 多个ON/OFF信号源的叠加
+　　设现有M个ON/OFF信号源，其对应的交通启动点(对应与用户请求的发生时刻)序列为
+｛Z(m)n｝,m=0,1,…，M-1
+则所有这些时刻点都对应于一个用户请求.在实际计算中，我们取M=500，而n=20000，以ms为单位，对应于约4小时的测试时间.图2为生成数据的示意图.
+
+图2　生成数据示意图
+4　网络应用轨迹的分析
+　　文献［3］是EPA WWW服务器上一天的轨迹数据，文献［9］是SDSC WWW server上一天的数据.对这些数据进行分析，有助于我们理解网络应用的行为，并据此调节和设计系统的负载平衡策略.分析的结果如下：　　
+　　网络应用呈现阶段的并发性，这种现象是极其合理的.因为我们知道，一个网页包含一个HTML文件和多个嵌入的图像，而每个图像在Web上均是一个独立的对象.一个用户的通常行为是在取到基本的HTML文件后，立即访问这些嵌入的对象，而这些对象通常在同一个服务器上.这一点给我们在设计具有单一登录点的机群网络服务器的性能时提供了这样的信息，即对应一个用户的一次并发访问，分派到同一个结点会有更好的效率.这样带来的问题是如果不控制其总的负载，结点之间会出现严重的负载不平衡现象.对此，我们设计了两种策略，一是服务结点的负载反馈方法，另一种方法是单一登录点对每个结点进行跟踪预测.这两种方法均有其各自的不足之处.前一种方法的反馈信息一种“滞后”信息，已分派给一个结点的处在“并发”态的用户不可能将其后面的请求再分给其它的结点，短时间内的不平衡是不可避免的；后一种方法的预测仅仅考虑的是请求的数目，对文件的大小没有概念，因此，与实际的负载存在一定的偏差.
+　　一个有趣的现象是，大部分的用户对服务器的一次访问的请求次数很少，在我们的统计当中，EPA有一半的用户请求次数在1～10之间，而SDSC有一半的用户的访问次数在1～4之间，而且随着访问次数的成倍增加，两者的用户数均表现为相应比例的递减.但一个孤立文件被访问到的概率很小，在3组数据中均小于5%.
+　　我们发现的另一个现象是一个用户的两次请求的文件的距离与请求的时间间隔存在一定的关系.这种现象可以用前面的并发访问来解释.对这一现象的研究有助于我们把复杂的负载平衡算法和分派方法简化，仅仅关心请求的间隔，另一个好处是可以把一个很长的用户请求分解成多个相关性极小的块，分到不同的服务结点上，避免了某个结点负载过重的情况，相关性由请求块的相关性向量来表示.这里面有两个概念要解释：
+　　(1) 文件距离. 文件距离是指两个文件在其共同的所属的最小的子文件树中，两文件深度的分层加权差.加权的方法是以2的指数级递减；
+　　(2) 请求块的相关性向量. 请求块的相关向量是指被一个空闲时间间隔t划分成多个请求序列段的一个用户的请求，两个相邻段之间的文件距离之和组成的数据集合.
+　　利用这种特性能很好地保证用户的“局部性”，但一个负面的影响是请求块大小之间的差距变得很大，不利于负载平衡.因此，选择一个合适的时间间隔值是很重要的.
+　　另外两个现象是，HTML和图像文件占到被请求文件的90%，而90%的访问落在被访问文件集的10%内，而余下的文件集中有约1/3的文件仅被访问一次.这些数据对单一登录点的影响现在还很难讲会有什么作用，但对网络服务器软件的实现和更有效的服务无疑是非常重要的.
+
+5　机群网络服务器的性能测试
+　　测试系统的原理图如图3所示，机群系统由k个Server结点组成，每个结点上都运行相同的HTTP Server软件；Client端由n台机器组成，每个机器上都启动了m个Webclient进程，所有这些Webclient进程同时向PowerRouter发出HTTP请求.下面我们详细介绍一下具体的Webclient的HTTP请求的产生.
+
+图 3 测试系统的原理图
+　　(1) 由前面有关自相似过程的介绍，使用500～50000个具有Noah特性的ON/OFF信号源(αON=1.75，αON=1.25)的叠加得到的时间序列来表示用户请求的开始时刻.将这个序列依次分配给各个Webclient进程，让它们在指定的时刻发出HTTP请求，这时PowerRouter所看到的就是一个典型的具有自相似特性的服务请求序列.实际实现时，Webclient进程在某个时刻点发出请求，完成后睡眠到下一个时刻点，再发下一个请求.通过改变叠加信号源的个数，可以改变负载的大小.
+　　(2) 当前WWW服务器上的文件大小的分布具有Noah特性，而且由于Client端的Cache效应，实际在网上传输的文件大小的分布也具有Noah特性.由此我们对于每个Webclient发出的HTTP请求对应的文件大小组成一个Pareto分布的随机序列，在文献［10］中指出，0.4≤α≤0.63，考虑到一个网页内对象数目不断上升，而这些对象的大小却集中在平均大小的周围，因此，我们通过实验确定α=0.65，得到的数据能比较好地反映出这样的趋势.我们希望能在进行下一步工作时，能得到一些最新的trace，对这一参数进行调整.事实上，这一参数与具体的网页组织特点也有很大的关系.请求的内容以文件大小为标志.比如, 文件的大小为1.2K, 则相应的HTTP请求为 GET/file1200.html HTTP/1.0 .
+　　(3) 各个Webclient对应的文件请求序列的总集就是HTTP Server上的文件集，但如果这样，Server上的文件集将太大，我们必须将文件的大小归整处理(比如1203，1214，1208字节的文件都归整为file1200.html).与此同时，我们还要保持文件大小分布的Noah特性,因此我们不能简单的归整，而是要按比例进行.(如归整到/file800.html的文件有200个，归整到/file1200.html的文件有300个，而归整到/file10000的文件有20个，最后我们归整所得的文件集为800字节的10个，file800　0.html～file800　9.html；1200字节的文件15个，file1200　0.html～file1200　14.html，10000字节的文件1个，file10000　0.html).归整的尺度由文件集的大小决定，测试中文件集的大小为300MB.
+　　(4) 性能测试的指标
+　　平均反应时间：从平均的Client/Server连接建立时间，这个指标主要考察系统的延时.
+　　服务器带宽：即单位时间内服务器输出的数据量，这个指标主要考察系统的系统的吞吐率.
+　　服务器单位时间内平均处理的连接数.
+　　(5) 测试结果
+　　最后选择的测试系统如下：共有12台曙光天演服务器参与测试，其中PowerRouter为1台主频为166MHz的PowerPC604服务器，服务器端为3台主频为300MHz的PowerPC604，客户端为4台主频为200MHz的PowerPC604、一台166MHz的PowerPC604服务器和3台133MHz的PowerPC604服务器.所有的机器均运行AIX4.2.所有的机器均通过一个100Mbps的switch HUB相连.单一登录点分别采用轮转法来分派请求.测试结果如图4～图6所示，这些图的横坐标均为负载系数，纵坐标为相应的测试指标.这里的负载参数是负载基值（以秒为时间单位500个信号源所产生的负载量）的倍数.
+
+图4　平均连接时间随负载不断增大的变化情况
+
+图5　服务器吞吐率
+
+图6　单位时间服务器的处理平均连接数
+　　从图中可以看到，单一服务器结点和3个结点的情况下，3个测量参数均有明显的饱和点.而3个结点的服务器总的吞吐率和单位时间处理平均连接数与相应单一结点的数据相比有2.6～2.8的加速比，得到了相当好的性能，从这组数据可以看出系统的负载基本是平衡的.
+6　总结
+　　自相似过程很好地描述了网络服务的访问模型，因此也为开发、模拟和测试与网络服务相关的系统提供了一个很好的理论基础.简单实用地生成具有自相似性数据的方法排除了测试数据来源和环境模拟的难题.单一登录点是机群系统服务器实现单一系统映像和对用户的透明性的关键点，也是服务器性能的关键因素，对曙光开发的单一登录点Prouter是我们自相似过程研究工作的一个实践.我们只是使用自相似过程的特性构造PowerRouter系统的性能测试输入, 以此保证性能测试的有效性，针对PowerRouter的负载平衡.本文的数据生成和测试方法具有一般性，适用广泛的网络应用系统.
+　　本文的工作还有不尽完善的地方，服务器上的测试文件系统虽然进行了层次处理，但用户访问在短期内的文件之间的距离关系在模拟客户端的访问序列中没有体现出来.如果服务程序有对同一网页中包含的对象进行预取的功能，系统的性能将会不一样.
+作者简介：赵晓芳，女，1967年3月生，博士研究生，主要研究领域为机群系统.
+刘欣，男，1974年1月生，博士研究生，主要研究领域为并行计算.
+徐志伟，男，1956年9月生，研究员，博士生导师，主要研究领域为网络并行计算.
+作者单位：中国科学院计算技术研究所　北京　100080
+参考文献
+1　　Walter W, Verv P. Discussion of heavy tail modeling and teletraffic data. The Annals of Statistics, 1997, 25(5): 1805～1869
+2　　Crovella M E, Bestavros. Self-similarity in world wide web traffic evidence and possible causes. In: International Conference on Measurement and Modeling of Computer Systems, Philadelphia, 1996. 160～169
+3　　Laura B. The Internet Traffic Archive――EPA. ftp://ita.ee.lbl.gov/traces/epa-http.txt.Z
+4　　Fast V P. Approximate synthesis of fractional gaussian noise for generating self-similar network traffic. Computer Communication Review, 1997, 27(5): 5～18
+5　　Chris H. Tuning WEB Site Performance. http://www.networkmagazine.com/9711/11wan.htm
+6　　Walter W, Murad S T, Robert S et al. Self-similarity through high-variability: Statistical analysis of Ethernet LAN traffic at the source level. IEEE/ACM Trans on Networking, 1997, 5(1): 71～86
+7　　Vern P, Sally F. Wide-area traffic: The failure of possion modeling. IEEE/ACM Trans on Networking, 1995, 3(3): 226～244
+8　　Leland W E, Ott T T. UNIX process behavior and load balancing among loosely-coupled computers. Teletraffic Analysis and Computer Performance Evaluation. Amsterdam: Elsevier Science Publishers B U, 1986. 191～208
+9　　Joshua P. Hans-Werner B, Claffy K. The Internet Traffic Archive――SASC. ftp://ita.ee.lbl.gov/traces/sasc-http.txt.Z
+10 Carlos R C, Azer B, Mark E C. Characteristics of WWW Client-based Traces. Boston University, Tech Rep: BU-CS-95-010, 1995 
+原稿收到日期：1998-12-21；修改稿收到日期：1999-04-15.

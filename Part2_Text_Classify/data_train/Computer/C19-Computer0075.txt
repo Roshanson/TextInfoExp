@@ -1,0 +1,120 @@
+计算机应用
+Computer Applications
+1999年 第19卷　第8期 Vol.19　No.8 1999
+
+
+
+Visual FoxPro中的接口通信
+刘志刚　贾俊波
+　　摘　要　本文主要对Visual FoxPro 中接口通信问题进行了研究，介绍了实现Visual FoxPro接口通信的三种方法。
+　　关键词　接口通信，MSComm控件
+　　Visual FoxPro 是一个功能强大的数据库管理系统（DBMS），是可视化数据管理信息系统开发平台，对于开发中小型数据库管理系统来说，Visual FoxPro 无疑是一种简单易用的开发工具，但人们对于一些大量进行数据储存与交换的自动化系统开发，在采用Visual FoxPro 或FoxPro 时却非常谨慎，其中主要原因之一是：Visual FoxPro或 FoxPro 不支持指针功能，而且与下方接口通信实现起来比较困难，这大大妨碍了人们对Visual FoxPro 或 FoxPro的广泛使用。
+　　下面就Visual FoxPro或FoxPro的接口通信问题进行研究，给出实现接口通信的三种方法。
+1　利用API实现接口通信
+　　FoxPro的API功能实质上是利用C或C++编程后，使FoxPro可以调用编译好的程序并通过一定的规范协议传递参数进行开发，这大大扩展了 FoxPro的功能，但我们从接口通信这个角度来看，其实质仍是利用C或C++进行接口通信，因此这种方法不是FoxPro本身所具有的接口通信方法。要在FoxPro外部例程API编写C程序，必须有FoxPro库结构工具箱（LCK），LCK中含有PRO―EXT.X文件，它包含函数模型和各种FoxPro API定义，C或C++编写程序时，必须有“#include <pro―ext.x>”语句来作为C编程时调用头文件时的说明。在API库中应包含一个“FoxInfo”结构，用来指明FoxPro用户函数名、函数参数等内容，要运行库例程应该用下列语句来激活所调用的库例程：
+　　Set library to ［drive］ ［path］ library name
+　　利用FoxPro的API是用来实现比较复杂的接口功能，对于比较简单的接口功能，其实只需要把我们所要希望实现的接口通信功能用C或C++编程，编译为可执行文件（EXE文件），直接利用FoxPro提供RUN语句调用即可，如：
+　　Run *.exe /s/t
+Return
+　　这种功能主要适用于操作平台是DOS的情况下， 在Windows情况下，可以把编好的程序编译为Windows下的应用程序文件（APP文件），同理：
+　　Run *.app
+Return
+2　利用DDE实现接口通信
+　　动态数据交换（DDE――Dynamic Data Exchange）是Microsoft Windows的一种基本功能，DDE允许Windows应用程序之间通过某种通用语言或某种协议交换文本数据和图像数据，某种通用语言或某种协议实质上指的是一系列特定的DDE函数。在实现DDE功能时，一般要把启动的一方程序假定为“客户”，响应的一方程序假定为“服务器”，DDE功能实现的具体过程如下（以FoxPro作为DDE“客户” 向“服务器“请求数据）：
+　　DDEInitiate(): 打开初始化程序的通道；
+　　DDERequest():向“服务器”请求数据；
+　　DDETeminate():结束与“服务器”的程序的连接。
+　　其中在初始化通道时，通道号有几种选择，而且应该及时判断通信是否正常。采用WinWord作为模拟实验结果随机数据的存储地方，通过DDE连接通道送入FoxPro中的数据文件中，下面给出DDE的示意图：
+
+
+图1　DDE示意图
+　　DDE是Microsoft开发Windows时实现的一种基本功能，它主要是实现两个基于Windows不同应用程序之间的交换数据，这种方法明显的缺点是能够利用DDE进行通信的应用程序是被指定的，而且种类有限，更重要的是它不能直接通过串口和下方的设备（如单片机）进行通信，因此这种方法在实现下方通信时比较困难。
+3　利用MSComm控件通信
+　　继 FoxPro 2.5-2.6，Visual FoxPro 3.0后，Microsoft公司又推出了Visual FoxPro 5.0，在这个版本中Microsoft公司引入了OCX组件（现在又称ActiveX组件），ActiveX组件实际上是Windows 95本身自带的，它可以应用于Visual C++，Visual FoxPro，Visual Basic等应用程序语言中，这为程序的开发带来了很大方便。原先的ActiveX组件属于OLE控件范畴，ActiveX技术是建立在COM 规范的基础之上。COM规范是 Microsoft公司基于客户/服务器提供的一种应用同一标准，其基本思想是按照这种规范编写的程序可以互操作而不涉及开发语言、操作平台、网络地址等问题。ActiveX组件就是按这一规范编写好的一组控件，已初步实现了基于Windows平台的不同开发语言的通用，在ActiveX组件中，提供给用户一个通信控件（MSComm），这种控件可以直接实现与下方设备（如单片机）进行串口通信，而且应用起来比较简单。在下面例子中，利用MSComm控件与单片机进行串口通信，来控制开关的打开和关闭，以及判断开关的状态和存储相关数据等功能。
+　　首先在Visual FoxPro 5.0中添加ActiveX组件，根据提示选中MSComm控件添加到Visual FoxPro 5.0控件组中，其控件图标是一个电话形的位图，在表单的控件初始化事件中初始化该控件：
+Thisform.MSComm1.CommPort = 1
+&&选择串口1
+Thisform.MSComm1.Settings = "9600,N,8,1"
+&&设定通信时的波特率、校验位、数据位和停止位
+Thisform.MSComm1.InputLen = 0
+&&读取整个缓冲区
+Thisform.MSComm1.PortOpen = True
+&&打开通信口
+Thisform.MSComm1.InputMode=0
+&&设置通信输入模式为0模式
+　　在进行数据交换之前应规范单片机与主机之间通过串口通信时的通信协议，制定通信协议时最好简单明了，本设计中的数据传送格式为：
+
+起始位数据1　　……　　数据n检验位结束位
+
+　　下面给出实现的源程序：
+**表单激活时发生的事件**
+Thisform.activate()
+thisform.MSComm1.init()
+thisform.timer1.enabled=.t.
+Return
+**设置时钟,每隔 0.1 秒扫描串口状态一次并发出控制指令**
+Thisform.timer1.timer()
+Do while thisform.com―error=.t.
+&&在通信不正常下执行
+Wait window "通信错误！请重新连接"
+timeout 20 nowait at 25,85
+Do form chkcomm.scx
+&& 执行检查通信状态的表单
+If inkey()=27
+&& 如果按ESC键则跳出循环
+Exit
+Endif
+Wait clear
+Enddo
+If thisform.order―open=.t. 
+&&判断是否发出开的命令
+If thisform.comm―status=.f.
+&&判断通信的状态
+Exit
+Else
+Thisform.comm―open()
+Endif
+Endif
+If thisform.order―close=.t.
+&&判断是否发出关的命令
+If thisform.comm―status=.f.
+&&判断通信的状态
+Exit
+Else
+Thisform.comm―close()
+Endif
+Endif
+　…
+Return
+Thisform.comm―close()
+Parameter x, y
+&&传入开关的位置参数
+Private comm―return
+Thisform.com―sendstring=chr(5)+chr(x)+chr(y)
+&&置开始字符
+Thisform.com―sendcmd(7)
+&&发送字符
+Comm―return=substr(thisform.comm―return,3,2)
+Thisform.comsendstring=chr(7)+comm―return
+Thisform.com―sendcmd(7)
+　…
+Return
+Thisform.comm―open()
+Parameter x, y
+&&传入开关的位置参数
+Private comm―return
+Thisform.com―sendstring=chr(6)+chr(x)+chr(y)
+&&置开始字符
+Thisform.com―sendcmd(3) 
+&&发送字符
+　…
+Return
+　　 以上程序中，主表单设置了新的属性如：com―error，order―open，order―close，comm―status，com―sendstring等新属性，新方法如com―sendcmd等，这样被看作公共变量和公共函数方便地调用。在通信过程中，考虑到被控设备的状态获得和通信线路的传输速度，应给予适当的延时来满足传输需要。
+作者简介：刘志刚　硕士研究生。研究方向：工业监控。　贾俊波　副教授。从事高压电气试验
+　　　　　车研究及软件开发。
+作者单位：刘志刚　贾俊波　西南交通大学电气工程学院　四川．成都（610031）
+参考文献
+　［1］　钱清泉.微机监控系统原理.北京: 中国铁道出版社,1997
+　［2］　东　岳，等.Visual FoxPro 5.0 完全进阶手册. 北京:宇航出版社,1997
+　［3］　张清山,王　松.FoxPro 2.5-2.6 for Windows开发指南.成都:电子科技大学出版社,1995 
+　　收稿日期:1999-02-18

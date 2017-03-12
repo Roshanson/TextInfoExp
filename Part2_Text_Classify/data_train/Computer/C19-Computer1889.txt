@@ -1,0 +1,117 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000　Vol.19　No.4　P.42-44
+
+
+
+基于Ｂ／Ｓ和Ｃ／Ｓ的公众电子信箱系统
+王凯　秦耕　白庆华
+摘 要： 一个基于Ｂ／Ｓ和Ｃ／Ｓ的公众电子信箱系统的实现过程，对其涉及到的众多技术的结合与应用作了详尽的阐述。
+关键词： ＷＥＢ 公众电子信箱系统 浏览器／服务器 客户／服务器
+　　随着网络技术的日趋成熟和广泛应用，以计算机网络为基础的通信方式逐渐被人们所接受。从商务信息的交换、国外大学的申请到朋友之间的小叙，人们更多地利用Email来进行沟通，因为它有着传统邮政信件无法比拟的优点，如省时、省钱、省力等。
+　　Email的普及，尤其在商业机构、学校、政府机关等高素质人才集聚地的广泛应用，不断地推动着我们去改进一些相关服务以适应这种新的沟通方式，公众电子信箱便是对传统的公众意见箱的替代和改进。借助Email的便捷，这种新型的意见箱不再只是单向的信息收集，而是有着更为灵活的信息沟通与反馈功能。
+　　这里我们提供一种实用简便的系统设计实施方案，无论是政府、公司还是学校，只要有自己的局域网和1台NT服务器便可以马上开通公众电子信箱。考虑到要提供强大的信件处理功能和防止非法用户在网上的操作，我们采用Browse／Server和Client／Server相结合的方式构造系统，如图1所示。
+
+图1　系统的构造
+　　下面我们用已开发成功的同济大学经济与管理学院“院长信箱”为例介绍系统各部分实现的具体步骤（实例中的特定参数将用在后面的程序代码或设置中）。
+1　服务器设置
+　　我们选用Microsoft公司的系列产品作为本系统的开发平台。首先为作为服务器的计算机安装WindowsNT Server 4．0，这里NT自带的IIS（Internet Information Server）2．0和Microsoft mail邮局就可以作为本局域网的WEB服务器和Email服务器，然后安装SQLServer作为数据库服务器，最后在服务器的数据盘上建立2个共享目录D：＼web和D：＼post分别作为WEB文件和邮局的物理存放地。
+1．1　WEB服务器设置
+　　在服务器“开始”菜单中找到Microsoft Internet Server／Internet服务管理器，运行后双击WWW服务进入“WWW服务属性”窗口，在“目录”页中单击“添加”，进入“目录属性”窗口；在目录框填写D：＼web，选取“主目录”选项，访问栏增选“执行”项。回到“WWW服务属性”窗口后确认“默认文档”为default．htm。这时在局域网的任何1台计算机的浏览器URL地址中输入“http：／／服务器主机名或IP地址”都可浏览到服务器D：＼web＼目录下的default．htm文件（即本网站主页）。如果要用域名表示URL地址则需要启动NT中的域名服务器将服务器IP地址和域名映射起来，并在局域网内其它计算机的“控制面板／网络／TCPIP属性／DNS配置”的“DNS服务器搜索顺序”中添加本服务器的IP地址。
+1．2　数据库服务器设置
+　　在服务器“开始”菜单中运行“Microsoft SQL Server／SQL Enterprise Manager”，在Database Device中新建一个设备Semdevice，然后在Database中以Semdevice为设备名建一个数据库SEMMIS。数据库建好后还要将其设置成数据源，在“控制面板／ODBC”中添加“系统数据源（DSN）”，令Data Source Name为Sem，Server为Local，option中Database Name为SEMMIS。
+1．3　Email服务器设置
+　　Microsoft Mail是1个工作组邮件系统。要利用它收发Email首先要设置1个邮局并为邮局添加用户，然后为每个用户生成1个配置文件以指定信件和通信录的存放地。当用户选用此配置文件进入收件箱时就能看到自己的信箱内容。
+　　首先在服务器“控制面板”中打开“Microsoft mail邮局”，选择“创建新的工作组邮局”，逐步完成如下操作：将邮局路径设为D：＼post（注意先将其设为共享目录），系统将自动在其下创建1个名为wgpo0000的目录；指定管理员信息；在“邮局管理程序”中添加用户，其中用户“姓名”将作为收件箱中收信人／发信人标识，“邮箱”名则是应用程序向邮局发送邮件时用到的重要参数。
+　　为能在收件箱（或outlook）中看到邮局用户的信件还要设置“配置文件”。用户在哪台计算机上收发Email，就要在哪台计算机上为其设置配置文件。但要注意的是同一邮局用户在不同计算机上的配置文件要使用同1个个人文件夹文件（．pst）和个人通信录文件（．pab）。配置文件的设置过程如下：在“控制面板”中打开“电子邮件”，单击“显示配置文件”，单击“添加”，进入Microsoft Exchange Setup Wizard窗口，选择“Microsoft Mail”，如果没有安装Exchange Server也没有Internet上的Email帐号，则将这二项取消。然后指定1个配置文件名；以服务器上的D：＼post＼wgpo0000作为邮局路径，在用户列表中选取1个用户名，输入正确的密码后为其指定个人通信录和个人文件夹文件的路径及名称，路径可使用系统提供的D：＼Exchange＼，名称建议使用可识别文件名（系统缺省设置文件名均为mailbox），如为用户sa建立sabox．pab和sabox．pst以便区分同1台计算机上多个用户的个人通信录和个人文件夹。
+2　数据库建立
+　　运行PowerBuilder，在DB profile中新建1个MSS MS SQL Server的配置文件，填写如下内容：Connection页Profile Name为“SemMis”，server为服务器名，LoginID为“sa”（系统默认用户），Database为“SEMMIS”；System页PowerBuilderCatalog Table Owner为“dbo”（系统默认值）。配置文件生成后单击Connect，这时打开PB中的Database就进入了SEMMIS数据库。新建1个名为mail的表，字段设置如下：
+　　来信日期：mail＿date
+　　来信标题：title
+　　来信内容：send＿con
+　　来信人姓名：sender＿name
+　　来信人Email地址：sender＿adr
+　　回信内容：answer＿con
+　　标志位：flag（0：最新信件，1：待处理信件，2：公开发布信件，3：回信保留信件）
+3　WEB站点建设
+　　“院长信箱”作为本院网站的2级链接主页提供二项服务：（1）输入及发送给院长的信件；（2）浏览公开发布的信件。我们利用IIS提供的数据库连接器（IDC）实现数据的传递和页面的动态更新。IDC使用二类文件控制如何访问数据库及如何构造输出WEB页面，这些文件是Internet数据库连接器文件（．idc）和HTML扩展名文件（．htx）。数据库连接器文件既包含连接适当ODBC数据源和执行SQL语句所必需的信息，也包含HTML扩展名文件的名称和位置。HTML扩展名文件是HTML文档的模板，HTML文档用IDC将数据库信息并入之后返回WEB浏览器。本例中各文件调用关系和数据传输关系如图2所示。
+
+图2　文件调用和数据传输
+　　下面给出各文件的说明和部分代码。
+　　文件CI2001．htm是院长信箱主页。用户要浏览公开发布的信件，就调用CI2002．idc；用户要给院长写信就链入CI2003．htm。
+　　文件CI2002．idc负责从数据库中读出可公开发布的信件（flag为“2”），并将所得数据与HTML扩展文件CI2002．htx合并传到WWW服务返回给用户。代码如下：
+　　datasource：Sem ／／在ODBC中设置的数据源名称
+　　template：ci2002．htx ／／数据返回所使用的HTML模板
+　　username：sa ／／数据库登录使用系统默认的用户ID
+　　SQLStatement：select title，send＿con，answer＿con
+　　＋from SemMis．DBO．mail ／／数据库名．所有者．表名
+　　＋where flag like ′2′
+　　文件CI2002．htx是含附加标志＜％％＞的HTML文档，．idc文件用此形式将动态数据添加到文档，部分代码如下：
+　　＜％begindetail％＞ ／／．htx格式关键字
+　　　／／这之间将按规定的数据格式从第1条到最后1条
+　　　　　　　　　　　　／／循环显示满足条件的记录
+　　＜％title％＞ ／／信件标题
+　　＜％send＿con％＞ ／／来信内容
+　　＜％answer＿con％＞ ／／回信内容
+　　＜％enddetail％＞ ／／．htx格式关键字
+　　文件CI2003．htm是1个带若干输入框的超文本文件，输入框的文本描述为
+　　＜input type＝″text″ name＝″sender＿name″…＞
+　　＜input type＝″text″ name＝″sender＿adr″…＞
+　　＜input type＝″text″ name＝″title″…＞
+　　＜textarea rows＝″10″ name＝″send＿con″ cols＝″72″…＞
+　　文件CI2004．idc负责把在CI2003．htm页面输入的字段内容写入数据库，并以CI2004．htx作为信件接收回执页面的模板。其代码如下：
+　　datasource：Sem
+　　username：sa
+　　template：ci2004．htx
+　　sqlstatement：
+　　＋insert into SemMis．DBO．mail（mail＿date，flag，
+　　　　　　　sender＿name，sender＿adr，title，send＿con）
+　　　　　　　　　　　　　　　／／向数据库插入1条记录
+　　＋values（getdate（），′0′，′％sender＿name％′，′％sender＿adr％′，′％title％′，′％send＿con％′）
+　　／／取系统时间作来信日期，以“0”表示此记录为最新，
+　　／／其它用％％括起的是CI2003．htm文件各输入框name
+　　　　　　　／／变量名，传递的是用户输入的内容。
+　　文件CI2004．htx通知用户来信已被接收，其中的动态信息是将IDC文件中传递的变量以HTML文本格式显示，如：用＜％idc．sender＿name％＞代表CI2004．idc中的％sender＿name％，即CI2003．htm中name为sender＿name的输入框值。
+4　应用程序编写
+　　利用PowerBuilder 6．0可以快速开发出1个信件处理程序。本例中我们将查看信件和分类处理结合在一起，将所有来信分为4种状态（由flag值标识），针对每1种状态提供相应的处理功能。用户界面及说明如图3所示。
+
+图3　用户界面说明
+　　（1）最新来信：查看自网上发来的最新信件，视不同情况而做暂存（转入有待处理状态）、回信、删除处理。
+　　（2）有待处理：对以前收到但没有及时处理（或没处理完）的信件做发送（转入回信保留状态）、回信、删除处理。
+　　（3）回信保留：对已回复过的信件做发布（转入公开发布状态）、重写、删除处理。
+　　（4）公开发布：对可在网上浏览到的信件做撤消（转入回信保留状态）、重写、删除处理。
+　　其中回信和重写都会调用1个回信窗口，并提供按标题查询及转拷以往信件内容的功能。怎样设计和实现这些信件处理功能可按需调整，这里就不再赘述了。下面我们着重介绍一下如何利用PowerBuilder 6．0中提供的mail函数进行邮件的发送。
+　　令院长个人在Microsoft mail邮局的用户信息为：姓名（院长），邮箱（master），密码（semmaster）。下面的程序运行后将在收件人（由程序中的变量指定）的信箱中出现发件人为“院长”的邮件。在应用程序“发送”按钮的clicked事件中加入如下代码：
+　　… …
+　　mailSession mSes ／／会话对象
+　　mailMessage mMsg ／／邮件数据结构
+　　… …
+　　mSes＝CREATE mailSession／／创建1个会话对象
+　　mRet＝mSes．mailLogon（″master″，″semmaster″，mailNewSession！）／／以院长的“信箱”和“密码”登录
+　　IF mRet ＜＞mailReturnSuccess！THEN
+　　　　MessageBox（″邮件″，′登录失败．′）
+　　　　RETURN
+　　END IF
+　　mMsg．Subject＝信件标题
+　　mMsg．notetext＝信件内容
+　　mMsg．Recipient［1］．Name＝收件人 ″信箱″ 
+　　　／／一封信可以有1组接收器（表示收件人地址信息的／／数据结构），这里给第1个接收器的Name赋值
+　　mRet＝mSes．mailAddress（mMsg）／／检测收件人地址的有
+　　　　　　　　　　　　　　　　　　　　　　　　／／效性
+　　IF mRet＜＞mailReturnSuccess！THEN
+　　　　MessageBox（″邮件″，′邮件地址无效．′）
+　　　　RETURN
+　　END IF
+　　mRet＝mSes．mailSend（mMsg）／／发送邮件
+　　IF mRet＜＞ mailReturnSuccess！THEN
+　　　　MessageBox（″邮件″，′发送邮件失败．′）
+　　　　RETURN
+　　END IF
+　　mSes．mailLogoff（）
+　　DESTROY mSes
+　　… …
+　　公众电子信箱系统虽然涉及到多种计算机网络及应用技术，但是按照本文提供的各步骤进行仍能方便而快速地实现这一系统。如今网络技术已发展到相对成熟的阶段，各单位纷纷建立了自己的Intranet。要使Intranet真正发挥企业内部沟通和信息共享的作用，就要从各个方面来利用它，公众电子信箱便是一个很好的应用。我们期待能建立更多的院长信箱、经理信箱、市长信箱，创建出更多更畅通的民主沟通渠道。
+王凯（上海同济大学经济与管理学院200092）
+秦耕（上海同济大学经济与管理学院200092）
+白庆华（上海同济大学经济与管理学院200092）
+收稿日期：１９９９－１０－１６

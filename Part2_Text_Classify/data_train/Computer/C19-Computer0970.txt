@@ -1,0 +1,77 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+一类FMS的最佳活Petri网模型的综合
+邢科义　李俊民　胡保生
+　　摘　要　利用Petri网为一类柔性制造系统建模，并讨论避免系统死锁问题.通过Petri网模型的结构分析，证明了系统产生死锁的一个充分必要条件.给出了避免死锁的最佳控制器，它可以通过给系统的Petri网模型增加一些新的位置与相应的弧来实现.从而导出了这类制造系统的最佳活Petri网模型.
+　　关键词　柔性制造系统，Petri网，避免死锁控制.
+SYNTHESIS OF OPTIMAL LIVE PETRI NET
+MODELS FOR A CLASS OF FMS
+XING KEYI　LI JUNMING 
+(Dept. of Applied Mathematics, Xidian University, Xiàn　710071)
+HU BAOSHENG
+(Systems Engineering Institute, Xiàn Jiaotong University, Xiàn　710049)
+Abstract　In this paper, the Petri net model for a class of flexible manufacturing systems is constructed, and the deadlock problem in FMS is discussed. We prove a necessary and sufficient condition for liveness of system model and present and optimal deadlock avoidance controller which is a Petri net. The controlled closed-loop systems may be modeled by live Petri nets.
+Key words　FMS, Petri net, deadlock avoidance control. 
+1　引言
+　　在柔性制造系统(FMS)中，各种工件的加工过程是并行进行的，这些并行加工过程竞相利用有限的系统资源.如不加限制，这种竞争关系可能会导致系统死锁，使某些加工过程永远不会进行完毕.在FMS中，死锁是应首先解决的问题.文［1－3］对一类FMS进行Petri网建模，其中文［1，2］给出了避免死锁的充分性算法，文［3］给出了避免死锁的最优控制策略.文［4］则对更大一类FMS的Petri网模型给出了一个保守的避免死锁的控制策略.本文考虑与文［4］相同的一类FMS，用Petri网为系统建模，给出系统死锁的充分必要条件，提出一个避免死锁的最优控制策略.这一策略可以通过在Petri网模型上增加一些(控制)位置和相应的弧来实现.从而给出了系统活的Petri网模型的综合方法.
+2　加工系统的Petri网模型
+　　Petri网是一个三元组G=(P,T,F),其中P为位置集，T为变迁集，F(P×T)∪(T×P)为弧集.有关Petri网的定义及运行规则等，请参阅文［5］.设x∈P∪T,令・x={y∈P∪T｜(y,x)∈F},x・={y∈P∪T｜(x,y)∈F}.具有初始标识m0的二元对(G，m0)称为标记Petri网.如果m(p)≥1,p∈・t,记作m［t＞，称变迁t∈T在标识m下使能.在m下引发t后产生新的标识m′，记作m［t＞m′.用R(G，m0)表示 m0可达标识之集.设XP，m∈R(G,m0),令m(X)=m(p).如果在R(G，m)中不存在使t使能的标识，称变迁t在标识m下是死的.如果在每个m∈R(G，m0)下，t都不是活的，称t是死的.如果每个变迁都是活的，称标记网(G，m0)是活的.
+　　本文讨论的FMS是具有n种资源r1，…，rn，能加工k种工件的制造系统.工件的一种加工过程是由一系列操作组成；一种工件可以有几种加工过程；每个操作就是资源的一次利用.假设每个操作仅利用一个资源，工件的加工过程可用Petri网建模，即用一个位置代表一次操作，用变迁的引发表示前一操作的结束、后一操作的开始.用位置pi0存放要加工或加工完的第i种工件.故第i种工件的加工Petri网是一个强连通状态机Ni=(Pi∪{pi0},Ti,Fi),其中Pi≠是操作位置集，pi0Pi,
+Ni的每个有向圈都包含pi0.
+　　对每种资源r设置一个位置，仍记为r.用R记所有资源位置之集.当操作p∈Pi利用资源r时，增加弧(r,t)，t∈・p和(t,r)，t∈p・，则系统的Petri网模型为G=(P∪P0∪R,T,F)，其中P=Pi,P0={p10,p20,…，pk0},T=Ti (k为工件种类个数)，F为所有弧之集.
+　　例1.　在具有5种资源r1,r2,…，r5,加工两种工件的系统中，第一种工件的加工资源序为r1r2r1r2或r1r3r4r2，第二种工件的资源序为r5r4r3.则两种工件的加工Petri网与系统的Petri网模型可由图1(a),(b),(c)分别表示.
+
+图1　(a)，(b)为两种工件加工过程Petri网，(c)为简单加工系统Petri网
+　　设系统Petri网具有可行的初始标识m0，即当p∈P0∪R时,m0(p)≥1；当p∈P时，m0(p)=0.为方便计，用(p)t,(r)t,t(p)和t(r)分别表示・t∩P,・t∩R,t・∩P和t・∩R.这些记号可扩展到集XT上，如(r)X=(r)t等.
+3　系统死锁的条件
+　　设m∈R(G,m0),用D(m)表示在m下所有使m((p)t)≥1的死变迁t的集合.则D(m)∩・P0=.
+　　定理1.设(G,m0)=(P∪P0∪R,T,F,m0)是系统标识Petri网模型，m∈R(G,m0).如果D(m)≠，则存在非空集DD(m)\(・P0∪P・0),使得(r)D=D(r),((p)D)・D,而且m((p)D)=m0((r)D).
+　　证明.设r∈(r)D(m),则存在t∈D(m)使得(r)t=r，故m(r)=0.令T1={t∈T｜m((p)t)≥1, t(r)=r},则m((p)T1)=m0(r),T1D(m);否则必有ti∈T1，m′∈R(G,m)使得m′［ti＞m″.故m″(r)=1,m″［t＞，矛盾.由ti∈T1≠知r=t(r)i∈D(m)(r),故(r)D(m)D(m)(r).
+　　由D(m)≠ 得D1D(m)\P・0≠.当(r)D1=D1(r)时取D=D1.现设(r)D1≠D1(r),任取r∈D(r)1\(r)D1,令D2=D1\{t∈D1｜t(r)=r},则D2≠.当(r)D2≠D(r)2时，再重复以上过程.因资源有限，则存在有限非空集列DkDk-1…D1D(m),使得Di≠，(r)Dk=D(r)k.取D=Dk,由D(m)的定义，有m((p)D(m)∩(p)(・r))=m0(r),r∈(r)D(m).设r∈(r)D=D(r),t∈D(m),t(r)=r,则t∈D,m((p)D)=m0((r)D).
+　　现证((p)D)・D.设t∈D,当｜((p)t)・｜=1时，((p)t)・=t∈D.设｜((p)t)・｜≥2,t(r)=r,t1≠t,t1∈((p)t)・,则t1∈D(m);否则，有m′∈R(G,m),使得m′［t1＞m″,m″(r)=1.故有t′∈D,(r)t′=r,m″［t′＞，矛盾.由t1∈D(m)得m((r)t1)=0.设(r)t1=r1,则存在t2∈D(m),t(r)2=r1,
+(r)t2=r2,而且m((p)D(m)∩(p)(・r2))=m0(r2).类似地，存在t3∈D(m),t(r)3=r2,(r)t3=r3使得m((p)D(m)∩(p)(・r3))=m0(r3),….重复分析，得D(m)中的变迁列t1,t2，…，使得t(r)i+1=ri,
+(r)ti=ri,m((p)D(m)∩(p)(・ri))=m0(ri).则存在整数k,l,k＞l,rk=rl.于是ri∈(r)D(m)∩D(m)(r),ti∈D.故((p)D)・D.
+　　令V(G)={DT\(・P0∪P・0)｜(r)D=D(r),((p)D)・D}.
+　　在图1(c)所示的Petri网中，V(G)={D1,D2,D3,D4,D5},其中D1={t2,t3},D2=｛t6,t10｝，D3={t1,t2,t3,t5,t6,t7,t10},D4={t1,t2,t3,t5,t6,t7},D5={t1,t2,t5,t6,t10}.
+　　推论1.系统标记Petri网模型(G,m0)是活的充要条件为m((p)D)≤m0((r)D)-1,m∈R(G,m0),D∈V(G).
+　　设D∈V(G),令I(D)=・((p)D)\D,H(D)=・(D(p)\(p)D)∩D.称V1=｛D1,…，Dn｝V(G)为W链；若Dk∈V1,存在Di,Dj∈V1,ti,tj∈T使得ti∈Di∩I(Dk),tj∈I(Dj)∩Dk,并称(r)I(D1)∩…∩(r)I(Dn)中的资源为关键资源.
+4　避免系统死锁的Petri网控制器
+　　考虑可能出现死锁的系统标记Petri网(G,m0).这里要为系统设计一个控制器，以保证在受控系统中不会出现死锁.由推论1知，必须使得对任何D∈V(G)和任何可达标识m都有m((p)D)≤m0((r)D)-1.这是受控系统活的必要条件，但不是充分的.当D1,D2∈V(G),D1D2,(r)D1=(r)D2时，m((p)D2)≤m0((r)D2)-1意味着m((p)D1)≤m0((r)D1)-1.令V′={D1∈V(G)｜存在D2∈V(G),D1D2,
+(r)D1=(r)D2}.如果D0,D∈V(G),D0D,(D\D0)(r)∩(r)D0=,则m((p)D0)≤m0((r)D0)-1 意味着 m((p)D)≤m0((r)D)-1.令V″={D∈V(G)｜存在D0∈V(G),D0D,使得(D\D0)(r)∩(r)D0=｝,
+(G)=V(G)\(V′∪V″).
+　　情形A.每种关键资源至少有两个资源.
+　　定义1　设(G,m0)是系统标记Petri网模型.控制器C是一个标记Petri网C=(Pc,T,Fc,mc)，其中Pc={pD｜D∈(G)},Fc={(pD,t)｜t∈I(D),D∈(G)}∪{(t,pD)｜t∈H(D),D∈(G)}, mc(pD)=m0((r)D)-1.
+　　受控系统是C和(G,m0)的合成网，记作(Gc,mco)=(P∪P0∪R∪Pc,T,F∪Fc,mco),其中 mco(p)=m0(p),p∈P∪P0∪R,mco(p)=mc(p),p∈Pc.在(Gc,mco)中，用(c)t和t(c)分别记・t∩Pc和t・∩Pc.设m∈R(Gc,mco),令Dc(m)={t∈T｜t在m下是死的而且m((p)t)≥1}.
+　　引理1.设m∈R(Gc,mco),如果Dc(m)≠，则存在t∈Dc(m),(r)t=r及pD∈(c)t使得m(r)≥1,m(pD)=0.(证明从略)
+　　定理2.设在系统Petri网(G,m0)中，对每种关键 资源r,m0(r)≥2,则C是避免系统死锁的最优控制器，即C对(G,m0)的限制是最小的.从而(Gc,mco)是系统的最佳活的Petri网模型.
+　　证明.对每个D∈(G),限制(p)D中托肯数不超过m0((r)D)-1是保证(Gc,mco)活的必要条件.而C仅使这一必要条件成立，故若(Gc,mco)是活的，则C就是最小限制的避免死锁控制器.因此这里仅需证明(Gc,mco)是活的.
+　　设m∈R(Gc,mco)使Dc(m)≠，则由引理1，存在t1∈Dc(m)及pD1∈(c)t1使得m((r)t1)≥1, m(pD1)=0.设(r)t1=r1,则m((p)D1)=m0(D1(r))-1, S(r1)={t∈D1｜(r)t=r1}≠.注意t1D1,则可证明存在t2∈S(r1)使得m((p)t2)≥1；否则，在D1\(S(r1)∪S1)中有D∈V(G)使得DD1, m((p)D)=m0((r)D),其中S1={t∈(I(D1)(p))・｜t(r)=r1},这是不可能的.由m((p)t2)≥1,m((r)t2)=m(r1)≥1及t2∈Dc(m)知，有D2∈(G)使得t2∈I(D2), m((p)D2)=m0((r)D2)-1.类似从t1和D1导出t2和D2，可从t2和D2导出t3和D3，使得t3∈I(D3),m((p)D3)=m0((r)D3)-1.重复分析得到(G)的一个序列D1,D2，…，使得r1=(r)ti∈(r)I(Di),i=1,2,….则在D1,D2,…，中必存在W链，设为V1={D1,…,Dk},r1是关键资源，m0(r1)≥2,故存在u1∈D1使得 u(r)1=r1, m((p)u1)≥1,u1∈Di, i=1,2,…，k，(r)u1=r2∈D(r)1∩…∩D(r)k, m(r2)=0.若u∈D1, u(r)=r2, m((p)u)＞0, 则 u∈Di, i=1,…，k. 因r∈D(r)1, 存在资源列r1,r2,…,rl=r和变迁列t1,t2,…,tl使得 ri=t(r)i,(r)ti=ri+1,m((p)ti)≥1, 故D(r)1D(r)2∩…D(r)l,{t∈D1｜m((p)t)≥1}D2∩…Dl. 同理，D(r)iD(r)1∩…∩D(r)i-1∩D(r)i+1∩…∩D(r)l,{t∈Di｜m((p)t)≥1}D1∩…∩Di-1∩Di+1∩…∩Dl.但t2∈D1,t2∈I(D2), m((p)t2)＞0, t2D2, 矛盾表明Dc(m)=, (Gc,mco)是活的.
+　　情形B. 有关键资源r, m0(r)=1.
+　　称D∈(G)与W链{D1,…,Dl}无关，如果D∩Di=,(r)D∩(r)Di=,i=1,2,…,l. 于是(G)可分为两部分，即1={D∈(G)｜D与任何W链无关}和2=(G)\1.
+　　定义2.设(G,m0)是系统标记Petri网模型，定义控制器C′为一标记Petri网C′=(Pc,T,Fc,mc)，其中Pc={pD｜D∈(G}是控制位置集，Fc={(pD,t)｜t∈I(D),D∈(G)}∪{(t,pD)｜t∈H(D),D∈(G)}, mc(pD)定义为 (1)当D∈1时，mc(pD)=m0((r)D)-1,令L(D)=m0((r)D);(2)在2上，mc是递归定义的.当D∈2不是2中两个元素的并时，mc(pD)=L(D)-1, L(D)=m0((r)D).当D=Di, Di∈2, l≥2,mc(pDi)已有定义时，mc(pD)=L(D)-1, 其中L(D)=((p)D),是(G,m0)的一个使L(D)取得最大值而满足((p)Di)≤L(Di)-1 (i=1,…,l)的可达标识.
+　　受控系统是C′和(G,m0)的合成网(G′c,m′co)=(P∪P0∪R∪Pc,T,F∪Fc,m′co),其中m′co(p)=m0(p),P∈P∪P0∪R, m′co(p)=mc(p), p∈Pc. 
+　　定理3.设(G,m0)是系统标记Petri网模型，则(G′c,m′co)是活的.证明与定理2类似，从略.
+　　例2.考虑图1(c)所示的Petri网G，取初始标识m0(p)=5,p∈R,m0(p)=20,p∈P及m0(p)=0, p∈P. V(G)={D1,…,D5}, D4D3,(r)D3=(r)D4.D2D5, (D5\D2)(r)∩(r)D2=, 故(G)={D1,
+D2,D3},避免系统死锁的最佳控制器是如图2所示的标记Petri网.
+
+图2　Petri网控制器
+5　结论
+　　本文基于Petri网模型讨论在一类FMS中避免死锁的问题.给出了系统死锁的充分必要条件.提出了一种基于Petri网模型综合避免系统死锁控制器的新方法.所得到的控制器不仅保证了受控系统的活性，而且允许系统资源的极大利用.这种控制器的另一特点是它可以通过给系统的Petri网模型增加一些控制位置和相应弧来实现，从而受控系统具有活的Petri网模型.虽然综合控制器算法的复杂性与(G)有关，但这种综合过程是离线进行的，而且仅进行一次，故复杂性问题并不是本文方法的障碍.
+1)国家自然科学基金和西安交通大学机械制造系统工程国家重点实验室基金资助课题.
+作者简介：邢科义　1957年出生，1981年毕业于西北大学，1994年在西安交通大学获博士学位.现为西安电子科技大学副教授.研究方向为离散事件动态系统理论、Petri网理论与应用.
+　　　　　李俊民　1965年出生，1989年在西安电子科技大学获硕士学位.现为西安交通大学博士研究生.主要研究方向为自适应控制、动态系统优化控制与智能控制.
+　　　　　胡保生　西安交通大学教授、博士生导师，机械制造系统工程国家重点实验室学术委员会主任，IEEE高级会员，《Mathematical Review》评论员.
+作者单位：邢科义、李俊民：西安电子科技大学应用数学系　西安　710071)
+　　　　　胡保生：西安交通大学系统工程研究所　西安　710049
+参考文献
+［1］　Banaszak Z A, Krogh B. Deadlock avoidance in flexible manufacturing systems with concurrently competing process flows. IEEE Trans. Robotics and Automation, 1990, 6(6):720-734.
+［2］　Hsieh F S, Chang S C. Dispatching-driven deadlock avoidance controller synthesis for FMS. IEEE Trans. Robotics and Automation, 1994, 10(2):252-261.
+［3］　Xing K Y， Hu B S, Chen H X. Deadlock avoidance policy for FMS, in Petri nets in flexible and agile automation, M. C. Zhou(Ed), Boston: Kluwer Academic, 1995, 239-263.
+［4］　Ezpeleta J, Colom J M, Martinez J.A Petri net based deadlock prevention policy for flexible manufacturing systems. IEEE Trans. Robotics and Automation, 1995, 11(2):173-184.
+［5］　Peterson J L. Petri网理论与系统模拟，吴哲辉译.徐州：中国矿业大学出版社，1989.
+收稿日期　1995-07-13

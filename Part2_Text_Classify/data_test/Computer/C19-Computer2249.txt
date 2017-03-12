@@ -1,0 +1,79 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000 Vol.17 No.3 P.101-102
+
+
+
+
+利用数据管道技术实现管理网络的资源共享
+石晓龙　吕汉兴
+摘　要：根据作者在数据库管理系统设计中遇到的实际问题，讨论了企业网中子系统数据资源的共享问题及其实现方案，并结合系统方案的具体实施介绍了数据管道技术的应用。
+关键词：企业网 数据库管理系统 ODBC 数据管道
+　　在进行大型数据库管理系统的设计与开发时，经常会遇到这样的情形：用户已经使用了某些专用的商业化管理软件或是使用了一些自己开发的小系统，并要求在不改变原有系统正常运行的情况下获得这些数据管理系统的数据。
+　　通过开放式的数据库连接(ODBC)我们可以使用标准的SQL语句访问提供了ODBC驱动程序的特定的数据库。然而如果客户端设计为直接通过ODBC访问这些独立子系统并获取所需的数据的查询方式，则显然将遇到以下几个难点：
+　　(1)各子系统数据库均有其独立的数据结构、数据类型，因而难以在客户端按照用户的要求实现数据查询。
+　　(2)由于不同的子系统采用了不同的数据库，在访问各类数据时必须频繁地同各类数据库建立连接。因而增加了系统开销，降低了管理网络的工作效率。
+　　(3)有些单机的子系统采用的是不支持网络访问的本地数据库，无法将其作为数据库服务器访问。
+　　由于上面所讲的这些问题(特别是第三点是无法克服的)，我们决定不采用通过ODBC直接访问的方式，而采取以下方式来设计系统。
+　　通过使用数据管道技术将所需的各子系统的数据分别灌入数据库服务器，这样做首先解决了第三点无法通过网络使用ODBC直接访问单机子系统的问题。通过对数据灌入的设计可以屏弃原有数据库的结构，而完全按照用户的要求来选择所需要的数据，并建立相应的数据库结构，从而为客户端软件的设计提供了极大的便利。同时在用户访问这些子系统数据的时候，只需要同我们的数据库服务器建立一次连接就可以访问所有子系统中各相关的数据，同直接通过ODBC连接子系统数据库相比大大减少了系统开销，从而提高了网络的工作效率。
+　　下面通过一个管理网络软件设计的实例来谈谈这种设计思想的具体实现。
+　　在武汉管道煤气公司的信息管理系统设计中，按照用户要求它必须包含财务、人事、材料、设备、生产等等子系统的信息。但是公司已经有了自己独立的财务、人事、设备、材料系统。其中财务系统使用的是用友软件，人事系统使用的是人事部门统一规定的人事管理软件，材料系统则使用的是一个自己用FOXPRO 2.5开发的管理软件，设备系统是购买的专用设备管理软件。而且设备、人事系统均为单机版。
+　　我们使用的是前台PB后台SQL SERVER数据库服务器的开发平台。对于各子系统均提供一套用PB开发的客户端软件，使用PB的数据管道功能在客户端实现数据向数据库服务器的灌入。
+　　在程序中使用PB提供的数据管道来实现数据库之间的数据转换与传输十分方便，首先必须创建一个标准的PB类用户对象，这个标准类用户对象是对PB数据管道系统对象的继承。
+
+　　如上图，选择OK即完成了数据管道用户对象的创建。选择存盘输入用户对象的名称，存储完毕后就可以在程序中使用此用户对象。
+　　在使用数据管道进行数据的转换与传送之前，必须通过ODBC分别与作为源的本地的数据库以及作为目的的数据库服务器建立连接。具体编程如下：
+　　首先定义两个事务型全局变量：
+transaction client_ trans, server_trans
+　　在数据灌入窗口的open事件中分别与源数据库、目的数据库连接的程序：
+client_trans=CREATE TRANSACTION
+server_trans=CREATE TRANSACTION
+//定义源数据库参数
+client_trans.DBMS=profilestring("pipeline.ini", "client", "DBMS","")
+client_trans.Database=profilestring("pipeline.ini", "client", "Database","")
+client_trans.LogID=profilestring("pipeline.ini", "client", "LogID", "")
+client_trans.LogPass=profilestring("pipeline.ini", "client", "LogPass","")
+client_trans.ServerName=profilestring("pipeline.ini", "client", "ServerName","")
+client_trans.UserID=profilestring("pipeline.ini", "client", "UserID", "")
+client_trans.DBPass=profilestring("pipeline.ini", "client", "DBPass", "")
+client_trans.Lock=profilestring("pipeline.ini", "client", "Lock", "")
+client_trans.DbParm=profilestring("pipeline.ini", "client", "DbParm", "")connect 
+using client_trans; //与源数据库建立连接
+//定义目的数据库参数
+server_trans.DBMS=profilestring("pipeline.ini", "server", "DBMS", "")
+server_trans.Database=profilestring("pipeline.ini", "server", "Database","")
+server_trans.LogID=profilestring("pipeline.ini", "server", "LogID", "")
+server_trans.LogPass=profilestring("pipeline.ini", "server", "LogPass","")
+server_trans.ServerName=profilestring("pipeline.ini", "server", "ServerName","")
+server_trans.UserID=profilestring("pipeline.ini", "server", "UserID", "")
+server_trans.DBPass=profilestring("pipeline.ini", "server", "DBPass","")
+server_trans.Lock=profilestring("pipeline.ini", "server", "Lock","")
+server_trans.DbParm=profilestring("pipeline.ini", "server", "DbParm","")
+connect using client_trans; //与目的数据库建立连接
+settransobject(dw_l, d_trans)
+　　上述源、目的数据库的ODBC参数我们可以在32位ODBC数据源管理器中获得，若子系统的客户机ODBC管理器上没有此数据源，则必须安装相应数据库的ODBC驱动程序，并在其32位ODBC数据源管理器中建立相应的数据源。
+　　然后，就可以在PB中定义将要在程序中应用到的数据管道，建立一个新的数据管道分别与上述源数据库、目的数据库相连接。选择所要传输的数据表，并选择所需要的字段，定义目的数据库表中字段的数据类型。同时选择合适的灌入方式，在这里PB提供了创建、更新、刷新、追加、提交五种灌入方式，提交的记录条数一般选择全部(all)。
+　　完成上述工作后，就可以使用PB提供的函数操作数据管道了。PB提供了三个对数据管道进行操作的函数：start( )；repair( )；cancel( )。分别用于启动、修正、取消数据管道的操作。
+　　启动数据管道的程序如下：
+int pipemsg
+long stime, etime
+my_pipeline cstrans //my_pipeline为自定义的数据管道用户对象
+cstrans=create my_pipeline
+cstrans.dataobject="client_server" 
+　　　　　　　　　　　//client_server为用户定义的数据管道
+stime=cpu( )　　　　　//获取数据传输执行时间
+pipemsg=cstrans.start(server_trans, client_trans, dw_1)
+　　　　　　　　　　　　//启动数据管道
+etime=cpu( )
+trans_time.text=string((etime_stime)/1000,"##0.0") + " secs"
+　　当执行数据管道出错时，可以使用repair( )函数通过全局事务变量server_trans连接目的数据库，repair( )函数通过获取出错信息窗口的修正信息来更新目标数据库。运用实例如下：
+cstrans.repair(server_trans)
+　　当然，通过cancel( )函数我们可以随时停止一个正在执行的数据管道的运行：
+cstrans.cance1( )
+　　通过使用数据管道将各子系统数据库的数据灌入数据库服务器，管理网络中的各个PB客户端只需要访问SQL Server数据库服务器就可以迅速获得财务、人事、设备、材料等各个子系统的数据。通过规定定期的数据灌入，保证了服务器上数据的有效性。实践证明，通过数据管道解决企业管理网络中共享各子系统数据的问题是十分方便而且有效的。
+石晓龙(华中理工大学自控系 武汉 430074)
+吕汉兴(华中理工大学自控系 武汉 430074)
+参考文献
+l SQL Server 6.5开发指南
+2 侯志平, 徐常胜. 珠联璧合-PowerBuilder与数据库配合开发技术
+收稿日期：1999年7月26日

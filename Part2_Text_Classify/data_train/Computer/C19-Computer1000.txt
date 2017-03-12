@@ -1,0 +1,120 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+关联不确定大系统的分散变结构控制
+杜树新　吴铁军　陈新海
+摘　要　分散控制方法和变结构控制方法两者优点的结合使得分散变结构控制在大系统研究中得到了广泛的重视.针对各个子系统均为多输入情况，研究了不确定性关联大系统的分散变结构控制方法.基于开关平面的等价性，提出了关联大系统的分散滑动模态全局可达条件.并针对子系统不确定性的界已知及未知两种情况，提出了分散变结构控制算法.该方法克服了以往控制方法中需已知线性关联函数或不确定性关联的界的缺陷.
+关键词　分散控制，变结构控制，关联大系统，系统不确定性.
+DECENTRALIZED VARIABLE STRUCTURE CONTROL FOR
+INTERCONNECTED SYSTEMS WITH UNCERTAINTIES
+DU SHUXIN　WU TIEJUN
+(National Laboratory for Industrial Control Technology, Zhejiang University, Hangzhou　310027))
+CHEN XINHAI
+(College of Astronautic Engineering, Northwestern Polytechnical University, Xi’an　710072)
+Abstract　The advantages of both variable structure control and decentralized control have motivated us to investigate decentralized variable structure control methods for uncertain interconnected systems. A set of global reaching conditions based on the linear transformation of sliding surface for multi-input subsystems are presented in this paper. The proposed decentralized variable structure control laws can be used to deal with the problems of large-scale systems with unknown interconnections.
+Key words　Decentralized control, variable structure control, interconnected systems, uncertainty.
+1　引言
+　　变结构控制方法对系统参数的变化及外界干扰具有不敏感性并可人为规定控制系统动态过程，为不确定性系统的控制提供了有效途径［1］.而分散控制将大系统的控制简化为每个子系统的单独控制，简化了控制系统的设计，提高了系统可靠性［2］.两者优点的结合使得分散变结构控制在大系统研究中得到了广泛重视.分散变结构控制的主要困难在于如何利用子系统本身的信息补偿来自其他子系统的关联作用.Xu等［3］和Chiang［4］假定线性关联函数已知，故无法解决关联不确定和非线性的问题.Lee和Wang［5］设计的控制器需已知不确定关联的界.上述方法只适用于每个子系统为单输入情况.
+　　本文针对具有不确定非线性关联作用的大系统，提出了在每个子系统均为多输入情况下的滑动模态全局可达条件和分散变结构控制算法.在控制器构成中，只利用子系统本身的信息补偿来自其它子系统的关联作用，克服了以往分散变结构控制方法中需已知关联函数或关联不确定性的界的缺陷，从而完全摆脱了在处理关联作用时对关联的依赖性，真正具有信息分散化、控制分散化的特点.
+2　关联不确定大系统的数学描述
+　　假定关联大系统有N个子系统组成
+　　　　　　　　　(1)
+式中xi∈Rni, ui∈Rmi(ni＞mi)为第i个子系统的状态变量和控制量；
+为第i个子系统的标称系统矩阵、标称控制矩阵；
+为引起系统不确定变化因素，为Lebesgue可测，Πi, Ω分别为RΠi, RΩ的紧子集； Ei(xi, δi,t)∈Rmi×mi为控制矩阵的不确定变化； Bizi(xi, υ,t)∈Rni表示非线性的不确定关联； Ii∈Rmi×mi为单位阵.
+　　假设1.标称子系统可控，且Bi列满秩.
+　　假设2.存在未知非负常数ζij,满足
+　　假设3.存在未知常数θi＞-1，满足
+3　分散滑动模态的设计
+　　由于Bi列满秩，所以存在正交矩阵Ti∈Rni×ni使得为非奇异阵.做变换 yi=Tixi, 并yi=［yTi1,yTi2］T, yi1∈Rni-mi, yi2∈Rmi, 则由(1)式可得
+　　　　　　　　　　　　　　　　　　(2)
+　　　　　　　　　　　　　(3)
+其中 设各子系统的开关平面为
+si=Cixi=0 .　　　　　　　　　　　　　　　　　　(4)
+其中Ci∈Rmi×ni为切换矩阵， 则si=CiTTiyi=Diyi=Di1yi1+Di2yi2=0, Di=CiTTi=［Di1Di2］, Di1∈Rmi×(ni-mi), Di2∈Rmi×mi, yi2=-D-1i2Di1yi1=-Fiyi1, Fi=D-1i2Di1, 故可将(2)式写为
+　　　　　　　　　　　　　　　　(5)
+当系统进入滑动模态后，系统的动态特性由(5)式来决定.可通过适当方法(如极点配置法)选择Fi，使(5)式具有规定的动态品质.对于给定的Fi，可得切换矩阵Ci=Di2［-Fi,Ii］Ti .
+4　分散变结构控制律综合
+4.1　滑动模态全局可达条件
+　　引理1.关联大系统开关平面 s=［sT1,sT2,…，sTN］T=0与开关平面等价，其中
+　　证明. 由于可逆，而
+则　　　　　　　　　　　　　　　　　　　　　　　　　　证毕.
+　　定理1.如果满足以下分散滑动模态可达条件
+　　　　　　　　　　　　　　　　(6)
+则关联大系统(1)的状态渐近趋向于开关平面s=0.
+　　证明. 取Lyapunov函数对V求导得
+
+所以，如果(6)式满足，则即系统状态渐近趋向于开关平面由引理1知，系统状态也同时渐近趋向于开关平面s=0.　　　　　　　　　　　　　　　　　　　　　　　　　　　证毕.
+　　推论1.如果在设计切换矩阵Ci时，选取Di2满足
+　　　　　　　　　　　　　　　　　(7)
+则分散滑动模态全局可达条件为
+　　　　　　　　　　　　　　　　(8)
+　　证明.由于则由式(6)和(7)可得以上结论.　　　　　　　　　　证毕.
+　　注1.推论1给出了Di2的确定方法，一个简便的选取是
+　　注2.在mi=1, 即每个子系统均为单输入时，BTiCTi为标量，可达条件(6)变为，其中为常数，可见，此时的分散滑动模态全局可达条件与Xu等［3］给出的可达条件一致.
+4.2　分散变结构控制律
+　　本文提出如下分散变结构控制律
+ui=uis+uiN .　　　　　　　　　　　　　　　　　　(9)
+其中
+uis=-kiBTiCTisi,　　　　　　　　　　　　　　　　　(10)
+　　　　　　　　　　　　(11)
+式中ki∈R+预先给定，ρi的确定取决于子系统关联不确定的界是否已知.下面分别讨论.
+4.2.1　关联不确定性的界已知
+　　定理2.对于不确定关联大系统(1)，在假设1-3下，采用式(9)～(11)的分散变结构控制律，且ρi满足则系统状态渐近趋向于开关平面s=0.
+　　证明. 将(1)，(4)和(9)～(11)式代入滑动模态全局可达条件(8)中，得到
+
+　　　(12)
+由于
+　　　　　　(13)
+　　　　　　　　(14)
+　　　　　　　　(15)
+　　　　　　　　　　　　　　　　(16)
+则由(12)式得
+　　　　(17)
+由第4.1节推论1知，系统状态渐近趋向于开关平面s=0.　　　　　　　　　　　　　　　证毕.
+　　注3.由于不等式(17)成立，由文献［6］的定理知，在分散控制(9)～(12)式作用下，系统状态至少以衰减指数为μ渐近趋向于开关平面，且在有限时间τ内到达，τ满足
+
+4.2.2　关联不确定性的界未知
+　　当子系统关联不确定性的界未知时，本文采用如下自适应方案计算
+　　　　　　　　　　　　　　　　(18)
+式中Γi＞0为设计参数.
+　　定理3.对于不确定关联大系统(1)， 在假设1-3下，采用(9)～(11)，(18)式的分散变结构控制律，则系统状态渐近趋向于开关平面s=0.
+　　证明.若取Lyapunov函数为则类似于第4.1节定理1证明中的推导，在设计切换矩阵Ci时满足(7)式，可得改进型的可达条件
+　　　　　　　　　　(19)
+类似于定理2的推导得
+　　　　(20)
+取ρ*i满足则证毕.
+　　注4. 在(18)式中，由于ρi一直增大.但对于实际系统，由于控制有界，ρi不能一直增大，因此，在控制系统实际实现时，不妨采用
+　　　　　　　　　　　　　　　(21)
+式中M为充分大的正数，且M＞ρ*i. 采用式(21)，由定理2和定理3可以保证.即ρi≤M时，由定理3保证；ρi＞M＞ρ*i时，由定理2保证.
+5　数字仿真
+　　双倒立摆系统模型［7］
+　　　　　　　　(22)
+　　　　　　　(23)
+式中Δm1,Δm2,a(t)均为时变不确定，且｜Δm1｜＜0.1， ｜Δm2｜＜0.05， 0≤a(t)≤1.假定系统进入滑动模态后，第1和第2子系统的降阶系统极点配置为-1和-2，则设计参数计算如下：
+D12=1,D22=0.5, F1=-1, F2=-2, C1=［1　1］, C2=［1　0.5］. 对由分散控制律(9)～(11)和(18)式构成的控制系统的仿真结果如图1和图2所示.仿真中，采用设置边界层方法将式(11)中的不连续控制变为连续控制，以消除颤振.初始值为
+
+
+图1　第1子系统(θ1,1)响应曲线
+
+
+图2　第2子系统(θ2,2)响应曲线
+6　结论
+　　本文针对各个子系统均为多输入情况，基于开关平面的等价性，提出了关联大系统的分散滑动模态全局可达条件.同时，针对子系统关联不确定性的界已知及未知情况，提出了分散变结构控制控制律.
+作者简介：杜树新　生于1967年，1989年毕业于江苏理工大学，1992年在西安交通大学获硕士学位，1995年在西北工业大学获博士学位，目前在浙江大学从事博士后研究工作.研究方向：分散自适应控制、机器人运动规划与控制、工业系统控制.
+　　　　　吴铁军 　生于1950年，教授，1982毕业于浙江大学，1988年在浙江大学获博士学位并留校任教，1990年～1992年在美国马里兰大学从事博士后研究工作.主要研究方向：复杂大系统管控一体化、智能控制、工业控制计算机网络.
+　　　　　陈新海　生于1929年，教授，1953年毕业于浙江大学，1963年在苏联莫斯科菇可斯基空军工程学院获副博士学位，1970年前在哈军工任教，之后一直在西北工业大学任教.研究方向：自适应控制，飞行器控制.
+作者单位：杜树新　吴铁军　浙江大学工业控制技术国家重点实验室　杭州　310027
+　　　　　陈新海　西北工业大学航天工程学院　西安　710072
+参考文献
+［1］　高为炳.变结构控制理论基础. 北京：中国科学技术出版社，1990.
+［2］　杜树新.分散自适应控制理论及在大型柔性空间结构中应用［博士论文］.西安：西北工业大学，1995.
+［3］　Xu X, Wu Y, Huang W. Variable-structure control approach of decentralised model-reference adaptive systems. IEE Proc.-D, 1990, 137(5):302-306.
+［4］　Chiang C C. Decentralized variable-structure adaptive controller synthesis of large-scale system subjected to bounded disturbance. Int. J. Systems Science, 1993, 24(6):1101-1111.
+［5］　Lee J L, Wang W J. Robust stabilization via sliding mode control. Control-Theory and Advanced Technology, 1993, 9(3):721-731.
+［6］　Wang W J, Lee J L. Decentralized variable structure control design in perturbed nonlinear systems. J. of Dynamic System, Measurement, and Control, 1993, 115(3):551-554.
+［7］　Gavel D T, Siljak D D. Decentralized adaptive control: structural conditions for stability. IEEE Trans. Automatic Control, 1989, 34(4):413-426.
+收稿日期　1996-03-21

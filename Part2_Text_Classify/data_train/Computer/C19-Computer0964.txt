@@ -1,0 +1,143 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+联想记忆神经网络的一个有效学习算法
+梁学斌　吴立德　俞俊
+　　摘　要　提出一种新的联想记忆网络模型的有效学习算法，它具有下述特点：(1)可以全部存储任意给定的训练模式集，即对于训练模式的数目和它们之间相关性的强弱没有限制；(2)最小的训练模型吸引域达到最大；(3)在(2)的基础上，每个训练模式具有尽可能大的吸引域；(4)联想记忆神经网络是全局稳定的.大量的计算机仿真实验结果充分说明所提出的学习算法比已有算法具有更强的存储能力和联想容错能力.
+　　关键词　联想记忆网络，训练模式集，全部存储，最大吸引域，全局稳定性.
+AN EFFICIENT LEARNING ALGORITHM FOR ASSOCIATIVE
+MEMORY NEURAL NETWORK
+LIANG XUEBIN　　WU LIDE　　YU JUN
+(Dept.of Computer Science，Fudan University,　Shanghai　200433)
+Abstract　A new and efficient learning algorithm of asociative memory neural network is proposed,with the following characteristics:(1)it can store any given training pattern set no matter how much and what correlation among them may be;(2)the smallest domain of attraction of training patterns is maximized;(3)each domain of attraction of training patterns is guaranteed to be as large as possible;(4)the designed associative memory network is globally stable.A large number of computer experimental results confirm that our algorithm possesses more powerful storage ability and more fault-tolerance capability than existing ones.
+Key words　Associative memory,　training pattern set,　total storage ability,　maximized domain of attraction,　global stability.
+1　引言
+　　联想记忆神经网络可分为有自反馈和无自反馈两种模型，它具有信息记忆和信息联想的功能，能够从部分信息或有适当畸变的信息联想出相应的存储在联想记忆神经网络中的完整的记忆信息［1，2］.其性能主要是由具体的学习算法来决定.
+　　至今，已经提出了不少关于联想记忆神经网络的学习算法，主要有Hebbian学习算法［3］、投影学习算法［4］、Gardner学习算法［5］、最小重叠学习算法［6］、Ho-Kashyap学习算法［7］、神经元或训练模式加权学习算法［8］和优化学习算法［9］等.其中只有优化学习算法严格考虑了如何提高联想记忆神经网络的存储能力和联想容错能力.
+　　基于文献［9］的思想，本文提出了设计联想记忆网络的极大极小准则，它要求设计出的对称连接权阵应使得网络最小的记忆模式吸引域达到最大.并进一步发展了综合联想记忆网络的一个有效学习算法，它具有如下特点：(1)可以全部存储任意给定的训练模式集；(2)最小的训练模式吸引域达到最大；(3)在(2)的基础上，每个训练模式具有尽可能大的吸引域；(4)网络连接权阵是主对角元为1的对称阵，因此所设计出的联想记忆神经网络是全局稳定的［11］.
+2　无自反馈网络模型训练式集的基本约束
+　　联想记忆神经网络模型是由N个互联神经元组成的非线性动力系统.网格状态v=(v1,…,vN)t，其中vi(i=1,2,…,N)表示第i个神经元的状态，取值空间是{-1,1}；网络连接权阵W=(Wij)N×N,其中Wij表示从第j个神经元到第i个神经元的连接权.联想记忆神经网络模型可表述为［1］
+　　　　　　　　　　(1)
+其中v′i=(v′1,…,v′N)t表示下一时刻的状态向量，非线性函数sgn(x)定义为当x≥0时为1，而当x<0时为-1.
+　　若网络连接权阵W满足Wij=Wji(i,j=1,2,…,N)，且Wii=0(i=1,2,…,N)，即连接权阵是一个具有零对角的实对称阵，则称为Hopfield网络［1］.
+　　设有M个不同的训练模式，即x1，x2,…，xM，其中xu=(xu1,…,xuN)t,u=1,2,…,M.它们成为系统(1)的稳定吸引子等价于对所有u=1,2,…,M，都成立
+　　　　　　　　　　(2)
+　　文献［11］已证明，Hopfield网络的存储容量不超过N，即对于任何正整数M，若M>N，则一定存在M个训练模式，它们不可能同时是Hopfield网络的稳定吸引子.
+　　本节的结果是，即使M≤N，若M个不同训练模式同时成为Hopfield网络的稳定吸引子，则必须满足如下基本约束(Fundamental Constraint,FC)：任意两个不同的训练模式至少有两个分量不同.若不然，则存在某两个不同训练模式刚好有且只有一个分量不同.由于Hopfield网络无自反馈，故这两个训练模式必然是同一个训练模式，这就出现了矛盾.
+　　由于有些训练模式间的分类仅靠某个模式分量，如汉字“王”和“玉”，“已”和“己”等.因此，上述基本约束(FC)反映了Hopfield网络在存储能力方面的局限性.
+　　以下不妨称连接权阵是零对角实对称阵的网络为无自反馈的Hopfield网络，称连接权阵是具有非零对角元的实对称阵的网络为有自反馈的Hopfield网络.有自反馈的Hopfield网络可以存储任意给定的训练模式集［4］，问题的实质在于如何使每个训练模式具有尽量大的吸引域.
+3　稳定吸引子和联想容错性分析
+　　Hopfield网络的连接权阵可由Hebbian学习准则确定，即
+　　　　　　　　　　　(3)
+Hebbian学习准则主要是为了模拟生物神经网络工作原理而提出的［3］，并不是从联想记忆人工神经网络的工程设计准则出发.它通常只能存储相关性较弱的训练模式集.
+　　定理1.M个不同训练模式x1,x2,…,xM成为系统(1)的稳定吸引子的充分条件是对所有u=1,2,…,M都成立
+　　　　　　(4)
+　　定理2.设xu(u∈{1,2,…,M})是系统(1)的一个记忆模式，x是一个畸变模式，H(x,xu)表示x和xu之间的Hamming距离.若H(x,xu)<Fui/(2Wmi),i∈{1,2,…,N},则x一步迭代联想出xui，其中.
+　　证明.即要证明xi‘=xui.该等式成立的一个充分条件是
+　　　　　　　　　　　　　(5)
+注意到　　　　　　　　　　　　　(6)
+由于　　　　　　　　　　
+故由(6)式得　　　　　　　
+从而不等式(5)成立.　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　证毕.
+　　为了书写和结论简洁，且不影响结论的实质，文后均假定对于所有i=1,2,…,N,Wij(j=1,2,…N)不全为0，且Wmi=1.这样，Fui值越大，则xu的第i个分量的联想容错性就越强.类似的定性讨论也可参考文献［6，12］.
+令　　　　　　　　　　　 　　　　　　　　　　　　(7)
+　　推论1.设xu(u∈{1,2,…,M})是系统(1)的一个记忆模式，x是一个畸变模式.若H(x,xu)<Fu/2，则一步迭代联想出xu.
+　　由推论1可知，Fu/2是记忆模式xu的吸引域半径的一个下界.
+4　极大极小设计准则和两个学习算法
+　　设　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(8)
+则F/2是最小的记忆模式吸引域的半径的一个下界.
+　　从数学上，极大极小设计准则可表示为下列有约束不可微优化问题
+
+即　　　　　　　　　　　　　　　　　　　　　　　(9)
+其中arg max的约束条件是Wij=Wji,且｜Wij｜≤1;　i,j=1,2,…,N.
+　　将(9)式中的Wij(i>j;　i,j=1,2,…,N)都变化成Wji，则这个约束不可微优化问题含有N(N+1)/2个自由变量，即Wij，而arg max的约束条件是｜Wij｜≤1.因此，有约束不可微优化问题(9)等价于下列线性规划问题：
+(P)max(z),　　　　　　　　　　　　　　　　　(10)
+并带有约束条件
+(C1)Fui≥z,　i=1,2,…,N;　u=1,2,…,M;　　　　　　　　　　(11)
+(C2)｜Wij｜≤1,　i≤j;　i,j=1,2,…,N.　　　　　　　　　　(12)
+线性规划问题(10)―(12)可以用单纯形方法来求解.由于单纯形方法相对较复杂，特别是在N和M都比较大时.为此，本文将提出更有效的简单方法.
+　　现对(9)式作分析
+　　　(13)
+其中第二个等号利用了Fui只与Wij(j=1,2,…,N)有关的事实，和分别表示在约束(C2)和(C3)下求最大值，(C3)定义为
+(C3)　　｜Wij｜≤1,　j=1,2,…,N.　　　　　　　　　　　　(14)
+由于min(a+b)≥min(a)+min(b)(其中a和b是变量)，故由(13)式得
+　　　　　　　(15)
+易知约束优化问题
+　　　　　　　　　　　(16)
+的解是
+　　　　　　　　(17)
+　　由不等式(15)可知，(17)式是不可微优化问题(9)式的一个次优解.
+　　Hopfield联想记忆网络的连接权可以由(17)式来确定，该规则就称为快速学习算法.它具有下述特点：
+　　1)可以存储任意给定的训练模式集，且具有一定的联想容错能力［13］；
+　　2)可以用作其它约束优化迭代算法的初值；
+　　3)设计出的连接权值为-1，0或1，特别是，主对角权元素全为1，故网络易于硬件实现和光学实现.
+　　设f是线性规划问题(10)―(12)的解.线性规划问题(10)―(12)等价于在约束条件
+(C4)｜Wij｜≤1　(i<j;　i,j=1,2,…,N)　　　　　　　　　　(18)
+下求解线性不等式组　　　　　Fui≥f　(i=1,2,…,N;　u=1,2,…,M);　　　　　　　　　 (19)
+而在无约束条件下求解线性不等式组(19)可用感知器算法［14］.
+　　设训练模式的学习序列是x1,x2,…xM,…,x1,x2,…,xM,…,即是一个循环学习序列.感知器算法按此循环顺序接受训练模式xu(u∈{1,2,…,M})，且按下列规则来修改连接权：对于i=1,2,…,N，有
+　　　　　(20)
+其中t是算法迭代次数，q>0是任意正数，Wij的迭代初值可以任意选定.
+　　为使得每个训练模式具有一定大小的吸引域，在感知器算法(20)中须加入约束条件(C4).同时，将快速学习算法(17)的结果作为连接权阵的迭代初值，并且只对初值为0的非对角权元素进行优化迭代.在此基础上，再使得每个训练模式具有尽量大的吸引域.
+　　本文的约束感知器优化学习算法可总结如下：
+　　(1)初始化.Wij(0)(i<j;　i,j=1,2,…,N)由快速学习算法(17)确定，f(0)=1,并选取学习因子q，迭代次数δ1和δ2；
+　　(2)学习.设从循环学习序列x1,x2,…xM,…,x1,x2,…,xM,…,接受到训练模式xu(u∈{1,2,…,M}，则对于i=1,2,…,N，按下式来修改Wij(t)(i<j;　j=1,2,…,N)
+　　　　(21)
+其中函数Φ(x)定义为当x>1时为1，当x<-1时为-1，否则为x.每完成一个循环序列{x1,x2,…,xM}，就称为迭代一次；
+　　(3)判断.若算法(21)收敛，即Fui≥f(i=1,2,…,N;u=1,2,…,M)时的迭代次数小于δ1，则f=f+1，转至步骤(2)；若算法(21)迭代次数超过δ1后仍不收敛，则Wij返回算法(21)式迭代之前的值，并转至步骤4；
+　　(4)增大每个训练模式的吸引域.设fu=f,u=1,2,…,M.设从循环学习序列x1,x2,…xM,…,x1,x2,…,xM，…，接受到训练模式xu,u∈{1,2,…,M}，则对于i=1,2,…,N，按下式来修改Wij(t)(i<j;j=1,2,…,N)
+　　　(22)
+每完成一个循环序列{x1,x2,…xM}，就称为迭代一次.
+　　每迭代一次，且迭代次数小于δ2时，对于u=1,2,…,M，按如下规则递增fu：若Fui≥fu(i=1,2,…,N)，且Fu′i≥fu′-1(u′≠u,u′=1,2,…,M;　i=1,2,…,N),则fu=fu+1，并且迭代次数重新从0开始，返回步骤(4)；
+　　若算法(22)式在迭代次数超过δ2后，所有fu(u=1,2,…,M)都不能再作递增，则Wij返回算法(22)式迭代之前的值，并结束算法.
+5　计算机实验结果
+　　实验中取q=1/N，δ1=δ2=40.设
+　　　(23)
+Fmax,Fmin和Fave可用作统计量来定量客观地评价Hopfield联想记忆学习算法的联想容错能力.Fmax,Fmin和Fave越大，则说明算法的联想容错能力越强.
+　　第一组实验的训练模式集是汉字“己”、“已”和“巳”，如图1所示.用快速学习算法可以记忆该训练模式集.Hebbian学习规则和文献［9］的优化学习算法都不能存储这个训练模式集.这是因为，“己”和“已”以及“己”和“巳”的Hamming距离均为1.实验结果表明Hebbian学习规则的联想结果是3个训练模式都联想到模式“己”.表1是快速学习算法和本文优化学习算法的联想容错能力比较.由表1可知，快速学习算法和本文优化学习算法在此特例下，具有相同的联想容错能力.
+
+图1　实验1训练模式集
+表1　两种算法的联想容错能力比较
+　FmaxFminFave
+快速学习算法98.001.0096.06
+本文优化学习算法98.001.0096.06
+
+　　第二组实验的训练模式集是英文字母“A”―“H”，如图2所示，对于8组训练模式集{A}，{A,B},{A,B,C},{A,B,C,D},{A,B,C,D,E},{A,B,C,D,E,F},{A,B,C,D,E,F,G}和{A,B,C,D,E,F,G,H}分别用本文优化学习算法和文献［9］的优化学习算法进行学习.表2是两种优化学习算法的容错能力比较，其中M表示上述8组训练模式集分别所含的模式个数.由表1和2的结果可知，本文优化学习算法比文献［9］的优化学习算法具有更强的联想容错能力，同时说明快速学习算法的结果作为迭代算法的初值可大大提高迭代算法的联想容错性.
+
+图2　实验2训练模式集
+表2　两种优化学习算法的联想容错能力比较
+M12345678
+Fmax(本文)10057.0049.7840.4736.0636.2833.6230.38
+Fmax(文献［9］)9942.5634.6314.7014.8314.8314.4117.88
+Fmax(快速算法)10057.0042.0038.0033.0033.0031.0027.00
+Fmin(本文)10043.0033.3414.0814.1913.8311.0812.02
+Fmin(文献［9］)9942.0032.0313.0413.0811.0010.0110.01
+Fmin(快速算法)10043.0015.001.001.001.001.001.00
+Fave(本文)10050.9840.5125.7822.2221.8419.6317.66
+Fave(文献［9］)9942.3232.7713.7513.8111.8610.9411.00
+Fave(快速算法)10050.9829.2622.5815.3814.1212.029.56
+
+作者简介：梁学斌　1997年1月获复旦大学计算机软件专业博士学位.现从事计算机智能领域的研究工作，在国内外已发表论文30余篇.
+　　　　　吴立德　复旦大学计算机科学系教授，博士生导师.从事计算机视觉和计算机语言学方面的研究，已发表论文100余篇，著作多部.
+　　　　　俞　俊　复旦大学计算机科学系研究生，主要学习计算机视觉和图象编码.
+作者单位：复旦大学计算机科学系　上海　200433
+参考文献
+［1］　Hopfield J J.Neural networks and physical systems with emergent collective computational abilitie,In:Proc.Natl.Acad.Sci.,U.S.A.,1982,79(4):2554―2558.
+［2］　Michel A N,Farrell J A.Associative memories via atrificial neural networks.IEEE Control Syst. Mag.,1990,10(4):6―17.
+［3］　Hebbian D O.The organization of behavior.New York:Wiley,1949.
+［4］　Personnaz L,Guyon I,Dreyfus G.Collective computational properties of neural networks:new learning mechanisms.Phys.Rev.A,1986,34(5):4217―4228.
+［5］　Gardner E.The space of interactions in neural network models.J.Phys.A:Math.Gen.,1988,21:257―270.
+［6］　Krauth W,Mezard M.Learning Algorithms with Optimal Stability in Neural Networks.J.Phys.A:Math.Gen.,1987,20:745―752.
+［7］　Hassoun M H,Youssef A M.High performance recording algorithm for hopfeild model associative memories.Optical Eng.,1989,28(1):46―54.
+［8］　Wang T,Zhuang X H,Xing X L.A neuron-weighted algorithm and its hardware implementation in associative memories.IEEE Trans.Computer,1993,42(5):636―640.
+［9］　Wang T.Learning of Hopfield associative memory by global minimization.Int.J.Pattern Recog.Artif.Intell.,1993,7(3):559―567.
+［10］　Atiya A,Abu-Mostafa Y S.An analog feedback associative memory.IEEE Trans.Neural Networks,1993,(4):117―126.
+［11］　Goles E.Fogelman F,Pellegrin D.Decreasing energy functions as a tool for studying threshold networks.Discrete Appl.Math.,1985,12:261―277.
+［12］　Abbott L F,Kepler T B.Optimal learning in neural netwrok memories.J.Phys.A:Math.Gen.,1989,22:711―717.
+［13］　梁学斌，吴立德.综合联想记忆神经网络的外积取等准则.通信学报，1995，16(2)：1―6.
+［14］　Tou J T,Gonzalez R C.Pattern recognition principles.Massachusetts:Addison-Wesley,1977.165―168.
+收稿日期　1994-12-25

@@ -1,0 +1,77 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+避免死锁调度的数学建模与求解
+杨　盛　吴　澄
+　　摘　要　通过引入“资源分配函数”的概念建立了以最短加工时间为目标函数的制造系统避免死锁调度的数学模型， 给出了该模型在两进程情况的最优解算法和多进程情况的可行解算法. 
+　　关键词　死锁，调度， 制造系统. 
+MATHEMATICAL MODELING AND SOLUTION OF SCHEDULING
+FOR DEADLOCK AVOIDANCE
+YANG SHENG WU CHENG
+(Department of Automation, Tsinghua University, Beijing 100084)
+　　Abstract This paper presents the mathematical model of optimal scheduling for deadlock avoidance in manufacturing ysstems based on the conception of resource allocation function, aimed at reducing the system total processing time. Two algorithms are proposed for the optimal solution in the case of two processes and the feasible solution in the case of multi-processes, respectively.
+　　Key words Deadlock, scheduling, manufacturing system.
+　　1　引　言
+　　死锁现象广泛存在于计算机操作系统［1］、网络系统［2］、生产制造系统［3－4］等多进程、多作业的复杂系统. 产生死锁的原因在于系统资源的有限和进程推进顺序的不合理. 死锁的产生将严重损害系统的性能，因此处理死锁是多进程系统的一个重要方面. 
+　　文［1］论述了计算机操作系统中产生死锁的充要条件和消除死锁的主要方法. 由于生产制造系统与操作系统相比有其自身的特点，两者的行为、约束和优化目标都不尽相同. 本文以生产制造系统为背景研究避免死锁调度的数学建模与求解. 
+　　2　数学建模与求解
+　　在复杂的生产制造系统中往往同时存在多类生产资源和多个生产任务. 一个生产任务的一次实现称为该任务的一个进程. 
+　　定义1.设生产系统Σ中存在n类资源， 其中第i类资源的数目为ki， i=1,2,…,n. 定义系统的资源向量k=[k1,k2,…,kn]T. 这个系统用二元组(Σ,k)表示. 
+　　定义2. 已知系统(Σ,k). 在任意时刻t，某个进程p对第i类资源的占用数为ri(t),i=1,2,…,n. 定义该进程的资源分配函数r(t)=[r1(t),r2(t),…,rn(t)]T,r(t)k.
+　　进程p的资源分配函数(RAF)可以分为两种： 无延迟资源分配函数(NRAF)和可延迟资源分配函数(DRAF). 前者是进程p在零等待无延迟情况下的资源分配函数；后者是系统中存在多个并发的进程，进程p对资源的申请可能需要等待情况下的资源分配函数.前者是后者一个特例. 
+　　定义单位阶跃函数u(t0)=1,u(t＜0)=0. 由于进程p对资源的占用和释放均是在一系列离散时间点上进行的， 有如下性质.
+　　性质1. 已知系统(Σ,k). 以进程p首次占用资源的时间点作为时间零点，则进程p的无延迟资源分配函数r(t)可以表示为其中t0=0, tj＞tj-1, j=1,2,…,m;向量aj≠0而且
+　　性质2. 已知进程p的无延迟资源分配函数则它的可延迟资源分配函数s(t)可以表示为其中t′00,t′i-ti-1ti-ti-1,i=1,2,…,m.
+　　性质3. 如果则s1(t)+s2(t)可以表示为s1(t)+s2(t)=,其中min(m1,m2)m3m1+m2+1.
+　　定义3.已知资源分配函数,定义s(t)的第j个资源状态为， 其持续时间Δj(s(t))=tj+1-tj, j=0,1,2,…,m-1. s(t)总的持续时间定义为
+　　以系统总的加工持续时间最短为目标函数的避免死锁调度的数学模型为：设系统(Σ,k)中存在n个进程，其中第j个进程pj的无延迟资源分配函数rj(t)=a(j)ku(t-α(j)k),j=1,2,…,n. 要求pj的可延迟资源分配函数,使之满足(可行解条件)和(最优解条件).
+　　对于n=2的情况可以通过如下的区域算法获得系统的最优解.
+　　区域算法.
+　　1) 构造平面直角坐标系，其中横轴t1代表r1(t)的各个资源状态ai的持续时间，纵轴t2代表r2(t)的各个资源状态bi的持续时间. 两个坐标轴采用同样的比例尺.
+　　2) 求出r1(t)和r2(t)的冲突区Conflict(r1(t),r2(t))={P｜(t1,t2)∈P,r1(t1)+r2(t2)＞k}. 具体求法是，考查r1(t)的第i个资源状态ak与r2(t)的第j个资源状态bi在坐标系中对应的小矩形Uij,如果ak+bk＞k, 则Uij(r1(t),r2(t)).
+　　3) 由冲突区求出死锁区Deadlock(r1(t),r2(t)). 坐标系中两个相邻接冲突区的左下角区域构成死锁区，如图1中的D1和D2.
+
+图1　区域算法
+　　4) 两个进程的加工过程在坐标系中可以用水平线、垂直线和45°线三种连续线段表示， 从(0，0)开始到(a(1)m1,a(2)m2)结束. 其中水平线表示p1运行，p2等待；垂直线表示p2运行，p1等待；45°线表示p1和p2同时运行. 三种加工线段都不得进入冲突区和死锁区. 与其它解相比，最优解对应的加工路径中45°线占的比例最大. 这样从原点出发，只要有可能，就以45°线向(a(1)m1,a(2)m2)推进. 如果遇到冲突区或死锁区，则改为沿冲突区或死锁区的下或左边界水平或垂直推进. 
+　　5) 根据步骤4)求出的最优路径，求最优解s1(t)和s2(t).
+　　对于两进程的情况， 如果指定进程p1较进程p2有资源优先权，它可以不受阻碍地运行，即s1(t)=r1(t)，则可以进一步将区域算法简化为一维算法的水池算法，其基本思想是，在保证p1无延迟运行情况下，求出p2的每个资源状态在时间区间[0,a(1)m1+a(2)m2)上的允许区间集. 如果p2能够从第一个资源状态连续地过渡到最后一个资源状态，并且每个资源状态的持续时间能够满足要求，则系统存在可行解，其中最先过渡到最后一个资源状态的路径对应系统的最优解. 这好比在m2个水平面上分布着若干个水池. 每个水池能够向下一个水平面上与之相邻的水池排水. 从最上层水池经过中间各层水池最后流到最下层水池中的流水所形成的路径对应可行解. 
+　　水池算法.
+　　1) 在时间[0,a(1)m1+a(2)m2)上求出p2的第j个资源状态bk的允许区间集Fj={[a,b)｜b-aΔj(r2(t))∧t[a,b),k-r1(t)bk},j=0,1,2,…,m2-1. 指定Fj中的元素从小到大排列.
+　　2) 由允许区间集Fj求有效区间集Vj, j=0,1,2,…,m2-1. 下面给出以C伪码形式描述的递推求解算法.
+输入： 允许区间集序列　 {F0,F1,…,Fm2-1};
+　　　　持续时间序列{Δ0,Δ1,…,Δm2-1}.
+输出：有效区间集序列{V0,V1,…,Vm2-1}.
+{ Let set V0=F0;
+　for (i=1; im2-1; i++)
+　{ let set Vi=φ;
+　　for (j=1,k=1; j｜Vi-1｜;j++)
+　　{ get the j-th element [a,b) of set Vi-1; 
+　　　while (k｜Fi｜)
+　　　{ get the k-th element [c,d) of set Fi;
+　　　　if( [c,d)＜[a+Δi-1,b)) {k++; continue;}
+　　　　if ( [c,d)＞[a+Δi-1,b)) break;
+　　　　let [p,q)=[c,d)∩[a+Δi-1,b);
+　　　　if (q-pΔi)Vi=Vi∪{[p,q)};
+　　　　k++; } } }
+　　return the sequence of valid-interval sets {V0,V1,…,Vm2-1}
+　　3) 从Vm2-1开始回推最优解s2(t). 有效区间集Vm2-1中的每个元素对应一个可行解， 其中第一个元素[a,b)对应最优解.系统的最短持续时间Δ(r1(t)+s2(t))=a+Δm2-1. V0, V1,…,Vm2-1中每一个不在可行解路径上的区间都必定对应一个死锁状态.
+　　对于n≠2的一般避免死锁调度问题，由于计算复杂度为NP难的，其最优解往往难于获得. 下面给出一种求可行解的方法.
+　　首先对r1(t)和r2(t)， 由区域算法求出其最优解s1(t)和s2(t). 然后令r′2(t)=s1(t)+s2(t). 对r′2(t)和r3(t)， 由区域算法求出其最优解s′2(t)和s3(t). 再令r′3(t)=s′2(t)+s3(t)，…，直到最后对r′n-1(t)和rn(t)， 由区域算法求出其最优解s′n-1(t)和sn(t). 根据函数序列sn(t), s′n-1(t), sn-1(t), s′n-2(t),…,s′2(t),s2(t), s1(t)可以构造出系统的一个可行解.
+　　例. 已知系统(Σ, k),k=[1,1,1]T. 进程p1和p2的无延迟资源分配函数分别为
+
+图1是由区域算法求出的两条最优路径， 其解析式分别为
+　　　　　(1)
+　　　　　(2)
+系统的最短持续时间Δ(s1(t)+s2(t))=min=7. 图2是由水池算法求出的最优路径，其解析式同上面的(1)式. 
+
+图2　水池算法
+作者单位：清华大学自动化系　北京　100084
+参考文献
+　　[1] Peterson J L, silberschatz A. Operating System Concepts, second edition, Addison-Wesley Publishing Company, Inc., 1985:271-306.
+　　[2] Diaz M. Modelling and analysis of communication and cooperation protocols using petri net based models. Computer Networks, 1982, 6(6):419-441.
+　　[3] Banaszak Z A, Krogh B H. Deadlock avoidance in flexible manufacturing systems with concurrently competing process flows. IEEE Trans. Robotics Automat., 1990, 6(6):724-734.
+　　[4] Viswanadham N, Narahari Y, Johnson T L. Deadlock prevention and deadlock avoidance in flexible manufacturing systems using petri net models. IEEE Trans. Robotics & Automat., 1990, 6(6):713-723.
+收稿日期 1994-06-03

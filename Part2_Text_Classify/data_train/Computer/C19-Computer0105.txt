@@ -1,0 +1,77 @@
+计算机工程
+Computer Engineering
+1999年　第25卷　第9期　Vol.25 No.9  1999
+
+
+
+用Windows Sockets实现全分布式系统的方法
+胡慧圣　谢晓方
+　　摘　要：简要介绍一种基于Windows NT对等网络的安全分布式系统的实现方法．该方法以Visual C++为开发平台，采用Windows Sockets网络编程技术，实现了系统的全分布式设计．
+　　关键词：网络编程；Visual C++；Windows Sockets；CSocket；Windows NT；全分布式系统
+Implementation of an Entirely Distributed System with Windows Socket
+Hu Huisheng Xie Xiaofang
+(Naval Aeronautical Engineering Academy, Yantai 264001)
+　　Abstract　This paper introduces a method to reaize an Entirely Distributed System based on Windows NT peer network system. Inis method realizes the distribution with Windows Sockets in Visual C++.
+　　Key words　Network programming; Visual C++; Windows Sockets; CSocket; Windows NT; Entirely distributed system
+　　在某新型全分布式舰艇指挥控制系统的设计中，需要实现图1所示的通信结构，图中的连线表示系统在工作过程中可能的连接，可在系统运行期间动态连接或断开。实现该系统的核心问题是设计一个具有一定通用性的通信接口模块。
+
+图1　全分布式系统通信结构示意图
+　　Windows NT提供了两种主要的网络编程接口：管道和Windows Sockets。其中Windows Sockets的目的是为了实现对网络细节的屏蔽，程序员不用关心网络的具体实现和具体协议。虽然Windows Socket只定义了对TCP/IP协议的抽象说明，但任何协议族都可以遵循Windows Sockets，只要它提供有关实现的动态链接库。
+　　鉴于系统的工作特点决定采用Windows Sockets的客户/服务器模式来实现网络通信。其中雷达等探测器和火炮等武器设备都作为服务器，只等待显控台的连接请求而不主动请求连接；各显控台既为服务器又为客户机，随时可向任一单元发出连接请求，又可随时接受其它显控台的连接请求。而这些网络功能是通过设计一个通信线程类来实现的。
+1 通信线程类CComThread类的实现
+　　在Visual C++的MFC中，CAsyncSocket类描述了基本的Windows Sockets编程接口， CSocket类是从CAsyncSocket类派生而来的，它是在更高层次上对套接字的抽象，并可使用MFC的CArchive类，使得进程间的通信类似于MFC中对文件的序列化。因此，使用CSocket类实现通信线程类。通信线程类从CWinThread类派生，以下简要论述其实现的基本步骤：
+1.1从CSocket类派生CListeningSocket类和
+　　CConnectedSocket类
+　　CListeningSocket类对象用于服务器侦听网络连接请求。其主要成员有通信线程的指针m_pComThread，在构造函数中赋值，用于向通信线程发送消息。该类重载基类的OnAccept( )通知函数，即在有网络连接请求时通知通信线程。
+　　CConnectedSocket类对象用于代理已建立连接的通信任务。其主要成员有：通信线程的指针和拥有该连接的本地窗口指针用于发送各种消息；套接字号用于在通信线程中标识已连接套接字；两个档案对象指针用于该通信连接的数据接收和发送。其主要方法有：初始化Init( )函数用于指定通信线程指针和本地窗口指针；重载基类OnReceive( )通知函数用于通知通信线程接收数据；重载基类OnClose( )函数用于通知通信线程连接或已经断开。
+1.2 从CObject类派生CMsg类和CMsgHead类
+　　CMsg类用于描述消息基类，任何在网上传输的数据消息都要从该类派生。其数据成员以消息名标识，而具体的数据消息类需要有自己要传输的数据成员。其方法为序列化函数，用于序列化消息名标识；而具体的数据消息类需要重载序列化函数，并在其中调用基类的序列化函数以及序列化其它需要传输的数据成员。
+　　CMsgHead类用于描述消息头类，通信线程在发送数据前都要先发送消息头对象，用以标识将要发送的数据消息类型。其成员和方法与CMsg类相近。
+1.3 CComThread类的主要数据成员
+　　CListeningSocket类对象指针为m_pListeningSocket，当通信线程作为服务器时令其侦听网络连接请求；指针链表m_ConnectedSocketList用于保存已建立连接的CConnectedSocket对象指针，通信线程根据此链表查找特定的通信连接来发送数据。计数器m_PipeNumber用于标识当前建立连接的套接字号，m_pWnd用于保存服务器窗口指针，几个临时对象指针用于传递消息对象指针，以及用于接受或请求连接的临时CConnectedSocket对象指针。
+1.4 CComThread类主要方法的实现
+　　CreateSocket( )创建套接字消息处理函数：在通信线程的用户希望成为服务器时，向通信线程发创建套接字消息，在该消息处理函数中，通信线程根据指定端口号构造m_pListeningSocket对象并开始侦听。
+　　ConnectSocket( )连接请求消息处理函数：客户窗口通过发送此消息向服务器发出连接请求。在该函数中，通信线程构造一个CConnectedSocket对象，并根据指定服务器地址和端口号发出连接请求，若连接成功则计数器计数，设定套接字号并将该套接字加入套接字链表，并通知客户窗口连接成功及该连接的套接字号。
+　　ProcessPendingAccept( )接受连接方法：当服务器的侦听套接字收到连接请求时调用该函数，其代码如下：
+　　CConnectedSocket* pSocket = new CConnectedSocket(this)；
+　　if (m_pListeningSocket->Accept(*pSocket))
+　　{
+　　　　　m_PipeNumber ++；
+　　　　　pSocket->Init(m_PipeNumber,m_SourceWnd)；
+　　　　　m_ConnectedSocketList.AddTail(pSocket)；
+　　　　　m_pWnd -> PostMessage( MM_LISTEN_ACCEPT, m_PipeNumber,NULL) ;
+　　}
+　　else delete pSocket；
+　　SendMsg( )发送数据消息处理函数：当通信的一方要发送数据时，向通信线程发出发送数据消息，传递消息对象指针和套接字号，消息处理函数代码如下：
+void CComThread::SendMsg(CMsg* pMsg,UINT nPipeID)
+{
+　　for(POSITIONpos=m_ConnectedSocketList.
+　　　GetHeadPosition( )；pos!=NULL；)
+　　{
+　　CConnectedSocket* pSocket 
+　　　=( CConnectedSocket*) m_ConnectedSocketList. GetNext( pos )；
+　　if( pSocket -> m_PipeID = = nPipeID )
+　　{
+　　　CMsgHead MsgHead( pMsg -> m_MsgName )；
+　　　MsgHead.Serialize(*( pSocket -> m_pArchiveOut ) )；
+　　　pMsg -> Serialize(*( pSocket -> m_pArchiveOut ) )；
+　　　pSocket -> m_pArchiveOut -> Flush( )；
+　　　pos = NULL;
+　　}
+　}
+}
+　　ProcessPendingRead( )接收数据方法：当连接套接字链表中的某一套接字有数据等待接收时，调用此方法。该方法先调用：
+　　MsgHead.Serialize(*(pSocket->m_pArchiveIn))；
+　　读入消息头，并根据消息头中消息名构造消息类对象，再调用：m_pMsg->Serialize(*(pSocket->m_pArchiveIn))；
+　　读出消息对象，最后通过调用：
+　　pSocket->m_pWnd->PostMessage(MM_RECEIVE_MSG,(long)MsgName,(long)m_pMsg);
+通知数据传输目的窗口接收数据。
+　　DeleteConnect( )断开连接处理函数：当通信的一方想断开连接或另一方已断开连接时，调用该消息处理函数。在函数中，通信线程根据指定要断开的连接套接字号，在已连接套接字链表中查找该套接字并将其删除。
+2　结束语
+　　这种方法实现的通信线程具有编程简单、运行可靠等优点，基本能满足设计需要，并能较好地满足通用性要求。
+作者简介：胡慧圣(1976～)，男，研究生，主要研究方向为C3I系统
+作者单位：海军航空工程学院，烟台　264001
+参考文献
+1 丁香荣.Microsoft Visual C++ 4.1编程技巧指南.西安：电子 科技大学出版社，1997
+2 Visual C++ 5.0 Books Online.Microsoft Corp.,1997
+收稿日期：1998-12-10

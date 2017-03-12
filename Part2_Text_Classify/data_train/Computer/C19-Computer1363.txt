@@ -1,0 +1,129 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+非线性NARMAX模型的
+ARMAX模型全局线性化
+秦　滨　韩志刚
+　　摘　要　提出了基于NARMAX模型的非线性系统的全局线性化方法.该方法用时变的ARMAX模型近似描述非线性NARMAX模型.证明了这一线性化方法的有界性，并给出了相应的实现方法.仿真结果说明了该方法的有效性.
+　　关键词　非线性系统，NARMAX模型，ARMAX模型，全局线性化.
+THE GLOBAL LINEARIZATION OF NARMAX MODELS
+VIA ARMAX MODELS
+QIN BIN
+(Dep of Automation, Shanghai Jiao Tong University, Shanghai 200030)
+HAN ZHIGANG
+(Institute of Applied Mathematics, Heilongjiang University, Harbin 150080)
+　　Abstract　In this paper, a linearization method for complex and unknown nonlinear systems represented by NARMAX models is presented by using approximation ARMAX models. The limitation and construction method are discussed at the same time. The simulation result shows the efficiency of this method.
+　　Key words　 Nonlinear systems, NARMAX models, ARMAX models, global linearization.
+　　1　问题的提出
+　　模型已知与未知非线性系统的线性化方法是截然不同的.对于模型已知的非线性系统的线性化方法，如文［1，2］的微分几何精确线性化方法和自适应反馈线性化方法、文［3］的基于状态观测器的线性化方法等.这些方法不仅要求模型结构已知而且要求严格的条件.对于仅知道模型阶数上界的系统，多采用数值或函数逼近的方法.如文［4－6］采用的是分段线性化的方法，文［7，8］采用的是样条函数的方法.文［9］提出一种大范围嵌入线性化的思想，并证明了单输入单输出非线性系统的嵌入线性模型族的存在性.文［10］提出一种适用性较强的局部ARMAX模型线性化方法，并讨论了该方法的可行性及有界性.文［11］的平衡与非平衡多模态ARMAX模型的线性化方法也具有较强的适用性.本文提出一种非线性系统连续区域全局线性化的思想.采用一族线性时变ARMAX模型近似描述非线性NARMAX模型，并给出了工作点的选取及提高精度的方法.由于采用了虚拟噪声补偿技术使该方法可以适用于具有较强动态特性的非线性系统.
+　　非线性系统的NARMAX模型是由Leontaritis和Billings在1985年提出的［12］，并且指出满足一定条件的非线性系统可以用NARMAX模型描述
+y(t)=f(y(t-1),…，y(t-p),u(t-1),…,u(t-g),　　　　　　　　　
+e(t-1),…,e(t-r))+e(t).　　　　　　　　　　　　(1)
+其中e (t)∈ERm是零均值白噪声； y(t)∈YRm是输出向量； u(t)∈URn是输入向量；且n≥m.
+　　为了讨论方便，定义如下的m(p+r)+ng维向量
+φ(t-1)=［yτ(t-1)，…，yτ(t-p),uτ(t-1),…，uτ(t-g),
+eτ(t-1),…，eτ(t-r)］τ．
+因此φ(t-1)∈Φ=Yp×Ug×Er，则(1)式可以写成
+y(t)=f(φ(t-1))+ e(t).　　　　　　　　　　　　　(2)
+对非线性模型(2)可采用函数逼近的方法得到误差有界的线性模型.
+　　2　非线性系统的全局线性化
+　　为了得到(2)式的线性多项式逼近模型，首先给出一个函数序列
+｛ρi:Φ→［0，1］｝∞i=0．
+其中ρi(φ)不全为零，φ∈Φ.这样，可以得到下面的等式
+　　　　　　　　　　　　　　(3)
+进一步引入函数
+
+则可以定义
+　　　　　　　　　　　　(4)
+其中f(φi)为f( )在φi处的取值.如果取
+
+由(4)和(2)式可知，()与f()在每个φi处具有相同的值.因此，由下面的插值定理知‖( )-f()‖在Φ上是有界的.
+　　定理1.［13］若f在Φ上是n阶连续可微的，对于一个次数小于n的多项式P,当它在Φ上的n个结点φi处插值于f，则有
+
+其中　
+　　定理2.对于非线性NARMAX模型(2)，如果f关于是一次可微的，它可以描述为下面的形式
+　　　　　　　　　(5)
+其中
+　　　
+　　　(6)
+　　证明.由(4)式及定理1，f(φ)可以写成
+　　　　　　　　　　　　(7)
+并且取f(φi)为f()在φi处的泰勒展开［10］，即
+
+选取φi=(t),则定理得证.
+　　定理3.对于非线性NARMAX模型(2)，如果f关于是一次可微的，则可以将其近似地用无限个ARMAX模型描述，即
+NARMAX(p,g,r)≌ARMAX(p,g,r,t).　　　　　　　　　　(8)
+其中“≌”表示近似等于；ARMAX(p,g,r,t)表示线性时变的自回归滑动平均模型.
+　　证明.为了便于说明问题，仅以单输入单输出系统为例.由(5)，(6)式直接可得
+　　　(9)
+其中
+
+这里 　　　　　　　　　　　　　　　　　　　　　　证毕.
+　　3　全局线性化的有界性及收敛性
+　　由定理2和3可知，采用(5)式线性化存在着误差Δ((t-1)).下面的定理将说明其有界性.
+　　定理4.对于由(2)式描述的非线性系统，如果f((t))在每个工作点处是p+1次可微的，则有
+‖y (t)- (t)‖2＜M＜∞.
+其中为p次泰勒展开.
+证明.由泰勒定理知
+
+其中N是Δ((t-1))的上界.设‖(t)-(t-1)‖p+12的上界为Δ，则有
+　　　　　　　　证毕.
+　　由上面的定理还可以得到以下推论.
+　　推论1.对于由(2)式描述的非线性系统，如果f((t))在(t)处是2次可微的，则由(6)式得到的线性描述 (t)，对于任意ε＞0，存在K，只要‖φ(t)-φ(t-1)‖22＜K,就有‖y (t)- (t)‖2＜ε.
+　　推论2.对于由(2)式描述的非线性系统，如果f((t))在(t)处是p+1次可微的，则有‖y (t)-p+1(t)‖2＜‖y (t)-p(t)‖2．其中p(t)是f((t))在(t)处的p次泰勒展开.
+　　推论1和2分别给出两种提高线性化精度的方法，即缩小采样间隔和增加泰勒展开次数.显然，增加泰勒展开次数将导致逼近模型的复杂化和非线性化.因此，适当选择采样频率以得到理想的线性化模型具有指导意义，并且在工程上易于实现.
+　　4　非线性系统全局线性化的实现
+　　由(9)式可知，非线性系统(1)可以描述为
+ (t)=A(t) (t-1)+B(t)u (t-1)+C(t)e (t-1)+e (t).　　　　(10).
+其中A(t)=A0(t)+A1(t)q-1+A2(t)q-2+…+Apq-p；B(t)=B0(t)+B1(t)q-1+B2(t)q-2+…+Bgq-g；C(t)=C0(t)+C1(t)q-1+C2(t)q-2+…+Crq-r；y(t)∈YRm；u(t)∈URn；e (t)∈ERm；Ai(t),Bi(t),Ci(t)分别是时变的矩阵.
+　　由前面的叙述可知，相应的线性化ARMAX模型的参数是未知的.
+　　由(9)，(10)式知
+　　(11)
+其中(t)=Δ((t-1))+e(t).这样，可以将(t)看成虚拟有色噪声.假设(t)服从平稳的AR模型，则有
+(t)=P(t)ξ(t).　　　　　　　　　　　　　　　(12)
+其中P(t)=1+α1(t)q-1＋α2（t)q-2＋…+αl(t)q-l，ξ(t)是虚拟白噪声.
+　　把(12)式代入(11)式得
+y (t)=A(t)y (t-1)+B(t)u (t-1)+C(t)e (t)+P(t)ξ(t).
+不失一般性，假设e (t)与ξ(t)不相关，则有
+y (t)=A(t)y (t-1)+B(t)u (t-1)+C′(t)e′(t)+e′(t).　　　　　(13)
+其中e′(t)是虚拟白噪声，
+C′(t)=C′0(t)+C′1（t)q-1＋…＋C′s(t)q-s．
+　　对于(13)式中的参数，可以采用带遗忘因子的广义最小二乘法辨识.值得注意的是，虽然(13)式与(10)式形式上是相同的，但它们存在着本质的区别.如果原系统不存在模型噪声时，线性化后的模型仍然有虚拟模型噪声存在.
+　　5　仿真例子
+　　考虑如下阶数为2的单输入单输出非线性系统
+y (t)=0.3y (t-1)u (t-1)+0.6y (t-2)
++2sin4(u (t-1))+cos(u (t-2))+e (t).
+由(13)式知，上式可以用如下的ARMAX模型逼近
+y (t)=a1(t)y (t-1)+a2(t)y (t-2)+b1(t)u (t-1)+b2(t)u (t-2)
++c1(t)e (t-1)+c2(t)e (t-2)+e (t).
+采用带遗忘因子的广义最小二乘法可得近似的估计模型
+
+仿真结果见图1和图2所示.由此可见，文中给出的方法是可行的，并且误差是有界的.
+
+图1　y(t)与(t)
+
+图2　
+　　6　结论
+　　本文给出的基于NARMAX模型的线性化方法具有较强的适用性.该方法是一种“黑箱”线性化方法，比较适合于复杂的、模型未知的非线性系统，如化工生产过程、炼油生产过程、制药过程等.由于该方法可以直接得到非线性系统的ARMAX近似模型，因此易于得到相应的自适应控制律.这是文中方法最突出的优点.但由于时变参数的辨识并不是一件容易的事，因此该方法的具体实现方法还有待于进一步研究.
+作者简介：秦　滨　1966年生.1996年获东北大学自控系博士学位.现在上海交通大学自动化系从事博士后研究工作.主要研究方向为非线性系统的辨识、自适应控制与鲁棒控制.
+　　　　　韩志刚　1934年生.黑龙江大学教授、东北大学兼职教授，博士生导师.主要研究方向为非线性系统辨识及自适应控制，多层递阶方法及无模型控制.
+作者单位：秦滨：上海交通大学自动化系　上海　200030
+　　　　　韩志刚：黑龙江大学应用数学研究所　哈尔滨　150080
+参考文献
+　［1］Andrew T, Kadiyala R, Kokotovic P, Sastry S. Indirect techniques for adaptive input-output linearization of non-linear systems. Int. J. Control, 1991, 53(1):190-222.
+　［2］Sastry S , Isidori A. Adaptive control of nonlinear systems. IEEE Trans. Automatic Control, 1989, 34(11):1123-1131.
+　［3］Dawson D M, Qu Z, Carroll J C.On the state observer and output feedback problem for nonlinear uncertain dynamic system. Systems & Control Letters, 1992, 18(3):217-222.
+　［4］Skeppstedt A, Ljung L, Millnert M. Construction of composite models from observered data. Int. J.Control, 1992, 55(1):141-152.
+　［5］Billings S A , Voon W S F. Correlation based model validity test for nonlinear models. Int. J. Control, 1986, 44(2):235-244.
+　［6］Billings S A , Voon W S F.Piecewise linear identification of nonlinear systems. Int. J. Control, 1987, 46(2):215-235.
+　［7］Friedman J H. Multivariable adaptive regression splines. The Annal of Statistics, 1991, 19(1):1-141.
+　［8］Tolle H, Parks P C, Ersu E, Hormel M,Militzer J. Learning control with interpolating memories-general ideas, design lay-out, theoretical applicaches and pricatical applications. Int. J. Control, 1992, 56(2):291-317.
+　［9］韩志刚.天气系统的建模与预报.控制理论与应用，1986，3(2)：64-71.
+　［10］Johanse T A , Bjarne A F. Contructing NARMAX models using ARMAX models. Int. J. Control, 1993, 58(7):1125-1153.
+　［11］周超俊等.非线性系统的多模态ARMAX模型――一种基于插值理论的模型.自动化学报，1995，21(2)：137―144.
+　［12］Leontaritis I J, Billings S A. Input-output parametric models for nonlinear systems, Part Ⅰ：deterministic nonlinear systems; PartⅡ: stachastic non-linear systems. Int. J. Control, 1985, 41(1):303-344.
+　［13］Cherey E W. Introduction to approximation theory, McGraw-Hill Book, Co., 1966.
+收稿日期　1994-12-07

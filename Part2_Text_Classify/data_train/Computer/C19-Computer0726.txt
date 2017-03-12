@@ -1,0 +1,68 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年 第25卷 第1期 vol.25 No.1 1999
+
+
+
+基于遗传算法的混合分形编码1)
+张元亮　郑南宁　代　颖
+关键词　图象压缩，分形编码，遗传算法.
+
+HYBRID FRACTAL IMAGE CODING BASED
+ON GENETIC ALGORITHMS
+
+ZHANG Yuanliang　ZHENG Nanning　DAI Ying
+(Institute of Artificial Intelligence and Robotics, Xi'an Jiaotong University, Xi'an　710049)
+Key words　Image compression, fractal coding, geneic algorithms.
+
+1　引言
+　　图象中存在局部与全局两方面的信息冗余，局部性表现在图象中的光滑性，全局性表现在图象结构的一致或相似性重复，若要达到理想的压缩效果，必须综合考虑两方面的冗余因素.分形编码在降低全局冗余方面较为有效，然而分形编码的算法复杂，例如对于256×256的灰度图象，分成互不重叠的4×4图象子块(值块)，虚拟码书中子块(域块)大小为8×8，进行全局搜索的经典分形编码，整个编码过程需搜索2 031 648.768 个域块，计算量十分庞大.
+　　本文提出一种新的基于遗传算法的混合分形编码，旨在降低图象中局部和全局两方面的冗余信息.并应用遗传算法加快分形编码的速度.
+　　
+2　基于四叉树的混合快速分形编码
+2.1　算法概述
+　　本文提出的编码算法分为两个步骤：(1) 由四叉树结构形成原始图象的均值图象，并对结构信息矢量量化输出，对均值图象中的象素灰度进行插值，将插值看做是对图象中的部分区域进行高斯平滑的结果，并由级联的简单滤波器实现［1］，插值图象包含更多原始图象中的局部冗余信息.(2) 对原始图象与插值图象构成的误差图象，采用同原始图象一致的四叉树结构，对应于相对平坦区域，采用DCT变换编码并对变换系数的低频部分进行矢量量化［2］，对含有较多细节(纹理和边缘)的区域进行分形编码，用遗传算法进行虚拟码书的搜索匹配.
+2.2　应用于分形编码的遗传算法
+　　经典分形编码中虚拟码书的搜索匹配，计算量十分复杂，而且匹配过程是典型的多极值问题.由于遗传算法求解多极值问题的有效性［3，4］，将其应用于虚拟码书的搜索.
+　　1) 物种的染色体编码表示
+　　染色体为｛x1,…，xn,y1,…，yn，z1，z2,z3｝，分为(x,y,z)三个基因组，x,y分别表示域块左上角的横坐标和纵坐标，z表示域块的变换.
+　　2) 种群的初始化
+　　由［5，6］，对给定的排列块(x0,y0)，按高斯分布产生初始物种(x,y,z).
+　　3) 适宜函数的选取
+　　定义适宜函数为值块和域块匹配均方差的倒数.
+　　4) 交叉策略　　
+
+
+图1　交叉策略
+表1　遗传算法　参数设置
+
+排列块大小4×4变异率0.1
+种群数目50种群迭代最多代数50
+交叉率0.85连续不变的种群代数20
+遗传率0.14一致个体在种群中的最高比例0.9
+
+如此参数选择的遗传算法，对每一值块需匹配的域块数目最多为2 500，与经典的分形编码相比，数目在10-2量级.
+　　
+3　实验结果
+　　图2中，(a) 给出了本文算法的解码图象，(b)为JPEG压缩的结果. 经典分形编码的压缩效果可见文献［6］.
+　　
+4　结束语
+　　1) 插值图象降低了均值图象中的高频噪声分量，包含了较多原始图象中的局部冗余信息，有利于后续分形编码的进行.
+　　2) 由于遗传算法求解多极值问题的有效性，将其应用于虚拟码书的搜索，可以大大降低压缩编码的复杂度，同时很好地保持图象质量.　　
+
+
+图2　解码图象比较(压缩比为0.56 bpp)
+　　1)国家自然科学基金和国家杰出青年科学基金资助项目.
+　　张元亮　男，博士生.研究方向为初级视觉，模式识别，图象编码.
+　　郑南宁　男，教授,博士导师.研究方向主要为智能控制，计算机视觉，图象处理等，在国内外著名刊物上发表论文近百篇.
+作者单位：(西安交通大学人工智能与机器人研究所　西安　710049)
+参考文献
+1　Wells W M. Efficient synthesis of Gaussian filters by cascaded uniform filters. IEEE Transactions on PAMI,1986,8(2):234―239.
+2　Nasabadi N M, King R A. Image coding using vector quantization: a review.IEEE Transactions on Communication,1988,36(8):957―971.
+3　Fogel D B. An introduction to simulated evolutionary optimization.IEEE Transactions on Neural Network,1994，5(1):3―14
+4　Rudolph G. Convergence analysis of canonical genetic algorithms,IEEE Transaction on Neural Network,1994，5(1)：96―101.
+5　Jacquin A E. Image coding based on a fractal theory of iterated contractive image transformations. IEEE Transactions on Image Processing,1992,1(1)：18―30
+6　Jacquin A E. Fractal image coding: a review. Proceedings of IEEE, 1993,81(5)：1451―1465.
+
+
+收稿日期　1996-11-25　收到修改稿日期　1998-06-29

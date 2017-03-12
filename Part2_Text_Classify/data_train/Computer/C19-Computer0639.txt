@@ -1,0 +1,69 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+时变时滞不确定性系统的
+状态反馈控制器设计
+程储旺　孙优贤
+摘　要　研究一类不确定性动态系统. 这类系统具有多重时变状态时滞和多重时变控制输入时滞，其不确定性满足范数有界条件. 采用黎卡提方程方法，得到了这类不确定性时滞系统可状态反馈镇定的充分条件. 通过解一个特定的黎卡提不等式，即可得到镇定已知系统的控制器. 
+关键词　时变时滞， 不确定性系统， 黎卡提方程，李雅普诺夫函数. 
+DESIGNING OF THE STATE FEEDABACK STABILIZING
+CONTROLLER OF UNCERTAIN DYNAMIC SYSTEMS
+WITH TIME-VARYING DELAYS
+CHENG CHUWANG　　SUN YOUXIAN
+(Institute of Industrial Control Technology of Zhejiang University, Hangzhou 310027)
+Abstract　This paper deals with a class of uncertain systems with multiple time-varying delays in both states and controls. The uncertainties are unknown but norm-bounded. By using the Riccati equation approach, a sufficient condition for the system to be stabilizable is obtained. It is shown that the construction of the stabilizing controller involves solving a certain algebraic Riccati inequality.
+Key words　Uncertain dynamic systems, time-varying delay, Riccati equation, Lyapunov function.
+1　系统描述和主要结果
+　　本文考虑下述时滞不确定性系统
+　　　　　　　　(1)
+其中x∈Rn是状态向量，u∈Rm是控制输入向量. 假设时滞项满足
+　　　　　　　　(2)
+并设系统的不确定性满足下述形式的范数有界条件
+　　　　　　　　(3)
+　　将得到以下形式的状态反馈控制器
+u=-S-1BT0Px(t).　　　　　　　　　　　　　　　　(4)
+其中S和P是正定对称矩阵. 
+　　为方便起见，我们引入以下符号：
+
+　　命题1.设S和R是给定的正定对称矩阵. 若不等式
+　　　　　　　　　　　　　　　　(5)
+存在正定对称解矩阵P，其中
+
+则(5)式是不确定性系统(1)的线性状态反馈镇定控制器. 
+　　证明.取李雅普诺夫函数为
+
+其中R，S是正定对称矩阵， 可根据需要适当调整，则其导数由
+　　　　　(6)
+给出. 记
+　　则(6)式可表示成L(x,t)=XTQX. 因此，如果Q＜0， 则闭环系统渐近稳定. 证毕. 
+　　在上述命题中， 未考虑系统的不确定性. 以下我们处理系统的不确定性. 
+记
+　　　　　　　　(7)
+利用Schur补(Schur complements)［1］知Q＜0等价于不等式
+　　　　　　　　(8)
+显然， 要使(8)式成立，只要不等式
+　　　　　　(9)
+成立即可. 利用(3)和(9)式得
+　　　　　(10)
+　　为简单起见，再引入以下符号和不等式
+　　　　　　　　　　　　　(11a)
+　　　　　　　　　　　　　(11b)
+　　　　　　　　　(12)
+　　定理1.已知不确定性系统(1). 假设对某正数ε和正定对称矩阵R,S， 不等式
+
+存在正定对称解P.其中
+
+分别由(7)和(11)式确定. 则(5)是不确定性系统(1)的线性状态反馈镇定控制器. 
+　　证明.由不等(10)―(12)易知定理1成立. 
+　　显然， 作为一种有意义的特殊情形，文［2］中相应的结果可很容易从上述推导得到. 
+　　说明.按照常规的试凑方法适当选择有关参数的值解黎卡提不等式， 将所得的P值代入(5)式即可得到所需的控制器. 若经过多次尝试仍无结果，则此法可能失效. 这是采用黎卡提方程方法的最大缺陷. 因此，近期利用线性矩阵不等式的方法已成为研究热门. 
+2　结语
+　　本文给出了具有多重时变状态时滞和多重时变控制时滞的范数有界不确定性系统可镇定的一个充分条件. 通过解一个特定的黎卡提不等式，立即可得镇定已知系统的控制器. 本文是针对一般情形进行研究的，文［2］中相应的结果只是本文有意义的特殊情形. 
+作者单位：浙江大学工业控制技术研究所　杭州　310027
+参考文献
+[1]　Boyd S L, El Ghaoui et al. Linear matrix inequalities in system and control theory.SIAM Philadelphia, 1994.
+[2]　Mahmoud M S, Al-Muthairi N F. Quadratic stabilization of continuous time systems with state-delay and norm-bounded time-varying uncertainties. IEEE Trans. Autom. Control, 1994,39:2135-2139.
+收稿日期　1996-03-11

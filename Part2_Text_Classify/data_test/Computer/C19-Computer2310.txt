@@ -1,0 +1,122 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第5期 Vol.36 No.5 1999
+
+
+
+ATM网络中基于“转发强度”的信元丢弃策略研究
+程东年　刘增基
+摘　要　信元丢弃机制是缓解和消除ATM网络结点拥塞的有效方法之一，但现有的信元丢弃策略均未考虑信元丢弃与网络资源利用率之间的关系，因而导致当有信元丢弃时，语义敏感型业务的网络资源利用率和信元丢失率等指标都较差.着眼于从信元到达一个ATM网络结点时已耗费网络资源量的相对大小，文中提出了一种旨在克服传统信元丢弃策略诸缺陷的新策略：基于“转发强度”的信元丢弃策略，对该策略和现有的两种典型信元丢弃策略以Markov链为工具分析了网络资源利用率和信元丢失率指标，结果表明：由于选择对网络资源相对消耗量最小的信元进行丢弃，该策略能够提高对网络资源的利用率，降低信元丢失率，同时减少因丢弃信元而造成的信元重发量，从而最终缓解网络拥塞程度及减小结点再度拥塞的可能性.
+关键词　异步转移模式(ATM)，服务质量(QoS), 信元丢弃, 信元丢失率(CLR), 信元丢弃优先级(CLP)
+中图法分类号　TP393
+STUDY OF THE “FORWARDING-STRENGTH” BASED CELL
+DISCARD STRATEGY IN ATM NETWORKS
+CHENG Dong-Nian and LIU Zeng-Ji
+(State Key Laboratory on Theory and Chief Technology of Integrated Services Networks, Xidian University, Xi'an　710071)
+Abstract　A cell discard scheme serves as an effective method in either alleviating or eliminating network congestion in ATM network nodes. Existing cell discard strategies, however,do not consider the relationship between cell discarding and network utilization. Consequently, they lead to poor measures of both the average network utilization and the cell loss ratio concerning user services sensitive to semantics. From the viewpoint of the relative volume of network resources having been consumed by a cell arriving at a certain ATM network node, a new cell discard strategy, the “forwarding-strength”-based one, is proposed in the paper here, with removal of the above defects as its objective. By using the Markov model, the average network utilization and the cell loss ratio are analyzed with respect to the proposed cell discard strategy and the two classical ones available. The results show that by discarding cells having consumed minimal network resources, this new strategy can improve network performance through increasing the network utilization ratio, decreasing the cell loss ratio and cell retransmission volumes, alleviating network congestion, and reducing the possibility of recongestion in ATM network nodes.
+Key words　asynchronous transfer mode(ATM),quality of service (QoS),cell discard,cell loss ratio (CLR),cell loss priority (CLP)
+1　引　　言
+　　向用户提供确保的服务质量(quality of service,QoS)，是异步转移模式(asynchronous transfer mode,ATM)网络的重要特征之一.不同类型的用户业务通常因敏感于不同的透明属性而需要不同等级的QoS，如：实时型和非实时型用户业务由于分别敏感于传输时延和误码率及信元丢失率而分别需要时间透明性和语义透明性.表征语义透明性的一个重要QoS参数是信元丢失率(cell loss ratio, CLR).目前，许多研究人员已对信元丢弃的模型、机制，对CLR的动态监测和估计都做了许多工作，比如，Pushout 和Expelling(排空式)信元丢弃策略［1，2］、基于Geom/Geom/1/K排队模型的CLR分析与估计［3］、基于长期相关到达过程的CLR分析与优化估计技术［4］、基于超指数分布到达过程的CLR分析［5］及基于AAL层服务数据单元的尾分组丢弃和早期分组丢弃［6］等.对随机(如Pushout)和排空式两种典型的信元丢弃策略而言，它们在对信元丢弃时只考虑各信元的CLP位是否为1，而不考虑CLP=1的信元对应的VCC与本网络结点间的关系，故相应的网络资源利用率和信元丢失率等指标都较差(见后面分析).本文注意到：恰恰是这种关系反映出经历了不同相对行程的信元所耗费网络资源量的不同，换句话说，若能基于这种相对量有选择地丢弃信元，则会有更高的网络资源利用率和网络性能，而网络资源利用率的提高又可改善CLR和时延等指标.信元“已耗费网络资源相对量”的一个具体形式可以是信元已经历的“相对行程”δ，δ越大，表明信元“已耗费网络资源的相对量”越大，同时也表明它到其终点的相对距离越短.丢弃信元，虽有助于缓解和消除拥塞［7～10］，但其代价却是否定网络已为信元提供的各种服务(如资源的分配、占用［11，12］)，而网络已为信元提供的这些服务又可能是以降低其它虚通路连接(VCC)的QoS为代价换来的.显然，丢弃信元又是对这些附加代价的否定.不难理解，高效的信元丢弃机制应使丢弃信元带来的这种双重否定的不良影响最小.本研究的目标是：基于信元“相对行程”的概念，丢弃“相对行程”最短的信元，以提高网络资源利用率，减小因对被丢弃信元对应信息块的重发而导致网络持续(或再度)拥塞的可能性，从而更有效地支持QoS.从以上考虑出发，本文提出了基于“转发强度”的信元丢弃策略.基于Markov链的性能分析表明，只要满足较宽松的条件，该策略就能在网络资源利用率和平均信元丢失率上优于随机和排空式信元丢弃策略.
+2　基于“转发强度”的信元丢弃模型
+　　本节先给出基于转发强度的信元丢弃策略(以下简称δ策略)的3个基本支撑环境的模型：VCC路径、转发强度和VCC结点的信元输出队列，然后给出δ策略的描述.
+　　(1) VCC路径与VCC交换结点
+　　设一条虚通路连接VCCJ从其一个端点Ns出发，顺序经过D个网络结点N1,N2,…,Nr,…,ND后连至其另一个端点Nd,仅考虑各VCC一个传输方向的情况，每个中间连接点Nr都采用输出排队.引入以下记号：
+　　Qi――Nr中的第i条输出链路所对应的输出队列(r=1,2,…,D)；
+　　αi――当Qi被信元占满时(其中CLP=1)的信元数；
+　　βi――当Nr的Qi发生拥塞时须从Qi中丢弃的信元数(本文中设βi=1).
+　　(2) 转发强度
+　　定义1. 称DJ为一条VCCJ的“VCC距离”，DJ(≥1)是VCCJ所包含的VCC中间连接点数.
+　　定义2. 设一条VCCJ包含的VCC中间连接点序列为N1,N2,…，Nr,…，NDJ，则称δJ为VCCJ的任一个到达Nr(r=1,2,…,DJ)并排入其输出队列Qi的信元的转发强度：
+　　　　　　　　　　　　　　　　(1)
+　　其中τJ是Nr对δJ的调节参量，本文设其为1.这里采用运算简单的线性形式来定义转发强度δJ，当然也可以用其它形式，如幂式：
+
+这些定义形式的图形如图1所示.不同的转发强度定义可作为不同的QoS参数用于具有不同“信元行进”特征的用户业务.
+
+
+图1　转发强度的不同定义(DJ=20)
+　　由定义知，转发强度δ表征了信元到达某一VCC结点时的已走过的相对行程，这样，同一结点内诸信元的相对行程恰恰是它们各自耗费且可比的相对网络资源量，从而构成了δ策略的信元丢弃准则.为了支持δ策略进行信元丢弃，各ATM交换机需要存放经过它的每条VCC在该交换机处的转发强度.由于一条VCC在某交换机处的转发强度值是确定的(即静态的)，故可在各VCC的建立阶段由信令过程将其VCC距离及各中间结点序号依次填入各交换机内(如存放在VPI/VCI翻译表中)，再由各交换机计算出其相应的转发强度值.
+　　(3) 输出排队模型
+　　本文采用文献[3]给出的“Geom/Geom/1/K”模型作为VCCJ的任一中间连接点Nr内任一信元输出队列Qi的排队模型，即，信元的到达和服务过程是相互独立的Bernoulli过程，任一个信元时隙内的信元到达和离开Qi的概率分别是λ和ν，输出缓冲器Qi的容量为K个信元.这样，诸信元的到达时间间隔Ta和离去时间间隔Tb相互独立且都服从几何分布：Ta～G(λ)，Tb～G(ν).此时，信元丢失率CLR就是一个信元到达Qi时，Qi的所有信元位置被占满的概率［3］，即：
+　　　　　　　　　(2)
+　　(4) 信元丢弃模型
+　　假设网络结点不改变信元的CLP位且αi>1.在“Geom/Geom/1/K”输出排队模型下，本文考虑随机、排空和δ三种信元丢弃策略.当一个信元到达时若Qi已满，可进行：
+　　① 随机式信元丢弃――从Qi中任选一个CLP=1的信元予以丢弃，或
+　　② 排空式信元丢弃――丢弃Qi队列头中所有连续的CLP=1的信元；若Qi队列头无CLP=1的信元，则从Qi中任选一个CLP=1的信元予以丢弃，或
+　　③ 基于转发强度δ的信元丢弃――在Qi的所有αi个CLP=1的信元中选择具有最小转发强度值的一个信元予以丢弃.
+3　性能分析
+　　本节将分别考察随机、排空和δ策略各自的网络资源利用率和信元丢失率.假设结点Nr的Qi发生拥塞期间，与Qi相关的各VCC不发生状态变化(既无新建的也无被撤除的VCC).
+　　(1) 网络资源利用率
+　　这里，从一个信元应经历的虚通路链路(VCL)数与它实际经历的平均VCL数这一角度考察一条VCC对网络资源的利用率.
+　　定义3. 称ηJ为“VCCJ对网络资源的利用率”:
+　　　　　　　　　　(3)
+　　其中μ0,DJ+1为一信元从VCCJ源结点到达其目的结点的平均时间(即平均VCL数).设系统状态X是VCCJ的任一信元所处的VCC结点号,则当前X的值仅与前一时刻X的值相关，于是，X构成图2所示的有限状态马氏链,其中,状态r(r=1,2,…,DJ)向状态0的转移意味着网络结点Nr对信元的丢弃.考虑到实际中一条VCCJ沿途各中间结点同时发生拥塞的可能性较小,故假设仅有一个结点发生拥塞,即,r∈｛1,2,…，DJ}有:
+
+
+
+图2　系统状态X:有限状态马氏链
+　　当VCCJ的一个结点Nr(r∈｛1，2，…，DJ｝)发生拥塞时，它以概率pr转发VCCJ的信元，而以概率qr(=1-pr)丢弃信元，此时，一信元从状态0(VCCJ源结点)到达状态DJ+1(VCCJ目的结点)实际经历的平均时间为：
+
+式中f(n)0,DJ+1为从状态0到DJ+1的n步首达概率.
+　　由于
+
+所以　　　　　　　　　　　　　　
+因此
+　　　　　　　　(4)
+　　记qRr,qEr,qδr(r∈{1,2,…，DJ})分别为网络结点Nr拥塞时随机、排空和δ三种策略下对VCCJ中CLP=1信元的丢弃概率，则可由(4)式求出各自的网络资源利用率ηR,ηE,ηδ.对随机策略，
+　　　　　　　　　　　(5)
+　　对排空策略，当αi≤K/2时，队列头中有n个(1≤n≤αi)连续的CLP=1信元的概率 p≤n、队头中CLP=1信元的平均数m、平均丢弃的信元数M及队列中任一CLP=1信元被丢弃的概率qEr分别为：
+
+其中为队头中无CLP=1信元的概率.而K/2<αi<K时，类似地有：
+
+即，
+　　　　　　　　(6)
+　　在δ策略下，设当Qi发生拥塞时其中的αi个CLP=1的信元各自的转发强度分别为：
+
+　　若视δj为Qi中第j个VCC(VCCj)的转发强度Δj在Nr中的样点，则可假设每个Δj服从参数为Dj的离散均匀分布j=(1,2,…,αi)，即pjk=P{Δj=k/Dj}=1/Dj(k=1,2,…,Dj).为简化分析，假定各Δs，Δt相互独立(s,t=1,2,…，αi,s≠t)，Qi中αi个CLP=1的信元具有相同的VCC距离D，且丢弃CLP=1的信元Cj时，有：,因此：
+　　(7)
+　　由式(5),(6)和(7)知:qRr<qEr，因此，当qδr<qRr时，必有ηδ>ηR>ηE.
+　　由于： 
+　　所以，只要满足条件，δ策略就比随机和排空策略具有更高的网络资源利用率(不难验证，该条件很容易满足).
+　　(2) 信元丢失率
+　　设W为一条VCC应传送的信元总数，T是该VCC的持续时间，λi为不丢弃信元时VCCJ的每个中间结点Ni的平均信元到达率，即λi=W/T, (i=1,2,…,DJ).当丢弃信元时，必导致VCC源结点对包含该被丢弃信元的高层数据帧的重发(如数据业务)，在T不变时，这种重发意味着Ni信元到达率的增大，即此时的到达率λ′i为：
+
+　　即λ′　i≥λi.信元到达率的增大直接导致Qi业务负荷ρ(=λ/ν)的增大，从而使相应的CLR增大.在VCCJ上至多有一个中间结点发生拥塞的前提下，设系统状态Y为一个信元经过传输从VCCJ源结点到达目的结点的与否，即，Y=0示未到达，Y=1示到达.这样，Y构成图3所示的有限状态马氏链：
+
+
+图3　系统状态Y：
+有限状态马氏链
+　　这样，从状态0到状态1的平均时间μ0,1为VCCJ源结点发一个信元所对应的平均实发信元数，仅当Nr发生拥塞时，Q0=qr，P0=pr，r∈{1,2,…,DJ}.对包括Nr在内的每个下游结点Ni(i=1,2,…,r)来说，有：,由于：,即：,于是，随机、排空和δ三种策略各自的信元到达率分别为：
+
+　　　　　(8)
+
+　　因此，当qδr<qRr时，必有λδi>λRi>λEi(i=1,2,…,r).
+　　设q=1/αi,D=2(4,8,16),αi/D=5/4(20/9),K=64(16),ν=1/9.1,ρ=λ/ν,可得到“Geom/Geom/1/K”模型下无信元丢弃、随机丢弃、排空式丢弃和基于转发强度的丢弃策略各自的CLR～ρ曲线族，如图4所示.
+
+
+
+图4　无信元丢弃、随机丢弃、排空式丢弃和基于转发强度的丢弃策略的CLR～ρ曲线族
+　　在拥塞结点的Qi中各CLP=1信元具有相同VCC距离的条件下，可得出以下3个主要结论：①无论K,D,和αi的值如何变化，δ策略的信元丢失率都始终低于随机和排空式两种策略；②3种策略的信元丢失率均随K的增大而明显减小；而在相同的业务负荷ρ下，δ策略的信元丢失率也随K的增大而明显小于随机和排空式策略；③当K和αi的值确定而D由大变小时，随机和排空式策略各自的信元丢失率及二者信元丢失率之差的变化都不大，但δ策略的信元丢失率相对于前两种策略能有较明显的减小；当K和D的值确定而αi增大时，δ策略信元丢失率减小的效果比前两种策略要明显.这就是说，当信元缓冲器容量较大、缓冲器中CLP=1的信元较多或各CLP=1信元的VCC距离较小时，δ策略的信元丢失率指标能较明显地优于随机和排空两种信元丢弃策略.
+　　此外，相对于随机和排空两种策略而言，δ策略减小了一个信元从源到宿结点所经历的平均结点数，因而也相应地减小了信元的平均传输时延.
+4　结　　语
+　　基于信元已经历的相对行程(即转发强度)的概念，本文提出了一种可缓解网络结点拥塞从而有效支持CLR-QoS的信元丢弃策略：基于“转发强度”的策略，在给出信元转发强度的定义后，文中用较简单的模型分析了δ策略的网络资源利用率和信元丢失率，并与随机和排空式策略作了比较，在各VCC的距离相同的条件下得到结论：在满足时，δ策略便在网络利用率和信元丢失率方面优于随机和排空式策略；而当拥塞结点的信元缓冲器容量较大、其中CLP=1的信元数较多或各CLP=1信元的VCC距离较小时，δ策略的信元丢失率指标能较明显地优于随机和排空式策略.此外，δ策略对应的算法也不复杂，对小跨度ATM网络及单个网络结点发生一定程度的拥塞时，δ策略比随机和排空式策略更能防止该网络结点拥塞程度的加重，从而能更有效地支持(或确保)CLR-QoS，因而它能适用于小型ATM网络或单一网络结点拥塞的场合.
+　　虽然有VCC的调节参量τj可用，但δ策略的公平性问题仍值得做进一步的研究.
+本课题得到电子科学研究院电子预研基金资助.
+作者简介：程东年，男，1957年7月生，博士研究生.现主要研究方向：计算机及通信网络的理论及技术、ATM的理论及技术、网络管理.刘增基，男，1937年12月生，教授，博士生导师，国家重点实验室主任.现主要研究方向为通信理论、宽带综合业务网的理论及关键技术、ATM的理论、技术及应用.
+作者单位：西安电子科技大学综合业务网理论和关键技术国家重点实验室　西安　710071
+参考文献
+　1　Tassiulas L, Hung Y, Panwar S S. Optimal buffer control during congestion in an ATM network node.In: Proc of IEEE INFOCOM '93. San Francisco, 1993.1059～1066
+　2　Chao H J, Cheng H. A new QoS-guarantee cell discarding strategy: Self-calibrating pushout.In: Proc of IEEE GLOBECOM '94.San Francisco, 1994. 929～934
+　3　Robertazzi T G. Computer Networks and Systems. 2nd ed. New York: Springer-Verlag, 1994
+　4　Zhu H, Forst V S. In-service monitoring for cell loss quality of service violations in ATM networks.IEEE/ACM Trans on Networking, 1996, 4(2): 240～248
+　5　Gaīti D, Pujolle G. Performance managemant issues in ATM networks: Traffic and congestion control. IEEE/ACM Trans on Networking, 1996, 4(2): 249～257
+　6　Kawahara K et al. Performance evaluation and selection cell discard schemes in ATM networks. In:Proc of IEEE INFOCOM '96.San Francisco, 1996. 1054～1061
+　7　Adrian E, Doshi B T, Zoccolillo R. Controlling congestion in B-ISDN/ATM: Issues and strategies. IEEE Commun Magazine, 1991, 29(9): 64～70
+　8　Prycker M. Asynchronous Transfer Mode: Solution for Broadband ISDN. Hemel Hempstead:Ellis Horwook, 1993
+　9　B-ISDN ATM Layer Cell Transfer Performance(Rec I 356). Geneva: ITU-T,1993
+　10　Traffic Control and Congestion Control in B-ISDN(Rec I 371). Geneva: ITU-T,1993
+　11　程时端.综合业务数字网.北京：人民邮电出版社，1993
+(Cheng Shiduan. Integrated Services Digital Network(in Chinese). Beijing: People's Post and Telecommunications Publishing House, 1993)
+　12孙海荣，李乐民.ATM技术――概念、原理和应用.成都：电子科技大学出版社，1995
+(Sun Hairong， Li Lemin. ATM Technology: Concepts, Principles and Applications(in Chinese). Chengdu: Press of University of Electronic Science and Technology of China, 1995)
+原稿收到日期：1998-06-22
+修改稿收到日期：1998-12-28

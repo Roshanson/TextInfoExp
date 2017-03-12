@@ -1,0 +1,71 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+一般有向图法的实现及其应用
+简志敏　胡东成　童诗白
+　　摘　要　讨论了一般有向图法实现中的元部件完全模型知识表示、算法实现中的子算法以及对一个专家系统环境TEE的改造等问题，并给出了一个应用实例.
+　　关键词　故障树的自动建造，一般有向图法，专家系统环境.
+IMPLEMENTATION AND APPLICATION OF THE
+GENERAL DIGRAPH
+JIAN ZHIMIN　　HU DONGCHENG　　TONG SHIBAI
+(Dept. of Automation, Tsinghua University, Beijing　100084)
+Abstract　This paper discussed the knowledge acquisition of component complete medels, sub-algorithms in the complementation of the General Digraph, and the improvement to an expert system environment TEE. An example of using the new TEE to construct fault trees was given.
+Key words　Automatic construction of fault trees,general digraph, expert system environment.
+1　引言
+　　在文献［1］中，提出了一种更为系统化、更为严密的自动建树的新方法――一般有向图法.在此基础上，本文就这一方法及其算法的实现进行了探讨，并对一个AGFT(Automatic Generatoin of Fault Trees)专家系统环境TEE［1］进行了改造.
+2　对TEE系统的改造和功能扩充
+　　在发展一般有向图以前，我们曾经开发了一个用于故障树自动生成的专家系统环境TEE［1］.TEE的推理机是基于传统有向图法专门设计的.由于传统有向图法固有的困难，用TEE构造的专家系统无法为有诸如串级、多环等复杂控制结构的系统正确地构造故障树.
+　　我们对TEE系统静态知识库中的规则槽进行了改进，发展了一种新的元部件I/O
+　　功能特征及失效模式知识表示方法，即将元部件完全模型(用一般有向图表示)的每一条边作为一条规则.由于一般有向图的边有起始过程节点变量、终点过程节点变量、增益、条件等参数.因此，规则是一种带有参数的规则，其格式是
+IF()Gain(gain, conditon)THEN().
+如对于文献［2］中图3所示气压阀，其I/O功能特征和失效模式描述(完全模型)有八条规则，在静态知识库中表示如表1所示.
+表1
+　IFGAINTHEN
+gaincondition
+1M10OPENM2
+2M1+1#M2
+3P30OPENM2
+4P30CLOSEDM2
+5P30STUCKM2
+6P3-1#M2
+7@CLOSED-100#M2
+8@OPEN$(+M1)#M2
+
+　　新的TEE系统，基于一般有向图法的自动建造故障树的算法对其推理机进行了重新设计.在基于一般有向图法的自动建造故障树算法的实现中，根据系统的CID和元部件完全模型生成系统的一般有向图、系统中控制环的辩识、解系统一般有向图方程(组)等都是重要的关键的步骤.在对TEE的推理机的研究中，都分别发展了相应的子算法.同时，在新TEE系统的研究中，还发展了自动绘制故障树的算法、输出故障树结构函数的算法等［1］.
+3　一般有向图法的一个应用实例
+　　以图1温度控制系统为例来说明一般有向图建造故障树的应用.由互连图1所示多环控制系统中元部件的完全模型，得系统的一般有向图如图2所示.
+
+图1　一个温度控制系统
+
+图2　图1所示系统一般有向图
+定义顶事件为T1(+1).跟踪有向图，发现与T1相关联的有两个控制环，得系统的一般有向图方程组为
+
+　　据符号因子定义的约定，其中j的定义如下：
+
+　　由方程组的第一个方程可知，进入控制环的外部扰动有五个：M9,M5,M8,Va1. CLOSED,Va2.CLOSED.解方程组可得这些扰动在控制环中的传输路径有
+　　(1) M9=+3;
+　　(2) M9=+2且 Va1.OPEN或Va1.STUCK或TC1.BR发生，或Va2.OPEN或Va2.STUCK或TC2.BR发生；
+　　(3) M9=+1且 (Va1.OPEN或Va1.STUCK或TC1.BR发生)且(Va2.OPEN或Va2.STUCK或TC2.BR发生)；
+　　(4) M5=-3;
+　　(5) M5=-2且 TC1.BR或Va1.OPEN或Va1.STUCK发生，或Va2.OPEN或Va2.STUCK或TC2.BR发生；
+　　(6) M5=-1且(TC1.BR或Va1.OPEN或Va1.STUCK发生)且(Va2.OPEN或Va2.STUCK或TC2.BR发生)；
+　　(7) M8=-3;
+　　(8) M8=-2且Va1.OPEN或Va1.STUCK或TC1.BR发生，或TC2.BR或Va2.OPEN或Va2.STUCK发生；
+　　(9) M8=-1且(Va1.OPEN或Va1.STUCK或TC1.BR发生)且(TC2.BR或Va2.OPEN或Va2.STUCK发生)；
+　　(10) Va1.CLOSED;
+　　(11) Va2.CLOSED.
+　　根据上述方程组的解，可画出系统的故障树如图3所示.由于解中的偏差过程节点均是边界节点，因此图3所示的故障树即图1系统由一般有向图法得到的最后的故障树.
+
+图3　图1所示系统顶事件为T1(+1)时的故障树
+4　结束语
+　　故障树的自动建造是故障树分析法研究中的一个重要的活跃分支.使用基于知识的方法来实现故障树的自动建造被认为是当前的发展趋势.经过基于改造后的专用于故障树自动生成的专家系统环境TEE保留了原系统界面友好的特点，同时，由于采用更为有效的知识表示方法和推理算法，使新的TEE的应用范围更广、功能更强.经过不断完善，TEE系统有望成为故障树分析强有力的工具.
+1) 本文得到国家自然科学基金的资助.
+作者单位：清华大学自动化系　北京　100084
+参考文献
+［1］　简志敏，胡东成，童待白.控制系统故障树自动建造的一种方法.自动化学报，1997，23(3)；314-318.
+［2］　简志敏，胡东成，童诗白.TEE：一个用于故障树自动构造的专家系统环境.计算机研究与发展，1995，32(10).
+收稿日期　1994-08-19

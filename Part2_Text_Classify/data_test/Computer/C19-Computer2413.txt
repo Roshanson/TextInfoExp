@@ -1,0 +1,136 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年　第36卷　第11期　Vol.36　No.11　1999
+
+
+
+层次径向基神经网络的全局逼近理论
+於东军　王士同　吴小俊
+摘　要：文中提出了一种层次径向基神经网络HRBFN (hierarchical radial basis function network)，并且证明了HRBFN是一个全局逼近器.HRBFN更适合于具有层次结构的应用领域，因而具有极为重要的理论与应用意义.
+关键词：全局逼近器，层次网络，径向基神经网络
+中图法分类号：TP183
+UNIVERSAL APPROXIMATION THEORY OF HIERARCHICAL
+RADIAL BASIS FUNCTION NETWORK
+YU Dong-Jun, WANG Shi-Tong, and WU Xiao-Jun
+(Department of Electronics and Information. East China Shipbuil ding Institute, Zhenjiang 212003)
+Abstract　In this paper, a new hierarchical radial basis function network HRBFN is presented, and its universal approximation property is proved. HRBFN is very suitable for application domains with hierarchical structures, and therefores has very important theoretical and practical significance.
+Key words　universal approximator, hierarchical network, radial basis function network
+1　引　言
+　　至今，已有许多学者对RBFN(radial basis function network)的理论研究作出了杰出贡献.文献［1］至文献［3］对RBFN的逼近特性及其应用领域作了深入的研究，但在隐节点的选取和如何对层次系统应用RBFN方面并未涉及.笔者最近提出了RBFN的构造理论，并且给出了构造几乎最少隐节点的RBFN的算法［4］.本文提出的HRBFN旨在解决如何对层次系统应用RBFN.
+　　径向基神经网络(RBFN)已在许多领域得到了广泛应用，并且取得了很好的效果.但是在输 入数据不具有良好聚类特性时，使用的径向基神经网络的输入不能太多，因为随着输入变量数目的增加，为了使网络能达到较好的映射，网络隐层节点数目通常需急剧增加.更为重要的是，自然界中存在这样一种现象：许多应用领域呈现层次特征；变量对于系统来讲存在层次关系，即某个(某些)变量要等其它某些变量经过一定的映射得到输出后，再和此输出一起进入系统.如果使用通常的径向基神经网络来逼近该系统，就会消除系统本身固有的层次特性，并且在实现上非常困难.
+　　因此我们考虑能否依据系统的层次特性构造相应的层次型径向基神经网络HRBFN，这样既保留了径向基神经网络的优点，又能在物理意义上很好地符合系统.本文的工作表明其答案是肯定的.随后而来的问题就是层次径向基神经网络是否还是全局逼近器？如果HRBFN只是能够逼近一类有限的线性或非线性连续函数，那么它的使用范围必然大大减小.令人欣慰的是我们能够证明HRBFN仍是一个全局逼近器，这就是说对于任意的连续实函数使用层次径向基神经网络(HRBFN)来逼近它是完全可行的.典型的HRBFN如图1所示.
+
+
+图1　典型的层次径向基神经网络(HRBFN)
+　　通常的RBFN在训练时，一般可以先用聚类式SOM确定各基函数的中心及其宽度，隐层到输出 层的权系数再用最小正交二乘法来确定具有快速的优点.同样在HRBFN中的每一个子RBFN可以用聚类式SOM来确定基函数的中心，在本文的第3部分中，用一个简单的例子说明了权系数的确定过程，即通过解矩阵方程来确定，同样具有快速简单的特性.
+　　在第2部分，我们构造一个层次径向基神经网络并研究了其一些基本性质；在第3部分，使 用构造方法证明了层次径向基神经网络的全局逼近特性；最后给出了结论.
+2　HRBFN的构造及其基本性质
+　　层次径向基神经网络的基本思想是用低维径向基神经网络的组合来代替高维的径向基神经网 络.为此，我们首先来讨论一下RBFN.
+　　通常的径向基神经网络结构如图2所示.不失一般性，这里仅给出两输入、单输出的情形.输入向量=(x1,x2)，假定隐节点数目为m2,那么网络输出为
+　　(1)
+
+
+图2　径向基神经网络结构
+　　其中分别为第i个隐节点对于输入x1，x2的激励函数的中心.我们令：
+　　(2)
+　　(3)
+又由于：
+　　(4)
+因此式(1)可以重写为
+　　(5)
+　　再考虑m个当各个mip互不相同时，只要σ足够的小，对于任意给定的多么 小的ε1>0，必有
+Zpi(mip)=1　　(6)
+Zpi(miq)<ε1,(p≠q)　　(7)
+　　证明.式(7)两边取对数有
+
+即只要
+
+就可以使得式(7)成立.　　　　　　　　　　　　　　　　　　　　　　　　　　　　证毕.
+　　当ε1足够小时，认为Zpi(miq)=0,(p≠q).
+　　图3显示了i=1，即x1的满足式(7)的m个激励函数的图形.
+
+
+图3　x1的m个激励函数图形
+　　有了上面的知识,就可以构造层次型径向基神经网络.
+　　假定我们有n个输入变量x1,x2,…,xn，并且用fi(i)表示HRBFN的第i个子RBFN的输出，其中i为第i个子RBFN的输入向量.那么构造层次型径 向基神经网络的步骤如下：
+　　(1) 第一层为具有n1个输入变量x1,x2,…xn1的RBFN，也是说fi(i)中的i=1，即第一层RBFN的输出为yi=f1(1)，其中1=(x1,x2,…,xn1);
+　　(2)i=i+1，第i(i>1)个子RBFN具有ni+1(ni≥1)个输入变量，它的输出为
+fi(xNi+1,…,xN\-i+n\-i,yi-1)，其中
+　　(3)如果则转(2).若=n，结束. 
+　　这样我们就完成了HRBFN的构造.一种特殊的情形是n1=2,ni=1，见图1.下面我们将证明HRBFN的全局逼近特性.
+3　HRBFN的全局逼近特性
+　　在本节中，我们给出的HBFN仍然是全局逼近器的证明是构造性的，也即是我们构造一个H RBFN，然后证明此HRBFN具有全局逼近特性.为了标记上的简便，我们这里仅考虑三输入的情形.证明过程可以很方便地进行推广.首先来描述一下我们要解决的问题：
+　　问题1．设g()为一个定义在致密集U =［α1,β1］×［α2,β2］×［α3 ,β3］R3上的连续实函数.假定g()的显式未知，但是对某些∈U ，我们可以得到g()的样本值.我们的任务是要设计一个HRBFN去逼近g().
+　　下面就来解决这个问题.
+　　第一步：假设xi(i=1,2,3)的范围为［αi,βi］，且y1的域为［0，1］， 也即第一层的RBFN的输入为x1,x2，输出为y1，且y1∈［0,1］，其隐节点数 为m2.我们沿轴xi将区间［αi,βi］划分为m-1个等份，RBFN的激励函数采用 高斯型Zji(xi)，并且要求Zji(xi)是满足式(7)的.这样就可定义xi的m个 激励函数为
+　　(8)
+　　(9)
+　　(10)
+其中 
+　　类似地，我们可以将区间［0，1］划分为m-1个等份，并为y1定义m个激励函数也采 用高斯型Ci(y1)= 1≤i≤m, mi是y1的m个互不相同的激励函数的中心.同样的，对于任意给定的ε1＞0，只要σ足够小，必有
+Ci(mi)=1　　(11)
+Ci(mj)<ε1, (i≠j)　　(12)
+当ε1足够小时，认为Ci(mj)=0,(i≠j).
+　　这样就可以像式(8)、(9)、(10)那样，当Ci(y1)满足式(12)时，为y1定义m个激励函数，详细表达式不再赘述.
+　　图4表夺了m=4时的情形.
+
+
+图4　输入变量数目为3时的示意图(m=4)
+　　第二步：定义常量这里p,q=1,2,…,m.那 么第一个子RBFN的输出为：
+　　(13)
+由于0＜wpq≤1,且y1为wpq的加权平均,所以必定有y1∈［0,1］.
+　　第三步：第二个子RBN的系统输出为
+　　(14)
+　　现在我们就是要确定参数wij2,其过程如下：由于Zj3(m3j)=1, 对于k≠j有Zk3(m3j)=0, 并且对于任意的y1∈［0,1］,至多存在两个Ci(y1)为非零值.因此由式(14)我们可以知道下式成立：
+　　(15)
+其中i为{1,2,…,m-1}中的某个数.
+　　我们令f2(wpq1,m3j)=g(m1p,m2p,m3j)，则得到下式：
+　　(16)
+我们固定j，任取p或q使之从1变化到m，这样就得到式(16)的m个方程，写成矩阵形式就是
+　　(17)
+其中这里取p从1变化到m，q保持不变.为一个m× m的矩阵，其中每一行只有两个不为零的元素且p为行，i,i+1为列.这样通过解下述矩阵
+　　(18)
+就可以得爰m个wij2，这样当j糍由1变化到m后，就能够确定所有的m2参数wij2.
+　　第四步：这样，就得到整个HRBFN为
+f(x1,x2,x3)＝f2(f1(x1,x2),x3)　　(19)
+　　现在，我们要证明式(19)所表示的HRBFN能够以任意精度来逼近未知函数g.
+　　定理1. 设f(x1,x2,x3)为式(19)所表示的HRBFN ，并且待逼近函数g(x1,x2,x3)为定义在致密集U=［α1,β1］×［α2,β2 ］×［α3,β3］R3上的连续实函数，那么有下式成立：
+　　(20)
+其中‖*‖max定义为且
+　　证明. 首先我们来证明，对于任意的,q,j=1,2,…,m，有f(m1p,m2q,m3j)=g(m1p,m2q,m3j)成立.
+　　由式(13)可知，对于p,q=1,2,…,m,有f1(m1p,m2q)=wpq1.由式 (18)得到的wij2保证了f2(wpq1,m3j)=g(m1p,m2q,m3j)，因此，我们有
+f(m1p,m2q,m3j)=f2(f1(m1p,m2q),m3j)=f2(wpq1 ,m3j)=g(m1p,m2q,m3j). 
+　　再设由于因此我们有
+　　(21)
+这就意味着对于任意的∈U，必定存在Upqj，使得∈Upqj.
+　　我们设为U中任意一点，必定存在对应与的px,qx,jx∈{1,2,…,m-1} ，使得∈Upqj.我
+们取=(m1px,m2qx,m3jx)T，就有f()=g().再由中值定理：
+其中mix为中的第i个元素.由于∈Upqj，所
+以|xi-mix|≤bi.至此我们有
+　　(22)
+由于为定义域U内的任意一点，因此由式(22)就能够得到式(20).　　　　　　　　　　证毕.
+　　定理2. 对于任意给定的定义在致密区间U∈R3上的连续实 函数以及ε2＞0，存在形如式
+(19)的HRBFN，满足下式：
+　　(23)
+　　证明. 由于是连续函数且U是致密区间，所以均为有限数.因此，只要我们使得bi足够小，必定可以使得
+　　(24)
+由于只取m足够大，使得bi足够小总是可以办到的.　　　　　　　　　　　　证毕.
+　　上面的证明过程有一个基础，就是要求各个变量的激励函数满足式(7)，也就是说式(6)中的ε1要足够的小，这总是可以办到的.
+4　结　论
+　　通过第3节的证明，我们已经知道HRBFN仍为全局逼近器，因此在实际的层次系统中应用HRB FN是完全可行的.此外，HRBFN还能够解决使用RBFN造成隐节点随着输入变量数目增加而急剧增多的问题.进一步要研究的问题有：HRBFN的泛化能力分析；初始值对HRBFN的稳定性影响及误差分析，这是笔者目前正在做的工作.
+*本课题得到国家自然科学 基金高技术项目(编号69843002)、国家教委优秀青年教师基金项目和江苏省跨世纪人才基金 项目的资助.
+作者简介：於东军，男，1974年10月生，硕士研究生，主要研究方向为神 经网络、人工智能.
+　　　　　王士同，男，1964年10月生，教授，博士生导师，主要 研究方向为模糊数学、神经网络、人工智能.
+　　　　　吴小俊，男，1967年12月生， 博士研究生，主要研究方向为模式识别与智能系统、模糊神经系统.
+作者单位：华东船舶工业学院计算机系　镇江　212003
+参考文献
+1　Lin C T et al. Neural Fuzzy Systems. England Prentice-Hall Press, 1997
+2　Powell M J D. Approximation heory and Methods. Cambridge：Cambridge University Press, 1981
+3　Barron A. Universal approximation bounds for superpositions of sigmid funtion, IEEE Trans Information Theory, 1993, 39
+4　Wang Shitong, Yu Dongjun. Constructive theory of radial basis function network. Accepted by Journal of Advanced Software Research, 1999
+5　Wang Lixin. Universal approximation by hierarchical fuzzy systems. Fuzzy Sets and Systems. 1998, 93(2): 142～148
+6　李士勇. 模糊控制、神经控制和智能控制论. 哈尔滨:哈尔滨工业大学出版社, 1996
+　　(Li Shiyong. Fuzzy Control, Neural Control and Intelligent Cybernetics( in Chinese)，Harbin: Harbin Institute of Technology Press, 1996)
+7　张立明. 人工神经网络的模型及其应用. 上海:复旦大学出版社，1992
+　　(Zhang Liming. Models and Applications of Artificial Neural Networks(in Chinese). Shanghai:Fudan University Press, 1992)
+原稿收到日期：1998-12-24；修改稿收到日期：1999-08-20.

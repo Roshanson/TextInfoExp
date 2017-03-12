@@ -1,0 +1,140 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第5期 Vol.36 No.5 1999
+
+
+
+用语义联想支撑基于内容的视频检索
+庄越挺　潘云鹤　芮勇　Thomas S.Huang
+摘　要　视频检索的传统方法之一是首先从视频中摘取出文本信息(如标题、关键字等等)，然后基于这一关键字集上回答用户的查询.由于自动摘取文本信息的过程至今尚未自动化，因而从视频中摘取信息主要由人工来完成，这在实际应用上证明是不现实的.另一种方法则是上一情形的极端，即它是利用低层的视频内容，诸如颜色、纹理、形状、运动特征等等，目的在于克服人工摘取关键字所涉及的困难.文中提出了基于ToC视频结构的语义表达，从视频的字幕中提取出语义信息，然后用WordNet，一个电子词汇系统来提供语义联想.该方法已应用于WebMARS的视频信息检索系统中，运行结果表明系统的检索性能大大得以改善.
+关键词　视频检索，字幕，镜头，景像
+中图法分类号　TP391；TP18
+USING SEMANTIC ASSOCIATION TO SUPPORT 
+CONTENT-BASED VIDEO QUERIES
+ZHUANG Yue-Ting, PAN Yun-He,
+(Department of Computer Science,Zhejiang University，Hangzhou　310027)
+Rui Yong, and Thomas S.Huang
+(University of Illinois at Urbana-Champaign)
+Abstract　The traditional way of video retrieval is to annotate the video, get textual information such as caption, keyword, and so on, and then answer users' query based on this information. Since automatic annotation is still impossible, this approach is rather limited. Another approach is to utilize the low-level video content, such as color, texture, shape, and motion feature, the purpose of which is to overcome the difficulties encountered in human annotation. It is understood that user's query should be based on both the textual information and its visual contents. The ToC-based semantic representation is put forward. The basic keyword set is obtained from closed-caption. Combined with WordNet，an electronic lexical dictionary, a prototype system-WebMARS VIR is implemented.
+Key words　video retrieval, closed-caption, shot, scene
+1　引　　言
+　　目前，越来越多的视频出现在各Web站点之中，Internet正在成为一个巨大的视频仓库.如何有效地检索视频则成为数据库领域以及信息检索领域中研究的关键问题.
+　　传统的视频检索方法是首先人工地从视频中摘取出文本信息(如通过逐帧地播放)，然后基于文本型的关键字进行查询.更进一步，有些系统中甚至摘取出视频中包含的对象以及对象之间的关系［1，2］.比如在文献［2］中，系统首先手工地从视频中摘取出详细的文本信息，然后系统便能够处理非常复杂的查询.比如“找出所有出现在Gene Kelly和Giner Rogers婚礼上的人物”，很显然，由于Web上存在的视频的量之巨大，手工摘取信息是不现实之举.
+　　另一途径则是完全忽略语义内容，使得查询完全基于图像/视频的特征内容，比如颜色、纹理、布局等等，其目的是摆脱手工方法既费时，而又带主观性的限制.至今，这方面的研究正方兴未艾［3］.
+　　文中认为，用户最适合使用的查询应是既涉及关键字又涉及视频低层内容的.一种方法是通过与视频相随的字幕(closed-caption)，从中摘取出关键字.文中将着重提出如何用语义联想提高基于内容的视频数据库检索的性能.
+2　总体系统结构
+　　由于视频信息量之巨大，完全手工建立索引无法做到.文中的研究宗旨便是使能够由计算机自动完成的部分最大化.图1所示为Web-MARS①视频信息系统(VIR)中对于视频内容的提取结构.
+
+
+图1　WebMARS VIR中集成的视频提取模型
+　　① MARS即“multimedia analysis and retrieval system”，是UIUC开发的系统［4］，并正在扩展到面向Web的使用，文中介绍的是作者完成的视频检索系统这一部分.
+　　视频的内容，如镜头边界、关键帧等被提取出来之后，自动地加入到数据库之中.对于那些有字幕相随的视频，语义内容(文本、关键字)也同时被提取并自动地建立在数据库之中. 
+　　视频对象的表达是关键问题.下节中将提出一个称为视频内容表(ToC)［5］的层次化表达结构，并提出如何在该结构中包含语义内容.图2所示为视频低层特征内容与语义相结合的查询处理模型.
+
+
+图2　WebMARS VIR中的查询处理模型
+　　考察下列情形，假设有一个用户给出的查询为：
+　　找出含有与此图同样多动作(action)的镜头?(同时给出例子图像).
+　　系统将在数据库中匹配单词“action”，若它包含在VDB之中，则相应的视频镜头就返回，否则，触发WordNet以找出同义词类(称Synset)，然后进一步在VDB中查询.在该例之中，“action”既可指“military action”，也可指“human activity”，由于WordNet具有这样的特性：每一个名词都属于同一树上的某一个结点，因而总是可以通过追溯“action”到达根结点，沿途的各节点的语义与数据库相比较，其结果是收敛的.
+3　视频对象的表达――视频内容表(ToC)法
+　　为了能对视频进行索引以至浏览，首要的任务是找到一个有效的方法来表达视频.已有方法中最为通常的一种方法是结构化的模型方法［6］. 
+　　试想这样一个问题：一个读者是如何浏览一本1000页的书的内容的.在阅读整本书之前，他可能先翻到书的内容表(table of content,ToC)，找到哪一章或者哪一节迎合他的需要.假如他在头脑中有一特定的问题(即询问)，比如找到一个术语或者一个关键字，他将翻到书的索引页，从而找到包含该问题的相应的书中章节.简言之，书的ToC帮助读者浏览全书，而书的索引则帮助读者进行检索(即搜索).前者在读者头脑中尚无特定的问题时非常有用，通过浏览ToC，使得其信息的需要更加特定和具体.而后者在读者已有特定的信息需求时，则特别有用.在帮助读者了解全书内容时，两者所起的作用同样重要，然而，就目前的视频表达而言，我们缺少的却正是ToC以及索引.这就需要研究构造ToC和索引来支撑对视频的访问.
+　　视频流可层次地表达为5层结构，分别为视频(video)、场景(scene)、组(group)、镜头(shot)以及关键帧，从上到下粒度增大.图3所示为层次化的视频表达.其中场景定义为一组语义上相关联及在时间上相邻接的镜头的集合，组则被视为在物理层镜头和语义层场景之间的中间层，用来在两者之间建立起桥梁.组的例子有时间上邻近的镜头，或者在视觉上相似的镜头，由不同的组组成为有语义联系的场景.
+
+
+图3　层次化的视频表达
+　　为了支撑不仅仅是基于内容的浏览，而且是基于内容的检索，我们需要将语义结合到ToC结构中.图4所示为视频ToC与语义的对应关系.
+
+
+图4　支持浏览以及检索双重功能的视频表达
+　　为了能处理多种类型的基于视频的表达，我们就必须事先建立起多种类型的索引，因为ToC结构主要支撑浏览.为支撑检索，我们从视频中提取出下列实体内容：
+　　――事件(event)
+　　――对象(object)
+　　――地点(site)
+　　――关键字(keyword)
+　　不同的实体，所对应的ToC的层次不一样(图4).对于关键字而言，它与ToC中所有的部件相对应，关键字可以是某种抽象的；对象是指在镜头或关键帧中被识别出的物体, 事件是所发生的事情，地点是事件发生的地方.比如“人在公园里散步”是一个事件，“公园”是“地点”， “人”是对象，该公园是“××人在××年建造的”等等作为关键字被提取.
+　　不同的实体，可以有多种语义联系，用“链接加权值”(link weight)(［0，1］之间)来刻画某一ToC中的实体与语义实体之间的连接的强弱程度.比如某一段视频A的第一个镜头与“狗”的LW为0.9，它表明“狗”是该镜头之中的一个重要语义内容，这种链接权值起到ToC和语义索引之间进行“前后”(back and forth)转换的连接作用.
+4　视频的语义内容提取
+　　如何自动并且有效地获取视频中包括的语义内容?主要的一种方法是从与视频相依附的字幕中获取文本信息.
+4.1　视频字幕(closed-caption)
+　　在视频中附带字幕信息的最初出发点是为了让失去听力的人也同样能够观看电视.为了支撑基于视频内容的检索，文中采用的方法是将字幕信息提取出来并建立起语义索引.
+　　视频中的字幕是在标准NTSC视频信息的第一个场的第21行中加上一个编码后的复合数据结合到电视节目中去.这些字幕文本包含了与节目有关的一些东西.在许多情况下，则对视频节目中的声音部分中讲话内容的直接表达.当被解码时，每一帧中或者包含控制字符，或者是至多两个的字母数字型字符.把若干帧中的这样一些字符连在一起将会产生一个单词或者是一句子.控制字符用于决定文本的属性，比如颜色、字型、缩进以及在屏幕中的位置，它将用于字幕的解码.
+　　在我们的系统中，首先使用Broadway(一种基于PC的影像制作卡)来对视频进行数字化，并且使用SunBelt公司的字幕捕捉卡TextGrabber，在获取字幕的同时，对视频中有关帧的物理位置同字幕关键字或关键句子建立起对应关系，如图5所示.
+
+
+图5　视频字幕获取流程图
+　　分析字幕文本同视频节目的内容，大致可归纳出下面几类：
+　　(1) 描述型的字幕.即字幕完全是对节目中发生的情景的描述.如在美国Discovery频道播放的动物世界节目，字幕上的则是画面上正在发生的，二者具有良好的对应关系.
+　　(2) 对话型的字幕：即字幕是画面上人物之间的对话，字幕的内容与画面的情景毫无联系.如室内二人的对话，涉及的内容却是某一次战争.从用户查询的角度看，用户可以根据事件(如“A和B正在交谈”)也可以根据对话的内容分别进行查询，例如：一部电影中某些精彩的对话会使人难以忘怀，用户可以藉所记忆的片言只语，查询出所需要的视频片断.
+　　图6所示为单词与物理帧之间的对应表.
+
+
+图6　单词与物理帧的对应表
+如下是从美国电影“独立日”(Independence Day)中摘取的一段字幕：
+　　……
+　　It is so fuzzy.
+　　
+　　oh, no.
+　　　　Good morning, Lucas
+　　You see these? I got a whole god damn crop full of these
+　　If your father's not in the air in 20 minutes ……
+　　［whispers］
+　　all right, go ahead. Put it on.
+　　General, You might want to watch this.
+　　TV: Ladies and gentlemen，……
+　　……
+　　从上看出，处于中括号‘［ ］’之中的字幕对应的是声音(sound)的语义，也可看成是一种事件的语义.构造的对应表之例如表1.
+表1　例表
+
+文本内容 开始帧 结束帧
+fuzzy 10 17
+horn honks 18 33
+lucas 50 57
+whisper 420 430
+
+
+4.2　字幕文本的解析
+　　针对某一个镜头，需把它所对应的字幕文本提取出来，通过一个关键字提取器AZ Tagger①对文本信息进行解析.镜头和关键字之间的链接权值是按lw=tf×idf计算的，tf和idf分别代表单词频率(term frequency)以及逆文档频率(inverse document frequency)，即一个单词在一个文档中出现的频率越高，对lw的贡献越大，若一个单词在多个文档中出现，则其倒数(即idf)反映了对lw的贡献.
+　　① AZTagger是美国亚利桑那大学和伊利诺斯大学合作开发的概念提取器.4.3　WordNet
+　　WordNet是普林斯顿大学的George Miller等人开发的电子词典系统.WordNet的名词部分是按照相接近含义的概念(称为Synset)组织的.WordNet中的每一个名词都具有一个或若干个含义(sense)，而每一个含义都有与其它不同的同义词集.由不同的连接关系组成不同的名词集合.IS-A组成的名词集称为hypernyms/hyponyms,MEMBER-OF关系组成holonyms,PART-OF组成meronyms，见表2. 
+表2　WordNet关系
+
+关系名 名词集合
+IS-A hypernyms/hyponyms
+MEMBER-OF holonyms
+PART-OF meronyms
+
+　　WordNet提供了概念之间的IS-A关系(图7)，它是用来衡量概念之间距离的重要特征.
+
+
+图7　WordNet的IS-A层次树例
+　　比如：在字幕中出现的某一关键字是“vehicle”而在用户的询问中采用的术语则是“car”，通过这棵IS-A树，可以计算出与“car”距离最为接近的概念是“vehicle”.
+　　在AI的研究中，语义网络是表达语义之间关系的有效工具，但所存在的问题是：构造语义网络非常费时费力，而WordNet则是一个现成的大型的语义网络.
+　　两个概念节点之间的距离可以由下式进行计算，设tqr,tdb分别为用户询问以及数据库中的单词结点，则其距离定义为：
+　　
+　　T是为正规化目的而预设的阈值，因而距离的范围为［0，1］，如果T很低，那么两个可能相似的概念将被标识为远距离(不很相似)，但是若T很高，计算的时间就要长一些.
+5　实验结果
+　　本实验把上述原理：ToC组织结构、WordNet字幕文本的提取应用于WebMARS的视频信息检索系统(VIR)之中.Informix Universal Server for Unix(V9.12)被用作视频存储和索引的DBMS.此视频数据库的数据来源于由Web爬虫(crawler)获得的URL的所指出的Web站点.目前，为了测试VIR，我们已经预载了20个视频片断.
+　　视频数据库中的视频根据ToC的结构存储，处于客户端的Web应用程序将用户的查询送到httpd 服务器端，激发CGI程序进行处理.CGI程序与WordNet以及Informix数据库相通. 图8中用户给定的查询为“找到所有出现Lady和Gentleman的视频镜头”.在视频数据库中，根据字幕而存储的文本信息是“woman”和“man”，由WordNet查到“man”和“gentleman”，“Woman”和“Lady”的语义联想关系如下： 
+　　Gentleman→man→male→person,……
+　　Lady→woman→female→person，……
+　　返回的结果如图8所示.
+
+
+图8　运行一例
+6　结　　论
+　　本文中，研究了基于ToC的视频结构，从视频字幕中提取出基本的关键字集.用WordNet进行语义联想以提高检索性能，最后实验结果显示了这一用语义联想来支撑基于内容的视频检索的有效性.
+本课题得到国家自然科学基金资助(项目编号 69803009).
+作者简介：庄越挺，男，1965年6月生，博士，副教授，研究方向为智能CAD、多媒体信息检索、人工智能.潘云鹤，男，1946年11月生，教授，中国工程院院士，主要研究方向为计算机图形学、智能CAD、形象思维.芮勇，男，1970年3月生，博士研究生，主要研究方向为多媒体信息检索.Thomas S.Huang，男，1935年6月生，博士，教授，主要研究方向为计算机视觉.
+作者单位：庄越挺　潘云鹤　浙江大学计算机科学系　杭州　310027
+　　　　　芮　勇Thomas S.Huang　美国伊利诺斯大学
+参考文献
+　1　Chang S,Jungert E.Pictorial data management based upon the theory of symbolic projections.Journal of Visual Languages and Computations,1991,10(3):195～215
+　2　Adali S,Candan K S,Chen S -S et al.Advanced video information system: Data structures and query processing.Multimedia Systems,1996,4(4):172～186
+　3　Gupta A,Jain R.Visual information retrieval.Communications of the ACM,1997,40(5):30～42
+　4　Huang T S,Mehrotra S,Ramchandran K.Multimedia analysis and retrieval system (MARS)project.In:Proc of 33rd Annual Clinic on Library Application of Data Processing――Digital Image Access and Retrieval.San Jose,CA,1996.260～265
+　5　Rui Y,Huang T S,Mehrotra S.Exploring video structures beyond the shots.In:Proc of IEEE Conf Multimedia Computing and Systems.Austin,Texas,1998.237～240
+　6　Rubin B,Davenport G.Structured content modeling for cinematic information.ACM SIGCHI Bulletin,1989,21(2):78～79
+　7　Salton G,McGill M J.Introduction to Modern Information Retrieval.New York:McGraw-Hill Book Company,1983
+原稿收到日期：1998-07-03
+修改稿收到日期：1998-11-30

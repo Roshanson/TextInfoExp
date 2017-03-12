@@ -1,0 +1,89 @@
+计算机工程
+Computer Engineering
+1999年　第25卷　第4期　Vol.25　No.4　1999
+
+
+
+在CIMS中支持STEP应用协议的研究与实现
+周憬　董金祥　李善平
+摘　要　讨论了STER中性文件和数据交换技术,给出了从GS-ICCC的全局产品数据结构到STEP Part203结构模型的映射,同时也介绍了CAD/CAPP集成的STEP应用协议Part224的应用情况,以及数据库共享技术中的标准数据存取界面SDAI技术。
+关键词　STEP面向对象数据库管理系统 标准数据存取界面
+Research and Implementation of STEP Application Protocol in CIMS
+Zhou Jingmin DongJinxiang Li Shanping
+（Artificial Intelligence Institute of Zhejiang University，CAD/CG State Key Lab.HangZhou 310027)
+Abstract:This paper discusses two data exchange technologies,STEP neutral file and database,and gives a map from data structure of GS-ICCC to STEP Part 203 data model.Also,this paper introduces the application in STEP Part 204 protocol for feature based integration of CAD/CAPP,SDAI in technology of database share.
+Key words:STEP;OODBMS;SDAI
+　　80年代以来，国际标准化机构颁布了STEP等开放的数据交换标准，我们在完成国家863计划CIMS主题项目--"产品模型为基础的集成化CAD/CAPP/CAM系统"(GS-ICCC)的过程中，解决了CAD系统与STEP数据模型的不一致问题，实现了基于STEP中性文件的数据交换。
+　　与STEP中性文件相比，基于面向对象数据库管理系统的共享数据库对于数据的集成、交换和共享更为方便、灵活和高效。提出了以STEP产品数据模型为核心的全局产品数据模型，以OODBMS为产品数据管理的支撑环境，在GS-ICCC系统中实现CAD、CAPP、CAM各系统的信息集成，并提供了基于共享数据库和STEP中性文件的数据交换接口。还将这种技术运用于PDM系统中，从而大大提高了PDM系统数据集成的性能和效率。
+1　GS-ICCC支持的STEP Part 203中性文件
+　数据交换
+　　STEP AP203根据各种CAD系统在实现上的需要，将实现途径划分为6个相对独立的一致性测试分类集(Class 1～Class 6)，其中Class 1为配置信息模型，Class 2～Class 6的每个类根据不同CAD系统的需要，提供了具有不同层次描述能力的各种形状表达模型，并且每个模型都带有Class 1中所描述的配置管理信息。主要讨论了GS-ICCC与STEP AP203 Class 2～Class 6的各个形状表达模型之间基于STEP中性文件的信息交换方式。
+　　Class 2～Class 6中共包括7个形状表达模型，分别为：
+　　1)　几何有界的曲面形状表达模型Geometrically_bounded_surface_shape_represetation
+　　2)　几何有界的线框形状表达模型Geometrically_bounded_wireframe_shape_repre-sentation
+　　3)　基于Shell的线框形状表达模型Shell_based_wireframe_shape_representation
+　　4)　基于edge的线框形状表达模型edge_based_wireframe_shape_representation 
+　　5)　流形曲面形状表达模型Manifold_surface_shape_representation
+　　6)　基于面片边界的形状表达模型Faceted_brep_shape_representation
+　　7)　高级边界形状表达模型 Advanced_brep_shape_representation
+　　其中第1～2种属于Class 2，第3～4种属于Class 3，第5种属于Class 4，第6种属于Class 5，第7种属于Class 6。
+
+图1从中性文件到GB-ICCC描述模式转换流程图
+　　根据难易程度和开发商对STEP Part 203的支持情况，一致性分类集的实现次序通常为：C4，C2，C6，C5，C3。其主要原因是：
+　　1)C4，C2相对简单，作为一个突破口，可以首先实现；
+　　2)C6相对较难，但是被开发商们支持的比较多；
+　　3)C5相对于C6简单一些，在实现C6之后比较容易实现；
+　　4)C3相对来说被开发商支持的比较少，可以放在最后实现。
+　　从1992年起，开始STEP的研究和开发工作，现已完成对C2的支持，基本实现了对C4和C6的支持，目前的工作是完善对C6、C5的支持。限于篇幅，本文仅给出了STEP AP203的C4形状模型的特点、结构，及其实现方案。
+1.1　从中性文件到GS-ICCC
+　　首先给出从STEP中性文件到GS-ICCC全局产品数据模型的数据转换流程。如图1所示。首先通过一个转换器，将STEP AP 203 Express模式集转换为OODBMS的数据模式，进而再转换为C语言规范的描述模式，依据该描述模式，文法识读器读入中性文件描述模式至内存描述模式的ObjectSet中，最后通过后处理器转换到CAD数据模型。
+1.2　从GS-ICCC到中性文件
+　　从GS-ICCC全局产品模型到中性文件的数据转换流程如图2所示。
+
+图2　从GS-ICCC到中性文件转换流程图
+1.3　Class4形状模型(MSSR)
+　　流形曲面形状模型 (manifold_surface_shape_repre-sentation) 是一种用有边界二流形表示产品外形或外形的一部分的形状模型。流形曲面模型包含一组外壳，外壳由一组面组成，面用边、点引用几何实体，开壳和闭壳两个连通面集的子类被引用。连通面集不可被独立地实例化。拓扑实体不能脱离其几何域而存在。
+
+图3　主要映射关系
+　　流形曲面形状模型与GS-ICCC模型在拓扑上可以找到对应关系，但在几何表示上未必有一一对应关系，当不对应时，可以寻找可等价映射实体实现模拟映射。映射时以拓扑关系为纽带，逐次遍历拓扑元素并完成几何信息模型映射(图3)。
+1.4　CAD/CAPP集成技术
+　　CAD/CAPP集成技术是CIMS中的难点之一，CAD偏重于产品的几何特征，CAPP则偏重于产品的工艺特征，两者并不一定存在映射关系。STEP的Part203和Part224是CAD/CAPP数据集成中两个重要的应用协议。STEP Part 224为不同系统间的数据交换提供了统一的标准。考虑到STEP尚处于发展和完善的过程中，CAD/CAPP集成系统不必要，也不可能完全单独实现，所以在具体应用中，只是在最后的工艺文件生成阶段，才通过专门的数据交换模块，将数据库中的数据转换成STEP Part 203中性文件。工艺数据转换为的STEP Part 203中性文件的流程如图4所示。相应的，利用前文的前处理器处理STEP Part 203中性文件，可以将其转换成CAPP定义的数据结构，如图5所示。通过这两个STEP读写工具，就可以同其它系统进行信息交流。
+
+图4　工艺数据转换为STEP Part 203中性文件流程
+
+图5　中性文件转换为CAPP定义的数据结构
+2　GS-ICCC支持产品数据库共享集成方式及评价
+2.1　GS-ICCC支持产品数据库共享集成方式
+　　GS-ICCC系统实现了在OODBMS支持下的共享数据库集成。STEP目前尚未提出数据库实现方式的技术文本，从STEP标准数据存取界面(SDAI)的工作草案来分析，支持STEP的数据库管理系统至少应具备以下两个符合STEP标准的功能：支持Express模式描述，支持SDAI，这样，应用程序员可以用Express语言描述数据模式，通过SDAI操作数据，而不必关心具体的数据库管理系统功能。因此，首先需要将Express模式转换成OODBMS的DDL，这一功能由Express转换器提供。SDAI是由OODBMS提供的一个符合STEP规范的数据存取应用程序接口(API)，以函数库的形式提供给STEP应用系统的开发人员。目前，GS-ICCC系统在基于STEP标准定义的全局产品数据模型上实现了与OODBMS的信息共享和数据交换。
+　　CAD、CAPP、CAM系统对共享数据库的访问通过各自的数据库存取接口完成。这些数据库存取接口由应用程序员调用SDAI函数编写而成。这一集成方式如图6所示。
+
+图6STEP交换文件实现过程
+　　Express转换器的结构如图7所示，它具有以下功能：
+　　1)Express描述语法正确性检查；
+　　2)Express模式到OODBMS的DDL转换；
+　　3)Express模式到数据字典转换；
+　　4)Express模式到C语言结构转换；
+　　5)Express模式到C++语言结构转换。
+
+图7　Express转换器
+2.2　SDAI的实现与评价
+　　SDAI是STEP的标准应用程序界面，应用程序通过SDAI存取产品数据。SDAI提供的数据存取功能包括：对用Express语言描述的数据实体的存取和操作，单个应用程序进程中同时访问多个数据存储库，应用程序进程将操作组成单元组，决定保存或取消这些单元组。
+　　SDAI从结构中分为以下几部分：用Express描述的SDAI的环境、SDAI 操作、一致性检查、语言联编。其中，SDAI环境包括数据字典模型、SDAI session模型、SDAI抽象数据模型；SDAI操作包括环境操作、session操作、存贮库操作、SDAI模型操作、模式操作、   类型操作、实体实例操作、应用实例操作、聚合操作，应用程序通过这些操作对数据进行存取。
+　　SDAI适用于基于数据库和中性文件的数据集成，这种数据集成使得数据交换机制的实现细节在SDAI规定的功能上对用户保持一致，用户只要关注于进行交换的数据，而不必关心数据的交换机制，只要数据是符合STEP标准的，即是Express建模或DDL建模描述的，就可以通过SDAI进行存取。不过，在基于数据库的集成中，SDAI尚未能完全实现数据库的功能，这是由SDAI的与底层独立的特性决定的，因此，数据库的其它功能需要通过DML来实现。
+　　根据SDAI文本，采用C_binding形式和迟联编的方法实现了SDAI，已实现的主要功能包括：状态操作、出错处理、数据操作等，其中数据操作部分包括类型操作、项目实例操作、应用实例操作、聚合类型的操作。
+　　SDAI是必不可少的数据存取界面，但其本身并不完善，有一些细节还有待进一步的改进和发展，特别是与数据库集成时。它的主要缺陷有以下几个方面：
+　　1)SDAI不能覆盖数据库的所有功能，因此不能完全作为DML使用。由于STEP还可以用中性文件这一较低级的集成方式实现，所以现有SDAI文本中的功能实际上是中性文件方式和数据库方式所能实现的功能的交集。因此，SDAI对数据库的典型操作如查询、版本、事务等方面均无涉及。
+　　2)SDAI中对数据分区作了规定，但对多个分区的数据之间的相互关系却无任何支持，而在实际工程中，不同项目的数据间的相互引用是经常有的。
+　　3)SDAI中的一些函数如果采用隐式数据类型显得自然，如Validate函数。采用隐式数据类型，在存取数据时自动检测其类型，而不是将类型信息直接提供给用户，这样更能够体现数据库对一致性和完整性的支持，并提高数据操作的层次。
+　　4)SDAI中的出错处理没有定义为exception方式，目前是由用户显式调用错误查询函数的方式来检查出错情况，因此SDAI的当前文本定义中要求用户经常性地调用错误查询函数，这给编程带来许多不便。
+　　5)SDAI共有近百个函数，略嫌烦琐。有一些函数是可以用一个上层函数提供统一的入口，如对不同的聚合类型的操作，可以找到各类的聚合形式，检查操作的合法性，并调用相应的操作。
+　　根据上述设计思想，在UNIX环境下用C语言实现了STEP Part 203的前后处理器，数据库共享，并通过了863验收专家组的鉴定。
+　　应该看到，STEP在具体应用中，尚有许多不完善、不正确之处，通过和航天有关单位的项目合作，从工程方面对STEP应用协议进行了一些修正和完善。同时PDM的发展为STEP的应用提供了更为广阔的空间，将进一步完善现有的STEP协议处理器，并将其应用于PDM系统的设计与实现中。
+作者简介：周憬　男，25岁，研究生，研究方向：STEP技术、PDM
+作者单位：浙江大学人工智能研究所,CAD&CG国家重点实验室杭州310027
+参考文献
+　1　Mantyla M.GWB--A Solid Modeler with Euler Operators.IEEE Computer Graphics Applications，1982，2(7)：17-31
+　2　ISO 10303-203：Industrial Automation Systems and Integr-ation-product Data Representation and Exchange-Part1：Part203：Application Protocol：Configuration Controlled Design，1986
+　3　董金祥，杨小虎.产品数据表达与交换标准STEP及其应用.北京：机械工业出版社，1993-07
+　4　ISO 10303-11：Industrial Automation Systems and Integr-ation-product Data Representation and Exchange-Part11：Description Methods：the Express Language Reference Manual.1986
+收稿日期：1998-06-25

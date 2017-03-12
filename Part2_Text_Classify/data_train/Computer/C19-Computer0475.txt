@@ -1,0 +1,93 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.387-391
+
+
+
+Flow-shop系统的鲁棒性与最优鲁棒控制
+戴世雄　戴志勇
+摘　要　使用极大代数模块网络法，研究Flow-shop离散事件动态系统(DEDS)在没有缓冲器下的无阻塞鲁棒性及最优鲁棒控制.提出了系统鲁棒性的Kharitonov-like判据；证明了最优鲁棒控制是一类线性状态反馈；还讨论了鲁棒控制系统的周期稳定性和鲁棒极点对摄动参数的敏感性.
+关键词　DEDS，极大代数，鲁棒性，鲁棒控制.
+ON ROBUSTNESS AND OPTIMAL ROBUST CONTROL FOR
+FLOW-SHOP SYSTEM
+DAI Shixiong
+(University of Mississippi,USA))　
+DAI Zhiyong
+(Wuhan Textile college, Wuhan　430074))
+Abstract　　Using the maximum algebra block network method,this paper studied the robustness and optimal robust control of flow shop system without buffer and blocking.It presented the Kharitonov-like finite check criterion of robustness for the case of no buffer and no blocking.It proved that optimal robust control is a kind of linear state feedback.It also discussed the period stability and the sensitivity of robust pole to the parameter perturbations.
+Key words　DEDS， maximum algebra, robustness, robust control.
+1　引言
+　　本文研究的Flow-shop DEDS是指n个工件在m台机器上进行批量生产的串行生产线系统，记作S.S有性能L是指在批量生产过程中工件流或机器流在没有缓冲器下无阻赛.由于工件流系统与机器流系统可以相互转化，故本文只讨论工件流系统.有别于Kalman的(A，B，C)或(F，G，H)标称模型，本文用极大代数模块网络法建立系统S的网络模型，把系统的资源投入时刻参数和工件在机器上的加工时间参数统一地纳入区间摄动参数空间，并在这个空间上研究L鲁棒性的有限检验以及最优鲁棒控制等问题.
+
+2　网络模型
+　　设T=［θi，j］m×n为S的加工时间矩阵，为参数θi，j的摄动区间且0≤i，j≤i，j；E=｛ei，j｜i＝0，1，…，m；j＝0，1，…，n｝表示S的工艺活动集或工序事件集，其中ei，j表示机器Mi加工工件Pj的工艺活动，资源投入活动ei，0，e0，j称为虚工艺活动；y［0］＝［x1，0，x2，0，…，xm，0］，u［1］＝［x0，1，x0，2，…，x0，n］分别表机器和工件的投入时刻向量或矩阵.
+　　约定＝［xi，0，xi，0］，＝［x0，j，x0，j］，令Ii，j＝引入与文［1］类似的参数空间Θ=I0，1×Ι0，2×…×I0，n×I1，0×I1，1…×I1，n×…×Im，0×Im，1×…×Im，n，让V(Θ)表示超方体Θ的顶点集.
+　　对容量无限的缓冲区系统S，引入极大代数运算
+　　　　(1)
+上式中tM（ei，j），tP（ei，j）分别表示机器Mi加工完毕工件Pj而释放和Pj被Mi加工完毕而释放的最早时刻，当θi，j＞0时，令xi，j＝tM（ei，j）＝tP（ei，j）.
+　　根据运算(1)，使用文［2］的方法建立S的模块网络结构G［E］＝［G（ei，j）］m×n，记有网络结构G［E］的系统
+S=(［θi，j］m×n，y［0］，u［1］，G［E］）.
+　　S的2mn个状态tM（ei，j），tP（ei，j）在输入y［0］和u［1］下，可以通过动态规划方程(1)在模块网络G［E］上快速迭代出来.
+　　取时钟k时机器的投入时刻向量
+y［k－1］＝［x1，0（k），x2，0（k），…，xm，0（k）］　　　(2)
+为S的输入，取工件的投入时刻向量
+u［k］＝［u1（k），u2（k），…，un（k）］=［x0，1（k），x0，2（k），…，x0，n（k）］(3)
+为S的控制向量.
+　　设［θi，j］m×n满足条件i,ji（1≤ji≤n)使得θi，ji＞0，j＞ji时θi，j＝0.取时钟k时机器的释放时刻向量
+y［k］＝［y1（k），y2（k），…，ym（k）］＝［x1，j1（k），x2，j2（k），…，xm，jm（k）］
+(4)
+为S的输出，并由式(2)，(3)和(4)构造开环系统
+Sopen＝（［θi，j］m×n，y［k－1］，u［k］，G［E］），　　　(5)
+其中将yi（k－1）＝xi，ji（k－1）无时延地馈作时钟k时Mi的输入yi(k)并取某种线性状态反馈u［k］＝y［k－1］K构成闭环输出反馈控制系统
+　　　(6)
+其中表示由G［E］和反馈弧构成的反馈网络
+3　定常系统的几个基本引理
+　　由式(1)和L的定义可以证明如下的引理.
+　　引理1.　定常Sopen有性能L，当且仅当
+tP［ei，j］≥tP［ei＋1，j－1］，i＝0，1，…，m－1，j＝1，2，…，n.　　　(7)
+　　引理2.　定常Sopen有性能L，当且仅当
+(8)
+下面的引理虽然是文［3］定理2的结论，但作为引理1，2的推论显得更自然.
+　　引理3.　定常Sopen有性能L，当且仅当
+　　　　(9)
+　　引理4.　若K由式(9)定义，u［k］＝y［k－1］K， 则Sclose的系统矩阵M存在唯一的特征值
+λ（M）＝［a1bj1，a2bj2，…，aibji，…，ambjm］K1　　　(10)
+和属于λ（M）的最小特征向量
+　　　(11)
+使得
+　　　(12)
+当时，k≥2,其中
+
+　　证明.　矩阵M可由y［0］的m个单位脉冲输入，最优L控制律u［1］＝y［0］K的m个控制响应和由引理2给出的y［1］的m个输出响应来构造，表达式为M=Block［a1bj1K1，a2bj2K1，…，ambjmK1］.因为M中不存在ε（－∞）元，故M为不可约矩阵，其特征值必存在唯一，又因
+
+故λ（M）是M的唯一特征值，y*［0］是属于λ（M）的最小特征向量；当不是M的特征向量时，是属于λ（M）的特征向量；最后，从y［1］＝λ（M）y［0］（y［0］＝y*［0］）, u［2］＝λ（M）u［1］和y［2］＝λ（M）y［1］（y［1］＝y*［1］）, u［3］＝λ（M）u［2］出发，逐项递推便得到结论(12).证毕.
+4　区间摄动系统的鲁棒性与最优鲁棒控制
+　　由引理1和引理2可导出下面定理.
+　　定理1.　Θ上摄动Sopen［Θ］有L鲁棒性，当且仅当θ∈Θ有
+　　(13)
+　　根据定理1或文［1］的定理1可以证明如下定理.
+　　定理2.　Sopen［Θ］有L鲁棒性，当且仅当
+　　　　(14)
+　　令xi，0＝（y（k－1））i，x0，j＝（u（k））j，可改写式(14)为矩阵形式.
+　　定理3.　Sopen［Θ］L鲁棒性的Kharitonov-like判据(14)有矩阵形式
+u［k］≥y［k－1］Kr,　　　(15)
+其中
+
+　　推论1.　u［k］＝y［k－1］Kr是Sopen［Θ］的最优L鲁棒控制.
+　　推论2.　Sclose［Θ］的最优L鲁棒控制u［k］＝y［k－1］Kr是一类线性状态反馈.
+　　定理4.　最优L鲁棒控制系统Sclose［Θ］的系统矩阵
+
+有唯一特征值和属于λ（Mr)的最小特征向量且λ（Mr)满足不等式其中
+
+　　证明.　Mr，λ（Mr)的构造法与引理4中M和λ（M）的造法类似，而则可由λ（Mr）是敏感参数的非减函数得到.
+证毕.
+　　戴世雄　1985年于武汉大学空间物理系获无线电物理硕士学位，1994年到美国密西西比大学读学位，获硕士学位后曾在一家通讯公司任射频工程师，近期回国在中兴通讯公司的一个研究所任职.感兴趣的研究领域为通讯系统的设计与优化及DEDS的建模、控制与应用.
+　　戴志勇　1962年毕业于四川大学数学系，1987年于武汉纺织工学院评为副教授，感兴趣的研究领域为排序理论及DEDS的建模与控制.
+戴世雄（密西西比大学电机工程系　美国）
+戴志勇（武汉纺织工学院 基础部　武汉430074）
+参考文献
+［1］　赵千川，郑大钟.离散事件动态系统时序的鲁棒性. 自动化学报，1997，23(4)：433～438
+［2］　戴志勇，戴世雄.一类DEDS的建模与最优控制.见：中国控制会议论文集，1995，883～888
+［3］　陈文德.串行生产线无阻赛最优控制与调度. 控制与决策，1996，11(3)：374～377
+收稿日期　1998-03-23
+修稿日期　1999-06-07

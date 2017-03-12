@@ -1,0 +1,117 @@
+软件学报
+JOURN AL OF SOFTWARE
+1999年　第10卷　第10期　Vol.10　No.10　1999
+
+
+
+运行时消除指针别名歧义方法的加速比分析
+乔 林 汤志忠 张赤红 苏伯珙
+摘要 采用软硬件结合的运行时消除指针别名歧义方法SHRTD(software/hardware run-time disambiguation)适用于不可逆代码,同时,它的代码空间受到限制,不存在严重的代码可重入性问题.文章详细分析了SHRTD方法的指令级并行加速比,给出了发生地址冲突后的并行加速比与平均并行加速比以及发生地址冲突的依概率并行加速比.文章引入的三类理论加速比对指令级并行编译技术的研究和评测有重要的实际意义.
+关键词 指令级并行性,超长指令字,指针别名,歧义相关性,加速比.
+中图法分类号 TP302
+Analyzing Speedups of a Run-Time Pointer Aliasing Disambiguation Method
+QIAO Lin1 TANG Zhi-zhong1 ZHANG Chi-hong1 SU Bo-gong2
+1(Department of Computer Science and Technology Tsinghua University Beijing 100084)
+2(Department of Computer Science William Paterson University USA)
+Abstract A new run-time pointer aliasing disambiguation method, SHRTD, combined with software and hardware techniques, can be used for irreversible code and has very limited compensation code space and no serious rerollability problem. In this paper, instruction-level parallel speedups of the SHRTD method are analyzed in detail. Speedups and mean speedups where address conflicts occurred and speedups where address conflicts will occur according to their probabilities are given. Three theoretical speedups introduced in this paper are very useful for studying and evaluating instruction-level parallel compiling techniques.
+Key words Instruction-level parallelism, very-long instruction word, pointer aliasing, ambiguous dependence, speedup.
+　　当前的超长指令字(very-long instruction word,简称VLIW)编译器都采用静态代码调度和软件流水的方法开发程序的指令级并行性(instruction-level parallelism,简称ILP)[1].这两种方法最大的局限是存在内存访问的歧义相关性(ambiguous dependence)问题.编译器即使能够处理数组静态别名分析,也不能够很好地处理指针别名(pointer aliasing)分析.为解决指针别名问题以获得更高的隐含指令级并行处理加速比,文献[2]提出了两种运行时消除歧义性(run-time disambiguation,简称RTD)的方法,即运行时检查(run-time check)方法和运行时补偿(run-time compensation)方法.将这两种方法应用于软件流水时,运行时补偿方法虽然允许不确定的内存访问,但它只适合那些可逆代码[2];运行时检查方法虽然适用于任何代码,但存在代码可重入性(rerollability)问题.这两种方法共同的缺陷是存在严重的代码空间问题,尤其是在全局软件流水中可能导致巨大的补偿代码空间开销.
+　　因此,文献[3]提出了一种基于软硬件结合的运行时检查方法SHRTD(software/hardware run-time disambiguation).SHRTD的基本思想是:(1) 在检测到内存地址冲突时,为延迟不正确的LOAD操作及其后继操作,功能单元在歧义的LOAD操作之前插入NOP操作;(2) 为保证所有延迟操作执行顺序的一致性,编译时就确定执行NOP操作的所有功能单元的顺序和NOP操作的数目.
+　　SHRTD方法具有下述3个优势:(1) 因为运行时检查方法没有代码重做问题,所以它特别适合任何不可逆代码;(2) 因为任何SHRTD只需要一个SHRTD控制指令,补偿代码的代码空间并不大;(3) 不存在代码可重入性问题.然而,该文对SHRTD方法的分析不够完善,只针对具体两个例子给出了分析结果,没有产生完整的理论分析结论.本文在文献[3]的基础上对SHRTD方法展开更深入的研究,给出了SHRTD方法较完整的理论分析结果,得出了发生地址冲突的依概率并行加速比和发生地址冲突后的并行加速比与平均并行加速比的理论值.本文的结果对指令级并行编译技术的研究和评测具有重要的实际意义.
+1　SHRTD方法
+　　SHRTD方法假设:(1) 所有的操作都只占用一个时钟周期;(2) 所有的PE共享一个单一的内存片,且每个PE只有1个内存读单元、1个内存写单元和4个循环控制单元.
+1.1 硬件基本结构
+　　一个完整的指令级并行计算机加速系统主要由主机、采用超标量体系结构的单处理机和采用VLIW体系结构的8个处理单元(PE)串联的多处理机三大部分组成.每个PE包含11个功能单元,即2个ALU、2个乘法器和2个内存访问端口和4个循环控制单元.该VLIW处理器能够在一个时钟周期中处理4个整数操作、2个内存访问操作和4个分支操作.SHRTD的硬件支持环境包括:(1) 在指令存储器上添加了一个大小为D×W的存储延迟操作的指令缓冲区,W是VLIW指令的宽度,D=dmax+1,这里,dmax是大多数流行程序中的最大值;(2) 一个从指令缓冲区或正常的指令存储器选择操作的多路选择器MUX,MUX的数目等于VLIW指令字的操作域数目;(3)SHRTD控制指令缓冲区和SHRTD WORD只读寄存器.
+1.2 相关定义和定理
+　　本节引入相关定义和定理,有关定理的证明请参阅文献[3].
+　　定义1(安放距离). 设op1和op2是程序中已安放的两个操作,且在原始串行代码中操作op1在操作op2之前.若安放后它们之间间隔的VLIW操作数目为N,则这两个操作的安放距离
+ 　　　　　　　　　　(1)
+　　定义2(代码补偿量). 设op1和op2分别是程序中两个已安放的歧义STORE和LOAD操作,且它们的安放距离d(op1,op2)<0.当检测到地址冲突时必须补偿一些空操作以延迟不正确的LOAD及其后继操作,我们称这些补偿的空操作数目为代码补偿量(code compensation measure).
+　　定理1. 若op1和op2安放在不同的内存端口,则相应的代码补偿量Ω=|d(op1,op2)|+1.
+给定一个循环程序,其中的每一个操作在不同的迭代上都有一个安放位置,同一个操作在不同迭代上的安放位置是不同的.因此,下面我们定义体内安放距离和体间安放距离的概念,用来描述操作在不同迭代上的具体安放信息.
+　　定义3(体内安放距离和体间安放距离). 对任意一个迭代次数为n的循环中的操作op1和op2,设op1(k)和op2(j)分别表示op1和op2的第k次和第j次迭代,1j n,1 k n.如果j≠ k,称安放距离d(op1(k),op2(j))为体间安放距离;如果j= k,称安放距离d(op1(k),op2(j))为体内安放距离.考虑到操作op1和op2在循环体不同迭代的体内安放距离是相同的,故可将体内安放距离简记为dinn(op1,op2).
+　　循环程序的软件流水算法必须在循环调度前确定循环的体间启动间距I,即相邻两次循环迭代的第1个操作之间的体间安放距离.一旦确定了循环体间启动间距I,则有以下定理.
+　　定理2. 给定循环的体间启动间距I.设op1(k)和op2(j)分别是循环程序中两个已安放的歧义LOAD和STORE操作,且它们的体内安放距离为dinn(op1,op2),体间安放距离d(op1(k),op2(j))< 0,j< k.若op1(k)和op2(j)安放在不同的内存端口,则一次迭代需要插入的SHRTD操作个数.
+　　定理3. 给定循环的体间启动间距I.设op1(k)和op2(j)分别是循环程序中两个已安放的歧义LOAD和STORE操作,当SHRTD检测到地址冲突时,相应的代码补偿量
+Ω＝|d(op1(k),op2(j))|+1=dinn(op1,op2)-(k-j)×I+1. 　　　　　　　(2)
+2　SHRTD方法的并行加速比分析
+　　本节从理论上讨论SHRTD方法的并行加速比.因为代码并行执行时具有不确定性,要精确地分析最终代码的复杂度和代码空间大小是非常困难的,这里,我们使用概率论来分析SHRTD的并行加速比.
+　　定理4. 设循环程序的体间启动间距为I=1,循环的串行代码总长度为l,循环次数为n.设op1和op2分别是循环程序中两个已安放的歧义LOAD和STORE操作,且体间安放距离dinn(op1,op2)＝d,则某次发生jd次体差为d, jd- 1次体差为d- 1,…, j1次体差为1的地址冲突后的并行程序加速比
+. 　　　　　　　　　　　　　　(3)
+在一次迭代的过程中,发生一次地址冲突后的算术平均代码补偿量
+,　　　　　　　　　　　　　　　　　　 (4)
+发生m次地址冲突后的算术平均并行加速比
+.　　　　　　　　　　　　　　 (5)
+证明:由定理3可知,发生体差为x的地址冲突时的代码补偿量Ωx=d-x+1,1xd,则在某次发生jd次体差为d, jd- 1次体差为d- 1,…, j1次体差为1的地址冲突后,总的代码补偿量.当串行执行该程序时,总的时钟周期为l×n,并行执行时装入和排空阶段分别需要l-1个时钟周期,在没有检测到地址冲突时,流水阶段需要n-2个时钟周期.由于在运行时检测到地址冲突,则总的并行执行周期为 
+,
+因而此时程序的并行程序加速比
+.
+　　在一次迭代的过程中,发生一次地址冲突后的算术平均代码补偿量
+,
+因而发生m次地址冲突后的算术平均并行加速比
+. 
+　　例1:设某个循环程序的长度l=6,两个歧义LOAD操作和STORE操作的安放距离d=3.产生一次地址冲突后的算术平均代码补偿量,产生m次地址冲突后的算术平均代码补偿量.
+　　当j1＝0,j2=0,j3=0时,不存在任何地址冲突,该循环程序的并行加速比当n→∞时的极限;当j1＝n,j2=0,j3=0时,全部地址冲突的体差都为1,加速比当n→∞时的极限;当j1＝0,j2=n,j3=0时,全部地址冲突的体差都为2,加速比当n→∞时的极限;当j1＝0,j2=0,j3=n时,全部地址冲突的体差都为3,加速比当n→∞时的极限.这些结果与文献[3]的分析一致.
+　　定理5. 假设在不同迭代发生地址冲突的概率事件相互独立,且同一次迭代上不同体差的地址冲突的概率事件互斥,并设在一次循环迭代过程中发生体差为d的地址冲突的先验概率为pd,发生体差为d- 1的地址冲突的先验概率为pd- 1,…,发生体差为1的地址冲突的先验概率为p1,定理的其他条件同定理4,则发生m次地址冲突的代码补偿量ｍ是m的概率的函数,且
+　　　　　 (6)
+其中 
+　　　　　　　　 (7)
+此时的并行加速比依概率为
+　　　　　　　　　　　　 (8)
+　　证明:注意到发生某次jd次体差为d, jd- 1次体差为d- 1,…, j1次体差为1的地址冲突的概率为
+　　　　　　　 (9)
+则发生m次地址冲突的概率
+　　　 (10)
+因而发生m次地址冲突的代码补偿量
+
+Ωp(m)显然是m的概率的函数.因此,发生m次地址冲突的并行加速比依概率为
+.　　　　　　　　　　　　　　 □
+　　当发生不同的地址冲突时,程序的并行加速比并不相同.作为在程序执行前估计并行加速比的一种手段,依概率的并行加速比Sp(m)意味着可以期望获得的并行加速比,它是衡量SHRTD方法有效性的重要参数.下面的例2显示了定理4和定理5之间的关系.
+　　例2:仍使用例1的参数.根据定理5,发生m次地址冲突时的平均代码补偿量
+
+假设在一次迭代过程中不同体差的地址冲突为等概率事件,即p=q=r,则
+,
+故 
+
+这个结果同样与使用定理4得到的结果以及文献[3]的分析一致.
+引理1.
+　　　　　　　　　　　　　　 (11)
+证明:由,有
+　　　□
+　　定理6. 定理的条件同定理5,则发生地址冲突后的平均代码补偿量
+　　　　　　　　　　　　　　　　 (12)
+发生地址冲突后的平均并行加速比
+.　　　　　　　　　　　　　　　　　 (13)
+发生地址冲突后的平均并行加速比当n→∞时依概率收敛于
+　　　　　　　　　　 (14)
+　　证明:考虑到Pm事实上是可能发生或可能不发生地址冲突的一次n重Bernoulli实验,则有,即
+.
+从而发生地址冲突的总代码补偿量依概率
+
+故由引理1,发生地址冲突后的平均代码补偿量
+
+发生地址冲突后的平均并行加速比则为.发生地址冲突后的平均并行加速比当n→∞时依概率收敛于. □
+　　此结果与概率有关,它是衡量SHRTD方法平均性能的重要参数.当地址冲突为0概率时,极限值显然为l.
+3　结 论
+　　文献[3]提出的SHRTD方法采用软硬件结合的运行时消除指针别名歧义方法SHRTD,适用于不可逆代码,同时,它的代码空间受限,不存在严重的代码可重入性问题.
+　　本文在此基础上对SHRTD方法展开更深入的研究,详细分析了SHRTD方法的指令级并行加速比,并给出了完整的理论分析结果.本文得到的发生地址冲突的依概率并行加速比和发生地址冲突后的并行加速比与平均并行加速比的理论值对指令级并行编译技术的研究和评测具有重要的实际意义.
+注释：本文研究得到国家自然科学基金资助。
+作者简介：乔林：1972年生，博士生，主要研究领域为计算机并行编译技术，Petri，并行程序
+　　　　　的形式语义
+　　　　　汤志忠：1946年生，教授，主要研究领域为计算机并行体系结构，并行算法，并行编
+　　　　　译技术。
+　　　　　张赤红：1964年生，副教授，主要研究领域为计算机并行算法，并行编译技术
+　　　　　苏伯珙：1938年生，教授，博士生导师，主要研究领域为软件流水算法，并行编译技
+　　　　　术
+作者单位：乔林、汤志忠、张赤红:清华大学计算机科学与技术系 北京 100084
+　　　　　苏伯珙：William Paterson大学计算机科学系 美国
+参考文献
+1　Rau B R, Fisher A. Instruction-level parallel processing: history, overview, and 
+　　perspective. Journal of Supercomputing, 1993, 7(1):9～50
+2　Nicolau A. Run-time disambiguation: coping with statically unpredictable 
+　　dependencies. IEEE Transactions on Computers, 1989, 38(5):663～678
+3　汤志忠,乔林,张赤红等.一种运行时消除指针别名歧义的新方法.软件学报,1999,10
+　　(7):685~689
+　　(Tang Zhi-zhong, Qiao Lin, Zhang Chi-hong et al. A new run-time pointer aliasing
+　　disambiguation method. Journal of Software, 1999,10(7):685～689)
+收稿日期；1998-06-22修稿日期：1998-11-06

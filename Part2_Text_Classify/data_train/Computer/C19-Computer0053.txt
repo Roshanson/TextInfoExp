@@ -1,0 +1,140 @@
+计算机工程
+COMPUTERENGINEERING
+1999年　第25卷　第7期　Vol.25　No.5　1999
+
+
+
+基于VB和DLL的硬件端口控制方法
+徐击水 李毅
+摘要 简要介绍16位和32位Windows系统下,用户动态连接库的开发、调用及实现VB对硬件端口的控制方法。
+关键词 动态连接库DLL Visual Basic Visual C++ ISA总线 PCI总线
+Computer Inport & Outport Control Method Based on DLL
+Xu Jishui Li YI
+Wuhan University of Hydraulic & Electric Engineering Wuhan 430072
+Abstract：This article introduces the methods of progamming DLL under the 16-Bit and 32-Bit Windows environment，and clarifies the realization of VB controling computer Inport&Outport by Using DLL
+Key words：Dynamic Link Library（DLL）；Visual Basic；Visual C++；ISA bus；PCI bus
+　　Visual Basic (简称VB)是一种可视化的面向对象的编程语言，深受广大Windows程序员的喜爱。但和任何其它语言一样，VB并不能满足所有的编程需要，例如没有提供读写硬件端口、控制中断等硬件控制函数。而在一些工业控制场合，往往需要对硬件板卡进行读写操作，如果控制软件是采用VB编写的，就很有必要对其进行功能扩充，使其具有操作硬件的能力。实现VB功能扩充的方法一般是编写DLL、VBX等。
+1　用户动态连接库(DLL)的开发
+　　动态链接库DLL(Dynamic Link Library)是Windows最显著的特点之一。在Windows中，动态链接库提供了执行不是它本身执行代码部分函数的调用方法。该函数的执行码位于动态链接库中，包含一个或多个与使用它们的过程分开编译、链接和存储的函数。与传统的静态链接库相比，其优点主要有：①执行时才连接，不同的应用程序能够共享，因此节约内存空间；②可方便地供采用其它语言的程序调用。
+　　一个DLL就是一个函数库，当一个程序要调用其中某函数时，Windows就从DLL中读出并运行之。DLL由Windows管理，应用程序调用DLL都是由Windows将其调入内存并执行的。
+　　Windows操作提供很多DLL库,包括"User.Exe"，"Kernel.Exe"，"Gdi.Exe"等。这些库提供从硬件驱动到GUI界面设计工具等等的成千上万个函数。Windows应用程序接口(API)是一组动态链接库，任何使用Windows API的过程都使用动态链接。程序员还可以根据需要编写自己新硬件设备的DLL设备驱动函数库，使Windows很方便地支持它们的应用与开发。
+　　Visual C++1.52和Visual C++2.0都提供开发DLL途径。要建立DLL，首先要建立一个或多个源文件(.C)和一个模块定义文件(.DEF)。源文件包含DLL中的输出的函数。.DEF文件列出这些函数并定义DLL的其它属性。编译程序使用.C文件建立目标码文件(.OBJ)。库管理程序从.DEF文件建立一个输出文件(.EXP)和一个输入库文件(.LIB)。最后，链接程序使用.OBJ、.EXP和.LIB文件产生DLL的库文件。.OBJ和.EXP文件提供链接程序需要产生.DLL文件的信息。.LIB文件包含链接程序需要解决DLL外部引用地址的信息，这样程序在运行时能找到指定的DLL。
+2　VB调用DLL方法
+　　VB通过声明和执行DLL函数可以调用Windows的各种函数、功能以及程序员自己新硬件设备的DLL设备驱动函数，就像调用自己的函数一样方便。VB调用DLL函数，分两个步骤进行：①用Visual Basic的Declare语句声明要使用的DLL过程或函数；②执行DLL子程序。
+　　目前PC机总线形式主要有ISA(16bits)、PCI(32bits)和VESA(32bits)，对于ISA总线一次可以读写16bits(a word)，而对于PCI和VESA总线一次可以读写32bits(double word)。下面分别介绍16bits和32bits Windows系统中，VC语言编写的DLL函数以及VB对DLL的调用。
+3　16位系统中用户动态连接库的开发及调用
+3.1　使用Visual C++1.52编写16位的DLL函数
+　　(1)建立DLL的C语言源文件(DLL的实现部分)
+　　//PORT16.CPP
+　　#include <windows.h>
+　　#include <conio.h>
+　　//使DLL可被非C的其它语言调用，此声明必不可少且需定义为全局变量
+　　//这些函数适用于ISA PCI VESA总线
+　　extern"C"
+　　{ int _export WINAPI Inportb(int port);　　//input a byte 
+　　void _export WINAPI Outportb(int port,int data);　　//output a byte
+　　int _export WINAPI Inportw(int port);　　//input a word
+　　void _export WINAPI Outportw(int port,int data);　　//output a word
+　　}
+　　//DLL标准入口点
+　　int FAR PASCAL LibMain(HINSTANCE hInstance,WORD wDataSeg,WORD wHeapsize,LPSTR lpszCmdLine)
+　　{ if(wHeapsize!=0)UnlockData(0);　　return 1;}
+　　//DLL标准出口点
+　　int FAR PASCAL _export WEP(int nParam)
+　　{ return 1;}
+　　//端口输入函数(byte)
+　　int _export WINAPI Inportb(int port)
+　　{ return _inp(port);}
+　　//端口输出函数(byte)
+　　void _export WINAPI Outportb(int port,int data)
+　　{ _outp(port,data);}
+　　int _export WINAPI Inportw(int port)　　//input a word
+　　{ return _inpw(port);　}
+　　void _export WINAPI Outportw(int port,int data)　//output a word
+　　{ _outpw(port,data);}
+　　(2)建立DLL模块定义文件(DLL的输出部分)
+　　//PORT16.DEF
+　　LIBRARY　PORT16
+　　EXETYPE　WINDOWS
+　　CODE　PRELOAD　MOVEABLE　DISCARDABLE
+　　DATA　PRELOAD　MOVEABLE
+　　HEAPSIZE　4096
+　　EXPORTS
+　　(3)生成动态连接库port16.dll
+　　VC++1.52生成DLL与其编译普通的Windows应用程序类似，区别在于Project Type(工程文件类型)中选择 Windows Dynamic-Link Library(.DLL)类型。Project工程文件名称为PORT16，包含PORT16.CPP和PORT16.DEF两个文件。
+3.2　VB4.0-16Bit调用DLL
+　　以下例子通过对打印端口378H进行读写操作(写出和读入数据应相同),说明VB调用DLL过程和方法。运行结果：在窗口中不断显示从端口读入的数据0-255。
+　　 '在(General)中声明DLL过程或函数
+　　Private Declare Sub Outportb Lib "port16.dll"(ByVal port As Integer,ByVal data As Integer)
+　　Private Declare Function Inportb Lib"port16.dll"(ByVal port As Integer)As Byte
+　　Private Declare  Sub Outportw Lib"port16.dll"(ByVal port As Integer,ByVal data As Integer)
+　　Private Declare Function Inportw Lib"port16.dll"(ByVal port As Integer)As Integer
+　　Dim data As Integer
+　　 '在Form中初始化data
+　　Private Sub Form_Load()
+　　data=0
+　　End Sub
+　　 '建立一个定时器控件和Label控件
+　　Private Sub Timer1_Timer()
+　　Call Outportb(&H378,data)　 '调用port16.dll库中的Outportb( )函数,输出数据
+　　Label1.Caption=Inportb(&H378) '调用port16.dll库中的Inportb( )函数,输入数据并显示
+　　data=data+1
+　　If data>255 Then data=0
+　　End Sub
+4　32位系统中用户动态连接库的开发及调用
+4.1　使用Visual C++2.0编写32位的DLL函数
+　　(1) 建立DLL的C语言源文件
+　　在32位系统中编写DLL与16位中规则不同，WIN32的DLL不再需要LibMain和WEP,代之的是DLLMain,若无特别申明DLL数据归所有进程共用,也就是说，这一进程中的所有线程都可访问这些数据，这使得编写DLL方便多了。这因为在一般下我们的应用程序文件属于一个进程，并且端口读写不涉及数据共享，即不需要写DLLMain函数。
+　　//PORT32.CPP
+　　#include <windows.h>
+　　#include <conio.h>
+　　//函数Inportd()和Outportd()仅适用PCI和VESA总线
+　　extern"C"
+　　{LONG FAR PASCAL Inportb(LONG port);　//input a byte
+　　LONG FAR PASCAL Inportw(LONG port);　//input a word
+　　LONG FAR PASCAL Inportd(LONG port);　//input a double word
+　　VOID FAR PASCAL Outportb(LONG port,LONG data);　//output a byte 
+　　VOID FAR PASCAL Outportw(LONG port,LONG data);　//output a word
+　　VOID FAR PASCAL Outportd(LONG port,LONG data);　//output a double word
+　　}
+　　LONG FAR PASCAL Inportb(LONG port)　//input a byte
+　　{return _inp((int)port);}
+　　LONG FAR PASCAL  Inportw(LONG port)　//input a word
+　　{return _inpw((int)port);}
+　　LONG FAR PASCAL Inportd(LONG port)　//input a double word
+　　{return_inpd((int)port);}
+　　VOID FAR PASCAL Outportb(LONG port,LONG data)　//output a byte
+　　{_outp((int)port,data);}
+　　VOID FAR PASCAL Outportw(LONG port,LONG data)　//output a word
+　　{_outpw((int)port,(int)data);}
+　　VOID FAR PASCAL Outportd(LONG port,LONG data)　//output a double word
+　　{_outpd((int)port,data);}
+　　(2) 建立DLL模块定义文件 
+　　//PORT32.DEF
+　　LIBRARY PORT32
+　　EXETYPE WINDOWS
+　　CODE　PRELOAD　MOVEABLE DISCARDABLE
+　　DATA　PRELOAD　MOVEABLE
+　　EXPORTS
+　　Inportb
+　　Outportb
+　　Inportw
+　　Outportw
+　　Inportd
+　　Outportd
+　　(3)生成动态连接库port32.dll(与16位系统的生成方法相同)
+4.2　VB4.0-32Bit和VB5.0调用DLL
+　　'在(General)中声明DLL过程或函数
+　　Private Declare Sub Outportb Lib"port32.dll"(ByVal port As Integer,ByVal data As Integer)
+　　Private Declare Function Inportb Lib"port32.dll"(ByVal port As Integer)As Byte
+　　Private Declare Sub Outportw Lib"port32.dll"(ByVal port As Integer,ByVal data As Integer)
+　　Private Declare Function Inportw Lib"port32.dll"(ByVal port As Integer)As Integer
+　　Private Declare Sub Outportd Lib"port32.dll"(ByVal port As Integer,ByVal data As Long)
+　　Private Declare Function Inportd Lib"port32.dll"(ByVal port As Integer)As Long
+　　以后的使用方法同16Bit的一样(略)。
+作者简介：徐击水 男，36岁，讲师，主研方向：电力系统自动化，计算机软、硬件开发
+作者单位：武汉水利电力大学 武汉 430072
+参考文献
+1　郑庆华.Visual Basic 3.0 for Windows程序设计指南.西安：西安 电子科技大学出版社, 1995
+2　张道军，黄成哲.在VFP中利用DLL实现硬件端口控制.微电脑世界,1997-03
+收稿日期：1998-09-07

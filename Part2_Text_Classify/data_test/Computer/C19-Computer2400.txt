@@ -1,0 +1,191 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年　第36卷　第10期　Vol.36　No.10　1999
+
+
+
+一种基于Web的网络管理模型及实现
+李木金　王光兴
+　　摘　要　随着网络的复杂和异构化，迫切需要计算机网络管理工具的管理.文中提出了一种基于Web的网络管理模型.该模型采用历史数据模型作为存储网络管理信息的模型，并以此作为基础，能够进一步地研究网络的高级管理（如积极网络管理）策略和高速网络的管理结构.文中给出了该模型软件实现的层次结构.最后给出了该模型的原型描述和实现.
+　　关键词　Web，网络管理模型，积极网络管理，网络管理
+　　中图法分类号　TP393
+A MODEL AND IMPLEMENTATION FOR WEB-BASED
+NETWORK MANAGEMENT
+LI Mu-Jin and WANG Guang-Xing
+(Center for Network & Communications, Northeastern University, Shenyang 110006)
+　　Abstract　As today's network has become more complex and heterogeneous as well, there is a growing demand for network management tools. A model for Web-based network management is proposed in this paper. A temporal data model is adopted as the underlying information model, and more complex management application(e.g., proactive network management) methods and management architecture of high-speed networks are studied. ATM switches are built on the top of the model. Moreover, the services provided by this model, as well as the architecture of its related software supporting them are presented. The description of the prototype is also given at the end of the paper.
+　　Key words　Web, network management model,proactive network management,network management
+1　引言
+　　随着计算机网络和通信规模的不断扩大及其复杂和异构化，迫切需要按照网络管理标准来管理网络.目前主要有两大网络管理标准：ISO的OSI系统管理和IETF的简单网络管理协议（SNMP）.
+　　现有的网络管理系统，例如HP的Open View，IBM的System View AIX，SNA、Cabletron的Spectrum，DEC的Polycenter，Sunsoft的SunNet Manager和Madge的True View等等，这些只提供了最基本的网络监视和以一般的图形用户接口（GUI）的形式显示所要求的报警及管理信息功能，而没有存储历史数据的功能［1，2］.
+　　基于Web的网络管理系统的一般结构是基于浏览器（browser）-服务器（server）结构(参见图1).每个被管理的网络设备含有一个代理（agent），它维持着一个局部的管理信息库（MIB），并且和驻留在服务器的管理应用通过网络管理协议SNMP［3］或CMIP［4］进行通信.管理应用和管理代理之间的交互允许管理信息库的信息检索和修改，从而得以实现从监视网络的状态到改变网络配置的各种网络管理功能.
+
+
+图1　基于Web的网络管理的一般结构
+　　随着数据库和WWW(world wide web)技术的不断发展，网络管理采用数据库存储从MIB那里采集的管理信息，将网络管理的当前和过去（甚至将来的）信息保存在数据库里.在此基础上，利用数据库存储的网络管理信息进行分析和预测，建立积极的网络控制和管理策略等高级网络管理方法，以及研究高速网络的管理体系结构（如ATM交换机）.基于Web的网络管理可以不受操作平台的限制，在任何一台与之相连的Web浏览器上就能浏览到网络管理软件.当网络节点或链路发生故障时，网络管理系统能够自动地向网络管理员发E-mail或打电话等.网络管理人员可以不在现场，在任何地点的任何一台与之相连的Web浏览器上就能对它所管理的网络进行管理.
+　　本文中，我们首先对OSI定义的网络管理功能作了分析，并且详细地给出网络管理模型和它的设计.然后描述了实现该网络管理模型的软件结构和网络管理的功能.最后给出了该模型的描述和实现.
+2　网络管理模型
+2.1　概念
+　　目前有两种不同的网络管理信息模型，一种是ISO［4］的，另一种是IETF［3，5］的.两种模型均以所谓的被管理的对象为中心，构成管理信息库（MIB）.ISO的信息模型是充分面向对象的，被管理的对象是被管理的对象类的例程.而IETF模型较简单，其中被管理的对象能够分成两类：标量(scalar)对象和表格（table）对象.表格对象是标量对象的二维数组，该标量对象就是管理信息库的简单变量.
+　　被管理的网络节点设备不论采用哪一种模型，但它必须为所有的网络管理功能提供管理信息，而且每个管理功能所需求的管理信息在很大程度上是不同的（参见图2）.为此，我们将管理信息库（MIB）信息进行了详细分类.
+
+
+图2　网络管理功能与管理信息之间的关系图
+　　第1，根据网络管理信息的作用，管理信息可以分成测量数据、结构数据和控制数据3种类型［1］，测量数据表示网络可观测的状态，它是一种原始的数据.结构数据描述网络物理和逻辑的结构，控制数据捕获网络的操作设置.第2，按照管理信息变化频率来分，管理信息可以分成准静态对象和动态对象两类.准静态对象描述了当前的网络配置（例如主机的接口数目、路由表等），它们的值几乎不变.而动态对象与网络事件有关（例如包发送数目等），它们的值变化频率高.第3，根据网络管理对时间的要求，例如一个实时性能监视的管理应用和一个离线性能数据分析的管理应用，对时间要求有着根本的不同.这种差别要求我们在设计网络管理系统时，要建立具有共享功能的历史管理信息库.另外我们将时间分成3个区域：实时时间区域、时间非临界区域和全程时间区域.实时时间区域与实时操作有关，时间非临界区域与某段时间有关的操作有关，而全程时间区域是基于长期的信息基础上的有关操作.
+　　按照上述观点，一个基于OSI的管理功能能够定义在用上述3个参数描述的区域内：
+　　(1) 配置管理.例如仅提供一般网络信息的集中存取的一个简单配置管理，诸如设备名称、系统的物理位置和系统管理等与网络管理有关的数据.利用子空间定义为：全程时间×准静态信息×结构数据；一个较为复杂的配置管理工具能够自动地收集和存储各个被管理的装置的信息，将存储在该工具内的控制数据与系统当前的运行配置进行比较，并且使得用户能够修改设备的运行配置，用子空间定义为：时间非临界×准静态信息×控制数据.
+　　(2) 性能管理.例如将当前网络利用率与用户定义的门限进行比较来判断是否超限报警的性能管理，利用子空间定义为：实时×动态信息×测量数据.
+　　(3) 故障管理.一个检测被管理的路由器的每个接口接收到的错误包数并当其超出预先定义的值则报警的故障管理，利用子空间定义为：实时×动态信息×测量数据.一个检测企业网络所有被管理对象各个接口的ifAdminStatus和ifOperStatus的值来判断该接口状态的故障管理，利用子空间定义为：实时×准静态信息×测量数据.
+2.2　模型
+　　网络管理的第一步就是从所有被管理对象的管理信息库采集管理信息并存储在数据库里.由前面分析所知，存储在数据库里的管理信息不仅包含当前的信息，而且包含历史的、甚至将来的信息.该历史数据库是网络管理的核心.网络管理人员只须与数据库打交道来达到管理网络的目的.
+　　我们利用TRDM历史数据模型来存储历史数据，该模型或者通过在标准关系里添加两个时间属性validFrom, validTo而得到，在这种关系里的［validFrom,validTo］表示除它们俩之外的所有列在此时间段内的值有效；或者由嵌入单个的时间属性validAt来扩展标准关系来定义.该validAt表示一个事件发生的时刻.
+　　按照这种新的历史数据模型的观点，管理信息库（MIB）里的每一组标量对象和表格对象都能映射成这种表格形式.validFrom, validTo和validAt的时间值表示在管理者（manager）处的时间，而管理信息库（MIB）对象与时间有关的值，例如在MIB-II里sysUpTime, ifLastChange等以及在SNMPv2的M2M的MIB的snmpEventLastTimeSent等表示在集中式网络管理结构里，在代理处的时间或者在分布式网络管理结构里，在中间节点处的时间.这种映射的设计允许SNMPv2MIBs等与时间有关的对象的值能够以这种方式表示并且它具有开放的特征.
+　　我们将历史数据库分成准静态历史数据库和动态历史数据库两种类型.准静态历史数据库的列由管理信息库（MIB）的准静态对象所组成，而动态历史数据库的列由管理信息库（MIB）的动态对象所组成.一个ipRouteTable的准静态对象历史数据的例子如图3所示，其中validTo的值∝表示一直有效.一个ip组的动态对象历史数据的例子如图4所示，其中列值表示在时间间隔［validFrom, validTo］内的差值.此外在这两个历史数据库里能够执行的动作是大不相同的.在准静态历史数据库里能够执行检索、添加、删除或替换操作，而动态历史数据库仅能够执行检索.
+
+　　　　　Valid time
+nodeIDipRouteDest…IpRouteNextHop…(from)(to)
+NEU202.18.10.8　202.118.10.211　5070
+center202.18.10.7　202.118.10.212　70∞
+　　　　　　
+
+图3　ipRouteTable的准静态对象部分历史数据
+
+　　　　Valid time
+NodeIDIpInReceivesipForwDatagramsIpOutRequests(from)(to)
+Center495884466
+　　　　　　
+
+图4　Ip组的动态对象的部分历史值
+　　该网络管理模型的层次结构图如图5所示.在低层，Network Monitors是一个轮询程序，其被用作采集和存储准静态和动态对象信息；而Network Executors被用作实现在准静态对象的添加、删除和替换操作.在中间，有提供历史管理信息的动态和准静态对象信息.在上层，有网络积极管理策略.
+
+
+图5　网络管理模型的层次结构图
+3　结构和功能
+　　随着计算机网络和通信规模的不断扩大，这些网络或者是局域网（LAN's）、或者是城域网（MAN's）、或者是广域网（WAN's）［1］的网络所组成，而且这些网络将是复杂和异构的.要对这样的网络进行管理，我们按照某种方式定义不同的域，在每个域上使用一个管理者.每个管理者含有轮询装置和在上一节所建议的管理信息模型，并将所采集的管理信息按照所建议的网络管理模型存入历史数据库.
+　　网络管理模型的结构是管理信息库（MIB）结构的扩展，它是通过将MIB所定义的对象添加时间属性来实现的，但是仍保持着管理信息库（MIB）的语义.基于Web的网络管理系统，以这种方式，每个域的管理者的历史数据库能够与任何其他域的管理者的历史数据库进行通信，并且通过这种方式能够进行一般的互联网之间的网络管理，其网络管理结构一般采用分层式（hierarchical）［6，7］的或平台（基于TINA）结构［8］，这样可以节省采集网络数据所利用的通信带宽和提高网络管理的水平及可靠性等.
+　　这种方法实现的软件层次结构［9］如图6所示，每个域含有下列层次和元素：
+
+
+图6　实现的软件层次结构
+　　(1) 第1层
+　　这一层包含SNMP协议.它提供基于SNMPv1 get-request, getnext-request, set-request, get-response 和trap原子操作而发送网络管理信息的原始服务.网络管理协议不局限于SNMPv1协议.SNMPv2，CMIP以及其他任何网络管理协议也能被用在这一层.
+　　(2) 第2层
+　　这一层提供3种服务.
+　　第1种提供修改网络管理信息（MIB）的服务，并且基于SNMP原子服务set-request之上.这类服务被用作修改网络的配置，其目的是为了保持事先规定的网络性能级和当网络元素发生故障时激活故障恢复装置.　　
+　　第2种提供监视服务.这类服务进一步能分成实时性能监视服务和实时网络状态监视服务.
+　　第3种提供采集和储存MIB信息的服务.
+　　(3) 第3层
+　　这一层由高级网络管理策略（例如网络积极管理策略）所组成.实现对网络自动和自适应的管理.该层是基于第2层的基础上实现的.
+4　实现
+4.1　原型的描述
+　　为了实现上面所描述的网络管理模型，我们开发了包含上面所描述的某些特征的原型.下面我们将描述原型的主要特征以及我们的经验.
+　　原型在服务器端软件为Windows NT4.0 server, SQL server 6.5的环境下实现的.采用的网络管理协议是SNMPv1和管理信息库是MIB II（其它MIB，例如AToMMIB可以容易地得到）.为了获得被管理的网络信息，我们采用轮询的方法，其轮询周期与需要采集的数据类型以及被管理的节点数有关.此外，我们还增加了一个Status MIB，该MIB的变量用来存储被管理网络节点的状态信息.它的ASN.1代码见附录.
+　　原型实现的结构示意图如图7所示.每个域由两个主要进程组成：轮询过程和实现WWW浏览页面的进程.
+
+
+图7　原型实现的结构
+　　在我们的项目中，轮询进程是由Visual C++ 5.0语言编写的程序来实现的.该程序在后台执行，并按一定的轮询周期来采集和修改被管理的网络设备的管理信息.采样周期选择的优劣既影响到被用作网络管理的带宽多少，也影响到存储这些历史数据的磁盘空间的大小.对于准静态对象来说，采样周期选择在［30秒,3分］之间，而对于动态对象来说，采样周期选择在［30秒，90秒］之间足够了.
+　　WWW进程由性能管理模块、配置管理模块和故障管理模块.ActiveX控件被用作与WWW页面实时地和动态地进行交互.WWW页面具有以下功能：
+　　(1) 实时监视下列参数：网络资源的操作状态、MIB控制和配置变量；
+　　(2) 实时显示网络性能曲线和历史曲线；
+　　(3) 实时显示网络拓扑图；
+　　(4) 实时显示网络故障状态，当网络发生故障时，系统自动报警，故障恢复和发E-mail；
+　　(5) 原始的网络管理信息的维护.
+　　我们的系统能够实现性能管理、故障管理和配置管理.限于篇幅的限制，我们下面重点介绍性能管理.
+4.2　性能管理
+　　下面我们给出与显示网络性能管理有关的部分性能参数（如吞吐量、链路的利用率、出错率）的公式.这些公式由网络管理模型提供当前和历史数据，通过计算网络的性能参数值，我们能够检测到网络设备的性能状态，这些性能参数以数据、曲线形式和图形显示在Web页面上(其中‘Δ’表示某一段时间内的差值)：
+
+　　*网关节点(for nodes acting as gateway);
+
+　　上述参数可以用随时间变化的曲线趋势图形来显示，通过它们网络管理员可以知道这些参数的变化趋势.　　
+　　输入错误率可以用来检测传输媒介的故障，而输出错误率能够被用来监视该接口的性能.例如在以太网（Ethernet）里终结器的断连，就导致接收到许多错误的包.输出错误率大于一定的值可能表示某端口发生故障.此外，也为该端口定义了吞吐量和利用率.
+　　剩余的参数与TCP/IP的性能有关.例如，重组故障概率和TCP重复发送概率可以检测出TCP/IP参数值的故障和网络故障.
+　　当这些参数值超出预先定义的值时，则报警并显示报警的时间、地点等和发E-mail.这里仅介绍一些基本的性能管理方法，更高级的性能管理策略（例如对MIB信息进一步分析和预测）可以建立在它们上面.
+5　结论
+　　本文讨论的方法已经运用到由国家“八六三”高技术计划资助的课题“企业Intranet网络管理软件的研究及开发”上.经调试表明，该方法除第1节引言所说的优点之外，还具有以下特点：
+　　(1) 查询历史信息方便，并且具有实时性；
+　　(2) 节省网络管理信息所占用的带宽；
+　　(3) 节省被用作存储信息的硬盘空间；
+　　(4) 具有开放的特征.
+本课题得到国家“八六三”计划（项目编号863－511－711－003）、国家自然科学资金（项目编号69583001）和国家教委博士点基金（项目编号9514514）资助.
+作者简介:李木金，男，1963年10月生，博士研究生，主要研究领域为计算机网络和多媒体通信研究.
+　　　　　王光兴，男，1937年9月生，博士生导师，教授，主要研究领域为计算机网络和多媒体通信研究.
+作者单位:东北大学网络通信中心　沈阳　110006
+参考文献
+　1　　Jayant R, Haritsa, Michael O Ball, Nicholas Roussopoulos et al. MANDATE: Managing networks using database technology. IEEE Journal on Selected Areas in Communications, 1993, 11(9): 1361～1372
+　2　　Kyu-Young Whang, Stephen Brady. High-performance expert system――DBMS interface for network management and control. IEEE Journal on Selected Areas in Communications, 1989, 7(3): 408～417
+　3　　Case J, Fedor M, Schoffstall M et al. A simple network management protocol. DDN Network Information Center, SRI International, 1990
+　4　　Information processing, open system interconnection, common management information protocol (CMIP). International Organization for Standardization and International Electrotechnical Committee, International Standard 9596
+　5　　Rose M, McCloghrie K. Structure of management information for TCP/IP based Internets. DDN Network Information Center, SRI International,1990
+　6　　Ying-Dar Lin, Mario Gerla. Induction and deduction for autonomous networks. IEEE Journal on Selected Areas in Communications, 1993, 11(9): 1415～1425
+　7　　Manfred R Siegl, George Trausmuth. Hierarchical network management: A concept and its prototype in SNMPv2. Computer Networks and ISDN Systems, 1996, 28: 441～452
+　8　　Raouf Boutaba, Simon Znaty. An architectural approach for integrated network and systems management. Computer Communication Review, 1995, 20: 13～78
+　9　　Jonathan Weinstock, Rajiv Tewari. An object-oriented approach to the management of distributed application systems. Computer Networks and ISDN Systems, 1997, 29: 1869～1879
+附　录
+　　Status MIB的ASN.1编码如下：
+　　DIAGNOSIS-MIB DEFINITIONS ∷=BEGIN
+　　EXPORTS――everything-;
+　　IMPORTS
+　　　OBJECT-TYPE, OBJECT-GROUP
+　　　　FROM SMI-SMI
+　　　Enterprise, IPAddress
+　　　　FROM RFC1155-SMI
+　　　DisplayString
+　　　　FROM RFC1213-MIB;
+　　DiagnosisMIB OBJECT IDENTIFIER ∷= {enterprise 627}――this number is NOT official
+　　DIAGGroup OBJECT-GROUP
+　　　OBJECTS { DiagTree，NMSid}
+　　　DESCRIPTION
+　　　　“The diagnosis group”.
+　　∷={DiagnosisMIB 1}
+　　DiagTree OBJECT-TYPE
+　　SYNTAX SEQUENCE OF DiagTreeEntry
+　　　　ACCESS　　　not-accessible
+　　　　STATUS　　　mandatory
+　　　　DESCRIPTION
+　　　　　“Table in which each testing node keeps network diagnosis info”.
+　　∷= { DIAGGroup 1 }
+　　DiagTreeEntry : OBJECT-TYPE
+　　　　SYNTAX　　　DiagTreeEntry
+　　　　ACCESS　　　not-accessible
+　　　　STATUS　　　mandatory
+　　　　DESCRIPTION
+　　　“Each entry of DiagTree identifiers which node the testing node recognized as up in the last testing round”.
+　　　INDEX {testingID}
+　　∷= { DiagTree 1}
+　　DiagTreeEntry ∷=SEQUENCE { NodeID　　　　INTEGER,
+　　　　　　　　　　　　　　　　NodeAD　　　　IpAddress,
+　　　　　　　　　　　　　　　　NodeStatus　　　INTEGER, }
+　　NodeID OBJECT-TYPE
+　　　　SYNTAX　INTEGER
+　　　　ACCESS　read-only
+　　　　STATUS　mandatory
+　　　　DESCRIPTION
+　　　　　“The integer unique identifer of all the nodes participating”
+　　∷= { DiagTreeEntry 1 }
+　　NodeAD OBJECT-TYPE
+　　　　SYNTAX　IPAddress
+　　　　ACCESS　read-write
+　　　　STATUS　mandatory
+　　　　DESCRIPTION
+　　　　　“IP-address of all the nodes participating”
+　　∷= { DiagTreeEntry 2 }
+　　NodeStatus OBJECT-TYPE
+　　　　SYNTAX　INTEGER
+　　　　ACCESS　read-write
+　　　　STATUS　mandatory
+　　　　DESCRIPTION
+　　　　　“0-node is fault-free; 1-node is faulty; 2-node replies to ping but not to SNMP”.
+　　∷= { DiagTreeEntry 3 }
+　　NMSid OBJECT-TYPE
+　　　　SYNTAX　IPAddress
+　　　　ACCESS　read-write
+　　　　STATUS　mandatory
+　　　　DESCRIPTION
+　　　　　“Used by the human manager to set the id of the machine from which someone is monitoring the network”
+　　∷= { DIAGGroup 2}
+　　END
+　　该Diagnosis MIB的主体是DiagTree，并且以简单网络管理（SNMP）表格形式实现.NodeID是每个节点的编号（1-N）；NodeAD是该节点的IP地址；NodeStatus表示网络节点设备的状态值（0-正常；1-故障；2-对Ping有响应但是对SNMP没有响应）；
+　　NMSid是服务器或网络管理站的IP地址，其信息被存储在该服务器或网络管理站上.
+原稿收到日期：1998-12-02；
+修改稿收到日期：1999-03-22.

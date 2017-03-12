@@ -1,0 +1,58 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+GDSS系统的设计和一种实现
+刘鲁　夏国平　刘开胜　奚卫红
+关键词　群体决策支持系统 GDSS，分布式处理.
+A DESIGN OF A GROUP DECISION SUPPORT SYSTEM
+AND ITS IMPLEMENTATION
+LIU LU　 XIA GUOPING 　LIU KAISHENG　 XI WEIHONG
+(School of Management,Beijing University of Aeronautics & Astronautics, Beijing 100083)
+Key words　Guoup decision support systems,distributed processing.
+1　群体决策支持系统GDSS(Group Decision Support System)的总体设计
+　　该系统是一个分布式系统，可在远程网上运行.通过 TCP/IP 协议实现局域网同远程网的互联.考虑到我国的具体情况，局域网选择 NOVELL 网.
+　　最终实现的系统，将能支持电子邮件、计算机会议、多媒体信息的传输和处理，在应用领域，应能支持信息交换、数据处理、投票、排序、方案分析和综合等方面的工作，以便计划、监督和控制有关的决策活动.
+　　该系统具有如下结构特点：
+　　1)分布式和分散式(distributed and decentralized)结构
+　　系统支持“水平方向”的分布式处理，即支持对数据对象的远距离操作.系统还支持“垂直方向”的分散式处理，即通过在用户和各应用层之间的接口，来实现各个应用领域的功能.
+　　2)环境的独立性
+　　系统内核采用 C 语言编程.它的标准的库函数，与“虚装置”的接口，都可以保持数据库及其接口和运行环境的独立性.高级的面向对象的“虚机”系统，也能保持各个应用领域的互不干扰.
+　　3)系统的柔性
+　　为了做到这一点，系统设计成层次模块结构.模块之间互相独立，但留有适当的接口，以利于剪裁和扩充.
+　　4)对用户需求的考虑
+　　系统提供用户接口，可根据需要进行应用扩展.用户界面采用 GUI 设计，直观、友好而方便.
+　　系统结构可表示为如图1的概念模型.
+
+
+图1　GDSS 的概念模型
+2　GDSS 的一种实现
+　　第一步开发的 GDSS 是在局域网上运行的.系统为客户/服务器结构，WINDOWS 运行环境，用户界面采用 VB 编程.
+　　第二步将实现在远程网上运行 GDSS 的系统.
+　　所设计的 GDSS 的框架结构见图2.
+
+
+图2　GDSS 的框架结构
+　　通过 GDSS 进行群体决策的过程如下：
+　　1)决定要召开群体决策会议时，会议主持人使用 GDSS 软件建立该会议，同时建立该会议信箱.
+　　2)群决策会议将开始时，主持人首先定义好该会议的调查表的格式(固定评论的格式)，选好参加会议的人选，然后向决策成员们的信箱发出开会通知单.
+　　3)各成员一但接到会议通知后，群决策会议即开始，各成员可依靠私有的 DSS 系统来提出解决方案，同时把方案或意见发送给主持人.
+　　4)会议的信箱对主持人和决策成员都是开放的，各决策人可通过此信箱来阅读其他人的方案或意见.
+　　5)主持人接收到各决策人的方案或意见后，就可根据群模型库的支持提出综合的协商方案和意见，并发给各成员.
+　　6)各决策成员看到综合的方案或意见后，如有不同看法，仍可再次发表自己的意见，并发给主持人，主持人可根据反馈意见对综合方案进行调整.
+　　7)若各决策成员对该结果都比较满意，则会议结束，否则返回6).
+3　应用案例
+　　目前，企业的生产日益向着全球性的市场发展，面临着多变的外部环境，许多因素难以预料.无疑，利用 GDSS 进行企业的重大决策有利于集中群体的智慧，避免决策的失误.
+　　该 GDSS 系统，在某大学的校园网上作试验运行之后，移植到某大型制造企业的管理信息系统网络上，并且作了几个应用实例研究，主要有：支柱产品的开发决策、重大技术改造项目的确定和企业机构调整.
+　　案例研究结果表明，该系统是令人满意的.
+资金项目：国家自然科学基金和航空科学基金资助.
+作者单位：北京航空航天大学管理学院　北京　100083
+参考文献
+［1］Cwter for Computerized Conferencing & Communication of NJIT,Eiectronic information exchange systems,Conferencing via Computers,June,1991.
+［2］Hiltz S R, Turoff M.Research on computer conferencing and distributed group support at NJIT,Research Report of CIS-91-20.
+［3］Hiltz S R, Johnson K. Measuring acceptance of compute-mediated communication systems.Journal of the American Society for Information Science,1989,40(6).
+收稿日期　1994-10-1
+
+

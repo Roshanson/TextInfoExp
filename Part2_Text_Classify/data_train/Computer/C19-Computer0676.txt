@@ -1,0 +1,63 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+一种用于函数学习的小波神经网络
+吕柏权　李天铎　吕崇德　刘兆辉
+摘 要　在非线性系统辨识中，系统输入往往是多变量的.小波处理此类问题则比较复杂.结合神经网络形式和小波特点建立一种新型的网络，可简单有效地解决网络多输入问题.同时给出此网络可以逼近任意连续函数的数学证明.并通过实例验证了此方法的正确性. 
+关键词　参数辨识，小波网络，BP神经网络.
+WAVELET NEURAL NETWORK FOR FUNCTION LEARNING
+
+Lü BAIQUAN　LI TIANDUO Lü CHON GDE　LIU ZHAOHUI
+(Department of Thermal Engineering,Tsinghua University,Beijing 100084)
+Abstract In identification of nonlinear system,the network inputs usually are multivariab les.The approach using wavelets alone to resolve the problem is complex.Therefore,the paper establishes a new network method by combining neural network and wav elet characteristics to handle the multivariable problem simply and effectively. This paper also gives the mathematical verification that the network can approxi mate any kind of functions.The simulation results of an examkple indicate the validity of the method. 
+Key works Parameters identification, wavelet network,BP neural network.
+1　引言
+　　小波分析是近年来迅速发展起来的新学科.它广泛地用于信号分析、故障诊断等方面.其最大特点是它在时域－频域同时具有良好的局部化性质.另外小波还能把L2(IR)空间分成闭子空间WJ,J∈ZZ的直和形式(尺度分析).目前利用此特点进行函数逼近也倍受关注［1-3］.但对多维情况，小波处理此问题比较复杂.在实时单输入－单输出的控制系统参 数辨识中，往往又要求网络输入为多变量的.为此本文利用神经网络形式，以小波函数做激励函数从而简单而有效地解决网络多输入问题，同时给出此网络可以逼近任意连续函数的数学证明，并通过实例验证了此方法的正确性.
+
+2　小波变换及学习算法
+　　首先考虑一维的情况，记〈f,g〉=∫Rf(x)g(x)dx‖f‖=〈f,f〉1/2,Ψ(a,b)(x)=
+其中Ψ为母小波，即
+　　(1)
+　　定义1. 函数f(x)(∈L2(IR))空间的连续小波变换为T(a,b).其反变换为
+
+当a=2j,b=kb02j(j,k∈zz)时，反变换离散化为
+　　(2)
+其中Ψj,k是Ψj,k的共轭基，Ψj,k(x)=2-j/2Ψ(2-jx-k b0).
+　　为了能再现 f(x) 还必须满足如下条件，即框架(Frame)
+　且0AB＜∞,
+(2)式可近似为，这可以用三层NN网络实现.当维数为d时判断Ψd(x)满足框架条件比较困难［1,2］,同样，Ψd(x)为小波函数时，可以用Ψd(x)=Ψd
+表示.此表示法在x的维数比较高时计算量比较大.本文用
+来近似f(x)，其中αTR为行向量，X为列向量，现在讨论Ψ(x)是怎样的函数时用此近似f(x)的误差在允许范围内.
+　　定义2［4］. 设函数g(x)∈LPLOC(R1)，若线性组合在任意LP［a,b］中稠密，则称g是一个LP－Tauber－Wiener函数，简记g∈(LPTW)其中Ci,θi,及λi≠0均为实数，i=1,…,N.若g为一个一元函数(连续的或不连续的)且在任意(C［a,b］中稠密，则称g是一个C－Tauber－Wiener函数. 简记g∈(CTW).
+　　引理1. 设K为Rn中任一个紧集，V为LP(K)一个紧集，g∈(LPTW(1P∞),则对任意ε＞0存在不依赖f的一正整数N，实常数θi以及向量 yi∈R1，和依赖于f的常数 ci(f),i=1,…,N,使对一切f∈V成立，且所有ci(f)都是定义在V上的连续泛函.
+　　定理1. 设K为Rn中任一个紧集，V为L2(K)中的一个紧集，对于框架函数Φ∈L2(IR)，则对于任意ε＞0存在一个正整数N，实常数bi,向量ai∈R1，均不依赖于f∈V,以及依赖于f∈V的常数ci(f),使对一切f∈V成立.所有ci(f),i=1,…，N都是定义在V上的线性连续泛函.为φ的付里叶变换.
+　　证. 由引理1知道，只要(x)(在任意LP［a,b］中稠密(其中x ∈R1)，则对任意f(x)∈V(V为LP(K)一个紧集，K为Rn中任一个紧集)，都可以用1(x)逼近(其中向量 x∈R1)，由于Ψ是框架，则保证了(x)在任意L2(IR)中稠密(其中x∈R1)，也就是说用1(x)是可以以任意精度逼近f(x).证毕.
+　　定理2. 设K为rn中任一紧集，V为C(K)中R一个紧集，对于框架函数Φ∈L2(IR),则对于任意ε＞0存在一个正整数N，实常数bi，向量ai∈R1，它们均不依赖于f∈V,以及依赖于f∈V的常数ci(f)使
+对一切f∈V成立.所有ci(f)，i=1, …,N都是定义在V上的线性连续泛函.为φ的付里叶变换.
+
+3　仿真结果
+　　本文以y″=sin(y′)-(1+1.5y′)*y2+(1+0.2y)u为例进行仿真.仿真步长为h=0.01s).每5倍h作为一个学习点，共100点，每100点作为一个学习周期重新开始学习. u=1.0，其权初值为(-0.01，0.01)的均匀分布；x=｛y(n-1),y(n-2),u(n)｝为网络的输入；y为网络的输出；中间结点选为200.激励函数分别为
+(BP网络)，
+(小波网络).
+易验证小波Ψ2(x)满足框架条件.终止条件为
+
+当激励函数为Ψ1(x)且学习7500个周期时E1才小于0.064(学习速率η=0.002).当激励函数为Ψ2(x)且学习440个周期时，E1已小于0.008(学习速率η=0.07).可见效果明显.其仿真结果如图1和图2所示(横轴表示采样点，换算成时间秒0.05×采样数).
+
+
+图1　小波网络逼近结果
+
+
+图2　神经网络逼近结果
+　　本文给出了一种小波网络逼近任意函数方法的证明，从而为用这种小波网络逼近函数时提 供理论根据.并通过仿真验证此方法的正确性.
+作者单位：清华大学热能工程系　北京　100084
+参考文献
+1　Delyon B,Juditsky A,Benvenise A.Accuracy analysis for wavelet Approxi mations.IEEE Transactions on Neural Networks,1995,6(2):3 32－348 
+2　JunZhang,Gilbert G Walter,Yubo Miao et al.Wavelet Neural Networks for funct ion learning.IEEE Transactions on Signal Processing,1995,4 3(6):1485-1496 
+3　倪先锋，陈宗基，周绥平.基于神经网络的非线性学习控制研究.自动化学报，1993， 19(3)：307-314 
+4　陈天平.神经网络及其在系统识别应用中的逼近问题.中国科学学报(A辑)，1994，24(1)：1-7 
+5　秦前清，杨宗凯.实用小波分析.西安：西安电子科技大学出版社，1994
+收稿日期　1996-01-15

@@ -1,0 +1,71 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.430-432
+
+
+
+单机调度中平均流程时间和延期
+工件数的双目标问题
+司昕　郑应平　安燮南
+关键词　单机调度，多目标，平均流程时间，延期工件数.
+BICRITERION PROBLEM IN SINGLE-MACHINE SCHEDULING WITH
+MEAN FLOW TIME AND NUMBER OF TARDY JOBS
+SI Xin　　ZHENG Yingping　　AN Xienan
+(Institute of Automation, Chinese Academy of Sciences, Beijing　100080)
+Key words　Single-machine scheduling, bicriterion, mean flow time, number of tardy jobs.
+1　引言
+　　本文在具有平均流程时间和延期工件数两个目标的情况下对单机多目标问题进行研究，所研究的调度环境为假设工件集N的n个工件在一台机器上进行无中断的加工，每个工件的加工时间、到达时间和交工日期分别为pi，ri和di，且每个工件在零时刻到达，即ri=0，其完工时间为Ci，流程时间Fi=Ci-ri=Ci，平均流程时间每个工件的延迟Ti=max｛0,ci-di｝，如果工件i是延迟的(即Ti>0)，则令Ui=1；否则Ui=0.延期工件个数记为
+　　本文所要讨论的问题是(P)：在上述调度环境下，如何确定工件的一个加工排序，使得平均流程时间和延期工件数nT这个双目标问题达到最优，采用Graham等人的三参数表示法［2］，将此问题记为1//,nT.
+　　对于单机调度中的双目标问题的研究，目前主要有三中形式：
+　　1)1//γ2｜γ1，即在保证目标γ1为最优的情况下，使目标γ2达到最优；
+　　2)有效点集合形式1//γ1,γ2，即使目标γ1,γ2尽量都达到最优，这样得出的结果是一系列有效点的形式，而非单一的点；
+　　3)加权形式1//f(γ1,γ2)，即目标γ1,γ2的函数表达形式，一般情况下为γ1,γ2的线性加权表达式.
+　　本文所研究的目标为有效点集合形式，即1//γ1,γ2.
+　　在有m个目标的单机调度问题的排序中，设其解集为R，其中每一解r∈R是一个具有m维的向量(r1,r2,…,rm)，rj表示第j个目标的值.这里先给出有关有效解的定义.
+　　定义.称r为此多目标问题的一个有效解，如果对于排序s，不存在另一个排序s′，使得
+　　(i)rj(s′)≤rj(s),j=1,2,…m；
+　　(ii)rj(s′)<rj(s)，对某些j.
+2　NP-hard问题
+　　本节中，我们将证明上述问题1//,nT是一个NP-hard问题.
+　　定理1.如果1//γ2｜γ1是NP难问题，则1//γ1,γ2也是NP难问题.
+　　实际上，由问题1//γ2｜γ1所得到的解必定是问题1//γ1｜γ2的一个有效解.因此，此定理得证.
+　　定理2.问题1//｜nT为NP-hard问题.
+　　可以利用另一个NP-完全问题，即3划分问题(3-partition problem)来建立此问题的多项式归纳，从而证得此定理(证明略).
+　　定理3.问题1//，nT为NP-hard问题(根据定理1和定理2即可推得此定理).
+3　算法
+　　由于1//,nT属于NP-hard问题，因此当n很大时，求出此问题的精确解将是非常困难的.本节将整理出此问题的几条性质，并将Emmons的一条定理［5］进行扩展，从而使我们能够采用动态规划的方法来处理此问题.
+　　在工件集N中，将非延期工件集和延期工件集分别记为E和T，即N=E∪T.注意到在最优排序中，E和T中的工件可能会交错排列.
+　　性质1.T中工件按SPT法则排序，而E中工件采用Smith方法［6］进行排序，即在Ti=0的约束下，使最小，其中i∈E.
+　　性质2.最小平均流程将随着延期工件数nT的增加而减少，且在nT=T时取得最小值，T为按SPT排序所得的延期工件数.
+　　性质3.在具有共同完工期(di=d,i∈N)的情况下，上述问题的排序具有(E，T)的形式，即所有E中的元素均排在T中元素之前，而且E，T中元素均按SPT法则排序.
+　　为能高效地获得问题1//,nT所有的有效解，我们将Emmons的一条定理进行了扩展［5］，从而使我们能够采用动态规划的方法来进行求解.
+　　定理4.对于问题1//,nT的一个最优排序，若工件i不延期，即i∈E，则当n0T减少时(n0T≥T)，仍有关系i∈E(证明略).
+　　Emmons同时给出了一条优先规则［5］，我们将其扩展使其适用于本文所讨论的问题.
+　　优先规则.对于问题1//，nT，若两个工件i和j中只有一个不延期，如果满足(i)pi≥pj和(ii)pi-pj≥di-dj，则必有j∈E和i∈T.
+　　根据定理2和上述优先规则，我们提出了求解问题1//，nT的动态规划方法，其计算步骤如下：
+　　step 1.分别利用SPT法则和Moore方法计算延期工件数的上、下界T和T，计算L=T-T+1，L为动态规划所需进行的阶段数；
+　　step 2.m=1,E1=｛按SPT法则排序所得的非延期的工件｝，计算1(E1)；
+　　step 3.计算Tm=N-Em，并根据优先规则在Tm中得到不可行工件集Im;
+　　step 4.m=m+1;
+　　step 5.For i:=1,…,Tm-Im
+do Emi=Em-1∪｛Ji｝
+　　上式中Ji为Tm＼Im中的一个工件；
+　　step 6.取Em=使
+　　step 7.m=L?是，则停止；否则转step 3.
+计算结束后，就得到L个有效解(T,1(E1)),(T-1,2(E2)),…,(T,L(EL)).
+国家自然科学基金(69635030)资助项目.
+　　司　昕　1968年出生.1995年于北京理工大学获得硕士学位，现为中国科学院自动化研究所博士生.主要研究方向为人工智能在DSS和CIMS中的应用、生产调度、DEDS以及混杂动态系统等.
+　　郑应平　简介见本刊第19卷第6期.
+　　安燮南　1936年生.1959年毕业于上海交通大学.现为中国科学院自动化研究所研究员、博士生导师.主要研究方向为工业自动化、人工智能等.
+司昕（中国科学院自动化研究所　北京　100080）
+郑应平（中国科学院自动化研究所　北京　100080）
+安燮南（中国科学院自动化研究所　北京　100080）
+参考文献
+［1］　Panwalkar S S, Dudek R K, Smith M L. Sequencing research and the industrial scheduling problem. In:Elmaghraby S E(ed). Symposium on the theory of scheduling and its application, New York:Springer-Verlag, 1973:29～38
+［2］　Graham R L, Lawler B L, Lenstra J K et al. Optimization and approximation in deterministic sequencing and scheduling:a survery. Annal Discrete Math. 1979,5:287～326
+［3］　Moore J M. An n job, one machine sequencing algorithm for minimizing the number of late jobs. Management sci., 1968,15(1):102～109
+［4］　Tanaev V S, Gordon V S, Shafransky Y M. Scheduling Theory:Single Stage Systems. Kluwer Academic Publishers, 1994
+［5］　Emmons H. One machine scheduling to minimize men a flow time with minimized number tardy. Naval Res. Logist.Quart., 1975,22(3):585～592
+［6］　Smith W E. Various optimizers for single stage production. Naval Res.Logist.Quart., 1956,3(1):59～66
+收稿日期　1998-07-21
+修稿日期　1999-01-08

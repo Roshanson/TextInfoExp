@@ -1,0 +1,73 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+奇异H∞控制问题的二次矩阵
+不等式的可解性1)
+忻　欣　冯纯伯
+　　摘　要　研究具有无穷远零点的奇异H∞控制问题的二次矩阵不等式的可解性，证明了通过求解广义特征值问题，可以直接求得二次矩阵不等式的解，从而简化了原需通过复杂的系统分解和变换来求解二次矩阵不等式的方法. 文中建立了基于几何控制理论和基于J-无损分解理论的两种不同的奇异H∞控制分析方法之间的联系，并揭示了具有无穷远零点的奇异H∞控制系统的特征空间结构. 
+　　关键词　H∞控制，二次矩阵不等式， 无穷远零点，广义特征值问题. 
+SOLVABILITY OF QUADRATIC MATRIX INEQUALITIES
+OF SINGULAR H∞ CONTROL PROBLEMS
+XIN XIN FENG CHUNBO
+(Research Institute of Automation, Southeast University, Nanjing 210018)
+　　Abstract The solvability of quadratic matrix inequalities of singular H∞ control problems with infinite zeros is studied in this paper. It is proved that the quadratic matrix inequality can be solved directly via the generalized eigenvalue problems. The previous method of solving the quadratic matrix inequality involving complicated decompositions and transformations of the systems is avoided. The connection between two different approaches to singular H∞ control problems based on geometric control theory and (J,J')-lossless factorization theory respectively is established. This paper illustrates the eigenspace structure of singular H∞ control systems.
+　　Key words Geometric H∞ control, quadratic matrix inequality, infinite zeros, generalized eigenvalue problems.
+　　1　引　言
+　　考虑如下包括被控对象和加权函数的广义对象P(s)
+　　　　　　　　(1)
+其中z∈Rm, y∈Rq,w∈Rr和u∈Rp分别为输出信号、测量信号、外部输入信号和控制信号. H∞控制问题就是求一控制器u(s)=K(s)y(s)使得闭环系统稳定，并使w到z的传递函数Φ(s)满足‖Φ(s)‖∞＜1. 至今为止的H∞控制问题的绝大多数解法均假设(1)式中的P12(s)和P21(s)在包含无穷远点在内的虚轴上不含零点［1］，然而许多控制问题并不满足这一假设。通常称这种P12(s)和/或P21(s)在含无穷远点在内的虚轴上的H∞控制问题为奇异或非标准H∞控制问题. 对奇异H∞控制问题的研究成为近两三年H∞制领域的一个研究热点［2，3］. 
+　　对含无穷远零点的奇异H∞控制问题，文［2］提出了通过检验两个二次矩阵不等式的可解性来判断H∞控制问题是否可解的方法；文［3］基于(J, J')-无损分解理论［4］和描述形式的系统表征，提出了通过求解广义特征问题来解奇异H∞控制问题的方法. 文［2］利用几何控制理论，提出了通过复杂的系统分解和变换来求解二次矩阵不等式的方法，但较为复杂，与之相比，文［3］的基于求解广义特征值问题的判据较为简单和直观. 本文将证明通过求解广义特征值问题，可以直接求解二次矩阵不等式. 
+　　在本文中ν(-sE+A;D)表示矩阵束-sE+A在域D中的特征值所对应的广义特征空间；Im P表示矩阵P所张成的空间；ρ(X)表示矩阵X的最大特征值；C－表示开左半平面. 
+　　2　二次矩阵不等式
+　　对于矩阵X=XT∈Rn×n和Y=YT∈Rn×n,定义
+　　　　　　(2)
+　　　　　　(3)
+若F(X)0和G(Y)0，则称X和Y分别是二次矩阵不等式F(X)0和G(Y)0的解. 另外，定义如下两个矩阵束
+　　　(4)
+　　引理1.［2］　设广义对象(1)中的P12(s)和P21(s)均在有限虚轴上无零点，则H∞控制问题有解的充要条件是二次矩阵不等式F(X)0和G(Y)0存在半正定解X和Y，且满足ρ(XY)1和如下秩条件：
+　　(1) rank F(X)=p,
+　　(2) rank G(X)=q,
+　　(3) rank [LT(X,s) FT(X)]T=n+p,Re[s]0,
+　　(4) rank[M)Y,s) G(Y)]=n+q,Re[s]0.
+　　3　基于广义特征值问题的二次矩阵不等式的解
+　　关于P12(s)的无穷远零点结构，有如下结论. 
+　　引理2.［5］　存在酉矩阵S和T，使得有
+　　　　　(5)
+其中正规矩阵束包含P12(s)所有的无穷远零点因子，且｜E11｜≠0；若相应于(5)式可将S和T划分为
+　　　　　　　　　(6)
+则T23∈Rp×p非奇异， ST32∈Rm×m列满秩. 
+　　现计算如下两广义特征值问题
+　　　　　　　　　　(7)
+　　　　　　　　(8)
+利用引理2可求得P120=T12. 对于(7)和(8)式， 有以下定理. 
+　　定理1.　等式
+　　　　(9)
+成立. 其中　2=-ST31, 12=-ST32, U1:=-A22T－123U12, U2:=A21-A22T－123T22, U3:=-E－111A12T－123U12, A∞:=E-111(A11-A12T－123T22).
+　　证明.　从略(类似文［6］中定理1的证明).由定理1可得如下主要结论. 
+　　定理2.　若[P12 P120]非奇异，则X=[Φ12 0][P12 P120]－1是二次矩阵不等式F(X)0的解，且引理1中的秩条件(1)和(3)成立. 
+　　证明. 记由(9)式得F(X)=ST(X)S(X)0,其中S(X):=12[- M12]. 利用引理2和3可知
+　　　　(10)
+成立. 这样rankF(X)=rankS(X)=rank12[- M12]=p,故引理1中的秩条件(1)成立. 再记
+
+由(10)式知rank R1=n+p, rank R2(s)=n+p,Re[s]0， 故引理1中的秩条件(3)成立.　　　证毕.
+　　文［2］证明了满足引理1中矩阵秩约束(1)和(3)的二次不等式的解X若存在，则是唯一的；文［3］证明了若具有无穷远零点的控制问题有解，则[P12 P120]非奇异，故二次矩阵不等式F(X)0存在满足引理1中的矩阵秩约束(1)和(3)的解X的充要条件是[P12 P120]非奇异.
+　　对偶地，可通过考虑解另两广义特征值问题来求G(Y)0，这里从略. 
+　　4　例　子
+　　设广义对象(1)为BT1=[0.2 0 0.4],D21=1,C2=[0 0 1], 
+
+在本例中，n=3,p=2, D12列不满秩. 计算式(7)和(8)得
+
+因[P12 P120]非奇异，故F(X)0有解.现考虑定理1中的两个秩条件，计算F(X)的特征值和[LT(X，s) FT(X)]的零点知引理1中的秩条件(1)和(3)成立. 
+1)此课题得到国家自然科学基金和中国博士后科学基金的资助. 本文的初稿曾在1994年中国控制与决策会议上宣读. 
+作者单位：东南大学自动化研究所　南京　210018
+参考文献
+　　[1] Glover K, Dolye J C. State-space formulate for all stabilizing controllers that satisfying an H∞-norm bound and relations to risk sensitivity.Systems & Control Letters, 1988, 11: 167-172.
+　　[2] Stoorvogel A A. The singular H∞ control with dynamic measurement feedback. SIAM Journal on control Optimization, 1991, 29:160-184.
+　　[3] Kimura H, Xin X. Chain-scattering approach to non-standard H∞ control problems. Proceedings of International Symposium on Mathematical Theory of Networks and Systems, Regensburg 1993.
+　　[4] Xin X, Kimura H.(J, J')-lossless factorization for descriptor systems. Linear Alegbra and Its Applications, 1994, 206: 1289-1318.
+　　[5] Copeland B R, Safonov M G. Zero cancelling compensation for singular control problems and their application to the inner-outer factorization problem. International Journal of Robust and Nonlinear Control, 1992,2:139-164. 
+　　[6] Xin X, Kimura H. Singular (J, J')-lossless factorization for strictly proper functions. International Joural of Control, 1994, 59:1383-1400. 
+收稿日期　1994-09-19

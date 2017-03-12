@@ -1,0 +1,205 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+城市高速公路交通控制综述
+王亦兵　韩曾晋　贺国光
+摘　要　该文综述城市高速公路交通建模与控制.首先考察各种高速公路交通流模型，着重分析宏观流体模型，然后讨论主要的城市高速公路交通控制模式和相关控制理论研究方法，最后就城市高速公路交通控制研究的发展提出几点看法.
+关键词　城市高速公路，非线性大系统，宏观流体模型，匝道控制，路 由控制，集成控制，最优控制，分散控制，递阶控制，智能控制.
+A SURVEY ON URBAN FREEWAY TRAFFIC CONTROL
+WANG YIBING　HAN ZENGJIN
+(Dept of Automation,Tsinghua Univ.,Beijing 100084)
+HE GUOGUANG
+(Institute of systems Science,Tianjin Univ.,Tianjin 300072)
+Abstract　Urban freeway traffic modeling and control are surv eyed in this paper. First, a variety of freeway traffic flow models are addresse d,with emphasis on the macroscopic hydrodynamic models. Then, we discu ss the major control measures taken in urban freeway traffic and the correspondi ng research methods. Finally, some comments are made on the current research and some perspectives are given for the future study.
+Key words　Urban freeway,nonlinear large－scale systems, macros copic hydrodynamic models, on－ramp metering, routing control,integrated control , optimal control, decentralized control,hierarchical control,intelligent control.
+1　引言
+　　在发达国家，高速公路不仅是连接城市的重要纽带，而且是市内交通的重要载体.城市高速 公路交通系统是包含人-车-路交互作用的复杂系统，只有将这类系统视为服从某种确定或随机规律的非线性大系统，利用自动控制、计算机和通信的理论与技术将其转化成可控的优化运行系统，才能最大限度地提高系统的性能.高速公路交通建模与控制研究在五十年代始于美国，目前世界许多大城市都建有完善的高速公路交通控制系统.
+　　本文考察高速公路交通流建模.高速公路交通流模型分为确定模型和随机模型.确定模型有宏观流体模型和微观跟驰模型；随机模型有排队模型和离散时间点过程模型.本文主要讨论宏观流体模型，因为它是真正面向控制的模型.宏观流体模型将高速公路交通流看作准流体，从流体力学角度考察交通流运动变化的整体规律.该模型主要包括连续性方程和车流动态速度－密度关系.其中，连续性方程是一个非线性偏微分方程，动态速－密关系是一个启发式方程.宏观模型既可以用来解决优化问题，也可以用来解决控制问题.另外，本文还将讨论高速公路网络交通建模和城市交通系统的集成建模.
+　　本文研究城市高速公路交通控制问题.按交通工程的观点，它们是入口匝道控制、网络路由控制 和集成交通控制.按控制的观点，它们涉及数学规划、最优控制、随机控制、分散控制、递阶控制、递阶智能控制、模糊逻辑、神经元网络、模式识别等多种研究方法.此外，也有人尝试自校正控制、离散事件动态系统等方法.
+2　宏观高速公路交通流模型
+2.1　连续性方程
+　　高速公路交通流具有流动、波动、激波、压缩和扩散等流体属性.宏观流体模型近似将高速 公路交通流 视为连续流体，即将流量、速度、密度等集聚变量［1,2］看作时间和空间的连续函 数.宏观模型 研究车流运动的整体规律.按流体力学的观点，高速公路交通流是沿高速公路轴向运动的一 维非定常流，它满足输运方程和连续性方程(守恒方程)
+q(x,t)=v(x,t).ρ(x,t),　　(1)
+　　(2)
+其中ρ代表密度，q代表流量，v代表速度，x代表空间，t代表时间.若高速公路段有出入口匝道，则连续性方程应为
+　　(3)
+其中f(t)代表入匝流与出匝流之差.
+　　定理［3］．若一维流体系统(1),(2)满足如下函数关系
+q=q(ρ,x),　　(4)
+则该系统存在动力波，且ρ沿特征系统
+　　(5)
+为常量，其中c(ρ,x)代表波速.动力波的这种性质仅取决于连续性方程.
+　　交通动力波本质上是非线性的，连续性方程揭示了它的传播规律.另外，若车流密度小 于临界密度，则动力波沿交通流正向传播，交通流处于稳定态，运行通畅；反之，动力波沿 交通流逆向传播，交通流处于不稳定态，将出现拥堵［1,3-5］.连续性方程是非线 性 双曲方程，其Cauchy问题的古典解在有限时间内将出现断裂，力学上称之为激波(shockwave).就 高速公路交通流而言，不同速度的动力波相遇会产生激波，破坏车流速度和密度的时空连续 性.连锁追尾事故中的车辆碰撞点就相当于激波波阵面，它随时间逆交通流运动.高速公路瓶颈路段的车辆拥挤与消散、信号灯交叉路口的车辆排队与消散都伴随有激波现象.交通激波通过不断吸收连续动力波来改变自身强度.如果交通流在流场中均匀分布，一般不会形成激波.即使出现激波，随着动力波的速度逐渐趋于一致，激波也会因无动力波可供吸收而衰减，车流也相应趋于稳态［3］.但由于车流不可能非常均匀，所以激波总是存在.激波与扰动是影响车流稳定性的重要因素，而车流的不稳定性又往往表现为车流拥堵.因此，提高均匀性和消除扰动源是清除车流拥堵的一个重要途径.
+2.2　速度-密度关系
+　　车流速度随密度上升而单调下降.这明显区别于一般流体，守恒方程不能充分解释这种现象 ［6,7］.研究表明，不存在唯一的速度－密度关系，每条速－密曲线都有各自的适用范围［8］.May曾提出一个通用的均匀各向同性(homogeneous)条件下的稳态速度－密度关系［9］
+　　(6)
+其中，νf是自由流的速度，ρjam是堵塞密度，l和m是模型参数.文［1, 2］曾利用包含该公式的宏观模型设计高速公路入口匝道控制器.目前广泛采用的动态速度－密度关系是Payne于1971年提出的［6,10］.他认为，下游车流密度的变化经一定延时将影响上游车流的速度.于是
+　　(7)
+式中νe(ρ)是稳态速度－密度关系，γ是期望指数，τ是延迟时间.后来，papageorgiou等人又对(7)式作了种种改进［11，12］.
+2.3　宏观模型
+　　宏观模型包括质量输运方程(1)、连续性方程(2)或(3)和动态速度-密度关系.宏观模型种类 繁多，其差 异主要体现在动态速－密关系上［11,12］.高速公路交通控制主要采用Payne和Papag eorgiou等人的宏观模型［1,2,4,6,10,13］.为便于使用，研究者多将宏观模型转化成差分形式.空间步长Δ一般为500m，时间步长T为10-30s.Δ选取过大会导致车流的局域异质化.T选取过大，系统很难跟踪车流的动态变化.Δ和T选取过小会使集聚变量丧失物理意义.此外，差分格式选取不当会使计算失稳或不收敛［14］.下文提到的宏观模型均指其差分形式.常用的差分模型有静态和动态之分［1,2，4，6］，文［15］证明动态模型的参数是局域可辨识的.文［16］则将动态模型的参数辨识问题转化成一个非线性参数优化问题. 巴黎市区高速公路的实测数据表明动态模型能较精确地表征均匀稳态交通流的特性［13 ］.洛杉矶高速公路的交通数据表明，如果高速公路沿途不存在过多的出入口匝道、瓶颈或 车道数陡减(lane drop)等情况，动态模型的描述能力较强；反之，效果会受到影响 ［17］.文［6,17］提出若干改进方法.
+　　静态模型连同若干约束条件和一个恰当的性能指标构成静态优化问题［18］.入口匝 道的多段 配时控制律、匝道调节器的标称设定点都可以通过求解静态优化问题得到.动态模型则既可 用于求解动态优化问题，也可用于设计匝道反馈控制器，第四节对此有详述.另外，动态模 型还可用于估计车流状态(速度、密度)，判别交通模式(自由、饱和、拥堵等)，检测交通事 故.将出入口匝道间的高速公路段分成N片，每片长约500m.出于费用的考虑，通常只 在首尾两片埋设车辆检测器.那么，如何根据首尾片信息得到中间片信息自然构成一个车流 状态估计问题［19］.这个问题解决得好坏关系到匝道控制器的设计以及拥堵判别和 事故 检测的质量.按信号处理的观点，拥堵判别和事故检测属于多假设检验或模式识别问题 ［19,20］.增广Kalman滤波［21］、模糊逻辑［22-25］和神经网络 ［23-26］是解决上述问题的常用方法.
+3　其它模型
+　　随机模型包括排队模型和离散时间点过程模型.有人利用排队模型考察安全汇聚和拥挤分流 问题［27,28］，也有人利用点过程模型估计高速公路交通流的状态 ［29,30］.关 于随机模型可详见文［12］.Prigogine从非平衡统计力学的角度提出Boltzman 模型，探讨车流从自由态到稠密态乃至拥堵态的跃迁过程［31］.文［32］最早注意 到 高速公路交通流中的混沌现象.文［33］从突变论角度探讨交通流建模.文［34］将高 速公 路交通拥挤视为“自组织过程”.文［35］研究城市交通系统的元胞自动机模型.文［36］ 利用 宏观模型描述高速公路交通流的常规性态，同时将拥挤、入口匝道排队饱和及交通事故等突 发事件视为离散事件.另外，第五节将讨论高速公路网络交通建模.第六节将讨论集成交通 建模.目前欧美正在积极研制智能交通系统(ITS)，其中的自动高速公路系统(AHS) 与控制 界关系密切.AHS将给现有交通模式带来革命性的飞跃.有兴趣的读者请详见文［37，38 ］及其参考文献.
+4　干线匝道控制
+4.1　基本问题
+　　城市道路交通系统包括高速公路交通系统和受交叉口信号灯调节的区域交通系统,二者通过 出入 口匝道耦合在一起(国内的城市高速公路建设刚刚起步).高速公路对出行者的吸引力很大,但 大批车辆的涌入不仅会造成常发性交通拥挤，还可能导致突发性交通拥挤［1,2,39，40 ］.入口匝 道控制是解决这类问题的有效途径，即根据高速公路主线流状况和入匝需求控制高速公路的 入匝流量 ，优化系统性能(出于安全考虑，很少使用出口匝道控制).实施匝道控制的前提是匝道上游 的车流量 小于上下游通行能力.匝道控制能够提高高峰期主线流量和车速，缩短旅行时间，在一定程 度上抑制车流扰动并减少交通事故.静态匝道控制采用静态模型，多归结为线性规划问题， 适于解决常发性交通拥挤［18］；动态匝道控制采用动态模型，多为最优控制或智能 控制问题 ，用于解决突发性交通拥挤.动态匝道控制问题可定义成如下形式的最优控制问题［1, 2］.
+　　问题1．在允许控制域中选择入匝调节律，在满足某些模型约 束和物理/技术约束的条件下，使高速公路交通系统的某一性能指标在给定的时间域上达到 最优.其中：
+　　1) 模型的状态变量是车流密度ρ、速度ν和入匝排队长l，控制变量是入匝调节律γ.
+　　2) 约束条件有通行能力约束、调节约束、排队约束和限速约束等.通行能力约束体现了匝道 控制的基本观点：将主线流密度限制在临界密度的负邻域内，既充分利用通行能力，又保证车流的稳定性.调节约束和入匝需求d、采样间隔T、最大允许排队长lmax、实时排队长l及匝道调节律γ的允许域有关［2］：
+　(8)
+　　3) 匝道控制的性能指标有系统旅行时间、系统入匝量、系统旅程和标称点偏差等［1,39,40］.系统旅行时间最小意味着主线拥堵和入匝排队引起的延误最小，该指标有利于短途出行者.事实上，匝道控制隐含着将主线流的部分旅行延误转化成各入匝口少数车辆的排队延误.有人证明稳态条件下系统旅行时间最小等价于相同时段内系统总入匝量最大 .另外，给定时段内系统旅程最大意味着通行能力的利用率最大.该指标有利于长途出行者.
+4.2　非线性开环最优控制
+　　问题1可具体写成如下形式的非线性最优控制问题.
+　　问题2.给定动态变量x(k)(速度、密度及入 匝排队长)的初值和 慢变扰动z(k)的先验或预测信息，确定一个最优控制序列(匝道调节律)u*(k)，使满足约束条件
+H［x(k),u(k),z(k)］≥0　　(9)
+的系统
+x(k+1)=f［x(k),u(k),z(k),ξ(k)］　　(10)
+的性能指标
+　　(11)
+最优.(10)代表宏观离散模型.(11)代表某个性能指标，如文［2,41］选择旅行时间作为性能指标，文［42,43］采用关于标称点偏差的二次型性能指标.问题2的闭环解析解(Hamilton－Jacobi－Bellman方程的显式解)仅对某些特殊问题存在，而该问题的开环解只能通过 解两点边值问题(TPBVP)得到.由于计算量、收敛性与奇异弧等方面的原因，求解TPBVP有许多困难.因此，问题2大多采用递阶分解优化方法求解，如文［42］采用关联预估等四种分解优化方法求解，文［43］则利用改进的共态预估法将问题2的求解过程转化成一组低维无约 束子问题的 序贯迭代过程，并给出收敛性证明.文［44］从动力波的角度考察交通事故，将拥堵清除问 题定义 成时间最优控制问题.Zhang通过基于动力波方向的差分模型，利用极大值原理讨论问题2的 旅行时间最小形式［41］.
+4.3　线性二次型反馈控制
+　　开环解对外扰相当敏感.若能通过求解问题2(或其静态形式)，或通过交通观测得到系统的标称点(车流速度、密度和入匝调节律的标称值)［1,2,45,46］，并对问题2作如下简化，则可得到一个线性二次型问题.由此，我们可以设计LQ匝道控制器.
+　　1) 将状态方程(10)在标称点线性化，得到关于状态偏差和控制增量的线性状态方程
+Δx(k+1)=AΔx(k)+BΔu(k).　　(12)
+A，B是标称点的函数.A是一个非对称对角带阵，其非对角项代表相邻路段间交通状况的相互影响.B阵也有特殊结构.A阵可能有非负实部的特征根(这或许与高速公路交通流的不稳定性有关)，但［A,B］必须是可镇定的［46］.
+　　2) 去掉不等式约束，
+　　3) 定义二次型性能指标
+　　(13)
+　　设计LQ反馈控制器需要求解Riccati方程，计算量大，实时性仍然难以保证.由于A，B 阵结构 的特殊性，通过Riccati方程求得的反馈增益阵具有交迭结构［46,47］，这表明入匝调节律主要取决于相应及邻近路段的实时车流状态.于是，研究者考虑设计分散次最优匝道控制器.文［46］将原系统分解成若干个结构交迭的子系统，分别求得各子系统的LQ反馈控制律，再利用交迭方法重构原系统的次最优反馈控制律，并通过求解Lyapunov矩阵方程得到性能退化的测度.文［47］指出，采用具有交迭信息集的分散控制结构能够提高整个系统的可靠性.考虑到广泛存在的随机干扰与建模误差，文［48］进一步将匝道控制问题定义成一个分散LQG问题.由于分离定理和线性最优反馈控制律不适用于分散控制，该文设法将该问题转化成一个非线性参数优化问题，并用改进的Davidon－Fletcher－Powell算法求解.LQ型匝道控制器是局部感应控制器，其控制律仅受附近区段车流状态的影响.ALINEA［49］是这类控制器中有代表性的一种.它是Papageorgiou等人在墨尼黑技术大学研制的，目前已在巴黎、阿姆斯特丹及美国城市应用，效果良好［50,51］.
+4.4　分层递阶控制
+　　测试与仿真表明，在强扰作用下基于线性化模型的LQ匝道控制器的鲁棒性不够理想，难以镇定系统.为此，Papageorgiou［1,2］设计了递阶匝道控制系统，试图将开环优化的计算 可行性与闭 环控制的鲁棒性及分散控制的可靠性结合起来.该递阶结构包括适应层、优化层和控制层. 优化层根据实时交通信息在线计算简化的问题2，为控制层提供标称点.控制层负责将系统 状态和匝道调节率保持在标称点的邻域内，抑制适度随机扰动与模型误差的影响.具体实现 时，多 采用前述交迭分解方法设计分散次最优控制器.为增强系统的鲁棒性，弥补模型简化带来的 负面影响，系统在优化层上加设适应层，通过慢扰跟踪和模式识别决定是否启动在线优化. 
+4.5　递阶智能控制
+　　Saridis的递阶智能交通控制系统包括组织级、协调级和控制级［52,53］.控 制级负责 ：1)从交通检测信息中提取特征向量，识别交通模式，并发送至协调级.2)接收来自协调级 的协调向量及交通预测信息.3)实时选择恰当的数学模型和性能指标，在线确定匝道控制律 .协调级负责：1)通过在线自学习确定各控制器的协调向量.2)向控制级发送协调向量与慢 扰预报信息.3)接受组织级的命令.组织级是系统和管理者的中介.4.4节的递阶控制器的 性能强烈依赖于优化结果，一旦优化结果失真，控制器就会失效.Saridis则建议赋予现场 匝道控制器更强的适应能力与自主能力，并引入人的智能.Saridis没有给出具体算法和应 用实例.
+4.6　模糊控制与神经元网络控制
+　　模糊逻辑用于交通控制已有很长的历史.Pappis和Mamdani于七十年代设计的路口信号灯模 糊控制器是模糊控制的一个范例［54］.八十年代，Sasaki［55］和Chen ［56］ 曾研究孤立匝道口的模糊控制.迄今为止，有关多路口或多匝道口模糊控制的文献还很少 (这种研究恰恰是更有意义的).有经验的交警或匝道管理员可以熟练地完成孤立路口或匝道 口的灯色控制，但他们很难处理地域跨度很大的多路口或多匝道口的协同控制问题，因为他 们不具备有关知识与经验.目前，在交通工程中模糊逻辑多用于解决拥堵判别、事故检测及 交通建模等问题［22-25］.
+　　八十年代随着人工神经元网络研究热潮的兴起，人们发现在各种可能的近似函数中，神经元 网络具有很强的非线性近似能力.文［57,58］利用N个串级神经元网络实现一个反馈控制函 数 ，文［59］利用类似方法设计匝道控制器.文［60］则尝试利用神经元网络去逼近匝道反馈 控制 律中的非线性项.仿真表明，在强扰作用下神经元网络方法优于一般方法.利用神经元网络 设计匝道控制器很有新意.
+5　网络路由控制
+5.1　问题与模型
+　　在现有交通模式下，出行者在出行前对起点－终点对(OD对)间任何一条可行路径上的实时交 通状况 及未来演化趋势知之甚少，出行中也难以根据实时交通状况灵活更换路径，以最小的费用抵 达终点.交通需求与供给的失配使路网资源得不到充分利用，严重时导致拥堵.路由控制是 解决上述问题的有效途径，即在某一性能指标最优的意义下，为路网车辆分配最优路径，实 现路网通行能力和交通需求的空间匹配(匝道控制和路口信号灯控制旨在实现道路通行能力 和交通需求的时间匹配).这主要是通过设置在高速公路网络节点上游附近的可变信息标志( VMS)实现的.如果路由控制是群体(collective)方式的，即控制系统不能明确识别个体车辆 ，则控制信号只能是二值化的.若信号0表示无分流，则信号1表示全部分流.如果路由控制 是个体(individual)方式的，即控制系统与个体车辆可以通过GPS和车内导航系统进行双向 通讯( 这将在ITS中成为现实)，则系统可以实现更为柔性的路由控制，控制信号可在［0，1］上取 值(即指定部分车辆分流).Papageorgiou［61］和Messmer［62,63］研究了路 由控 制的基本框架.路由控制涉及四个关键问题： 1)网络模型、2)最优交通分配准则、3)控制 信息的切换频率及网络流稳定性、4)出行者的服从率.网络交通控制是一个富有挑战性的问 题，这主要表现为不确定的网络扰动、系统的大规模性和非线性、离散的控制输入和严格的 变量约束等.
+　　宏观高速公路网络流模型由结点模型、混合率模型和线段模型组成［61,62］.前两个 模型主要是利用汇流因子和分流因子刻划不同终点的子流在同一结点处的分布，而线段模型 则完全是宏观流体模型.整个模型可写作
+x(k+1)=f［x(k)，βν(k)，z(k)］.　　(14)
+其中x(k)包括全部路段的速度和密度，控制输入βν(k )代表全部VMS信息，z(k)包含交通需求、各分叉点的标称分流率和预测服从率，而实际分流率变成内模变量.
+5.2　路由控制
+　　路由控制实质上是用控制语言定义的动态交通分配问题，它分为系统最优问题和用户最优问 题［64,65］.这方面的中文评述见文［66］的第十三章及文［67］.文［61-63］ 在网络旅行时间最短意义下讨论系统最优问题.研究表明：1)路由控制可以显著减少全局旅 行时间.2)控制信号(分流率)在充分大的时段上未必会趋于一个稳态最优解，而是常常表现 出某种振荡倾向，即路由控制器以较高的频率轮流指定某分叉点下游路径中的一条或几条为 最优路径.3)在性能指标中增加罚函数项有助于消除振荡.4)系统最优控制保证系统的全局 旅行时间最短，但同时也会引导少数出行者进入非最短时间路径.这势必引起出行者的反感 ，甚至拒不接受路径诱导，降低系统的可控性.文［68］专门讨论服从率对路由控制的影响 .在自动高速公路系统(AHS)中个体服从率将达到100%.
+　　在动态用户最优条件下，任何时刻任何OD对上的已用路径的旅行费用相等且不大于未用路径 的旅行费用.任何出行者都不可能通过单方面改换路径来进一步降低旅行费用.从控制角度 看，用户最优问题就是根据实时交通检测信息确定模型(14)的控制输入，使系统输出
+y(k)=F［x(k)，βν(k)］.　　(15)
+在满足切换约束的情况下接近于零［61］.
+　　系统最优问题和用户最优问题都可以归结为非线性最优控制问题.由于模型的非线性、高阶 性以及约束条件的特异性，问题不易求解.文［63,69］考虑利用可行方向法或约束梯度法 求解.文［61,62］针对线性化的网络模型，尝试利用Bang－Bang控制解决用户最优问题， 利用LQ，LQI方法解决系统最优问题.文［70］利用神经元网络实现路由控制.仿真表明， 对于简单的高速公路网可以实现鲁棒性良好的神经元路由控制器，但控制器泛化能力较弱( 只能针对特定路网).若路网结构比较复杂，控制器的稳定性和鲁棒性尚不尽人意.路由控 制的实例不多.最近，研究者采用基于简单反馈思想的启发式方法，在丹麦的Aalborg市实 现了近似用户最优条件下的路由控制，效果良好［71］.
+6　集成交通控制
+　　大多数交通控制研究不是侧重于高速公路匝道控制器的优化设计，便是偏重于区域交通信号 的配时调节.一般很少考虑两个系统的协调.结果，尽管匝道控制改善了高速系统的性能，但入匝排队或入匝分流也往往会给慢速系统带来许多的负面影响.有时高速干道出现交通拥挤，但慢速干道却存在过剩的通行能力.因此，有必要研究集成交通控制.集成交通控制大多针对理想的通道系统(corridor system).它既包括高速干道，也包括区域交通系统中与该高速干道具有相同OD特征的一条或几条慢速干道.Payne根据Wardrop网络均衡原理研究入匝排队 对通道系统的影响.他通过动态规划给出一种稳态入匝分配策略，使远途出行者优先入匝［72］.文［73］将匝道口和交叉路口的集成控制问题定义成基于存储－转发(store －and－forward)模型的最优控制问题.文［74］综合已有研究方法，从系统最优角度讨论 集成交通控制系统设计.文［75］实地考察匝道控制对整个通道系统的影响.最近，研究者以 英 国Glasgow市的M8通道为背景，通过仿真定量评估匝道控制、路由控制和路口信号灯控制的 集成效果［76］，该研究表明合理运用集成控制可以显著减少通道旅行时间.文［77 ］则将匝道控制和路由控制的集成归结为一个非线性非凸两级规划问题.这实际上是系统管 理者与出行者之间的一个Stackelberg博弈问题.该问题很难求解.文［78］提出一种有效的启发式算法.
+
+7　几点评述
+　　众所周知，鲁棒控制和自适应控制可以用来消除模型不确定性，随机最优控制可以用来消除 环境不确定性.高速公路交通问题同时包含这两种不确定性，其最优解一般无法实现［ 79］.但目前的研究却基本上囿于最优控制和大系统控制的范畴.自适应控制、鲁棒控制 和预测控制在交通系统中几乎没有得到应用.黄小原［80］尝试设计环城高速公路的 自校正控制器，想法是很好的.另外，对于高速公路交通系统这样的强非线性系统，基于严 格数学模型的控制方法有局限性，智能控制方法也值得尝试.
+　　1) 鲁棒性与实时性
+　　递阶匝道控制代表目前匝道控制研究的最高水准，但这种控制策略仍不能严格保证闭环系统 的稳定 性和鲁棒性.宏观模型是一个非线性分布参数模型，模型的离散化、线性化及简化处理使交 通流的波动(甚至混沌等尚不明晰的交通流性态)成为系统的未建模动态，同时也使计算优化 点相对失真.另外，线性化模型仅能在标称点的邻域内再现高速公路交通流的动态特性.我 们并没有充分理由相信上述简化或线性化系统一定对扰动构成标称系统.测试表明，一旦出 现强 扰，递阶控制系统的控制层即告失效.这时再由适应层启动优化计算，重新调节控制器就显 得过于机械，实时性很难保证.这些问题很大程度上源于递阶控制结构的“先天不足” ［81］.
+　　我们认为，应在控制层设计鲁棒控制器，使系统能适应大多数扰动情况，尽量避免在线优化 .现行的匝道控制器设计主要依据最优控制理论，性能指标的选择过于苛刻、笼统.事实上 ，交通控制不同于飞行器控制，出行者在出行中不知道也不追求车流的最优状态，但他们却 能感知“满意状态”的存在，而且出行者对于车流扰动有一定的心理承受能力，所以交通控 制更应该是一种“满意控制”，它与鲁棒控制有着天然的联系.其次，寻找快速优化算法解 决实时计算瓶颈，如借鉴预测控制中滚动优化的思想.最近已有人在做这样的尝试［45 ］.
+　　2) 智能控制
+　　模糊控制、神经元网络控制、自学习控制［82］可能是解决本文问题的有效途径.模 糊逻辑和神经元网络都不依赖于精确的数学模型，都兼有逻辑推理和数值计算的功能，都有 较强的非线性函数近似能力.本文讨论的对象是强非线性的，而且与之有关的许多概念具有 模糊性，如交通状况(畅通、饱和、拥挤和堵塞等)、延误长短、排队长短、流量大小、车流 稳定性、网络均衡等.目前，利用模糊逻辑和神经元网络研究非线性系统建模和控制的文献 已有很多，可以充分借鉴.针对高速公路交通系统，文［83］讨论基于神经元网络的高速公 路交通流建模，文［84］ 尝试利用神经元网络判别高速公路交通流的稳定性.文［85］讨论高速公路交通流的模糊建 模，并尝试利用模糊神经元控制器实现高速车流的限速控制.文［59，60］利用神经元网络 设计入口匝道控制器，文［70］利用神经元网络设计路由控制器.这些都是全新的尝试.
+
+8　结束语
+　　城市高速公路交通流和城市区域交通流差别较大，本文主要针对前者(关于城市区域交通控 制见文［82,86-88］).城市高速公路交通流与常见的市间高速公路交通流差别不大，对于 后者，本文内容也完全适用.但一般只有城市高速公路才迫切需要本文意义上的控制.
+　　国家规划在“九五”期间百万人口以上的特大城市要逐步建成快速路系统(目前国内也称 城市高速公路为快速路，以区别于市间高速公路).目前上海已建成内环线快速路和相应的交 通监控系统.北京外围也已形成较为完整的高速立交体系.国外经验表明，单凭兴建城市高速 公路并不能一劳永逸地解决城市交通拥堵问题，如果不能在城市交通网络中很好地预测、分 配、调度和控制车流，整个城市道路交通系统同样会出现严重的“肠梗阻”.因此，应对城 市高速公路交通建模和控制研究给予足够的重视.目前国内已有少量研究成果发表［12 ，18，37，80，89，90］.
+　　交通控制是交通工程与控制工程相结合的产物.自1993年起，国际交通运输领域的权威刊物 --Transportation Research开始增版题为“新兴技术”的C卷，集中反映控制等信息技术 在交通运输中的应用.国际电气电子工程师协会于1997年成功地举办了第一届智能交 通系统(ITS)大会.另外，近年的美国控制会议、IEEE控制与决策年会和IFAC世界大会均设 有交通运输专题.这些都充分说明，随着交通事业的蓬勃发展，控制学科将日益发挥重要的 作用.
+　　
+　　致谢　北京航空航天大学管理学院黄海军教授、西安交通大学系统所万百 五教授提出了宝贵的修改意见，使本文受益良多，作者深表谢意！
+作者简介：王亦兵　1968年生.1990年毕业于四川大学无线电系，1993年毕业于重庆大学自动化系(硕士)，1998年毕业于清华大学自动化系(博士).研究兴趣：非线性系统、自动高速公路系统、城市交通控制.
+　　　　　韩曾晋1932年生.1953年毕业于清华大学电气工程系，现为清华大学自动化系教授、博士生导师.主要研究领域：自适应控制、智能控制、混合动态系统、电力传动系统.发表论文近80篇.
+　　　　　贺国光1942年生.1964年毕业于天津大学，现为天津大学系统所教授、博士生导师.1984年以来主要从事自适应控制、交通系统工程、城市交通控制系统研究，发表论文50余篇.
+作者单位：王亦兵　韩曾晋(清华大学自动化系　北京　100084)
+　　　　　贺国光(天津大学系统所　天津　300072)
+参考文献
+1　Papageorgiou M. Applications of automatic control concepts to traffic flow modeling and control. New York: Springer－Verlag, 1983
+2　Papageorgiou M. Multilayer control system design applied to freeway traffic. IEEE Trans. on AC., 1984, 29(6): 482-490
+3　Lighthill M J, whitham G B. On kinematic waves: I. Flood movement in long rivers, II. A theory of traffic flow on long crowded roads. Proc. Roy. Soc, 1955, 229A:281-345
+4　Papageorgiou M. Freeway traffic modeling and control. Proc. of the 4th IFAC/ IFIP/IFORS Conf. on Control in Transportation Systems,Germany,1983: 195-202
+5　Ferrari P. The instability of motorway traffic. Transpn. Res.－B, 1994, 28(2): 175-186
+6　Papageorgiou M. Macroscopic modeling of traffic flow on the BOULEVARD PERIPHERIQUE in Paris. Transpn. Res.－B, 1989, 23(1): 29-47
+7　P. Ross. Traffic dynamics. Transpn. Res.－B, 1988, 22(6) : 421-435
+8　Gerlough L. Traffic flow theory. Transpn Res. Board. Special Report 165, Was hington D. C., 1975
+9　May A D. Non－integer car－following models. Highway Res. Rec. 199, 1967: 19-32
+10　Payne H J. Models of freeway traffic and control. Simulation Council Proceed ings, 1971, 1(1): 51-61
+11　戴世强等. 交通流动力学：它的内容、方法和意义. 自然杂志, 1997, 19(4): 196-201
+12　王亦兵, 韩曾晋, 史其信. 高速公路交通流建模. 系统工程学报,1998，13(2)
+13　Papageorgiou M. Modeling and real－time control of traffic flow on the southern part of BOULEVARD PERIPHERIQUE in Paris: Part I: Modeling. Tranpsn. Res.－A, 1990, 24(5): 345-359
+14　Newell G F. Comments on Traffic Dynamics. Transpn. Res.－B, 1989, 23(5): 386-389
+15　Grewal M S, Payne H J. Identification of parameters in a freeway traffic model.IEEE Trans. on SMC, 1976, 6(3): 176-185
+16　Cremer M, Papageorgiou M. Parameter identification for a traffic flow model. Automatica, 1981, 17(6): 837-843
+17　Cremer M, May A D. An extended traffic flow model for inner urban freeways. Proc. of 5th IFAC/IFIP/IFORS Intern. Conf. on Control in Transpn System, 1986: 239-244
+18　王亦兵, 罗赞文, 韩曾晋, 史其信. 城市高速公路交通中的控制问题. 中国公路学报, 1997, 10(3): 89-93.
+19　Nahi N E. Freeway－traffic data processing. Proceedings of the IEEE,1973, 61(5): 537-541
+20　Willsky A S. Dynamic model－based techniques for the detection of incidents on freeways. IEEE Trans. on AC., 1980, 25(3): 347-359
+21　Stephanedes J. Freeway incidents detection through filtering. Transpn. Res －C., 1993, 1(3): 218-233
+22　Chang E C. Fuzzy set applications for freeway incident detection. IEEE Int elligent Vehicles Symposium, 1993: 439-443
+23　Krause B. Intelligent highway by fuzzy logic: congestion detection and traff ic control on multi－lane roads with variable road signs. Proc. of the 5th IEEE International Conf. on Fuzzy Systems, 1996, Part 3: 1832-1837
+24　Patel M I. An intelligent system architecture for urban traffic control appl ications. Proc. of the 8th IEEE Symp. on Parallel and Distributed Processing, 1996:10-17
+25　Xu H. Real－time adaptive on－line traffic incident detection. Proc. of the IEEE International Symp. on Intelligent Control, 1996: 200-205
+26　Ritchie G. Simulation of freeway incident detection using artificial neural networks. Transpn. Res.－C, 1993, 1(3): 203-217
+27　Yogoda H N. The dynamic control of automotive traffic at a freeway entrance ramp. Automatica, 1970, 6(2): 385-393
+28　Berger C R. Diversion control of freeway traffic. IFAC 6th Trien World Congr ess, Boston, 1973, Part III, 4.3: 1-10
+29　Maarserveen. A martingale approach to estimation and control of traffic flow on motorway. Proc. 4th IFAC/IFIP/IFORS Conf. on Control in Transpn Systems, Ger many, 1983: 203-210
+30　Smulder S A. Application of stochastic control concepts to freeway traffic c ontrol problem. Proc.6th IFAC/IFIP/IFORS Conf. on Control, Computers and Communi cation in Transpn Syst., Paris, 1989: 221-227
+31　Prigogine I, Herman R. Kinetic theory of vehicular traffic. New York: American Elservier, 1971
+32　Toshimitsu. The 1/f fluctuation of a traffic current on an expressway. Japanese J. Appl. Physics., 1976, 15(7): 1271-1275
+33　Forbes G J. The applicability of catastrophe theory in modeling traffic oper ations. Transpn. Res.－A, 1990, 24(5): 335-344
+34　Kerner B S. Appearance of moving local clusters of vehicles on highway with bottlenecks. The 2nd World Congress on Intelligent Transport System, 1995, vol. IV: 1911-1914
+35　顾国庆等. 交通系统的元胞自动机模型. 系统工程理论方法应用, 1995, 4(1): 12-17
+36　Febbraro A D. A new model for an integrated urban transportation network. Th e 7th IFAC/IFORS Symposium on Transportation Systems: Theory and Applications of Advanced Technology, 1994: 923-928
+37　王亦兵, 韩曾晋, 罗赞文等. 智能运输系统初探. 控制与决策, 1997, 12(增刊): 403-407
+38　王亦兵, 韩曾晋. Stability of an Automated Vehicle Platoon. IEEE American Con trol Conference, 1998
+39　Isaksen L. Freeway surveillance and control. Proceedings of the IEEE,1973 , 61(5): 526-536
+40　Payne H J. Desige of a traffic responsive control system for a Los Angels fr eeway. IEEE Trans. on SMC, 1973, 3(3): 213-224
+41　Zhang H. Some general results on the optimal ramp control Problems. Transp n. Res.－C, 1996, 4(2): 51-69.
+42　Papageorgiou M. Optimal decomposition methods applied to motorway traffic co ntrol. Int. J. contr., 1982, 35(2):269-280
+43　Mahmoud M S. Optimization of freeway traffic control problems. Optimal Con trol Application and Methods, 1988, 9: 37-49
+44　Greenlee T L, Payne H J. Freeway ramp metering strategies for responding to incidents. IEEE Conf. on Decision and Control, 1977: 987-992
+45　Chen O J. Development and evaluation of a dynamic ramp metering control mode l. The 8th IFAC/IFORS Symp. on Transpn Syst., Chania Greece, 1997: 1162-1 168
+46　Isasken L, Payne H J. Suboptimal control of linear system by augmentation wi th application to freeway traffic regulation. IEEE Trans. on AC., 1973, 18(3): 210-219
+47　Goldstein N B. A decentralized control strategy for freeway regulation. Tr anspn. Res.－B, 1982, 16(4): 279-290
+48　Looze D. On decentralized control with application to freeway ramp metering. IEEE Trans. on AC., 1978, 23(2): 268-275
+49　Papageorgiou M. ALINEA: a local feedback control law for on ramp metering. Transpn. Res. Rec. 1320, 1991: 58-64
+50　Papageorgiou M. Modeling and real－time control of traffic flow on the southern part of BOULEVARD PERIPHERIQUE in Paris: PartⅡ: Coordinated on ramp metering . Tranpsn Res.－A, 1990, 24(5): 360-370
+51　Justin Black. Ramp Metering. California Path Research Report, 1996
+52　Kashani H R, Saridis G N. Intelligent control for urban traffic systems. Automatica, 1983, 19(2): 191-197
+53　Saridis G N. A hierarchically intelligent control system for urban and freeway traffic. Technical Report, TR－EE－81－19, Purdue University,1981
+54　Pappis C P, Mamdani E. H. A fuzzy logic controller for a traffic junction. IEEE Trans. on SMC, 1977, 7(10): 707-717
+55　Sasaki T. Fuzzy on－ramp control model on urban expressway and its extension . Intern. Symp. On Transpn and Traffic Theory, 1987: 377-395
+56　Chen L L. Freeway ramp control using fuzzy set theory for inexact reasoning. Transpn. Res.－B, 1990, 24(1).
+57　Nguyen D H. Neural network for self－learning control systems. IEEE Control System Magazine, 1990, 10(1): 18-23
+58　Parisini R, Zoppoli T. Neural network for feedback feedforward nonlinear control system. IEEE Trans. on NN, 1994, 5(3): 436-499
+59　Parisini R, Zoppoli T. Neural network for minimization of traveling time on freeway systems. The 7th IFAC/IFORS Symp. on Transp Systems: Theory and Applications of Advanced Technology, 1994: 803-808
+60　Zhang H. A local neural network controller for freeway ramp metering. The 7th IFAC/IFORS Symp. on Transp Syst.: Theory and Applications of Advanced Technology, 1994: 704-707
+61　Papageorgiou M. Dynamic modeling, assignment, and route guidance in traffic networks. Transpn. Res.－B, 1990, 24(6): 471-495
+62　Messmer A, Papageorgiou M. Automatic control method applied to freeway network traffic. Automatica, 1994, 30(4): 691-702
+63　Messmer A, Papageorgiou M. Route diversion control in motorway networks via nonlinear optimization. IEEE Control System Technology, 1995, 3(1): 144-154
+64　Ran, B.(冉斌), Royce D E, LeBlanc L J. A new class of instantaneous dynamic user－optimal traffic assignment models. Oper. Res., 1992, 41(2): 192-202
+65　Lam W H K, Huang HJ(黄海军). Dynamic user optimal traffic assignment model for many to one travel demand. Transpn. Res.－B, 1995, 29(2 ): 243-259
+66　黄海军. 城市交通网络平衡分析理论与实践. 人民交通出版社, 1994年
+67　黄海军. 动态平衡运量配流问题及其稳态伴随解算法. 自动化学报, 1994,20 (6): 668-677
+68　Weymann J. Optimization of traffic dynamic route guidance with drivers' reac tions in a queue－based model. IEEE Trans. on SMC,1995, 25(7 ): 1161-1165
+69　Meoreno J C, Papageorgiou M. Integrated optimal flow control in traffic netw orks. European Journal of Operational Research,1993, 71(2): 317-323
+70　Papageorgiou M. A neural network approach to freeway network traffic control . The 7th IFAC/IFORS Symp. on Transp Systems: Theory and Applications of Advanced Technology, 1994: 809-814
+71　Mammar S. Automatic control of variable message sighs in Aalborg. Transpn. Res.－C, 1996, 4(3): 131-150
+72　Payne H J. Allocation of freeway ramp metering volumes to optimize corridor performance. IEEE Trans. on AC., 1974, 19(3): 177-186
+73　Papageorgiou M. An integrated control approach for traffic corridors. Transpn. Res.－C, 1995，3(1)
+74　Chang G L. A dynamic system－optimal control model for commuting traffic cor ridors. Transpn. Res.－C, ,1993, 1(1): 3-22
+75　Haj－Salem. Ramp metering impact on urban corridor traffic: field results. Transpn. Res.－A, 1995, 29: 303-319
+76　Diakaki C. Simulation studies of integrated corridors control in Glasgow. Transpn. Res.－C, 1997,5(3/4): 211-224
+77　Iida Y. A formulation of on－ramp traffic control system with route guidance for urban expressway. The 6th IFAC/IFORS Symp. on Control, Computer, Communicat ion in Transpn Systems, 1989
+78　Yang Hai, Yagar S. An algorithm for the inflow control problem on urba n free way networks with user optimal flow. Transpn. Res.－B, 1994, 28(2): 123-139
+79　罗公亮, 卢强. 智能控制与常规控制. 自动化学报, 1994, 20(3): 3 24-332
+80　黄小原等. 环城高速公路自校正控制. 自动化学报. 1995, 21(5): 6 09-612
+81　张钹. 传统人工智能与控制技术的结合. 控制理论与应用, 1994, 11 (2): 247-250
+82　贺国光等. 一种新型的自学习智能式城市交通实时控制系统. 自动化学报, 1995, 21(4): 424-430
+83　Gallinari P. On the use of neural network techniques for traffic flow modeli ng. The 2nd World Congress on Intelligent Transport System, 1995, vol. IV: 1915 -1919
+84　Florio L. Neural network classification and forecasting of freeway traffic f low stability. The 7th IFAC/IFORS Symp. on Transp Systems: Theory and Applicatio ns of Advanced Technology, 1994: 1122-1133
+85　Ngo C Y. Freeway traffic control using fuzzy logic controllers. Informatio n Science, 1994, 1: 59-76
+86　潘文敏. 城市交通控制系统综述. 控制理论与应用, 1985, 2(2): 1 -10
+87　刘希, 邹左军. 城市交通协调控制综述. 自动化学报, 1986, 12(4): 431-437
+88　李立源, 曹大铸. 道路交通流最优预测与交叉口最优控制. 控制理论与应用, 1993,10(1): 67-72
+89　罗方述, 万百五等. 西安－临潼高速公路递阶控制方法研究. 自动化学报, 1991, 17(3)
+90　姜紫峰. 高速公路动态交通流建模与控制策略. 信息与控制, 1996(4): 224-232

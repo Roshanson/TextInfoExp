@@ -1,0 +1,93 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年　第36卷　第11期　Vol.36　No.11　1999
+
+
+
+用于语音识别拒识的隐马尔可夫模型状态
+及状态驻留相关的声学置信量度
+田　斌　田红心　刘丹亭　易克初
+摘　要：随着语音识别系统继续从实验室转向实际应用，语音拒识就变得愈来愈重要.为解决语音识别系统对识别候选的接受/拒识判决问题，文中提出了基于隐马尔可夫模型(HMM)的语音识别系统中状态和状态驻留相关的声学置信量度准则.给定状态下特征矢量的平均观测先验概率和给定特征矢量状态的后验概率均比较容易设定统一的拒识门限，且不需专门的训练.而状态驻留分布相关法则是基于驻留分布概率和置信区间理论，不仅可设定一个拒识门限，同时可给出语音识别候选的状态驻留可信度.实验表明上述拒识准则能很好地拒识误识别候选和词表外语音，从而在较低拒识率的情况下有效地提高系统的识别率.
+关键词：语音识别，拒识，声学置信量度，置信区间，状态驻留
+中图法分类号：TP391.4
+HMM STATE AND STATE DURATION DEPENDENT CONFIDENCE
+MEASURES FOR UTTERANCE REJECTION
+TIAN Bin, TIAN Hong-Xin, LIU Dan-Ting, and YI Ke－Chu
+(National Key Laboratory on Integrated Service Network, Xidian University, Xi'an 710071)
+Abstract　Utterance rejection is becoming increasingly important as speech recognition systems continuously migrate from the laboratory to actual applications. Proposed in this paper are state and state duration dependent acoustic confidence measures for acceptance/rejection of recognition hypothesis in speech recognition systems based on hidden Markov model (HMM). The state dependent confidence measure is computed for each frame of speech as the feature vectors output probability or posteriori state probability given the observation features. It is easy to be implemented by using one single global threshold and no extra training is needed. The state duration dependent one is based on the duration distribution probability and confidence interval theory. Although it is required that the state duration distribution be trained, the data can be easily obtained during the traditional HMM training. Experiment results show that the methods can reject incorrect candidates and OOV (out of vocabulary) words effectively, thus significantly increasing the recognition accuracy with low rejection rate.
+Key words　speech recognition, utterance rejection, acoustic confidence measure, confidence interval, state duration
+1　引　言
+　　在语音识别和关键词确认系统中，拒识是一个非常重要的问题.在连续语音识别中，由于声学识别率并不足够高［1,2］，声学匹配获得的错误候选经语言模型处理后可能会得到较高的概率值而最终得到错误的结果[3]，因此有必要采用拒识手段去掉错误可能性大的候选［4,5］，同时，拒识还可以有效地降低候选的个数，减少搜索路径.在关键词确认系统中，拒识能够降低系统的误警率，使系统不接收词表以外(OOV)的语音；即使在有限命令控制系统中，拒识词表外的语音及保障需要高可靠识别的命令都非常重要.尽管有些系统的识别率已经相当高，比如95%左右，但离真正的实用还存在差距，大规模提高识别率无论从理论上还是从技术上都存在着一定的困难.因此，以拒识率换取误识率的下降已经成为解决语音识别系统实用化的一条有效途径.
+　　拒识方法一般分为两类，一种利用建立填料模型(filler)和反关键词模型［6，7］来完成是否词表内的词的判决.这种方法需要针对拒识训练专门的模型；另一种则直接利用识别的似然值进行判决［8，9］.前者的训练更复杂，后者一般直接由模式识别中的拒识原则推演过来，往往达不到前者的水平.
+　　本文提出的拒识算法属于后者，但较多利用了语音识别过程中的匹配信息，得到较好的结果.给定状态下特征矢量的平均观测先验概率和给定特征矢量状态的后验概率均比较容易设定统一的拒识门限，且不需专门的模型训练.而状态驻留分布相关法则是基于驻留分布概率和置信区间理论，不仅可设定一个拒识门限，同时可给出语音识别候选的状态驻留可信度.
+2　状态与特征矢量相关的两种声学置信准则
+　　一个基于HMM的识别系统的正确候选不仅在模型匹配完成后具有最佳匹配，而且各状态应该吻合得较好.假定一个HMM λ={π,A,B}有S={s1,s2，…,sN}共N个状态.π为初始状态分布，A，B的定义可参见文献［10］.令O={O1,O2,…,OT}为一个特定的输入观测矢量序列.经Viterbi解码，可得到O所对应的最佳状态序列即O={Ob［1］,…,Oe［1］,Ob［2］,…,Oe［2］,…,Ob［N］,…,Oe［N］},其中b［i］和e［i］分别为状态i对应的起始和终止帧号.在HMM匹配得分采用对数得分时，可得到如下声学置信得分.
+2.1　状态归一观察分布概率
+　　　　(1)
+得分以本状态的驻留帧长作了平均，避免了驻留长的状态得分淹没掉驻留短的状态得分.
+2.2　状态归一分布后验概率
+　　　　(2)
+其中
+　　　　(3)
+这里采用一个状态在给定观测矢量下的后验概率.在两种情况下，整个HMM的声学置信得分都进行了状态平均.这种拒识算法的优点在于不再为拒识定义和训练新的模型.
+3 状态驻留分布相关法声学置信准则
+　　状态驻留模型常用于改进HMM模型对状态驻留描述不合理的缺点［11,12］,却使HMM模型的训练和识别都变得复杂.我们则利用单独训练出的驻留分布来作拒识判别.假定状态驻留d符合高斯分布(我们的系统即采用此分布)Pi(d)=N(d,μi,σ2i)或伽玛分布经Viterbi解码，可得到O所对应的最佳状态序列的驻留帧长dj,j=1,2,…,N.则可得出状态驻留分布置信得分
+　　　　(4)
+这一准则虽然对OOV和识别错误结果拒识性能较好，但总体效果不如ACS1和ACS2（见表1）.经分析发现，错误拒识多发生在平均驻留特别短的状态上.此时 ,密度函数的最大值可能很大,方差很小,它的贡献就显得不稳定，并且平均驻留较长状态的贡献多数会比短的小一些,这显然不符合实际情况.用于改进HMM模型对状态驻留描述不合理的各种模型实际上也会遇到同样的问题.
+表1　置信度用于拒识实验
+拒识准则拒识率(%)识别率(%)拒识正确率(%)拒识错误率(%)
+　0.0%93.17*――
+　2.5%95.5399.200.80
+ACS15.0%97.7094.006.00
+　7.5%99.8098.801.20
+　2.5%95.5198.401.60
+ACS25.0%97.7093.406.60
+　7.5%99.7098.801.20
+　2.5%95.3491.6010.05
+ACS35.0%97.4092.008.00
+　7.5%99.5098.501.50
+　2.5%95.5399.200.80
+ACS45.0%97.9093.403.60
+　7.5%99.8098.821.18
+　2.5%95.5699.600.40
+ACS55.0%97.9097.402.60
+　7.5%99.8098.831.17
+　　* 如不计200个词表外词汇，识别率为95.1% 
+　　对于正态分布来讲，约有95%的样本数据分布在临界区域［μ-2σ，μ+2σ］中.并且给定置信区间，可根据正态分布曲线下的面积函数数值表查求出相应区间的置信度.这个表精确到小数点后两位也不过500个值，较易实现.因此，定义如下两种声学置信得分.
+　　　　(5)
+其中
+　　　　(6)
+k是置信区间的大小控制参数.
+　　　　(7)
+其中
+　　　　(8)
+式(7)表示的是若接受该候选，落在以该候选为边界的置信区间外面的可能性.
+4　实验结果
+　　我们用16 KHz声卡采样的数据进行实验，识别参数为14维Mel频率倒谱系数(MFCC)，帧长为480个样点(30 ms)，帧移160样点(10 ms)，实验在一个49词的非特定人命令识别系统中进行.识别给出22人共200遍语音和200个OOV语音(含一些和词表易混的词和几个非正常语音如咳嗽声等).利用文件识别，在不同拒识率下仅考虑对第一候选在进行接受或判决的情况，得到表1的结果.在表1中
+　　　　(9)
+　　　　(10)
+　　　　(11)
+　　　　(12)
+5　结论和讨论
+　　试验结果表明，本文提出的方法具有很好的拒识性能，能够较好地拒识词表外语音和识别错误的结果，在较低拒识率的情况下可有效提高系统的识别率.ACS3效果不如ACS1和ACS2,是因为当某状态平均驻留很短时,密度函数的最大值可能很大,方差很小,那么它的贡献就显得不稳定.而基于置信区间理论的ACS4和ACS5却克服了这一缺点.状态与特征矢量相关的两种声学置信准则均不需要专门的训练和建模，而状态驻留相关法虽需新的训练，但为状态驻留建模的数据可以从原HMM训练中得到，而且训练比较简单.各准则都比较容易设置拒识门限.需要说明的是，在实际中，由于应用目的的不同，需要在识别率和拒识门限之间进行折中.同时我们注意到，拒识正确率和拒识错误率似乎和拒识率不存在很直接的关系，通过分析发现其根源在于不同置信准则对易混词和OOV的得分排序有明显不同.这提示我们将不同方法综合应用可能得到更好的效果.今后应对这一问题进行研究，以及如何用于降低候选数目，在连续语音识别中减少搜索空间.本文的方法对于针对HMM模型对状态驻留描述不合理的各种改进模型有一定参考价值.
+*本课题得到北京大学视觉与听觉信息处理实验室基金资助.
+作者简介：田斌，男，1970年10月生，讲师，博士研究生，主要研究方向为语音识别.
+　　　　　田红心，男，1968年3月生，讲师，主要研究方向为通信信号处理.
+　　　　　刘丹亭，男，1971年5月生，硕士研究生，主要研究方向为语音识别.
+　　　　易克初，男，1943年10月生，教授，博士生导师，主要研究方向为语音处理和卫星通信.
+作者单位：西安电子科技大学综合业务网国家重点实验室　西安　710071
+参考文献
+1　Fu S W K, Lee C H, Clubb O L. A survey on chinese speech recognition communication. Communication of COLIPS, 1996, 6(1): 1～17
+2　Makhoul J, Schwartz R. The voice of the computer.IEEE spectrum, 1997,34(12):39～47
+3　Tian Bin, Tian Hongxin, Fu Qiang et al. A novel statistical language modeling method for continuous chinese speech recognition.In: IEEE Int'l Conf on Signal Processing, Beijing, 1998, vol I, 734～737
+4　Renals S.Phone deactivation pruning in large vocabulary continuous speech recognition. IEEE Trans on Signal Processing Letters, 1996, 3(1):4～6
+5　Sukkar R A, Lee C H. Vocabulary independent discriminative utterance verification for non－keyword rejection in subword based speech recognition. IEEE Trans on Speech and Audio Processing, 1996,4(6):420～429
+6　Wilpon J G,Rabiner L R,Lee C H et al. Automatic recognition of keywords in unstrained speech using hidden markov models. IEEE Trans Acoustic, Speech, Signal Processing, 1990, 138(11): 1870～1878
+7　Hueng E F, Wong H C, Soong F K. A fast algorithm for large vocabulary keyword spotting application. IEEE Trans Speech ＆ Audio Processing, 1994, SAP－2(3): 449～452
+8　Bourlard B, Hoore B D, Boite J M. Optimizing recognition and rejection performance in wordspotting systems. In: 1994 IEEE Int'l Conf on ASSP, Adelaide, Australia, 1994, vol I, 373～376
+9　Rivlin Z. A confidence measure for acoustic likelihood scores. In: Proc of Eurospeech, 1995, Vol I, 523～526
+10 Rabiner L R. A tutorial on hidden markov models and selected applications in speech recognition. Proc of the IEEE, 1989, 77(2): 257～286
+11 Burshtein D. Robust parametric modeling of duration in hidden markov models. IEEE Trans on Speech ＆ Audio Processing, 1996,4(3): 240～242
+12 战普明，王作英，陆大金. 语音识别隐马尔可夫模型的改进. 电子学报，1994，22(1): 9～15
+　　(Zhan Puming, Wang Zuoying， Lu Dajin. Improvement of hidden markov model for speech recognition, Acta Electronica Sinica(in Chinese), 1994, 22(1): 9～15)
+原稿收到日期：1998-12-07；修改稿收到日期：1999-03-22.

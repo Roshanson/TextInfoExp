@@ -1,0 +1,96 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第12期 Vol.35 No.12 1999
+
+
+
+学生体操学习行为归因倾向的研究
+左新荣
+摘要：本文通过实验，研究不同教学情境对学生体操学习行为归因倾向的影响。结果表明，在成功条件下，实验组倾向于能力等稳定因素的归因对照组倾向于努力、运气等内部的和外部的不稳定因素的归因。在动作失败的条件下，其归因倾向与“成功”的归因，恰恰相反。进而探讨学生不同归因是如何对学习行为发生作用的。这对于学生取得良好的学习效果，形成有利于学习行为的归因模式有着积极的意义。
+关键词：体操∥教学∥行为∥归因
+The Research on the Causes of Inclination to Success
+and Failure in Learning Behaviors of Gymnastics
+Zuo Xinrong
+Abstract:By using the method of experiments, the author studies the influence of inclination to success and failure in students' learning behaviors in various teaching circumstances. The result shows that testing group could attribute their success to ability and some other stable factors under the success condition, while the normal group attributed their failure to efforts, luck and some other unstable external or internal factors. Under the failure condition, the cause of inclination to failure is opposite to success. According to it, the author wants to further analyze how dose the various causes influence learning behavior. It is very important for students to learn better and form the good learning behavior.
+Key words:gymnastics∥teaching∥behavior∥cause of inclination
+1　前言
+　　所谓归因，即指“怎样认知自己成败的原因”。在不同的体育教学情境中，由于提供的信息不同，学生对引起学习获得成功或失败的原因判断和知觉也就不同，从而形成不同的归因倾向。归因理论代表人物韦纳(Wiener)强调，影响学生学习成败的主要因素4个：ability(能力)，effort(努力)，task difficulty(任务难度)和luck(运气)。随着实验资料的积累，研究的深化，韦纳提出了4个因素的三维理论，即“内部――外部、稳定性――不稳定性、可控性和不可控性维度”，并认为三维理论部分地决定着个体对将来的期望、情绪和行为。这就为教育工作者分析、研究课堂上出现的一系列行为问题提供了方法和途径，使教师可以通过使用和修正各种归因来形成学生健康、积极的知觉，改变学生的行为，达到提高学习能力和成绩的目的。
+2　研究对象、方法、过程及可比性
+2.1　研究对象
+　　芜湖师专体育系96级男生35人，98级男生34人。
+2.2　研究方法
+　　采用现场自然对比实验和问卷法。
+2.3　实验组、对照组学生性格及身体条件的可比性
+　　实验在96级第2学期和98级第1学期的体操普修课上进行了2轮。这两个年级的1组为实验组，2组为对照组。实验前通过对2组学生进行“艾森克性格测验”，并将其结果运用DBAD Ⅲ统计数据库计算机处理发现，两组学生在性格上无显著差异(表1)，这表明性格并不明显影响其学习的行为归因。与此同时，对两组学生的身体素质进行了测验。从表2中可以看出，实验组的身体条件不优于对照组，因此可以认为，两组的可比性条件基本一致。
+表 1　本研究两组学生性格比较一览表
+
+年级人数　性格内倾情绪稳定性神经质
+SSS
+96
+9617
+18实验组
+对照组2.53
+2.190.83
+0.781.81
+1.500.71
+0.591.68
+1.860.51
+0.66
+t
+p1.23
+＞0.051.67
+＞0.050.86
+＞0.05
+98
+9816
+18实验组
+对照组2.64
+2.420.89
+0.922.15
+1.980.87
+0.861.72
+1.920.58
+0.64
+t
+p1.48
+＞0.051.74
+＞0.050.96
+＞0.05
+
+表 2　本研究两组学生身体素质及形态得分比较一览表　　
+
+年级组别人数靠墙
+倒立仰卧
+击足引体
+向上体前屈双臂
+屈伸前5项平
+均分合计体重
+(kg)身高
+(cm)
+96
+96实验组
+对照组17
+1871.1
+76.370.2
+79.964.0
+75.870.7
+67.680.3
+90.0356.3
+389.667.0
+66.7175.6
+176.3
+98
+98实验组
+对照组16
+1877.2
+74.573.5
+74.967.4
+65.575.1
+77.571.0
+69.6364.2
+362.065.4
+65.0176.4
+175.7
+
+　　注：表内5项素质的评分是根据完成动作的数量或时间换算得出的。
+　　为避免两组的相互影响，对照组按常规授课，实验组根据教学需要及本研究的目的，教学是在不同时间里进行的，并在教学目标方面注意贯彻了合作与努力――强调同学之间相互帮助、指导、分享他人的成功和来自同学的有利于学习的影响，强调努力的重要性及其与学习结果的关系，使学生能

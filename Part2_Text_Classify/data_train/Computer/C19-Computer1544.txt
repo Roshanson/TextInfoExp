@@ -1,0 +1,63 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  Vol.24  No.5 1998
+
+
+
+关于Razumikhin-Type定理的衰变估计
+侯春海　　钱积新
+关键词　Razumikhin-Type定理，衰变估计.
+On the Decay Estimate for Razumikhin-Type Theorems
+HOU CHUNHAI　　QIAN JIXIN
+(Institute of Industrial Process Control, National Laboratory of Industrial
+Control Technology, Zhejiang University, Hangzhou　310027)
+Key words　Razumikhin-Type theorems, decay estimate.
+1　引言
+　　在研究系统的稳定性过程中，专家们不但想得到关于稳定性的定性描述，而且更希望得到定量信息.多年来，动态系统的定量稳定性分析研究一直受到专家的关注.就时滞系统而言，1982年T.Mori等人给出带有定常时滞的线性时不变系统的衰变估计，1994年B.Lehman和K.Shujaee对一类纯滞后时变泛函微分方程解的衰变估计［1］.进行研究［2］.楚天广和王照林应用比较原理的方法研究了时滞系统的实用稳定性［3，4］.
+　　众所周知，Razumikhin-Type定量是指用通常Lyapunov函数，加上Razumikhin-Type条件而得到的一系列与常微分方程平行的种种稳定性与不稳定性准则，在研究纯滞后泛函微分方程解的稳定性过程中，Razumikhin-Type定理发挥着重要作用［5］.近年来，应用Razumikhin-Type定理对时滞系统进行稳定性分析愈来愈引起工程师们的重视［6］.所以，研究Razumikhin-Type定理的衰变估计具有极大的理论与应用价值.虽然已有应用Razumikhin-Type比较原理研究时滞系统的定量稳定性的报导［3］，但是针对Razumikhin-Type定理的实际应用，具体给出其定量渐近描述的研究成果并不多见.本文从Razumikhin-Type定理的应用角度出发给出其衰变估计，从而为工程设计提供理论依据.
+2　符号及定义
+　　表示“对所有的”或“对任给的”，表示“均存在”或“均可找到”；R=(-∞,+∞)，R+=［0,+∞］；［s］：不大于s的最大整数.设u:R→R为连续函数，则定义
+　　(1)
+　　(2)
+(1)式中的r为正数，在以下的讨论中也假设r为正数.
+3　主要定理
+　　定理1.连续函数u:R→R＋满足下述条件：若存在q＞1，α＞0，且当r(t)＜qu(t),t≥t0时，(t)≤-αu(t)，则有
+　(3)
+其中　
+　　证明.1) 先证明
+　　使用文献［5］中Theorem4.1的证明过程，容易证明本步结果.
+　　2) 再证明
+　　首先假设：t*∈［t,t+r］，使得.若否，由有
+　　(4)
+由已知条件可知，，有()≤-αu()≤0，因此
+　　(5)
+而这是矛盾的.因此，假设成立.
+　　若令，则有t∈Ω1.下面分两种情况加以说明
+　　(a) Ω2=φ；此时Ω1=Ω1∪Ω2=［t*，t*+r］，所以，∈［t*，t*+r］，有r()≥u().应用1) 的结论可得，∈［t*，t*+r］，有r(t)≥r()≥u().这样由式(1)可得r(t)≥(t*+r)≥(t+2r).
+　　(b) Ω2≠φ；由函数u的连续性可知，∈Ω2，可定义非空集合T()=｛l｜l，｜Ω2｝.取l()=inf｛T()｝，因为t*∈Ω1，则和有l(t)∈Ω1.这是因为，若l()Ω1，则必有l()∈Ω2，且t*＜l()，这样由函数u的连续性可知，l()不是T()的下确界，这与l()的定义相矛盾.
+　　此外，由已知条件可知，∈Ω2，在区间(l(),)上，函数u单调不增，因此必有u(l())≥u().由l()∈Ω1可知u(l())≤r(l())/.又由1) 的结论可得r(l())≤r(t)，因此可得，∈Ω2，r(t)≥r(l())≥u(l())≥u().∈Ω1，有r(t)≥r()≥u().
+　　这样，就有以下结论：∈Ω1∪Ω2=［t*，t*+r］，有r(t)≥u()，因此，通过取上确界，由式(1)可知，r(t)≥(t+r)≥(t+2r).这样，本步结果得证.
+　　3) 证明式(3)成立
+　　由2) 可知，t≥t0，2r(t-2r)≥2r(t)，依此类推可得式(3)成立.
+　　因此，定理得证.
+　　考虑如下的纯滞后泛函微分方程　　
+(t)=f(t,xt)，　　(6)
+其中f:R×C→Rn是一致连续函数，C=C(［-r,0］,Rn)，xt(θ)=x(t+θ)，-r≤θ≤0.
+　　从Razumikhin-Type定理的应用角度出发，不但可以得到以下Razumikhin-Type纯滞后泛函微分方程的解的定性稳定性描述――一致渐近稳定，而且还可给出其定量描述――衰变估计.
+　　定理2.对于系统(6)，若存在一个连续非负函数V:R×Rn→R＋，且满足
+　　i) V(t,x(t))=0，当且仅当x(t)=0；
+　　ii) q＞1，α＞0，使得若r(t,x(t))＜qv(t,x(t))，t≥t0，有(t,x(t))≤-αV(t,x(t)).则
+　　(7)
+其中
+　　证明. 可由定理1直接导出.
+　　注.条件i)―ii)可以保证系统(6)的零解的一致渐近稳定性.之所以能得到这样的结论而不需要附加文献［5］中(4.2)的无限小上界条件，这是由于条件ii)比相应的Razumikhin-Type定理的条件(文献［5］中第127页(4.4)强的缘故.
+　　针对Razumikhin-Type定理的实际应用，本文给出相应的衰变估计，这对于第一阶段的工程设计有着重要意义.
+作者单位：(浙江大学工业控制技术研究所、工业控制技术国家重点实验室　310027　杭州)
+参考文献
+　1　Mori T, Fukuma N, Kuwahara M. On an estimate of the decay rate for stable linear systems. Int. J. Contr., 1982, 36(1):95―97
+　2　Lehman B, Shujaee K. Delay independent stability conditions and decay estimates for timevarying functional differential equations.IEEE Trans. Autom. Control,1994，AC-39(8)：1673―1676
+　3　楚天广，王照林.时滞系统的实用稳定和Liapunov稳定性.力学学报，1996，28：200―206
+　4　王照林，楚天广.非线性力学中的比较原理与应用.中国科学(A辑)，1993，23(10)：1070―1078
+　5　Hale J K. Theory of functional differential equation, New York: Springer-Verlag,1977.
+　6　Chunhai H, Jixin Q. Stability criterion for LQ regulators including delayed perturbations.Int. J. Syst. Sci.,1997，28(3)：321―323
+收稿日期　1996－09－27

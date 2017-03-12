@@ -1,0 +1,75 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第6期 Vol.19 No.6 1999
+
+
+
+Web服务器与数据库服务器的连接技术
+丁明吉
+　　摘　要　本文详细论述了目前主要的三种接口技术并从Web模型入手，对它们的接口原理和开发过程进行了分析与对比，最后对这一接口技术的发展提出了看法。
+　　关键词　接口,Web服务器,CGI,API,JDBC
+INTERCONNECTION BETWEEN WEB SERVER AND DBMS SERVER
+Ding Mingji
+Information Centre of Liaohe Oilfield, Liaoning.Panjin 124010
+　　Abstract　This paper expounding three present major interface technology in detail，beginning with Web model ，analyzing and comparing their interface principle and their developing process. Finally，put forward my view in the development of this interface technology.
+　　Keywords　Interface，Web server，CGI，API，JDBC
+1　Web服务器与数据库的连接方法
+　　随着应用的普及，Web服务器与数据库服务器的连接显得越来越重要，许多厂商不断推出新的接口技术，使得这种连接更加简洁、方便和高效。Web与数据库的接口技术已成为基于Web的信息管理系统的核心。Web服务器与数据库的连接方法通常可分为基于Java的（JDBC）、通用网关接口(CGI)及应用编程接口(API)。
+2　Java数据库互联接口(JDBC)
+　　Java的推出使Web页面有了活力和动感，用户可以从Web服务器上下载Java小程序到本地浏览器上运行，这些下载的小程序可以就向本地程序一样，可独立地访问本地和其他服务器的资源，下面详细介绍JDBC的原理及实现方法。
+2.1　JDBC原理
+　　JDBC是一种可用于执行SQL语句的数据库API，它由一些Java语言写的类、界面组成。它在功能上与ODBC相同，给开发人员提供了一个统一的、标准的数据库访问接口。JDBC访问数据库的原理是:Internet/Intranet用户使用浏览器连接到本地或异地的Web服务器上，下载含有Java小程序的HTML文档。如果Java小程序使用了JDBC，浏览器运行的小程序可直接与数据库建立连接(如图1所示)。
+
+图1　通过JDBC访问数据库
+　　JDBC是一个与数据库系统独立的API,它的结构有两层: JDBC API和JDBC Drive API。JDBC API提供了应用程序到JDBC Driver Manager的通信接口，JDBC Driver API提供了JDBC Driver Manager到数据库驱动程序的通信接口。
+　　JDBC Driver Manager类似于ODBC Driver Manager，管理由各个数据库厂商开发的JDBC驱动程序。JavaSoft提供了一个通用的JDBC Driver Manager。每个数据库厂商仅需提供一个与ODBC类似的JDBC驱动程序,开发人员就可以在Java语言中访问该数据库。此外,JavaSoft提供了一个特殊的驱动程序，JDBC-ODBC桥，这个桥支持JDBC通过已有的ODBC驱动程序访问数据库。
+　　目前JDBC已得到许多厂商的支持，包括Borland、IBM、Oracle、Sybase等。目前流行的大多数数据库系统都推出了自己的JDBC驱动程序。
+2.2　JDBC实现
+　　JDBC API是通过Java的类接口实现的，几个主要的接口是:
+　　① java.sql.DriverManager: 负责处理JDBC数据库驱动程序的加载和卸载。Drivermanager类作为JDBC的管理层，负责找到并装入与URL指定的数据库相符的JDBC驱动程序。该驱动程序与远程数据库相连，返回一个java.sql.connection对象。
+　　② java.sql.Connection: 负责建立与数据库的连接。
+　　③java.sql.ResultSet: 表示从数据库服务器返回的结果集。通过操作给结果集实现对数据的访问。
+　　如果要访问数据库，首先必须建立一个java.sql.Connection对象，可以通过调用DriverManager.get.Connection得到此对象。该方法用一个URL串作为参数，该URL串唯一地指定了要访问的数据库服务器。任何一个SQL语句都可能改变数据库内的数据,但是,如果“AutoCommit”失效，则必须明显地使用Commit，否则无法实现数据库的更新。java.sql.Statement指在连接状态，能执行的SQL语句，它含有两个子类: java.sql.PreparedStatement 和 java.sql.CallableStatement; 前者执行一个预编译过的SQL Statement，后者执行某一连接状态数据库内的存储过程。JDBC API的java.sql.ResultSet对象控制经Statement获得的多行数据，它用游标(Cursor)指示当前的行,使用Next方法可以移动Cursor到下一行。ResultSet的GET方法能让你获得当前行内所有列的值。
+　　下面的Java程序段将连接一个ODBC数据源并执行一条SQL语句,返回的结果集放在结果集对象RS中。
+　String url="jdbc:odbc:Factory";
+Connection on=DriverManager.GetConnection
+(url,"UserName","PassWord")
+Statement stmt=con.CreateStatement();
+ResultSet RS=stmt.ExecuteQuery
+("SELECT Eno，Ename，Esex FROM Clerk");
+　　JDBC数据库采用URL的指名规则。JDBC URL结构为:Jdbc:<SubPro-tocol>: <SubName>,其中SubProtocol表示一个特定的数据库连接,SubName的内容依赖于SubProtocol,“jdbc:odbc:Factory”指定一个ODBC数据源Factory。
+3　通用网关接口技术(CGI)
+　　CGI是Web服务器运行外部程序的规范，按照CGI编写的外部扩展程序可以处理客户端(通常是Web浏览器)输入的协同工作数据，完成客户端与服务器的交互操作，扩展服务器的功能，完成服务器本身不能完成的工作。外部程序执行时可以生成HTML文档，并将文档返回Web服务器。
+　　CGI应用程序能够与浏览器进行交互作用，还可以通过数据库的API与数据库服务器等外部数据源进行通信。如一个CGI程序可以从数据库服务器中获取数据，然后格式化为HTML文档后发送给浏览器，也可以将从浏览器获得的数据放到数据库中。这样，客户端用户就可以和Web服务器进行数据处理。几乎所有的服务器软件都支持CGI，开发者可以使用任一种Web服务器内置语言编写CGI语句，其中包括广为流行的Perl语言、C、C++、VB、Delphi等。
+4　Web服务器应用编程接口(API)
+　　有些Web服务器软件厂商针对CGI运行效率低下、编程困难等缺点,开发了各自的服务器API(Application Programming Interface)，试图克服CGI性能方面的缺陷。
+　　服务器API一般作为一个DLL提供,是驻留在Web服务器中的程序代码，它可以象CGI那样扩展Web服务器的功能。API使Web开发者实现任何CGI可以实现的功能,且更加面向用户,满足应用程序的特殊需求。常见的API有Microsoft公司的ISAPI、Netscape的NSAPI、Informix公司的IUWCAPI。
+　　由于开发API应用程序存在许多潜在的困难,所以Microsoft与Netscape在其各自的服务器中提供了基于API的编程接口。Microsoft提供了IDC(Internet Database Connector)。Netscape提供了LiveWire/LiveWire Pro。
+5　各种接口技术的比较
+　　虽然JDBC 、CGI和Web Server API都能实现Web与数据库的连接,但它们的工作原理是不同的。
+　　CGI和API是将Web服务器与某一进程或API相连，该进程或API将得到的结果格式化为HTML文档，返回给Web服务器，然后由Web服务器将得到的HTML文档传给浏览器。就是说，与数据库的交互是由Web服务器完成的。而在JDBC中，浏览器将嵌于HTML文档中的Java应用程序下载到能够运行Java程序的本地浏览器中加以运行，就是说，与数据库服务器的交互是由浏览器直接完成的。表1对它们从不同侧面进行了比较。
+表1　各种接口技术比较
+
+性　能
+种　类　　　　CGIAPIJDBC
+实现的灵活性好好好
+编程的复杂度复杂复杂中等
+对程序员的要求高高中等
+开发时间长长中等
+可移植性较好差好
+CPU负担重较轻较低
+平台有关性有关有关无关
+
+　　相比较而言，CGI接口应用灵活，开发工具丰富，功能范围广,技术相对成熟。CGI是一个大家都支持的规范，但是用CGI编程太复杂,一个简单的Select查询，用CGI来实现就需要上百条语句; CGI运行效率也不高,并且要求程序员必须熟悉HTML。再加上与平台有关的缺点,因而CGI会被新的规范所取代。
+　　用Web服务器API编写的程序运行效率高，但是，用API编程比CGI还困难，对程序员的要求更高。并且API致命的弱点是，各API间没有互通性，用一种API编写的程序不能到另一种Web服务器上运行，限制了使用范围。尽管个别公司(如Oracle)推出了基于API的开发工具,在一定程度上解决了API开发困难的问题,但仍存在与API一样的弱点，与各自Web服务器捆绑的太死，缺乏通用性。
+　　Java编程规范，接口清晰，开发效率高。Java代码在可移植性、安全性和可靠性等方面也有显著优势，利用Java的多线程控制技术可以大大提高程序的执行效率。而且Java翻译器是在客户端运行，开发人员能创建反馈迅速的Java Applet，这是CGI和API编程无法实现的。
+　　虽然Java缺乏组件结构,交叉平台的GUI构架很粗糙,技术还不够成熟,功能也有待扩展。但JDBC仍是最有前途的接口技术。JDBC借鉴了ODBC的思想，可以利用现成的ODBC驱动程序访问各类数据库,保护了原有的投资。重要的是,在数据库方面,所有的数据库厂商都宣布支持JDBC标准，已推出或准备推出各自的JDBC驱动程序;在Web服务器方面,除了Microsoft坚持自己的ActiveX外，其他厂商都宣布支持JDBC标准。随着时间的推移，JDBC会取代CGI成为新的通用的接口规范。
+6　前景
+　　Web服务器与数据库服务器的接口技术会随着Internet/Intranet应用领域不断拓展而推陈出新。随着分布式对象技术在Web中的应用,使人们在Internet/Intranet上实现跨平台互操作的愿望有可能变为现实,基于分布式对象的Web数据库应用系统将会成为企业进行分布式管理的有力武器。到那时，无论是CGI、API还是JDBC都有可能成为历史，新的接口技术会更方便、更实用、更安全。但它们的思想将成为这一新接口技术诞生的基础。
+作者简介：丁明吉　硕士。主要从事数据库应用系统和浏览器主页的开发与研究。
+作者单位：辽河油田信息中心　辽宁.盘锦（124010)
+参考文献
+［1］　T.Berners-lee. Hypertext Transfer protocol. Internet Engineering Task Foece Working Draft. 1993,11
+［2］　李建忠,付　裕,钱清全. 日新月异WWW. 微电脑世界, 1997;(2):100-103
+［3］　郑林峰,张公忠. JDBC接口技术.中国计算机报,1997;28(7):82
+收稿日期:1999-02-01(修改稿)

@@ -1,0 +1,113 @@
+信息与控制
+Information and Control
+1999年　第28卷　第1期　Vol.28　No.1　1999
+
+
+
+具有多个时变时滞的不确定系统
+的时滞相关稳定性
+杨　斌　　潘德惠
+
+　　摘　要　研究了具有多个时变时滞的不确定系统的 稳定性问题, 利用Razumikhn定理与向量不等式的方法, 给出了不确定时滞系统稳定的充分 条件. 所得的条件与时滞相关, 在很大程度上降低了现有结果的保守性. 文末给出了一个应 用的算例, 并与已有的结果作了比较.
+　　关键词　时滞相关稳定性, 时滞系统, Razumikhn定理
+DELAY-DEPENDEN STABILITY FOR UNCERTAIN SYSTEMS WITH
+MULTIPLE TIME-VARYING DELAYS
+YANG Bin
+(Huazhong University of Science and Technology, Wuhan　430074)
+PAN Dehui
+(Northeastern University　Shenyang　110006)
+Abstract　In this paper sufficient conditions for the stabili ty of uncertain systems with multiple time-varying delays is presented, Razumik ihn theorem and vector inequality are employed to derive the conditions. The obt ained criterion is delay-dependent criteria . Also an illustrative example is g iven to show that the obtained criterion is better than the existing one in lite rature.
+Key words　delay-dependent stability, time-delay systems , Razumikihn theorem
+
+1　引言
+　　时滞系统在化工处理、柔性机器人、神经网络、最优控制等领域具有广泛的背景, 时滞的存 在使得稳定性的检验变得更加复杂, 经过国内外许多学者的努力, 迄今为止, 已有很多检验 稳定性的方法[1～7]. 现有的稳定性准则大致可分为两类: 其一为时滞独立准则[1～6],它不含时滞的任何信息; 其二为时滞相关准则[7], 它与滞后的大小有关. 由于缺少了时滞的信息, 时滞独立准则必然会使其稳定性准则具有保守性, 尤其是滞后量较小的情况. 近年来不确定时滞系统的鲁棒性问题得到了广泛的重视. 文[8～11]研究了单滞后不确定时滞系统的稳定性，其中文[8～9]给出了系统鲁棒稳定的时滞独立准则 ， 文[10～11]则给出了系统鲁棒稳定的时滞相关准则.
+　　本文基于Razumikhn定理与向量不等式的方法, 导出了具有多个时变时滞的不确定系统 的时滞相关准则.算例表明, 与现有的准则比较, 本文结果不仅降低了保守性而且宜于应用. 
+　　本文将使用如下符号:xT与MT分别表示向量x∈Rn与矩阵M∈Rn×n的转 置. λmax(M)与λmin(M)分别表示矩阵M最大特征值与最小特征值.
+
+
+2　主要结果
+　　本文研究由下述微分-差分方程描述的时滞系统
+　　　　　　(1)
+这里x∈Rn为系统的状态向量,A1∈Rn×n, i∈系统的状态矩阵, f(.) 为非线性不确定扰动并且满足条件f(t,0,…,0)=0, h1(t), i∈为时变连续函数并且满足条件.0≤hi(t)≤H, H＞0.(t) 为连续的矢量初始函数.
+　　在本文中我们作如下假设:存在非负常数αi,i∈n使得
+　　　　　　　　　　　(2)
+　　定理1　假设是渐近稳定的, 如果下述条件之一成立，则系统(1)渐近稳定.
+　　　　　　　　　　(3)
+　　　　　　　　　　　(4)
+其中为Lyapunov方程
+ATP+PA=-Q　　　　　　　　　　　　　　　　　　(5)
+的唯一解, Q=QT＞0为任意给定的矩阵, ε＞0为常数.
+　　证明　令h0(t)=0,θ(t)=θ(-H),  -2H≤t≤-H,则由(1)我们有
+　　　(6a)
+x(t)=θ(t), t∈[-2H,0]　　　　　　　　　　　　　　(6b)
+取系统的Lyapunov函数为
+V(x(t))=xT(t)Px(t)　　　　　　　　　　　　　　　(7)
+则V(x(t))沿着系统(6)的解的导数为
+　　　(8)
+利用向量不等式
+　　　　　　　　　　　　　(9)
+这里ε＞0为任意常数, 以及Razumikhin定理(Hale 1977), 我们假设对任意q＞1下 面的不等式成立.
+V(x(η))＜qV(x(t)), t-2H≤η≤t　　　　　　　　　(10)
+我们有
+　　　　　(11)
+并且
+　　(12)
+另外
+　　　　　　　(13)
+将(11),(12),(13), 代入(8)中, 并且令q→1+，我们可得
+　　　　　　(14)
+如果条件(3), (4)之一成立, 则一定存在常数δ＞0使得
+(x(t))＜-δ‖x(t)‖2　　　　　　　　　　　　　　　　　　(15)
+则由Razumikihn定理可知, 系统(1)是渐近稳定的.
+
+　　注1　考虑单滞后时滞系统［7］
+(t)=Ax(t)+Bx(t-τ)　　　　　　　　　　　　　　(16)
+文［7］的定理1给出了系统(16)稳定的充分条件为
+　　　　　　　　(17)
+　　　　　　　　　(18)
+很明显这个结果是本文定理1当n=1且扰动为零时的一个特殊情形.
+　　定理1给出了保证系统(1)稳定的时滞的界限, 条件(4)中含有一个自由参数ε, 所以定理1的 结果可以被优化, 下面的定理给出了ε的优化值.
+　　定理2　设ε＞0且
+　　　　　　　(19)
+则当ε=[n(n+1)/μ(W)]1/2时, g(ε)取得最大值, 并且最大值为
+　　　　　　　　　(20)
+　　证明　求g(ε)的最大值就相当于求εμ(W)+(n(n+1)/ε)的最小值. 注意到
+εμ(W)+(n(n+1)/ε)={[εμ(W)]1/2-(n(n+1)/ε)1/2}2+2[n(n+1)μ(W)]1/2　　(21)
+则如果条件ε=[n(n+1)／μ(W)]1/2成立, 则可得定理的结论成立.
+　　推论　假设是渐近稳定的, 如果下述条件 成立，则系统(1)是渐近稳定的.
+　　　　　　　(22)
+3　算例
+　　研究不确定时滞系统［10～11］
+(t)=(A+ΔA(t))x(t)+(B+ΔB(t))x(t-τ(t))　　　　　　　　(23)
+这里
+
+
+显然A+B是稳定矩阵, 令Q=I由Lyapunov方程(5)可求得
+
+因此λmax(P)=0.2786, λmin(Q)=1, ‖PB‖=0.3238,μ(W)=0.52, α=β=0.3.
+由推论1我们可得τ(t)＜0.2745.令P=I，由Lyapunov方程(5)可求得
+
+因此λmax(P)=1, λmin(Q)=3.5858, ‖B‖=1.618,μ(W)=14, α=β=0.3.
+由推论1我们可得τ(t)＜0.1904.
+　　注2　文[10]的主要结果为τ(t)＜0.1575当P=I时;τ(t)＜ 0.1198当Q=I时. 而文[11]的主要结果为τ(t)＜0.1583.由此可见本文的结果比文[10～11]具有更低的保守性. 应该指出的是, 文[8～9]给出的时滞独立的稳定性准则应用于系统(23) , 得不出系统稳定的结论.
+4　结论
+　　基于Razumikihn定理以及向量不等式的方法, 得到了具有多个时变时滞的不确定系统的 稳定性准则. 所得的结果包含时滞的信息, 属于时滞相关准则. 因此本文所给的条件与时滞 独立的稳定性准则比较, 具有较低的保守性. 算例表明, 利用本文导出的稳定性条件(与文[10～11]得出的结果比较)可以给出时滞界限较高的估计. 本文的结果可望应用于不确定时 滞系统的控制与镇定问题.
+作者简介：杨　斌，男，25岁，博士生．研究领域为系统的稳定性分析与鲁棒控制．
+　　　　　潘德惠，男，70岁，教授，博士生导师．研究领域为分布参数控制系统的模型辨识与最优控制．
+作者单位：杨　斌：华中理工大学信息学院　武汉　430074
+　　　　　潘德惠：东北大学信息科学与工程学院 　沈阳　110006
+参考文献
+1　 Mori T, Fukuma N, Kuwahara M. Simple Stability Criteria for Singl e and Composite Linear Systems with Time Delays.Int.J.Control,1981,34:1175～1184
+2　 Mori T, Fukuma N, andKuwahara M. On an Estimate of the Decay Rate for Stable Linear Delay Systems. Int.J.Control,1982,36:95～97
+3　 Thowsen A. Stability of Time-delay with Simpled Feedback. Int.J.Control,19 81,34:835～840
+4　 Thowsen A. Uniform Ultimate Boundedess of the Solutions of Uncertain Dynamic Delay Systems with State-dependent and Memmoryless Feedback Control. Int.J.Co ntrol,1983,37:1135～1143
+5　 Mori T. Criteria for Asymptotic Stability of Linear Time-delay Systems. IEE E Trans. Autommat Contr.,1985,AC-30:158～161
+6　 Mori T, Kokame H. Sability of (t)=Ax(t)+Bx(t-τ). IEEE Trans Auto mmat. Contr., 1989,AC-34:460～462
+7　 Su N H, Wei W. Design of Vehicle Following Control Systems with Actuator Delays. Int.J.Control,1997,28:145～151
+8　 Wang S S, Chen B S, Lin T P. Robust Stability of Uncertain Time-delay Syst ems. Int.J. Control,1987,46:963～976
+9　 Su T J, Kou T S, Sun Y Y. Robust Stability for Linear Time-delay Systems w ith Linear Parameter Perturbation.Int.J.Syst.Sci.,1988,19:2123～2129 
+10　Su T J, Huang C G. Robust Stability of Delay Dependent for Linear Uncerta in Systems. IEEE Trans.Autommat.Contr..1992,AC-37:1656～1659
+11　Xu Bugong. Delay-dependent Stability for Linear Uncertain Time-delay Syste ms. 控制理论与应用,1996, 13(4):426～430
+12　Hale J K. Theory of Functional Differential Equation. New York:Springer-Ver lag,1979
+　
+收稿日期：1997-12-16

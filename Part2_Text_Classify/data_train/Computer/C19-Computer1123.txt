@@ -1,0 +1,124 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年　第25卷　第5期　Vol.25 No.5 1999
+
+
+
+
+非线性分布参数系统跟踪控制的学习算法1)
+谢胜利　谢振东　韦　岗
+摘　要　尝试性地将学习控制方法用于一类非线性分布参数系统的跟踪控制上，分别获得了系统轨线于L2(Ω)空间，W1,2(Ω)空间中跟踪期望目标的结果.所给的学习算法避免了其收敛性要依赖于理想输入ud(x,t)这一不确定的条件，且对系统的非线性要求只是定性的而不是定量的，从而使得控制具有很强的鲁棒性能.
+
+关键词　非线性系统，分布参数系统，轨线跟踪，学习控制，算法.
+LEARNING ALGORITHM FOR TRACKING CONTROL OF
+NONLINEAR DISTRIBUTED PARAMETER SYSTEMS
+XIE Shengli　XIE Zhendong　WEI Gang
+(College of Electronic and Information Engineering, South China University of
+Technology, Guangzhou　510640)
+(E-mail:adshlxie@scut.edu.cn)
+Abstract　In this paper, we discuss the problem of tracking control for a class of nonlinear distributed parameter systems with unknown parameters. By using the iterative learning control method, we have given the learning algorithm and the sufficient conditions of precise tracking on L2(Ω) space and W1,2(Ω) space. The algorithm has prevented its convergence depending on ideal input ud(x,t). Its requirement on the system's nonlinearity is not quanti tative but qualitative. And it brings strong robust performance to the control systems.
+Key words　Nonlinear systems, distributed parameter system, precise tracking, learning control,algorithm.
+1　引　言
+　　自Arimoto等人［1］针对机器人系统的特点提出了学习控制方法以来，该方法已在控制理论界引起了广泛的关注，其应用不仅限于机器人控制领域［8―10］，而且在非线性系统的鲁棒控制上也有了较大的发展［2，3］.这一方法正在逐步形成控制理论中的一个新方向.正是因为该控制方法的基本理论还未完全建立，故在目前的研究中还存在着这样或那样的缺陷或不足［4］，并且相应的一些改进算法也在逐步出现［5］，文献［6，7］等分别用学习控制方法研究柔性关节机器人、终端受限运动机器人的轨道跟踪控制时，其控制算法的收敛性及跟踪误差的估计都依赖于ud(t)――系统相应于期望输出yd(t)的理想输入，但在实际控制过程中ud(t)并不是具体知道的，而且正是学习控制所要寻求的.另外，对带柔性连杆的机器人通常要用偏微分方程所代表的分布参数系统模型描述［8―10］，且很多其它实际问题的描述也是如此［11―13］，故对相应的非线性分布参数系统的学习控制研究及其在柔性机器人等系统控制中的应用就是有必要进行探讨的.限于篇幅，本文只针对一般非线性分布参数系统的学习控制方法进行理论上的研究，关于这一方法在带柔性连杆机器人的轨线跟踪控制上的应用，将另文讨论.
+2　问题与引理
+　　考虑如下形式的分布参数系统
+　(1)
+其中Q∈Rn，u∈Rm,y∈Rl,h∈Rm×l,f与g是相应维数的向量函数，且满足
+‖f(t,Q1,u1)-f(t,Q2,u2)‖≤Lf(‖Q1-Q2‖+‖u1-u2‖),‖Jg‖≤Lg　(2)
+而Jg是g对Q的J-矩阵：Jg=g／Q.其中Lf,Lg是不具体知道的，即只知道f,g的一个定性而不是定量的性质.D∈Rn×n是正的有界对角矩阵，即D=diga(d1,d2,…，dn)，0<pi≤di<∞,pi是已知的.Δ是区域Ω上的Laplace算子，而Ω是Rq中有界的开子集，其边界为δΩ.
+　　本文要讨论的问题为：对由系统(1)描述的被控对象所期望的理想输出yd(x,t)，要寻求与之相对应的理想输入ud(x,t).由于系统的不确定性，对理想控制ud(x,t)不易求得，本文将通过学习控制的方法来逐步寻求ud(x,t).即对给定的目标输出yd(x,t)，寻求输入控制uk(x,t)，使得所对应的系统输出yk(x,t)满足
+ (3)
+且输入控制uk(x,t)是可根据学习确定的，其中r.s.表示在相应空间中的收敛.
+　　对系统(1)考虑相应的初边界条件
+ (4)
+其中α=diga(α1,α2,…,αn),β=diga(β1,β2,…，βn)，αi≥0，βi≥0.υ是区域Ω边界δΩ上的单位外法向量.
+　　对且f(.,t)∈Rn∩L2(Ω)，t∈［0,T］定义
+
+其中‖f(.,t)‖L2是普通的L2-范数.
+　　不难证明下述两个引理
+　　引理1.若xi∈Rn，则
+　　引理2.若，则存在ξ1>1使得
+3　算法及收敛性分析
+　　对于2中提出的问题，我们寻求理想控制ud(x,t)的学习控制算法为
+　(5)
+其中ek(x,t)=yd(x,t)-yk(x,t)，而yk(x,t)是系统(1)相应于第k次输入uk(x,t)的第k次输出，Fi(t),Gi(t)是待定的学习矩阵.
+　　记系统相应于yd(x,t)的输入与状态分别为ud(x,t)，Qd(x,t)即
+　(6)
+及相应的边界条件(4).
+　　本文还规定，在学习的过程中，系统的状态都从相同的初值开始，即
+Qm(x,0)=Q0(x),x∈Ω;m=d,1,2,…　(7)
+或更一般的
+　(8)
+另外，注意由(2)中的‖Jg‖≤Lg,可得‖g(t,Q1)-g(t,Q2)‖≤Lg‖Q1-Q2‖.
+　　定理1.若选取学习矩阵Fi,Gi满足Fi(t)=I且2Nηi<1，则存在η∈(0,1)及正数M使得‖yd－yk‖L2,λ≤Mηk,k=1,2,….其中
+　　证明.因Fi(t)=I,由(5)有
+ud(x,t)-uk+1(x,t)=(Fi(t)-Gi(t)h(t))(ud(x,t)-uk-i+1(x,t))-
+Gi(t)(g(t,Qd(x,t)-g(t,Qk-i+1(x,t))).　(9)
+从而由引理1有
+(ud(x,t)-uk+1(x,t))T(ud(x,t)-uk+1(x,t))≤2N［ηi(ud(x,t))-uk-i+1(x,t))T(ud(x,t)-uk-i+1(x,t))+μiL2g(Qd(x,t)-Qk-i+1(x,t))T(Qd(x,t)-Qk-i+1(x,t))］,　(10)
+其中，关于x积分上式有
+
+　(11)
+又因为
+　(12)
+用(Qd(x,t)-Qk(x,t))T左乘(12)的两边有
+　(13)
+对x积分(13)式
+　(14)
+由边界条件及D，α，β均为正的对角矩阵，则
+　(15)
+记d=min(d1,d2,…，dn)，由(14)及(15)有
+　(16)
+由Bellman-Gronwall不等式有
+　(17)
+对Lf选取适当大的λ使得λ>3Lf，再用e-λt乘(17)的两端可得
+　(18)
+将(18)代入(11)中有
+　(19)
+注意(19)右端与t无关，则
+　(20)
+因2N=1ηi<1，则存在σ>0使得2N(ηi+σ)<1,取λ还使得(λ-3Lf)-1μiLfL2g≤σ.从而
+　(21)
+再由引理2知，存在ξ1>1，对ξ∈(1,1+ξ1)有
+　(22)
+而由r<1知，存在ξ2>1，使得ξ∈(1,1+ξ2)时，有rξ<1.取ξ3=min(ξ1,ξ2)，则对ξ∈(1,1+ξ3)有rξ<1且(22)也成立.对此ξ，用ξk+1乘(20)的两边有
+　(23)
+其中
+.
+注意是不减的，对式(23)的两边取上确界有
+　(24)
+因m2<1，则对k≥1有
+　(25)
+将此代入式(18)有
+　(26)
+其中η=max｛r,ξ-1｝，再注意
+‖yd-yk‖L2,λ≤Lg‖Qd-Qk‖L2,λ+h*‖ud-uk‖L2,λ,　(27)
+其中，则
+　(28)
+这便是要证明的结论.
+　　定理2.若选取学习矩阵Fi,Gi满足：Fi(t)=I且2Nηi<1，则
+
+　　限于篇幅，证明略.
+4　结束语
+　　本文对一类非线性分布参数系统的跟踪控制问题进行了讨论，利用学习控制的方法分别获得了系统轨线于L2(Ω)空间和W1,2(Ω)空间中跟踪期望目标的结果，我们所给的算法避免了其收敛性要依赖于ud这一不确定的条件，且对系统的非线性要求只是定性的而不是定量的，从而拓宽了系统的鲁棒裕度.由于学习控制这一方法用于分布参数系统上的研究较少，因此，我们的研究也只是尝试性的，对于更深入的探讨，需要人们共同努力.
+1) 国家自然科学基金(69874013)、广东省自然科学基金(980506)资助课题.
+作者简介：谢胜利　1958年生，控制理论与控制工程博士，电子与通信博士后，华南理工大学无线电与自动控制研究所教授.一直从事非线性系统的稳定性理论、振动性理论、周期运动、变结构控制、迭代学习控制及自适应回波信号消除领域的教学与科研工作，在国内外学术刊物上发表论文近70篇，出版专著(国家九五重点图书)一部.目前感兴趣的领域为非线性系统迭代学习控制理论、自适应多话路回波信号消除理论、数字预测及应用等.
+　　　　　谢振东　1966年生，华南理工大学控制理论与控制工程博士生.于非线性系统稳定性、迭代学习控制、变结构控制方面发表论文10多篇，曾获省级优秀教学成果奖和自然科学奖.目前感兴趣的方向是非线性系统的迭代学习控制理论及2D离散系统的变结构控制.
+　　　　　韦　岗　1963年生，教授，博士生导师、华南理工大学电子信息学院副院长、电子工程系主任、广东省“千百十人才工程”国家级学术带头人。在国内外发表论文40多篇，出版学术著作4部。主要研究领域为信号处理、模式识别、非线性系统理论及应用、神经网络等。
+作者单位：华南理工大学电子与信息学院　广州　510640　(E-mail:adshlxie@ scut. edu.cn)
+参考文献
+　1　Arimoto S, Kawamura S, Miyazaki F. Bettering operation of robots by learning.J.Robotic System., 1980，1―22：123―140
+　2　Chien C J, Liu J S. A P-type iterative learning controllers for robust output tracking of nonlinear time-varying systems.Int.J.Control,1996，64(2)：312―334
+　3　Lee H S, Bien Z. Study on robustness of iterative learning control with non-zero initial error.Int. J.Control,1996，64(3)：345―359
+　4　谢振东，谢胜利，刘永清.离散系统跟踪控制的学习算法及收敛性.系统工程与电子技术，1998，20(10)：45―48
+　5　Xie Shengli, Fan Xiaoping, Wei Gang. On learning control method for nonlinear systems.In:Proc. Int. Con. On System Science Engineering. Beijing:Scientific and Technical Documents Publishing House,1998.638―643
+　6　Wang D. A Simple iterative learning controller for manipulators with flexible joints.Automatic, 1995，31(9)：1341―1344
+　7　Wang D, Soh Y C, Chean C C. Robust motion and force control of constrained manipulators by learning.Automatic, 1995，31(2)：257―262
+　8　Xi F, Fenton R G. Coupling effect of a flexible link and a flexible joint.Int. J.of Robotics Research,1994，13(5)：443―453
+　9　樊晓平，徐建闽，周其节，梁天培.柔性机器人的动力学建模及控制.控制理论及应用，1997，14(3)：318―335
+10　冯德兴，张维韬.梁的非线性边界反馈镇定.中国科学，1995，25A(6)：641―649
+11　谢胜利.具有反馈控制的密度非均匀分布的捕鱼系统平衡态的稳定性.自动化学报，1993，19(2)：207―212
+12　谢胜利.具有扩散的螟虫与赤眼蜂生态模型的平衡与稳定.应用数学学报，1996，19(3)：462―468
+13　谢振东，谢胜利，刘永清.分布参数系统目标跟踪的二阶P-型学习算法.暨南大学学报，1998，19(1)：60―64
+收稿日期：1997-12-03
+修稿日期：1999-03-19

@@ -1,0 +1,62 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+(J,J′)-无损因子分解中的若干问题研究1)
+裘聿皇　张本勇
+　　关键词　链式散射描述，(J,J′)-无损因子分解，H∞控制问题.
+ON SOME PROBLEMS IN(J,J′)-LOSELESS
+FACTORIZATION
+QIU YUHUANG　　ZHANG BENYONG
+(Institute of Automation,　Chinese Academy of Sciences,　Beijing 100080)
+Key words　Chain scattering description,(J,J′)-loseless factorization,H∞ control.
+1　引言
+　　在文［1］中利用链式散射描述(CSD)求解H∞控制问题，曾指出(J,J′)-无损因子分解在H∞控制问题中起了关键作用，文［2―4］也有类似看法.基于CSD和(J,J′)-无损因子分解，可以给出H∞控制问题的一个简明的统一框架，避开了控制器镇定参数化和模型匹配问题［5］.
+　　(J，J′)-无损因子分解是相当一般的分解，它的特例包括稳定阵的内外因子分解、镇定阵的Wiener-Hopf分解等.因此，它在系统理论中也有重要意义.
+　　(J，J′)-无损因子分解存在的必要条件之一是存在非异方阵Dπ∈R(p+q)×(p+q)满足
+DTπJp,qDπ=DTJm,rD　　　　　　　　　　　　　　　(1)
+如果存在，可使用 Dπ来参数化(J，J′)-无损因子分解的因子，其中 Jm,r=diag｛Im，-Ir｝,Jp,
+q=diag｛Ip,-Iq｝,m≥p≥0,r≥q≥0,D∈R(m+r)×(p+q).
+　　文［3，7］等讨论了状态空间上基于Riccati方程计算(J，J′)-无损因子分解.Tsai［7］和Kimura［4］都仅对D的一种特殊情况给出Dπ的一个解，这不适合实际的控制器设计计算.本文对一般情形指出方程(1)有解的条件及其数值算法.该算法已经在Matlab环境中实现，并用于我们开发的基于链式散射描述(CSD)求解 H∞控制问题的程序中.
+　　正如Kwarkernaak所指出［9］，目前已有的解决H∞控制问题的方法的假设条件均不完全一致，研究这些方法的相互联系将会促进对H∞控制的理解.本文研究了基于链式散射描述(CSD)求解H∞控制问题的方法与经典的DGKF方法假设条件的联系，发现CSD方法中 Dπ存在的假设与DGKF方法的假设条件A2是一致的.
+2　矩阵方程：XTJp,qX=S 有解的充要条件及算法
+　　由惯性定理易知，矩阵方程
+XTJp,qX=S　　　　　　　　　　　　　　　　　(2)
+有解的充要条件是：S恰有p 个正的特征值和q个负的特征值.其中 X∈R(p+q)×(p+q)为非异方阵，Jp,q=diag｛Ip,-Iq｝,S为实对称阵.由此得求解方程(2)的算法如下：
+　　(1)将S进行正交分解，S=UΛUT，其中Λ为对角阵，其对角元素可能正负交叉排列，U为正交矩阵.
+　　(2)判断方程是否有解，如果Λ恰有p个正的特征值和q个负的特征值，继续；否则方程无解，退出.
+　　(3)将S化为 S=U1Λ1UT1，其中Λ1=diag｛Λp,-Λq｝,Λp=diag｛λ1,…，λp｝,Λq=diag｛Λp+1,…，Λp+q｝,λi＞0.实际计算时，为使Λ的前 p 个特征值为正，后q个特征值为负，只需交换Λ的主对角线元素和U的相应列即得Λ1和U1，U1仍然为正交矩阵.
+　　(4)解即为X=diag｛Λ1/2p｝,Λ1/2q｝UT1,其中Λ1/2p=diag｛λ1/21,…λ1/2p｝,Λ1/2q=diag｛λ1/2p+1，…，λ1/2p+q｝.
+　　从算法可以看出，解X一般不唯一，因此方程(1)中Dπ一般不唯一.
+　　计算实例.
+
+采用本文的算法，(用Matlab语言实现)计算出方程(2)的解X为
+
+3　Dπ矩阵存在的假设与DGKF方法的假设条件A2的关系
+　　这里利用关于方程(1)的可解性结果，研究基于链式散射描述求解 H∞控制问题的CSD方法与经典的 DGKF方法假设条件的联系.考虑DGKF［6，8］方法的广义对象
+
+在 DGKF方法中的假设条件通常可以归纳如下：
+　　A1.(2,2,2)可镇定和可检测；
+　　A2.12列满秩，21行满秩；
+　　A3.rank=n+p,　rank=n+q,ω∈R.
+　　设 D21为可逆方阵，转换为链式散射描述的系统
+
+由上节和(1)式，Dπ存在当且仅当
+
+有 p 个正的特征值和 q 个负的特征值，也即T1212＞0，(-121)T-121＞0.这显然满足假设条件A2.
+1)国家自然科学基金资助课题.
+作者单位：中国科学院自动化研究所　北京　100080
+参考文献
+［1］　裘聿皇，季红彬.链式散射描述与线性分式变换.自动化学报，1994，20(2)：146-153.
+［2］　Ball J A,Cohen N.The sensitivity minimization on an H∞ norm:parameterization of all optimal solution.Int.J.Control,1987,46(4):785-916.
+［3］　Xin Xin,Feng Chunbo.(J,J′)-Lossless factorization-revisited.控制理论与应用，1995，12(1)：95-100.
+［4］　Kimura H.Chain-scattering representation,J-lossless factorizaiton and H∞ control.Journal of Mathematical System,Estimation and Control,1994.
+［5］　裘聿皇.用链式散射描述处理 H∞问题.见：自动化学会第四届学术会议文集，珠海，1993年11月.
+［6］　Doyle J C et al.State-space solution to standard H∞ and H2 control problems,IEEE Trans.Automatic Control,1989,34(8):831-847.
+［7］　Tsai M C,Postlethwaite I.On J-loseless comprime factorization and H∞ control.Int.J.of Robust and Nonlinear Control,1991,1(1):47-68.
+［8］　Glover K,Doyle J C.State-space formulae for all stabilizing controllers that satify an H∞-norm bounded and relation to risk sensitivity.Systems & Control Letters,1988,11:167-172.
+［9］　H Kwarkernaak.Robust control and H∞ optimization.Automatica,1993,29:255-273.
+收稿日期　1995-11-17

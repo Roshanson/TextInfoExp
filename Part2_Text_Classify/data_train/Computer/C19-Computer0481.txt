@@ -1,0 +1,90 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.419-422
+
+
+
+区间系统的离散鲁棒Kalman滤波
+张勇　史忠科戴冠中　周自全
+摘　要　着重研究区间系统的鲁棒滤波问题.通过等价变换，将区间系统转换为对应的矩阵范数不确定系统，并据此导出区间系统的鲁棒滤波算法.该算法为一离散验后（a posteriori）滤波算法，它能保证区间系统的滤波误差有界.理论分析和实际计算结果表明，本算法能达到比验前（a priori）滤波小得多的滤波误差的方差上界.
+关键词　鲁棒滤波,区间系统,鲁棒识别,状态估计.
+ROBUST KALMAN FILTERING FOR THE DISCRETE-TIME
+INTERVAL SYSTEM
+ZHANG Yong　　SHI Zhongke　　DAI Guanzhong
+(Institute of Air Traffic Management, NPU, Xi'an　710072)
+ZHOU Ziquan
+(China Flight Test Establishment, Xi'an　710089)
+Abstract　This paper deals with the robust Kalman filtering method for the discrete-time interval system. By equivalent transformation, the interval system is transformed to an uncertain system with matrix norm bounds. Then a posteriori robust Kalman filter is proposed, which can guarantee a variance bound of the filtering error. Both analysis and practical computing show that this filter can get a much lower variance bound than a priori one can.
+Key words　Robust filtering, interval system, robust identification, state estimation.
+1　引言
+　　区间系统是指系统状态矩阵的元素在一些确定区间内变化的系统.这类系统在实际中广泛存在，如电机控制系统等.近年来，关于区间系统的鲁棒控制问题已取得许多成果［1,2］，但关于区间系统的鲁棒滤波研究尚不多见.另一方面，含不确定模型误差系统的鲁棒Kalman滤波问题得到了广泛地研究，并取得了不少的成果［3］.但这些成果都以考虑验前（a priori）滤波的形式为主，较少使用验后(a posteriori)滤波的算法.由于Kalman滤波验后算法的精度比验前算法高，故研究鲁棒条件下的验后滤波算法具有很大的实际意义.
+2　问题描述
+　　考虑如下离散区间系统
+xk+1=Axk+Bwk,　　　　　　　　　(1a)
+yk=Cxk+vk,　　0≤k≤N-1.　　　(1b)
+上式中状态xk∈Rn；输出yk∈Rr;系统噪声向量wk的噪声强度为W≥0，观测噪声向量vk的强度为V>0，它们都与系统状态无关；B和C为适当维数的矩阵，A为系统状态转移矩阵，它的参数不能准确确定，但已知它们属于某些确定的区间，即
+　　　　(2)
+这里L和U分别为A中各元素的下界和上界组成的矩阵.
+　　可以方便地证明［2］，区间矩阵A可等价地表示为如下矩阵不确定的形式
+A=A0+HFE,　　FFT≤In2,　　　(3a)
+其中A0=(U+L)/2，令G=(U-L)/2，则G中的元素Gij≥0，
+　　　(3b)
+　　(3c)
+ei是第i个元素为1的单位列向量，F为n2×n2阶对角矩阵，In2表示n2阶单位矩阵.
+　　这样，区间系统的滤波问题就转化为不确定系统(1)和(3)的滤波问题.参考标准的Kalman滤波算法，本文采用具有如下结构的验后滤波公式
+　　　(4)
+式中为系统状态的滤波结果，Ae,k+1和Ke,k+1分别为滤波器的状态矩阵和增益矩阵.
+3　鲁棒验后滤波算法
+　　参照系统(1)，(3)和滤波方程（4）, 定义状态的估计误差ek=xk-，则有
+ek+1=(I-Ke,k+1C)［Ae,k+1ek+(A0-Ae,k+1+HFE)xk+Bwk］-Ke,k+1vk+1.　　　　(5)
+　　考虑扩展状态系统ηk=［xTk　eTk］T，则其运动方程为
+　　　　　(6)
+其中
+
+　　容易验证扩展系统的状态方差阵Xk=E｛ηkηTk｝满足Xk≤，这里是满足如下迭代方程的正定解
+　　　(8)
+这里λ>0为任意实数，(P)表示矩阵P的最大奇异值，其他参数的定义同前.
+　　将上式中的按x和e的维数分解成如下四块子矩阵
+　　　　(9)
+　　显然，区间系统(1)的滤波误差方差满足
+　　　(10)
+　　现需合理选择Ae,k+1和Ke,k+1以保证｛Qk｝序列最小，由此本文得到以下主要结果.
+　　定理1.如果对任一实数λ>0,有满足下式的正定解Rk存在
+　　　(11)
+则区间系统(1)的滤波方程(4)中，选择
+Ae,k+1=A0,　　　　　　　　　(12a)
+Ke,k+1=PkCT(V+CPkCT)-1　　　　(12b)
+能保证区间系统的滤波误差上界序列｛Qk｝达到极小，且Qk满足如下迭代方程
+
+其中k=(ERkET)为矩阵ERkET的最大奇异值.
+　　证明.将(8)式中的按分块形式展开，按(12)式选择Ae,k+1可保证12,k=22,k成立，这意味着滤波误差ek与状态估计值无关，从而可达到最优的状态估计值［3］.再由22,k+1对Ke,k+1求极值，即可得Ke,k+1的表达式.然后将Ae,k+1和Ke,k+1代入分块矩阵22,k+1，经过一定的矩阵运算，即可得到方程（13）.方程（11）由11,k+1子块的方程直接得来.证毕.
+　　本算法在计算形式上与标准Kalman滤波结构相似，公式中的Pk对应于标准Kalman滤波中的验前方差阵（预测方差），而Qk对应于验后方差阵(滤波方差).由（13）式知，验后滤波方差阵Qk一定小于验前滤波方差阵Pk.另外，HHT和(ERkET)可直接算得
+　　　(14)
+　　　(15)
+当系统维数较高时，可采用(14)和(15)式代入定理中计算，以减少计算困难.
+4　计算实例
+　　考虑如下形式的区间系统
+　　　(16a)
+yk=［-100 10］xk+vk,　　　　　(16b)
+其中噪声wk,vk的强度为W=1，V=100.现需要对状态向量xk的第一个分量x1,k进行滤波处理.采用（13）式，算得稳态滤波误差的方差上界为1.43，而对应的验前滤波误差上界为85.94.另外，我们还在矩阵A分别取为区间矩阵的中心、上界和下界三种情况下，计算了鲁棒滤波误差方差的真实值，并与标准Kalman滤波的结果进行了比较，结果见表1.从表中可见，当系统矩阵有偏差时，本文提出的滤波算法有较大的优越性.
+表1　E｛(x1-1)2｝的真实值比较
+
+滤波算法A=A0A=A0+GA=A0+G
+标准Kalman滤波0.0262.561.38
+验后鲁棒滤波0.840.870.81
+
+5　结论
+　　本文研究了区间系统的鲁棒滤波问题，并给出了对应的鲁棒验后滤波算法，它能保证区间系统滤波误差的方差在一定的范围之内.理论分析和实际算例都表明，本算法能得到比鲁棒验前滤波算法更小的估计误差方差上界.与标准Kalman滤波算法相比，当系统矩阵有偏差时，本算法有较大的优越性.
+国家自然科学基金、国防基金资助项目.
+　　张　勇　1965年生，西北工业大学博士生，曾获国家教委、航空航天工业科技进步奖四项，主要研究方向为鲁棒控制和鲁棒滤波、交通控制、信号处理和信息融合等.
+　　史忠科　1956年生，工学博士，教授，博士生导师.近年来主持了30余项实际控制系统的研究.16项成果已经通过了部级技术鉴定；获国家教委、航空航天工业科技进步奖10项，在国内外刊物上发表论文80余篇，在国内外学术会议上发表论文50余篇，出版专著5部.主要研究领域为随机控制、智能控制、飞行力学、交通控制等.
+张勇（西北工业大学空中交通管理研究所　西安　710072　E-mail:zkeshi @ nwpu.edu.cn）
+史忠科（西北工业大学空中交通管理研究所　西安　710072）
+戴冠中（西北工业大学空中交通管理研究所　西安　710072）
+周自全（中国飞行试验研究院　西安　710089）
+参考文献
+［1］　Soh C B. Robust stability of dynamic interval matrices. Control Theory and Advanced Technology, 1994,10:73～80
+［2］　吴方向，史忠科，戴冠中. 区间系统的H∞鲁棒控制.自动化学报,1999,25(2)：
+［3］　Yahali Theodor, Uri Shaked. Robust discrete-time minimum variance filtering.IEEE Trans.Signal Process,1996,44(2):181～189
+收稿日期　1998-07-27
+修稿日期　1999-03-10

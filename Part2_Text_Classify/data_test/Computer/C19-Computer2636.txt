@@ -1,0 +1,101 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第7期　No.7 Vol.10 1999
+
+
+
+支持多Agent通信的扩展BDI逻辑
+陈建中　刘大有　唐海鹰　胡　明
+　　摘要　BDI（信念、期望和意图）逻辑是当前agent理论研究的热点课题之一,相关研究工作较少涉及对agent间通信的描述.文章旨在提出一个能表示和推理多agent间基于言语行为理论的通信行为的扩展BDI逻辑.该逻辑是一个多类、带量词并具有分枝时序结构的一阶多模态逻辑,除了包含标准BDI逻辑的模态和时态算子之外,还引入了一些必要的逻辑算子和构造符,用于刻画agent为实现其意图而具有的规划能力,以及对多agent通信给出正确的语用解释.文章讨论了逻辑的语法和语义,并对言语行为进行了逻辑分类和解释.
+　　关键词　BDI agent逻辑,多agent通信,言语行为.
+　　中图法分类号　TP18
+An Extended BDI Logic for Modeling Multi-agent Communication
+CHEN Jian-zhong1,2　LIU Da-you1,2　TANG Hai-ying1,2　HU Ming3
+1(Department of Computer Science　Jilin University　Changchun　130023)
+2(Open Symbol Computation and Knowledge Engineering Laboratory of State Education Department
+Jilin University　Changchun　130023)
+3(Department of Computer Science　Jilin Institute of Technology　Changchun　130012)
+　　Abstract　 Although BDI approach is currently a subject of much ongoing research, less relative works about modeling communication have been involved. The aim of this paper is to extend classical BDI logic for representing and reasoning about speech act interactions between multi agents. A many-sorted, quantified, first-order, multi-modal logic with branching time structure is presented, including standard BDI modal and temporal operators like belief, goal, intention, etc. In addition, some operators and constructs are introduced for characterizing agents' “know-how” or having plans about how to achieve their intentions and for interpreting the pragmatic meanings of inter-agent communication. While discussing the syntax and semantics of the logic, some kinds of illocutionary speech acts are logically classified and interpreted.
+　　Key words　BDI agent logic, multi-agent communication, speech act.
+　　分布式人工智能DAI(distributed artificial intelligence)主要研究由多个计算agent组成的分布式系统中的各种社会行为.按我们的观点［1］,DAI可分为3个相关子领域:分布式问题求解DPS(distributed problem solving)、智能agent IA(intelligent agents)和多agent系统MAS (multi-agent system),其中IA和MAS无疑是当前DAI研究的热点.一个智能agent至少应具有以下性质:一方面,它初始被赋予承担一些任务和求解某些问题的能力,并能决策如何及时完成任务和提交结果;另一方面,一个agent具有社会性,它通常与环境中其他agent共存,并以某种方式相互作用.
+　　许多研究结果表明,一个或一组智能agent可以被看做是拥有信念(beliefs)、期望(desires)、规划(plans)和意图(intentions)等精神状态的所谓意识系统(intentional system).这方面的研究工作已有许多,其中著名的当数由澳大利亚的Rao和Georgeff等人提出的BDI逻辑和BDI agent结构.90年代以来,他们在Bratman［2］,Cohen和Levesque［3］等人的前期工作基础上，给出了一系列相关的研究成果［4,5］,成为agent理论研究领域最有代表性的基础工作.
+　　一个典型的BDI agent通常包含4个主要的数据结构:①信念集,用于表示agent的世界模型,其中的信息可能不完全或不正确;②期望或目标(goals)集,对应于分配给agent要执行的任务;③意图集,表示agent已决定或承诺完成的期望,agent将持续它对一个意图的承诺,直到它相信该意图已满足,或由于某些原因该意图不再可完成［3］;④规划库,包括一组预定义规划或方法,表示agent为完成各种意图所遵循的过程性知识或程序.总之,它们分别表示了agent的陈述性、选择性、决策性和过程性状态.一个称为agent解释器的控制模块操作和管理这些数据结构之间的数据和控制流,负责更新信念、形成新期望、从当前活动期望中挑选新意图并选取适当规划，执行相应的意图.
+　　在已有的相关研究工作［4～6］中,多数是侧重于对信念、期望和意图3种状态的形式化描述和讨论三者间的逻辑关系,而对规划和agent间通信的语义表示却少有涉及.本文试图从解决这一问题出发,给出一个能有效表示和推理agent规划和通信的扩展BDI逻辑.
+1　多agent通信和言语行为理论(speech act theory)
+　　DAI环境中的agent通常不可能拥有关于世界的完全信息和知识,通信的基本作用就是为agent提供与世界交换必要信息的手段.多agent系统中的协同、协作、协商、和全局一致等都通过有效的agent间通信来实现.
+　　Werner［7］把多agent通信分为5类:①无通信;②信号通信;③基于计算的消息传递,如Actor并发系统;④规划交换,如部分全局规划(PGP);⑤基于言语行为的通信.其中基于言语行为的多agent通信是当前的研究热点,它在一定程度上模拟了人类的通信行为,而且有坚实的理论和技术基础,另外,许多著名的agent通信语言,如知识查询与操作语言(KQML)和知识交换格式(KIF)等都直接或间接地基于言语行为理论.
+　　 言语行为理论源于语言学,现已成为人工智能和语言学理论的核心.它主要研究语言的语用理论,其基本公理是把人们的日常话语看作说话人做出的带有某种意图的动作,这些所谓言语动作也像那些物理动作一样能引起世界状态的变化.一个言语行为至少包含3类动作:①以言指事,即说了一句语法上可接受的话语;②以言行事,即该话语带有某种言外之力,能把说者的意图传达给听者;③以言成事,即以言行事的结果是做出一些动作或产生一些效果.通常言语行为即指以言行事的行为.一个言语行为包含两部分:言外之力和行为命题.言外之力可用来区分言语行为的不同种类,而命题说明对状态的改变.Singh［8］把言外之力分为如下6类:①断言类;②指令类;③承诺类;④许可类;⑤禁止类;⑥宣告类.
+　　本文给出的形式化逻辑通过引入一个模态算子,基于agent的意图和规划库,讨论上述言语行为的形式语义.采用的原则是:①把言语行为看做是说话者（或消息发送者）在一段时间内做出的动作;②听者（或消息接收者）根据听说双方的状态对收到的消息给出独立解释;③在逻辑中,从说话者角度给出关于每个言语行为的发生条件、可满足条件及以言行事行为的执行对双方精神状态的可能影响等的语用解释.
+2　基本概念
+　　先给出一些概念的非形式化说明:用Dag,Dac和Dsa分别表示系统中所有agent的集合、所有原子动作的集合和所有言语行为的集合.遵循经典BDI逻辑［4］,扩展BDI逻辑基于具有分枝时序结构的可能世界语义模型;令T是一个时间点（或时刻）集合,R表示一个在T上成立的二元分枝时序关系,即RT×T,则R和T在逻辑上构成一棵分枝时序树;Dac中的任一动作和Dsa中的任一言语行为（二者统称为动作）被看作沿T中的时间点执行,我们定义一个标号函数Act用于把分枝时序树中的每条弧与一个动作相连;设函数Agt返回执行每一动作的agent.在下述定义和描述中,IN表示大于0的自然数集合;(s)表示一个集合s的幂集合.
+　　定义1. 设T是非空时间点集合,RT×T是T上的一个全序的、向后线性的分枝时序关系,则(T,R)称为上的一个世界,用W表示T上所有世界的集合,若w∈W,则Tw和Rw分别表示w中的时间点集合和时序关系;若t∈Tw,则(w,t)称为w中的一个局势,用Sw表示w中所有局势的集合,表示中所有局势的集合.
+　　定义2. 若w∈W,则w上的一条路径是一个时间点序列(t1,t2,...,tk,...),其中k∈IN且(tk,tk+1)∈Rw,用Pw表示w上所有路径的集合;若p∈Pw且k∈IN,则pk表示路径p上第k个时间点,pk表示p上始于pk的子路径.
+　　定义3. 一条规划是一个四元组〈plan-goal,plan-premise,plan-body,plan-result〉,其中规划目标plan-goal是一个谓词,表示规划名和该规划的触发参数;规划体plan-body表示该规划被触发时要执行的程序或动作（序列）,由集合Dac和Dsa的元素（或元素序列）及规划子目标构成,设Dpb表示所有规划体的集合;规划前提plan-premiseS表示执行pb∈Dpb必须满足的局势集合;规划结果plan-resultS表示在规划前提的一个局势下执行pb后可能产生的新局势集合;且有:若一条规划执行过程中的两个局势满足(w1,t1)∈plan-premise,(w2,t2)∈plan-result,则我们说w1=w2,这保证了规划的执行过程总是发生在世界内,而非世界间.一个agent的规划库是一个有向无环与或图,图中的顶点是规划,每条弧被赋予一个标号函数Goal-to-plan,用于连接高层规划（规划体中可包含规划子目标）和其可能的若干子规划（与高层规划的子目标对应）.一个与顶点被成功执行,当且仅当每个子规化被执行;一个或顶点被成功执行,当且仅当至少一个子规化被执行.
+　　令Dpl表示一个agent规划库中所有规划的集合.4个函数Pg,Pp,Pb,Pr都以一条规划pl∈Dpl为参数,分别返回相应的plan-goal,plan-premise,plan-body,plan-result.下面给出一条规划的BNF语法结构,其中‘〈a〉+’代表项a的一次或多次出现,‘;’,‘‖’和‘*’分别是顺序、并行和迭代型复合动作合成符号.
+
+〈plan〉∷=〈plan-goal〉〈plan-premise〉〈plan-body〉〈plan-result〉
+〈plan-goal〉∷=L中的谓词
+〈plan-premise〉∷=P(S)的任一元素
+〈plan-result〉∷=P(S)的任一元素
+〈plan-body〉∷=〈AND〈plan-exp〉〉｜〈OR〈plan-exp〉+〉
+〈plan-exp〉∷=Dac的任一元素｜Dsa的任一元素｜〈plan-goal〉｜
+〈plan-exp〉;〈plan-exp〉｜〈plan-exp〉‖〈plan-exp〉｜〈plan-exp〉*
+
+　　为表示和说明规划执行的语义,引入两个谓词:perf(pb,p,u,v)和exec(pe,p,u,v)分别表示一个规划体pb∈Dpb和pb中的一个规划表达式pe在路径p上的第u个和第v个时间点之间被执行(u,v∈IN且 u≤v)的事实.
+　　perf(pb,p,u,v)　iff　若pb是与结点,则对pb中的所有pe,作exec(pe,p,u,v);
+　　　　否则(pb是或结点)对pb中至少一个pe,作exec(pe,p,u,v);
+　　exec(ac,p,u,v)　iff　v=u+1且Act(pu,pv)=ac,其中ac∈Dac或ac∈Dsa;
+　　exec(pg,p,u,v)　iff　perf(Pb(Goal-to-plan(pg)),p,u,v),其中pg是一个规划目标;
+　　exec(pe1;pe2,p,u,v)　iffn∈{u,...,v},exec(pe1,p,u,n)且exec(pe2,p,n,v);
+　　exec(pe1‖pe2,p,u,v)　iff　exec(pe1,p,u,v)且exec(pe2,p,u,v);
+　　exec(pe*,p,u,v)　iff　u=v或exec(pe;(pe*),p,u,v).
+　　另设函数Agt以规划体或规划表达式为参数,返回能执行该动作序列的所有agent集合:
+　　,对pe中所有动作,对pb中所有pe.
+　　为了方便描述通信的语义,设Msg表示所有通信消息的集合,FC={assertive,directive,commissive,permissive,prohibitive,declarative}表示言语行为的各类言外之力的集合;一条消息m∈Msg被简单表示为一个二元组〈fc,pp〉,其中fc∈FC,pp是一个命题;Dsa中的元素用sa(i,j,m)表示,其中m∈Msg,则exec(sa(i,j,m),p,u,v)意为在某局势下,agent i从时刻u到时刻v执行了一个对agent j说话语（或发送消息）m的言语行为;另一谓词comm(i,j,m)的含义是:comm(i,j,m)为真,iff在某局势下i确实对j说了m. 
+3　支持多agent通信的扩展BDI逻辑
+　　逻辑系统是一个多类、带量词的、基于可能世界语义、具有分枝时序结构的一阶多模态逻辑.一些逻辑算子的含义可非形式化地解释如下:true算子表示逻辑真;(Bel i φ),(Goal i φ)和(Int i φ)分别表示agent i有一个信念（或相信）φ,一个目标φ和一个意图（或想要）φ的事实,其中φ是一个逻辑公式,注意,我们用目标代替期望,这3个模态算子的语义通过相应的可达关系给出,信念算子满足标准模态系统公理KD45,目标和意图算子则满足公理KD;算子‘=’表示一阶等价关系;(i∈g)表示agent i是agent组g的一个成员;(HasPlan i pl)表示在当前状态下,i有一个规划pl,即pl在i的规划库中;在分枝时序结构中,与局势有关、表现出时间点性质的公式称为状态公式,而与局势的发展进程有关、表现出路径性质的公式称为路径公式;两个路径公式(Perf i pb)意为i在当前路径中执行一个规划体pb,(Exec i ac)意为i在当前路径中执行一个动作ac;路径公式(PragInt comm(i,j,m))用于给出i在当前路径中作出的一个言语行为的语用解释;A是全称路径量词,Aφ意为路径公式φ在从当前状态开始的所有未来世界（路径）中可满足;两个基本时态联接符U和N用于从状态公式或路径公式构造路径公式,公式φUψ意为φ可满足直到ψ可满足,Nφ意为φ将在下一状态可满足;其余算子,如(逻辑非)、∨(逻辑或)、(全称量词)等仍具有其经典语义.
+3.1　语 法
+　　定义4. 的字符集由下述符号组成:(1) 算子符号true,Bel,Goal,Int,=,∈,A,HasPlan,Perf,Exec,PragInt,U和N;(2) 逻辑联接符(与)和∨(或),全称量词符号;(3) 可数集合Pred代表所有谓词符号;(4) 可数集合Func=Funcag∪Funcac∪Funcsa∪Funcpl∪Funcpb∪Funcgr∪FuncS∪FuncU,代表所有函数符号和返回值分别为agent、原子动作、言语行为、规划、规划体、agent组、局势和其他个体的函数符号;(5) 可数集合Var代表变量符号, Var=Varag∪Varac∪Varsa∪Varpl∪Varpb∪Vargr∪VarS∪VarU;(6) 标点符号‘)’‘(’‘*’和‘,’;(7) 复合动作合成符‘;’‘‖’和‘*’.函数arity:Pred∪Func→IN给出每个谓词和函数符号的元,0元谓词即为命题符号,0元函数即是常量.
+　　定义5. L中的项或者是一个变量,或者是一个函数;令Term表示所有项的集合;一个项的类是下述符号之一:ag,ac,sa,pl,pb,gr,S,U;若σ是一个类,则有Termσ=Funcσ∪Varσ和Term=Termag∪Termac∪Termsa∪Termpl∪Termpb∪Termgr∪TermS∪TermU.
+　　L的合式公式(〈wff〉)的语法如下(假设所有谓词和函数符号都已具有相应的参数个数).
+
+
+3.2　语　义
+　　定义6. 的论域D是逻辑系统中所有语义对象构成的集合,D=Dag∪Dac∪Dsa∪Dpl∪Dpb∪Dgr∪DS∪DU,其中,非空集合Dgr是建立在Dag之上的所有agent组的集合,DS是所有可能局势的集合,DU是所有其他个体对象集合,其余集合的含义同前所述;令Dn表示D上所有n元组的集合(n∈IN).
+　　为把语法符号同语义对象联系在一起,定义下述解释函数.
+　　定义7. 谓词解释函数P:Pred×W×T→p（）,因此,若Q∈Pred,n∈IN,w∈W,t∈Tw,且arity(Q)=n,则P(Q,w,t)Dn,函数P应保持被解释谓词的元数不变;函数解释函数F:Fun→(→D),因此,若f∈Fun,n∈IN,且arity(f)=n,则F(f)Dn,函数F应保持被解释函数的元数和类不变;变量指派V:Var→D,因此,若v∈Varσ,则V(v)∈Dσ,V应保持被指派变量的类不变.
+　　一个特殊的函数‖τ‖F,V把一个项τ的语义指称为F或V.
+　　定义8. 令τ∈Term,如果τ∈Fun,则‖τ‖F,V是F(τ),否则是V(τ),在无二义性的情况下,角标F,V通常省略.
+　　定义9. 的模型M是一个元组结构〈T,R,W,D,Act,Agt,Msg,PL,MI,BR,GR,IR,F,P〉,其中T,R,W,D,Act,Agt,Msg,F,P的定义同前;函数PL:Dag×W×T→p(Dpl)返回每个agent在每个局势下的规划库;函数ML:Dag×Msg×W×T→p(W×T)用于每个agent根据其当前状态解释接收到的每条消息,解释的结果是旧状态转换为新状态;BR:Dag→p(W×T×W)是每个agent的信念可达关系,满足序列性、传递性和欧几里德性;GR:Dag→p(W×T×W)和IR:Dag→p(W×T×W)分别是每个agent的目标可达关系和意图可达关系,满足序列性.
+　　的语义规则如下(*:是映射函数,是映射复写算子),其定义由解释结构和公式组成,通过可满足关系符号联接.状态公式的解释结构形如〈M,V,w,t〉,其中M是一个模型,V是变量指派,w∈W,t∈Tw;路径公式的解释结构形如〈M,V,w,p〉,其中p是w上的一条路径.
+
+
+3.3　派生算子和连接符
+　　从上述基本算子和连接符派生出其他有用的算子和连接符可以增强逻辑公式的易读性.从,∨和可派生出∧(逻辑与),(逻辑结果),(逻辑等价)和(存在量词);由A可定义存在路径量词E,即意为状态公式φ在某条路径上可满足;两个单目时态算子◇和□分别表示‘将要’和‘永远’:◇φ=deftrueUφ,,路径公式,◇φ(或□φ)在未来某路径上可满足,若φ在该路径上的某个(或全部)时刻可满足.派生算子Achv表示如下事实:agent i在执行动作ac的同时达到目标φ,〈M,V,w,p〉n,k∈IN,n≤k*(Exec i ac))且(
+3.4　言语行为的语用解释
+　　下面详细讨论算子PragInt的语义,即言语行为的语用解释.先作如下说明:①根据通信双方的认知状态,给出每类消息的可满足条件,即言语行为如何能被成功执行的条件;②谓词comm(i,j,m)的引入使语用解释算子作用于公式,而非直接作用于动作;③言语行为的言外之力不同,其语用解释也不同.假设在路径p上从时刻n到时刻k,一个言语行为sa(i,j,〈fc,pp〉)发生,即说话者（或发信agent）i对听话者（或收信agent）j说话（或发送消息）〈fc,pp〉,其中fc表示该言语行为的言外之力,pp是行为命题,下面由i解释该言语行为的语义.
+　　.〈M,V,w,p〉(PragInt comm(i,j,〈assertive,pp〉)) iff n,k∈IN*若n≤k则exec(sa(i,j,〈assertive,pp〉),p,n,k)且〈M,V,w,pk〉pp.一个断言类言语行为,例如“门开了.”,可满足,若其行为命题pp在话说完后开始为真.
+　　.〈M,V,w,p〉(PragInt comm(i,j,〈directive,pp〉)) iffn,k∈IN*若n≤k则exec(sa(i,j,〈directive,pp〉),p,n,k)且(M,V,w,pk〉(Bel i ((Int j pp)∧(HasPlan j Goal-to-plan(pp)))Upp).一个指令类言语行为,例如“开门！”,可满足,若i相信:(1) 沿路径p从时刻k开始,j想要（或有意图）并知道怎样（或有规划）达到pp（或使pp成立）;且(2) pp在未来某时刻将为真.
+　　.〈M,V,w,p〉(PragInt comm(i,j,〈commissive,pp〉)) iffn,k∈IN*若n≤k则exec(sa(i,j,〈commissive,pp〉),p,n,k)且〈M,V,w,pk〉(((Int i pp)∧(HasPlan i Goal-to-plan(pp)))Upp).一个承诺类言语行为,例如“我要开门.”,可满足,若(1) 沿路径p从时刻k开始,i想要并知道怎样达到pp;且(2) pp在未来某时刻将为真.
+　　.〈M,V,w,p〉(PragInt comm(i,j,〈permissive,pp〉)) iffn,k∈IN*若n≤k则exec(sa(i,j,〈permissive,pp〉),p,n,k)且(ac.(Bel i ((Achv j ac true)(Achv j ac (HasPlan j Goal-to-plan(A□pp)))))).一个许可类言语行为,例如“你可以开门.”,在一条路径上可满足,若该言语行为在该路径上将来某时刻有益于j,即j将被许可做一些以前不能做的动作ac,或者说该言语行为的执行将导致一个状态,在该状态下,j不能避免动作ac的执行条件的发生.
+　　.〈M,V,w,p〉(PragInt comm(i,j,〈prohibitive,pp〉))iffn,k∈IN*若n≤k则exec(sa(i,j,〈prohibitive,pp〉),p,n,k)且(ac.(Bel i ((Achv j ac true)A(Achv j ac (HasPlan j Goal-to-plan(A□pp)))))).一个禁止类言语行为,例如“你不可以开门.”,可满足,若i相信j知道怎样做某些动作ac以达到(A□pp),即j应该有避免达到pp的规划,并且pp在给定路径上不会成立.
+　　.〈M,V,w,p〉(PragInt comm(i,j,〈declarative,pp〉)) iffn,k∈IN*若n≤k则exec(sa(i,j,〈declarative,pp〉),p,n,k)且〈M,V,w,pk〉pp且(u∈IN,若n≤u＜k则〈M,V,w,pu〉 pp)且〈M,V,w,p〉(((Int i pp)∧(HasPlan i Goal-to-plan(pp)))　U　pp).一个宣告类言语行为,例如“我宣布游戏开始.”,可满足,若(1) pp在未来某时刻k将首次为真;且(2) 沿路径p从时刻n开始,在说话过程中,i想要并知道怎样使pp成立.
+　　j将根据其当前状态,用函数ML解释收到的每条消息,从而更新自己的状态,然后,决定执行或拒绝消息中包含的或隐含的动作.限于篇幅,关于j对接收到的言语行为的讨论从略. 
+4　结 论
+　　目前,有关智能agent和多agent系统建造的方法和技术越来越受到学术界和企业界关注,对建造这类系统的理论基础的需要也日渐增多.本文的工作即以此为背景,并参考了相关的研究结果［4～6,8,9］,主要工作包括:①给出了一个扩展的BDI agent形式化逻辑,试图支持多agent通信行为的描述和推理;②在逻辑中包含了对agent规划和规划库结构的描述和讨论;③通过引入一系列逻辑算子和构造符,从消息发送方角度,讨论了基于言语行为理论的agent间通信的语用解释.与相关工作比较,本文是对经典BDI逻辑和文献［8］工作的扩展.KQML从通信语言实现角度对言语行为作了更细致的分类和应用,但并未讨论其逻辑语用解释.而文献［9］则以agent协作代理任务求解和具体系统为背景,讨论了基于言语行为理论的agent通信过程.本文的工作与它们相比,抽象层次更高,更具有一般性.
+　　本文的研究结果还很初步,对基于言语行为的agent间通信的讨论尚不够全面和成熟.进一步的研究工作有:对逻辑系统进行改进和扩展,将言语行为与其前提条件有机结合,统筹考虑通信双方对消息的语用解释和意识状态的改变;以该逻辑为理论基础,研究面向agent技术的其他一些课题,如agent结构,多agent协作、协同和协商,面向agent程序设计等.
+　　本文研究得到国家自然科学基金、国家863高科技项目基金、国家教育部博士点基金和吉林大学符号计算与知识工程国家教育部开放实验室资金资助.作者陈建中,1968年生,博士,副教授,主要研究领域为多Agent系统,分布式人工智能,数据结构与算法.刘大有,1942年生,教授,博士生导师,主要研究领域为人工智能与软件,多Agent系统,专家系统,知识工程.唐海鹰,1971年生,在职博士生,讲师,主要研究领域为多Agent系统,分布式人工智能.胡明,1963年生,在职博士生,副教授,主要研究领域为多Agent系统,分布式人工智能.
+　　本文通讯联系人:陈建中,长春130023,吉林大学计算机科学系
+　　作者单位：陈建中　刘大有　唐海鹰（吉林大学计算机科学系　长春　130023；吉林大学符号计算与知识工程国家教育部开放实验室　长春　130023）；胡　明(吉林工学院计算机系　长春　130012)
+参考文献
+　1　Chen Jian-zhong, Liu Da-you, Tang Hai-ying. A template architecture for modeling intelligent agents.In:Sirirucha-tapong P, Lin Zong-kai eds. Proceedings of the International Workshop on CSCW in Design. Beijing: International Academic Publishers, 1997. 196～201
+　2　Bratman M E. Intentions, Plans, and Practical Reason. Massachusetts: Harvard University Press, 1987
+　3　Cohen P R, Levesque H J. Intention is choice with commitment. Artificial Intelligence, 1990,42(3):213～261
+　4　Rao A S, Georgeff M P. Modeling rational agents within a BDI-architecture. In: Fikes R, Sandewall E eds. Proceedings of the 2nd International Conference on Principles of Knowledge Representation and Reasoning (KR & R-91). San Mateo, CA: Morgan Kaufmann Publishers, 1991. 473～484
+　5　Rao A S, Georgeff M P, Sonenberg E A. Social plans: a preliminary report.In: Werner E, Demazeau Y eds. Decentralized AI 3――Proceedings of the 3rd European Workshop on Modeling Autonomous Agents in a Multi-agent World (MAAMAW-91). Amsterdam: Elsevier Science Publishers, 1992. 57～76
+　6　Wooldridge M, Jennings N R. Formalizing the cooperative problem solving process. In: Klein M ed. Proceedings of the 13th International Workshop on Distributed Artificial Intelligence (IWDAI-94). Seattle, WA: AAAI Press, 1994. 403～417
+　7　Werner E. Cooperating agents: a unified theory of communication and social structure. In: Gasser L, Huhns M N eds. Distributed Artificial Intelligence, Vol Ⅰ. Los Altos, CA/Pitman: Morgan Kaufmann Publishers, 1989. 3～36
+　8　Singh M P. Multiagent Systems: A Theoretical Framework for Intentions,Know-how, and Communication (LNAI Volume 799). Berlin: Springer-Verlag, 1994
+　9　Haddadi A. Reasoning about cooperation in agent systems: a pragmatic theory ［Ph.D. Thesis］. University of Manchester Institute of Science and Technology (UMIST), 1995
+1998-05-04收到原稿 
+1998-07-09收到修改稿

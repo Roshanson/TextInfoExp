@@ -1,0 +1,126 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第9期 Vol.36 No.9 1999
+
+
+
+可重构造的网孔机器上的k-选择
+许胤龙　陈国良　万颖瑜
+摘　要　对于一个m×n(m≤k)的列有序矩阵，文中在×可重构造的网孔机器上提出了一个并行k-选择算法，其时间复杂度为O(log2m+logmlog2n+log3n)，而对于一般的l元集，文中在相同的模型下提出了一个时间复杂度为O(log2()+log()log2n+log3n+log())的并行k-选择算法.当时l≥O(nlog3n/log logn，该时间复杂度为O(log()).特别地，当l=O(n1+ε)(ε＞0为常数），则时间复杂度为O(logn).此时达到的加速比为n/logn.
+关键词　并行算法， k-选择，可重构造
+中图法分类号　TP301.6; TP338.6
+k-SELECTION ON RECONFIGURABLE MESH
+XU Yin-long, CHEN Guo-Liang, WAN Ying-Yu,and XIONG Shan
+(National High Performance Computation Center,Department of Computer Science and Technology, University of Science & Technology of China,Hefei 230027)
+Abstract　A parallel algorithm of × reconfigurable mesh is proposed in this paper,which selects the k-th element in an m×n(m≤k) matrix with sorted columns.It runs in time O(log2m+logmlog2n+log3n)，Also proposed is a parallel algorithm that selects the k-th element in a general set with l elements on the same model.Its time complexity is O(log2()+log()log2n+log3n+log()).When l≥O(nlog3n/log　logn)，it becomes O(log()).Especially when l=O(n1+ε)(ε＞0 is a constant),it is O(logn) and the acceleration ratio of the algorithm in this situation is n/logn.
+Key words　parallel algorithm,k-selection,reconfiguration
+1　引言
+　　所谓k-选择问题就是从一个全序集中选出其第k个最小（或最大）元素（以下我们假设为第k个最小元），其广泛的应用价值吸引了许多专家学者的注意.无论在串行［1～6］还是在各种并行环境下［7～12］都有许多的研究成果.
+　　本文首先考虑待选的输入集可以表示成列有序矩阵［6］的k-选择问题.这类问题在统计学、运筹学、网络设计等方面［4～6］有着实际的应用.对于一个m×n(m≤n)的列有序矩阵.Frederickson和Johnson给出了一个时间复杂度为O(mlog(2n/m))的串行算法.该算法近乎于最优的且至今为止可能是最好的串行算法.而对于一个m×n的有序矩阵（行列均有序），Shen等［13］则在EREW PRAM上提出了一个时间复杂度为O(logmlogm(log logm+log(n/m))),总操作数为O(mlog())的并行算法.由于选择问题固有的通信复杂度，就我们所知，还没有文献在分布式存储的互联网络上讨论过列有序矩阵的选择问题.
+　　可重构造的网孔机器 (reconfigurable mesh, RMESH)［14］是一类由总线动态连接的网孔机器，由于其动态的拓扑结构以及总线能在单位时间内实现一到多的通信，使得RMESH在某些方面具有比PRAM机器还要好的性能，加上近年来硬件技术的飞速发展，使得这种体系结构具有逐渐走向市场的趋势，因而吸引了许多学者的兴趣.对于一个n元集，Hao［12］等在×的RMESH上给出了时间复杂度为O(logn)，至今最优的并行算法.
+　　对于一个m×n的列有序矩阵（在本文中假定m≤k，若m＞k则在每列中取前k行即可），本文在大小为×的RMESH上提出了一个时间复杂度为O(log2m+logmlog\+2n+log3n)的并行k-选择算法，当m≤O(nε)（ε为常数），该复杂度为O(log3n)，而当m≥O(nlogn)时，它就是O(log2m).利用求列有序矩阵的k-选择算法,在n×n的RMESH上我们提出了一个求一般的l元集k-选择问题的并行算法，其时间复杂度为O(log2()+log()log2n+log3n+log()).对于k＜,我们算法的时间复杂度为O(log2()+log()log2n+log3n++klogk).当l≥O(nlog3n/log logn)时，该时间复杂度变为O(log()).特别地，当l=O(n1+ε)（ε＞0为常数），则时间复杂度为O(logn)，此时相对于Hao［13］等在×的RMESH上用O(log n)时间求n个元素的k-选择相比，达到了最好的并行效果.同线性时间的串行k-选择算法相比，达到的加速比为n/logn.而在实际应用中l=O(n1+ε)是一种很常见的情况，因而本文提出的算法具有很好的实际意义.
+2　可重构造的网孔机器(RMESH)
+　　一个×的可重构造的网孔机器［14］是将n个处理器排成×的方阵.全部n个处理器用一条形状为(-1)×(-1)方格的总线连在一起，但在每个处理器所连的4个端口（边界处3个，四角2个）都带有开关，如图1所示.这些开关可以在算法的执行过程中动态地置成开或关，将整个总线分成一些相互独立的子总线.例如，若每个处理器都断开它在行（列）的链，则可得到条独立的列（行）总线，这条列（行）总线则可以相互独立地同时进行播送，如图2、图3所示.
+
+图1　4×4 RMESH
+
+图2　行总线
+
+图3　列总线
+　　在RMESH上，连接在同一条子总线上所有的处理器可以同时读该子总线上的数据，但同一时间单位只允许一个处理器向一条子总线上写数据.所有的处理器同步操作.我们假定每个处理器可在单位时间内置换开关，向子总线读写一个单位长数据，一个算术或逻辑操作等，放在一条子总线上的数据可以在单位时间内(O(1)延迟模型）到达连接在该子总线上所有的处理器.
+　　利用RMESH这种动态变化的拓扑结构，可以在一个算法的不同阶段，将整条总线划分成一些不同结构的子总线，从而达到加速算法的效果，对于某些问题，可重构造的网孔机器具有比PRAM机器还要好的性质.例如，在×的RMESH上［12，13，15］：
+　　(1) 若个元素分布在一行，一列或对角线上的处理器上且每个处理器含有一个元素，则可以在常数时间内对其进行排序.当然也就可以进行k-选择或(m,n)-选择；
+　　(2) 若个比特数据分布在一行，一列或对角线上的处理器上且每个处理器含有一个比特，则可在常数时间内求其异或和前缀和；
+　　(3) 若每一个处理器含有一个元素，则可以在O(log logn)时间内求出这n个元素的最大、最小值;
+　　(4) 每一个处理器含有一个比特元素，则可以在O(log logn)时间内求这n个元素的异或和前缀和，并可在常数时间内求其逻辑或.
+　　但由于排序问题固有的通信复杂度，使得在×的RMESH上排序n个元素却仍要O()的时间复杂度.
+3　求加权中值
+　　本节我们给出加权中值的定义及在RMESH上求加权中值的算法，下一节将利用加权中值求解k-选择问题.
+　　设A=(a0,a1,…，an-1)为从一全序集中取出的n元组（n个元素之间无序），将a0,a1,…，an-1按升序排列的结果为ai0,ai1,…，ain-1.W:A→R\++为一权函数，则存在m(0≤m≤n-1)满足：
+　　(1)
+　　(2)
+我们称aim为A相对于W的加权中值［4］.
+　　设有n元组(a0,a1,…，an-1)均匀分布在一个×的RMESH上，每个处理器含有一个元素及该元素的权.设所有的处理器按行主序编号，如图4所示.处理器Pi含有元素ai及权W(ai),在RMESH上我们实现的求加权中值算法的基本步骤如下.
+0123
+4567
+891011
+12131415
+
+图4　行主序
+　　算法1.Weightmedia
+　　步骤1. 求ai0,ai1,…，ain-1的中值（第个最小元ai「(n-1)/2」）
+　　步骤2. 将ai「(n-1)/2」播送到每个处理器Pk(0≤k≤n-1,k≠i「(n-1)/2」，并与P\-k中所含的元素ak进行比较.若ai「(n-1)/2.」>ak，则在处理器Pk标0,ai「(n-1)/2」<ak标1, 中值处理器标2.
+　　步骤3. 计算所有标0的处理器上的元素（小于ai「(n-1)/2」）权之和，记为sum　L，放在处理器P0上.
+　　步骤4. 计算所有标1的处理器上的元素（大于ai「(n-1)/2」）权之和，记为sum　G, 放在处理器P0上.
+　　步骤5. 处理器P0作比较：
+(1)　　sum　L+W(ai「(n-1)/2」)≥sum　G,
+(2)　　sum　L<W(ai「(n-1)/2」)+sum　G
+　　① 若(I),(II)均成立，ai「(n-1)/2」是加权中值.停.
+　　② 若 (I)不成立（小于等于ai「(n-1)/2」的元素的权和太小），则在大于ai「(n-1)/2」（所有标1的处理器中所含的元素）中找到其中值，转向步骤2.
+　　③ 若(II)不成立（大于等于ai「(n-1)/2」的元素的权和太小），则在小于ai「(n-1)/2」（所有标0的处理器中所含的元素）中找到其中值，转向步骤2.
+　　算法的正确性是显见的.为了实现算法Weightmedia，我们采用了Hao［12］等人提出的在×RMESH上实现的时间复杂度为O(logn)的选择算法来选取中值.至于算法的第2步在RMESH上仅需O(1)时间.
+　　要计算RMESH上所有标0(或1)的处理器所含元素的权和，我们先假定标1（或0）的处理器上元素的权为0，然后利用行总线用log重循环来计算每行的权之和.第一次循环，将每条行总线分成/2条子总线，从每行的第1个处理器开始，每两个处理器作为一条子总线，每条子总线上的第2个处理器向第1个处理器播送该处理器所含元素的权，在第1个处理器上求两个处理器所含元素的权和并作为相应子总线的权.在第i次循环将第i-1次循环中的行子总线每两条子总线连成一条新的子总线，类似于第1次循环将新的子总线的权和求出.这样在log步之后每行的第1个处理器上含有该行的权和.最后，在整个RMESH上的第1列用log步循环求出整个RMESH上的权和，放在处理器P0上.
+　　整个算法中，每执行一次第2～5步，下一次循环我们仅需考虑前一次循环中的一半元素，所以第2～5步至多循环log次.而每次第2～5步循环共需时间O(log).
+　　综上所述，我们得到如下的定理.
+　　定理1. 设有n元组A=(a0,a1,…,an-1)及权函数W:A→R+，A均匀分布在×的行主序RMESH上，处理器Pi含有元素ai及权W(ai)，则可在O(log2n)时间内求出A相对于W的加权中值.
+4　RMESH上的选择算法
+4.1　求列有序矩阵的k-选择
+　　Johnson 和 Mizoguchi在文献［4］中提出了用加权中值求集合X+Y上的k-选择.这里X与Y是两个集合，X+Y={x+y|x∈X,y∈Y}.用相同的思想我们在RMESH上实现了求列有序矩阵的k-选择的并行算法.在本文中我们不妨假设矩阵中每列的元素按升序排列.
+　　算法的基本思想是：首先找到的i列的中值ai，ai的权W（ai）定义为第i列的元素个数，然后找到(a0,a1,…,an-1)的加权中值ait，则整个矩阵中大于ait和小于等于ait的元素个数都至少是全部元素个数的1/4，若k＞小于等于ait的元素数，则丢掉小于等于ait的所有元素，若k<小于等于ait的元素数，则丢掉大于等于ait的所有元素，由于每次至少丢掉当前元素数的1/4.所以循环O(log(mn))次之后一定能找到m×n列有序矩阵中的第k个元素.
+　　设有一m×n的列有序矩阵M=(mij)m×n，其第i列元素存储于×行主序RMESH的第i个处理器上.在RMESH上求M的k-选择算法如下.
+　　算法2. 算法 Select　Matrix
+步骤1. 对i=0,1,…,n-1,在第i个处理器上令Lb(i)=0,Rb(i)=n-1;
+步骤2. 对i=0,1,…,n-1,在第i个处理器上求出第i列当前所剩元素的中值miji，从而构成n元组A=(m1j1,m2j2,…,mnjn,其中ji=(Lb(i)+Rb(i)),并计算权W(miji)=Rb(i)-Lb(i)+1（第i列当前元素总数）.
+步骤3. 求出A的加权中值mtjt(0≤t≤n-1),并播送到所有的处理器.
+步骤4. 因每列有序，可在第i个处理器上用二分法查找找到mtjt在第i列的位置.即找到下标Si使mtSi≤mtjt＜mtSt+1.并令P(i)=Si+1, Q(i)=Si，(i=0,1,…,n-1).（说明： 若mtjt小于第i列所有的元素，则Si+1=0，miji不存在;若mtjt大于等于第i列所有元素，则Si=n-1，mi(s\-i+1)不存在.）
+步骤5. ① 若k＜P(i),则令Rb(i)=Q(i),i=0,1,2,…,n-1,转向步骤2；
+　　　② 若k＞P(i),则令Lb(i)=P(i),i=0,1,2,…,n-1),转向步骤2；
+　　　③ 若①，②不成立，则mtjt就是第k个元素，算法终止.
+　　定理2. 设有一m×n列有序矩阵M，其第i列元素全部放在n×n行主序RMESH的第i个处理器中，则算法Select_Matrix在O(log2m+logmlog2n+log3n)时间内求出M的第k个最小元素.
+　　证明.算法的正确性见文献［4］.下面我们来分析它的时间复杂度.
+　　步骤1和步骤2需O(1)时间，步骤3用算法1，需O(log2n)时间.步骤4在每台处理器上并行地用二分法查找，对m个元素的二分查找需O(logm)时间.步骤5计算P(i)与(Q(i)-1)用第4节求权和的算法，需O(logn)时间，因此，每执行一次步骤2～步骤5的循环共需O(logm+log2n)时间，而步骤2～步骤5则至多执行O(log(mn))=O(logm+logn)次.所以整个算法的时间复杂度为
+O((logm+logn)(logm+log2n))=O(log2m+logmlog2n+log3n)
+当m≤O(nk)时（k为常数），上式变成O(log3n).
+当m≥O(nlogn时，logm≥O(log2n)，上式变成O(log2m).
+证毕.
+4.2　求一般集合的k-选择
+　　设有l个元素均匀分布×的RMESH上，每个处理器中含有l/n个元素.我们要求这l个元素中的第k个最小元.为此先在每个处理器上将其所含的l/n个元素进行排序，需时间O(log()).
+　　然后将所有的l个元素看做一个n×的列有序矩阵，再利用算法2求出其第k个最小元，需时间O(log2()+log()log2n+log3n)，则得到下面的定理3. 
+　　定理3.设有l个元素均匀分布在×的RMESH上，则可在O(log2()+log()log2n+log3n+log())时间内求出其第k个最小元.
+　　若k＜l/n，则可在每台处理器上用线性选择算法先选出前k个最小元，然后仅对前k个最小元排序，这样算法的时间复杂度变为O(log2()+log()log2n+log3n++klogk).当l≥O(nlog3n/log logn)时，定理3中的时间复杂度为O(log()).它仅相当于每个处理器的局部排序时间.特别地，当l=O(n1+ε)(ε＞0为常数），则时间复杂度为O(logn).此时同文献［13］的在×RMESH上用O(logn)时间求n个元素的k-选择相比，达到了最好的并行效果.同线性时间的串行 k-选择算法相比，达到的加速比为n/logn.而在实际应用中l=O(n1+ε)是一种很常见的情况，因而我们的算法具有很好的应用价值.
+5　实验结果
+　　我们采用单机对算法进行模拟.对局部运算（如比较加、减、乘、除等）和通信次数进行记数.图5给出了在每个处理器处理的元素个数分别是6、12、24的情况下，用不同大小的RMESH阵列达到的加速比.我们注意到算法的加速比基本与n/logn成正比(×为RMESH的规模).图6给出了12×12的RMESH上对不同元素数得到的加速比.因每个处理器内部元素已排序，所以m的变化对加速比影响不大.每组参数都执行了100次取平均值.
+
+图5
+
+图6
+6 总结
+　　本文在×的可重构造的网孔机器上用加权中值的思想实现了m×n的列有序矩阵的k-选择，时间复杂度为O(log2m+logm log2n+log3n).利用列有序矩阵上的k-选择算法，我们提出了求一般的l元集的k-选择算法，该算法在×的RMESH上的执行时间为O(log2()+log()log2n+log3n+log()).当l≥O(nlog3n/log logn)时，该时间复杂度为O(log()).特别地，当l=O(n1+ε)（ε＞0为常数），则时间复杂度为O(logn).此时达到的加速比为n/logn.而同文献［12］等用O(logn)时间在×RMESH上求n个元素的k选择算法相比，达到了最好的并行效果.
+注：本课题得到国家教委博士点基金资助（项目编号9703825）.
+作者简介：许胤龙，男，1963年6月生，讲师，研究方向为复杂性理论、并行算法.
+陈国良，男，1938年6月生，教授，博士生导师，研究方向为并行与分布式算法、遗传算法.
+万颖瑜，男，1976年1月生，博士研究生，主要研究方向为并行算法、NPC问题实用算法.
+作者单位：中国科学技术大学计算机科学技术系国家高性能计算中心　合肥　230027
+参考文献
+1　　Fussenegger F.Johnson D B.A Counting Approach to Lower Bounds for Selection Problems, J of ACM, 1979, 26(2): 540～543
+2　　Hyafil L. Bounds for selection, SIAM J Comput, 1976, 5(1): 104～109
+3　　Krkpartrick D G. A unified lower bound for selection and set partitioning problems. J of ACM, 1981, 28(1): 150～165
+4　　Johnson D B, Mizoguchi T. Selecting the k-th element in X＋Y and X1+X2+…Xn. SIAM J Comput, 1979, 7(2): 147～153
+5　　Frederickson G N, Johnson D B. Generalized selection and ranking: Sorted matrices.SIAM J Comput, 1984, 13(1): 14～29
+6　　Frederickson G N, Johnson D B. The complexity of selection and ranking in X+Y and matrices with sorted columns. J Comput & Sys Sci, 1982, 24(2): 197～208
+7　　陈国良. 并行算法―排序与选择. 合肥: 中国科学技术大学出版社， 1990
+(Chen Guoliang. Parallel Algorithms-Sorting and Selection(in Chinese). Hefei: The Press of Chinese University of Sciences & Technology Press,1990)
+8　　陈国良.平衡分组选择网络. 计算机研究和发展,1984，21(11):9～21
+(Chen Guoliang. Balanced grouping selection network, Journal of Computer Research & Development(in Chinese), 1984，21(11): 9～21)
+9　　陈国良，沈鸿. 在SIMD机器上实现的双调选择算法，计算机研究和发展，1988,25（1）:1～9
+(Chen Guoliang, Shen Hong. Bitonic selection algorithms on SIMD machine. Computer Research & Development(in Chinese), 1988, 25(1): 1～9)
+10 陈国良， 王忠良. 并行归并选择算法. 计算机学报,1988,11(1):14～21
+(Chen Guoliang, Wang Zhongliang. Parallel merging selection algorithm. Chinese Journal of Computers(in Chinese), 1988, 11(1): 14～21)
+11 陈国良，刘峻. 多处理器上的分组选择算法. 计算机研究和发展, 1988，25(8): 1～9
+(Chen Guoliang, Liu Jun. Grouping selection algorithms on multiprocessor machine. Journal of Computer Research & Development(in Chinese), 1988，25(8): 1～9)
+12 Hao E, Mackenzie P D, Stout Q F. Selection on the reconfigurable mesh. In: Proc Int'l Parallel Processing Symp, 1992, 38～45
+13 Shen H, Ramnath S. Optimal parallel selection in sorted matrices. Inform Process Lett 1996, 59(3): 117～122
+14 Miller R, Prasanna-Kumer V K, Reisis D I, Stout Q F. Parallel computations on reconfigurable meshes. IEEE Trans on Comput, 1993, 42(6): 678～692
+15 Nigam M, Sahni S. Sorting n numbers on n×n reconfigurable meshes with buses.In: Proc Int'l Parallel Processing Symp, 1993, 174～181
+16 Ullman J D. Computational Aspects of VLSI. New York : Computer Science Press, 1984
+原稿收到日期：1998-11-30；修改稿收到日期：1999-05-17.

@@ -1,0 +1,142 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH
+AND DEVELOPMENT
+1999年 第36卷 第12期 Vol.36 No.12 1999
+
+
+
+分布式多媒体系统中的同步问题研究
+金　涛
+摘　要　文中首先给出基于进程代数的LOTOS形式化规范语言的基本概念，通过对传统LOTOS进行基于时间的扩充，引入时间算子，并给出其相应的语法定义和形式语义.通过对分布式环境下的多媒体同步问题进行系统的分析，利用基于时间扩充的LOTOS，给出了基本的同步问题和严格的多媒体唇同步问题的算法描述.同时给出一个实例系统，进一步描述了基于时间扩充的LOTOS，对分布环境下多媒体信息同步问题在实际中的应用，并与传统方法进行了比较.
+关键词　分布式多媒体系统，同步，LOTOS
+中图法分类号　TP37
+RESEARCH ON THE SYNCHRONIZATION PROBLEM IN
+DISTRIBUTED MULTIMEDIA SYSTEMS
+JIN Tao 
+(College of Computer Science and Technology, Wuhan University, Wuhan 430072)
+(College of Computer Science and Technology, National Engineering Research Center for Multimedia Software,
+The Open Research Laboratory for Multimedia Software under the Department of Education, Wuhan University, Wuhan 430072)
+Abstract　LOTOS is a formal specification language ,designed for the precise description of the open distributed system. LOTOS is based on process algebra model. Firstly, this paper gives some basic concepts of LOTOS. By introducing two time operators, the traditional LOTOS is extended and time-based LOTOS's syntax and formal semantics are described. Then, it performs a systematic analysis of the synchronization problem in the distributed multimedia system. Applying the time-based LOTOS, the specification of the basic synchronization algorithm and the lip-synchronization algorithm is proposed. Also, an example of the lip-synchronization system is illustrated and compared with the traditional synchronization design methods.
+Key words　distributed multimedia system, synchronization, LOTOS
+1　前　　言
+　　与传统分布式系统相比，分布式多媒体系统有3个重要特点：连续交互性、提供严格的服务质量机制和实时同步性.连续交互性是指在分布式多媒体系统，需要一种持续的媒体流（stream）的交互机制，这与传统的分布式通信仅支持单一RPC方式完全不同；在分布式多媒体环境下，必须满足多媒体信息表现的严格同步要求，在对多媒体对象流的传输中保持相关媒体的同步，提供端到端服务时所涉及到的延迟（delay）、抖动（jitter）等方面的问题，所以必须对分布式多媒体系统提供严格的服务质量机制；实时同步性表明在分布式多媒体系统中，信息必须严格保持实时同步，既要求保持从媒体对象采集到媒体对象表现都严格限制延迟和抖动范围，即媒体内同步（intra-synchronization），又要在几个媒体流并行表现时，依据其相互时序关系保持媒体间的同步（inter-synchronization）.如多媒体唇同步（lip-synchronization）问题，必须严格保持声频与视频的同步.
+　　对于传统的多媒体同步问题分析，主要是依据Allen定义的统一的时间模型［1］，即equal，meet，before，during，start，finish，overlap等13种基本的时态关系，给出不同的多媒体同步模型.T.D.C.Little依据Allen定义的时间关系提出了OCPN模型［2］，利用Petri网描述两个多媒体对象的时间合成基于顺序和并行两种时间关系，给出具有统一时间的OCPN模型.Peter King［3］为了弥补Allen定义的时间关系不精确性，引入ITL（interval temporal logic）描述多媒体文档中的同步问题.与之相反，Wahl和Rothermel［4］给出了29种多媒体同步的时序关系，除定义基本的同步关系之外，还给出了大量的不确定性的非精确时间关系描述.然而，这些模型只能完整地描述多媒体对象之间的同步合成，而对于分布式环境下的多媒体同步问题表达能力不足.对在分布式环境下的多媒体同步问题，Hutchinson和Blair［5］给出了在实时环境下多媒体的同步约束关系，Regan也对分布式多媒体系统中同步问题给出了描述.
+　　本文首先给出基于进程代数的LOTOS形式化规范语言［6］的基本概念，然后通过对传统LOTOS进行基于时间的扩充，引入时间算子，并给出其相应的语法定义和语义规则.通过对分布式环境下的多媒体同步问题进行系统的分析，利用基于时间扩充的LOTOS给出了严格的多媒体唇同步问题的算法描述.最后，本文就一个实例系统给予了进一步说明.
+2　LOTOS的基本概念
+　　LOTOS是ISO组织为了描述开放式分布系统而制定的一种规范语言.LOTOS是基于进程代数模型，具有精确的语法定义和形式语义，是面向协议验证的一种抽象级别较高的形式化方法.其基本点在于，一个系统可通过在外部环境中可观察到的交互操作的时序关系来定义，可方便地用于分布式交互系统的设计.
+　　LOTOS将系统看成由若干相互通信的进程（process）组成.进程可以执行其内部的行为，也可通过门径（gate）与外部进程交互完成.门径为进程的同步通信点，门径上的行为由门径名、操作和传送的数据构成.LOTOS对数据结构和数值表达式的描述采用基于抽象数据类型的ACT-ONE进行描述.这里我们给出LOTOS基本的语法：
+
+其中：
+　　P：　　　　　　　进程的行为表达式；
+　　stop：　　　　　死锁进程，不能进行任何活动事件；
+　　gd*;P：　　　　　g为进程P的门径名，d*为数据属性.；为行动前缀符.即代表进程P通过门
+　　　　　　　　　　径g与外界交互.定义a为外部交互事件，即gd*可表示为a；
+　　i;P：　　　　　P的内部交互事件i；
+　　［bc］→P：　　当布尔条件表达式bc为真时，启动进程P，否则为stop进程；
+　　P［］P：　　　［］为选择操作；
+　　P|［G］|P：　　|［］|为并行合成操作，通过门径集G，两进程并行地进行同步通信；若
+　　　　　　　　　不通过门径集G，成为独立并行，可表示为P|［］|P；
+　　X(e*)：调用其他进程X(e*)，e*为参数表达式.
+　　　　LOTOS应用抽象数据类型ACT-ONE描述数据类型，对数据的操作规定为：
+　　　　g!e;P:　　　　进程P通过门径g发送表达式e的值；
+　　　　g?(x:T)；P:　　进程P通过门径g接受值并赋值给类型T的变量x.
+3　基于时间的LOTOS扩充
+　　分布式多媒体系统的核心是强调其交互性，即与外界环境的协调同步.实时性是分布式多媒体系统中的关键.可以看出，传统的LOTOS缺乏支持实时规范的特征.对传统的LOTOS进行扩充，才能有效地对分布式多媒体系统进行形式化的分析，研究人员在这一研究领域作了大量的工作.如LOTOS-T，Temporal LOTOS，ET-LOTOS等.仅仅将定量的时间概念引入LOTOS中，并不能精确的描述和分析实时的多媒体系统.对LOTOS基于时间的扩充，必须对事件发生的优先级别进行定义.Reed通过定义内部事件的优先级别来扩充；Bolognesi和Brinksma［6］则定义交互事件的紧急程度表达实时系统.我们通过引入时间操作算子，确定交互事件的发生条件，以达到LOTOS支持实时系统特征的目的.
+3.1　离散时间域的引入
+　　在对LOTOS进行时间扩充时，首先必须考虑其支持的时间域.离散时间域支持事件发生的时间测度，但只具有相对精确性.紧凑时间域支持事件活动的精确时间描述，具有较强的表达能力，但其对时间属性的推理及证明过于复杂，这对于许多应用领域，这种复杂形式是多余的.在分布式多媒体系统中，对同步问题的主要考虑是媒体流之间的相对实时同步，时间的相对精确性足以满足对多媒体同步要求及服务质量的要求，故对LOTOS的扩充采用离散时间域.但在硬实时系统中，紧凑时间域的支持是必不可少的.
+　　定义离散时间域T，有如下性质：
+　　①
+　　②
+　　③
+　　④
+　　⑤
+　　⑥且t1≤t2,则集合{t|t1≤t≤t2}记为［t1,t2］为一时间区间；
+　　⑦且t2≤t′≤t4,则t′∈［t1,t4］.
+3.2　时间操作算子引入
+　　我们引入延迟算子和测度算子等两个时间算子，对LOTOS进行扩充.延迟算子的目的是能依据时间单元的定义进行启动和挂起相应进程，测度算子是使进程在满足一定的时间区间的条件下启动进程.形式化定义如下：
+　　定义1.延迟算子D(n)，D(n)P表示为当挂起n个时间单元后启动P进程；
+　　定义2.测度算子M(t)［cond.］，M(t)［cond.］P表示为当t满足时间区间条件cond.时启动进程P.
+　　故扩充后的LOTOS的语法定义为
+
+3.3　扩充后LOTOS的操作语义
+　　(1)符号定义
+　　定义事件集μ，μ=L∪G∪{i}.其中L为LOTOS中的外部活动事件的名称标记集，G为门径名集.则有a∈L，g∈G.内部交互事件为i.P，P′及Q，Q′为扩充后的LOTOS的进程行为表达式.
+　　于是我们可以得到扩充后的LOTOS的操作语义.
+　　(2)推导规则
+
+
+
+4　分布式环境下多媒体同步问题的分析
+　　对分布式环境下的多媒体同步问题分析，必须考虑网络的延迟与抖动等非确定性因素的影响，不仅要满足媒体内的同步和服务质量（QoS），还要满足媒体与媒体间的同步控制和规定在一定条件下的服务质量的保证.OCPN模型作为一种通用的多媒体同步模型，主要描述媒体对象之间的同步关系，对媒体对象内的同步机制缺乏支持，是一种粗粒度的同步模型，由此发展另一种XOCPN模型是一种细粒度同步模型，考虑了连续媒体在分布式环境下的传输控制，给出了在一定条件下的QoS协商机制，但其缺点在于不能描述同步的动态交互特征.引入时序区间逻辑（ITL）描述多媒体同步问题，更多的优点在于给出媒体之间的严格精确的时序关系，但对于分布式环境下的非确定性的交互控制表达能力有限.
+　　通过对分布式环境下的多媒体同步问题的分析，我们引入基于时间扩展的LOTOS的形式化方法对其进行研究，我们给出一类基本的多媒体同步问题的描述，说明其媒体内同步的服务质量的保证，继而给出对复杂的严格同步问题――唇同步问题的形式化描述，说明媒体流之间的同步机制.
+4.1　基本同步问题分析
+　　由多媒体流在分布式环境下传输的物理特性，我们将同步问题分解成3个对象描述：数据源端（source）；传输媒介（medium）；数据输入端（sink）.如图1所示.
+
+图1　分布式环境下的多媒体流的传输
+　　给出同步条件的非形式化描述：若媒体数据源端每nms发送一个数据包；传输媒介网络延迟在［l,l+Δl］的时间区间范围内；数据输入端每处理一个数据包需pms～p+Δpms.
+　　应用基于时间扩充的LOTOS的形式化方法对基本同步问题的形式化描述：在分布环境下，将同步问题分为3个进程描述：数据源端、传输媒介、数据输入端.同步门径为SourceOut，SinkIn.则，多媒体流传输的进程描述为
+Source|［SourceOut］|Medium|［SinkIn］|Sink;
+　　依据同步条件，其同步算法的形式化描述如下：
+Source进程:
+　　Source(fr:N)∷=D(n)SourceOut!fr;Source(fr+1);
+Sink进程:
+　　Sink∷=SinkIn?fr:N;Sink|［］|M(t)［p,p+Δp］(play!fr;Sink);
+Medium进程:
+　　Medium∷=SourceOut?fr;N;
+　　　　　　　((M(t)［l,l+Δl］
+　　　　　　　　　(D(t)(SinkIn!fr;stop［］i;stop)))
+　　　　　　　|［］|Medium).
+4.2　唇同步(lip synchronization)问题
+　　唇同步问题是一类严格的多媒体同步问题，它的基本要求是在严格保证各自媒体流的自身同步的同时，还要满足媒体流之间的严格同步.主要应用分布式环境下的可视电话会议系统中的视频流与声频流之间同步.下面我们先对唇同步问题进行分析，并给出相应的同步条件，继而给出应用基于时间的LOTOS的算法描述.
+　　(1)同步条件
+　　声频媒体流：设声频数据源平均数据传输率为每dsms发送一个数据包，不允许任何的延迟与抖动；
+　　视频媒体流：设视频数据源平均数据传输率为，每dvms发送一个数据包，对视频媒体允许有约定范围内的抖动，设抖动率为±Δjms；
+　　同步点条件：设声频媒体表现的时间点为tps，则依据唇同步条件的要求，视频媒体的表现时间点必须在时间区间［tps-Δvpre，tps＋Δvpost］之内，否则将不能保持同步.其中Δvpre为视频媒体表现的提前量，Δvpost为视频媒体表现的滞后量.
+　　(2)唇同步问题的形式化描述
+　　将唇同步问题分解为5个进程.媒体数据源端：SoundSend进程和VideoSend进程；传输媒介：Medium进程；数据输入端：Sink进程；同步控制：Sync进程.唇同步问题可表示为
+　　SoundSend，VideoSend |［S_Send,V_Send］| Medium |［S_SinkIn,V_SinkIn］| Sink |［S_gate,V_gate,Syn_gate］|Sync.
+进一步，我们给出具体各个进程的LOTOS的形式化定义：
+SoundSend进程:
+　　SoundSend(fr:N)∷=D(ds) S_Send! fr; SoundSend (fr+1);
+VideoSend进程:
+　　VideoSend(fr:N)∷=D(dv) (M(dv)［dv-Δj,dv +Δj］V_Send! fr; VideoSend (fr+1));
+Medium进程:
+　　Medium∷= (S_Send? fr;N;
+　　　　　　　　((M(t)［l ,l+Δl］
+　　　　　　　　　　(D(t) (SinkIn! fr; stop ［ ］i; stop)))
+　　　　　　　　|［］|Medium))
+　　　　　　|［］|
+　　　　　(V_Send? fr;N;
+　　　　　　　　((M(t)［l,l+Δl］
+　　　　　　　　　　(D(t) (SinkIn! fr; stop ［ ］i; stop)))
+　　　　　　　　|［］|Medium))
+Sink进程:
+　　Sink∷=((S_SinkIn ?fr:N;S_gate!s_avail,s_avail_time;Sink)
+　　　　　|［］|
+　　　　(V_SinkIn? fr:N ;V_gate!v_avail,v_avail_time;Sink))
+　　　　　　　|［］|:BOOL;［flag=TRUE］M(t)［p,p+Δp］(play!fr;Sink)
+Sync进程: 
+　　Sync∷=S_gate!s_avail,s_avail_time;V_gate!v_avail,v_avail_time;
+　　　　M(v_avail_time)［s_avail_time-Δv_pre,s_avail_time+Δv_post］Syn_gate?TRUE; Sync
+5　实　　例
+　　传统的唇同步系统的设计是将声频信息与视频信息在数据源端进行同步编码，将两类媒体流合成为单一信息流，通过传输媒介，在数据表现端进行同步解码，从而获得媒体同步.这种方法的目标是能自动地确保媒体流在数据表现端的同步，但其同步的代价是带来对硬件编码/解码的要求很高，编码与解码的效率直接影响到同步的效果.
+　　通过基于时间扩展的LOTOS对分布式多媒体系统中同步问题的分析，我们设计了一个唇同步的实例系统.将声频信息流与视频信息流分别传输，通过同步控制机制，在一定同步条件的保证下，达到唇同步要求.如图2所示.
+
+图2　唇同步系统结构图
+　　唇同步条件为声频媒体每30ms播放一帧，不允许有延迟抖动.视频媒体每40ms播放一帧，对视频媒体的帧间延迟范围为35ms～45ms.与声频媒体的同步要求是提前量不得超过15ms，延迟量不得超过150ms.系统通过唇同步控制机制（声频/视频管理器、唇同步控制）及信号量（s_avail_play,v_avail,v_play,s_ready,s_ok,v_ready,v_ok）有效地保证了多媒体信息在分布环境下的唇同步要求.
+　　与传统的方法相比，基于时间扩充的LOTOS的引入，能保证对不同媒体的严格同步，提供精确的时间定义.同时简化同步的硬件环境要求，在一定的同步条件约束下，避免了传统同步中严格要求对帧与帧之间复杂的同步限定.时间区间的引入使多媒体信息在分布环境下同步并提供QoS服务成为可能.
+6　结束语
+　　本文通过引入时间算子对传统的LOTOS形式化规范语言进行扩充，使之弥补了LOTOS缺乏支持实时规范的特征，并应用基于时间扩展的LOTOS，分析分布式多媒体系统中的同步问题.分布式多媒体系统中的同步问题的核心是，既要保持媒体流内部的同步关系，又要支持不同媒体流之间的同步要求.应用LOTOS的形式化方法能准确地刻画在分布式的环境下，多媒体数据流的传输及同步过程，并能提供详细精确的时间点同步要求，对于分布式环境下的非确定性给出一定的时间区间，以满足同步要求.在对同步问题的描述中给出延迟、抖动等服务质量的参数，提供了一定的服务质量的保证机制.为了更深入的研究分布式多媒体系统的同步问题，就必须提供更完善的服务质量的机制，以保证同步要求，这将是今后研究的重点.
+本课题得到国家“八六三”高科技项目基金资助(项目编号863-306-04-01).
+作者简介：金涛，男，1973年4月生，博士研究生，主要研究领域为知识工程、多媒体软件.
+作者单位：(武汉大学计算机科学与技术学院　武汉　430072)
+　　　　　(国家多媒体软件工程技术研究中心，教育部多媒体软件开放研究实验室　武汉　
+　　　　　430072)
+参考文献
+　1　Allen J F. Maintaining knowledge about temporal intervals. Communications of the ACM, 1983, 26(11): 832～843
+　2　Little T D C, Ghafoor A. Synchronization and storage models for multimedia objects. IEEE Journal on Selected Areas in Communications, 1990, 8(3): 413～427
+　3　King P R. A logic based formalism for temporal constraints in multimedia documents. In: PODP 96, 1996
+　4　Wahl T, Rothermel. Representing time in multimedia systems. In: Proc IEEE Int'l Conference on Multimedia Computing and Systems, Boston ,MA, 1994. 538～543
+　5　Blair G S. A programming model and system infrastructure for real-time synchronization in distributed multimedia system. IEEE Journal on Selected Areas in Communications, 1996, 14(1): 249～263
+　6　Bolognesi T,Brinksma E.Introduction to ISO specification language LOTOS.Computer Networks and ISDN Systems,1988,14(1):25～59
+原稿收到日期：1999-02-05；修改稿收到日期：1999-05-09.

@@ -1,0 +1,52 @@
+软件学报
+JOURNAL OF SOFTWARE 
+1999年 第10卷 第5期 Vol.10 No.5 1999
+
+
+
+面向高级综合验证的数据流图提取技术研究
+许庆平　刘明业　宋瀚涛
+摘要　 该文主要讨论高级综合系统RTL(register transfer level)级综合结果正确性验证策略的确 定及验证系统设计中DFG(data flow graph)逆向获取算法的设计与实现.算法主要包括4个处 理阶段：FSM(finite state machine)动态分析及控制输出获取；FSM当前状态下数据通道有 效元件分析；数据通道结构到DFG操作结点转换；DFG结点间数据依赖关系分析、共享寄存器 变量分离及有向边的形成.
+关键词　高级综合,硬件设计验证.
+中图法分类号　TP302
+Research on Data Flow Graph Extracting Technology for
+Verificat ion of High Level Synthesis Correctness
+XU Qing-ping　LIU Ming-ye　SONG Han-tao
+Department of Computer Science and Engineering　Beijing In stitute of Technology　Beijing　100081
+Abstract　　To verify the correctness of the RTL(register transfer level) result got from th e high level synthesis, an algorithm of DFG(data flow graph) invert extracting i s designed and realized in this paper. Four sections are included in this algori thm: analyze FSM(finite state machine) dynamically and obtain control signal; se arch the active component for current states of FSM and convert the operate note of DFG from the structure of data path; analyze the relationship between the no tes of DFG, separate the variables sharing the same register.
+Key words　High level synthesis, hardware design verification.
+　　硬件设计验证是整个硬件设计周期中的一个重要环节.目前,面向较低抽象层次上的硬件设计 验证技术已趋向成熟［1,2］.而近年来,在硬件设计自动化研究领域中,高级综合技术 的迅速发展给硬件设计验证研究带来新的难题.
+　　高层次综合完成算法级描述到RTL(register transfer level)级结构实现之间的变换.由于 高级综合所处理的描述抽象层次高,也就带来了设计过程的高度自动化,从而使设计周期大大 缩短,同时也给设计验证带来了困难.而面对高级综合的一些经典验证技术都存在某些不足之 处.我们基于北京理工大学“八五”期间研制的HLS/BIT高级综合系统［3］,以研究能 够适应高级综合特点、实用性强的验证方法和系统为宗旨,确定了基于高级综合完成设计的 正确性采取分步验证的策略.即在不同设计实现层次上,采取不同的验证方法.算法级描述到R TL级结构实现的正确性验证采用数据流图(data flow graph,简称DFG)同构性检查方法 ［4］,而对RTL级以下的结构实现,我们认为可采用成熟的形式验证方法.这样可克服算法 级描述到底层实现之间跨度太大的困难.本文主要就DFG－ext逆取技术的几个关键问题展 开讨论.有关DFG同构的比较问题,我们将另行撰文讨论.
+1　从高级综合结果逆向提取数据流图技术的基本思想
+　　DFG同构性检查方法验证高级综合结果的正确性,需要两组DFG,一个是DFG－org(Original DFG),它是高级综合中调度与分配的数据输入形式；另一组是DFG－ext(Ertracted DFG), 它是高级综合结果RTL结构所能完成的操作全集而构成的DFG,通过对高级综合直接输出结果 进行动态机器自动分析后得到.DFG－ext获取的处理过程在输入、输出上与高级综合过程 恰恰相反,故将取得DFG－ext的过程称为DFG－ext逆向提取.当高级综合处理正确时,应 有DFG－ext≌DFG－org或DFG－ext∽DFG－org存在.其中“≌”表示同构；“∽ ”表示同态.该方法由文献［4］提出,本文认为,文献［4］在对其方法的讨论中存在以下几 点缺陷：(1) 在DFG逆向提取中依然采用符号模拟的方法.(2) 对验证目标RTL结构实现有 较大限制(如寄存器不能共享等).(3) 手工完成DFG同构性检查.本文的研究弥补了上述缺陷.
+2　FSM动态分析
+　　取得DFG－ext首先应解决的问题是有限状态机(finite state machine,简称FSM)的动态分 析,以取得FSM各状态下的控制输出.DFG－ext本质上是硬件设计目标的数据通道在RTL级结 构实现层次上于控制器的作用下所能执行操作的全集--V,以及操作之间的数 据依赖关系全集--E所构成的图G.某一状态下数据通路所执行的操作由Oi直接确定.Oi 与一定的状态转换关系(Si,Il)→(Sj)一一对应,如果按照一个合理的方法遍历一个 FSM中包含的所有状态就可分别获得Oi,继而得到数据通路可执行的操作.由于只需获得 FSM各个状态下的Oi及其控制下数据通道所执行的操作,而不关心具体输入变量取值条 件下所确定的某一条状态转换通路,同时也不关心该数据通道处理所得到的具体结果,所以, 分析过程不依赖输入变量激励输入.由此看来,FSM分析问题就转化为状态转换图的遍历问 题.在此,借用广度优先遍历算法完成FSM的分析.在广度优先遍历过程中,对各状态结点的 访问形成一个展开的有向无循环图.其中的每一层对应一个调度控制步(一个时钟周期).同一 层上的状态在电路活动中是互斥出现的,状态Si→Sj下的Oi所激活的操作的时序可用S i Sj来标定.从有向无循环图的结构可知,采用广度优先遍历可以保证在一个操作获得时 ,其前趋操作必然已经获得.这有利于操作间依赖关系的分析.
+3　数据通道当前有效通路分析
+　　数据通道中的元件在控制信号的作用下有效,此时,我们称这些元件为当前有效元件.从状态 机分析中得到的控制输出Oi是分析该状态控制条件下,数据通道中有哪些元件处于有效状 态的根本依据.在给定一组控制输出的条件下,数据通道中的当前有效元件及其连接构成当前 状态下的有效通路,有效通路上的有效元件根据它们与控制信号的关系分为3种情况：直接有 效元件、间接有效元件和通路选择元件.
+　　当给定控制输出时,直接有效元件可由状态转换控制输出直接确定.间接有效元件通过对它与 直接有效元件连接关系的分析获得.分析过程在此称为GetIndrctCmpnt()过程(详见文献［5 ］).
+　　通过该过程的处理,可确定一个控制输出信号在数据通道中的作用范围及对应相关的各有效 元件.
+4　有效元件到数据流图结点的变换(结构到行为的变换)
+　　当前状态下,在有效元件确定之后,利用元件功能库可得到操作、传输和存储等电路的行为活 动.从直接有效元件着手进行分析,可获得与一个操作执行相对应的数据流图结点.而直接有 效元件本身对应构成一个操作的输出变量或一个转输的目标变量.间接有效元件中的数据输 入端口或寄存器则对应一个操作的输入变量或数据传输的源变量.
+　　DFG结点形成过程将结点分为永久结点和临时结点两类.操作结点、外部数据输入输出端 口构成的输入输出变量以及用户定义的常数为永久结点.综合系统加入的中间变量及用户定 义的变量都首先作为临时结点.待结点间有向边生成,在分析时,根据不同情况将其删除或转 为永久结点.
+5　数据流图结点间有向边的生成
+　　结点间的有向边乃是不同操作间前趋后继连接关系的表示.其中包括操作与输入变量间的有 向连接及其与输出变量间的有向连接；一个前趋操作的输出与其直接后继操作的输入间的有 向连接等.
+　　从连接的表示方法上来看,连接链表和连接矩阵同时使用.在进行操作间的前趋后继连接关系 分析时,连接也分为临时连接和永久连接.临时连接是指有临时结点的连接,用连接链表表示. 永久连接是指永久结点之间的连接,用连接矩阵表示.矩阵元素取值有下列4种情况：① 0表 示结点i与结点j间无连接；② 1表示点i到结点j的左输入连接；③ 3表示点i到结点j的右输 入连接；④ 2表示点i到结点j是单输入连接.如果是多元操作,则连接表示从左到右依次以自 然数序填入连接标志.操作结点间的连接通过前趋分析完成,其中需要解决的一个主要问题是 寄存器共享变量的分离.研究中,通过子树划分的方法解决了这一问题.
+6　系统实现与运行结果
+　　本文所讨论的DFG-ext逆向提取方法在SUN-4/75工作站上用C++语言基于BIT／HLS高级综合 系统得以实现.实现系统用HLS/BIT系统已通过的选自HLSynth92'高级综合系统BenchMark的 一些测试实例进行测试,运行得到逆向提取DFG.经分析,相应DFG－org与DFG－ext有7例 同构成立.在五阶椭圆滤波器一例的测试中发现综合结果存在错误.经研究确认,错误乃是由 调度算法的实现不完善所致.运行实例最大规模者RTL结构网表包含68个硬件基元(相当于2万 门).从系统运行速度上看,最大规模实例的数据输入到得到结果输出,基本没有用户等待时间 .从系统实现的初步情况来看,DFG比较进行高层次的设计验证,不依赖测试向量的生成,验证 结果分析简单、易行.该方法可以适应高级综合抽象层次高、自动化程度高等特点.
+　
+本文研究得到国家自然科学基金和国防预研基金资助.
+作者许庆平,1956年生,博士,讲师,主要研究领域为EDA技术,并行处理技术.
+　　刘明业, 1934年生,教授,博士生导师,主要研究领域为EDA技术.
+　　宋瀚涛,1940年生, 教授,博士生导师,主要研究领域为EDA技术,信息管理,数据库技术.
+本文通讯联系人：许庆平,北京 100081,北京理工大学计算机科学工程系
+作者单位:（北京理工大学计算机科学工程系　北京　100081）
+参考文献
+　[1]　Camurati P. Formal verification of hardware correctness: introduction and survey of current research. IEEE Computer, 1988,21(7):8～16
+　[2]　姜明,刘明业.VLSI设计形式化验证方法的综述.计算机辅助设计与图形学学报,19 96,8(2):155～159
+(Jiang Ming, Liu Ming-ye. Survey on methods of formal verification for VLSI des ign. Journal of Computer-Aided Design and Computer Graphics, 1996,8(2):155～159) 
+　[3]　刘明业,张东晓,许庆平.VHDL高级综合系统设计中某些关键问题的技术决策.计算 机学报,1997,20(6):501～509
+(Liu Ming-ye, Zhang Dong-xiao, Xu Qing-ping. Technical decision on several ke y problems in VHDL high level synthesis system. Chinese Journal of Computers, 19 97,20(6):501～509)
+　[4]　Vemuri R. A transformational approach to register transfer level desig n-space exploration ［Ph.D. Thesis］. Case Western Reserve University, 1989
+　[5]　许庆平.高级综合结果正确性验证技术研究与实现［博士学位论文］.北京理工大 学,1997
+(Xu Qing-ping. Research and realization on correctness verification to high lev el synthesis result ［Ph.D. Thesis］. Beijing Institute of Technology, 1997)
+本文1997-12-01收到原稿,1998-05-19收到修改稿

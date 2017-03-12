@@ -1,0 +1,105 @@
+软件学报
+JOURNAL OF SOFTWARE 
+1999年 第10卷 第5期 Vol.10 No.5 1999
+
+
+
+面向软件黑箱测试的仿真环境嵌入故障研究
+屠海滢　吴芳美
+摘要　故障注入作为软件测试的一种有效技术已进入实用阶段, 然而如何在软件黑箱测试中运用故障注入技术目前尚少有文献加以论述.文章提出了软件黑箱测试中故障外围注入的思想,通过嵌入故障的仿真环境,实现对被测软件输入级的故障引入,改变软件的运行状态,诱发内在的失效模式,导致错误的输出,从而达到预期的测试目的.这一方法已应用于铁路车站信号控制系统软件的测试中,并取得了良好的效果.
+关键词　软件测试,黑箱,环境仿真,故障注入,铁路信号.
+中图法分类号　TP311
+　　Embedding Fault in Simulation Environment for Software Black-box Testing 
+TU Hai-ying WU Fang-mei
+Department of Telecommunication Shanghai Tiedao University Sha nghai 200331
+Abstract　 Fault-injection, as a perfected technique for software testing, now has been put into practical use. However, only a very few of the documents have expounded on how to use fault-injection technique in soft ware black-box testing. A new approach to the difficulty, i.e., peripherally in jecting faults in the software is presented in this paper. By means of a fault- imbedded environmental simulation, faults are injected in the input level of the software under test. These faults may induce inherent failure mode, thus bringi ng about unexpected output--consequently, the anticipated goal of the test is attained. This method has been used for testing railway signaling control system software and desirable results have been achieved.
+Key words　Software testing, black-box, environmen tal simulation, fault injection, railway signaling.
+  故障注入技术作为一种测试技术是指,按照特定的故障模型,用人为的、有意识的方式产生故 障,并施加于待测系统中,用以加速该系统的错误和失效的发生,同时观测并反馈系统对所注 入故障的响应信息,通过分析,对系统进行验证和评价的过程.
+　　现有的用于评价系统可信性的故障注入方法,如FERRARI［1］是将软件故障直接施加 于被测系统;DEPEND［2］是建立原系统的仿真模型,通过对模型注入故障来评估 原系统的可信性,另外还有一些基于软件、基于硬件或软硬件结合的故障注入方法,其前提都 是被测系统必须对测试者开放,也就是一个白箱.本文的中心思想是将故障注入技术应用于软 件的黑箱测试,即将故障注入到被测软件的仿真运行环境中,通过嵌入故障的仿真环境,模拟 被测软件运行环境中的各种异常情况,产生非正常的输入,诱发软件缺陷的暴露,导致错误的 输出,从而达到测试的目的.
+　　由于当今世界硬件技术的迅猛发展以及系统容错技术的广泛应用,人们并不怀疑由硬件故障 而导致的软件失效可以是微乎其微的.相关的文献表明,80%～95%的实时软件的失效在容错系 统中将被屏蔽［3］.相对而言,软件开发过程中引入的软件缺陷则不可避免.这一方面 是由于软件需求规格说明不够详尽或者说明有误造成的,另一方面是由开发人员考虑不周而 导致的.虽然最终提交的软件往往能够很好地满足正常功能的要求,然而在非正常运行条件下 ,就有可能出现错误的结果.对于有着高可靠性、高安全需求的软件,这样的缺陷甚至有可能 导致严重的后果.鉴于上述原因,本文论述的测试将针对软件的功能缺陷进行,即验证软件在 防范外界故障方面的能力.我们称这种测试为功能负荷测试,或称为功能鲁棒性测试.
+1　 基于对比技术的软件黑箱测试方案
+　　在某些应用领域,由开发者和用户以外的第3方来进行软件的可靠性、安全性认证是必要而且 可行的.涉及软件的保密性及专利保护等因素,此时的被测软件对测试者而言只能是一个“黑 箱”.
+　　图1所示为一种基于对比技术的软件黑箱测试方案.测试方根据软件的需求规格说明提供对比 软件,即确定的输入、输出关系.测试案例同时向对比软件和被测目标软件输入测试信息,由 统计评估模块负责两路输出的判别和评估工作.同为正常的输入应得出一致的结果,而非正常 的输入即注入一定的故障后,则可能导致不同的结果.由于存在着测试方对自身对比软件的透 明性,注入的故障相对于对比软件是已知量,以此来测试目标软件对故障的防范能力.
+
+2　测试用仿真环境
+　　测试软件,尤其是具有安全性需求的软件往往需要环境仿真器来模拟软件的执行环境［4 ］.用于测试的仿真环境应与被测软件运行的真实环境在功能特性、时间特性及故障特性 上尽可能地接近.在黑箱测试中,仿真环境是作为状态变量集S输入的.根据面向对象的设 计思想而构造的离散事件仿真环境具有良好的适应性和灵活性.面向对象的仿真环境一般有 如下几个主要设计步骤:
+　　（a) 确定有关的环境对象;
+　　(b) 划分对象的类和子类;
+　　(c) 建立类和子类的仿真模型;
+　　(d) 根据模型描述各类和子类的活动行为,即状态转移事件;
+　　(e) 仿真调度.
+　　假设环境中与测试相关的不可细化的类或子类有m种,共含n个对象,则该仿真环境将 包括m个类封装,状态变量集S＝S1×S2×...×Si×...×Sn,S i表示对象i的状态.设Si有Hi种取值,即对象i有Hi种可能的状态（ 实际上与对象i同属一类的对象都有Hi种可能的状态）,则m,n或者Hi (1≤i≤n )的值越大,仿真环境就越复杂,测试的工作量也将随之上升.
+3　嵌入故障的环境仿真
+　　在一般情况下,测试者和开发者在对待目标软件的态度上有着很大的区别.软件测试的目的是 为了尽量暴露软件内在的缺陷,以便纠正错误,去除隐患.因而,让目标软件运行在人为的恶劣 环境下就成了测试的一种必要手段.由于仿真在时间上的易于把握和操作中的无损性,嵌入故 障的环境仿真达到了在实际环境中进行调试时所难以实现的测试效果.它不仅能够跟踪软件 对环境中持久故障的反应,而且可以发现软件在环境的瞬间故障下出现的问题.根据需要,各 种在实际运行中具有破坏性的测试项目在仿真环境中也可方便地进行.
+　　在向仿真环境中嵌入故障时,关键并不在于故障的起因,而在于区分各种故障原因在某类对象 上表现的故障行为是否相同.即以不同的故障行为来建立类的故障模型,而并非所有现实中的 故障形式都需要仿真.基于这一思想进行的设计可大大简化仿真模型的复杂程度.一种可行的 方案是:首先分析软件需求规格说明中所描述的各功能项,列出对应目标软件的每一功能项可 能的失效模式及其与仿真环境之间的密切联系.这种分析在工程应用软件中很大程度地依赖 于专家经验.因而建立专家知识库在特定领域中至关重要,这也是影响测试效率的关键之所在 .其次,分析造成软件失效的环境故障形式,归纳故障行为.最后,综合环境的正常行为和故障 行为构造模型,设计仿真活动.
+　　为使仿真活动易于实现,可以将某类对象的正常状态和故障状态表示在一个模型中,建立一体 化嵌入故障的仿真环境类模型.因此,嵌入故障的环境仿真将在前述设计步骤中的(c),(d) 两步作适当改动,即:
+　　(c) 建立类和子类的嵌入故障的仿真模型,此时的状态转移轨迹包括正常态之间、正 常态向故障态、故障态向正常态及故障态之间的状态转移,图2为典型的抽象后的仿真类模型 .其中:正常状态的集合N={Nj｜1≤j≤r};故障潜伏状态集L={Lj｜ 1≤j≤s};故障状态的集合F={Fj｜1≤j≤t};且r+s+t=H(H为该类对象的可能状态数). +f表示注入了某种故障;-f表示故障消除;+k表示接受某一正常的动作命令.
+
+　　(d) 根据模型描述各类和子类的含故障的活动行为.在采取离散事件时控排序法的 环境仿真中,类的嵌入故障的仿真活动可以形式化地加以描述,如图3所示.
+　　　　　　∷fault-embedded-action-process(list,order)
+　　　　　　{ judge the object location is right;
+　　　　　　　　switch(order)
+　　　　　　　　　　　{　case k:insert new events into the list 
+　　　　　　　　　　　　　　〈object,time,original state Ni,following state Nj 〉;
+　　　　　　　　　　　　　　〈object,time,original state Li,following state Lj 〉;
+　　　　　　　　　　　　　　〈object,time,original state Li,following state Fj 〉;
+　　　　　　　　　　　　　　〈object,time,original state Fi,following state Fj 〉;
+　　　　　　　　　　　　　　〈object,time,original state Fi,following state Lj〉; 
+　　　　　　　　　case　f: insert two kinds of new events into the list (+f or -f)
+　　　　　　　　　　　　　　〈object,time,original state Ni,following state Fj 〉;
+　　　　　　　　　　　　　　〈object,time,original state Ni,following state Lj 〉;
+　　　　　　　　　　　　　　〈object,time,original state Li,following state Fj 〉;
+　　　　　　　　　　　　　　〈object,time,original state Fi,following state Fj 〉;
+　　　　　　　　　　　　〈object,time+duration,original state Fi,following state Nj〉;
+　　　　　　　　　　　　〈object,time+duration,original state Li,following stat e Nj〉;
+　　　　　　　　　　　}
+　　　　　　}
+图3　 嵌入故障仿真活动的形式化描述
+　　图中的〈object,time,original state,following state〉表示仿真事件,4个 参数分别代表仿真对象、事件发生时刻、对象的原始状态和对象的后续状态.其中第1组状态 转移事件发生在接收正常命令(order-k)时,第2组状态转移事件则由故障命令(orde r-f)引起.在实现过程中,注入故障的命令与正常的动作命令在命令格式上有所区别.一 般地,正常动作命令的记录格式为〈对象object,起始时间time,命令k〉,而故障命令的记录 格式为〈对象object,起始时间time,故障持续时间duration,故障类型f〉.因而我们用 两个函数来实现上述形式化描述的仿真活动,分别用于接收正常动作命令后的仿真活动和接 收注入故障命令后的仿真活动.
+　　由于仿真活动函数中把接收某一命令后所有可能的状态转移事件都插入到了事件时序表list 中,造成了表中可能存在大量同时事件,并且对于同一对象的同时事件,其中只能有一个是有 效事件.这样必然有损仿真的效率.在同时事件问题严重到将危及仿真的有效性时,已有研究 工作［5］就会对事件表作特殊处理,改善这一现象.
+4　故障注入测试
+　　众所周知,关于软件可信性的定量评估至今尚缺乏令人满意的可行方案.这里阐述的针对软件 功能鲁棒性的测试同样也很难给出定量的指标.出于对实际的考虑,不妨根据测试结果来对目 标软件进行分级评估.根据不同的应用情况,视某一级别以上的软件为合格（指符合用户需求 ）软件,该级别以下的软件则需在限制条件下使用.对于那些缺陷过多的软件,必须加以修改 ,并进行回归测试.
+　　用于这种测试的测试案例除了常规操作外,还有一定量的可能导致较高故障率的操作,即在测 试过程中使用故障测试案例来加速目标软件的出错概率.测试案例大致可分为3类:
+　　(a) 常规测试案例(仅含正常动作命令k);
+　　(b) 单故障测试案例(含1种故障命令f);
+　　(c) 组合故障测试案例(含多种故障命令).
+　　常规测试即无故障条件下的测试用于验证软件在基本功能上的完备性.根据需求说明及专家 经验抽象出来的故障负荷测试旨在考验被测软件在外界环境异常时的安全性.根据注入的是 单故障或是多故障、此类故障在现实中的出现频度和故障导致的失效后果的危害程度,可以 将测试案例划分为不同等级的案例集.案例集与被测软件输出之间的映射关系如图4所示.其 中A为常规测试案例集;B为需求规格说明中要求防护的单故障案例或组合故障案例;C为可 能导致危险后果的单故障案例或组合故障案例;D为罕见的、但很可能导致严重后果的单故障 案例或组合故障案例.
+
+　　显然,前两类输出是用户所期望的,因而可以得出以下结论:
+　　结论①: 目标软件至少应满足a2∪b2=;
+　　结论②: 满足a2∪b2∪c2=的软件具有较强的抗干扰性能; 
+　　结论③: 满足a2∪b2∪c2∪d2=的软件堪称优秀软件.
+　　常规测试必须保证软件的每一基本功能都得到了充分的验证.对于规模较 小的系统,推荐使用完备测试,即将每一功能项的每组可能存在的输入都作为案例,这样将在 测试功能的同时,附加测试了目标系统在数据上是否有误.然而,当被测软件规模较大时,可能 造成输入量的组合爆炸,而使测试在时间上不再可行.此时只能抽取每个功能项的典型输入或 采取随机抽取方式进行常规测试.
+　　在进行单故障和组合故障测试时,故障的注入方式可以是预先设计,也可以是随机模式.单故 障比较简单,对仿真环境中某一对象设置某种故障后,只需测试该对象的这一故障可能影响的 功能.组合故障则是经过精心设计,通过多次注入单故障来实现的.这些单故障可能是同一对 象的不同故障类型,也可能是发生在不同对象上但有故障相关性的故障.总之,这些组合故障 应是在实际的系统运行环境中可能发生的,比较容易引发被测软件内在缺陷的事件.可以想像 ,单故障的完备测试不难实现,而组合故障的测试则不可能是完备的,因而也要在经过等价类 划分后进行随机测试或典型测试.
+　　图5所示的是单个故障的注入周期,组合故障是多次地按设定的时序调用这样的周期来注入的 .整体的自动测试流程如图6所示,图中的组合故障测试以双故障为例.在测试中,测试计划根 据划分的案例集按由低至高的顺序进行.此外,一个好的测试工具必须具备相当的灵活性.尤 其在故障注入测试中,由于穷尽的故障注入是不可能的,因而在自动测试之外,还应提供一个 友好的人工测试界面,可以方便地进行各种故障设置和功能项测试.
+
+
+　　在测试时还需关心的一个重要因素是软件测试的资源开支,包括测试案例的设计、机时、人 员费用等.应综合考虑被测软件的功能需求和测试开支,选择最佳的软件释放时间,即停止测 试,由用户接管系统或由开发者对不合格软件加以修改.
+5　应用实例和结论
+　　本文阐述的概念和思想已应用于铁路车站信号控制系统的软件测试中.由于铁路车站信号控 制系统是一种具有高度安全需求的实时控制系统,其核心软件也要求是安全软件,即具有故障 导向安全的能力.
+　　根据黑箱测试思想构造的测试平台如图7所示.
+
+　　车站信号控制系统的仿真环境包括仿真操纵台（位于平台上位机,仿车站值班员的操作）和 仿真现场（位于平台下位机,仿车站信号设备）.因而嵌入故障后的仿真环境将对被测软件产 生4类输入变量:(a) 值班员的正常操作;(b) 值班员的非正常操作;(c) 正常的现场设备状态 ;(d) 非正常的现场设备状态.
+　　测试案例便是根据需求说明及专家经验,由这4类输入变量组合而成.对比软件及统计评估模 块均位于平台上位机,结合被测软件的输出信息进行结果分析和统计评估.
+　　此平台已对多套铁路车站信号控制系统软件进行了系统的测试,并取得了良好的效果.嵌入故 障的仿真环境的运用暴露了一些从未发现过的软件缺陷.如果实际运用中出现了仿真环境所 模拟的故障,有些缺陷便会造成严重的安全性后果.表1为测试平台对两套铁路车站信号控制 系统进行软件测试所得结果的对照.被测软件1在常规测试中发现1例非安全性缺陷,经分析属 于设计思想有误;在罕见故障案例测试中发现安全性缺陷.被测软件2正常通过常规测试,但在 其他3类案例中均存在安全或非安全的缺陷.
+表1　测试结果对照表
+
+案例等级被测软件1被测软件2
+A有缺陷正常
+B正常有缺陷
+C正常有缺陷有缺陷有缺陷
+
+　　这项研究在案例积累、测试加速和仿真环境的并行性方面还有许多值得探讨的问题,将在今 后的工作中不断地深入和完善.
+本文研究得到铁道部发展计划项目基金资助.
+作者屠海滢,女,1972年生,博士生,主要研究领域为计算机仿真,软件测试技术.
+   吴芳美,女,1938年生,教授,博士生导师,主要研究领域为人工智能,安全软件测试评估.
+本文通讯联系人:屠海滢,上海 200331,上海铁道大学电信工程系
+作者单位:(上海铁道大学电信工程系 上海 200331)
+　　　　　E-mail: haiying@shtdu.edu.cn
+参考文献
+　[1]　Kanawati G A, Kanawati N A. FERRARI: a flexible software-based fau lt and error injection system. IEEE Transactions on Computer, 1995,44(2):248～25 9
+　[2]　Goswami K K, Lyer R K. DEPEND: a simulation-based environment for system l evel dependability analysis. IEEE Transactions on Computer, 1997,46(1):60～74
+　[3]　Tang Dong, Hecht H. An approach to measuring and assessing dependabi lity for critical software systems. In: Stark G ed. Proceedings of the 8th Inter national Symposium on Software Reliability Engineering. Los Alamitos, CA: IEEE C omputer Society Press, 1997. 192～202
+　[4]　Zhu Hong. Specification and evaluation of software environment simul ation for testing safety critical software. In: Min Ying-hua, Tang Dong eds. Pr oceedings of the International Workshop on Computer-aided, Design, Test, and Ev aluation for Dependability. Beijing: International Academic Publishers, 1996. 19 3～198
+　[5]　Steinman J S. Interactive SPEEDES. In: Rutan A H ed. Proceedings of the 24th Annual Simulation Symposium. Los Alamitos, CA: IEEE Computer Society Pr ess, 1991. 149～157
+本文1998-04-13收到原稿,1998-06-22收到修改稿

@@ -1,0 +1,132 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.3　P.363-367
+
+
+
+树木的整体性运动及树内部风场的研究
+冯金辉　严涛　陈彦云　吴恩华
+摘要　树木的结构和物理性质的复杂性使得人们很难对其进行动态模拟.该文提出一个深度优先的数值积分遍历算法,把树作为一个整体考虑,求得整棵树协调一致的位移,较好地表现了树的整体动感.此算法作为一个整体性算法也可推广用于其他树种的模拟.另外,文章还分析了枝条对风的遮挡关系,包括过遮挡、孔洞、狭长缝隙及透射.基于Z-buffer算法思想对这些遮挡关系进行了处理,取得了令人满意的效果.
+关键词　基于物理的,计算机动画,树,模拟,风场,深度优先,数值积分.
+中图法分类号　TP391
+Research on Whole Tree's Movement and Tree's Inner Wind Field
+FENG Jin-hui　YAN Tao　CHEN Yan-yun　WU En-hua
+(Laboratory of Computer Science Institute of Software The Chinese Academy of Sciences Beijing　100080)
+WU En-hua
+(Faculty of Science and Technology University of Macao　Macao)
+Abstract　The authors simulated the movement of willow's end branch blown by wind.Clearly this is not natural and real.A tree moves as a whole.Now an algorithm named depth-first numerical integral tree traversal algorithm is given.The algorithm can generate the harmonic and consistent movement of a tree,thus animates the dynamic pose of tree very well.It can also be used to animate other kinds of trees.Moreover,the authors analyzed the obstruction effect of branches and leaves reacting on wind,which including no obstruction,hole,aperture and penetration.Based on the principle of Z-buffer,these effects are processed,and the results are satisfied.
+Key words　Physically based,computer animation,tree,simulation,wind field,depth-first,numerical integral.
+　　计算机动画根据其所依据的理论和所采用的技术可分为关键帧动画、变形体动画、过程动画和基于物理的动画.计算机动画是用计算机来产生动画序列的,要产生真实感较强的动画,基于必要的物理原理是不可避免的.因为这些物体运动的规律被其所对应的物理原理所反映,只有采用这些原理才有可能产生逼真的动画.因此,基于物理的计算机动画技术成了目前研究的热点.
+　　Terzopoulos 等人［1,2］基于简化的弹性理论构造了固体变形摸型.Barzel和Bar［3］ 利用反动力学（inverse dynamics）原理获得约束力,这种力使物体沿着指定的约束路线运动.Carignan,Yang和Nadia Thalmann［4］把二维的多边形面片缝在一起形成衣服并穿在玛丽莲.梦露身上,首次模拟了服装的运动.徐迎庆等人［5］研究了波浪.万华根等人［6］研究了喷泉.李江等人［7］模拟了相对论效应.詹永照等人［8］也就表情问题进行了研究.
+　　Wejchert和Haumann［9］模拟了树叶在风中的飘舞.他们通过4种简单流体单元均匀流（uniform）、汇（sink）、源（source）以及涡（vortex）来设计和控制风的流动.风对树叶在法向施加压力,在切向施加粘性力,树叶的运动由经典牛顿理论得到.Mikio Shinya 等人［10］构造了一个随机风场(stochastic),基于模态分析(modal analysis)方法模拟了树在风中的摇晃.应当指出,上述风场的构造以及树叶和树的运动模拟是两个独立的过程,均没有考虑到风与树的相互作用,这与实际情况是不相符的.事实上,树与风之间是相互作用、相互影响的.对于中等以下风力,树中间及后部的风力将由于树的遮挡而明显减弱.本文将给出一个算法来处理这一现象.当然,对于极端情形,这种效应也可以忽略.如Hiromi［11］在电影“龙卷风(twister)”中利用湍流原理（turbulence）构造了龙卷风场.风力是如此之大以至于把树连根拔起,天昏地暗飞沙走石,树对风的影响当然可以忽略.
+　　文献［12］对柳树的末端枝条进行了动态模拟.而整棵树是作为一个整体在运动的,因此有必要对算法进行改进.现对其中的算法作一简要叙述,随后给出新算法.
+1 深度优先的数值积分遍历算法
+1.1　单根树枝的运动方程
+　　为方便实施数值积分，我们把树枝分为一系列小段,可认为每段内是直的,具有同样的物理性质（弹性系数、密度、半径等）,如图1所示.
+
+Fig.1　A branch segment
+图1　一段树枝示意图
+　　一段树枝的轮廓由一组位置函数和正交坐标系来定义:｛r(s),ei(s)｝.它们给出了该段树枝的位置和方向,其中s:s［0,L］,L是该段长度.单位向量e1(s)定义弧长切线方向,单位向量e2(s)和e3(s)定义横截面方向.假定树枝不可伸长,则弯曲和扭转变形就由向量e1(s),e2(s)和e3(s)的变化来度量.可以把变形后的局部标架｛ej｝表示为
+｛e1,e2,e3｝T=［R］｛e01,e02,e03｝T 
+(1)
+其中R是用欧拉角表示的转动矩阵.经必要的演算平衡方程变为3个欧拉角关于弧长的二阶常微分方程组：
+
+(2)
+同时,任一点在局部坐标下的位移(x,y,z)满足：
+
+(3)
+　　式（2）和式（3）分别是二阶和一阶常微分方程,可直接进行数值积分.这样就求得了当前段的变形,同时也得到了该段的尾部参数.把所得参数作为下一段的初始参数即可继续进行积分,直到整条树枝得到解决（式中各符号的含义参见文献［12］）.
+1.2　深度优先的数值积分遍历算法
+　　上述平衡方程是关于一根树枝的,但实际情形是将整棵树作为一个整体在运动.因此必须改进该算法，以求得整棵树的运动.我们看到，在求解末端枝条时是把其分为一系列小段分别进行求解,把前段末端参数作为下一段起始参数再进行数值积分.这样，在两段参数的传递过程中如果恰好此处有一分支,就把该分支的起始参数同时考虑进来,只要在该节点满足平衡条件,不同分支之间的运动应当是协调的,并且是一致的(可由树的造型来保证分支落在节点上).具体情况如下(如图2所示):
+
+Fig.2　Parameter transferring between branches
+图2　分支间的参数传递
+　　对某一树枝T,假定其在第i段与第i+1段连接处有一分支C，则T的第i段起始参数为，末端参数为，第i+1段起始参数为.T分支C的起始参数为（其中虚线箭头表示力P,实线箭头表示力矩M）.这样,要使分支点处于平衡状态,需满足：
+
+(4)
+　　很容易得到第i+1段的起始参数为
+
+(5)
+　　这样,第i+1段获得起始参数后即可继续进行数值积分直至树枝的末端.于是得到整条树枝的运动.对于分支的起始参数,积分完i段后暂停积分,保存参数转而去积分其分支,获得结果后把参数传给第i+1段继续积分.由于树木是天然的树形结构,于是一个深度优先的数值积分遍历即可求得整棵树的运动.这就是深度优先的数值积分遍历算法.具体实施时从树的主干开始进行深度优先遍历,遇到可动枝条即对该枝条及其所有分支实施深度优先的数值积分,如此继续,直至所有枝条都获得数值积分遍历为止.
+2 参数选择
+　　工程上对于树木这种材料研究的很少,尤其是对树的小枝更是无人研究.我们在对整棵树进行动态模拟时其物理参数（杨氏模量、密度、半径）将无从查询,只能从试验中进行测试.因为我们追求的是视觉效果,没必要达到物理上的真实.这样，我们就可先对参数进行假定,得到结果后视效果如何进行必要的调整,最终得到所要求的结果.经过反复试验,我们所使用的参数可见表1.
+Table 1 Willow's physical parameters
+表1　柳树的物理参数
+
+　Yong's module①Density(relative value)②Radius(relative value)③
+End branch④3.0e081.00.001
+One level upper branch⑤1.0e091.50.0015
+One level more upper branch⑥3.6e092.00.005
+One level more upper branch10.8e103.00.00776
+
+①杨氏模量,②密度（相对值）,③半径（相对值）,④末端枝条,⑤上一级枝条,⑥再上一级枝条.
+3 树枝叶间的遮挡关系
+　　我们知道,一棵枝叶茂密的树对风有很强的遮挡作用.这种遮挡作用对树的内部、后部都是很明显的.我们经常可以观察到，树的迎风枝条摆动幅度很大，而背风枝条摆动幅度很小甚至静止不动,因此，对树进行动态模拟不能忽略这一现象.根据观察分析,我们可以把它抽象归结为如下几类：(1) 无遮挡；(2) 绕圆柱体流动；(3) 孔洞；(4) 狭长缝隙；(5) 透射.
+3.1　无遮挡
+　　风在流动过程中没有遇到任何遮挡(或可忽略),风力无衰减(文献［12～14］都采用这种模型).
+3.2　绕圆柱体流动
+　　假设均匀风(势函数为Q)从左至右流经一半径为a的圆柱,那么在圆柱后面风力将减弱,对应一点(z=x+iy为复数)的势函数为
+
+(6)
+
+
+Fig.3 Wind flows around cylinder
+图3　风绕过圆柱体
+　　对应于x轴,y轴方向的速度为V=｛u,v｝=-grad f,经过简单计算可得，在距圆心5～7倍半径以外的区域，风力将恢复到90％以上,可以认为风力得到恢复.
+3.3　孔 洞
+　　当风流经树枝和树叶组成的孔洞时(如图4所示),孔洞后的流场可以认为是一个源流场,风呈放射状往后流走,流动的复势为
+
+(7)
+
+Fig.4　Hole
+图4　孔洞
+任一点的径向速度,同时，周向分量为0.
+3.4　狭长缝隙
+　　有时在树枝和树叶中间会有一条狭长的缝隙存在,风穿过其后将形成一个线源场.图5是一个长为a的线源场,其流函数为
+φ=-Q(R-R1)
+(8)
+
+Fig.5　Narrow aperture
+图5　狭长缝隙
+其中速度
+3.5　透 射
+　　树无论如何茂盛,树枝与树叶也不可能把风完全遮挡住.作为对上述4种情形的补充和修正,如果一个区域被枝叶完全遮挡,认为也会有部分风力穿透而过.能量穿透的比例取为20％.
+　　采用如下策略来求解上述遮挡关系：沿风向从前向后把树所覆盖的空间分成一定数目的有一定厚度的薄片,高为树高,宽为树的最大宽度.把每一薄片划分成矩形网格,采用OpenGL的自动消隐功能及Z-buffer算法思想,采用单一颜色进行平行投影.令平行投影的远近z值与薄片前后面与眼的距离对应，即可确保落入屏幕缓存的是薄片所覆盖的树枝.读出缓存后分析被填充的程度即可确定网格被覆盖的程度,分析相邻网格的覆盖情形即可确定上述几种遮挡关系.如图6所示,图中(a),(b),(c)分别在其后形成点源、绕圆柱及线流场,最终的流场可根据势流叠加原理而获得.
+
+Fig.6　Obstruction relationship among nets
+图6　相邻网格的遮挡关系
+4 结　论
+　　我们在文献［12］的基础上继续深入地对树在风中的摇曳这一现象进行了计算机模拟,提出了一个深度优先的数值积分遍历算法,使树在风的吹动下作为一个整体在运动,符合物理上的连续性和一致性,效果是逼真的.作为一个整体性的算法也可推广至其他树种,比如杨树.同时还深入树的内部,分析了枝条对风的遮挡作用,获得了枝条间的遮挡关系,从而使得我们对树的模拟更加逼真、自然（如图7所示）.
+
+Fig.7　Some key frames in animation
+图7　动画序列中的一些关键帧
+本文研究得到国家自然科学基金(No.69873044)资助.
+冯金辉,1968年生,博士,主要研究领域为计算机动画,虚拟内窥镜.
+严涛,1971年生,博士生,主要研究领域为自然景物的计算机模拟.
+陈彦云,1971年生,博士生主要研究领域为真实感图形绘制技术.
+吴恩华,1947年生,博士,研究员,博士生导师,主要研究领域为计算机图形学,CAD.
+冯金辉(国科学院软件研究所计算机科学开放研究实验室　北京　100080)
+严涛(国科学院软件研究所计算机科学开放研究实验室　北京　100080)
+陈彦云(国科学院软件研究所计算机科学开放研究实验室　北京　100080)
+吴恩华(国科学院软件研究所计算机科学开放研究实验室　北京　100080)
+吴恩华(澳门大学科学技术学院　澳门)
+参考文献
+1，Metaxas D,Terzopoulos D.Dynamic deformation of solid primitives with constraints.Computer Graphics (SIGGRAPH '92),1992,26(2):309～312
+2，Terzopoulos D,Platt J,Barr A.Elastically deformable models.Computer Graphics (SIGGRAPH'87),1987,21(4):205～214
+3，Barzel Ronen,Barr A H.A modeling system based on dynamic constrains.Computer Graphics (SIGGRAPH'88),1988,22(4):179～188
+4，Carignan M,Yang Ying,Magnenat-Thalmann N et al.Dressing animated synthetic actors with complex deformable clothes.Computer Graphics (SIGGRAPH'92),1992,26(2):99～104
+5，Xu Ying-qing,Su Cheng,Li Hua et al.Physically based simulation of water current and waves.Chinese Journal of Computers,1996,19(9)(supplement):153～160
+(徐迎庆,苏成,李华等.基于物理模型的流水及波浪模拟.计算机学报(增刊),1996,19(9):153～160)
+6，Wan Hua-gen,Jin Xiao-gang,Peng Qun-sheng.Physically based real time fountain simulation.Chinese Journal of Computers,1998,21(9):774～779
+(万华根,金小刚,彭群生.基于物理模型的实时喷泉水流运动模拟.计算机学报,1998,21(9):774～779)
+7，Li Jiang,Peng Qun-sheng.A new ray tracing method based on the special theory of relativity.Chinese Journal of Computers,1998,21(9):800～806
+(李江,彭群生.基于狭义相对论的新光线跟踪算法.计算机学报,1998,21(9):800～806)
+8，Zhan Yong-zhao,Song Shun-lin,She Jiang-feng et al.Research and implement on the method of modeling of facial expre-ssion animation.Journal of Software,1998,9(2):81～85
+(詹永照,宋顺林,佘江峰等.脸部表情动画建模方法的研究与实现.软件学报,1998,9(2):81～85)
+9，Wejchert J,Haumann D.Animation aerodynamics.Computer Graphics (SIGGRAPH'91),1991,25(4):19～22
+10，Mikio Shinya.Alain fournire stochastic motion-motion under the influence of wind.EUROGRAPHICS,1992,11(3):119～128
+11，Hiromi Ono.Practical experience in the physical animation and destruction of trees.In: Thalmann D,van de Panne M Eds.Computer Animation and Simulation'97.New York: Springer-Verlag,1997.149～159
+12，Feng Jin-hui,Chen Yan-yun,Yan Tao et al.Going with wind-physically based animation of trees.Chinese Journal of Computers,1998,21(9):769～773
+(冯金辉,陈彦云,严涛等.树在风中的摇曳――基于动力学的计算机动画.计算机学报,1998,21(9):769～773)
+收稿日期：1998-11-30
+修稿日期：1999-04-01

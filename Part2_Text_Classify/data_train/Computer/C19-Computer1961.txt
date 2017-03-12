@@ -1,0 +1,100 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+1999年 第18卷 第1期 Vol.18 No.1 1999
+
+
+
+实现Foxpro与Borland C接口的一种方法
+陈庆　贺红
+　　摘　要：在Foxpro中打开Borland C生成的DLL动态链接库，从而实现调用C语言函数的方法。
+　　关键词：Borland C语言　Foxpro数据库　动态链接库DLL
+　　笔者参与开发的油田生产管理系统的动态图形生成部分的主要功能是：按输入条件查询数据，绘制各种油田生产曲线图形，并在AutoCAD下打印输出。由于许多功能模块都是用C语言编写的，且均已调试通过，因此希望能在Foxpro for Windows程序中直接调用这些模块，以避免重复工作。而Foxpro中的SET LIBRARY命令可以打开外部API程序库，因此把原来的C语言程序稍加改动，在Borland C 4.0 for Windows下重新编译，生成多个DLL动态链接库，在Foxpro下调用这些DLL程序，即可实现二者的接口。下面详细说明这种实现方法。
+1　DLL动态链接库的生成
+　　DLL动态链接库是1个可执行的库模块，其中包含应用程序。生成DLL库的.cpp源程序结构与普通程序不同。首先，它没有main函数，但必须包含LibMain()函数作为DLL的主入口点。当首次装载库时，Windows将调用LibMain,由LibMain负责完成对DLL的初始化工作。其次，它还包含1个出口函数WEP,Windows在从内存中卸出DLL之前调用函数WEP()，以便完成一些清理工作。
+　　下面以Demo.cpp为例说明如何建立1个DLL库。
+/***********demo.cpp*********/
+#include<windows.h>
+#include<stdio.h>
+#include<stdlib.h>
+extern“C"{
+　　int FAR PASCAL example(int);
+}　　　　　　　　　//要在Foxpro中调用的自定义的子函数
+//DLL的入口函数
+int FAR PASCAL LibMain(
+HINSTANCE hInstance,　　//DLL实例句柄
+WORD wDataSeg,//数据段寄存器(DS)的值
+WORD cbHeapSize,//.DEF文件中堆(HEAPsize)的大小
+LPSTR lpCmdLine)//1个远程指针，几乎不使用
+{
+　　if(wHeapSize!＝0)//使用数据堆，数据段可移动
+　　　UnlockData(0);//解锁数据段
+　　return 1;　　　　　　　//初始化成功完成
+　　}
+//WEP是DLL的出口函数
+int FAR PASCAL WEP(int bSystemExit)
+{
+　　retum 1;//WEP一定返回
+　　}
+int FAR PASCAL example(p1)//子函数
+int p1;
+{
+…
+}
+　　模块定义文件demo.def如下所示：
+LIBRARY　　　demo　　　//DLL的文件名
+DESCRIPTION`DLL Application Program'
+EXETYPEWINDOWS
+CODEPRELOAD MOVEABLE DISCARDABLE
+//定义代码段的属性
+DATAPRELOAD MOVEABLE SINGLE
+//定义数据段的属性
+HEAPSIZE4096
+EXPORTSWEP
+example//输出函数声明
+　　把以上文件在Borland C下编译，即可生成demo.dll。
+2　在Foxpro中调用DLL动态链接库
+　　Foxpro中SET LIBRARY可以打开1个外部的API(应用程序接口)库程序。这些外部的API库程序可以是用户编写的外部例程或自定义函数，也可以是系统自身提供的。在Foxpro for DOS下库文件的缺省扩展名是.PLB，在Foxpro for Windows和Visual Foxpro下库文件的缺省扩展名是.FLL。
+　　FOXTOOLS.FLL是Foxpro系统提供的库文件，位于Foxpro主目录下。FOXTOOLS.FLL中有2个函数FegFn()和CallFn()，通过这2个函数可以调用任何Roxpro支持的数据类型的Windows DLL中的函数。
+　　RegFn()注册1个Windows DLL函数，CallFn()调用该函数。它们的语法如下：
+　　FnHandle=RegFn(FunctionName,ArgTypes,ReturnType,DLLName)
+　　FnHandle是被注册函数的句柄，用来识别该函数，如注册失败，RegFn()返回-1并提示错误信息。FunctionName是要注册的函数名称，ArgTypes是1个表示该函数参数数据类型的串，ReturnType是函数返回值的数据类型。受Foxpro数据类型的限制，只能是以下类型：
+　　①I：整型；②C：字符型；③F：浮点型；④D：双精度浮点型；⑤L：长整型。
+　　DLLName是DLL库的名称，同时可包含DLL程序所在目录的完整路径。
+　　RetuVal=CallFn(FnHandle,arg1,arg2，…)
+　　FnHandle是调用RegFn()获得的句柄；arg1,arg2…是在RegFn()中由Argtypes列出的参数的值。
+　　调用demo.dll中函数example()的Foxpro程序demo.prg如下：
+****　　demo.prg　　****
+set talk off
+clear all
+DEFINE WINDOW mainwin;
+　　　　AT 0.000,0.000;
+　　　　SIZE 30,100;
+　　　　FONT “MS Sans Serif",10;
+　　　　FLOAT;
+　　　　NOCLOSE;
+　　　　MINIMIZE;
+　　　SYSTEM
+ACTIVATE WINDOW mainwin
+　　　@ 2，35 say “示例” font “宋体”，14
+　　　@10,25 GET A1;
+　　　PICTURE “@*HN 调用C语言函数"；
+　　　SIZE 2,20;
+　　　DEFAULT 1;
+　　　FONT “MS Sans Serif",12;
+　　　STYLE “B";
+　　　VALID cFunc()
+　　　READ CYCLE
+RELEASE WINDOW mainwin
+FUNCTION cFunc()
+　　set library to sys(2004)+“foxtools.fll"
+　　　&&装入foxtools.fll库文件，sys(2004)是返回Foxpro主目
+　　　&&录的路径
+　　set defa to c:＼
+　　　&&设置demo.dll所在目录为缺省路径
+　　fh=RegFn(“example",“I",“ ”,“demo.dll")
+　　=CallFn(fh,“10")
+return
+3　结束语
+　　通过DLL动态链接库，实现Foxpro应用程序与C++的接口，使二者有机地结合起来，不失为1种简单、高效、通用的方法。以此方法为基础可以编写Visual Foxpro和Visual C++等应用程序的接口。
+作者单位：大庆油田热电厂科研所计算站(163000)
+(收稿日期：1998-07-17)

@@ -1,0 +1,54 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第10期 Vol.35 No.10 1999
+
+
+
+我国优秀女子三级跳远运动员二、三跳起跳技术运动学特征
+张殿亮　吉艳霞
+摘要：对8名国内优秀女子三级跳远运动员二、三跳起跳技术影片解析结果表明，第二跳起跳时所获得的垂直速度小，腾起角小，这与起跳蹬伸时机晚和蹬伸不充分有关，同时与摆动腿大小腿折叠不紧、摆动速度慢和摆动幅度小有关。第三跳起跳过程中水平速度损失较多，但也获得了较大的垂直速度，这与起跳时着地角小和起跳角大及着地过程中脚扒地速度慢有关，同时与摆动腿摆动速度慢和摆动幅度小有关。8名运动员第二跳距离百分比偏小。
+关键词：三级跳远∥女子∥中国∥优秀运动员∥起跳∥技术分析∥力学分析
+The Kinematic Character of the Step and Jump's Takeoff Technology About Chinese Elite Female Triple Jumpers
+Zhang Dianliang, Ji Yanxia
+Abstract: The photo analysis on 8 Chinese elite female triple jumpers' takeoff technology of the step and jump shows that takeoff action of the step gets a slow vertical velocity and small angle of velocity of gravity center. The main reason for this is that the pushing and stretching leg are late and insufficient, the angle of knee joint is big, the velocity of swinging is slow, the range of swinging is small. During the jump, much of the horizontal velocity is lost, but obtain higher vertical velocity. This is related to the small landing angle, big takeoff angle, slow pawing movement velocity, slow swinging velocity and small range of swinging leg. There is a low distance percentage in the step of these 8 jumpers.
+Key words:triple jump∥woman∥China∥elite athlete∥takeoff∥technical analysis∥mechanical analysis
+1　前言
+　　自1990年国际田联将中国运动员李惠荣创造的14.54 m世界最好成绩设立为第1个女子三级跳远世界纪录后，我国女子三级跳远成绩提高缓慢。目前我国女子三级跳远纪录为14.66 m，与最初我国运动员创造的世界纪录相比仅提高了0.12 m。
+　　三级跳远是一个技术比较复杂，要求运动员身体素质较高的田径项目。运动员经过快速助跑后连续完成3次起跳，尤其是第二跳和第三跳都是在人体腾跃一定高度和远度的情况下落地再起跳，这无疑加大了支撑腿着地过程中的负荷，同时也加大了起跳难度。要完成好二、三跳起跳动作，运动员必须具备良好的腿部力量与合理的动作结构。由于女运动员身体结构和身体素质等方面与男运动员相比有一定差异，女运动员要很好地完成二、三跳起跳动作，难度更大。另外，由于二、三跳起跳动作质量高低，对取得理想的三级跳远成绩起着重要作用，因此，研究我国优秀女子三级跳远运动员二、三跳起跳技术，可为目前我国优秀女子三级跳远运动员技术诊断及技术训练提供参考。
+2　研究对象与方法
+2.1　研究对象
+　　1998年6月参加全国田径大奖赛总决赛中的5名运动员和1998年9月亚运会选拔赛中的3名运动员。这8名运动员都是通过各站比赛选拔出来的成绩比较优秀的运动员，她们代表了目前我国优秀女子三级跳远运动员的整体水平。
+2.2　研究方法
+　　使用CHUN-FENG牌高速摄影机，扫描拍摄运动员比赛中的二、三级起跳动作。机高1.30 m，距运动平面30 m，摄影机置于二、三跳之间，主光轴距起跳板前沿6.86 m，经过拍摄数字秒表进行校正，确定拍摄稳定频率为96格／s。用国产“JTK-1”型影片解析系统对影片进行逐格解析，用数字滤波法对原始数据进行平滑处理，并对各种数据进行常规数理统计处理。
+表 1　8名女运动员各跳起跳离地瞬间水平速度及垂直速度一览表
+
+　单足跳跨步跳跳跃
+水平
+速度垂直
+速度水平
+速度垂直
+速度水平
+速度垂直
+速度
+任瑞萍8.262.167.731.375.872.61
+伍岭梅7.852.326.731.655.972.45
+李嘉慧8.062.216.701.635.782.46
+彭凤梅7.472.006.801.215.903.41
+李　景8.022.207.201.415.752.20
+严雪勤8.632.128.021.816.041.80
+董秋燕8.362.607.241.425.842.24
+唐志敏8.312.397.401.436.431.86
+平均值8.122.257.231.495.952.38
+
+3　结果与分析
+3.1　第二跳起跳动作运动学特征
+3.1.1　起跳离地瞬间身体重心速度变化特征
+　　8名优秀女子三级跳远运动员第二跳起跳离地瞬间身体重心水平速度为7.23 m／s±0.48 m／s，第一跳起跳离地瞬间水平速度为8.12 m／s±0.35 m／s，第二跳离地瞬间相对第一跳离地瞬间水平速度损失10.96 m／s，水平速度损失率稍大于世界优秀女子三级跳远运动员的9.7%。其中，任瑞萍和严雪勤损失较少，分别为6.4%和7.07%，起跳过程中获得1.49 m／s±0.19 m／s的垂直速度，垂直速度获得较少。
+3.1.2　腾起角
+　　8名优秀女子三级跳远运动员第二跳腾起角平均值(表2)与世界优秀男子三级跳远运动员第二跳腾起角(14°±1°)相比，我国优秀女子三级跳远运动员第二跳腾起角偏小，这与第二跳起跳过程中所获得的垂直速度低有直接关系。
+3.1.3　支撑腿动作变化特征
+　　1.着地瞬间支撑脚水平速度变化情况(表2)：第二跳起跳时，脚在准备着地过程中，在积极“扒地”式着地动作作用下，小腿和脚相对于人体向后运动，使脚在着地瞬间相对于地面向前运动的速度减小，从而减小了着地时产生的冲击力对人体的负作用。其中，任瑞萍落地积极，李景、董秋燕和彭凤梅此值较大。
+表 2　8名优秀女子三级跳远运动员第二跳起跳技术运动学参数值一览表
+
+　任瑞萍伍岭梅李嘉慧彭凤梅李　景严雪勤董秋燕唐志敏平均值及标准差
+腾起角(°)10.013.813.610.111.2

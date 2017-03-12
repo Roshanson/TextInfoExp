@@ -1,0 +1,82 @@
+微型机与应用
+WEIXINGJI YU YINGYONG
+2000　Vol.19　No.5　P.45-46
+
+
+
+
+ASP和ADO技术在开放式远程辅助教学中的应用
+张向林王宝智
+摘 要：ASP和ADO技术及其在开放式远程辅助教学ORCAI中的编程实现。
+关键词：动态服务器 动态数据对象 计算机辅助教学
+　　网络技术的发展为信息的传播提供了最为广泛、快捷的手段，将网络技术应用于CAI（计算机辅助教学）是CAI的一个发展方向。ORCAI课件除具有无地域限制、无时间限制、教育对象广泛等与传统远程教育类似的特点外，还具有信息容量大、交互性强、智能化等新特点。我国地域广、人口多、实施高等教育的学校相对比较少，所以在我国发展计算机网络远程教育有重大现实意义。
+　　ORCAI除了具有传统CAI的各种功能，更能充分发挥网络的优势，最主要的特点体现在增强了与用户的实时性、交互性，具体实现了网上注册、网上考试、网上讨论答疑，网上试题库管理以及学生信息管理等新功能。
+　　在实现上述功能时，主要使用了ASP和ADO技术。
+1 ASP技术
+　　ASP（Active Server Page）中文名为动态服务器页，它是Microsoft公司推出的IIS3．0、IIS4．0服务器的1个组件，是新一代的动态网页开发方案。利用它可以开发出动态、交互、高性能的Web服务器端应用，且能较容易的实现复杂的Web扩展功能。ASP还可以调用ActiveX组件来执行任务，例如连接服务器或进行商务计算等。ASP使得生成Web动态页面及构造功能完善的Web数据库应用变得十分简单。不论对Web的开发人员还是维护人员来说，ASP都是1个非常出色的开发方案。
+　　在ASP中包含了5个内置对象，ASP正是通过这5个内置对象来实现服务器与客户机的交互，对它们的名称及功能简述如下：
+　　（1）Request对象：从浏览器获取信息；
+　　（2）Response对象：发送信息到浏览器；
+　　（3）Server对象：对服务器端ActiveX组件提供访问方法、属性的功能；
+　　（4）Session对象：存储用户任务的信息；
+　　（5）Application对象：保留多用户共享1个程序的信息。
+　　利用ASP技术设计的ORCAI系统模型如图1所示。
+
+图1 ORCAI的系统模型
+　　其中ASP负责将客户机上的信息传递给服务器，同时又将反馈信息回送给客户机，实现客户机与服务器之间的数据通信。下面将讲述采用ADO技术实现从客户机通过浏览器操作服务器端数据库资源的功能，而不再需要任何其它CGI程序。
+2 ADO技术
+　　ADO（ActiveX Data Objects）为ActiveX组件中的数据库访问组件，ASP就是通过它实现对数据库的访问。用ADO可以使服务器端的脚本通过ODBC存取和操纵数据库服务器的数据。使用ADO的对象可以建立和管理数据库的连接；从数据库服务器要求和获取数据；执行更新、删除、添加数据、获取ODBC的错误信息等。ADO访问Web数据库的结构如图2所示。
+
+图2 ADO实现与Web数据库的互连
+　　ADO提供以下3个主要对象：
+　　（1）Connection对象：表示建立1个数据源的连接；
+　　（2）Command对象：定义对数据源进行操作的命令；
+　　（3）RecordSet对象：定义由数据库或命令的结果产生的全部记录集。
+3 系统的实现
+　　编写服务器端的ASP程序，实现对各种网络信息的动态处理还涉及到Web数据库编程技术。所以编写ASP程序，首先要建立相应的数据库，然后制作主页文件。下面具体以“网上测试”模块的制作为例，讲述服务器端ASP程序的编写。“网上测试”模块主要功能包括：随机地从服务器端的数据库中抽取一些试题（包括判断题、选择题和填空题）组合成试卷，对注册的学生进行考试；自动对学生的试卷进行判断，并把分数存入数据库；允许学生浏览自己的考试成绩。具体实现步骤如下。
+　　（1）创建数据库
+　　本系统采用的是Access数据库，库文件是exam．mdb。要进行考试，必须有试题，在计算机考试中，试题是存储在数据库中的。为了能够进行计算机自动判卷，试题必须是标准化的，比如填空题、选择题、判断题等。本数据库创建了3个数据表tiankong、xuanze和panduan，分别用来存储填空题、选择题、判断题。同样可以创建学生成绩档案数据表chengji。
+　　（2）页面文件制作
+　　在创建完数据库以后，就要开始制作考试模块的每1幅页面文件。作为1个完整的网络应用程序，除了可以进行考试外，还包括学生查询自己历次考试成绩的功能。
+　　制作考试主页kaoshi．asp。kaoshi．asp是整个考试模块的核心，它负责随机抽取考试题，判卷打分，把学生的得分计入数据库。在利用可视化的主页制作工具FrontPage等添加完该页的窗体元素后，就可以加入ASP代码。
+　　随机抽取1道填空题部分的代码如下：
+　　′建立1个Recordset对象recTimuSet recTimu＝Server．CreateObject（″ADODB．Recordset″） 
+′打开记录集，选择所有的记录，并把记录的数目存在变 ′量m中
+sql＝″select＊from tiankong″
+recTimu．Open sql，″exam″，adOpenKeyset，
+　　　　　　　　　　adLockOptimistic
+　　m＝recTimu．RecordCount
+　　′初始化随机函数发生器
+　　Randomize
+　　′随机选取1个大于等于0而小于m的整数k
+　　k＝Int（Rnd（）＊m）
+　　recTimu．Movefirst
+　　recTimu．Move k
+　　Session（″tiankong″）＝recTimu（″tk＿id″）
+　　tiankong＿main＝recTimu（″tk＿main″）
+　　tiankong＿num＝recTimu（″tk＿num″）
+　　Call InsertStr（tiankong＿main）
+　　′关闭记录集
+　　recTimu．Close
+　　制作考试模块登录（注册）页面register．asp。
+　　当用户注册时，系统从数据库中查询用户档案信息，如果用户已经注册，就允许用户进入考试模块，参加考试和浏览自己以往的考试成绩。
+　　该页面的ASP代码如下：
+　　′打开数据库，选择考号和密码与用户的输入相匹配的 
+　　′记录
+　　Set recXuesheng＝Server．CreateObject（″ADODB．Recordset″）
+　　sql＝″select＊from xuesheng where xsh＿num＝′′′＆
+　　　　　　　　　num ＆′′′and xsh＿passwd＝′′′＆passwd＆″′″
+　　　　　　　　　　　　　　　　　recXuesheng．Open sql，″exam″
+　　′如果记录不为空，则说明用户的注册信息正确，将页面 
+　　　　　　　　　　　　　　　　′重定向到成绩浏览页面
+　　if Not recXuesheng．EOF then
+　　　　Set Session（″user″）＝recXuesheng
+　　　　Response．Redirect″http／／zxl／upgrade／ceshi／frame．asp″
+　　end if
+张向林（装备指挥技术学院101416）
+王宝智（装备指挥技术学院101416）
+参考文献
+［1］王宝智．计算机网络技术及应用．长沙：国防科大出版社，1999
+［2］武苍林．Web数据库的ASP开发方案．计算机工程与科学， 1999；21（1）
+［3］赵昊彤．VBScript制作实例．北京：人民邮电出版社，1999
+收稿日期：1999－11－18

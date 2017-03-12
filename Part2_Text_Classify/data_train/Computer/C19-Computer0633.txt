@@ -1,0 +1,167 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+电子换向电机伺服系统的二自由度
+H∞优化鲁棒控制
+卢子广　
+摘　要　应用Youla二自由度控制器设计参数化公式，对电子换向电机伺服系统导出了基于一自由度控制设计的二自由度H∞控制器结构，该结构用Kwkernaak多项式H∞优化设计方法获希望的跟踪特性，用Zames的模型参考变换近似逆概念对扰动进行最佳抑制，并对负载扰动和参数变化的敏感性进行分析.实验结果表明系统具有良好的跟踪特性和抗扰性.
+关键词　伺服系统，二自由度控制，H∞设计，鲁棒控制.
+H∞ OPTIMAL ROBUST CONTROL OF ELECTRONICALLY
+COMMUTATED MOTOR SERVO SYSTEM USING TWO-
+DEGREES-OF-FREEDOM CONTROLLER DESIGH
+LU ZIGUANG　
+(Department of Electrical Engineering, Guangxi University, Nanning 530004)
+Abstract　By using Youla parametrization of two-degrees-of-freedom controller design, an H∞ optimal robust controller is proposed for electronically commutated motor servo system based on one-degree-of-freedom controller design. The expected tracking performance is obtained by using Kwakernaak′s polynomial H∞ optimal design method. The optimal rejection of disturbances is obtained by using Zames′ model reference transformation approximate inverse concept. The sensitivity to load disturbance and parameters variation are analysed. The experimental results demonstrate its excellent tracking and disturbance suppression performance.
+Key words　Servo system, two-degrees-of-freedom controller, H∞ design, robust control.
+1　引言
+　　一般伺服系统相应于指令输入u和输出反馈y具有两控制自由度(图1)，传统的伺服系统设计取误差信号(u-y)作为控制器唯一输入，这种一自由度的控制设计难以同时满足很高的跟踪特性和抗扰性等闭环特性要求.对u和y分别设计控制器的二自由度控制设计可以分别获得系统的跟踪特性和抗扰性.本文应用Youla的结果［1］，对电子换向电机(ECM)伺服系统的转速控制器进行二自由度H∞优化设计，其跟踪特性应用Kwakernaak多项式方法［2］，而扰动抑制应用Zames的模型参考变换近似逆概念［3］，并对负载扰动和电机参数变化的敏感性进行分析和实验研究.
+
+
+图1　一般系统结构图
+2　二自由度H∞优化鲁棒控制设计方法
+　　Hardy空间H∞为复值函数G构成的Banach空间，G在右半平面Res＞0解析，并满足为实系数的有理函数集合，记RH∞:=H∞∩R.设SISO控制对象传递函数P(s)严格真，P(s)的互质分解为
+P(s)=A-1(s)B(s), A,B∈RH∞.　　　　　　　　　　　　　(1)
+由文献［1］知，存在X，Y∈RH∞使Bezout恒等式
+AX+BY=1　　　　　　　　　　　　　　　　　　　　(2)
+成立，图1的控制器C由
+r=Cuu-Cyy　　　　　　　　　　　　　　　　　　(3)
+描述，即
+C=［Cu,-Cy］ .　　　　　　　　　　　　　　　　　(4)
+为使系统稳定，其敏感函数
+S=(1+CyP)-1　　　　　　　　　　　　　　　　　(5)
+和u到r，u到y的传递函数
+Gur=(1+CyP)-1Cu=SCu ,　　　　　　　　　　　　　　　(6)
+Guy=(1+CyP)-1PCu=PGur ,　　　　　　　　　　　　　　　(7)
+须属于RH∞.由文献［1］定理1知C的参数化表示为
+C=(X-KB)-1［H,-(Y+KA)］,　　　　　　　　　　　　　　(8)
+其中H，K为属于RH∞的任意函数.若P(s)∈RH∞，则其最简单的互质分解为A=1, B=P,由此代入式(2)给出X=1, Y=0，结果得到C的最简单表示
+C=(1-KP)-1［H,-K］,　　　　　　　　　　　　　　　　　(9)
+或者
+Cu=(1-KP)-1H,　　　　　　　　　　　　　　　　　(10)
+Cy=(1-KP)-1K.　　　　　　　　　　　　　　　　　(11)
+将式(11)代入式(5)给出敏感函数
+S=(1-KP).　　　　　　　　　　　　　　　　　(12)
+注意扰动d至输出y的传递函数Gdy=S,由此
+Gdy=(1-KP).　　　　　　　　　　　　　　　　　(13)
+将式(10)，(12)代入式(7)给出
+Guy=PH.　　　　　　　　　　　　　　　　　(14)
+从(13)，(14)表达式知选择适当的K和H可分别得到闭环扰动抑制和指令跟踪特性，这就是伺服系统的二自由度控制设计原理.
+　　方程(10)～(14)形式简单，但对研究系统特性并不方便，原因是已有的系统理论主要是基于一自由度设计的.目前H∞优化鲁棒控制方法也是主要针对一自由度设计的，为此对图1进行一些结构变换，使之和一自由度系统充分联系，图2是一种变换后的二自由度系统结构图，由式(3)和图2可以得到
+
+
+图2　与一自由度结构联系的伺服系统二自由度结构图
+Cu=Ck ,　　　　　　　　　　　　　　　　　(15)
+Cy=Ck+Cz .　　　　　　　　　　　　　　　　　(16)
+结合式(10)，(11)给出
+Ck=(1-KP)-1H ,　　　　　　　　　　　　　　　(17)
+Cz=(1-KP)-1(K-H). 　　　　　　　　　　　　　　　(18)
+令K-H=K1,则K=K1+H, K1∈RH∞,代入式(17)，(18)有
+Ck=(1-PK1-PH)-1H, 　　　　　　　　　　　　　　　(19)
+Cz=(1-PK1-PH)-1K . 　　　　　　　　　　　　　　　(20)
+对H和K1的设计分别进行.首先根据指令跟踪特性设计H，让跟踪特性与Cz无关，即可令Cz=0,并设这时Ck=G，则得到C=G的一自由度系统结构，其跟踪特性由控制器G确定，即
+Guy=(1+PG)-1PG. 　　　　　　　　　　　　　　　(21)
+比较式(14)与(21)得出
+H=(1+PG)-1G.　　　　　　　　　　　　　　　　(22)
+然后保持Guy特性不变，设计参数K1.将式(22)代入式(19)，(20)得到
+Ck=［1-(1+PG)PK1］-1G, 　　　　　　　　　　　　　　　(23)
+Cz=［1-(1+PG)PK1］-1(1+PG)K1.　　　　　　　　　　　　　(24)
+令
+Q=(1+PG)K1, Q∈RH∞，
+则
+K1=(1+PG)-1Q,
+由此代入式(23)，(24)有
+Ck=(1-PQ)-1G ,　　　　　　　　　　　　　　　　　(25)
+Cz=(1-PQ)-1Q .　　　　　　　　　　　　　　　　　(26)
+表达式(26)与文献［3］定义的反馈控制器F相同，Q参数的意义是模型参考变换中系统的近似逆.把式(25)，(26)代入式(16)得出
+Cy=(1-PQ)-1(G+Q),　　　　　　　　　　　　　　　(27)
+此式代入式(5)有
+S=(1+PG)-1(1-PQ) .　　　　　　　　　　　　　　　(28)
+敏感函数S由两部分组成
+S=SkSz ,　　　　　　　　　　　　　　　　　(29)
+Sk=(1+PG)-1,　　　　　　　　　　　　　　　　　(30)
+Sz=(1-PQ) .　　　　　　　　　　　　　　　　　(31)
+对加权敏感函数SV，根据文献［3］加权拟范数具有弱乘性特性
+‖SkSz‖v=‖SkSzV‖H∞≤‖Sk‖v。‖Sz‖H∞ ,　　　　　　　　　　(32)
+可对SkV和Sz分别优化设计来达到SV的优化设计.
+　　由于Gdy=S，令扰动由下式描述
+d(s)=V(s)δ(s) ,　　　　　　　　　　　　　　　　　(33)
+其中δ(s)为白噪声或单位脉冲函数，则扰动对输出的影响由加权敏感函数SV描述，对于P∈RH∞，最优的敏感度η=‖SV‖H∞等于系统的奇异测度［3］
+μ(P)=inf{‖SV‖H∞} .　　　　　　　　　　　　　　　(34)
+但实际中η不可达μ(P)，因此应寻求系统频带宽度内次优解.若使
+‖SV‖［ω1,ω2］=max{｜S(jω)V(jω)｜:ω1≤ω≤ω2}　　　　　　　　(35)
+足够小，则系统在频段［ω1,ω2］上对扰动d的抑制将达到很强的程度.
+　　设实际控制对象模型Pa对标称模型P具有乘性摄动
+P=(1+ΔP)Pa, ΔP∈RH∞,　　　　　　　　　　　　　　　(36)
+则对于控制器Ck, Cz实际跟踪特性为
+　　　　　　　　　　　　(37)
+注意
+S=(1+PG)-1(1-PQ)=［1+(1-PQ)-1(G+Q)P］-1 ,　　　　　　　　　　(38)
+　　　　　　　　　　　　(39)
+容易得到
+Guy=(1+SΔP)Gauy　　　　　　　　　　　　　　　　　(40)
+或
+　　　　　　　　　　　　　　　　　(41)
+由此可见若范数‖SΔP‖H∞足够小，则对系统摄动ΔP(‖ΔP‖H∞可能较大)其跟踪特性变化很小，即系统具有很强的鲁棒性.
+3　ECM伺服系统Ck和Cz的H∞优化设计
+　　从式(25)，(26)知，Ck和Cz的设计实际上是对G和Q的设计.根据文献［4］，具有电流H∞控制的ECM转速环的标称对象模型为
+P(s)=Kt(Js+B)-1 ,　　　　　　　　　　　　　　　(42)
+其中J为电机转动惯量，B为转速阻尼系数，Kt为电机转矩常数.由于P(s)∈RH∞，对ECM转速控制器前述的设计有效.
+3.1　G的参数设计
+　　G的参数设计主要是获得最佳的指令跟踪特性，文献［2］同时考虑了扰动抑制、能量和带宽限制、摄动鲁棒性及指令跟踪等综合指标的优化，即对范数
+‖SkV‖2H∞+‖TkW‖2H∞　　　　　　　　　　　　　　　(43)
+极小化来寻求最佳的G参数，其中Tk=1-Sk为补敏感函数，V和W分别是Sk和Tk的加权函数.考虑到调速系统的外部扰动大多是突加负载扰动Kd/s，其作用点在环节(Js+B)-1之前，因此
+d=Kd/［s(Js+B)］≈K1d/s2, K1d=Kd/J, B≈0. 　　　　　　　　　(44)
+取V(s)=1/(τ1s)2.ECM系统除外部扰动外，内部的电磁转矩脉动将影响低速控制性能，为对这种低频内部扰动进行较好的抑制，取
+VV*=1/(τ1s)4+1, V*=V(-s) .　　　　　　　　　　　　　　　(45)
+由于Tk和Sk互补特性，应选W(s)=(τ2s)2，使G为真，且达到能量和带宽限制.
+设
+Pa=Kat(Jas+。Ba)-1 ,　　　　　　　　　　　　　　　(46)
+则
+ΔP=(Δp1s+Δp0)P-1 ,　　　　　　　　　　　　　　　(47)
+其中Δp1=Ja/Kat-J/Kt ,Δp0=Ba/Kat-B/Kt .对于有限的Δp1和Δp0，选取1/τ1＞(Kt/J)。(Δp1m+Δp0m), Δp1m和Δp0m为Δp1和Δp0的最大幅值，可满足
+　　　　　　　　　(48)
+因此对于鲁棒性不必修改加权函数V和W的形式.
+　　利用文献［2］的设计准则，G的传递函数为
+　　　　　　　　　　　　　　　(49)
+式中φ-=(Js+B)K-1t, φ0=ψ-=ψ0=1, β1=(τ1s)2, β2=1, ζ和θ待定的实多项式.由文献［2］所述方程确定，把G更具体化
+　　　　　　　　　　　　　　　(50)
+把式(42)，(50)代入式(30)得出
+Sk=［(τ1s)3+θ0(τ1s)2］/［(τ1s)3+θ0(τ1s)2+ζ1τ1s+ζ0］ .　　　　(51)
+3.2　Q的参数设计
+　　根据文献［3］模型参考变换近似逆理论，应取
+Q=P-1［m(s+m)-1］k ,　　　　　　　　　　　　　　　(52)
+k为正整数，m为充分大整数.参考P(s)的具体形式，使Q∈RH∞的最小k值为1，为了Cz简单化，对Q稍加修改为
+Q=K-1t(Js+B)［m(s+m+B/J)-1］ ,　　　　　　　　　　　　(53)
+代入式(26)得出
+Cz=mJ/Kt ,　　　　　　　　　　　　　　　(54)
+将式(42)，(53)代入式(31)有
+Sz=(s+B/J)/(s+m+B/J) .　　　　　　　　　　　　　　　(55)
+3.3　系统特性分析
+　　由式(51)，(55)有
+　　　　　　　　(56)
+系统跟踪特性Guy完全由参数G决定，由文献［2］知，当ρ=(τ2/τ1)4足够小时，Guy具有一对主导复极点即系统带宽且实际中B/J很小， 对于ω∈［0,ωb］，取mωb, 有
+　　　　　　　(57)，(58)
+由式(50)，(52)代入式(25)得出
+　　　　　　　　　　　　　　　(59)
+式中 K1=Jζ0/(Ktτ1θ0), T1=(ζ1τ1)/ζ0, T2=1/(m+B/J), T3=τ1/θ0.
+　　Cz使局部环路开环增益足够大，把其环路中扰动和摄动抑制到足够小的程度，如式(58)所示，且把大时间常数(J/B)惯性环节改造成小惯性环节(T2s+1)-1，Ck具有两个积分器，使转速环为典型2型系统，从而保证系统稳态和动态跟踪性能.
+
+4　实验结果及结论
+　　实验用永磁方波同步伺服电机：11.9Nm, 2000r/min, 12.8A, 121.1V; 参数为J=0.00494kgm2, Kt=0.756Nm/A, B=0.00093Nm/rad/s；逆变器：40A，200V，20kHz.类似文献［4］取经计算控制器为
+　　　　　　　　　　(60)
+系统跟踪特性与文献［4］的图9相同，当转动惯量变化2倍时系统跟踪特性保持不变，具有很强的鲁棒性.图3为系统在1r/min运行过程中施加负载转矩扰动Md时实测转速n变化过程，其中(a)为采用二自由度H∞控制器，(b)为采用常规PI控制器(其跟踪特性与文献［4］的图9相同)，由图3可以看出二自由度H∞控制对抑制转矩扰动明显优于常规PI控制器，适用于CNC机床和工业机器人等驱动领域.
+
+　　
+图3　系统抗扰特性
+1)　国家自然科学基金资助项目(编号：69164001).
+作者简介：卢子广　1963年生，1988年毕业于北京科技大学自动化系，获硕士学位.现为广西大学电气工程系副教授.主要研究领域为自适应控制，H∞控制，运动控制，扫描隧道显微与纳米技术.已发表学术论文10余篇.
+作者单位：广西大学电气工程系　南宁　530004
+参考文献
+［1］　Youla D C, Bongiorno J J. A feedback theory of two-degree-of-freedom optimal wiener-hopf design. IEEE Trans. Autom. Control., 1985, 30(7):652-665.
+［2］　Kwakernaak H. Minimax frequency domin performance and robustness optimization of linear feedback systems.IEEE Trans. Autom. Control., 1985, 30(10):994-1004.
+［3］　Zames G. Feedback and optimal sensitivity:model reference transformation, multiplicative seminorms and approximate inverses. IEEE Trans. Autom. Control., 1981, 26(2):301-320.
+［4］　王维亚，卢子广.矩形波电子换向电机高性能伺服控制与实验研究.电气自动化，1993，15(1)：10-15.
+收稿日期　1995-06-06

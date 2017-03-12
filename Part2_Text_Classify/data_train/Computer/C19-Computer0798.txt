@@ -1,0 +1,74 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年 第25卷 第6期 Vol.25 No.6 1999
+
+
+
+关于H∞代数Riccati方程可解性的频率
+判据和解的Yakubovich算法1)
+陈阳舟　刘家琦　陈善本
+关键词　H∞代数Riccati方程，半正定镇定解，频率判据，Yakubovich算法.
+ON H∞ ALGEBRAIC RICCATI EQUATION： FREQUENCY CRITERION
+OF SOLUBILITY AND YAKUBOVICH ALGORITHM OF SOLUTION
+CHEN Yangzhou
+(Dept. of Automation, Beijing Polytechnic University, Beijing　100022)
+LIU Jiaqi
+(School of Astronautics, Harbin Inst. of Tech., Harbin　150001)
+CHEN Shanben
+(National Key Laboratory of Advanced Welding Production,
+Harbin Inst. of Tech., Harbin　150001)
+Key words　H∞ algebraic Riccati equation, positive semi-definite stabilizing solution, frequency criterion, Yakubovich algorithm.
+1　引言
+　　众所周知，在H∞控制问题的状态空间解法中关键的步骤是判断代数Riccati方程
+-CTC-ATY-YA+Y(BBT-γ-2GGT)Y=0　　(1)
+半正定镇定解的存在性并求出该解［1，2］.上式中A，B，G，C为给定的适当维数的实矩阵；γ为一预先未知的正实数，它代表着干扰抑制水平；上标“T”表示矩阵或向量的转置.目前，虽然有许多方法(如牛顿迭代法、哈米顿矩阵的不变子空间法、广义特征子空间法、矩阵符号函数法等)可用来求解代数Riccati方程，但由于方程(1)中参数γ事先未知，使得应用这些方法时需要反复试探参数γ以判断解的存在性.本文中我们在(C，A)能观测这样一个稍强的假定下给出式(1)的半正定镇定解存在的一个易检验的频率判据，并给出一个直观的几何解释.同时将原方程转化为可利用Yakubovich算法［3］来求解.
+2　频率判据和Yakubovich算法
+　　在(A，B，C)能稳能观(即(A，B)能稳(C，A)能观)假定下，方程(1)存在半正定镇定解Y(即使得A-BBTY+γ-2GGTY为Hurwitz矩阵的半正定解)当且仅当方程［2］
+γ-2GGT-BBT+AX+XAT+XCTCX=0　　(2)
+存在正定解X(此解事实上也是式(2)的镇定解)，并且有Y=X-1.
+　　引入如下记号：算子意指对一多项式矩阵M(λ)，M(λ)=M*(-λ)，符号*表示共轭转置，i表示虚数单位，
+　　(3a)
+　　(3b)
+　　定理1.　假定在方程(1)中(A，B，C)能稳能观，且A无对称于虚轴的特征根，则方程(1)存在半正定镇定解的充分必要条件是：a)对任意的实ω，有
+W2(iω)W*2(iω)-γ-2W1(iω)W*1(iω)+I＞0　　(4)
+(从而方程(2)有镇定解X)；b)方程(2)的镇定解为正定的.
+　　证明.显然只需要说明条件a)的充分必要性.方程(2)可以写成Lur'e型方程
+γ-2GGT-BBT+AX+XAT+HHT=0， H=-XCT，　　(5)
+或等价地写成恒等式(对任意适当维数的复向量z,w)
+　2Rez*X(-ATz+CTw)+z*(BBT-γ-2GGT)z+w*w=
+(w-HTz)*(w-HTz).　　(6)
+不失一般性，假定A无对称于虚轴的特征根.事实上，由于(C，A)能观，则存在矩阵K使得-AT+CTKT无对称于虚轴的特征根.从而代替方程(5)可以考查方程
+γ-2GGT-BBT-KKT+(A-KC)X+X(A-KC)T+H1HT1=0,
+H1=-XCT-K.
+现假定恒等式(6)成立，则当z,w满足-ATz+CTw=iωz时，可得
+C(iωI-A)-1(BBT-γ-2GGT)(-iωI-AT)-1CT+I＞0.　　(7)
+事实上，条件(7)不仅是恒等式(6)对某个X，H成立的必要条件而且是充分条件，这是Kalman-Yakubovich引理给出的结论［6］.
+证毕.
+　　定理1给出了方程(1)可解的一个频率判据.这个判据有一个简单的几何解释.以下假定在式(1)矩阵C为行向量c(即考虑单输出情况)且(A，B，c)能稳能观.
+　　直线判据.　令L(iω)=(W1(iω)W*1(iω)，W2(iω)W*2(iω))，则方程(1)有半正定镇定解当且仅当L(iω)当ω从0变到+∞时在(x,y)平面坐标系中的图像位于直线γ-2x-y=1的左边(从而方程(2)有镇定解)，且方程(2)的镇定解正定.
+　　方程(1)的正定镇定解可应用Yakubovich算法求得［3］：
+　　1) 计算式(3)中的Φ(λ)并分解Φ(λ)=φ(λ)φ(λ)，使φ(λ)为首项系数为1的Hurwitz反稳定多项式；
+　　2) 计算多项式φ(λ)-δ(λ)和多项式矩阵cλ的系数
+
+其中n为矩阵A的阶次；
+　　3) 由方程qjH=kj(j=1,…n)求解矩阵H；
+　　4) 当A无对称于虚轴的特征根时，由Lyapunov方程
+AX+XAT+(HHT+γ-2GGT-BBT)=0
+求出X；否则，选择一个矩阵K使得AK=:A-KC无对称于虚轴的特征根，然后由
+AKX+XATK+γ-2GGT-BBT-KKT+(K-H)(K-H)T=0
+求出X；
+　　5) 如果X正定，则求Y=X-1.
+3　结束语
+　　本文给出了H∞代数Riccati方程存在正定镇定解的一个频率判据.对于单输出情况给出了一个几何解释.这种几何判别方法可以很方便地应用Matlab软件包实现.另外，还将Yakubovich仅对标准代数Riccati方程给出的算法用来计算H∞代数Riccati方程正定镇定解.需指出的是，定理1中条件b)可用另一些等价条件代替，本文限于篇幅不予讨论.
+1) 国家教委留学回国人员专项基金和国家自然科学基金资助项目.
+作者简介：陈阳舟　1963年生，1994年在俄罗斯圣彼得堡大学获理学博士学位.1996年3月至1998年3月在哈尔滨工业大学从事博士后研究工作.现为北京工业大学自动化系副教授.目前主要的研究领域有鲁棒控制、最优控制和微分对策等.
+　　　　　陈善本　1956年生，工学博士，现任哈尔滨工业大学教授、博士生导师.目前研究领域有鲁棒控制、最优控制、机器人焊接智能化相关的理论与应用等.
+　　　　　刘家琦　1941年生，现为哈尔滨工业大学教授、博士生导师、副校长.主要从事计算数学、应用数学和应用地球物理等领域有关反问题的研究.
+作者单位：陈阳舟　北京工业大学自动化系　北京　100022
+　　　　　刘家琦　哈尔滨工业大学航天学院　哈尔滨　150001
+　　　　　陈善本　哈尔滨工业大学焊接国家重点实验室　哈尔滨　150001
+参考文献
+1　Doyle J, Glover K, Khargonekar P, Francis B. State-space solutions to standard H∞ and H2 control problems.IEEE Trans. Autom. Control,1989，34(8)：831～847
+2　Scherer C. H∞-control by state feedback: an iterative algorithm and characterization of high-gain occurrence.Sys. and Control Lett., 1989(12)：383～391
+3　Yakubovich V A. Frequency theorem in control theory (in Russian). Siberian Math. Zh., 1973, 16(2)：385～420
+收稿日期　1997-05-13　收修改稿日期　1998-08-20

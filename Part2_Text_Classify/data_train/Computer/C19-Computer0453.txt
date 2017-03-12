@@ -1,0 +1,84 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.1　P.127-131
+
+
+
+非线性离散动态系统优化与参数估计集成的多模型方法
+孔金生 万百五
+摘 要 在非线性系统分时段线性化多模型基础上,给出了非线性离散动态系统优化与参数估计集成的多模型方法,并论证了算法的最优性和收敛性.在存在模型-实际差异的情况下,从分时段线性化多模型出发通过迭代运算可得到实际非线性离散动态系统的真实最优解.仿真结果表明了算法的有效性和实用性.
+关键词 非线性离散动态系统,动态系统优化与参数估计集成,分时段线性化多模型.
+MULTIMODEL METHOD OF DYNAMIC INTEGRATED SYSTEM OPTIMIZATION AND PARAMETER ESTIMATION FOR NONLINEAR DISCRETE DYNAMIC SYSTEMS
+KONG Jinsheng WAN Baiwu
+(Systems Engineering Institute,Xi'an Jiaotong University,Xi'an 710049)
+Abstract A multimodel method of dynamic integrated system optimization and parameter estimation for nonlinear discrete dynamic systems is presented based on piecewise linear multimodel of nonlinear system.The optimality and convergence of the algorithm are proved.The real optimal solution of nonlinear discrete dynamic system can be obtained from piecewise linear model with modelreality differences by iterative solution.The efficiency and applicability of this algorithm are demonstrated by simulation results.
+Key words Nonlinear discrete dynamic system,dynamic integrated system optimization and parameter estimation,piecewise linear multimodel.
+1 引言
+　　非线性动态系统的优化控制是近几十年研究工作的热点之一.Roberts首先将在稳态优化控制中非常有效的ISOPE方法的思想引入到动态系统中,提出了动态系统优化与参数估计集成(Dynamic Integrated System Optimization and Parameter Estimation,简称DISOPE)方法［1］,该方法通过迭代求解修正的基于模型的优化控制问题和参数估计问题得到实际问题的真实最优解.文［2，3］分别提出了基于线性模型和双线性模型二次型的DISOPE算法.对基于线性模型的DISOPE算法,由于模型与实际之间的差异较大,易引起算法迭代步数过多或算法的发散,而基于双线性模型及非线性模型的DISOPE算法存在求解非线性两点边值问题,且需要一定的先验知识.
+　　分段线性化的多模型方法的特点是用分段线性模型来逼近非线性过程,这种方法已在许多非线性控制过程中获得应用［4,5］.对于非线性系统,在一个平衡点附近展开得到的线性化模型并不能反映非线性系统在大范围内的动、静态特性,有时控制品质、甚至稳定性都难以得到保证.利用分段线性化多模型来逼近非线性过程能较好地反映非线性系统在大范围内的动、静态特性.运用非线性系统分时段线性化多模型的方法,可将优化时间段为N的非线性系统模型分成M段的分段线性化多模型,即对于M个不同的时间段优化是采用不同的线性化模型,而M段的分时段线性化模型便构成了原系统的分时段线性化多模型表示.
+　　本文将DISOPE方法与多模型方法相结合,得到一种基于分时段线性化多模型的非线性离散动态系统DISOPE方法.
+2 基于分时段线性化多模型的非线性离散动态系统DISOPE方法 
+　　考虑以下实际动态系统优化控制问题(ROP)
+
+　(1)
+上式中x(k)∈Rn,u(k)∈Rm分别是k时刻系统的状态向量和控制向量,φ(x(N))是终端状态的正实函数,L*(.)是实际性能指标,f*(.)是实际状态方程,x(0)是初始状态.由于L*,f*很复杂,考虑以下基于分时段线性化多模型二次型指标的优化控制问题(MOP)
+　(2)
+上式中φ,Q,R是加权矩阵,α(k)∈Rs,γ(k)∈Rl是参数变量,分别表示模型与实际、模型优化的性能指标与实际性能指标之间的差异.
+　　以下定义一个与ROP问题等价的扩展优化问题（EOP）
+
+　(3)
+这里z(k),v(k)的引入是为了分离基于模型的优化问题与参数估计问题.
+　　根据变分法可得如下最优化必要条件：
+　(4)
+　(5)
+　(6)
+　(7)
+这里(k)的引入是为了分离基于模型的优化问题和修正乘子的计算.修正乘子通过(5)式进行计算,式(6)定义了“点”参数估计问题.在α(k),γ(k)及λ(k)和β(k)给定的情况下,以下修正的基于分时段线性化多模型的优化问题(MMOP)的必要条件恰好为(4)式.
+　(8)
+　　假设Ai,Bi(i=1,…,M),Q,R,φ,x0,N已知,L*和f*及其所有Jacobi矩阵都可以计算.根据以上推导,得到如下基于分时段线性化多模型的非线性离散动态系统DISOPE算法：
+　　1) 在α(k),γ(k),λ(k),β(k)均为零的条件下,求解MMOP问题得到标称解x0(k),
+　　2) 利用式(6)估计“点”参数通过(5)式计算修正乘子λ(k),β(k).
+　　3) 求解MMOP问题得到新的最优状态xi+1(k)、最优控制ui+1(k)和协状态pi+1(k).
+　　4) 利用松弛公式(9)更新
+　(9)
+　　如果(eps为误差精度）,则结束；否则令i=i+1,转2).
+　　注.对于二次型指标问题无须计算参数γ(k).
+　　假设1.MOP或MMOP问题是正则的,即(8)式的加权Gramain阵W(0)是可逆的.假如下面两式对所有k均成立：
+p(k)=G(k)x(k)+g(k)+F(k)π,(10)
+xN=FT(k)x(k)+W(k)π+l(k),　(11)
+式中是Lagrange乘子
+
+　　根据式(4)，(10)，(11)不难得到关于x(k),π的恒等式,由恒等式两端对应项相等可得到求解G(k),F(k),W(k),g(k),l(k)的递推公式.从而可以求得MMOP问题的最优控制、状态和协状态.
+3 算法的最优性和收敛性分析
+　　假设2.原问题(ROP)的最优解存在且唯一.
+　　假设3.对所有x(k),u(k)的Jacobi矩阵在［0,N-1］上存在且连续.
+　　定理1.在假设2和3成立的条件下,若算法收敛,则算法的收敛解是实际问题的最优解.
+　　从算法的推导很容易得到此结论.
+　　在算法的迭代过程中,矩阵G(k),W(k),F(k)是不变的,g(k),l(k)是每次改变的.
+　　令经过推导可得到算法映射.
+　　定理2.算法收敛的一个充分条件是：算法的收敛因子δ<1.
+　　定理2的证明略.
+4 仿真实例
+　　考虑如下的四阶非线性系统,它代表平面上的二自由度机器人操作手的转移问题.
+
+　　上式中分别代表两个关节链的位置和速度,T=0.02为采样周期,N=4/T,算法中的终止误差eps=0.05,修正常数kv=0.2,kz=1,kp=1.
+　　基于模型的优化控制问题(MOP)为如下形式：
+
+上式中 
+
+　　利用本文提出的算法经过40次迭代收敛,而应用基于线性模型(其中x2(k+1)=x2(k)+Tu1(k),x4(k+1)=x4(k)+0.5Tu2(k))二次型指标的DISOPE算法要经68次迭代才收敛,本文给出的方法为该方法计算量的4/7左右.而若不采用DISOPE方法仅使用线性模型方法直接求解,只能得到系统的近似优化解,说明了本文算法的有效性.
+5 结论
+　　本文将分时段线性化多模型方法与DISOPE方法相结合,给出了非线性离散动态系统DISOPE的多模型方法,并论证了算法的最优性和收敛性.仿真结果表明了算法的有效性和实用性,本文给出的方法较基于线性模型的DISOPE方法迭代收敛快.
+国家自然科学基金资助项目.
+孔金生 1989年毕业于郑州工业大学计算机与自动化系,获硕士学位;现为西安交通大学系统工程研究所博士生.主要研究领域:智能控制、复杂系统的辨识与优化控制等.
+万百五 简介见本刊1999年第25卷第1期.
+孔金生（西安交通大学系统工程研究所 西安 710049）
+万百五（西安交通大学系统工程研究所 西安 710049）
+参考文献
+1，Roberts P D. Optimal control of nonlinear systems with modelreality difference. In:Proceeding of 31th CDC,Tucson,USA,1992
+2，Becerra V M, Roberts P D. Dynamic integrated system optimization and parameter estimation for discrete time optimal control of nonlinear systems. Int.J.Control, 1996,63(2):257～282
+3，李俊民,万百五,黄正良.基于双线性模型的动态系统优化与参数估计集成方法.控制与决策,1998, 3(5)：521～526
+4，He W G, Kaufman H, Roy R. Multiple model adaptive control procedure for blood pressure control. IEEE Trans.,BME 1986,BME34(8):567～574
+5，Badr A, Binder Z, Rey D. Application of tracking multimodel control to a nonlinear thermal process. Int.J.System Science, 1990,21(9):1795～1803
+　
+收稿日期 1998-11-03 收修改稿日期 1999-06-28

@@ -1,0 +1,104 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+非线性系统的一种加权自适应控制方法1)
+许向阳　祝和云
+　　关键词　自适应控制，非线性系统，间隙非线性.
+A KIND OF WEIGHTED ADAPTIVE CONTROL FOR
+NONLINEAR SYSTEMS
+XU XIANGYANG　　ZHU HEYUN
+(Institute of Industrial Process Control,Zhejiang University,Hangzhou 310027)
+Key words　Adaptive control,nonlinear systems,backlash nonlinearity.
+1　引　言
+　　由于非线性系统的多样性，不能用统一的模型表达所有非线性系统，对其自适应控制的研究也就随不同的模型、系统而各不相同.如文献［1］是针对Hammerstain模型而讨论的；文献［2，3］则分别讨论了分段线性和预负载非线性系统；文献［5］给间隙非线性系统建立了加权自适应控制；文献［4，6］在控制方法的通用性上作了努力，但所建的模型带有种种假设，其通用性自然是受到限制的.
+　　以上文献中的非线性系统模型都有一个特点，即在线性模型前加一非线性前缀.假如非线性部分中也含有未知参数，那么该模型所代表的通用性是较广的.本文就这一类模型提出一种加权自适应控制方法，并针对未知间隙宽度的间隙非线性系统进行讨论.
+2　一种自适应控制方法
+　　图1所示系统为线性部分加非线性前缀Π(h(t),u(t),t)，其中h(t)为非线性部分中与 u(t)和x(t)都有关的变量，在文献［1―5］中一般为建模时参入的开关量.
+
+图1
+　　在许多非线性模型中，其较难处理的原因在于 x(t)的值不仅与u(t)有关，还与 h(t)有关，而 h(t)又不由 u(t)唯一确定，因此并不能根据 u(t)值直接得到 x(t)或唯一确定 x(t).相反，当 x(t)已知后，往往能确定u(t)的值，并能同时确定h(t)的值.除饱和非线性外，在大多数非线性环节中有u(t)有界x(t)有界.因此，加权自适应控制的指标
+J=E｛［P(q-1)y(t+d)-R(q-1)yr(t+d)+Q(q-1)u(t)］2｝　　　　　　　(1)
+中 u(t)的限幅即是对 x(t)的限幅.将 J 式改写为
+J=E｛［P(q-1)y(t+d)-R(q-1)yr(t+d)+Q(q-1)x(t)］2｝,　　　　　　　(2)
+即将对 u(t)的限幅换为对 x(t)的限幅.这样，即使是饱和非线性系统，也可通过加强x(t)的权系数使其落于饱和区内.于是确立了如下的自适应控制方法：
+　　1)控制律由(2)式推导，求取 x(t)的值，再由x(t)求取u(t)和h(t)；
+　　2)由 y(t),u(t)和h(t)辨识过程参数，包括线性部分和非线性部分.
+3　间隙非线性系统
+　　如图2所示间隙非线性系统，其方程为
+A(q-1)y(t)=q-dB(q-1)x(t)+C(q-1)ω(t),　　　　　　　　　　　(3)
+x(t)=k［u(t)-Dsgn(t)］.　　　　　　　　　　　　　　(4)
+
+图2
+其中 k＞0,D＜∞；
+　　　　　　　　(5)
+A(q-1)=1+a1q-1+…+anq-n;B(q-1)=b0+b1q-1+…+bmq-m;C(q-1)=1+c1q-1+…+clq-l;
+d 是系统时延，k 和 D 分别为间隙非线性的斜率和间隙宽度.
+　　扰动序列｛ω(t)｝是定义在概率空间｛Ω,A,P｝上的实随机过程，适应于递增σ-代数｛t-1t∈N｝.假设
+　　A1)　E｛ω(t)/t-1｝=0,a.s.;
+　　A2)　E｛ω2(t)/t-1｝=σ2,a.s.;
+　　A3)　(t)＜∞,a.s..
+　　此外，对系统假设
+　　A4)　d和k已知；
+　　A5)　n,m和l的上界已知；
+　　A6)　C(q-1)为稳定的多项式.
+　　取性能指标为
+J=E｛［P(q-1)y(t+d)-R(q-1)yr(t+d)+Q(q-1)x(t)］2/t｝.　　　　　　(6)
+4　自适应控制算法
+　　定义Ψ(t)=P(q-1)y(t),记Ψ(t)的最优预报为(t)=Ψ(t)-v(t),v(t)=F(q-1)ω(t).
+　　由等式P(q-1)C(q-1)=F(q-1)A(q-1)+q-dG(q-1)和1=E(q-1)C(q-1)+q-dO(q-1)［6］及(3)，(4)式可推得
+　Ψ(t+d)=α(q-1)y(t)+kβ(q-1)u(t)-kβ(q-1)Dsgn(t)+O(q-1)(t)+F(q-1)ω(t+d)
+　　　　　　=α(q-1)y(t)+S(q-1)u(t)+L(q-1)sgn(t)+O(q-1)(t)+F(q-1)ω(t+d),　　(7)
+其中 α(q-1)=E(q-1)G(q-1),β(q-1)=E(q-1)F(q-1)B(q-1),β0=b0≠0.
+　　记 deg［α(q-1)］=n1,deg［β(q-1)］=n2,deg［O(q-1)］=n3,则 n1=n+d-2,n2=m+2d-2,n3=
+l-1,
+S(q-1)=kβ(q-1)=s0+s1q-1+…+sn2q-n2,　　　　　　　　　　　(8)
+L(q-1)=-kβ(q-1)D=l0+l1q-1+…+ln2q-n2.　　　　　　　　　　(9)
+由此推得控制律为
+(10)
+　　采用递推最小二乘辨识方法
+(11)
+　　　　　　(12)
+　　　　　(13)
+　　　　　　(14)
+其中(t)为Ψ(t)的验后预报，定义为(t)=ΦT(t-d)(t).
+　　由上可得D，b0和β(q-1)的估计
+
+由控制律先求取 x(t),而后由x(t)求 u(t)和 sgn(t)
+　(15)
+　　定义.e(t)Ψ(t)-ΦT(t-d)(t-1),η(t)Ψ(t)-(t)=Ψ(t)-ΦT(t-d)(t),z(t)η(t)-v(t),z′(t)e(t)-v(t),r(t)=r(t-1)+ΦT(t-d)Φ(t-d).
+　　并假设 
+　　引理.若假设A1)―A7)成立，且严格正实，则递推最小二乘方法具有如下性质：
+　　L1)‖(t)‖≤M＜∞,t,　a.s.;
+　　L2),ξ(t-d)=ΦT(t-d)P(t-1)Φ(t-d),｜1+ξ(t-d)｜≤M＜∞;
+　　L3),　a.s.;
+　　L4)当且仅当,a.s.时,a.s.;
+　　L5),a.s..
+证明与文献［7］类似，从略.
+　　定理.若假设 A1)―A7)成立，且严格正实，选择加权多项式 P(q-1)和Q(q-1),使 G2(q-1)=B(q-1)P(q-1)+Q(q-1)A(q-1)稳定，则以上算法所形成的整个控制系统有以下性质：
+　　
+　　
+　　
+　　T4)E｛［P(q-1)y(t)-R(q-1)yr(t)+Q(q-1)x(t-d)］2/t-d｝=r2,a.s.;(设　E｛v2(t)/t-d｝=r2).
+　　限于篇幅，证明从略.
+5　仿真
+　　仿真所用实际模型y(t)=1.7y(t-1)+x(t-2)+1.6x(t-3)+ω(t)+0.7ω(t-1),间隙非线性部分k=1,D=1.以上为开环不稳定的最小相位系统，｛ω(t)｝为零均白噪声序列.
+　　取P(q-1)=1,R(q-1)=1,Q(q-1)=0.25-0.25q-1,｛yr(t)｝是幅值为5的不定周期矩形波序列.仿真结果如图3所示.
+
+图3
+　　将图中曲线与文献［5］的仿真曲线比较，可见控制效果较好，且本文算法更为直观、简便.另外，算法无需知道间隙宽度D的上限值，也不必预知b0的符号，适用更多非线性过程.
+　　本文所提的加权自适应控制方法亦可以在其它非线性模块加线性模块的非线性系统中运用，从而得到一种不同非线性模型的统一的自适应控制方法.由于该方法能辨识非线性部分中的未知参数，因而具有更广的应用价值和通用性.
+1)　国家级工业控制技术重点实验室资助课题.
+作者单位：浙江大学工业控制研究所　杭州　310027
+参考文献
+［1］　Anbumain K,Patnaik L M,Sema l G.Self-tuning minimum-variance control of nonlinear systems of the hammerstain model.IEEE Trans.Autom.Control,1981,AC-26959-961.
+［2］　Kung Minchio,Womack B F.Discrete time adaptive control of linear dynamic systems with a two-segmant piecewise-linear asymmetric nonlinearity.IEEE Trans.Autom.Control,1984,AC-29:170-172.
+［3］　Kung Minchio,Womack B F.Discrete time adaptive control of linear dynamic systems with preload nonlinearity.Automatica,1984,20(4):477-479.
+［4］　Mukul A,Sedorg Dale E.Self-tuning controllers for nonlinear system.Automatica,1987,23(2):209-214.
+［5］　韩存武，张竞新，顾兴源.具有间隙非线性系统的控制加权自适应控制.自动化学报，1993，19(5)：535-542.
+［6］　丁锋，谢新明，方崇智.一类非线性系统的加权自适应控制.自动化学报，1993，19(4)：458-461
+［7］　Goodwin G C,　Sin K S.Adaptive Filtering Prediction and Control,1984.
+收稿日期　1995-03-07

@@ -1,0 +1,106 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000 Vol.17 No.3 P.66-68
+
+
+
+
+基于OpenGL的场景管理、三维交互与用户界面设计
+林锐　石教英
+摘　要：Intra3D 是基于OpenGL的交互式三维图形软件开发工具，其核心是集成了场景数据结构、图形对象、三维交互算法和图形用户界面的C++类库与COM对象库。着重论述：(1)对象引用计数的内存管理技术；(2)场景节点的三维交互设计；(3)用户界面设计。
+关键词：开发工具 三维交互 用户界面
+1　前言
+　　OpenGL是国际上公认的3D图形工业标准，在Unix与PC平台得到广泛的应用[1]。OpenGL提供了数百个库函数，可方便地绘制具有真实感的3D图形。但开发交互式的3D图形应用软件，图形绘制只是一部分，更多的工作集中在场景数据结构、图形对象、三维交互算法和图形用户界面的设计上。由于OpenGL与窗口系统无关，不提供任何交互手段，必须由程序员自己编写所有的交互功能。并且OpenGL 的编程接口是低级的C函数，不提供可复用(Reuse)的对象库或者应用程序框架，开发效率不高[2～4]。
+　　我们多方面分析了3D需求及软硬件条件[1,5～8]，研制完成基于OpenGL的交互式三维图形软件开发工具Intra3D 2.0。Intra3D的核心是集成了场景数据结构、图形对象、三维交互算法和图形用户界面的C++类库与COM(Component Object Model)对象库，支持Visual C++、Visual Basic、Delphi等语言的应用编程。Intra3D的核心库分四层创建：第一层为“基础对象与函数”(Basic Objects and Functions)；第二层为“图形对象”(Graphical Objects)；第三层为“场景的图与节点”(Scene Graph and Nodes)；第四层为“绘制与交互”(Rendering and Interaction)。体系结构如图1所示，其中高层构件可以引用低层构件，但低层构件不能引用高层构件。Intra3D是免费软件，2.0标准版约25兆，核心库7万多行C++代码全部公开，用户可以方便地修改内核以适应不同的需求。Intra3D弥补了OpenGL的不足，可用于快速开发PC平台的交互式3D应用程序。
+
+图1　Intra3K2.0核心库的体系结构
+2　Intra3D 核心库的主要内容与功能
+2.1　基础对象与函数层
+　　该层的主要内容与功能：(1)定义了用于对象引用计数的内存管理基类；(2)矢量、矩阵与四元组运算，鼠标跟踪球算法；(3)点阵字体与三维矢量字体输出，常用于数据可视化图形的数据标注；(4)图象输入输出以及纹理映射，支持BMP、GIF、JPEG、SGI、TGA等图象格式；(5)常用几何图元的绘制，如锥、柱、球、环等，并支持Swept形体，螺旋体的绘制；(6)提供450余种材质。在第四层中可以交互式编辑这些材质。
+2.2　图形对象层
+　　图形对象能将数据转化为几何模型并可以绘制出来[9]。Intra3D 2.0版提供了三类图形对象：(1)常用几何对象，如长方体、锥体、圆柱体、球体、圆环体、Swept形体等；(2)多边形模型对象，可用于绘制Autodesk公司.3ds模型和Wavefront公司的.obj模型；(3)常用数值图形对象，如柱形图、带状图、条形图、折线图、面积图、饼图、塔形图、曲线图、曲面图等。图形对象的开发与应用问题密切相关，用户可以使用继承方法扩充新的图形对象，而不会影响到其它三层的构件。
+2.3　场景的图与节点
+　　场景的图(Scene Graph)是有向无环图，Scene Graph的主要节点有：(1)SceneNode是所有节点的基类。在SceneNode中定义了局部坐标系以及相应的图形变换，这样便于第四层以同样的操作方式实现三维交互；(2)相机节点(CameraNode)支持平行投影与透视投影，支持多个相机切换；(3)光源节点有三种：平行光源节点(DirLightNode)、点光源节点(PointLightNode)和锥光源节点(SpotLightNode)；(4)形体节点(ShapeNode)用于引用图形对象。有关图形对象的三维交互均由ShapeNode处理。
+2.4　绘制与交互层
+　　Intra3D的交互分两类：一类是对形体、光源和相机的直接操作；另一类是真实感属性的编辑。Intra3D的场景视窗构件(SceneView)封装了交互式绘制的所有细节，如消息处理、场景节点的遍历绘制、多重采样消锯齿、鼠标交互等。为了便于编辑真实感属性，Intra3D定制了一些常用对话：矢量字体对话(FontDialog)、颜色对话(ColorDialog)、材质库对话(MaterialLibDialog)、材质对话(MaterialDialog)与光源对话(DirLightDialog, PointLightDialog, SpotLight Dialog)。
+3　对象引用计数的内存管理技术
+　　当场景中的一些对象存在复杂的引用关系时，正确释放对象的内存将变得很困难。最安全的方法是让对象自己判断何时该释放内存。Intra3D 的Container类提供“对象引用计数”的内存管理技术。基本原理是：让对象保存一个计数器，当该对象被其它对象引用时，将计数器增加1；当引用关系被消除时，将计数器减去1；若计数器为0，则表明该对象不再被外界任何对象引用，此时该对象就可以删除自己；Intra3D的图形对象基类(GraphicalObject)与场景节点基类(SceneNode)都是Container的派生类。Container的定义如下：
+class Container
+{
+public: 
+　　Container(void){ m_cRefrenceCount=1; }
+　　　　　　　　　　　　　 // 对象被创建时，计数器为 1 
+　　void AddRef(void){ m_cRefrenceCount++; }
+　　　　　　　　　　　　　 // 对象被引用时，计数器增加1 
+　　void Release(void){ m_cRefrenceCount--; 
+　　　　　if(m_cRefrenceCount <= 0) 
+　　　　　{ FinalRelease(); 
+　　　　　delete this; 　　// 如果计数器为0，则删除自身 
+　　　　　}
+　　　}
+protected:
+　　virtual void FinalRelease(void){ } // 由派生类定义具体行为
+　　int m_cRefrenceCount; // 计数器
+}；
+　　当对象A被对象B引用时，应调用A的AddRef函数。当此引用关系被消除时，应调用A的Release函数。一个对象在删除自身之前，还应消除对其它对象的应用，此工作由FinalRelease函数完成。FinalRelease是 Protected 类型的虚函数，具体行为由派生类定义。
+4　场景节点的三维交互设计
+　　在图形学中，常用矩阵运算来实现图形变换。采用4×4的齐次矩阵就可以用统一的矩阵相乘来表示平移、比例与旋转变换。但是矩阵难以表示图形变换的状态与过程，例如给出前后两个矩阵，就无法判断平移量、缩放量、旋转量各是多少。可见仅使用矩阵运算并不满足交互式3D图形系统的需求。
+　　Intra3D用四元组(Quaternion)运算实现旋转变 换[10,11]。四元组是复数的一种扩展。记q为一四元组，q可以表示如下：
+q=w+xi+yj+zk=[x y z w]=(s,v)
+s=w
+v=[x y z]
+　　设一旋转变换的旋转轴为u(单位矢量)，旋转角度为θ。则与此旋转变换等价的四元组q为：
+q=(s, v)
+s=cos(θ/2)
+v=u sin(θ/2)
+　　两个旋转变换的合成可用两个四元组相乘来表示，程序设计非常简洁。由于四元组的(x,y,z,w)变量并不直观，Intra3D 提供更加简明的旋转结构ROTATION来表示旋转变换。矢量、旋转结构、四元组的数据结构VECTOR、ROTATION、QUATERNION定义如下：
+
+　　Intra3D 的场景节点基类SceneNode使用旋转结构表示旋转变换的状态，用两个矢量分别表示平移变换与比例变换的状态。即共用10个浮点变量就可以完全确定图形变换的状态。SceneNode的数据结构如下所示：
+// 数据成员
+protected:
+　SceneNode　　*m_pParent；　　// 父节点
+　Trackball　　m_trackball；　　// 跟踪球
+　VECTOR　　　m_position,　　　　m_oldPosition；
+　VECTOR　　　m_scale,　　　　　m_oldScale；
+　ROTATION　　m_rotation,　　　m_oldRotation；
+...
+Public: // 图形变换函数
+　Void SetPosition(float x, float y, float z)；
+　Void SetRotation(float angle, float nx, float ny, float nz)；
+　Void SetScale(float sx, float sy, float sz)；
+　Void Translate(VECTOR trans)；
+　Void Rotate(float angle, VECTOR axis)；
+　Void Scale(float sx, float sy, float sz)；
+　Void ResetTransform(void)；
+　Void TranslateInCamera(VECTOR trans)；
+　Void RotateInCamera(float angle, VECTOR axis)
+...
+　　m_position、m_rotation与m_scale三个量分别表示该节点在父节点坐标系中的位置量、旋转量与比例量。m_oldPosition、 m_oldRotation与m_oldScale用于记录原始状态，便于恢复原状。SceneNode定义了十余个图形变换函数，用户可用鼠标对场景节点进行直接拖动、旋转等操作。
+5　用户界面设计
+　　Intra3D的场景视窗构件SceneView用于快速创建交互式3D应用程序的主界面。SceneView支持Selecting、Scaling、Rotating、Translating、Creating、Deleting等三十余种操作，并提供工具条方便于交互，如图2所示。3D应用程序主界面的风格如图3所示。Intra3D COM库中的SceneView是一个ActiveX控件，Visual Basic、Delphi等编程语言能以可视化的方式创建3D应用程序的框架。
+
+图2　用于直接操作的三维交互工具条
+
+图3　Intra3D的应用程序主界面示例
+　　为了编辑真实感属性，常需在对话框中绘制3D 图形。Microsoft的窗口系统不提供3D的对话窗口。使用Intra3D的Window3D构件可在对话框中创建多个3D视窗，图4的材质对话和图5的材质库对话都使用了Window3D构件。颜色编辑是3D图形程序中最常用的交互，材质与光源的编辑实际上是通过改变颜色分量来实现的。需要进行颜色编辑的交互均涉及HSV与RGB模式的颜色转换。Int的“绘制与交互层”实现了这些计算，并且提供彩色的滑动条用于鼠标交互。图6、图7示例了“点光源对话”和“颜色对话”。
+　　　　
+图4　材质对话　　　图5　材制裁库对话
+　　　　　　　
+图6　点光源对话　　　　图7　颜色对话
+6　小结
+　　Intra3D 是切合国情，面向PC应用的交互式三维图形软件开发工具，2.0版已经可以使用。Intra3D2.0标准版软件含配套书籍《交互式三维图形技术与程序设计》的电子文档。可用电子邮件 Intra3D@ hotmail.com , Intra3D@163.net 与作者联系，免费索取软件。
+林锐(浙江大学CAD&CG国家重点实验室 杭州 310027)
+石教英(浙江大学CAD&CG国家重点实验室 杭州 310027)
+参考文献
+1 Andries Van Dam and Dick Puk. The History of Computer Graphics Standards Development,Computer Graphics, pp34～38, February 1998
+2 Mark J.Kilgard. OpenGL Programming for the X Window System, Addison-Wesley, 1996
+3 Tom McReynolds and David Blythe. Advanced Graphics Programming Techniques Using OpenGL, SIGGRAPH `98 Course
+4 Brian Paul, OpenGL and Window System Integration, Siggraph'97 Course 24, August 6, 1997
+5 D. Wang, I. Herman and G.J.Reynolds, The Open Inventor Toolkit and the PREMO Standard, Computer Graphics Forum, Vol.16, No.4, pp159-175,1997
+6 David B. Kirk. Interactive 3D Graphics for the Masses, Computer Graphics, pp62～64,February 1998
+7 Edward Angel. Teaching a Three-Dimensional Computer Graphics Course Using OpenGL, Computer Graphics, pp54～55, August 1997
+8 Chris Hand. A Survey of 3D Interaction Techniques, Computer Graphics Forum, Vol.16, No.5, pp269～281,1997
+9 Jonas Gomes, Bruno Costa and Lucia Darsa, Graphical Objects, The Visual Computer (1996)12:269～282
+10 Loaura Downs, Using Quaternions to Represent Rotation, http://www.cs.berkeley.edu/～laura, 1998
+11 Donald Hearn and M. Pauline Baker, Computer Graphics C Version , Prentice Hall, 1997
+收稿日期：1999年10月25日

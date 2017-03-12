@@ -1,0 +1,114 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第11期　Vol.10　No.11　1999
+
+
+
+抽象事件的完备逻辑时钟
+董宏　孙永强
+　　摘要　调试分布式应用系统要比调试顺序程序困难得多,原因之一是分布式应用系统要比顺序程序复杂得多.为了处理分布式应用系统的复杂性,提出了对分布式应用系统的事件进行抽象的调试方法,这种方法让用户从不同的层次观察分布式应用系统的行为.在对分布式应用系统进行调试和抽象时,抽象事件（事件集）之间的先于关系起着重要作用,而逻辑时钟用来确定事件间的先于关系.文章给出了一种计算抽象事件的完备逻辑时钟的方法,这种方法比以往的方法所占存储量小,而且计算速度快.另外,文中还给出了算法的正确性证明.
+　　关键词　分布式系统,调试,抽象,完备逻辑时钟.
+　　中图法分类号　TP311
+Abstraction Events' Complete Logical-time
+DONG Hong SUN Yong-qiang
+(Department of Computer Science and Engineering Shanghai Jiaotong University Shanghai 200030)
+　　Abstract　 Debugging the distributed applications is very difficult. One of the reasons why this problem is made is that the distributed applications are inherently more complex than sequential ones. To solve this problem, the method of abstracting events is proposed, which lets the users grasp the various aspects of behaviors of a distributed application. Abstract event timestamp is used to decide the “happened before” relation among abstract events, which plays a very important role in abstracting and debugging the distributed applications. In this paper, a new complete algorithm of timestamping abstract event is proposed, which needs less storage and costs less time than others. Proofs of the correctness of the algorithms are also given in this paper.
+　　Key words　Distributed system, debugging, abstraction, complete logic-timestamp.
+　　分布式应用系统（以后简称分布式系统）是由一些各自独立的顺序进程组成,这些进程相互协作共同完成一个任务,通过消息交换完成通信与同步.分布式系统中某个进程某时的状态是该进程在此时的所有变量值以及与之有关的环境信息（寄存器值、消息等）的总和,系统状态是所有进程状态的和.事件是给定时刻引起状态改变的实体（给变量赋值、创建新进程等）.
+　　调试分布式系统要比调试顺序程序困难得多［1］,原因之一是分布式系统要比顺序程序复杂得多.Bates［2］,Lumpp和Casavant［3］分别提出了对事件进行抽象的方法处理复杂系统,使用户从不同的层次观察分布式系统的行为.Zernik用简单抽象的方法实现了一个调试系统［4］.事件的抽象就是把一组事件组合成一个抽象事件,把一组较低层的抽象事件组合成一个较高层次的抽象事件.
+　　先于(happened before)关系反映事件间的因果性,在调试与抽象过程中起着重要的作用,而逻辑时钟用来快速确定先于关系（替代搜索图的方法）［5］.单个事件的逻辑时钟已广泛应用,但抽象事件的逻辑时钟还在讨论［5,6］之中,本文给出一种所占存储量小且计算速度快的抽象事件（事件集）逻辑时钟的计算方法.
+1 事件集间的关系及其抽象
+1.1　事件间的关系
+　　->关系是一事件集上满足下列条件的关系:
+　　(1) 如果事件a和b在同一进程P中,a在b之前发生并且不存在发生在a之后b之前的P中的事件,则a->b;
+　　(2) 如果a是一进程的发送事件,b是另一进程的接收由a发送的消息的接收事件,则a->b;
+　　(3) 如果a和b是同步事件,那么,a->b∧b->a.
+　　先于关系→是关系->的自反传递闭包.两个事件a和b当且仅当它们是同一事件时就称它们相等.如果d->c,就称d为c的直接前驱或d直接先于c,c为d的直接后继或c直接后继于d.
+1.2　事件集间的关系
+　　假定A为一个分布式系统的事件集,A的输入事件iA∈A∧(bA:b->iA),A的输出事件oA∈A∧(bA:oA->b).IA是A的所有输入事件的集合,OA是A的所有输出事件的集合.
+　　事件集间的先于关系也用→表示.对于两个事件集A和B,A→B当且仅当存在一个事件a∈A且存在一个事件b∈B:a→b,A->B（A为B的直接前驱、B为A的直接后继）当且仅当存在一个输出事件oA∈A且存在一个输入事件iB∈B:oA->iB,A‖B（A和B是并行的）,当且仅当(A→B)∧(B→A).
+　　对于任意两个事件集A和B,准因果关系定义如下:
+　　(1) 如果a∈A,b∈B:a→b,则AB;
+　　(2) 如果AB∧BC,那么,AC.
+　　AB（A和B是准并行的）,当且仅当(AB)∧(BA).
+　　假定分布式系统是由事件构成的集合PE,对分布式系统进行抽象就是构造一个PE1={E1,...,Em},满足PE＝E1∪...∪Em,Ei∩Ej=(1≤i,j≤m,i≠j).称PE1为PE的一次抽象（或抽象）,称Ei(1≤i≤m)为抽象事件.如果对PE1再进行抽象,构造出PE2（PE1的抽象）,那么,这就是PE的更高层次的（二次）抽象.同样地,对PE2也可再进行抽象,一直继续下去,直到PEk＝{PEk-1}.
+　　将一个分布式系统PE抽象成PEn,如果对于任意两个事件集A,B∈PEn,都有ABA→B,那么这个抽象就称为正确抽象.只有正确的抽象才能反映系统的特征［3,7］.给用户以不同层次系统面貌的核心就是自动分析分布式系统运行时所产生的事件流,并产生各层抽象,同时检查这些抽象是否是正确的抽象.James提出了按照一定的结构进行抽象的方法［3］,Cheung等人对抽象结构进行了研究［8］,目前已有的可实用的正确抽象结构为完全优先抽象、合约抽象和协议抽象.
+2 事件的逻辑时钟（events' logical time）
+　　分布式系统PE的逻辑时钟是赋给每个事件e∈PE的值T(e)的集合PT,通过所有的值T(e)∈PT来决定事件间的先于关系.逻辑时钟由两部分组成:（1） 逻辑时钟计算方法的描述,即如何给事件e∈PE赋值T(e);（2） 逻辑时钟的判断方法,即如何用逻辑时钟值T(e)∈PT决定优先关系.
+　　对于分布式系统PE的逻辑时钟PT,如果e1,e2∈PE,e1→e2T(e1)≤T(e2),但(T(e1)≤T(e2)e1→e2),就称PT为非完备的(incompleted);如果e1→e2T(e1)≤T(e2),就称PT为完备的(completed).
+　　在后面的讨论中我们规定,求两个n维向量A与B的最大值,其结果为各对对应元素的最大值所组成的n维向量,即假定C=max{A,B},则C［i］=max{A［i］,B［i］},i=1,...,n.
+3 抽象事件的逻辑时钟
+　　完全优先抽象的完备逻辑时钟在文献［8］中已给出,把抽象事件的逻辑时钟建立在各个事件的逻辑时钟的基础之上,给每个抽象事件赋予一向量,但它只用于完全优先抽象,不能用于适应范围较大的合约抽象和协议抽象.
+　　以往可用于任何正确抽象的完备逻辑时钟是给每个抽象事件E赋予两个向量集合（所有输入事件的向量时钟的集合ETI和所有输出事件的向量时钟的集合ETO）［5］.这种抽象事件的逻辑时钟有两个致命的缺点:(1) 占用内存太大,每一个抽象事件要保存所有输入、输出事件的向量时钟,如果系统有N个进程,最大要保存2N个N维向量,即两个N×N的矩阵;(2) 判断任意两个抽象事件A,B的优先关系时所花费的时间多,要逐一比较ATO和BTI的所有向量,如果比较不成功就要逐一用BTO的所有向量和ATI的所有向量比较,其算法的复杂度为O(N2).本文给出一种在异步系统下可用于任何正确抽象的完备逻辑时钟,每一个抽象事件只含一个向量,减少了所需保存的数据量,由于判断任意两抽象事件的优先关系只比较两个向量,也减少了运算量,算法的复杂度仅为O(N).
+　　下面通过对抽象事件的历史集的分析,给出在异步分布式系统下抽象的完备逻辑时钟算法以及算法的正确性证明.
+3.1　抽象事件的历史集
+　　定义3.1（事件的自然次序）. 假定P1,...,PN为分布式系统的进程,进程Pi(1≤i≤N)中的事件按其出现次序记为ei1,ei2,...,PEi为Pi中事件的集合,即PEi＝{ei1,ei2,...}.PE=PE1∪PE2∪...∪PEN为系统所有事件的集合.称PEi中给事件赋予的出现次序号1,2,...为事件的自然序号.
+　　定义3.2（自然优先事件与自然优先事件集）. 对于任意一个抽象事件EPE和事件a∈PEi∧aE,如果b∈E∧b∈PEi且b的自然序号大于a的自然序号,则称a为E的自然优先事件,包含a的抽象事件A（即假定a∈A）,则A称为E的自然优先集;如果a的序号加1等于b的序号,则称a为E的直接自然优先事件,相应的抽象事件A为E的直接自然优先集.
+　　定义3.3（抽象事件的历史集）. 任意抽象事件APE的历史集H(A)={b｜b∈B∧BA}∪A.H(A)在PEi上的投影H(A)［i］=H(A)∩PEi.由于PE＝PE1∪PE2∪...∪PEN为全集,因此,H(A)=H(A)［1］∪H(A)［2］∪...∪H(A)［N］.
+　　引理3.1. 对于一个分布式系统PE的任意一抽象PE1的任意两个抽象事件A,B∈PE1,如果A≠B∧b∈B∧b∈H(A),则(1) BH(A);(2) BA.
+证明:由抽象定义可知,系统中的任意一个事件只能属于一个抽象事件,通过定义3.3可直接得出结论.
+　　引理3.2. 对于一个分布式系统PE的任意一个抽象PE1的任意两个抽象事件A,B∈PE1且A≠B,历史集与准因果关系之间有:
+　　(1) AB Iff AH(B);
+　　(2) AB Iff AH(B)∧BH(A).
+　　证明:直接由定义3.3得出.从定义3.3可直接得出异步分布式系统的任意抽象事件A的历史集H(A)的算法1.
+　　算法1. 历史集算法
+　　(1) H(A)=A,转(2);
+　　(2) 如果A无直接自然优先集,则转(3),否则,将它的所有直接自然优先集的历史集的事件加入到H(A)中,即假定A的直接自然优先集为E1,...,Em,则H(A)=H(E1)∪...∪H(Em)∪H(A),转(3);
+　　(3) 如果A无接收事件,则结束,否则,将所有发送给它消息的事件集的历史集的事件加入到H(A)中,即假定A接收由E1,...,Es发来的消息,则H(A)=H(E1)∪...∪H(Es)∪H(A),结束.
+　　引理3.3. 对于任意进程Pi（i=1,...,N)的事件集PEi={ei1,...,eim},如果eij∈H(A)［i］,则ei1,...,ei(j-1)∈H(A)［i］.
+　　证明:假定eij∈E,则由引理3.1可知,EA;由于ei1→eij,...,ei(j-1)→eij,假定ei1∈E1,...,ei(j-1)∈Ej－1,则E1EA,...,Ej-1EA,按定义3.3,E1,...,Ej-1H(A),因此,ei1,...,ei(j-1)∈H(A);由H(A)［i］的定义可知,结论成立.
+　　定义3.4. 对于由N个进程组成的分布式系统PE,任意抽象事件A∈PE的历史集向量T(A)是N维向量,T(A)［i］=｜H(A)［i］｜(i=1,...,N).
+　　引理3.3说明,任意H(A)［i］（1≤i≤N）都可由它的元素的最大下标刻画,因此,H(A)可唯一地用N维向量T(A)表示.
+　　引理3.4. 令A,BPE为抽象事件,H(A),H(B)分别为它们的历史集,T(A),T(B)分别为相应的历史向量,那么,T(H(A)∪H(B))=max{T(A),T(B)}.
+　　证明:由定义3.3和定义3.4,通过引理3.3可直接推出.
+3.2　完备逻辑时钟
+　　通过引理3.4,可从算法1得出在异步分布式系统的抽象事件的历史向量的算法,该算法就是本文提出的求抽象事件的逻辑时钟的算法. 
+　　定义3.5（抽象事件的逻辑时钟）. 假定P1,...,PN为一个异步分布式系统的进程,该系统的抽象事件的逻辑时钟（历史集向量）按下面的算法2计算.
+　　算法2.
+　　(1) 置向量计数器V的初值为0:V［k］=0(k=1,...,N);
+　　(2) 选取一个未处理的事件集E,E应没有直接自然优先集,或虽有直接自然优先集但这些直接自然优先集都已处理过,如果选不出这样的E,则结束,否则,转(3);
+　　(3) 处理E:对于所有进程Pi(i=1,...,N),如果E中有m个Pi的事件,则V［i］=V［i］+m,T(E)［i］=V［i］;如果E中没有Pi的事件,则T(E)［i］=0,转(4).
+　　(4) 若E没有直接自然优先集,则转(5);否则,更改T(E)为T(E)及所有E的直接自然优先集的时钟的最大值,即假定E有l个直接自然优先集E1,...,El,则T(E)=max(T(E),T(E1),...,T(El)),转(5);
+　　(5) 若E没有接收消息事件,则转(6);否则,更改T(E)为T(E)及所有已附在E的接收消息事件上的向量的最大值,即假定E有s个接收消息事件r1,...,rs上已附有的向量T(E1),...,T(Es),则T(E)=max(T(E),T(E1),...,T(Es)),转(6);
+　　(6) 若E没有发送消息事件,则转(2);否则,假定E有t个发送消息事件s1,...,st,相应的接收消息事件为r1,...,rt,则对每个ri(i=1,...,t)作如下处理后转(2).
+　　如果包含ri的抽象事件Er已处理过,则T(Er)=max{T(Er),T(E)};否则,将T(E)附在ri上.
+　　例如,图1是由4个进程组成的异步分布式系统的一个正确抽象时序图,虚线框表示抽象事件,各个抽象事件的逻辑时钟为:
+
+图1 四进程异步系统的正确抽象时序图
+　　T(G)=［0,0,0,2］, T(E)=max{［0,2,2,0］, T(H)}=［0,2,2,2］,
+T(A)=max{［2,0,0,0］, T(E)}=［2,2,2,2］, T(B)=max{［4,4,0,0］, T(E),T(A)}=［4,4,2,2］,
+　　T(H)=max{［0,0,4,4］,T(E),T(G)}=［0,2,4,4］, T(C)=max{［6,6,0,0］,T(B),T(I)}=［6,6,6,6］,
+　　T(I)=max{［0,0,6,6］,T(C),T(H)}=［6,6,6,6］, T(D)=max{［8,0,0,0］,T(C)}=［8,6,6,6］,
+　　T(J)=max{［0,0,0,7］,T［I］}=［6,6,6,7］,
+　　T(F)=max{［0,8,8,0］,T(C),T(J),T(I)}=［6,8,8,7］,
+　　T(K)=max{［0,0,9,8］,T(F),T(J)}=［6,8,9,8］.
+　　定义3.6. 令u,v为n维向量的逻辑时钟.
+　　(1) u≤v　Iff　u［k］≤v［k］(k=1,...,m);
+　　(2) u<v　Iff　u≤v∧u≠v;
+　　(3) u‖v　Iff　(u＜v)∧(v＜u).
+　　下面证明定义3.5和定义3.6构成了异步分布式系统抽象的完备逻辑时钟.
+　　引理3.5. 对任意一个由N个进程组成的异步分布式系统PE抽象的任意两个抽象事件A,BPE有:
+　　(1) AB　Iff　T(A)≤T(B);
+　　(2) AB　Iff　T(A)‖T(B).
+　　证明:(1) 假定AB,按引理3.2,有AH(B);按定义3.3和的传递性,有H(A)H(B),因此,H(A)［k］H(B)［k］(k=1,...,N),从而有T(A)［k］=｜H(A)［k］｜≤｜H(B)［k］｜=T(B)［k］(k=1,...,N),即T(A)≤T(B).
+　　反之,假定T(A)≤T(B),由引理3.3可知,H(A)［k］H(B)［k］(k=1,...,N),即H(A)H(B);由于AH(A)H(B),由引理3.1得,AB.
+　　(2) 由(1)和‖以及的定义直接得出.
+　　定理3.1. 如果对于任意异步分布式系统PE的抽象PE1是正确的,那么,按定义3.5和定义3.6所构造的PE1中的抽象事件的逻辑时钟是完备的.
+　　证明:对于任意A,B∈PE1,(1) 由正确抽象的定义可知,如果AB,则a∈A,b∈B:a→b,即A→B;(2) 由的定义可知,A→BAB;综合(1)和(2),由引理3.5可直接得出结论.
+4 结 论
+　　定义3.5和定义3.6给出了在异步分布式系统下抽象事件的完备逻辑时钟,每个抽象事件的时钟只用一个向量,比以往的基于事件向量的完备的逻辑时钟减少了对内存的需求和计算量,算法复杂度由O(N2)降为O(N).算法1和算法2都是相对于异步系统给出的,但从所有引理和定理的证明不难看出,它们都适合同步系统,如果在算法2中对同步事件作相应的处理,即把同步事件看成发送事件与接收事件的组合,则同样也适合同步系统.
+基金项目：本文研究得到国家自然科学基金资助.
+作者简介：董宏,1959年生,博士,主要研究领域为分布式系统,计算机网络.
+　　　　　孙永强,1931年生,教授，博士生导师,主要研究领域为计算机软件.
+作者单位：上海交通大学计算机科学与工程系　上海 200030
+本文通讯联系人:董宏，上海 200030,上海交通大学计算机科学与工程系
+参考文献
+　1　Cheng Wing-hong, Black J P, Manning E. A frame work for distributed debugging. IEEE Software, 1990,7(1):106～115
+　2　Peter Butes. Distributed debugging tools for heterogeneous distributed systems. In: Davis C T ed. Proceedings of the 8th International Conference on Distributed Computing System. San Jose, CA: IEEE Computer Society Press, 1988.308～315
+　3　Lumpp J E, Jr Casavant T L, Siegel H J et al. Specification and identification of events for debugging and performance monitoring of distributed mutiprocessor systems. In: Gerard Le Lann, Walt Koheler eds. Proceedings of the 10th International Conference on Distributed Computing Systems. Paris: IEEE Computer Society Press, 1990. 476～483
+　4　Dror Zernik, Marc Snir, Daliamaki. Using visualization tools to understand concurrency. IEEE Software, 1992,9(3):87～92
+　5　Reinhard Schwarz, Friedemann Mattern. Detecting casual relationships in distributed computations: in search of the holy grail. Distributed Computing, 1994,7(3):149～174
+　6　Suresh K. Damodaran-Kamal, Brown J S. Toward heterogeneous distributed debugging. Technical Report, No. LAUR-97-906, Los Alamos National Laboratory, Los Alamos, NM-87545, 1997
+　7　Kunz T. Event abstraction: some definition and theorems. Technical Report, TI-Z/93, Darmstadt: Technical Univer-sity, 1996
+　8　Cheung Wing-hong. Process and event abstraction for debugging distributed programs. Technical Report T-189, Computer Communications Network Group, Ontario: University of Waterloo, 1992
+本文1998-03-11收到原稿,1998-11-23收到修改稿

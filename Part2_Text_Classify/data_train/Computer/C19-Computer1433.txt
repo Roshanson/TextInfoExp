@@ -1,0 +1,139 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+基于模式分析的对称和非对称三相
+不接地系统故障测距算法研究
+束洪春　邬大明　陈学允　许承斌
+摘　要　基于模式分析理论，提出了不接地三相的两相短路、单相接地和两相接地故障测距的新算法.计算机仿真和实际电网的模拟故障测距试验表明该算法有效.
+关键词　不接地三相，故障测距，模式分析.
+A STUDY ON ALGORITHMS OF FAULT LOCATION FOR (A)
+SYMMETRICUNGROUNDED 3-PHASE SYSTEM BASED
+ON MODAL ANALYSIS THEORY
+SHU HONGCHUN　　DU DAMING　　CHEN XUEYUN　　XU CHENGBIN
+(Dept.of Electical Engineering,Harbin Institute of Technology,Haibin 150001)
+Abstract　Based on distributed parameter circuit theory and modal analysis theory,a number of new algorithms of line-to-line,single-line-to-ground & double-line-to-ground fault location for (a)symmetric ungrounded 3-phase system are proposed in accordance with the characteristic of the system.Simulation of fault location by computer and tests on the fault model simulation lines show that the algorithms presented in the paper are effective.
+Key words　Symmetric 3-phase system,asymmetric 3-phase,ungrounded system,fault location,modal analysis.
+1　引　言
+　　文献［1―2］解决对称不接地三相的单相接地故障测距，算法建立在相坐标，运算量大.作为研究的延续并结合实际课题，本文提出对称和非对称不接地三相的两相短路、单相接地和两相接地的模分量法故障测距新算法.
+2　线路及其故障模型去耦
+2.1　线路建模
+　　线路建模可采用经典卡松公式，亦可利用近年提出的复数深度法［3］.本文研究的不接地三相线路结构如图1所示.图1(a)，(b)为对称线路.图1(c)中相与两边相参数不相等，取其算术平均值.对称线路传播矩阵记为
+
+(1)
+非对称三相传播矩阵记为
+
+(2)
+
+图1　线路结构
+2.2　线路去耦
+　　利用模式分析(亦称模分量法)，相互耦合的相空间三相线路去耦为模量上相互独立的三根模量线.相模变换关系为
+
+(3)
+其中上角标p代表相空间，m代表模空间，s和Q分别为电压和电流变换矩阵.每公里的模阻抗为z012、模导纳为Y012,模量上传播常数为γm=(ZmYm)1/2,特征阻抗为Zcm,m=0,1,2.
+　　对称三相，若采用Wedepohl变换，即有
+
+(4)
+不对称三相，由其传播矩阵(2)可得传播常数之平方为
+
+(5a)
+
+(5b)
+
+(5c)
+由此可得模电压和电流变换矩阵为
+
+(6a)
+其中
+
+(6b)
+
+(6c)
+2.3　故障模型去耦
+　　不接地三相及其故障模型如图2(a)，Gf为过渡电导矩阵.线路末端降压变之原端于诊信频率下的等值阻抗为ZL(图2(b)).Gf用置换后，故障模型去耦为图2(c)，且Y(0)L=0,Y(1)L=Y(2)L=1/ZL.
+
+图2　故障模型解耦(m=0,1,2)
+3　故障测距算法
+　　本文算法是，离线于故障线路加诊信，若线路始端安装阻波器，亦可在线加音频诊信.待电路稳定后检测线路始端电压电流并借此迭代求解测距方程，实现故障定位.为排除线路上杂波干扰，应具有数字滤波环节.
+　　由图2(c)得
+
+(7a)
+
+(7b)
+
+(7c)
+由图2(a)可得故障边界电压电流约束为
+
+(8)
+模量表示为
+
+(9)
+由式(9)建构对称三相故障测距方程如表1.
+表1　对称线路故障测距方程
+类型BCA-GBC-G
+故障
+导纳矩阵Gf
+过渡电阻Rf
+测距方程Im=(Rf)=0Im=(Rf)=0Im=(Rf+2Rd)=0
+　
+
+　　对于非对称三相，相模变换采用式(6)，且考虑｜ZL｜比｜Zcm｜大十多倍，令Y(m)L=0,m=0,1,2,则
+
+(10)
+BC和A-G故障定位方程为
+
+(11)
+BC-G故障的诊断方程为
+
+(12)
+其中x=col(x　Rf　Rd),且
+　　　　
+其中
+
+
+
+方程(12)为三元非线性方程，可选用修正的NR法.在满足线长小于四分之一诊信波长条件下，从(0.5l,0,0)开始迭代7，8次即可收敛(ε≤10-2m).
+　　对于平行线路，无论是输电线还是配电馈线，无论对称还是不对称，若有代价实现近远端之间同步采样，则一切横向故障的测距方程可为算式
+
+(13)
+其中　　　　　　　
+(14a)
+
+(14b)
+单相接地选零模，其余选空间模.
+4　算例
+　　l=20km的某三相对称线路故障测距结果见表2.
+表2　对称三相故障测距的计算机仿真
+类型假设故障诊断结果
+x(km)R(Ω)x(km)R(Ω)
+BC51050109.9
+100499599.5
+1010100109.9
+100997499.1
+1510149989.9
+1001499899.8
+A-G510501510.0
+1005015100.0
+10101002310.0
+1001003499.8
+15101503910.3
+10015035100.1
+BC-Gx(km)Rf(Ω)Rd(Ω)x(m)Rf+2Rd
+51010500730.6
+1001005018299.3
+1010101003430.2
+10010010048299.8
+1510101505327.7
+10010014991300.1
+
+5　结　论
+　　1)采用分布参数模型，为精确定位故障奠定基础；2)采用模量分离解法，运算量小；3)线长小于四分之一波长时，不存在伪根.
+邬大明，现在昆明铁路机械学校.
+作者单位：哈尔滨工业大学电气工程系　哈尔滨　150001
+参考文献
+［1］　束洪春等.10KV或6KV直配线路接地故障测距的新算法.中国电机工程学报，1995，15(6)：423―428.
+［2］　束洪春等.树型电网单相接地的多频法故障诊断.铁道学报，1996，18(3)：67―71.
+［3］　Deri A et al.The complex ground return plane,a simplified model for homogeneous and multi-layer earth return.IEEE Trans,1981,PAS-100(8):3686―3693.
+收稿日期　1995-11-01

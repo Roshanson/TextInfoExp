@@ -1,0 +1,48 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年　第25卷　第5期　Vol.25 No.5 1999
+
+
+
+
+带有初始误差修正的迭代学习控制
+黄宝健　孙明轩　张学智
+关键词　初始条件，迭代学习控制，收敛性.
+ITERATIVE LEARNING CONTROL ALGORITHMS WITH INITIAL
+UPDATE ACTION
+HUANG Baojian　SUN Mingxuan　ZHANG Xuezhi
+(Department of Electronics,Xi'an Institute of Technology, Xi'an 710032)
+Key words　Initial condition, iterative learning control, convergence.
+1　引　言
+　　在利用迭代学习算法设计控制器时，为了保证算法的收敛性，常对系统的初态限定一定的条件，这就是所谓的初始条件问题.目前发表的文献大都要求迭代初态严格重复期望初态［1―5］.然而，实际的重复定位操作往往会引起迭代初态相对于期望初态的偏移.在很多情况下期望初态是未知的，而系统初态也是固定的.本文研究在迭代初态任意固定的情况下迭代学习控制问题，提出了带有初始误差修正的迭代学习算法，讨论了这种算法的收敛性，给出了算法的极限轨迹.
+2　主要结果
+　　考虑一类非线性系统
+(1)
+其中t∈［0,T］,x,f(x)∈Rn,B(x)∈Rn×r,y,g(x)∈Rm,u∈Rr.对于该系统，作如下假定：g(x)关于x的导数gx(x)存在；f(x)，gx(x)，B(x)关于x满足全局一致Lipschitz条件，即对于x1,x2∈Rn,f(x1)-f(x2)≤kfx1-x2,h(x1)-h(x2)≤khx1-x2,h∈｛B,gx｝;B(x),gx(x)有界：B(x)≤M1,gx(x)≤M2.
+　　对该系统采用如下形式的学习律：
+　(2)
+其中t∈［0,T］,ek(t)=yd(t)-yk(t)，Γ(y(t))为学习增益矩阵，满足Γ(y(t))≤γ，而
+　(3)
+称为“初始修正函数”.
+　　定理1.对于由式(1)所描述的系统及学习律(2)，如果满足
+　　c1)　I-Γ(g(x))gx(x)B(x)≤ρ<1,x∈Rn;
+　　c2)　xk(0)=x0,k=0,1,2，…，
+则当k→∞时yk(t)在［0,T］上的极限轨迹为
+　(4)
+即当k→∞时yk(t)在［h,T］上一致收敛于yd(t).
+　　证明.令 e*k(t)=y*d(t)-yk(t).由式(4)知，y*d(0)=g(x0)，因此，e*k(0)=y*d(0)-yk(0)=0,y*d(h)=yd(h),.取一控制输入u*d(t)，使系统初态位于x0的输出轨迹为y*d(t).记Δu*k=u*d-uk,e*k=y*d-yk.于是由式(2)当0≤t<h时
+　(5)
+当h≤t≤T时，由于y*d(t)=yd(t)，即e*k(t)=ek(t)，而θh(t)=0，故式(5)也成立，即式(5)对任何t∈［0,T］均成立.由此可证定理1的结论.
+3　结　论
+　　文中所提出的学习算法适用于存在初态偏移的学习控制系统，定理1的条件放松了对迭代初态的要求.函数θh(t)的引入可以实现在区间［h,T］上对期望轨迹的完全跟踪，这表明此种学习算法对于克服初态偏移的影响是十分有效的，但h过小会产生较大的控制量.文中的结果包含了迭代初态严格重复时的有关结论.
+作者简介：黄宝健　男，1961年12月生.硕士，副教授.研究领域：几何函数论，迭代学习控制.
+　　　　　孙明轩　男，1961年6月生.硕士，副教授.研究领域：迭代学习控制，最优控制，计算机仿真.
+作者单位：西安工业学院电子系　西安　710032
+参考文献
+1　Ahn H S, Choi C H. Iterative learning control for linear systems with a periodic disturbance. Electronics Letters, 1990,26(18):1542―1554
+2　Arimoto S, Kawamura S, Miyazaki F. Bettering operation of dynamic systems by learning: A new control theory for servomechanism or mechatronics systems. In:Proc.of 23rd IEEE Conf. on Decision and Control. Las Vegas, NV, 1984,1064―1069.
+3　Ortega J M, Rheinboldt W C. Iterative Solution of Nonlinear Equations in Severial Variables. Academic Press, 1970
+4　Poter B, Mohamed S S. Iterative learning control of partially irregular mutivariable plants with initial state shifting. Int.J.Systems Sci., 1991, 22(2):229―235
+5　Sugie T, Ono T. An iterative learning control law for dynamic systems. Automatica, 1991, 27(4):729―732
+收稿日期：1997-03-28
+修稿日期：1998-09-28

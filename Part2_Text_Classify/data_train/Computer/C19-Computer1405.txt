@@ -1,0 +1,63 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第4期　Vol.23　No.4　1997
+
+
+
+基于人工神经网络在线参数跟踪的
+自适应交流传动系统1)
+汪镭　周国兴　吴启迪
+　　摘　要　由于实际的矢量控制效果对传动系统参数的敏感性，使其参数的在线跟踪有了很大的意义.提出了一种基于 Hopfield 神经网络的参数在线跟踪方法，并将在线跟踪结果用于参数突变 50% 的交流传动系统磁通及转速控制器的自适应调整，得到了很好的仿真试验结果.
+　　关键词　神经网络，交流传动，在线参数跟踪，自适应.
+A NEURAL NETWORK BASED ON-LINE PARAMETERS TRACKING 
+SCHEME FOR AUTOTUNED AC DRIVE SYSTEM
+WANG LEI　ZHOU GUOXING　WU QIDI
+(Department of Electrical Engineering,Tongji University,Shanghai 200092)
+Abstract　Because of the sensitivity of Vector-Control effect to the AC drive system parameters,it is meaningful to discuss the online tracking of the system parameters.This paper uses the Hopfield neural network for online tracking of the rotor resistance(R2),system rotation inertia(J),speed damping coefficient(RΩ) and load torque(TL),and uses the online tracking results for adaptive tuning of the flux and speed controller of the AC drive system when its parameters suddenly change about 50% at the start time.Simulation results show the effectiveness of the derived method.
+Key words　 Neural network,on-line parameters tracking,autotuned AC drive system.
+1　Hopfield 神经网络用于交流传动系统参数的在线跟踪
+　　Hopfield 神经网络［1］是一种整体优化网络，该网络的协同作用能使其能量函数趋于最小［2］.因此，只要根据参数跟踪的要求确定相应的能量函数，就能确定网络结构和输入，网络输出就是参数的在线跟踪值。
+　　在各神经元输入电阻 Ri→∞时，Hopfield 标准能量函数简化为
+
+每个神经元动态特性在输入电容相同时可表示为
+
+输出 Vi=g(ui).其中 g-1(u) 为单调递增的连续函数.
+　　用与文献［3］相类似的方法可以证明，在各神经元连接系数互相对称时，网络的协同作用能使上述简化的能量函数趋于最小值。在绕线式异步电机传动系统中，只要检测定转子电流，就能进行直接的磁场定向，经同步旋转轴系变换［3］，电机定子电流可分解为励磁分量 im1和转矩分量it1，并满足
+
+(1)
+
+(2)
+在实际系统中， im1变为磁通控制器的输出 im1c.由(1)可得
+
+A1p和 B1p 为待跟踪的时变系统参数.令励磁回路参数跟踪网络由两个Hopfield神经元组成，其参数跟踪输出为 A1s和 B1s.
+跟踪参照网络定义为　pΨ2s=A1sΨ2+B1sim1c.
+定义励磁参数跟踪能量函数
+
+　　显然，Hopfield网络的性能决定了其输出将趋于正确的系统参数值。这样，通过A1s或B1s 很容易得到转子电阻的在线跟踪结果。将上式与简化的网络标准能量函数相比较，可得到该网络的连接系数，从而得到两神经元的动态方程
+
+这里，用来模拟各神经元的输入输出特性(S模拟饱和值，λ 模拟学习率)，网络跟踪速度能够通过 λ 来进行调节，具体的求解电路如图1所示。
+
+
+图1　转子电阻的神经网络跟踪求解电路示意图
+　　同样，通过类似方法，可以获得系统转矩平衡参数在线跟踪网络神经元的动态方程，系统转矩平衡参数跟踪网络能量函数为1)
+1)具体求解方法参见第4届全国电气自动化工程策略年会论文集第144―151页.
+
+2　神经网络参数跟踪结果用于在线设定控制器的自适应交流传动系统
+　　将神经网络在线跟踪的传动系统参数用于磁通及转速的自适应控制，得到了很好的仿真实验结果(如图2-图4所示)：在传动系统参数于零时刻突变 50% 左右时，基于神经网络在线控制器参数调整的交流传动系统获得了很好的磁通及转速自适应控制结果(令闭环后励磁回路时间常数为 10ms，速度跟踪时间常数为 0.1ms).
+
+
+图2　自适应磁通控制结果
+
+
+图3　理想速度指令曲线
+
+
+图4　自适应速度跟踪结果
+　　从以上结果可以证明本文方法的有效性.但本文得到的结果还有一定的阶段性和可扩展性，将本文结果扩展到鼠笼式交流电机传动系统控制的研究正在进一步进行.
+1)　原文曾发表于第四届全国电气自动化工程控制策略年会.
+作者单位：同济大学电气系　上海　200092
+参考文献
+［1］　Tank D W,Hopfield J I.Simple “neural networks”:an A/D converter,signal decision circuit,and a linear programming circuit,IEEE Circuit and System.1988,533―541.
+［2］　焦李成.神经网络系统理论.西安：西安电子科大出版社，1990.
+［3］　陈坚.交流电机数学模型及调速系统.北京：国防工业出版社，1988.
+收稿日期　1995-05-25

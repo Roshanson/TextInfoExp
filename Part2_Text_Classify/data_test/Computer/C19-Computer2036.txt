@@ -1,0 +1,166 @@
+微型电脑应用
+MICROCOMPUTER APPLICATIONS
+2000　Vol.16　No.1　P.51-53
+
+
+
+Windows 9X硬件中断设备驱动程序的开发
+姜山　程君实
+摘　要：本文介绍了在基于PC和Windows 9X平台下实现实时控制的关键技术一一实时钟中断的获取方法，对虚拟设备驱动程序(VxD)和VtoolsD工具箱进行了简要介绍。通过对源代码的分析说明了实时硬件中断VxD的实现过程。
+关键词：控制系统　实时系统　虚拟设备驱动程序 VtoolsD
+Abstract：This paper describes the method of acquiring rea l time clock interrupts, which is the key technology of real time system design based on PC and Windows 9x. The VxD Virtual Device Driver and VtoolsD Toolbox ar e also introduced briefly. Implementation of the real time interrupt VxD is illu strated by the source code analysis.
+Keywords：control system　real time system　virtual device driver　VtoolsD▲
+一、绪言
+　　在计算机控制领域，随着硬件的发展，一些原本十分复杂的控制算法的设计和仿真变得越来越容易实现。与基于VME、MULTIBUS以及STD总线的平台相比，基于ISA总线的高性能PC工控机(IPC)无疑是近来应用最为广泛的主流产品。这主要得益于IPC与PC的软件兼容性，此外其开放性结构、外围高性能I/O模板的不断涌现以及实进工业网络的迅速发展都为IPC创造了有利的发展环境。可以说，IPC的时代已经到来。此外，在当今的计算机控制领域中，控制软件是否基于Windows平台已经成为产品是否有竞争力的重要标准之一［1］。目前基于Windows平台的相关产品已经占据了市场份额的90%。而Windows 9X和Windows NT凭借其出色的多任务、图形用户接口(GUI)、性能优越的硬件兼容性以及卓越的32位软件环境等性能已经越来越广泛地被应用于工业控制，成为实现实时控制的优秀平台。
+　　与Windows NT及其实时扩展PTX4.1［2］相比，Windows 9X的应用更为广泛灵活，而且对硬件的要求并不苛刻。本文将讨论在Windows 9X下实现实时控制的关键技术一一实时时钟中断驱动程序的设计及实现。
+二、Windows 9X下实时进钟的获得
+　　在实时控制中中断技术应用得十分广泛，其中实时时钟的获得基本上都是通过中断来实现的。时钟控制在实时控制中处于十分重要的地位，它负责推进控制过程、激活各控制任务或发关控制消息，起到了总控制器的作用。在Windows 9X下实时时钟的获得可以有不同的方法。设置Win32定时器并通过响应WM-TIMER消息来进行实时处理是最简单的方法。但是由于WM-TIMER消息的低优先级和未处理消息在消息队列中的组合造成了系统实时处理的不稳定，因此这种方法只适合实时性要求不高的应用。若采用Windows多媒体定时器，通过设置回调函数可以获得最高精度为Ims的定时信号，但是由于占用了系统宝贵的资源，而且当定时信号由用户提供或需要更高的中断频率时这种方法就显得无能为力了。与这些基于类似软件中断的方法相比，基于硬件中断的方法占据了主导地位，并在绝大多数的实时系统中得到了应用，因为它保证了对实时控制系统至关重要的可靠性。本文将讨论在PC和Windows 9X环境下对于实时控制系统的设计和实现中最为关键的硬件中断VxD的实现。
+三、VxD及VtoolsD
+　　VxD是32位保护模式下的可执行DLL，用于管理系统资源。所有的VxD运行于Windows VMM的监控之下。VMM和VxDs共同构成了Windows Ring 0层的系统内核。
+　　开发虚拟设备驱动程序(VxD)的常规方法是使用Microsoft出品的设备驱动程序开发工具包DDK(Device Developer Kit)。这要求设计者必须对Windows 95的体系结构、设备驱动程序的结构、VMM(Virtual Machine Manager,即虚拟机管理器)以及Intel CPU体系结构有深入的了解，而且需要保护模式的汇编语言编程经验［3］。但正如我们现在很少有人使用SDK开发Windows应用程序，取而代之以MFC或OWL等C++类库编程一样，DDK的开发人员现在可以使用类似VtoolsD、WinDriver等第三方的软件来编制驱动程序，笔者推荐使用VtoolsD。
+　　Vireo公司出色的VtoolsD由可视的VxD代码生成器QuickVxD、C运行库、VMM/VxD服务库、C++类库以及VxD的装入程序等组成。利用QuickVxD生成的框架程序和经充分测试过的C运行库或C++类库可以绕过DDK用C或C++来编制驱动程序，这就大大地简化了开发的难度，提高了可靠性。框架程序可以直接在Visual C++集成开发环境中用NMAKE编译为VxD。
+四、硬件中断驱动程序开发实例
+　　在笔者设计的24自由度仿人型机器人实时仿真和控制系统中，为了提高系统的可移植性，首先通过VxD修改PC基板上CMOS中的可编程计数器以获得2KHz的系统08中断频率，并截获此中断来进行实时调度。通过对此基本定时信号的调度以获得诸如对外部多通道的模拟量进行采集、控制算法处理、控制结果输出以及实时屏幕刷新等多任务的定进信号［4］。这种方法不需要用户提供附加的硬件定时器。开发中选定Windows 98作为软件开发平台，为了充分利用32位CPU和操作系统的处理能力，选择Microsoft Visual C++ 6.0作为应用层(ring 3)开发工具，应用程序是基于MFC。而VxD是通过VtoolsD 2.04编写的。Ring 0级调试工具为NuMega公司的SoftIce 3.23。本文将对Ring 0和Ring 3两层软件的设计加以说明。
+　　1.Ring 0级硬件中断VxD的设计
+　　在使用QuickVxD生成框架代码的过程中，在Device Parameters选单中应选中Dynamically Loadable以使得驱动程序能够动态加载。在Windows 95 control messages选单中选中W32-DEVICEIOCONTROL消息、SYS-DYNAMIC-DEVICE-INIT消息及SYS-DYNAMIC-DEVICE-EXIT消息。这些消息的处理函数通过以下VxD的实现代码加以说明：
+#include<vtoolscp.h>
+#include"winioctl.h"
+#define DEVICE-CLASS IrqtestDevice
+#define IRQTEST-DeviceID UNDEFINED-DEVICE-ID
+#define IRQTEST-Init-Order UNDEFINED-INIT-ORDER
+#define IRQTEST-Major　1
+#define IRQTEST-Minor　0
+#define w32IF-PASS-EVENT CTL-CODE
+(FILE-DEVICE-UNKNOWN, 1,METHOD-NEITHER,FILE-ANY-ACCESS)
+#define RTC-IRQ8//实时时钟使用的IRQ
+#define STATREG-A 0xA
+#define STATREG-B 0xB
+#define STATREG-C 0xC
+#defing ENABLE-INTERRUPT 0x40
+#define WM-MY-MESSAGE 0x0410//自定义消息
+BOOL -stdcall RTCInt-Handler(VMHANDLE hVM,IRQHANDLE hIRQ);//时钟中断服务程序
+VOID WriteCMOS(BYTE reg,BYTE value);
+BYTE ReadCMOS(BYTE reg);
+class IrqtestDevice:public VDevice｛
+prblic;
+virtual BOOL OnSysDynamicDeviceInit();
+virtual BOOL OnSysDynamicDeviceExit();
+virtual DWORD OnW32DeviceIoControl(PIOCTLPARAMS pDIOCParams);｝;
+class IrqtestVM:public VVirtualMachine｛
+public;
+IrqtestVM(VMHANDLE hVM);｝;
+class IrqtestThread:public VThread｛
+public:
+IrqtestThread(THREADHANDLE hThread);｝;
+//IRQTEST.cpp-main module for VxD IRQTEST
+#define DEVICE-MAIN
+#include"irqtest.h"
+#undefDEVICE-MAIn
+Declare-Virtual-Device(IRQTEST)
+VPICD-HWInt-THUNK RTCInt-Thunk;handler//中断Thunk
+EVENTHANDLE hEvent;//Handle of timer event
+IRQHANDLE RTCIRQHandle；//Handle for virtual IRQ
+BYTE SavedStatusRegisterA;
+BYTE SavedStatusRegisterB;//保存RTC设置寄存器
+DWORD TickCounter;//中断计数器
+DWORD*PostMsghWnd;//Ring3层应用程序的hWnd
+HANDLE hWnd;
+IrqtestVM::IrqtestVM(VMHANDLE hVM)
+VVirtualMachine(hVM)｛｝
+IrqtestThread::IrqtestThread(THREADHANDLE hThread)
+VThread(hThread)｛｝
+BOOL IrqtestDevice::OnSyaDynamicDeviceInit()｛
+VMHANDLE hVM;
+hVM=Get-Cur-VM-Handle();
+BYTE statreg;
+DWORD status;
+DWORD RTClockFreqIndex;
+//挂接硬件中断需要调用虚拟可编程中断控制器(VPICD)来通知Windows此VxD负责处理此IRQ。在这里我们只用到了VPICD提供的五个不同的与IRQ相关的通知事件之一，即实际的硬件中断事件。
+struct VPICD-IRQ-Descriptor IRQdesc;//此结构将被传入VPICD-Virtualize-IRQ例程进行初始化，以下是参数设置。IRQdese.VID-IRQ-Number=RTC-IRQ;//将要被虚拟的IRQ IRQdesc.VID-Options=0;//保留
+//为了在此结构中设置中断服务例程的地址，我们将服务例程thunk的地址传递给VPICD-Thunk-HWInt,它将负带将thunk初始化并返回它的地址
+IRQdesc.VID-Hw-Int-Proc=(DWORD)VPICD-Thunk-HWInt
+(RTCInt-Handler,&RTCInt-Thunk);
+IRQdesc.VID-IRET-Time-Out=500;
+//此结构的其它变量在这里没有用到。
+//通过VPICD-Virtualize-IRQ服务将已定义结构传入VPICD，VPICD分配IRQ并返回其句柄
+RTCIRQHandle=VPICD-Virtualize-IRQ(&IRQdesc);
+if(RTCIRQHandle==0)returnFALSE;//虚拟化失败
+//保存初始RTC状态寄存器以便退出时恢复现场
+SavedStatusRegisterA=ReadCMOS(STATREG-A);
+SavedStatusRegisterB=ReadCMOS(STATREG-B);
+RTClockFreqIndex=6;设置中断频率，见下文说明；
+statreg=(SavedStatusRegisterA & ～0xF)｜(RTClockFreqIndex & 0xF);
+WriteCMOS(STATREG-A,statreg);
+//设置RTC状态寄存器使得status register flags to enable it to assert its IRQ
+statreg=ReadCMOS(STATREG-B);
+statreg｜=ENABLE-INTERRUPT;
+WriteCMOS(STATREG-B,statreg);
+ReadCMOS(STATREG-C);
+TickCounter=0;//初始化中断计数器
+//保证IRQ在PIC中未被屏蔽
+VPICD-Physically-Unmask(RTCIRQHandle);
+return TRUE;
+｝
+BOOL IrqtestDevice:OnSysDynamicDeviceFxit()｛
+//恢复现场；
+Cancel-Global-Event(hEvent);
+WriteCMOS(STATREG-A,SavedStatusRegister A);
+WriteCMOS(STATREG-B,SavedStatusRegister B);
+VPICD-Physically-Mask(RTCIRQHandle);
+VPICD-Force-Default-Behavior(RTCIRQHandle);
+return TRUE;
+｝
+DWORD IrqtestDevice::OnW32DeviceIoControl
+(PIOCTLPARAMS pDIOCParams)
+｛
+switch(pDIOCParams->dioc-IOCtICode)｛
+case DIOC-OPEN;//CreateFile
+｛hWnd =0;//Ring 3层应用程序主窗口句柄初始化
+return 0;｝
+case W32IF-PASS-EVENT:
+PostMsghWnd=(DWORD*)pDIOCParams->dioc-InBuf;
+hWnd=(HANDLE)*PostMsghWnd;//获得主窗口句柄
+return 0;
+default:return-1;｝
+return 0;｝
+BOOL -stdcall RTCInt-Handler(VMHANDLE hVM,IRQHANDLE hIRQ)｛
+//在中断服务例程中，对中断计数器计数并向Ring 3层应用程序发送自定义消息；
+if(hWnd&&(TickCounter%100==0))｛
+SHELL-PostMessage(hWnd,WM-My-MESSAGE,0,0,NULL,NULL);｝
+TickCounter++；
+ReadCMOS(STATREG-C);//清除RTC状态标志
+VPICD-Phys-EOI(hIRQ);//指定VPICD清除此中断
+return TRUE;//thunk将清除进位
+｝
+//篇幅所限，针对COMS端口操作的两个函数ReadCMOS(BYTE reg)和WriteCMOS(BYTE reg,BYTE value)的源程序略，请参考VtoolsD连机帮助中的CHIME例子。
+　　2.Ring 3级主应用程序设计
+　　将生成的VxD放入主应用程序的工作目录中，用CreateFile()函数动态加载VxD。hDevice=CreateFile("\\\\.\\irqtest.vsd",0,0,0,OPEN-ALWAYS,FILE-FLAG-DELETE-ON-CLOSE,0);
+需要挂接中断时，调用DeviceIoControl()将主程序窗口的句柄传递给正运行的VxD。
+Main-CWnd=AfxGetMainWnd();
+inBuf［0］=Main-CWnd->m-hWnd;
+if(! DeviceIoControl(hDevice,W32IF-PASS-EVENT,inBut,sizeof(PVOID),RetInfo,sizeof
+(RetInfo),&cbBytesRetumed,NULL))
+AfxMessageBox("DeviceIoCtl Failed!"MB-OK);//与VxD通讯失败
+然后在自定义消息处理函数中加入自己的实时处理代码。需要说明以下几点：
+　　.在VxD的中断处理函数中可以加入对实时性要求最高的代码，原则上应尽快返回以提高中断频率和避免重入；
+　　.中断频率的选择参数n有以下选择：
+
+n频率(Hz)n频率(Hz)
+12567512
+21281064
+381921132
+440961216
+52048138
+61024144
+
+　　.本文介绍的方法同样适用于编写其他普通硬件中断VxD。
+　　.在中断频率较高的数据采集系统中。可以设置双缓冲区来实现实时中断与处理线程的同步。
+五、结论
+　　本文在对PC和Windows 9X和9X进行了细致的研究之后，分析了在其上构造实时系统的方法，并通过详细的应用示例给出了具体的说明。本文使用的方法具有通用性和易用性，在笔者设计的24自由度仿人型机器人控制系统中运行良好。本文介绍的方法对于开发Windows 9X实时控制系统具有实际的参考价值。■
+作者单位：姜山(上海交通大学存储研究中心 200030)
+参考文献：
+［1］Dean J.Petrone, Michael D. Stackhouse PC-Based Control Goes Real-ti me Control Engineering.Apil 1998
+［2］Martin Timmermon, Windows NT Real time extensions better or worse? R eal-time Magazine,Mar,1998
+［3］张维铭，使用VtoolsD开发Windwos 95虚拟设备驱动程序，中国计算机用户，1997.12
+［4］Paolo Fiorini, Homayoum Seraji, Mark Long A PC-Based Configuration Controller for Dexterous 7-DOF Arms［M］,IEEE Robotics and Automation Magazine, Vol ume 4(3),September 1997,pp.30-38
+收稿日期：1999-07-05

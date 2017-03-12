@@ -1,0 +1,64 @@
+信息与控制
+Information and Control
+1999年　第28卷　第1期　Vol.28　No.1　1999
+
+
+
+Agent的混沌动力学行为
+　董　军　　潘云鹤
+
+　　摘　要　Agent可看作其状态是由知识、信念、意向和期望等精神因素组成的一个实体，自主性与交互性是它的特点．本文刻划Agent的动力学行为，用Lyapunov指数描述其混沌特征．这对于掌握Agent的本质，并完整实现其功能是有益的．
+　　关键词　Agent，混沌，人工智能，Lyapunov指数
+AGENT'S CHAOTIC DYNAMICS BEHAVIOR
+DONG Jun1,2　PAN Yunhe1
+(Institute of Artificial Intelligence, Zhejiang University, Hangz hou, 310027)1 
+(Shanghai Bell Co., Ltd. Shanghai 201206)2
+Abstract　Agent can be looked as an entity which includes som e spiritual factors such as knowledge, believe, intention, and desire etc. Auton omous and interaction are its characteristics. The article describes agent's dyn amic behavior, depicts its chaotic characters using Lyapunov exponent. It is ben eficial to grasp agent's nature and implement its functions.
+　　Key words　Agent, Chaos, Artificial Intelligence, Lyapunov Expon ent
+
+1　引言
+　　多Agent系统(MA)和计算机支持协同工作(CSCW)是互相耦合的非线性系统, 本质上是动力学演变过程．其动力学行为，包括最后的决策过程时而是混沌的[1]．一个进入混沌区的系统，有其潜在的价值，某些情况下，也许能提供更大的问题搜索空间，也许 在混沌区外有有益行为．用混沌动力学观点分析MA的行为在本质上是合理的，Kiss 利用动力学系统范形为Agent的目标、喜好等基本概念给出的一个理论模型，为形式化 描述Agent和MA提供了基础[2]．
+2　Agent的混沌行为
+　　Agent[3]可看作其状态是有知识、信念、意向和期望等精神因素组成的一个实 体，自主性与交互性是它的特点．Agent所处的环境，即多个Agent构成的系统是动态、复杂、实时和不确定的，Agent要对熟悉的情形迅速作出反映，同时必须能够处理与其它Agent的冲突，或者与其它Agent协调解决冲突，规划其行为，并最终作出决策．Agent 通过感知来了解环境，通过执行动作实现其目标并影响环境，要有知识，更要有自我的意向 ．
+　　假设Agent充当一个通过执行动作来改变状态和调节行为的控制器，并且是朝适合“生 存”的方向发展，适合程度与所处的环境相关．环境对Agent的影响是使其内部状态产生扰动，Agent的动作是企图抵消这种扰动．Agent通过改变其内部或外部行为来设法控制环境．但Agent调整其愿望并不一定影响环境．
+　　依据动力学理论，系统的运动总是朝向稳定平衡态而远离不稳定平衡态，它们分别对应的是 吸引子和排斥子[4]．Agent运动的内部动力是偏好，它决定其渐近行为．不稳定平衡主要源于吸引子间的竞争．吸引子和排斥子决定了运动的方向．
+　　混沌动力学中，可用迭代函数描述系统在相空间中由一个状态到另一状态的映射．迭代映射 是一个离散过程，其渐近行为是一个重要方面．从某一定点出发，其轨迹最终可到达一固定点、环或进入混沌．导致固定点的状态集合叫做吸引子盆．如果函数在固定点的值小于1，则固定点是吸引的．反之就是排斥的．不管系统初态如何，最终行为都取决于吸引子．对于 CSCW中的Agent，不管是冲突还是协作，最终总要达到某个平衡点或稳定点．
+　　按优化理论，动力学系统由寻找目标函数的稳定值（通常是最大或最小值）的原则所控制． 在描述行为或经济过程的应用中，目标函数叫做效用函数．相应的Agent的效用函数的值与组成动力学系统的全局吸引子和排斥子相关．Agent间的竞争所产生的状态空间的拓扑结构使其轨迹不能达到全局吸引子所对应的效用值．Agent所能达到的目标与组成动力学系统的吸引子盆中的局部吸引子和排斥子相关，是Agent的渐近稳定平衡态．
+　　定义1　Agent ::= <MS, IB>.
+　　MS和IB分别表示Agent的内在精神状态和外部交互行为．
+　　定义2　MS ::= <Cg, It, If, Cd, Pl, Ds>.
+　　Cg, It, If, Cd, Pl, Ds分别表示Agent的认知、意向、推理、协调、规划和决策等精神状态和功能．
+　　定义3　IB ::= <Sp, Sg, Sl, As, Se, Ex, Ef >.
+　　其中Sp表示相空间，即位置的集合，Sg表示Agent外部状态空间集合；Sl表示A gent能识别的状态空间集合，As是活动的集合；Sg:Sp→Sg表示相空间到状态空 间的映射，Se: Sg→Sl是感知函数，Agent由其通过人机交互和相互通信识别外 部状态；Ex: Sl→As是执行函数，表示Agent在当前识别状态下欲采取的行动；Ef: As×Sg→Sg是效用函数，表示当前活动的执行所产生的结果状态．
+　　整个状态空间可用Rn×R表示，状态空间到相空间的映射为：Rn×R→Rn．
+　　为了把握系统的状态的改变，需要为每一个位置定义一个传递函数，它基于当前的状态值和 部分其它位置的状态值计算下一步的值．Agent的状态的交互即通过互以对方的状态作为输入消息完成的．
+　　定义4　　　　　　si+1=f({si}), si∈Sl,　si+1Sl, 　i∈N.
+　　该传递函数表示由Agent的动作导致的改变（包括没有任何结果）．传递函数可在不同的时刻将同一状态赋给Sl的子集．称这样的局部固定点为局部吸引子． 如果f(si)=s i，si∈Sl，表示si是一固定点，即si是一个吸引子．对于所有吸引子，有一个 开集叫吸引域．
+　　由于传递函数是一个以自身为参量的迭代，由混沌动力学可知，在一定条件下，其结果将是 混沌的．数学、物理学往往用Lyapunov指数\表征混沌的存在．
+　　不失一般性，设离散动力系统(S, g)，初值为s0 ，生成轨道为{sn} , n∈Z．考虑沿s0的某个切线方向上的无穷小扰动y0，则y0随时间的演化服从于
+yn+1=Dg(sn)yn.　　　　　　　　　　　　　　　　(1)
+显然y0/|y0|给出了在s0处所引起扰动方向，而|yn|/|y0|表示扰动是放大或缩小．由(1)得
+yn=Dgn(s0)y0.　　　　　　　　　　　　　　　　(2)
+其中Dgn(s0)=Dg(sn-1)Dg(sn-2)…Dg(s0)．这样就可定义在初值s0下，沿着y0/|y0|方向的Lyapunov指数为
+　　定义5　　　　　　　　　　　　　(3)
+其中u0=y0/|y0|．正的Lyapunov指数即表征存在混沌行为．因而，CSCW中Agen t的行为在一定条件下会趋向混沌，影响其行为的参数即它的精神状态，如意向．意向与作用在Agent上的“吸引子外力”相关．可认为力来自一个“能场”，因而效用函数可用能表征，Agent则跟随能的梯度方向．
+　　为了用上述理论解释Agent的愿望等精神状态，定义一个享乐函数．
+　　定义6　　　　　Fh =h(sc, st).
+　　其中，sc和st享分别为当前状态和目标．享乐函数描述一个Agent在某一状态经历 的“快乐”或”悲痛“ 之和．其意义是将状态映象到具体的享乐数值．享乐状态是与当前 状态有关的吸引或排斥势能的叠加，这些势能由Agent本身的状态和当前目标产生．单 个吸引子和排斥子的贡献可由h(s, sfixedi)分别计算，sfixedi是与 吸引子i有关的固定点状态．可以认为Agent的行动总是朝有利于取最大享乐值的方向发 展．Agent动作的目的也就是寻求其享乐函数的优化值．
+3　结论
+　　本文刻划了CSCW和MA中Agent的动力学行为，并用Lyapunov指数描述其混沌特征．这对于掌握Agent的本质，并实现其功能颇为有益．
+作者简介：董　军，博士后．研究领域为多Agent系统，计算机支持协同工作．
+　　　　　潘云鹤，教授，工程院院士．研究领域为人工智能，智能CAD等．
+作者单位：董　军：浙江大学人工智能研究所　杭州　310027
+　　　　　董　军、潘云鹤：上海贝尔公司　上海　 201206
+参考文献
+1　董　军, 胡上序. 混沌神经网络的研究现状与展望. 信息与控制, 1997, 5: 360～368
+2　Kiss G, Reichgelt H. Towards a Semantics of Desires. In: Werner E,Demazeau Y eds.
+　　Decentralized A. I. 3, Proc. of the Third European Workshop on Modelling 
+　　Autonomous Agents in a Multi-Agent World, Kaiserslautern, Germany, August 5-7, 
+　　1991, Amsterdam: Elsevier Science Publishers, 1992: 115～127
+3　Dong Jun et al. CSCW's Agents Structure with Decision Ability. CAD/Cs97 , 
+　　Shenzhen, 1997
+4　Dong Jun et al. Software Agents Model in CSCW. IEEE ICIPS?7, Beijing, 19 97, 10.t
+5　刘增荣. 二维平面映射的奇怪吸引子. 苏州：苏州大学出版社, 1996: 1～26
+收稿日期:1998-08-24

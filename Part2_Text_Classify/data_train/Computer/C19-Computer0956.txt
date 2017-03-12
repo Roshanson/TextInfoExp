@@ -1,0 +1,106 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+基于神经网络的机器人自学习控制器1)
+王耀南
+摘　要　提出一种神经网络与PID控制相结合的机器人自学习控制器.为加快神经网络的学习收敛性，研究了有效的优化学习算法.以两关节机器人为对象的仿真表明，该控制器使机器人跟踪希望轨迹，其系统响应、跟踪精度和鲁棒性优于常规的控制策略.
+关键词　神经网络，学习算法，机器人控制.
+SELF-LEARNING CONTROLLER BASED ON NEURAL
+NETWORKS FOR ROBOTIC MANIPULATOR
+WANG YAONAN
+(Department of Electrical Engineering,Huanan University,Changsha 410082)
+Abstract　This paper presents a new self-learning controller based on neural networks for robotic manipulator.A fast learning algorithm of neural networks is proposed to improve both speed and convergence of the learning process.Simulation results of a two-link robot show that the proposed method can give more significant performance and robustness than conventional approaches.
+Key words　Neural networks,learning algorithm,robot control
+1　引　言
+　　机器人控制对象是一个多关节机械手，它的数学模型相当复杂，与运动学和动力学密切相关，是一个强耦合、非线性的多变量系统.传统的机器人控制方法在理论上虽然能做到对机器人的快速、精确控制，但实际上很难实现.近年来神经网络控制为解决机器人控制中存在的一些问题提供了新的途径.许多学者已用ANN解决机器人的复杂控制［1―3］.本文提出将带示教机构的逆动态控制和自校正控制两者有机地结合起来构成一种新的ANN自学习控制策略，系统的控制结构如图1所示.
+
+图1　神经网络机器人学习控制
+　　图1中NNC神经网络用作前馈控制器，NNM逆模神经网络用来在线学习机械手的逆动态模型.NNC网络根据逆模器(NNM)的参数对机械手进行控制，而PID控制器作为示教辅助控制器，其主要作用是当控制开始或者系统参数发生突然变化时，神经网络尚未学到系统的逆动态特性时对系统进行控制.当NNC和NNM学到系统的逆动态模型之后，PID控制的作用下降，以至可以忽略.这种新的控制策略比以往的神经网络机器人控制方式更为有效.由于是直接学习系统的逆动态而不是在PID反馈控制器的作用指导下进行学习，因而学习精度比文献［3］的带示教机构的逆动态控制方法更高.同样由于引进了常规PID反馈控制器作为补偿控制，无需和文献［4］的直接自校正控制器那样须先对系统的逆动态进行离线学习，而减少了学习样本选择不当对控制精度的影响，并且当系统发生较大变化时，虽然NNC控制器不能及时跟踪这种变化，但由于PID控制器的补偿，使得控制误差不会偏离过大，保证了系统的稳定性.
+2　基于ANN的自学习控制
+　　一个n个自由度的机械手封闭形式的动力学方程可以表示为
+
+(1)
+其中M(θ)为n×n维对称正定惯性矩阵，为n×1维哥氏力和向心力矩矢量；G(θ)为n×1维重力矢量，分别为n×1维的机械手关节位置，速度和加速度.为了简化，这里认为每一个关节只由一个驱动器单独驱动，τ是n×1维的关节控制力矩矢量.
+　　设逆模网络NNM的输出为
+
+(2)
+控制网络NNC的输出　　　　　　(3)
+PID控制律为
+
+(4)
+自学习控制律　　u=un+up.　　　　　(5)
+　　对于NNC和NNM网络均采用三层BP网络，其输入输出关系为
+
+(6)
+
+(7)
+
+(8)
+其中，o(1)j表示隐节点的输出，o(2)j表示输出层的输出，W(1)ij(k),W(2)j(k)分别为连接输入层与隐层，隐层与输出层的权值，xi(k)表示输入节点.对NNM网络输入为输出为τn=o(2)j;对NNC网络输入节点为输出节点为un=o(2)j.
+3　快速的学习算法
+　　为加快机器人自学习控制，解决机器人实时控制的问题，本文提出一种新的变学习率优化学习算法MLA(minimization learning algorithm).算法的基本思想是：在极小点附近用二阶Taylar多项式近似目标函数J(W)，以求出极小点的估计值.
+　　定义在线学习的性能指标为
+
+(9)
+式中w表示网络权值向量w∈Rn,Ei表示期望输出τ与逆模网络输出τn之间的误差.
+　　由函数极值理论知，函数Jk(W)在极小点附近的二次近似性能指标为
+
+(10)
+式中αk为二次近似函数的极小值，Wk为gk(W)的极小点，H-1k为正定的Hessian矩阵，H-1k∈Rn×n.
+　　函数Ei(w)在wk点附近取一阶Taylar多项式
+
+(11)
+式中，表示Ei(wk)对wk的梯度.
+　　将(11)式略去高阶项H.O.T后，代入(9)式得到性能函数的一阶近似
+
+(12)
+　　在MLA算法中，Jk(w)的二次近似值可由(12)式展开为
+
+(13)
+式中，0＜λ＜1表示遗忘因子.为了导出递归学习过程，可将(10)式代入(13)式中的Jk(w),并整理得
+
+(14)
+由(10)式可得
+
+(15)
+令Jk+1(w)=gk+1(w),得到
+
+(16)
+
+(17)
+
+(18)
+利用矩阵逆定理，由(17)式得
+
+(19)
+其中　　　　　　(20)
+　　在(17)式中，两边同乘以Hk得H-1k+1=βkH-1k,并代入(18)式，经整理后，得到最终神经网络权值的MLA学习算法
+(21)
+其中　　　　　　(22)
+　　　　　(23)
+为网络输入.
+4　仿真实验结果
+　　为了证实所提控制策略和神经网络学习算法的有效性，本文对两关节的机器人模型进行数字仿真.考虑两关节机器人模型［5］为
+
+(24)
+其中
+
+仿真中，采样周期T=0.005s,Kp=［1000,2000］T,kd=［50,60］T,ki=［10,10］T.神经网络结构：NNC1为3-6-1节点数，输入输出un1;NNM1为3-8-1，输入输出τn1;NNC2为3-6-1，输入输出un2;NNM2为3-8-1，输入输出τn2.取不同参数l1，l2，m1，m2，均能取得良好的控制效果.
+　　例如，一组参数l1=1.2m，l2=0.8m,g=9.8m/s2,质量m1=10kg,m2=5kg，选取最大控制力矩｜u1max｜=1000N.M，｜u2max｜=500N.M,给定期望轨迹：
+(便于观察)，仿真结果如图2所示.从图中可以看出，NNC和NNM网络经过85次学习后，实际输出θ1，θ2接近期望轨迹.其它仿真结果略.
+
+图2　位置跟踪响应曲线
+5　结束语
+　　本文提出的自学习控制器利用了ANN的自学习和自适应特点，通过在线边学习边控制，达到很高的跟踪精度控制，同时利用了MLA学习算法提高了网络的学习收敛性，适合于机器人的快速实时控制.
+1)　中国博士后科学基金资助课题.
+作者单位：湖南大学电气工程系　长沙　410082
+参考文献
+［1］　Sun Yuan Kung,Teng Heng Hwang.Neural network architectures for robotic application.IEEE Trans on Robotics and Automation,1989,5(5):641―650.
+［2］　Albert Y,Zomaya,Tarek M Nabhan.Centralized and decentralized neuro-adaptive robot controllers.Neural Network,1993,6(2):223―244.
+［3］　Mitsuo,Kawato,Yoji uno et al.Hierarchical neural network model for voluntary movement with application to robotics. IEEE control system Magazine.1988,13(2):1129―1134.
+［4］　王耀南.智能控制系统――模糊逻辑、专家系统、神经网络控制.长沙：湖南大学出版社，1996.204―207.
+［5］　周远清，张再兴.智能机器人系统.北京：清华大学出版社，1989，25―48.
+收稿日期　1995-02-27

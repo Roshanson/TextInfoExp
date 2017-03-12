@@ -1,0 +1,99 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第4期　Vol.23　No.4　1997
+
+
+
+相关扰动下连续系统的连续时间
+ELS 辨识的数值实现1)
+赵明旺
+　　摘　要　回顾了连续相关扰动下随机连续系统的连续时间 ELS(增广最小二乘)辨识法，并基于数值积分和常微分方程数值解的欧拉(Euler)法和龙格- 库塔法(Runge-Kutta)，给出了连续时间 ELS 的两种数值实现方法和仿真结果.
+　　关键词　随机连续系统，参数估计，最小二乘法，常微分方程数值解.
+NUMERICAL REALIZATION OF THE CONTINUOUS-TIME
+ELS IDENTIFICATION FOR CONTINUOUS SYSTEMS 
+WITH CORRELATIVE DISTURBANCES
+ZHAO MINGWANG
+(Dept.of Automation,Wuhan Yejin University of Science & Technology,Wuhan 430081)
+Abstract　Firstly,the continuous-time ELS identificaiton method for stochastic continuous systems with correlative disturbances are reviewed.Then two numerical realization methods for the ELS method and their simulation results are given based on the numerical integral,and Euler method and Runge-Kutta method for ordinary differential equations.
+Key words　Stochastic continuous systems,parameter estimation,least squares method,numerical solution of ordinary differential equation.
+1　连续时间 ELS 辨识问题描述
+　　近 30 年来，离散系统辨识在理论和应用上都取得了丰硕成果，而连续系统辨识就逊色得多.目前应用时一般将连续系统视为离散系统，采用离散系统辨识方法.这种处理可能增加不稳定零点，辨识效果差，甚至不收敛.工程系统多为连续的且有不可测扰动和测量误差，研究随机连接系统辨识有重要意义.近 10 年，随机连续系统辨识研究取得一些有意义的进展.如，陈翰馥等人辨识系统模型和相关扰动模型的连续时间 ELS 方法［1］.Gevers 等人对随机连续系统的输入输出嵌入稳定滤波器，给出一致有界的随机逼近辨识方法［2］.Sagara 等人基于数值积分将连续系统化为离散模型，将随机因素和数值误差用离散滑动平均模型来刻划，用离散系统辨识法来辨识连续系统［3］.该方法的缺陷是不能得到相关连续扰动模型.赵明旺［4，5］基于正交序列逼近，利用最小二乘法辨识随机连续系统，并基于逼近值相关性分析，指出最小二乘辨识是有偏非一致收敛的，并讨论无偏一致收敛的辅助变量法和 Markov 法.
+　　文［1］的 ELS 辨识是目前最为深刻的、强一致收敛的随机连接系统辨识方法.它讨论的是由随机微分方程描述的相关扰动下 SISO 随机连续线性系统的辨识
+A(S)dy1=B(S)dut+C(S)dυt, D(S)υt=ωt.
+(1)
+其中 yt 和 ut 为可测的输出输入；υt 和 ωt 分别为不可测的连续扰动和 Wiener过程，S为 Ito 随机积分算子； A(S)=1+a1S+…+anaSma; B(S)=b1S+…+bnbSmb; C(S)=1+c1S+…+cncSmc.
+　　文［1］假设 D(S)=1+d1S+…+dndSnd是已知的稳定滤波器，并且随机微分方程(1)的解存在.不失一般性，假定 nc≤na.因此，随机连续系统模型(1)可表示为连续回归模型
+
+(2)
+其中
+θ=［c1-a1　…　cna-ana　b1　…　bnb　-c1　…　-cnc］τ　ci=0,i＞nc.
+　　对式(2)所示的随机连续回归模型，文［1］引入 ELS 辨识算法
+
+(3)
+其中 
+　　ELS 法不仅辨识系统模型 A(S) 和 B(S)，而且也辨识扰动模型 C(S).文［1］还给出一致收敛条件和收敛速率.迄今，对该 ELS 辨识研究都仅限于收敛性分析，对其工程实现一直缺乏研究.下两节讨论由数值方法实现随机连续系统 ELS 辨识.
+2　欧拉法求解连续时间 ELS 法
+　　设系统的采样周期为 h，采样值标记为 yk 和 uk，并记积分 Snyt,Snut 和 Sn()的 kh 时刻的数值积分值分别为,和.由于控制领域中信号的光滑性不佳，由采样值计算数值积分时选用计算简便、利于递推实现的复化梯形法较适宜.由复化梯形法计算积分值的递推式为
+
+(4)
+类似地可得的递推计算式.而数值积分值则由如下迭代算法的迭代收敛值
+
+(5)
+其中
+　　欧拉法是简单有效的常微分方程数值解法［6］，本文尝试用它求解 ELS法.由欧拉法思想，可得随机连续系统(1)的 ELS 辨识的欧拉实现算法
+
+(6)
+其中　
+(7)
+　　利用上述实现算法进行随机连续系统辨识的递推算法步骤可总结如下：
+　　步骤1.确定系统的模型阶次 na,nb 和 nc。采样周期 h，以及辨识初值 θ0 和 P0；
+　　步骤2.以采样周期 h 对输入输出采样，得采样值 uk+1和 yk+1;
+　　步骤3.递推计算和，并由式(5)迭代计算，再由式(7)计算;
+　　步骤4.利用式(6)递推计算 θk+1和 Pk+1.返回步骤2计算下一次递推值.
+3　龙格-库塔法求解连续时间 ELS 法
+　　龙格-库塔法是高精度的常微分方程数值解法［6］，其精度与方程中函数(信号)的光滑性有关.考虑到随机连续系统的信号光滑性的原因，讨论用二阶龙格-库塔法来求解 ELS 是适宜的.因此，有随机连续系统(1)的 ELS 辨识的龙格-库塔数值实现算法
+
+(8)
+
+(9)
+
+(10)
+
+(11)
+其中　
+(12)
+　　在上述递推计算中，为如下迭代算法中迭代变量(n)的收敛值，
+
+(13)
+其中　
+　　利用上述实现算法进行随机连续系统辨识的递推算法步骤可总结如下：
+　　步骤1.确定系统的模型阶次na,nb 和nc ，采样周期 h，以及辨识算法初值 θ0 和P0；
+　　步骤2.以采样周期h 对输入输出采样，得采样值 uk+1和 yk+1;
+　　步骤3.递推计算和,并由式(5)迭代计算,然后由式(7)计算;
+　　步骤4.利用式(9)递推计算 Kθ,1和 Kp,1,然后利用式(13)迭代计算 ,并据此式(12)计算,由式(10)和(11)计算 Kθ,2和 Kp,2.
+　　步骤5.由式(8)计算估计值 θk+1 和Pk+1.返回步骤2计算下一次递推值.
+4　仿真结果
+　　例1.考虑滤波器 D(S)=1+0.5S 为已知的2阶随机连续线性系统
+(1+3S+2S2)dyt=1.5 utdt+(1+0.3S)dυt,　D(S)dυt=dωt.
+(14)
+仿真过程如下：1)以步长为 0.005 的数值方法模拟系统(14)的运行，其中 ut 为sin0.7t+0.5 sin0.2t,扰动 dωt 为［-γdt,γdt］区间的高斯白噪声.2)以步长 0.08 获取前一步模拟运行中的 ut 和 yt 的采样值.由于此时步长为模拟运行中步长的 1.6 倍，故大致可认为估计中数据取自真正的随机连续系统.3)采用基于欧拉法和龙格-库塔法的 ELS 数值实现方法辨识系统(14).
+　　仿真结果如表1所示，其中仿真时间为 80 s(递推次数为1000).由表1知，本文基于常微分方程数值解的 ELS 辨识是十分有效的，尤其基于龙格-库塔法的方法更佳.由于随机连续系统的 ELS 辨识的一致收敛性已经得到证明，因此讨论其实现方法是具有重要意义的.本文的后续工作将着重讨论滤波器 D(s) 未知时的辨识问题，以及向随机连续系统自适应控制方面推广.
+表1　计算机仿真结果
+
+　欧拉法龙格-库塔法
+a1a2b1c1a1a2b1c1
+γ=0.13.01202.00741.49610.26843.00962.00691.49740.2691
+γ=0.53.03141.97611.49170.22123.02772.01641.49210.2339
+γ=1.03.04881.96371.48130.18543.03722.03181.48620.2075
+真　值3.02.01.50.33.02.01.50.3
+
+1)冶金工业部理论研究基金资助.
+作者单位：武汉治金科技大学自动化系　武汉　430081
+参考文献
+［1］　Chen H F,Guo L.Continuous-time stochastic adaptive tracking:robustness and asymptotic properties.SIAM J.control and Optimization,1990,28(3):513―527.
+［2］　Gevers M,Goodwin G C,Wertz V.Continous-time stochastic adaptive tracking.SIAM J.Control and Optimization,1991,29(2):264―282.
+［3］　Sagara S,Yang Z J,Wada K.Recursive identificaiton algorithms for continuous systems using an adaptive procedure.Int.J.Control,1991,53(2):391―409.
+［4］　Zhao M W.Markov Parameter estimation for stochastic continuous systems via Chebyshev polynomials.Preprints of The 10th IFAC/IFORS Symp.on Syst.Iden.,Finland,1994.
+［5］　赵明旺.线性连续回归模型基于 Laguerre 多项式逼近的 Markov 参数估计.数值计算与计算机应用，1995，16(2)：127―133.
+［6］　李庆扬等.数值分析.武汉：华中工学院出版社，1983.
+收稿日期　1995-08-31

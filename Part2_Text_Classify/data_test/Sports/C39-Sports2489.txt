@@ -1,0 +1,37 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第11期  Vol.35 No.11 1999
+
+
+
+水平速度的损失与跳远成绩之关系研究
+佟艳华
+摘要：通过对中外跳远运动员的对比分析发现，中国运动员只有在加 大水平速度的同时，进一步减少其速度的损失率才能更有效地提高跳远成绩。同时，找出了造成水平速度损失的原因、水平速度损失率对跳远成绩的影响以及减少水平速度损失的对策。得出结论，跳远中必须在高速助跑与快速起跳结合的同时，控制好最后2步步长的合理变化。
+关键词：跳远∥影响因素∥水平速度∥踏跳∥助跑
+The Study on the Relationship between the Loss of Horizontal Velocity and Performance of Long Jump
+Tong Yanhua
+Abstract:By comparing our long jumpers with foreign athletes, the author thinks that the only way to improve the performance of long jump is to increase the ho rizontal velocity and decrease the loss ratio of velocity. Moreover, the author found out the reason of leading to the loss of horizontal velocity and the way to decrease it. The result shows that the reasonable change of length for last two steps must be controlled in the long jump.
+Key words:long jump∥influence factors∥horizontal velocity∥takeoff push∥runup
+1　前言
+　　已有研究表明：在决定跳远成绩的所有因素中，助跑速度所起的作用占到80%～90%，尤其是 最后2步的助跑，又在很大程度上决定了跳远成绩。
+　　较高的水平速度是获得较好跳远成绩的前提。可是，运动员在踏跳时水平速度的损失往往又 是不可避免的，即使是最优秀的运动员。那么，怎样才能在尽量减少水平速度损失的前提下提高跳远成绩呢?这正是本文所要着重解决的问题。
+
+2　研究对象与方法
+2.1　研究对象
+　　世界优秀男子跳远运动员2人和我国优秀男子跳远运动员5人的12次试跳。
+2.2　研究方法
+　　采用高速摄影机现场拍摄了我国男子跳远运动员在1994年全国田径冠军赛、全国田径锦标赛和全国田径精英赛比赛中的助跑及起跳动作，主光轴正对倒数第2步，镜头高1.20 m，距运动平面25 m，拍摄频率通过拍摄秒表进行校正，其稳定频率为96格/s，数据处理用国产JTK-Ⅰ型影片解析系统进行解析，采用日本松井秀治人体模型参数，用数字滤波法对原始数据进行平滑处理。
+
+3　结果与讨论
+3.1　水平速度损失率对跳远成绩的影响
+　　学术界曾一度争论过水平速度的损失在跳远中的利弊，对此，专家们持有不同的看法。有的 认为，水平速度的损失直接影响了跳远成绩；也有的认为，水平速度是伴随着垂直速度的增长而 减少的，没有一定水平速度的损失，也就不可能取得较大的垂直速度；还有的认为，大的水平速度是前提，没有较大的水平速度，也就不能保证一定的水平速度损失率。
+　　就助跑速度而言，鲍威尔和刘易斯是在积极加速的情况下完成起跳的，而我国运动员除1人 外，竟有4人是在减速中完成起跳的。从水平速度损失率来看，我国运动员比鲍威尔和刘易斯的水平速度损失率低，但成绩却远不如鲍威尔和刘易斯，其主要原因是我国运动员最后几步的助跑速度没有世界优秀运动员高(表1)。
+表 1　中外跳远运动员部分运动学参数对照一览表
+
+　起跳时身体重心
+水平移动速度(s)水平速度
+均值(s)水平速度
+损失率(%)
+鲍威尔11.009.2710.09
+刘易斯11.069.1110.45
+11.03<td align="cent

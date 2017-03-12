@@ -1,0 +1,244 @@
+自动化学报
+AGTA AUTOMATICA SINICA
+1999年 第25卷 第2期 Vol.25 No.2 1999
+
+
+
+一类非线性系统的自适应控制方法1)
+周　锐　　韩曾晋
+摘　要　非线性系统的模型参考自适应控制是自适应理论的一个新的发展方向，目前针对可反馈线性化的系统已经取得了很多研究成果.但以往采用的方法要求系统对未知参数是线性的，且计算复杂度随系统阶次或相对阶的升高而升高.给出一种新的非线性模型参考自适应跟踪控制方法，证明了无需未知参数以线性形式存在，而只要求回归向量对参数满足一定的Lipschitz条件即可保证系统具有期望的特性.
+关键词　反馈线性化，相对阶，模型参考自适应跟踪控制，回归向量.
+ADAPTIVE CONTROL OF A KIND OF NONLINEAR SYSTEMS
+ZHOU Rui　　HAN Zengjin
+(Dept.of Automation,Tsinghua Univ.，Beijing　100084)
+Abstract　　The present model reference adaptive control methods for nonlinear affine systems require that the nonlinear system should be linear to the unknown parameter vector,and that there should not be unknown parameters in the output equation.On the other hand,the higher the relative degree or the order of the nonlinear system,the more complicated the control and parameter update law.To overcome those drawbacks a novel model reference adaptive nonlinear tracking control scheme is proposed in the paper.It is proved that the controller can reach expected performances in the nonlinear parameterization case,provided that the regressor vector satisfies certain Lipschitz condition.
+Key words　Nonlinear affine system,feedback linearization,model reference adaptive tracking control,regressor vector.
+1　引言
+　　目前，自适应控制理论的研究有两个发展方向，一是鲁棒广义自适应控制，二是非线性模型参考自适应控制［1］.后者是最近兴起的一个研究领域，由于缺少一般的非线性系统的系统研究手段，所以迄今为止，非线性模型参考自适应控制只能针对某类特殊的系统.其中仿射型非线性系统受到普遍关注.
+　　通过坐标变换和非线性状态反馈可以将仿射型非线性系统变换成正则型［2］，从而实现输入到状态的线性化.但是这种变换基于非线性项的精确对消，因此当系统存在未知参数时，精确对消不能成立，输入和输出就不再呈线性关系.此时，要镇定该系统并使之性能达到预期的要求，可以采用模型参考自适应跟踪控制［3―10］.
+　　以前提出的自适应跟踪控制方法［4―10］存在两方面的局限：第一，要求系统对未知参数是线性的；且输出不受未知参数的影响.具体地说，系统应有形式
+
+(1)
+式中θi为未知参数；第二，控制器的计算复杂度随系统阶次或相对阶的升高而升高.对低阶情况尚可以写出解析表达式，对高阶系统就很难推导，有些方法还引入许多待定参数.这些都给系统实现带来困难. 
+　　本文试图突破上述局限，对更一般的可反馈线性化的非线性系统
+
+(2)
+建构模型参考自适应跟踪控制器.
+　　注记1.文中用到如下符号：
+　　1)｜x｜2=xTx;‖x‖t=supτ≤t｜x(τ)｜指截尾L∞范数；
+　　2)β表示一类函数，β∈L2∩L∞，且t→∞时β→0；
+　　3)G是一个(很大的)界，K(.)表示一个有界正函数；
+　　4)表示f的估计值.
+2　问题的提出
+　　考察单输入单输出非线性系统
+
+(3)
+其中x∈Rn,f,g,h是光滑函数，θ∈Ω(Ω为Rp上的一个紧集)是系统中存在的未知参数.令f(0,θ)=0,则x0=0是系统的平衡点.
+　　如果系统(3)具有不受θ影响的相对阶r(全文遵循此假设)，那么在x0的一个邻域中可将其变换成如下正则型(normal form):
+
+(4)
+
+(5)
+其中满足
+　　如果还有h(0,θ)=0，那么
+
+(6)
+称为系统(3)的零动态.
+　　对系统(4)，(5)如果令控制为
+
+(7)
+那么y和v之间将呈线性关系.为了进一步保证y(t)跟踪参考输出ym(t)，可以取
+
+(8)
+其中α1，…，αr的选择应使得为Hurwitz多项式.
+　　对这种情形文献［5］中证明了如下命题
+　　命题1.如果非线性系统(3)或其等价系统(4)，(5)的零动态(6)指数稳定.并且ψ(z1,z2)对z1,z2 Lipschitz连续，则只要ym,,…，有界，控制律(7)，(8)就能保证x有界，且t→∞时y(t)→ym(t).
+　　注记2.从文献［5］中的证明可知，在满足命题1的前题条件时，｜z2｜≤L｜z1｜,L＞0.这一点将在以下的证明中用到.
+　　命题1说明，θ已知时，系统(3)可以通过控制律(7)，(8)有界跟踪参考输出.现在的问题是在θ未知，从而也未知时，如何建构控制器，仍然保证式(3)有界跟踪参考输出.
+3　相对阶为1时的自适应控制
+　　首先，考虑系统(3)的相对阶为1时的情况.由这个条件，有
+
+(9)
+其中Lgh≠0.
+　　设θ的估计值为，由于假设系统的相对阶不受θ的影响，所以Lgh的估计也不为零，那么在控制律(7)，(8)中可用代替θ.即令
+
+(10)
+其中α1＞0.再将式(10)代入式(9)整理后得到
+
+(11)
+其中Lgh,Lfh是θ的非线性函数，而，是的非线性函数.
+　　应用附录中的引理1可得
+
+(12)
+其中令e=y-ym,φ=θ-,则由式(11)，(12)有
+
+(13)
+其中回归向量为
+
+假设有
+
+(14)
+记.由于回归向量需要估计，参考文献［11，12］中提出的σ修正法，取自适应律为
+
+(15)
+从而可得如下定理：
+　　定理1.当系统(3)的相对阶为1时，若系统具有指数稳定的零动态，且(13)式中的回归向量W满足式(14)，那么只要ym,有界，通过控制律(10)和自适应律(15)，就可以保证系统状态x有界，且t→∞时y(t)→ym(t).
+　　证明.取Lyapunov函数为
+
+(16)
+从式(13)，(15)得
+
+(17)
+再由(14)式得
+
+(18)
+所以e,φ∈L∞.又因为,所以e∈L2.由e,ym的有界性，可以保证y有界，再由注记2知x有界.从而由(13)式可得有界.最后根据Barbalat定理［12］，有t→∞时e→0，即t→∞时y(t)→ym(t).
+4　相对阶大于1时的自适应控制
+　　当系统(3)的相对阶大于1(不妨设为r)时，自适应跟踪控制问题比相对阶为1时更为复杂，即使对参数以线性形式存在的系统，解决起来也比较棘手.文献［5］中要增加原有参数的乘积项来作为新的参数(从而增加了参数的个数)，而文献［8］中相对阶越大，控制器就越复杂.但是，从下文将看到，随着相对阶的升高，给出的控制器的复杂度并没有明显加大.
+　　由于θ未知，用θ的估计值来代替它，结合式(7)，(8)设计控制律为
+
+(19)
+
+(20)
+因为系统的相对阶为r,所以有
+
+(21)
+将式(19)，(20)代入式(21)，可得
+
+
+(22)
+式中
+　　同相对阶为1时的处理方法一样，有
+
+(23)
+
+(24)
+其中,i=1,…,r.于是式(22)可以写成
+
+(25)
+式中.和相对阶为1时一样，假设
+
+(26)
+令是稳定的)，则式(25)可以写成
+
+(27)
+再引入增广误差［5，13］
+
+(28)
+e1是可以获得的信号.如果θ为定常参数，且由于M(S)稳定(故可略去初值的影响)，那么e1又可以写成
+
+(29)
+即
+
+(30)
+从(26)式以及合理选择M(S),可以推出
+
+(31)
+在式(30)中，令.结合文献［5］中采用的规范化梯度算法和上节采用的σ修正法，取自适应律为
+
+(32)
+其中于是有如下命题：
+　　命题2..
+　　证明.令Lyapunov函数为V=φTφ，则
+
+(33)]
+所以
+
+而
+
+
+(34)
+所以∈L2.
+又因为
+
+(35)
+所以.考察,由前面的证明可知,而有界，.
+最后得到以下定理
+　　定理2.系统(3)的相对阶r大于1时，选择合适的M(S)，采用控制(19)，(20)，如果该系统的零动态指数稳定，f,g关于x,W(.，θ,)关于θ是Lipschitz的，且W(.)，K(.)对x及有有界偏导数.取参数自适应律(32)，只要ym,…，y(r)m有界，就可以保证x,W,有界，且t→∞时y(t)→ym(t).
+　　证明.1)参看文献［3］有
+
+(36),(37)
+
+(38),(39)
+
+(40),(41)
+且W，φTW是正则的.
+　　　　2)考察由式(40)和W的正则性，可知有界，所以一致连续.
+又因为而由式(41)有有界，故所以根据Barbalat定理，有t→∞时即
+
+(42)
+　　　　3)因为由式(36)有
+
+(43)
+再由式(38)，(42)有
+
+(44)
+考虑到(39)式，得
+
+(45)
+对系统e=M(S)φTW应用附录中的引理2，则有
+
+(46)
+代入式(45)，得到
+
+(47)
+因为t→∞时β→0所以e→0.从而证明了y(t)→ym(t),同时证明了W，，x有界.
+　　定理2的意义在于，给出了一般仿射型非线性系统的模型参考自适应跟踪控制的建构方法.在这里完全不必要求参数以线性的形式存在(这是以往文章通常的必要条件)，也不必要求原系统可以化为某种规则型(如参数严格反馈型［9］).
+5　示例及仿真
+　　例1.考虑如下系统
+
+(48)
+其中未知参数θ1∈［1,2］,θ2∈［1,2］,x∈［1,∞).该系统是相对阶为1的不稳定的非线性系统.当参数已知时，可以用反馈线性化方法镇定该系统.但参数未知时，该方法就不可使用.通过仿真发现，只要θ1，θ2稍有误差，系统就会失稳.为此引入非线性自适应控制令参考模型为：由以上提出的方法，设计控制量为：设计自适应律为：其中当θ1=1.5、θ2=1.5时，系统仿真结果如图1，图2
+
+(a)采用自适应控制前，θ1，θ2稍有误差，系统就会失稳
+
+(b)采用自适应控制后实际输出能跟踪参考输出
+图 1　采用和未采用非线性自适应控制的仿真结果对比
+
+图 2　采用非线性自适应控制时参数估计的仿真结果
+　　例2.
+
+(49)
+其中θ1∈［1，2］，x1∈［1，∞)，x2∈［1，∞).这是一个相对阶为2的非线性系统，采用第四节提出的方法来设计自适应跟踪控制器.
+　　1)令参考模型为：
+　　2)通过计算得到控制量：
+　　3)由式(23)―(25)计算出回归向量为：
+　　4)参考式(26)，(31)估计出有界正函数：
+　　5)按式(32)设计自适应律：
+其中.
+　　当θ=1.5时，系统仿真结果如图3和图4所示.
+
+(a)采用自适应控制前系统有静差
+
+(b)采用自适应控制后实际输出能跟踪参考输出
+图 3　采用和未采用非线性自适应控制的仿真结果对比
+
+图 4　采用非线性自适应跟踪控制后参数收敛到真值
+6　结　论
+　　本文对一般的可通过状态反馈线性化的非线性系统提出了一种模型参考自适应跟踪控制器设计方法.该方法的优点是对系统中参数的表达没有特殊要求，即不必要求它们以线性的形式存在，而只要回归向量满足一定的Lipschitz条件即可.
+　　系统的相对阶为1时，采用了σ修正法［11，12］来建构自适应律；系统的相对阶大于1时，引入增广误差并结合规范化梯度算法［5］和σ修正法［11，12］构造自适应律.本文提出的方法比以往的方法更为简单.值得一提的是，和以往大部分方法一样，本文提出的自适应控制要求系统全部状态可测.当系统某些状态不可测时，如何构成控制器和状态观测器是有待研究的课题.
+1)国家教委“211”资助项目.
+作者简介：周　锐　男，1971年3月出生.1993年在清华大学自动化系获工学学士学位.同年在该系攻读博士学位至今.主要研究领域为非线性自适应控制及其应用，电气传动和电力电子.
+　　　　　韩曾晋　清华大学自动化系教授、博士生导师.主要研究领域为自适应控制、智能控制、离散事件动态系统、混合动态系统及电气传动系统等。已发表著作三部、论文百余篇。曾获国家教委科技进步一等奖及国家科技进步二等奖。
+作者单位：清华大学自动化系　北京　100084
+参考文献
+1　Landau I D.Evolution of adaptive control.ASME Journal of Dynamic Systems,Measurement,and Control,1993,115：381―391
+2　Isidori A.Nonlinear Control Systems.2nd Edition.New York:Springer-Verlag,1991
+3　Rui Z,Zengjin H.A model reference adaptive control scheme for feedback linearizable systems.In:Proc.of IEEE SMC'96,Beijing,China,1996.825-830
+4　Nam K,Arapostathis A.A model reference adaptive control scheme for pure-feedback nonlinear systems.IEEE Trans.Automat.Contr.,1988,33(9):803-811
+5　Sastry S,Isidori A.Adaptive control of linearizable systems.IEEE Trans.Automat.Contr.,1989,34(11):1123-1131
+6　Kanellakopoulos I,Kokotovi P V,Morse A S.Systematic design of adaptive controllers for feedback linearizable systems.IEEE Trans.Automat.Contr.,1991,36(11):1241-1253
+7　Kokotovic P V,Krstic M,Kanellakopoulos I.Backstepping to passivity:recursive design of adaptive systems.In:Proc.of 31st IEEE CDC.Tusson,Arizona:IEEE,1992.3276-3280
+8　Marino R,Tomei P.Global adaptive output-feedback control of nonlinear systems,PartⅠ,Ⅱ.IEEE Trans.Automat.Contr.,1993,38(1):17-48
+9　Krstic M,Kokotovic P V.Observer-based schemes for adaptive nonlinear state-feedback control.Int.J.Control,1994,59(6):1373-1381
+10　Kanellakopoulos I.Passive adaptive control of nonlinear systems.International Journal of Adaptive Control and Signal Processing,1993,7(5):339-352
+11　Narendra K S,Annaswamy A M.A new adaptive law for robust adaptation without persistent excitation.IEEE Trans.Automat.Contr.,1985,AC-30:193-216
+12　韩曾晋.自适应控制.北京：清华大学出版社，1995
+13　Monopoli R V.Model reference adaptive control with an augmented error signal.IEEE Trans.Automat.Contr.,1974,AC-19:474-484
+14　Ortega J M,Rheinboldt W C.Iterative Solution of Nonlinear Equations in Several Variables.New York-London:Academic Press,1970
+附录
+　　引理1.(文献［14］p.71).f(y)是Rm到R上的实值函数，若对m∈(0，1)连续，则有
+　　引理2.(文献［5］BOBI稳定).
+　　令y=H(s)u是真的最小相位线性系统的输出，如果输入u,∈L∞e,并且输入u是正则的，即
+收稿日期　1996-12-02
+收修改稿日期　1997-07-20

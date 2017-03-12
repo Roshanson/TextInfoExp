@@ -1,0 +1,230 @@
+微型机与应用
+WEIXINGJI YU YINGYONG
+2000　Vol.19　No.5　P.11-13
+
+
+
+
+注册表读写函数的设计
+陈建军
+摘 要：一个利用Windows API函数设计的注册表读写函数，作为一个标准模块可添加到任何一个VB应用程序中，将抽象的应用程序接口转变为一个高级函数接口。
+关键词：注册表 API函数 VB函数 模块
+　　Win95／98／NT的注册表数据库（Registry）是系统中非常重要的组成部分。它容纳了应用程序和计算机软硬件系统的全部配置信息、初始化信息等重要数据。因此无论是日常的维护管理还是应用程序对系统配置的更改和设置都需要对注册表进行操作。前者只要利用注册表编辑器（Regedit．exe）即可，而后者一般是由Windows系统提供若干API函数，由编程语言调用实现。但由于Win32 API函数一般是为C／C＋＋编程人员编写的，文档采用了C语言的数据结构，在其它语言中无法将其一一对应。有些函数的调用方式又比较特殊，对一般编程者而言很难理解，再加上注册表本身很庞杂，操作不慎会使机器崩溃。因此，注册表的程序操作对不少编程者来说是个棘手的问题。
+　　Visual Basic是当前最流行而又大众化的语言。虽然VB提供了SaveSetting、GetSetting等函数可用来在注册表中存取有关设置，但它们的功能有限，无法满足应用程序对注册表进行各种操作的要求。因此我们设计了一个VB的自定义函数RegCRWDKey，作为一个标准模块可添加到任何一个应用程序中。
+　　Public Function RegCRWDkey（ByVal Mode As String，ByVal strhKey As String，［ByVal subKey As String］，［ByVal keyvalueName As String］，［keyValue As String］）As Integer
+　　该函数可以对注册表的任何登录项进行创建、读取、写入和删除操作，功能非常强大，使用却十分便捷。表1为操作一览表。
+表1 RegCRWDKey操作一览表
+功能ModestrhKey[subKey][keyValue Name][key Value]返回错误码
+创建子键C根键名子键名忽略忽略0：调用成功
+1：Mode错
+2：根键名错
+3：调用失败
+4：打开键错
+5：键值名错
+6：关闭键错
+读键值R根键名子键名若缺省，读根键键值键值名若缺省，读默认键值读出的键值调用时必须是非定长字符串变量
+写键值W根键名子键名若缺省，写根键键值键值名若缺省，写默认键值待写键值串
+删子键或键值D根键名子键名键值名若缺省，删除指定子键忽略
+
+注：1．带［］的参数是可选的； 
+　　2．“根键名”为Windows预定义的6个标准键名，请参见注册表；
+　　3．“子键名”如同DOS的树型目录结构，如：“Test＼WindowSize”；
+　　4．除keyValue外所有参数中字母的大小写均具有同等含义。
+1 注册表基本结构
+　　在Win95／98系统中，注册表采用“关键字”及“键值”来描述登录项及其数据。“关键字”实际上是1个句柄，如图1所示。左窗格是登录区，由系统预定义的6个主关键字（或称为“根键”）及若干主键（或子键）组成；右窗格是数据区，由“键值名”和“键值”组成。
+
+图1 注册表
+2 API函数读写注册表的一般过程
+　　（1）使用RegOpenKey或RegCreateKey打开或创建1个键。
+　　（2）若上一步成功，则使用RegQueryValue或RegQuery－ValueEx读取键值，用RegSetValue或RegSetValueEx设置（写）键值。前者分别为读／写“默认”键值；用RegDelete－Value删除1个键值项，用RegDeleteKey删除1个子键。
+　　（3）完成操作后用RegCloseKey关闭键。
+3 源代码清单
+　　′声明部分
+　　Private Declare Function RegCreateKey Lib ″advapi32．dll″＿ 
+　　　Alias ″RegCreateKeyA″（ByVal hKey As Long，＿ 
+　　　ByVal lpSubKey As String，phkResult As Long）As Long
+　　　　　　　　　　　　　　　　　　　　　　　　　　＇创建键
+　　Private Declare Function RegOpenKey Lib ″advapi32．dll″＿ 
+　　　Alias ″RegOpenKeyA″（ByVal hKey As Long，＿ 
+　　　ByVal lpSubKey As String，phkResult As Long）As Long
+　　　　　　　　　　　　　　　　　　　　　　　　　 ′打开键
+　　Private Declare Function RegQueryValue Lib ″advapi32．dll″＿ 
+　　　Alias ″RegQueryValueA″（ByVal hKey As Long，＿ 
+　　　ByVal lpSubKey As String，ByVal lpValue As String，＿ 
+　　　lpcbValue As Long）As Long
+　　Private Declare Function RegQueryValueEx Lib ″
+　　　advapi32．dll″Alias ″RegQueryValueExA″（ByVal hKey
+　　　As Long，ByVal lpValueName As String，ByVal lpReserved
+　　　As Long，lpType As Long，lpData As Any，lpcbData
+　　　As Long）As Long ′读键值
+　　Private Declare Function RegSetValue Lib ″advapi32．dll″ 
+　　　Alias ″RegSetValueA″（ByVal hKey As Long，ByVal
+　　　lpSubKey As String，ByVal dwType As Long，ByVal
+　　　lpData As String，ByVal cbData As Long）As Long
+　　Private Declare Function RegSetValueEx Lib ″advapi32．dll″
+　　　Alias ″RegSetValueExA″（ByVal hKey As Long，ByVal
+　　　lpValueName As String，ByVal Reserved As Long，
+　　　ByVal dwType As Long，lpData As Any，ByVal
+　　　cbData As Long）As Long ′设键值
+　　Private Declare Function RegDeleteValue Lib ″advapi32．dll″ 
+　　　Alias ″RegDeleteValueA″（ByVal hKey As Long，
+　　　ByVal lpValueName As String）As Long 　　　′删键值
+　　Private Declare Function RegDeleteKey Lib ″advapi32．dll″
+　　　Alias ″RegDeleteKeyA″（ByVal hKey As Long ByVal
+　　　lpSubKey As String）As Long　　　 　　　　′删除键
+　　Private Declare Function RegCloseKey Lib ″advapi32．dll″ 
+　　　（ByVal hKey As Long）As Long　　　　　　　′关闭键
+　　Const HKEY＿CLASSES＿ROOT＿＆H80000000
+　　Const HKEY＿CURRENT＿CONFIG＝＆H80000005
+　　Const HKEY＿CURRENT＿USER＝＆H80000001
+　　Const HKEY＿LOCAL＿MACHINE＝＆H80000002
+　　Const HKEY＿USERS＝＆H80000003
+　　Const HKEY＿DYN＿DATA＝＆H80000006
+　　′注册表读写函数
+　　Public Function RegCRWDkey（ByVal Mode As String），
+　　　ByVal strhKey As String，Optional ByVal subKey
+　　　As String＝″″， Optional ByVal keyvalueName As String＝″″，
+　　　Optional keyValue As String＝″″）As Integer
+　′定义变量
+　　Dim hKey As Long　　　 ′根键常数变量
+　　　Dim retValue As Long　　′返回值
+　　　Dim keyId As Long 　　　′子键序列号
+　　　Dim bufSize As Long 　　′键值区大小
+　　　Dim subKey1 As String 　′主键
+　　　Dim subKey2 As String 　′子键
+　　　Dim N，NTemp
+　　　′检查根键的正确性
+　　　Select Case UCase（TrimstrhKey））
+　　　Case Is＝″HKEY＿CLASSES＿ROOT″
+　　　　hKey＝HKEY＿CLASSES＿ROOT
+　　　Case Is＝″HKEY＿CURRENT＿USER″
+　　　　hKey＝HKEY＿CURRENT＿USER
+　　　Case Is＝″HKEY＿LOCAL＿MACHINE″
+　　　　hKey＝HKEY＿LOCAL＿MACHINE
+　　　Case Is＝″HKEY＿USERS″
+　　　　hKey＝HKEY＿USERS
+　　　Case Is＝″HKEY＿CURRENT＿CONFIG″
+　　　　hKey＝HKEY＿CURRENT＿CONFIG
+　　　Case Is＝″HKEY＿DYN＿DATA″
+　　　　hKey＝HKEY＿DYN＿DATA
+　　　Case Else
+　　　　RegCRWDkey＝2 ′根键错返回2
+　　　　Exit Function
+　　End Select
+　　′分离主键与子键
+　　If keyvalueName＝″ ″ Then　　　 ′读默认键值时有用
+　　　N＝InStr（subKey，″＼″）
+　　　Do While True
+　　　　NTemp＝InStr（N＋1，subKey，″＼″）
+　　　　If NTemp＝0 Then
+　　　　　Exit Do
+　　　　Else N＝NTemp
+　　　End If
+　　Loop
+　　If N＝0 Then
+　　　subKey1＝″ ″ 　　　′对于一级子键，其主键设为空串
+　　Else
+　　　subKey1＝Left（subKey，N－1）
+　　End If
+　　　subKey2＝Right（subKey，Len（subKey）－N）
+　　End If
+　　′根据Mode进行相应操作
+　　Select Case UCase（Trim（Mode））
+　　　Case Is＝″C″　　　 ′创建子键
+　　　　retValue＝RegCreateKey（hKey，subKey，keyId）
+　　　　If retValue＜＞ 0 Then RegCRWDkey＝3Exit Func－
+　　　　　　　　　　　　　　　　　　　tion ′返回错误码
+　　　Case Is＝″R″ 　　　′读键值
+　　　　If keyvalueName＝″ ″Then ′读默认键值
+　　　　retValue＝RegOpenKeyhKey，subKey1，keyId
+　　　　　　　　　　　　　　　　　　　 ′打开键，取得keyId
+　　　If retValue＜＞ 0 Then RegCRWDkey＝4：Exit Function
+　　　retValue＝RegQueryValue（keyId，subKey2，″″，bufSize）
+　　　keyValue＝String（bufSize，″″）′取得bufSize，设定 
+　　　　　　　　　　　　　　　　　　　′keyValue大小
+　　　retValue＝RegQueryValue（keyId，subKey2，keyValue，
+　　　　　　　　bufSize）
+　　　If retValue＜＞ 0 Then RegCRWDkey＝3：Exit Function
+　　　keyValue＝Left（keyValue，bufSize－1）
+　　Else 　　　′读普通键值
+　　　retValue＝RegOpenKey（hKey，subKey，keyId）
+　　　If retValue＜＞ 0 Then RegCRWDkey＝4：Exit Function
+　　　retValue＝RegQueryValueEx（keyId，keyvalueName，＿ 
+　　　　　　　　0＆，1，0＆，bufSize）
+　　　If bufSize＝0 Then RegCRWDkey＝5：Exit Function
+　　　keyValue＝String（bufSize，″″）
+　　　retValue＝RegQueryValueEx（keyId，keyvalueName，＿ 
+　　　　　　　　0＆，1，ByVal keyValue，bufSize）
+　　　If retValue＜＞ 0 Then RegCRWDkey＝3：Exit Function
+　　　keyValue＝Left（keyValue，bufSize－1）
+　　End If
+　　Case Is＝″W″ ′写键值
+　　　If keyvalueName＝″ ″Then 　　　　′写默认键值
+　　　　retValue＝RegOpenKey（hKey，subKey1，keyId）
+　　　　If retValue＜＞ 0 Then RegCRWDkey＝4：Exit Function
+　　　　bufSize＝Len（keyValue）＋1
+　　　　retValue＝RegSetValue（keyId，subKey2，1，keyValue，
+　　　　　　　　　bufSize）
+　　　　If retValue＜＞ 0 Then RegCRWDkey＝3：Exit Function
+　　　Else 　　　　　′写普通键值
+　　　　retValue＝RegOpenKey（hKey，subKey，keyId）
+　　　　If retValue＜＞0 Then RegCRWDkey＝4：Exit Function
+　　　　bufSize＝Len（keyValue）＋1
+　　　　retValue＝RegSetValueEx（keyId，keyvalueName，＿
+　　　　　　　　0＆，1，ByVal keyValue，bufSize）
+　　　　If retValue＜＞ 0 Then RegCRWDkey＝3：Exit　Function
+　　　End If
+　　Case Is＝″D″　　　　 ′删除子键或键值
+　　　retValue＝RegOpenKey（hKey，subKey，keyId）
+　　　If retValue＜＞ 0 Then RegCRWDkey＝4：Exit Function
+　　　If keyvalueName＝″ ″Then ′键值名为空串，则删除子键
+　　　　retValue＝RegDeleteKey（hKey，subKey）
+　　　　If retValue＜＞ 0 Then RegCRWDkey＝3：Exit Function
+　　　Else
+　　　　retValue＝RegDeleteValue（keyId，keyvalueName）
+　　　　If retValue＜＞ 0 Then RegCRWDkey＝3：Exit Function
+　　　End If
+　　Case Else
+　　　RegCRWDkey＝1：Exit Function　　　 ′Mode错返回1
+　　End Select
+　　retValue＝RegCloseKey（keyId） ′结束前关闭键
+　　If retValue＜＞ 0 Then RegCRWDkey＝6：Exit Function 
+　　　　　　　　　　　　　　　　　　　　′关闭键错返回6
+　　　RegCRWDkey＝0 ′调用成功返回0
+　　End Function
+4 实 例
+　　下面介绍如何在注册表中存取应用程序上次执行时的窗体尺寸。启动时读出窗口大小，若无则新建。注册表内容请参见图1。
+　　Private Sub Form＿Load（）
+　　　Dim keyValue As String，retValue As String
+　　　retValue＝RegCRWDkey（″r″，″hkey＿local＿machine″，＿ 
+　　　　　　″Test＼WindowSize″，″Width″，keyValue）
+　　If retValue＜＞ 0 Then
+　　　Call RegCRWDkey（″c″，″hkey＿local＿machine″，
+　　　　　　″Test＼WindowSize″）
+　　　Call RegCRWDkey（″w″，″hkey＿local＿machine″，＿ 
+　　　　　　″Test＼WindowSize″，″Width″，Me．Width）
+　　Else
+　　　Me．Width＝keyValue
+　　End If
+　　retValue＝RegCRWDkey（″r″，″hkey＿local＿machine″，＿ 
+　　　″Test＼WindowSize″，″Height″，keyValue）
+　　If retValue＜＞ 0 Then
+　　　Call RegCRWDkey（″w″，″hkey＿local＿machine″，＿ 
+　　　″Test＼WindowSize″，″Height″，Me．Height）
+　　Else
+　　　Me．Height＝keyValue
+　　End If
+　　End Sub
+　　′关闭前保存窗口大小
+　　Private Sub Form＿QueryUnload（Cancel As Integer，
+　　　　　　UnloadMode As Integer）
+　　　Call RegCRWDkey（″w″，″hkey＿local＿machine″，＿ 
+　　　　　　″Test＼WindowSize″，″Width″，Me．Width）
+　　　Call RegCRWDkey（″w″，″hkey＿local＿machine″，＿ 
+　　　　　　″Test＼WindowSize″，″Height″，Me．Height）
+　　End Sub
+　　函数RegCRWDkey，考虑到使用的方便性，参数全部设计成字符串型，对于“键值”中的“二进制值”和“DWORD值”，读者可自行增加几行数据转换代码即可。
+　　该函数运行环境为：Pentium级以上机器；Win95／98平台，VB5．0、VB6．0。
+　　注意：对注册表的操作必须正确无误，否则后果不堪设想！
+陈建军（浙江绍兴文理学院计算机中心312000）
+收稿日期：1999－12－01

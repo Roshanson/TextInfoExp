@@ -1,0 +1,66 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  Vol.24  No.5 1998
+
+
+
+连续时间回归网络的稳定性分析
+张兰玲　刘贺平　孙一康
+关键词　连续回归神经网络，渐近稳定，绝对稳定.
+STABILITY ANALYSIS FOR CONTINUOUS-TIME
+RECURRENT NEURAL NETWORKS
+ZHANG LANLING　LIU HEPING　　SUN YIKANG
+(Department of Automation,Beijing University of Science and Technology, Beijing　100083)
+Key words　Continuous-time recurrent neural network, asymptotic stability, absolute stability.
+1　引言
+　　回归网络稳定性的分析大多是采用李亚普诺夫直接法［1］，这种方法的关键在于李亚普诺夫函数的选择，由于目前还没有系统地构造李亚普诺夫函数的方法，用直接法分析网络的稳定性无疑是比较困难的.本文基于Gersgorin定理，以一类连续回归神经网络为例，讨论网络渐近稳定和绝对稳定的充分条件，这种方法通过对网络参数的简单运算判断网络的稳定性.
+2　平衡点的存在性及变换
+　　本文研究如下形式的连续回归神经网络
+　　(1)
+其中y=［y1(t),y2(t),…,yn(t)］T∈Rn为神经元的状态矢量，σ(.)是tanh函数，A=diag［a1,a2,…,an］∈Rn×n是常值矩阵(ai＞0,i=1,…,n)，i=［I1,I2,…,In］T∈Rn为神经元的外部常值输入矢量，W=［wi,j］n×n∈Rn×n是网络的连接权矩阵.
+　设ye为神经网络系统(1)的一个平衡点，则
+ye=A－1σ(Wye)+A－1i.　　(2)
+　　定义映射φ(y)=A－1σ(Wy)+A－1i，若y为映射φ的一个不动点，则
+y=A－1σ(Wy)+A－1i.　　(3)
+　　比较(2)，(3)两式可见，映射φ的不动点即为神经网络系统(1)的平衡点.
+　　引理1.(布劳韦尔不动点定理)［2］设Hn=［a,b］n为Rn的闭集，f:Hn→Hn是一个连续函数，则f在Hn中至少有一个不动点.
+　　定理1.考虑神经网络动态系统(1)，对于任意的外部输入i，常值矩阵A及连接矩阵W，在Rn中构造闭集K=y:y-A－1i∞≤｜A－1｜∞.T，，则系统在K中至少有一个平衡点.
+　　证明.由映射φ及T的定义可得
+φ(y)-A－1i∞‖A－1σ(Wy)∞≤｜A－1｜∞.σ(Wy)∞≤｜A－1｜∞.T.　   (4)
+　　由σ(Wy)的连续性、K的定义及引理1可知，φ在K中至少有一个不动点，即系统(1)在K中至少有一个平衡点.
+　　分析系统的稳定性时，对不为0的平衡点，首先要进行变换.
+　　设ye=［y1e，y2e，…，yne］T为系统(1)的一个平衡点，令z=y-ye，g(Wz)=σ(Wy)-σ(Wye)，o=Wz=［o1,o2,…,on］T，则
+=f(z)=-Az+g(Wz)=-Az+g(o)，　　(5)
+则系统(5)的平衡点z=0与系统(1)的平衡点ye相对应.
+3　连续回归网络的渐近稳定性
+　　引理2.(Gersgoring定理)［3］设B=［bij］∈Mn，(Mn为n×n的复矩阵集合)，又设表示B的各去心绝对行和，则B的所有特征值s都位于n个圆盘的并中，(C为复数域).又若｜bij｜+Ri(B)＜1(1≤i≤n)，则B的所有特征值s都位于单位圆内.
+　　引理3.［4］对于非线性自治系统，假设f(0)=0，且f连续可微，定义D=，若D的所有特征值均具有负实部，则平衡点0是渐近稳定的.
+　　定理2.对于神经网络动态系统(1)，设ye是它的一个平衡点，若网络的连接权满足则平衡点ye渐近稳定.
+　　证明.先考虑神经网络动态系统(5)，其雅可比矩阵J为
+
+　　设r(s)为特征值s的实部，由引理2得
+
+　　由引理3及对应关系易知，系统(1)的平衡点Ye渐近稳定.
+4　连续回归网络的绝对稳定性
+　　定义1［1］.考虑神经网络系统(1)，若对任意的外部输入i，确定的常值矩阵A及连接矩阵W，系统只有唯一的渐近稳定的平衡点，则称系统绝对稳定.
+　　引理4.［5］设Hn=［a,b］n为Rn的闭集，f:Hn→Hn是一个连续函数，若f(x)雅可比矩阵的特征值均在单位圆内，则f是压缩映射，这时，f(x)在Hn中只有唯一的不动点.
+　　定理3.考虑神经网络系统(1)，对于任意的外部输入I，常值矩阵A及连接矩阵W，K的定义同定理1，若ye为系统的一个平衡点，则ye∈K.
+　　由(3)式及K的定义可知结论成立.
+　　定理4.考虑神经网络系统(1)，对于任意的外部输入i，确定的常值矩阵A，若网络的连接权满足，则系统只有唯一一个平衡点.
+　　证明.映射φ的雅可比矩阵L为
+
+若
+则｜Lii｜+Ri(L)＜1　　　(i=1,2,…，n).
+　　由引理2、引理4得φ(y)在K上只有一个不动点，即系统(1)在K上只有一个平衡点，结合定理3可知，系统只有唯一一个平衡点.
+　　定理5.考虑神经网络系统(1)，对于任意的外部输入i，确定的常值矩阵A，若网络的连接权满足，系统绝对稳定.
+　　由定理2、4及定义1可证结论成立.
+5　结论
+　　本文采用Gersgorin定理讨论了连续回归神经网络渐近稳定及绝对稳定的充分条件.该方法通过对网络的连接权进行简单计算来判定网络的稳定性，是一种通用的简单、方便的分析方法，具有实际应用价值.
+作者单位：(北京科技大学自动化系　北京　100083)
+参考文献
+　1　Matsuoka K. Stability conditions for nonlinear continuous neural networks with asymmetric connection weights.Neural Networks，1992，5(3)：495―500
+　2　Devaney R L. An Introduction to Chaotic Dynamic Systems. Addison-Wesley publishing company, 1984
+　3　合恩R A，约翰逊 C A. 矩阵分析.天津：天津大学出版社，1989，杨奇译
+　4　Vidyasagar M. Nonlinear Systems Analysis.Englewood Cliffs. Newjersey: Prentice-Hall Inc, 1978
+　5　Jin L, Nikiforuk P N, Gapta M M. Absolute stability conditions for discrete-time recurrent neural networks. IEEE Trans. Neural Networks, 1994,5(6): 954―963
+收稿日期　1996－09－26

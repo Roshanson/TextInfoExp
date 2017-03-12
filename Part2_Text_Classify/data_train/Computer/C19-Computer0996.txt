@@ -1,0 +1,130 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+允许机器失效的串行生产线
+流守恒分析方法
+谭　民
+摘　要　对机器允许失效的串行生产线进行了讨论，分析了生产线的运行状况以及缓冲区的状态，利用生产线本身所固有的工件流守恒的特性，提出了串行生产线流守恒的分析方法，得到了分析串行生产线的性能指标：稳态有效度、稳态生产率、缓冲区中平均库存数.并用数值例子说明了这种分析方法的有效性.
+关键词　有效度，流守恒，失效与修理，串行生产线.
+FLOW CONSERVATION APPROACH TO THE ANALYSIS OF
+TRANSFER LINE WITH UNRELIABLE MACHINES
+AND FINITE BUFFERS
+TAN MIN
+(Institute of Automation,Chinese Academy of Sciences,Beijing　100080)
+Abstract　This paper presents the flow conservation approach to analyze a transfer line with unreliable machines,random processing time and finite buffers.The states of buffers and the flow conservation are analyzed and the performance measurement of the transfer line is obtained.A numerical example is given to illustrate the effectiveness of the approach.
+Key words　Efficiency,flow conservation,failure and repair,transfer line.
+1　引言
+　　制造系统生产线问题的研究已经被广泛地关注，人们越来越重视生产线的分析、设计及优化问题.制造系统中研究最多的是串行生产线问题，串行生产线是由m 个机器 Mi(i=1,2,…，m)和m-1个缓冲区 Bi(i=1,2,…,m-1)组成，其结构如图1所示.原料工件进入生产线，经过m个机器的顺序加工成为产品.
+
+图1　m个机器的串行生产线
+　　机器可以失效，失效后进行修理.当机器 Mi 失效时，缓冲区 Bi-1中的工件数将增加，缓冲区 Bi中的工件数将减少，持续下去将会出现缓冲区 Bi 全空，而缓冲区Bi-1全满.这时，机器Mi+1加工完一个工件后因无法送到Bi-1 中而处于阻塞(blocked)状态，Mi+1加工完一个工件后从Bi中取不到工件而处于饥饿(starved)状态.
+　　由于考虑了机器的失效，阻塞和饥饿现象，使得分析串行生产线问题因状态维数太大而变得相当复杂.假设一个满足马尔柯夫过程的串行生产线有m个机器和m-1个缓冲区，机器 Mi 只有正常工作和失效后修理两个状态，缓冲区Bi的容量是Ki(包括机器Mi+1上加工的工件)，那么这个串行生产线的状态数共有比加一个由10个机器9个缓冲区组成的串行生产线，每个缓冲区的容量都是9，那么这个生产线共有1.02×1012个状态，这样的一个生产系统分析起来将是相当困难.
+　　对于这样一个复杂的问题，很多专家学者都提出了不同的分析方法.对于两个机器的串行生产线，Buzaccott［1］首先提出了一个近似的分析方法；之后Gershwin 和Berman［2］给出了一个精确的分析解.对于m个机器的生产线，到目前为止还没有一个精确的分析解.Gershwin［3］提出一种分解(decomposition)分析的方法来近似分析生产线的性能；Dallery et al［4，5］，Hong［6］，Chong & Gershwin［7］和Gershwin［8］对分解分析的方法又分别进行了详细的研究；Ancelin & Semery 和 Terracol & David 分别独立地提出了一种集结(aggregation)分析方法；Koster［9，10］对集结分析方法进行了介绍并分析了生产线的性能；文献［11］提出了一种等效工作站的近似分析方法，讨论了生产线的可靠性设计问题；文献［12］讨论了生产线中状态的简化问题，提出了简化分析的方法，在全状态的状态转移图中近似省略了正常工作状态之间的状态转移，这样引起的近似误差可能比较大，为了提高分析的精度，应加上正常工作状态之间的两组状态转移线，相应的后面的分解分析中，当ω1＞ω2时，应当说缓冲区处于全满状态的概率要大一些，当ω1＜ω2时，缓冲区处于全空状态的概率要大一些；文献［13］也对一般两级生产线的可靠性问题进行了详细的分析.
+　　本文对串行生产线的运行状况进行了讨论，提出了一种流守恒分析方法，利用了生产线中工件不会消亡也不会再生这一固有的工件流守恒的特性，加之对缓冲区状态的等效分析，使我们能够得到生产线性能指标，进而对生产线进行分析，设计和优化.
+2　串行生产线流守恒分析法
+　　为了分析问题的方便，先给出一些假设：
+　　1)首级机器不会饥饿，即有足够多的原材料；末级机器不会阻塞，即有足够大的成品库；
+　　2)令αi(i=1,2,…,m)表示机器 Mi 的状态，其中αi=1表示机器 Mi 正常工作，αi=0 表示机器 Mi 已失效在修理；令ni(i=1,2,…,m-1)表示缓冲区Bi 中工件的个数；那么生产线的状态为S=(n1,…,nm-1,α1,…，αm);
+　　3)机器 Mi(i=1,2,…，m)的加工时间、失效时间和修理时间分别服从参数为 ωi,λi 和μi 的指数分布；ωi,λi,μi 分别为生产率(service rate)、失效率(failure rate) 和修复率(repair rate).
+　　4)缓冲区在存贮和传递工件的过程中是完全可靠的，不会出现故障.
+
+　　本文讨论的生产线是马尔柯夫过程模型，通过分析预计出生产线的性能，以用于生产线的设计，优化与调度.
+　　评价生产线的性能指标主要有：稳态有效度(efficiency)、稳态生产率(production rate 或 throughput)、缓冲区中平均工件数(average level of buffer).
+2.1　缓冲区状态分析.
+　　在对缓冲区 Bi 建模时，把 Bi 前级的所有机器和缓冲区用一个等效的机器Mu(i)来代替，把Bi 后级的所有机器和缓冲区用一个等效的机器 Md(i)来代替.这时串行生产线对缓冲区Bi 等效如图2所示.
+
+
+图2　等效后的生产线
+　　由于机器的失效、饥饿、阻塞等现象，机器的实际生产率就会变化，比额定的生产率小.假设ωu(i)为等效机器 Mu(i)的生产率，ωd(i)为等效机器 Md(i)的生产率，仿真结果［8，14］表明缓冲区 Bi 左边的等效机器 Mu(i)与右边的等效机器 Md(i)的表现行为(加工、失效、修复)都非常接近于指数分布的情况，所以可近似地认为等效机器Mu(i)和 Md(i)的加工时间是服从参数为ωu(i)和ωd(i)的指数分布.如果能够得到等效的生产率ωu(i)和ωd(i)，就可以对缓冲区的行为进行很好地描述.
+　　缓冲区 Bi的状态包括：0个工件，1个工件，2个工件，…，Ki个工件，共 Ki+1个状态，其状态转移图如图3所示.
+
+图3　缓冲区Bi的状态转移图
+列写它的状态方程
+　　　　　　　(1)
+当达到稳态时，令可以解得
+
+其中 那么，就可以得到缓冲区 Bi 全空的概率和全满的概率
+　　　　　　　　　　　　　　　　　(2)
+　　　　　　　　　　　　　　　　　(3)
+　　从这两个式子看出，缓冲区 Bi 全空的概率和全满的概率只与 ρi 有关，所以并不需要得到ωu(i)和ωd(i)的确切值，只需要得到两者的比值ρi(i=1,2,…,m-1)即可，也就是要求出m-1个未知数.
+2.2　流守恒分析
+　　机器 Mi的稳态有效度 Ei是指在稳态运行时机器 Mi加工工件的概率，也就是指机器Mi正在工作，既不阻塞也不饥饿的概率.可表示为
+Ei=P(αi=1,ni-1＞0,ni＜Ki),
+机器Mi的稳态生产率为
+Pi=ωiP(αi=1,ni-1＞0,ni＜Ki),
+缓冲区 Bi 中工件的平均数
+
+　　对于单个的一台机器 Mi，很容易得到它的稳态有效度和稳态生产率.
+　　稳态有效度　　
+　　稳态生产率　　
+　　当 m 个机器组成串行生产线时，由于阻塞和饥饿现象，机器Mi的实际有效度和实际生产率将比单个隔离的机器的有效度和生产率小，表示为
+Ei=eiP(ni-1＞0 and ni＜Ki),
+Pi=ωieiP(ni-1＞0 and ni＜Ki).
+下面分析一个小概率事件　P(ni-1=0 and ni=Ki).
+　　事件“ni-1=0 and ni=Ki”是由状态 S 转移得到的，状态 S 是：1)“ni-1=1 and ni=Ki-1”；2)机器 Mi-1或者失效在修理，或者是饥饿；3)机器 Mi 在正常工作αi=1;4)机器 Mi+1或者失效在修理，或者是阻塞.也就是说，机器 Mi 加工完一个工件后，发现它不仅处于饥饿状态而且处于阻塞状态.这是一个小概率事件，可以近似地表述为
+P(ni-1=0 and ni=Ki)≈0.
+　　当然，在生产率ωi 比ωi-1和ωi+1都大很多时，这个事件被认为是小概率事件就有可能引进一些误差［8］.因此，机器 Mi 的实际生产率可以近似为
+Pi≈ωiei(1-P(ni-1=0)-P(ni=Ki)).　　　　　　　　　　　　　(4)
+　　由于在串行生产线运行中，工件既不会消亡，也不会再生，因此串行生产线达到稳态时，工件流是守恒的――流守恒，即
+P1=P2=…=Pm.　　　　　　　　　　　　　　　　　(5)
+这个连等式可以组成 m-1 个独立的方程.
+2.3　串行生产线性能分析
+　　在上面对缓冲区状态分析时需要求 m-1 个未知数，在流守恒的分析中可以得到 m-1 个方程，这样我们就可以联立方程(2)，(3)，(4)，(5)组成方程组，得到ρi(i=1,2,…m-1),进而由式(2)，(3)可以求出概率值 P(ni=0)和P(ni=Ki)(i=1,2…m-1).
+　　因此我们可以得到所关心的稳态性能指标如下：
+　　串行生产线的稳态有效度
+E=minEi≈minei(1-P(ni-1=0)-P(ni=Ki))，
+串行生产线的稳态生产率
+P=Pi≈ωiei(1-P(ni-1=0)-P(ni=Ki))，
+缓冲区 Bi 中工件的平均数
+
+3　数值例子
+　　一个两级串行生产线，机器的生产率、失效率和修复率的数值如表1所示，缓冲区的容量 K=2,求系统的稳态生产率及各机器的有效度.
+表1　机器的参数值
+
+　λiμiωi
+机器 M10.0020.013
+机器 M20.0050.022
+
+　　利用上面介绍的流守恒分析方法，可以对缓冲区和机器状态分别分析.
+　　1)缓冲区的情况
+　　缓冲区全空和全满的概率
+
+　　2)机器的状态
+　　对第一个机器，前级无饥饿现象，所以稳态生产率为
+
+　　对第二个机器，后级无阻塞现象，所以稳态生产率为
+
+　　达到稳态时流守恒 P1=P2,把上面几个式子代入可以得到
+
+　　3)生产线的性能分析
+　　生产线的稳态生产率　P=P1=P2=1.28，
+　　M1 的稳态有效度　E1=0.43，
+　　M2的稳态有效度　E2=0.64.
+4　结束语
+　　本文对考虑机器失效的串行生产线的性能进行了讨论和分析，提出了流守恒分析方法.当多个机器组成串行生产线时，由于工件不会消亡也不会再生，所以强迫生产线在稳态运行时工件流是守恒的，也就是说在稳态运行时生产线的稳态生产率与每个机器的稳态生产率都是相同的，这是生产线本身所固有的特性.
+　　本文在对缓冲区进行建模和对工件流守恒进行分析的基础上，得到了生产线的性能指标：稳态有效度，稳态生产率和缓冲区中工件的平均数.
+　　当串行产生线由 m 个机器，m-1 个缓冲区组成时，生产线稳态性能的求取归结到m-1个方程的求解问题，在微机Windows环境下用 Matlab V4.0 工具是很容易求到的.
+　　利用这种分析方法得到了生产线稳态生产率等性能指标，我们就可以对生产线进行设计，优化缓冲区的容量，改进配置提高性能.
+1)　国家自然科学基金的资助项目.本文曾在中国控制会议(1996年)上宣读.
+
+作者简介：谭　民　1962年出生，1986年毕业于清华大学自动化系，1990年获中国科学院自动化研究所博士学位，现为中国科学院自动化研究所研究员，博士生导师，复杂系统工程学开放实验室主任.感兴趣的领域有：系统可靠性理论及其应用、故障检测及诊断技术、制造系统分析与调度、机器人控制及可靠性设计等.
+作者单位：中国科学院自动化研究所　北京　100080
+参考文献
+［1］　Buzacott J A.The effect of station breakdown and random processing time on the capacity of flow line with in-process storage.AIIE Transactions,1972,4(4):308-312.
+［2］　Gershwin S B,Berman O.Analysis of transfer lines consisting of two unreliable machines with random processing times and finite storage buffers.AIIE transactions,1981,13(1):2-11.
+［3］　Gershwin S B.An efficient decomposition method for the approximate evaluation of tandem queues with finite storage space and blocking.Oper.Res.,1987,35(2):291-305.
+［4］　Dallery Y,David R,Xie X L.An efficient algorithm for analysis of transfer lines with unreliable machines and finite buffers.IIE Transactions,1988,20(3):280-283.
+［5］　Dallery Y,David R,Xie X L.Approximate analysis of transfer lines with unreliable machines and finite buffrs.IEEE Trans.Auto Contr.,1989,34(9):943-953.
+［6］　Hong Y.The analysis of a production line with unreliable machines and random processing times.IIE Transactions,1992,24(1):77-83.
+［7］　Y Choong,Gershwin S B.A decomposition method for the approximate evaluation of capacitated transfer lines with unreliable machines and random processing times.IIE Transactions,1987,19(2):150-159.
+［8］　Gershwin S B.Manufacturing system engineering.Englewood Cliffs,New Jersey:PTR Prentice Hall,1994.
+［9］　Koster D et al.Estimation of line efficiency by aggregation.Int. J.Prod.,1987,25(4):615-626.
+［10］　Koster D et al.An Improved Algorithm to Approximate the Behaviour of Flow Lines.Int.J.Prod.Res.,1988,26(4):691-700.
+［11］　疏松桂.带有缓冲库的 CIMS 分析及其可靠性的研究.自动化学报，1992，18(1)：15-22.
+［12］　谭民，疏松桂，张立龙.CIMS 生产线中缓冲区状态及可靠性分析.自动化学报，1994，20(3)：271-277.
+［13］　Li Wei.Analysis and scheduling of repairable complex system:［Ph.D.dissertation］.Beijing:Institute of Applied Mathematics,Chinese Academey of Sciences,China,1993.
+［14］　Suri R.Robustness of queueing network formula.J.of ACM,1983,30:564-594. 
+收稿日期　1996-03-25

@@ -1,0 +1,40 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第12期 Vol.35 No.12 1999
+
+
+
+全国男子篮球运动员16 PF常模标定及人格特点分析
+盛绍增
+摘要：通过对我国103名男子篮球运动员16 PF测试结果研究得出：1)篮球运动员与全国成人男子之间在16种人格特质中有7种存在着显著性差异，反映了运动员人格特征的独特性；2)健将运动员与一般运动员在人格特征中有8种存在着差异，其中稳定性、兴奋性等因素差异显著，健将运动员具有比赛所必须的人格心理优势；3)篮球运动员人格心理健康水平比一般人好，成就希望超过普通人，但在某些因素方面应不断完善、改进、提高；4)成为优秀篮球运动员需要多年努力，最佳运动年龄阶段在25～30岁。
+关键词：篮球∥人格∥男子∥中国
+The Determination and Analysis on 16 PF Norm 
+for National Basketball Players in China
+Sheng Shaozeng
+Abstract:By testing the 16 PE of 103 male basketball players in China, the author draws following conclusions: 1) there are 7 out of the 16 kinds of personality features in basketball players differ greatly with normal adult, which represents the uniqueness of their personality feature. 2) Ace players differ from common players in 8 kinds of personality features, among which the stability and excitability are the most remarkable, and this reflects the psychological advantage of ace players. 3) Basketball players have a better health personality and psychology than common people, Although they have still much to improve in some aspects. 4) To become an excellent basketball player, it requires many years of hard work. For basketball players, the most optimum period for sports is between 25～30 years old.
+Key words:basketball∥personality∥male∥China
+　　在激烈争夺的现代篮球比赛中，国内外强队运动员之间的身体、技术和战术水平日趋接近，因而运动员心理素质的较量显得更为重要。在运动员所必备的多种心理素质中，人格心理是影响运动员成长的基础因素之一。它不仅与运动员掌握技术在优劣程度及在比赛中能充分发挥运动潜力关系密切，而且与篮球运动员具备健康心理素质紧密相关。研究指出：人格心理特性的可训练性具有一定局限性，在选拔篮球运动员时必须注意人格因素的特性。本研究拟通过对我国部分省(市)男子篮球运动员16 PF测试结果分析研究，探讨高级篮球运动员的人格特点，并初步标定了优秀篮球运动员16 PF的常模。
+1　研究对象与方法
+1.1　测试对象
+　　参加8运会男篮决赛的江苏、湖北、河北、北京、浙江、广东、山东等队共计103名运动员。抽样运动员的年龄为：小于20岁10人，占9.7%；21～24岁26人，占25%；25～30岁50人，占49.5%；31岁以上17人，占16.5%，其中健将级以上的运动员有28人，他们的平均年龄是29.6岁。
+1.2　测试工具
+　　采用美国R*B*Cattell教授编制的16种人格因素(16 PF)问卷作为测试工具，并用华东师范大学1988年修订的量表手册进行测试。
+1.3　研究方法
+　　把全国部分优秀篮球运动员16 PF测试结果与全国成人常模进行比较，并标定篮球运动员16 PF常模。
+1.4　数据处理
+　　整个测试按照华东师范大学16 PF修订手册得到每个量表的原始分，数据采用第5版《EPI系统软件包》进行微机处理。
+2　常模的标定
+　　根据Cattell所提出的标准分(平均数为5.5，标准差为2)及相应的概率，对男子篮球运动员16种人格因素进行转换(表1)。
+表 1　Cattell的标准分数及其相应的百分率一览表
+
+标准分12345678910
+理论常态曲线2.24.59.115.119.019.2159.14.52.3
+累积比例2.26.815.831.049.969.284.193.297.8100
+
+
+　　转换的具体方法是：先求出男子篮球运动员16种人格因素的原始分数的百分位数，其公式如下：
+
+　　公式中x%为百分位数的位置百分比，fx为Px所在组段的频数，i为该组段的组距，L为该组段下限，ΣfL为小于L的各组组段累积频数，N为总人数。所有统计工作在微机上进行，最后按各因素的Px值标出男子篮球运动员16 PF常模表(表2)。
+表 2　全国优秀男子篮球运动员16 PF常模(参考值)一览表(n=103)
+
+因素123456<

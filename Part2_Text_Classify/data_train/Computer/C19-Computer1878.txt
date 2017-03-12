@@ -1,0 +1,43 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000　Vol.19　No.4　P.10-11
+
+
+
+Matlab和Visual C++接口中编译环境的配置
+李江红　田涛
+摘 要： Ｍａｔｌａｂ语言以及Ｍａｔｌａｂ和Ｃ接口的３种方式，分析了采用接口方式ｃ时，Ｍａｔｌａｂ和Ｖｉｓｕａｌ Ｃ＋＋接口在各种编译方式下编译环境的设置方法，为用户扩展Ｍａｔｌａｂ的应用范围、提高程序的执行效率提供了有益的帮助。
+关键词： Ｍａｔｌａｂ语言 Ｖｉｓｕａｌ Ｃ＋＋接口
+　　Matlab是美国MathWorks公司推出的一种以矩阵为基本编程单位的高效数值计算语言，是一个集科学计算、图像处理、声音处理于一体的高度集成系统。Matlab为用户提供了丰富的Windows图形界面设计方法，使用户能够在利用其强大数值计算功能的同时设计出友好的图形界面。在编程效率、可读性、可移植性和可扩充性上，Matlab远远优于其它高级编程语言。由于利用Matlab能够设计出功能强大、界面优美、性能稳定的高质量程序，它受到了越来越多用户的欢迎，成为了当今国际上最流行的控制系统计算机辅助设计的软件。
+　　然而作为一种以解释方式运行的高级计算机语言，Matlab程序的执行效率较低。为了解决这一问题，MathWorks公司提供了Matlab和C的接口，通过接口，用户就能在C程序中调用Matlab中的函数，从而实现既能拥有Matlab强大的数值计算功能又能享受高度执行效率的愿望[2]。MathWorks公司提供的Matlab和C的接口方式共有3种：(1)将Matlab程序编译成MEX文件、C或C＋＋文件；(2)在C、C＋＋程序中利用Matlab Engine调用Matlab函数；(3)在C、C＋＋程序中利用Matlab C Math Library或Matlab C＋＋ Math Library调用Matlab函数。其中通过方式(1)、(2)生成的程序只有在安装了Matlab系统上才能正常运行，而由方式(3)生成的程序则没有这样的要求，它能够以独立执行程序的形式运行，即使在客户没有安装Matlab系统下。方式(3)唯一的缺点就是不能利用Matlab中丰富的图形句柄处理函数，但是对于Visual C＋＋等开发工具而言，这不是一个很严重的问题。因此方式(3)是实现功能和效率兼顾的最好接口方法。
+　　因此通过Matlab和C＋＋的接口，用户就可以编写C＋＋源程序，在程序中调用Matlab中的函数。但是要想顺利地将C＋＋源程序编译成可执行程序，只有在正确地设置C＋＋的编译环境后才能完成。笔者在基于Visual C＋＋开发一个计算机监控系统的过程中，为了利用Matlab提供的强大数值计算和处理功能，通过接口方式(3)调用了Matlab C＋＋ Math Library中的函数。下面就以Visual C＋＋ 6．0为例对编译环境的设置方法进行详细介绍。
+1　Matlab和Visual C＋＋接口中编译环境的配置
+　　对于通过接口方式（3）调用Matlab C＋＋ Math Library中函数的Visual C＋＋源程序，将它编译成可执行程序共有2种方法。一种是命令行形式，另一种是通过Visual C＋＋集成开发环境，下面针对这2种方式分别介绍它们的编译环境配置。为方便起见，设待编译的C＋＋源程序文件为FileName．cpp；MATLAB是系统安装Matlab的目录，该目录的特征是它的子目录bin中至少含有matlab．exe、medit．exe、mbuild．exe等文件。
+　　1．命令行方式
+　　在DOS环境下，命令mbuild FileName．cpp将把FileName．cpp编译成可执行文件FileName．exe。但是在编译之前必须通过命令mbuild －setup正确地配置编译环境参数。系统在执行mbuild －setup的过程中将向用户提出一些问题，用户必须根据自己具体的情况作出相应的答复。但是目前Matlab只支持对Visual C＋＋ 4．2，Visual C＋＋ 5．0通过mbuild －setup配置编译环境参数，而且一些用户在配置过程中可能因为不理解系统的提示而作出错误的选择，从而为正确配置编译环境参数带来一些困难。
+　　实际上通过命令mbuild －setup配置的编译环境参数保留在目录MATLAB中的compopts．bat文件中。只要用户能够正确地理解和设置该文件General parameters中的环境变量MSVC＿ROOT，MSVCDir和MSDevDir，就能不依赖mbuild －setup也能正确地配置编译环境。
+　　MSVC＿ROOT是系统安装Visual C＋＋目录的路径，该目录的特征是VC（对于Visual C＋＋4．2、5．0）或VC98（对于Visual C＋＋ 6．0）是它的子目录；MSVCDir是Visual C＋＋应用程序所在目录的路径，该目录的特征是其上级目录的路径就是MSVC＿ROOT，并且至少包含bin、include、lib、mfc等子目录。对于Visual C＋＋ 4．2、5．0它是VC；对于Visual C＋＋ 6．0它是VC98；MSDevDir是Visual C＋＋开发环境所在目录的路径，该目录的特征为gallary、template等是它的子目录。对于Visual C＋＋ 4．2、5．0它是SharedIDE；对于Visual C＋＋ 6．0它是Common＼MSDev98。实际上只要根据各个目录的特征就能正确配置这3个环境变量。例如对于Visual C＋＋ 6．0，笔者用notepad．exe打开compopts．bat后将上述3个环境变量设置为：
+　　set MSVC＿ROOT＝E：＼Program Files＼Microsoft Visual Studio
+　　set MSVCDir＝％MSVC＿ROOT％＼VC98
+　　set MSDevDir＝％MSVC＿ROOT％＼Common＼MSDev98
+　　其中的E：＼Program Files＼Microsoft Visual Studio是安装Visual C＋＋目录的路径。
+　　2．Visual C＋＋集成开发环境
+　　用命令行mbuild FileName．cpp编译执行程序具有速度快的优点，但是调试程序却极不方便。用Visual C＋＋集成开发环境编译、调试程序则没有这样的不便。因此集成开发环境常是首选的编译和调试应用程序的工具，而由mbuild －setup配置的编译环境在集成开发环境中没有任何作用，编译环境的配置只能在集成开发环境中完成。
+　　在集成开发环境中正式配置编译环境之前，首先必须完成Matlab中动态链接库的导入工作。在MATLAB＼extern＼include中存在libmx．def、libmatlb．def、libmmfile．def等定义文件，若在DOS环境中对它们执行命令：
+　　lib／def：文件名．def／out：文件名．lib ／machine：ix86将获得libmx．lib、libmatlb．lib、libmmfile．lib等新文件。再将这3个新文件拷贝到目录MATLAB＼extern＼lib中即可。
+　　下面以安装在E：＼Matlab＼的Matlab为例，介绍集成开发环境中编译环境配置的几个步骤。读者在配置时应根据自己的情况作相应的处理。
+　　（1）设置Matlab中头文件（．h）及动态链接库文件（．dll）的路径，由集成开发环境中菜单Tools→Options→Directories。在Directories的Show directories for栏中首先选择Include files，再在Directories栏中分别加入：E：＼Matlab＼extern＼include和E：＼Matlab＼extern＼include＼cpp；然后在Show directories for栏中选择Library files，再在Directories栏中分别加入E：＼Matlab＼bin、E：＼Matlab＼extern＼lib。
+　　（2）定义预处理宏MSVC、MSWIND。由集成开发环境中菜单Project→Settings…→C／C＋＋。在C／C＋＋的Category栏中选择Preprocessor，然后在出现的Preprocessor definition栏中加入MSVC、MSWIND。
+　　（3）设置运行时动态链接库。由集成开发环境中菜单Project→Settings…→C／C＋＋。在C／C＋＋的Category栏中选择Code Generation，然后在出现的Use run－time library栏中选择Multithreaded DLL。
+　　（4）在完成（1）、（2）、（3）之后，就可以建立WorkSpace了。不过在源程序中必须加上＃include“matlab．hpp”，并且在编译程序之前把libmx．lib、libmatlb．lib、libmatpm．lib和libmmfile．lib等文件添加到WorkSpace。方法是由集成开发环境中菜单Project→Add to Project→Files…。再在出现的Insert Files to Project对话框中从目录E：＼Matlab＼extern＼lib中选择上述文件后按OK键。
+2　总结
+　　在完成编译环境的配置后，就能将C＋＋源程序成功地编译成可执行程序了。为了使读者能够自己发现并解决编译过程中出现的问题，下面介绍几条经验。（1）如果系统报告找不到文件，一般是path设置的问题。解决的方法是首先利用Windows的查找功能找到相应文件，再把该文件所在的目录加入到path。（2）编译过程中出现Link 2001号错误。产生该类错误的一般原因是没有把所需的形如*．lib的链接库文件加入到WorkSpace中。由于报告错误的同时给出了不能解析的函数名，因此应该根据函数名确定相应的lib文件。方法是利用Visual C＋＋所带的DumpBin．exe函数[3]，在DOS下执行命令：
+　　dumpbin／exports 文件名．dll ／out 用户文件．txt
+其中的dll文件可以根据自己的经验选取。执行该命令后，用notepad．exe打开用户文件查看里面是否含有不能解析函数的名称。如果有，则在系统中查找和dll文件名称相同但文件类型为lib的文件，找到后将其加入WorkSpace即可。如果用户文件不含不能解析函数的名称，则再尝试其它dll文件。
+李江红(上海交通大学自动化系Ａ９７０３２２０００３０)
+田涛(上海交通大学自动化系Ａ９７０３２２０００３０)
+参考文献
+１，薛定宇．控制系统计算机辅助设计―ＭＡＴＬＡＢ语言及应用．北京：清华大学出版社，１９９６
+２，ＭＡＴＬＡＢ Ｃ＋＋ Ｍａｔｈ Ｌｉｂｒａｒｙ Ｕｓｅｒ＇ｓ Ｇｕｉｄｅ．Ｔｈｅ Ｍａｔｈ－Ｗｏｒｋｓ Ｉｎｃ，１９９８
+３，Ｒｉｃｈｔｅｒ Ｊ．Ａｄｖａｎｃｅｄ Ｗｉｎｄｏｗｓ ３ｒｄ Ｅｄｉｔｉｏｎ．Ｍｉｃｒｏｓｏｆｔ Ｐｒｅｓｓ，１９９９
+收稿日期：１９９９－１０－１２

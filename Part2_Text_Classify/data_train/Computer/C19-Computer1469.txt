@@ -1,0 +1,165 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+用Lagrangian松弛法解化工批处理
+调度问题
+王朝晖　陈浩勋　胡保生
+摘　要　研究基于Lagrangian松弛法的化工批处理过程的调度方法.建立了化工批处理过程调度问题的一种混合整数规划(MILP)模型，并通过松弛离散变量和连续变量共存的约束，将问题分解为一个两层次的优化问题，其中上层是原问题的对偶问题，下层由两个子问题构成：一个与产品批量有关，另一个确定操作时间表，分别用线性规划和动态规划方法解这两个子问题.然后从对偶问题的解构作原问题的可行解.数值试验结果证明了该方法的有效性.
+关键词　Lagrangian松弛法，化工批处理过程，调度，动态规划.
+SCHEDULING FOR BATCH CHEMICAL PROCESSES USING
+LAGRANGIAN RELAXATION-BASED APPROACH
+WANG ZHAOHUI　CHEN HAOXUN　HU BAOSHENG
+(System Engineering Institute,Xi′an Jiaotong University,Xi′an　710049)
+Abstract　In this paper,an approach based on Lagrangian Relaxation to schedule batch chemical processes is presented.The scheduling problem is modeled as a compact MILP formulation.The constraints including both discrete and continuous variables are relaxed and the problem is turned into a two-level optimization problem.The high level is the dual of the original problem,and the low level consists of two subproblems,one for batch-sizing,the other for deciding the time table.Linear programming and dynamic programming methods are used to solve the subproblems.A feasible solution is then constructed based on the solution of the dual problem.Computational results are given to demonstrate the effectiveness of the approach.
+Key words　Lagrangian relaxation,batch chemical processes,scheduling,dynamic programming.
+1　引言
+　　批处理过程是化工生产中一类非常重要的过程.由于连续变量与离散变量共存，这类过程的调度非常复杂，绝大多数是NP完全的［1］.Kondili用状态-任务网(STN)描述批处理过程，并用MILP建立了批处理调度问题的一般框架［2］.但其存在计算复杂性问题.Shah对文献［2］的问题框架提出了四种简化计算的技术［3］，但仍不能从根本上解决计算复杂性问题.
+　　Lagrangian松弛法作为一种近似最优方法，已经成功地应用于制造系统［4］和电力系统调度［5］，陈浩勋运用Lagrangian松弛和动态规划相结合的方法，提出了制造系统的一种更为有效的调度算法［6］.本文以STN作为化工批处理过程的描述方法，建立了一种更为简洁的MILP模型，进而引入Lagrangian松弛法，导出了一种化工批处理过程的次优调度方法.
+
+2　关于STN
+　　STN是一种有向图，它有两种节点：状态节点表示输入原料、中间产品或最终产品；任务节点表示处理操作，该操作将一种或多种输入状态转化为一种或多种输出状态.两种节点分别用圆圈和矩形表示.图1是一个典型的化工批处理过程的STN.
+
+
+图1　一个典型的化工批处理过程的状态-任务网(STN)
+　　描述STN的变量包括：
+　　1)描述操作i的变量
+　　Si――操作i的输入状态集；　　　　i――操作i的输出状态集；
+　　ρis――操作i的输入状态s相对于操作i批量的输入比例，
+　　is――操作i的输出状态s相对于操作i批量的输出比例，
+　　Pis――操作i输出产品到状态s的处理时间；
+　　Pi――操作i的处理时间，　ki――可执行操作i的设备集.
+　　2)描述状态s的变量
+　　Ts――从状态s接受物料的操作集；　　s――向状态s制造产品的操作集；
+　　Smaxs――状态s的最大存贮量.
+　　3)描述设备的变量
+　　Vmaxij――设备j执行操作i时的最大容量；　Vminij――设备j执行操作i时的最小容量；
+　　Ij――可由设备j执行的操作集.
+　　有关STN的详尽描述，可参见文献［2］.
+
+3　问题的提出与建模
+　　本文研究的批处理调度问题(记为P)为：
+　　给定　1)批处理过程的STN及全部相关信息；
+　　　　　2)一个感兴趣的时间段，该时间段可分为H个单位时间段(1，2，3，…H)，假定任何事件只能开始于某个时间段的起始时刻，以下将时间段t(1≤t≤H)开始时刻简称为“时刻t”；
+　　　　　3)用户订单信息及原料到货信息；
+　　　　　4)其它资源(如水、电、汽)的消费信息.
+　　求　每台设备上各操作的批量及相应的开始时间，使得生产总效益最大.
+　　首先定义以下变量：
+　　Bijt――t时刻操作i在设备j上开始的批量；Dst――t时刻关于产品s的需求；
+　　Rst――t时刻s产品(状态s)的到货量；cs――单位产品s的价值；
+　　ss――单位产品s单位时间的存贮费用；Sst――t时刻状态s中的存贮量；
+　　cUut――时间段t上消耗单位资源u的费用；Uut――时间段t上资源u的总需求量；
+　　U――其它资源集；　I――操作集；　Oijt――t时刻在设备j上开始的操作；
+　　Ej――可在设备j上执行的所有相邻操作对的集合，Ej={(Oijt,Oi′jt′)，i,i′∈Ij}；
+　　τii′j――在设备j上依次执行操作i和i′时，其间的setup时间；
+　　Cijt――0～1变量，Bijt>0时为1，否则为0.
+　　利用以上概念，问题P可建模如下：
+　　目标函数
+　　　　　　　　　　　　　　　　　　(1)
+
+以上表达式中的各项依次为产品价值、原料价值、存贮费用和其它资源费用.
+　　约束
+　　1)物料平衡
+　　　　　　　　(2)
+　　2)物料存贮和设备容量约束
+　　　　　　　　　　　　　　　　　　(3)
+　　　　　　　　　　　　　　　(4)
+　　3)其它资源约束
+　　假定资源u在执行操作i时的消耗由一个固定项和一个与批量有关的项组成
+
+其中B为相应的批量.于是时间段t上资源u的总需求量为
+
+设Umaxut为时间段t上的最大可用资源u，则有
+　　　　　　　　　　　　　　　　　　(5)
+　　4)关于Cijt
+　　　　　　　　　　　　　　　　　　(6)
+　　5)设备能力与setup时间
+　　　　　　　　　　　　　　　　　　(7)
+
+4　Lagrangian松弛法
+　　引入非负乘子λijt和松弛约束(4)，同时引入另一组非负乘子μut(u,t)松弛约束(5).这些乘子分别构成了向量λ,π和μ.由此得到松弛问题RP
+　　　　　　　　　　　　　　　　　　(8)
+
+进而定义对偶问题DP
+　　　　　　　　　　　　　　　　　　(9)
+(8)式中一项与决策变量无关，可暂不计，于是可将问题RP分为两部分.
+RP1：
+　　　　　(10)
+RP2：
+　　　　　　　(11)
+4.1　问题RP1的解法
+　　这是一个线性规划问题，可运用单纯形法求解.
+4.2　问题RP2的解法
+　　RP2可进一步分解为若干个单一设备问题SP2j(下标j表示设备)
+　　　　　　　　(12)
+　　为清楚起见，去掉表示设备的下标j，则(12)变为
+SP2：
+　　　　　　　　(13)
+　　设表示空操作，即空操作处理时间为1，它与其它任何操作间的setup时间均为0.
+　　定义函数
+　　　　　　　　　　　　　　　　(14)
+则f(t,i)表示操作i在t时刻开始执行的效益.对于0≤τ≤H-Pr,r∈I，定义问题JP(τ,r)：
+　　　　　　　　　　　　　　　　(15)
+　　　　　　　　　　　　　　　(16)
+　　　　　　　　　　　　　　(17)
+　　　　　　　　　　(18)
+　　设g(τ,r)为问题JP的目标函数值，表示到τ时刻为止，且在τ时刻开始执行r操作的总效益。则由(15)―(18)可以推出
+　　　　　　　　　　　　　　(19)
+　　　　　　　　(20)
+其中表示最迟在t时刻开始执行r操作的总效益.显然，SP2问题的最优值应为
+　　记SP2的最优解为OSP={tk,rk}Nk=1，则可通过下面方法反推获得Osp.
+　　　　　　　　　　　　　　(21)
+　　　　　　　　(22)
+　　最后，可由下式确定
+　　　　　　　　　　　　　　　　(23)
+4.3　对偶问题DP解法
+　　对偶问题可以用次梯度法求解［6］.λ，π，μ分别用公式
+　　　　　　　　　　　　　　(24)
+　　　　　　　　　　　　　　(25)
+　　　　　　　　　　　　　　(26)
+修正.其中h为迭代次数，a为步长，grad(*)是次梯度函数.
+4.4　构做可行解
+　　一般情况下，由对偶问题得出的解是不可行的.这时，为构造可行解，将RP2问题中解出的Cijt代回(4)，(5)式，并将这两组约束加入问题RP1，再解一个增广的线性规划问题，若得到满意的可行解，即将该可行解作为次优解.否则，可在对偶解附近做几次迭代，并采用以上方法解增广的线性规划问题，直到找到满意解.
+4.5　可行解的最优性估计
+　　一旦求出了一个可行解，相应的目标函数J即为最优值J*的一个下界.而对偶问题的目标函数J′*为J*的一个上界.J′*和J*之差为对偶间隙，而J′*-J为对偶间隙的一个上界.相对对偶间隙(J′*-J)/J′*为次优解质量的一个量度.
+5　数值试验
+　　为了说明本文提出算法的有效性，我们来解第2节图1所示批处理过程的调度问题，并将结果与文献［2］进行比较.假定时间域为10h，共有4台设备，设备1和设备4分别用于预处理和分离，而设备2，3则可进行反应1，2，3.对于该问题的详细描述，见文献［2］.
+　　本调度问题的求解程序是在PC486/66上用Turbo C开发的.该过程的STN是用一个数据文件和若干结构描述的.
+　　第一种情况，中间产品A，AB，BC和E的最大存贮量分别为100kg，200kg,150kg和100kg，原料和最终产品的存贮量不受限制.
+　　用本文方法得到的最大效益为2708，相应于生产136kg产品1和142kg产品2，其相对对偶间隙为7.03%(见表1).表中各括号内第一项为操作号，第二项和第三项分别为相应的批量和操作开始时间.由文献［2］可知，最优解为2744，事实上误差只有1.3%.本文方法计算时间为53s，而文献［2］中的计算时间为128s(Sun Sparcstation Ⅱ).
+表1　第一种情况的调度结果
+
+unit 1(1，100，0)，(1，36，2).
+unit 2(2，80，0)，(3，80，2)，(4，80，4)，(3，80，5)，(4，80，7)，(3，80，8).
+unit 3(2，50，0)，(3，50，2)，(2，50，4)，(2，24，6)，(3，50，8).
+unit 4(5，20，5)，(5，140，8).
+
+　　第二种情况，中间产品BC最大存贮量为0.
+　　算法得到的最大效益为2210，相应于生产116kg产品1和生产114kg产品2(见表2).相对对偶间隙为6.18%.由文献［2］知，2210即为最优解.这时最优解显然劣于第一种情况，这是由于中间产品BC缺少存贮，从而使得设备利用率降低的缘故.
+表2　第二种情况的调度结果
+
+unit 1(1，100，0)，(1，16，1).
+unit 2(2，48，0)，(3，80，2)，(3，80，4)，(2，78，6)，(3，80，8).
+unit 3(2，48，2)，(4，50，4)，(4，10，5)，(4，50，6)，(4，16，7)，(3，50，8).
+unit 4(5，50，5)，(5，76，8).
+
+　　由仿真可以看出，两个例子的相对对偶间隙分别为7.03%和6.18%，而实际上，可行解却非常接近于最优解.这种较大的相对对偶间隙可能是由问题的结构或者由Lagrangian松弛法本身造成的.
+　　本算法的有效性在很大程度上依赖于解决下层子问题RP1的有效性.本文所用的方法是作者自己开发的变量带上下界的单纯形法，若运用更为有效的商用软件包，可望大大缩短计算时间.另外，考虑到本调度问题的MILP结构的特殊性(如RP1的约束矩阵A是稀疏矩阵)，开发针对这种特殊结构的特殊方法，将大大提高算法的计算效率.总之，从算法的结构和仿真例子可以看到，基于Lagrangian松弛法的方法，有望成为一种解决化工批处理调度问题的实用方法.
+　　
+6　结论
+　　本文提出了一种基于Lagrangain松弛法的化工批处理过程调度的方法.原调度问题被分解为一个两层次的优化问题.上层优化Lagrangain乘子，下层则分别用线性规划和动态规划解决确定批量和安排时间表的问题.文中还考虑了与生产次序相关的setup时间以及其它资源的约束.仿真结果证实了算法的有效性.
+1)　国家自然科学基金资助项目，批准号　69504008.
+作者简介：王朝晖　1969年生，1991年毕业于西安交通大学获学士学位，1994年毕业于哈尔滨船舶工程学院获硕士学位.1997年于西安交大系统工程研究所获博士学位.研究方向为化工批处理过程调度与监控.
+　　　　　陈浩勋　1964年生，1984年、1987年和1990年分别在复旦大学、上海交大、西安交大获学士、硕士和博士学位.现为西安交通大学系统工程研究所副教授，中国自动化学会控制理论与应用专业委员会委员.研究方向为：离散事件动态系统理论，Petri网理论与应用，生产计划与调度.
+　　　　　胡保生　1930年生，1951年毕业于上海大同大学电气工程系.现为西安交通大学系统工程研究所所长、教授、博士生导师.研究方面为：离散事件动态系统理论与应用，多目标决策与优化，并行控制算法，人机系统等.
+作者单位：西安交通大学系统工程研究所　西安　710049
+参考文献
+［1］　Ku H-M,Rajagopalan D,Karimi I.Scheduling in batch processes.Chemical Engineering Progress,August 1987,35―45.
+［2］　Kondili E,Pantelides G C,Sargent R W H.A general algorithm for short-term scheduling of batch operations――1.MILP formulation.Computers Chem.Engng.,1993,17(2):211―227.
+［3］　Shah N,Pantelides C C,Sargent R W H.A general algorithm for short-term scheduling of batch operations――2.computational issues.Computers Chem.Engng.,1993,17(2):229―244.
+［4］　Hoitomp D J,Luh P B,Pattipati K R.A practical approach to job-shop scheduling problems.IEEE Trans.Robotics and Automation,1993,9(1):1―13.
+［5］　Guan Xiaohong,Luh P B,Yan Houzhong,Amalfi J A.An optimization-based method for unit commitment.Electrical Power & Energy Systems,1992,14(1):9―17.
+［6］　Chen Haoxun,Chu Chengbin,Porth J-M.A more efficient lagrangian relaxation approach to Job-shop scheduling problems.In:Proc.IEEE Int.Conf.on Robotics and Automation,Japan,1995,496―501.
+收稿日期　1996-09-16

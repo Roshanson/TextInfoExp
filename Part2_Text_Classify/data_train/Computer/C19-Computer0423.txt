@@ -1,0 +1,207 @@
+信息与控制
+INFORMATION AND CONTROL
+1999年 第28卷 第6期 Vol.28 No.6 1999
+
+
+
+敏捷制造下车间重构中的制造资源选择
+伍乃骐 毛 宁 钱燕鸣
+　　摘　要：敏捷制造被认为是21世纪的制造模式．实现敏捷制造的组织形式是敏捷虚拟企业（AVE），它根据产品开发的需要动态重构．动态重构敏捷虚拟企业中的制造资源选择问题是对实现敏捷制造的挑战．本文给出了一个资源选择问题的整数规划模型，其目标是使费用最小．利用任务之间的先后顺序的特点，我们将整数规划模型转换为图论模型．基于图论模型，我们给出了一个求最优解的有效算法．其计算复杂性是多项式有界的．
+　　关键词：敏捷制造，敏捷虚拟企业，资源重构
+　　中图分类号：TP14　　　　　　文献标识码：B
+RESOURCE SELECTION FOR SHOP RECONFIGURATION
+IN AGILE MANUFACTURING
+WU Nai-qi MAO Ning QIAN Yan-ming
+(Department of Mechatronics Engineering Guangdong University of Technology, Guangzhou 510090)
+Abstract　It is believed that agile manufacturing is the 21st century manufacturing enterprise strategy and it should be realized by agile virtual enterprise (AVE) which is dynamically reconfigured for the manufacturing of one or more products. It creates a significant challenge for the resource selection in reconfiguring an AVE. In this paper, an integer programming (IP) formulation is presented for the resource selection problems to minimize the cost. The IP formulation is then transformed into a graph-theoretical formulation by taking the advantage of the precedence relationship between the tasks. Based on the graph-theoretical formulation, an efficient algorithm is proposed to seed for the optimal solutions of the problems. It is shown that the algorithm is polynomial bounded.
+　　Key words　agile manufacturing, agile virtual enterprise, resource reconfiguration
+1　前言
+　　为了满足市场的需求，制造商必须在越来越短的从产品的初步设想到投放市场的时间间隔内开发出新的、价格更低的、质量更好的新产品．为了适应这种市场的新的挑战，人们提出了一种新的制造业的模式――敏捷制造（Agile Manufacturing，AM）[1，2]. 敏捷制造一提出就受到了世人的普遍关注，认为它能充分利用全社会的制造资源而具有敏捷性[7,8]，是21世纪制造业的发展战略．
+　　敏捷制造的关键是敏捷性．有些研究人员企图通过提高系统本身的柔性来实现敏捷性[3,4]，因而从系统的硬件（包括机械装置）和软件入手进行研究．然而普遍认为，敏捷性应由多路径敏捷性来达到[5,6]．所谓多路径敏捷性就是一个产品的设计、制造和开发分布在地理位置不同的地方同时进行，通过多方的合作共同完成．而且，每一个设计和制造点可以隶属于不同的企业，形成一个敏捷虚拟企业（Agile Virtual Enterprise，AVE）[7-10]．一个敏捷虚拟企业是根据开发某一个或几个产品的需要而动态构成的．通常，某个企业获得一个或几个市场订单，或根据市场需求而开发新产品，而在本企业内部存在资源不足，不能在要求的时间内以可接受的成本和质量完成开发，因而组织一个虚拟企业来实现产品的开发．我们称该虚拟企业的倡导者为盟主．
+　　在产品的开发过程中，虚拟企业内部的各个设计和开发地点必须同时并行地进行工作，因此需要进行大量的信息交换，包括产品数据信息和生产管理、生产控制的信息．为了实现迅速的信息交换，一个敏捷虚拟企业必须通过基础信息设施（网络）联结[11-13]．同时，敏捷虚拟企业是可重构的，是动态的，是根据新产品开发的需求而构成的．为了保证产品开发的快速性，虚拟企业也必须能快速重构．因此，重构中所需要进行的信息交换也必须通过基础信息设施来实现．这样，一个虚拟企业的倡导者，也只能通过网络寻找合作伙伴．
+　　因此，敏捷制造的实现给我们提出了严峻的挑战．一方面必须研究和建设敏捷虚拟企业赖以生存的信息基础设施，另一方面是如何动态地重构敏捷虚拟企业．本文着重讨论敏捷虚拟企业的重构中的车间重构问题．车间重构是企业重构的一个部分，它着重于制造资源的重构．也就是说，在各个企业中，动态地选择出开发某一产品所需要的制造资源．以开发费用最小为目标，本文给出了资源选择的整数规划模型．利用产品各制造任务的先后顺序关系，可将该整数规划模型转换为图论模型，并给出了有效的求解算法，它可以用多项式有界的步数求得最优解．
+2　问题描述
+　　当一个企业（盟主）为一个（或几个）产品而构成一个敏捷虚拟企业时，首先要根据资源的需求及本企业所具有的资源（包括人员、设备、技术等）将产品的开发制造活动分解成若干个任务．要指出的是，不同任务的性质可能大不相同．有些可能是完成某个部件的设计，而另一些可能是一个部件的设计和制造；还可能是一个零件，或者仅仅是一道工序的加工，需要提供有关的全部设计信息；也可以是某个部件，或者是整个产品的装配，等等．
+　　为了通过网络快速重构虚拟企业，必须通过联结企业的网络完成每个任务的招标、投标过程，以获得实现重构所需的信息[14]．盟主以广播的方式对每一项制造任务在网络上发出招标书，有意加入联盟的企业则投标竞争其中的一项或多项任务．图1显示了招标书和投标书包含的主要内容．
+
+
+图1 招标书和投标书的基本内容
+　　盟主在收到各加工任务的投标书后，需要进行一次初步的筛选，主要考虑各投标人的信誉、是否能达到质量指标、完成时间能否接受等．经过筛选后的候选者则用优化方法进行选择． 
+2.1 整数规划模型
+　　在敏捷制造下，由于加工在异地完成，因此除了加工费用外，运输费用不可忽略．模型中需要用到下列符号：
+　　T={t1, t2, …, tn} 为所有的任务集合．
+　　Fi={fi1, fi2, …, fim} 任务ti的候选者的集合．
+　　cik候选者fik对任务ti的投标价格．
+　　Wikjh将候选者fik对任务ti进行加工后所形成的零部件运到fjh所需的费用，显然有i≠j并且从fik到fjh需要运送零部件．
+
+　　fik=1 表示候选者fik被选中．
+　　fik=0 表示候选者fik未被选中．
+　　车间重构的制造资源选择问题就是对每一项加工任务选择一个并且只选择一个候选者，使得加工费用和运输费用的和最小．各项任务的加工费用就是各候选者的投标价格．因此，问题可用下面的整数规划描述．
+　　　(1)
+　　　　　　　(2)
+fik=0,1, i=1,2,…,n　　　　　　　　(3)
+2.2 图论模型
+　　由于计算的复杂性，实际的制造资源选择问题很难用上面给出的整数规划求解，因此必须寻求别的途径．考察各个任务之间的关系，不管各任务的性质如何，它们之间一定存在着先后顺序的约束，是一种树状的关系．图2(a)表示了这样一种关系．
+
+
+图2 任务间的树状关系(a)及对应的图论模型(b) 
+　　利用任务之间的这种关系我们可将上面的整数规划模型转换为图论模型，用类似于求最短路径的方式求解．首先给出必要的符号：
+　　I={1, 2, …, n}为节点集合, i∈I对应于任务ti，在图中它用一个椭圆表示．
+　　Ai={ai1, ai2, …, aim}和Bi={bi1, bi2, …, bim}为节点i中的黑点的集合，aik和bik一起对应于任务ti的候选者之一fik．
+　　N={(aik, bik)},　i=1, 2, …, n, k=1, 2, …, m, 为联结弧的集合，弧(aik, bik)对应于任务ti的候选者fik．
+　　Cik为弧(aik, bik)的权，对应于任务ti的候选者fik所投标的加工费用．
+　　F={(bik, ajh)}, i, j=1, 2, …, n; k, h =1, 2, …, m; i≠j及(ti, tj)∈A，（A为图2(a)中弧的集合）, 是联结候选者之间的弧的集合．
+　　Wikjh为弧(bik, ajh)的权，对应于从候选者fik到fjh运输所需的费用．
+　　令Sik∈Si={(ai1, bi1), (ai2, bi2), …, (aim, bim)}，其中Sik=(aik, bik) 是节点i中一个黑点对，它对应于任务ti的一个候选者，那么车间重构的资源选择问题就是在图中选择一个集合S= {S1k, S2k, …, Snk}使得下面的目标函数最小．
+　　　　　　　(4)
+　　其中NsN和FsF是对应于所选择的集合S所包含的弧的集合． 图2中(b)就是对应于(a)的这样的一个图．为简单起见，我们称Sik为节点i中的子节点．
+3　求解算法
+　　为了获得有效的算法，我们先分析上一节给出的图论模型的特点．
+　　如果图中的一个节点没有上游节点，我们称该节点为起始节点；如果图中的一个节点没有下游节点，我们称该节点为终节点．注意，图中可以有多个起始节点，例如图2(b)中的节点1、2、和3都是起始节点，但只有一个终节点．如果节点j是节点i的直接后继，我们称节点i是节点j的输入节点．如果图中的一个节点有多个输入节点，我们称该节点为装配节点．如图2(b)中的节点4和5就是装配节点．
+　　由图2(b)我们可知，如果我们视cik为aik到bik的距离，wikjh为bik到ajh的距离，那么这里的问题类似于有向图中的最短路径问题．
+　　假设节点i是起始节点，节点j是其下游节点，并且在节点i和j之间没有装配节点．令α(Sik, Sjh)为子节点Sik和Sjh之间的最短路径，β(Si, Sjh)为节点i到子节点Sjh的最短路径，d(α(Sik, Sjh))和d(β(Si, Sjh))分别为它们的距离．很显然，我们有
+d(α(Si, Sjh)) =min(d(α(Si1, Sjh)), d(α(Si2, Sjh)), …, d(α(Sim, Sjh)))(5)
+　　基于以上定义，以及在非循环有向图中求最短路径的方法，我们有下列特点：
+　　特点1 设节点i是起始节点，节点j是其下游节点，并且在节点i和j之间没有装配节点，节点g位于节点i与j之间，并且Sge是α(Sik, Sjh)上的一个子节点，那么 
+d(α(Sik, Sjh))=min(d(α(Sik, Sge))+x)　　　　(6)
+　　特点2 设节点i是起始节点，节点j是其下游节点，并且在节点i和j之间没有装配节点，节点g位于节点i与j之间，并且Sge是β(Si, Sjh)上的一个子节点，那么
+d(β(Si, Sjh))=min(d(β(Si, Sge))+x)　　　　　(7)
+　　以上两特点意味着，如果我们一旦求得α(Sik, Sge)和β(Si, Sge)，我们可以利用所得的结果求α(Sik, Sjh)和β(Si, Sjh)．正因为这样才使我们的算法得到简化．
+　　定义1 设Uj是节点j的上游节点集合，Vj是Uj中的起始节点集合，如果从每一个v∈Vj出发都有一条路径到达子节点Sjh，同时，任何一个节点u∈Uj中有一个并且只有一个子节点在这些路径上．我们定义这些路径的联合为网路，并称子节点Sjh由该网路达到．
+　　作为例子，我们来看图2(b)，节点1、2和3是节点5的上游节点集合中的起始节点．子节点S51由起始于节点1、2和3的路径(a11→b11→a51), (a22→b22→a41→b41→a51)和(a31→b31→a41→b41→a51)而达到．要注意的是，路径2和3都必须经过节点4，按照定义，它们通过节点4时必须是经过同一个子节点．该子节点在这里是S41(a41, b41)．这3条路径的联合（即网路）是(a11→b11→a51, a22→b22→a41→b41→a51, a31→b31→a41)．
+　　定义2 定义网路各部分的距离之和为网路的距离．
+　　例如，上面的网路例子的距离为c11+w1151+c22+w2241+c41+w4151+c31+w3141．如果一条到达子节点的网路具有最短的距离，我们称该网路为到达Sjh的最短网路，并用γ(Sjh)表示．相应地用d(γ(Sjh))表示其距离．
+　　按照装配节点的定义，一个装配节点是由若干个输入节点“装配”而成．因此，按照定义1，依赖于装配节点j的输入节点的个数，一条到达子节点Sjh的网路可以分解成若干部分．设节点i是节点j的输入节点之一，令γ(Si, Sjh)表示经过节点i到达Sjh的最短网路，那么，我们有下列的特点：
+　　特点3 如果节点j是一个有两个输入节点的装配节点，节点i和k是它的两个输入节点，那么
+d(γ(Sjh)) =d(γ(Si, Sjh))+d(γ(Sk, Sjh))　　　　　(8)
+　　证明 设有分别经过节点i和k到达Sjh的两条网路ρ(Si, Sjh)和ρ(Sk, Sjh)使得d(γ(Sjh)) =d(ρ(Si, Sjh)) +d(ρ(Sk, Sjh))．由于网路ρ(Si, Sjh)和ρ(Sk, Sjh)是相互独立的，即对ρ(Si, Sjh)的改变并不影响ρ(Sk, Sjh)，反之亦然．因此要使d(ρ(Si, Sjh))+d(ρ(Sk, Sjh))最小化，d(ρ(Si, Sjh))和d(ρ(Sk, Sjh))必须分别最小化，也就是说ρ(Si, Sjh)=γ(Si, Sjh)和ρ(Sk, Sjh) =γ(Sk, Sjh)一定成立．
+　　对于有多个输入节点的装配节点的情形上面的特点仍然成立，并可用类似的方法证明．由特点3我们立即有下列特点．
+　　特点4 设节点j是一个有两个输入节点的装配节点，并且在节点j的上游节点集合中没有装配节点，节点i和k是节点j的上游节点中的两个起始节点，那么
+d(γ(Sjh))=d(β(Si, Sjh))+d(β(Sk, Sjh))　　　　　(9)
+　　特点4是特点3的特例．根据特点3和特点4，我们可以通过分别求经过节点j的各个输入节点的γ(Si, Sjh)来求γ(Sjh)，从而使算法简化．类似于特点2我们有下面的特点．
+　　特点5 如果子节点Sge在网路γ(Sjh)上，那么
+d(γ(Sjh))=min(d(γ(Sge)) +x)　　　　　　　　　　(10)
+　　特点5是特点2的推广．进一步，设节点j是图中的终节点，σ(Sj)=γ(Sjh)∪(ajh, bjh)是到达节点j的一条网路，且使得
+d(σ(Sj)) =min(d(γ(Sj1))+cj1, d(γ(Sj2))+cj2, …, d(γ(Sjm))+cjm)　　(11)
+其中(ajh, bjh)表示弧．这里的σ(Sj)就是资源选择问题所要求的网路，在该网路上的所有子节点构成了所选的候选者集合S．
+　　基于上面的分析，现在我们可以给出求解算法如下：
+　　第1步: 设置初始集合A0，它由图中所有的起始节点组成，并令B0=I-A0, k=1.
+　　第2步: 从集合Bk中选择一个节点Sj使得Sj的所有输入节点均在集合Ak中．
+　　第3步: 应用(5)-(10)对h = 1, 2, …, m分别求γ(Sjh)．
+　　第4步: 置Ak+1=Ak+{Sj}和Bk+1=Bk-{Sj}．
+　　　　如果Bk+1=Φ，继续下一步，否则置k = k+1并跳到第2步．
+　　第5步: 应用(11)求σ(Sj)．
+　　第6步: 搜索σ(Sj)上的所有子节点形成解集S={S1k, S2k, …, Snk}并停止．
+4　计算复杂性
+　　由上面的讨论可知，车间重构中的资源选择问题实质上是一个组合优化问题．上一节我们利用了所给出的图论模型的特殊性质，给出一个求最优解的算法．因此讨论其计算复杂性具有重要意义．我们将证明我们的算法的计算复杂性是多项式有界的．
+　　令|Sj|=mi为节点i中的子节点个数，且M=max(m1, m2, …, mn)．再令Kj为节点j的输入节点个数，及K=max(K1, K2, …, Kn)．那么我们有下列计算复杂性定理．
+　　定理 上一节给出的求解车间重构中的资源选择问题的算法的计算复杂性为O(M2n+KMn)．
+　　证明 设节点i是节点j的一个输入节点，那么基于γ(Si1), γ(Si2), …, γ(Sim)求经过节点i的γ(Sjh)，对于节点i中的每一个子节点需要两次加运算和mi-1次比较运算，因此要求得经过节点i的γ(Sj1), γ(Sj2), …, γ(Sjm)，所需要的运算次数为
+(2 mi+mi-1)mj≤3mi*mj≤3M2　　　　　　　　　　　　(12)
+　　求装配节点的γ(Sjh)时，对于节点j中的每一个子节点另外还需要Kj次加运算，因此要求γ(Sj1), γ(Sj2), …, γ(Sjm)，总共需要的运算次数为 
+Kj*mj≤KM　　　　　　　　　　　　　　　　　　(13)
+　　结合(12)和(13)，考虑到总共有n个节点，所以要求得问题的最优解，其总的运算次数不超过(3M2+KM)n 次，亦即其计算复杂性为O(M2n+KMn)．
+　　由于基于我们的模型所提出的算法在能够求得最优解的同时，其计算复杂性是多项式有界的，因此可用于实际的大规模问题求解．
+5　算例
+　　为了说明给出的方法的应用，我们以曾经在某企业发生过的一个实例为基础而加以扩展，作为本文的应用例子．
+　　某模具制造企业有一个大型精密注塑模制造的订单，它需要大型的铣床和磨床加工模架及对大体积的模板进行加工；型腔和型芯的加工需要高精密数控机床，先用数控机床加工出大致外形，再用电火花加工出精确外形．电火花加工时需要工件作为电极，电极需要精密数控机床加工出精确外形．由于本企业内没有所需要的大型铣床和磨床，已有的数控机床由于使用时间很长，精度已不够．因此需要寻找合作伙伴共同完成该模具的制造．它可以分解为下列的加工任务：
+　　任务1：模架及对大体积模板进行的加工，需要大型铣床和磨床． 
+　　任务2：型腔和型芯的初步加工，形成大致的外形，需要数控机床，此任务还包括了NC编程．
+　　任务3：电极的加工，要求加工出精确外形，需要精密数控机床，此任务也包括了NC编程．
+　　任务4：型腔和型芯的电火花加工．
+　　任务5：其他零件的加工以及模具装配，它要求熟练的模具钳工．
+　　任务6：试模，需有大型注塑机．
+　　任务7：根据试模结果进行修模．
+　　图3所示的网络图给出了各任务间的先后顺序关系．这些任务通过投标竞争，本企业也可投标竞争可以由自己完成的任务．设任务1、3、4和6分别有3个候选者，而任务2、5和7分别有2个候选者．我们用Sik表示任务i的第k个候选者，表1列出了各自以万元计的投标价格（包括材料费）．表2至表5给出了各候选者之间的运输费用（以万元计）．
+表1 各候选者的投标价格
+
+任务投标者价格
+任务1S1110.2
+S128.5
+S1312.7
+任务2S219.3
+S225.5
+任务3S313.6
+S325.3
+S334.2
+任务4S412.5
+S425.1
+S436.4
+任务5S5118.5
+S5219.6
+任务6S610.8
+S621.0
+S630.6
+任务7S713.1
+S725.0
+
+表2 由节点2和3至节点4间的运输费用
+
+S41S42S43
+S210.20.40.3
+S220.50.20.2
+S310.90.50.3
+S320.30.20.3
+S330.20.50.4
+
+表3 由节点1和4至节点5间的运输费用
+
+S51S52
+S110.90.7
+S121.31.0
+S130.60.6
+S410.20.4
+S420.40.6
+S430.70.5
+
+表4 由节点5至节点6间的运输费用
+
+S61S62S63
+S510.80.70.2
+S520.60.60.6
+
+表5 由节点6至节点7间的运输费用
+
+S71S72
+S610.50.7
+S620.80.6
+S630.20.7
+
+
+图3 例子各任务间的先后顺序关系
+　　基于图3和上面各表的数据，我们得到如图4所示的图论模型．应用本文的算法我们求得了所有的γ(Sjh)，表6列出了它们的距离d((Sjh))，在表中我们用djh表示d((Sjh))．
+
+
+图4 例子的图论模型
+表6 各d(γ(Sjh))的值
+
+d41d42d43d51d52d61d62d63d71d72
+10.49.89.622.922.842.242.141.642.242.9
+
+　　基于所求得的各γ(Sjh)，我们求得了问题的最优网路σ(S7)，即图4粗线所示的网路．并由此获得问题的解，其最优值为45.3万元．容易看出，用本文的模型和算法容易对该问题求解．
+6　结论
+　　敏捷制造是21世纪的制造业模式已成为大家的共识，而敏捷虚拟企业是实现敏捷制造的组织形式．敏捷虚拟企业是根据产品开发的需要动态重构的，因此将敏捷虚拟企业的各个部分联结起来的基础信息设施和车间重构是实现敏捷制造的两个重要问题．
+　　本文深入地讨论了车间重构的制造资源选择问题．为了保证重构的敏捷性，资源选择问题的信息可以通过网络进行的招标、投标过程获得．我们建立了制造资源选择问题的整数规划模型．为了获得有效的求解算法，利用任务之间的先后顺序特点，我们将整数规划模型转换为图论模型．基于该图论模型，我们给出了能获得最优解的多项式有界算法．
+　　敏捷制造下的生产计划和调度，是实现敏捷制造的又一挑战．因为制造活动在异地同时进行，零部件在各地间运输所花的时间不再可以忽略，并且由不同的实体完成．这使得生产计划和调度大大复杂化．这将是我们进一步研究的重要课题．
+基金项目：由863计划CIMS主题资助
+作者简介
+　　伍乃骐，男，副教授，博士．研究领域为单元化制造系统，生产计划和调度，petri网理论和应用，离散理件系统．
+　　毛　宁，副教授，硕士．研究领域为CIMS，自动化制造系统运动和优化，数据库及其应用．
+　　钱燕鸣，工程师．感兴趣的领域为数据检测和管理信息系统．
+作者单位：广东工业大学机电系 广州 510090
+参考文献
+1　蒋新松, 张申生. 敏捷竞争的挑战与思考，计算机集成制造系统，1996，(1)
+2　 Nagal R, Dove R. 21st Century Manufacturing Enterprise Strategy: An Industry-led View, Iacocca Institute, Lehigh University, 1991
+3　 Quinn R D et al. Design of an Agile Manufacturing Workcell for Light Mechanical Application, Proceedings of the 1996 IEEE International Conference on Robotics and Automation, 1996: 858～863
+4　 Merat F L, Barendt N A, Quinn R D et al. Advances in Agile ManufacTuring, Proceedings of the 1997 IEEE International Conference on Robotics and Automation, 1997:1216～1222
+5　A C Sanderson, R J Graves, D L Millard. Multipath Agility in Electronics Manufacturing. IEEE International Conference on Systems, Man, and Cybernetics, 1994
+6　 R J Graves, A Agrawal, K Haberle. Estimating Tools to Support Multi-Path Agility in Electronics Manufacturing. IEEE Transactions on Components, Packaging, and Manufacturing Technology, 1996, 19(1):48～56
+7　 R Dove. Agile Denefits: Viability and Leadership. Production, 8, 1995,(8)
+8　 P M Noaker et al. The Research for Agile Manufacturing, Manufacturing Engineering, 1994,(11)
+9　 G G Dess, A M A Rasheed, K J McLaughlin, R L Priem. The new Corporate Architecture, IEEE Engineering Management Review, 1996, 24(2):20～28
+10　J Browne, P J Sackett, J C Wortmann. Future Manufacturing Systems-Towards the Extended Enterprise, Computers in Industry, 1995,25(3):235～254
+11 A Bartmess, K Cerny. Building Competitive Advantage Through a Global Network of Capabilities, IEEE Engineering Management Review, 1996, 24(2):29～42
+12 P Horstmann et al. Manufacturing Virtual Enterprise Through the use of the National Industrial Infrastructure Protocols (NIIIP), Proceedings of the SPIE-The International Society for Optical Engineering, 1997, 29(13):20～47
+13 P Herman et al. Creating the Virtual Enterprise with VE Gateway, Proceedings of the SPIE-The International Society for Optical Engineering, 1997, 29(13):174～199
+14 毛 宁, 钱燕鸣, 伍乃骐. 敏捷制造中制造资源重构问题建模，计算机集成制造系统，待发表
+收稿日期:1998-04-24

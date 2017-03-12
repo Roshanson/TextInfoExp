@@ -1,0 +1,148 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第10期 Vol.19 No.10 1999
+
+
+
+基于ASP的Web应用中数据库图像数据的处理
+王新房　邓亚玲
+　　我们以图像数据为例，以Microsoft SQL Server6.5作为数据库系统，开发技术采用微软的ASP。本文首先介绍方案的设计思想，然后给出数据库表结构；其次，说明利用Visual Basic 4.0和ADO1.5构造ActiveX 服务器部件；最后，讨论在开发ASP Web基应用的过程中，怎样使用我们构造的用于进行数据库图像数据处理的ActiveX 服务器部件。
+1　方案介绍
+　　我们可以采用自己最熟悉的一种编程语言(如Visual Basic，Visual C++或Visual J++)，开发一些完成特定任务的ActiveX 服务器部件，以便在用ASP开发Web基应用时使用。为了完成对数据库图像数据的有效处理，我们开发了一个ActiveX 服务器部件LoadImage。该部件负责完成从 SQL Server的有关表中提取二进制图像数据，将提取的二进制图像数据存放在一个临时图像文件中。当Web基应用需要将数据库中存储的二进制图像数据发送到浏览器客户并在客户浏览器中对其显示时，ASP通过调用该部件的有关方法获取这个临时图像文件的位置。这样，利用HTML的<IMG>标记，数据库系统中存储的二进制图像数据可容易的被下载到客户浏览器并将其在浏览器上显示。
+2　数据库设置
+　　Microsoft SQL Server 具有存储二进制图像数据的能力，数据库中对应的数据类型为image，我们利用微软的SQL企业管理器(SQL Enterprise Manager)可以很容易地创建所需的数据库。本文中我们将创建一个4M大小名为testdb的数据库。为了便于说明问题和突出重点，在testdb数据库中只创建一个表Test―Img 。创建Test―Img表的SQL脚本如下：
+create table Test―Img( img―id numeric identity,
+img―type char(3) null,
+img―data image null,
+img―des text null,
+constraint PK―TEST―IMG primary key
+(img―id)
+)
+　　其中img―id为该表的主键。img―type代表图像的类型，如gif或jpg这两种Web基应用使用最多的图像类型。img―data列存储二进制图像数据。img―des列存放图像的描述性文本。
+3　创建ActiveX 服务器部件
+　　用Visual Basic 4.0开发ActiveX 服务器部件的过程如下：
+　　1) 开始Visual Basic 4.0，命名Project为LoadImage。
+　　2) 选择Tools菜单中的Options菜单项，然后用鼠标单击Project tab，在Project Name文本编辑框中键入LoadImage。
+　　3) 移去Visual Basic 4.0自动创建的缺省窗体(DefaultForm)。
+　　4) 利用Insert菜单的Class Module菜单项在Project中加一个Image类。在该类的属性(property)中，设置Instancing属性为2 - Creatable MultiUse，Name属性为Image，Public属性为True。
+　　5) 为ActiveX 服务器部件加入口点(Entry Point)。所有的ActiveX 服务器部件都需要一个入口点。在ASP文件中创建该部件的对象实例时，代码将从入口点开始执行。对于ActiveX 服务器部件，其入口点为Module的Sub Main过程。为此，利用Insert菜单的Module菜单项加入一个模块(Module)，在出现模块的窗口中键如：
+　　Sub Main()
+End Sub
+　　6) 在Image类中加入如下代码：
+Private mDbConn As Object　　　　　　　　　　　　　　　　　　′定义数据库连接对象。
+Private mDbRec As Object　　　　　　　　　　　　　　　　　　　′定义数据库记录对象。
+Private fld As Object　　　　　　　　　　　　　　　　　　　　′定义数据库字段对象。
+Private mFileName() As String　　　　　　　　　　′数组，用于存放临时文件名和路经。
+Private mlngImageId() As Long　　　　　　　　　　　　　　　′用于存放图像ID的数组。
+Private mlngNumberOfFiles As Long　　　　　　　　　　　　　　　　　′临时文件的数目
+Const bSize = 1024　　　　　　　　　　　　　　　　　　′一次从库中读取的最大byte数。
+′ImageFile属性用于返回临时文件名。
+Public Property Get ImageFile
+(ByVal img―id As Integer) As String
+Dim intPos As Integer
+Dim i As Integer
+For i = 0 To mlngNumberOfFiles - 1
+If mlngImageId(i) = img―id Then
+intPos = 5 + Len(Trim(Str(img―id))) + 4
+ImageFile = Right(mFileName(i), intPos)
+End If
+Next i
+End Property
+　　　　　　　　　　　　　　　　′ CreateImageFile过程根据图像ID创建相应的临时文件。
+Public Sub CreateImageFile
+(ByVal img―id As Integer)
+Dim SqlCmd As String , OutputFile As String,
+ImageType AsString
+Dim OutputFileNum As Integer, 
+LeftOver As Long, i As Integer,byteData() As Byte
+For i = 0 To mlngNumberOfFiles - 1
+If mlngImageId(i) = img―id Then 
+　　　　　　　　　　　　　　　　　　　　　　　　　　　′检查临时图像文件是否已存在。
+Exit Sub
+End If
+Next i
+mDbConn.ConnectionString = "DRIVER={SQL
+Server};SERVER=(local);UID=sa; " &―
+"PWD=sapassword;WSID=CONTROL;DATABASE=testdb"
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′数据库连接字符串。
+mDbConn.ConnectionTimeout = 15
+mDbConn.Open 
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′打开数据库连接。
+SqlCmd = "SELECT * from Test―Img 
+where img―id=" &img―id 
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′SQL语句
+Set mDbRec.ActiveConnection = mDbConn
+mDbRec.Open SqlCmd, , 0, 1
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′打开数据库记录集。
+Set fld = mDbRec.Fields("img―data")
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′设置对应的字段对象。
+mlngNumberOfFiles = mlngNumberOfFiles + 1
+ReDim Preserve mFileName(mlngNumberOfFiles)
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′重新设置数组的大小。
+ReDim Preserve mlngImageId(mlngNumberOfFiles)
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′重新设置数组的大小。
+mlngImageId(mlngNumberOfFiles - 1) = img―id
+ImageType = mDbRec.Fields("img―type")
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′获取图像类型信息。
+mFileName(mlngNumberOfFiles - 1) =
+App.Path & "\images" &―"\image" & Trim(Str(img―id)) & "." & ImageType 
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′构造临时文件的全路经名
+OutputFile = mFileName(mlngNumberOfFiles - 1)
+OutputFileNum = FreeFile
+Open OutputFile For Binary As #OutputFileNum 
+　　　　　　　　　　　　　　　　　　　　　　　　　′创建并以二进制方式打开临时文件。
+FileLength = fld.ActualSize - 1
+　　　　　　　　　　　　　　　　　　　　　　　　　　　′获胜图象数据的大小(byte数)。
+NumBlocks = FileLength bSize
+LeftOver = FileLength Mod bSize
+byteData() = fld.GetChunk(LeftOver)
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′读取图像数据。
+Put #OutputFileNum, , byteData() 
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′追加图像数据到临时文件。
+For i = 1 To NumBlocks
+byteData() = fld.GetChunk(bSize)
+Put OutputFileNum, LeftOver + (i - 1) 
+* bSize, byteData()
+Next i
+mDbRec.Close 
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′关闭记录集。
+mDbConn.Close 
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′关闭数据库连接。
+Close #OutputFileNum 
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　′关闭临时文件。
+End Sub
+　　　　　　　　　　　　　　　　　　　′类初始化过程创建数据库连接对象和记录集对象。
+Private Sub Class―Initialize()
+mlngNumberOfFiles = 0
+Set mDbConn = CreateObject("ADODB.Connection")
+Set mDbRec = CreateObject("ADODB.Recordset")
+End Sub
+　　　　　　　　　　　　　　　　　　　　　　　　　　　′类析构过程释放所占系统资源。
+Private Sub Class―Terminate()
+If mDbRec.State = adStateOpen Then mAdoRst.Close
+If mDbConn.State = adStateOpen Then mAdoConn.Close
+Set mDbRec = Nothing
+Set mDbConn = Nothing
+End Sub
+　　7) 完成编译。完成编译后，利用Windows NT或Windows 95的regsver32.exe工具，对所产生的ActiveX服务器部件进行登记注册。
+4　使用ActiveX 服务器部件
+　　我们利用微软的Visual InterDev 1.0 创建一个Web项目(Web Project)，在该项目中建立一个ASP文件ShowImage.asp。在使用我们的ActiveX 服务器部件时，应首先利用ASP内置Server对象的CreateObject方法创建一个ActiveX 服务器部件对象实例，然后调用CreateImageFile过程用于建立临时图像文件，其次调用ImageFile获取临时图像文件的文件名，最后通过HTML的<IMG>标记将图像在客户浏览器上进行显示。我们假设要显示img―id=20的图像数据，则相应的ASP文件ShowImage.asp的内容如下：
+<%@ LANGUAGE="VBSCRIPT" %>
+<HTML>
+<HEAD> <TITLE>Show Database Image</TITLE> 
+</HEAD>
+<BODY>
+<% Set MyObj=Server.CreateObject("LoadImage.Image")
+MyObj.CreateImageFile(20)
+FileName = "./images/" & MyObj.ImageFile(20) %>
+<font size=6> Here is the Image retrieved: </font>
+<IMG ALIGN=BOTTOM SRC= "<% =FileName %>">
+</BODY> </HTML>
+5　结论
+　　通过设计一个ActiveX 服务器部件并结合ASP技术可以实现在Web基应用中将数据库系统中存储的二进制图像在客户浏览器上进行显示。该方法具有开发周期短，使用容易，灵活等优点。Web基应用开发人员可利用该方法设计出商业化的具有完备功能的ActiveX 服务器部件，完成对数据库系统中存储的二进制图像数据的有效处理。
+作者简介：王新房　博士。主要研究方向：自适应控制与计算机网络。
+邓亚玲　讲师。主要研究方向：网络计算与信息管理。
+作者单位：西安理工大学自动化与信息工程学院　陕西.西安(710048)
+参考文献
+［1］　Piroz Mohseni，著. Web数据库开发人员指南. 机械工业出版社，1997
+收稿日期:1999-05-06(修改稿)

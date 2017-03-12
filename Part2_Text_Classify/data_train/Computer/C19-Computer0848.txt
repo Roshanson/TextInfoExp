@@ -1,0 +1,84 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.423-426
+
+
+
+非线性最小相位系统输出反馈镇定的一个注记
+陈彭年　秦化淑　洪奕光
+摘　要　讨论了单输入单输出非线性最小相位系统的动态输出反馈镇定.通过加积分器和非线性变换将系统化为一种标准形式，并基于标准形式的线性部分提出了动态补偿器的设计方法.然后根据得到的中心流形的表达式和稳定性定理，在零动态流形为一维时，证明了闭环系统的渐近稳定性，最后给出了一个零动态不具有齐次渐近稳定性但仍能动态输出反馈镇定的非线性最小相位系统的例子.
+关键词　非线性系统，动态输出反馈，镇定.
+A NOTE ON DYNAMIC OUTPUT FEEDBACK STABILIZATION
+OF MINIMUN PHASE NONLINEAR SYSTEMS
+CHEN Pengnian
+(Division of Mathematics, China Institute of Metrology, Hangzhou　310034)
+QIN Huashu　HONG Yiguang
+(Institute of Systems Science, Chinese Academy of Sciences, Beijing　100080)
+Abstract　The paper discusses dynamic output feedback stabilization of minimum phase nonlinear systems with single input and single output. The system is transformed into a normal form by adding integrators and nonlinear transformations, and dynamic output feedback for the system is established based on the linear part of the normal form. Then in the light of the expression of the center manifold and the ability theorem obtained in the paper, it is proved that the closed loop system is symptotically stable if the dimension of the zero dynamics manifold of the system is one. An example is given to illustrate the stabilizability of minimum phase nonlinear systems with zero dynamics which are not homogeneously asymptotically stable.
+Key words　Nonlinear system, dynamic output feedback, stabilization.
+1　引言
+　　考虑非线性控制系统
+　　　(1)
+上式中x∈Rn;u,y∈R;f,g∈C∞(U,Rn);f(0)=0,h∈C∞(U,R),h(0)=0;U是x=0的一个开邻域.
+　　Byrnes和Isidori在文［1］中证明，当非线性最小相位系统具有某种可逆性时，能用状态反馈镇定，又在文［2］中考虑了一个平面非线性最小相位系统的输出反馈镇定.他们证明，该系统不能用静态输出反馈镇定，但能用动态输出反馈镇定.我们在文［3］中证明，如果系统的零动态是强渐近稳定的，则能用动态输出反馈镇定.因此，一个自然的问题是C∞非线性最小相位系统能否用动态输出反馈镇定?
+　　本文证明了当系统的零动态流形是一维时，最小相位系统能用动态输出反馈镇定.
+2　一个稳定性引理
+　　考虑微分方程
+　　　(2)
+上式中z,ω∈R;ξ=(ξ1,ξ1…ξr)T∈Rr;f∈C∞(U1,R1×r)；φ∈C∞(U2,R1×r);F∈C∞(U3,R);U1,U2和U3分别是z=0,(z,ξ)=0和(z,ω,ξ)=0的开邻域；f(0)=0;F(0,0,0)=0.
+　　注.在系统(2)中，f(z)+φ(z,ξ)ξ同ω无关.
+　　引理1.假设在系统(2)中下列条件成立：
+　　(i)=f(z)的零解渐近稳定；
+　　(ii)p(s)=sr+1+crsr+…+cs+c0是Hurwitz多项式；
+　　(iii)F(z,ω,ξ)=O((z,ω,ξ)2),φ(z,ξ)=O((z,ξ)).
+则系统(2)的零解渐近稳定.
+　　证明.如果f′(0)≠0，则引理1显然成立.下设f′(0)=0.根据假设(ii)和(iii)，系统(2)有中心流形［4］
+　　　(3)
+因此，hi(z),　i=0,1,…,r，满足方程
+　　(4)
+其中h(z)=(h1(z),h2(z)…,hr(z))T.
+　　设H(z)=(h′0(z),h′1(z),…h′r-1(z))T.则由式(4)可得
+H(z)f(z)=(Ir-H(z)φ(z,h(z)))h(z),　　　　　(5)
+其中Ir为r阶单位阵.容易看到，当｜z｜适当小时，Ir-H(z)φ(z,h(z))可逆，并由(5)式可得
+h(z)=(Ir-H(z)φ(z,h(z)))-1H(z)f(z).　　　　(6)
+　　根据中心流形理论，系统(2)渐近稳定性的充要条件是系统
+　　　　　(7)
+渐近稳定.根据式(6)，系统(7)可以写成
+　　　　(8)
+由条件(i)知，系统(8)渐近稳定，因此系统(2)渐近稳定.证毕.
+3　输出反馈镇定
+　　假设系统(1)具有相对阶r=n-1，则系统能用局部坐标变换化为
+　　　(9)
+上式中z∈R;ξ=(ξ1,ξ2…,ξr)T∈Rr;f,G,F和g都是U上的C∞函数；f(0,0)=0;F(0,0)=0;g(0,0)≠0.
+　　定理1.如果系统(9)的零动态渐近稳定，则能用动态输出反馈镇定.
+　　证明.不失一般性，可设
+f(0,ξ)=O(ξ2),G(z,ξ)=0,F(z,0)=O(z2);　　　　(10)
+否则能用加积分器和非线性变换使之成立.根据式(10)，f和F分别可以表示成
+f(z,ξ)=az+f0(z)+φ(z,ξ)ξ,　　　　　(11)
+F(z,ξ)=a1ξ1+a2ξ2+…+arξr+ψ(z,ξ)ξ+F0(z).　　　　　(12)
+上式中a,a1,…,ar为常数；f0(z)=O(z2);φ(z,ξ)=O((z,ξ));ψ(z,ξ)=O((z,ξ));F0(z)=O(z2).由式(11)可知，系统(9)的零动态为
+　　　　　(13)
+根据定理1的条件，式(13)渐近稳定，因此a≤0.如果a<0，系统(9)显然能用动态输出反馈镇定.下设a=0，作动态补偿器
+　　　(14)
+上式中k>0;li>0(i=1,2,…，r)，使得p(s)=sr+l1sr-1+…+lr为Hurwitz多项式;ci>0(i=0,1,2，…，r)，使得q(s)=sr+1+crsr+…+c0为Hurwitz多项式；ai(i=1,2,…，r)由式(12)定义.
+　　根据文［5］的引理2知，存在k>0，当k≥k时，式(9)和(14)构成的闭环系统的线性部分渐近稳定.再由中心流形理论［4］和引理1，该闭环系统渐近稳定.证毕.
+　　例1.考虑控制系统
+　　　(15)
+其中u是输入，y是输出.在x=0时，规定
+　　系统(15)的零动态方程为
+　　　(16)
+　　显然系统(16)是渐近稳定的，根据定理1，系统(15)能用动态输出反馈镇定.因此，零动态流形是一维时，最小相位系统能用动态输出反馈镇定，而且可以采用线性动态补偿器.而当零动态流形的维数大于1时，此问题仍然没有解决.
+国家自然科学基金和国家攀登计划资助项目.
+　　陈彭年　见本刊第21卷第3期.
+　　秦化淑，洪奕光　见本刊第24卷第4期.
+陈彭年（中国计量学院数学组　杭州　310034　E-mail:pnchen@public 1.hz.zj.cn）
+秦化淑（中国科学院系统科学研究所　北京　100080）
+洪奕光（中国科学院系统科学研究所　北京　100080）
+参考文献
+［1］　Byrnes C I, Isidori A. Local stabilization of minimum phase nonlinear systems. Syst.Contr.Letts., 1988,11(1):9～17
+［2］　Byrnes C I, Isidori A. New results and examples in nonlinear feedback stabiliztion. Syst.Contr.Letts., 1989,12(4):437～442
+［3］　陈彭年，秦化淑.单输入非线性最小相位系统输出反馈镇定.见：中国控制会议论文集，武汉：武汉出版社，1997.309～313
+［4］　Carr J. Application of Centre Manifold Theory, New York:Springer-Verlag,1981.16～25.
+［5］　陈彭年，韩正之，张钟俊.仿射非线性系统动态输出反馈镇定.自动化学报，1997，23(3):338～344
+收稿日期　1998-07-29
+修稿日期　1999-02-11

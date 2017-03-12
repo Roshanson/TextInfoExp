@@ -1,0 +1,21 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+一类新的知识型指纹图像非线性滤波方法
+倪　林　边肇祺　王文渊
+摘　要　给出了基于小波变换的多尺度边缘表示方法及其对一般的图像信号表示的完备性和相应重建算法的稳定性，然后在小波变换的多尺度极大值表示方法的基础上，提出在尺度空间中基于多种知识的指纹图像非线性滤波方法.实验表明，这类滤波方法具有很强的自适应性，能取得令人满意的效果.
+关键词　小波变换，多尺度边缘表示，多尺度极大值表示，指纹图像，非线性滤波.
+A NOVEL KNOWLEDGE BASED NON-LINEAR FILTERING
+METHOD FOR FINGERPRINT IMAGES
+NI LIN　　BIAN ZHAOQI　　WANG WENYUAN
+(Department of Automation, Tsinghua Univ, Beijing　100084)
+Abstract　This paper first described the multiscale edge representation of images in the wavelet transform domain, and also discussed the representations completeness and the stability of the corresponding reconstruction algorithm. Then using the multiscale maxima representation based on the wavelet transform, we proposed for fingerprint images a non-linear filtering method which was constrained by several kinds of knowledge in the scale space. The experimental results show that this filtering method has more adaptive performance and can obtain satisfactory results.
+Key words　Wavelet transform, multiscale edge representation, multiscale maxima representation, alternate projection algorithm, non-linear filtering
+1　引言
+　　S.Mallat［1］利用二进小波变换域的多尺度极大值(Multiscale Maxima)表示方法(MMR)实现了图像的多尺度边缘表示，这种表示方法将二维图像内容f(x,y)在三维尺度空间Wf(s,x,y)中展开，得到原始图像在不同尺度下的内容，从而提供更多的关于原始图像的信息，可以想见，基于这些信息形成的图像处理方法会具有更强的针对性.要实现尺度空间中的图像处理方法，首先会遇到MMR的完备性问题，以及基于上述表示方法的交替投影重建算法的稳定性问题，其次要找到关于MMR与原始图像局部内容的对应关系的知识，从而使图像处理方法具有较强的目的性和有效性.本文通过介绍S.Mallat［1-2］和Z.Berman［3］等人的工作，说明MMR对一般的图像都具有唯一性，而相应的重建算法又能表现出稳定性.在此基础上，利用指纹图像的相关知识，提出在多种知识约束下的，基于多尺度极大值表示的指纹图像非线性滤波方法.
+2　基于小波变换的图像多尺度边缘表示
+2.1　多尺度边缘表示的实现
+　　以下先考虑一维情况，再将结果推广到二维情况，定义平滑函数θ(x)，它必须满足

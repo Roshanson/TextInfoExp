@@ -1,0 +1,167 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+多变量鲁棒自适应极点配置算法
+李俊民　邢科义　高淑萍
+摘　要　在系统具有一般不确定结构的情况下，提出了一种多变量自适应极点配置算法，解决了多变量自适应极点配置算法的奇异性问题，证明了它的全局收敛性和稳定性.该算法构造了一个估计参数的修正策略，保证估计模型的一致能控性，并且得到能控度的一个下界.所需要的先验知识仅为系统的能观性指数和能控性指数的上界以及干扰上界.
+关键词　鲁棒自适应极点配置，不确定结构，参数估计修正策略，全局收敛性和稳定性，
+ROBUST MULTIVARIABLE ADAPTIVE POLE
+PLACEMENT ALGORITHM
+LI JUNMING　　XING KEYI　　GAO SHUPING
+(Department of Applied Mathematics,Xidian University, Xi′an　710071)
+Abstract　Adaptive pole placement algorithm for multivariable system with a general uncertainty structure is presented.The long-standing adaptive pole placement problem for multivariable non minimum phase system with a general uncertainty structure is solved without a persistent excitation signal.A modification strategy for parameter estimation is proposed to guarantee the uniform controllability of the estimated model and to obtain a lower bound of the controllable measure.The global convergence and the stability of the algorithm are established.The scheme requires no a priori knowledge other than the system observability indices and upper bound of the controllability index.
+Key words　Robust adaptive pole placement,uncertainty structure,parameter estimate modification strategy,global convergence and stability.
+1　引言
+　　自适应控制算法的鲁棒性问题自从1982年［1］被提出后，就一直是研究的热门课题之一，修改经典自适应控制算法(如引入死区、变量单模化及投影修正等)使其具有某种鲁棒性是重要的研究方法［2］.对单变量确定系统，R.Lozano［3］提出无需持续激励的全局收敛的自适应极点配置算法，随后陆续发表了具有各种鲁棒性的修正算法4―7］，其中文献［7］对具有不确定结构的任意阶单变量系统解决了自适应极点配置问题.对于多变量确定系统，文献［8］研究了一种自适应极点配置算法，本文考虑具有一般不确定结构的多变量系统，提出了一种多变量自适应极点配置算法和一个估计参数的修正策略，保证估计模型的一致能控性，得到能控度的一个下界，解决了多变量自适应极点配置算法的奇异性问题，证明了它的全局收敛性和稳定性.该算法既不需要持续激励，也不需要限制系统参数属于某个区域，所需要的先验知识仅为系统的能观性指数和能控性指数的上界以及干扰上界.
+2　对象模型与参数估计算法
+　　考虑下面的多变量系统
+A(D)y(t)=B(D)u(t)+v(t),
+(1)
+其中　A(D)，B(D)分别是q×q、q×p维、后移算子D的多项式矩阵，并且它们是左互质的.A(D)是行既约，记Γr[A(D)]为A(D)的最高行次项系数矩阵，不失一般性，该矩阵为对角线元素为1的下三角矩阵.y(t),u(t)分别是系统输出和输入向量，v(t)是如下的不确定向量：
+
+(2)
+(1)式可改写为如下分量形式：
+
+(3)
+这里
+
+是系统真参数.
+　　首先作如下假设：
+　　1)系统(1)是能控的，系统能观性指数vj(j=1,2,…q)和能控性指数的上界μ已知.
+　　2)干扰上界μi和ηi,i=1,2,…，q已知.
+　　定义几个模化向量
+
+(4)
+调度向量
+
+当系统(1)或者(3)的参数未知或慢时变时，利用下面递推最小二乘算法估计参数值
+
+(6)
+
+(5)
+其中　ε>0是任意选择，αi=1+tr(Fi(0)),tr(F(0))是协方差矩阵的迹，F(0)是任意选择的正定矩阵，θi(0)(i=1,…q)是任意选择的参数初值，θi(t)为θ*i在t时刻估计值.
+　　定理1.参数估计算法(5)式具有下面特性：
+　　1)　Fi(t)和θi(t)均收敛；
+　　2)　
+　　3)　
+(7)
+这里　
+　　证明.类似于文献［7］的定理1证明，只要注意下标.
+3　参数估计的修正策略
+　　由于用(5)式估计参数未必能保证模型的可控性，如果估计模型不可控，则极点配置方程成为奇异方程，导致极点配置算法失败.下面根据(5)式的性质提出一个参数估计的修正策略，用来解决奇异问题.
+
+(8)
+其中　βi(t)(i=1,…q)的选取在后面给出，这里βi(t)(i=1,…q)必须满足下面两个重要性质：
+　　P1)　βi(t)(i=1,…q)必须收敛；
+　　P2)　βi(t)(i=1,…q)必须使广义Sylvester结式的某种形式具有非零下界.
+　　下面给出βi(t)(i=1,…q)的选择方法，作如下记号：
+　
+由产生的广义Sylvester结式矩阵定义如下［8］：
+
+(9)
+其中　
+　　βi(t),i=1,…q,选择为如下结构：
+
+(10)
+其中　这里σ(t)在集合D中取值，D=｛σ1,σ2,…,σl｝，其元素满足
+
+(11)
+　　记　
+　　为了满足P2)，σ(t)的值将从D中的一个值转换为另一个值［8］，为了满足P1)，在改变βt时引入一个具有常数滞后宽度的开关函数.
+　　定义1.当λ=σ(t)时，称
+
+为系统的一种可控度.
+　　定义2.滞后开关函数σ(t)定义如下：
+　　σ(t)=σ(t-1)，如果对所有σj∈D，zt(σj)<(1+γ)zt(σ(t-1)),
+　　σ(t)=σj,如果j是zt(σj)≥(1+γ)zt(σ(t-1))和zt(σj)≥zt(σi)，对任意σi∈D成立的最小正整数.　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(12)
+　　定理2.设系统(1)式满足假设1)，2)，参数由(5)式估计，奇异问题由上面提出的修正策略来解决，则此修正策略具有如下性质：
+　　1)　βi(t),i=1,…q收敛；
+　　2)　系统的可控度有下界
+
+其中　ε0是标称系统的可控度的一个下界，即
+
+这里hi=max(1,hi0),i=1,2,…,q.
+　　证明.显然，是所有βi(t),i=1,…q的多元多项式，由文献［8］得
+
+(13)
+其中　ni=ni-1+(n+pvi),n0=0,i=1,…,q,这里g(i1,i2,…,inq)是Θt和Fi(t)i=1,…,q的标量函数，gt是包含所有可能项g(i1,i2,…,inq)形成的向量，v(βt)是对应于g(i1,i2,…,inq)的所有的组合所构成的向量.
+　　为了估计(13)式，把v(βt)作如下安排：
+　　首先定义由所有βi11,i1=0,1,…,m1-1构成的向量然后所有构成的向量安排为类似地，所有构成的向量安排为接下来，定义所有构成的向量为因此，所有构成的向量可定义为这个过程重复进行到定义所有构成的向量为wnq，最后定义将(10)中βt代入上面各向量，得到
+
+(14)
+　　由于对感兴趣，所以，考虑对每个D中的元素所形成的
+由它们形成一个向量pt
+
+(15)
+其中N是l×l维Vandermonde矩阵.
+　　由文献［7］，得到pt范数的一个下界
+
+(16)
+记由已知条件得
+
+(17)
+由及(14)，(7)式得
+
+(18)
+这里　hi=max(1,hi0),　i=1,2,…,q.由(17)，(18)式得
+
+(19)
+将(19)式代入(16)式得
+
+(20)
+由定理1可知Fi(t)和θi(t),i=1,2,…q均收敛，因此，对每个在集合D中取的值σi，相应的zt(σi)也收敛.由于zt(λ)是滞后开关函数(12)中的调度变量，因此，σ(t)收敛，进而βt也收敛.
+　　定义　由(12)，(14)，(15)式得
+
+(21)
+结合(20)，(21)式得
+
+(22)
+由于在开关函数中引入滞后量，因此，σ(t)未必有zl(σ(t))=zmax(t)，但是有下面不等式成立：
+
+(23)
+结合(22)，(23)式得到定理的结论.
+4　自适应极点配置算法及其收敛性
+　　设修正的估计模型为
+
+(24)
+这里是第i个后验误差.
+　　引理1.(24)式中的eai(t)满足下面不等式
+
+(25)
+其中　
+　　证明.将文献［6］的结果推广到多变量情形，得到本引理的证明.
+　　对于估计模型(24)式，设计下面的控制器
+
+(26)
+其中ξ(t)是分状态，Q*(D)是任意稳定多项式矩阵，其对角元素为首一(μ-1)次算子D的多项式.y*(t)是参考输入向量，K(t,D),H(t,D)满足下面极点配置方程
+
+(27)
+其中　A*(D)是任意稳定多项式矩阵且Γr(A*(D))=Γr[A*(D)],由(24)，(26)，(27)式得到下面闭环方程［8，9］
+
+(28)
+　　定理3.设系统(1)式的未知参数由(5)式估计，用本文构造的修正策略修改估计值，则本文提出的自适应极点配置算法满足下面性质，即存在一组μi的非零上界，使得对任意一类满足(2)式且有干扰的系统其输入和输出均保持有界.
+　　证明.由文献［8］，［9］可知，(28)式中的Δ是参数估计增量Θt-Θt-1的函数，因此，当t趋向于无穷时它趋向于零.所以，当t足够大但有限时，(28)式将任意接近如下渐近稳定系统
+
+(29)
+由于的有界性知，ξ(t)增长不会快于‖ea(t)‖的线性项.由(26)式知，y(t),u(t)增长也不会快于‖ea(t)‖的线性项.如果假定至少有一个‖φl(t-1)‖变为无界，由于u(t),y(t)和ea1(t)以相同阶发散，因此，将有一个非零的下界.如果‖φl(t-1)‖变为无界，(4)式中的δl(t)将收敛于μl且(6)式中的将收敛于α1(μ21+εμl).因此，存在一个足够小的界限使得对任意的下界大于这与估计算法的性质(25)式矛盾，所以，定理的结论成立.
+5　结论
+　　对具有一般不确定结构的多变量系统解决了自适应极点配置问题，所提出的算法具有全局收敛性、BIBO稳定性和鲁棒性.构造了一个参数估计的修正策略确保估计模型的一致能控性，并且获得能控度的一个下界.
+作者单位：西安电子科技大学应用数学系　西安　710071
+作者简介：
+　　李俊民　1965年生.1989年毕业于西安电子科技大学获硕士学位.现为西安交通大学系统工程研究所在职博士生.研究领域有自适应控制，非线性动态系统优化控制和智能控制.
+　　邢科义　1957年生，1994年毕业于西安交通大学系统工程研究所获博士学位.现为西安电子科技大学副教授.研究领域有离散事件动态系统理论，PETRI网理论及应用.
+　　高淑萍　1963年生.1995年毕业于西安电子科技大学，获硕士学位.讲师，研究方向为鲁棒自适应控制.
+参考文献
+　[1］　Rohrs C E et al.Robustness of Adaptive control algorithm in the presence of unmodeled dynamics.In:Proceedings of the 21st IEEE CDC,Orlando,Florida,1982:3―11.
+　[2]　袁震东.关于自适应控制鲁棒性的一般观察.信息与控制，1989，17(4):32―37.
+　[3]　Lozano R,Goodwin G C.Globally convergence adaptive pole placement algorithm without a persistent excitement requirement.IEEE Trans on AC,1985,30(8):795―798.
+　[4]　Lozano R.Robustness adaptive regulation without persistency excitation.IEEE Trans on AC,1989,34(12):1260_1267.
+　[5]　Lozano R,Dion J M,Dugard L.Singularity-free adaptive pole placement using periodic controllers.IEEE Trans on AC,1993,38(1):104―108.
+　[6]　Lozano R.Singularity-free adaptive pole placement without resorting to persistensy of excitation detailed analysis for first order systems.Automatica,1992,28(1):27―33.
+　[7]　Lozano R,Zhao X H.Adaptive pole placement without excitation probing signals.IEEE Trans,on AC,1994,39(1):112―120.
+　[8]　李俊民.全局收敛的多变量适应极点配置算法.控制与决策，1991，6(4)：277―282.
+　[9]　Goodwin G C,Sun K.Adaptive Filtering,Predition and Control,Englewood Cliffs,NJ:Prentice-Hall,1984.
+收稿日期　1995-08-25

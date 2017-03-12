@@ -1,0 +1,87 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年 第25卷 第6期 Vol.25 No.6 1999
+
+
+
+摄像机内参数自标定――理论与算法1)
+吴福朝　于洪川　袁　波　韦　穗
+摘　要　讨论如何通过摄像机的旋转运动标定其内参数.当摄像机绕其坐标轴旋转时，运用代数方法给出了计算内参数的公式.该公式在2D投影变换接近理论值P时是非常实用的.在摄像机绕未知轴旋转时，根据相应的2D投影变换，运用矩阵特征向量理论给出了内参数的通解公式.通过摄像机绕两个不同未知轴的旋转，摄像机内参数能被唯一地确定.这些结果为摄像机自标定算法提供了理论基础，同时也给出了实用性算法。模拟实验和真实图像实验的结果表明本文所给的算法具有一定实用价值.
+关键词　自标定，投影变换，摄像机内参数.
+CAMERA SELF-CALIBRATION――THEORY AND ALGORITHMS
+WU Fuchao　YU Hongchuan　YUAN Bo　WEI Sui
+(Institute of AI, Anhui University, Hefei　230039)
+Abstract　Camera self-calibration is one of the fundamental issues in computer vision. This paper discusses the calibration of camera intrinsic parameters from the rotation of camera. When camera is rotated around its coordinate axis, the formulas of camera intrinsic parameters are obtained by the algebraic method. These formulas are very useful when 2D projective transformation is very close to the theoretic P. When rotational axis are unknown, the general solution of camera intrinsic parameters is obtained by the eigenvectors of 2D projective transformation. The camera intrinsic parameters could be uniquely determined through the method based on two different rotational axes. These results are the theoretic basis of the self-calibration algorithm. Meanwhile a practical algorithm is provided. Tests with synthetic data and real images indicate that the algorithm presented in the paper is robust.
+Key words　Self-calibration, 2D projective transformation, camera intrinsic parameters.
+1　引言
+　　摄像机定标是计算机视觉中的重要问题.通常的定标过程是通过测量结构已知的物体在图像平面的成像位置，计算摄像机的内参数［1～4］.这种方法在许多实际应用中难以实现.Faugeras［5］等提出自标定技术，通过控制摄像机的运动来确定内参数，使标定问题大为简化.目前基于主动视觉摄像机自标定方法可分为两类：第一类是由马颂德研究员［7］所提出的方法，通过摄像机在三维空间内作两组平移运动，来求解摄像机的内参数；另一种方法是最近由Basu［8］，Du和Brady［9］，Hartley［10］等所提出的通过摄像机的旋转，来求解内参数的方法，其算法有一定的局限性.本文对Hartley所给的算法在理论上加以完善，并提出新算法，以达到更实用的目的.
+　　本文分旋转轴为已知和未知的两种情形，来讨论求解内参数理论和算法.对旋转轴为已知的情况，我们给出了求解内参数阵的计算公式，该公式在2D投影变换接近理论值时是非常实用的，同时也给出了具有很强鲁棒性的实用算法；在旋转轴未知的情况，我们给出了标定方程的通解公式，根据相应的2D投影变换，确定摄像机的内参数阵，这个通解公式为摄像机自标定算法提供了理论基础，同时也给出了具有很强鲁棒性的实用算法.
+
+2　Hartley算法
+　　为了叙述Hartley算法，我们给出其求解内参数矩阵的主要思想.令p=(u,v,w)T为摄像机象平面的齐次坐标，x=(x,y,z,1)T为世界坐标系的齐次坐标.3D到2D之间的投影变换为p=Mx，M为秩3的3×4矩阵，通常称为摄像机矩阵.将M进一步分解为M=K(R｜-Rt)，其中为内参数矩阵，(R｜-Rt)为摄像机外参数矩阵.为了求内参数矩阵，不妨设世界坐标系的原点为摄像机镜头的光心，此时平移矢量t=0，摄像机矩阵M简化为3×3方阵M=KR.物象空间投影变换简化为p=KRx这里x不再为齐次坐标.考虑摄像机绕光心对同一景物旋转不同角度拍摄时，所得的图像pi=KRix(i=0,1,…,n).
+　　在摄像机未作旋转时(即i=0)，R0为单位阵.令Pi是第0帧图像与第i帧图像之间的投影变换，称为由旋转Ri所诱导或对应的2D投影变换，可推出PiK=KRi.一般地，称PK=KR为摄像机的标定矩阵方程.像平面采用齐次坐标，投影矩阵P可以相差一个常数.旋转矩阵R满足detR=1，所以我们总假定detP=1，必要时可乘以适当因子.由于旋转矩阵为正交阵，所以可推出P(KKT)=(KKT)P-T.令C=KKT，则C必为实对称正定阵，标定矩阵方程化为PC=CP-T，此方程也称为标定矩阵方程.
+　　Hartley算法的主要步骤如下：
+　　1)将标定方程PC=CP-T写成线性方程组形式Xa=0，其中a为标定阵C对应的6维向量(在C相差一个常数因子情况下)；
+　　2)求Xa=0的最小二乘解a(对应于XTX的最小特征值的单位特征向量)，对应的矩阵记为C；
+　　3)利用Choleski因式分解C=VVT；
+　　4)对V作QR分解V=KQ,K为内参数矩阵.
+3　已知旋转轴的情况
+3.1　关于Z-轴(光轴)旋转
+令
+
+将PK=KRz(θ)化为线性系统的形式，再由线性代数理论可推出标定矩阵方程PK=KRz(θ)相容的充要条件为
+
+相容时其通解为K=K1(z)diag(α，α，1)，α为任意正数，其中
+
+当地摄像机内参数矩阵K0必满足标定方程PK=KRz(θ)，即标定方程是相容的，于是有下列命题.
+　　命题1.绕Z-轴(光轴)旋转θ(0<θ<π)角，旋转矩阵记为Rz(θ)，对应图像之间的2D投影矩阵为P，则所有通过绕Z-轴旋转θ角能实现2D变换P的摄像机内参数矩阵为K=K1(z)diag(α,α,1)，α为任意正数.
+3.2　关于Y-轴旋转
+　　命题2.绕Y-轴旋转θ(0<θ<π)角，旋转矩阵记为Ry(θ)，对应的2D投影矩阵为P，则所有通过绕Y-轴旋转θ角能实现2D变换P的摄像机内参数矩阵K=K1(y)diag(1,α，1)，α为任意正数，其中
+
+3.3　关于X-轴旋转
+　　命题3.绕X-轴旋转θ(0<θ<π)角，旋转矩阵记为Rx(θ)，对应的图像间的2D投影矩阵为P，则所有通过绕X-轴旋转θ角能实现2D变换P的摄像机内参数矩阵为K=K1(x)diag(α，1,1)，α为任意正数，其中
+
+3.4　公式法求解内参数矩阵
+　　我们仅需要知道旋转轴就可以用P求到旋转矩阵R(θ).事实上，任何旋转矩阵特征值均为1，e-iθ，eiθ(θ为旋转角).由于K是满秩的，从PK=KR(θ)知，P与R(θ)有相同的特征值.因此从P的特征值可以确定θ.故已知旋转轴，可以确定旋转矩阵.
+　　从命题1～3可知，关于Z-轴的旋转，不能确定ku,kv,s的值，但是能够确定它们之间的比值；关于Y-轴的旋转，不能确定的kv,s的值，同样能确定kv与s之间的比值；关于X-轴的旋转，仅ku的值不能确定.于是我们可以通过关于不同坐标轴的旋转，求出当地摄像机的内参数矩阵.例如，我们可通过Z-轴旋转，知道当地摄像机的ku／kv=β；通过Y-轴旋转，知道当地摄像机ku的精确值并代入ku／kv=β可求出kv的值，s的值也可类似地确定.因此，我们可通过对不同坐标轴的旋转，来确定当地摄像机的内参数矩阵.这种方法称为公式法.
+3.5　实用算法
+　　我们在理论上给出了已知2D投影变换矩阵P和旋转轴(坐标轴)的情况下，求解内参数矩阵K的计算公式.当P较精确时，上述计算公式是非常实用的.但在工程实践中，很难精确地确定2D投影变换P，它与理论值有一定的偏差，所得到的标定矩阵方程有可能是不相容的，这就要求提供一种实用的算法.
+　　将标定矩阵方程PK=KRz(θ)化为线性方程组　Ak=h，其中A∈R9×5，h∈R5，k=(ku,kv,s,pu,pv)T∈R5为内参数矩阵K所对应的向量.
+　　由于内参数矩阵K要求ku>0和kv>0，所以求解内参数矩阵问题可化为下述约束最小二乘问题
+
+　　对应的无约束最小二乘的通解为k=A+h+(I-A+A)y，y∈R5，其中A+为A的广义逆，I为单位矩阵.解下述线性不等式组
+
+其中hi为A+h的第i个分量，ai为I-A+A的第i行向量，(a,b)为a与b的内积，得到一个解记为y0.于是我们得到上述约束最小二乘问题的一个解k0.它对应的矩阵K0(z)就是标定矩阵方程的一个特解.按命题1，其通解为K0(z)diag(α，α，1)，α>0.
+　　关于对Y,X轴的旋转可以类似地求解.
+　　总结以上讨论，可得出下述求解当地摄像机的内参数矩阵的实用算法.
+　　算法Ⅰ.
+　　1)将摄像机绕Z-轴旋转，求图像间的2D投影矩阵Pz，按上述方法求其通解
+
+　　2)将摄像机绕Y-轴(或者X-轴)旋转，求图像间的2D投影矩阵Py，按上述方法求其通解
+
+　　3)求解下述最小二乘问题的最小值点(λ0,α0,β0)
+
+　　4)当地摄像机的内参数矩阵为
+
+4　旋转轴未知的情况
+4.1　标定方程PC=CP-T的实对称正定矩阵通解公式
+　　引理1.设ti(i=1,2,3)为T的第i列向量，则T为PT=TRz(θ)的非奇异解分别为P的特征值e-iθ，eiθ，1的特征向量.
+　　证明.
+由于
+
+所以
+
+
+
+
+　　令f=t1+it2，t3分别为P的特征值e-iθ和1的单位特征向量，由引理1必有
+
+其中　T=(t1，t2，t3).所以方程PC=CP-1可化为TRz(θ)T-1C=CT-TRz,(θ)TT，即
+
+令，代入上式可推知
+
+于是，其中a,b,c为任意常数.所以
+
+因C为实对称正定矩阵，必有b=0,a>0,c>0.这样，在相差一个非零因子的情况下，我们有以下命题.
+　　命题4.方程PC=CP-T所有正定矩阵解为C(a)=Tdiag(a,a,1)TT，a>0.
+令

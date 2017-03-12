@@ -1,0 +1,105 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000　Vol.17　No.5　P.109-111
+
+
+
+XML 查询语言技术与实例分析
+张璞　庄成三
+摘  要  随着Internet 和WWW的飞速发展,作为HTML的补充,XML以其自身的特点, 为Web页面的管理、搜索、以及Web上的各种应用的连接提供了便利,从而得到了广泛应用。Web上已经积累了大量的XML数据，人们需要有一种查询语言来帮助Web用户有效地查询XML数据，为Web应用开发人员开发XML应用提供支持。针对以上两种要求而提出了一种查询语言：XML查询语言。阐述了XML查询语言的必要性和设计原则，并对两个实例(XQL，XML_QL)进行了分析。
+关键词  XML  XML查询语言  XML应用  XQL   XML_QL  半结构化数据
+1  引言
+　　XML(eXtensible Markup Language,可扩展标签语言)，是一种能更好地描述结构化数据的语言，作为SGML(Standard Generalized Markup Language,通用标签语言)的一个子集,1998年成为W3C(World Wide Web Consortium)认可的一个标准。作为HTML语言的一种补充，由于XML具有一系列特性，如可扩展性，简单性，开放性，互操作性，支持多国语言，从而能够较好地解决HTML 语言的一些缺陷，如文件的移动将造成Web页面的链路链接失败而出现广为人知的“404”错误，不能支持多国语言，难以有效地支持搜索引擎的查询等。因而XML得到了研究人员和产业界的广泛关注，并已在Web页面上得到了广泛应用。现在主要的浏览器厂家(Microsoft, Netscape)，都在各自的浏览器中不同程度地支持XML， IBM，ORALE等数据库厂商都在各自的数据库产品中都加入了处理XML数据的功能。Web上出现了大量用各种语言(JAVA，C++，PERL，C等)编写的XML解析器,组件开发人员也为XML开发了大量的ActiveX控件和Java Bean。除了在Web页面上的广泛应用以外，XML正在逐渐成为Web上支持数据交换的一种标准，适用于许多重要的应用，如EDI(Electronic Data Interchange)。由于其结构化描述数据的方式易于加上数字签名信息，能对一段XML文档甚至整个XML文档进行加密，XML正在电子商务中扮演着愈来愈重要的角色，而且还出现了一些新的应用，如RDF(Resource Definition Format)，Microsoft 公司的CDF(Channel Definition Format)等，可以预见会有更多的新的XML应用出现。
+　　和HTML不一样，由于XML主要是描述数据本身而不是描述数据的显示格式，所以XML文档已经将数据和文档的界限缩小了,有时可以将XML文档看作数据或将数据看作XML文档。一些XML文档很适合于表示存储于数据库中的数据，而一些非结构化文档用XML文档存储后，常常能提供更大程度上的信息共享。随着XML的广泛应用，Web 上大量的信息都将通过XML文档来进行存储、交换，或者通过各种应用接口用XML来表现。在XML数据源中对大量的信息进行有效地查询对用户而言就显得很重要了，它能帮助用户更方便地浏览信息，更有效地获取信息，使用户不致于迷失在信息的海洋之中。另一方面，许多应用需要能对XML数据源进行查询，例如用来解析XML数据的Java Applet，使用XML数据来作数据采集和知识发现的智能代理等。另外当具有不同权限的用户存取同一文档时，通常需要让不同用户有不同的视图时，用查询语言来定义视图也是一种较好的方法。大量的XML数据，各种XML应用的出现，以及XML正逐渐成为通用的数据交换格式，都要求有一种XML查询语言来查询相关数据。
+2  XML查询语言的特征
+　　每一种数据查询语言都相应地对应着一种数据模型，如结构化查询语言(SQL)对应着关系数据模型；面向对象查询语言(OQL)对应着对象模型；XML查询语言对应的数据模型既不同于关系模型，也不同于对象模型，而是和近几年来数据库研究人员进行了大量研究的半结构化数据模型很相似。在半结构化数据模型中，大都将半结构化数据表现为某种图或树的结构。与其相似，XML文档也可表现某种图或树的结构。例如有下面的一段XML文档，为方便起见，将其命名为book shop.xml：
+<book shop>
+　　<book>
+　　<title>An Introduction to the Database </title>
+　　　　<author><lname>Ulleman</lname></author>
+　　<publisher><name>Addison Wesley</name></publisher> 
+</book>
+<book>
+　　　　<title>Learning Visual C++ </title>
+　　　　<author><lname> Wang</lname></author>
+　　　　<publisher><name> Addison_Wesley </name></publisher>
+　　</book>
+</book shop>
+　　则对应着图1的结构。
+
+图1
+　　通常情况下， XML查询语言应具有如下的一些特征:
+　　(1)查询的对象为XML文档，查询返回的结果也应为XML文档，即XML查询语言应具有封闭特性。
+　　(2)查询过程应该是说明性的，而非过程性的。即用户只需说明想得到什么，而不必说明如何得到。
+　　(3)应具有潜在的代数基础。
+　　(4)应简单，通用，易于被解析器进行解析。
+　　(5)应支持选择、重构、连接、析取等操作，还应支持复杂选择条件和布尔操作。
+　　(6)支持各种简单的数据类型，并提供一种可扩充数据类型的机制。
+　　(7)查询范围应该能够覆盖单一的XML文档和一系列的XML文档。
+　　(8)应使其能以多种方式使用，如在URL中使用，或以命令方式使用，在程序中使用，以图形化界面方式进行使用。
+　　(9)应能在客户端和服务器端运行。
+　　(10)应易于被优化。
+　　和半结构化数据查询语言相类似，XML查询语言通常也以下面这两种途径来进行研究：
+　　(1)以另一种基于XML数据形式计算概念的语言为基础，将其语法进行适当地变形，成为一种便于使用的查询语言。典型的如XQL语言。
+　　(2)以SQL或OQL为基础，添加必要的机制，使其能够表达一组有用的查询，典型的如XML―QL语言。
+　　下面对分别采用上述两种方法进行研究的语言XQL和XML―QL的主要设计思想作概括介绍，并分别给出一些具体例子。
+3  实例介绍
+　　XQL是由Microsoft.Texcel等公司提出的一种XML查询语言，它是对XSL(eXtensible StyleSheet Language)的一种自然的扩充。XSL模式语言提供了一种描述一类将需要处理的结点的好方法。它是说明性的，而非过程性的，例如要找到上述的book shop.xml文档中的所有书籍，则只需给出/book shop/book 则可。但XSL也有许多不足之处，如不支持表达式，不能在结点间进行等值连接，对多个分散的XSL文档没有一个形式化的查询机制,没有支持聚集操作等。XQL则在XSL基础上提供了筛选操作，布尔操作，对结点集进行索引，并为查询、定位等提供了单一的语法形式。因而在一定意义上可将XQL看作XSL的超集。
+　　XQL主要针对解决以下四个问题域而提出：
+　　(1)在单个XML文档中进行查询。如在XML浏览器和编辑器中对所处理的XML文档进行查询。另外, Script也能利用这种性质给出一个非过程性的存取文档数据和结构的方法。
+　　(2)在XML文档集中进行查询。如在XML文档仓储(Repository)中进行查询。
+　　(3)能在XML文档间对结点进行定位。在HTML文档中，常常用HyperLink来定位其它文档，而在已有的XML中，链接形式更多样化，有TEL Links, HyTime Links,XML  Linking，这些都允许链接有更大的灵活性。XQL则主要是想通过给出一已知位置的相对路径，或通过一绝对路径来在文档中定位任一结点。
+　　(4)以字符串语法形式表达，使其能在URL中应用在XSL模板中及其它地方应用。
+在介绍例子查询之前，对XQL中的一个重要的概念:Context 作一了解。ContextB即查询指定的一系列结点。XQL的基本语法模仿了URI(Unified Resource Identifier)目录导航语法，通过Context，XQL可以指定XQL查询是以XML树结构中哪一层开设作为查询范围(例如，从树的根结点或儿子结点)。XQL中以 / 表示根环境(Root context),以./ 表示当前环境(Current context)。由于篇幅所限，下面只能给出少许例子查询，使读者对XQL的查询方式有一个感性认识。
+　　例1: 找出所有书籍
+/book shop/book
+　　XQL中以 / 表示根环境，返回结果为book shop.xml
+　　例2. 找出Wang姓作者著作的书籍
+/book shop/book[author[lname $eq$ &quot;wang&quot;]]
+　　XQL中以 $eq$ 表示等于，// 表示当前环境下的所有后代。返回结果为
+<book>
+　　　<title>Learning Visual C++ </title>
+　　　<author><lname> Wang</lname></author>
+　　　<publisher><name> Addison_Wesley </name></publisher>
+</book>
+　　例3. 找出作者名有姓的第二个作者
+author[lname][2] 
+　　返回结果为
+<author>
+　　　<lname>wang</lname>
+</author>
+　　值得注意的是，XQL在IE 5.0中已得到部分应用。 有关XQL的形式化描述可参见本文的参考文献 。 
+　　XML_QL是由AT&amp;T实验室为首的研究机构提出的XML查询语言。与XQL不一样，XML_QL是面向SQL的，与SQL语言中的SELECT 语句中的WHERE子句格式比较相像，并借鉴了一些半结构化数据查询语言的思想。在XML_QL中，将XML文档集看作数据库，以半结构化数据模型作为数据模型，将DTD(Document Type Definition)文档看作数据库模式。XML_QL中XML文档用图作数据结构来描述，有一个根结点，每条边上都标有元素标记，每个叶子结点都标有值，并且每个结点有一唯一的对象标识符。图(1)即为XML_QL中一个文档结构图。需要指出的是，尽管XQL中采用树这种数据结构来为XML文档建模，与XML_QL中用图来为XML文档建模有一些区别，但对于本文所给例子，在不影响问题叙述的前提下，将图1既当成XQL中的树结构，又当成XML_QL中的图结构。
+　　XML_QL中主要是针对以下几个方面而提出的：
+　　(1)能从大量XML文档中析取数据。无论是对关系数据库，面向对象数据库，还是对Web“数据库”而言，一种查询语言都必须具有这种特性。
+　　(2)能对XML数据进行转换。例如，将附有某一DTD文档的XML文档转换成为具有不同的DTD文档的XML文档。
+　　(3)将XML数据在多个XML数据源中进行集成。这对于XML数据仓储，数据挖掘等均很重要。
+　　(4)客户端通过发送查询到XML数据源(可以是一个Web站点，也可以是多个Web站点)存取大量的数据。
+　　下面以book shop.xml 文档为例，举一个XML_QL语言的查询例子。假设该文档的URL为
+　　www.abcd. com/book shop.xml
+　　例：
+　　查询作者姓王的书的名称
+where <book>
+　　<author><lname>wang</lname></author>
+　　<title>$t</title>
+　　</book> in www.abcd.com/book shop.xml
+　　construct <result>$t</result>
+　　例中$t所起的作用类似于程序设计语言中的变量一样，construct 是XML _QL中的保留关键字。
+　　返回结果为<result>learning visual c++</result>
+　　XML_QL的形式化描述可参见本文的参考文献 。
+4  结束语
+　　XML查询语言的各种规范都正在制定中，都相对不成熟，对许多问题如开发合适的说明性语言和弱一致事务模型以支持XML的更新操作，Web环境的语义表达，对处理不同类的，能嵌套很深层次的对象集合等都需要进行更深入地研究。由于Web上技术的日新月异的发展，现在仍然不能对将来的XML查询语言标准作出精确的预测。但随着技术的发展和产业界的支持(如IE 5.0 就支持部分XQL功能),相信XML查询语言对未来Web和Internet 应用领域的发展必然将起着相当重要的作用。
+张璞(四川大学计算机系  成都 610065)
+庄成三(四川大学计算机系  成都 610065)
+参考文献
+1，Bert Bos. XML-in-10-points http://www.w3.org/XML/1999/ XML-in-10-points
+2，The XML 1.0 Recommendation, Available at: http://www.w3. org/TR/1998/REC-xml-19980210.xml
+3，Jon Bosak. XML, Java and the Future of the Web, http:// sunsite.unc.edu/pub/sun-info/standards/xml/why/xmlapps.html
+4，Jon Bosak, Tim Bray. XML and the Second-Generation Web, http://www.sciam.com/1999/0599issue/0599bosak.html
+5，Adam Bosworth. Microsoft's Query Language 98 Position Paper, http://www.w3.org/tands/1998/pp/microsoft_extensions.html
+6，Jonathan Robie,Joe Lapp,David Schach. XML Query Language (XQL) http://www.w3.org/TandS/QL/QL98/pp/xql.html
+7，Jonathan Robie, The Design of XQL http://www.texcel.no/ whitepapers/xql-design.html
+8，Alin Dewtsh, Mary Fernandez,Daniela Florescu. XML_QL:A Query Language For XML http://www.w3.org/tr/1998/NOTE_ XML_QL_19980819.html
+9，卢海鹏，周之英. WWW应用与标记语言. 计算机科学, 1999, 26(1)
+10，杨冬青, 裴  健, 唐世渭. 未来十年数据库系统研究方向盘. 计算机科学, 1999, 26(9)
+收稿日期：1999-11-25

@@ -1,0 +1,89 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+使用多控制器结构的可靠镇定
+张国山　柴天佑　顾兴源
+摘　要　采用因子化方法研究了具有强镇定被控对象的可靠镇定问题.证明了几种可靠镇定问题定义之间的等价关系，并表征了可靠控制器的结构. 给出了对于任意给定的控制器，存在另一个控制器使其共同解决可靠镇定问题的充要条件，该条件提供了一种选择可靠控制器的方法.
+关键词　可靠控制系统，因子化方法，可靠镇定，强镇定，控制器的设计.
+RELIABLE STABILIZATION USING MULTI-CONTROLLER CONFIGURATIONS
+ZHANG GUOSHAN CHAI TIA NYOU GU XINGYUAN
+(Research Center of Automation, Northeastern University, Shenyang 110006)
+Abstract　In this paper, the reliable stabilization problem(RSP) of strongly stabilizable plants is studied by using a factorization approach.The equivalent relationship between the different definitions of RSP is proved, and the structure of reliable controllers is characterized. A necessary and sufficient condition is given that, for any given controller, there exists another controller such that they together solve the RSP. This condition provides a method for selecting reliable controllers.
+Key words　Reliable control system, factorization approach, reliable stabilization, strong stabilization, controller's design.
+1　引言
+　　可靠镇定问题(RSP)是指找到两个控制器，当它们同时控制(镇定)一个对象时，系统保持稳定；而当其中一个控制器出现故障后，系统仍能保持稳定.本文在图1所示的单位反馈控制系统S(P，C)的基础上，研究了具有被动冗余(passive redundance)的可靠控制系统S(P，C1,C2)，如图2所示.Vidyasagar等［1-2］研究了该系统，给出了RSP的两种新定义并讨论了它们之间的关系；Minto and Ravi［3］证明了S(P ，C 1，C2)有解的充要条件是P是强镇定的(即存在稳定的控制器镇定P)；Gundes［4］给出了可靠控制器的设计方法及其解控制器对的参数化表示.但是，迄今这个问题的 研究结果是不完善的，许多问题未获解决.
+
+
+图1　单位反馈控制系统：S(P，C)
+
+
+图2　可靠控制系统：S(P，C1,C2)
+
+　　本文得到如下一些结果：证明了Vidyasagar提出的几种RSP的定义之间的等价关系；给出了对任意给定的控制器C1，存在控制器C2，使得(C1，C2)共同解决RSP的充要条件.
+2　基本知识与问题描述
+　　设R为实系数有理分式的集合，S为稳定的有理分式的集合，M(R)，M(S)分别表示其元素属于 R，S的矩阵集合，U(S)表示其元素属于S的单模阵(unimodular matrices)的集合，即U(S)=｛U：U∈M(S)，U-1∈M(S)｝.
+　　设P∈M(R)是给定的被控对象，且P=ND-1=-1，这里(N，D)，(，)∈M(S)是P的右互质分解和左互质分解.我们称C镇定P或(P，C)是稳定的，当且仅当图1中从u=［u′1u′2］′到y= ［y′1y′2］′的传递函数阵Hyu(P，C)是稳定的.设S(P)表示所有镇定P的控制器C的集合，选择矩阵Y，X，，∈M(S)且｜Y｜≠0,｜｜≠0使得YD+XN=I，则S(P)能被表示为［1］
+
+　　由于(Y-R)-1(X+R)=(+DQ)(-NQ)-1当且仅当R=Q，因此，为讨论方便如果Ci∈S(P),不失一般性，我们总设Ci=Y-1iXi=i-1i，这里，Yi=Y-Ri,与Yi≠0，i≠0，则(Yi,Xi,i,i)，(i=1，2)，总满足Bezout恒等式［1］
+　　(1) 
+注意(1)式左端两个矩阵交换等式仍成立，这样(1)式代表八个等式.
+　　M.Vidyasagar提出的几种RSP［1，2］定义如下：
+　　RSP 1.　对于系统S(P，C1，C2)，找到两个控制器C1与C2，使得C1，C2∈S(P),且图2所示可靠控制系统S(P，C1，C2)是内部稳定的，即从u=[u′1u′2u′3′]到y=[y′1y′2y′3]′的传递函数阵Hyu(P,C1,C2)是稳定的.
+　　由于Hyu(P，C1，C2)表示式较复杂，本文不直接使用它，故略去.
+　　RSP 2.　对于给定的对象P，找到两个控制器C1与C2 ，使得
+(i).C1,C2∈S(P); (ii).C1+C2∈S(P);
+如果Ci=Y-1iXi=i-ii，且(Yi,Xi,I,i)(i=1,2)满足(1)式，则
+(iii).Y1,Y2右互质； (iv).Y1,Y2左互质.
+　　RSP 3.　对于给定的对象P，找到一对控制器(C1, C2)使得
+(i).C1∈S(P); (ii).C2∈S(P)∩S(P1),这里P1=P(I+C1P)-1.
+　　RSP 2中前三个条件由文献［2］给出，本文增加了最后一个条件(iv)；文献［2］中RSP3被称为修改的可靠镇定问题；文献［3］证明RSP1有解的充分必要条件为P是强镇定的；文献［4］进一步给出RSP1的解控制器对(C1,C2)的设计方法及参数化表示.
+
+3　主要结果
+　　引理1.设C1，C2∈S(P)满足(1)式，且设
+Y3:=(Y-11+Y-12-D)-1,　　X3:=Y3(Y-11X1+Y-12X2),　　(2)
+则C1+C2∈S(P)充分必要条件是Y3，X3∈M(S).
+　　证明.必要性.因为C1+C2∈S(P)，则一定存在3,3∈M(S)，使得-133=Y-11X1+Y-12X2且3D+3N=I；因此-13=D+-133N=D+(Y-11X1+Y-12X2)N=(Y-11+Y-12-D)，从(2)式得3=Y3,3=X3.
+　　充分性.容易验证Y3D+X3N=I，再由Y3，X3∈M(S)得Y-13X3∈S(P)，即C1+C2∈S(P).□
+　　引理1对于后面的研究极其有意义.为讨论方便，设Δ21：=Y1+Y2-Y2DY1，Δ12:=Y1+Y2-Y1DY2.则由(2)式得Y3=Y2Δ-112Y1=Y1Δ-121Y2.
+　　引理2.设C1，C2∈S(P)满足(1)式，再设P1=P(I+C1P)-1.则C2∈S(P1)的充分必要条件是Δ21∈U(S)，即
+Y1+Y2-Y2DY1∈U(S).　　(3)
+　　证明.从(1)式，有P1=NY1,则C2∈S(P1)的充分必要条件是Y2+X2NY1=Y1+Y2-Y2DY1∈U(S).□
+　　比较RSP3与引理2知，RSP3有解的充要条件是(3)式成立.
+　　引理3［4］.　设C1，C2∈S(P)满足(1)式，则 (C1，C2)是RSP1的解的充分必要条件是Δ21∈U(S)，或Δ12 ∈U(S).
+　　定理1.几种可靠镇定问题：RSP1，RSP2，RSP3 是等价的，即他们同时有解或无解，且解集相等.
+　　证明.引入集合Si(P):=｛(C1,C2)｜Cj∈S(P),j=1,2.且(C1，C2)是RSP(i)的解｝，i=1，2，3.则只需证明S1(P)=S2(P)=S3(P).
+　　设C1，C2满足(1)式，首先注意到无论(C1，C2)属于任意Si(P)，皆有C1,C2, C1+C2∈S(P).从引理2与引理3容易得，(C1，C2)∈S1(P)等价于(C1，C2)∈S3(P)，且都等价于(3)式成立.因此也得Y1与Y2左互质而且右互质，即(C1，C2)∈S2(P).下面只需证明S2(P)S1(P).对于(C1，C2)∈S2(P)，由引理1知，Y3 ∈M(S)且Y1+Y2-Y2DY1=Y2Y-13Y1∈M(S)，这时可以分解Y3为Y1的左因子与Y2的右因子的积.不失一般性，设Y3=Y11Y22，Y2=FlY22及Y1=Y11Fr，这里Y11，Y22，Fl，Fr∈M(S)皆为非奇异方阵，则有
+Y11Fr+FlY22-FlY22DY11Fr=FlFr.　　(4)
+注意(4)式的两边皆等于Y1+Y2-Y2DY1.从(4)式知Fl是Y11Fr=Y1的左因子，因此Fl是Y1与Y2的左公因子，但Y1与Y2是左互质的，因此Fl∈U(S)，同理Fr∈U(S).所以Y1+Y2-Y2DY1∈U(S),(C1,C2)∈S1(P).从而S2(P)S1(P).□
+　　注1. 定理1是文献［2］中提出的尚未解决的问题的回答.
+　　注2. S1(P)=S2(P)=S3(P)≠(空集)的充分必要条件是P是强镇定的.
+　　注3.RSP3中的C1与C2是对称的，即如果(C1，C2)是RSP3的解，则(C2，C1)是RSP3的对偶问题的解：
+(i'). C2∈S(P); (ii'). C1∈S(P)∩S(P2),P2=P(I+C2P)-1
+　　注4 .RSP3中的(iii)，(iv)式可以用下面两条件取代：
+　　(iii').1,2是右互质的：　(iv').1,2是左互质的.
+　　三种等价的RSP：RSP1，RSP2，RSP3从不同的侧面反映了RSP的解C1，C2与被控 对象P之间的相互关系，对于控制器的可靠设计及控制器的可靠分解问题具有启发意义.根 据定理1，下面将RSP1，RSP2，RSP3统一记为RSP.
+　　推论1.设P是强镇定的，C1，C2∈S(P)满足(1)式，如 果C1(或C2)是稳定的，则C1+C2∈S(P)的充分必要条件(C1，C2)是RSP的解.
+　　推论1证明从略.文献［2，4］中证明，对任意稳定的控制器C1∈S(P)∩M(S)，总存在C2∈S(P)，使得(C1，C2)是RSP的解.但是，对于任意给定的不稳定的控制器C1∈S(P)，是否总存在C2∈S(P)，使得(C1，C2)是RSP的解?回答是否定的，下面定理 2即回答这个问题，为此先给出一个引理.
+　　引理4.设P=NrD-1Nl，这是(Nr,D)是右互质的，(D，Nl)是左互质的.则P是强镇定的充分必要条件是存在Q∈M(S)，使得D+NlQNr∈U(S).
+　　定理2.如果P是强镇定的，设P=ND-1，D+XN=I，且=N.对于给定的控制器C1=Y-11X1=1-11∈S(P)满足(1)式，则存在C2∈S(P)，使得(C1，C2)是RSP的解的充分必要条件N((I+X1N)Y1)-1X1N是强镇定的.
+　　证明.由于(C1，C2)是RSP的解的充分必要条件是(3)式成立.不妨设Y2=Y1+QN，则Δ12=(I+X1N)Y1+X1NQN，再由引理4，Δ12∈U(S)的充分必 要条件是N((I+X1N)Y1)-1X1N，是强镇定的.□
+　　在定理2中，当C1稳定，即Y1=I时，显然N((I+X1N)Y1)-1X1N是强镇定的. 因此，文献［2］的结果是本定理的特例.
+　　推论2.如果P是稳定的，则对任意控制器C1∈S(P),总存在C2∈S(P)，使得(C1，C2)是RSP的解.
+　　证明设D=I，N=P，这时S(P)=｛(I-QP)-1Q：I-QP≠0,Q∈M(S)｝.另 设Y1=I-Q1P，X1=Q1，则：=N((I+X1N)Y1)-1X1N=(I-PQ1PQ1)-1PQ1P对任意Q1都是强镇定的.再由定理2知，对任意C1∈S(P)，都存在C2∈S(P)，使得(C1，C2)是RSP的解.□
+
+4　结论
+　　本文对P是强镇定的被控对象的可靠镇定问题进行了系统的研究.证明了几种可靠镇定问题 定义之间的等价关系，给出了对于任意给定的控制器，存在另一个控制器，使其共同解决可 靠镇定问题的充要条件.由于几乎所有的被控对象都满足强镇定这一条件［1］，所 以本文结果具有一般意义.在本文的基础上可以进一步研究控制器的可靠分解问题［5 ］.本文结果也为某些定量问题的研究，如调节，跟踪，最优化，灵敏度最小等问题的研究，提供了理论依据.
+　　1)国家自然科学基金优秀中青年专项基金资助课题.
+　　2)张国山现工作于空军后勤学院数学教研室，徐州221000.
+作者单位：东北大学自动化研究中心　沈阳　110006
+参考文献
+1　Vidyasagar M. Control System Synthesis: A Factorization Approach. Cam bridge, MA: MIT. Press, 1985
+2 Vidyasagar M, Viswanadham N. Reliable stabilization using a multi-controller configuration. Automatica. 1985,21(5):599-602
+3 Minto K D, Ravi R. New results on the multi-controller scheme for the reliab le control of linear plants. Proc. American Control conference, 1991, 615-6 19
+4 Gundes A N. Reliable stabilization of linear plants using a two-controller c onfiguration. Systems & Control Letters, 1994,23:297-304
+5 Gundes A N. Reliable control using two controllers. Proc. 31st IEEE Conf. on Decision and control, 1992:445-446
+收稿日期　1995-09-29　收到修改稿日期　1997-10-6

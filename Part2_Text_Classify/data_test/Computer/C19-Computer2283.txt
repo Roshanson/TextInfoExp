@@ -1,0 +1,100 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000　Vol.17　No.5　P.84-86
+
+
+
+基于Web应用系统开发的纯Java实现技术
+吴鹏　陈文亮　李卫国
+摘  要  针对当前在基于Web应用系统开发中流行的三层浏览器/服务器模型，给出了系统的纯Java技术实现。包括用户服务层(客户端)的Java Applet技术、应用服务层(服务器端)的Java Servlet技术、用户服务层与应用服务层的通信技术和应用服务层与数据服务层的JDBC通信技术。
+关键词  Web  浏览器  服务器  B/S  Java
+1  引言
+　　近年来Internet / Intranet 技术的迅猛发展和基于HTTP协议的Web技术的广泛应用，极大地改变了传统的工作模式和生产方式，使更大范围内的资源共享和协同工作成为可能。在Internet / Intranet 上，以Web 技术为核心可以构成一个与用户平台无关的统一而简单的交流方式，把已有的和未来的有关数据库、多媒体、安全设施等各种技术纳入以Web为核心的浏览器/服务器(B/S)模式中，使浏览器成为人们交流的万能工具，可以突破树型结构的限制，更容易地以任务为中心组织信息交流。与此相对应的，基于Web技术的应用系统的开发也成为了软件开发中的热点。
+　　在现有的各种基于Web应用系统的开发方案中，由于Java语言先天就是Internet互联网蓬勃发展的产物，因而具有其它任何开发平台所无法比拟的优势。
+　　Java语言由Sun Microsystems公司开发，是一种面向对象和平台无关的编程语言。Sun将Java描述为一种具有简单性、面向对象性、动态性、分布性、可移植性、多进程、平台无关性、高性能、健壮性和安全性的语言。由于它所具有的这些特点和优点，使得它已经成为跨平台应用开发的一种规范，在世界范围内广泛流行。由于Java程序是运行在Java虚拟机环境中的，它不依赖于特定的系统，所以编程人员只需一次性开发一个“通用”的最终软件即可在多个平台环境中使用，这将大大加快软件产品的开发。
+2  基于Web应用的系统结构
+　　典型的基于Web应用系统的计算模式为采用三层结构的浏览器/服务器模型(B/S模型)。该模型包括用户服务层、应用服务层和数据服务层(如图1)。与传统的两层结构相比，增加了应用服务层，用于处理复杂的应用逻辑、数值计算、数据分析等与用户界面和数据存储无关的工作。在三层结构中，许多与应用相关的工作从客户端抽取出来，放入独立的应用服务器中。因此，用户界面、应用处理、数据库管理分为三部分，每部分完成特定的功能。这样，一方面减少了网络上的数据流通量，降低了网络负载；另一方面也减轻了客户机的负担。
+
+图1
+　　从安全性考虑，与应用相关的算法应当是保密的，如果关键算法在Applet中，一旦下载到别人的机器上，有可能被解密，而用三层结构将关键算法放在应用服务层可以避免此问题。另外对数据应用来说，将数据库的连接与查询放在服务器端，即中间的应用服务器层，集中在一台机器上，只需安装一个数据库用户许可，也避免了客户端程序直接访问数据库。
+3  基于Web应用的Java实现技术
+　　当系统全部采用Java技术实现后，其三层结构可描述如图2。
+
+图2
+3.1  用户服务层(客户端)的实现技术
+　　该层的实现采用Java Applet技术。Java Applet程序是一种特殊类型的Java程序，它可以通过标签嵌入到HTML文件中，在网页文件被调用期间随同HTML文件一起被下载到客户端，由支持Java的浏览器解释执行，实现与用户的交互。
+　　在引入Java之前的Web页仅能提供静态信息，缺少动态的交互特性，即信息和用户之间仅是一种显示和浏览的关系，缺少一种实时、动态的交互和表达能力。而Java和Web的结合则有效地改变了Web的上述缺陷，用户只需要在支持Java的浏览器中加进一个引用Java应用程序的标签，所链接的Java程序就会自动下载到用户的计算机上执行。这样就一改Web仅能传送静态信息的现象，使得可执行内容在网络环境中的传送和自动执行成为可能，同时也大大提高了Web处理复杂事务的能力。下面是一个典型的嵌入了Java Applet的HTML文件的例子：
+<html>
+<head>
+<title>A Java Applet Example</title>
+</head>
+<body>
+<applet CODE="example.class" WIDTH="400" HEIGHT="300">
+</applet>
+</body>
+</html>
+3.2  应用服务层(服务器端)的实现技术
+　　Sun公司提供的Servlet技术是应用服务层Java实现的技术基础。与客户端的Java Applet与浏览器之间的关系相类似，在服务器端，Java Servlet程序由支持Java的Web服务器软件负责管理和解释。开发Java Servlet程序需要额外的JSDK软件包(Java Servlet Development Kit)支持，与JDK一样，该包由Sun公司免费提供。
+　　(1)Servlet技术概述
+　　Servlet是对面向请求/应答方式的服务的一种功能扩展，一个Servlet程序可以接收来自客户端的服务请求，经过处理后再将结果返回给客户端。JSDK开发软件包的核心是Servlet接口，所有的Servlet程序都必须通过一个类直接或间接的实现该接口。Servlet接口提供了用于管理Servlet和与客户端通信的方法。
+　　当Servlet程序接收一个来自客户端的请求时，它将收到两个对象―ServletRequest和ServletResponse。ServletRequest类封装了从客户端到服务器端的请求，而ServletResponse类封装了从服务器端到客户端的响应。上面提到的Servlet接口和ServletRequest、ServletResponse 两个类构成了Servlet程序的基本骨架。
+　　(2)Servlet的生存期
+　　当一个Servlet程序被装载的时候，方法init首先被调用，并且该方法仅仅在Servlet程序被初次装载时被调用。当它被卸载时，方法destroy将被调用。一个已被载入的Servlet程序不能被重新装载，除非它先被卸载。在一个生存期间，方法init和destroy仅会被调用一次。
+　　初始化完成之后，Servlet就可以处理用户的请求了，这个过程是通过方法service进行的。Servlet是支持多线程的，每一个来自客户的请求都会打开一个独立的Servlet线程去执行service方法。
+　　由于Servlet是多线程的，所以在一个Servlet程序的生存期间，很重要的一点就是要注意代码的线程安全性，主要是使各线程间的操作同步化。在某些情况下可能不需要多线程服务，为保证同时不会有两个线程运行，可通过实现接口SingleThreadModel来达到。
+　　(3)用于HTTP协议的Servlet
+　　开发自己的Servlet程序时，必须直接或间接的实现Servlet接口。由于在大多数情况下编写Servlet程序都是为了扩展基于HTTP协议的服务功能，所以最简单的方法就是从HttpServlet类派生用户自己的类。
+　　HttpServlet类是Servlet技术提供的一个很重要的类，它实现了Servlet接口并且提供了一个处理HTTP协议的框架。它的service方法支持标准的HTTP/1.1请求，并能够将不同的请求分发到各自相应的处理过程。为了编写用户自己的请求处理过程，必须重载下面的这些方法：
+　　．doGet　　用于处理GET请求
+　　．doPost　　用于处理POST请求
+　　．doPut　　用于处理PUT请求
+　　．doDelete　　用于处理DELETE请求
+　　所有这些方法都有两个参数：一个封装了来自客户端的请求数据，它是一个类HttpServletRequest的对象；另一个封装了送往客户端的响应数据，它是一个类HttpServletResponse的对象。下面是一个Servlet程序的例子，它处理了GET请求和POST请求：
+/* This is a simple example of an HTTP Servlet.
+　* It responds to the GET method of the HTTP protocol */
+public class SimpleServlet extends HttpServlet
+{
+　　public void doGet ( HttpServletRequest req, 
+　　　　HttpServletResponse res )
+　　　throws ServletException, IOException
+　　　{
+　　　// set header field first
+res.setContentType ( &quot;text/html&quot; ) ;
+// the get the writer and write the response data
+PrintWriter out = res.getWriter() ;
+　　　out.println(&quot;<head><title>SimpleServlet Output
+　　　　　</title></head>&quot;);
+　　　out.println(&quot;<body><h1>This is SimpleServlet Output
+　　　　　</h1></body>&quot;);
+　　　out.close();
+　　　}
+　　}
+3.3  用户服务层(客户端)与应用服务层(服务器端)的通信技术
+　　在客户端的Applet中，只需要把应用服务层的Java Servlet看作是一个普通的URL，即可实现与Servlet的通信连接，发送请求，获得响应。下面的代码实现了与上面提到的SimpleServlet的通信(此处假设所使用的Web Server为Sun公司的Java Web Server1.1，对于其它系统代码中的URL会稍有不同，具体情况请查看相应的软件说明)：
+URL url = getCodeBase();
+URL server = new URL( url.getProtocol(), url.getHost(), 
+　url.getPort(),　　＂/servlet/SimpleServlet＂);
+URLConnection con = server.openConnection();
+con.setDoOutput( true );
+con.setRequestMethod(＂GET＂) ;
+　　在建立连接之后就可以使用URLConnection的两个函数 getInputStream()、getOutputStream()与Web服务器端的Servlet传递数据。
+3.4  应用服务层与数据服务层的通讯技术
+　　数据服务层处理所有数据查询与存储操作，实际上它一般是关系数据库系统。所以应用服务层与数据服务层的通信实际上是Java Servlet程序访问数据库的过程。
+　　Java的跨平台能力使得人们意识到在Java应用程序中使用关系数据库访问技术是很有必要的，这个技术就是JDBC标准(Java Database Connection)。JDBC是一个Java数据库连接API，它是JavaSoft公司开发的Java Enterprise APIs的一部分。从一个开发者的角度来看，JDBC是第一个标准化的把关系型数据库和Java程序集成到一起的尝试，它可以给Java程序员提供访问各种关系数据库的统一接口。由于JDBC要通过调用ODBC间接的访问数据库，所以在使用JDBC时需要在本地配置数据源。
+　　以下代码给出了一个连接数据库的例子：
+String DataSource =＂MyDatabase＂;
+Class.forName (＂sun.jdbc.odbc.JdbcOdbcDriver＂) ;
+Connection connection = DriverManager.getConnection
+　　　( DataSource,＂username＂,＂password＂) ;
+　　要处理来自一个数据库的数据，一个Java程序要遵循下面的一般性步骤。首先，程序调用getConnection方法来获得Connection对象，然后它创建Statement对象并且准备一个单独的SQL语句。
+　　一个SQL语句可以被立即执行(Statement对象)、可以是一个编译的语句(PreparedStatement对象)、或者可以是一个预先存储过程的调用(CallableStatement对象)。当executeQuery方法被执行时，它返回一个ResultSet对象。像update或delete这样的SQL语句不会返回一个ResultSet，对于这样的语句，要使用executeUpdate方法，它返回一个整数表示的SQL语句作用到的行数。
+ResultSet包含使用next方法进入语法分析过的数据行。在事务处理应用中，rollback和commit这样的方法可以被用于取消SQL语句所做的改动，或者使SQL语句所做的改动永久有效。
+4  结束语
+　　在众多的基于Web应用系统的开发技术中，由于Java技术所特有的平台无关性、网络分布性等特性，使得它可以跨越多种硬件和软件环境，成为Internet/Intranet上应用系统的理想的开发平台。作者本人已经利用上述技术成功的开发了基于Web的制造过程分析及信息管理系统，并且应用于某公司实际的生产过程管理，收到了理想的效果。
+吴鹏(南京航空航天大学机电工程学院   南京 210016)
+陈文亮(南京航空航天大学机电工程学院  南京 210016)
+李卫国(南京航空航天大学机电工程学院  南京 210016)
+参考文献
+1，Joseph Weber, Java1.1使用大全(第3版). 北京:电子工业出版社
+2，JavaSoft Java Web Server Online Document
+收稿日期：1999-12-6

@@ -1,0 +1,105 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000 Vol.17 No.3 P.30-32,68
+
+
+
+
+利用集群技术构建Linux Virtual Server
+沈中林　金宝鼎　扬明
+摘　要：在网络系统性能研究中，集群技术是提高系统综合性能的一种重要方法。在Linux操作系统平台上构建了集群Virtual Server，并详细论述了其原理和构建过程。重点描述了地址转换(NAT)、IP隧道(IP Tunneling)和直接路由(Direct Routing)三种IP层的负载均衡办法及满足不同应用需要的四种分担算法(RR、WRR、LC和WLC)等核心过程，实践结果证明，集群技术研究是成功的，对系统性能的提高是明显的。
+关键词：集群 负载均衡 Virtual Server 地址转换
+1　集群概述
+　　随着因特网的爆炸性发展，服务器性能出现了瓶颈，当访问需求增长时，服务器会在很短的时间内超载。对现有服务器硬件进行升级，过程十分复杂，而且升级越高，花费越多。一旦该服务器出现问题，整个系统会陷入瘫痪。集群技术由此应运而生。
+　　广义说，一个集群是相互独立的一些系统作为一个系统工作，它们构成了一个组，叫集群。构成集群的目的是为了提高系统的可用性和规模可扩展性。在集群系统中，每台服务器承担各自的任务，因而服务器的个数将与工作效率呈正比增长。集群具有的优点：
+　　可用性(Availability)：当集群中的一个系统发生故障时，集群软件迅速作出反应，将该系统的任务分配到集群中其它正在工作的系统上执行，即提供永不停机(Non-stop)的服务。
+　　可伸缩性(Scalability)：即规模可扩展性。当总体的工作流量超出了一个集群中各系统的能力时，将有其它系统加入到该集群中，从而使系统总体性能得以增强。
+2　创建Linux Virtual Server
+2.1　Virtual Server的概念
+　　Virtual Server是建立在若干个松散连接的独立服务器之上的高可靠、可扩展的虚拟服务器，整个集群结构对外界用户来说是透明的。客户端与集群相互作用，整个集群像一台高性能和高可靠的服务器，客户端不受任何影响，也不需任何改动。请参看图1。Real Server可以通过高速LAN或物理上分散的WAN相连。
+
+图1　Virtual Server的结构
+　　Real Server的前端是一负载均衡器(Load Balancer)，由它将客户请求送到不同的Real Server，每个Real Server有自己的IP地址，但客户端仅看到一个IP地址(即Load Balancer的地址)，这样多个Real Server提供的相同并行服务就像一个IP地址提供的一样。
+　　在Virtual Server中很容易加入或移走一Real Server(结点)，实现规模扩展，分担负载，Load Balancer上运行的程序能对结点或进程进行监测，保证提供高可用的服务。
+2.2　Virtual Server工作原理
+　　Virtual Server有三种实现技术，分别是NAT、IP Tunneling和Direct Routing。
+　　NAT：(Network Address Translation)Load Balancer重写请求包的目的地址，转发给选定的Server，Load Balancer再改回送包的源地址为原目的地址，回送给客户端。
+　　IP Tunneling(IP隧道技术)：Load Balancer用IP数据报封装请求包并转发给选定的Real Server，该Server直接响应用户(不需Load Balancer再次参与)。
+　　Direct Routing(直接路由)：和IP隧道技术相比，该法不需封装的开销，但要求Load Balancer和Real Server在同一个物理网段内。
+2.2.1　Virtual Server via NAT
+　　由于目前IP地址的短缺和基于安全性的考虑，越来越多的网络使用私有IP地址(不能用在网络之外或Internet上)。当内部网络的主机想访问因特网或能被因特网上其他用户访问时，必须对其进行地址转换。Internet协议的信息头经过适当调整后，能使客户端相信它们在与一个IP地址通信，但实际上是不同IP地址的多个Server。
+　　Load Balancer和Real Server用交换机或集线器相连，Load Balancer通过NAT将请求分发到不同的Servers。其工作流程如下：
+　　用户向集群服务发出请求，发往虚拟IP地址(Load Balancer的外部IP地址)的请求包到达后，Load Balancer检查该请求包的目的地址和端口号，若与Virtual Server提供的服务相符，便采用特定算法从集群中选择某一Real Server，同时该连接被加入所有已建立的连接表(Hash table)中。然后把数据包的目的地址和端口改写成选定的Real Server的地址和端口，并转发给该Real Server。当以后进入的数据包属于此连接并且该连接能在Hash table中找到，都会改写地址和端口并转发给Real Server。当返回数据包时，Load Balancer会将其源地址和端口号改写为Virtual Server的地址和端口号。当连接终止或超时后，该连接记录会从Hash table中清除。
+　　优点：Real Server可运行在任何支持TCP/IP的操作系统上，能使用私有IP地址，仅需要一合法的IP地址配给Load Balancer。
+　　缺点：可扩展性不够好，当Server的结点数增加至25或更多时，Load Balancer会成为整个系统的瓶颈，因为请求包和回送包都须经过Load Balancer重写。假设TCP包的平均长度为536Bytes，重写一个包的平均延时大约为60us(跟处理器的速度有关)，通过Load Balancer的最大流量为8.93 Mbytes/s。如果Real Server的平均流量为400Kbytes/s，Load Balancer可管理大约22个Real Servers。
+2.2.2　Virtual Server via IP Tunneling (IP隧道)
+　　IP隧道(IP封装)是一种用IP数据包封装IP数据的技术，它能使发往某一IP地址的数据包经过封装后转发到另一IP地址。在Virtual Server中，Load Balancer使用此技术封装请求包，转发到不同的Real Server。经Real Server处理后，能直接把结果送给客户端，使整个过程看起来仍像单一IP地址提供的服务。
+　　其工作流程如下：用户向集群服务发出请求，发往虚拟IP地址(Load Balancer的外部IP地址)的请求包到达后，Load Balancer检查该请求包的目的地址和端口号，若与Virtual Server提供的服务相符，便采用特定算法从集群中选择某一Real Server，同时该连接被加入所有已建立的连接表(Hash table)中。然后Load Balancer用IP数据包封装该数据包，并转发给选定的Real Server。当以后进入的数据包属于此连接并且该连接能在Hash table中找到，都会被再封装并转发给Real Server。Real Server接收封装的数据包后，去除封装，处理请求后，将结果直接送回客户端，不需Load Balancer再次参与。当连接终止或超时后，该连接记录会从Hash table中清除。
+　　注意Real Server在任何网络中可以有合法的IP地址。
+　　优点：很多Internet服务都是请求包较短，而回送包携带大量数据，如Web服务。在Virtual Server via IP Tunneling中，Load Balancer只将请求送往不同的Real Server，Real Server直接回应用户请求，因此Load Balancer可以处理大量请求，管理大约100个Servers且不会成为系统瓶颈，最大流量可达1Gbps。
+　　可用于建设高性能的Virtual Server，尤其是虚拟代理服务器。代理服务器在接收请求后，获得所需数据后能直接回送客户端。
+　　缺点：要求所有Real Server支持IP隧道协议。但随着IP隧道协议成为操作系统的标准，该技术将应用于所有的操作系统。
+2.2.3　Virtual Server via Direct Routing
+　　Real Server和Load Balancer共享一个虚拟IP地址，所有的Real Server须将Loopback Alias的接口配置成虚拟IP地址，Load Balancer也要将接口配置虚拟IP地址来接收请求包。Real Server和Load Balancer通过HUB/Switch连接。
+　　用户向集群服务发出请求，发往虚拟IP地址的请求包到达后，Load Balancer检查该请求包的目的地址和端口号，若与Virtual Server提供的服务相符，便采用特定算法从集群中选择某一Real Server，同时该连接被加入所有已建立的连接表(Hash table)中。然后Load Balancer直接把请求包转发给选定的Real Server。当进入的数据包属于此连接并且该连接能在Hash table中找到，都会被直接转发给Real Server。Real Server接收转发的数据包后。发现地址与Loopback Alias的地址一样，处理请求后，将结果直接送回客户端，不需Load Balancer再次参与。当连接终止或超时后，该连接记录会从Hash table中清除。
+　　优点：不需要隧道设备，可处理大量请求，Real Server可运行任何操作系统。
+　　缺点：Load Balancer仅改变数据帧的MAC地址为选定的Real Server的MAC地址，要求它们在同一个网段内。
+　从Virtual Server中选择某一Real Server有很多算法，说明如下。
+2.3　负载分担算法
+　　目前实现了四种算法用于分担负载，分别是循环法、量值循环法、最少连接法和量值最少连接法。
+　　1)循环法(Round-Robin)
+　　顾名思义，用循环法则选定不同的Server。对所有Real Server平等对待不管已有的连接数目和响应时间。注意和RRDNS的不同，RRDNS是将单一的域映射为不同的IP地址，是基于主机的，缓存会使其失效，导致Real Server间的动态失衡。
+　　2)量值循环法(Weighted Round-Robin)
+　　对不同处理能力的Real Server区别对待，每一Real Server会指定一整数量值。该整数量值标志处理器能力，默认值为1。如Real Server A、B、C，量值分别为4、3、2，在一个周期内的转发顺序将会是ABCABCABA。
+　　该法不需计算每一Real Server的网络连接，开销小，可管理更多的Real Server，但如果请求负载变化很大，会导致负载动态失衡。
+　　3)最少连接法(Least-Connection)
+　　以活动连接的数目决定和哪一台Server连接，是一种动态算法。它需要动态计算每一Server的活动连接数目，以最少连接的Server作为转发的目的地址。当集群中Server性能接近，网络请求负载变化较大时，是一种很好的解决算法，因为所有较长的请求不会转发到同一Server。
+　　4)量值最少连接法(Weighted Least-Connection)
+　　是最少连接法的扩展，考虑到Real Server处理的能力有所不同，可以指定不同量值给每一Real Server。量值大的Server可接受更多的连接，每一Server的活动连接数和它的量值成正比，默认量值为1。
+3　实验
+　　我们利用机房现有的条件，搭建了一个简易的实验环境，由于条件有限，只用NAT构建了一Linux Virtual Server，验证了负载分担。
+3.1　实验要求
+　　1)两台PC服务器，运行Windows NT Server 4.0操作系统，内装IIS3.0，提供WWW服务。
+　　2)一台PC，运行Redhat 6.0(Linux的一个版本)，并安装Virtual Server patch for kernel 2.2.10，做Load Balancer。
+3.2　实验步骤
+　　1)在一台Pentium MMX 200MHz，内存为32M的PC机上安装Redhat 6.0，并从网上下载Virtual Server patch for kernel 2.2.10，因Redhat 6.0的kernel为2.2.5，所以在安装后须对内核重新编译才可使用。
+　　2)这三台计算机以前连在机房的局域网上，均使用原保留的IP地址，为了实验，将两台NT的地址改为10.1.1.2和10.1.1.3，Redhat 6.0的地址除保留原有IP地址10.196.1.74外，再配置一10.1.1.1，使其和NT在同一网段内，NT的默认网关指向10.1.1.1，子网掩码为255.255.255.248。
+　　3)两台NT Server提供WWW服务，为了验证负载被均衡到两台Server上，将他们的主页设为不一样，根据主页的显示，就可知连接的是哪一台Server。
+　　4)在Load Balancer上作如下配置：
+　　ipvsadm -A -t 10.196.1.74:80 -s wls(Weighted Least-Connection)注释：使用量值最小连接算法
+　　ipvsadm -A -t 10.196.1.74:80 -R 10.1.1.2:80 -m
+　　ipvsadm -A -t 10.196.1.74:80 -R 10.1.1.3:80 -m -w 2
+　　5)在机房内任意两台连在网络上的计算机用浏览器先后访问Virtual Server的外部IP地址10.196.1.74。如表1。
+表 1
+
+Protocol Virtual Ip
+addressPortReal Ip
+addressPortWeight
+TCP10.196.1.748010.196.1.2801
+10.196.1.3802
+
+3.3　实验结果
+　　用浏览器访问10.196.1.74，在两台计算机先后上看到了不同的页面，使用浏览器的刷新键，页面不改变，这是因为缓存的作用。清除缓存后再访问，看到的页面与原先不同。这有效地证明了访问的负载被分担到两台NT上，具体看到的网页和访问次序以及在Load Balancer上使用的分担算法有关。
+3.4　结果分析
+　　所有目的地址为10.196.1.74端口为80的数据包通过真实IP为10.1.1.2端口80和10.1.1.3端口80均衡，以下给出表2来说明，以源地址10.196.1.73访问10.196.1.74为例。 
+表 2
+
+数据包源地址：端口目的地址：端口
+请求包10.196.1.73：3456（C）10.196.1.74：80（L）
+改写10.196.1.73：3456（C）10.1.1.2：80（S）
+回送包10.1.1.2：80（S）10.196.1.73：3456（C）
+改写10.196.1.74：80（L）10.196.1.73：3456（C）
+
+　　C：Client L：Load Balancer S：Real Server 
+　　集群系统的优势在于其硬件和软件的冗余。通过监测结点、失败的进程，重新正确配置系统，使工作流能被集群中的其余结点接管，以得到高可用性的集群系统。
+　　在Linux Virtual Server中，使用软件“mon”和“fake”可实现高可用性。“mon”是一个多用途的资源监视程序，用于监视网络服务的可用性和结点状态。“fake”是一个IP接管软件。
+　　“mon”运行于Load Balancer上，监视服务进程和结点状态。配置fping.monitor用于监测结点每秒是否活动，也可配置相关的服务监视程序用于监视每个结点的服务进程，如http.monitor监测http服务，ftp.monitor监测ftp服务。当结点失败或进程死后，会在Virtual Server中写一条警告记录并移去一条规则。因此，Load Balancer能自动掩盖进程或服务器的失败，当故障恢复后，又可重新提供服务。
+　　现在，Load Balancer是整个系统唯一的失败点了，为了防止它的失败，可建立Load Balancer的备份服务器。一旦Load Balancer出现故障，“fake”运行于备份服务器上，用于接管Load Balancer(下转第68页)(上接第32页)的IP地址，“mon”同样运行于备份的Load Balancer上，掌握集群的状态，当主Load Balancer失败后，备份Load Balancer继续提供服务，但当前应用已建立的连接会丢失，要求客户端重新发送请求。
+　　和商用的成熟的集群方案比起来，Linux Virtual Server也许不是最好的，但比起购买昂贵的高档服务器和对原有硬件升级而言，Linux的Virtual Server是一个非常物美价廉的解决方案。相对于NT和Solaris等商业Unix系统来说Linux是完全免费的，几乎不花什么钱，就可以从网络上直接获得Linux的最新版本和内核，并以此来构建Linux Virtual Server，体验集群技术带给的巨大优势。
+　　当前许多的ISP都通过扩容解决目前的网络拥塞问题、改善带宽，但网络的发展如此之快，未来的要求就是不断扩容，不断更新。能不能在大规模扩容的基础上，也充分利用廉价资源对现有网络来一些适当的优化呢？Linux Virtual Server也许会给我们一个启示。
+沈中林(新疆大学数学系 乌鲁木齐 830046)
+金宝鼎(乌鲁木齐市电信局数据分局 乌鲁木齐 830002)
+扬明(乌鲁木齐市电信局数据分局 乌鲁木齐 830002)
+参考文献
+1 Joseph Mack. Creating Linux Virtual Server in Linux Expo'99 on May 20, 1999
+收稿日期：1999年9月30日

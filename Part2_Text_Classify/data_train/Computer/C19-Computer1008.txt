@@ -1,0 +1,109 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+线性滞后互联大系统的分散智能镇定
+张　剑　刘永清　沈建京
+摘　要　讨论了线性滞后互联大系统的分散镇定问题， 给出了分散镇定控制器设计的思想和方法，而后将人工神经网络技术引入该研究领域，给出了一般线性定常系统闭环极点配置的智能方法，同时实现了线性滞后互联大系统分散镇定控制器的智能设计. 最后给出了一数值仿真例了， 进而验证了该设计方法的可行性及有效性. 
+关键词　大系统， 时滞， 稳定性，分散镇定， 神经网络. 
+INTELLIGENT DECENTRALIZED STABILIZATION FOR LARGE
+SCALE INTERCONNECTED SYSTEMS WITH TIME DELAYS
+ZHANG JIAN
+(Exchange Techniques Research Division,Communication College of Guangzhou, Guangzhou 510502)
+
+LIU YONGQING　　SHEN JIANJING
+(Department of Automation, South China University of Technology, Guangzhou 510641)
+Abstract　In this paper, the problem of decentralized stabilization for linear time-inveriant large scale interconnected systems with time delays is discussed. The idea and formulas of designing decentralized stabilization controllers are given. The technique of artificial neural network (ANN) is firstly introduced into this research area. An intelligent method of pole assignment for linear time-invariant closed-loop systems is presented. The design of decentralized stabilization controllers for linear time-invariant large scale interconnected systems with time delays are intelligently implemented. A simulative example shows the feasibility and effectiveness of the method.
+Key words　Large scale system, time delay, stability, decentralized stabilization, neural network.
+1　分散镇定的理论方法
+　　考虑由m个相互关联的子系统组成的具有输入分散形式的滞后大系统
+　　　　　(1)
+其中　xi∈Rni,ui∈Rri分别为子系统的状态向量和控制向量；Ai,Bi,Aij,Gij是适当维数的常量矩阵；为标量滞后；假设(Ai,Bi),(i=1,2,…,m)是完全可控的，并希望能用一个多级控制 
+ui(t)=uli(t)+ugi(t)+udi(t)　　　　　　　　　　　　　　　(2)
+使闭环大系统渐近稳定. 其中uli(t),ugi(t)和udi(t)分别为第i子系统的局部控制律， 全局控制律和全局滞后控制律. 它们的具体形式为
+　　　　　(3)
+这里Ki,Kij和Hij分别为适当维数的待定矩阵. 下面将分二级给出滞后大系统(1)的分散镇定方法. 
+　　第一级.设计uli(t)，使得每个无滞后孤立子系统是指数稳定的. 因(Ai,Bi)是完全可控的， 从而存在增益矩阵Ki， 使得(Ai+BiKi)的极点可配置到希望的位置. 假设希望的极点为
+-σi1±jwi1,-σi2±jwi2,…,-σik±jwik,-σi2k+1,…,-σini-2k. 
+其中　,则每个无滞后孤立子系统都具有衰减度为αi指数稳定的. 
+　　取σir≠σis, r,s=1,2,…,ni,r≠s， 由模态变换法可令zi(t)=M-1ixi(t),i=1,2,…,m, 其中Mi是矩阵(Ai+BiKi)的模态矩阵， 由此可得
+=Λizi(t), i=1,2,…,m， 这里Λi=M-1i(Ai+BiKi)Mi,即
+
+是一块对角矩阵. 设计uli(t)的关键是求Ki， 在下节给出其智能设计方法. 
+　　第二级.设计ugi(t)和udi(t)， 使得闭环大系统是无条件渐近稳定的. 由上可得
+　　　　　　　(4)
+这里，
+. 利用微分常数变易法， 并借助于Coppel不等式［1］以及比较定理［2］， 我们可定义矩阵P和Q， 其中
+且可证明，如果矩阵[-(P+Q)]是M―矩阵，则闭环滞后大系统(4)是渐近稳定的. 
+　　根据M―矩阵的定义及性质［3］， 为获得滞后大系统(4)的渐近稳定性，必须设计
+使得范数尽可能小. 为此，将在下节用神经网络方法解决这一问题， 从而完成对ugi(t)和udi(t)的智能设计. 
+2　分散镇定控制器的智能设计
+2.1　uli(t)的智能设计及模态矩阵Mi的求解
+　　由M-1i(Ai+BiKi)Mi=Λi可得Ai=MiΛiM-1i-BiKi，由此，可建立一并联神经网络模型(图1). 该神经网络是一多隐层并联前馈神经网络，诸神经元都是简单的感知器， 当网络输入为I(单位矩阵)时，其输出为矩阵Y，且有Y=W1ΛW2-BK， 这里W1,Λ, W2∈Rn×n， B∈Rn×r,K∈Rr×n.
+
+
+图1　神经网络模型1
+　　网络训练的目的是使网络输出Y收敛于矩阵A∈Rn×n(理想输出)； 权重矩阵W1和W2分别收敛于矩阵M和M-1，并保证W1*W2=I. 为此， 我们建立该网络的能量函数为
+
+这里从而得到网络的训练算法为
+　　　　　　　　　　(5a)
+　　　(5b)
+　　　(5c)
+这里， l是迭代次数，为学习因子. 文献［4］中定理3.7已证明，通过适当地选择和调整αk,α1,α2，经网络训练后，可使E满足：(误差限)，从而得到矩阵K和M=W1，M-1=W2. 这里，ε的大小可视实际工程设计精度而定. 
+2.2　ugi(t)和udi(t)的智能设计
+　　设‖A‖2表示矩阵A的谱范数，是矩阵A的另一范数，则有
+为使尽可能小， 只需尽可能减小其对应的范数。2. 为此， 我们可利用一般的具有单隐层的神经网络模型解决这一问题. 其中，矩阵F和B是输入层到隐层与隐层到输出层的权. 当该神经网络输入为单位矩阵时，其对应的网络输出为Y=BF，这里，Y∈Rn×n, B∈Rn×r,F∈Rr×n. 网络训练的目的是调整矩阵F中的各矩阵元素， 使得范数Y+D2尽可能小. 其中，矩阵D∈Rn×n和B∈Rn×r是已知矩阵. 为此，我们给出其网络能量函数为. 则有，从而得到网络训练算法
+　　　　　　　　　　　　　　(6)
+这里，l为迭代次数，为网络学习因子. 令F分别为 同时，矩阵D为相应的矩阵在不同的处理器上， 通过不断地调整αf，可使从而可同时并行地完成网络训练，并得到矩阵由(4)式可得从而完成ugi(t)和udi(t)的智能设计. 
+2.3　分散镇定控制器的智能设计算法
+　　总结2.1和2.2节，给出分散镇定控制器的智能设计算法如下：
+　　步骤1.已知Ai, i=1,2,…,m， 给定每个孤立子系统的希望极点，构造矩阵Λi,i=1,2,…,m,利用(5)式，并行完成各子系统的神经网络(图1)训练，同时得到矩阵Ki,Mi=W1和M-1i=W2(i=1,2,…,m)，进而完成uli(t)的智能设计. 
+　　步骤2.由Mi和M-1i， 计算并得到
+　　步骤3.令D分别为根据(6)式，同时并行完成网络的训练，分别得到矩阵 
+　　步骤4.由Mi和M-1i，计算并得到完成ugi(t)和udi(t)的智能设计. 
+　　步骤5.构造矩阵P和Q，分析闭环大系统(4)的稳定性， 如果大系统(4)不稳定， 则对各孤立子系统重新给定一组新的希望极点，返回步骤1.
+　　步骤6.结束. 
+　　由分散镇定控制器的智能设计算法可知，经有限次循环一定可实现大系统(1)的镇定. 
+3　数值仿真
+　　考虑下列具有3个2阶子系统的滞后系统
+
+　　通过网络训练算法(6)并根据表1的结果计算，可得矩阵从而完成ui(i=1,2,3)的智能设计. 其中
+
+表1　各孤立子系统智能极点配置的结果
+
+SubsystemMatrix KiMatrix MiMatrix M-1i
+1-4.9058
+-1.60592.2657
+-4.96591.5842
+-.4932-.3045
+.7141.7302
+.5186.3045
+1.5986
+21.3645
+-2.8513-2.0569
+-1.6902-.4262
+.9302.8087
+.5558-.5592
+.9309.8077
+.4308
+3-4.6874
+-5.7514-3.1701
+-1.0452.5410
+1.1658-.2196
+1.79701.4512
+-.9420.1629
+.4482
+
+4　结束语
+　　由于神经网络技术具有并行分布处理的能力， 同时，又便于VLSI硬件电路实现，从而使得该智能技术非常适合处理复杂大系统的分析及设计问题. 因此，将神经网络技术引入大系统问题的研究，有着广泛的实用价值. 本文应用这种技术给出了滞后大系统稳定性分析与镇定的智能实现方法，数值仿真结果表明该方法是成功和有效的. 
+作者单位：张　剑　广州解放军通信学院交换教研室　广州　51050
+　　　　　刘永清　　沈建京　华南理工大学自动化系　广州　510641
+参考文献
+[1]　Coppel W A. Stability and asmyptotic behavior of differential equation. Boston: D.C.Heath, 1965. 
+[2]　Lakshmikantham V, Leela S. Differential and intergral inequation: Theory and Applications. New York: Academic Press, 1969.
+[3]　罗家洪.矩阵分析引论.广州：华南理工大学出版社， 1992.
+[4]　焦李成.神经网络系统理论.西安：西安电子科技大学出版社，1992.
+[5]　Horn R A, Johnson C R. Matrix analysis. Cambridge Press, 1985. 
+收稿日期　1996-01-10

@@ -1,0 +1,93 @@
+计算机工程
+COMPUTER ENGINEERING
+1999年 第25卷 第10期 Vol.25 No.10 1999
+
+
+
+专业过滤器防攻击策略研究及实现
+陆月明　钱德沛　徐斌
+摘要：分析了4种网上攻击（Attacks）的原理和特点，提出了采用专业过滤器（Professional Filter，PF）保护内部网站点的策略。PF具有自身的安全性和复杂的过滤策略，能很好地防止外部攻击。同时，PF具有网络设备的特点，使网络的吞吐量得到了保证。
+关键词：专业过滤器；SYN-flooding；Ping-of-death；Net-pign-flooding；服务拒绝
+Research and Implementation of Attack Defence Policy in Professional Filter
+Lu Yueming Qian Depei Xu Bin
+(Dept.of Computer,Xi'an Jiaotong University,Xi'an710049)
+【Abstract】Principle and characteristics of four attacks on the network are analyzed and a strategy protecting internal network by mean of professional filter(PF) is addressed in this paper.PF can defend against by self security complex filtering policies.It guarantees the throughput of network due to its network device nature
+【Key words】Professional filter;SYN-Flooding;Ping-of-death;Net-ping-flooding;Denial-of-service
+　　计算机系统的安全性主要涉及3方面的内容：保密性(secrecy)，完整性(integrity)和服务可获得性(available)[1]；保密性和完整性在网络中可以采用强大的加密算法和认证措施得以保证，对服务的可获得性目前研究较少，也是一个难以解决的问题。
+　　Internet网络提供了一个共享的底层，如路由器、交换机等，但这些设备大都缺乏对网上数据包的合法性进行检查，特别是缺少对数据包的源IP地址和源MAC地址的验证，导致目前Internet网上的IP地址欺骗攻击泛滥成灾，如SYN-Flooding[2]、Ping-of-Death[3]、Net-Ping-Flooding和国内目前广泛存在的IP地址的非法盗用问题等。
+　　本文作了3方面的工作：(1)分析4种网上攻击的原理和特点，并介绍了早期的一些防范措施；(2)介绍PF的工作原理，提出了采用PF防止网上攻击的方法，并对4种攻击提出了相应的防范策略；(3)PF的网络性能分析。
+1　网络攻击的特点和常用的防范措施
+1.1 网络攻击的特点
+　　目前Internet网上的攻击，如SYN-Flooding，Ping-of-Death，Net-Ping-Flooding等，它们的共同特点是：
+　　(1) 采用IP地址欺骗(IP Spoofing)[4]。攻击者伪造IP地址对目标机进行攻击，具有欺骗性，主要是隐瞒罪行。
+　　(2) 攻击者的目的是使主机或网络拒绝服务(Denial of Service)[5]，或非法侵入他人主机进行破坏活动。
+　　(3) 难以发现和防止。
+1.2 目前主要的4种攻击手段及原理
+　　目前主要的4种攻击手段是：SYN-Flooding、Ping-of-Death、Net-Ping-Flooding和非法侵入。
+　　SYN-Flooding利用TCP连接中的三次握手机制的缺陷，采用虚假的IP地址，对一些服务器进行攻击，使这些服务器拒绝服务或死机，合法用户的服务得不到保证，到现在为止，还没有合适的解决方法。在SYN-Flooding中，主机先对服务器发TCP-SYN包，服务器回答SYN-ACK并在半连接栈(Pending Stack，PS)中保留数据和信息，如果主机发TCP-ACK包，连接就结束，半连接(Pending)数据和信息则从PS中移去。如果服务器收不到源主机的TCP-ACK包，服务器等待一定的时间(大约75s左右)[1]才作超时处理，Pending数据和信息从PS中移出。攻击者采用程序方式对服务器连续发TCP-SYN包，使服务器的PS满，不能接受合法用户的请求。TCP-SYN包的源IP地址一般是伪造的，例如和目的IP地址相同，这样，服务器发出的SYN-ACK当然得不到应答，只能等待超时，攻击者只要在超时之前继续发包，服务器的PS就会被充满。
+　　Ping-of-Death是采用大于65535字节的包去ping目标主机，目标主机因没有足够的空间组装65507字节以上的包，而产生的死机等现象[3]。
+　　SYN-Flooding能使主机拒绝服务，Net-Ping-Flooding 能使整个网络拒绝服务，Ping是基于ICMP请求应答(echo request)包开发的应用软件，当一主机对网络地址发请求应答包时，目标网上活动的主机都会给予应答，它的过程如图1所示。目标网上活动主机数为n时，攻击者发一个包，相应的应答包将会出现n个，流量被扩大了n倍。攻击者连续向目标网络地址发包，整个网就会瘫痪，特别是目前Internet的出口本来就是瓶颈，带宽又小，很容易阻塞。由于攻击者对请求包的源IP地址进行了伪造且不断变化，所以很难立即查出，需要及时防范。
+
+图l 对网络地址的请求应答
+　　非法侵入是攻击者采用工具或计算机系统的漏洞，获取超级用户的口令进入系统，如采用主机的rlogin，rsh，Telnet，FTP等来窃取主机上的口令文件，从而利用工具破解，所以这些程序对外部用户要加以限制，而服务器提供单一的服务有利于提高主机的安全性。
+1.3 对SYN-Flooding的一些防范措施
+　　对SYN-Flooding的防范措施有增加PS的大小、SYN Cookies、请求替代、应用层代理服务器和过滤器等。目前BSD中PS的大小为5个Pending入口，Linux为6个入口，目前最大的也只有10个入口，增加PS大小可以容纳更多的Pending入口。但这并不能解决问题，因为当攻击者发包的间隔小于超时(Timeout)时，栈还是会满；在Linux上，每个Pending入口保存的数据为520字节，2000个Pending入口将达到1M字节，大量消耗了内存资源；同时PS的加大也会影响主机的性能[1]。
+　　SYN Cookies由BSD公司提出，它把SYN包中的少量数据保存在栈中，在SYN-ACK包中把大部分数据传回给发送者，发送者再在TCP-ACK中把数据送回建立连接。它的缺点是不透明，会引起网络性能下降，需要更新软件，同时它也不能避免SYN-Flooding的攻击。
+　　请求替换是当栈满时，新的SYN请求替换栈中第一个SYN的请求；因它是随机的，所以会替换合法用户的请求。
+　　应用层代理服务器它本身会受到SYN-Flooding攻击，不能起到保护作用。
+　　网络层过滤器在网络特性上类似普通的网络设备，自身非常安全，可以起到保护内部子网的作用。下面给出了专业过滤器保护内部子网，防止外部攻击的方法。
+2　专业过滤器的工作原理和防攻击策略实现
+2.1 专业过滤器的介绍及工作原理
+　　目前网络安全防火墙主要采用两种技术实现：包过滤(Packet Filtering)技术和代理服务器(Proxy)技术。网关包过滤主要是指以屏蔽路由器(Screening Router)对出入包进行过滤等，其优点是过滤速度快，对网络性能的影响小，费用低；但由于网关的包过滤机制目前仅是一种附带功能，过滤策略(Filtering Policy)显得简单，最大的缺点还在于网关上的过滤策略因复杂性和安全性原因很难被用户动态改变。
+　　专业的过滤器主要工作于网络层，和普通的网络设备一样，无状态、无连接，对用户透明；专业过滤器的性能和网络的流量有关，和网上的用户数无关；这种机制使专业过滤器对网络性能的影响较小，同时可服务的用户数较多，可用于企业、校园级网络的总出口处。目前的专业过滤器和代理服务器的安全性可以媲美[6]。因为过滤器的硬件性能、过滤策略的复杂度在不断提高，过滤器本身的安全性要好于代理服务器。目前利用包过滤技术开发的防火墙产品有由美国CheckPointer公司开发的FIREWALL-1[7]等。
+　　在实现的专业过滤器系统IPMAN中集成了国内、国外入出4种流量的统计、访问权限控制、用户身份认证、内部站点的保护、外部非法站点的屏蔽和数据加解密等多种功能；用户可通过内部网上基于Web的管理服务器完成访问权限的设置、帐户查询等工作。专业过滤器的工作原理如图2所示(FU为过滤单元)。它隔离内部和外部网络，对流经的数据包根据过滤策略进行过滤、转发或丢弃。
+
+图2 专业过滤器的工作原理
+2.2 采用专业过滤器防止外部攻击的策略及实现
+　　(1) SYN-Flooding的防止策略和实现
+　　PF不断从网卡接收缓冲区读取数据帧(接收数据帧)，然后交予过滤器的过滤单元(Filtering Unit，FU)过滤，然后丢弃非法数据帧，转发合法数据帧。FU中的防SYN-Flooding过滤单元(SYN-Flooding Defense Filtering Unit，SFDFU)可防止SYN-Flooding攻击，它的工作原理如图3所示。
+
+图3 SFDFU工作原理
+　　在TCP3次握手中，SFDFU转传了两次，在第2次握手中SFDFU提前向服务器回送TCP-ACK包，使半连接成为全连接，然后屏蔽客户端的ACK包，如果用户的ACK包中夹带数据，可继续转传，因为不带数据的TCP-ACK包对TCP中的序列号、确认号不影响。要保护的内部站点IP地址可通过管理员动态加入SFDFU的保护表中，SFDFU可由管理员动态设置开关，当无攻击时可以屏蔽它，以免影响性能。
+　　(2) Net-Ping-Flooding的防止策略和实现
+　　在专业过滤器中的权限处理单元(Rights Dealing Unit，RDU)，它根据用户的权限表处理流经的数据包，RDU认为内部网是一个集合，进入内部网的数据包的目的IP地址必须在这范围内，过滤器捆绑了IP地址和用户的权限表，表中每个记录的信息如图4所示。在过滤器中，内部的网络地址和普通的IP地址一样需要认证后才能出入过滤器，对网络地址采取屏蔽的方式，可有效保护内部子网免受Net-Ping-Flooding的攻击。
+表1 权限表的记录
+IP地址认证否国外、内浏览权可提供的服务类型可访问的服务类型流量表…
+
+图4 PF对WWW服务器服务类型的控制
+　　(3) 服务类型的控制方法
+　　用户可通过自己的帐户，设置绑定主机对外提供的服务类型，图5显示了PF对内部的一个WWW服务器的服务类型的控制，FTP和Telnet两种服务不被外部用户使用。
+　　
+（a）过滤器吞吐量变化图　　　　　　（b）过滤器延迟变化图
+图5 受两边网络吞吐量影响的过滤器性能图
+PF：专业过滤器，SFD-PF：具有SYN-Flooding防护的专业过滤器。
+　　(4) Ping-of-Death的防止策略和实现
+　　过滤器中的防Ping-of-Death过滤单元(Ping-of-Death Defense Filtering Unit，PDFU)，在禁止了分片的Ping IP包进入内部网，控制了Ping 包的长度小于1500字节，取消了利用Ping包进行攻击的可能性，PDFU的过滤过程如下：
+　　if(IP.protocol==ICMP&&ICMP.code==ECHO_REQUEST&&IP.fragment_flag!=0)
+　　　{丢弃该包}
+　　else{转发}
+3　PF的性能分析
+3.1 PF的测试环境
+　　专业过滤器系统IPMAN在双穴主机(Dual-homed Host)上实现，双穴主机的硬件配置为：Pentium 133，8MB内存，Intel 10MB以太网卡，软件采用汇编语言开发。过滤器是透明的，类似于透明桥，过滤器两边网络为10MB以太网，采用长度为100字节的包测试，两侧网络吞吐量为等量分布。
+3.2 PF的性能模型
+　　过滤器的接收为过滤器把数据帧从网卡的接收缓冲区读入过滤器内存的过程，过滤器的发送为过滤器把数据帧写入发送缓冲区的过程，以内存缓冲区作为中介，过滤器采用无等待的收发过程，丢包是在内存或发送缓冲区满时才有可能。它的性能模型如下：
+T=Tr+Tf+Ts+Lr*Tr+Ls*(Tr+Tf)
+　　T：过滤器处理一个包的时间，Tr：接收一个包的时间，Tf：过滤一个包的时间，Ts：发送一个包的时间，Lr：因内存缓冲区满而引起的丢包率，Ls：因发送缓冲区满而引起的丢包率。因为过滤器在以太网上实现，它的发包速度要受到过滤器两侧网络冲突概率的影响，当两边网络的吞吐量增大，Lr增大，造成丢包重传，进一步使两侧网络冲突概率增大，Ls变大，T增大，过滤器吞吐量下降。
+3.3 测试结果
+　　PF的吞吐量和两侧网络的吞吐量的关系如图5所示。从图5可以看出，当无丢包时过滤器的吞吐量由网络速度决定；过滤器吞吐量开始下降时是由处理机处理速度引起的，这时过滤器的吞吐量由处理机的处理速度决定；当两边网络吞吐量到达6000pps左右时，两侧网络的冲突加剧，过滤器的吞吐量急剧下降，这时增加处理机处理能力已无用，过滤器的吞吐量主要由发送速度决定。因为发送冲突严重，过滤器花大量时间接收和处理的包发不出去，造成总吞吐量大大下降。从图5可以看出具有SYN-Flooding防护的专业过滤器的性能与不带这种防护的专业过滤器的性能相差很小，因此，增加这些防护功能是合理、有效的。
+4　结束语
+　　专业过滤器具有自身的安全性，采用合适的过滤策略，能很好防止外部站点的SYN-Flooding、Ping-of-Death、Net-Ping-Flooding等的攻击，同时能限制外部站点访问内部服务器的访问类型，提高了内部网的安全性。专业过滤器的无连接、无状态特性可保证较高的吞吐量，是目前可选的一种低成本网络安全解决方案。
+基金项目：863课题
+作者简介：陆月明（1970～），男，博士生，研究方向为网络安全、主动网络
+作者单位：西安交通大学计算机系，西安710049
+参考文献
+1 Van C.MIT Master Degree Paper:A Defence Against Address Spoofing Using Active Networks.
+MIT,USA,1997
+2 Advisory C.TCP SYN Flooding and IP Spoofing Attacks.http://seusa.sumitomo.com/docs/security/cert_org/cert_advisory/CA-96.21.
+TCP_SYN-flooding,1996-10
+3 Advisory C.Denial-of-service Attack via Ping.http://seusa.sumitomo.com/docs/security/cert_org/ cert_advisory/CA-96.26.ping,1996-10
+4 Advisory C.IP Spoofing Attacks and Hijacked Terminal Connections.http//seusa.sumitomo.com/docs/ security/cert_org/cert_advisory/CA-95.01.IP.spoofing,1995-01
+5 Spatscheck O.Defending Against Denial of Service Attacks in Scout.http://www.scout.com/osdi99.ps,1998
+6 Leon E.Security Challenges Resulting from Connection to the Internet.USA,PC Magazine,1997-06
+7 Michael S.CheckPoint's FireWall-1 2.1 Uses Stateful Inspection to Boost Flexibility.USA：PC Week,1996；1999,13(31):2
+收稿日期：1999-01-26

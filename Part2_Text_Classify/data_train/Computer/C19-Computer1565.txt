@@ -1,0 +1,64 @@
+信息与控制
+INFORMATION AND CONTROL
+1999年 第28卷 第2期 Vol.28 No.2 1999
+
+
+
+具有多滞后非线性定常关联控制
+系统的镇定性研究*
+邓则名　张新政
+　　摘要　建立了多组多滞后定常非线性控制系统的结构概念，采用李雅普诺夫函数分解等价法，由 Riccati矩阵微分方程的对称正定解矩阵构造正定二次型V函数，给出了无滞后无扰动参数线性定常控制孤立子系统的镇定性，蕴含具有滞后控制向量函数的扰动结构参数的多组多滞后区间系数定常非线性关联控制系统的关联鲁棒镇定的一个充分条件，同时给出了扰动参数与滞后非线性项界线的估计公式．
+　　关键词　李雅普诺夫分解等价法,多组多滞后,非线性控制大系统,关联鲁棒镇定
+THE STUDY OF STABILIZATION OF NONLINEAR CONSTANT
+INTERCONNECTED CONTROL SYSTEMS WITH TIME-DELAYS
+DENG Zheming　ZHAND Xinzheng
+(Guangdong Univ. of Technology, Guangzhou, P.R. China 510090)
+　　Abstract　In this paper, the concepts of structure for nonlinear constant interconnected control systems with multigroup time-delays are formulated. The structure and interconnected stabilization of nonlinear constant interconnected control systems with multigroup time-delays and perturbation structure parameters is considered based on the equivalence method of stabilization. Meanwhile, the estimated formulas of bounds for delay and perturbed parameter of robust stabilization are given.
+　　Key words　equivalence method of lyapunov's function, nonlinear interconnected control systems, multigroup time-delays, the interconnected robust stabilization
+　　1　引言
+　　任何实际系统不可避免地存在着滞后现象，例如数控机床控制系统中伺服系统的信息传递以及开关就存在着滞后现象，工程实际中许多问题必须用非线性模型来刻画，例如：电力系统、受限机器人等．近年来非线性系统的镇定性研究越来越受到众多学者们的关注．在实际系统中，对象不可避免地存在建模不确定性及参数不确定性，因此，对一个具有不确定性的非线性系统研究其鲁棒镇定性就成为一个很重要的课题．
+　　由于干扰因素的存在，某些回路暂时中断或又接通时，滞后控制系统发生结构上的变化，又需要研究滞后关联控制系统的结构与镇定．控制规模的扩大，如多层、递阶、多回路、负反馈、多输入、多输出间的控制系统的响应，是一个多组多滞后控制系统结构变化，因此需要研究具有滞后控制向量函数多组多滞后区间系数定常非线性关联控制系统的结构与关联鲁棒镇定问题．
+　　在文献[1]中我们已采用李雅普诺夫函数等价法\[2~4\]，研究了滞后线性定常关联控制系统的结构与关联镇定．本文将采用李雅普诺夫函数分解等价法，研究具有滞后控制向量函数，多滞后区间系数，定常非线性关联控制系统的结构与关联鲁棒镇定问题．
+　　2　结构与关联鲁棒镇定
+　　考虑具有滞后控制向量函数多滞后区间系数定常非线性关联控制系统
+　　　　　　　　(1)
+　　　　　　　　　　　　　　　　(2)
+此处
+　　(3)
+gi是X,X(t-τ), U,U(t-τ),E1i,E2i, E3i,E4i的不确定性函数．
+其中(α=r,s,d,f,g,h；β=1,2,3,4,5,6)都是确定性函数．
+　　令
+
+(i,j=1,…,n; f=1,…,m;η=1,…,p)
+　　对多组多滞后非线性区间系数定常关联控制系统(1),(2)，如果我们不考虑它的扰动结构关联项和滞后扰动关联项以及非线性项，则(1),(2)化为无滞后无结构扰动参数的线性定常控制系统为
+　　　　　　　　　　　　　　　　　　(4)
+　　　　　　　　　　　　　　　　　　　　　　　(5)
+此处A(t)=(aij)n×n, B(t)=(bif)n×m, C(t)=(cfj)p×n为定常矩阵.
+　　定义1　对滞后(r=s,f,h)及关联矩阵(α=r,s,d,f,g,h,β=1,2,3,4,5,6),如果多组多滞后非线性区间系数定常关联控制系统(1)的闭环系统的零解是渐近稳定的,则称多组多滞后非线性区间系数定常关联控制系统关联鲁棒镇定．
+　　控制系统(4)，(5)可以记为
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(6)
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(7)
+假定(A.B)可控，(A.C)可观测，对(6)存在使二次性能指标
+　　　　　　　　　　　　　　　(8)
+取极小值的最优反馈向量函数
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(9)
+并且使得线性定常控制系统(6)的闭环系统
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(10)
+的零解是渐近稳定的，这里
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(11)
+P是Riccati矩阵代数非线性方程
+　　　　　　　　　　　　　　　　　　　　　　　　(12)
+的唯一对称正定解．Q=CTC,R(t)分别是n×n维，m×m维的正定对称矩阵．由正定对称矩阵P，我们构造二次型V函数
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(13)
+由于V(t)是正定对称二次型函数存在正数β1＞0,β2＞0，并有
+　　　　　　　　　　　　　　　　　　　　　(14)
+由(13)式的V(t)沿着线性定常控制系统(6)的轨线对t求导数,得到
+　　　　　　　　　　　　　　　　　　　　　(15)
+由于XT(t)(Q-PBR-1BTP)X(t)是正定二次型函数，从而有
+　　　　　　　　　　　(16)
+从(16)我们得到
+　　　　　　　　　　　　　　　　　　　　　　　　　　　(17)
+令
+
+　　　　　　　　　　　　　　　　　(18)
+设在定义域 G:|Xi|≤H,|Uj|≤H,(i=1,…,n;j=1,…,m; 任意t≥t0)非线性项对所有变元连续，且有

@@ -1,0 +1,100 @@
+微型机与应用
+WEIXINGJI YU YINGYONG
+2000　Vol.19　No.5　P.55-56,57
+
+
+
+
+BBS站点的建设和管理初论
+梁意文李欢汤远闲
+摘 要：阐述了BBS站点建设的有关技术，其中包括BBS软件的安装，BBS的外挂程序、邮件功能和转信功能的设置以及可能碰到的问题，最后介绍一些关于BBS站点管理的方法和经验。
+关键词：BBS公告牌系统 电子邮件 NEWS
+1 BBS软件的安装
+　　BBS软件可以在许多操作系统上运行，如Windows NT，Sco Unix，Soloris，Linux等。本文以Linux为例，讲述BBS站点的安装和设置过程。
+　　（1）安装前的准备工作
+　　在安装BBS之前，一般需要在系统中加入3个用户帐号：bbs，bbsuser，bbsadm，即在／etc／passwd文件中加入以下几行：
+　　bbsadm::9990:99:BBS administrator and developer:/home/bbsadm:/bin/csh
+　　bbsadm::9990:99:BBS user:/home/bbs/bin/bbsrf
+　　bbsadm::9990:99:BBS user:/home/bbs:/bin/csh
+　　分别为bbsadm和bbsuser设定好密码。帐号bbs是专门用来登录BBS站使用的，一般不设密码。而bbsadm用来维护BBS程序的帐号；bbsuser与bbs拥有相同的用户ID，但bbsuser的shell是一般的shell，而bbs的shell则是bbsrf，当系统需要以bbs身份来做内部处理时，就需要这个帐号了。
+　　另外，在／etc／group文件中设定BBS的group，如：
+　　bbs：＊：99：bbs，bbsuser，bbsadm
+　　然后在／home下建立2个目录bbsadm和bbs，分别用来管理BBS和存放BBS的应用程序。
+　　（2）BBS软件的获取
+　　BBS软件属于自由软件，没有版权的限制，也不需要任何费用。人们可以轻易地从Internet上下载各种类型的BBS软件，并且可以自由地修改BBS程序以适应自己特定的需要。
+　　BBS软件的版本比较多，目前我国使用较多的是Firebird BBS（火鸟BBS）和Maple BBS（枫叶BBS）。相比较而言，Firebird的功能较Maple更为完善，易于管理大型站点中的事务，而Maple的运行效率更高、更稳定，适合中小网站使用。
+　　Firebird BBS、Maple BBS等各种BBS软件可以从下面的地址获得：
+　　ftp：／／ftp．whu．edu．cn／pub／Linux／bbs／
+　　解压后会自动在当前目录下建立1个目录bbs＿src，内含bbs程序和各种工具程序。
+　　（3）设定及安装BBS
+　　①设定BBS的主要资料
+　　以bbsadm帐号登录，在bbs＿src／CONFIG／下执行命令
+　　．／configure
+　　然后按照系统的提示信息分别设置BBS所在的目录、BBS站点英文代号、BBS站点中文名称、域名、IP地址、最大上站人数、最大开版数等等。之后软件会根据所设定的信息生成安装BBS所必需的文件Makefile。
+　　②编译BBS软件
+　　在bbs＿src／下执行make命令，将程序编译成二进制文件。一般有4个可执行文件bbs，bbsrf，chatd和threatd
+　　③安装BBS软件
+　　执行make install命令，安装程序会自动将已经编译好的软件复制到指定的目录。至此，BBS软件的主要部分已经安装。
+　　需要注意的是，以bbs登陆系统后，操作系统会自动执行bbsrf文件，启动一个bbs进程，该进程将一直存在，直到用户退出BBS系统。如果用户以非常规方法退出BBS，则这个进程就将成为一个死进程而一直存在于操作系统中。随着时间的推移，这种死进程会越来越多，严重影响整个系统的性能。所以，定期清理死进程，重新启动操作系统是必要的。
+2 BBS外部工具的使用
+　　一个完整的BBS的许多功能需要由外挂软件来完成。这些软件通常是每隔若干时间运行1次，其运行的结果通过修改BBS的一些数据文件来使BBS具有动态显示和统计的功能，具体方法如下。
+　　（1）以bbsuser的身份登录，建立1个资源文件cron．bbs，例如：
+　　1＊＊＊＊bin／account 每个小时第1分执行上站人次统计
+　　10＊＊＊＊bin／poststat 每个小时第10分执行热门话题统计
+　　0 3＊＊＊bin／topusr 10 每天早上三点整执行使用者排行榜更新
+　　＊／5＊＊＊＊／home／bbs／innd／bbslink／home／bbs 每小时的5,15,25,35,45,55分执行bbslink转入文章
+　　＊／5＊＊＊＊／innd/bbsnnrp news.ustc.edu.cn innd/active．bbs 每10分钟从news．ustc．edu．cn中读信
+　　（2）执行命令crontab cron．bbs，此时用户所指定的自动程序就会被加到系统中。值得注意的是，谁执行这条命令，自动程序就会加入谁的自动程序中，以后系统自动执行程序时，也会以那个人的身份来执行。因此，在这里我们要确认此时是以bbsuser的身份来执行。
+3 BBS的邮件功能
+　　任何一个BBS站内的用户都可以向Internet收发邮件，这是因为BBS软件拥有和本系统内部的邮件服务器（如：sendmail）相连通的工具，使每一个站内用户都拥有一个形式为“用户名．bbs＠BBS邮件地址”的邮件箱。BBS收发邮件的大致流程如下：
+　　发送：
+　　BBS站内用户（用户．bbs）→Sendmail（bbs）→Sendmail（站外用户）→站外用户
+　　接收：
+　　站外用户→Sendmail（站外用户）→Sendmail（bbs）→bbsmail→Mail2bbs→BBS站内用户（用户．bbs）
+然而，未经过修改的sendmail．cf是无法接收格式为xxx．bbs的收信者的信件的。因此，需要修改邮件服务器的配置文件sendmail．cf。
+　　修改方法如下： 
+　　（1）找寻下面的段落
+＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+＃＃＃　　　　Local and Program Mailer specification　　　　＃＃＃
+＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+　　　　其后加入：
+　　Mbbsmail，P＝／usr／local／sendmail／bbs／bbsmail，
+　　F＝lsSD FMuhP，S＝10，R＝20，A＝bbsmail －d ＄u ＄s 
+　　（2）找寻下面的段落
+＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+＃＃＃　　　　　Ruleset 0 －－ Parse Address　　　　　＃＃＃
+＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃
+　　　 　其后加入：
+　　S0
+R＄＋．bbs＜＠＞＄＊ ＄＃bbsmail ＄＄1 bbs mail gateway
+…
+＃ short circuit local delivery so forwarded email works
+R＄＋ ＜ ＠ ＄＝w ． ＞ ＄：＄1 ＜ ＠ ＄2 ＠ ＄H ＞ first try hub
+R＄＋．bbs＜ ＄＋ ＠ ＄＋ ＞ ＄ ＄＃bbsmail ＄：＄1 bbs mail
+gateway
+R＄＋．bbs＜ ＄＋ ＠ ＞＄ ＄＃bbsmail ＄：＄1 bbs mail
+gateway
+……
+＃ everything else is a local name
+R＄＋．bbs ＄＃bbsmail ＄：＄1 bbs mail gateway
+　　修改时有一点要特别注意：在sendmail．cf中，所有的间隔都使用符号TAB，而不是空格。
+4 BBS的转信功能
+　　转信功能是BBS站点之间进行交流的主要方法。转信按照方式的不同可以分为二类：
+　　本BBS站点←→转信软件←→News Server←→转信软件←→其它BBS站点
+　　主动取信（client gateway）和被动等信（server gateway）。二者各有优缺点，client gateway自主性高，可以主动决定何时去取信，要取哪些信，而server gateway无需保存读取的记录，只要等待上游站点把新信送过来。转信软件的工作流程如下：
+　　Innbbsd是BBS转信软件的一种，它集成了client gateway和server gateway的功能，可以根据不同的情况而采取不同的转信方式，具体设置方法如下：
+　　（1）修改文件bbsname．bbs为本BBS站点的名称；
+　　（2）设定nodelist．bbs，定义本站地址和各News Server的名称地址；
+　　（3）设定newsfeeds．bbs，定义将站内的哪一个版从Cernet的哪个讨论区转进，及要送到哪一个News Server；
+　　（4）对于每个News Server都要建立一个对应的active，它定义从哪个News Server取哪些版； 
+　　（5）执行innbbsd。
+5 BBS的管理
+　　应该说，在BBS中，管理所占的地位是最重要的。这是因为BBS是一个言论的集中地，在这里可以看到有关各行各业带有各种各样观点的文章，包括学术、计算机技术、体育、新闻、休闲、情感等，涉及范围非常广泛。在人工智能停滞不前，计算机无法对信息处理做出多少有益工作的今天，对这些信息的组织、整理以及对网上用户的管理和约束，就成为网络管理者义不容辞的责任。
+　　目前我国大部分的BBS站点分布在各大专院校中，其目的是为了活跃我国的学术气氛，增强全国范围内的信息交流。这其中，几乎所有的BBS站点都属于纯服务、非盈利性的机构。管理大师彼得杜拉克曾经说：“在非盈利机构中最重要的一个要素就是组织的使命感。它就像一把舵，去指引组织方向，告诉组织应如何去分配其所拥有的资源”。我国的BBS系统之所以有今天这么生气蓬勃的场面，这与以学生为主的系统管理者在台前与幕后的默默耕耘与付出是密不可分的。
+　　BBS的管理者大致上可以分为站长（SYSOP）、站长对等账号（SYSOP equilvalent）、账号管理员（Account Manager）、板主（Board Manager）、讨论区管理员（General Board Manager）和活动看板管理员（Welcome ＆ Movie Board Manager）等。
+　　以上管理员分别负责BBS站务中的不同部分，拥有不同的权限，共同维护整个站点的正常运作。其中板主是负责各个讨论区的维护工作，站点的成功与否与他们的工作息息相关，因此，他们构成了BBS管理工作的主要部分。
+　　BBS站点上的纪律维护也是非常重要的。大多数BBS都采用了真名注册假名发言的方式。要求使用者以真实的身份注册并取得一个或多个假名，在自己发表言论时使用假名，从而在一定程度上对讨论者进行保护，同时也迫使讨论者对自己的言论要负责。
+梁意文（武汉大学计算机科学与技术系430072）
+李欢（武汉大学计算机科学与技术系430072）
+汤远闲（武汉大学计算机科学与技术系430072）
+收稿日期：1999－11－10

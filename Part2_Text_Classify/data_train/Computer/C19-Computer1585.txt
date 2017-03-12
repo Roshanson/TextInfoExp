@@ -1,0 +1,120 @@
+信息与控制
+INFORMATION AND CONTROL
+1999年 第28卷 第3期 Vol.28 No.3 1999
+
+
+
+CMAC神经元网络在CSTR系统建模中的应用
+于乃功　汪吉鹏
+　　摘要：目前正在兴起和发展的人工智能和人工神经网络的研究，为复杂非线性系统的控制开辟了一条新路．本文将CMAC神经元网络用于CSTR系统的建模，取得了很好的仿真效果．
+　　关键词：神经元网络，CMAC网络，连续搅拌釜系统（CSTR），建模
+　　中图分类号：TP20　　　　　　文献标识码：B
+APPLICATION OF CMAC NEURAL NETWORK TO CSTR
+SYSTEM MODELILING
+YU Naigong　WANG Jipeng
+(Weifang Advanced Academy)
+　　Abstract　Current research on artificial intelligence and artificial neural networks has paved a new way for the control of complex nonlinear systems. In this paper,a new CMAC(Cerebellar Model Articulation Controller)-based method to model the CSTR system(continuous stirred tank reactor)is put forward, and simulation results are presented to show the effectiveness of this method.
+　　Key words　neural network,CMAC network,CSTR system,modeling
+　　1　引言
+　　CSTR系统是聚合反应工业中广泛使用的重要系统，它是一个很强的非线性系统，其系统建模、状态估计和实时控制等问题，近年来受到众多学者的关注．它的控制性能受到多方面因素的影响，主要是由于对反应的机理缺乏足够清晰的认识，以及过程本身存在的严重的敏感性和非线性，使得系统的准确建模变得相当困难．同时，由于复杂非线性系统的完善有效控制策略的缺乏，给CSTR系统的实时有效控制造成更大困难．目前正在兴起和发展的人工智能和人工神经网络的研究，为复杂非线性系统的控制开辟了一条新路，我们将CMAC神经网络用于CSTR系统的建模，取得了很好的仿真效果．
+　　2　CSTR系统简介
+　　CSTR系统的结构图如图1所示（Pottman and Seborg, 1992）．其中，CA是生成物A的浓度，T反应器温度，q进料流速，qc冷却剂流速，Tc是冷却剂温度．在这里CA和T是CSTR系统的输出，q、qc、Tc是CSTR系统的输入．该系统的输入输出方程为式（1）所示．
+　　　　(1)
+这个CSTR的参数定义及稳态工作点如表1所示．
+
+图2　CSTR系统结构图
+表1　CSTR的参数定义稳态工作点
+
+VariableSymbolNominal value
+Tank volume　100l
+Feed flow rateq100lmin-1
+Feed concentrationCAf1moll-1
+Feed temperatureTf350K
+Coolant flow rateqc100lmin-1
+Coolant temperatureTc350K
+Densitiesρ,ρc1000gl-1
+Specific heatsCP,CPC1calg-1K-1
+Pre-exponential factork07.2×1010min-1
+Exponential factorE／R9.98×103K
+Heat of reaction-ΔH2.0×105calmol-1
+Heat transferhA7×103min-1K-1
+characteristics　
+
+　　根据这些参数，并且令(1)式可以转化为（2）式．
+　　　　　　　　　　　(2)
+　　式(2)是CSTR系统的微分方程，采用四阶龙格-库塔法可得到系统的差分方程．对方程组
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(3)
+的四阶龙格-库塔式子为
+　　　　　　　　　　　　　　　　　　　　　　(4)
+其中
+
+并且h=tn+1-tn为步长．
+　　由（4）式可以得到CSTR系统方程式的离散递推表达式．
+　　图2是CSTR系统输出CA在系统输入qc阶跃变化下的响应曲线，从这个阶跃响应曲线可看出CSTR系统是个很强的非线性系统．
+
+
+图2　CSTR系统在冷却剂流速阶跃变化下的响应曲线
+　　这样一个非线性系统采用通常的建模方法会遇到很多困难，例如模型结构和模型阶次难以确定，而建模算法也很难实现，因此这里采用神经网络的建模方法．
+　　3　用CMAC神经网络实现CSTR系统的建模
+　　3.1　CMAC神经网络特点简介
+　　CMAC网络是ALBUS针对PERCEPTRON的缺点，在1975年提出的一种模仿人脑的连接的控制模型．虽然从每个神经元看，其关系是一种线性关系，但从其结构总体看CMAC模型可以适合一种非线性的映射关系，而且，CMAC从输入开始就具有一种综合的能力，对于一个样本输入进行学习之后，可以对相邻的样本产生一定的效应，因此在输入空间中，相近的样本在输出空间也比较相进，同时CMAC的算法是十分简单的δ算法，它的收敛速度比别的同类网络快的多（如BP网），尤其是它把输入在一个多维状态空间中的量映射到一个比较小的有限区域，只要对多维状态空间中样本（少部分）进行学习，就可以达到轨迹学习和控制的解，因此CMAC特别适合于复杂系统的控制，非线性函数映射，以及其它识别领域，它具有自适应的作用，也便于硬件化．已经证明，CMAC能够迅速学习未知的非线性函数，对于未经训练的输入具有良好的泛化能力，对于以下场合
+　　（1）输入输出为模拟量；（2）对收敛速度、计算速度要求较高；（3）要求大量的权值．
+　　用CMAC网络取代BP网络，会使系统性能更优．
+　　3.2　建模结构
+　　CMAC网络实现了一个非线性映射，这是一种静态模型，而CSTR系统是一个动态系统，因此为了能用CMAC网络去学习CSTR系统就需要将CSTR系统的输出反馈到CMAC网络的输入中，此便是ARMA模型的结构．如图3是CMAC网络学习CSTR系统的原理框图．
+
+图3　CMAC网络学习CSTR系统的框图
+　　图中d是CSTR系统的滞后θ．非线性ARMA模型的一般表达式为
+　　　　　　　　　　(5)
+有了网络学习的基本结构，若能给出系统的输入输出数据对，就可利用改进的CMAC学习方法完成建模任务．图3中CMAC网络采用压缩的CMAC结构，其寻址方式是输入集S中的一个元素激活权值表W中的一组地址，通过对这些地址的值（即权值）求和，得到输出Y．
+　　3.3　确定系统参数n,m
+　　n,m是系统的维数，对于一个完整的系统辨识方法而言，应该能得到系统的结构，至少应给出判定它们的法则．在线性系统中，最可靠的方法是取不同的参数值建立不同的模型，然后根据模型的精确程度来决定最终的参数．同样，本文也采取同样的方法，逐步提高n,m的值（但保持网络其他参数不变）．根据仿真结果，当n和m增加到n＝m＝3时，模型的误差显著减少，而取其他小于此值的参数时，网络的学习很难得到满意的结果．同样，取大于此值的参数时，模型的精确程度也增加得很少，相反，由于系统维数的增加，使网络的输入空间大大增加，降低了网络学习的性能．故，本文中取n＝m＝3．
+　　3.4　训练数据的处理
+　　对于神经元网络而言，它最终的性能很大程度上取决于它学习时用的学习数据，很难想象通过学习不能反应系统特性的数据，能得到满意的模型．因此如何针对不同的系统和网络，选取合适的训练数据是人工神经元网络中的重要课题，本人对此作了以下探索．
+　　如何设计输入使之能更好地激发系统的特性：选择合适的输入信号是系统建模的重要部分．对于线性系统而言，已经有不少理论结果指导人们选择输入．但对于复杂很多的非线性系统，几乎没有什么很成熟的理论成果，因此本人采取在额定工作点附近采用随机输入信号，实践证明其效果不错，通过学习，网络能建立起较精确的模型．得到原始数据后，应对各变量进行归一处理，以消除量纲的影响，本文中将所有变量转换成（0-1）范围里，其公式如下：
+　　　　　　　　　　　　　　　　　　(6)
+式中，max(.)和min(.)表示在输入和输出向量中的最大值和最小值．
+　　3.5　仿真结果及分析
+　　本文以输入qc到输出T，CA的模型为例，因为它在实际控制中最常用，其余模型类似．
+　　根据前面所述的原则选取输入信号qo如图4所示．得到系统的响应T，CA如图5，图6所示．
+
+
+图4　建模时用的输入qc
+
+图5　CSTR系统组分浓度CA对输入的响应
+
+图6　CSTR系统反应温度T对建模时输入的响应
+　　从中得到神经元网络学习所用的学习数据，本文中选取了100个数据进行训练．
+　　首先对数据进行归一化处理，由前面式(9)，其中取
+
+　　归一化后，所有变量的分辨率均取0.02．
+根据(2)式得到系统的非线性ARMA模型为：
+
+由此可见，输入空间是十分巨大的，所以杂凑编码很重要．
+　　经过训练的网络应该能代表系统的非线性特性，为了检测它的性能，改变系统的输入信号，使其在额定工作点±20%里变化，看看网络是否有一定的外推功能．
+　　图8是系统的响应，而图7是网络的输出，可见，两者符合得很好．
+
+
+图7　CMAC网络的输出(T)
+
+图8　CSTR反应温度T对检验时输入的响应
+　　4　结束语
+　　由以上结果可以看出，用CMAC网络对复杂的非线性系统建模的效果是不错的，这显示了CMAC网络较一般网络（如BP网络）的优越性，作者的体会最深主要有下面两点：
+　　(1） CMAC的结构特点及其联想特性使其学习的收敛性极快．在仿真中发现，一般其学习时间在5分钟以内便可以达到很高的精度．
+　　(2） CMAC的参数选择比较自由，实现比较方便．
+　　当然，还有许多问题有待进一步探讨，如：如何使网络具有一定的外推功能；对于时变系统，如何对网络进行实时纠正；以及如何建立基于网络的控制系统．当然，有些问题的解决也依赖于其他学科，尤其是非线性理论的发展．
+　　总之，CMAC网络发展至今，虽经波折，但已显示出广阔的应用前景．
+作者简介：于乃功，男，32岁，硕士．研究领域为智能信息处理、复杂工业过程的计算机控制、神经网络技术．
+　　　　　汪吉鹏，男，44岁，副教授，主任．研究领域为微机应用，智能控制等．
+作者单位：潍坊高等专科学校 电气系　潍坊　261041
+参考文献
+　1　Albus J S. A new Approach to Manipulator Control:The Cerebellar Model Articulation Controller (CMAC), Trans. ASME, J. Dynamic Syst. Meas. Control,1975, 1(9):220～227
+　2　Albus J S. Data Storage in the Cerebellar Model Articulation Controller (CMAC),Trans. ASME, J. Dynamic Syst. Meas. Control. 1975, 1(57):228～233
+　3　Miller W T. Real-Time Application of Neural Networks for Sensor-Based Control of Robots with Vision,IEEE Trans
+　4　Yiu-fai Wong, A Sideris. Leaning Convergence in the Cerebellar Model Articulation Controller, IEEE. Trans. Neural Net. 1992, 3:115～121
+　5　Zurada J M. Introduction to Artificial Neural Systems,West Public-Shing Company,1992
+　6　郭　莉，李清泉. 基于神经网络的机器人轨迹跟踪控制.控制与决策，1994，(2)
+　7　张立明. 人工神经网络的模型及其应用，复旦大学出版社，1992
+　8　焦李成. 神经网络的应用与实现，西安电子科技大学出版社，1993
+　9　王秀峰，李　波．随机非线性系统的正交优选算法，自动化学报，1993，19(3)
+1997-01-03收稿

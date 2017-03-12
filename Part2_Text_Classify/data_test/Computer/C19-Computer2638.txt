@@ -1,0 +1,301 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第8期 Vol.10 No.8 1999
+
+
+
+Trace 演算
+黄涛 钱军 倪彬
+摘要　文章定义了基于踪迹(trace)的逻辑语言LTrace,它是一阶线性时序逻辑语言的扩充,同时也是“对象演算”研究工作的基础.Trace演算所述的“对象”用来刻画具有内部状态和外部行为的动态实体,语法上由对象标记表示.对象标记Ω=(S,F,A,E)包含4个部分:数据类型S、函数F、属性A和动作E.Σ=(S,F)构成通常代数规范意义下的标记,可将动作看成一广义数据类型,从而得到标记Σ的动作扩充ΣE.对象标记的语义解释结构由关于标记ΣE的代数、映射和动作与踪迹的关系定义.ΣE-代数给出关于数据参数的解释;映射给出属性在动作踪迹中所取的值;而动作与踪迹的关系则给出执行一有限踪迹以后该动作是否允许执行.在定义了Trace演算的语法和语义之后,文章给出了Trace演算的公理系统及其可靠性证明. 
+关键词　Trace演算,对象标记,动作,踪迹,公理化,可靠性.
+中图法分类号　TP
+Trace Calculus
+HUANG Tao QIAN Jun NI Bin
+(Laboratory of Computer Science Institute of Software The Chinese Academy of Sciences Beijing 100080)
+(Object Technology Center Institute of Software The Chinese Academy of Sciences Beijing 100080)
+Abstract　 A trace-based logic language: LTrace is defined in this paper, which is an extension of the first-order linear temporal logic and serves as cornerstone of the works ――Object Calculus. The objects in trace calculus represent the dynamic entities endowed with a local state and external actions, and described by an object signature in syntax. An object signature is a 4-tuple Ω=(S,F,A,E) in which S stands for a set of data sorts, F functions, A attributes and E actions. Σ=(S,F) is nothing but a usual signature in the context of algebraic specification. It can be extended to ΣE with the action regarded as a special data sort. The semantics of trace calculus is defined by an object signature semantic interpreting structure I=(A,F,E), which consists of a ΣE- Algebra A giving an interpretation about data parameters, a mapping F evaluating the attributes on an action trace, and a relation E giving a relationship between actions and a trace. Finally, we contribute an axiom system of our trace calculus and outlines its proof of soundness after we define the syntax and semantics of the trace calculus.
+Key words　Trace calculus, object signature, action, trace, axiomatization, Soundness.
+　　对象技术代表了80年代以后计算机软件技术发展的主流.就目前状况而言,是组合软件工程技术主宰了发展的潮流,理论的研究滞后于工程技术的发展要求.对象乃至对象系统的语义研究,虽然还不能对理论及工程技术的发展产生深远的影响和推动,但在澄清基本概念、增强系统可靠性等方面,其作用仍是不可替代的.我们早在文献［1］中就已开始使用代数规范的方法研究对象行为约束.而在文献［2,3］中,我们进一步给出对象语义模型及其指称描述.本文将在文献［2,3］的基础之上,结合代数规范［4,5］和时序逻辑方法［6］,定义基于踪迹(trace)的逻辑语言LTrace,它是一阶线性时序逻辑语言的扩充.以这样的逻辑演算系统为工具,我们就可以构造一个用于描述对象和特性推理的逻辑演算系统.
+　　当前关于形式化的面向对象的语义模型的研究,主要有基于代数模型或基于时序模型两种手段.对象的代数语义模型理论从数学上是很完美的(如抽象数据类型）,但缺点是缺乏表达对象的动态行为特征的能力.对象除了具有静态的结构特征外,还具有动态的语义特征.在系统的运行过程中,对象可以被生成、修改、演变和消亡.此外,用于刻画系统动态行为的约束关系大多与时序相关,仅用代数模型是难以表达的,自然地需要用时序模型的观点来建立对象的语义理论.
+应该指出,本文所述的对象是指一些具有内部状态和外部行为的动态实体,并非面向对象方法中的对象概念.它没有考虑对象概念中的一项重要特性――封装性,因此Trace演算并不是一对象演算.但是,我们的目的是建立一面向对象的逻辑演算系统,所以我们这里的讨论都是针对对象的:我们给出对象标记的定义、提供动作运算符,可以方便地描述和推理动态实体的动态行为.
+　　对象标记包含数据类型、函数、属性和动作4个部分.数据类型和函数构成通常代数规范意义下的标记,给出与状态无关的信息,它是对象所处的数据上下文（或环境）,亦可说是一用于描述对象改变的框架;属性部分包含对象状态相关信息,如同通常程序设计语言中程序变量等;动作部分给出该对象可以执行的动作.
+　　值得指出是,对象标记仅给出相应对象的(行为)特征的(语法)描述,同其他对象的关系是通过指定一些相关动作的同步而建立的.
+　　本文第1节给出Trace演算的语法.第2节给出Trace演算的语义.第3～5节分别讨论Trace演算的法则和公理化.最后给出本文总结.
+1 Trace语法
+1.1 对象标记
+　　定义1. 对象标记Ω是一四元组(S,F,A,E)
+　　.S是类型(sorts)的集合.
+　　.F是一函数簇,且存在一映射type:F→S*×S.对任意f∈F,type(f)称为f的类型.常数可表示为零元函数符号.
+　　.A是以 S*×S 标识的属性符号簇.
+　　.E是以 S* 标识的动作符号簇.
+其中F,A和E是有限集且不相交,S*代表零个或任意多个S.零元属性符号相应于通常程序设计语言中的程序变量,而非零元属性符号则用于处理复杂数据结构.显然,S和F构成通常代数规范意义下的标记Σ=(S,F).在第2节,我们将给函数和动作以严格的解释,即函数和动作的解释是状态无关的,而属性则相反,是状态相关的.
+我们可以将动作看作是广义数据,以E′表示这样的广义数据的集合.对于动作符号簇E中的每个动作符号f:s1×...×sn,定义函数f′:s1×...×sn→E′来得到一广义数据类型E′,其代数规范的标记为
+　　Signature E′=
+　　　　Sort E′
+　　　　Functions
+　　　　　　f′1:s1×...×sn1→E′　　　　/*f1:s1×...×sn1∈E*/
+　　　　　　f′2:s1×...×sn2→ E′　　　　/*f2:s1×...×sn2∈E*/
+　　　　　　　　　　　　　　　　　　　　　　　
+　　End
+　　为方便以后的处理,我们以E表示E′并以之表示广义数据类型E′.
+　　定义2. 给定一对象标记Ω=(S,F,A,E),ΣE-标记为ΣE=(SE,FE),这里,
+　　.SE=S∪{E},即我们以一新类型E扩充S.
+　　.FE 是以S*×SE标识的符号簇,对ω∈S*,s∈SE,若s∈S,则FEω,s=Fω,s,反之,FEω,s=Eω,即我们以动作符号扩充函数簇.
+1.2 项
+　　令X是以S标识的变量簇,即X={Xs|s∈S},且X与A,F,E不相交.
+　　定义3(项). 给定对象标记Ω和变量簇X,对s∈SE,项集T(Ω,X)s归纳定义如下:
+　　1. x∈Xs,x∈T(Ω,X)s,
+　　2. Init∈T(Ω,X)E,
+　　3. f∈EF〈s1×...×sn〉,s∪A〈s1×...×sn〉,s,ti∈T(Ω,X)si,0≤i≤n,则f(t1,...,tn)∈T(Ω,X)s,
+　　4. a∈T(Ω,X)E,t∈T(Ω,X)s,则［a］t∈T(Ω,X)s,
+　　5. t∈T(Ω,X)s,则Xt,X-t∈T(Ω,X)s.
+　　我们称T(Ω,X)E中的项为动作项,Init为初始动作项.
+1.3 公 式
+　　定义4(原子公式). 给定对象标记Ω,变量簇X,原子公式集AF(Ω,X)可归纳定义如下:
+　　1. t1,t2∈T(Ω,X)s,s∈SE,则t1=t2∈AF(Ω,X),
+　　2. a∈T(Ω,X)E,则enabled(a)∈AF(Ω,X).
+　　定义5(公式). 给定一对象标记Ω,变量簇X,公式集F(Ω,X)可由以下规则归纳定义:
+　　1. p∈AF(Ω,X),则p∈F(Ω,X),(每个原子公式是公式);
+　　2. a∈T(Ω,X)E,p∈F(Ω,X),则［a］p∈F(Ω,X);
+　　3. 通常时序运算:p,q∈F(Ω,X),则Xp,p∪q,X-p,p∪-q∈F(Ω,X);
+　　4. 通常一阶运算:
+　　(1) p,q∈F(Ω,X),则　p,p→q∈F(Ω,X);
+　　(2) p∈F(Ω,X),x∈Xs,且x在p中自由出现,则x:sp∈F(Ω,X),我们称x在∈x:sp∈F(Ω,X)约束出现.
+　　另外,我们可按时序逻辑通常采用的方法引入以下等公式的缩写:p∧q,p∨q,pq,t,f,Ep,Gp,pBq,F-p,G-p,x:sp.
+　　在一公式p中,变元x∈Xs的出现若不是在x:s或x:s的范围中,则称x在p中自由出现;反之,则x在p中称约束出现.
+　　如果t∈T(Ω,X)s,p∈F(Ω,X),则px:s(t)表示以t替换所有在p中自由出现的x,且x∈Xs.我们假设t中不含在p中约束出现的自由变元.
+　　值得指出的是,我们所述及的项和变量均是属于某一特定的类型(sort)的,为简明起见,在不引起混淆的情况下,我们略去附加的类型信息,如x:s p有时我们简写为x p.
+2 Trace语义
+　　Trace的语义可由扩充的一阶线性时序结构给出.
+2.1 语义域
+2.1.1 动作和踪迹
+　　踪迹是动作的执行序列.我们将动作扩充为一广义数据类型,由ΣE的标记代数中的E给出E中动作符号的解释,而则给出动作符号序列的解释.我们称E中的元素为动作,中的元素为踪迹.为表示方便我们引入一些有关踪迹的符号和运算.
+　　定义6.
+　　.空踪迹表示为ε;
+　　.若ω∈,则ω.a∈E表示踪迹ω后串接一动作a;
+　　.|ω|表示踪迹ω的长度;满足:|ε|=0,|ω.a|=|ω|+1;
+　　.若1≤i≤|ω|,则ωi表示踪迹ω中的第i个动作,满足:
+(ω.a)i=ωi　　　　　　若 0≤i≤|ω|,
+(ω.a)i=a　　　　　　若i=|ω|+1;
+　　.若0≤i≤|ω|,则iω表示踪迹ω的长为i的前缀,满足:
+0ω=ε,
+|ω|(ω.a)=ω.
+　　通常我们省略运算符.
+2.1.2 Ω-语义解释结构
+　　对象标记的语义解释结构由一关于标记ΣE的代数、一映射和动作与踪迹的关系定义.ΣE-代数给出关于数据参数的解释;映射给出属性在动作踪迹中所取的值;而动作与踪迹的关系则给出执行一有限踪迹以后该动作是否允许执行.
+　　定义7. 一对象标记Ω=(S,F,A,E)的Ω-语义解释结构是一三元组=(,,),其中
+　　.是一ΣE-代数;
+　　.f∈A〈s1×...×sn〉,sn≥0有:(f):→(s1×...×sn→s);
+　　.ε×E.
+这里,ΣE-代数是ΣE-初始语义代数.ε给出动作执行的前条件(我们以动作和踪迹的关系来表示,以指出在某一状态下该动作对在它执行以前所执行的动作序列的限制).
+2.1.3 Trace-结构
+　　定义8. 给定一对象标记Ω=(S,F,A,E),一个TraceΩ-结构=(,v,ω)包含:
+　　.一个Ω-语义解释结构=(,,);
+　　.一个赋值函数簇v={vs}s∈SE,vs:Xs→s;
+　　.一个踪迹ω.
+　　注意,这里我们以踪迹ω替换通常时序结构中的状态序列.设si为第i个状态,ai为在si状态下执行的动作,该动作的执行将导致状态转换到si+1,因此,对S0s1,...,sisi+1,...,我们可以以踪迹a0a1...代替时序演算意义下的状态序列s0s1....这样,对,i给出在状态si下属性值映射函数,以下用到的v*i,i等均是在状态si意义下的.
+2.2 项解释
+　　我们可模仿经典逻辑的方法为每个项定义一值.首先,我们定义有关变量的赋值.
+　　定义9(赋值函数). 给定一对象标记Ω=(S,F,A,E),Ω-语义解释结构=(,,),则关于变量簇X的赋值函数簇记为:v={vs|s∈SE},其中vs是变量集Xs到语义域s的映射.
+　　我们可如下定义赋值函数簇v在一踪迹ω上的自然扩充v*i,i∈N:
+　　.x∈Xs,v*i=v(x);
+　　.f∈FE〈s1×...×sn〉,s,ti∈T(Ω,X)si,i,1≤i≤n,则v*i(f(t1,...,tn))=f(v*i(t1),...,v*i(tn));
+　　.f∈A〈s1×...×sn〉,s,ti∈T(Ω,X)si,i,1≤i≤n,则v*i(f(t1,...,tn))=i(f)(v*i(t1),...,v*i(tn));
+　　.a∈T(Ω,X)E,a≠Init,t∈T(Ω,X)s,则
+　　.t∈T(Ω,X)s,则v*i(［Init］t)=v*0t;v*i(Xt)=v*i+1t;v*i(X-t)=v*i-1t,i＞0.
+　　这里我们并没有给初始动作项Init的语义解释,对Init,我们主要是用于运算符［Init］.
+　　现在我们可以定义公式的真假值.
+　　对任意一个TraceΩ-结构,对每个原子公式F,我们可如下定义i(F)∈{t,f},表示公式F在状态si下的真假值:
+　　1. i(t1=t2)=t　　　　　当且仅当v*i(t1)=v*i(t2);
+　　2. i(enabled(a))=t　　当且仅当(iω,v*i(a))∈ε.
+　　对任意一个TraceΩ-结构,对每个公式F,我们可如下归纳定义Ki(F)∈{t,f},表示公式F在状态si下的真假值:
+　　1. i(　p)=t　　　　　当且仅当i(p)=f;
+　　2. i(p→q)=t　　　　　当且仅当i(p)=f或Ki(q)=t;
+　　3. i(［a］p)=t　　　　当且仅当
+　　4. i(［Init］p)=t　　　当且仅当0(p)=t;
+　　5. i(Xp)=t　　　　　　当且仅当i+1(p)=t;
+　　6. i(p∪q)=t　　　　　当且仅当j≥i(j(q)=t且(i≤k＜j)k(p)=t);
+　　7. i(X-p)=t　　　　　　当且仅当i＞0,i-1(p)=t;
+　　8. i(p∪-q)=t　　　　　当且仅当j≤i(j(q)=t且(i＜k≤j)k(p)=t);
+　　9. i(x p)=t　　　　　当且仅当′i(q)=t对任意′=(I,v,ω)满足:v′(y)=v(y),y,y≠x也就是说,i(p)给出公式p在状态si下的真假值.
+　　定义10(模型和有效式). 给定一公式p和一TraceΩ-结构,若对任意i≥0,i(p)=t,则称p对是有效的(记为p),称为p的模型.若对所有TraceΩ-结构,p,则称p为有效式(记为p) .给定一公式集Г,若对所有Г中的公式的全称闭式p,p,则称为Г的模型.
+　　定义11. 若存在一TraceΩ-结构为公式集Г中所有公式的模型,则称Г为可满足的.
+　　定义12. 给定一公式集Г和一公式p,若对所有Г的模型有p成立,则称p为Г的语义推论,记为Гp.
+　　定理1. 若q∈Г,q且Гp,则p.
+　　定理2. p1,...,pn当且仅当(Gp1∧...∧Gpn)→q.
+　　定理3. 若Гp,且гp→q,则Гq.
+　　定理4. 若Гp,则
+1. Г［a］p;
+2. Г［Init］p.
+　　定理5.p当且仅当{　p}不是可满足的.
+3 Trace法则
+　　现在我们给出一些Trace演算的逻辑法则.首先,我们可以证明,一阶时序演算的重言式在新的逻辑框架下仍然适用.
+　　定义13(时序重言式). 设x1,...,xn是一阶时序演算的原子公式,p(x1,...,xn)∈FLTLB是一阶时序演算的重言式,则对任意的p1,...,pn∈Trace,p(p1,...,pn)称为Trace演算的时序演算型重言式或简称时序重言式.这里p(p1,...,pn)是用p1,...,pn分别替换p(x1,...,xn)中的x1,...,xn所得结果.
+　　定理6. 时序重言式是有效式.
+　　证明省略,详见文献［7］. 根据这一定理,我们可以将所有一阶时序演算的重言式用作Trace演算的“逻辑法则”.进一步,我们可以证明如下断言:
+　　若在一阶时序演算中,公式q是公式p1,...,pn的语义推论;则我们用Trace公式一致替换p1,...,pn和q将不会破坏逻辑关系.
+　　定义14. 令p1,...,pn,q∈Trace,若p1∧...∧ pn→q是时序重言式,则称q是p1,...,pn的时序重言推论.
+　　定理7. 若q是p1,...,pn的时序重言推论,则p1,...,pnq
+　　为节省篇幅,我们列出有关Trace运算符的逻辑法则,证明则从略.
+对偶律
+　　(T1) ［a］p［a］　p
+同一律
+　　(T2) ［Init］［Init］p［Init］p
+分配律
+　　(T3) ［a］(p→q)［a］p→［a］q
+　　(T4) ［a］(p∧q)［a］p∧［a］q
+　　(T5) ［a］(p∨q)［a］p∨［a］q
+单调性
+　　(T6) p→q［a］p→［a］q
+吸收律
+　　(T7) ［a］［Init］p［Init］p
+　　(T8) X［Init］p［Init］p
+　　(T9) G［Init］p［Init］p
+　　(T10) F［Init］p［Init］p
+　　(T11) X-［Init］p［Init］p
+　　(T12) G-［Init］p［Init］p
+　　(T13) F-［Init］p［Init］p
+　　(T14) ［Init］Gp(Gp∧G-p)
+　　定理8. 若p中不含属性符号
+　　1. p［Init］p;
+　　2. p［a］p.
+　　定义15. 一项t∈T(Ω,X)s,变量x∈Xs,如果以t替换公式p中的变量x不产生属性符号在时序运算符(X,F,...)和动作运算符(［Init］,［a］)作用域内的新出现且t中的变量不在替换出受约束,则称t对于p中的x是可替换的.
+　　可替换的要求来自于变量x是全局的,其解释是时序/踪迹无关的.
+　　定理9. 如果t∈T(Ω,X)s对于p中的x∈Xs是可替换的,则xp→px(t).
+　　定理10. 若a不在p中自由出现,则a［a］p→(Xp).
+　　定理11. a∈T(Ω,X)E,x∈Xs,若x不在a中自由出现,则x［a］p［a］(x p).
+　　定理12. x［Init］p［Init］(x p).
+　　若a≠Init,我们有:
+　　(T15) ［a］p→(p∨Xp)
+　　(T16) (p∧Xp)→［a］p
+4 Trace公理化
+　　给出Trace演算的语义以后,现在我们给出一形式系统来进行公式推导.
+公 理
+　　(taut)　所有一阶线性时序逻辑的公理和重言式
+　　(a1)p→［a］p　　　　　　　　　　　　　　　　　　若p中不含属性符号
+　　(a2)［a］［Init］p［Init］p
+　　(a3)X［Init］p［Init］p
+　　(a4)X-［Init］p［Init］p
+　　(a5)［a］p［a］p
+　　(a6) ［a］(p→q)［a］p→［a］q
+　　(a7) x p→px(t)　　　　　　　　　　　　　　　　若t对于p中的x是可替换的
+　　(a8) ［Init］GpGp∧G-p
+　　(a9) a［a］p→Xp　　　　　　　　　　　　　　　　若a不在p中自由出现
+　　(a10)x［a］p→［a］x p　　　　　　　　　　　　若x不在a中自由出现
+规 则
+　　(mp) p,p→q├q
+　　(nex) p├Xp
+　　(las) p├X-p
+　　(act) p├［a］p
+　　(emp) p├［Init］p
+　　(inv) ［Init］p,p→Xp├p
+　　(ind) p→q,p→Xp├p→Gq
+　　(indp) p→q,p→X- p├p→G-q
+　　(gen) p→q├p→x q　　　　　　　　　　　　　　　　若p中无x的自由出现
+　　这里没有讨论有关等词的公理和规则.
+　　定理13(可靠性). 令p为一公式,Г为一公式集,若Г├p,则Гp
+　　证明:对从Г证明q的推导过程进行归纳.
+　　1. p是Trace演算公理,由定理6和定理8,法则s(T7),(T8),(T11),(T1),(T3),定理9,法则(T14),定理10和定理12,分别可知公理(taut)和公理(a1)～(a10)均是有效式.因此,我们有Гp.
+　　2. p∈Г,显然Гp.
+　　3. p是由q和q→p经(mp)而得.则Г├q,Г├q→p.由归纳假设Гq,Г q→p.由定理3可得Гp.
+　　4. p≡Xq是由q经(nex)而得.则Г┢q.由归纳假设Гq.令=(I,v,ω)为一TraceΩ-结构,满足:r,r为Г中公式的一全称闭式.则q,即对任意i≥0,i(q)=t,所以对任意j≥0,j+1(q)=t,即有ГXq.
+　　5. p≡X-q是由q经(las)而得.则Г┢q.由归纳假设Гq.令=(I,v,ω)为一TraceΩ-结构,满足:r,r为Г中公式的一全称闭式.则q,即对任意i≥0,i(q)=t,所以对任意j＞0,j-1(q)=t,即有ГX-q.
+　　6. p≡［a］q是由q经(act)而得.则Г┢q.由归纳假设Гq.由定理4可得Г［a］q.
+　　7. q≡［Init］r是由r经(emp)而得.则Г┢q.由归纳假设Гq.由定理4可得Г［Init］q.
+　　8. p是由［Init］p和p→Xp经(inv)而得.则Г┢［Init］p,Г┢p→Xp.由归纳假设Г［Init］p,Гp→Xp.令K=(I,v,ω)为一TraceΩ-结构,满足:r,r为Г中公式的一全称闭式.则:
+　　(1) ［Init］p;
+　　(2) p→Xp.
+　　由(1)可得0(r)=t,由(2)可得0(p)=2(q)=...=i(p)=...=t,即Гp.
+　　9. p≡q→Gr是由q→r和q→Xq经(ind)而得.则Г┢q→r,Г┢q→Xq.由归纳假设Гq→r,Г q→Xq.令=(,v,ω)为一TraceΩ-结构,满足:r,r为Г中公式的一全称闭式则:
+　　(1) q→r;
+　　(2) q→Xq.
+　　对任意i且i(q)=t,由(2)可得i+1(q)=i+2(q)=i+3(q)=...=t,即对任意j≥i,j(q)=t.
+　　由(1)可得j(r)=t,对任意j≥i.因此我们有:i(q→Gr)=t,对任意i≥0,即Гp.
+　　10. p≡q→Gr是由q→r和q→X-q经(indp)而得.与(ind)类似.
+　　11. p≡s→x r,x不在s中的自由出现,是由s→r经(gen)而得.则Г┢s→r.由归纳假设Гs→r,令=(,v,ω)为一TraceΩ-结构,满足:q,q为Г中公式的一全称闭式.则s→r.假设对某个i,i(s→x r)=f,即i(s)=t且Ki(x r)==f,则存在一′,使得′i(r)=f,且′与的区别仅在于对x的赋值不同.这意味着对所有如上的闭式q,有′q,因此′s→r.由于s中无x的自由出现,则有′(s)=t,这样′(r)=t,矛盾.所以对任意i,i(s→x r)=t,如此Гs→x r.□
+　　为简化证明,我们增加一规则来缩写经典一阶线性时序演算的推导步(仅使用一阶线性时序演算的公理和规则(mp),(nex),(ind)),即
+　　(prep) p1,...,pn┢q　　　　若q是p1,...,pn的一阶线性时序演算的语法推论
+　　常用的cut规则即是(prep)的一个实例.
+　　定理14(演绎定理). Г∪{p}┢q,且证明中使用的Gen变元不在p中自由出现,则不增加新的Gen变元就可得Г┢［Init］Gp→q.
+　　我们还可弱化演绎定理的要求.
+　　定理15. Г∪{p}┢q,若证明过程中未使用PLTLP规则［5］和(emp)且证明中使用的Gen变元不在p中的自由出现则不增加新的Gen变元就可得Г┢Gp→q.
+　　推论1. 若p是闭式,Г∪{p}┢q,则Г┢［Init］Gp→q.
+　　定理16. 若Г┢［Init］Gp→q,则Г∪{p}q.
+　　下面我们给出一些使用Trace演算进行定理证明的例子.
+　　(T17) p→Xp┢［Init］p→p
+　　(T18) Xp→p┢p→［Init］p
+　　证明:
+　　(T17) (1) ［Init］G［Init］p→p　　　　　　　　　(inv),假设、演绎定理
+　　　　　(2) ［Init］p→G［Init］p　　　　　　　　　(a3),(prep) 
+　　　　　(3) ［Init］p→［Init］G［Init］p　　　　　(2),(a2),(prep) 
+　　　　　(4) ［Init］p→p　　　　　　　　　　　　　　(1),(2),cut
+　　(T18) (1) Xp→p)→(　p→　Xp)　　　　　　　　　prep
+　　　　　(2) 　　p→　Xp　　　　　　　　　　　　　假设,(1),mp
+　　　　　(3) 　　X p→ X　p　　　　　　　　　　　　(prep)
+　　　　　(4) 　　p→ X　p　　　　　　　　　　　　(2),(3),cut
+　　　　　(5) ［Init］　p→　p　　　　　　　　　　(4),(T17)
+　　　　　(6) 　［Init］p→［Init］　p　　　　　　(a5)
+　　　　　(7) 　［Init］p→　p 　　　　　　　　　　(5),(6),cut
+　　　　　(8) (［Init］p→ p)→(p→［Init］p)　　　(prep)
+　　　　　(9) p→［Init］p　　　　　　　　　　　　　(7),(8),cut
+　　(T19) p→a［a］p┢Init］p→p
+　　(T20) a［a］p→p┢p→［Init］p　　　　　　　　　　　　　　　　　　　　　　　□
+　　推论2. ［Init］p,p→a［a］p┢p.
+5 Trace公理化的进一步讨论
+　　上一节的公理化讨论中未给出有关等词的公理化,我们将在这一节讨论之.限于篇幅,我们只有将相关证明省略,详见文献［7］.
+　　对任意t1,t2∈T(Ω,X)s,a∈T(Ω,X)E,有
+　　(T21) ［a］(t1=t2)(［a］t1=［a］t2)
+　　对任意基函数f∈FE〈s1×...×sn〉,s,如下公式是有效式
+　　(T22) ［a］f(t1,...,tn)=f(［a］t1,...,［a］tn
+其中a∈T(Ω,X)E,ti∈T(Ω,X)s,i,1≤i≤n.
+　　也就是说,“=”、函数符号和动作符号的解释是严格(rigid)的,即状态/踪迹无关的.
+　　(T23) ［a］［Init］t=［Init］t
+　　(T24) X［Init］t=［Init］t
+　　(T25) X-［Init］t=［Init］t
+　　定理17. 
+　　1. u=v tx(u)=tx(v);
+　　2. u=v px(u)→px(v).
+　　定理18. x,y∈T(Ω,X)s,若p中不含时序运算符和动作运算符,则x=y→(p→px(y)).
+　　推论3. x,y∈T(Ω,X)s,若p中x不在时序运算符和动作运算符作用域内出现,则x=y→(p→px(y)).
+　　(T26) u=v→(tx(u)=tx(v))
+　　(T27) u=v→(px(u)→px(v))
+其中u,v∈T(Ω,X)s,x∈Xs},t为任一项,p为任一公式,u,v对于p中的x是可替换的.
+　　定理19. 若a不在p中自由出现,则apx(［a］t)→px(Xt).
+其中x∈Xs,t∈T(Ω,X)s,p中x不在时序运算符和动作运算符作用域内出现.
+　　最后,我们得到如下公理.
+公 理
+　　(ae1) ［a］t=t　　　　　　　　　　　　　　　　　若t中不含属性符号
+　　(ae2) ［a］［Init］t=［Init］t
+　　(ae3) X［Init］t=［Init］t
+　　(ae4) X-［Init］t=［Init］t
+　　(ae5) ［a］(t1=t2)(［a］t1=［a］t2)
+　　(ae6) ［a］f(t1,...,tn)=f(［a］t1,...,［a］tn)　　f∈FEs1×...×sn,s
+　　(eq1) x=x
+　　(eq2) x=y→(p→px(y))　　　　　　　　　　　　　　若p中不含时序运算符和动作运算符
+6 结 论
+　　本文结合代数规范方法和一阶线性时序逻辑方法给出具有一般性的Trace演算.综合来说,Trace演算具有如下特征.
+　　(1) 对象标记是对象的语法界面的抽象.
+　　(2) 统一时序模型和代数模型,以基于对象标记的ΣE-代数为语义域,并建立时序逻辑在ΣE-代数上的线性解释.
+　　(3) 引入动作运算符并给出其在语义域上的解释.动作运算符的引入使我们可以方便地刻画动作的作用效果.
+　　(4) 定义一系列公理和推导规则,建立一可靠的Trace演算.它是一阶线性时序演算的扩充.并给出扩充部分与命题演算、一阶谓词演算以及时序演算之间的关系.
+　　Trace演算虽可描述和推理具有内部状态的动态实体及其行为特征.但我们的目标是建立一对象演算系统.因此,如何在Trace演算的基础之上,进一步考虑对象所特有的性质,正是我们进一步的研究工作,将在本文的续篇:“对象演算（Ⅰ）（Ⅱ）”中发表.
+注：本文研究得到国家自然科学基金资助.
+本文通讯联系人:黄涛,北京 100080,中国科学院软件研究所计算机科学开放实验室
+作者简介：黄涛,1965年生,副研究员,主要研究领域为软件工程,对象技术,分布计算,程序设计语言及环境.
+钱军,1966年生,博士生,主要研究领域为专向对象的理论和技术,分布对象计算,形式化方法.
+倪彬,1969年生,博士,主要研究领域为专向对象的理论和技术,模型检查.
+作者单位：黄涛　中国科学院软件研究所计算机科学开放实验室　北京　100080
+钱军　倪彬　中国科学院软件研究所对象技术中心 北京 100080
+参考文献
+1 冯玉琳,李京,黄涛.对象语义理论和行为约束推理.计算机学报,1993,16(11):889～897
+(Feng Yu-lin, Li Jing, Huang Tao. Object semantics theory and behavior constraint deduction. Chinese Journal of Computers, 1993,16(11):889～897)
+2 黄涛,冯玉琳,李京.对象形式语义模型.软件学报,1995,6（增刊）:207～212
+(Huang Tao, Feng Yu-lin, Li Jing. Model of object formal semantics. Journal of Software, 1995,6(Supplement):207～212)
+3 黄涛,冯玉琳,倪彬等.对象描述语言及其指称描述.软件学报,1996,7(10):577～586
+(Huang Tao, Feng Yu-lin, Ni Bin et al. Object description language and its denotation description. Journal of Software, 1996,7(10):577～586)
+4 Beeri C. Recent trends in data type specification. Astestiano E, Reggio G, Tarlecki A eds. Bulk Types and Query Language Design. LNCS 906, Berlin: Springer-Verlag, 1995
+5 Ehrig H, Mahr B. Fundamentals of Algebraic Specifications 1: Equations and Initial Semantics. Berlin: Springer-Verlag, 1985
+6 Kroger Fred. Temporal Logic of Programs. Berlin: Springer-Verlag, 1987
+7 黄涛.对象形式语义理论研究 ［博士学位论文］. 合肥:中国科技大学,1994
+(Huang Tao. Theoretical research on object formal semantics ［Ph.D. Thesis］. Hefei: University of Science and Technology of China, 1994
+本文1997-12-12收到原稿,1998-09-04收到修改稿

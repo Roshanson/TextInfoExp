@@ -1,0 +1,52 @@
+计算机工程
+Computer Engineering
+1999年　第25卷　第9期　Vol.25 No.9  1999
+
+
+
+算法执行过程的可视化在CAI中的应用
+陈丽娟
+　　摘　要：试图利用多媒体技术中的可视化方法，用于建立数据结构课程中算法的可视化动态执行模型，尽管目前这种模型只能做到部分自动生成，但这种折衷的实现方案用于该课程的CAI制作还是取得了有益的效果．该课件内容的组织和呈现采用了面向对象的建模方式，使得整个软件结构清晰简单．其中内容以对象的属性表示，呈现方式则按对象的操作组织起来，既可以用文本方式，又可以用可视化的动态模型表示，最后以一个统一的界面提交给用户．
+　　关键词：计算机辅助教育；算法；可视化；数据结构；对象
+Applying the Visualized Algorithm Execution Process to
+Computer-aided Instruction
+Chen Lijuan
+(Department of Computer Engineering, Jiangnan College, Wuxi 214063)
+　　Abstract　This article describes an effort to build a computer-aided instruction system for data structure course. The system is based on the visualized dynamic execution model specially estabished for the algorithms in the course via utilizing the visualization method of multimedia techniques. Although the generation of the model can only be automated partially now, this compromised implementation way works satisfactorily in our project. The overall system is structured into serveral types of objects in which the static and dynamic behavior knowledge of the courseware is organized as object＇s attributes, with the presentation of these knowledge content as  object＇s methods. A teaching GUI is implemented on these object models, giving both student and techer an uniform interface to intiate various teching or learning activities.
+　　Key words　CAI; Algorithm; Visualization; Data structure; Object
+　　CAI(Computer-Assisted Instruction)这一新颖的教育技术已得到越来越多的运用，60―80年代人工智能技术用于CAI领域，使传统的CAI发展成为智能CAI。进入90年代后半期，随着网络、多媒体、HTML技术的发展，这些相关技术也融入了CAI领域，极大地丰富了教学内容的组织手段和教学内容的呈现方式。但深层次的、属于问题领域(即所教授的内容)的模型建立依然没有得到很好的解决，尤其是问题领域的动态(行为或功能)模型的抽取更困难，但这恰恰是成功建立CAI软件的关键。
+　　历史上，人们已对一些简单或简化的问题领域建立了部分思维行为模型(如加、减法辅导、纠错、指导等)[6]，并试图涉足程序设计等复杂、抽象的专业领域学习的知识模型建立。但实现非常困难，尤其从形式化途径，如自动生成等来看不是很成功。当前许多CAI系统依然还是以知识的文本形式表示和呈现给学生，不能从深层次反映知识的动态特性。这些内容仍要靠学生自己去想象、发展和建立。以数据结构CAI为例，目前面市的CAI课件[1,2]，依然以文本作为背景，只是增加了音乐背景及旁白，对算法的动态特性基本没有表现。
+　　下面从系统的结构、可视化模型的建立，界面的设计等方面逐一介绍数据结构课程中算法的可视化动态执行模型。
+1　系统结构
+　　系统的总体结构如图1所示。整个系统以知识库为中心，教师按其对领域知识的理解建立知识模型。其中领域教学知识库的组织按知识的体系结构分块，每块为一知识单元，即一个对象。对象之间的关系为知识点的关系，有前提关系、一般/特殊关系、组成/部分关系等。算法执行的可视化通过算法动态演示执行模块实现，学生或教师则利用图形界面通过知识导航模块到达相应的知识点。
+
+图1　系统结构
+
+图2　可视化模型建立过程
+2　算法可视化动态执行模型的建立
+　　要自动建立算法的可视化动态执行模型相当困难，这里采用自动和人工相结合的方式设计并建立每一个算法的可视化动态执行模型，用相应的软件(包括声音处理软件、动画制作软件、图片处理软件)建立素材。用Autherware将这些素材按算法可视化模型组织起来，形成动态执行过程，将其作为对象的方法嵌入到知识库的相应知识对象中。
+3　界面设计
+　　由于系统设计时即把每一知识单元作为一对象处理，所以非常容易形成一个全系统统一的操作界面。根据领域识知的特点，分别设计了静态知识(即文本、声音、图片)表现界面和动态知识表现界面，如图3、4、5所示。
+
+图3　静态知识界面
+　　图3为静态知识界面，领域知识的文本信息都通过该界面展示，这里强调界面的简洁和易操作性。在采用图形用户界面的同时又兼顾人们的书本阅读习惯，将各部分的入口按目录形式列于屏幕左方，构成知识导航区。左上方为一不断旋转的立体章节名称，不管处于该章节的何处，只要单击该图标即可回到这一章节的主界面。左中部为细节标题，单击之可链到相关内容。左下方为exit标志，单击可返回系统主界面。右部为内容呈现部，显示所选章节的详细内容，提供了必需的超链和按键，视知识点之间的关系分别进行弹出式和跳转式转移。整个界面的操作与现在流行的浏览器界面一致，操作人员不需培训即可使用。
+　　算法的可视化执行是本软件的最大特点，尽管各个算法有其不同的特性，但还是抽取其共性形成统一的动态知识表示界面和算法动态执行界面，如图4、5所示。
+
+图4　动态知识表示界面
+
+图5 算法动态执行界面
+　　软件的所有算法演示都采用动态知识表示界面，见图4。按算法执行图标后即开始算法的可视化执行，为了适应教与学以及不同个体的学习进度，设置了自动与手动切换开关。自动状态按预定的程序连续进行算法的单步执行，并配合语音讲解。手动状态则由使用者来控制算法的执行进度，教师可加入自己的观点，学生可仔细研究算法的细节。
+　　每个算法采用的数据结构不同，所以数据的表达方式也不同，但演示过程相同。用字符的反显来体现算法的执行位置，通过操作区控制算法的执行进度及终止。见图5。
+　　为增加软件的吸引力，设计了形象生动的封面及封底、直观的主界面、简洁的帮助界面。封面及封底每次进入系统只出现一次，因此对播放时间的限制不严，且制作精良的封面能立即吸引学习者的兴趣，所以考虑做得尽量生动活泼些，用三维动画实现并加上轻快的背景音乐，若使用者想越过封面或封底只需按Esc键即可。软件系统主界面则完全由平面及立体图形构成，提供进入各章、帮助系统、综合测试系统的手段以及系统的音乐开关，操作直观、简便。
+4　结束语
+　　领域知识的动态特性较难抽取，而且很难表示，但如果一个CAI系统想要成功，这些都是不可绕过的关键问题。在设计数据结构CAI的实践中，面向对象的建模方式能够有效地组织领域知识，而多媒体技术，尤其是可视化技术的应用可使领域知识具有多种生动的呈现方式，两者的结合的确提供了解决上述问题的途径，不失为一种有益的探索和尝试。
+作者简介：陈丽娟(1964～)，女，讲师，主研方向为算法设计，面向对象技术的应用
+作者单位：江南学院计算机工程系，无锡　214063
+参考文献
+1 数据结构CAI光盘. 北京：清华大学出版社，1996 
+2 北京智佳电子技术开发公司. 数据结构教学软件. 北京：电子工 业出版社，1996 
+3 Buhr R J A, Casselman R S. Use Case Maps for Object- oriented Systems. 北京：清华大学出版社，1997
+4 Yourdon E，Arigila C. Case Studies in Object-oriented Analysis & Design. 北京：清华大学出版社，1996
+5 Rumbugh J. OO Modeling and Design. 北京：清华大学出版社， 1996
+6 Goldstein I.The Genetic Graph：A Representation for the Evolu- tion of Procedural Knowledge.Sleeman D, Brown J S(Eds),Intel- ligent Tutoring Systems，1982
+收稿日期：1999-04-06

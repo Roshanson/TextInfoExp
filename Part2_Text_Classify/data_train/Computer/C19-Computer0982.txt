@@ -1,0 +1,84 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+基于小波变换估计传递函数
+徐长江　宋文忠
+　　摘　要　基于离散小波变换，提出分段频带逼近，估计传递函数.首先应用分解/综合滤波器，引进离散小波变换，然后利用小波分频性能，给出分段频带逼近算法.
+　　关键词　传递函数估计，分解/综合滤波器，离散小波变换，分段频带逼近.
+ESTIMATING TRANSFER FUNCTIONS BASED
+ON WAVELET TRANSFORM
+XU CHANGJIANG　　SONG WENZHONG
+(Research Institute of Automation,　Southeast University,　Nanjing 210096)
+Abstract　Band-wise approximation based on wavelet transform is proposed for estimating transfer functions.Firstly,discrete wavelet transform is introduced by applying analysis/synthesis filter bank.Then,band-wise approximation algorithm is presented by using wavelet frequency localized quality.Simulation results have verified the proposed algorithm.
+Key words　Transfer function,analysis/synthesis,wavelet transform,band-wise approximation.
+1　引言
+　　众所周知，线性时不变系统可用其传递函数描述，因此传递函数的估计一直受到人们的重视［1，2］.本文提出分段频带逼近法，估计传递函数.主要思路是，输入输出信号经小波变换，使得相邻频带的信息被分解开来，在各频带内传递函数的频域特性可用低阶模型逼近，再利用相应频带的输入输出信息，可估计各频带内逼近模型的参数，然后应用小波综合滤波器，将各频带的逼近模型组合，即得传递函数估计.
+2　离散小波变换
+　　离散小波变换的定义有两种形式［3］，一种表示信号时域的多分辨分解，另一种表示信号在频域内分解.下面应用分解/综合滤波器，引进频域内分解定义.
+　　考虑如图1所示的2-频带完全重构系统［4］，其中F(z),P(z)是高通滤波器；H(z),Q(z)是低通滤波器；F(z),H(z)称为分解滤波器，将信号x(n)分解成两频带信号 xk(n);P(z),Q(z)称为综合滤波器，将分解信号 xk(n)重构成原信号x(n)，P(z)和Q(z)的选取依赖于F(z)和H(z)，即满足
+F(z)P(z)+H(z)Q(z)=1.　　　　　　　　　　　　　(1)
+
+图1　2-频带完全重构系统
+　　根据(1)式有
+F(zn)P(zn)+H(zn)Q(zn)=1,n∈Z.　　　　　　　　　　　(2)
+取 n=2k-1(k=1,…，K)，利用(2)式可依次将低频信号进一步分解，如图2(k=3)所示.
+
+图2　离散小波变换和重构流程图(k=3)
+　　分解信号｛wk(n),vk(n)｝即是信号x(n)的(K-频程)离散小波变换(DWT).wk(n)(k=1,…,K)称为小波系数，vk(n)是低频信号.
+　　若记
+Hk(z)=H(z2k-1)…H(z2)H(z),　　　　　　　　　　　　　(3a)
+Fk(z)=F(z2k-1)Hk-1(z),H0(z)=1,　　　　　　　　　　　　(3b)
+Qk(z)=Q(z2k-1)…Q(z2)Q(z),　　　　　　　　　　　　　　(3c)
+Pk(z)=P(z2k-1)Qk-1(z),Q0(z)=1,k=1,…，K，　　　　　　　(3d)
+则
+wk(n)=Fk(z)x(n),　　　　　　　　　　　　　　　(4a)
+vk(n)=Hk(z)x(n).　　　　　　　　　　　　　　　(4b)
+利用(1)和(2)式，有
+F1(z)P1(z)+…+Fk(z)Pk(z)+Hk(z)Qk(z)=1.　　　　　　　　　(5)
+分解滤波器Fk(z)，Hk(z)是一族相邻频带(倍频程)滤波器.这说明小波具有分频性能，即信号经小波变换，相邻频带(倍频程)的局部信息被分解开来.小波分频能力取决于分解滤波器F(z),H(z)的设计.文献［4―6］就分解滤波器的设计作了深入讨论.
+3　传递函数分频逼近算法
+　　假定所考虑的真实对象是用下式描述的单输入单输出的线性时不变系统
+y(t)=G(z)u(t)+v(t).　　　　　　　　　　　　　　　　(6)
+其中 u(i),y(t)分别是系统的输入、输出，u(t)是充分激励的拟平稳信号；v(t)是输出端的噪声，为零均值的平稳随机过程，且u(t),v(t)相互独立.
+　　记 y(t),u(t),v(t)的离散小波变换分别为
+wy=｛wyk(t),vyk(t)｝,　　　　　　　　　　　　　　　(7a)
+wu=｛wuk(t),vuk(t)｝,　　　　　　　　　　　　　　　(7b)
+wv=｛wvk(t),vvk(t)｝,　　　　　　　　　　　　　　　(7c)
+利用小波变换(4)式有
+wyk(t)=G(z)wuk(t)+wvk(t),　　　　　　　　　　　　　　　(8a)
+vyk(t)=G(z)vuk(t)+vvk(t),　　　　　　　　　　　　　　　(8b)
+或者等价于
+wyk(t)=G(z)Fk(z)u(t)+wvk(t),　　　　　　　　　　　　　　(9a)
+vyk(t)=G(z)Hk(z)u(t)+vvk(t).　　　　　　　　　　　　　　(9b)
+　　根据小波的分频特性，可知 Fk(z)G(z),HK(z)G(z)仅反映传递函数各相邻频带的频域特性，在各频带内G(ejw)可用低阶正交基展开模型逼近［2］
+Gk(z)=ck0B0(z)+ck1B1(z)+…+ckmBm(z),　k=1,…,K+1.　　　　　　　(10)
+频带宽度越窄，m 可选得越小，通常m=1,2 即可.当Bk(z)=z-k时，(10)式即为FIR模型.
+　　逼近模型参数 ck=［ck0,ck1,…,ckl］可根据相应频带的输入输出信号(小波变换 wu,wy)应用最小二乘法估计，利用综合滤波器 Pk(z)和Qk(z),将逼近模型 Gk(z) 按下面方式组合，即得到传递函数的分频逼近
+　　　　　(11)
+在选定逼近模型时，估计精度可通过增加分段频带的数目(调节分段频带宽度)得到改善.
+　　算法.
+　　1)设计分解滤波器 F(z) 和 H(z)，综合滤波器P(z)和Q(z)，计算u(t)和y(t)的离散小波变换；
+　　2)选定逼近模型(10)，估计参数 ck(k=1,…，K)；
+　　3)利用(11)式计算 G*(ejw).
+4　仿真实例
+　　考虑真实对象
+　　　　　　(12)
+噪声v(t)为白噪声，输入u(t)为伪随机二进制信号(PRBS)，信噪比 SNR=6.1024，分解/综合滤波器由Daubechies小波D7［7］构成，逼近模型(10)为一阶FIR模型，分频数目K=5,重复试验10次，取其均值作为估计值，如图3所示.
+
+图3　频率特性(0―真实值，1―估计值)
+5　结束语
+　　本文基于离散小波变换，利用分频逼近，估计传递函数.适当选取分频数目即调节频带宽度，可获得较精确估计.分频逼近法与单一模型逼近相比，提供了更多的选择自由度，以提高逼近精度.实际中可通过逼近模型、模型阶次以及分频数目三者折中来达到满意的精度.由于分频逼近是利用低阶线性参数模型，参数估计对噪声的鲁棒性强.
+作者单位：东南大学自动化研究所　南京　210096
+参考文献
+［1］　Ljung L.On the estimation of tansfer function.Automatica.1985,21:677-696.
+［2］　Wahlberg B.System identification using laguerre models.IEEE Trans.Autom.Control,1991,36:551-563.
+［3］　Shensa M J.The discrete wavelet transform:Wedding the a trous and mallat algorithms.IEEE Trans.Signal Processing,1992,40:2464-2482.
+［4］　Vaidyanathan P P.Multirate digital filters,filter banks,polyphase network and applications:A tutorial.In:Proc.IEEE.1990,78:56-93.
+［5］　Vetterli M,Herley C.Wavelets and filter banks:Theory and design.IEEE Trans.Signal Processing,1992,40:2207-2232.
+［6］　Herley C,Vetterli M.Wavelets and recursive filter banks.IEEE Trans.Signal Processing,1993,41:2536-2556.
+［7］　Daubechies I.Ten lectrues on wavelets.CBMS-NSF Series in Applied Mathematics,SIMA,1992:182-194.
+收稿日期　1995-12-18

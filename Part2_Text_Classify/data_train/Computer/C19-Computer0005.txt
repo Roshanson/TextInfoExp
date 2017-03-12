@@ -1,0 +1,130 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第6期 Vol.19 No.6 1999
+
+
+
+远程教学的Agent模型
+蔡洪斌　周明天　杨国纬
+　　摘　要　利用网络进行远程教学有很多优点。本文讨论如何把Agent技术应用到远程教学中，以增强教学效果。在多Agent通信语言KQML的基础上，提出了远程教学的Agent模型，设计了Agent的能力编码，通过对搜索教师Agent算法的时间复杂度分析，说明在该模型中搜索教师Agent是可行的和有效的。
+　　关键词　远程教学，Agent，KQML，能力编码
+THE AGENT MODEL OF DISTANCE LEARNING
+Cai Hongbin　Zhou Mingtian　Yang Guowei
+Computer Center of Science and Technology, 
+University of Electronic Science and Technology, Sichuan.Chengdu 610054
+　　Abstract　Distance learning by using network have many advantages. This paper discuss how to apply agent technology to distance learning. Based on KQML, we propose an agent model of distance learning, designing agent capability code. By analysing the time complexity of search algorithms, we think the model is feasible and effective.
+　　Keywords　Distance learning, Agent, KQML, Capability code
+1　概述
+　　远程教学有很多种模式，如电视大学、函授大学等，但随着网络技术的发展，涌现出众多新技术，如果能把这些新技术应用于远程教学中，利用网络进行教学，必将增添远程教学的活力。在众多新技术中，Agent技术尤其适合应用于远程教学中。Agent是一个具有自治性、可移动性、自适应性和智能性的软件实体，能代表用户或其它程序，以主动服务的方式完成一组工作。使用Agent技术可以建立虚拟教师、虚拟实验室和虚拟图书馆等，从而增加教学内容的趣味性和人性化色彩，改善教学效果。文中对Agent技术在远程教学的应用进行了初步的探索，提出了远程教学的Agent模型，在模型中使用线性表与层次结构相结合的Agent连接方式，能有效地降低搜索教师Agent的时间开销。在大规模的网络上（如Internet网），降低搜索的时间开销是有重大意义的。
+2　Agent通信语言
+　　远程教学涉及教学的各个环节，是一个多Agent合作的网络社会。DARPA致力于多Agent间的通信研究，提出了ACL（Agent Communication Language)语言。ACL由三部分组成：①词汇表，②内部语言KIF，③外部语言KQML，即知识查询与操作语言。在设计多Agent时，要求使用KQML语言，而关于词汇表和KIF只是推荐使用，因为KQML对知识的内部表示并不关心，即使用任何方法表示的知识都可以使用KQML语言在多Agent之间共享。KQML既是一种语言，又是一种协议，它支持智能Agent的高层通信，能有效地在多Agent之间共享知识。其基本设计思想包括以下几个部分：
+　　. 体系结构假设　Agent的运行空间可以是相同的地址空间，也可以是处于不同机器上的Agent合作。因此，要求Agent之间的通信传送机制稳定可靠，同时能够支持大规模的Agent间相互通信。
+　　. 通信模式　支持多种通信方式，如点对点通信、多址通信和广播通信，支持同步通信和异步通信。
+　　. 语法和语义　定义信息的表示方法及含义。
+　　. 层次结构　KQML表示的信息可以用三个层次来描述：内容层、消息层和通信层。
+　　内容层是使用某种语言的表达式，是共享知识的编码。表达式的格式对KQML来说并不重要，KQML对它进行原样打包，形成消息层使用的数据。
+　　消息层是在内容层的表达式上增加了关于内容的描述特征。这些特征有助于信息的正确传递和接收者进行数据分析。消息层可以认为是“谈话动作层”，其重要特征是在Agent对话期间，表明一个动作，如断言、查询、回答和错误消息等。在Agent之间传递的消息分为两种类型：内容消息和声明消息。内容消息是对某个Agent能够提供的知识或将要搜寻的知识的描述。声明消息用于登记Agent能提供的服务或登记Agent需要的服务。
+　　通信层在消息层的基础上增加了对低层通信的描述特征，如发送者和接收者，使用同步通信还是使用异步通信等。
+　　. performatives　就是KQML消息，由关键字和参数组成，表明通信的动作和要求。
+　　. 安全　在分布环境中，准许一个Agent检查另一个Agent是否具有合法的操作权限。
+3　远程教学模型
+　　本文主要解决多Agent的连接方式，使它有利于在学生Agent不指明目的地时，能有效地搜索教师Agent。学生Agent只需提供教学内容，由Facilitator在网络中搜索合适的教师Agent，由于具有相同教学内容的教师Agent不是唯一的，因此，只有设计合理的体系结构才能在有限的时间内完成搜索工作。为此，进行如下假设：
+　　⑴ 多Agent简化，只考虑三类Agent，即教师Agent、学生Agent和Facilitator；
+　　⑵ 一个教师Agent具有有限类的相关教学知识。
+3.1　逻辑结构
+　　远程教学的Agent模型应该体现Agent的自治性，其自治性的一个方面就是学生Agent能够为用户搜索合适的教师Agent。在文献［2］中，提出了多Agent的网状结构，在这种结构中搜索一个合适的教师Agent非常困难。
+　　针对远程教学，我们提出线性表与层次结构相结合的模型。
+　　⑴ 线性表按区域划分，一个区域对应一个一维线性表，每个线性表包含若干个Facilitator，为了便于区别称为区域Facilitator，区域Facilitator不能连接教师Agent和学生Agent。整个远程教学系统设置调度Facilitator，负责全局搜索教师Agent时，指明当前搜索线性表。见图1。
+　　⑵ 层次结构按教学内容对教师Agent进行逐级分类，见图1中对一个区域Facilitator的示意部分。这种分类的层次结构用树形图表示，教师Agent是叶子结点，Facilitator是中间结点，学生结点也是叶子结点，但它不具有分类属性。逐级分类时，一级分类（如数学、语言学、计算机等）对应的Facilitator与区域Facilitator相连；下一级Facilitator对应较详细的分类，如数学包括：几何、代数等，逐级细分。
+　　在分类层次结构中，教师Agent可以根据教学内容与相应的Facilitator相连。对于学生Agent仍然使用Agent的联邦结构［3］，它必须与某一个Facilitator相连，但它不具有分类的含义，可以采用就近连接方式。
+
+F ― Facilitator　　　A ― Agent
+每个区域Facilitator所辖范围具有相同的层次结构，图中只给出了其中一个的图示
+图1　Agent的连接方式示意图
+3.2　Agent的作用
+　　在远程教学中有三类Agent，其作用分别为：
+　　⑴ 教师Agent：向Facilitator声明教学内容；为学生Agent提供教学服务，根据教学要求发送教材；实时回答学生Agent的提问等。
+　　⑵ 学生Agent：向Facilitator请求某类知识的教师；与教师Agent建立连接；维护用户界面；向教师提问等。
+　　⑶ Facilitator：调度Facilitator管理线性表，提供全网搜索信息；区域Facilitator为所辖范围的社区Facilitator提供跨类的搜索信息；社区Facilitator负责与教师Agent及学生Agent通信，为学生Agent提供搜索教师Agent的服务。
+3.3　能力编码
+　　Agent的能力指能够为其它Agent提供的服务。为了节省存储空间，对Agent的能力描述，用能力编码进行区分。能力编码是Facilitator搜索教师的依据，它由四部分组成：线性表标志、Agent类型标志、分类标志、教师编号。线性表标志包括线性表名及所属区域Facilitator名；Agent类型标志指出该Agent属于教师Agent、学生Agent、区域Facilitator或社区Facilitator。分类标志说明教师Agent的教学内容所属类别，分类标志隐含地说明了从区域Facilitator到该教师Agent所经过的中间结点。分类标志有两个部分：统一编码和自由编码。统一编码是在建立远程教学系统时统一规定的分类编码。为提高远程教学系统的可扩展性和编制教师Agent的灵活性，统一编码的分类不能过于细化，在需要细化时，由编程人员进行自由分类，即设定自由编码。使用自由编码的教师Agent在与Facilitator相连时，首先检查是否具有相应的Facilitator，如果没有，则还应该负责设计能识别和管理自由编码的Facilitator，并且该Facilitator必须与相应的Facilitator相连。以后其它教师Agent认同这种分类，在生成自由编码和教师编号时，将从该Facilitator获得正确编码的指导。教师编号用于区别相同分类下的不同教师，教师编号应保证是唯一的。在远程教学中具有相同能力的教师Agent不是唯一的，但是它们的能力编码是唯一的，这种唯一性使学生Agent也可以根据需要选择最优秀的教师Agent。
+　　远程教学中的Agent能力编码的声明及插入知识库的请求，大致相同，在此仅举一例：
+(advertise
+:sender　　　　　facilitator
+:receiver教师A
+:reply-withid1
+:languageKQML
+:ontology远程教学
+:content(insert
+:sender　　　　教师A
+:receiverfacilitator
+:in-reply-toid1
+:languageKIF
+:ontology远程教学
+:content"能力编码"))
+(insert
+　 　　　:sender　　　　教师A
+:receiverfacilitator
+:in-reply-toid1
+:reply-withid2
+:languageKIF
+:ontology远程教学
+:content"能力编码")
+　　调度Facilitator没有能力编码，其知识库包括线性表名及区域Facilitator名，为全网搜索提供信息。
+　　区域Facilitator的能力编码用第一、二部分表示，负责向调度Facilitator声明其所在线性表和自己的名称。区域Facilitator使用的知识库反映其所辖范围下一级分类信息，如是否具有关于数学的教师Agent等。在KQML最新提案中［1］，Facilitator不使用advertise，但在远程教学模型中，必须使用advertise，才能让其它Facilitator了解自己的能力，这样有利于搜索教师Agent。
+　　社区Facilitator的能力编码用前三个部分表示，负责向上级Facilitator声明自己的能力编码，其知识库包含下级Facilitator、相应教师Agent的能力编码及相连的学生Agent。
+　　教师Agent的能力编码用四个部分表示，且主动请求相应的Facilitator将能力编码插入到该Facilitator的知识库中。
+　　学生Agent不具有分类信息。学生Agent能够根据用户的要求生成教师Agent的能力编码。考虑到用户一般只针对某一类或几类知识感兴趣，因此，学生Agent没有必要掌握所有分类方法，它通过向Facilitator学习来获得编码的能力。
+3.4　搜索教师的过程
+　　图2表明了学生Agent搜索教师Agent的过程，图中针对在另外一个社区找到教师Agent的情况，其它情况与该图类似。整个过程由学生 A开始，它向本社区的Facilitator F1提出请求，F1分析能力编码，判断被请求的教师是否在本社区，如果不在本社区，则向上级Facilitator前传学生的请求，上级Facilitator进行与F1类似的处理，直到某个Facilitator如F2能确定教师B，并且把B的地址回传给A，A在获得教师B的地址后，直接向B发出学习请求，B给予响应，开始学习，学习过程中不再需要其它Facilitator介入。
+
+图2　搜索教师的过程示意图
+3.5　搜索算法的时间复杂度分析
+　　要分析搜索教师Agent的时间复杂度，首先要确定搜索策略。当Facilitator接收到一个搜索请求后，首先分析搜索请求中包含的教师Agent的分类信息，再根据分类信息进行搜索，搜索包含如下几种情况：
+　　① 教师Agent的能力编码表明在本社区，则在本社区内搜索教师Agent；
+　　② 教师Agent不在本社区，则逐级向上级Facilitator发出搜索请求；
+　　③ 在区域Facilitator所辖范围搜索失败，则请求调度Facilitator，调度Facilitator根据一定的原则，指明下一个搜索的区域Facilitator；
+　　④ 在同一线性表的区域Facilitator搜索失败，由调度Facilitator指明另一搜索线性表，直到所有线性表搜索完毕。
+　　在上述搜索策略中，任何一步搜索成功都不再进行其后的搜索。搜索的结果可能是一组教师Agent，如何选择其中一个教师Agent，已超出了本文的讨论范围，在此不详述。
+　　为了分析搜索算法的时间复杂度，需要进一步的合理简化。设在某一个社区Facilitator下包含一组教师Agent，则用一个叶子结点代替，因此，搜索进行到与叶子结点直接相连的Facilitator后，就知道该树枝结束；在分析搜索复杂度时，与实际搜索策略稍有区别，分析时采用从调度Facilitator开始直到特定叶子，忽略从叶子（学生Agent）逐级上交的过程；并且不考虑在Agent之间传递信息的网络延迟时间。
+　　搜索叶子结点的算法可以描述如下：
+　　while(有线性表?){
+取一线性表；
+while(线性表中有结点?) {
+搜索树的叶子结点；
+if(搜索成功?) 结束循环；
+}
+}
+　　因此：
+　　搜索的时间复杂度=线性表搜索时间×树搜索时间
+　　分两步考虑：
+　　⑴ 在远程教学模型中，使用了多个线性表，但对调度Facilitator来说，如同从一个线性表中获取结点，这个线性表由所有线性表合并而成。现假设调度Facilitator使用的线性表为L，有n个结点，x是任一给定的结点，表示需要搜索的教师Agent所在的区域Facilitator。按x在L中出现的位置进行分类，则可能出现(n+1)种情况，令Ii表示x在L中第i位置出现的分类，其中1≤i≤n，用In+1表示x不在L中的分类，显然，对于分类Ii，In+1的比较次数分别为t(Ii)=i，t(In+1)=n。为计算平均比较次数，设x在L中的概率为q，且假设x在L中每个位置出现的概率相同，则
+p(Ii) = q/n　(1≤i≤n),　p(In+1) = 1 - q。
+　　故平均性态:
+
+　　最坏情况：
+W(n) = max {t(Ii): 1≤i≤n+1} = n
+　　⑵ 这里的树是一个不规则的树，假设树高为m，用ki表示第i层具有ki个结点，在搜索时，每一层将针对ki个结点进行搜索。由于每层结点对应教学内容的分类，因此，可以组织成一个有序的线性表，如果使用二分搜索方法，则平均性能为：
+A(ki)=log ki - 1。
+　　如果设K = max {ki: 1≤i≤m}
+　　则树搜索的平均性能为：
+A(m)=(logki-1)<m(logK-1)<T
+　　其中，T为一常数，在实际应用中，对教学内容进行分类是有限的，即树的高度和每层的结点数是有限的，并且m和ki是相互制约的，如果一级分类k1越大，则m越小。使用按教学内容分类的方式，在树内的搜索能够在一个时间上限T内完成。所以，影响搜索时间的主要因素应该是线性表的结点数，线性表的结点数也是整个模型中唯一可能出现较大幅度增加的部分，因此，可以认为实际应用中，其搜索的时间复杂度与线性表同为O(n)。并且在远程教学领域内，总结点的增加速度和规模绝对不可能象Internet网一样快和庞大，另外，当结点增加时，表面上看将增加搜索时间，实际上会减少搜索时间，因为，教师Agent种类增加，使大多数搜索都将在本区域Facilitator内，甚至本社区Facilitator内完成，所以说该模型具有一定的实用性。
+　　在实际应用中，还可以进行优化。在相同的线性表内，区域Facilitator可以按优先级顺序排列，不同的线性表也可以按优先级顺序排列。这样，搜索策略可进行如下调整：当在本区域Facilitator搜索失败后，调度Facilitator在同一线性表中，按优先级从高到低的顺序选择区域Facilitator；如果在线性表中搜索失败，则也按优先级的原则选择线性表。
+4　余论
+　　Agent在远程教学中的应用，现在国内外还很少有人涉足。本文从远程教学的初期工作开始，为它建立一个线性表与树形结合的结构模型，该模型的建立有利于以后对远程教学进行深入细致的研究。需要说明一点：在搜索目的Agent时，本文没有考虑指定目的地址的情况，如果能确定连接的目的地址，将使问题更加简化，但削弱了Agent的自治性。
+作者简介：蔡洪斌　博士研究生。研究方向：计算机网络、远程教学。
+周明天　教授,博士导师。研究方向：网络计算、开放分布式系统、并行处理与系统集成。
+杨国纬　教授。研究方向：操作系统、数据库。
+作者单位：电子科技大学信息中心　四川.成都(610054)
+参考文献
+［1］　Yannis Labrou, Tim Finin. A Proposal for a new KQML Specification,Feb 3, 1997,http://www.cs.umbc.edu/kqml/
+［2］　Tim Finin, Rich Fritzson, Don Mckay. A Language and Protocol to Support Intelligent Agent Interoperability, April 1992, http://www.cs.umbc.edu/kqml/papers/
+［3］　Michael R. Genesereth, Steven P. Ketchpel. Software Agents. Communications of the ACM, 1994；37（7）：48-53
+［4］　Pattic Macs. Agents that Reduce Work and information Overload. Communications of the ACM, 1994;37(7):31-40
+［5］　Tim Finin, Rich Fritzson. KQML  A Language and Protocol for Knowledge and Information Exchange, http://www.cs.umbc.edu/kqml/papers/
+［6］　Chuen-Tsai Sun, Chien Chou. Experiencing CORAL: Design a nd Implementation of Distance Cooperative Learning, IEEE Transactions on Education, 1996;39(3)
+［7］　Irene Grrif. Desktop Agents in Group-Enabled Products. Communications of the ACM, 1994;37(7):100-105
+［8］　Yoav Shoham. Agent-oriented Programming. Artificial Inte lligence , 1993;60:51-92
+［9］　Kazuo Watabe, Matti Hamalainen, Andrew B. Whinston. An Internet Based Collaborative Distance Learning System: CODILESS. Computer Educ, 1995;3(24):141-155
+收稿日期:1998-12-25

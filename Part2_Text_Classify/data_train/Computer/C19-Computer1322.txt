@@ -1,0 +1,104 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.414-418
+
+
+
+基于径向基函数网络的非线性离散
+时间系统的自适应控制
+解学军　张大雷
+摘　要　对于一类离散时间的非线性系统x(k+1)=f(x(k))+u(k)+d(k)，当系统中的非线性函数f(x(k))满足线性增长条件时，首先证明了｛x(k)｝落入一紧集中，然后根据高斯径向基函数网络的逼近性质，给出了自适应控制器的设计方法.利用李亚普诺夫稳定性理论，证明了控制算法是全局稳定的，跟踪误差收敛于零的某一领域中.
+关键词　自适应控制，径向基函数网络，稳定性.
+ADAPTIVE CONTROL OF NONLINEAR DISCRETE-TIME SYSTEMS
+USING RADIAL BASIS FUNCTION NETWORKS
+XIE Xuejun
+(Institute of Automation, Qufu Normal University, Qufu　273165)
+ZHANG Dalei
+(Institute of Systems Engineering, Shanghai Jiaotong University, Shanghai　200030)
+Abstract　For a class of nonlinear discrete-time systems x(k+1)=f(x(k))+u(k)+d(k), when nonlinear function f(x(k)) satisfies linear growth condition, we first prove that for all k, ｛x(k)｝ falls into a compact set, then an adaptive controller is proposed based on the approximation capability of radial basis function networks. According to the Lyapunov stability theory, the algorithm is proved to be globally stable, the tracking error converges to a neighborhood of zero.
+Key words　Adaptive control, radial basis function networks, stability.
+1　引言
+　　近年来，基于神经网络的自适应控制是神经网络控制研究的热点之一［1～3］.神经网络被用于自适应控制中的主要原因在于它可以在紧集上以任意的精度去逼近非线性系统，因此一个未知的非线性系统就可以用神经网络模型及一个建模误差项表示出来.然而，目前这方面的大多数文献都集中在连续时间非线性系统的神经网络稳定自适应控制中，而对离散非线性系统却讨论的很少.据作者所知，文献［1］提出了神经网络可以用作辩识器和控制器，但是他们的方法需要假设非线性函数f(x(k))中的｛x(k)｝落入一紧集中，这样才可以利用神经网络的逼近性质，并且所得到的结果仅仅通过仿真实验，没有给出理论分析；文献［3］证明了当神经网络的加权的初值落入期望权值的某一集合中要可以保证闭环系统的稳定性，然而这个假设条件是很难验证的.
+　　本文讨论了基于高斯径向基函数(RBF)网的非线性离散系统的自适应控制问题.当系统x(k+1)=f(x(k))+u(k)+d(k)中的非线性函数f(x(k))满足线性增长条件时，首先证明了｛x(k)｝落入一紧集中，然后根据RBF网络的逼近性质，提出了自适应控制器的设计方法.利用李亚普诺夫稳定性理论，证明了闭环系统是全局稳定的，跟踪误差收敛于零的某一领域中.
+2　问题的提出
+　　考虑下面的离散时间非线性系统
+x(k+1)=f(x(k))+u(k)+d(k),　　　(1)
+其中x(k)∈Rn,u(k)∈Rn分别是系统的输出和输入，f(x(k))是连续的非线性函数，d(k)表示有界干扰，即存在常数d0>0，d(k)≤d0,k.
+　　如果f(.)已知，取控制律为
+u(k)=-f(x(k))+xm(k+1),　　　(2)
+这里的xm(k+1)为有界参考信号.由于f(.)是未知的，根据“必然等价原则”，定义下面的控制律为
+　　　(3)
+其中(x(k))是f(x(k))的估计.将控制律(3)代入系统(1)得下面的闭环系统
+　　　(4)
+其中e(k)=x(k)-xm(k).
+
+　　控制目标.首先证明｛x(k)｝落入一紧集中，那么f(x(k))可以用RBF网络模型及一个建模误差表示出来；然后找出一反馈控制u(k,(k))及一调整参数(k)(RBF网的权值的估计)的算法，使得1)闭环系统是全局稳定的，2)跟踪误差e(k)=x(k)-xm(k)应尽可能的小，xm(k)为给定的有界参考信号，xm(k)≤m，m为一常数.
+　　概念和定义.若A为一矩阵，A表示Frobenius范数，即.采用如下形式的高斯径向基函数网络
+　　　　(5)
+上式中ωl∈Rn×l,φl(x)∈Rl;WT=［ω1,…,ωp］;φT(x)=［φT1(x)，…,φTp(x)］，并且φl(x)的元素为已知的常数.下面的引理给出了RBF网络可以用于非线性建模问题的理论依据.
+　　引理1［4］.对于任意定义在紧集U上的连续函数f(x)，及任意的λ>0，一定存在形如式(5)的RBF网络g(x),使得
+3　基于RBF网络的自适应控制器的设计与稳定性分析
+　　由于非线性函数f(x(k))满足线性增长条件，则存在正常数c1,c2(c2<1)，使得
+f(x(k))≤c1+c2x(k)).　　　(6)
+从而对于形如式(5)的神经网络及e(k)=x(k)-xm(k)，总存在c>0，使得
+(7)
+其中因此闭环系统(4)可以表示为
+　　　(8)
+这里为W在k时刻的估计，下面记ε(k)=ε(x(k)),φ(k)=φ(x(k)).
+　　结论.因为φT(x)=［φT1(x),…,φTp(x)］，并且φl(x)的元素为φlj(x)=
+　　由于神经网络的权值W是未知的，采用下面的算法去估计权值
+　　　(9)
+其中a为自适应增益，σ>0为一设计参数.
+　　下面给出系统的全局稳定性分析.
+　　定理1.考虑系统(1)，f(x(k))满足式(6)，自适应控制律取为式(3)，参数估计取为式(9).如果自适应增益a和设计参数σ满足下列条件：
+1-aφ2m>0,　　　　(10)
+　　　　(11)
+0<σ<2(1-aφ2m).　　　　(12)
+则闭环系统具有以下性质：
+　　1)
+其中
+　　2)跟踪误差有界，即对于任意大于零的常数λ，存在ρ>0，使得其中
+
+　　证明.将式(8)代入式(9)，得
+(13)
+选取李亚普诺夫函数
+　　　　(14)
+其一阶差分为
+ΔV(k)=V(k+1)-V(k).　　　　　　(15)
+为简单起见，在下面的推导中省略k.将式(7)，(8)和(13)代入式(15)，得
+
+其中
+因此，只要就表明对所有k≥0,由e(k)=x(k)-xm(k)，这就证明了｛x(k)｝落入一有界集A中，
+　　　(17)
+从而由RBF网络的逼近性质，一定存在形如式(5)的RBF网，使得f(x(k))=WTφ(x(k))+δ(x(k)),并且δ(x(k))≤λ，其中λ可以取得任意小.重复上面的推导过程，得
+ΔV≤ρ-eTe.　　　　(18)
+因此，只要ΔV(k)≤0,则结论2)成立.由上面的推导可以得出
+　　(19)
+因此，只要(K)>M1，就有ΔV(k)≤0.从而｛(k)｝有界，并且(k)≤M1.由式(3)知
+
+定理1成立.证毕.
+4　仿真结果
+　　对非线性模型
+
+进行仿真实验，显然满足线性增长条件.系统的跟踪曲线如图1所示，其中参考输入取为从图中可以看出该控制器具有很好的控制结果和跟踪性能.如果存在随机噪声，控制器的跟踪曲线如图2所示.
+
+
+图1　无噪音情况下系统跟踪曲线
+(实线为期望输出，虚线为实际输出)
+
+
+图2　有噪音情况下系统跟踪曲线
+(实线为期望输出，虚线为实际输出)
+　　如何把本文所讨论的基于高斯径向基函数(RBF)网的非线性离散系统的自适应控制问题，推广到更加一般的系统是今后研究的课题.
+
+致谢　本文得到了导师郭雷研究员的悉心指导，谨表衷心感谢.
+　　解学军　1968年生.分别于1991年、1994年在曲阜师范大学获学士和硕士学位，1999年在中科院系统科学研究所获博士学位.现在曲阜师范大学自动化研究所从事教学和科研工作，主要研究方向是自适应控制理论.
+解学军（曲阜师范大学自动化研究所　曲阜　273165）
+张大雷（上海交通大学系统工程研究所　上海　200030）
+参考文献
+［1］　Narendra K S, Parthasarathy K. Identification and control of dynamical systems using neural networks. IEEE Trans. Neural Networks, 1990, 1(1):4～27
+［2］　Sanner R M, Slotine J J. Gaussian networks for direct adaptive control. IEEE Trans. Neural Networks, 1992, 3(6):837～863
+［3］　Chen F-C, Khalil H K. Adaptive control of a class of nonlinear discrete-time systems using neural networks. IEEE Trans. Autom. Control, 1995, AC-40(5):791～801
+［4］　Park J, Sandberg T W. Universal approximation using radial-basis-function networks. Neural Comput., 1991, 3(2):246～257
+　收稿日期　1998-07-27
+修稿日期　1999-01-06

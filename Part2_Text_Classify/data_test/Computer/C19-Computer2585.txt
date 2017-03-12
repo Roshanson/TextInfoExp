@@ -1,0 +1,154 @@
+软件学报
+JOURNAL OF SOFTWARE 
+1999年 第10卷 第5期 Vol.10 No.5 1999
+
+
+
+基于经营知识的动态可重构企业信息系统建模
+张晓东　柴跃廷　任守榘　李芳芸
+摘要　在企业信息系统实施过程中存在的结构不良问题以及低效率的分析设计方法,使企业不能在 经营过程不断变化时作出快速响应,并且容易导致潜在的错误、拖期和额外的成本.文章在组 件技术和分布式对象技术的基础上,提出了基于经营知识的经营对象的层次结构模型.在这一 模型中,中等粒度的过程组件通过独特的数据端口映射以及内嵌规则库的控制,屏蔽了精细粒 度的基本经营对象之间复杂的调用关系,并且提供了4种应用系统的重构策略.最后,文章给出 了利用Petri网建立经营对象行为模型的实用方法.通过这一方法,可以在模型与分布式对象s erver之间建立清晰的对应关系,从而使企业信息系统的快速开发和设计成为可能.
+关键词　经营对象,组件,分布式对象,数据端口,Petri网.
+中图法分类号　TP311
+A Business Knowledge Based Approach to Model the Dynamically ReconstructableEn terprise Information System
+ZHANG Xiao-dong　CHAI Yue-ting　REN Shou-ju　LI Fan g-yun
+Department of Automation　Tsinghua University　Beijing　10 0084
+Abstract　　The existent ill-structured architecture and the low efficiency of analysis and design methods during the implementation of enterprises information systems are the main factors, in regard to the continuous changes of the business processes , which disable the quick response capability of enterprises and are apt to resu lt in potential errors, delays and extra costs. On the basis of the componentwar e and distributed object technology, a hierarchical model of knowledge-based bu siness objects is proposed in this paper, within which the medium-grained proce ss-components mask the intricate interactions between fine-grained basic busin ess objects by means of the special dataports mapping and built-in rulebase con trol. Also, four kinds of reconstruction strateqies are available under this mod el. Finally a kind of Petri net-based approach to model the business objects' b ehaviors in the business processes is given. Through this approach, the unambigu ous relationship between the model constructs and the distributed object servers can be explicitly established so as to facilitate the rapid development of ente rprises applications.
+Key words　 Business objects, componentware, distributed objects, dataports, Petri net.
+　　众所周知,企业级信息系统的分析、设计与实施是一项时间长、耗资大的系统工程.由于企业 经营环境不断变化,未来企业必须不断进行经营过程再工程(business process reengineeri ng,简称BPR),才能具备持久的竞争力.这就要求信息系统既能够引导BPR的实施,又能迅速地 体现经营过程的变化.然而从当前的企业改革实践来看,绝大多数的信息系统不具备柔性的结 构,可扩展性差,各组成部分错综复杂的紧耦合关系使应用程序的修改牵一发而动全身,易导 致大量的重复劳动.同时,信息系统的实施仍然缺乏行之有效的分析建模方法的指导,企业模 型的改变不能快速地反映到软件的实现上,因此,大量的投资在BPR进程中得不到保障［1 ］.
+进入90年代以来,组件技术［2］和分布式对象技术显示出勃勃生机,在此基础上提出 的以经营对象(business objects)为核心的企业信息系统解决方案成为业界讨论的焦点 ［3～5］.经营对象在分布式对象中件,如CORBA［6,7］或DCOM(distributed compon ent object model)［8,9］的支持下,以分布的对象server形式存在,对于以即插即用 组件方式建立的动态可重构系统和推动开放的组件市场形成具有深远的意义.本文提出了一 种基于经营知识的经营对象的层次结构模型及相应的建模方法,在保证基本对象的精细粒度 的同时,将企业的经营逻辑以可配置形式封装在组件内部.本文第1节阐述经营对象和过程组 件的参考模型和设计思想.第2节描述对象和组件的运作机制以及应用系统的重用策略.最后, 利用一个实际案例说明如何对经营过程进行快速建模,并抽象出组件的经营规则库.
+1　经营对象与过程组件
+1.1　基本思路
+　　经营对象［5］作为经营策略、约束和数据的寄存者,将三者有机地连接在一起,从而 保证经营过程体现经营策略的要求,接受经营规则的限制,在正确的时间,利用正确的数据,以 正确的方式和顺序被执行.在设计可重用经营对象的过程中,基本的指导思想应当是使对象具 有一定的独立性和自治性.可以认为,经营对象存在于经营环境中.经营对象的创建、存储、 转移、消亡以及经营对象与人的交互,都是经营对象与经营环境相互作用的结果.图1是经营 对象与经营环境相互作用的示意图.经营环境不断变化.经营管理的表 现形式(user interface management system,简称UIMS)、经营数据的存储机制(DBMS)以及 硬件平台和操作系统的选择都是导致经营环境变化的技术因素.比较而言,尽管经营环境中顾 客的需求以及市场的变化,可能导致经营逻辑的根本性改变,但该领域内体现经营实质的这些 经营逻辑是相对稳定的.因此,经营对象的内涵应当体现经营逻辑,尽量屏蔽掉那些多变的技 术因素,把设计的重点放在对经营逻辑的重用上.其他与经营逻辑无关的对象被定义为技术型 对象,如GUI(graph user interface)对象和DBMS对象等,经营对象与技术型对象结合在一起 共同构成企业信息系统.
+
+1.2　基本经营对象
+　　基本的经营对象可以按照它们的性质划分为3种类型,分别是实体对象、事件对象和控制对象 .这3类对象构成经营对象体系的最底层,它们具有精细的粒度.每个经营对象的实例在经营领 域内具有唯一的对象标识符(identity),经营对象只能通过引用方式进行传递.下面对这3类 对象作具体的描述.
+　　实体对象(entity objects)：对经营活动中的名词进行建模,例如发票、供应商和采购合同 都是实体对象.通常,实体对象由3个子对象组成,它们是个体(body)、存储集(BodySet)和迭 代算子(iterator),而后两个子对象只有要求永久存储的实体对象才需要.个体定义该实体对 象的各项状态变量(属性)和应提供的服务(方法).此外,实体对象的个体还定义了两个特殊的 属性,一个是实体对象的键结构(KeyStruct),另一个是存储集(BodySet)的引用.其中KeyStru ct表示能够唯一确定个体的最小不相关属性集,BodySet代表存储该个体的对象集合,它提供 对个体对象的生命周期控制和查询功能.实体对象的存储集可以创建个体对象和迭代算子.通 过迭代算子,能够对存储集或查询结果进行各种遍历操作.图2列出了经营实体对象的参考模型.
+
+　　事件对象(EventObjects)：对经营活动的触发机制进行建模.在经营过程中存在3类事件 对象,它们分别是需求事件(RequestEvent)、通知事件(NotificationEvent)和时间事件(Tem poralEvent).其中,需求事件由经营环境产生,通常来自人机接口.例如,用户点击界面中的按 钮,可以产生一条需求事件.需求事件意味着环境对系统的请求,因此它必须封装相关的环境 信息.而通知事件在系统完成某项活动后产生,它或者将结果的描述信息传递给环境,让用户知道活 动的执行情况;或者进一步触发系统内部的其他活动.此外,系统能够在用户的设定下自动产 生一些与时间有关的事件,例如,时延、间隔、周期以及时刻等,这类事件称为时间事件.事件 对象的两种可能状态分别是使能(enabled)和禁止状态(disabled).事件对象的参考模型如图 3所示.
+
+　　控制对象(ControlObjects)：对经营活动中的动词进行建模.控制对象通常由经营事件对象 触发,与实体对象和数据对象交互作用,创建新的或修改原有的实体对象和数据对象,在结束 时可能产生新的事件对象.控制对象封装处理原子性任务所需的逻辑以及环境变量.图4是控 制对象的参考模型.控制对象提供两种最基本的事务型操作服务：执行(commit)和恢复(roll back).Commit表示执行当前事务,而Rollback表示取消当前事务的执行,并将参与交互的实体 对象和事件对象恢复到执行服务被调用之前的状态.Rollback服务可以根据用户的配置,在事 务执行过程出现异常时被自动调用.每个控制对象与环境的交互接口是通过数据端口实现的. 作为控制对象的一类特殊属性,数据端口(dataports)是一组控制对象信息输入与输出的通道 ,每个dataport具有如图5所示的结构.通常,一个数据端口的值域(value)可以是参与控制过程的一个事件对象、实体对象和数据对 象.每个数据端口具有严格的数据类型码(TypeCode),这意味着数据端口的值域只能是具有同 样的TypeCode的类型(对象的TypeCode由它的定义信息,例如,IDL文件产生).数据端口的输入 输出特性由Polarity属性表示,Polarity=“+”、“-”和“+/-”,分别表示该端口是控 制对象的输入端口、输出端口和输入输出端口.每个控制对象都提供统一的setport(s)和g etport(s)方法来对dataport进行操作.这两个方法按端口名称PortName或编号PortID,对d ataport进行赋值或取值.每个数据端口的编号和名称在该控制对象范围内保持唯一.
+
+
+1.3　数据对象
+　　数据对象(DataObjects)是应用系统中的一类特殊对象.设计数据对象的主要目的是封装分布 式对象计算环境中各组件的交换信息［7］.与经营对象不同,数据对象没有唯一的ide ntity,数据对象可以通过值和引用两种方式进行传递.数据对象被设计为可以容纳可变数量 的任意类型的数据,包括对象的引用.它的实际结构相当于一个数据域为Name-Value对的链 表.每个Name-Value对都可以具备不同的数据格式,Value由一个IDL语法中的any类型来表示 .数据对象的嵌套关系是合法的,这意味着一个数据域可能是对另外一个数据对象实例的引用 .数据对象提供一致的服务接口,包括Add(增加一个数据域)、Delete(删除一个数据域)、Des cribe(获取数据域的数量、名称列表和格式列表)、Set(对单个的数据域赋值)和Get(获取单 个数据域的值).数据对象可以作为set-或getport(s)的参数设置控制对象的端口.
+1.4　过程组件与层次结构模型
+　　过程组件(ProcessComponent)是一类具有中等粒度的经营对象,它比基本的经营对象,如事件 对象、实体对象和控制对象更接近应用层.过程组件协调多个控制对象的工作,原则上对一项完整的经营过程进行控制,但实际上,一个 复杂的经营过程可能由多个过程组件共同完成.
+　　过程组件的两个核心组成部分是数据端口dataports和经营规则库rulebase.过程组件的 数据端口与控制对象的数据端口结构类似,不过,端口的数量更多,可以反映整个经营过程中 所有控制对象的dataports.因此,存在一个从控制对象数据端口到过程组件数据端口的映射. 每个控制对象的端口可以与过程组件的多个端口相对应,同时,每个过程组件的端口也可以对 应于多个控制对象的数据端口.图6是过程组件PC与4个控制对象CO1,CO2,CO3和CO4的端口映 射的示意图.端口之间的有向弧表明数据的传递方向.过程组件的每个数据端口的编号和名称 在该组件范围内保持唯一,与控制对象类似,也提供按端口名称和编号进行的setport(s) 和getport(s)操作.过程组件的每个端口可能处于有效(valid)或无效(invalid)状态.前 者表示该端口值可以访问,后者表示端口值无效,对该端口调用getport方法将产生异常错误. 
+
+　　由于过程组件能反映整个经营过程中所有控制对象的信息交换,因此,它可以扮演这些控制对 象的代理者的角色.应用程序原本需要对多个控制对象进行的操作,现在只需对单个过程组件 进行.原来复杂的对象接口关系,如多对象引用以及各对象间不同的接口形式,现在可以由更 简单、更统一的接口关系所取代.这种接口关系只需一个对象(即过程组件)的引用,只有两种 调用形式(setports和getports).应用程序并不直接与控制对象发生联系,过程组件负责将应 用程序的处理请求和参数设置传递给正确的控制对象,然后检测控制对象对请求的执行情况, 捕捉异常句柄,在执行结束时,把结果从控制对象的数据端口映射到过程组件自己的端口上, 供应用程序访问.因此,应用程序、中等粒度的过程组件以及精细粒度的基本经营对象可形成 如图7所示的层次结构.
+
+
+　　过程组件的上述请求转换和参数映射过程受其规则支配.过程组件的经营规则库(ruleba se)是存储规则的场所.规则按ECAP的形式存储经营知识.ECAP规则具有如下形式：EVENT(eve nts) COND(conds) ACTION(action) PARAM(params).它表示,当events发生时,在条件conds 满足时,按照params 的设置执行action.rulebase的具体语法按EBNF格式规定如下.
+　　约定：
+　　［item］:表示item可能发生.{item}*:表示item可能发生多次.“item”: 表示item为保 留字或常量.item1|item2:表示或者item1或者item2发生.
+　　语法描述：
+　　〈rulebase〉∷={“RULE〈”〈rule no〉“〉:”〈rule body〉“;”}*
+　　〈rule no〉∷=“1”|“2”|“3”|...
+　　〈rule body〉∷=“EVENT”〈event list〉“COND”〈cond list〉“ACTION”〈identity 〉“PARAM”〈parameter list〉
+　　〈event list〉∷=“(”〈Pre-eventlist〉“)(”〈Post-eventlist〉“)”
+　　〈cond list〉∷=“(”〈Pre-condlist〉“)(”〈Post-condlist〉“)”
+　　〈parameter list〉∷=“(”〈In-paramlist〉“)(”〈Out-paramlist〉“)”
+　　〈Pre-eventlist〉∷=“0”|〈complete ordered list〉
+　　〈Pre-condlist〉∷=“0”|〈complete ordered list〉
+　　〈Out-paramlist〉∷=“0”|〈complete ordered list〉
+　　〈complete ordered list〉∷=〈nonzero dataport No.〉［ {“,”〈nonzero dataport No.〉}*］
+　　〈Post-eventlist〉∷=〈ordered list〉
+　　〈Post-condlist〉∷=〈ordered list〉
+　　〈In-paramlist〉∷=〈ordered list〉
+　　〈ordered list〉∷=“0”|〈nonzero dataport No.〉［{“,”〈dataport No.〉}*］ 
+　　〈nonzero dataport No.〉∷=“1”|“2”|“3”|...
+　　〈dataport No.〉∷=“0”|“1”|“2”|...
+　　在上述规则的语法中,identity是某个控制对象的标识符.Pre-eventlist 和Pre-condlist 表示由过程组件具有输入特性的数据端口编号组成的完全有序表或空表,In-paramlist表示 由identity标识的控制对象的具有输入特性的数据端口编号组成的有序表；Post-eventlis t和Post-condlist表示由过程组件具有输出特性的数据端口编号组成的有序表,Out-param list表示由identity标识的控制对象的具有输出特性的数据端口编号组成的完全有序表或空 表.一条规则的语义可以归纳如下：如果Pre-eventlist对应的dataports中都存在有效使能 事件对象的引用,而Pre-condlist对应的dataports中都存在有效实体对象或数据对象的引 用,那么,这些对象的引用将被映射到由identity标识的控制对象的由In-paramlist对应的d ataports中,并启动这个控制对象代表的任务.当任务正常执行结束后,如果In-paramlist对 应的dataports中都存在有效实体对象或数据对象的引用,那么这些对象的引用将被映射到过 程组件的由Post-eventlist 和Post-condlist对应的dataports中.若某个dataport编号同 时出现在Pre-和Post-eventlist中,表示该dataport对应的event对象仍然有效使能,因为 在默认情况下,该event在ACTION执行以后就被禁止了,而且该dataport处于无效状态.同理, 同时出现在Pre-和Post-condlist中的dataports编号对应的entity或data对象表示ACTION 被执行后,该实体对象或数据对象被更改,它仍然有效.否则,该端口的状态将被默认地置为无 效状态,并且释放掉该端口包含的内容(仅仅是对象的引用被释放,实际对象的删除或释放由 对象的创建者负责).由于篇幅所限,省略了有关控制对象与过程组件之间的端口映射,规则库 语义以及规则的结构合理性和合法性概念的形式化定义.
+2　运作机制与重用策略
+　　从过程组件的结构可以看出,通过数据端口的映射,可以把对多个经营实体对象和事件对象的 操作转换成对单个过程组件的一致的接口操作,大大降低了应用程序接口调用设计的复杂程 度.此外,每个过程组件提供诸如：用AddPort,DelPort和SetPortParam,GetPortParam等方法 ,对dataport的数量和参数进行维护,用AddRule,DelRule,ModifyRule和PrintRule等方法对 组件经营规则库中的规则进行维护.这样,利用第3方程序可以动态地增加、删除、修改和打 印规则,甚至作为独立运行的server,多进程环境中的过程组件本身就可以提供图形化的管理 界面,使用户在线地对数据端口和规则进行配置.过程组件的上述特点,使我们不仅可以重用 底层的众多精细粒度的基本经营对象,而且在现有经营对象不再适合时,可以增加新的经营对 象,并修改组件的规则库,快速体现原有经营过程发生的变化,
+　　经营对象作为对象服务器(server),可以分布地运行在系统中合适的宿主上.一种可行的办法 是,企业中不同组织机构或部门的服务器分别运行该机构所需的对象server,同时,有责任对 这些对象进行必要的维护与配置.建立在基本经营对象基础之上的过程组件,也以server的形 式存在于系统中.过程组件的运行位置由信息系统中该经营对象的所属领域确定.无论是经营 对象server,还是过程组件server,都可以看做是系统中的可共享资源.它们提供不同级别的 访问权限控制,可以同时为不同的应用程序提供服务.
+　　中等粒度的过程组件与精细粒度的基本经营对象形成的层次结构,为企业信息系统提供多种 重构策略.如果将基本经营对象类比为元器件,把过程组件类比成插接元器件的线路板,可以 形象地体会到二者相互配合所产生的即插即用效果(参见表1).
+表1　4种企业信息系统的重构策略
+Change 
+Policy Business ObjectProcess 
+Component   ApplicationAnalogy
+策略1增加(或修改)实体、事件对象以替代原有的实体、事件对象,导致修改控制对象, 但该控制对象的数据端口逻辑不变.   无变化.无变化.替换原有的元器件,新的元 器件接口性质不变,线路板不变. 
+策略2增加(或修改)实体、事件对象以替代原有的实体、事件对象,导致修改控制对象,该控制对象 的数据端口逻辑改变.在线修改该控制对象对应的过程组件规则.仅改变对同一组件的某组setports和getports的调用参数.插入线路板的新器件接口性质与原器件不同,因此改变与之相连的线路. 
+策略3在原有经营过程的基础上,插入新的处理环节,导致增加新的控制对象.在线增加新的控制对象对应的过程组件规则.仅增加对同一组件的一组新的setports和g etports操作.新器件插入线路板,因此增加与之相连的线路. 
+策略4企业增加新的经营过程,在重用原有经营对象的基础上,需要增加一系列新的经营对象.增加新的过程组件.在应用程序中增加对新组件的处理.增加新的线路板. 
+
+   3　经营过程中的对象行为建模
+　　由于Petri网方法能够有效地揭示经营过程的动态特性,可以被用来建立对象行为模型.下面, 我们通过一个实际案例说明如何利用递阶有色Petri网(HCPN)分析经营过程,识别和设计经营 对象与数据对象,并提取出过程组件的规则库.关于HCPN的正式叙述可以参见文献［10］,在 这里仅作如下约定：
+　　* 库所由圆圈表示,库所中的token表征单个经营事件对象、数据对象或实体对象的个体,to ken的颜色集(color set)等价于该对象的特征属性定义域；变迁分为子网变迁和普通变迁. 普通变迁由方框表示,子网变迁的方框右下角被阴影填充.
+　　*库所附近的文字代表事件对象、实体对象或数据对象的名称,变迁附近的文字代表控制对 象或经营过程的名称.有向弧以对象的转移来表示信息的流向.
+　　以某企业的实际采购过程为例,整个采购过程包括4个控制步骤,分别是制订采购合同、生效 采购合同、跟踪采购合同以及采购合同归档.采购管理员首先根据合同制订的需求以及供应 商的有关信息,制订相应的采购合同；然后在生效合同的需求下,选择一部分合同使其生效. 对于已生效的合同,自动进行合同跟踪.跟踪的内容包括合同付款信息和到货信息,要求在跟 踪过程中生成合同跟踪报告.在合同完成时,自动将该合同归档.
+　　通过分析上述的经营过程可以得出,整个过程的信息输入包括制订合同需求、供应商信息、 生效合同需求、合同付款信息以及合同到货信息;而输出结果则包括合同跟踪报告和合同文 档.据此可以生成表示这个经营过程的Petri网(如图8所示).对该Petri网作直观的考察,可以 认为这是一种具有RTC(run to complete)性质的自动机.也就是说,一旦输入信息都完全具备 ,采购过程将自动逐步地进行下去,最终产生输出结果.从这一思想出发,可以更深入地抽象出 那些决定过程状态改变的规则.接下来,进一步细化子网变迁,可以生成如图9所示的递阶子网 .不难看出,此时每个变迁代表的操作已不可再分,具有一定的原子性.按照上面的约定,可以 识别出其中的基本经营对象.其中,事件对象包括制订合同需求Req－MC和生效合同需求Req －VC；实体对象包括供应商Supplier、采购合同Contract(已制订合同、已生效合同和已 完成合同分别代表采购合同的不同状态)、合同跟踪报告Rpt－TC和合同文档Documents,它 们需要在数据库中永久存储,因此,对每个实体对象还应当设计相应的存储集对象和迭代算子 ；数据对象包括合同到货信息ArrivalInfo和付款信息PaymentInfo；而控制对象则包括制订 合同MC、生效合同VC、跟踪合同TC以及归档合同SC,它们的交互范围分别用虚线在图9中标出 .
+
+
+　　由于每个控制对象代表事件对象、实体对象和数据对象的交互作用,按照Petri网中有向弧的 方向以及对应该控制对象变迁的输入和输出库所中的token类型,可以对采购过程中的控制对 象总结出如表2所示的输入输出信息描述.
+表2　控制对象的输入输出信息列表
+控制输入事件输出事件输入 条件输出条件
+MCReq－MC　SupplierContrac t(m)
+VCReq－VC　Contract(m)Contract(v)
+TC　　Contract(v) ,PaymentInfo, ArrivalInfoRpt－TC,Contract(c )
+SC　　Contract(c)Document 
+
+  然后可以在此基础上设计覆盖整个经营过程的过程组件,具体步骤如下：
+　　* 设计每个控制对象的数据端口(见表3).
+表3　控制对象的数据端口
+MC PortIDPortNamePolarity
+1Req－MC “+”
+2Supplier“+”
+3Contract“-”
+VC　PortIDPortName
+1Req－VC“+”
+2Contract“+/-”
+TCPortIDPortNamePolarity
+1 Contract“+/-”
+2Payment-Info“+”
+3Arrival-Info“+”
+4Rpt－TC “-”
+SC1Contract “+”
+2Document“-”
+
+      * 将所有控制对象的数据端口映射到过程组件的数据端口 ,从而设计 出过程组件的数据端口(见表4).相同的端口可以重叠,但不同状态的同种对象应当占据不同 的端口,例如,已制订采购合同、已生效采购合同和已完成采购合同分别对应端口Contract(m ),Contract(v)和Contract(c).
+表4　过程组件的数据端口
+
+PortIDPortNamePolarityCO's por tID
+1Req－MC“+”MC∷1
+2Supplier“+”MC∷2
+3Contract(m)“-”MC∷3
+“+”VC∷2
+4Req－VC“+”VC∷1
+5Contract(v)“-”VC∷2
+“+”TC∷1
+6Contract(c)“-”TC∷1
+“+”SC∷1
+7PaymentInfo“+”TC∷2
+8ArrivalInfo“+”TC∷3
+9Rpt－TC“-”TC∷4
+10Document“-”SC∷2
+
+　　* 根据过程组件和控制对象的数据端口定义,建立过程组件的规则库.采购过程组件的规则 库包括下面4条规则,分别对应于制订采购合同、生效采购合同、跟踪采购合同和归档采购合 同这4个控制步骤：
+　　RULE〈1〉: EVENT(1)(0) COND(2)(3) ACTION “MC” PARAM(1,2)(3)
+　　RULE〈2〉: EVENT(4)(0) COND(3)(5) ACTION “VC” PARAM(1,2)(2)
+　　RULE〈3〉: EVENT(0)(0) COND(5,7,8)(6,9) ACTION “TC” PARAM(1,2,3)(1,4)
+　　RULE〈4〉: EVENT(0)(0) COND(6)(10) ACTION “SC” PARAM(1)(2)
+4　结　论
+　　有关经营对象层次结构模型的思想以及过程组件独特的数据端口结构和规则库机制,已经被 应用于CIMS环境下经营对象组件框架(business object component framework,简称BOCF)的 原型系统设计中.我们采用符合CORBA2.0规范的IONA-Orbix为中件,将经营知识作为可修改 的规则集成在分布式对象server中,由这些对象组装而成的应用程序在对象重用性和动态配 置性方面显示了较好的效果,同时,也为我们在异构组件互连协议以及接口映射方面的进一步 研究提供了宝贵的经验.
+致谢 本文研究得到国家自然科学基金和国家863/CIMS主题项目基金资 助,项目编号分别为69684007和863-511-9844-010,在此表示感谢.
+　
+本文研究得到国家自然科学基金和国家863高科技项目基金资助.
+作者张晓 东,1971年生,博士生,助教,主要研究领域为分布式对象计算,组件技术,经营过程 再工程,CIMS环境下应用系统开发平台.
+柴跃廷,1964年生,副教授,主要研 究领域为CIMS,信息技术,系统化工程.
+任守榘,1936年生,教授,博士生导 师,主要研究领域为系统工程,CIMS,管理与决策支持平台.
+李芳芸,女,193 6年生,教授,主要研究领域为CIMS,BPR.
+本文通讯联系人：张晓东,北京 100084,清华大学自动化系
+作者单位：（清华大学自动化系　北京　100084）
+参考文献
+　[1]　Jacobson I, Erricsson M, Jacobson A. The Object Advantage: Bu siness Process Reengineering with Object Technology. Reading, MA: Addison-Wesle y Publishing Company, 1994
+　[2]　Bronsard F. Toward software plug-and-play. ACM SIGSOFT Notices, 1 997,22(3):19～29
+　[3]　Fingar P, Dennis R, Stikeleather J. Next Generation Computing: Dist ributed Objects for Business. Eaglewood Cliffs, NJ: Prentice Hall Inc., 1996
+　[4]　Wegscheider E. Toward code-free business application development. IEEE Computer, 1997,30(3):35～43
+　[5]　Shelton R E. Business objects-modelling with business pattern. 199 6. http: ∥www.openeng.com
+　[6]　Natan R B. CORBA: a Guide to Common Object Request Broker Architect ure. New York: McGraw-Hill Inc., 1995
+　[7]　Thomas J M, Zahavi R. The Essential CORBA: Systems Integration Usin g Distributed Objects. New York: John Wiley and Sons, Inc., 1995
+　[8]　Microsoft Corporation. The component object model specification. ve rsion 0.9. 1995. http: ∥www.microsoft.com
+　[9]　Mark R, Alan E. An introduction to inside DCOM. 1997. http: ∥www.d bmsmag.com
+　[10]　Jensen K. Coloured Petri nets. In: Rozenberg G ed. Lecture Notes in Comput er Science. Berlin: Springer-Verlag KG, 1986. 249～299
+本文1998-04-16收到原稿,1998-06-08收到修改稿

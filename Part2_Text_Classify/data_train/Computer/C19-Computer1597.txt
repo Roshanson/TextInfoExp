@@ -1,0 +1,112 @@
+信息与控制
+Information and Control
+1999年　第28卷　第4期　Vol.28　No.4　1999
+
+
+
+非线性相似组合系统的半全局渐近镇定
+
+钱龙军　夏军利　夏靖波
+
+　　摘　要：利用系统的结构信息, 把非线性相似组合系统 通过线性状态反馈半全局渐近镇定的问题, 转化为两个与子系统同阶的Riccati不等式的求 某种对称正定解的问题. 
+　　关键词：相似组合系统, 半全局渐近镇定, Riccati不等式
+　　中图分类号：TP13　　　　　　文献标识码：B
+
+SEMI-GLOBAL ASYMPTOTICAL STABILIZATION FOR NONLINEAR
+SIMILAR COMPOSITE SYSTEMS
+QIAN Longjun1 XIA Junli2 XIA Jingbo2
+(1. Automation Department, Nanjing University Science and Technol ogy， Nanjing 210094；
+2. Department of wire communication, Air force telecommunication institute， Xi’an 710077)
+Abstract　 Utilizing the structural information, this paper reduces the problem of semi-gl obal asymptotical stabilization for nonlinear similar composite systems to solvi ng two low order Riccati inequalities which are in the same order as that of the subsystems.
+　　Key words　nonlinear similar composite system, semi-global asym ptotical stabilization, Riccati inequality
+
+1　引言
+　　最近已有许多文章研究了非线性大系统的全局实用稳定和局部渐近稳定[1～3], 系统中的耦合项全部被当做不确定因素处理,而且仅利用到了它们以系统状态为变量的界函数. 所采取的控制器大多是非线性的. 这在控制器的设计和实现上都存在很大的困难, 而且具 有很大的保守性.
+　　在非线性大系统的全局渐近镇定的研究方面, 目前能见到的工作很少.其中重要原因是 非线性系统本身的全局渐近镇定问题就是十分困难的[4],因此半全局渐近镇定的方 法才应运而生. 虽然相对而言这是一个较弱的概念,一般非线性系统的半全局渐近镇定问题 仍然是很困难的. 所以应该设法利用大系统的结构性质, 以使问题的研究得到简化.
+　　我们注意到许多实际的非线性大系统, 通过拟线性化可以表示为非线性相似组合系统, 即系统的子系统之间的耦合矩阵具有相似的结构. 在某些确定的位置上它们的元素总是取零值. 大系统所具有的这种相似结构在系统性态分析和控制中所可能带来的优越性是值得深入研究的.在对称组合系统的研究基础上[6], 利用系统的相似结构信息可以把该问题 转化为两个与子系统同阶的Riccati不等式的某种性质的对称正定解的求解问题. 虽然 在处理过程中, 耦合矩阵的高次项仍被看作不确定因素, 但可以依据它们在耦合矩阵中的位置, 彼此分开处理, 因此可以降低设计的保守性.
+2　相似系统的描述
+　　非线性相似组合系统由N个子系统通过相似的方式内联而成,
+　　　(1)
+其中, xi∈Rn, ; B0∈R n×m;ui∈Rm；A0,H0∈Rn×n,Hij(t,x)∈Rn×n,Ei(t,x)∈Rm×m,i,j=1,2,…,N是(t,x)的有界函数; Im表示m阶单位矩阵. 
+　　定义指标集Ω={(k, l)|某些k,l=1,2,…,n},及结构矩阵={(pkl)n ×n∈Rn×n|pkl=0.当（k,i)Ω},当(k,l)∈Ω,称pkl是的结构不为零的元素. 
+　　假设1　Hij(t,x)∈, i,j=1,2,…,N.
+　　假设2　存在ρ＞0, 对于x∈RnN×nN,t∈R,下列不等式成立
+　　　　　　　(2)
+其中λmin(.)(λmax(.)表示对称矩阵的最小(最大)的特征值.
+　　为讨论方便, 将系统(1)写成组合方程
+　　　　　　　　(3)
+　　　　　　　(4)
+B=INB0, E(t,x)=diag[E1(t,x)…EN(t,x)], u(t)=uT1(t)…uTN(t)]T,其中表示Kronecker积.
+　　由假设1, 矩阵Hij可以表示成Hij=∑(k,l)∈Ωpijkl(t,x)ekeTl,其中ek, k=1,2,…,A#n,A#，表示n维向量空间的第k个标准正交基. 设集合Ω元素的基数为M,并将其排一个序, 再利用性质ekeTl=(ekeTl )(eleTl)(eleTl)矩阵有如下表示
+　　　　　　　　　　　　　　　(5)
+其中
+　　　　　(6)
+　　设Ek表示n阶对角阵, 如果结构矩阵在其第k行, 有q个结构不为零的元素, 则Ek的第k个对角元素为q, 其余的元素为零. 
+　　设El表示n×n阶对角阵, 如果结构矩阵在其第l列, 有q个结构不为零的元素, 则El的第l个对角元素为q, 其余的元素为零. 
+　　注1 通过(Ek,El)能基本确定结构不为零的元素在结构矩阵中的位置, 因此它带有相似系统的结构信息.
+　　设G=(G1 G2 … GM), K=(K1 K2 … KM),经直接计算易见
+　　　　　　　　　　(7)
+　　定义 系统(3)称为可半全局渐近镇定的, 如果对于包含原点的任一球域D∈R nN×nN,存在反馈律u=u(x), u(0)=0使得闭环系统的零解是一致渐近稳定的, 而且D在其吸引域内.
+从上述定义可以看出, 候选的控制律和给定的球域有关.对于系统的不同的工作区域, 要求不同的控制律, 以达到系统控制的目的.
+‖.‖表示向量的欧氏范数，对于任意的δ＞0,定义δ-球域D(δ)={x∈RnN|‖ x‖＜δ}, 对于(t,x)∈R×D(δ), 定义
+μ(δ)=maxmsup(t,x){λ(HTmkl(t,x)Hmkl(t,x) }　　　　　　　(8)
+　　对于(5)和(6)所定义的n阶方阵,可以证明，
+　　命题1 如果存在μ＞0,使μInN-LTmLm≥0,当且仅 当μIn-HTmklHmkl≥0, m=1,2,…,M.
+所以, 当(t,x)∈R×D(δ), m=1,2,…,M, 有μ(σ)Im-LTmLm≥0成立.
+3　主要结论
+　　利用文[3][7]对不确定因素的处理方法, 得到本文的主要结论.0
+　　定理1 如果存在常数σ＞0和ε0＞0,对任意的μ＞0,存在γ＞ 0,使Riccati不等式
+Y(A,μ,γ)=ATP+PA+μPGGTP-2γρPBBTP+FFT+ε0I≤0　　　　　　(9)
+具有nN阶对称正定矩阵解P＞0,并且满足λmax(P)/λmin(P)≤σ2, 那么系统(1)是可半全局渐近镇定的. 并且D(δ)属于吸引域, 相应的线性反馈控制律为u(t) =-γ(δ)BTPx(t).
+　　证明 由定理假设, 对于任意的δ＞0考虑球域D(δ)D(σδ), 由 式(8), 相应的μ=μ(σδ),存在γ=γ(σδ),使(9)存在解P＞0满足λmax (P)/λmin(P)≤σ2.
+选取Lyapunov函数为V(x)=xTPx,控制律为u=-γ(σδ)BTPx. 从而(3) 的闭环系统可写成
+　　　　　　　　　　(10)
+　　设系统(10)在t0=0时刻, 从x0∈D(δ)出发的解为x(t)=x(t,x0),那么必存在＞0, 使x(t)∈D(σδ),t∈[0,].利用假设2, 可见
+
+　　当t∈[0,),有
+　　　(11)
+注意式(7), 所以
+　　　　(12)
+　　综合式(9),(11)和(12), 当t∈[0,),有
+(x)|(10)≤-ε0‖x‖2　　　　　　　　　　　　　　　　　　(13)
+故系统的解x(t)=x(t,x0), t∈[0,),满足λmin(P)‖x(t)‖2≤V(x )≤V(x0)≤λmax(P)‖x0‖2,从而 这说明(10)的解x(t)=x(t, x0) , x0∈D(δ)的存在区间为t∈[0,∞)，且x(t)∈D(σδ),式(13)总是成立.
+　　所以闭环系统(3)从球域D(δ)出发的解是一致渐近稳定的,D(δ)是吸引域,相应的线性反馈控制律为u(t)=-γ(δ)BTPx(t).　　　　　　　　　　　　　　　　　　　　　　　　　　证毕.
+　　下面给出定理1成立的一个充分条件, 
+
+　　利用变换, 和文[5]中的结果, 直接计算可以验证,
+　　引理1 矩阵A由(4)定义. 设J=INJ0, 其中J0∈Rn× n,则有
+　　(i) T-1AT=diag[Am…AmAp]∈RnN×nN
+　　(ii) TTAT=diag[Am…AmAp]∈RnN×nN
+　　(iii) T-1J(T-1)T=TTJT=J
+　　推论1 如果存在常数σ＞0和ε0＞0,对任意的μ＞0, 存在γ ＞0,使Riccati不等式
+Y(Am,μ,γ)=ATmPm+PmAm+μPmEkPm-2γρPmB 0BT0Pm+El+ε0I0≤0　　　　　　
+Y(Ap,μ,γ)=ATpPp+PpAp+μPpEkPp-2γρPpB0BT0P p+El+ε0I0≤0　　　　(14)
+分别具有n阶矩阵解Pm和Pp＞0, 使, 那么定理1的条件成立.
+　　证明 利用Riccati不等式(14)的n阶对称正定解Pm和Pp构造一个nN 阶对称矩阵
+　　　　(15)
+显然矩阵P既是一个nN阶的对称矩阵, 又是一个N阶的块对称阵. 由引理1, 有
+TTPT=diag[Pm…PmPp]　　　　　　　　　　　　　　(16)
+说明P经对称变换后是一个对称的正定矩阵, 从而其本身就是正定的.
+　　下面证明对称的正定矩阵P是Riccati不等式(9)的解, 等式(9)两端左右分别乘以TT和T, 根据引理1可验证
+TTY(A,μ,γ)T=diag[Y(Am,μ,γ)…Y(Amμ,γ)y(Apμ,γ)]　　　　(17)
+式(14)和(17)说明矩阵P＞0是Riccati不等式(9)的解. 另一方面, 由于矩阵T是一 个正交变换, 式(16)说明nN阶矩阵的特征值集合等于n阶矩阵Am及Ap特征值集合的和. 所以有
+　　　　　　　　　　(18)
+总之定理1的全部条件满足. 　　　　　　　　　　　　　　　　　　　　　　　　　　　证毕.
+　　如果相似系统(1)满足匹配条件, 并且其标称系统是能控的, 那么定理1的条件总是能够满足的. 利用本文的方法可以设计分散线性控制器使由两个倒立摆所构成的非线性相似控制系统[3]是可半全局镇定的.
+4　结论
+　　利用大系统相似结构的确能使系统性态的分析和综合问题得到大大的简化. 由本文的结论, 直接根据子系统及耦合项的结构性质就可以分析非线性相似组合系统的半全局渐近镇定问题，因此是直观的，得到的线性控制律更是易于实现.
+注释：基金项目：南京理工大学科研基金资助
+作者简介：钱龙军，34岁，博士后．研究领域为相似组合非线性系统结构及鲁棒控制．
+　　　　　夏军利，45岁，讲师．研究领域为有线通信系统测控．
+　　　　　夏靖波，36岁，博士后．研究领域为多相流检测与控制、软测量．
+作者单位：钱龙军:南京理工大学自动化系 南京210094;　
+　　　　　夏军利、夏靖波:空军电讯工程学院有线电 通信系 西安710077
+参考文献
+1　Chen Y H, Leitmann G, Piong Z K. Robust Control Design for Interconnected Systems with Time-varying Uncertainties. INT. J. Control, 1991, 54:1119～1142
+2 Han M C, Chen Y H. Decentralized Control Design: Uncertain Systems with Strong Interconnections. INT. J. Control, 1995, 61:1363～1385
+3 Shi L, Singh S K. Decentralized Control for Interconnected Uncertain Sys tems: Extensions to Higher-order Uncertainties. INT. J. Control, 1993, 57 :1453～1468
+4 陈彭年,韩正之,张钟俊. 非线性控制系统镇定的若干进展. 控制理论与应用, 1995, 12:401～408
+5 Yanghong Y, Siying Z. Stabilizing Controllers for Uncertain Symmetric Comp osite Systems. Automatica, 1995, 31:337～340
+6 Sundareshan M K, Elbanna R M. Qualitative Analysis and Decentralized Con trollers Synthesis for a Class of Large-scale Systems with Symmetrically Interc onnected Subsystems. Automatica, 1991,27:383～388
+7 Veillette R J, Medanic′ J V, Perkins W R. Robust Stabilization and Dist Urbances Rejection for Systems with Structured Uncertainty, Proceedings of the 28th CDC Tampa,1989, Florida
+收稿日期：1997-08-15

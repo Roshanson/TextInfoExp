@@ -1,0 +1,158 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.3　P.379-385
+
+
+
+用最大熵原则作多阈值选择的条件迭代算法
+罗希平　田捷
+摘要　最大熵原则是图像处理中阈值选择的最常用方法之一.很多研究者针对最大熵原则作了各种研究,但一般都回避了用最大熵原则进行多阈值选择时运算量太大的问题.该文提出了解决这一问题的条件迭代ICM(iterated conditional modes)算法.通过实验比较了ICM算法与H.D.Cheng等人提出的模拟退火算法,充分显示了ICM算法的有效性.
+关键词　图像处理,阈值,熵,模拟退火,ICM算法.
+中图法分类号　TP391
+The ICM Algorithm for Multi-Level Threshold Selection by Maximum Entropy Criterion
+LUO Xi-ping　TIAN Jie
+(Laboratory of Artificial Intelligence　Institute of Automation　The Chinese Academy of Sciences　Beijing　100080)
+Abstract　The maximum entropy approach is one of the most important threshold selection methods in image processing.Many researchers avoid the problem of computationally prohibitive when the maximum entropy criterion is applied to multi-level threshold selection.This paper proposes to deal with this problem using ICM (iterated conditional modes) algorithm.Comparing the ICM algorithm with the simulated annealing algorithm proposed by H.D.Cheng et al,the experimental results show the effectiveness of ICM algorithm fully.
+Key words　Image processing,threshold,entropy,simulated annealing,ICM algorithm.
+　　阈值选择方法是图像处理领域中最重要、也最常用的方法之一.过去,人们为图像灰度阈值的自动选择付出了巨大的努力,提出了很多方法［1～3］.对80年代及以前发展起来的阈值选择方法的一个较好的综述可参看文献［4］.近年来提出的新方法包括Jui-Cheng Yen等人的用最大相关性原则选择阈值的方法［5］,A.Pikaz等人的基于图像拓扑稳定状态的方法［6］,N.Papamarkos等人的用有理多项式来拟合灰度直方图两个峰间的区域,再用该有理多项式的极小值决定阈值的方法［7］,Liang-kai Huang等人的通过极小化图像的某种模糊测度来决定灰度阈值的方法［8］,还有很多其他的方法［9～11］.
+　　基于最大熵原则选择阈值是常用的阈值选择方法之一,由T.Pun首先在文献［12,13］中提出.这种方法的目的在于，将图像的灰度直方图分成独立的类,使得各类的总熵最大.从信息论角度来说,就是使这样选择阈值获得的信息量最大.对这种方法的进一步发展可参看J.N.Kapur等人、P.Sahoo等人和A.D.Brink的论著［14～16］.这些方法都是针对通过一个阈值把图像分成背景和物体两个区域的情况而提出来的.所有的作者都声称他们的方法可以直接推广到多阈值选择的情况,但事情也许不像看起来的那么简单.在有两类阈值的情况下,对一幅灰度级为256的图像,为获得使熵最大的阈值只需要考虑255种不同的选择,这对计算机来说只是很小的计算任务,而当此算法扩充到多阈值选择的情况时,计算量将会随着类数的增加而呈指数增长.例如,在有6类阈值的情况下,为获得使熵最大的阈值,对一幅256灰度级的图像就需要考虑255×254×253×252×251种不同的阈值组合,目前最好的微机或工作站也要用几个小时才能得到结果.这显然是不实用的.
+　　人们为了解决计算量问题提出了各种不同的方法,J.Gong等人［17］提出了一个快速递归算法来减少计算不同阈值下的熵值时所需的计算量,而这种方法并没有解决需要考虑的情况太多、搜索空间太大这一根本问题.H.D.Cheng等人介绍了一种求最大熵的模拟退火算法［18］,但模拟退火算法同样有计算量很大、收敛速度很慢的问题,有关图像处理中的模拟退火算法的详细讨论请参看文献［19］.
+　　本文采用ICM(iterated conditional modes)方法来解决以上提到的计算量问题.对ICM方法的比较透彻的讨论请参看Julian Besag的著名论文［20］.ICM能很快地收敛到稳定值,尽管它一般不能保证收敛到全局最优解,而且初始值对ICM能收敛到的稳定解有重要影响［20］.我们设计了一个初始化算法,通过实验我们发现,使用该初始化算法在我们所做的多数实验中,ICM算法都收敛到了与模拟退火或穷举法一样的稳态解(即系统的全局最优解),在实验中的一般情况下,ICM算法也能收敛到一个满意的稳态解.
+　　本文第1节对最大熵原则作一简单介绍.第2节给出ICM算法的细节.第3节介绍ICM所需的初始化算法.第4节给出我们所做的部分实验的实验结果,其中将比较ICM算法及模拟退火算法的效率.第5节作总结和讨论.
+1　最大熵原则
+　　文献中有多种不尽相同的最大熵原则,我们采用其中具有代表性的J.N.Kapur等人［14］提出的最大熵原则来讨论多阈值问题.
+　　先考虑单阈值选择,即把图像用一个灰度阈值分成背景和物体两个区域的情况.用p0,p1,...,pn表示灰度级的概率分布,如果把阈值设置在灰度级s,将获得两个概率分布,一个包含1～s间的灰度级,另一个包含s+1～n间的灰度级,这两个分布如下：
+
+其中
+
+与每一个分布相关的熵为
+
+(1)
+
+(2)
+令
+
+(3)
+阈值s设置为
+
+　　上述单阈值选择原则能直接推广到多阈值选择情况,此时,式(3)变为
+
+(4)
+其中k是类数,阈值(s1,s2,...,sk)设为
+
+2　ICM 算法
+　　前面已经讨论过,用最大熵原则来进行多阈值选择计算量极大,使得穷举法难以实现,模拟退火算法的速度也往往令人难以接受.本节我们将给出一种ICM算法来解决计算量问题.
+以mini和maxi表示第i类的参数,即第i类包括从mini～maxi间的所有灰度级,满足条件：
+min1=0,maxn=max-gray,对任何2与n间的i,maxi-1=mini,
+其中n=classnum为类数,max-gray为图像的最大灰度值.
+　　算法.
+　　(1) 使用将在第3节介绍的初始化算法给出mini和maxi(1≤i≤n)的初始值.
+　　(2) 对从1～n-1间的每一类i,执行如下操作：
+将maxi的值在mini和maxi+1间变动,取maxi的值为
+
+其中φ(max1,...,maxn-1)是由式(4)定义的熵.
+　　(3) 重复步骤(2),直到不能再作任何改变.
+　　(4) 将阈值设置为max1,...,maxn-1 .
+　　显然,在两类即单阈值选择的情况下,此算法就是穷举法,因而不需要区别两类与多类.ICM算法的收敛性是显然的,因为状态空间是有限的,而在每一次迭代中,能量函数是单调下降的,从而经过有限次的迭代,能量函数必然收敛到某个局部稳定状态.在我们所做的所有实验中,这一算法经过3～5次迭代就能收敛到稳态解,与类数及灰度级数无关.因而,从实验的角度看,ICM算法的计算复杂性为O(mn),其中m是类数,n是灰度级数,可见ICM算法只有多项式复杂性,而穷举法是指数复杂性.
+3　初始化算法
+　　初始化就是给出初始的阈值,由于ICM算法在一般情况下仅能收敛到局部极小值,系统的初始状态对于它将收敛到的最终状态至关重要,如果系统的初始状态离全局极小值的状态比较近,那么使用ICM算法就很可能收敛到全局极小值.我们提出如下的初始化算法.
+算法.
+　　第1步.获取图像灰度直方图中的所有局部极大和局部极小值,用hist(i)表示图像中具有灰度i的像素个数,灰度直方图中的一个局部极小值是满足如下条件的灰度级i:
+hist(i)＜hist(i+1)及hist(i)＜hist(i-1).
+　　同样地,一个局部极大值是满足如下条件的灰度级i:
+hist(i)＞hist(i+1)及hist(i)＞hist(i-1).
+　　对图像的灰度直方图作一次扫描就可获得其中所有的局部极大和局部极小值.用数组loc-max保存局部极大值,loc-min保存局部极小值,这两个数组的值符合如下条件：
+　　对任何i,
+loc-min［i-1］＜loc-max［i］＜loc-min［i］,
+即两个局部极小值之间有一个局部极大值.同样地,两个局部极大值之间有一个局部极小值.
+　　把两个相邻的局部极小值之间的灰度值作为一个类,一般情况下,这一步分出的类数比需要的类数多得多,需要将某些类合并.下面我们采用两个迭代过程来达到这一目的.
+　　第2步.这一步中合并具有如图1所示的 “N”or “И” 形状的相邻类,“N”形的相邻类满足条件：
+hist(loc-min(i-1)＜hist(loc-min(i))和hist(loc-max(i)＜hist(loc-max(i+1)).
+
+Fig.1　Form"N" in the left an "И" in the right
+图1　左边为形"N",右边为形"И"
+　　“И”形的相邻类满足类似条件.
+把“N”形的相邻类合并成一个类的条件是
+hist(loc-max(i)-hist(loc-min(i))＜hist(loc-max(i+1)-hist(locmax(i))
+和
+loc-max(i+1)-loc-max(i)＜max-inter,
+其中max-inter是预先给定的值,在我们的实验中取为max-hist/(2*classnum).对“И”的相邻类有类似的合并条件.也就是说,我们将合并灰度直方图中相距不太远、又很可能粘成一个大块的两个小块.这一过程将迭代进行，直到不能再合并为止.
+　　第3步.如果经过第2步合并后得到的类数仍比需要的多,就调用这一步的迭代过程，将类数减到需要的类数.否则跳过这一步.
+　　在每一次迭代之后,找出概率最小的类(一个类的概率是该类中所有灰度值的概率之和),然后把这个类与它相邻的两个类中概率较小的那个合并.如果找出来的类在直方图的两头，因而只有一个相邻类,则将它与该类合并.
+这种算法试图把阈值设在灰度直方图局部极小值处，使得灰度直方图中大块的结构能得到保持,并在此基础上把灰度直方图分成概率尽可能相近的部分.图2显示了一个使用这种初始化算法的例子.对图2中的灰度直方图采用初始化算法将得到阈值s1,s2.
+
+
+Fig.2 An example of the initial algorithm
+图2　使用初始化算法的一个例子
+4　实 验
+　　在我们的实验中,采用了类似于文献［18］中所介绍的针对模糊最大熵原则提出的模拟退火算法,以便与我们的ICM算法比较.但对该模拟退火算法作了如下修正：
+　　(1) 经过2×(classnum-1)次移动温度再乘以因子α(退火因子)，而不是像文献［18］中那样，仅移动一次就乘以α,其中classnum是期望获得的类数.
+　　(2) 从理论上考虑,模拟退火算法的退火速度应该相当慢(参看文献［19］),才能保证系统收敛到稳态解,我们不是像文献［18］那样从无意义的任意初始状态开始退火,而是从用初始化算法所得到的初始状态开始退火.
+　　(3) 我们使用的初始温度为1,退火因子为0.999 9.
+　　所有实验都是在带128MB内存的PII300微机上完成的,在此给出其中两个实验的结果.
+　　图3显示了一个头部CT切片,其CT值范围为0～4 095,我们取其灰度级为4 096.用多阈值方法把该图分成背景、表皮、其他软组织和骨骼4个部分.表1显示了分别用ICM和模拟退火算法SA(simulated annealing)求得的阈值结果和计算所需时间.从表1我们可以看到,ICM算法仅用了不到1秒就得到了结果175,977,1502,而SA用了12秒才得到同样的结果.图4给出了使用ICM算法得到的阈值将头部分成4个区域的结果.
+
+
+Fig.3 The CT slice of the head,it's histogram and initial threshold value
+图3 头部CT切片、灰度直方图及初始阈值
+Table 1 The threshold value and computational time of Fig.3(4 096 grey level)
+表1　图3的阈值及计算时间(4 096灰度级)
+
+　Threshold①Computational time②
+Initial value③209,989,1162　
+ICM175,977,1502＜1s
+SA175,977,150212s
+
+①阈值,②计算时间,③初始值.
+
+
+①背景,②表皮,③软组织,④骨骼.
+Fig.4 The threshold value got by ICM and the 4 regions by threshold
+图4 ICM算法得到的阈值及其将头部分成的4个区域
+　　图5显示了一幅256灰度级的航空图片及其灰度直方图,其中包含了使用我们的初始化算法得到的初始阈值.我们用多阈值方法把它分成6类.表2显示了分别用ICM和模拟退火算法SA求得的阈值结果和计算所需时间.从表1我们可以看到,ICM算法仅用了不到1秒钟就得到了结果67,107,140,173,206,SA用了47秒才得到同样的结果.图6给出了使用ICM算法得到的阈值处理图像的结果,每一个像素的灰度值为它所属的类的所有像素的平均灰度值.
+
+
+Fig.5 An aerial picture,it's histogram and initial threshold value
+图5 航空图片,其灰度直方图及初始阈值
+Table 2 The threshold value and computational time of Fig.4(256 grey level)
+表2　图4的阈值及计算时间(256灰度级)
+
+　Threshold①Computational time②
+Initial value③111,141,170,202,250　
+ICM67,107,140,173,206＜1s
+SA67,107,140,173,20647s
+
+①阈值,②计算时间,③初始值.
+
+
+Fig.6 The result picture with threshold values got by ICM
+图6 使用ICM算法得到的阈值及相应的结果图像
+5　总 结
+　　本文介绍了用ICM方法来解决采用最大熵原则进行多阈值选择时遇到的因搜索空间太大而导致计算量太大这一问题.从实验中我们可以看到，ICM即使不能给出最大熵问题的最优解,也能找出满意解.更重要的是,这种算法收敛极快,运算时间极短.在我们所做的实验中,对所有256灰度级的图像找出所需的多阈值的运算时间均远小于1秒.而其他优化算法，如模拟退火算法，则运算时间很长,一般达几十到上百秒,实际应用时难以让人接受.穷举法所需时间更长,甚至不可能在合理的时间内完成运算.
+　　本文中介绍的ICM算法除了能用在基于最大熵原则进行多阈值选择以外,还可以用在其他运算量同样很大的多阈值选择方法中.例如J.Kittler等人提出的最小错误阈值选择法［1］,Jui-Cheng Yen等人提出的基于最大相关性原则的阈值选择法［5］等等.尽管我们目前没有针对这些方法做相应的实验,但我们相信，将ICM算法用于这些方法同样能得到满意的结果，并极大地减少计算量.
+本文研究得到国家自然科学基金(No.69843001)和国家863高科技项目基金(No.863- 306-ZT04-06-04)资助.作者罗希平,1974年生,博士生，主要研究领域 为图像处理，模式识别.田捷,1960年生,博士后，研究员，博士生导师,主要 研究领域为模式识别与智能系统，计算机网络与多媒体.
+本文通讯联系人:田捷，北京 100080，中国科学院自动化研究所人工智能实验室
+作者单位：罗希平(中国科学院自动化研究所人工智能实验室　北京　100080)
+田捷(中国科学院自动化研究所人工智能实验室　北京　100080)
+参考文献
+1，Kittler J,Illingworthv I.Minimum error thresholding.Pattern Recognition,1986,19(1):41～47
+2，Cho S,Haralick R,Yi S.Improvement of Kittler and Illingworth's minimum error thresholding.Pattern Recognition,1989,22(5):609～617
+3，Ostu N.A threshold selection method from gray-level histogram.IEEE Transactions on System Man and Cybernet,1978,8(1):62～66
+4，Sahoo P K,Soltani S,Wang A K C et al.A survey of thresholding techniques.Computer Vision,Graphics and Image Processing,1988,41(2):233～260
+5，Yen Jui-cheng,Chang Fu-juay,Chang Sh-yang.A new criterion for automatic multilevel thresholding.IEEE Transactions on Image Processing,1995,4(3):370～377
+6，Pikaz A,Averbuch A.Digital image thresholding based on topological stable state.Pattern Recognition,1996,29(5):829～843
+7，Papamarkos N,Gatos B.A new approach for multilevel threshold selection.CVGIP: Graphic Models and Image Processing,1994,56(3):357～370
+8，Huang Liang-kai,Mao-Jiun,Wang J.Image thresholding by minimizing the measure of fuzziness.Pattern Recognition,1995,28(1):41～51
+9，Corneloup G,Moysan J,Maynin I E.BSCAN image segmentation by thresholding using cooccurrence matrix analysis.Pattern Recognition,1996,29(2):281～296
+10，Li L,Gong J,Chen C.Grey-level image thresholding based on Fisher linear projection of two-dimensional histogram.Pattern Recognition,1997,30(5):743～750
+11，Ramac L C,Varshney P K.Image thresholding based on Ali-Silvey distance measures.Pattern Recognition,1997,30(7):1161～1174
+12，Pun T.A new method for gray-level picture thresholding using the entropy of the histogram.Signal Processing,1980,2(2):233～237
+13，Pun T.Entropic thresholding: a new approach.Computer Vision,Graphics and Image Processing,1981,16(2):210～239
+14，Kapur J N,Wong A K C.A new method for gray-level picture thresholding using the entropy of the histogram.Computer Vision,Graphics and Image Processing,1985,29(2):273～285
+15，Sahoo P,Wilkins C,Yeager J.Threshold selection using Renyi's entropy.Pattern Recognition,1997,30(1):71～84
+16，Brink A D.Thresholding of digital images using two-dimensional entropies.Pattern Recognition,1992,25(8):803～808
+17，Gong J,Li L,Chen W.Fast recursive algorithms for two dimensional thresholding.Pattern Recognition,1998,31(3):295～300
+18，Cheng H C,Chen Jim-rong,Li Ji-guang.Threshold selection based on fuzzy c-partition entropy approach.Pattern Recognition,1998,31(7):857～870
+19，Geman S,Geman D.Stochastic relaxation.Gibbs distributions,and the bayesian restoration of images.PAMI,1984,6(6):721～741
+20，Besag J.On the statistical analysis of dirty pictures.Journal of Royal Statistic Society (B),1996,48(3):259～302
+本文1999-01-05收到原稿,1999-04-12收到修改稿

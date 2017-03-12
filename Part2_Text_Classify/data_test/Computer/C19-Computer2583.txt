@@ -1,0 +1,202 @@
+软件学报
+JOURNAL OF SOFTWARE 
+1999年 第10卷 第5期 Vol.10 No.5 1999
+
+
+
+一种分层递阶的定性拓扑推理方法
+廖士中　石纯一
+摘要　文章针对现有的定性表示方法和拓扑推理算法存在的问题,提出了一种新的方法.首先,提出了基于概念邻域结构的定性表示方法.然后,给出了不同粒度层次上拓扑关系复合表的计算方法.最后,设计得出分层递阶的拓扑推理算法.文章给出的方法具有较高的认知合理性,所提出的推理算法可根据问题来选择合适的表示和推理层次,在已有推理算法给不出解的情况下,可以给出问题的合理解,对一般定性推理研究有参考价值.
+关键词　拓扑推理,概念邻域结构,复合表,分层递阶,定性空间推理.
+中图法分类号　TP18
+　　A Hierarchical Method for Qualitative Topological Inference 
+LIAO Shi-zhong1　SHI Chun-yi2
+1（Department of Computer Science　Liaoning Normal Un iversity　Dalian　116029）
+2（Department of Computer Science and Technology　Tsinghua University　Bei jing　100084）
+Abstract　A new method is proposed to solve the problems in existing qualitative represent ation methods and topological inference algorithms. First, a qualitative represe ntation mechanism based on conceptual neighborhood is described. Then, a computa tion procedure for composition tables in different topological relation levels i s put forward. Finally, a hierarchical topological inference algorithm is demons trated. The algorithm can select a suitable representation and inference level f or a given problem, and can work out a reasonable solution when other algorithms fail to give answers. The hierarchical method proposed in this paper is cogniti vely valid, and is helpful for general qualitative reasoning research.
+Key words　Topological inference, conceptual neighb orhood, composition table, hierarchy, qualitative spatial reasoning.
+　　拓扑推理是定性空间推理研究的基本问题,一般采用代数方法,并应用约束传播算法使约束网络达到路径相容性［1～3］.虽然拓扑推理已在地理信息系统、空间数据库和定性空间推理等领域得到了应用［1,2］,但现有的拓扑推理方法均以固定的粒度或抽象层次来表示拓扑关系.Smith等人只考虑了基本拓扑关系的推理方法［1］.Hernandez虽然提出了不同层次拓扑关系的表示和处理问题,并举例说明了其必要性和可能性,但没有进一步给出实现算法［2］.Grigni等人在总结拓扑推理的工作时,给出了表示拓扑关系的一种层次体系及各层次上拓扑关系的复合表,但没有给出各复合表的计算方法,也没有给出层次体系中的拓扑推理算法［3］.
+　　仅给出问题必需的表示和推理,并可以不同的粒度在多个抽象层次上进行推理,是定性推理的两个主要特点［2］.但已有的定性表示方法,如文献［4］中给出的方法,只是从形式上把定性值定义为定量集的子集,没有进一步刻画定性值子集的内在结构,因而难以实现有效的定性表示和推理.对拓扑推理而言,常识知识和问题描述中的拓扑关系往往是以隐含的,甚至是不确定的粒度或抽象层次来表示.这样,不仅要求拓扑推理系统能够给出拓扑关系在不同粒度或抽象层次上的表示,而且要求在求解问题时,能够根据问题的约束条件,确定合适的表示和推理层次,进而给出问题合理的解.因而,关于拓扑关系在不同粒度或抽象层次上的表示、组织和推理方法的研究,以及适合具体问题的表示和推理层次选择方法的研究,是重要而有意义的工作.
+　　本文针对已有工作中存在的上述问题,在文献［5,6］的工作基础上,提出了一种基于概念邻域结构的拓扑关系定性表示方法,研究了在不同粒度或抽象层次上拓扑关系复合表的计算方法,提出了一个分层递阶的拓扑推理算法.
+1 拓扑关系的定性表示
+　　拓扑关系是基本的空间关系.在定性空间推理领域,拓扑关系被认为是空间关系的一种定性表示,常以4-交集模型来形式定义［2］.文献［5］中提出了拓扑关系的闭球模型,基于闭球模型可直接推导出基本拓扑关系的完备集和概念邻域结构.下面研究拓扑关系本身的一种基于概念邻域结构的定性表示方法.
+　　定义1. 令C是空间关系的有限非空集,称ψ,φ∈C是关于C相邻的,若ψ,φ对应的物理局势可不经过第3个C中的关系相互转换［2,6,7］.
+　　对φ∈C,φ的概念邻域HC(φ)={ψ∈C｜ψ,φ是相邻的}.
+　　C的概念邻域结构描述C中各元素的概念邻域,可由概念邻域图来表示.如,基本拓扑关系的概念邻域结构可由图1表示［5］.
+
+　　推广的概念相邻关系及概念邻域结构可作如下定义.
+　　令A,BC,称A,B是广义相邻的,简称相邻的,若存在a∈A,b∈B,a,b是关于C相邻的.相应地,对D2C,A∈D,HD(A)={B∈D｜A,B是广义相邻的}.
+　　定义2. 令T是表示一类空间关系的非空有限集,T的定性表示定义为
+Q(T)=〈HT,［T］,πT,LT〉.
+其中 (1) HT:T→2T描述T的概念邻域结构.
+　　(2) ［T］2T,且
+　　
+　　(b) 对任意p,q∈［T］,若p≠q,则p∩q=,
+　　(c) 对任意q∈［T］,存在t∈q,使得qHT(t).
+(3) πT:［T］→LT称为概念命名函数,是［T］到LT的一一对应.
+(4) LT是定性概念名称的集合.
+　　在HT,πT和LT已明确的情况下,Q(T)可简记为［T］.进一步地,记［T］0=T,［T］n=［［T］n-1］,则在广义相邻关系和概念邻域结构的基础上,可得到T的分层递阶的定性表示形式.为了完整和方便,可在所得到的层次体系的底层下再加上一层空关系,并在顶层上再加上一层泛关系［6］.
+　　例1:令T=T(n,n)={d,t,o,c,c@b,i,i@b,=}是实体间基本拓扑关系的完备集［5］,则T的一种分层递阶表示可如下所示:
+　　　　(1) Q(T)=〈HT,［T］,πT,LT〉.其中,
+　　　　　HT如图1所示;
+　　　　［T］={{d},{=},{t,o},{i,i@b},{c,c@b}};
+　　　　LT={d,=,o,i,c};
+　　　　πT如表1所示.
+　　　　(2) Q(［T］)=〈H［T］,［T］2,π［T］,L［T］〉.其中,
+　　　　H［T］可由HT推导出来,图2给出了H［T］的一种简洁的表示形式,
+　　　　图中的结点名称是定性概念名称;
+　　　　［T］2={{{d}},{{t,o},{i,i@b},{c,c@b},{=}}};
+　　　　π［T］({{d}})=d且π［T］({{t,o},{i,i@b},{c,c@b},{=}})=o;
+　　　　L［T］={d,o}.　
+　　　表1　πT的定义
+
+［T］LT
+{d}d
+{=}=
+{t,o}o
+{i,i@b}i
+{c,c@b}c
+
+　　
+　　在所形成的层次体系的底层加上一层不可满足的空关系,在顶层加上一层平凡满足的泛关系,则拓扑关系的一种分层递阶的表示形式可如图3所示.
+
+　　常识知识和定性知识的基本特点是,同一名称的概念在不同的上下文中具有相近而又不同的定义［2］.已有的定性表示方法,如文献［4］中给出的方法,虽然强调了定性与定量的相对性,指出了定性表示的层次性,但这些方法只是从形式上把定性值定义为定量集的子集,没有进一步刻画定性值子集的结构,忽略了不同层次的概念可具有同一名称这一现象,因而不能反映出常识知识和定性知识的这一基本特点.从例1中可以看出,本节给出的定性表示方法以概念邻域结构为基础,并把定性概念名称集作为定性表示的基本成分,从而刻画了不同粒度或抽象层次上相近而又不同的同名概念间的内在机制,可较好地表示并处理常识知识和定性知识的这一基本特点.因而,本节提出的定性表示方法是已有定性表示方法的发展,较已有的方法有更好的认知合理性.
+2　复合表的计算方法
+　　拓扑关系的复合表是拓扑推理代数方法的基础.现有的拓扑关系和其他空间关系的复合表大都是依靠人的直觉通过反复尝试得到的.最近人们认识到,复合表的自动计算问题是定性空间推理面临的挑战问题之一［8］.在文献［5］中给出了基本拓扑关系复合表的形式推导方法.在此基础上,本节进一步研究定性拓扑关系复合表的计算方法.
+　　记［T］n-1中的复合运算为“”,［T］n中的复合运算为“*”,并简记π［T］n-1为π,RS=∪r∈R,s∈Srs.已知［T］n-1中的复合表,即对任意的r,s∈［T］n-1,rs有定义,则［T］n中的复合表可按如下方法计算:对任意u,v∈L［T］n-1,
+
+　　可见,有了基本拓扑关系的复合表,按照上述方法,就可计算出定性拓扑关系的复合表.由文献［5］可知,该方法是正确的.表2是基本拓扑关系的复合表,表3和表4是基于表1计算出的图3所示定性拓扑关系的复合表.这与文献［3］中给出的结果是一致的.
+表2　基本拓扑关系的复合表
+
+*dtoi@bic@bc=
+dT{d,t,o,i@b,i}{d,t,o,i@b,i}{d,t,o,i@b,i}{d,t,o,i@b,i}{d}{d}{d}
+t{d,t,o,c@b,c}{d,t,o,i@b,c@b,=}{d,t,o,i@b,i}{t,o,i@b,i}{o,i@b,i}{d,t}{d}{t}
+o{d,t,o,c@b,c}{d,t,o,c@b,c}T{o,i@b,i}{o,i@b,i}{d,t,o,c@b,c}{d,t,o,c@b,c}{o}
+c@b{d,t,o,c@b,c}{t,o,c@b,c}{o,c@b,c}{o,i@b,c@b,=}{o,i@b,i}{c@b,c}{c}{c@b}
+c{d,t,o,c@b,c}{o,c@b,c}{o,c@b,c}{o,c@b,c}{o,i@b,i,c@b,c,=}{c}{c}{c}
+i@b{d}{d,t}{d,t,o,i@b,i}{i@b,i}{i}{d,t,o,i@b,c@b,=}{d,t,o,c@b,c}{i@b}
+i{d}{d}{d,t,o,i@b,i}{i}{i}{d,t,o,i@b,i}T{i}
+={d}{t}{o}{i@b}{i}{c@b}{c}{=}
+
+其中T={d,t,o,c@b,c,i@b,i,=}
+表3　中粒度拓扑关系的复合表
+
+*d=ico
+d{d,=,i,c,o}d{d,i,o}d{d,i,o}
+=d=ico
+idii{d,=,i,c,o}{d,i,o}
+c{d,c,o}c{c,=,i,o}c{c,o}
+o{d,c,o}o{o,i}{d,c,o}{d,=,i,c,o}
+
+表4　粗粒度拓扑关系的复合表
+
+*do
+d{d,o}{d,o}
+o{d,o}{d,o}
+
+3　推理算法
+　　文献［6］研究了层次体系中的拓扑推理算法,但没有考虑约束具体化的问题.本节进一步研 究这一问题,并提出分层递阶的拓扑推理算法.
+　　设在如图3所示的层次体系N中,“　()/(()/(⊥))”层为0层,“⊥”层为4层,MAXLEVEL=4.记Parent(node)为结点nod e的父结点,Children(node)为结点node的子结点集,R1,R2,R3分别为表2、表3和表4所 示的 复合表的推导运算,TCN是空间物体拓扑关系的约束网络,rel(Ni)是N中第i层拓扑关系的集合,rel(TCN)是TCN中出现的拓扑关系的集合,G是所关心 的空间物体的有序集合,G.level说明G中的拓扑关系是Nlevel中的关系,NETSET是拓扑 关系约束网络的有序集,head(NETSET)是NETSET中的第1个网络,tail(NETSET)是NETSET中除h ead(NETSET)之外其余网络组成的有序集,则分层递阶的拓扑推理算法可描述如下.
+　　算法TRH. 分层递阶的拓扑推理算法.
+　　输入:TCN,N,G.
+　　输出:层次最高且路径相容的TCN,相容解.
+　　过程:
+　　步骤1. 初始化.NETSET←{G}.
+　　步骤2. 确定推理的初始层次.即:
+找出N中的某一层level,满足
+　　　　　rel(G)rel(Nlevel)且　　　［rel(G) rel(Nlevel-1)］.
+　　步骤3. 循环入口.
+　　　　　　　　若NETSET=,则返回.
+　　　　　RELAX←false；SPECIFY←false；
+　　　　　K←head(NETSET);
+　　　　　　NETSET←tail(NETSET).
+　　步骤4. 对K.level进行判断.
+　　　　　　　　　若level层为“　()/(()/(⊥))　”层,则返 回“无解”；
+　　　　　　　　　若level层为“⊥”层,则返回“平凡解”；
+　　　　　　　　　若level层已被标记,则返回“层次级别太粗,给不出解”.
+　　步骤5. 约束传播子网络.
+　　　　　　　　　　　对K子网络按Rlevel推导步骤进行约束传播；
+　　　　　　　　　　　A←K中约束传播所生成的泛关系弧;
+　　　　　　　　　　　标记K.level层.
+　　步骤6. 子网络相容性判断及处理.
+　　　　　　　　　　　K中的关系都是泛关系:调用约束具体化过程TS(K),转步骤3；
+　　　　　　　　　　　K是相对整个网络相容的:
+　　　　　　　　　　　若(A=或 SPECIFY且level=MAXLEVEL-1或RELAX,且level=1),
+　　　　　　　　　　　则返回相容解；
+　　　　　　　　　　　否则,对每一个a∈A,在K中找出其相关联的弧及结点,形成一个子网络Ga,调用具体化过程T S(Ga),转步骤3.
+　　　　　　　　　　　K是不相容的:调用约束松驰过程TR(K),转步骤3.
+　　两个子过程TS和TR的定义如下.
+　　TS(G):拓扑约束具体化过程.
+　　输入:子网络G,层次level.
+　　输出:加入子网络G的具体化网络的新网络集NETSET,新的level.
+　　过程:
+{
+　　对任意A,B∈G,若ATB,Trel(Nlevel),则在新的子网络G′中,有AT′B,其中
+T′=∪φ∈TChildren(φ).
+　　NETSET←NETSET∪{G′}.
+level←level+1.
+SPECIFY←true.
+}.
+　　TR(G):拓扑约束松驰过程.
+　　输入:子网络G,层次level.
+　　输出:加入子网络G的松驰网络的新网络集NETSET,新的level.
+　　过程:
+{
+对任意A,B∈G,若ATB,Trel(Nlevel),则在新的子网络G′中,有AT′B,其中
+T′={Parent(φ)|φ∈T}.
+NETSET←NETSET∪{G′}.
+level←level-1.
+RELAX←true.
+}.
+　　例2:一单位要创建一个生活小区.生活小区由3部分组成:住宅区(R) 、商业区(B)和车站(S).设计要求是:
+　　(1) 住宅区和商业区分开;
+　　(2) 住宅区应包含一个车站;
+　　(3) 商业区应包含一个车站.
+　　试应用拓扑推理方法给出一种合理的设计.
+　　TRH算法的求解步骤:
+　　(I) 确定推理的初始层次为层次3.
+　　(II) 应用层次3的复合表,约束传播子网络G=(R,B,S},得知子网络是不相容的,如图4( a)所示.
+　　(III) 调用TR(G)过程,建立新的约束子网络,如图4(b)所示,推理层次为2.
+　　(IV) 应用层次2的复合表,约束传播子网络.
+由于
+{d}.{c}={d},{d}∩{c}=,
+故子网络是不相容的.
+　　(V) 调用TR(G)过程,建立新的约束网络,如图4(c)所示,推理层次为1.
+
+　　(VI) 应用层次1的复合表,约束传播子网络,得知子网络是相容的,且各关系不是 泛关系,故返回相容解
+
+R{d}B,R{o}S,B{o}S.
+
+所求的合理解如图5所示.
+
+例3:令X,Y,Z是3个实体,试基于算法TRH,找出单个的拓扑关 系r,满足
+XrY,YrZ,ZrX.
+　　设XuY,YvZ,ZwX,则w-1=u*v或w=v*u.因此,应用算法TRH是可行的.
+　　由于X,Y,Z间的拓扑关系没有已知的约束,故均可设为{d,o}.由此确定出初始推理层次为1.应 用算法TRH,并注意到r是单个关系且满足XrY,YrZ和ZrX,可得到层次3的相容解
+d,=,o,t.
+　　由于X,Y,Z是实体,故最后的解是r=d或r=t.
+　　由例2和例3可见,基于算法TRH,可简洁地给出问题合理的解；而Hernandez和Smith 提出的拓扑推理算法却给不出解.
+4　结束语
+　　陈见等人给出的定性表示方法没有刻画定性值集合的内在结构［4］.Smith和Hernand ez等人只给出了固定粒度层次上的拓扑推理算法［1,2］.针对这些问题,本文研究了 一种分层递阶的拓扑推理方法,主要包括:(1) 提出了一种基于概念邻域结构的拓扑关系定性 表示方法;(2) 给出了定性拓扑关系复合表的自动计算方法.(3) 研究了在拓扑关系定性表示 的层次体系中,合适表示、推理层次的选择方法,给出了一个分层递阶的拓扑推理算法. 
+　　从文中给出的示例和分析可知,本文提出的方法不仅发展了拓扑推理的已有工作,可针对问题 的具体约束构造性地给出合理的解,而且能够较好地表示并处理一般的定性知识,在其他定性 知识的表示和处理方面,也有一定的参考价值.
+　　进一步的工作包括:(1) 约束松驰和约束具体化过程与非空间约束的集成研究;(2) 分层递阶 方法在其他空间关系的定性表示和处理方面的应用研究.
+
+本文研究得到清华大学智能技术与系统国家重点实验室开放课题基金资助.
+作者廖士中,1964年生,博士,副教授,主要研究领域为定性推理,空间推理,人工智能应用基础.
+     石纯一,1935年生,教授,博士生导师,主要研究领域为人工智能应用基础,知识工程.
+本文通讯联系人:廖士中,大连 116029,辽宁师范大学计算机科学系
+作者单位：　廖士中（辽宁师范大学计算机科学系　大连　116029）
+　　　　　　石纯一（清华大学计算机科学与技术系　北京　100084）
+参考文献
+　[1]　Smith T R, Park K K. Algebraic approach to spatial reasoning. Interna tional Journal of Geographical Information Systems, 1992,6(3):177～192
+　[2]　Hernandez D. Qualitative Representation of Spatial Knowledge. Berlin: Sprin ger-Verlag, 1994
+　[3]　Grigni M, Papadias D, Papadimitriou C. Topological inference. In: Mellish S S ed. Proceedings of the IJCAI'95. San Meteo: Morgan Kaufmann Publishers, Inc., 1995. 901～906
+　[4]　陈见,石纯一.定性代数的形式框架FAQA.计算机学报,1995,18(6):417～423
+(Chen Jian, Shi Chun-yi. FAQA: a formal frame of qualitative algebra. Chinese J ournal of Computers, 1995,18(6):417～423)
+　[5]　廖士中,石纯一.拓扑关系的闭球模型及复合表的推导.软件学报,1997,8(12):894 ～900
+(Liao Shi-zhong, Shi Chun-yi. Closed ball model and composition table derivati on for topological relations. Journal of Software, 1997,8(12):894～900)
+　[6]　廖士中.定性空间推理分层逼近方法研究［博士学位论文］.北京:清华大学,1997 
+(Liao Shi-zhong. The research on the hierarchical approximation method for qual itative spatial reasoning ［Ph.D. Thesis］. Beijing: Tsinghua University, 1997) 
+　[7]　Freksa C. Temporal reasoning based on semi-internals. Artificial I ntelligence, 1992,54(1-2):199～227
+　[8]　Cohn A G. The challenge of qualitative spatial reasoning. ACM Computing Sur veys, 1995,27(3):323～325 
+本文1998-02-10收到原稿,1998-05-25收到修改稿

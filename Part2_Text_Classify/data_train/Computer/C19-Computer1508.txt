@@ -1,0 +1,104 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+一类不确定动态时滞系统的无记忆鲁棒镇定控制1）
+苏宏业　王景成　褚健
+摘　要　针对状态和控制均存在滞后，同时具有未知且有界的一类时变不确定线性时滞系统，提出了一种无记忆鲁棒镇定控制器设计算法.给出了闭 环系统二次稳定的充分条件，并利用一等价线性时不变系统的H∞标准问题综合方法来构造出所需的线性状态反馈控制律，即可通过求解一代数Riccati 型方程来求得控制律静态增益阵，从而保证了解的存在性和可解性.
+关键词　不确定线性时滞系统，鲁棒镇定，状态反馈，二次稳定，Ricc ati方程
+MEMORYLESS ROBUST STABILIZATION OF A CLASS
+OF UNCERTAIN LINEAR TIME－DELAY SYSTEMS
+SU HONGYE　WANG JINGCHENG　CHU JIAN
+(National Lab. of Industrial Contr. Tech., Inst.of Industrial Pro cess Contr.,
+Zhejiang Univ., Hangzhou 310027)
+Abstract　This paper presents a controller for robust stabilizat ion of a class of uncertain linear dynamic systems with time-delays in both sta te and control. The uncertain systems under consideration are described by state differential equations which depend on time-varying unknown-but-bounded unce rtain parameters. The sufficient conditions for quadratic stability of closed-l oop systems are derived.The desired linear state feedback control law can be co n structed by synthesis of an H∞ standard problem of equivalent linear time -invariant systems, that is to say, the static controller gain can be obtained by solving an algebraic Riccati equation, and thus the existence and feasibility of solution can be ensured.
+Key words　Uncertain linear time－delay systems, robust stabil ization, state feedback, quadratic stabilization, Riccati equation.
+1　引言
+　　近年来，利用状态反馈来镇定具有未知且有界参数的不确定线性动态系统的问题已引起了很 多 研究人员的兴趣.文［1，2］针对不确定线性系统，提出了一种不需要满足匹配条件的Riccati方程镇定方法，其利用一Riccati方程的解构造静态状态反馈控制器，实现鲁棒镇定的目的.文［3］把这一方法推广至具有状态滞后的不确定线性时滞系统，并得到了相应的无记忆线性状态反馈控制器.进而，一些研究人员把Riccati方程方法推广至更广泛的系统，如文［4］和［5］分别利用此方法解决了具有时变状态滞后和具有时变控制滞后的不确定线性时滞系统的镇定问题.本文把这一方法推广至同时具有状态和控制滞后的时变不确定线性时滞系统，提出了无记忆鲁棒镇定控制器存在的充分条件及相应的设计方法.
+2　系统描述和定义
+　　考虑一时变不确定线性时滞系统
+(t)=(A0+ΔA0(t))x(t)+(A1+ΔA1(t))x(t-d)+
+(B0+ΔB0(t))u(t)+(B1+ΔB1(t))u(t-h),
+x(t)=ξ(t),t∈［－τ,0］,τ=max｛d,h｝.　　　(1)
+其中x(t)∈Rn是状态向量，u(t)∈Rm是控制输入向量；A0∈Rn×n，A1∈Rn×n，B0∈Rn×m，B1∈Rn×m是已知的系统常数矩阵；ΔA0(.)，ΔA1(.)，ΔB0(.)和ΔB1(.)分别是具有适当维数的不确定时变实数矩阵，表示系统的不确定性；d和h分别是非负时滞常数，ξ(t)∈Cn［－τ，0］是实值连续函数向量，表示系统的初始状态向量.
+　　不失一般性，假设本文考虑的参数不确定性具有如下形式
+ΔA0(t)=H0F(t)E0,　　ΔA1(t)=H1F(t)E1,　　　
+ΔB0(t)=H0F(t)N0,　　ΔB1(t)=M1F(t)N1.　　(2)
+其中H0，H1，M1∈Rn×s；E0,E1∈Rq×n；N0，N1∈Rq×m 是已知的常数矩阵.F(t)∈Rs×q是一个具有Lebesgue可测元的未知矩阵函数，且满足
+FT（t）F(t)≤I.　　(3)
+其中I表示适当维数的单位矩阵.下面针对时变不确定线性时滞系统(1)～(3)，引入线性状态反馈控制律：u(t)=Kx(t)来实现鲁棒镇定的目的.首先引入下面的定义(参见［4］).
+　　定义1.不确定线性时滞系统(1)～(3)称为是二次能稳定的，如果存在正定对称矩阵P,R1，R2∈Rn×n和一个正常数β＞0，对任意允许的不确定性F(.)，存在线性反馈控制律
+u(t)=Kx(t)　　(4)
+使得沿闭环系统(1)～(3)和(4)的任意轨线所选取的Lyapunov函数
+V(x(t),t)=xT(t)Px(t)+∫tt-dxT(s)R1x(s)ds+∫tt-hxT(s)R2x(s)ds.　　(5)
+关于时间t的导数满足
+L(x(t),t)≤－β‖x(t)‖2，　　(6)
+则控制律(4)称为二次鲁棒镇定控制器，闭环系统(1)～(3)和(4)是二次稳定的.
+3　无记忆鲁棒镇定分析
+　　针对前述的同时具有状态和控制滞后的不确定线性时滞系统(1)～(3)，本节将分析和研究采 用(4)式的无记忆状态反馈控制律能进行鲁棒镇定的充分条件.
+　　引理1.［4］　对于任意正常数ε＞0，适当维数的向量X(t)，Y(t)和适当维数的矩阵F(t)，其中F(t)满 足FT(t)F(t)≤I，则
+　　(7)
+　　定理1.　假设存在正定对称矩阵P和正常数β＞0，对于一给定的正定对称阵R1∈Rn×n和任意允许的不确定性F(.),使得
+S=(A0+B0K)TP+P(A0+B0K)+PWP+Q≤－βI.　　(8)
+其中　W=H0HT0+A1R－11AT1＋B1BT1＋H1HT1＋M1MT1，
+Q=(E0+N0K)T(E0+N0K)+R1+ET1E1+KTK+KTNT1N1K.
+则闭环系统(1)～(3)和(4)是二次稳定的.
+　　证明.假设存在正定对称矩阵P，R1，R2∈Rn×n，一常数矩阵K∈Rm×n和一正常数β＞0，对于任意允许的不确定性 F(.)，使得矩阵不等式(8)成立，则我们引入线性状态反馈控制律u(t)=Kx(t)后闭环系统可写为
+(t)=［(A0+B0K＋H0F(t)(E0+N0K)］x(t)+　　　　　　
+［A1+H1F(t)E1］x(t-d)+［B1+M1F(t)N1］Kx(t-h).　　(9)
+考虑Lyapunov函数
+V(x(t),t)=xT(t)Px(t)+∫tt-dxT(s)(R1＋ET1E1)x(s)ds+
+∫tt-hxT(s)(R2+KTNT1N1K)x(s)ds，
+其沿闭环系统(9)关于时间t的导数为
+L(x(t),t)=xT(t)(PAC0＋ATC0P)x(t)+2xT(t)PH0F(t)(E0+N0K)x(t)+
+2xT(t)P［A1＋H1F（t）E1］x(t-d)+2xT(t)P［B1＋M1F（t）N1］Kx(t-h)+
+xT(t)(R1+ET1E1)x(t)-xT(t-d)(R1+KT1E1)x(t-d)+
+xT(t)(R2+KTNT1N1K)x(t)-xT(t-h)(R2+KTNT1N1K)x(t-h).　　(10)
+其中 Ac0=A0+B0K.分别针对(10)式中的第二项至第四项应用引理1，并选取R2=KTK，同时利用矩阵不等式(8)可得
+L(x(t),t)≤－β‖x(t)‖2.　　　(11)
+由定义1可知，闭环系统是二次稳定的.
+定理1得证.
+　　条件1.如果存在一常数矩阵K∈Rm×n，正定对称矩阵P∈Rn×n和R1∈Rn×n使得不等式(8)成立，则称闭环系统(1)～(3)和(4)满足条件1.
+4　鲁棒镇定控制器综合
+　　根据文［6］中的引理2.2，前述的条件1可以被等价地描述为：对于一新的线性时不变系统
+　　(12)
+其中和z(t)∈R3q+m+n分别是新的线性时不变系统(12) 的状态向量，控制输入向量，扰动输入向量和被控输出向量；D∈Rn×(3s+m+n)，C1∈R（3q+m+n）×n，C2∈R（3q+m+n）×m分别为
+
+引入一无记忆状态反馈控制律
+
+导致的闭环系统是稳定的，并且满足H∞范数约束
+‖(C1＋C2K)(sI-A0-B0K)－1D‖∞＜1.　　(13)
+从而我们把条件1转换成为一线性时不变系统的H∞标准问题.
+　　为了简单起见，我们引入如下一些描述：
+令r=rank(C2)；U∈R(3q+m+n×r)，V∈Rr×m是满足
+C2=UV,rankU=rankV=r　　(14)
+的任意矩阵.并进一步选取Φ∈R（m-r）×m满足
+ΦVT=0，(当r=m时，Φ=0).　　(15)
+定义
+Ξ=VT(VVT)－1(UTU)－1(VVT)－1V，
+从而可得本节的主要结果.
+　　定理2.令Φ∈R(m-r)×m是满足(15)式的一个矩阵；和R1∈Rn×n是给定的正定对称矩阵，则闭环系统(1)～(3)和(4)满足条件1的充要条件是：存在一正数ε＞0，使得代数Riccati方程
+　　(16)
+有一正定对称解P，其中
+
+如果正定对称解P存在，则不确定线性时滞系统的一个鲁棒镇定控制律为
+　　(17)
+　　证明.证明过程与文［6］中的定理3.5类似，在此略.
+　　下述的定理3说明了定理2中的代数Riccati方程(16)的正定对称解P的存在与矩阵和Φ的选取无关，因而实际求解时可选取=I，而Φ可以为任意满足(15)式的矩阵.
+　　定理3.假设存在一组选择和ε＞ 0，使得代数Riccati方程(16)有正定对称解P，则对于任意满足(15)式的矩阵Φ和正定对称阵＞0，存在一正常数ε*，使得对于任意的∈(0，ε*］，Riccati方程(16)均有正定对称解.
+　　证明.与文［2］中的定理2.1类似，此处略.
+5　结论
+　　对于一类具有时变未知但有界不确定参数的线性时滞系统，提出了一种利用线性状态反馈控 制器进行鲁棒镇定的方法.通过求解一代数Riccati型方程来得到控制律的增益阵，并利用一等价线性时不变系统的H∞标准问题综合方法来构造线性状态反馈控制律，较好地解决了解的可解性问题.
+　　1) 国家自然科学基金资助项目.(No.69604006)
+作者单位：浙江大学工业控制技术国家重点实验室、工业控制技术研究所　杭州　310027
+参考文献
+1　Petersen I R, Hollot C V. A Riccati equation approach to the stabiliz a tion of uncertain linear systems. Automatica,1986,22:397-41 1
+2　Petersen I R. A Stabilization algorithm for a class of uncertain linear syste ms. Syst. Contr. Letter, 1987，8：351-357
+3　Shen J, Chen B, Kung F. Memoryless stabilization of uncertain dynamic delay s ystems: Riccati equation approach.IEEE Trans. Auto. Control,1991,AC－37:1022-1025
+4　Mahmoud M S, A1－muthairi N F. Quadratic stabilization of continuous time sys tems with state－delay and norm-bounded time－varying uncertainties.IEEE Trans . Auto. Control,1994,AC－39:2135-2139
+5　Choi H H. Riccati equation approach to the memoryless stabilization of uncert ain dynamic systems with delayed control. Electron. Lett.,1994，30：1100-1101
+6　Zhou K, Khargonekar P P. An algebraic Riccati equation approach to H∞ opti mization. Syst. & Contr. Letter,1988，11：85-91
+收稿日期　1996－05－24

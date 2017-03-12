@@ -1,0 +1,64 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第4期 Vol.35 No.4 1999
+
+
+
+空气作用力对推铅球和跳远成绩的影响
+侯佳　侯曼
+摘要：本文以铅球和跳远为例，计算空气作用力对推铅球和跳远成绩的影响，为寻找减小阻力的方法提供依据。同时，本文的计算公式也可用于其它有类似运动轨迹的体育项目，如链球等。
+关键词：空气动力学∥铅球∥跳远∥作用∥影响
+The Effect of Aerodynamic Force to the Performance of Shot Put and Long Jump
+Hou Jia, Hou Man 
+Abstract：When moving in the air, men and objects are affected by the aerodynamic force unavoidably. Because there are various factors can affect the aerodynamic force, it is difficult to calculate the aerodynamic force accurately, therefor; it is often neglected while analyzing the motion of men or objects in the air. In fact, if the aerodynamic force is neglected, it is difficult to explain the motion of men or objects in the air satisfactorily either from physical significance or from the calculated result and it is also unfavorable for researching the optimum technique. So sufficient attention should be paid to the aerodynamic force. Through analysis of the motion in the air-shot put or long jump, this paper give a formula to analyze the effect of the aerodynamic force to the performance of shot put and long jump, and provide reference for the method to reduce air resistance. Meanwhile, this formula can also be applied to analyze the other sports events with similar motion curve, for example, hammer throwing.
+Key words：aerodynamic∥shot put∥long jump∥influence
+1　公式推导
+　　人或物体在空气中运动时，不可避免地要受到空气作用力的影响，但由于空气作用力受运动的速度、身体姿势、风速、风向、空气密度、平均海拔高度等多种因素的影响，很难准确计算，因而人们在分析运动过程时大多忽略它。实际上，忽略空气作用力无论从物理意义上讲，还是从计算结果上看，都难以圆满解释运动现象，对于研究运动技术的最佳方案也是不利的。因此，应当给予充分重视。本文以铅球和跳远2个项目为例，计算空气作用力对推铅球和跳远成绩的影响，为寻找减小空气阻力的方法和改进技术提供依据。同时，该计算公式也可用于其它具有类似运动轨迹的体育项目，例如三级跳远、链球等。
+　　人在跳远时的运动轨迹如图1所示，其中h为踏跳瞬间身体重心与地面的垂直距离；H为运动员腾空最高点时的身体重心与起跳时的身体重心间的垂直距离；起跳距离S1为身体腾起瞬间起跳板前沿与身体重心之间的水平距离；腾空距离S2为腾空阶段身体重心通过的水平距离；落地距离S3是足跟接触沙面瞬间身体重心与足迹最近点之间的水平距离；总有效成绩为：S=S1+S2+S3。
+
+
+图 1
+　　起跳距离取决于运动员踏板的准确性及身体腾起瞬间的姿势；落地距离取决于运动员腾空时的动作技术和着地技术；腾空距离则是由腾起初速度、腾起角和空气阻力决定的。
+　　人在掷铅球时铅球的运动轨迹如图2所示，此时的h为抛点与地面的垂直距离(即出手高度)；H为出手点与铅球运行最高点间的垂直距离；S1为铅球出手瞬间铅球的重心与投掷圈边沿之间的水平距离；S2为铅球在空中飞行阶段重心通过的水平距离；总有效成绩为：S=S1+S2。
+　　当物体的运动速度在音速以下时，所受到的空气作用力可近似视为运动速度的二次函数，因此，在S2阶段相应的运动方程为：
+　　　(1)
+　　　(2)
+　　其中：U～风速，ρ～空气密度，A～人体或铅球与空气流相对的正面投影面积。CL～ 升力系统，CD～阻力系统，～垂直速度，～水平速度。
+　　由于人或铅球在空中所受到的力很小，即CL／CD≈0，且｜｜＜｜-U｜，也认为其等于零 ，则方程(1)得
+　　　(3)
+　　设　　　　　　(4)
+αn=α／exp(-α／α*)　(a为海拔高度，a*=7，160 m)　　　(5)
+　　则　　　
+解此微分方程，设初始水平速度为0，得
+　　　(6)
+　　注意到：当｜ε｜<<1(即ε很小时)，In(1+ε)≈ε
+　　有
+　　　(7)
+　　因此：
+　　　(8)
+　　所以　　　　　　(9)
+　　或　　　　　　　(10) 
+　　其中，，即
+　　由方程(10)可知，在考虑空气作用力的情况下，腾空距离S是风速U、重心高度h、初速度o等的函数，其相互之间的关系远比忽略空气阻力时要复杂的多。
+　　由公式(3)、(4)可知，αn即表示了在比赛现场，运动员或器械所受空气作用力的情况。 下面我们将通过计算，分析αn的值，来讨论空气作用力对运动的影响。
+2　数据处理
+　　由于比赛现场的海拔高度通常远远小于7，160 m，由公式(5)可知，α的值即为αn的值， 因此，只需 通过公式(10)计算出α即可。由于公式较复杂，在求解过程中出现开方、函数、求导等计算 ，许多数据需要取近似值，这就大大影响了计算结果的精确度。为了减少误差，我们编制了 一段BASIC程序，利用计算机进行数据处理。程序如下：
+　　10 INPUT u,l,h,j,s
+　　20 g = 9.8
+　　25 o = j / (180/3.14159)
+　　30 b =(1*SIN(o)+SQR (1^2*SIN(O)^2+2*g*h))/g
+　　40 a =(h*(1*COS(o)*b-s))/(b*(1*COS(o)-u)*(s-u*b))
+　　45 PRINT a
+　　50 END
+　　其中，u-风速，l-初速度，h-出手高度，j-出手角度(起跳角度)，s-实际距离，o-角度换算 后的弧度，a-α。
+3　数据分析
+　　当运动员比赛时，用摄影或摄像的方法即可获得每次试跳的运动学参数；同时，由比赛现场 风速仪可获得风速值。因此，前面公式中的α或αn的值即可得出，并且可以根据αn 值的大小判断该运动员的运动技术受空气作用力的影响情况，即αn的值越小，受空气作 用力的影响越小。
+3.1　对跳远成绩的影响
+　　在1991年东京世界田径锦标赛上，美国运动员M.鲍威尔和C.刘易斯，分别以8.95 m和8. 91 m打破了保持达23年之久的世界纪录，1968年比蒙在墨西哥奥运会上创造了8.90 m的世界 纪录。
+　　分析表1数据，运动员所创造的成绩，与同样的起跳角和起跳高度在真空中距离之间的差值 分别为0.37 m、0.29 m和0.70 m。由此可见，空气作用力对运动成绩有一定的影响。比 较αn，发现刘易斯的αn值小于鲍威尔，即说明空气作用力对鲍威尔的影响要大于刘易 斯。再进一步分析3个差值，发现鲍威尔在海拔高度与刘易斯相同，但风速小于刘易斯的情 况下，其差值却大于刘易斯，与分析αn值得到的结论相吻合。因此可以说，如果鲍威尔 能进一步改进其在腾空中的技术和身体姿势，还有可能创造出更好的成绩。
+表 1　比蒙、刘易斯、鲍威尔创造世界纪录时的相关数据一览表
+
+　有效距离实际距离真空中距离风速海拔高度起跳时水平速度起跳角αn
+比　蒙8.908.909.272.02200　　0.015
+刘易斯8.918.919.202.909.1120.30.011
+鲍威尔<font face="宋

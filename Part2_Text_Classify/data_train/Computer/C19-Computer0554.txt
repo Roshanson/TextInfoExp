@@ -1,0 +1,86 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第4期　Vol.23　No.4　1997
+
+
+
+点发序列问题的控制策略1)
+邢科义　李俊民　许祥秦　胡保生
+　　摘　要　在离散事件系统的Petri网模型下，讨论是否存在控制策略使得仅有希望的序列使能， 而又保持事件的并发性的问题. 证明了存在这种策略的必要充分条件是给定的目标序列集是可控的. 在目标序列集不可控而所考虑的序列集都是Petri网点发序列集时，提出了综合给定序列集的极大可控子序列集生成器的方法. 
+　　关键词　点发序列问题，Petri网，控制策略. 
+THE CONTROL STRATEGY FOR THE FIRING SEQUENCE PROBLEM
+XING KEYI LI JUNMIN XU XIANGQIN
+(Department of Applied Mathematics, XIDIAN University, Xi′an 710071)
+HU BAOSHENG
+(Systems Engineering Institute, Xi′an Jiaotong University, Xi′an 710049)
+Abstract In this paper we use Petri nets to model a discrete event system, and discuss whether or not there exists a control strategy by which only the specified target firing sequences can be enabled. It is proved that a necessary and sufficient condition for the existence of such strategy is that the set of the specified target firing sequences are controllable. For the case where the firing sequence sets involved are Petri net firing sequence sets we present a method for synthesizing a control strategy by which the closed loop system can generate the supremal controllable subset of a given firing sequence set.
+Key words Firing sequence problem, Petri net, control strategy.
+1　引　言
+　　在离散事件系统控制理论中，Ramadge和Wonham［1］在自动机语言下研究了各种控制问题，讨论了监督控制，即使闭环系统沿目标语言演化的动态控制器的存在性，给出了监控器的综合方法. 但事件的并发性是不能用自动机语言来描述的，从而被排除在他们研究的情形之外. 
+　　Petri网(P-网)是模拟分析并发事件系统的有力工具，它能清楚地描述事件的相关性和独立性，以及事件的并发性. Ichikawa和Ushio［2，3］仅在一些特殊情况下讨论了基于P-网的控制问题. 本文在一般的P-网中讨论点发序列问题，在系统行为和希望行为都是P-网序列集时，给出了问题的控制策略存在的必要充分条件，以及综合方法. 提出了接受极大可控子序列集的受控系统的构造方法. 
+2　Petri网点发序列集， 控制策略
+　　本文讨论P-网N=(P,T,I,O,m0)［4］中几个变迁可以同时点发数次的情形，即在标识m下点发的变迁全体是一个变迁袋. 用T∞表示T上的所有变迁袋的集合. b∈T∞称为在m下是状态使能的，如果对所有p∈P，有#(p,t)≤m(p)， 其中#(u,v)=在m下，状态使能的变迁袋b的点发使系统由m变为状态m′，m′(p)=m(p)+#(t,p)-#(p,t),记作m〔b＞m′.用R(N,m0)记N的可由m0到达的标识之集. T∞*表示所有变迁袋序列之集. 记号m〔b＞m′自然地可扩展到T∞*上. 从m0可依次点发的变迁袋序列之集就是N生成的点发序列集L(N)={σ∈T∞*｜m0〔σ＞有定义}. 
+　　变迁集可分为可控变迁集Tc和不可控变迁集Tu,T=Tc∪Tu. 本文考虑形式为V：R(N，m0)→的控制策略. V把m映射为可控变迁袋的集合V(m).变迁袋b称为在标识m和策略V下控制使能，如果当b=bu∪bc, bu∈,c0∈时，bc∈V(m). 在闭环系统V/N中，只有状态和控制同时使能的变迁袋可以点发. 记号m〔σ, V＞m′表示m〔σ＞m′在V/N中的扩展. 在闭环系统中， V可以看作是从T∞*到的映射，即当m0〔σ,V＞m时，V(σ)=V(m)，否则V(σ)无定义. V/N生成的点发序列集为L(V/N)={σ∈T∞*｜m0〔σ,V＞有定义}. 
+　　P-网的一条不可控路是P-网图中的一条有向路，其上所有变迁都是不可控的. 若一条路除端节点外是不可控的，则称其为内部不可控路. 
+3　点发序列问题及其控制策略
+　　本文所考虑的系统行为L和目标行为K都是P-网点发序列集，即有P-网NL和NK，使得L=L(NL),K=L(NK). 
+　　定义1.设控制系统的模型为P-网N=(P,T,I,O,m0)， 希望行为是序列集KL(N)，点发序列问题就是综合控制策略V，使得闭环结构V/N具有行为K，即K(V/N)=(K的前缀闭包). 进一步地称N可控制到K. 
+　　定义2.设KL(N)，称K关于L(N)可控，如果对任意的σ∈K及bc∈，若σbc∈K，则对任意的bu∈，有σ(bc∪bu)∩L(N). 
+　　定理1.给定受控P-网N，设KL(N)是P-网点发序列集， 则N可控制到K的充分必要条件是K关于L(N)是可控的. 
+　　证明. 必要性.设存在策略V， 使得L(V/N)=K. 设σ∈K,bc∈,σbc∈K, m0〔σ,V＞m,于是σbc∈L(V/N),bc∈V(m)且在m下bc状态使能. 设bu∈，若σ(bc∪bu)∈L(N)，则bu∪bc是在m下状态使能，从而σ(bu∪bc)∈L(V/N)=K. 故K关于L(N)是可控的. 
+　　充分性. 定义策略V在σ∈K时，V(σ)={bc∈｜σbc∈K}，否则V(σ)无定义. 首先证明KL(V/N). 由于空列既在K中又在L(V/N)中，故只需证对每个σ∈K∩L(V/N)，若σb∈K,则σb∈L(V/N)即可. 设σ∈K∩L(V/N),σb∈K, m0〔σ,V＞m，b=bc∪bu，则σbc∈K，故bc∈V(σ)=V(m)是控制使能的，又σb∈KL(N).于是σb∈L(V/N). 
+　　再证L(V/N)K. 设σ∈L(V/N)∩K,b=bu∪bc,bc∈，bu∈ σb∈L(V/N)，则bc∈V(σ)，由V的定义，σbc∈K.又σb∈L(V/N)L(N)及K关于L(N)可控，则σb=σ(bu∪bc)∈K. 于是K=L(V/N). 
+　　定义P-网NK=(PK,T,IK,OK,mK0)和NL=(PL,T,IL,OL,mL0)的同步合成网NK*NL=(PK∪PL,T,IK∪IL,OK∪OL,m0). 其中当p∈PK时，m0(p)=mK0(p)，当p∈PL时，m0(p)=mL0(p). 若L(NK)L(NL),则L(N)=L(NK). 故以后设N=NK且NL是NK的子网. 于是N的标识m可写成m=(mL,mK/L)， mL是NL的标识，mK/L是m在PPL上的限制. 
+　　当K关于L不可控时，希望在K中找一个极大子序列集K1， 使得K1关于L(NL)可控. 若K1,K2K都是关于L可控，则K1∪K2也可控，故极大可控子序列集唯一存在，记作SupC(K).我们希望综合N的一个控制策略V，使得L(V/N)=SupC(K). 
+　　考虑条件： 对p∈P/PL及标识m∈R(N,m0)，
+
+其中
+
+记号A.(N)和.A(N)分别表示P-网N中AP∪T的所有输入元素与输出元素之集. 
+　　若有p∈PL及m∈R(N,m0)使得(FC)成立，则K是不可控的. 因此对每个p∈PPL，要禁止使(FC)成立的标识m. 
+　　设Tc={t1,…,tn}，定义bc∈的特征向量为Ψ(bc)=(a1,…,an)，其中ai是bc中包含的ti的个数. 
+　　令. 这里，把(RC)中的m用m′代替，则得(RC′)，R0(N,m,bc)={m′｜m〔b1σ＞m′,b1bc, σ∈}. 
+　　若有p∈PPL及m使得fp(m,Ψ(bc))＞0，则有m′=(m′L,m′K/L)∈R0(N,m,bc),使得(FC)成立. 故设fp(m0,Ψ(φ))≤0对所有p∈P＼PL成立. 
+　　令m(Tc)={bc∈｜m〔bc＞有定义}
+　　B(m)={bc∈m(Tc｜b′cbc,bu∈，
+　　若mL〔b′c∪bu＞有定义，则m〔b′c∪bu＞有定义}
+　　定义控制策略(m)={bc∈B(m)｜p∈P＼PL,fp(m,Ψ(bc))≤0}.
+　　定理2.设K和L分别是P-网N和NL的点发序列集，KL，NL是N的子网，控制策略如上定义，则L(/N)是关于L可控的，而且%Sup%C(K)=L(/N).
+　　证明.　设σ∈L(/N)∩L,m0〔σ＞m=(mL,mK/L),b=bu∪bc,bu∈,bc∈，若σbc∈L(/N)，σb∈L(NL)，则bc在(m)下控制使能，bc∈B(m)，故对b′u∈,若bc∪b′u在mL下状态使能 ，则在m下也状态使能，σb∈L(/N). 即L(/N)关于L是可控的. 
+　　设σ∈L(N), σL(/N),σ=b1b2…,则存在l∈Z,使得σ′=b1…bl∈L(/N)，而σ′bl+1L(/N)，设m0〔σ′＞m，bl+1=bc∪bu，bc∈, bu∈，则bc(m).于是必有(1)bcB(m)或(2)存在p∈P＼PL，使得fp(m,Ψ(bc))＞0，之一成立. 
+　　若(1)成立，则存在b′cbc及bu∈，使得b′c∪bu在mL下而不在m下状态使能，于是σ′(b′c∪bu)∈L(NL)，而σ′(b′c∪bu)K. 又b′cbc∈m(Tc),σ′b′c∈K，故σ不可能在任何关于L可控的子序列集中. 
+　　若(2)成立，则存在p∈P＼PL，b′cbc和δ≤，使得m〔b′cδ＞m′,m′(p)＜. 设lt=min{pi(t)｜pi∈.t(NL)},t∈p.(N)∩Tu，使得以上不等式成立，令={｜t∈p.(N)}, 则在m′L下状态使能，但在m′下不是状态使能. 故σ′b′cδ∈L＼K.又δ∈,σ′b′c∈K，则σ′b′c和σ′bc都不在K的关于L可控的子序列集中. 
+　　总上所述， L(/N)是极大的而且(/N)=SupC(K). 
+　　由定理2可知，综合及SupC(K)的关键是确定fp(m,Ψ(bc)). 
+　　对p∈P＼PL，定义P.(N)的控制子网为=(Pp,Tp,Ip,Op)，其中Pp是由P的所有的到p.(N)有不可控路的位置组成，Tp=.Pp(N),Ip=I∩(Pp×Tp),Op=O∩(Tp∩Pp). 
+　　设b′cbc，令gp(m,Ψ(b′c)=max-m′(p)｜m〔b′c＞m", m′∈R0(N,m",φ)}，则fp(m,Ψ(bc))=,所以以下只要给出gp(m,λ)即可，其中λ=(λt1,λt2,…，λtn)∈Zn. 
+　　因仅是m′的函数，故记作Xp0(m′). 设从m到m′的过程中，t点发λt次. 令l(pi)=m(pi)+λt，则m′(pi)=l(pi)-λt. 为简单设{t∈Tn｜.t(N)=φ}=φ. 
+　　情形Ⅰ.　中没有不可控圈. 此时gp(m,λ)的综合过程如下：
+　　算法A.　令Xp0=Xp0(m′),其中m′(pi)=l(pi)-λt.
+　　={t∈p.(N)｜从t到p.(N)没有长度大于1的不可控路}. 
+　　S0=Φ,T0=p.(N)＼, P0=.((p.(N))∩Tu)(N)，
+　　对i=0,1,…,重复以下三步，直到算法结束. 
+　　(a) 以λt=min{p(t)｜p∈.t(N)},t∈∩Tu, 代入Xpi得X′p(i+1)，
+令　,
+　　从(N)到∩Tu的所有不可控路的弧全在中}，
+　　 
+　　(b) 在以下条件下取的极大值，并记极大值为.
+　　是整数. 
+　　得Xp(i+1),
+令　
+　　i+1={t∈｜从t到∩Tu的所有内部不可控路的弧全在Si+1中}，
+　　Ti+1=-i+1.
+　　如果=Φ,则令gp(m,λ)=Xp(i+1)，算法结束. 
+　　因没有不可控圈，则在有限步内算法结束. 
+　　情形Ⅱ. 中有不可控圈. 此时在每个不可控圈上取一变迁，用D记这些变迁之集. 如有必要，用pt′p′t代替弧(p,t)或用tp′t′p代替(t,p)，使得D∩(N)=Φ，视增加的变迁t′为不可控的，而D中的变迁为可控的. 此时可利用算法A，但在(a)中，要用{}代替，其中，0≤λt≤min{p(t)｜p∈.t(N)},t∈∩D. 当Xpi是m和λt，t∈Tc，的函数时，算法结束. 
+4　结论
+　　本文讨论了点发序列问题的控制策略存在的必要充分条件. 提出了综合这类策略的一个新方法. 给出了能生成给定P-网点发序列集的极大可控子序列集的受控系统的构造方法. 本文所采用的方法避开了生成和分析状态空间，仅以P-网的结构为基础，这是对文［3］的状态空间法的很大改进，并解决了其未能解决的问题. 
+1)　国家自然科学基金和西安交通大学机械制造系统工程国家重点实验室基金资助项目.
+作者单位:邢科义　李俊民　许祥秦　西安电子科技大学应用数学系　西安　710071
+　　　　　胡保生　西安交通大学系统工程研究所　西安　710049
+参考文献
+[1] Ramadge P J, Wonham W M. Supervisory control of a class of discrete event processes. SIAM J. Control and Optimization, 1987, 25(1):206-230.
+[2] Ichikawa A, et al.. Reachability and control of discrete event systems represented by conflict-free Petri nets. Proc. Int. Symp. Circuits Syst., Kyoto, Japan 1985, 2:487-490.
+[3] Ushio T. On controllability of controlled Petri nets. Control-theory and advanced technology, 1989, 5(3):265-275.
+[4] Peterson J L. Petri net theory and the modeling of systems. Englewood Cliffs, NJ:Prentice-Hall, 1981.
+收稿日期　1994-04-08

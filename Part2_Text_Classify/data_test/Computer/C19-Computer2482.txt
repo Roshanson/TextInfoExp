@@ -1,0 +1,134 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.3　P.328-333
+
+
+
+进化式信息过滤方法研究
+田范江　李丛蓉　王鼎兴
+摘要　进化式信息过滤方法从多个角度描述用户的信息需求,通过类似自然选择的过程,达到系统整体过滤性能的优化.同时还从面向对象程序设计语言的设计思想中获得启发,引入了继承、类树的概念,增加了过滤系统的易用性.这种方法可以缩短训练时间，提高过滤质量,同时减小过滤结果与训练次序的相关性.
+关键词　信息过滤,信息处理.
+中图法分类号　TP393
+Evolving Information Filtering Method
+TIAN Fan-jiang　LI Cong-rong　WANG Ding-xing
+(Department of Computer Science and Technology Tsinghua University Beijing　100084)
+Abstract　Evolving information filtering method presented in this paper describes user's information needs from multi-aspects simultaneously,and improves system filtering performance through a process like natural selection.Inspired by object-oriented programming language,this method also introduces concepts such as inherit and classtree,which make filtering systems easy to use.This method can shorten training time,improve filtering precision,and reduce the relevance between filtering results and training sequence.
+Key words　Information filtering,information processing.
+　　随着因特网上信息量的迅速增加,信息过滤(information filtering)技术正得到越来越广泛的关注.信息过滤系统根据用户的信息需求对动态信息流进行过滤,仅把满足用户需求的文档传送给用户,可以提高获取信息的效率.对信息过滤最主要的需求是对文档与用户信息需求相关性的判断要准确，同时训练时间应尽可能短.在SIFT［1］等传统信息过滤系统中,用户手工输入关键词生成信息需求定义文件(profile),并提供相关反馈进行优化.这些系统的缺点是,过滤结果与起始状态及训练文档次序相关性很大.Amalthaea系统［2］引入自然选择的概念用于个人信息过滤,取得了较好的结果,但训练过程太长,而且是在用户端实现,无法实现离线操作,也无法借鉴其他用户的浏览经验.清华大学计算机科学与技术系设计的信息收集和服务系统TH-InfoBase引入了自然选择、突变、杂交、移植等概念,在服务器端实现了进化式信息过滤.该系统可提供针对大量用户的离线个人信息过滤服务,实验结果表明,该系统中采用的进化式信息过滤方法有效地缩短了训练时间，并提高了准确度.
+1 进化式信息过滤
+1.1　进化式信息过滤器概述
+　　传统的信息过滤器都是定义profile,然后通过一定的学习方法进行学习,本文的进化式信息过滤器引入自然选择的概念,并借鉴了面向对象程序设计中类树及继承的思想.
+　　简单来说就是，首先由系统管理员定义类的框架,并训练出基本的信息需求定义文件,用户通过多种方式根据系统中已有的信息需求定义文件，迅速得到一个较高质量的信息需求定义文件.同时,引入进化式信息需求定义文件(E-Profile),每个E-Profile中包含多个信息需求的描述,它们从不同角度反映用户的信息需求,它们之间互相竞争又互相合作,在竞争中失败的个体将被淘汰,优秀的个体可以繁殖后代.这样,通过多个个体的竞争和合作,经过一个类似于生物界中自然选择的过程,使系统性能达到最优.
+1.2　进化式信息过滤器结构简图
+　　在图1中,菱形框表示数据实体,方框表示行为实体.
+
+Fig.1　Evolving information filter architecture
+图1　进化式信息过滤器结构简图
+1.3　概念及数据实体说明
+1.3.1 进化式用户信息需求定义文件(E-Profile)(见表1)
+Table 1 E-Profile
+表1 E-Profile
+
+ParentT-NumB-ProfileNum
+B-Profile 1Credit
+B-Profile 2Credit
+......　
+B-Profile nCredit
+
+　　在传统信息过滤系统中，用户信息需求定义文件(profile)大多是一个包含若干项(T)及其权重(Tw)的序列,其形式为｛(T1,W1)(T2,W2)...(Tn,Wn)｝.本文将profile扩展为E-Profile(evolving-profile),为清晰起见,传统形式的profile被称作基本profile(B-Profile).E-Profile的首部是属性域,主要包括指向其父节点的Parent指针、训练次数T-Num和B-Profile个数等.其后是多个B-Profile及该B-Profile的信任度Credit.
+　　为了便于管理,所有由站点管理者(Web master)创建的E-Profile构成一个树形结构的系统E-Profile库(system E-profile lib),而所有由用户创建的E-Profile则保存在User E-Profile Lib中.
+1.3.2 倒置列表(inverted lists)、特征项词典(term dictionary)
+　　倒置列表包含最能反映该文档特征的特征项及其权重集合,形式与B-Profile相同.为降低计算量及存储空间,在生成倒置列表时系统并不是将所有出现的词都作为特征项,只有在E-Profile中出现的项才可能作为特征项,特征项词典根据System E-Profile Lib和User E-Profile Lib生成,作为分析文档时的依据.
+1.3.3 文档(document)、过滤后的文档集(filtered documents)
+　　文档是信息过滤系统处理的基本单位,一个文档就是一个具有相对独立意义的自然语言片断.过滤后的文档集是所有文档按照与用户信息需求相关的程度排序后,按照相关程度阈值截断的文档集合,形式为｛(D1,S1)(D2,S2)...(Dn,Sn)｝.
+1.3.4 反馈信息(feedback information)
+　　用户可以对过滤后文档集中的文档按照与其信息需求的相关程度打分,分数分为5个级别,最低为0,最高为1,反馈信息形式为｛(D1,S1)(Di,Si)...(Dm,Sm)｝(m≤n).
+1.4　行为实体作用及算法说明
+1.4.1 类树建造器(classtree builder)
+　　在系统初始化时,WebMaster使用类树建造器构建作为系统基础的系统E-Profile库.系统E-Profile库采用树形结构,最顶层是包含所有文档的World类,一篇文档可以被归入一个或多个类,不能归入任何类的都被归入“其他(others)”类.
+　　类别个数、层次结构及每个类别的E-Profile使用标注过类别的训练文档集合进行训练,每个类别的E-Profile根据被标注为该类别的训练文档生成.生成方法是,设类别个数为m,类别集合Cset=｛C1,C2,...,Cm｝；训练文档数为n,训练文档集合Dset=｛D1,D2,...,Dn｝,其中Di=｛Vi;Si1,Si2,...,Sim｝,Vi是文档Di的向量表示,Sij是文档Di与类Cj的相关程度,则类Cj的B-Profile(Pj)可以用下式得到:
+
+　　上式的含义是，属于类Cj的文档必须与分值高于ξ的文档相似,而与分值低于ξ的文档不 相似.在经过上述处理的Profile中可能包含很多项,截取权重最高的N项构成最终的B -Profile，N是一个系统参数.取ξ的不同值,可以得到多个不同的B-Profile,它们 共同构成类Cj的E-Profile.
+1.4.2 用户信息定义文件生成器(user E-profile generator)
+　　系统E-Profile库建立后,用户可以浏览类的结构及各类的典型文档,选择与自己的需求最接 近的类,并在此类E-Profile的基础上生成自己的E-Profile.生成的方法有
+　　(1) 移植(transplant).记为P1→P2,实际上就是完全复制一个E-Profile.
+　　(2) 杂交(crossbreeding).记为P1×P2;P3,P4,根据已有的两个信息需求定义文 件(P1,P2),生成两个新的信息需求定义文件(P3,P4),以如下方式实现：
+　　首先得到两个交叉点：
+n1=rand(1,sizeof(P)-2),　　n2=rand(n1,sizeof(P)-1).
+然后,P3,P4从P1,P2继承:
+
+　　(3) 嫁接(inoculation).记为;P2,根据已有的信息需求定义文件(P1)和 示例文档集合(Ds),生成新的信息需求定义文件(P2),以如下方式实现：
+
+其中n=sizeof(Ds),训练文档集合Ds=｛D1,D2,...,Dn｝,Di=｛Vi;Si1 ,Si2,...,Sim｝,Vi是文档Di的向量表示,Sij是文档Di与类Cj 的相关程度.
+　　通过以上3种操作,用户在注册时可以很方便地根据系统中已有的类别及自己提供的示例文档 得到自己的初始E-Profile.
+1.4.3 词典管理器(dictionary manager)
+　　词典管理器首先根据一个计算机术语词表生成特征项词典,并根据系统E-Profile库和用户 的E-Profile不断扩充该词典.另外也负责同义词、词根化等预处理工作.
+1.4.4 文档分析器(document parser)
+　　文档分析器负责在不遗漏关键信息的同时把文档转换成便于高效处理的结构,文档使用向量空间模型表示.关键词Tk在文档i中的权重Wik计算如下：
+Wik=Tik×log((N+0.5)/nk)/log(N+1.0)，
+　　Tik是文档i中关键词Tk的出现次数；log(N/nk)是训练文档集合中项Tk的倒置文档频率;N是训练文档集合中文档的总数;nk是训练文档集合中包含项Tk的文档数. 
+1.4.5 比较器(classifier)
+　　过滤时,E-Profile中的每个B-Profile都与文档进行比较，并得到一个相似度,计算相似度的方法是余弦相似度［3］.设B-Profile为P=［p1,p2,...,pt］t,文档向量为D=［d1,d2,...,dt］t,其中t是词典中所有的特征项的个数,向量中的每个单元是权重,它们的相似度可以用以下公式计算.
+　　所有文档向量为0的文档全部被归入“其他”类中,不需要计算相似程度.
+
+　　设在一个E-Profile中共有n个B-Profile,那么对任意文档d,将得到由n个相似度 组成的相似度向量S=［S1,S2,...,Sn］T,同时，E-Profile中n个B-Profil e的信任度(credit)也构成一个信任度向量C=［C1,C2,...,Cn］T,文档的最终相 似度向量S′=CTS,对于一批文档Dset=｛D1,D2,...,Dj｝,根据相似度， S可以得到每个B-Profile的文档排序,根据最终相似度，S′可以得到该E-Prof ile的文档排序.
+1.4.6 用户界面与反馈(representation/feedback)
+　　过滤后的文档按照最终相似度排序后提供给用户.用户首先见到的是系统判断与用户信息需 求相似度最高的前N个文档,N值可以由用户指定.用户可以对见到的文档作出评价,评价分 为5级.
+1.4.7 进化控制器(evolving controller)
+　　(1) 隐式学习策略
+　　B-Profile采用激励(reinforcement)算法［4］进行学习：
+
+　　其中Sij是第i个B-Profile对文档dj的评分,Vj是文档dj的向量表示,ξ 是我们的准确度的期望,τ是一个被精确选择的步长.通过上式,每个B-Profile在每次反 馈后都向用户的实际信息需求发生一次小的移动,从而达到提高过滤准确度的目的.
+　　当同时存在多个B-Profile时,有可能出现一个B-Profile认为相关度很高的文档全部不能 被系统选中的情况,在Amalthaea系统中,这意味着该过滤器永远无法提高其分值.上面的方法 可以称为隐式学习,所有的B-Profile有同等的学习机会,避免了这个问题.
+　　(2) 奖惩策略
+　　所有B-Profile的信任度被初始化为1/n,n是E-Profile中B-Profile的个数.这样,在 系统初始时,所有的B-Profile具有相同的机会.在进行过滤并得到反馈信息后,它们的 信任度被更新.更新的基本原则是，如果非常肯定却被用户否决或否决却被用户肯定,那么信 任度降低；如果与被否决的一致或类似或者是与被肯定的一致或类似则信任度提高.公式为
+
+　　计算过所有B-Profile更新后的信任度以后,将所有信任度映射到［0，1］区间：
+
+　　(3) 淘汰策略
+　　用户提供的反馈次数达到一定值后,系统通过杂交操作进行更新.方法是：首先选择信任度 (credit)最高的两个B-Profile作为祖先,这是因为只有表现好的B-Profile才有繁殖后代 的资格.根据杂交操作得到两个新的B-Profile后,寻找两个表现不佳的B-Profile,替代它 们.选择的依据是生命期信任度C′：
+C＇=C×τ(Fmax-Fn+N)　0＜τ＜1
+　　其中C是信任度；Fmax是从当前E-Profile的各个B-Profile中得到的最多反馈次数；Fn是该profile得到的反馈次数；N是一次提交给用户的文档数,即一次反馈的最小单位；是系统参数.引入生命期信任度是基于以下假设：即经过多次反馈和很少几次 反馈达到相同的信任度的B-Profile质量是不同的,越“年轻”的越有前途.
+2　实验结果
+2.1　数据集合与评价指标
+　　实验使用的数据集合是500个HTML文档.用10种不同的信息需求代表10个用户,对500个文档进行人工标注,每个文档与10个信息需求的相关程度记为｛S1,S2,...,S10｝.评价准确度的指标是正规化的精度和查全率(normalized precision and recall)［3］.
+
+其中N表示过滤集合中的文档总数,REL表示相关文档的总数.
+　　精度值越高表明选择出的文档与用户的实际信息需求越相关,查全率值越高表明遗漏的有用 文档越少,理想情况是两个值同时取得较高值.
+　　学习速度用系统过滤性能稳定地达到用户满意程度时的文档总数来衡量,学习速度没有严格 的定义,后文将通过数据和图示直观地说明在学习速度方面的性能.
+　　为了研究过滤结果与训练次序之间的关系,现在引入变形均方差指标Diff来衡量两次过滤结 果之间的差异.设过滤集合为Dset=｛Dm,Dm+1,...,Dm+n｝,两次对该 过滤集合的相关度判断分别为(Sm,Sm+1,...,Sm+n)和(S′m,S′m+1 ,...,S′m+n),则Diff为
+
+　　Diff值越大表明过滤结果差异越大,在我们的实验中,则表明过滤器过滤效果与训练次序的关系越大.因此,Diff越小越好.
+2.2　对照实验设计
+　　实验对3种过滤器进行比较：
+　　(1) 进化式过滤器.每个E-Profile有4个B-Profile,每获得20个文档的反馈信息进行一次淘汰,每次更新两个B-Profile.
+　　(2) 自学习的基本过滤器.每个E-Profile包含1个B-Profile,只学习,不淘汰.
+　　(3) 无学习的基本过滤器.每个E-Profile中包含1个B-Profile,不学习,不淘汰.
+　　为测试过滤结果与训练次序的关系,使用随机生成的两组文档次序进行对照实验.
+2.3　实验结果
+2.3.1 学习速度与过滤质量
+　　从图2和图3可以看出,进化式信息过滤器学习快,过滤质量(包括精度和查全率)都比基本过滤器的过滤效果要好.在实验过程中我们发现,在部分文档和个别过滤器中,进化式信息过滤器的过滤有波动,这是由淘汰操作所引起的.但就整体而言,进化式信息过滤器的性能是很优秀的,即使出现波动,其性能也比另外两种方法要好,其影响仅仅是表现在不稳定性上.当然,研究更加稳定的淘汰策略是我们进一步的工作之一.
+
+Fig.2　Comparison of the precision of there filters
+图2　3种过滤器过滤精度的比较
+
+Fig.3　Comparison of the recall of three filters
+图3　3种过滤器查全率的比较
+2.3.2 与训练次序无关性
+　　图4显示进化式过滤器在与训练次序无关性方面表现较好,而且值得注意的是，从一开始其表现就比另外两种过滤器要好得多.因为每个E-Profile本身就包含多个B-Profile,也就是说,每个E-Profile本身就试图从多种角度来对文档进行判断,所以表现比较出色.
+
+Fig.4　Comparison of three filters'diff value(diff is the difference between filtering resultscaused by different training sequences)
+图4　3种过滤器diff值的比较(diff是不同训练序列导致的过滤结果之间的差异)
+3 结　论
+　　本文介绍了一种进化式信息过滤方法,该方法在分类方案生成、结果合并、过滤器训练等方面都作出了新的尝试.初步的实验结果表明,该方法具有过滤准确、训练时间短、与训练次序无关的优点,适合于高准确度的定制化信息服务系统.
+本文研究得到国家863高科技项目基金(No.863-306-zt01-03-1)和IBM另研究中心基金资助.任务田范江,1974年生,博士生,主要研究领域为WWW应用系统,信息采集,信息检索与过滤.李丛蓉,1975年生,硕士生,主要要研究领域为信息检索和过滤.王鼎兴,1973年生,教授,博士生导师,主要研究领域为并行分布计算系统,WWW应用系统.
+本文通讯系统联系人:田范江,北京 100084,清华大学计算机科学与技术系
+作者单位：田范江(清华大学计算机科学与技术系　北京　100084)
+李丛蓉(清华大学计算机科学与技术系　北京　100084)
+王鼎兴(清华大学计算机科学与技术系　北京　100084)
+参考文献
+1，Yan T Y,Garcia-Molina H.Sift――a tool for wide-area information dissemination.In: USENIX Association ed.Proceedings of the 1995 USENIX Technical Conference.Berkeley,CA: USENIX Association,1995.177～186
+2，Moukas A.Amalthaea: information discovery and filtering using a multiagent evolving ecosystem.Applied Artificial Intelligence,1997,11(5):437～457
+3，Salton G,McGill M J.Introduction to Modern Information Retrieval.New York: McGraw-Hill,1983
+4，Narendra K S,Thathachar M A L.Learning Automatic――An Introduction.Englewood Cliffs,NJ: Prentice-Hall,1989
+本文1998-12-07收到原稿,1999-03-30收到修改稿

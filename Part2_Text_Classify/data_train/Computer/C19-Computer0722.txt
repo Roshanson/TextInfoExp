@@ -1,0 +1,115 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年 第25卷 第1期 vol.25 No.1 1999
+
+
+
+一种基于对象特征的自适应模糊控制1)
+孙　庆　吴宏鑫　解永春
+摘　要　提出了一种基于对象特征的自适应模糊控制.模糊控制器在线判断对象特征，预测控制过程所需能量；据此在线动态变动模糊集合的划分，适应不同对象的控制.控制系统动态品质和稳定性分别在阶跃响应上升阶段和稳态调整阶段实现，兼顾两方面的要求.给出了模糊控制系统稳定的一个充分条件.该条件通过调整控制量的模糊划分实现.
+关键词　模糊控制，自适应，对象特征.
+AN ADAPTIVE FUZZY CONTROLLER BASED ON PLANT'S
+CHARACTERISTICS
+SUN Qing　WU Hongxin　XIE Yongchun
+(Beijing Institute of Control Engineering, Beijing　100080)
+Abstract　This paper proposes an adaptive fuzzy controller based on plant's characteristics. The fuzzy controller first judges the plant's characteristics, and predicts the needed control energy. Then the controller dynamically changes the fuzzy sets range to adapt to various plants. Dynamic performance and stability are realized in the transient process and the steady state of the step response, respectively, to satisfy both demands. The paper presents a sufficient condition for the stability of the control system, which is realized by justifying fuzzy sets range of control variable.
+Key words　Fuzzy control, adaptation, plant's characteristics.
+
+1　引言
+　　以往提出的自适应模糊控制方法，往往直接根据对象输出(如振荡程度、超调、误差等)调整控制器参数［1］，无法确知是否实现了该对象所应具有的较佳动态品质；大多数模糊控制的稳定性分析方法基于已知的对象模型，且没有兼顾在实际控制过程中必须要考虑的动态品质.不需对象数学模型的模糊控制稳定性分析［2］，方法繁琐，难以应用于自适应模糊控制.根据李亚普诺夫理论设计稳定的自适应模糊控制器［3］，控制器的结构和设计过程都非常复杂.本文针对以上问题提出一种基于对象特征的自适应模糊控制，控制系统的动态品质和稳定性分别在阶跃响应上升阶段和稳态调整阶段实现，兼顾两方面的要求.给出的模糊控制系统稳定性条件易于应用在实际控制过程中.
+　　
+2　基于二阶模型在线判断对象特征
+2.1　基于二阶模型在线判断对象惯性或阻尼
+　　1) 具有负实数极点的二阶对象，静态增益为K0；时间常数为T1，T2；其微分方程为
+(1)
+　　定理1.二阶模型(1)，其时间常数之和∑T近似为
+(2)
+其中，(t1,t2)为y(t)达到最大变化率时的足够短的时间段.(证明略)
+　　定义离散系统的惯性为控制量为零后，离散系统保持上升的步数.可以证明，两个时间常数的比值n=T1/T2是对象惯性的表征.在实际控制过程中，两个时间常数的比值不易测出.我们采取与标准对象对比的方法，将实际对象与标准对象在过渡过程初始的加速度相比，用这个比值作为对象惯性的一个表征.
+　　设标准对象具有与实际对象相同的静态增益及时间常数之和，其时间常数比值已知为n0=T10／T20.在阶跃响应初始阶段，控制量取定值uPB.在t=τ时刻比较加速度，τ为对象滞后.将实际对象和标准对象的加速度在t=0处台劳展开，n≠1时，有
+
+由式(4)知，ra与时间常数比值n有直接的近似关系，可作为判断对象惯性的依据.实际控制中，由式(2)求出∑T后，由式(3)计算0(τ)，由速度差分得到(τ)，从而得到ra.
+　　n=1时，有相同结论。
+　　2) 具有负实部复数极点的二阶对象，以上结论仍有意义.经推算可知，ra可作为对象阻尼的表征，阻尼越小，ra越小.
+2.2　对象纯滞后的测量
+　　对象纯滞后τ定义为对象输出由初始状态加满功率上升到刚刚超过稳态允许误差值的时间［4］.在控制过程初始阶段，系统加满功率，在线测得对象纯滞后.
+2.3　控制能量预测
+　　根据系统动态增益，对阶跃响应所需控制能量进行线性预测.定义系统动态增益为
+(5)
+在过渡过程中，不断检测系统最大动态增益，设其为Gdmax.对于对象输出单调变化的控制系统，使对象输出从初始值y(0)达到设定值ym所需能量的最小值为
+(6)
+3　基于对象特征的自适应模糊控制
+　　如图1所示选取模糊集合.模糊化采用将精确值映射为模糊单点集的方法.精确化采用重心法.模糊推理采用代数乘积.则模糊控制器的输出为［5］.
+(7)
+
+
+图1　模糊集合隶属函数
+
+　　其中，uj为模糊集合Uj的中心点.
+3.1　恒值调节控制策略
+　　设被控对象初始零状态，设定值ym＞c,c＞0.对象静态增益大略测得.对于最小相位系统，恒值调节控制策略为：在初始阶段，控制器满功率输出；当对象输出与期望值偏差减小到某一程度时，控制器调整为半功率输出；然后随偏差的减小，控制量也减小.
+3.2　模糊控制规则与模糊集合划分的在线变动
+3.2.1　阶跃响应上升阶段
+　　阶跃响应上升阶段的模糊控制规则如表1所示.控制量u的模糊划分如8式预先确定，使uPB为满功率.当对象静态增益或设定值变化时，控制量的模糊划分能自动随之变化.
+(8)
+表1　部分模糊控制规则
+
+ecNZPZPSPMPB
+e　　
+NBPBPBPMPMPS
+NMPBPBPBPMPM
+NSPMPMPSPZZ
+NZPSPZZNZNS
+PZPZZNSNMNB
+
+　　控制规则的设计使零误差、零误差变化率情况下的静态控制量u0满足系统静态增益的要求，即u0=ym／K0.若对象静态增益不准确或在控制过程中变化，可根据一定自适应算法调整控制量的模糊划分，消除稳态偏差1).　　
+　　在阶跃响应上升阶段，误差变化率ec和误差e模糊集合的划分在线动态变动，由控制器根据在线判断的对象特征及预测的控制能量在控制过程中自动确定.具体方法略.
+3.2.2　稳态调整阶段
+　　当阶跃响应上升阶段结束，进入稳态调整阶段，e和ec的模糊集合划分不再变化.为保证稳定，按照稳态调整阶段的控制要求，将控制规则改为如表2所示的对称型控制规则；控制量u改为由规则表2得到的模糊控制量uF与维持控制量UD的和.维持控制量UD=ym／K0.同时，调整控制量u的模糊划分，使之满足下节给出的系统稳定性条件.
+表2　模糊控制规则
+
+ecNBNMNSNZPZPSPMPB
+e　　
+NBPBPBPBPBPMPSPZZ
+NMPBPBPBPMPSPZZNZ
+NSPBPBPMPSPZZNZNS
+NZPBPMPSPZZNZNSNM
+PZPMPSPZZNZNSNMNB
+PSPSPZZNZNSNMNBNB
+PMPZZNZNSNMNBNBNB
+PBZNZNSNMNBNBNBNB
+
+
+4　模糊控制系统的稳定性
+　　文［6］基于小增益定理，给出保证模糊PD控制稳定的三个量化因子取值条件.本节给出的模糊控制系统稳定性条件，只需调整uPB一个参数，易于应用在自适应模糊控制中.相应于模糊控制系统，定义
+e1(t)=e(t);u1(t)=ym；H1e1(t)为模糊控制律，y1=uf；
+e2(t)=e(t);u2(t)=uD=ym／k0；H2e2(t)为对象.
+我们得到图2所示等效的控制系统.模糊控制量｜u(t)｜uPB，因此H1∈LP［7］.基于小增益定理［7］，可以得到上述模糊控制系统稳定的一个充分条件.　　
+
+
+图2　一般控制系统
+　　定理2.由控制律为式(7)、控制规则为表2的模糊控制器H1与算子增益有界对象H2组成的模糊控制系统，输入输出稳定的充分条件为
+(10)
+上式中Δei=ei+!-ei，i=0,1,…，Ne-1，ei为误差模糊集合的中心点；r2为H2的算子增益.(证明略)
+　　在稳态调整阶段，控制量为u=uD+uf，其中uf为模糊控制器输出，UD=ym／K0为维持控制量.对于线性对象，稳态调整阶段系统稳定性取决于模糊控制量uf.
+　　推论1.由静态增益为K0，时间常数为T1，T2的二阶对象H2与控制律为式(7)，控制规则为表2的模糊控制器H1组成的模糊控制系统，渐近稳定的充分条件为
+(11)
+
+5　小结
+　　本文提出了一种基于对象特征的自适应模糊控制.控制系统动态品质和稳定性分别在控制过程的阶跃响应上升阶段和稳态调整阶段实现，兼顾两方面的要求.模糊控制系统稳定条件通过调整控制量的模糊划分实现，易于应用在实际控制过程中.虽然对象特征的判断基于二阶模型，但由于是对对象特征的大致判断，因此仍可应用于具有两个主导极点的高阶对象.对于不具备两个主导极点的高阶对象，虽然基于二阶模型判断其特征有可能使阶跃响应的动态品质受损，但给出的控制系统稳定性条件仍可保证在稳态调整阶段系统稳定.基于对象特征的自适应模糊控制，除了对不同对象进行控制仿真外，还成功地应用在挠性结构卫星单轴气浮台以及一个具有四种不同工况的温度控制实验系统两类对象的控制中(结果略).在第二类对象的控制中，工况变化时，控制方案不做人工调整，完全依靠控制器自动适应 不同工况.控制结果表明在不同工况下都能取得良好动态品质和稳态品质.
+　　1) 国家自然科学基金资助项目.
+　　1)孙庆，自适应模糊控制的研究与应用［博士学位论文］，北京：北京控制工程研究所，1997.
+　　孙　庆　北京康拓红外技术公司，博士，高级工程师，研究领域：模糊控制，信息处理.
+　　吴宏鑫　航天部502所，研究员，博士生导师.研究领域：自适应控制，智能控制.
+　　解永春　航天部502所，博士，高级工程师.研究领域：自适应控制，智能控制.
+作者单位：(北京控制工程研究所　北京　100080)
+参考文献
+1　Raju G V S, Zhou J. Adaptive Hierarchical Fuzzy Controller.IEEE Trans. Syst. Man. Cybern., 1993,23(4)：973－980
+2　Yi S Y, Chung M J. Stability analysis of a fuzzy logic controller for an uncertain dynamic system. Proc. of IEEE Intl. Conf. on Fuzzy Systems, 1994.1028－1034
+3　Wang L-X. Stable adaptive fuzzy control of nonlinear systems. IEEE Trans. Fuzzy Systems, 1993，1(2)：146－155
+4　吴宏鑫.全系数自适应控制理论及其应用.北京：国防工业出版社，1992
+5　Wang L-X, Mendel J M. Fuzzy basis functions, universal approximation, and orthogonal least-squares learning.IEEE Trans. Neural Networks,1992，3(5)：807－814
+6　Chen G, Malki H. On the stability of fuzzy proportional-derivative control systems. Proc. of IEEE Intl. Conf. on Fuzzy Systems, 1994,1472－1477
+7　高为炳.非线性控制系统导论.北京：科学出版社，1991　　
+
+收稿日期　1997-05-14　　收到修改稿日期　1998-01-23

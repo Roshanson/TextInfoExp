@@ -1,0 +1,131 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第5期 Vol.36 No.5 1999
+
+
+
+一种新颖的神经网络稳健估计方法
+刘光远　邱玉辉　廖晓峰　覃朝玲
+摘　要　当神经网络应用于实际工程问题时，网络的训练数据集或多或少都有噪声或异常值掺入其中.为了使网络具有更好的稳键性，文中根据稳健统计学原理，针对前馈神经网络（FNN）提出了一种稳健估计（RE）函数作为新的网络目标函数.以函数逼近问题为例，理论分析和计算机模拟实验证明了RE方法的优越性：既基本保持了最小二乘估计（LSE）方法的优点，又能在抵抗异常值（outliers）干扰方面优于LSE方法，使FNN更具实用性.
+关键词　稳健估计，前馈神经网络，函数逼近，异常值
+中图法分类号　TP18
+A NOVEL ROBUST ESTIMATION METHOD FOR NEURAL NETWORK
+LIU Guang-Yuna, QIU Yu-Hui, and QIN Chao-Ling
+(Department of Computer Science, Normal University of Southwest China,Chongqing　400715)
+LIAO Xiao-Feng,
+(Department of opto-elec.UESTC,Chengdu　610054)
+Abstract　When neural network (NN) is applied to practical engineering there are some noises or outliers more or less in training data sets. To make NN hold more robust, a novel robust estimation function is proposed to serve as new target function of feedforword neural network (FNN) according to the theorem of Robust Statistics in this paper. The results of the theoretical analysis and simulation for function approximation problem show superiority of the method which not only holds basically the merit of least square estimate (LSE) method but has robust against outliers.
+Key words　robust estimation, feedforword NN, function approximation, outliers
+1　引　　言
+　　通常，不止一种模型能够拟合一组给定的训练数据集，为了找出更好的可拟合模型，在数据与模型之间定义一个目标函数去测试其一致性是十分必要的.由于均方误差函数（MSE）的经典性和易计算性，故包括神经网络（NN）在内的许多数据建模技术采用MSE作为目标函数似乎是一种优选方案.但是，数理统计学理论指出［1］，评价一个估计量的好坏应有多方面的考查，如其一致性、无偏性、充分性、优效性、完备性及稳健性（robustness）如何等.最小二乘估计（LSE）方法的基本思想是通过极小化训练数据残差的平方和使一个模型的拟合达到最佳程度，它假定误差的分布为正态型.当实际误差分布或随机干扰分布为长尾等其它分布型态时，LSE方法在抵抗异常值（outliers）干扰时能力就非常弱，甚至在这方面显得无能为力，这说明LSE方法不具稳健性［1～4］.因此，稳健估计（robust estimation，记为RE）就被提出来了.
+　　神经网络（NN）方法应用于实际工程问题时，网络的训练数据集或多或少都有噪声或异常值掺入其中，且误差分布型态也并不清楚.针对这一情况，为了使NN更好地应用于实际工作中，国内外部分学者开展了将RE方法与NN相结合的研究工作［5～8］，本文在前期工作［9，10］的基础上，进一步开展了这方面的研究，并以函数逼近问题为例，从理论分析与计算机模拟两方面说明了文中所提RE方法的优越性.
+2　影响函数与稳健性
+　　对3层前馈型神经网络，当输入矢量为Xp时，其目标映射函数应为
+Yp=F(XTpW)+ep　(p=1,2，…,N)　　　　　　　　　　　　(1)
+其中W为通过学习获得的一个估计量（权向量），ep是样本的随机误差矢量.
+　　通常，传统的方法是利用LSE原理对W进行估计，即求下面极值问题
+　　　　　　　　(2)
+的解.相应的IF为
+ψps(rp)=rp　　　　　　　　　　　　　　　(3)
+这要求均值0，方差E［eps］=σ2<∞.当ep的分布函数是长尾或训练数据存在异常值干扰时，基于LSE的估计就是不稳健的［1］.因此，一些RE方法就提出来了，M-估计就是其中的一种.它是下面极值问题
+　　　　　　(4)
+的解［1,11］.其中ρ(．)为某一选定的函数.如ρ(．)是凸的，而且是一阶导数ψ(．)，则（4）式等价于
+
+
+图1　两种IF曲线图
+　　　　　　　　　　　　(5)
+根据文献［1］对函数ρ(．)的要求，定义余弦型目标函数
+　　　　　　(6)
+极小化上式的方法称为LCE（lease cosine estimate）方法.式中C为某一常量.相应的IF为
+　　　　　　　　　　(7)
+上式即Andrews在文献［4］中给出的稳健估计函数.
+　　图1给出了（3）式与（7）式的曲线图，分析该图可知，当存在异常值使rp增大到|rp|=Cπ时，ψps(rp)仍线性增大，而ψpc(rp)却开始忽略rp的存在；当|rp|>Cπ时，ψps(rp)使其继续增大，而ψpc(rp)使其等于0.这说明epc(rp)对异常值不敏感（稳健的）,eps却反应敏感（不稳健的）.
+3　极大似然函数
+　　LSE和LCE两种方法的稳健性差异也可以由极大似然原理推导出来.对已给数据的某一模型，其似然函数等于给定该模型时数据的概率，即一个极大似然估计是实际获得数据中有最高概率情况下的一组样本值［12］.
+　　对于连续分布情形，我们令模型的似然函数是取样观察的点概率分布函数（PDF）.假定每个数据点yp有一个测量误差rp=yp-p，rp的独立随机分布函数为f(rp)，那么一个模型的似然数就是每个点的概率之积
+　　　　　　　　　　　　　　　(8)
+式中f(rp)Δ是rp在邻域Δ内的概率.极大化似然函数（8）就等价于极大化它的对数或极小化它的对数的负值，即
+　　　　　　　　(9)
+这里W是可修正的样本参数矢量.因为N和Δ是常量，上式就等同于
+　　　　　　　　　　　(10)
+3.1　高斯分布
+　　大多数情况下都假定误差是呈高斯分布的.标准正态分布的密度函数被定义为
+　　　　　　　　(11)
+将其代入（10）式中得
+　　　　　　　　　　　　(12)
+这实际上相当于目标函数r2p的LSE方法，即
+　　　　　　　　　　　　　　　　(13)
+　　对正态分布，由数理统计知识，99.73%的数据是分布在均值的3σ范围之内.然而，实际工程上的数据都含有1%～10%的超过上述3σ范围的粗大误差.在高斯误差模型假设之下，异常值出现的概率实际上就几乎等于0，LSE方法将这些异常值作为有效数据处理时，该模型就走样了.
+3.2　余弦分布
+　　为了说明异常值的作用，需要某种类似于柯西（Cauchy）有长尾型的误差分布函数.这里，我们定义一种称为余弦分布（cosine distribution）的函数
+　　　　　　(14)
+这里，rp∈R, C>0.
+将其代入（10）式，有
+　　　　　(15)
+　　图2给出了fg(rp)和fc(rp)的曲线图.当|rp|≥Cπ时，fc(rp)=exp(-2C)（常量），为对称长尾型分布.在此分布下，异常值出现的概率是存在的（常量）.而在高斯正态分布下，大于3σ的误差值出现的概率几乎为零，即此分布几乎未考虑异常值出现的可能性.
+
+
+图2　两种误差分布曲线图
+　　由此分析可知，LCE方法将不会以牺牲主要的数据点为代价去修正数据模型达到减小误差值而给出较好估计的目的.而LSE方法则只能剔去异常值之后才能获得正确估计［1，11］.
+4　计算机模拟结果与讨论
+　　为了比较LSE和LCE两种方法，以正弦函数逼近为例进行了计算机模拟.两种方法并不依赖于具体网络结构、激励函数以及学习算法，方法之间的唯一区别是假定了不同的误差分布形式.虽然所选择的问题是函数逼近，但其RE方法能自然地推广到分类问题中去.
+4.1　模拟方法
+　　为了说明问题，在模拟过程中，将每一个可控制的参数（比如网络结构，初始权值，学习率，学习算法）都准确地保持相同，唯一区别是目标函数及其一阶导数不同.
+　　实验中，选取一个1-10-1的3层结构BP网络，其中隐层和输出层的激励函数的f（x）=1/(1+e-x).学习算法为标准的BP算法（带冲量项），学习率α=0.2，冲量系数β=0.8，取С=1.5（Andrews建议为1.5，1.8，…等这些值）.逼近函数为
+y=0.4*sin(2πχ)+0.5，　 x∈［0，1］　　　　　　　(16)
+网络训练数据集由下列3种误差分布类型的数据构成：
+　　(1) 由（16）式产生的高质量无噪数据（100个）；
+　　(2) 在(1)中加入小高斯噪声N（0，0.1）的数据；
+　　(3) 在(2)中再加入5%的异常值N（10，0.1）构成的数据.
+　　注意，设f(x)为某一选定的单变量函数，（xp，yp）为训练的输入输出模式对，则训练集数间关系便为yp=f(xp)+ep，此处ep是一个包含粗大误差在内的随机偏差值，在(2)中取为正态分布，在(3)中取为两项正态分布的线性相加值.
+　　为了评价已训练网络的性能，一组与前述训练数据集不相重迭的测试数据集是必须的，本实验以（16）式为基础在x∈［0，1］内产生150个测试据点，用于对3种训练结果的测试.
+4.2　模拟结果与讨论
+　　用LSE及LCE两种方法分别对前述3组训练集进行学习，学习次数均为8000.测试结果分别示于图3、图4及图5中.3个图中分别加入由（16）式产生的实际函数曲线作为比较.
+
+
+　图3　两种方法用于数据集(1)的结果
+
+
+　图4　两种方法用于数据集(2)的结果
+
+
+　图5　两种方法用于数据集(3)的结果
+　　使用第(1)组数据训练的结果由图3表示.该图表明LSE及LCE两种方法在逼近（16）时效果都很好.由第(2)组数据训练的结果示于图4中，它表明了两种方法都相当好地逼近（16）式.值得一提的是，尽管在理论上使用LSE方法对高斯噪声是最优的选择，但LCE方法所表现的性能也相当好.第(3)组数据（含5%的异常值）训练的结果示于图5中，两种方法的差异十分明显地表现出来，LCE方法明显优于LSE方法.由LSE方法进行网络训练的结果在函数逼近时十分不准确，完全偏离了真实值，而LCE方法的逼近结果却较好地代表了原函数.
+　　图6、图7、图8分别表示了两种方法对3组数据在训练过程中的误差收敛历程.
+
+
+图6　数据集(1)训练网络的收敛过程
+
+
+图7　数据集(2)训练网络的收敛过程
+
+
+图8　数据集(3)训练网络收敛过程
+　　图中纵坐标以对数标度（便于观察）.对数据集(1)和(2)，图6及图7说明了两种方法下均能收敛到某一较小值，对数据集(3) LSE方法根本无法收敛，而LCE方法却能收敛到和图7差不多的情况.
+　　应当说明，统计学理论中的稳健估计方法其目的本不在于缩小残差（事实上，由于最小二乘估计已使残差平方和达到最小，别的方法在缩小残差上不可能超过它），而在于求得较正确的估计，上述结果也正说明了这个问题.
+5　结　　论
+　　在训练NN时，大多数监督学习算法采用了LSE方法，这种方法在数据集是准确或仅包含小高斯噪声时是正确的.然而，当数据集包含异常值时，使用该方法所得结果就不正确了.另一方面，使用LCE方法却对上述3种情况都能得出较正确的结果.由于这个原因，LCE（或RE）方法更具实际意义.鉴于此，我们将继续开展这方面的研究工作.
+本课题得到重庆市科学技术委员会研究基金资助(项目编号 96-4335).
+作者简介：刘光远，男，1961年4月生，副教授，现主要从事计算智能及电路与系统等领域的教学与研究工作，发表论文20余篇.
+作者单位：刘光远　邱玉辉　覃朝玲　西南师范大学计算机科学系　重庆　400715
+　　　　　廖晓峰　成都电子科技大学光电系　成都　610054
+参考文献
+　1　Huber D J. Robust Statistics. New York: Wiley, 1981
+　2　吴耀华，线性模型中M估计的渐近性质.应用数学学报，1994,7(3):401～410
+(Wu Yaohua. Asymptotic behavior of M-estimators in linear models (in Chinese). ACTA Mathematicae Applicatae Sinica, 1994,17(3):401～410)
+　3　郑忠国，线性模型中位置参数和刻度参数的稳健估计，应用数学学报，1985,8(1):18～28
+(Zheng Zhongguo. On robust stimators of location and scale parameters in a linear model (in Chinese). ACTA Mathematicae Applicatae Sinica, 1985,8(1):18～28)
+　4　Andrews D. A Robust Method for Multiple Linear Regression. Technometries, 1974:523～531
+　5　Liano K. Robust error measure for supervised neural network learning with outliers. IEEE Trans on Neural Network, 1996,7(1):264～250
+　6　Chen D S, Jain R C. A robust back propagation learning algorithm for function approximation. IEEE Trans on Neural Network, 1994,5(3):464～469
+　7　Oja E, Wang L. Robust fitting by nonlinear neural units. Neural Networks, 1996,9(3):435～444
+　8　黄磊，张百灵，黄茜等.鲁棒区间回归分析的神经网络学习算法.华南理工大学学报（自然科学版），1996,24(4):48～55
+(Huang Lei et al. Learning algorithms of neural networks for robust interval regression analysis (in Chinese). Journal of South China University of Technology (Natural Science), 1996,24(4):48～55)
+　9　刘光远，邱玉辉，虞厥邦.基于稳健误差估计器的快速BP算法，计算机科学，1997，24(2):66～68
+(Liu Guangyuan et al. Fast BP algorithm based on robust-estimators (in Chinese). Computer Science, 1997,24(2):66～68)
+　10　刘光远，廖晓峰，虞厥邦等.一种神经网络稳健估计方法的推广性研究.电子科学学刊，1999，21(1):128～131
+(Liu Guangyuan et al. Generalization study of a robust estirnation method for neural network (in Chinese). Journal of Electronics, 1999,21(1):128～131)
+　11　陈希孺，王松桂.近代实用回归分析.广西人民出版社，1984.301～321
+(Cheng Xiru. Modern Practicable regression analysis (in Chinese). Guangxi People Press, 1984.301～321)
+原稿收到日期：1998-10-27
+修改稿收到日期：1999-03-27

@@ -1,0 +1,25 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第5期 Vol.35 No.5 1999
+
+
+
+男子400m跑速度分配的特征研究
+殷立泉　林　琳
+摘要：运用文献资料法和数理统计法，对参加1997年世界田径锦标赛男子400 m跑决赛的8名运动员分段速度的特征与成绩的关系进行了分析。结果表明，最快分段速度与最慢分段速度之间、前200 m成绩与后200 m成绩之间的差距越小，成绩越好。
+关键词：400 m∥短跑∥成绩∥分段成绩∥速度∥世界锦标赛∥1997
+A Study on the Speed Distribution in Men's 400m
+Yin Liquan,Lin Lin
+Abstract：The subjects of this study were 8 athletes who entered the final of men's 400m in 1997 World Track and Field Championship.With the literature and statistics,the paper focus on the relationship between the speed variation in different distance stage and the competition results.The result showed that the closer the speed difference between the fastest and slowest stage,the first 200 m and second 200m;the better the performance.
+Key words: 400 m∥sprint∥result∥split time∥speed∥world championship∥1997
+1　引言
+　　400m跑比赛成绩除了取决于运动员的速度与速度耐力，还与在整个比赛中速度的分配有着密切的关系。本文就1997年世界田径锦标赛男子400 m跑决赛运动员速度分配与成绩的关系进行了探讨，旨在为我国运动员在400 m跑比赛中掌握好速度分配，充分发挥水平提高成绩提供参考。
+2　研究对象与方法
+2.1　研究对象
+　　参加1997年世界田径锦标赛男子400 m跑决赛的8名运动员。
+2.2　研究方法
+　　 文献资料法：查阅文献，掌握有关的数据信息；将查阅的数据进行统计处理。
+3　结果与分析
+3.1　400m跑各分段速度的特征分析
+　　从表1可知，参加男子400 m跑决赛的8名运动员，其速度分配都呈单峰曲线，除银牌得主卡莫加及托马斯分别在150～200 m段和100～150 m段达到最大速度外，其余6名运动员都是在50～100 m段达到最大速度，该段的平均速度为最大，约为10.04 m/s，各运动员之间的平均速度差仅为0.33 m/s。运动员在达到最大速度后，各段速度都呈下降趋势。在350～400 m段，8名运动员的速度都下降至最低点，平均速度约为7.97 m/s，各运动员之间的平均速度差却增至0.64 m/s。
+表 1　1997年世界田径锦标赛男子400 m跑决赛运

@@ -1,0 +1,85 @@
+信息与控制
+Information and Control
+1999年　第28卷　第4期　Vol.28　No.4　1999
+
+
+
+变参数PID控制器
+
+钟庆昌　谢剑英　李　辉
+
+　　摘　要: 在分析PID控制基本原理的基础上，提出了一种改进的PID控制器――变参数PID控制器 ．该控制器根据控制偏差的大小通过非线性函数在线改变PID三个控制参数的大小，以获得 满意的控制性能．本文给出了该控制器的三种结构，将这三种结构与常规PID控制器进行了 对比仿真实验，结果表明这三种结构的性能均优于后者．本文还就该控制器的抗干扰性能、 鲁棒性能、对非最小相位系统的适用性进行了仿真．仿真结果表明，该控制器性能良好． 
+　　关键词: PID控制，非最小相位系统，变参数，增益函数
+　　中图分类号：TP13　　　　　　文献标识码：B
+PID CONTROLLER WITH VARIABLE ARGUMENTS
+ZHONG Qingchang　XIE Jianying　LI Hui
+(Dept. of Automation, Shanghai Jiaotong University　200030)
+Abstract: This paper presents a PID controller with variable arguments (shortened as VAPID), in which the nonlinear functions are employed t o change the PID parameters on-line according to the system error. Three kin ds of VAPID, of which the performance is all better than that of the ordinary PI D controller, are provided. It also shows better performance of disturbance-rej ecting and robustness, and can be applied to the non-minimal phase system.
+Key words: PID control, non-minimal phase system, variable argu ment, gain function
+
+1　引言
+　　PID控制是工业控制中应用最广泛的一种控制规律．实际运行经验和理论分析均表明，将这种控制规律用于大多数工业对象能够得到比较满意的结果．但是，由于许多控制对象存 在着大惯性、非线性、大纯滞后、强干扰等特性，用一组事先整定的PID参数实施控制 难以达到很好的控制效果，尤其当对象参数变化超过一定的范围时，系统性能会明显变差， 甚至超出许可范围．
+　　为了进一步提高PID控制的性能，许多学者进行了广泛的研究．文献[1，2]提出了一种自校正控制器，其实质与常规自校正控制器相同，即在线辨识对象模型，根据辨识模型按照经验公式来校正PID参数．该方法需要在线辨识对象模型，计算量大．文献[3]提出 了一种基于模糊推理的自校正PID控制器，在ZieglerNichols公式[5]基础上进行参数的模糊自校正，参数可校正范围较小，而且模糊规则表不直观，不便于建立． 本文在分析PID控制原理的基础上，提出了变参数PID控制器(PID Controller with Varia ble Arguments，简称VAPID)．该控制器通过引入非线性函数根据偏差的大小在线调节PID参数来提高控制性能，具有结构简单，整定方便，计算量小等优点，仿真结果表明具有很好 的控制效果．
+2　变参数PID控制器（VAPID）
+2.1PID控制器
+对于典型的单位负反馈控制系统，PID控制器表示为
+　　　　　　　　　　　　　　(1)
+其中，偏差e=r-y，Kp为比例增益，Ki=Kp/Ti为积分增益，Kd=KpTd为微分增益．比例作用Kp使得控制器的输入输出成比例关系，一一对应，一有偏差立即会产生控制 作用，当偏差为0时控制作用也就为0，因此，比例控制是基于偏差进行调节的，是有差调节 ，为了尽量减小偏差同时也为了加快响应速度，缩短调节时间，就需要增大Kp，但是Kp又受到系统稳定性的限制，不能任意增大；积分作用Ki就是为了消除静差而引入的，然而 ，Ki的引入使得响应的快速性下降，稳定性变差，尤其，在大偏差阶段的积分往往使得系统响应出现过大的超调，调节时间变长；微分作用Kd的引入使之能够根据偏差变化的趋势 作出反应，加快了对偏差变化的反应速度，能够有效地减小超调，缩小最大动态偏差，但同时又使系统容易受到高频干扰的影响．因此，只有合理地整定这三个参数，才能获得比较满意的控制性能．
+2.2P、I、D增益函数
+　　常规PID控制中，Kp、Ki、Kd根据对象模型或动态响应曲线进行整定[4] ．本文提出的变系数PID控制器将Kp、Ki、Kd取为偏差e的函数，根据偏差e的大小，实时改变这三个系数，以提高控制性能．
+　　根据2.1的分析，比例系数Kp在偏差e的绝对值较小(稳态值附近)时取较小值，相反时取较 大值，这样有利于加快响应速度，同时保证有很好的稳定性．积分系数Ki在偏差e的绝对值较小(稳态值附近)时取较大值，在偏差e的绝对值较大时取较小值（或者0)，这样既有利于保证稳态无静差，又不会引起积分饱和而使超调增大、调节时间延长．微分系数Kd在偏差e的绝对值较小(稳态值附近)时取较大值，在偏差e的绝对值较大时取较小值，这样有利于加快对小偏差的反应速度，提高控制器对干扰的灵敏度，出现干扰时及时调节．本文采用Gauss函数为基础构成P、I、D增益函数Kp、Ki、Kd，如图1所示．图1中，Kp 的宽度取为0.1，以保证在较大的范围内具有较大的比例增益; Ki的宽度取为0.1，在稳态值附近加大积分作用，大偏差时Ki可取为0，这样可以实现积分的分离，使系统有较快的响应速度而且可以避免积分饱和；Kd的宽度取为0.2．这样得到的增益函数为：
+Kp=Kpo(1+K'p(1-exp(-100e2)))　　　　　　　　　　　　　　　
+Ki=Kio(K′i+ K″iexp(-100e2))　　　　　　　　　　　(3)
+Kd=Kdo(1+K′ddexp(-25e2)))　　　　　　　　　　　　(4)
+式中，Kpo、Kio、Kdo按常规PID控制器的整定方法，如Ziegler Nichols频率响应法[5]、CohenCoon响应曲线法[6]、基于积分平方准则ISE的整定法[7]等，进行整定．K′p、K′i、K″i、K′d为修正系数，K′p主要取决于控制变量的限幅值和对象的稳定性，可在～umax/Kpo-1中选取，一般可取K′p(1，K′p越大动态响应速度越快，但太大易引起过大的超调；K′i反映大偏差时的积分作用、K″i反映稳态值附 近的积分作用，K′i可取0～1，一般取K′i=0，K″i≥1，当K′i=0时，应适当加大K″i和积分增益函数的宽度，以保证足够的积分作用；K′d反映稳态值附 近的微分作用，一般取K′d≥1．
+
+图1　P、I、D增益曲线
+
+2.3　VAPID的结构
+　　VAPID有三种结构，一种标准形和两种变体，如图2所示．类型A中，积分增益Ki 的计算变量调整为偏差的积分ei=∫edt，积分增益函数的宽度要根据常规PID控制时的ei第一个峰值eimax1来调整，可取其值的80％．微分增益Kd的计算变 量调整为偏差的微分ed=de/dt，稳态值附近的ed相当小，增益函数的宽度可取为0. 02以下．类型B中，计算积分、微分增益之后再进行积分、微分，积分、微分作用变为 
+ui=∫Ki(e)edt　　　　　　　　　　　　　　　　　(5)
+ud=d(Kd(e)e)/dt　　　　　　　　　　　　　　　　(6)
+这相当于对不同大小的误差乘以不同的权值后进行积分、微分，从而动态地改变积分、微分的作用．类型C是标准类型，完全按照2.2节的思想实现．
+
+
+图2　变参数PID控制器的三种结构形式
+
+3　仿真结果
+3.1　性能对比
+　　以大惯性、大纯滞后的二阶系统为控制对象进行仿真得到的仿真曲线如图3，并以误差平方积分准则()作为性能指标进行比较，详见表一，其中，VAPID控制器以曲线2的参数为基 础进行整定，Kpo=5，Kio=0.025，Kdo=90．
+
+图3　变参数PID控制与常规PID控制的对比曲线　　
+表1　图3曲线对应的控制参数与性能指标
+
+曲线控制器类型控制参数性能指标ISE性能提高
+1常规PIDKp=5,Ki=0.025,Kd=031.5-7.5%
+2常规PIDKp=5,Ki=0.025,Kd=9029.30
+3类型AK′p=0.2,K′i=0, K″i=1.5,K′d=1[注1]25.712.3%
+4类型BK′p=0.4,K′i=1.4, K″i= 0,K′d=124.516.4%
+5类型CK′p=0.8,K′i=0,K″i=1.5,K′d=121.825.6%
+
+
+3.2　鲁棒性能与抗干扰能力
+　　作者就控制对象的参数发生变化时VAPID类型A的控制性能进行了仿真，图4所示的曲线表明：VAPID具有很好的抗干扰能力和鲁棒性．限于篇幅，类型B、C的仿真曲线从略[注2]．
+
+图4　VAPID的抗干扰性能和鲁棒性能
+
+3.3　非最小相位系统
+　　在3.1节控制对象的基础上，增加一个非最小相位环节(1-s)，即传递函数改为：，仍然以上一组常规PID控制参数为基础 ，采用VAPID标准型为控制器，适当选择增益函数的系数，得到了图5所示的仿真曲线(这里，积分增益函数的宽度取为0.4)．结果表明，对于非最小相位系统，VAPID可以获 得比常规PID好得多的效果(ISE指标提高25%)，而且控制对象参数发生一定的变化时，性能变化不大．
+　　
+　　　　图5　VAPID控制的非最小相位系统
+4　结束语
+　　本文详细分析了一种改进的PID控制器―变参数PID控制器的结构、原理和参数整定方法．该控制器结构简单，整定方便，计算量小．VAPID与常规PID控制器的对比实验 结果表明VAPID性能优于后者．本文还讨论了该控制器的抗干扰性能、鲁棒性能、对非 最小相位系统的适用性等问题．仿真结果表明，该控制器性能良好．
+作者简介：钟庆昌，男，29岁，博士研究生．研究领域为计算机过程控制、运动控制．
+　　　　　谢剑英，男，59岁，教授，博士生导师．研究领域为过程控制、计算机网络与信息系统．
+　　　　　李　辉，男，24岁，博士研究生．研究领域为变结构控制．
+作者单位：上海交通大学自动化系　200030
+参考文献
+1　Astrom K J, Hagglund T. An Industrial Adaptive PID Controller. Pro c. 1989 IFAC Symp. Adaptive System in Control and Signal Processing. 1989,293～29 8
+2　Hoopes H S, Hawk W K, Lewis R C. A self-tuning Controller. ISA Trans. 1983,2 2:49～58
+3　He S Z, Tan S H, Xu F L. Fuzzy Self-tuning of PID Controllers. Fuzzy Sets an d Systems.1993,56:37～46
+4　A A Rovira, P W Murrill, C L Smith. Tuning Controllers for Set-Point Change, Instruments and Control Systems, 1969,42(12)
+5　Ziegler J G, Nichols N B. Optimum Settings for Automatic Controllers. Trans. ASME, 1942,64:759
+6　Cohen G N, Coon G A. Theoretical Considerations of Retarded Control. Trans. ASME, 1953,75:287
+7　Lopez A M et al. Controller Tuning Relationships Based on Integral Perfor mance Criteria. Instrumentation Technology. 1967,14:57
+收稿日期：1998-03-19

@@ -1,0 +1,91 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+同等并行处理机上独立任务的调度
+康一梅　郑应平
+摘　要　n个独立任务在m个同等并行处理机上处理，使总完成时间最小的非抢先调度是确定性调度理论的一个基本问题. 文中提出一种算法――Bound Fit算法，它的最坏情况性能至少和MULTIFIT算法一样甚至更好，而所需的时间却比MULTIFIT算法少. 
+关键词　同等并行处理机， 非抢先调度，启发式算法.
+INDEPENDENT TASKS SCHEDULING ON IDENTICAL
+PARALLEL PROCESSORS
+KANG YIMEI
+(Beijing Institute of Computer & Electronics Application Beijing 100080)
+ZHENG YINGPING
+(Institute of Automation, The Chinese Acadamy of Seiences Beijing 100080)
+Abstract　The problem of nonpreemtively scheduling n independent tasks on m identical parallel processors in order to minimize the makespan is one of the fundamental problems of deterministic scheduling theory. In this paper, an algorithm called Bound Fit is presented. This algorithm has the same or better worst case performance with shorter running time.
+Key words　Identical parallel processor, nonpreemptive scheduling, heuristic.
+1　引言
+　　n个独立任务在m个同等并行处理机上处理，使总完成时间最小的非抢先调度是确定性调度理论的一个基本问题. 已知n个独立任务，T={T1,T2,…,Tn}表示任务集，m个处理机，M={M1,M2,…,Mm}表示处理机集，任务的处理时间为pi，且pi为整数，i=1,2,…,n. 假设任务按处理时间非增顺序排列，即p1≥p2≥…≥pn. Ci(i=1,2,…,m)表示第i个处理机的完成时间，Cmax表示总完成时间，即表示最优调度的总完成时间. 
+　　这是一个NP难题［1］，不可能找到一个多项式时间最优算法. 因此，只能退而求其次，去寻找有效的次优算法. 在这方面有许多启发式算法，其中最著名的是LPT算法［2］和MULTIFIT算法［3］. 而MULTIFIT算法的最坏情况性能比LPT算法好许多. 
+　　MULTIFIT算法是Coffman等人在文献［3］中提出的，它是一种基于bin-packing的FFD(First Fit Decreasing)方法的迭代算法. 以时间代替容量，寻找使所有任务都排在m个处理机上的最小容量，即最短总完成时间. FFD方法是对每一个固定的库容量，顺序将按处理时间非增顺序排列的任务安排在满足容量约束、序号最小的处理机上. 
+　　Donald K. Freisen 在文献［4］中证明了MULTIFIT算法的最坏情况性能为(1.20+(1/2)k)C*max，其中k是迭代次数. MULTIFIT算法的时间复杂性为O(n log n+kn log m),包括任务的处理时间排序所花的时间. 
+　　C.Y.Lee等在文献［5］中提出一种将LPT算法与MULTIFIT算法结合起来的方法，以达到减少运算时间的目的，但在有些情况下本文提出的Bound Fit迭代算法更节省时间，并且能达到很好的性能.
+2　预备算法
+　　定义　处理机Mi上已安排的任务的完成时间称为处理机Mi的调度长度，记为Li.
+　　很显然，最优调度满足
+　　　(2.1)
+当上式等号成立时，下面的预备算法就可找到最优调度. 
+　　预备算法：
+　　1. 令B=
+　　2. 令Lj=0(j=1,2,…,m),i=1.
+　　3. 若至少存在一个j(1≤j≤m)使Lj+pi≤B，将Ti安排在使Lj+pi≤B且序号最小的处理机上. 否则，将Ti安排在使Lj+pi(j=1,2,…,m)最小的处理机上. 
+　　4. 若i＜n,令i=i+1，转向3.否则，停机.
+　　只要最优调度的总完成时间为max,上述预备算法就可得到最优调度，否则，预备算法不一定能得到最优调度. 
+　　定理1.　当第k-1次用预备算法所得调度的总完成时间C(k-1)max＞max(，若令B(k)=C(k-1)max,则第k次用预备算法所得调度的总完成时间C(k)max=C(k-1)max,其中k≥3. 
+　　证明　设A=max,当C(k-1)max=A时则找到了最优调度. 
+　　当k=2时，k-1=1，第1次用预备算法时B(1)=A,只要C(1)max≠A，一定会有任务在调度时使所有处理机的长度都超过B(1). 第k次，即第2次用预备算法求调度时B(2)=C(1)max，用预备算法安排任务最坏可得到与上次完全相同的调度，所得C(2)max≤C(1)max.
+　　因此，当k≥3时，令B(k)=C(k-1)max，用预备算法安排任务与第k-1次完全相同，即C(k)max=C(k-1)max. 
+证毕. 
+3　Bound Fit 算法
+　　定理2.　当k≥3时，用预备算法求任务调度若存在总完成时间C(k)max≤C(k-1)max-1的调度，则令B(k)=C(k-1)max-1一定可得到C(k)max≤C(k-1)max-1的调度. 
+　　证明　由定理1知，当k≥3时令B(k)=C(k-1)max所得调度满足C(k)max=C(k-1)max. 由于假定任务处理时间是整数，因此为了得到更好的结果，令B(k)=C(k-1)max-1，这样若用预备算法求任务调度存在C(k)max≤C(k-1)max-1的调度时就可得到此调度. 反之，若B(k)不论为何值都无法得到C(k)max≥C(k-1)max-1的调度，则所得调度的总完成时间C(k)max≥C(k-1)max-1.
+证毕. 
+　　由以上分析得到下面算法. 
+　　Bound Fit算法
+　　1. 令B(1)=max,k=1.
+　　2. 令Lj=0(j=1,2,…,m),i=1.
+　　3. 若至少存在一个j(1≤j≤m)使Lj+pi≤B(k), 将Ti安排在使Lj+pi≤B(k)且序号最小的处理机上. 否则，将Ti安排在使Lj+pi(j=1,2,…,m)最小的处理机上. 改变相应的Lj.
+　　4. 若i＜n,i=i+1，转向3. 
+　　5. 若或k≥3且,停机. 否则，令k=k+1，若k＜3，令B(k)=,转向2；若k≥3，令B(k)=,转向2. 
+　　最后，若k≥3，以B(k-1)再用预备算法求调度，所得调度即为Bound Fit 算法的结果. 
+　　用Bound Fit算法可得到与MULTIFIT算法同样或更好的结果. 
+　　例.　假设调度问题的数据如下：m=3, n=8, p1=100,p2=p3=90,p4=42, p5=41, p6=30, p7=20, p8=7.
+表1　用Bound Fit算法与MULTIFIT算法求解比较
+
+kCmax
+Bound FitMULTIFIT
+1150210
+2142172
+3141151
+4　142
+5　141
+
+　　最优调度的总完成时间是141. Bound Fit 算法和MULTIFIT算法都得到了最优调度，但是MULTIFIT算法需5次迭代得到最优调度，而Bound Fit算法只需3次迭代，如表1所示. 
+　　我们对100个随机产生的例子进行仿真，结果表明Bound Fit算法所需的迭代次数总比MULTIFIT算法所需的迭代次数少. 
+4　最坏情况性能分析
+　　用CBFmax表示用Bound Fit算法所得调度的总完成时间，我们可以证明下面的定理. 
+　　定理3.　若Cmax是用FFD方法在m个处理机上安排任务所得任一调度的总完成时间，则
+CBFmax≤Cmax
+　　证明　用反证法证明. 
+　　设有一用FFD方法在m个处理机上安排任务所得调度的总完成时间C′max＜CBFmax. 由于C′max是用FFD方法在m个处理机上将全部任务安排完所得的调度的总完成时间，FFD方法在C=B且能将n个任务全部安排在m个处理机上时的任务安排方法完全相同，那么令B=C′max，用Bound Fit算法一定可得到与FFD方法所得相同的调度. 则由定理2可知，令B=C′max-1，可得CBF'max≤C′max-1；当不存在总完成时间小于或等于C′max-1的调度时，Bound Fit算法至少可得CBFmax=C′max. 故与假设矛盾，定理得证. 
+　　由定理3， 可得下面的推论. 
+　　推论1.　用Bound Fit算法所得的调度与MULTIFIT算法在k=∞时所得结果相同. 
+　　用Rm(BF)表示Bound Fit算法的绝对性能，定理4给出Bound Fit算法的最坏情况性能. 
+　　定理4.　对任意T，Rm(BF)≤1.20.
+　　证明　文献［4］中证明了MULTIFIT算法的绝对性能Rm(MUL)≤1.20+()k,由推论1可知
+
+则
+
+资金项目：本文得到国家自然科学基金资助.
+作者单位：康一梅　北京计算机与电子应用技术研究所　北京　100081；郑应平　中国科学院自动化研究所　北京　100080
+参考文献
+　[1]　J.D Ullman. Complexity of sequencing problems. Computer and Job/shop scheduling Theory. New York, 1976. 
+　[2]　Graham R L. Bounds on multiprocessing timing anomalies. SIAM J. Appl. Math., 1969, (17)∶416-429. 
+　[3]　F G Coffman Jr., Garey M R, Johnson D S. An application of bin-packing to multiprocessor scheduling. SIAM J. Compt., 1978, (7)∶1-17.
+　[4]　Freisen D K. Tighter bounds for the MULTIFIT processor scheduling algorithm. SIAM J. compt., 1984, (13)∶170-181. 
+　[5]　C Y Lee, David Massey J. Multiprocessor scheduling: combining LPT and MULTIFIT. Discrete Appl. Math., 1988, (20)∶233-242.
+收稿日期　1994-04-20
+
+

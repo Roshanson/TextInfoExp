@@ -1,0 +1,111 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  Vol.24  No.5 1998
+
+
+
+一种基于多分辨分析的脉冲响应辨识方法1)
+张建刚　张　杰　毛剑琴
+摘　要　提出了一种基于正交基展开方法的脉冲响应辨识方法――正交尺度变换法.这种方法以正交尺度函数展开的形式表示脉冲响应函数，对信号进行正交尺度变换，并使用最小二乘类参数辨识方法估计参数.仿真结果验证了理论的正确性和方法的可行性.
+关键词　多分辨分析，正交尺度函数，正交尺度变换，脉冲响应.
+PULSE RESPONSE IDENTIFICATION APPROACH
+BASED ON MULTIRESOLUTION ANALYSIS
+ZHANG JIANGANG　　ZHANG JIE　　MAO JIANQIN
+(The Seventh Division, Beijing University of Aeronautics & Astronautics, Beijing 100083)
+Abstract　In this paper, an orthonormal scale transformation approach is proposed, which is a pulse response identification approach based on orthonormal basis expansion. In this approach, the orthonormal scaling function expansion is employed to express pulse response, the input/output signals are transformed using orthonormal scale transformation, and the parameters are identified by means of LS method. Finally, the simulation results have shown that this approach is feasible.
+Key words　Multiresolution analysis, orthonormal scaling function, orthonormal scale transformation, pulse response.
+1　引言
+　　Eykhoff在文献［1］中提出了线性系统脉冲响应的辨识的正交函数展开方法――学习法，对于确定性过程，这种方法具有良好的收敛性.
+　　本文讨论采用正交尺度函数展开表示脉冲响应的辨识方法.正交尺度函数在频域和时域都是紧支的，尺度变换的局部性好，因而具有良好的时频特性.对信号进行正交尺度变换，可以得到简洁的表达形式，并使用最小二乘类辨识方法.这种方法对确定性过程和随机过程都得到较好的辨识精度.
+2　多分辨分析
+2.1　多分辨分析
+　　定义1［2］.所谓多分辨分析，是指满足下列条件的一个子空间族｛Vj｝∞j=-∞.
+　　1)　…V-1V0V1…
+　　2)　closL2(R)(∪Vj)=L2(R),closL2(R)(*)表示在L2(R)中的闭包.
+　　3)　f(x)∈Vjf(2x)∈Vj+1,j∈Z.
+　　4)　f(x)∈Vjf(x+2-j)∈Vj,j∈Z.
+　　5)　存在一个函数φ∈V0，使｛φ(.-k);k∈Z｝是具有Riesz界A与B的V0的一个Riesz基.令
+φj,k∶=2j/2φ(2jx-k),
+对于每个j∈Z,函数族
+｛φj,k:k∈Z｝
+也是具有Riesz界A，B的Vj的一个Riesz基.这样的φ称为尺度函数.
+　　定义2［2］.φ是一个正交尺度函数是指，φ不仅生成L2(R)的一个多分辨分析，而且还满足要求
+〈φ(.-k),φ(.-l)〉=δk,l,
+其中δk,l定义为
+
+2.2　多分辨分析中的函数逼近
+　　根据多分辨分析定义中性质2)，每个f(x)∈L2(R)对某个j∈Z,通过f(x)在Vj中的投影Pjf逼近f(x).由多分辨分析定义中性质5)可得
+
+其中｛φj,k,k∈Z｝为Vj的一组标准正交基，cfjk=〈f,φj,k〉.
+2.3　正交尺度函数的自相关函数
+　　定理1.1)正交尺度函数的自相关函数
+
+也是一个尺度函数，但不是正交尺度函数；
+　　2)由F(τ)生成的函数族｛Fj,k，k∈Z｝生成多分辨分析｛VFj｝∞j=-∞，其中Fj,k的定义为Fj,k=2j/2F(2jx-k).
+　　证明略.
+2.4　零均平稳随机信号的正交尺度变换性质
+　　定理2.平稳随机信号v(t)均值为零，方差为σ2，其正交尺度变换系数序列｛cvjk｝∞k=-∞，仍为零均平稳随机过程，方差小于σ2，且方差随j增大而增大.当v(t)为高斯白噪时，｛cvjk｝∞k=-∞亦为零均白噪，方差为σ2.其中cvjk=〈v(t),φj,k〉.
+　证明略.
+3　正交尺度变换法
+　　对于含噪声的LTI因果系统，如果脉冲响应已知，则系统可描述为
+ 　 (1)
+其中y(t)为输出，u(t)为输入，v(t)为干扰项.
+3.1　正交尺度变换法
+　　当系统稳定时，可以用脉冲响应函数在Vj中的投影来逼近g(t)
+　(2)
+　　以Pjg代替(1)式中的g(t)，则可以得到一个逼近公式，其中由g(t)-Pjg所产生的误差加入干扰项v(t)中，则有
+
+　　对公式两边取正交尺度变换，可得
+　　(3)
+其中　　(4)，(5)，(6)
+　　极小化下列准则函数
+
+可以得到αk,k=0,1,…,L的最小二乘估计值，其中N为采样点数.
+3.2　参数选择
+　　1)　j的选择
+　　a)对(2)式作Fourier变换，可得
+
+φj,k的频带比φ扩展2j倍，要求φj,k的频带至少覆盖g(t)的频带；
+　　b)定义ε=‖g-Pjg‖，当j越大时ε越小，g(t)的逼近精度越高；
+　　c)由定理2可知，对于非白噪的均值为零，方差为σ2平稳随机信号v(t)，当j越大时，噪声的正交尺度变换系数序列｛cvjk｝∞k=-∞的方差越大，越接近σ2.
+　　j的选择要同时兼顾a),b),c)三项.采样周期T可以取作2-j.
+　　2)　L的选择.要求Pjg覆盖过程的过渡过程，若过程的过渡过程时间为Ts，则L的选择应满足Ts/TL.另外L不宜选得过大，否则会降低数值计算精度并加大计算量.
+3.3　对信号的降噪处理
+　　噪声为高斯白噪时，最小二乘法得到的是无偏一致估计量.为提高估计的性能，在预处理中对信号进行降噪处理.例如可用Stein无偏风险估计法进行降噪.
+3.4　正交尺度变换法的一般步骤
+　　1)　预估过程的过渡过程时间Ts.过程频带ωs及最高工作频率fmax.
+　　2)　按下式选择采样周期T，参数长度L，分辨率j
+
+其中ωφs为尺度函数φ(t)的频带.
+　　3)　采集数据集O(N)=｛(u(0),y(0)),(u(1),y(1)),…,(u(N),y(N))｝.
+　　4)　据式(4)，(6)计算
+　　5)　使用Stein无偏风险估计法降噪.
+　　6)　使用最小二乘法估计参数αk,k=0,1,…,L，计算脉冲响应函数的估计值.
+3.5　与相关分析法的比较
+　　对于含噪声过程，使用相关分析法［5］辨识脉冲响应可以得到比较好的结果.但与本文提出的方法相比(相同例子)，仿真结果表明，本文的方法较相关分析法在此例中的辨识精度提高了一个量级.
+4　仿真
+　　例.　考虑过程［3］　
+　　过程的过渡过程时间Ts为50s.采用Daubechies2阶正交小波及相应尺度函数［4］.选择采样周期T=0.5s，参数长度L=100，分辨率j=1.辨识数据长度N=800，采样时间为400s.输入信号采用零均白噪，噪声采用高斯白噪.
+　　图1为不含噪声时g(t),(t)及e(t)=g(t)-(t)的图形.e(t)的方差为5.73×10-7.
+　　图2为含噪声时辨识结果图形，噪信比为18%时e(t)方差为1.12×10-6，信噪比为33%时e(t)方差为3.88×10-6.
+
+
+
+
+图1　不含噪声时辨识结果
+
+
+
+图2　含噪声时辨识结果
+　　由仿真结果可以看出，本文提出的方法对确定性系统和随机性系统都能得到较好的精度.
+5　结　语
+　　本文讨论的脉冲响应正交尺度变换方法是基于多分辨分析的一种逼近方法.这种方法利用多分辨分析所构造的正交尺度函数的级数形式来逼近系统的脉冲响应函数.由于正交尺度函数具有良好的时频特性，从而使辨识方法能够结合传统的时域与频域辨识方法的优点.本文提出的方法适用于确定性过程和随机性过程，计算机数值仿真显示出这种方法具有较好的辨识精度.并验证文中所述该方法理论依据的正确性和算法步骤的可行性.
+1)国家自然科学基金重点资助项目
+作者单位：(北京航空航天大学第七研究室　北京　100083)
+参考文献
+　1　Eykhoff D. System-Identification-Parameter and State Estimation.New York:John Wiley & Sons, INC. 1974
+　2　崔锦泰.小波分析导论.西安：西安交通大学出版社，1992.162―163，304―305
+　3　方崇智，萧德云.过程辨识.北京：清华大学出版社，1988.119―120
+　4　Daubechies I. Orthonormal Bases of Compactly Supported Wavelets. Communications on Pure and Applied Mathematics, 1988, XLI：909―996
+　5　Ljung L.系统辨识――使用者的理论.上海：华东师范大学出版社，1987
+收稿日期　1997-01-31

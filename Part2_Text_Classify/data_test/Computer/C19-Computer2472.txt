@@ -1,0 +1,110 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.2　P.256-259
+
+
+
+k-着色问题及其均场退火求解算法
+胡卫明　徐俊华　何志均
+摘　要：均场退火方法既可以看作是一种新的神经网络计算模型,又可视为是对模拟退火的重大改进.该文把具有相邻约束的多层通孔最小化问题转换为更具广泛意义的k-着色问题,并提出了k-着色问题的均场退火求解算法.算法在线段相交图模型的基础上,提出了相邻矩阵和交叠矩阵等概念,并利用换位矩阵,将问题映射为相应的神经网络,再构造了该问题的能量函数.能量函数中的目标项、违背交叠约束的惩罚项、违背相邻约束的惩罚项和神经元归一化处理保证了网络能够求解到一个合法解.实验结果表明,这是一个有效的算法.
+关键词：多层通孔最小化,k-着色问题,均场退火方法.
+分类号：TP18
+A Mean Field Annealing-Based Algorithm for k-Colorable Problem
+HU Wei-ming　XU Jun-hua
+(National Key Laboratory of Text Processing Technology Institute of Computer Science and Technology Beijing University,Beijing,100871)
+HE Zhi-jun
+(Department of Computer Science and Engineering Zhejiang University,Hangzhou,310027)
+Abstract：The mean field annealing approach is a new neural network model,which improves the simulated annealing approach greatly.In the paper,the via minimization problem in multi-layer routing with adjacent constraints is translated to a k-colorable problem which has more general meanings,and a mean field annealing algorithm for the k-colorable problem is proposed.On the basis of the segment-crossing graph model,the adjacent matrix and the crossing matrix are introduced.A permute matrix of binary variables is used to map the problem to the neural network,and then the energy function is presented.The object item,crossing constrained item and adjacency constrained item in the energy function,and the normalization of neurons prove that the effective result can be gotten.The experimental results show that it is an effective method.
+Key words：Via minimization in multi-layer routing,k-colorable problem,mean field annealing approach.▲
+　　在超大规模集成电路(VLSI)设计中,减少通孔是一个具有现实意义的问题.最初,通孔最小化的研究只局限在双层布线上［1］.三层布线出现后,三层布线的通孔最小化问题也得到了研究［2～5］.随着VLSI技术的发展,三层以上的布线技术已经逐渐成熟,目前已发展到了七层布线.布线层数的增多是集成电路工艺发展的重要标志之一.集成电路工艺的发展对CAD技术提出了许多新的要求.本文将多层通孔最小化问题转换为更具广泛意义的k-着色问题,并提出了一种均场退火求解算法,取得了较好的效果.有关用神经网络解决k-着色问题的研究,国内外尚无报道.
+1　图模型与k-着色问题
+1.1　相交图模型
+　　一个通孔最小化前的多层布线图可以用一个多层线段相交图来描述［6］.多层线段相交图用G(V,EV∪EC)表示,其中V表示布线图中的线段,图的边由通孔边(EV)和交叠边(EC)组成.对于两条直接相联的属于同一线网的线段,在EV中就有一条通孔边连接表示这两条线段的顶点.在EC中,若有一条边连接两个顶点,就意味着这两个顶点表示的线段相交或重叠.
+1.2　相邻矩阵和交叠矩阵
+　　本文用相邻矩阵A表示组成各线网的线段的连接情况,用交叠矩阵C表示不同线网的线段的交叠情况.当边(i,j)∈EV时,矩阵A的元素aij等于“1”,否则等于“0”.当边(i,j)∈EC时,矩阵C的元素Cij等于“1”,否则等于“0”.
+1.3　相邻约束
+　　相邻约束限制了通孔只能连接相邻两层的线段.
+1.4　k-着色问题
+　　每一层用一种颜色表示,可以将k层通孔最小化问题描述为k-着色问题.在相交图上用k种颜色对每个顶点进行着色,由一边交叠边连接的两个顶点不能着同一种颜色,否则,两个不同线网的线段将会在同一层上相交或重叠;相邻约束要求由通孔边连接的两个顶点只能着相同的颜色或相邻的颜色;由EV边连接的两个顶点尽可能着相同的颜色.
+2　均场退火方法
+　　均场退火方法既可以看作是一种新的神经网络计算模型,又可视为是对模拟退火的重大改进.均场退火只需要在某个关键温度附近实施退火过程,以达到某个热平衡状态,就可以得到一个最优解或较好的次优解.因此,计算时间大为减少,同时又具有模拟退火相类似的优点.均场退火方法可以用神经元归一化的方法解决行约束问题.均场退火方法可由下面3个方程表示:,其中V是能量函数中的N维状态矢量,φi为均场,g是神经元的I/O特性函数,T是温度控制参数.
+3　神经计算
+3.1　映射方法
+　　对于n个顶点、k种颜色的着色问题可用n×k阶换位矩阵［vix］n×k表示:行代表需要着色的顶点,列代表着色的种类.换位矩阵是一个值为“0”或“1”的矩阵.一个换位矩阵对应于一种可行的着色方案.该问题需要n×k个神经元.神经元(i,x)的输出vix=1表示第i个顶点应着颜色x;vix=0表示顶点i不能着颜色x.
+3.2　能量函数与均场
+　　能量函数定义为
+
+其中
+　　能量函数中的第1项为优化目标项,它最小化通孔总数.若边(i,j)∈EV且顶点i和顶点j着不同颜色 (即有通孔),则,否则
+　　能量函数中的第2项为惩罚项,它限制由交叠边相连的两个顶点不能着相同的颜色.若由交叠边相连的两个顶点着相同的颜色,则此项不为0.也就是说,表达式cijvixcjx表示，当边(i,j)∈EC时(cij≠0),顶点i和顶点j不能着相同的颜色,即vix和vjx不能同时为“1”.
+　　能量函数中的第3项为违背相邻约束的惩罚项.当且仅当由通孔边相联的两个顶点着相同颜色或相邻颜色时,它为0.颜色“1”的相邻颜色只有颜色“2”,颜色k的相邻颜色只有颜色k-1,而颜色x(2≤x≤k-1)的相邻颜色有颜色x-1和颜色x+1.A和B即起这种控制作用.
+　　若参数α和β取较大值,网络能较快收敛到一个可行解,但解的质量不一定好;若α和β取较小值,网络能求得更好的解,但要用更长的计算时间为代价.根据经验,α和β取2.4是合适的.均场退火网络都能求得可行解.
+　　能量函数E对vix求一阶偏导数即得均场
+
+3.3　神经元归一化
+　　由于每个顶点只能着一种颜色,所以换位矩阵中每行的神经元只有一个为“1”,称为行约束.在均场退火网络中,可以采用神经元归一化的方法来解决行约束问题.神经元的输出状态矢量vix可以看作是当顶点i在随机平衡扰动中着颜色x的概率,它服从Boltzmann分布,即vix≈exp(-φix/T).为了获得实际概率,对神经元的输出vix进行归一化,即.它保证了每个顶点只能着一种颜色,从而也就满足了行约束.
+3.4　算法过程
+　　综上所述,均场退火过程的主要步骤可描述如下:
+　　随机选取vix的值;并进行归一化处理,即;
+　　repeat {
+　　　随机选择任一顶点i; Total=0
+　　　for x=1 to k {
+　　　　　
+　　　　　Total=Total+exp(-φix/T);
+　　　}
+　　　for x=1 to k vix=exp(-φix/T)/Total;
+　　}untill (ΔE＜ε)
+其中ΔE是相邻两次E的差;ΔE=0是热平衡条件,ε越小求得的解越好,但迭代时间也就越长.
+3.5　时间复杂性
+　　由于k<<n,所以在均场退火过程中,每次迭代的时间复杂性为O(n).为了使网络达到热平衡状态,需要进行O(n)次迭代,所以均场退火过程的时间复杂性为O(n2).
+4　定色约束
+　　在实际应用中,有时规定某些顶点只能着某些特定的颜色,称为定色约束.可以考虑两种定色约束方式.第1种情况:某一特定的顶点只能着某一特定的颜色,如顶点n1只能着颜色k1;顶点n2只能着颜色k2等.本文用了一个定色矩阵P来表示这种关系:矩阵的行表示顶点,矩阵的列表示颜色,当顶点i必须着颜色x时,p(i,x)=1,否则均为p(i,x)=0.第2种情况:所有特定的顶点可以着特定的m种颜色(k1,k2,...,km)(m＜k,k-着色)中的任何一种.对于这种情况,可用线段相交图来处理.在线段相交图上加上k-m个哑顶点,哑顶点分别着上k-m个特定的顶点所不能着的颜色,将这些顶点与所有哑顶点用交叠边连接,再将哑顶点所着的颜色加到定色矩阵中.对于定色约束,需在能量函数中增加约束项:.当且仅当在换位矩阵与定色矩阵中为“1”的元素位置相对应的元素都为“1”时,它为0.这项约束使得某些顶点能够着上特定的颜色.
+5　实验与结论
+　　本算法已用Visual C++5.0编程,在Founder 5166计算机上实现.我们用一些已发表文献的布线例子来验证本k-着色问题求解算法.表1列出了几个实例的执行结果.对于三层布线的实例(即3-着色问题),本算法的结果要好于文献［3］和文献［5］的启发式三层通孔最小化算法.一个来自文献［8］的五层布线图(即5-着色问题)也作为例子运行,其结果令人满意.
+Table 1　Experimental results for multi-layer constrained layer assignment
+表1　多层通孔最小化实验结果
+
+Number
+of
+examples①Number
+of
+layers②Number
+of
+nets③Number
+of
+original vias④Number of vias required from⑤Run
+time⑨(s)Source of
+examples
+Algorithm in
+Ref.［3］⑥Algorithm in
+Ref.［5］⑦Our
+algorithm⑧ (s)
+1321573640344.71Fig.9 in
+Ref.［7］
+234710783787513.96Fig.11 in
+Ref.［7］
+3363150105949360.90Fig.14 in
+Ref.［7］
+454762--5031.04Fig.1 in
+Ref.［8］
+
+①例号,②层数,③线网数,④原通孔数,⑤所需通孔数,⑥文献［3］中的算法,⑦文献［5］中的算法,⑧本算法,⑨运行时间,例子来源,文献［7］中的图9,文献［7］中的图11,文献［7］中的图14,文献［8］中的图1. 
+　　综上所述,本文将具有相邻约束的多层通孔最小化问题转换为更具一般意义的k-着色问题,并应用均场退火方法求解该问题.在线段相交图的基础上建立了相邻矩阵、交叠矩阵,并据此建立了问题的能量函数.能量函数中的目标顶、违背交叠约束的惩罚项、违背相邻约束的惩罚项和神经元归一化处理保证了网络能够求解到一个合法解.算法具有较快的收敛速度和较高的求解质量.■
+基金项目：本文研究得到国家自然科学基金(No.69576009)和中国博士后科学基金资助.
+作者简介：胡卫明,1968年生,博士,工程师,主要研究领域为IC-CAD,人工神经网络,GIS.
+　　　　　徐俊华,女,1968年生,工程师,主要研究领域为人工神经网络.
+　　　　　何志均,1923年生,教授,博士生导师,主要研究领域为人工智能,智能软件开发环
+　　　　　境,CAD.
+作者单位：胡卫明(北京大学计算机科学技术研究所文字信息处理技术国家重点实验室　北京　100871)
+　　　　　徐俊华(北京大学计算机科学技术研究所文字信息处理技术国家重点实验室　北京　100871)
+　　　　　何志均(浙江大学计算机科学与工程学系　杭州　310027)
+参考文献：
+［1］He Jiang-an,Hong Xian-long.An efficient two-layer router based on unconstrained via minimization.Journal of Software,1992,3(1):8～16
+(何江安,洪先龙.一个基于无约束通孔优化的的双层布线算法――FOREST.软件学报,1992,3(1):8～16)
+［2］Chang K C,Du H C.Layer assignment problem for three-layer routing.IEEE Transactions on Computer,1988,C-37(5):625～632
+［3］Chang K E,Jyu H F,Feng W S.Constrained via minimization for three-layer routing.Computer Aided Design,1989,21(6):346～354
+［4］Fang S C,Chang K E,Feng W S.Via minimization with associated constraints in three-layer routing problem.In: Proceedings of IEEE ISCAS.1990.1632～1635
+［5］Ahn K,Sahni S.Constrained via minimization.IEEE Transactions on CAD,1993,12(2):273～282
+［6］Fang S C,Chang K E,Feng W S et al.Constrained via minimization with practical considerations for multi-layer VLSI/PCB routing problems.In: Proceedings of IEEE 28th DAC.1991.60～65
+［7］Chen Y K,Liu M L.Three-Layer channel routing.IEEE Transactions on CAD,1984,CAD-3(2):156～163
+［8］Braun D,Burns J,Romeo F et al.Techniques for multi-layer channel routing.IEEE Transactions on CAD,1988,7(6):698～712

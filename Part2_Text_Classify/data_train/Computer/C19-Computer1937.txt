@@ -1,0 +1,204 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000　Vol.19　No.6　P.55-58
+
+
+
+
+利用RDS实现浏览器环境下的批量数据修改
+彭江平　谢勇
+摘要：RDS的工作原理及利用RDS实现基于浏览器的批量数据修改的具体实现方法。
+关键词：Remote Data Service（RDS）　浏览器　批量数据修改
+　　在因特网日益流行的今天，如何利用浏览器发布已有的管理系统收集的信息，如何实现基于浏览器的新型管理系统，如何让原本在单机或局域网中使用的数据库应用移植到因特网中，都成为亟待解决的问题。
+　　传统的数据库应用主要完成数据维护、数据查询、数据分析决策三个方面的功能。为了开发基于浏览器的数据库应用，就需要探讨这三类功能在新的环境下的具体实现方法。本文仅就与数据维护功能有关的数据批量修改的具体实现展开讨论。
+1  RDS及其工作原理
+　　RDS(Remote Data Service)是由Microsoft公司开发的基于浏览器的快速而高效的数据连接与发布的基本框架，它的前身V1.0是Advanced Data Connector(简称ADC)，到V1.5后才改名为RDS。它是基于HTTP，HTTPS(HTTP over Secure Sockets layer)和DCOM应用协议的客户／服务器分布式应用技术。通过使用具有数据感知功能的ActiveX控件，RDS使得开发因特网上的数据库应用可用类似开发一般客户／服务器数据库应用的方式进行。要了解RDS技术，最关键的是了解其工作模式，如图1所示。
+
+图1  RDS的工作模式
+　　从图中可知，客户端应用程序通过ActiveX Data Object(ADO)访问数据库需要通过RDS，RDS就好象一个帮助ADO对象访问数据的代理。这一访问模式与一般的ActiveX Server Page(ASP)不同，如图2所示。在ASP方式下，ADO对象与ODBC在同一机器上，而在RDS方式下，ADO与ODBC在不同的机器上，因而必须通过RDS的桥梁作用。
+
+图2  ASP的工作模式
+　　在RDS工作模式下，数据访问更适合批量工作方式，这是由RDS特殊的数据访问方式决定的。在开始工作时，RDS打开Web数据库读取所需要的记录，然后复制1份；而ADO对象的记录集从复本中读取数据；在记录集读数据后，其所有处理都是针对这一复本；只有在调用RDS的SubmitChanges方法后，才把数据提交到Web数据库。其工作原理如图3所示。
+
+图3  RDS访问数据模式
+2  利用RDS实现基于浏览器的批量数据修改
+　　在使用VB等快速开发工具设计数据库应用时，要实现对数据的批量修改，最直观的方法是使用网格(Grid／Browse)控件，只要设置好该控件的属性后，就可以方便地实现数据添加和批量修改等功能。在浏览器环境下，只需要在页面上插入网格控件与RDS控件，并设置其DataSrc属性为相应的RDS，就可以实现网格控件与由RDS生成的记录集之间的连接。遗憾的是，Microsoft提供的网格控件仅能显示数据，而不能实现对数据的修改。要实现对数据的批量修改，还需要其它方法。
+2.1 使用ActiveX控件SSDBGrid
+　　SSDBGrid控件是由Sheridan SoftWare所开发的DBGrid组件，可以利用它来实现数据的新增、删除及外修改等操作。具体的工作过程如下。
+　　(1)在浏览器页面上插入对象
+　　在浏览器页面上插入RDS与SSDBGrid对象，这既可以借助HTML的开发工具，如FrontPage或InterDev等，用可视的方式插入ActiveX控件，也可以把下面的代码直接写入某个HTML编辑器。当然，要保证设计环境下已有这2个控件。其中RDS是在安装IE4.0以上版本时自动安装的，而在安装新版本的IIS／PWS时提供了1个SSDBGrid控件试用版本。在运行测试时，浏览器将自动下载该控件，要注意的是，要正确设置在下面插入的SSDBGrid控件代码中的codebase属性，才可以顺利完成控件的下载过程。
+　　插入RDS控件：
+＜OBJECT classid＝″clsidBD96C556－65A3－11D0－983A－
+　00C04FC29E33″ ID＝ADC HEIGHT＝1 WIDTH＝ 1＞
+＜／OBJECT＞
+　　①在页面上插入RDS对象及相关的命令按钮(如“保存”与“取消”)。
+　　②插入Table对象，并在表格的单元格中插入文本框、下拉框、选择框等HTML组件。
+　　③设置属性。Table对象的属性设置如下：
+　　＜TABLE WIDTH＝100％ ALIGN＝center BORDER＝1
+　　ID＝tab1 DataSrc＝″＃ADC″ DataPageSize＝2 CELLSPAC－
+　　　　　　　　　　　　　　　　ING＝1 CELLPADDING＝1＞
+　　2个最关键的属性DataSrc与DataPageSize，分别表示所关联的RDS数据连接名和分页显示表格时每页显示的记录数。
+　　使用标记＜THEAD＞＜／THEAD＞与＜TBODY＞＜／TBODY＞分别显示表头与表体。
+　　为表格中插入的文本框、选择框等设置属性如下：
+　　＜TD＞＜INPUT id＝text2 name＝text2 datafld＝name ＞＜／TD＞
+　　＜TD＞＜SELECT id＝select1 name＝select1 datafld＝sex＞
+　　　　　＜OPTION value＝″男″ selected＞男
+　　　　　＜OPTION value＝″女″＞女
+　　＜／SELECT＞＜／TD＞
+　　主要是DataFld属性的设置，表示所关联的字段。
+　　④编写代码。“保存”与“取消”按钮相关的代码与上面讨论类似，而对于控制表格中数据的数据翻页的按钮编写如下代码。
+　　＜INPUT id＝button1 name＝button1
+　　　　type＝button value＝″后一页″ onclick＝tab1.next－
+　　　　　　　　　　　　　　　Page＞＜P＞
+　　＜INPUT id＝button2 name＝button2
+　　　　type＝button value＝″前一页″ onclick＝tab1.previ－
+　　　　　　　　　　　　　　　ousPage＞＜P＞
+　　下面代码是1个完整的实例。
+＜HTML＞
+＜HEAD＞
+＜BODY＞
+＜OBJECT classid＝clsidBD96C556－65A3－11D0－983A－
+　　　　　　　　　　　　00C04FC29E33 height＝1 id＝ADC
+width＝1＞＜／OBJECT＞
+＜SCRIPT LANGUAGE＝″VBScript″＞
+′插入脚本
+SUB Window＿OnLoad  ′初始化
+　Serverstr＝″http／／＜％＝Request.ServerVariables(″SERV－
+　　　　　　　　　　　　　　　　　　　　　　　ER＿NAME″)％＞″
+　　Connectstr＝″DSN＝yypp；uid＝scott；pwd＝scott；connect－
+　　　　　　　　　　　　　　　　　　　　　　　string＝yypp；″
+　SQLstr＝″Select * from student″
+　ADC.Server＝Serverstr
+　ADC.Connect＝Connectstr
+　ADC.SQL＝SQLstr
+　ADC.Refresh
+END SUB
+SUB Update＿OnClick  ′保存
+　　On error Resume Next
+　　插入SSDBGrid控件：
+＜OBJECT ID＝″GRID″WIDTH＝600 HEIGHT＝200
+　Datasrc＝″＃ADC″
+　codebase＝″http／″＜％＝Request.ServerVariables(″SERV－
+　　　　ER＿NAME″)％＞／MSADC／Samples／ssdatb32.cab″
+　CLASSID＝″CLSIDAC05DC80－7DF1－11d0－839E－
+　　　　　　　　　　　　　　　　00A024A94B3A″＞
+　＜PARAM NAME＝″＿Version″ VALUE＝″131072″＞
+　＜PARAM NAME＝″BackColor″ VALUE＝″－2147483643″＞
+　＜PARAM  NAME＝″BackColorOdd″   VALUE＝″－2147483643″＞
+　＜PARAM NAME＝″ForeColorEven″ VALUE＝″0″＞
+　＜PARAM NAME＝″AllowAddNew″   VALUE＝″1″＞
+　＜PARAM NAME＝″AllowDelete″　VALUE＝″1″＞
+＜／OBJECT＞
+　　插入提交按钮：
+＜INPUT TYPE＝BUTTON NAME＝″Update″ VALUE＝″保存″＞
+　　(2)设置属性
+　　在插入对象后，必须适当地设置控件的属性。在这里，主要是设置Grid控件的Datasrc属性为相应的RDS控件，并设置它的参数AllowAddnew与AllowDelet的值为“1”。
+　　Datasrc＝″＃ADC″
+　　＜PARAM NAME＝″AllowAddNew″ VALUE＝″1″＞
+　　＜PARAM NAME＝″AllowDelete″ VALUE＝″1″＞
+　　(3)编写代码
+　　在标记＜SCRIPT LANGUAGE＝″VBScript″＞与＜／SCRIPT＞之间插入代码及事件处理程序。例如，在提交批量数据修改的按钮的“Click”事件中添加如下代码：
+＜SCRIPT LANGUAGE＝″VBScript″＞
+SUB Update＿OnClick
+　If ADC.ReadyState ＜＞ adcReadyStateLoaded then
+　　ADC.SubmitChanges  ′提交修改
+　　ADC.Refresh  ′重新访问数据
+　　Grid.Rebind   ′重新绑定数据
+　Else
+　　MsgBox ″Query results still arriving，Please wait″
+　End if
+END SUB
+＜／SCRIPT＞
+　　至此，基于浏览器的批量数据添加、删除与修改程序的工作就已基本完成了。在安装IIS4.0或相应的PWS后，上述示例的完整代码可在目录“…＼msadc＼samples＼adctest.asp”中找到，因而在这里不再赘述。
+2.2 使用HTML
+　　在IE4.0后，Microsoft公司扩展了基本的HTML，使其与RDS结合，共同组成一个开发基于浏览器的数据库应用的基本框架。一方面，HTML组件是浏览器内建的组件，不需要传输或安装；另一方面，不需要附加的费用；最后，HTML的各种标记使用起来非常方便。下面通过实例，具体说明RDS与HTML结合实现基于Web的数据库应用的过程。
+＜HTML＞
+＜HEAD＞
+＜BODY＞
+＜OBJECT classid＝clsid：BD96C556－65A3－11D0－983A－00C04FC29E33 height＝1 id＝ADC width＝1＞＜／OBJECT＞
+＜SCRIPT LANGUAGE＝″VBScript″＞
+′插入脚本
+SUB Window＿OnLoad  ′初始化
+　Serverstr＝″http／／＜％＝Request.ServerVariables(″SERV－
+　　　　　　　　　　　　　　　　　　　　　　　ER＿NAME″)％＞″
+　Connectstr＝″DSN＝yypp；uid＝scott；pwd＝scott；connect－
+　　　　　　　　　　　　　　　　　　　　　　　string＝yypp；″
+　SQLstr＝″Select * from student″
+　ADC.Server＝Serverstr
+　ADC.Connect＝Connectstr
+　ADC.SQL＝SQLstr
+　ADC.Refresh
+END SUB
+SUB Update＿OnClick  ′保存
+　On error Resume Next
+　　ADC.SubmitChanges
+　　If Err.Number＜＞0 then
+　　　　ADC.CancelUpdate
+　　End If
+　　ADC.Refresh
+END SUB
+SUB Cancel＿OnClick　′取消
+　　ADC.CancelUpdate
+　　ADC.Refresh
+END SUB
+＜／SCRIPT＞
+＜TABLE WIDTH＝100％ ALIGN＝center BORDER＝1 ＞
+＜TR＞＜TD＞＜INPUT id＝button1 name＝button1
+　　type＝button value＝″后一页″ onclick＝tab1.next－
+　　　　　　　　　　　　　　　　　　　　Page＞＜／TD＞
+＜TD＞＜INPUT id＝button2 name＝button2
+　　type＝button value＝″前一页″ onclick＝tab1.previ－
+　　　　　　　　　　　　　　　　　　　ousPage＞＜／TD＞
+＜TD＞＜INPUT TYPE＝button NAME＝″Update″ 
+　　　　　　　　　　　　　　VALUE＝″保存″＞＜／TD＞
+＜TD＞＜INPUT TYPE＝button NAME＝″Cancel″ 
+　　　　　　　　　　　　　　VALUE＝″取消″＞＜／TD＞
+＜／TR＞＜／TABLE＞
+＜TABLE WIDTH＝100％ ALIGN＝center BORDER＝1
+　　ID＝tab1 DataSrc＝″＃ADC″ DataPageSize＝2
+　　　　　　　　　CELLSPACING＝1 CELLPADDING＝1＞
+　　＜THEAD＞
+　　＜TR＞
+　　　　＜TD＞num＜／TD＞
+　　　　＜TD＞name＜／TD＞
+　　　　＜TD＞sex＜／TD＞
+　　　　＜TD＞mariage＜／TD＞
+　　　　＜TD＞tel＜／TD＞
+　　　　＜TD＞address＜／TD＞
+　　　　＜／TR＞
+　　＜／THEAD＞
+　　＜TBODY＞
+　　＜TR＞
+　　　　＜TD＞＜INPUT id＝text1 name＝text1
+　　　　　　　　　DataFld＝″num″ ＞＜／TD＞
+　　　　＜TD＞＜INPUT id＝text2 name＝text2
+　　　　　　　　　datafld＝name   ＞＜／TD＞
+　　　　＜TD＞＜SELECT id＝select1 name＝select1
+　　　　　　　　　datafld＝sex＞
+　　　　＜OPTION value＝″男″ selected＞男
+　　　　＜OPTION value＝″女″＞女
+　　　　＜／SELECT＞＜／TD＞
+　　　　＜TD／＜INPUT type＝″checkbox″ id＝check－
+　　　　　　　　　　　　　　box1 name＝checkbox1
+　　　　　　　　　　　　　datafld＝mari＞＜／TD＞
+　　　　＜TD＞＜INPUT id＝text3 name＝text3 datafld＝
+　　　　　　　　　　　　　　　　　tel＞＜／TD＞
+　　　　＜TD＞＜INPUT id＝text4 name＝text4 datafld＝
+　　　　　　　　　　　　　　　address＞＜／TD＞
+　　＜／TR＞
+　　＜／TBODY＞
+＜／TABLE＞
+＜／BODY＞
+＜／HTML＞
+　　上面讨论了如何在表格的单元格中插入各式各样的控件，设置表格的DataSrc属性及相关单元格的控件的DataFld属性。事实上，也可以不使用表格，而直接设置插入控件的DataSrc与DataFld属性。如：
+＜INPUT id＝text3 name＝text3 DataSrc＝″＃ADC″ 
+　　　　　　　　　　　　　　　　　Datafld＝tel ＞
+　　通过把多个这样的控件组合在一起，就可以实现自由式的单记录的添加、显示、修改与删除等操作。
+　　随着因特网的普及，Web数据库技术将不断成熟。本文介绍的方法，虽然已具有一定的实用价值，但仍有一些问题需要解决，如安全性问题。因为大多数代码是在客户端执行，因而许多代码可以从浏览器查看，例如，连接数据库的连接串等，虽然可以通过Web服务器上ODBC连接串的设置隐藏一部分信息，但毕竟还是一个安全隐患。
+彭江平（长沙湖南财经学院信息统计系410079）
+谢勇（湖南长信信息系统集成有限公司）
+参考文献
+1，王国荣，朱琳杰，王伟．Active Server Page ＆数据库．北京：人民邮电出版社，1999
+2，Martiner W．Visual Basic快速Web开发指南．北京：电子 工业出版社，1998
+3，彭江平，周大庆，蒋苏湘等．Internet／Intranet的开发与应用．成都：电子科技大学出版社，1999
+收稿日期：1999－12－11

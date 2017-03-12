@@ -1,0 +1,50 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000 Vol.19 No.2 P.40-42
+
+
+
+
+在Windows NT网络中实现电话语音通信
+张淮中
+摘 要： 应用程序接口TAPI以及在Windows NT网络中进行电话语音通信的方法，通过编程实例说明了实现过程。
+关键词： 语音通信 TAPI电话应用程序接口 Windows NT平台
+　　Windows NT是当前的主流网络操作系统，目前广泛应用于各种网络环境中；在Windows NT网络中集成电话功能，实现网络上的语音传送，能增强网络的多媒体应用能力，拓展网络的服务功能。
+　　在Windows NT中，微软提供了许多语言编译器和集成开发环境以支持程序开发，典型的有：VC＋＋、VB、HTML，Visual J＋＋等，本课题的开发平台以VC＋＋为主，应用Windows NT的应用程序接口Win32 API，通过MFC构造网络中电话功能的应用程序框架。
+1 扩展的应用程序接口TAPI
+　　微软扩展了标准API的功能构成电话应用程序接口Telephony APITAPI，Windows NT操作系统包含TAPI作为1个部分，TAPI包括将电话功能集成到应用程序中的API，有关部件为：Tapi32．dll、Tapisrv．exe、Tapi．h、Tapi32．lib。Tapi的基本调用过程就是开发的应用程序使用Tapi32．dll，它运行于应用程序的地址空间，与Windows NT的服务程序Tapisrv．exe进行通信，实现在NT网络中的电话语音通信；若进行远程电话语音通信，即Tapisrv．exe与服务提供者的dll进行通信，以服务提供者提供的dll的驱动程序与外接的设备进行通信，接入公用电话网。
+　　通过TAPI开发的电话应用程序对于底层的通信网络和服务是透明的，它可以在不同的通信网络上工作。开发的应用非常广泛，支持简单的拨号和接收语音呼叫；可以处理数据传输；支持各种连接，如：串口连接、通过局域网的连接、Modem／Fax连接等；还可开设语音邮件、召开电话会议等。
+　　TAPI提供一些基本功能函数，以完成从简单的拨号到高级的呼叫中心等各种功能，包括lineOpen、lineClose、lineAnswer、lineDial等用于呼叫建立和终止，lineAddToConference、lineRemoveFromConference用于会议功能，lineSetMediaControl、lineSetNumRings、lineForward、lineHold等用于相关线路功能，phoneOpen、phoneClose、phoneGetStatusMessages等用于电话功能，它们一般都是异步函数，即调用函数的功能是在程序进行其它工作时异步完成的。
+　　TAPI还提供一些消息以对应用程序的请求进行响应，应用程序可以通过相应消息采取行动。如：LINE＿CALLSTATE表示呼叫的状态改变、LINE＿CLOSE表示线路设备已关闭、LINE＿LINEDEVSTATE表示设备状态已改变、LINE＿CREATE表示创建新设备标识符。在TAPI中，主要管理二种设备：线路设备（包括MODEM、ISDN Adapter、Fax Card等）和电话设备（包括Microphone、Earphone、Sound Card等）；对网络传输的数据，TAPI能够控制处理信号数据，如：拨号数据字、呼叫代号等，而对实际的数据，如：保留的语音或传真数据等，只有对其传输进行管理的功能，没有处理的功能。
+2 Windows NT中的电话语音服务
+　　Windows NT提供的电话语音服务有4类，可根据不同情况利用TAPI开发相应的应用程序。
+　　（1）Assisted服务。由系统的Assisted函数为应用程序提供了一种进行呼叫的简单方法：通过应用程序调用函数tapiRequestMakeCall并提供呼叫号码，由Windows NT的呼叫控制程序进行实际的呼叫过程，无需进行更多的开发工作，若要得到用户在当前地点参数里设置的区号，可使用函数tapiGetLocationInfo。
+　　（2）Basic服务。该服务是由与PSTN提供的话务服务功能对应的1组函数构成。Basic服务是电话服务中的基本服务，每个TAPI兼容线路设备和TAPI服务提供者必须支持所有的Basic服务。若应用程序只用TAPI的Basic函数编程，就会在各种TAPI环境中工作，而不管其是什么线路设备和TAPI服务提供者。
+　　（3）Supplemental服务。此服务提供的函数支持呼叫保持、多方通话等比较高级的特性，这些功能是可选的，服务提供者可以选择要实现的功能。因此，只有网络中的TAPI服务提供者支持应用程序中使用的Supplemental服务功能，应用程序才能在相应环境中移植。一般可以用函数lineGetDevCaps和lineGetAddressCape查询线路和电话提供的Supplemental服务功能。
+　　（4）Extended服务。Extended服务函数中包含的功能由TAPI服务提供者决定，它可以提供Basic服务和Supplemental服务功能中没有的服务。通过在枚举类型和标志位中设置新的值，或在数据结构中加入新的成员数据，TAPI服务提供者可以提供特别服务。
+　　可以由TAPI构造的高级电话服务功能有：支持延迟拨号，建立振铃列表，保密呼叫，处理多种计算机和电话的连接配置等。
+3 使用TAPI构造电话语音应用程序的方法
+　　在Windows NT网络中，第一次建立电话环境时，应在进程中执行1个初始化调用来设置TAPI环境，包括：加载Tapi32．dll、执行TAPI服务Tapisrv．exe以及加载注册库中有关的电话设备驱动程序。
+　　 编制电话语音应用程序大致需要经过如下的过程： 
+　　（1）初始化TAPI。通过lineInitialize函数在应用程序中完成TAPI的初始化。lineInitialize函数给出了应用程序的回调函数，用来通知应用程序的各种事件；lineInitialize函数返回1个TAPI使用句柄，并指明TAPI使用的通信机制。
+　　（2）协调TAPI的版本。应用程序使用lineNegotiateAPIVersion函数把API使用版本通知给TAPI，返回与TAPI通信所能使用的版本，同时获得线路设备支持的扩展功能。
+　　（3）检查设备。调用lineGetDevCaps函数询问设备的能力，返回1个LINEDEVCAPS类型的数据结构。设备的能力包括如下信息：TAPI服务提供者、交换机信息、字符串格式、载波方式、数据传输率等。
+　　（4）应用程序注册。利用函数lineRegisterRequestRecipient将应用程序进行注册。
+　　（5）拨号。启动拨号按钮，应用程序提取用户的输入数据，然后调用ResolveNumber函数修改用户的输入数据，修改后的号码用于拨号。
+　　（6）启用线路设备。调用函数lineOpen打开1条线路设备，lineOpen返回线路设备的句柄，用以完成以后对此设备的各种操作。当然在1个应用程序中可以打开多个线路。
+　　（7）号码转换。调用函数lineTranslateAddress将要拨的号码转变成可以直接在电话上拨的号码。转换好的号码返回给LINETRANSLATEOUTPUT结构，在转换后，返回2个号码：1个在线路设备上用于拨号，另1个显示给用户。
+　　（8）呼叫。随后使用函数lineMakeCall进行呼叫，lineMakeCall使用lineOpen返回的线路句柄，返回1个带有拥有者特权的当前呼叫的句柄，用于对本次呼叫进行以后的操作。若函数lineMakeCall返回呼叫有问题，由LINE＿REPLY消息提供呼叫的状态。
+　　（9）结束呼叫。通信完成后，调用lineDrop函数结束呼叫，但其并不释放呼叫的句柄，可以通过调用lineDeallocateCall来释放句柄。
+　　（10）关闭线路。通过lineClose函数关闭线路，使其可以被其它应用程序使用，同时释放了呼叫的句柄。
+　　（11）终止TAPI调用。调用lineShutdown函数关闭TAPI的使用。
+4 实例介绍
+　　下面的例子是通过线路进行呼叫，使用Modem实现Windows NT网络中的电话功能。其主要程序简介如下。首先在VC＋＋编程环境中，利用MFC构造1个用户拨号对话框，由对话框类CphDialDlg实现，在应用程序中提供保存TAPI句柄、线路句柄、协商版本、当前呼叫句柄等数据的成员变量，此部分程序略。随后，主程序进行相应的电话功能处理。下面的函数进行TAPI应用程序初始化。
+
+
+
+　　以上为实现1个基本电话呼叫及通话过程的主要编程过程，若要支持延迟拨号、建立振铃列表、保密呼叫等高级电话功能，可以利用TAPI的函数对程序进行扩展。
+张淮中（南京师范大学计算机系210097）
+参考文献
+1，Rajagopal R．Windows NT高级程序设计．北京：机械工业出版社，1998
+2，Gregory K．Visual C＋＋5开发使用手册．北京：机械工业出版社，1998
+收稿日期：1999－08－21

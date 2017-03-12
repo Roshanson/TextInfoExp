@@ -1,0 +1,49 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  Vol.24  No.5 1998
+
+
+
+Kalman-Yakubovich引理与不确定性
+系统的鲁棒稳定性分析1)
+陈阳舟　　刘家琦　陈善本
+关键词　Kaman-Yakubovich引理，不确定性系统，二次稳定性，频率判据.
+KALMAN-YAKUBOVICH LEMMA AND ANALYSIS OF ROBUST
+STABILITY FOR SYSTEMS WITH UNCERTAINTIES
+CHEN YANGZHOU　　LIU JIAQI　　CHEN SHANBEN1)
+(School of Astronuatics,1） School of Material Science and Eng.,
+Harbin Institute of Technology, Harbin　150001)
+Key words　Kalman-Yakubovich lemma, systems with uncertainties, quadratic stability, frequency criterion.
+1　引言
+　　众所周知，频率域方法和时间域方法是控制系统研究中同等重要的两个基本方法，在不确定性系统的鲁棒稳定性分析与设计中也被广泛采用.而这两种方法的互相渗透和联合使用促使人们希望建立起它们间的联系.例如，文献［1］从几种典型的频率条件(如有界实性条件和正实性条件等)出发通过构造相应的二次型Lyapunov函数来确定使系统鲁棒渐进稳定的不确定性类的结构.另一个典型例子是Kalman－Yakubovich引理(或称频率定理)［2］.此引理已成为联系系统状态空间模型与频率条件的强有力工具.本文的目的正是应用这个工具来讨论文献［1］中的类似问题.
+2　问题的建立和一般结果
+　　考虑由如下状态空间模型描述的不确定性系统
+　　(1)
+这里A，B，C，D为给定的适当维数的矩阵，x∈Rn,ξ∈Rm，y∈Rl，Δ为从y到ξ的任一传递算子，其结构由给定的不确定类U确定，假定U由时变非线性连续算子φ(.,t)组成，而φ(y,.)对任给的y∈Rl为Lebesque可测函数，且使得(x,ξ,=φ(y,t))满足二次型约束G(x,ξ)x*G0x+2x*gξ+ξ*Γξ≤0.本文的问题是：寻找系统(1)关于U二次稳定的条件.系统(1)关于类U二次稳定性如通常所定义：存在正定二次型V(x)=x*Hx使得对类U中任意算子所确定的非零的(x,ξ)有dV／dt：=2x*H(Ax+Bξ)＜0.
+　　由二次稳定性定义和S-过程定理［3］知系统(1)二次稳定当且仅当存在正定二次型V(x)=xHx使得
+
+成立.以下总记ΩA=∶｛ω∈R1：detAiω≠0｝，Aiω=∶iωI-A.由著名的Kalman-Yakubovich引理［2］直接得到定理1.
+　　定理1.系统(1)关于不确定性类U二次稳定当且仅当同时满足下列两条件：(a)存在矩阵k使得A+Bk为Hurwitz稳定且G(x,kx)≤0；(b)成立频率条件：存在ε＞0使得对任意满足等式Ax+Bξ=iωx的x∈Cn，ξ∈Cm，ω∈ΩA有
+G(x,ξ)≥ε(｜x｜2+｜ξ｜2).　　(2)
+特别，若A在虚轴上无特征根，则条件(2)变为G(A－1iωB，I)＞0　(ω∈R1).
+3　系统(1)具有某些特殊二次型不确定类时的二次稳定性
+　　本文讨论当不确定性类U为三类特定结构之一时系统(1)的二次稳定性.在以下的叙述中总设T(λ)为系统(1)的确定性部分的传递函数，即T(λ)=D+C(λI-A)-1B.
+　　首先，设不确定性类U中的二次型由ξ≤ξ≤y*y确定，记该类为U1，则由定理1立即得到定理2.
+　　定理2(小增益判据).　假定存在一个m×l常矩阵F使得FF≤I且A+B(I-FD)-1FC为Hurwitz稳定矩阵，则系统(1)关于不确定性类U1二次稳定的充分必要条件是频率条件成立
+
+其次，考虑系统(1)的不确定性类U中的二次型由ξy≤0确定，记该类为U2，则由定理1即可得到定理3.
+　　定理3(正实性判据).设存在一个m×m常矩阵F使得F＋F≤0，且A＋B(I-FD)－1FC为Hurwitz稳定矩阵，则系统(1)关于不确定性类U2二次稳定的充分必要条件是下面的频率条件成立
+ε＞0：T(iω)+T(iω)≥ε［B*(A-1iω)*A－1iωB+I］　(ω∈ΩA).
+　　最后，考虑不确定性类U中的二次型由［ξ+K1y］［ξ+K2y］≤0确定，记该类为U3，这里K1，K2为两个给定的m×l常实矩阵，则由定理1得
+　　定理4(圆判据).假定矩阵A在虚轴上无特征根且类U3中存在一个线性函数ξ=Fy使得A+B(I-FD)-1FC为Hurwitz稳定矩阵，则系统(1)关于不确定性类U3二次稳定的充分必要条件是下面的频率条件成立
+
+4　结束语
+　　本文应用Kalman-Yakubovich引理讨论了几处具特殊结构的不确定性系统的二次稳定性.获得的频率条件是系统二次稳定的充分必要条件，但仅仅是系统鲁棒渐进稳定的充分条件.其次，如果给定的不确定性类为文中所述各类的子类，则定理1―4中的条件都只能作为系统二次稳定的充分条件使用.此时由于没有利用子类的更详细的信息，因而判据是保守的.在作充分条件使用的意义下，定理2―4推广了文献［1］中相应的结果.这是因为如果不确定类中不包括“F=0”情况，则不必要求矩阵A稳定，此时文献［1］中的频率条件不适用.
+1)国家教委留学回国人员专项基金和国家自然科学基金资助项目.
+作者单位：陈阳舟　　刘家琦　　(哈尔滨工业大学航天学院　哈尔滨　150001)
+　　　　　陈善本　　(哈尔滨工业大学材料科学与工程学院　哈尔滨　150001)
+参考文献
+　1　Haddad W M, Bernstein D S. Explicit construction of quadratic Lyapunov functions for the small gain,positivity, circle, and Popov theorems and their application to robust stability. In: Proc. 30th IEEE Conf. Decision and Control, England: Brighten, 1991, 2618―2623
+　2　Yakubovich V A. A frequency theorem in control theory (in Russian). Sib. Mat. Zh., 1973, 14：384―420;English transl. in Siberian Math. J., 1973, 14
+　3　Yakubovich V A. S-Procedure in nonlinear control theory (in Russian). Vestnik Leningradskogo Universiteta, Ser. Mat, 1971, 13(1):62―77
+收稿日期　1996－05－27

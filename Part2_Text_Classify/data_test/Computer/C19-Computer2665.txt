@@ -1,0 +1,95 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第9期　Vol.10　No.9　1999
+
+
+
+pC++语言中数据划分算法的研究与改进*
+石威　方滨兴　胡铭曾
+摘要　大规模并行计算是当前该领域研究的一大热点.由于大多数应用问题是数据并行问题,所以人们更多地采用数据并行计算方法来解决实际问题.在数据并行计算中,影响计算速度的一个重要因素是数据的划分状况.该文针对一种较为流行的面向对象数据并行语言――pC++的数据划分算法进行了分析,并指出了其不足之处,同时提出了一种改进的数据划分算法.实验表明,此算法与原有算法相比具有明显的优越性.
+关键词　大规模并行计算,数据并行,面向对象,pC++,数据划分算法.
+中图法分类号　TP311
+Research and Improvement on the Data Distribution Algorithm of pC++ Language
+SHI Wei　FANG Bin-xing HU Ming-zeng
+(Department of Computer Science and Engineering　Harbin Institute of Technology　Harbin　150001)
+Abstract　Large-scale parallel computing is a hot spot of current research. Because most of the scientific calculation is data parallel calculation, people would like to solve real problems by means of data parallelism. As for data parallel calculation, one of the critical factors that influence the running performance is the status of data distribution. In this paper, the authors analyze the data distribution algorithm of a prevalent object-oriented data parallel language――pC++ and point out the weaknesses of it. Then they present an improved algorithm. The results of the experiment show that it is superior to the former algorithm.
+Key words　Large-scale parallel computing, data parallel, object-oriented, pC++, data distribution algorithm.
+　　大规模并行计算主要分为任务并行和数据并行两类.本文主要讨论数据并行计算问题.
+　　数据并行计算的特点是，首先对问题的数据空间进行划分,然后根据数据的不同位置划分计算空间,各处理机针对本机的数据进行类似的操作.因此,提高数据并行问题解决速度的关键在于尽可能地均匀划分数据,以使各处理机负载均衡.数据划分算法决定了数据的划分情况,因此将直接影响并行程序的运行性能.
+　　当前流行的数据并行语言主要有HPF［1］,pC++［2］等,它们均支持BLOCK,CYCLIC,WHOLE分布.由于面向对象技术日益广泛的应用,pC++等面向对象的数据并行语言也得到了更为广泛的应用,现在国内外很多科研机构都在对其进行进一步的研究［3］.我们对pC++语言的数据划分算法进行了分析,发现它能较好地处理BLOCK,CYCLIC划分,但在处理WHOLE划分时,却产生了严重的负载不均衡问题.因此，我们提出了一种数据划分算法,它对WHOLE分布也能较好地进行处理.
+　　本文第1节简要介绍了C++语言的一种数据并行扩展――pC++语言.第2节介绍了其数据划分算法.第3节给出了我们的数据划分算法.最后给出了实验结果.
+1　pC++语言简介
+　　pC++语言在C++语言的基础上增加了Collection结构.简单地说,Collection就是同类并发对象的集合.这些并发对象都是某一个类的实例.一个Collection包含下面两个重要结构.
+　　.对准对象（align object）
+　　对准对象描述了Collection内部并发对象的数据结构,并把Collection中的元素映射到一个由划分对象定义的数据模板上.
+　　.划分对象（distribution object）
+　　划分对象定义了一个数据模板,并把该模板以BLOCK,CYCLIC或WHOLE的方式划分到处理机上.
+　　在pC++语言中,数据划分算法主要考虑如何将集合划分到各处理机上.pC++语言支持3种划分方式:BLOCK,CYCLIC和WHOLE.BLOCK划分是指根据处理机的个数将Collection元素划分成连续的块,然后置于各处理机上.CYCLIC划分是把Collection内的元素逐个依次地放置到各处理机上.WHOLE划分表示本维不参与划分.pC++的数据划分算法在处理WHOLE划分时会产生数据划分不均衡问题.
+2　pC++语言的数据划分算法
+　　我们以二维Collection为例来说明pC++的数据划分算法.
+　　输入: 每一维的分布方式、大小及元素下标
+　　输出: 被分配的处理机号
+　　(1)　p=处理机总数的平方根;
+　　(2)　switch (第1维的分布方式){
+　　(3)　case BLOCK:
+　　(4)　　　q=第1维的大小/p;
+　　(5)　　　index1=元素的第1维下标/q;break;
+　　(6)　case CYCLIC:
+　　(7)　　　index1=元素的第1维下标%p;break;
+　　(8)　case WHOLE:
+　　(9)　　　index1=0;}
+　　(10)　　 switch(第2维的分布方式){
+　　(11) case BLOCK:
+　　(12)　　 q=第2维的大小/p;
+　　(13)　　 index2=元素的第2维下标/q;break;
+　　(14) case CYCLIC:
+　　(15)　　 index2=元素的第2维下标%p;break;
+　　(16) case WHOLE:
+　　(17)　　 index2=0;}
+　　(18) proc=index1+index2*p;
+　　(19) return proc.
+　　该算法以Collection中某元素的下标值、各维的划分方式以及各维的大小作为输入,其输出为元素被分配的处理机号.
+　　下面我们分析一下该算法.它首先产生一个二维逻辑处理器,其每维的大小是处理机总数的平方根.然后，根据每一维的划分情况,将元素的下标i和j映射到逻辑处理器上,生成对应的二维下标index1和index2,最后将逻辑处理机映射到物理处理机上，并返回该元素所被分配的处理机号proc.
+　　对于BLOCK和CYCLIC分布,此函数较好地完成了数据划分,但对于WHOLE分布却产生了严重的负载不均衡问题.我们通过下面的例子来看一下pC++数据划分算法的弊病.
+　　假设Collection第1维是BLOCK分布,第2维是WHOLE分布,处理机的个数为4,Collection元素的个数为8*8=64,则p=2,第1维分布方式为BLOCK,第2维分布方式为WHOLE,在处理第1维分布时,由第3～5行可知,index1的可能取值是0或1,而在处理第2维分布时,由第16～17行可知,index2的取值始终为0.这样,由第20行可知,proc的值为0或1,即数据只被划分到第0号和第1号处理机上,而第2、3号处理机上无数据.
+3　改进的数据划分算法
+　　针对pC++中数据划分算法的弊病,我们对它进行了改进,如下所示:
+　　输入: 每一维的分布方式、大小及元素下标
+　　输出: 被分配的处理机号
+　　(1)　p=处理机总数的平方根;
+　　(2)　if (第1,2维均为非WHOLE分布方式)
+　　(3)　{∥处理方式与pC++相同}
+　　(4)
+　　(5)　if (第1维为非WHOLE分布,第2维为WHOLE分布)
+　　(6)　switch (第1维分布方式)
+　　(7)　{
+　　(8)　case BLOCK;
+　　(9)　　　q=第1维大小/处理机总数;
+　　(10)　　 proc=第1维下标/q;break;
+　　(11) case CYCLIC:
+　　(12)　　 proc=第1维大小%处理机总数;
+　　(13) }
+　　(14) if (第1维为WHOLE分布,第2维为非WHOLE分布)
+　　(15)　　 {∥与上类似}
+　　(16) if (第1,2维均为WHOLE分布方式)
+　　(17) {proc=0;}
+　　(18) return proc.
+　　我们的数据划分算法的主要思想是,将WHOLE分布与BLOCK,CYCLIC分布方式区分开来加以处理,对于BLOCK和CYCLIC的处理与pC++的处理方法相同,而对于WHOLE分布,我们则通过降低逻辑处理器的维数,并且只利用具有非WHOLE划分方式的维来对Collection进行划分,从而使物理处理机的负载均衡.
+　　以二维Collection为例,我们首先看其是否具有WHOLE分布,若没有,则按照pC++的划分方式在二维逻辑处理机上进行划分;否则,若只有一维是WHOLE分布,则将其在一维逻辑处理器上分布,若两维均为WHOLE分布,则不对数据进行划分.推广开来,若Collection的维数为n,其中有i维是WHOLE分布,则我们将Collection分布到n-i维逻辑处理器上,从而避免了某些处理机上无数据的情况.本文实现了二维Collection的数据划分,对于更高维的Collection划分,可以采用同样的方法加以实现.
+　　根据我们的数据划分算法,我们能够对第2节中的例子进行有效的划分.由于第2维是WHOLE分布,我们将Collection在一维逻辑处理机上进行划分,逻辑处理机的大小为处理机总数,见改进算法的第9行.划分是针对Collection的第1维进行的,第2维并不参与划分.本例中,逻辑处理机与物理处理机之间是一一对应的关系,proc的取值范围为［0,3］.这样,通过降低逻辑处理机的维数,我们将Collection均匀地划分到了各个物理处理机上.
+4　实验结果
+　　在4台通过以太网联结的IBM-POWERPC-AIX工作站上,我们采用矩阵乘运算来验证我们的算法,矩阵的二维分别采用BLOCK和WHOLE划分.实验结果如图1所示.由图1可见,随着问题规模的增大,我们的数据划分算法与原有的pC++算法相比显示出更好的性能,这是由于pC++的数据划分算法在计算规模增大时加重了各处理机间的负载不平衡,从而使运行时间急剧增加.在数据规模较小时,网络通信延迟对总的运行时间有较大的影响,而由pC++数据划分算法导致的负载不平衡使得通信在较少的处理机结点间进行,减少了通信产生的额外开销,因而使得运行性能略好于我们的算法.当前数据并行计算的一个主要特点是数据量大,因此，我们的数据划分算法能够更好地支持数据并行计算.
+
+图1
+　　尽管我们提出的算法是在pC++语言中实现的,但它并不受具体语言的限制,可以在各种语言中加以应用,因此对于数据并行计算有着普遍的意义.
+*　本文研究得到国防科工委“九五”预研基金资助.
+作者简介：石威,1973年生,博士生,主要研究领域为并行编译，分布式并行编程环境.
+　　　　　方滨兴,1960年生,教授，博士生导师,主要研究领域为并行处理，高性能计算机系统结构，计算机网络.
+　　　　　胡铭曾,1935年生,教授，博士生导师,主要研究领域为高性能计算机系统结构，并行处理.
+本文通讯联系人：石威,哈尔滨150001,哈尔滨工业大学计算机科学与工程系
+作者单位：哈尔滨工业大学计算机科学与工程系　哈尔滨　150001，E-mail: sw@pact97a.hit.edu.cn
+参考文献：
+［1］Koelbel C, Loveman D, Schreiber R et al. The High Performance Fortran Handbook. Cambridge, MA: MIT Press, 1994
+［2］Gannon D, Yang S X, Beckman P. User guide for a portable parallel C++ programming system: pC++. Technical Report, Indiana University, 1994
+［3］HPC++ Working Group. HPC++ whitepapers and draft working document. Indiana University, http: //www.extreme.indiana.edu/
+收稿日期：1998-07-14，修改日期：1998-11-10

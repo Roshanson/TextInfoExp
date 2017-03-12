@@ -1,0 +1,72 @@
+计算机工程
+Computer Engineering
+1999年　第25卷　第9期　Vol.25 No.9  1999
+
+
+
+MQTS中工作流的设计和实现
+俞立军　杨　岭　许满武
+　　摘　要：计算机和网络的快速发展促进了应用的分布，工作流协调和控制分布应用角色间的工作活动，介绍了建筑材料质量检测系统中工作流的设计和实现．
+　　关键词：工作流；表单；角色
+Design and Implementation of Workflow in Architecture Material
+Quality Test System
+Yu Lijun Xu Manwu
+(Department of Computer science, State Key Laboratory for Software Novel Technology, Nanjing University, Nanjing 210093)
+Yang Ling
+(Nanjing Architecture Engineering Quality Test Center, Nanjing 210014)
+　　Abstract　The rapid development of computer and networks promotes the application to distribute, Workflow coordinates and controls work activities between roles of the distributed application. This article introduces design and implementation of workflow in architecture material quality test system MQTS.
+　　Key words　Workflow; Form; Role
+　　建筑工程的质量检测是控制产品质量的重要手段，其基本任务是通过试验对建筑工程产品质量水平作出公正、科学、准确的评价，以保护国家、消费者及生产厂家的利益，促进企业产品质量的提高。建材的质量检测流程要经过委托、试验、计算、审核、报告、签发等环节，需要工作人员复杂的计算、判断、誊写、统计工作，建筑质检部门的信息系统开发和应用势在必行。
+　　工作流是一个自动化的有组织的过程，在这个过程中活动的协同、控制和通信是自动的，而活动本身则可能需要人的参与。工作流的管理由工作流服务实体完成，这个服务实体通过有组织的过程的计算机化在计算机网络环境中提供所需服务。用户通过工作流客户与工作流服务实体进行通信。完成工作流管理的系统软件称为工作流管理系统。在建材质量检测系统(MQTS)中，从下列4方面分析和设计工作流：
+　　.工作流的定义和建模；
+　　.数据模式和表单设计；
+　　.体系结构；
+　　.权限控制。
+　　下面将详细介绍MQTS中工作流的设计和实现。
+
+图1　检测业务流程
+1　业务流程
+　　建材质量检测部门的业务流程描述如下：①委托人到接样室填写委托单，接样人员将委托任务单交给试验人员；②试验人员对材料样品进行检测并记录原始数据；③试验人员对原始数据进行计算并对照标准作检验结论；④科室负责人审核试验的原始数据及计算结果，有误的交给试验人员重新计算或试验；⑥试验人员开出检测报告；⑦科室负责人在报告上签字；⑧总工或质保负责人对报告进行签发。图1表示了这种工作流模型。
+2　系统的设计和实现
+2.1　对象建模
+　　对象建模技术已成为表达复杂系统对象结构层次的有力工具，图2描述了系统的主要角色和对象之间的关系。
+
+图2　系统类层次结构图
+2.2　数据模式和表单设计
+　　数据库管理系统提供了很好的数据存储、共享及事务处理机制，在传统信息系统开发中数据库管理系统起着关键的作用。工作流管理系统提供了较好的协调群体工作功能。MQTS系统采用关系数据库存储所有的委托单、任务单、材料数据，群体协调、控制和通信通过工作流管理系统。
+　　数据模式描述如下：
+　　委托单 := Set<任务单ID> ＋ 委托单位；
+　　任务单 := 任务单ID ＋ Set<材料ID>；
+　　材料 := 材料ID ＋ 材料试验记录 ＋ 材料检测标准参数 ＋ 材料检测结论；
+　　检验报告:= 材料ID ＋ 材料报告参数。
+　　表单是工作流系统中角色之间信息交换的模板，MQTS系统中定义了5种表单：
+　　① 任务单(从接样人员发送到试验人员)；
+　　② 材料审核通知单(从试验人员发送到科室负责人)；
+　　③ 材料审核确认单(从试验人员发送到科室负责人)；
+　　④ 检验报告审核单(从试验人员发送到科室负责人)；
+　　⑤ 检验报告签发单(从科室负责人发送到技术负责人)。
+2.3 体系结构
+　　软件体系结构定义了软件系统构件的全局组织，MQTS系统中主要模块包括：委托模块、试验人员模块、科室负责人模块、总工模块。模块间的协作通过工作流服务模块，数据库管理系统负责共享数据，中间件是各个模块之间的粘合剂。类似于数据库管理系统，工作流管理系统一般采用客 户/服务器体系结构。整体上看， MQTS是一种层次的客户/服务器体系结构，图3通过简单的框图表达了这种结构。
+
+图3　系统体系结构示图
+2.4 权限控制
+　　建筑材料质量检测有着严格的权限控制要求，在各个流通环节上应杜绝任何对原始数据或检验报告的非法篡改，MQTS系统中采用基于角色的权限控制策略，定义如下：
+　　角色 = ｛委托人员，试验人员，审核人员，签发人员｝；
+　　操作 = ｛委托，试验数据输入，试验数据查询，试验数据修改，试验数据审核，报告生成，报告签发｝；
+　　对象 = ｛委托单，任务单，材料，检测报告｝；
+　　用户 = P(角色)。
+　　角色的权限定义为：
+　　Ra(A)= ｛<M，O> ｜M属于操作，O属于对象｝。
+　　对于一个特定的用户I，其权限Ri(I)定义为其所担任的角色权限　
+2.5 MQTS的实现
+　　在Windows NT 4.0 Server/Windows 9X平台上对MQTS进行了实现，前端开发采用Delphi 4.0，后端数据库系统为Oracle7.3，工作流平台采用Microsoft Exchange，数据库及工作流开发接口分别是Borland BDE和Microsoft MAPI控件，目前该系统已投入试运行阶段，下一步工作是系统功能的进一步完善以及系统在建筑材料检测行业的推广使用。
+3 结束语
+　　工作流是办公自动化领域研究的热点技术，MQTS的开发注重工作流的分析和设计，初步试用表明系统大大降低了用户的工作量，提高了工作效率，推动了建筑材料质量检测的自动化进程。
+作者简介：俞立军(1976～)，男，研究生，主研方向：新型程序设计
+作者单位：俞立军　许满武　南京大学计算机科学系，南京大学软件新技术国家重点实验室，南京　210093
+　　　　　杨　岭　南京市建筑工程质量检测中心，南京　210014
+参考文献
+1 Sheth A, Georgakopoulos D. Report from the NSF Workshop on Workflow and Process Automation in Information Systems.ACM Software Engineering Notes, 1997, 22(1): 28-38
+2 Leymann F,Roller D.Workflow-based Applications.IBM Systems Journal, 1997,36(1): 102-123
+3 Lotus Notes Release 4.5: A Developer's Handbook. Lotus/IBM Corporation, 1996-12
+收稿日期：1998-12-28

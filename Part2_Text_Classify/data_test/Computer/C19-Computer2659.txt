@@ -1,0 +1,69 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第9期　Vol.10　No.9　1999
+
+
+
+支持动态配置的分布式程序设计模型*
+柳颖　陈道蓄　谢立　曹建农
+摘要　分布式系统的动态配置问题近年来引起了各国研究者的广泛关注.该文对面向图结构的分布式程序设计模型GOM(graph-oriented model)进行了扩充和改进,提出了支持动态配置的程序设计模型ExGOM(extended graph-oriented model).ExGOM提供了多种基于图结构的配置操作.用户可在配置文件中描述系统结构的动态变化,也可在程序中利用配置操作进行动态配置.这一特性使得系统可支持不可预计的动态配置.文章还给出了以多Agent机制实现ExGOM的系统结构.
+关键词　分布式程序设计,动态配置/重配置,容错.
+中图法分类号　TP311
+A Hierarchical Distributed Programming Model Supporting Dynamic Configuration
+LIU Ying,CHEN Dao-xu,XIE Li,CAO
+(State Key Laboratory for Novel Software Technology Nanjing University Nanjing 210093)
+Jian-nong
+(Department of Computing Hong Kong Polytechnic University Hong Kong)
+Abstract　In the recent years, the importance of supporting dynamic configuration in distributed systems has been widely recognized by many researchers. A new model ExGOM(extended graph-oriented model) supporting dynamic configuration by improving and extending GOM (graph-oriented model) is proposed in this paper. ExGOM supplies abundant configuration functions based on graph constructs. The user can define dynamic changes of the system architecture in the configuration file, or by using the configuration functions in the programs. This is a significant attribute so that the model can support unpredicted(non pre-planned) dynamic configuration. Also in this paper, the system architecture of the model implemented by a multi-agent mechanism is presented.
+Key words　Distributed programming, dynamic configuration/reconfiguration, fault tolerance.
+　　在文献［1］中,我们曾提出一个面向图结构的分布式程序设计模型GOM(graph-oriented model).GOM将图结构引入语言层,使得用户的分布式程序可以构筑在一个清晰的逻辑图结构之上,并可利用基于图的各种通信原语(如SendToParent,SendToChildren,RecvFrmParent,RecvFrmChildren等)以及其他控制原语(如子图生成、图上搜索等),从而方便编程并有利于系统的维护.我们在SUN工作站上采用PVM［2］提供底层通信支持，为GOM实现了一个运行系统,并以扩充C语言的方式提供了一个函数库.尽管GOM中的逻辑图定义函数以及其他一些函数在某种程度上提供了对动态配置的支持,但并没有一个清晰的思想.在GOM中,用户首先定义一个逻辑图结构,然后分别定义LP(local process)到图上结点的映射以及结点到主机的映射,最后通过调用StartExecute()，启动所有进程执行.所有这些工作都是在一个被称为“主控程序”的程序中编写的.这个“主控程序”相当于一个配置文件.但是,这个配置文件只定义了静态配置的情况.当某个进程动态生成若干个子进程时,这一情况必须在该进程中去控制.而一旦程序开始运行,就不能再更改配置.此外,GOM中用户可任意定义逻辑图结构,它并不反映各进程间的内在联系.
+　　我们现在的工作首先期望对GOM进行扩充,使其能够支持动态配置.另外,我们也希望通过对GOM的改进,使其更适合于某一类的分布式应用(称为“层次化的分布式应用”).
+1 动态配置问题
+　　分布式系统中的动态配置问题包括如下3个方面.
+　　(1) 系统运行过程中任务图的动态扩展和收缩(这里,任务图是指反映了进程间内在控制关系的逻辑图).具体地说,是指在任务执行过程中,某个任务结点可能会动态地产生子任务,使得系统如同滚雪球一样不断扩展；而当某个任务结点执行完毕,它将从任务图中删去自身,使系统收缩.扩张和收缩具有不确定性.
+　　(2) 系统运行过程中的升级.也就是说,任务图的某一部分被高版本替换或是增加了某一新功能模块.这一过程通常需要人的干预,甚至需要暂停系统,升级后再恢复运行.
+　　(3) 系统运行过程中由于若干主机结点故障或其他原因(如负载、效率等),各进程需重新映射到主机.
+　　可以看到,前两种情况是任务的动态变化,后一种则是系统的动态变化.系统的改变带来的动态配置涉及到容错、检查点、进程迁移等问题.本文考虑如何扩充GOM,改进原有的系统结构,以支持动态配置,使得系统的配置建立在逻辑图的结构上,通过图上的操作来完成,并尽可能地与程序设计分离.
+2 支持动态配置的程序设计模型
+2.1 层次化的分布式应用
+　　很多分布式应用,如果从最自然的角度去考虑,它们都具有层次化的结构,例如,银行系统、航空预售票系统以及各类client/server模式的应用等.因此,针对这一情况,我们将一个分布式应用表示成一棵多层次的“树”.这棵“树”也就是GOM中的逻辑图结构.这样,这个逻辑图结构不仅使用户仍可利用图上的各种通信原语进行高层的通信,而且为动态配置提供了一个清晰的框架.下面,本文将对在树形结构的层次化分布式应用下的支持动态配置的程序设计模型进行详细论述,并给出该模型下的系统结构.
+2.2 程序设计模型
+　　我们将该模型称为ExGOM(extended graph-oriented model),以表示它是对GOM的扩充.从用户角度看,ExGOM由LP(local process)与配置文件(configuration file)两大块组成.
+　　(1) 用户进程(LP)
+　　通信操作：每个LP完成一定的功能.它们完全像顺序程序一样地编写.LP间的通信采用基于图的各种通信原语.使用何种通信原语将根据初始的配置情况来决定.考虑到以树形结构作为逻辑图结构,每个LP仅能与其Parent,Child/Children,Brother/Brothers通信,而不能越层通信.这样做的目的是加强系统控制,当发生动态配置时,尽可能少地影响系统其他部分的正常运行.此外,在ExGOM中,我们增加了一种按类型通信的方式,如SendToChildren(type,...),从一组结点中筛选出符合类型的结点.
+　　配置操作：与GOM不同,为了支持动态配置,LP中定义了若干特殊变量,这些变量在LP中像其他变量一样地使用,不同之处是，当它们被改变时,用户必须显式地调用系统函数reconfig(var).reconfig()函数通知系统：配置文件中的条件变量发生了改变.系统将检查动态配置的条件是否满足,若满足,将执行配置文件中的动作.通过reconfig()进行的动态配置是一类可预先安排(pre-planned)但却不确定地发生的动态配置.用户亦可通过改变配置文件进行不可预计(non pre-planned)的动态配置.
+　　LP中也可使用系统提供的基于图结构的配置函数,如AddNode,DeleteNode,ReplaceNode等.这样,用户可以选择是使用配置文件进行动态配置还是在程序中直接进行可预先安排的动态配置,因而增加了系统灵活性.因为有可能某些分布式应用的动态配置情况很简单，且在运行过程中动态配置的条件不变,无需在配置文件中描述以备将来改变.此外,允许在LP中使用系统的配置函数对不确定地加入新的功能模块也很有意义.新的LP在完成必要的初始化工作后，通过AddNode函数将自己挂接到树形结构的某个结点下,无需其他工作就可无缝地嵌入系统.新结点的加入将不影响其父结点的运作,只要父结点上的LP完全采用基于图结构的通信原语.
+　　模块独立性： 由于每个应用的逻辑图对应于一个图名标识符,底层运行系统管理多个应用的逻辑图结构,各个基于图结构的操作均以图名作为其中一个参数,系统只在运行时才检查各操作的语义是否正确,所以无论是应用程序原有的LP还是新加入的LP，都可独立编译.
+　　(2) 配置文件
+　　配置文件采用一种描述语言书写.不采用某种程序设计语言书写配置文件是为了当系统运行后,我们可以通过修改配置文件影响和改变系统配置.针对层次化的分布式应用,配置文件也采用层次化的结构.每层的配置文件定义了若干棵子树,每棵树的深度不大于2.这些子树经过与其他层子树的装配形成一棵完整的树.
+　　配置文件是ExGOM的关键.每个配置文件包括初始配置部分和动态配置部分.初始配置部分与GOM中主控程序的功能一样,不仅定义了子树的逻辑结构,而且定义了LP到树中结点的映射以及结点到主机的映射.动态配置部分由若干(条件：动作)对组成,描述了在什么条件下发生什么样的配置操作.条件的书写与C语言的条件书写一致,虽然该配置文件不是一个C语言源程序.配置动作以函数的形式书写,包括增加(Add～)、删除(Delete～)、升级(Upgrade～)、降级(Degrade～)、替换(Replace～)一个结点(Node)或子树(Tree),以及复制(Clone～)一个结点(Node)或子树(Tree)等.限于篇幅,有关具体的配置文件的描述及层次构造在此不加详述.
+2.3 系统结构
+　　图1给出了支持动态配置的分布式程序设计系统的结构.图中LP指的是静态的功能模块,而不是动态运行的进程.各层配置文件定义了这些LP在实际运行时的配置情况.
+
+图1　支持动态配置的分布式程序设计系统的结构
+　　每层配置文件对应于一个配置代理机构(configuration agency),由系统自动生成.每个配置代理机构由3种配置Agent组成：初始Agent(Iagent)、动态Agent(Dagent)以及容错Agent(Fagent).这些配置Agent读进配置文件,为将要发生的配置进行协商,合作完成配置的生成和改变.初始Agent读取配置文件初始部分的描述,直接完成配置.当LP调用reconfig()时,管理其配置的动态Agent接收到消息,检查动态配置条件,采取相应的操作.在系统函数调用中,我们加入了容错功能.例如,当某一主机发生故障,其上的进程丢失,这时若有另一进程向其发信或等待回答,将得到主机失败的消息,这时将转向相应配置代理机构的容错Agent,由容错Agent采用适当的策略使用户的应用尽量不受影响.由于容错的目的是希望无论在发生硬件还是软件故障时,系统都不至于瘫痪,至少能有秩序地暂停以便恢复,我们未在配置文件中允许用户定义容错情况下的动态配置,而是完全交由系统负责处理.
+　　配置状态(state)各自保存了相应配置代理机构管理的子树的配置信息,包括映射(mapping)信息.
+　　配置修改Agent(Eagent)向用户提供修改配置文件的功能.由于配置文件在系统运行期间又要被配置代理机构使用,所以需通过配置修改Agent来修改配置文件,完成一致性维护.我们采用独占使用方式管理配置文件,即每个时刻只能有一个配置修改Agent或配置Agent使用配置文件.
+　　由于LP间的通信是基于图结构也就是系统配置结构的通信,所以通信首先交给通信管理Agent(Cagent)进行必要的搜索、检查,再转交给底层运行系统去实现.
+　　ExGOM利用GOM的运行系统管理各个不同应用的逻辑图以及各自的Agent.
+3 相关工作与尚待解决的问题
+　　分布式系统的动态配置问题近年来引起了各国研究者的广泛关注.研究内容包括，分布式程序的动态特性、支持动态配置的分布式程序设计语言以及底层运行系统对动态配置的支持机制等.大多数的分布式程序设计系统如Ada［3］，CSP［4］等在语言中提供对结构的描述,系统的配置与程序设计结合得很紧密,因而难以支持不可预计的动态配置情况.Argus［5］虽然提供了很大程度的动态重配置功能,但它依然未将配置与程序设计分离开,程序中配置语句的嵌入使得配置改变的合理性难以得到验证.另外一些分布式程序设计系统采用了配置语言(configuration language),将系统配置与程序设计分离.这一类的系统有CONIC［6］，Durra［7］，Darwin［8］等.CONIC虽然支持在线的重配置,但需要操作者的干预,且不适用于容错性质的重配置情况.Durra是一种实时分布式程序的结构描述语言,它采用时间表达式描述可预先安排的重配置.其缺点是不能描述复杂条件的重配置,且不支持不可预计的重配置.Darwin是对CONIC环境的扩充.Darwin不仅可描述软件和硬件的结构,而且可描述这些结构的动态变化.
+　　ExGOM与上述系统的不同之处在于：系统的重配置操作建立在图结构之上；配置文件与程序设计相分离,但用户可选择是在程序中直接加入配置操作还是在配置文件中加以描述；采用多层次的配置文件；配置文件中的条件描述类似C语言的条件语句,可描述多种复杂的配置条件；支持不可预计的动态配置；支持3种不同的动态配置类型.
+　　本文主要阐述了支持动态配置的分布式系统的程序设计模型,给出了系统的结构框架,其中尚有大量的问题有待解决.如配置描述语言的精确定义；对各种不同动态配置问题的处理算法；动态配置中应用程序的一致性(consistency)和完整性(integrity)的维护；基于图结构的动态配置的管理,尤其是在采用多Agent(multi-agent)思想后各Agent之间如何协商、合作等.这些问题将在今后的研究中逐步加以解决.
+本文通讯联系人：柳颖,南京 210093,南京大学计算机科学与技术系
+作者简介：柳颖,女,1973年生，博士生,主要研究领域为分布式系统,并行计算,容错计算.
+　　　　　陈道蓄,1947年生，教授,主要研究领域为分布式系统,并行计算,计算机网络.
+　　　　　谢立,1942年生，教授,博士生导师,主要研究领域为并行计算与分布式处理.
+　　　　　曹建农,1960年生，博士,助教,主要研究领域为分布式系统,容错处理.
+作者单位：柳颖，陈道蓄，谢立，（南京大学计算机软件新技术国家重点实验室 南京 210093）
+　　　　　曹建农（香港理工大学计算系 香港）
+参考文献：
+［1］柳颖,谢立,曹建农.面向图结构的分布式程序设计模型GOM.计算机学报,1998,21(1):18～25 (Liu Ying, Xie Li, Cao Jian-nong. GOM:a graph-oriented model for distributed programming. Chinese Journal of Computers, 1998,21(1):18～25)
+［2］Geist Al, Beguelin Adam, Dongarra Jack et al. PVM: Parallel Virtual Machine: A User's Guide and Tutorial for Networked Parallel Computing. Cambridge: MIT Press, 994
+［3］Referenced Manual for the Ada Programming Language. U.S.A, Department of Defense, Proposed Standard Document, 1980
+［4］Hoare C A R. Communicating sequential processes. Communications ACM, 1978,21(8):666～677
+［5］Bloom T, Day M. Reconfiguration and module replacement in Argus: theory and practice. Software Engineering Journal, 1993,8(2):102～108
+［6］Magee J, Kramer J, Sloman M. Constructing distributed system in Conic. IEEE Transactions on Software Engineering, 1989,15(6):663～675
+［7］Barbacci M R et al. Durra: a structure description language for developing distributed applications. Software Engineering Journal, 1993,8(2):83～94
+［8］Magee J, Dulay N, Kramer J. Structuring parallel and distributed programs. Software Engineering Journal, 1993,8(2):73～82
+收稿日期：1998-06-08，修改日期：1998-09-14

@@ -1,0 +1,85 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+一类Smith预估器及其鲁棒整定1)
+张卫东　孙优贤
+摘　要　提出一种Smith预估器解析设计方法，由此得到的控制器可以同时保证好的干扰抑制特性和鲁棒性.证明该控制器可以通过常规的PID控制器来实现，并能根据给定的性能要求(超调或调节时间)设计.
+关键词　时滞系统，鲁棒控制，Smith预估器，PID控制器.
+OPTIMAL SMITH PREDICTOR AND ITS ROBUST TUNING
+ZHANG WEIDONG　　SUN YOUXIAN
+(Institute of Industrial Process Control of Zhejiang University,
+National Laboratory of Industrial Contral Technology, Hangzhou　310027)
+Abstract　An analytical approach is presented for the design of Smith predictor, which provides disturbance rejection and robustness simultaneously. It is shown that the Smith predictor is equivalent to a PID controller and can be implemented by conventional PID controller. Its closed loop performance is also discussed. An example is included to illustrate superiority of the approach.
+Key words　Optimal control, robust control, Smith predictor.
+1　引言
+　　怎样控制大时滞对象一直是控制界关注的课题之一.其中Smith预估器是一个主要的研究对象.研究的重点分别针对Smith预估器的两个缺点：差的干扰抑制能力和鲁棒性.文献［1―3］的研究主要针对前一问题，它们分别利用不同的补偿器逼近时滞项来实现干扰抑制.文献［4―6］研究了模型不匹配时的鲁棒稳定性问题.
+　　尽管在Smith预估控制方面已取得许多重要进展，但是就连续系统而言，设计方法仍局限于经验规则，由于经验规则只利用了系统动态特性的部分信息，不能在系统性能和鲁棒性之间给出一个明确的折衷，因此同时到达干扰抑制和鲁棒性的问题无法得到解决.本文从H∞最优控制的基本结论［7］出发，解析地得到一种新的Smith预估器，可以同时保证好的干扰抑制特性和鲁棒性.进一步证明，按本文方法设计的Smith预估器和PID控制器是等价的，因此Smith预估器就可以通过常规的PID控制器来实现.
+2　Smith预估器设计
+　　图1给出了Smith预估器的结构，其中Gm是标称对象(模型)，Gmo是Gm中不含纯滞后的部分，R是Smith预估控制器，在Smith预估控制器和Youla参数化之间存在如下的关系：
+
+(1)
+经典单位反馈控制结构中的控制器则可表示为
+
+(2)
+在标称情况下，模型是精确的，从干扰d到输出y的传递函数是S=1-GQ.取控制系统性能的优化指标为min‖WS‖∞，这里W是权函数，应选择为使系统输入的2范数单位有界，即d=Wd′,‖d′‖2≤1.
+
+图1　Smith预估器的基本结构
+　　本文只考虑自衡对象G(s)=Ke-θs/(τs+1),利用1/1Pade公式展开纯滞后项有
+
+(3)
+在过程控制中，不确定性是普遍存在的，在这里，将有理近似引入的误差也当作系统不确定性的一部分.
+　　在经典的方法中常选取单位阶跃函数作为输入，本文也是如此.令d(s)=1/s，W(s)=1/s，则d′=1,满足要求.下面的定理是关于复变函数的一个基本结论.
+　　定理［7］.假定Ω是复平面的一个单连通的非空开集，G是Ω中的解析函数.如果G不是常数，那么｜G｜的最大值不是在Ω中的内部点取得的.
+　　设Ω是复开右半平面，则G在Ω中有一零点2/θ，对所有的Q成立
+
+(4)
+因此
+
+(5)
+因为W严格正则，在高频对它无性能要求，所以可先寻找一个稳定但一般是非正则的Qim，然后让Qim在高频衰减，从而得到正则的Q.由上式得到最优的Qim是
+
+(6)
+利用低通函数对其进行衰减，那么
+
+(7)
+当λ→0，这一Q可获得‖WS‖∞的最优性.代入式(1)求得控制器为
+
+(8)
+因此解析地得到了模型精确时的Smith预估控制器，它是一个PID控制器.这个控制器的一个显著特征是它抵消了一阶自衡对象的两个主导极点.以上讨论过，Smith预估器可以通过式(2)与经典的控制器联系起来，因此有
+
+(9)
+这实际也是PID控制器.
+　　注意到在得到的Smith预估器中，有一个可调的参数λ，λ与系统的标称性能和鲁棒性有着直接的关系，它表示了二者之间的折衷.当λ减小时，T增加，S减小，根据鲁棒控制理论，这意味着系统的标称性能趋向于最优，但是鲁棒性很差.从系统的闭环响应来看就是系统具有较大的带宽；当λ增加时，T减小，S增加，系统的鲁棒性得到增强，代价是标称性能变差.
+　　因为Pade公式引入的误差是确定的，所以λ对标称性能的影响也是一定的，由图2可以看到，系统的性能仅与λ/θ有关.在过程控制中一般推荐λ的取值在0.1θ-1.1θ之间.
+
+图2　λ与系统标称性能的关系
+
+3　仿真结果
+　　例1.考虑控制对象
+
+按传统的Cohen-Coon法整定的PID控制器参数为P=0.4,I=175.8,D=19.93.设要求的超调为5%，取λ=0.5θ，当模型精确时它们的响应如图3所示.本文方法给定值响应和干扰抑制响应的调整时间比传统的方法要快的多.
+
+图3　标称系统的阶跃响应
+　　例2.考虑一个高阶的冷水加热系统［8］
+
+时间单位为秒，传统的Smith预估器的参数为P=3.65,I=30.这个系统是Smith预估器应用于过程控制的一个范例.取λ=0.5θ，控制器设计所需的三个参数是通过最小二乘法进行模型降阶得到的：K=0.4，τ=16和θ=33.假设在估计增益时有20%的误差，在估计沌滞后时有50%的误差，系统实际的增益为0.48，纯滞后为12.传统的Smith预估器已经发散，本文提出的Smith预估器还能够工作，如图4所示.
+
+图4　摄动系统的阶跃响应
+　　以上的仿真结果表明，按本文方法设计的Smith预估器同时改善了系统的干扰抑制能力和鲁棒性.
+4　结论
+　　本文提出一种关于Smith预估器的系统的设计方法，设计的过程简单并且容易理解.根据这种设计方法，证明了Smith预估器与PID控制器的等阶关系.这种方法在新的理论和传统的频率响应设计方法之间提供了一个很好的过渡，由新的理论可以解析地得到控制器，控制器的参数又与系统的频率响应特征有着直接的联系.当我们不知道确切的不确定性界时或者系统的不确定性随时间发生了变化时，系统的鲁棒性可以通过一个参数方便地调节.仿真结果证实了文中理论分析的正确性.
+1)　得到国家“九五”攻关项目资助课题.
+作者单位：浙江大学工业控制研究所，工业控制技术国家重点实验室　杭州　310027
+参考文献
+［1］　Watanabe K, Ishiyama Y, Ito M.Modified Smith predictor control for multivariable systems with delays and unmeasurable step disturbances. Int. J. Control, 1983, 37:959―973.
+［2］　Wong S K, Seborg D E. A Theorem analysis of Smith and analytical predictors. AICHE J., 1986,32:1597―1605.
+［3］　Hung H P, Chen C L, Chao Y C，Chen P L.A Modified Smith predictor with an approximate inverse of dead-time.AICh E J., 1990, 36:1025―1031.
+［4］　Palmor Z J. Stability properties of Smith dead-time compensator controllers. Int. J.Control, 1980, 32:937―949.
+［5］　Owens D H Raya W H. Robust stability of Smith predictor controller for time-delay systems. In:IEE Proc., Part D, 1982, 129:298―304.
+［6］　Yananaka K, Shimemura E.Effects of mismatched Smith predictor on stability in systems with time-delay. Automatica, 1987, 23:787―791.
+［7］　Doyle J C, Francis B A, Tannenbaum A R. Feedback control Theory. NY:Macmillan Publishing Company, 1992.
+［8］　Singh A, Mcewan D H. The Control of a process having appreciable transport lag-a laboratory case study. IEEE IECI, 1975, 22:396―401.
+收稿日期　1995-06-22

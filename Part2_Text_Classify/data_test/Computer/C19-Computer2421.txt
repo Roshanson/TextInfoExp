@@ -1,0 +1,153 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年　第36卷　第11期　Vol.36　No.11　1999
+
+
+
+结合句法组成模板识别汉语基本名词短语的概率模型
+赵　军　黄昌宁
+摘　要：文中首先给出了汉语基本名词短语(baseNP)的形式化定义，并通过抽取baseNP句法组成模板，显示了这个定义的可操作性.文中指出，句法组成模板只是识别baseNP的必要条件，而非充要条件，仅靠句法组成模板并不能解决baseNP识别中的边界模糊歧义和短语类型歧义问题.据此，把体现baseNP内部组成的句法组成模板与体现上下文约束条件的N元模型结合起来，形成了汉语baseNP识别的新模型.实验证明，该模型的性能优于单纯基于词性标记的N元模型.
+关键词：自然语言处理，语料库，基本名词短语
+中图法分类号；TP391
+A PROBABILISTIC CHINESE BASENP RECOGNITION MODEL
+COMBINED WITH SYNTACTIC COMPOSITION TEMPLATES
+ZHAO Jun and HUANG Chang-Ning
+(Department of Computer Science & Technology, Tsinghua University, Beijing 100084)
+(State Key Laboratory of Intelligent Technology & Management, Tsinghua University, Beijing 100084)
+Abstract　A formal definition of Chinese baseNP is proposed in the present paper. The manipulatability of the definition is shown through the formulation of the Chinese baseNP annotation specification oriented for information processing and the extraction of the syntactic composition templates. It is pointed out that the syntactic composition templates are only necessary but not the sufficient condition for baseNP recognition, so the boundary ambiguity and phrase-type ambiguity could not be solved depending merely on the syntactic composition templates. On the ground of this view, the basic templates embodying the baseNP composition and the N-grams modeling the contextual constraints are organically incorporated into a new probabilistic model for Chinese baseNP recognition. The experiment shows that the model is superior to the N-gram model based on part-of-speech information. 
+Key words　natural language processing, corpus, baseNP
+1　引　言
+　　基本名词短语(baseNP)识别是自然语言处理、信息检索和机器翻译领域的基础研究.Church将英语baseNP定义为“非嵌套的名词短语”，将baseNP的识别看做是baseNP左右边界标记的标注问题，并利用N元模型来实现［1］.有关汉语baseNP的研究还未见报道，只有文献［2］利用N元模型进行汉语最长名词短语识别的研究.实验表明，单纯依靠词性信息的N元模型对于汉语名词短语识别是不充分的.本文将表示baseNP内部组成的基本模板与表示上下文约束的N元模型结合起来，形成结合句法组成模板识别汉语baseNP的新的概率模型，获得了较高的识别正确率.
+2　汉语基本名词短语的定义和识别策略
+2.1　汉语baseNP的定义
+　　在汉语语言学中，名词短语的定语分为3种类型，即限定性定语、描写性定语和区别性定语［3］.本文从限定性定语出发给出汉语baseNP的形式化描述.
+　　定义1. 基本名词短语（以下简称baseNP）：
+　　baseNP → baseNP + baseNP
+　　baseNP → baseNP + 名词|名动词
+　　baseNP → 限定性定语 + baseNP
+　　baseNP → 限定性定语 + 名词|名动词
+　　限定性定语 → 形容词|区别词|动词|名词|处所词|西文字串|（数词+量词）
+　　由此，名词短语可以分为baseNP和～baseNP（非基本名词短语），以下举例说明.
+表1　baseNP和～baseNP示例
+
+baseNP～ baseNP
+甲级联赛产品结构空中走廊下岗女工复杂的特征这台计算机对于形势的估计
+太空旅行自然语言处理第四次中东战争11万职工高速发展的经济研究与发展
+
+2.2　汉语baseNP的识别策略
+　　从baseNP的定义可以看出，baseNP应该符合一定的句法组成规则，本文称之为句法组成模板（简称模板）.但是符合句法组成模板只是构成baseNP的必要条件，而非充要条件.一个符合模板的词语序列可以不构成baseNP，有以下2种情况.
+　　(1) 边界模糊歧义：在句子中，某些符合模板的词语序列可能是语法形式，也可能是非语法形式.本文将这种歧义情况称为边界模糊歧义.例如：N+V是baseNP的一个模板，在例1中词语序列“技术　改造”符合该模板并构成baseNP；在例2中的词语序列“公司　宣布”也符合该模板，但不构成baseNP，而是非语法形式.
+　　例1. 技术/N 改造/V 是/V 国营/N 企业/N 走出/V 困境/N 的/U 出路/N.
+　　例2. IBM/X 公司/N 宣布/V 全面/A 降低/V 个人/N 电脑/N 的/U 销售/V 价格/N.
+　　(2) 短语类型歧义：在句子中，某些符合模板的词语序列是语法形式，但可能是baseNP，也可能是其他类型的短语.本文将这种歧义情况称为短语类型歧义.例如：V+N是baseNP的一个模板，例3中的词语序列“就业形势”符合该模板并构成baseNP；而例4中的词语序列“降低利率”也符合该模板，但不构成baseNP，而是动词短语.
+　　例3. 今年/T 大学/N 毕业生/N 的/U 就业/V 形势/N 严峻/N.
+　　例4. 中国/N 人民/N 银行/N 今天/T 宣布/V 降低/V 利率/N.
+　　本文分两步来识别baseNP.①从标注了baseNP的语料中抽取baseNP模板，将文本中符合这些模板的词串作为候选的baseNP；②利用上下文约束条件来判断候选词串是否为真正的baseNP. 
+3　baseNP句法组成模板的抽取
+　　第2.1节给出了baseNP的形式化定义，但它是一个递归定义.为了识别的需要，首先将它转换为线性的模板.这一工作分2步进行：①建立人工标注baseNP的语料库；②根据语料库的统计信息，对初始模板集合进行过滤，整理出基本模板集合.
+　　本研究用于抽取baseNP模板的训练集规模为10万字，在对它进行自动分词和词性标注的基础上(词性标注集见附录)，进行baseNP的人工标注.从训练集中统计得到407个baseNP句法组成模板，其中出现次数大于5的有64个，覆盖了语料库中98.6%的baseNP，本文称为基本模板，本文的研究只考虑基本模板.表2列出一些常用的基本模板，其中每个句法标记由词性属性部分（字符串）和音节数部分（数字）组成.例如：模板“NG2+VN2”表示“双音节普通名词和双音节名动词的组合”.
+表2　baseNP基本模板示例
+
+模板示例模板示例
+B2+NG2甲级联赛　国产冰箱A2+VN2+NG2精确设计方案　模糊检索理论
+VN2+NG2教育理论　调查报告NG2+NG2+VN2产品结构调整　住房制度改革
+VGO2+NG2下岗女工　促销手段NG2+VN2+NG2情报检索方法　概率标引模型
+
+　　统计显示，如果将文本中所有符合模板的词串全部标注为baseNP，召回率是98.6%，而精确率只有48.5%.显然，只利用基本模板来识别baseNP是不够的，还需要充分利用词串出现的上下文环境信息进行baseNP的确认. 
+4　baseNP标注模式的排歧
+4.1　问题描述
+　　在经过baseNP模板的初步识别之后，一个句子可能有多种标注模式，本文称之为baseNP歧义标注模式.baseNP标注模式排歧就是从中选出正确的标注模式.例如，例5有如下4种标注模式，baseNP的识别就是利用上下文信息从歧义标注模式中选出正确的标注模式（模式4），本文称之为baseNP标注模式的排歧.
+　　例5. 句子“科学/NG 研究/VNN 推动/VGV 了/UTL 生产力/NG 发展/VNN.
+　　模式1：科学/NG 研究/VNN 推动/VGV 了/UTL 生产力/NG 发展/VNN.
+　　模式2：（科学/NG 研究/VNN） 推动/VGV 了/UTL 生产力/NG 发展/VNN. 
+　　模式3：科学/NG 研究/VNN 推动/VGV 了/UTL （生产力/NG 发展/VNN）. 
+　　模式4：（科学/NG 研究/VNN） 推动/VGV 了/UTL （生产力/NG 发展/VNN）.
+　　设句子，S=w1/t1,w2/t2,…,wN/wN,其中wi是词，ti是wi的词性标记，S有N种baseNP标注模式{M1,M2,…,MN}，baseNP歧义标注模式排歧问题可以用概率模型描述如下：
+　　(1) 为该句的每一个候选标注模式M指派一个概率p(M|S)；
+　　(2) 搜索最可能的标注模式M*，使得
+
+假设句子S的baseNP识别只与S的词性标记序列T有关，而与词语序列W无关.则S可以表示为t1,…,tN，简写为tN1,，于是，baseNP歧义标注模式排歧的概率模型表示如下：
+
+　　设M={BNj1i1,…,BNjkik,…,BNjsis，其中BNjkik表示将tjkik标注为baseNP，则baseNP歧义标注模式排歧的概率模型为
+(1)
+4.2　N元模型方法
+　　文献［1］、［2］用N元模型实现名词短语的识别，因为N元模型考虑的是连续N个词语之间的一种线性同现关系(目前实用的N元模型只有二元和三元模型)，而自然语言最重要的特征是结构性和层次性，表现为词语之间的长距离依存关系，因此N元模型用短距离的词语同现关系表示长距离的词语依存关系并不恰当.例如，例6中“打击/VGN”和团伙/NG”之间存在长距离依存关系，而二元同现或三元同现都不能表示这种依存关系.
+　　例6. 国家/NG 严厉/A 打击/VGN（吸毒/VGO 贩毒/VNO 团伙/NG）.
+　　根据依存语法，在句子中向心短语的功能可由其中心词来表示.根据这一思想，如果将句子中的baseNP归约为其中心词，则归约后词语的同现关系比归约前更能真实地反映词语间的依存关系，表现为baseNP的中心词与其左邻（或右邻）的同现比baseNP的定语与其左邻（或右邻）的同现更具合理性，即经过baseNP归约后，词性之间的同现概率更大.例如，例6有以下2种baseNP标注模式：
+　　模式1：国家/NG 严厉/A 打击/VGN（吸毒/VGO 贩毒/VNO 团伙/NG）.
+　　模式2：国家/NG 严厉/A 打击/VGN 吸毒/VGO 贩毒/VNO 团伙/NG.
+　　如果用二元语法，则归一化后模式1和模式2的词性标记同现概率分别为
+
+
+根据统计语言学知识，p(M1)比p(M2)的概率值更大.
+　　基于以上分析，本文在利用上下文进行baseNP标注模式排歧时，利用一个归约机制将baseNP模板融入N元模型中，从而较好地解决了baseNP识别中的词语长距离依存问题.
+4.3　基于归约的N元模型定义
+　　对公式（1）作如下变换：
+
+假设构成baseNP的词性标记串tj1i1,…,tjkik,…,tjsis相互独立，最佳标注模式的计算公式简化为
+
+假设对于给定的非终结符BN（表示baseNP），它产生的词性标记串只与BN本身有关，于是最佳标注模式的计算公式变换为：
+(2)
+　　以下先给出归约句的定义，然后给出归约后的N元模型.
+　　定义2. 归约句：设C是句子S的一种标注模式，将S中所有候选baseNP用它们的中心词取代而得到的序列Sd称为S的归约句.
+　　例5有4种baseNP标注模式，对应的归约句分别为
+　　归约句1：科学/NG 研究/VNN 推动/VGV 了/UTL 生产力/NG 发展/VNN。/.
+　　归约句2：研究/VNN 推动/VGV 了/UTL 生产力/NG 发展/VNN。/.
+　　归约句3：科学/NG 研究/VNN 推动/VGV 了/UTL 发展/VNN。/.
+　　归约句4：研究/VNN 推动/VGV 了/UTL 发展/VNN。/.
+　　设标注模式为M时S的归约句为Sd，它所对应的词性标记序列为t1′,t2′,…,tL′(L≤N)，根据归约句的定义，由（2）式变换并经归一化处理后得到如下归约后的最佳标注模式计算公式：
+　　　　(3)
+　　其中L是归约句的长度，s是该标注模式中的候选baseNP数.
+　　定义3. 内概率(inner probability)：如果已知一个成分构成baseNP，则该成分的句法是tji的概率称为baseNP的内概率，表示如下：
+β(Nji)≡p(tji|baseNP)
+根据内概率的定义，最佳标注模式计算公式变换为
+　　　　(4)
+根据三元语法，有于是归约后的baseNP识别模型为
+　　　　(5)
+　　在应用以上概率模型(公式(5))对S进行歧义标注模式排歧之前，需要对公式中的参数进行估计，即从标注了baseNP的训练集中估计词性标记的同现概率和模块的内概率，本研究采用极大似然估计法进行参数估计.
+5　结合句法组成模板和概率模型识别baseNP
+　　在利用句法组成模板进行了baseNP的初始标注之后，可以利用参数已知的概率模型进行baseNP歧义标注模式的排歧.这个问题可以看作一个最优路径的搜索问题.
+　　定义4. 搜索路径：句子中的每一种baseNP标注模式称为一条搜索路径；每一条路径的概率可以近似地估计为归约后该路径上的所有词性标记同现概率和模板内概率的乘积；
+　　定义5. 最优路径：一个句子的搜索路径中具有最大路径概率的那条路径称为最优路径.例如：以下所示的句子有4条路径，其中的最优路径是第1条路径.
+　　算法. baseNP的识别算法
+　　输入：经过正确分词和词性标注的句子；
+　　①用baseNP模板对句子进行初始标注，形成具有歧义标注模式的句子；
+　　②对于句子的每一条搜索路径：
+　　　　*针对该路径的baseNP标注模式，对句子进行归约；
+　　　　*对于归约句，计算该搜索路径的概率；
+　　③将具有最大路径概率的搜索路径作为最优路径，并根据相应的baseNP标记抽取baseNP.
+
+
+图1　最优路径示意图
+6　实验和分析
+6.1　数据准备及测试指标
+　　训练集为经过分词、词性标注和人工标注baseNP的10万字语料，用于模型的参数估计；测试 集为① 封闭测试集：熟语料中的1万字语料；② 开放测试集：训练集以外的1万字语料.性 能评估指标为 baseNP识别的精确率和召回率，公式如下：
+　　精确率
+　　召回率
+　　其中a是模型识别出的正确的baseNP的个数，b是被模型识别为baseNP的词串总数，c是测试集中的baseNP总数.
+6.2　与基于词性标记的N元模型的性能比较
+　　为了对单纯基于词性的N元模型［2］和本节提出的融入句法组成模板的新概率模型加以对比，以下分别列出二者的性能指标.从中可以看出，新模型的精确率和召回率均明显高于单纯基于词性的N元模型.从测试结果分析，影响baseNP识别精确率的主要因素是本模型仅考虑了词语的句法属性，而没有考虑词汇语义特征.
+表3　两种模型的性能比较
+
+测试类型基于词性的N元模型融入句法组成模板的新概率模型
+精确率（%）召回率（%）精确率（%）召回率（%）
+封闭测试74.278.584.893.0
+开放测试70.577.082.091.5
+
+7　结束语 
+　　本文提出了一个语法规则和统计方法相结合的汉语baseNP识别模型，该模型利用bas eNP组成成分的词性信息、音节信息以及baseNP上下文句法信息，将baseNP句法组成模板融 入概率模型中，其性能明显优于单纯基于词性标记的N元模型.该模型的不足之处是对上 下文句法特征不明显的baseNP识别的精确率较低.
+*本课题得到国家自然科学基金重点项目基金资助（项目编号69433010）.
+作者简介：赵军，男，1966年生，现在香港科技大学从事博士后的研究工作，研究方向为人工智能、计算语言学和中文信息处理.
+　　　　　黄昌宁，男，1937年生，教授，博士生导师，主要研究方向为人工智能、计算语言学和中文信息处理.
+作者单位：清华大学计算机科学与技术系　智能技术与系统国家实验室　北京　100084
+参考文献
+1　Church K．A stochastic parts program and noun phrase parser fo r unrestricted text. In: Proc of the Second Conf on Applied Natura l Language Processing, Austin, Texas, 1988. 136～143
+2　李文捷，潘海华等．基于语料库的中文最长名词短语的自动抽取．见：陈力为， 袁琦编：计算语言学进展与应用．北京：清华大学出版社， 1995.119～125
+　　(Li Wenjie, Pan Haihua et al. Corpus-based maximal-length Chines e noun phrase extraction. In: Chen Liwei, Yuan Qi eds. Advances and Application s on Computational Linguistics(in Chinese). Beijing: Tsinghua University Press, 1995. 119～125)
+3　张卫国．三种定语、三类意义及三个槽位．中国人民大学学报， 1996, 4： 97～ 100
+　　(Zhang Weiguo. Three attributes, three senses and three slots. Journal of Chinese People's University(in Chinese), 1996, 4: 97～100)
+4　马真，陆俭明. ‘名词+动词’词语串浅析. 中国语文，1996, 3: 183～188
+　　(Ma Zhen, Lu Jianming. Elementary analysis to ‘noun + verb’-type w ord strings．Journal of Chinese Language(in Chinese), 1996, 3:183～188)
+5　邵敬敏．双音节V+N结构的配价分析．见： 郑定欧编. 现代汉语配价语法研究． 北京：北京大学出版社，1995
+　　(Shao Jingmin. Valency analysis to bi-syllables V+N structures. In: S hen Yang, Zheng Ding'ou eds．Research on Contemporary Chinese Valency Grammar(in Chinese)． Beijing: Peking University Press, 1995)
+原稿收到日期：1997-12-01；修改稿收到日期：1998-03-20.

@@ -1,0 +1,113 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年　第36卷　第10期　Vol.36　No.10　1999
+
+
+
+虚拟声音会议环境中的应用共享
+寿黎但　薛强　潘志庚　石教英
+　　摘　要　应用共享系统是一种CSCW系统工具，它可以将单用户应用程序在多人的网络环境中协同地使用. 在应用共享系统中需要提供各用户间方便、直接的交互方式. 文中首先提出了一个应用共享系统的模型，介绍了公有区管理与发言权控制等关键技术. 其次讨论了基于Agent的系统的软件结构，包括应用共享管理器的概念和应用协作Agent的结构，进而给出了采用简化的HRTF模型的虚拟声音会议环境的设计方案. 最后描述了在虚拟声音会议环境中应用共享系统的实现方法. 通过虚拟声音会议，应用共享系统中各用户之间的交互变得更加方便. 
+　　关键词　网络，CSCW, 应用共享，虚拟会议环境
+　　中图法分类号　TP303
+APPLICATION SHARING IN A VIRTUAL AUDIO
+CONFERENCE ENVIRONMENT
+SHOU Li-Dan, XUE Qiang, PAN Zhi-Geng, and SHI Jiao-Ying
+(State Key Laboratory of CAD & CG, Zhejiang University, Hangzhou 310027)
+(Department of Computer Science and Engineering, Zhejiang University, Hangzhou 310027)
+　　Abstract　Application-sharing system is one kind of CSCW system utilities, which can make collaborative use of single user applications in a multi-user network environment. In an application sharing system, convenient and direct ways for interaction are required. First presented in the paper here is an application-sharing model, and key techniques in the system such as shared-area management and floor-control policy etc.. And then the agent-based system software architecture is discussed, including the concept of application sharing manager and application collaboration agent etc.. A simplified HRTF model is applied to construct a virtual audio conference environment in the system. Finally, implementation of the application sharing system in the virtual audio conferencing environment is also illustrated. Through virtual audio conference, users in the application sharing system are able to interact conveniently.
+　　Key words　network, CSCW, application sharing, virtual conference environment
+1　引言
+　　随着计算机和网络技术的不断发展，计算机支持的协同工作(CSCW)已经成为研究领域的热点之一. 各种CSCW的应用系统纷纷出现，其中包括会议系统［1］、协同编著系统［2］、共享白板、合作创作平台［3］以及协作CAD系统［4,5］等. 
+　　CSCW系统可支持各种专业和特长的群体成员共同完成协作任务［6］. 它与普通多用户系统的区别在于：普通多用户系统企图对每位用户提供只有他本人在使用系统的假象；而CSCW系统则力图让用户感觉到其他用户的行为. 所以，CSCW系统支持并鼓励用户活动的交流. 
+1.1　应用共享的基本思想
+　　应用共享系统是CSCW系统的一种工具，任何已有的应用程序都可以通过应用共享系统成为共享型应用(shared application). 简单地说，应用共享系统为多用户提供一致的应用界面，协调多用户的发言权，从多个用户取得输入，使得应用程序在多个用户之间协同运行，对各个用户产生相同的输出. 应用共享系统中的一个重要原则是What-You-See-Is-What-I-See (WYSIWIS)，这是目前许多协同工作系统所采用的方法. 它指的是界面上共享窗口内的内容一致地出现在所有共享用户的对应窗口中. 这与共享白板有类似之处，但是并不完全相同，应用共享系统与共享白板的本质区别是：应用共享系统使任何应用程序可被共享；而白板本身只是一个满足WYSIWIS条件的多用户协同参与的应用程序.
+　　在应用共享系统中，用户之间的交流是必需的，因此必须提供一种机制以实现多个协同工作的用户间的直观、迅速的交互. 我们所讨论的基本协作环境是虚拟声音会议环境.
+1.2　虚拟会议环境
+　　虚拟现实是指利用计算机产生逼真的三维视觉、听觉和触觉等感觉，使得用户可以通过使用专用设备自然地对虚拟环境中的各虚拟实体进行交互式的考察和控制. 虚拟的会议环境是在多个用户之间利用计算机和网络产生一个虚拟的多人之间交互的环境. 在这个环境中，多个用户可以借助某些专用设备进行交互式的实时通信，从而对问题进行协商. 因此虚拟会议环境实际上是一个考虑多人协同工作的虚拟环境. 
+　　虚拟会议环境可以采用多种形式，如简单的字符形式的chat，或是通过头盔播放真实感的3D声音，也可以采用视频会议的形式. 
+　　文献［7］指出，对某些类型的协同工作而言，使用视频技术产生面对面的效果并不能很好地提高协作的工作效率. 事实上，这还将给网络带宽带来沉重的负担. 在我们的协作环境中，我们采用了虚拟的声音会议，从而使得与会者能产生在同一房间中面对面交谈的听觉效果. 
+　　本文重点讨论在虚拟声音会议环境中的应用共享技术. 文章结构如下：第2节讨论应用共享系统的软件结构；第3节介绍虚拟声音会议子系统；第4节是实现技术；最后为结论. 
+2　应用共享系统的软件结构
+2.1　应用共享的类型
+　　应用共享系统对所有的用户同时提供相同的输出，而在任何时刻将输入的权力限制到一个用户. 它的基本思想是当应用系统向负责终端显示的服务器发出窗口协议时截获窗口协议流. 应用共享可以有两种类型［3］：
+　　(1) 应用程序可以在一台机器上运行，而它的用户界面可以在数台机器上显示. (例如，从应用发往窗口服务器的请求可以被截获，并发送到远程的窗口服务器上去，于是远程窗口服务器就可以在它的终端上产生相同的图形输出. )输入则来自仅有的拥有输入权的用户，其它用户的输入均被过滤出去. 
+　　(2) 在所有的机器上运行各自的应用程序的拷贝，来自拥有输入权的用户的输入被同步地发送到所有机器上的应用程序备份上. 在这种类型的应用共享中，所有机器上的应用程序都将得到相同的输入，并对用户给出相同的输出. 
+　　这两种类型的共同点都是必须实现发言权控制的机制. 在第1种方案中，应用程序和它的数据都不被复制，只有被共享的应用系统的用户界面被复制出去. 在采用该方案时，传输一个应用系统的输出要占用相当大的网络带宽. 在第2种方案中，由于用户输入的数据量比一个图形用户界面(GUI)应用程序产生的输出要少得多，因此只需较少的网络带宽，但是它不仅要求每一个用户拥有一份程序的拷贝，而且还要求所有参与共享的工作站环境完全一致. 因此我们选择了第1种方案.
+2.2　公有区管理
+　　公有区是指协同工作中被所有用户共享的输出空间，包括被共享的屏幕空间.任何一个用户对公有的屏幕空间所进行的改变都应反映在其他用户的屏幕上，当然对多媒体的协同工作系统而言，公有区还可包括声效卡所输出的某一段声音等. 
+　　在像应用共享这样的同步协作系统中，公有区的管理应该满足WYSIWIS. 因此，为了方便起见，在任一时刻都应当存在一个系统的服务设施，以便用来管理整个系统中公有区的创建、增加、改变、删除和移动等操作. 
+　　在整个协作系统中，所有用户还有必要了解当前发言人对公有区感兴趣的东西，或者说该发言人正企图做什么. 因此公有区应当提供一定的机制，例如，在我们的系统中实现了远程指针(telepointer)和远程键提示(telekey-prompt)，其用途就是让其他用户均可看到当前发言人用指针所指的对象或是所按下的热键等.
+2.3　发言权控制
+　　在协同工作中，每个用户都可以通过某一种方式获得发言权，也可以主动地放弃发言权. 另外还应有一种机制防止某个用户过于积极发言而拒绝放弃发言权. 我们提供3种模式的发言权控制：
+　　(1) 主席控制模式，即由协同工作系统的管理者控制当前哪个用户拥有发言权；
+　　(2) 主动抢占模式，在这种模式下，所有无发言权的用户可以对发言权控制设施发出申请，要求得到发言权. 发言权控制设施剥夺当前发言人的发言权，再根据某种约定的仲裁策略，例如根据请求到达的时间等，将发言权赋给某个用户；
+　　(3) 主动放弃模式，在这种模式下，拥有发言权的用户可主动让出发言权，然后所有用户可竞争发言权.
+　　3种发言权模式可以交替进行控制，为了整个系统能统一管理发言，所以有必要设置一个专用的系统服务设施，用来控制发言权. 
+2.4　系统的软件结构
+　　应用共享系统的软件结构如图1所示. 整个系统采用分布式人工智能中常用的Agent(代理)方法实现. 正如2.2节和2.3节中所述，系统中需要一个服务设施来对应用共享系统进行统一的注册和管理，我们称它为应用共享管理器(简称ASM). ASM运行在一台独立的服务器上，它使得基于GUI的单用户应用程序可在多用户之间同步地共享. 我们把拥有被共享的应用的那个用户称为所有者(owner)，其他共享用户称为共享者(sharer). 从实现的角度讲，应用共享系统的每个用户端部分由应用协作Agent和界面Agent组成. 应用协作Agent的任务是管理所有用户之间的公有区，并实时地从所有者那里得到被共享应用的当前状态，再实时地把该应用的状态传输到共享者那里，绘制或播放出来. 在图1中，每个用户的工作站上运行一个应用协作Agent. 应用协作Agent的结构如图2所示，它包括以下几个部分：
+
+
+图1　应用共享系统的软件结构
+
+
+图2　应用协作Agent的结构
+　　(1) 协作控制. 它起到了应用协作Agent的枢纽作用，它处理本机或远程的共享应用所发送来的各类事件，对其它几个部分有控制作用. 
+　　(2) 协作引擎. 它管理本机上被共享的单用户应用程序的输入、输出，使其能被多个用户共享. 
+　　(3) 播放绘制器. 它用来播放、绘制远程机上的共享应用的输出.
+　　(4) 网络接口. 它提供了协作系统中多机的应用协作Agent之间可靠的网络传输机制.
+3　虚拟声音会议子系统
+　　声音会议的目的是让远距离的参加者可以实时地交谈，好像在同一房间中一样. 为了达到这种很自然的交互方式，需要将声音信号作一定的处理，并在接受端合成为相应的3D空间声音［8］. 声音场的重建可以采用两种方式：一种是用扬声器合成整个环境的声场；另一种方式是用耳机对人的双耳分别重建所需的声场. 由于前一种方式在桌面环境下很难实现，所以在虚拟声音会议中，我们采用对双耳分别重建声场的方式.
+　　目前，耳机模拟空间声的技术已研究得较多，其方法一般是在耳道中安装探测麦克风，记录下许多典型位置声音脉冲的响应函数（head-related transfer function, HRTF）. 在模拟空间声时，根据其方位角选择对应的双耳脉冲响应函数，进行卷积运算，产生双耳声音，从而达到空间声效果. 在虚拟会议环境中，为了让多个用户产生在桌面上进行会议的感觉，我们假定各用户处于虚拟空间的同一水平面内. 因而高度信息可以不加考虑，而只需考虑水平的方向角及距离，由此可对HRTF模型进行简化. 
+　　为了在用户之间提供远程的声音会议机制，我们设计并实现了会议Agent. 它运行在每个用户的工作站上. 当一个用户通过话筒输入声音时，声音信号被界面Agent感知，从而进入到会议Agent. 会议Agent将声音通过系统设施广播到其它的工作站. 其它工作站上的会议Agent感知该声音数据后再从系统的数据库中得到当前虚拟环境中本地用户与正在发言的用户的相对位置，并根据简化的HRTF模型计算出双通道的3D声音［9］，然后在本机通过界面Agent播放出来. 虚拟会议环境中的数据流如图3所示.
+
+
+图3　虚拟声音会议中的数据流结构
+4　系统的实现
+4.1　系统硬件结构
+　　系统硬件结构采用多台Pentium PC机. 它们用10Mbps带宽的以太网互连，每台机器配备声效卡、耳机、话筒等多媒体设备. 它的结构如图4所示.
+
+
+图4　应用共享系统的硬件结构
+4.2　系统软件实现
+　　虚拟声音会议环境中的应用共享系统可以分为虚拟会议子系统和应用共享子系统两大部分，其结构如图5所示，其底层的操作系统采用Windows. 系统实现的关键有以下3点：
+
+声　音
+(Audio)GUI
+应用程序
+虚拟会议
+子系统应用共享
+子系统
+操作系统
+
+图5　系统整体软件层次结构
+　　(1) 应用协作Agent的实现
+　　为了达到应用共享的目的，我们采用截获系统中的输入设备事件协议流和窗口事件协议流的方法，对来自网络的其他用户在应用共享过程中的发言，采用插入原始输入设备事件队列的方法；对来自网络的其他用户的窗口事件协议流，则由协作控制交给绘制器去完成. 
+　　(2) 应用共享管理器的实现
+　　应用共享管理器可以感知到整个协作系统中各个用户的协作Agent的活动. 当有新的用户加入应用共享系统时，共享管理器将为该用户注册；当有用户退出时，它负责注销等收尾工作. 当系统中有一个用户发言时，它从当前发言人得到输入的原语，并负责将输入多点播送到其他的用户. 对各个用户的窗口协议流，管理器负责将它们分别多点播送到其它用户的应用协作Agent.
+　　(3) 会议Agent的实现
+　　会议Agent实现的关键是利用简化的HRTF模型，由来自网络的声音数据计算出双通道的3D真实感声音. 其方法是使用虚拟会议环境中用户间的相对方向角和距离，计算出模型的声音强度、相位差和距离等特征.
+5　结束语
+　　应用共享系统是一类典型的CSCW工具. 普通的单用户应用程序可在该系统平台上多用户协同地运行. 通过增加虚拟声音会议的功能，协同工作组内用户间的交互方式变得更加直接. 根据试用的结果，虚拟声音会议环境中的应用共享效率明显高于无声音会议的协作. 可以设想，今后的协作系统将会建立在更加方便直接的多人交互环境(如多人交互的虚拟现实)中. 
+本课题得到中国-巴西国际合作项目和浙江省自然科学基金资助.
+作者简介：寿黎但，男，1974年7月生，硕士研究生，主要研究领域为CSCW、多媒体通信.
+　　　　　薛强，男，1974年8月生，硕士，主要研究领域为CSCW和科学可视化.
+　　　　　潘志庚，男，1965年9月生，研究员，博士生导师，主要研究领域为多媒体、分布式图形、虚拟环境.
+　　　　　石教英，男，1937年4月生，教授，博士生导师，主要研究领域为多媒体计算、计算机图形和CAD、可视化、虚拟环境.
+作者单位：浙江大学CAD & CG国家重点实验室　杭州　310027
+　　　　　浙江大学计算机科学与工程学系　杭州　310027
+参考文献
+　1　　Jing Wanjun, Wan Jing. CSCW desktop conference system. In: Proc 1st CSCW in Design, Beijing, 1996. 483～490
+　2　　鲍钟俊.多媒体协同编著系统：M3Edit［硕士论文］. 浙江大学, 杭州，1996
+　　　(Bao Zhongjun. M3Edit: A multimedia collaborative authorization system［MD dissertation］. Zhejiang University, Hangzhou, 1996)
+　3　　王恺，王朴，朱海滨. 单用户多媒体创作平台扩充到合作创作平台中的问题. 计算机学报，1996, 19(12): 887～894
+　　　(Wang Kai, Wang Pu, Zhu Haibin. The problems in extending individual multimedia authoring to cooperative multimedia authoring. Chinese Journal of Computers(in Chinese), 1996, 19(12): 887～894
+　4　　Gisi,Mark A et al. Co-CAD: A collaborative mechanical CAD system. Presence, 1994, 3(4):341～350
+　5　　Pan Zhigeng, Zhang Mingmin, Zhang Haohan et al. Cooperation management for collaborative CAD systems. In: Proc 5th Int CAD & CG. Shenzhen, 1997. 622～627
+　6　　王国意，徐光佑. CSCW支撑平台的结构模型. 计算机学报, 1997,20(8): 718～724
+　　　(Wang Guoyi, Xu Guangyou. The architecture model of CSCW support platform. Chinese Journal of Computers(in Chinese), 1997, 20(8): 718～724)
+　7　　Nardi B A, Schwarz H, Kuchinsky A et al. Turning away from talking heads:The use of video-as-data in neurosurgery. Hewlett-Packard Laboratories, Tech Rep: HPL, 1992
+　8　　张爱东，石教英，潘志庚.虚拟环境中真实感空间声音合成. 软件学报, 1996, 7(增刊)：120～126
+　　　(Zhang Aidong, Shi Jiaoying, Pan Zhigeng. Realistic spatial sound rendering in virtual environment. Journal of Software(in Chinese), 1996, 7(Supplement): 120～126)
+　9　　Zhang Aidong, Zhang Qiong et al. Audio telecommunication using simplified HRTF model for computer supported cooperative work. In: Proc 1st Int Workshop on CSCW in Design, Beijing, 1996. 44～51 
+原稿收到日期：1997-12-17；
+修改稿收到日期：1998-04-20.

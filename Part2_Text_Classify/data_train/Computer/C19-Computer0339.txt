@@ -1,0 +1,116 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第9期 Vol.19 No.9 1999
+
+
+
+一种实时过程控制中的数据挖掘算法研究
+杨学兵　刘胜军　蔡庆生
+　　摘　要　计算机在工业生产过程控制中的应用已十分广泛，因此这一领域的数据挖掘方法研究也具有十分重要的意义。本文将根据这一领域的特殊情况，提出一种实时有效的自动数据挖掘算法，以便使计算机能在实时过程控制中自动挖掘，并根据挖掘的结果进行趋势预测。
+　　关键词　数据挖掘，过程控制，序列模式
+A DATA MINING ALGORITHM IN REAL-TIME
+PROCESS CONTROL SYSTEM
+Yang Xuebing　Liu Shengjun　Cai Qingsheng
+Department of Computer Science, University of Science and Technology of China, Anhui.Hefei 230027
+　　Abstract　Computers are widely used in the field of real-time process control, and it′s very necessary to pay more attention to the research in this field. In this article, we′ll give an efficient mining algorithm in real-time data.
+　　Keywords　Data mining, Process control, Sequential pattern
+1　引言
+　　数据库中进行知识发现KDD(Knowledge Discovery in Database)，是目前人工智能研究中一个极富应用前景的新领域。在这一领域中，目前已有了大量的知识发现算法，大部分算法都能从数据库中发现有效的知识，由于算法的设计目标是从各种类型的大中型数据库中挖掘知识，具有一定的通用性，但算法效率较低，难以满足工业生产过程中的实时性要求，很难直接用于实时过程控制中。我们曾多次参与实时过程中的数据采集及控制软件的开发，在受到基于范例推理CBR(Case Based Reasoning）方法［1］及KDD中序列模式发现(Sequential Pattern Mining)［2］［3］［4］［5］的启发下,考虑到实时过程控制中的特殊性，给出了实时过程控制中的数据挖掘算法DMRP(Data Mining in Real-time Processing)。
+　　工业生产过程控制是很特殊的一个领域，计算机在其中多数起着数据采集、状态监测和实时控制的作用，这一过程中同样会产生大量的实时采集数据（如电流、电压、温度、气压、流量、电机转速、开关量等），人工一般是很难理解这些数据及其关系的，更不用说及时地总结并进行预测了，如果能让计算机自动实时地从产生的数据中抽取知识或规则，并利用获得的知识对即将进行的过程进行估计预测，或根据已获得的知识对发生偏离的过程进行实时纠正，那么将会收到更加良好的效果。
+2　问题描述
+2.1　实时过程控制的特点
+　　与通常的数据库管理系统中的数据（如商场购物数据，银行储蓄、贷款数据等）相比，生产过程中产生的数据有着明显的特点，主要表现在以下几个方面：
+　　重复性　生产过程一般是一批一批地生产产品的，设备运转具有明显的周期性，若数据采集是按一定的时间间隔进行，则每周期采集的数据量是一定的。
+　　数据的准确性　生产过程中的数据是直接采集的不落地数据，因此数据准确性高，处理过程中不必考虑数据缺省等情况。
+　　杂音数据少　过程控制中考虑到成本问题，采集的信号一般都是经过精心选取的，因此对过程控制没有直接影响的信号通常是不会被采集的。
+2.2　问题的形式描述
+　　生产过程的一个周期所产生的有序采集数据称之为一个序列（Sequence），它包含了从周期开始到周期结束期间各时刻(t)的采集值，每个时刻t的采集值是相应时刻的一个状态值集St(Status-Set),St={st1,st2,．．．,stm}。每个完整序列我们也称之为一个范例(Case)。
+　　设数据集D={Case1,Case2,．．．,Casen}，它表示一个已采集的范例的集合，Casei表示第i个周期所对应的范例，1≤i≤n，Casei={Sti1,Sti2,．．．,Stik}，k为一周期中共采集的状态数，Stih={st1,st2,．．．,stm}表示第i个范例序列中第h个项，1≤h≤k，st1,st2,．．．,stm为第i范例序列中h时刻采集的各状态值。
+　　设范例集S′={S1′,S2′,…,Sv′},1≤i<j≤v, Si′∈D,Sj′∈D, Si′≠Sj′，v是D中互不相同序列的总数。S′本质上是D的一个投影，Si′={Sti1,Sti2,…,Stim}。
+　　再设序列集S={S1,S2,．．．,Sv}，其中Si={Sti1 U {c1},Sti2 U {c2}，…，Stip U {cp},…,Stik U {ck}},1≤i≤v，1≤p≤k，其中，cp为子序列{Sti1,Sti2,…,Stip}在D中重复的总次数。
+　　本算法的目的主要是从集合D中产生出集合S，再利用S来生成规则用以预测。为了说明方便，再定义有关概念如下：
+　　. 范例数(case―number),指D中的序列（范例）总个数。
+　　. 最低范例数(min―case―num),指用户给定的一个数，使得若数据集D中范例总数低于此数，则不产生任何规则。
+　　. 子序列（sub―sequence）,指范例序列中从第一个元素开始的一个连续元素构成的子集。
+　　. k子序列（k―sub―sequence）,指元素个数为k的子序列。
+　　. 支持度(support)，指D中子序例的重复次数 / D中总的范例数。
+　　. 最低支持度(min―support),指用户给定的一个数，若子序列的支持度大于等于此数，则此子序列为频繁子序列。
+　　. 信任度(confidence),一个范例是从周期开始到周期结束的一个完整有序序列（按时间序），若存在这样一个序列，即St1,St2,…,Sti-->Stj,…,Stk,其中1≤i≤j≤k。信任度指此k子序列的支持度与i子序列St1,St2,…,Sti的支持度的比值。
+　　. 最低信任度(min―confidence),用户给定的值，某规则的信任度必须大于此值方可视为有效规则，有效规则可用来预测未来趋势。
+　　. 状态比较函数(compare)，根据具体领域而定义的一个判别两个范例序列中相应位置的两个状态值集是否相似的函数，通过此函数，可依次比较两序列中相应项是否均相似来判断两个序列是否相似，此函数返回值为-1，0或1，分别表示<，=，>。
+3　算法
+3.1　从集合D中生成集合S算法generate―S
+初始化：S={},D=目前已存在的所有Cases组成的集合,
+datacount=0　　　　　　　　　　　　　　　　　　　　//datacount用以标记D中的范例总数
+for all Case∈D do 　　　　　　　　　　　　　　　　　　　　　　//循环扫描所有例子一遍
+　if Case不在S中then　　　　　　　　　　　　　　　　　　　//如果此范例是首次出现，则
+　　将Cases变成Sx，将Sx中所有c置为0, 
+　　　　　　　　　　　　　　　　　　　　　　　　　//将此范例变成含有计数域c的新序列
+　　S=S U {Sx}　　　　　　　　　　　　　　　　　　　　　　　　　//并将其加入集合S中
+　fi
+　for all Si∈S do　　　　　　　　　　　　　　　　//循环检查S中的所有序列，并酌情调
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//整所有子序列的出现计数
+　　for all Si的子序列Subk do
+　　　if Subk是Case 的k子序列 then
+　　　　Si中第k项中的ck加1
+　　　fi
+　　od
+　od
+　datacount=datacount+1
+od
+3.2　实时增量更新及预测算法RTIUPA
+假设一周期采集数据为v次
+LOOP start直到机器设备停止生产
+　Stemp={},并等待一新周期开始,k=0
+　do while k<= v
+//依次读入一周期中采集的各状态值，并处理。
+　　等待读入一状态集Stk={st1,st2,…,stm},
+　　Stemp=Stemp U {Stk U ck′},k=k+1,ck′=1
+　　for all Si∈S do
+　　　if Stemp是Si的一个k子序列then
+　　　　Si中的相应子序列的计数ck=ck+1,ck′=ck
+　　　fi
+　　od
+　　if datacount>=最小范例数 then
+　　　if k<v 且Stemp的支持度（support）大于
+　　　　最小支持度(min―support) then　　　　　　　　　　　　　　　　　　　　　//预测
+　　　　Stemp1=Stemp
+　　　　for j=k+1 to v do　　　　　　　　　　　　　　　　　　　//找未来最大可能序列
+　　　　　在S中找出包含Stemp1子序列的具有最大cj+1的j+1子序列Stemp2
+　　　　　if Stemp ==>Stemp2的信任度(conf)大于最低信任度(min―conf) then
+　　　　　　Stemp1=Stemp2
+　　　　　else
+　　　　　　break　　　　　　　　　　　　　　　　　　　　　　　　　　//退出此层循环
+　　　　　fi
+　　　　od
+　　　　如果j>k,则Stemp1为未来最大可能序列，输出预测情况。
+　　　fi
+　　fi
+　od
+　if Stemp不在S中then
+　　S = S U {Sx} 　　　　　　　　　　　　　　　　　　　　　　　　　//将新范例加入S中
+　fi
+　D=D U {Stemp}
+　datacount=datacount+1
+　LOOP continue
+3.3　DMRP算法
+　　if 首次运行 then
+　　　call generate―S
+　　else
+　　　call RTIUPA
+　　fi
+4　算法分析
+　　如果是首次运行，则需扫描数据库一次（调用generate―S），产生集合S，考虑到机器设备的重复性，集合S的元素数量应较少，因此算法执行时间主要是由数据库D的元素个数和每个序列的长度来决定，即时间复杂度约为（n×k）,n为D中例数，k为序列长度。
+　　RTRUPA算法是实时运行，算法效率主要由3.2程序中的两个for循环决定，这两个循环均依赖于S，而S一般较小，所以这两个效率很高，能满足实时性要求。
+注：本文研究得到国家自然科学基金资助。
+作者简介：杨学兵　在职硕士研究生。研究方向：人工智能、知识发现。
+刘胜军　在职硕士研究生。研究方向：人工智能、知识发现。
+蔡庆生　教授，博士研究生导师。研究方向：人工智能、知识发现。
+作者单位：中国科学技术大学计算机科学系　安徽.合肥（230027）
+参考文献
+［1］　史忠植.高级人工智能.北京：科学出版社，1997,12
+［2］　R.Agrawal,R.Srikant. Mining Sequential Patterns.11th,Int′l Conf. on Data Engineering(DE-95),Taipei, Taiwan, March 1995
+［3］　R.Srikant,R.Agrawal. Mining Sequential Patterns. Generalizations and Performance Improvements. EDBT-96,Avignon,France,March 1996
+［4］　欧阳为民，蔡庆生.在数据库中自动发现广义序贯模式.软件学报，1997;8（11）：864-870
+［5］　C.Hidber. Online Association Rule Mining. Technical Report, UCB/GSD-98-1004,Department of Electrical Engineering and Computer Science, University of California at Berkeley
+收稿日期:1999-03-18

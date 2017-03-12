@@ -1,0 +1,22 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+INTELLIGENT CONTROL:PRINCIPLES,TECHNIQUES
+AND APPLICATIONS
+by Z-X Cai (Central South Univ.of Tech.,China)
+　　This book introduces the development process,structural theories and research areas of intelligent control;explains the knowledge representations,searching and reasoning mechanisms as the fundamental techniques of intelligent control;studies the theoretical principles and architectures of various intelligent control systems;analyzes the paradigms of representative applications of intelligent control;and discusses the research and development trends of the intelligent control.
+　　From the general point of view,this book possesses the following features:updated research results both in theory and application that reflect the latest advance in intelligent control;close connection between theory and practice that enables readers to use the principles for their case studies and practical projects;and comprehensive materials that help readers in understanding and learning.
+Contents:Introduction;Methodology of Knowledge Representation;General Search Principles;Hierarchical Control Systems;Expert Control Systems;Learning Control Systems;Fuzzy Control Systems;Neurocontrol Systems;Intelligent Control Systems in Applicaition;Prospect of Intelligent Control;References;Index.
+Readership:Students,scientists and engineers in electrical and electronic engineering,automatic control and artificial intelligence fields.
+Published by World Scientific Publishing Co.Ptd.,　Singapore
+450pp(approx.)　　　　Pub.date:November 1997
+981-02-2544-4 US64,　￡45，S92
+Book Code:EeRa-B3028
+Main Subject Calssification:Engineering and Electronics
+Bood B+　17/8/95
+Editor:YK
+BL/d

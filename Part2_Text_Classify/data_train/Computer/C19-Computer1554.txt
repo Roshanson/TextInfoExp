@@ -1,0 +1,162 @@
+信息与控制
+Information and Control
+1999年　第28卷　第1期　Vol.28　No.1　1999
+
+
+
+不确定时滞系统的无记忆鲁棒控制
+
+陆国平
+
+　　摘　要　讨论了含有时变时滞以及时变输入控制的 时滞线性系统的鲁棒可镇定性问题，就所有可结构化不确定参数以及所有非结构化不确定参 数两种情形分别得到了系统可由状态反馈控制器镇定的充分条件，并且相应给出了控制器的 设计． 
+　　关键词　时滞线性系统；不确定参数,鲁棒控制,代数Riccati方程
+ROBUST CONTROL FOR UNCERTAIN DYNAMIC DELAY SYSTEMS BY
+MEMORYLESS FEEDBACK
+LU Guoping 
+(Department of Automatic Control, Nantong Institute of Technology , Jiangsu 226007)
+Abstract　This paper focuses in the problem of robust stabili zation for the linear uncertain dynamic delay systems with time-varying delays and delay input. The paper presents state feedback controllers which stabilize t he systems for all admissible uncertainties including unstructured and structure d uncertainties respectively. The robust controllers can be synthesized by simpl e formulae.
+　　Key words　delay systems, uncertain parameter, robust controller , algebraic riccati equation
+
+1　引言
+　　含不确定参数的线性系统的鲁棒镇定问题已引起人们的关注，参见文献〔3，4，6，7〕等， 在文献〔3，4，6，7〕等的基础上，文献〔5〕讨论了一类含不确定参数的时滞线性系统的 鲁棒镇定问题，其中系统中时滞为常数并且不含时滞控制．本文讨论在实际应用中更为一般 的含有时变时滞状态以及时变时滞控制输入的不确定时滞线性系统，因此，文献〔5〕中所 讨论的系统以及主要结果可以看着本文的一个特例．本文通过Lyapunov方程的正定解(参见文献〔6，7〕)得到了鲁棒镇定反馈控制器存在的判别准则，并且给出了控制器的设计 ．本文的证明过程中利用了改进的Razumikhin定理以及二次调节理论中的方法．
+　　本文采用如下记号： Rn×m表示 n×m 实矩阵空间；λmax(A) 以及 λ min(A)分别矩阵A的最大和最小特征值； AT表示矩阵A的转置．‖A‖表示矩阵A的矩阵范数，即‖A‖=〔λmax(ATA)〕 ．A＞B和A＜B分别表示矩阵(A-B)为正定和负定矩阵．
+2　主要结果
+　　考虑下列含不确定参数的时滞线系统：
+(t)=〔A+ΔA(r0(t))〕x(t)+〔Ad+ΔAd(r 1(t))〕x(t-d(t))　　　　　　　
++〔B+ΔB(s0(t))〕u(t)+〔Bd+ΔBd(s1(t))〕u(t-h(t))　　　　　　(1)
+其中x(t)∈Rn为系统的状态，u(t)∈Rm为控制输入，A和Ad∈Rn×n，B和B d∈Rn×m为实常数矩阵．时变矩阵ΔA(r0(t))∈Rn×n,ΔAd(r1(t)) ∈Rn×n，ΔB(s0(t))∈Rn×m以及ΔBd(s1(t))∈Rn×m分别 为时变不确定参数，时变不确定实值函数r0(t),r1(t),s1(t)以及s2(t)分别满足r i(t)∈iRpi，以及si(t)∈ΩiRqi，其中i和Ωi(i=1,2)为有界紧致集．
+2.1　时滞连续可微的情形
+　　本小节我们总是假设d(t)和h(t)连续可微并且满足下列关系式：d(t)0，h(t)0,(t)1-r2,　(t)1-r2，其中0＜r＜1．
+　　为了镇定不确定系统(1)，我们利用下列形式的线性状态反馈控制律：
+u(t)＝-Kx(t)　　　　　　　　　　　　　　(2)
+其中常数增益矩阵K∈Rm×n.为了简便起见，ΔA(r0(t)),ΔAd(r1(t)),ΔB(s 0(t)),ΔBd(s1(t)),d(t)以及h(t)有时分别记为ΔA, ΔAd, ΔB, ΔBd, d和h， 
+　　于是(1)和(2)所构成的闭环系统为
+　　　　　　　　　(3)
+其中.
+　　首先我们引入下列引理：
+　　引理2.1　(参见［3］)
+YTX+XTYXTX+YTY
+其中X，Y为适当维数的短阵．
+　　从而我们有下列基本结果：
+　　定理 2.1　若存在常数矩阵K∈Rm×n以及正定矩阵P， Q∈Rn×n使得下列不等式成立：
+J(r0,r1,s0,s1)=PA-PBK+P△A-P△BK+ATP-KTBTP+△ATP)
+　　(4) 
+则闭环系统(3)渐近稳定．
+　　证明　选取如下Lyapunov泛函：
+
+于是V引系统(3)的导数为
+
+利用引理2.1，我们有
+
+从而当x(t)≠0时，皆有
+VxT(t)J(r0,r1,s0,s1)x(t)＜0
+故证毕．
+　　在以下的讨论中，我们总是假设：ΔA(r0(t))＝BG(r0(t)),ΔAd(r1(t))＝BH(r1 (t)),ΔB(s0(t))＝BL(s0(t)),ΔBd(s1(t))＝BF(s1(t)),Ad＝BE，Bd＝BD. 
+　　定理 2.2　若(A，B)可镇定，并且存在正常数ε使得
+　　　　　　　　　(5)
+其中＝max｛‖F(s1(t))‖2，s1(t)∈Ω1｝.则系统(1)可由下列形式 的状态反馈控制器鲁棒镇定.
+u(t)＝-Kx(t)＝-R-1BTPx(t)　　　　　　　　　　　　(6)
+其中矩阵P＞0为下列代数Riccati方程的解.
+PA+ATP-PBR-1BTP+Q＝0　　　　　　　　　　　　　　(7)
+其中分别选取R＞0和Q＞0使得对于所有si(t)∈Ωi,(i＝0,1)下列不等式成立.
+　　　　　　(8)
+其中
+　　　　　　　(9)
+　　证明　选取下列形式的Lyapunov泛函：
+
+则有
+
+反复利用引理引2.1可得
+
+
+于是
+
+由(7)可得
+PA+ATP-PBR-1BTP+I+GTG＜0，　r0∈0
+而根据(7)我们有
+，ri(t)∈i, si(t)∈Ωi,i＝0，1.故当x(t)≠0时，皆有＜0.从而本定理得证．
+　　注 2.1　控制器中的加权矩阵R直接与矩阵L，F，H，D以及E 有关.若时滞控制输入项u(t-h)前的系统矩阵充分小(相对于矩阵范数)，则矩阵不等式(5)等价于
+I+L+LT＞0
+这与文献［5，4］中的情形相同.此时系统(1)的鲁棒镇定问题完全由下列不确定线性系统的 鲁棒镇定问题的解确定.
+(t)＝(A+ΔA)x(t)+(B+ΔB)u(t)
+根据文献［6，7］选取R，即R-1＝ηI，其中选取η满足 ，并且
+
+若条件(5)成立，则有β＞0. 注意到(5)中参数ε＞0的引进较取ε＝1更具有一般性．此外可选取到R使得(8)成立，事实上，R-1＝ηI＞0即满足条件．而Q完全依赖于A中的不确定参数．我们可以根据文献［1，7］中的方法确定Q.一旦得到满足(8)和(9)的R和Q，再考虑到在(A，B)可镇定条件下代数Riccati方程(7)的正定矩阵解始终存在，从而我们容易得到鲁棒控制器(6)的设计．
+　　定理 2.3　若A为Hurwitz矩阵，并且存在正常数ε使得对所有si∈Ωi (i＝0，1)皆有
+
+则系统(1)可由下列状态反馈控制器鲁棒镇定．
+u(t)＝-γBTPx(t)　　　　　　　　　　　　　(10)
+其中P＞0为下列Lyapunov方程的正定矩阵解．
+PA+ATP+Q＝0
+其中Q满足条件(9)，而，这里的σ与定理2.2中的相同，
+
+　　定理2.3的证明与定理2.2类似，其中R-1＝γI.
+　　注 2.2　若F＝D＝0，r＝1则文献［5］的结果可由定理2.3得到.
+2.2　时滞连续的情形
+　　在下面的讨论中，我们假设系统(1)中的Bd＝ΔBd(s1(t))＝0.即系统(1)化为
+(t)＝［A+ΔA(r0(t))］x(t)+［Ad+ΔAd(r1(t))］x(t-d(t))　　　　　　　　
++［B+ΔB(s0(t))］u(t)　　　　　　　　　　　　　(11)
+其中d(t)＞0仅为连续函数，其它假设条件与系统(1)中的相同．
+　　下面的主要目的是如何设计状态反馈控制器使得系统(11)鲁棒镇定．我们在讨论中主要利用 了文献［8］中的改进的Razumikhin定理．
+　　定理 2.4　闭环系统(2)和(11)的零解渐近稳定的充分条件为存在 常数q＞1，K∈Rm×n以及正定矩阵P∈Rn×n使得
+L(r0(t),r1(t)，s0(t))＜0， ri(t)∈i, s0(t)∈ Ω0
+其中
+L(r0(t),r1(t),s0(t))＝PA+ATP+PΔA+ΔATP-PBK-KTBTP
+-PΔBK-KTΔBTP+PAdATdP+2qI
+　　证明　考虑下列Lyapunov函数：
+V＝xT(t)Px(t)
+则V引闭环系统(2)和(11)的导数为
+＝T(t)Px(t)+T(t)P(t)＝xT(t)［PA+ATP+PΔA+ΔATP-PBK-KTBTP
+-PΔBK-KTΔBTP］x(t)+2xT(t)PAdx(t-d)+2xT(t)PΔAdx(t- d)
+利用引理2.1可得
+2xT(t)PAdx(t-d)xT(t)PAdATdPx(t)+xT(t-d)x(t-d )
+2xT（t)PΔAdx(t-d)xT(t)PΔAdΔATdPx(t)+xT(t-d)x(t-d)
+若‖x(t+θ)‖＜ q‖x(t)‖，θ∈［-r,0］,t≥t0,则当x(t)≠0时有
+xT(t)L(r0(t),r1(t),s0(t))x(t)＜0
+利用改进的Razumikhin定理(参见文献［8］即可完成本定理的证明．
+　　定理 2.5　在假设2的条件下，若(A，B)可镇定，并且对于所有的s0(t)∈Ω0皆有I+L+LT＞0，则系统(11)可由下列状态反馈控制器鲁棒镇定．
+u(t)＝-R-1BTPx(t)
+其中对于所有s0∈Ω0，R满足下列不等式：
+R-1+LR-1+R-1LT≥EET+2
+这里的＝max｛‖H(r1)‖ r1(t)∈1｝；P为下 列Lyapunov方程的正定矩阵解：
+PA+ATP+Q＝0
+其中对于所有r0∈0，Q满足下列关系式：
+Q＞2qI+GTG
+其中q为某一大于1的正常数.
+　　定理 2.6　若A为Hurwitz，并且对于所有s0∈Ω0皆 有2I+L+LT＞0，则系统(11)可由下列状态反馈控制器鲁棒镇定：
+u(t)＝-γBTPx(t)
+其中P为下列Lyapunov方程的正定矩阵解：
+PA+ATP+Q＝0
+这里的Q满足下列不等式：Q＞2qI+GTG，r0(t)∈R0，q为某一大于1的正常数 ；，其中.
+　　定理2.5和定理2.6的证明类似于定理2.4，故从略．
+3　数值例子
+　　下面我们通过一个数值例子进一步说明本文的主要结果.考虑形式为(1)的含不确定参数的时 滞线性系统，其中
+
+
+ΔBd(s1(t))＝BF(s1(t))； F(s1(t)＝s1(t); ｜s1(t)｜＜0.1
+Ad＝BE；E＝(-1 1)；d(t)＝1-0.75sint； r＝0.5
+Bd＝BD； D＝(1 2)
+显然A不稳定，而(A，B)可镇定．利用定理2.2，我们可以选取R-1＝ηI．由(8)和(9)可得η＝370，可以选取ε＝0.1，.因此我们容易计算出 Riccati方程(7)的正定矩阵解，从而可得鲁棒镇定状态反馈控制器为
+u(t)＝-38.4708x1(t)-38.5227x2(t)
+注释:国家科学基金(No.69674007)及南通工学院科研基金资助
+作者简介:　陆国平，33岁，博士．研究领域为非线性系统镇定问题，时滞系统和非线性系统 鲁棒H∞控制．
+作者单位：南通工学院自动化系　江苏　226007
+参考文献
+1　Jabbari F, Schmitendorf W E. A Nonitereative Method for the Des ign of Linear 
+　　Robust Controllers, IEEE Trans. 1990,30:954～957
+2　Hale J K. Theory of Functional Differential Equations. Springer-Verlag, N ew York
+　　1977
+3　Petersen I R. A Stabilization Algorithm for a Class of Uncertain Linear Sy stems,
+　　Systems Control Lett. 1987,8:351～357
+4　Phoojaruenchanachai S, Furuta K. Memoryless Stabilization of Uncertain Linear 
+　　Systems Including Time-varying State Delays, IEEE Trans. Automat. 1992,37:1022
+　　～1026
+5　Trinh H, Aldeen M. Stablization of Uncertain Dynamic Delay Systems by Memoeyless 
+　　Feedback Controllers， Int.J. 1994,59:1525～1542
+6　Tsay S C. Robust Control for Linear Uncertain Systems Via Linear Quadratic State 
+　　Feedback, Systems Control Lett. 1990,15:199～205
+7　Tsay S C, Fong I K, Kuo T S. Robust Linear Quadratic Optimal Control for Systems
+　　with Linear Uncertainties, Int.J. 1991,53:81～96
+8　Xu B, Liu Y. An Improved Razumikhin-type Theorem and its Applications, I EEE 
+　　Trans. Automat. 1994,39:839～841
+收稿日期:1997-12-09

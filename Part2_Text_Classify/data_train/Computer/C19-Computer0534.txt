@@ -1,0 +1,117 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+一类可修非周期 Fork-Join
+排队网络分析
+丁连宇　　杨德礼
+　　摘　要　研究一类排队空间有限且服务台可修的非周期 Fork-Join 排队网络，给出求解稳态概率的直接法和等效法，并计算一些排队指标和可修指标(如稳态队长、服务台的可用度和服务台的失效概率)，最后通过仿真验证其正确性.
+　　关键词　排队网络，可靠性，稳态，概率分布.
+ANALYSIS OF A CLASS OF REPAIRABLE ACYCLIC
+FORK-JOIN QUEUING NETWORKS
+DING LIANYU YANG DELI
+(Institute of Systems Engineering,DUT,Dalian 116024)
+　　Abstract A class of repairable acyclic fork-join queuing networks(RAFJQN)with finite queuing spaces and repairable service machine is considered.In calculating steady-state probability,both direct method and equivalient method are proposed.In addition,some indices(such as steady-state queuing length,failure probabilities of server and utilizable rates of server)in queueing theory and repairable theoy are obtained.Finally,examples are given by simulation.
+　　Key words Queuing network models,reliability,steady states,probability distribution function.
+　　1　引言
+　　非周期 Fork-Join 排队网络(AFJQN)［1］是一类输入和输出均具有同步性的离散事件运态系统，在计算机领域反映并行过程，在制造系统是装配和拆卸的模型抽象.由于现有文献分析 AFJQN 时采用的方法都假定服务不失效［1―3］，对于服务台可能失效和可修的 AFJQN(RAFJQN)，无论从排队论角度，还是可修理论角度，都是值得研究的.
+　　考察图1所示的具有两个并联服务台的 RAFJQN，其中Mj 为服务台；Bj 为存贮器，j=1,2;服务规则为先到先服务；完成的服务总能输出.
+
+图1　具有两个服务台的 RAFJQN
+　　令λ，αj,βj 和 γj 分别为输入率、服务率、修复率和失效率，j=1,2.进一步假设：(1)空闲服务台不失效；(2)失效服务台等待修复时已服务过的时间有效；(3)服务台修复后，功能完全恢复.
+　　本文基于文献［3］的分析框架，借鉴文献［4］在分析单服务台可修系统的思想，有效地解决服务台可修的RAFJQN的性能分析，并给出一些指标的计算方法.
+　　2　RAFJQN的稳定条件
+　　令 jn 为队列 j 中第 n 个顾客从开始接受服务到服务结束的时间，其中包括为该顾客服务期间内服务台发生失效而进行修理的时间.根据文献［4］可得
+1/j=Ejn=(βj+rj)/αjβj, j=1,2.　　　　　　　　　　　(1)
+因此，可将 jn 理解为“服务”时间.这样图1的RAFJQN就可等效为服务率是j 的 AFJQN.
+　　定理1.对于 u 个服务台并联的AFJQN，达到稳定平衡的条件是
+　　　　　　　(2)
+　　证明.文献［5］已经证明了通常排队理论中系统达到稳态平衡的条件，即输入率严格小于所有的服务率对AFJQN同样成立.由于RAFJQN可等效成AFJQN，根据(1)式可知(2)式是RAFJQN的稳定条件.
+　　3　RAFJQN的分析
+　　设系统状态空间为｛(i,j,k):0≤i≤N+1,0≤j≤M+1,0≤k≤2｝.其中 i,j 分别为两列队长(即排队等待和正在接受服务的任务总和)；k 为故障标志，k=0 表示系统正常，k=j 表示服务台 j 故障，j=1,2;N,M 为存贮容量；t 时刻系统处于(i,j,k)状态的概率为 Pijk(t).根据图2的状态转移图，可建立如下平衡方程：
+
+图2　RAFJQN的状态转移图
+εPi,j,o=α1Pi+1,j,o+α2Pi,j+1,o+λPi-1,j-1,o+β1Pi,j,1+β2Pi,j,2,0≤i≤N,0≤j≤M;　　(3)
+εPN+1,j,o=α2PN+1,j+1,o+λPN,j-1,o+β1PN+1,j,1+β2PN+1,j,2, 0≤j≤M;　　　　　　　　(4)
+εPi,M+1,o=α1Pi+1,M+1,o+λPi-1,M,o+β1Pi,M+1,1+β2Pi,M+1,2, 0≤i≤N;　　　　　　　　(5)
+ζPi,j,1=α2Pi,j+1,1+λPi-1,j-1,1+γ1Pi,j,o, 0≤i≤N+1,0≤j≤M;　　　　　　　　　　(6)
+ζPi,M+1,1=λPi-1,M,1+γ1Pi,M+1,o, 0≤i≤N+1;　　　　　　　　　　　　　　　　　　　(7)
+ηPi,j,2=α′Pi+1,j,2+λPi-1,j-1,2+γ2Pi,j,0,　0≤i≤N,　0≤j≤M+1;　　　　　　　　(8)
+ηPN+1,j,2=λPn,j-1,2+γ2PN+1,j,o,　0≤j≤M+1;　　　　　　　　　　　　　　　　　　　(9)
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(10)
+其中 ε=λ+α1+α2+γ1+γ2,ζ=λ＋α2＋β′,η=λ+α′+β2,且有α1Po,j,o=0,α1Po,j,2=0,　α2Pi,o,o=0,α2Pi,o,1=0,λPN+1,j,k=0.
+　　下面采用分块矩阵求解，令
+Ωj=［Po.j.o,P1.j.o,…,PN+1.j.o］T,
+Φj=［Po.j.1,P1.j.1,…,PN+1.j.1］T,
+Ψj=［Po.j.2,P1.j.2,…,PN+1.j.2］T,
+Ω=［Ωo,Ω1,…,ΩM+1］T,Φ=［Φ0,Φ1,…,ΦM+1］T,
+Ψ=［Ψ0,Ψ1,…,ΨM+1T,H=［0,0,…,0，1］T(q-1)×1,
+
+
+
+这里 i=1,2,3;v=N+2;q=v(M+2);a1=ε/α2;a2=ξ/α2;a3=η/α2;b1=b2=b3=-λ/α2;c1=c3=-α′/α； c2=0;d1=-β′/α2;d2=-γ′/α2;d3=-γ2/α2;e1=-β2/α2.另有
+
+
+于是将(3)―(10)式写成如下矩阵形式：
+
+　　若令 W=R1-M1R-12M2-N1R-13M3,则有
+Ω=W-1H,
+Φ=-R-12M2W-1H,
+Ψ=-R-13M3W-1H.
+　　至此解得稳态概率分布｛Pijk｝，称此方法为直接法.为降低状态维数，克服计算量大的不足，可通过(1)式将RAFJQN等效成AFJQN.令系统状态空间为｛(i,j):0≤i≤N+1,0≤j≤M+1｝,则有
+　　(11)
+　　　　　　(12)
+　　　　　　(13)
+　　　　　　　　　　　　　　(14)
+这里 根据(11)―(14)式及直接法的求解过程易得｛ij｝，称此方法为等效法.可见等效法的状态维数是直接法三分之一.
+　　定理2.令队列 j 的稳态队长为 Lj，服务台 j 的稳态失效概率和稳态可用度分别为 Pjf 和Piu(j=1,2)，则有如下排队指标和可修指标
+　　　　　　(15)
+　　　　　(16)
+P1u=1-P1f, P2u=1-P2f.　　　　　　　　　　　　　(17)
+　　证明.由于,所以(15)式成立.根据失效概率和可用度的定义易得(16)和(17)式.
+　　4　实例
+　　N=M=2,(α1,α2,β1,β2,γ1,γ2)=(1.0，1.25，0.5，0.5，0.05，0.05)，由(1)式得′=0.909，2=1.36.计算结果见表1和表2，显然直接法与等效法在稳态队长的求解中相对误差小于 1%.
+表1　直接法
+
+　λ=0.2λ=0.4λ=0.6λ=0.8
+E［L1］
+E［L2］1.912703
+1.7615341.989827
+1.8414912.068267
+1.9235872.145000
+2.004980
+P1f
+P2f0.047979
+0.0546550.044854
+0.0503840.041479
+0.0459060.038068
+0.041539
+P1u
+P2u0.952021
+0.9453450.955146
+0.9496160.958521
+0.9540940.961932
+0.958461
+
+表2　等效法
+
+　λ=0.2λ=0.4λ=0.6λ=0.8
+E［1］
+E［2］1.916493
+1.7551621.996161
+1.8395562.078524
+1.9277902.159798
+2.015916
+
+　　5　结束语
+　　实例验证表明，本文所研究的RAFJQN是有效的.相信对其进一步地研究，将会推动通讯系统、计算机集成制造系统(CIMS)、柔性制造系统(FMS)和并行处理的广泛应用.
+作者单位：大连理工大学系统工程所　大连　116024
+参考文献
+　［1］Baccelli F.Acyclic Fork-Join queuing networks.J.ACM,1989,36(3):615-642.
+　［2］Zhang Z S.Analytical results for waiting time and system size distributions in two parallel queuing systems.SIAM J.Appl.Math.,1990,50(4):1176-1193
+　［3］徐学雷，郑大钟.一类 Fork-Join 排队系统的分析.控制理论与应用，1994，11(3)：361-365
+　［4］曹晋华，程侃.服务台可修的 M/G/1 排队系统分析.应用数学学报，1982，5(2)：113-127
+　［5］Konstantopoulos P,Walrand J.Stationary and stability of Fork-Join networks.　J.Appl.Prob.,1989,26:604-614.
+收稿日期　1994-12-16

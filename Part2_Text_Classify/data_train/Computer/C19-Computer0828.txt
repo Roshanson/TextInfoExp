@@ -1,0 +1,75 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.303-309
+
+
+
+适于估计OD矩阵的交通检测点
+的最优分布
+周晶　盛昭瀚　何建敏　杨海　王长君
+摘　要　讨论了适于估计起迄点出行分布矩阵(OD矩阵)的交通检测点的合理分布问题.根据检测点应当满足的规则，建立了关于检测点分布的非线性规划模型.在已知极点间转移概率的前提下，将检测点的分布问题描述成一个平均报酬Markov决策过程, 并通过转化为一个等价的整数线性规划问题来求解.最后实例结果表明该模型是有效的、合理的.
+关键词　起迄点出行分布矩阵，交通检测点，平均报酬马尔可夫决策过程，整数线性规划.
+OPTIMAL LOCATION OF TRAFFIC COUNTING POINTS
+FOR ESTIMATING OD TRIP MATRIX
+ZHOU Jing　SHENG Zhaohan　HE Jianmin
+(School of Economics and Management,Southeast University,Nanjing　210096)
+YANG Hai
+(Dept.of Civil & Structural Engineering,the Hong Kong University of Science & Technology,Hong Kong)
+WANG Changjun
+(Traffic Management Research Institute,Wuxi　214151)
+Abstract　　This paper discusses how to determine the optimal number and locations of traffic counting points in a road network for estimating the origin-destination trip matrix. Based on location rules, a nonlinear programming model for determining the optimal locations of traffic counting points is addressed under a given OD distribution pattern. Such problem can also be described as an average reward Markov decision process (MDP) with additional constraints, which can be equivalent to an integer linear programming problem. The computational example shows that the results obtained are satisfactory. 
+Key words　Origin-destination trip matrix, traffic counting points, average reward Markov decision process, integer linear programming.
+1　引言
+　　起迄点出行分布矩阵(Origin-destination),简称OD矩阵,是一项非常重要的交通数据.近年来，国内外已有许多学者致力于通过路段检测流量估计OD分布矩阵的研究［1，2］.文［3］归纳了选择检测点应当遵循的四个规则.基于这些规则，在已知OD间出行路径的条件下，建立了确定检测点分布的0-1整数规划模型.本文将该问题扩展到无须枚举OD间出行路径的一般情形.检测点分布问题被描述为一个平均报酬马尔可夫决策过程.最后，根据文［4］中的基本定理，可通过求解一个等价的线性整数规划问题而获得检测点的最优分布.
+2　检测点分布的数学规划模型
+2.1　检测点分布问题的描述
+　　考虑交通网络G(N,A).根据实际情况，可以将点集N分为三类：令NO表示所有起点集合；ND表示所有终点集合；NT表示所有中间点集合.由于有些点可能是混合型的点，即既是起点又是终点.为便于分析，可以通过引入一个虚拟点将其分开.于是，有NO∩ND=，N=NO∪ND∪NT.设已知一个先验的OD出行分布矩阵T=(tij),用E＝(eij)表示转移概率矩阵，eij表示从i到j的转移概率，若(i,j)A,则令eij=0.事实上，转移概率与OD出行量在路网上的分配是密切相关的，我们可以借助与流量分配算法［5］而间接获得转移概率矩阵.此外，还可以根据先验OD矩阵T计算每一起点的出行量占总的OD出行量的比值.对所有非起始点i, 令βi=0，则可得到网络上每一点的初始出行分布β=(β1,β2,…,β｜N｜)，称之为初始分布向量，｜N｜表示集合N中的元素个数.
+2.2　检测点分布的数学规划模型
+　　考虑到用于估计OD出行分布矩阵的交通检测点必须分布在路段上，而不是极点上，不妨将每一路段都作为一个假想的极点.即路段(i,j)中增加一虚拟极点k, 这样检测点只能分布在这些虚拟点上.此时转移概率矩阵也将发生变化：eik=eij,ekj=1,eij=0.令NA表示所有这些虚拟点组成的集合,相应的网络G(N,A)也被称为扩充网络N=NO∪ND∪NT∪NA.为方便起见，引入向量z表示检测点的分布.z中分量取0或1：若极点i被检测，对应zi=1,称i为测点；否则zi=0，称i为非测点.事实上，若iNA,则必有zi=0.布置检测点时，还应当注意避免重复计数的问题.为此，可以通过改变转移概率来实现.令
+　　　　(1)
+　　对一个给定的检测点分布向量z，令φij(z)表示从极点i出发到达极点j的概率，满足如下递推关系
+　　　　(2)
+则从i到k的OD对间的流量经过路段j(即为虚拟点)的比例为βikφij(z),根据最大流量比规则，检测点分布向量z的选择应使βikφij(z)尽可能大.令表示所有满足OD覆盖规则的分布向量组成的集合，表示给定的检测点的数目，则有如下非线性整数规划模型
+　　　(3)
+　　　　(4)
+　　　(5)
+显然，目标函数(3)是指整个路网上被检测到车总量的期望值，约束条件(4)保证满足OD覆盖规则［3］.由于对每一测点即时按(1)式改变其转移概率，避免了重复计数，从而也保证满足独立性规则［3］.因为目标函数(3)中的φij(z)是一个隐函数，直接求解(TCL-P)非常困难.下面将(TCL-P)描述为一个有约束的平均报酬马尔可夫决策过程.
+3　马尔可夫决策问题的描述
+3.1　测点分布问题的马尔可夫特性描述
+　　已知极点间的转移矩阵E和初始出行分布β可以将车辆在路网上的运行看作一个马尔可夫点过程.每一点是否配置检测点即为一个决策，而将每一点检测到的流量比率看作“报酬”.定义如下的马尔可夫决策过程：状态集合N，对每一i∈N,其决策集A(i)至多包含两个元素，即A(i)=2或A(i)=1.前者表示将点i作为测点，而后者表示点i为非测点.由此，可以在检测点分布向量z与一个确定性策略d之间建立一一对应的关系
+　　　　(6)
+这样,即可通过求解最优马尔可夫策略d而间接获得最佳检测点分布向量z.显然，只有当i∈NA，才可以有A(i)=2.令piaj表示一个平稳马尔可夫过程在状态i选择决策a，在下一时刻到达状态j的转移概率，可由下式获得
+　　　(7)
+可见，piaj与分布过测点后的转移概率ij是一致的.定义在状态i选择决策a的报酬为ria=0,a=1;ria=1,a=2.而β相当于该马氏决策过程的初始分布，即每点的初始出行车辆比例.另一方面，注意到检测点分布向量必须满足OD覆盖规则，即z∈.但是，由一个马尔可夫确定性策略d确定的分布向量z不一定能满足这一规则.为此，我们首先建立一个确定满足OD覆盖规则的最小检测点数目的模型(TCL-P0)
+　　　　(8)
+　　　(9)
+za=0.1,　a∈A.　　　　(10)
+当第w对OD对间的出行量经过路段a，δaw=1；否则δaw=0.求解(TCL-P0)获得一个满足OD覆盖规则的检测点分布向量z0和测点个数l0.令
+NAD=｛i∈NA｜z0i=1｝,　NAT=｛i∈NA｜z0i=0｝,　　　　　(11)
+其中z0i是z0的第i个分量.若为预定的测点个数，则=-l0为剩余测点个数.后面将给出的确定方法.NAT将成为检测点的候选点集,即iNAT,zj=0.则问题(TCL-P)转变为如下形式
+ 　　　　(12a)
+　　　　　(12b)
+　　zj=(0,1),　j∈NAT.　　　　　(12c)
+　　令D()={d|d是马尔可夫策略，恰好在个不同的状态选择决策a=2}.可以证明问题(RTCL-P)与如下的马尔可夫决策问题是等价的(参见文献［4,6］)
+　　　　　(13)
+其中表示由策略d引导的一个马尔可夫决策过程(MDP)的平均期望报酬.而直接求解这一马尔可夫决策问题(13)也是非常困难的，所幸该马尔克夫决策问题可通过构造一个等价的线性规划问题来求解.
+3.2　等价的线性规划问题
+　　对任意的一个马氏策略ξ和时间T,令
+　　　　(14)
+即表示当状态j的决策为a时，在时间段T内，系统到达状态j的平均频数.若xja(ξ)=存在，则xja(ξ)可以解释为在策略ξ的引导下，且状态j的决策为a时，在极限时刻(或长远时刻), 系统的出行到达状态j的期望值.不难证明下列命题(参见文献［4,6］).
+　　命题1. 对任何平稳策略ξ,
+　　　　　(15)
+　　命题2.令z是一个分布向量，d是由z根据式(8)定义的策略，则
+　　　　(16)
+式(16)说明xi2(d(z))给出了出行车在测点i被观测到的期望值.
+　　Kallenberg［4］建立了一个平稳的马氏决策过程与一个线性规划问题之间的关系.据此可有如下的定理:
+　　定理1.考虑整数规划问题
+　　　(17a)
+　　　(17b)
+　　　(17c)
+xi2≤zi,　i∈N,　　　　　(17d)
+　　　(17e)
+xia,yia≥0,zi=(0,1),　i∈N,a∈A(i).　　　(17f)
+　　1)若(x*,y*,z*)是(MIP-1)的最优解,则z*是(RTCL-P)的最优解,d(z*)是MDP(D())的最优策略;
+　　2)若z*是(RTCL-P)的最优解,且d*=d(z*),x*=x(d*),则存在向量y*使得(x*,y*,z*)成为(MIP-1)的最优解.
+　　由此定理可知，若(x*,y*,z*)是问题(MIP-1)的最优解，则d*=d(z*)即为相应的最优策略，从而x*=x(d*).最后(MIP-1)可化简为

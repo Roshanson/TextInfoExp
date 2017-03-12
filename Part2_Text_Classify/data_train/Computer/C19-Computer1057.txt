@@ -1,0 +1,82 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  Vol.24  No.5 1998
+
+
+
+离散非线性时变系统开闭环PI型迭代
+学习控制律及其收敛性
+皮道映　孙优贤
+摘　要　对于具有重复运动性质的对象，迭代学习控制是一种有效的控制方法.针对一类离散非线性时变系统在有限时域上的精确轨迹跟踪问题，提出了一种开闭环PI型迭代学习控制律.这种迭代律同时利用系统当前的跟踪误差和前次迭代控制的跟踪误差修正控制作用.给出了所提出的学习控制律收敛的充分必要条件，并采用归纳法进行了证明.最后用仿真结果对收敛条件进行了验证.
+关键词　迭代学习控制，非线性时变系统，收敛性.
+AN OPEN-CLOSED-LOOP PI-TYPE ITERATIVE LEARNING 
+CONTROL SCHEME FOR DISCRETE NONLINEAR TIME-
+VARYING SYSTEMS AND ITS CONVERGENCE
+PI DAOYING　SUN YOUXIAN
+(National Key Laboratory of Industrial Control Technology,Institute of 
+Industrial Process Control,Zhejiang University,Hangzhou　310027)
+Abstract　Iterative learning control is an effective approach to the control of processes that are repetitive in nature.In this paper,an open-closed-loop PI-type iterative learning control scheme for the precise tracking control of a class of discrete nonlinear time-varying systems over a finite time interval is presented.The scheme updates control input with tracking errors of both current and last iterations simultaneously.Sufficient and necessary conditions which guarantee the convergence of the scheme are given and then proved with inductive method.Finally,the conditions are verified with simulation results.
+Key words　Iterative learning control,nonlinear time-varying system,convergence.
+1　引言
+　　由于迭代学习控制简单有效，近年来已有许多学者对其进行了深入的理论研究［1－3］.本文研究如下具有重复运动性质的离散非线性时变系统
+　　(1)
+式中xk(i),uk(i),yk(i)分别为系统第k次运行时在i时刻的状态值、输入值和输出值；f，g，D为具有适当维数的矩阵或矩阵函数.要求系统在时间区间［0,N］上跟踪期望输出yd(i)，所提出的开闭环PI型迭代学习控制律为
+　　(2)
+式中Lj(i)为系统在i时刻的学习系数矩阵；δyk(i)=yd(i)-yk(i)为系统跟踪误差；α为开闭环结合系数.本文给出并证明了系统(1)，(2)收敛的充要条件.
+2　开闭环PI型迭代学习控制的收敛性
+　　定理1.设被控系统(1)在时间区间［0，N］中的任一时刻i均满足下列条件
+　　1)f，g连续；
+　　2)存在理想控制ud(i)使得系统的状态和输出为期望值xd(i),yd(i)且ud(i)唯一；
+　　3)每次重复运行时的初始状态误差｛δxk(0)｝k≥0为一收敛到零的序列；
+　　4)矩阵〔1+(1-α)L0(i)D(i)〕是可逆的(其中：I为适当维数的单位阵)；
+　　5)Lj(i)有界(j∈［1,i］).则对任意初始控制u0(i)，系统(1)，(2)收敛的充分条件为
+ρ(〔I+(1-α)L0(i)D(i)〕-1〔I-αL0(i)D(i)〕)＜1,　i∈［0,N］　(3)
+式中ρ(.)表示谱半径.收敛的必要条件为
+ρ(〔I+(1-α)L0(0)D(0)〕-1〔I-αL0(0)D(0)〕)＜1.　　(4)
+　　证明.先证明充分性，定义辅助函数［1］
+　　(5)
+由条件1)有
+　　(6)
+令δxk(i)=xd(i)-xk(i),δuk(i)=ud(i)-uk(i)，根据式(1)，(2)，(5)及条件4)可得
+δxk(i+1)=f1(i,δxk(i),δuk(i)),　　(7)
+δyk(i)=g1(i,δxk(i))+D(i)δuk(i),　　(8)
+　　(9)
+用归纳法证明学习控制收敛.当i取集合［0］中的任一元素，即i=0时，由式(6)，(9)，条件2)，条件3)，条件5)及文献［1］中引理3.7不难推得
+　(10)
+设当i取集合［0，1，…,m］中的任一元素时开闭环PI型学习控制是收敛的.即
+　　(11)
+则当i取集合［0,…,m,m+1］中的任一元素时，要证明开闭环PI型学习控制是收敛的，只需证i=m+1时开闭环PI型学习控制是收敛的即可.由式(6，7，11)有
+　　(12)
+由式(6)，(9)，(11)，(12)、条件5)及文献［1］引理3.7可推得
+　(13)
+由式(12)，(13)及条件2)有
+　　(14)
+由式(10)，(11)，(14)可知开闭环PI型学习控制是收敛的.充分性得证.
+　　再证必要性.用反证法，设系统(1)，(2)收敛且式(4)不成立.由条件1)，取学习控制的理想初态情况δxk(0)=0　(k=0,1,2,…),由式(6)，(9)有
+δuk+1(0)=(〔I+(1-α)L0(0)D(0)〕-1〔I-αL0(0)D(0)〕)k+1δu0(0).　　(15)
+因式(4)不成立，故δu0(0)≠0使得δuk+1(0)≠0(k≥0),这与假设学习控制收敛矛盾.
+　　注.根据文献［1］的研究结果，在ρ(.)较小时系统收敛速度较快.因此应选择合适的α值，在满足定理条件4)的前提下使ρ(.)的值尽可能小.
+3　开闭环PI型迭代学习控制仿真
+　　设被控非线性时变对象的动态方程为
+
+要求在t∈［0,8］内跟踪期望输出
+　　取
+
+
+由于ρ(〔I+L0(i)D〕-1)=2.291＞1,ρ(I-L0(i)D)=2.4365＞1，故单独采用开环或闭环PI型学习控制时系统都将是发散的；而ρ(〔I+(1-α)L0(i)D〕-1〔I-αL0(i)D〕)=0.471＜1，因此采用开闭环PI型学习控制时系统将是收敛的，仿真结果(图1)表明系统经过7次迭代学习控制后达到跟踪目的.图2给出了参数α变为-0.3后的仿真曲线，此时ρ(〔I+(1-α)L0(i)D〕-1〔I-αL0(i)D〕)=0.656,系统经过30次迭代控制后达到跟踪目的.这些仿真结果证实了前一节理论判断的正确性.
+
+
+图1　α=-0.48时每次迭代的跟踪误差绝对值
+总和变化曲线
+
+
+图2　α=-0.3时每次迭代的跟踪误差绝对值
+总和变化曲线
+4　结论
+　　容易看出，文献［1］的定理4.3，4.7，4.13，4.15和文献［2］的定理1均为本文定理1的特例.理论分析和仿真结果表明：开闭环PI型迭代学习控制律的收敛条件与状态方程的具体形式无关；在矩阵Lj(i)(j≠0)有界的条件下学习控制收敛与否与这些矩阵元素值的大小无关；参数α对学习控制收敛的速度有直接的影响.
+作者单位：(浙江大学工业控制技术国家重点实验室、工业控制技术研究所　杭州　310027)
+参考文献
+　1　林辉.迭代学习控制理论研究［博士学位论文］.西安：西北工业大学自动控制系，1992
+　2　皮道映，孙优贤.离散非线性系统开闭环P型迭代学习控制律及其收敛性.控制理论与应用，1997，14(2)：157-161
+　3　Heinzinger G et al.Stability of learning control with disturbances and uncertain initial conditions.IEEE Trans.Autom.Control,1992,AC-37(1):110-114
+收稿日期　1996-01-26

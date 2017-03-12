@@ -1,0 +1,113 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.1　P.116-120
+
+
+
+不确定系统具有圆盘区域极点约束的鲁棒控制
+俞立　陈国定　杨马英
+摘 要 对一类不确定线性系统，提出了存在状态反馈控制律，使得闭环系统的所有极点均位于一给定圆盘中的一个充分必要条件.结合控制律反馈增益参数极小化的要求，建立了一个具有线性矩阵不等式约束的凸优化问题，通过该问题的解，可以构造一个具有较小反馈增益参数和给定要求的控制律.所提出的方法既可应用到连续系统，也可应用到离散系统.
+关键词 不确定性，鲁棒控制，线性矩阵不等式，极点配置.
+ROBUST CONTROL OF UNCERTAIN LINEAR SYSTEM
+WITH DISK POLE CONSTRAINTS
+YU Li CHEN Guoding YANG Maying
+(College of Information Engineering, Zhejiang University of Technology, Hangzhou 310032)
+Abstract For a class of uncertain linear systems, a necessary and sufficient condition for the existence of state feedback control laws which assign the closedloop poles in a prespecified disk is derived in terms of linear matrix inequalityies(LMIs). The problem of designing the controllers with smaller gain parameters is formulated as a convex programme with LMI constrains, which can be solved by the existing LMI software. The proposed method is applicable to both continuous and discrete time systems.
+Key words Uncertainty, robust control, LMI, pole placement.
+1 引言
+　　正如文献［1］所阐述的,一个线性系统的所有极点均在复平面上的一个适当圆盘中将保证其具有一定的稳态和动态性能. 近年来,已提出了一些方法,将线性系统的所有极点配置在一个给定的圆盘中［1，2］. 最近,不确定系统具有圆盘区域闭环极点约束的鲁棒控制研究也取得了一些进展［3～6］. 然而,文献［3］要求解一个带参数的离散型Riccati方程,所提出的方法未必总能成功; 文献［4］尽管给出了一个凸优化的设计方法,但它要求对系统进行增维,并且难以将对系统和控制律的一些其它要求结合进去;文献［5］和［6］的结果只能适用于状态矩阵中存在扰动的系统,且提出的条件仅仅是充分的,因此,限制了其应用范围.另一方面,在求解文献［3］,［5］和［6］所导出的Riccati矩阵方程时,需先选定一些设计参数,然而目前并没有根据使得问题有解或满足其它要求来选取这些参数的有效方法. 
+　　对一类不确定线性系统,本文提出了将闭环系统极点配置在一个给定圆盘中的状态反馈控制律的存在性条件及基于线性矩阵不等式的凸优化设计方法,所得到的控制律具有较小的反馈增益参数.提出的方法形式简单,处理方便,在设计中可以有效地处理附加约束.而且克服了在设计过程中需人为确定一些设计参数的不足.同时本文提出的方法既可以应用到连续系统,也可以应用到离散系统.因此,它给出了这一类问题的一个完整解.
+2 问题的描述
+　　考虑由以下状态方程描述的一类不确定连续或离散线性系统
+δ［x(t)］=(A+ΔA)x(t)+(B+ΔB)u(t).　(1)
+其中分别是系统的状态和控制向量；δ是一个算子, 对连续系统,δ是微分算子, 即对离散系统,δ表示延迟算子,即δ［x(t)］=x(t+1)；A，B是具有适当维数的实常数矩阵,ΔA，ΔB表示系统的扰动,且假定具有以下的形式
+［ΔAΔB］=DF［E1 E2］,　(2)
+其中D,E1,E2是具有适当维数的实常数矩阵,是满足
+FTF≤I　(3)
+的未知矩阵,上式中的I表示适当维数的单位矩阵.
+　　本文的目的是确定一个状态反馈控制律
+u(t)=Kx(t),　(4)
+使得对所有允许的扰动,闭环系统
+δ［x(t)］=［A+BK+DF(E1+E2K)］x(t)　(5)
+的所有极点均位于预先给定的中心在q+j0,半径为r的圆盘D(q,r)中.这样一个问题称为是不确定系统(1)的鲁棒D镇定问题,控制律(4)称为系统(1)的一个D稳定化控制律.
+3 D稳定化控制律存在的条件
+　　引理1［7］设A是任一方阵,则σ(A)D(q,r)当且仅当存在矩阵X>0,使得
+　(6)
+其中σ(A)表示矩阵的谱集.
+　　引理2［8］.对给定的具有适当维数的矩阵Y，H和E,其中Y是对称的,则对所有满足FTF≤I的矩阵F,
+
+成立,当且仅当存在一个常数ε>0,使得
+
+　　以下的定理1给出了系统(1)存在D稳定化控制律的一个充分必要条件.
+　　定理1.对所有满足(2)和(3)式的扰动,闭环系统(5)的所有极点均在圆盘D(q,r)中，当且仅当存在对称矩阵X>0,使得
+　(7)
+　　证明. 根据引理1,σ(A+BK+DF(E1+E2K))D(q,r)当且仅当存在对称矩阵X>0,使得
+　(8)
+定义矩阵Y
+
+则(8)式可以等价地写成
+
+根据引理2,上式对所有满足FTF≤I的矩阵F成立当且仅当存在常数ε>0,使得
+
+即
+
+取则可得上式等价于矩阵不等式(7).定理得证.
+4 D稳定化控制律设计
+　　基于上一节导出的D稳定化控制律存在条件,本节将提出D稳定化控制律的设计方法.
+　　定理2.对给定的圆盘D(q,r),系统(1)存在D稳定化控制律当且仅当存在矩阵Q∈Rm×n和对称正定矩阵X∈Rn×n,使得
+　(9)
+当(9)式存在解Q和X>0时,K=QX-1是系统(1)的一个D稳定化控制律的增益矩阵.
+　　证明.由矩阵的Schur补性质可知: 矩阵不等式(7)等价于
+　(10)
+因此，若取Q=KX，则从定理1即可得证本定理.
+　　不等式(9)是关于矩阵变量Q和X的线性矩阵不等式,所有满足(9)式的Q和X构成一个凸集,可以应用有关LMI的现成软件方便地判断该集是否非空并产生一个特解.同时,定理2也给出了系统(1)的所有D稳定化控制律的一个刻划.利用这个性质,可以设计满足一些特定要求的D稳定化控制律.特别的,具有较小反馈增益参数的控制律往往更能符合实际的要求.以下,我们给出这一类D稳定化控制律的设计方法.
+　　考虑
+
+其中α>0,β>0,由于K=QX-1,则
+
+因此可以通过使得α和β的极小化来保证D稳定化控制律具有较小的反馈增益参数.
+　　引理3. 1)QTQ<αI当且仅当
+　(11)
+2)X-1<βI当且仅当
+　(12)
+　　证明. 由矩阵的Schur补性质容易得到该引理的结论.
+　　不等式(11)和(12)分别是关于(α,Q)和(β,X)的线性矩阵不等式.因此,为要得到系统(1)的具有较小反馈增益参数的D稳定化控制律,建立以下的优化问题:
+min(α+β)　(13)
+s．t (9),(11),　(12).
+问题(13)是一个具有LMI约束的凸优化问题,因此可以应用MATLAB软件的LMI工具包中的mincx命令求解之.若该问题有解提供了不确定系统(1)的一个具有较小反馈增益参数的D稳定化控制律.
+5 例子
+　　例1. 考虑以下的不确定离散系统
+x(t+1)=(A+DFE1)x(t)+(B+DFE2)u(t),
+其中
+
+要求将闭环系统的所有极点配置在圆盘D(0.5,0.5)中.
+　　应用本文提出的方法,满足这样要求的一个鲁棒D稳定化状态反馈控制律是
+u=［0.8065 -0.9852 -0.9919］.
+　　例2［6］.考虑不确定连续系统
+
+其中
+
+要求设计一个状态反馈控制律,使得闭环系统的所有极点位于圆盘D(-3,2)中.
+　　应用本文提出的方法,可得满足要求的一个控制律是
+
+文献［6］所得到的控制律是
+
+显然,利用本文的方法所得到的控制律具有更小的反馈增益参数,同时,不象文献［5］那样,本文的方法无需人为地去确定一些参数.整个设计过程更加系统化.
+国家自然科学基金（69974036）、国家教育部优秀年轻教师基金和浙江省自然科学基金资助项目。
+俞立 1961年生.1982年在南开大学获学士学位，后在浙江大学获硕士与博士学位，1993年至1995年留学瑞士联邦高工.现为浙江工业大学信息工程学院教授，副院长.在国内外发表论文80余篇.主要研究方向为鲁棒控制,时滞系统的分析和控制,分散控制等.
+陈国定 1962年生.1990年在浙江大学获硕士学位，现任浙江工业大学副教授.主要研究方向为不确定系统的鲁棒控制理论与应用，工业过程计算机控制技术等.
+杨马英 1966年生，分别于1986年，1989年和1996年在浙江大学工业自动化获学士、硕士和博士学位，现为浙江工业大学副教授.研究方向为预测控制理论与应用，不确定系统鲁棒控制等.
+俞立(浙江工业大学信息工程学院 杭州 310032)
+陈国定(浙江工业大学信息工程学院 杭州 310032)
+杨马英(浙江工业大学信息工程学院 杭州 310032)
+参考文献
+1，Haddad W M,Bernstein D S.Controller design with regional pole constraints.IEEE Trans.on Automatic Control,1992,37(1):54～69、
+2，Furuta K,Kim S B.Pole assignment in a specified disk.IEEE Trans.on Automatic Control,1987,32(5):423～427
+3，Garcia G,Bernussou J.Pole assignment for uncertain systems in a specified disk by state feedback.IEEE Trans.on Automatic Control,1995,40(1): 184～190
+4，Garcia G,Bernussou J,Camozzi P.Disk pole location for uncertain systems through convex optimization.Int.J.Robust and Nonlinear Control,1996,6(1):189～199
+5，王子栋,孙翔,郭治.区域极点约束下线性离散系统的Riccati鲁棒控制.自动化学报,1996,22(4):468～471
+6，Wang Zidong,Tang Guoqing,Chen Xuemin.Robust controller design for uncertain linear systems with circular pole constraints.Int.J.Control,1996,65(6):1045～1054
+7，Gahinet P,Nemitroviski A,Laub A et al.The LMI Control Toolbox.The Mathworks,Inc.,1995.
+8，Xie L.Output feedback H∞ control of systems with parameter uncertainty.Int.J.Control,1996,63(4):741～750 
+
+收稿日期1997-10-13 收修稿日期 1999-05-20

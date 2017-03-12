@@ -1,0 +1,111 @@
+计算机应用研究
+APPLICATION RESERCH OF COMPUTERS
+2000  Vol.17　No.1　P.26-28
+
+
+
+
+VRML虚拟空间协同生成原型系统的研究与开发
+刘一松
+摘 要 以该文作者自行开发的VRML虚拟空间协同生成原型系统（MVRC）为基础，提出了借助VRML的外部程序接口EAI，人-机交互地生成VRML虚拟空间的方法；论述了通过采用集中式系统结构、利用TCP/IP协议下的Java Socket网络通信机制以及构造相应的网络通信数据包等方法，实现异地多个用户协同工作的过程。MVRC可以成为实现诸如虚拟教室、多用户虚拟展览馆应用系统以及虚拟社区的基础。
+关键词 VRML EAI CSCW 虚拟空间生成
+　　虚拟现实建模语言（VRML）是描述虚拟环境中场景的一种标准，利用它可以在Internet上建立交互式三维多媒体虚拟境界。VRML的基本特征包括：分布式、交互式、平台无关、三维、多媒体集成、逼真自然等，被称为第二代Web，其应用领域非常广泛，包括科学研究、教育、工程、建筑、商业、娱乐、广告、电子商务等，已被越来越多的人所重视。
+　　VRML像HTML一样，用文本格式来描述虚拟境界，这种创建虚拟境界的方法，既繁琐又不直观，较难为一般使用人员所接受。VRML虚拟空间生成系统(VRML Authoring software)可以使用户通过可视化拖放的方法，人-机交互地生成VRML虚拟空间，并保存于VRML文件 (扩展名为.wrl) 中，而用户完全不需要掌握VRML的语法和规范。国外已经有一些单用户的虚拟空间生成系统的商品软件，如Silicon Graphics公司的Cosmo Worlds 2.0 、Platinum Technology公司的 VRCreator 2.0等。而多用户的VRML虚拟空间协同生成系统(VRML Cooperative Authoring software)能使异地的多个用户协同工作，共同生成一个VRML虚拟空间；也可以使设计者在生成VRML虚拟空间的同时，与其客户进行实时交互，以及时满足客户的需求。目前，VRML虚拟空间协同生成系统正处于研究阶段，还没有出现可用的商品软件。
+　　本文主要以我们自行开发的多用户VRML虚拟空间生成原型系统(MVRC)为基础，论述了人-机交互地生成VRML虚拟空间的方法，以及实现异地多用户协同工作的方法。
+1　VRML虚拟空间的生成技术
+1.1　Java Applet借助EAI访问VRML虚拟境界
+　　在VRML中，节点是构成虚拟场景的基本单元。节点由域和事件组成，域的取值决定了节点的取值，从而决定了虚拟境界的当前状态。事件包括Eventin(入事件)、Eventout(出事件)以及exposedField(外露域)的一对隐含的事件入口(set_xxx)和事件出口(xxx_changed)，事件为节点提供了接受外界(如外部程序Java Applet)消息以及向外界发送消息的能力,通过事件可以动态改变虚拟境界的状态。
+　　VRML文件描述的虚拟境界需要经过带有VRML插件(plug-in)的浏览器的解释,才能呈现给观察者。而VRML的EAI(External Authoring Interface外部程序接口)是一个与VRML插件相联系的Java包，它由三部分组成:Vrml.external、 Vrml.external.field、Vrml.external. exception。EAI允许一个Java Applet主要以三种方式访问VRML中的场景：①可以发送一个事件到VRML场景中节点的事件入口。②可以收到VRML场景中节点的事件出口发出的最新值。③当VRML场景中节点的事件出口发出一个事件时，能得到一个通知，激活callback方法。
+　　借助于在Java Applet使用EAI，可以实现Java Applet 与VRML虚拟空间之间的相互通信。具体的实现方法是：VRML文件可以通过HTML文件的标记<EMBED>或<OBJECT>等包含在HTML文件中，而Java Applet可以通过HTML文件的标记<CODE>等同样包含在HTML文件中，这样包含在同一个HTML文件的Java Applet和VRML 虚拟境界可以相互访问，如图1。
+
+图1　Java Applet借助EAI访问VRML虚似境界
+1.2　　VRML虚拟空间的生成
+　　MVRC主要用基元构造法人机交互地生成VRML虚拟空间，即用户能创建（或删除）任意多个物体，包括如正方体、球体、圆锥体、圆柱体、文本等基元物体和用户预先设计的物体；能用移动、旋转、缩放、改变颜色等造型变换方式，变换和组合这些物体，以构造一个虚拟空间。
+　　MVRC系统的虚拟空间主要由基元物体、用户预先设计的物体和用户替身(Avatar)组成，可将它们设计成三种节点类型：BaseObject（基元物体）、CustomObject（用户预先设计的物体）和 AvatarObject（用户替身）。其中BaseObject节点类型的结构如下。
+Proto BaseObject[
+　　ExposedField SFVec3f　　　　　translation　　　　#位移
+　　ExposedField SFRotation　　　rotation　　　　　　#旋转
+　　ExposedField SFVec3f　　　　　scale　　　　　　　#缩放
+　　ExposedField SFColor　　　　　diffusecolor　　　　#颜色
+　　ExposedField SFBool　　　　　touchsensorenabled　#锁定/解锁
+　　ExposedField SFBool　　　　　spheresensorenabled　#交互属性
+　　ExposedField SFBool　　　　　timesensorenabled　　#动画属性
+　　Eventin　　SFNode　　　　　　objectNodes　　　　　#物体的几何造型
+　　Eventout　　SFTime　　　　　　touchtime
+　　Eventout　　SFRotation　　　　rotation_changed
+]{ ... }
+　　MVRC 用VKIND(0，1，2）将物体分为三类，用VID(物体序号)来识别某一物体是哪一类中的哪一个物体。MVRC分别用三个Java类：CBaseObject、CCustomObject、CAvatarObject来生成并保存三种物体中的每个物体的状态数据，根据保存的每个物体的状态数据和VRML的语法，就可生成VRML文件以保存创建的虚拟空间。生成VRML虚拟空间的具体方法和关键Java代码如下。
+　　1) 构造初始的VRML虚拟空间(Init.wrl)
+Inline{url "scene.wrl"} 
+　　　　　　　　//scene.wrl描述了VRML的初始虚场景，可以为空
+　　　　DEF ROOTNODE Transform {} 
+　　　　　　　//ROOTNODE是所有生成物体的根节点
+　　　DEF BIGBOX ProximitySensor { 
+　　　　　　　//节点BIGBOX能跟踪本地协作者的视点
+　　　　　size 1000 1000 1000 //的移动和转向。
+　　}
+　　在Java Applet中，建立与VRML浏览器(Browser)即Init.wrl的联系:
+browser=Browser.getBrowser(this); 
+　　　　　　　　　　//获得VRML浏览器(Browser)的句柄,
+Node rootNode=browser.getNode("ROOTNODE"); 
+　　　　　　　　　　//获得ROOTNODE的句柄
+addChildren=(EventInMFNode) rootNode.getEventIn 
+　　　　　　("addChildren");
+removeChildren = (EventInMFNode) rootNode.getEventIn 
+　　　　　　("removeChildren");
+Node box = browser.getNode("BIGBOX"); 
+　　　　　　　　　　//获得BIGBOX等节点的句柄
+　　2)在Browser中创建物体
+　　创建物体在类CBaseObject、CCustomObject、CAvatarObject中实现，例如values="Box"：
+Node[] nodes
+Nodes=browser.createVrmlFormString("BaseObject节点的文本内容")
+EventInSFVec3f set_translation=nodes[0].getEventIn("translation")
+EventOutSFVec3f translation_changed=nodes[0].getEventOut("translation")
+...
+objectNodes=(EventinSFNode)nodes.getEventIn("objectNodes")
+objectNodes.setValue(browser.createVrmlFromString(values+"{}")
+addChildren.setValue(nodes) //将创建的物体加到Browser中
+　　3) 对物体设值和取值
+　　通过设值，可对物体进行移动、旋转、缩放、改变颜色等变换；通过取值可获得物体的当前状态。例如values为位移值。
+set_translation.setValue(((VSFVec3f)values).getValue()) //平移物体
+float[] val= translation_changed.getValue() //获取平移值
+　　4) 从Browser中删除物体
+removeChildren.setValue(nodes)
+2　VRML虚拟空间协同生成的研究与实现
+　　要使异地的多个用户能协同工作，共同生成一个VRML虚拟空间。必须使得所有用户当前获得的信息保持一致，实现WYSIWIS的效果；应该提供一个人-人交互界面，使用户能感知当前群体工作的状态，并能与其他用户进行语言交流；必须充分考虑可能出现的冲突，提供解决冲突的办法。实现这些的基础是建立多用户通信环境和构造通信数据包。
+2.1　建立CSCW系统结构和构造多用户间通信数据包
+　　目前，CSCW系统结构的实现方法有集中式和分散式(复制式)两大类。我们自行开发的MVRC采用集中式系统结构，遵循客户/服务器模式，服务器通过TCP/IP协议下的Java Socket机制与每个客户机相连接。采用集中式方式易于实现用户间信息的一致和事件的同步。
+　　服务器为每一个发出连接请求的用户创建一个线程，负责接受用户的操作请求，请求被处理后发出响应，必要时把这个响应通过相应的线程广播给其他用户。客户端生成一个线程与服务器连接和通讯，用户大部分的操作都须向服务器提出请求，请求得到响应后，才能作相应的处理，得到结果，如图2。
+
+图2　MVRC的系统结构
+　　一个用户在客户机上所产生的数据信息(用户所操作的对象、操作的类型、操作的结果)，如用户的加入或退出、替身移动或转向、替身自身动作、创建或删除一个物体、对物体进行移动(旋转、缩放、改变颜色)变换处理、对物体进行锁定或解锁、用户间的对话等，可形成一个请求数据包：
+VKIND
+操作对象类型VID
+操作对象序号VIP
+操作类型Vfield
+操作的数据类型Values
+操作的数据值
+
+　　这个请求数据包传送给服务器，经过处理后，服务器会产生一个结构相同的响应数据包，并传回给该用户。必要时将这个响应数据包广播给所有的用户，以及时改变他们的VRML虚拟空间和Java Applet界面的状态。这样就可以实现用户间信息的一致和事件的同步，获得WYSIWIS的效果。
+2.2　协同感知
+　　为实现多用户在协同工作时能感知当前群体工作的状态，可在VRML虚拟空间中用一个带有用户名的3D替身(avatar)来代表一个用户，3D替身是VRML场景中一个特殊的物体，是用户形象和行为在虚拟环境中的表现。
+　　利用VRML的PoximitySensor节点可以跟踪本地用户视点的移动和转动并获得位置和方向值，这对值通过网络可用以改变其他用户的VRML虚拟空间中该用户3D替身的位置和方向。这样其他用户就能感知到该用户正移向或转向某个区域的某个对象，正关注什么。
+　　用户间的交流可以简单地通过文本的形式来实现，如在Java Applet界面中包含接收对话框和发送对话框。要使用户间在交流的同时，能感知到对方的身体动作和面部表情，可对3D替身预先设计几种动画（如摇头、点头、举手等）和面部表情（如高兴、生气等），用户可选择并驱动替身的这些动画和面部表情。
+2.3　用锁定机制避免冲突
+　　MVRC采用锁定机制避免多个用户同时对同一物体进行修改(变换)而可能发生的冲突。用户要对某一物体进行修改时，先必须向服务器发送一个锁定该物体的请求。若此时该物体未被其他用户锁定，则服务器向该用户发出一个尚薷母梦锾的响应，同时向其他用户发出一个“可修改该物体”的消息。一个用户只有对某物体解锁后，才可以提出另一个锁定请求。MVRC中物体节点的(ExposedField SFBool) touchsensorenabled域可用以对物体的锁定和解锁。
+3　MVRC的操作界面和实验运行环境
+　　MVRC主要用基元构造法，人机交互地生成具有简单动画和交互能力的VRML虚拟空间。当用户所在的客户机与服务器连接成功时，就会出现MVRC的Java Applet操作界面，如图3。
+
+图3　MVRC的Java Applet操作界面
+　　异地的多个用户可在各自的VRML浏览器(Browser)中共同生成一个VRML虚拟空间，并可同时在这个VRML虚拟空间中漫游，如图4。其中，标有ee奈锾逦挥没嫔怼?/P> 
+
+图4　VRML浏览器(Browser)中显示的虚拟空间
+　　MVRC原型系统在服务器上的实验运行环境为:Windows95或Windows NT、MS Personal Web Server、Java sdk1.1.5；客户端的实验运行环境为：Windows95、 Netscape4.0、Cosmoplay2.1(VRML插件)、Npcosmop21.zip(Cosmoplay2.1 EAI包)。MVRC系统在局域网上的实验运行达到了预期的效果。
+4　结论
+　　MVRC是一个VRML虚拟空间协同生成原型系统。MVRC借助EAI，以人机交互的方式，实现了VRML虚拟空间的生成。MVRC采用了集中式系统结构，利用TCP/IP协议下的Java Socket网络通信机制，建立了服务器对多个客户机的多点传输；根据VRML虚拟空间生成系统的特定环境，构造了相应的网络传输的数据包；采用了锁定机制，以消除群体工作中可能发生的冲突。总之，MVRC实现了多用户间信息的一致和事件的同步，达到了WYSIWIS的效果，并具有一定的协同感知的能力。
+从另一角度看，MVRC也是一个分布式虚拟现实系统，该系统能使多个用户同时在同一虚拟空间中漫游，共同作用于同一虚拟空间中的场景，并能进行人-人交互。MVRC可以成为实现如下应用系统的基础：虚拟聊天室、多用户虚拟展览馆、虚拟教室、具有虚拟现实环境的会议系统、协同编著系统、多用户虚拟商场购物系统、网上多人3D游戏等等。
+刘一松（江苏理工大学计算机科学系 镇江 212013）
+参考文献
+1，(美)Chris Marrin, Bruce Campbell著, 王海燕等译. 21天学通VRML2. 北京：人民邮电出版社, 1998
+2，Chris Marrin, Proposal for a VRML 2.0 Informative Annexxternal Authoring Interface Reference, http://cosmosoftware. com/products/ EAIReference.html January 21, 1997
+收稿日期：1999年6月28日

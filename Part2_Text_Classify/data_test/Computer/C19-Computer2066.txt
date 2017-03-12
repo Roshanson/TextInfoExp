@@ -1,0 +1,59 @@
+计算机工程
+COMPUTER ENGINEERING 
+1999年 第25卷 第5期 Vol.25 No.5 1999
+
+
+
+基于Web的机器人遥操作的研究与实现
+任昊星 翁海华 杨杨 陈坚
+摘要 介绍了机器人遥操作系统的研究现状和基本原理，分析了现有的基于Web的机器人遥操作系统的基本结构，详细讲座了相关的重要技术问题，并给出了具体的实现例子。
+关键词 通用网关接口 机器人遥操作
+Principles and Application of Internet Telerobotics 
+Ren Haoxing Weng Haihua Yang Yang Chen Jian
+（Automation Department，Shanhai Jiaotong University Shanghai 200030）
+[Abstract] In this paper，the up-to-date development and the basic principles of Internet telerobotics are presented。Important issues in telerobotics are discussed in detail。An application is also given。
+[Key words] Web；CGI（Common Gateway Interface）：Telerobotics
+　　基于Web的机器人遥操作就是通过Internet访问连接机器人的Web站点，远程控制机器人。它的突出特点是能让普通用户操作。首先，它能被很多人访问。南加州大学的Mercury项目上网10个月就被超过50000台主机访问过。其次，它具有易操作性。不用学习高深的机器人理论,不用受过专业训练，普通人就能操纵机器人完成特定的任务。
+　　国外已经建立了这样的机器人遥操作系统的大学有：美国的南加州大学(University of South California)和澳大利亚的西澳大利亚大学(University of Western Australia)。南加州大学的Mercury 1994项目[2]让Web用户进行模拟发掘文物的活动。机械手能将压缩空气吹进一块埋了文物的沙丘，Web用户可操作机械手在这块沙丘中任意发掘文物。南加州大学的另一个项目是TeleGarden 1995。该项目允许Web用户通过一个ADEPT机械手管理一个小型花园。用户可以进行种植、浇灌等活动。西澳大利亚大学[1]将一台ASIA IRb-6型机械手连在Internet上，Web用户可以操纵它抓取和移动桌上的一些木块，搭建出各种模型。本文将首先给出基于Web的机器人遥操作系统的系统结构并就几个关键的技术问题进行分析，最后给出设计的实例。
+1 系统结构
+　　目前几个实际运行的基于Web的机器人遥操作系统都采用如图1所示的结构。
+
+图1 机器人遥操作系统结构
+　　Web用户通过浏览器发出控制请求给Web Server上的HTTP Server；HTTP Server调用CGI程序并传递控制指令给CGI程序；CGI程序与IMAGE Server及ROBOT Server通信；IMAGE Server通过摄象机、图象采集卡实时采集机器人图象，传递给CGI程序；ROBOT Server通过串口或并口与机器人控制器通信，发出控制指令并接收当前机器人状态数据；机器人数据与图象由CGI程序通过HTTP Server发给浏览器。
+2 界面设计
+　　由于大多数使用者都没有操纵机器人的经验，良好的界面设计是系统设计成败的关键。
+2.1 设计语言
+　　常用的方法是HTML语言。HTML可以提供文字和图象的界面。通过HTML中的FORM和IMG MAP可以传递给Web站点控制指令或数据。该方法的特点是开发简单，界面较简单，传递时间短。最新的开发语言是JAVA或VRML。通过它们能开发出更加复杂的界面，比如可以提供三维的机器人显示，提高界面的友好性；缺点是需要传递大量数据，速度慢。
+2.2 界面内容
+　　机器人的图象显示是必需的，否则未受过专业训练的Web用户不可能进行操作。西澳大利亚大学的系统具有4台摄象机，可以提供机器人不同角度的图象。界面还需要提供控制的输入接口。控制量一般是机器人的目的位置值，可以采用FORM中的INPUT直接输入，或用IMG MAP方式提供一个机器人平面俯视图，让用户点击目标位置，再计算出相应的控制数据。还需要提供的数据是机器人的当前状态，可以通过文本或图形的方式提供。
+3 几个重要的技术要点
+3.1 控制方式
+　　由于有传输时延，基于Web的机器人遥操作不能采用一般的直接控制和反馈控制方式。一般采用的是监督控制(Supervisory Control)[3]。远程的Web用户发出控制目标给本地的遥操作系统，该指令由本地的控制系统执行，并将执行情况返回给Web用户。一般的是传送机器人目标位置值，由本地系统规划相应的路径并引导机器人到达指定位置。
+3.2 可靠性
+　　基于Web的机器人遥操作系统允许很多人访问并操纵机器人，而且是每天24小时不间断的访问。这样的系统必须具有良好的可靠性。一方面可利用软件和硬件的Watchdog进行监控[1]。另一方面可以设置用户和口令来限制访问。多用户同时操作的问题也需在软件设计中予以考虑。
+3.3 响应时间
+　　基于Web的机器人遥操作不是实时的操作，它有一定的响应时间。可用以下公式计算响应时间[1]：
+Tr=Tp+(Ds+Dr)/Vl+Tc
+其中，Tp是机器人执行指令的时间，Tc是通信初始化的时间，Ds，Dr分别是发出和接收的数据量，Vl是传输速度。实际系统中，Tp一般为4～15秒。Tc取决于服务器和线路的繁忙的程度，一般2～10秒。由于Dr远大于Ds，可以只计算Dr。Dr的大小取决于图象的帧数、大小及压缩方式。320×240点的JPEG图象一般有9～20k。若Vl取14.4kbps，则传输时间大约6～11秒。
+4 应用实例
+　　接下来介绍我们设计的基于Web的机器人遥操作系统。
+　　系统结构如图1所示。我们控制的机器人是Adept 604-S型工业机械手。系统基于Windows 95平台。HTTP Server选用的是O'Reilly & Associates,Inc.的WebSite1.1。WebSite是一种小型的HTTP Server，它的特点是配置维护方便，并支持WINCGI。本系统采用的CGI接口就是WINCGI。Robot Server，Image Server和CGI程序都用VB开发。它们之间的通信通过DDE(动态数据交换)进行。
+应用一　　操纵机器人
+
+图2 机器人图象和俯视图
+　　如图2所示，图中左边是机器人的图象，右边是机器人的俯视图。Web用户可以通过鼠标直接点击俯视图中的白色区域的一点，让机器人移动到该位置。Web用户也可在FORM中输入X，Y，Z的数值(图中未出现，需拉动滚动条)，精确控制机器人移动到某点。
+应用二　　走迷宫
+
+图3 机器人迷宫游戏
+　　这是一个用机器人走迷宫的游戏。机械手下方放置了一幅黑白相间的迷宫图案。用户通过位于机械手下方的摄象机看到附近的迷宫图案，如图3所示。图中的圆圈代表机器人的当前位置。用户的任务是使机器人运动到迷宫的出口。用户点击图象中的白色区域某一点将使机器人规划一条可行路径从当前位置运动到该位置。用户确认后，机器人将沿此路径运动。图中线条是规划好的路径。这里路径规划[5]采用的是传播算法。
+5 结论
+　　通过Web可以实现机器人的遥操作。通过提供良好的遥操作界面和健全的系统，可以让未接受专业训练的普通Web用户远程控制机器人。
+作者简介：任昊星 男，22岁，研究生，主要研究方向是机器人网络监控
+作者单位：上海交通大学自动化研究所 上海 200030
+参考文献
+1 Taylor K，Dalton B.Issues in Internet Telerobotics.FSR'97，1997-12
+2 University of Southern California. Beyond the Web：Excavating the Real World Via Mosaic，the Second International WWW  Conference，Chicago，1994-10
+3 Sheridan T B. Space Teleoperation Through Time Delay Review and prognosis.IEEE Transactions on Robotics and Automation，1993，9(5)：592-606
+4 蒋新松.机器人学导论.沈阳：辽宁科学技术出版社，1994
+5 李秀明.复杂环境中移动机器人滚动规划策略与实现.上海交通大学博士学位论文，1997-07
+收稿日期：1998-06-25

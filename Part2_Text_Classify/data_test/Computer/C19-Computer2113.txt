@@ -1,0 +1,103 @@
+计算机工程
+COMPUTER ENGINEERING
+1999年 第25卷 第12期 vol.25 No.12 1999
+
+
+
+基于OpenGL的运动视而不见景仿真的实现
+董笑菊　刘竞宇　顾国昌
+1 OpenGL功能简介
+　　OpenGL提供了强大的功能，包括：环境建模、变换及双缓存动画等。
+　　(1) 环境建模
+　　OpenGL提供了大量绘制各种类型图原的方法，辅助库还提供了许多描述复杂三维图形的函数。利用这些函数可以绘制出客观世界的物体，并由此构成了仿真物理世界。
+　　(2)双缓存机制
+　　OpenGL提供双缓存--前台缓存和后台缓存，可用来制作动画。绘制操作先在后台缓存区内完成，然后再将后台缓存区中的内容拷贝到前台缓存区内，这样循环反复，则屏幕上显示的总是已经画好的图形，因此获得平滑的动画效果，并增强了三维动画显示的连续性和运动感。
+　　(3)图形变换
+　　OpenGL提供了多种图形变换：视点变换、模型变换、投影变换和视口变换。
+　　透视投影是根据人的心理习惯而设置的，即离视点近的物体大，离视点远的物体小，远到极点即消失。这个变换通常用来进行动画设计、视觉仿真。gluPerspective()是OpenGL提供的透视投影函数之一。
+2 运动视景仿真的实现
+　　(1) 链接设置
+　　将VC++5.0目录下LIB子目录中的opengl32.lib、glu32.lib、glaux.lib 3个OpenGL库添加到工程中。
+　　(2) 创建图形操作描述表--Windows NT/95与OpenGL的接口
+　　OpenGL for Windows NT/95的程序必须处理特殊的设备描述表--图形操作描述表。图形操作描述表包含了OpenGL与Windows NT/95窗口系统相关的各种信息。因此，应用OpenGL首先应创建一个图形操作描述表，然后再启用它，最后在所定义的窗口内按常规方式调用OpenGL函数绘制图形。但是在创建一个图形操作描述表之前，还必须先设置象素格式。象素格式含有设备绘图界面的属性，一般用PIXELFORMATDESCRIPTOR结构来表示某种特殊的象素格式。
+　　图形操作描述表是在WM_CREATE消息响应函数CAUVView::OnCreate()中创建的。添入代码如下：
+　　//根据用户的需要初始化象素格式结构
+　　PIXELFORMATDESCRIPTOR pfd=
+　　{
+　　sizeof(PIXELFORMATDESCRIPTOR),　　　//结构尺寸
+　　1,　　　　　　　　　　　　　　　　  //结构版本
+　　PFD_DRAW_TO_WINDOW|PFD_SUPPORT_OPENGL|PFD_DOUBLEBUFFER
+　　　　　　　　　　　　　　　　　　　//特性标志
+　　PFD_TYPE_RGBA,　　　　　　　　　　//RGBA模式
+　　24,　　　　　　　　　　　　　　　 //24位颜色
+　　0,0,0,0,0,0,　　　　　　　　　　　//不涉及这些属性
+　　0,0,0,0,0,0,　　　　　　　　　　　//没有alpha缓存和累积缓存
+　　32,　　　　　　　　　　　　　　　 //32位深度缓存
+　　0,0,　　　　　　　　　　　　　　　//没有模板缓存和辅助缓存
+　　PFD_MAIN_PLANE,　　　　　　　　　 //主层类型
+　　0,　　　　　　　　　　　　　　　　//保持结构数
+　　0,0,0　　　　　　　　　　　　　　 //不支持结构数
+　　};
+　　//设置象素格式
+　　CClientDC clientDC(this); //得到一个应用窗口客户区的设备描述表
+　　int pixelFormat = ChoosePixelFormat(clientDC.m_hDC, &pfd); 
+　　BOOL success = SetPixelFormat(clientDC. m_hDC, pixelFormat, &pfd); 
+　　//创建图形操作描述表
+　　m_hRC = wglCreateContext(clientDC.m_hDC);
+　　　　//m_hRC是OpenGL图形操作描述表的句柄,其定义类型为HGLRC
+　　(3) 启用图形操作描述表
+　　在WM_PAINT消息响应函数CAUVView::OnPaint()中添入代码：
+　　wglMakeCurrent(dc.m_hDC, m_hRC)；//启用图形操作描述表
+　　......　　　　　　　　　　　　//调用OpenGL函数绘制三维图形
+　　wglMakeCurrent(dc.m_hDC, NULL)；//释放图形操作描述表
+　　(4) 删除图形操作描述表
+　　在WM_DESTORY消息响应函数CAUVView::OnDestory()中添入代码：wglDeleteCurrent(m_hRC);
+　　完成上述接口操作后，就可在启用图形操作描述表之后，并在释放其之前调用OpenGL函数绘制三维图形了。
+　　(5) OpenGL关键函数的具体应用
+　　1)gluLookAt()封装了glTranslatef()(平移)和glRotatef()(旋转)等命令
+　　gluLookAt()函数原型为：
+　　void gluLookAt(GLdouble eyex, GLdouble eyey, GLdouble eyez,GLdouble centerx, GLdouble centery, GLdouble centerz, GLdouble upx, GLdouble upy, GLdouble upz) 
+　　其中：{eyex，eyey，eyez} 定义视点的位置(从哪一点看)；{centerx，centery，centerz} 定义摄象机所瞄准的参考点(向哪个方向看)；{upx，upy，upz} 标识向上矢量的方向(视景体底部到顶部的方向)。
+　　通过改变{eyex，eyey，eyez}坐标中任何一维的值，可以模仿人在实际环境中的"向前走"、"向后退"等基本动作；改变{centerx，centery，centerz}坐标中任何两维的值，可以模仿人在实际环境中的"左转"、"右转"等基本动作；改变{centerx，centery，centerz}及{upx，upy，upz}坐标中的值，可以模仿人在实际环境中的"俯视"、"仰视"等基本动作。利用这些"人"的基本"动作"就可以实现在环境中的运动仿真。
+　　2)在调用gluLookAt()之前，必须将投影变换方式设置为透视投影。
+　　gluPerspective()的函数原型为：
+　　void gluPerspective(GLdouble fovy, GLdouble aspect,GLdouble zNear, GLdouble zFar)
+　　gluPerspective函数创建了一个透视投影矩阵，其参数fovy定义视角在y方向上的范围；参数aspect确定了x方向上视野的范围，是投影平面宽度(x)与高度(y)(一般x和y的取值为客户区的宽和高)的比率；参数zNear和zFar分别是远近剪取面到视点的距离，它们总是正值。
+　　(6) 视景运动的实现
+　　要实现连续运动，还必须不断改变gluLookAt()函数中几个参数的值。根据开发经验，要得到平滑、连续且稳定的动画效果，可在虚函数OnIdle中改变gluLookAt()的参数。
+3 在VC++5.0平台上用OpenGL实现运动视景的程序代码实例
+　　以下给出用OpenGL实现"AUV运动视景仿真"的部分程序代码。
+　　void CAUVView::OnPaint() //视的重构函数
+　　{
+　　　　　　CPaintDC dc(this); 
+　　　　　　wglMakeCurrent(dc.m_hDC, m_hRC); 
+　　　　　　myinit();　//完成场景的初始化工作 
+　　　　　　display(); //定义投影方式，进行视点变换，绘制三维 物体
+　　SwapBuffers(dc.m_hDC); //交换前后台缓存内容 
+　　　　　　wglMakeCurrent(dc.m_hDC, NULL);
+　　}
+　　void CAUVView::display()
+　　{
+　　　　　　glPushMatrix();
+　　　　　　glMatrixMode(GL_PROJECTION); //定义投影方式
+　　　　　　glLoadIdentity(); 
+　　　　　　gluPerspective(60.0 , (GLfloat)w/(GLfloat)h, 0.5, 200. 0); 
+　　　　　　glMatrixMode(GL_MODELVIEW); 
+　　　　　　glLoadIdentity(); 
+　　　　　　gluLookAt(eyex, eyey, eyez, centerx, centery, centerz, upx, upy, upz);
+　　　　　　 . . . . . . .　　　　　　//绘制三维物体 
+　　　　　　glPopMatrix(); 
+　　　　　　glFlush();
+　　}
+4 AUV运动视景仿真效果示例
+　　为了更好地说明使用OpenGL实现AUV运动视景仿真所得到的逼真效果，给出如图1的示例。
+
+图1 AUV运动视景仿真图示例
+　　OpenGL在PC机上的广泛应用为计算机图形开发者提供了更为广阔的天地。
+作者单位：哈尔滨工程大学计算机与信息科学系，哈尔滨150001
+参考文献
+1 廖朵朵,张华军.OpenGL三维图形程序设计.北京：星球地图出版 社,1996
+2 廖朵朵,张华军.OpenGL三维图形程序设计系列讲座.PCWORLD CHINA,1996,10:152-155
+3 徐 力,陈佳海.Visual C++ 程序开发指南.北京:科学出版社,1997
+4 Ezzell B,Blaney J.Windows NT4/Windows 9
+5 高级开发指南.北 京:电子工业出版社,1997

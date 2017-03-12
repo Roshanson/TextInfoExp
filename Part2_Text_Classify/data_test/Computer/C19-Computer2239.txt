@@ -1,0 +1,79 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000 Vol.17 No.3 P.76-77
+
+
+
+
+Lotus Notes数据库访问接口模块的研制
+俞立军　黄峻　陈晨　许满武
+摘　要：介绍了Lotus Notes数据库接口模块DBLSX的设计、实现及应用，该模块采用Lotus LSX接口，以一致方式访问主流大型数据库。
+关键词：Lotus LSX 构件 数据库接口
+1　引言
+　　Lotus Notes/Domino是世界上最先进的通信处理软件和群件产品。它全面地实现了对非结构化数据的管理和共享，成为各类信息的存取中心，是安全、可靠的基础设施；它内含强大的工作流软件开发环境，是Internet与Intranet的完美结合。
+　　Lotus Notes是一个文档数据库管理系统，Notes数据库最基本元素就是文档，文档由表单定义，表单包含各种类型的域，Notes文档可以包含结构化数据和非结构化数据，Notes向用户提供了大量有用的管理非结构化数据的工具。
+　　(1)格式化文本/多媒体：Notes可高效存储、传播、分配和管理各种信息，包括表格、格式化文本、HTML文本、图形、图象、音频和视频信号等。
+　　(2)全文检索：Notes内置搜索引擎，可以对文档进行全文检索。
+　　(3)版本控制：为记录不同用户对文档的修改，Notes提供版本控制功能，对文档的修改可被视为对原文档的应答。
+　　(4)文档链接：Notes文档中可包含指向别的文档(Notes文档或WWW页面等)的指针。从而构成了一个基于超文本的系统。
+　　Notes访问数据库通过ODBC方式，ODBC是微软制定的一个数据库接口标准。ODBC管理程序接收前端程序的数据查询请求，将其交给特定数据库ODBC驱动程序，进而发送给数据库管理系统，最后将查询结果逐层返回。ODBC方式缺点是效率低，对于经常访问数据库的Notes应用ODBC方式不能满足要求。为此，我们开发了Notes的主流数据库接口DBLSX，接口形式采用Notes LSX(Lotus Script Extension)，Notes LSX可以应用于所有Lotus Script语言环境，这样Notes应用可以通过Notes Script高效访问关系数据库。
+2　Notes LSX构件
+　　自从70年代末期Smalltalk语言的诞生以来，对象技术迅速发展并逐步走向成熟，面向对象的软件构造方法以数据为中心设计，从结构上模拟客观世界，与传统结构化方法相比具有良好的可构造性、可扩充性和可复用性。对象模型把软件系统构造成类的结构化集合，对象内在的对数据和行为的封装性以及对象接口与实现的分离使得它很适合充当分布环境下的基本计算和通信单元。
+　　对象技术的贡献之一就是构件技术的兴起，构件是可重用的软件模块，它封装了特定的功能逻辑，可以被用于快速定制客户应用。构件位于容器内执行，容器为构件提供了应用上下文、窗体、复合文档、Web页、服务进程都是典型的构件容器。构件模型定义了构件接口、构件与容器以及构件之间相互交互方式，保证了不同构件产品易于组装成一个应用。构件接口规范以OMG的CORBA规范最为广泛接受，CORBA定义了系统级对象的一般接口以及对象间协作计算的标准，其它的产品或规范如微软的COM/DCOM、IBM的SOM/DSOM、OSF的DCE等与CORBA有着异曲同工之处，这些模型支持了独立于编程语言和操作系统平台的分布式对象的合作计算，基于这些模型的构件方便了应用软件的开发，应用软件只需将构件加以重用而不必关心其实现细节，从而缩短了软件开发周期，降低了大型软件系统开发的复杂性。
+　　Lotus Script是Lotus平台的通用编程语言，它有着比较完备的类库并允许用户定制Lotus构件(Notes LSX)，LSX存在于系统二进制库文件中(DLL)，它使用COM CLSID(Class ID)唯一标志，可以应用于整个Lotus Script平台，LSX构件有属性、方法和事件三要素，LSX使用之前需注册到Lotus Script系统，注册后的LSX可以像一般的Lotus类一样使用。Lotus Script通过向LSX模块发消息与LSX交互，如通知LSX初始化、取得LSX的属性、调用其方法等，LSX实现一个消息过程(即回调函数)，消息过程负责调度所有Lotus Script发来的消息。Notes LSX工具箱用于开发Notes LSX，首先要定义LSX的接口即其属性、方法和事件，LSX Wizard程序根据LSX的接口定义生成C++程序框架，在程序中加入属性、方法和事件的实现代码即可编译生成LSX模块。利用LSX可以在Lotus Script平台访问外部资源如数据库等。
+3　DBLSX的设计与实现
+　　为提高Notes数据库访问效率，我们采用直接存取数据库的方法，利用LSX与数据库服务器交互，LSX负责将SQL语句发送给后台数据库，并将数据读入缓冲区中，最后把数据逐行取出。图1显示了数据库访问过程。
+
+图1　Lotus LSX访问数据库示意图
+3.1　对象模型的设计
+　　我们认为，理想的数据库接口模型应做到以下几点：
+　　1)高效：效率问题正是我们工作的出发点。
+　　2)数据库无关：数据库接口应以相同方式访问异构的数据库。
+　　3)编程方便：模型应提供给开发人员尽可能方便的编程接口。
+　　4)易移植：应遵循相对通用的构件接口模型，能应用于多种语言和开发平台。
+　　5)易开发：过于复杂的模型不仅不易使用，也不易开发和升级。
+　　为此，我们参考了ODBC/JDBC、DAO/RDAO、OLE DB几个数据库接口模型：ODBC是多数应用程序访问数据库的方式，它具有良好的数据库独立性，可以避免应用程序对不同类型数据库使用不同的API。通过ODBC可以使得数据库的更改变得非常容易，因为对应用程序来说这只需改换一下驱动程序。JDBC定义了一个Java开发的CLI，实际上就是一系列用于特定数据库的Java类库，它源于ODBC体系结构。DAO/RDAO是微软可视化系列开发工具采用的数据接口，它的对象层次较为复杂，其主要缺点在于只能使用ODBC作为底层数据库接口。OLE DB是一组COM接口，它为应用程序访问保存在不同信息源中的数据提供了统一的访问方法，这些信息源可以是关系型的，也可以是非关系型的。这些接口支持大量可应用于数据源的DBMS功能，使数据源能够共享其数据。
+　　针对Lotus平台的特点以及应用需求，我们设计了相对简单的对象层次，主要对象为：
+　　1)会话Session：负责维护一系列数据库连接。
+　　2)连接Connection：负责连接到远程数据库，记录连接信息。
+　　3)事务Transaction：负责处理数据库的启动，确认、回滚等。
+　　4)查询Query：负责向数据库发送查询请求。
+　　5)结果集ResultSet：负责查询结果的缓冲。
+　　6)错误Error：负责处理访问过程的所有错误。
+　　一次典型的数据库访问过程可做如下编码：
+conn = new Connection
+qry = new Query
+res = new ResultSet
+if conn.ConnectTo 'ORACLE', 'scott', 'tiger' <> 0 then
+　　MsgBox Error.Msg
+End if
+qry.Connection = conn
+qry.Result = res
+qry.Sql ='Select * from emp'
+qry.Execute
+res.Open
+' Fetch some data
+res.Close
+res.Delete
+qry.Delete
+conn.CloseConnection
+conn.Delete
+3.2　数据类型的映射
+　　Notes支持Boolean、Integer、Long、Single、Double、String、Datetime、Currency、Variant等数据类型，数据库系统数据类型则丰富得多，我们对数据库类型和Notes常见类型作了映射，必要时对类型进行强制转换。
+3.3　字符集的转换
+　　Lotus平台采用UNICODE字符集，所有字符均用双字节编码，数据库系统则可能采用多种字符编码方式，对于字符型数据需作编码转换，转换可以用LSX提供的字符串处理函数或C语言本身的字符转换函数。
+3.4　实现
+　　针对Windows平台，我们用Visual C++编写了DBLSX的代码，目前支持的数据库系统包括Oracle、Sybase和Microsoft SQL Server，当然，源程序只要稍加修改即可用于Macintosh、OS/2、HP-UNIX等其它平台。
+4　DBLSX构件的应用
+　　DBLSX适用于所有Lotus Script平台，它既可以运行Lotus前台也可以用于编写Lotus Domino的服务器脚本。我们在用Lotus Notes 4.5开发南京电视台节目制作办公自动化系统过程中，Notes前台经常要提取Sybase System 11数据库中的录像带信息(共十万盘约200～300MB的数据)，DBLSX模块被用于Notes前台访问Sybase System 11数据库，与ODBC方式相比，DBLSX整体访问效率有了大幅度的提高，事实证明完全满足系统要求，从而大大地加快了电视台的工作效率。
+本文获国家863高科技项目资助
+本文获国家自然科学基金资助
+俞立军(南京大学计算机科学与技术系 南京 210093)
+黄峻(南京大学计算机科学与技术系 南京 210093)
+陈晨(南京大学计算机科学与技术系 南京 210093)
+许满武(南京大学计算机科学与技术系 南京 210093)
+参考文献
+1 Lotus Notes Release 4.5: A Developer's Handbook. Lotus/IBM Corporation. Nov. l996
+2 Oracle 7.3软件手册. Oracle Corporation
+3 Microsoft DCOM Specification. Microsoft Corporation
+收稿日期：1999年10月1日

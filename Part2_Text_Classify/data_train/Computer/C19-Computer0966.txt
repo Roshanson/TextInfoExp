@@ -1,0 +1,145 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+一种前向神经网络快速学习算法
+及其在系统辨识中的应用
+王正欧　林晨
+　　摘　要　提出一种基于最小二乘的前向神经网络快速学习算法.与现有同类算法相比，该算法无需任何矩阵求逆，计算量小，较适于需快速学习的系统辨识和其他应用.文中推导了算法，并给出一种更为简便的局部化算法.系统辨识的仿真实例表明了算法的优良性能.
+　　关键词　前向神经网络，快速学习，系统辨识.
+A FAST LEARNING ALGORITHM OF FEEDFORWARD NEURAL
+NETWORKS AND ITS APPLICATION TO
+SYSTEM INDENTIFICATION
+WANG ZHENG'OU
+(Institute of Systems Engineering,Tianjin University,Tianjin　300072)
+LIN CHEN
+(Fujian Asia Bank Limited,Fuzhou　350001)
+Abstract　In this paper,we propose a fast learning algorithm of feedforward networks based on the least squares.Compared with existing similar algorithms,the present algorithm does not require any matrix inversion,therefore,it has a less computational cost and can be better suited for system indentification and other areas where fast learning is required.We derive the algorithm and also give an even simpler and more convenient localized algorithm.Simulation results for system identification show the effectiveness of the algorithm.
+Key words　Feedforward neural networks,　fast learning,　system identification.
+1　引言
+　　自前向神经网络BP算法［1］提出以来，己在控制界和其他领域得到广泛应用［2，3］.由于BP算法存在收敛慢和局部极小点等问题，迄今已提出大量改进算法，其中采用增广卡尔曼滤波的学习算法［4］引起了广泛地重视.这类算法无需对学习速率和势态项系数进行猜测，且收敛速度快、精度高.其基本思想是把网络权值作为一个相应动态系统的状态，运用增广卡尔曼滤波估计，即可得到好的效果.然而这类算法由于维数过高且需矩阵求逆，限制了网络的规模.多种局部化算法［5，6］的提出，虽降低了维数，但仍免不了矩阵求逆.本文提出一种基于最小二乘的快速学习算法，无需任何矩阵求逆，其相应的局部化算法更极大地减少了计算量，提高了计算速度，较适于系统辨识等实际应用场合.
+2　网络和相应的动态系统
+　　考虑一个任意的具有一个输入层、一个输出层和若干隐层的前向网络，设此网络包含一个由全部连接权构成的权向量θ∈RM，并认为一个单元的阈值是由单位强度输入连接到该单元的连接权.假定网络中单元的激活函数(除输入层外)是S形函数φ(x)=1/(1+e-x)，其中x为该单元的纯输入，它等于输入到该单元信号的加权和.现在的问题是要确定θ，使得对于一组给定的输入向量i(k)∈Rn(k=1,…,p)，网络产生的实际输出向量o(k)∈Rm(k=1,…,p)应尽可能接近期望的输出向量d(k)∈Rm(k=1,…,p).这里考虑在线学习算法，即输入模式依次输入至输入层，权值则递推地改进.将θ视为如下非线性动态系统的状态
+θ(k+1)=θ(k)=θ0,　　　　　　　　　　　　　　　　　(1)
+d(k)=f(θ0,i(k))+e(k).　　　　　　　　　　　　　　　(2)
+这里f(θ0,i(k)=o(k,θ0)表示网络的输入、权值和输出关系的非线性函数，e(k)为模型误差.f(θ0,i(k))可在当前估计值(k-1)附近展开，故(1)，(2)式可改写为
+θ(k+1)=θ(k)=θ0,　　　　　　　　　　　　　　　　(3)
+d(k)=f((k-1),i(k))+GT(k)(θ0-(k-1))+ρ(k)+e(k).　　　　　　　　(4)
+这里G(k)是M×m维梯度矩阵
+　　　　　　　　　　　(5)
+ρ(k)是f的展开式的高阶余项.若设
+ξ(k)=f((k-1),i(k))-GT(k)(k-1)+ρ(k),　　　　　　　　　　(6)
+则(4)式可简写为
+d(k)=GT(k)θ0+ξ(k)+e(k).　　　　　　　　　　　　　(7)
+如将网络中单元由1至N排列，并取权值向量为θ=[θT1　θT2…θTN]T，则(7)式可写为
+　　　　　(8)
+这里θi为连接到第i个单元的权向量，c(k)=ξ(k)+e(k).G(k)中的偏导数可通过网络反传o(k)求得.
+3　学习算法
+3.1　全局递推最小二乘算法(GRLS)
+　　基于模型(8)给定一个输入/输出序列对(i(j),d(j))(j=1,…,k)，选择如下的目标函数
+　　　　　　　　　(9)
+这里‖.‖表示向量的欧几里得范数，ei(j)是(8)式中第i个建模误差，λ为遗忘因子0＜λ≤1，估计值(k)是由使ε(k)达到极小而得的.此解可从下列正则方程推导
+　　　　　(10)
+其中1×M维向量gTi(j)是矩阵GT(j)的第i行.由(10)式可得
+(k)=S-1(k)t(k).　　　　　　　　　　　　　　(11)
+其中　　　　　　　　　　　　　 　　　　　　　　　　(12)
+　　　　　　　　　(13)
+由(11)式可推得GRLS算法如下：
+　　　(14)
+　　　　　(15)
+算法初值可取p(0)=r-1I，r为任一小正数，I为单位阵，(0)可为非零的随机向量.(14)，(15)式的推导见附录.
+　　注意，上述算法要求存储和改进一个M×M维矩阵，但不要求任何矩阵求逆.
+3.2　局部化递推最小二乘算法(LRLS)
+　　在GRLS算法中P阵的维数相当高，仍难实用.一种有效的简化方法是将系统分解成若干较小的子系统，例如分解到层一级、神经元一级乃至到单个连接权一级等.这里拟在神经元一级推导LRLS算法.
+　　考虑网络中第j个单元，假设它具有Mj+1维连接权向量θj和Mj+1维的输入向量，θj中包含了该单元的阈值.该单元对总输出O(k)的影响可用梯度矩阵GjT(k)描述，它是GT(k)的第j个子块
+　　　　　　　　　　　　　　(16)
+此矩阵的第i行是，用gjTi(k)表示.如相对于第j个神经元的权值线性化f，则类似于(4)式有
+d(k)=f((k-1),i(k))+GjT(k)[θj-j(k-1)]+ρj(k)+e(k)=GjT(k)θj+ξj(k)+e(k).　　(17)
+其中　　　　　ξj(k)=f((k-1),i(k))-GjT(k)j(k-1)+ρj(k).　　　　　　　　　　　　(18)
+这里台劳展开仅对第j个单元的权值进行，其余权值采用k-1时刻以前的估计值.此非线性函数的线性化可对每个单元平行地进行.
+　　对于每个单元改进权值的局部化算法类似于(14)，(15)式可得
+　　(19)
+　　　　　　　　　(20)
+注意到LRLS仅要求存储和改进一个(Mj+1)×(Mj+1)维矩阵(随单元不同Mj可不同)，此矩阵维数大大小于GRLS中相应矩阵的维数，故LRLS的存储和计算量远小于GRLS.
+4　LRLS在系统辨识中的应用
+　　系统辨识通常和自适应控制相联系，要求快速及时地辨识以利于控制，但通常的学习算法受收敛速度限制，效果难以理想.LRLS算法可较好地弥补这一缺陷.
+　　为研究该算法在系统辨识中的性能，这里将它同原始BP算法作了仿真比较.为实用计，只研究LRLS的性能.由于前向多层网络可对任意线性和非线性函数映射.不失一般性，这里仅研究线性系统辨识例子.为简单计，在仿真中略去了系统模型误差，以突出说明算法的收敛性和精度.由经验选取λ=0.995，以利于算法收敛.以下用4个例子说明新算法的优越性.
+　　例1.考虑简单单变量系统
+y(k)=0.8y(k-1)+0.2u(k),
+这里输入u(k)是在(0，1)区间中均匀分布的随机变量，网络结构为两个输入u(k)和y(k-1)、一个15单元隐层及一个输出y(k)(2-15-1).初始权值为0与0.01间均匀分布的随机值，Pj 初始阵中r=0.001.原始BP算法中学习速率和势态项系数分别取为0.9和0.3.训练样本数为30.训练停止准则为ei<0.05，其中e表示30个样本中输出误差最大值，下标i表示迭代次数.图1表示采用LRLS和原始BP算法在不同初始条件下10次训练的平均误差随迭代次数的变化曲线.
+
+图1　对例1采用LRLS和BP的平均输出误差曲线
+　　例2.考虑动态系统
+y(k)=1.368y(k-1)-0.368y(k-2)+0.368u(k-1)+0.364u(k-2),
+这里u(k)是0和1间均匀分布随机变量，网络结构为4-10-1，初始条件和停止准则同例1，训练样本为30.图2表示LRLS和原始BP算法收敛速度比较，其中BP算法参数取法同例1.
+
+图2　对例2采用LRLS和BP的平均输出误差曲线
+　　例3.考虑单输入二输出系统
+y1(k)=u(k-1),
+y2(k)=u(k-1)+u(k-2).
+网络取为双隐层结构2-10-10-2，u(k)取为0―0.5间均匀随机变量.Pj初始阵中取r=1000，网络初始权重取为0―0.5间均匀随机数，阈值全部取为0.5.判断收敛的误差函数取为均方误差其中样本数n=30，ei为第i个样本的学习误差.图3表示LRLS与原始BP算法收敛速度的比较，其中BP算法取学习速率为0.83，势态项系数为0.23.
+
+图3　对例3采用LRLS和BP的均方输出误差曲线
+注.LRLS迭代至129次精度达0.004979，而BP到18700次精度才达0.01347.
+例4.考虑二输入二输出动态系统
+y1(k)=0.8y1(k-1)+3u1(k-1)+u2(k-1),
+y2(k)=-0.8y2(k-1)-4u1(k-1)+u2(k-1).
+网络取为双隐层结构4-10-10-2，其中u1(k),u2(k)均取为0―1间均匀随机变量.模型初始值取为y1(0)=y2(0)=0，网络和算法的初始值同例3，判断收敛用的准则仍为均方误差.图4显示了LRLS与原始BP算法收敛速度的比较，其中BP算法的参数同例3.
+
+图4　对例4采用LRLS和BP的均方输出误差曲线
+注.LRLS迭代至112次精度达0.007984，而BP到9651次精度才达0.007981.
+　　从上述四个例子可见LRLS具有极好的性能，其收敛速度远比原始BP算法快.
+5　结论
+　　本文推导了一种前向网络的快速学习算法GRLS，给出了一种更为简便的局部化算法LRLS.该算法避免了矩阵求逆，减少了计算量，其中LRLS算法更使存储量和计算量大为降低.仿真结果表明了这种算法具有收敛快速、精度高的特点，是一种实用的前向网络快速学习的有效算法，适用于系统辨识等实际应用场合.
+1)　天津市自然科学基金资助课题.
+作者简介：王正欧　1961年毕业于天津大学自动化仪表专业.现为该校教授和美国纽约科学院成员及 IEEE 成员，长期从事系统辨识、系统建模理论及应用的教学科研工作.近年来在国内外发表论文60余篇.近期研究方向为神经网络理论及应用、人工智能等.
+　　　　　林　晨　1969年生，1991年毕业于天津大学，1994年于天津大学系统工程研究所获工学硕士学位.现任职于福建亚洲银行.研究兴趣为神经网络、系统辨识和控制、经济金融等领域.
+作者单位：王正欧；天津大学系统工程研究所　天津　300072
+　　　　　林　晨：福建亚洲银行　福州　350001
+参考文献
+［1］　Rumelhart D E，Hinon D E,Williams R J.Learning internal representations by error propagation,parallel distributed processing:Explorations in the microstructure of cognition,Cambridge MA:MIT Press,1986,318―362.
+[2]　Narendra K S,Parthasarathy K.Identification and control of dynamical systems using neural networks.IEEE Trans. Neural Networks,1990,1(1):4―27.
+[3]　Chen S,Billings S A,Grant P M.Non-linear system identification using neural networks.Int.J.Control, 1990,51(6):1191―1214.
+[4]　Singhal S,Wu L.Training feed-forward networks with the extended Kalman algorithm.In:Proc.of the IEEE Int.Conf.on Acoustics,Speech and Singal Processing,Glasgow,1989,1187―1190.
+[5]　Kollias S,Amastassion D.An adaptive least squares algorithm for the efficient training of artificial neural networks.IEEE Trans.Circuits and Systems,1990,36:1092―1101.
+[6]　Shah S,Palmieri F,Datum M.Optimal filtering algorithms for fast learning in feed-forward neural networks.Neural Networks,1992,5:779―787.
+收稿日期　1995-03-13
+附　录
+算法(14)，(15)的推导
+　　从(12)式有
+　　　　　　　　(A1)
+同理可得
+　　　　　　　(A2)
+假定下面的等式成立
+　　　　　　　　　　　(A3)
+这里h(k)有与gi(k)相同的维数.需要指出，严格地说，(A3)式不能精确成立，此处仅为推导方便起见；后面，h(k)hT(k)仍将用∑gi(k)gTi(k)替代，故不会出现误差.应用矩阵求逆公式
+A=B-1+CCT,　A-1=B+BC(I+CTBC)-1CTB,
+并设B=S-1(k-1)λ-1及C=h(k).由(A1)和(A3)式可得
+S-1(k)=λ-1S-1(k-1)-λ-2S-1(k-1)h(k)hT(K)×S-1(k-1)[1+λ-1hT(k)S-1(k-1)h(k)]-1.　(A4)
+定义P(k)=S-1(k)，则(A4)式可写为
+P(k)=λ-1P(k-1)-λ-2P(k-1)h(k)hT(k)P(K-1)×[1+λ-1hT(k)P(k-1)h(k)]-1.　(A5)
+由(A3)式知
+　　　　　　　　　　　　(A6)
+必成立，即h(k)hT(k)的对角元素之和等于所有构成h(k)hT(k)的矩阵的对角元素之和，因此有
+　　　　　　　　(A7)
+由(A3)，(A5)及(A7)式可得
+　　　　(A8)
+定义
+a(k)=λ-1P(k-1)h(k)[1+λ-1hT(k)P(k-1)h(k)]-1.　　　　　　　　(A9)
+由(A5)式得
+P(k)=λ-1P(k-1)-λ-1a(k)hT(k)P(k-1),　　　　　　　　　　　(A10)
+则(A9)式可写为
+a(k)+λ-1a(k)hT(k)P(k-1)h(k)=λ-1P(k-1)h(k)　　　　　　　　(A11)
+或　　　　　　a(k)=[λ-1P(k-1)-λ-1a(k)hT(k)P(k-1)]h(k)=P(k)h(k).　　　　　　　　(A12)
+另外，(11)式中的参数估计(k)可写为
+　　(A13)
+把(A10)式代入(A13)式得
+　　　　　(A14)
+由(11)，(A12)和(A14)式可得
+　(A15)
+略去高阶项ρi(k),i=1,…,m,即得
+　　　　(A16)
+从上面的推导中已得到了(14)和(15)式.

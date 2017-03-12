@@ -1,0 +1,123 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999　Vol.36　No.7　P.830-835
+
+
+
+新型并行I/O服务模型:IDDIO
+卢凯　金士尧　卢锡城
+摘　要：并行I/O服务模型是将并行I/O子系统提供的大物理I/O带宽高效地转化为用户实际I/O带宽的关键.文中针对DDIO服务模型对小尺寸I/O访问的服务性能改善较小和通信开销过大的局限性，提出了新的IDDIO服务模型.IDDIO模型针对并行科学计算应用中同步请求和独立请求的特点采用了统一的集成式界面,同时对大尺寸、小尺寸I/O访问提供了较好的优化;并采用打包、流水等技术降低了通信开销,在一定程度上消除了DDIO模型中的通信瓶颈，克服了原DDIO模型仅适合于大数据量请求、通信开销过大等缺陷，较DDIO提供了较高的有效I/O带宽.
+关键词：并行文件系统， 操作系统
+分类号：TP316
+IDDIO: A NEW PARALLEL I/O SERVICE MODEL
+LU Kai
+(Department of Computer Science, National University of Defence Technology, Changsha 410073)
+JIN Shi-Yao
+(Department of Computer Science, National University of Defence Technology, Changsha 410073)
+LU Xi-Cheng
+(Department of Computer Science, National University of Defence Technology, Changsha 410073)
+Abstract：A proper parallel I/O service model plays an important role in making an efficient use of the high I/O bandwidth provided by an I/O subsystem. It is pointed out in this paper, that the original DDIO makes little improvement of performance in the small size and fine-grained access mode, since the high communication overhead causes a new bottleneck. Then, a new I/O service model――IDDIO is proposed, which fits small-size and fine-grained as well as large-size access. IDDIO combines the packing and pipelining technology to reduce the communication overhead. The simulation shows that the IDDIO provides a higher bandwidth than the DDIO.
+Key words：parallel file system， operating system▲
+1　引言
+　　大规模并行计算机处理系统（MPP）面对科学计算对I/O的巨量需求，广泛采用并行I/O技术.在硬件上通过多I/O通道、并行化的磁盘服务来提供高带宽的I/O服务.在软件上利用并行文件系统技术将硬件系统提供的高带宽转化为用户的实际带宽.并行文件系统是一项正在发展的技术，由于用户的I/O访问模式差别很大，不同应用环境下用户所能获得的实际I/O带宽与系统提供的差距甚远.因此，针对不同应用研究合适的I/O服务模型成为人们研究的热点.
+　　目前主要有3种并行I/O服务模型：传统cache模型、两阶段模型和DDIO模型［1］.
+　　传统cache模型中，I/O请求首先访问计算节点和I/O节点的cache，未命中再访问磁盘.由于科学计算I/O请求尺寸一般较大，cache的命中率往往较低［2］，I/O服务时间较长.两阶段模型将I/O服务过程分为两个阶段：I/O节点的顺序I/O阶段和计算节点间的数据重分布阶段.两阶段模型较好地利用了磁盘顺序访问速度快的特性获得了较大的磁盘带宽，但浪费了宝贵的计算节点内存，并且在数据重分布阶段易产生信息阻塞.　　
+　　Kotz针对SPMD编程模式中I/O的同步性提出了DDIO服务模型以及相应的界面［1］.DDIO利用同步I/O请求尺寸大的特点，根据数据在磁盘上的物理分布调度请求，获得了较高的磁盘带宽.目前，DDIO是一种较好的服务模型.PANDA［3］，Galley［4］等并行文件系统都采用了该模型. 但DDIO依然有许多局限，主要体现在：
+　　(1) DDIO模型仅对大尺寸访问提供了大带宽服务，但对小尺寸访问的延迟特性改善不大.减少应用执行时间是根本目的，低延迟、大带宽是我们要兼顾的两个目标；
+　　(2) DDIO及其界面不提供对不同文件不同访问模式的优化.DDIO仅支持SPMD编程方式，无法支持MPMD方式；
+　　(3) DDIO产生的消息量较大.目前磁盘性能有了很大提高，磁盘速度与互联网性能已相近.如果处理不当二者的关系，网络通信将很可能成为新的瓶颈［5］.
+　　针对DDIO的局限，我们提出了一种新型的并行I/O服务模型――集成式DDIO（IDDIO）. IDDIO兼顾了I/O请求对带宽和延迟的要求，并大大减少了消息量，降低了通信开销，使通信和磁盘访问开销相互覆盖，从而减少了整体I/O执行时间.
+2　DDIO原理
+　　Kotz基于SPMD的集束式I/O请求（Collective-I/O）提出了DDIO服务模型以及相关界面［1］.DDIO模型的核心思想是利用集束式I/O（CIO）请求界面提供的丰富信息，根据数据在磁盘上的物理分布调度I/O请求，优化服务顺序，从而改善磁盘I/O性能.
+　　DDIO的服务模型如图1所示.MPP的处理节点可按功能分为处理节点（PN）和I/O节点（ION）.PN方和ION方分别有一个主PN和主ION.一次CIO是由主PN发起的.DDIO的一次CIO服务过程分为3个阶段：建立阶段、磁盘服务阶段和结束阶段.在建立阶段，主PN和主ION以及PN间、ION间有多次多对多广播通信.第2阶段是磁盘服务阶段.各PN将请求广播至所有ION，各ION再根据数据的磁盘分布调度I/O请求.显而易见，当节点较多时，消息量会大大增加.由于一次CIO请求的数据量往往较大，为防止大数据量请求时cache失效的开销，DDIO在ION方无cache. DDIO采用了双缓冲区机制，当一块缓冲区用于磁盘操作时，另一块缓冲区可并行地进行网络传输.当磁盘操作时间大于网络传输时间时，网络传输开销被磁盘I/O所掩盖.在结束阶段，主ION节点通知各ION和PN节点退出本次CIO操作.此时同样存在大量的广播通信.
+
+　　　
+图1　DDIO模型结构
+　　DDIO的CIO界面是基于SPMD方式的，因此无法满足对不同文件不同方式的访问.
+　　从DDIO工作过程可以看出DDIO充分利用了互联网与磁盘间传输速率的差距，以通信开销换取磁盘开销，获得了较好的I/O性能.
+　　DDIO模型对大数据量请求提供了较高的有效带宽，但由于无cache，对小尺寸I/O请求的优化效果不佳，尤其是不能对延迟敏感的独立I/O请求提供低延迟的服务.
+　　DDIO模型的控制信息通信量较大，在请求建立和结束阶段都有大量的广播型短消息.当数据在PN节点以细粒度方式间隔分布时，DDIO将分别发送每个PN的数据.近年来磁盘技术发展迅猛，磁盘的访问速度已与互联网的有效带宽接近(例如ST34520W磁盘顺序读取8K数据的时间约0.9ms；而MPI通信库的通信建立时间为0.05ms，峰值带宽为800MB).大量的消息将使网络通信很可能成为新的瓶颈.在对PANDA并行文件系统进行性能评价时已暴露出该问题［5］.
+3　集成式DDIO(IDDIO)模型
+　　针对DDIO的局限性，我们提出了一种新型并行I/O服务模型：集成式DDIO模型（IDDIO）.IDDIO模型的用户界面和模型结构同时提供了对大尺寸和小尺寸两类I/O请求的优化，并支持对不同文件和不同I/O方式的CIO请求；减少了建立和结束阶段的消息量，并通过打包、流水等机制减少消息量，隐蔽通信开销，获得了较高的整体性能.
+3.1　IDDIO模型结构
+　　通过分析并行科学计算应用的I/O模式，我们发现I/O请求可分为两类：同步I/O请求和独立I/O请求［6］.同步I/O请求的数据量大，易于通过磁盘调度获得较大的I/O带宽；独立I/O请求的数据量小，对延迟敏感.针对此特性，IDDIO扩展了DDIO 的CIO界面和服务功能.IDDIO服务模型结构如图2所示.
+
+　　　
+图2　IDDIO模型结构
+　　IDDIO模型由PN节点、ION节点和Master节点构成.PN节点运行有客户方接口库， 提供了用户访问并行文件系统的接口.IDDIO的用户界面同时支持SPMD和MPMD的编程方式：IDDIO通过group()操作允许用户根据需求自行组织同步I/O组，持有相同组标识的I/O请求将视为同组请求同步处理，因此可实现对不同文件的同步I/O请求的成组处理.ION方具体执行请求的调度和数据访问.IDDIO模型的核心为Master节点，该节点主要实现对同步I/O请求的同步和对独立I/O请求的低延迟服务.并且并行文件系统的名字服务器也可位于该节点，提供统一的目录树结构.
+3.2　IDDIO的处理过程
+　　IDDIO模型根据同步、独立等不同请求类型分别处理，其处理过程简述如下：
+　　(1) 对同步I/O请求，各个PN将请求直接发往Master节点，由Master节点负责同步. Master节点在检测到同组PN请求全部到达后将各PN的请求合成一个数据包广播给所有ION. IDDIO利用消息打包技术避免了DDIO中的多对多广播，减少了网络通信量，并且有良好的扩展性.ION节点根据数据的物理分布调度请求，并将数据直接返回相应PN.由于同步请求的数据量一般较大，文件cache难以获得较大的命中率，IDDIO在ION上同样未使用cache；
+　　(2) 对独立I/O请求，PN也将请求直接发往Master节点.在Master节点处设置有较大的cache.由于科学计算应用中文件访问有明显的规律性，我们设计了“适度贪婪的cache预取、淘汰一体化算法”，获得了较高的cache命中率，服务延迟较低. cache数据的读写也采用与同步请求相同的实现方式.IDDIO的Master节点仅负责同步、传输请求和服务小尺寸的独立I/O请求，因此不会成为瓶颈.并且该集中式结构可提供DDIO模型所无法提供的共享访问方式，即各个节点通过共享文件指针访问文件，很好地支持了各PN节点间的动态负载平衡.而在DDIO模型中，PN节点的数据仅能静态分配.
+　　当数据在PN间以细粒度方式不连续间隔分布时，DDIO将产生多个消息分别发送.此时DDIO的双缓冲区机制将无法掩盖通信开销（例如8K的数据在PN处按16B间隔分布，产生的消息量为512个，通信开销为25.64ms，而磁盘顺序读取8K数据仅需0.9ms），通信将严重成为瓶颈.IDDIO采用了先将分散数据打包后再发送的块服务方式（block_mode）.BM方式将属于同一PN的数据打包后再发送，大大减少了消息量，降低了通信开销.
+　　采用BM方式虽然大大减少了消息量，但其打包、传输、解包时间过长，通信仍为主要矛盾.IDDIO又进一步采用了流水技术：根据数据分布方式将PN 节点分为若干组，各组先后进入I/O请求的磁盘服务、数据打包、传输、解包等流水站，各站间并发执行，进一步掩盖通信、磁盘开销，整体上减少了I/O服务时间.在流水服务方式(pipeline_mode)中，ION节点有3块缓冲区，分别用于同时接收磁盘数据、打包和网络传输.PN节点同样存在两块缓冲区，分别用于同时接收网络数据和解包.采用PM方式后，IDDIO的磁盘I/O、通信负载均衡，基本上消除了通信瓶颈，获得了较高的I/O性能.
+　　IDDIO服务模型有机地集BM和PM服务方式为一体，获得了整体性优化，有效地减少了I/O访问的服务时间.
+4　性能评价模型
+　　我们分别针对DDIO和IDDIO模型中的BM和PM服务方式的服务时间进行了建模和模拟测试.
+　　设T(i,j)表示i个节点向j个节点广播的时间.Ti_j_k则表示i类节点向j类节点发送k类消息的时间（例如Tpn_ion_req表示PN节点向ION节点发送请求的时间）. S为数据的间隔分布尺寸，B为PN和ION上的缓冲区大小，故DDIO中一块缓冲区数据产生的消息数Nmsg＝B/S. Taccess为磁盘的寻道时间，其数据访问带宽为Bdisk. MPI通信库的通信建立延迟为Tdelay，其传输带宽为Bnet. BLOCK为一个I/O请求所读取的数据块数.
+　　DDIO服务模型的I/O服务时间由建立时间、执行时间和结束时间组成，如式(1)所示. 执行时间由请求的发送时间和磁盘访问时间TIO组成，当磁盘的访问开销大于通信时，DDIO的I/O执行时间TIO表现为TIO_disk，如式(2)所示. 当通信开销大于磁盘访问时间时，磁盘访问将被通信所掩盖，故其I/O执行时间为TIO-network，如式(3)所示.
+TDDIO=Tsetupt+Texec+Tend
+Tsetup=Twait+Tpn＿ion＿req(1，1)+Tion＿ion＿req(1,m)(1)
+Texec=Tpn＿ion＿req(n,m)+TIO
+Tend=Tion＿pn＿quit(1,1)+Tpn＿pn＿quit(1,n)
+TIO＿disk=(Taccess+B/Bdisk)×BLOCK+(Tdelay+S/Bnet)×B/S(2)
+TIO＿network=(Taccess+B/Bdisk)+(Tdelay+S/Bnet)×BLOCK×B/S(3)
+
+　　IDDIO中同步请求在Master节点处汇集，当所有同组人到达后进入执行阶段.因此IDDIO的建立阶段仅有先到者的等待开销，无任何PN和ION间的通信过程，如式(4)所示. IDDIO的同步请求服务时间Texec＿IDDIO＿CIO为式(5)，其一对多的请求传输开销大大小于DDIO的多对多传输开销.IDDIO的独立请求服务时间Texec＿IDDIO＿independent为式(6)，Tcache为cache命中时的服务时间，Tdisk为未命中时的磁盘访问时间.当cache命中率P较高时，独立请求的平均总体服务延迟相当短.
+Tsetup＿IDDIO=Twait(4)
+Texec＿IDDIO＿CIO=Tpn＿ion＿req(1,m)+TIO＿disk(5)
+Texec＿IDDIO＿independent=Tpn＿ion＿req(1,1)+Tcache×p+Tdisk×(1-p)+Tmaster＿pn＿data(6)
+
+　　IDDIO的BM方式将属于同一PN的分散数据打包后再发送减少了消息数量(N′msg<Nmsg)，但增加了数据的打包时间Tpack和解包时间Tunpack，其执行时间为式(7).式(7)中的消息量N′msg最大为参加I/O的PN节点数.
+TIOI_DDIO_BM=(Taccess+B/Bdisk)+(Tpack+Tion_pn_data+Tunpack)×N′msg×BLOCK　　(7)
+　　IDDIO的PM方式时间为式(8).PN节点分为若干I/O组先后进入流水线，PM方式将属于同一PN节点的数据打包发送至PN处再解包. 由于采用了磁盘服务、数据打包、互联网传输、解包等4站流水线，并且节点组的划分减少了一次服务的PN数，减少了通信开销.虽然在一定程度上降低了磁盘的服务带宽，但通过减少通信开销，基本上平衡了磁盘和通信负载，减少了I/O请求的整体服务时间.式(8)中的max( )表示流水站中磁盘服务时间Tdisk_io、打包时间Tpack、数据传输时间Tion_pn_data和解包时间Tunpack中最长的站点时间开销，它是流水线中的瓶颈部分.
+TIO_IDDIO_PM=(Taccess+B/Bdisk)+Tpack+Tion_pn_data×N″msg+Tunpack+
+max(Tdisk_io,Tpack，Tion_pn_data×B″msg，Tunpack)×BLOCK　　　(8)
+5　性能模拟
+　　通过在国产某型巨型机环境下对IDDIO和DDIO的性能测试，表明IDDIO较DDIO提供了较高的I/O服务性能.测试环境参数如表1所示.
+表1　测试环境参数
+
+　　PN数目　　128　　ION 数目　　16
+CPUAlpha21164,RISC磁盘型号ST34520W
+内存拷贝带宽100MB/s转速7200RPM 
+MPI 建立延迟52us尺寸/块512Byte
+互联网传输带宽800MB平均寻道时间7.4ms
+路由方式Wormhole磁盘容量4.3G
+IDDIO文件块尺寸8KB/块磁盘数/节点4个/节点
+
+
+　　IDDIO方式减少了建立阶段和消息广播的消息数目，防止了网络拥塞，减少了同步式I/O请求服务的系统开销（包括建立时间和请求发送时间）.图3显示了在PN和ION比(P/I)分别为4、8时不同ION节点数下IDDIO和DDIO模型的系统开销时间.从图3可见，IDDIO的系统开销远远小于DDIO.当用户访问尺寸较小时，IDDIO可提供较短的服务延迟.
+
+　　　　
+图3　IDDIO和DDIO 系统时间(ms)开销对比
+　　图4显示了IDDIO的BM方式和DDIO在服务64MB读请求的I/O带宽对比图.用户数据按16B循环分布于各个PN上；逻辑文件块尺寸为8KB，循环分布于各ION. 由于不连续数据多，BM方式的打包机制大大减少了消息数，降低了通信开销.
+
+　　　　
+图4　IDDIO_BM方式和DDIO的I/O带宽(MB/s)对比
+　　在BM方式中，通信时间虽然大大减少，但仍为瓶颈.在改进的PM方式中，通过划分流水组减少了一次I/O数据所覆盖的节点数，增加流水站点平衡了磁盘和通信负载，提高了服务性能.图5显示了PM方式中P/N＝8时不同工作组数目时的I/O带宽对比图.
+　　在PM方式下，当节点数较少时，增加组数不但不能提高I/O服务带宽，反而因为减少了磁盘调度的信息量，增加了磁盘寻道时间，降低了整体性能.随着节点数的增加，加大组数可以有效地降低通信开销，实现各流水站点间的覆盖，提高I/O带宽.但组数过大，同样因磁盘调度信息的减少而导致I/O带宽的降低.通过测试表明，一般情况下6至8个工作组能带来较大的I/O带宽.
+
+
+图5　IDDIO的PM不同工作组数时的I/O带宽(MB/s)
+　　图6显示了IDDIO的BM，PM方式和DDIO在128个PN和16个ION下不同数据间隔尺寸时的性能对比.随着数据间隔尺寸增大，DDIO的消息量减少，I/O带宽迅速增大.而IDDIO_BM由于消息量的减少，打包所带来的好处迅速消失，并且由于打包、解包开销，性能较DDIO反而略有所降低.而IDDIOPM方式因为采用流水技术，通过调节合适的分组，其有效I/O带宽受间隔尺寸影响较小，总体性能远高于DDIO模型.从图6可以看出，随着间隔尺寸的增大，IDDIO和DDIO的性能将趋近.
+
+
+图6　IDDIO_BM，PM方式和DDIO在不同请求尺寸下的带宽(MB/s)对比图
+6　结语
+　　IDDIO模型集BM和PM为一体，可同时针对同步I/O请求和独立I/O请求提供低延迟的I/O访问；对于DDIO中消息量多的缺陷，通过BM和PM方式合并多个小消息，并采用了分割瓶颈段的流水技术，平衡了负载，大大提高了I/O服务带宽.并且，随着数据间隔尺寸的增大、消息数的减少，性能并未降低.因此IDDIO是一种在当前磁盘和高速互联网性能条件下一种有效的并行I/O服务模型.■
+作者简介：卢凯，男，1973年7月生， 博士研究生，主要研究方向为大规模分布与并行处理技　　　　　　术.
+　　　　　金士尧，男，1936年6月生，博士生导师，教授，主要研究方向为大规模分布与并　　　　　　行处理.
+　　　　　卢锡城，男，1946年11月生，博士生导师，教授，主要研究方向为大规模分布与并　　　　　　行处理.
+作者单位：卢凯(国防科学技术大学计算机科学系　长沙　410073）
+　　　　　金士尧(国防科学技术大学计算机科学系　长沙　410073）
+　　　　　卢锡城(国防科学技术大学计算机科学系　长沙　410073）
+参考文献：
+［1］Kotz D. Disk-directed I/O for MIMD multiprocessors. In: Proc of 1994 Symp on Operating System Design and Implementation, 1994. 61～74
+［2］Kotz D, Nieuwejaar N. Dynamic file-access characteristics of a production parallel scientific workload. In: Proc of Supercomputing '94, 1994. 640～649
+［3］Seamons K E. Server-directed collective I/O in Panda. http://bunny.cs.uiuc.edu/CDR/panda.html
+［4］Nieuwejaar N. Galley: A new parallel file system for scientific workloads. ftp:// ftp.cs. dartmouth. edu /TR/TR～300.ps.Z
+［5］Chen Y. Performance modeling for the Panda array I/O library. http://www.supercomp.org/ sc96/proceedings /SC98PROC /YING /INDEX. HTM
+［6］卢凯. 面向小尺寸独立请求的服务模型――EDDIO. 计算机体系结构年会, 1997. 34～41
+　　　(Lu Kai. EDDIO: A server model facing the small size independent access. Annual Meeting of Computer Structures (in Chinese), 1997. 34～41)
+收稿日期：1998-09-14
+修稿日期：1998-09-14

@@ -1,0 +1,88 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+低阶鲁棒解耦控制器设计
+陈苏平　孙优贤
+摘 要　提出了一种低阶鲁棒解耦控制器设计方法，能妥善处理多变量反馈系统的耦合性和方向性.整个设计过程分两步完成：先将闭环系统的鲁棒性能要求转化为关于控制器参数的约束，然后设计控制器逼近约束条件，最终得到低阶控制器.仿真结果表明，基于本方法的控制器，其鲁棒性能接近μ－最优控制器，而远优于内模控制器.
+关键词　鲁棒控制，解耦控制，低阶控制器，设计方法.
+LOWER－ORDER ROBUST DECOUPLER DESIGN
+
+CHEN SUPING SUN YOUXIAN
+(Institute of Industrial Control ,State Key Lab.of Industrial Control Technology,Zhejiang Unviersity,Hangzhu 310027)
+Abstract A lower－order robust decoupler design method is developed,which perfectly tackles the interaction and directionality of a multivariable system.The design proce dure is composed of two steps:first turn the requirement of robust performance of a closed－loop system into constraints on the decoupler's parameters,then let the decoupler approach these constraints,resulting in a lo wer－order controller.Simulations have demonstrated that the robust performance of the controller based on this method is similar to that of the μ－optimal controller,and is obviously superior to that of the internal model controller(IMC).
+Key words Roubust control,decoupling control,lower－order controller,design method.
+1　引言
+　　低阶控制器只有少量的自由度，只能解决多性能目标中的主要矛盾.若能用分析的方法获取关于控制器必须满足的直接信息，即控制器约束条件，然后设计控制器去逼近约束条件，就比较容易得到低阶控制器.具有模型不确定性的病态(Ill－conditioned)多变量系统，耦合性和方向性构成主要矛盾［1～3］.将控制器自由度先满足解耦，再调整增益，就有利于得到低阶控制器.
+　　文献［4］提出了鲁棒解耦性能的评价方法；文献［5］又对反标架规范化控制器的鲁棒性 能作了深入的探讨.本文将在上述基础上，解决鲁棒解耦控制器的设计问题.
+2　控制器约束条件的构造
+　　考虑图1所示解耦控制系统，图中符号含义参见文献［4］.令系统开环传递函数为L(s)，则灵敏度函数和互补灵敏度函数分别为
+S(s)=(I+L(s))-1,H(s)=L(s)(I+L(s))-1.　　(1)
+先进行鲁棒解耦，着力解决多变量不确定系统的主要矛盾--耦合与方向性，再以多回路控制器实现回路的整体形状调整，同时也使多回路控制器接近 C(s)=c(s)In形式.通常，wP(s)在低频段较大，而wI(s)在高频段较大.低频段为了满足静态指标，可增加积分环节；高频段能用抑制增益的方法使系统鲁棒稳定；在中频段，一方面，根据多变量频域理论的研究成果［6，7］，如果开环传递函数的奇异值σi(L)下降过快，相位滞后就会偏大，从而使稳定裕度下降，故希望σi(L)在中频段具有平缓的幅频特性；另一方面，当用补偿器构成解耦控制器时，也会引入相位滞后，使得σi(L)下降.这就启发我们产生了分段补偿的设想：多回路控制器在低频和高频起补偿作用，在中频段呈水平状；解耦控制器在中频段调整回路形状.于是，多回路控制器C(s)和鲁棒解耦控制器D(s)的性状就与wp(s)及wI(s)密切相关了.
+
+
+图1　解耦控制系统
+　　考虑一个典型系统，其部分回路的开环传递函数频带要比其余回路低得多，l(s)可作奇异值 分解
+L(k,n-k)=V1Σ1UH1+V2Σ2UH2.　　(2)
+其中V1,U1∈Cn×k;V2,U2∈Cn×(n-k);Σ1=diag｛σ1,…,σk｝;Σ2=diag｛σk+1,…,σn｝,且σ(Σ1)≥(Σ2).于是，可以将反馈特性分成五个频段近似描述，它们是：(1)σ(Σ2)1;(2)σ(Σ1)1, σi(Σ2)≈1; (3)σ(Σ1)1(Σ2); (4)σi(Σ1)≈1,(Σ2)1; (5)(Σ1)1.
+　　下面就分频段讨论解耦控制器的约束条件：
+　　1)低频段
+　　该频段H≈I,S≈L-1,Σ1与Σ2的相对增益对耦合并无多大影响，可以取κ(D)≈1,k(.)表示状态数(Condition Number).
+　　(2)中频段
+　　中频段指以上描述(2)至(4)之间的频率范围.记σi(Σ2)≈1的频率为ωP,σi(Σ1)≈1的频率为ωI.ωI-ωP越小，交接频段的幅频特性越徒，稳定裕度也越小.在保证鲁棒稳定性和鲁棒性能的前提下，显然使ωI-ωP越大越好.因此，有理由将ωP取在｜wP(s)｜=1附近，而ωI取在｜wI(s)｜=1附近.
+　　假设在感兴趣的频率，对象传递函数可分成高增益和低增益两个子系统，奇异值分解为
+G(lG,n-lG)=WG(s)TG(s)ZG(s)H=WG1TG1ZHG1+WG2TG2ZHG2　　　(3)
+其中σ(TG1(TG2),则解耦控制器D(s)亦由高增益和低增益两部分组成，
+D(lD,n-lD)=WD1ΓD1ZHD1+WD2ΓD2 ZHD2,　　(4)
+且lD=lG［5］.考虑到多回路控制器在中频段呈水平状态，因此得到下述关系：
+　　(5)
+　　　(6)
+　　3)高频段
+　　高频段指描述(5)所代表的频域区间，宜取使H最大的ΓD配置，以便给(s)以最大的设计余地，这可以优化搜索得到［4］.
+　　注意，上述各频段约束条件的最大特点是只描述了σj(ΓD1(s))/σi(ΓD2(s))的相对比例，而不是规定幅频特性，这样就给解耦控制器设计以很大的自由度，下节的仿真例子会清楚地展示这种特点.
+3　设计示例
+　　Skogestad和Morari在研究病态对象的鲁棒控制时，提出一个高纯精馏塔的简化模型［8］，且具有图1所示的输入不确定性
+　　(7)
+　　(8)
+
+　　由于奇异子空间不随频率改变，且状态数恒定κ(G)≡141.7，故对G(s)作非标准的奇异值分解 G=WTZH，
+　　(9a)
+　　(9b)
+　　(9c)
+　　1)绘出D(s)的约束条件
+　　令低频段κ(D)≡1；中频段需要确定过渡频段起始和终结的频率，即ωP和ωI，以及相应的相对增益(式(6))；高频段则要求｜ΓDi(s)｜配置成使H最大.
+　　对应上述要求，可以得到图2所示的三对约束条件，点划线将频域分为高、中、低三频段. 需要说明的是，由于采用对数纵坐标，真正必须维持的关系是｜ΓD1(s)｜与｜ΓD2(s)｜之间的距离，三对约束条件之间的位置关系可随控制器设计的需要再作调整，这正是本文方法的特色.在低频段，由于κ(D)≡1，故｜ΓD1(s)｜与｜ΓD2(s )｜重合.
+
+图2　｜ΓDi(s)｜约束条件
+　　2)设计鲁棒解耦控制器拟合约束条件
+　　采用滞后补偿器来构成ΓD2(s)，滞后－超前补偿器构成ΓD1(s).调整各补 偿器零、极点位置，使其尽可能同时满足上述关系，得
+　　(10a)
+　　　(10b)
+约束条件拟合情况如图3所示.
+
+
+图3　｜ΓD1(s)｜与｜ΓD2 (s)｜拟合情况
+　　3)多回路控制器设计
+　　依据鲁棒性能充分必要条件［4］，设计得到多回路控制器
+　　(11)
+　　类似于高纯精馏塔这类难控对象，理想的当然是采用μ－最优控制器，但就目前μ理论的水平，控制器的μ－综合仍存在一系列问题.为此，不少学者尝试以设计方法近似μ－最优控制器，内模控制 IMC(Internal Model Control)就是相对成熟的一种方法［9 ］.图4对鲁棒解耦控制器(5阶)、μ－最优控制器(降到6阶)及双滤波 IMC(远高于6阶 )的鲁棒性能进行了对比.很明显，鲁棒解耦的控制效果已非常接近μ－最优控制器，而IM C则逊色不少，尽管鲁棒解耦控制器(包括多回路控制器)的阶数只有5阶.
+
+
+图4　三种控制器的μRP比较
+4　结论
+　　本文提出了一种设计低阶鲁棒控制器逼近μ－最优控制器的方法，它由低阶鲁棒解耦控制器和多回路控制器设计两部分构成，而解耦控制器设计是关键.采用合理的控制器结构，将闭环系统鲁棒性能的要求转化为关于控制器参数的约束，减少了控制器设计的盲目性；以设计方法逼近约束条件，有利于得到低阶控制器.仿真结果表明，基于本方法的控制器鲁棒性能接近μ－最优控制器，而远优于IMC.至此，我们得到了一种新的有效的鲁棒控制器设计方法.
+作者单位：浙江大学工业控制技术研究所，工业控制技术国家重点实验室　杭州　 310027
+参考文献
+1　Freudenberg J S,Looze D P.The relation between open－loop and clo sed－loop properties of multivariable feedback systems.IEEE Trans.Autom Co ntrol,1986,AC－31(4):333-340
+2　Nett C N,Manousiouthakis V.Euclidean condition and block relative gain: connections,conjectures and clarificaitons.IEEE Trans.Autom.Control, 1987,AC－32(5):405-407
+3　Skogestad S,Morari M,Doyle J C.Robust control of ill－conditioned plant s:high－purity distillation.IEEE Trans.Autom Control,1988,AC－33(12):1092-1105
+4　 陈苏平，孙优贤，周春晖.多变量过程的鲁棒解耦.自动化学报，1995，21 (2)：214-220
+5　陈苏平，孙优贤.反标架规范化控制器的鲁棒性能.自动化学报，1998， 24(1)：113-118 
+6　Doyle J C,Stein G.Multivariable feedback design:concepts for a classica l/modern systems.IEEE Trans.Autom Control,1981,AC－26(1):4-16
+7　Freudenberg J S,Looze D P.Frequency domain properties of scalar and mul tivariable feedback systems.Lecture Notes in Control and Information Sciences,104,New York:Springer－Verlag,1988
+8 Skogestad S,Morari M.Control of ill－conditioned plants:high purity dis tillation.AIChE Annual Meeting,Miami Beach,Florida,1986
+9 Morari M,Zafiriou E.Robust Process Control.Prentice Hall Englewood Cliffs,NJ,1989
+收稿日期　1995-03-29

@@ -1,0 +1,214 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+1999年 第18卷 第1期 Vol.18 No.1 1999
+
+
+
+Visual FoxPro字段属性字典的创建与应用
+韩志军　汪新庆　吴冲龙
+　　摘　要：运用Visual FoxPro设计创建字段属性字典的方法，并以实际程序为例介绍了字段属性字典的信息采集方法与应用类型。
+　　关键词：数据字典　Visual FoxPro　程序开发
+　　设计创建应用项目中所使用的各个数据库表格，是运用Visual FoxPro进行项目开发的一个重要基础工作。开发者通常运用表设计器创建表格，并对每个表每个字段的所有属性分别一一设置。但在实际开发过程中，同一应用项目数据库的不同表中常常包含相同的字段。如果对这些相同字段的相同属性多次重复输入，不仅影响工作效率，而且不容易完整、一致。因此，开发者常希望能找到1种方便可靠的数据库表结构设计方法。
+1　数据字典
+　　本文介绍的数据字典是成功开发应用程序的一个重要方法，它是实现数据库的安全性、完整性、一致性、可恢复性、有效性、可修改性以及可扩充性的重要手段之一。数据字典为那些可能很复杂且很耗时的程序开发工作提供了所需的标准化信息，使整个开发工作简明快捷。另一方面，它也为项目开发文档的生成提供了方便。
+　　运用Visual FoxPro创建数据字典有2种方法，即用Visual FoxPro提供的数据库容器并对它进行扩充和创建自己的数据字典。
+　　数据字典最重要的目的就是存储1个字段的信息，以便进行重建和引用操作。而在Visual FoxPro的数据库容器中，存储了该数据库中各个对象的定义以及它们的属性，包括Database(数据库)、Table(表格)、Index(索引)、Field(字段)和View(视图)等。其中存储的字段属性有：Default value(缺省值)、Format(格式)、Input mask(输入屏蔽)、Caption(标题)、Comment(注释)、Rules(规则)、Triggers(触发器)和Display class(显示类)等。但是，数据库容器中并不存储字段类型、大小及小数位数等属性，这些信息只存在于DBF的表头中。如果DBF文件被破坏，就无法确定此类信息。因此，这些属性需要在数据字典中作为自定义的字段信息被保存起来。
+　　Visual FoxPro的数据库容器本身是1个自由表格。为了扩充数据库容器，可以在其原有结构的末尾添加新的字段。但由于它特殊的本质所决定，数据库容器8个原有字段的基本结构不能被修改，因为对其原字段的任何改动都可能影响到数据库的完整性，可能无法打开任何数据库表格。如果有许多附加的属性要存储，而且不想存取数据库容器以免产生一些问题，则可在数据库容器之外创建自己的数据字典。
+　　要使1个数据字典对程序开发有用，必须合理地设计其结构。通常，1个完整的数据字典应该包括应用程序字典、数据库属性字典、表格属性字典、字段属性字典、索引信息字典以及存储各字典关系的关系字典等多种字典。
+　　如前所述，数据字典最重要的目的就是存储字段的信息。下面将着重讲述字段属性字典的建立与应用。其它几种字典读者可根据相似的方法以及自己特殊的需要进行创建与应用。
+2　字段属性字典的创建
+2.1　字段属性字典结构设计
+　　字段属性字典中定义了应用项目的任一数据库中所有表格使用的全部字段。它的目的是为了确保相同的字段具有相同的名称及属性。即使1个字段被多个表格使用，它也只被定义1次，这样确保了字段定义是规范化与标准化的。
+　　笔者以数据库容器中的字段属性为依据，结构DBF表中字段属性所设计的字段属性字典(DICT.DBF)基本结构如下：
+　　字段说明　　　字段名　　　　　类型　　　　宽度
+　　字段名称　　　FIELDNAME　　　字符型　　　　10
+　　字段类型　　　FIELDTYPE　　　字符型　　　　1
+　　字段长度　　　FIELDLEN　　　 数值型　　　　3
+　　小数位数　　　FIELDDEC　　　 数值型　　　　2
+　　允许空值　　　FIELDNULL　　　逻辑型　　　　1
+　　允许代码转换　FIELDNOCP　　　逻辑型　　　　1
+　　字段有效规则　FIELDRULE　　　备注型　　　　10
+　　字段有效信息　FIELDERR　　　 备注型　　　　10
+　　字段默认值　　FIELDDEFA　　　备注型　　　　10
+　　表格有效规则　TABLERULE　　　备注型　　　　10
+　　表格有效信息　TABLEERR　　　 备注型　　　　10
+　　字段标题　　　FIELDCAPT　　　字符型　　　　30
+　　字段注释　　　FIELDCOMM　　　备注型　　　　10
+　　字段格式　　　FIELDFORM　　　字符型　　　　30
+　　字段输入掩码　FIELDINPU　　　字符型　　　　30
+　　字段显示类库　FIELDLIB　　   字符型　　　　30
+　　字段显示类　　FIELDCLAS　　　字符型　　　　30
+　　该表最后4个字段为Visual FoxPro 5.0版本中新增加的数据库表字段属性，在Visual FoxPro 3.0版本的数据库容器中没有这些属性。在实际开发工作中，读者可参照上述字典结构，依据使用的Visual FoxPro版本号进行取舍，也可根据开发需要增加自己特殊的字段类型。
+2.2　字段属性字典信息采集
+　　字段属性字典中具备完善的数据是其应用的基础。由于它本身为1个自由表格，开发者可像对待普通自由表格一样，编制相应的程序管理字段属性字典，对其进行相应的数据输入、修改、查询或输出操作。程序员应在开发初期建立字段属性字典，并在应用程序开发过程中逐步完善其内容。如果已经建立了完善的数据库容器，下面提供的程序则可依据所选数据库采集信息，自动添加到字段属性字典中。
+*************************
+*程序名：MKDICT.PRG
+*依据数据库容器建立字段属性字典(DICT)
+*************************
+LOCAL lnOldArea,aTableProp(10,11),cDBName
+LOCAL cTableName,cFieldName,cFieldCapt
+LOCAL cFieldComm,cFieldForm,cFieldInpu
+lnOldArea=select()
+CLOSE DATABASE
+cDBName=GETFILE(“DBC”,`数据库名')
+IF EMPTY(cDBName)
+　　CANCEL
+ENDIF
+*生成存放数据库中各表格名的临时表
+select 0
+CREA TABLE TEMPTABL(TABLENAME C(8))
+select 0
+USE DICT
+SET ORDER TO FIELD-NAME
+SELECT 0
+USE &cDBName
+SET ORDER TO Objectname
+SCAN FOR objecttype=`Table'
+cTableName=TRIM(ObjectNAME)
+SELECT TEMPTABL
+APPEN BLANK
+REPL TABLENAME WITH UPPER(cTableName)
+ENDSCAN
+USE
+*采集各表字段信息加入字段属性字典
+OPEN DATABASE &cDBName
+SELECT TEMPTABL
+SCAN
+　cTableName=TRIM(TABLENAME)
+　IF USED(cTableName)
+　　SELECT &cTableName
+　　1USED=.T.
+　ELSE
+　　SELECT O
+　　USE &cTableName
+　　1USED=.F.
+ENDIF
+aTableProp=.F.
+=AFIELDS(aTableProp)
+nFieldCount=FCOUNT()
+FOR　nFN=1 to nFieldCount
+SELECT &cTableName
+cFieldName=aTableProp(nFN,1)+‘’
+SELECT DICT
+SEEK(cFieldName)
+IF.NOT.FOUND()
+cFieldCapt＝TRIM(DBGETPROP(cTableName+‘.’+cFieldName,;`FIELD',`CAPTION'))
+cFieldComm=TRIM(DBGETPROP(cTableName+‘.'+cFieldName,;
+`FIELD',`COMMENT'))
+cFieldForm=TRIM(DBGETPROP(cTableName+‘.’+cFieldName,；
+`FIELD',`FORMAT'))
+cFieldInpu=TRIM(DBGETPROP(cTableName+‘.'+cFieldName,;`FIELD',`INPUTMASK'))
+SELECT DICT
+APPEND BLANK
+REPL FIELDNAME WITH aTableProp(nFN,1),;
+FIELDType WITH aTableProp(nFN,2),;
+FieldLen WITH aTableProp(nFN,3),;
+FIELDDec WITH aTableProp(nFN,4),;
+FIELDNull WITH aTableProp(nFN,5),;
+FieldNocp WITH aTableProp(nFN,6),;
+FIELDRule WITH aTableProp(nFN,7),;
+FieldErr WITH aTableProp(nFN,8),;
+FieldDefa WITH aTableProp(nFN,9),;
+TABLErule WITH aTableProp(nFN,10),;
+TABLEERR WITH aTableProp(nFN,11),;
+FieldCapt WITH cFieldCapt,;
+FIELDComm WITH cFieldComm,;
+FIELDForm WITH cFieldForm,;
+FIELDInpu WITH cFieldInpu
+　ENDIF
+　ENDFOR
+SELECT (cTableName)
+　IF NOT 1USED
+　　USE
+　ENDIF
+ENDSCAN
+SELE TEMPTABL
+USE
+DELE FILE TEMPTABL.DBF
+=select(lnOldArea)
+***********************
+*程序MKDICT.PRG结尾
+***********************
+3　字段属性字典的应用
+　　依据完善的字段属性字典，可对数据库表格进行设计与创建，下述程序可实现对所选表格各个字段属性的自动设置。这样既达到了高效开发，又保证了所用字段属性的标准化。
+*************************
+*程序名：SETPROP.PRG
+*依据字段属性字典设置数据库表字段属性
+*************************
+local lnOldArea,lUSED,cTableName,cFieldtype
+lnOldArea=select()
+cTableName=GETFILE(`DBF',`数据库表名')
+cTableName=SUBSTR(cTableName,；
+　　RAT(`＼',cTableName)+1)
+cTableName=SUBSTR(cTableName,1,；
+　　AT(‘.'，cTableName)-1)
+IF EMPTY(cTableName)
+　　CANCEL
+ENDIF
+If USED(dictl)
+　　SELECT DICT1
+　ELSE
+　　SELECT 0
+　　USE dict1
+ENDIF
+SET ORDER TO FIELDNAME
+IF USED(cTableName)
+　　SELECT &cTableName
+　1USED=.T.
+ELSE
+　　SELECT 0
+　　USE &cTableName
+　　1USED=.F.
+ENDIF
+nFieldCount=FCOUNT()
+FOR nFN=1 to nFieldCount
+　　SELECT &cTableName
+　　cFieldName=FIELD(nFN)+‘’
+　　cFieldCaption=TRIM(DBGETPROP(cTableName+`.'+;cFieldName,`FIELD',`CAPTION'))
+　　SELECT DICT1
+　　SEEK(cFieldName)
+　　If FOUND()
+　　　cFieldCaption=TRIM(FieldCapt)
+cFieldComment=TRIM(Fieldcomm)
+cFieldType=Fieldtype
+nFieldLen=FieldLen
+nFieldDec=FieldDec
+cFieldDefa　　=FieldDefa
+cFieldRule=TRIM(FieldRule)
+cFieldErr=TRIM(fielderr)
+cFieldInpu=TRIM(FieldInpu)
+cFieldForm=TRIM(FieldForm)
+　　　?DBSETPROP(cTableName+‘.'+cFieldName,;
+‘FIELD',‘CAPTION',cFieldCaption)
+　　　?DBSETPROP(cTableName+‘.'+cFieldName,;
+`FIELD',`COMMENT',cFieldComment)
+　　　?DBSETPROP(cTableName+‘.’+cFieldName,;
+`FIELD',`FORMAT',cFieldForm)
+　　　?DBSETPROP(cTableName+`.'+cFieldName,;
+`FIELD',`INPUTMASK',cFieldInpu)
+　IF NOT EMPTY(cFieldDefa)
+　 ALTER TABLE(cTableName);
+　　ALTER COLUMN &cFieldName.;
+　　SET DEFAULT EVALUATE(cFieldDefa)
+　ENDIF
+　 ALTER TABLE(cTableName);
+　　ALTER COLUMN &cFieldName.;
+　　&cFieldType(nFieldLen,nFieldDec)
+　ENDIF
+　ENDFOR
+　SELECT(cTableName)
+　IF NOT 1USED
+　　USE
+ENDIF
+=select(1nOldArea)
+**********************
+*程序SETPROP.PRG结尾
+**********************
+　　上述程序已在Windows 95及Windows NT平台下，中文Visual FoxPro 3.0及5.0版本环境中测试通过。
+　　数据字典是成功高效进行应用程序开发的一个重要方面。本文只是对其功能、创建与应用作了初步介绍，希望能引起程序开发者的重视与广泛深入运用。
+作者单位：武汉中国地质大学资源学院信息系统研究所(430074)
+参考文献
+　1　Antonovicb M.Visual FoxPro开发使用手册.北京：机械工业出版社，1997
+　2　许震宇.Visual FoxPro 3.0程序设计指南.北京：清华大学出版社，1996
+　3　吴冲龙.地质矿产点源信息系统设计原理与应用.北京：中国地质大学出版社，1996
+(收稿日期：1998-07-01)

@@ -1,0 +1,66 @@
+计算机工程
+COMPUTERENGINEERING
+1999年　第25卷　第7期　Vol.25　No.5　1999
+
+
+
+基于ActiveX部件的Web计算
+刘仲　　王正华
+摘要　讲座了基于部件对象开发软件的优势和基于Web的计算模式特点。结合部件技术和Web计算特点，提出并实现了一种基于ActiveX部件的Web企业计算模式。
+关键词　部件软件ActiveX部件Web计算因特网/内特网/外特网
+The Web Computation Based on ActiveX Component
+Liu Zhong Wang zhenghua
+National Laboratory for Parallel and Distributed Processing Changsha 410003
+Abstract：This paper discusses the advantege of software development bassed on component object and the feature of web-based computation mode.As a result, we propose and implement a Web enterprise computation paradigm based on ActiveX component
+Key words：Component software;ActiveX component;web computation;internet/Intranet/Extranet
+　　Internet技术的飞速发展彻底改变了企业计算的模式，从早期的集中式主机模式到客户／服务器模式，如今发展为基于Internet和Web技术的3层结构计算模式。未来的信息基础设施必将发展为一种新的应用模式，即因特网/内特网/外特网(Internet/Intranet/Extranet)模式。Internet是通过TCP/IP协议和其他标准协议将各种专业网、公用网和内部网连接起来的全球互联网。
+1　Web计算模式
+　　Internet、Intranet和Extranet应用模式的共同特点是，整个网络采用标准的Internet协议组TCP／IP协议进行通信；都以Web服务器为中心，利用Web作为统一的软件开发和应用平台。
+　　利用Web作为软件开发和应用平台的优点有：①统一的客户界面，②平台独立性，③高可靠性、高可扩展性，④并行性和分布性，⑤易用性和通用性。
+　　基于Web技术的3层结构计算模式是Internet/Intranet/Extranet上的新一代客户／服务器企业分布计算体系结构。它将企业分布计算任务分解为如下3种逻辑服务组的服务模型(Service Model)，如图1。
+
+图1 基于Web的3层结构计算模式
+　　・用户服务(User Service)主要集中在客户端，用于提供信息给客户和验证、收集从客户端发送的数据。
+　　・事务服务(Business Service)Web服务器响应来自客户浏览器或其他应用程序的服务请求而执行一系列的事务任务(Business Task)。它是用户服务和数据服务之间联系的桥梁。
+　　・数据服务(Data Service)服务器端响应事务服务请求而提供的应用服务，包括各种服务扩展。它用来定义、维护、访问和更新数据，以满足事务服务对数据的要求。
+　　从图1中可以看出，通过网络传输的主要是服务请求和任务请求以及相应的请求结果。通常情况下，事务服务和数据服务物理上相邻，甚至在同一服务器上，网络传输开销较小。所以开发一个高效、可靠的Web应用主要考虑服务器端的数据服务扩展，以及客户端的用户服务扩展。
+　　客户端的用户服务扩展包括在浏览器将服务请求通过HTTP协议发出之前数据的验证、收集和处理。主要的实现技术有Java applet、ActiveX Component、VBScript、JavaScript等。Java applet和ActiveX Component经下载后在客户端执行，而VBScript和JavaScript则由浏览器来解释执行。
+　　服务器端的数据服务通过扩展服务器的功能，提供各种专门的应用服务。主要的实现技术有公共网关接口CGI(Common Gateway Interface)、Microsoft的Internet服务器应用程序接口ISAPI(Internet Application Programming Interface)和部件(Component)技术。
+　　CGI是根据浏览器的HTTP请求激活响应进程，每一个请求对应一个响应进程，当同时有很多请求时，程序挤占系统资源，造成系统响应时间长，效率低下。
+　　ISAPI针对CGI效率低下，利用动态链接库(DLL)技术，以线程代替进程，提高了性能和速度，但要考虑线程的同步问题，而且程序的开发困难，步骤繁琐。
+2　基于部件对象的Web计算
+　　Microsoft的软部件技术作为一种行业技术标准已广泛应用于软件开发，其中由 OLE扩展而来ActiveX部件技术尤其适合于以Web为中心的系统开发。ActiveX是Microsoft的OLE技术的扩展，OLE技术的基础是COM，在本地机器内，ActiveX同OLE一样通过COM总线相互作用，在网络计算机之间，ActiveX部件之间通过分布式部件对象模型 (DCOM)相互作用。通过DCOM，部件之间以及部件与系统之间在网络上的位置透明，系统与部件之间的调用只需知道部件的类标识符即可，不用关心部件的具体网络位置。
+　　部件对象是粒度更大的二进制对象，它通过封装将具体的实现细节隐蔽起来，只提供给外界服务接口，对象之间只通过消息相互作用。这非常适合以网络请求／服务为模式的Web计算。基于部件对象的Web计算是结合面向对象技术和Web技术来实现基于Internet/Intranet/Extranet的分布式企业计算。从面向对象的观点看，部件、客户端的浏览器和服务器端的Web服务器都是对象，只是粒度的大小不一而已，都通过消息接口相互作用。
+2.1　对象分析
+(1)浏览器对象
+　　客户端的浏览器实现为一个部件对象，Microsoft的Internet Explorer应用程序的内核就是作为一个内进程COM部件对象实现的，它实现了一个浏览器OLE控件对象(类标识为CLSID-Iexplorer)。浏览器控件完全实现了OLE超链接对象并驻留在OLE文档对象中。所以，浏览器一方面作为超链接文档包容器实现，完全支持所链接的任何类型文档，另一方面作为COM部件对象类，它实现了OLE控件对象所需实现的所有接口。浏览器部件也实现为OLE自动化对象，开发者可以在程序中或脚本语言中创建它的一个实例，调用其方法和属性。浏览器部件对象暴露给外界的接口有IWebBrowser、IWebBrowserApp和DWebBrowserEvents，其中IWebBrowser接口是开发者在程序中实现一个浏览器部件对象所需实现的接口，该接口的实现使程序能够访问Internet上的任何WWW站点，IWebBrowserApp接口将Internet Explorer应用程序封装成一个OLE自动化部件对象实例，IWebBrowser接口是IWebBrowserApp接口逻辑上的基类。DWebBrowserEvents是一个事件接受器接口，指定需要从浏览器部件对象或应用程序接受事件通知的用户部件对象或程序必须实现的接口。
+(2)HTML对象
+　　Web计算的主要方式是通过嵌入脚本命令语言将HTML文档和各种功能部件粘合起来实现某种计算。HTML标准也是基于对象的，它定义了基本的对象集合，对象之间的继承和集合关系如图2。
+
+图2 HTML对象模型
+(3)ActiveX部件对象
+　　ActiveX脚本部件包括ActiveX脚本解释器和ActiveX功能部件。ActiveX脚本解释器装载并解释运行命令脚本和功能部件，如Microsoft的Internet Explorer浏览器、Internet著作工具和系统Shell等,需要实现IActiveXScriptSite接口、IActiveXScriptWindows接口和其他相关接口。ActiveX功能部件是用程序开发语言开发，封装有特定功能和接口的部件对象,需要实现IActiveXScript接口、IActiveScriptParse接口和其他功能接口。
+　　ActiveX部件对象在执行的过程中经历各种状态转换如图3。①创建未初始化的ActiveX部件对象；②从存储中为部件对象载入数据并初始化；③启动部件对象实例；④建立回调事件；⑤销毁运行状态和撤销回调事件；⑥撤销回调事件；⑦重新建立回调事件；⑧销毁运行状态；⑨撤销回调事件、销毁运行状态、释放所有接口指针和分配资源；⑩去配部件对象。
+
+图3 ActiveX部件对象的状态转换
+(4)服务器对象
+　　随着以分布化和对象化为特征的软部件技术在软件开发中的广泛应用，操作系统必须提供相应的系统对象技术为基于部件的软件开发技术提供系统服务。系统对象技术在一个运作的操作系统环境中按面向对象的原则运作，封装的、多语义的、可重用的各种部件存在并作为二进制实体运作而非源代码。新的部件，无论何时何人开发，可以加入到这个运作系统中，并立即把所提供的服务扩充给应用，即使这些应用已在运行。OLE／COM作为一种可扩展的系统对象技术成为Microsoft公司未来操作系统的基石。也就是说，操作系统只提供基本服务集，而OLE／COM提供了一个机制：无须修改操作系统便可以扩充新的服务，开发者能够创建新的服务，这些新的服务又能够用来创建更新颖的应用软件。进一步讲，系统服务的升级无需任意一种中心控制和商家协作便可完成，这种随意集成的能力在开发软件及用户把软件用作解决问题工具方面引起重大改进。
+　　WWW服务作为系统提供的服务，开发者能够在任何时候增加各种服务，这些服务都以部件的方式提交给系统，由系统将部件作为系统提供的服务注册到系统数据库，注册后的服务能够被其他开发者利用开发新的应用。如Microsoft公司基于WWW服务器IIS的Active Server Pages。它提供内置的5个ActiveX部件对象给开发者开发基于服务端而与客户端无关的动态主页。并且5个部件对象提供相应的接口，开发者可以直接利用这些接口开发新的部件对象。
+2.2　基于ActiveX部件的Web计算模式的总体结构
+　　・服务端以Windows NT Server 4.0为操作系统，IIS为Web服务器，以SQL Server6.5为数据库服务器，用数据库连接器、ActiveX Server Pages和ActiveX部件提供服务扩展。
+　　・客户端以Windows NT Workstation 4.0和Windows 95为操作系统，以IE4.0为客户浏览器，用ActiveX部件在客户端作数据验证和收集。
+　　・用VC5.0和VB5.0作为ActiveX部件的开发工具。部件包括ActiveX EXE、DLL和OCX。用VBScript和JScript作为脚本语言。
+　　该系统除提供通常的Web信息浏览以外，还实现远程的数据录入、查询、更新和修改，远程设备状态的监测，远程数据的计算等各种功能(如图4)。
+
+图4 基于ActiveX部件的Web计算模型总体框架
+3　结论
+　　基于部件的软件开发技术代表新一代软件开发的发展方向，基于Web的计算模式是未来企业应用的主要方式。基于部件能简便、高效地实现Web计算，并具有良好的可靠性、可扩展性、可维护性和可重用性。基于COM/DCOM的ActiveX部件技术是当前开发基于Web计算的较为先进的软件开发技术，但也存在对Windows平台依赖性较强的缺点。
+作者简介：刘仲 男，26岁，助理研究员，主要研究面向对象技术、分布与并行处理技术
+作者单位：国防科技大学并行与分布处理国家重点实验室长沙410003
+参考文献
+1　The Component Model Object Overview.Microsoft Corporation,1996
+2　The OLE Technique Overview.Microsoft Corporation,1996
+3　The ActiveX Technique Overview.Microsoft Corporation, 1996
+4　刘仲.基于OLE/COM的部件软件组合技术的研究〔硕士论文〕.长沙：国防科技大学，1998
+5　李威,杨乔林.Intranet中基于软件构件的企业分布计算,计算机系统应用,1998-02
+收稿日期：1998-08-27

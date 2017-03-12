@@ -1,0 +1,133 @@
+计算机工程
+COMPUTER ENGINEERING
+1999年 第25卷 第12期 vol.25 No.12 1999
+
+
+
+ActiveX技术对浏览鉴器/Web服务器构架的功能扩充
+周皓峰　方　方　朱杨勇
+　　随着Internet和Intranet技术的迅猛发展,越来越多的企业利用浏览器(Browser)/Web服务器构架 (简称B/W)便捷地发布信息，但要使B/W构架完全替代业已成熟的客户机(Client)/服务器(Server)构架(简称C/S)则还有许多工作要做。
+1 B/W构架的特点
+1.1 B/W构架的基本形式
+　　B/W构架在本质上是一种C/S构架。其基本形式如图1所示。
+
+图1 B/W 构架基本形式
+　　从形式上看，B/W和C/S构架没有什么区别，但当前的实际应用中，更多的B/W构架都是一种三层(tier)模型，即Browser-Web Server-Application Server的模型。Browser使用HTTP向Web Server发出请求。Web Server根据请求内容，将一部分自身无能力处理的请求内容提交 Application Server执行。这时Web Server 就成了Application Server的客户机，待Application Server执行完请求将结果返回给 Web Server后，再由Web Server结合其它请求内容的执行结果生成标准的HTML页面，通过HTTP回传给Browser显示。在这种构架中， Browser 真正实现了瘦客户机的要求，而Web Server 在实质上成了一个请求代理者(Agent)。对请求的真正处理工作基本是在 Application Server上进行的。由于Application Server对于Browser端的用户是透明的，而且可以独立于Web Server，这使得Application Server可做得十分强大，以响应并实现多种复杂的请求的处理工作。
+　　在目前的实际应用中，Application Server往往是通过在Web Server上运行的CGI(通用网关接口)或类似ISAPI的调用形式提供服务的。CGI与ISAPI之间的最大区别是系统进程空间占用方式的不同，如图2所示。
+
+图2 ISAPI与CGI的进程空间占用方式比较
+　　CGI形式与C/S构架对系统进程空间的占用方式可以说完全相同。每个来自Browser的请求都将产生一个或多个进程，这使在Web服务器上的进程数总大于等于Browser提交来的请求数。请求越多，进程越多，系统开销也就越大，不稳定因素也就越多，这容易造成系统崩溃。ISAPI使用线程代替了进程，各线程在一个统一的Web Server进程空间中共同运作，基本避免了CGI形式下的系统不稳定因素，提高了系统的稳定性。但是，一方面，使用API函数是一件麻烦的事；另一方面，对一个ISAPI应用程序的违法访问同样可以导致Web Server的崩溃。为此微软推出了对ISAPI进行了封装改进后的工具：Active Server Pages(ASP)。
+1.2 B/W构架与C/S构架的异同
+　　B/W构架源自于C/S构架，但又是C/S构架的一个特例，主要表现在：
+　　(1)在B/W构架中，客户端只有一个浏览器。因此其应用程序界面是高度统一的；而在C/S构架中，客户端的应用程序具有多样性。
+　　(2)在B/W构架中，客户端与服务器之间只能基于TCP/IP协议。Browser与Web Server之间只能按标准的HTTP 传输数据；而在C/S构架，网络平台可以是多种多样的。
+　　(3)在B/W构架中，Browser只提出请求服务所需的参数,而具体的请求命令在Web Server或Application Server上解释、生成并运行；而在C/S构架中，请求命令不仅可以在服务器端生成，也可以在客户机端生成，直接由客户机向服务器发出具体的请求命令。
+　　(4)在B/W构架中，Browser只能通过HTML页面的方式实现与用户的交互，对用户需求的响应是以页面为单位进行的，不具备实时性；而在C/S构架中，用户可以在瞬间实现与后台服务的交互，具有较强的实时性。
+　　实际应用中B/W体现出了C/S无法比拟的能同时与更多客户打交道的广泛性，但又缺少了C/S构架中同时在客户端和服务器端处理事务的灵活性及实时性。因为功能上的限制而不能完全替代C/S构架，B/W构架的发展受到了制约。
+2 ActiveX技术与B/W构架的关系
+2.1 ActiveX技术的概况
+　　ActiveX是基于构件对象模型(COM)的。ActiveX描述的对象的可执行代码可被其他用不同语言编写的对象执行，对象之间通过接口交互。
+　　应用程序ActiveX Automation Server让其它程序告诉它在做什么，揭示方法和属性，由它控制着与ActiveX对象运行。
+2.2 ActiveX技术在B/W构架上的应用
+　　ActiveX技术在B/W构架上的应用是以ActiveX控件的形式出现的。ActiveX控件是一个非常快的小型ActiveX Automation Server，分为客户端控件和服务器端控件。
+　　客户端控件是面向用户的，以可视化的图形视频或文字界面、或者音频形式在浏览器上出现。但它可能并不是浏览器的组成部分。这些控件原先是放在服务器上的。当浏览器发出请求时，Web服务器回传页面，由浏览器负责解释。在解释过程中，若发现页面中要求调用ActiveX控件时，则用该控件的在页面中注明的ID值先在本地的注册表内进行查询。若已经存在，则说明该控件已经在本地安装，然后通过注册表中的相关信息直接使用该控件；否则就要根据页面中所提示的该控件所在的服务器上的路径到服务器上去下载并且自动完成在本地的安装注册，使该控件成为本地资源，供今后使用，这就是所谓的"一次下载，永久使用"。客户端控件一旦在本地安装完毕，就等价于一个可执行的应用程序，它能访问使用本地的系统资源，甚至进行远程访问。这样就带来了安全性问题。
+　　服务器端控件是位于Web服务器上与Application Server进行交互的控件。它是面向服务器的。在这种控件上运行的操作对于浏览器端是透明的。它始终位于服务器上，不会象客户端控件那样被下载，也不能以可视的或可闻的方式让服务器管理者监控，只能完全在服务器上运行。该控件是Web服务器与Application Server之间的接口。通过它，Web服务器可以作为客户端便捷地访问使用Application Server上的资源和服务。又由于控件对浏览器透明，因此对于最终用户是安全的。确良 
+　　综上所述，在B/W构架下，ActiveX控件的作用可用图3表示。
+
+图3 ActiveX控件的作用表示
+3 使用ActiveX技术完善B/W构架的功能
+　　本文在此分别用两个实例来说明B/W构架下ActiveX技术在服务器端和客户机端的使用，并借此展示B/W构架下对Cookie的处理和浏览器端的打印功能。
+3.1 实例运行的平台
+　　以下实例运行于Windows NT 4.0 和IIS 4.0。使用的Active Server Pages(ASP)作为浏览器动态画面的编程工具，VC++5.0和Delphi 3.0作为ActiveX控件的编程工具。
+3.2 使用ActiveX服务器控件实现对Cookie的处理
+　　Cookie是由Web服务器生成，传送并运行于浏览器端监控浏览器工作状态的小程序。这里将用ActiveX技术在服务器端生成Cookie。
+　　通过使用VC++ 5.0的Active Template Library(ATL)，Active Server控件将Active Server Pages作为其一扩充功能使用。当被放入一个ASP页面中时，将要创建的控件就会生成用户的Cookie，或分配给用户一个Cookie。
+　　创建一个Active Server 控件包含：创建一个ATL项目、加入一个Active Server控件、生成方法、让它运行、将该控件加入到ASP页中去等共5步。
+　　步骤1 创建一个ATL项目
+　　步骤2 加入Active 服务器控件。创建控件名为 "Example"的控件，其Prog ID为"SMUM.Example"
+　　步骤3 创建方法 先加入GetCookie的方法到Example接口中。以"GetCookie"作为方法名，以"[out，retval]BSTR* pVal"作为参数。
+　　步骤4 运行代码 在GetCookie方法中加入功能代码。代码如下：
+　　　STDMETHODIMP CExample::GetCookie(BSTR * pVal)
+　　　{ GUID　　　guid; 
+　　　TCHAR　　　lpszCookie[25]; 
+　　　VARIANT　　　varOptional; 
+　　　HRESULT　　　hr; 
+　　　if (pVal==NULL) return E_POINTER; 
+　　　hr=S_OK;
+　　　V_ERROR(&varOptional) == DISP_E_PARAMNOTFOUND; 
+　　　if (m_bOnStartPageCalled) 
+　　　{ CComPtr<IRequestDictionary> piReadDict; 
+　　　　CComPtr<IRequestDictionary> piWriteDict; 
+　　　　IWriteCookie *piWriteCookie; 
+　　　　hr=m_piRequest->get_Cookies(&piReadDict); 
+　　　　if (FAILED(hr)) return hr; 
+　　　　CComVariant vtIn(_T("GUID")); 
+　　　　CComVariant vtOut; 
+　　　　hr = piReadDict->get_Item(vtIn, &vtOut); 
+　　　　if (FAILED(hr)) return hr; 
+　　　　hr = VariantChangeType(&vtOut, &vtOut, 0, VT_BSTR); 
+　　　　if (FAILED(hr)) return hr; 
+　　　　if (!wcslen(V_BSTR(&vtOut))) 
+　　　　{ CoCreateGuid(&guid); 
+　　　　　wsprintf(lpszCookie, 
+　　　　　_T("%X%X%X%X%X%X%X%X%X%X%X"), 
+　　　　　guid.Data1, guid.Data2, guid.Data3, 
+　　　　　guid.Data4[0], guid.Data4[1], 
+　　　　　guid.Data4[2], guid.Data4[3], 
+　　　　　guid.Data4[4], guid.Data4[5], 
+　　　　　guid.Data4[6], guid.Data4[7]); 
+　　　　CComVariant vtCookieValue(lpszCookie); 
+　　　　hr=m_piResponse->get_Cookies(&piWriteDict); 
+　　　　if (FAILED(hr)) return (hr); 
+　　　　hr = piWriteDict->get_Item(vtIn, &vtOut); 
+　　　　if (FAILED(hr)) return(hr); 
+　　　　piWriteCookie = (IWriteCookie*)(vtOut.ppdispVal); 
+　　　　hr = piWriteCookie->put_Item(varOptional, 
+　　　　V_BSTR(&vtCookieValue)); 
+　　　　if (FAILED(hr)) return(hr); 
+　　　　DATE dtExpiration=40455.0; 
+　　　　hr = piWriteCookie->put_Expires(dtExpiration); 
+　　　　if (FAILED(hr)) return(hr); 
+　　　　*pVal = ::SysAllocString(V_BSTR(&vtCookieValue)); 
+　　　} 
+　　　else
+　　　 { *pVal = ::SysAllocString(V_BSTR(&vtOut)); } 
+　　} 
+　return hr;
+}
+　　加入以上代码之后，编译与连接之后就生成了DLL文件，Visual C++会将该文件自动注册。
+　　步骤5 将该控件加入到ASP页中去
+　　下面是正确调用该Active服务器控件的方法的实例。
+　　<%'
+　　Here is where the OnStartPage method is called
+　　Set Example=Server.CreateObject("SMUM.Example.1")
+　　'Here is the method call to assign the cookie
+　　Cookie = Example.GetCookie()
+　　%>
+　　<HTML>
+　　<BODY>
+　　<%=Cookie%>
+　　</BODY>
+　　</HTML>
+3.3 使用ActiveX客户机控件实现浏览器端的打印功能
+　　现在常用的浏览器都自带按页面打印的打印功能，页面上以HTML显示的内容打印出来决不会比现有的C/S 构架下由程序员专门定制的打印功能出来的令人满意。这时就要由ActiveX客户机控件发挥作用。
+　　在该例中，将在页面上显示一个控钮，按下该按钮时，将直接打印一个带"Hello"字样的标签。该控件以OCX文件形式存在。
+　　工作步骤如下：
+　　步骤1 创建一个Active Library的工程，以"Exapmle"命名。
+　　步骤2 在工程中添加一个Active Form，在其上面放置一个以"OK"为标题内容，以"Button1"为名字的按钮。
+　　步骤3 再放置一个以"QuickRep1"为QuickRep控件，再在该控件上放置一个以"Hello"为标题内容，以"QRLabel1"为名字的QRLable控件，调整其字体属性使"Hello"字体放大，然后调整QuickRep控件的属性，使其在Form中不可见。
+　　步骤4 双击按钮控件，加入以下代码：
+　　procedureTactiveFormX.Button1Click(Sender:Tobject);
+　　begin 
+　　　QuickRep1.Print;
+　　end;
+　　步骤5 编译生成OCX文件。
+　　步骤6 设置完Project\Web Deploy Option菜单选项中的内容(OCX文件目录位置和URL位置及生成的HTML文件位置)，使用Project\Web Deploy功能生成HTML文件。
+　　此时，就可以通过IE的浏览器来检验最终效果。
+4 结束语
+　　基于B/W构架的各类信息服务(IS)系统是IS系统发展的潮流。虽然B/W构架是一个标准的瘦客户机／服务器结构，但从C/S构架到B/W构架过渡并不轻而易举，这里有许多工作要做，而ActiveX技术就为这种工作提供方便。本文中所用的技术均已在某基于B/W构架的智能网中得以实现，并且正努力地将其结合到影视数据库应用的开发过程中去。
+作者单位：复旦大学计算机科学系，上海200433
+参考文献
+1 Farrar B.ActiveX使用指南.北京：机械工业出版社,1997
+2 Lomax P.ActiveX与VB Sctipt实践解析.北京：机械工业出版 社,1997
+3 Gregory K.Visual C++5开发使用手册.北京：机械工业出版社, 1998

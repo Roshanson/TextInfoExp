@@ -1,0 +1,59 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+IEEE ICIPS'97
+CALL FOR PAPERS
+IEEE First International Conference on Intelligent Processing Systems(IEEE ICIPS)
+October 20-24,1997,Beijing,China
+Deadlines:Proposal submission due:February 28,1997,Acceptance notification:
+April 30,1997,Final paper due:June 30,1997
+The Aim:With the advances in computer techology and intelligent machines,we have seen a dramatic increase in intelligent capabilities in many different fields.The International Conference on Intelligent Processing Systems provides an important central forum for researchers and engineers from different disciplines to exchange ideas,study differences,share common interests,explore new directions,and initiate possible collaborative research and development.More importantly,this conference will significantly benefit a large variety of economical and industrial sectors,as well as the research community.
+Topies(but not limited to)
+Machine intelligence and applications
+Intelligent communications networds
+Computer vision systems
+Fuzzy systems
+Softcomputing and applications
+Computer vision
+Robotics and applications
+Intelligent process control
+Diagnostic system
+Intelligent engineering design
+Image information processing and management
+Design and development systems
+Resource management
+Virtual reality
+Intelligent GIS and GPS
+Decision support systems
+Natural language understanding systemsExpert systems
+Intelligent transportation systems
+Evolutionary computing and systems
+Operational systems
+Intellignet agents
+Knowledge-based signal processing
+Computer databased
+Multimedia applications
+Intelligent manufacturing
+Computer networks and applications
+Software development
+Medical information processing
+Environment care 
+Agricultural processing and management systems
+Scheduling and planning
+Neural networkds
+Biomedical systems
+Submission of Papers:The working language of the conference is English.1000-word extended summaries are solicited.Submissions should be formatted as follows:First page:title,authors,mailing address,phone and fax numbers,and electronic mail address of each author(please designate one author for correspondence),preferred topical and subject areas.Second page:title,authors' names and affiliations,100 word abstract.Third and succeeding pages:Paper Proposal plus references,tables,and figures.Submit five copies of each,in Engligh,to Program Co-Chairman:
+Porf:Zhi-Qiang Liu,Department of Computer Science,The University of Melboume,
+Parkville,Victoria.3052,Australia,Tel:61-3-9287-9124,Fax:61-3-9348-1184
+E-mail:zliu@cs.mu.oz.au
+For submissions inside China,submit directly to Program Co-Chairman:
+Prof.Lizhu Zhou,Department of Computer Science and Technology,Tsinghua University,Beijing,100084,
+The People's Republic of China,Tel:86-10-62785601,Fax:86-10-6256-2463,
+E-mail: dcszlz @ mail.tsinghua.edu.cn
+For further information contact
+Prof.Richard Zurawski,Institute of Industrial Science,University of Tokyo,7-22-1
+Poppongi,Minato-ku,Tokyo 106,Japan Tel:81-3-3402-6231,Fax:81-3-3423-1484,
+E-mail:zurawski@vss.iis.u-tokyo.ac.jp

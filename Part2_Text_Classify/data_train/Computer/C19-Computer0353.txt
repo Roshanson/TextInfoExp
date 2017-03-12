@@ -1,0 +1,170 @@
+信息与控制
+Information and Control
+1999年　第28卷　第1期　Vol.28　No.1　1999
+
+
+
+一种新的离散系统最优闭环极点配置方法
+冯冬青　　谢宋和
+
+　　摘　要　 分析了LQ逆问题解的存在条件，以便合理选择期望的闭环极点，使之成为一组最优极点．提 出了一种以离散系统LQ逆问题分析为基础的新的最优控制系统设计方法，得到了开环、闭环 特征多项式系数与加权矩阵之间的解析关系，只要给定一组期望闭环极点，即可确定与 之对应的加权矩阵Q和R，从而得到一个具有指定极点的最优控制系统． 
+　　关键词　离散系统，最优控制，LQ逆问题，闭环极点配置
+A NEW METHOD FOR THE OPTIMAL CLOSED-LOOP POLE
+ASSIGNMENT OF DISCRETE-TIME SYSTEMS
+FENG Dongqing
+(Information & Control Institute, Zhengzhou University of Techno logy, Zhengzhou 450002)
+XIE Songhe
+(Department of Control Engineering, Zhengzhou Institute of Light Indu stry, Zhengzhou 450002)
+Abstract　In this paper, the existent conditions of the solut ions to LQ inverse problem are analysed so as to choose the desired closed-loop poles, which become a set of optimal poles. A new design method for optimal con trol systems is presented based on the analysis of the LQ inverse problem for di screte-time systems. The analytical relationship among the coefficients of open -loop and closed-loop characteristic polynomials and the weighting matrices is obtained. Given a set of desired closed-loop poles, the weighting matrices Q a nd R are at once determined corresponding to these poles, and an optimal control system is obtained with prescribed poles.
+Key words　discrete-time system, optimal control, LQ inverse pr oblem, closed-loop pole assignment
+
+1　引言
+　　考虑一个线性定常可控系统
+X(k+1)=AX(k)+BU(k)　　　　　　　　　　　　　　　　　(1)
+其中A和B分别是n×n 维、n×m维常数矩阵．
+　　所谓最优极点配置问题，就是要确定一个状态反馈矩阵F
+U(k)=-FX(k)　　　　　　　　　　　　　　　　　　　(2)
+使对应的闭环系统
+X(k+1)=(A-BF)X(k)AcX(k)　　　　　　　　　　　　　　　(3)
+具有一组预先指定的最优闭环极点zc1，zc2，…，zcn，并且使某个线 性二次型性能指标（4）极小．
+　　　　　　　　　　(4)
+式中Q≥0,R＞0．
+
+　　显然，该问题包含两个主要方面：首先，给定的{zci ,i=1,2,… ,n}和(A,B)满足什么条件，才存在实现指定极点配置的最优反馈F．其次，已知{zci ，i=1，2，…，n}是一组最优极点，如何确定F．
+　　早期的最优极点配置方法主要是以“极点移动”为基础的数值方法［1，2］，存在两个方面的不足：其一，在迭代计算过程中要解非线性代数方程，工作量大且精度不高；其二，不能保证Q≥0．最近提出的解析方法［3～5］有所进展，但还不完善，限制条件多，计算过程比较复杂．本文在以往研究［6～10］的基础上，从LQ逆问题着眼， 通过将系统（A，B）变换成可控标准形，得到了加权矩阵、闭环与开环特征多项式系数之间 的解析关系，比较圆满地解决了离散系统的最优极点配置问题，有助于彻底解决LQ逆问 题解的存在性和唯一性．其主要优点是不必求解复杂的Riccati方程，可以很容易地确 定要求的F和对应的Q和R，且限制条件少．
+2　LQ逆问题解存在的条件
+　　事实上，并非任何一个稳定的反馈增益F都可以构成最优闭环系统．同样，LQ最优设计 并不能任意配置极点，因此，并不是任何一组稳定的闭环极点都能成为最优极点，它们必须 满足一定的条件．文[6]中的必要条件也可推广到多变量系统．
+令
+　　　　　　　　　　　(5)
+　　　　　　　　　　　(6)
+则有
+　　定理1　设zoi，zci(i=1,2,…,n)分别是系统（1）和（3）的开环极点和最优闭环极点，则有下述不等式成立
+　　　　　　　　　　(7)
+　　定理2　若ai,bi(i=0,1,2,…,n)分别是系统（1）和 （3）的开环特征多项式系数和最优闭环特征多项式系数，则有
+　　　　　　　　　　　　　　(8) 
+　　定理3　对于单输入可控系统（1），指定极点zc1,zc2 ,…,zcn是一组最优极点的充分条件是：（9）式确定的Q≥0．
+　　　　　　　　　　　　　　(9)
+
+　　证明　由最优控制理论有
+a0Pc(z)Pc(z-1)/b0=P0(z)P0(z-1)+[adj(a-1In-A)]TQ[adj(ZIn-A)B]　　　　　　(10)
+而对于可控标准形（A,B），有
+adj(zIn-A)B=[i,z,...zn-1]T
+因此，当Q取（9）式，R=r＞0时，将可实现指定极点的配置．由于单输入可控系统均能经非 奇异线性变换转换为可控标准形（15），故定理3成立．
+3　LQ逆问题的参数化公式
+　　与系统（1）和性能指标（4）对应的Riccati方程为
+P=ATPA-ATPB(R+BTPB)-1BTPA+Q　　　　　　　　　　　　(11)
+利用Hamilton矩阵的性质［5］，不难得到LQ逆问题的参数化公式．
+　　定理4　使闭环系统（3）具有指定极点的加权矩阵Q和反馈矩 阵F可以分别参数化表示为
+Q=T2T-11-ATT2ST-11　　　　　　　　　　　　　　　　　　(12)
+F=(R+BTT2T-11B)-1BTT2T-11A　　　　　　　　　　　　(13)
+　　式中矩阵S为特征值集合是{zci,i=1,2,…,n}的实矩阵，且参数阵T1和T2满足如下约束条件
+　　1） T1是非奇异方阵
+　　2） T1和T2满足Sylvester方程
+AT1-T1S=BR-1BTT2S,R＞0　　　　　　　　　　　　　　(14)
+　　3） 由T1和T2以及S确定的Q≥0
+　　由定理4可见，LQ逆问题的求解转化为寻找满足上述约束条件的参数阵T1，T2和S ．
+4　单输入系统的LQ逆问题分析
+　　对于任何一个单输入可控系统，总存在一个非奇异线性变换，使之成为下述可控标准形．
+　　　　　　　　　　(15)
+　　根据定理4可选T1=In，R=1，且S选择为
+　　　　　　　　　　　　　(16)
+则（14）式简化为
+A-S=BBTT2S
+(17)
+由（17）式可求得
+tn,j=a0b1/b0-a1,(i=1,2,…,n)
+不难得到：当T2=TT2时，Q=QT,且
+Qi,j=ti,j-ti-1,j-1+a0bi-1bj-1/b0-ai-1 aj-1
+式中ti,j和Qi,j分别表示矩阵T2和Q的第i行第j列元素．根据定理4有单输入 系统的LQ逆问题参数化结果如下：
+　　定理5　对于一个单输入可控系统（A,B），使对应的闭环系 统具有指定极点{zci,i=1,2,…,n}的加权矩阵Q为
+Q=CTC
+其中C表示可控标准形变换矩阵，满足
+i,j=ti,j-ti-1,j-1+a0bi-1bj-1/b0-ai-1aj-1
+式中ti,j=tj,i，且当i或j≤0时，ti,j=0；当0<i和j<n时，ti,j 为自由参数；当i或j=n时，有
+tn,i=ti,n=a0bi/b0-ai　　(i=1,2,…,n)
+显然，文[3]的结论只是本文定理5的一个特例．
+5　多变量系统的最优极点配置
+　　对于多变量系统而言，一个很自然的思路是将其转化为类似的若干个单变量系统来处理．在 下述多变量系统可控标准形下，比较圆满地解决了若干年来悬而未决的历史遗留问题．
+　　引理1对于多变量可控系统（A,B）,假定rank(B)=m,且将 矩阵B的第i列写成i，则至少存在一组克罗内克常数σ1,σ2,…,σm同时满 足下述3个条件：
+　　(1)　σi≥1,(i=1,2,…,m)
+　　(2)　
+　　(3)　det(T5)≠0
+　　式中
+　　引理2　在可控系统（A,B）的矩阵Qn=[B AB…an-1 B]中，若按后述原则从中选择n个线性独立的列，即：当Qn的第i列不能用位于其左边 的列线性表示时则采用，而能用位于其左边的列线性表示时则不采用．那么将得到一个由所 选列经适当交换位置后构成的非奇异矩阵T12，且为
+
+　　式中σ1,σ2,…,σm满足引理1中的3个条件．
+　　引理3　对于多输入可控系统，若按引理2的方法确定σi,(i=1,2,… ,m)，则存在线性变换（T,G）,使T-1AT成为分块形三角阵，且有T-1BG=bloc k－diag{B1 B2 … Bm}．
+式中,Bi=[0,0,...,1]T∈Rσ×1
+
+式中Aii表示T-1AT的第i个对角线矩阵块，“*”表示不一定为0的实数．
+　　引理1～3的证明相当复杂，详见文献的有关内容．
+　　定理6　不妨设线性变换（T1,G）使(A,B)成为
+
+则使闭环系统具有指定极点{zci, i=1,2,…,n}的状态反馈增益矩阵F为
+F=(R+BTT2T1-1B)-1BTT2T-11A
+与之对应的加权矩阵为
+Q=T2T-11-ATT2ST-11
+R=G-TG-1
+式中S由下式确定
+
+其中Sii是一个由第i组σi个指定极点所确定的特征多项式（子式）的系数构成的 形如（16）式的第3标准形矩阵，Sij由下式确定
+Sij=(Iii+BiBTiTii)-1Aij,　(i＞j)　　　　　　　　　(18)
+式中Iii式是σi×σi单位阵，Tii∈Rσi×σi是对称阵，且 满足如下方程．
+Aii-Sii=BiBTiTiiSii,　　(i=1,2,…,m)　　　　　　　　　(19)
+同时　　　　　　T2=T-T1block-diag{T11,T22,…,Tmm}　　　　　　　　　　　　　　　　(20)
+　　证　（14）式两边同时左乘T-11，则有
+T-11AT1-S=T-11BGGTBTT-T1(TT1T2)S
+即
+T-11AT1-S=(T-11BG)(T-11BG)T(TT1T 2)S
+令
+T-11T2=block-diag{T11,T22,…,Tmm},且Tii =TTii
+则有
+
+……
+　　因此有（18）式和（19）式，证毕．
+6　例子
+　　　　　　　　　　　　
+　　　　　　　　　　　　　(21)
+因此，应选择第1，2，4列，且σ1=1，σ2=2．同时也可求得线性变换阵T1为
+
+因此
+
+若指定闭环极点分别为-0.2和±0.2j，即
+Pc(z)=(z+0.2)[(z+0.2j)(z-0.2j)]
+因此，S11=-0.2, T11=4
+
+
+由定理6可求得
+　　　　　　　　　　　　　(22)
+　　　　　　　　　　　　　　　　　　(23)
+
+式中当23＜t1,1＜99时，Q＞0．因此，LQ逆问题有无数解，且不难验证：
+λ(A-BF)={-0.2, 0.2j, -0.2j}
+当取t1,1＝24时，有
+　　　　　　　　　　　　(24) 
+把（23）、（24）和（21）式代入（11）式求得P，再由F=(R+BTPB)-1BT PA求得的F与(22)式完全相同．
+作者单位：冯冬青：郑州工业大学信息与控制研究所　郑州　450002
+　　　　　　谢宋和：郑州轻工业学院控制工程系　郑州　4 50002
+作者简介：冯冬青，40岁，男，硕士，副教授．研究领域为生产过程计算机控制，智能控制 ．
+　　　　　谢宋和，34岁，男，副教授．研究领域为线性多变量系统理论，模糊控制，智能控制
+参考文献
+1　 Amin N H. Optimal Discrete System with Prescribed Eigenvalues. Int .J.Control,
+　　1984,40(4)：783～794
+2　 Fujinaka T, Katayawa T. Discrete-time Optimal Regulator with Closed-Loop P oles 
+　　in a Prescribed Region. Int.J.Control,1988,47(5)：1307～1321
+3　 王耀青. 离散系统最优调节器的逆问题．控制与决策，1988，3(1)：52～ 53
+4　 王耀青，吕勇哉．具有给定闭环极点的最优控制系统设计．信息与控制，1989， 18(3)：
+　　41～45
+5　 喻铁军，戴冠中．指定闭环特征值的最优控制系统参数化设计．控制与决策，1989，4(4)：
+　　18～22
+6　 谢宋和．二次型最优离散系统的两个必要条件．控制理论与应用，1991，8(1)：64～67
+7　 谢宋和．有关《指定闭环特征值的最优控制系统参数化设计》文中定理2的一个反例． 控制
+　　与决策，1991，6(6)：480～481
+8　 谢宋和．关于《具有指定闭环特征值的离散时间最优调节器的设计》一文的反例．控制理
+　　论与应用,1993,10(1)：118～119
+9　冯冬青，谢宋和．最优离散控制系统的参数化设计．郑州工学院学报，1993,14(1)：96～101
+10　冯冬青，谢宋和．关于二次型最优极点配置的几个问题．郑州工学院学报，1995,16(1)：
+　　57～63
+11　须田信英等著，曹长修译．自动控制中的矩阵理论，科学出版社，1979
+
+收稿日期：1998-01-20

@@ -1,0 +1,99 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.3　P.342-345
+
+
+
+多Agent系统的几种规范生成机制
+王一川　石纯一
+摘要　HCR(highest cumulative reward)是多agent系统中的一种规范生成机制,但在该机制下，系统的规范不能随条件的变化而变化.文章建立了规范的定义,分析了规范的稳定性,给出了用于规范生成的HAR(highest average reward)和HRR(highest recent reward)机制,适于规范的演化,并比HCR机制有更好的收敛速度.
+关键词　多agent系统,协调,规范,突现行为,演化.
+中图法分类号　TP18
+Strategy-Selection Rules for Developing Conventions in Multi-Agent System
+WANG Yi-chuan　SHI Chun-yi
+(Department of Computer Science and Technology Tsinghua University Beijing　100084)
+Abstract　Highest cumulative reward (HCR) is a rule for developing conventions in multi-agent systems.But it will keep system maintaining an emerged convention from evolving to more rational ones while conditions of system are developing.In this paper,the notion of conventions is defined,and the stability of them is analyzed.Furthermore,two rules called highest average reward (HAR) and highest recent reward (HRR) are introduced.They both guarantee the evolving process of stable conventions,and the convergence rate of them is better than that of HCR.
+Key words　Multi-Agent system,coordination,convention,emergent behavior,evolution.
+　　行为规范是agent协调机制的一种.Agent在交互时,根据行为规范在多个可能的行为之间直接作出选择,从而减少通信和协调开销.行为规范可以由设计者事先规定,也可以在某种机制的约束下由系统在运行中生成［1,2］.后者又可分为两类,一类由中央控制结点来确定行为规范,另一类不存在中央控制的特权结点.各agent地位平等,在交互过程中逐渐生成规范,具有灵活、实现简单等优点.下面的分析只针对后一类.MAS中的规范有生成、稳定和演化等过程,前者涉及行为策略的传播和行为的传播,后两者与系统达到规范状态后的变化有关.规范形成后,当某些agent为获得更高的短期收益而违反规范时,遵循规范的其他agent收益发生变化,此时，规范可能表现出保持稳定、产生波动或者解体的变化,这是规范的稳定过程.与之相似,当系统中未知行为被发现,使得系统中出现更优的行为策略时,规范向新行为策略的转化是规范的演化过程.规范的生成过程从局部来看,也是一个演化的过程.此外,采用规范的目的是在保证优化的同时减少协调开销,因而要求最终在全局范围内agent行为策略相同［3,4］是不必要的.
+　　以往提出的规范生成机制可分为价值机制［3,5,6］和其他机制［7］,两者都未能考虑到规范的稳定过程和演化过程.文献［3］在对策论的框架下定义了社会规范,用HCR(highest cumulative reward)机制来保证在各种情形下生成有效的规范,agent以历次交互中的各行为策略的累积收益为选择行为的依据.HCR机制的缺点是不利于演化,同时，agent必须预先知道行为策略集.文献［6］在HCR的基础上研究了agent交互的局部性和权威性对于规范生成结果的影响,以及在树型或层次型组织结构下规范的生成过程.这种方式仍有HCR机制的缺陷,并且组织结构中不同层次的agent计算能力由设计者预先设定,不能在动态过程中保证其合理性.文献［7］利用模仿机制研究了agent规范生成过程与收敛性、收敛速度有关的几个参数.Agent记录每次交互时对方的行为策略,并根据历史信息来选择当前策略,其缺点是系统只会收敛到初始概率较高的策略.文献［5］研究了行为策略的传播过程,并比较了不同的传播方式的效率和可行性,但未涉及agent个体对行为策略的评价和取舍过程.
+1　规范的定义
+　　我们先给出几个必要的概念：
+　　E=（e1,e2,...,en）,其中ei是给定的第i个agent交互时所处的场景,ei与ej(i≠j)可能是相等的；C为E中所有不同元素构成的集合；A=｛a1,a2,...,ap｝为交互中可选行为集；F=｛f1,f2,...,fq｝为行为策略集,其中fi：C→A.
+　　效用函数u：An→Rn,u(αi1,αi2,...,αin)=(ui1,ui2,...,uin),其中uij为参与交互的agent在场景ej下实施行为αij得到的收益；总效用函数U：An→R,U(αi1,αi2,...,αin)=ui1+ui2 +...+uin.
+　　F上等价关系“≈”,fi≈fjU(fi(e1),fi(e2),...,fi(en))=U(fj(e1),fj(e2),...,fj(en)),由此得到F集上的一个划分｛F1,F2,...,Fs｝,不妨设其系统效用依次递增.定义F集上相容子集Fc：对任意fi1,fi2,...,fin∈Fc,有U(fi1(e1),fi2(e2),...,fin(en))≡UFc,UFc为一常数.显然,相容集中各f等价.令F上所有相容集的集合为FC.
+　　定义规范：Conv∈FC,即规范是F上任一相容子集,相容性用以保证行为策略间不发生冲突.如果Conv是最优等价集上的相容子集,则称该规范是全局优化规范.假定agent在交互中机会均等,则在一次遵循规范Conv的交互前,agent对自身收益的期望为eu=UConvn,此时全局优化的规范也满足agent的个体利益.
+　　为了分析规范的稳定性,我们定义行为策略f对相容集Fc的优超：若存在k∈［1,n］,fj1,fj2,...,fjn∈Fc,f∈F,有u(fj1(e1),fj2(e2),...,fjn(en))=(uj1,uj2,...,ujn),u(fj1(e1),fj2(e2),...,f(ek),...,fjn(en))=(uj1′,uj2′,...,ujk′,...,ujn′),且U(fj1(e1),fj2(e2),...,f(ek),...,fjn(en))<UFc和ujk′>ujk,即实施行为策略f的agent在损害整体收益的同时增加自身收益,此时称f优超相容集Fc.若对于某相容集F不存在这样的f,则Fc是稳定的；若存在某个f,对任意fj1,fj2,...,fjn∈Fc都有U(fj1(e1),fj2(e2),...,f(ek),...,fjn(en))<UFc和ujk′>ujk成立,则Fc是不稳定的；其他的情形介于稳定和不稳定之间,并可根据被优超的情况定义其稳定程度.显然,相容集在稳定性上优于其真子集.
+2　HAR和HRR算法
+　　HCR机制不能够满足演化的要求,因而在基于传播的规范生成过程中不能保证收敛.我们给出HAR(highest average reward)和HRR(highest recent reword)机制来消除累积效应,适合于规范的收敛和演化.HAR以历史信息中各行为策略的平均收益作为选择当前行为策略的依据,用平均值来替代HCR中的累积值.HRR在累计历史信息时利用归一化后的加权系数,给予越近发生的收益以越高的权值,由于归一化而消除了HCR的累积效应.但对于潜在规范不稳定的情形,HAR和HRR也不能使系统收敛到规范.
+　　下面给出算法HAR和HRR.设C={e1,e2,...,em},A={a1,a2,...,aq},并假设agent初始时知道所有可行行为.
+　　算法1.HAR
+　　定义收益数组reward［m］［q］,用来累积在某场景下采用某行为的收益；当前策略curStr［m］,用于记录当前策略中m场景下所对应的行为;交互次数数组times［m］［q］,用于记录在某场景下采用某行为的次数.
+　　(1) 初始化
+　　reward［m］［q］所有元素值设为某较大值,使得在各场景下不同的行为都有机会被执行.
+　　curStr［m］随机初始化为［1,q］区间上的任意值.
+　　times［m］［q］各元素初始化为某正常数.其直观含义为agent对自身判断的信任程度.
+　　(2) 每次交互,执行以下几步：
+　　(a) 根据当前场景ei,得到当前策略下的对应行为acurStr［i］；
+　　(b) 执行行为acurStr［i］,得到收益 cur－u；
+　　(c) reward［i］［curStr［m］］增加 cur－u;
+times［i］［curStr［m］］增1；
+　　(d) 如果cur－u<reward［i］［curStr［m］］times［i］［curStr［m］］,则重新选择在场景ei下应采取的行为aj,使得对任意k∈［1,q］,有reward［i］［j］times［i］［j］≥reward［i］［k］／times［i］［k］；令curStr［i］=j.
+　　算法2.HRR
+　　定义收益数组reward［m］［q］用于记录累积加权收益；当前策略curStr［m］含义同算法HAR；取定weight∈［0,1］为加权比.
+　　(1) 初始化
+　　reward［m］［q］所有元素值设为某较大值,使得在各场景下不同的行为都有机会被执行.
+　　　curStr［m］随机初始化为［1,q］区间上的任意值.
+　　(2) 每次交互,执行以下几步：
+　　(a) 根据当前场景ei,得到当前策略下的对应行为acurStr［i］；
+　　(b) 执行行为acurStr［i］,得到收益 cur－u；
+　　(c) reward［i］［curStr［m］］= reward［i］［curStr［m］］×weight+cur－u×(1-weight)；
+　　(d) 如果cur－u<reward［i］［curStr［m］］,则重新选择在场景ei下应采取的行为aj,使得任意k∈［1,q］,有reward［i］［j］≥reward［i］［k］；令curStr［i］=j.
+3　实验分析
+3.1　实验说明
+　　实验背景由100个agent组成,agent两两随机交互,用于检验行为规范生成机制的收敛性和演化性.收敛的标准是连续1 000次交互中按规范进行的次数大于950次,并以其最早出现的时刻为收敛时刻.每个实验限定交互次数为8 000次,各做1 000回.
+　　实验1.正值收益情形下各机制的收敛性
+　　E=(e1,e1)；A={a1,a2}；u(a1,a1)=u(a2,a2)=(4,4),u(a2,a1)=u(a1,a2)=(1,1)；F={f1,f2},f1(e1)=a1,f2(e1)=a2.
+　　初始时每个agent知道全部两种行为.
+　　HRR中取weight=0.8.
+　　实验2.不同初始概率下各机制的收敛性
+　　E=(e1,e1)；A={a1,a2}；u(a1,a1)=(4,4),u(a2,a2)=(1,1),u(a2,a1)=u(a1,a2)=(-1,-1)；F={f1,f2},f1(e1)=a1,f2(e1)=a2.
+　　初始时每个agent只知道一种策略,该策略是f1的概率，为P,agent在交互中相互传播策略.当P较小时,系统向f1的收敛过程也是一个规范演化的过程.
+　　HRR中取weight=0.8.HCR中已知而未尝试的行为策略在选择时有优先权.
+3.2　实验结果
+　　在实验1中，HAR和HRR算法在1 000回中全部收敛,而HCR算法均不能收敛.
+　　实验2的结果见表1,表中内容为在标定交互次数内1 000回测试所收敛的回数.可以看出,当P不同时,HCR的收敛性的变化很大,P越大，收敛性越好.HAR和HRR算法对不同的P都有很好的收敛性.
+Table 1
+表1
+
+　1 0002 0003 0004 0005 0006 0007 0008 000
+HCR P=1/29979999991 0001 0001 0001 0001 000
+HCR P=1/3650778811820830831834836
+HCR P=1/4178284328345357363365367
+HCR P=1/6929353838404040
+HCR P=1/2500000000
+HAR P=1/21 0001 0001 0001 0001 0001 0001 0001 000
+HAR P=1/25954976976976976976976976
+HRR P=1/21 0001 0001 0001 0001 0001 0001 0001 000
+HRR P=1/25977977977977977977977977
+
+3.3　结果分析
+　　当agent知道效用函数所确立的映射时,可以将整个收益的计算平移到零值左右,此时,HCR机制仍可能起作用.但在实际情况中,agent很难预先知道由系统决定的效用函数,实验1的意义就在于指出HCR机制对agent认知能力的这种要求,而HAR和HRR机制没有这个限制.
+　　实验2中,HCR机制的收敛性与P值有关,P越大,收敛性越好；P值较小时,初始策略为f2的agent能够在互相交互中积累足够的收益来阻碍f1的再次被选取,同时也使当前策略为f1的agent互相交互的可能性减少.
+4　结　语
+　　本文以无冲突为基点建立了多场景下规范的一般模型,通过分析规范的生成过程,给出了两种基于价值选择的规范生成机制,并通过分析实验比较了几种机制在简单情形下的收敛性.本文没有讨论agent对于场景的识别而假定agent内在具备识别场景的能力,但在一些情形下,场景的识别与行为的收益有关,和规范的生成互相影响,使得规范的生成过程更加复杂.实验中不存在优超行为策略,因而没有检验规范生成机制的稳定性.
+本文研究得到国家自然科学基金(No.69773026,69733020)资助.
+王一川,1973年生,博士生,主要研究领域为分布式人工智能.
+石纯一,1935年生,教授,博士生导师,主要研究领域为人工智能应用基础.
+王一川(清华大学计算机科学与技术系　北京　100084)
+石纯一(清华大学计算机科学与技术系　北京　100084)
+参考文献
+1，Ephrati E,Pollack M E,Ur S.Deriving multi-agent coordination through filtering strategies.In:Mellish C S ed.Proceedings of the 14th International Joint Conference on Artificial Intelligence,Vol 1.San Mateo,CA:Morgan Kaufmann Publishers,1995.679～685
+2，Goldman C V,Rosenschein J S.Emergent coordination through the use of cooperative state-changing rules.In:Proceedings of the 12th National Conference on Artificial Intelligence,Vol 1.Cambridge,MA:MIT Press,1994.408～413
+3，Shoham Y,Tennenholtz M.On the emergence of social conventions:modeling,analysis,and simulations.Artificial Intelligence,1997,94(1～2):139～166
+4，Tennenholtz M.On stable social laws and qualitative equilibria.Artificial Intelligence,1998,102(1):1～20
+5，Luo Yi.Agent model and solving method in multi-agent system ［Ph.D.Thesis］.Beijing:Tsinghua University,1996
+(罗翊.多Agent系统中Agent模型和求解方法［博士学位论文］.北京:清华大学,1996)
+6，Kittock J E.The impact of locality and authority on emergent conventions:initial observations.In:Proceedings of the 12th National Conference on Artificial Intelligence,Vol 1.Cambridge,MA:MIT Press,1994.420～425
+7，Walker A,Wooldridge M.Understanding the emergence of conventions in multi-agent systems.In:Lesser V,Gasser L eds.Proceedings of the 1st International Conference on Multi-Agent Systems.Cambridge,MA:MIT Press,1995.384～389
+收稿日期：1998-12-01
+修稿日期：1999-03-11

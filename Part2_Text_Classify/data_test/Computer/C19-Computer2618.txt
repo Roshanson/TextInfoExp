@@ -1,0 +1,76 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第6期 第10卷 Vol.10 No.6 1999
+
+
+
+新型网络管理系统模型及其专家系统*
+罗军舟　顾冠群　费　翔　方宁生　姜　浩
+　　摘要　现代计算机网络管理是一项复杂而又繁重的工作，它需要大量的信息并运用操作者的判断与技能.由于产品厂商不同而导致的异种网络环境以及高质量的用户服务需求，这种网络管理的复杂性还在不断增加.文章提出了一个进行网络智能管理(intelligent management of network,简称IMN)的新型系统模型.在IMN体系结构中，用专家系统处理特定问题，建立一个智能故障管理系统；用网段或网域中的智能代理建立网络管理与应用和用户需求的密切关系；给出了一个管理员模型，用于控制各子系统,协调各项管理任务.IMN系统是一个进行计算机网络智能管理的有效模型.
+　　关键词　网络管理，网络智能管理，人工智能，专家系统，智能代理，管理员.
+　　中图法分类号　TP393
+A Novel Network Management System Model and Its Expert Systems
+LUO Jun-zhou GU Guan-qun FEI Xiang FANG Ning-sheng JIANG Hao
+(Department of Computer Science and Engineering Southeast University Nanjing 210096)
+　　Abstract　The management of modern computer networks is a complex and labour-intensive task that requires the assimilation of vast amounts of information and application of operator's judgment and expertise. The complexity is further increased because of the multi-vendor heterogeneous elements that make up many of these networks, and the high quality of user service requirements. In this paper, the authors give a novel system model for building an intelligent management of network (IMN) in order to solve related problems. In the IMN architecture proposed, expert systems are integrated in the network management system to handle particularly difficult problems, especially an intelligent fault management system is presented. By spreading intelligent agents through network segments or domain, the IMN system can bring the management closer to application and user requirements. The authors also give a manager model in the IMN system, which controls each subsystems and coordinates different management task. The IMN system is well suited to manage the current computer network intelligently, effectively and efficiently.
+　　Key words　Network management, intelligent network management, artificial intelligence, expert system, intelligent agent, manager.
+　　计算机网络规模的膨胀和复杂度的增加意味着网络管理是至关重要的.由于分布式应用和全球化协同工作的需求，用户要求网络是一种基础设施，随时随地可得，并且使用稳定、可靠.另外，被管网络越来越呈现出异构和动态特性，诸如故障预测和诊断，以及性能分析等管理功能愈加复杂.特别是CSCW的应用，需要高质量的多媒体服务，网络资源也应该按照服务质量(QoS)进行管理.传统的网络管理方式是通过各自专有单元管理系统对各网段进行孤立管理，因而无法解决以上问题.研究新型的网络管理系统迫在眉睫，需要使用基于知识的信息处理技术［1,2］，如人工智能和专家系统等.
+　　网络智能管理(intelligent management of network,简称IMN)能够智能地监控异构计算机网络系统，有效而妥善地处理网络上发生的各种问题.将专家系统用于解决特定的管理问题.基于知识的专家系统能够完成监控、故障诊断、网络规划和培训等任务［1,3,4］.IMN应具有如下特点：不需依赖高技能的网络管理人员;不需要从事处理异构网络上的繁重管理任务；交互设施能够使网络故障得到快速修复.借助智能功能，IMN系统成为一个自治的系统，能够以最小的人工干预，处理各种网络问题.
+　　IMN系统具有以下几个主要目标［3］：管理异构网络，支持分布式管理和数据库，缩减网络管理与应用间的距离，允许网络规模的不断增长，提供智能设施，支持容错网络管理.本文对当代网络管理需求略作分析，导出了开发网络智能管理的几个关键技术.文章第1节提出了一个IMN系统的体系结构［5］，包括管理员、专家系统、智能代理、管理信息库(management information base,简称MIB)、管理知识库(management knowledge base,简称MKB)和各个接口.IMN系统通过智能代理访问被管对象，建立基于人工智能的知识库和推理机制.第2节定义了一个管理员模型和相应接口［6］，描述了模型的内部结构和各项功能.管理员由规划器、应用接口、智能代理、管理功能和管理工具等不同模块组成.第3节讨论一个专家系统模型［3,7］，特别给出了一个网络故障诊断和修复系统，使用基于模型的专家系统和基于案例的推理技术，完成所需智能决策任务.第4节阐述智能代理的作用［8,9］，其功能模型由上下文管理员、目标管理员和智能代理引擎.文章最后给出了结论.
+1 IMN体系结构
+　　在传统的网络管理模型中，管理员的主要功能是从被管资源处收集各种信息，然后实施有关控制和处理.这样的模式存在两个弊端：(1) 管理员功能简单，只是状态监控和显示，系统管理人员必须参与许多管理工作；(2) 应用处理(如应用的QoS需求)和管理处理(如性能管理)之间缺乏有机的联系.因此，这个系统管理级的管理员必须重新建立，他不仅能够胜任而且能够高效完成相当复杂的任务.智能代理(intelligent agent，简称IA)和专家系统(expert system,简称ES)建立了管理员与网络间的桥梁.图1表示了IMN的体系结构.
+
+图1　IMN体系结构
+　　管理员监控网络各部分，ES与管理员协同工作，提供建议信息，应用和系统管理人员能够统一地观察到所有网络资源，并对各个网络资源实施网络管理操作.网络管理通过信息的采集和处理实现，为了存储被管网络资源的历史信息和操作信息，管理员使用一个面向对象的数据库MIB.
+　　IA连接多个本地网络资源管理员，即代理(A)，因而IA分布在整个网络系统的代理之上.IA根据本地代理，处理被管对象(MO)的有关信息.当每个IA接收到管理员发送的应用资源需求或系统管理人员命令时，在系统功能层与其他IA进行相互协商处理，交换管理信息和已获得的知识，执行管理功能，然后通知应用系统和系统管理人员有关信息.为了实现IA系统，需要使用诸如基于面向对象的网络资源建模和本地代理实现等关键技术.
+　　对于比较复杂的管理问题，管理员向ES发送咨询请求，咨询可以是发生故障的网段或网络规划问题等.一旦管理员收到ES返回的建议信息，就决定最终的管理实施步骤.管理员协调所控制管理的各个部分，ES不直接与网络资源进行通信.MKB存放已获得的知识，随时为ES所用.当ES收到咨询请求时，就力图向管理员提供适当的建议信息.
+2　管理员模型
+　　管理员模型定义与外部模块的接口，描述内部结构和功能.管理员由几个不同模块组成，如图2所示.每个模块使用其他模块提供的服务，同时提供服务给其他模块.
+
+图2　管理员模型
+　　IA接口模块是管理员与每一个IA间的接口，具有通信和转换功能.通信功能提供逻辑和物理上访问每个IA的设施，转换功能先进行IA使用的管理命令的分析、翻译和语法语义一致性检查，然后将系统控制报文翻译成IA控制报文.为了实现各个IA间的通信，通信协议采用国际标准.
+　　 网络管理功能模块具有配置、故障、安全、性能和计费等基本管理功能.每个子模块包括若干基于接收信息的决策过程，模块中的复杂功能交给ES处理，例如ES支持故障管理功能，因此,有些子模块需要与ES进行通信.
+　　MIB使用被管对象及相应属性的分层组织结构，一组类用来描述对象.对象间有“静态”和“动态”两种关系.静态关系存在于对象类之间，可由一棵继承树表示；动态关系存在于对象类实例之间，可动态地建立或消除.在管理上下文中，继承树用于定义数据结构和被管对象行为，包含树描述被管对象实际组织结构.数据库设施在占用较小内存空间和操作时间的情况下提供公共管理信息服务.
+　　AA接口包括网络管理应用接口和网络管理系统管理人员接口.应用接口模块向管理应用提供特定的管理应用服务，这些服务按照5个网络管理功能分成5类.例如,在配置管理中，可提供拓扑结构、体系结构、状态、属性设置和重新配置(建立或删除对象)等多项服务.系统管理人员接口模块提供统一和一致的界面，包括视图、声音和话音等3个子模块.为了使系统管理人员接口生动形象，可以使用多窗口、鼠标和图形工具等.
+　　管理工具模块向系统和系统管理人员提供一些有用的工具.这些工具与应用接口模块提供的服务不同，可以包括诸如仿真、文本编辑等工具.
+　　规划器是一个中心模块，有许多预定义状态，它能够控制和协调各个模块，完成以下工作：① 管理报文的综合；② 变迁到一个新状态；③ 报文至相应模块的路由选择.管理报文来自系统的各个模块，具有一个统一的格式.由于任一模块可以置于不同的机器，因而规划器的另一个功能是对数据库和规划器的各模块进行分布式管理.规划器维护一张类似于路由表的地址表，每个入口包含模块名、应用实体标识符和网络地址等.规划器还提供一个到ES的通信接口.
+3 专家系统模型
+　　在IMN体系结构中，ES表示若干个专家，每位专家都是某个问题域的万能手，具有相应的域知识.为了处理完成各种问题，ES使用二级专家机制，即一个通用专家和几个专用专家.通用专家具有全局管理知识和ES控制模块，协调ES中的所有专用专家；每个专用专家有一个推理机，包括一组产生式规则的规则存储器和工作存储器.MKB以规则和实事形式存放知识，一条规则是一对条件和结论，一个实事是一对变量和值，如某个网段的故障概率.另外，ES包括一个与管理员的接口，该接口以预定义格式重新组织报文，然后转发给管理员.该接口也对管理员发送的报文进行翻译.
+　　专家系统的研究和发展也为计算机网络的智能化和可操作性管理注入了新的技术，例如，神经网络和基于案例推理等机器学习技术.基于模型的专家系统主要用于网络故障管理系统，尤其在过滤和诊断方面.这个方法需要建立结构、功能和因果模型，这些模型的运用和导航策略通常是由一般产生式规则表示.这个方法有两个主要特点，第1，有益于运用现有标准网络管理模型；第2，所产生的系统通用，能够运用于不同的网络模型.基于案例的推理(case based reasonning,简称CBR)是一种使用类比和提示的数据处理技术，提供限定上下文中类比推理的一个模型，其基本的数据结构是案例，表示特定问题经验的上下文(条件部分)和解题过程的描述(动作部分).CBR功能可以定义为一种从输入(新案例)到寻求案例空间(另一个类比案例)的能力.类比案例将适应于这个新案例，对当前问题进行处理.CBR与专家系统互补，允许开发相关和通用的应用，适应于网络拓扑和物理组成的变化.
+　　图3给出一个网络故障诊断和修复专家系统(network fault diagnosis and repairing expert system,简称NFDRES)模型，以表示IMN体系结构中ES的一个专用专家系统.NFDRES处理不同网络上的异种信息，定义子网、设备和软件等被管对象的一个全局标准信息模型.这个模型包括中心和全局二级管理.
+
+图3　NFDRES模型
+　　中心级管理负责总体协调异构域信息，提供统一集中的网络状态视图.这一级包括一个使用基于模型的专家系统技术的诊断模块、一个作为与管理员接口的报警监控模块、一个使用CBR技术的限定和修复模块以及一个作为案例知识库的故障标签库.全局级管理负责管理和维护各个模块所需的知识，同时，通过分析历史数据，决定故障管理员的性能改进原则.
+4 智能代理
+　　由于传统的代理设计被视为一种十分通用的形式，不能针对特定的需求进行更新，因而这种代理不能被修改，以适应处理某个问题.然而，从网络用户角度来看，管理进程事实上是管理前置系统；从管理员角度来看，管理进程被认为是自治的“代理”，它被授权按照已制定的策略以一种自治的方式进行网络管理.这种网络管理前置系统称为智能代理(IA).
+　　IA在概念上有别于传统网络管理系统中的被动式代理，具有如下新的特性［4,8］：(1) 自治性：代理的操作无需直接的人工干预，具有行为动作和内部状态的多种控制；(2) 社会性：代理与代理之间进行交互(包括人在内)；(3) 反应性：代理能对其环境进行感知，并在环境发生变化时作出迅速反应；(4) 主动性：代理不仅能够对其环境进行响应，还能够发起目标制导的行为动作.显然，IA是一个自治的实体，能够独立担负起各项任务，具有一个较为复杂的体系结构［8］.在这样的体系结构中，定义了几个主要的功能模块，对于实现IA系统极为重要.图4给出了IA体系结构的一个总体框架，分为上下文管理员、目标管理员和IA引擎3个部分.
+
+图4　IA体系结构
+　　管理员通过应用上下文向某个IA传递用户需求.上下文包括应用需求的有关信息，如关键资源或服务的识别和应用所需的服务质量(QoS)等.IA有一个上下文管理员，根据按某个网络管理目的(如某个QoS)，IA所应达到的目标进行应用需求翻译.IA还有一个内部引擎，执行任务实现目标.任务的执行将完成：(1) 当有关代理处在相同管理域时，实现对当前MIB的特定观察；(2) 实现对可编程MIB的特定观察；(3) 测试资源；(4) 定义和发送其他IA必须达到的目标.因此，IA与其他IA之间有两种接口，一种用于发送，一种用于接收.
+　　上下文管理员从管理员接收用户需求，然后将它们自动转换成一定的格式，放在一个应用上下文的实时数据库内.该数据库存储不同上下文类型实例，以及实例间的关系或与IA域上运行的应用的关系.上下文管理员还根据所接收到的应用上下文进行目标建立，并且当目标没有成功实现时，将事件转发给应用和管理站.此外，上下文管理员具有应用与上下文协商的功能.
+目标管理员是IA的核心.IA表示目标制导的行为，目标按照用户需求动态建立.每当一个应用进入网络环境，IA就有一组新的目标.根据域内网络组织关系，已建立的目标需要与其他IA进行协同工作.因而，目标管理员必须处理从上下文管理员或者从远端IA收到的目标监测所处状态，相应实体(应用和远程IA)能够知道.如果本地监控不了目标，则要转发至其他位置更有利于监控的IA.目标管理员和上下文管理员共享一个实时数据库，该数据库存放目标和上下文入口之间的关系，因而当目标不成功时，上下文管理员能够决定哪个上下文参数受到影响.
+　　IA引擎有3个功能模块.(1) 观察器：监控网络资源，验证目标完成情况，包括以下几种观察类型：监控MIB值、监控探索MIB值(由观察器远程配置)、测试网络资源或服务提供者、阅览网络元素的系统日志.因为观察是根据目标进行，当某个目标不能实现时，观察器通知分析器是哪个目标不成功.然后，由分析器决定调用诊断过程.(2) 分析器：按照观察器的请求，进行故障诊断和性能分析.因为分析器知道失败的目标以及与服务、子系统或资源的相应关系，所以它至少要准确地知道从哪里起动诊断系统.分析器工作完成后，还把带标识的故障交给纠错器，由纠错器进行修复.(3) 纠错器：负责故障恢复.在准确定位故障子系统或资源后，纠错器力图使其回到正常状态，在数据库或知识库上调用内部处理过程进行修复.应该注意到局域网的几个服务依赖于远程进程，例如，在多数情况下，重新启动将使有关服务恢复到正常状态.
+5 结 论
+　　由于大规模网络的资源和相应行为的无穷无尽、各式各样，以及特定QoS的应用需求，网络系统的管理十分复杂.目前在研究、应用、产品开发和标准化组织等各方面的许多专家和研究人员都十分注重网络管理领域的突破性进展和新一代的网络管理产品，但是至今仍然没有出现令人满意的研究成果和全面的解决方案.本文给出了在网络智能管理方面研究的一些想法和结果.
+文章提出一个网络智能管理系统的体系结构框架，分为两个层次.在上一层次，IMN系统包括管理员和专家系统两个主要模块.管理任务由管理员协调专家系统共同完成，管理员模型和ES模型被定义.文章特别提出一个基于不同人工智能技术的智能故障管理专家系统，能够用于解决网络故障管理中的特定问题.在下一层次，IMN系统借助智能代理考虑关键应用的用户需求，给出了一个增强型管理结构和IA框架以及有关主要模块.
+*　本文研究得到国家自然科学基金、国家863高科技项目基金和江苏省自然科学基金资助.
+作者简介　罗军舟,1960年生,教授,主要研究领域为协议工程，形式技术，网络管理，网络安全.
+　　　　　顾冠群,1940年生,教授，博士生导师，中国工程院院士,主要研究领域为高性能网络，分布对象计算，协议工程，网络管理，CIMS网络.
+　　　　　费翔,1970年生,博士生,主要研究领域为协议工程，网络管理，Petri网应用，CIMS网络.
+　　　　　方宁生,1957年生,工程师,主要研究领域为网络管理，电信网络管理，网络协议.
+　　　　　姜浩,1958年生,副教授，主要研究领域为网络管理，CIMS网络，协议工程.
+本文通讯联系人:罗军舟，南京210096，东南大学计算机科学与工程系
+作者单位：东南大学计算机科学与工程系　南京　210096
+E-mail: jluo@seu.edu.cn
+参考文献
+　1　Zhang C. The design and implementation of a knowledge-based communication system in a framework for distributed expert systems. IEEE Transactions on Communications, 1995,43(5):1926～1936
+　2　Mansfield G et al. The MIKB model for intelligent network management. In: Proceedings of IEEE International Conference on Communications. 1993. 1210～1214
+　3　Rabie S. Integrated network management: technologies and implementation experience. In: Proceedings of the INFOCOM '92. 1992. 1020～1027
+　4　Fei Xiang, Wu Jie-yi, Luo Jun-zhou et al. Intelligent integrated network management based on distributed cooperative multi agent model. In: Siriruchatapong Pansak eds. Proceedings of the CSCWID'97. Beijing: International Academic Publishers, 1997. 492～495
+　5　Filipiak J. Design of network management architectures for heterogeneous networks using object oriented approach. In: Proceedings of the Integrated Network Management, III. 1993. 59～70
+　6　Wiele J D. Meeting network management challenges: customization, integration and scalability. In: Proceedings of IEEE International Conference on Communications. 1993. 1197～1204
+　7　Fei Xiang, Luo Jun-zhou, Gu Guan-qun et al. Modeling of intelligent integrated network management system using object oriented approach. Journal of Southeast University, 1998,14(1):1～5
+　8　罗军舟，沈俊，顾冠群.基于多代理系统的网络管理实现模型.见：史美林等编.第1次全国CSCW学术会议论文集.北京：电子工业出版社，1998.194～198
+(Luo Jun-zhou, Shen Jun, Gu Guan-qun. Multi-agent system based network management implementation model. In: Shi Mei-lin et al eds. In: Proceedings of the 1st National CSCW Workshop. Beijing: Publishing House of Electronics Industry, 1998. 194～198)
+　9　Festor O. Formal description of managed object behavior-A rule based approach. In: Proceedings of the Integrated Network Management, III. 1993. 45～58
+本文1998-08-20收到原稿,1999-01-15收到修改稿

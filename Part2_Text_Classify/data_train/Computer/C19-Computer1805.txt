@@ -1,0 +1,107 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000　No.19　No.1　P.15-17
+
+
+
+
+用VB的定时器控件产生精确的定时
+董静薇　李欣
+摘 要： 分析Timer控件的2个重要属性及用Timer控件产生定时器事件的定时精度，根据应用程序对定时的要求提出2种用Timer控件产生精确定时的方法。 
+关键词： Timer控件 定时精度 时间校准
+　　在工业控制中有许多需要定时完成的操作，如：定时显示当前时间，定时刷新屏幕上的进度条，上位机定时向下位机发送命令和传送数据等。Visual Basic语言提供了定时器控件Timer来完成定时中断的功能，对其编程后可在一定的时间间隔执行某些操作。但由Timer控件的Interval属性（定时间隔属性）确定的定时时间精度很低，不超过1／18s，这对于很多要求精确定时的控制系统来说是远远不够的。本文在详细讨论Timer控件的特点与局限性之后，针对不同情况下精确定时的要求，提出2种用Timer控件产生精确定时的方法。
+1 Visual Basic的Timer控件
+　　Timer控件响应时间的流逝，它独立于用户，在相等的时间间隔不断接受定时器事件，产生定时器中断。每个Timer控件必须要与窗体关联，因此要创建定时器应用程序就必须至少创建1个窗体，此窗体若不需要完成其它操作，就可以使窗体不可见。Timer控件在设计时出现在窗体上，所以可以选定这个控件，查看属性，编写事件过程。在程序运行时定时器控件不可见，所以其位置和大小无关紧要。Timer控件有2个与定时功能有关的重要属性。
+1.1 Enabled属性
+　　定时器的Enabled属性不同于其它对象的Enabled属性。对于大多数对象，Enabled属性决定对象是否响应用户触发的事件；对于Timer控件，将Enabled属性设为True和False时会启动和停止定时器操作。在定时器已经启动的情况下改变定时间隔属性后，再次将Enabled属性设为True则会停止现定时过程，立即重新以新的设置开始定时。
+1.2 Interval属性
+　　Interval属性指定定时间隔，即每次产生定时器事件之间的毫秒数。间隔的长度取决于定时要求，因为存在某些内部错误的可能性，常将间隔设为定时的一半。它的取值在0～64，767之间（包括这2个数值），即用Timer控件产生的最长定时时间约为64.8s。若设置Interval属性为0，则相当于关闭定时器。如果应用程序正在进行对系统要求很高的操作，例如长循环高强度的运算或正在访问驱动器、网络或端口，则应用程序定时器事件的间隔可能比Interval属性指定的间隔长。
+　　由于系统每秒生成18个时钟信号，所以即使Interval属性的单位是ms，定时间隔的实际精度也不会超过1/18s。可见，用Interval属性设置的时间间隔不准确，每次产生定时器事件间隔最大误差能达到55ms，其累积误差将会急剧增大。经实验发现，设置1个Timer控件的Interval属性为200ms，每产生5次定时器事件，将秒计数单元加1作为累计的时间，同时读取系统时钟，即实际时间，则程序运行20min后此累计时间比实际时间要慢大约1min。将Interval属性减小，直至156ms时，实验结果毫无变化。再设Interval属性为155ms时累计时间又比实际时间偏快。而且随着程序运行时间的增加，其误差也越来越大。可见，要确保时间准确，应在需要时检查系统时钟，而不能在内部追踪积聚的时间。要使用Timer控件在精确的时间间隔内执行某些操作或累计较长的时间，则必须对Timer控件的定时进行校准。
+2 时间校准方法
+　　根据应用程序所需要的精确定时的不同情况，下面以产生1s的精确时间为例介绍2种时间校准的方法。
+2.1 查询等待法
+　　要产生1s的定时，可将1s分成5个部分，每段长度为200ms。当程序在每秒钟的结尾部分（800ms～1s）无其它操作时，可用循环等待的办法使时间在每秒的末尾对齐。设Timer控件的Interval属性为200ms，则在产生4次定时器事件后（此时实际时间已大于800ms），不再等待第5次定时器事件，而是反复查询当前系统时钟。当系统时钟的秒数加1后，即表示下1s开始，此时重新启动定时器控件，使它开始新一轮的定时。这种方法的优点是简单明了，且每秒都非常准确。需要指出的是，用这种方法校准时在第一次启动Timer控件前也要反复查询系统时钟，使它在某1秒刚开始时立即启动。
+　　在程序1中，t1表示用Timer控件定时累加并校准后的秒值。程序1运行后，可在窗口中显示系统时钟和用Timer控件定时累加产生的时钟，可以看出二者是完全同步的。
+　　程序1：
+　　Dim t0，t1，t2，t3 As Integer
+　　Private Sub Form_Load（）
+　　Dim tt As String
+　　t0＝0
+　　t2＝0
+　　Timer1．Interval＝200
+　　Timer1．Enabled＝False
+　　tt＝Time ′读取当前时间
+　　tt＝Mid（tt，7，2）
+　　t1＝CInt（tt）　　　　′读出秒值
+　　　Do
+　　　　tt＝Time
+　　　　tt＝Mid（tt，7，2）
+　　　　t3＝CInt（tt）
+　　Loop Until t3＝（t1＋1）Mod 60
+　　Timer1．Enabled＝True　　　　′启动定时器控件
+　　t1＝t3
+　　End Sub
+　　Private Sub Timer1_Timer（）
+　　Dim t4 As Integer
+　　t0＝t0＋1
+　　If t0＝4 Then
+　　　Do
+　　　　tt＝Time
+　　　　tt＝Mid（tt，7，2）
+　　　　t4＝CInt（tt）
+　　Loop Until t4＝（t3＋1）Mod 60
+　　　　t3＝t4
+　　　　Timer1．Enabled＝True　　　　′重新启动定时器控件
+　　　　t0＝0
+　　　　t1＝t1＋1　　　　′秒加1
+　　　　If t1＝60 Then
+　　　　　　t1＝0
+　　　　　　t2＝t2＋1　　　　′分加1
+　　　　End If
+　　　　Form1．Label1．Caption＝CStr（t2）＆“：”
+　　　　Form1．Label2．Caption＝CStr（t1）
+　　　　Form1．Label3．Caption＝Time　　　　′显示系统时钟
+　　End If
+　　End Sub
+2.2 动态校正法
+　　当应用程序在每秒钟的各个阶段（每200ms）都有特定的操作而不能使用上述的查询等待方法校准时，可以采用更加灵活的动态校正法。经上述实验可知：5次200ms定时比实际1s的时间要长，而5次150ms定时比实际1s时间要短。那么可以在每产生5次定时器事件时读一次系统时钟，得到当前的秒值，再与累加计数得到的秒值比较。若累加值偏小则表明累加时间慢了，将Timer控件的Interval属性设为150ms，重新启动定时器；若累加值偏大，则恢复Interval属性为200ms。
+　　这种方法的特点是：不是每1秒钟都十分精确，但却消除了累积的时间误差，无论程序运行多少时间定时误差均为正负1s。与第一种方法比较，动态校正法的优点是没有循环等待的时间，从而不占用系统更多的资源。
+　　在程序2中，TimerCount为定时200ms计数器，取值范围0～5。Clock01为秒的累加值，取值范围为0～59。
+程序2：
+Dim TimerCount As Integer
+Dim Clock01 As Integer
+Private Sub Form_Load（）
+Form1．Timer1．Interval＝200　　′先设定时时间间隔为200ms
+TimerCount＝0　　　　′定时200ms计数器清零
+Clock01＝CInt（Mid（Time，7，2））　　　′取当前时间的秒值
+Form1．Timer1．Enabled＝True　　　′启动定时器控件
+End Sub
+Private Sub Timer1_Timer（）
+Dim Click02 As Integer
+TimerCount＝TimerCount＋1　　　　′定时200ms计数器加1
+If TimerCount＝5 Then　　　　　′定时1s时间到
+　　Clock02＝CInt（Mid（Time，7，2））　　′取当前时间的秒值
+　　Clock01＝（Clock01＋1）Mod 60　　′定时累加得到的秒值
+　　If Clock01＞1 And Clock02＞1 Then　　′为防止59加
+　　　　′1跳变到0时出现错误，秒值为0和1时不做处理
+　　　　If Clock02＞（Clock01＋1）Mod 60
+Then
+　　　　　　Form1．Timer1．Interval＝150　　　′累加值偏小，缩短定时时间间隔
+　　　　　　Form1．Timer1．Enabled＝True　　　′重新启动定时器控件
+　　　　Else
+　　　　　　If Clock01＞（Clock02＋1）Mod 60
+Then
+　　　　　　　Form1．Timer1．Interval＝200　　′累加值偏大，增大定时时间间隔
+　　　　　　　Form1．Timer1．Enabled＝True　　′重新启动定时器控件
+　　　　　　End If
+　　　　End If
+　　End If
+　　TimerCount＝0　　′定时200ms计数器清零
+End If
+End Sub
+　　程序运行后，Click01是经过动态校正的秒值，可以用它在内部追踪累积时间或用来执行一些需要与下位机同步进行的操作。
+董静薇（哈尔滨理工大学西区140信箱150080）
+李欣（哈尔滨理工大学西区140信箱150080）
+参考文献
+1，Mokelvy M，Martinsen R．Visual Basic 5开发使用手册． 北京：机械工业出版社，1997
+收稿日期：1999－06－28

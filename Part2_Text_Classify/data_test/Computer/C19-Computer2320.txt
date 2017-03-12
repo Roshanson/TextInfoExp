@@ -1,0 +1,268 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999　Vol.36　No.6　P.705-711
+
+
+
+交互式环境下基于层次分解的并行变换技术
+和伟民　李彤　刘剑　金钊
+摘　要：针对传统并行变换技术存在的不足，提出了一种交互式环境下基于层次分解的并行变换技术，主要侧重于循环外并行成分的提取，并强调由用户参与并行变换工作，获得较为理想的任务颗粒度及相关性分析，从而降低了并行变换的复杂度，在一定程度上提高了程序的并行度.
+关键词：CFG, HTG, 任务分解, 交互式环境, PCFG, 并行变换
+分类号：TP311
+A TECHNOLOGY OF PARALLEL TRANSFORMATION
+BASED ON HIERARCHY AND DECOMPOSITION IN AN
+INTERACTIVE ENVIRONMENT
+HE Wei-Min，LI Tong，LIU Jian，JIN Zhao
+(Department of Computer Science, Yunnan University, Kunming 650091)
+Abstract：In order to improve the traditional technology of parallel transformation, a new technology of parallel transformation based on hierarchy and decomposition in an interactive environment is presented. It focuses on the extraction of non-loop parallelism and emphasizes the interaction of users. It can decrease the complexity of parallel transformation and make the extraction of functional parallelism more effective to some extent.
+Key words：control flow graph, hierarchical task graph, task decomposition, interactive environment, parallel control flow graph, parallel transformation▲
+1　引　　言
+　　近年来，为了提高计算机系统的效率，最大限度地挖掘计算机系统的潜力，并行技术的研究成为一个热点，而并行编译技术又是其中的难点之一.并行变换是并行编译中的一个重要组成部分，它对源程序进行等价重构，从顺序程序中提取并行成分，使其获得更多的并行机会［1］.
+　　目前的并行变换技术主要有两种.一种主要侧重于循环并行性的开发，利用各种循环并行技术将循环重构为具有更多并行机会的形式［2,3］.常见的循环变换技术有：循环交换、循环分布、循环熔合（loop fusion）、循环剥离（loop peeling）等等［4,5］.由于循环变换仅针对循环进行，忽略了存在于循环之外的潜在并行性的开发.当处理机个数较少时，仅利用循环迭代间的并行性就可以获得运行性能很好的目标代码，即使进一步开发潜在的并行性，其性能改善也不显著.但当处理机较多时，仅利用循环并行无法使所有处理机处于“忙”状态，处理机的利用率不高［6］.另一种方法对前一种进行了改进，兼顾了循环外并行性的开发，但任务颗粒度的调整、不同任务之间的相关性分析完全由系统自动完成，用户无法干预.由于系统的智能化程度有限，这样获得的任务颗粒度大小及相关性分析往往不够理想，从而降低了程序的并行度［7］.
+　　本文针对以上两种并行变换技术的不足，提出了一种交互式环境下基于层次分解的并行变换技术.这种技术主要侧重于循环外并行成分的提取，并强调由用户参与并行变换工作，获得较为理想的任务颗粒度及相关性分析.至于循环内并行成分的提取，利用现有的循环变换技术进行即可，本文不再详细讨论.
+2　HTG的构造
+　　从顺序源程序的控制流图CFG出发，可以构造一个树型层次任务图HTG.HTG中的每个结点代表一个任务，一个任务又可以包含多个子任务.HTG的根结点root中存放整个顺序源程序的CFG，将根结点进行划分，可以得到下一层的中间结点，每个中间结点又可进行类似的划分，直到不能再划分为止，此时的叶结点称为基本结点.这样就得到一个递归结构的有向层次图HTG.
+　　由CFG构造HTG的方法如下：
+　　设CFG=（V，E），其中V为基本结点集，E为有向弧集.
+　　HTG=（HV，HE），其中HV为任务集，HE为有向弧集.
+　　定义1. 在CFG中，若结点y是结点x的祖先且从x到y存在弧（x，y）,则弧（x，y）称为循环弧，记为（x，y）∈cycle.
+　　令
+
+则I(x)为CFG中以x为起点，y为终点的循环的集合.
+
+则C(G)为CFG中条件结点的集合.
+　　定义2. 设x∈C(G)，y∈V，若从x到结束结点stop的每一条路径都经过y，且若存在y′使得从x到stop的每一条路径都经过y′，则y是y′的祖先，那么称y为x条件的结束结点.
+
+
+图1　顺序源程序的控制流图CFG
+　　令J(x)=∪（C(x,y) (C(x,y)为以x为条件起点，y为x的条件结束结点的条件），则J(x)为CFG中以x为起点，y为终点的条件的集合.
+　　最终可得HV={I(x):x∈H(G)}∪{J(x):x∈C(G)}∪root∪{V}
+　　由HV易得HE.（算法略）
+　　某顺序源程序代码如下，与之相应的CFG如图1所示，相应的HTG如图2所示.　　begin
+　　　for i=1 to n do
+　　　　read(first［i］)
+　　endfor
+　　　for i=1 to n do
+　　　　read(second［i］) 
+　　　endfor
+　　　for i=1 to n do
+　　　　read(third［i］)
+　　　endfor
+　　　if (first［0］<second［0］ and first［0］<third［0］)
+　　　begin
+　　　　process-block(first)
+if (second［0］<third［0］)
+begin
+process-block(second)
+process-block(third)
+end
+else
+begin
+process-block(third)
+process-block(second)
+end
+end
+else
+if (second［0］<first［0］ and second［0］<third［0］)
+begin
+process-block(second)
+if (first［0］<third［0］)
+begin
+process-block(first)
+process-block(third)
+end
+else
+begin
+process-block(third)
+process-block(first)
+end
+end
+else
+begin
+process-block(third)
+if (first［0］<second［0］)
+begin
+process-block(first)
+process-block(second)
+end
+else
+begin
+process-block(second)
+process-block(first)
+end
+end
+end
+end
+　　　　/* Start of node T1 */
+　　　　/* BS0 */
+　　　　/* End of node T1 */
+　　　　/* Start of node T2 */
+　　　　/* BS1 */
+　　　　/* End of node T2 */
+　　　　/* Start of node T3 */
+　　　　/* BS2 */
+　　　　/* End of node T3 */
+　　　　/* Start of node T4 */
+　　
+　　　　/* BS3 */
+　　　　/* Start of node T41 */
+　　
+　　　　/* Start of BS4 */
+　　　　/* End of BS4 */
+　　
+　　
+　　
+　　　　/* Start of BS5 */
+　　　　/* End of BS5 */
+　　　　/* End of node T41 */
+　　
+　　
+　　　　/* Start of node T42 */
+　　
+　　　　/* BS6 */
+　　　　/* Start of node T421 */
+　　
+　　　　/* Start of BS7 */
+　　　　/* End of BS7 */
+　　
+　　
+　　
+　　　　/* Start of BS8 */
+　　　　/* End of BS8 */
+　　　　/* End of node T41 */
+　　
+　　
+　　
+　　　　/* BS9 */
+　　　　/* Start of node T422 */
+　　
+　　　　/* Start of BS10 */
+　　　　/* End of BS10 */
+　　
+　　
+　　
+　　　　/* Start of BS11 */
+　　　　/* End of BS11 */
+　　　　/* End of node T422 */
+　　　　/* End of node T42 */
+　　　　/* End of node T4 */
+
+
+图2　与图1所示CFG相应的层次任务图HTG
+3　HTG的优化
+　　定义3. 任务数据相关是指任务之间的操作数据的相互依赖关系［8］.设Skl，Skr分别表示任务Tk中语句的左部变量集和右部变量集，若任务Ti在Tj之前执行，则有如下3种相关关系：
+　　(1) 若Sil∩Sjr≠,则称Ti正相关于Tj，记为TiδTj；
+　　(2) 若Sir∩Sjl≠,则称Ti反相关于Tj，记为TiTj；
+　　(3) 若Sil∩Sjl≠,则称Ti输出相关于Tj，记为Tiδ°Tj.
+　　在HTG中，当Ti，Tj数据相关时，它们之间仍有并行的潜力可挖，可以采用任务分解技术对HTG进行优化.
+3.1　优化思想
+　　假设在HTG中某一任务结点Tx={T1, T2,…,Tm}, Ti,Tj∈Tx，Ti与Tj数据相关且Tj依赖于Ti，在未进行任务分解之前，Ti在Tj之前执行.利用任务分解技术我们对Tj的子任务适当调整，可以将Tj的子任务划分为3个集合：Tj1，Tj2，Tj3.Tj1中的任务与Ti数据无关；除了与Tj1中子任务相关的任务外，Tj中其它任务都属于Tj2；未被Tj1和Tj2包括的任务属于Tj3，此外，为保持原有的语义而添加的任务也放在Tj3中.Tj1中的任务可以与Ti并行执行，如图3所示.在HTG中将Tj1从Tj中分离出来，上提一层.任务分解之前Tx={T1,T2,…,Ti,Ti+1,…,Tj-1,Tj,…,Tm},Tj={Tj1,Tj2,Tj3};任务分解之后，Tx′={T1,T2,…,Ti,Ti+1,…,Tj-1,Tj1,T′j,…,Tm},T′j,={Tj2，Tj3}.由于Tj2与Ti数据相关，但与Tj1数据无关，若Ti执行完毕时Tj1还未执行完，则可以让Tj2与Tj1并行执行.与Tj2相关的优化工作只能在程序执行过程中动态进行，所以在对HTG的静态优化阶段我们不予考虑.
+
+
+图3　任务分解技术
+3.2　算法设计
+　　实现HTG优化的关键在于如何将Tj中的任务合理分解后放入Tj1，Tj2，Tj3中.任务分解算法将结点Tj中的任务划分为若干子任务，子任务的选择决定了分解的粒度.根据这些子任务与结点Ti的相关性，将其分为3类：
+　　(1) Bound类: 与Ti数据相关；
+　　(2) Linked类: 与Ti数据无关，但与Bound类或其他Linked类子任务相关.Linked类任务可细分为：① Needsbound:与Bound类或其他Needsbound类相关；② Generatelinked:与Bound类、Needsbound类或其他Generatelinked类相关；③ Readlinked:其他Linked类，与Generatelinked类相关；
+　　(3) Free类: 其他.
+　　在判断了子任务的类别后，将其分别放入Tj1,Tj2,Tj3中.
+　　算法1. 将Tj中的任务分解后分别放入Tj1,Tj2,Tj3中
+　　输入：Tj={T1,T2,…,Tm} , Ti
+　　输出：Tj1,Tj2,Tj3
+　　BEGIN
+　　　　FOR (j∶=1 TO m) DO
+　　　　IF (Tj∈Free类或Tj∈Generatelinked类)
+　　　　　　THEN 将Tj放入Tj1中
+　　　　　　ELSE IF (Tj∈Bound类或Tj∈Needsbound类)
+　　　　　　　　　THEN 将Tj放入Tj3中
+　　　　　　　　　ELSE 将Tj放入Tj1中或将Tj放入Tj3中
+　　END.
+4　用户交互方式
+　　在传统的并行变换过程中，并行成分的提取和执行条件的获得都是由系统自动完成的［9］
+.CFG是预先定义好的，任务的颗粒度要么是固定的，要么由系统自动调整.某个任务的执行时间信息在编译时无法获得，过程调用中的实际参数值以及循环边界等信息只能由编译器作较为保守的估计.由于系统自身智能程度的限制，“自动”式并行变换在一定程度上会降低程序的并行度，特别是对于比较复杂的大型程序，更是会使并行变换的效率大打折扣［10］.而并行变换往往就是针对复杂的大型程序的（简单的小型程序没有并行变换的必要），因此仅由系统自身来完成并行变换效果是很不理想的.为了进一步提高程序的并行度，我们采用一种有用户协作参与的交互方式，对HTG进一步优化.
+　　在交互式环境下，用户有权做以下一些有益的工作：
+　　(1) 根据需要选择任务颗粒度的大小；
+　　(2) 请系统测试任意两个任务结点间的相关关系；
+　　(3) 为了消除相关关系，利用自己所掌握的知识和经验，适当对源程序进行有益的修改；
+　　(4) 在HTG的优化过程中，能够转移到HTG的不同层次中，动态修改任务的颗粒度大小，确定将哪些任务分解，哪些子任务上提；
+　　(5) 粗略估计任务的执行时间，确定某些任务虽然可以并行，但是否有并行的必要（某些可以并行的任务如果执行时间很短，并行的开销时间反而比串行的执行时间要长，这样的并行就毫无意义）.
+　　我们采用交互式菜单实现用户对HTG的优化.
+　　菜单界面由两部分组成：左部为功能选项，右部为当前的CFG.
+　　功能选项包括以下6项功能：
+　　(1) Control Dependence Graph (生成当前CFG的控制相关图)
+　　(2) Data Dependence Graph （生成当前CFG的数据相关图）
+　　(3) Modify Source Code （适当修改顺序源程序代码）
+　　(4) Move to Next Level （转到当前考察结点的下一层）
+　　(5) Move to Previous Level （转到当前考察结点的上一层）
+　　(6) Dependence Test （检测任意两个结点之间的相关关系）
+　　用户通过以上提供的6项功能实现对HTG的优化.
+5　由HTG到PCFG的并行变换
+　　从优化后的HTG出发，我们可以构造并行程序的控制流图PCFG.
+　　PCFG=（PV，PE），其中PV为并行任务集，PE为有向弧集.
+　　PCFG有如下性质：
+　　(1) 若(Ti,Tj)∈PE，则Ti应在Tj之前执行；
+　　(2) Ti∈PV，若Ti={T1,T2,…,Ts},(s≥2)，则T1,T2,…,Ts可以并行执行.
+　　定义4. 设HTG中某一非叶结点root的子任务结点从左至右依次为T1，T2，…，Tm，CT+i={Tr|Tr=Tj∧1≤j≤m∧((Ts∈CT+i∧s≠r)→Tr与Ts数据无关)}(1≤i≤m)，称CT+i为root的并行任务闭包.
+　　由CT+i的定义可知，CT+i中的任务两两数据无关.
+　　求CT+i的算法如下：
+　　算法2. 求HTG中结点root的并行任务闭包CT+i
+　　输入：root
+　　输出：CT+i
+　　BEGIN
+　　　　i:=1; total:={T1 , T2 ,…, Tm}; count:=m；
+　　　　WHILE（count>1）DO
+　　　　BEGIN
+　　　　　　j:=0;　　　　CT（j）i：=total中第一个子任务结点;
+　　　　　　REPEAT
+　　　　　　求Tb;
+　　　　　　/* Tb={T|T∈total∧TCT（j）i∧(Tq∈CT（j）i)(T与Tq数据无关)}; */
+　　　　　　CT（j+1）i:=CT(j)i∪Tb;
+　　　　　　j:=j+1;
+　　　　　　UNTIL(CT（j-1）i=CT（j）i)
+　　　　　　CT＋i:=CT（j）i;
+　　　　　　total:=total－CT+i;
+　　　　　　count:=total中的子任务的个数；
+　　　　　　i:=i+1;
+　　　　END
+　　END.
+　　由算法2求得root的并行任务闭包分别为CT+1，CT+2，…，CT+n(1≤n≤m).
+　　在算法2的基础上可以构造求PCFG的算法如算法3（最初的PCFG只含有开始结点start、根结点root和结束结点stop）.
+　　算法3. 由HTG构造并行程序控制流图PCFG
+　　输入：root /* root为当前HTG的根结点 */
+　　输出：PCFG
+　　BEGIN
+　　　　以root作为输入调用算法2，求得CT+1，CT+2，…，CT+n；
+　　　　在PCFG中以CT+1，CT+2，…，CT+n替代root；
+　　　　FOR（i:=1 TO n-1）DO
+　　　　CT+i与CT+i+1之间用有向弧（CT+i，CT+i+1）相连；
+　　　　FOR（i:=1 TO n）DO
+　　　　IF (CT+i只包含一个子任务Tj且Tj不是基本结点)
+　　　　　　THEN 以Tj作为输入递归调用算法3;
+　　END.
+6　结束语
+　　并行变换是并行编译技术的重要组成部分，本文提出的并行变换技术主要是通过构造HTG，并采用任务分解技术和用户交互的方式对其进行优化，最后由优化的HTG构造并行程序的控制流图PCFG.这在一定程度上提高了程序的并行度，能够获得比传统并行变换更好的并行效益.不过，在这方面还有很多的工作值得去做.例如，用户的参与虽然在一定程度上提高了程序的并行度，但是用户也不可能对所有的任务运行时间作出合理的估计，并行变换在很大程度上还只停留在静态的水平上，这就不可能使程序获得最佳的并行效益.另外，对于嵌套较多的程序，并行变换会变得比较复杂，开销也会相应增加，原有的变换技术可能要进行相应的修改才能适用.上述这些问题都有待进一步的研究，我们将在今后的工作中对这些问题加以解决.■
+基金项目：本课题得到云南省自然科学基金、云南省中青年学术和技术带头人培养基金联合资　　　　　　助.
+作者简介：和伟民，男，1973年2月生，硕士研究生，主要从事软件工程、并行处理等方面的　　　　　　研究.
+　　　　　李彤，男，1963年12月生，教授，主要从事软件工程、并行处理、操作系统等方面　　　　　　的研究.
+　　　　　刘剑，男，1976年1月生，硕士研究生，主要从事软件工程、软件自动化等方面的　　　　　　研究.
+　　　　　金钊，男，1977年3月生，硕士研究生，主要从事软件工程、CASE工具集成等方面　　　　　　的研究.
+作者单位：和伟民（云南大学计算机科学系　昆明　650091）
+　　　　　李彤（云南大学计算机科学系　昆明　650091）
+　　　　　刘剑（云南大学计算机科学系　昆明　650091）
+　　　　　金钊（云南大学计算机科学系　昆明　650091）
+参考文献：
+［1］清萍，李晓峰，郑世荣.一种基于分解变换的并行化编译新技术.计算机科学，1998，25(1)： 81～83
+　　　(Chen Qingpin, Li Xiaofeng, Zheng Shirong. A new technology of split-based transformation in parallelization compile. Computer Science (in Chinese) 1998,25(1): 81～83)
+［2］Koelbel C, Mehrotra P. Compiling global name space parallel loops for distributed execution. IEEE Trans on Parallel and Distributed Systems, 1991, 2(10): 463～481
+［3］Kennedy K, McKinley K S， Tseng C. Interactive parallel programming using the parascope editor. IEEE Trans on Parallel and Distributed Systems, 1991, 2(7): 329～341
+［4］Lilja D J. Exploiting the parallelism available in loops. Computer, 1994, 27(1): 13～26
+［5］Rogers A, Pingali K. Compiling for distributed memory architectures. IEEE Trans on Parallel and Distributed Systems. 1994, 5(3): 281～298
+［6］Girkar M, Polychronopoulos C D. Automatic extraction of functional parallelism from ordinary programs. IEEE Trans on Parallel and Distributed Systems, 1992, 3(3): 166～178
+［7］Mukherjee N, Das P K. An approach towards parallelisation of sequential programs in an interactive environment. Information and Software Technology , 1997, 39(2): 77～89
+［8］Ferrante J, Ottenstein K J, Warren J D. The program dependence graph and its use in optimization. ACM Trans on Programming Languages and Systems, 1987, 9(7): 319～349
+［9］李学干，徐甲同.并行处理技术.北京：北京理工大学出版社，1994
+　　　(Li Xuegan, Xu Jiatong. Parallel Processing Technology(in Chinese). Beijing:Beijing Polytechnic University Press, 1994)
+［10］李玉茜，杨宗源.并行程序设计.上海：上海科学技术文献出版社，1994
+　　　(Li Yuqian, Yang Zongyuan. Parallel Programming(in Chinese). Shanghai:Shanghai Science and Technology Literature Press, 1994)
+收稿日期：1998-09-14
+修稿日期：1999-02-01

@@ -1,0 +1,60 @@
+计算机工程
+COMPUTER ENGINEERING
+1999年 第25卷 第8期 Vol.25 No.8 1999
+
+
+
+华东电力系统数据通信增值网的设计
+何星，施华军，唐亮，方兴其，李根蔚
+摘要：介绍了华东电力系统数据通信增值网的系统结构设计和增值网通信服务软件的设计思想。其要点是引入了前置通信服务机减少了主站的通信负荷，实现了不同网络通信协议的透明调用，扩展了电力部部颁应用层协议，提供了不同应用层协议的主站接入方式。
+关键词：增值网；通信服务机；主站接入
+The Design of Value-added Data Communication Network for East China Electric Power Information System
+He Xing,Shi Huajun,Tang Liang,fang Xingqi,Li Genwei
+(Automation Research Institute of Shanghai Jiaotong Univ.,Shanghai 200030; East China Power Dispatch Center,Shanghai 200001)
+【Abstract】In this paper,the design of the system structure and the related communication-service software of the Value-added Data which alleviates the master station's communication-load,and implements the transparent call among different network protocols.Furthermore,using various application Layer Protocol for Real Time Data Communication in Power System is extended,and the access of master stations using various application protocols is also provided.
+【Key words】Value-added network;communication server;Master station access
+　　华东电力系统数据通信网是正在建设中的中国电力数据网络 (CEDnet) 的第一个二级网络。该信息网主要应用于华东总调、上海市调、江苏、浙江、安徽省调和天荒坪电站各监控系统计算机间的实时通信。其通信子网为 X.25 分组交换网。但通信子网仅提供低级的通信服务，而调度自动化系统实时信息的交换业务的实现还需要有基于通信子网的增值业务的开发，即资源子网的开发。本文将重点阐述增值网的系统结构的设计及增值网通信服务软件的设计。 
+1 增值网系统结构的设计
+　　通信子网增值业务的开发，原则上可以直接在主站上进行开发，各主站通过支持其网络协议的路由器直接接入通信子网，从而形成数据交换网。但考虑到华东电网各省市调的 EMS 主机负载已过重，若直接在 EMS 主机上进行增值业务 ( 网络管理、信息管理等 ) 的开发必将使负载问题严重恶化。为了解决这个矛盾，我们引入了通信服务机。各 EMS 主站通过服务机接入分组交换网。大部分的增值业务由通信服务机完成，减轻了主站的负担。华东信息网系统结构可分为图 1 所示的 3 个层次： (1) 信息源网层 信息源网为信息网中产生原始数据、信息和最终使用这些信息的主站接入系统。如 EMS/SCADA 系统， RMIS 系统等。 (2) 增值网层 增值网层从硬件上讲有通信服务机、 RIMS 通信服务机和路由器等。通信服务机是增值网的中心环节，其主要功能是将主机的通信负荷分离出来；提供主机通信软通道和通信资源服务。 Pentium 通信服务机主要用于 RMIS 系统的接入，本文将不作详细的讨论。 (3) 通信网层 通信网层指负责通信底层的部件如 X.25 分组交换网，程控交换节点机等。 
+
+图1 网络框架结构
+　　其中，增值网中通信服务机采用 SUN Sparc20 工作站，运行环境是 Solaris2.51 。 Pentium 通信服务机采用高性能的 Pentium PC ，操作系统是 Window 95 。 
+　　增值网结构就网络通道而言有以下两个特点： 
+　　(1) SUN 通信服务机通过 SunLink HSI(High-speed Serial Interface) 卡直接接入分组交换网，实现基于 X.25 的网络互联。 SUN 通信服务机还可通过以太网卡经局域网接到路由器，以 TCP/IP 外包 X.25 的方式接入分组交换网，实现 SUN 服务机之间基于 TCP/IP 的网络互联。这两条通道可根据需要，在服务机上通过界面配置灵活切换，互为备用。 
+　　(2) SUN 通信服务机在增值网中不但要实现路由器的路由选择和协议转换功能，同时还要扮演网管角色，负责链路状态的监视、通信性能检测、流量统计和实时报文监视。 
+　　增值网结构从数据交换的层次上看，它为网上任意两个节点的数据交换提供了数据通道。主站的交换信息通过服务机的代理，利用广播的方式由服务机负责发送至全网各站点，大大缓解了主站的负担。此外，主站的交换信息还可以存储在服务机的数据库中，由服务机发布到信息网上，使得主站只需面对服务机一个节点，而不是全网的所有节点，这也大大缓解了主站的负担。 
+2 增值网通信服务软件的设计
+　　增值网通信服务软件用于向上层应用提供统一的调用接口，实现各种应用层服务原语。 
+　　华东电力信息网是一个具有多种网络协议和多种应用层协议的复杂网络。在网络层协议方面： (1) 华东网调和上海市调的 EMS/SCADA 主机的局域网采用了 DECNet 网，其接入采用 DECNet 协议通过 DECNet 网卡进入通信服务机； (2) 江苏、浙江、安徽的 EMS/SCADA 主机的接入则采用 TCP/IP ； (3) 对于有些老的 SCADA 系统，如江苏省调，其 RTU 主机要通过 SUN 通信服务机的串行口直接入网，所以通信服务软件要支持串行口链路协议。 
+　　在应用层协议方面，由于电力部的部颁应用层协议是支持点对点通信的应用层协议，它不再适用于多点通信。为适应网络通信，我们对应用层协议进行了扩展，在部颁应用层协议的报文头加了 8 个字节的路由块，前 4 个字节为报文目的地址，后 4 个字节为报文源地址称之为扩展部颁应用层协议。因此，在华东信息网中同时存在以下几种应用层协议： (1) 大部分的接入系统应用层协议均采用扩展部颁应用层协议； (2) 由于历史原因，天荒坪电厂的接入采用点对点的部颁应用层协议； (3) 江苏 RTU 主机通过串行口接入，它的应用层协议必须遵循 RTU 的应用层通信规约，如《 Micro 4F 型远动装置功能说明和通信规约》 ( 以下简称《 m4f 》 ) 。 
+　　由以上分析可知，通信服务机软件既要提供多种网络协议的支持，又要提供多种应用层协议的支持。为了充分实现可扩充性、可移植性、高效性、故障检测与隔离、便于调试、屏蔽低层细节及透明调用，通信服务软件强调协议分层：应用层和网络功能层。它提供两个调用界面：应用层调用界面和网络功能层调用界面。 
+2.1 应用层 
+　　如图 2 ，应用层用于实现上层应用报文到应用层协议的报文格式的转换。应用层调用界面直接为信息网上层应用提供服务。管道调度用于解决调用接口的竞争问题。由于整个信息网涉及到异种机连网，但不同机型机器不但数据格式可能不同，甚至数据编码也可能不同。由此带来的后果将是灾难性的。为此，须在有关应用层协议下面增加一个表示层，用以解决异种机数据内部表示格式不一致的问题。 
+
+图2 应用层结构示意图
+　　应用层协议的调用界面实现了上层应用对它的透明调用，提供以下几个服务原语的统一调用： 
+　　联系报文： A_Associate{request/indication/response/confirmation} 
+　　释放报文： A _ Release{request/indication/response/confirmation} 
+　　放弃报文： A_Abort {request/indication} 
+　　联系复位： A_Reset {request/indication/response/confirmation} 
+　　数据报文： A_Data {request/indication} 
+　　通信报文： A_Poll { request/indication/response/confirmation} 
+　　send报文： A_Send { request/indication/response/confirmation} 
+　　同时，应用层还具有良好的开放性和扩充性：扩充新的应用层协议时不须受上层应用和下层网络细节的限制，只需符合应用层调用接口即可。 
+2.2 网络功能层 
+　　网络功能层对各种协议进行处理，从而达到网络协议透明功能。如图 3 ，本网络功能层将支持 TCP/IP 、 DECNet 、 X.25 和串行口数据链路层协议的接入。对于 TCP/IP 采用基于传输层的 Sockets 调用界面，网络路由由其内部的 IP 网络层解决；对于 DECNet ，则采用基于 SunLink DNI 8.0 的调用界面；对于 X.25 ，采用 SunLink X.25 8.0 网络层调用界面，该层的下层支持包括 SunLink HSI/S 2.0 driver 。网络功能层调用界面为应用层提供服务，地址解析用于应用地址与网络地址的转换和寻址。 
+
+图3 网络功能层结构示意图
+　　网络功能层的构造，一方面提供给应用层一个统一的调用接口，屏蔽了网络层的细节： 
+　　网络功能层初始化： int net_init (int (* lpfnCallBack)() ); 
+　　网络发送： int net_Send ( int channel, Net_Addr * lpAddr, unsigned char * buf, unsigned int size ); 
+　　网络接收： int net_Recv ( int channel, Net_Addr * lpAddr, unsigned int result, unsigned char * buf, unsigned int size ); 
+　　另一方面，它提供了一个统一的调用底层网络协议的接口规范。底层的网络协议接入进程都遵循这个接口规范实现与网络功能层的交互。当要实现新的网络协议时，只要该网络协议的接入接口符合规范，不必修改网络功能层就可直接接入。这就是网络协议的开放性。 
+3 结束语
+　　电力调度数据网的设计建造正是在电力系统的分组交换网基础上，引入了通信服务前置机，减轻了调度系统的负担。同时在通信服务机通信软件的设计上强调协议分层，提供统一的外部调用接口，适应了各调度系统应用层协议、网络协议多样性的要求，大大方便了调度系统的接入。 
+作者单位：何星　施华军　唐亮　方兴其　上海交通大学自动化研究所，上海 200030；
+　　　　　李根蔚　华东电力管理局高度室，上海 200001
+参考文献 
+1 能源部调自 [1992]66 号 . 电网调度自动化信息传输规定 .1992 
+2 华东电网调度系统计算机网络规划 .1995 
+3 电力行业标准 DL476-92. 电力系统实时数据通讯应用层协议 . 1992 

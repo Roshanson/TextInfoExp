@@ -1,0 +1,120 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年　第25卷　第5期　Vol.25 No.5 1999
+
+
+
+参数不确定线性系统混合H2/H∞状态反馈控制
+吴淮宁
+摘　要　对一类含有范数有界参数不确定线性系统的混合H2/H∞状态反馈控制问题进行了研究. 给出了系统一个输出在满足给定的H∞干扰衰减约束条件下，其另一个输出的H2性能指标所满足的上界，并利用Lagrange乘子法导出了使得该界达到最小的“最优的”状态反馈控制器.结果仅需求解一个含有两个尺度参数的修正代数Riccati方程. 而且数值结果表明该方法是非常有效的.
+关键词　不确定线性系统, 混合H2/H∞控制, 状态反馈, 代数Riccati方程, 鲁棒性.
+收稿日期　1998-02-24　收修改稿日期　1998-12-18
+MIXED H2/H∞ STATE-FEEDBACK CONTROL FOR
+PARAMETER UNCERTAIN LINEAR SYSTEMS
+WU Huaining
+(Department of Automatic Control,Beijing University of Aeronautics and Astronautics, Beijing　100083)
+Abstract　The paper studies the mixed H2/H∞ state-feedback control problem for uncertain linear systems with norm-bounded parameter uncertainty.An upper bound for the H2 performance index of one output is obtained under the condition of satisfying a given H∞ disturbance attenuation constraint on the other output,and the “optimal” state-feedback controller is derived by Lagrange multiplier technique to minimize the bound.The obtained result only needs to solve a modified Riccati equation with two scale parameters.Numerical results also demonstrate that the proposed method is very effective.
+Key words　Uncertain linear systems, mixed H2/H∞ control, state-feedback, algebraic Riccati equation, robustness.
+1　引　言
+　　H2保价控制方法为不确定线性系统的控制器设计提供了一个非常有用的方法［1, 2］,该方法不仅能保证系统鲁棒稳定, 而且还能为H2性能指标提供一个最优的上界. 然而这种方法不能处理系统还含有功率有界的外部干扰的情形. 近年来所提出的混合H2/H∞鲁棒控制方法则很好地解决了这个问题, 如文献［3］用Riccati方程法解决了一类含有凸有界的不确定离散系统在未建模动态作用下的混合H2/H∞状态反馈控制问题；文献［4］利用凸优化方法解决了这类问题；而文献［5］则对一类含有范数有界参数不确定连续系统的混合H2/H∞鲁棒状态反馈控制问题进行了研究. 然而这些结果考虑的H2,H∞性能指标都对应于同一个输出.但在实际中所要求的H2,H∞性能指标可能对应不同的输出, 因此，本文对含有范数有界参数不确定线性系统的混合H2/H∞状态反馈控制问题重新进行了研究，考虑了H2,H∞性能指标对应于不同输出的情形. 得到的控制器对于所有可容许的参数不确定都能保证系统输出一个满足给定的H∞干扰衰减约束，且为另一个输出的H2性能指标提供了一个最优上界. 本文的结果仅需求解一个含有两个尺度参数的修正代数Riccati方程.
+2　问题描述
+　　考虑如下不确定线性系统
+　(1)
+z0(t)=Cox(t)+D0u(t),　(2)
+z1(t)=C1x(t)+D1u(t),　(3)
+这里x(t)∈Rn为状态;u(t)∈Rm为控制输入;w(t)∈Rp为功率有界的外部干扰;z0(t)∈Rq,z1(t)∈Rr为系统输出；A,B1,B2,C0,D0,C1,D1为具有适当维数的已知名义系统矩阵，而F(t)∈Ri×j为时变的参数不确定矩阵，满足
+ (4)
+H,E1,E2为具有适当维数的已知矩阵. 假定(A,B2)是能控的，且DT0D0＞0.
+　　考虑状态反馈控制律u(t)=Kx(t), 则闭环系统可写为
+ (5)
+z0=C0cx, (6)
+z1=C1cx, (7)
+这里Ac=A+B1K,Ec=E1+E2K,C0c=C0+D0K,C1c=C1+D1K.定义H2性能指标
+　(8)
+作者的目的是：确定状态反馈增益K, 满足以下设计要求:
+　　1)闭环系统是渐近稳定的；
+　　2)由w至z1的闭环传递函数Gz1w(s)满足‖Gz1w(s)‖∞＜γ,这里γ＞0为干扰衰减水平;
+　　3)H2性能指标(8)式达到最小.
+　　若Ac+HFEc是渐近稳定的，则(8)式可写为
+ (9)
+其中满足如下Lyapunov方程
+ (10)
+考虑Lyapunov方程
+ (11)
+其中则(9)式又可改写为
+　(12)
+　　由于H2性能指标与不确定参数有关, 要想直接求得其最小值非常困难, 因此作者考虑使得H2性能指标的一个上界达到最小, 该界可由定理1给出, 其证明需要用到如下严格有界实引理［6］：
+　　引理1.下列的陈述是等价的：
+　　1)A是渐近稳定的, 且‖C(sI-A)-1B‖∞＜1;
+　　2)存在一个矩阵使得
+　　3)代数Riccati方程ATP+PA+PBBTP+CTC=0存在一个稳定解P=PT≥0, 也即A+BBTP是渐近稳定的.而且, 如果这些陈述成立, 则
+　　定理1.考虑闭环系统(5)―(7)式，给定γ＞0以及状态反馈增益K, 则存在标量ε1＞0，ε2＞0，使得方程
+　ATcP+PAc+P(ε1HHT+ε2γ-2B2BT2)P+ε-11ETcEc+ε-12CT1cC1c+CT0cC0c=0　(13)
+有一个稳定解P=PT≥0；当且仅当Ac+HFEc渐近稳定，且‖Gz1w(s)‖∞＜γ.此时，对于所有可容许的参数不确定都有
+J0≤J(P)=tr｛PB2BT2｝. (14)
+　　证明. 如果Ac+HFEc渐近稳定，且‖Gz1w(s)‖∞＜γ. 显然存在一个充分小的ε2＞0, 使得
+
+由引理1可知: 总存在一个使得
+从文献［7］的引理A.2，A.3容易证明: 存在一个标量ε1＞0，使得
+由上式及引理1可知：方程(13)存在一个稳定解P=PT≥0.
+　　由文献［7］的事实A.1可知：利用该不等式及引理1很容易证明定理反过来也是成立的.
+　　令M=ε1PHHTP+ε-11ETcEc-PHFEc-ETcFTHTP，显然M≥0，则(13)式可化为(Ac+HFEc)TP+P(Ac+HFEc)+ε2γ-2PB2BT2P+ε-12CT1cC1c+CT0cC0c+M=0.用上式减去(11)式可得
+
+因Ac+HFEc是渐近稳定的，所以
+
+因而(14)式成立.证毕.
+　　由定理1可以看出，若方程(13)有一个正半定稳定解P，则对于所有可容许的参数不确定，闭环系统都是渐近稳定的，且满足一个给定的H∞干扰衰减约束，同时该解还为H2性能指标提供了一个上界J(P), 本文称J(P)为H2性能界.
+3　最优状态反馈控制器设计
+　　这一节将推导使得H2性能界J(P)达到最小的增益K，也即考虑如下约束最小化问题:
+　　确定K∈Rm×n，使得J(P)在方程(13)有一个稳定解P=PT≥0的条件下达到最小.
+　　为了方便表达，令
+V=
+
+　　定理2. 存在一个K∈Rm×n解决了上述约束最小化问题；当且仅当存在标量ε1＞0与ε2＞0，使得代数Riccati方程
+　(15)
+有一个稳定解P=PT≥0，且状态反馈增益为
+ (16)
+此时, H2性能界为
+J(P)=tr｛PB2BT2｝. (17)
+　　证明.“必要性”.采用Lagrange乘子法来推导上述问题的必要条件.定义Lagrange函数.
+L=tr｛λPB2BT2+［ATcP+PAc+P(ε1HHT+ε2γ-2B2BT2)P+ε-11ETcEc+ε-12CT1cC1c+CT0cC0c］X｝.
+这里Lagrange乘子λ≥0,X=XT不全为零.首先证明λ≠0，令可得
+ (18)
+上式中=Ac+(ε2γ-2B2BT2+ε1HHT)P. 如果λ=0，的稳定性意味着X=0,这与要求λ,X不全为零相矛盾. 因此不失一般性，令λ=1, 因(A,B2)是能控的，显然(,B2)也是能控的，所以由(18)式可知X＞0. 由可得(16)式，将(16)式代入(13)式整理可得(15)式. 显然由(14)式直接可得(17)式. 
+　　“充分性”.假定方程(13)式有一个稳定解P=PT≥0，且状态反馈增益由(16)式给出，很容易验证该增益满足优化的必要条件. 证毕.
+　　由定理1，2，很容易得到本文的主要结果：
+　　定理3. 考虑闭环系统(5)―(7)，给定γ＞0，存在标量ε1＞0,ε2＞0，使得方程(15)有一个稳定解P=PT≥0，且状态反馈增益K由(16)式给出；当且仅当闭环系统渐近稳定, Gz1w(s)∞＜γ以及H2性能界达到最小. 此时，H2性能指标满足
+ (19)
+　　该定理的证明很容易从定理1―2的证明中得出. 定理3说明，对于给定的γ＞0，如果方程(15)有一个正半定稳定解，且K由(16)式给出，则闭环系统是渐近稳定的，且满足一个H∞干扰衰减约束，同时为H2性能指标提供了一个最优上界. 显然，为了得到最优解，需要搜索参数ε1,ε2.
+4　例 子
+　　考虑如下不确定线性系统
+
+z0=［1　1］x+u,　z1=［-1　0］x+0.5u.
+给定干扰衰减水平γ=0.9,取H=［1　0］T,E1=［0　0.3］，E2=0.
+　　按照定理3，需要选取不同的ε1,ε2来求解方程(15).不同ε1,ε2值所对应的H2性能界J(P)如图1所示.由图1可以看出: 当ε1=0.23，ε2=0.009 3 时, H2性能界达到最小，为23.487 2, 此时将(15)式的解代入(16)式可得增益K=［-17.745 4-10.166 6］. 相应Gz1w(s)的频响曲线如图2所示，其中曲线1,2,3分别为δ=-0.3,δ=0,δ=0.3的情形.
+
+
+图1　不同ε1,ε2值所对应的H2性能界J(P)
+
+
+图2　γ=0.9时，Gz1w(s)的频响曲线
+　　另外，在给定不同γ值的条件下，重复以上过程可得到不同γ值所对应的最优H2性能界J(P)如表1所示. 从表1可以看出: 随着γ值的减小, 相应的最优H2性能界J(P)变大. 这说明提高干扰衰减水平需要牺牲最优H2性能界J(P)作为代价.
+表1　不同γ值所对应的最优H2性能界J(P)
+
+γ值10010531.80.90.6
+最优J(P)2.971 23.433 74.039 75.020 87.340 823.487 2195.257
+
+5　结 论
+　　本文解决了一类含有范数有界不确定的线性系统的混合H2/H∞状态反馈控制问题, 考虑了H2，H∞性能指标对应于不同输出的情形. 提供了一种既能克服范数有界不确定又能抑制功率有界外部干扰信号的鲁棒状态反馈控制器设计方法. 给出了系统一个输出在满足给定的H∞干扰衰减约束下, 其另一个输出的H2性能指标所满足的上界, 并导出了一个“最优的”状态反馈控制器优化了该界. 本文的结果与一个含有两个尺度参数的修正代数Riccati方程有关, 且数值结果表明: 提高干扰衰减水平需要牺牲最优H2性能界作为代价.
+作者简介：吴淮宁　1972年生，1992年于山东建材学院自动化系获学士学位. 1997年6月获西安交通大学自动控制理论及应用专业博士学位.1997年8月至1999年7月在北京理工大学电子工程系做博士后，现为北京航空航天大学自动控制系副教授电子工程系博士后. 主要研究方向为H∞控制与估计，鲁棒控制与滤波，自适应信号处理.
+作者单位：北京航空航天大学自动控制系　北京　100083
+参考文献
+1　Petersen I R, McFarlane D C. Optimal guaranteed cost control and filtering for uncertain linear systems. IEEE Trans. Automat. Contr., 1994, AC-39(9): 1971―1977
+2　Geromel J C, Peres P L D, Souza S R. H2 guaranteed cost control for uncertain continuous-time linear systems. Syst. Contr. Lett., 1992, 19(1): 23―27
+3　Bambang R T, Shimemura E, Uchida K. Discrete-time H2/H∞ robust control with state feedback. In: Proc. Amer. Contr. Conf., Boston: MA, 1991. 1172a－1173
+4　Geromel J C, Peres P L D, Souza S R. A convex approach to the mixed H2/H∞ control problem for discrete-time uncertain systems. SIAM J. Contr. Optimiz., 1995,33(6): 1816－1833
+5　吴淮宁, 尤昌德. 具有H∞性能界的鲁棒LQG控制. 西安交通大学学报, 1997, 31(12): 26―32
+6　Petersen I R, Anderson B D O, Jonckheere E A. A first principles solution to the non-singular H∞ control problem. Int. J. Robust Nonlinear Contr., 1991, 1(3): 171―185
+7　Khargonekar P P, Petersen I R, Zhou K. Robust stabilization of uncertain linear systems: quadratic stabilizability and H∞ control theory. IEEE Trans. Automat. Contr., 1990, AC-35(3): 356―361
+收稿日期：1998-02-24
+修稿日期：1998-12-18

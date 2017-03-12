@@ -1,0 +1,74 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+1999年 第18卷 第1期 Vol.18 No.1 1999
+
+
+
+VB和AUTOCAD for Windows 之间的DDE通信
+程远国　成军农　王俊
+　　摘要：在Visual Basic和AutoCAD之间建立DDE通信的方法和步骤，并结合实例进行了说明。
+　　关键词：Visual Basic语言　AutoCAD绘图软件　动态数据交换(DDE)
+　　　　AutoCAD for Windows 软件是国内比较流行的CAD软件，VB是Windows环境下主要的应用开发工具之一。VB和AutoCAD都支持强有力的DDE功能，用VB编写具有DDE功能的程序来控制AutoCAD，既能与AutoCAD交换各种复杂的数据结构，又能向AutoCAD发送命令，有利于提高开发效率，缩短开发周期。本文结合实例介绍了用VB开发AutoCAD的途径和方法。
+1　VB和AutoCAD之间的DDE通信
+1.1　DDE简介
+　　DDE即动态数据交换(dynamic data exchange)，是指Windows环境下应用程序间进行实时数据交换和通信。其中提出交换请求的1方称为客户程序(Client Application)，对交换请求作出反应或提供服务的1方称为服务程序(Server Application)。2个应用程序之间进行动态数据交换，实际上是在它们之间建立了1条数据通道。服务程序和客户程序之间的数据传递有“热链接”和“冷链接”2种方式。所谓“热链接”是指源数据改变后，自动对客户程序使用的相关数据进行修改，而无需客户程序提出更新数据的要求。“冷链接”是指源数据改变后，只有在客户程序提出更新数据的要求后才更改客户程序所使用的数据。
+　　笔者将VB作为服务程序，把AutoCAD作为客户程序，由VB发出AutoCAD能够使用的命令，然后，通过冷链接的方式将绘图命令作为1批数据发送到AutoCAD中去。AutoCAD接受数据后，就正常地执行数据中包含的命令，从而达到控制AutoCAD的目的。
+1.2　VB中使用DDE的方法和步骤
+　　(1)通过链接控件建立VB和AutoCAD之间的链接关系。
+　　VB中能和其他Windows应用程序建立DDE通道的控件有文本框、标签和图片框。通过设置这些控件的如下属性值来建立和AutoCAD的链接关系。
+　　LinkMode属性用来建立DDE的链接方式，其值可设置为：
+　　“0-None”(缺省)：没有DDE交互；
+　　“1-Hot”：热链接；
+　　“2-Cold”：冷链接。
+　　LinkTopic属性值确定客户程序名和通信主题，格式为：
+　　服务器应用程序名｜标题
+　　对于AutoCAD r14，即为：autocad.r14.ddc｜system。
+　　(2)执行上述控件的LinkExecute方法进行DDE通信。
+　　(3)设置控件的LinkMode属性为0来关闭DDE链接。
+2　实例
+　　1.在VB环境下启动1个新工程，建立1个新窗体，其控件属性如表1所示。其中文本框txtLinkCAD用于向AutoCAD发送命令。
+表1　窗体内的控件属性描述
+
+控件类型属性属性值控件类型属性属性值
+文本框NametxtLinkCAD命令按钮NameCmdDelete
+　TextTextl　Caption删除
+命令按钮NamecmdLinkCAD命令按钮NameCmdEmd
+　Caption建立链接　Caption结束
+命令按钮NamecmdLine　　　
+　Caption直线　　　
+
+
+　　2.编写如下代码：
+　　Private Sub cmdDeleteClick()
+　　`向AutoCAD发送“删除”命令
+　　txtLinkCAD.LinkExecute“erase"+Chr(13)
+　　End Sub
+　　
+　　Private Sub cmdEndClick()
+　　`关闭已经建立的DDE链接，结束程序运行
+　　txtLinkCAD.LinkMode=0‘置LinkMode的属性值为0，以清
+‘除DDE链接
+　　End Sub
+　　
+　　Private Sub cmdLineClick()
+　　`向AutoCAD发出“直线”命令，chr(13)代表回车键
+　　txtLinkExecute“line"+Chr(13)
+　　End Sub
+　　Private Sub cmdLinkCADClick(Index As Integer)
+　　`设定用于DDE通信的主题，用于通知AutoCAD由谁来提‘供数据，“AutoCAD.r14.dde"为应用程序名，“system"为通
+‘信的主题
+　　txtLinkCAD.LinkTopic=“autocad.r14.dde｜systcm"
+　　‘LinkMode属性用于建立链接，LinkMode=2表示以冷链接
+‘模式激活DDE通道
+txtLinkCAD.LineMode=2
+　　End Sub
+　　3.程序运行
+　　程序在中文Windows95、VB5.0中文企业版、AutoCAD R14环境下通过。注意在运行前，一定要先加载AutoCAD。单击“建立链接”按钮，完成VB应用程序和AutoCAD间DDE通道的建立。单击“直线”和“删除”按钮，VB应用程序向AutoCAD发送“直线”和“删除”命令，单击“结束”按钮，关闭已建立的DDE通道，结束程序运行。 
+3　结论
+　　1997年5月，AutoDesk公司推出了AutoCAD R14版本，它提供的ActiveX Automation编程技术，标志着AutoCAD 2次开发技术取得了历史性的转折。ActiveX Automation是面向对象的编程接口，它使用了OLE的Automation技术，AutoCAD被登录为1个其他Windows应用程序可以操作的对象，用户可以访问AutoCAD所有的图形对象和非图形对象，可以使用多种Windows95编程语言如VB，VC＋＋，Delphi等来进行2次开发。
+　　笔者用VB5.0通过AutoCAD R14的ActiveX Automation技术开发了1个完整的矿井通风图形处理系统，体会是：在传送标准AutoCAD命令(例如“Modify”)菜单下的图形编辑命令、“Drawing”菜单下实体绘制命令(如直线、弧线等)时，使用DDE反而更方便(尽管它是一种较为原始的技术)，但在操纵图形实体如获取实体数据(控制点坐标、颜色、图层、线型等)等方面则不如使用ActiveX Automation技术，将它们结合使用会大大提高开发效率。
+作者单位：徐州中国矿业大学通风与安全实验室(221008)
+参考文献
+　1　林启隆.Visual Basic for Windows程序设计，北京：清华大学出版社，1997
+　2　Craing J C.Microsoft Visual Basic 4.0开发人员指南，北京：电子工业出版社，1997
+(收稿日期：1998-08-10)

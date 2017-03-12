@@ -1,0 +1,120 @@
+软件学报
+Journal of Software
+2000 Vol.11 No.1 P.110-115
+
+
+
+一种基于形状的图像信息检索方法
+刘继敏　史忠植
+摘　要　该文把一幅图像看成是由一些区域构成的,这些区域在其内部有着颜色或纹理等方面的相似性,图像的形状由这些区域的边界线及其空间关系来描述.要根据图像中所包含的物体或场景在形状方面的特征进行检索,关键问题是形状相似性的度量及其空间关系的表示与匹配.文章应用变形模板匹配技术,提出了较为合理的简单形状相似性计算方法,而这些简单形状之间的空间关系则由二维集合串来表示.文章还给出了空间关系匹配算法,在检索方法上,将整个检索过程分为初级检索、检索求精与空间关系匹配3个阶段.实验表明,此方法既有较高的检索速度,又有较高的检索精度.
+关键词　相似性,二维集合串,基于形状的检索,图像库.
+中图法分类号　TP311
+A Shape-Based Image Information Retrieval Method
+LIU Ji-min　SHI Zhong-zhi
+(Institute of Computing Technology　The Chinese Academy of Sciences　Beijing　100080)
+Abstract　An image can be considered as a combination of regions, which have some intrinsic homogeneities in color or texture, etc. The shapes in an image are described by the boundaries of these regions and their spatial relations. To retrieve image by shape, it is a key problem to measure the similarity among shapes and match their spatial relations. Adopting template-matching technique, the authors present a computation method for simple shape similarity. Based on the two-dimensional set string representation of the spatial relation of these simple shapes, a spatial relation match algorithm is also presented. The whole retrieval process is divided in three stages, i.e., the rough stage, the refining stage and the spatial relation matching stage. The experiment shows this method is rapid and accurate.
+Key words　Similarity, 2D set string, shape-based retrieval, image database.
+　　基于形状的图像信息检索是基于内容的图像信息检索的一个十分重要的方面.目前,已有不少基于内容进行检索的实用系统,如QBIC,Photobook,VisualSeek等.这些系统在根据颜色与纹理等信息进行检索时,所得到的检索结果与所期待的结果较为接近.在根据形状信息进行检索时,它们是用形状所具有的特征,如周长、面积、矩不变量等来描述形状,并由此建立索引,进行检索.文献［1,2］也是采用类似的方法.这种根据索引进行检索的方法,检索速度快.但是,形状的特征描述仅仅是在一定的程度上体现了人们对形状的感知,给人感觉到完全不同的形状可能有相同的特征量,因而,这种方法的检索结果与用户想要得到的结果往往会相差很大.而且,在实际中,特征量的提取都会有不同程度的误差,这势必进一步影响到检索的精度.
+　　与此相反,在文献［3,4］中,应用了变形模板技术,把用户提供的形状看作模板,并与图像库中的形状进行匹配.这一方法是直接把两个形状进行比较,而不是比较其特征量,因而有较高的精度.但是在检索时,由于是将模板与每一个图像进行匹配,而且每一次匹配都有很大的计算量,因而,这一方法的检索速度慢.
+　　为了既提高检索速度,又保证较高的检索精度,我们的做法是：对每个存储在图形库中的图像,提取其具有显著形状特征的区域,每个区域的边缘是一个简单形状,或由几个简单形状构成(这里,简单形状是指平面上的简单闭曲线),图像的形状由这些区域的边界线及其空间关系来描述,如图1所示.
+
+
+Simple shape 1, 2, 3 are boundaries of the regions that have notable features. The shape of the original image is represented with the three simple shapes and their relationship.
+简单形状1,2,3是从原始图像中提取的具有显著形状特征的区域的边界,我们用这3个简单形状及其空间关系来描述原始图像所具有的形状特征.
+Fig.1　Shape representation
+图1　形状的描述
+　　我们将这些简单形状保存起来,同时将其周长、面积等形状特征存入特征库.在进行检索时,用户直接画出一个或几个简单形状,作为其查询要求,如图2所示.
+
+
+In order to retrieve the original image in Fig.1, the user can directly draw one or more simple shapes which he concerns as research query, e.g.
+为了从图像库中检索出图1中的原始图像,用户只要直接画出他所关心的1个或几个简单形状,作为其查询要求,如(a),(b),(c).
+Fig.2　The submission of the research query
+图2　查询要求的提交
+　　系统根据各简单形状的特征量,进行初次检索,检索出包含所有这些简单形状的图像,再用变形模板匹配技术［5］进行检索求精,排除相似度较小的图像,最后,如果用户提交的是多个简单形状,还要根据其隐含的空间关系,对检索出的图形进行空间关系匹配,排除空间关系不匹配的图像,并把最后剩下的图像按相似度从大到小返回给用户.系统流程图如图3所示.
+
+Fig.3　System flow chatr
+图3　系统流程图
+　　本文第1节讨论形状相似性的度量.第2节讨论空间关系的表示及其匹配问题,提出了用二维集合串表示简单形状之间空间关系的方法,并给出了空间关系的匹配算法.第3节讨论基于形状的图像检索算法.第4节就有关问题进行了进一步的探讨. 
+1　形状相似性的度量
+　　假设我们能计算出简单形状的n个特征量f1,f2,...,fn,这些特征量可以是面积、周长、矩等,具体计算方法本文不再叙述,可参考通常的图像处理方面的文献,如文献［6］.用X=｛fX1,fXn,...,fXn｝表示简单形状X的n个特征量为fX1,fXn,...,fXn.对A=｛fA1,fAn,...,fAn｝与B=｛fB1,fBn,...,fBn｝而言,我们可以用如下的特征距离disf(A,B)来刻画相似度Similarf(A,B)：
+
+其中ωi(i=1,...,n)为预先确定的常数,反映了每个特征量的重要程度.disf(A,B)越小,表示Similarf(A,B)越大.
+　　我们认为,简单形状之间的相似性度量是形状相似性度量的关键.上述方法是用特征量之差来度量相似度.基于特征的检索方法,一般都是用与此类似的方法.但是,我们很难找到刻画形状本质的特征量,在我们所选取的特征量中,不可避免地会出现不同的形状具有几乎相等的特征量的情况,因而上述度量方法有时会有较大的误差.为得到较为精确的Similarf(A,B),我们再提出基于模板形变的方法,该方法是对文献［5］中的方法的简化,其步骤如下：
+　　(1) 将简单形状A用样条曲线来表示,并选取适当的能量公式.一个简单的方法是,将A等距分
+割,将分割点作为样条曲线的控制点.假定其控制点为ck(k=1,2,...,l),记C=(c1,c2,...,ck),由C所决定的样条曲线相对弧长S的参数方程表示为Γ(C,S),其长度为L(C).把曲线Γ(C,S)作为模板,假设其能量为
+
+其中α,β为能量权值,为Bend能;E1与E2构成模板的内能;Ext(C,S)dS为外能.这里,我们取Ext(C,S)=e-Kd2(C,S)其中d(C,S)为Γ(C,S)上的点到简单形状B的距离,K为预先确定的常数.上述的能量公式是我们对文献［7］中的能量公式作了很大的改进之后得到的.关于样条曲线,参见文献［8］.
+　　(2) 对A作任意平移与适当的旋转,选取使E3最大的位置作为A开始形变的初始位置.
+　　(3) 调节参量C,对A作拟相似形变,使E(C)达到极小.
+　　(4) 把E3/L(C)作为匹配的相似度.详细算法及有关实验结果参见文献［5］.
+2　空间关系的表示与匹配
+　　为了描述简单形状集合Ω=｛A1,A2,...,An｝的空间关系,我们将各简单形状的重心向X轴与Y轴投影,在X轴与Y轴上分别得到两个集合串XΩ1XΩ2...XΩsΩ与YΩ1YΩ2...YΩtΩ,如图4所示.
+　　XΩ1XΩ2...XΩsΩ有如下性质：
+　　(1),这就是说,XΩi(i=1,2,...,sΩ)是集合｛A1,A2,...,An｝的一个划分.
+　　(2) 如果｜(A1）x-（Aj）x｜＜ε,Ai∈XΩp,Aj∈XΩq,则XΩp＝XΩq,其中（Ai）x表示Ai的重心在X轴上的投影关于X轴的坐标,ε是预先确定的常数.这一性质表明,当两个形状的投影坐标相差不大时,应归为同一类,这主要是考虑到,在实际计算时,本身有误差的存在.
+　　(3) 如果Ak∈XΩi,Al∈XΩj,i＜j,则（Ak）x＜（Al）x.
+　　YΩ1YΩ2．．．YΩtΩ也有类似的性质.
+　　用这两个集合串,我们可以方便地描述简单形状集合各元素之间的相对空间关系.
+　　对两个形状集合Ω1＝｛A1,A2,．．．,An｝与Ω2＝｛B1,B2,．．．,Bn｝,如果存在对应,使得F（XΩ1i）＝XΩ2i,F（YΩ1i）＝YΩ2i,则称Ω1与Ω2有相同的相对空间关系.这时,我们还可以定义他们的结构距离为：disF（Ω1,Ω2）＝其中d（Ai,Aj）表示Ai与Aj的重心之间的距离.disF（Ω1,Ω2）可以看作是对Ω1与Ω2的绝对空间关系的相似度的一种度量方式,disF（Ω1,Ω2）越小,表明Ω1与Ω2的空间结构越相似.
+　　现在,我们来看看空间关系的匹配问题,为明确起见,我们先以实际例子来进行说明.
+　　假设用户在平面上画出A,B,C,D这4个简单形状,如图4所示,图像库中的某个图像所包含的简单形状如图5所示,并且,通过简单形状相似性计算,已确定匹配关系：A1,B2,3,C4,6,D5,我们的问题是：在图5中是否存在形状子集｛a,b,c,d｝｛1,2,3,4,5,6｝,使得Aa,Bb,Cc,Dd,并且｛a,b,c,d｝与｛A,B,C,D｝有相同的相对空间关系？由图5可见,这一问题的答案是a=1,b=2,c=4,d=5.
+
+Fig.4　Representation of spatial relationship
+图4　空间关系的表示
+
+Fig.5　Example for spatial relation matching
+图5　空间关系匹配用例
+　　在一般情况下,我们的问题描述如下.
+　　已知: Ω1＝｛A1,A2,...,An｝,Ω2＝｛B1,B2,...,Bm｝,AiSi(i=1,2,...,n,SiΩ2),
+　　求: ai(i=1,2,...,n),使其满足ai∈Si(i=1,2,...,n),并且在映射Aiai之下,｛a1,a2,...,an｝与｛A1,A2,...,An｝具有相同的相对空间关系.
+　　对这一问题,我们给出如下算法.
+　　
+　　
+　　很显然,在实现图像空间关系检索方面,我们这里提出的方法简单明了,优于一般的关系图匹配方法.
+3　形状检索算法
+　　由于关系型数据库提供了一些很好的检索方法,因此,我们将特征库、形状库、图像库直接用关系型数据库来管理,其结构分别是：
+Feature database①　Shape database②　Image database③
+Shape no.④Feature⑤ 1...Feature⑤ n Shape no.④Shape data⑥Image no.⑦Image no.⑦Image data⑧
+①特征库,②形状库,③图像库,④形状号,⑤特征量,⑥形状数据,⑦图号,⑧图形数据.
+有关字段说明如下：我们把所有从图像库中提取的简单形状统一编号,给予每个简单形状给予一个唯一的形状号；为了加快检索速度,每个简单形状的特征量与其形状数据本身分开存放,形状数据可以是这个形状的BMP图形；所有图像也统一编号,给予每个图像一个唯一的图号；对每个简单形状,还要用一个图号标记它是从哪一个图像中提取出来的.
+　　假设用户提供形状集为Ω1＝｛A1,A2,...,An｝,我们提出如下检索算法.
+　　Step 0. 输入形状集Ω1＝｛A1,A2,...,An｝,确定常数ε0及ε1.
+　　Step 1. 对每一个Ai(i=1,2,...,n):
+　　　　Step 1.1. 提取Ai的特征量.
+　　　　Step 1.2. ShapeNoi←特征库中与Ai的特征量距离disf小于ε0的记录的形状号.
+　　　　Step 1.3. 将ImageNoi置为空集.
+　　　　Step 1.4. 对ShapeNoi中的每个形状号Sj:
+　　　　Step 1.4.1. 用模板形变的方法确定其与Ai的相似度Similarf.
+　　　　Step 1.4.2. 如果Similarf大于ε1,则从图像库选取所有形状号为Sj的图像号,并将其并入集合ImageNoi,否则,从ShapeNoi中去掉Sj.
+　　　　Step 1.5. 标识映射Ai→ShapeNoi.
+　　Step 2. .
+　　Step 3. ImageNo←ImageNo中与｛A1,A2,...,An｝具有相同的相对空间关系的图像.
+　　Step 4. 如果ImageNo为空集,适当增大ε0或减少ε1,转Step 1.
+　　Step 5. 对ImageNo中的每个图像,计算其与｛A1,A2,...,An｝的结构距离,并按结构距离从小到大的顺序输出一定数量的图像.
+　　这一方法已用于基于形状的中草药图像检索实验系统,该系统已有400多幅图像,响应时间在2秒以内.整个检索过程分为3个阶段：Step 1.2是基于特征的初级检索；Step 1.4是检索求精,Step 3是空间关系匹配.扩充图像库,只影响Step 1.2,而这一阶段是根据索引进行检索,因而整体响应时间不会有太大的影响.
+4　结　论
+　　实验表明,我们的方法具有较高的检索速度.同时,由于采用了模板匹配方法,也保证了较高的检索精度.
+　　在基于形状的检索中,如何有效地从图像中提取简单形状,哪些区域是具有显著形状特征的区域？这是基于形状检索必须解决的问题.在无约束的情况下,这是一个十分困难的问题.但是,对特定的应用领域,我们可以首先建立一个可能用于检索的标准形状库,当把一幅新的图像加入图像库时,先用边缘提取［9］或区域分割［10］等方法提取其轮廓,然后,把标准形状库中的形状看成模板,应用模板匹配方法［5］,找出其中所包含的可以用于检索的简单形状.这正是我们所采用的方法.
+　　同时,我们认为,并非每一幅图像都可以用基于形状的方法进行检索.对一些形状特征不很明显的图形,就不好用基于形状的方法进行检索.要开发出一个真正实用的基于形状的图像信息检索系统或子系统,必须将认知科学、计算机视觉、数据库技术等有机地结合起来,这将是一个困难而有意义的问题［11,12］.
+本文研究得到国家自然科学基金(No.69790080)和国家863高科技项目基金(No.863-317-9604-05)资助。
+刘继敏（中国科学院计算技术研究所　北京　100080）
+史忠植（中国科学院计算技术研究所　北京　100080）
+参考文献
+1．Grosky W I, Mehrotra R. Index-Based object recognition in pictorial data management. Computer Vision, Graphics, and Image Processing, 1990,52(3):416～436
+2．Mehrotra R, Gary J. Similar shape retrieval in shape data management. IEEE Computer, 1995,28(9):57～62
+3．Alberto Del Bimbo, Pietro Pala. Visual image retrieval by elastic matching of user sketches. IEEE Transactions on Pattern Analysis and Machine Intelligence, 1997,19(2):121～132
+4．Jain A K, Yu Zhong, Scridhar Lakshmanan. Object matching using deformable templates. IEEE Transactions on Pattern Analysis and Machine Intelligence, 1996,18(3):267～278
+5．Liu Ji-min, Wang Wei, Shi Zhong-zhi. A new deformable template matching method. Chinese Journal of Computers, 1999,22(4):15～19
+(刘继敏,王伟,史忠植.一个新的变形模板匹配方法.计算机学报,1999,22(4):15～19)
+6．Xu Jian-hua. Image Processing and Analysis. Beijing: Science Press, 1992
+(徐建华.图像处理与分析.北京:科学出版社,1992)
+7．Michael Kass. Snake: an active contour models. In: Proceedings of the International Conference on Computer Vision. London, 1987. 259～268
+8．Cohen F S, Wang Jin-yinn. Part Ⅰ: modeling image curves using invariant 3-D object curve models――a path to 3-D recognition and shape estimation from image contours. IEEE Transactions on Pattern Analysis and Machine Intelligence, 1994,16(1):1～12
+9．Canny J. A computational approach to edge detection. IEEE Transactions on Pattern Analysis and Machine Intelligence, 1986,8(6):679～698
+10．Zhu S C, Yuille A. Region competition: unifying snakes, region growing, and bayes/MDL for multiband image segmentation. IEEE Transactions on Pattern Analysis and Machine Intelligence, 1996,18(9):884～900
+11．Forsyth D, Malik J, Wilensky R. Digital image retrieval. Sciences, 1997,(10):49～54
+(Forsyth D, Malik J, Wilensky R.检索数字图像.科学,1997,(10):49～54)
+12．Strix C. Image retrieval on the Web. Sciences, 1997,(7):14～16
+(Stix C.在万维网上寻找图像.科学,1997,(7):14～16)
+1998-10-12收稿
+1999-02-09修稿

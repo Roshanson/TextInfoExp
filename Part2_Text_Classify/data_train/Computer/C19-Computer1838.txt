@@ -1,0 +1,62 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000 Vol.19 No.2 P.35-37
+
+
+
+
+使用Java创建组件对象模型
+刘广聪
+摘 要：微软虚拟机如何创建和使用部件对象模型对象，给出一些基于Microsoft Internet Explorer 4．0 COM对象模型的示例。
+关键词： COM组件 封装 线程 虚拟机
+1 什么是COM
+　　COM是一种流行的利用独立部件来创建软件应用程序的对象模型。利用COM开发的二进制界面具有平台独立性。因此，程序的各个部分可以用不同的编程语言编写，只要这些语言兼容COM就行。COM对象还促进了封装和对象重用技术。例如，较早开发的函数可以包含在COM封装中，从而能够在Microsoft Windows分布式网络应用程序体系以及其它Web环境中使用。
+　　通过使用Java／COM封装，微软虚拟机以下简称VM可以像使用普通的Java对象那样使用COM对象。这些Java对象包含了微软虚拟机用来创建和维护底层COM对象所需要的信息。
+　　COM是什么？简单地说，COM是1个可重用的程序，COM定义了1种实现与编程语言无关的组件协同的二进制标准。它可不用做任何修改，就可放置在兼容COM的任何语言环境中，每1个COM部件都可以实现某些标准的或者定制的接口。这些接口是客户端和部件对象之间通信的二进制标准。COM接口定义了相关的方法组。每1个COM接口和类都有自己的全球独立标识（globally unique identifier，GUID）。GUID是1个128位的标识数字，它在平台、计算机和应用程序之间唯一标识1个COM接口或类。COM接口的GUID是1个接口标识符（interface idenifier，IID），而COM类的标识符是1个类标识符（class identifier，CLSID）。COM接口通过接口定义语言（Interface Definition Language，IDL）来定义。这个定义可以通过微软接口定义语言编译器（Microsoft Interface Definition Language，MIDL）转换成二进制形式。二进制接口定义允许类的运行时重用，也允许COM部件对象类（component object classes，coclasses）的实际实现，它们的接口可以用任何一种合适的语言实现。
+2 调用COM接口的方法
+　　所有的COM必须扩展根接口IUnknown，每1个COM对象都要实现IUnknown。IUnknown方法如下：
+　　IUnknown∷AddRef（）： 将对象接口的引用计数器＋1。
+　　IUnknown∷QueryInterface（）：请求由COM对象实现的另一个接口，如果对象支持这个被请求的接口。
+　  QueryInterface（）：获得1个指向接口的指针，同时调用AddRef（） 。
+　　IUnknown∷Release（）：将对象调用接口的引用计数器－1。如果引用计数器减到0，则对象从内存中释放掉。
+　　微软定义了支持共用功能的COM接口。例如IPersist和派生自IPersist的类包含1种方法，这种方法允许1个客户请求对象装载它自己的固定数据，从而实现对象自己的初始化。COM对象可以实现IDispatch接口，这样就可以被诸如VB或JavaScript、VBScript以及ASP这样的脚本语言调用。
+　　COM对象通过用任何一种支持COM的编程语言如VB、Delphi等创建1个对象来实现，并且COM对象应该实现IUnknown以及其它微软的或者定制的COM接口。
+　　一般而言，在COM中接口方法不能在任意线程上调用。无论何时，VM都在1个Java实例（例如，IUnknown）的底层操作1个外部COM接口指针，虚拟机必须执行任何接口指针的配置工作。Java可调用封装（Java－Callable Wrappers，JCW）是1个包含了附加的类文件属性的简单的Java对象。VM使用在Java类中微软定义的属性来向Java应用程序显露COM对象。这些属性是利用微软的Java编译器--jvc来生成的，需要在Java源代码的前面附加1个＠com指示。除了要在类、接口和方法原型的前面加上这个＠com指示以外，COM组件对象类和接口的Java实现看起来同其它Java类和接口没有什么区别。如果JCW被标记为自由线程，则调用发生在该线程上。如果该包被标记为COM对象可用的线程环境（房间线程），而当前线程环境又不是该包的宿主线程，VM就将切换到正确的线程并且在该线程上执行调用。一旦VM配置好在接口上开展工作的正确的线程上下文，它需要为调用准备一些参数。如果任何1个参数不在正确的上下文中，标准COM配置就向外部代码送出1个兼容的接口指针。
+3 Java中的COM组件对象类
+　　1．应用于Microsoft Internet Explorer组件对象类的Java封装。
+
+
+　　2．＠com．class
+　　这个位于源文件头的注释是由jactivex生成的，它包含了所有需要的命令行参数。Java的类定义前面有1个包含＠com．class指示的注释块，详细地说明了它所代表的COM类的GUID，并且指出该类支持动态构造。表1提供了＠com．class指示的完整的说明。
+　　语 法：
+＠com．classclassid＝＜COM CLSID＞，DynamicCasts，safe，safeAddFlags＝＜integer＞
+　　表2给出了在编译＠com．class指示时，编译器要添加到生成的Java类文件中的属性。
+表1　＠com．class指示的说明
+参数描述
+class=<XOM CLSID>
+该参数是必须的
+例如：classid=OBE35203-8F91-11CE-9DE3-00AA004BB851与Java实现的COM类相关的CLSID
+DynamicCasts说明该类支持动态构造，这允许Java开者将它投掷到不是直接由Java类实现的接口上。VM通过在底层COM对象上为目标接口调用QueryInterface()方法来支持该属性
+Safe说明该类可以被未经验证的带有COM_Safety 安全特性的类安全地使用
+safeAddFlags=<int>说明有1个字(2个字节)的信息要压入COM_Safety属性.
+注意:当前的微软虚拟机在读COM_Safety属性的时候将忽略这个数据
+表2　添加到生成的Java类中的属性
+属性范围
+COM_ClassType 类范围
+COM_GuidPool类范围
+COM_Safety 类范围
+　　该程序包含了Internet Explorer组件对象类的定义，此定义实现了4个接口，其中3个分别是代表IUnknown，IwebBrowser2和IWebBrowserApp这3个COM接口的JCW。接口com．ms．com．NoAutoScripting被VM用作1个标志符，该标志符表明此COM对象不能从脚本编程语言访问。
+　　源文件中提供的方法被设定为隐藏方式：这些方法的存在仅仅是为了满足Java的需求，Java要求已实现的接口的所有方法都必须是存在的。组件对象类的方法的本地设定会通知VM这些方法的实现位于底层COM对象中。
+4 Java中的COM接口方法
+　　1． jactivex生成的COM接口IWebBrowserApp的源文件：
+
+
+　　2． ＠com．interface
+　　源文件tutorial＼ie＼IWebBrowserApp．java包含1个Java接口定义，该定义通过1个类范围的＠com．interface指示来指明。该指示包括1个IID和需要复现的COM接口的类型（在这里是dual）。
+　　tutorial．ie．IWebBrowserApp接口定义中的每一个方法都有1个＠com．method指示，该指示说明此COM方法是如何映射到Java上的。
+　　3． ＠com．method
+　　＠com．method标识符说明了该方法的分发号（用于IDispatch接口），也可能是vtable偏移量（用于Vtable接口），或者是二者都有（用于Dual接口）。该标识符包含了一系列参数，这些参数用于说明方法到等价的接口定义语言（IDL）形式的映射。因为COM接口支持属性，此方法有可能是一个接口属性的典型方法，也可能是属性的一个存取器方法。 
+5 小 结
+　　本文介绍了利用Java创建COM组件的方法，并且给出一个实例。微软虚拟机可以为每一个Java／COM对象自动处理引用记数、碎片收集、配置和线程维护工作。所有这些是通过将COM接口的内部操作和基本的Java功能结合在一起来实现的，由于篇幅所限，有关COM对象碎片的收集、分布式的COM等内容在这里就不介绍了。
+刘广聪（广东工业大学计算机系510090）
+收稿日期：1999－08－16

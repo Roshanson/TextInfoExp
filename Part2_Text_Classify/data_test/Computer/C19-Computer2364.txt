@@ -1,0 +1,83 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第8期 Vol.36 No.8 1999
+
+
+
+基于QoS控制的连续媒体服务任务调度
+张拥军　刘　晔　陈福接
+摘　要　连续媒体服务如视频、音频等是一类新的实时应用，要求在一统一的操作系统框架内支持强、弱实时应用（任务），而传统的操作系统（如UNIX或者Windows NT）中的调度策略不能很好的支持该类应用.文中提出了一种新的QoS描述方法，并在此基础上提出支持连续媒体流的、基于QoS的启发式任务调度算法，该算法综合考虑了多媒体任务的成功率和连续失败数，在资源有限的前提下，尽量保证所有媒体流的服务质量.文中通过模拟、比较对该算法进行了评价.
+关键词　QoS， 任务调度， 连续媒体流
+中图法分类号　TP37
+TASK SCHEDULING BASED ON QoS CONTROL FOR CONTINUOUS MEDIA SERVICES
+ZHANG Yong-Jun, LIU Ye, and CHEN Fu-Jie
+(Department of Computer Science, National University of Defense Technology, Changsha 410073)
+(Graduate School, Unversity of Science and Technology of China, Beijing 100039)
+Abstract　Continuous media service is a new kind of real-time applications. It requires that hard and soft real-time tasks should be supported in an integrated operating system framework. But the scheduling policies in traditional OS（e.g., UNIX or Windows NT）can't support this application to the best. This paper proposes a new QoS method, based on which a QoS-based heuristic task scheduling algorithm supporting continuous media streams is described. The algorithm takes into account the success ratio and consecutive fail count of multimedia tasks in order to guarantee the quality of all media streams. Finally, simulation and comparison are performed to validate the effectiveness of this algorithm.
+Key words　QoS, task scheduling, continuous media stream
+1　引　言
+　　多媒体技术的发展对其应用的支撑平台提出了更高的要求，尤其是系统中的任务调度技术，与实时任务调度理论和算法的结合是其发展的必然趋势.然而，目前在实时调度领域取得的成果主要是基于强实时约束的调度算法和调度策略，如earliest deadline first（EDF），rate monotonic scheduling（RMS）［1］以及它们的一些改进或变形［2，3］等, 算法也主要被用在强实时（hard real-time）应用领域.在强实时系统中，要求所有的任务在规定的时间期限（deadline）内被调度完成，否则就可能造成大的灾难或大的损失.
+　　而在多媒体这类新的实时应用中，少数任务（在一定的阈值内）没在期限内完成，并不会造成大的损失.例如，在连续的视频流或音频流中，少数数据帧的丢失或不能及时处理，并不会导致其QoS明显地下降，因此多媒体应用系统被称为弱实时系统.正是由于多媒体应用的这种特殊性，如何高效地利用系统中的各种资源为人们所关注.因此研究适用于多媒体系统的任务调度算法成为当前实时与多媒体领域的重要研究方向.
+　　目前，一些多媒体服务器采用UNIX或NT平台，对多媒体任务的调度一般就直接借用UNIX或NT中的调度器，采用分时或简单优先级的调度策略，这样显然不能很好地处理具有软实时约束的多媒体任务.文献［4］提出了基于带宽划分的multimedia server algorithms，该算法中的任务的QoS是通过多媒体服务器占用CPU时间的比率来实现，但该算法复杂，实现比较困难.文献［5］提出了一个应用于多媒体数据流的多帧任务模型，但当任务的每个实例的执行时间发生变化时，有可能导致大部分任务都不能在规定的期限（deadline）内完成.
+　　本文先提出一种对多媒体任务进行QoS描述的新方法，并在此基础上提出了一个基于QoS控制的连续媒体流服务器调度算法.把对连续媒体流的服务作为周期性任务处理，如视频流平均33ms要处理一帧，任务能被调度在其时间期限内完成，则认为任务成功，否则失败.而服务的QoS参数是通过任务的最小成功率和允许的最大连续失败数来描述.较之过去的算法，QoS参数单纯采用任务的成功率来描述更为准确地刻画了连续媒体流被服务的质量，避免了某些媒体流任务因连续不能被正确调度执行而导致的QoS下降.通过模拟，并与普通的分时、EDF调度算法比较，本文中提出的算法具有较好性能，且容易实现.
+2　任务模型及调度算法
+　　在连续媒体（如VOD）服务器上，对每条视频或音频流的处理都可以认为是一个任务，即一个可被调度的实体，并把每条媒体流的处理当做周期性任务，描述为（C，P），C为任务的执行时间，P为任务的执行周期.如视频流的处理速度应达到30帧/s，假设把每帧的处理作为该任务的一个实例.这样，每个实例的处理时间相当于有了约束，需在33ms内完成；而且，视频流的处理可视为由执行周期为33ms的任务序列构成.我们把在约束时间内完成的实例称为实例成功，否则称为实例失败.
+　　对于每条媒体流的QoS控制，用3个参数来描述：S，Q，F，即在对S个连续实例处理中，至少要成功完成Q个，而且连续失败的实例数不能超过F个.称Q/S为任务的最小成功率，称F为任务允许的最大连续失败数.如果服务器调度导致某条流S个连续实例中多于S－Q个实例失败，或失败的实例连续的出现超过F个，则认为服务器的任务调度没满足该媒体流的服务质量（QoS）.
+　　对于周期性任务集，采用EDF或MLF（min laxity first）调度算法，如果CPU的总利用率，那么该任务集可被正确调度［1］.但当任务集的CPU利用率超过1时，若再采用EDF或MLF调度算法，结果将无法预测.
+　　在多媒体应用系统中，像视频流和音频流，只要满足一定的QoS，就认为是可接受的.因此当系统负载较大时，可在QoS允许的范围内，通过适当降低某些任务的服务质量，来保证系统中所有任务的服务质量.
+2.1　任务模型
+　　考虑通常情况，假设系统中有n个强实时任务和m个多媒体任务运行与一台单CPU服务器上，任务模型如下：
+　　系统中强实时任务的描述：
+　　系统中多媒体任务的描述：
+　　任务都定义为周期性执行.其中，ri为任务Ti的初始释放时间；ci为任务Ti最坏情况下（worst-case）的执行时间；pi为任务Ti的执行周期.Ti,j为任务Ti的第j个实例，Ti,j处理媒体流的某个数据单位，如视频流中的一帧.由于目前通常使用的数据压缩技术，Ti,j的处理时间可能与Ti,k不同（j≠k）.因此，Ti,j的释放时间可定义为ri＋（j－1）×pi，完成时间期限（deadline）可定义为ri＋j×pi.如果Ti,j能在deadline之前正确完成，则认为成功，否则认为失败.
+　　Si，Qi的意义为在任务Ti连续执行的Si个实例中，至少要成功Qi个，因此Qi/Si为任务Ti的成功率.Fi为任务Ti允许的最大连续失败任务数.多媒体任务的QoS是由参数Si，Qi和Fi来控制，也就是说对多媒体任务的调度必须满足Qi/Si的成功率，而且要防止出现Fi个任务连续调度失败.参数Fi的引入避免了只用成功率来描述多媒体任务而放弃质量的片面性.
+　　在系统中，必须保证强实时任务在其时间期限内完成.因而对于多媒体任务，其优先级设置一般要比强实时任务低.
+2.2　基于QoS控制的调度算法
+　　算法的基本思想是当系统负载较大时，为避免少数任务连续失败，而将可能的任务失败分布于所有的任务中，以尽量保证所有任务的QoS.下面讨论如何将多媒体流的QoS描述映射为其任务执行的优先级.
+　　采用启发式的优先级赋值方法，用函数H(T)为每个媒体流任务计算优先级.根据QoS参数，H(T)要考虑任务执行的成功率，还要避免任务连续失败的情况.因此在H(T)中要有参数表示上述内容.H(T)的定义如下：
+
+　　其中：表示在Ti中最近已经连续出现的实例失败数；表示Ti最近Si－1个实例中总共失败的次数.的统计可通过移位寄存器或软件移位来实现.如为Tj的最近Si个状态，ζ＝1表示实例执行成功；ζ＝0表示失败.π(Ti)表示任务Ti即将执行实例的重要性，如在视频流中I帧的处理应比P帧和B帧的优先级高.π(Ti)的取值范围在0与1之间.
+
+
+图1　任务调度模型示意图
+
+　　α，β，γ为调节系数，可根据需要调整.α与β的比值代表了任务的成功率与连续失败数在优先级赋值中的重要性.
+　　我们定义H(Ti)值越大，表明为当前赋给Ti的某个实例的优先级越高.H(Ti)的计算公式相对地说明了某条媒体流任务当前实例的重要性，也充分地体现了QoS参数对媒体流服务质量的控制.
+　　如果有多个任务计算得到的H(T)值相同，则采用EDF算法对它们进行内部的优先级排序.系统的任务调度模型如图1中所示.
+3　算法性能评价
+　　我们通过模拟对基于QoS控制的调度算法进行评价.采用两种方法，分别与分时调度算法和EDF调度算法进行比较.
+
+
+图2　算法模拟结果1
+3.1　与分时调度算法的比较
+　　模拟设置的参数包括服务器的平均负载和每条流的QoS参数.通过模拟求得多媒体流的QoS不能被调度满足的概率，即调度失败率，并与分时调度算法进行比较.
+　　模拟中，连续媒体流任务数总共为15个.为了方便，所有媒体流的QoS参数设置相同：α＝β＝1，分时调度算法的时间片设为1ms.算法模拟与比较的结果如图2所示.
+　　从图2所知，与普通分时调度算法相比，基于QoS的调度算法更适合于处理连续媒体流任务.尤其当系统负载较大时，算法调度任务的失败率低，能较好的满足多媒体任务要求的QoS.
+3.2　与EDF算法的比较
+　　模拟中，连续媒体流任务数总共为10个.所有媒体流的QoS参数设置相同：α＝β＝1，S=30，Q=24，F=4.
+　　.那么，Ti,j的时间期限(deadline)为j×Pi，EDF算法根据此deadline来调度.假设系统中所有任务的初始释放时间为0.
+　　图3中纵坐标表示任务被调度的成功率，横坐标为系统中的任务编号.图4中的纵坐标表示任务连续失败次数超过QoS参数的概率.根据图3、图4中的模拟结果，EDF算法不能调度编号为4，7，10的任务满足期望的QoS.而采用基于QoS控制的调度算法能满足所有任务的QoS.
+
+
+图3　算法模拟结果2
+
+
+图4　算法模拟结果3
+4　允许控制
+　　在实时应用系统中，为了保证系统中的任务能在规定的deadline之前完成，当新任务进入系统时，往往需要进行允许控制.
+　　新任务T（多媒体任务）＝（C, P, S,Q, F）请求执行，其中C，P，S，Q，F的含义同上定义.进行允许控制的计算公式为判断式（2）是否成立.如果成立，则新任务可以进入系统执行，不会导致其它任务的QoS服务质量降低到允许的QoS之下；如果不成立，则拒绝新任务.
+
+其中,m是系统中已有任务.上标rt与mt分别表示实时任务和多媒体任务.
+5　结束语
+　　本文针对连续媒体服务提出了一种新的QoS表示，在此基础上提出一个基于QoS的启发式任务调度算法，并通过模拟、比较证明了算法的有效性.
+作者简介：张拥军，男，1972年1月生，博士研究生.现主要研究方向为实时和容错系统、多媒体.刘晔，女，1971年生，硕士研究生，主要研究方向为多媒体技术和ATM网络.陈福接，男，1935年生，教授，博士生导师，主要研究方向为高性能计算机体系结构、分布式多媒体技术.
+作者单位：张拥军　陈福接　国防科学技术大学计算机科学系　长沙　410073
+　　　　　刘　晔　中国科学技术大学研究生院　北京　100039
+参考文献
+1　Liu C L, Layland J W. Scheduling algorithms for multiprogramming in a hard real-time environment. Journal of Association for Computer Machinery, 1973, 20(1): 46～61
+2　Sha L, Rajkumar R. Generalized rate-monotonic scheduling theory: A framework for developing real-time systems. Proc of the IEEE, 1994, 82(1): 68～82
+3　Tindell K W. An extendible approach for analyzing fixed priority hard real-time tasks. Real-Time Systems, 1994, 6(2): 133～151
+4　Hiroyuki Kaneko, Stankovic J A. Integrated scheduling of multimedia and hard real-time tasks. Umass Computer Science Technical Report. 1996, 96～43
+5　Mok A K, Chen D. A multiframe model for real-time tasks. In: Proc of 17th Real-Time Symposium, 1996. 22～29
+收到日期：1998-09-28
+修改日期：1999-03-22

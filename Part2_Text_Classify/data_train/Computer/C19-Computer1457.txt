@@ -1,0 +1,86 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+2-D奇异系统无穷远极点与状态响应公式
+杜春玲　杨成梧
+　　摘　要　针对二维奇异系统的一般模型(2-D SGM),提出无穷远极点的概念，进而探讨了无穷远极点与状态响应公式的关系，给出状态响应公式成立的充要条件.
+　　关键词　2-D 奇异系统，无穷远极点，状态响应公式.
+INFINITE POLE AND STATE RESPONSE FORMULA
+FOR 2-D SINGULAR SYSTEMS
+DU CHUNLING　　YANG CHENGWU
+(School of Power Engineering & Dynamics,Nanjing University of Science & Technology,Nanjing 210094)
+Abstract　This paper presents the concept of the infinite pole for 2-D singular systems.The relationship between the infinite pole and the state response formula is discussed.And a sufficient and necessary condition for the state response formula to be tenable is given.
+Key words　2-D singular systems,infinite pole,state response formula.
+1　引言
+　　自 Roesser 等人提出 2-D Roesser 模型(2-D RM) 以来，Attasi,Fornasini 和 Marchesini 先后在不同背景下提出更为一般的模型，而Kurek则集前人之大成，从理论上抽象概括出最为一般的2-D状态空间模型(2-D GM).自这几种较为流行的二维系统模型被推广为奇异模型以来，使奇异系统的发展已颇具规模，其应用前景也十分广阔，诸如应用于图象处理等领域.然而，到目前为止尚未有人提出2-D奇异系统无穷远极点这一重要问题.对其状态响应的研究，以Kaczorek为代表，在文献［1―3］中作了大量工作，但并没有考虑到无穷远极点问题.而无穷远极点的性质决定了其所推导的状态响应公式的成立与否.
+2　2-D SGM 无穷远极点定义
+　　考虑2-D SGM
+Ex(i+1,j+1)=A0x(i,j)+A1x(i+1,j)+A2x(i,j+1)
+　　　　　　　　　　　　　　　　　+B0u(i,j)+B1u(i+1,j)+B2u(i,j+1),　　　　　　　　(1)
+y(i,j)=Cx(i,j)+Du(i,j).　　　　　　　　　　　　　　　(2)
+边界条件为x(i,0),x(0,j),(i,j)≥(0，0)为二元整值坐标；x,u,y，分别为状态、输入和输出向量，x∈Rn；E，Ai,Bi,C,D 分别为各具适当维数的常值实矩阵，且 det E=0,E,Ai 满足正则束条件
+det(z1z2E-A0-z1A1-z2A2)0.　　　　　　　　　　　　　(3)
+　　定义1.　称(0，0)为系统(1)的无穷远及左侧无穷远和右侧无穷远极点系指，当(z1，z2)=
+(0,0)及(λ,0)和(0，μ)时有
+det(E-z2A1-z1A2-z1z2A0)=0.　　　　　　　　　　　　　(4)
+3　2-D多项式的零点性质
+　　定义2.　称 2-D 多项式 f(z1,z2)∈R［z1,z2］关于 z1=0(或z2=0)是本原的，系指
+f(0,z2)0　　(或f(z1,0)0).　　　　　　　　　　　　(5)
+而称 f(z1，z2)关于原点(0，0)是本原的，系指它关于 z1=0,z2=0 均为本原的.这里R［z1，z2］为z1，z2的实系数多项式环.
+　　引理1.　设 2-D 多项式 f(z1,z2)∈R［z1,z2］关于 z2=0 是本原的，如果 f(0,0)=0,则对于ε＞0充分小，就δ＞0，使得对｜z2｜＜δ，在｜z1｜＜ε内均至少存在一点 z1=(z2)，有
+f((z2),z2)=0.　　　　　　　　　　　　　　　(6)
+　　证明.将 f(z1,z2)视为 1-D 多项式环R［z2］［z1］中的元，则由 f(z1,0)0 及 f(0,0)=0 知：(i)f(z1,0)至少存在一个零点 z1=0;(ii)零点 z1=0 是孤立的，从而只要ε＞0充分小，由 2-D 多项式的连续性和｜z1｜=ε，｜z2｜≤r(r＞0)的紧性知，只要取δ=δ(ε)＞0充分小，就有
+｜f(z1,z2)｜≥C＞0，｜z1｜=ε,｜z2｜＜δ.　　　　　　　　　　(7)
+由此及解析函数零点个数定理［4］知，对｜z2｜＜δ，f(z1,z2)∈R［z2］［z1］在｜z1｜＜ε内的零点个数为
+　　　　　　　　　　　(8)
+此式表明n(z2)在｜z2｜≤δ内是z2的连续函数［5］，但n(z2)取整值且n(0)至少为1.证毕.
+　　推论1.　若 2-D多项式 f(z1,z2)∈R［z1,z2］关于(0，0)是本原的，且f(0,0)=0,则对r＞0必有λ0，μ0,0＜｜λ0｜≤r,0＜｜μ0｜≤r,使得
+f(λ0,μ0)=0.　　　　　　　　　　　　　　　　(9)
+　　推论2.　设 2-D多项式f(z1,z2)∈R［z1,z2］关于(0，0)是本原的，则对r＞0，
+f(z1,z2)0　　(0＜｜z1｜≤r,0＜｜z2｜≤r)　　　　　　　　　(10)
+与
+f(z1,z2)0　　(｜z1｜≤r,｜z2｜≤r)　　　　　　　　　　　(11)
+等价.证明由推论1直接可得.
+　　推论3.　设 f(z1,z2)∈R［z1，z2］，则必有(z1,z2)∈R［z1,z2］,使得
+f(z1,z2)=zn11zn22(z1,z2).　　　　　　　　　　　(12)
+其中f(z1,z2)关于(0，0)本原，且
+f(z1,z2)≠0，0＜｜z1｜≤r,0＜｜z2｜≤r.　　　　　　　　　　(13)
+当且仅当
+(z1,z2)≠0，｜z1｜≤r,｜z2｜≤r.　　　　　　　　　　　(14)
+　　证明由 2-D多项式本原分解定理［6］及推论2即得.
+4　无穷远极点与状态的响应公式
+　　由(12)式知，(4)式左端必能表示成 zn11zn22(z1,z2)的形式，此时称f(z1，z2)具有容度 zn11zn22［7］，(n1,n2)≤(n,n).
+　　定义3.　设 f(z1，z2)具有容度 zn11zn22，称系统(1)的无穷远极点是正则(或非奇异)的，系指(0,0)≠0，此时正则无穷远极点的阶数定义为(n1，n2).
+　　引理2.　2-D SGM 的特征矩阵
+G(z1,z2)=(z1z2E-z1A1-z2A2-A0)　　　　　　　　　　　　(15)
+的逆可展为
+　　　　(16)
+当且仅当系统(1)具有(n1，n2)阶正则无穷远极点.
+　　证明.
+　　充分性.设(1)式具有(n1,n2)阶正则无穷远极点，则由(z1，z2)的连续性知，存在充分小的r＞0，使得
+(z1,z2)≠0,｜z1｜≤r,｜z2｜≤r.　　　　　　　　　　　(17)
+从而
+　　　(18)
+在｜z-11｜≤r,｜z-12｜≤r 内解析，则(18)式左端可展为
+　　　　　　　　　　　　(19)
+于是G-1(z1,z2)可表示为(16)式的形式.
+　　必要性.设 G-1可展为(16)式，则易知，如有λ-10,μ-10使得(16)式收敛，则幂级数
+　　　　　　　　　　　　(20)
+亦收敛，从而在｜z1｜≤｜λ0｜,｜z2｜≤｜μ0｜内解析，这里k=nk-1.另一方面，若设系统(1)具有容度 zn11,zn22,则若系统(1)存在奇异无穷远极点，则由(18)式及推论1知，这与在(0，0)域内的解析性矛盾，因此系统(1)必不存在奇异无穷远极点.
+　　由此，可得如下重要结论.
+　　定理.　Kaczorek［3］给出的 2-D SGM 的状态响应公式成立，当且仅当该 2-D SGM 不存在奇异无穷远极点.
+　　至此，不难导出存在奇异无穷远极点下的 2-D SGM的状态响应公式，限于篇幅从略. 
+1)国家自然科学基金资助项目.
+作者单位：南京理工大学动力工程学院　南京　210094
+参考文献
+［1］　Kaczorek T.The singular general model of 2-D systems and its solution.IEEE Trans.Autom.Control,1988,33(8):1060-1061.
+［2］　Kaczorek T.Existence and uniqueness of solution and Caley-Hamilton theorem for general singular model of 2-D systems.Bulletin of the Polish Academy of Sci.,Tech.,1989,36(2):275-278.
+［3］　Kaczorek T.General formula and minimum energy control for the general singular model of 2-D systems.IEEE Trans.Autom.Control,1990,35(4):433-436.
+［4］　余家荣.复变函数，北京：人民教育出版社，1980,124-126.
+［5］　Svashnikov A,Tikhonov A.The theory of functions of a complex variable.Moscow:Mir Publishers,1978,53-54.
+［6］　杨成梧，邹云.2-D 线性离散系统.北京：国防工业出版社，1995,298-302.
+收稿日期　1995-09-18

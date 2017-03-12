@@ -1,0 +1,118 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000　Vol.17　No.2　P.68-70
+
+
+
+企业Internet/Intranet应用系统的开发
+杨德华　吴琦
+摘 要 企业Internet/Intranet已逐渐成为企业信息系统的主要计算结构。以一建筑材料报价与委托定货系统的开发为背景，探讨了企业Internet/Intranet系统的模型、安全服务、开发技术，以及实施问题，提出了开发企业Internet/Intranet应用系统一种实用及规范的策略方法。
+关键词 Internet/Intranet OMT应用 安全服务 Java
+1 引言
+　　企业的Internet/Intranet计算结构已经成为企业建立信息系统的首选模式。由于Internet/Intranet本身的优点，尤其是在信息资源的组织、共享、发布、交互及管理技术方面的独特优势，随着基于Internet的电子商务的深入发展，这种计算模式必将迅速得到推广与应用。根据自身业务拓展的需要，上海广运信息公司决定建立基于Internet网上建筑材料的报价求购与委托定货系统，利用Internet来开辟新的商机与业务。笔者参与并主要主持了本系统的开发。
+　　本系统采用了Internet/Intranet计算结构，以及相关的信息资源组织的管理技术。客户可以在任何地方通过Internet连接利用本系统提供的服务，如供应商可以直接向系统中提供建筑材料及报价信息，求购客户可以在系统中浏览或查询建材价格信息以及通过系统发布求购信息。求购客户还可以通过本系统进行委托定货，系统将采用安全措施以保证网上定货及有关数据的安全。
+2 基于Internet/Intranet计算结构系统的开发策略
+2.1 系统服务的逻辑结构
+　　建材报价求购与委托订货系统采用了Internet/ Intranet的三层结构模型，即系统由信息存储与管理的数据库服务器，信息的发布、组织与交换的应用服务器以及用户端的浏览器组成。如图1所示。
+
+图1　Intranet系统的三层运作模型
+　　此系统将向用户提供的各种服务，如报价、求购及委托定货可以通过Web动态网页、文件的上载与下载以及E-Mail来完成。因此从逻辑上看，图1中的应用服务器的功能可视为多种服务集合，如图2所示。
+
+图2　企业Intranet系统的软件逻辑结构
+　　图2中的安全服务是企业Internet/Intranet应用所必需的，它用来隔离不安全的Internet与企业内部的Intranet，并可以通过设置防火墙软件以提供访问Internet的内部网用户的验证、控制以及数据传输加密等服务。
+2.2 系统网络结构模型
+　　建材报价求购与委托定货系统在网络结构上采用了Internet/Intranet的安全结构模型，即采用了防火墙将Internet和企业内部网络进行隔离。整个网络可分为两大部分，企业内部Intranet(包括内部的Web服务器，数据库服务器及其它计算机上的应用系统)和DMZ(DeMilitarized Zone)部分(主要包括Internet用户可直接访问的Web服务器、FTP服务器及E-Mail服务器)。具有安全结构的网络模型如图3所示。
+
+图3　安全结构网络模型
+　　(1)应用服务器的访问控制
+　　建材报价求购与委托定货系统的应用程序运行于Internet/Intranet应用服务器。客户访问该服务器必须通过防火墙服务器，在此可形成用户访问日志，用户验证等以及控制与监督用户对此应用服务器的访问。
+　　(2)防火墙服务器的安全服务
+　　为保证内部网的安全，防止非法用户对内部服务器的访问，系统采用了两种安全服务，即IP地址过滤技术和服务级的Proxy代理技术。IP地址过滤功能设置于路由器的ACL(Access Control List)表，服务级的代理采用了Wingate 2.1d代理服务器程序。
+　　代理服务Proxy一般可分为两种形式，即线路级(Circuit level)的代理服务，如运行Socks服务器，以及服务级(Service level)的代理服务，如常用的Proxy的服务器。Socks服务器的配置简单，对任何服务都采用统一控制策略，而Proxy服务器对于不同的服务可采取不同的控制策略，因此比较灵活，但其配置较为复杂。本系统考虑到服务级控制策略的多样性与灵活性，采用了Proxy服务器，此服务器既控制与监督外部用户访问Internet/Intranet服务器，又作为企业内部网用户访问Internet代理服务及控制。
+　　(3)系统开发的方法与模型
+　　建材报价求购与委托定货系统的开发采用了面向对象的进化原型法模型[1]。系统的开发方法与技术采用了改进的OMT[2]技术。首先，开发人员建立了系统静态实体结构即OMT的对象模型，然后建立表达系统动作机制的动态模型。笔者认为，原始OMT的功能模型已不太适合描述Internet/Intranet应用系统，所以本系统没有采用此模型，而代之以用户界面模型。Internet/Intranet应用程序的用户界面是十分重要的，并且与传统的C/S结构的用户界面表述方式有所不同，因此应该有适当模型对其加以描述。有关改进的OMT模型问题，因篇幅所限，笔者将另文论述。
+3 系统的设计与实施技术
+3.1 系统设计有关模型
+　　建材报价求购与委托定货系统的设计采用了OMT的静态对象模型，动态模型以及用户界面描述模型。系统的对象模型描述了系统对象或实体及对象关系结构，它构成了系统的数据库设计与实现的基础。系统的动态模型描述系统的运作过程及动作、状态和事件之间的关系，而系统的用户界面模型则描述了用户界面布局以及界面组件、事件源与类对象之间的关系。
+　　(1)系统的对象模型
+　　图4是建材报价求购与委托定货系统的对象模型(部分)。
+
+图4　系统的静态对象模型(部分)
+　　(2)系统的动态模型
+　　图5是建材报价求购与委托定货系统的报价与查询部分的动态模型图。此模型描述了建材报价和查询界面类的状态变化动态过程。
+
+图5　报价与查询部分动态模型
+　　(3)系统的用户界面模型
+　　图6是建材报价求购与委托定货系统的用户报价界面模型图。界面模型图根据Internet/Intranet系统的特点，描述了用户界面之间的触发及链接关系，以及用户界面之内的事件源与其它界面及类之间的关系。在系统的静态对象模型中，用户界面并未特别地加以描述，而实际上用户界面在系统的设计中是非常重要的，应该有界面模型予以表述与定义。
+
+图6　求助用户界面模型部分示意
+　　OMT模型加进了用户界面模型是笔者根据企业系统的特征对J.Rambaugh的OMT模型的一种修正或改进。开发实践证明，这种改进使OMT对于Internet/Intranet应用系统的设计更加完善与有效。
+3.2 系统的实施技术
+　　(1)系统开发工具与平台
+　　本系统的实施采用Web及相关技术，采用HTML与Java作为开发工具及平台。由于前端用户浏览器可能大多为Netscape或者IE，而这两种浏览器的Java标准不一，造成Java Applet不能在两种浏览器中同时正确运行。因此系统在实施采用两种方式，即系统的功能用Java Applet和Java Servlet两种方式实现。对于使用Netscape浏览器的用户，可以浏览嵌入Applet网页。由于使用了Applet，使用户界面更友好，使用更方便。而对于IE的用户，系统采用HTML的FORM及TABLE功能来组织、发布及与用户交换数据信息，动态网页的实现采用Server端的Java Servlet，其中包括数据库的存取。
+　　(2)系统对象模型的实现
+　　建材报价求购与委托系统中的数据库采用IBM的UDB DB2 5.0。虽然DB2 5.0被称为具有面向对象特征的关系数据库，但它还不是面向对象的数据库系统，它不能直接实现面向对象系统的一些主要特征，如对象继承关系。为了利用关系数据库系统实现系统的对象模型，系统采用了数据库与应用程序之间应用抽象数据层模型[3]，即以Java程序设置的数据表的对应类封装其字段及操作，而数据表间的继承由相应类的继承关系予以实现。有关抽象数据层模型详见文献[3]。
+　　下面是系统采用数据抽象层模型实现对象模型部分实例。
+public class Vendor;//供应商
+public class Organization;//商务组织
+public class Ordert;//定货单
+　　　数据表操作通用接口：
+public interface DataManipulation{
+　int connectDatabase();
+　int connectDatabase(Database name);
+　int getRecordCount();
+　int getColumnCount();
+　　　　... ...
+}
+　　　数据层所有的类都要实现这个接口，如：
+public class Order implements DataManipulation{
+　public int ConnectDatabase(){
+　　　　... ...
+　}
+　public int getRecordCount(){
+　　　　... ...
+　}
+　　　　... ...
+}
+　　　考虑到模型中有实体间的继承关系见图4。
+public class Vendor extends Organization implements
+　　　　　　　DataManipulation{
+　public int ConnectDatabase(){
+　　　　... ...
+　}
+　public int ConnectDatabase (Database name){
+　　　　... ...
+　}
+　　　　... ...
+　}
+　　利用JAVA的Super关键词，可以在Vendor中调用Organization中的同名方法对Organization类所对应的数据表进行操作。
+　　数据库类以独立类实现，如：
+public class Database{
+public String databaseName="CowinData";
+public Database(){
+　　　　... ...
+}
+public boolean connectTo(){
+　　　　... ...
+}
+public boolean connectTo(String name){
+　　　　... ...
+}
+　　　　... ...
+}
+　　由于采用了数据抽象层模型完整地实现了系统的对象模型，对任何数据表的存取都采用了共同的接口协议，大大方便了程序中对数据库的操作，使系统程序的编制、扩充与维护更加简单，更加易于实现。
+4 系统的运行环境与设置
+4.1 系统的服务器
+　　建材报价求购与委托定货系统的运行OS采用Microsoft的Windows NT4.0，应用服务器程序使用Lotus公司Lotus Go Webserver 4.6.2.1，数据库服务器采用IBM的DB2 5.0。对于数据库的存取，采用了DB2数据库系统所包括的JDBC驱动程序，对于系统中的Applet对数据库的存取采用的是JDBC Type3驱动程序，对于Servlet程序数据库的存取，主要采用了JDBC Type4驱动程序。系统运行的Java平台采用的是Javasoft的JDK1.1.6。在Go Webserver中设置支持端Server运行Java程序，即Servlet。
+4.2 系统安全服务
+　　系统中的防火墙服务器的Proxy服务程序采用了Wingate 2.1d，这是一功能很强的代理服务器；包括了常用服务代理如HTTP、FTP、POP3、SMTP、DNS代理等等。对于用户注册登录，口令及代码的维护，系统以后台服务程序实现而没有利用Web Server的用户管理功能，这主要考虑系统的通用性与平台的无关性，而不去应用Go Webserver的API。
+　　对于数据安全传输利用了Go Webserver的安全功能，即SSL(64位)。Go Webserver被设置为安全服务器，并建立了服务器自己的CA与证书。
+5 结束语
+　　广运公司的建材报价求购与委托定货系统的开发已基本结束，现在正在试运行。从试运行效果看，系统基本上达到了用户需求与设计要求，系统运行正常。
+　　在信息化与知识经济发展的今天，Internet/Intranet系统在企业中具有广泛的、意义深远的应用前景。要成功、高效地开发Internet/Intranet应用系统，系统采用的策略、模型与方法，以及开发与运行平台技术是非常重要的。笔者认为，对于企业Internet/Intranet应用系统采用具有安全服务的多层结构模型，采用面向对象的分析与开发技术如OMT，以及采用Java平台技术，是一种有效的、成功的途径与方法。
+杨德华（同济大学经济管理学院 上海 200092）
+吴琦（同济大学高等职业教育学院 上海 200092）
+参考文献
+1，Yang Dehua. Methodological Models in Information Systems Development，Proceedings of 18th International Conference on Computers & Industrial Engineering. Volume II,1995
+2，王博, 晓 龙编写. 面向对象的建模设计技术和方法. 北京希望公司,1996
+收稿日期：1999年8月14日

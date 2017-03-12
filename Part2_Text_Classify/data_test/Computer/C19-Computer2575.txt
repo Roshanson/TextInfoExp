@@ -1,0 +1,140 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第4期 第10卷 Vol.10 No.4 1999
+
+
+
+自动寻找使多重串行循环并行化的幺模变换*
+俞一峻 臧斌宇 施 武 朱传琪
+摘要　对于已知n维距离向量矩阵的多重串行循环,过去的并行化编译研究还缺乏寻找使循环外层并行化的幺模矩阵的可行算法.文章介绍了多重串行循环并行化的幺模变换方法,不仅从理论上证明满足外层并行化要求的合法幺模矩阵是存在的,而且通过构造性证明给出一个计算外层并行化幺模变换矩阵的可行算法,并探讨了扩大其适用范围于非完全嵌套和非常数相关距离循环的有效途径.
+关键词　相关性分析,自动并行化变换,循环幺模变换.
+中图法分类号　TP311
+Automatically Computing Unimodular Transforming Matrix to
+Parallelize Nested Sequential Loops
+YU Yi-jun ZANG Bin-yu SHI Wu ZHU Chuan-qi
+(Institute of Parallel Processing Fudan University Shanghai 200433)
+Abstract　 Lacking an effective and feasible algorithm to compute the valid unimodular matrix for parallelizing of the outer loops, previous parallelizing researches can not automatically reveal the parallelism in such sequential nested-loops as have n-dimension distance matrix. In this paper, the authors discuss a general outer-loop parallelizing method by valid unimodular transformations, prove the existence of such a valid unimodular transformation, and suggest several practical computing algorithms through the constructive proofs. This discovered unimodular transformation can have the maximal number of parallelizable outer-loops transformed. Thus, the application scope of the algorithms can be enlarged to non-perfect or non-constant dependence distance loops.
+Key words　Dependence test, automatic parallelizing transformation, unimodular transformation.
+　　并行化编译是串行程序并行化的有效工具,它结合相关性分析发现串行程序中有并行性的程序段并施以合法的并行化变换,从而能使此程序段并行执行［1］.因此,有效的相关性分析［2］和自动并行化变换方法［3］是并行化编译成功的关键.串行程序的循环具有很大的并行性,因此,循环并行化变换自然成为并行化变换研究的重点.
+　　幺模(unimodular)变换是一类范围很广的循环变换,它等价于对循环迭代空间乘以一个行列式为±1的整数方块矩阵（幺模矩阵）的非奇异线性变换,人们通常为了发掘程序中的并行性而研究的一些基本循环变换(斜错(skewing)、交换(interchanging)、反序(reversal)等)都是它的特例.幺模变换具有保持整数循环迭代空间体积和维数不变的性质,不仅如此,步长为1的规范循环在幺模变换后仍是规范循环,变换后程序书写格式仍较为规整.由于这些适合循环变换的良好性质,幺模变换又成为循环并行化变换研究的重点［4～6］.
+　　但并不是任意幺模变换都能在保证变换正确性的同时而使循环并行化.因此,使用幺模变换进行循环自动并行化的困难在于,如何对给定多重串行循环自动找出使循环并行化的恰当的幺模变换矩阵.现有的大多数自动并行化编译器没有实现一般的自动并行化幺模变换,就是因为无法对多重循环自动计算能使之并行化的幺模变换矩阵［3］.而利用交互并行程序设计环境［7］提供的循环迭代空间相关图可视化工具［8］对循环程序的分析经验表明,即使由人来寻找恰好能对循环并行化的幺模变换矩阵也是很困难的.本文研究的算法目标就是对给定多重串行循环自动找出使循环并行化的恰当的幺模变换矩阵.
+　　对简单的二重循环,U.Banerjee用算法说明了如何根据源循环中的跨循环常数相关距离,寻找合法的外层或内层并行化幺模变换［4］.他的对二重循环的内层并行化方法可以扩充至多重循环内层并行化,但他的对二重循环的外层并行化方法无法直接处理多重循环外层并行化的情况.本文提出了一种确定使多重串行循环外层并行化的幺模变换矩阵的算法,解决了相关距离已知时多重嵌套循环并行化的问题.
+　　另外,当多重循环的常数距离矩阵满秩时,D'Hollander的迭代划分和求代表迭代点的方法能够增加一个额外的外层并行循环,压缩内层串行循环的相关迭代链,进一步发掘外层并行化循环迭代［5］.Xue提出了对非完全嵌套循环变换为多个完全嵌套循环迭代空间分别进行幺模变换的方法［6］,本文的外层循环幺模并行化方法可以同这两种方法结合在一起.
+　　本文第1节介绍这个一般的幺模矩阵并行化变换方法,并证明合法的幺模变换矩阵对所有已知常数相关距离的多重循环都是存在的.这个证明过程完全是构造的,因而不难得出计算合法幺模矩阵的算法.最后以一个完整的多重循环实例说明并行化幺模变换算法.
+1 寻找循环并行化幺模矩阵
+　　随着迭代空间的变换,循环的跨循环相关距离向量也一起变换,因而有些循环变换可使目标循环并行化.对相关距离向量已知的循环,寻找合法的并行化变换一般有两种方法:侧重于使内层循环并行的wavefront方法和侧重于使最外层循环并行的partition方法.Banerjee的方法［4］对循环外层并行化的幺模矩阵计算方法仅仅适用于二重循环,对n＞2重循环并不适用.D'Hollander的方法［5］直接用于n重循环,会产生超过n层的循环,且不能发掘所有的外层并行性.本文探讨的n重循环幺模并行化算法是一个发掘最多可并行外层循环的幺模变换,使得n-rank(D)个外层循环一定能够并行化,而且rank(D)-1个内层循环也能并行化.下面重点论证在n维迭代空间中,只要所有m个相关距离向量都是常数:
+　　.如果给定n×m的相关距离矩阵D的秩rank(D)＜n,就可以找到一个合法的行变换幺模矩阵U,使得UD=［0｜D′T］T,D′是rank(D)×m的合法相关距离矩阵且为行满秩.
+　　.如果D′为行满秩矩阵,可以找出一个幺模变换U′,使得除了最外重循环外**,所有内层循环可并行化.
+　　如果D为满秩可逆矩阵,行列式｜D｜＞1,就可以结合D'Hollander的迭代划分和求代表迭代点的方法,通过增加一个外层并行循环,使内层串行循环的相关迭代链是紧凑的［5］.所以,在用我们的方法进行内层并行化之前,如果rank(D′)=m且｜D′｜＞1,可以利用D'Hollander的方法发掘出可能的并行化循环(共｜D′｜个并行循环迭代),然后再对其余内层循环并行化,结果将得到n-rank(D)+1个并行外层循环、一个串行循环和rank(D)-1个并行的内层循环.
+1.1 使外层循环并行化
+　　循环并行化变换必须保证在原来迭代空间中,存在跨循环相关的两个循环迭代保持串行迭代执行顺序,亦即要求距离向量的合法性.
+　　定义1(合法的距离向量). n维相关距离向量d为合法(valid)的,如果它是按字典序大于0向量的整数向量:0∠nd.相关距离矩阵D是合法的,如果组成它的每个距离向量d1,...,dm都是合法的.
+　　引理1(一定合法的变换矩阵充要条件). 对n×n阶幺模矩阵U,如果对任意合法的n×m阶距离向量矩阵D,D′=UD也是合法的距离向量矩阵,当且仅当U是下三角矩阵,并且对角线上的所有元素都等于1.
+　　证明:()因为D是合法距离向量矩阵,d11≥0,d12≥0,...,d1m≥0;又因为U是下三角幺模矩阵,并且对角线上的所有元素都等于1.对任意d′i=Udi,d′1i=d1i≥0.若d′1i＞0,则d′i为合法距离向量.若d′1i=0,则d1i=0,考查d′2i=u21*d1i+d2i=d2i,若d′2i＞0,则d′i为合法距离向量.若d′2i=0,则d2i=0,考查d′3i=u31*d1i+u32*d2i+d3i=d3i≥0,...依此类推,若d′1i=d′2i=...=d′k-1,i=0,则d1i=d2i=...=dk-1,i=0,d′k,,...,综上所述,除非d′1i=d′2i=...=d′n,i=0,否则,必有一个k,使d′ki＞0.所以,d′i合法.
+　　()(1) 对j＞1,若u1j＜0,取d=［...,0,dj=1,0...］T,则d′1=u1j＜0,d合法但d′不合法;若u1j＞0,取d=［d1=1,...,0,dj=-｜u11｜／u1j-1,0,...,0］T,则d′1=u11-｜u11｜／u1j*u1j-u1j＜0,d合法但d′不合法.故u12=...=u1n=0,....对j＞k,若u1j=...=uk-1j=0,但ukj＜0,取d=［...,0,dk=1,0...］T,则d′1=ukj＜0,d合法但d′不合法;若u(k-1)j＞0,取d=［...0,dk=1,-｜ukk｜／uk(j-1),0...］T,则d′1=ukk-｜ukk｜／u1j*ukj-ukj＜0,d合法但d′不合法.故uk(k+1)=...=ukn=0.所以U一定是下三角阵.(2) 因为U是满秩下三角阵,所以ukk≠0.若ukk＜0,取d=［...0,dk=1,0...］T,则d′=［ ...,0,d′k=ukk＜0,...］T,d合法但d′不合法,故U对角线元素大于0.因为U是幺模矩阵,所以其下三角阵对角线的乘积等于行列式±1,所以这些对角线元素都等于1.
+　　由引理1可知,在3种基本幺模变换中,反序阵对角线元素不全大于0,交换阵不是下三角阵,所以,它们不能保证对所有合法相关距离向量变换结果仍然合法.而只有下三角行斜错变换才能保证变换的合法性.那么,对某个相关距离矩阵D,rank(D)＜n,是否有可能找到合法的幺模变换矩阵U,使得UD=［0｜D′T］T,D′是rank(D)×m的合法距离向量矩阵且为满秩?下面的定理给出了肯定的回答.
+定理1(合法的消元幺模矩阵存在性). 在n维迭代空间中,只要所有m个相关距离向量都是常数,给定n×m的距离向量矩阵D的秩s=rank(D)＜n,一定存在一个合法的行变换幺模矩阵U,使得UD=［0｜D′T］T,D′是rank(D)×m的合法距离向量矩阵且为行满秩.
+
+　　构造性证明(算法1):首先,将n维相关距离向量按列横排的D=［d1,...,dm］表示为行向量的按列纵排D=［e1,...,en］T,其中每个ei都是m维行向量.这是以下计算的关键.寻找U,使UD为［0,...,0,en-s+1,...,en］T 的步骤如下:
+
+
+　　(1) (初始化) s=rank(D),t=1,z=0,E0={},E1={e1},E2={e2,...,en},T=0,UU={}
+　　/* t记录已经处理的线性无关e向量个数,z记录已变换为0向量的个数,T记录中间幺模变换个数 */
+　　(2) IF z=n-s GOTO (4).
+　　(3) For E0={e1=0,...,ez=0},E1={ez+1,...,ez+t},E2={ez+t+1,...,en},D为合法的相关距离矩阵.
+　　　IF rank(E1+{ez+t+1})=t+1 THEN
+　　　　E1=E1+{ez+t+1},E2=E2-{ez+t+1}
+　　　　t=t+1
+　　　　GOTO (2)
+　　　ELSE
+　　　　ez+t+1与ez+1,...,ez+t线性相关,存在非零整数a1,...,at,at+1,而且at+1＞0,gcd(a1,...,at,at+1)=1
+a1ez+1+...+atez+t=at+1ez+t+1.(1)
+
+　　/* 这些系数可以通过以下方法计算:设Dsub为D的t阶满秩子矩阵(从E1的t个m维行向量中选取无关的t个列,Dinc为ez+t+1对应于这些列的t维子行向量.令at+1=｜det(Dsub)｜＞0,则［a1,...,at］=at+1DincDsub-1,由此得到的所有整系数再分别除以其最大公约数,从而保证gcd(a1,...,at,at+1)=1 */
+　　WHILE at+1≠1 DO /* 辗转相除法 */
+　　　FOR i=1,...,t,
+bi=［ai/at+1］(2)
+ai=ai mod at+1.(3)
+　　 ENDFOR 
+/*at+1＞ai≥0,对所有i=1,...,t */ (4)
+　　T=T+1
+　　
+　　
+/*ez+t+1=-b1ez+1-...-btez+t+ez+t+1.(5)
+
+　　由引理1,若D是合法的,则是合法的 */
+　　　　T=T+1,
+　　/* 其中i为令at-i＞0的最小非负整数,
+at-i+1=...=at=0.(6)
+
+　　若D是合法的,则是合法的:
+　　因为若D是合法的,若交换ez+t-i,ez+t+1不合法,则必须存在j使d1j=...=dz+t-i-1,j=0,dz+t-i,j＞0且dz+t+1,j＜0,但是由式(1)、(4)、(6)可知dz+t+1,j=az+t-i*dz+t-i,j/az+t+1＞0,矛盾 */
+　　/* 为了使式(1)不变,修正系数 */
+a1=-a1,...,at-i-1=-at-i-1,at-i=at+1,at+1=at-i.
+　　/* 由式(2)～(5)可知,式(1)对新的a1,...,at,at+1和ez+t+1,ez+1,...,ez+t仍成立,因为gcd(a1,...,at,at+1)=1,故此循环一定会终止 */
+　　　ENDWHILE
+　　/* 消元 */　
+　　/* 由引理1,若D是合法的,则是合法的*/
+　　/* 置换0向量 */　
+　　/* 因为ez+t+1=0,若D是合法的,则是合法的,所以也是合法的 */
+E0=E0+{0},E2=E2-{ez+t-1},z=z+1.
+　　　ENDIF
+　　ENDFOR
+　　(4) U=UTUT-1...U1即为所求幺模矩阵,UT,UT-1,...,U1∈UU.
+　　推论1. 若距离向量个数少于迭代空间维数(m＜n),必有幺模变换使最外至少n-m层循环并行化.
+　　由于上述算法中U的计算只涉及行变换,所以有下列推论.
+　　推论2. 若U是根据定理1对给定距离向量d1,...,dm计算出的合法幺模变换矩阵,则只要在原迭代空间中合法的距离向量d属于以dj1,...,djs为基向量张成的s维子空间,在变换后新迭代空间中Ud仍旧是合法的,且也能最外n-s层并行化(Ud前n-s个分量为0).
+　　证明:因为距离向量d仍落在原基向量dj1,...,djs张成的s维整数子空间中,所以存在一系列非全零实数(可以证明为有理数)a1,...,as,使d=a1dj1+...+asdjs.Ud=U(a1dj1+...+asdjs)=a1Udj1+...+asUdjs.因为所有dj1,...,djs的前n-s个分量为0,所以Ud前n-s个分量为0.
+　　定理2. 由算法1计算得到的幺模变换是外层并行最多的幺模变换,即不能再有其他幺模变换产生更多可并行化的外层循环.
+　　证明:若有多于n-rank(D)的行可变换为0,则rank(UD)＜rank(D),而幺模变换不改变矩阵秩,矛盾.
+1.2 使内层循环并行化
+　　定理3. 在n维迭代空间中,只要所有m个相关距离向量都是常数,给定n×m的距离向量矩阵D的秩s=rank(D)=n,一定存在一个合法的行变换幺模矩阵U,使得UD是n×m的合法距离向量矩阵,且所有距离向量的第1个元素大于0(UD的首行元素大于0).
+　　证明(算法2):若存在一系列非负整数u1,...,un-1,,则UT=即为所求.令k=1,,d1j=...=d(n-2)j=0,d(n-1)j＞0},...,k=n-1,
+　　由算法1,我们对D作幺模U1变换得到U1D=［0T｜D′T］T,D′为s=rank(D)阶行满秩阵,现在根据算法2对D′得到的Us作,则U2U1D完成进一步对内层循环并行化的任务.
+1.3 计算循环迭代空间边界
+　　n重循环迭代空间I为{(i1,...,in)∈Zn｜L1≤i1≤U1,L2(i1)≤i2≤U2(i1),...,Ln(i1,...,in-1)≤in≤Un(i1,...,in-1)}变换后的迭代空间J为{(j1,...,jn)∈Zn｜LL1≤j1≤UU1,LL2(j1)≤j2≤UU2(j1),...,LLn(j1,...,jn-1)≤jn≤UUn(j1,...,jn-1)}.由于绝大多数循环使用线性边界表达式,所以,可以将I空间边界条件表示为Ai≤b的形式,其中A是一个2n×n的整系数矩阵,b是一个2n×1的整系数向量:,k=1,...,n.因为i=U-1j,所以,在J空间中边界条件变为AU-1j≤b,现在只要用整数Fourier-Motzkin投影消元算法［9］就可以计算出LLk和UUk的线性表达式.如果在原循环边界条件常数项b中出现循环不变符号变量,则通过符号表达式运算仍可应用F-M算法求出新循环的边界条件.
+2 多重循环迭代空间幺模变换应用实例
+　　分析下列串行循环相关距离矩阵,根据算法1求得幺模矩阵,可使循环外层并行化,因为得到的D′=满秩可逆,｜D′｜=1,所以不需要再根据D'Hollander方法进一步分析partition.使用算法2得到幺模矩阵,使循环内层并行化,从而完成了幺模矩阵的计算.根据F-M算法求得循环边界表达式,这样就完成了幺模变换.所有算法都是自动的,所以不难在自动并行化变换工具中实现.
+　　DO i1=1,100
+　　　DO i2=i1,100
+　　　　DO i3=i1+i2,200
+　　　　　a(i1+1,i2+3,i3+2)=...
+　　　　　...=a(i1,i2+1,i3+5)+a(i1+1,i2,i3)
+　　　　ENDDO
+　　　ENDDO
+　　ENDDO
+　　DOALL j1=17,1700
+　　　DO j2=max(［(2-j1)/3］,［(-3*j1-400)/11］), 
+　　　　　　min(-5,［(200-j1)/3］,［(700-j1)/2］［(500-5*j1)/16］)
+　　　　DOALL j3=max(1,j1+3*j2-100,［(j1+2*j2-200)/5］),
+　　　　　　　　　min(100,［(-j2)/5］, ［(j1+3*j2)/2］)
+　　　　　i1=j3
+　　　　　i2=j1+3*j2-j3
+　　　　　i3=j1+2*j2-5*j3
+　　　　　a(i1+1,i2+3,i3+2)=...
+　　　　　...=a(i1,i2+1,i3+5)+a(i1+1,i2,i3)
+　　　　ENDDOALL
+　　　ENDDO
+　　ENDDOALL
+3 结 论
+　　对相关距离向量为已知常数的n维循环,本文提出了外层和内层并行化的幺模并行化变换方法,证明了满足外层并行化要求的合法幺模矩阵是存在的,并且给出了计算使最多层数外层循环并行化的合法幺模矩阵的算法.这种一般算法可以扩充于非完全嵌套循环和非常数相关距离循环的幺模变换.本文提出的算法都可在自动并行化编译中实现.
+*　本文研究得到国家自然科学基金、国家863高科技项目基金、国家攀登计划基金和国家教委博士点基金资助.
+**　实际上是n-rank(D)+1层循环，如果rank(D)=0，则不存在需要进一步并行化的串行循环。
+本文通讯联系人:俞一峻,上海 200433,复旦大学并行处理研究所
+作者简介　俞一峻,1972年生,博士,主要研究领域为并行处理,高性能计算.
+　　　　　臧斌宇,1965年生,副教授,主要研究领域为并行化编译.
+　　　　　施武,1971年生,助教,主要研究领域为并行处理.
+　　　　　朱传琪,1943年生,教授,博士生导师,主要研究领域为并行处理.
+作者单位：复旦大学并行处理研究所　上海 200433
+参考文献
+　1 Wolfe M. Optimizing supercompilers for supercomputers ［Ph.D. Thesis］. University of Illinois, UIUCDCS-R-82-1105, 1982
+　2 Banerjee U. Dependence Analysis for Supercomputing. Norwell, MA: Kluwer Academic Publishers Group, 1988
+　3 朱传琪,臧斌宇,陈彤.程序自动并行化系统.软件学报,1996,7(3):180～186
+(Zhu Chuan-qi, Zang Bin-yu, Chen Tong. The automatic parallelizing compiler AFT. Journal of Software, 1996,7(3):180～186)
+　4 Banerjee U. Unimodular transformations of double　loops. In: Advances in Languages and Compilers for Parallel Processing. Cambridge, MA: MIT Press, 1991. 192～219
+　5 D'Hollander E H. Partitioning and labeling of loops by unimodular transformations. IEEE Transactions on Parallel & Distributed Systems, 1992,3(4):465～476
+　6 Xue Jin-ling. Unimodular transformations of non-perfectly nested loops. International Journal of Parallel Computing, 1997,22(12):1621～1645
+　7 Yu Yi-jun, Wang Qi, Zhu Chuan-qi. The design of a parallel programming environment for FPT. In: D'Hollander E H et al eds. Proceedings of the Topic in Knowledge and Information Technology. Communication & Congnition, 1996. 69～80
+　8 Wang Qi, Yu Yi-jun, D'Hollander E H. Visualizing the iteration space in PEFPT. In: Hertzberger B, Sloot P eds. Proceedings of the High Performance Computing and Network International Conference and Exhibition. Springer-Verlag KG, 1997. 908～915
+　9 Williams H P. Fourier-Motzkin elimination to integer programming problems. Journal of Combinatorial Theory(A), 1976,(21):118～123
+本文1997-12-29收到原稿,1998-03-23收到修改稿

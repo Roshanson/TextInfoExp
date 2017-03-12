@@ -1,0 +1,114 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第8期 Vol.36 No.8 1999
+
+
+
+基于小波神经网络的光谱数据压缩与分类研究
+张永胜　　郁　可
+摘　要　文中介绍了一种基于小波分析而构造的神经网络模型――小波神经网络.利用它并适当选取网络结构和小波基，实现了对化学物质红外光谱数据的压缩表达和分类.实验表明，网络在大幅度压缩数据的同时能很好地恢复原始光谱、较准确地反映吸收峰的位置和强度.在分类方面它比其它网络具有更高的分辨率和特征提取能力.通过与BP网络的训练结果对比，小波神经网络具有自适应性强、收敛速度快及可屏蔽随机噪声等优点，特别适用于非平稳、非线性信号的分析研究.因此，小波神经网络在光谱处理方面有着较好的应用前景和优越性.
+关键词　小波神经网络，数据压缩，分类，红外光谱
+中图法分类号　TP399
+STUDY OF SPECTRAL DATA REPRESENTATION AND CLASSIFICATION FOR WAVELET NEURAL NETWORK
+ZHANG Yong-Sheng① and YU Ke②
+①(Department of Computer Science, Wuhan University of Technology, Wuhan 430070)
+②(Optical Fiber Sensing Research Center, Wuhan University of Technology, Wuhan 430070)
+Abstract　A model of neural network based on wavelet analysis――wavelet neural network, is introduced in the paper here. The chemical substance infrared spectral compression representation and classification are realized with adaptive network structure and daughter wavelet.The experimental results show that the original spectra can be recovered well, the place and intensity of absorptive peaks can be defined exactly, and the data can be compressed greatly with the wavelet network.The resolution ratio and the characteristic collection ability of the wavelet network are better than that of other networks in classification. A comparison of the two training results of the wavelet and BP networks indicates that the wavelet network has better adaptability and faster convergence speed and can shield random noise. The wavelet network can be applied to the study and analysis of nonstationary and nonlinear signals, so it holds a bright future in spectra processing.
+Key words　wavelet neural network，data compression，classification, infrared spectra
+1　引　言
+　　红外光谱是进行化合物微观结构、定性及定量分析的重要依据.准确反映所测化合物的结构特征，通常需要庞大的光谱数据量.因而在保证红外光谱主要特征基本不变的前提下，如何对红外光谱进行压缩，较大地减少数据，进而改善红外光谱的存储、检索及分类等处理方式，是很有意义的研究工作.小波神经网络［1，2］简称小波网络，是基于小波分析［3，4］而构造的一种新的神经网络模型.由于小波变换在处理信号时有较好的高频域时间精度和低频域频率精度的优点，故它在数据压缩、模式识别、信噪分离等方面有着广泛应用.本文将以小波函数构造的神经网络用于红外光谱的压缩表达和分类上.结果表明，通过调节小波基参数、权值，网络在大量压缩数据的同时能够很好地恢复原有光谱，较准确地反映吸收峰的位置和强度，从而达到压缩信号与原始信号的最佳匹配.在分类方面小波网络比其它网络具有更高的分辨率及较少的训练次数.
+2　基本原理
+2.1　数据表示网络
+　　小波变换实质是一种不同参数空间之间的积分变换［5］
+
+其中是具有紧支集的函数，称为小波基，和分别为n维和m维参数空间中的坐标.
+　　在一维信号f(t)情况下,小波基或h(a,b,t)(这里)可以按照下述方式产生
+
+其中h(t)为基本小波或母小波，为归一化系数，a,b分别为h(a,b,t)的伸缩因子和平移因子，对于信号f(t)，其局部结构的分辨可以通过调节参数a,b，即调节小波基窗口的大小和位置来实现.
+　　小波网络是基于小波分析而构造的神经网络模型，即用非线性小波基取代了通常的非线性Sigmoid函数，其信号表述是通过将所选取的小波基进行线性叠加来实现的，信号s(t)可用小波基h(a,b,t)进行如下拟合：　　
+
+(3)式中，为拟合信号，wk,bk和ak分别为权值、小波基的平移因子和伸缩因子，k为小波基的个数，图1展示了仅含有一个输入和一个输出节点的单层网络结构.
+　　网络参数wk,bk和ak可以通过下述最小均方误差能量函数进行优化
+
+其中M为数据采样点总数.在式(3)中采用下述Morlet母小波(如图2所示)，该小波是余弦调制的高斯波，时频域同时分辩率高：
+
+
+图1　压缩表示小波神经网络
+
+
+图2　Morlet母小波
+
+　　若令t′=(t-bk)/ak，则E的梯度分别为
+
+
+
+　　采用共轭梯度法优化网络wk，bk和ak，分别令向量，为第i次循环搜索方向，则
+
+其中T代表转置.同理定义按下式进行调节：
+
+
+
+　　本文采用了一维搜索变步长法［6］计算最佳步长每次循环时按上面式子分别调节网络参数向量w，b和a直到E小于某一设定误差或循环结束为止.为了合理及方便表示，网络每次循环后的输出误差E′用下式表达：
+
+2.2　数据分类网络
+　　改变小波网络结构可以对输入信号进行综合分类.设输入训练样本总数为P，网络有N个输出节点，对第p个样本，第n个节点的输出用下式表示: 
+
+其中，一个Sigmoid函数.图3给出了式(14)的分类小波网络结构示意图.
+　　网络参数wk，bk和ak可通过下述能量函数E优化
+
+其中为第p个样本，第n个节点的理想分类输出.利用式(5)，并令，则
+
+
+
+
+
+图3　分类小波神经网络
+用2.1节所述的共轭梯度法优化网络参数wk, bk和ak，直到E小于某一设定误差.
+3　结果与讨论
+3.1　光谱压缩
+　　根据上述方法，我们对一个α, α′――二氧代烯酮环二硫代缩酮的化合物的特征红外光谱(波数从4000～452cm-1，波数间隔为4cm-1，共888个数据点)进行了压缩研究，将其红外光谱的全部数据点作为训练集，波数作为输入，透光率作为目标输出，共采用了30个小波基进行训练，将wk，ak初始值定为随机数(范围均从-100～+100)，bk的初始值在取样区间内均匀分布，但为了加快网络收敛速度及避免误差局部最小，我们主要以波峰和波谷等所对应的波数作为bk的初始值,训练次数为200次，开始步长分别为αw=10-2，αa=αb=10-7，训练结束后输出误差E′为0.000275，将其全部波数作为输入对谱图进行了恢复，输出误差E′也为0.000275.图4给出了该化合物的原始和恢复后的红外光谱.
+
+
+图4　α, α′――二氧代烯酮环二硫代缩酮红外光谱图
+
+　　可以看出恢复后的光谱能很好地保持原有光谱的特性，特别是能够较准确地反映吸收峰的位置和强度.小波基个数的选取是一个十分重要的问题，个数太多，虽然能使收敛速度加快，但所需参数要增加，压缩比要降低；相反，个数太少，压缩比可以增大，但使收敛速度变慢甚至不收敛.经过实验，我们选择了30组是比较合适的.这样红外光谱的原始透光率的数据可以用30组wk,bk和ak共90个参数表示出来，从而实现了其光谱的压缩，压缩比约为10∶1，效果是可以满意的.表1给出了实际谱峰值与恢复后的谱峰值.
+3.2　光谱分类
+　　由于一些物质的衍生物或某些类中的不同化合物之间存在着光谱结构的相似性(即峰位，峰强，峰形，峰宽，峰数目等的相似)，可以在各种谱与物质结构间建立某种确定的对应关系，并对不同的物质进行分类.这里我们对OH，NH，CO，芳香族环烃4类物质进行初步分类，选择了这4类中的125种物质的特征红外光谱作为分类训练集，用另外44种物质的红外光谱作为检测集，其中输出层由2个节点组成，用4个二进制代码表示分类结果.开始对采样数据进行了预处理，为了方便和突出小波基概念，这里用了固定步长法，我们先经验地采用10个固定小波基(即bk和ak，k=1,2,...,10，取某些固定值)，初始权值为一随机数，通过只调节权值来优化网络，并给定αw取值.经过155次训练，用未经训练的红外光谱检验后表明，对这4类物质的识别可达88％的准确率.后来，我们再采用对权值w、小波基的平移因子bk和伸缩因子ak实行全调节优化网络，并给定αw，αa，αb取值，经过150次训练后，分类准确率达到94％.这表明选用合适的小波基可以提高网络分类率.
+　　小波网络用于对原始数据分类有以下几方面的优点：①用较少的训练样本即可达到较好的训练效果，从而加快训练速度，增加网络的识别分辨率.②小波基可以把尺度、变换等的不变性进行合并，减少训练样本数.③具有很好的特征提取和屏蔽随机噪声能力，特别适于非平稳、非线性信号的分类.
+　　我们对BP网络和小波网络采用同样步长和初始权值，经过5000次迭代训练来比较网络收敛速度，图5显示了两种网络学习的收敛曲线，可见小波网络收敛速度明显优于BP网络.
+
+
+(a) BP网络；(b) 小波网络
+图5　两种神经网络收敛误差曲线图
+表1　实际谱峰值与恢复后的谱峰值
+
+序号实际谱峰值恢复后的谱峰值
+　波数(cm-1)透光率(%)波数(cm-1)透光率(%)
+1324356.2324356.218130
+2129918.5129818.215226
+3128715.3128816.033068
+4126810.112688.238141
+5124218.0124119.981833
+6122217.8122216.210110
+762848.962646.037789
+859755.559754.403103
+958144.658144.159781
+
+　
+4　结束语 
+　　从上述讨论可知，小波网络对红外光谱数据压缩和分类具有一定的应用价值，展示了它在光谱方面的应用前景.但对整个红外波段，随着小波基个数的增加，计算量会迅速增大，这对硬件的要求也要提高，算法的进一步优化及计算机综合性能的提高有望解决这一问题.需要指出的是，小波基的数量和网络参数的初始值对网络训练有很大的影响.此外，采用不同的母小波和误差能量函数，有可能会减小训练误差以及加快网络收敛速度.
+基金项目：本课题得到国家自然科学基金的资助(项目编号5943206)
+作者简介：张永胜，男，1964年9月生，硕士，现主要从事神经网络、数据库开发及计算机应用研究工作.郁可，男，1963年7月生，博士，副教授，现主要从事光纤传感技术及智能材料研究工作.
+作者单位：张永胜　武汉工业大学计算机科学系　武汉　430070
+　　　　　郁　可　武汉工业大学光纤中心　武汉　430070
+参考文献
+1　Zhang Q, Benvenise A. Wavelet network. Proc IEEE Trans on Neural Network, 1992, 3(6): 889～898
+2　Harold H S, Brain T, Shubha K, Neural network adaptive wavelet for signal representation and classification, Optical Engineering, 1992, 31(9): 1907～1916
+3　Bos M, Hoogendam E, Wavelet transform for the evaluation of peak intensities in flow-injection analysis. Analytica Chimica Acta, 1992, 267: 73～80
+4　Bos M, Vrielink JAM. The wavelet transform for pre-processing IR spectra in the identification of mono and disubstituted benzens. Chemometrics and Intelligent Laboratory Systems, 1994, 23(2): 115～122
+5　秦前清, 杨宗凯. 实用小波分析. 西安: 西安电子科技大学出版社,1995
+(Qin Qianqing, Yang Zongkai. Practical Wavelet Analysis. Xi'an: Xi'an University of Electron Science and Technology Press,1995)
+6　胡守仁,沈清,胡德文等. 神经网络应用技术. 长沙: 国防科技大学出版社,1993
+(Hu Shouren, Shen Qing, Hu Dewen et al. Application Technology of Neural Network, Changsha: National Defence University of Science and Technology Press, 1993)
+收到日期：1997-11-18
+修改日期：1998-05-25

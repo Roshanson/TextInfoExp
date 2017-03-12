@@ -1,0 +1,156 @@
+信息与控制
+INFORMATION AND CONTROL
+1999年 第28卷 第6期 Vol.28 No.6 1999
+
+
+
+连续系统线性二次型期望极点配置问题的研究
+冯冬青 谢宋和
+　　摘　要：本文以线性二次型性能指标中的加权矩阵和最优闭环系统在频域内的解析关系为基础，提出了一种新的期望极点配置方法．该方法的主要优点是不必求解复杂的矩阵Riccati方程也可很容易地确定满足指定闭环极点配置要求的状态反馈矩阵．本文还讨论了指定闭环极点的选择方法，并用例子说明这种极点配置方法的有效性和简便性．
+　　关键词：连续系统， LQ问题， 加权矩阵， Riccati方程， 期望极点配置
+　　中图分类号：TP13　　　　　　文献标识码：B
+STUDY ON THE LINEAR QUADRATIC EXPECTED POLE ASSIGNMENT
+PROBLEM FOR THE CONTINUOUS-TIME SYSTEM
+FENG Dong-qing2 XIE Song-he2
+(1. Information & Control Institute, Zhengzhou University of Technology, Zhengzhou 450002; 2. Department of Control Engineering, Zhengzhou Institute of Light Industry, Zhengzhou 450002)
+Abstract　This paper presents a new method of the expected pole assignment based on the analytical relationship between the weighting matrices in the linear quadratic performance and the closed-loop systems in the frequency domain. The advantage of the method is that the state feedback matrix satisfying the pole assignment can be easily determined without solving the complex matrix algebraic Riccati equation. The choice of prescribed closed-loop poles is discussed and the effectiveness and simplicity of the method is expounded based on an example.
+　　Key words　continuous-time system, LQ problem, weighting matrix, Riccati equation, expected pole assignment
+1　引言
+　　考虑一个线性定常可控系统
+X=AX+BU　　　　　(1)
+式中A和B分别是n×n和n×m维定常矩阵．
+　　线性二次型性能指标为
+　　　　　　　(2)
+式中Q≥0，R>0．由最优控制理论知，使性能指标(2)极小的最优控制律为
+U=-KX=-R-1BTPX　　　　　　　　　　(3)
+式中P满足矩阵代数Riccati方程
+ATP+PA-PBR-1BTP+Q=0　　　　　　　　(4)
+　　由(1)式和(3)式可得最优闭环系统
+　　　　　　　　　(5)
+　　所谓线性二次型期望极点配置问题，就是要确定一个状态反馈控制律K，使对应的闭环系统具有一组预先指定的极点｛λci，i=1，2，…，n｝，并且使某个二次型性能指标(2)极小，即存在某个加权阵Q≥0和R＞0与K对应[1]．因此，研究二次型期望极点配置问题的意义在于：对于单变量系统来讲，如何选择期望的闭环极点，从而保证与之对应的唯一反馈增益是最优的；对于多变量系统而言，在已知指定极点是一组二次型期望极点的前提下，利用极点配置的自由度，来寻找一个满足极点配置要求的反馈增益．因此，二次型期望极点配置问题的实质是传统的极点配置方法和LQ最优设计方法的综合问题，通过这种综合设计方法所得到的闭环系统将具有极点配置方法的良好动态特性和LQ最优设计的内在鲁棒性等双重优点[3]．
+　　通常解决二次型期望极点配置问题的方法有两种：以极点移动为基础的数值迭代法[3～5]和从LQ逆问题着眼的解析法[6～8]．前一种方法没有从本质上揭示加权阵Q，R与K以及λci之间的多值对应关系，在迭代求解过程中要求多次求解非线性矩阵方程，非常复杂．后一种方法对A和λci提出不同程度的限制要求，问题实质上没有得到圆满解决．本文提出了一种以极点分组移动为基础的新方法，其特点是不需要求解非线性的矩阵Riccati方程，也可以很容易地确定满足指定闭环极点配置要求的最优反馈矩阵K以及与之对应的加权矩阵Q和R．实际算例表明这种极点配置方法是简便有效的．
+2　关于最优反馈增益K的存在性问题
+　　我们已经知道LQ最优控制系统并不能任意配置极点，即对给定的一组期望闭环极点，并不一定存在相应的Q≥0和R＞0，使得由此设计的LQ闭环系统具有指定的极点．对于二次型期望极点配置问题来讲，首先要解决的问题是如何根据期望的闭环动态特性选择或修正指定的闭环极点；其次是如何充分利用多变量系统极点配置的自由度，确定一个状态反馈矩阵K，使之成为最优反馈矩阵，并达到指定闭环极点配置的要求．
+　　引理1 对于给定的反馈增益K，存在某个加权矩阵Q≥0与之对应，当且仅当
+
+式中F(jω)=I+K(jωI-A)-1B.
+　　令
+
+　　定理1 若λoi ,λci(i=1,2,…,n)分别是系统（1）和（5）的开环极点和期望闭环极点，则有如下不等式成立：
+　　　　　　(6)
+　　　　　　(7)
+　　　　(8)
+式中满足
+　　证明 利用detF(s)=Pc(s)/Po(s)，根据引理1不难证明（6）式和（7）式，根据文献[9]和[10]不难得到（8）式．
+　　定理1为实际工程设计选择合适的闭环极点提供了重要的理论依据，是选择或修正指定极点的前提条件．从几何意义上看，要求λci相对于λoi(i=1,2,…,n)在整体上离平面的原点以及自左方向的虚轴更远一些．
+　　定理2[8] 对于单变量系统而言，指定的闭环极点λci(i=1,2,…,n)是一组二次型期望极点的充分条件是如下n个不等式同时成立：
+
+式中i=1,2,…,n且当j>n时， aj=bj=0．
+3　期望极点配置的基本原理
+　　根据文献[1]有
+FT(-S)RF(S)=R+BT(-SIn-AT)Q(SIn-A)-1B
+上式两边同时取行列式，并化简整理得
+Pc(S)Pc(-S)=Po(S)Po(-S)det　　　　　　　　(9)
+令H(S)=(SIn-A)-1B=N(S)/Po(S),则（9）式可改写为
+Pc(S)Pc(-S)=Po(S)Po(-S)det　　　　　　　　(10)
+　　引理2[11] 如果λci≠λcj(i≠j)且λciλ(A),则Q，R和K以及λci存在如下关系:
+K=-[ζ1,ζ2…ζn][ζ1ζ2…ζn]-1　　　　(11)
+式中非零向量ξi,ξi（i=1，2，…，n）由下式确定：
+ζi=0 i=1,2,…,n　　　　　　　　　　　　　(12)
+ζi=H(λci)ζi i=1,2,…,n　　　　　　　　　(13)
+　　引理2从本质上反映了加权矩阵Q，R与K以及λci之间的相互关系．如果利用某种方式能够得到与λci对应的Q和R，那么根据引理2可以直接确定Q和R对应的K，而不必求解复杂的非线性矩阵代数方程（4）．
+　　引理3 已知系统矩阵A的模态矩阵为M，且M已分解为
+　　　　　　　　　　　　　(14)
+
+式中
+　　　　　　　　　　　(15)
+　　　　　　　　　　　　(16)
+且M-i(i=1,2,…,n1)和M+j(j=1,2,…,n2)分别表示对应于λ-oi和λ+oj的特征向量，λ-oi表示矩阵A的要保持不变的特征值，λ+oj表示矩阵A的将要被移动的特征值，且n1+n2=n．如果加权矩阵Q满足
+QM-i=0 i=1,2,…,n　　　　　　　　(17)
+那么，由以上Q阵和任意给定的R>0确定的状态反馈矩阵为
+　　　　　　(18)
+式中ζi,ζi(i=1,2,…,n2)分别由（12）式和（13）式确定，且对应的闭环系统将具有不变特征值和被移动以后的n2个目标特征值．
+　　证明 根据引理2和文献[10]不难得证．
+　　定理3 已知M为A的模态矩阵，且有
+　　　　　　　　　　　(19)
+那么，满足（17）式要求的Q可以是
+　　　　　　　　　　　　(20)
+式中
+D=DT≥0.
+　　证明 因为M-1M=In，故
+
+因此
+　　根据定理3就可以提出如下的以极点分组移动（每一次移一个或两个极点）为基础的期望极点配置方法．
+　　假定原系统的特征多项式为
+Po(S)=Poi(S)Pov(S)
+式中Pov(S)=0的根对应于要移动的特征值，Poi(S)=0的根对应于不变特征值，且令
+Pov(S)=S2+a1S+a0 或 Pov(S)=S+a0
+只经过一次极点移动的闭环系统特征多项式为
+Pc(S)=Pci(S)Pcv(S)
+其中Pci(S)=Poi(S)，Pcv(S)由目标特征值决定，且令
+Pcv(S)=S2+b1S+b0 或 Pcv(S)=S+b0
+根据定理3，可令D=ddT，式中d=[d1 d2]T或d=d1．因此，有[9]
+
+把上式代入（9）式，并化简有
+Pcv(S)Pcv(-S)=Pov(S)Pov(-S)+dTW(S)WT(-S)d　　　　　　　　　　　(21)
+式中W(S)=[[AKM^]yN(S)R-1/2]/Pov(S)．由于Pov(S)，Pcv(S)以及W(S)均已知，因此，由（21）式可以求得d，从而得到Q（在指定某一个R>0条件下）.再根据引理3即可确定一个K，实现某一个或一对极点的移动．反复经过多次极点的分组移动（最多n次），即可得到要求的K．
+　　需要指出：每次移动过程中的极点个数不限于一个或两个，也可以是两个以上．但是，当每次移动的极点个数愈多时，虽然移动的总次数少了，但每次的计算过程就复杂多了，因为（21）式终归转化为一个非线性方程组．此外，共轭的复数极点对需分在同一个极点组中参与移动．
+4　极点分组移动的计算方法
+　　第一步 对于已知的开环系统（1），求λoi(i=1,2,…,n)，然后将这些开环极点进行适当分组，每组只含一个或两个极点．
+　　第二步 根据第一步的开环极点分组情况，利用定理1和2选择适当的闭环极点，并进行分组，以保证（21）式的d存在．
+　　第三步 令j=1,A(j)=A,H(j)(S)=H(S),N(j)(S)=N(S)，P(j)o(S)=Po(S),{λ(j)oi}={λoi},并且任意指定一个加权矩阵R>0，一般取R=Im，同时令．R(j)=R.
+　　第四步 进行第j组极点的移动，根据（21）式求d(j)，而后由（20）式求Q(j)，再根据引理3求K(j)．此时，可准备进行第(j+1)组极点的移动，令
+A(j+1)=A(j)c=A(j)-BK(j)
+H(j+1)(S)=-1B
+R(j+1)=R(j)=R
+P(j+1)0(s)=P(j)c(s)
+{λai(j+1)}={λci(j)}
+　　第五步 如果全部极点已移到目标位置，那么，不难证明满足指定闭环极点配置要求的最优反馈增益为
+　　　　　　　　　(22)
+且与之对应的加权矩阵为
+　　　　　　　　　(23)
+这里的l表示极点组的总移动次数．否则，转第四步．
+5　例子[5]
+
+因此 λ(A)={-4,-1,-2}
+　　若期望的极点为λ(Ac)={-4,-5,-6}，那么，可以分两步来进行期望极点配置：先将-2移到-6，再将-1移到-5，而-4保持不变．
+　　在将-2移到-6时，我们可得
+
+如果选定R=I2，则
+
+根据（21）式可得
+
+因此，[d1(1)]2=128，且
+
+故有
+
+同理，在将-1移到-5时，有
+
+
+因此，d(2)1]2=24×900/116,且
+
+故
+　　　　　　　　　(24)
+与之对应的加权矩阵分别为
+　　　　　　　(25)
+
+　　　　　　　　　　(26)
+　　若把上述的A,B,Q和R代入方程（4），求出P，而后根据（3）式不难验证：所得的最优反馈矩阵与（24）式相同，且有λ(A-BK)={-4,-5,-6}， 这就充分说明了本文的正确性．
+作者简介
+　　冯冬青(1959-)，男，硕士，副教授．研究领域为最优控制,智能控制,生产过程计算机控制．
+　　谢宋和(1965-)，男，副教授．研究领域为线性多变量系统理论，模糊控制，智能控制．
+作者单位：冯冬青 郑州工业大学信息与控制研究所 郑州 450002
+　　　　　谢宋和 郑州轻工业学院控制工程系 郑州 450002
+参考文献
+1 Anderson B D O, Moore J B. Liner Optimal Control. Prentice-Hall, London,1971
+2 Kalman R E. When is a Linear Control System Optimal. Trans. ASME(D), 1964, 86(1): 51～60
+3 Solheim O A. Design of Optimal Control System with Prescribed Eigenvalues. Int. J. Control, 1972,15(1): 143～160
+4 Eastman W L, Bossi J A. Design of Linear Quadratic Regulator with Assigned Eigenvalue. Int J Control, 1984,39(3):731～742
+5 Juang J C, Lee T T.On Optimal Pole Assignment in a Specified Region. Int. J. Control, 1984, 40(1):65～79
+6 王耀青,吕勇哉.具有给定极点的最优控制系统设计.信息与控制,1989,18(3):41～45
+7 王耀青.LQ最优控制系统中加权矩阵的确定.自动化学报,1992,18(2):313～317
+8 谢宋和，李人厚.一种新的最优极点配置方法.控制理论与应用,1993,10(1):113～116
+9 须田信英（日）等著,曹长修译.自动控制中的矩阵理论.北京:科学出版社，1979
+10 Kawasaki N, Shimemura E. Determining Quadratic Weighting matricces to Located Poles in a Specified Region. Automatica, 1983, 19(5):557～560
+11 Kailath T. Linear Systems, Prentice-Hall, London,1980
+收稿日期:1998-06-18

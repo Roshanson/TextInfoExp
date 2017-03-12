@@ -1,0 +1,155 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+严格正则多输入多输出对象同时镇定1)
+曹永岩　孙优贤
+摘　要　使用逆LQ方法讨论了r个严格正则多输入多输出对象的同时镇定问题，基于矩阵不等式 方法得到了静态输出反馈可同时镇定的充要条件，本文证明r个对象静态输出反馈同时镇定等价于r个耦合LQ控制问题的解.然后，基于迭代线性矩阵不等式技术给出了一种迭代求解方法，并给出了算例.
+关键词　同时镇定，代数Riccati不等式(ARI)，静态输出反馈，线性矩阵不等式(LMI).
+SIMULTANEOUS STABILIZATION OF THE
+MIMO STRICTLY PROPER PLANTS
+CAO YONGYAN　SUN YOUXIAN
+(Institute of Industrial Process Control,Zhejiang University,Han gzhou 310027)
+Abstract　Based on the inverse LQ approach,this paper addresses the siumltaneous stabilizability for r MIMO strictly proper plants. Some necessary and sufficient conditions for the static output feedback simul taneous stabilization are derived using the matrix inequality method.It is proven that this problem is equivalent to the existence of the solution of r coupled LQ control problem.Then an iterative algorthm based on the LMI techn ique is presented to obtain the feedback gain.The illustrated examples show that it is very efficient.
+Key words　Simultaneous stabilization,algebraic Riccati inequ ality,output feedback,linear matrix inequality.
+1　输出反馈的可镇定条件
+　　考虑n阶动态系统
+x=Ax+Bu,　　　(1)
+式中x∈n表示状态向量，u∈m控制向量，A，B为具有合适维数的常矩阵.
+　　众所周知，线性系统(1)可状态反馈镇定当且仅当存在矩阵Q＞0,R＞0使得如下ARE存在唯一解P＞0.
+PA+ATP-PBR-1BTP+Q=0,
+或者说存在矩阵P＞0,R＞0满足如下ARI
+PA+ATP-PBR-1BTP＜0.
+实际上，如果(A，B)可镇定，那么对于任意Q＞0，R＞0，上述ARE一定存在唯一正定解P＞0，见文［2］，对于任意R＞0，上述ARI一定存在一可行解，见文［1，2］.
+　　考虑如下具有交叉项的LQ控制问题
+v(x0)=∫∞0(xTQx+2uTSx+uTRu)dt.　　(2)
+其中权矩阵Q＞0，R＞0，S满足
+Q-STR-1S＞0,　　(3)
+其解为
+u=Kx,K=-R-1(BTP+S),
+PA+ATP-(BTP+S)R-1(BTP+S)+Q=0.　　　(4)
+引理1. 线性时不变系统(1)可状态反馈镇定当且仅当如下等价条件之一成立：
+　　1)存在合适维数的矩阵P＞0,Q＞0,R＞0,S使得不等式(3)和ARE(4)成立；
+　　(2)存在合适维数的矩阵P＞0，R＞0，S满足如下具有交叉项的ARI
+PA+ATP-(BTP+S)R-1(BTP+S)+STR-1S＜0.　　　(5)
+　　证明. 略.
+2　主要结论
+　　下面考虑r个严格正则对象Gi的同时镇定问题
+i(t)=Aixi(t)+Biui(t),yi(t)=Cixi(t),　　(6)
+或者
+i(t)=Aixi(t)+Biui(t),yi(t)=xi(t).　　　(6′)
+其中状态xi∈n,输入ui∈m,输出yi∈p,n为对象Gi的阶.假定
+Ci=C,i=1,…,r,　　(7)
+并且C满秩.这一条件并不严格，对于r个有理严格正则对象Gi(s)，我们可以得到可观测形 式的同阶实现.另外对于许多不确定系统，仅在系统矩阵和输入矩阵中具有不确定性.令E为C 的右逆，即，CE=Ip*因为C满秩，所以
+E=CT(CCT)-1.　　　(8)
+因此E⊥=EC为关于Im(CT)的直交投影矩阵，并且x⊥=E⊥x=Ey.
+　　定理1. 给定r个对象(6)，它们可静态输出反馈同时镇定当且 仅当存在矩阵Pi＞0,R＞0,Qi＞0,M满足如下耦合ARE
+PiAi+ATiPi-(Si+BTiPi)TR-1(Si+BTiPi)+Qi=0,i=1,…,r,　　(9)
+Qi-STiR-1Si＞0，　　(10)
+Si=ME⊥-BTiPi;　　(11)
+并且静态输出反馈同时镇定增益为
+K=-R-1MCT(CCT)-1;　　(12)
+或者存在Pi＞0，R＞0，M满足如下耦合(11)约束的ARI
+PiAi+ATiPi-(Si+BTiPi)TR-1(Si+BTi Pi)+STiR-1Si＜0，i=1,…,r.　　(13)
+证明. 充分性显然.仅需证明必要性.若这r个对象可静态输出反馈同时镇定，那么一定存在状态反馈增益F=KC以及r个矩阵Pi＞0，使得
+xT［(Ai+BiF)TPi+Pi(Ai+BiF)］x＜0,x≠0,i=1,…,r.
+可以假定F=ME⊥,M为一合适维数的任意矩阵，因此上式等价于
+xT(ATiPi+PiAi)x＜0,　x∈Ker(F),　x≠0,　i=1,…,r.
+定义
+
+由文［3］知，一定有α*i＜0，i=1,…,r.因此α*＜∞,即α*有上界.因为F=ME⊥,故对于任意α＞max(0，α*)，都有
+xT(PiAi+ATiPi)x＜αxT(E⊥MTME⊥)x,x≠0,i=1, …,r.
+因此对于任意对称矩阵R满足R-1αI,一定有
+xT(PiAi+ATiPi)x＜xT(E⊥MTR-1ME⊥)x,x≠ 0,i=1,…,r
+即
+PiAi+ATiPi-E⊥MTR-1ME⊥＜0,i=1,…,r
+这也意味着存在矩阵Qi＞0满足式(9).由定理1不等式(10)也是其一必要条件.
+证毕.
+　　这一定理意味着，静态输出反馈同时镇定可以看作r个耦合LQ控制问题存在合适解Pi,Qi,R,Si，并满足耦合约束(11).
+　　系1. 给定线性时不变对象(A，B，C)，可静态输出反馈镇定，当且仅当存在矩阵Q＞0，P＞0,R＞0，M满足如下带约束条件的ARE
+PA+ATp-(S+BTP)TR-1(S+BTP)+Q=0,　　(14)
+Q-STR-1S＞0,　　　(15)
+S=ME⊥-BTP,　　(16)
+或者存在P＞0，R＞0，M满足(16)约束的ARI
+PA+ATP-(S+BTP)TR-1(S+BTP)+STR-1S＜0.　　　(17)
+　　系2. 给定r个严格正则对象Gi，它们可状态反馈同时镇定 ，当且仅当存在矩阵Pi＞0,R＞0,Qi＞0,M满足如下耦合ARE
+PiAi+ATiPi-(Si+BTiPi)TR-1(Si+BTiPi)+Qi=0,i=1,…,r,　　(18)
+Qi-STiR-1Si＞0, Si=M-BTiPi;　　　(19)
+并且状态反馈同时镇定控制律可取为
+K=-R-1M;　　(20)
+或者存在矩阵Pi＞0，R＞0，M满足如下耦合ARI
+PiAi+ATiPi-(Si+BTiPi)TR-1(Si+BTiPi)+STiR-1Si＜0，i=1,…,r,　　(21)
+Si=M-BTiPi.
+3　迭代LMI求解算法
+　　由上节可知，静态输出反馈镇定可转化为解带约束(16)的矩阵不等式(17)，静态输出反馈同 时镇定问题可转化为解带约束(11)的矩阵不等式(13)，状态反馈同时镇定问题可转化为解带 约束(19)的矩阵不等式(21).显然其关键为解矩阵不等式(5)，因为约束(11)，(16)，(19)均 为线性的，仅对S的取值范围进行约束，这在LMI中是很容易实现的.下面我们给出一种 基于LMI技术的迭代求法.
+　　显然不等式(5)等价为
+PA+ATP-PBR-1BTP-STR-1BTP-PBR-1S＜0，　　(22)
+实际上这是一非线性矩阵不等式.由引理1的说明和定理1的证明可知，我们可令R=I，那么(22)就成为一个BMI(双线性矩阵不等式)了.下面给出它的一种迭代形式的等价条件.
+　　定理2. BMI(22)存在可行解(P＞0,S)，当且仅当
+PA+ATP-2PBR-1BTP+(BTP-S)TR-1(BTP-S)＜0 ，　　(23)
+证明. 充分性.
+PA+ATP-PBR-1BTP-STR-1BTP-PBRTS
+PA+ATP-PBR-1BTP-STR-1BTP-PBR-1S+STR-1S=
+PA+ATP-2PBR-1BTP+(BTP-S)TR-1(BTP-S)＜0.
+　　必要性.不难发现，一定存在标量ρ＞1，使得
+PA+ATP-PBR-1BTP-STR-1BTP-PBR-1S+ρ-2STR-1S＜0，
+即
+PA+ATP-(ρ2+1)PBR-1BTP+(ρBTP-ρ-1S)TR-1(ρBTP-ρ-1S)＜0.　　(24)
+因此
+PA+ATP-2ρ2PBR-1BTP+(ρBTP-ρ-1S)TR-1(ρBTP-ρ-1S)＜0.
+用P代替ρ2P,就可得到不等式(23).
+证毕.
+　　因为-PBR-1BTP的负号，(24)不能简化为一LMI.为了处理这一项，我们引入一附加变量X.因为对于同维的X，P总有(X-P)TBR-1BT(X-P)0，所以
+XTBR-1BTP+PTBR-1BTX-XTBR-1BTXPTBR-1BTP　　(25)
+不等式成立当且仅当X=P.因此我们得到BMI(22)有解的一个充分条件.
+ATP+PA-2XBR-1BTP-2PBR-1BTX+2XBR-1BTX+(BTP-S)TR-1(BTP-S)＜0　　(26)
+　　定理3. BMI(22)存在一可行解(P＞0，S)当且仅当存在X ＞0，使得矩阵不等式(26)成立.
+　　证明. 充分性已证，下面证明必要性.显然，若BMI(22)存在一可行解(P＞0,S)，那么一定存在正实数ε＞0满足
+ATP+PA-2PBR-1BTP+(BTP-S)TR-1(BTP-S)+εI＜0.
+选择对称矩阵2BR-1BT,令X=p-ΔX,ΔX=ε1/2-1/2,那么就有
+2(P-X)BR-1BT(P-X)εI.
+因此矩阵不等式(26)成立. 
+证毕.
+　　由Schur补，式(26)等价于如下矩阵不等式
+
+(27)
+　　显然，X固定时，式(27)为关于S和P的LMI问题.然而LMI(27)(假设X固定时)仅为 BMI(22)的一充分条件.事实上，如果我们找到了它的一可行解，也就找到了BMI(22)的解.一般来说它无解.但是我们可以利用所谓的-α/2－可镇定性对它进行放松，即得到必要条件
+ATP+PA-αP-2XBR-1BTP-2PBR-1BTX+2XBR-1BTX
++(BTP-S)TR-1(BTP-S)＜0.
+基于极点逐步左移到左半平面，我们得到如下迭代算法.
+　　步骤1. 令i=1,R=I.选择Q＞0解ARE
+ATP+PA-PBBTP+Q=0.
+　　假定其解为X.
+　　步骤2. 解关于Pi,S,αi的优化问题OP1：极小化满 足如下LMI约束的αi
+
+(28)
+Pi=PTi＞0　　(29)
+　　步骤3. 解关于Pi,S的优化问题OP2:极小化trace(Pi)并满足LMI约束(28)，(29).
+　　步骤4. 如果αiu0，(P，S)就是一可行解，算法结束.
+　　步骤5. 如果‖X-Pi‖＜δ(预先给定的任意小的正实数)，转步骤6，
+　　　　　　否则令X=Pi,i=i+1,转步骤2.
+　　步骤6. 系统可能无解，算法结束.
+　　OP1是一广义特征值问题，这一步保证极点的逐步左移.不等式(25)在这一算法中起了关键作用.对于优化问题OP1，在每一次迭代中其解的存在性都由(25)保证.而且αi是一递减序列，因为对于满足如下不等式的任意Pi＞0，S
+ATPi+PiA-2XBBTPi-2PiBBTX+2XBBTX-αiPi+
+(BTPi-S)T(BTPi-S)＜0，
+一定有
+ATPi+PiA-2PiBBTPi-αiPi+(BTPi-S)T(BTPi-S)＜0.
+这就是说下一次一定可以找到解αi+1αi，因为Pi+1=Pi,αi+1=αi就是一解.
+4　示例
+　　考虑变参数系统
+
+标称工作点为θ0=7.考虑在工作点θ0=7,θ1=3,θ2=11的3个对象的同时镇定问题
+
+使用本文算法，经过29次迭代得到M=［2.57090］,
+
+闭环特征值分别为｛-40.5506,-1.0203｝,｛-0.7855±5.1388i｝,｛-113.0837,-0.4872｝.因此K=-2.5709同时镇定这3个对象.
+　　1)国家自然科学基金资助项目和浙江大学曹光彪高科技发展基金资助项目.
+作者单位：工业控制技术国家重点实验室，浙江大学工业控制技术研究所　杭州　310027
+参考文献
+1　Boyd SL,EL Ghaoui,Feron E,Balakrishnan V.Linear matrx inequalities in system and control theory,SIAM,Philadelphia,1994
+2 Anderson BDO,Moore JB.Optimal control:Linear Quadratic Methods.Englewood Clif fs,NJ:Prentice－Hall,1990
+3 Cheng D,Martin CF.Boundaries of conditional quadratic forms--a comment on “Stabilization via static output feedback”.IEEE Trans.Autom.Contr., 1995,40(3),500-502
+收稿日期　1996-01-08

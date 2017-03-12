@@ -1,0 +1,96 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第6期 Vol.19 No.6 1999
+
+
+
+多线程应用程序的同步技术
+冯美霞
+　　摘　要　本文描述了写一个多线程应用程序时，如何控制对全局变量和共享资源的访问。特别是在大量的读写操作且读／写比很大的情况下，如何通过使用复合同步对象使程序性能得到很大提高。本文阐述了一种算法用以实现这种提高。
+　　关键词　线程，共享，同步，同步对象
+SYNCHRONIZATION TECHNIQUE FOR MULTITHREADED APPLICATIONS
+Feng Meixia
+Computer Center of Industry Developing & Training Center, Southeast University, Jiangsu.Nanjing 210018
+　　Abstract　This article describes how to control the access to the global variables and sharedresources when writing a multi-threaded application in Windows 95 or Windows NTenvironment. Especially how to increase performance by using composite synchronizationobject when the ratio of read to write is very high. The article provides an algorithmto achive this.
+　　Keywords　Thread, Share, Synchronization, Synchronization object
+1　前言
+　　随着Windows 95 和 Windows NT 操作系统的流行，32位应用软件开始逐渐普及，运用Win32 API（应用程序界面）来编写32位软件所带来的一个好处，就是可以运用多线程来提高程序的性能。编写一个多线程的软件，在于如何控制对各线程的数据和资源的访问。因为在软件中的每个线程都有对全局变量，函数内部静态变量，以及其它一些进程相关的资源如文件句柄等的相同的访问权。不加区分的允许对这些资源的访问，会导致程序失败或得到错误的结果 。解决的办法，是通过对线程的非对称使用，那就是分给每个线程特定的、不同的任务，从而把对特定进程资源的访问限制在单个线程内。
+　　Win32 API提供了许多灵活的同步对象，它们可以使程序能管理对在同一个或不同的进程中的线程之间共享的数据和资源的访问。使用Win32同步对象的优点就是可以不通过串行化线程来控制对资源的访问。但如果同步做得不仔细，性能将因为线程的串行化而下降：它们将被阻塞或不必要的长期等待对共享资源的访问。过度的串行化将导致程序实际上只有一个线程，那就失去了线程的优势。
+2　使用Win32同步对象技术
+2.1　统一的方法：Mutexes
+　　最简单也是最好的控制访问共享资源的方法就是使用单个的Mutex。在这里,用单个的Mutex来表示Win32 Mutex对象和Win32关键段对象，因为它们服务于相似的目的。究竟使用那一个取决于你的程序：关键段对象速度快且占用的系统资源少，但是它只工作于一个指定的进程并且不支持超时机制。于是,当你想控制程序的所有代码时最好让它们在单个进程中。而多进程的情况需要Mutex，并且也是DLL程序的良好选择，特别在你有能力使请求超时，并且不得不跨进程共享资源的时候。对每一个或一组共享的资源分配一个不同的Mutex，看起来似乎是更好的办法，但它面临如何避免死锁这个问题。一个经典的死锁例子是：一个线程拥有Mutex A，然后被阻塞，以等待Mutex B，然而另一个线程拥有Mutex B，然后被阻塞，以等待Mutex A。
+　　尽管这种情况似乎不可能发生，但在一个模块化程序中完全有可能。如果两个模块都使用Mutex来保护自己的数据，则每一个使用这些模块的组件，都将不得不按相同顺序，访问它们以避免死锁。不幸的是，这需要你将内部的具体实现暴露给其它的模块。
+　　每一个增加的Mutex，都会增加死锁的可能性，可以用设置时间限制来避免这一点，但是又不得不增加许多代码，来处理得不到所需的Mutex时的情况。因此，通常最简单的办法就是只用一个Mutex，并且避免在使用Mutex时进行耗时的操作以使串行化程度最小。
+2.2　SYNCHRO类
+　　一个提供同步功能的C++类。把同步对象定义为C++的类，（见程序1）用最基本的Win32同步对象，来构造复合的同步对象，按需要去扩展它们。同时，提供一个一致的界面，便可不必修改程序，就可以演示多个不同的复合同步对象。
+程序1：SYNCHRO 类的定义
+/* SYNCHRO - C++ class to provide synchronization object encapsulation*/
+typedef enum {SLC―WRITE, SLC―READWRITE,
+　　　　SLC―READWRITEPROMOTE} SYNCH―LOCK―CAPS;
+typedef enum {SLT―READ, SLT―READPROMOTE,
+　　　　　　　SLT―WRITE} SYNCH―LOCK―TYPE;
+const int NUM―SYNCH―LOCK―TYPES = SLT―WRITE + 1;
+class SYNCHRO
+{
+private:　　　　　　　　　　　　　　　　　　　　　　　　　　　　// To be determined
+public:
+SYNCHRO(void);　　　　　　　　　　　　　　　　　　　　　　　　　　　　// Constructor
+～SYNCHRO(void); 　　　　　　　　　　　　　　　　　　　　　　　　　　　// Destructor
+SYNCH―LOCK―CAPS GetCaps(void); 　　　　// Return the implementation′s capabilities
+BOOL IsValid(void); 　　　　　　　　　　　　　　　　　　　　// Is this object valid?
+BOOL Lock(SYNCH―LOCK―TYPE);　　　　　　　　　　　　　　　　　　　// Lock the object
+BOOL Unlock(SYNCH―LOCK―TYPE); 　　　　　　　　　　　　　　　　　// Unlock the object
+BOOL Promote(void); 　　　　　　　　　　　　// Promote the object from read to write 
+};
+2.3　相关名词解释
+　　同步对象　就是一个句柄可以在对应于多个线程的等待函数中定义。同步对象的状态有：“Signaled”允许等待函数返回和“nonSignaled”可以防止函数返回。多个函数可以拥有同一个同步，对象从而使跨进程同步成为可能。
+　　Mutex对象　一个Mutex对象就是这样一个同步对象：当它不属于任何一个线程时它的状态是Signaled，反之则处于nonSignaled状态。一个线程在同一时刻只能拥有一个Mutex。
+　　事件对象　一个事件对象就是一个可以被SetEvent()或PulseEvent()函数显式设定状态的同步对象。事件对象在通知线程一个特定事件发生时很有用。
+　　关键段对象　关键段对象提供类似于Mutex的同步机制。区别在于关键段对象只能被同一个进程中的线程使用。
+　　第一个定义是一个称作SYNCH―LOCK―CAPS的枚举类型，其用它能支持的锁的类型来描述它的能力，还有一个SYNCH―LOCK―TYPE枚举类型描述类所能支持的锁的类型。
+　　接下来有一个称作GetCaps的函数，它使类的用户知道一个特定的实现具有何种功能。IsValid成员函数确定一个特定的SYNCHRO对象是否有效。最使人感兴趣的是Lock和Unlock函数，它们允许类的用户，按需要的方式声明对对象的访问。线程根据需要和类的支持能力，声明所需要的锁的类型。一经声明后，线程就可以访问共享的数据和资源。结束时，线程释放锁，使其可以被其它线程使用。
+　　要注意的是，没有在类中定义任何私有的数据，成员函数也未定义。
+3　SYNCHRO类的实现
+3.1　SYNCHAPP程序
+　　SYNCHAPP是一个用于演示SYNCHRO类的Win32控制台程序。SYNCHAPP是一个随机产生各种同步请求的程序。这给出了一个实时的对SYNCHRO类的各种实现的估计。
+　　在讨论SYNCHAPP的实现之前，先介绍它的局限性。那就是它不基于任何一种现实情况。通过调整线程的数目和不同同步请求的比例，可以产生各种“交通”模式。
+　　因为SYNCHAPP是一个模拟程序，它并不代表你的实际应用程序。SYNCHAPP中的锁的开关时间间隔比实际应用要长得多。这样做使得SYNCHAPP的输出结果比较短。SYNCHAPP中最令人感兴趣的是SynchroSimulation函数和它的GetAction辅助函数。简要的介绍一下：主函数调用SYNCHRO类的构造函数，准备控制台，并建立工作线程以实施模拟。DisplayStatistics和DisplayStatus函数把模拟的进行情况输出到控制台。
+　　每个工作线程运行SynchroSimulation函数，它包含一个无限循环，该循环不定期的休息，并申请SYNCHRO类支持的锁。
+3.2　读／写同步
+3.2.1　如何合并多个Win32同步对象
+　　设想一下如下的情况：你有一个管理用户帐号和密码的数据库。管理员可以增加或删除一个用户，用户能修改密码。但在实际操作中，访问数据库的大部分时间都花在验证请求上，比如这是一个有效帐户？密码正确？
+　　显然，如果允许两个线程同时读取数据库，或一个正在读但另一个正在写。由于验证请求并不需要修改数据库，没有理由不让多个验证请求同时发生。如果用单个Mutex，不需要串行化验证请求。只需要一个同步对象，其允许多个线程同时读数据库，或允许单个线程修改数据库，但两者不能同时发生。于是就把这种同步对象称作“多读或单写”同步对象。
+　　当提到读方式或写方式访问资源的时候，更精确的提法是共享和独占资源。这种方式的访问已经在很多平台上为I/O实现了。当打开一个文件用于读，禁止写，你就是一个只读者，可以同时读许多个文件；当打开一个文件用于读写，则一旦文件被打开，它就不能被其它用户访问。你并不想把这种方式应用于同步，因为这是一种低效率的资源使用方式。而且它不象通常同步对象那样提供自动阻塞和释放线程的功能。那么你如何构造一个“多读或单写”的同步对象呢？可以把假设的多个同时读，看成是虚拟的单个写，这种模型有点象已经实现的单个Mutex的情况。很可惜，不能在这里使用单个Mutex，因为对Mutex的拥有涉及到一个特定的线程，且只有Mutex的拥有者才能释放它。这对虚拟的单个写不起作用。因为在这种情况中，Mutex的拥有者不能保证是其释放者。但幸运的是，可以用Win32自动重置事件去完成它。Win32自动重置事件可以被任何一个线程设置。它一旦被设定，则恰好只有一个等待进程（虚拟写）被释放，然后事件被自动重置。为了完成同步对象，你需要串行化读线程对自动重置事件的访问，让只有一个读线程认为它是最后一个读线程。所以，仅有一个读线程在它读完之后设置自动重置事件。类似的，只有一个读线程认为它是第一个读线程，因此如果第一个读线程被阻塞以等待写线程完成，其它的读线程也一样。
+　　hevExclusive事件保证了只允许一个写线程在任一时间通过锁函数。由于hevExclusive是一个自动重置事件，当它被设置时只有一个线程被释放，接着该事件被系统自动的重置。如果该事件恰好抓住了写线程锁，那么其余的读和写线程就都被阻塞了。写线程和第一个读线程被阻塞在hevExclusive，其余的读线程被阻塞在csReader。但是只要没有读线程被阻塞在hevExclusive上，csReader只能被任一线程把持一会儿。图1给出了多个线程试图拥有读／写锁，以及SYNCHRO类中针对“多读或单写”同步对象的实现细节。
+写线程1　 读线程1　 读线程2　 写线程2
+申请hevExclusive
+　　　　　申请cdReader
+　　　　　cReaders=1
+　　　　　阻塞在hevExclusive
+　　　　　　　　　　阻塞在cdReader
+　　　　　　　　　　　　　　　阻塞在hevExclusive
+释放hevExclusive
+　　　　　申请hevExclusive
+　　　　　释放cdReader
+　　　　　　　　　　申请cdReader
+　　　　　　　　　　cReaders=2
+　　　　　　　　　　释放cdReader
+　　　　　申请cdReader
+　　　　　cReaders=1
+　　　　　释放cdReader
+　　　　　　　　　　申请cdReader
+　　　　　　　　　　cReaders=0
+　　　　　　　　　　释放hevExclusive
+　　　　　　　　　　　　　　　申请hevExclusive
+　　　　　释放cdReader
+图1　"多读或单写"同步对象的实际运行示例
+3.2.2　SYNCHRO类对SYNCHAPP模拟程序的影响
+　　SYNCHAPP现在以4:1的比例产生读和写请求。当读／写请求比例加大时，一个“多读或单写”同步对象比一个Mutex同步对象性能好，因为它允许多个读请求同时进行。显然，读／写比例随程序的不同而不同，不过在上述的数据库的例子中，当读／写比例加大到100:1甚至1000:1时，性能的改进是很明显的。
+4　小结
+　　当写一个多线程应用程序的时候，控制对全局变量和资源的访问是很必要的。在大多数情况下，单个的Mutex同步对象已经足够了。但在某些情况下，特别是在大量的且读／写比很大的情况下，使用复合同步对象可以在性能上得到很大改进。本文描述了一种算法用以实现这种改进。当然，这不是绝对的，读者可以在实际应用中根据具体情况运用上述算法或其它的算法。
+作者简介：冯美霞　主要从事计算机管理信息研究。
+作者单位：东南大学工业发展与培训中心　江苏.南京(210018)
+参考文献
+［1］　李　霖.SGI IRIX系统中的多线程引用程序设计.软件世界,1995;(12)
+［2］　(美)Charles Petzold. Windows 95程序设计.北京：清华大学出版社，1997
+收稿日期:1999-01-21

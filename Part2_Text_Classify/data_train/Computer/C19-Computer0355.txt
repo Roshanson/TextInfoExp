@@ -1,0 +1,108 @@
+信息与控制
+Information and Control
+1999年　第28卷　第1期　Vol.28　No.1　1999
+
+
+
+时滞线性区间系统的鲁棒稳定与鲁棒镇定
+刘祖润
+
+　　摘　要　利用一个微分不等式给出了几类具有区间 系数的时滞系统的鲁棒稳定和鲁棒镇定的充分条件，这些条件只需判断一个常数矩阵是否为 M矩阵，使用方便．
+　　关键词　时滞，区间系统，鲁棒稳定，鲁棒镇定
+ROBUST STABILITY AND STABILIZATION FOR LINEAR INTERVAL
+SYSTEMS WITH TIME-DELAY
+LIU Zurun
+(Dept. of Automation, Xiang Tan Polytechnic University　411201) 
+Abstract　In this paper, a differential inequality has been used to deduce sufficient conditions of robust stability and robust stabilizatio n of some type interval systems with time-delay ,these conditions can be ea sily used because it needs only to test a matrix whether it is a M matrix.
+Key words　time-delay, interval system, robust stability, robust stabilization
+
+　　系统的鲁棒稳定及鲁棒镇定是不确定控制系统设计中需要考虑的最重要的系统性能．近年来，关于时滞系统鲁棒稳定性的研究已经取得了不少研究成果,本文将利用一个微分不等式给出了几类具有区间系数的时滞系统鲁棒稳定和鲁棒镇定的充分条件．
+1　定义和引理
+　　定义　若实方阵A=(aij)n×n的所有非对角线元素非正(即aij ≤0,i≠j, i,j=1,2,…,n)，则记A∈N．若A∈N且A的所有顺序主子式大于零，则称A为M 矩阵，记作A∈M．若A的所有特征根均具有负实部，则称A稳定，记作A∈S．
+　　引理1［5］　若A∈M，B∈N且B≥A(即bij≥a ij,i,j=1,2,…,n)，则B∈M．
+　　引理2［5］　若A∈M，则-A∈S.
+　　引理3［5］　令C=(cij),D=(dij)是n×n 实方阵，x(t)是微分不等式
+x(t)≤Cx(t)+D(t)
+的解，其中,若D≥0且-(C+D)∈M，则存在常数r＞0及向量k＞ 0使得
+x(t)≤ke-rt　　t≥0.
+2　时滞线性区间系统的鲁棒稳定性
+　　考虑如下线性区间系统
+　　　　(1)
+其中bij,cij,dij,eij为常数，rij(t)为有界连续函数， 满足：0≤rij(t)≤τ.
+定义矩阵U=(uij)n×n,V=(vij)n×n, 这里
+m.
+vij=max{|dij|,|eij|}, 　(i,j=1,2,…,n).
+对于任意的aij∈[bij,cij],gij∈[dij,eij],考虑系统 
+　　　　　(2)
+我们有下面定理.
+　　定理1　若下列条件
+　　1) -(U+V)∈M.
+　　2) U+V∈S.
+之一满足，则系统(1)鲁棒稳定.
+　　证明　先证1) 设Vi(x(t))=|xi(t)|,i=1,2,…,n.则
+
+这里.于是 得到辅助方程:
+
+当定理条件1)满足时，由引理3可知：系统(2)鲁棒渐近稳定，因而系统(1)鲁棒渐近稳定 ．
+　　当定理条件2)满足时，由引理2及定理条件1)可推得系统(1)鲁棒渐近稳定．定理证毕．
+　　考虑时变线性区间系统
+.　　　　　(3) 
+其中bij(t),cij(t),dij(t),eij(t),rij(t)为有界连续函 数，rij(t)满足：0≤rij(t)≤τ.
+定义矩阵U=(uij)n×n,V=(vij)n×n,这里
+
+
+对于任意的aij(t)∈[bij(t),cij(t)], gij(t)∈[dij(t),eij(t)]，考虑系统
+　　　　　　　　　(4)
+我们有下面定理.
+　　定理2　若下列条件
+　　(1) -(U+V)∈M.
+　　(2) U+V∈S .
+之一满足，则系统(1)鲁棒稳定.该定理的证明类似于定理1，故略．
+3　时滞线性区间系统的鲁棒镇定
+　　考虑具有区间系数的线性控制系统
+(t)=G[B,C]x(t)+G[D,E]x(t-τ(t))+Fu(t)　　　　　　　　(5)
+u(t)=Kx(t)　　　　　　　　　　　　　　　　(6)
+这里：B=(bij)n×n, C=(cij)n×n, D=(dij)n×n, E=(eij)n×n,F=(fij)n×m, K=(kij)m×n,将(6)代入(5)得
+(t)=(G[B,C]+FK)x(t)+G[D,E]x(t-τ(t))　　　　　　　(7)
+定义矩阵U=(uij)n×n,V=(vij)n×n, 这里
+
+vij=max{|dij|,|eij|}, 　(i,j=1,2,…,n).
+对于任意的A∈G[B,C], G∈[D,E], 考虑系统
+(t)=(A+BK)x(t)+Gx(t-τ(t))　　　　　　　　　　　　(8)
+我们有下面定理.
+　　定理3　若下列条件
+　　(1) -(U+V)∈M.
+　　(2) U+V∈S.
+之一满足，则系统(7)在控制律(8)作用下鲁棒镇定．该定理的证明与定理1的类似，故略． 
+　　考虑控制系统
+(t)=G[B(t),C(t)]x(t)+G[D(t),E(t)]x(t-τ(t))+F(t)u(t)　　　　　　　　(9)
+u(t)=K(t)x(t)　　　　　　　　　　　　　　　　(10)
+这里：B(t)=(bij(t))n×n,C(t)=(cij(t))n×n,D(t)=(d ij(t))n×n,E(t)=(eij(t))n×n,F(t)=(fij(t))n×m,K(t)=(kij(t))m×n
+将(10)代入(9)得
+(t)=(G[B(t),C(t)]+F(t)K(t)x(t)+G[D(t),E(t)]x(t-τ(t))　　　(11)
+　　定义矩阵U=(uij)n×n,V=(vij)n×n,这里
+
+类似于定理2，我们有下面定理.
+　　定理4　若下列条件
+　　(1) -(U+V)∈M.
+　　(2) U+V∈S.
+之一满足，则系统(9)在控制律(10)作用下鲁棒镇定．
+4　例子
+　　考虑系统
+
+由于为M矩阵，故该系 统鲁棒稳定．
+
+作者简介：刘祖润，46岁，副教授．研究领域为控制理论及应用，神经网络理论，人工智能 ，电力电子技术，运动控制系统等．
+作者单位：湘潭工学院自动化系　湖南　411201
+参考文献
+1　年晓红． Robust Stability of Linear Interval Systems with Time-de lay , 控制理论
+　　与应用,1998, 15(1):134～138
+2　Wang S S, Chen B S, Lin T P. Robust Stability of Uncertain Time-delay System s . 
+　　Int. J. Control , 1987, 46(3):963～976
+3　Wang S S, Lin T P. Robust Stabilization of Uncertain Time-delay Systems with 
+　　Sampled Feedback. Int. J. Systems Sci., 1988, 19(3):399～404
+4　Shyu K K, Yan, J J. Ronust Stability of Uncertain Time-delay Systems and its 
+　　Stabilization by Variable Structure Control. Int. J. Control, 1993, 57(1):237～
+　　246
+5　徐道义．变时滞线性滞后系统的稳定性，科学通报，1987,7:490～494
+收稿日期：1998-08-24

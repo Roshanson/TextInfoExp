@@ -1,0 +1,122 @@
+计算机应用
+Computer Applications
+1999年 第19卷　第8期 Vol.19　No.8 1999
+
+
+
+采用回溯搜索原理的报表数据调整方法
+洪力奋
+1　客观的需求
+　　在各种统计报表上报汇总过程中，往往由于基层单位使用的报表和上级主管部门使用的报表在计量单位上的不一致，需要进行单位换算。以资产报表为例，基层报表的数据以元为单位，上级主管部门汇总后的数据以万元为单位，就需要将基层报表的数据除以一万，再根据精度的需要，四舍五入成万元表。由于统计报表中各栏目的数据之间存在一定的关系，或存在多重关系，而上述单位的换算会产生一定的误差，从而破坏报表原有的平衡关系，因而要对万元报表的数据进行舍入调整，以恢复数据间的平衡关系。
+　　以往数据调整常采用人工调整方式，用试探和拼凑的方法，使某数加1或减1。这种方法对单一关系的报表尚可操作，但对复杂关系的报表，常出现调整一个数据使一个关系平衡了，却破坏了另一个平衡关系。这就导致工作效率的低下，且不能保证报表数据的准确性。
+　　为了解决上述问题，我们将专家系统中的回溯搜索原理和数据库语言巧妙结合，实现了统计报表中数据自动调整，使数据舍入调整规范、精确、高效。
+2　数据舍入调整的原则
+　　数据除以一万以后为整数的不参加调整；
+　　和其它数据无平衡关系的数据，除以一万后，根据精度要求，四舍五入一次调整成功；
+　　和其它数据关联少的数据优先调整；
+　　调整后误差小的数据优先调整；
+　　调整误差的绝对值应小于1。
+3　专家系统的回溯搜索原理
+　　要用程序自动实现数据调整，就要模拟统计人员手工调整的过程。手工调整时，先按调整原则找到需调整的数据进行调整，接着校验涉及该数据的平衡关系。若都平衡了，就寻找下一个要调整的数据。否则，回头重新调整该数据。这一过程包含了回溯搜索的思想。专家系统语言Prolog含有自动回溯的机制，下面用Prolog编制的程序说明回溯原理。
+　　设有1个简单的球类数据库：
+　　　　plays (tom,football).
+① plays (john,soccer).
+② 　plays (john,volleyball).
+plays (tom,basketball).
+plays (tom,volleyball).
+plays (john,baseball).
+　　现有问题？- plays (john,X), plays (tom,X). 即求解john和tom都爱好的球类。
+　　要求解的问题由2个子目标组成，只有当2个子目标同时满足所求得的X即为解。
+　　为满足第一个子目标，Prolog在数据库中查找匹配子句，子句plays (john,soccer).的第一个对象与子目标的第一个对象的匹配，于是第一个子目标匹配成功，变量X被例化为soccer。由于其它plays子句也可能满足这个子目标，为防X例化为soccer失败，Prolog内部子程序在上述数据库标记①的地方作了回溯标记。
+　　现在Prolog试图满足第二个子目标，由于X已经例化为soccer，此子目标变为 plays (tom, soccer).搜寻数据库，找不到与此目标匹配的子句，故第二个子目标匹配失败。
+　　由于第二个子目标失败，Prolog必须重新满足第一个子目标，变量X重新变成未例化的。Prolog从回溯标记①的下一个子句开始再次搜寻到与第一子目标匹配的子句，为plays (john,volleyball)，变量X被例化为volleybal，并且在相应子句旁置上回溯标记②。然后试图满足第二个子目标 plays (tom,volleyball)。这次找到一个匹配子句，两个子目标都被满足，求得解X=volleyball。
+　　综上所述，Prolog在试图满足一复合目标时，是从左到右进行满足各子目标的搜索工作。若某一子目标失败，便需退回到上一个子目标，使上一个子目标重新选择与之匹配的目标。这种退回到前一个子目标逆向运行的方式，就是回溯。
+4　数据库语言实现回溯的关键
+　　数据库语言无自动回溯功能，如何用数据库语言实现专家系统语言中的自动回溯搜索，是解决问题的关键。通常数据库语言提供按某一关键字对数据库记录排序的功能，可以通过修改索引关键字值的办法，巧妙实现搜索的自动回溯。一般情况下，索引关键字的值是不改变的，否则容易引起数据库记录的重排，出现定位的错误。数据调整时，正是利用这种重排，使搜索自动回到前面的节点，重新进行搜索匹配，直到搜索成功。即通过对数据的加1或减1调整，改变关键字值，若误差增大，则引起回溯，重新调整，直至使数据间的关系重新获得平衡。
+　　用FoxPro实现自动回溯的关键操作为：
+　　⑴ 建索引
+　　INDEX ON GXCS+ABS（&ELM2）TO WY FOR
+GXCS>0 .AND. &ELM2<>0
+　　GXCS字段值为本条记录在数据关系中出现的次数，&ELM2代表若干字段，每个字段值为数据调整后的误差。此索引排序反映了数据调整原则1⑶⑷。调整后误差为零以及和其它数据无关系的数据记录已在索引时用FOR条件将其筛选，符合调整原则1⑴⑵。
+　　⑵ 改变关键字值
+　　REPL &ALM1 WITH &ALM1+IIF(&ELM2>0,1,-1)
+REPL &ELM2 WITH &ELM2+IIF(&ELM2>0,1,-1)
+　　&ALM1为调整后的值。在进行&ALM1的调整过程中，误差&ELM2也相应修改，引起记录重排，达到自动回溯的目的。
+5　实现过程及程序实例
+　　用FoxPro实现的过程及程序实例如下，在此对实际应用程序作了简化。
+　　⑴ 建立调整库结构
+　　SELE 1
+USE &BBDM
+COPY TO TEMP1 STRU EXTE
+COPY TO TEMP2 STRU EXTE
+USE TEMP2
+REPL ALL FIELD―NAME WITH STUF(FIELD―NAME,
+1,1,"M") FOR "L"$FIELD―NAME
+APPE BLAN
+REPL FIELD―NAME WITH "GXCS",FIELD―TYPE
+WITH "N",FIELD―LEN WITH 2
+USE TEMP1
+APPE FROM TEMP2 FOR LEFT(FIELD―NAME,1)
+="M".OR.FIELD―NAME="GXCS"
+USE
+CREA &BBDM."WY" FROM TEMP1
+USE &BBDM."WY" ALIAS WY
+APPE FROM &BBDM
+　　⑵ 数据除以一万，同时计算误差，仅以字段L1为例
+　　REPL ALL M1 WITH L1/10000-ROUN(L1,-4)/10000
+REPL ALL L1 WITH ROUN(L1,-4)/10000
+　　⑶ 数据关系分析，自动设置GXCS值
+　　SELE 3
+USE SJGX
+SELE 1
+SET FILT TO LEN(TRIM(HCDM))>0
+GO TOP
+DO WHIL .NOT.EOF()
+MH="H"+TRIM(LTRIM(HCDM))
+SELE 3
+COUN TO MFH FOR 
+MH$GXS.AND.(.NOT.
+SUBS(GXS,AT(MH,MGXS)+LEN(MH),1) $SZF)
+SELE 1
+REPL GXCS WITH MFH
+SKIP
+ENDD
+SELE 1
+GO TOP
+DO WHIL .NOT.EOF()
+MH="H"+TRIM(LTRIM(HCDM))
+&MH=L1
+SKIP
+ENDD
+　　⑷ 按数据舍入调整原则索引排序
+　　INDEX ON GXCS+ABS(M1) TO WY
+FOR GXCS>0.AND.M1<>0
+SELE 3
+GO TOP
+　　⑸ 按数据关系循环
+　　DO WHIL.NOT.EOF()
+GX=UPPE(TRIM(GXS))
+WC=LEFT(GX,AT(′=′,GX)-1)+
+′(′+SUBS(GX,AT(′=′,GX)+1)+′)′
+SELE 1
+GO TOP
+　　⑹ 按调整记录循环
+　　DO WHIL .NOT.EOF().AND.ABS(&WC)>0.001
+MH="H"+TRIM(LTRIM(HCDM))
+IF MH$GX.AND.(.NOT.SUBS(WC,AT(MH,WC)+LEN(MH),1)$SZF)
+　　　REPL L1 WITH &MH+IIF(M1>0,1,-1),M1 WITH M1+IIF(M1>0,1,-1)
+　　⑺ 如引起审核关系不平衡，进行舍入调整，修改误差值，自动重建索引
+　　ENDI
+SKIP
+ENDD
+SELE 3
+SKIP
+ENDD
+RETU
+作者简介:洪力奋　硕士，讲师。主要从事计算机基础教育、数据库应用开发。
+作者单位:洪力奋　合肥经济技术学院计算机系　安徽.合肥(230052)
+参考文献
+［1］　张文星,纪有奎,编著.专家系统原理与设计. 武汉测绘科技大学出版社. 1989,10
+［2］　Turbo Prolog程序设计. 陈兆乾,潘金贵,编译.南京大学出版社. 1993,6
+［3］　郭盈发.汉字FoxBase+及其程序设计．西安:电子科技大学出版社．1993,12
+收稿日期:1999-04-19(修改稿)

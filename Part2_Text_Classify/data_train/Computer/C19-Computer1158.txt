@@ -1,0 +1,59 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年 第25卷 第6期 Vol.25 No.6 1999
+
+
+
+滞后关联分布参数系统的分散变结构控制1)
+谢振东　谢胜利　刘永清
+摘　要　针对滞后分布参数关联大系统的变结构控制进行了讨论，采用M-矩阵理论，Lp-估计及Liapunov方法，给出了完全分散的滑动流形和变结构控制器的设计方案.此外，还给出了系统轨线达到滑动流形的时间估计.
+关键词　分布参数系统，滞后，完全分散，变结构控制.
+DESIGN OF DECENTRALIZED VARIABLE STRUCTURE
+CONTROLLER OF LARGE-SCALE DISTRIBUTED
+PARAMETER SYSTEM WITH DELAY
+XIE Zhendong　XIE Shengli　LIU Yongqing
+(College of Electronic & Information Engineering,South China Uni versity of Technology,Guangzhou　510640)
+Abstract　In this paper,the desige problem of decentralized v ariable structure controller of large-scale distributed parameter system with t ime-delay is studied.The method design for completely decentralized variable s tructure controller and sliding manifold are obtained using M　-ma trix theory and Lp-estimation.The asymptotically stability in Sobolve space W1. 2(Ω) of the sliding mode motion equation are also studied and e stimation of ti me T for system's solution arrived on sliding manifold is given by Lyapuno v method.
+Key words　Variable structure control,sliding manifold,time dela y,distributed parameter system, decentralized control.
+1　引言
+　　自从Lefebver［1］等把变结构控制引入到大系统中之后，Richter［2，3］，Matthew［4］，Vtkin［5］Fchs［6］等先后给出了一些相应的研究方法.文［7］已指出这些方法都存在着各自的局限性，并给出了一种分散的变结构控制方法.但遗憾的是，这种方法只是利用了变结构控制器对系统实现了反馈镇定，由于切换流形并不存在，所以系统并没有实现滑动模运动.从而大系统的分散变结构控制仍有待进一步研究.
+　　考虑如下滞后分布参数关联系统
+
+　　(1)
+上式中qi∈Rni,ui∈Rmi;Di,Ai,Bi,Aij,Eij是常数矩阵；且(Ai,Bi)完全可控制；;;Ω是Rl中的一个有界开集，其边界δΩ是光滑的；是Ω上的Laplace算子，R+=［0,+∞］；时滞τ是一个正数.
+　　对方程(1)，考虑相应的边界条件
+　　(2)
+其中是δΩ上的外法方向导数.
+　　针对方程(1)，采用M-矩阵理论，Lp-估计及Liapunov方法，进行分散变结构控制器设计.
+2　切换流形的设计
+　　由于(Ai,Bi)可控制，则对每个i，存在矩阵Ki，使得Ai+BiKi可以任意极点配置，从而
+　　(3)
+这里C-表示左复半平面.现设计切换函数s=(sT1,sT2,…,sTN)T，
+其中
+ 　　(4)
+而Hi和Ci如下选取
+　　(5)
+其中C+表示右半平面，而
+　　在每个子流形si=0上使用等价控制方法可得如下等价控制
+　　(6)
+将式(6)代入式(1)得滑动模型运动方程
+　　(7)
+其中
+　　下面将讨论它的运动性能.由式(7)可得
+
+　　(8)
+对上式关于在Ω上积分可得
+
+
+　　(9)
+由于，则
+　　(10)
+由边界条件(2)，式(9)可化为
+
+　　(11)
+其中
+　　(12)
+记，由式(11)有
+
+　　(13)
+由于Ki使得i可以任意配置极点，则mi＞0，且矩阵M的谱半径

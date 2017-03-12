@@ -1,0 +1,79 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+可信度增强的模糊定性仿真
+白方周　鲍忠贵　涂永忠　刘怀春　张文明
+摘　要　为了建立一种有效的形式化方法，期望利用对象的不完全信息得到系统行为最为重要的结论，结合定性推理、模糊集合和概率论三种理论，发挥模糊集合在常识知识描述和概率论在解决随机性上的优点，本文提出了一种可信度增强的模糊定性仿真方法.
+关键词　定性建模，定性仿真，模糊集合，概率论. 
+RELIABILITY-ENHANCED FUZZY QUALITATIVE SIMULATION
+BAI FANGZHOU　BAO ZHONGGUI　　TU YONGZHONG　LIU HUAICHUN　ZHANG WENMING
+(Dept.of Computer Science,Univ.of Sci.and Tech.of China,Hefei 230027)
+Abstract　To develop a kind of valid formalization method,and to use incomplete knowledge to obtain important results,this paper provides a method called “Reliability-Enhanced Fuzzy Qualitative Simulation”, which combines qualitative reasoning, fuzzy sets and theory of probability together. The method uses qualitative reasoning to build models,fuzzy sets to describe the common sense knowledge,and theory of probability to solve the uncertainties in simulation,and gives the most possible qualitative behavior under the user's current description.
+Key words　Qualitative modeling,qualitative simulation,fuzzy sets,theory of probability.
+1　引言
+　　当前研究定性建模、定性仿真的目的在于建立一种有效的形式化方法，希望利用对象的不完全信息得到系统最为重要的结论［1］.但纯定性的方法可能产生太多的冗余行为.如果能充分利用所掌握的定量信息，将有助于大量减少冗余行为，得到较为可靠的结论［2，3］.本文提出了一种可信度增强的模糊定性仿真方法BFQS(Reliability-Enhanced Fuzzy Qualitative Simulation)，它利用模糊集合理论描述系统变量，利用概率论知识来评价系统的后继状态的生成，从而显著地减少了定性计算中的模糊性，为评价系统的定性行为提供了一种手段［4］.
+2　模糊量空间
+　　定性仿真技术中一般都采用一个很小的符号集合来描述定性值，对物理变量的实际取值进行抽象.用模糊数表示定性值为系统变量的量值和导数值提供了一种准定量的扩展.模糊定性值是正凸模糊数，它是对变量所取的数值范围进行有限划分得到的，把每个变量所取的模糊值集合进行综合，得到的超集称为模糊量空间QF［5，6］，实数0应该属于QF.
+　　模糊定性值A可以用一个梯形模糊数来表示，A的隶属函数μ可以用4元组参数［a,b,α，β］来近似，它被定义为：
+　　假设a-α＜a＜b＜b+β，则实变量x相对于模糊定性值A的隶属度为
+
+3　状态描述
+　　对于一个系统变量x,在一段时间ΔTP内x的定性状态 QS(x,ΔTp)是一个四元组〈A，A′，B，B′〉；A，B∈QF，A是模糊量值，B是模糊变化速率；A′，B′是x的相应于A，B的四元组表示的模糊区间值.ΔTp称为x在该模糊定性状态中的持续时间，它是应用状态的定性量值和变化速率的范围来确定的.
+　　严格地说，因为持续时间所表示的是一个模糊状态的持续时间，所以它也应该是一个模糊值.在BFQS中，用严格的闭区间来表示持续时间.
+　　这里我们用模糊数的α截来测量模糊数的宽度.对一个模糊数［p1,p2,p3,p4］来说，其α截就是［p1+p3(α-1),p2+p4(1-α),0,0］，也就是一个区间［p1+p3(α-1),p2+p4(1-α)］.A与A′之间的距离也是一个区间.这样，持续时间的左边界TpL表示的是最短的持续时间，它的右边界TpR表示的是最长的持续时间.
+4　状态转换
+　　状态转换是一个系统参数变量x从状态QS(x,ΔTp1)=〈A1,A′1,B1,B′1〉变化到另一个状态QS(x,ΔTp2)=〈A2,A2′,B2,B′2〉;A1,A2,B1,B2∈QF.在 BFQS 中有四种可能的转换：
+　　1)A1=A2,B1=B2,N转换；
+　　2)A1≠A2,B1=B2,M转换；
+　　3)A1=A2,B1≠B2,R转换；
+　　4)A1≠A2,B1≠B2,MR转换.
+　　因为假设了系统变量是连续可微的，所以变量x从状态 QS(x,ΔTp1)转换到QS(x,ΔTp2)的方法可以用一组规则来描述.通过这些转换规则，可以从一个给定的状态描述推导到它可能的后继状态.
+　　变量x从一个状态到另一个状态的时间称为到达时间，记为ΔTa，也是模糊数，其计算方法与持续时间类似.假设相邻的两个模糊值A1和A2满足A2≥αA1，α∈［0,1］.对于N转换和R转换而言，因为A1=A2,所以ΔTa=0.对于M转换和MR转换，A1，A2的隶属度存在相交的点，该点的隶属度称为交叉度.如果α小于或等于交叉度，则ΔTa=0;否则
+　　a)如果0Bα，则ΔTa∈(A1 与A2 的α距离)/(A1与A2的速率模糊区间)；
+　　b)如果0∈B′α，则ΔTa没有定义.
+5　过滤技术
+　　BFQS中采用三种过滤技术.
+5.1　约束过滤
+　　BFQS是一种以约束为中心的建模仿真方法，系统的定性模型由微分方程导出，或从系统的物理结构导出［1］.系统变量的值由变量间的代数运算、微分运算和函数来限制的.
+　　我们把 Q(z)=f(Q(x),Q(y)),Q(x),Q(y),Q(z)∈QF 称为系统变量 x,y,z 上的相关约束，x 和 y 称为约束变量，z 称为被约束变量，记为 A(x),B(y),C(z)，它们之间并没有必然的因果关系.
+　　当f是一个代数运算时，QF 上的运算也就是模糊数集上的基本算述运算.在定性仿真中，每个变量都有一个已知值的集合，从f中抽象出的约束只是检查一致性而不是传递和发现未知值.由于定性描述的模糊性，奇异行为仍然是存在的.在BFQS中，先找出变量的生成值在其模糊量空间中的分布，根据分布概率进行选择：分布概率大的状态首先被选择，具有相同分布概率的状态，用近似原理可以进一步选择最佳的后继状态.
+　　分布概率的计算公式为 n=W(A′)α/W(A)α.
+其中W(A′)是生成值与定性值相交的区间宽度，W(A′)α是它的α截；W(A)是生成值的区间宽度，W(A)α是它的α截.
+　　为了确定一个模糊数与量空间QF中的哪一个模糊数最接近，距离测量担负着重要的作用.设QF是一个量空间，QF′是另一个量空间，QF′是QF中两个模糊数通过运算得到的结果组成的，可以知道，Q′F中的元素也是用4元组表示的模糊数，从而我们可以选择以下的公式来计算距离，
+d(A,A′)=［(Power(A)-Power(A′))2+(Center(A)
+-Center(A′))2］／2，A∈QF,A′∈Q′F.
+其中　Power(A)=Power(［a,b,α,β］)=［2(b-a)+α+β］/2,
+　　　Center(A)=Center(［a,b,α,β］)=(a+b)/2.
+　　约束变量和被约束变量之间的关系可以进一步描述为一系列的逻辑规则，当这种关系只是定性知道的，那么就可以用模糊规则进行所似推理.
+　　因为 BFQS采用了以约束为中心的方法，所以约束过滤规则与 QSIM算法［1，2］特别相似，不再赘述.
+5.2　时序过滤
+　　进一步地，我们采用时序过滤方法，通过对变量的持续时间与到达时间的估计，可以有效地减少奇异行为.除了初始状态以外，一个状态在进入现状态之前，在上一个状态有一个持续时间，还有一个到达时间.由于这一观察适用于系统的所有变量，因此有如下的过滤规则.
+　　设n个变量由当前定性状态进入下一个定性状态，A1,A2…An,其持续时间分别为 ΔTp1,ΔTp2…,ΔTpn,其到达时间分别为 ΔTa1,ΔTa2…,ΔTan.对于剩下的m个没有发生变化的变量，我们也能预估其持续时间为 ΔTp′1,ΔTp′2…ΔTpm′,其到达时间都为0，于是：
+　　1)if n=0,then系统定性状态重复，到全局过滤　　∥没有变量状态发生变化；
+　　2)if n＞0　if(ΔTp1+ΔTa1)∩(ΔTp1+ΔTa1)∩…∩(ΔTpn+ΔTan)=Φ，
+　　　　then系统定性状态被滤去∥这n个变量不可能同时保持下一状态，矛盾；
+　　否则
+　　3)ΔTmaxL=left((ΔTp1+ΔTa1)∩(ΔTp2+ΔTa2)∩…∩(ΔTpn+ΔTan)),
+　　　ΔTminR=right((ΔTp1+ΔTa1)∩(ΔTp2+ΔTa2)∩…∩(ΔTpn+ΔTan),
+　　　ΔTminR=minR′(ΔTp1′,…ΔTp′m)，
+　　于是
+　　ifΔTmaxL＞ΔTminR′，∥不止n个变量的状态发生了变化，矛盾，
+　　　　then系统定性状态被滤去，
+　　　　else计算到达时间.
+5.3　全局过滤
+　　经过约束过滤和时序过滤，就生成当前系统状态的合理的后继状态.为了进一步减少系统的奇异行为，还需要利用实际系统的原理性知识以及启发性知识或系统的外部知识进行全局过滤.在 BFQS中，所实现的全局过滤方法主要是对于不变状态和循环系统的检查，具体做法类似 Qsim算法［1，2］.
+6　结论
+　　在BFQS中由于对变量的状态采用了一种四元组的表示方法，集成了定性定量的信息，这样，可以估计最好和最坏的持续时间和到达时间.对于变量后继状态的选择上，由于结合了生成值在量空间的分布概率，从而在约束过滤中可以评价临时系统状态对于约束模型的满足速度，这样可以在下一步扩展时优先选择评价值最高的状态进行扩展，最终系统给出的是在当前模型中最有可能的行为，这在 QSIM 和 Fusim中是没有的［1，2，3，5，6］，这也是我们将该方法称之为可信度增强的模糊定性方法的原因.
+1)　本文得到国家自然科学基金资助.
+作者单位：中国科学技术大学计算机系　合肥　230027
+参考文献
+［1］　Kuipers B J.Qualitative simulation.Artif.Intell,1986,29:289-338.
+［2］　Kuipers B J,Berleant D.Using incomplete quantitative knowledge in qualitative reasoning.In:Proceedings AAAI-88,St.Paul.MN,1988.324-329.
+［3］　Williams B C.A theory of interactions:unifying qualitative and quantitative algebraic reasoning.Aritf.Intell,1991,51:39-94.
+［4］　白方周，霍鑫，鲍忠贵.动态系统的定性推理：系统建模和仿真方法.信息与控制，1995，24(4)：222-229.
+［5］　Shen Q,Leitch R.Fuzzy qualitative simulation.IEEE Transactions on System,Man,and Cybernetics,1991,23(4):1037-1061.
+［6］　Shen Qiang,Leitch Roy.Integrating commonsense with qualitative simulation by the use of fuzzy simulation.In:Faltings B,Struss eds. P in Recent Advances in Qualitative Physics.Cambridge,MA:MIT Press,1992.83-110. 
+收稿日期　1996-07-15

@@ -1,0 +1,39 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+不确定性时滞系统基于观测器的鲁棒镇定
+张明君　程储旺　孙优贤
+摘　要　研究一类不确定性时滞系统的鲁棒镇定问题.当系统既有状态时滞又有控制输入时滞，而且系统的状态和控制输入均含有不确定性时，假设不确定性满足具有一定物理意义的匹配条件，得到了系统可由基于观测器的状态反馈鲁棒镇定的充分条件，并给出了观测器和反馈控制器的设计步骤.该方法仅需求解两个黎卡提不等式.
+关键词　时变时滞，不确定性系统，观测器，鲁棒控制.
+OBSERVER-BASED ROBUST STABILIZATION FOR
+UNCERTAIN DELAYED SYSTEMS
+
+ZHANG MINGJUN　CHENG CHUWANG SUN YOUXIAN
+(Institute of Industrial Process Control, Zhejiang University, Hangzhou 310027)
+Abstract　The problem of robust stabilization for a class of unc ertain delayed systems is addressed. The considered system has uncertainties and delays in both state and control input. The uncertainties are assumed to satisf y the matching condition in some physical sense. A sufficient condition is obtai ned that the uncertain delayed system is robust stabilizable via observer-based state feedback controllers. And the main steps of designing the observer and fe eback controller are presented. One only need to solve two Riccati inequalities when using the proposed method.
+Key words time－varying delay,uncertain system,observer,robust control.
+1　引言
+　　利用状态反馈镇定不确定性系统已经取得了许多有价值的研究成果，但对于大多数实际系统，状态一般不可以直接测得，通常需采用观测器来获得状态信息，所以一些学者对不确定性系 统 基于观测器的反馈控制作过许多研究［1-3］.文［1］主要研究一般不确定性系统的观测器构造问题；文［2］采用Riccati方程研究非匹配不确定性系统的鲁棒控制问题，但均没有得到理想的结论；文［3］仅对满足匹配条件具有状态不确定性的一类线性系统，给出了通过求解两个Riccati方程的状态观测器和鲁棒控制器的设计方法，对生产实践中经常遇到的状态和控制输入均含有不确定性的时滞系统却未作讨论.本文对状态和控制输入均含有不确定性且满足匹配条件的一类时滞系统，给出了通过求解两个Riccati不等式的状态观测器和鲁棒控制器的设计方法.
+2　主要结果
+　　讨论不确定性时滞系统
+(t)=(A+ΔA(r(t)))x(t)+(Ad+ΔAd(s(t)))x(t-x)+
+(B+ΔB(q(t)))u(t)+(Bd+ΔBd(v(t)))u(t-τ),
+y(t)=(Cx(t),x(t)=φ(t),　t∈［-τ,0］.　　(1) 
+式中x∈RM是状态向量，u∈RMs是控制向量，y∈Rr是测量输出；A,Ad，B，Bd和C表示合适维数的矩阵，τ＞0是滞后时间，φ(t)是一个连续的矢量初值函数，r(t)，s(t)，q(t)和v(t)是不确定性参数向量.本文对系统(1)作如下假设.
+　　假设1.对所有t≥0，r(t)，s(t)，q(t)和v(t)是Lebesque可测的矢量函数，且
+　　(2)
+　　假设2.不确定性矩阵ΔA(.)，ΔAd(.)，ΔB(.)，ΔBd(.)满足
+　　(3)
+其中Ai=dieTi；Adi=figTi；Bi=hiwTi；Bdi=jikTi；ei,gi为M维列向量，di、fi、hi、wi、ji、ki、均为M′维列向量.一般来说，若ΔA(.)，ΔAd(.)，ΔB(.)，ΔBd(.)满足匹配条件，则它们均可以通过“秩-1”分解得到这种需要的形式［4］.
+　　假设3.(A，B)能控，(C，A)能观.Ad=BH，Bd=BN.
+　　为了推导方便，令
+　　(4)
+　　我们知道，对于满足形式(1)的系统，当状态不可以直接获得时，一般需构造如式(5)形 式的状态观测器来估计状态，然后组成如式(6)所示的反馈控制律对系统进行控制.
+(t)=Az(t)+Bu(t)+r0P-10CT(y-Cz(t))，(5)
+u(t)=-rcBTPcz(t).　　　　(6)
+其中z(t)∈RM是观测器状态，Pc和P0及常数rc和r0待定.一般 称L=r0P－10CT为观测器增益，K=-rCBTPc为控制器增益.
+　　定理1.对满足假设1-3的系统(1)，如果存在对称正定矩阵Pc和Po及正常数rc和ro使式(7)中的

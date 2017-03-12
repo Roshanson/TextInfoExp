@@ -1,0 +1,86 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+一类混杂系统的广义Petri网模型1）
+徐心和　李政国　李彦平
+　　摘　要　提出一种含有变形连续时不变系统状态方程的广义Petri网，并用它为一类混杂系统建模：宏观为Petri网；微观为变形的线性时不变状态方程.同时研究了所提出的混合状态的演变规则、运行轨迹和状态方程.
+　　关键词　混杂系统，离散事件动态系统，Petri网.
+GENERALIZED FETRI NET MODEL FOR
+A CLASS OF HYBRID SYSTEMS
+XU XINHE LI ZHENGGUO LI YANPING
+(Research Center of Control & Simulation,Northeastern University,Shenyang 110006)
+　　Abstract In this paper,a kind of Generalized Petri Nets (GPN) is used to model a class of bybrid systems which macroscopically are GPN describing the behavior of DEDS,while microscopically are improved linear continuous state equations.State evolution rules,trajectories and state equetions are also studied.
+　　Key words Hybrid Dynamical Systems,Discrete Event Dynamical Systems,Petri nets.
+　　1　引言
+　　混杂动态系统(Hybrid Dynamical Systems,HDS)是由连续变量动态系统(Continuous Variable Dynamical Systems,CVDS)和离散事件动态系统(Discrete Event Dynamical Systems,DEDS)相互混合、相互作用而成的.HDS一般宏观上表现为DEDS，DEDS服从某些人为规律，状态的演化受事件驱动，其行为一般用自动机或Petri网等来描述；微观上表现为CVDS，CVDS服从某些自然规律，状态的演化受时间驱动，其行为常用微分方程或差分方程描述.HDS研究的一个难点是建模时如何设计CVDS与DEDS的接口，便于充分利用CVDS与DEDS的现有研究成果来分析HDS的各种特征.目前主要有两个方向：一是以Benveniste A[1,2]，Holloway L E[3]为代表的关系模型；另外则是Ramadge P J[4]，Gollu A与Varaiya P[5],Holloway L E[6]等人研究的层次模型.本文综合上述两类模型的优点，提出一种含有变形CVDS状态方程的广交Petri网模型，合理地设计了CVDS与DEDS的接口，研究了一类HDS的建模问题.同时根据该类系统的特点，提出一种混合状态，并讨论了该类状态的运行特征.
+　　2　混杂系统的广义Petri网模型
+　　定义1.广义Petri网是一个六元组G=(P,T,F,M,V,Q)，其中P={p1,p2,\：,pn}(n>0)是位置节点的有限集合，各位置节点的容量恒为1；T=Tc∪Tu={t1,t2,…,tq}(q>0,Tc∩Tu=φ)是变迁节点的有限集合，Tc为可控变迁集，Tc≠φ，Tu为不可控变迁集；P∩T=φ，P∪T≠φ；F∶P×T∪T×P→{0,1}为系统的流关系函数，d(F)={x｜y,F(x,y)=1},c(F)={x｜y,F(y,x)=1},c(F)∪d(F)=P∪T;M∶P×τ→{0,1}为系统的标识函数，mi(τ)为τ时刻第i个位置中的标识，m0为系统的初始标识；V∶T×τ→{0,1}为外界对系统的控制函数，vj(τ)为τ时刻对变迁tj的控制，若tj∈Tc,vj(τ)=1或0，否则，vj(τ)=1;Q∶P→Rk(R1为一维区间的集合)为系统的条件集函数，Q(pi)=[Ri，1，Ri，2]为位置pi(i=1,2,…,n)对应的条件集.
+　　假设与各位置对应的CVDS为线性时不变的SISO系统，一旦托肯(Token)进入位置，系统就从一个给定的初态开始一个特定的连续过程.与位置pi所对应的CVDS可用一组变形线性方程来描述
+　　　　　　　　　(1)
+其中xi(τ)，ui(τ),yi(τ)分别为第i个子系统的li维状态向量、输入变量和输出变量.
+　　以xi(τ)对τ时刻位置pi中的托肯进行标记.若该位置中有托肯，则xi,j(τ)≠-∞；否则，xi,j(τ)=-∞,j=1,2,…,li,i=1,2,…,n.
+　　x(τ),u(τ)和y(τ)分别为τ时刻整个系统的状态向量、输入向量和输出向量，则
+　　　　　　　　(2)
+　　定义2.混杂状态的状态s(τ)是一个二元组(m(τ)，x(τ))，其中m(τ)为τ时刻广义Petri网的标识向量，x(τ)为τ时刻系统的连续状态向量.
+　　定义3.若τ时刻与pi对应的CVDS的输出yi(τ)∈Q(pi)，则称τ时刻该位置中的托肯有效；否则，称τ时刻该位置中的托肯无效.
+　　在一个广义Petri网中，一个托肯仅有两种状态：有效与无效.对任何时刻τ，m(τ)=ma(τ)+mu(τ)，其中ma(τ)为有效托肯标识向量，mu(τ)为无效托肯标识向量.
+　　定义4.对于变迁tj(j=1,2,…,q)，如果pi∈tj,maj(τ)=1且pi∈tj,mi(τ)≤F(pi,tj)，称变迁tj在状态s(τ)下有发生权；如果vj(τ)=1，称变迁tj在控制v(τ)下有发生权；如果ti在s(τ)和v(τ)下均有发生权，则变迁tj有发生权.
+　　3　HDS的运行
+　　HDS的运行由量变与质变的交替而构成.当广义Petri网不存在变迁的引发时，HDS随时间的推移发生量变，此时广义Petri网各位置中托肯的数目(HDS的宏观状态)不变，仅各位置的连续状态及其中托肯有效分布情况(HDS的微观状态)发生变化.否则，HDS发生质变，此时不仅位置的连续状态及其中托肯有效分布情况随托肯的产生或消失而发生变化，而且各位置中托肯的数目也发生变化.
+　　3.1　HDS的量变法则(各CVDS的演化规则)
+　　定义5.与位置pi(i=1,2,…,n)对应的开关函数为
+　　　　　(3)
+且δi(τ)满足
+　　　　　　　　　　　　　　　(4)
+显然，此开关函数具有狄拉克函数的特征.与系统对应的开关函数向量为
+δ(τ)=(δ1(τ),δ2(τ),…,δn(τ))T.　　　　　　　　　(5)
+　　设时刻τ1系统的状态为s(τ1)=(m(τ1),x(τ1))，时刻τ2系统的状态为s(τ2)=(m(τ2),x(τ2))，如果在该时间段内广义Petri网中没有任何变迁引发，则
+　　1)由xi(τ1)到xi(τ2)的演化法则如下：［8］
+　　　　(6)
+　　2)由mi(τ)到mi(τ2)的法则如下：
+　　　　　　　　　　　(7)
+　　3.2　HDS的质变法则(广义Petri网的迁移法则)
+　　变迁发生是瞬时完成的，如果一个变迁tj在时刻τk发生，其结果是使系统的状态由s(τ-k)=(m(τ-k),x(τ-k))变为s(τ+k)=(m(τ+k),x(τ+k))，记为s(τ-k)[tj>s(τ+k).其迁移法则如下：
+　　1)由mi(τ-k)到mi(τ+k)的法则为
+　　　　　　　　　(8)
+　　2)由xi(τ-k)到xi(τ+k)的法则为
+　　　　　　　　　　(9)
+此式给出质变之后各位置中托肯(Token)的状态.
+　　3.3　HDS的状态轨迹与状态方程
+　　HDS的状态空间是由它的混合状态确定的，系统的量变和质变都会引起状态的变更.给定一个系统和一个初始状态S0，随着时间的推移和变迁的引发，系统的状态会不断地变化.
+　　如果存在状态序列s(τ1)，s(τ2),…, s(τn-1),…和控制序列v(τ1),v(τ2),…,v(τn-1),…,使得tik在s(τk)和v(τk)下有发生权，则称ti1,ti2,…,tin-1,…为一个变迁序列.记变迁tik发生前后系统的状态分别为s(τ-k)=(m(τ-k),x(τ-k))和s(τ+k)=(m(τ+k),x(τ+k))，则系统的轨迹为
+
+此时与轨迹对应的状态方程可由量变方程(5),(6)(τ+k-1=τ1,τ-k=τ2)与质变方程(7)，(8)构成.
+　　4　实例
+　　例1.在广义Petri网模型中，若
+　　1)|*pi|=|p*i|=1 (i=1,2,…,n)，
+　　2)与位置pi对应的CVDS状态方程为
+
+则该HDS为一个计时事件图.
+　　例2.在广义Petri网模型中，若
+　　1)Q(pi)=[0,+∞)(i=1,2,…,n),
+　　2)与位置pi对应的CVDS状态方程与例1同，则该HDS为一个条件事件网.
+　　例3.在广义Petri网模型中，若
+　　1)P={p1},T={t1},*p1=p*1=t1,
+　　2)m1(τ0)=1,
+　　3)与位置pi对应CVDS状态方程如(1)式所示，则该HDS为一个线性时不变的CVDS.
+　　5　结论
+　　本文突破了现有的HDS理论体系，建立了一类HDS的广义Petri网模型，较好地用于混杂系统的建模与分析.下一步在有效面向应用的同时还将深入探讨稳定性、能控性、能观性及协调控制问题等等.
+1)国家自然科学基金与“863”高技术基金资助项目.
+作者简介：徐心和　1940年出生，1964年毕业于东北大学自控系.现为东北大学教授、博士导师.长期从事控制理论教学和科研工作，主要学术方向为离散事件动态系统、混杂系统、计算机控制与仿真等.
+　　　　　李政国　1971年出生，1992年在东北大学数学系获理学学士学位，1995年于东北大学自控系获工学硕士学位，现于东北大学攻读博士学位，主要研究方向为离散事件系统、混杂系统及符号计算.
+　　　　　李彦平　1957年出生，1981年毕业于东北大学自控系，1995年3月获东北大学自控专业工学博士学位，现为该校副教授.主要从事离散事件系统、工业过程建模及混杂系统等方面的理论研究.
+作者单位：东北大学控制仿真研究中心　沈阳　110006
+参考文献
+　［1］Benvensite A,Guernic P L.Hybrid dynamic systems theory and the SIGNAL language.IEEE Trans.AC,1990,35(5):535－546.
+　［2］Benvensite A,Guernic PL.Hybrid dynamic systems theory and nomlinear dynamic systems over finite field.Proc.of 27th CDC,1988:209－213.
+　［3］Holloway L E.Properties of behavioral modl for a class of bybrid dynamic system.Proc.of 31th CDC,Tucson,1992:3752－3757.
+　［4］Ramadge P J.On the periodicity of symbolic observation of piecewise smooth discrete time systems.IEEE Trans.1990,AC－35(7):807－813.
+　［5］Gollu A,Varaiya P.Hybrid dynamic systems.Proc.of 28th CDC,1989:2708－2713.
+　［6］Holloway L E,Krogh B h.On－line trajectory encoding for discrete－observation process monitoring.Preprints of IFAC Symiposium on OFDSCPI,Delaware,1992:315－3230.
+　［7］袁崇义.Petri网，南京：东南大学出版社，1981.
+　［8］谢绪恺.现代控制理论基础，沈阳：辽宁人民出版社，1980.
+收稿日期 1995-05-25

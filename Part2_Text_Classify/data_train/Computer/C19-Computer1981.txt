@@ -1,0 +1,119 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+1999年 第18卷 第2期 Vol.18 No.2 1999
+
+
+
+Java线程控制的图像分割与合成
+索红光　石乐义　丁淑妍　高振东
+　　摘　要：使用Java对WEB静态图像进行分割重组，然后根据用户的交互操作合成显示，并利用线程对程序的并发性加以控制，从而达到图像显示的动态性和交互性效果。
+　　关键词：Java语言　类Class　线程Thread
+　　Java是一种面向对象的编程语言。它具有与平台无关、面向对象、动态、安全等特点，允许直接使用多线程方式进行编程，对程序进行并发控制。Java还支持分布式网络操作，从而能够方便地进行网络文件对象的存取。利用Java语言本身提供的绘图功能，可以绘制一些简单的图形。而对于复杂图形，一般先用绘图软件制成图像，然后采用Java所提供的方法对图像下载并进行处理和控制，从而实现静态图像的动态显示。
+1　Java图像处理与线程的并发控制
+1.1　Java图像处理
+　　Java语言提供了丰富的类(Class)、接口(Interface)以及相应的调用方法(Method)。使用这些类或接口，可以定义自己的类或子类，充分利用Java面向对象的特性进行编程。在java.awt包中，提供了专门的Image类，它是1种抽象类，可提供抽象的方法描绘图片的一些共同特性。而在Applet类和Tookit类中都提供了2种getImage()方法下载图像，分别根据绝对地址和相对地址查询所要下载的图像。通常采用相对地址的下载方法，它的语法定义及功能如下：
+　　1.public Image getImage(URL url,String name)
+　　功能：根据相对地址下载图像。
+　　参数：url――URL(统一资源定位)基地址，
+name――图像文件名。
+　　获取图像后就可以调用Graphics类提供的drawImage()方法显示图像。
+　　2.public drawImage(Image img,int x,int y,observer)
+　　功能：在指定位置显示图像。
+　　参数：img――待显示图像，x――横坐标，y――纵坐标，observer――图像监视器，用来监视图像的下载情况，接受图像装载信息(当图像完全载入时返回True，否则返回False)。
+　　在显示图像时，通常希望获得对图像的控制，从而以自己喜欢的各种方式实现媒体播放。为此，Java专门提供了用于跟踪包括图像和声音等多媒体对象的ImageObserver类和MediaTracker类，在本文程序中主要用到的是跟踪多幅图像状态的MediaTracker类。
+1.2　Java多线程并发功能
+　　目前，线程(Thread)已经为许多操作系统和应用开发系统所采用。线程是程序的单个控制流，具有顺序程序的特点，但是线程不是1个程序，它仅仅是程序的1个执行序列。线程具有很强的并发功能，在同一时刻可能有多个线程同时处于执行状态。线程是动态的，具有一定的生命周期，分别经历从创建、执行、阻塞直到消亡的过程。Java语言中提供了专门的Thread类，以支持直接的多线程编程。Thread类提供了对线程的控制方法，如Start(),Stop(),Run()、Suspend()、resume()、Sleep()以及Run()方法等等，它们可以对线程的状态进行控制。并可以运用SetPriority()方法设置线程的运行优先顺序。Thread类的定义方法如下：
+　　Thread(ThreadGroup group,Runable target,String name)
+　　SetPriority()用来设置线程的优先级。线程优先级是1个介于MINPRIORITY(在类中定义为1)和MAXPRIORITY(在类中定义为10)之间的整数。线程不同的优先级决定了不同线程之间的切换。
+2　Java图像分割与合成的算法及实现
+　　Java程序首先将一个完整的图像下载，然后将其分割成20个单元拼图，即分为5行4列。在本例中特地将第20幅图像单元设为1个空白图像，以便拼图时用户交互操作使用。这些参数分别定义在相应的变量中。
+　　final int XCELLS=5;　　//每行拼图的数目
+　　final int YCELLS=4;//每列拼图的数目
+　　final int ALLCELLS=20;//分割元素的数目
+　　final int EMPTY=19;//将第20单元，即cells［19］置成
+//空白图像
+　　然后将这些图像分割单元存于1个Cell类数组cells［］中，在这里Cell类中含有图像以及它的起始位置和当前位置，其具体定义如下：
+　　class Cell
+　　{int sx,sy;　//起始位置
+　　int cx,cy;　//当前位置
+　　Image img;　//单元图像
+　　public Cell(Image img,int x,int y)　//Cell类构造函数
+　　{this.img=img;
+　　sx=x;sy=y;}　//给起始位置赋值为x,y
+　　}
+　　为了对每个图像分割单元进行状态跟踪，还需要建立1个MediaTracker类的实体(instance)，然后调用addImage()方法，为每个要跟踪的图像指定1个唯一的标识符。标识符决定了图像获取时的优先顺序并使得图像能够独立完整地进行处理。
+　　MediaTracker tracker=new MediaTracker(this)
+　　//为当前使用类建立1个MediaTracker实体，用于跟踪类
+　　//上的图像
+　　cells［EMPTY］=new Cell(createEmpty(),toPoint(EMPTY).x,toPoint(EMPTY).y);
+　　tracker.addImage(cells［EMPTY］.img,0);
+　　//调用createEmpty()方法产生空白图像，并加入到所跟踪
+　　//的cells数组中20单元
+　　void setPosition(int x,int y)　　//设置单元图像当前位置
+　　{cx=x;cy=y;}
+　　各个图像单元的位置存放于位置数组position里：
+　　int position［］［］=new int［XCELLs］［YCELLS］
+　　这样就可以使用Cell类数组cells［］对图像的各个单元进行操作，从而将各个单元图像进行合成显示，并通过position［］［］数组改变各个单元的位置。为了对各单元进行并发操作，需要对线程加以控制，并通过鼠标事件和按键事件控制进程的开始、睡眠和进行等状态变化，其实现方法如下(仅以run()方法为例)：
+　　Thread imageThread=null;　//定义线程imageThread,初始
+//值为空
+　　public void run()
+　　{imageThread.setPriority(Thread.MINPRIORITY);//设置线 
+//程执行优先级别
+　　try
+　　　　{imageThread.sleep(2000);//线程睡眠等待2000ms
+　　　　}catch(InterruptedException e){}
+　　first=changeArray();//调用changeArray()方法随机改变图
+//像单元位置
+　　while(!loaded)//判断图像若未被跟踪载入，则调用相关
+//方法跟踪并加载图像
+　　　　{repaint();
+　　　　try
+　　　　　{imageThread.sleep(100);
+　　　　　}catch(InterruptedException e){System.out.println(e);}
+　　　　}
+　　}
+　　changeArray()方法用来随机地改变图像单元的位置，其实现方法如下：
+　　boolean changeArray()
+　　{
+　　int source［］=new int［20］;
+　　int full［］=new int［20］;
+　　for(int i=0;i<ALLCELLS;i++)
+　　　　{
+　　　　int r=(int)(Math.random()*20);
+　　　　while(full［r］!=0)
+　　　　r=(r+(int)(Math.random()*20))%20;
+　　　　source［i］=r;
+　　　　full［r］=1;
+　　　　}
+　　int pos=0;
+　　for(int i=0;i<ALLCELLS;i++,pos++)
+　　　　{
+　　　　Point p=toPoint(source［pos］);
+　　　　cells［pos］.setPosition(p.x,p.y);
+　　　　position［p.x］［p.y］=pos;
+　　　　}
+　　x=cells［EMPTY］.cx;
+　　y=cells［EMPTY］.cy;
+　　return(false);
+　　}
+　　当applet执行后点击鼠标，线程就被启动，开始装载图像并执行changeArray()随机选择1个位置来移动图像单元，此时可以使用键盘移动图像上的任意单元到任何位置。在这里还有一个重要内容就是怎样将图像分割成许多的单元，我们可以通过引用CropImageFilter方法来分割图像，它是1个分割图像过滤器。其实现方法如下：
+　　Image crop(int pos)
+　　{//pos参数为调用函数给出的图像单元位置号
+　　Point p=toPoint(pos);//将位置号转化为坐标形式
+　　ImageFilter filter=new CropImageFilter(xside*p.x,yside*p.y,xside,yside);
+　　//在给定坐标和长宽的绝对矩形区域内创建分割图像过
+　　//滤器实体filter
+　　ImageProducer producer=new FilteredImageSource(baseImage.getSource(),filter;)
+//由原图像和分割图像过滤器实体创建新的图像
+　　　　　　//产生器producer
+　　return createImage(producer);//由图像产生器producer产生
+//图像并返回
+　　}
+　　通过以上步骤，整个图像的分割与合成显示就完成了。本程序主要利用了crop()、changeArray()、mousedown()、Thread()等方法以及几个表示程序运行状态的布尔变量实现了一个线程控制和动感图像相结合的图像处理过程。
+作者单位：山东东营石油大学计算机系(257062)
+参考文献
+1　吴建平，尹霞，冯晓东.JAVA程序设计语言.北京：清华大学出版社，1997
+2　邱仲潘.JAVA从入门到精通.北京：电子工业出版社，1997
+3　张为民.JAVA语言及应用.北京：清华大学出版社，1996
+4　陈玉生.JAVA语言一月通.成都：电子科技大学出版社，1997
+(收稿日期：1998-08-10)

@@ -1,0 +1,127 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年　第25卷　第5期　Vol.25 No.5 1999
+
+
+
+广义LVQ神经网络的性能分析及其改进1)
+张志华　郑南宁　王天树
+摘　要　首先从理论上分析了广义学习矢量量化(GLVQ)网络的GLVQF算法的性能，GLVQF算法在一定程度上克服了GLVQ算法存在的问题.然而，它对获胜表现型的学习具有好的性能，对于其它的表现型，性能却十分不稳定.分析了产生这个问题的原因，直接从表现型的学习率出发，提出了选取学习率的准则，并给出了两种改进的算法.最后，使用IRIS数据验证了算法的性能，改进算法较之GLVQF算法具有明显的稳定性和有效性.
+
+关键词　亏损因子，模糊度因子，学习率，IRIS数据.
+BEHAVIORAL ANALYSIS AND IMPROVING OF
+GENERALIZED LVQ NEURAL NETWORK
+ZHANG Zhihua　ZHENG Nanning　WANG Tianshu
+(Institute of AI and Robotics, Xi'an Jiaotong University, Xi'an　710049)
+Abstract　　In this paper, the performance of GLVQ-F algorithm of GLVQ network is theoretically analyzed. The GLVQF algorithm, to some extent, has overcome the shortcomings that GLVQ algorithm possesses. But, there are some problems in GLVQF algorithm, for example, the algorithm has good performance on the winning prototype, and on other prototypes, its performance is very unstable. In this paper, the reasons of the problem are discussed. The rules of choosing the learning rates are proposed, and two modified algorithms are developed therefrom. Finally, the performance of the modified algorithms is verified with IRIS data, which shows the modified algorithms are more stable and effective than GLVQF algorithm.
+Key words　Loss factor, fuzzy degree factor, learning rate, IRIS data.
+1　引　言
+　　近几年，由于理论上和网络结构上表现出广泛的活力，Kohonen关于聚类算法［1,2］的研究工作变得十分流行.Kohonen的工作［2］主要集中在两方面：一是学习矢量量化(LVQ)算法，二是他的自组织特征映射(SOFM)网络.但是LVQ存在神经元未被充分利用以及输入样本和竞争单元之间的信息被浪费等两个主要问题［3］.SOFM同样也存在两大缺点［4］：一是哪些节点应被考虑；二是每个非获胜节点应怎样发挥影响.Huntsberger和Hjjimarangsee［5］首次把SOFM同LVQ相结合，为试图克服两者上述各自的问题提出了一种新的思路.Pal等［6］在这个思想上提出了一种广义的学习矢量量化(GLVQ)网络.Gonzalez等［8］对GLVQ进行了性能分析，发现它仍然存在一些问题.Karayiannis等［9］修正了GLVQ，提出了GLVQ-F算法.GLVQ-F算法在一定程度上解决了GLVQ算法存在的问题.但同时GLVQ-F算法对于不同的模糊度因子聚类性能不稳定.本文从数学上分析了GLVQ-F算法的性能，并提出了两种改进的算法.
+2　广义学习矢量量化(GLVQ)网络和GLVQ-F算法
+　　记X=｛x1,x2,…,xp｝Rn为输入样本集合，设X中的类数(表现型的个数)为c. GLVQ网络的学习规则是从最优化一个目标函数导出的.该目标函数定义为输入样本x的一个亏损函数 Lx
+　(1)
+其中表现型ν=｛v1,v2,…,vc｝Rn是我们要寻找的矢量量化器，gr是x相对表现型的亏损因子，其不同的定义就会导出不同的学习算法.在GLVQ算法中，由下式定义：
+.　(2)
+　　由于GLVQ算法定义gr为式(2)，在实际应用中，使得算法背离了初衷［7, 8］.为此，文献［8］引入模糊C-均值中的隶属度公式［1］来定义gr，即
+　(3)
+其中m∈（0，1)是一个常数，表示模糊度因子.此时，用梯度下降法求解目标函数Lx的最小值，导出了GLVQF算法，对于输入x，第t次的学习规则是
+vj(t)=vj(t-1)+2α(t).h(j,m).(x-v(t-1)),j=1,…,c,　(4)
+这里把h(j,m)称为学习率
+h(j,m)=gj+F(j,m),j=1,2,…,c,　(5)
+　(6)
+　(7)
+3　GLVQ-F算法的性能分析
+　　为了方便起见，令vi是相对于输入向量x的获胜表现型，即，vl是相对于输入向量x的竞争最小的表现型，即.本文其余部分都作这样假设.现在分析GLVQF的性能.首先
+　　因为δir≤1,δ-1ir-1≥0,r=1,2,…，c,所以F(i,m)≥0,于是有gi+F(i,m)≥gi.
+又δlk≥1,δ-1lk-1≤0,F(l,m)≤0,所以gl+F(l,m)≤gl.
+　　可以看出F(k,m)是个扰动参数（k=1,2,…，c)，对于获胜节点，它加大了学习步长，而对竞争最小节点，它减弱了学习步长.进一步比较h(i,m),h(k,m)(k=1,2,…，c；k≠i)的大小.首先由式(3),(4)经过简单计算，有
+　(8)
+　　定理1.1）h(k,m)≤h(i,m),(k=1,2,…,c;k≠i)；2)F(k,m)≤F(i,m),(k=1,2,…,c,k≠i).
+　　从直观上看，作者希望当‖x-vk‖2≥‖x-vj‖2时，算法也能满足h(k,m)≤h(j,m).然而，遗憾的是该结论即使对于竞争最小的表现型也不能成立.举例说明
+　　例.设,c=3. 令‖x-v1‖2=,‖x-v2‖2=3,‖x-v3‖2=4.
+经过简单计算有显然‖x-v2‖2＜‖x-v3‖2，而.由此例还可见h(k,m)不一定大于零(k≠i). 但当m≥2时，有下述结论成立：
+　　定理2.设m≥2，如果‖x-vk‖2≥‖x-vj‖2，则0＜h(k,m)≤h(j,m).
+　　证明.　因为m≥2,∴.因而当‖x-vk‖2≥‖x-vj‖2，有
+
+又
+
+所以h(k,m)-h(j,m)≤0.于是定理得证.
+　　从另一个角度来分析GLVQ-F算法，即固定δkr，把h(k,m)=gk+F(k,m)当作m的函数进行分析.首先给出一个引理.
+　　引理1［7］.1)2)
+3)
+　　这里给出h(k,m),gk(k=1,2,…，c)关于m的导数：
+　(9)
+　(10)
+　　根据上述两式、引理1和文献［1］，很容易得到下面几个定理：
+　　定理3.gi为m在区间(1,∞)的递减函数，并且
+　　定理4.gl为m在区间(1,∞)的递增函数，并且
+　　定理5.h(i,m)为m在区间(1,∞)的递减函数，并且h(i,m)=1,h(i,m)=
+　　定理5表明h(i,m)有类似定理3的结果，但遗憾的是本文不能证明h(l,m)有类似定理4的结论成立.作者的目标是希望找到满足下述两个条件的h(k,m)：
+　　1)当,h(i,m)为m的递减函数，且h(i,m)=,h(i,m)=1；
+　　2)当k≠i,h(k,m)为m的递增函数，且h(k,m)=h(k,m)=0.
+这样就可以采用类似于文献［9］中的方法，随着学习次数的增加，m由大逐渐减小，即开始时，所有表现型的学习步长都均等，而最后，只有获胜表现型激活，其它表现型逐渐抑制.从直观上看，这是合理的.
+4　GLVQ-F的改进算法
+　　作者的目的是构造满足上述条件的h(k,m)(k=1,2,…，c).文献［8］h(k,m)的构造是从gk着手的.其实在学习时，只需要h(k,m),因而可直接从h(k,m)着手，而不考虑gk.
+　　h(k,m)是gk加上了一个扰动项F(k,m)，对于获胜表现型它增大了其激活程度；而对于竞争最小的表现型它增大了其抑制程度；但对其它的表现型，F(k,m)这个扰动量有时会产生很差人意的效果（正如上节的例子所分析的）.略去F(k,m)，直接令
+h(k,m)=gk,　(11)
+对于获胜表现型和竞争最小的表现型来说，降低了它们的激活或抑制程度，但对于其它表现型，稳定了其效果，故整个算法相对而言要稳定些.由定理3和定理4，可知h(k,m)满足上面的条件1)，但条件2)只是对竞争最小的表现型成立.我们把基于式(11)导出的算法简称改进算法1.
+　　下面讨论另一种改进（简称改进算法2）.令
+　(12)
+由上式首先可得　　h(k,m)＜gk(k=1,2,…,c).
+因为
+所以　
+所以
+由式(13)可得0＜h(k,m)＜gk＜gi=h(i,m)=1(k=1,2,…，c；k≠i).再根据式(12)，显然有h(k,m)=h(k,m)=0,(k=1,2,…，c；k≠i).
+　　又由于
+
+(k=1,2,…,c;k≠i),　　　　
+所以　h(k,m)(k=1,2,…,c;k≠i)是m在区间(0,∞)上的递增函数.于是两个条件满足.
+5　数值实验及结果分析
+　　这里用著名的IRIS数据［9］来验证上述改进算法的性能.IRIS数据经常被用来检验聚类(无监督)或分类(有监督)模式识别方法的性能，它总共有150个数据，每个数据又由4个分量组成.IRIS数据分为3类，每类有50个数据.对有监督设计标准的错误个数为0―5，而无监督设计标准的个数在15左右.这里作者用GLVQ-F算法，改进算法1，2分别对IRIS数据进行聚类.为了更好地比较这三个算法的性能，分别取不同的m值进行实验，其结果见表2.表1给出了表现型的初始值，实验都是根据这个初始值进行的.为了有一个比较准则，用1-NP(最近邻)算法直接对样本进行聚类，结果也见表1.
+表1　数值实验中表现型的初试值及最近邻算法实验结果
+
+初始质心最后质心混淆矩阵错误率
+5.006,3.428, 1.462, 0.2465.006,3.428,1.462,0.2465000
+5.936,2.770, 4.260, 1.3265.936,2.770, 4.260, 1.32604647.3%
+6.588,2.974, 5.552, 2.0266.588,2.974, 5.552, 2.0260743
+
+　　在表2中每一行上部代表聚类的混淆(Confusion) 矩阵，下部表示聚类的错误率.从表2可以看到，GLVQ-F算法在m＞2时，聚类的误差很大，在m值趋近1时算法溢出，以至于不能进行聚类.改进算法1比GLVQF算法聚类效果有一定的提高，但相应的问题同样存在.其原因正如第三节所分析的，是由于式(5),(11)定义的学习率h(j,m)(j=1,2,…,c)随着m取不同的值，其性能不稳定，从而严重破坏了算法的聚类效果.改进算法2完全满足两个条件，该算法在m=5以及m=3时聚类的错误个数为11，低于15，而此时GLVQF算法和改进算法1的错误数都很高.当m的值趋近1时，比如m=1.01，其它两种算法已经无法进行聚类，而改进算法2仍然能有效地对数据样本进行聚类，这表明该算法的聚类性能是十分稳定，所以它是十分有效的.
+表2　三种学习算法实验结果比较
+
+m5.03.02.01.51.21.11.01
+GLVQF算法005050005000500050005000溢　出
+0050491024620464043704010无　法
+83210740301139024801490149聚　类
+93.3%64.0%10.0%4.0%5.3%7.3%
+改进
+算法1500050005000500050005000溢　出
+2921054501463046404550446无　法
+11138010400545024801490149聚　类
+27.3%10.0%6.0%4.0%4.0%4.7%
+改进
+算法25000500050005000500050005000
+3443344304640446043704370437
+0545054502480149014901490149
+7.3%7.3%4.0%4.7%5.3%5.3%5.3%
+
+　　该实验的结果与前文的理论分析是吻合的.它进一步验证了基于两个条件选取学习率h(k,m)(k=1,2,…，c)而导出的学习算法是有效的.
+6　结　论
+　　GLVQ算法是从最优化一个目标函数而导出的，该算法构造新颖，为克服学习矢量量化算法存在的问题提供了一个新的思路.Karayiannis等通过引入模糊c均值的隶属度函数，修正了GLVQ算法，提出一类新的学习算法GLVQF.本文的工作为GLVQF算法提供一定的数学理论基础.完善学习矢量量化算法的理论，以及基于这些理论设计出更高效的聚类算法并把算法应用于图象处理中将是作者进一步研究的课题.
+1) 国家自然科学基金重点资助项目(No.69735010).
+作者简介：张志华　讲师，现在西安交通大学攻读博士学位.主要从事模式识别，图象处理，模糊逻辑系统及神经计算智能等领域的研究.
+　　　　　郑南宁　博士，博士生导师.主要从事模式识别，图象处理及计算机视觉等领域的理论与应用研究，现已在国内外重要学术期刊及会议上发表论文一百余篇.
+作者单位：西安交通大学人工智能与机器人研究所　西安　710049
+参考文献
+1　Bezdek J. Pattern Recognition with Fuzzy Objective Function Algorithms. New York: Pelnum, 1981
+2　Kohonen T. Selforganization maps. Berlin: SpringerVerlag, 1995
+3　Chung F L, Lee T. Fuzzy competitive learning. Neural Networks, 1994, 7(3): 539-551
+4　Tsao E C K, Bezdek J C , Pal N R. Fuzzy Kohonen clustering networks. Pattern Recognition, 1994, 27(5): 757-764
+5　Huntsberger T, Ajjimarangsee P. Parallel selforganizing feature maps for unsupervised pattern recognition. Int. J. General Systems, 1989, 16(2): 357-372
+6　Pal N R, Bezdek J C, Tsao E C K. Generalized clustering networks and Kohonen's selforganizing scheme. IEEE Trans. on Neural Networks, 1993, 4(4): 549-558
+7　Gonzalez A Z, Grana M, Anjar A D. An analysis of the GLVQ algorithm. IEEE Trans. on Neural Networks, 1995, 6(4): 1012-1016
+8　Karayiannis N B, Bezdek J C, Pal N R, Hatharay R J. Repair to GLVQ: a new family of competitive learning schemes. IEEE Trans. on Neural Networks, 1996, 7(5): 1062-1071
+9　Bezdek J C, Pal N R. Two soft relatives of learning vector quantization. Neural Networks, 1995, 8(5): 729-743
+收稿日期：1998-07-03
+修稿日期：1998-12-10
+
+

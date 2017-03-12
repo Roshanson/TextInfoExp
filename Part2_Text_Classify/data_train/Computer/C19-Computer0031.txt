@@ -1,0 +1,101 @@
+计算机应用
+Computer Applications
+1999年 第19卷 第7期  Vol.19 No.7 1999
+
+
+
+开放网络环境中Agent的管理概念模型
+孙玉冰
+　　摘　要　本文重点讲述了一种在开放式网络环境中对ISA进行管理的模型（简称为ISAMM）,包括它的四个主要性质、信息流程及其优点。最后，对ISAMM和目前网络中关于ISA的管理方法作了比较，并指出了值得深入研究的相关方向。
+　　关键词　Agent,兼容性,自主性,真实性,安全性
+　　
+INTERNET SOFTWARE AGENT MANAGEMENT MODEL
+
+Sun Yubin
+Department of Information Science, Mathematics College, Peking University, Beijing 100871
+
+　　Abstract　In this article, "ISAMM", a new conceptual model of managing Internet/Intranet software agents is introduced. Comparing with current ISA managing methods, ISAMM has four main characteristics and its own information flow. At the end, we list some merits of ISAMM and several directions that worthy of deeply researching.
+　　Keywords　Agent, Compatibility, Autonomy, Reality, Security
+
+　　Internet/Intranet的飞速发展使得网络信息和数字资料的数量呈指数级增长，人们希望通过网络检索资源或者浏览资料时往往觉得无从下手。如何帮助人们快速有效地检索资源、按照常识和理性处理事务、自动协助人们探索资源的合理配置等一系列问题也随之产生。为了解决上述问题，人们综合运用计算机技术和AI技术，实现了许多Web Agent。这些ISA一般运行于网络环境中，帮助人们寻找资源，建立网络索引或完成其它有用的工作。本文重点论述使用范围较广的一种Web Agent，即Web Spider［1］。为便于介绍，以下将它称为Agent。
+　　Agent可以分为Benevolent Agent 和Malevolent Agent两种。一般而言，Agent设计者需要注意两个问题，即ROBOTS协定和访问频次协定［2］［3］。
+　　在开放式网络环境下实现对Agent的有效管理是一个重要而复杂的问题。由于网络环境的复杂性、开放性，Agent程序设计的灵活性以及网络本身存在的安全漏洞等，均导致了Agent管理问题的复杂性和难以实施。本文论述了一种新的ISA的管理方案，称为“ISAMM”(Internet Software Agent Management Model)。　　
+1　ISAMM
+　　David Eichmann在“Ethical Web Agent”文中定义了Ethical Agent并指出了Web Service Agent和Web User Agent所应该具有的性质［9］［10］。Etzioni在“A Softbot-based Interface to the Internet”中列出了Web Agent (Softbot)安全体系的主要特征：Safe, Tidy, Thrifty和Vigilant［4］。在目前的开放式网络环境中，只存在一些关于ISA的管理方法，尚未形成完善的管理体系。这些管理方法主要包括两个协定［2］［3］。
+1.1　ROBOTS协定
+　　对于Web管理者而言，有时需要禁止某些Spider访问一些站点或者站点上的某些资源。目前，普遍采取的做法是创建ROBOTS.TXT文件，并存放在服务器的缺省目录下。在文件中规定所限定的Agent和限定Agent所访问的资源。下面仅举几例加以说明：
+　　（1） User-Agent:*　Disable: /
+　　　　　禁止所有的Agent访问本站点。
+　　（2） User-Agent:*　Disable: /private
+　　　　　禁止所有的Agent访问本站点上/private目录下的资源。
+　　（3） User-Agent: Spider　Disable: /
+　　　　　禁止Spider Agent访问本站点。
+　　对于Web Server而言，创建ROBOTS.TXT文件来限定Agent的访问活动只是其意愿。如果要实现这一点，首要条件是要求访问该站点的ISA为Benevolent Agent。Web Server并不能阻止Malevolent Agent对其的攻击式访问。
+1.2 　访问频次协定
+　　上面所述的是Web Server部分资源共享性的丧失，下面讲述可能由于Malevolent Agent的访问而造成Web Server性能的丧失。当ISA运行时，不但要占用运行它的机器的内存和处理器资源，而且ISA使用网络来检索文档，所以它要占用网络连接的带宽，同时还要使用服务器的处理器、内存和网络资源。因此，快速的ISA应用程序很可能损坏服务器，因为它可能使得服务器的负荷、内存和资源达到饱和。即使负载并没有使得服务器崩溃，也可能使服务器停止，直到负载减轻后才能继续工作。一个Spider对网络中的某一服务器采用上述的访问方式是不允许的，也是不可接受的。在网络中过多地请求一台服务器以至于它不能正常工作，称为“轰击”，也称为“否认服务性攻击”（Spamming）。
+　　目前，网络中关于Agent的管理协定并不能真正有效地防止Malevolent Agent的恶意攻击。 Malevolent Agent 可能访问Web Server禁止其访问的资源；也可能因为过频地请求服务器资源而造成服务器性能的急剧降低，甚至失去处理其它请求的能力。Hyacinth S. Nwana也曾经指出关于Mobile Agent的几个主要面临的问题和需要深入研究的方向［1］。因此迫切需要一种新的ISA的管理方案，以实现对于开放式网络环境中ISA的更为安全、有效、高效的管理，本文将这种新的方案缩写成“ISAMM”。图1给出了ISAMM的示意图。　　
+
+
+
+图1　ISAMM示意图
+　　ISAMM的提出、定义和实施应该具有以下特征：兼容性、自主性、真实性、安全性，另外在特定环境下，ISAMM还可以具有其它一些性质。下面分别对上述特征作以论述：
+　　兼容性　目前，网络上已经存在各种纷繁复杂的信息资源，这些资源各有其特殊的存放格式和传输格式，而且为了便于网络通讯和保证接口的一致性，人们已经制定和实施了多种协议，如HTTP、FTP、TCP/IP等。 ISAMM 的实施，应该尽可能在保持与上述内容一致的基础上，达到在开放式网络环境中对 ISA实施安全、有效、合理管理的目的，甚至ISAMM可以制定自己的规范和协议，但必须保证与其他协议无矛盾和无冲突。
+　　自主性　在ISAMM中，应该允许Web Server以人工或者自动的方式享有自主权，应该保证Web Server或者Web Server管理员能够对向它提出请求的所有ISA进行授权和根据不同ISA的MBR、VCA以及其他参数来对ISA的访问资源限制进行维护。
+　　真实性　在ISAMM中，每一个在网络环境中运行的ISA应该是真实的，这里的“真实”的含义是：每一个ISA应该是经过注册和认证的Benevolent Agent。鉴于这一点，需要在 ISAMM中建立一个或多个ISA-CA（ISA Authentication Center）以对不同的ISA进行区分和认证。
+　　安全性　因为目前在开放式网络环境中ISA管理方法并不能有效地防止Malevolent Agent对Web Server的攻击式访问和访问Web Server禁止其访问的资源，因此实施ISAMM的一个重要目的是增强ROBOTS协定和访问频次协定，保护Web Server的信息资源，增加资源的共享性。ISAMM允许Web Server 对不同的ISA进行授权和对ISA能够访问的信息资源进行维护，允许ISA-CA对ISA进行注册登记和鉴证以及AIN和ISA相关信息的加密存储［5］。另外， ISAMM 能够跟踪所有ISA尝试进行恶意行为的活动，以便分析判别之用。
+　　其它性质　ISAMM在保证上述四条性质的同时，根据实施的不同环境还可以具有其他一些性质。比如：可以对所有注册的ISA进行某种条件下的排序，可以跟踪某种特定ISA的所有网上活动等。
+
+2　ISAMM系统 (ISAMS)
+　　ISAMS从系统组成上可以分为三层：第一层为ISA-CA，也即所有系统中的Agent 和Web Server的授权中心及认证中心；第二层为Agent集合和ISA集合，它们是ISAMM的管理对象；第三层为开放式网络环境中独立存在的Agent和Web Server，如图2所示。　　
+
+
+图2　ISAMS的系统架构
+　　假定Spider名称为Alice(A)，Web Server名称为Bob(B)，Alice将使用ISAMS方案与开放网络环境中的服务器Bob进行通讯。图3给出了ISAMM信息流程示意图。　　
+
+
+图3　ISAMM系统信息流程示意图
+　　其中Spider A为开放网络环境中的Software Agent，取名Alice（A）；ISA-CA为ISA 的认证中心（ISA Authentication Center）；Web Server B为网络中的一台提供资源和信息服务的服务器，取名为Bob（B）。
+　　整个信息流程可分为以下几部分：Agent的注册及AIN的分发，HTTP请求-响应信息流程，以及Server（Bob）请求ISA-CA对Agent（Alice）进行认证。
+2.1　Agent的注册及AIN的分发
+　　Alice A在开始运行于网络上之前，应该先向网络中的ISA-CA服务器发送HTTP注册请求。ISA-CA在接受到Alice A的请求之后，首先判断Alice A是否已经注册，若是，发送拒绝响应信息；否则，根据Alice A的注册请求内容分配Alice A的标示码AIN，然后将AIN及响应信息发送给Alice A，同时存储关于Alice A的相关信息。图3中的ISA-CA主要负责Agent标示码（AIN）的产生与分发、Agent信息的加密存储、Key的安全管理、响应Server对Agent认证的请求、记录本机日志等功能。
+2.2　HTTP请求-响应信息流程
+　　Alice经过注册并被成功地分配了AIN之后，就可以在开放式网络环境中运行了，既可以向任何一台服务器发送HTTP请求，也可以接受来自任何一台服务器发来的信息。下面参照图4，以Alice 使用HTTP协议请求服务器Bob发送文档sample.doc为例说明ISAMS中一个HTTP请求-响应的流程［7］。　　
+
+
+图4　HTTP请求-响应处理流程
+　　（1） Alice与服务器Bob建立连接。
+　　（2） Alice发送HTTP请求给Bob，请求中除了HTTP协议所规定的信息之外，还包含AIN。
+　　（3） Bob侦听到Alice发来的请求后，启动服务器程序进行请求处理。
+　　（4） Bob将请求结果发送给Alice，记录日志并断开与Alice的连接。
+　　在上述流程中，ISAMM主要作用在第( 3 )步。具体说明如下：
+　　Bob接收到Alice发来的HTTP请求后，首先根据请求信息中的AIN检查本地Agent Database中是否存在Alice的有关信息，如果没有，则Alice是第一次访问本服务器，Bob则请求ISA-CA对Alice进行验证，具体见2.3。否则，Bob检测Alice是否为Benevolent Agent，若是，则根据Alice所请求的sample.doc文档检查Alice的访问权限和资源访问限制，如果可以访问，则Bob按照正常的HTTP响应的方式处理该响应，同时记录与Alice有关的访问信息，并重新计算和更新与Alice有关的参数，如MBR (Malevolent/Benevolent Ratio)，VCA(Visiting Counts of Agent)等。如果Alice所请求的资源sample.doc为Bob限制Alice访问的资源，则Bob向Alice发送警告信息，并更新Alice的有关参数。
+2.3　Server请求ISA-CA对Agent进行认证
+　　服务器Bob发送验证Agent标示码的请求给ISA-CA，同时发送Alice的AIN及相关信息，ISA-CA接收到请求后，检索本地Agent Database，如果存在Alice有关的信息，则说明Alice已经注册成功，此时ISA-CA发送确认消息给Bob，消息中包含Alice有关的信息，此时Bob就可以处理Alice的请求了。如果Alice没有经过注册，则ISA-CA发送拒绝消息给Bob，Bob接受到该消息之后，则可以发送“请注册到ISA-CA”等内容给Alice［9］。　　
+
+
+图5　服务器请求ISA-CA对AIN进行验证
+
+3　ISAMM优点及可能扩展
+　　综上所述，ISAMM与现有的ISA管理方法相比具有以下优点：
+　　ISAMM使得Web Server或Web Server管理员可以对不同的Agent进行授权，包括访问权限限制和访问资源限制，从而防止Agent的恶意攻击和限制不同的Agent访问不同的资源；
+　　在 ISAMM中，Web Server或Web Server 管理员可以正确决策提出请求的Agent的MBR，从而有所区别地对不同的Agent（Benevolent / Malevolent Agent）进行不同的响应；
+　　ISAMM在一定程度上加强了ROBOTS协定和访问频次协定，杜绝了上述两协定所存在的问题，使得Web Server可以直接对Agent的访问权限和访问行为进行控制；
+　　保证ISA私有数据的透明性。由于ISA-CA的存在，使得ISA拥有了不同的但也是唯一的AIN。ISA经过注册和被成功分配AIN之后，则无论发送请求还是接收响应，均只需要使用AIN来标示自己，一则可以减少发送请求的数据量，二则可以隐藏Agent本身的有关信息，保证 Agent本身相对于开放网络的透明性；
+　　可以跟踪所有Agent的访问信息，从而保证正常的网络秩序。同时 ISA-CA可以通过对注册的Agent进行数据分析而得出有意义的结果。　　
+4　相关的问题
+　　网络环境的开放性、复杂性和Agent程序设计的灵活性、功能的多样性，使得在开放网络环境中实施对Agent的管理显得极为困难。目前的管理方法并不能防止Malevolent Agent破坏行为的出现，同时使得Web Server的资源丧失了部分共享性，因此迫切需要一种更为主动、有效、合理的管理方案以达到既定目的。ISAMM可以有效地防止Agent对Web Server的攻击和访问未经授权访问的资源，又可以保证HTTP请求-响应的顺利进行，同时Web Server和ISA-CA还可以联合规范Agent的行为。因此ISAMM的实施，可以保证在网络环境中有效管理Agent，保证网络向着健康、有序的方向发展。
+　　将来关于ISAMM的研究主要集中在以下几个方面：引入信息安全技术及安全机制［5］［8］，增加ISAMM的加密、鉴证、防假冒、防抵赖能力；目前Web Server管理员需要根据ISAMM决定的MBR手工维护特定Agent的访问权限和相应的资源访问限制，将来可以由Web Server本身利用人工智能技术直接根据MBR决定Agent的相关权限，并自动对Agent的访问权限和资源限制进行管理；ISA-CA的分布式数据资源分布，可以在开放式网络环境中设置多个ISA-CA，以保证认证请求和注册请求的快速响应，但需注意数据的完整性和一致性；ISAMM不但可以对ISA 进行注册和认证，还可以实施对Web Server的注册和认证。
+　　孙玉冰　博士研究生。主要研究方向：人工智能和软件Agent。
+　　作者单位：孙玉冰（北京大学数学科学学院信息科学系　北京100871）
+参考文献
+［1］　Hyacinth S. Nwana. Software Agent: An Overview Knowledge Engineering Review, 1996
+［2］　Martjin Koster. Guide for robot Writers. Nexor Corp.http:// web.nexor.co.wk/mak/ doc/robots/ guide-lines.html
+［3］　Martjin Koster. A Standard for Robot Exclusion. Nexor Corp. http://web.nexor.co.wk/mak/doc/robots/norobots.html
+［4］　Etzioni O. Weld D.A Softbot-based Interface to the Internet.CACM′96
+［5］　孙玉冰. 信息安全技术及其在ATM网络中的应用. Computer & Communication( Financial Computerization ), 1996
+［6］　HTTP: A protocol for networked Information ,http://info.cern.ch/hypertext/WWW/ protocol/ HTTP/HTTP2.html
+［7］　ISO Standard 8879 SGML: Standard Generalized MarkupLanguage, ftp://ftp.ifi.uio.no/pub/SGML/SGMLs
+［8］　SET: Secure Electronic Transaction, http://www.visa.com/
+［9］　Eichmann David. The RBSE Spider--Balancing Effective Search Against Web Load. The First International Conference on the WWW. May 25-27 1994
+［10］ Eichmann David. Ethical Web Agents RBSE Program.University of Houston-Clear Lake .
+收稿日期:1999-04-05(修改稿)

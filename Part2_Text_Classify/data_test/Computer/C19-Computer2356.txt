@@ -1,0 +1,118 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第8期 Vol.36 No.8 1999
+
+
+
+采掘关联规则的高效并行算法
+铁治欣　陈　奇　俞瑞钊
+摘　要　采掘关联规则是数据采掘领域的一个重要问题.文中对采掘关联规则问题进行了简单的回顾；给出了一种提高顺序采掘关联规则效率的方法；分析了已有并行采掘关联规则算法的优缺点；设计了一个效率较高的并行采掘关联规则的算法PMAR；并与其它相应算法进行了比较.实验证明，算法PMAR是有效的.
+关键词　数据采掘 关联规则 并行算法
+中图法分类号　TP311
+AN EFFICIENT PARALLEL ALGORITHM FOR MINING ASSOCIATION RULES
+TIE Zhi-Xin, CHEN Qi, and YU Rui-Zhao 
+(Artificial Intelligence Research Institute of Zhejiang University, Hangzhou 310027)
+Abstract　Mining association rules is an important data mining problem. The problem of mining association rules is simply reviewed in the paper here. A method to improve efficiency of sequential mining association rules is given. The advantage and disadvantage of the existing parallel mining algorithms are analyzed. A more efficient parallel algorithm for mining association rules――PMAR is presented. Comparison with other parallel algorithms is carried out. The experiments show that PMAR is efficient.
+Key words　data mining, association rules, parallel algorithm
+1　引　言
+　　近年来，随着商业、政府和科学数据库的急剧增长和存储设备的不断升级，给我们带来了大量的数据.数据采掘（data mining）技术的提出为我们有效识别出存在于数据库中的有效的、新颖的、具有潜在效用的乃至最终可理解的模式提供了可靠的科学方法，并成为当今国际人工智能和数据库等领域新兴且热门的研究课题［1～3］.
+　　在事务数据库中发现关联规则首先是由R. Agrawal等人提出的［4］, 目前已成为数据采掘领域中的一个非常重要的研究课题［4～18］.有一个关联规则的例子就是“90%的客户在购买面包的同时也会购买牛奶”，其直观意义为顾客在购买某些商品的时候有多大倾向会购买另外一些商品.关联规则的应用主要包括顾客购物分析、目录设计、商品广告邮寄分析、追加销售、仓储规划、网络故障分析等.
+　　本文首先对顺序采掘关联规则的算法进行了简单的回顾，指出了它们的共同之处，同时认为它们在对数据库进行后一次扫描时没有充分利用前一次扫描的结果，给出了利用这一结果的方法与结果.然后分析了目前提出的几种并行采掘关联规则算法的优缺点，据此设计了一个基于多计算机间无共享（share nothing）体系结构的高效采掘关联规则的并行算法PMAR（parallel mining association rules）.
+2　顺序采掘关联规则
+　　顺序关联规则的采掘问题可形式化描述如下［4,5］：设是由m个不同的项目组成的集合.给定一个事务数据库D，其中的每一个事务T是I中一组项目的集合，即，T有一个唯一的标识符TID.若项集，则事务T包含项集X.一条关联规则就是形如的蕴涵式，其中.关联规则成立的条件是：①它具有支持度s，即事务数据库D中至少有s%的事务包含X∪Y；②它具有置信度c，即在事务数据库D中包含X的事务至少有c％同时也包含Y.
+　　顺序关联规则的采掘问题就是在事务数据库D中找出具有用户给定的最小支持度minsup和最小置信度minconf的关联规则.
+　　顺序采掘关联规则问题可以分解为以下两个子问题［4,5］：
+　　(1) 找出存在于事务数据库中的所有大项集.项集X的支持度support(X)不小于用户给定的最小支持度minsup，则称X为大项集（large itemset）.
+　　(2) 利用大项集生成关联规则.对于每个大项集A，若，则有关联规则.
+　　Agrawal等人已经给出了比较好的解决第二个子问题的办法［5］，目前大多数的研究工作主要集中在第一个问题上.如Agrawal等人提出的AIS［4］,Apriori和AprioriTid［5］,Cumulate和Stratify［6］，Houtsma等人提出的SETM［7］,Park等人提出的DHP［8］,Savasere等人的PARTITION［9］以及Han等人提出的采掘多层关联规则的等等.其中最有效和有影响的算法为Apriori,DHP和PARTITION.所有这些算法都是利用“在给定的事务数据库D中，任意大项集的子集都是大项集；任意弱项集的超集都是弱项集”这一原理对事务数据库进行多遍扫描，第k(k>1)次扫描前先利用第k-1次扫描的结果(即大k-1项集Lk-1)通过某种算法(如Aprirori用函数Aprirorigen［5］)产生候选大k项集Ck，然后在扫描过程中确定Ck中每一元素的支持数，最后在每一遍扫描结束时计算出大k项集Lk.
+　　我们认为这些算法对数据库进行第k(k>1)次扫描时，没有充分利用第k-1对数据库扫描的结果，使得候选大k项集Ck中的元素个数在整个第k次扫描中始终保持为一个常数，不会随着对数据库的扫描而减小.实际上，因为Ck是由Lk-1通过类似于函数的算法生成，Ck中的某一元素的支持数不会超过生成它的两个Lk-1中的元素支持数较小的那一个元素的支持数，设p是生成Ck中的某一元素X的两个大(K-1)项集中的支持数较小的那一个，记p在(K-1)次扫描的支持数为p.count，在对数据库的第k(k>1)次扫描中，到目前扫描的事务为止，记支持p的事务的条数为p.ocount，支持X的事务的条数记为X.count，我们可以对Ck做如下两个剪枝：① 若X.count=p.count，则X已是大项集，可以将其从Ck中删除，放入大项集Lk中；② 若为数据库中事务的总条数)，则X肯定不会是大项集，可以将其从Ck中删除.这样就可以动态减小候选大项集Ck，从而提高算法的效率.我们在Apriori算法上采用了以上剪枝技术，实验结果表明这样可以使算法Apriori效率提高20%～40%［11］.
+　　在采掘关联规则的问题中，还有另外一些比较重要且热门的研究课题，如发现有实际意义(interestingness)的关联规则［6,12］，关联规则的更新［13,14］，发现多值关联规则［15］，并行采掘关联规则［16,17］，在分布式数据库中采掘关联规则［18］等等.
+3　并行采掘关联规则
+3.1　相关工作
+　　并行采掘关联规则问题可形式化地描述如下：
+　　设P1，P2，…，Pn为n台基于无共享体系结构的计算机，即它们之间除了通过网络传递信息外，其它资源（如硬盘、内存等）全部是独立的.是存储于计算机Pi硬盘上的分事务数据库，其中的事务有Di条，则总的事务数据库为，总的事务条数为.并行采掘关联规则问题就是如何通过n台计算机同时工作，计算机只处理自己的私有数据，各台计算机间仅通过网络传递有限的信息，最终在整个事务数据库DB中采掘出关联规则.
+　　并行采掘关联规则问题也可以像顺序采掘关联规则问题一样分解为两个子问题，本文只讨论第一个子问题.
+　　目前已经提出的并行采掘关联规则的算法有Agrawal等人提出的CD(count distribution)、CaD(candidate distribution)、DD(data distribution)［16］, Park等人提出的PDM［17］.算法DMA［18］虽然是基于分布式数据库的采掘算法，但也可适用于并行采掘.
+　　算法CD具有速度较快、容易实现、要求各计算机间同步次数较少等优点，但它有通信量大和候选大项集大等缺点.算法CaD，DD及PDM的执行效果都不如CD［16］.算法DMA虽克服了算法CD的一些弱点，但它要求各计算机间同步次数较多.
+3.2　采掘关联规则的并行算法PMRA
+　　在介绍算法PMRA之前先引入与之有密切关系的几个定义与定理.
+　　定义1. 项集X在数据库中的支持数（support count），即在DBi中包含X的事务的条数，称为X的局部支持数，用X.supi表示.
+　　定义2. 项集X在数据库DB中的支持数称为X的全局支持数，用X.sup表示.
+　　定义3. 对于项集X，若，则称X是相对于Pi的局部大项集.若X中的元素为k个，则称X为局部大k项集.
+　　定义4. 对于项集X，若X.sup≥min sup×D，则称X是全局大项集，简称大项集.若X中的元素为k个，则称X为大k项集.
+　　定义5. 若项集X在是局部大项集，且它还是大项集，即X.supi≥min sup×Di，且X.sup≥min sup×D，则称X在是稠密的，用HL表示.如HLik表示Pi的k稠密集（其中元素为k个）的全体.
+　　定理1. 若项集X是大k项集，则必存在一个计算机，使任意的项集Y在Pi是稠密的.
+　　定理2. 对任意k>1，大k项集Lk是所有计算机产生的局部候选大k项集的并集的子集，即.函数见文献［5］.定理1与定理2的证明见文献［18］.
+　　定理3. 设，则.
+　　证明. 设函数的第(1)步对作用的结果分别为，根据定义4与定义5有，由函数的第(1)步作用过程我们可得X∈ALk，于是有.函数的第(2)步作用于ALk，，删除它们中的不符合条件的元素，使它们分别变为，若它被删除，则必存在X的元素为k-1个的子集Y，有，则Y必不属于任意一个，所以若X∈AHLk，则也必被函数的第(2)步所删除.于是有.
+证毕.
+　　算法PMRA需要每个计算机对其本地事务数据库DBi或本地候选事务数据库CBi进行多遍扫描.在第趟扫描中，计算机都进行生成候选大项集、支持数计算、交换支持数、生成稠密集等步骤，具体情况可描述如下（见算法1）.
+　　（1） 生成候选大k项集.根据计算机在k-1次循环所生成的稠密集，生成循环k所需用的候选大k项集，据定理2有,p为生成X的两个(K-1)稠密集中的支持数较小的那一个，令.
+　　（2） 支持数计算.扫描本地事务数据库DBi计算候选大k项集中的每个元素X的局部支持数X..我们可以对做如下剪枝：当扫描到DBi的某一条记录时，记X的支持数为X.count，若X.count=X.ocount，则X的支持数将不会再增加，对数据库的以后的扫描中不必考虑其中的事务是否包含X.若X是局部大k项集，则置.
+　　（3） 交换支持数.计算机广播候选大k项集，然后收集由计算机传来的，计算项集X的全局支持数X.sup，若X.sup≥min sup×D，则置.
+　　（4） 生成稠密集.对计算机，若项集，且有，则X是的元素.
+　　算法1. PMAR
+　　　输入：① 存储在计算机硬盘中的　② 最小支持度minsup
+　　　输出：大项集L=∪Lk
+　　　方法：在计算机执行如下操作
+　　　for (k=1 ; ; k++)
+　　　　if (k=1) then 扫描数据库DBi确定候选大1项集
+　　　　
+　　　　endif
+　　　　for all transactions t∈D do
+　　　　　　for all items c∈ do
+　　　　　　　　if c.count≤c.ocount and  then c.count++
+　　　　for all item c∈ do
+　　　　　　if c.count≥min sup×Di then c.LL=1
+　　　　Broadcast 中元素的支持数
+　　　　Receive 从计算机Pj发来的中元素的支持数 
+　　　　for all items c∈ do
+　　　　　　for (j=1;j≤n,i≠j;j++)
+　　　　　　　　c.count += c在中的支持数
+　　　　　　if c.count≥min sup×D then {c.GL=1； Lk += c}
+　　　　　　for (j=1;j≤n;j++)
+　　　　　　　　if c.GL=1且c在中的LL域为1 then  += c
+　　　　if  then exit
+　　　　L += Lk
+　　endfor
+　　并行采掘关联规则的算法高效的关键在于如何能生成较小的候选大项集和如何有效地剪枝候选大项集.根据定理2与定理3，我们可以知道算法PMAR所产生的候选大项集要小于算法CD所产生的候选大项集.算法PMAR在第（2）步引入特殊的剪枝技术，提高了算法的效率.
+4　算法比较
+　　将算法PMAR与算法CD，DMA相比较，我们可以得出如下结论：
+　　（1） 由定理2与定理3可知，算法PMAR将比算法CD产生更小的候选大项集；与算法DMA产生的候选大项集相同.
+　　（2） 算法PMAR的通信量比算法CD小；与算法DMA相差不多，因为算法DMA虽然采用了轮循站点［18］（polling site）技术，但它要广播与接收稠密集.
+　　（3） 算法PMAR要求各计算机间同步次数比算法DMA少；与算法CD相同.
+
+
+图1　算法PMAR与算法CD的比较(minsup=0.75%)
+
+
+图2　算法PMAR与算法CD的比较(|D|=100K)
+　　为了验证算法PMAR的性能，我们在运行Windows 95操作系统的3台奔腾166机上做了测试.3台计算机间除了用网络联接外，其它全部独立.测试数据库的有关参数与文献［4］、［18］相同.在我们的测试中，N＝1000，|L|＝2000，分别在3台计算机生成测试数据库，测试结果如图1、图2所示.由测试的结果可知，算法PMAR是有效的，其执行效率比算法CD提高10%～35%.
+5　结束语
+　　本文对采掘关联规则问题进行了简单地回顾，给出了一种提高顺序采掘关联规则算法效率方法.对在分布式事务数据库中采掘关联规则问题进行了研究，提出了一个效率较高的并行算法PMAR.实验证明，算法PMAR是有效的.算法PMRA也可以对设计并行地采掘一般关联规则［6］、序列模式［19］及关联规则的增量式更新［13,14］等问题提供借鉴.
+作者简介：铁治欣，男，1972年3月生，博士研究生，主要研究方向为人工智能、数据库、数据采掘等. 陈奇，男，1965年9月生，副教授，主要研究方向为人工智能、智能软件、MPR Ⅱ等. 俞瑞钊，男，1937年9月生，教授，博士生导师，主要研究方向为人工智能、智能软件、决策支持系统等.
+作者单位：铁治欣　陈　奇　俞瑞钊　浙江大学人工智能研究所　杭州　310027
+参考文献
+1　Chen M S et al. Data mining: An overview from database perspective. IEEE Trans on Knowledge and Data Engineering, 1996, 8(6): 866～883
+2　Agrawal R et al. Database mining: A performance perspective. IEEE Trans on Knowledge and Data Engineering, 1993, 5(6): 914～925
+3　Usama M Fayyad et al. Advances in knowledge discovery and Data Mining. CA: AAAI Press/The MIT Press, 1996
+4　Agrawal R et al. Mining association rules between sets of items in lager databases. In: Proc ACM SIGMOD Int'l Conf Management of Data, Washington, DC, 1993. 207～216
+5　Agrawal R, Srikant R. Fast algorithms for mining association rules. In: Proc 20th Int'l Conf Very Large Databases, Santiago, Chile, 1994. 487～499
+6　Srikant R, Agrawal R. Mining generalized association rules. In: Proc 21st International Conference on Very Large Databases, Zurich, Switzerland, 1995. 407～419
+7　Houtsma M, Swami A. Set-oriented mining for association rules in relational databases. In: Yu P, Chen A eds. Proceedings of the International Conference on Data Engineering. Los Alamitos, CA: IEEE Computer Society Press, 1995. 25～33
+8　Park J S, et al. Using a hash-based method with transaction trimming for mining association rules. IEEE Trans on Knowledge and Data Engineering, 1997, 9(5): 813～825
+9　Savasere A, Omiecinski E, Navathe S. An efficient algorithm for mining association rules. In: Proc Int'l Conf Very Large Databases, Zurich, 1995. 432～444
+10　Han J, Fu Y. Discovery of multiple-level association rules from large databases. In: Proc 21st International Conference on Very Large Databases, Zurich, Switzerland, 1995. 420～431
+11　铁治欣. 数据采掘技术. 浙江大学博士生讨论班报告，1998
+(Tie Zhixin. The data mining technology. Report of Doctoral Discussing Class of Zhejiang University (in Chinese), 1998)
+12　Shapiro G P. Discovery, analysis, and presentation of strong rules. In: Shapiro Piatetsky G, Frawley W J eds. Knowledge Discovery in Database. CA: AAAI/MIT Press, 1991. 229～238
+13　Cheung D W et al. Maintenance of discovered association rules in large databases: An incremental updating technique. In: Proceedings of the 12th International Conference on Data Engineering, New Orleans Louisiana, 1995. 106～114
+14　冯玉才, 冯剑林. 关联规则的增量式更新算法. 软件学报, 1998, 9(4): 301～306
+(Feng Yucai, Feng Jianlin. Incremental updating algorithms for mining association rules. Journal of Software (in Chinese), 1998, 9(4): 301～306)
+15　Srikant R, Agrawal R. Mining quantitative association rules in large relational tables. In: Proc 1996 ACM SIGMOD Int'l Conf Management Data, Montreal, Canada, 1996. 1～12
+16　Agrawal R et al. Parallel mining of association rules. IEEE Trans on Knowledge and Data Engineering, 1996, 8(6): 962～969
+17　Park J S et al. Efficient parallel data mining for association rules. In: Proc 4th Int'l Conf Information and Knowledge Management, Baltimore, 1995
+18　Cheung D W et al. Efficient mining of association rules in distributed databases. IEEE Trans on Knowledge and Data Engineering, 1996, 8(6): 910～921
+19　Agrawal R, Srikant R. Mining sequential patterns. In: Proc 11st International Conference on Data Engineering, Taipei, 1995. 3～14
+收到日期：1998-10-06
+修改日期：1999-04-21

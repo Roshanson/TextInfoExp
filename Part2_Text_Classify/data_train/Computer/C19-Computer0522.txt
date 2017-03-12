@@ -1,0 +1,133 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+仿射非线性系统的动态输出反馈镇定1）
+陈彭年　韩正之　
+　　摘　要　对能用状态反馈镇定且完全能观的仿射非线性系统，给出了保证闭环系统渐近稳定的动态补偿器的设计方法.
+　　关键词　非线性系统，镇定，动态补偿器.
+DYNAMIC OUTPUT FEEDBACK STABILIZATION OF
+AFFINE NONLINEAR SYSTEMS
+CHEN PENGNIAN　HAN ZHENGZHI ZHANG ZHONGJUN
+(Department of Automatic Control, Shanghai Jiaotong University, Shanghai 200030)
+　　Abstract　In this paper, we investigate the problem of dynamic output feedback stabilization of affine nonlinear systems. We prove that if an affine nonlinear system is completely observable and stabilizable by means of state feedback, then it is stabilizable by means of dynamic output feedback, and moreover, present the design of dynamic nonlinear compensation.
+　　Key words　 Nonlinear system, stabilization, dynamic compensator.
+　　1　引言
+　　动态输出反馈镇定在非线性控制理论中具有重要的作用，因为许多系统的状态不能直接测量，控制律只能根据输出构造.1986年美国IEEE控制委员会在其“高峰会议”的决议中指出，动态非线性补偿理论是将来的重要研究方向［1］.但到目前为止，动态输出反馈镇定只做过少量研究.其中Vidyasagar［2］研究了用状态检测器的镇定问题；Tsinias［3，4］进一步考虑了用状态检测器的局部和全局渐近镇定问题，推广了Vidyasagar 的有关结果；韩正之等［5］研究了用状态检测器的有界镇定.在用状态检测器镇定的研究中，主要的假设条件是状态检测器的存在性，但状态检测器的存在性是一个困难的未解决问题.Marino等［6］和Tornambe［7］分别研究了能完全线性化的单输入单输出的仿射非线性系统的动态输出反馈全局和局部镇定.潘丹杰等［8］用中心流形理论研究了一类非线性系统的动态输出反馈镇定，得到了充分条件.Byrnes等［9］研究了一个不能静态输出反馈镇定，但能动态输出反馈的例子.从上述文献可以看到，非线性系统动态输出反馈镇定的研究具有很大的局限性.本文研究仿射非线性系统的动态输出反馈镇定.这一结果是线性系统控制理论中用动态输出反馈镇定理论的直接推广.
+　　2　动态补偿器的设计
+　　考虑仿射非线性系统
+　　　　　　　　　　　　　(1)
+其中 x∈Rn，u∈Rm，y∈Rp，f∈C∞(U,Rn),f(0)=0,g∈C∞(U,Rn×m),h∈C∞(U,Rp),h(0)=0;U是x=0的一个开邻域.
+　　首先引入非线性系统完全能观性概念，它是线性系统能观性概念的推广.对于单输入单输出系统，此概念已在文献［7］中引入.本文将其推广到多输入多输出系统.
+　　据文献［7］，定义下列微分运算
+　　　　　(2)
+记
+ye＝(yT,T，…，(y(n-1)）T)T，ue=(uT,T，…，(u(n-2))T)T．
+显然，ye∈Rnp，ue∈R(n-1)m.(2)式可以记为
+ye＝(x,ue)，　　　　　　　　　　　　　　　(3)
+其中∈C∞(U×R(n-1)m，Rnp），(0，0)=0.
+　　定义1.称系统(1)局部完全能观(简称完全能观)，如果在(3)式中局部地能解出x,即存在C∞函数q，q(0,0)=0,使得在x=0,ye=0，ue＝0的某邻域内恒有
+x=q(ye,ue)．
+　　定理1.记.如果(C，A)是能观对，则系统(1)完全能观.
+　　证明. 将(2)式写成如下形式
+　　　　　　　　(4)
+其中 Δi(i=1,2,…，n)为C∞函数，并且Δ1（x)=o(‖x‖), Δ2(x,0)=o(‖x‖),…， Δn（x,0,0,…，0)=o(‖x‖).
+　　因为(C，A)是能观对，所以有
+
+　　由隐函数定理知，在x=0,ye=0,ue=0的某邻域内，可从(4)式中解出x，即存在C∞函数q，q(0,0)=0，使得在x=0,ye=0，ue=0的某邻域内恒有
+x=q(ye,ue).　　　　　　　　　　　　　　　　证毕.
+　　动态补偿器的构造分两部分进行，先构造预补偿器，然后再构造完整的动态补偿器.
+　　设λi=(λi1,λi2,…，λim)T∈Rm(i=1,2,…，n-1)，做预补偿器
+　　　　　　　　　　　　　　　　(5)
+其中　u=λ1是预补偿器的输出，是输入.由系统(1)和(5)构成的串联系统为
+　　　　　　　　　　　　(6)
+记　λ=(λT1,λT2,λTn-1）T.
+　　定理2.如果系统(1)能用C∞状态反馈镇定且完全能观，则系统(6)能用只依赖于ye和λ的C∞反馈镇定，即在ye=0和λ=0的某个邻域里存在C∞映射α，α(0,0)=0,使得由
+=α(ye,λ)　　　　　　　　　　　　　　　　(7)
+和系统(6)构成的闭环系统的零解x=0,λ=0渐近稳定.
+　　证明.因为系统(1)能用C∞状态反馈镇定，根据积分器镇定原理，系统(6)能用C∞状态反馈镇定，即在x=0,λ=0的某邻域里存在C∞映射，(0,0)=0，使得由
+=(x,λ)　　　　　　　　　　　　　　　　　(8)
+和系统(6)构成的闭环系统的零解渐近稳定.
+　　因为系统(1)完全能观，所以存在C∞映射q,q(0,0)=0,使得在x=0,ye=0，ue=0的某邻域里有
+x=q(ye,ue).
+　　由系统(6)的构造知，ue=λ.因此有
+x=q(ye,λ).　　　　　　　　　　　　　　　　(9)
+将(9)式代入(8)式，得到
+=(q(ye,λ),λ）.　　　　　　　　　　　　　(10)
+设α(ye,λ)=(q(ye,λ),λ).显然α是C∞函数.因为由(10)式和系统(6)构成的闭环系统的零解渐近稳定，所以由=α(ye,λ)和系统(6)构成的闭环系统的零解渐近稳定.　　　　　　　证毕.
+　　反馈控制律(7)与y的导数有关，难以物理实现.下面，构造物理上能实现的动态输出反馈律.
+　　设y(n)=y(n)(x,u,,…，u(n-1))是y的n阶导数.定义C∞映射
+　　　　　(11)
+其中 q(ye,λ)由(9)式定义.
+　　设θi=(θi1，θi2，…，θip)T∈Rp（i=1,2,…,n)，　θ=(θT1,θT2，…，θTn）T及
+　　　　　　　　　　　(12)
+做动态系统
+　　　　　　　　　　　(13)
+其中k＞0, li＞0　(i=1,2,…，n),使得p(s)=sn＋l1sn-1+…+ln为Hurwitz多项式.
+　　用θ去代替(7)式中的ye，得到新的反馈律
+=α(θ,λ).　　　　　　　　　　　　　　　(14)
+显然，反馈律(14)是能够物理实现的.由系统(5)，(13)和(14)构成了系统(1)的一个动态补偿器，它和系统(1)构成的闭环系统为
+　　　　　　　　　　　(15)
+其中k＞0，为待定常数；y=h(x).
+　　3　稳定性
+　　本节研究系统(15)的稳定性.
+　　设矩阵A，Ek，Lp∈Rnp×np和b∈Rnp×p具有如下形式
+　　　　　　　　　
+　　　　　　　　　　(16)
+其中Ip是p阶单位阵，k＞0，li＞0(i=1,2,…，n)，使得p(s)=sn+l1sn-1+…+ln是Hurwitz多项式.
+　　引理1.设A，Ek，Lp和b由(16)式定义，且D∈Rp×np，则存在k*＞0，使得当k≥k*时，A-kEkLp+bD是稳定矩阵.
+　　证明.设AL=A-Lp.由直接计算知，AL的特征多项式是(p(s))p.因此AL是稳定矩阵.
+　　设k＞0.由直接计算知，
+
+因此，为证明引理1，只须证明存在k*＞0，且当k≥k*时，是稳定矩阵即可.
+　　因为AL是稳定矩阵，所以存在P＞0，使得PAL＋ATLP=-Inp,其中Inp是np阶单位阵.
+　　设k*=1+2‖PbD‖,则当k≥k*时
+　　　　　　证毕.
+　　定理3.设系统(1)完全能观，并且能用C∞状态反馈镇定，则存在k*＞0；当k≥k*时，系统(15)零解渐近稳定.由此推断系统(1)能用动态输出反馈镇定.
+　　证明.为方便计，先将系统(15)写成比较紧凑的形式.
+　　设z=(xT,λT)T.由系统(6)和(7)式组成的闭环系统为
+=F(z,ye).　　　　　　　　　　　　　　　　(17)
+　　利用(16)式中的记号，可将系统(15)记为
+　　　　　　　　(18)
+其中　L=(l1Ip　l2Ip…lnIp）T，y=h(x).
+　　在(18)式中，对y=h(x)求n阶导数.由(11)和(14)式知
+y(n)=(ye,λ,α(θ,λ)).　　　　　　　　　　　(19)
+　　设e=ye-θ，则从(18)和(19)式得
+　　　　　(20)
+由(12)式知
+
+　　由于当e=0时，η(ye,λ,0）=0，因此可设
+(ye，λ,α(θ，λ))-φ(θ,λ)=De+R(ye,λ，e)e,
+其中D∈Rp×np，R(ye,λ，e)满足R(0,0,0)=0.系统(20)可以重新写成
+　　　　　　(21)
+　　由引理1知，存在k*＞0，当k≥k*时，A-kEkLp+bD是稳定矩阵.
+　　由文献［10］的引理4.3知，系统(21)的零解渐近稳定.再由此推知，当k≥k*时，系统(18)的零解渐近稳定，即系统(15)的零解渐近稳定.　　　　　　　　　　　　　　　　　　　　证毕.
+　　现举一例，说明定理3的应用.
+　　例1　考虑控制系统
+　　　　　　　　　　(22)
+　　易知，系统(22)不能局部完全线性化，因此文献［7］的结果不适用此系统.但系统(22)能用C∞状态反馈镇定.对y求导得
+　　　　　　　　　　(23)
+由(23)式可得
+　　　　　　　　　(24)
+　　由(24)式知，系统(22)完全能观.因此，根据定理3，系统(22)能用C∞动态输出反馈镇定.
+　　5　结束语
+　　本文对完全能观且能状态反馈镇定的仿射系统，提出了一种保证闭环系统渐近稳定的动态补偿器的设计方法.但是，动态补偿器的设计仍有许多问题需要研究，例如动态补偿器阶数的降低、闭环系统具有一定的吸引区域等问题，对实际应用极为重要，值得进一步研究.
+1)国家自然科学基金和上海交通大学科学基金资助项目.
+作者简介：陈彭年　简介见本刊第21卷第3期.
+　　　　　韩正之　简介见本刊第18卷第4期.
+　　　　　　简介见本刊第17卷第6期.
+作者单位：上海交通大学自动控制系　上海　200030
+参考文献
+　［1］Levis A H et al.(Eds) Report on the workshop:challenges to control――a collective view. IEEE Trans. Automat. Contr., 1987, 32(4):275-285.
+　［2］Vidyasagar M. On the stabilization of nonlinear systems using state detection. IEEE Trans. Automat. Contr., 1980, 25(3):504-509.
+　［3］Tsinias J.A generalization of Vidyasagar's theorem on stabilizability using state detection. Syst. Contr. Lett., 1991, 17(1):37-42.
+　［4］Tsinias J. Sontag's input to state stability condition and global stabilization using state detection. Syst. Contr. Lett., 1993, 20(3):219-226.
+　［5］韩正之，潘丹杰，张钟俊.非线性系统用状态检测器的有界镇定.系统科学与数学，1992，12(2)：229―239.
+　［6］Marino R, Tomei P.Dynamic output feedback linearization and global stabilization. Syst. Contr. Lett., 1991, 17(2):115-121.
+　［7］Tornambe A. Output feedback stabilizatin of a class of nonminimum phase nonlinear systems. Syst. Contr. Lett., 1992, 19(2):193-204.
+　［8］潘丹杰，韩正之，张钟俊.一类非线性系统的输出反馈镇定.控制与决策，1990，5(1)：1―6.
+　［9］Byrnes C I, Isidori A. New results and examples in nonlinear feedback stabilization. Syst. contr. Lett., 1989, 12(5):437-442.
+　［10］Byrnes C I, Isidori A. Asymptotic stabilization of minimum phase nonlinear systems. IEEE Trans. Automat. Contr., 1991, 36(10):1122-1137.
+收稿日期　1994-12-12

@@ -1,0 +1,94 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+一类不确定非线性相似组合系统的
+结构全息鲁棒控制1)
+严星刚　高立群　张嗣瀛
+摘　要　对于参数不确定非线性相似组合大系统，利用增加辅助控制器的方法，设计出易于实现的结构全息鲁棒控制器.结果表明相似结构能简化系统的分析与设计，相似结构与全息特性密切相关.最后，仿真算例表明结果的有效性.
+关键词　相似组合系统，渐近稳定，鲁棒控制，相关度.
+HOLOGRAPHIC ROBUST CONTROL FOR NONLINEAR SIMILAR
+COMPOSITE SYSTEMS WITH UNCERTAIN PARAMETERS
+YAN XINGGANG　　GAO LIQUN　　ZHANG SIYING
+(Department of Automatic Control, Northeastern University, Shenyang　110006)
+Abstract　In this paper, by adding auxiliary controllers, a holographic robust stabilizing controller is designed for a class of nonlinear similar composite systems with uncertain parameters. It follows that similar structure can simplify the analysis and design of composite systems and it is closely connected with holographic property. Finally, numerical simulation is presented to illustrate the validity of this paper.
+Key words　Similar composite systems, asymptotic stability, robust control, relative degree.
+1　引言
+　　非线性组合大系统是复杂系统之一，由于其高维性及非线性特性导致其分析与控制问题相当复杂，但对于具有特定结构的系统，如级联系统［1］，对称系统［2］，相似系统等，可利用其自身的结构属性.近年来，相似系统的研究已取得了一些成果［3-7］，这类系统有着广泛的实际背景，如自然形成的生物、社会等系统，人们设计的多臂机器人、电力、互联物理等系统［3］.由于相似系统的良好结构属性，可设计一种控制器，其结构能代表每个控制器的结构信息，利用该控制器通过修正相似参量，即可设计出使整个系统稳定化的鲁棒控制器.分析表明，相似结构能简化组合系统控制器的工程设计，特别当子系统个数较多时，其优越性更为明显.
+2　相似组合系统分析
+　　用C∞(Rn)表示Rn上的C∞函数集，Gl(m,C∞(Rn))表示C∞(Rn)上的元素组成的m阶非奇异阵集，V(Rn)表示Rn上C∞向量场集.
+　　考虑不确定系统
+
+(1)
+其中xi∈Rn,ui,yi∈Rm分别是第i个子系统的状态，输入和输出，θ1∈Ω1,θ2∈Ω2是不确定参数，是紧集，Gi(xi)=(gi1(xi),…，gim(xi))，fi(xi),gij(xi)∈V(Rn)(i=1,2,…,N,j=1,2,…，m),Ri(xi,θ1),Φi(x,θ2)是光滑或分块光滑的，Φi(x,θ2)是互联项，不失一般性，设
+　　定义1.如果存在xi0某邻域上的微分同胚zi=Ti(xi)及αi(xi)∈C∞(Ωi),βi(xi)∈Gl(m,C∞(Ωi))(i=1,2,…,N)使系统(1)与ui=αi(xi)+βi(xi)vi组成的闭环系统在z坐标下具有如下形式：
+
+(2a)
+
+(2b)
+其中则称系统(1)是Ω=Ω1×Ω2×…ΩN上的相似组合系统，并称Ti,αi,βi为系统(1)的第i个子系统的相似参量.
+　　定义2.如果存在控制器
+u=u(x,T,α,β)，
+(3)
+使得由ui=u(x,Ti(xi),αi(xi),βi(xi))与系统(1)构成的闭环系统在x0点渐近稳定，则称(3)式为系统(1)的结构全息稳定化控制器，简称全息控制器.
+　　命题1.若系统(1)的每个孤立子系统在x0(x0=col(x10,x20,…,xN0))具有相同的相关度r={r1,r2,…,rm},且则系统(1)是x0某邻域上的组合相似系统.
+3　结构全息鲁棒控制
+　　定理1.设Eiq=Span{adkfigij(xi)｜0≤k≤q,1≤j≤m},rankGi(xi0)=m(i=1,2,…,N),Ωi是xi0的一个邻域，Ω=Ω1×Ω2×…ΩN是x0的邻域，如果
+　　i)Eiq(i=1,2,…,N,q=0,1,2,…，n-2)是Ωi上的非奇异对合分布，dimEin-1=n(i=1,2,…,N)且Ein-1在xi0非奇异。
+　　ii)对任意的x∈Ω及i=1,2,…，N，
+
+则系统(1)在区域Ω上存在结构全息鲁棒控制器.
+　　证明.考虑系统(1)，由条件i)知［8］，存在函数λi1(xi),λi2(x\+i),…,λim(xi)使系统
+
+(这里λi(xi)=(λi1(xi),…，λim(xi))称为伪输出)均具有相同的相关度r={r1,r2,…，rm},且不妨设yi(xi)=λi(xi),且yi(xi0)=0.由命题1知，系统(1)是相似组合系统，每个孤立子系统的相关度均为且其相似参量Ti,αi,βi(i=1,2,…,N)可由文献［8］求出，令D=(TT1,TT2,…,TTN):x→z,结合条件ii)即知，系统(1)与反馈ui=αi(xi)+βi(xi)vi组成的闭环系统在z坐标下具有如下结构形式［8］
+
+(4)
+其中(Aj,Bj)是Brunovsky标准型，Cj=(10…0)1×rj,(j=1,2,…m).故存在1×rj矩阵Kj,使Aj+BjKj是渐近稳定的.于是对任意的rj阶正定阵Qj，下述Lyapunov方程有唯一正定解矩阵Pj，
+(Aj+BjKj)TPj+Pj(Aj+BjKj)=-Qj,　　j=1,2,…,m.
+(5)
+　　构造全息控制器
+u=ua+ub+uc,
+(6)
+其中
+
+这里K=diag{K1,K2,…,Km},Bj,Pj,Kj满足(4)式，ρj1(x)=maxisupθ1∈Ω1{Lij(xi,θ1)},ρj2(x)=maxisupθ2∈Ω2{Hij(x,θ2)},Lij(xi,θ1).Hij(x,θ2)分别是Li(xi,θ1).Hi(x,θ2)的第j个分量，j=1，2，…，m，i=1，2，…，N.
+　　下证(6)式是(1)式的结合全息鲁棒控制器.由ρ1,ρ2的结构形式知，只需证
+ui=uia+uib+uic,　　　i=1,2,…，N，
+(7)
+与系统(1)构成的闭环系统在x0点渐近稳定，其中
+
+其中Ti=((Ti1)T,(Ti2)T,…,(Tim)T).由于微分同胚不影响系统的渐近稳定性，所以，只需证系统
+
+(8)
+在z=0渐近稳定即可.
+　　对系统(8)，构造Lyapunov函数
+
+(9)
+其中由Pj的正定性易知，V(z)是D(Ω)上的正定函数，且
+
+(10)
+其中uibj,uicj分别是uib,uic的第j个分量，由ρ1(x),ρ2(x)的定义知，对一切i=1,2,…，N，j=1,2,…，m有
+　
+(11)
+由(10)，(11)式及uibj,uicj的定义即知
+
+结合Qj(j=1,2,…，m)的正定性即得负定，所以z=0是(8)式的渐近稳定平衡点.故(6)式是系统(1)的结构全息鲁棒控制器.
+　　注.从定理证明可看出，uib和uic是为抑制不确定项的扰动引入的辅助控制器.定理证明是构造性的，它提供了结构全息控制器的设计方案.
+4　仿真算例
+考虑非线性组合大系统
+
+(12a)
+
+(12b)
+
+(12c)
+其中不确定参数的扰动范围为如下的已知集合：
+
+直接验证知(12)式是相似组合系统，r={2,1}，且相似参量可选为
+
+设定K1=(-2,-2),K2=-1,取故所求结构全息控制器为
+
+(13)
+其中

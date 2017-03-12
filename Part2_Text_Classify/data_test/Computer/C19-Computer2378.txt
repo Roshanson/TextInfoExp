@@ -1,0 +1,118 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第9期 Vol.36 No.9 1999
+
+
+
+概念指导的关联规则的挖掘
+程继华　施鹏飞
+摘　要　关联规则是数据依赖关系的有效描述方法，是知识发现研究的重要内容.传统的关联规则挖掘算法缺少挖掘的针对性，挖掘速度慢，挖掘结果难于理解，挖掘结果的数量巨大，需要进行大量的筛选以便抽取出有用规则.文中提出了将概念融入挖掘过程中，提高挖掘的效率和挖掘的针对性的方法，给出了概念指导的关联规则挖掘算法CGARM和大数据库中概念的交互式生成方法.算法CGARM是对基于分类的挖掘算法的拓展.实验结果表明，算法CGARM提高了挖掘结果的有趣性，挖掘速率比传统的多层次关联规则挖掘算法Cumulate快一倍.
+关键词　知识发现，数据挖掘，关联规则，概念
+中图法分类号　TP18； TP311.13
+CONCEPT-GUIDED ASSOCIATION RULES MINING
+CHENG Ji－Hua and SHI Peng－Fei
+(Institute of Image Processing & Pattern Recognition, Shanghai Jiaotong University, Shanghai 200030)
+Abstract　Association rules is an effective method for describing the dependency relations in data, and it is one of the important aspects of knowledge discovery. Traditional association rule mining methods lack of focus on the results, and the procedure is slow. Those algorithms express the regularities with low level primitive data, and the mining association results are difficult to understand. Furthermore, the desirable knowledge must be filtered out from huge results in a post－processing step. A method for integrating concepts into the mining procedures to improve the interestingness of results and speeding up mining procedures is proposed, and the method for deriving concepts interactively in large database is proposed, a concept－guided association rules mining algorithm CGARM is given in the paper here. CGARM extends taxonomies－based mining methods. Experiments show the execution speed of CGARM is about twice as faster as the traditional mining algorithm Cumulate, and the interestingness of results are also improved.
+Key words　knowledge discovery, data mining, association rules, concept
+1　引言
+　　关联规则是数据间依赖关系的描述，是知识发现研究的重要内容［1，2］.信息系统S定义为四元组：(U，A，V，f)，U是对象集合，A={a1,a2…,ap}是属性集合，V=V1∪V2…∪Vp是属性的值域集合，f:U×A→V定义对象的属性值［3］.通常，属性是可分类的，数据的分类层次(hierarchies)表示了自底向上的概括(generalization)和自顶向下的特殊化(specification)［2，4］.
+　　基于分类层次的关联规则挖掘算法主要包括：算法Cumulate和Stratify［4］，算法MLT2L1［2］，以及Srikant［5］提出的利用布尔表达限定规则中项目的出现(指定关联规则的形式)提高挖掘针对性的算法.基于分类的方法仅适用于单个属性有清晰分类层次的应用.
+　　许多应用中，需要根据在多个对象属性上的逻辑表达式所表示的概念，进行数据的概括［6］.例如老年高级知识分子，是年龄、职称两个属性上的逻辑表达式(年龄>60 AND职称=高级职称)构成的概念.用概念表达数据间的关系，符合人的思维方式，更易于理解.
+　　本文研究了利用概念对挖掘的结果进行限定、提高挖掘针对性的方法.提出了概念指导的关联规则的挖掘算法CGARM(concept guided association rules mining).算法CGARM是基于分类方法的拓展，提高了挖掘的效率和结果的有趣性(interestingness).本文还提出了大数据库中概念的交互式生成方法.
+2　关联规则的挖掘问题
+　　记录表示为{id,〈(a1，v1),(a2，v2),…,(ap，vp)〉}，其中id为记录标识号，全局唯一，ai∈A是属性，vi是属性ai的值(i=1,2…,p).全体记录的集合记为D.
+　　定义1. 条件表达式递归定义为
+　　① ai∈A,wi∈Vi,θ∈{=,≠,＞,≥,＜,≤}是二元操作符，aiθwi称为条件式.
+　　② c1，c2是条件表达式，c1ANDc2，c1ORc2,NOTc1为条件表达式.
+　　定义2. 概念递归定义为
+　　① 若ai∈A是属性，ci为条件表达式，则(ai,ci)为概念.
+　　② 若T1，T2为概念，则T1∧T2为概念，其中∧表示逻辑“与”.
+　　定义3. 模式P定义为T1∧T2…∧Tk，Ti(i=1,2,…,k)是概念.称模式P包含概念Ti，记为Ti∈P.称模式P的长度为i,记为|P|=i.
+　　定义4. 模式P=T1∧T2…∧Tk，模式Q=Tl1∧Tl2…∧Tlm，若Tln∈Q，有Tln∈P，则称模式Q为模式P的子模式，记为Q◇P.模式P中，不包含在模式Q中的概念组成的模式记为P－Q.
+　　定义5. 给定模式P，Q和P的子模式S，若S是Q的子模式，称模式(P－S)∧Q为模式P可概括的.模式P可概括的模式的集合称为P的可概括集合，记为.
+　　定义6. 模式P=T1∧T2…∧Tk，记录t={id,〈(a1，v1),(a2，v2),…,(ap，vp)〉},若(ai,ci)∈P，将条件表达式ci中ai用vi替换后，条件表达式ci为“真”，称t支持P.
+　　模式P在数据库D中的支持率，关联规则AB的可信度为挖掘有效关联规则，定义最小支持率σmin和上可信度ψmin.若σ(P/D)>σmin,称模式P是频繁的［2］，长度为i的频繁模式集合记为Li，记L=∪kLk.
+　　挖掘关联规则即是找出满足：σ(A∩B/D)>σmin,Ψ(AB/D)>ψmin的规则AB.
+　　对于不同的应用环境和挖掘任务，对挖掘的知识有不同的针对性.期望出现在挖掘结果中的概念，称为有价值的.
+　　定义7. 若规则T1∧T2…∧TiTi+1…∧Tk为有趣的(interestingess)［7］，模式T1∧T2…∧Tk称为可用的，即可用的模式能够导出有趣的规则.称为集合L中模式的可用率.
+　　Agrawal给出了由频繁模式求解关联规则的方法［1］.本文着重讨论概念指导的频繁模式的求解.
+3　概念指导的关联规则的挖掘
+3.1 概念的生成
+　　数据挖掘的研究对象是巨大的数据.由于数据量巨大、噪声的存在和数据的不完整等原因，传统的概念产生方法不能适应数据挖掘的要求.我们提出了一种交互式的概念产生方法.
+　　在D上随机抽取出子集合ΔD，给定门限T，在ΔD上挖掘满足最小支持率T的频繁模式集合LΔ=∪kLk，从LΔ中抽取出有价值的模式，构造概念集合.概念的产生过程为：首先将L1中有价值的模式定义为概念，形成概念集合S1；对LΔ中的模式进行概念抽象：若LΔ中的模式P的子模式是S1中的概念，将P中的子模式用S1中的概念替换，并将替换后的模式包含在LΔ中；再将L2中有价值的模式定义为概念，形成概念集合S2，…；最后形成概念集合ConceptSet=∪kSk.
+　　算法1.Concep_Dterive(概念生成算法)
+Input:　数据库D，门限T
+Output：　概念集合ConceptSet
+　　从数据库D中随机抽取子集合ΔD
+　　在ΔD上挖掘满足最小支持率T的频繁模式集合LΔ=∪kLk
+j=1
+While　j<=k　Do｛
+　　　将Lj中有价值的模式定义为概念，生成Sj
+　　　n=j
+　　　While　n<=k　DO｛
+　　　　For every　P∈LΔ　Do
+　　　　　If　P的子模式是Sj中的概念Q　Then
+　　　　　将P中的子模式用概念Q替换，并放入LΔ中
+　　　　n=n+1
+　　　｝
+　　　j=j+1
+｝
+ConceptSet=∪kSk
+3.2 挖掘算法CGARM
+　　首先，我们给出模式P的可概括模式集合的求解算法：
+　　算法2. ALLG(模式P的可概括集合的求解算法)：
+Input:　模式P，概念集合ConceptSet
+Output：　P的可概括模式集合
+={}
+For every概念Q∈ConceptSet　Do
+　　If　P的子模式S是Q的子模式　Then
+　　=+{(P-S)∧Q}
+　　为提高模式P的可概括集合的求解速度，根据属性和条件表达式对(aj,cj)中的属性aj的字典序，对概念集合ConceptSet中的概念进行排序.
+　　算法3. CGARM(概念指导的关联规则挖掘算法)：
+Input:　概念集合ConceptSet，数据库D，最小支持率σmin，最小可信度ψmin.
+Output：　关联规则集合AR
+　C1＝｛（Aj,Cj）|概念Q∈ConceptSet,(Aj,Cj)∈Q｝
+k=1
+While　Ck<>NIL　Do｛
+　　={}
+　　For every P∈Ck　Do
+　　　　=+ALLG(P，ConceptSet)
+　　Gk={X|X∈Ck,|X|=k}
+　　访问D，计算Ck∪Gk中模式的支持率
+　　Lk={X|X∈Ck∪Gk,σ(X/D)>σmin}
+　　Ck={X∧Y|∈Lk-1,Y∈Lk-1,|X∧Y=k|，
+　　　　并且Q◇(X∧Y)，若|Q|=k-1,Q∈Lk-1}
+　　k=k+1
+　｝
+L=∪kLk
+L_C={P∈L|Q◇R,Q∈ConceptSet}
+　　关联规则集合
+　　算法3先计算与概念集合ConceptSet中概念有关的、长度为1的候选频繁模式集合C1和C1的可概括集合G1，然后访问数据库D，求出长度为1的频繁模式集合L1；由L1构造长度为2的候选频繁模式集合C2，求C2的可概括集合G2，访问D，求长度2的频繁模式L2；……；最后求出频繁模式集合L=∪kLk，去掉L中不包含ConceptSet中概念的模式，得到与概念相关的频繁模式集合LC，最后求出关联规则集合AR.
+4　算法CGARM性能分析
+　　算法CGARM对概念集合ConceptSet限定的模式集合进行挖掘，减少了冗余运算和无用模式的数量，提高了效率，节省了存储空间.挖掘结果用概念的形式表示，易于理解.
+　　在Pentium 133/8M，Windows 3.11的环境下，利用算法CGARM对计算机等级考试数据库进行了分析，并与算法Cumulate进行了比较.实验结果如下：
+　　数据库中，记录包含32个属性，考生各题目的成绩按照A，B，C，D划分，年龄划分为14岁以下，14～18岁，19～35岁，36～45岁，45岁以上.对考生的成绩、年龄、所在城市和职业进行分类，分类层次=4.
+　　从考生成绩数据库中抽取出4K个记录，门限T=3%，利用算法Concept_Derive进行交互式的概念的生成，获得概念集合ConceptSet. ConceptSet中包含22个概念，人工补充3个概念到ConceptSet中，共获得25个概念，涉及考生所在的省份，职业、学历、性别、年龄等属性.例如，概念(kq,kq="上海")AND(dj,dj=3)表示上海的3级考生，概念(dj,dj=2)AND (dj,dj=3)表示上海的3级考生，概念(dj,dj=2) AND (xl,xl="中专以上")AND(nl,nl=36～45)表示中专学历、35～45岁的2级考生.
+　　图1给出了在分类层次为4，概念个数为25，σmin=15%的条件下，算法CGARM和算法Cumulate挖掘的结果的可用率与记录个数的关系.算法CGARM挖掘结果的可用率大大高于算法Cumulate.
+
+图1　算法CGARM和算法Cumulate的挖掘结果的可用率和记录数的关系
+　　图2给出了记录个数=60K，概念个数=25的条件下，算法CGARM的执行时间与最小支持率的关系；图3给出了在分类层次=4，概念个数=25,σmin=5%的条件下，算法CGARM和算法Cumulate的执行时间与记录个数的关系.算法CGARM挖掘速率大约比算法Cumulate快一倍.此外，算法CGARM的执行时间的上升大大小于记录个数的增加.
+
+图2　算法CGARM的执行时间与最小支持率的关系
+
+图3　算法CGARM和算法Cumulate的执行时间与记录数目的关系
+5　结论
+　　本文提出了概念指导的关联规则挖掘算法CGARM，将表示背景知识的概念融入挖掘过程中，提高挖掘的针对性和挖掘结果的有趣性.实验表明，概念指导的挖掘方法与基于分类的方法相比，提高了挖掘的速度，挖掘结果的可用率，算法CGARM挖掘速度比传统的多层次关联规则挖掘算法Cumulate快一倍.
+注：本课题得到国家自然科学基金资助(项目编号69575012).
+作者简介：程继华，男，1964年生，博士，主要研究方向为数据挖掘与知识发现、数据库和数据可视化技术.
+施鹏飞，男，1939年生，教授，博士生导师，主要研究方向为数字图像处理、模式识别、计算机视觉、智能技术与系统等.
+作者单位：上海交通大学图像处理与模式识别研究所　上海　200030
+参考文献
+1　　Agrawal R, Srikant R. Fast algorithms for mining association rules. IBM Almaden Research Center, Tech Rep: RJ9839, 1994
+2　　Han J, Fu Y. Discovery of multiple－level association rules from large databases. In: Proc of 1995 Very Large Databases, Zurich, 1995. 420～431
+3　　Pawlak Z, Orlowska E. Expressive power of knowledge representation. Journal of Man－Machine Studies, 1989, 30: 273～285
+4　　Srikant R, Agrawal R. Mining generalized association rules. In: Proc of 1995 Very Large Databases, Zurich, 1995. 3～14
+5　　Srikant R, Vu Q, Agrawal R. Mining association rules with item constraints. In: Proc of the 3th Knowledge Discovery and Data Mining, California, 1997. 67～73
+6　　Dhar V, Tuzhilin A. Abstract－driven pattern discovery in databases. IEEE Trans on Knowledge and Data Engineering, 1993, 5(6): 926～938
+7　　Fayyad U, Piatesky－shapiro G, Smyth P. From data mining to knowledge discovery: An overviews. In: Fayyad M, Piatetsky－Shapiro G, Smyth P eds. Advances in Knowledge Discovery and Data Mining. MA: The MIT Press, 1996. 1～34
+原稿收到日期：1997-11-25；修改稿收到日期：1998-04-28.

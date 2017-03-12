@@ -1,0 +1,69 @@
+浙江体育科学
+ZHEJIANG SPORTS SCIENCE
+1999年 第21卷 第5期 Vol.21 No.5 1999
+
+
+
+运动训练对老年小鼠骨骼肌线粒体形态变化的电镜定量研究
+陈彩珍　卢健　许豪文　许永刚　赖荣兴
+摘要：通过计算机图象分析系统对小鼠骨骼肌线粒体结构进行形态计量分析，发现老年小鼠骨骼肌线粒体数目与年轻鼠无异，但肌膜下线粒体减少，线粒体总体积减小。长期运动训练可明显延缓线粒体形态结构的增龄性改变，使其功能有所改善。
+关键词：衰老；骨骼肌；线粒体
+中图分类号：G804.7　　文献标识码：A
+A morphometric study of age-related changes in 
+mitochondria of skeletal muscle in mice
+CHEN Cai-zhen1,LU Jian1,XU Hao-wen2,et al
+(1.Guangzhou PE college,Guangzhou 510075,China;
+2.Department of PE,East China normal university,Shanghai 200062,China)
+Abstract：By electron microscopy,morphometric quantitative study of mitochondria of skeletal muscle was investigated with true color medical image analysis system.The results showed that the mitochondrial numerical density did not alter with aging,but the number of subsarcolemmal mitochondria decreased,and volume density was decreased.Prolonged physical training may inhibit the age-related structural change and improve mitochondrial function.
+Key words：aging;skeletal muscle;mitochondria
+　　迄今为止，已有很多工作研究衰老组织线粒体形态和结构的变化。形态学的研究能弥补酶的生化测定的不足，因为线粒体结构是其潜在功能的可见的表现形式，加上线粒体内膜面积又与氧化磷酸化能力有着密切的关系。本文运用电镜技术观察8个月的有氧运动训练对小鼠骨骼肌线粒体形态的多项指标的电镜定量研究，探讨线粒体形态结构增龄性改变的程度及性质以及长期运动训练对其的影响。
+1　材料与方法
+1.1　动物饲养
+　　本研究选择近交系C57BL／6L雄性小鼠为实验对象，2月龄小鼠购自第一军医大学实验动物中心，所有动物均在相同环境下饲养，每天按每只小鼠6g添加饲料，饮用凉开水。根据动物中心的饲料成分所提出的建议，每周补加一次鸡蛋和鱼肝油(上海兽药厂生产)。
+1.2　实验动物运动模型的建立
+　　小鼠5月龄后开始运动训练，训练的方式为跑转笼(running wheel)，第一天跑10min，以后每天增加10min，直到每天1h，自动纪录跑笼圈数。运动训练组每天跑笼1h，每周5天，所有运动训练均在动物暗周期6pm～10pm完成，训练8个月后小鼠达13月龄。另设13月龄未运动训练的对照组及5月龄的青年组。
+1.3　电镜标本的制备
+　　每组五例，将小鼠断头处死迅速剥离出腓肠肌，切成1×1×2的长条并马上固定于4%的戊二醛溶液中。
+　　透射电镜超薄切片制作：
+　　按常规超薄切片技术制作超薄切片，先在4℃下用4%戊二醛和1%锇酸先后固定两小时，然后梯度丙酮脱水(30%～50%～70%)，切片入1∶1和1∶3的丙酮，包埋剂中分别渗透1～2h后，入纯包埋剂中继续渗透6h，渗透完成后的切片平铺于硅化玻片上，再加盖一硅化玻片，并稍加压使切片展平，60℃恒温箱中聚合24～48h；Olympus立体手术显微镜下，A0570超薄切片机上先半薄切片，甲苯胺蓝染色进一步定位，再超薄切片，片厚500A～700A，200目铜网捞片；2%醋酸双氧铀染色15min后，柠檬酸铅染色3min。
+1.4　电镜观察与照相
+　　做好的电镜样本，在Hitachi―600型透射电镜下进行详尽的超微结构观察，每例小鼠观察3张超薄切片，每张切片上随机拍片8张，底片放大倍率为15000倍。
+1.5　线粒体形态计量学分析
+　　所有电镜照片选用CMIAS―9410A图像分析软件，用计算机图像分析系统进行形态计量分析，测定结果进行单因素方差分析或秩和检验，进行统计处理。根据电镜照片所分析的指标包括：(1)体密度(VV)是线粒体体积与胞质体积的比值，(2)面数密度(NA)是参照系截面单位面积内的线粒体数目；(3)平均周长(Bm)是平均每个线粒体截面具有的周长；(4)平均面积(Am)是平均每个线粒体截面具有的面积；根据以上四个结构参数，计算出数密度(Nv),即单位胞浆体积中线粒体的数目；线粒体平均体积(V)及形状不规则指数(I)，这一指数值愈大，线粒体的形态愈不规则。
+2.结果
+　　由表1可见，老年对照组骨骼肌线粒体的体密度(Vv)、面数密度(NA)、平均周长(Bm)、平均面积(Am)和平均体积(V)均显著低于年轻组：老年运动组线粒体的这几项指标亦显著低于年轻组，但其中体密度(Vv)、平均面积(Am)和平均体积(V)显著高于老年对照组。
+表1　小鼠骨骼肌线粒体的结构参数比较(X±SD)
+
+参数年轻组老年运动组老年对照组
+Vv(%)30.0521±6.768714.7887±7.6475**9.1787±3.0432***##
+NA(um-2)0.4315±0.08160.3008±0.1574*0.2861±0.0466***
+Bm(um)2.7009±0.31792.0968±0.3887**1.8544±0.3636***
+Am(um2)0.7555±0.16660.5152±0.2337*0.3160±0.0730***#
+Nv(um-3)0.5007±0.10900.5051±0.09560.4290±0.0971
+V(um3)0.6567±0.11020.3698±0.1200*0.1776±0.0257**#
+I0.8768±0.23150.9308±0.24100.8243±0.1926
+
+　　*与年轻组比较*p＜0.05　　**p＜0.01　　***p＜0.001
+　　#与同龄运动组比较　#p＜0.05　　##p＜0.01
+3　讨论
+　　以往很多利用电镜技术对线粒体形态研究多半只停留在定性观察上，如观察线粒体嵴是否断裂、有无空泡化、致密程度如何等。而我们根据立体学原理和技术，从切片中的面积比推算单位体积中某结构的体积比，即从结构的二维图像上推导出三维参数。细胞形态的立体测量有助于发现最敏感的结构变化及始发部位，这是用定性观察难以做到的。
+　　从本研究的结果来看，老年小鼠骨骼肌的线粒体数目与年轻鼠比较，无显著区别，但在年轻鼠骨骼肌中，线粒体成簇的位于质膜附近，而老年运动鼠质膜下线粒体很少，尤其是老年对照组鼠，几乎找不到质膜下线粒体。据研究，位于质膜附近的线粒体与位于肌原纤维间的线粒体在生物化学和形态学上有明显的不同，可能是由于ATP需求的局部改变以某种方式影响线粒体的结构、形态和功能，以及引起细胞器生物发生的基因表达。在形态学水平上有不少证据说明肌原纤维间的线粒体和肌纤维膜下的线粒体对训练的不同适应性，在慢性肌肉收缩中肌纤维膜下的线粒体多且适应程度更大，Puntschart也发现耐力训练的运动员肌膜下线粒体占总线粒体的30%，未受训练的普通人这一数值为14%。而在肌肉废用时发生相反趋向，肌膜下的线粒体含量下降更甚于肌原纤维间线粒体含量的下降。通过本实验的观察进一步证实了这一点，而且发现肌原纤维间的线粒体体积明显比肌膜下线粒体小，导致老年鼠线粒体总体积显著减小。有人提出自由基损伤使不能分裂的线粒体所占百分比增加，所以固定分裂后细胞借产生新的线粒体补偿线粒体损伤的能力降低。有大量研究证实在衰老过程中自由基产生与清除之间失去平衡，致细胞尤其是线粒体内自由基增多。故推测随年龄的增加，自由基的增多是老龄小鼠骨骼肌线粒体总体积减小的原因之一。
+　　耐力训练对肌肉线粒体的影响首先是由Holloszy开始研究的，他发现一定强度和时间的耐力训练刺激了骨骼肌内线粒体的合成。自此以后，大量研究报导线粒体大小、数目及容积随耐力训练而升高。Davies等发现长时间耐力训练后的骨骼肌纤维内，线粒体绝对数量、外膜面积、膜蛋白及膜磷脂含量显著增加，以适应训练需要。有人认为在较低强度刺激下，首先发生线粒体数面积，从而提高ATP的供能效率，同时，线粒体的嵴增多，使能量的转换效益和积累增多，合成ATP的机能增强，进一步满足了耐力训练时细胞对能量的需要。此外，线粒体含量的增加可使利用脂肪酸的酶相应增加，这样，在亚极量运动中对糖原利用速率就减小，节省了糖原，从而改善了耐力。本文发现小鼠经过长达8个月的运动训练后，骨骼肌线粒体的体密度、平均面积和平均体积均有所升高，说明线粒体对长期运动训练产生了适应性变化，也是运动训练改善骨骼肌功能的一个体现。运动中骨骼肌收缩率增加，对能量的需求显著增加，氧的运输和线粒体含量对能量的供应和细胞功能显得特别重要。
+　　总之，随着年龄的增加，小鼠骨骼肌线粒体数目虽未发生明显变化，但线粒体体积减小，肌膜下线粒体减少。长期运动训练可延缓随增龄出现的线粒体功能过早衰退，有利于骨骼肌线粒体的增生、蛋白质的合成。
+基金项目：国家自然科学基金资助项目(97069)
+作者简介：陈彩珍(1967-)，女，广州体育学院助理研究员，运动生物化学博士生.
+作者单位：陈彩珍 卢健 许永刚 赖荣兴 广州体育学院，广东 广州　510075
+　　　　　许豪文 华东师范大学 体育系，上海　200062
+参考文献：
+［1］　Cogswell,A.M.,Stevens,R.J.,and Hood,D.A.Properties of skeletal muscle mitochondria isolated from subsarcolemmal and intermyofibrillar regions.Am.J.Physiol.1993,264:C383-C389.
+［2］　Hoppeler,H.et al.Endurance training in humans:aerobic capacity and structure of skaletal muscle.J.Appl.Physiol.1985,59:320-327.
+［3］　Puntschart,A.,Claassen,H.,Jostarndt,K.et al.mRNA of enzymes involved in energy metabolism and mtRNA are increased in endurance-trained athletes.Am.J.Physiol.1995,269:C619-C625.
+［4］　Desplanches,G.,Kayar,S.R.,Sempore,B.et al.Rat soleus muscle ultrastructure after hindlimb suspension.J.Appl.Physiol.1990,69:504-508.
+［5］　Holloszy,J.O.et al.Biochemical adaptation in muscle:effect of exercise on mitochondrial oxygen uptake and respiratiory enzyme activity in skeletal muscle.J.Biol.Chem.1967,242:2278-2282.
+［6］　Davies,K.J.A.et al.Biochemical adaptation of mitochondria muscle and whole animal respiration to endurance training.Arch.Biochem.Biophys.1981,209:539-554.
+［7］　Zamora,A.J.,Tessier,F.,Marconnet,P.Mitochondria changes in human muscle after prolonged exercise,endurance training and selenium supplementation.Eur.J.Appl.Physiol.1995,71:505-511.
+［8］　Sohal,R.S.et al.Hydrogen peroxide production by mitochondria may be a biomarker of ageing.Mech.Ageing Dev.1991,60:189-198.
+责任编辑：潘宪民
+收稿日期：1999-08-10
+
+

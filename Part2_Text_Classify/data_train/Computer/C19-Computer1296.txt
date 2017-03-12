@@ -1,0 +1,84 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.1　P.132-135
+
+
+
+广义不确定系统鲁棒稳定性及鲁棒镇定的矩阵不等式方法
+徐胜元 杨成梧
+摘 要 考虑广义不确定系统的鲁棒稳定性及鲁棒镇定问题.提出了广义不确定系统‘广义二次稳定’及‘广义二次可镇定’的概念,利用矩阵不等式,分别得到了所考虑广义不确定系统广义二次稳定及广义二次可镇定的充要条件，而且,使广义不确定系统鲁棒镇定的状态反馈控制律的设计可通过求解一给定的矩阵不等式而得到.
+关键词 广义不确定系统,广义二次稳定,广义二次可镇定,矩阵不等式.
+A MATRIX INEQUALITIES APPROACH TO THE ROBUST
+STABILITY AND ROBUST STABILIZATION FOR UNCERTAIN GENERALIZED SYSTEMS
+XU Shengyuan YANG Chengwu
+(School of Power Engineering ,Nanjing University of Science and Technology,Nanjing 210094)
+Abstract In this paper,the problems of robust stability and robust stabilization for uncertain generalized systems are considered.The concepts of ‘generalized quadratic stability' and ‘generalized quadratic stabilizability' for uncertain generalized systems are proposed.In terms of matrix inequalities,necessary and sufficient conditions under which the considered system is robustly stable and robustly stabilizable are derived respectively. Furthermore,the robust stabilizing state feedback control law can be designed by finding a solution to a given matrix inequality.
+Key words Uncertain generalized systems,generalized quadratic stability,generalized quadratic stabilization,matrix inequalities.
+1 引言
+　　自Rosenbrock 于1974年首次提出广义系统的概念以来［1］,广义系统理论的研究已取得了长足的进展,许多有关正常系统的结论被相继成功地推广到了广义系统［2～5］;考虑到实际系统在多种因素作用下其不确定性是始终存在的，因此，文［6,7］讨论了广义不确定系统的鲁棒稳定性及鲁棒控制问题，利用模矩阵的有关性质，得到了使所考虑系统鲁棒稳定的摄动的最大上界,并在此基础上，给出了鲁棒控制的有关结论;文［8］考虑了具单向摄动的广义系统的鲁棒稳定性，得到了使此类广义系统鲁棒稳定的摄动的精确界;但相对正常系统来说，广义不确定系统鲁棒稳定及鲁棒镇定方面的研究结果还较少.
+　　本文针对广义不确定系统,提出了‘广义二次稳定'及‘广义二次可镇定'的概念,广义二次稳定及广义二次可镇定分别保证广义不确定自治系统及由状态反馈作用下的闭环系统正则,无脉冲且稳定.分析表明，这两个概念分别是正常系统中‘二次稳定'及‘二次可镇定'概念的推广.本文利用矩阵不等式，得到了所考虑广义不确定系统广义二次稳定及广义二次可镇定的充要条件，而且,使广义不确定系统鲁棒镇定的状态反馈控制律的设计可通过求解一给定的矩阵不等式而得到.
+2 系统描述与定义
+　　考虑具有如下形式的广义不确定系统
+　(1)
+x(t)∈Rn,u(t)∈Rm分别是系统的状态及输入；E∈Rn×n且rankE=r≤n；A,B是已知的适维阵，ΔA(t),ΔB(t),分别表示相应的时变不确定阵，且具如下形式
+［ΔA(t) ΔB(t)］=DF(t)［Ea Eb］,　(2)
+其中F(t)∈Rj×k是未知的解析阵且满足
+FT(t)F(t)≤1.　(3)
+对所有的t∈R都成立.这里I是n×n单位阵，D,Ea和Eb是已知的适维阵.
+　　注1.由(2)式所表示的不确定性具一般性,在正常系统中已得到广泛讨论［9,10］，但对具此种不确定性的广义系统的讨论还较少.
+　　由于rankE=r≤n,故不失一般性，可假设E具有以下形式［4］
+　(4)
+其中Ir是r×r单位阵.
+　　定义1.若存在常数阵P及正定阵Q使得广义不确定系统(1)的自治系统 (即u(t)≡0)满足,
+　(5)
+对所有形如(2)，(3)的ΔA(t)成立,则称广义不确定系统(1)是广义二次稳定的.这里A0(t)=A+ΔA(t),P具有以下形式
+　(6)
+其中且P1>0，P3可逆.
+　　引理1.若广义不确定系统(1)是广义二次稳定的,则(1)的自治系统正则,无脉冲且稳定.
+　　证明.注意到定义1中有关矩阵的表示并利用文［4］中的结论即可得证.
+　　定义2.若存在状态反馈控制律 u(t)=Fx(t),F∈Rm×n,将其作用于广义不确定系统 (1)后所得的闭环系统广义二次稳定，则称(1)是广义二次可镇定的.
+　　注2.当广义不确定系统(1)中E=I时，式(1)即成为正常不确定系统；对定义1来说，此时由式(6)所给出的P中，P2与P3将不存在，从而P为一正定阵，于是定义1即为正常系统中所谓的‘二次稳定’的概念；而定义2即为‘二次可镇定’的概念［9～10］.因此，定义1及定义2可看成是‘二次稳定’及‘二次可镇定’的概念向广义系统的合理推广.
+3 主要结论
+　　定理1.广义不确定系统(1)鲁棒稳定的充要条件是存在如下形式的矩阵S∈Rn×n,
+　(7)
+式中可逆，使得矩阵不等式
+　(8)
+成立.这里Ik×k及Ij×j分别为k×k及j×j的单位阵.
+　　证明.
+　　充分性.假设具有形如(7)的矩阵S使(8)成立,则由Schur补引理得
+　(9)
+定义V=S-T并注意到S具有(7)式的形式,则易得V具有(6)式的形式.另一方面,由(9)式得
+　(10)
+令A0(t)=A+ΔA(t),则不难验证
+　(11)
+成立.于是由式(10)，(11)及定义1即得广义不确定系统(1)是广义二次稳定的.
+　　　必要性.证明类似于文［10］,略.
+　　　假设1rankEb=m.
+　　　定理2.考虑广义不确定系统(1)，其不确定参数满足(2)，(3)及假设1，则(1)式广义二次可镇定的充要条件是存在形如(7)的矩阵S∈Rn×n使得矩阵不等式
+
+成立.其中而且，在此情形下，使(1)式
+鲁棒镇定的状态反馈控制律可取为
+
+　　证明.注意到I-Eb(ETbEb)-1ETb≥0,因此存在U∈Rk×k使得
+UTU=I-Eb(ETbEb)-1ETb,
+于是类似于定理1及文［10］中定理2.3 的证明即可得证.
+　　注3.注意到E=I时,定理2与文［10］中的定理2.3一致,因此，这里的主要结论可看成是正常不确定系统有关二次稳定及二次可镇定结论向广义不确定系统的推广.
+4 结论
+　　本文针对广义不确定系统提出了‘广义二次稳定’及‘广义二次可镇定'的概念,得到了所考虑系统广义二次稳定及广义二次可镇定的充要条件;分析表明广义二次稳定及广义二次可镇定是正常系统中二次稳定及二次可镇定概念向广义系统的推广；而且，使广义不确定系统鲁棒镇定的状态反馈控制律的设计可通过求解一给定的矩阵不等式而得到;进一步的工作是研究在输出反馈作用下不确定广义系统的鲁棒镇定问题以及当假设1不满足时寻求广义二次可镇定的条件.
+南京理工大学科研发展基金资助项目
+徐胜元 1968年生.现为南京理工大学博士研究生.主要研究方向为广义系统,鲁棒控制和自适应控制.
+杨成梧 1936年生.1961年毕业于哈尔滨军事工程学院,现为南京理工大学教授,博士生导师.主要研究方向为2D系统,广义系统,高速采样控制,H∞控制和离散事件动态系统.
+徐胜元(南京理工大学动力工程学院 南京 210094)
+杨成梧(南京理工大学动力工程学院 南京 210094)
+参考文献
+1，Rosenbrock H H.Structural properties of linear dynamical systems. Int.J.Contr., 1974,20(2):191～202
+2，Verghese G,Levy B C,Kailaith,T.A generalized statespace for singular systems.IEEE Transactions on Automatic Control, 1981,26(4):811～831
+3，Dai L.Singular Control Systems.Lecture Notes in Control and Information Sciences:Vol 118.Berlin: SpringerVerlag,1989
+4，Wang Y,Frank P M,Clements D J.The robustness properties of the linear quadratic regulators for singular systems. IEEE Transactions on Automatic Control, 1993,38(1): 96～100
+5，Wang C.State feedback impulse elimination of linear timevarying singular systems. Automatica, 1996,32(1): 133～136
+6，Fang C,Chang F.Analysis of stability robustness for generalized statespace systems with structured perturbations. Systems and Control Letters, 1993,21(2): 109～114
+7，Fang C,Lee L,Chang F R.Robust control analysis and design for discretetime singular systems. Automatica, 1994,30(11): 1741～1750
+8，Lee L,Fang C,Hsieh J.Exact unidirectional perturbation bounds for robustness of uncertain generalized statespace systems: continuoustime cases. Automatica,1997,33(10): 1923～1927
+9，Petersen I R.A stabilization algorithm for a class of uncertain linear systems. Systems and Control Letters, 1987,8:351～357
+10，Khargonekar P P,Petersen I R,Zhou K.Robust stabilization of uncertain linearsystems: quadratic stabilizability and H∞ control theory.IEEE Transactions on Automatic Control, 1990,35(3):356～361
+收稿日期 1998-04-07 收修改稿日期 1999-05-12

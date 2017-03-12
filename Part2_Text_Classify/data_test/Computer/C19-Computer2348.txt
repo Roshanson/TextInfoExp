@@ -1,0 +1,123 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999　Vol.36　No.7　P.892-896
+
+
+
+基于义类同现频率的汉语语义排歧方法
+张永奎　张国清
+摘　要：义类标注是信息检索和自然语言处理中的一个重要问题.但依靠人工对义类进行标注不仅是一个十分烦琐的工作，而且很难把握标准.因此，对义类代码自动标注的研究就显得尤为迫切，而要实现自动标注，必须解决多义词排歧这一重要问题.在对《现代汉语词典》（以下简称《词典》）的义类标注过程中，文中通过统计相邻词语义类组合串的出现频率构造了一个同现频率矩阵集.这一同现频率矩阵集充分利用了义类体系的层次结构，极大地减少了数据稀疏和数据冗余.在此基础上，对《词典》中的多义词进行了排歧，结果较为满意.
+关键词：同现频率矩阵， 义类代码串
+分类号：TP391
+A CHINESE SENSE DISAMBIGUATION METHOD BASED ON
+SENSE CO-OCCURRENCE FREQUENCY
+ZHANG Yong-Kui 
+(Department of Computer Science, Shanxi University, Taiyuan 030006)
+ZHANG Guo-Qing
+(Department of Computer Science, Shanxi University, Taiyuan 030006)
+Abstract：Sense tagging is very important for the information retrieval and natural language processing. Tagging the sense code by hand is a time-consuming work and it is hard to make the sence codes consistent with each other. Therefore the research on automatic sense tagging is a very important work. To do this, the disambiguation of polysemous words must be solved first. In the research of sense tagging in 《Modern Chinese Dictionary》(MCD) , a sense co-occurrence frequency matrix (SCFM) set is constructed by making statistics on the frequencies of sense code combination (SCC) of adjacent words that occur in a sample set . This SCFM makes full use of the hierarchy structure of the semantic system, and reduces data sparsness and redundancy. The disambiguation of those polysemous words are done and the words in MCD are tagged by employing a method based on the SCFM set. And the result is satisfying.
+Key words：co-occurrence frequency matrix, sense code combination(SCC)▲
+1　引言
+　　在对自然语言的研究中，计算词典方法是目前常用的一种方法.这种方法的研究通常是以对词典词条的释义文本的分析为基础进行的.然而，由于汉语是一种意合语言，未经过处理的释义文本无法直接使用，必须经过分词、词性或义类标注等处理以后，才能为我们的研究提供有用的信息.标注的成功与否，关系到后继研究的有效性及准确率，具有极其重要的意义.而在标注中的一个关键问题，就是如何对多义词进行排歧处理.英语的多义词排歧曾尝试过以下方法：① 人工智能方法；② 基于词典释义的方法；③ 基于语料库统计的方法.其中，基于双语语料库的方法［1］和基于分类的方法［2］较为成功.清华大学于1990年开始对汉语语义标注的研究.以《现代汉语词典》［3］中对字的解释义项为义项标号来标注真实文本.据报道，该系统的标注正确率稳定在80%以上［4，5］.在本文中，我们提出了一种基于释义文本中相邻词语义类组合信息的排歧算法，实验证明，这一算法是可行的.
+2　分类同现信息的获取
+　　分类同现信息是我们进行多义词排歧的基础，它构建的成功与否直接关系到排歧的成败.以下将简单介绍同现频率信息的获取.
+　　首先，从《现代汉语词典》（简称《词典》）中随机抽取出约6000条释义（约占《词典》释义的10％），采用最大匹配法对其释义文本进行自动分词.然后，对分词后的全部释义文本进行义类标注，其中单义词的标注由机器自动进行，多义词的标注通过机助人工排歧的方法进行.标注采用《同义词词林》［6］（简称《词林》）的分类体系.《词林》是一部义类词典，所收词语全部按意义进行分类，共有12个大类，94个中类，1428个小类.
+　　经过这样的标注过程，我们最终得到了一个已标注样本集.根据我们对样本集用词所做的统计，在样本集的所有用词中，单义词占57％，其余43％为多义词.这一比例与我们对《词典》全部释义文本用词所做的统计结果基本相同，这一数据从某个侧面说明了我们所得到的样本集是基本可靠的.
+　　之后，我们从已标注样本集中抽取相邻释义词的义类代码组合串进行频率统计，得到有关的同现频率信息，并以同现频率矩阵的形式来表示这些信息.如果我们的同现频率矩阵采用小类×小类的形式，对于提高排歧的准确率显然会有一定的帮助.但是另一方面，仅考虑二元同现，将是一个1428×1428的矩阵，数据个数已达百万级，实现上已很困难，三元、四元同现的统计更是不可想象的.不仅如此，采用小类×小类的形式还将带来一个数据稀疏的问题，而使同现频率矩阵无法发挥其应有的作用.
+　　在基于同现频率矩阵的义类标注算法中，显然同现频率矩阵的元数越多，对标注准确率越有益.但是元数增加与数据稀疏及数据冗余又存在着明显的矛盾.
+　　基于以上几点，我们在对样本集进行统计时，考虑到语义分类体系的层次性，没有采用小类×小类的形式.而用数目较少的大类和中类来代替小类，采用多种混合的组合模式串，从而在一定程度上克服了数据稀疏及数据冗余的问题.并且在很多情况下，仅把词语归至中类甚至大类已能提供足够的语义信息.所以我们采用多种组合模式进行统计，从而得到了一个同现频率矩阵集.下面我们分类介绍一下其中的同现频率矩阵.　　
+　　(1) 按同现义类组合串的长度来分类
+　　组合串长度为n(n通常取2，3，4）的同现频率矩阵.这一类同现频率矩阵的元素是通过统计相邻n个词的义类组合得来的.这一类同现频率矩阵的义类组合模式是大类、中类、小类混合组成的，例如：中类｜大类｜中类｜中类是一个四元同现频率矩阵，小类｜中类｜中类是一个三元同现频率矩阵，等等.
+　　(2) 按处理的歧义词的类型分类
+　　首先，我们介绍几个概念.
+　　设词W的义类码集为{N1M1V1,N2M2V2，…，NkMkVk} (其中Ni为大类码, Mi为中类码, Vi 为小类码.(i=1,2,…,k)),我们有以下定义：
+　　定义1. 若 ( i≠j)Ni≠Nj，则称W为大类歧义词.
+　　定义2. 若 ( i≠j and Ni=Nj)Mi≠Mj，则称W为中类歧义词.
+　　定义3. 若 ( i≠j and Ni=Nj and Mi=Mj)Vi≠Vj，则称W为小类歧义词.
+　　根据歧义词的不同类型，又可把同现矩阵分为大类歧义词排歧用同现矩阵（共有9个）、中类歧义词排歧用同现矩阵（共有3个）和小类歧义词排歧用同现矩阵（共有9个）.这3种同现矩阵具有相似的构成，均是待排歧词根据其类型分别取大类、中类、小类码，其它词（待排歧词前后的词）取中类码，并均按组合串长度分为二元、三元、四元等3种.即，若待排歧词为大类歧义词，则该词取其大类码；若待排歧词为中类歧义词，则该词取其中类码；若待排歧词为小类歧义词，则该词取其小类码. 
+　　下面以大类歧义词排歧用同现矩阵为例，说明其基本构成.
+　　大类歧义词排歧用同现矩阵都是待排歧词取大类，其前后词取中类，这一类同现矩阵共有9个，我们将其分别命名为E1, E2,……,E9. 表1列出这9个同现矩阵的组合模式串及其部分元素.
+表1
+
+同现矩阵组合模式串元素举例
+E1
+中 | 中 | 中 | 大(AaEdHjK,0.000012)(EdHjKdK,0.000098)
+(HjKdKcE,0.000010)(KdKcEaC,0.000021)
+E2
+中 | 中 | 大 | 中(JbKaKHj,0.000011)(KaKdHDn,0.000013)
+(KdHjDHj,0.000087)(DnDnDKb,0.000067)
+E3
+中 | 大 | 中 | 中(KaIIhDn,0.000032)(IeIDnEb,0.000022)
+(DkFEbIb,0.000013)(FaEIbKd,0.000032)
+E4
+大 | 中 | 中 | 中(KGbDeEd,0.000054)(GDeEdKa,0.000038)
+(DEdKaEe,0.000062)(KHiIfKa,0.000039)
+E5
+中 | 中 | 大(DnKcD,0.000045)(KcDnD,0.000027)
+(DnDnC,0.000037)(DnCbJ,0.000048)
+E6
+中 | 大 | 中(IgCKd,0.000028)(CaKHh,0.000074)
+(KdHHh,0.000084)(KbEBp,0.000073)
+E7
+大 | 中 | 中 (CHiDd,0.000073)(HDdEd,0.000092)
+(FDlKc,0.000078)(DKcDl,0.000082)
+E8
+中 | 大(KaE,0.00028)(EdD,0.00018)
+(DbK,0.00010)(KcI,0.00021)
+E9
+大 | 中(EEa,0.00039)(EAa,0.00003)
+(AEd,0.00008)(EIg,0.00029)
+
+
+　　除了以上22个同现矩阵外，我们还统计了小类二元同现矩阵E22，如表2所示：
+表　2
+
+同现矩阵组合模式串元素举例
+E22
+小｜小(Dj03Ca02,0.000064)(Ca02Ca02,0.000021)
+　(Ca02Kb05,0.000043)(Kb05Bq01,0.000084) 
+
+
+3　基于同现频率的排歧算法 
+　　由于汉语是一种意合语言，很多词语在不同的义类环境中有不同的含义，所以，我们将利用词语在不同义类环境下的组合能力进行排歧.我们通过对已标注样本集的统计得出的同现频率矩阵正反映了不同的义类组合串在释义文本中的出现频率，同时它们也反映了在相同的义类组合环境下，不同的义类组合出现的频率.所以，我们的基于同现频率的排歧算法是合理的.
+　　定义4. 非歧义长度：设Wi为句子S中的多义词，则其左右最近单义词及已经排歧的多义词（已标定词）的总个数为Wi在S中的非歧义长度，用L(Wi)表示.
+　　由定义4可以看出，“非歧义长度”是一个很重要的概念，它取决于多义词的周围环境，同时它又直接影响到多义词的排歧困难程度.我们可以把某多义词周围的已标定词（包括单义词及已排歧词）作为该多义词的可靠义类环境，则非歧义长度越长，该多义词在排歧时所能用到的可靠义类环境就越长，这样它可以用到的义类组合模式串也就越长，从而增加了该多义词的排歧准确率.以下我们将看到，我们在排歧过程中对于各类多义词都是根据其周围环境（即它的非歧义长度）来决定所需使用的同现矩阵.
+　　下面，我们仍以大类歧义词为例说明利用同现矩阵进行排歧的方法.
+　　对于任一大类歧义词Wi，若该词有K个义类码，设G(Wi )＝｛Ti1，Ti2，…，Tik｝＝｛Ni1Mi1Vi1，Ni2Mi2Vi2，…，NikMikVik ｝，显然：对于Ni1，Ni2，…，Nik中任意两个大类都不相同.也就是说，Wi的K个义类码分属于K个大类中.对于词Wi的义类排歧问题，就可以转换为一个这样的问题：在Wi所处的义类环境下，寻找K个大类Ni1，Ni2，…，Nik中的出现频率最大的一个，也就是寻找在给定环境下出现可能性最大的那一个大类.
+　　设Wi所处的义类环境为R，则：
+　　若P(Nij|R)＝max(P(Ni1|R)，P(Ni2|R)，…，P(Nik|R))，则Nij为最合理的大类，也就是说，Tij为词Wi 排歧后的义类码.
+　　下面我们分不同情况的义类环境进行讨论：
+　　（1）非歧义长度L(Wi)≥3，这时我们在前缀优先的原则下取Wi周围的3个已标定词的中类码.例如：若词Wi前只有Wi-2，Wi-1为已标定词，此时我们取义类组合模式串为Ni-2Mi-2Ni-1Mi-1XNi+1Mi+1，其中X为Ni1，Ni2，…，Nik中的任一个.这时我们在统计得到的同现频率矩阵E2中查找以上k个组合串出现的频率：P（Ni-2Mi-2Ni-1Mi-1Ni1Ni+1Mi+1），P（Ni-2Mi-2Ni-1Mi-1Ni2Ni+1Mi+1），…，P（Ni-2Mi-2Ni-1Mi-1NikNi+1Mi+1 ），并取其中最大值：P（Ni-2Mi-2Ni-1Mi-1NijNi+1Mi+1 ），则Nij为词Wi在当前环境下的大类代码，Tij为词Wi排歧后的义类码.
+　　（2）非歧义长度L(Wi)=2，这时我们在前缀优先的原则下取Wi周围的2个已标定词的中类码.
+　　（3）非歧义长度L(Wi)=1，这时我们在前缀优先的原则下取Wi周围的1个已标定词的中类码.
+4　自动标注算法及测试结果
+　　对于任一释义句S=W1W2…Wn，设其中任意多义词Wi相对应的义类代码为{Ti1，Ti2，…，Tik}={Ni1Mi1Vi1,Ni2Mi2Vi2,…,NikMikVik},(其中k为义类数.若Wi为单义词，则k=1，若Wi为多义词，则k>1.)
+　　对于释义句S=W1W2…Wn的自动标注过程如下：
+　　（1）若S中不存在多义词，则标注结束，否则继续.
+　　（2）对每个多义词求其对应的非歧义长度L（Wi），并求其中非歧义长度最大的多义词Wj，即：
+　　　　L（Wj）=max{L（Wi）| Wi为S中的多义词}
+　　　　若L（Wj）=0，转（3）；否则，转（4）；
+　　（3）由于Wj为句子S中非歧义长度最大的词，且L（Wj）=0，则说明S中的词全部为多义词.此时，我们任取两相邻词Wi，Wi+1的义类代码的所有可能的组合串，不妨设Wi，Wi+1相对应的义类代码为｛Ti1，Ti2，…，Tim｝，｛T(i+1)1，T(i+1)2，…，T(i+1)n｝，则所有可能的组合串为｛Ti1T(i+1)1，Ti1T(i+1)2，…，Ti1T(i+1)n，Ti2T(i+1)1，Ti2T(i+1)2，…，Ti2T(i+1)n，…，TimT(i+1)1，TimT(i+1)2，…，TimT(i+1)n｝，然后我们从同现频率矩阵E22中查找每个义类组合串的出现频率，从前面的介绍我们知道同现频率矩阵E22的组合模式为小类｜小类，所以，所有相邻词的任意一种义类组合串均可从E22中找到一个对应的频率值，然后我们从所有的小类二元义类组合串中取出一个频率值最大的义类组合串，并将其中的两个小类代码分别标给对应的两个相邻词，此时，句子S中就有了两个已标定词，转（2）.
+　　（4）Wj为句子S中非歧义长度值最大的一个多义词，此时我们认为Wj的可靠性义类环境最大，故而我们先对Wj进行排歧，对Wj排歧之后，显然同时可以增加其它词的非歧义长度，也就是说，扩大了其它词的可靠义类环境，从而为有利于其它多义词的排歧.
+　　在对Wj进行排歧前，先对Wj的各义类进行分析，从而断定Wj属于哪一类多义词.根据其类型选择相应的同现频率矩阵，并按照上一节介绍的排歧算法进行排歧.
+　　本文提出的这种基于同现频率矩阵的排歧算法，改进了常用的只采用一个同现频率矩阵的方法，而代之以同现频率矩阵集.这不仅降低了排歧的复杂度，还极大地提高了排歧的准确率.
+　　利用上述思想，我们对《词典》的释义文本进行了机器自动标注和排歧的实验，并将其中1000条释义的标注结果与手工标注的结果进行了比较，证明这种算法可将准确率提高到91.82％.充分证明这一算法是可行的.■
+基金项目：本课题得到国家自然科学基金（项目编号69575011）和山西省留学归国人员基金资　　　　　　助.
+作者简介：张永奎，男，1945年6月生，教授，主要研究领域为人工智能和中文信息处理.
+　　　　　张国清，女，1974年10月生，硕士研究生，现从事自然语言理解方面的研究.
+作者单位：张永奎（山西大学计算机科学系　太原　030006）
+　　　　　张国清（山西大学计算机科学系　太原　030006）
+参考文献：
+［1］Gale W A, Church K W, Yarowsky D. Using bilingual material to develop word sense disambiguation methods. In: Proc of the Conference on Theoretical and Methodological Issues in Machine Translation, Montreal, 1992. 101～112
+［2］Yarowsky D. Word sense disambiguation using statistical models of rogetiscategories trained on large corpora. In: Proc of the 14th Int′l Conf on Computational Linguistics, Nantes, 1992. 454～460
+［3］中国社会科学院语言研究所. 现代汉语词典. 北京：商务印书馆，1985
+　　　(Lexicon Editorial Office in Language Research Institute of the Chinese Academy of Social Sciences. Modern Chinese Dictionary (in Chinese). Beijing: Commercial Affairs Publication House, 1985)
+［4］Ji Donghong, Huang Changning. Sense tagging of Tong Yi Ci Ci Lin using itself. The Latest Technological Advancement & Application. Singapore，1996. 159～164
+［5］黄昌宁，童翔. 汉语真实文本的语义自动标注. 语言文字应用，1993，(4): 18～25
+　　　(Huang Changning, Tong Xiang. The automatic sense tagging of real Chinese texts. Language and Word Application (in Chinese), 1993，(4): 18～25)
+［6］梅家驹等. 同义词词林. 上海: 上海辞书出版社，1989
+　　　(Mei Jiaju et al. Tong Yi Ci Ci Lin (in Chinese). Shanghai: The Shanghai Dictionary Publication House, 1983)
+［7］黄昌宁. 关于处理大规模真实文本的谈话. 语言文字应用，1993，(2): 1～10
+　　　(Huang Changning. A conversation about large scale real text processing.Language and Word Application(in Chinese),1993，(2):1～10)
+收稿日期：1998-09-21
+修稿日期：1999-01-20

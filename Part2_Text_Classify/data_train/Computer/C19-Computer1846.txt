@@ -1,0 +1,96 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000 Vol.19 No.2 P.55-57
+
+
+
+
+Novell网络环境下Win95无盘工作站的安装
+吴明华
+摘 要： 100Mb／s Novell网络环境下，Win95无盘工作站的详细安装过程步骤。
+关键词： 无盘工作站 文件安装 高速网络 
+　　虽然当前Win95／98已成为一般用户首选的操作系统，但是在广大教学单位，由于各种原因，用的主要还是无盘站。100Mb／s网络目前在许多单位已建立，它使得Win95的无盘使用成为可能，但是在高速网络下Win95的无盘安装问题却未见介绍。经过本人摸索，终于实现了100Mb／s环境下Win95无盘站的安装，下面就安装过程详细说明如下。
+1 准备工作
+　　1．硬件
+　　服务器为联想万全1300，安装NetWare3．12／4．11，工作站为486／16MB及P200／32MB的兼容机若干，另准备一有盘工作站，供安装Win95共享文件使用。工作站全部插D－Link DFE－530 Tx 10／100Mb／s网卡下面皆以此网卡为例，另准备了一块NE2000兼容网卡。
+　　2．软件
+　　Win95完全版pwin95完全版及Novell网络相关文件。
+　　3．长文件名支持
+　　另外由于Win95支持长文件名，因此要让Win95运行于Novell网络上，要求NetWare能支持长文件名，方法为在服务器控制台下依次执行：
+　　NetWare 3．12版：
+　　Load os2 → add name space os2 to＜卷名＞
+　　NetWare 4．11版：
+　　Load long → Add name space long to＜卷名＞
+　　其中的卷名为要求支持长文件名的卷。
+　　4．有盘工作站的要求
+　　有盘工作站要求已安装好Win95或Win98最好为同版本的Win95，因为Win95的共享安装部分的运行文件必须在Win95及以上环境中运行。
+2 服务器共享安装
+　　在Win95或Win98下以系统管理员登录到NetWare服务器。然后将Win95安装光盘放入光驱中，运行“pwin95＼admin＼nettools＼netsetup＼netsetup．exe”文件，出现“基于服务器的安装”画面。选其中的“设置路径”，出现路径设置对话框。此时输入1个UNC格式的路径，此路径为Win95在服务器中的共享安装目录。再按“安装”，然后会出现“要求选择安装共享文件的地方”的画面，选择“服务器”，在出现“创建默认值”时选择“不创建默认值”，随后提示输入Win95的序列号，然后系统进行Win95的文件拷贝，根据网络速度不同，此过程大约需要几分钟到十几分钟，文件拷贝完后，系统自动给文件置上只读共享属性，至此Win95的服务器安装部分完成。
+3 客户端的设定
+　　在Win95的工作站安装时，可将安装信息在msbatch．inf文件中预先设置好。此步骤在工作站的安装中有着重要的作用，如果此文件设置不好，将直接导致工作站安装成功与否。
+　　运行“pwin95＼admin＼nettools＼netsetup＼batch．exe”，出现如图1所示画面。
+　　在图1中设置的重点是“Network Options…”和“Install Options…”二个选项。选择“Network Options…”选项出现图2画面。其中比较重要的有：（1）Available Protocol选项：当然选IPX／SPX compatible protocol；（2）frame选项：选automatic；（3）Available Clients选项：Client for NetWar networks，Preferred server首选服务器，一般为Win95共享文件安装的服务器如net－i；（4）enable server－based setup选项：选remote boot。其它选项都可以不用设置。
+　　在图1中选“Install Options…”选项后会出现如图3所示画面。
+　　其中“Setup Options”可以使用其默认值，安装类型选“Custom”，安装目录填工作站的机器目录，如k：＼Windows，其中k：盘为工作站目录的映射盘，时区可选可不选。为了在安装过程中使用户随时了解安装情况，选“Set…”选项，出现如图4所示画面。
+　　图4中选“Stop during setup at thd following”中的“Every pageallow customization of all settings”选项。
+　　图2中的“Optional Components…”选项为具体安装哪些部件，可根据需要选择。
+　　所有这些选项设置完后按“Done”，选择保存目录为Win95共享目录，文件名为msbatch．inf，至此工作站安装批处理文件设置完成。
+　　然后在网络中创建一批用户如Win01，Win02等，最好为其再创建个人目录，作为每台机器的目录及1个组如Win95，将用户加入到组中，并给组赋予访问Win95共享文件的权限RF即可，工作站目录的权限为RWCEMF。修改注册正本，将共享文件目录及其下的COMMAND目录映射为搜索驱动器，个人目录映射为某1盘的根目录如k：盘。
+4 10Mb／s无盘工作站的安装
+　　在工作站中先插1块NE2000兼容网卡，并能以有盘或无盘方式上网。 
+　　在工作站以管理员身份登录，先在工作站用户盘如k：盘建立一临时文件存放目录如TMP，然后在Win95共享目录中运行setup．ext，格式为：
+　　setup msbatch．inf／t：k：＼tmp
+　　其中的msbatch．inf选项可省略，安装文件会自动查找它，／t：k：＼tmp选项必须加上，否则安装过程中会出现“Can not load Program”的错误信息。
+　　依据系统提示，完成工作站文件的安装，此过程大约需要几分钟时间，然后会提示重新启动系统，有时会出现“Invalid DPMI return from xxxxxxxx”的信息，不过不要紧，重新启动系统即可。
+　　工作站安装完成后，在工作站的Windows目录中会产生1个文件名为net＄dos．sys的文件。不过还必须对该文件按下面过程进行修改。
+　　（1）在DOS下重新登录上网后运行： 
+　　　　　　dosgen net＄dos．sys ／u
+　　然后将emm386．exe及subst．exe文件拷贝到（1）中得到的软盘；
+　　（2）编辑CONFIG．SYS文件，使其内容为： 
+　　device＝himem．sys 
+　　device＝emm386．exe ram 
+　　device＝ramdrive．sys 2048 ／e
+　　（3）编辑软盘中的win．bat，在其最前面加上subst a：c：＼winboot一句，否则启动时会提示找不到emm386．exe文件，从而不能正常启动。
+　　（4）重新生成启动映像文件如：dosgen awin95．sys
+　　（5）再编辑bootconf．sys文件，使工作站能从win95．sys文件启动，格式为： 
+　　0xnetwork address，node address＝win95．sys
+　　（6）编辑win95共享目录中的machines．ini文件，其内容格式为：
+　　　［node address］ ／将12位填全，不足时在前加0／
+　　　sysdatpath＝x：＼＜home directory＞ ／工作站机器目录／x＝＼＼server＼share ／工作站目录的映射目录／设置好这些后，重新启动机器，即可远程启动Win95了，此时要求输入用户名，此用户名为登录Novell网的用户，要求其能访问Win95共享文件和该计算机对应的目录。不过第1次启动时间会长一些，系统会进行一次必要的设置，全部设置完成后会重新启动机器。以后正常启动的时间要短一些，比本地Win95启动可能稍慢，视工作站的多少而不同。
+
+图1　安装选项界面
+
+图2　网络选项界面
+
+图3　安装选项明细
+
+图4　设置界面
+5 100Mb／s工作站的安装
+　　1．在DOS下登录上网，将100Mb／s网卡的驱动程序拷贝到Win95共享目录，具体拷贝文件为假设Win95共享目录已映射为T盘）：
+　　copy a：＼ndis2＼dos＼dlkfet．dos t：ｎ＼win95
+　　copy a：＼netinf．inf t：＼win95＼inf
+　　expand a：＼ndis3＼dlkfet．sy＿t：＼win95＼system＼dkfet．sys
+　　2．在能正常远程启动10Mb／s Win95的工作站中再安装1块不带启动芯片的100Mb／s网卡，然后启动工作站，完成必要的设置后要求重新启动机器。
+　　3．修改10Mb／s工作站的安装软盘，具体修改可通过二种方法来进行。
+　　（1）修改注册表，具体步骤为：
+　　①拷贝100Mb／s网卡设置盘的扩展名为．dos的文件如dlkfet．dos文件到启动盘，然后修改启动盘的注册表：
+　　regedit ／1：system．dat／e registry．txt
+　　②编辑registry．txt文件，将“netcard＝ne2000．dos”改为“netcard＝dlkfet．dos”
+　　③将修改后的信息写入注册表：regedit ／1：system．dat／ c registry．txt
+　　④将system．dat的属性去掉
+　　⑤修改protocol．ini文件，将“ms2000”全部改为“dlkfet”
+　　（2）删除盘上原来的NE2000．DOS文件，拷贝100Mb／s网卡的相应文件到A盘，改名为NE2000．DOS，并同样按照（1）中的方法修改protocol．ini文件。
+　　然后再重新生成100Mb／s下的远程启动映像文件
+　　4．取下10Mb／s网卡，给100Mb／s网卡插上启动芯片再重新启动机器，至此安装第1台无盘WIN95工作站的工作结束。
+6 增加无盘工作站的方法
+　　100Mb／s网卡能正常启动后，其它机器只能配置相同。其安装可通过运行netsetup．exe文件，在“基于服务器安装”画面中，选择“设置路径”，填入Win 95的共享安装路径后，选择“添加”，出现“安装计算机”画面，输入下列参数后可进行文件的复制。 
+　　选择“安装1台计算机” 
+　　计算机名：WIN02 
+　　计算机目录：＼＼NET－I＼KS＼WINUSER＼WIN02＼WINDOWS 现存
+　　计算机目录：＼＼NET－I＼KS＼WINUSER＼WIN01＼WINDOWS
+　　依此步骤可把所有需要从网络启动的计算机的文件复制好。然后再将这些计算机的节点地址等信息按第1台的格式写入到Win 95共享目录的machines．ini文件中。再修改F：＼LOGIN中的BOOTCONF．SYS文件，指明这些机器所对应的远程启动映像文件，至此所有安装全部结束。
+　　另外，D－link DFE－530TX网卡还有一个特点，即可使用多个远程启动映像文件，在机器启动时由用户选择从哪个文件启动，从而方便了用户的使用，尤其是教学单位，学生可根据情况选择从DOS还是Win95启动。BOOTCONF．SYS文件格式设置为：
+　　0x1122，0080C8EB4655＝WIN95．SYS DFEDOS．SYS 
+　　即并排书写二个或多个启动映像文件，注意文件之间不要加任何其它符号。
+吴明华（重庆师范学院物理学与信息技术系计算机教研室400047）
+收稿日期：1999－08－28

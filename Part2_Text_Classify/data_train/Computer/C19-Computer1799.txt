@@ -1,0 +1,81 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000　No.19　No.1　P.17-18
+
+
+
+
+Visual Basic中数据访问接口的比较和探讨
+蒋翔宇
+摘 要： 对Visual Basic中3种不同的数据访问接口进行比较，并提出相互的转化关系。 
+关键词：数据访问接口 DAO接口 RDO接口 ADO接口
+1 Visual Basic中的数据访问接口
+　　数据访问接口是1个对象模型，它代表了访问数据的各个方面。在Visual Basic中，可用的数据访问接口有3种：ADO（ActiveX Data Objects）、RDO（Remote Data Objects）和DAO（Data Access Objects）。随着数据访问技术的不断进步，这3种接口分别代表了该技术的不同发展阶段。
+2 3种接口的比较
+　　DAO数据访问对象是第1个面向对象的接口，它显露了Microsoft Jet数据库引擎（由Microsoft Access所使用），并允许Visual Basic开发者通过ODBC像直接连接到其它数据库一样，直接连接到Access数据库。
+　　RDO远程数据对象是1个到ODBC的、面向对象的数据访问接口，它同易于使用的DAO style组合在一起，提供了1个接口，形式上展示出所有ODBC的底层功能和灵活性。尽管RDO在访问Jet或ISAM数据库方面受到限制，而且它只能通过现存的ODBC驱动程序来访问关系数据库。但是，RDO提供了用来访问存储过程和复杂结果集的更多和更复杂的对象、属性以及方法。
+　　ADO是为Microsoft最新和最强大的数据访问范例OLE DB而设计的，是1个便于使用的应用程序层接口。OLE DB为任何数据源提供了高性能的访问，这些数据源包括关系和非关系数据库、电子邮件和文件系统、文本和图形、自定义业务对象等等。ADO在关键的Internet方案中使用最少的网络流量，并且在前端和数据源之间使用最少的层数，所有这些都是为了提供轻量、高性能的接口。
+3 Visual Basic中多种接口的实现
+　　下面通过一些实例对ADO、RDO和DAO的不同之处作进一步比较，DAO相对较简单，所以这里只对RDO和ADO进行比较。
+3.1 建立到某个数据库的连接
+　　1．RDO。要打开1个连接，必须提供1个带参数的连接字符串。当RDO要创建1个rdoQuery对象时，是不需要连接的，但当最初创建1个rdoResultset对象时是需要的。
+Dim cn As New rdoConnection
+Const ConnectionString＝″uid＝jxy；pwd＝123；driver＝｛SQLServer｝；_server＝salesserver；database＝sales；dsn＝″″
+　　该连接字符串访问1个特定的SQL Server，并允许ODBC在没有DSN的情况下打开1个连接。这是1个带有所有标准参数的典型ODBC连接字符串。
+　　接下来，在窗体的Load事件中，建立游标驱动程序的类型以及登录超时。缺省情况下，RDO使用rdUseIfNeeded游标类型，该类型调用SQL Server上服务器端的游标。下面的示例中指定了rdUseNone，从而使这种缺省规定不被遵守。rdDriverNoPrompt标志意味着如果用户ID和密码不匹配，应用程序将产生一个错误。Private Sub Form_Load（）
+　　With cn
+　　　cn．Connect＝ConnectString
+　　　cn．LoginTimeout＝10
+　　　cn．CursorDriver＝rdUseNone
+　　　cn．EstablishConnection rdDriverNoPrompt
+　　End With
+End Sub
+　　2．ADO。要在ADO中建立1个数据库连接，必须首先创建1组可被ADODB对象引用的ADO对象。这些对象将在以后用于设置打开连接和generate结果集的特定属性：
+Dim cn As New ADODB．Connection
+Dim rs As New ADODB．Recordset
+Dim Qy As New ADODB．Command
+　　下面创建1个连接字符串，正如在RDO示例中所创建的那样。在2种情况下，都可以使用ODBC的“非－DSN”连接策略以节省时间，并提高性能：
+Const ConnectionString＝″uid＝jxy；pwd＝123；driver＝｛SQLServer｝；_server＝salesserver；database＝sales；dsn＝″″
+　　最后，打开1个到Form_Load事件中某个数据库的ADO连接。该代码和RDO代码是很相似的，只不过常数是以″ad″开始的，而不是″rd″。我们不需要指定提示行为，因为ADO的缺省设置为“无提示”。如果选择对它进行更改，则可以使用ADO Properties集合来处理希望的提示行为。在RDO中，可以用OpenConnection参数来设置行为。在ADO中，必须设置Properties （″Prompt″）属性。同时，如果您不想使用游标驱动程序，则不必对其进行指定（象在RDO中的CursorDriver＝rdUseNone），因为ADO的缺省规定是无游标驱动程序。
+Private Sub Form_Load（）
+　　With cn
+　　′建立非DSN连接
+　　．ConnectionString＝ConnectString
+　　．ConnectionTimeout＝15
+　　′．Properties（″Prompt″）＝adPromptNever
+　　′This is the default prompting mode in ADO．
+　　．Open
+　End With
+End Sub
+3.2 运行返回多个结果集的存储过程
+　　1．RDO。对于存储过程来说，返回多个行组或返回包含动作查询结果的多个结果集是很普通的。必须编写代码分别处理每个结果集，否则将不能使用自己的查询结果。在RDO中，通过MoreResults方法来每次处理1个结果集。每次对MoreResults的调用都将关闭当前的结果集，并移动到下1个结果集（如果有的话）。
+Private Sub MultipleRSButton_Click（）
+　　sql＝″Select * from Employees Where age is not null；″_ ＆ ″Select * from Employees where age is null″
+　　Set rs＝cn．OpenResultset（sql）
+　　rdoGrid1．ShowData rs
+　　i＝MsgBox（″下一结果集？″″，vbYesNoCancel）
+　　If i＝vbYes Then
+　　　If rs．MoreResults Then
+　　　　rdoGridl．ShowData rs
+　　　End If
+　　End If
+End Sub
+　　2．ADO。下面的代码举例说明了如何在ADO中处理返回多个结果集的SP．ADO的解决方案与RDO解决方案的不同之处在于：ADO用的是NextRecordset方法，在该方法中，将批处理中的下一个记录集分配给某个ADO Recordset对象。下一个记录集的读取并不覆盖第一个，如同在RDO中的那样。ADO还允许多个记录集，如果数据提供程序支持的话。
+Private Sub MultipleRSButton_Click（）
+　　Dim rs As New ADODB．Recordsetsql＝″Select * from Employees Where age is not null；″_ ＆ ″Select * from Employees where age is null″
+　　rs．Open sql，cn
+　　Do
+　　　　i＝MsgBox（″下一结果集？″，vbYesNoCancel）
+　　　　If i＝vbYes Then
+　　　　　ADOGridl．ShowData rs
+　　　　　Set rs＝rs．NextRecordset
+　　　　End If
+　　Loop Until rs．State＝adStateClosed
+End Sub
+4 结 论
+　　在3种数据访问接口中DAO最适用于单系统应用程序或小范围本地分布使用，而RDO已被证明是许多SQL Server、Oracle以及其它大型关系数据库开发者经常选用的最佳接口。ADO是DAO／RDO的后继产物。ADO 2．0在功能上与RDO更相似，而且一般来说，在这2种模型之间有一种相似的映射关系。ADO“扩展”了DAO和RDO所使用的对象模型，这意味着它包含较少的对象、更多的属性、方法（和参数），以及事件。
+　　3种接口中最新的是ADO，它是比RDO和DAO更加简单、更加灵活的对象模型。对于新工程，应该使用ADO作为数据访问接口。
+　　不过，ADO并不是自动和现存的数据访问应用程序代码兼容的。当ADO封装DAO和RDO的功能性的时候，必须将许多语言要素转换为ADO语法。在某些情况下，这将意味着现存代码的某些功能的1个简单转换。在其它情况下，最佳的做法可能是用ADO的新功能重写该应用程序。同时要注意的是，ADO当前并不支持DAO的所有功能。ADO主要包括RDO风格的功能性，以便和OLE DB数据源交互，另外还包括远程和DHTML技术。
+　　一般说来，在ADO的演化过程中，马上把大多数DAO应用程序移植到ADO上可能为时太早，因为当前的ADO并不支持数据定义（DDL）、用户、组等。不过，如果只将DAO用于客户／服务器应用程序，而并不依赖于Jet数据库引擎或不使用DDL，那么现在就可以移植到ADO。（
+蒋翔宇（上海交通大学计算机科学与工程系200030）
+收稿日期：1999－07－10

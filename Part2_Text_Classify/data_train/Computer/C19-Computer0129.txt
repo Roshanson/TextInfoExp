@@ -1,0 +1,122 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第10期 Vol.19 No.10 1999
+
+
+
+浮动许可证加密系统的研制
+伍晓宇
+　　摘　要　本文以作者开发的浮动许可证加密系统为例，详细讨论了适合于Windows等操作系统的网络加密技术，包括计算机ID号的构造、通过TCP/IP网络对加密系统各个模块实现许可证控制等。
+　　关键词　浮动许可证，加密，TCP/IP，套接字
+DEVELOPMENT OF FLOATING LICENSE SYSTEM
+Wu Xiaoyu 
+Engineering College of Shenzhen University，Guangdong.Shenzhen 518060
+　　Abstract　Through floating license system developed by the author, the paper discusses software protection technology which is suitable for Windows platform and network. The content includes constructing PC ID, controlling the license of the secured system modules on TCP/IP network and so on.
+　　Keywords　Floating license， Encryption， TCP/IP， Socket
+1　前言
+　　计算机软件作为一种知识密集型的商品化产品，在开发过程中需要大量的人力、物力和财力，为开发程序而付出的成本往往是硬件价值的数倍乃至数百倍。然而，从软件的诞生开始，非法复制问题就一直困扰着软件生产商们，一项凝聚着众多技术人员多年脑力劳动的产品却在很短的时间被非法复制，这将会造成生产商的重大损失。由此软件保护技术应运而生。
+　　计算机网络软件加密无可避免地涉及到网络技术，浮动许可证(Floating License)技术正是为适应这一需要而产生。以下以作者在为新加坡国立大学设计的加密系统为例进行讨论，希望能起到抛砖引玉的作用。
+2　计算机ID号的构造
+　　计算机ID号即计算机身份证，它是计算机的标识，在各种小型机以上的高档计算机中往往提供了CPU ID值，可以用它来作为计算机的ID号。但是目前绝大多数微机都没有提供CPU ID值，由于在大多数情况下我们是以微机为研究对象，因此为它构造ID号就显得十分重要。
+　　在Windows操作系统广泛流行的今天，传统的以软硬盘指纹标记（例如许多资料上介绍过的磁道接缝等技术）作为PC ID的方法已不能适应要求，这是因为Windows操作系统运行于保护模式下，不允许用户程序直接进行许多中断级的程序操作。因此，必须寻求新的构造ID号的方法。
+　　很多人都知道安装于微机中的网卡都有一个唯一的、一般是6字节的物理卡号，它可以通过编写NetBios程序等方法读取，我们可以用它作为计算机ID号。网卡采用物理序号，它不但用于Windows操作系统，也可以应用于UNIX等其它操作系统之上。
+　　当机器中没有网卡时，建议可考虑用硬盘卷标号作为ID值。但是，每当硬盘进行格式化等操作后，卷标值会发生变化，这一点应当引起注意。因此，应尽量使用网卡号。另外，为了防止某些盗版者通过非法途径定制相同序列号的网卡，在构造PC ID时还可考虑加入其它硬件参数等信息。
+　　以下是作者编写的使用NetBios技术读取网卡号的一段Windows C程序代码。
+// 读取网卡号，其高、中、低位字(共6字节)分别保存于
+// AddrNumH、AddrNumM和AddrNumL中
+void GetAdapterNum( short * AddrNumH,
+short * AddrNumM,
+short *AddrNumL )
+{ 
+int i=0;
+ADAPTER―STATUS AStat;
+BYTE bRc;
+NCB ncb;
+PUCHAR ptr = (PUCHAR)&AStat;
+UCHAR HoldNetWorkName［20］;
+HoldNetWorkName［0］=′*′;
+memset(&ncb, 0x00, sizeof( NCB ) );
+memset(&AStat, 0x00, sizeof( ADAPTER―STATUS ) );
+ncb.ncb―command = NCBASTAT;
+ncb.ncb―length = sizeof(AStat);
+ncb.ncb―buffer = ptr;
+ncb.ncb―lana―num = 0;
+for( i = 0; i< 16; i++ )
+ncb.ncb―callname［i］ = HoldNetWorkName［i］;
+bRc = Netbios( &ncb );
+if( !( ( bRc == NRC―GOODRET ) ||
+( bRc == NRC―INCOMP ) ) ) return FALSE;
+*AddrNumH = AStat.adapter―address［ 0 ］ * 256 
++ AStat.adapter―address［ 1 ］ ;
+*AddrNumM = AStat.adapter―address［ 2 ］ * 256
++ AStat.adapter―address［ 3 ］;
+*AddrNumL = AStat.adapter―address［ 4 ］ * 256
++ AStat.adapter―address［ 5 ］;
+}
+　　实际应用时，可首先让用户测试将要在其上安装运行被加密系统的计算机的网卡号。关于测试方法，可由开发商发给用户一个用以上C代码编写的测试程序；也可以由用户直接运行windows系统的命令程序winipcfg.exe，对于Windows NT也有类似的命令，名称略有差别。
+　　用户测试出网卡号后通知软件开发商，开发商随后可在软件系统中嵌入以上C代码，并且加入比较用户网卡号的程序，确保软件每次运行时首先对网卡号进行确认。这样被加密系统只能在安装有对应网卡的机器上运行，从而保护开发商的合法权益。
+　　以上是工作站加密的办法，它同时也可以作为网络浮动加密技术的基础。
+3　浮动许可证核心技术
+　　图1是作者设计的Floating License系统的拓朴结构图，整个系统由开发商设置好后交用户安装在其网络中的各种机器上运行。图中左下角是加密系统的核心：浮动许可证服务器(FloatingLicense Server)，由服务器程序LicServer.exe对整个用户网络的License进行管理。
+
+图1　浮动许可证系统拓扑结构
+　　LicServer.exe在运行前必须校验它所在计算机(License服务器)的ID号，校验方法在第一节中已作了介绍。若校验不成功，作为系统核心的该服务器程序无法运行，整个被加密系统也就相应地不能正常操作，达到软件保护的目的。若服务器程序经校验成功后正常运行，它将等待客户机发来各种请求消息，并控制它们的运行状态。
+　　客户端的计算机机型可以是PC机、小型机和主机等，它们上面运行着开发商的被加密软件(例如商品化的CAD/CAM系统)的不同机型版本，其软件中都嵌套有一通信模块，每当被加密软件运行时，首先向浮动许可证服务器发送请求信息，请求信息可包括客户端用户名、登录模块号和登录时间等。服务器收到这些请求信息后，根据预先定义的规则，决定是否批准该客户登录，并向客户端发出回答信息。如果批准客户端运行动作，则被加密系统可以正常运行；反之，被加密系统立即退出，并给用户显示相应的提示信息。
+　　许可证服务器的管理范围可以是局域网、城市网甚至是遍布全球的Internet网络。
+表1
+
+模块号模块名最大登录用户数
+1CAD3
+2CAM2
+3SIMUL1
+
+　　例如，假设有一个将被加密的CAD/CAM系统包括3个模块，其License限定规则如表1所示。表1的限定规则及实时的License状态可以在服务器程序中用如下结构表达记录：
+　　struct ―　LicStat {
+char ModName［10］ ;
+// 模块名
+int LimUserNum; 
+// 模块最大用户数
+int CurUserNum; 
+// 模块当前用户数
+} LicStat = { "CAD", 3, 0,
+"CAM", 2, 0,
+"SIMUL", 1 , 0 };
+　　用户可以在网络中任何一台客户机上运行被加密软件，这就是所谓“浮动许可证”的含义。例如，用户1和用户2分别从网上任一客户机上登录2号模块(CAM模块)时，服务器在收到登录请求信号后，经检查确定未超过该模块登录的最大用户数(但已达到CAM模块的最大用户数2)，立即将当前模块的登录用户数递增到2，同时分别向用户1和用户2发出批准信号，使他们可以正常使用模块2，但当用户3从任一客户机上登录2号模块时，显然，这时服务器必须拒绝用户3对2号模块的使用。直到用户1和用户2中至少有一位退出2号模块的应用时，用户3才能正常进入模块2。其它模块的使用情况也完全相同，只是不同模块登录的最大用户数限制不一定相同。
+　　License服务器除完成上述工作外，还需要详细记录登录用户的资料，其资料可用以下结构记录：
+　　struct ―　LogTab {
+char UserName［132］;
+// 登录用户名
+long ClientID; 
+// 登录机器的ID值
+int ModNo; 
+// 登录模块号
+int Sock; 
+// 通信连接Socket号
+char lpszTime［32］; 
+// 登录时间
+} LogTab［MAXLOGNUM］;
+　　这个结构中保存的信息十分重要，有时在客户端可能会出现系统非正常退出的情况，例如系统崩溃或死机等。而此时服务器端该用户仍然占用License，这势必影响到其它用户对相同模块的登录。好在这个结构记录了所有登录用户的详细资料，这里，我们对这一问题的处理办法是，当下一次用户登录到来时，服务器首先根据结构中的信息对过去所有登录的客户进行一次检查，如果被检查的客户没有做出相应的反应，则确定对方已非正常退出，立即在服务器中将其资料清除，同时释放它占用的License。在这些工作完成后，再来处理本次登录用户的请求信号。
+　　浮动许可证系统中服务器端与客户端的通信可采用建立于TCP/IP协议之上的套接字(socket)编程，它不但可用于UNIX操作系统，也可以用于Windows操作系统中。从图2中可以反映在网络中管理License操作的基本思想。
+
+
+图2　套接字连接服务通信流程
+　　作者研制的License服务器端管理程序：LicServer.exe采用Win32 Console Application方法编程，没有使用任何图形界面，这样做的好处是，若浮动许可证系统的服务器运行于Windows NTServer操作系统的之上时，可应用有关Windows NT服务器的后台程序（Server）技术，将LicServer.exe程序运行于NT操作系统后台之中。另外，若将程序稍加修改，也可以运行于UNIX操作系统上。
+4　License状态的管理
+　　作者设计的浮动许可证服务器端程序LicServer.exe是整个加密系统的核心，为了提高程序的可移植性，它没有提供图形界面。但有时用户需要实时了解和管理整个系统的License状态，为此这里设计了程序LicStat.exe来完成这一工作，它需要与LicServer.exe交流License状态信息，并且可以方便地通过友好的图形界面将这些信息提供给用户，以便用户随时可以了解License的使用状态。
+　　状态管理提供以下功能：
+　　1) 反映当前占据License的登录用户信息。包括：User Name(登录用户名)、Socket No.(服务器为本次登录通信提供的套接字号) 、Time(登录时间)和Module No.(登录模块号)。该控键位于对话框上方，属于Control List型控键，它的ID值为IDC―USER―LIST。
+　　2) 反映当前不同模块License的状态信息。包括：Module No.(模块号)、Module、Name(模块名)、Current Count(相应模块当前被占用的License数)和Limit Count(相应模块的License限制数)。该控键位于对话框下方，属于Control List型控键，它的ID值为IDC―MODULE。
+　　3) 反映当前登录的用户总数。它是Static Text型控键，位于对话框的左方，其ID值为IDC―STATUS。
+　　4) 控制按键。包括：
+　　a. 按钮Exit，退出状态管理程序。
+　　b. 按钮Update Lic Stat，刷新License状态信息的显示。
+　　c. 按钮Reset Lic Stat，通知服务器程序LicServer.exe清除所有占据License的客户。
+　　d. 按钮More Info/Standard Info，对话框下面关于反映当前不同模块License状态信息的控键可以通过按钮More Info/StandardInfo卷起或拉下。
+5　网络防火墙与远程监控
+　　前面提到过本浮动许可证系统可运行于遍布全球的Internet网中，作者曾测试过让客户端的被加密程序运行于国内，License服务器运行于新加坡国立大学进行控制取得了成功，而且运行速度并不慢。但应该引起注意的是，在某些单位因安全原因设置有防火墙(fire wall)，需要特定的Socket操作端口信息才能通过。
+作者简介：伍晓宇　博士，副教授。主要从事金属塑性成形、CAD/CAM等领域的研究工作。
+作者单位：深圳大学工程技术学院　广东.深圳（518060）
+参考文献
+［1］　伍晓宇. C/C++语言与研究开发实践. 航空工业出版社，1999
+［2］　Marshall Brain. Win32 system services― the heart of windows NT， 1997
+收稿日期:1999-05-23

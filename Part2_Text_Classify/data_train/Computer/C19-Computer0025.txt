@@ -1,0 +1,87 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第6期 Vol.19 No.6 1999
+
+
+
+FoxPro的扩充功能
+金春　姚君遗　杨善林
+　　摘　要　本文讨论分析了FoxPro中的三种扩充功能。通过掌握和使用它们可以使开发人员在开发应用系统时充分发挥自己的能力，从而获得良好的人-机界面，增强应用系统的性能。
+　　关键词　模块，库结构工具箱(LCK)，DLL，API
+1　旨在扩充
+　　在FoxPro中开发应用程序时，有时会有一些特殊的应用，但是FoxPro本身的功能是有限的，它不能满足开发者的所有要求，这时就需要使用一些特殊的方法和技巧来帮忙。在FoxPro中有三种扩充功能，它们是使用LOAD和CALL调用二进制文件，使用基于库结构工具箱( Library Construction Kit，简称LCK)的API构件，使用Windows API函数(仅限于FoxPro For Windows)。
+2　二进制文件调用
+　　在FoxPro中，仍然具有Xbase所具有的调用二进制文件的功能。用LOAD和CALL命令可以调用用C或汇编语言编写的二进制模块。二进制模块可以通过引用或者值传送参数，通过参数或返回一个值得到返回值。在FoxPro中，与此有关的命令有LOAD、CALL、RELEASE MODULE三个。
+　　LOAD命令装入二进制过程到内存。可以同时装入16个文件(每个最多64K)到内存。CALL命令调用指定的已被装入的模块。RELEASE MODULE命令从内存释放模块。
+　　它们的语法分别为：
+　　LOAD <file> ［SAVE］ | ［NOSAVE］
+CALL <file> ［WITH <expC> | WITH <memvar>］ ［SAVE | NOSAVE］
+RELEASE MODULE <file>
+　　关于它们的详细说明这里不在描述，请查阅有关资料。下面是使用它们的例子：
+　　―　tx=′0′
+load testtx　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　&&装入模块
+call testtx with ―　tx　　　　　　　　　　　　　　　　　　　　　　　　　　&&调用模块
+if left(―tx,1)<>"1"
+?"特殊显示程序没有运行"
+return
+endif
+release module testtx 　　　　　　　　　　　　　　　　　　　　　　　　　　&&释放模块
+　　在此例中，testtx检查UCDOS的特殊显示程序是否已运行，应通过变量―tx得到值。
+3　使用基于库结构工具箱(LCK)的API构件
+3.1　FoxPro LCK
+　　Microsoft FoxPro为增强FoxPro的功能，向用户提供了基于库结构工具箱的API构件。它为生成和操作FoxPro变量、数据库和用户界面提供了函数集。以FoxPro LCK为基础，用户可以用C或C++语言实现对FoxPro的功能扩充，从而完成一些特殊的功能，如构造自己的事件处理器，定制自己的用户界面等。目前，FoxPro LCK支持Microsoft C(C++)、Watcom C开发环境。
+　　FoxPro LCK提供了以下几类C语言函数集：流输出函数、内存管理函数、FoxPro语句执行函数、字符串处理函数、返回值设置函数、数据库I/O函数、备注字段I/O函数、内存变量处理函数、低级文件I/O函数、用户界面控制函数、错误处理函数、编辑器函数等。
+3.2　使用基于LCK的API
+　　用户可以用C或C++编写自己的程序，然后可以用Microsoft C(C++) 7、Watcom C8.5以上编译器把它编译连接为连接函数库(FLL)。
+　　生成连接函数库后，在FoxPro中使用LCK的API非常简单，首先用set library to命令打开函数库，然后象调用其它FoxPro系统函数一样进行调用。SET LIBRARY TO的语法为：
+　　SET LIBRARY TO ［<file name> ［ADDITIVE］］
+　　它的具体说明略。
+　　例如，我们编写了一个程序myprog.c，其中的函数filelist()把给定目录的所有符合条件的文件名存储在缓冲区中，以字符串形式返回给FoxPro。
+　　　　…
+set library to myprog　　　　　　　　　　　　　　　　　　　　　　　　　&&打开函数库
+flist = filelist("C:\myappli\*.dbf")　　　　　　　　　　　　　　　　　　　&&调用函数
+　　…
+　　使用基于LCK的API的难度主要是连接函数库的开发。关于它的开发请参阅有关资料。
+4　使用Windows API函数
+4.1　Windows动态连接库（DLL）
+　　动态连接库（DLL）是Windows的一个重要概念，它是实时连接可执行的模块库，Wndows在应用需要的时候装入它。它允许Windows系统应用程序共享资源和代码，一个DLL是一个包含可以被所有Windows应用程序使用的函数的可执行模块。事实上，DLL是Windows的基础，几乎整个Windows系统是由DLL组成的，所有的设备驱动程序和Windows的系统文件GDI.EXE、USER.EXE、KERNEL.EXE都是DLL。DLL模块常用.DLL，.DRV，.FON，.EXE作为扩展名。但在FoxPro中，DLL文件的文件名对于连接程序库是FLL。
+　　调用Windows API可以极大地增强FoxPro的功能，如使用对话框，对鼠标进行控制、获得Windows目录和版本，使用Windows的图形函数进行绘图等。
+4.2　调用API函数
+　　FoxPro提供了FOXTOOLS.FLL供用户使用来调用Windows中动态连接库中的API，它本身也是一个动态连接函数库。在FoxPro中调用Windows API首先必须用set library to命令打开它，然后要用它提供的RegFn()函数注册要调用的API函数，注册成功后再用CallFn()函数调用它。
+　　RegFn()和CallFn()的用法分别为：
+FnNum = RegFn(FunctionName, ArgTypes,
+ReturnType, DLLName)CallFn(FnNum, Arg1, Arg2)
+　　关于它们的详细说明可以在FoxPro的\FOXPROW\GOODIES\FOXTOOLS下的FOXTOOLS.WRI中获得。
+　　CallFn()使用RegFn()返回的内存句柄，它必须传送与在RegFn()中声明的ArgTypes参数相同的参数数目和类型，否则将会显示错误信息而不能成功调用。
+　　所有的参数在缺省情况下除了字符串类型外，都使用值传送，除非用前缀字符@。
+　　下面是应用实例：
+　　1) 调用MessageBox()函数
+set library to SYS(204)+"foxtools.fll"　　　　　　　　　　　　　&&装入FOXTOOLS.FLL库
+　…
+msgboxRN= RegFn("MessageBox","ICCI",
+"I", "USER.EXE")　　　　　　　　　　　　　　　　　　　　　　　　　　　　　&&注册函数
+result= CallFn(msgboxRN, 0, "对不起，你是本系统非法用户，你无权使用本系统！", "警告", 0+ 16)　　　　　　　　　　　　　　　　　　　　　　　　　　&&调用函数并获得结果
+　…
+set library to　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　&&关闭库
+　　2) 其它例子
+　　交换鼠标左右键功能：
+　Fhandle=RegFn("SwapMouseButton", "I",
+"I","USER.EXE")
+result = CallFn(Fhandle,swapvalue)　　　　　　　　　　　　&&swapvalue为1交换,为0恢复
+　　获得Windows目录：
+　getwdir = RegFn("GetWindowsDirectory", "@CI", "I")
+bigstr = replicate(chr(0), 144)　　　　　　　　　　　　　　　　　&& 建立一个大字符串
+retlen = CallFn(getwdir, @bigstr, 144)
+　　关于以上API函数的语法请查阅有关资料。
+5　体会
+　　二进制程序非常灵活高效，它可以在低层介入应用系统，但程序编写起来比较麻烦，因此除非是特殊情况，一般不需要用它。基于LCK的API构件提供了进入FoxPro内部机制的一种途径，它能在较低的层次介入FoxPro应用系统的途径，能弥补FoxPro伪编译系统的缺点。但是，LCK程序的设计与调试也是比较复杂的。同时，LCK是需要单独购买的。
+　　Windows提供的API函数有400多个，能帮助解决绝大多数问题，而且使用方便可靠，不需要特殊的编程方法，因此使用这种方法是比较好的。
+　　如果能充分利用以上介绍的三种功能扩充可以解决很多问题，从而方便地开发出功能强大、人机界面友好、性能可靠的应用系统。
+作者简介：金春　硕士。主要研究方向：数据库、MIS、网络技术。
+姚君遗　杨善林　教授。主要研究方向：MIS、计算机控制技术。
+作者单位：合肥工业大学计算机网络系统研究所　安徽*合肥（230009）
+参考文献
+［1］　郑甫京，黄　伟，刘容江,译.FoxPro 2.5 For Windows使用指南.北京：清华大学出版社，1995
+［2］　王　旭，张　军，孙　燕,等译.Microsoft Windows 3.1程序员参考手册.北京：清华大学出版社，1993
+［3］　北京天方图书创作室，李振格,等.FoxPro函数与命令详解.北京：北京航空航天大学出版社，1994
+收稿日期:1999-01-15(修改稿)

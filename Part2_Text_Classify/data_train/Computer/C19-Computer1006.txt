@@ -1,0 +1,80 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+离散系统输出反馈强正实控制器综合
+曹永岩　　孙优贤
+摘　要　基于正实引理使用线性矩阵不等式(LMI)方法讨论了离散系统一般强正实控制问题的解， 给出了任意阶输出反馈强正实控制器的存在条件. 证明了给定离散系统可输出反馈强正实当且仅当三个LMI存在一个合适解，可低阶输出反馈强正实当且仅当带秩约束条件的三个LMI存在一个合适解. 
+关键词　线性离散系统，输出反馈， 正实性，线性矩阵不等式. 
+SYNTHESIS OF THE STRONGLY POSITIVE REAL CONTROLLER
+WITH OUTPUT FEEDBACK FOR DISCRETE-TIME SYSTEMS
+CAO YONGYAN　　SUN YOUXIAN
+(Institute of Industrial Process Control, Zhejiang University, Hangzhou 310027)
+Abstract　Based on the strongly positive real lemma, this paper presents a solution to the general strongly positive real control problem for linear time-invariant discrete-time systems using linear matrix inequality approach. The necessary and sufficiency conditions for the existence of an output feedback controller of any order are given. It is proved that for a general discrete-time systems, there is a strongly positive real controller if and only if three LMIs have a solution and there is a low order controller if and only if the LMIs constrained by a rank condition have a solution.
+Key words　Linear discrete-time system, output feedback, positive realness, linear matrix inequality.
+1　基本概念
+　　正实性是网络理论中的一个重要概念， 同时在系统和控制理论中的有关稳定性分析，超稳定性， 系统的稳定实现等方面都有很重要的应用. 如何构造一个反馈控制器使得闭环系统不仅内部稳定而且正实在鲁棒控制和非线性控制中具有重要的意义. 
+　　本文使用A⊥表示矩阵A的直交补，即满足以下性质，Null(A⊥)=Range(A)，A⊥A⊥T＞0. 不难发现A⊥存在当且仅当矩阵A具有线性相关行，A⊥不唯一. 
+　　定义1.［1，2］给定离散系统G(z)=C(zI-A)-1B+D，如果G(z)的所有极点在开单位圆内，且对于称G(z)为正实的(positive real, PR)；如果G(z)渐近稳定，且G(ejθ)+G*(ejθ)＞0称G(z)为严格正实的(strictly positive real, SPR)；如果G(z)严格正实且G(∞)+GT(∞)＞0. 称G(z)为强正实的(strongly positive real, ESPR). 
+　　引理1［3，4］.给定矩阵B∈Rn×m，C∈Rk×n,Q=QT∈Rn×n,rank(B)=m＜n,rank(C)=k＜n， 那么存在矩阵G∈Rm×k满足不等式
+BGC+(BGC)T+Q＜0,　　　　　　　　　　　　　　　 (1)
+当且仅当矩阵B，C，Q满足
+B⊥QB⊥T＜0, CT⊥QCT⊥T＜0.
+此时，所有满足上述不等式的G可由下式给出
+
+
+　　引理2.系统G(z)ESPR且A稳定，当且仅当下述等价条件之一成立. 
+　　1) 存在正定矩阵X使得如下LMI成立，
+
+　　2) 矩阵D+DT正定，且代数Riccati不等式(ARI)
+ATXA-X+(BTXA-C)T(D+DT-BTXB)-1(BTXA-C)＜0
+具有正定解XI.
+　　上述不等式之间的等价性很容易由Schur补证明. 这就是所谓的强(或称扩展严格)正实引理，将2)中的小于号改为小于等于号就成为所谓的正实引理， 见文献［1，2］. 
+2　主要结论
+　　首先研究如下离散系统的正实控制器的综合问题，
+　　　　　　　　　　　　(2)
+式中x表示n维状态；w表示m1维外部输入；u表示m2维控制输入；z表示p1维被控输出；y表示p2维测量输出；矩阵A，B1,B2,C1,C2,D12,D21为具有合适维数的常矩阵，且p1=m1. 为结论的描述简单，假定系统中没有冗余执行器和传感器，即BT2B2＞0,C2CT2＞0. 这里研究使得闭环系统稳定且强正实输出反馈控制器的存在条件与综合方法. 
+　　首先考虑静态输出反馈增益的综合，即控制器为u=Fy，此时闭环系统为
+x(k+1)=Aclx(k)+Bclw(k),z(k)=Cclx(k)+Dclw(k),
+式中Acl=A+B2FC2,Bcl=B1+B2FD21,Ccl=C1+D12FC2,Dcl=D11+D12FD21.
+　　定理1.存在静态输出反馈增益使得系统(2)ESPR稳定，当且仅当存在P＞0使得
+　　　　　　　(3)
+　　　　　　　(4)
+此时， 输出反馈增益可取为
+F=-ρBTΦCT(CΦCT)-1+ρS1/2L(CΦCT)-1/2,
+式中‖L‖＜1, ρ＞λmaxT(B⊥QB⊥T)-1B⊥Q)B+T],
+
+　　证明.由引理2知，闭环系统稳定且强正实当且仅当存在P＞0， 使得
+
+即BFC+(BFC)T+Q＜0. 由引理1，上式成立当且仅当B⊥QB⊥T＜0, CT⊥QCT⊥T＜0. 不难发现
+
+由Schur补，B⊥QB⊥T＜0当且仅当P＞0，并且(3)式成立. 同理有CT⊥QCT⊥T＜0当且仅当P＞0，并且(4)式成立. 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　证毕. 
+　　考虑nc阶动态输出反馈控制器此时闭环系统为
+
+式中
+
+　　定理2.给定系统(2)，存在一个nc阶动态输出反馈控制器F(z)使得闭环系统稳定且为强正实，当且仅当存在正定矩阵X，Y满足如下带秩约束条件的3个LMI
+　　　　　　　(5)
+　　　　　　　(6)
+　　　　　　　　　　　　　　　　　　(7)
+　　　　　　　　　　　　　　(8)
+　　证明.由于动态输出反馈控制器可以转化为相应的静态增益的设计，使用定理1可知，存在使得闭环系统稳定且强正实当且仅当存在正定矩阵P∈R(n+nc)×(n+nc)使得
+
+令
+
+则有
+
+代入上述不等式即可得到(5)，(6)式. 另外，由于由Schur补知它与(7)式等价. 当存在nc阶强正实控制器时，一定有
+
+必要性得证.充分性的证明比较简单，注意到LMI(6)-(8)存在解(X，Y)时，满足X-1-Y
+的分解P1∈Rn×nc,Pc∈Rnc×nc一定存在，这样就找到了满足定理1条件的广义系统静态输出反馈控制问题的解， 因而系统一定可nc阶输出反馈强正实. 　　　　　　　　　证毕. 
+1)　国家自然科学基金和浙江大学曹光彪高科技发展基金资助项目. 
+作者单位：浙江大学工业控制技术研究所，工业控制技术国家重点实验室　杭州　310027
+参考文献
+[1]　Sun W, Khargonekar P P, Shim D. Solution to the positive real control problem for linear time-invariant systems.IEEE T. Autom. Control, 1994,39(10):2034-2046. 
+[2]　Haddad W M, Bernstein D S. Explict construction of quadratic Lyapunov functions for the small gain, positivity, circle, and popov theorems and their application to robust stability. Part Ⅱ:discrete-time theory. Int. J. of Robust and Nonlinear Control, 1994,4:249-265.
+[3]　Iwasaki T, Skelton R E. Parametrization of all stabilizing controllers via quadratic Lyapunov functions. J. of Optim. Theory and Appl.,1995,85(2)291-307.
+[4]　Iwasaki T, Skelton R E. Linear quadratic suboptimal control with static output feedback. Syst. & Control Lett., 1994,23:421-430.
+收稿日期　1996-05-24

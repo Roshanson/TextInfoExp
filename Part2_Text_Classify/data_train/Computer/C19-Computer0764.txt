@@ -1,0 +1,82 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年　第25卷　第5期　Vol.25 No.5 1999
+
+
+
+
+连续非线性系统预测控制的次优性分析1)
+席裕庚　耿晓军
+摘　要　针对一般连续非线性系统，研究了有终端约束的稳定预测控制策略相对传统最优控制的次优性问题.通过分析预测控制的有限时域滚动优化性质，得到了预测控制次优性的上界，并且将该结果应用于连续线性系统，得到了一个量化的次优性评价指标.
+关键词　有限时域控制，预测控制，最优控制，次优性，连续非线性系统.
+THE SUBOPTIMALITY ANALYSIS OF PREDICTIVE CONTROL
+FOR CONTINUOUS NONLINEAR SYSTEMS
+XI Yugeng　GENG Xiaojun
+(Institute of Automation,Shanghai Jiao Tong University,Shanghai　200030)
+Abstract　Considering the general continuous nonlinear systems,the suboptimality of stable predictive control with terminal constraints is studied and compared with the traditional optimal control.By analyzing the property of receding finite-horizon optimization,the upper bound of suboptimality is obtained.The result is applied to linear systems,and a suboptimality quantized index is proposed.
+Key words　Receding horizon control,predictive control,optimal control, suboptimality, continuous nonlinear system.
+1　引　言
+　　滚动时域控制RHC(Receding Horizon Control)，作为预测控制的一种形式，采用有限时域滚动优化，能够实现在线求解控制律，多年来一直受到控制界的关注.早在七十年代Kwon和Pearson［1，2］就对线性时变系统的RHC进行了研究，证明了有终端约束的RHC系统的稳定性，并根据Riccati方程解的性质推出了RHC和最优控制的性能指标之间的关系，即RHC的次优性问题.Mayne等人［3，4］将终端约束引入非线性系统，研究了连续时间非线性系统的RHC策略，得到了其稳定性的充分条件，但没有分析其次优性.本文在此基础上分析了连续非线性系统RHC相对于无穷时域最优控制的次优性，并将这一结果应用于线性系统，得到了更量化的结论，覆盖了Kwon［1］的结果.
+2　问题描述
+　　给定连续非线性系统
+　(1)
+x(0)已知，x(t)∈Rn,u(t)∈Rm，f(0,0)=0.f(,)是连续的，且关于x是Lipschitz连续的.下面分别给出该系统的最优控制策略和有终端约束的RHC策略，它们均使系统稳定.
+　　1)无穷时域最优控制策略
+　　系统(1)的无穷时域最优控制律u(t):［0,∞)→Rm为下面问题的最优解：
+　(2)
+其中L满足如下条件：L(0,0)=0,且存在一非减函数γ:［0,∞)→［0,∞),γ(0)=0，使得对于所有(x,u)≠(0,0),0≤γ(‖x,u‖)≤L(x,u)成立.(‖.，.‖)为Rn×Rm上的范数).显然可以推知L(x,u)=0，当且仅当(x,u)=(0,0)，且有.
+　　2)有终端约束的RHC策略
+　　在t时刻，已知系统状态量x(t),求解如下有限时域优化问题：
+
+　(3)
+得到最优控制解为｛v*(τ;x(t),t),0≤τ≤T｝.而该时刻真正实施于系统的控制量为
+　(4)
+显然，t时刻的最优性能指标J*1(t)取决于x(t)，可以表示为Rn→R的映射
+J*1(t)=g(x(t)).　(5)
+　　可以看到，RHC得到的控制律和最优控制律不同，虽然其每一时刻的控制量都是有限时域问题(3)的最优解，但从全局性能指标(2)来看却不是最优的.
+3　非线性系统RHC的次优性
+　　在下文中，假设性能指标表达式(2)中L为连续函数，式(5)中的J*1(t)是连续、可微的次优胜结果如下：
+　　定理1.对于一般形式的连续非线性系统(1)，有终端约束的RHC系统对应于无穷时域最优控制性能指标(2)存在上界，其值为第一步滚动优化的有限时域最优性能指标.
+　　证明.如前所述，在RHC系统中，t时刻的最优控制律为｛v*(τ,x(t),t),0≤τ≤T｝，相应的状态轨迹记为｛z*(τ),0≤τ≤T｝，对应的性能指标为
+J*1(t)=L(z*(τ),v*(τ))dτ,且z*(0)=x(t),z*(T)=0.
+考虑t+Δt时刻下述控制律：
+
+该控制律在τ∈［0,T-Δt］时间内即为t时刻控制律的延续，故有z(T-Δt)=0，而在τ∈［T-Δt,T］时，因u(τ)=0，由f的性质可知，z(τ)=0,τ∈［T-Δt,T］，特别z(T)=0表示该控制律满足t+Δt时刻的终端约束条件，故为该时刻的可行控制，且其对应性能指标为
+
+记t+Δt时刻最优性能指标为J*1(t+Δt)，则有
+
+　(6)
+不等式(6)右端的x(t),u(t)分别对应于RHC系统在t时刻真实的状态量和控制量；左端根据假设条件可微，因此极限存在.将式(6)两端分别从t=0到t=∞积分，得到
+
+上式积分项为RHC策略作用于系统后对应于最优控制性能指标形式(2)的全局指标项，记为J*10；J*1(0)为初始时刻有限时域最优性能指标.又因RHC的稳定性［3］，J*1(∞)=0，因此
+　(7)
+　　注释.实际控制系统的设计常常不仅要求闭环系统稳定，而且要求闭环系统满足某些性能指标要求.文献［4］中针对不确定性线性系统，可以设计所谓保成本控制律，使闭环性能指标J≤xT0Px0,x0为系统初值，P为满足一定条件的正定阵，而该式和本文得出的预测控制全局性能指标的次优性关系相似.从这个角度也可以认为，预测控制实际上实现了一种状态反馈保成本控制，使闭环成本值也就是全局性能指标不超过某个确定的界.
+　　记系统(1)的最优控制性能指标(2)为J*0，则结合式(7)，应有
+J*0≤J*10≤J*1(0).　(8)
+下面两个推论给出了J*10与J*0的关系.
+　　推论1.有终端约束RHC的次优性和优化时域T的选取有关，T越大则次优性越佳.
+　　推论2.有终端约束的RHC对于全局优化控制有充分的逼近能力.
+　　以上推论不难证得.它们表明，增大优化时域T，有终端约束的RHC控制律可充分接近最优控制，而定理1给出的上界正是其接近程度的定量反映，因而可通过调整T得到相应的上界，据此来设计满意的RHC系统.
+　　将定理1应用于线性连续系统，可以得到下面的结果.
+　　推论3.对于线性连续系统有终端约束的RHC策略，对应于最优控制的性能指标存在上界，即
+J*10≤xT0P(0)x0,
+其中P(0)为Riccati方程
+　(9)
+的逆向积分结果.
+　　上述线性系统有终端约束RHC的次优性结果与Kwon等人早在1977年利用Riccati方程解的性质推出的结果是一致的［1］，但后者的方法只适用于线性系统.因此，本文的定理1具有更广泛的覆盖性.
+　　根据Riccati方程解的单调性，优化时域T越大，积分Riccati方程(9)得到的P(0)值越小，当T趋于∞时，P(0)的值递减为代数Riccati方程的解P.因此，线性系统带终端约束的RHC策略的次优性可用比值
+J0(x0)/J*0(x0)≤‖x0‖2P(0)/‖x0‖2P
+进行评价.其值越小，则次优性越佳.
+4　结束语
+　　最优控制求得的控制策略是全局最优的，而预测控制是有限时域的滚动优化，其得到的控制律相对于全局的最优控制是次优的.本文在此意义下针对一般形式的连续非线性系统，给出了有限时域滚动控制次优性的上界，并得出优化时域和次优性的关系.然后将上述结果应用于线性系统，得到了评价次优性的量化表达式.这些结果对预测控制的理论和实践都具有一定的意义.
+1) 国家自然科学基金资助项目(69774004).
+作者简介：席裕庚　1946年出生，1968年毕业于哈尔滨军事工程学院，1984年在德国获工学博士学位.现为上海交通大学自动化系教授、博士生导师.著有《动态大系统方法导论》，《预测控制》等书.主要从事复杂系统控制理论的研究.目前主要研究领域是复杂工业过程的优化控制及智能机器人控制.
+　　　　　耿晓军　1972年生.1996年于西北工业大学获硕士学位，现为上海交通大学自动化系博士研究生.主要从事非线性预测控制的研究.
+作者单位：上海交通大学自动化研究所　上海　200030
+参考文献
+1　Kwon W H,Pearson A E.A modified quadratic cost problem and feedback stabilization of a linear system.IEEE Trans.Automat.Contr.,1977,22(5):838－842
+2　Kwon W H,Pearson A E.On feedback stabilization of time-varying discrete linear systems.IEEE Trans.Automat.Contr.,1978,23(3):479－481
+3　Mayne D Q,Michalska H.Receding horizon control of nonlinear systems.IEEE Trans.on Automa.Contr.,1990,35(7):814－824
+4 　Petersen I R,Mcfarlane D C.Optimal guaranteed cost control and filtering for uncertain linear systems.IEEE Trans.on Automa.Contr.,1994,39(9):1971－1977
+收稿日期：1998-02-16
+修稿日期：1998-05-13

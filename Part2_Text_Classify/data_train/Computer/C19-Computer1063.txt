@@ -1,0 +1,55 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  Vol.24  No.5 1998
+
+
+
+一种基于多组传感器信息
+移动机器人的避障方法1)
+张明路　彭商贤
+摘　要　提出了一种基于多组传感器信息的移动机器人避障的新方法.该方法把多组传感器信息作为ART-2神经网络的输入，实现移动机器人对当前感知环境的快速识别和分类.在此基础上，设计了用于移动机器人在未知环境下避障的模糊控制器.试验证明了这一方法的有效性和实时性.
+关键词　移动机器人，避障，神经网络，模糊逻辑.
+A NEW APPROACH FOR MOBILE ROBOT OBSTACLE AVOIDANCE
+BASED ON MULTI-SONAR INFORMATION
+ZHANG MINGLU
+(Dept. of Mechanical Engineering,Hebei University of Technology, Tianjin 300130)
+PENG SHANGXIAN
+(Tianjin University, Tianjin 300072)
+Abstract　This paper presents a new approach for mobile robot to avoid obstacles based on multi-sonar information in an unknown environment. The approach takes multi-sonar information as the ART-2 neural network's inputs and quickly achieves identification and classification for the currently perceptual environment. Then, a fuzzy controller for mobile robot obstacle avoidance in an unknown environment is designed. In order to demonstrate the effectiveness and real-time ability of the proposed approach, we report a number of experimental results of mobile robot obstacle avoidance in an unknown environment.
+Key words　Mobile robot, obstacle avoidance, neural network, fuzzy logic.
+1　引言
+　　移动机器人为了能在未知或时变环境下自主地工作，应具有感受作业环境和规划自身动作的能力.为此，必须提高移动机器人对当前感知环境的快速理解识别能力及避障算法的鲁棒性.文献［1］应用神经网络技术实现了感知空间的划分和联想记忆，采用在线试凑法产生行动决择.但在未知环境下采用试凑法得到的行动指令有可能无效，所以要进行指令可行性和有效性验证.为提高避障算法的鲁棒性，基于模糊逻辑技术的移动机器人避障得到了深入的研究［2―4］.其方法是把多组传感器的信息直接作为模糊控制器的输入来实现移动机器人避障，这样，模糊控制器就有很多模糊规则［4］，降低了控制的实时性.为此，本文提出了基于多组传感器信息，利用神经网络技术实现移动机器人对当前感知环境的快速识别和分类，进而利用模糊逻辑技术实现安全避障的新方法.
+2　移动机器人对当前感知环境的快速识别和分类
+　　本文所采用的TIT-1型移动机器人上安装有三组超声波传感器，前方、左方和右方各一组，分别用于探测各自方向上障碍物的信息.为减少信息处理时间，提高时实性，每一组仅取距离信息最小的传感器为代表，这样就有三个信息作为描述当前感知环境的特征向量.
+　　本文以ART-2神经网络为基础，依据描述当前感知环境的特征向量来实现移动机器人对当前感知环境的识辩和分类.ART-2神经网络的输入可以是任意的模拟向量，它采用竞争学习机制，系统由特征表示场F1和类别表示场F2、两个短时记忆层STM及F1，F2之间的长时记忆层LTM组成.其工作原理［5］为：当有特征向量Xi(i=1,…,M)输入时，F2迅速产生相应的候选模式向F1反馈学习期望，并在F1中计算学习期望与输入模式的匹配度，该匹配度与警戒参数比较，确定输入模式是否属于F2的候选模式，若不是则向F2发出重置信号，F2重新搜索其它模式.该神经网络采用有监督学习和离线训练的方法，其参数值为
+　　M=3,F1中输入节点数；N=8,F2中输出节点数；e=0.05,误差限参数.
+　　在前述分析的基础上，给出了图1所示的环境识别和分类控制框图根据TIT-1型移动机器人上的超声传感器的布置情况，将当前感知环境的期望类别分为8类，如图2所示.建立相应的样本训练数据库，对ART-2网络进行离线训练.利用图1所示的控制方法，在未知环境下，移动机器人可以把其当前感知环境按图2所示的期望类别进行分类.
+
+
+图1　环境识别和分类控制框图
+
+
+图2　移动机器人当前感知环境的期望类别
+3　模糊控制器的设计
+　　基于移动机器人的控制要求，该模糊控制器共有三个输入，即当前感知环境的类别、障碍物距移动机器人的最小距离和移动机器人的速度；两个控制输出，即移动机器人的转向角及其加速度.由于障碍物类别为八个离散值，其值作为模糊输入量T，因此在点Ti处，其隶属度为1，其余各点的隶属度均为0.另外两个输入变量的模糊化是依靠隶属函数将真实物理量转变成模糊量，模糊距离D的语言值Dj为：VN，N，M，F，VF；模糊速度V的语言值Vk为：NS，S，M，Q；模糊转向角控制输出U的语言值为：LVB，LB，LM，LS，ZO，RS，RM，RB，RVB；模糊加速度控制输出的W的语言值为：QR，R，ZO，A，QA.上述模糊变量D，V，U，W的各模糊子集的隶属函数均采用正态函数.据专家经验，可以归纳出160条模糊控制规则，其形式为if(T is Ti and D is Dj and V is Vk) then (U is Uijk and W is Wijk)，式中　i=1,2,…,8,j=1,2,…,5,k=1,2,…,4.输出模糊控制量U，W可根据模糊推理合成规则得到，并采用重心法进行模糊处理，可求得精确控制输出，即移动机器人的转向角和加速度.
+　　根据前述的分析与讨论结果，设计出了在未知环境下，基于神经网络和模糊逻辑控制理论的用于移动机器人避障的模糊控制器，如图3所示.
+
+
+图3　移动机器人避障控制框图
+4　实验与结论
+　　为验证本文提出的理论和方法的有效性及可靠性，在室内未知环境下，对TIT-1型移动机器人的避障进行了实验，实验内容包括该移动机器人通过“U”型(图4(a))走廊以及在大厅内人为布置的一种障碍物(图4(b)).从图4可以看出，移动机器人可以安全地通过障碍物，而且在遇到障碍物转弯时，振荡较小，转弯时间较短，其原因是移动机器人的转弯指令是基于图2所示的环境类型，因此对环境识别迅速，控制实时性好.试验表明，TIT-1型移动机器人对未知环境的识别和分类准确可靠，在未知环境下，可实现无碰撞的安全运行，而且速度较快，控制算法的实时性好.
+
+
+图4　移动机器人避开几种典型障碍物的过程
+　　本文提出的方法避免了单独利用模糊逻辑控制实现基于多组传感器信息的移动机器人避障时，模糊规则数过多、实时性差等不足之处［3，4］.另外，由于本文把移动机器人的速度反馈到模糊控制器中作为一个输入，因此移动机器人的运行稳定性好，避免了环境类型发生变化时移动机器人的运动蠕动性.
+　　由于利用的传感器数量较少(三组共八个超声传感器)，因此仅限于比较规则的障碍物识别.如增加传感器的数量并优化其布局，则不仅可以识别不规则的障碍物，而且在计算时间几乎不增加的情况下，即可实现移动机器人对当前感知环境更为细致的理解、识别和分类，从而使移动机器人可以在杂乱无章的未知环境下实现安全无碰撞运行.因此，本文所提出的避障理论和方法具有较高的理论意义和实用价值.
+1)天津市高教局重点发展学科资助项目.
+作者单位：张明路　　(河北工业大学机械工程系　天津　300130)
+　　　　　彭商贤　　(天津大学机械系智能机械研究所　天津　300072)
+参考文献
+　1　Dubrawski A, Crowley J L. Learning locomotion reflexes: a self-supervised neural system for a mobile robot. Robotics and Autonomous System, 1994, 12：133―142
+　2　Maeda M, Maeda Y, Murakami S. Fuzzy drive control of an autonomous mobile robot. Fuzzy Sets and Systems, 1991, 39:195―204
+　3　Nagai Y, Enomoto N. Fuzzy control of a mobile robot for obstacle avoidance. J. Inf. Sci., 1993, 45(2):231―248
+　4　Patrick Reignier. Fuzzy technique for mobile robot obstacle avoidance. Robotics and Autonomous System, 1994, 12:143―153
+　5　Carpenter G A, Grossberg S. ART-2:self-organization of stable category recognization codes for analog input patterns. Applied Optics, 1987, 26(23):4919―4930
+收稿日期　1996-11-14

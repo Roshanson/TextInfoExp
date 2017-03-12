@@ -1,0 +1,129 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第10期 Vol.19 No.10 1999
+
+
+
+用ASP服务器组件实现Web页面上的随机图形显示
+陈刚
+　　摘　要　ASP是交互式Web页面、Web数据库应用的重要技术，ASP服务器组件可以进一步扩展ASP的功能。本文用一个ASP服务器组件实现了Web页面上的随机图形显示。
+　　关键词　ASP，服务器组件，Web页面，图形显示
+1　ASP服务器组件
+　　ASP服务器组件（Server Side Component）实际上是运行在服务器上的一个DLL，它可以完成常规DLL胜任的任何任务。不同之处是：它由ASP页面调用、并以Web页面为交互对象，读入用户的输入（Web页面上各输入域的值），处理后返回结果到Web页面。
+　　这些交互当然都要通过Web服务器作为中介。ASP服务器组件可以用VB、VFP、VC++、C++ Builder、Delphi等任意支持COM技术的语言编写。由于它可以利用服务器的任何资源，其功能仅受限于你的想象力。
+　　目前支持ASP的有IIS（Internet Information Server，WinNTServer 4.0自带）和PWS（Personel Web Server，用于Win95环境）。并要求安装Visual InterDev中的Server Components：FrontPage Server Extensions、 Active Server Pages和ClientComponents：Visual InterDev Client。可以把这些都安装在同一台机器上，这样可以在单机上方便地编程、调试。
+2　Web页面上的随机图形显示
+　　一个漂亮的图形可以使Web页面更具吸引力，使人流连忘返。但一旦我们的Web页面设计完成，这个图形也就确定下来。换言之，除非我们重新修改HTML代码，则每次打开这个页面，看到的都是同样一个图形。那么能否让用户在每次进入我们的站点时，都能看到不同的画面呢？例如，每次这个Web页面被访问时，从一个包含若干图形文件的文件夹中随机选取一个，在该页面上显示，使访问该页面的用户每次都会得到不同的视觉享受。
+　　这个要求用HTML、DHTML或VB Script语言无法做到。这里，我们用一个ASP服务器组件实现之。
+3　ASP服务器组件的实现
+　　下面用VB5.0开发一个ActiveX DLL），以实现Web页面上的随机图形显示，相信它会为你的站点增色不少。
+　用VB5.0建立ActiveX DLL
+首先在VB5.0中新建一个Project ，类型为ActiveX DLL ：
+设定属性如下：
+Project Name：RandShowFile，
+ClassModule Name：Randimage
+其中类Randimage的代码如下：
+Option Explicit
+Private mvarFilePath As String ′local copy
+Public Property Let FilePath
+(ByVal vData As String)
+′设置文件路径
+If Right(vData, 1) = "/" 
+Or Right(vData, 1) = "\" Then
+mvarFilePath = vData
+Else
+If InStr(vData, "/") <> 0 Then
+mvarFilePath = vData & "/"
+Else
+mvarFilePath = vData & "\"
+End If
+End If
+End Property
+Public Property Get FilePath() As String
+′取得文件路径
+FilePath = mvarFilePath
+End Property
+Private Sub Class―Initialize()
+mvarFilePath = ""
+End Sub
+Public Function Show(Optional ByVal 
+Extension As String)
+As String
+′从以指定文件路径中随机选取并返回一个文件名
+′参数Extension指定文件的扩展名
+Dim MyPath As String
+Dim MyName As String
+Dim List() As String
+Dim FileCount As Integer
+Dim n As Integer
+On Error GoTo BadNews
+If Len(mvarFilePath) <= 1 Then
+Show = "NoFilePathSpecified "
+Erase List
+Exit Function
+Else
+If IsMissing(Extension) Then
+Extension = "*.*" 
+′如果扩展名没有指定，则默认为*.*
+End If
+MyPath = mvarFilePath & Trim(Extension) 
+′ Set the path.
+MyName = Dir(MyPath, vbNormal) 
+′ Retrieve thefirst entry.
+End If
+FileCount = 0
+ReDim List(10)
+Do While MyName <> ""
+List(FileCount) = MyName
+FileCount = FileCount + 1
+If FileCount >= UBound(List) Then
+n = UBound(List) + 10
+ReDim Preserve List(n)
+End If
+MyName = Dir()
+Loop
+If FileCount >= 1 Then
+Randomize ′ 初始化rand()函数，
+否则每次将产生相同的数字
+n = Int(FileCount * Rnd())
+′ 产生在1 和list1.listcount 之间的随机数.
+Show = List(n)
+Erase List
+Exit Function
+Else
+BadNews:
+Show = "NoFileFound"
+Erase List
+End If
+End Function
+　　在编译之前，注意要在此Project中加入一个Module并在其中加入代码
+　　Sub Main()
+End Sub
+　　然后在菜单Project | RandShowFile Projectise…引出的对话框中，设Startup Object为Sub Main。最后在菜单File中，选Make Randimage.dll。到此，我们的Server Side Component 就开发完成，并且它已自动注册在机器上。
+4　在ASP页面中使用服务器组件
+　　下面将建立一个ASP页面以测试我们的Server SideComponent。
+　　启动Visual InterDev，开始一个新的工程：New Projects，然后选取Web Project Wizard，在Project Name中输入TestRandimage，点击OK后，Visual InterDev产生一些辅助文件，为新的工程做好准备，然后自动打开该工程。为了方便测试，拷贝几个图形文件到Images文件夹中，文件类型可以是浏览器支持的任意图形文件，如GIF、JPG、BMP等。
+　　在该工程中建立ASP页面，点击菜单File | New ，在New 对话框中选Files | Active Server Page ，并指定其名字：Randimage.asp。Visual InterDev将会为我们产生一个空的框架，在其中用手工加入代码。完成后的代码如下：
+<%@ LANGUAGE="VBSCRIPT" %>
+<html>
+<head>
+</head>
+<body>
+<h5>测试randimage 组件，随机显示一个图形文件<h5>
+图形文件路径: <%=server.mappath("images")%><br>
+<%
+set ox=server.createobject
+("randshowfile.randimage")′实例化组件
+ox.filepath=server.mappath("images")
+%>
+<img src="<%=ox.filepath&ox.show%>">
+<%set ox=nothing ′使用后释放组件%>
+</body>
+</html>
+　　由于Web页面使用的路径（URL）都是虚拟路径（VirtualDirectory），必须使用server.mappath()将其转换到物理路径（Physical Directory）。例如，此处的图形文件夹images的虚拟路径是：//Servername/TestRandimage/Images（其中Servername是你的Web服务器的名字），其对应的物理路径是C:\Inetpub\wwwroot\TestRandimage\Images 。如果不把Images映射到物理路径则组件找不到该文件夹，无法正常工作。
+　　代码完成后测试之，注意到在每次打开或刷新该页面时，会有一个不同的图形显示在上面。
+5　效果
+　　使用Server Side Component可以大大丰富Web应用的功能、提高编程效率；完成HTML或VBScript等不易完成的任务；封装特定的商业逻辑等。与Java Applet相比，它直接在Web Server 上执行，其执行结果作为HTML页面的一部分下载到用户端，用户无法分辨他所看到的界面元素是直接的HTML元素，还是Server Side Component的执行结果。这就免去了附加的Applet的下载过程和其在用户端的执行过程。
+作者简介：陈刚　硕士，讲师。主要研究方向：数字信号处理、图像处理、计算机控制系统。
+作者单位：重庆出版社电脑中心　重庆（400016）
+收稿日期:1999-05-05(修改稿)

@@ -1,0 +1,67 @@
+计算机工程
+COMPUTER ENGINEERING
+1999年 第25卷 第12期 vol.25 No.12 1999
+
+
+
+分布式数据库设计中数据和操作的分配
+李石君　王汉飞　周洞汝
+　　分布式数据库的开发是为有效管理组织中分布在不同站点的数据，在分布式数据库中全局概念关系模式被分区成几个片段，每个片段在系统中可能具有几个副本，每个副本储存在不同的节点，分布式数据库中关键的问题是数据和操作的分配，数据的分配定义什么数据储存在什么节点，操作分配定义操作处理在哪里被执行，数据分配和操作分配不是独立的问题，必须同时解决。目前，已提出了一些分布式数据库设计模型，这些模型中有的假设是完全连接的网络环境，有的假设星型网络环境且所有文件在中心节点都有一个副本，文献[1]采用静态和动态的启发式算法讨论了分布式数据库中数据的分配，但没有考虑更新操作和并行控制，文献[2]提出的模型首先分解查询成查询步，然后分配文件和查询步到节点，但其系统费用模型过于简单，文献[3]扩展了文献[2]的工作，讨论了文件的副本，其系统费用模型较文献[2]完善，本文主要扩展了文献[3]的工作，提出了一个实用的分布式数据库设计模型。
+1 数据分配和操作分配
+　　在分布式数据库设计模型中已知域为全局关系概念模式，和查询指定(用户查询和更新要求)，分布式数据库设计模型的解决方案为：网络设计、数据分配、操作分配和局部数据库设计，网络设计构成解决方案的环境，通常假设已知，此处不讨论局部数据库设计，因此分布式数据库设计模型中已知全局关系概念模式、查询指定和网络设计，解决方案为：数据分配，操作分配。
+　　查询指定描述：
+　　class CQuery{CString m_query_id；查询号 
+　　CString m_type；查询类型(检索或更新)
+　　CString m_originates_note_id；发出查询请求的节点
+　　int m_frequence；发出该查询请求的频率};
+　　网络描述(节点和连接)：
+　　class CNode{CString m_node_id；网络节点号
+　　int m_CPU_capacity；CPU处理能力
+　　int m_unit_CPU_cost；单位CPU费用
+　　int m_I/O_capacity；I/O能力
+　　int m_unit_I/O_cost；单位I/O费用
+　　int m_storage_capacity；储存能力
+　　int m_unit_storage_cost；单位储存费用};
+　　class CLink{CString m_node_id1；相连网络节点1号
+　　CString m_node_id2；相连网络节点2号
+　　int m_speed；网络速度 int m_capacity；网络带宽
+　　int m_unit_cost； 单位传输费用 }；
+　　该全局关系概念模式为R1，R2，...Rt，查询指定为CQuery Q1，Q2，...Qs，网络节点CNode N1，N2，...Nn分布式数据库设计方法为首先分析查询指定对全局概念模式分段，然后每一个查询被分解成分段上的简单查询步，最后使用最优模型得到系统费用最低的数据分配和操作分配。
+1.1 全局关系分段及复制
+　　一个关系r分段为r1，r2，...rn，即这些分段包含足够的信息能重构关系r，关系分段包括水平分段和垂直分段，水平分段被定义为全局关系模式上的一个选择操作，设P为谓词，分段ri可表示为ri=σp(r)，我们可以利用关系r的所有分段的并来重构关系r，垂直分段涉及关系模式的属性的子集 R1，R2，...Rn，R=R1∪R2∪...∪Rn 每一分段可表示为：
+　　　　　　　　　　　　ri=πRi(r)
+　　我们可以利用关系r的所有分段的自然连接来重构关系r，在分布式数据库设计模型中可以利用查询指定来对全局关系进行分段，分段的原则是尽量使操作局部化，以减少通信开销。
+　　例如：银行系统中有全局概念模式：Account(branch-name,account-number,customer_id,balance) customer(customer_id,customer_name
+,customer_address,city)
+　　假设银行系统有3个站点：总部HQ和地区A，地区B
+　　查询指定中有：Q1，SELECT branch-name,account-number,balance
+　　　　　　FROM Account
+　　　　　　WHERE branch-name=Q2,SELECT customer_id,customer_name,account-number,balance
+　　　　　　FROM Account,customer
+　　　　　　WHERE Account.customer_id=customer.customer_id
+　　　　　　AND account-number=[specified]
+　　利用查询指定Q1，按地区A和地区B可以将全局关系Account分段为A1=σbranch-name=”A”(Account)
+　　A2=σbranch-name=”B”(Account)
+　　同上可以利用查询指定Q2，按地区A和地区B将全局关系customer分段为C1和C2。
+　　分段的复制：分段复制即数据分配是指关系的一个副本被储存在两个或两个以上的站点，复制能提高可获得性、可靠性和并行性，但增加了更新操作的复杂性，对给定的分段和网络站点存在不同的复制策略，分段复制表示为X=(xij)，xij表示分段的分配情况，若第i个分段存储在第j个节点则xij=1，否则xij=0，上例中分段复制的例子：A1储存在HQ、A、B，A2储存在B，C1储存在HQ、A、B，C2储存在B，我们的目的之一是寻求最优的分段复制策略，即数据分配。
+1.2 查询分解和操作分解
+　　当分段复制策略确定后，查询指定首先从副本中选择执行查询的副本，然后分解查询指定为所选择副本上的简单查询步。对于涉及两个分段的类型为检索的查询操作可分解为以下步：
+　　1)给储存第一个分段的节点发消息以获得读允许，2)在第一个分段执行查询要求的选择和投影操作，3)给储存第二个分段的节点发消息以获得读允许，4)在第二个分段执行查询要求的选择和投影操作，5)使用连接或并组合在2)和4)中产生的数据结果，6)送结果到查询请求节点。
+　　基于2PL一个更新操作可分解为以下步：
+　　1)给储存该分段的副本的所有节点发更新锁请求消息，2)接受更新锁确认消息，3)送更新内容到所有节点，4)执行局部更新操作，5)从每一节点接受更新确认消息，6)给每一节点发释放锁消息。
+　　查询分解的查询步描述：
+　　class CQuery_Step{CString m_query_id;查询号
+　　CString m_step_no;查询步号
+　　CString m_opration;操作};
+　　例如：对于查询指定Q2，在节点1发出的检索节点2上的顾客的查询，其副本选择和查询分解以及操作所在节点的选择可以采用以下策略，C2从节点2，A2从节点2，Select或Project在节点2，Select或Project和Combine在节点2，传输结果到节点1，Final step在节点1，查询所选择的副本可以表示为：Z=(zkij)，zkij表示查询所使用的副本情况，若第k查询使用储存在第j个节点的第i个分段，则zkij=1，否则zkij=0，操作分配可以表示为Y=(ykmj)，ykmj表示查询步在哪一节点执行，若第k查询的第m步在第j个节点上执行，则ykmj=1，否则ykmj=0。
+2 最优模型
+　　对给定的分段复制策略，即给定的X，以及给定的副本选择和操作选择，即给定的Z和Y，可以确定系统费用的计算公式[3]。我们选择的目标是使系统操作费用包括通信费用、磁盘I/O、CPU处理、储存费用最低，系统操作费用为：
+　　Cost=ΣkΣjf(k,j)Σm(COM(k,j,m)+IO(k,j,m)+CPU(k,j,m))+ΣtSTO(t)
+　　此处f(k，j)表示每一单位时间在节点j发出的第k查询的频率，COM(k,j,m),IO(k,j,m),CPU(k,j,m)分别表示在节点j发出的第k查询的第m步的通信费用，磁盘I/O和CPU处理时间，STO(t)表示每一单位时间在节点t的储存费用，其计算详情见文献[3]，对每一确定的数据分配和操作分配，即给定X、Y、Z，可以计算出系统费用Cost，Cost是X、Y、Z的函数，因此在网络节点的磁盘I/O、CPU处理和储存能力以及通信能力限制条件下，可以求出X、Y、Z，使得系统费用最小，计算方法可以采用启发式算法[1]和演化算法[3]。
+3 结束语
+　　本文讨论了分布式数据库设计中全局概念模式的分段和分段副本的分配以及查询操作对副本的选择和操作节点的选择，目的是得到最优的数据分配和操作分配模型，使得系统操作费用包括通信费用、磁盘I/O、CPU处理、储存费用最低，本模型对实际的分布式数据库设计具有指导意义，本模型可以进一步扩展，以包括通信队列延迟和局部数据库操作。
+作者单位：武汉水利电力大学计算机科学系，武汉430072
+参考文献
+1 Apers P M G.Data Allocation in Distributed Database System. ACM Trans. on Database Systems,1988,13(3):263-304
+2 Cornell D W. Yu P S. On Optimal Site Assignment for Relations in the Distributed Database Environment. IEEE Trans. on Soft- ware Engineering,1989,15(8):1004-1009
+3 March S T,Rho S.Allocating Data and Operations to Nodes in Distributed Database Design.IEEE Trans.Knowl Data Eng.,1995, 7(2):305-316

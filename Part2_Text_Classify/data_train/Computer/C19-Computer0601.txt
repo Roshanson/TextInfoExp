@@ -1,0 +1,136 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+广义可镇定连续时延系统的通用
+连续线性控制器设计
+M de la Sen　罗宁苏
+　　摘　要　讨论确保闭环线性时延系统在Lyapunov意义下全局一致稳定的通用线性控制器的设计问题.文中给出的通用镇定控制器适用于有限、无限和时变的点型、分布型及混合型等各类时延系统.
+　　关键词　时延系统，点型时延，分布型时延，稳定性，镇定控制器.
+ON THE DESIGH OF UNIVERSAL STABILIZING CONTINUOUS
+LINEAR CONTROLLERS WITH DELAYS FOR GENERALIZED
+DELAYED CONTINUOUS STABILIZABLE SYSTEMS
+M dE lA SEN　　LUO NINGSU 
+(Dpto. Electricidady Electrónica, Universidad del País Vasco, 48940 Leioa, Bizkaia, SPAIN)
+Abstract　This paper deals with the design problem of generalized linear stabilizing controllers for linear systems with after-effect so that the resulting closed-loop system is globally uniformly asymptotically stable in the Lyapunov's sense.The stabilizing controllers are universal in the sense that they include the usual delays (namely, point, distributed and mixed point-distributed delays) which can be finite, infinite or even time-varying.
+Key words　Delay systems, point delays, distributed delays, Lyapunov's stability, stabilizing controllers.
+1　引言
+　　微分差分方程广泛应用于时延微分系统(含滞后效应的系统［1］)的建模.通过对常微分方程的标准Picard-Lind?loff和Cauchy-Peano定理［2，3］的推广，可解决该类系统唯一解的存在性问题［1］.文献［4］分析了开环微分系统的Lyapunov稳定性和周期解的轨道稳定性.文献［3－5］指出时延系统的可控可观性概念间的相关等价性与无时延系统相比，并非十分直接.对于同量时延系统的设计问题，文献［5］证明：若系统谱可控，则存在一个含时延的反馈矩阵使得单输入闭环系统亦可控.近年来，许多学者研究了时延系统的镇定性和稳定性问题［1，6－13］.通常采用以下两类稳定性测试方法：基于单/多变量时延系统的特征多项式的根配置［5］，或将时延系统视为环上的1-D模型.对于同量或非同量时延系统，文献［6］采用n-D(n≥2)模型进行稳定性测试.本文将研究点型、分布型、混合型等各类含状态和输入时延系统的镇定性问题.提出了一类新颖的含上述同类型时延的通用控制器.在以下章节中，用SP，SD，SED和SVD简记点型、分布型、指数分布型和无限Volterra分布型的时延系统.
+2　时延系统
+2.1　点型时延系统
+(SP):(t)=A(t)x(t)+A0(t)x(t-h)+B(t)u(t)+B0(t)u(t-h′), t≥0,　　　　　(1)
+其中x(t)∈Rn为轨迹值；u(t)∈Rm(m≤n)为控制矢量；xt(θ)=x(t+θ); ut(θ′)=u(t+θ′); θ∈［-h,0),θ′∈［-h′0);正参数h,h′分别表示系统的内、外时延；A( . )，A0( . )为(n×m)矩阵函数；B( . )，B0( . )为含实元的(n×m)矩阵函数；初始轨迹x(θ)=x0(θ);θ∈［-h,0)为连续或绝对连续有界函数.
+2.2　分布型时延系统
+(SD):(t)=A(t)x(t)+xt+B(t)u(t)+ut, t≥0,　　　　　　　　　(2)
+其中x( . )，u( . )，A( . )，B( . )，x0( . )的定义同SP系统；算子和定义为=,,α( . )，β( . )为BV(［-σ,0);Rn×n),BV(［-σ′,0);Rn×m)上的矩阵(或标量)有限测度，BV为一类有界变分且局部可积的矩阵测度.
+3　初始结果
+　　将SD(s),SED(s)系统简化为SP(s)系统，可得时不变SD(s),SED(s)系统的等价描述.
+引理1.
+　　(i)对于SED系统有
+　(3)
+其中u(t)=0;t＜0,x0(t)=(t);∈AC(［-h,0］;Rn);t∈［-h,0］.采用广义SP系统可将(3)式等价描述为
+　　　　　　　(4)
+其中(t)=［xT(t)xT1(t)uT1(t)］T;0(t)=［T(t)OTOT］T; t∈［-h,0］,x1( . )∈Rn,u1( . )∈Rm;=［BTOTIm］T;
+　　　　　　(5)
+对于自由运动系统，可用扩展状态矢量=［xT…xT1］T∈R2n进行描述，其中在区间［-h,0］上x0(t)=［T(t)…OT］T;
+　　　　　　　(6)
+　　(ii)若把方程(3)右侧的两积分项变为及,则当σ=h,σ′=h′时命题(i)仍成立.
+　　一般的有限时延系统可含点型和分布型内、外时延
+(SPD):(t)=A(t)x(t)+A0(t)x(t-h)+xt+B(t)u(t)+B0(t)u(t-h′)+ut, t≥0,　　(7)
+若→t,→t,则时延与时间相关.
+4　变时延SPVD系统
+　　变时延SPVD系统是一类含时变点型和Volterra卷积型时延的时变系统
+　
+　　　(8)
+其中u(t)=0, t＜0; x( . ), u( . ), y( . )分别为n,m,p维矢量.作者在本文中提出了下列动态控制器：
+　　　(9a)
+　　　(9b)
+(9c)
+up(t)=Cp(t)zp(t)+Dp(t)ur(t), uf(t)=Cf(t)zf(t)+Df(t)y(t),　　　　　　(9d)
+u(t)=uc(t)=Cc(t)zc(t)+Dc(t)［up(t)-uf(t)］.　　　　　　　　(9e)
+其中hf( . ),h′f( . ),hp( . ),h′p( . ),hc( . ),h′c( . )代表时延；zf( . )，zp( . ),zc( . )代表反馈控制器、预补偿器和前馈控制器的状态矢量，其维数分别为lf,lp,lc,lf,lp,lc,相应的初值区间分别为［-hf(0),0］,［-hp(0),0］,［-hc(0),0］;uf( . ),up( . ),uc( . )分别为mf=mp,mc=m维的动态补偿器(9)的输出；ur为mq维的参考信号.动态控制律(9)可写为以下紧凑的形式
+u(t)=［I+Dc(t)Df(t)D(t)］-1{Cc(t)zc(t)+Dc(t)［Cp(t)zp(t)　　　　　　
+-Cf(t)zf(t)-Df(t)C(t)x(t)+Dp(t)ur(t)］} , 　　　　　　　　(10)
+　　　(11)
+其中z(t)=［zTpzTczTf］T,且假设以上方程右侧中的逆矩阵存在
+(12a)
+　　　　　　(12b)
+F1(t)=Diag［A0p(t)OO］,F2(t)=Diag［OA0c(t)O］,F3(t)=Diag［OOA0f(t)］;(12c)
+F5(t)=Diag［OTOTETf(t)］,F7(t)=［ET(t)OTOT］T,F8(t)=［OTDTp(t)ETc(t)OT］T;(12d)
+F9(t)=［OT-DTf(t)ETc(t)OT］T, F10(t)=［E′p(t-τ)DTp(τ)ETc(t-τ)OT］T;　(12e)
+F11(t)=［OT-DTf(t)MTc(t)MTf(t)］T, F12(t)=［MTp(t)DTp(t)MTp(t)OT］T; 　　(12f)
+F13(t-τ)=［OTDTf(τ)ETc(t-τ)E′f(t-τ)］T .　　　　　　(12g)
+在考虑有限区间积分的情形下，可对有限分布型时延采用类似于方程(8)的方式进行处理.完整的闭环系统如图1所示.
+
+图1　闭环控制系统
+5　扩展SPVD系统的调节稳定性――主要结果
+　　假设矩阵函数H(t),K(t)在［0,∞］上连续可微，并记=:［xTzT］T,=:［uTT］T,=:［yT…zT］T分别为扩散系统的状态、控制和输出，可用以下扩展系统对SPVD系统和相应的控制器方程(8)-(12)进行描述.
+　　(13a)
+(13b)
+　　(14a)
+　　(14b)
+　(14c)
+　　(14d)
+　(14e)
+　　定理1.　若扩展闭环SPVD系统(13)，(14)满足以下假设：
+　　1)且(t)→0，t→∞.其中;为一矩阵函数，其矩阵元满足L1(［0,∞);R),即成立，,1为常值对称正定矩阵；
+　　2)通过选择扩展系统和控制器增益，使和为常值矩阵；
+　　3)及I+Dc(t)Df(t)D(t)为非奇异矩阵；
+　　4)系统和控制器中的时延为时间导数已知的时间函数，则可知自由闭环系统(即在［0，∞)上ur≡0)的零解为全局渐近稳定，当且仅当下述Lyapunov方程对一充分大的q∈R+和满足假设(1)-(3)的常值矩阵
+　(15)
+存在解矩阵=T＞0，其中i(t)=:i(t)(i=1,2,…，5)，0(t)=:0(t),6(t)=(t)(t-h′(t))；若假设(1)减弱为，则系统保持简单的Lyapunov稳定性.
+6　控制器设计和数字仿真例子
+　　控制器设计将基于对方程(14)中的矩阵(t)的综合而进行.预选定对称正定矩阵，1及标量q∈R+，并保持定理1中的其余条件.首先采用Kronecker积对(m+l)×(n+l)维扩展矩阵(t)进行计算，并使预先选定的输出矩阵C与方程(14a)右侧的未知项分离.具体步骤如下：
+　　步骤1.计算(t)
+　　预先选定充分大的标量q∈R+和矩阵,1,采用左Kronecker积方法将方程(14)中的未知矩阵(t)改写为矢量形式.首先注意到存在酉阵U使得T=U,=［T1T2Tn+l］T及
+　(16)
+其中矢量v=［vT1vT1vTn+l］T由矩阵V的行构成；
+(17a)
+　　　　　　　　　　　(17b)
+方程(16)中的系数矩阵的维数为(n+l)2×(m+l)(n+l)，且m≤nrank()≤(m+l)×(n+l).
+　　策略1(时不变控制器).
+　　预先选定′中的控制器参数，并在方程(16)中作相应的分量消除，将未知向量转换成′，则dim(′)=dim()=(m+l)(n+l)-m(p+l)=n(l+m)+l2-mp.存在酉阵使得，其中1已知并可通过Kronecker积从′中算得，将方程(16)改写为
+　(18)
+使得″为矩阵′按行排列后的分量.由(18)式可得
+2′=v-11 ,　　　　　　　　　　　　(19)
+其中rank(2)≤n(l+m)+l2-mp.若m＞n则至少存在一个解′，当且仅当rank(2)=rank［2v-11］(Froebenius定理)成立；若m≤n，通过设计(n+l)×(n+l)矩阵1并选择矢量v，使得,则上述秩条件始终成立，其中2( . )表示l×(l+n)矩阵2的行，λ( . )为一组非零标量.在方程(18)中应用Kronecker积可使得矩阵1产生(n+l)2维矢量d1，其分量依赖于λ( . )集.为了满足Froebenius条件，可采用λ( . )不等式型约束及选择d1，使其满足对矩阵1=T1＞0的(n+l)组约束.由于方程数不少于未知项的数目，λ( . )集满足上述约束且使得矢量q产生一正定矩阵.
+　　采用类似的代数方程，可在把矩阵′的一部分用于预设计而其另一部分通过设计步骤求得的情形下，对矩阵″重新进行设计.为了满足Frobenius定理，矩阵(-″)需满足其列数不少于行数的必需条件l2p+l2c+l2f-mp≥n(l+n-m)，即预补偿器、前馈控制器和反馈控制器之一的阶数与系统维数相比为充分大.在此情形下系统满足可解性的秩条件rank(2)=rank［v-11］=l2p+l2c+l2f-mp+n(l+m)+l2.注意到对阶数l及方程(18)，(19)中的约束条件产生一个镇定控制器的最低阶数l0.因此，需在l≥l0的约束条件下选择适当的控制器阶数l.
+　　策略2(时变控制器).
+　　在此情形下，可在时刻t-σ求得矩阵′，然后用于设计时刻t的矩阵.因此，可根据策略1中给出的一组时间相关方程重新进行设计.
+　　步骤2.
+　　采用步骤1中由Kronecker积计算所得的矢量可对方程(9)中的控制矩阵进行计算.为简明起见，可在时刻t求得时刻t′＜t时的控制矩阵′.再从矩阵块(1，1)，(1，2)，(1，4)，(3，1)，(3，2)，(3，4)中获得矩阵积DcDf,DcCp,DcCf,McDf,McCp,McCf,其紧凑形式为［DTcMTc］X=［MT1MT2］；X=［DfCpCf］,矩阵Dc,Mc,X,M1,M2的维数分别为m×mp,lc×mp,mp×(mf+lp+p)(因为mp=mf,p=lf),m×(mp+lp+p),lc×(mp+lp+p).由于矩阵M1,2从块矩阵中求得，若预先选定矩阵对(Dc,Mc)使得rank［DTcMTc］=rank［DTcMTcMT1MT2］,则存在(非唯一)解矩阵X.若mc+lc=m+lc=m2p且选择矩阵对(Dc,Mc)使得Det(［DTcMTc］)≠0，则存在唯一解X=［DfCpCf］=［DTcMTc］-T［MT1MT2］T.若矩阵M1,2在时刻t为零，则可以选择矩阵集(Dc,Mc,Df,Cp,Cf)恒等于零.
+　　仿真例子
+　　考虑三阶实不变SPVD系统(8)的参数计算，其中
+
+方程(8)中的其余参数矩阵为零，点型内时延为h=0.1，点型外时延为h′=0.4，分布型时延为零.此例中参考信号恒等于零，因此上述系统为调节器型.采用策略1来设计动态时不变控制器(9)，其参数如下：
+Ap=Block Diag［-1.682,-1.33774,-2.000067］,　　　　　　　　　　　　　
+
+方程(9)中的其余矩阵恒等于零，因此，可在图1中略去前馈控制器增益kc.反馈控制器kf为静态控制器，预补偿器kp为三阶动态补偿器，即整体扩展系统为三阶系统.闭环系统输出的第一分量和输入的第三分量分别示于图2和图3.通过其它参数设计，可以同样确保系统的镇定性.假设系统为单输入双输出系统，矩阵C，M，E为,M=E=［1,1,1］T，则在此情形下采用相同的矩阵Ap，并选择dc=-90.25; df=150.76,可得闭环极点(-206，479，-1.47629，-0.414431)；若选择dc=-100.25; df=150.76,可得闭环极点(-196.215，-1.01753±0.995646j).在上述两种情形中，预补偿器的开环极点为(-1.682，-1.33774，-2.00067).
+　　　　　
+(a)零初值条件下的调节输出　　　　　(b)初值条件时的调节输出
+图2
+　　　　　　　　
+(a)在图2(b)试验条件下的输出分量1　　　　　(b)在图2(b)试验条件下的输入分量3
+图3
+致谢　对西班牙科学技术委员会通过科研项目PB93-0005给予的支持表示感谢.
+作者简介：M de la Sen　毕业于西班牙巴斯克大学，1975和1979年分别获巴斯克大学应用物理学硕士和应用物理学博士，1987年获法国格雷诺贝尔大学物理学国家博士.现在西班牙巴斯克大学任系统和控制工程教授.
+　　　　　罗宁苏　毕业于中国科技大学，1985年获该校系统科学和管理科学硕士学位，1989年获东南大学自动控制工程博士学位，1994年获西班牙巴斯克大学物理学博士学位.先后在西班牙巴斯克大学和加泰罗尼亚大学从事博士后研究，现任巴斯克大学教授.
+作者单位：巴斯克大学电子电力系　西班牙
+参考文献
+［1］　M de la Sen. Fundamental properties of linear control systems with after-effect, Part Ⅰ:The continuous case, Part Ⅱ:Extensions including the discrete case. Math. Comput. Modelling, 1988, 10(7):473-502.
+［2］　Burton T A. Stability and Periodic Solutions of Ordinary and Functional Differential Equations, New York:Academic Press, 1985.
+［3］　Pandolfi L. Generalized control systems boundary control systems and delayed control systems. Math. Control Signal Syst., 1990, 3:165-181.
+［4］　Lee E B, Olbrot A. Observability and related structural results for linear hereditary systems. Int. J. Control, 1981, 34(6):1016-1078.
+［5］　Watanabe K. Finite spectrum assignment and observer for multivariable systems with commesurate delays. IEEE Trans. Autom. Control, 1986, 31(6):543-550.
+［6］　Agathoklis P, Foda S. Stability and the matrix Lyapunov equation for delay differential systems. Int. J. Control, 1989, 49(2):417-432.
+［7］　Tadmor G. Trajectory stabilizing controls in hereditary linear systems. SIAM J. Control Optim., 1988, 26(1):138-154.
+［8］　Alastruey C F, M de la Sen, González de Mendívil J R. The stabilizability of integro-differential systems with two distributed delays. Math. Comput. Modelling, 1995, 21(8):85-94.
+［9］　M de la Sen. On the stabilizability, controllability and observability of linear hereditary systems with distributed commensurate delays. Int. J. Syst. Sci., 1993, 24(1):33-52.
+［10］　M de la Sen. On some structures of stabilizing control laws for linear and time-invariant systems with bounded point delays and unmeasurable states. Int. J. Control, 1994, 59(2):529-541.
+［11］　M de la Sen, Luo N. Discretization and FIR filtering of continuous linear systems with internal and external point delays. Int. J. Control, 1994, 60(6):1223-1246.
+［12］　Luo N, M de la Sen. Output feedback stabilization of a class of internally delayed systems. Int. J. Syst, Sci., 1995, 26(2):421-433.
+［13］　Zheng F, Cheng M, Gao W-B. Feedback stabilization of linear systems with distributed delays in state and control variables. IEEE Trans. Autom.Control, 1994, 39(8):1714-1718.
+收稿日期　1995-12-25

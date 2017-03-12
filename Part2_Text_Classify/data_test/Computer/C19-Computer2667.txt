@@ -1,0 +1,155 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第9期　Vol.10　No.9　1999
+
+
+
+非固定双头镜像磁盘实时调度算法的研究*
+秦啸　庞丽萍　韩宗芬　李胜利
+摘要　文章给出一个实时非固定双头镜像磁盘系统的形式化模型.该磁盘模型中的每个双头磁盘都有两个相互独立的磁臂，能够独立地完成寻找磁道过程.针对该磁盘系统，文章研究了3种实时调度算法.模拟实验表明，“忽略超截止期调度算法”的性能最好，因为它忽略了对超截止期限实时请求的处理.文章同时分析了固定双头镜像磁盘与非固定双头镜像磁盘之间的性能差别.实验结果表明，由于非固定双头磁盘的两个磁头可以独立寻找磁道，因此非固定双头镜像磁盘的性能比固定双头镜像磁盘的性能要好.
+关键词　非固定双头镜像磁盘，实时磁盘调度算法，I/O请求，模拟实验，性能评价.
+中图法分类号　TP316
+Study of Real-time Disk Scheduling for Two-headed Mirrored Disk with Autonomous Heads
+QIN Xiao,PANG Li-ping,HAN Zong-fen,LI Sheng-li
+(School of Computer Science and Technology　Huazhong University of Science and Technology Wuhan　430074)
+Abstract　A real-time model for two-headed mirrored disks with autonomous heads is proposed in this paper. Two-headed disks (THD) in this system have two independent arms which can seek cylinder autonomously. Three real-time disk-scheduling algorithms are presented for such disk systems. According to simulation experiments, the algorithm which is called ignore missed deadlines (IGM-EDF) has the best performance, because IGM-EDF does not process those real-time requests which have missed deadlines. The comparison between two-headed mirrored disk with fixed heads(FTMD) and the disk system with autonomous heads (ATMD) is also analyzed in this paper. Because two heads in THD can seek cylinder independently, the performance of ATMD is better than that of FTMD.
+Key words　Two-headed mirrored disk with autonomous heads, real-time disk scheduling, I/O request, simulation experiment, performance evaluations.
+　　双头磁盘系统有两种模型.一种模型是固定双头磁盘，该模型的磁臂上有两个磁头，两磁头间距恒定.当响应一个I/O请求时，两个磁头同时移动，一个磁头移动到I/O请求的磁道上，另一个向相同的方向移动同样的距离，这种模型首先由Page和Wood在1981年提出［1］.文献［2,3］分别研究了该模型的先来先服务(first come first serve,简称FCFS)和SCAN调度算法.另一种是非固定双头磁盘模型，这种磁盘模型有两个相互独立的磁臂，能独立地完成寻找磁道的过程［4］.文献［5,6］分别研究了这种模型的磁头平均移动距离和电梯调度算法.文献［7］对两种模型的平均找道时间作了研究.镜像磁盘系统由多个磁盘组成，且每个磁盘的数据相同.如果I/O请求是读请求，则选择磁头离读请求的磁道号最近的磁盘去完成读请求；若是写请求，则将数据依次写到各个磁盘上［8］.双头镜像磁盘系统由多个双头磁盘组成，且每个双头磁盘存储的数据相同.文献［9,10］分别研究了该磁盘系统的并发定位和短寻道时间优先调度算法.文献［11］计算出了双头镜像磁盘系统的磁头平均寻道距离.
+　　实时数据库系统和实时信息管理系统的应用越来越广泛，这些实时应用需要实时I/O的支持.文献［12］提出了基于UNIX的实时I/O调度算法.文献［13］提出了双头磁盘系统的实时调度算法并评价了其性能.文献［14,15］研究了单磁头镜像磁盘和双头镜像磁盘的实时调度算法，但文献［15］仅研究了固定的双头镜像磁盘系统(two-headed mirrored disk with fixed heads，简称FTMD).本文主要是对非固定双头镜像磁盘系统(two-headed mirrored disk with autonomous heads，简称ATMD)的实时调度算法的性能进行分析，并比较两种磁盘模型的实时调度性能差异.
+1　非固定双头镜像磁盘系统的实时模型
+　　实时I/O请求具有截止期限.实时调度算法在进行调度时，将使用截止期限.实时模型包括7个定义和7个系统性质.非固定双头镜像磁盘模型描述如下.
+　　定义1. 每个双头磁盘定义为一个五元组,THD=(id,st,rtio,h1,h2),其中id是磁盘的标号；st是磁盘当前状态，磁盘具有忙和空闲两种状态，即THD.st=BUSY|FREE；rtio是磁盘THD所服务的I/O请求；h1和h2 表示两个磁头的位置，h1和h2是整数，h1∈［1,MC］且h2∈［1,MC］，其中MC表示磁盘的最大磁道号.
+　　定义2. 双头镜像磁盘系统定义为一个磁盘集合.设系统中有k个双头磁盘，TMD={d1,d2,...,dk};di是一个THD,i=1,2,...,k.TMD有两个子集，TMD=FS∪BS，且FS∩BS=,其中FS是空闲磁盘集,BS是忙磁盘集，即FS={d|d.st=FREE,d∈TMD},BS={d|d.st=BUSY,d∈TMD}.
+　　定义3. 实时I/O请求表示为一个五元组:RTIO=(rw,c,dk,at,dl).rw是I/O类型，I/O请求有两种，读请求和写请求，即rw=READ|WRITE；c是RTIO要访问的数据所在的磁道号，实时I/O请求要求磁盘dk为其服务，其中dk∈［1,k］|ANY-THD，当dk=ANY-THD时，系统中的任何磁盘都可以响应该实时I/O请求；at是实时I/O请求的到达时间；dl是实时I/O请求完成的截止期.
+　　定义4. 双头镜像磁盘系统中的I/O请求组成I/O请求集合RS，该集合有两个不相交的子集，RS=WS∪SS,并且WS∩SS=，其中WS是等待服务的I/O请求组成的集合，正在得到系统服务的I/O请求组成SS集合.WS有k+1个子集,定义为:WS=RDS∪WTS1∪WTS2∪...∪WTSk,其中WS集合中的所有读请求组成RDS集合,RDS={rtio|rtio.rw=READ,rtio∈WS},WS中的写磁盘di请求组成WTSi,WTSi={rtio|rtio.rw=WRITE,rtio.dk=i,rtio∈WS},i=1,2,...,k.
+　　定义5. 如果在截止期限d内能完成I/O请求任务，则称其该截止期限为可满足的截止期限，否则称其为不可满足的截止期限.当d≥t+Act(n)时,截止期限d可满足，否则不可满足；其中I/O请求访问磁盘的时间是Act(n),t是当前时间.如果一个I/O请求的截止期限是可满足的，则称该I/O请求是可满足的I/O请求，否则称为不可满足的I/O请求.
+　　定义6. NMS(di)表示为可满足的I/O请求集合，该集合中的实时I/O请求都是可满足的I/O请求，即NMS(di)={rtio|rtio.dl为可满足的截止期限,rtio∈RDS∪WTSi}；MS(di)表示为不可满足的I/O请求集合，MS=(RDS∪WTSi)-NMS.所以有NMS(di)∩MS(di)=,NMS(di)∪MS(di)=RDS∪WTSi.
+　　定义7. 定义函数AH-Seek(d,r)，其功能是计算磁盘d响应I/O请求r时，d的磁头所移动的距离.AH-Seek(d,r)=|d.h1-r.c|，当|d.h1-r.c|≤|d.h2-r.c|时；AH-Seek(d,r)=|d.h2-r.c|，当|d.h1-r.c|>|d.h2-r.c|时.
+　　当双头磁盘系统模型满足以下性质时，系统将处于正确的状态.
+　　性质1. WS中的RDS与WTSi不相交：
+i∈［1,k］(RDS∩WTSi=).
+　　性质2. WS中的WTS集合之间两两不相交：
+i,j∈［1,k］(i≠j→WTSi∩WTSj =).
+　　性质3. 如果磁盘处于忙状态，则它所响应的I/O请求一定在SS集合中：
+di∈TMD (di.st=BUSY→di.rtio∈SS).
+　　性质4. 如果一个磁盘状态是空闲,当且仅当它不响应任何I/O请求服务，并且SS中没有一个I/O请求被该磁盘响应：
+di∈TMD(di.st=FREEdi.rtio=NULL→rtio∈SS(rtio.dk≠i)).
+　　性质5. 不同的两个磁盘不能同时响应一个相同的I/O请求：
+di,dj∈TMD(di.st=BUSY,dj.st=BUSY,i≠j→di.rtio≠dj.rtio).
+　　性质6. 写请求只能被其指定的磁盘响应：
+di∈TMD(di.st=BUSY,di.rtio.rw=WRITE→di.rtio.dk=i).
+　　性质7. 如果一个I/O请求是读请求，则系统中的任意一个磁盘可响应该读请求：
+rtio是RTIO(rtio.rw=READ→rtio.dk=ANY-THD).
+2　实时磁盘调度算法
+　　磁盘调度算法由插入和释放两个过程组成［15］.插入过程是将一个高层URTIO请求转化为低层的RTIO请求，并将生成的RTIO插入WS中，如果系统中有合适的空闲磁盘，则选择该磁盘立即启动进行定位操作，并将这个I/O请求从WS移入SS中.当系统中有磁盘di完成一个I/O请求时，释放过程启动执行，将这个请求从SS中删去.如果没有请求等待di的响应，则释放该磁盘，否则按调度原则选择出适当的请求，并将这个磁盘分配给它使用.在释放过程中将使用调度策略Schedule(RDS∪WTSi)，本文将研究5种调度算法.先来先服务和短寻道时间优先调度算法(short seek-time first,简称SSTF)是两个非实时调度算法［9,10］.最早截止期优先调度算法(earliest deadline first,简称EDF)在调度时，总是调度截止期限最紧迫的实时I/O请求，EDF不考虑I/O请求是否可满足.在可满足的最早截止期优先调度算法(feasible-earliest deadline first,简称F-EDF)算法中,只有那些可满足的且最紧迫的实时I/O请求被优先调度.如果WS集合中的所有I/O请求都不可满足时，F-EDF将采用SSTF算法进行调度，因为调度的先后次序已不再重要.忽略超截止期调度算法(ignore missed deadline-earliest deadline first,简称IGM-EDF)只调度可满足的I/O请求，所有不可满足的I/O请求将被系统忽略掉.在很多硬实时的应用中，实时I/O在超过截止期限时变得毫无意义，所以,IGM-EDF算法将不可满足的实时I/O请求直接从WS中删除.下面，分别描述5种调度算法.
+　　先来先服务调度算法(FCFS).
+　　(1) 选择 rtio∈RDS∪WTSi，满足rtio′∈RDS∪WTSi(rtio.at≤rtio′.at);
+　　(2) 返回rtio;
+　　(3) FCFS算法结束.
+　　短寻道时间优先调度算法(SSTF).
+　　(1) 选择rtio∈RDS∪WTSi，满足rtio′∈RDS∪WTSi (AH-Seek(di,rtio)≤AH-Seek(di,rtio′));
+　　(2) 返回rtio;
+　　(3) SSTF算法结束.
+　　最早截止期优先调度算法(EDF).
+　　(1) 选择rtio∈RDS∪WTSi,满足rtio′∈RDS∪WTSi(rtio.dl≤rtio′.dl); 
+　　(2) 返回 rtio;
+　　(3) EDF算法结束.
+　　可满足的最早截止期调度算法(F-EDF).
+　　(1) IF(NMS≠) THEN DO next step; ELSE DO step (3);
+　　(2) 选择 rtio∈NMS 满足rtio′∈NMS(rtio.dl′≤rtio′.dl); goto (4);
+　　(3) 选择 rtio∈RDS∪WTSi 满足rtio′∈RDS∪WTSi(AH-Seek(di,rtio)≤AH-Seek(di,rtio′));
+　　(4) 返回rtio;
+　　(5) F-EDF算法结束.
+　　忽略超截止期调度算法(IGM-EDF).
+　　(1) IF(NMS≠) THEN DO next step; ELSE rtio=NULL; DO step (3);
+　　(2) 选择 rtio∈NMS满足rtio′∈NMS(rtio.dl≤rtio′.dl );
+　　(3) IF(MS≠) THEN  rtio∈MS(将rtio从WS中直接删除);
+　　(4) 返回 rtio;
+　　(5) 算法IGM-EDF结束.
+3　模拟模型
+　　模拟实验假设实时I/O请求的到达过程是一个泊松过程，即每两个I/O请求之间的时间间隔A是一个随机变量，它满足指数分布函数FA(x)=P{A≤x}=1-e-λ*X，其中λ是实时I/O请求的到达率，单位是个数/s.每次实验中产生的I/O请求个数为300 000，并且各个实时I/O请求的到达是相互独立的.I/O请求读写数据所在的磁道号c是一个在［1,MC］上均匀分布的随机变量，MC=2000.每个实时I/O请求的响应时间包括I/O请求在请求队列中的等待时间以及读/写盘的服务时间.使用式(1)计算读/写盘的服务时间：
+Act(n)=［DF×sqrt(n)+DC］ms，　　　　　　　　　　　(1)
+其中n为磁头移动的磁道数,DF为磁头寻道时间因子,DC为平均旋转时间与平均数据传输时间之和.磁盘各个参数的配置见表1.
+表1　实验中磁盘系统基本参数的配置
+
+最大磁道号DiskFactorDiskConstant
+20000.889.66ms
+
+　　截止时限由式(2)定义. 
+d=Art+Act(n)+Skt,　　　　　　　　　　　　　　(2)
+其中Art是I/O请求的到达时间，Skt是松弛时间；设松弛时间是一个在［Min-Slack,Max-Slack］上均匀分布的随机变量.模拟实验中的一个重要评价指标是超时比率(percentage of missed deadlines,简称PMD).利用式(3)计算PMD.
+Missed Deadlines%=(Missed read requests+Missed write requests)*100/Total requests.　
+(3)
+　　另外两个评价性能的指标是平均找道时间(average seek time,简称AST)和平均响应时间(average respond time,简称ART).实验的其他参数见表2.
+表2　模拟实验中其他参数的配置
+
+参数意义基本值
+T-requestI/O请求总数300 000
+K非固定双头磁盘个数1～10
+λI/O到达率10～210
+PRQ读请求比率10%～100%
+Min-Slack最小松弛时间10ms
+Max-Slack最大松弛时间45ms
+Distance固定双头磁盘的磁头间距100～1000
+
+4　性能分析
+4.1　实验1
+　　本实验比较了各算法的PMD值.设系统中有4个双头磁盘，PRQ的值定为100%.图1描绘了非固定双头镜像磁盘模型3种调度算法的PMD值，FCFS与EDF的PMD几乎是一样的，F-EDF和IGM-EDF有相同的性能,所以EDF和IGM-EDF的数据在图1中省去了.结果表明,F-EDF与IGM-EDF算法在各种负载情况下都有最好的性能.在I/O到达率较低的情况下(λ<70 No./Sec.),所有算法的PMD值没有很明显的差别，在I/O负载较大时(λ=150 No./Sec.),F-EDF的PMD分别比FCFS和SSTF的减少81.2%和43.0%.F-EDF是5种算法中性能最好的，因为它总是优先调度最紧急且可满足的实时I/O请求.SSTF的性能排在第2位，而FCFS的性能最差.
+
+图1　PRQ=100%,k=4，非固定双头镜像
+磁盘的PMD值与I/O到达率之间的关系
+　　将ATMD模型性能和FTMD模型性能［15］作比较发现，当I/O到达率较大时，两个模型的性能有明显的不同.例如，当I/O到达率为150 No./Sec.时，对于FCFS和F-EDF调度算法而言，FTMD模型的PMD值分别比ATMD模型的PMD值高17.0%和8.2%；当使用SSTF调度时，ATMD的PMD值比FTMD的PMD值要多16.4%.
+4.2　实验2
+　　图2～3分别显示了ATMD模型的AST和ART.如图2所示，SSTF的AST值开始随着I/O到达率的增加而增加，然后SSTF的AST随λ的增加而逐渐降低.F-EDF的平均找道时间开始随着I/O到达率的增加而增加得很快，然后其增加速度变得很缓慢.从图3中可以看出，所有算法的性能在I/O负载很低时，差别都很小，但是在高负载情况下，SSTF的平均响应时间是最少的，IGM-EDF的ART次之，而FCFS的平均响应时间最多，因为SSTF算法使磁臂平滑地寻道，令系统效率很高.通过比较ATMD模型和FTMD模型［15］的AST和ART，我们得出：在低负载的情况下，两种磁盘模型的性能很接近，而当I/O负载较高时，ATMD模型的FCFS和F-EDF算法的性能分别比FTMD模型的要好，但是ATMD模型的SSTF和IGM-EDF算法的性能却比FTMD模型差一些.图4显示了IGM-EDF算法的平均找道时间.两种模型有相同的特点：无论系统中磁盘的个数是多少，AST值总是随着负载的增加而增加，然后达到一个稳定值(FTMD的稳定值为14.8ms，ATMD的稳定值是14.6ms).
+
+图2　PRQ=100%,k=4，非固定双头镜像磁盘，
+平均找道时间和I/O到达率之间的关系
+
+图3　PRQ=100%,k=4，非固定双头镜像磁盘，
+平均响应时间和I/O到达率之间的关系
+
+图4　PRQ=100%,平均找道时间与I/O到达率之
+间的关系，使用IGM EDF算法进行磁盘高度
+4.3　实验3
+　　本实验研究各算法的性能与PRQ的关系.假设系统中有4个双头磁盘，λ恒定为50 No./Sec..实验中的λ指的是高层的I/O请求到达率，系统低层I/O到达率λsys是λ,k和PRQ的函数，即
+λsys=f(λ,k,PRQ)=λread+λwrite=PRQ×λ+(1-PRQ)×k×λ=［PRQ+(1-PRQ)×k］λ，　　(4)
+其中λread，λwrite分别表示低层读和写请求的到达率.从上式可以看出，当k=1时，PRQ为任意值，或PRQ=100%;k为任意值时，λsys与λ是一样的.图5省略了FCFS和IMG-EDF的数据，因为FCFS和EDF的PMD相似，IMG-EDF的超时比率与F-EDF几乎一样.从图中可看出,无论读请求比率为多少，F-EDF和IGM-EDF的性能都是最好的，而FCFS与EDF的性能总是不如前两者.所有算法都有相同的特征，即PMD值随着PRQ的增加而降低.因为从式(4)中可以看出，在k大于1且高层I/O请求到达率λ恒定的前提下，PRQ越小，则λsys越高，即系统的实际负载也越高，所以超时比率也就越高.例如使用F-EDF算法，PMD值在PRQ为30%和90%时分别为25.3%和5.9%.结果证明，在本实验的设置下，当PRQ相同时，ATMD与FTMD［15］的FCFS及EDF的超时比率近似相同；从图中能明显看出，在PRQ小于70%时，ATMD模型的SSTF与F-EDF算法的超时比率均略低于FTMD模型.
+
+图5　k=4,I/O到达率=50No./Sec.，
+读请求比率与超时比率之间关系
+4.4　实验4
+　　本实验研究系统中磁盘个数与性能之间的关系.假设I/O请求到达率为40No./Sec.,PRQ=70%，磁盘个数从1到10.EDF的超时比率仅略低于FCFS，故省略EDF的结果.如图6所示，当磁盘个数大于6时，FCFS的PMD值在12.5%和12.2%之间,而EDF的PMD值稳定在11.2%与11.1%之间.所有调度算法的PMD值总是随磁盘个数的增加而降低，并且当磁盘个数超过4后,降低的幅度变得很小(当磁盘数从4增加到10时，F-EDF的超时比率仅从8.9%降到8.2%，而FCFS算法的超时比率仅从14.0%降到12.2%).实验结果指出,在读请求比率较高时，双头镜像磁盘系统能比单个双头磁盘系统更好地满足实时的I/O请求，并且当磁盘个数大于4时，系统中磁盘个数的增加不能使性能有更大的提高.所以,当系统的磁盘个数为4时就能使系统的性能接近最优.比较ATMD和FTMD两种磁盘模型，在系统的I/O负载不很高，且读请求比率较大的前提下，对FTMD模型而言，当磁盘个数超过4以后，SSTF与F-EDF的PMD值很接近，F-EDF的PMD值略低于SSTF；而ATMD的F-EDF算法的PMD值略高于SSTF算法的PMD值.
+
+图6　I/O到达率=40No./Sec.，读请求比率=70%
+5　结束语
+　　本文针对双头镜像磁盘系统的实时化进行了研究.建立了一个适合实时环境的双头镜像磁盘系统的形式化模型，为双头镜像磁盘系统设计了3个实时调度算法，并对3个实时调度算法及两个传统的非实时调度算法进行了性能模拟和评价.本文研究了非固定双头镜像磁盘系统.研究结果指出,非固定双头镜像磁盘的性能要比固定双头镜像磁盘的性能优越.我们正在进行的相关研究工作是：研究分布式实时文件系统的体系结构，并对分布式实时文件的可预测性进行建模和分析.
+*　本文研究得到国防预研项目基金资助.
+本文通讯联系人：秦啸，武汉430074，华中理工大学东一区58-501
+作者简介：秦啸，1974年生，硕士生，主要研究领域为分布式实时系统，操作系统.
+　　　　　庞丽萍，女，1944年生，教授，主要研究领域为并行/分布式程序设计，分布式实时操作系统.
+　　　　　韩宗芬，女，1950年生，副教授，主要研究领域为分布式实时操作系统，软件工程.
+　　　　　李胜利，1952年生，副教授，主要研究领域为并行/分布式系统，计算机网络.
+作者单位：华中理工大学计算机科学与技术学院　武汉　430074
+参考文献：
+［1］Page I P, Wood R T. Empirical analysis of a moving disk head model with two heads separated by a fixed number of tracks. The Computer Journal, 1981,24(4):339～341
+［2］Calderbank A R, Coffman E G, Flatto L. A note extending the analysis of two-headed disk systems to more general seek-time characteristics. IEEE Transactions on Computers, 1989,38(11):1584～1586
+［3］Manolopoulos Y, Kollias J G. Performance of a two-headed system when serving database queries under the scan policy. ACM Transactions on Database System, 1989,14(3):425～442
+［4］Deighton K. Time to travel to target cylinders on non-linear discs with two independent seek arms. Information and Software Technology, 1995,37(12):709～712
+［5］Deighton K. The number of cylinders traveled for a single device. Database Technology Journal, 1992,4(2):93～96
+［6］秦啸，庞丽萍.双头磁盘系统电梯调度策略.计算机工程与设计，1998,19(6):8～14
+(Qin Xiao, Pang Li-ping. Elevator scheduling for two-headed disk system. Computer Engineering and Design, 1998,19(6):8～14)
+［7］Deighton K. Average time to travel on two headed non-linear discs. The Computer Journal, 1995,38(10):811～817
+［8］Lo R W, Matloff N S. Probabilistic limit on the virtual size of replicated disc systems. IEEE Transactions on Knowledge and Data Engineering, 1992,4(1):99～102
+［9］秦啸，庞丽萍.并发定位的双头镜像磁盘的调度算法.计算机学报,1998,21(12):1119～1124
+(Qin Xiao, Pang Li-ping. Disk scheduling for two-headed mirrored disk systems using parallel positioning. Chinese Journal of Computers, 1998,21(12):1119～1124)
+［10］秦啸，庞丽萍.双头镜像磁盘的SSTF调度算法.计算机工程与设计，1999:20(1):7～10
+(Qin Xiao, Pang Li-ping. SSTF――a disk scheduling for two-headed mirrored disk systems. Computer Engineering and Design, 1999:20(1):7～10
+［11］Vakali A, Manolopoulos Y. Parallel data paths in two-headed disk systems. Information and Software Technology, 1997,39(12):125～135
+［12］庞丽萍,秦啸.实时I/O的设计与实现.计算机与数字工程,1997,25(2):41～45
+(Pang Li-ping, Qin Xiao. Analysis and design of I/O subsystem for real-time operating system. Computer and Digital Engineering, 1997,25(2):41～45)
+［13］秦啸,韩宗芬,庞丽萍.双头磁盘系统的实时调度算法.华中理工大学学报,1998,26(10):63～65
+(Qin Xiao, Han Zong-fen, Pang Li-ping. Real-time scheduling for two-headed disk system. Journal of Huazhong University of Science and Technology, 1998,26(10):63～65)
+［14］Qin Xiao, Pang Li-ping, Han Zong-fen et al. Real-time disk scheduling for mirrored disk systems. In: Zhang Li-chen ed. Proceedings of the 23rd IFAC/IFIP Workshop on Real-time Programming. UK: Elsevier Science Publishers, 1998. 157～158
+［15］秦啸,庞丽萍，韩宗芬.双头镜像磁盘的实时调度算法及性能评价.计算机学报,1999,22(2):212～217
+(Qin Xiao, Pang Li-ping, Han Zong-fen. Design and performance evaluation of real-time disk scheduling for two-headed mirrored disk systems. Chinese Journal of Computers, 1999,22(2):212～217)
+收稿日期：1998-06-02，修改日期：1998-09-23

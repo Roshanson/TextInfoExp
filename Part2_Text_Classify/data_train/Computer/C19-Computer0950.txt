@@ -1,0 +1,105 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+一般广义对象的严格真H∞
+控制器设计1)
+忻　欣　　郭　雷　　冯纯伯
+摘要　考虑一般广义对象的严格真H∞控制器设计问题.基于线性矩阵不等式(LMI)方法，指出严格真H∞控制器存在当且仅当H∞控制问题可解，并满足一个静态条件，最后提出了一个基于LMI的严格真H∞控制器的设计方法.
+关键词　H∞控制，线性矩阵不等式，严格真H∞控制器，代数Riccati不等式.
+THE DESIGN OF STRICTLY PROPER H∞ CONTROLLERS
+FOR GENERAL GENERALIZED PLANTS
+XIN XIN　　GUO LEI　　FENG CHUNBO
+(Research Institute of Automation, Southeast University,Nanjing 210018)
+Abstract　This paper considers the design problem of strictly proper H∞ controllers for general generalized plants. We obtain sufficient and necessary existence conditions of strictly proper H∞ controllers via linear matrix inequality (LMI) approach. It is shown that there must exist strictly proper H∞ controllers if and only if the H∞ problem is solvable and the direct feedthrough matrix from the exogenous input to the controlled error satisfies the static conditions. An LMI-based design method for strictly proper H∞ controllers is also presented. The result generalizes some previous results about strictly proper H∞ control problems.
+Key words　H∞control, linear matrix inequality, strictly proper controller, algebraic Riccati inequality.
+1　引　言
+　　H∞控制的不足之处是结构较为复杂.通常H∞控制器是非严格真的，而非严格真H∞控制器，对系统具有的寄生动态不确定性(discarded parasitic dynamic)缺乏鲁棒性［1］.此外，在研究混合H2/H∞控制问题时，往往必须考虑严格真控制器，因此研究严格真H∞控制器的设计问题就很有意义.
+　　考虑如下广义对象：
+
+(1)
+其中w∈Rm1,u∈Rm2,z∈Rp1,y∈Rp2分别表示外部输入、控制输入、被控输出和量测信号.标准H∞控制问题即求一正则控制器
+
+(2)
+使闭环系统内稳且使从w到z的传递函数Φ满足min‖Φ‖∞＜γ.不失一般性，取γ=1.
+　　若广义对象是“标准”的，即P12(s)和P21(s)在虚轴(含无穷远点)上均无零点，可以直接利用著名的基于“2-Riccati方程”的解法来构造严格真H∞控制器.对于“奇异”的广义对象，即P12(s)和/或P21(s)在虚轴(含无穷远点)上有零点.文献［2］基于含参数的2个Riccati方程研究了严格真H∞控制器的构造问题，但因参数化的Riccati方程难以求解，故它的设计方法不易计算；文献［3］基于代数Riccati不等式(ARI)对D11=0的广义对象设计出严格真H∞控制器，但求解ARI计算量大，并且此文构造控制器的算法稳定性不好.以上结果是关于连续系统的.对于离散系统，文献［4］基于二次矩阵不等式(QMI)方法，在P12(s)和P21(s)在有限虚轴(不含无穷远点)上无零点的假设下，研究了严格真H∞控制器的存在性.
+　　本文基于有界实引理的LMI表示，研究了一般广义对象的严格真H∞控制器存在的充分必要条件及设计方法.不仅没有有关P12(s)和P21(s)的零点和D11=0的限制，而且基于求解LMI的设计方法在计算上简单可行.
+2　状态反馈H∞控制与LMI
+　　本节主要讨论状态反馈H∞控制与LMI之间的关系.为此首先回顾文献［5］中有关结论.定义
+
+(3)
+
+(4)
+其中E⊥定义为E⊥E=0且E⊥E⊥T＞0.显然E⊥T∶　=ker(ET).
+　　引理［5］.广义对象(1)的H∞控制问题可解的充分必要条件是其中
+
+(5)
+若H∞控制问题具有严格真控制器，则Φ(∞)=D11必须满足下面结合此条件讨论LB和LC的物理意义.
+　　定理1.广义对象(1)具有静态状态反馈H∞控制器当且仅当根据有界实引理，问题可归结为存在X=XT＞0　满足
+
+(6)
+其中证明从略.
+　　注.关于F的求解可分为两步：先由式(3)解得X，然后求解LMI(6)得F.对偶可得.
+　　定理2.存在矩阵G使得A+GC2稳定，且
+
+(7)
+当且仅当
+　　根据定理2知，存在Y=YT＞0使得
+
+(8)
+其中
+3　严格真H∞控制器设计
+　　定理3.若广义对象(1)的H∞控制问题可解且则存在(X，Y)∈LD满足
+RC(Y,G)＜X-1RB(X,F)X-1,　　　　(9)
+Y-X-1＞0.　　　　　　　　　　(10)
+因篇幅所限，证明省略.
+因此在后面的讨论中，可设(X，Y)∈LD且满足式(9)，(10).有了上述准备，即可得到本文的主要结果.
+　　定理4.广义对象(1)的H∞控制问题具有严格真控制器当且仅当且
+　　证明.充分性：设x∈Rn和xk∈Rn分别是广义对象(1)和控制器(2)的状态.令e:=x-xk.设Dk=0,则
+
+(11)
+
+(12)
+令M:=A-Ak-BkC2+B2Ck,L:=B1-BkD21.构造
+
+(13)
+记
+
+(14)
+　　证明当成立时，选取Ak,Bk,Ck使得式(14)负定，这时闭环系统内稳且‖Φ‖∞＜1.
+　　展开式(14)得R11=RB(X,Ck)，若令Ck=F,则R11=RB(X,F)＜0.
+　　取
+
+
+(15)
+取Bk满足(Y-X-1)Bk=-YG，则L=B1+(Y-X－1)－1YGD21，化简可得R12=0,且
+R22=Δ(RC(Y,G)-X-1RB(X,F)X－1)Δ＜0.
+(16)
+根据定理3知R22＜0，故式(14)满足
+
+(17)
+因而H∞问题可解.综上所述，若则
+
+(18)
+其中
+Ak=A+(Y-X－1)YGC2+B2F-M,
+即为所求的严格真H∞控制器.
+　　必要性.由‖Φ(∞)‖∞=‖D11‖∞＜1知再由引理1知必要性成立.
+　　若且成立，根据定理3，4可得如下严格真H∞控制器的设计方法.
+　　算法.1)求解LD，获得一个(X0,Y0)∈LD，相应求得F和G；
+　　　　　2)根据定理3，利用(X0,Y0)构造且满足式(9)，(10)；
+　　　　　3)令代入式(18)求得严格真H∞控制器.
+4　结论
+　　本文基于LMI方法，获得了一般广义对象具有严格真H∞控制器的充要条件及设计方法.由定理4可知，只要σ(D11)＜1成立，且H∞控制问题可解就存在严格真控制器.由于可用“内点法”有效地求解LD得(X，Y)以及相应的F和G，根据文中的定理3，4便可解析地构造出严格真控制器.从结论上看，本文将文献［3］的结果推广至D11≠0的情况；所用LMI方法，避免了文献［2，3］求解Riccati不等式所涉及的计算量大的问题.
+1)　国家自然科学基金资助课题.
+作者单位：东南大学自动化所　南京　210018
+参考文献
+　[1]　Khalil. On the robustness of output feedback control methods to modeling errors. IEEE Trans. Automat. Contr.,1981, 26(2): 524―526.
+　[2]　Sampei M T, Mita T, Nakamichi M. An algebraic approach to H∞ output feedback control problem. Syst. Contr. Lett., 1990, 14(1):13―24.
+　[3]　Scherer C. H∞ Optimaization without assumptions on finite or infinite zeros, SIAM J. Contr. Optimiz., 1992,30(1):143―166.
+　[4]　Stoorvogel A A, Seberi A, Chen B M. The discrete-time H∞ control problem with strictly proper measurement feedback, IEEE Trans. AC., 1994,39(9):1936―1939.
+　[5]　Iwasaki T, Skelton R E. All controllers for the general H∞ control problem: LMI existence conditions and state space formulas, Automatica, 1994, 30(8):1307―1317. 
+　[6]　Knobloch H W, Isidori A, Flockerzi D. Topics in Control Theory, Berlin: Birkhauser Verlag, 1993.
+收稿日期　1996-01-31

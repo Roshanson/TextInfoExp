@@ -1,0 +1,155 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+具有多非线性和多未建模动态
+系统的鲁棒绝对稳定性
+田玉平
+摘　要　研究了同时具有多个扇形非线性环节和多个未建模动态的多变量系统的鲁棒绝对稳定性. 用带有Popov乘子的线性分式变换模型对线性和非线性不确定性进行了统一处理. 得到了系统的鲁棒绝对稳定性判据， 并将这一判据的计算化为凸优化问题， 最后给出了计算示例. 
+关键词　鲁棒绝对稳定性， 多非线性，未建模动态， 多变量Popov判据. 
+ROBUST ABSOLUTE STABILITY OF SYSTEMS WITH MULTIPLE
+NONLINEARITIES AND UNMODELED DYNAMICS
+TIAN YUPING
+(Department of Automatic Control, Southeast University, Nanjing 210018)
+Abstract　This paper discusses the robust absolute stability of multivariable systems with multiple sector-bounded nonlinearities and unmodeled dynamics. Linear and nonlinear uncertainties are handled by a unified linear fractional transformation(LFT) model with Popov multipliers. A robust absolute stability criterion is obtained for the discussed systems. A convex optimization procedure is proposed to compute the given criterion. Finally, an illustrative example is given to show the efficiency of the obtained criterion.
+Key words　Robust absolute stability, multiple nonlinearities, unmodeled dynamics, multivariable Popov criterion.
+1　引言
+　　具有无记忆非线性环节的Lur′e系统的绝对稳定性在60年代得到了广泛而深入的研究［1，2］. Popov判据是这一领域中最著名的成就之一［2］. 这一判据在文［3］中被进一步推广到具有多个非线性环节的系统中. 
+　　近年来， 受鲁棒控制理论发展的推动，不少学者开始研究当线性模型含有不确定性时系统的鲁棒绝对稳定性问题. 文［4，5］等受Kharitonov定理［6］的启发， 研究了含区间参数不确定性的单变量Lur′e系统，给出了鲁棒绝对稳定性的一些顶点检验条件. 然而，由于这种方法的基本工具是多项式族的鲁棒性分析，所以很难推广到多变量系统中. 
+　　本文直接从小增益定理出发， 运用等价回路变换方法， 首先进一步改进了文［3］的多变量Popov判据，进而通过对系统中线性分式变换结构的分析，给出了同时含有多个非线性环节和多个未建模动态系统的鲁棒绝对稳定性判据. 这一判据具有与多变量Popov判据完全相同的简洁形式. 最后我们将多变量Popov判据的计算化为一个凸优化问题. 
+2　含多个未建模动态系统的鲁棒Popov判据
+2.1　多变量Popov判据的改进
+　　含多个非线性环节的系统可以通过等价变换表示为如图1所示的形式. 其中M(s)是稳定传递函数矩阵，记作M(s)∈RHm×m∞. fi(σi)(i=1,…,m)是无记忆连续非线性函数，满足扇形条件
+0≤σifi(σi)≤2σ2i,　　fi(0)=0. 　　　　　　　　　　　　　　(1)
+
+
+图1　多非线性系统
+对于上述多非线性系统，文［3］给出了判别其绝对稳定性的多变量Popov判据. 下面我们说明该结果仍有进一步改进的余地. 为此引入两个矩阵集和一个引理. 
+Q1={diag[q1,…,qm]∶qi∈R,i=1,…,m},　　　　　　　　　　(2)
+D1={diag[d1,…,dm]∶di∈R,di＞0,i=1,…,m}.　　　　　　　　　(3)
+　　对G(jω)∈Cn×n，其复共轭转置记为表示其最大奇异值.
+　　引理1.若存在δ＞0使得则对任意α＞0， 若G(jω)+αI非奇异， 则必有
+　　证.由可得
+
+由于G(jω)+αI非奇异，故对任意ω∈R有
+
+所以　　　　　　　　　　　　　　　　　　证毕.
+　　于是我们可将多变量Popov判据改进为定理1. 
+　　定理1.设M(s)∈RH∞， 若存在Q∈Q1， D1∈D1和δ＞0， 使得对任意ω∈R有
+I-(I+jωQ1)D1M(jω)D-11-D-11M*(jω)D1(I-jωQ1)≥δI＞0, 　　　　　　　(4)
+则图1所示的多非线性系统是绝对稳定的. 
+　　证.首先对图1所示系统进行如图2所示的等价变换. 
+
+
+图2　多非线性系统的等价变换
+记图中H1和H2的增益分别为γ(H1)和γ(H2). 由于M(s)∈RH∞，由小增益定理［9］知，图1所示系统绝对稳定的充分条件是γ(H1)。γ(H2)＜1. 由于(I+sQ1)-1， D-11和D1均是对角阵，容易算出在假设(1)下有γ(H1)≤1. 而H2的增益为
+
+由于由引理1可知γ(H2)＜1.　　证毕.
+　　注1. 与经典的多变量Popov判据相比，定理1中引入了尺度矩阵D1， 通过对尺度矩阵D1的寻优，可挖掘出多变量系统中更多的结构信息， 以减少保守性. 显然经典的多变量Popov判据是定理1取D=I的特殊情况. 
+2.2　鲁棒Popov判据
+　　下面研究多非线性系统中线性部分含有多个未建模动态的情况. 这样的系统通过等价变换可以用图3所示的结构来表示. 
+
+
+图3　含多个未建模动态的多非线性系统
+　　在上述系统中， 对非线性环节fi(σi)的假设同(1). 未建模动态
+记
+
+若对任意Δ(s)∈BΔ(s)， 含未建模动态的多非线性系统是绝对稳定的，则称系统是鲁棒绝对稳定的. 
+　　按非线性部分和未建模动态部分的维数对M(s)进行分块
+
+其中M11(s)∈RHm×m∞, M12∈RHm×(N-m)∞， M21∈RH(N-m)×m∞， M22∈RH(N-m)×(N-m)∞. 记图3中从u到v的传函矩阵为φl(M,Δ)， 容易得到
+φl(M,Δ)=M11(s)+M12(s)Δ(s)(I-M22(s)Δ(s))-1M21(s).　　　　　　　　(5)
+上式通常被称作M和Δ的下线性分式变换. 
+　　由定理1知，图3所示系统鲁棒绝对稳定的充分条件是存在Q1∈Q1, D1∈D1和δ＞0， 使得对任意Δ(s)∈BΔ(s)和任意ω∈R有
+I-(I+jωQ1)D1φl(M(jω), Δ(jω))D-11-D-11φ*L(M(jω), Δ(jω))D1(I-jωQ1)
+≥δI＞0. 　　　　　　　　　　　　　　　　(6)
+但由于上述条件中含有不确定性Δ(jω)，实际上变得无法检验. 为了得到含多个未建模动态系统的鲁棒绝对稳定性判据，需作如下一些准备工作. 记
+　　　　(7)
+D={diag∶D1∈D1,D2∈D2}, 　　　　　　　　　　　　　(8)
+Q={diag∶Q1∈Q1}. 　　　　　　　　　　　　　　(9)
+　　　　　　　 (10)
+　　　　　　　　　　 (11)
+下面的引理是Redheffer 30多年前的一个结果. 
+　　引理2［7］.若存在D=diag∈D， 使得则必有
+　　1) 
+　　2) 
+　　此外， 记
+　　　　　　　(12)
+则有下述引理.
+　　引理3.
+　
+　　证.容易看出， 是图4所示系统中从(u′1,u′2)T到(v′1, v′2)T的传递矩阵. 于是可以将表示为如图5所示的形式. 由于Q=diag， 故图5与图6是等价系统. 写出图6系统中从u1到v1的传递函数为(I-(I+jωQ1)φl(M,Δc))-1(I+jωQ1)φl(M,Δc). 故引理得证. 
+
+
+图4　的结构
+
+
+图5　的结构
+
+
+图6　(I-(I+jωQ1)φl(M,Δc))-1(I+jωQ1)φl(M,Δc)的结构
+至此， 可以给出图3所示系统鲁棒绝对稳定的充分条件. 
+　　定理2.若存在Q1∈Q1, D1∈D1和δ＞0， 使得对任意ω∈R存在D2∈D2，当取
+Q=diag和D=diag时有
+
+则含有多个未建模动态的多非线性系统(如图3所示)是鲁棒绝对稳定的. 
+　　证.根据引理1，由定理条件可知
+
+由于Q和D均为对角阵，可交换， 于是可将上式中D和D-1提出：
+　　　　　　　(13)
+根据引理2上式意味着
+　　　　　　　　　　　　 (14)
+其中22由下列矩阵分块得到.
+
+由于Q=diag, 从和的定义可得22=M22. 所以
+
+考虑到Mij(s)∈RH∞， i，j=1,2. 故上式意味着
+　　根据引理2， (13)式还意味着
+
+运用引理3得
+
+即　　
+以下按定理1的证明方法可知系统对任意Δ∈BΔ(s)是绝对稳定的. 
+3　多变量Popov判据的凸优化算法
+　　在运用多变量Popov判据时，一般采用作图法［8］. 这种方法通常要求系统满足一定的对角占优条件. 另外，用这种方法很难同时考虑本文中D和Q两个矩阵的作用. 下面我们将多变量Popov判据的计算化为一个凸优化问题. 
+　　在定理1和定理2中均是要寻找D∈D和Q∈Q，使得对任意ω∈R有
+
+上式等价于
+
+由于映射(D,Q)→(D2,DQD)是从D×Q→D×Q上的双射， 故上式等价于D∈D, Q∈Q， 使得对有
+　　　　　　　　(15)
+若固定D中第一个元素d1=1， 并令
+
+其中λmax(。)表示Hermite矩阵的最大特征值，则条件(15)等价于
+　　　　　　　　　　　　　　　　(16)
+容易证明， T(D，Q)是关于矩阵D，Q的凸函数. 但函数的偏导数却很难计算，甚至不存在.为解决(16)式中的优化问题， 可利用仅基于函数值计算的直接寻优法，如Rosenbrock方法、DSC方法、Powell方法等［10］. 下面是用DSC方法计算多变量Popov判据的一个例子. 
+　　设图3系统中m=2， n=1， 即含有两个非线性环节和一个未建模动态， 非线性环节满足
+0≤σifi(σi)≤2σ2i,fi(0)=0, i=1,2.
+未建模动态Δ(s)∈RH∞， 且‖Δ(s)‖∞≤1. 系统矩阵为
+
+取D=diag[1,d2,d3]和Q=diag[q1,q2,0]，对T(D，Q)极小化得Dop=diag[1,9.0,1.21]，Qop=diag[0.2,1.08, 0]. T(Dop,Qop)=-9.38＜0. 故系统是鲁棒绝对稳定的. 图7给出了
+随ω变化的曲线. 
+
+
+图7　λmax随ω变化的曲线
+4　结论
+　　1) 通过引入尺度矩阵D， 可以进一步挖掘出多变量系统的结构信息，以减少多变量Popov判据的保守性. 
+　　2) 在有多个未建模动态存在的情况下， 本文得到了与多变量Popov判据同样简洁的鲁棒绝对稳定性判据. 
+　　3) 多变量Popov判据可以通过解一个凸优化问题来计算. 
+1)　国家自然科学基金资助项目. 
+作者简介：田玉平　1964年生. 1986年毕业于清华大学自动化系，获学士学位. 1991年在莫斯科动力学院获博士(D.Ph.)学位， 1996年又获俄罗斯技术科学博士(D.Sc.)学位. 现为东南大学自动控制系教授. 主要研究兴趣是鲁棒控制，非线性系统控制， 混沌控制及应用等. 
+作者单位：东南大学自动控制系　南京　210018
+参考文献
+[1]　Aizerman M A, Gantmakher F R. Absolute Stability of Nonlinear Control Systems. Moscow: Press of Academy of Sciences, 1963. 
+[2]　Popov V M. On absolute stability of nonlinear automatic control systems. Avtomatica i Telemekhanika, 1961, 22:961-979.
+[3]　July E I, Lee B W. The absolute stability of systems with many nonlinearities. Avtomatica i Telemekhanika, 1965 26:945-965.
+[4]　Chapellat H et al. On robust nonlinear stability of interval control systems. IEEE Trans. Autom Control, 1991, 36:59-67.
+[5]　Dahleh M et al. On the robust Popov criterion for interval Lur′e system. IEEE Trans. Autom Control,1993, 38: 1400-1405.
+[6]　Kharitonov V L. Asymptotic stability of an equilibrium position of a family of systems of linear differential equation. Differentsal′nye Uravneniya. 1978, 14:2086-2088.
+[7]　Reaheffer R. On a certain linear fractional transformation. J. Math. Phys.,1960, 39:269-286.
+[8]　Mees A I, Atherton D P. The Popov criterion for multiloop feedback systems. IEEE Trans. Autom Control, 1980, 25:924-928.
+[9]　高为炳.非线性控制系统导论.北京：科学出版社， 1991.394-398.
+[10]　叶庆凯.控制系统计算机辅助设计.北京：北京大学出版社，1990.81-88. 
+收稿日期　1995-03-25

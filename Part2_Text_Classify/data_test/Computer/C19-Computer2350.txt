@@ -1,0 +1,174 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第8期 Vol.36 No.8 1999
+
+
+
+系统动态行为语义模型及其形式描述
+钱　军　　　冯玉琳
+摘　要　文中综述刻画系统动态行为的计算模型和形式化方法，包括算法模型、逻辑模型，基于进程代数的模型和方法、I/O自动机、Petri网及Actor模型，并有针对性地从本质上分析和比较了它们在描述系统动态行为方面的特点和优劣.文中还着重剖析了基于网络环境下的分布对象计算系统的一些主要计算特征，包括交互、并发和分布等.文中是以一个全新的角度去审视那些主要的、较为成熟的模型和方法，针对分布对象计算系统的动态行为特点加以分析和比较，为系统地建立分布对象计算系统的计算模型和语义理论打下一定基础.
+关键词　动态行为，语义模型，形式描述，交互，并发，分布
+中图法分类号　TP311；TP311.1；TP311.5
+SEMANTIC MODELS AND FORMAL DESCRIPTIONS OF SYSTEM DYNAMIC BEHAVIORS
+QIAN Jun and FENG Yu-Lin
+(Laboratory of Computer Science, Institute of Software, Chinese Academy of Sciences, Beijing 100080)
+(Object Technology Center, Institute of Software, Chinese Academy of Sciences, Beijing 100080)
+Abstract　For the description of dynamic behaviors of software systems, some important existing models are analyzed and compared, including algorithm models, logic models, models, and formal calculi based on process algebra, I/O automata, Petri nets, and actor models. In addition, some crucial properties of object interactive systems such as interaction, concurrency, and distribution are also discussed. As part of a larger project which focuses on the direction of component software theory and design methodology, this work will help to clear the concept, consolidate the understanding, and lay down a deep foundation for the research on model and semantics of distributed object computation and the specification and verification of an object system.
+Key words　dynamic behavior, semantic model, formal description, interaction, concurrency, distribution
+1　引　言
+　　系统的动态行为是系统计算特征的具体体现.从软件系统的过程来看，主要可分为以下两个阶段：算法可计算的软件系统分析、设计与实现和交互式计算的软件系统分析、设计与实现.
+　　计算概念有着非常丰富的内涵.要弄清什么是计算，就必须对以下几个方面有足够的认识和理解：
+　　(1) 计算的数学模型；
+　　(2) 计算的形式描述；
+　　(3) 可计算性；
+　　(4) 计算复杂性；
+　　很明显，可计算性和计算复杂性的研究和讨论建立在对计算模型的选取和对计算的形式化描述之上.可以说，计算是对过程的一种高度抽象.过去是对算法行为过程的抽象，现在是对复杂系统的行为过程的抽象.小到一条机器指令，大到一个复杂系统，其运行虽都可称为计算，但这是有区别的.算法可计算可以抽象为从输入到输出的函数映射，是一个封闭的计算过程.而复杂系统的计算，由系统与外部环境的交互(interaction)及系统内部各组件间的协同工作来完成，是一个开放的、并发的、同时又可能是分布的计算过程.Turing机是算法计算模型的代表，λ演算是形式化描述算法可计算系统的代表.Turing机用一条有穷输入带和一组状态转移规则描述计算过程，λ演算则用抽象的数学符号来表示函数，两者具有相同的表达能力.而复杂系统(或称为交互式系统)的计算模型尚无定论，该方向的研究属于计算机科学理论的前沿课题.总之，可以把计算机软件系统的计算方向概括为①从串行计算向并发计算转移；②从封闭计算向开放计算转移.
+　　计算机的发展趋势是计算机硬件的运行速度越来越快、成本越来越低、体积越来越小，而计算机软件的发展却刚好相反.软件的规模越来越大、运行时间越来越长，维护和测试的费用越来越高.我们需要软件开发人员对软件系统形成的全过程有一个可靠性保证，但仅仅依靠对软件的测试和维护是不够也是行不通的，因为软件测试不可能从理论上保证软件永远不会出错.严格地讲，只有在软件的分析、设计和实现的整个过程中采用严格的形式化方法，才能保证最后得到的是一个可靠的、正确的软件系统.当然，我们也知道，不可能存在一个能描述现实世界所有特征的、完备的形式系统.
+　　实际上，计算机软件系统除了具有诸如动态行为特征之外，还具有诸如数据类型、组成结构等静态特征，如对象系统的类、继承、封装性等.系统的静态特征并不完全孤立在系统的动态特征之外，如在研究面向对象的并发程序设计语言时就发现有继承异常的现象［1］.有关这方面的研究虽然也很重要，但不是我们这次讨论的重点.我们把重点放在计算方面，即刻画系统的动态行为特征之上.
+　　研究系统动态行为的模型和方法已有不少.其中，基于逻辑的形式化方法主要有一阶线性/分支时序逻辑［2］、模态μ演算［3］、分布时序逻辑、TLA［4］以及线性逻辑［5］等等.它们可以用来描述系统的生命期约束性质，如系统的安全性、活性、公平性及不变性等.在逻辑的形式公理系统上，还可以进行系统的特性推理.而基于刻画系统行为关系的模型和方法又主要分为并发(interleaving)模型和真并发模型两种.Interleaving模型把系统的并发特性降低为某种抽象层次上的非确定性，强调系统动作的原子性.真并发模型强调在系统内部不存在统一时钟，并发事件之间不存在因果关系.Interleaving在一定程度上简化了系统的并发特征，因此采用这种模型来描述系统的并发行为的方法很多，较为典型的有CCS，CSP，ACP等基于进程代数的模型和方法［6～8］，以及I/O自动机、Bchi自动机等自动机模型［9，10］.相对于逻辑方法，基于进程代数的模型和形式化描述方法能够刻画更为细致的系统行为关系.CCS和CSP都具有很好的代数性质，它们不仅具有刻画系统行为的模型，还具有进行推理的形式演算系统.此外，CCS还用互模拟关系刻画进程间的等价关系，实际上保证了系统规范和实现的语义一致性.I/O自动机则是一种简单而有力的分布式系统的计算模型，它的特点是区分动作类型，强调分布系统的事件驱动特征，即在系统运行(计算)的任意时候，系统都可接受外部输入动作.描述系统行为的真并发模型有Petri网、Pomest、事件结构等［11～13］.其中，Petri网有着广泛的应用，它可以揭示系统的许多并发特性，但缺点是只有模型而没有演算.Actor模型是专为面向对象的并发程序语言而设计的，支持并发、异步通信和简单内部状态的对象计算模型［14］.最后本文还讨论了基于对象组件的交互计算模型.交互、并发和分布是网络环境下分布对象计算系统的主要特征.作为本文的总结，我们针对分布对象计算系统的主要特征，对几种不同的计算模型和方法进行了综合性的分析和比较.
+2　基于逻辑的模型和方法
+　　从逻辑的角度出发研究系统的行为特征，侧重于描述系统的生命期约束和协作约束.传统的算法可计算系统，由于其计算的封闭性，可以看作是一个由有穷输入到有穷输出的函数映射.采用Hoare逻辑或Dijkstra的最弱前谓词理论，就可以通过程序模块的前后谓词断言来有效地描述程序语义，即刻画算法可计算系统的动态行为约束.Hoare逻辑和最弱前谓词理论都属一阶线性逻辑范畴.
+　　Lamport在70年代末提出把并发和反应(reactive)系统的性质分为两类，即安全性和活性.非形式地讲，安全性描述的是“系统不期望发生的事件永远不会发生”，而活性描述的是“系统预期行为终究会发生”.由于系统计算可能不会终止，系统不能再看作是由输入到输出的映射，因此Hoare逻辑和最弱前谓词理论不再适用于描述这类具有非函数特征的系统的动态行为.时序逻辑将一阶逻辑加以扩充，增加了表示时序的模态算子，可以方便地描述并发和反应系统的这两类约束性质：
+
+其中，G，F分别为always算子和eventually算子.
+　　自从Pnuli于70年代末首先使用时序逻辑来推理并发系统以来，这种形式化方法得到了很快发展.比较典型的有Kozen的模态μ演算［3］；Clarke等人的CTL［2］，Fisher和Ladner的动态逻辑［15］；Chandy和Misra的Unity逻辑［16］以及Manna和Pnuli的并发与反应程序逻辑［17］; Lamport的TLA(temporal logic of actions)［4］和Ehrich的分布时序逻辑.其中，模态μ演算在时序逻辑的基础上又增加了“任意动作”(［act］)和“存在动作”(〈act〉)两个模态算子，以及描述递归的最小不动点和最大不动点，为进一步细致描述系统的行为约束提供了有利工具.
+　　时序逻辑的语义是基于行为的.所谓行为，即指系统状态的一个无限序列，或称为踪迹(trace).所有可能的踪迹构成系统的生命周期.动作一般解释为新旧状态间的关系，代表并发程序的一个原子操作.结合代数规范［18］，还可以加入对系统的静态结构描述，较为典型的有Ehrich的对象规范.我们采用时序逻辑结合代数规范的方法，给出一个刻画对象封装性的对象演算［19～21］.遗憾的是，在分支时序逻辑上建立可靠而完备的形式公理系统是一件艰巨的任务.直到1995年，Walukiewiez才给出了一个命题μ演算的公理系统［22］.一阶线性分支时序逻辑或一阶模态μ演算的完备形式系统至今不得而知.
+3　基于进程代数的模型和方法
+　　CCS和CSP是进程代数方法的代表，是描述通信和并发的演算系统.它们均以进程为计算单位，进程的基本组成是原子性动作.所谓原子性，是指动作不可再分，且动作执行是瞬时的.在两个演算系统中，进程间交互以双方握手(handshake)来完成，是一种同步通信方式.同时，CCS和CSP都是既有模型又有演算.当然，CCS和CSP之间也有不同.CCS用同步树(synchronization tree)表示进程，或称为状态转移图；而CSP用失败集(failure set)表示进程.在CCS中，使用操作语义(互模拟语义)解释进程(的等价性)；而在CSP中，则使用指称语义(失败语义)解释进程(的等价性).
+3.1　CSP的失败集
+　　在CSP中，进程运行的环境能够否决进程的某些动作的执行.在进程执行到其准备做的任何可能的动作均被环境拒绝时，就发生死锁(deadlock).因此，一个进程的历史(行为)要么是一条踪迹(trace)，要么就是踪迹后跟一个死锁进程.
+　　令A表示动作集合，ω∈A为踪迹，表示进程迄今为止已执行的动作序列.XA称为一个拒绝集，表示进程可能做不了的动作.(ω,X)组成一个失败对，所有失败对的集合称为失败集.CSP的进程就用失败集表示.因此，在CSP中，进程完全由所有可能的有限经历观察得到.两个进程称为失败等价(failure equivalent)，当且仅当它们拥有相同的失败集.CSP的进程表达如下：
+
+　　则F表示一个CSP进程.
+3.2　CCS的状态转移图
+　　令L为一个名字的集合，为L的共轭名字集合，.令为内部动作(外部不可观察的动作)，记.函数为换名函数，满足：.令V为(进程)变量集合，则CCS的进程表达式定义如下：
+
+　　在CCS中，进程被认为是状态的转移，但和自动机有本质的不同.一部自动机虽然也是一张状态转移图，但它是按照其接受的语言来刻画的.自动机接受的语言满足分配律，而CCS进程却不满足，即a.(b+c)与a.b+a.c并不代表同一个进程.这也是为什么不把CCS进程看作自动机的一个缘故.
+　　一个CCS进程对应着一张带有动作标记的状态转移图，这里的状态由进程未执行的动作决定.不同的状态转移图可能表示的是同一个进程.CCS用进程间的互模拟关系(bisimulation relation)来刻画两个进程的等价性.我们称进程g和h之间存在互模拟关系R，记为gRh,或(g,h)∈R.如果：
+　　(1) 若(s,t)∈R，且g中有边sas′，则h中一定存在边tat′，且(s′,t′)∈R；
+　　(2) 若(s,t)∈R，且h中有边tat′，则g中一定存在边sas′，且(s′,t′)∈R.
+　　其中s,s′和t,t′分别为进程g和进程h的状态.
+3.3　并发模型
+　　CCS和CSP等进程代数的演算系统均采用Interleaving模型描述并发，实质上是用非确定性特性代替系统的并发特征.能够这样做的理由一是保持动作的原子性，二是在一定程度上对问题进行简化，这样才能为系统带来良好的代数性质.如CCS可以用刻画非确定性的选择算子“+”和内部动作τ来表示进程的复合算子“|”及进程间的同步通信，因此由前缀算子“.”、选择算子“+”及包含内部动作τ的动作集Aτ＝A∪｛τ｝就构成一个所有进程都满足的代数系统(等值公理系统).
+　　进程代数系统采用Interleaving模型描述并发的缺点是很多并发现象不能描述，如组件对象内部多线程的并发执行.毫无疑问，非确定性并不能代替并发.
+3.4　同步通信及异步通信
+　　标准的CCS和CSP均以同步通信的方式描述进程间的交互，即消息的发送方必须是在接受方处于能够接受消息的状态下，才能向接受方发送消息，否则发送消息的一方就得等待.在进程双方进行通信的时刻，不允许外部环境的介入，CCS中由限制算子“\”刻画.
+　　但是，基于网络环境下的分布计算系统通常采取异步通信的方式进行交互，即消息的发送方可以随时发出消息，不必与接受方保持同步.同时，发送方在发出消息后可以立即执行其它的动作.在CCS的基础上进行一定的改进(从语法上，或从语义上)，可以得到描述异步通信的演算系统［23～25］.另外，消息的接受方式又可分为无同步约束的消息接受方式和有同步约束的消息接受方式.
+4　自动机模型
+　　用自动机研究系统的动态行为也是一种常见的方法.I/O自动机(input-output automaton)就是其中的一种.其特点主要有：
+　　(1) 区分动作类型
+　　I/O自动机的一个基本概念就是动作基调(action signature)，即三元组Sig(A)=(in, out, int),其中in,out,int分别是3个互不相交的动作集合，in是输入动作集,out是输出动作集，int是内部动作集合.ext=in∪out为外部动作集合，local=out∪int为系统(自动机)局部控制的动作集合，Act=in∪out∪int为所有动作的集合.
+　　(2) 自动机在任意时刻都能接受外部输入动作
+　　输入动作的这种特殊性，反映了分布系统的事件驱动特征.若把一部I/O自动机记为一个五元组A=(Q,Q0,S,T,P)，其中：
+　　
+则A具有性质：对任意输入动作a∈in和状态q∈Q，存在q′∈Q，使得(q,a,q′)∈T.
+　　(3) 自动机可以复合(composition)
+　　根据以上分析，我们可以对I/O自动机就描述系统动态行为做如下简要评述：
+　　［并发］ I/O自动机与CCS一样，采用Interleaving模型描述并发，动作保持原子性.这点在分析CCS模型时已做过评述，这里不再重复.
+　　［分布］ I/O自动机区分动作类型，主要反映在区分系统内部可控制动作和系统不可控制的外部输入动作.自动机在任意时刻都能接受外部输入动作，反映了分布系统的事件驱动特征.I/O自动机的这一特点很适合描述分布式软件系统的动态行为特征.
+5　Petri网
+　　一些并发理论既给出并发模型又给出演算系统，如CCS和CSP等.而Petri网只给出模型，而没有演算.但是Petri网是一种真并发模型，它虽不能像程序那样执行，不能像CCS那样有漂亮的演算系统，但它可以刻画更多的并发现象，如并发、矛盾及接触等等.
+　　Petri网有两个基本要素：条件和事件.每当一定的条件满足时，相应的事件便可发生，然后原来的条件发生变化，一些条件从成立变为不成立，另一些条件又从不成立变为成立，于是，又有一些新事件可以发生.
+　　Petri网用点火和转移规则描述系统从一个状态到另一个状态的迁移.一组事件之间如果没有因果关系，则可以并发点火.Petri网描述的系统中不存在一个统一的时钟，这是网论的本质.
+　　主要的Petri网有两种：C/E系统和P/T系统.C/E系统是条件/事件系统的简称，具有良好的选择，如网的格局(case)间相通，且对每个事件都存在格局，使之能够在此状态下点火.P/T系统是位置/变迁系统的简称，与C/E系统相比，P/T系统有许多特异现象，如：
+　　(1) 一个位置中可以有多个标码，一次变迁可以使多个标码沿弧流动；
+　　(2) 同一变迁可以反复连续发生；
+　　(3) 同一变迁可以“自我并发”地多重发生；
+　　(4) 同一网结构可以既呈现矛盾又呈现并发.
+　　限于篇幅，我们不再深入讨论Petri网的定义和细节.我们只对用Petri网来描述软件系统的动态行为做一些分析和比较.
+　　［并发］ Petri网是一种真并发模型，用它可以描述更多的并发现象.针对分布对象系统中交互引起的多输入流并发现象，可考虑采用Petri网描述.
+　　［交互］ Petri网只有模型，而没有演算.为给出Petri网更多的代数性质，有人最近用Pomset解释Petri网的语义［26］.总的来说，利用Petri网来验证系统的计算和语义特性较为困难.不过，我们可以把Petri网描述并发的思想应用到刻画系统组件的交互之中.
+6　Actor模型
+　　这是我们将要分析的最后一个重要模型.把Actor模型放在最后，是因为它是专为面向对象并发程序设计语言COOP而设计的一个对象计算模型，具有强烈的针对性.
+　　在Actor模型中，计算单位称为actor,它是一个自包含的(self-contained)、交互的、独立的对象，actor包含3个基本操作：
+　　(1) create：负责创建新的actor,把由函数抽象提供的动态资源的创建能力扩展到并发计算；
+　　(2) send to：负责向actor发送消息.每个actor都有一个消息列和一个固定的mail地址，在创建该actor时就已确定下来；
+　　(3) become：用新行为替换旧行为，给定actor一个历史相关的行为(状态).
+
+
+图1　Actor模型
+　　Actor模型主要有以下特点：
+　　［模型］ 刻画面向对象的软件系统，如一个actor可以在计算过程中创建新的actor.
+　　［交互］ 每个actor都有一个消息buffer，因此actor之间采用异步通信方式.
+　　［并发］ Actor的动作保持原子性.描述系统的并发模型仍是interleaving模型.
+　　［状态］ 在Actor计算过程中，状态改变是由行为替换操作become来完成的.注意，这里的状态并不是一般意义下的对象属性状态，它仅仅记载actor行为的改变，即从执行一条消息转变为执行消息列上的下一条消息.
+　　［演算］ 讨论actor计算的语义模型，以及定义在其上的代数演算［27］，包括actor的并行复合、内部actor的隐藏及重命名等.
+7　对象交互计算模型的讨论
+　　随着对象技术的发展和成熟，各大计算机公司陆续推出的新一代软件标准和产品，如CORBA/DSOM/OPENDOC，COM/OLE/ActiveX,Java/JavaBeans等，它们改变了传统的软件系统的过程结构和瀑布型软件工程开发方法，使得软件系统可以由一些预制的或重新定义的软件模块经组合装配而成，具有良好的可互操作性、维护性和软件资源的可复用性［29，30］.基于网络环境下的分布对象计算系统是目前最为主要的一种交互式计算软件系统.其特点主要有：(1) 交互(interactive)；
+　　(2) 并发(concurrent)；
+　　(3) 分布(distributed)；
+　　(4) 主动对象(active objects)；
+　　(5) 移动对象(mobile objects)；
+　　(6) 具有内部属性状态；
+　　(7) 具有生命期(从创建到消亡)；
+　　(8) 一些非函数特征：安全性(security)、实时、概率等.
+其中，交互、并发和分布是对象交互计算系统的三维主要特征［31，32］.
+
+
+图2　对象交互计算系统的三维计算特征模型
+　　交互是系统的本质特征，系统行为复杂的主要根源就是由交互引发的.具有与不可控制的外部环境的交互行为，系统才称得上是开放的计算系统，才是复杂系统.处于网络分布环境下的对象系统交互通常采用消息传递的异步通信式.异步方式使得消息发送方不必与消息接受方保持同步，在发出消息后可以立即执行其他动作.消息的接受方又可按无同步约束的消息接受方式在接收到消息后立即给予执行，或按有同步约束的消息接受方式接收消息.同步约束条件主要与对象的属性状态相关.
+　　并发是主动对象的固有特征.主动对象的含义是内部存在一个独立控制流.并发允许对象同时接受多个输入流，允许在对象内部有多线程同时存在.因此，为使系统完成预期的任务，就必须对并发采取控制.
+　　分布是指对象系统的子对象在物理上可以位于网络的不同主机之上.分布使得对象通信具有异步和延迟的特征.
+　　对象交互计算的模型尚无定论，对象交互计算系统的演算也有待研究.已有的一些工作包括：Honda,Tokoro等人建立在异步通信基础上的对象演算［23，24］，Nierstrasz等人对开放系统的复合语言的研究［33］，Ehrich等利用分布时序逻辑对对象系统的生命期进行规范，等等.但对分布对象计算系统的动态行为的语义模型和形式化演算的系统研究还需进一步讨论.
+8　综合分析与比较
+　　现在，我们针对对象交互计算系统的动态行为特征，对以上各节所讨论的模型和形式方法的作用进行综合比较.
+对象交互计算系统计算的动态特征
+
+　交互并发分布移动计算内部属性状态生命期约束性质
+同步通信异步通信真并发交错并发
+算法模型　　　　　
+逻辑模型　　　　　结合代数规范
+进程代数扩充　　高阶　　
+I/O自动机　　　　　
+Petri网　　　　　
+Actor模型　　　　　
+
+　　主要计算模型 
+图3　对描述系统动态行为的一些主要模型的一个综合分析
+　　从中我们可以看到，算法模型是不考虑与外部环境交互的计算模型.
+9　总　结
+　　从算法模型、逻辑模型、CCS、I/O自动机、Petri网到Actor模型，我们逐步分析和比较了它们在描述系统动态行为方面的特点和优劣.分布对象计算系统是不同于算法可计算系统的复杂系统，要想找到一个大而全的计算模型和形式演算来刻画出系统的所有特征是不可能的.在保证形式系统可靠性的同时，我们放宽对完备性的要求，在有限制的前提下，寻找适当的计算模型和形式方法来规范和验证我们的系统，不失为一种好策略.
+基金项目：本课题得到国家自然科学基金重点项目资助(项目编号69833030).
+作者简介：钱军，男，1966年10月生，博士研究生，研究方向为分布对象计算、形式化方法.冯玉琳，男，1942年7月生，研究员，博士生导师，研究方向为软件工程、形式化方法及分布对象技术.
+作者单位：钱　军　冯玉琳　中国科学院软件研究所计算机科学开放研究实验室　北京　100080　中国科学院软件研究所对象技术中心　北京　100080)
+参考文献
+1　　Matsuoka S, Yonezawa A. Analysis of inheritance anomaly in object-oriented concurrent programming language. In: Agha G, Wegner P, Yonezawa A eds. Research Directions in Concurrent Object-Oriented Programming. Cambridge, MA: MIT Press, 1993
+2　　Emerson E A. Temporal and modal logic. In: Leeuwen J V ed. Handbook of Theoretical Computer Science, Vol2. North-Holland: Elsevier Science Publisher, 1990
+3　　Kozen D. Results on the propositional mu-calculus. Theoretical Computer Science, 1985, 27(3): 333～354
+4　　Lamport L. The temporal logic of actions. ACM Transactions on Programming Languages and Systems, 1994, 16(3): 872～923
+5　　Girard J Y. Linear logic. Theoretical Computer Science, 1987,50(1): 1～102
+6　　Milner R. Concurrency and Communication. London: Prentice-Hall, 1989
+7　　Hoare C A R. Communicating Sequential Processes. New Jersey: Prentice-Hall, 1985
+8　　Bergstra J A, Klop J W. Algebra of communicating processes with abstraction. Theoretical Computer Science, 1985, 37(1): 77～121
+9　　Lynch N A, Tuttle M R. Hierarchical correctness proofs for distributed algorithms. Laboratory for Computer Science, Massachusetts Institute of Technology, Techical Report: MIT/LCS/TR-387, 1987
+10　　Thomas W. Automata on infinite objects. In: Leeuwen J V ed. Handbook of Theoretical Computer Science, Vol 1. North-Holland: Elsevier Science Publisher, 1990
+11　　Reisig W. Petri Nets: An Introduction, EATCS Monographs on Theoretical Computer Science, Vol 4. New York: Springer-Verlag, 1985
+12　　Pratt V R. Modeling concurrency with partial orders. Int J Parallel Program, 1986, 15(1): 33～71
+13　　Winskel G. An introduction to event structures. In: LNCS 354. New York: Springer-Verlag, 1989. 364～397
+14　　Agha G. Concurrent object-oriented programming. CACM, 1990, 33(9)
+15　　Kozen D, Tiuryn J. Logics of programs. In: Leeuwen J V ed. Handbook of Theoretical Computer Science, Vol 2. North-Holland: Elsevier Science Publisher, 1990
+16　　Chandy K M, Misra I. Parallel Program Design. Reading, MA: Addison-Wesley, 1988
+17　　Manna Z, Pnuli A. The Temporal Logic of Reactive and Concurrent Systems (Specification). New York: Springer-Verlag, 1992
+18　　Ehrig H. Fundamentals of Algebraic Specification. Berlin: Springer-Verlag, 1985
+19　　黄涛，钱军，倪彬. Trace演算.软件学报， 1999, 已录用
+　　　(Huang Tao, Qian Jun, Ni Bin. Trace calculus. Journal of Software (in Chinese), 1999, to appear)
+20　　黄涛，钱军，周桓.对象演算(Ⅰ). 软件学报， 1999, 已录用
+　　　(Huang Tao, Qian Jun, Zhou Huan. Object calculus Ⅰ. Journal of Software (in Chinese), 1999, to appear)
+21　　黄涛，钱军，王栩.对象演算(Ⅱ). 软件学报， 1999, 已录用
+　　　(Huang Tao, Qian Jun, Wang Xu. Object calculus Ⅱ. Journal of Software (in Chinese), 1999, to appear)
+22　　Walukiewicz. A complete deductive system for the u-calculus. BRICS, Rs-95-6, 1995
+23　　Honda K, Tokoro M. An object calculus for asynchronous communication. In: Proceedings of ECOOP′91, LNCS 512. New York: Springer-Verlag, 1991. 133～147
+24　　Satoh M Tokoro. Time and asynchrony in interactions among distributed real-time objects. In: LNCS 952. New York: Springer-Verlag, 1995
+25　　Amadio R M, Castellani H, Sangiorgi D. On Bisimimulations for the asynchronous π-calculus. In: Proc of CONCUR′96, LNCS 1119. New York: Springer-Verlag, New York: Springer-Verlag, 1996. 147～162
+26　　Wimmel H, Priese L. Algebraic characterization of net pomset semantics. In: Proceedings of CONCUR'97, LNCS 1243. New York: Springer-Verlag, 1997. 406～420
+27　　Talcott C L. Composable semantic models for actor theories. In: LNCS 1281， New York: Springer-Verlag， 1997. 321～364
+28　　冯玉琳，黄涛，倪彬.对象技术导论. 北京: 科学出版社，1998
+　　　(Feng Yulin, Huang Tao, Ni Bin. An Introduction to Object Technology (in Chinese). Beijing: Science Press, 1998)
+29　　Meyer B. Ojbect-Oriented Software Construction. New Jersey: Prentice-Hall, 1997
+30　　Guerraoui R et al. Directions in object-oriented programming. ACM Computing Survey, 1996, 28(4): 691～700
+31　　Nicol J R et al. Object-orientation in heterogeneous distributed computing systems. Computer, IEEE, 1993, 57～67
+32　　Wegner P. Why interaction is more powerful than algorithms. CACM, 1997, 40(5)
+33　　Wegner P. Interactive foundations of computing. Brown Univ, Tech Report: 1997
+34　　Nierstrasz. Requirements for a composition language. In: LNCS 924, New York: Springer-Verlag, 1995. 147～161
+收到日期：1998-09-14
+改稿日期：1998-12-10

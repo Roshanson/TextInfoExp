@@ -1,0 +1,127 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第6期 Vol.19 No.6 1999
+
+
+
+一种基于智能Agent的协同工作模型
+朱晓芸　何钦铭　王申康
+　　摘　要　计算机支持的协同工作（CSCW）需要研究出适应各种协同工作方式的灵活、开放、可扩充的模型结构。本文以分布式人工智能研究中的智能Agent为系统基本单元，提出一种基于智能Agent的协同工作模型，给出了它的具体实现。
+　　关键词　计算机支持的协同工作，智能Agent，分布式人工智能
+AN INTELLIGENT AGENT BASED COLLABORATIVE WORK MODEL
+Zhu Xiaoyun　He Qinming　Wang Shenkang
+Department of Computer Science and Engineering, Zhejiang University, Zhejiang.Hangzhou 310027
+　　Abstract　For computer supported collaborative work, a flexible, open and extendible model structure which fits in with the needs of various collaborative work patterns is required. In this paper, a collaborative work model based on intelligent agent is presented, where the agent is the basic unit of the system. The implementation of the model is given in detail and an example is introduced.
+　　Keywords　Computer supported collaborative work, Intelligent agent, Distributed artificial intelligence
+1　引言
+　　计算机支持的协同工作（CSCW―Computer Supported Collaborative Work）技术产生于80年代中期，其目的是研究协同工作的本质和特征，探讨如何利用各种计算机技术设计出支持协同工作的信息系统。CSCW的模型或体系结构的研究始终是该领域的核心问题。
+　　人类社会进行循同工作的方式多种多样，但已有的研究中提出的CSCW模型都比较注重专门的协同工作方式下系统的特征，较少考虑实际应用中协同方式的多样性和可变性，这样的协同模型应用面较窄，不能成为集成化的CSCW的支持技术。正如Gunnar Teege［1］所说的：CSCW的涉及面很广，很难设计出一种涵盖所有协同工作方式的集成支持系统，因而作为集成化CSCW的支持技术，必须具备很好的可扩充性（Extendibility），能够比较容易地支持新的协同工作方式。从另一个角度说，作为CSCW的支持技术（模型），对协同工作的方式是开放的，可以根据实际的需要，采纳合适的协同工作方式。
+　　另外，人类社会进行协同工作的操作基本单位是人，作为个体的人是群体内进行协同工作的基础。个体能力的完善及高度智能化才是群体进行有效的协同工作的保证。因而，在CSCW的系统模型中，有必要统一和完善个体的组织机构，提高个体的自组织和自适应能力，使个体的行为智能化。结合分布式人工智能研究的新成果，我们采用了智能Agent为基本的个体组织，来构造集成化的CSCW系统模型。
+2　基于智能Agent的CSCW模型
+　　基于智能Agent的CSCW模型，以智能Agent为基本的组织单位，通过多个智能Agent的协同工作来完成共同的任务。在这一CSCW模型中有两个要解决的问题：（1）智能Agent的组织结构及工作方式；（2）多智能 Agent构成的CSCW环境的组织及运行方式。
+　　首先，我们来定义智能Agent的组织结构及其工作方式。在分布式人工智能(Distributed Artificial Intelligence)领域，智能Agent通常是指在一定环境下持续自主运行的实体。1990年Yoav Shoham等人更进一步提出了面向智能Agent的程序设计方法(AOP)［2］［3］。通常情况下，一个智能Agent应有以下一些特征［4］：
+　　(1) 智能Agent由知识状态和知识处理方法两部分组成；
+　　(2) 智能Agent的知识状态被分割为若干一致的知识单元；
+　　(3) 知识单元是智能Agent自身可以改变的部分，知识处理方法是其自身不可改变的部分；
+　　(4) 智能Agent以通信的方式与外界环境建立联系。
+　　以分布式人工智能中智能Agent的研究为基础，结合CSCW领域的研究特征，我们认为CSCW环境中的智能Agent的组织结构还应具有如下的特征：
+　　(1) 智能 Agent的知识单元包含两部分的内容：有关协同工作方式的知识和有关其自身能力的知识；
+　　(2) 与知识单元相应的知识处理方法也应体现两种情况：确定协同工作方式的协议推理和反映自身智能行为的认知推理；
+　　(3) 支持CSCW环境下的多种媒体信息的表现能力，或称为多媒体信息的表现接口。
+　　以这种智能 Agent构成的CSCW环境从物理拓扑结构上呈现网状结构，也就是说，在环境中任意两个Agent之间都能直接通信，协同工作。但是人类社会的组织结构及工作方式证明：对等的网状结构并不是有效的管理及协同工作方式。因此，在设计基于智能Agent的CSCW环境中，Agent们根据任务的不同从而采用不同的协同工作方式，在不同的协同工作方式下，Agent们形成不同的工作群体。群体间也以某种协同方式进行工作，此时群体可以看作为一种虚拟的Agent，它具备智能Agent的全部功能，因而在具体实现时可以在群体中依据任务的性质及协同方式选定一个Agent的作为这个群体的代表，参与群体间的协同工作。如此，整个CSCW环境中智能Agent的逻辑组织呈现多级的层次结构。如图1所示：
+
+图1　多智能Agent构成的CSCW环境的组织结构
+　　在这样的CSCW环境中，一个大的任务，依据协同方式不同被分解成多个小的任务，这些小的任务按照具体情况，既可以由底层的智能Agent来实现，也可以由多个Agent构成的Agent群体来完成。这种将网状拓扑结构映射成树状层次结构的管理方式，也正是人类社会组织管理的成果。
+3　智能Agent的内部实现
+3.1　智能Agent的体系结构
+　　我们设计的智能Agent的总体结构如图2所示：
+
+图2　智能Agent的总体结构及层次性
+　　智能Agent具有统一的结构特征，依据内部功能的不同可以分成四个层次：通讯层、协同控制层、自定义层与表现层。其中通讯层由通信管理器组成，协同控制层由协议推理机与协同知识库组成，自定义层由认知推理机与能力知识库组成，而表现层通过Agent的多媒体信息表现接口来实现。Agent的内部状态集合是它的内部黑板组织，用于在Agent的各层次之间传递信息。这样一个智能Agent的内部行为表现为：通信管理器接受外部环境的信息（来自其他Agent的消息与请求），由推理控制机（含：协议推理机和认知推理机）根据这些消息、请求以及Agent的状态，进行分析、理解、推理后，形成合适的与其他Agent的协同工作方式，进一步地按此方式并根据Agent的自身能力，执行相关的动作，形成Agent的新状态，由此可能引起更进一步的Agent推理活动（如：按协同方式通知其它Agent的请求结果，向其它Agent发出请求，等等）。必须指明的是：智能Agent的活动行为不是被动的，而是主动进行的，Agent的推理控制机每隔一个时间片都要检测通信状态和自身的状态，完成一次推理活动。
+3.2　通信管理机
+　　通信管理器是整个智能Agent与外部环境进行信息交互的接口，其组织结构如图3。其中：
+
+图3　通信管理器的组织结构
+　　. 接收器　接收来自外部环境中其它Agent的信息（通知、请求等），进行初步的通信语法检查后，排队到入通信队列。
+　　. 发送器　根据出通信队列中的相应的通信内容，将该信息发往指定的外部环境中的智能Agent。
+　　. 群体成员表　是智能Agent活动环境的成员清单，它规定了Agent的通信活动范围。环境中每个能与Agent进行通信交互的成员（其它的Agent）都将登记到群体成员表中，而Agent也只能与群体成员表中的Agent进行通信。具体结构如下：
+
+Agent―TypeAgent―NameAgent―Address
+
+　　其中：
+　　Agent―Type　标明环境中不同Agent的种类，如：管理者，一般职员等，可用于标识CSCW环境中该Agent所在的群体。
+　　Agent―Name　在整个CSCW环境中识别该Agent的唯一标志。
+　　Agent―Address　Agent的地址，表示Agent在CSCW环境中所处的位置。如：在构成CSCW的网络系统中，可采用IP地址或名字服务地址来表示Agent的地址。
+　　一个Agent可以同时加入CSCW环境中的多个群体，因而一个Agent中可以有多个群体成员表。
+　　. 出通信队列与入通信队列　出/入通信队列是Agent内部进行通信流量控制的组织。为适应CSCW模型中大量的多媒体数据通信的要求，以及媒体数据在表现与时空同步上的特性，我们采用先进先出与信元响应优先级相结合的处理方法来处理队列中的每个通信单元，这些通信单元必须满足Agent间的通信协议约定  通信语法。通信语法定义了Agent间通信的三种方式：
+INFORM <agent> <time> <fact> <priority>
+　　通知某个Agent在某时time的某个事实fact，响应优先级为priority。
+REQUEST <agent> <time> <action> <priority>
+　　请求某个Agent在某时time执行某个动作action，响应优先级为priority。
+INVOKE <agent> <time> <action> <priority>
+　　取消某个Agent在某时time执行某个动作action，响应优先级为priority。
+　　优先级priority的取值范围以及每级值的含义，可以根据具体的应用进行约定。我们在调度处理时认为取值越大优先级越高。
+3.3　推理控制机
+　　推理控制机有两部分，分别在协同控制层和自定义层中实现，是智能Agent进行协同工作和智能化行为的控制中心，采用特定的推理控制算法控制Agent的层次内部活动。组织结构如图4所示：
+
+图4　推理控制机的组织结构
+　　其中：
+　　.通信生成器　根据推理控制中心的要求生成相应的通信请求单元，通过通信管理机发给环境中其它的Agent。
+　　.通信解释器　解释、分析通信管理机收到的外界信息，将结果传给推理控制中心执行。
+　　.推理控制中心　是Agent活动的控制中心，由一种或多种通用的推理算法组成。如：数据驱动（前向）、目标制导（逆向）、双向推理等等。
+3.4　Agent的内部状态集合
+　　内部状态集合是类似于黑板结构，是智能Agent的进行内部层次间信息传递的中间机构。其结构：
+
+Status―TypeStatus―NameStatus―ValueTimestamp
+
+　　其中：
+　　Status―Type　Agent状态种类，用以区分Agent状态的不同侧面。
+　　Status―Name　状态名称，唯一表示Agent的一个状态。
+　　Status―Value　状态值，反映状态的当前水平。
+　　Timestamp　状态时标，记录状态的设定时间。
+　　通过定义不同类型的状态，可以表示Agent的不同状态特征，如：信念、选择、承诺等等。由于状态的变迁具有时序特征，因而在状态栏中加入时标是必要的。
+3.5　Agent知识库
+　　Agent的知识库既是指导Agent与其它群体成员进行协同工作的核心，也是Agent智能活动行为的依据，是其向外界承诺的基础。我们采用产生式规则作为知识的基本表示形式，提供对元级知识―方法的调用手段。Agent知识库的定义必须符合Agent规则语法：
+　　RULE ((<messages>) (<status>) (<action-list>))
+　　表示：当得到通信单元messages，并且满足Agent状态status时，启动并执行动作列表action-list中的各项动作。
+　　其中：
+　　messages　是符合通信语法的通信单元的逻辑组合，以AND和OR连接。
+　　Status　是Agent的状态的逻辑组合，以AND和OR连接。
+　　Action-list　是动作列表，一个动作可以是一个通信单元，也可以是对知识库元知识―方法的调用或对Agent内部状态集合的刷新。
+　　元知识调用语法：
+　　CALL <time> <method>
+　　状态集合的刷新语法：
+　　REFLASH <time> <status-type>
+<status-name> <status-value>
+3.6　Agent的定义语法
+　　通过前面的描述，我们为一个智能Agent定义下列部件：
+　　(1) Agent的类型，名称；类型可用于确定Agent在群体中的地位与角色。
+　　(2) Agent所在环境的群体成员；一个Agent获得其所在群体成员的方法有两种：在生成时先加入已有的成员，其后加入的成员通过广播的方式通知其它Agent。另一种方法是所有新加入的Agent必须向群体管理者(某个Agent)注册，群体中的Agent定期从管理者处得到最新的群体成员名单。一个Agent可以同时加入多个群体。
+　　(3) Agent状态的各个侧面；
+　　(4) Agent协同能力与智能能力基础的知识规则库（协同知识与能力知识），元知识―方法库；
+　　我们对Agent的语法形式定义如下：
+　　I―AGENT <agent-name> :: <agent-type>
+{ 
+GROUPS { <group-list> ；}
+STATUS { <status-list> ；}
+COMM-KBASE {RULE <rule-list>；
+METHOD <method-list> ；}
+SELF-KBASE {RULE <rule-list>；
+METHOD <method-list> ；} 
+}
+4　讨论
+　　根据本文提出的基于智能Agent的CSCW模型，利用我校的校园网络环境实现了基本的多智能Agent系统（基于Unix操作系统的进程方式），构造了原型CSCW的实验环境，通过测试表明：在我们构造的CSCW环境中，智能Agent具备了有关网络成员监控和文件传输的知识，表现出对协同方式的自适应性和可扩展性。
+　　今后工作的重点之一是对此类协议知识的研究与提炼。我们认为有关协同工作方式的协议知识主要体现在对任务的分解上，而在知识表达时，则需从执行者如何更好地完成任务的角度来形成协议知识。关于Agent组织结构和能力知识的进一步完善与丰富也是我们今后工作的重点。随着CSCW环境中应用的扩展，Agent的智能能力，自身的组织以及两种推理机制的处理效率将会面临新的问题。尤其，CSCW环境是多媒体化的信息环境，基于多媒体信息的智能Agent的知识表达及推理机制是实现CSCW环境多媒体化的关键。
+注：本文受到国家自然科学基金的资助(NO.69673031)。
+作者简介：朱晓芸　博士,讲师。
+何钦铭　副教授。
+王申康　博士生导师，教授。
+作者单位：浙江大学计算机科学与工程学系　浙江.杭州（310027）
+参考文献
+［1］　Gunnar Teege. Object-Oriented Activity Support: A Model for Integrated CSCW Systems, CSCW: The Journal of Collaborative Computing，1996；5:93-124
+［2］　Shoham Y. Agent-oriented Programming. Artificial Intelligence,1993；60:51-92
+［3］　Thoma B, Shoham Y, Schwarta A, Kraus S. Preliminary thoughts on an agent description language. International Journal of Intelligent System, 1991； 6:497-508
+［4］　王怀民,陈火旺,高洪奎. 面向智能主体的程序设计. 计算机学报,1994；17(5):367-375
+［5］　ISO 7498 Part4. Management framework. 1989
+［6］　杨　枨，朱晓芸，俞瑞钊.基于智能Agent的网络管理，通信学报，1998；(1)
+收稿日期:1998-12-28

@@ -1,0 +1,118 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+基于行为表达式的任意随机
+Petri网的品质分析1）
+蒋昌俊　　郑应平　　疏松桂
+　　摘　要　提出一种基于行为表达式的品质分析方法，可以做任意分布的有界或无界随机Petri网的品质分析. 该方法不仅拓广了分析范围，解决了文献［4］中没有解决的问题，而且不必画出Petri网的可达标识图，使分析过程更为简洁. 
+　　关键词　随机Petri网，任意分布，行为表达式，品质分析.
+PERFORMANCE ANALYSIS OF ARBITRARY STOCHASTIC PETRI
+NETS BASED ON BEHAVIOR EXPRESSION
+JIANG CHANGJUN ZHENG YINGPING SHU SONGGUI
+(Institute of Automation, chinese Academy Science, Beijing 100080)
+　　Abstract A performance analysis method based on behavior expression is presented in this paper. This method can be used for performance analysis of bounded or non-bounded stochastic Petri nets with arbitrary distributions. It not only extends analysis range but also solves an open problem in paper［4］. It needn't draw the reachability marking graph of Petri nets. Thus, the analysis process proposed in this paper is simple and easy to implement.
+　　Key words Stochastic Petri net, arbitrary distribution, behavior expression, performance analysis.
+　　1　引　言
+　　Petri网是异步并发系统建模与分析的有力工具. 利用Petri网进行系统建模，不仅有图形的直观性和结构的层次性，而且还有一套理论方法支持系统的性质分析和品质分析. 
+　　Molloy［1］首先建立了可达标识图与有限马尔柯夫链的对应关系， 从而为服从负指数分布的有界随机Petri网的品质分析提供了相应的马氏分析方法. 其后，Marson等人［2］推广了Molloy的工作，提出一种广义随机Petri网(GSPN)模型，此模型包括了某些变迁为立即变迁(无时延)的情形. 而Dugan等人［3］从另一个方面推广了Molloy的工作， 提出一种增广随机Petri网(ESPN)模型，该模型包含了抑止弧的情况. 然而这些工作均未突破负指数分布的限制，因而均是在马氏框架下进行分析. Guo, Zhou等人［4］受GERT［5］分析方法的启发，将矩母函数方法应用于Petri网，从而提出任意分布随机Petri网(ASPN)的矩母函数分析方法. 该方法是将随机Petri网的可达标识图作为一个状态机Petri网，并应用矩母函数及传递函数于该Petri网，从而形成一个适合任意分布的有界随机Petri网的分析方法. 由于这些方法都是基于可达标识图，因而决定了它们只能分析有界随机Petri网. 众所周知， 生成一个复杂系统的Petri网模型的可达标识图是一件相当困难的工作，有时会出现状态爆炸等问题. 也就是说， 这些方法也只能对那些小规模系统有效，而对那些稍大一点规模系统的分析便不能凑效. 
+　　本文基于Petri网的行为表达式［8］， 将矩母函数法思想引入其中，从而形成一种适合任意分布的有界或某些无界(具有行为表达式的)随机Petri网(AGSPN)的分析方法. 
+　　2　基于行为表达式的解析方法
+　　为了便于计算， 首先给出行为表达式的不同形式的定义及性质. 
+　　定义1. 称α是T上的一个单项式当且仅当α是若干个(也可能是零个)字符连接的形式. 其长度是它包含的字符个数，记作｜α｜. 例如α=abcadce,则α是一个单项式，并且｜α｜=7. 
+　　定义2. 称α是T上的一个多项式当且仅当α是若干个单项式的选择运算或并发运算的形式. 当α中不含并发运算时，称α为标准多项式. 例如α=ab+(cd)//(eaf),则α是一个多项式. 
+　　由于σ1//σ2可按并发运算的定义展成若干个单项式的选择运算形式， 故任何多项式均可展成与之等价(表示的语言相同)的标准多项式. 例如上面的α也可以写成
+α=ab+cdeaf+cedaf+ceadf+ceafd+ecdaf+
+eacdf+eafcd.
+　　定义3. 称α是T上的一个闭包式当且仅当α是单项式或多项式α′的“星”运算形式， 即α=(α′)*. 例如α=(ab+(a+c)//(de))*是一个闭包式. 
+　　定义4. 称α是一个复合式当且仅当α是若干个单项式、多项式或闭包式在连接运算、选择运算、并发运算以及“星”运算有限次运算下的形式. 例如α=(((ab)*//c)+(d+e))*是一个复合式. 
+　　一个正规式(经典形式语言的表达式)本质上与一个复合式等价. 单项式、多项式和闭包式均是复合式的特例. 
+　　定义5.称αs是α的一个子式当且仅当αs是α中的一部分， 并且αs或者是一个单项式，或者是一个多项式， 或者是一个复合式. 例如αs=(ab+c)*是α=a(b(ab+c)*+((cd//f))*的一个子式. 
+　　定义6. 称α是一个幂级式当且仅当α中含有形如的子式，其中α′≠。例如α是一个幂级式. 
+　　本质上说，幂级式的表达能力已真超于复合式，实际上幂级式中具有计数限制能力，已达到上下文无关语言的表达能力，甚至达到上下文有关语言的表达能力. 例如L(α)=便是一个上下文有关语言. 其中α2,α4,α5非空； α4≠α5.
+　　一个行为表达式或者是一个复合式，或者是一个幂级式. 因此，它可以刻划有界Petri网，或某些无界Petri网(表达式存在的). 根据表达式并借助下面的结论，可以求得petri网的传递函数［4］， 再利用矩母函数的有关方法便可对任意分布的随机Petri网进行品质分析. 
+　　命题1. 设α=t1t2…tq是一个单项式，则其传递函数
+
+　　证明. 直接由文献［4］的化简规则即可得到此结论.
+　　命题2. 设α=α1+α2+…+αn是一个标准多项式，则
+
+　　命题3.设α=(α′)*,则
+
+　　证明.可按文献［4］中证明循环化简方法类似地进行. 
+　　分析方法的具体步骤如下：
+　　第一步. 基于文献［8］产生系统的行为表达式，并化多项式为标准多项式形式(若有的话)；
+　　第二步. 依据所给的分布参数及行为表达式结构， 求出各事件的引发概率及其矩母函数(注. 表达式中不同位置的同一事件可能传递函数不一样， 这是由于不同位置的同一事件的引发概率可能不一样)；
+　　第三步. 据第二步的计算结果，对行为表达式重新标号，以区别表达式中具有不同传递函数的同一事件；
+　　第四步. 据命题1―3计算标号后的行为表达式的传递函数；
+　　第五步. 基于前面的结果和矩母函数的有关方法进行各性能指标的计算，从而获得系统的定量分析结果. 
+　　3　一个无界AGSPN分析
+　　利用前面的方法，分析一个无界的任意分布的增广Petri网. 
+　　例1. 图1所示是一个随机Petri网(实线部分)，显然该网存在死锁状态.为考虑该网死锁的随机性能，现增加消解变迁t及其有关弧(虚线部分).其中a,b,c及t服从负指数分布，且λa=λb=λc=1，λt是参变量；d,e服从正态分布，且均值满足τd+τe=1，方差满足σ2d+σ2e=1. 分别考虑该网的周期时延、死锁时延及死锁概率与参变量λt的关系. 
+
+图1　无界Petri 网
+　　为了估计该网的周期时延，需要计算它的周期行为表达式
+
+的传递函数. 从而有
+　　　　
+　　　　　　　　　　　　
+所以时延周期为(因为)［4］
+
+　　为了计算死锁时延，在(s)中分别令Wa(s),Wb(s),Wc(s),Wd(s)和We(s)中的s=0, 从而得
+
+则死锁时延d为
+
+这样，死锁的稳态概率pd为
+
+从而得, d及pd与λt的关系如图2所示.
+
+图2　T，Td及pd与λt的关系
+　　上面利用网的行为表达式求得它的传递函数，并利用矩母函数思想，实现了该无界网的性能评估. 这是现有其它方法都不能解决的，也是文献［4］中指出的一个困难而有理论意义的待解决问题. 下面通过对一个实际系统的分析， 证实本文方法的应用价值. 
+　　4　一个实际系统分析
+　　例2. 图3是一个加工装配系统的示意图. 系统有一个装配站A1,一个机器人R1,两台加工机器M1和M2，对应的两个传输带分别将两类原材料δ1和δ2从库S1和S2中取出，并送到相应机器M1和M2上进行加工；然后分别经R1将半成品δ′1和δ′2从M1和M2上卸载并送到A1，经A1装配成产品由运输带运到库S3中.
+
+图3　一个架工装配系统
+　　为讨论方便起见，做如下假设：
+　　1) S1,S2中原材料从不短缺；
+　　2) S3中产品从不溢出；
+　　3) 传输过程很快，看做立即动作；
+　　4) Mi加工δi的速率服从负指数分布，且参数分别是0.5；
+　　5) R1从Mi上卸载速率是一个常量，记作χ;
+　　6) A1装配速率服从负指数分布，且参数是1.建立该系统的Petri网模型如图4所示. 其中a――M1加工δ1；b――M2加工δ2;c――R1从Mi上卸载δ′i,i=1,2,;d――A1对δ′1与δ′2进行装配. 
+
+图4　加工装配系统的Petri网模型
+取λa=λb=0.5,λd=1,χ是一个参量. 按本文方法得到已标号的周期行为表达式是
+=(ab′+ba′)c(b″(da′c+adc)+a″(d″″b′c+b″″dc))*d″.
+其中
+　　　
+　　　　　　
+根据本方法第四步，求得的传递函数
+
+从而该系统平均生产周期是
+
+　　在一个生产周期中，为考虑卸载的时延c，令Wi(s)中s=0，其中i∈{a,b,a′,b′,a″,b″,d″,a,d,b″″,d″″}.从而得到此时的传递函数
+
+因此，
+这样，处于卸载的稳态概率是
+
+由此可得，c,pc对χ的曲线如图5所示. 
+
+图5　，c,pc对χ的曲线
+　　5　结　　语
+　　本文给出一个基于行为表达式的任意随机Petri网的性能分析方法. 通过对一个无界AGSPN的品质分析， 展示了该方法的理论意义. 并通过对一个加工装配系统的品质分析， 说明了该方法的实际意义. 进一步要做的工作应该是开发出基于行为表达式的并发系统建模、分析、控制、评估和优化的Petri网语言方法的计算机软件，使之真正成为强有力的工具. 
+1)国家自然科学基金资助课题.
+作者简介：蒋昌俊　简介见本刊第22卷第4期.
+　　　　　郑应平　简介见本刊第18卷第2期.
+　　　　　疏松桂　简介见本刊第20卷第3期.
+作者单位：中国科学院自动化研究所　北京　100080
+参考文献
+　　[1] Molloy M K. Performance analysis using stochastic Petri nets. IEEE Trans. on Computers, 1982, 3:913-917.
+　　[2] Marsan M A, Balbo G, Conte G. A class of generalized stochastic Petri nets for performance analysis of multi-processor systems. ACM TOCS. 1984, 2:92-122.
+　　[3] Dugan J B, Trivedi K S, Geist R M, Nicola V F. Extended stochastic Petri nets:application and analysis. in Proc. PERFORMANCE, Paris. December, 1984, 507-519.
+　　[4] Zhou M C, Guo D L, DiCesare F. Integration of Petri nets and moment generating function approaches for system performance evaluation. J. of Systems Integration, 1993, (3):43-62. 
+　　[5] Pritsker A A B. Modeling and analysis using Q-GERT networks. New York: John Wiley and Sons, 1979. 
+　　[6] Jiang C J, Wu Z H. Net operations(Ⅰ). J. of Comput. Sci. & Technol., 1992,7:333-344.
+　　[7] Jiang C J. Net operations(Ⅱ). J. of Comput. Sci. & Technol., 1995,10(6):51-60.
+　　[8] Jiang C J, Zheng Y P, Sheng S G. Synthesis and analysis of systems based on Petri nets. Int. Conference on Systems and Control, NanKai, October, 1994. 
+收稿日期　1995-03-13

@@ -1,0 +1,130 @@
+软件学报
+Journal of Software
+2000 Vol.11 No.1 P.49-53
+
+
+
+基于活动仿射标架反求Nurbs曲线/曲面参数
+胡事民　孙家广　金通光　汪国昭
+摘　要　Nurbs曲线/曲面在反求参数上的数值不稳定性,是Nurbs曲线/曲面的致命缺点.该文介绍了用于参数曲线/曲面求交的活动仿射标架(moving affine frame,简称MAF)方法.基于MAF方法的原理,提出了反求Nurbs曲线/曲面参数的一种新方法.该方法在数值稳定性和效率上均高于各种传统的迭代法,并已应用于商品化三维CAD系统GEMS 5.0.
+关键词　活动仿射标架法,Nurbs曲面,CAD系统.
+中图法分类号　TP391
+Computing the Parameters of Points on Nurbs Curves and Surfaces via Moving Affine Frame Method
+HU Shi-min　SUN Jia-guang
+(National CAD Engineering Center　Tsinghua University　Beijing　100084)
+HU Shi-min　SUN Jia-guang
+(Department of Computer Science and Technology　Tsinghua University　Beijing　100084)
+JIN Tong-guang　WANG Guo-zhao
+(Department of Applied Mathematics　Zhejiang University　Hangzhou　310027)
+Abstract　The numerical instability in computing the parameters of the points on Nurbs curves/surfaces is a fatal disadvantage of Nurbs methods. In this paper, the authors introduce the moving affine frame (MAF) method for intersection calculation of parametric curves and surfaces. Based on the principle of a MAF method, a new method for computing the parameters of the points on Nurbs curves and surfaces is presented. The numerical stability and the efficiency of the method are better than all traditional iterative methods. The new method has been applied to the commercial 3D CAD system GEMS5.0.
+Key words　Moving affine frame (MAF) method, Nurbs surface, CAD system.
+　　众所周知,给定参数,计算曲线、曲面的点,在CAGD(computer aided geometric design)中是最基本的算法.这方面已有许多经典的算法,如Bézier曲线/曲面的de Casteljau算法、Nurbs曲线/曲面的deBoor算法等.这些算法非常简洁,属于割角算法,比较稳定,效率很高［1,2］.现在我们考虑其反问题,对于给定曲线/曲面上的点,如何反求其相应的参数值.在几何造型中,反求参数非常重要,这有两方面原因：① 在集合运算中,反求参数是必不可少的;②在真实感显示中,为避免实体在交线处出现裂缝,需对三维空间中的交点,反求其参数,以便在离散成三角片时,体的两个面在交线处相吻合.
+　　Nurbs方法有许多公认的优点,在CAD及计算机图形学中正获得越来越广泛的应用.但也有许多缺点,正如Piegl［3］所总结的：① 需要额外的存储以定义传统的曲线曲面;② 权因子的不合适的应用,可能导致很坏的参数化;③ 某些技术用传统形式可能比Nurbs更好;④ 某些基本算法,比如反求曲线/曲面上点的参数,存在数值不稳定性.关于反求曲线/曲面参数,传统的方法大多是采用Newton迭代法,效率低,且易出错.
+　　本文作者之一在1988年曾提出曲面求交的活动仿射标架(moving affine frame,简称MAF)法［4］,基于MAF方法的原理,本文提出反求曲线、曲面参数的一种新方法.该方法具有较强的几何直观性,其稳定性和效率均高于传统的迭代法.
+1　MAF方法简介
+　　已知参数曲面
+　(1)
+　(2)
+假设已由离散法求得初始交点,如何求取下一个交点呢？
+　　设初始交点为{M0,T0},其中M0为三维空间中的交点,其对应参数为u0=(u01,u02),v0=(v01,v02);T0为该点的单位切矢量,,而T=N1×N2,N1和N2为S1和S2分别在u0和v0处的法向量,
+　(3)
+先由M0点沿切向T0前进δ步长,令P=M0+δT0,于是有
+　(4)
+则上式两边同时点乘,可得到
+　(5)
+于是
+
+其中
+
+同理,可求得Δv1,Δv2,以Δu=(Δu1,Δu2)和Δv=(Δv1,Δv2)作为增量,得到新的参数u0 ← u0+Δu和v0 ← v0+Δv,于是得到两张曲面上的点X0∈S1和Y0∈S2.若｜X0-Y0｜＜ε,以作为M0后的下一交点.这里,ε为求交精度.
+　　以上由P求得X0和Y0的过程称为球变换.
+　　若｜X0-Y0｜＞ε,则需要迭代修正.首先由X0和Y0得到一点P0.方法如下：过X0点在S1上作切平面Π1,过Y0在S2上作切平面Π2,Π1∩Π2于直线L,如图1所示,过X0作X0XT垂直于L,过Y0作Y0YT垂直于L,取.上述由X0和Y0得到一点P0的过程称为中点变换.然后,再由P0作球变换,得到两张曲面上的点X1∈S1和Y1∈S2,若｜X1-Y1｜＜ε,以作为M0后的下一交点.否则,中点变换和球变换交替进行,直至｜Xn-Yn｜＜ε.关于MAF方法的收敛性,参见文献［4］.
+
+Fig.1
+图1
+2　反求Nurbs曲线/曲面参数
+2.1　反求曲线参数
+　　对于一条给定的Nurbs曲线：
+　(6)
+其中Pi是控制顶点,Wi是相应控制点的权因子,Ni,k(t)为定义在节点向量
+T={t0,t1,...,tk,...,tn,...,tn+k}
+上的k阶B样条基函数,通常取t0=t1=...=tk-1=0,tn+1=tn+2=...=tn+k=1.S为曲线P(t)上的一个点,我们希望求参数u,使P(u)=s.
+　　先确定一个近似参数u0,方法如下.
+　　(1) 利用插节点算法,将Nurbs曲线P(t)转化为n-k+1条Bézier曲线.若在曲线P(t)的节点向量中有重节点,则曲线条数相应减少.
+　　(2) 对每一条Bézier曲线,判断P是否在其凸包内.如果在凸包内,离散该Bézier曲线,离散层数一般取为3,再判断P是否在这些子曲线的凸包内,以估计近似参数u0.
+　　有了近似参数u0,我们作迭代修正.
+　　过P(u0),沿切向P′(u0)作直线L,将点S投影到L上,记为Q,由于Q在L上,我们有
+　(7)
+于是可以求出Δu,即
+
+令u0←u0+Δu,重复上述过程,直至｜P(u0)-Q｜＜ε.
+　　一般来说,迭代2～3次,即可得到较为精确的参数.
+2.2　反求曲面参数
+　　对于一张给定的Nurbs曲面：
+　(8)
+其中Pi,j是控制顶点,Wi,j是相应控制点的权因子,Ni,k(u),Ni,k(v)为定义在节点向量U={u0,u1,...,uk,...,un...,un+k}和V={v0,v1,...,vk,...,vm,...,um+k}上的k阶B样条基函数,S为曲线P(u,v)上的一个点,我们希望求参数u^,v^,使P(u^,v^)=S.
+　　先确定一个近似参数u0,v0,方法如下.
+　　(1) 利用插节点算法,将Nurbs曲面P(u,v)转化为(n-k+1)×(m-k+1)片Bézier曲面片.若在曲面P(u,v)的节点向量中有重节点,则Bézier曲面片的片数相应减少.
+　　(2) 对每一张Bézier曲面片,判断P是否在其凸包内.如果在凸包内,离散该Bézier曲面,离散层数一般取为3,再判断P是否在这些子面片的凸包内,以估计近似参数u0,v0.
+　　有了近似参数u0,v0,我们作迭代修正.
+　　过P(u0,v0),曲面P(u,v)的切平面Π,将点S投影到Π上,记为Q,由于Q在Π上,我们有
+　(9)
+式(9)两端同时点乘P′u(u0,v0)和P′v(u0,v0),即得
+　(10)
+求解上述二元一次方程组,即得
+
+其中
+
+令u0←u0+Δu,v0←v0+Δv,重复上述过程,直至｜P(u0,v0)-Q｜＜ε.实际上得到了新的近似参数,这是一个球变换的过程,其几何直观性要比较传统迭代法好.该方法的收敛性证明与MAF方法类似,在此不再赘述.
+3　反求曲线/曲面参数的实例
+　　例1:反求曲线参数.
+　　一条四阶Nurbs曲线,其8个控制顶点分别为：
+(200,100,0),(100,100,0),(100,300,0),(400,300,0),
+(400,100,0),(300,100,0),(300,200,0),(360,180,0);
+节点向量为{0,0,0,0,0.2,0.4,0.6,0.8,1,1,1,1};权因子分别为{1,1.2,1,0.8,1,1,1.2,1}.对于给定的曲线上的点(117.36617392236,179.03032014373,0.00000000000000),由离散法可以求得该点的近似参数为0.125,再由3次迭代即得到精确参数为0.1234567.迭代情况见表1.
+Table 1
+表1
+
+Times①Approximate parameter②Error③
+10.123458892249810.00000219224981 
+20.123456700004330.00000000000433
+30.123456700000000
+
+①次数,②近似参数,③误差.
+　　例2:反求曲面参数.
+　　一条4×4阶Nurbs曲面,按7×4分布的28个控制顶点分别为:
+　　(100,100,0),　(130,180,30),　(120,270,30),　(90,360,0),
+　　(180,120,30),(160,200,60),(190,320,60),(150,440,30),
+　　(250,140,30),(230,200,60),(260,330,60),(240,400,30),
+　　(330,100,0), (350,220,30),(340,290,30),(330,400,0),
+　　(410,120,30),(380,200,60),(400,320,60),(390,440,30),
+　　(460,140,30),(440,200,60),(460,330,60),(480,400,30),
+　　(540,100,0), (570,220,30),(550,290,30),(575,400,0).
+节点向量分别为{0,0,0,0,0.25,0.5,0.75,1,1,1,1}和{0,0,0,1,1,1};按7×4分布的28个权因子分别为{1,1,1,1,1.2,1,1,0.8,1,1,1,1,1,0.81,1,0.65,1,1,1,1,1,1.6,0.89,1,1,1,1,1}.对于给定的曲面上的点(277.34742334732,248.13730252438,28.748699053051),由离散法可求得近似参数为(0.1275,0.375),再由迭代得到精确参数为(0.123,0.456).迭代情况见表2.
+Table 2
+表2
+
+Times①Approximate parameter②
+1(0.12605963537084,0.45777731019774)
+2(0.12282564488140,0.45574907305541)
+3(0.12299892247181,0.45599845953458)
+4(0.12300011806077,0.45600008679545)
+5(0.12300000072886,0.45600000053584)
+6(0.12299999995893,0.45599999994129)
+7(0.12300000000000,0.45600000000000)
+
+①次数,②近似参数.
+　　以上例子表明,该方法具有较高的效率,以曲线为例,传统迭代法通常需要迭代数10次才能由近似参数收敛到精确参数.
+本文研究得到国家自然科学基金（No.69902004）、国家863高科技项目基金（No.863-511-820-017）和国家“九五”科技攻关项目基金（No.96-A01-01-02）资助。
+胡事民（清华大学国家CAD工程中心　北京　100084；清华大学计算机科学与技术系　北京　100084）
+孙家广（清华大学国家CAD工程中心　北京　100084；清华大学计算机科学与技术系　北京　100084）
+金通光（浙江大学应用数学系　杭州　310027）
+汪国昭（浙江大学应用数学系　杭州　310027）
+E-mail: shimin@tsinghua.edu.cn
+参考文献
+1．Farin G. NURB Curves and Surfaces: from Projective Geometry to Practical Use. Wellesley, MA: A K Peters Ltd., 1994
+2．Hoschek J, Lasser D. Fundamentals of Computer Aided Geometric Design. Wellesley, MA: A K Peters Ltd., 1992
+3．Piegl L. On NURBS: a survey. IEEE Computer Graphics and Applications, 1991,11(1):55～71
+4．Jin Tong-guang, Wang Guo-zhao. MAF method for intersection calculation between parametric surfaces. Technical Report, No.#8801057, Zhejiang University, 1988
+1998-09-07收稿
+1999-01-12修稿

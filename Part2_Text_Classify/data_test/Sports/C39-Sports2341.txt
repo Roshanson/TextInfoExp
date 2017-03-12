@@ -1,0 +1,75 @@
+浙江体育科学
+ZHEJIANG SPORTS SCIENCE
+1999年 第21卷 第4期　No.4 Vol.21 1999
+
+
+
+力竭运动对大鼠心肌第二信使及心肌线粒体中离子含量的影响
+张钧　许豪文　黄叔怀
+　　摘要：以力竭运动为模型，观察力竭运动后大鼠心肌中环磷酸腺苷（cAMP）、环磷酸鸟苷（cGMP）和心肌线粒体中Ca2+、Mg2+、Mn2+、Zn2+、Na+、K+等离子含量的变化。结果发现：力竭运动后心肌中cAMP和cGMP浓度升高，心肌线粒体Ca2+含量显著增加，Mn2+含量显著下降，Mg2+、Zn2+、Na+、K+等离子含量未见显著改变。结果提示：力竭运动引起的心肌cAMP和cGMP浓度升高，心肌线粒体钙超载及Mn2+含量的明显下降，是造成心肌线粒体和心肌损伤的原因之一。
+　　关键词：力竭运动；第二信使；离子；心肌；线粒体
+　　中图分类号：G872．7　　文献标识码：A
+Effect of exhaustive exercise on second messenger of myocardium and ions contents of myocardial mitochondria in rats
+ZHANG Jun，XU Hao-wen，HUANG Shu-huai
+（1．Physical education institute of Yangzhou university，Yang zhou 225002，China；
+2．Department of PE，East China normal university，Shanghai 200062，China）
+　　Abstract：The alterations of exhaustive swimming on second messenger cAMP，cGMP in myocardium and ions contents in myocardial mitochondria of rats measured． The results showed that after exhaustives wimming messenger cAMP and cGMP in myocardium were increased significantly，C2+a content in myocardial mitochondria also increased significantly，the contents of Mg2+，Zn2+，Na+，K+ didnot change significantly，however，Mn2+ content decreased significantly．The above findings suggested that it might be one of the important factors for the injury of myocardium that exhaustive exercise might cause the change of second messenger cAMP，cGMP in myocardium and overload of C2+a and decrease of Mn2+ in myocardial mitochondria．
+　　Keywords：exhaustive exercise；second messenger；ion；myocardium；mitochondria
+　　cAMP信息传递系统和cGMP，Ca2+传递系统通称第二信使，它们是细胞内的信息分子，承担着将细胞接受的外来信息传导至细胞内，最终引起相应的生物效应的任务。许多激素和受体结合后，通过G蛋白激活腺苷酸环化酶，使cAMP生成增多，以cAMP为媒介物进行信息传递［1］，同时还可磷酸化钙通道，引起Ca2+内流。有些激素是通过G蛋白介导激活鸟苷酸环化酶生成第二信使cGMP，以cGMP为媒介物进行信息传递［2］。力竭运动可造成心肌损伤和线粒体损伤而导致运动性疲劳发生的事实已被广泛地证实。关于力竭运动后心肌第二信使和心肌线粒体离子是如何变化的，以及这些变化与心肌损伤关系的报道尚不多见。本研究试图探讨力竭运动对大鼠心肌第二信使及线粒体中离子含量的影响，以揭示力竭运动造成心肌损伤的原因。
+1　材料与方法
+1．1　实验对象与分组
+　　实验用雄性SD大鼠，体重210～250克，共16只，由中科院上海实验动物中心提供。随机分为A、B两组，A组为对照组，B组为力竭运动组，每组8只，同次实验的各组大鼠均为同窝大鼠。自由进食、饮水，室温21±4℃。
+1．2　动物运动模型（力竭运动）
+　　无训练的大鼠在长100cm、宽50cm、高50cm的玻璃泳槽中游泳至力竭，迅速取出断头取材，水深45cm，水温31±1℃。动物力竭判断标准参照Thomas的文献报道［3］。大鼠平均运动力竭时间为4．21±0．92h。
+1．3　主要试剂
+　　cAMP测试盒（IMK―403）、cGMP测试盒为中国原子能科学院产品，其余均为分析纯试剂，试剂用去离子水配制。
+1．4　实验方法
+1．4．1　样品　大鼠断头处死后，立即取出心脏，置于预冷的生理盐水中洗净残血，用滤纸吸干，迅速放入液氮中保存。
+1．4．2　大鼠心肌线粒体制备及蛋白定量方法　取心肌组织加分离介质在冰浴中剪碎，用电动马达匀浆器匀浆后倒入离心管中，依文献方法［4］用差速离心分离线粒体（分离介质含0．25mol／L蔗糖、0．5mmol／LEDTA和3mmol／L HEPES，PH＝7．4），线粒体蛋白含量［5］按Brad-ford等的方法测定。
+1．4．3　心肌线粒体中离子含量的测定　取线粒体沉淀加入硝酸适量，25℃振摇，12000×g离心10分钟，取上清液用ICP－AES法［6］测定线粒体离子含量，所用玻璃器皿均用稀硝酸浸泡24h以上，用去离子水冲洗。所用试剂均用去离子水配制。
+1．4．4　心肌cAMP的测定　称取50mg心肌放入2ml预冷的10％三氯醋酸溶液中，在冰浴条件下，用电动马达匀浆器进行匀浆，3000转／min离心10分钟，吸取上清液用水饱和乙醚洗3次除去三氯醋酸后70℃―75℃水浴上蒸干，干渣用1ml反应缓冲液溶解，按规定的顺序用微量移液管准确吸取40μ1，然后加入3H―cAMP和蛋白激酶置于冰浴内保温2小时后加入吸附剂70μ1，用多道液体闪烁计数仪测定60秒cpm数，由cAMP标准曲线上得知样品中cAMP含量。
+1．4．5　心肌cGMP的测定　心肌样品制备同cAMP。将制备的干渣样品用PH＝6．2NaAc缓冲液溶解。先加50μ1NaAc（补充体积用）→加样品50μ1→加入3H-cGMP50μ1，最后加抗血清100μ1轻轻摇匀，与2℃―4℃保温4小时（或者过夜），加入1ml预冷的醋酸钠以中止反应，滴加至微孔滤膜上减压抽滤，以25ml醋酸钠溶液洗去膜片上游离的3H-cGMP，膜片于70℃～80℃烤干。直接将50μ13H～cGMP滴加在膜片上，同样的方法烤干后置于闪烁液中，于液体闪烁计数器上测量放射性强度［7］。
+1．5　统计学分析
+　　所有数据用平均数（）和标准差（SD）表示，样本间以t检验进行显著性分析。
+2　结果
+2．1　力竭运动对大鼠心肌中cAMP和cGMP含量的影响
+　　由表1可见，力竭运动组大鼠心肌中cAMP和cGMP均明显高于对照组（P＜0．01），说明力竭运动可造成心肌中cAMP和cGMP含量明显升高。
+表1　力竭运动对大鼠心肌中cAMP和cGMP含量变化的影响　　（单位：pmol／mg）
+组别ncAMPcGMP
+A组8978．62±67．5411．89±1．58
+B组81592．71±92．08*20．13±2．27*
+注：*B组与A组相比P＜0．01
+2．2　力竭运动对大鼠心肌线粒体中离子含量的影响
+　　由表2可见：大鼠力竭运动后心肌线粒体Ca2+含量明显高于对照组（P＜0．01），Zn2+、Mg2+、Na+、K+等离子含量和对照组相比无显著性改变，而心肌线粒体中Mn2+含量显著低于对照组。
+表2　力竭运动对大鼠心肌线粒体中离子含量的影响　　（单位：nmol／mgprot）
+组别nCa2+Zn2+Mg2+Na+K+Mn2+
+A组813．26±3．430．46±0．0329．81±3．7465．37±3．0633．27±5．640．54±0．05
+B组829．14±3．99*0．41±0．0730．92±3．0463．85±5．8737．71±5．010．33±0．09*
+注：*B组和A组相比P＜0．01
+3　讨论
+3．1　力竭运动对心肌cAMP和cGMP信息传递系统的影响
+　　cAMP是第一个被发现的第二信使，它在细胞的信息传递中起着重要作用。激素和受体结合后，通过G蛋白激活腺苷酸环化酶，使cAMP生成增多。cAMP激活依赖cAMP的蛋白激酶（蛋白激酶A，PKA）。蛋白激酶A可催化许多细胞内蛋白质的磷酸化。蛋白激酶A还可以磷酸化钙通道，引起Ca2+内流；磷酸化微管蛋白，改变其构象，引起细胞的内分泌功能改变。cAMP浓度升高还可以引起一些基因的表达水平改变［1］。本实验结果表明：力竭运动可引起大鼠心肌中cAMP显著升高。力竭运动引起心肌中cAMP升高的原因可能是从其对磷脂酰胆胺甲基化的作用开始的，力竭运动可造成磷脂甲基转移酶（PMTⅡ）甲基化，从而提高其催化能力，这就增加了磷脂酰乙醇胺（PE）向磷脂酰胆碱（PC）的转化，提高运动状态下ATP向AMP的转化，使cAMP含量提高。同时力竭运动可使肾上腺素分泌增加，肾上腺素作用于细胞膜上β受体，活化膜腺苷酸环化酶（AC），使ATP分解加速［8］，从而使cAMP浓度升高。造成膜通道开放，使膜内外离子浓度改变，造成心肌损伤。力竭运动还引起cAMP依赖的蛋白激酶催化心肌组织内部的蛋白磷酸化，包括肌浆网的受磷酸蛋白（phospholamban，PLB）、肌钙蛋白Ⅰ和C蛋白的磷酸化［9］，这样使尿苷酸、亮氨酸和糖类的摄入量降低，抑制RNA和DNA的合成，加速了蛋白质降解，导致细胞分化而致心肌损伤［10］。同时心肌细胞的蛋白磷酸化还使基因转录调控失调［11］，导致心肌损伤。
+　　与cAMP－蛋白激酶A途径相似的是cGMP－蛋白激酶G途径。这条途径多限于心血管系统及脑内，激素和受体结合后，通过G蛋白介导，释放亚基（Gia）。亚基可催化GTP转变为GDP，同时激活磷脂酶C。磷脂酶C可使膜结构中磷脂酰肌醇－4，5－二磷酸（PIP2）分解成三磷酸肌醇（IP3）和二酰甘油（DG）。IP3和IP3受体结合后，受体变构，钙通道开放，存于内质网的Ca2+释放入胞液内，使胞液内Ca2+浓度升高。内质网中Ca2+储备枯竭后，IP3还能结合细胞膜的钙通道，引起细胞外Ca2+内流，也使胞内Ca2+浓度升高，造成细胞的增值调节，由此引起细胞内cGMP水平发生改变［11］。DG经DG酯酶催化水解出花生四烯酸（AA），AA在细胞内脂加氧酶作用下，产生两个重要的前列腺素中间产物PGG2和PGH2，可激活鸟苷酸环化酶（GC），GD催化GTP生成cGMP。本实验结果表明：力竭运动可引起大鼠心肌组织中cGMP显著升高。其可能机制为力竭运动可造成心肌细胞膜流动性改变［12］。增加了激素受体复合物和G蛋白的作用，增加了亚基的释放，激活了磷脂酶C，增加了PIP2分解成IP3和DG的量，从而使cGMP升高。作者推测力竭运动后心肌损伤可能与心肌细胞中cGMP变化有关，但其确切机制尚需进一步探讨。
+3．2　力竭运动对心肌线粒体中离子代谢的影响
+　　研究发现钙在细胞损伤过程中起重要作用，各种因素导致的细胞和线粒体内钙过度集聚都可引起细胞结构和功能的损害，细胞及线粒体内钙的的异常增加程度常作为细胞损伤的指标之一［13］。本实验结果表明：力竭运动可造成大鼠心肌线粒体内Ca2+浓度显著升高。其可能机制为力竭运动可造成GSH／GSSG比值下降，线粒体巯基含量下降，激活了线粒体膜上的PLA2，使膜磷脂降解增加，膜结构受损和功能损害［2］，从而造成心肌的损伤。Mn2+是Ca2+心血管效应的拮抗剂［14］，且是线粒体中Mn2+－SOD的主要成分，它具有保护线粒体免受自由基攻击的作用。Zn2+是细胞膜的重要组成成分，它结合于膜上的巯基起着稳定细胞膜的作用。有实验证实Zn2+可诱导内源性金属巯蛋白（MT）增加，MT是一种含有大量巯基的应激蛋白，它可减轻应激性心肌损伤［7］。本实验结果表明：力竭运动可造成心肌线粒体Mn2+含量明显下降，心肌线粒体中Zn2+、Mg2+、Na+、K+等离子含量未见明显改变。说明力竭运动造成心肌线粒体和心肌的损伤主要是通过线粒体钙超载和线粒体中Mn2+含量下降造成的。
+　　综上所述，力竭运动造成的大鼠心肌中cAMP和cGMP浓度升高，心肌线粒体中Ca2+含量显著增加，引起线粒体钙超载及心肌线粒体中Mn2+含量的明显下降，是造成心肌线粒体损伤和心肌损伤的又一原因。
+作者简介：张钧（1963－），男，现为华东师范大学运动生物化学博士生．
+作者单位：张钧　黄叔怀　扬州大学体育学院，江苏扬州　225002；
+　　　　　许豪文　华东师范大学体育系，上海　200062
+参考文献
+［1］　顾天爵，等．生物化学［M］，人民卫生出版社．1997．
+［2］　张钧，等．力竭运动对大鼠心肌线粒体游离钙及磷脂酶A2的影响［J］．中国运动医学杂志，1998，17（1）：26-27．
+［3］　Thomas DP，et al．Effects of repeated exhaustive exerciseon myocardial subcellular membranes tructure Int．J．Sports Med．1988；9，257．
+［4］　Vaghy PL，et al．Selective in hibition of Na+-induced Ca2+ release from heart mitochondria by diltiazem and certain other Ca2+ ant agonist drug J．Biol．Chen．1982，257：6000-6002．
+［5］　Bradford MM，et al．A rapid and sensitive method for the quantition of microgram quantities of protein utiliying the principle of protein-dye binding．Anal．Bichem．1976，72：248-254．
+［6］　陈念航，等．间硝基苯啶对异丙肾上腺素诱发大鼠心肌损伤的保护作用［J］．中国药理学报，1990，11（3）：245．
+［7］　何天培，等．牛磺酸对应激大鼠第二信使及心肌离子含量变化的影响［J］．营养学报，1998，20（3）：206-208．
+［8］　曲绵域，等．实用运动医学［M］．北京科学技术出版社，1996．
+［9］　Hamaguchi G L．Interaction of taurine with methionine inhibition of myocardial phospholipid methy 1 transferase．J．Cardiovasc．Pharmacol．1991，18：224．
+［10］　Lombardini B J．Effect of taurine on protein phosphorylation in mammalism tissues．In：Lombardini J B，Shaffer S W，Azuma J（eds）．Taurine Nutritional value and Mechanism of Action．New York；Plenum Press，1992：309．
+［11］　Teo T S，Wang J H．Mechanism of activation of a cyclie adenosine3’，5’monophosphate phospho diesterase from bovine heart by calcium ions．J．Biol．Chem． 1973，248（17）：5950．
+［12］　丁树哲，等．运动中内源性自由基对大鼠心肌线粒体膜分子动力学的影响［J］．生物化学和生物物理学报，1991，23：305．
+［13］　王文信，等．长时间游泳运动对大鼠心肌线粒体功能的影响［J］．生物化学和生物物理学报，1994，26：243-246．
+［14］　White RE，Hartzell HC．Magnesium ions in cardiac function． Biochem Pharmacol，1989，38：859．
+责任编辑：郭海英
+收稿日期：1999-05-04

@@ -1,0 +1,94 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+动力锅炉燃烧系统的模糊控制策略1)
+刘向杰　柴天佑　刘红波
+摘　要　基于模糊控制策略给出了锅炉系统新的控制方法.工业锅炉的主要动态特性包括非线性、非最小相位特征、不稳定性、时滞和负荷干扰，采用传统控制方法难以实施有效控制.运用GPE(Gaussian partition with evenly spaced midpoints)模糊控制系统对锅炉对象的主汽压 进行了仿真研究和时实控制，模糊控制器能够克服许多干扰因素，产生了良好的控制效果，最后给出了模糊控制同传统方法的比较结果.
+关键词　模糊控制，锅炉，干扰.
+FUZZY LOGIC STRATEGY FOR BOILER CONTROL
+LIU XIANGJIE
+(Electric Power Research Institute,Beijing 100085)
+CHAI TIANYOU LIU HONGBO
+(Research Center of Automation,Northeastern University,Shenyang 110006)
+Abstract　This paper presents the new development of the stea m generation control system of drum boiler using fuzzy control strategy.The majo r dynamics of a boiler include nonlinearities nonminimum phase behavior,instabil ities,time delays,and load disturbances.Traditional control strategy could not o ffer satisfactory result.A special subclass of fuzzy inference systems,called th e GPE(Gaussian partition with evenly spaced midpoints) systems,is used to contro l the steam boiler system.The fuzzy logic controller has been tested in the real plant and good results have been obtained.A comparison with conventional contro l approaches widely used in the plant is performed.
+Key words　Fuzzy control,boiler,steam pressure,disturbance.
+1　引言
+　　电厂锅炉燃烧产生的高压蒸汽用以驱动汽轮机发电.虽然锅炉模型结构随具体对象不同而不 同，但燃烧控制系统目标主要是在不断变化条件下克服干扰因素，将主汽压维持在规定的范围内 .该目的是通过调整燃料给煤量来实现的.动力锅炉的精确数学模型难以建立，而粗略模型也 只能由一系列分布参数系统描述［1］.因而采用常规固定参数PI控制器难以获得良好的控制效果.本文运用模糊控制策略控制复杂的动力锅炉对象，从而获得了良好的控制效果. 
+
+2　动力锅炉汽机系统的描述
+　　本文研究的内容是模糊逻辑控制方法在国内某大型发电厂的锅炉燃烧系统中的应用问题.该 厂现有的火电单元机组都是200MW燃煤单元机组，制粉系统采用中间储仓式，磨煤机为 钢球磨煤机.锅炉为单汽包自然循环锅炉，额定蒸发量为670t/h，最终过热汽压为14.2MPa(2060PSI).三相汽轮机驱动两极50Hz发电机.燃料煤由运煤滑差电机送入炉内，空气由送风机送入.控制阀调节入水量.循环泵驱动炉体水循环系统.
+　　正常运行的锅炉燃烧系统需使出口的主蒸汽压力维持在一定的范围内.主蒸汽压力参数非常 重要，它代表着锅炉的能量储存.
+　　采用传统的控制方法对锅炉实施控制，存在以下几方面的困难：
+　　1)系统存在严重耦合.例如：燃料量的变化对其它几个回路都产生影响.
+　　2)煤种及煤质的变化给系统代来了不确定性.
+　　3)给煤量的变化到主汽压的变化回路存在时滞.
+　　4)发电厂的发电设备高压性能而导致许多测量信号存在噪声.
+　　5)每天24小时锅炉运行的设定值不断变化以使得锅炉能够在优化状态下运行.
+　　其它困难还包括：非最小相位行为、汽包动态的不稳定性、传感器噪声、系统非线性、饱和 非线性等.控制系统的主要功能分为跟踪和校正两大部分.对象的机理建模采用文［1］的手段，运用模糊控制对锅炉燃烧系统的主汽压回路实施有效的控制.
+
+3　模糊控制器在工业锅炉燃烧系统中的应用
+3.1　模糊控制器的设计过程
+　　由于正态分布隶属函数能够体现人的直觉推理方式，应用于实时控制中的模糊控制器也往往 采用正态分布的隶属函数［2，3］.本文的系统采用正态分布的隶属函数进行 模糊化，称之为GPE(Gaussian partition with evenly spaced midpoints)系统.类似于TPE系统［4，5］，正态分布隶属函数形状相同，对称于其中心值，且两相临隶属函数中心值间距离相等.(图1).
+
+
+图1　输入量的隶属函数(e和Δe）
+　　正态分布隶属函数
+　　(1)
+使得仅在区间(αi-1,αi+1)隶属度值μAi(x)≠0。αi为隶属函 数μAi(x)的中心值.点αi是μAi(x)中唯一的隶属度值为1的点.这可保证其同三角形隶属函数一样，同一时刻仅四规则有效.
+　　本文的线性推理规则表示为：IF error is Ej and rate is Rj THEN output is U(i+j).Ei代表着一个误差模糊集，Rj代表着一个误差变化率模糊集，U(i+j)代表着一个输出量模糊集.
+　　设NVL，NL，NM，NS，NVS，NZ，Z分别表示语言变量的负很大、负大、负中、负小、负很小、负零、零.PVL，PL，PM，PS，PVS，PZ分别表示语言变量的正很大、正大、正中、正小、正很小、正零.全部规则列于表1.
+表1　模糊控制规则
+
+E
+CE ΔUNLNM NSZPSPMPL
+NLNVLNLNMNSNVSNZZ
+NMNLNMNSNVSNZZPZ
+NSNMNSNVSNZZPZPVS
+ZNSNVSNZZPZPVSPS
+PSNVSNZZPZPVSPSPM
+PMNZZPZPVSPSPMPL
+PLZPZPVSPSPMPLPVL
+
+
+　　控制输出量的隶属函数为
+　　(2)
+　　控制输出量由非线性的加权平均判决法得出
+　　(3)
+　　控制系统框图如图2所示.主汽压误差及误差变化率为模糊控制器的输入.模糊控制器的输出 为增量形式的控制信号.实发功率信号P0和反映给粉量的总风量A0作为引入的前馈信号引入以消除外部干扰.
+
+图2　主汽压模糊控制系统
+3.2　仿真设计
+　　基于表1，图1中输入变量e和Δe的中心值选为［±6,±4,±2,0］，Δu的中心值选为［±15,±12.5,±10,±7.5,±5,±2.5,0］.这些值的选择是基于先前的控制经验. 采用非线性模型的仿真结果如图3所示.该结果显示了较大的超调量.从锅炉主汽压的控制要求来看，主要目的是要实现低超调.于是降低Δu的中心值为［±12,±10,±8,±6,±4,±2,0］,仿真结果较为满意(图3).该组参数用于主汽压回路的控制.
+
+
+图3　模糊控制器的不同设计方案下的仿真结果
+3.3　实施结果
+　　上述控制策略用于现场实际对象，图4显示某日阶跃响应运行情况.可以看出，尽管现场运行 存在很大干扰，主汽压仍然显示了良好的跟踪效果.
+
+
+图4　实时控制结果
+　　在以上规则基础上，我们增加规则如下：
+　　如果误差较小，则输出量模糊集的论域及相应中心值降低一些，这可在系统接近稳态时降低 系统的超调量.
+　　如果误差较大，则输出量模糊集的论域及相应中心值增大一些，这在系统处于过渡过程中可 加快系统的响应速度.
+　　如果基本完成过渡过程后，仍存在误差，则“输出量”Δ=Δu+φ,其中100，以增加积分功能，消除偏差.
+3.4　同其它控制方法的比较
+　　对于复杂的难以建立精确数学模型的对象，模糊控制器的控制性能优于常规控制器，这是将 其应用于工业锅炉控制的最主要的原因.由于现场的负荷变化及煤种煤质的变化不可能在不同时间产生绝对相同情况，因而很难在现场对两种控制方法进行比较.本文基于非线性分布参数模型将模糊控制器同固定参数PI控制器的控制效果进行仿真比较，结果示于图5.由仿真结果看，固定参数PI控制器对于固定工况的控制效果较好，但在工况变化时，控制效果变差.而模糊控制器能够更好地适应外界环境的变化.
+
+
+图5　模糊控制器同固定参数PI控制器的控制效果比较
+4　结论
+　　本文设计了GPE模糊控制系统，并将其应用于锅炉主汽压的控制.该过程的主要特征是强干扰及动态变化.模糊控制器能够克服许多干扰因素，显示了强鲁棒性并产生了良好的控制效果.
+　　1)国家自然科学基金资助项目.
+作者单位：刘向杰(电力部电力科学研究院　北京　100085)
+　　　　　柴天佑　刘红波(东北大学自动化研究中心　沈阳　110006)
+参考文献
+1　Gordon Pellegrinetti,Joseph Bentsman.Nonlinear Control Oriented Boiler Modeling－A Benchmark Problem for Controller Design.IEEE Trans.Control Systems Technology,1996,4(1):57-64
+2 Keigo Watanabe et al.A Fuzzy－Gaussian Neural Network and Its Application to Mobile Robot Control.IEEE Trans.Control Systems Technology,1996,4(2):193-199.
+3 Mauer G F.A Fuzzy Logic Controller for an ABS Braking System.IEEE Trans.Fuzzy Systems,1995,3(4):381-388
+4 Sudkamp R J,Hammel H.Interpolation,completion,and learning fuzzy rules.IEEE Trans,Syst.,Man,Cybern,1994,24(2):332-342
+5　刘向杰，柴天佑.三维模糊控制器的研究.自动化学报，1998，24(2) ：230-235
+收稿日期　1996-09-17

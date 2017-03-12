@@ -1,0 +1,110 @@
+软件学报
+Journal of Software
+2000 Vol.11 No.1 P.91-94
+
+
+
+多模式下的反合一算法
+许锡春　胡运发　施伯乐
+摘　要　证明了多模式环境下存在最小反合一,提出了一种反合一算法,并介绍了多模式下反合一的应用.
+关键词　合一,反合一,多模式,算法,相似.
+中图法分类号　TP301
+Anti-Unification Algorithm Based on Multi-Pattern
+XU Xi-chun　HU Yun-fa　SHI Bai-le
+(Department of Computer Science　Fudan University　Shanghai　200433)
+XU Xi-chun
+(Computing Center　Shanghai Maritime University　Shanghai　200135)
+Abstract　In this paper, the existence of the least anti-unification in multi-pattern is proved and an algorithm for the anti-unification is proposed. In addition, the application of the anti-unification in multi-pattern is also introduced.
+Key words　Unification, anti-unification, multi-pattern, algorithm, similarity.
+　　合一操作计算的是最大下界,而与合一对应的反合一操作计算的是最小上界.合一操作在定理证明、自动推理等方面起到重要的作用,反合一同样也是一种非常有用的操作,可以应用于类似推理、程序重写、机器学习等方面.这些年来,对反合一的研究正在加强.反合一最早是由Plotkin［1］和Reynolds［2］分别提出来的.与合一一样,反合一也存在各种形式.最近,许多学者对各种形式的反合一进行了研究.Page［3］研究了基于各种约束形式的反合一,基于约束的反合一可以避免过分抽象(overgeneralization).Hasker［4］研究了二阶反合一,提出二阶反合一可以包含更多的信息,但不存在二阶最小反合一,并通过增加限制来保证得到明确的反合一.Pfenning［5］研究了基于类型的、以λ演算为基础的反合一,并提出类型也是一种约束,同样可以避免过分抽象.这些研究都有一个共同的特点：逻辑结构都是在单模式下,即对于谓词P,其模式P(a1,a2,...)是唯一的.但是，在不同的应用中可以有多种模式,例如,在面向对象的系统中允许操作重载；在类似推理中,有时一个问题可以有多种描述形式.当然,也可以用不同的谓词来表示,但是这样做,一方面,其共性不能表示；另一方面,必使谓词数目成倍增加.
+　　本文对多模式下的反合一进行了研究,证明了在多模式下存在着最小反合一,并提出了计算最小反合一的算法.
+1　基本概念
+　　我们把所有变量的集合记为V,常量的集合记为C,类型的集合记为T.在此基础上,我们定义有关概念.
+　　定义1. 模式.谓词P的模式为P（x1:t1,x2:t2,...,xn:tn),其中xi为变量,ti为类型.
+　　我们采用表达式即类型的思想,把每一谓词也看作类型,即谓词P也称为类型P,并且模式也可以表示为P(t1(x1),t2(x2),...,tn(xn)),因此,模式中的参数也可以是另一模式,类似于关系数据库中的非第一范式.我们可以把（）看作是一种操作.
+　　定义2. 多模式.谓词P存在多个模式,其表示可以有以下两种形式：
+P(t1(x1),t2(x2),...,tn(xn));
+P(t1(x1),t2(x2),...,［ti(xi)］,...,tn(xn)),
+其中［ ］表示可选.
+　　定义3. 导出模式.假设P的模式为P(t1(x1),t2(x2),...,［ti(xi)］,...,tn(xn)),则P(t1(x1),t2(x2),...,ti(xi),...,tn(xn))和P(t1(x1),t2(x2),...,ti-1(xi-1),ti+1(xi+1),...,tn(xn))都是模式P(t1(x1),t2(x2),...,［ti(xi)］,...,tn(xn))的导出模式.
+　　定义4. 模式包含.对于模式P1(x1,x2,...,xn),P2(y1,y2,...,ym),若P1,P2相同,对任何i∈(1,n),存在j∈(1,m),xi=yi,且对于i1<i2,有j1<j2.
+　　定义5. 模式的合并.若模式P1(x1,x2,...,xn),P2(y1,y2,...,ym)为P的导出模式,则P1,P2的合并模式P0(z1,z2,...,zn)为P的导出模式中包含模式P1,P2的最小模式.
+　　定理1. 模式的合并是唯一的.
+　　定义6. 实例.对于模式P中各参数,用相同类型的项代入,即为P的实例.表示空,只能代入可选的参数.
+　　定义7. 项.项可以有以下几种形式：(1)为项；(2) 常量为项；(3) 变量为项；(4) 模式P的实例为项. 
+2　反合一问题
+　　反合一计算的是两个实例的最小上界.为了比较大小,类似于合一运算,可以利用替换来定义一个实例序.
+　　定义8. 实例序.对于两个项t,s,若存在替换σ,使得σt=s,则定义实例序为t大于s,记为t≥s.
+　　合一采用项来替换变量,得到共同的实例.而与之相反,我们也可以用变量来代替项,得到共同的抽象,这就是反合一.
+　　定义9. 反合一.对于两个项t,s,若存在替换σ,θ及项g,使得σg=t,θg=s,则g为t,s的反合一.
+　　合一操作一般计算最大的共同实例(基于实例序),同样地,反合一操作一般计算最小反合一.
+　　定义10. 最小反合一.若g为t,s的反合一,对于任何t,s的反合一q,有g≤q,则称g为t,s的最小反合一.
+　　定义11. 多模式下的反合一.对于谓词P的模式的两个实例t,s,若存在替换σ,θ及P的模式的实例g,使得σg=t,θg=s,则g为t,s在多模式下的反合一.
+　　由于P也是一种类型,允许g为P(x),其中x为变量.替换可以有以下几种形式：(1) x→,(2) x→Q(...),(3) x→(t1,t2,...,tn).
+但在最后一种情况下,要求P(t1,t2,...,tn)为P的实例.
+　　根据文献［1,4］的研究,在单模式下,有下面的结论.
+　　定理2. 存在最小的一阶反合一.
+　　定理3. 不存在最小的二阶反合一.
+　　在多模式下,我们可以得出定理4.
+　　定理4. 多模式下存在最小反合一.
+　　证明：对于模式P的实例A,B,可以有下列3种情况：
+　　(1) A,B为P的同一模式的实例.
+　　(2) A,B分别为P的两个导出模式的实例.
+　　(3) A,B为P的两个模式的实例(即除了(1),(2)之外的情况)
+　　我们分别对这3种情况进行证明.
+　　对于情况(1),根据定理2,存在最小反合一.
+　　对于情况(2),假设P的两个导出模式为P1,P2.首先可以得到P1,P2的并集P0,根据定理1,P0是唯一的.然后,把A,B映射为P0的实例A0,B0.根据定理2,只要证明A到A0的映射是唯一的即可.由于P0是P1,P2的合并,因此,P0包含P1,对于P0的属性i,若其存在于P1中,A0i＝Ai；若其不存在于P1中,取A0i＝.显然,这样构造的A0i是唯一的.
+　　对于情况(3),假设A,B的形式为P(a1,a2,...,an),P(b1,b2,...,bm),n和m可以不同.根据定义11,P(x)是A,B的反合一.下面只要证明P(x)为最小反合一即可.
+　　设P(x)不是最小反合一,则必定存在另一反合一P(y1,y2,...,yk),且k一定大于1.由于A,B为不同模式的实例,因此A,B中必存在i,使得ai,bi的类型不一致,在替换中,yi不能是yi→ai,yi→bi,只能是yi→,yi→bi（或yi→ai,yi→）.如果剩余部分能匹配(类型一致),则B的模式必包含A的模式,这与条件不符.如果剩余部分还是不能匹配,那么同样地,若存在反合一P(y1,y2,...,yk),则A的模式与B的模式必为另一模式的导出模式.因此不存在形为P(y1,y2,...,yk)的反合一,即P(x)为最小反合一.
+□
+3　反合一算法
+　　根据上节的介绍,在多模式下,存在最小反合一,其求解算法如下.
+　　算法1. 反合一算法AU
+　　输入：谓词P的模式及P的模式的两个实例α1,α2
+　　输出：α1,α2的最小反合一α
+　　(1) 若α1,α2为谓词P的同一模式的实例，则
+AU(α1,α2)＝P(...AU(xi,yi)...)；
+　　(2) 若α1,α2为谓词P的一个模式的不同导出模式P1,P2的实例，
+　　计算P1,P2的合并模式P0，
+　　把α1,α2转化为P0的实例α11,α12，则
+AU(α1,α2)＝AU(α11,α12)＝P(...AU(x1i,y1i)...)；
+　　(3) 若α1,α2为谓词P的不同模式P1,P2的实例，则
+AU(α1,α2)＝P(x),
+其中x为一个新变量.
+　　定理5. 算法AU是正确的.
+　　证明：可以从定理4的证明直接导出.
+4　应　用
+　　多模式下的反合一可应用于许多方面.下面介绍利用多模式下的反合一来计算两个英文句子的相似性.
+　　对于t,s的反合一g,也就是t,s的概括(抽象),g与t,s越接近,说明t,s越相似,t与s的相似性可以用替换δ,θ来刻画：
+
+　　我们采用文献［6］介绍的衍生句法中的深层结构来表示英文句子,采用模式描述短语规则.例如,句子S的一个模式为
+
+　　例1：“You and John are happy”与“I studied English yesterday”这两个句子可表示为
+　　
+　　反合一的结果为
+　　
+相似度为
+
+　　例2：“They wrote letters yesterday”与“I studied English yesterday”这两个句子可以表示为
+
+反合一的结果为：
+
+相似度
+
+　　从直觉上看,第1组是完全不相似的,而第2组是很相似的,计算结果与我们的直觉是一致的.
+5　结　论
+　　反合一与合一一样,是一种非常有用的操作.本文针对多模式,对反合一问题进行了研究,证明了在多模式下存在最小反合一,并提出计算最小反合一的算法.本文还介绍了用多模式下的反合一算法作为案例的相似性计算的方法,这一方法正应用于目前正处于实现阶段的基于案例的英汉翻译系统中.
+许锡春（复旦大学计算机科学系　上海　200433；上海海运学院计算中心　上海　200135）
+胡运发（复旦大学计算机科学系　上海　200433)
+施伯乐（复旦大学计算机科学系　上海　200433)
+E-mail: xcxu@shmtu.edu.cn
+参考文献
+1．Plotkin G D. A note on inductive generalization. In: Meltzer B, Michie D eds. Machine Intelligence 5. Edinburgh: Edinburgh University Press, 1970. 153～163
+2．Reynolds J C. Transformational systems and the algebraic structure of atomic formulas. In: Meltzer B, Michie D eds. Machine Intelligence 5. Edinburgh: Edinburgh University Press, 1970. 135～151
+3．Page C D. Anti-Unification in constraint logics: foundations and applications to learn ability in first-order logic, to speed-up learning, and to deduction ［Ph.D. Thesis］. Urbana-Champaign, Illinois: University of Illinois at Urbana-Champaign,1993
+4．Hasker R W. The replay of program derivations ［Ph.D. Thesis］. Urbana-Champaign, Illinois: University of Illinois at Urbana-Champaign, 1995
+5．Pfenning F. Unification and anti-unification in the calculus of constructions. In: Kahu G ed. Proceedings of the 6th Annual IEEE Symposium on Logic in Computer Science. Los Alamitos, CA: IEEE Computer Society Press, 1991. 74～85
+6．Lin Tian-ming, Li Gui-wan. Generative grammar of English. Guangzhou: Guangdong People's Press, 1983
+(林天明，李桂婉.英语衍生句法.广州：广东人民出版社，1983)
+1998-09-25收稿
+1999-02-01修稿

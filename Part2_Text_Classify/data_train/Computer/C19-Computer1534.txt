@@ -1,0 +1,88 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  vol.24  No.5 1998
+
+
+
+含结构不确定系统的变结构
+鲁棒自适应控制1)
+林　岩　　张　杰　　毛剑琴
+摘　要　讨论了含结构不确定SISO系统的变结构模型参考鲁棒自适应控制问题，提出了一种新的变结构控制方法，使得：1)系统在同时含参数及结构不确定性时，跟踪误差仍能在有限时间内收敛到零；2)无须假设参考模型为SPR(严格正实)函数.理论分析与数值仿真结果是一致的.
+关键词　自适应控制，变结构控制，鲁棒控制.
+VARIABLE STRUCTURE ROBUST ADAPTIVE CONTROL
+WITH UNMODELLED DYNAMICS
+LIN YAN　　ZHANG JIE　　MAO JIANQIN
+(The Seventh Research Division(Systems & Control),Beijing University 
+of Aeronautics and Astronautics，Beijing　100083)
+Abstract　In this paper,a new variable structure robust model reference adaptive control(VSMRAC) scheme is proposed,which deals with a class of SISO plants under parameter and unmodelled dynamical uncertainties.It is shown that even with the existence of unmodelled dynamics,the output tracking error will converge to zero in finite time, and the SPR(strictly positive real)condition for reference model is not required.Numerical simulation is provided to support the theoretical developments.
+Key words　Variable structure control, adaptive control, unmodelled dynamical uncertainty.
+1　引言
+　　近年来，国内外一些学者将变结构控制理论用于被控对象含参数不确定时的模型参考自适应控制系统设计，取得了一批重要成果［1］，其突出特点是：系统具有良好的过渡过程品质和对干扰的鲁棒性.但变结构控制在处理含结构不确定情形时的结果并不理想［2，3］.文中设同时含参数和结构不确定被控系统为
+y(t)=G(s)［u(t)+d(y,t)］=Gp(s)(1+μΔG(s))［u(t)+d(y,t)］=
+kp(np(s)/dp(s))(1+μΔG(s))［u(t)+d(y,t)］,　　(1)
+满足假设：a1)仅输入信号u(t)及输出信号y(t)是可测量的；a2)扰动项d(y,t)满足｜d(y,t)｜≤f(y,t),f(y,t)为一已知的有界连续函数；a3)Gp(s)为相对阶n*=1的最小相位系统，kp,np(s),dp(s)的系数均为未知常数，但属于一个已知的紧集S，并且恒有kp＞0以及np(s),dp(s)为互质首一多项式；a4)ΔG(s)为一稳定正则传递函数，其所对应脉冲响应函数的1-范数已知并有界，即存在γ1,使‖h1(t)‖1:=‖L-1(ΔG(s))‖1≤γ1＜∞,这里，“L-1”
+拉氏逆变换算子，
+　　设模型参考系统为
+yM(t)=M(s)r(t)=kM(nM(s)/dM(s))r(t).　　(2)
+满足假设：a5)kM＞0;nM(s)，dM(s)分别为n-1阶及n阶首一Hurwitz多项式；参考输入信号r(t)分段连续且有界.
+　　系统结构如图1所示.由图1可得被控对象的控制信号为
+u(t)=Tω(t)+uvs(t),　(3)
+
+
+图1　变结构自适应系统结构图
+其中∶=［,0,(1)T,(2)T］T,∶=kM/p,∈R2n,ω(t)∶=［r,y,υT1,υT2］T,ω(t)∈R2n,,uvs(t)的定义将在下面给出，信号υ1(t),υ2(t)由如下输入/输出滤波器产生：1(t)=Λυ1(t)+gu(t),2(t)=Λυ2(t)+gy(t),Λ　∈R(n-1)×(n-1),g∈Rn-1,满足det(Is-Λ)=nM(s).熟知，当uvs(t)≡0,d(y,t)≡0以及(a3)成立时存在常向量θ*=［k*,θ*0,(θ*1)T,(θ*2)T］T,使y(t)=G(s)｜μ=0u(t)=Gp(s)［(θ*)Tω(t)］=M(s)r(t).
+　　文中设控制信号u(t)中常向量作为上述θ*的一个任意预先给定的估计值，而uvs(t)为欲设计的变结构律，即在满足上述各假设时，跟踪误差e(t)∶=y(t)-yM(t)能在uvs(t)的控制下在有限时间内趋向于零，即进入滑动模态.
+2　主要结果
+　　首先给出由图1所示变结构自适应系统的跟踪误差表达式
+　　引理1.设系统结构如图1所示，则跟踪误差e(t)可表示为
+e(t)=M(s)(kp/kM)［h(ω,d,μ)+μΔG(s)(1-d1(s)/nM(s))uvs(t)+uvs(t)］,　　(4)
+其中
+
+　　证明.根据图1，利用Mason公式即可得结论，详细证明过程在此略去.
+　　引理2［4］.设c(t)=(s)v(t)=kg［b(s)/a(s)］v(t)为一严格正则系统，a(s),b(s)为互质首一多项式且kg≠0.若令(s)之相对阶为n*，则必有n*阶的首一多项式γ(s)以及一阶数小于b(s)的多项式ρ(s)，使a(s)=γ(s)b(s)+ρ(s)，进而有c(t)=(kg/γ(s))v(t)-(ρ(s)/(γ(s)b(s)))c(t).
+　　将(4)式中M(s)按引理2展开，并根据(a5)，知其相对阶n*=1，设dM(s)=γ(s)nM(s)+ρ(s)=(s+p)nM(s)+ρ(s)，经整理后得到
+(t)=-pe(t)+kp［(ω,d,e,μ)+ε(t)+μΔG(s)(1-d1(s)/nM(s))uvs(t)+uvs(t)］　　(5)
+这里，(ω,d,e,μ)=　∶h(ω,d,μ)-［ρ(s)/(kpnM(s))］e(t).上式中增加了一项ε(t),ε(t)依指数速度收敛到零，表示非零初始条件对系统的影响.作者感兴趣的是上式中p符号.
+　　引理3.设参考模型M(s)(参见(a5))中，多项式nM(s),dM(s)分别为nM(s)=sn-1+b1Msn-2+…+b(n-1)M,dM(s)=sn+a1Msn+1+…+anM，那么，若a1M＞b1M，则(5)式中p＞0;若a1M≤b1M,则(5)式中p≤0；特别，若M(s)为SPR函数，则必有p＞0.
+　　证明.按引理2将dM(s)展开成dM(s)=(s+p)nM(s)+ρ(s)后，易知p=a1M-b1M，于是上述结论成立为显然；特别，当M(s)为SPR函数时，由文献［5］之结果不难推得此时必有p＞0.
+　　下面推导变结构律uvs(t).首先对(5)式中(ω，d,e,μ)进行估计.由假设(a1)-(a5)以及d1(s)/nM(s),ρ(s)/nM(s)均为已知的稳定且严格正则的传递函数，于是不难求出在t∈［0,∞］上的连续函数fi(t),i=1,2,3,4,5,使之满足如下估计：
+｜Tω(t)+(1-d1(s)/nM(s))d(y,t)｜≤f1(t),　｜ρ(s)/(kpnM(s))e(t)｜≤f2(t);　　(6)
+令β1(t)=(1-d1(s)/nM(s))f(y,t),于是，(ω,d,e,μ)中
+　　(7)
+其中h1(t)之定义见假设(a4).
+　　(8)
+上式中，作者利用了β1t(τ)为连续函数这一事实.令β2(t)=(1-d1(s)/nM(s))Tω(t)，则与(7)式推导类似地，有
+μ｜ΔG(s)(1-d1(s)/nM(s))Tω(t)｜≤μ(γ1‖β2t(τ)‖∞=　∶μf4(t),　μ≥0.　　(9)
+　　在uvs(t)的设计中，还需要考虑到p≤0(参见(5)式)时的情形.此时必须对μ(/kpm)×ΔG(s)(1-d1(s)/nM(s))e(t)进行估计，这里kpm为km的下界，由假设(a3)不难求得.预选＞｜a1M-b1M｜,令β3(t)=(1-d1(s)/nM(s))e(t)，与(7)式推导类似，有
+　　(10)
+记,那末，根据以上讨论及(ω,d,e,μ)之定义，不难证明｜(ω,d,e,μ)｜≤α(t,μ),及｜(ω,d,e,μ)+μ(/kpm)ΔG(s)(1-d1(s)/nM(s))e(t)｜≤(t,μ).特别需要指出的是，当上两个不等式右端取常数μ=μ*＞0时，其对所有μ∈［0,μ*］仍然成立.进一步，令‖h2(t)‖1=‖L-1［(1-d1(s)/nM(s))］‖1≤γ2,有
+　　定理1.若系统(1)及参考系统(2)满足假设(a1)-(a5).取μ*＞0，使0＜1-μ*γ1γ2＜1,记α(t)=∶α(t,μ*)，(t)=∶(t,μ*)，那末，当变结构控制律uvs(t)如下时：
+　　(11)
+对所有μ∈［0,μ*］，误差e(t)必在有限时间内收敛到零，即进入滑动模态，且滑动平面恰为e(t)≡0.这里‖αt(τ)‖∞,‖(τ)‖∞的定义与(8)式相同，Δ为任意大于零的常数.
+　　证明.因篇幅有限，详细证明参见文献［6］.进而，当μ=0，即无结构不确定性存在时，可得比(11)式更简单的控制律
+　　定理2.设系统(1)及参考系统(2)满足假设(a1),(a2),(a3),及(a5)且μ=0.如取变结构控制律
+　　(12)
+则e(t)必在有限时间内达到零，即进入滑动模态.这里，f1(t)、f2(t)由(6)式描述，、kpm及Δ的定义与定理1相同.
+　　证明.略.
+3　数值仿真结果
+　　本节将通过数值仿真例子验证上节理论分析的正确性.
+　　例.采用与文献［3］类似的数学模型.设被控对象为
+
+干扰d(y,t)=0.2cost；理想参考模型为M(s)=(s+1)/(s2+5s+6).本文取μ*=0.1，这比文献［3］中取μ*=0.01大10倍.取r(t)为峰值±3的方波时的仿真结果如图2所示.将本文与文献［3］的仿真结果比较不难发现，即使在允许的结构不确定大10倍的情况下，本文的结果仍优于文献［3］的结果.
+
+
+(a)　含结构不确定系统uvs(t)图
+
+
+(b)　含结构不确定系统e(t),y(t),yM(t)图
+图2
+1)国家自然科学基金资助项目.
+作者单位：(北京航空航天大学第七研究室　北京　100083)
+参考文献
+　1　Hsu L et al.Analysis and design of I/O based variable adaptive control.IEEE Trans.,1994,AC-39(1):4-21
+　2　Costa R R,Hsu L.Robustness of VS-MRAC with respect to unmodelled dynamics and external disturbances.Int.J.of Adapt.and Sign.1992,6：19-33
+　3　Fu L.New approach to robust model reference adaptive control for a class of plants.Int.J.Control,1991,53(6):1359-1367
+　4　Morse A S.A three-dimentional universal controller for the adaptive stabilization of any strictly proper minimum-phase system with relative degree not exeeding two.IEEE Trans.,1985，AC-30(12):1188-1191
+　5　Ioannou L,Tao G.Frequency domain conditions for strictly positive real functions.IEEE Trans.,1987,AC-32(1):53-54
+　6　Lin Yan,Zhang Jie,Mao Jianqin.Variable structure robust adaptive control with unmodelled dynamics.In: 36th IEEE Conference on Decision and Control,San Diego,1997:3243―3249
+收稿日期　1997-02-04

@@ -1,0 +1,145 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.2　P.207-212
+
+
+
+基于协议集成测试系统的IP v4协议一致性测试
+王建国　吴建平　陈修环　冯晓东
+摘　要：TCP/IP协议实现的一致性测试是保证Internet网络设备之间互连与互操作的基础.该文基于协议集成测试环境进行了IP（Internet protocol）协议一致性测试研究和实际测试,并针对IP端系统和中继系统分别采用了分布式和远程横断式测试法,设计生成了IP一致性测试集.并且已将IP协议的一致性测试应用到路由器的开发和研制过程中.
+关键词：一致性测试,协议测试系统,测试方法,IP (Internet protocol),TTCN (tree and table combined notation).
+分类号：TP393
+Conformance Testing on Internet IP v4 Based on Protocol Integrated Test System
+WANG Jian-guo　WU Jian-ping　CHEN Xiu-huan　FENG Xiao-dong
+(Department of Computer Science and Technology Tsinghua University Beijing 100084)
+Abstract：Conformance testing of TCP/IP protocol is the first step for interoperability among Internet network products.The conformance testing of the Internet protocol with a PITS (protocol integrated test system) is presented in this paper.The authors use the distributed test method and remote traverse test method to test IP (Internet protocol) end system and IP relay system in Internet,respectively.IP test suite in TTCN (tree and table combined notation) is derived according to IP test purposes.Furthermore,the IP conformance testing has been applied for developing routers.
+Key words：Conformance testing,protocol test system,test method,IP (Internet protocol),TTCN (tree and table combined notation).▲
+　　随着计算机网络和通信技术的不断进步,协议的设计和实现变得越来越复杂,而且对于同一协议标准有时会存在多个不同的实现版本.为了保证协议的各种实现版本之间能够完全地相互访问,并进行可靠的通信,最有效的手段就是对这些协议实现进行测试.协议测试包含3种类型的测试:一致性测试、互操作性测试以及性能测试.其中,一致性测试是其他两种测试的基础.
+　　目前,基于TCP/IP协议族的Internet已经成为全球信息发展和交流的基础.因此,TCP/IP产品之间的可靠通信对未来信息高速公路的发展至关重要.为了准确地发现路由器、E-mail系统以及其他网络设备中的设计错误,就必须在进行TCP/IP产品的互操作测试之前来进行协议的一致性测试.然而,相对于成熟的OSI协议和服务的协议测试理论,关于TCP/IP协议的形式化描述、验证和测试等方面的研究开展则刚刚起步.为此,通过几年的努力,我们成功地开发了一套协议集成测试系统――PITS（protocol implementation conformance statement）,用于对TCP/IP网络产品的多种测试行为.其中,我们对TCP/IP协议中核心协议IP version 4协议（以下简称IP协议）进行了一致性测试,并开发出了完整的TTCN（tree and table combined notation）格式的IP(Internet protocol)测试集.与传统的OSI对等式的协议相比,在IP协议中包括两种通信模式（端系统模式和中继系统模式）.为此,我们在进行IP协议一致性测试的过程中,引入了新的中继测试方法.根据需要,我们已经将IP协议一致性测试应用到“高性能路由器”的研制和开发过程中.另外,我们也对国外进口路由器进行了实际的测试.
+　　本文第1节简要介绍PITS系统.第2节介绍IP测试结构和测试集的组织.第3节介绍路由器中IP v4模块的一致性测试.第4节总结全文.
+1 协议集成测试系统――PITS
+　　图1表示了PITS的总体结构.PITS系统是以TTCN测试集为基础来组织它的测试过程,在测试中并行解释执行测试例.测试生成工具TUGEN,可由协议的EBE（external behavior expression）描述自动生成TTCN.MP格式的测试集.TTCN编辑器将标准的TTCN.GR格式的测试集(如ISO/IEC 8882)转换成TTCN.MP格式.经过基于PICS和PIXIT（protocol implementation extra information for testing）的选择,测试执行TE（test execution）对所选择的测试例进行解释执行.TE是测试执行的关键引擎,它和PITS的其他部件共同完成测试工作,根据测试集的内容控制测试过程,同时生成测试报告所需要的全部信息.TE将测试事件生成比特流,并发送给相应的消息缓冲区和参考实现.参考实现是PITS中和被测实现IUT通信的底层支持.参考实现可通过下面几种消息类型和消息机制来通信:
+　　starttest:开始一个测试例的执行;
+　　stoptest:终止一个测试例的执行;
+　　frame-send-out:TE发送一个ASP/PDU;
+　　frame-receive:TE接收一个ASP/PDU;
+　　quit:退出测试例执行过程.
+所以,只要选用适当的测试集和参考实现,PITS就可以用不同的测试方法对不同的协议进行测试.
+
+Fig.1　The architecture of protocol integrated resting system-PITS
+图1　协议集成测试系统PITS结构图
+2 IP的一致性测试方法和结构
+　　本节首先介绍IP协议的主要内容,并根据IP实现所在的被测系统的不同,具体分成IP端系统和中继系统的一致性测试.
+2.1 IP协议简介
+　　IP协议主要由IETF RFC791来定义并加以描述.IP的功能（目的）是使数据报能通过不同的互连网络中的IP模块,由源端到达目的端.这些IP模块内嵌在Internet中的主机或路由器里.根据对IP地址的分析,实行IP数据报的转发.通过IP节点间的路由转发,数据报可在最大允许通过包长小于数据报长度的网络中传输.为了可以传送长数据报,在中继系统(relay-system,如路由器）中的IP协议模块有数据报分段（segment）机制.相应地,当数据报到达端系统(end-system,如目的主机）中的IP模块时,被分段的数据报就必须重组起来.图2给出了IP中继系统和端系统在网络中的分布.IP数据报的错误检测是由ICMP（Internet control message protocol）报告的,而IGMP（Internet group message protocol）完成了主机和路由器间的多播功能.
+
+Fig.2　The role of IP in Internet
+图2　IP在网络环境中的层次
+2.2 IP端系统的一致性测试
+2.2.1 IP端系统测试方法
+　　ISO和ITU-T已经在ISO/IEC IS 9646/1(ISO/IEC 9646-1,1993)和ITU-T X.290(ITU-T X.290,1992)中规定了4种用于端系统的抽象测试方法.我们选择其中的分布式测试方法DTM(distributed test method)作为IP端系统的测试方法.
+　　在DTM中,可以通过设置下测试器LT（lower tester）和上测试器UT（upper tester）的控制观察点PCO（point of control and observe）来控制观察被测IP端系统的行为.而且,我们可以直接访问端系统中的IP模块所提供的服务接口,实现上测试器UT,用来驱动IP模块主动发送IP数据报以及检查IP模块是否能够正确上送（重组好的）IP数据报.
+2.2.2 IP端系统的测试结构
+　　图3表示了在协议集成测试系统中的分布式测试结构.其中,在被测实现IUT（implementation under test）上实现了UT,我们采用数据链路层接口DLPI（data link provider interface）作为测试通道,测试执行部件TE和IUT之间的通信通过主测试通道MTP（main test path）,UT则通过辅助测试通道ATP（auxiliary test path）.为了测试IP接收模块,TE通过MTP向IUT发送测试事件,然后通过ATP,UT向TE报告IUT的响应结果,当我们测试IP发送模块时,通过ATP从TE得到测试控制消息,UT驱动IUT主动通过MTP发送IP数据报.TE将IP测试例中每个测试事件解释为消息流,并根据PCO的标识,把它们从消息缓冲区发送给参考实现.当TE接收到来自IUT的消息时,根据测试例具体定义进行匹配,或继续执行新的测试事件,或得到通过（pass）或失败（fail）的测试判决.
+
+Fig.3　The test architecture of IP end system
+图3　IP端系统测试结构
+2.3 IP中继系统的一致性测试
+　　在ISO/IEC 9646中,只定义了两种适用于中继系统的测试方法:回绕式测试方法和横断式测试方法.但是,回绕法的测试能力过于简单,因而不够实用;横断式测试方法需要两个测试系统,这样又使得两个测试系统的协调成为困难.在本节中,我们将介绍一种用于IP中继系统测试的方法和它的测试结构.
+2.3.1 IP中继系统测试方法
+　　我们引入远程横断式测试方法RTTM（remote traverse test method）［1］用于IP中继系统的一致性测试.RTTM应用到IP中继系统测试的结构如图4所示.在该测试结构中,IUT的两个端口分别对应于两个PCO.当TE从PCO1向目标主机发送一个IP/ICMP数据报时,经过IP路由模块的路由,将它从以太网LAN1转发到以太网LAN2中,而TE将从处于LAN2中的PCO2得到这一数据报.由于PCO1和PCO2都被集成在测试器中,因此,我们只需利用TE来执行两个PCO上的测试事件,便可容易地控制两个LT的协调过程.
+
+Fig.4　The test architecture of IP relay system
+图4　IP中继系统测试结构
+2.4 基于TTCN的IP测试集的设计
+　　由于IP协议的特点,我们通过确定测试目的设计生成IP的一致性测试集.在这一节中,我们将介绍IP测试集的生成和设计方法.
+2.4.1 IP测试集的设计和生成方法
+　　目前,人们为了能直接从FSM,EFSM或其他形式化描述中生成测试序列做了相当多的工作［2～4］.然而,RFC 791所规定的IP协议与OSI协议相比较,它的协议行为更简单,而且在对等实体之间没有用于建连或流控的数据报交换.从外部行为观察,也只有一个协议状态,除了自环以外,就不存在其他任何状态之间的变迁.尽管如此,它的简单的协议过程却给我们从外部观察协议实体行为带来了困难.它不适合自动生成.我们按照ISO/IEC 9646的建议,根据协议的测试目的,设计和生成IP测试集,见表1.
+Table 1 IP v4 test suite
+表1 IP v4测试集
+
+test group①Test purpose②Test cases③
+IP-PDUPDU format④13
+IP-OPTOptions implement⑤10
+IP-SEGSegmentation function⑥6
+IP-RESReassemble function⑦6
+IP-BROBroadcast function⑧7
+IP-MULMulticast function⑨4
+IP-ERROption error handing function11
+
+①测试组,②测试目地,③测试例,④数据报格式,
+⑤选项实现,⑥分段功能,⑦重组功能,⑧广播功能,
+⑨多播功能,错误选项处理.
+　　测试目的的生成过程如图5所示,根据ISO/IEC 9646的定义,测试目的可以看作一致性需求的一部分,是所对应的测试过程的精确描述.事实上,除了协议描述以外,一致性关系和附加的协议实现假设条件都会影响到测试目的和测试例的生成.一致性关系定义了协议描述的迹和实现的迹之间的关系.选定的一致性关系对可测试的描述和实现的类别进行限制.
+
+Fig.5　The process of test purposes generation
+图5　测试目地生成过程
+　　我们最终精炼并提取出IP的一致性测试目的集合,并由此设计出IP协议一致性测试包括7个测试组,共53个测试例.这些测试组（例）涵盖了IP协议描述中所有的主要功能(包括全部的OPTION选项功能),具有较好的完备性.
+2.4.2 测试例举例
+　　在IP端系统一致性测试例中（见表2）,我们将验证IP主机是否能正确地接收到已经过分段的数据报文,并能将它们重组成一个完整的数据报.为此,我们让TE直接从PCO1发送两个数据报,这两个数据报将分别独立地经过网络中的传输和路由后到达SUT,之后,TE将期望从PCO2得到一个正确的重组后的更大的数据报,测试判决将根据来自PCO2的事件作出,如图3所示.
+Table 2 One of test cases for IP end system
+表2 IP端系统测试例之一
+
+Nr.LabelBehavior descriptionConstraint Ref.VerdictComments
+1　Pco1!Ip-Seg-SecondIp-Seg-02　(1)
+2　Pco1!Ip-Seg-FirstIp-Seg-01　(2)
+3　　Start Tm-01Ip-Reass-01　　
+4　　Pco2?Ip-Reass-Whole　Pass　
+5　　　Pco2?Otherwise　Fail　
+　　　?Timeout Tm-01　Fail　
+
+Test Case Name:IP-REASSEMBLE-02; Group:IP/END/IP-RES;
+Purpose:To verify that send two sub-datagrams disorderly,
+IUT can correctly reassemble them to a whole datagram.
+COMMENTS:(有关PDU约束的细节,参见图3);
+(1) FLAG field:=000,FRAGMENT field:=offset in original data(＞0);
+(2) FLAG field:=010,FRAGMENT field:=0.
+　　在IP中继系统一致性测试例中（见表3）,该测试例的测试目的是为了验证测试器发送一个具有紧密路由和记录路由选项（strict route and record route option）的数据报,IUT是否能正确地用源路由替换目的地址以及记录它的出口地址.如图4所示,TE从PCO1发送一个带有紧密路由选项的IP数据报,它的源地址设置成测试器在网络LAN1中的IP地址,目的地址设置成IP路由器的入口地址,而且源路由填充的是测试器在网络LAN2中的IP地址.当IP路由器接收到该数据报时,它应用源路由（测试器在网络LAN2中的IP地址）代替目的地址,并在数据报的源路由域中将IP路由器的出口地址记录下来.经过处理后的数据报会被IP路由器传送到TE的控制观察点PCO2.如果产生的事件与所期望的一样的话,则测试器会生成PASS的测试判决.
+Table 3 One of test cases for IP relay system
+表3 IP中继系统测试例之一
+
+Nr.LabelBehavior descriptionConstraint Ref.VerdictComments
+1　Pco1!Ip-Strict-OptionIp-Strop-01　(1)
+2　Start Tm-01　　　
+3　　Pco2?Ip-Strict-OptionIp-Strop-02Pass(2)
+4　　Pco2?Otherwise　FailProcedure Error
+5　　?Timeout Tm-01　FailNot Forwarded
+
+Test Case Name:IP-STRICTROUTE-01; Group:IP/RELAY/IP-OPT; 
+Purpose:To verify when tester sends a datagram with strict and recorder route option,
+IUT can correctly replace destination address with source route and recorder
+its outgoing address.
+COMMENTS:(有关PDU约束的细节,参见图4);
+(1) sour-addr field:=Tester-sour,dest-addr field:=lut-in,sour-route［1］:=Tester-dest;
+(2) sour-addr field:=Tester-sour,dest-addr field:=Tester-dest,sour-route［1］:=lut-out.
+3 路由器中IP v4模块的一致性测试
+　　基于协议集成测试环境PITS,我们对国外进口的路由器进行了IP协议的中继系统一致性测试.另外,我们还先后对自行研制开发的路由器原型Ⅰ和原型Ⅱ的IP模块进行了一致性测试,并对这3种产品的测试结果进行了比较,图6是路由器原型Ⅰ和原型Ⅱ测试结果的比较示意图.图7是进口路由器Router和路由器原型Ⅱ测试结果的比较示意图.
+
+Fig.6 Compare between router prototype Ⅰ and Ⅱ
+图6 路由器原型Ⅰ和Ⅱ的比较
+
+图7 路由器原型Ⅱ和进口路由器的比较
+Fig.7 Compare between router prototype Ⅱand imported router
+　　根据测试结果,我们可得出如下结论:
+　　(1) 路由器原型Ⅰ与原型Ⅱ相比,在处理IP选项和IGMP功能上存在着较多的问题和错误;
+　　(2) 原型Ⅱ在经过了IP一致性测试之后,功能和性能有了明显的改善,测试例通过率从51%提高到将近100%;
+　　(3) 根据对进口路由器的测试结果,我们可以发现,它简化了RFC 791和RFC 1122中提到的一些选项的细节.
+　　通过实践证明,在通信软件的设计和开发过程中,一致性测试是用来检测定位错误同时又能提供修正建议的非常好的方法.
+4 总 结
+　　在本文中,我们重点介绍了IP一致性测试方法在实际的路由器产品开发和测试中的应用,其中所使用的测试方法已经在PITS系统中得以实现.对于IP端系统和中继系统,我们引入两种不同的测试方法,并设计开发了基于TTCN格式的IP v4一致性测试集.同时,对我们自行开发的路由器原型和某国外进口路由器进行了实际的测试.实践证明,基于PITS的TCP/IP一致性测试是可行的,设计生成的IP v4测试集也是相当完备的.而且,这些技术会更深入地应用到今后的TCP/IP协议的一致性测试活动中.另外,我们还注意到,一致性测试的发展离不开实际的应用需求.我们将更加重视实际的网络设备（如ATM交换机和Internet路由器）和分布式系统的测试需求.■
+基金项目：本文研究得到国家自然科学基金(No.69725003,69682002,69473011)资助.
+作者简介：王建国,1972年生,博士生,主要研究领域为计算机网络,协议测试.
+　　　　　吴建平,1953年生,博士,教授,博士生导师,主要研究领域为计算机网络,协议测试.
+　　　　　陈修环,女,1940年生,教授,主要研究领域为计算机网络.
+　　　　　冯晓东,1972年生,工程师,主要研究领域为计算机网络,协议测试.
+作者单位：王建国(清华大学计算机科学与技术系　北京　100084)
+　　　　　吴建平(清华大学计算机科学与技术系　北京　100084)
+　　　　　陈修环(清华大学计算机科学与技术系　北京　100084)
+　　　　　冯晓东(清华大学计算机科学与技术系　北京　100084)
+参考文献：
+［1］Bi Jun,Wu Jian-ping.Towards abstarct test method for relay system testing.In:Davidson I ed.Proceedings of the IFIP 10th International Workshop on Protocol Test Systems.Amsterdam:Elsevier Science Publishers,1997
+［2］Chanson S T,Zhu Jin-song.A unified approach to protocol test sequence generation.In:Smith J ed.Proceedings of the IEEE INFORCOM Conference.New York:IEEE Press,1993
+［3］Huang C M,Lin Y C,Jang M Y.An executable protocol test sequence generation method for EFSM-specified protocols.In:Litwack D W ed.Proceedings of the IFIP 5th International Workshop on Protocol Test Systems.Amsterdam:Elsevier Science Publishers,1995
+［4］Bourhfir C,Dssouli R,Aboulhamid E et al.Automatic executable test case generation for extended finite state machine protocols.In:Marteniuk R ed.Proceedings of the IFIP 10th International Workshop on Protocol Test Systems.Amsterdam:Elsevier Science Publishers,1997
+收稿日期：1999-01-12
+修稿日期：1999-03-18

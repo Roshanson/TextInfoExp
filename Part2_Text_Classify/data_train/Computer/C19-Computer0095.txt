@@ -1,0 +1,78 @@
+计算机工程
+COMPUTER ENGINEERING
+1999年 第25卷 第8期 Vol.25 No.8 1999
+
+
+
+异构数据库间的数据集成
+王艳君 杜志典，王运格
+摘要：针对不同数据库之间的产品，给出了Powerbuilder与不同数据库之间的连接方法，动态地生成数据管道及数据窗口，以实现异构数据库之间数据集成。
+关键词：数据库；数据集成；数据管道
+Data's Integration Between Hetero-structure Database
+Wang Yanjun,Du Zhidian,Wang Yunge
+(Department of Statistic,Hebei Economy Commerce University,Shijiazhuang 050016)
+【Abstract】For different products of Database,the author gives methods of how to connect different databases with PowerBuider,dynamically generate Data pipelines and Datawindow to integrate data between hetero-structure Databases.
+【Key words】Database;Data-integration;Pipeline
+　　通过对几种方法的综合比较，认为利用 PowerBuilder 开发出的应用程序具有很高的互操作性，提供了对客户机 / 服务器结构的支持，支持多种网络环境及数据源，易于实现异构数据库集成，有利于系统的升级和维护。以下具体介绍采用 PowerBuilder 进行开发，实现异构数据库间的数据集成。 
+1 数据管道
+　　数据管道 (PipeLine) 是 PowerBuilder 提供的一个用于转换数据的对象，它提供了数据复制功能，允许用户从一个 RDBMS 向另一个 RDBMS 拷贝表和数据。数据管道功能可以同目前 PowerBuilder 所支持的所有数据库一起工作。通过把数据管道定义作为对象保存，并在应用中使用它们，可以开发出全新的分布式软件。数据管道可用来增强和补充 Oracle 和 Sybase 本身的数据复制功能。 
+　　数据管道不仅仅是复制 RDBMS 表。开发人员完全可以控制哪些应包含或不应包含在目标表中的数据段，以及使用哪些字段来生成目标表的索引。 SQL Select 语句是复制数据的基础，可以用来连接操作的多张源表。通过数据管道，用户可以在各种数据库之间进行数据转换，在实际开发中该工具非常有用： 
+　　在 PowerBuilder 中，可利用 PipeLine 画笔创建数据管道对象。但用这种方法创建数据管道的数据源表是固定的。如果要对多个表进行操作，则需要为每个表建立一个数据管道。显然，这种方法不可取。因为一个系统一般要包含几十、几百甚至上千个表，如果对几个系统的数据进行转换，其工作量是可想而知的。针对这个问题，考虑是否可动态创建数据管道，这样，每选择一个表就生成一个数据管道既方便又省力，使数据转化在动态环境下完成，增强了通用性。 
+2 设计
+　　过去，我们一般都使用一些小型数据库对数据进行保存和管理，如 dBASE 、 Foxbase 数据库等，而现在有许多用户为更好地管理数据已开始使用一些大型数据库，如 Oracle 、 Sybase 数据库等。根据系统的开发目标选择基于 Windows 的数据库 Client 端的开发工具 PowerBuilder 作为前端开发， Server 端选择了 Oracle 大型数据库，网络支持采用 TCP/IP 协议的 Unix 网络操作系统。其系统结构如图 1 所示。 
+
+图1 系统结构图
+3 具体实现 
+3.1 PowerBuilder 与数据库的连接 
+　　通常，一个应用只连接一种数据库管理系统，然而，利用 PowerBuilder 实现异构数据库间的数据转换，它必须与不同种类的数据库管理系统连接起来才能工作。 PowerBuilder 与数据库通信用的是事务对象，它是 PowerBuilder 和数据库之间通信的桥梁。在一般情况下用的是缺省的事务对象 SQLCA(SQL Communication Area) ，事务对象可以创建多个，每个用于一种数据库的通信。 
+　　下面定义了两个事务对象 s_trans 和 d_trans ，用于实现 PowerBuilder 与源数据库、目的数据库的连接： 
+// 源的定义 
+s_trans = create transaction 
+s_trans.DBMS=ProfileString("Foxpro.ini","database","dbms", "") 
+…… 
+s_trans.dbparm=ProfileString("Foxpro.ini","database","dbparm", "") 
+connect using s_trans; 
+// 目的的定义 
+d_trans = create transaction 
+...... 
+connect using d_trans; 
+3.2 选择转换条件 
+　　在源数据窗口中显示出源数据后，用户可根据需要按一定要求选择数据库记录，进行转换。其中包括字段名、关系、条件值，用户可进行任意选择。由于字段类型的不同，所以也要分情况进行处理。 
+3.3 从数据源读取数据 
+　　当激活窗口时， Open 事件发生，为保证窗口的正常运行，在 Open 事件中设置对于该窗口的一些实例变量及窗口对象的初始状态。 
+　　与数据源建立连接后，在进行数据转换之前，必须先从数据源读取数据。此处数据源数据库文件类型为 .dbf 文件。首先 , 打开 Select DBF File 对话框，用户可从中选取将要进行转换的数据库。
+　　在读取数据时，因为字段的数据类型不同，所以要分别进行处理，生成数据管道语句： 
+　　ls_PIPELINE="PIPELINE(source_connect=Foxpro,destination_connect=Oracle,type=replace,& commit=100,errors=100) ～ r ～ n" 
+　　　ls_SOURCE ="SOURCE(name= ～ ""+ls_named+" ～ "," 
+　　　ls_RETRIEVE ="RETRIEVE(statement= ～ "PBSELECT( VERSION(400) & TABLE(NAME= ～ ""+ls_named+" ～ " )" 
+　　　…… 
+// 对字段的不同数据类型分情况讨论 
+　　CHOOSE CASE String(BlobMid(lb_DBF_Head,44+(li_n - 1)*32,1)) 
+　　CASE "C" 
+　　　ls_create_table=ls_create_table+"character(" 
+　　　lb_width_high=BlobMid(lb_DBF_Head,48+(li_n -1)*32,1) 
+　　　……
+　　END CHOOSE 
+// 总结 
+　　　ls_pipe_syntax=ls_PIPELINE+ls_SOURCE+ls_RETRIEVE+ls_DESTINATION 
+　　从数据源读取数据后，根据所读取的数据生成相应的数据窗口，以显示数据源的数据。 
+3.4 进行数据转换 
+　　当用鼠标单击 [ 转换 ] 按钮时，导致 clicked 事件发生，处理程序如下： 
+　　uo_pipe iuo_pipe 
+　　　iuo_pipe=CREATE uo_pipe 
+　　　iuo_pipe.syntax=ls_pipe_syntax 
+　　li_start_result = iuo_pipe.Start(i_src,i_dst,dw_pipe_err) 
+　　这是整个应用中最关键的事件，主要是动态生成一个数据管道，把数据传送过来。在运行转换程序时，需使用 PowerBuilder 提供的数据管道系统对象，为此需要创建一个类用户对象，这个类用户对象是通过继承 PowerBuilder 内置的数据管道系统对象创建的。 
+　　数据通过管道传输过来后，生成数据窗口以显示数据供用户浏览。此时，该数据便为 Oracle 数据库文件形式，用户可对表中的数据进行有效的管理。 
+3.5 进行数据转换 
+　　通过数据窗口，使用 ODBC 将数据窗口中的数据写入目的数据库中，完成数据库数据的集成。 
+4 结束语
+　　用 PowerBuilder 提供的数据管道类库方法实现数据格式 转换，可把已开发使用的 Foxpro 等数据库系统集成到 Oracle 、 Sybase 等大型数据库系统上，从而有效地利用原有的数据库资源。用 PowerBuilder 提供的数据管道类库编制的程序灵活编程量不大，目前用该方法编程进行数据转换较好。 
+注释：本文是在开发 " 吐哈油田异构数据库间数据集成 " 的基础上完成的。 
+作者单位：王艳君　王运格　河北师范大学计算机系，石家庄 050016
+　　　　　杜志典　河北经贸大学统计系，石家庄 050061
+参考文献 
+1 Yourdon E. Java、the Web and Software Development. Compu- ter, 1996-08 
+2 Marsh K, Braunstein B. PowerBuilder 4 应用程序开发指南. 北 京：清华大学出版社， 1996 
+3 陶辅周，杨代伦，李旭伟. 实用 Oracle 系统开发和设计详解. 北 京：电子工业出版社， 1995 
+4 李奇，常方.PowerBuilder 开发技术与应用. 北京：清华大学出版 社，1995 

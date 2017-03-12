@@ -1,0 +1,75 @@
+.自动化学报
+AGTA AUTOMATICA SINICA
+1999年 第25卷 第2期 Vol.25 No.2 1999
+
+
+
+连续时间混沌系统的参数自适应控制1)
+王　杰　朴营国　张化光　田　沛
+摘　要　研究了连续时间混沌系统的参数自适应控制，提出了关于多重参数混沌非线性系统的参数自适应控制的新方法.考虑系统参数是线性形式的自适应控制，利用Lyapunov方法证明了参数控制方程是全局渐近稳定的.研究结果表明该控制方法是分析混沌参数自适应控制的一个十分有效的方法.
+关键词　混沌系统，参数自适应控制，控制算法，参考模型.
+PARAMETRIC ADAPTIVE CONTROL OF CONTINUOUS
+TIME CHAOTIC SYSTEMS
+WANG Jie　PIAO Yingguo　ZHANG Huaguang
+(Department of Automatic Control, Northeastern University, Shenyang　110006)
+TIAN Pei
+(North China Electric Power University,Baoding 071003)
+Abstract　The paper is concerned with parametric adaptive control of continuous time chaotic systems. A new method of parametric adaptive control is presented for nonlinear chaotic systems with multi-parameters. The system parameters are considered to be linear form in the adaptive control, and the Lyapunov method is used to prove that parametric control equations are globally asymptotically stable. It has been shown that the method in this paper is a very effective one to analyze parametric adaptive control for chaotic systems.
+Key words　Chaotic systems, parametric adaptive control, control algorithm, reference model.
+1　引言
+　　许多学者已经提出了不少有关混沌系统的参数自适应控制算法.由Huberman［1］提出的一个简单的参数自适应控制算法，用于具有复杂振荡状态的混沌系统，它是通过目标输出与实际输出之间的关系来控制参数，使系统从混沌运动转变到规则的运动.Huberman采用了误差en和对应kn导数的复合函数关系G(en+1(den+1／dkn))，导出参数自适应控制律，当函数G形如en+1.(den+1／dkn)时，即为线性系统中广泛使用的自适应算法［2］.Sinha［3］将文献［1］的自适应算法推广到多重参数和高维非线性系统中，在系统参数突然受到扰动而引起系统的动态行为改变情况下，Sinha提出的自适应控制算法对于恢复扰动的系统返回到初始的动态行为是显著有效的，并得出在任何情况下，恢复时间与控制刚度(Control Stiffness)成线性反比关系(对于小刚度而言)的结果，有效地控制系统到平衡点或极限环状态.不过以上两个方法不适于将系统运动状态控制到一个不稳定的轨道，并且控制刚度的大小不易确定，扰动的参数初始值范围也受到很大的限制.Vassiliadis［4］在文献［1，3］的基础上，提出了基于参考模型的参数自适应控制算法，考虑了离散确定性非线性动态系统方程
+
+(1)
+这里x是m维状态向量，μ是参数.而参考模型系统为
+
+(2)
+其中μg是期望目标参数值.Vassiliadis提出的参数自适应控制形式是
+
+(3)
+式中G是误差信号向量en=xn-yn的函数，α是控制刚度.然而方程组(1)―(3)对于较复杂的动态系统来说显得无能为力，特别是当xn或yn是混沌状态时，式(3)中的xn-yn将呈现指数分叉性，进一步弱化了该控制方程的镇定效果.考虑到可调系统(1)和参考模型(2)之间无耦合关系，使得控制律(3)的收敛效果不太理想，Vassiliadis在文献［4］后面考虑了系统和模型间的耦合形式，即改写式(2)为如下形式
+
+(4)
+并利用线性代数理论证明当满足一定的条件时(关于符合的具体含义，请参阅文献［4］中的定义)，可使μn→μg.然而该文未能给出高维情形的证明，特别是该文的方法未能给出对于连续混沌系统的控制算法的证明.实际上连续时间系统与离散时间系统在参数自适应算法上有一定程度的差别，利用文献［4］的方法很难证明该文算法对连续时间系统的有效性，并将μ的扰动限制在很小的范围.
+2　参数自适应控制方法
+　　考虑一般的连续确定性的非线性系统
+
+(5)
+这里系统状态向量x∈Rn，时间t∈R，参数μ∈Rm，f：Rn×R×Rm→Rn.假如参数μ关于f是线性的，即(5)式可以表示为
+
+(6)
+式中，是参数向量，这些控制参数确定了典型轨道的渐近行为.在扰动和控制的共同影响下，参数μ成为时间相关性质的向量μ(t).如果已知参数μ的瞬时值，则可以计算出它在目标值上的导数，那么该参数自适应控制退化为用目标值调整现行参数值的一般控制方法.然而在实际应用中，一般并不知道系统参数变化值.由于不知道任何有关的参数变化值，要检测参数与目标值的偏差关系就会遇到很大的困难，参数值变化的情况可以通过系统的全局行为(global behavior of the systems)来辨识，也就是说要根据系统的变量x和模型参考的变量y之间的偏差关系来控制系统参数的变化值.
+　　首先考虑参考模型为且设μ=μg,即
+
+(7)
+本文提出的自适应控制律为
+
+(8)
+其中 β:Rn×R→R，G：Rn→R是连续函数，e=x-y.一般来说，G是误差信号函数导数的非线性函数. 控制方程(8)的难点在于如何适当选择G.
+　　系统(5), (7)，(8)构成了一组控制方程, 如果系统(5)中的参数μ=μg时, 系统轨道趋于平衡点或低周期轨道, 参考模型(7)可取为简单的行为模式(Simple pattern of behavior), 则由式(5)，(7)，(8)构成参数自适应控制方法进行控制是有效的［1，4］. 然而当系统(5)中的参数在μ=μg时, 系统状态呈现高周期、拟周期甚至混沌行为时, e或将成为极端复杂的变化值. 为了有效地控制更复杂的系统, 将系统(5)的输出变量x(t)反馈于系统(7), 即得到系统(7)，(5)耦合的方程
+
+(9)
+因而可以利用系统的动态反馈于参考模型来预测y(t)的动态行为, 使得参数自适应控制律(8)的收敛性能得到改善. 
+　　为了讨论方便, 不妨假设模型动态和系统动态是一样的, 即fM=f, 而G定义为(注: G可以取其它适当的形式, 并不影响本文的证明过程)
+
+(10)
+式中z=(z1，z2，…，zn)T∈Rn.进一步假设
+
+其中
+
+其中是一致连续的时间t的实函数. 令βl(x，t)为如下的控制刚度：
+
+(11)
+这样控制系统方程组可以转化为如下形式
+
+(12a)
+
+(12b)
+
+(12c)
+　　可以证明以上的参数自适应控制方程组对大干扰的参数初始值都保证全局收敛稳定. 事实上,设Lyapunov函数为
+
+(13)
+则
+
+(14)
+　　这样(t)是半负定函数, 即(12c)式所表示的自适应规律可以保证系统(12c)是全局稳定的. 又由于(t)是半负定的, V(t)是时间的非增函数, 并且有下界. 假定V(t)收敛于某一有限值V(∞), 又由于μ的初始状态是有界的, 所以V(0)有界, 即

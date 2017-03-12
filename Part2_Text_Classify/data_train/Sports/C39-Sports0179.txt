@@ -1,0 +1,60 @@
+浙江体育科学
+ZHEJIANG SPORTS SCIENCE
+1999年 第21卷 第4期　No.4 Vol.21 1999
+
+
+
+小鼠力竭运动后及恢复期心肌和腓肠肌肌球蛋白Ca2+-ATPase活性的研究
+季丽萍　冯照军　陈才法　孙颖
+　　摘要：本研究探讨力竭性游泳运动及恢复期间小鼠心肌与腓肠肌肌球蛋白Ca2+-ATPase活性的变化。实验结果显示，与安静时相比，运动至衰竭时的心肌与腓肠肌的肌球蛋白Ca2+-ATPase活性均显著下降（P＜0．05），腓肠肌肌球蛋白Ca2+-ATPase活性在恢复初期仍处于较低水平（P＜0．05）；心肌肌球蛋白Ca2+-ATPase活性则在0．5h后即恢复到安静水平。
+　　关键词：小鼠；力竭性游泳；肌球蛋白Ca2+-ATPase；腓肠肌；心肌；恢复
+　　中图分类号：G872．7　　文献标识码：A
+On the change of myosin Ca2+-ATPase activity of cardiac muscle and gastrocenmius in mice during exercise and recovery
+JI Li-ping1，FENG Zhao-jun2，CHEN Cai-fa2，SUN Ying1
+（1．Department of PE，Xuzhou normal university，Xuzhou 221009，China；2．Department of biology，Xuzhou normal university，Xuzhou 221009，China）
+　　Abstract：This study examined the change of the myosin Ca2+-ATPase activity of cardiac muscle and gastrocnemius in mice during exhaustive swimming and its recovery preriod．The results of experiment showed that the myosin Ca2+-ATPase activity of both cardiac muscle and gastrocenmius was significantly（p＜0．05）lower in post-exercise than pre-exercise．The myosin Ca2+-ATPase activity of gastrocenmius was still at lower level（P＜0．05）at early of recovery period，however the myosin Ca2+-ATPase activity of cardiac muscle had recovered to beginning level at 0．5h of recovery period．
+　　Keywords：mice；exhaustive swimming；Ca2+-ATPase；cardiac muscle；gastrocenmius；recovery
+　　肌细胞（心肌，骨骼肌和平滑肌）的肌球蛋白Ca2+-ATPase控制着横桥ATP的分解，并决定着肌肉收缩的速度，因而肌球蛋白Ca2+-ATPase活性的高低已被认为是肌肉收缩能力的重要生化指标之一［1］。运动性疲劳引致运动能力下降的因素很多（如能量耗竭、乳酸堆积、H+浓度升高等）。但力竭性运动对肌球蛋白Ca2+-ATPase活性的影响及其与运动性疲劳关系的研究尚未见报道。本实验以小鼠为研究对象，通过测定力竭性游泳运动后即刻及恢复期肌球蛋白Ca2+-ATPase的活性，据此来探讨肌球蛋白Ca2+-ATPase的活性与运动性疲劳的关系，以期从分子水平上探讨运动疲劳的机制，进而讨论运动能力恢复的时程。
+1　实验材料与方法
+1．1　实验材料
+　　实验运动选用昆明种系小白鼠32只，体重25～30g，由徐州医学院实验动物中心提供，常规喂养，饮食不限量，将小鼠随机分成4组，即（1）对照组；（2）运动后即刻组；（3）运动后恢复0．5h组；（4）运动后恢复24h组，每组8只。
+1．2　实验方法
+　　运动方式为负重的力竭性游泳，在小鼠尾后附加相当于自身体重4％的负荷，以小鼠力竭下沉5秒不露出水平为力竭标准，然后将小鼠迅速取出擦干、放入保温箱内保温，再按不同时相处死小鼠。游泳池水表面积为2300cm2，水深30cm，水温31±1℃，每次同时放入8只小鼠游泳。力竭时间52±15min。
+1．3　测试指标
+　　各组小鼠在用昏击法处死后，立刻取其心室肌和腓肠肌各约150mg，按朱平等的方法［2］制备肌球蛋白溶液并测定肌球蛋白Ca2+-ATPase的活性；按Pollard法［3］测定无机磷的含量；按Lowry法测定肌球蛋白溶液中的蛋白质含量。Ca2+-ATPase酶比活性以单位时间内单位重量蛋白质催化ATP分解释放出无机磷的微摩尔数表示，即umol／mg．min。
+　　采用常规统计方法计算各测试指标的平均数（）及标准差（SD），并进行t检验，显著性水平为P＜0．05。
+2　结果
+2．1　腓肠肌肌球蛋白Ca2+-ATPase活性
+表1　小鼠力竭性游泳后心肌和腓肠肌肌球蛋白的Ca2+-ATPase活性(单位：umol／mg．min)
+组　　别n肌肉样本Ca2+-ATPase（±SD）变化幅度％P1值P2值
+安静对照组8心　肌0．6524±0．1813　　P2＜0．05
+　　腓肠肌0．4827±0．1765　　　
+力竭游泳后即刻组8心　肌0．4932±0．0670－24．4P1＜0．05P2＜0．01
+　　腓肠肌0．3151±0．0530－34．7P1＜0．05　
+力竭游泳后0．5h组8心　肌0．6351±0．0797－2．6　P2＜0．01
+　　腓肠肌0．3457±0．0792－28．4P1＜0．05　
+力竭游泳后24h组8心　肌0．6358±0．1000－2．5　P2＜0．05
+　　腓肠肌0．5364±0．0542+11．1　　
+注：P1为同肌肉类型Ca2+-ATPase活性与对照组比较
+　　P2为同状态下两种肌肉Ca2+-ATPase活性的比较
+　　由表1可知，与安静时相比，运动至力竭时小鼠腓肠肌肌球蛋白Ca2+-ATPase活性明显降低（P＜0．05），平均下降34．7％。在恢复初期肌球蛋白Ca2+-ATPase活性仍处于较低水平，实验数据表明，力竭性运动导致腓肠肌肌球蛋白Ca2+-ATPase活性明显下降，随着恢复时间的延长，其活性逐渐回升，24小时出现超量恢复的趋势，但无统计学意义。
+2．2　心肌肌球蛋白Ca2+-ATPase活性
+　　由表1可知，与安静时相比，运动至力竭时，小鼠心肌肌球蛋白Ca2+-ATPase活性明显降低（P＜0．05），平均下降24．4％，但在运动后0．5h即可基本恢复。
+3　讨论
+　　本实验结果表明，小鼠心肌肌球蛋白Ca2+-ATPase活性明显高于骨骼肌（腓肠肌）的Ca2+-ATPase活性，这显然与心肌和骨骼肌的机能和代谢特点有关。本实验结果还显示，力竭性运动后即刻小鼠心肌和腓肠肌肌球蛋白Ca2+-ATPase活性均显著下降，该酶活性的下降导致小鼠心肌功能和骨骼肌的功能降低。因此笔者认为该酶活性的下降是机体产生疲劳的原因之一。关于心肌和骨骼肌肌球蛋白Ca2+-ATPase的活性降低的原因迄今尚不能定论。
+　　本实验结果令人感兴趣的不仅是小鼠心肌和腓肠肌肌球蛋白酶活性的明显差别，提示这两种肌组织的功能与酶活性的统一；而且在力竭运动后恢复期内Ca2+-ATPase活性的恢复进程也有明显区别，心肌Ca2+-ATPase活性的恢复早于腓肠肌的，而腓肠肌在力竭运动结束后24小时时，Ca2+-ATPase活性高于安静对照组（无统计学意义），但心肌并未出现这种趋势，其机能意义和机理都还不清楚。不过，可以认为心肌Ca2+-ATPase的恢复比骨骼肌早，可能与心肌代谢性能有关。众所周知，心肌是一个可以利用乳酸进行有氧氧化的有效器官，所以心肌组织中该酶的恢复快是与代谢特点相一致的；从功能角度看，心肌Ca2+-ATPase活性的恢复也与心肌的血供（冠状循环）优于外周骨骼肌有关［4］。
+4　结论
+4．1　小鼠心肌肌球蛋白Ca2+-ATPase活性明显高于腓肠肌肌球蛋白Ca2+-ATPase。
+4．2　小鼠力竭性运动后腓肠肌和心肌肌球蛋白Ca2+-ATPase活性均显著下降，提示可能是运动性疲劳的分子机制之一。
+4．3　小鼠力竭性运动后，心肌肌球蛋白Ca2+-ATPase活性恢复较快，运动结束后0．5h时其活性与安静对照组已无统计学差别，而腓肠肌肌球蛋白Ca2+-ATPase的活性在运动结束后0．5h内，尚明显低于安静对照组。
+4．4　力竭运动结束后24h时，腓肠肌肌球蛋白Ca2+-ATPase活性高于安静对照组，有超量恢复的趋势，但无统计学意义，而心肌肌球蛋白Ca2+-ATPase则无此趋势。
+作者简介：季丽萍（1965－），女，徐州师范大学工程师．
+作者单位：季丽萍　孙颖　徐州师范大学体育系；
+　　　　　冯照军　陈才法　徐州师范大学生物系，江苏徐州221009
+参考文献
+［1］　徐玉林．间竭性和持续性游泳训练对大鼠心肌肌球蛋白Ca2+-ATPase酶活性的影响［J］．广州体育学院学报，1998，1（40）：40-43．
+［2］　朱平，等．心肌收缩蛋白的研究［J］．白求恩医科大学学报，1984，10（4）：375-379．
+［3］　LowryOH，RosebroughNJ，FarraA，etal．J．Biol．Chem．1951，193：265-275．
+［4］　刘益飞，等．心脏泵血功能与无氧阈关系的探讨［J］．中国运动医学杂志，1990．（4）203．
+责任编辑：郭海英
+收稿日期：1999-03-29

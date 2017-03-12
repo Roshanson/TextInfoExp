@@ -1,0 +1,121 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000 Vol.19 No.3 P.17-18,37
+
+
+
+Web环境中的HTTP状态管理
+王华火　罗键
+　　摘　要：如何在ASP中利用Application和Session对象管理HTTP的状态,跟踪用户在Web环境中的工作期,并给出了一个应用实例。
+　　关键词：Application对象 Session对象 Cookie文件
+　　在桌面环境下,操作系统在一个应用程序从启动至结束这段时间内为它管理内存空间,该应用程序的状态是明确的。在Client/Server环境中,客户端应用程序负责管理用户的状态、工作流程以及与用户的交互,与Server的对话只在执行特定的操作（例如查询）时发生,且在客户机的严格控制下进行,不存在状态和流程的紊乱问题。而在Web中,HTTP事务是随机、独立、不确定的,用户经常在页面间、站点间跳转,浏览器无法保持一致连续性和连接的状态。如果服务器一提交完浏览器请求的Web页面后就将用户遗忘,则当用户请求下一个页面时,上一个页面的信息便不可用。而当用户返回原先的页面时,又需重新初始化该页面。所以在Web中一个重要的问题就是如何有效地管理HTTP的状态,使得在Web中的畅游有序、轻松而且高效。Microsoft利用ASP很好地解决了这一问题,通过引入Application和Session对象,Web的状态由这二个对象在服务器端统一管理,并且和服务器程序运行于同一进程空间,取得了安全上和效率上的双重改善。
+1 传统的解决方案
+　　早期的服务器方脚本是CGI。CGI利用Cookie来管理HTTP状态和跟踪用户。Cookie是1个存储于浏览器目录中的文本文件,由Netscape开发并将其作为持续保存状态信息和其它信息的一种方式。当服务器向浏览器返回Web页时,同时将用户在当前服务器上的状态和环境作为1个Cookie写入客户机。Cookie内包含其自身的生命期信息,当用户下次重新请求该页面时,浏览器首先检查Cookie是否超出其生命期,若是,忽略Cookie,将对该页面的请求当成第一次请求;若尚未超出生命期,浏览器把Cookie一起提交服务器,以便服务器记忆起用户上次请求时的状态信息。例如可以用Cookie来支持1个基于CGI的购物系统,其中顾客选中的货物放进1个虚拟的购物卡片,购物卡片存储在Cookie中。
+　　HTTP Cookie通过HTTP头部来实现,由服务器通过HTTP头部的Set-Cookie传送给客户机,其语法如下:
+　　Set-Cookie: Name=VALUE　; Expires=DATE　;
+　　　　Env=ENV_INFO　; URL=PATH　;
+　　　　Domain=DOMAIN　; Secure
+　　其中:
+　　（1）Name=VALUE 标识Cookie的名字
+　　（2）Expires=DATE　Cookie的生存期
+　　（3）Env=ENV_INFO　用户在服务器上的环境信息句柄
+　　（4）URL=PATH　申明URL在哪个URL中有效
+　　（5）Domain=DOMAIN　Cookie有效的全部Internet
+　　　　　　　　　　　　　　　域名子集
+　　（6）Secure　限制Cookie由HTTPS服务器传送
+　　由于Cookie在硬盘上保存了客户的信息,因而存在安全方面的隐患。Web站点管理员可以利用Cookie建立关于用户及其浏览特性的详细资料。当用户登录到1个Web站点后,在任一设置了Cookie的网页上的点击操作信息都会被加到该档案中,档案中的这些信息暂时用于站点的维护,但也容易被其他人窃取。Cookie的安全性问题引起了广泛的关注,目前主要的浏览器均提供了限制Cookie使用的方法。
+2 ASP中的Application和Session对象
+　　Microsoft提出了管理HTTP状态的全新方法,即基于IIS和ASP的对象和组件模型。它的宗旨是在Web服务器上保存用户的状态和环境信息。这一动作由用户对页面的申请触发,且在一定的时间内持续有效。在这一模型中,Application和Session是管理HTTP状态的2个主要对象。
+　　Application和Session对象具有事件OnStart和OnEnd,它们的代码以global.asa文件的脚本的形式保存在ASP定义的虚拟目录中,在该目录中还有Web页面（.asp）。IIS管理虚拟目录,并且虚拟目录是可执行的。每当第一个用户请求页面时,IIS中的ISAPI过滤器处理请求的页面,执行其中的服务器端脚本,结果以标准HTML的形式返回给浏览器,同时激活global.asa中的Application_OnStart事件和Session_OnStart事件。Application_OnStart事件初始化应用的一系列公共变量,保存必要的公共环境信息,以备在本Application对象生存期的其它Session对象使用。例如页面的用户请求计数、应用的背景设置、数据库的公共连接对象等。而Session_OnStart事件则保存了每个用户的私人环境,提供了识别新用户的第一次操作的功能,并且可用于初始化那些用于管理用户工作期的用户信息。Session对象以少量的事件和方法完成管理用户流程,系统级的用户跟踪和控制等状态管理任务。
+2.1 Application和Session对象的工作期
+　　第一个用户请求某个Web页时,激活Application_OnStart和Session_OnStart事件,只要Application对象没有终止,即Application_OnEnd事件没有被激活,后续的客户请求均只激活Session_OnStart事件。如果用户在该应用中停留的时间超过Session对象Timeout属性规定的值,Session_OnEnd事件自动激活,清除该用户的私人状态及环境信息。而当最后一个用户超时结束会话时,Application_OnEnd激活,清除应用的公共环境,释放占用的服务器资源。
+2.2 Application和Session对象的属性 方法 事件
+　　Lock和Unlock Application对象的锁定和解锁方
+　　　　　　　　　　　　　　法,用于避免多个用户同时修改同
+　　　　　　　　　　　　　　一公共属性造成冲突,锁定后只允
+　　　　　　　　　　　　　　许单个用户作修改操作。
+　　SessionID 标识当前用户会话的ID号。
+　　Timeout Session对象属性,设置会话生存
+　　　　　　期,缺省为20分钟。
+　　Abandon Session对象方法,立即终止会话。
+　　OnStart和OnEnd Application和Session对象装载
+　　　　　　　　　　和终止时触发的事件
+　　以上是标准属性、方法和事件,Application和Session对象允许自定义属性、方法和事件来管理复杂的HTTP状态。
+3 应用举例
+　　以下例子简要说明1个在线阅读服务的HTTP状态管理情况,一些与本文无关的细节没有给出。
+　　1.Application_OnStart事件
+　　作为应用的初始装载事件,生成ADO（Active Data Object）连接对象,并将连接对象定义为Application的属性,以备以后每个用户的Session对象使用,最后利用连接对象打开文献数据库和用户信息数据库,同时保存其它一些公共状态信息。
+　　<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+　　SUB    Application_OnStart
+　　　　Set bookConnect=Server.CreateObject（″ADODB.
+　　　　　　　　　　　　Connection″）
+　　　　bookConnect.Open（″BOOKS″）
+　　　　Application（″bookConnect″）=bookConnect
+　　　　Set userConnect=Server.CreateObject（″ADODB.
+　　　　　　　　　　　　Connection″）
+　　　　UserConnect.Open（″USERS″）
+　　　　Application（″userConnect″）=userConnect
+　　　　Application.Lock
+　　　　Application（″Counter″）=0
+　　　　Application（″Date″）=Date（）
+　　　　Application（″Time″）=Time（）
+　　　　Application.Unlock
+　　END SUB
+　　</SCRIPT>
+　　2.Session_OnStart事件
+　　该事件首先使Application对象的计数器加1,然后将用户的状态信息保存到用户信息数据库,最后利用Application对象建立的连接对象和用户请求的书号从文献数据库中提取请求的书目。由于用户数据库中存储了用户的信息,包括请求的书号,当用户暂时离开且在Session对象的工作期内返回该页时,IIS检索数据库即知用户请求了哪本书,而无需用户重新请求。
+　　<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+　　SUB    Session_OnStart
+　　　　　Application.Lock
+　　　　　Application（″Counter″）=Application（″Counter″）+1
+　　　　　Application.Unlock
+　　　　　SessionID=Request.Form（″userid″）
+　　　　　Set userConnect=Application（″userConnect″）
+　　　　　SQL=″UPDATE tblUser″
+　　　　　SQL=SQL & ″SET″ & ″userid=″ & Request.Form
+　　　　　　　（″userid″）
+　　　　　SQL=SQL & ″SET″ & ″password=″ & Request.Form
+　　　　　　　（″password″）
+　　　　　SQL=SQL & ″SET″ & ″bookid=″ & Request.Form
+　　　　　　　（″bookid″）
+　　　　　SQL=SQL & ″SET″ & ″logondate=#″ & Date（） 
+　　　　　　　& ″#″
+　　　　　userConnect.Executer（SQL）
+　　　　　Set bookConnect=Application（″bookConnect″）
+　　　　　SQL=″SELECT″ & Request.Form（″bookid″） &
+　　　　　　　″FROM tblBook″
+　　　　　RecordSet=bookConnect.Execute（SQL）
+　　END SUB
+　　</SCRIPT>
+　　3.Session_OnEnd事件
+　　当用户超时时触发,使Application对象的计数器减1,同时删除用户数据库中的相应记录,释放系统资源。
+　　<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+SUB Session_OnEnd
+　　　　　Application.Lock
+　　　　　Application（″Counter″）=Application（″Counter″）-1
+　　　　　Application.Unlock
+　　　　　Set userConnect=Application（″userConnect″）
+　　　　　SQL=″DELETE FROM tblUser″
+　　　　　SQL=SQL & ″WHERE userid=″ & Session.Ses-
+　　　　　　　sionID &″;″
+　　　　　userConnect.Execute（SQL）
+　　END SUB
+　　</SCRIPT>
+　　4.Application_OnEnd事件
+　　最后1个用户超时时退出应用并关闭数据库连接。
+　　<SCTIPT LANGUAGE=VBScript RUNAT=Server>
+　　SUB Application_OnEnd
+　　　　bookConnect.Close
+　　　　userConnect.Close
+    　END SUB
+　　</SCRIPT>
+4 结束语
+　　ASP中Application和Session对象把对HTTP状态的管理集中到服务器端,通过对象和组件的技术,采用事件驱动的方法,使得Web中状态的管理简单、明晰且高效,克服了传统方法的复杂性和不安全性,使得用户的HTTP状态清晰、连续,从而大大改善了Web的性能。
+王华火（厦门大学自动化系361005）
+罗键（厦门大学自动化系361005）
+参考文献
+1，Chapman D.Visual Basic 5 Web开发人员指南.北京:机械工业出版社,1998
+2，S．希利尔.Active Server Pages编程指南.北京:宇航出版社,1998
+3，Berlin D.精通CGI编程.北京:清华大学出版社,1998
+4，张林.Cookie的安全性及拒绝方法讨论.微型机与应用,1999;(3)
+收稿日期：1999-09-27

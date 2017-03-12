@@ -1,0 +1,45 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第10期 Vol.35 No.10 1999
+
+
+
+发球区扩大对战术组成率的影响及其对策
+李禄田
+摘要：本文通过对1996年全国女子排球锦标赛(甲A)8个队发球站位、发球线路、落点及发球效果的技术统计，分析了发球区扩大后发球的站位、线路、落点对一攻战术组成率的影响。统计结果经X2检验表明：发球的攻击性与发球的站位无关，而与发球的线路与落点高度相关。其中，斜线发向插上二传站位区的球攻击性最大，发向二传站位侧面对应区的球攻击性最小。本文对如何利用发球区的扩大加强发球的攻击性，如何提高一攻的战术组成率进行了探索。
+关键词：排球∥发球∥一攻∥战术∥影响
+The Influences and Counter-measures of the Broadened Service Area on the Ratio of the Achieved Tactical First Attacks
+Li Lutian
+Abstract:In this article, the author makes the technical statistics on the service position, service routes, ball falling position for 8 women volleyball teams in the 1996 national women volleyball league, and analyzes the influence on the ratio of the achieved tactical first attacks. The statistical data is examined by X2. The result shows that the attack force has nothing to do with the service position, but much to do with the service routes and the falling point. Among them, the served ball along the slanting route to the running setter has the greatest attack force, whereas the served ball to the slanting opposite area of the setter has the least. The author has made probe on how to enhance the attack force by broadening the service area, and how to improve the successful rate of the achieved tactical first attacks.
+Key words:volleyball∥service∥first attack∥tactics∥influence
+1　前言
+　　当前，排球运动正处在攻强于守的攻防不平衡状态，尤其是三点攻的一攻战术组成率过高，导致一攻扣死率高，使排球比赛攻防转换回合少，影响了比赛的观赏性。为了解决影响排球运动发展的这一因素，自1995年起，国际排联将竞赛规则做了一系列修改。其中，“发球区扩大为端线后9 m宽的地区，延至无障碍区的终端”，使原来端线后右侧3 m宽的发球区扩大了3倍。其修改的目的是为了加强发球的攻击性，抑制一攻的战术组成率，促使排球运动向攻守平衡的方向发展。
+　　为了探索发球区扩大后对一攻战术组成率的影响，在1996年全国女子排球锦标赛(漳州赛区)期间，随机对甲A组江苏、浙江、福建、上海、中国邮电、八一、天津、四川8个队共46局比赛，对方二传后排插上站位时的发球站位、线路与落点、发球效果进行了技术统计。
+2　统计方法
+　　1.由于快球掩护下的三点进攻是一攻扣死率最高的战术形式，而女排又普遍采用5人接发球站位，所以，本文只对二传后排插上时的发球站位、发球线路与落点、发球效果进行统计。
+　　2.组成有效的一攻战术要具备三个基本条件：1)一传将球送到网前预定的二传位置；2)二传及时地取位于球下；3)扣快球队员及时跑动到位。本文把三者具备，组成有效的快球进攻或起到了掩护作用作为组成一攻战术的标准。
+　　3.在端线后无障碍区的边沿处，用颜色鲜明的标记将9 m宽的发球区平分为3等份。右侧3 m宽的区域(原发球区)定为右发球区；左侧3 m宽的区域定为左发球区；中间为中发球区。以发球队员击球时脚的着地位置(或起跳点)确定其发球站位区域。
+　　4.发球落点以插上二传的站位为基准点。由于发球队员击球时，插上二传即迅速起动到网前，球过网后落点均在二传身后，所以，我们把直线发到插上二传站位区域的球简称为“直后区”；斜线发到插上二传站位区域的球简称为“斜后区”；落点在插上二传站位侧面对应场区的球简称为“侧对区”。
+3　研究方法
+　　本文采用数理统计法和对比分析法。将统计数字按不同发球区站位发球和不同线路与落点的发球，分别进行发球效果的百分比计算，通过率的X2检验，对比分析发球效果，探索发球区扩大后对一攻战术组成率的影响。
+表 1　1996年全国女子排球锦标赛发球技术统计总表
+
+发球站位线路与落点一攻战术组成能　　攻破　　攻得　　分失　　误Σ
+次数%次数%次数%次数%次数%
+　直后区6043.23223.0117.9117.92518.0139
+右发球区斜后区5138.13828.41511.21410.41611.9134
+　侧对区21566.05918.1195.8144.3195.8326
+　直后区5148.62725.71514.387.643.8105
+中发球区斜后区1932.21728.81423.7610.235.159
+　侧对区9357.83723.0148.7138.042.5161
+　直后区5348.22825.487.398.21210.9110
+左发球区斜后区4153.91519.71013.279.23476
+　侧对区13262.33817.9199.0136.1104.7212
+Σ　715　291　125　95　96　1322
+
+4　结果与分析
+　　从表2中得知，右(原发球区)、中、左三个发球区发球的一攻战术组成率分别是54.5%、50.2%、56.8%，通过率的X2检验，3个发球区站位发球的一攻战术组成率比较，差异均不显著(p＞0.05)(表3)，3个区的发球得分率也不显著(p＞0.05)。表明发球区扩大后，发球的攻击性与发球站位无关。
+表 2　1996年全国女子排球锦标赛运动员不同站位发球效果比较一览表
+
+发球站位一攻战术组成能　　攻破　　攻得　　分失　　误Σ
+次数%次数%次数%次数<font

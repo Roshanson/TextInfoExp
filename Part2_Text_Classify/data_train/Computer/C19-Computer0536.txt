@@ -1,0 +1,76 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+不确定噪声下确保连续 LQG 最优控制
+目标的扰动界
+奚宏生　杨孝先
+　　关键词　鲁棒 LQG 最优控制，确保控制目标，扰动界
+PERTURBATING BOUND OF GUARANTEED COST FOR CONTINUOUS-
+TIME LQG OPTIMAL CONTROL WITH UNCERTAIN NOISE
+XI HONGSHENG YANG XIAOXIAN
+(Department of Automation,University of Science and Technology of China,Hefei 230027)
+　　Key words Robust LQG optimal control,guaranteed cost,perturbating bound.
+　　1　引言
+　　具有不确定噪声的随机线性控制系统为
+(t)=Ax(t)+Bu(t)+w°(t)　　　　　　　　　　　　　　(1)
+y(t)=Cx(t)+v°(t)　　　　　　　　　　　　　　　(2)
+其中 x(t)∈Rn,y(t)∈Rr,u(t)∈Rm,w°(t)和 v°(t)分别是零均值、相互独立的 n 维和 r 维高斯白噪声过程.它们的不确定性表现在其协方差矩阵满足
+cov［w°(t),w°(s)］=W°δ(t-s)=(W+ΔW)δ(t-s),　W≥0,　ΔW≥0;
+cov［v°(t),v°(s)］=V°δ(t-s)=(V+ΔV)δ(t-s),　V＞0,　ΔV≥0.
+这里;εi,ej 均是非负不确定扰动参数；Wi,Vj 均是已知非负定对称矩阵.控制目标函数被定义为
+　　　　　　(3)
+假设(1)V＞0；(2)(A，C)是能检测的；(3)(A，)是能稳定的；(4)R＞0；(5)(A，B)是能稳定的；(6)(A，)是能检测的.
+　　当噪声协方差距阵不扰动，即 ΔW=0,ΔV=0时，在上述假设(1)―(6)下，存在使控制目标达到极小的唯一渐近稳定的 LQG闭环调节器
+u(t)=-G(t),　G=R-1BτP1,　　　　　　　　　　　　　(4)
+P1A+AτP1-P1BR-1BτP1+Q=0,　　　　　　　　　　　　　(5)
+*(t)=A(t)+Bu(t)+K［y(t)-C(t)］,K=P2CτV-1,　　　　　　(6)
+AP2+P2Aτ-P2CτV-1CP2+W=0.　　　　　　　　　　　　　(7)
+　　当ΔW≠0，ΔV≠0时，采用稳态滤波器(6)，则估计误差方差阵收敛到代数Riccati方程
+(A-KC)P°2+P°2(A-KC)τ+KV°Kτ+W°=0
+的唯一解［1］.应用文［2］中方法可以将控制目标(3)直接转化为等价形式
+J(u,W°,V°)=tr［W°(P1+X)］+tr(V°KτXK).
+其中 X 是代数Riccati方程
+(A-KC)τX+X(A-KC)+GτRG=0
+的唯一解.记控制目标对理想值的偏离度为
+ΔJ(u,ΔW,ΔV)=J(u,W°,V°)-J(u,W,V)　　　　　　　　　　　　　
+=tr［ΔW(P1+X)］+tr(ΔVKτXK)≤γ.　　　　　　　　　　(8)
+式中的γ是根据实际需要设定的允许偏离度上界.这里，目的是要构造一个确保(8)式恒成立的有关矩阵对(ΔW,ΔV)的最大自由扰动界，并在该界限内极小化不确定下的最坏性能.
+　　2　确保控制目标的扰动界
+　　设Ω=｛(ΔW,ΔV):0≤ΔW≤ΔWm;0≤ΔV≤ΔVm｝是一个有界闭凸集.显然，ΔJ(u,ΔW,ΔV):Ω→R是关于矩阵对(ΔW,ΔV)的线性映射，并具有以下性质：
+　　性质1.对于(ΔWi,ΔVi)∈Ω(i=1,2),若ΔW1≤ΔW2,ΔV1≤ΔV2,则 ΔJ(u,ΔW1,ΔV1)≤ΔJ(u,ΔW2,ΔV2);
+　　性质2.对α∈R(0＜α＜1),若ΔW=αΔW1+(1-α)ΔW2,ΔV=αΔV1+(1-α)ΔV2，则 ΔJ(u,ΔW,ΔV)≤max｛ΔJ(u,ΔW1,ΔV1),ΔJ(u,ΔW2,ΔV2)｝.
+　　利用性质1，2及文［3］中有关紧致凸集上的极值原理，容易证得下述定理.
+　　定理2.1　设Ω=｛(ΔW,ΔV):0≤ΔW≤ΔWm;0≤ΔV≤ΔVm｝,记 γ=ΔJ(u,ΔW,ΔV),则 γ必被(ΔWm,ΔVm)达到.
+　　设
+　　　　由定理2.1 知
+
+　　令 εm＝(εm1,εm2,…，εmN),em=(em1,em2,…,emM),并设Ω(εm,em)=｛(ΔW,ΔV):0≤ΔW≤是定义在 N+M 维超平面
+　　　　　　　　　　　　(9)
+上的一非空有界闭凸集类，其中 ai=tr［Wi(P1＋X)］,bj=tr(VjKτXK).要在 Ω(εm,em)中寻求一个使矩阵对(ΔW,ΔV)自由扰动范围达到最大的集合，它可以拓扑等价地转化为 RN+M 空间中.在(9)式约束下，求使 N+M 维超长方体的体积达到最大，即
+
+　　利用Lagrange乘子法可解得唯一最大值点为
+ε*i=γ/(N+M)ai(i=1,2,…,N);e*j=γ/(N+M)bj(j=1,2,…,M).
+　　定理2.2.在假设(1)―(6)下，对具有不确定噪声的连续时间随机线性控制系统(1)和(2)，若采用闭环调节器和滤波器(4)―(7)，则存在不确定噪声协方差矩阵对(ΔW，ΔV)的最大自由扰动集合
+
+当(ΔW,ΔV)∈Ω* 时，能确保(8)式恒成立.
+　　3　极小极大鲁棒LQG调节器
+　　设 U+ 是对应于(4)式的全体允许控制集合，记(ΔW*,ΔV*)=,(W*,V*)=(W+ΔW*,V+ΔV*)，若采用与(W*,V*)对应的标准Kalman滤波器
+*(t)=A*(t)+Bu(t)+K*［y(t)-C*(t)］,　K*=P*2CτV*-1,　　　　　(10)
+AP*2+P*2Aτ-P*2CτV*-1CP*2+W*=0,　　　　　　　　　　　(11)
+并以所得的状态估计*(t)构成状态反馈律
+u*(t)=-G*(t).　　　　　　　　　　　　　　　　(12)
+由最优估计与控制原理及ΔJ 的性质1，易得下面定理.
+　　定理3.1.在定理2.2 的条件下，在Ω* 中选择最大矩阵对(ΔW*,ΔV*)，并采用与它对应的标准Kalman滤波器和控制律(10)―(12).则存在鞍点(u*,ΔW*,ΔV*)满足鞍点不等式
+ΔJ(u*,ΔW,ΔV)≤ΔJ(u*,ΔW*,ΔV*)≤ΔJ(u,ΔW*,ΔV*).　　　　　(13)
+　　此时，由对策论基本原理可得到使(13)式成立的充分必要条件为［3］
+
+即最坏情况下的LQG最优调节器就是极小极大鲁棒LQG调节器.采用这种鲁棒控制设计方法对系统(1)和(2)实行控制，不仅能使控制目标达到任意预先设定的范围内，而且还能相对地极小化不确定下的最坏性能.
+作者单位：中国科学技术大学自动化系　合肥　230027
+参考文献
+　　1 Luo J S,Johnson A.Stability robustness of the continuous-time LQG system under plant perturbation and uncertainty,Automatica,1993,29(2):485-489.
+　　2 Looze D P,Poor H V,Vastola K S,Daragh J C.Minimax control of linear stochastic systems with noise uncertainty,IEEE.Trans.A.C.,1983,28(9):882-888.
+　　3 Baser T,Oster G J.Dynamic noncooperative game theory,New York:Academic Press,1982.
+收稿日期　1994-09-08

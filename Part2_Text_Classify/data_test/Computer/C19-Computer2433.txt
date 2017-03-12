@@ -1,0 +1,155 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH
+AND DEVELOPMENT
+1999年 第36卷 第12期 Vol.36 No.12 1999
+
+
+
+一种笔段序列匹配联机汉字识别方法
+唐降龙　孙广玲　刘家锋　容　军
+摘　要　文中针对行书体汉字的识别，提出一种笔段序列匹配汉字识别方法.选择笔段数、笔段书写顺序、笔段位置作为主要的识别特征.首先，在预处理阶段，为了减小汉字类内分散性，采用笔段密度均衡化非线性规整法对笔段位置进行了非线性规整；进而在笔段序列的基础上，采用动态规划算法寻找待识笔段序列与候选笔段序列的最优匹配路径；根据此路径，得到匹配笔段集，缺少笔段和多余笔段；然后计算出待识字与每个候选字的识别距离；最后，对识别距离排在前10个的候选汉字，利用匹配笔段集，选择其它特征，作进一步的判别，从而得到最终的识别结果.实验结果表明，本识别方法对于书写较潦草但笔顺比较稳定的行书体汉字，收到了比较好的识别效果.
+关键词　联机手写体汉字识别，笔段序列，动态规划算法
+中图法分类号　TP391.4
+A SEGMENT SEQUENCE MATCHING METHOD FOR ON-LINE
+CHINESE CHARACTER RECOGNITION
+TANG Jiang-Long, SUN Guang-Ling, LIU Jia-Feng, and HUANG Jian-Hua
+(Department of Computer Science and Technology，
+Harbin Institute of Technology, Harbin 150001)
+Abstract　A method based on segment sequence matching is proposed for on-line Chinese character recognition. The stroke number, strode order, and stroke position are selected as the three primary recognizing features. Firstly, in order to lessen the dispersion in class, a non-linear shape normalization algorithm-line density equalization is used to equalize the stroke position. Then, dynamic programming algorithm is used to look for a optimal matching path between a candidate segment sequence and an unknown segment sequence; The matching segment set and lacked and reduced segments are obtained based on the optimal matching path; The distance between an unknown character and every candidate is calculated. Finally, the candidates whose distances are ordered pre-ten are deeply determined using the segment matching set and selecting other features, so the final recognizing result is obtained. The experimental results show that, the proposed method could yield good recognizing effect. 
+Key words　on-line Chinese character recognition,segment sequence,dynamic programming algorithm
+1　引　　言
+　　联机手写体汉字识别技术不仅在理论上有重要的研究意义，而且在实际中也有很重要的应用价值［1］.此项技术的技术水平近几年得到了突飞猛进的发展，其研究的焦点已集中在如何提高行书体汉字的识别率上.行书体汉字的主要特点是笔划或部件之间的粘连现象比较严重，因此使基于笔划或部件的识别方法难以获得较高的识别率，但此特点导致行书体汉字的笔顺变化较楷体汉字的笔顺变化明显减少，这样就可以利用汉字的笔顺信息，在提取出笔段之后，将笔段按照汉字的书写顺序排成一个序列；此序列从整体上描述了一个汉字.行书体汉字笔顺的相对稳定性使得这种描述汉字的方式成为可行.然后在此基础上，定义基于笔段序列的距离度量函数.文献［2］提出了3种算子，即交换算子Exchange、增加算子Add和删除算子Delete，分别作用于两个对应笔段、缺少笔段、多余笔段3种对象，算子映射后的数值的累加和作为两个序列的距离.这种距离度量函数有一定的合理性；但删除算子映射结果是其所作用待识笔段序列中某个笔段的长度，但是待识汉字的笔段长度是非常不稳定的，因此也使最终的识别距离很不稳定.为此，本文只采用交换算子和增加算子，利用动态规划算法，在待识笔段序列与候选笔段序列之间，寻找出一条最优匹配路径；根据此最优路径，得到匹配笔段集，缺少笔段和多余笔段；并针对这3种情况，定义了3个不同的距离公式，最后的识别距离是这3个距离之和；在最后对前10个候选字进一步的判别过程中，也利用了已得到的匹配笔段集.采用本文提出的方法得到的匹配笔段集及待识序列和候选序列的距离都更具合理性和准确性.
+2　预处理
+　　这里的预处理指已提取笔段后的预处理.包括以下两个阶段.
+2.1　归一化
+　　由于书写者书写汉字的大小不一，所以必须归一化到统一大小.这里取100×100的方阵.
+
+(1)
+
+(2)
+(x,y)是归一化前笔段端点坐标；(x′,y′)是归一化后笔段端点坐标.
+2.2　非线性规整
+　　为了减小类内分布的分散性及使类内分布的中心距和类间分布的中心距尽量远离，必须对归一化后的汉字进行非线性规整.文中采用笔段密度均衡化的非线性规整方法［3］.
+　　定义1.设f(i,j)，i=0，1，…，I;j=0,1,…，J是I×J方阵内在位置(i,j)处是否有笔段穿越的标志；f(i,j)=1时，表示在(i,j)处有笔段穿越；f(i,j)=0时，表示在(i,j)处无笔段穿越；
+对于第i行的笔段密度为　　　　　　(3)
+
+(4)
+对于第j列的笔段密度为　　　　　　(5)
+
+(6)
+其中常数α的含义在后面有说明.
+　　定义2.笔段分布在i,j轴上的笔段密度总和分别为
+
+(7)
+
+(8)
+　　式(3)和式(5)中使用了一个常数α,当α=0时,字内上下或左右部间的空间区域将被完全压缩;这样的非线性规整效果太强烈而且不自然,因而常数α被添加进来以减轻这种效果.经试验,设定此值为1.
+
+(9)
+
+(10)
+　　(x,y)为非线性规整前的坐标值，(x′,y′)为非线性规整后的坐标值.　　
+3　求识别距离
+3.1　求取最优匹配路径
+　　根据引言中所述，匹配路径应该受到一定的限制，参见图1.如图所示，路径中不应出现第2类直角.求两个笔段序列间最优匹配路径问题可以形式地描述如下：
+　　设待识笔段序列的长度是n,Q={qj|j=1,2,…，n}；
+
+图1
+　　候选笔段序列的长度是m,P={pi|j=1,2,…，n}；
+　　
+　　w1为权值，这里设定w1=1.2；
+　　其中x*h表示第*笔段头端点的x坐标值；y*h表示第*笔段头端点的y坐标值；其中x*t表示第笔段尾端点的x坐标值；y*t表示第*笔段尾端点的y坐标值；问题：求R中一个满足下列条件的序列,用seq表示;使‖seq‖=min{‖seqk‖|k=1,2,…}；其中
+
+其中jl表示第l步中包含的待识笔段序列里的待识笔段号.须满足条件
+　①oper(r1)=‖p1-q1‖；
+　②(il-1=iland jl-1=jl-1andjl-2≠jl-1)or(il-1=il-1and jl-1=jl)or(il-1=il-1and jl-1=jl-1)；
+此问题可用动态规划算法［4］解出，算法如下：
+　　m=|P|；n=|Q|；
+　　if(m≤0 or n ≤ 0 ) return FAIL；
+　　else
+　　　　for i = 1 to m do
+　　　　　　for j = 1 to n do
+　　　　　　　　if( i = 1 and j = 1 )
+　　　　　　　　　　D［i,j］ = ‖p1 - q1‖;
+　　　　　　　　else if(Pointer(i,j-1)→j = j-1 and D［i-1,j］=min(D［i-1,j］,D［i-1,j-1］) or Pointer(i,j-1)→j≠j-1 and D［i-1,j］=min(D［i-1,j］,D［i-1,j-1］,D［i,j-1］)
+　　　　　　　　　　D［i,j］=D［i-1,j］+w1×len(pi);
+　　　　　　　　else
+　　　　　　　　　　D［i,j］=D［i-1,j-1］+‖pi- qj‖;
+　　return D［m,n］；
+　　其中D［i,j］表示以pi笔段为终止笔段的子候选笔段序列与以qj笔段为终止笔段的子待识笔段序列的最短距离.Pointer(i,j-1)→j表示以(pi,qj-1)为终点的最短距离路径上终点所指向的待识笔段序列的待识笔段号.
+　　应当指出，上述算法求出的距离并不是识别距离；此步运算的目的在于得到最优匹配路径，利用此路径求出识别距离.
+3.2　寻找匹配笔段集、多余笔段和缺少笔段
+　　(1)匹配笔段集
+　　从对求最优匹配路径问题的定义及对匹配路径的限制来看，匹配笔段应出现在图1中所示的水平路径或斜线路径上.具体为
+　　‖piMPl-qjMPl‖+|len(piMPl)-len(qjMPl)|=min{‖pil-qjl‖+|len(pil)-len(qjl)|,
+　　(piMPl,qjMPl)∈HPl,(pil,qjl)∈HPl,l=1,2,…，s}
+　　(piMPl,qjMPl)为匹配笔段对，HPl为第l个局部水平路径上的笔段对集合，s为局部水平路径个数.斜线路径上每一步所对应的笔段对都是匹配笔段对.
+　　(2)多余笔段
+　　多余笔段指待识笔段序列中未被匹配的笔段.
+　　‖pil-qjl‖+|len(pil)-len(qjl)|≠min{‖pil-qjl‖+|len(pil)-len(qjl)|,
+　　(piMPl,qjMPl)∈HPl,(pil,qjl)∈HPl,l=1,2,…，s}
+　　满足上式的所有笔段对中的qj笔段都是多余笔段.
+　　(3）缺少笔段
+　　缺少笔段指候选序列中未被匹配的笔段.
+　　
+　　VPk为第k个局部垂直路径上的笔段对集合,z为局部垂直路径个数.满足上式的所有笔段对中的pi笔段都是多余笔段.
+3.3　计算识别距离
+　　识别距离定义为匹配距离与失配距离之和.
+　　(1)匹配距离
+
+(11)
+　　其中C0为匹配笔段对的个数；pil,qjl分别表示第l个匹配对的候选序列中的笔段和待识序列中的笔段.
+　　(2)失配距离
+　　这又分两种情况考虑：缺少笔段和多余笔段.
+　　①缺少笔段
+
+(12)
+　　其中C1为缺少笔段的个数；pl为第l个缺少笔段.
+　　②多余笔段
+　　首先定义4个点：
+　　o1为多余笔段的前一个笔段匹配对的两个匹配尾端点的其中一个端点，o2为另一个端点.
+　　o3为多余笔段的后一个笔段匹配对的两个匹配头端点的其中一个端点，o4为另一个端点.
+　　　　　　　　　(13)
+　　其中C2为多余笔段的个数；ohl为第l个多余笔段的头端点，otl为第l个多余笔段的尾端点，两点之间的距离取欧氏距离.
+Dis=Dis0+Dis1+Dis2;
+(14)
+　　由于候选笔段序列的长度不同，所以要对Dis进行归一化.这里用来进行归一化的系数为C0，即匹配笔段对的个数，即
+Dis1=Dis/C0;
+(15)
+4　对前10个候选字作进一步判别
+　　上述识别方法对相似字的区分能力不足，因此本文采取了对识别距离排在前10位的汉字作进一步判别的识别策略.在这一步的运算中，对每一个训练样本我们都利用已有方法寻找到匹配笔段集，根据此匹配笔段集统计出模板中每一笔段与其下一笔段的连接概率，每一笔段丢失概率和每一笔段方向码（本文取0，1，2，3四种方向码，分别对应横、竖、撇、捺）概率，即
+
+式中N为训练样本总数；对每一候选汉字，计算距离为
+
+(16)
+　　式中m为模板中笔段个数.
+　　最终识别距离FinalDis=Dis1+w2×Dis2;　　　　　　　(17)
+　　w2为权值，这里设定w2=0.3.
+5　实验结果及分析
+　　测试国标一级汉字，平均每字200个样本,其中100个为楷体样本(按汉字书写规则书写字样),100个为行体样本(按书写者自己习惯书写字样),共200人收集了757555个样本.测试结果如下：
+表1　识别率统计表
+
+　第1候选率前10候选率
+楷书96.79%99.38%
+行书92.95%98.68%
+
+　　分析误识的原因如下:
+　　(1)粗分类错误;
+　　(2)汉字内相似字过多,导致误识;
+　　(3)待识字变形过大,无法正识;
+　　(4)特殊的写法或难见的笔顺. 
+本课题得到国家“八六三”高技术计划基金项目（项目编号863-306-ZD03-02-06）和黑龙江省自然科学基金项目(项目编号F9908)资助.
+作者简介：唐降龙，男，1960年11月生，博士，教授，主要研究方向为模式识别、中文信息处理
+　　　　　人工智能等.
+　　　　　孙广玲，女，1974年5月生，博士研究生，主要研究方向为手写体汉字识别.
+　　　　　刘家锋，男，1969年10月生，博士，副教授，主要研究方向为人工智能、模式识别.
+　　　　　容军，男，1975年7月生，硕士研究生，主要研究方向为机器学习.
+作者单位：哈尔滨工业大学计算机科学与工程系　哈尔滨　150001
+参考文献
+　1　张中.汉字识别技术.北京:清华大学出版社,1992
+(Zhang XingZhong. Chinese Character Recognition Technology(in Chinese). Beijing: Tsinghua University Press, 1992)
+　2　Tsay Y T, Tsai W H. Attributed string matching by split-and-merge for on-line Chinese character recognition. IEEE Trans PAMI, 1993, 15(2): 180～185
+　3　Hiromitsu Yanada et al. A nonliner normalization method for handprinted kanji characters recognition-line density equalization. Pattern Recognition. 1990, 23(9): 1023～1029
+　4　傅清祥, 王晓东. 算法与数据结构. 北京: 电子工业出版社, 1998
+(Fu QingXiang, Wang Xiaodong. Algorithm and Data Structure(in Chinese). Beijing: Electronics Industry Press, 1998)
+原稿收到日期：1999-02-08；修改稿收到日期：1999-06-14.

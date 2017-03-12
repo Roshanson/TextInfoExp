@@ -1,0 +1,66 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第10期 Vol.35 No.10 1999
+
+
+
+排球比赛临场技术统计计算机应用程序的研制
+王鲁宁　陈桂红　刘　立　胡卫权　顾秀萍
+摘要：我国排球联赛在信息传输和发布上已开始运用先进的计算机及其网络技术，但是，在信息采集阶段，即比赛临场技术统计方面却仍然停留在手工操作状态。为此，我们研制了“排球比赛临场技术统计计算机应用程序(JSPQTJ-V2.0)”，并在全国排球联赛中成功使用。本文分析和论述了程序设计思想、结构、功能、特点及算法诀窍，对体育竞赛计算机应用软件的研制具有一定的参考价值。
+关键词：排球∥比赛∥技术统计∥计算机∥程序设计
+The Development of Computer Application Software for On-The-Spot Technical Statistics at Volleyball Matches
+Wang Luning，Chen Guihong,Liu Li,Hu Weiquan,Gu Xiuping
+Abstract:Computer and its network technology have been used to transmit and issue information at the national volleyball leagues. But for the information collecting and on-the-spot technical statistics, it has been remained to be handled by hand. For this reason, we have developed "a on-the-spot technical statistics computer application program at volleyball matches (JSPQTJ V2.0)", and successfully applied it in '97-98 and '98-99 national leagues. In this paper, the author analyzes and expounds its design, structure, function, character and calculating knack. Thus, it is of great reference value for the development of computer software applied to sports competition.
+Key words:volleyball∥match∥technical statistics∥computer∥program design
+1　问题的提出
+　　随着主、客场赛制的实施，中国排协为及时获取比赛信息，更有效地管理、宣传和推动排球运动，把临场技术统计纳入赛区重要工作。从’98～’99全国联赛起，配备专用计算机和技术统计汇总程序，要求赛后各赛区迅速将临场技术统计结果输入计算机，形成统一的文件，通过E-mail发往北京，以便中国排协及时汇总数据并在因特网上发布。
+　　我国排球联赛虽然在信息传输和发布环节上开始运用先进技术，但是在信息采集阶段，即比赛临场技术统计方面却仍然停留在手工操作状态，费人、费力、费时，差错多。因此，研制“排球比赛临场技术统计计算机应用程序”(以下简称“本程序”)，已是势在必行。
+2　研究方法
+2.1　文献资料法
+　　查阅中国排协文件，明确要求；查阅同类研究的论文，吸取经验与教训；阅读排球教材和国际排联最新排球规则，了解排球技战术知识、竞赛规则和裁判法。
+2.2　访问调查法和实验法
+　　走访竞赛组织者，了解需求；编写实用小程序，投入实际运作，切身体验临场技术统计全过程；在获得深刻认识的基础上，逐步明确设计思想、优化系统设计、完成程序编写和调试。
+3　结果与分析
+3.1　设计思想
+　　1) 遵循中国排协的有关规范，满足高水平排球比赛技术统计之需，同时兼顾其它需求；2) 软件不是由专家操作的简单工具，而是便捷、可靠，一般用户也能使用的应用程序，并力求完美，在一定程度上反映出与我国高水平体育比赛相适应的一流水平。
+3.2　系统平台和编程工具
+　　本程序运行于Windows操作系统下，以Excel 5及其VBA(Visual Basic for Application)为编程环境。
+3.3　系统分析
+　　排球比赛临场技术统计包括个人数据录入，个人、全队数据汇总，单项技术排名和对数据进行统计学处理等内容。统计项目、输出结果及表格样式必须符合中国排协的规定，满足竞赛组织部门、运动队、新闻机构等方面及时获取比赛信息的需求。
+3.4　程序结构
+3.4.1　技术统计表结构(图1)
+
+
+图 1　技术统计表模拟图
+　　该表既是输入界面、数据存贮结构，又是输出结果之一。其中，各单项统计、上场时间由事件处理程序累加而得；合计和总数通过汇总公式自动求得。
+3.4.2　程序结构(图2)
+
+图 2　程序结构示意图
+3.5　主要模块功能
+　　主程序：设置运行环境，建立菜单、工具条和按纽，显示封面。
+　　系统初始化：清除所有数据和资料，校对日期、时间，询问比赛名称、使用单位名称和统计表文件名，为新的联赛统计做好准备。
+　　视窗设置：根据显示器分辨率设置界面图形的大小。
+　　成批输入资料：键入队名、运动员姓名和号码，存入资料表并可进行资料查询和修改。
+　　输入主、客队资料：键入队名、运动员姓名、号码、性别(或从资料表中选取运动队资料)，以及输入比赛轮次、场序、地点等资料，赋给临场统计表。
+　　临场技术统计：在直观图表上，用鼠标单击号码和项目按纽，录入数据，个人、全队相关项目的汇总和显示也在同时自动完成。
+　　录入界面始终处于智能调整状态(动态界面)，即只显示场上运动员、与当前相关的统计栏及按纽，简洁明了(图3)，方便操作。
+
+　　
+图 3　动态输入界面(在两界面之间自动转换)
+　　打印统计表：打印技术统计表、单项技术排名表(图4)、技术分析图表。并可进行份数、表格和中、英文等打印选择参数的设置。
+
+
+图 4　单项技术排名表(部分)模拟图
+　　保存统计表：赛后临场技术统计表存入数据表文件中，以备查询。
+　　浏览数据表文件：查看和打印保存在数据表文件中的技术统计表。
+　　辅助功能设置：根据运动服色彩，设置屏幕显示的运动员号码颜色，便于2人操作(1人观察、口述，1人录入)。
+　　预览统计表：在屏幕上模拟显示技术统计表、单项技术排名表、技术分析图表(图5)，并允许对页面进行调整。
+
+
+图 5　预览技术分析图表
+　　比赛开始、换人：确定上、下场运动员、自动计算上场时间，并能保存和恢复前一次换人环境(图6)。
+
+
+图6　换人对话框
+　　撤销错误数据：单击“撤销”纽，逐级撤消已输入的数据，相关合计同时递减。
+　　放

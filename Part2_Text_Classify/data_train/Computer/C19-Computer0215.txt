@@ -1,0 +1,167 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.4　P.461-467
+
+
+
+
+分布式虚拟环境综述
+潘志庚　姜晓红　张明敏　石教英
+　摘要　在分布式虚拟环境中,位于不同物理位置的多个用户或多个虚拟环境通过网络相互联结,进行信息共享和交互.该文结合作者的研究工作,从分布式虚拟环境的产生、需求和特征、模型和结构以及系统关键技术这几个方面对分布式虚拟环境的研究情况进行综述,讨论了存在的问题和进一步的发展方向.
+　关键词　虚拟现实,分布式虚拟环境,可扩展性,网络通信,虚拟现实建模语言.
+　中图法分类号　TP393
+Distributed Virtual Environment: An Overview
+PAN Zhi-geng　JIANG Xiao-hong　ZHANG Ming-min　SHI Jiao-ying
+（State Key Laboratory of CAD & CG　Zhejiang University　Hangzhou　310027）
+Abstract　　In DVE (distributed virtual environment), multiple users or environments located in different places connect to each other by network. Users can share information and perform interaction. Based on their studies, the authors give an overview of the research work done in the field of DVE in this paper, including its origin, requirements and features, model and architecture, typical systems and key techniques. Finally, some existing problems which need the further study and the further development of DVE are discussed.
+Key words　Virtual reality, distributed virtual environment, scalability, network communication, VRML (virtual reality modeling language).
+　　随着计算机和通信等技术的飞速发展,人类正向高度信息化的社会迈进.目前的研究成果和发展趋势表明,有两项技术将对未来信息社会产生重要影响,并最终改变人类的生活和工作方式,这就是虚拟现实(virtual reality,简称VR,也称为虚拟环境(virtual environment,简称VE)和网络［1］.虚拟环境代表着未来的计算机交互界面.这是一种完全沉浸式的交互界面,用户就好像真的处在计算机生成的世界里,无论是看到的、听到的、还是感受到的,都像是在真实世界里一样,并且用户还可以用完全自然的方式向计算机发出命令.目前，虚拟环境技术已在医学、军事、航空、机器人及制造业、建筑、教育及娱乐等众多领域得到成功的应用.今天,国际互联网Internet将世界上的人紧密地联系在一起,通过网络越过地理上的分隔,人们可以共享资源,互通信息或就特定的问题进行讨论、协作.
+　　分布式虚拟环境(distributed virtual environment,简称DVE)就是把这两项技术结合在一起,在一组以网络互联的计算机上同时运行VE系统的技术.这样,“在网络上漫游”就不再是一个比喻,而是一种真实的生活.人们可以真正“进入”计算机,通过网络到达地球的任何一个角落,甚至是通过想像或者仿真创造出来的那些实际上并不存在的世界,与任何人进行逼真的远程会面,完成协同工作.
+　　DVE的研究开发工作可以追溯到80年代初.近年来,网络技术的飞速发展更进一步地推进了DVE的研究和开发［2］.下面，简要介绍DVE系统的产生和发展过程.
+　　美国国防部是最早支持研究及开发DVE的单位,资助的一个典型项目为SIMNET［3］.该项目的目标是开发一个供军事训练用的、低价格的、联网的分布式军用虚拟环境,该系统的研制成功,为后来DVE的开发奠定了基础.基于这一项研究成果,在SIMNET协议基础上制定了DIS协议,最终成为DVE的一项标准(IEEE 1978).网络游戏是DVE的一个比较成功的应用领域.Gary Tarolli在1984年开发了SGI工作站上的网络飞行模拟演示程序Flight.Doom是另一个成功的网络VR游戏.其他分布式网络VR游戏还有运行在Macintosh机器上的Marathon以及运行在Appletalk上的坦克游戏Bolo等.到了90年代,随着VR设备的发展,DVE才得到较大的发展,出现了一系列工具和应用.
+　　DVE系统应具有以下5个方面的特征［2］：(1) 共享的虚拟工作空间；(2) 伪实体的行为真实感；(3) 支持实时交互,共享时钟；(4) 多个用户以多种方式相互通信；(5) 资源信息共享以及允许用户自然操纵环境中的对象.
+　　 DVE系统有4个基本组成部件：图形显示器、交互控制设备、处理系统和数据网络.DVE系统是分布式系统和VR系统的有机结合,其需求可从以下两个方面来阐述：VR本身需求和分布式系统的需求，见表1.
+Table 1　Requirements of DVE systems
+表1　DVE系统的需求
+
+　　　　　　Requirements of VR①Requirements of distributed systems②
+Rendering in various forms (graphics, audio, text)③Naming service④
+Low latency, high updating rate⑤Service-Request matching⑥
+Capability to process different input devices⑦Resource finding and location⑧
+Collision detection⑨Distributed storage of data⑩
+Navigation and viewpoint controllingDynamic load balancing
+Construction of virtual worldSecurity management
+Management of scene databaseMulticast
+Complex behavior modelingSupport for continuous media
+
+①VR的需求,②分布式系统的需求,③多种形式的绘制(图形、声音、文字等),④命名服务,
+⑤低延迟、高更新速率,⑥需求-服务匹配,⑦处理多种输入设备的能力,⑧资源查找及定位,
+⑨碰撞检测,⑩数据的分布式存储,导航和视点控制,动态负载平衡,虚拟世界构造,
+安全性管理,场景数据库管理,组播通信,复杂行为建模,连续媒体支持.
+1　国内外研究概况及典型系统介绍
+1.1　DVE研究概况
+　　DVE的研究工作主要分为两个方面,即DVE开发工具和DVE系统,有些DVE系统兼有这两方面的功能.在90年代初,研究开发人员陆续推出了多个实验性DVE系统或DVE开发工具.国外的典型例子有美国海军研究院开发的NPSNET［4］、瑞典计算机科学研究所的DIVE［5］、新加坡国立大学的BrickNet/NetEffet［6］、加拿大Albert大学的MR工具库［7］、英国Nottingham大学的AVIARY［8］ 、美国弗吉尼亚大学的DIVER系统［9］以及英国Division公司的dVS软件［10］等.国内关于VR的研究工作也在90年代初开始,在单机上的实时图形生成和绘制算法、碰撞检测及行为构模系统及应用方面均取得了多项有意义的研究结果［11～14］.在DVE研究方面,北京航空航天大学实现了分布式虚拟环境DVENET［15,16］；国防科学技术大学开发了DVE开发工具YHYRP［17］；浙江大学扩展了原有的分布式图形处理环境,从而支持DVE的开发［18］.
+　　随着众多DVE开发工具及其系统的出现,DVE本身的应用也已渗透到各行各业,包括医疗、工程、训练与教学以及协同设计.Arai等人［19］利用多媒体通信建立了一个应用于神经外科的DVE系统,进行外科手术的辅助规划和分析.Maxield等人［20］实现了面向并行工程的DVE系统,支持建模、装配以及计算机辅助工程分析.美国西南路易斯安娜大学开发了用于远程机器人控制的DVE系统［21］.仿真训练和教学训练是DVE的又一个重要应用领域,包括虚拟战场［4,15］、辅助教学等.另外,研究人员还用DVE系统来支持协同设计工作［22］.
+　　近年来,随着Internet应用的普及,出现了一些面向Internet的DVE应用,从而使得位于世界各地的多个用户可以进行协同工作［22～24］.
+1.2　典型工具或系统介绍
+　　dVS［10］是第一个运行在分布式环境下的虚拟现实系统商用产品,由Division公司开发.1999年,在CAD领域以ProEngineer著称的PTC公司并购了Division公司,并推出了CAD/VR综合性工程可视化产品Division2000i.这个软件能支持CAVE和Immersive Desktop这样的虚拟现实平台,并包含一个在互联网上进行分布式虚拟建模的模块.MR［7］是加拿大Alberta大学开发的VR应用工具箱.它是一个支持虚拟环境开发的子程序库.MR还支持分布式用户界面、数据共享、多种交互技术和实时性能分析等.该工具箱可用SGI和DEC等多种工作站上的C语言直接调用.DIVE［5］是瑞典计算机研究所分布式系统实验室在1993年开发成功的一个实验性软件平台,用于支持多用户虚拟现实应用的开发.NPSNET［4］由美国海军研究生院(NPS)计算机系开发,它是第一个遵从IEEE 1278分布式交互仿真(DIS)应用协议和IP多点发送网络协议的3D虚拟环境,可用来在Internet上进行多用户仿真.AVIARY［8 ］是一个分布式面向对象的VR系统,它支持多个用户、虚拟世界和应用系统.AVIARY由英国Nottingham大学先进界面研究组(AIG)开发,它允许计算工作在异构的工作站网络上进行分布.DVENET［15］是北京航空航天大学开发的DVE基础信息平台,它主要包含了一个专用计算机网络以及支持DVE研究与应用开发的各种标准和工具,该单位研究人员应用DVENET还实现了一个分布式虚拟战场环境.表2对典型系统的特征进行了比较.
+Table 2　Compare of distribution features in typical DVE systems
+表2　典型DVE系统的分布特征比较
+
+Systems①dVSMRDIVENPSNETAVIARYDVENET
+Sharing model②Shared DB③Shared DS④Shared DBDIS⑤Object
+oriented⑥DIS
+Replication⑦Partial⑧2 copies⑨WholeWholeWholeWhole
+Communication
+schemeC/SMaster/Slave
+and
+Peer-to-PeerPeer-to-PeerPeer-to-PeerPeer-to-Peer
+and message
+passingC/S and
+broadcast
+Distributed
+computation14No supportsupportNo supportNo supportSupportSupport
+Parallel
+granularityCoarseCoarseCoarseCoarseFineCoarse
+Parallel unitProcessProcessProcessPlayerObjectObject
+Load
+balancingNo supportNo supportNo supportNo supportSupportN/A
+Network
+environmenHetero－
+geneousHetero－
+geneousHetero－
+geneousHetero－
+geneousHetero－
+geneousHetero－
+geneous
+
+①系统,②模型表示,③共享数据库,④共享数据结构,⑤分布式仿真,⑥面向对象,⑦备份,⑧部分,⑨2个拷贝,全部,通信结构,eer-to-peer和消息传送,C/S和广播,分布式计算,不支持,支持,并行粒度,粗,细,并行单位,进程,对象,负载平衡,网络环境,异构.
+2　DVE系统的模型和结构
+2.1　数据模型
+　　DVE系统的数据模型分为集中式结构和复制式结构两大类.集中式结构的一个优点是结构简单,另外，由于同步操作只在中心服务器上完成,因而实现比较容易.集中式结构的缺点是，由于输入和输出都要广播给其他所有工作站,这样，对网络通信带宽就有较高的要求.所有的活动都要通过中心服务器来协调,这样，当参加者人数较多时,中心服务器往往会成为整个系统的瓶颈.另外,由于整个系统对网络延迟十分敏感,并且高度依赖于中心服务器,因而这种结构的系统坚固性(robustness)就不如复制式结构.
+　　复制式结构的优点是，所需网络带宽较小，并且，由于每个参加者只与应用系统的局部备份进行交互,交互式响应效果好.在局部主机上生成输出简化了异种机环境中的操作,复制应用系统依然是单线程,必要时把自己的状态多点广播给其他用户.复制式结构的缺点是：它比集中式结构复杂,在维护共享应用系统的多个备份时的信息或状态一致性方面比较困难.需要有控制机制来保证每个用户得到相同的输入事件序列.
+2.2　DVE计算模型
+2.2.1 DS模型
+　　DS模型(decoupled simulation model,即分解的仿真模型)是一种常用的DVE系统模型.在这个模型中,把仿真操作和用户的交互操作当成是独立的异步操作,这就为具体的系统实现带来了方便.在DS模型中,有4个组件,即交互进程、展示进程、计算进程和几何模型管理进程.交互进程对用户的所有输入动作进行监控,并把所产生的事件分发给相应的进程.展示进程负责把所生成的环境展示给用户.计算进程负责完成所有非图形类计算操作.几何模型管理进程负责对虚拟环境中的所有几何场景进行管理.
+　　在把VR系统中的操作进行如上所述的分类以后,由于各个进程相对独立,它们通过消息进行协作,这样就为分布式环境下的实现提供了方便.加拿大Albert大学的MR系统就是基于这种模型实现的.图1是基于这种模型的一种软件结构.
+
+Fig.1 VR system software architecture based on DS model
+图1　基于DS模型的虚拟现实系统软件结构
+2.2.2 MPSC模型
+　　MPSC(modifier-presenter-sensor-controller)模型是另一种计算模型.它把整个问题分为4个域(如图2所示),每个域对应于一种功能.这4个域是修改器、展示器、感知器和控制器.可把展示器域和感知器域当成是VR系统实现的前端,与特定的用户相关,并把控制器和修改器看成是VR系统实现的后端.每个域都有自己的地址空间,域间通信由相应的联结网络来完成.前端和后端以不对称方式耦合.每个展示器域包含特定虚拟环境中的所有可展示对象,逻辑结构和对应的修改算法包含在位于后端的控制器域和修改器域中. 
+
+Fig.2 Modifier-Presentation-sensor-Controller-model
+图2　MPSC域分解模型
+　　这种计算域分解模型可满足以下几种需求.(a) 把分布式计算环境中的资源划分为不同的自然计算域,每个计算域有明确的分工.这种划分为虚拟环境的分布和并行处理提供了依据.(b) 它适用于多种硬件平台.(c) 对虚拟环境中对象的造型和实现方法没有限制.
+3　DVE系统的关键技术及需要进一步研究的问题
+　　DVE系统或工具的开发涉及多个领域,包括网络协议的设计和实现、分布式系统、实时图形绘制技术、异步系统设计、数据库开发以及用户界面设计等,并且DVE系统本身带来的问题也需要开发人员解决,它们是分布式信息一致性的管理、实时交互性的保证、有限带宽、处理能力和绘制资源的竞争等.
+3.1　DVE关键技术
+　　(1) 规模可扩展、功能可扩充、异构型DVE的软件结构
+　　要解决的问题包括：(a) 有效的虚拟空间管理和划分算法［25］；(b) 负载平衡算法和动态共享状态的维持方法；(c) 高效的资源定位和服务匹配算法；(d) 多平台、多应用、多个虚拟世界的协同工作技术.同时使用行为预测技术、改进的DR(dead reckoning)算法、有效的负载平衡调度算法来支持系统的规模可扩充性；开发多种通信协议(联结管理、导航控制、仿真、交互协议、场景管理等),从而保证在分布式虚拟环境中进行有效的信息交换,增加实时交互性.使用面向对象的设计方法、Plug-in机制和Java/VRML［26］语言等方法或手段,来增加系统的模块性、可扩展性和适应性,得到动态可扩充的系统环境［27］.
+　　(2) 自然的人-机、人-人交互技术
+　　VR系统的特征一个是“沉浸性”,另一个是交互的自然性.传统的交互技术已不能满足要求.这里必须使用多通道用户交互技术,包括自然语言、手势、头部运动等.在DVE中,除了一般图形系统的人-机交互之外,还有人-人交互,并且要求是同步交互［28］.实时同步的协同工作对DVE提出了更高的要求.同步交互涉及的问题包括同步交互请求和同步交互检测等.它是充分利用CSCW中的一些成果,把DVE与CSCW进行结合,形成一个分布式协同虚拟环境.
+　　(3) 网络通信和网络协议
+　　与DVE系统的高交互性和实时性相比,网络通信的带宽、延时就成为DVE系统的主要限制.DVE要支持快速实时的网络通信,主要有两方面的问题.一方面是当DVE的规模变大时,多个VE之间的通信量会激增.在DVE中，大量分布于不同地点的计算机通过网络连接在一起,要使各工作站保持连续状态是DVE颇具挑战性的课题之一.另一方面是几何模型数据的实时传输问题.这里可应用的技术包括多分辨率模型传输、几何数据快速缓存及预取.另外,一些传统的网络协议并不能满足DVE的需求,必须研究新的面向DVE的网络协议.现有的一个典型例子是虚拟现实传输协议(virtual reality transport protocols，简称VRTP).
+　　(4) 快速环境建模和实时图形绘制
+　　VE的快速建模问题也是一项关键技术,传统的基于几何的建模方法有其固有的缺点(速度慢,真实感差),现在，基于图像和几何的混合造型方法已得到较为广泛的使用.另外一个重要问题是DVE空间信息的有效组织与展示.在构造过程中需要了解对应于不同个体和任务的信息的不同视点,同时需要建立通过多个视点显示大量信息的机制.实时图形绘制是VR的又一项关键技术(用于满足用户在虚拟环境中的“沉浸感”),在DVE中，这个问题变得更复杂.可以考虑使用限时计算、多细节层次模型［14］、智能化视区裁剪、场景预处理［10］、基于图像的绘制［12］等技术,来保证图形的实时绘制.
+3.2　需进一步研究的问题
+3.2.1 异构性
+　　分布式环境决定了系统必须支持异构性.DVE系统中的多个用户所用的计算机、软件环境、交互手段不尽相同.另外,用于连接整个环境的网络也可能有多种.然而现有的大多数系统所支持的计算机种类是有限的.
+3.2.2 规模可扩充性
+　　“规模可扩充性”意味着一个系统在其用户逐渐增加时,不必对系统作重大修改就可依然保持其运行效率.阻碍规模可扩充性的两个主要因素是带宽瓶颈和计算瓶颈.只有很少的系统考虑了这个问题,例如，NPSNET-IV采用空间逻辑划分以及Mbone网络支持的Multicast通信来降低网络传输信息量,同时还利用Dead Reckoning算法来降低网络延迟［5］.我们通过研究发现,在NPSNET-IV中,空间逻辑划分的基本单元(六边形区域)不够灵活.若要有效地降低通信量,必须综合利用多种技术,包括视区裁剪、多分辨率模型、运动预测技术等.
+3.2.3 动态可扩展性
+　　DVE通常由分布很广的多个相连的计算机组成,用户的资源和运行环境可能经常发生变化,这就要求系统能够动态地调整自己的功能,而不必改变系统本身.另外,系统应能提供服务-资源的匹配机制,但现有系统很少考虑用户的动态注册、资源定位和任务-资源匹配问题. 
+3.2.4 行为真实感
+　　由于受现有计算能力和网络通信能力的影响,使得很多现有DVE中的场景相对简单,给用户的真实感不强.另外,现有的大多数系统仅支持简单的行为建模,从而也对真实感产生影响,虚拟环境软件结构既要支持实时交互性,又要针对不同的行为特性支持足够的行为真实感.
+3.2.5 安全性
+　　安全性设施能够用于证实在特定访问限制条件下是否允许所请求的动作,或用于确认系统中代表人的对象或一般对象的身份.目前所有系统都不提供安全性控制服务［2］.
+4　结束语
+　　由于DVE系统涉及到多方面的知识并使用多种不同的技术,必须把多种传统类型的软件集成到单个应用系统中.DVE既是一个分布式系统,又是一个图形应用系统,还是一个交互式应用系统.要开发一个成功的DVE，系统需要考虑多种因素：有限的网络带宽、异构性(硬件异构、软件异构、网络异构)、分布交互性、失败管理、规模可扩展性、可扩充性及可配置性.DVE的进一步发展方向包括：
+　　(1) 支持协同工作.位于不同虚拟环境中的用户进行协同设计、协同医疗会议、协同可视化,形成协同虚拟环境(cooperative virtual environment,简称CVE),目前在这方面已有不少研究成果.
+　　(2) 使用Internet网和ATM网.对于基于Internet的广域网环境来说,把几何场景数据库分布存储,仅传送一些变化的动作(如场景中的几何对象的移动)可大大节省传送量,基于神经网和模糊逻辑的预测技术也可以用在这一方面.对于局域网环境而言,使用快速ATM网也是一个有效办法.目前我们正在使用ATM网构筑一个支持CAVE的DVE.
+　　(3) 使用限时计算技术保证实时响应.实时响应是DVE中的一个重要问题,除了一般VR系统中的绘制延迟、输入输出等延迟以外,还有网络延迟.可以应用限时计算技术来满足实时交互性.
+　　(4) DVE中几何模型数据的管理.在这个方面已有一些研究成果,例如，可以使用几何压缩和累进传送等方法来减少几何模型的传输量.
+　　(5) 把三维真实感声音集成到DVE中,从而增加环境的沉浸感,用户可以感受到真实感声音,以判断场景中对象的位置.
+　　(6) 把人工智能技术引入到DVE系统中.在有些分布式虚拟环境中,有多个代表用户的伪实体,它们相互交互,具有行为特征,在这样的环境中,有的还有虚拟生物,这些都要引入人工智能的神经网络、模糊逻辑、智能agent等技术.
+
+致谢 感谢审稿人对本文提出的建设性修改意见.另外，在“分布式虚拟环境”课题组中参加相关工作的还有博士生杨孟洲、杨建和蒋纯以及硕士生章昊翰，在此一并表示感谢.
+潘志庚（浙江大学CAD&CG国家重点实验室　杭州　310027）　
+姜晓红（浙江大学CAD&CG国家重点实验室　杭州　310027）　
+张明敏（浙江大学CAD&CG国家重点实验室　杭州　310027）　
+石教英（浙江大学CAD&CG国家重点实验室　杭州　310027）
+参考文献
+1，Stytz M. Distributed virtual environments. IEEE Computer Graphics and Application, 1996,16(3):19～31
+2，Snowdon S, Greenhalgh C et al. A review of distributed architecture for networked VR. VR: Research, Development and Application, 1996,2(1):155～175
+3，Locke J. An introduction to the Internet networking environment and SIMNET/DIS. Technical Report, Naval Postgraduate School, 1993
+4，Macedonia M R, Zyda M J. NPSNET： a network software architecture for large scale VE. Presence, 1994,3(4):265～287
+5，Gagsand O. Interactive multi-user VEs in the DVE system. IEEE Multimedia, 1996,3(1):30～39
+6，Singh G, Serra L. BrickNet: a software toolkit for network based virtual worlds. Presence, 1994,3(1):19～34
+7，Green M, Shaw C. Minimal reality toolkit. Technical Report, University of Alberta, 1993
+8，Snowdon D N, West A J. AVIARY: design issues for future large-scale VE. Presence, 1994,3(4):288～308
+9，Gossweiler R, Chris Long, Shuichi Koga et al. DIVER: a distributed virtual environment research platform. In: Van Dam ed. Proceedings of the IEEE Symposium on Research Frontiers in VR. Las Alamitos, CA: IEEE Computer Society Press, 1993. 10～15
+10，Division Ltd. dVS Technical Overview. 1993, http://www.ptc.com/products/division/index.htm 
+11，Wang Yi-gang, Bao Hu-jun, Peng Qun-sheng. Accelerated walkthroughs of VE based on visibility preprocessing and simplification. Computer Graphics Forum, 1998,17(3):187～194
+12，Cai Yong, Liu Xue-hui, Wu En-hua. A virtual reality system based on IBR. Journal of Software, 1997,8(10):721～728
+(蔡勇,刘学慧,吴恩华.基于图像绘制的虚拟现实系统环境.软件学报,1997,8(10):721～728)
+13，Wang Zhao-qi, Zhao Qin-ping, Wang Cheng-wei. Object oriented collision detection and its application in DVE. Chinese Journal of Computers, 1998,21(11):990～994
+(王兆其,赵沁平,汪成为.面向对象碰撞检测方法及其在分布式环境中的应用.计算机学报,1998,21(11):990～994)
+14，Li Jie, Tang Ze-sheng. Real-Time multi-resolution rendering of 3D complex models. Chinese Journal of Computers, 1998,21(6):481～491
+(李捷,唐泽圣.三维复杂模型的实时连续多分辨率绘制.计算机学报,1998,21(6):481～491)
+15，Zhao Qin-ping, Shen Xu-kun, Xia Chun-he et al. DVENET: a distributed virtual environment. Computer Research and Development, 1998,35(12):1064～1068
+(赵沁平,沈旭昆,夏春和等.DVENET:一个分布式虚拟环境.计算机研究与发展,1998,35(12):1064～1068)
+16，He Hong－mei, Wang Zhao－qi, Chen Xiao－wu. The application program framework of DVENET and its application. Computer Research and Development, 1998,35(12):1069～1072
+(何红梅,王兆其,陈小武.DVENET应用程序框架的设计与实现.计算机研究与发展,1998,35(12):1069～1072)
+17，Wang Yong－jun. Behavior modeling, system architecture and implementation in distributed virtual environment［ph.D.Thesis］. University of Defense Science and Technology, 1998
+(王勇军.分布式虚拟环境的建模语言、系统结构及其实现[博士学位论文].国防科技大学,1998)
+18，Pan Zhi－geng, Shi Jiao－ying, Zhang Ming－min. Distributed graphics support for virtual environment. Computers and Graphics, 1996,20(2):191～197
+19，Arai F, Tanimoto M, Fukuda T et al. DVE for intravascular tele-surgery using multimedia telecommunication. In: Nadine Miner ed. Proceedings of the IEEE VRAIS'96. Las Alamitos, CA: IEEE Computer Society Press, 1996. 76～85
+20，Maxfield J, Fernando T, Dew P. A DVE for concurrent engineering. In: Hannaford B ed. Proceedings of the IEEE VRAIS'95. Las Alamitos, CA: IEEE Computer Society Press, 1995. 162～170
+21，Matijaseric M. A networked VE for mobile robotics approaches. Technical Report, University of Southwestern Louisiana, USA, 1999
+22，Benford S, Bowers J, Fahlen L E et al. Networked VR and cooperative work. Presence, 1995,4(4):304～386
+23，Vince J, Earnchaw R. Virtual Worlds on the Internet. Las Alamitos, CA: IEEE Computer Society Press, 1998
+24，Broll W. Distributed virtual reality for everyone――a framework for networked VR on the Internet. In: Hodges L, Green M eds. Proceedings of the IEEE VRAIS. Las Alamitos, CA: IEEE Computer Society Press, 1997. 121～128
+25，Greenhalgh C, Benford S et al. MASSIVE: a distributed VR system incorporation spatial trading. In: Eavanaugh M E ed. Proceedings of the DCS'95. Las Alamitos, CA: IEEE Computer Society Press, 1995. 27～34
+26，Bell G, Carey R. The VRML 2.0 Specification. 1996, http://vag.vrml.org/vrml2.0
+27，Watsen K, Zyda M. Bamboo――a portable system for dynamically extensible, real-time, networked, virtual environments. In: Sipple R S ed. Proceedings of the IEEE VRAIS'98. Las Alamitos, CA: IEEE Computer Society Press, 1998. 252～259
+28，Yuan Xiao－jun, Ren Ji－cheng, Li hua et al. Hot topics in the study of distributed virtual environments. In: Lin Zong－kai ed. Proceedings of the 10th National Conference on CAD & CG. Guilin, 1998. 174～181
+(袁晓君,任继成,李华等.分布式虚拟环境的若干应用及热点问题研究.见：林宗楷编.全国第10届CAD和图形学会议论文集.桂林,1998.174～181)

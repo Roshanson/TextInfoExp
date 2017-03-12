@@ -1,0 +1,145 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+线性对象的正实控制问题1）
+郭雷　忻欣　冯纯伯
+摘　要　在时域中考虑线性对象的正实控制(PRC)问题.对于一般的广义对象，在状态空间中提出了一个基于线性矩阵不等式(LMI)的统一处理PRC问题的方法，指出PRC问题可解的充分必要条件是与系统的实现有关的三个LMI可解，并可利用LMI的解构造出所有的正则PR控制器.此外还提出了降价PR控制器的存在条件并讨论了可行的综合方法.
+关键词　线性系统，正实性，线性矩阵不等式，降价控制器.
+THE POSITIVE REAL CONTROL PROBLEM FOR
+GENERALIZED LINEAR PLANTS
+GUO LEI　　XIN XIN　　FENG CHUNBO
+(Research Institute of Automation,Southeast University, Nanjing　210018)
+Abstract　This paper considers the positive real control(PRC) problem for generalized linear plants without any additional assumptions.A unified linear matrix inequality(LMI) based approach to PRC problems in proposed.It is shown that this problem is solvable if and only if three LMIs have positive definite solutions.All desired PR controllers can be parameterized via the solutions of LMIs.Moreover,an existence condition and design method of low-order positive real controllers are obtained based on the above LMI approach.
+Key words　Positive realness,linear system,matrix inequality,reduced-order controller.
+1　引言
+　　考虑如下的线性系统Σ：
+
+其中　D为方阵，传递函数为G(s)=D+C(sI-A)-1B.
+　　若G(s)在Re(s)≥0上解析且满足则称G(s)为严正实的；若还有G(j∞)+GT(-j∞)>0,则称G(s)为扩展严正实的(extended strictly positive real，简记为ESPR).
+　　正实性在系统的稳定性，耗散性，鲁棒性和非线性控制研究中具有重要意义［1，2］.所谓正实控制(PRC)问题是指［2］：对于一个给定的对象ΣG，构造内稳控制器ΣC使闭环系统Σcl为ESPR.这样的ΣC称为PR控制器，这里ΣG,ΣC与Σcl分别用(1―3)式表示
+
+(1)
+其中　x∈Rn,w∈Rm1,u∈Rm2,y∈Rp2,z1∈Rp1(p1=m1)分别表示状态，外部输入，控制，量测和被控向量.
+　　ΣC为nc阶动态输出反馈控制器，其动态方程为
+
+(2)
+闭环系统为Σcl
+
+(3)
+其中
+
+(4)
+
+(5)
+　　PRC问题在频域中已得到一些研究，但正实性的频域检验往往计算量较大，因而在时域中讨论PRC问题的状态空间解，成为最近的一个研究热点［2―6］.鉴于正实性与有界实性的关系，文献［3］运用Cayley交换将PRC问题转化为H∞问题，其结果依赖于H∞问题的解.随着H∞理论的进展，可以仿文献［3］的方法利用H∞的结果来处理PRC问题，但同时也会带来计算复杂等问题.文献［4―6］直接考虑PRC问题，仅限于对特殊对象讨论状态反馈或静态输出反馈问题.最近，文献［2］较为深入地研究了PRC问题：先考虑严正则控制器，在此基础上提出了存在正则动态输出反馈PR控制器的充分必要条件，并给出一个正则PR控制器的综合方法，它依赖于两个代数Riccati方程(ARE)的镇定解，控制器阶次等于n.但文献［2］的正则PR控制器解要求∑G满足以下假设：A1)　(A，B2,C2)可镇定可检测；
+
+这里，A1)是存在镇定闭环系统的控制器的必要条件，但A2)，A3)却不是必需的.
+　　本文采用代数方法研究PRC问题，该法已经在许多线性控制问题中得到应用［7―10］.指出一般的PRC问题可归结为线性矩阵不等式(LMI)的可解性，且PR控制器的构造依赖于LMI的解，而LMI目前已有良好的内点算法可以求解［7］.本文的工作具有以下特点：第一，考虑最一般的对象，不需要A2)，A3)的假设，得到了正则PR控制器存在的充分必要条件；第二，给出了所有正则PR控制器的综合方法；并在以上工作的基础上，研究了降阶PR控制器的存在性和设计方法.
+2　可解判据
+　　下面是Kalman-Yacubovich-Popov正实性引理的一个变形［1，2，5］.
+　　引理1.下列叙述是等价的：
+　　(i)系统Σ是ESPR的，且A稳定；
+　　(ii)存在P>0满足
+
+(6)
+　　在Σcl应用引理1，并将(3)，(4)式代入(6)式，注意到(4)式对G的线性性质，可知对于Σcl,(6)式等价于
+
+(7)
+其中
+
+　　设　有意义，令
+
+
+(8)
+利用Schur准则可证(7)式等价于
+BGC+(BGC)T+Ω<0.
+(9)
+下面是关于LMI的一个代数性质.
+　　引理2［7，8］.设B,C,Ω已知，且B不行满秩，C不列满秩，则关于G的LMI(9)式有解的充分必要条件是
+
+其中　
+　　定义两个LMI的解集合
+
+　　若用分别代替A，B1,B2,C1,C2,D12,D21,D11，则相应地记上面的集合为
+　　定理1.下列叙述是等价的：
+　　(i)存在正则PR控制器；
+　　(ii)LD≠0；　其中
+
+这时，PR控制器的阶次nc=rankX-Y-1.
+　　证明.第一步，由引理1，2及(9)，(10)式知PRC问题可解当且仅当
+
+其中B，C，Ω如(8)式定义.故
+
+0)/(I.
+将B⊥,CT⊥代入，并令则有
+
+因而，PRC问题可解等价于存在P使
+　　第二步，设(i)成立，将P相应于A适当分块，使X与A的维数相同，记
+
+(10)
+其中　P22>0.这时
+
+(11)
+又由(5)式
+
+再将(4)，(10)，(11)式代入中的不等式，化简可得
+
+从而得存在存在X∈LB.同理有存在存在Y∈LC.
+　　又注意到(10)式中，因此若(ii)成立，则可按(10)，(11)式构造P(若X-Y-1=0，则令P=X)，则故结合(4)，(5)式知控制器阶次等于P22的维数，即rank(X-Y-1).证毕.
+　　注1.比较文献［8，9］关于H∞问题的研究，定理1的方法更为直接，它避开了对静态反馈情形的单独论述.这个定理揭示了PRC问题可解的充分必要条件，指出存在正则的固定价PR控制器当且仅当三个LMI可解且满足一个秩条件.
+　　注2.联系引理2与文献［8］定理1可知它实际上给出了所有PR控制器的构造.即每一个PR控制器都与一个按(10)，(11)式定义的P对应.
+　　注3.综合方法分两步：1)先求(X，Y)∈LD，然后按(10)式求P；2)得到B，C，Ω后，求解LMI(9)得到G，或适当选择参数后直接代入文献［8］中的ggen(B,C,Ω).
+3　结果比较
+　　文献［2］在假设A2)，A3)下，把正则PR控制器的存在性归结为涉及一个耦合条件的两个ARE的可解性，下面简述定理1与文献［2］主要结果的关系：
+　　当时，有
+
+(12)
+且
+
+(13)
+其中上标“+”表示广义逆.又注意到此时有
+
+(14)
+代入LB，Lc，并设
+
+(15)
+应用Schur准则，并利用(12)，(13)，(14)式可得如下两个代数Riccati不等式(ARI)
+
+(16)
+其中
+
+又等价于ρ(XY)≤1，故可得
+　　定理2.假设A2)成立，则PRC问题可解(存在正则PR控制器)的充分必要条件是：(i)(15)式成立；(ii)存在X>0,Y>0满足(16)式，且ρ(XY)≤1.
+　　与文献［2］的结果相比，定理2的优点在于：它不需条件A3).容易说明当A3)也成立时，定理2等价于文献［2］的下列主要结果，证明从略.
+　　推论.假设A2)，A3)成立，则PRC问题存在正则PR控制器的充分必要条件是：(i)(15)式成立；(ii)下列Riccati方程存在镇定解X≥0，Y≥0，且ρ(XY)≤1.
+
+4　降阶PR控制器
+　　由于rank(X-Y-1)≤n，因而由定理1知控制器阶次不超过n.本节讨论何时能得到阶次低于n的PR控制器.在定理1的基础上，对对象施以若干代数变换，则可以得到降阶的PR控制器的存在条件和设计方法.
+　　定理3.对(1)式，下列叙述等价
+　　(i)存在正则PR控制器；
+　　(ii)存在nc阶正则PR控制器，其中
+
+　　利用此定理可以直接推出有关状态反馈，全信息反馈的结果.重要的是还可由此得到降阶PR控制器的一个设计方法，该法仅涉及LMI的解法和系统等价变换.定理的证明和设计的详细步骤参阅文献［10］关于降阶H∞控制器的研究，此处从略.
+5　结束语
+　　本文考虑最一般的线性对象的正实控制(PRC)问题.对于一般的广义对象，基于LMI给出了动态输出反馈情形下PRC问题可解的充分必要条件，指出可利用LMI的解构造出所有的正则PR控制器，并将结果与文献［2］做了比较，表明本文的工作推广了文献［2］的结果.此外还得到了降阶PR控制器的存在准则，联系文献［10］关于H∞控制的结果可以得到可行的综合方法，该法仅涉及LMI的解法和系统等价交换.限于篇幅，本文未给出设计步骤，但具体的处理过程和LMI的求解方法可在文献［7―10］中找到.本文的方法还可推广到离散系统的PRC问题以及鲁棒PRC问题.
+1)　国家自然科学基金和国家教委留学回国人员专项基金资助课题.
+作者简介：
+　　郭　雷　1997年获东南大学博士学位，现在东南大学电子学与通信博士后流动站工作.目前主要研究方向是鲁棒控制，H∞控制和非线性系统理论与应用.
+　　忻　欣　1993年获东南大学博士学位.1993―1995年在东南大学从事博士后研究工作.目前主要研究方向是H∞控制理论及应用，鲁棒控制，非线性控制.
+　　冯纯伯　1928年生.毕业于浙江大学电机系.获前苏联技术科学副博士学位.现为中国科学院院士，俄罗斯联邦自然科学院外籍院士，东南大学教授.目前主要从事系统建模，鲁棒控制，自适应控制及智能控制理论及应用方面的研究.
+作者单位：东南大学自动化所　南京　210018
+参考文献
+　[1］　Anderson B D O,Vongpanitlerd S.Network analysis and synthesis:a modern systems theory approach.Englewood Cliffs,NJ:Prentice-Hall,1973.
+　[2]　Sun W,Khargonekar P P,Shim D.Solution to the positive real control problem for linear time-invariant systems.IEEE Trans.Automat.Contr.1994,39(10):2034―2046.
+　[3]　Safanov M G,Jonckheere E A,Verma M,Limebeer D J N.Synthesis of positive real multivariable feedack systems.Int.J.Contr.1987,45:817―842.
+　[4]　Haddad W M,Bernstein D S.Robust stabilization with povitive real uncertainty:Beyond the small gain theorem.Syst.Contr.Lett.1991,17(3):191―208.
+　[5]　Weiss H,Wang Q,Speyer J L.System characterization of positive real conditions.IEEE.Trans.Automat.Contr.1994,39(3):540―544.
+　[6]　Chen P,Cheng D,Qin H.A necessary and sufficient condition for feedback strictly positive real output.Control Theory and Applications.1994.11(1):64―68.
+　[7]　Boyd S et al.Linear matrix inequalities in system and control theory.SIAM Studies in Applied Mathematics.1994,15:1―80.
+　[8]　Iwasaki T,Skelton R E.All controllers for the general H∞ control problem:LMI existence conditions and state space formulas.Automatica.1994,30:1307―1317.
+　[9]　Gahinet P,Apkarian P.An LMI-based parameterization of all H∞ controllers with applications.In:Proc.of the 32nd CDC,San Antonio,Texas,1993,656―661.
+　[10]　郭　雷，忻　欣，冯纯伯.基于线性矩阵不等式的奇异H∞控制问题的降阶控制器.控制理论与应用.1996，13(6)：622―630.
+收稿日期　1996-10-30

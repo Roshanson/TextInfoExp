@@ -1,0 +1,89 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.324-331
+
+
+
+柔性机械臂动力学奇异性
+渐近行为的比较研究
+郭雪梅　王国利　张宪民
+摘　要　通过对柔性机械臂动力学系统的零极点及其模态参量渐近行为的解析分析，讨论了模态截取和零点截取有限维近似模型动力学奇异性关于阶次的渐近行为，并进行了比较研究.此外，还就截取模型的高阶项对逆动力学计算力矩病态行为的影响进行了数值比较分析.
+关键词　柔性机械臂，动力学奇异性，逆动力学.
+ASYMPTOTIC BEHAVIOR OF DYNAMIC SINGULARITY OF
+FLEXIBLE MANIPULATORS:A COMPARATIVE STUDY
+GUO Xuemei　WANG Guoli　ZHANG Xianmin
+(Engineering College,Shantou University,Shantou　515063)
+Abstract　　Based on analytical analysis for the asymptotic expressions of the poles, zeros and modal parameters of a flexible manipulator, the asymptotic behavior of the dynamic singularity is discussed analytically for both zero-truncated and modal truncated approximation models, and the comparison is carried out as well. An numerically comparative study for the inverse dynamics is made to illustrate the effects of high order terms of the truncated models on the ill-posed behavior of the calculated torque. 
+Key words　Flexible manipulator, dynamic singularity, inverse dynamics.
+1　引言
+　　非并置控制方式下柔性机械臂动力学是奇异的，采用前馈控制策略［1］和反馈控制策略［2］时，动力学奇异性都会导致控制力矩异常饱和，引发带宽受限问题，这将限制柔性机械臂高速运动控制的实现.文［3］的研究结果表明，柔性机械臂动力学奇异性会导致逆系统的频域响应在高频程趋于病态，末端运动轨迹中含有的高频成分将激励起逆动力学的病态行为，由此得到的计算力矩将含有病态高频成分，计算力矩中出现的局部高频脉冲尖峰将使驱动器饱和.本文将进一步考察柔性机械臂动力学奇异性关于阶次的渐近行为，这对改善控制带宽受限的研究具有重要的理论指导意义.
+　　柔性机械臂逆动力学的动态特性直接依赖于动力学系统的零点分布.常规模态截取有限维近似模型的零点分布，特别是高阶复零点的出现，与无穷维模型的理想零点分布有较大的误差.因此，开展模态截取与零点截取有限维近似模型的动力学奇异性比较研究，对探索基于零点截取近似模型求解逆动力学是十必要的.本文将基于零极点及模态参量渐近行为的解析分析，定量地考察模态截取与零点截取近似模型动力学奇异性的渐进行为，并通过实例分析比较高阶零点和高阶模态对逆动力学计算力矩病态行为的影响.
+2　有限维近似动力学模型
+　　考虑图1所示的平面单连杆柔性机械臂，连杆为一弹性变形仅限于平面内的均匀梁，其长为l，线密度为ρ，E为杨氏模量，I为截面转动惯量.连杆末端连接着质量为Mt的质点型负载，另一端紧固在旋转惯量为Jh的法兰盘上.采用连杆的纯位移来描述连杆的刚性运动与弹性变形的复合结果，即
+
+
+图1　平面单连杆弹性机械臂的俯视结构
+z(t,x)=xθ(t)+w(t,x)，　　　(1)
+其中θ(t)为关节旋转角，w(t,x)为连杆在旋转坐标系oxy中的变形.忽略连杆剪切弹性和截面旋转惯性对弹性变形的影响，以及连杆材料的结构阻尼，根据Euler-Bernoulli梁理论，可得下述运动方程
+
+边界条件为
+
+其中τ为驱动器作用力矩,此处及后文使用的微分符号诠释为
+2.1　零点截取有限维近似模型
+　　将驱动力矩τ(t)作为控制输入，末端位移z(t,l)作为输出，对式(2a)～(2d)作Laplace变换，可得到控制系统如下封闭形式的传递函数
+　　　　(3)
+其中
+
+利用Mittag-Leffler定律［4］可得到无穷乘积展开形式的传递函数
+
+其中为系统关于o的极转动惯量，p2n=4b4nEI(l4ρ)-1，bn＞0满足方程
+tanhbn=-tanbn,　0＜b1＜b2＜…＜bn＜…＜∞,　　　　(5)
+λn=d4nEI(l4ρ)-1，dn为本征方程Q(dn)=0的解，且0＜d1＜…＜dn＜…＜∞.保留式(4)中的N阶部分乘积项，得到G(s)的第N阶零点截取有限维近似模型
+(6)
+观察式(6)可知，GNZ(s)保持了G(s)的前N对主导零点，这些实零点正是柔性机械臂作为耗散结构所具有的能量非传播特征［5］.
+2.2　模态截取有限维近似模型
+　　将运动方程(2a)～(2d)等价地表示成Hilbert空间W上的抽象发展方程
+　　　　(7)
+上式中Ω=［0，0，J-1n］T;u(t)=［z(t,x),z(t,l),θ(t)］T∈W,W=L2(0,l)×R2;嵌入内积为
+
+A为弹性算子，定义为
+
+定义域
+
+为H中的稠密子空间，Hm(0,l)为(0,l)上的m阶Sobolev空间；A为W上具有纯点谱的闭算子［6］，｛λn｝∞n=0为A的本征值;规范正交本征向量形成W的完备正交基;u(t)在W上按模态可展成对每个n≥0,un满足方程
+　　　　(8)
+对式(8)作Laplace变换，得到从力矩τ(t)到末端位移z(t,l)的传递函数
+　　　　(9)
+保留式(9)中的前N+1项，得到G(s)的第N阶模态截取有限维近似模型
+　　　　(10)
+对比式(6)，可将式(10)进一步写成乘积展开形式
+(11)
+从模态截取和零点截取方式知道，｛,-｝Nn=1由模态参数集｛φn,φn,λn｝Nn=1确定，与阶次N相关，而｛pn,-pn｝Nn=1与模态参数和阶次N均无关.对于较大的n,，将成为复数，与pn的物理意义向背.为了保留近似动力学模型零点的物理意义，以下讨论合理地约定:(A1)GNM(s)无复零点，即2＞0,n=1,2,…N.
+　　文中的下标中“Z”和“M”分别用于标识零点截取和模态截取近似模型的相关描述变量.
+3　动力学奇异性渐近行为分析
+3.1　零极点的渐近性质
+　　当n较大时，由于tanhbn≈1，故bn＞0近似满足方程tanbn=-1，因而bn可渐近表示成
+bn≈(n+3/4)π,　　　　　(12)
+同样，对于较大n，由于(d-4nexp(-dn))Q(dn)≈(cosdn-sindn)JhMt(2ρl4)-1,故dn＞0近似满足方程cosdn-sindn=0，因而dn可渐近表示为
+dn≈(n+1/4)π.　　　　　　　(13)
+综上所述，对于较大的n，p2n和λn具有如下渐近表达式
+　　　　　(14)
+3.2　模态参数的渐近性质
+　　将本征向量无量纲化，即ξ=x/l,φn(ξ)=φn(x)/l.依算子A的定义，φn(ξ)满足特征方程
+D4φn=d4nφn,　0≤ξ≤1,
+(15a)
+边界条件为
+
+方程(15a)～(15c)解的一般形式表示为
+φn(ξ)=F1sin(dnξ)+F2sinh(dnξ)+F3cos(dnξ)+F4cosh(dnξ).　　　　(16)
+　　经过繁杂的估计，对于较大的n，模态参量可渐近表示为
+　　　　(17)
+　　利用正规化约束条件可得到系数F1,F2,F3的渐近估计
+F1≈F3≈-F2≈F=(8Mtl2+ρl3)-1/2.　　　　　(18)
+将式(18)带入到式(17)中得到
+　　　　　　(19)
+　　基于上述分析，本文后续讨论合理地约定：(A2)对每个n≥0，σn＞0，且关于n严格递减.
+3.3　动力学系统增益的渐近性质
+　　以下考察系统增益αNM和αNZ关于阶次的渐近行为，有如下重要事实.
+　　定理1.系统增益αNM和αNZ可分别渐近表示为
+(20)

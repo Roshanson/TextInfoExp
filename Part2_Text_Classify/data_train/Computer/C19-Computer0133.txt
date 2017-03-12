@@ -1,0 +1,177 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第10期 Vol.19 No.10 1999
+
+
+
+轻度目录访问协议的分析
+张军　颜凯
+　　摘　要　本文详细阐述了轻度目录访问协议，包括该协议数据报的分析以及协议操作中服务器与客户端的处理过程等大量细节。
+　　关键词　目录服务，LDAP，身份认证，Kerberos，SASL
+THE ANALYSIS OF THE LIGHT WEIGHT DIRECTORY 
+ACCESS PROTOCOL
+Zhang Jun　Yan Kai 
+Information Center of University of Electronice and Technology, Sichuan.Chengdu 610054
+　　Abstract　This article illustrates the Light Weight Directory Access Protocol including the details of the protocol message and the process of the protocol operations between the servers and the clients .
+　　Keywords　Directory Service, LDAP,Authentication, Kerberos, SASL
+1　概述
+　　随着因特网技术的迅猛发展，网络管理特别是基于用户和应用的网络管理，成为网络进一步有序发展的关键。为此，人们提出了使用目录服务管理网络上的所有资源，使网络上的所有资源在管理员、用户和应用程序面前都表现为一个有序的目录结构；用户和应用程序可以通过目录授权访问这些资源。
+　　实现通用式目录服务的主要标准是1993年版ITU-T X.500系列建议标准。ISO接受此建议，把它作为ISO9594国际标准。此建议系列规定了信息模型，通信协议，安全认证等各个方面。然而不幸的是，X.500系列协议并不支持TCP/IP协议。
+　　于是，IEIF下的ASID小组制定了轻度目录访问协议（Light Weight Directory Access Protocol，简称LDAP），其目标是用较小的代价在因特网上实现X.500大多数的功能。最终LDAP用相当于X.500标准10%的代价完成了其90%的功能。这使得LDAP成为了因特网目录服务的标准。
+2　LDAP协议分析
+2.1　协议模型
+　　LDAP协议采用的协议模式是：一个客户端请求服务器代替它执行协议操作并把结果返回。在这一模型中，自始至终都是客户处于主动，客户传送一个协议请求到服务器，服务器负责在目录中执行该请求必要的操作。执行完这些必要操作之后，服务器向发出请求的客户返回一个响应，响应中包含了执行请求所获得的任何结果或错误。客户不再需要与服务器联系时，由客户断开连接。
+
+图1　LDAP协议模型示例
+　　在LDAP版本1和版本2中，服务器如果发现了操作所需的参考节点，会继续跟踪执行协议操作，它只向客户返回最终结果。这种操作模式可能会带来性能上的问题。为了解决这一问题，在版本3中允许服务器向客户端返回指向其它服务器的参考指针。这就使得服务器可以不用联系其它服务器以继续其操作，而是把这个服务器指针返回给客户，由客户完成操作。这虽然增加了一些客户的复杂度，但是大大提高了性能和分布式应用的能力。从工程角度看还是值得的。
+2. 2　数据模型
+　　目录信息树（Directory Information Tree，简称DIT）及其相关概念构成了LDAP协议的数据模型。一个目录信息树如图2所示：
+
+图2　目录信息树示例
+　　图2描述了一个目录信息树。目录信息树的根（root）是一个虚根，并没有实际意义。树中的任意一个节点都是目录信息树的一个入口（Entry）。每一个节点旁的标注指明了该入口的一个或多个属性值，构成了该入口的相关辨识名（Relative Distinguished Name，简称RDN），把该入口与其它同级入口区别开来。从特定入口到根的直接下级入口的相关辨识名序列形成了该特定入口的辨识名（Distinguished Name，简称DN），可以在整个树中标识该入口。
+　　例如从Cn=Zhang Jun这一特定入口一直到C=CN入口存在一条唯一的路径，路径上的所有入口组成一个序列，该序列的所有相关辨识名就构成了本人的辨识名：
+　　Cn=Zhang Jun，Ou=people，O=UESTC，C=CN
+　　下面是一些LDAP协议中关于目录信息树的基本概念：
+　　目录信息树的入口属性
+　　目录信息树入口是由一个属性集合组成的。属性是由一个类型描述以及该类型所具有的一个或多个值组成。
+　　例如，一个属性是“mail”，则该属性可能有一个或多个值，这些值必须是IA5（ASCII）字符串，并且是大小写无关的（即，“zj@uestc.edu.cn”与“ZJ@UESTC.EDU.CN”相匹配）。子入口和子模式入口。
+　　模式（Schema）是一个集合，其中包括了属性类型定义、对象类定义以及其它一些信息。服务器使用模式中的信息来决定如何操纵一个入口。子模式入口用来管理与目录模式相关的信息。下述四个属性必须出现在所有子模式入口中：
+　　. cn：这个属性被用来构成该子模式入口的RDN。
+　　. objectClass：这个属性必须至少具有值“top”和“subschema”。
+　　. objectClasses：这个属性的每一个值都定义了一种服务器知道的对象类。
+　　. attributeTypes：这个属性的每一个值都定义了一种服务器知道的属性类型。
+　　服务器特定数据要求
+　　一个LDAP服务器必须提供关于它自己的信息和其它用来指定每一个服务器的信息。这种信息被称之为服务器特定数据。下面是一些服务器特定数据属性：
+　　. namingContexts：命名上下文被保持在服务器中。
+　　. subschemaSubentry：该服务器可识别的子模式入口（或子入口）。
+　　. altServer：本服务器稍后将不可用时的替代服务器。
+　　. supportedExtension：被支持的扩展操作列表。
+　　. supportedControl：被支持的控制列表。
+　　. supportedSASLMechanisms：被支持的SASL安全要素。
+　　. supportedLDAPVersion：本服务器所实现的LDAP版本。
+2.3　协议要素
+2.3.1　公共要素
+　　LDAP协议的公共要素主要包含了LDAPMessage封装协议数据单元（Protocol Data Unit，简称PDU）的格式，以及被用于协议操作的其它数据类型。
+　　. 协议数据报封装
+　　为了达到协议交换的目的，所有协议操作都被封装在一个公共的数据报中，这个数据报就是LDAPMessage。其包格式是一个队列，队列中每一个元素的定义如下：
+
+messageIDprotocolOpcontrols
+
+　　LDAPMessage的功能是提供一个协议封套，其中包含了所有协议交换所必须的公共域。现在仅有的公共域是数据报标识符Message ID和控制符controls。
+　　. 字符串类型
+　　LDAP协议中的字符串类型包括LDAPString和LDAPOID两种。
+　　LDAPString用于描述LDAP协议中的字符串类型。虽然LDAPString的字符串类型是作为八位组字符串（OCTET STRING）编码的，但是它仍然使用了ISO 10646字符集，其编码算法采用UTF-8。在UTF-8算法中，与ASCII字符（0x0000-0x007F）相同的字符采用与ASCII字符集相同的单字节表示方式。其它的字节值则被用于形成任意字符的可变长度编码。
+　　LDAPString：：= OCTET STRING
+　　LDAPOID用于描述LDAP协议中的对象标识符。字符串的允许值是采用点分十进制数值表示法，它也是经过UTF-8编码的。
+　　LDAPOID：：= OCTET STRING
+　　例如：1.3.6.1.4.1.1466.1.2.3
+　　. 结果数据报
+　　LDAP协议使用LDAPResult结构从服务器向客户返回成功或失败的指示。为了响应多种请求，服务器返回的响应将包括LDAPResult类型字段以指示协议操作请求的最后状态。LDAPResult数据报是一个队列，队列中元素的格式如下：
+
+resultCodematchedDNerrorMessagereferral
+
+2.3.2　绑定操作
+　　绑定操作的功能是允许在客户和服务器之间交换身份认证信息。使客户能够以服务器上一个合法对象的身份对目录进行合法操作。
+　　. 绑定请求
+　　绑定请求是一个请求队列，队列中元素的定义为：
+
+versionnameauthentication
+
+　　. 绑定响应
+　　绑定请求也是一个请求队列，队列中元素的定义为：
+
+请求结果 LDAPResultSASL证书 serverSaslCreds
+
+2.3.3　解绑定操作
+　　解绑定操作用于终止一个协议会晤。当一个LDAPMessage数据报的协议操作字段使用unbindRequest标签，并且其值为空值时执行解绑定操作。在发送了一个解绑定操作之后，协议客户假设协议会晤被终止，而协议服务器则假定客户已经终止会晤，所有尚未处理的请求将被丢弃，并且关闭连接。
+2.3.4　搜索操作
+　　搜索操作允许客户端请求服务器代替她执行一个搜索。这可以用于从一个单独入口或者一个特性入口下的各个入口或者整个子树中读取属性。
+　　搜索请求是一个队列，队列中的元素定义如下：
+
+baseObjectscopederefAliasessizeLimit
+timeLimittypesOnlyfilterattributes
+
+　　参数说明如下：
+　　基本对象baseObject――是一个辨识名，指明搜索被执行的目录对象。
+　　搜索范围scope――搜索被执行的范围指针。
+　　解别名参考DerefAliases――指示了别名对象在搜索中如何被处理。
+　　大小限制sizeLimit――限制了搜索结果中返回的最大入口数。0值表示没有客户端请求的大小限制。
+　　时间限制timeLimit――允许一个搜索执行的最大时间。0值表示没有客户端请求的时间限制。
+　　只含类型typesOnly――指示搜索结果是包含属性类型和属性值，还是只包括属性类型。
+　　过滤器filter――搜索匹配一个给出的入口时所必须满足的条件。
+　　属性attributes――应当从每一个匹配的入口中返回的属性列表。不管此列表为空还是为“*”，都表示所有的用户属性被返回。
+　　服务器在收到一个搜索请求之后，将执行搜索操作，并把结果放在搜索响应中返回。搜索响应是一些LDAPMessage数据报，每一个数据报中都包含了SearchResulEntry、SearchResultReference、ExtendedResponse或者SearchResultDone中的某一个数据类型。
+　　SearchResultEntry是一个队列，其元素定义为：
+
+objectNameattributes
+
+　　参数说明如下：
+　　对象名称objectName――与搜索条件匹配的目录对象名称。
+　　属性attributes――返回的特定属性列表。
+　　SearchResultReference也是一个队列，其中包含了一个或多个LDAPURL指向其它服务器。
+　　SearchResultDone中包含一个LDAPResult包，给出搜索的最终状态。
+　　如果LDAP会晤是在一个面向连接的传输协议上进行，则服务器将向客户返回一个响应队列，这个响应队列被封装在一些分开的LDAPMessage数据报中。在搜索返回的响应队列中可能存在0个或多个的SearchResultEntry和SearchResultReference，它们之间可以以任何顺序返回。在这些SearchResultEntry和SearchResultReference返回之后，服务器将返回一个包含SearchResultDone的响应，指示搜索操作是否成功和发生的错误详情。
+　　下面为一个LDAP搜索示例：
+　　图3是一个含有多个LDAP服务器的目录树实例。
+
+图3　由多服务器组成的一个信息目录树
+　　假设如图3所示的目录树中搜索子树“O=EDU，C=CN”，请求发往已连接服务器HostA，则将有如下返回响应：
+　　SearchResultEntry for O=EDU,C=CN
+SearchResultEntry for CN=Manager,O=EDU,C=CN
+SearchResultReference {
+ldap://hostb/OU=People, O=EDU，C=CN
+ldap://hostc/OU=People, O=EDU，C=CN
+}
+SearchResultReference {
+ldap://hostd/OU=Roles, O=EDU，C=CN
+}
+SearchResultDone (success)
+2.3.5　修改操作
+　　修改操作允许客户请求服务器代替自己在目录中对入口进行修改。
+　　修改请求的包格式为：
+
+objectmodification
+
+　　参数说明如下：
+　　对象object――将被修改的对象，其值为一个LDAPDN类型的值。
+　　修改modificatin――将在入口上执行的修改。其数据格式为：
+
+operationmodification
+
+　　其中操作operation是add、delete和replace中的一个。而此处的修改modification是一个属性类型/值对的列表，提供了入口将被修改成的新值。
+2.3.6　增加操作
+　　增加操作允许在目录中添加一个入口。
+　　增加请求的定义为：
+
+entryattributes
+
+　　参数说明如下：
+　　入口entry――被增加入口的辨识名。
+　　属性列表――构成被增加入口内容的属性。这个列表中必须包含入口的可辨识值（用于形成该入口的RDN），对象类属性以及对象类所强制包含的任何属性。
+2.3.7　删除操作
+　　删除操作允许客户请求在目录中删除一个入口。删除请求中包含了要删除入口的LDAPDN值。服务器在删除入口时不会解除别名参考，并且只有叶节点能够被删除。
+2.3.8　修改辨识名操作
+　　修改辨识名操作允许客户修改目录中一个入口最左边的成分或者是将入口构成的子树移动到目录中一个新的位置。修改辨识名请求定义为：
+
+entrynewrdndeleteoldrdnnewSuperior
+
+参数说明如下：
+　　入口entry――将被修改的入口的辨识名。
+　　新的相关辨识名newrdn――用来构成入口新名字最左端成分的相关辨识名。
+　　是否删除旧相关辨识名deleteoldrdn――决定是否删除入口的旧相关辨识名。
+　　新优先级newSuperior――是可选项，其值为LDAPDN类型。如果存在，则表示优先级仅次于现有入口的入口。
+　　在协议要素中还包括比较操作、丢弃操作和扩展操作等协议操作，由于篇幅所限，这里就不再作过多分析，其详情可以参见RFC2251。
+2.4　协议要素的编码和传输
+　　LDAP协议要素在交换时使用抽象语法规则1（ASN.1）中的基本编码规则（BER）进行编码。
+　　LDAP协议被设计运行于面向连接，可靠的传输层协议之上。数据流中八位组字符串的任意一位都具有意义。传输控制协议(TCP)
+　　LDAPMessage数据报的协议数据单元直接映射到TCP字节流上。服务器运行监听的TCP端口值建议为389。服务器可以使用替代用的其它端口。客户必须支持在任一合法TCP端口上连接服务器。
+2.5　安全考虑
+　　当使用面向连接的传输协议时，LDAPv3提供了与LDAPv2兼容的认证机制：使用明文口令的简单认证和其它一些简单认证和安全层（SASL）机制。LDAPv3安全机制还允许在客户要求时，服务器返回其安全证书。
+3　结束语
+　　本文讨论了LDAP协议使用的协议模型、数据模型和协议要素的细节，给出了LDAP协议使用的多种数据报文、请求及响应的详细格式，希望能够对读者掌握LDAP这个下一代因特网服务与应用的基础提供帮助。
+作者简介：张军　教师。从事计算机信息网络和因特网技术的开发与研究。
+颜凯　教师。从事因特网网络管理技术的开发与研究。
+作者单位：电子科技大学信息中心　四川.成都（610054）
+参考文献
+［1］　Douglas E. Comer. 用TCP/IP进行网际互连.第1卷：原理、协议和体系结构（第3版）.林　瑶，蒋　慧，杜蔚轩，等译. 电子工业出版社,1998
+收稿日期:1999-06-21

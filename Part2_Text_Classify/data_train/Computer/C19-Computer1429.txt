@@ -1,0 +1,109 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+引用广义保持器的采样系统
+――结构性质与自适应鲁棒控制1)
+蔚润义　　江　弘
+摘要　研究一类线性时变不确定系统的采样控制.分析了采用的广义保持器和离散化系统的结构性质，提出了考虑微处理器主频和字长的自适应鲁棒采样控制方案，证明了闭环系统的稳定性.针对倒摆系统进行了计算机仿真研究.
+关键词　不确定系统，采样控制，广义保持器，自适应鲁棒控制，倒摆系统.
+SAMPLED-DATA SYSTEMS WITH GENERALIZED HOLDERS
+――STRUCTURAL PROPERTIES AND ADAPTIVE ROBUST CONTROL
+YU RUNYI　　JIANG HONG
+(Department of Automation, Beijing University of Chemical Technology,
+Beijing 100029)
+Abstract　This paper studies sampled-data control problem for a class of linear time-varying systems. The properties of the generalized holders and the discretized systems are analyzed. An adaptive robust sampled-data control scheme is presented with considerations of colck frequency and word length of the microprocessor. The stability of the closed-loop systems is proved. Simulation results are given for an inverted pendulum system.
+Key words　Uncertain systems, sampled-data control, generalized holder, adaptive robust control, inverted pendulum.
+1　引　言
+　　近年来，引用非周期采样器和/或广义保持器的采样控制系统的研究取得了很大的进展［1］.本文讨论文献［3，4］提出的广义保持函数的性质及其对离散系统结构的影响，并结合微处理器主频和字长，研究自适应鲁棒采样控制的实施问题.对于一类具有结构不确定性的线性时变系统，本文提出的控制方案可以根据系统的运行状态，自动调整采样间隔和增益参数，使闭环采样控制系统稳定，并研究了上述方法在倒摆系统中的应用.限于篇幅，省略了大部分结论的证明.
+2　问题的陈述
+　　考虑单输入时变不确定系统
+
+(1)
+其中　x(t)∈Rn为系统的状态，u(t)∈R输入；A,b为适当维数的常矩阵，Δ(t)表示不确定性.假定标称系统
+
+(2)
+可控且具有形式
+
+(3)
+其中αl(l=1,2,…,n)为常数，并设Δ(t)具有下三角结构，即Δ(t)=(δpq(t)),δpq=0,p＜q.设及其l(l=1,…,n-1)阶导数均有界.可以证明，Δ(t)的这一结构是能实现鲁棒控制的最一般的结构.
+　　本文要解决的问题是，对不确定性系统(1)，设计采样控制器及自适应控制规律，使闭环系统鲁棒稳定.
+3　结构性质与鲁棒稳定性分析
+　　对连续系统进行采样，设采样时间序列为{tm}(m=1,2，…)满足且第m次采样间隔Tm=tm+1-tm＞0.引入广义保持函数h(t)∈R1×n，并设计数字控制器C(z)，便构成如图1所示的采样控制系统.其中
+
+图1　采样控制系统结构框图
+　　周期采样时(Tm≡T＞0(m=1,2,…)),标称系统(2)离散化后的状态方程为
+
+(4)
+其中　(与h(t)有关).
+　　记μl(l=1,2,…,n)为n个互异的正数.文献［3，4］分别设计了如下的广义保持器：
+　　广义保持函数1
+
+(5)
+其中　γ是一增益参数；A0与式(3)中A完全相同，只是最后一行全为零；k(γ)∈Rn×1使σ(A0+bkT(γ))={-μlγ,l=1,2,…,n}；
+　　广义保持函数2
+
+(6)
+其中　为以下线性方程组
+
+(7)
+的解.因μl互不相同，这些解是唯一存在的.
+　　引理1.当γ→∞时，h1(t,γ)的元素h1ij(t,γ)趋近于1，2，…，n阶脉冲函数的线性组合；h2(t,γ)的元素hl(t,γ)趋近于l阶脉冲函数.
+　　引理2.广义保持函数h1(t,γ),h2(t,γ)的传递函数分别为
+　(8)
+　　　　　　　　　　　　　　　　(9)
+其中　且H1(s)和H2(s)均无传输零点.
+　　引理3.任选上面的广义保持器，离散系统(4)可控(可镇定)的充分条件为(A，b)可控(可镇定)，且对任意有λi-λl≠2pπj/T，其中C+表示右半闭平面，p为任意整数，j为虚数单位.
+　　引理4.任选上面的广义保持器，记λ(γ)为标称离散系统(4)引入单位状态反馈vm=xm后闭环系统的极点，则
+　　引入反馈控制u(t)=h(t-tm,γm)vm,vm=xm后，不确定采样控制系统(1)为
+
+(10)
+相应的闭环离散系统方程为
+
+(11)
+其中　为系统(1)的状态转移矩阵(与Δ(t)有关).
+　　定理1.任取广义保持器如上，对任意0＜ε＜1，存在常数T*＞0，γ*＞0,M＞0，使当稳定，指数稳定，且
+
+(12)
+其中Z+为自然数集合.
+4　自适应规律
+　　在采样控制系统中，作为控制器的微处理器有主频(记为f0)和字长(记为N)的限制.这样，即使不考虑完成数据采集、处理、输出所需的时间，采样间隔也只能是T0=1/f0的整数倍.同样，增益参数只能是的整数倍，其中Γ∈R表示增益的上限.在控制系统设计时，一般总是比较保守地选取微处理器，可设
+　　当不确定性函数Δ(t)及其导数的变化范围未知，或在系统不同的操作条件下它们的变化范围较大时，希望系统能够根据运行情况自动调整采样间隔Tm和广义保持器h(t-tm,γm)中的增益参数γm，不致于太小或太大.因此，设计如下的自适应规律：
+
+(13)
+
+(14)
+其中floor(.),ceil(.)分别表示向下和向上取整.σT,σγ,T0,γ0＞0为取定的正数.这样，连续系统(1)，采样器{tm}，广义保持器(5)(或(6))，自适应规律(13)，(14)便组成了自适应鲁棒采样控制系统.其渐近稳定性质下面的定理给出：
+　　定理2.记在初始条件x(t0)=x0,T0,γ0下上述闭环采样系统的解为xA(t;x0,T0,γ0)=(x(t),Tm,γm),则xA(t;x0,T0,γ0)有界，且
+
+(15)
+　　证明.设T*，γ*为定理1中给出的参数，且选择数字控制器使T0＜T*,Γ＞γ*.记Tm=pmT0,γm=qmγ0，其中pm,qm∈Z+,则有
+
+(16)
+
+(17)
+　　显然根据定理1，并利用Tm,γm,pm,qm的单调性质和pm,qm的整数性质，可分下列三种情况完成证明：
+　　1)存在mT,mγ∈Z+,使
+　　2)对任意m∈Z+,均有Tm＞T;
+　　3)对任意m∈Z+,均有γm＜γ.
+　　在采样控制系统设计时，可以利用标称系统的参数来简化设计并改善系统过渡过程.
+5　应用
+　　研究小车上倒摆系统的采样控制.该系统的动力学方程为［4］
+(18),(19)
+其中x1,x2分别为倒摆偏离垂直直线的角度和角速度，F为控制力，g是重力加速度，mc,m分别为小车和倒摆的质量，l为倒摆的有效长度.
+　　根据该系统的线性化系统，可设计自适应采样控制(取广义保持函数2)
+(20)
+γm,Tm根据自适应规律(13)，(14)调整，其中参数σT,σγ用来调节过渡过程.在计算仿真中，取mc=1.0kg,m=0.1kg,l=0.5m；σT=1,σγ=0.5,T0=0.001,γ0=40/210.
+　　应用MATLAB就不同初始条件和调节参数σT,σγ的仿真结果表明：1)上述的采样控制方案可以实现倒摆系统的镇定，但对控制力的要求较高，这可能是引入广义保持器及高增益反馈的弱点，值得进一步研究；2)初始偏转角越大，γ∞越大，T∞越小；3)σT，σγ对系统的过渡过程有较大影响；4)如果利用了系统参数的近似值，过渡过程可得到一定的改善.
+1)　国家自然科学基金、中科院系统控制开放实验室资助项目.部分内容曾在1996中国控制与决策学术年会上宣读.
+作者单位：北京化工大学自动化系　北京　100029
+参考文献
+　[1]　Araki M. Recent developments in digital control theory, In:Proc. of 12th IFAC Congress, Sydney, 1993.
+　[2]　Kambamba P T. control of linear systems using generalized sampled-data hold function, IEEE Trans. Automat. Contr.,1987, AC-32: 772―783.
+　[3]　Ocah O, Sezer M E. Robust sampled-data control. IEEE Trans. Automat. Contr., 1992, AC-37:1591―1597.
+　[4]　Yu R, Ocah O, Sezer M E. Adaptive robust sampled-data control of a class of systems under structural perturbations. IEEEE Trans. Automat. Contr., 1993, AC-38:1707―1713.
+　[5]　Middleton R, Freudenburg J. Non-pathological sampling for generalized sampled-data hold functions, Automatica,1995, 31:315―319. 
+　[6]　Kim J et al.Designing fuzzy net controllers using genectic algorithms, IEEE Control Systems Magazine, 1995, 15:66―72.
+收稿日期　1996-02-05

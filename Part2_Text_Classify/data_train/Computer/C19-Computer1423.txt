@@ -1,0 +1,93 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+一类非线性MIMO不确定系统的
+动态输出反馈镇定1)
+梅生伟　秦化淑　洪奕光
+摘　要　考察其标称系统的相对阶大于{1，1，…，1}同时含匹配和非匹配不确定性的MIMO非线性系统的动态输出反馈镇定问题.文中直接用Lyaunov方法构造一类输出反馈动态补偿器，该补偿器可以实现对所论非线性不确定系统的动态输出反馈渐近镇定.
+关键词　动态非线性补偿，动态输出反馈，不确定性.
+DYNAMIC OUTPUT FEEDBACK STABILIZATION FOR A CLASS OF
+NONLINEAR UNCERTAIN SYSTEMS
+MEI SHENGWEI　　QIN HUASHU　　HONG YIGUANG
+(Institute of Systems Science, Academia Sinica, Beijing 　100080)
+Abstract　This paper studies the dynamic output feedback stabilization problem for a calss of MIMO nonlinear systems, whose nominal system's vector relative degree＞{1,1,…,1}and which contains matching and dismatching uncertainties. A kind of dynamic compensator by Lyapunov method is designed derectly, which realizes dynamic output feedback stabilization of non-linear uncertain systems.
+Key words　Dynamic nonlinear compensation, dynamic output feedback, uncertainty.
+1　引言
+　　考察同时含有结构匹配和结构非匹配不确定性的非线性系统
+
+(1)
+其中x∈Rn，u=(u1,…,um)T∈Rm,y=(y1,…,ym)T∈Rm分别表示系统的状态，控制输入和量测输出；f,gi和h分别为光滑矢量函数，g(x)={g1(x),…,gm(x)};f(0n)=0n,h(0n)=0m,g(0n)≠0n×m.其中，△f(x)是非匹配不确定性，△g(x)是匹配不确定性，即满足匹配条件：△g(x)=g(x)e1(x)∈Span{g1(x),…,gm(x)}.这里e1(x)∈Rm是光滑向量函数.
+　　通常称系统
+
+(2)
+为不确定非线性系统(1)的标称系统.以下假定系统(2)在原点有向量相对阶
+
+　　对非线性系统(1)进行动态非线性补偿研究，其重要意义无论在控制理论还是在工程应用都是显而易见的.系统的动态非线性补偿通过动态输出反馈镇定来实现，所谓不确定非线性系统的动态输出反馈镇定是指：
+　　定义1.1　称非线性不确定系统(1)能用动态输出反馈镇定，如果存在
+
+(3)
+使得式(1)，(3)构成的闭环系统零解渐近稳定.这里θ∈Rs；α∈C1(U1,Rm)；β∈C1(U2,Rs),β(0s,0m)=0；U1,U2分别为Rs,Rs+m空间原点的某一开邻域；s是某一正整数.
+　　文献［1-3，5］研究了系统Σ(h,f，g)为线性系统Σ(C,A,B)时的鲁棒镇定问题，其中文献［1，2］用静态输出反馈，文献［3，5］设计动态补偿器，文献［4］在系统(1)(SISO情形)可以部分线性化的条件下，具体构造出一种动态输出反馈补偿器.在此动态补偿器的作用下，含结构匹配和结构非匹配不确定性的非线性系统成为Lyapunov意义下局部渐近稳定的.但本文只讨论了SISO情形，并且结论依赖于文中的一类非线性系统渐近稳定的结果及相应的定理，证明过程较为繁琐.这里直接应用Lyapunov方法对MIMO情形的非线性系统构造一类动态输出反馈控制律，其相应的闭环系统是Lyapunov意义下稳定的.
+2　主要结果
+　　首先，根据系统(1)，(2)所设条件，有下述结果：
+　　定理2.1　存在一个局部坐标变换和状态反馈，使得系统(1)具有如下的形式：
+
+(4)
+其中z=(z1,…,zr)T∈Rr;w=(w1,…,wn-1)T∈Rn-r;ξ1(.)和ξ2(.)是不确定性部分;A=blockdiag(A11,A22,…，Amm),B=blockdiag(b1,b2,…,bm),
+
+zi=(zi1,zi2,…,ziri)T,1≤i≤m;q(w,z)是光滑向量值函数.
+　　定理2.2　假设系统(4)满足
+　　1)不确定性系统(4)的零动态指数渐近稳定,
+　　2)
+这里则系统(4)可用如下形式的动态补偿器
+
+(5)
+进行动态输出反馈镇定.
+这里
+
+是Hurwitz向量；是Hurwitz向量；1≤i≤m;P1是矩阵方程P1A1+AT1P1=-I的正定对称解矩阵；A1=A-BLd是稳定矩阵，是取定的正数；N5是v0(θ)=BTP1θ［φ2(‖BTP1θ‖)+1］在θ处的局部Lipschitz常数.
+　　证明.根据条件1)，由Lyapunov逆定理，存在正定函数V0(w)满足：
+这里c1,c2,c3,c4都是正常数.
+　　下面考察在动态补偿器(5)作用于系统(4)所成的闭环系统：
+
+(6)
+设e=θ-z,e=(e1,…,er)T∈Rr,则系统(6)可以改写为
+
+(7)
+这里是稳定矩阵，
+从而存在P2满足下述矩阵方程：AT2P2+P2A2=-λ1+σ.I，σ＞0是待定的常数.
+　　取标量函数其中λ＞0待定.显然V(w,z,e)是关于变量(w,z,e)的正定函数.又因为q(w,z),v1(z)光滑，故局部存在Lipschitz常数N3，N5使下列式子成立：
+
+(8)
+　　计算V(w,z,e)沿系统(7)的全导数
+
+
+
+这里0＜ε1＜c3.
+　　考察上述不等式，取则当λ充分大时，一定存在正常数k1和k2使下式成立：
+
+(9)
+这时当‖eTP2B‖＜η，存在正常数k3，k4使下式成立：
+
+(10)
+这里k3＜k1,k4＜k2.又因为
+
+所以存在正常数k5，使下式成立：
+
+(11)
+从而由式(9-11)可得
+
+(12)
+因此系统(7)是Lyapunov意义下局部渐近稳定的，进而根据定义1.1，说明系统(1)可用动态输出反馈镇定.
+1)　本文得到国家自然科学基金资助.
+作者单位：中国科学院系统科学研究所　北京　100080
+参考文献
+［1］　Dawson D M, Qu Z, Carroll J C. On the observation and output feedback problems for nonlinear uncertain dynamical systems. System s and Control Letters, 1992, 18:217―222.
+［2］　Emelyamer S V. Output feedback stabilization of uncertain lants avariable structure systems approach. Int J of Control, 1992, 55:61―81.
+［3］　陈彭年.非线性系统反馈镇定(博士论文).上海：上海交通大学，1994.
+［4］　梅生伟.仿射非线性不确定系统的鲁棒控制(博士论文).北京：中国科学院系统科学研究所，1996，64―71.
+［5］　Praly L, Andreanovel B D Corron J M. Lyapunov design of stability controllers for casceded systems. In:Proc. 28th. IEEE Conference on Decision and Control. Tampa. F1, 1989, 217―223.
+收稿日期　1995-10-12

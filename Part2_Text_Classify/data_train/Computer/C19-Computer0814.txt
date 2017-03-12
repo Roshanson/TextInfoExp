@@ -1,0 +1,111 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.1　P.100-104
+
+
+
+Petri网连接过程中的行为关系
+蒋昌俊　王怀清 廖少毅
+摘 要 先前的Petri网模型的综合研究着重在性质的保持性方面，象活性、可达性和回归性.然而，系统行为关系的保持性研究应该更为重要.本文研究了Petri网模型自环连接、抑止弧连接和同步连接三种操作的行为关系，获得他们的语言关系公式，这些结果为Petri网模型综合过程中的动态行为分析提供了形式工具.
+关键词 模型，Petri网，连接，行为.
+THE BEHAVIOR RELATION IN CONNECTION PROCESS
+FOR THE PETRI NET MODEL
+JIANG Changjun
+(Inst.of Infor.Eng.,Tongji Univ.,Shanghai 200092)
+(Inst.of Infor.Eng.,Univ.of Hefei Sci.& Tech.,Hefei 230063)
+(Dept.of Comp.Sci.,Shandong Inst.of Min.& Tech.,Shandong,Taian 271019)
+WANG Huaiqing LIAO Shaoyi
+(Dept.of Infor.Syst.,City University of Hong Kong,Kowloon,Hong Kong)
+Abstract Existing research on the synthesis of Petri net models focuses on preserving system properties,such as liveness,reachability,and reversibility.Such research overlooked the importance of system behavior relation preservation models.In this paper,we discuss three important connection operations:selfloops,inhibitor arcs and synchronisation,in order to model system behavior characteristics.Their behavior relation formulas have been obtained by two
+transformations to these operations.Furthermore,we formally prove that these three connection operations satisfy the behavior invariance.These results support a formal tool for dynamic analysis of Petri net models in synthesis process.
+Key words Model, Petri net, connection, behavior.
+1 引言
+　　Petri网作为系统模拟与分析的有效工具已被广泛应用，尤其在并发系统中更显示出其独有的优越性.文［1］中提出了逻辑控制系统Petri网模型的三种连接操作，讨论它们对不变量等保持问题，文［2］讨论了它们对可达性和回归性的保持条件，文［3］研究了它们对活性的保持关系，文［4］拓广了文［1］中的简单同步操作，讨论了其相容性的关系.本文就文［1～4］中的三种操作的行为关系进行研究，获得了相应的语言关系公式.
+2 连接操作的语言关系
+　　设Petri网Σ=〈N,M0〉=(P,T;F,M0),令L(〈N,M0〉)=｛σ｜σ∈T*)∧(M0［σ〉)｝为Σ的语言.为方便起见，在不改变原意的前提下，三种连接操作［1］被定义如下：
+　　定义1.设是两个Petri网，P1∩P2=φ,T1∩T2=φ,令Σ=(P,T;F,M0),使得
+　　1)P=P1∪P2;
+　　2)T=T1∪T2;
+　　3)之间有一个自环)｝；
+　　4)M0(p)=M0i(p),ifp∈Pi,i=1,2;
+则称Σ是Σ1和Σ2的自环连接网，记作Σ=Σ1OΣ2.
+　　定义2.设是两个Petri网，若P1∩P2=φ, T1∩T2=φ，令Σ=(P,T;F,E,M0),使得
+　　1)P=P1∪P2;
+　　2)T=T1∪T2;
+　　3)
+之间有一条抑止弧)｝；
+　　4)M0(p)=M0i(p),ifp∈Pi,i=1,2;
+则称Σ为Σ1和Σ2的抑止弧连接网，记作Σ=Σ1ΘΣ2.
+　　定义3.设是两个Petri网，若令Σ=(P,T;F,M0)，使得
+　　1)P=P1∪P2;
+　　2)T=T1∪T2;
+　　3)F=F1∪F2;
+　　4)
+则称Σ为Σ1和Σ2的同步连接网，记作
+　　在下面的讨论中，首先讨论操作对语言的保持关系，然后分别讨论O和Θ对语言的保持关系.
+　　定义4.设X是一个有限字母表，1)令ΓX→Y:X*→Y*,使得且ΓX→Y(σ)是从σ中删除X-Y中的所有字符后的剩余子串，则ΓX→Y被称为从X到Y的一个投影映射.2)令
+使得且则被称为从Y到X的一个投影映射，这里“*”是语言的闭包运算.
+　　定义5.设X是一个字母表，和LY分别是X和Y上的语言.令
+则ΓX→Y(LX)被称为LX的从X到Y的投影语
+言，被称为LY的从Y到X的扩展语言.
+　　定理1.设i=1,2,是两个Petri网，若M0),则
+
+　　证明.令σi←ε(空串).由于M0［σ〉，分下面情况讨论：
+　　1)若σ［1］∈T1-T2，则知使得从而令
+
+　　2)若σ［1］∈T2-T1，则知M1=(MT11MT12)T,使得M02［ti1〉M12∧M11=M01,从而令σ2←
+
+　　3)若则知M1=(MT11MT12)T,使得从而令σ1←
+
+　　对于M2,M3,…,类似地进行下去，直到Mg为止.最终我们得到σ1,σ2，使得(σi是σ的子串，这样从而也即从而
+
+　　逆推上述过程易证
+　　综合上述则知
+　　定义6设i=1,2是两个Petri网，Σ=Σ1OΣ2=(P,T;F,M0),若
+令
+使得
+　　1)
+　　2)
+　　3)
+　　4)
+　则称φ(Σi)为Σi的自环扩张网，i=1or2.
+　　定理2.设i=1,2,是两个Petri网，则
+
+　　证明．使得则有
+由于在p(i)和t(3-i)之间存在一个自环，这里因此M′i［t(3-i)＞M′i，据定义6，在φ(Σi)中有
+这样因此结果为真.
+　　推论1.设i=1,2，是两个Petri网，Σ=Σ1OΣ2=(P,T;F,M0)，则
+
+　　由于文［1］中限定每个子网均对应一个有限状态机，也就是子网中任何变迁t，都有｜t.｜=｜.t｜=1：而且每个自动机只有开始位置标记一个token，其余的位置均无token.并称满足这两个条件的网为基本控制任务网(ECT).
+　　定义7.设i=1,2,是两个(ECT)Petri网，抑止弧集
+r;i=1,2｝，记ΔP(i)j是从p(i)j可达的位置集，
+T;F,E,M0)，使得
+　　1)
+　　2)
+　　3)F=F∪ΔF,这里被称为多元自环集；
+　　4)
+　　5)为删除Σ中所有自环后所得到的网；
+　　6)引发规则：
+　　6.1) 对于非多元自环网部分遵守Petri网的原引发规则，
+　　6.2) 对于多元自环部分，若在状态∈R(0)下是使能的当且仅当，
+　　6.2.1)
+　　6.2.2)
+　　则称Φ(Σ)为Σ的多元自环网.
+　　定理3.设是两个(ECT)Petri网，E,M0).
+是Σ的多元自环网，则L(〈N,M0〉)=L(Φ(〈N,M0〉)).
+　　证明.为了证明L(〈N,M0〉)=L(Φ(〈N,M0〉))，也就是要证明L(〈N,M0〉)=L为此只需证明〈N,M0〉中任何一条抑止弧都与中的一条多元自环的作用是等价的.由于Σi，i=1,2是ECT Petri网，因此它们是安全状态机，从而R(M0i)有且仅有一个p(i)∈Pi，使得这样，若M∈R(M0)都对应着使得
+　　1)M(p(i)j)=1当且仅当
+　　2)M(p(i)j)=0当且仅当
+这样，〈N,M0〉中任何一条抑止弧都与中的一条多元自环的作用是等价的.因此我们有L(〈N,M0〉)=L(Φ(〈N,M0〉))和L(〈N,R(M0)〉)=L(Φ(〈N,R(M0)〉)).
+　　定义8.设i=1,2，是两个(ECT)Petri网，
+是Σ的多元自环网.令使得
+　　1)
+　　2)
+　　3)
+　　4)
+则称φ(Φ(Σi)),i=1,2是Σi的多元自环扩张网.
+　　定理4.设是两个(ECT)Petri网，Σ=Σ1ΘΣ2,Φ(Σ)=
+是Σ的多元自环网，φ(Φ(Σi)),i=1,2是Σi的多元自环扩张网，则L(φ(Φ
+
+　　证明.类似于定理2的证明方法，此结果容易被证明!
+　　推论2.设是两个(ECT)Petri网，

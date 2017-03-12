@@ -1,0 +1,160 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第4期　Vol.23　No.4　1997
+
+
+
+CMAC学习过程收敛性的研究
+罗忠　谢永斌　朱重光
+　　摘　要　基于CMAC学习过程等价于求解线性方程组的Gauss-Seidel 迭代这一事实，研究了学习过程的收敛性.利用矩阵分析方法，估计出了收敛的速度.考虑了作为节省存储空间措施的hash编码的不利影响――破坏了收敛性态.从理论上分析了其存在的原因.
+　　关键词　CMAC，收敛性，Gauss-Seidel迭代, hash编码.
+A STUDY OF THE CONVERGENCE OF
+THE CMAC LEARNING PROCESS
+LUO ZHONG
+(Dept. Image Processing,IRSA,CAS,P.O.Box 9718, Beijing 100101)
+XIE YONBIN
+(Dept.Automatic Control,School of Electronic and Informatioin Engineering,Xian Jiaotong University,Xian 710049)
+ZHU CHONGGUANG
+(Dept. Image Processing, IRSA, CAS, P.O.Box 9781, Beijing 100084)
+Abstract　Based on the fact that the CMAC learning process is equivalent to the Gauss-Seidel iteration for solving a linear system of equations,this paper addresses the convergence of the CMAC learning process.By means of matrix analysis,the convergence speed is estimated.The negative effect on convergence of hash coding,i.e.,it deteriorates the convergence performance is considered and the reason for its existence is also theoretically analyzed.
+Key words　CMAC,convergence,Gauss-Seidel iteration,hash conding.
+1　引言
+　　CMAC即小脑模型关节控制器是Albus于1975年首次提出的一种人工神经网络［1，2］.CMAC具有线性结构，学习算法简单，有输入泛化能力.已成功应用于机器人控制［3］、模糊控制［4］、非线性时间序列分析［5］等领域.CMAC一般结构如图1所示.
+
+
+图1　CMAC的一般结构
+　　设CMAC输入空间为XRd,Xd为对应的离散输入空间.联想单元中的量称联想强度.输入激活一组A*个联想强度，它们的代数和即为对应之输出.即若xk∈Xd，其激活的联想强度为，则输出为
+
+(1)
+dk为期望输出，学习误差dk-yk用以更新上述A*个联想强度.
+
+(2)
+显然联想单元数在大输入空间情况下是巨大的.为节省存储空间.Albus提出了hash编码.即联想强度存于一组数量大大少于联想单元的所谓hash单元中，联想单元只存hash单元的散列地址编码.
+2　CMAC学习过程的实质
+　　Xd的一个子集Xt称为训练集，训练样本均取自Xt.学习过程由多个周期构成.每一周期内，按一定顺序用Xt中样本训练网络.若均方学习误差小于误差界，学习结束.为叙述简单起见，本文只讨论一维输入情形.
+　　设激活的联想强度为wk+1,…,wR+A*,联想强度总数为 M=N+A*-1.令I={i|0≤i≤N-1,i∈Z},S={s|1≤s≤M,s∈Z}, θ:I×S→{0,1}.
+
+(3)
+设｜Xt｜=Nt，令It={i|0≤i≤Nt-1, i∈Z}和θt:It×S→{0,1}.
+
+(4)
+
+(5)
+
+(6)
+D=[d0,d1,…,dNt-1]T,
+(7)
+W=[w1,w2,…,wm]T,
+(8)
+E(k)=[E0(k),E1(k),…,ENt-1(k)]T,
+(9)
+A=[θt(i,j)]Nt×M,i∈It,j∈S,
+(10)
+C=AAT,
+(11)
+
+(12)
+L、R为C的下三角(含对角元)和上三角(不含对角元)部分.
+　　CMAC学习目的在于求解线性方程组
+AW=D
+(13)
+因Nt≤N<M，(13)为不定方程组.Wong和Sideris证明了CMAC学习过程等价于求解下述线性方程组的Gauss-Seidel迭代［6］.
+CE=D,
+(14)
+即
+LE(k)=D-RE(k-1).
+(15)
+一个学习周期对应一次迭代.若迭代收敛，即W(∞)和E(∞)存在，则
+W (∞)=ATE(∞)=AT(AAT)-1D
+(16)
+这正是(13)的最小范数LS解［7］.
+3　收敛性分析一些结论
+　　定理1.　矩阵A为满秩矩阵.
+　　证明略.
+　　定理2.　矩阵C是正定对称矩阵.
+　　证明.对称性为显然.因A满秩，其所有奇异值均为正，故C所有特征值均为正.故C是正定阵.证毕.
+　　定理3.　设R为n×n实对称正定矩阵，Q为任一n×n非奇异实矩阵，且Q+QT-R为正定阵，则-Q-1(R-Q)之全部特征值位于圆G：|z-(1-)|=内部及除点(1，0)外之圆周上.其中
+
+〈　〉为向量内积符号.
+　　证明.Q+QT-R正定，故对u≠0，u∈Rn有
+〈(Q+QT-R)u,u〉=〈Qu,u〉+〈QTu,u〉-〈Ru,u〉>0,
+于是r>1.设λ为-Q-1(R-Q)之任一特征值，v为对应之单位长度特征向量，则
+-Q-1(R-Q)v=λv,
+即
+(1-λ)Qv=Rv,
+故
+(1-λ)〈Qv,v〉=〈Rv,v〉,
+据Hilbert空间上内积性质有
+(1-)〈QTv,v〉=〈Rv,v〉,
+令　λ=α+jβ，则
+
+即
+
+显然
+
+即
+
+写成复数模的形式为|λ-(1-)|≤,Re(λ)<1.证毕.
+　　因L+LT-C=A*I正定.由定理3知-L-1R的全部特征值位于圆G内部和除(1，0)点以外的圆周上.圆G的半径小于1，与单位圆切于(1，0)点，它的其余部分位于单位圆内.于是-L-1R全部特征值位于单位圆内.故由［8］可知迭代
+E(k)=-L-1RE(k-1)+L-1D
+(17)
+是收敛的.从而由等价性知，CMAC学习过程收敛.以上结论是在无hash编码条件下得到的.下节讨论有hash编码的情形.
+　　引理1.　定理3中以C，L代替R，Q，则有，其中λmax(C)=maxλ(C).λ(C)表示C的特征值集合.
+证明.
+
+
+　　定理4.　L-1R的特征值的最小模不小于
+
+　　证明.以表示集合{z|z-(1-)|≤Re(z)<1},则-L-1R的特征值全在内.我们只需证明m=|z|.若(0，0)∈，显然｜z｜=0.此时作为的边界与实轴交点横坐标(与1相对)的显然为负，所以m=0，即m=|z|.若(0，0)，则由对称性知，中模最小的点一定是其边界与实轴的交点.从而=.而此时＞0，故m=，即m=z|.综上所述，恒有m=|z|.证毕.
+　　CMAC学习的收敛速度与迭代(17)式相同.后者取决于-L-1R的特征值.据定理4知，-L-1R的特征值最小模可能为0.说明其特征值中有许多具有较小的模.有利于收敛.
+　　引理2.　(包含原理)［8］设R为n×n　Hermite阵，n>m. R1为R前n-m行与前n-m列相交成的子阵.设R的特征值为α1≥α2≥…≥αn，R1的特征值为β1≥β2≥…≥βn-m，则
+αi≥βi≥αi+m,　1≤i≤n-m.
+　　定理5.　设λmax(C0)=maxλ(C0),则
+λmax(C0)≥λmax(C).
+　　证明.C是由C0的标号为n1,n2,…,nNt的Nt行和Nt列相交成的子阵.则存在行置换阵P使C是0的前Nt行和Nt列相交而成的子阵，其中0=PC0PT.因P是正交阵，故λ(0)=λ(C0)，所以λmax(C0)=λmax(0)≥λmax(C).证毕.
+　　以上定理说明采用全部输入点作为训练样本，可达到最快的收敛速度.
+4　hash编码对收敛性的影响
+　　hash编码的一个致命弱点是会引起所谓碰撞［1］，即多个联想单元同时指向同一个hash单元.当前者总数大于后者总数时，碰撞是不可避免的.
+　　一旦发生碰撞，CMAC学习的收敛性会受到三种可能的影响.
+　　首先A可能失去满秩性质.请看下例.设Nt=3，M=5,A*=3，联想单元数亦为5.引入hash编码前，
+
+假定碰撞使得联想单元1，4均指向hash单元1，从而A和C变成
+
+A不满秩.后果是
+
+显然学习不收敛.
+　　其次，即便学习仍收敛，碰撞会降低收敛速度.碰撞使A各行线性相关程度增大，从而使A的最大奇异值减小，即使得λmax(C)减小.从而使收敛速度降低.
+　　其三，在一个学习周期内，碰撞使得后面的训练样本干扰前面训练样本的学习效果.从而使均方误差随学习次数变化的曲线起伏振荡，收敛性态变坏.
+5　仿真结果
+　　前面的分析结论完全适用于多维输入情形.只不过证明形式更复杂.下面用一个二维输入例子来验证我们的理论.任务为学习以下函数.
+f(x,y)=sin2πx.sin2πy,　(x,y)∈[0,1]2.
+离散化得
+fd(i,j)=sin(2π.(i)/(30)).sin(2π.),　0≤i,j≤30.
+取Xt={(5k,5l)|0≤k,l≤6},A*=10.仿真结果如图2、图3和图4所示.
+
+
+图2　f(x,y)的图象
+
+
+图3　CMAC学习仿真结果(无hash)编码
+
+
+图4　CMAC学习仿真结果(有hash)编码
+5　结论
+　　通过理论分析和仿真实验，结论如下.
+　　(1)无hash编码的CMAC学习过程必收敛.
+　　(2)有hash编码的CMAC学习过程收敛性受碰撞影响后有3种可能结果：1)不收敛，2)收敛变慢，3)收敛性态变坏.
+作者简介：罗忠　男　1969年1月生，1996年于西安交通大学获自动控制理论及应用专业博士学位.现在中国科学院遥感所进行博士后研究.研究领域为：控制理论、信号处理、图象处理、神经网络.已发表论文10余篇.
+作者单位:罗忠　中国科学院遥感所图象室　北京　100101
+　　　　　谢永斌　西安工业学院电子系　西安　710032
+　　　　　朱重光　中国科学院遥感所图象室　北京　100101
+参考文献
+［1］　Albus J S.A new approach to manipulator control: The cerebellar model articulation.Controller(CMAC).Trans of ASME Joural of Dynamic Systems,Measurements,and Control,1975,9:220―227.
+[2]　Albus J S.Data Storage in the Cerebellar Model Articulation Controller(CMAC).Trans of ASME Journal of Dynamic Systems,Measurement,and Control,1975,9:228―233.
+[3]　Miller W T.Real-time Application of Neural Networks for Sensor-based Control of Robots.with Vision,IEEE Trans.Syst.,Man,Cybern.,1989,19:825―831.
+[4]　Nie J Linkens D A.FCMAC:A Fuzzified Cerebellar Model Articulation Controller with Self-organizing Capacity,Antomatica,1994,30(4):655―664.
+[5]　Touretzky D S.Ed.Neural Information Processing Systems 1,Los Altos,CA:Morgan Kaufmann,1989.29―39.
+[6]　Wong Y F,Sideris A.learning convergence in the cerebellar model articulation controller.IEEE Trans.Neural Networks,1992,3(1):115―120.
+[7]　Franklin J S.Matrix theory.Englewool Cliffs,N.J.:Pretice-Hall,Inc.,1968.261―268.
+[8]　徐成贤，徐宗本编著.矩阵分析.西安：西北工业大学出版社，1991.24―65.
+收稿日期　1995-08-03

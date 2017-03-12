@@ -1,0 +1,113 @@
+计算机应用研究
+APPLICATION RESERCH OF COMPUTERS
+2000  Vol.17　No.1　P.55-57
+
+
+
+
+SNMP协议的分析与应用
+张春晖
+摘 要 介绍了基于TCP/IP的简单网络管理协议NMP，以及其在客户机和服务器中的程序实现。然后分析了SNMP在实际中的具体应用。
+关键词 SNMP SNMP Manager SNMP Agent Proxy Agent 网络自动发现
+1　前言
+　　随着计算机通信技术的发展，计算机网络作为信息社会的基础设施已渗透到社会的各个方面。现代的网络，地理上分散、网络体系结构复杂、通信量庞大、变动性增加、而且网络设备种类繁多、自制性强，这就导致对整个网络的管理十分复杂。国际上许多机构和团体也建立了一些网络管理标准框架，其中使用最为广泛的是基于TCP/IP的Internet网络管理方案NMP(the Simple Network Manage Protocol)，对它进行分析具有重要意义。
+2　SNMP协议简介
+　　SNMP的工作始于1988年，是由最初的简单网关监控协议SGMP发展而来的，现已成为事实的标准网络管理协议。SNMP的设计本着简单性(Simplicity)和扩展性(Extensibility)的原则，扩展性主要是通过将管理信息模型与协议、被管理对象的详细规定(MIB)分离而实现；简单性则是通过信息类型的限制、请求/响应机制而取得。
+2.1　SNMP的体系结构
+　　SNMP体系结构模型(见图1)分为SNMP管理者(SNMP Manager)、SNMP代理者(SNMP Agent)和管理信息库(MIB)。每一个支持SNMP的网络设备中都包含一个代理，此代理随时将网络设备的各种情况记录到管理信息库中(MIB)，网络管理程序再通过SNMP通信协议查询或修改代理所记录的信息。
+
+图1　SNMP管理模型
+2.2　SNMP信息模型
+　　SNMP管理信息模型由两部分来描述，即对象类型的识别和定义以及对象实例的识别。由于篇幅有限，在此不作描述，详细定义见RFC1155、RFC1157。
+　　所有对象类型都用下列模板定义：
+Descriptor: a unique textual(printable string)name
+Object Id: an ISO object identifier
+Syntax: basic ones
+Definition: a textual strong defining the semantics
+Access: one of read-only,read-write,write-only or not accessible
+Status: either mandatory,optional,or obsolete
+　　上面的信息集合通过对对象定义宏捆扎，用ASN.1定义如下：
+OBJECT-TYPE MACRO::=
+BEGIN
+　TYPE NOTATION::=
+　　"SYNTAX" type(Type ObjectSyntax)
+　　"ACCESS" Access
+　　"STATUS" Status
+　VALUE NOTATION::=value(VALUE ObjectName)
+　Access::="read-only"|"read-write"|"write-only"|"not-accessible"
+　Status::="mandatory"|"optional"|"obsolete"
+END
+2.3　SNMP网络管理信息的范围及表示方法
+　　SNMP所支持的网络管理信息包括Internet标准MIB或其它符合Internet SMI规范的MIB中所定义的非集合对象类。SNMP所使用的信息编码方式为ISO定义的ASN.1语言的子集。Internet标准的MIB发展到现在，有两个版本MIB-I和MIB-II，它规定了网络代理设备必须保存的数据项目、数据类型以及允许在每个数据项目中的操作。通过对这些数据项目的存取访问，就可以得到该网关的所有统计内容，再通过对多个网关统计内容的综合分析即可实现基本的网络管理。
+2.4　SNMP MIB对象实例标识
+　　每个SNMP对象实例都有一个独一无二的对象实例标识符。该标识符是用对象实例所属对象类的对象标识符加上实例标识符构成的。例如：设备的系统描述(SysDescr)对象标识符为1.3.6.1.2.1.1.1，设备的系统描述只能有一个，因此，其实例标识符为0，所以，网络设备的系统描述对象实例标识符为1.3.6.1.2.1.1.1.0。
+2.5　SNMP鉴别机制(Authentication Scheme)与访问策略(Access Policy)
+　　使用SNMP进行通信的实体被称作SNMP应用实体。SNMP代理与一系列SNMP应用实体的集合被称作SNMP共同体(SNMP Community)。标识每一个SNMP共同体的字符串被称作为SNMP共同体名。如果SNMP应用实体接收到的SNMP报文源自与之同处一个SNMP共同体的SNMP应用实体，则该报文被称作可靠SNMP报文(Authentic SNMP Message)。鉴别报文在SNMP共同体中是否可靠的规则集合被称为鉴别机制。利用一种或几种鉴别机制鉴别一个SNMP报文是否可靠的访问被称为鉴别访问(Authentication Service)。
+　　与特定网络元素相关的MIB对象子集被称作该网络元素的SNMP MIB视图。集合(Read-Only，Read-Write)中的一个元素叫做SNMP访问方式，SNMP访问方式与SNMP MIB视图配对构成SNMP共同体描述表(SNMP Community Profile)。它描述了应用实体对网络元素SNMP视图中对象的访问权限。
+　　SNMP共同体与SNMP共同体描述表相结合构成SNMP访问策略(Access Policy)。
+2.6　SNMP委托代理(Proxy Agent)
+　　在一种SNMP访问策略中，SNMP代理所在的网络元素上并不包含共同体描述表所指定的MIB视图，则该访问策略被称为SNMP委托访问策略。委托访问策略中的SNMP代理被称为SNMP委托代理。
+　　SNMP委托代理使网络管理站点(NMS)能够监控SNMP所不可寻址的网络元素(NE)。如果SNMP NMS需要管理不支持SNMP协议的网络，而该网络又具有自身的网络管理机制，就可以在被管理网络的NMS上安装SNMP委托代理(如图2)。由该代理执行协议转换，将SNMP NMS的管理请求转换为不支持SNMP协议网络的管理技术，使得该网络能纳入开放式SNMP环境中来。因此，SNMP委托代理对集成化网络管理的实现有很大的作用。
+
+图2　SNMP委托代理的应用
+2.7　SNMP通信过程
+　　SNMP不直接支持命令型操作，而是通过对MIB中的对象进行修改来实现相应的功能。例如，SNMP并非通过“reboot”命令来实现对网络设备的重启动，而是通过将设备MIB中的变量设定为x秒后，由SNMP代理实现对设备的重启动。
+　　SNMP中NMS与NE之间的通信通过报文交换来实现。SNMP还提供一套陷阱(Trap)机制。SNMP实体间交换的报文称作SNMP报文，它由版本号、标识符、SNMP共同体名和SNMP协议数据单元(PDU，Protocol Data Unit)组成，是通过ISO的ASN.l相关的BER(Basic Encoding Rules)规则形成的。
+　　协议实体之间的通信过程如下：
+　　。发出请求的协议实体按包含管理请求的PDU构造一个ASN.l对象。
+　　。把该对象连同SNMP共同体名、源UDP传送地址(IP地址加UDP端口号)、目的UDP转送地址一起发送给鉴别服务实体，该实体将加密后的对象返回。
+　　。发出请求的协议实体按上述ASN.l对象和SNMP共同体名构造一个ASN.1报文对象，将这一对象按ASN.1基本编码规则编码后发送给传输层。
+　　。接收方协议实体从其传输层接收到请求数据报后，对其作基本语法分析，按照ASN.1对象格式，构造出相应的ASN.1对象。若分析失败，则丢弃该数据报，不作进一步的处理。
+　　。接收方协议实体核对SNMP报文的版本号，若不对，则丢弃报文。
+　　。将ASN.l报文对象中的用户数据和SNMP共同体名以及数据报的源、目的UDP传送地址发给鉴别服务实体。若成功，则服务实体返回解密后ASN.1对象，否则返问一鉴别失败信号，产生一个Authentication Failure Trap，然后再丢弃数据报。
+　　。协议实体对鉴别服务实体返回的ASN.1 PDU对象作进一步的分析，产生新的ASN.1对象，若分析失败，则丢弃数据报，放弃处理。若成功，则根据数据报中的SNMP共同体名选择相应的SNMP共同体描述表，按照其所规定的MIB视图访问方式处理PDU，对MIB进行相应的存取操作。
+2.8　SNMP所支持的操作
+　　SNMP支持轮询(为主)和事件驱动两种访问方法。SNMP使用五种通信原语(如表1)，以实现SNMP的GET、GETNEXT、SET、TRAP等操作，从而得到管理信息。
+表1 SNMP使用五种通信原语
+通信原语说明
+GetRequest由NMS发给Agent的请求命令，请求一个MIB变量值。
+GetNextRequest由NMS发给Agent的请求命令，要求将被说明目标的下一个目标的MIB值送回NMS。
+GetResponse是Agent对于收到的请求的一个应答，此请求是要求将制定数据送到NMS。
+SetRequest由NMS发出，命令Agent去改变一个MIB变量值。
+TrapAgent检测到某种预先说明了的状态时，向NMS发送的一个非请求消息。
+
+　　GetRequest和GetResponse实现了请求-响应机制，SNMP使用轮询(polling)方法实现这一机制。Trap消息的使用基于事件驱动(event driven)机制的方法实现的。
+3　SNMP在实际中的应用
+　　在我们植际街富又行募际的课题中，基于分布式网络环境，我们需要了解网络资源的状况，对它进行监视和控制。考虑到应用的实时性以及系统的开销，需要直接通过底层网络协议来实现。而SNMP正是采用面向无连接的用户数据报UDP/IP来实现其功能，实体间的通信无需先建立连接，降低了系统开销。SNMP在实际系统中主要应用如下：
+　　。网络拓扑结构的自动发现
+　　路由表(Routing Table)是网络管理的重要信息，通过对路由表的访问及分析可以找到网络中存在的子网和路由器，并能精确地确定它们的互联情况、确定各个网络设备的存活状态、确定各个网络设备的网络接口类型；再结合ICMP的Ping和Tracerout，对给定的子网进行搜索，确定子网中运行的网络设备，从而完成网络的自动发现。
+　　在这里需提出，以前的自动发现工作都是基于ICMP协议的，此协议实现较简单，但不能得到网络接口的有关信息。基于SNMP协议，需要网络设备必须支持SNMP，具有SNMP的代理。
+　　。访问MIB库的变量，并给出相应变量的描述。
+　　。性能和吞吐量分析
+　　通过访问SNMP MIB I、MIB II，可以获得网络性能的有关部门数据，对网络性能进行动态分析，包括网络传输差错率、流量特性等。
+　　。设备监控
+　　通过轮询来获得有关网络状态的信息，用于以后的评估和分析，如可以监控网络接口故障。
+　　。故障警告
+　　在SNMP服务器上进行警告配置，网络中任何支持SNMP-TRAP协议的SNMP设备都能收到警告。
+4　SNMP的实现
+　　SNMP也是通过客户/服务器的方式来实现的。网络管理员在本地计算机上调用SNMP客户机(SNMP Manager)，利用客户机与一个或多个运行在远程计算机上的SNMP服务器(SNMP Agent)取得联系，从而实现管理功能。下面，我们从客户机和服务器两方面讨论。
+4.1　服务器的实现
+　　从原理上讲，SNMP的服务器比较简单，它由单一的进程组成，该进程不断地接受输入的请求报文，执行指定的操作，并返回一个响应。目前比较流行的操作系统中都提供SNMP代理服务，其过程snmpd就是实现SNMP服务器的主要算法。其工作流程如下：
+　　。Snmpd首先打开一个SNMP使用的UDP端口，然后进入一个无限循环，调用read等待下一个输入报文；
+　　。当一个SNMP报文到达时，snmpd调用snparse分析该报文，将其转换为内部格式，并保存到请求描述块中；
+　　。然后提取首部中的字段，通过调用sna2b，snmpd从报文中提取对象标识符序列，并把它们转换到一个链表中；链表中的每个结点对应于一个绑定，这些结点被定义为文件snmp.h中的snbentry结构。在转换时，sna2b把每个ASN.1对象标识符转换成内部表示形式；
+　　。如果报文和变量名序列都已成功转换为内部格式，snmpd调用snrslv解决报文提出的请求，包括为链表中每个对象标识符执行指定的get，set或get-next等操作；
+　　。然后，snmpd调用mksnmp生成响应报文，并用write操作向客户机发送回答报文；
+　　。服务器发送一个响应报文后，调用snfreeb1释放变量名链表，并返问到主循环的头部，继续等待下一个输入报文。
+　　如果因出现差错而无法完成上述工作，则服务器生成一个差错回答报文，该报文中含有差错类型码(Error Type Code)和差错索引(Error Index)。差错类型码给出差错发生的原因，而差错索引指出在请求中导致差错的变量名。
+　　这其中所涉及到的SNMP报文分析、链表中ASN.1名字的转换、请求的解析、SNMP操作的解释和执行以及表格的间接寻址等，在此就不详细描述。
+4.2　SNMP客户机的实现
+　　SNMP客户机必须生成和向服务器发送请求报文，等待服务器的响应，并验证响应是否与请求相对应。在这里描述一个执行客户机功能的过程snclient，它以一个请求描述块的地址为入口参数，在请求描述块中包含了报文的内容，其中包括需要完成的操作和一张操作执行对象的绑定表。流程如下：
+　　。首先snclient调用mksnmp生成以ASN.1格式表示的报文；
+　　。调用open打开一个用于发送数据报的描述块，并调用write发送上面所生成的报文；
+　　。在定时模式下，进行read操作，接收响应；
+　　。如果snclient接收到响应，它调用snparse将响应转换为内部格式；
+　　。然后将响应中的标识字段与请求中的标识符字段相比较，以验证该报文是对客户机刚才发送的请求的响应；
+　　。若一切正常，snclient调用sna2b将每个对象标识符从ASN.1表示形式转换为内部格式。由于UDP是不可靠的，因而SNMP客户机必须实现自己的超时和重传策略。
+5　结束语
+　　SNMP发展到现在已成为事实上的网络管理标准，目前使用较多的网络管理系统，如HP OpenView、Cabletron Spectrum、SunNet Manager、IBM NetView、Micorsoft Systems Manager Server、Cisco Works等也都支持它。SNMP技术也在不断地发展，SNMPv1网络解决方案，采用的是平面式管理者-代理结构，对较大的网络，功能越来越受到限制。SNMPv2是采用的管理者-子管理者-代理分层模式，对于大型网络的分布式管理成为可能。
+张春晖（电子工业部第二十八研究所 南京 210014）
+参考文献
+1，RFC1155, RFC1157, RFC1212, RFC1213, RFC1158, RFC1442
+2，Douglas E.Comer & David L.Stevens. Internet working with TCP/IP
+收稿日期：1999年9月1日

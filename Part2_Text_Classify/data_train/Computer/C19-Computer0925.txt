@@ -1,0 +1,104 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第4期　Vol.23　No.4　1997
+
+
+
+具有完整性的状态反馈H2
+最优控制器设计1）
+曹永岩　孙优贤
+　　摘　要　基于互质分解的状态空间描述方法，给出了状态反馈下对执行器失效具有完整性的H2最优控制器的一种新的参数化形式，将具有完整性H2最优控制器设计转化为设计一严格正则的稳定控制器同时镇定对应于k个故障状态的k个辅助对象. 
+　　关键词　互质分解， 完整性， H2最优控制， 执行器失效.
+THE H2 OPTIMAL CONTROLLER POSSESSING INTEGRITY
+WITH STATE FEEDBACK
+CAO YONGYAN　　SUN YOUXIAN
+(Institute of Industrial Process Control, Zhejiang University, Hangzhou　310027)
+Abstract　Based on coprime factorization of system tranfer matrix in the state space, a new parametrization of the H2 optimal controller possessing integrity against actuator failures is given with state feedback. The design of the H2 optimal controller possessing integrity is transformed into that of a strictly proper stable controller that simultaneously stablizes k associated plants relating to the k actuator failure states.
+Key words　Coprime factorization, integrity, the H2 optimal control, actuator or sensor failure.
+1　引言
+　　前人已对完整性控制器的设计问题进行了许多研究［1］， 这些研究使用的方法大都是基于解Lyapunov方程、Riccati方程等， 控制系统性能一般都有很大的牺牲， 其保守性较大，很多情况下无法构造出合适的控制器，因此很多文献中的研究对象都是开环稳定的［1，2］. 如何设计一控制器， 既能使得摄动系统具有稳定性，同时又保证标称系统的性能不受损失或不受太大损失， 对这一问题的研究具有很大的实际意义. 
+2　H2最优控制器参数化
+　　考虑图1所示的线性时不变系统，其中G为2×2块的包括所有权函数的一般化的对象传函矩阵，K为控制器，w包括所有外部输入：各种干扰， 传感器噪音等， 输出z为误差信号，y为n维被测变量，u为r维控制输入，x为n维状态向量. 设传函矩阵G的最小实现为
+=Ax+B1w+Bu, 
+z=C1x+D1u, y=x.
+(1)
+
+
+图1　系统框图
+　　本文假设(A， B)、(A，B1)可镇定，(C1,A)可检测；使用表示传函矩阵C(sI-A)－1B+D. 我们的目的就是要求设计动态的状态反馈控制器
+u=K(s)x
+(2)
+使得闭环系统内部稳定，并极小化‖Tzw‖2，而且在出现执行器失效的情况下系统保持稳定. 
+　　由最优控制理论知：在全状态反馈下，一定存在一使得‖Tzw‖2极小的允许控制器(使得系统内部稳定的控制器)，K0=F就是一个这样的控制器， 其中常实矩阵F为
+
+(3)
+常矩阵X是代数Riccati方程
+
+(4)
+的唯一正定解. 但式(3)确定的反馈阵F并不是唯一极小化‖Tzw‖2的允许控制器，引理2.2将给出极小化‖Tzw‖2的允许控制器的全部参数化形式的解.定义
+Π1=I-B1B1+, AF=A+BF, C1F=C1+D1F, 
+(5)
+式中，矩阵Π1是(imB1)⊥的正交投影. AF是一稳定矩阵. 定义传函矩阵集合
+S={Q∈RH∞｜Q=WΠ1(sI-AF), W∈RH2}.
+(6)
+　　引理2.1.　考虑图1所示的反馈系统，其中G由式(1)给定，那么控制器K(s)是允许的，当且仅当存在Q∈RH∞, K等于图2中从y到u的传函矩阵，其中
+
+(7)
+
+
+图2　控制器的LFT参数化形式
+　　引理2.2.　考虑图1所示的反馈系统，其中G由式(1)给定，S由式(6)给定，那么极小化‖Tzw‖2的控制器K(s)是允许的当且仅当K(s)等于图2中从y到u的传函矩阵，其中Q∈S.
+　　这两个引理的详细证明见文［3］. 当imB1=Rn(n为状态维数)时，有Π1=0,那么仅存在唯一的状态反馈控制器K0=F; 当imB1为Rn的正则子空间时，由式(5)可得到由W参数化的允许控制器族. 这就使得找到满足某些约束条件(如完整性)的控制器成为可能. 假设W=[AW,AWBWΠ1-BWΠ1AF,CW,CWBW]∈RH2, 由式(6)有
+Q=[AW,AWBWΠ1-BWΠ1AF,CW,CWBW],
+(8)
+代入式(7)， 消去稳定的不可观模，引理2.2的控制器K(s)就为
+AK=AW+BWΠ1BCW, 
+(9)
+K=[AK,AKBWΠ1-BWΠ1AF,-CW,F-CWBWΠ1]. 
+(10)
+3　对执行器失效具有完整性的H2最优控制器
+　　假设控制系统中元件(执行器或传感器)出现故障(我们考虑无论输入值如何，输出值皆为零的故障)， 这就相当于结构摄动使得矩阵B(C)的某些列(行)为零， 为描述元件故障，引入开关矩阵
+Lk=diag{δk1,δk2,…,δkm},
+(11)
+其中δki=1时表示第k个故障状态中元件i正常；δki=0时表示第k个故障状态中元件i出现故障. 我们考虑有执行器失效的情况. 假设第k个故障状态为第i个执行器失效， 若B=[b1,b2,…,br]，则Bk=BLk=[b1,…,bi-1,0,bi+1,…,br]， 令k=[b1,…,bi-1,bi+1,…,br];若有两个执行器失效，不妨设为第i,j号失效，则Bk=BLk=[b1,…,bi-1,0,bi+1,…,bj-1,0,bj+1,…,br], 令k=[b1,…,bi-1,bi+1,…,bj-1,bj+1,…,br]；其他情况类似. 我们假定(A，Bk)可镇定，否则没有意义，因而(A，k)也是可镇定的. 因此我们总可以通过以下方法找到使得A+BkFk、A+BFk稳定的实矩阵Fk. 
+　　1) 得到使得Ak=A+kk稳定的实矩阵k;
+　　2) 令Fk为对应于执行器失效的行为0行向量，对应于执行器未失效的行为Fk的相应行构成的矩阵，因此kk=BkFk=BFk，这样必有AFk=A+BFk=A+BkFk=A+kk稳定. 
+　　引理3.1［4］.　对于可镇定可检测系统(1)，Fk是使得AFk=A+BFk=A+BkFk均稳定的实矩阵，对执行器失效的故障状态k具有完整性的H2最优控制器参数化形式为
+K(s)=Fk-Qk0(I-Nk0Qk0)-1, Qk0∈Ω, 
+其中Ω={Qk0｜Qk0∈RH∞,Qk∈RH∞},其中
+Qk0=[AF,BF-Fk,I]Q[AF,B(F-Fk),I,I]-(F-Fk)[AF,B(F-Fk),I,I],
+(12)
+Qk=Qk0(I-[AFk,B-Bk,I,0]Qk0)-1.
+(13)
+　　定理3.1.　对于可镇定可检测系统(1)， F是式(3)和式(4)所确定的实矩阵， 对执行器失效的故障状态具有完整性的H2最优控制器参数化形式为
+K=[AK,AKBWΠ1-BWΠ1AF,-CW,F-CWBWΠ1], W∈Ω,
+其中Ω={W∈RH2, 且W镇定所有Zk, Lk∈L}，其中
+Zk=[A+BkF,Bk,Π1B(Lk-I)F,BΠ1(I-Lk)].
+(14)
+　　证明.　由式(13)知， Qk∈RH∞当且仅当(I-Qk0)-1∈RH∞. 令Q=， 将式(12)代入有
+
+因此　Qk∈RH∞　当且仅当AT稳定. 而经相似变换可发现AT稳定当且仅当k稳定
+
+由此可见， Qk∈RH∞ 当且仅当Ek稳定. 这就相当于设计控制器W镇定辅助对象Zk. 从而H2最优控制器K(s)对执行器失效的所有可能故障状态具有完整性，当且仅当对于所有Lk∈L, W∈RH2镇定Zk.
+证毕. 
+　　因此具有完整性的H2最优控制器的设计可以转化为设计W∈RH2同时镇定辅助对象Zk， 也就是设计一严格正则的稳定控制器同时镇定辅助对象Zk. 对于同时镇定问题， 我们已经证明可以通过迭代线性矩阵不等式求解， 其求解算法已另文讨论，由于篇幅所限， 这里不给出其求解算法. 
+4　设计实例
+　　考虑如下系统(1)
+
+这是一开环不稳定的系统，特征值为, 但系统是可控的，而且在出现任一执行器失效的情况下仍是可控的，假定第一个执行器可能会出现故障. 由式(3)，(4)得
+
+可以验证该常状态反馈阵组成的闭环系统在出现执行器失效时系统不稳定. 使用本文的方法可以求得 , 因此存在不止一个最优控制器，由式(14)有
+
+取 ，显然W镇定Z1，因此控制器K为
+
+　　正常时闭环系统的极点为{-1±3.4278i,-4.59,-0.61}，第一个执行器失效时闭环系统的极点为{-0.8382±2.8844i,-4.4984,-0.7752}，显然是一稳定的系统，且正常时该控制器极小化‖Tzw‖2，即为H2最优控制器.
+5　结束语
+　　本文讨论了状态反馈下的对执行器失效具有完整性的H2最优控制器K(s)的参数化形式， 并给出了其设计方法. 这无疑比以牺牲标称系统性能为代价来保持故障系统的稳定性的设计方法优越得多， 因此将具有很大的实际意义. 基于对偶性可以得到对传感器失效具有完整性的H2最优观测器的设计方法. 由于线性系统的控制器设计可以基于分离原则进行设计，因此使用本文的方法可以得到具有完整性的H2最优控制器. 
+1)　国家自然科学基金资助. (编号 69604007)
+作者单位:浙江大学工业控制技术研究所，工业控制技术国家重点实验室　杭州　310027
+参考文献
+[1]　葛建华，孙优贤.容错控制系统的分析与综合.杭州：浙江大学出版社，1994.
+[2]　Shimemura E, Fujita M A. Design method for linear state feedback systems possessing integrity based on a solution of a riccati-type equation. Int J Control, 1985, 42:881―889.
+[3]　Rotea M A, Khargonekar P P. H2-optimal Control with an H∞-constraint:The state feedback case. Automatica, 1991, 27:307―316.
+[4]　曹永岩， 孙优贤.具有完整性的H2最优控制器.信息与控制，1996， 25：165―170.
+收稿日期　1994-07-02

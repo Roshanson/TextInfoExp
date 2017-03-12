@@ -1,0 +1,95 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第19卷 第3期  Vol.19 No.3 1999
+
+
+
+计算两类网络的可靠性的多项式时间算法
+孔繁甲　王光兴　张祥德
+摘　要　定义了两类有向网络――ORC-网络和IRC-网络,并且提出一个计算它们的根通信可靠性(网络的一个特定结点(根点)能与其余每个结点通信的概率)的多项式时间算法.对于ORC-网络和IRC-网络,该算法的时间复杂度分别是O(｜E｜)和O(｜V｜*｜E｜),这里,｜V｜,｜E｜分别表示网络所含结点和边的数量.
+关键词　网络,可靠性,算法,算法复杂性.
+中图法分类号　TP302
+A Polynomial Time Algorithm for Computing Reliability of 
+Two Classes of Networks
+KONG Fan-jia　ZHANG Xiang-de
+Department of Mathematics Northeastern University Shenyang 110006
+WANG Guang-xing
+Department of Computer Science Northeastern University Shenyang 110006
+Abstract　 In this paper, two classes of directed networks――ORC-networks and IRC-networks are defined, and a polynomial time algorithm is presented for computing their rooted communication reliability, i.e. the probability that a specified vertex, root vertex, can communicate with all other vertices. The complexity of the algorithm for ORC-networks and IRC-networks is O(｜E｜) and O(｜V｜*｜E｜) respectively, where ｜V｜ and ｜E｜ are the number of vertices and of edges of networks respectively.
+Key words　Network, reliability, algorithm, algorithm complexity.
+　　网络的根通信可靠性是指网络的一个特定结点(称作根点)能与所有其他结点通信的概率.这是计算机网络中一个很重要的问题.人们对此已经进行了广泛的研究［1～4］.本文将定义两类特殊的有向网络,并提出一个计算它们的根通信可靠性的多项式时间算法.
+1 定义、记号、假设
+　　设G=(V,E)是一个有向图,v,w∈V.如果w是与v所关联的一条边的另一个端点,称w是v的一个邻结点(neighbor).B(v)表示所有v的邻结点组成的集合.如果v有且仅有两个邻结点,称v是2-邻结点.如果存在一条边(v,w)∈E,称w是v的一个出邻结点(out-neighbor),v是w的一个入邻结点(in-neighbor).Vi(v)和Vo(v)分别表示v的所有入邻结点和出邻结点组成的集合.Ei(v)表示由所有进入v的边组成的集合.如果v有且仅有一个入邻结点(不考虑其出邻结点),称v是1-入邻结点;如果v没有出邻结点,称v是0-出邻结点.设s是G的根点,由于同一个有向网络G,若指定不同的根点,它的根通信可靠性也不同.为了方便,我们定义G连同其根点s为一个RC-网络,用Gs=(V,E,s)表示.于是,同一个网络指定不同的根点得到不同的RC-网络.一个只含有根点的RC-网络称为平凡RC-网络.如果s能到达每一个其他结点,称这是一个可达RC-网络.一个RC-网络的根通信可靠性由R(Gs)表示.下面我们定义ORC-网络与IRC-网络.在定义以前,首先介绍3个网络变换.
+　　.2-邻结点变换: 设v是G的一个2-邻结点,它的两个邻结点分别是u,w.如果u和w分别是v的一个入邻结点和一个出邻结点,那么,G增加一条边(u,w);如果w和u分别是v的一个入邻结点和一个出邻结点,那么,G增加一条边(w,u);删除结点v.
+　　.0-出邻结点变换: 设v是G的一个0-出邻结点,或者v仅有一个邻结点,那么,删除结点v.
+　　.1-入邻结点变换: 设v是G的一个1-入邻结点,u是v的入邻结点,那么,删除所有其两个端点是u和v的边,用u代替v且将原来与v关联的所有边与u关联.
+　　ORC-网络: 一个可达的RC-网络,它能通过连续地对非根点进行2-邻结点和0-出邻结点变换,得到一个平凡的RC-网络.
+　　IRC-网络: 一个可达的RC-网络,它能通过连续地对非根点进行2-邻结点、0-出邻结点和1-入邻结点变换,得到一个平凡的RC-网络.
+　　限于篇幅,其他的定义、记号、假设请参看文献［1,2,5］.
+2 两类网络的性质和可靠性保护缩减
+　　下面,我们证明任一带有一个根点的串并联有向网络和无圈有向网络均是ORC-网络.在证明该结论以前,首先提出两个引理.
+　　引理1. 任何一个含有两个以上结点的串并联有向网络至少含有两个2-邻结点.
+　　证明:参看文献［3,5］,限于篇幅,这里从略.
+　　引理2. 任何一个无圈有向网络G至少含有一个0-出邻结点.
+　　证明:限于篇幅,这里从略.
+　　定理1. 任何一个带有根点的串并联有向网络或一个带有根点的无圈有向网络,如果它们是可达的,则一定是ORC-网络.
+　　证明:设Gs是一个带有根点s的可达串并联有向网络.若Gs只含有两个结点,那么非根点的结点一定可进行0-出邻结点变换,使Gs变成一个平凡的RC-网络.若Gs含有两个以上结点,由引理1,总存在两个2-邻结点.所以总存在一个非根点的2-邻结点,对其进行2-邻结点变换,然后再进行所有可能的0-出邻结点变换.如果变换后的Gs不是一个平凡RC-网络,那么,Gs仍是一个串并联有向网络.重复上述过程,最后可将Gs变成平凡RC-网络.对于带有根点s的无圈有向网络,由引理2,总存在一个0-出邻结点.因为Gs是可达RC-网络,根点s不是0-出邻结点,对所有0-出邻结点连续进行0-出邻结点变换,Gs能变成平凡RC-网络.
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　□
+　　为了计算ORC-网络和IRC-网络的根通信可靠性,下面给出两个新的可靠性保护缩减(reliability-preserving reduction),简称缩减.
+　　(1) 0-出邻结点缩减:让v是Gs的一个0-出邻结点,或者v仅有一个邻结点,它既是出邻结点,又是入邻结点.如果Gs删除结点v后生成G′s,那么R(Gs)=ΩR(G′s),这里Ω=1-∏ei∈Ei(v)qei.
+　　(2) 1-入邻结点缩减:让v是Gs的一个1-入邻结点,u是v的入邻结点.如果删除两个端点分别是u和v的所有边,用u代替v,将原来与v关联的边现在与u关联生成G′s.那么R(Gs)=ΩR(G′s),这里Ω=p(u,v).
+3 算法和它的时间复杂性
+　　下面提出一个算法,它可以识别一个RC-网络是否是ORC-网络或IRC-网络.如果是,算法计算其根通信可靠性R(Gs),否则,给出一个非IRC-网络的信息.算法中用到的并联缩减与2-邻结点缩减请参阅文献［1,2,5］.
+　　算法.
+　　输入: 输入一个RC-网络Gs=(V,E,s)和每条边e的可靠性pe.
+　　输出: 如果Gs是IRC-网络,输出R(Gs),否则输出Gs不是IRC-网络的信息.
+　　Begin
+　　1.使用深度优先搜索法检查Gs是否是可达的,若不是,Print(“Gs是一个不可达RC-网络,R(Gs)=0”).
+　　2.f←1.0,stack←V-s,标记V中每个结点“in”.
+　　3.{识别2-邻结点与0-出邻结点并进行相应的缩减}.
+　　While (stack≠) do
+　　Begin
+　　(a) 从stack中取出一个结点v,标记它“out”.
+　　(b) 按顺序一个接一个地考查入或出v的边,分别记录考查过的v的入邻结点与邻结点的数量,直到发现v的出邻结点数量大于0,同时v的邻结点数量大于2{说明结点v既不是2-邻结点,也不是0-出结点},或者入与出v的所有边都已考查完毕为止.在这个过程中,若出现并联边,同时进行并联边缩减.
+　　(c) If (｜No(v)｜=0或者｜B(v)｜≤2) then
+　　Begin
+　　Ⅰ.将B(v)中标记“out”的结点标记“in”加入stack.
+　　Ⅱ.If (｜N0(v)｜=0或者｜B(v)｜=1), then 进行0-出邻结点缩减.
+　　Else {v是一个2-邻结点}进行2-邻结点缩减.
+　　Ⅲ.f=f*Ω.
+　　End.
+　　End.
+　　4.If Gs是平凡RC-网络,then Print(“Gs是一个ORC-网络,R(Gs)是”f), stop.
+　　5.stack←V-s,标记V-s中每个结点“in”.
+　　6.{识别2-邻结点,0-出邻结点和1-入邻结点,并进行相应的缩减}.
+　　While (stack≠) do
+　　Begin
+　　(a) 从stack中取出一个结点v,标记它“out”.
+　　(b) 按顺序一个接一个地考查入或出v的边,分别记录所考查过的v的入邻结点与出邻结点的数量,直到发现v的出邻结点的数量大于0,同时v的入邻结点数量大于1,并且v的邻结点数量大于2{说明结点v既不是2-邻结点,也不是0-出邻结点和1-入邻结点},或者与v关联的边已经考查完毕为止.在这个过程中,当出现并联边时,同时也进行并联缩减.
+　　(c) If (｜No(v)｜=0或｜B(v)｜=2或｜Ni(v)｜=1).
+　　Begin
+　　Ⅰ.将B(v)中标记“out”的结点标记“in”,将它们加入stack.
+　　Ⅱ.If (｜No(v)｜=0){v是一个0-出邻结点} then 进行0-出邻结点缩减.
+　　Else if (｜B(v)｜=2){v是一个2-邻结点} then 进行2-邻结点缩减.
+　　else {v是一个1-入邻结点}进行1-入邻结点缩减.
+　　Ⅲ.f=f*Ω.
+　　End.
+　　7.If Gs是一个平凡RC-网络 then Print(“Gs是一个IRC-网络,R(Gs)是”, f), stop.
+　　Else Print(“Gs不是一个IRC-网络”), stop.
+　　End
+　　下面我们讨论算法的复杂性.
+　　定理2. 算法计算ORC-网络Gs和IRC-网络Gs的根通信可靠性R(Gs)的时间复杂度分别是O(｜E｜)和O(｜V｜.｜E｜),这里,｜V｜,｜E｜分别表示Gs的结点和边的数量.
+证明:由于证明较长,限于篇幅,我们仅证明一个关键事实,即在第3步,最多有｜E｜+3｜V｜个结点通过stack.开始｜V｜-1个结点加入stack,每执行一次2-邻结点缩减删除一个结点,且最多有两个结点加入stack.所以进行所有2-邻结点缩减后,最多2｜V｜个结点加入stack.每执行一次0-出邻结点缩减,最多｜E*｜个结点加入stack,这里,｜E*｜是进行0-出邻结点缩减所删除边的数量.所以,执行所有0-出邻结点缩减后,最多有｜E｜个结点加入stack.总共最多有｜E｜+3｜V｜个结点通过stack.完整的证明请参阅文献［2,3］,这里从略.
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　□
+　　作者孔繁甲,1963年生,博士，副教授,主要研究领域为网络可靠性,容错计算.王光兴,1937年生,教授，博士生导师,主要研究领域为计算机应用,计算机通信.张祥德,1963年生,博士,副教授，主要研究领域为组合数学，网络通信.
+　　本文通讯联系人:孔繁甲，沈阳 110006,东北大学数学系
+作者单位：孔繁甲 张祥德：东北大学数学系　沈阳　110006
+　　　　　王光兴：东北大学计算机科学系　沈阳　110006
+　
+参考文献
+［1］Page L B, Perry J E. Reliability of directed networks using the factoring theorem. IEEE Transactions on Reliability, 1989,38(5):556～562
+［2］Agrawal A, Satyanarayana A. Network reliability analysis using 2-connected digraph reductions. Networks, 1985,15(3):239～256
+［3］Politof T, Satyanarayana A. Efficient algorithms for reliability analysis of planar networks――a survey. IEEE Transactions on Reliability, 1986,35(3):252～258
+［4］Zhao Lian-chang, Kong Fan-jia. A new formula and an algorithm for reliability analysis of network. Microelectronic Reliability, 1997,37(3):511～518
+［5］Agrawal A, Satyanarayana A. An O(｜E｜) time algorithm for computing the reliability of a class of directed networks. Operations Research, 1984,32(3):493～515
+（1998-03-12收稿）

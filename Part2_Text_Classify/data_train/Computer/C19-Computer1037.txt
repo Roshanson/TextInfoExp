@@ -1,0 +1,105 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+非线性系统的实现与最小阶问题1)
+郑毓蕃　曾晓东
+摘　要　在系统的微分域及相应的微分向量空间上定义了一个非交换的多项式环(算子环)，并利用这个环定义非线性系统的传递函数.用微分向量空间为工具，讨论单输入/单输出非线性系统的实现问题.主要结果回答了：1)在什么条件下，不同的输入/输出微分方程有相同(等价)的实现；2)在未知实现的条件下，如何确定输入/输出微分方程最小实现的阶数.覆盖了线性系统理论的相关结果.
+关键词　非线性系统，实现，微分向量空间，非交换环，传递函数.
+REALIZATION AND MINIMAL ORDER FOR NONLINEAR SYSTEMS
+ZHENG YUFAN
+(Institute of Systems Science,East China Normal University,Shang hai 200062)
+ZENG XIAODONG
+(Dept.of Automation,Sichuan Union University,Chengdu 610065)
+Abstract　The realization problems for single－input/single－output differential equations are discussed within the framework of differen tial vector space.Main results of this work answer two fundamental questions:(1) und er what conditions different input/output differential equations have the sa me r ealization;(2)how to calculate the order of the minimal realization of input/out put differential equations without knowing its realization.In order to solve the se problems the notion of transfer function for nonlinear systems is defined over a non－commutative polynomial ring.The description of nonlinear realization pr oblems is fully incorporated with that of the linear control theory.
+Key words　Nonlinear system,realization,differential vector space,non－commutative ring,transfer function.
+1　引言
+　　实现问题是控制理论中一个基本问题.对于非线性系统的实现问题，七十年代末，Fliess［1］回答了如何由生成级数形式的输入/输出方程构造状态空间方程的实现.以后其他作者［2，3］将这方面工作做得更为完善.
+　　本文讨论了输入/输出微分方程的实现以及最小实现的阶计算问题.这些问题已有一些研究结果，例如文［4］给出了非线系统实现的一个定义，并给出了输入/输出微分方程存在状态空间实现的一个必要但非充分的条件.文［5］讨论了最小实现的阶.
+　　本文讨论单输入/单输出微分方程
+　　(1)
+其中u是输入变量，y是输出变量.k,r是函数中关于y,u的最高导数阶，且k＞r.
+　　问题1. 不同的输入/输出方程，满足什么条件它们具有等价的仿射状态空间实现
+=f(x)+g(x)u,　y=h(x).　　　(2)
+　　回答这个问题并非易事，考察以下三个方程
+-yu=0.　　(3)
+　　(4)
+　　(5)
+及三个状态空间方程
+　(6)，(7)，(8)
+　　消去状态变量x，式(6)，(7)，(8)分别导出式(3)，(4)，(5).按文［2］的定义，式(6)，(7)，(8)分别是式(3)，(4)，(5)的实现.容易验证：式(3)的任意解(y(t),u(t))必为式(4)，(5)的解.那么根据线性系统的理论，式(7)，(8)也是式(3)的实现.进一步式(6)，(7)，(8)应该是式(3)，(4)，(5)中任一个方程的三个不同形式，但又彼此等价的实现.对非线性系统，这个结论是不对的.因为式(8)是一个能观，能控的系统，所以式(8)本身是一个最小实现(参阅文［6］，这样式(8)不可能是式(3)的实现.式(7)是(4)的一个实现，对(7)作能控性分解就发现，式(7)与(6)都是(3)的实现.这样(6)，(7)，(8)这三个实现之间并不存在等价性.
+　　问题2. 给定一个可实现的输入/输出方程，如何计算它的最小实现的阶数而无需构造它的实现.
+　　在线性系统理论中，上述二问题是通过寻找输入/输出方程的既约传递函数而作出回答的.同样，本文引入非线性输入/输出方程传递函数的概念，然后用它来回答第一个问题，进一步回答第二个问题.
+
+2　预备知识
+　　假定方程(1)中φ是变量的局部解析函数，且满足φ(0，0，…，0)=0,采用文［7］中的数学符号和概念.令为y,,…,y(k),u,…,u(r),…为自变量的亚纯函数的全体所组成的函数域.根据方程(1)，又是一个微分域.在上生成一个微分向量空间
+　(9)
+有两个子空间，分别称为(1)的输入与输出微分向量空间
+　(10)
+对方程(1)两边取全微分，得到公式
+　　(11)
+在上定义微分算子它满足以下性质：令s0是恒等算子，k1，
+skdy:=dy(k),skdu:=du(k).　　(12)
+记［s］为上的多项式环，将(11)记为
+　　(13)
+其中
+
+这样(13)可简化为P(s)dy=Q(s)du,其中
+
+根据文［8］，［s］是满足Ore条件的非交换环.因此，［s］可以扩张为分式环(s).也即(s)中在任意一个非零元R(s)，均存在其(左)逆元R-1(s).
+　　［s］中的两个对元(P1(s),Q1(s)),(P2(s),Q2(s))称为等价的，如果存在D(s)∈［s］，使得P1(s)=D(s)P2(s),Q1(s)=D(s)Q2(s).那么D(s)称为(P1(s),Q1(s))的左公因子.如果D(s)∈，则D(s)称为“常数”.因为P(s)≠0,式(13)又可记为
+dy=P-1(s)Q(s)du=H(s)du,H(s)∈(s).　　(14)
+H(s)则称式(1)的一个传递函数.如果式(1)是线性常系数微分方程，那么由上述方法定义的H(s)与线性系统理论中定义的传递函数完全一致.对线性系统退化为实数域R，［s］的一个重要性质是运用欧几里得算法可以求出两个多项式P(s)与Q(s)的最大(左)公因子(g.c.l .d）［8］.
+　　给定系统(1)，定义了相关的微分域，微分向量空间E及多项式环［s］.
+　　定义1. 系统(1)的传递函数H(s)=P-1(s)Q(s)称为既约的，如果P(s),Q(s)的g.c.l.d是［s］中的常数.
+　　根据文［8］，任给中的元φ(一个函数)，算子s与φ的乘积sφ也是一个算子，满足
+　　(15)
+以式(3)定义的［s］为例：对式(3)求全微分则有sdy-ydu=0.在它的两边再用s作用一次：s2dy-sydu=0.考察第二项
+
+即sy=ys+，它满足(15)式.
+　　分别计算式(3)，(4)，(5)的传递函数，则有
+根据(15)式，,因而H1(s)有相同的既约传递函数.用欧几里得算法验证，H3(s)是既约分式.因此，式(3)，(4)，(5)不具有相互等价的实现.从而对问题1，我们有下面的结论.
+　　定理1. 不同输入/输出方程具有等价仿射状态方程实现，如果它们具有相同的既约传递函数.
+
+3　最小实现的阶
+　　由文［6］知，一个实现是最小实现当且仅当它是能控，能观的.给定方程(2)，消去状态变 量x而得到的输入/输出微分方程(1)表征了式(2)的能观部分.式(2)不能观部分对(1)是没有 任何影响的.给定输入/输出系统(1)，如果它可实现，我们可以通过计算它的既约传递函数 来求最小实现的阶.本节用另一种方法，由方程(1)计算它的最小实现的阶.
+　　首先由方程(1)的“可实现性”，可改写成以下形式［3］
+y(k)=φ0(y,…,y(k-1),u,…,u(r-1))+φ1(y,…,y(k-1),u,…,u(r-1))u(r).　　(16)
+令令v=u(r)看作新的输入变量，在增广状态下，(16)式可以记为
+　　(17)
+简记(17)式为　　　　　　　　(18)
+其中　　　　　　
+如果式(2)是式(1)的能观实现，则式(2)可(动态)扩张为
+　　　(19)
+　　这样，式(16)或(17)与(19)是同一个系统在不同状态坐标系下的两个表现.运用文［7］中的 符号和概念，令是由,v,，…为自变量的亚纯函数域.
+
+　　对系统(18)定义［9］
+　　(20)
+　　引理1［9］. 对系统(18)的子空间 链满足下式
+　　(21)
+其中
+　　如果，则∞称为式(18)的不能控微分子空间.记.
+　　定理2. 系统(1)的最小实现阶数为
+　　(22)
+　　证明. 由于式(19)是(2)的动态扩张.式(19)与(2)具有相同的能观性质，即(19)是能观系统. 在(19)中，w1,…,wr是能控状态变量，式(19)与(2)有相同的不能控状态变量.因为式(19)与式(18)(或式(17))是同一系统，(17)的不能控微分子空间应与(2)的不能控子空间必然 相同.正好是系统(2)的能控能观子系统的阶数.所以m是式(1)的最小实现的阶数.
+　　下面我们来求方程(3)，(4)，(5)的最小实现的阶.
+　　易知方程(3)的扩展仿射系统为　=zu,　y=z.很容易得到1==span｛dz｝,2=φ,3=…=∞=φ,所以=0,又k=1,所以m=k-=1，即为(3)的最小实现的阶.
+　　同样有(4)的扩展仿射系统为很容易得到1==span｛dz1,dz2,dw｝,2=span｛dz1,d(z2-z1w)｝,3=span｛d(z2-z1w)｝,…,∞=span｛d(z2-z1w)｝,所以=1,又k=2,所以m=k-=1,即为式(4)的最小实现的阶.
+　　式(5)的扩展仿射系统为　很容易得到1==span｛dz1,dz2,dw｝,2=span｛dz1｝,3=,…,∞=所以=0,又k=2,所以m=k-=2即为式(5)的最小实现的阶.
+　　1)国家自然科学基金资助项目，国家教委博士点基金资助项目.
+作者单位：郑毓蕃(华东师范大学系统科学研究所　上海　200062)
+　　　　　曾晓东(四川联合大学自动化系　成都　610065)
+参考文献
+1　Fliess M.Realization of nonlinear systems and abstract transitive Lie algebras.Bull.of the American Mathematical Society.2,1980
+2 Jakubczyk B.Realization theory for nonlinear systems;three approaches,in Alge braic and Geometric Methods in Nonlinear Control Theory.M.Fliess and M.Hazewinke l,eds.,Reidel,Dordrecht,1986.3-13
+3 Wang Y,Sontag S.Generating series and nonlinear systems:analytic aspects,loca l realizability,and i/o representations.Forum Math.4 1992,299-322
+4 P E Crouch and F.Lamnabhi－Lagarrigue.Realizations of input－output different ial equations,Recent Advances in Mathematical Theory of Systems,Control,Networks and Signal Processing Ⅱ Proceeding MTNS－91.Mita Press,1992.259-264
+5 Zheng Y F,Liu P,Zinober A,Moog,C.What is the dimension of minimal realization of a nonlinear system?,Procedings of the 34th Conference on Decision & Control, 4239-4244,1995
+6 Isidori A.Nonlinear control systems:an introduction,2nd Edition.Berlin:Spring －Verlag,1989
+7 Benedetto.Di M.D,Grizzle J.W.Moog.C.H.Rank invariant of nonlinear systems,SIAM.J.Contr,Opt.,1989,27:658-672
+8 Ore O.Theory of non－commutative polynomials.Ann.of Mathematics,1933,34:480-508
+9 Zheng Y F， Cao L.Complete invariant of nonlinear control systems.Proc.IFAC N OLCOS－95,1995
+收稿日期　1995-10-12

@@ -1,0 +1,100 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第4期　Vol.23　No.4　1997
+
+
+
+神经网络在柔性生产线动态生产
+调度中的应用研究1)
+汪小帆　宋文忠　王执铨
+　　摘　要　把多条柔性生产线、多种产品的动态生产调度(MMDPS)问题归结为一混合非线性整数规则问题.基于神经网络优化计算原理，设计了求解 MMDPS 问题的连续时间动态神经网络模型，并给出了仿真结果.
+　　关键词　生产调度，柔性生产线，神经网络.
+A STUDY ON THE APPLICATION OF NEURAL NETWORKS
+TO DYNAMIC PRODUCTION SCHEDULING FOR
+FLEXIBLE PRODUCTION LINES
+WANG XIAOFAN　　SONG WENZHONG
+(Institute of Automation Southeast University, Nanjing 210096)
+WANG ZHIQUAN
+(Department of Automatic Control Nanjing University of Science & Technology, Nanjing 210094)
+Abstract　The multiline,multiproduct dynamic production schduling(MMDPS)problem is formulated as a mixed nonlinear integer programming problem.Based on the principle of neural network optimization,a continous-time dynamic neural network for solving th MMDPS problem is designed.Simulation results are also presented.
+Key words　production scheduling,flexible production line,neural network.
+1　引言
+　　采用柔性生产线的企业面临的一个重要问题是，如何合理安排生产，使企业在满足不断变化的市场要求的情形下，尽可能地降低成本.仅凭管理人员的经验往往难以获得满意的调度方案［1―3］.本文首先把多条柔性生产线、多种产品的动态生产调度(MMDPS)问题归结为一混合非线性整数规则问题.然后基于神经网络优化计算原理，设计了求解MMDPS 问题的动态神经网络模型.
+2　MMDPS问题及其数学模型
+　　MMDPS 问题可叙述如下：一工厂有多条生产线，需制造多种产品.其中一条生产线可制造若干种产品，一种产品可在若干条生产线上制造，但假定在一个周期(如一星期)内一条生产线只能以固定速度生产一种产品.需要确定工厂在未来若干个周期中的生产调度方案，使得在满足市场需求的情况下，企业生产的总费用最小.从实际出发，可考虑以下几方面的费用：首先是各条生产线上制造产品的费用；其次，由于制造的产品通常并不能立即全部投放市场，从而有一定的库存费用；此外，由于生产线还不具备完全的柔性，因而在生产线上变更制造产品时还需化一定的费用.
+　　现引入下列记号：L――生产线数目；P――产品种类；M――总的周期数；Li――可用于制造产品 i 的生产线的集合；Pj――可由生产线 j 制造的产品的集合(生产线 j 制造产品 0 表示生产线 j 处于关闭状态)；cij――生产线 j 制造产品 i 的单位费用；dis――周期 s 对产品 i 的需求量(大于零)；hi――产品 i 在一个周期的单位库存费用；pij――生产线 j 在一个周期内制造产品 i 的产量；qij――生产线 j 由制造其它产品变更为制造产品 i 时需化的费用.假设各种产品的初始库存均为零.
+　　以 Zijms表示周期 m 在生产线 j 上制造的产品 i 中用于在周期 s(sM)供应市场的数量；Zijm，M+1为周期 m 在生产线 j 上制造的产品 i 中在周期 M 结束后所剩的数量；记 Cij≡(cij+(s-m)hi)dis,Vijms≡Zijms／dis.定义 0-1 变量 Yijm如下：若生产线 j 在周期 m 制造产品i，则 Yijm=1;否则，Yijm=0.
+　　MMDPS问题可归结为如下的混合非线性整数规划问题.
+
+(1a)
+
+(1b)
+
+(1c)
+
+(1d)
+
+m=1,2,…,M;　s=1,2,…,M+1.
+(1e)
+Yijm∈｛0,1｝,i=0,1,…,P;j=1,2,…,L;m=1,2,…,M.
+(1f)
+　　目标函数 F 中第一项为 M 个周期内各条生产线上的生产费用及产品的库存费用，第二项为各条生产线在变更制造产品时所化的费用.条件式(1b)用于保证各个周期对产品的需求能得到满足；式(1c)反映一条生产线在一个周期只制造一种产品；式(1d)表示若生产线 j 在某个周期制造产品 i，则产量为 pij.
+3　用神经网络求解MMDPS 问题
+　　神经网络优化计算原理可见文［4］，为求解上述 MMDPS 问题，我们构造了一由(1/2)M(M+5)(=1Li)+ML0 个神经元组成的连续时间动态神经网络(CDNN).该网络共有 M+2 层，第 s 层 (1sM) 含 s 个二维阵列，最后两层各有 M 个二维阵列.在前 M+1 层中，每个阵列均含有 =1Li 个神经元，排成 P 行 L 列；最后一层中的每个矩阵均含有=0Li 个神经元，排成 P+1 行 L 列.在上述每个阵列中，若生产线j能制造产品 i，则第 i 行第 j 列处有一个神经元，否则该处无神经元.以(i,j,m,s)表示第 s 层的第 m 个阵列中第 i 列处的神经元，我们要使神经元(i,j,m,s)(sM+1) 的输出对应于 Vijms,神经元(i,j,m,M+2)的输出对应于 Yijm,为此，构造相应的能量函数如下：
+
+
+(2)
+其中 A，B，C 为正的常数. E 中第一项为 MMDPS 问题中的目标函数，第二至第四项分别对应于 MMDPS 模型中的约束条件式(1b)―(1d).我们将通过对神经元输出函数的选取以限制各变量的取值范围.
+　　把能量函数 E 写成二次型，可知神经元之间的连接权为
+
+(3)
+
+(4)
+　　可以看出，网络的连接方式是较为稀疏的，如在不同层之间，只有处于同一位置的神经元才相互连接，因而便于硬件实现.网络的状态演化方程为
+
+(5)
+
+(6)
+网络输出为
+Vijms=(1+exp(-xijms/λ1))-1,i=1,2,…,P;　j=1,2,…,L;　m=1,2,…,M;
+　　　　s=m,…,M+1.
+(7)
+Yijm=(1+exp(-xijm,M+2/λ2))-1,　i=0,1,…,P;　j=1,2,…,L;
+　　　　m=1,2,…,M.
+(8)
+为避免陷入局部极小，采用模拟增益退火方案，即取 λ1=1+λ2，λ2=0.995tλ0，其中 λ0 为常数.当 t→∞时，λ1→1，λ2→0，Vijms∈［0，1］，Yijm趋于 0 或1.
+4　仿真结果
+　　设一工厂有 8 条生产线，制造8种产品，生产可能性见表1.
+表1　生产线的生产可能性
+
+产品ABCDEFGH
+生产线
+1　　　
+2　　　
+3　　　　　
+4　　　
+5　　　　　
+6　　　　　
+7　　　　
+8　　　　　
+
+　　以一周为一个生产周期，需要制定企业在未来一个季度(13周)的生产调度方案.按文［3］的方法产生 5 组数据.为了在计算机上仿真，把状态方程离散化，固定步长 η=0.002，A=B=C=500.对每个例子，随机选取 20 组初始数据作计算，统计得到可行解的次数，见表2.
+表2　采用CDNN 的计算结果
+
+　可行解次数
+例118
+例216
+例316
+例415
+例513
+平均15.6
+
+1)　“八六三”高技术计划资助项目.
+作者单位：汪小帆　宋文忠　东南大学自动化所　南京　210096
+　　　　　王执铨　南京理工大学自动控制系　南京　210094
+参考文献
+［1］　Gascon A,Leachman R.Adynamic programming solution of the dynamic multiitem single machine scheduling problem.Opns Res. 1988,36(1):50―56.
+［2］　Magnanti T,Vachani R.A strong cutting plane algorithm for production scheduling with changeover costs.Opns Res.1990,38(3):456―473.
+［3］　De Matta R E,Guignard M.Dynamic production scheduling for a process industry.Opns Res.1994,42(3):492―503.
+［4］　焦李成.神经网络计算.西安：西安电子科技大学出版社，1993.105―280.
+收稿日期　1995-09-28

@@ -1,0 +1,288 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000 Vol.19 No.3 P.29-32
+
+
+
+Perl在Web上的应用
+杜轩华　袁方
+　　摘　要：从正则表达式入手,阐述了Perl在文本处理上的强大功能,并结合Web上的常见应用,给出了几个典型的Perl CGI脚本程序。
+　　关键词：正则表达式 CGI接口 Perl语言
+　　Perl（Practical Extraction and Report Language）源于UNIX系统,是一种解释性语言。由于其使用方便,编制的程序短小精悍,特别是由于其强大的文本处理能力,因而成为编制CGI（Common Gateway Interface）程序的主要语言之一。目前,几乎在每一种流行的计算机平台上都有相应的Perl语言解释器,使得用Perl编制的CGI程序具有极好的可移植性,Perl于是成为Web上颇受欢迎的工具之一。而Perl强大的文本处理能力则来自于正则表达式（regular expressions）,因此,正确掌握和使用正则表达式就成了编制Perl程序的关键。
+1 正则表达式简介
+　　正则表达式用于描述给定字符串的组成模式,其构成类似于算术表达式,通过使用各种运算符来组合较小的表达式。利用正则表达式可以在文本行的开头或结尾处查找给定的字符串,也可以查找出现给定次数的字符串。
+1.1 匹配运算
+　　匹配运算有2个操作数:1个目的字符串操作数和1个正则表达式操作数。例如:
+　　$target_string=-/regular_expression/;
+　　或/regular_expression/;#把变量“$_”中的字符串作为缺省的目的字符串。
+　　如果存在匹配,即如果在目的字符串中存在如正则表达式所描述的字符串模式,则返回真,否则返回假。匹配时还可以使用修饰符,以改变整个正则表达式的行为。例如:
+　　/I表示匹配时不分大小写
+　　/g表示进行全局匹配（即不在第1次匹配后停止）
+1.2 候选和分组
+　　正则表达式中的各候选项之间用竖线“|”隔开;当需要把模式中的某些部分隔离时,可以使用圆括号“（ ）”。在Perl中可用变量$1、$2、S3等分别依次引用各“（ ）”中指明的匹配。例如:
+　　$target_string=-/regex1|regex2|regex3/;
+　　$target_string=-/something （regex1|regex2|regex3） something else/;
+　　例1:匹配运算
+　　/we have lettuce|cabbage|potatoes for you/
+　　将匹配:
+　　we have lettuce
+　　……we have lettuce……
+　　cabbage
+　　……cabbage……
+　　potatoes for you
+　　……potatoes for you……
+　　例2:匹配运算
+　　/we have （lettuce|cabbage|potatoes） for you/
+　　将匹配
+　　we have lettuce for you
+　　……we have lettuce for you……
+　　we have cabbage for you
+　　……we have cabbage for you……
+　　we have potatoes for you
+　　……we have potatoes for you……
+1.3 定位符
+　　定位就是将正则表达式限定在目的字符串的特定位置上进行匹配。例如:
+　　^表示在目的字符串的开始处进行匹配
+　　$表示在目的字符串的结尾处进行匹配
+　　\b表示匹配单词的边界
+　　\B表示匹配非单词的边界
+　　例3:匹配运算
+　　/^we have lettuce|cabbage|potatoes for you$/
+　　将匹配:
+　　we have lettuce
+　　we have lettuce……
+　　cabbage
+　　……cabbage……
+　　potatoes for you
+　　……potatoes for you
+　　例4:匹配运算
+　　/^we have （lettuce|cabbage|potatoes） for you$/
+　　将匹配
+　　we have lettuce for you
+　　we have cabbage for you
+　　we have potatoes for you
+1.4 字符类
+　　可使用方括号“[]”在正则表达式中创建特定的字符类;出现在字符类中的“-”表示范围,而出现在字符类中的“^”表示非的含义。例如:
+　　［A-Za-z］表示由全部大写和小写英文字母所构成的类
+　　［aeiou］表示由元音字母所构成的类
+　　［^0-9］表示由非数字字符所构成的类
+1.5 类缩写
+　　某些特定的字符类可以采用缩写形式表示。例如:
+　　。 表示匹配任何单个字符
+　　\w 表示匹配任何单个字母数字字符［a-zA-Z0-9］
+　　\W表示匹配任何单个非字母数字字符［^a-z^A-Z^0-9］
+　　\s 表示匹配任何单个空白字符［\r\t\n\f］（即空格,回车,
+　　　　制表,换行,换页）
+　　\S 表示匹配任何单个非空白字符［^ ^\r^\t^\n^\f］
+　　\d 表示匹配任何单个数字字符［0-9］
+　　\D 表示匹配任何单个非数字字符［^0-9］
+1.6 数量词
+　　用以指明其前面的字符或字符类在匹配时需出现的次数,并在尽量接近目的字符串的结尾处进行匹配。例如:
+　　｛min,max｝表示至少出现min次,但不超过max次
+　　｛min,｝表示至少出现min次
+　　｛n｝表示恰好出现n次
+　　*　　相当于｛0,｝
+　　+　　相当于｛1,｝
+　　?　　相当于｛0,1｝
+　　例5:假设
+　　$string_1=″The quick brown fox″;
+　　$string_2=″The quick brown and silver fox was brown 
+　　and silver″;
+　　$string_1=-/.*brown/;
+　　$string_2=-/.*brown/;
+　　则在$string_1上将匹配:The quick brown
+　　而在$string_2上将匹配:The quick brown and silver fox was brown
+1.7 替换运算
+　　用以同时进行匹配和替换。例如:
+　　$target_string=-/regular_expression/replacement_string/;
+　　或/regular_expression/replacement_string/;
+　　修饰符/e可以用以表示替换字符串是1个表达式,应该使用其值进行替换。
+　　例6:替换运算
+　　$target_string=-s/\+/ /g;
+　　将目的字符串中所有的“+”（由于“+”在正则表达式中具有特殊含义,因此这里需用转义字符“\”以解除其特殊含义）换成空格。
+2 CGI基本原理
+　　CGI是Web服务器的一部分,它是Web服务器与主机应用程序之间进行信息交换的一种接口标准或规范。通过CGI,主机应用程序可从HTML文档（利用表单）获取用户提交的数据,随后又将该程序的响应（输出）返回给该用户（浏览器）。
+2.1 CGI方法
+　　所谓CGI方法指的是调用主机应用程序（CGI程序）时,Web服务器向其传递数据的方法和途径。主要采用的方法有GET和POST。
+　　1.GET
+　　使用该方法时,Web服务器将用户提交的数据存入环境变量QUERY_STRING中,CGI程序需从该环境变量中获取所需的数据。当提交的数据不太长（小于1024个字符）时,可采用该方法。
+　　2.POST
+　　使用该方法时,Web服务器通过标准输入（STDIN）向CGI程序传递数据,CGI程序通过标准输入（STDIN）获取数据。数据的长度在环境变量CONTENT_LENGTH中指明。采用该方法时,所提交的数据不受长度限制。
+2.2 URL编码
+　　在用户数据发往Web服务之前,浏览器将对数据信息进行专门的处理,其中可能会导致CGI程序出错的字符被替换,并且将数据组织得便于CGI程序处理,这就是所谓的URL编码。
+　　1.构成“名=值”对
+　　将数据组织成由“&”隔开的、有序排列的“名=值”对,这里的“名”指的是HTML表单中数据输入区域的名字（由NAME属性指定）,而“值”指的是用户提交的数据。“名”和“值”用“=”加以连接,构成“名=值”对,“名=值”对按表单元素的先后次序排列。例如:
+　　Name1=Value1&Name2=Value2&Name3=Value3&etc
+　　2.对数据字符的处理
+　　数据中的空格用“+”取代;任何ASCII值大于7FH或小于21H的字符都将被编码成%##（##为相应的十六进制ASCII值）的形式;另外,数据中出现的与保留字符（“&”、“=”、“%”、“+”）相同的字符也将被编码成%##的形式。
+2.3 环境变量
+　　环境变量是由Web服务器激活CGI程序时所设置的与系统有关的变量（在Perl中,可通过关联数组%ENV获取所有的环境变量及其相应的值）,Web服务器与CGI程序交换信息的协作方式是通过环境变量来实现的。例如: 
+　　GATEWAY_INTERFACE 指明服务器所遵循的CGI版本
+　　SERVER_SOFTWARE 指明服务器的名字和版本
+　　HTTP_ACCEPT 指明客户机浏览器可接受的MIME类
+　　　　　　　　型列表
+　　HTTP_USER_AGENT 指明客户机浏览器软件的名字
+　　　　　　　　　　和版本
+　　REQUEST_METHOD 指明传递数据所采用的CGI方法
+　　QUERY_STRING 采用GET方法时存放传递给CGI
+　　　　　　　　　程序的数据
+　　CONTENT_LENGTH 采用POST方法时指明通过标准
+　　　　　　　　　　输入所传递的数据长度
+2.4 MIME类型和头部信息
+　　MIME（Multipurpose Internet Mail Extension）标准规定了Web服务器和浏览器以及Web服务器和CGI程序之间进行通信的规则。MIME定义了发送给Web服务器的数据类型,一些常用的MIME类型/子类型为:
+　　text/html、text/plain、image/gif和image/jpeg等
+　　MIME头部信息用以告知Web服务器所发送的数据类型,最简单的头部可以只包含1个指明MIME类型的命令行,如:
+　　Content-type:text/html
+　　MIME头部块必须以1个空行作为结束。
+　　例7:1个显示环境变量的Perl CGI程序
+　　#/user/bin/perl
+　　print ″Content-type:text/html\n\n″;
+　　print ″<HTML>″;
+　　print ″<HEAD>″;
+　　print ″<TITLE>About this server</TITLE>″;
+　　print ″</HEAD>″;
+　　print ″<BODY>″;
+　　print ″<H1>About this server</H1>″;
+　　print ″<HR>″;
+　　print ″CGI Revision:$ENV ｛′GATEWAY_INTER-
+　　　　　　FACE′｝<BR>″;
+　　print ″Server Software:$ENV｛′SERVER_SOFT-
+　　　　　　WARE′｝<BR>″;
+　　print ″Client\′s MIME Types:$ENV｛′HTTP_AC-
+　　　　　　CEPT′｝<BR>″;
+　　print ″Client\′s Browser:$ENV｛′HTTP_USER_AGENT′｝
+　　　　　　<BR>″;
+　　print ″Request Method:$ENV｛′REQUEST_METHOD′｝
+　　　　　　<BR>″;
+　　print ″Query String:$ENV｛′QUERY_STRING′｝<BR>″;
+　　print ″Content Length:$ENV｛′CONTENT_LENGTH′｝
+　　　　　　<BR>″;
+　　print ″</BODY>″;
+　　print ″</HTML>″;
+3 几个Perl程序
+　　由于使用了UNIX中的正则表达式,使得Perl具有极强的文本处理能力。下面给出几个典型的Perl程序。为了简明起见,只给出主要的程序段。
+3.1 对输入数据进行解码的Perl程序
+　　CGI程序对Web服务器传递的用户数据在正式处理之前必须先进行解码。
+　　1.GET方式下的解码程序
+　　$QueryString=$ENV（′QUERY_STRING′;#从%ENV
+　　　　　中获取QUERY_STRING中的数据
+　　@NameValuePairs=split（/&/,$QueryString）;#按″名=
+　　　　　值″对分离构造1个数组
+　　foreach $NameValue （@NameValuePairs）
+　　　｛
+　　　　（$Name,$Value）=split（/=/,$NameValue）;#进一
+　　　　　步把″名″和″值″分离
+　　　　$Value=－s/\+/ /g;
+　　　　$Value=－s/%（..）/pack（″C″,hex（$1））/eg;#恢复
+　　　　　　　编码成″%##”的字符
+#或$Value=－s/%（［\dA-Fa-f］［\dA-Fa-f］） /pack（″C″,hex
+　　　　　（$1））/eg;
+　　print ″Name=$Name,Value=$Value\n″;
+　　｝
+　　2.POST方式下的解码程序
+　　$DataLen=$ENV′CONTENT_LENGTH′;#从%ENV
+　　　　　　　中获取CONTENT_LENGTH的值
+　　read （STDIN,$QueryString,$DataLen）;#从标准输入中
+　　　　　　　读入全部数据
+　　@NameValuePairs=split（/&/,$QueryString）;
+　　for （$n=0;$ NameValuePairs $n;$n++）
+　　　｛
+　　　（$Name,$Value）=split（/=/,$NameValuePairs$n）;
+　　　　$Value=-s/\+/ /g;
+　　　　$Value=-s/%（..） /pack（″C″,hex（$1）） /eg;
+　　　　$InfoArray ［$n］=$Value; #将解码后的数据存放在
+　　　　　　　　　　@InfoArray数组中
+　　｝
+3.2 解决表单安全性问题的Perl程序
+　　如果Perl脚本程序随意接收表单中的任何数据,则有可能危害到系统的安全性。为了避免这种情况发生,最简单的办法就是剔除那些不希望在文本域中出现的字符。
+　　@NameValuePairs=split（/&/,$QueryString）; #假设数
+　　　　　　　据已在$QueryString中
+　　for （$n=0;$NameValuePairs$n;$n++）
+　　｛
+　　（$Name,$Value）=split（/=/,$NameValuePairs$n）;
+　　$Value=-s/\+/ /g;
+　　$Value=-s/%（..） /pack（″C″,hex（$1）） /eg;
+　　if （$Value=－/［;<>&\＇\|］ /） #查找是否有非法的;
+　　　　　　　、<、>、&、、′或|字符
+　　　｛
+　　　　print ″Illegal entry\n″;
+　　　　exit;
+　　　｝
+　　$InfoArray［$n］=$Value; #将解码后的合法数据存放
+　　　　　　　　　在@InfoArray数组中
+　　｝
+3.3 解读日志文件的Perl程序
+　　Web服务器的日志文件中包含了丰富的信息,可以按照自己的需要充分加以利用。不同日志文件的信息格式各不相同,下面给出Sambar服务器日志记录的格式。
+　　140.172.165.58-admin［27/Apr/1997:20:47:43-0700］
+　　″GET session\adminlogin HTTP/1.0″ 200 0 160
+　　记录中每一项的含义如下:
+　　客户端的IP地址（140.172.165.58）
+　　用户名（admin）
+　　访问请求的日期和时间（27/Apr/1997:20:47:43）
+　　时区（-0700）
+　　请求的方法（GET）
+　　操作的对象（session\adminlogin）
+　　HTTP协议的版本（HTTP/1.0）
+　　Web服务器的状态码（200）
+　　Windows NT的状态码（0）
+　　传输信息的字节数（160）
+　　则解读该日志文件的Perl程序如下:
+　　open （LOG,$LogFile） || #假设$LogFile中已经包含了
+　　日志文件名
+　　die ″Can′t open $LogFile\n″;
+　　while （<LOG>）
+　　｛
+　　$LogLine=$_;
+　　$LogLine=-s/\［|\］ | \″//g;#剔除记录中的、和″字符
+　　chop （$LogLine）;#剔除行尾的换行符\n
+　　（$ClientIP,$Dummy,$UserName,$DateTime,$Time-
+　　Zone,$Operation,
+　　$Target,$HTTPVers,$SrvrStatus,$NTStatus,
+　　$BytesXfer）=split（/［］+/,$LogLine）;#分离出记录
+　　　　　　　　　　　　的每1项
+　　print ″Client\′s IP address=$ClientIP\n″;
+　　print ″Name of user on client=$UserName\n″;
+　　print ″Date and time of request=$DateTime\n″;
+　　print ″Operation requested=$Operation\n″;
+　　print ″Operation target=$Target\n″;
+　　Print ″Server returned status of $SrvrStatus\n″;
+　　print ″Windows NT returned status code $NTStatus\n″;
+　　print ″Transferred $BytesXfer bytes of data\n\n″;
+　　｝
+　　close （LOG）;
+3.4 检索ASCII数据库的Perl程序
+　　在Web上非常流行的小文本数据库对于许多中小型任务来说非常有用,只要知道了数据库所采用的格式,就可以方便地对其进行检索。假设数据库的记录格式如下:
+　　0:Elmer J. Fudd:555-1234:42 Jones Lane:Chuckville:
+　　　　　　　CA:90210
+　　则检索该数据库的Perl程序:
+　　open （DAT,$Database） || #假设$Database中已包含
+　　　　　　　　　　　　　　　　所要检索的文本数据库名
+　　die ″Can′t open $Database\n″;
+　　while （<DAT>）
+　　｛
+　　$Record=$_;
+　　if （$Record= /$Search/） #判断是否检索到,设关键字
+　　　　　　　　　　　　　　　　　　　　已在$Search中
+　　　｛
+　　　chop （$Record）;
+　　　@Field=split （/:/,$Record）;
+　　　$Result′Number′=$Field［0］;#将检索到的结果存
+　　　在关联数组%Result中
+　　　$Result ｛′Name′｝=$Field［1］;
+　　　$Result ｛′Phone′｝=$Field［2］;
+　　　$Result ｛′Street′｝=$Field［3］;
+　　　$Result ｛′City′｝=$Field［4］;
+　　　$Result ｛′State′｝=$Field［5］;
+　　　$Result ｛′Zip′｝=$Field［6］;
+　　　last;#退出循环体
+　　　｝
+　　｝
+　　close （DAT）;
+　　以上从介绍正则表达式入手,阐述了Perl在文本处理上的强大功能,并结合Web上的常见应用,给出了几个典型的Perl CGI脚本程序段。在这些程序段的基础上,结合具体的应用任务,就可以方便地编制出功能各异的CGI脚本程序。
+杜轩华（上海大学计算机学院200072）
+袁方（上海大学计算机学院200072）
+参考文献
+1，strom E著,杜毅译.Perl CGI轻松进阶.北京:电子工业出版社,1999
+2，Gundavaran S著,宋荣译.在万维网上进行CGI编程.北京:电子工业出版社,1998
+3，Daniel J.Berlin著,丁一强译.精通CGI编程.北京:清华大学出版社,1998
+收稿日期：1999-11-28

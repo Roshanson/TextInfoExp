@@ -1,0 +1,110 @@
+计算机应用
+Computer Applications
+1999年 第19卷　第8期 Vol.19　No.8 1999
+
+
+
+MS VC++ 永久对象恢复的一个问题
+黄　洪
+　　摘　要　本文提取出MS VC++5.0中永久对象序列化的算法机制，对其中潜在的问题进行了分析，指出了一种避免问题的方法。
+　　关键词　序列化，关联，动态创建
+THE PROBLEM OF 
+RETRIEVING MS VC++ PERSISTENT OBJECTS
+Huang Hong
+Department of Computer Science, Jilin University, Jilin．Changchun 130023
+　　Abstract　This paper extracts the persistent object′s serialization algorithm from MS VC++5.0,analyses its problem and points out an approach to avoid it.
+　　Keywords　Serialization,Association,Dinamically create
+1　永久对象和VC++的对象序列化
+　　永久对象（persistent object ）是指将来运行的某个程序需要的对象，它必须已被保存在永久介质中［1］。序列化(serialization)指程序可以把对象状态存入磁盘文件，当程序需要时从文件中恢复对象状态［2］。许多对象相互关联就构成了关联对象组。关联对象组运行时刻状态的保存和恢复以永久对象和序列化为基础。
+　　MS VC++实现了对象序列化，但对于一些复杂的情况也存在问题。
+　　例如：类CTestDoc有三个成员变量：
+　　CClient Client―Obj1；
+　　CClient Client―Obj2；
+　　CServer Server―Obj。
+　　这三个对象的状态和相互关联情况如图1所示：
+
+
+图1　关联对象组存储时的状态
+序列化的部分代码如下：
+　　void CTestDoc :: Serialize (CArchive& ar)
+//文档的序列化函数
+{…
+Client―Obj1.Serialize (ar); 
+//客户对象1的序列化
+Client―Obj2.Serialize (ar); 
+//客户对象2的序列化
+Server―Obj.Serialize (ar); 
+//服务器对象的序列化
+…}
+void CClient :: Serialize (CArchive& ar)
+//客户对象的序列化函数
+{if (ar.IsStoring()) ar <　<…<　<m―pServer; 
+//存储指针成员变量
+else ar>　>…>　>m―pServer; }
+//恢复指针成员变量
+void CServer :: Serialize (CArchive& ar) 
+//服务器对象的序列化函数
+{if (ar.IsStoring()) ar<　<…<　<m―pClient; 
+//存储指针成员变量
+else ar>　>…>　>m―pClient;}
+//恢复指针成员变量
+　　但通过文档的序列化函数后恢复的关联对象组状态如图2所示，不同于存储时即图1的状态。
+
+
+图2　关联对象组恢复后状态
+
+2　永久对象存储与恢复算法
+　　通过对VC中MFC库的分析［3］，提取出永久对象存储与恢复算法机制。
+　　a) 永久对象存储算法(略)。
+　　若要存储对象为:
+　　基本数据类型　则把数据存入到文件；
+　　对象类型　将各成员变量分别递归调用本算法存入文件中；
+　　指针类型　又分三种情况：
+　　若指针为NULL，则存NULL到文件中；
+　　若指针所指对象未存入过文件，则存入新类标志(FFFF)，再存入类信息在文件中。在数组中增加此对象和ID的映射时，递归调用本算法将指针存入到所指对象文件中；
+　　若指针所指对象已存入文件，则只将对象对应的ID存入文件。
+　　b) 永久对象恢复算法(略)。
+　　若要恢复对象为：
+　　基本数据类型，则把文件中对应的数据值赋给对象；
+　　若为对象变量，则依次递归调用本算法恢复各成员变量；
+　　若为对象指针，则
+　　步骤1：读类信息。
+　　若类信息前缀有新类信息标志(FFFF)，继续读入新类信息，增加一新类信息映射于数组；若读入信息为类信息ID，则利用映射数组，由ID得其对应类信息；若读入信息为一已恢复对象对应ID，则对应类信息为NULL。
+　　步骤2：恢复对象状态。
+　　若类信息为NULL，则由对象对应ID从映射数组得对象地址，赋给要恢复的指针。否则，用类信息动态创建一对象，把新对象的地址赋给要恢复的指针。且在映射数组中增加本对象和ID的映射，再递归调用本算法恢复指针所指对象。
+　　注意：读入信息为类信息对应ID还是对象对应ID，由ID值范围决定。
+3　问题的分析
+　　通过对算法的分析，可以看出：
+　　． 在存储永久对象时，不用区分永久对象是在编译时为其分配内存，还是在运行时动态创建，只把关联对象组的状态存储起来。而在恢复指针时，不管被恢复指针所指对象的内存是否已经分配，都创建一新对象（即为指针所指对象分配内存），从而可能使一个对象有两个副本。
+　　如上例中，在恢复Client―Obj1的指针成员变量m―pServer时，产生了新对象Server―Obj-2。又在嵌套恢复对象Server―Obj-2的指针成员变量m―pClient时，产生了新对象Client―Obj1-2。从图1来看，它实际应为对象Client―Obj1，从而没能恢复到存储前的状态。因为程序在运行中不可能知道对象Server―Obj-2的指针成员变量m―pClient实际所指对象Client―Obj1的内存已经分配，而是要另外创建一新对象Client―Obj1-2，把其地址赋给m―pClient。
+　　． 对多个对象组成的关联对象组的序列化，问题更加复杂。
+　　如上例中，在恢复Client―Obj1的指针成员变量m―pServer时，产生了新对象Server―Obj-2。从图1来看，它实际应为对象Server―Obj，从而没能恢复到存储前的状态。因为程序在运行中更加不可能知道对象Client―Obj1的指针成员变量m―pServer实际所指对象Server―Obj的内存已经分配，而是要另外创建一新对象Server―Obj-2，把其地址赋给m―pServer。
+4　问题的避免
+　　通过以上的分析，只要恢复时关联对象组中没有对象已经分配了内存就行。全部采用指针成员变量能避免问题的发生。前例改为CTestDoc 类有三个指针成员变量：
+　　CClient * m―pClient―Obj1；
+　　CClient * m―pClient―Obj2；
+　　CServer * m―pServer―Obj。
+　　这三个指针的状态和所指对象的相互关联情况如图3所示。
+
+
+图3　关联对象组状态存储前和恢复后状态
+　
+相应代码如下：
+void CTestDoc :: Serialize(CArchive& ar)
+{if (ar.IsStoring())
+ar<　<m―pClientObj1<　<m―pClientObj2<　<m―pServerObj;
+//保存各指向对象的指针
+else ar>　>m―pClientObj1>　>m―pClientObj2>　>m―pServerObj;
+//恢复各指向对象的指针
+}
+　　通过改写后程序恢复的关联对象组如图3所示。保存时和恢复后的关联对象组是一致的，且对象之间的关系和图1中对象之间的关系一致。
+5　结束语
+　　在序列化一个对象时，若被序列化对象是编译时为其分配内存，且其关联（实现为成员指针指向）对象中也有对象关联于自己，问题便出现了。前述方法可避免问题，但使程序设计受限。通过修改恢复算法来彻底解决此问题相当困难，因为对象在呈递归嵌套的恢复过程中，程序根本无法静态指出对象是否需要动态创建（分配内存）。可能要改变永久对象的存储和恢复机制才能很好地解决问题。
+　　永久对象及对象的序列化是面向对象的重要而实用的技术，比较复杂，涉及问题较多。把对象状态存入数据库［1］，就引发了对面向对象数据库（OODB)的研究。
+作者简介：黄　洪　硕士。研究方向：软件工程、面向对象技术。
+作者单位：黄　洪　吉林大学计算机科学系　吉林．长春（130023）
+参考文献
+　［1］　Daniel Tkach,Walter Fang,Andrew So. Visual Modeling Technique. Addison Wesley Longman,Inc.， 1996
+　［2］　David J. Kruglinski. Inside Visual C++. Microsoft Press,1994
+　［3］　Microsoft Corporation. Microsoft Foundation Classes Reference and Related Electronic Documentation, 1992-1997
+收稿日期:1999-05-28(修改稿)

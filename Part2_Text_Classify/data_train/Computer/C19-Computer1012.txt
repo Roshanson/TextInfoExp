@@ -1,0 +1,22 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+一类挠性航天器大角度快速机动
+的模型跟踪控制
+李　勇　吴宏鑫
+摘　要　研究一类构形为中心刚体带挠性梁的航天器的平面大角度快速机动控制问题.推导了系统的非线性无穷维模型，设计了一种只利用中心刚体旋转角和角速度测量数据的模型跟踪控制方案，基于无穷维空间的 LaSalle不变原理，证明了相应闭环系统的渐近稳定性，并给出了物理实验结果验证所设计的控制算法的有效性.
+关键词　挠性航天器，大角度机动，模型跟踪控制. 
+MODEL FOLLOWING CONTROL FOR LARGE ANGLE RAPID
+MANEUVERING OF A FLEXIBLE SPACECRAFT
+LI YONG　　WU HONGXIN　　
+(Beijing Institute of Control Engineering,Beijing 100080)
+Abstract　This paper is concerned with the control for planar,large angle rapid slew maneuvering of a flexible spacecraft,consisting of a rigid central body and a flexible beam.A nonlinear infinite dimensional model of the system is derived.By using the measurements of the attitude angle of the rigid central body and its velocity only,a kind of model following control law is presented.Based upon the LaSalle's invariance principle in infinite dimensional spaces,it is shown that implementation of the control algorithm results in asymptotic stability of the closed-loop system.Some experimental results are presented,showing the effectness of the designed control algorithm.
+Key words　Flexible spacecraft,large angle rapid maneuvering,model following control.
+1　引言
+　　新一代航天器一般带有挠性部件，这类航天器姿态机动时，其动力学模型本质上是一非线性无穷维系统.以往的大量研究一般考虑机动角度较小或机动速率较慢的情形，常用的方法中，一种是用线性有穷维模型近似无穷维模型，然后运用集中参数控制系统理论，设计各种控制方案［1―3］；另一种是基于系统近似的线性无穷维模型，设计控制方案［4，5］(Morgül在文［6］中建立系统模型时也忽略了部分难以分析的非线性项).而对于大角度快速机动情形，系统模型中的非线性项不能忽略，从而有必要研究基于系统本质非线性无穷维模型的控制方案的设计问题.
+　　本文研究一类构形为中心刚体带挠性梁的航天器的平面大角度快速机动控制问题，推导了系统的非线性无穷维模型，设计了一种模型跟踪控制方案，证明了相应的闭环系统的渐近稳定性，同时给出物理实验结果，以验证所设计的控制算法的有效性.
+2　动力学模型与控制目的
+　　考虑图1所示的挠性多体航天器，它由中心刚体 R 和固连在刚体 R 上的长度为 l 的均匀挠性梁 E 构成.设刚体 R 的转动惯量为 Jm,质心为 O，其质量远大于挠性梁的质量，刚体R被限定只能绕通过 O 点的垂直轴旋转运动；挠性梁 E 在水平面内运动.设(O，e1,e2,e3)是以 O 为原点，以e1轴为垂直轴的惯性正交坐标系N，e1,e2,e3为单位向量；(O，b1,b2,b3)是以 O 为原点，b1 轴与 e1 轴重合的固连在刚体上的正交坐标系B，b1,b2,b3 为单位向量，b2 轴方向与梁未变形时的方向一致.

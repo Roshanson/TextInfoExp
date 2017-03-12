@@ -1,0 +1,110 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000 Vol.17 No.3 P.36-37
+
+
+
+
+用VB创建支持断点续传的Internet传输控件
+凌小鹏　曹迪铭
+摘　要：简要介绍了FTP的功能和实现方法，并说明利用FTP实现断点续传的原理，最后结合Visual Basic编程讲述了创建支持断点续传的Internet传输控件的过程。
+关键词：断点续传 Microsoft Internet Transfer控件 创建ActiveX控件 Visual Basic编程
+　　随着Internet使用的普及，同时由于使用FTP进行文件传输便捷、通用的特点，FTP正被越来越频繁的使用。虽然围绕着FTP已有很多实用的现成程序供选用，但许多用户还是希望自己设计和定制具有FTP功能的应用。而VB的Microsoft Internet Transfer控件就是为编程者广为使用的工具之一，它使得用户可以基于此开发出自己的支持文件传输的应用。但VB本身却并不含有支持断点续传的控件，因此我们设计了支持断点续传的Internet传输控件，供编程人员参考使用。
+1　FTP简述和断点续传的原理
+　　FTP(文件传输协议)是Internet上使用最广泛的协议之一。使用FTP协议可以在FTP服务器上登录，实现文件的上、下载。FTP本身是一个具有客户/服务器结构的系统，软件系统由客户机和服务器上的两部分组成；在FTP的协议内部定义了一组可供用户使用的命令用以完成文件的传送，如：切换目录的命令CD、获取文件的命令GET及上载文件的PUT命令等，文件传输的实现实际上就是客户机和服务器上的软件依据FTP协议相互通信(发出请求命令和响应)的结果。其中，在私有的FTP服务器上进行登录还需验证用户身份。
+　　我们知道FTP是由其中定义的一组命令来实现的，基本的FTP命令由以下命令组成：
+CD file1　　　　　改变目录。改变到file1中指定的目录。
+CDUP　　　　　　　改变到父目录。等效于“CD..”。
+CLOSE　　　　　　关闭当前的FTP连接。
+DELETE file1　　　删除file1中指定的文件。
+DIR file1　　　　目录。搜索file1中指定的目录(允许用通配符，但要使用远程主机的语法)。
+　　　　　　　　　如果没有指定file1，将返回当前的整个工作目录。
+GET file1 file2　检索file1中指定的远程文件，并创建file2中指定的新本地文件。
+LS filel　　　　　列表。搜索file1中指定的目录(允许用通配符，但要使用远程主机的语法)。
+MKDIR file1　　　创建目录。创建filel中指定的目录。创建是否成功取决于用户在远程
+　　　　　　　　　主机上的权限。
+PUT file1 file2　复制file1指定的本地文件到file2指定的远程主机上。
+PWD　　　　　　　打印工作目录。返回当前目录名。
+QUIT　　　　　　　终止当前用户。
+RECV file1 file2　检索file1中指定的远程文件，并创建file2中指定的本地新文件。
+　　　　　　　　　等效于GET。
+RENAME file1 file2　　将file1中命名的远程文件重命名为file2中指定的新名称。
+　　　　　　　　　　　成功与否取决于用户在远程主机上的权限。
+RMDIR file1　　　　删除目录。删除file1中指定的远程目录。成功与否取决于用户在
+　　　　　　　　　远程主机上的权限。
+SEND file1 file2　复制file1指定的本地文件到file2指定的远程主机上。等效于PUT。
+SIZE file1　　　　返回file1指定的目录的大小。
+　　这些命令中，用来从远程主机上获取文件的最常用的命令便是GET。另外，还有两个有用的FTP命令并未被列入，它们是RESTART和REGET。
+　　RESTART的功能是在用户使用GET命令从远程主机上下载文件或使用PUT命令向远程主机上载文件，中途出现了线路问题而引起传输过程中断时，运行RESTART命令，系统会在下一个GET命令或PUT命令运行时，让其从上次被中断处重新开始上、下载，从而使用户不必从头开始，节约传输文件的时间。
+　　REGET的功能是若用户在使用GET命令从远程主机下载文件的过程中发生中断时，使用REGET命令可以实现从中断处重新开始文件传输。
+　　以上两个命令在线路质量不高，传输速率不稳定或传输的文件较大时，显得十分有用，可以借助于它们设计出支持断点续传的应用。(注：由于FTP所处的环境和实现的软件相差很大，各个FTP系统支持的命令集也不尽相同。上述的RESTART和REGET命令的实现将有赖于系统本身的支持，即断点续传能否实现还要看对方服务器是否支持。否则，即便采用了上述方法也不能够实现断点续传。)
+2　支持断点续传的控件的制作
+2.1　控件功能的规划
+　　一个支持断点控件，它应包括以下的基本功能。
+　　方法：START、CANCEL、PAUSE方法，其中START表示开始传输或中断后继续传输；CANCEL则是要中断传输；PAUSE表示暂停传输过程，并可以用START再次恢复传输。
+　　属性：URL属性，表示远程主机的位置；FPOS属性，表示文件在远程主机上的目录位置；DIR属性，表示下载文件保存在本地机上的路径和文件名；RunCode属性，表示正在进行文件传输的状态。
+　　事件：完成传输的通知、出错事件等。
+2.2　控件的制作过程
+　　a.在VB中新建一个ActiveX控件工程，并将控件工程的工程名重新设置，如：ddxc
+　　b.在标示有UserControl1的Form中添加进一个Microsoft Internet Transfer控件，其默认名称为Inet1。
+　　c.在VB的“外接程序”菜单中选择“外接程序管理器”打开“外接程序管理器”窗口，在“可用外接程序”列表中选择“VB 6 ActiveX控件接口向导”，同时在窗口右下角将“在启动中加载”和“加载/卸载”的复选标记选中，并按“确定”。
+　　d.在VB的“外接程序”菜单中选择“外接程序管理器”打开“ActiveX控件接口向导”窗口，在“ActiveX控件接口向导-介绍”窗口中选择“下一步”继续操作；进入“选定接口成员”窗口，不作任何操作，直接选择“下一步”进入“创建自定义接口成员”窗口；按下“新建…”按钮创建新的接口成员，将自定义的功能添加进去。按提示继续操作，直至“完成”。
+　　e.此时，打开Form的代码窗口，可以看到已有部分代码被添加进来。现在需对新增的属性变量和方法进行改写。具体的代码摘录如下：(斜体部分是需改写和添加的代码，其余部分[节选]是在为该控件增加成员时由系统添加的。)
+' 属性变量:
+Dim m_fpos As String
+Dim m_url As String
+Dim m_dir As String
+Dim m_runcode As Integer
+'注意！不要删除或修改下列被注释的行！
+' MemberInfo=14
+Public Function start( ) As Variant
+　Dim comstr As String
+If m_runcode=2 Then 
+　' m_runcode等于2表示已有某个传输处在被中断状态。 comstr=”restart" ' 利用restart
+　　命令进行恢复传输。 Inet1.Execute url, comstr 
+End If
+comstr ="get"+m_fpos+" "+m_dir ' 设置传输的参数
+Inet1.Execute m_url, comstr ' 开始进行传输
+m_runcode=0 ' m_runcode等于0表示正在进行传输
+End Function
+'注意！不要删除或修改下列被注释的行！
+' MemberInfo=14
+Public Function cancel( ) As Variant
+Dim comstr As String
+comstr="close"
+Inet1.Execute m_url, comstr ' 终止当前的FTP连接
+m_runcode=1 ' 为标志变量置值
+End Function
+'注意！不要删除或修改下列被注释的行！
+'MemberInfo=14
+　Public Function pause ( ) As Variant
+　Dim comstr As String
+　comstr="close"
+　Inet1.Execute m_url, comstr ' 终止当前的FTP连接
+　m_runcode=2 ' 为标志变量置值
+End Function
+Private Sub Inet1_StateChanged(By Val State As Integer) 
+　根据Inet控件的返回状态，为标志变量置值
+　Dim comstr As String
+　Select Case State
+　　case icError: ' 传输发生了错误，则中断连接准备重新开始。
+　　comstr="close"
+　　Inet1.Execute m_url, comstr ' 终止当前的FTP连接 
+　　'设一个值，若不超过该值，则尝试新的一次连接。
+　　comstr="restart" '利用restart命令进行恢复传输。
+　　Inet1.Execute url, comstr
+　　comstr="get" + m_fpos+" "+m_dir ' 设置传输的参数
+　　Inet1.Execute m_url, comstr ' 开始进行传输
+　Case icResponseCompleted: '传输成功完成
+　　comstr="close"
+　　Inet1.Execute m_url, comstr '终止当前的FTP连接
+　　m_runcode=1 ' 为标志变量置值
+　End select
+End Sub
+　　f.上述操作完成后，对其进行编译、生成，即可供其它程序引用。应用程序可以通过在程序中测试该控件的RunCode变量，决定启动、终止或是暂停传输服务。
+　　本文只是简述了该控件的编制过程，实现基本的断点续传的功能，要作为正式的使用，还有待进一步地完善。
+凌小鹏(同济大学计算机系 上海 200092)
+曹迪铭(同济大学计算机系 上海 200092)
+参考文献
+1 Evangelos Peroutsos著, 周予滨等译. 使用Visual Basic 5开发ActiveX. 北京：中国水利水电出版社, 1998
+收稿日期：1999年9月22日

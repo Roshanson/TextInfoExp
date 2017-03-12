@@ -1,0 +1,106 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.378-381
+
+
+
+模糊树模型及其在复杂系统辨识中的应用
+张建刚　毛剑琴　夏天　魏可惠
+摘　要　基于二叉树和模糊逻辑理论，提出了一种用于复杂系统建模的模糊树模型.将线性模型和模糊集组织在树结构上，并给出了更新线性模型系数和模糊集隶属度函数的混合算法.与其他建模方法相比，如ANFIS，模糊树模型计算量小，精度高，尤其在高维数据建模中更为明显.仿真结果描述了这种方法的性能.
+关键词　模糊树模型，分段线性自适应滤波器，ANFIS.
+FUZZY-TREE MODEL AND ITS APPLICATIONS TO 
+COMPLEX SYSTEM MODELING
+ZHANG Jiangang　MAO Jianqin　XIA Tian
+(The Seventh Division,Beijing University of Aeronautics & Astronautics,Beijing　100083)
+WEI Kehui
+(Academy of Engineering Physics,Chengdu　610003)
+Abstract　　Based on the binary tree structure and fuzzy logic theory,a fuzzy-tree model applied to complex system modeling is proposed in this paper.Linear models and fuzzy sets are arranged in a tree structure.A hybrid-training algorithm is used to update linear model coefficients and membership functions of the fuzzy sets.Compared with some other modeling methods,such as ANFIS,the proposed model is of less computation,higher accuracy,especially for high dimension data modeling.Simulation results demonstrate the advantages of this approach.
+Key words　Fuzzy-tree model,piecewise linear adaptive filter,ANFIS.
+1　引　言
+　　经典的辨识理论难以处理复杂系统的建模问题.相比之下，由Takagi和Sugeno首先提出的“模糊建模”则在控制、预测等方面取得了许多成功的应用.然而，对每个输入变量分别划分模糊子空间的方法降低了一些卓越的模糊建模方法［1，2］的建模效率.
+　　树结构分段线性自适应滤波器［3］采用二叉树结构对输入空间划分模糊子空间，其划分的子空间数与输入变量的维数无关.但模型的分段函数在相交处会产生尖点或断点.
+　　本文提出一种树结构的模糊模型，称为模糊树模型.它既克服了模糊建模中输入空间划分的复杂性，又使得分段函数在相交处平滑过渡，因而能更好地逼近复杂系统.
+2　模糊树模型的结构
+　　考虑如下复杂系统的建模
+y=f(x)+v,　　　(1)
+其中x=［1　x1　…　xn］T∈Rn+1为输入向量，y∈R为输出，v∈R为噪声.
+　　二叉树定义为正整数的有限非空集F和两个函数l(.)和r(.)：F→F∪｛0｝，且它们满足如下两个性质：
+　　1)t∈F，l(t)=r(t)=0或l(t)>t, r(t)>t成立;
+　　2)t∈F，除了F中最小的整数，必存在唯一s∈F，使得t=l(s)或t=r(s).
+　　对于t∈F，l(t)和r(t)分别表示由t生成的左右节点.F中的最小元素称为根节点，记为r(F).若s,t∈F，且t=l(s)，或t=r(s)，则s称作t的父节点，t称作s的子节点，记作s=p(t).若节点t不是父节点，则称作叶节点，即l(t)=r(t)=0.表示F的叶节点集合.
+　　一个模糊树模型与一个二叉树F相对应.对于t∈F，有权向量ct=［ct(0),…,ct(n)］T和模糊集Nt，其隶属度函数为μt(x):Rn+1→［0,1］.对应的线性模型为
+　　　(2)
+　　Nt描述了一个模糊子空间χt.χr(F)为整个输入空间，根节点上的模糊集Nr(F)定义为
+　　　(3)
+
+
+图1
+　　在节点定义辅助隶属度函数为
+　　　(4)
+这些节点上的模糊集Nt由下式递推得到
+　　　(5)
+由此可得
+　　　(6)
+　　最终，模糊树模型将输入空间划分为所有叶节点对应的模糊子空间，其中每个模糊子空间内定义一条规则
+　　　(7)
+　　采用文［1］中的反模糊化方法，模糊树模型的输出为所有叶节点的输出的加权平均
+　　　(8)
+　　图1示意了输入空间的划分过程，斜线表示两个模糊子空间之间的模糊带.
+3　模糊树模型的建模算法
+3.1　混合训练算法
+　　给定的训练数据集为{(xi,yi),xi∈Rn+1,yi∈R,i=1,2,…,L}.定义第i组训练数据的能量函数和则总的能量函数为
+　　　(9)，(10)
+　　模糊树模型中需要确定的参数为｛ct｜t∈F｝,｛αt,θt｜t∈F,t≠r(F)｝.本文采用混合训练算法――对ct,t∈F采用最小二乘算法，对αt,t∈F,t≠r(F)采用非线性优化算法.
+　　　(11)
+3.2　模糊树的生成
+　　对每个节点定义节点误差et和分叉后节点误差ect
+　　　(12)
+　　　(13)
+3.3　模糊树模型建模步骤
+　　1)初始化模糊树根节点――计算根节点的权向量cr(F)，μr(F)(x)=1.选定｛αt｜t∈F,t≠r(F)｝初值满足αl(t)=-αr(t),αr(t)＞0.
+　　2)用(12)，(13)式计算每个叶节点的et和ect.
+　　3)对叶节点中可以分叉的节点分叉，用(13)式计算新生成的叶节点的θt,t∈值，计算分叉后叶节点的权向量值ct,t∈.
+　　4)训练αt,t∈.
+　　5)用(5)式计算叶节点的隶属度函数，更新叶节点的权向量值ct,t∈.用(10)式计算能量函数.若et>ect，则转2；否则，结束算法.
+4　仿真结果
+　　例.将模糊树模型用于预测麦克-格拉斯混沌时间序列――这是系统建模的国际标准例题.它由如下的麦克-格拉斯混沌延迟微分方程［4］生成
+　　　(14)
+　　表1列出了其它方法与模糊树模型的比较，计算条件为τ=17，y=x(t+6)，n=4，其中NDEI定义为均方根误差除以目标序列的标准差.
+表1　结果比较
+
+方法训练数据NDEI
+模糊树模型5000.012 4
+ANFIS［2］5000.007
+基于聚类的估计方法［5］5000.014
+AR模型［2］5000.19
+串联相关神经网络模型［6］5000.06
+BP神经网络模型［6］5000.02
+六阶多项式模型［6］5000.04
+线性预测方法［6］2 0000.55
+
+表2　模糊树模型与ANFIS的辨识结果比较
+
+　输入空间维数NDEI规则数
+模糊树模型100.00516
+ANFIS40.00716
+
+　　由表1可以清楚地看出模糊树模型和ANFIS比其它方法预测精度高.在表2中比较了模糊树模型与ANFIS，计算高维n=10的情况，由于ANFIS中模糊学空间的数目以n的指数增长，故当n>4时计算量溢出.而模糊树算法对维数不敏感，提高维数可使精度显著改善.
+　　ANFIS（C语言）计算n=4在Apollo 700系列工作站需1.5小时，而模糊树（Matlab M文件）在奔腾586/166上计算n=10仅需5分钟.
+5　结　语
+　　本文提出了一种复杂系统的辨识的模糊模型――模糊树模型，相应给出了混合建模算法.由仿真结果可以看出，这种模型在高度非线性系统、时间序列的建模中得到了很好的结果.与其它建模方法比较，这种方法计算量小、精度高，特别适用于高维系统.
+国家自然科学基金资助课题.
+张建刚　1993年毕业于北京航空航天大学自动控制系，1999年获工学博士学位.研究领域为控制理论与控制工程，研究方向为小波理论在系统辨识中的应用、系统智能化辨识与参数的智能化估计等.
+　　毛剑琴　1964年毕业于北京大学数学力学系，1982年获工学硕士学位，1985年获工学博士学位，现任北京航空航天大学教授、博士生导师、中国自动化学会理事、IEEE控制系统学会北京分会主席，主要研究领域为控制理论与控制工程.
+张建刚（北京航空航天大学第七研究室　北京　100083）
+毛剑琴（北京航空航天大学第七研究室　北京　100083）
+夏天（北京航空航天大学第七研究室　北京　100083）
+魏可惠（工程物理研究院　成都　610003）
+参考文献
+［1］　Takagi T,Sugeno M.Fuzzy identification of systems and applications to modeling and control. IEEE Trans. Syst. Man, Cyber., 1985,15:116～132
+［2］　Jyh-Shing Roger Jang. ANFIS: adaptive-network-based fuzzy inference system. IEEE Trans. Syst. Man, Cyber., 1993, 23(3): 665～685
+［3］　Gelfand Saul B,Ravishankar C S. A tree-structured piecewise linear adaptive filter. IEEE Trans. Info. Theory, 1993,39(6): 1907～1922
+［4］　Mackey M, Glass L. Oscillation and chaos in physiological control systems.Science, 1977,197:287～289
+［5］　Chiu S. Fuzzy model identification based on cluster estimation.Journal of Intelligent & Fuzzy Systems, 1994,2(3): 267～278
+［6］　Crowder RS. Predicting the Mackey-Glass time series with cascade-correlation learning. In:Proc.Connectionist Models Summer School, Carnegie Mellon University, 1990,117～123
+收稿日期　1998-03-09
+修稿日期　1998-07-29

@@ -1,0 +1,97 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第8期 Vol.10 No.8 1999
+
+
+
+关系型多数据库系统IS-Global的设计与实现
+吴胜利　钟华　黄涛　孙红艳　虞海江
+摘要　文章主要讨论IS-Global的设计思想和关键的实现技术.IS-Global是一个关系型多数据库系统,其目标是为CIMS(computer integrated manufacture system)环境下企业级应用提供一个集成的、能屏蔽网络、操作系统和数据库系统异构性的全局信息系统.IS-Global的主要特点是：(1) 它是一个紧耦合的系统,具有统一的全局模式,对不同的关系型数据库系统,如Oracle,Sybase和SQL(structured query language) Server等可进行透明访问.(2) IS-Global采用两级客户/服务器结构,支持并发控制和安全性机制,是一个多用户系统.(3)可同时提供图形化界面工具、ODBC(open database connectivity)函数接口和SQL语言交互式访问接口.(4)能同时支持对多个局部数据库中数据的联合查询.
+关键词　异构多数据库系统,联邦数据库系统,可互操作的数据库系统.
+中图法分类号　TP311,TP132
+Design and Implementation of Relational Multi-database System IS-Global
+WU Sheng-li ZHONG Hua HUANG Tao SUN Hong-yan YU Hai-jiang
+(Object Technology Center Institute of Software The Chinese Academy of Sciences Beijing 100080)
+(Laboratory of Computer Science Institute of Software The Chinese Academy of Sciences Beijing 100080)
+Abstract　 In this paper, the authors discuss IS-Global's pivotal technique in design and implementation. IS-Global is a relational multi-database system, which provides an integrated global information system platform for enterprises applying CIMS (computer integrated manufacture system), and hides the detail of the heterogeneity of network, local operating systems and database systems. The major characteristics of IS-Global are as follows: (1) It is a tightly integrated system with unique global schema. (2) Being a multi-user system, IS-Global possesses two-lever client/server architecture and supports concurrent and security control mechanisms. (3) IS-Global provides graph-based tools, ODBC function call and interactive SQL interface. (4) IS-Global supports multi-location queries.
+Key words　Heterogeneous multi-database systems, federated database systems, interoperable database systems.
+　　自从80年代以来,异构多数据库系统（也称为联邦数据库系统、可互操作的数据库系统）一直是数据库领域的一个主要研究方向.进入90年代后,由于计算机网络技术,特别是INTERNET的迅猛发展,对数据库又有了新的要求.各种数据库中的信息不仅需要在INTERNET上发布,而且大量的应用需要能同时访问多个数据库中的内容.这样,异构多数据库系统、联邦数据库系统又一次成为数据库领域的一个研究热点.到目前为止,已研制出数十个原型系统［1,2］,各种数据库产品也或多或少地支持一些多数据库的功能,其中较突出的是IBM公司的DB2和UniSQL公司的UniSQL.DB2中所包含的数据连接器DataJoiner［3］和UniSQL中的UniSQL/M都提供较强的多数据库查询功能.
+　　在多数据库系统的许多方面,如模式〔视图〕集成、模型转换、语义异构、查询处理与优化、扩充事务模型、并发控制和安全性等已有不少的研究,并且目前仍在大量进行.但是如何在一个实用系统中综合考虑这些方面的内容,设计和实现一个有特色的、适合国内企业应用的多数据库系统也是一项颇有难度的工作.
+　　在如此形势下,我们承担了国家“863”CIMS（computer integrated manufacture system）主题的重大科技攻关项目“CIMS应用软件系统集成平台”中的主体部分“全局信息系统”的研制任务.针对目前各企业中对计算机的应用已有一定基础,但是由于网络环境、操作系统和应用软件的异构性,整个企业范围的信息流通与共享还存在一定的困难.为了在全国范围内进一步推广CIMS技术,为制造型工厂提供可用性好的应用软件系统集成平台,本项目的目标定位于技术与应用需求相结合,在现有技术基础上探讨一些实用的实现技术和构想.首先开发“CIMS应用软件系统集成平台”的系统原型,通过在一些工厂进行试用和不断改进,最终形成实用的产品.本文讨论该原型系统的设计方案和其中的关键技术,包括总体结构、全局数据模型和模式集成、并发控制、查询处理与优化、安全性机制和全局数据字典等几个部分.
+1 IS-Global的总体结构与全局模式
+　　IS-Global采用两级客户/服务器结构,客户端包括图形化工具、ODBC(open database connectivity)函数接口和交互式语言接口的前端部分,它们通过底层的通信系统和IS-Global的服务器进行联系,将用户或应用程序访问数据库的命令传给服务器,再将结果回传给客户端.IS-Global的主要处理功能位于IS-Global服务器上.IS-Global服务器为每一个联机用户建立相应的线程.当接收到来自应用程序中的数据库访问请求或其他服务时,相应的线程分别调用存取控制、并发控制、语法分析和查询处理几个子系统.多数据库系统的软件分布情况如图1所示.
+
+图1　多数据库系统的软件分布情况
+　　IS-Global服务器在进行各种操作时,要用到全局数据字典.全局数据字典由一系列表格组成,不仅多数据库系统在实现中要频繁使用它们,它们本身的某些内容也对用户开放.多数据库系统提供交互式命令和图形化界面两种形式给用户进行有关的操作.本文后面还要对此进行更详细的讨论.
+　　多数据库系统通过标准的ODBC接口［4］和各个局部数据库系统相连.目前所连接的几个局部数据库系统均采用客户/服务器方式.只要符合ODBC接口标准,其他种类的数据库系统,如桌面型数据库也能作为本系统中的局部数据库使用.目前已实现了微机Windows NT操作系统平台上的IS-Global服务器,客户端实现了微机Windows NT和Windows 95环境下前述所有的接口软件,在SGI工作站UNIX操作系统环境下实现了一个类ODBC函数调用接口.
+　　接下来讨论全局模型和模式问题.在国外,目前已实现或正在实现的多数据库原型系统绝大多数采用面向对象模型,从理论上说,面向对象模型由于功能较强,适合作为全局模型.但从实用性方面考虑,目前国内企业大都采用各种关系型数据库产品,采用面向对象数据库产品者较少,预计这种情况在短期内不会有明显改变.所以,IS-Global采用关系模型作为全局数据模型.对于面向对象数据库作为局部数据库的问题,解决方法参见文献［5］.
+　　根据文献［6］, 一般将多数据库系统的模式分为5层,自下而上,它们分别是各局部数据库的本地模式、局部模式、输出模式、多数据库系统全局模式和输出模式.在本系统中,由于各局部数据库模式均为关系模式,无需再进行转换,所以,可将各局部数据库的本地模式和局部模式合并为一.
+　　如何实现全局模式是本系统的重要问题.它对系统的可用性和实现的效率、难度等都有重要影响［7］.综合考虑这个问题,本系统设计成一个紧耦合型的多数据库系统,亦即整个系统具有唯一的全局模式.但也仅提供相对较弱的模式集成功能.通过前者可大大增强系统的可用性,适当地抑制后者可降低系统的实现难度,提高系统的实现效率.另一方面也可降低对用户的要求,使系统易于使用和维护.在功能上的部分缺陷通过语言接口等办法弥补.
+　　具体的集成方法是,可将局部数据库中的整个表（或视图）或其中的一些属性（但必须包括关键字）定义为共享表（或视图）.也就是说,共享是以表为单位的,但定义该共享映射时必须保证一个共享表中的元组与局部库中相应表（或视图）中一个特定的元组一一对应.否则,在进行数据库访问时会发生错误.用户可在全局表的基础上定义全局视图,但未提供解决语义异构性问题的方法.
+2 并发与存取控制
+　　并发与存取控制是多用户系统中的两个主要问题.
+　　目前,对于多数据库系统的并发控制已有很多的讨论［8］,提出了不少新的事务模型,它们大都是对传统的事务定义有某种程度的放宽,或支持复杂应用所需要的长事务、嵌套事务等,但实际应用还很少.
+　　多数据库系统的并发控制机制不同于一般的数据库系统.一方面,各个局部数据库系统都具有相应的并发控制和事务机制,多数据库系统中的事务可据此建立.另一方面,仅仅依靠局部数据库系统中的并发控制和事务机制是不够的.本系统支持全局事务的概念,一个全局事务由多个局部事务组成,采用两阶段提交协议实现全局事务机制.另外一个要考虑的问题是涉及到全局数据字典的情形.由于在实现中采用了SQL Server数据库系统管理这些元数据,所以对于元数据的访问也可组织成事务的方式,从而简化了系统的实现.
+　　安全机制是计算机系统(包括软件系统)中的重要机制.目前对于多数据库系统中的安全性问题已有一些研究.其中较有名的是瑞士的Zürich大学和澳大利亚的皇家墨尔本技术学院.CHASSIS和DOK是这两个单位分别研制出的多数据库原型系统.前者仔细探讨了多数据库系统环境对安全子系统的要求和限制［9］,实现了一个可客户化的多数据库系统的安全性子系统,而后者则侧重于讨论安全子系统的实现技术［10］.
+　　在数据库系统中,实现安全管理的方法主要有强制（mandatory access control）和自决(discretionary access control)两种.产品化数据库系统大都采用自决方式,并逐步融入一些强制的概念.近来由于支持复杂应用的需要,支持基于角色、域、工作组、任务和工作流的安全机制也多有讨论［11］.IS-Global支持基于用户组的自决存取控制机制,但允许分散（decentralize）授权.亦即最初所有的存取权利集中在多数据库系统管理员手中,但他（或她）可把部分权利转授给别的用户,并且这种转授过程可级联进行.一个用户可同时参加多个用户组,而用户组的成员由另一些用户组或用户组成,亦即用户组可为嵌套结构,但不能形成循环.授权采用正向(positive)授权和封闭世界假设.亦即对任一用户的访问请求,如未经显式授权许可,则予以禁止.
+　　当允许一个用户同时参加多个用户组时,有时会导致发生冲突,在本系统中,根据下面两条规则解决冲突,其中第1条规则的优先级高于第2条.
+　　(1) 正向显式授权高于隐式禁止；
+　　(2) 对单个用户的授权高于对用户组的授权；
+　　在实现上,采用存取控制矩阵的方式.用户组和用户同等对待,均视作授权主体.对于局部数据库加入多数据库系统,必须要有一个代表,该代表可以是该局部库的管理员,也可以是具有某些访问权限的一般用户.多数据库系统管理员要与该代表协商全局模式中有关该局部数据库共享信息的设置.多数据库系统中所有对该局部数据库的访问均是以该代表的身份进行的.这样可保证全局和局部两层安全管理的相对独立性.
+3 查询处理与优化
+　　多数据库系统的查询处理与优化比单数据库系统的查询处理与优化考虑的因素要更多、更复杂,目前已有一些理论性的研究［12］.涉及到查询实现效率的因素有：数据在网络上传输、各局部数据库的查询能力（由于各个局部数据库系统的异构性,各个数据库系统各有特点,难有一致的结论）和数据量分布等因素.在本系统中,我们重点考虑局部数据库的查询能力和数据量分布这两种因素,本节后面将详述这一点.
+　　IS-Global的服务器为每一个用户端的应用启动相应的线程进行服务.对于有些服务请求,如查询IS-Global多数据库系统中的全局共享表结构信息,或系统中的用户组和用户信息,直接查询数据字典中有关信息就可以了,但对于一般数据的访问、增加、删除和修改,则需要进行更多的处理.首先,服务器端先调用语法分析子系统,对SQL语句进行语法分析和语义检查,然后再调用存取控制子系统,若顺利通过这两个子系统,则调用并发控制子系统,它选择一个适当的时机调用查询处理子系统进行相应的处理.查询处理子系统的输入主要是语法分析子系统的输出,主要包括SQL语句的中间代码和一些符号表.SQL语句的中间代码组织成单向链表形式,每个节点为最基本的词法分析单位.符号表中含有所要处理的表名、列名和它们在单向链表中的位置等信息.
+　　查询处理子系统首先为全局表名和列名查出相应局部库中的表名和列名,再判断所进行的处理只涉及一个局部数据库还是涉及多个局部数据库.如只涉及一个局部数据库,则根据SQL语句的中间代码重组对相应局部数据库的访问语句(包括删除、增加和修改数据)进行相应的访问,得到结果后将其回传给客户端.
+　　如为查询语句,可涉及多个局部数据库中信息.首先,根据一定的准则选定一个主数据库,查询处理的主要部分在此进行.然后,确定数据所在的局部数据库,先进行选择和投影操作除去冗余,再将所需要的数据拷贝至主数据库中.最后,在主数据库中进行查询处理.因为我们所实现的多数据库系统本身没有数据处理的功能(访问数据字典的一些功能除外),所以一般的数据处理要在某个局部数据库中完成.根据如下两种因素选定主数据库.
+　　(1) 该局部数据库中所涉及的数据体积(字节数),大者优先；
+　　(2) 该局部数据库的查询能力,强者优先.
+其中第1项因素占70％,第2项因素占30％.一个数据库中所涉及的数据体积可通过一定的计算得出,而数据库的查询能力则是通过运行一些特定的查询实例,再进行比较,得到一个相对的比值,存储在全局数据字典中.
+　　通过IS-Global的接口创建基本表有一些特殊之处.主要是因为用户不能通过SQL语句指出在何处创建该基本表.本系统的解决办法是让用户通过图形化工具接口指出他（或她）将来定义基本表的缺省位置.删除基本表操作除了真正地从某个局部数据库中删除该表外,还将删除全局数据字典中的有关内容.和定义全局模式中共享表相反的过程是断开连接,它仅仅使该表不可再全局共享,但不将该表从局部数据库中删除.
+4 全局数据字典
+　　全局数据字典是整个多数据库系统的全局资源,主要包括下列各项内容.
+　　(1) 各局部数据库的基本情况
+　　该项中的内容包括各局部数据库的产品名称、版本号、网络地址、支持ODBC的级别以及查询能力等信息.
+　　(2) 全局模式至各局部模式的映射
+　　该项内容包括每一个全局表与局部库中的基本表（或视图）的对应情况.
+　　(3) 多数据库系统的基本情况
+　　包括MDBS的名称、版本号、支持ODBC的级别、支持SQL语言的情况等.
+　　(4) MDBS的存取控制信息
+　　包括用户和用户组的名称、每个用户的口令、每个用户组所含的成员和存取控制矩阵.
+　　全局数据字典全部存放在一个SQL Server数据库中,并且和IS-Global的服务器位于同一台机器上.这样对于一些元数据的访问,IS-Global服务器只需要访问本机的数据库即可；对于一般数据的操作,IS-Global服务器也常常需要访问其中的数据.采用数据库管理元数据的优点是,数据库能提供事务机制,大大方便了系统的实现,提高了系统的可靠性.
+5 前端接口
+　　IS-Global前端接口提供图形化界面工具、ODBC函数接口和SQL语言交互式访问3种工具.
+　　图形化界面工具为多数据库系统提供了模式集成、权限管理和系统维护等功能.在多数据库建立之初,它可用于定义现有各局部数据库系统的共享信息,进行模式集成,形成多数据库系统.另外,在多数据库系统建成并投入运行之后,局部数据库用户对局部数据库系统的修改也需要通过模式集成工具在全局系统中反映出来,以便使全局用户可以使用.
+　　IS-Global系统管理员有权通过图形化界面工具进行权限管理,也可以访问数据字典中所有的数据.用户可通过该工具查看自己的访问权限和多数据库系统的有关情况,也能将一些被许可的授权进一步授权给系统中的其他用户,但不能直接修改数据字典中的内容.
+　　ODBC是Microsoft公司制订的一种实现异种数据库访问的接口,现已成为一种事实上的标准,被大量应用于应用程序和开发工具中,通过在IS-Global前端提供标准的ODBC接口,可以使这些应用程序和工具不经修改就能连到IS-Global多数据库系统上来,增强了IS-Global的功能和可用性.
+　　IS-Global ODBC主要由IS-Global ODBC驱动程序、数据编码/解码模块和底层通信服务模块组成.应用程序的函数调用由ODBC驱动器管理器传给IS-Global ODBC驱动程序,对于要由服务器方处理的函数,经过数据编码/解码模块的打包,由底层通信服务LCS(local communication system)发送给服务器.相反地,服务器产生的结果或错误信息由LCS传回,经过解包后由IS-Global ODBC 驱动程序写入应用程序指定的内存缓冲区中.
+　　SQL语言交互式访问接口是IS-Global系统提供的一个实用工具,通过它可以方便地查询多数据库系统的数据资源,其实现遵循SQL92标准［13］.运行时,首先连接到IS-Global数据源,键入查询语句并执行后,查询结果或状态信息直接显示在结果窗口中.
+6 结束语
+　　本文介绍了一个多数据库系统的设计与实现.目前,对于多数据库的理论研究已经取得了一些成果,并且在一段时间内仍将继续下去.但如何将这些成果有效地、综合地应用于实用的系统还需进一步探讨和实践,本项目即是在这方面所作的有效尝试.通过本项目的设计与实现,使我们取得了一些宝贵的经验,为以后的工作打下了良好的基础.
+　　目前,IS-Global已基本实现,将和一些应用程序进行连接并进行试运行.今后,我们将在下述两方面对IS-Global进行工作：(1) 通过在工厂使用,不断地发现问题,加以改进,提高系统的可靠性；(2) 更深入地探讨实现技术,提高系统效率.我们计划从下面两个关键方面入手,即在客户端提供更完善的数据缓冲机制,以及进一步探讨涉及多个局部数据库的数据查询优化问题.
+致谢　本文的研究工作得到国家863CIMS主题重大科技攻关项目基金资助,此项目编号为863-511-9704-002-02,并得到国家自然科学基金资助,项目编号为69703006.
+注：本文研究得到国家自然科学基金、国家863高科技项目基金和博士后科研基金资助.
+本文通讯联系人:钟华,北京100080,中国科学院软件研究所对象技术中心
+作者简介：吴胜利,1963年生,博士,副研究员,主要研究领域为数据库,面向对象技术,工作流.
+钟华,1971年生,博士生,主要研究领域为分布式数据库,面向对象技术.
+黄涛,1965年生,博士,副研究员,主要研究领域为软件工程,对象技术,分布计算,程序设计语言及环境.
+孙红艳,女,1973年生,助工,主要研究领域为异构多数据库系统.
+虞海江,1974年生,助工,主要研究领域为异构多数据库系统.
+作者单位：钟华　中国科学院软件研究所对象技术中心　北京　100080
+吴胜利　黄涛　孙红艳　虞海江　中国科学院软件研究所计算机开放研究实验室　北京　100080
+参考文献
+　　1　Bukhres, Elmagarmid Ahmed K eds. Object-oriented Multi-database Systems, Omran A. Englewood Cliffs, NJ: Prentice Hall, 1996
+　　2　Proceedings of Research Issues in Federated Database Systems'97 Workship. http://www.iti.cs.uni-magdeburg.de/～cornad/EFDBS97/
+　　3　IBM Inc. DataJoiner: A Multidatabase Server. http://www.software.ibm.com/data/pubs/papers/#djlwp
+　　4　Microsoft Inc. ODBC 3.0 SDK. http://www.microsoft.com
+　　5　吴胜利,黄涛.CIMS环境中全局信息系统的总体结构与设计.清华大学学报,1998,38(3):108～111
+(Wu Sheng-li, Huang Tao. Structure design of global information system in CIMS. Journal of Tsinghua University, 1998,38(3):108～111)
+　　6　Sheth A, Larson J. Federated database systems for managing distributed. Heterogeneous and Autonomous Databases ACM Computing Surveys, 1990,22(3):183～236
+　　7　吴胜利,王能斌.异构分布式数据库系统中语义不一致问题的一种解决办法.计算机学报,1996,19(5):363～368
+(Wu Shang-li, Wang Neng-bin. A method to support semantic discrepant data in heterogeneous distributed database systems. Chinses Journal of Computers, 1996,19(5):363～368)
+　　8　Zhang A, Nodine M, Bhargava B et al. Ensuring relaxed atomicity for flexible transactions in multi-database systems. In: Richard T S, Marianne W eds. Proceedings of ACM SIGMOD Conference, Minnesota: ACM Press, 1994.67～78
+　　9　Jonscher Dirk, Dittrich Klaus R. Argos――a configurable access control system for interoperable environments. In: David L S, Steven A D, John E D eds. Database Security IX: Status and Prospects, London: Chapman & Hall, 1996. 43～60
+　10　Tari Z, Fernandez G. Security Enforcement in the DOK Federated Database System. Database Security X, Status and Prospects, North Holland(Elsevier): Chapman & Hall, 1997
+　11　Thomas R K, Sandhu R S. Task-based authorization controls(TBAC): a family of models for active and enterprise-oriented authorization management. In: Proceedings of IFIP WG 11.3 Workshop on Database Security. California: Lake Tahoe, 1997
+　12　Evrendilek C, Dogac A, Nural S et al. Multi-database query optimization. Journal of Distributed and Parallel Databases, 1997,5(4):77～114
+　13　International Standand ISO/IEC 9075, Information Technology――Database Languages――SQL. 1992
+本文1998-04-03收到原稿,1998-09-01收到修改稿

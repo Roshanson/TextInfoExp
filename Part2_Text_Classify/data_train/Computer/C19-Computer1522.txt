@@ -1,0 +1,79 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+一类不确定时滞系统的鲁棒H∞控制器设计1)
+王景成　苏宏业　褚健
+关键词　线性时滞系统，鲁棒H∞控制，不确定性，静态状态反馈，二次稳定性.
+ROBUST H∞ CONTROLLER DESIGN FOR UNCERTAIN LINEAR SYSTEMS WITH DELAYED STATE AND CONTROL
+WANG JINGCHENG
+(Dept.of Automation,Shanghai Jiao Tong University,Shanghai 200030)
+SU HONG YE CHU JIAN
+(Institute of Industrial Process Control, Zhejiang University, Hang zhou 310027)
+Key words　Time-delay systems, robust H∞ control, uncertainty, static state feedback, quadratic stabilization.
+1　引言
+　　H∞控制理论取得了很多令人瞩目的结果［1］.本文将进一步考虑采用H∞范数 约束条件来处理结构已知的不确定性.近年来，在这一方面已经得到了一些结果［2,3, 4,5］.本文将研究状态和控制存在定常时滞、并且在系统状态矩阵、控制矩阵、时滞状 态矩阵和时滞控制矩阵中存在参数不确定性的线性不确定系统的鲁棒H∞控制问题， 在处理过程中，不确定性矩 阵不必满足匹配条件.在时域中，将采用二次型稳定性概念来处理线性不确定系统；在频域 中，将采用系统H∞范数定义来处理.通过求解一个ARE可以得到静态状态反馈控制律 ，该控制律保证了闭环系统的二次型稳定性、并且满足从干扰输入到控制输出的H∞范数 约束.
+
+2　问题描述
+　　考虑下述方程描述的线性时滞不确定系统
+　(1)
+这里x(t)∈Rn是状态向量，u(t)∈Rm是控制输入向量， w(t)∈Rp是属于L2［0,∞)空间的干扰输入向量，z(t)∈Rq 是控制输出向量，,是具有合适维数的用以表述系统不确定性的实矩阵，A0,A1,B0,B1,D和E是具有合适维数的已知实矩阵，h1和h2是非 负常数.假设静态状态反馈控制律为
+u(t)=Kx(t),　　(2)
+　　(3)
+这里ε是待定的正实数，R∈Rm×m是待定的正定加权矩阵，P∈Rn×n是后文将定义的正定矩阵.则从干扰输入向量w(t)到控制输出向量z(t)的闭环传递函数为
+(4)
+　　故鲁棒H∞控制器设计可表述为，确定正定对称矩阵P使闭环控制系统稳定并且保证对于给定的正常数γ满足约束条件Hzw(s)∞γ.
+3　主要结论
+　　定义1［2］.　给定系统(1)(当u(t)= 0, w(t)=0时)，如果存在一正定对称矩阵P和正常数α，使得对于容许的不确定性，Lyapunov函数V(x)=xTPx的导数对于所有的(x,t)∈Rn×R满足条件
+　　(5)
+则称此系统二次型稳定.如果存在一个状态反馈控制u(t)=Kx(t)使式(1)和(2)组成的闭环系统(当w(t)=0时)二次型稳定，则称此系统状态反馈 二次型能稳定.
+　　假设系统(1)的不确定性结构为
+ΔA0=H1F1,ΔA1=H2F2,ΔB0=G1F3,ΔB1=G2F4,　　(6)
+FiFTiI,i=1,2,3,4.　　　(7)
+那么有下述的结果.
+　　定理1.　假设干扰输入为零输入，如果对于正常数ε和正定 对称矩阵R存在一个正定对称矩阵P满足下述的矩阵不等式
+(8)
+那么由(1)和(2)式组成的闭环系统二次型稳定.
+　　证明.为方便起见，定义xh1=x(t-h1)和xh2=x(t-h2).假定零干扰输入，将(2)式的控制输入代入(1)式，则闭环反馈系统变为
+(t)=(A0+H1F1)x+(A1+H2F2)xh1+(B0+G1F3)Kx+(B1+G2F4)Kxh2.
+　　选择该系统的Lyapunov函数为
+L=xTPx+2∫tt-h1xTxdθ+2∫tt-h2xTKTKxdθ.
+　　考虑到(7)式以及不等式2xTyxTx+yTy(x和y是合适维数的向量)，进一步可以得到
+(9)
+　　将(3)式代入(9)式可得.故如果对于正常数ε和正定对称矩阵R存在正定对称矩阵P，并且满足不等式(8)，则必存在正常数c满足.由定义1可知，此闭环系统二次型稳定.
+证毕.
+　　定理2.　对于给定的正常数γ，假设对于正常数ε和正定对称矩阵R存在正定对称矩阵P满足下述的矩阵不等式
+
+(10)
+那么由(1)和(2)式组成的闭环系统二次型稳定并且满足约束条件Hzw(s)∞γ.
+证明.由定理1可知，本定理证明可归结为证明不等式Hzw(s)∞γ.
+　　显然，存在一正定对称矩阵Q满足
+
+(11)
+这里
+
+　　为方便后文叙述，定义下述记号：
+
+　　则(11)变为
+(12)
+　　显然T(jω)可逆，故可定义记号
+U(jω)=DTPT-1(jω)P.
+　　对(12)式左乘γDTT-*(jω),右乘T-1(jω)D,则有
+
+　　即Hzw(s)∞γ.
+证毕.
+　　注1.文献［4］给出了状态和控制同时存在时滞、无参数不确定性的线性时不变系统的静态状态反馈H∞控制器设计结果.其结果不考虑不确定性，因此是本节结果的一个特例，但其对于确定性系统的保守性应小一些.
+　　注2.文献［5］处理了状态和控制同时存在时变时滞、并含有不确定性的线性系统的静态状态反馈稳定性问题，其结果虽然考虑了不确定性，但没有考虑到鲁棒H∞性能约束，若不考虑时变时滞影响，它也是本节结果的一个特例(当D=0，E=0，γ→∞时).
+　　1)国家自然科学基金资助项目(No.69604006).
+作者单位：王景成(上海交通大学自动化系　上海　200030)
+　　　　　苏宏业　褚健(浙江大学工业控制技术研究所　杭州　310027)
+参考文献
+1　Doyle J C, Glover K,Khargonekar P P, Francis B A. State-space soluti on to standard H2 and H∞ control problem. IEEE Trans. Automat. Co ntrol, 1989, 34(8):881-897
+2 Khargonekar P P, Petersen I R, Zhou K. Robust stabilization of uncertain line ar systems: quadratic stabilizability and H∞ control theory. IEEE Trans . Automat. Control, 1990, 35(3):356-361
+3 Xie L, Souza C E. Robust H∞ control for linear systems with norm-boun ded time-varying uncertainty. IEEE Trans. Automat. Control, 1992, 37(8):1188-1191
+4 Choi H H, Chung M J. Memoryless H∞ controller design for linear system s with delayed state and control. Automatica, 1995, 31(6):917-919
+5 Choi H H, Chung M J. Memoryless stabilization of uncertain dynamic systems with time-varying delayed states and controls. Automatica, 1995, 31(9):1349-1351
+收稿日期　1996-01-02

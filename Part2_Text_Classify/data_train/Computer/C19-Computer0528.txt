@@ -1,0 +1,76 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+随机多变量系统的结构与
+参数不变量辨识1)
+胡德文　温熙森　王正志
+　　摘　要　引入多变量系统Markov参数矩阵相关分析下的最优输入设计向量，得到Markov参数矩阵估计. 在此基础上，推导出有色噪声干扰下多变量线性系统Kronecker结构不变量与参数不变量的递推辨识算法. 
+　　关键词　多变量系统， 结构不变量，系统辨识， 参数估计. 
+IDENTIFICATION OF STRUCTURE AND PARAMETER INVARIANTS 
+FOR MULTIVARIABLE STOCHASTIC LINEAR SYSTEMS
+HU DEWEN WEN XISHENG WANG ZHENGZHI
+(Dept. of Automatic Control,National University of Defence Technology, Changsha 410073)
+　　Abstract Firstly, this paper introduces the optimal input vector for identifying Markov parameter matrices of multivariable linear systems with correlation analysis method. Based on all of the estimated Markov parameters, then, a recursive algorithm is derived for identifying the Kronecker invariants and parameter invariants of multivariable linear systems in the presence of colored noises.
+　　Key words Multivariable systems, structure invariants, system identification, parameter estimation.
+　　1　引　言
+　　多变量系统的结构辨识一直是辨识理论界关心并致力解决的问题， Guidorzi［1］提出利用输入输出数据直接确定多输入多输出(MIMO)系统的结构不变量. 在这方面， 文［2―6］采用不同方法进行了研究. 本文将研究有色噪声干扰下多变量系统Kronecker结构不变量与参数不变量的辨识问题. 充分利用全部Markov参数矩阵估计值作为二次数据， 以提高结构辨识抗噪能力和参数估计精度. 同时， 推导出依结构递推算法，以减少计算量. 
+　　2　Markov参数矩阵的辨识
+　　考虑线性离散多输入多输出(MIMO)系统
+y(t)=G(z)u(t)+v(t)，　　　　　　　　　　　　　　(1)
+其中y(t)∈Rp,u(t)∈Rq分别为系统的输出和输入；{v(t)}为平稳的零均值观测噪声向量，v(t)∈Rp. 
+　　在文［6］的假设下，(1)式描述的系统可采用下面的模型描述
+　　　　　　　　　　　(2)
+其中G(τ),τ=1,…,Ns是系统的Markov参数，Ns为系统的调整时间. 引入如下相关函数
+　　　　(3),(4)
+　　文［6］证明了采用相关分析法，若输入向量满足
+　　　　　　　(5)
+则系统Markov矩阵的各个元素组成的向量，达到了一定意义下的最高辨识精度. 这时的Markov参数矩阵的估计值由下式给出
+(τ)=Ryu(τ).diag(P-11,…,P-1q).　　　　　　　　　　　　(6)
+　　文［6］还具体给出了如何设计输入向量{u(t)},使得(5)式严格成立. 同时，还利用关于单变量情形的结果，给出了(τ)的渐近估计特性，如无偏性、均方收敛性、强一致性等. 下面的结构辨识都是以全部的(τ) (τ=1-Ns)作为二次数据进行的. 
+　　3　多变量系统的结构辨识
+　　状态空间描述一个系统的方式不是唯一的. 在系统能观测的情况下，可用Lueuberger规范型描述. 根据Guidorzi的工作［1］，此时系统可完全等价地用p个多输入单输出子系统的差分方程来表示，在不考虑噪声(v(t)≡0,t)时，即
+　　　(7)
+其中yi(i=1-p)和uj(j=1-q)分别为系统输出、输入向量y和u的第i和第j个分量；vij为系统的可观型结构不变量，vij=vi;Δik=v1+v2+…+vi-1+k， 称vi为系统的Kronecker不变量， 它们刻划了线性多变量系统结构的本质；元素αijk称为系统的参数不变量. 
+　　在(7)式中，当1τNs-vi时，可证明有
+　　　　　　(8)
+其中gim(τ) 为Markov参数矩阵G(τ)的第i行m列元素. 由于(8)式只含αijk元素， 可简化结构辨识. 
+　　构造新的数据向量
+i(τ)[gil(τ),…,gi1(τ+L), gi2(τ),…,gi2(τ+L),…,giq(τ),…,giq(τ+L)]T,　(9)
+其中L=Ns-(vi),而(vi)是根据先验知识估计的各个vi值的最大值，要求有Ns2(vi).
+　　按如下顺序与规则将i(τ)排列起来
+1(1),…,p(1);1(2),…,p(2);1(3),…,p(3)；….　　　　　　(10)
+如果新增排列的向量与前面向量线性相关，则不加入上述排列. 设目前已选入l个向量，按此秩序构成矩阵Φl， 相对应的第i个输入分量的参数不变量αijk构成l维向量θli.
+　　现在进行第l+1步选择. 试选向量m(δlm+1)，组成新的选择矩阵
+Φl+1=[Φl　　m(δlm+1)],　　　　　　　　　　　　　　(11)
+其中δli(i=1-p)为计数指针，表示在Φl中形如φi(.)的向量个数. 
+　　当(8)式有方程误差时，采用最小二乘法得到θl的估计值
+lm=ΩlΦTlm(δlm+1), Ωl=(ΦTlΦl)－1.　　　　　　　(12)，(13)
+则由于前l步选择中，Φl各列互不相关，ΦTlΦl是非奇异的，Ωl存在. 
+　　尝试Ωl是否能增加维数. 由(11)和(13)式，有
+　　　　　　(14)
+　　定义行列式的比值作为判据
+　　　　　　　　　　　　　(15)
+则利用分块矩阵行列式公式，等价地有
+Jm(δlm)=Tm(δlm+1)[m(δlm+1)-Φllm].　　　　　　　(16)
+同时，利用分块矩阵求逆公式，有
+　　　　　　　(17)
+　　试选的m(δlm+1)能否入选(10)式中，要看它与前面选得所有向量是否线性相关， 也就是要看Ωl+1是否满秩?等价地要看Ωl+1是否奇异?即detΩ-1l+1=0是否成立?由于detΩ-1l≠0，故可由(15)式判断Jm(δlm)=0是否成立. 
+　　在辨识中(9)式的各元素用ij(.)代替， 此时(8)式总有方程误差. 由(12)式得到θlm的最小二乘估计值lm，可以推知，(16)式计算出的Jm(δlm)实际上就是估计残差平方和. 此时判断Jm(δlm)→0或显著减小是完全合理的. 与行列式比值判据完全等价. 
+　　现在可进行判别. 如果Jm(δlm)→0或与前面的Jm(.)值相比Jm(δlm)显著减小，则根据Kronecker不变量的性质，可确定vm=δlm， 与m相应的参数不变量也由(12)式确定下来. 这时，在(10)式的选择中，形如φm(.)的向量不再选入(否则仍有Jm(.)→0出现). δlm的计数被固定下来. 
+　　如果Jm(δlm)→0的显著性不成立， 则第l+1步的选择成立， 执行(16)和(17)式运算.l计数增1，δlm计数增1. 
+　　依秩序选择新的m值，凡是遇到δlm已被固定的m值即跳过. 计算(12)式，判断(16)式，考虑是否执行(17)式. 如此循环， 直至有p个δlm值被固定下来为止. 这时，多变量系统的全部结构与参数不变量被确定出来. 
+　　最后计算(证明略)β参数估计值
+　　　　　　　(18)
+其中k=1-vi, i=1-p, m=1-q, Δik=v1+…+vi-1+k.
+　　4　仿真结果
+　　考虑如下系统［1，5］
+　　　(19)
+采用长度为1023，功率为1的A-最优输入［6］在AST-386计算机上用C语言进行仿真. 
+　　1) 无噪声干扰时，由本文算法得到
+　　J2(0)=0.093582, J2(2)=0.070152, J1(1)=1.335807,
+　　J2(1)=0.091158,J2(3)=0.000000,J1(2)=0.000000.
+　　由程序判断出v1=2,v2=3；参数不变量估计值为
+　　111=0.500000,

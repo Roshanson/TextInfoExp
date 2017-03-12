@@ -1,0 +1,90 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+基于长序列立体图象的运动参数 LS 估计
+黄浴　袁保宗
+摘　要　将目标的运动表示为一个匀速旋转且旋转中心做匀加速平移的模型，由此构造出一个由长序列立体图象、基于反对称矩阵分解(SSD)求解模型参数的线性最小二乘(LS)算法.文中给出了计算机模拟的结果.
+关键词　长序列立体图象，运动参数估计，计算机视觉.
+LS MOTION ESTIMATION BASED ON A LONG
+SEQUENCE OF STEREO IMAGES
+HUANG YU　YUAN BAOZONG
+(Institute of Information Science,Northern Jiaotong University,Beijing 100044)
+Abstract　In this papaer,first the object's motion is described to be a constant rotation about the rotation center which translates in a constant acceleration mode,then a skew-symmetric decomposition(SSD)-based least squares(LS)algorithm of estimating the model's parameters from a long sequence of stereo images is proposed.Results of computer simulations are given.
+Key word　Long sequence of stereo images,Estimation of motion parameters,Computer vision.
+1　引言
+　　在计算机视觉领域，序列图象的三维运动分析占有重要的地位，而其方法大致分为两类［1］：光流法和特征对应法.以往的运动估计方法基于二帧或三帧图象，其缺点在于没有充分利用所获得的信息，而长序列图象为此提供了一条新途径［2］.基于长序列图象的运动估计方法的关键问题是运动建模.
+　　本文建立一种以目标为中心的运动模型，由此构造出一个由长序列立体图象中的目标对应特征点估计模型参数的 LS算法.文中给出了解的唯一性分析和计算机模拟结果.
+2　长序列图象中目标的运动模型
+　　在大多数基于两帧的运动分析方法中采用以镜头为中心的描述方式［1］，即
+Xn=Rn-1Xn-1+tn-1,　　　(1)
+其中 Xn=｛pn1,pn2,…pnm｝是 n 时刻的目标特征 pni 点集，n=0,1,…f-1,f 为离散采样时刻数，m 是所取特征点数，而 Rn-1,tn-1分别为 (n-1)时刻至 n 时刻运动的旋转矩阵和平移向量.这里默认旋转中心位于坐标系的原点.
+　　目标的运动还可视为围绕一个 3-D 空间点(旋转中心)的旋转及该点相对镜头的平移，即下面以目标为中心的描述方式
+　　　　(2)
+其中 On,Tn-1分别是 n 时刻的旋转中心及其从(n-1)时刻至 n 时刻的平移向量，Xn,Rn-1同(1)式.(2)式给出了旋转中心，故比(1)式更利于目标真实运动的描述.
+　　在模型的实用性和算法的复杂性之间折衷，采用匀加速平移和匀速旋转模型，即
+Rn=R,Tn=T0+Ta,　n=1,2…，f-1.　　　(3)
+(3)式代入(2)式得
+　　　　(4)
+　　在此需注意On的多义性，即旋转轴上的任意一点均可做旋转中心，故令O0满足约束条件
+O0=［O0x,O0y,O0z］T,　O0z=d,　　　(5)
+其中 d 为常数.
+3　基于SSD的运动估计最小二乘算法
+　　已知目标的特征点集 Xn=｛pn1,pn2,…pnm｝，而未知模型参数是 R，Ta,O0,T0(12个未知变量)，以下推导求解上述参数的算法.
+　　首先，根据(2)式所求解的问题转化为
+　　　　(6)
+其中
+　　先给出 Carley 定理［3］如下
+　　定理1　在一个反对称矩阵和旋转矩阵(其特征值不等于-1)之间存在以下一一对应关系
+R=(I-Sk)-1(I-Sk)＜=＞Sk=(R+I)-1(R-I)，　　　(7)
+其中 k=［k1,k2,k3］T 称为Carley向量，而对应的反对称矩阵是
+　　　　(8)
+　　将(7)式代入(6)式，问题又转化为
+　　　　(9)
+其中un,i=qn,i+qn-1,i,υn,i=qn,i-qn-1,i.
+(9)式等价于
+D.k=c　　　　(10)
+正则方程的求解.
+其中
+　　若Carley向量得到，则可由(7)式求出 R.
+　　以下讨论方程(10)解的唯一性.首先令
+
+
+
+
+　　　　(11)
+其中 mij属于矩阵 M 的元素，i,j=1,2,3.这样可得
+D=ωI-SST,　c=-u.　　　(12)
+　　定理2　方程(10)存在唯一解〈=〉rank(S)≥2.
+　　证明　SST半正定，υi为其特征值，υi≥0，i=1,2,3;
+
+　　证毕.
+　　R得到之后，可构造方程组
+
+简记为
+A.y=b, f≥3.　　　(13)
+其中 l=(f-1)(f-2)/2,　f≥3.显然rank(A)=8，因此需利用约束条件(5)，这样得到方程组
+　　　(14)
+其中eT3=［0,0,1,0,…,0］1×9,y的最小二乘解为
+　　　(15)
+4　计算机模拟结果及结束语
+　　首先随机产生初始 3D特征点集，即 X0=｛p0i=(x0i,y0i,z0i),i=1,2,3},其中 x0i,y0i,z0i取自［-4，4］，i=1，2，3；旋转运动的三个欧拉角 α，β，γ 在［-10°，10°］，初始旋转中心各分量(z 分量已知)在［-3，3］，初始平移向量各分量在［1，1.5］，加速平移向量各分量在［0，0.5］，则由上述参数可得到 Xn={pni,pn2,pn3},n=1,2,…，f-1.
+　　立体视觉成象系统构造如下：两镜头光轴均平行于 z 轴，左右镜头中心位于 x 轴，二者的中点为原点.基线长=6，焦距=1.通过透视成象，特征点 pni分别在左右镜头得象点 pLni,PRni,附加高斯噪声于象坐标；再根据三角测量得到含噪的 X′n={p′n1,p′n2,p′n3},n=1,2,…，f-1.
+　　现f从4至10变化，SNR=30 dB；按上节算法求解运动参数，模拟次数 =30.实验结果见图1.(a)关于初始平移向量.(b)关于加速平移向量.(c)关于旋转角 α，β，γ.由图1可见，在不增加特征点数(取为3)的情况下，估计精度随帧数增加而提高.
+　　最后，可在(6)式引入权函数 Wn,i，即得
+　　　(16)
+其中n=0,1,…，f-1.这里 Wn,i可取 0-1 值以适应图象序列中目标特征点的遮蔽(0)和可见(1)，也可取为鲁棒统计学中的Tukey函数［4］迭代地消除出格点的干扰［5］.
+
+
+
+图1　运动参数估计的误差曲线
+作者单位：该研究得到国家高科技“863”项目的资助.项目编号：863-306-03-01.
+参考文献
+［1］Aggarwal J K,Nandhakummar N.On the computation of motion from sequences of images: a review.in Proc.IEEE,1988,76(8):917-935.
+［2］黄浴，袁保宗.序列图象运动分析及其在单镜头长序列图象方面的进展.铁道学报，1994，16(4):35-42.
+［3］Bottema O,Roth B.Theoretical Kinematics.New York:North Holland,1979.
+［4］Huber P J.Robust statistics.New York:John Wiley,1981.
+［5］Huang Y,Yuan B.Robust LS motion estimation from a long sequence of stereo images.Proc.of Int.Conf.on Neural Network and Signal Processing,Nanjing,China,November,1995.
+收稿日期　1995-02-07

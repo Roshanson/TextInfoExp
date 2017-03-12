@@ -1,0 +1,123 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+最优鲁棒解析余度设计方案研究
+颜东　张洪钺
+摘　要　利用广义特征结构理论求解最优鲁棒性能指标，来获得奇偶向量.采用了非线性滤波估计传感器的误差，再补偿奇偶向量，实现了用常值门限进行故障检测；提出了均值检验法(MVT)分离故障的最优性能指标，由此求解分离故障的检测量，并用于冗余捷联惯导系统的故障检测与分离.
+关键词　最优鲁棒解析余度，均值检验，广义似然比检验，非线性滤波，捷联惯性导航系统.
+DESIGN OF OPTIMAL ROBUST
+ANALYTLCAL REDUNDANCY
+YAN DONG　ZHANG HONGYUE
+(Department of Automatic Control, Beijing University of Aeronautics and Astronautics, Beijing 100083)
+Abstract　In this paper, a new method of calculating parity vector is proposed. First, a performance criterion for robust fault detection is given. By using the theory of Generalized Eigenstructure, the criterion can be solved to obtain optimal redundancy relation for the system detection. An optimal isolation performance criterion and Mean Value Test method(MVT) is also proposed. The parity vector can be compensated by using non-linear filtering, and the parity vector compensation approach can reduce the influence of sensor errors such as input misalignments, scale factor errors, and biases, and allow to use a constant threshold. When only one sensor fails, both GLT and MVT method can detect and isolate the failure correctly; When more than two sensors fail simultaneously, GLT method can detect the failures,but can not isolate the failures. However, MVT method can not only detect failures but also isolate failures. 
+Key words Optimal robust analytical redundancy, mean value test, general likelihood test, non-linear filtering, strapdown inertial navigation system.
+1　引言
+　　奇偶空间方法已被广泛用于故障检测与隔离［1－6］.在文献［1］中，提出了奇偶向量的求取方法.该方法只有在传感器具有特定的对称结构时，传感器的故障对检测量的贡献能力相同，即满足故障检测的均匀性［7］，因而Potter算法的应用受到了限制.本文提出了对传感器的安装结构没有特定要求的新的求取奇偶向量的方法，并采用非线性滤波估计传感器的误差，来对奇偶向量进行补偿.提出了检测故障与分离故障的均值检验方法.当两个或更多个传感器同时出现故障的时候，仍然可以正确检测与分离故障.
+2　最优鲁棒解析余度设计方法
+　　设惯性元件有n个传感器，并且没有传感器误差而仅有附加的噪声序列η，则测量方程为
+m=Hω+η.　　　　(1)
+其中，ω是真实的状态；H是n×3维的传感器几何矩阵.H的n行包含了n个传感器轴方向的方向余弦.当故障发生时，测量方程改变为
+m=Hω+Bbf+η.　　　(2)
+当第k个传感器出现故障时，则B的第k个对角元为1，而其余元素为0.为了检测故障，要求选择v矩阵
+vH=0,　　　　(3)
+v是(n-3)×n维的正交投影阵，此时的奇偶向量变成
+p=vm=vBbf+vη．　　　(4)
+其中p是一个(n-3)维的奇偶向量.
+　　文献［1］提出了求取奇偶向量的方法，但只适用于传感器的配置结构具有特定的对称性的情况，此时［7］
+　　　　(5)
+hi,hj表示测量阵H的第i行，第j行.很多情况下这种特殊的对称性并不满足，即使理论上满足了这种安装模式，由于传感器包含了诸如输入轴不准，刻度因子以及偏倚等误差，也将使这种特定的对称性被破坏，这样会直接影响FDI的性能，所以，这里提出了最优鲁棒解析余度的设计方法.所谓最优鲁棒解析余度关系是指，由最优鲁棒解析余度所生成的残差对系统状态的变化最不敏感，而对故障的变化最为敏感［8］.由公式(4)可知，要使设计的奇偶向量对系统状态的变化最不敏感，应使vH尽可能地小；同时，为了能对故障最敏感，而使vB尽量大，为此提出下面的性能指标
+　　　(6)
+这个性能指标是两个二次型的比值，由文献［8］提出的正交投影向量的求取方法，(6)式的解可写成
+　　　(7)
+其中，λ是矩阵束HHT-λBBT的特征值，vT是对应的特征向量，它可以通过MATLAB中的函数计算.采用(7)式中最小特征值对应的特征向量vT作为正交投影矩阵，进而可以获得奇偶向量p=vm.
+3　故障检验与分离的均值检验方法
+　　设X1，X2，…，Xn是从正态母体N(μ，σ20)中抽取的一个子样，其中σ20是已知常数，检验假设H0(μ＝μ0），采用(8)式的统计量进行均值检验［9，10］.
+　　　(8)
+对给定的显著水平α，查正态分布表即可求取检验门限.其判决函数为
+　　　(9)
+对于奇偶向量p可以作如下的统计检验：
+　　　(10)
+其中σvη是vη的均方根值，k表示第k个采样时刻.再按判决函数(见(9))便可以对(10)进行故障检测.通常的均值检验方法，只能检测故障，却无法分离故障，这里作者提出了一种新的分离故障的方法.
+　　由(4)式可知，故障时刻的奇偶向量的均值为
+Ep=EvBbf+Evη=vBbf.　　　　(11)
+k号传感器发生故障时，则有Ep=v(k)bf(k),v(k),bf(k)分别为正交投影矩阵v和故障向量bf的第k个元.做均值检验应该使v(k)bf(k)尽可能的大，提出性能指标如下［11］：
+　(12)
+　　(12)式表明，由此正交投影向量产生的奇偶向量不包括第k个传感器的测量值，而对第l个传感器的敏感程度已经设定，并且，对除第k个传感器之外的传感器故障最敏感.ek是第k个元素为1，其余元素为0的行向量.
+　　在事先不能确定哪一个传感器为故障传感器的时候，将k依次取为1，2，…，n,按照上式，共可以求出n个分离故障的正交投影向量，它们分别是v1,v2,…vn，按此n个正交投影向量分别求取n个奇偶向量，它们分别是p1,p2,…，pn，再同时对n个奇偶向量进行故障检测与故障分离.
+　　由(12)式，根据拉格朗日常数法可以得到
+　　　(13)
+对J求偏导数，并令其为0，再令All＝eTlH(HTH)-1HTel,Alk=eTlH(HTH)-1HTek,Akk=eTkH(HTH)-1HTek,Akl=eTkH(HTH)-1HTel,可求得
+
+
+
+　　(14)
+当第k个传感器出现故障时，不包括第k个传感器测量值的奇偶向量的数学期望为Epk＝Evkm=Evkη=0，由此可见，如果只有第k个传感器出现故障，n个残差中只有一个残差不包括故障项，而其它的残差都包括故障项，这样其余(n-1)个残差就可以通过均值检验检测出有故障，而不包括第k个传感器的残差检测的结果为无故障.由于在进行故障分离之前，已经检测出系统中出现了故障，便可判定没有被包含的传感器出现了故障.
+　　如果按照上述方法仍然无法确定故障源的话，则说明至少两个传感器出现了故障，可设定分离两个故障时的正交投影向量的性能指标为
+　　(15)
+　　上述性能指标的含义为由(15)式产生的奇偶向量不包括第k个和第l个传感器的测量值，这样按(15)式就可以确定n(n-1)/2正交投影向量，并得到n(n-1)/2个奇偶向量.
+　　按类似的过程，可对两个以上传感器同时出现故障的情况进行故障检测与分离.
+4　奇偶向量的补偿
+　　文献［12］和文献［13］分别提出用卡尔曼滤波方法和偏差分离估计的方法对奇偶向量进行补偿.但由于奇偶向量是系统状态与传感器误差的非线性函数，这样卡尔曼滤波的应用受到了限制，而在采用偏差分离估计方法的时候，算法的收敛性是很难保证的.
+　　为了提高FDI的性能，这里采用了非线性滤波来估计传感器的误差，并对奇偶向量进行补偿.
+　　通常测量方程可以表达成
+m=(I+Hse)(H+Hme)ω＋b+η.　　(16)
+其中H是n×3维的几何矩阵，Hse是由于传感器刻度因子误差引起的n×n维矩阵，Hme是输入轴不准引起的n×3维误差矩阵，b是n×1维的传感器的常值偏倚，η是n×1维的白噪声.其中Hse，b,η表达式参见文献［11］.由于系统的安装误差模型比较复杂，其解析表达式应视具体的安装方案而定.
+　　系统的状态变量可以选取为
+　　　(17)
+其中Hsei,Hme(i,j),bi 分别表示Hse, Hme和b的诸元素，由此可见方程(16)是非线性的.
+　　系统方程可以表示为
+x(k+1)=x(k)+g(k),　　　(18)
+其中　g(k)=［g1(k),g2(k),g3(k),0,…,0］T，gi(k)(i=1,2,3)是高斯白噪声.
+　　通过对方程(16)和(18)所组成的测量方程和系统方程进行非线性滤波，可以得到ωi,Hsej,Hme,bj(i=1,2,3,j=1,2，…n)的估计值，，，，然后对奇偶向量进行补偿，补偿后的奇偶向量表达式为［14］
+　　　(19)
+　　从公式(19)可知，如果，，，,则p*趋近于vη.当故障发生时，补偿后的奇偶向量表达式p*≈vBbf＋vη，再对p*进行故障检验与分离.
+5　应用与仿真
+　　这里分别以一组六个和五个单自由度陀螺为例给出检测结果，六个陀螺均匀地安装在正十二面体上(满足对称性要求，见公式(5))，五个陀螺均匀地安装在园锥的表面上(不满足对称性要求)(其几何矩阵参见文献［11］）.
+　　仿真时，安装误差角δθ(i),δαj，δβj的均方根值为0.018°，刻度因子误差Hsei的均方根值为0.001，偏倚bi的均方根值是0.00004°/s,gi、ηj的协方差为1.55E-11(°/s)2，陀螺发生故障的时间为第1.25秒.
+　　(a)在不考虑传感器误差的情况下，分别由Potter算法与本文的最优鲁棒算法求取奇偶向量的GLT检验法对6个传感器(满足对称性要求)，可检测的最小故障分别为3.6e-5，3.6e-5,3.9e-5,2.7e-5,9e-6,3.9e-5(单位是°/s).
+　　(b)在不考虑传感器误差的情况下，分别由Potter算法与本文的最优鲁棒算法求取奇偶向量的GLT检验法对5个传感器(不满足对称性要求)，GLT方法可检测的最小故障分别为3.1e-5,2.3e-5,2.3e-5,2.5e-5,2.2e-6(单位是°/s)、均值检验方法可检测的最小故障分别为2.6e-5,2.4e-5,2.4e-5,2.6e-5,2.2e-6(单位是°/s).
+　　由上式可以看出，本文的最优鲁棒算法求取奇偶向量的均值检验法与Potter算法求取奇偶向量的GLT检验法可检测的最小故障十分接近.
+　　(c) 在考虑传感器误差的情况下，GLT检验法与均值检验法对6个传感器故障检测结果分别是：GLT方法可检测的最小故障分别为3.1e-5,1.5e-5,1.6e-5,1.6e-5,1.9e-5,2.2e-5(单位是 °/s)，均值检验方法可检测的最小故障分别为3.0e-5,6.0e-6,8.0e-6,1.9e-5,1.9e-6,6.0e-6(单位是 °/s).
+　　由此可知，均值检验法可检测的最小故障比GLT检验方法可检测的最小故障要小.
+　　(d)当只有一个传感器发生故障的时候，GLT检验法与均值检验法都可以检测和隔离故障.例如，当一号传感出现故障的时候，GLT方法的故障隔离函数DFIn,(n=1,2,…，6)分别为3.36065e-10,1.73196e-10,6.81251e-11,1.25699e-10,2.59862e-11,1.06689e-11,按GLT方法，可以将第一号传感器隔离，均值检验法分离曲线分别如图1和图2所示.
+
+
+图1　一个传感器出现故障时，均值检验方法故障分离曲线(不包括故障项)
+
+
+图2　一个传感器出现故障时，均值检验方法故障分离曲线(包括故障项)
+　　从图1，图2可以看到，如果公式(12)中的vk的序号k与故障传感器的序号一致，则奇偶向量中不包括故障项，检测结果为无故障；否则，检验结果为有故障.
+　　(e)当二个传感器同时发生故障的时候，GLT检验法只能检测故障；均值‘检验法可以进行正确的故障检测与隔离.例如，当一号和四号传感器同时出现故障的时候，GLT方法的故障隔离函数DFIn, (n=1,2，…，6)分别为9.64598e-11, 7.56961e-13, 1.93368e-10, 7.01055e-11, 3.11012e-12, 2.41300e-10, 由GLT方法分离故障的规则，将把六号传感器隔离.均值检验方法故障分离曲线分别是图3和图4：
+
+
+图1　二个传感器出现故障时，均值检验方法故障分离曲线(不包括故障项)
+
+
+图2　二个传感器出现故障时，均值检验方法故障分离曲线(包括故障项)
+　　由图3，图4可见，如果公式(15)中，所选择的k,l与故障传感器的序号一致，则检测结果为无故障；反之，检测结果为有故障.
+6　结论
+　　最优鲁棒算法求取奇偶向量的均值检验法比Potter算法求取奇偶向量的GLT检测方法对故障的检测有更高的灵敏度.当两个或两个以上传感器同时出现故障的时候，GLT方法只能进行故障检测，而本文提出的均值检验法既可以检测也可以隔离故障.所以，本文提出的最优鲁棒解析余度设计方案比传统的Potter算法求取奇偶向量的GLT检验方法有更高的工程应用价值.
+作者简介：颜东男，1966年12月生于辽宁省锦州市，于1995年在北京航空航天大学自动控制系获博士学位，现在于清华大学精密仪器系从事博士后研究工作.主要研究领域包括现代控制理论及应用、人工智能技术、并行处理技术、系统建模与系统辨识、状态估计方法、容错技术、微米/纳米技术及应用，现已发表论文二十余篇.
+张洪钺　简介及照片见本刊1995年第21卷第1期.
+作者单位：北京航空航天大学自动控制系301教研室　北京　100083
+参考文献
+［1］　Potter I E, Sunman M C.Thresholdless redundancy management with arrays of skewed instruments.Integrity in Electronic Flight Control Systems. AGARDOGRAPH-224,1977,15-11 to 15―25.
+［2］　Desai M, Ray A.A fault detection and isolation methodology. Proc. 20th Conf. on Decision and Control, 1981, 1363―1369
+［3］　Chow E Y， Willsky A S.Analytical redundance and the design of robust failure detection systems.IEEE Trans. Aut.Control, 1984,AC-29:603―614
+［4］　Lou X C, Willsky A S, Verghese G L. Optimally robust redundancy relations for failure detection in uncertain systems. Automatica, 1986, 22:333―344.
+［5］　Chen Jie, Zhang Hongyue. Parity vector approach for detecting failures in dynamic systems, Int. J. Systems Sci., 1990, 21(4):765―770.
+［6］　以光衢，吴奋.捷联惯导可靠性的奇偶向量方法.信息与控制，1992，(2)：26―32
+［7］　陈杰，张洪钺，以光衢.余度传感器系统中传感器配置结构和奇偶向量的最优化.航空学报，1990，11(3)：175―182
+［8］　张洪钺.不确定系统鲁棒解析余度的最优化设计.控制与决策，1994，9(2)：141―145.
+［9］　Yan Dong, Zhang Hongyue. Mean value test for FDI in redundant sensor configurations, american automatic control conference, USA, June 21―23, 1995.
+［10］　Zhang Hongyue, Yan Dong. Optimal design of robust analytical redundancy for a redundant strapdown Inertial navigation system, IFAC Intelligent Autonomous Control in Aerospace, Beijing,280―285.
+［11］　颜东.导航、制导系统状态估计方法及容错理论研究：［博士学位论文］.北京：北京航空航天大学，1995.68―71.
+［12］　Hall S R, Motyka P,Gai E, Deyst J J.In-flight parity vector compensation for FDI. IEEE Trans. aerosp. electron. syst., 1983,AES-19:(5)668―675.
+［13］　张汉国，张洪钺.改进的容错惯性导航系统，航空学报，1990，11(1)：47―52.
+［14］　Yan Dong, Zhang Hongyue. Parity vector compensation using non-linear filtering. IFAC Workshop on Safety, Reliability and Applications of Emerging Intelligent Control Technologies, 1994,HongKong, 177―181.
+收稿日期　1994-10-17
+
+

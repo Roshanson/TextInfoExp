@@ -1,0 +1,66 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+离散事件系统的一种N步在线监控策略1)
+古天龙　高衿畅　周春晖
+　　摘　要　文中给出了离散事件系统的一种N步在线监控策略.其特点是控制策略取决于系统当前运行的 N 步后继运行投影或预测，无需计算非能控语言的上限能控子语言，通过适当选取 N，仍可保证系统的最优运行.同时还给出了与之相关的一些理论结果.
+　　关键词　离散事件系统，监控器，综合.
+N-STEP ON-LINE SUPERVISORY CONTROL OF
+DISCRETE EVENT SYSTEMS
+GU TIANLONG
+(Department of Computer,Guilin Institute of Electronic Technology,Guilin 541004)
+GAO JINCHANG ZHOU CHUNHUI
+(Institute of Industrial Process Control,Zhejiang University,Hangzhou 310027)
+　　Abstract A N-step on-line supervisory control method for discrete event systems is proposed.This method is characterized by calculating the next control action on the basis of a N-step projection of the behavior and achieving optimal supervisory control without calculating the supremal controllable sublanguage.Some theoretic problems about this method are also discussed.
+　　Key words Discrete event systems,supervisors,synthesis.
+　　1　引言
+　　对于具有事件集Σ(Σ=Σc∪Σu,Σc∩Σu=,Σc为能控事件集,Σc 为不能控事件集)和状态集Q，始于初态 q0∈Q，依据 δ:Σ×Q→Q(状态转移函数，δ(σ,q)=q′ 表示事件σ将状态 q 转移至状态 q′)变化的离散事件问题可用自动机 G=(Σ，Q，δ,q0)描述.以Σ*表示事件集Σ上的事件串集(包括控串ε)，δ则可扩展为 δ：Σ*×Q→Q［1，2］.离散事件问题 G 的运行特性为语言 L(G)=｛s｜s∈Σ*,δ(s,q0)有定义｝.对于事件串 s=σ1σ2…σk∈Σ*，称事件串 σ1σ2…σj(j≤k)为事件串 s 的前缀，以 pre(s) 表示事件串 s 的所有前缀构成的集合.以｜s｜表示事件串 s 的长度(事件串中事件出现次数)，｜s｜=σ1σ2…σk｜=k.语言 KΣ* 的闭包定义为 =｛s｜(t∈Σ*)t∈K∧s∈pre(t)｝.对于 KΣ*，如果 Σu∩L(G),则称 K 为能控语言(对于 L(G)和Σu).对于非能控语言K，可用其上限能控子语言 K↑来近似［2］.离散事件问题 G 的监控器为 Γ：Σ→2Σ，或者 Γ：Σ*→2Σ.以 γ(s) 表示事件串 s 后的监控策略(能发生事件的集合).受控离散事件问题 G 的运行特性用 L(G，γ)表示.
+　　在Ramadge和Wonham等学者提出的离散事件问题的逻辑监控理论中［1，2］，监控器的综合要求：受控对象以及期望合法运行特性的有限自动机模型.对于非能控语言性能指标，还需要计算上限能控子语言.如果问题的规模较大，则会出现计算困难、甚至不可能.Chung等提出了 LLP 在线监控的思想［3］.本文给出一种较之于 LLP 在线监控策略更为有效的 N 步在线监控策略.
+　　2　N 步在线监控
+　　2.1　监控策略的描述
+　　N 步在线监控策略的基本思想是：根据系统当前运行(设执行完事件串 s)下后继运行的 N 步投影或预测(时变、非确定离散事件问题的 N 步后继运行只能通过预测而获得)和指标语言K，求解当前运行历史 s 下的控制策略 γN(s)(后继运行情况的 N 步投影或预测为一N级树).对于语言 L(G)Σ*，事件串 s∈Σ*，N∈Z+(正整数)，引入如下语言运算
+L(G)/s=｛t｜t∈Σ*)st∈L(G)｝,　　　　　　　　　　　　　　　　　
+L(G)｜N=｛t｜t∈Σ*)t∈L(G)∧｜t｜≤N｝,　　　　　　　　　　　　
+L(G)/s｜N=｛t｜t∈Σ*)st∈L(G)∧｜t｜≤N｝.　　　　　　　　　　
+进一步定义如下受阻止事件串集(子语言)
+
+系统运行至 s 下的反馈控制策略(允许发生事件集合)为
+γN(s)=L(G)/s｜1-(F/s｜N1∪F/s｜N2∪F/s｜N3)｜1
+离散事件系统在给定语言指标 K 下的 N 步在线监控运行特性为
+ε∈L(G,γN)，　
+(s∈L(G,γN)(σ∈γN(s))sσ∈L(G,γN).
+　　2.2　一些理论结果
+　　命题1.当且仅当↑≠Φ,L(G,γN)↑.
+　　命题2.当且仅当(σ∈Σu∩L(G)｜1)(w∈Σ*u)σw∈L(G)∧σw∈,则↑≠Φ.
+　　命题3.L(G，γN)L(G,γN+1).
+　　命题4.如果 ↑≠Φ,N≥Nu(L(G))+2,则L(G，γN)=↑.其中 Nu(L(G))=max｛｜t｜｜t∈Σ*u)(u,ν∈Σ*)utν∈L(G)｝.
+　　为了将 N 步在线监控策略同LLP 监控策略进行比较，以γNcons(s),γNoptm(s) 分别表示LLP监控器中保守、乐观策略下，系统运行至事件串s的反馈控制(允许发生事件集合).LLP监控的保守和乐观策略是对 N 级树中悬挂(pending)［3］串所采取的“极端”决策(阻止或者发生).N 步在线监控策略则是充分利用悬挂串所含信息(串的能控性)的一种折衷决策(如果某悬挂串中包含多于一个能控事件，则称其为能控悬挂串；反之，则称为不能控悬挂串.能控悬挂串可以发生、不能控悬挂串受到阻止).显然γNcons(s)γN(s)γNoptm(s)，并有如下命题.
+　　命题5.L(G，γNcons)L(G,γN)L(G,γNoptm).
+　　命题5表明，在保证系统可靠运行下，N 步在线监控策略较之于LLP监控策略允许系统有更大限度的运行(由文献［3］知，L(G，γNcons)K↑ 以及 K↑L(G,γNoptm),亦即乐观控制策略γNoptm(s)下受控系统会出现受禁运行特性).
+　　由于篇幅所限，上述几个命题的证明从略(可参阅文献［4］的有关章节).
+　　示例.图1a所示离散事件系统 G，其中事件集为 Σ=｛α,θ,β｝，能控事件集为Σc=｛α,θ｝.控制指标语言 K=(β2+αβ)θβ.
+
+图1　离散事件系统的例
+由命题2，因为,所以↑≠Φ.本例中 Nu(L(G))=2,选取 N=4.监控策略综合如下：
+　　s=ε(q=0):F/s｜N2=F/s｜N3=Φ, γ4(ε)=L(G)/ε｜1=｛α,β｝;
+　　s=α(q=1):F/s｜N2=F/s｜N3=Φ, γ4(α)=L(G)/α｜1=｛β｝;　
+　　s=αβ(q=2):F/s｜N2=Φ,F/s｜N3=｛θββ｝, γ4(αβ)=L(G)/αβ｜1-｛θ｝=Φ;
+　　s=β(q=6):F/s｜N3=Φ,F/s｜N2=｛θ｝, γ4(β)=L(G)/β｜1-｛θ｝=｛β｝;
+　　s=ββ(q=2):F/s｜N2=Φ,F/s｜N3=｛θββ｝, γ4(ββ)=L(G)/ββ｜1-｛θ｝=Φ.
+　　同理可计算出其它事件串s下当前运行的控制策略.系统在N步在线监控策略下的运行特性 L(G,γ4)示于图1b，显然 L(G，γ4)=↑.
+　　3　讨论
+　　N 步在线监控策略中，系统当前运行 s 下的控制策略是基于该运行历史的后继运行的 N 步投影或预测.在这一点上类似于文献［3］中LLP监控的思想.但是，由于 N 步在线监控中所采取的控制策略的不同，使其体现出较LLP监控有如下两方面优点：(1)在保证系统可靠运行下，允许系统有更大限度的运行(命题5)；(2)监控策略综合时，无需计算非能控指标语言的上限能控子语言，但通过适当选取 N 仍可保证系统的最优运行 K↑(命题4).
+　　N 步在线监控策略综合中，F/s｜N1,F/s｜N2 和 F/s｜N3 的计算工作量相当于LLP监控综合中 fNK 和 fN［3］a 的计算工作量.由于 N 步在线监控策略的综合无需实施 fN［3］↑的计算，故 N 步在线监控策略较LLP监控策略在计算上更为有效.
+　　N 的选取对于 N 步在线监控策略的运行效果有较大的影响.对于运行特性 L(G)可完全预知的离散事件问题，可通过命题 4 选取 N ，以确保系统的最优运行.然而，对于时变非确定离散事件问题，L(G)是无法完全预知的，N 步在线监控策略就不一定能保证系统的最优运行.只能通过选取尽可能大的 N(计算或在线实施允许下)，来达到较好的系统运行.
+1)广西自然科学基金资助项目.
+作者单位：古天龙：桂林电子工业学院计算机系　桂林　541004
+　　　　　高衿畅，周春晖：浙江大学工业控制技术研究所　杭州　310027
+参考文献
+　［1］Ramadge P J,Wonham W M.Supervisory control of a class of discrete event processes.SIAM J.Control Optim.,1987,25(1):206―230.
+　［2］Wonham W M,Ramadge P J.On the supremal controllable sublanguage of a given language.SIAM J.Control Opti.,1987,25(3):637―659.
+　［3］Chung S L,Lafortune S,Lin F.Limited lookahead polices in supervisory control of discrete event systems.IEEE Trans.on Automa.Control,1992,37(2):1921―1935.
+　［4］古天龙.复杂工业过程中离散事件问题的若干新研究［学位论文］.杭州：浙江大学，1995.
+收稿日期 1994-12-19

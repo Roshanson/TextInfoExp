@@ -1,0 +1,116 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第1期 No.1 1999
+
+
+
+无向图的边极大匹配并行算法及其应用
+马　军　岩间一雄　顾谦平
+　　摘要　在EREW PRAM(exclusive-read and exclusive-write parallel random access machine)并行计算模型上,对范围很广的一类无向图的边极大匹配问题,给出时间复杂性为O(logn),使用O((n+m)/logn)处理器的最佳、高速并行算法.
+　　关键词　并行图算法,边极大匹配.
+　　中图法分类号　TP301
+A Parallel Maximal Matching Algorithm for Undirected Graphs with Applications
+MA Jun1 IWAMA Kazuo2 GU Qian-ping3
+　　Abstract　 A fast and optimal parallel maximal matching algorithm is proposed for a class of graphs. It runs in O(logn) time with O((m+n)/logn) processors on a EREW PRAM (exclusive-read and exclusive-write parallel random access machine).
+　　Key words　Parallel graph algorithms, maximal matching.
+　　设G(V,E)为无向图,V={1,2,...,n}为G的顶点集,υ∈V,υ表示顶点标号.E为G的边集,n=|V|,m=|E|.子集ME被称为G的边匹配,若e1,e2∈M,e1与e2无共同顶点.若M不被G的任何边匹配所真包含,则M被称为G的极大边匹配MM(maximal matching).MM的并行求解算法已成为许多应用问题并行求解的基础算法.［1,2］目前,在EREW PRAM(exclusive-read and exclusive-write parallel random access machine)的并行计算模型上,对MM的费用最好的算法解为使用O(n+m)个处理机,时间复杂性为O(log4n)的并行算法.［2］本文中,在范围很广的一类图集合上,提出对MM的新并行算法,该算法的运算步数比此前的最好算法在该图集合上减少O(logn)因子,为在该图集合上的最佳算法.
+1　基本术语
+　　设边集E=F1∪...∪Fk,Fi为森林且当i≠j,Fi∩Fj=ф.称所有这样的边分割中,具有最少森林数k的分割为G的裁减(Arboricity).其最少森林数目记为a(G).设Π={G|G为无向图且a(G)=Ｏ(1)},则已知Π含有平面图、种类(Genus)受限图及最大顶点度数受限图等.［3,4］设AV,Γ(A)={x|(x,υ)∈E,υ∈A且xA}为顶点集合A的邻域；Ti=(Vi,Ei,ri)为G的一棵有向根树,满足ViV,EiE,ri为Ti的根.depth(υ)被定义为顶点υ到ri路径上的边数.定义depth(ri)=0.F被称为G的一个有向林,若F由G的k(>1)棵有向根树T1∪...∪Tk组成,满足：① E(Ti)∩E(Tj)=ф,i≠j;② V(T1)∪...∪V(Tk)=V(G).F可由一维数组F(1..n)表示,即F(i)=j,当且仅当在子树Tk上,j为i的父结点.定义F(ri)=ri.
+　　定理1. ［5］　设W(n)为在PRAM模型上,在Ｏ(1)时间内可并行完成的操作步数,则在有p台处理机的PRAM上,W(n)个操作步可在Ｏ(W(n)/p)时间内被p台处理机并行完成.
+2　极大边匹配的高效并行算法
+　　算法. Matching
+　　输入: 图G的邻接矩阵.
+　　输出: G的一个极大边匹配M.
+　　(1) i:=1;G1:=G;M:=ф;υ∈V,计算顶点度数degree(v).
+　　(2.1) 若Gi=ф,则返回;
+　　(2.2) 调用过程Forest,建立Gi的一个生成林F1i.
+　　(2.3) υ∈V(Ti),Ti∈F1i,计算root(υ),root(υ)为Ti的根顶点标号.对每一边(υ,w)∈Ti,用弧〈υ,w〉,〈w,υ〉替代,Ti变为有向欧拉图Ci,通过Ci把root(υ)并行地送到Ti的每个顶点.［5］然后把Ci复原为Ti.
+　　(2.4) 调用过程F-Matching,找出F1i的一个极大边匹配M1i.
+　　(2.5) 建立子图G′i(V′,E′),E′={(υ,w)|(υ,w)∈E(Gi),满足在F1i中root(υ)≠root(w)且υ,wV(Mi)}.
+　　(2.6) 调用过程Forest,建立G′i的一个生成林F2i.
+　　(2.7) 调用过程F-Matching,找出F2i的一极大边匹配M2i.
+　　(2.8) Mi:=M1i∪M2i.
+　　(2.9) 删除Gi中至少有一端点在V(Mi)的边及孤立顶点.称残留的子图为Gi+1;M:=M∪Mi; goto (2.1).
+　　end Matching.
+　　Procedure Forest
+　　 输入: 子图Gi的邻接矩阵.
+　　输出: 由数组F(1..n)表示的Gi的生成林Fi.
+　　(0) 对每个υ∈Gi,F(υ)=υ;
+　　(1) 设Γi(υ)={x|(x,υ)∈E(Gi)为顶点υ在Gi中的邻域};w为Γi(υ)中具有最大顶点度数的顶点,若degree(w)≥degree(υ),则F(υ)=w;
+　　(2) for υ∈υ(Gi) par-do if F(F(υ))=υ and (w<υ) then F(υ)=υ; endif; endfor;
+　　(3) if F(υ)=υ then 随机选择 w∈Γi(υ),令F(υ)=w; endif;
+　　end Forest.
+　　Procedure F-Matching
+　　输入: 由数组F(1..n)表示的生成林Fi.
+　　输出: Fi的一个极大边匹配Mi.
+　　Local array B(1..n,1..2) of integer;
+　　Sub-Procedure Sort_Matching
+　　(1) 对B按字典序排序并存到B；
+　　(2) For all i,2≤i≤n par-do if B(i,1)=B(i-1,1) then B(i,1):=∞;
+　　(3) For all i,1≤i≤n par-do
+if B′(i,1)≠∞ then {送(B′(i,1),B′(i,2))到Mi;标记顶点B′(i,1)和B′(i,2)为Mi的顶点};endif;
+　　end Sort_Matching;
+　　Sub-Procedure Match(x)
+　　　　if x=0 then
+　　　　　　for 1≤i≤n par-do
+　　　　　　　　　if (F(i)=i) or (depth(i)为偶数) then B(i,1):=∞
+　　　　else {B(i,1):=F(i); B(i,2):=i;}; endif;
+调用过程 Sort_Matching; endfor;
+else for 1≤i≤n par-do
+if (F(i)=i) or (depth(i)为奇数) or (顶点i或F(i)已为Mi的顶点) then
+B(i,1):=∞ else {B(i,1):=F(i); B(i,2):=i;} endif;
+调用过程 Sort_Matching; endfor;
+　　end Match(x);
+　　/steps of algorithm F-Matching/
+(1) for each υ∈V(Gi) and υ∈V(Tj) par-do
+计算depth(υ),depth(υ)为顶点υ在子树Tj∈Fi的深度;标记υ为Mi的顶点. endfor;
+(2) for x=0 to 1 do 调用过程Match(x);
+　　end F-Matching.
+图1给出对算法Matching的一个执行过程图解.
+
+3　对算法Matching的理论分析
+　　称算法Matching的第2步循环的第i次执行为阶段i.下面的命题显然成立.
+　　引理3.1. ME为G(V,E)的一个极大边匹配,当且仅当M为一个边匹配,并且任意G中的边,至少有一个端点在M中.
+　　引理3.2. F1i(F2i)为Gi(G′i)的有根生成林.
+　　证明：显然,在过程Forest的步骤(1)～(2)中,所有Gi的顶点均被加到F1i中.步骤(2)删除可能的长度为数的回路,并且由于<关系为自反、非对称和传递的.因此过程结束后,F1i中无回路.同理可证F2i为G′i的有根生成林.　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　□
+　　引理3.3. M1i(M2i)为F1i(F2i)上的极大边匹配.
+　　证明：因在过程F-Matching的步骤(2)～(3)中,F1i中的每条边e=〈υ,F(v,F(v)〉都试图成为M1i的)〉都试图成为M1i的边,e未能成为M1i的边,当且仅当e的一个端点已在V(M1i)中.由引理3.1,引理得证.同理可证M2i为F2i的极大边匹配.　　　　　　　　　　　　　　　　　　　　　　　　□
+　　根据上述引理及算法Matching的步骤(2.9),即可得到推论3.1.
+　　推论3.1. 在阶段i后,所有F1i,F2i的边将被删除.
+　　因对Gi中任意边e=(υ,w),若υ,wV(Mi),e将留在Gi+1中,并且e在阶段i被从Gi中删除,仅当有一端点在V(Mi)中.由引理3.1和3.3,可直接推出定理3.1.
+　　定理3.1. M=∪iMi为G的一个极大边匹配.
+　　引理3.4. 在EREW PRAM并行计算模型上,算法Matching的每个阶段的运算,均可在O(logn)时间内被O((m+n)/logn)处理机完成.
+　　证明:因已知对n元素排序、树函数depth(υ)、root(υ)及在树上欧拉回路的计算,均可在O(logn)时间内被O((m+n)/logn)处理机完成［5］,而其他步骤的工作量均不超过O(n+m),由定理1.1,引理得证.　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　□
+　　引理3.5. 设Gi为连通子图,Si为在阶段i被删除的边集合,则只用Si中的边,足以建造Gi的一棵生成树.
+　　证明：因Mi:=M1i∪M2i且e∈E(Gi),在阶段i,e被删除当且仅当e的一个端点在V(Mi)中.令Si=S1∪S2,满足e∈S1(S2),当且仅当e的一个端点在V(M1i)(V(M2i))中.设Fi=F1i∪F2i,由k(≥1)棵子树组成,显然,E(F1i)∩E(F2i)=ф.下面对k做归纳证明.
+　　(1) k=1,则Fi=F1i,为Gi的生成树.S2=ф.引理成立.对k=2,由算法Matching的第(2.5)、(2.6)步的执行可知,E(G′i)={(υ,w)|υ,w分别为T1和T2的顶点,且υ,wV(Mi)}.因S2≠ф,故E(G′i)≠ф,则存在边e∈S2,使得T1∪T2∪{e}为Gi的一棵生成树.类似地,可推出k=3时也成立.
+　　(2) 设引理对任意k≤t(t>2)成立,下面证明k=t+1时也成立.
+　　显然,假设Tx和Ty之间无边属于S2,由归纳假设,引理对子图Gi-Tx和Gi-Ty均成立.在过程 Forest执行中,若边e的最大顶点度<3,则e必为树边,则推知若Gi-Tx和Gi-Ty在Gi中均不为空(若有一为空,则由归纳假设,引理成立),必存在υ∈Tx和w∈Ty,其顶点度数在Gi中均大于2,并在Gi中有一条连接vυ与w的路径P,满足P的边均为树边.故引理也为真.由归纳法原理,引理得证.　　　　　　　　　　□
+　　定理3.2. 算法Matching的阶段数一定不会大于a(G).
+　　证明：G可按下法分解为F1,F2,...,Fa(G):对每个Gi的连通分支Cl.找出一棵生成树Tl,且令Fi:=∪Tl; Gi+1:=Gi-Fi;重复此过程直至Gi=ф.
+　　设Ai,Bi分别为在上述算法与算法Matching的第i步删除的边集,由引理4.5,∪Ai∪Bi,1≤i≤a(G),故算法Matching的阶段数不会超过a(G).　　　　　　　　　　　　　　　　　　　　　　□
+　　定理3.3小结了上述讨论.
+　　定理3.3. 算法Matching可在Ｏ((n+m)/logn)处理器的CREW(concurrent-read and exclusive-write) PRAM模型上,在Ｏ(a(G)logn)时间内完成.
+4　结语及应用
+　　由定理3.3和集合Π的定义,对任意无向图G∈Π,算法Matching在具有Ｏ((n+m)/logn)处理器的EREW PRAM并行计算模型上的运行时间为Ｏ(logn).显然Ω(m)为MM求解的时间下界,所以我们的算法为集合Π上的最佳并行算法.我们认真地分析了已知对MM的最好的并行算法［2,6～9］在平面图上的执行情况,这些算法的执行时间至少为O(log2n).故我们的并行算法在集合Π上为最快的算法.我们推测,在使用多项式个数处理器的前提下,在EREW PRAM上不会存在比Ｏ(logn)更快的对MM的并行算法.
+　　文献［1］中给出一种求解G的极大顶点不交路径MVDP(maximal vertex disjointed path)的并行算法,在CREW PRAM上的执行时间为Ｏ(log4n),其中log4n为并行计算MM的时间.显然对任意G∈Π,应用我们的算法可使MVDP的计算时间减少到Ｏ(logn).新的MVDP算法又可改进在集合Π上对下列问题的并行求解时间：求解0～1网络流、作业调度、无向图的深度优先搜索和哈密顿回路求解问题.［1］
+本文研究得到国家自然科学基金、国家863高科技项目基金、山东省自然科学基金和山东大学跨世纪人才基金资助.
+作者介绍：马军,1956年生,博士,教授,主要研究领域为算法分析与设计,人工智能.
+　　　　　岩间一雄,1951年生,博士,教授,博士生导师,主要研究领域为算法分析与设计,人工智能.
+　　　　　顾谦平,1956年生,博士,副教授,主要研究领域为算法分析与设计,人工智能.
+本文通讯联系人:马军,济南250100,山东大学计算机科学系
+作者单位：马　军　山东大学计算机科学系　济南　250100
+　　　　岩间一雄　京都大学计算机科学系　日本京都市
+　　　　　顾谦平　会津大学软件系　日本若松市
+E-mail: majun@sdu.edu.cn
+参考文献
+　［1］Goldberg A V, Plotkin S A. Sublinear――time parallel algorithms for matching and related problems. Journal of Algorithms, 1993,14:180～213
+　［2］Iseaeli A, Shiloach Y. An improved parallel algorithm for maximal matching. Information Processing Letters, 1986,22:57～60
+　［3］Chiba Norishige, Nishizeki Takao. Arboricity and subgraph listing algorithms. SIAM (Society for Industrial and Applied Mathematics) Journal of Computers, 1988,14(1):210～223
+　［4］Harary F. Graph Theory, Revised. Reading, MA: Addison-Wesley Publishing Company, 1972. 35～130
+　［5］Jaja J. An introduction to parallel algorithms. Reading, MA: Addison-Wesley Publishing Company, 1992. 120～230
+　［6］Chen Z. A fast and efficient NC algorithm for maximal matching. Information Processing Letters, 1995,55:303～307
+　［7］Han Y. An improvement on parallel computation of a maximal matching. Information Processing Letters, 1995,56:343～348
+　［8］Iseaeli A, Itai A. A fast and simple randomized parallel algorithm for maximal matching. Information Processing Letters, 1986,22:77～80
+　［9］Kelsen P. An optimal parallel algorithm for maximal matching. Information Processing Letters, 1994,55:223～228
+本文1997-03-27收到原稿,1998-01-05收到修改稿

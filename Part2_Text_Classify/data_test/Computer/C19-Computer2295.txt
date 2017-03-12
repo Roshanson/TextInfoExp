@@ -1,0 +1,137 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第5期 Vol.36 No.5 1999
+
+
+
+一个增量式判定树学习算法INDUCE
+骆　斌　周志华　陈兆乾　陈世福
+摘　要　INDUCE算法采用自顶向下判定树归纳的学习方法，不仅具有健壮性好、效率高和正确率高等优点，还具有增量学习能力，可以动态修正概念描述的不足.该算法还运用了构造性归纳的思想，在学习过程中生成新的描述子，使概念描述空间搜索的效率得到提高.运行实例表明，INDUCE具有很好的应用前景.
+关键词　判定树，增量学习，构造性归纳，神经网络
+中图法分类号　TP18
+INDUCE: AN INCREMENTAL DECISION TREE ALGORITHM
+LUO Bin, ZHOU Zhi-Hua, CHEN Zhao-Qian, and CHEN Shi-Fu
+(State Key Laboratory for Novel Software Technology,Nanjing University,Nanjing　210093)
+Abstract　INDUCE is a version of top-down induction of decision trees. It has the merit of being robust, efficient and precise, and it is capable of incremental learning, so as to modify concept description dynamically. INDUCE also employs the idea of constructive induction, which improves the efficiency of searching in concept description space by generating new descriptors. Successful applications of INDUCE indicate that it has a bright future.
+Key words　decision tree, incremental learning, constructive induction, neural network
+1　引　　言
+　　判定树归纳是用于监督学习的一种常用方法，这类学习用判定树的形式表示所获取的概念，比较有代表性的有CLS［1］，ID3［2］等.但是，这些常见的判定树算法无法处理连续属性，并且不具备增量学习能力，使其应用受到了较大限制.
+　　INDUCE是我们提出的增量式混合型多概念获取算法IHMCAP［3］的符号学习部分，是一个增量式的判定树学习算法.它采用属性值对表示方式，能学习多个概念的差别描述，并通过引入神经网络接口，具备了处理连续属性的能力，学习效率较高，容错性较好.此外，该算法还采纳了构造性归纳的思想，在学习中创建新的描述子，从而弥补了背景知识库中描述能力的不足.该算法已在Windows95环境下用Visual C++ 4.2实现，并在台风预报、故障诊断等实践领域得到了成功应用.
+2　INDUCE算法设计
+2.1　定义
+　　定义1. 集合E={e|e=〈c,a1,…,an〉，c∈C，ai∈Ai}
+　　我们称E为示例集，集合C为概念，Ai为属性；n为示例集E的属性个数，|C|为示例集E的概念个数，|E|为示例数；示例e的第一个分量c为其概念值，记为e.C；e的其他分量ai为e在属性Ai上的取值，记为e.Ai.
+　　满足下面条件的概念值称为示例集E的MFC(most favorable concept)：
+
+　　定义2. RL={〈X,V〉|X∈{C,A1,…,An},VX}.RL称为规则集合，〈X,V〉称为规则.
+　　定义3. T={〈i,r,E〉|i∈N+，r∈RL，E为示例集}称为二叉判定树，如果T满足下列条件：
+　　①i〈i,r1,E1〉∈T, 〈2i+1,r2,E2〉∈T〈2i+2,r3,E3〉∈T
+　　②i〈i,r1,E1〉∈T, 〈2i+2,r2,E2〉∈T〈2i+1,r3,E3〉∈T
+　　③i〈2i+1,r1,E1〉∈T, 〈2i+2,r2,E2〉∈T〈i,r3,E3〉∈T
+　　④s,t∈T,a∈T，a为s和t的祖先.
+　　我们称三元组〈i,r,E〉为此二叉树的结点，其中形如〈i,〈C,{cx}〉,E〉的结点称为树叶结点，其他结点则是测试结点.
+2.2　测试选择
+　　ID3选择属性作为测试标准，按属性值不同对例子集划分.这种方法带来了无关值、分枝遗失和数据缩减的难题.INDUCE采用的测试是一个逻辑表达式，表达式的形式为：e.Ai∈{vi1,vi2,…,vim},e.Ai是示例e在属性Ai上的取值，vi1,vi2,…,vim都是属性Ai可能的取值.示例在测试上只有“真”和“假”两种取值，所以INDUCE生成的是一棵如定义3所示的二叉判定树.示例集E中在测试上取值为真的示例被划分到子集E+，其他则归入到E-中.INDUCE的测试选择分两个阶段进行：首先选择属性Ai，其次选择Ai的属性值vi1,vi2,…,vim.在选择过程中参考了信息熵的概念.选定属性时，计算各属性的取值对每一分类的信息量，选择其中最小的作为此次划分的Ai.对Ai的各属性值按各种可能进行合并，选取信息量最小的那种合并方式.
+2.3　神经网络接口
+　　判定树生长到一定深度之后，测试选择可能会遇到困难.如果示例集所有的离散属性都曾经用来作为测试，划分函数就找不到新的划分条件，因而无法继续划分.此时INDUCE寻找精度不合要求的树叶结点进行处理，将划分到这些结点的示例的可用信息转化为神经网络训练所需的输入-输出模式对，以便在该叶结点上引入神经网络模型，由神经网络来完成进一步学习的工作.这种处理方式不仅在一定程度上解决了学习精度提高的问题，还使得INDUCE可以学习连续属性，扩大了判定树算法的适用范围.
+2.4　构造性归纳
+　　大多数归纳学习系统的示例描述空间是预先定义好的，在学习过程中保持固定不变.因此由示例归纳得到的概念描述是从示例描述语言中选取合适的属性来表示的.这种归纳方式称为选择性归纳.选择性归纳有一个根本的局限性，即只有当原始描述与所学习的概念的特征直接相关时，学习任务才能够顺利完成.构造性归纳［4］则通过创建所需的新描述符克服了这一局限，同时构造性归纳还通过修改、删除原有描述的方法使原始示例空间发生面向任务的转换，其基本目的是为了从整体上提高学习的效率和降低概念描述整体上的复杂度.归纳学习过程是一个在概念空间中进行搜索的过程，构造性归纳转换了原始描述空间，使搜索在一个较小的范围内进行，因而提高了学习效率.同时，新描述符的引入，特别是用原始描述符的组合形成的新描述符的引入，还可以简化学习结果的表示形式.为了得到最好的划分条件，INDUCE采纳了构造性归纳的思想，在归纳过程中创建新的描述子，以弥补背景知识库中描述能力的不足.
+　　INDUCE根据测试e.Ai∈{vi1,vi2,…,vim}，创建新属性A′i=PA(Ai,{vi1,vi2,…,vim})={vdefault，vother}.新属性A′i的属性值vdefault是由属性Ai中的vi1,vi2,…,vim属性值合并而来，vother则由属性Ai中的其他取值合并而来.由于A′i和Ai之间的这种投影关系，我们称属性A′i为属性Ai的影子属性(shadow attribute).
+2.5　增量学习
+　　常见的判定树学习算法不具备增量学习能力的原因在于其划分函数的处理方式.划分函数总是从总体上考虑当前结点所包含的示例，以选择最有利的测试将它们区分开.所以，当获得新的示例时，原有的测试已经不能反映示例集的最新情况，划分函数不得不重新扫描整个示例集以选择新的测试，判定树也要从根开始重新构造.使判定树学习算法具有增量学习能力，就要改进判定树的生成过程，使其在获得新的示例时，只需要修剪原有判定树就可以使之反映示例集的变化.为达到这一目的，我们可以考虑在判定树生成的过程中在其结点上附加一些信息，利用这些信息可以不必重新扫描示例集就能计算结点的最优测试.
+　　根据上述思想，INDUCE采用了如下的增量处理方式［5］：将新增示例沿判定树向下匹配，直到到达叶结点为止.如果判定树能够对该新增示例正确分类，则保持判定树原有形态；否则看示例所在的树叶结点精度是否高于用户指定的精度，精度高则判定树也无需修改，精度低则需要对该结点进行划分.此时如果无法找到合适的划分属性，则有可能生成新的神经网络结点.这种增量学习机制还使得INDUCE具有一定的噪音处理能力［6］，限于篇幅，不再赘述.
+3　INDUCE算法描述
+　　算法1. INDUCE
+　　输入：示例e，二叉判定树T.
+　　输出：二叉判定树T.
+　　① IF (T=) THEN T←{〈0，〈C，{e.C}〉，{e}〉} STOP
+　　② 〈i，〈C，{cx}〉，CE〉←deduce(e，T)
+　　③ IF (cx=e.C) THEN STOP
+　　④ T←(T-{〈i，〈C，{cx}〉，CE〉})∪generateTree(〈i，〈C，{cx}〉，CE〉)
+　　INDUCE算法中使用了deduce和generateTree两个子算法.其中deduce对示例和判定树进行匹配，deduce∈f:E×{T}→T；generateTree生成判定树，generateTree∈f:T→{T}.
+　　算法2. deduce
+　　输入：示例e，二叉判定树T.
+　　输出：树叶结点〈i,r,E〉.
+　　① 选择T中满足条件的节点〈i，r，E〉.
+　　② WHILE (〈2i+1，r′，E′〉∈T) DO
+(i) T←(T-{〈i，r，E〉})∪{〈i，r，E∪{e}〉}
+(ii) IF check(e,r) THEN
+〈i，r，E〉←〈2i+1，r′，E′〉
+ELSE
+〈i，r，E〉←〈2i+2，r″，E″〉
+　　③ T←(T-{〈i，r，E〉})∪{〈i，r，E∪{e}〉}
+　　④ RETURN 〈i，r，E∪{e}〉
+　　其中check是判定示例在测试上取值的子算法，check∈f:E×RL→BOOLEAN.
+　　generateTree实际上可以视为一个没有增量处理能力的判定树学习算法，它完整地考虑了一个判定树学习算法所需要的划分标准、终止条件和树叶标记三要素.该算法在INDUCE中与处理匹配的deduce算法结合，就具备了增量学习的能力.generateTree算法中调用的formula子算法目的就是为了生成划分标准.
+　　当formula生成的规则r为空时，意味着继续进行符号处理无法提高判定树精度，应该采用神经网络对树叶结点上的示例继续学习.
+　　算法3. generateTree
+　　输入：树叶结点〈i，〈C，{cx}〉，CE〉.
+　　输出：二叉判定树T.
+　　① T←{〈i，〈C，{cx}〉，CE〉}
+　　② WHILE (accuracy(T)≤Pr) DO
+　　　(i) 〈No，〈C，{cj}〉，E〉←select(T)，r←formula(E)
+　　　(ii) IF void(r) THEN resort―to―ann
+　　　(iii) E+←{e|e∈E∧check(e,r)}，E-←{e|e∈E∧┐　check(e,r)}
+　　　(iv) T←(T-{〈No，〈C，{cj}〉，E〉})
+∪{〈No，r，E〉，〈2No+1，〈C,{MFC(E+)}〉，E+〉，
+〈2No+2，〈C,{MFC(E-)}〉，E-〉}
+　　③ RETURN T
+　　在generateTree算法中，Pr是归纳精度；accuracy用于计算判定树精度，accuracy∈f:{T}→[0,1]；MFC∈f:{E}→C，参见定义1；select从判定树中选择一个树叶结点用于划分，select∈f:{T}→T；formula用于分析示例集E生成最佳测试r，formula∈f:{E}→RL.
+　　算法4. select
+　　输入：二叉判定树T.
+　　输出：树叶结点〈No，〈C，{ci}〉，E〉.
+　　① 选择满足条件的树叶结点
+　　
+　　② RETURN 〈No，〈C，{ci}〉，E〉
+4　运行实例
+　　我们利用INDUCE算法分别为江苏省气象台和中国船舶工业总公司716研究所开发了台风路径预报系统和情报软件故障诊断系统［7］，均已交付试用，效果较好.本文仅介绍台风预报问题.
+　　台风是一种重要天气现象，目前气象部门主要依靠专家经验和手工操作来完成台风预报，正确率较低，通常仅有75%左右.而利用INDUCE开发的台风路径预报系统，在充分训练之后正确率可达到80%左右.
+　　台风预报问题的背景知识如表1所示.
+表1　台风预报问题背景知识
+
+概念/属性　　　取值
+台风类型(class)①沿海强高压型(c0)　②副高南落型(c1)
+③西风槽发展型(c2)　④无槽型(c3)
+台风中心以南的副高面积大于以北的副高面积(A0)①否(v00)　②是(v01)
+588线西脊点经度(A1)①116E以西(v10)　②116E～120E(v11)
+③120E～127E (v12)　④127E以东(v13)
+有无槽底南伸超过35N的西风槽(A2)①没有(v20)　②104E～120E之间(v21)　③104E～120E之外(v22)
+大陆上最接近台风的一环高压的中心值(gpm) (A3)①大于5920(v30)　②小于等于5920(v31)
+台风中心与其东侧15个经度内588线最南点纬度之差(B0)(0～13)
+台风中心与副高中心纬度之差值24小时变量(B1)(0～40)
+副高脊线与台风中心纬度差值(B2)(0～15)
+副高中心纬度(B3)(0～50)
+副高中心经度(B4)(90～179)
+台风进入起报区经度(B5)(113.5～123)
+台风进入起报区纬度(B6)(21.5～33)
+副高588线北界(B7)(22～34.1)
+
+
+　　我们选用江苏省气象台提供的江苏省1980年至1992年51个台风实例作为训练例，其中沿海强高压型6个，副高南落型21个，西风槽发展型8个，无槽型16个.INDUCE算法学习后产生的判定树如图1所示.
+
+
+图1　台风预报判定树
+5　结束语
+　　图1所示的判定树中共有两个神经网络结点，使用了我们提出的自适应谐振神经网络学习算法FTART［8，9］.其中A′是一个新构造出的描述子，“A′=v1”代表了“(A1=v11) or (A1<>v11 and A1<>v10)”.我们用江苏省气象台提供的另外10个台风实例对图1所示的判定树进行了测试，精度为80%.
+　　INDUCE算法不仅具有健壮性好、效率高、正确率高等优点，还具有增量处理能力，可以递增式地处理示例，保存“目前为止最佳”的概念描述，从而弥补了常见的判定树算法在这方面的不足.INDUCE算法引入神经网络接口后可以处理连续属性，通过进行构造性归纳，还使得概念描述空间搜索的效率得到提高.我们已经使用INDUCE算法在天气预报和故障诊断领域研制了两个应用系统，得到了用户单位的好评.
+本课题得到国家自然科学基金(项目编号 69875006)与江苏省自然科学基金(项目编号 BK97029)资助.
+作者简介：骆斌，男，1967年12月生，在职博士研究生，讲师，主要从事机器学习、数据库技术等方面的研究工作.周志华，男，1973年11月生，博士研究生，主要研究领域为机器学习、神经网络.陈兆乾，女，1940年2月生，教授，主要研究领域为机器学习和专家系统.陈世福，男，1938年10月生，教授，博士生导师，主要从事知识工程、机器学习、图像处理等方面的研究工作.
+作者单位：南京大学计算机软件新技术国家重点实验室　南京　210093
+参考文献
+　1　Hunt E B, Marin J, Stone P. Experiments in Induction. New York: Academic Press, 1966
+　2　Quinlan J R. Induction of decision trees. Machine Learning, 1986,62(1):81～106
+　3　陈兆乾, 周志华等. 增量式IHMCAP算法的研究及其应用.计算机学报,1998,21(8):759～764
+(Chen Zhaoqian, Zhou Zhihua et al. Research and application of the incremental algorithm IHMCAP. Chinese Journal of Computers(in Chinese), 1998,21(8):759～764)
+　4　Michalski R S. A theory and methodology of inductive learning. In:Michalski R S, Carbonell J G, Mitchell T M Eds.Machine Learning: An Artificial Intelligence Approach. New York: Springer-Verlag,1984.83～134
+　5　陈兆乾,周志华等.混合型学习模型HLM中的增量学习算法.软件学报,1997,8(11):875～880
+(Chen Zhaoqian, Zhou Zhihua et al. The incremental learning algorithm in hybrid learning model HLM. Journal of Software(in Chinese), 1997,8(11):875～880)
+　6　周志华, 陈兆乾等. IHMCAP算法对噪音数据的处理. 清华大学学报(自然科学版), 1998,38(S2):118～122
+(Zhou Zhihua, Chen Zhaoqian et al. The noisy data disposal by IHMCAP algorithm. Journal of Tsinghua University(natural science version)(in Chinese), 1998,38(S2):118～122)
+　7　何佳洲, 周志华等. 基于IHMCAP算法的一个故障诊断模型. 见：1998年中国智能自动化学术会议论文集. 上海：中国自动化学会智能自动化专业委员会, 1998.969～974
+(He Jiazhou, Zhou Zhihua et al. A fault diagnosis model based IHMCAP algorithm. In: Proc of the CIAC'98(in Chinese). Shanghai: Intelligent Automation Committee of Chinese Academy of Automation, 1998.969～974)
+　8　陈兆乾, 周戎等. 一种新的自适应谐振算法FTART. 软件学报, 1996,7(8):458～465
+(Chen Zhaoqian, Zhou Rong et al. A new adaptive resonance theory algorithm. Journal of Software(in Chinese), 1996,7(8):458～465)
+　9　陈兆乾, 李红兵等. 对FTART算法的研究及改进. 软件学报, 1997,8(4):259～265
+(Chen Zhaoqian, Li Hongbing et al. Analysis and improvement of FTART algorithm. Journal of Software(in Chinese), 1997,8(4):259～265)
+原稿收到日期：1998-08-13
+修改稿收到日期：1998-11-23

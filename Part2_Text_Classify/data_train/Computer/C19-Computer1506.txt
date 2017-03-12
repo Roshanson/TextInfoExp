@@ -1,0 +1,90 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+系统科学与复杂性(Ⅱ)
+李夏　戴汝为
+摘　要　系统科学的重点正在从无生命系统研究到有生命系统研究，从工程技术领域到社会科学、生命科学领域转变.这里将系统科学的有关研究与 Santa Fe Institute所进行的有关复杂性的工作进行了对比和综述.最后给出了一些比较重 要的且可以进一步讨论的问题.
+关键词　人工生命，复杂自适应系统，现场学习，开放的复杂巨系统，人机结合的大成智慧工程.
+SYSTEM SCIENCE AND COMPLEXITY：(Ⅱ)
+LI XIA　DAI RUWEI
+(Institute of Automation, The Chinese Academy of Sciences, Beijing 100080)
+Abstract　The focus of current system science research is shifting from nonbiotic to biotic systems,from engineering systems to social, economic systems.In this survey, Some important results on system resear ch are compared with those of the research on complexity. Some important promising problems are presented at last.
+Key words　Artificial life, complex adaptive system, situated learning, open complex giant system, human－computer synergetic intelligence engineering.
+2.4　人工生命和混沌的边缘
+　　对于生命现象来说，也许最具代表性的特征就是它的自我繁衍能力.在40年代，von Neumann 提 出了有关自我繁衍最本质的逻辑形式.他认为任何自我繁衍系统的遗传物质，无论是自然的还是人工的，都必须具有两个不同的基本功能：一方面，它必须起到计算机程序的作用，是一种在繁衍下一代的过程中能够运行的算法；另一方面，它必须起到被动数据的作用，是一个能够复制和传给下一代的描述.而且他在同事的协助下提出了一个模型，即元胞自动机(cellular automata):每一个细胞都是一个很简单、很抽象的自动机，每个自动机每次处于一种状态，下一次的状态由它周围自动机的状态和它本身的状态根据某种预先定义的转换表确定.von Neumann证明了确实至少有一种能够自我繁衍的元胞自动机存在，虽然它复杂到了当时的计算机都不能模拟的程度.但是这项工作回答了一个基本性的问题：一旦将自我繁衍看作是有生命物体独一无二的特征，机器也能做到这一点.von Neumann未能完成的这项工作，在他去世近30年后，由SFI的另一位代表人物Chris Langton进一步发展了.
+　　在Ted Codd工作的启发下，Langton在计算机上终于创造出了目前最简单的自我繁衍的元胞 自动机.之后，他把注意力放在了“为什么某些元胞自动机的规则表允许建立很有意义的结构，而另外一些却不能?”这样一个问题上.他发现元胞自动机这样一个动力系统，对规则表这样一个参数而言，该系统产生的结果会随着参数的变化而显示出某种相变现象.在参数很小时，元胞自动机的行为很快就收敛到某个稳定的单一的吸引子，当参数增大一些，元胞自动机的某些部分收敛到稳定的吸引子，而其他部分则收敛到周期性的吸引子，在动力系统理论中称为“极限环”，但整个来说还是有序的(order).而当参数很大时，元胞自动机的行为呈现出混沌(chaos)的状态，也就是所谓的“奇异吸引子”.在从有序状态向无序状态或混沌状态的转变过程中，经历了某个相变阶段，这时元胞自动机产生了极其复杂的行为，它的各个部分以一种奇妙的复杂方式繁衍、生长、分裂、和重组，基本上是不能安顿下来的. Langton率先把具有这种行为状态的元胞自动机称为处于“混沌的边缘”(edge of chaos). 在混沌的边缘，既有足够的稳定性来存储信息，又有足够的流动性来传递信息，这种稳定性 和流动性使得计算成为可能.接着Langton对相变和“混沌的边缘”做了深刻的研究，他将 动力系统、物理学中的物态变化、计算机科学中的可计算性理论进行对比之后，发现存在广 泛的“混沌的边缘”现象.
+　　动力系统：有序→“复杂”→混沌.
+　　物质形态：固体→“相变”→流体.
+　　可计算性：可停止的程序→“不可判定”的程序→不停止的程序.
+在此基础上，他做了更为大胆的假设，他认为生命或者智能是起源于某种相变，而且是永远力图在混沌的边缘保持平衡：一方面始终处于陷入过分有序的危险之中，另一方面又始终被过分的混乱所威胁.他认为进化就是使得生命学得越来越善于控制自己的参数，以使自己越来越能够在混沌的边缘上保持平衡的过程.
+　　为了能够利用计算机进一步来探索生命形成的规律，Langton这样认识由他创造和命名的“人工生命”：人工生命不是用分析的方法--不是用解剖有生命的物种、生物体、器官、肌肉、细胞的方法--来理解生命，人工生命是用综合的方法来理解生命.人工生命的信条是，生命的特征并不存在于单个物质之中，而存在于物质的组织之中.而且从计算机模拟复杂的物理系统中获得的最为惊人的认识是：复杂的行为并非出自复杂的基本结构，极为有趣的复杂行为是从极为简单的元素群体中突现出来的.Langton进一步参照了基础的生物学结果后，提出了广义基因型(generalized genotype)和广义表现型(generalized phenotype)的概念，广义基因型就相当于元胞自动机的转换规则表，而广义表现型就对应于元胞自动机的动力学行为.这样Langton就成功地在生命和计算之间建立了有力的联系，从而使得人工生命的研究取得了丰硕的成果［1－3］.
+2.5　复杂自适应系统
+　　在控制领域中，人们也谈论自适应，比如自适应控制系统.但是，他们的目标仅仅是考虑如 何在系统和环境及其变化规律不确定时，通过自动调整系统的结构或参数来减少不确定性，达到改善系统的品质.也就是，如何使系统保持一种稳定状态.但是Santa Fe Institute对自适应是从另一条路来考虑的，他们所关注的中心问题是某种新的性质是如何突现出来的，而不是有意去保持某种已有的确定性质，这种思想就是包含在John Holland提出的复杂自适应系统的理论中.
+　　Holland从对学习［4，5］、进化和适应性的考虑中提炼出了关于一个系统的building block的概念，他认为在一个环境中，通过学习而改变building block之间的连接结构就是适应性的机制.基于这样的认识，他在坚实的计算机科学背景的影响下，运用0-1表示的符号串作为最基本的表达方式，作为考虑问题的基因，作为building block，通过引入crosso ver和mutation两种生物学中的遗传机制作为算法，通过计算机的模拟，提炼出了表达进化、适应性、突现和共同进化机制的遗传算法［6］.
+　　对人类心智的突现和适应性的考虑，使得Holland不得不进一步发展他的遗传算法.他认为遗传算法虽然抓住了进化的本质，但是过于简单，因为没有包括产生适应性的agent.Holland为每个agent引入内部模型(internal model)的概念，而每个agent作为building block ，则根据自己的模型进行预测，可以通过经验而学习，而学习是Hebb式的.对于由这些agents组成 的分类系统(classifier system)，Holland引入了一个类似于认知科学中的小妖模型(ghost model)的机制，agents之间通过拍卖竞争的机制而相互作用，通过所谓的“桶队算法”(bucket brigade algorithm)而对每个agent的行为给予反馈，从而产生学习行为并适应环境. 在此基础上，他又一次地运用了0\|1串表示方法和遗传算法来扩充整个系统的学习能力，使 得系统不仅具有开采式的学习，而且还具有探险式的学习.这样一种描述心智的机制，通过 David Goldberg在煤气管道的安全控制上的成功运用和其它一些心理学实验而得到了验证 ［7］.
+　　Holland继续深入他的这些认识，提出了复杂自适应系统的概念［8］，它包括诸如 人脑、免疫系统、生态系统、细胞、蚂蚁群、以及人类社会中的政党、组织等等.他认为每 一个这样的系统都是由并行地相互作用的agent组成的网络.因此，在这样一个处于某种环 境内的共同演化的系统来说，没有任何事情是固定不变的.而且复杂自适应系统是多层次 的，这和Philip Anderson的观点比较一致，Anderson认为复杂性的研究有两个任务，一个 是研究并且理解在由多个部分组成的宏观些的层次上突现的(emergent)现象和性质；但更为 重要的一个是研究在不同功能层次之间的转化过程［9－10］.国内1990年发表的 钱学森等人的文章［11］也明确地提出了多层次的概念.不过Holland还进一步认 为复杂自适应系统都有内部模型的，虽然有些不是明确表达出来的，但是都能够用来预测将 来，而且复杂自适应系统的最根本的适应机制之一就是改善和重组自己的building block. 因此Holland认为，在这样一个永远处于变化的复杂自适应系统中讨论均衡是没有意义 的，复杂自适应系统的本质就在于其进化过程中突现的永恒的新奇性.Santa Fe的其他一些 研究人员也得到了类似的结论［12］，Kauffman称之为自催化现象［13］ ，W.Brian Arthur在经济学中称之为正反馈现象［14］.
+2.6　新的经济学
+　　Santa Fe的各种思想在经济学的研究中，得到了最有效的应用和体现.一般说来，我们可以 作如 下的理解：现在流行的新古典经济学逻辑根基，就是一群非常有理性的经济人(agents)之间 的博弈论.在这种情况下，经济系统最后的发展将是产生和谐的、稳定的、和均衡的状态， 负反馈和报酬递减率是新古典经济学的中心概念.但是，真正的经济活动中却存在着新古典 经济学的概念所不能描述的现象，这就是W.Brian Arthur称之为正反馈(positive feedback )或递增报酬(increasing return)现象［14］，特别是在高科技领域内［15］ .
+　　Arthur同他在Santa Fe Institute的新同事合作，在自己以往工作的基础之上创造了一种新 的、完全不同于以往的经济学［16］.新古典经济学是运用诸如活动、技术、需要等等冷冰冰的物理的术语(physical terms)来描述的，而这些术语又是通过由公司、银行、消费者、投资者等等可以做决策的agents组成的市场体系而发生联系、相互作用的.这样一种 经济学模型的适用范围是有限的.而Arthur则用另外一种基于心理的或认知的观点来看待经 济学，他用一些心理学的术语来描述经济，如：各种信念、预估、期望、和解释；以及所有 的基于这些信念和期望的决策、战略规划、和行动等等.运用这样一种观点来看待经济学是 很有帮助的，这是因为，一切经济人(economic agents)的行动或选择都是基于他们现在对 未来的价格、利率、竞争者未来的行动、或者他们世界未来特征的假设或信念.而当这些选 择或假设累积起来后，反过来又会重新塑造价格、利率、市场战略、以及他们所面对的世界 .在真正的经济中，每个经济人所形成的信念或假设多半都是个性化的、私人的和主观的. 这些信念和假设不断地在世界中受到测试，而这个世界又是由他们和别人的行动共同构成的 .因此，从另一个层次来说，我们就可以把经济系统最终看成是一大堆信念和假设组成的系统，而这些信念和假设是不断地被创造出来、并基于它产生行动、又不断地被改变或者被抛弃；它们相互作用，相互竞争，不断进化或者共同进化(coevolve)；最后则形成了一个不断改变的预估世界的模型的群体.Arthur认为这样一种观点是有用的，因为它迫使我们思考信念是如何产生经济行为的，以及经济结果又是如何产生信念的.如果我们不只是研究经济学 中的最简单的问题，那么采用这样一种生态学的观点将是不可避免的，因为它将我们引向复 杂性的世界.
+　　基于这种认识，Arthur与Holland, Blake LeBaron, Richard Palmer, Paul Tayler一起合 作开发了一个计算机模拟程序--Santa Fe Artificial Stock Market--来研究股票市场 的泡沫增长或崩盘这些现象［17］.他们的系统是由很多具有不同信念和期望的agents组成，这些agents依据市场的变化，通过归纳的方法不断地学习，从而修正或抛弃自己已有的信念和期望，因此也改变了这个市场.这样个人的信念和期望对市场来说就成了内生的了(endogenous)，通过相互竞争，整个信念组成的生态式系统就随着时间而共同进化.这个系统的计算机试验结果解释了新古典经济学所不能解释的一些困惑，比如股票市场中存在的技术性的交易(technical trading)，市场心理学(market psychology)，流行效应(bandwagon effect)等等.这个成功也是对Holland所提出的复杂自适应系统理论的支持.
+2.7　现场学习(situated learning)
+　　一般来说，共同进化、或者适应的结果往往是导致生物体基因的改变［18］，也就是其genotype的改变.但是对于一个生命较长、智能较高的个体，如人，一些高等动物，或者一些社会性的组织，比如一个公司、学校、国家、甚至是一个大规模的蚂蚁群体来说，更加重要的改变并不是在于他们的基因的变化上，而是在他们成长过程中所体现出来的学习行为和学习所得，也就是phenotype的改变.每个个体由于本身的差异，以及所处的环境与参与的相互作用不同，因此导致的学习和结果也就不一样了.以这样一种观点来指导学习的研究就被称为现场学习，和它密切相关的是在人工智能和认知科学的“现场人工智能”(situated AI)、“现场认知”(situated cognition)［19］.
+　　现场学习强调的是，如果要考察某个个体的行为应该从这个个体所属的community中来认识，它 包含着很多心理学的成分在内，而不是象现场人工智能那样仅仅意味着处于某个物理环境中，以及相互作用而已，其实这是不够的［20，21］.也许对低等的生物这种认识是有效的，但是对象人这样复杂的高等生物这就不够了.
+　　现场学习的观念与俄国学者Vygotsky的activity theory关系很大［22］.William Clancey对activity theory是这样解释的：心灵(mind)的一切activities是不能同明显的( overt)行为分裂开的，社会和心理的结构是相互渗透的(interpenetrate).有关社会关系和 社会角色，也就是社会结构的各种观念是同大脑内的知觉与物理的协调过程集成在一起的. 因此，对于知识来说，只有把它放在一个具体的社会环境中，也就是socially embedded， 它才是有意义的.而学习只能是在有某个社会参与的协作(collaboration)过程中才能发生 .在这样一种认识下，所谓知识就是一个个体能够参加到特属于某个community的实践活动 中所需的能力.而学习就是为成为这个community中的一员所进行的努力［21］. 
+　　而在Newell－Simon所建立的人工智能框架中起决定性作用的知识表示在现场学习的框架里 面，它的角色只是作为一种工具.这些工具是一个社会性组织，如community活动的基础，反 过来，这些社会性的活动又是发展新的表示、新的心理活动的源泉.一切的符合，如语言、 各种表示等等都是在经过重构(reconstruct)和内化(internelize)之后才能成为思想认识的 ，但是它们在社会环境中又是必须的，是活动的基础.
+　　从上面的讨论可以看到，现场学习关注的是有关一个community的实践活动的问题.要认识 一项工作或判断它的价值如何，其准则应该是属于community的准则，而不是个人的.一个 人可能属于不同的communities，因此认识他应该从不同的框架中加以认识.现场学习与传 统观点比较起来更加强调社会性.如果将William Clancey在认知科学中提出的现场学习的 概念与Arthur, Holland等人用心理学或认知的观念来看待经济学的思想进行对比，就会发 现他们之间存在极其多的相似性.Clancey是从心理到活动(activity)，从内到外；Arthur 是从外到内，从活动到心理.其实这里就涉及到了，一个自从人类开始思考自身以来就一直 困惑着人们的哲学命题：身心(mind－body)问题.不管是采用二元论还是一元论，甚至是 多元论的哲学态度，试图想从根本上解决这个问题，在可以预见的将来是不可能的.而当前 研究的出路，包括系统科学和复杂性研究，只有慢慢地从研究现实问题开始［22］ .
+3　进一步的工作
+　　Santa Fe的研究人员试图破译生命的秘密，期望解决从部分到整体的突现本质.他们构造的 是各种网络的模型，通过对各种相互作用的研究和基于计算机模拟，期望能够发现其中的机制.其实就从他们的思路来说，还有很多的现象没有被概括进他们的研究框架.
+3.1　相互作用的复杂性
+　　在真实世界中，相互作用是多样的、有主次关系且是变化的.如果要通过计算机模拟来认识 世界，就不得不抽象出各种“本质性”的相互作用，而这种研究方式就类似于物理科学的研究模式.在物理科学(physical science)中，不管是粒子物理学家、凝聚态物理学家，还是化学家，他们讨论的也是各种物质及其相互作用，只是对不同的研究人员来说，他们所关注的物质形态及其相伴的相互作用不同 .比如粒子物理学家关注的是，如何把很少的四种基本相互作用，即基本 力和其它一些基本粒子如夸克等等统一在一起［23］；而对化学家来说他们所涉及的物质和化学反应类型则大大的多样化了，而且在物理学研究中往往非常有效的一些数学分析工具和方法在化学中却显得力不从心了.在进入到生命科学(life science)［1 8］和社会科学(social science)领域之后，我们所考虑的仍然是各种个体形态及其相互 作用，但是与物理科学相比，所涉及的个体与相互作用的多样性与复杂性都大大的增加了， 而且物理科学中所使用的分析工具和方法在这里遇到了前所未有的批评［11，24， 25，26，27］.由于在一个具体的研究中所考虑的相互作用类型很少，因此Santa Fe的工作中没有涉及到相互作用的主次关系问题.在一个真实的、开放的复杂巨系统中，它 的个体多、相互作用多、而且个体与相互作用的变化更多.如何从中来抽取适合于计算机模 拟的关键因素，是一个没有解决的问题.
+3.2　整体性的问题
+　　Santa Fe Institute的研究人员对整体性的视点总是从系统内部来.总以为认清了各种buil ding block和它们之间的interaction就可以通过各种计算机模拟来探索生命的问题，突现的秘密.Santa Fe的成员往往反对粒子物理学家们常常采用的还原论思想，但是在实际工作中，却不自觉地就应用了这样一种方法论，而那些传统的物理学家，如Prigogine, Haken更是如此.考虑系统的整体性离不开系统的开放性.开放性是保证一个系统能够共同进化的必要条件，考察进化应该从系统内部和系统外部两方面来考虑.一个系统的整体性质，有些是不能仅仅通过其构成单元的性质演变出来的，比如有关意识［28－30］和智能［31］ 呈现的问题，当然也包括生命起源的问题.所谓的整体性质，只有通过在一个更大的范围、更大的系统之内，与其它系统相互作用之后才能体现出来.而系统内部的各种子系统及其 相互作用，则多半是为系统的整体行为服务的.因此，所谓的“整体大于部分之和”只有在 某个具体的环境中，或者说，只有从某个更大的范围或系统中来看待这个小系统的性质及其 相关问题时才是有意义的.这样看来，在一个开放的复杂巨系统的各个层次上，由于相互作 用 的强弱不同，而形成一些相对而言比较独立的子系统，这些子系统也是相互作用而共同演化 的.一个子系统的整体性质，只有从它的外部才能认识清楚.由于系统的开放性，这就使得 系统的整体结构处于一个不断的演变过程中.因此从一个更加广阔的时间－空间维度上来看 待一 个开放的复杂巨系统是必须的.而正因为每个开放的复杂巨系统都是嵌入在一个更加广阔的 时空之中，就往往使它的未来变得不可预测.
+　　其实，整体与部分的关系应该是长期进化(coevolve)的结果，不是一蹴而就的.一个系统的 整体性质在系统形成的初期就有了萌芽，随着在系统内部和外部的各种相互作用和共同演化过程的发生，系统的各个部分及其结构也就不断的进化和完善，其整体性质也随之变化而变得明确.最后的结果体现出来，就是系统的整体性质与各个子系统所具有的部分性质迥然不同，仿佛是在子系统的基础之上突现(emerge)出来一样.正如W.Brian Arthur在讨论有关人 类生育等社会问题时的感慨，要在世界范围内找到一个普遍的决定性的理论是不可能的，所 有的规律都是在特定的社会习惯、神话和道德惯例下形成的，是具有自我连贯性的特有形式 的一部分［32］.生硬地只从系统内部来讨论多层次是有局限性的，而在更加广阔 的范 围内，用共同进化的观点来看待开放的复杂巨系统，不失为一种很有启发性的尝试途径.
+4　总结
+　　SFI研究的问题是很有意义的，同时也是很困难的.他们的研究方法是有局限性的，这种局限性一方面来源于他们所依赖的研究工具，即计算机所具有的能力的局限性，另一方面来源于，他们过多地注重了几乎类似于哲学式的定性讨论.这种问题的巨大难度与研究方法的局限性之间造成的巨大反差，导致了复杂性的研究陷入到了困惑中［33］，而且有的 研究慢慢地偏离了当初的轨道.当我们把开放的复杂巨系统所要考虑的问题与Santa Fe的理 念相对比时，我们发现，虽然Santa Fe所提炼出的各种概念为我们认识这个世界提供了新 的视点，但是，它们往往是一种定性的解释：一般说来都是从所考虑的问题中，抽取某些比 较重要的范畴，然后，基于计算机模拟的结果进行定性地讨论.这非常类似于人工智能中st rong AI学派的观念和做法，40年的人工智能研究得到的一般性结果，只不过是几条定性结 构定律而已［34］，而现实问题的要求却是要严格得多［35］.因此，达 种情况下，人们的注意力慢慢地向现实的问题转变［22］，开放的复杂巨系统研究 的出发点和目标都是要解决实际问题，正如钱学森院士所说：“人认识问题只能从具体问题 入手，从解决一个个开放的复杂巨系统问题开始”.现在Santa Fe也认识到了这个问题，他们也提出了“from metaphor to reality”的口号［36］.但是当我们真正面对现 实问题时，我们所面对的困难是更大的，我们所能够做的就是，实事求是地去寻求有很大局 限性的，但又很有实际效果的解.有关开放的复杂巨系统的研究尚处于开始阶段，在这个阶段中，人机结合的大成智慧工程是它的标志，而得到的结果不仅包括了传统的各种数学模型，还有程序表达的计算机模型和各种Simon所称的“定性结构定律”，它们是根据具体情况而随时修正的［37］.正如钱学森院士认为的：“关于开放的复杂巨系统，由于其开放性 和复杂性，我们不能用还原论的办法来处理它，不能象经典统计物理以及由此派生的处理开放的简单巨系统的方法那样来处理，我们必须依靠宏观观察，只求解决一定时期的发展变化的方法.所以任何一次解答都不可能是一劳永逸的，它只能管一定的时期.过一段时间，宏观情况变了，巨系统成员本身也会有其变化，具体的计算参量及其相互关系都会有变化.因 此对开放的复杂巨系统，只能作比较短期的预测计算，过了一定时期，要根据新的宏观观察 ，对方法作新的调整.”从这里可看到，有关开放的复杂巨系统的研究是继往开来的工作， 是站在探索世界奥秘和推动社会进步前沿的工作!
+　　1) 国家自然科学基金资助项目.
+作者简介：李夏　戴汝为　简介见本刊1998年第2期.
+作者单位：中国科学院自动化所人工智能实验室　北京　100080
+参考文献
+1　Langton C G (ed). Artificial Life: Proceeding of an International Wo rkshop on the Systems and Simulation of Living Systems. Reading. MA: Addison－We sley, 1989
+2　Langton C G et al (ed). Artificial Life II. Reading, MA: Addison－Wesley, 1991
+3　Langton C G(ed). Artificial Life III. Reading, MA: Addison－Wesley, 1994
+4　Samuel L. Some studies in machine learning using the game of checkers, part II. IBM Journal of Research and Development, 1967,11 (4): 601－618
+5　Milner P M. The Mind and Donald O. Hebb..Scientific American, 1993,268(1): 104-109
+6　Holland J H. Adaptation in Natural and Artificial Systems: An Introductory A nalysis with Application to Biology, Control, and Artificial Intelligence, 2nd e d. Cambridge, MA: MIT Press, 1992
+7　Holland J H, Holyoak K J, Nisbett R E, Thagard P R.. Induction: Processes of Inference, Learning, and Discovery. Cambridge, MA: MIT Press, 1986
+8　Holland J H. Hidden Order:How Adaptation Builds Complexity. Reading, MA: Add ison－Wesley, 1995
+9　Anderson P W. More is Different. Science, 1972, 177(4047): 393-396
+10　Anderson P W. Is Complexity Physics? Is it Science? What is it? Physics To day, 1991, 44(7): 9-11
+11　钱学森,于景元,戴汝为.一个科学新领域--开放复杂巨系统及其方法论. 自然杂志，1990，13(1)：3－10
+12　Ruthen R. Adapting to Complexity. Scientific American, 1993, 268 (1): 110-117
+13　Kauffman S A. Whispers from Carnot:The origins of order and principles of ad aptation in complex nonequilibium systems, in Cowan G A, Pines D, Meltzer D(eds),Complexity:Metaphors, Models, and Reality. Reading, MA: Addison－Wesley,1994
+14　Arthur W B. Positive feedback in the economy. Scientific American, 1990, 263(4): 92-99
+15　Arthur W B. On the evolution of complexity, in Cowan G A, Pines D, Meltzer D (eds), Complexity: Metaphors, Models, and Reality. Reading, MA: Addison－Wesley, 1994. 65-82
+16　Arthur W B. Complexity in Economic and Financial Markets. Complexity,1995, 1:20-25
+17　Arthur W B, Holland J H, LeBaron B,et al. Asser Pricing Under Endogenous Ex pectations in an Artificial Stock Market. Working Paper for the SFI Economics Re search Program, 96\|12\|093, Santa Fe Institute, 
+18　Thompson J J. Interaction and coevolution. New York: John Wiley &Sons,1982
+19　Situated Action, Special Issue of Cognitive Science, 1993, 17
+20　Clancey W J. Situated action: a neuropsychological interpretation response to Vera and Simon. Cognitive Science, 1993, 17: 87 -116
+21　Clancey W J. A tutorial on situated learning. Tech. Report, Institute for Research on Learning, 1996
+22　李夏,戴汝为. 复杂性、概念系统的结构和综合集成.中科院自动化所人工智能实验室技术报告，1995
+23　Kaku M. In the eleventh dimension. New Scientist, 1997, 153(2065): 32-36
+24　戴汝为,王珏,田捷. 智能系统的综合集成, 杭州：浙江科学技术出版社,1995
+25　王寿云,于景元,戴汝为等. 开放的复杂巨系统，杭州：浙江科学技术出版社,1996
+26　Casti J L. Confronting science's logical limits. Scientific American, 1996, 274(4): 78-81
+27　Stewart I. Think Maths, New Scientist, 1996,152(2059), 38-42
+28　Crick F, Koch C. Are we aware of neuronal activity in primary visual cortex? Nature ,1995, 375(6527) : 121-123
+29　Crick F, Koch C. Why neuroscience may be able to explain consciousness. Scientific American, 1995, 272(6): 66-67
+30　Horgan J. Can Science Explain Consciousness. Scientific American, 1994, 270(1): 72-78
+31　Calvin W H. The emergence of intelligence. Scientific American, 1994,270(4): 78-95
+32　Waldrop M.复杂：诞生于秩序与混沌边缘的科学. 陈玲译 北京: 三联书店，1997
+33　Horgan J. From Complexity to Perplexity. Scientific American, 1995, 272(6):74-79
+34　Simon H A. Artificial Intelligence: an Emperical Science. Artificial Intel ligence, 1995, 77:95-127
+35　Pahl G, Grote K. Interdisciplinary design:Knowledge and Ability needed. In terdisciplinary Science Reviews, 1996, 21(4):292-303
+36　Cowan G A,Pines D, Meltzer D(eds). Complexity:Metaphors, Models,and Reality.Reading, MA: Addison－Wesley ,1994
+37　戴汝为. 从现代科学技术体系看今后智能系统的工作.见《系统科学；祝贺钱学森同志85寿辰论文集》，许国志主编，杭州：浙江教育出版社，1996.142-156
+收稿日期　1997－08－06

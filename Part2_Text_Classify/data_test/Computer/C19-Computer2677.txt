@@ -1,0 +1,128 @@
+软件学报
+JOURN AL OF SOFTWARE
+1999年　第10卷　第10期　Vol.10　No.10　1999
+
+
+
+分布交互仿真中基于Server的层次过滤机制 
+史 扬 金士尧 张晨曦
+摘要　大规模分布交互仿真对网络带宽、处理资源等提出了很高的要求,采用数据过滤机制可大大降低对网络带宽和计算资源的压力,有利于系统可扩性.然而对于高效过滤机制,仿真结点机要接收和处理足够的过滤信息.当系统规模增大时,大量过滤信息交换和处理占用了过多的计算资源,影响了正常的仿真任务.该文提出了一种基于Server的层次化过滤机制,解决了仿真节点计算能力受限的问题.同时,新的机制利用仿真的内在局部性,开发了两级过滤信息,从而减少了Server内部过滤信息计算量.
+关键词　分布交互仿真,数据过滤,路径空间,可扩展性,HLA,组播通信.
+中图法分类号　TP391
+
+Server-based Hierarchical Filtering Scheme in Distributed Interactive Simulation
+SHI Yang JIN Shi-yao ZHANG Chen-xi
+(School of Computer Science National University of Defense Technology Changsha 410073)
+Abstract Distributed interactive simulation requires high network bandwidth and computation capacity which caused by redundant data when the system’s scale increases. This situation can be alleviated by data filtering to great extent. But the effective filtering scheme requires simulation hosts receiving accurate filtering information and high processing capability, this consumes too much computation resources when systems grow. In this paper, the authors propose a server-based hierarchical filtering scheme. New scheme frees the simulation hosts from the filtering processing and avails system’s scalability. New scheme also exploits the potential locality of distributed interactive simulation, which reduces the amounts of filtering messages exchanged and filtering computation.
+Key words Distributed interactive simulation, data filtering, routing space, scalability, HLA (high level architecture), multicast.
+　　计算机仿真技术是以相似原理、系统技术、信息技术及应用领域的相关专业技术为基础,以计算机和各种物理效应设备为工具,利用系统模型对实际的或设计中的系统进行动态实验研究的一门多学科的综合技术.随着社会需求以及相关技术的发展,计算机仿真已由集中式发展到了分布交互仿真[1],并由于其有效、灵活、经济、安全等优点而受到各行各业的重视,目前正广泛地应用于军事以及国民经济的各个领域.
+　　分布交互仿真系统规模的增加,对网络带宽和结点机处理能力提出了更高的要求.过滤机制是一种有效的解决途径,但高效的过滤机制占用过多的仿真结点处理资源,抵消了过滤带来的好处.本文提出了一种基于Server的层次过滤机制.新的过滤机制将结点机的过滤任务转移到过滤服务器中,使系统规模扩大时,仿真结点机不因执行过滤操作而影响正常仿真任务.同时,新的机制开发了仿真任务的局部特性,减少了网络上冗余的过滤信息及Server内部计算量.文章第1节介绍了新一代仿真技术框架HLA/RTI下过滤原理以及几种过滤机制的优缺点,并从效率和可扩性方面分析了现有过滤机制存在的问题.第2节在此基础上提出了基于Server的层次化过滤机制的模型和算法,并进行了分析和比较.第3节总结了全文.
+1　分布交互仿真数据过滤原理与过滤机制可扩性问题
+1.1 分布交互仿真环境下过滤的依据及重要性
+　　未来的分布交互仿真在规模上应是可扩的,能支持成千上万个仿真实体的运行[2].随着分布交互仿真规模的增加,必然加大了仿真结点(仿真实体的载体)之间数据的流量,以及仿真结点处理外部到达消息的频率.这对网络带宽和处理机能力提出了很高的要求,并严重影响了系统的可扩性.根据分布交互仿真任务的特点,使用数据过滤机制[3,4]可以大大缓解对网络带宽以及处理资源的需求,为系统的可扩性提供了可能.支持数据过滤的依据是仿真的局部特性,即任何时刻某一仿真实体只与系统中实体的子集发生交互,我们称此子集为实体的“感兴趣集”,感兴趣集内部的实体之间才需要交换状态和交互信息.在现实世界中,这种现象是很常见的,如模拟战场中的交战区域、武器的探测和作用区域以及协作工程中的工作组等,都可以构成感兴趣集.在大规模分布交互仿真中,一个实体的感兴趣集一般只占实体集的一小部分,而且随着规模的增大,感兴趣集的大小趋于稳定[2].如地面战场装甲车辆的对抗演习,战场区域的扩大意味着实体规模的增加,但受模型的限制(视野、火炮射程及物理空间),其所交互的实体随着规模的增加而趋于稳定,而并非随规模成正比.分布仿真的这种重要特征使得采用数据过滤机制成为可能.过滤的目的主要有两个:一个是尽可能减少不相关数据的产生,以减少网络带宽的占用;另一个是降低仿真结点接收冗余数据时引起的处理开销.这两个目的都有益于系统的可扩性.图1、图2比较了过滤和非过滤情况下,网络流量和结点平均包到达速率随系统规模的变化情况.假设系统由n台仿真节点机组成,每个结点平均运行10个实体模型,实体状态数据包平均长度为1KByte,状态更新率为10pkt/s.表1为图中所使用的系统规模各异时结点感兴趣集规模.
+　　　　　　　
+图1　过滤和非过滤机制下网络数据流量　　　　　　图2　过滤和非过滤机制结点数据达到速率
+表1 仿真实体感兴趣集随规模变化情况
+
+系统规模结点数目1002003004005006007008009001000
+实体数目1 0002 0003 0004 0005 0006 0007 0008 0009 00010 000
+感兴趣集规模感兴趣集比例(%)15108765.554.54.13.8
+感兴趣集大小150200240280300330350360369380
+
+　 
+　　由图1、图2可知,采用过滤机制的网络带宽和数据包到达速率的增长要远小于非过滤机制.非过滤机制(如,传统的DIS协议采用广播方式通信)极大地浪费了网络带宽和处理机资源,系统的可扩性很差,而采用过滤机制以及利用过滤计算结果建立的组播通信(multicast)[5]则大大减少了网络的流量和数据包速率.由此可见,过滤机制对系统的可扩性意义很大.
+1.2 HLA框架下过滤原理
+　　仿真高级体系结构HLA(high level architecture)[6]是美国国防部(DoD)于1995年提出的新的仿真技术框架,它针对现有仿真技术(如DIS协议和ALSP协议)的不足,解决分布交互仿真的互操作性(不同领域和类型仿真应用之间的集成)和可重用性(提高仿真开发的效率).HLA将取代DIS协议成为新一代分布交互仿真的标准框架[7].除了支持互操作和可重用,HLA也为数据过滤的高效灵活的实现提供了支持:DIS以标准的实体状态数据包作为基本单元,而HLA支持基于实体状态子集的数据单元.
+　　在HLA框架下,支持数据过滤的基本概念是路径空间RS(routing space)[8],RS是一个抽象的多维坐标系统,RS有三要素:(1) 坐标系统的维数;(2) 路径变量,对应于坐标系统的每一维,用于表达感兴趣区域的特征(如地理坐标、运动速度等);(3) 路径变量在每维上的定义(如单位刻度、范围等).
+　　仿真实体通过RS来描述向外部发送的和从外部接收的数据的特征.这种描述通过定义RS中的子集―空间区域(region)来实现:实体通过公布区域(publish region)和定购区域(subscribe region)描述向外发送数据和接收外部数据的约束条件,发送或接收数据与区域建立起映射关系.图3为二维RS空间的数据公布与定购示意图.每个实体的发送和接收数据都建立与区域的映射关系,可用以下三元式表示区域、实体、数据间的关系:
+〈Region, Entity, Attributes〉 .
+
+图3　基于路径的数据公布与定购
+　　一个仿真实体可以在多个不同的RS上操作,每个RS都有一个唯一的标识符,对同一个RS进行公布和定购的仿真实体在此RS的三要素上达成一致,以保证信息的相互可理解性(这可以通过一个公共可访问的仿真初始化文件实现).图3中过滤算法的执行结果是:实体b的公布区域不与任何定购区域相交,因此禁止b的数据发送;实体a的公布区域与实体c和d的定购区域相交,为实体a分配一个组播地址并允许a发送数据,指导实体c和d加入相应的组播地址.
+　　通过对公布和定购区域的匹配计算,可以确定公布方是否可以发送,以及接收方是否应该接收.我们称定购区域和公布区域信息为过滤信息,称区域的匹配为过滤计算.在过滤信息的处理建立了数据源与一组目的地的对应关系,在此基础上利用底层网络的组播功能(multicast)[5,9],数据只需一次多播发送即可,通过路由器自动复制和路由数据,这样减少了发送方处理机的通信开销,同时也减少了网络的流量.
+1.3 过滤机制的可扩性问题
+　　过滤机制有许多实现途径,文献[3]提出了基于网格(grid-based)的过滤算法.其基本思想是:将路径空间划分成粒度相等的网格,并为每个单元分配一个组播地址,发送者向与其公布区域相交的网格对应的组播地址发送数据,接收者加入与其定购区域相交的网格对应的组播地址.网格算法实现简单,发送与接收方不需交换过滤信息和匹配计算,其缺点是:(1) 由于缺少过滤信息,发送方盲目发送所有公布数据而不管是否与定购区域相交;(2) 组播地址数目需求量大,且浪费严重;(3) 网格固有粒度导致过滤精确程度有限.网格算法将过滤带来的好处大打折扣,其效率和组播地址需求量等因素使其在系统规模较大时不可用.文献[4]提出了几种基于网格法的变种,一定程度上缓解了网格精度问题,但对过滤效率的改善却不大.文献[10]提出了基于接收方(receiver-based)的过滤机制RBF,其基本思想是:发送方根据其他结点的数据需求决定数据的发送与否并指导数据的路由.这种过滤机制最大程度地在数据发送源端限制了冗余数据的产生,是一种高效的过滤机制.文献[8]的研究结果表明,基于接收方过滤机制要明显优于基于网格过滤机制,并逼近理想情况下的过滤效果.但基于接收方过滤机制的主要缺点是仿真结点需要足够的过滤信息,这意味着仿真结点必须接收外部结点的每一次区域变化并进行匹配计算,且根据结果指导交互关系不断变化的实体间的数据发送和接收.
+　　采用高效过滤机制有利于系统可扩性,但前提是需要足够的过滤信息和处理能力.RBF机制没有考虑系统规模变化对过滤开销的影响.分析分布交互仿真任务的特点,设每个仿真结点的处理能力为1,每个结点的计算资源主要由3部分组成:仿真实体模型的计算开销CPUsim、外部数据接收处理开销CPUcomm、过滤机制开销CPUfilter,且有CPUsim＋CPUcomm＋CPUfilter＝1.其中CPUsim与模型的复杂度有关,一般有一个固定上界;CPUcomm与实体与外部的交互程度有关,通过高效的过滤机制将冗余数据的接收降低到最低程度;CPUsim,CPUcomm与仿真应用必不可少的,且占用绝大部分处理资源.CPUfilter包括过滤信息接收处理开销和过滤计算开销,对于现有的商业化计算平台,受操作系统等因素的限制,消息处理开销相对于计算能力是一个瓶颈,这一直是制约系统性能发挥的主要因素.表2列出了几种当前典型计算平台的数据包处理开销(与OS和网络驱动程序的效率等因素有关).由于涉及到OS内核的参与,一次包处理开销占用的CPU时间相当于几万条指令的执行时间.对于RBF机制,其过滤信息到达率与系统规模成正比,因此CPUfilter也正比于系统规模.这说明RBF机制对正常仿真任务的干扰程度较大,当系统规模较大时影响正常的仿真任务执行.由此可见,在应用过滤机制减少网络流量和结点数据包速率的同时,必须考虑过滤机制开销随系统规模增长所带来的负面影响.
+表2 几种典型商业性计算平台的网络消息处理开销
+
+系统CPU时钟(MHz)操作系统消息平均处理开销(m s)
+Pentium II200Linux 2.0.1641
+SUN SU2/2170167Solaris 2.5.166
+SGI Indigo2250IRIX 5.3106
+DEC Alpha266OFS 3.2C113
+
+　 
+2　基于Server的层次式过滤机制
+2.1 结构模型
+　　支持分布交互仿真规模可扩的过滤机制应是高效的,它能有效延缓网络流量和仿真结点包速率的急剧增长,同时,高效过滤机制对仿真结点的干扰程度不应随系统规模而明显增加.目前存在的主要矛盾是过滤效率与过滤实现代价之间的矛盾,这一矛盾主要是由仿真结点执行过滤机制造成的.为了解决过滤效率与系统规模之间的矛盾,我们提出了基于分布式Server的层次化过滤机制SBHF(server-based hierarchical filtering),如图4所示.分布交互仿真一般建立在网络环境的基础上,为不失一般性,我们假设分布交互仿真环境有若干个站点(如局域网),每个站点由若干仿真结点(host)和一个服务器(server)组成.
+
+图4　基于分布式Server的过滤结构模型
+
+2.2 Server内部层次化过滤信息
+　　Server用于接收LAN内部各仿真节点的过滤信息并执行过滤算法(区域匹配计算).另外,Server之间交换过滤信息以保证每个结点对全局过滤信息的敏感性.为了开发时局部性地减少Server间信息交换量和计算量,我们将过滤信息组织成精、粗两类.精信息是未处理的原始过滤信息,粗信息是在精信息基础上合并后的过滤信息.每个Server维护精、粗两类过滤信息,其中精信息来自本网段内部结点的公布与定购信息,粗信息来自外部网段上合并后的过滤信息.两类信息描述如下.
+　　精过滤信息包括定购信息<RSk,Hi,Ei,j,ΣSk>和公布信息< RSk,Hi,Ei,j<Pk> .RSk表示第k个路径空间,Hi表示第i个结点机,Ei,j表示结点i上第k个仿真实体,ΣSk与ΣPk分别表示实体在RSk上的定购区域集合和公布区域集合.
+　　粗过滤信息包括定购信息<RSk,SVRm,∪Sk>和公布信息< RSk,SVRm,∪Pk>.SVRm表示站点m的Server,∪Sk表示站点m内部结点机在RSk上定购区域合并后的集合,∪Pk表示合并后的公布区域.合并区域的目的是减少过滤信息量,以减少过滤匹配计算量.区域合并有多种途径,本文假设合并区域采用最小覆盖集法.过滤信息的这种有序的组织可以很好地以数组或hash表的方式实现.
+2.3 过滤机制描述
+　　图5为基于Server的层次化过滤机制示意图.
+
+图5　基于Server内部层次化过滤机制示意图
+　　Server接收来自内部host的过滤信息(定购与公布区域信息),并形成粗、精两类信息,Server之间交换粗信息.当某一实体的定购区域s发生变化时,更新的定购信息发送到本地Server,重新合并定购信息,同时将合并后的信息发送到其余Server中.在Server上执行层次过滤信息的匹配.首先,定购区域s与保存的外部Server的合并公布信息进行匹配(粗匹配),只有匹配成功,才将s发往发生相交的Server进一步与外部Server内的精确公布信息逐一匹配,并根据匹配结果指导相应结点开始或停止发送数据(加入或退出相应组播地址).相对于RBF,SBHF减少了不相关区域的匹配计算量.当公布区域p发生变化时与上述情况类似,算法详细描述如下(算法描述中的符号含义同前):
+　　算法. Server-based Hierarchical Filtering Algorithm
+　　/* 算法运行在SVRi上,下标i表示站点内部, j表示外部,i≠j */
+　　/* s＇(p＇)表示发生变化的定购(或公布)信息 */
+　　Loop
+　　t=0　　　　　　　　　　　　　　　/* 初始化仿真时间 */
+　　wait to receive msg　　　　　　　/* SVRi接收消息 */
+　　If msg=si＇ (pi＇ )　　　　　　　　/* si(pi＇ )为来自内部结点更新的过滤信息 */
+　　Si=si＇∪{Σ Sisi}(Σ Pi=pi＇ ∪{Σ Pipi});　/* 更新本地精过滤信息 */
+　　∪Si=∪{Σ Si} (∪Pi=∪{ΣPi});　　/* 精信息合并成粗信息 */
+　　send ∪Pi(∪Si) to other Server;　/* 发送粗信息给其他站点 */
+　　For all ∪Pj(∪Sj) of SVRj stored in SVRi
+　　　If si＇ ∩{∪Pj}≠φ 　　　　　　/* 粗匹配成功,发此信息到相应Server进一步匹配 */
+　　　　　send si＇ (pi＇ ) to SVRj;
+　　endfor
+　　If msg=∪Sj＇ (∪Pj＇)　　　　　　 /* ∪Sj＇ (∪Pj＇ )为来自外部SVRj的粗过滤信息 */
+　　update ∪Sj＇ (∪Pj＇ ); 　　　　 /* 更新SVRi上的粗过滤信息 */
+　　If msg=sj＇ (pj＇ ) 　　　　　　/* sj＇ (pj＇ )为来自外部SVRj粗匹配成功的过滤信息 */
+　　　For all pi(si) in Σ Si(Σ Pi)
+　　If sj＇ (pj＇ )∩pi(si)≠φ　　　　 /* 与本地精信息匹配,并指导相应结点发送(接收) */
+　　　direct hosts (internal hosts of SVRi ) start to send(receive) data;
+　　　send sj＇ (pj＇ ) match success report to SVRj;
+　　endfor
+　　If msg=match success report　　　/* 外部精匹配成功报告 */
+　　　　direct hosts which generate si＇ (pi＇ ) start to receive(send) data;
+　　For all pi(si) in Σ Si(Σ Pi) 　　/* 内部结点之间进行匹配 */
+　　If si＇ (pi＇ )∩pi(si)≠φ　　　　/* 匹配成功,指导相应内部结点发送与接收 */
+　　　direct hosts (internal hosts of SVRj) start to send(receive) data;
+　　　request t advance; /* 请求仿真时间推进 */
+　　Endloop
+　　需要指出的是,实体的区域更新率一般情况下要小于实体状态更新率,即实体之间的交互一般持续一段时间,当区域变化超过某一个阈值时,实体发出区域更新请求,文献[8]详细讨论了这个问题.SBHF算法可集成到HLA的数据分布管理(DDM)服务中[10],所需的时间同步由RTI提供的时间服务实现[11].限于篇幅,本文不再讨论.
+2.4 可扩性分析
+　　本节我们分析两种机制对系统可扩性的影响.由于目前处理机的处理能力和网络能力之间存在着巨大的差异,网络能力成为系统瓶颈,而且随着微处理机技术的飞速发展,这种差距还在加大,因此,我们比较两种机制下的过滤信息到达速率对系统的影响.为了方便分析,我们考虑对称型的系统配置,即系统由m个站点组成,每个站点有n个结点机,每个结点机有s个仿真实体,实体过滤信息变化率为r.
+　　对于RBF过滤机制,每个结点机共有mn1个外部结点,因此,结点的过滤信息到达率为r(mn1)s.在SBHF中,仿真结点不参与原始过滤信息的接收和处理,它只接收Server处理过后的指导信息,即只有与此结点相关的变化才被通知,因此,结点的消息到达率最大为r(mn1)sph, ph是规模为mn时结点机的感兴趣集比例.图6为两种机制下仿真结点的过滤信息到达率,其中m=100,200,…,1000;n=10;s=1;r=0.2/s.
+　　由图6可见,SBHF机制下结点过滤信息到达率远小于RBF,且系统规模对其影响很小,这说明SBHF过滤机制对仿真结点处理资源占用很小,随系统规模变化增长不明显,因此具有很好的可扩性.需要指出的是,SBHF机制并不限制每个站点只能有一个Server,它支持站点中多个Server的存在:将局域网内仿真结点逻辑分组,每个Server负责一组,以平衡负载,从而可以适应规模较大的站点.仿真站点内部Server的配置使得仿真结点可以集中于仿真任务的执行,这对于适应现代仿真任务越来越趋于复杂化(如更加精确的仿真模型、仿真结果的高性能图形显示)具有重要的现实意义.
+
+仿真节点机数目
+图6　两种机制下信真结点的过滤信息到达率
+
+3　结束语
+　　当代仿真正朝着大规模分布交互方向发展,其应用领域主要有:网上交互游戏、军事训练、工业培训、协作工程以及复杂工程模型的分布仿真等.未来的仿真一定是分布和交互的,且在规模上是可扩的.过滤机制开发仿真的局部特性大大缓解了规模扩大时网络带宽的需求和大量冗余数据包对处理机的干扰.高效的过滤机制要求较高的信息量和处理资源,在规模较大时影响正常仿真执行,这违背了过滤的初衷.本文提出的基于Server的层次化过滤机制在不降低过滤信息精确度的基础上,解决了高效过滤机制受仿真结点机能力限制的问题,同时利用分布仿真任务存在的局部性,开发粗、精两类过滤信息以减少网络上的过滤信息和过滤计算量,是一种可扩性好的过滤机制.进一步的研究将集中在Server算法的实现优化上,如Server内部过滤信息合并策略的研究以提高粗匹配的精度,以及开发算法的并行性充分利用计算平台的并行处理能力等.
+注释：本文研究得到国家自然科学基金资助。
+作者简介：史 扬：1971年生,博士,主要研究领域为分布/并行处理技术
+　　　　　金士尧：1937年生,教授,博士生导师,主要研究领域为计算机系统结构,性能评价,计
+　　　　　　　　　算机仿真
+　　　　　张晨曦：1960年生,教授,博士生导师,主要研究领域为分布/并行处理技术
+作者单位：国防科学技术大学计算机学院 长沙 410073
+参考文献
+Fullford D. Distributed interactive simulation: it’s past, present and future. In: Brunner D ed. Proceedings of the Winter Simulation Conference. San Diego, CA: ACM SIGSIM, 1996. 179～186 
+Swaine S, Stapf M. Large DIS exercises-100 entities out of 100000. In: Medin L ed. Proceedings of the 16th Interservice/Industry Training Systems and Education Conference. Orlando, FL: IEEE Computer Society, 1994. 4～13 
+Van Hook D J, Rak S J, Calvin J O. Approach to relevance filtering. In: Miller D C ed. Proceedings of the 11th Distributed Interactive Simulation Workshop. Orlando, FL: IEEE Computer Society Press, 1994. 367～372 
+Macedonia M. Exploiting reality with multicast groups: a network architecture for large scale virtual environments. IEEE Computer Graphics and Application, 1995,15(5):38～5 
+Pullen J M. The IETF, reliable multicast, and distributed simulation. No. 98S-SIW-208. http://siso.sc.ist.ucf.edu/siw/98spring/ docs/papers 
+Defense Modeling & Simulation Office (DMSO). High level architecture baseline definition. 1996. http://www.dmso.mil 
+Miller D. The DoD HLA and the Next Generation of DIS. In: Miller D ed. Proceedings of the 14th Distributed Interactive Simulation Workshop. Orlando, FL: IEEE Computer Society Press, 1996. 799～806 
+Morse K L, Steinman J S. Data distribution management in the HLA: multidimensional regions and physically correct filtering. In: Miller D C ed. Proceedings of the Spring Simulation Interoperability Workshop. Orlando, FL: IEEE Computer Society Press, 1997. 343～352 
+Powell E T. The use of multicast and interest management in DIS and HLA application. In: Miller D C ed. Proceedings of the 15th Distributed Interactive Simulation Workshop. Orlando, FL: IEEE Computer Society Press, 1996. 251～260 
+Van Hook D J, Rak S J, Calvin J O. Approaches to RTI implementation of HLA data distribution management service. In: Miller D C ed. Proceedings of the 15th Distributed Interactive Simulation Workshop. Orlando, FL: IEEE Computer Society Press, 1996. 535～544 
+Fujimoto R M, Weatherly R M. Time management in the DoD high level architecture. In: Wayne L, Bruno P eds. Proceedings of the 10th Workshop on Parallel and Distributed Simulation. Philadelphia, PA: ACM Press, 1996. 60～66 
+收稿日期:1998-06-29修稿日期:1998-10-16

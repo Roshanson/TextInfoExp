@@ -1,0 +1,44 @@
+微型机与应用
+WEIXINGJI YU YINGYONG
+1999年3月 第18卷 第3期 vol.18 No.3
+
+
+
+快速开发Web数据库应用
+秦俐　陆强
+　　摘　要：Web数据库应用的意义及其基本结构，并结合开发实 践，论述利用Intrabuilder快速开发Web数据库应用的过程。
+　　关键词：Web　数据库　Intrabuilder　开发工具
+1　Web数据库应用概述
+　　将Web技术与数据库技术相结合，实现Web数据库交互式应用已成为必然，也为Inte rnet/Intranet以及电子商务的大众化奠定了基础。
+　　Web数据库交互应用的实现技术包括：脚本语言Script(如JavaScript和VBScript)、公共网 关接口CGI、应用编程接口API(如ISAP和NSAPI)、JDBC等，它们的实现模型如图1所示。
+
+
+图1　Web数据库交互应用实现模型
+　　用上述技术实现Web数据库交互式应用，用户不仅需要精通Web Server的知识，而且需要了 解多种技术与工具，制作流程十分复杂。于是人们期待1种高效率的集成开发工具，能够便 捷地构造Web解决方案。这里推荐Borland(现名为Inprise)公司的Intrabuilder，并结合我 们的工作实践介绍利用Intrabuilder快速开发Web数据库应用的过程。
+2　Intrabuilder简述
+　　Intrabuilder是Borland的1个具有创新性的Web集成开发工具，内部采用JavaScript，它包 括B orland数据库引擎(BDE)、Intrabuilder Designer、Intrabuilder Server(包括Intrabuild er Broker和Intrabuilder Agents)以及Borland的个人Web服务器。
+　　Intrabuilder Broker(INTRASRV.DLL和INTRASRV.ISV)是Web服务器和Intrabuilder间的接口 ，它在Web服务器上运行，支持ISAPI、NSAPI和CGI。可以在安装过程中根据自己的Web服务 器来选择相应的Broker。
+　　Intrabuilder Agents负责根据JavaScript中的表单(Form)和报表(Report)来建立HTML页面 ，其内容可支持所有标准的Web浏览器。它能自动将表单文件和报表文件转换为HTML格式， 并根据JavaScript定义的处理逻辑来响应用户的操作，完成对数据库的访问。
+　　Intrabuilder支持ODBC、ActiveX和Applet，并支持多种Web服务器及bmp、jpg、gif等图像 格式，具有可视化、专家向导等快速开发工具的特性，可进行跨平台的Web集成开发，能够 便捷地构造Web解决方案，高效的SQL Links可直接与Microsoft SQL Server、Oracle、Info rmix等多种数据库连接。
+3　用Intrabuilder快速开发Web数据库的实例
+　　利用Intrabuilder集成环境，开发者通常可以把以前若干天的工作在几分钟内完成。我们在 学院局域网上利用Intrabuilder开发了1个Web数据库应用――学院办公系统，客户端用IE或 Netscape，中间层用Windows NT平台上的IIS Web Server和ISAPI，底层用Microsoft SQL S erver DBMS。这里以此系统为例，介绍利用Intrabuilder开发Web数据库应用的一般过程。
+　　1.开发工具安装
+　　(1)Windows NT 4.0上安装IIS。
+　　(2)Windows NT 4.0上安装Intrabuilder，安装过程中选择安装ISAPI和SQL Links for Mic rosoft SQL Server。
+　　(3)参照Intrabuilder Server帮助文档，设置IIS为Intrabuilder的缺省Web Server。
+　　2.后台数据库设计及实现
+　　按开发需求设计数据库表、视图、存储过程、触发器等后台数据库结构，并在SQL Server中 实现，例如学院办公系统库名为JKXDB，其中包括student、class、department等几十个表 、视图以及许多存储过程。当然，Intrabuilder也提供了Table Designer，用户可在Intrab uilder Designer开发环境中建表。
+　　3.数据库BDE别名和工作目录定义
+　　(1)要在Intrabuilder Designer中使用Windows NT服务器上的SQL Server数据库JKXDB，需 要定义1个该数据库的别名，这可用BDE管理器完成。
+　　(2)在Intrabuilder主目录下创建1个工作目录(如office)，以存放后面定制的文件。
+　　4.表单、报表定制
+　　(1)在Intrabuilder Designer中使用Form Expert快速制作各个表单，用户不需要编写任何 代码，只需用鼠标作些选择，Intrabuilder便会构造出包含当前记录字段名、字段值和浏览 、更新、查询等基本功能按钮的表单(结果为jfm文件，如student.jfm)。如果需要，用户还 可以用Form Designer对该表单进行调整改进。
+　　(2)用Report Expert快速构造各个报表(结果为jrp文件，如student.jrp)，并可用Report D esigner调整改进，比如，将name字段在报表中对应对象的text属性做如下修改：
+　　text={‖‘<A HREF=“/svr/intrasrv.isv?office/student.jfm(＼”+this.parent.parent.rowset.fields［“studentNo”］.value+`＼')>'+this.form.dbostudent1.rowset.fields［“name”］.value+`</A>'}；[ HT〗
+这样就为报表中的name字段内容增加了热链，用户浏览时用鼠标点击某学生姓名，便可得到 其详细信息。
+　　5.浏览和使用
+　　保证Windows NT服务器已运行IIS和Intrabuilder Server，然后在客户机上运行Webbrowser ，在URL中输入：
+　　http://jkxserver.jkx/svr/intrasrv.isv?office/student.jrp，
+便可看到所定制的student.jrp报表，在某个学生姓名上点击，便转到student.jfm表单，并且已定位到该学生记录。在该URL中jkxserver.jkx是NT主机名,/svr/intrasrv.isv是Intrabuilder server文件及其虚拟目录。
+作者单位：南宁市广西大学计算机科学系(530004)
+（收稿日期：1998-09-23）

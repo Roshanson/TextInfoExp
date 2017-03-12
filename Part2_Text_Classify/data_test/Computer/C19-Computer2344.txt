@@ -1,0 +1,121 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999　Vol.36　No.7　P.870-875
+
+
+
+用户访问模式数据挖掘的模型与算法研究
+周斌　吴泉源　高洪奎
+摘　要：从大量顾客日志数据中挖掘有意义的用户访问模式及相关的潜在顾客群，是现代企业发展电子商务战略的重要支撑技术之一.文中基于E-OEM模型，提出并研究了综合考虑服务器的应用逻辑设计、页面拓扑结构及用户的浏览路径等多个数据源的用户访问模式及潜在顾客群的挖掘算法，并以实验证明该模型和算法的有效性.
+关键词：数据挖掘与知识发现，用户访问模式，电子商务
+分类号：TP311.13
+ON MODEL AND ALGORITHMS FOR MINING
+USER ACCESS PATTERNS
+ZHOU Bin
+（College of Computer Science, National University of Defense Technology, Changsha, 410073）
+WU Quan-Yuan
+（College of Computer Science, National University of Defense Technology, Changsha, 410073）
+GAO Hong-Kui
+（College of Computer Science, National University of Defense Technology, Changsha, 410073）
+Abstract：It is important for the modern enterprises to have the ability of discovering useful user access pattern and corresponding potential customers from large volume of user access logs, so that they can benefit from their electronic commerce strategies. This paper presents an algorithm for mining user access patterns and corresponding potential customers, which are based on E-OEM model to integrate application logic, server topology, and user browse path. Experiments show the effectiveness of both the model and the algorithm.
+Key words：data mining and knowledge discovery, user access pattern, E-business▲
+1　引言
+　　WWW（world wide web）技术的日渐成熟，使基于这一技术的应用以惊人的速度向社会生活的方方面面渗透：从教育、科研机构间的信息与服务的交流与共享，公司、企业内部分布协同工作的管理到传统商务模式向电子商务的转型，从而使人类交互信息不可避免地电子化和海量化.以Web服务器日志为例，某些Web热点的日志数据正以每天数十兆的速度增长.从这些大量数据中发现有用的、重要的知识（包括模式、规则、可视化结构等），是数据挖掘与知识发现（data mining and knowledge discovery, 简称DMKD）［1］的又一重要研究和应用领域.
+　　DMKD的重要应用领域之一是商业中对条码机数据（bar code）的分析，其目的是发现顾客购物规律，为商场的商业决策提供支持.人类生活的电子化、信息化以及商业及竞争的国际化，使DMKD技术在很多领域得到应用并进一步发展，已成为数据库、信息决策领域的重要研究课题之一［1］.基于Web服务器日志数据的DMKD研究也越来越受到重视.
+　　本文以电子商务为应用背景，讨论我们在这一领域的研究中遇到的若干问题，如模式、规则形式简单、可用性不理想等，以及对这些问题的解决方案.
+2　相关工作
+　　从研究目标的角度，已有的基于Web服务器日志数据的研究大致可以分为3类：（1）以分析系统性能为目标；（2）以改进系统设计为目标；（3）以理解用户意图为目标.由于各目标针对的功能不同，采取的主要技术也不同.
+　　以分析系统性能为目标的研究，主要是从统计学的角度，对日志数据项进行多种简单的统计，如频繁访问页、单位时间访问数、访问数据量随时间分布图等.目前已有的绝大多数商用及免费的Web日志分析工具（web log analyzer）［2］都属此类.这些工具的使用者一般是Web服务器管理者（如Web master）；Web服务器的设计与建设的主要复杂性是它必须随着设计者及用户的变化而不断自我调整.Perkowitz在文献［3］中研究了如何以日志数据为依据，对Web服务器的组织和表现形式进行自动或半自动调整，提出了adaptive web site的概念.这一概念虽然是从人机交互和软件Agent领域提出的，但是它在技术手段上却很大程度上与DMKD交叉和重叠；Chen在文献［4］中提出了路径游历模式（path traversal pattern）的发现算法.算法从Web服务器日志中找出频繁的用户浏览路径.此外，将数据仓库及OLAP技术用于日志分析系统的建立，也是一项有意义的工作［5］.
+　　上述工作都能从大量的Web日志数据中找出一定的模式和规则，但是目前的研究结果还存在不足.其中，发现的模式、规则的可用性不理想是主要问题之一.这一方面体现在模式、规则中的领域信息不够，不易用户理解.举例来说，算法可以发现如下模式：对于页面 A，B，C，D，存在一条频繁访问路径<A, B, C, D>.更进一步的信息，如该路径包含的用户特征、对应的潜在顾客群等，都依赖于用户的进一步分析；另一方面体现在由算法对数据的过于敏感（overfit）而导致的模式粒度过小而数量过多.
+3　用户访问模式数据挖掘的模型与算法
+　　我们的研究工作是以电子商务（E-business）中网上购物（net marketing）为应用背景的.商家在Web上建立自己的在线商品目录（online catalog），顾客（即用户）通过浏览器可以浏览商品目录、实现网上订购甚至网上支付等.用户与商家的Web服务器间交互的过程信息（包括用户的登录信息、用户的浏览记录）以及用户的个人简要信息等，都能以日志文件或顾客数据库的形式存在.从中找出规律性，对商家的市场销售是至关重要的.本文考虑这样一个特定问题：如何从大量顾客数据及日志数据中，挖掘出有意义的用户访问模式及相关的潜在顾客群.这样的知识将有助于商家制定促销策略.
+3.1　E-OEM数据模型
+　　OEM（object exchange model）模型是一种描述半结构化数据的数据模型［6］.为了能够从数据中挖掘出更有意义的知识，我们综合考虑服务器的应用逻辑设计、页面拓扑结构及用户的浏览路径等多个数据源和领域知识.为此，我们提出扩展的OEM模型E-OEM（extended OEM），用来描述本文讨论的问题.
+　　定义1. 对象O由对象标识id(O)和对象值val(O)组成.id(O)在对象空间中唯一标识对象O.对象值val(O)可以有以下两种形式：
+　　（1） 原子形式.val(O)={l1:d1, …, lm:dm}，其中，li是属性，di是基本数据类型的属性值，i=0,1,…,m；
+　　（2） 引用形式.val(O)={l1:id(O1), …, ln: id(On)}，其中，lj是属性，Oj是对象，id(Oj)是Oj的对象引用，j=0，1，…，n.
+　　定义2. 令Oi是对象，li是属性，i=0，1，…，n，若有(li:id(Oi))∈val(Oi-1)对所有i=0，1，…，n都成立，则称p=<O0, l1, O1, …, ln, On>为长度为n的路径（n≥0），称p源于对象O0终止于对象On，称Oi含于路径p中或路径p包含Oi.
+　　E-OEM也可以用带标号的有向图表示.图中的结点是对象标识.对于val(O)中每一对象引用(li:id(Oi))，在图中都有一条带标号li的有向边(O, Oi)与之对应.如果图中有环，则称该E-OEM图有环.在Web上的很多文档的OEM图都有环.图1给出一个E-OEM图的例子.图中的各非叶结点代表着定义1中对象，它们可以是某个Web页面或基于Web的应用.p=<A, cast, C, actor, D, name, E>是一条源于A止于E、长度为3的路径，简记为ACDE.对象C和D都含于路径p中.
+
+
+图1　E-OEM图的例子
+　　定义3. Web站点上所有用户可访问的、功能独立的对象（包括文档对象、应用对象①）构成对象空间.
+　　对象空间中所有对象都由E-OEM模型描述，我们在此基础上构造反映对象空间中各对象的基本信息，作为领域知识指导数据挖掘过程.
+3.2　应用领域相关问题
+　　本节基于上节所述的E-OEM数据模型，阐述几个领域相关问题.
+3.2.1 对象基本信息获取
+　　文档对象及应用对象的对象标识都定义为其URL（universal resource locator）的函数，函数值在对象空间中唯一.此外，我们还获取对象的如下基本信息.　　
+　　(1) 元信息.对于文档对象，包括URL、文件大小、最近修改时间等；对于应用对象，记录其CGI程序名；
+　　(2) 拓扑信息.包括在对象空间中引用它及它引用/生成的对象的对象标识；
+　　(3) 一般信息.对于文档对象，包括对象中若干属性名及属性值；对于应用对象，我们记录CGI程序的有效参数组合，作为其功能描述.
+3.2.2 事务的标定
+　　由于所有用户在服务器上的浏览情况被统一登记在日志表中，由此在数据挖掘之前必须解决的问题是用户与商家间事务（transaction）的标定.
+　　定义4. 设N为自然数集，t(Oi)∈N为对象Oi的访问时刻，c(Oi)∈N为对象Oi的用户标识，p=<O0, l1, O1, …, ln, On>为长度为n的路径.若p满足条件：（1） c(Oi)=c(Oj),i,j=0，1，…，n；（2） t(Oi)≤t(Oj),0≤i≤j≤n，则称p为用户c的一条访问路径.
+　　定义5. 设T是用户c的访问路径的集合，对于任意对象Oi、Oi+1含于路径p1，任意对象Oj 含于路径p2，p1, p2∈T且p1≠p2，若如下条件成立：（1） t(Oi+1)-t(Oi)≤max_time； （2） |t(Oi)-t(Oj)|＞max_time，则称T为用户c的一次事务，其中max_time为自定义的最大时间间隔.
+　　定义5基于页面浏览时间来标定事务.在实现中，我们还考虑了最短路径原则（过滤长度过小的路径）.事务数据库记录顾客与商家的所有事务信息，其中关于浏览路径的数据项可直接从Web服务器日志扩展得到.在本文的研究中，我们将事务数据库D分成两部分：正事务数据库D+和负事务数据库D-.D+中包含所有与商家成交的顾客事务；D-包含浏览但未成交事务.一般情况下，D-远大于D+［7］.
+3.3　算　法
+　　顾客的购物模式及潜在顾客群可以有多种表示形式和方法.本文中，顾客的购物模式表示为访问模式（文中以大写字母表示）.它由一次事务中的多个频繁访问路径（文中以小写字母表示）构成；在此基础上，潜在顾客群定义为基于频繁访问模式的用户群.
+　　定义6. 对于给定正事务数据库D+、用户自定义最小支持度min_sup∈［0, 1］，如果访问模式P=<p1－p2…－pk>满足条件：在D+中至少有min_sup×|D+|个用户的事务集包含模式P，则称P为顾客的频繁访问模式，其中，|D+|表示D+中的用户数.
+　　定义7. 对于给定负事务数据库D-，顾客频繁访问模式集{P1, P2, …, Pk}及模式相似关系R(D-,Pi)，等价类Ci∈(D-/R(D-,Pi)) 称为D-中的第i个潜在顾客群，i=l,l+1,…,k.
+3.3.1 频繁访问模式发现算法
+　　频繁访问模式的发现与频繁序列模式的发现［8］有相似之处，但很重要的不同在于顾客在Web服务器上的浏览过程带有多种不确定性，如浏览器的本地Cache、用户的主观随意性等.这些不确定性导致不同用户的访问模式总体相似而细节不同.例如，图1中的模式<AB－CDE－FG>与<AB－CDFG>可认为是相似的.如果使用序列模式发现算法，会使算法对数据过于敏感，导致发现的模式数量剧增、可用性不好.为解决这一问题，我们在访问模式发现算法中引入路径相似度.对于路径p1=<O10,l11,O11,…,l1m,O1m>及p2=<O20,l21,O21,…,l2n,O2n>，定义
+
+为路径p1与p2的相似度.若sim_path(p1, p2)大于自定义阈值min_sim∈［0, 1］，则称p1与p2满足路径相似关系.
+　　由于候选项集（或序列）很多且有大量重复前缀，用Hash树方法来存储和检索频繁项集（或序列），是很多关联规则（或序列模式）发现算法的共性［9］.我们的算法也用类似的方法表示和检索频繁访问模式.在对事务数据库的扫描过程中建立和调整Hash树，扫描完成后基于Hash树计算各模式的支持度，得出频繁模式.Hash树的结构如图2所示.
+
+
+图2　频繁访问模式的Hash树表示
+　　在实现中，我们采用两层Hash树将访问模式散转到不同的匹配树中.这样一方面避免匹配树过宽，加速匹配过程，另一方面有利于将数据分块并行处理.
+　　匹配树的结点是相似度测定函数，边上的标号代表路径.算法工作过程大致如下：当新模式到达树根时，测定函数计算该模式的第一个路径与下层各边标号上的路径的相似度.若相似度小于min_sim，则创建一个新的子结点及对应边，边上的标号为新模式的第一个路径，子结点计数器置1；否则，取相似度最大的子结点作为下降结点，当前结点计数器增1.新模式删除第一个路径并下降至下层结点，测定函数计算新模式当前路径与其下层结点的路径相似度，重复该过程直至新模式为空.各结点对应的访问模式由从树根到该结点的各边标号依次标定，访问模式的支持度是当前结点计数器与根结点计数器之比.
+3.3.2 潜在顾客群发现算法
+　　一般地，潜在顾客群的发现都可以描述为负事务数据库D-的分类（classification）或聚类（clustering）过程.本文采用K-Means［10］聚类算法计算D-在给定模式相似关系下的划分.初始的K个聚类中心可以是频繁访问模式发现算法的结果，也可以由业务人员指定.模式相似关系是基于路径相似关系给出的.对于模式P1=<p11－p12…－p1n>及P2=<p21－ p22…－p2n>，定义
+Sim_pattern(P1, P2)= |{pi|sim_path(pi1, pi2)≥min_sim}|/n
+为模式P1和P2的相似度，若Sim_Pattern(P1, P2)大于自定义阈值MIN_SIM∈［0, 1］，则称P1与P2满足模式相似关系.算法描述如下.
+　　　　输入：事务数据库D-、初始聚类中心{P1,P2,…,Pk}、最小模式相似度MIN_SIM.
+　　　　输出：聚类C1,C2,…，Cn.
+　　　　算法：
+　　　　Ci:={Pi}, i=1,2,…,k;
+　　　　foreach P in D-
+　　　　　　s=Sim_pattern(P, Pj):=maxi Sim_pattern(P, Pi), i=1,2,…,k;
+　　　　　　if s＞MIN_SIM then
+　　　　　　　　Cj:=Cj∪P;
+　　　　return Ci,i=1,2,…,k.
+4　性能模拟与分析
+　　为了对算法的性能作出评估，我们在Pentium 266/64M RAM/Windows 95/MS Visual C++ 5.0环境下进行了如下模拟实验：（1）以预先给定的5个访问模式为基础，采用Markov链模型，按表1所示参数，分别生成大小为5000和50000的D+和D-；（2）将访问模式发现算法作用于D+，调整min_sim，考察算法的时间开销；（3）将潜在顾客群发现算法作用于D-，调整min_sim，考察算法的分类正确率.图3和图4分别给出实验结果.
+表1　实验数据生成参数
+
+D+D-
+平均路径长度　3平均路径长度　3
+平均模式长度　3平均模式长度　3
+Markov状态转移概率　0.95Markov状态转移概率　0.90
+顾客数　200顾客数　2000
+
+
+图3　算法时间开销
+
+
+图4　算法分类正确率
+　　由图3可知，（1）算法运行时间长于相应的序列模式挖掘算法.这主要是由于我们考虑了相似路径的概念，导致搜索空间增大；（2）算法运行时间随路径相似度近似线性增长.图4中算法的分类正确率最大可达66％.它说明算法的有效性.
+5　结束语
+　　从大量顾客数据、日志数据中挖掘出有意义的用户访问模式及相关的潜在顾客群，对于实行电子商务战略的商家的商业决策起着重要的作用.本文基于E-OEM模型，提出了综合考虑服务器的应用逻辑设计、页面拓扑结构及用户的浏览路径等多个数据源的用户访问模式及潜在顾客群的挖掘算法，实验证明算法是有效性的.进一步的研究工作包括：（1）将算法运用于真实数据并作相应优化；（2）将用户访问模式算法扩展到不同抽象层次上.■
+①目前，我们只考虑CGI应用.
+基金项目：本课题得到国家“八六三”高科技基金资助. 
+作者简介：周斌，男，1971年6月生，博士研究生，主要研究领域为数据挖掘与知识发现.
+　　　　　吴泉源，男，1942年2月生，教授，博士生导师，主要研究方向为智能软件与分布　　　　　　计算.
+　　　　　高洪奎，男，1942年6月生，研究员，主要研究方向为数据库、智能软件.
+作者单位：周斌（国防科学技术大学计算机学院　长沙　410073）
+　　　　　吴泉源（国防科学技术大学计算机学院　长沙　410073）
+　　　　　高洪奎（国防科学技术大学计算机学院　长沙　410073）
+参考文献：：
+［1］Fayyad U M, Piatetski-Shapiro G, Smith P. From data mining to knowledge discovery: An overview. In: Fayyad U M, Piatetsky-Shapiro G, Smith P, Uthurusamy R eds, Advances in Knowledge Discovery and Data Mining. Boston: AAAI/MIT Press, 1996, 1～34
+［2］http://www.uu.se/Software/Analyzers/Access-analyzers.html
+［3］Perkowitz M, Etzioni O. Adaptive web sites: An AI challenge. In: IJCAI'97, Japan, 1997. 233～240
+［4］Chen M S, Park J S, Yu P S. Data mining for path traversal patterns in a Web environment. In: Proceedings of the 16th International Conference on Distributed Computing Systems, Hongkong, 1996, 385～392
+［5］Zaiane O R, Xin M, Han J W. Discovering Web access patterns and trends by applying OLAP and data mining technology on web logs. Simon-Fraser University, Tech Rep: 1997
+［6］Nestorov W, Ullman J, Wiener J, Chawathe S. Representative objects: concise representations of semistructured hierarchical data. In: ICDE'97. Birmingham, 1997. 220～227
+［7］Ling C X, Li C. Data mining for direct marketing: Problems and solutions, In: KDD '98, 1998
+［8］Srikant R, Vu W, Agrawal R. Mining association rules with item constrains. IBM Almaden Research Center, Tech Rep: 97-056, 1997
+［9］Park J S, Chen M, Yu P S. An effective hash based algorithm for mining association rules. In: ACM International Conference on Management of Data, Caliform, 1995
+［10］Hartigan J. Clustering Algorithms. New York: John Wiley & Suns Inc, 1975
+收稿日期：1998-10-06
+修稿日期：1999-03-08

@@ -1,0 +1,102 @@
+自动化学报
+AGTA AUTOMATICA SINICA
+1999年 第25卷 第2期 Vol.25 No.2 1999
+
+
+
+
+一类不确定非线性系统的鲁棒H∞控制1)
+王向东　高立群　张嗣瀛
+摘　要　讨论了在自由系统和输入通道都带有有界不确定性的仿射非线性系统的鲁棒H∞控制问题，给出了状态反馈控制设计，对所有允许的不确定性它既能保证关于H∞模的干扰抑制品质，又能镇定该系统.同时指出如果一个相应的Hamilton-Jacobi不等式有非负解，则该不确定仿射非线性系统的鲁棒H∞控制问题可解.
+关键词　不确定性，非线性系统，鲁棒H∞控制.
+ROBUST H∞ CONTROL FOR UNCERTAIN NONLINEAR 
+SYSTEMS VIA STATE FEEDBACK
+WANG Xiangdong　GAO Liqun　ZHANG Siying
+(Dept.of Automatic Control,Northeastern Univ.,Shenyang　110006)
+Abstract　In this paper,we discuss the robust H∞ control problem for a class of affine nonlinear systems with norm-bounded uncertainties in both free system and input matrices.We present a state feedback control design which stabilizes the plant and guarantees an H∞ norm bound constrain on disturbance attenuation for all admissible uncertainties.The robust H∞ control problem is solved by finding a solution for Hamilton-Jacobi inequality,which is the nonlinear analogy of Riccati inequality appearring in study of H∞ control problem of linear system.
+Key words　Uncertainty, nonlinear system, robust H∞ control.
+1　引言
+　　在状态空间方法中，减少闭环系统的H∞模(或等价地，L2-诱导模)可以看作是零合的微分对策问题，这样所需要的控制的存在性和设计都与线性二次微分对策理论中出现的Riccati方程解的存在性有关系［1―4］.最近以来，关于不确定系统的鲁棒H∞控制问题引起人们的研究兴趣［5―6］.在这里控制的目的是镇定不确定系统，同时还能对所有允许的不确定性保证关于H∞模的干扰抑制品质.
+　　本文讨论在自由系统和输入通道都带有有界不确定性的仿射非线性系统的鲁棒H∞控制问题，可以看作文献［8］的推广.文献［8］所讨论的系统只在自由系统中带有不确定性，本文所采用的方法依赖于Hamilton-Jacobi不等式，通过求解一个由标称系统和不确定性的界函数构造的Hamilton-Jacobi不等式的光滑解，就能得到不确定非线性系统的鲁棒H∞控制问题的解.
+　　记号：对z∈Rn,‖z‖2,‖z‖T分别表示代表满足条件‖z(t)‖T＜∞的向量值函数z(t)的集合.
+2　系统描述
+　　考虑不确定非线性系统
+
+(1)
+
+(2)
+其中x∈XRn是状态，X是x=0的一个邻域，d∈Rl是干扰输入，u∈Rm是控制输入，z∈Rs是输出.f(x),g1(x),g2(x),h1(x),k12(x)是已知光滑函数，Δf(x),Δg2(x)是未知光滑函数.不失一般性作者假设f(0)=0,h1(0)=0.
+　　假设1.　　　　　　　 
+(3)
+　　假设2. 1) Δf(x)=e(x)δ(x)，其中e:Rn→Rn×q，δ:Rn→Rq分别是已知和未知的光滑函数且Δf(x)属于如下定义的有界集合：
+
+(4)
+其中ω:Rn→Rq是给定的函数.
+　　　　　2)
+(5)
+其中0≤β(x)＜1.
+　　本文讨论不确定系统(1)，(2)的状态反馈鲁棒H∞控制问题.考虑设计非线性反馈控制
+
+(6)
+　　定义1. 给定γ＞0.称闭环系统(1)，(2)，(6)是在UX具有局部鲁棒干扰抑制品质，如果对所有的Δf∈Ω和满足式(5)的Δg2(x),自由系统当d=0时是局部渐近稳定的(其吸引域含U)，且‖z‖T≤γ‖d‖T对所有的T＞0和任何d∈D成立.其中D定义为
+
+(7)
+其中x(t,t0,x0)是当初值为x(t0)=x0时闭环系统的解.不妨设γ=1.
+　　定义鲁棒H∞控制问题如下：对给定的系统(1)，(2)，求得状态反馈控制(6)使闭环系统具有局部鲁棒干扰抑制品质.为了叙述主要结果引入下面的定义和引理.考虑光滑系统
+
+(8)
+　　定义2［7］. 称系统(8)是零状态可观测的，如果对任何x∈U有
+
+其中x(t,t0,x0,u)表示系统(8)当初始条件为x(t0)=x0和输入为u时的解.
+　　引理1［7］. 对系统(8)，如果下面的Hamilton-Jacobi不等式
+
+有光滑解V(x)≥0,则对任何T＞0,d∈D有‖y‖T≤‖u‖T.
+3　主要结果
+　　主要结果是给出系统(1)，(2)鲁棒H∞控制问题的解.文献［5，6］建立了所要讨论的不确定线性系统的鲁棒H∞控制问题，与一个相应系统的H∞控制问题之间的关系.H∞控制问题的状态空间方法与Riccati方程方法或不等式方程之间的关系，启发我们利用Hamilton-Jacobil方程或不等式方法来讨论不确定非线性系统的鲁棒H∞控制问题.
+　　定理1. 如果存在标量函数λ(x)＞0 使下面的Hamilton-Jacobi不等式
+
+
+(9)
+有非负光滑解V(x)且自由系统
+
+以为输出时对任何Δf(x)∈Ω是零状态可观测的，则鲁棒H∞控制问题的解由
+
+(10)
+给出.
+　　证明. 必须证明对任何T＞0有‖z‖T≤‖d‖T且闭环系统(1)，(2)，(10)当d=0时是局部渐近稳定的.注意闭环系统(1)，(2)，(10)为
+
+(11)
+
+(12)
+由式(10)和假设1，2，得
+
+
+(13)
+定义　
+则式(13)变成
+
+(14)
+但是
+
+　　由式(14)有式(13)小于或等于0.由引理1，对任何T＞0有‖z‖T≤‖d‖T.关于局部渐近稳定性，由文献［7］定理5知V(x)正定.取V(x)为Lyapunov函数，由式(13)，(14)和Δ≤0有再由假设，非常明显下面的系统
+
+也是零状态可观测的.由Lasalle不变性原理或直接地由文献［7］中的定理5或推论17，闭环系统(1)，(2)，(10)当d=0时，是局部渐近稳定的.这样就证明了定理1.
+　　注. 当系统(1)中Δg2=0，本文是文献［8］的推广.
+4　结论
+　　本文讨论了一类自由系统和输入通道都带有有界不确定性的非线性系统的鲁棒H∞控制问题.利用Hamilton-Jacobi不等式，得到了鲁棒H∞控制问题可解的充分条件和控制律的计算方法.本文是不确定线性系统的鲁棒H∞控制问题的状态空间方法在非线性系统中的推广.
+1)国家自然科学基金资助项目(编号：69374005)和辽宁省自然科学基金资助项目(编号：962169).
+作者简介：王向东　男，39岁，博士生，现为沈阳工业大学副教授.研究方向为复杂系统的结构与控制.
+　　　　　高立群　男，49岁，东北大学教授.研究方向为系统辨识、微分对策、复杂系统结构.
+　　　　　张嗣瀛　男，73岁，东北大学教授，博士生导师，中国科学院院士.研究方向为复杂系统的结构与控制.
+作者单位：东北大学自控系　沈阳　110006
+参考文献
+1　Doyel J C,Glover K,Khargonekar P P et al.State-space solutions to standard H2 and H∞ control problems.IEEE Trans.Automat.Contr.,1989,AC-34:831―846
+2　Isidori A,Astolfi A.Disturbance attenuation and H∞ control via measurement feedback in nonlinear systems.IEEE Trans.Automat.Contr.,1992,AC-37:1283―1293
+3　Ball J A,Helton J W et al.H∞ control for nonlinear systems with output feedback.IEEE Trans.Automat.Contr.,1993,AC-38:546―559
+4　Isidori A,Wei K.H∞ control via measurement feedback for general nonlinear systems. IEEE Trans.Automat.Contr.,1995,AC-40：466―472
+5　Lihua Xie,Minyue Fu et al.H∞ control and quadratic stabilization of systems with parameter uncertainty via output feedback.IEEE Trans.Automat,Contr.,1992,AC-37:1253―1256
+6　Lihua Xie,Carlos E.de Souza.Robust H∞ control for linear systems with norm-bounded time-varying uncertainty.IEEE Trans.Automat,Contr.,1992,AC-37:1188―1191
+7　Van der Schaft A J.L2 gain analysis of nonlinear systems and nonlinear state feedback H∞ control.IEEE Trans.Automat.Contr.,1992,AC-37:770―784
+8　Tielong Shen,Katsutoshi Tamura.Robust H∞ control of uncertain nonlinear system via state feedback.IEEE Trans.Automat.Contr.,1995,AC-40:766―768
+收稿日期　1997-04-07
+收修改稿日期　1998-04-23

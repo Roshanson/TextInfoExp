@@ -1,0 +1,113 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.2　P.260-264
+
+
+
+近乎最佳的Manhattan型Steiner树近似算法
+马军　杨波　马绍汉
+摘　要：求解最佳的Manhattan型Steiner树问题(minimum rectilinear Steiner tree,简记为MRST问题)是在VLSI布线、网络通信中所遇到的组合优化问题,同时也是一个NP-难解问题.该文给出对该问题的O(n2)时间复杂性的近似算法.该算法在最坏情况下的近似比严格小于3/2.计算机实验结果表明,所求得的支撑树的平均费用与最佳算法的平均费用仅相差0.8%.该算法稍加修改,可应用到三维或多维的Manhattan空间对Steiner问题求解,且易于在并行与分布式环境下编程实现.
+关键词：Steiner 树,算法复杂性,组合优化,电路布线.
+分类号：O157
+A Near-Optimal Approximation Algorithm for Manhattan Steiner Tree
+MA Jun　YANG Bo　MA Shao-han
+(Department of Computer Science Shandong University,Ji'nan,250100)
+Abstract：The minimum rectilinear Steiner tree (MRST) problem is an NP-complete problem which arises in VLSI wiring,network routing and many combinatorial optimization problems.In this paper,an O(n2) time complexity approximation algorithm for MRST is proposed.The approximation ratio of the algorithm is strictly less than 3/2.The computer verification of the algorithm shows that the costs of the produced spanning trees are only 0.8% away from the optimal.In addition,this algorithm can be revised for multidimensional Manhattan space and implemented in parallel/distributed environments easily.
+Key words：Steiner tree,complexity theory,combinatorial optimization,circuit layout▲
+　　MRST(minimum rectilinear Steiner tree)问题可简述为:设Z为平面上给定的n个顶点集合,对Z中任意两个顶点p1=(x1,y1),p2=(x2,y2),其连线只限于水平与垂直直线.其连接长度定义为dist(p1,p2)=|x1-x2|+|y1-y2|［1］（称为Manhattan空间距离）.问题是如何添加平面上的一个点集S,以得到平面上的一棵树T.T为支撑平面顶点集合Z∪S的最小生成树,这里,支撑树T的费用COST(T)被定义为所有T中的边的长度之和；T被称为Steiner树；S中的顶点被称为Steiner顶点.若S为空集,T被称为最小生成树（minimum spanning tree,简称MST）.图1给出了连接4个顶点的MST与其所对应的Steiner树.
+
+Fig.1
+图1
+　　MRST问题是一个经典的组合优化问题,在布线等领域得到了较为广泛的应用［1～6］.由于MRST的精确求解属于NP-完全问题［1］,故研究对MRST具有快速、高近似比的近似算法,一直得到人们的重视.首先,Hanan证明了S为通过Z中n个顶点的水平与垂直直线所形成的交叉点集的子集,如图2所示［3］；Suyder证明了该结论在更高维的Manhattan空间也成立［4］；其次,人们证明了MST为MRST的一个相当好的近似解,满足COST(MST)/COST(MRST)≤3/2［1］.因此,人们提出不少基于MST算法思想的求解MRST的近似算法［1］,使得所生成的支撑树的平均解费用可比COST(MST)减少7～9%［1］.然而,这些算法在最坏情况下的近似比仍为3/2.因此,是否存在最坏情况下近似比严格小于3/2的算法,就成为一个公开的问题［5］.
+
+Fig.2　Hanan's theorem
+图2　关于Hanan定理的说明
+　　本文给出一个新的MRST近似算法.在最坏情况下,COST(T)/COST(MRST)<3/2.计算机上的实验结果表明,新算法所产生的支撑树,其平均费用可比MST改进10.2%,与文献［6］所给出的平均最佳算法的理论值相比,仅平均相差0.8%.
+1　算法与实验结果
+　　在下面的讨论中,用p,e分别表示平面上的一个顶点和一条边.p到e的距离dist(p,e)定义为dist(p,p′)的最小值,其中p′为e上的任意顶点.由于边e可能为一条折线,故用三元组(p1,p2,p3)表示e,其中p1,p3分别表示e的两个端点、p2表示中间的拐弯点.根据几何意义,边e,e′之间的距离定义为min{dist(u,e′),dist(v,e)|u为e的三元组表示中的三点之一,而v则是e′的三元组表示中的三点之一}.
+　　ST算法.（Steiner树近似求解算法）
+　　输入:给定平面上顶点集合Z的顶点的二维坐标(xi,yi),1≤i≤n.
+　　输出:支撑Z∪S顶点的树T的边及S中的Steiner顶点.
+　　∥使用的变量为:对顶点i=(xi,yi),用V(i)(1)=xi;V(i)(2)=yi表示.二维数组元素W(i,j)为顶点i,j之间的Manhattan距离.在三元组(i,pi1,pi2)中,Pi1和Pi2分别表示Z∪S-{i}中距顶点i最近和次最近的顶点（pi1=pi2,若Z中只有一个未被访问顶点）.函数length(i,pi1,pi2)表示连接3个顶点的MRST子树的费用.
+　　 步骤1.
+　　(1.1) S:=;L:=.对任意两个顶点i,标记未被访问.根据任意两点i,j的二维坐标,计算W(i,j).根据数组W,计算三元组(i,pi1,pi2).在如图3所示的3种连接方法中,找出最短连线,其长度记为length(i,pi1,pi2).
+
+Fig.3　The optimal connections for three vertices based on their positions
+图3　基于三点相对位置的最佳连接方法
+　　(1.2) 若Z中已无未被访问顶点,转向步骤2；
+　　(1.3) 在未被访问的顶点中,寻找顶点i,i具有目前最小的length(i,pi1,pi2)值,并按以下两种情况进行连接:
+　　情况1.3点均未被访问过,根据它们的相互位置,按图3所示的连接方法产生3点最佳连接；标记3个顶点被访问过和属于子树Ti;若按图3(a)或(c)进行连接,则把产生的Steiner顶点送S,把产生的树边送L.
+　　情况2.否则,寻找连接i到Pi1或L中的某一边上的点的边e,e满足其长度为min{dist(i,Pi1),dist(i,e′),dist(i,e″)|e′为L中与顶点相关联的边；e″则是颠倒e′的垂直、水平连接次序之后所得到的边}.把e送L,标记i与Pi1属于相同的子树和被访问过标记；若e的一个端点为Steiner顶点,则把它送S.
+　　(1.4) 对每个新产生的Steiner顶点u,计算u与所有尚未访问顶点j的距离d(u,j);
+　　if dist(u,j)<dist(j,pi2) then {
+　　　　if dist(u,j)<dist(j,pi1) then {pi2=pi1;pi1=u;}
+　　　　else pi2=u; endif;
+　　　　修改对应的三元组(j,pi1,pi2)及函数Length(j,pi1,pi2)的值.} endif;
+　　(1.5) 转向执行步骤(1.2).
+　　步骤2.设在步骤1后,形成了k棵子树T1,T2,...,Tk.计算边e,满足e可产生对平面两棵子树Ti与Tj,j≠i边集之间的最小连接边,1≤i<j≤k.通过e归并两棵子树.送e到L,若e的一个端点为Steiner顶点,送其到S.重复上述过程,直到平面上只有一棵树T.
+　　步骤3.输出L中的边及COST(T).结束.
+　　根据传统的对MRST算法近似度的评价方法［1,5,6］,我们对我们的算法与MST算法在同一输入下支撑树的费用进行对比,见表1.其中n个顶点是由计算机随机产生在一个正方形平面内.a表示正方形的边长,r=COST(T)/COST(MST),s表示算法使用的Steiner顶点个数.
+Table 1　The performance of algorithm ST against MST algorithm
+表1　最小支撑树算法费用与本算法费用比较
+
+na=100a=200
+COST(MST)COST(T)srCOST(MST)COST(T)sr
+1024421940.89754160051660.860000
+20365322100.882192829744100.897467
+30478414140.8661091093934140.854529
+40541489170.9038821032960180.930233
+50628567170.90286612211082170.886159
+60631594230.94136312981178260.907550
+70720654280.90833314781335250.903248
+80762688320.90288715371400340.910865
+90797724320.90840716141467330.908922
+100872793450.90940417261577430.913673
+
+　　 表1表明ST算法所产生的支撑树的平均费用,可使用MST进行近似求解改进10.2%.
+2　算法的理论分析
+　　显然,算法ST得到了一棵关于Z∪S的支撑树T.下面分析算法ST所产生的支撑树对MST的改进以及ST算法的时间复杂性.
+　　引理 2.1.当|Z|≤4时,COST(T)=COST(MRST).
+　　证明:显然,当|Z|<3时,引理成立；当|Z|=3时,去掉对称性,只有如图3所示的3种关于3个顶点的相互位置.设C表示围住3个顶点的长方形R的周长,显然,从图3所给出的连接方法中所选出的最短连接的长度恰为C/2,为构成了连接这3个点的最小费用连接,故为一个MRST.
+　　当|Z|=4时,MRST总为一个连接3点费用最少的子MRST,加上剩余一点与该子MRST边的水平或垂直连线组成,这与我们的算法执行相同.故引理也成立.
+　　综上所述,引理得证.　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　□
+　　由引理的证明过程不难看出,对应于3个点的MST,均有COST(MST)≥C/2.
+　　引理2.2.COST(T)≤COST(MST);COST(T)=COST(MST)当且仅当MST是一个MRST.
+　　证明:首先证明COST(T)≤COST(MST).根据引理2.1,当|Z|≤4时,引理成立.故可在下面的讨论中,假设|Z|>4.
+　　由于MRST问题是几何平面上基于Manhattan距离的Steiner问题,MRST实质上是用平行于x轴和y轴的最短线段连成.根据Hanan的定理,MRST可以通过对平面进行适当划分,在每个小平面上求出局部的MRST,然后通过适当连接,得到全局的MRST.在本算法中,首先利用具有最短周长的可围住目前集合Z∪S中尚未访问过的任意3个顶点v1,v2,v3的长方形R对平面分区,在R内生成子树Ti.由引理2.1可知,Ti为R内的MRST.若e=(v4,v5),表示在算法结束时连接Ti与其他子树的一条边,其中v4为Ti的顶点；v5为其他子树上的顶点.由ST算法步骤(1.3)中的情况2和步骤2的执行可知,e为连接Ti与其他子树的最短边.设R′表示围住4个顶点v1,v2,v3,v5的长方形,由R的周长最短性和e为连接v5到Ti的最短边以及Kruskal算法对边的选取［7］推知,在R′上生成的局部MST必为全局MST的一部分.由于我们的算法是基于Hanan定理的执行,不难穷举出基于图3的所有e与Ti可能连接的情况,总有算法在R′上生成的子树费用≤R′上对应的局部MST的费用.由于R的任意性以及在ST算法步骤2中,对森林F的归并过程中,总是选择连接两棵子树的最短边进行归并,可推出COST(T)≤COST(MST).
+　　根据引理2.1和算法ST的执行,若所产生的支撑树T为一个MST,当且仅当在算法结束后,未产生任何Steiner顶点；而只要MST不是MRST的解,算法ST必然会找到一个Steiner顶点,使得COST(T)＜COST(MST).
+　　基于上述讨论,引理得证.　　　　　　　　　　　　　　　　　　　　　　　　　　　　□
+　　定理2.1.设r=COST(T)/COST(MST),则2/3≤r≤1.
+　　证明:根据MRST的定义,COST(T)≥COST(MRST).因已知COST(MST)≤3/2COST(MRST),故有
+　　　　　　　　　　　　　　　　　　　　　　　□
+　　定理2.2.COST(T)/COST(MRST)<3/2.
+　　证明:若对给定的n个顶点,COST(T)<COST(MST),则
+
+否则,基于引理2.2,COST(T)/COST(MRST)=1<3/2.　　　　　　　　　　　　　　　　　　　　□
+　　定理2.3.ST算法的时间复杂性为O(n2).
+　　证明:显然,在ST算法中,步骤(1.1)的操作数为O(n2),并且步骤(1.2)～(1.4)的操作数为O(n).为减少步骤2的时间复杂性,我们还在步骤1的开始部分,对Z中的每一顶点v,计算v与Z-{v}顶点的最短连接边.每当一棵新子树生成时,立即计算该子树与其他子树相连时的最短连接边.即使加上上述计算,步骤1的时间复杂性仍为O(n2).
+　　在步骤2中,基于上述已在步骤1中所进行的计算,我们可在O(n)时间找出连接两棵子树的最短边.显然,可在O(1)时间内完成两棵子树的归并.因为对每条边可用3个顶点表示,每个顶点均保留与其他子树边相连的最短边和L中的边数为O(n),故对归并后的新子树计算与其他树边相连的最短边时,也可在O(n)时间内完成.因此,步骤2的一次循环可在O(n)时间内完成.由于最多有O(n)次循环,故步骤2的时间复杂性为O(n2).
+　　因产生的Steiner顶点的个数不会超过n,故生成树的边数仍为O(n),所以步骤3的时间复杂性为O(n).
+　　由上述讨论,定理得证.　　　　　　　　　　　　　　　　　　　　　　　　　　　　　□
+　　本算法较文献［6］的算法复杂性减少了O(n)因子.
+3　结束语
+　　本文给出一个求解MRST的新的近似算法,与以往的结果相比,该算法在最坏情况下的近似比严格小于3/2,并且具有较好的时间复杂性.计算机运行结果表明,所产生的支撑树的费用,仅比平均最佳算法的理论值相差0.8%,不失为一种实用算法.基于Suyder定理,对新算法稍作修改,便可适合三维和多维的Manhattan空间对MRST问题的求解.由于新算法中的主要计算为取最小值操作,该算法也非常便于在并行与分布式环境下实现［8］.
+
+致谢　本文作者对初审与复审老师提出的建设性的修改意见深表感谢.■
+基金项目：本文研究得到国家863高科技项目基金(No.863-306-ZT06-01-4)资助.
+作者简介：马军,1956年生,博士,教授,主要研究领域为算法,人工智能,并行计算.
+　　　　　杨波,1975年生,硕士生,主要研究领域为数据库,算法.
+　　　　　马绍汉,1938年生,教授,博士生导师,主要研究领域为算法,人工智能.
+作者单位：马军(山东大学计算机科学系　济南　250100)
+　　　　　杨波(山东大学计算机科学系　济南　250100)
+　　　　　马绍汉(山东大学计算机科学系　济南　250100)
+参考文献：
+［1］Hwang F K,Richards D S,Winter P.The Steiner Tree Problem.The Netherlands:North-Holland,1992.20～200
+［2］Maxemchuk N F.Video distribution on multicast networks.IEEE Journal on Selected Areas in Communications,1997,15(3):357～372
+［3］Hanan M.On Steiner's problem with rectilinear distance.Journal on Applied Mathematics,1966,14(6):255～265
+［4］Synder T L.A simple and faster algorithm for the rectilinear Steiner problem in general dimension.In:Ravi R ed.Proceedings of the ACM Symposium on Computational Geometry.New York:ACM Press,1990.1340～1345
+［5］Kahng A B,Robins G.A new class of iterative Steiner tree heuristics with good performance.IEEE Transactions on Computer Aided Design,1992,11(7):893～902
+［6］Salowe J S,Warme D M.An exact rectilinear Steiner tree algorithm.In:Yao Y Y ed.Proceedings of the IEEE International Conference on Computer Design.Cambridge,MA:IEEE Press,1993.472～475
+［7］Aho A V,Hopcroft J E,Ullman J D.The Design and Analysis of Computer Algorithms.Reading,MA:Addison-Wesley Publishing Company,1975.172～176
+［8］Ma Jun,Takaoka T,Ma Shao-han.Parallel algorithms for a class of graph theoretic problems.Transactions of Information Processing Society of Japan,1994,35(7):1235～1240
+收稿日期：1998-08-31
+修稿日期：1999-03-03

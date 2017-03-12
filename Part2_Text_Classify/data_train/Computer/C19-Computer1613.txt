@@ -1,0 +1,108 @@
+信息与控制
+Information and Control
+1999年　第28卷　第5期　Vol.28　No.5　1999
+
+
+
+ARCH模型的研究与探讨
+
+苗　实　刘海龙　潘德惠
+
+　　摘　要： 自回归条件异方差(ARCH)模型是近年来新发展起来的时间序列模型，它反映了随机 过程的一种特殊特性：即方差随时间变化而变化，且具有丛集性、波动性．ARCH模型已广泛 地应用于经济领域的建模及研究过程中．本文介绍了ARCH模型的特点，它的参数估计和检验 ，以及ARCH模型的发展情况．
+　　关键词：ARCH,条件异方差,丛集性,波动性
+　　中图分类号：TP13　　　　　　文献标识码：B
+
+RESEARCH ON ARCH MODEL
+MIAO Shi LIU Hai-long PAN De-hui
+(FBA of the Northeastern University, Shenyang City 110006)
+Abstract: Autoregressive Conditional Heteroscedastic model is the newly developed time series model, which reflects the special characteris tics of stochastic process:the variance changes with the time changing and the variance is crowd together and fluctuated. ARCH model has been widely ap plied in modeling and research of economic field, especially of financial ma rkets. This paper introduces the characteristics of ARCH model, it's estimation and test of parameter and its development in detail.
+Key words: ARCH, heteroscedastic, crowd, fluctuation
+
+1　引言
+　　ARCH ( Auto Regressive Conditional Heteroscedasticity)模型最初是由美国圣迭哥大学经济学家恩格尔(Engle R.F)教授于1982年提出的，主要用于具有丛集性及方差波 动性特点的经济类时间序列数据的回归分析及预测．实践证明，ARCH模型在有关方面的应用中取得了良好的效果．
+　　传统的经济计量模型假定样本的方差保持不变．随着经济理论的发展及实证工作的深入 ，已发现这一假设不甚合理．越来越多的研究者发现，经济类时间序列数据，诸如股票价格 、通货膨胀率、利率、外汇汇率等，经常出现方差随时间变化的特点．Mandelbrot(1963) 曾观察到许多经济随机变量的分布有着很宽的尾部，其方差也在不断变化中他还发现了很 有价值的现象：在方差的变化过程中，幅度较大的变化会相对地集中在某些时间段里，而幅度较小的变化会相对集中在另一些时间段里．Bera(1992)用美元与英镑的每月汇率，美国联邦政府的三个月期限的短期债券的利率以及纽约股票交易所月综合指数的增长率来进一步验证了Mandelbrot的结论，即经济类时间序列数据的方差易变性及丛集性．这种变化可能归咎于经济领域尤其是金融市场的多变性，对政治动乱和政府金融政策的敏感性等等． 但这种情况给我们一种启示：观测误差的方差呈现某种自相关．Engle的ARCH模型恰恰 捕捉到了经济类时间序列数据的这个特点．
+　　ARCH模型已广泛地应用于经济现象的分析研究中，并取得了良好的效果．如Engl e(1982), Engle和Kraft(1983)用ARCH模型分析预测美国的通货膨胀率的趋势取得了令人满意的结果．Domowitz和Hakkio(1985)也曾把ARCH模型用于外汇汇率市场的研究中．Weiss(1984)对美国13种不同的宏观经济时间序列用ARCH建模，取得了成功的结果．进入90年代，各国学者开始对ARCH模型进行各个方面的完善及扩展，出现了如：GARCH (Generalized A uto Regressive Conditional Heteroscedasticity), NARCH (Non-linear Auto Regressiv e Conditional Heteroscedasticity)等模型．
+2　ARCH模型的提出
+　　ARCH模型的最基本特点是假设观测数据的方差呈现自相关，即观测误差的方差是其滞后 值的函数．设是一个被预测变量，它的条件分布如下：
+yt|Φt-1～N(xτtβ,ht)
+其中：
+
+Φt是在t时刻的信息集合，xt是一些外生变量或被预测变量的滞后值构成的向量， β和α是待定参数，误差项服从期望值为0，方差为ht的正态分布，即：εt～N( 0, h1)．Engle主要假设h(*)的函数形式为以下的线形关系：
+ht=α0+α1ε2t-1+…+αpε2t-p　　　　　　　　　　　　　(1)
+　　为了保证条件方差ht＞0, 此模型要求α0＞0, αi≥0, i=1,2,…,p
+　　上式中，我们可以看出，等式左边的ht为t时刻误差的方差，是一个非负数，而非随机变量．等式右边的ε2t-1,…,ε2t-p在t时刻时也已不再是随机变量，也是一些已知的非负数，故t时刻时上方等式成立．
+　　我们可以从ARCH模型中条件异方差ht的回归方程中看出：现在时刻的方差是过去 时刻误差项平方的p阶滑动平均．这和金融市场中的时间序列数据特征十分吻合，即如果t-m 时刻时(m≤p), 市场朝着某个方面变化，那么这个方面的误差平方就会增大，如果它们相应 的系数αi不为0, 则必会导致t时刻条件异方差ht的增大，也就是说，t时刻 市场可能朝着(t-m)时的变化方面继续运行，即内生变量的大幅度波动集中在某些时间 段上，而小幅度 波动集中在另一些时间段上．
+　　为了保证ARCH模型是方差平稳的，进一步假设方程：
+1-α1z-α2z2-…-αpzp=0
+的根在单位圆之外，因为αi非负，所以：
+α1+α2+…+αp＜1　即：
+　　那么εt的非条件方差，也就是对整个样本空间上的ε2i求均值，即
+
+
+在整个样本空间中hi及ε2i皆为已知的非负数，可得到：
+　　　　　　　　　　　　　　　　δ2=α0+α1δ2+…+αpδ2
+即　　　　　　　　　　　　　　
+　　　　　　　　　　　　　　　
+　　,代入(1)式得：
+
+　　从此方程中可看出，条件异方差ht是全域方差δ2与局部域方程中ε2t-1, …,ε2t-p的加权平均．
+3　ARCH模型的估计和检验
+3.1 ARCH模型的估计
+　　对ARCH模型的对数似然函数为(省略了常数项)：
+　　　　　　　　　　　　　　　　　
+式中　　　　　　　　　　　　　θ=(β′, α′0, α′1, …, α′p)
+应用最大似然估计理论，采用迭代算法，可以得出
+
+其中θ(i)表示经过i次迭代后θ的参数估计值，λi是可变步长，T是样本容量．
+3.2 ARCH模型的检验
+　　采用拉格朗日乘子检验法(LM)对ARCH模型进行检验：
+设：　　　　　　　　　　　　　　H0:α1=α2=…=αp=0
+得到LM检验统计量：
+　　　　　　　　　　　　　
+其中：　　　　　　　　　　　 f0=(ε21h-11-1…ε2th-1t-1)′
+　　　　　　　　　　　　　　　
+　　　　　　　　　　　　　　　　w=(α0, α1,…,αp)′
+T是样本数量.
+　　在给定的信度区间下，按x2(p)查出临界值，若TR2大过临界值，则拒绝H0假设，表示αi中至少有一个不为0，即ht=α0+α1ε2t-1+…+αpε2t -p，条件方差ht是随时间的变化而变化的．
+4　ARCH模型的发展
+4.1 GARCH(Generalized Auto Regressive Conditional Heteroscedasticity)
+GARCH模型是由Engle的学生Bollerslev于1986年提出的，他把ARCH中的ht表达式中加入了自回归部分，即：
+ht=α0+α1ε2t-1+…+αpε2t-p+θ1ht-1+…+θqht-q
+α0＞0, a1,…,αp, β1,…,βq≥0
+　　上式是GARCH(p,q)形式，实际应用中GARCH(1,1)已知，以描述数据特性．
+
+　　GARCH中ht已不再具有p阶截尾性，即ht对过去的误差项平方具有无限记忆性，这和金融市场中的时间序列数据特性更加吻合，而且GARCH模型和标准的时间序列模型AR及ARMA表现出更多的一致性，对很多现象的描述也比ARCH更简洁．
+4.2 AGARCH (Asymmetric GARCH(1,1))
+　　GARCH模型有时不能完全说明某些金融数据的偏态和峰度性质，峰度问题可用假设误差服从t分布（而不再是正态分布）来解决，偏态问题则通过以下AGARCH模型关于ht的假设来解决．
+ht=α0+α1(εt-1-ξ)2+θ1ht-1　α0＞0, α1,β1, ξ≥0
+此模型中，我们可以看到当εt-1≤0时，即扰动为负时，ht将比扰动为正时取得更 大值，所以此模型更适应用于如股市越跌越猛或崩盘的现象，即所谓杠杆作用．
+4.3 EGARCH (Exponential GARCH)
+　　EGARCH模型由Nelson(1991)提出，这是一个非线性模型．
+loght=α+g(zt-1)+θloght-1
+式中, 可以看出zt～N(0, 1)
+
+EGACH关于条件方差的假设是非线性，非对称的，而且不再要求参数非负．
+4.4 IGARCH (Integrated GARCH)
+　　当α1+β1=1时，重写GARCH(1,1)模型为：
+ht=α0+(1-λ)ε2t-1+λht-1　0≤λ≤1
+　　此式中，GARCH模型中的非条件方差已不存在，即IGARCH是非平稳的GARCH模型，我们可以把它改写成：
+
+　　可以看出α0=0时，它等价于指数加权滑动平均模型，且比它具有更广泛的应用．
+4.5 ARCH-M或GARCH-M
+　　其基本形式为：
+yi=βxt+δht+εt
+εt～N(0, ht)
+　　我们可以看出，此模型中条件方差随时间的变化可引起条件期望随时间的变化，更加适 用于某些经济和金融时间序列数据的研究．
+5　结论
+　　十几年来ARCH模型已在经济领域尤其金融市场中得到了越来越广泛的应用，关于它的理论探索也在逐步地深入．ARCH模型最基本的特征在于它真实地反映了某些经济数据的特点:方差随时间的变化而变化．
+作者简介：苗 实，女，26岁，博士生. 研究领域为时间序列模型理论及应用.
+　　　　　刘海龙，男，39岁，博士生. 研究领域为金融控制理论及应用.
+　　　　　潘德惠，男，71岁，教授，博士生导师. 研究领域为分布参数系统及经济控制理论.
+作者单位：东北大学工商管理学院　沈阳　110006
+参考文献
+1　张汉江，马超群，曾俭华. 金融市场预测及决策的有力工具：ARCH模型. 系 统工程,1991,15(1)
+2　Tim Bollerslev. Generalized Autoregressive Conditional Heteroskedasticity. E conometrics 1986,31:307～27
+3　CAROL Alexander. Volatility and Correlation Forecasting. The Handbook of R isk Management and Analysis,1996
+4　童恒庆. 经济回归模型及计算. 湖北科学技术出版社,1997
+5　周复恭，倪加勋. 应用数理统计学. 中国人民大学出版社,1989
+收稿日期：1999-01-22

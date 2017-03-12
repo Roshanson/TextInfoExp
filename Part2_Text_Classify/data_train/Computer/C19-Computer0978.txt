@@ -1,0 +1,101 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+n中取相邻n-1好的可修系统的可靠性分析
+张元林　汪太鹏　贾积身
+　　摘要　研究了n中取相邻n-1好的直列可修系统， 假定每个部件的工作时间和维修时间都是指数分布且故障部件能“修复如新”时，求出了该系统的可靠度和首次故障前的平均时间等可靠性指标的精确表达式. 
+　　关键词　n中取相邻k好或坏可修系统，Markov过程， 可靠度，首次故障前的平均时间. 
+RELIABILITY ANALYSIS OF CONSECUTIVE N-1-OUT-OF-N:
+G REPAIRABLE SYSTEM
+ZHANG YUANLIN　　WANG TAIPENG
+(Dept. of Applied Mathematics, Southeast University, Nanjing 210018)
+JIA JISHEN
+(Henan Mechanic and Electric Engineering College, Xinxiang 453002)
+Abstract　In this paper, a linear consecutive n-1-out-of-n: G repairable system is studied. Assuming that the working time and repair time of each component are both exponentially distributed and that each component after repair is as good as new, we derive the exact expressions of the reliability and MTTFF of the repairable system. It is easy to know the irrepairable corresponding system is a special case of this paper.
+Key words　Consecutive-k-out-of-n:(G or F) repairable system, Markov process, reliability, MTTFF.
+1　引言
+　　n种取相邻k好或坏系统(简称为相邻n-k(G/F)系统)是指由n个部件有序地排成直线(即直列)或环形，系统正常或失效当且仅当有相邻k个或k个以上部件正常或失效. 这是80年代初由Kontoleon［1］提出的一个新模型，它有着较强的工程背景. Chiang和Niu［2］在n个部件独立、可靠度相同时，给出了相邻n-k(F)系统的可靠度的递推公式及相邻n-2(F)系统的可靠度的精确公式. 从此，相邻n-k(G/F)系统的研究为大家所关注［3－8］. 
+　　10多年来， 虽然该模型已用于象街灯系统、输油泵站系统、微波塔系统、卫星中继通讯系统及集成电路设计等工程领域， 但该系统是可修的情形尚未发现有人研究(文献［6］中“街灯照明系统维修策略”的提法是广义的，因为街灯失效后仅作了事后更换而未进行维修， 这对于价值昂贵的可以维修的部件来说，显然是不合适的). 本文在k=n-1时，研究相邻n-k(G)直列可修系统， 求出了该系统的可靠度、首次故障前的平均时间等可靠性指标的精确表达式. 
+2　模型假设
+　　1) 设相邻n-n-1(G)直列可修系统只有一个维修工，当系统故障时维修工立即对故障部件进行维修，而未故障的部件不工作也不再发生故障；且假定不可能有两个或两个以上部件同时发生故障. 当一个部件在维修时，另一部件也故障，则必须等待到正在维修的部件维修完毕，另一部件才能获得维修；一旦故障部件维修到满足该系统的构成规则时，系统重新工作. 
+　　2) 设n个部件为同型部件. 若第i个部件的工作时间Xi和维修时间Yi分别服从参数为λ和μ的指数分布， 其分布函数分别为F(t)=1-e-λt和G(t)=1-e-μt,t≥0, i=1,2,…,n.
+　　3) 设故障部件能“修复如新”且服从“先坏先修”的原则. 
+　　4) Xi,Yi(i=1,2,…,n)为相互独立的随机变量. 
+　　5) 在t=0时，假设部件都是新的.
+3　模型分析
+　　令N(t)为系统在t时刻所处的状态，则
+ 
+显然，{N(t),t≥0}构成一个连续时间有限齐次Markov链，其状态空间 E={0,-1,1,2}，工作状态集W={0,-1}，故障状态集F={1,2}. 因此，不难得到该系统的状态转移概率. 令
+　　pij(Δt)=Pr{N(t+Δt)=j/N(t)=i}, i,j∈E,则有
+p0-1(Δt)=2λΔt+o(Δt),　　　　　　p01(Δt)=(n-2)λΔt+o(Δt),
+p02(Δt)=o(Δt),　　　　　　　　　　p00(Δt)=1-nλΔt+o(Δt);
+p-10(Δt)=μΔt+o(Δt),　　　　　　 p-11(Δt)=o(Δt),
+p-12 (Δt)=(n-1)λΔt+-(Δt),　　　 p-1-1(Δt)=1-[(n-1)λ+μ]Δt+o(Δt);
+p10(Δt)=μΔt+o(Δt), 　　　　　　 p1-1(Δt)=o(Δt),
+p12(Δt)=o(Δt),　　　　　　　　　　p11(Δt)=1-μΔt+o(Δt);
+p20(Δt)=(Δt),　　　　　　　　　 　p21(Δt)=(n-2)μΔt+o(Δt),
+p2-1(Δt)=μΔt+o(Δt),　　　　p22(Δt)=1-μΔt+o(Δt).
+值得注意的是，如系统处于状态i有多种可能的情形， 则系统处于状态i的第l种情形转移到状态j的条件概率与系统处于状态i的第m种情形转移到状态j的条件概率一般不相等. 对于同型部件构成的系统，则系统处于状态i的每一种情形相等是可能的. 如果注意到这一点， 则上述转移概率不难求得. 例如
+
+　　由连续时间Markov链的性质［9］， 不难写出其转移率矩阵(或称为Q矩阵)
+　　(1)
+其中(k≠j,k,j∈E)，(j∈E), A=
+　　为求该系统的可靠度等可靠性指标， 令
+pj(t)=P{N(t)=j}, j∈E.
+根据Fokker-Planck方程，有
+　　　　　　　　　　　(2)
+其初始条件
+p0(0)=1,pi(0)=0,i=-1,1,2.　　　　　　　　　　　(3)
+　　由(1)，(2)及(3)式知，其矩阵形式为
+　　　　　　　　　　　　　　(4)
+其中P(t)=(p0(t),p-1(t),p1(t),p2(t)); P′(t)=(p′0(t),p′-1(t),p′1(t),p′2(t));P(0)=(p0(0),p-1(0),p1(0),p2(0)).
+　　为求系统的可靠度，只须解如下方程组［10］
+　　　　　　　　　　　(5)
+若记pj(t)的Laplace变换为现对(5)式两边取Laplace变换，可得
+-1+sp*0(s)=-nλp0(s)+μp*-1(s),
+sp*-1(s)=2λp*0(s)-[(n-1)λ+μ]p*-1(s).
+从而解得
+　　　　(6)
+　　　　(7)
+对(6)，(7)二式分别取Laplace逆变换， 可得
+　　　(8)
+　　　　　　　　　　　　(9)
+其中s1,s2为方程s2+[(2n-1)λ+μ]s+(n-2)λμ+(n-1)nλ2=0的两个根
+
+
+4　系统可靠度及首次故障前的平均时间
+　　1) 按R(t)定义，由(8)，(9)二式知系统可靠度
+　　　　　(10)
+　　2) 按MTTFF的定义，由(6)，(7)二式知系统首次故障前的平均时间
+　　　　　　　(11)
+可以发现，当μ=0时，系统为不可修情形. 此时，(8)，(9)二式分别成为
+0(t)=e-nλt,　　　　　　　　　　　　　　　　(12)
+-1(t)=2(e-(n-1)λt-e-nλt).　　　　　　　　　　(13)
+其可靠度为
+　　　　　(14)
+首次故障前的平均时间为
+　　　　　　　　　　　　　　(15)
+　　由模型假设2)知，每一个部件的可靠度p=e-λt，则上述(14)式的结果正是文献［6］中公式
+
+当k=n-1时的结果. 由此可见， 本文在k=n-1时，将此类不可修情形推进到可修情形.
+1) 国家自然科学基金及江苏省自然科学基金资助项目.
+作者单位：张元林、汪太鹏：东南大学应用数学系　南京　210018
+　　　　　贾积身：河南机电专科学校　新乡　453002
+参考文献
+[1]　Kontoleon J M. Reliability determination of a r-successive-out-of-n:F system. IEEE Trans.Rel,1980, 29:437.
+[2]　Chiang D T, Niu S C. Reliability of consective-k-out-of-n:F system. IEEE Trans.Rel., 1981, 30:87-89.
+[3]　Derman C, Lieberman G J, Ross S M. On the consective-k-out-of-n:F system. IEEE Trans. Rel.,1982,31:57-63.
+[4]　Ge G P, Wang L S. Exact reliability formula for consective-k-out-of-n:F system with homogeneous Markov dependence. IEEE Trans.Rel., 1990,39:600-602.
+[5]　廖炯生.“n中取连续k则失效”的环形系统可靠性一般计算公式. 科学通报，1985,24:1862
+-1865.
+[6]　廖炯生.n中取相邻k系统可靠性及街灯照明系统维修策略.自动化学报， 1992，18(3):343-
+347.
+[7]　阎春宁，史定华.　n中取连续k系统.自动化学报，1988，14(4)：311-319.
+[8]　葛广平.关于n中取连续k系统.数学进展，1993，22：306-311.
+[9]　复旦大学编.概率论(第三册)， 北京：人民教育出版社，1981.
+[10]　曹晋华，程侃.可靠性数学引论.北京：科学出版社，1986.
+收稿日期 1995-07-03

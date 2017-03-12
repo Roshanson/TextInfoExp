@@ -1,0 +1,82 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000　Vol.17　No.5　P.78-80
+
+
+
+于Web上的动态主页开发研究
+黄德能　薛小平　阮永良
+摘  要  从目前的Internet发展趋势出发，阐明了Web与数据库相结合的要求越来越普遍，而传统的开发方法CGI不仅开发困难，而且效率低，在这种情况下，微软推出了ASP。它具有开放性、易操作性、效率高和浏览器独立等优点。简介了怎样利用ASP的组件ADO对数据库进行操作。
+关键词  Web  CGI  ASP  ADO  ODBC   数据库
+1  引言
+　　Internet/Intranet技术的日益发展，使得企业的信息服务部门已经认识到Intranet的优势，使数据库与Web的连接成为数据库开发方面的热门技术之一。
+目前，网页制作技术大都必须提供交互式的操作，而交互式网页制作必须要依靠数据库技术。传统的开发方法CGI不仅开发困难，而且效率低，在这种情况下，微软推出了ASP。ASP能利用其组件方便地访问数据库，而且，由于ASP是在服务器上解释执行的，所以，不必选择特定的浏览器，这使得ASP技术具有更广泛的应用范围。
+2  基于ASP(Active Service Pages)的服务模型
+　　作为IIS的一个组成部分的ASP是一个Web服务器端的开发环境，利用它可以产生和运行动态的、交互的、高性能的Web服务器应用程序。ASP可以使用任何Script语言，只要你提供相应的脚本驱动(Engine)。ASP自身提供了VBScript和Java Script的驱动。ASP可以将可执行的Script直接嵌入HTML文件，HTML开发和Script开发在同一开发过程就可以完成，而且通过ActiveX控件，可以实现非常复杂的Web应用。
+　　ASP是一种与编译无关的应用开发运行环境。应用开发者可以把HTML、批处理器命令和ActiveX服务器组件等结合在一起，从而建立一个动态的功能强大的Web应用系统。
+　　ASP属于ActiveX技术中的Server端技术。与常见的在客户端实现动态主页的技术如Java Applet、ActiveX Control等不同，在客户端不需要编程。ASP中的命令和Script语句都是由服务器解释执行的，执行结果产生的动态Web页面将送到浏览器；而客户端的Script命令则由浏览器来解释执行(如图1所示)。由于ASP是在服务器端解释执行，开发者可以不必考虑浏览器是否支持ASP；同时由于它在服务器端执行，开发者也不必担心别人下载程序从而窃取编程逻辑。
+
+图1动态网页设计模型
+　　ASP文件相当于一个可执行文件，因此必须放在Web服务器上有可执行权限的目录下。浏览器向Web服务器请求调用ASP文件时，启动ASP。通过ASP内置的对象和服务器组件的使用，开发者可以完成非常复杂的任务，而且用户还可以利用别人开发的服务器组件来完成专门的任务。
+　　利用服务器端的Script和HTML，可以很容易地生成动态网，但是功能有限，例如不能连接服务器数据库、使用网络功能或访问服务器文件系统等。解决方案是利用COM(Component Object Model)技术，通过COM技术，可以容易地使用其它COM组件。这种对于Web可共享的COM组件，就是服务器组件。一个服务器组件就相当于一个对象，它提供属性和方法来使用服务器资源，并且服务器组件可以支持ActiveX的任何第三方开发。ASP本身自带了五个服务器组件，可以直接使用，并能完成大部分服务器端的工作。
+3  ASP的基本组件及对象
+　　ASP提供了五个服务器组件，其中最重要的两个是数据库访问组件(ADODB)和文件访问组件。ASP程序通过调用ADODB对数据库进行操作。
+　　ASP组件，曾被称为OLE自动服务器(OLE Automation Servers)，现在经过设计后可以作为一个网络应用程序的一部分在用户的网络服务器上运行。这些组件允许用户在内部对其脚本进行功能扩展，系统对这些扩展的功能进行保密。ASP组件可以构架在由Microsoft公司建立的公认的公约标准上，也可以直接使用ASP自带的基本组件，如ActiveX数据对象(ADO (Access Database Object))组件、内容链接组件、文件系统组件、浏览器组件和广告转子组件。
+　　．ActiveX数据对象(ADO)组件：它提供了与任何ODBC兼容数据库或OLE DB数据源的高性能连接。ADO允许网络开发者方便地将一个数据库与一个“激活”的网页相连接，以便存取和操作数据。支持数据库驱动的Web应用程序，并可在系统上设置网络“前端处理器”。
+　　．内容链接组件：内容链接组件管理一个URL表。用户可以使用内容链接的功能来自动生成以及更新内容表并导航性地与前后Web页进行链接。这个列表被存储在网络服务器上，对一个网页“流”可以动态地管理和重排，而不会破坏链接。增加、删除或移动网页则需要在列表文件中对页序进行调整。用户不必在单个网页上对HTML文件进行编辑。
+　　．文件系统组件：文件系统组件提供了一种存取方式，以完成对存储在服务器上文本文件的存取工作。通过这种方式，开发者无需编写自己的代码即可在文件系统上打开或关闭文件，因为大多数脚本语言不允许直接存取文件，所以这种方法非常有用。
+　　．浏览器功能性组件：通过使用浏览器功能性组件，一个ASP文件可以对客户使用的浏览器的功能进行组织，并动态地完成布局和内容的优化。这就确保了Webmaster不必再为每个浏览器生成一系列重复的网页。
+　　．广告转子组件：广告转子组件可以在页面上加入可以方便地变幻的广告部分。它通过一个不同广告的列表来安排显示优先权的相对比例。每次对ASP文件进行一次请求后，可以通过使用组件并基于当前的标准来显示一个广告。要调用这些组件必须用到ASP的内建对象。
+　　ASP包括许多内置的服务器和应用程序构建对象。这些对象使开发者可以摆脱很多烦琐的工作，如存取来自客户方请求的细节、管理应用程序状态和调配请求等。这些内建对象包括：
+　　．Request和Response：Request对象提供了对任何由HTTP请求而转入脚本的信息的存取，其中包括窗体、表格、URL查询和HTTP域名等有关信息。Response对象可用来构建对信息的反馈，其中包括网页截止时间和HTTP输出流的全控件。
+　　．Application和Session这些对象用来简化状态处理。Application对象被用来存储一个特定应用程序所需的信息，而Session对象被用于存取一个特定用户任务所允许的信息。这是ASP的一个非常有用的特性，可以用来解决许多Webmaster头疼的问题。利用Application对象，用户可以对Web应用程序的属性进行设置，以便在众多用户中实现信息共享。此外，通过LOCK(加锁)和UNLOCK(解锁)方法，用来确保多个用户不会同时修改一个属性。Session对象，只要用户在同一任务中，如在Web应用程序中的页之间跳动时，则存储在Session对象中的变量始终有效，只有当任务被截止或者被放弃时，服务器才毁坏这一任务对应Session对象。Session对象最常见的用途之一就是用来存储已登录用户的权限，这样就可以方便地解决Web应用程序的安全问题。
+　　．Server：Server对象允许脚本来生成Active Server组件的实例，并且利用新的功能进行对ASP环境的扩展。Server对象拥有两个重要方法，即MapPath和CreateObject。MapPath可以将Web Server的虚拟路径还原成实际路径；CreateObject可能是最重要的一个方法，用它可产生服务器组件的对象实例：Server.CreateObject(ProgID)其中ProgID指定了构件标识。构件可以是EXE程序，也可以是DLL动态链接库。这些程序必须在操作系统中注册后，COM才会在系统资料库(Registry)中维护这些信息。
+　　在很多情况下，为了实现商务性的应用，都需要用到数据库方面的操作，而ADO正是实现这种操作的重要手段。
+4  应用实例
+　　(1)应用开发的三层结构模型
+　　Web应用系统开发往往采用三层模式结构，即把原来客户机一侧的应用程序模块与GUI分开，并放到服务器上，形成三层结构。这样，系统的反应速度快、功能灵活、具有可变更性且系统的可移植性好。三层结构描述如下：
+　　第一层为表示层：由客户端URL所指定的用户向Web服务器提出服务申请。Web服务器对用户进行身份验证后，用HTTP协议把所需的文件资料传送给用户，客户端只是接收文件资料，并显示在WWW浏览器上。
+　　第二层具有CGI(Common Gateway Interface)或Web服务器为应用逻辑层。它主要利用服务器完成客户的应用功能，即：Web服务器接受客户申请，首先需要执行CGI程序，以便与数据库连接，进行申请处理，而后将处理结果返回Web服务器，再由Web服务器传到客户端。CGI有许多弊端，因为CGI不仅开发困难，而且CGI对每个HTTP请求都激活一个相应进程，由此造成程序挤占系统资源，降低效率，在出现大量并发请求时更是力不从心。
+　　第三层为数据层：Web应用模式的发展推动着Web开发技术的进步，单纯应用HTML进行Web开发的传统模式已经不能满足人们的需要了。Web服务器一般安装在一台功能强大的计算机上，但不可能充分利用服务器的计算机处理能力为远程用户提供更多动态有趣的内容。针对这些问题，不同厂家提供了不同的技术来完善Web应用的开发。微软在其Windows NT4.0上提供了IIS(Internet Information Server，互联网信息服务器)。其设计目标是提供适应性强的Internet和Intranet服务器功能。通过围绕Windows NT所做的优化，IIS具有很高的执行效率、很好的安全保密性、易于管理以及启动迅速等优点。
+　　ADO其实是一种提供各种类型数据访问的连接机制。最通常的一种使用就是在客户/服务器应用中对关系型数据库中数据的访问，在ASP环境中，通过VBScript或者JavaScript，ADO可以实现数据灵活的操作。ADO可以通过ODBC和数据源作用，所以你可以用SQL Server、Oracle、Access等数据库甚至Microsoft Excel、Text等文件中的数据。
+　　由于ADO实际上是建立在OLE-DB这一层的基础上，所以ADO还可以利用除了ODBC之外的数据源提供者。而对于ODBC数据源来说，各种不同的ODBC驱动又可以提供不同的功能。这些情况使ADO中一些对象、属性、方法在具体的应用环境中有所不同。
+　　(2)数据库的连接和访问
+　　根据我们在Web上的开发经验，主要要解决的问题是与数据库的连接关系，我们以SQL Server ODBC来举例加以说明。
+　　ADO有两个主要的对象：Connection和Recordset。
+　　Connection对象
+　　创建数据库的连接是一种简单直接的操作，首先，要定义一个Connection对象的实例，这只是Active Database Component实现的对象之一。它的ProgID是ADODB，用下面的语句创建：
+Set conn=Server.CreateObject("ADODB.Connection")
+　　通过调用Server对象的CreateObject方法，我们初始化了一个变量conn，用于保存指向新创建的连接的指针。然后我们调用Connection对象的Open方法打开一个连接：
+　　conn.Open“Teachers”其中Teachers是ODBC登录的已经存在的系统DSN。
+　　打开连接后，就可以对数据库进行查询了，例如：conn.execute＂delete * from Teachers where name=quot;
+　　Recordset对象
+　　在许多情况下，我们需要通过ADO来返回一些记录，这样就可以把返回的结果显示在我们的Web页中。对于这种要求的查询，我们就用Recordset对象来保存返回的结果。
+　　我们可以用Connection对象的Execute方法产生Recordset：
+Set conn=Server.CreateObject(＂ADODB.Connection＂)
+Conn.open＂Teachers＂
+Sql="select*from Teachers where name=
+Set rs=conn.Execute(Sql)
+　　也可以直接创建一个Recordset对象：
+Set rs=Server.CreateObject(＂ADODB.Recordset＂)
+Sql=＂select*from Teachers where name=
+Rs.open Sql
+　　数据库的操作主要有增、删、改、查四种基本的操作。这里本人根据自己的经验提供一个数据库的完整操作。
+Set conn=Server.CreateObject(＂ADODB.Connection＂)
+Conn.open＂Teachers＂
+Sql1=＂Insert Into Teacher (name, age, address, telephone) Values (, 24, ＂Shanghai＂,＂123456＂)＂　　　　　 '增加记录
+Set rs1=conn.Execute(Sql1)
+Sql2=＂delete*from Teachers where name=　　　'删除记录
+Set rs2=conn.Execute(Sql2)
+Sql3=＂Update Teacher Set telephone=6+telephone　　'修改记录
+Set rs3=conn.Execute(Sql3)
+Sql4=＂select*from Teachers where name=　　'查找记录
+Set rs4=conn.Execute(Sql1)
+5  结束语
+　　以上介绍了ASP出现的时代背景、ASP的特点、ADO的用法以及它们的对象模型。可以看出，ASP作为一种动态Web应用的开发工具，有着很好的灵活性和很强的性能，从而具有强大的生命力，必将在今后的Internet舞台上大放异彩。
+黄德能(上海铁道大学计算机科学技术系  上海 200331)
+薛小平(上海铁道大学计算机科学技术系  上海 200331)
+阮永良(上海铁道大学计算机科学技术系  上海 200331)
+参考文献
+1，陈银山, 张录娥译. Web数据库的建立与管理. 北京: 机械工业出版社, 1997
+2，董启雄等译. Active Server Pages编程指南. 北京: 宇航出版社, 1998
+收稿日期：1999-11-29

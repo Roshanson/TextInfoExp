@@ -1,0 +1,135 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+具有参数不确定性的非线性
+系统的鲁棒输出跟踪
+马晓军　文传源
+　　摘　要　研究具有非线性参数化的非线性系统的输出跟踪问题. 采用时变状态反馈控制律， 指数镇定输出跟踪误差，并保证非线性系统的所有状态是有界的. 为了实现时变状态反馈控制律，设计高增益鲁棒观测器观测构造该控制律所需要的状态，使得整个闭环系统的输出能渐近跟踪期望输出，且该闭环系统中所有信号都是有界的. 
+　　关键词　非线性系统， 鲁棒输出跟踪， 结构不确定性，参数不确定性， 线性参数化，非线性参数化. 
+ROBUST OUTPUT TRACKING OF NONLINEAR SYSTEMS WITH
+PARAMETRIC UNCERTAINTIES
+MA XIAOJUN WEN CHUANYUAN
+(Dept. of Automatic Control, Beijing University of Aero. and Astro., Beijing 100083)
+　　Abstract In this paper, the output tracking of the nonlinear system with nonlinear parameterization is considered. Using the time-varying state feedback control law exponentially stabilizes the output tracking error, and guarantees that all states in the nonlinear system are bounded. To implement the time-varying state feedback control law, design the high-gain robust observer which observes the states needed by the control law. The output of the obtained closed-loop system can asymptotically track the desired output, and all signals inside the closed-loop system are bounded.
+　　Key words Nonlinear system, robust output tracking, structural uncertainty, parametric uncertainty, linear parameterization , nonlinear parameterization.
+　　1　引　言
+　　非线性系统输出跟踪来源于飞行器的姿态跟踪和机器人的轨迹跟踪等工程问题，由于无法建立实际系统的精确数学模型，被控系统的数学模型必然带有不确定性， 而这种不确定性常可分为结构不确定性和参数不确定性. 因此， 研究具有这两类不确定性的非线性系统的鲁棒输出跟踪问题是很有意义的. 
+　　Fu L C 和 Liao T L等人研究了具有结构不确定性的非线性系统的鲁棒输出跟踪问题. Sastry和Isidori等人用自适应控制的方法研究了具有参数不确定性的非线性系统的鲁棒输出跟踪问题，但假设被控系统具有线性参数化的特性，而实际的系统很少具有这种特性. 文献［1］研究的系统具有非线性参数化的特性，显然，与具有线性参数化特性的系统相比，这类系统所描述的对象更加广泛，但其所设计的控制器仅能实现设置点调节(set point regulation).
+　　本文研究具有非线性参数化特性的非线性系统的输出对时变信号的跟踪.
+　　2　问题描述
+　　考虑如下形式的非线性系统 
+　　　　　　(1)
+其中状态x∈Rn; 输入u∈Rm;可测输出y∈Rm;θ是属于紧集Θ的未知常值参数向量. 设f(x,θ),gi(x,θ)和h(x,θ)对于x是充分光滑的且对于θ∈Θ，f(0,θ)=0，h(0,θ)=0; 对于x∈Rn,θ∈Θ,g(x,θ)≠0;对于x∈Rn,θ∈Θ， f(x,θ),gi(x,θ),h(x,θ)及各自对x的偏导数对θ是连续的.
+　　假设1. 对于所有θ∈Θ和x∈Rn， 系统(1)有一致的向量相对阶γ=｜γ1…γm]T,即对于所有1i,jm,Lgjhi(x,θ)=…=LgiLγi-2fhi(x,θ)=0， 且Falb-Wolovich矩阵A(x,θ)={aij(x,θ)}={LgjLγi-1fhi(x,θ)}是非奇异的. 
+　　假设2.令p=γ1+…+γmn， 对于所有θ∈Θ， 分布
+△=span{g1,adfg1,…,ad(γ1-2)fg1,…,gm,adfgm,…,ad(γm-2)fgm}
+是对合的.其中adfgi=[f,gi], ad2fgi=[f,[f,gi]], [f,gi]是向量场f(x,θ)和gi(x,θ)的李括号， i=1,…,m.
+　　在假设2下，根据Frobenius定理，可知存在n-p个光滑标量函数Ti(x,θ)∶Rn×Θ→R满足
+　　状态变换z(x,θ)∶Rn×Θ→Rn z=z(x,θ)=[ξ(x,θ)T η(x,θ)T]T，其中
+ξ(x,θ)=［ξ1(x,θ) … ξm(x,θ)]T, η(x,θ)=T1(x,θ) … Tn-p(x,θ)]T,
+ξi(x,θ)=[ξi1(x,θ) … ξiγi(x,θ)]=[hi(x,θ) … Lγi-1fhi(x,θ)]
+是微分同胚. 将系统(1)变为
+　　　　　　　(2)
+其中A=diag［A1…Am］, B=diag［B1…Bm］, C=diag［C1…Cm］,
+
+　　由于采用依赖未知常值参数向量θ的坐标变换，所以，新的状态变量ξ和η都是无法完全获得的. 在下面两节的讨论中，先用状态反馈实现输出跟踪；然后，通过构造状态观测器，利用输出反馈来实现输出跟踪. 
+　　3　状态反馈实现非线性系统的输出跟踪
+　　在许多情况下， 假设期望输出yd(t)是某个已知动态系统的输出是不现实的，然而，为了完成输出跟踪任务，期望输出及其若干阶导数的信息是必需的. 为此，假设期望输出及其γ阶导数的信息能被精确获得，并用来作为输出跟踪控制器的输入. 记
+
+其中Ydi=[ydi di} … y(γi-1)di]T.
+　　假设3. 被跟踪的外部时变信号y\-d(t)及其γ阶导数的信息能被精确获得，Yd∈SRp且满足 其中S是包含原点的紧集.
+　　对于第i个通道，定义输出跟踪误差及其γi-1阶导数为
+　　
+记 用输出跟踪误差及其γ-1阶导数作为部分状态变量， 可以将系统(2)的状态方程变为
+　　　　　　(3)
+　　令0(ξ，η)和0(ξ,η)分别表示当θ取某一标称向量时E(ξ,η,θ)和F(ξ，η，θ)所对应的标称模型，并记 设0(ξ,η)和0(ξ，η)是充分光滑的，E0(0)=0(0,0)=0， 并且对于所有ξ∈Rp,F0(ξ)是非奇异的. 因此，(3)式可以表示为
+　　　(4)
+取控制
+u=F0(ξ)-1[y(γ)d-E0(ξ)+v],　　　　　　　　　　　(5)
+则(4)式变为
+　　　(6)
+　　由于(A，B)是可控对，可以选择K，使得A+BK的极点都位于左半复平面.将δ(ξ，η，v)-Ke看成是扰动项，用Lyapunov方法重新设计v， 抵消该扰动项，从而保证系统的稳定性. 
+　　假设4.对于所有ξ∈D1Rp,η∈D2Rn-p,t∈R+,θ∈Θ,存在一个标量非负函数ρ1(ξ,Yd,t)和一个正常数k， 使得如下两个不等式成立1)
+　　1) 本文所用的向量范数为欧氏范数，矩阵范数为相应的诱导算子范数. 
+‖E(ξ，η，θ)-F(ξ，η，θ)F0(ξ)-1E0(ξ)-y(γ)d‖ρ1(ξ,Yd,t),　　(7)
+　　　　(8)
+其中D1,D2是包含原点的紧集且有D1S; 函数ρ1(ξ，Yd,t)在D1×S×R+上是一致有界的； 关于ξ的各个分量的一阶偏导数在D1×S×R+上存在且连续. 
+　　假设5. 对于所有θ∈Θ， 非线性系统(1)的零动态=ψ(0,η,θ)是全局指数稳定的，且函数ψ(ξ，η,θ)关于ξ是Lipschitz的，并对η,θ具有一致性. 
+　　由(7)式，可以进一步得到
+‖E(ξ，η，θ)-F(ξ，η，θ)F0(ξ)－1E0(ξ)-y(γ)d-Ke‖ρ2(e,Yd,t).　　(9)
+其中e=ξ-Yd∈D3Rp,D3是包含原点的紧集；函数ρ2(e,Yd,t)在D3×S×R+上是一致有界的；关于e的各个分量的一阶偏导数在D3×S×R+上存在且连续. 
+　　因为未扰系统(t)=(A+BK)e(t)是指数稳定的，不妨设其指数收敛速率为β＞0. 根据文献［2］的方法，取状态变换e1(t)=eβ*te(t)， 其中0＜β*＜β.则
+　　　　(10)
+也是指数稳定的. 不妨设e1(t)∈D4Rp， 其中D4是包含原点的紧集.
+　　因此，对于系统(10)，Lyapunov逆定理［3］保证存在一个Lyapunov函数V(.)∶D4→R+； 连续、严格单调增的标量函数σi(.)∶R+→R+(i=1,2)和一个连续、正定的标量函数σ3(.)∶R+→R+,满足
+
+不妨取V(e1)=eT1Pe1,其中正定对称矩阵P是Lyapunov方程
+P(A+BK+β*I)+(A+BK+β*I)TP=-Q, QT=Q＞0
+的唯一解
+　　系统(6)中的第一式在新状态坐标e1(t)下的表达式为
+
+将V(e1)=eT1Pe1沿着该动态系统的轨迹求导，并根据(9)式，可以推出
+　　　　　(11)
+其中λmin(Q)表示正定对称矩阵Q的最小特征值.
+　　取
+　　　　　　(12)
+其中 将(12)式代入(11)式，再根据(8)式，并利用不等式b, a,b0,可以推出(e1)-λmin(Q)‖e1‖2+2κ. 由文献［4］可知，e1(t)是一致有界和一致最终有界的，则e(t)=e-β*te1(t)是指数稳定的. 
+　　在e(t)坐标下表示(12)式，并进行简化得
+　　　　　　　(13)
+其中 将控制(5)式和(13)式简记为u(e,Yd,t)，该控制能够使得非线性系统(1)的输出指数跟踪期望输出yd(t). 为了实现稳定跟踪， 还必须要求非线性系统(1)的完全不可观的状态η(t)是有界的. 
+　　在假设5的条件下，根据Lyapunov逆定理［3］ 可知,存在一个Lyapunov函数V0(η)满足下列不等式
+　　
+其中σ1,σ2,σ3,σ4是依赖于ψ(0,η,θ)的正常数. 
+　　V0(η)沿着系统(6)的轨迹的导数为0(η)-σ3‖η‖2+σ4L‖η‖.‖ξ‖. 其中L为函数ψ(ξ，η，θ)对于变量ξ的全局Lipschitz常数.为了使0(η)＜0. 必须满足‖η‖＞ 根据‖e‖=‖ξ-Yd‖, 可知‖ξ‖‖e‖+‖Yd‖‖e‖+m.bd是有界的，所以，非线性系统(1)的完全不可观状态η(t)是有界的， 即存在正常数r， 使得‖η(t)‖r. 若取Br={η(t)｜‖η(t)‖r}，则假设4中的D2应该满足D2Br.
+　　综上所述， 可得如下定理.
+　　定理1.满足假设1，2和4，5的非线性系统(1)在控制(5)式和(13)式的作用下，能对满足假设3的期望输出yd(t)实现指数稳定跟踪. 若假设4全局成立，则能实现全局指数稳定跟踪.
+　　4　输出反馈实现非线性系统的输出跟踪
+　　本节采用Khalil和Esfandiari使用的高增益鲁棒观测器［5，6］，重构出状态反馈所需要的所有状态， 从而实现状态反馈控制律(5)和(13)式.
+　　用ij表示第i个通道的输出跟踪误差ei1的第j-1阶导数eij(j=1,…,γi)的观测值，对于第i个通道， 构造观测器如下：
+　　　　　　　(14)
+用eisj=eij-ij(i=1,…,m;j=1,…,γi)表示相应量的观测误差；令eifj=(i=1,…,m;j=1,…,γi)；记Γi=[αi1…αiγi]T,eif=[eif1…eifγi]T,Γ=diag[Γ1…Γm], ef=(e1f)T…(emf)T]T;则m个通道的观测器的观测误差的动态方程可以表示为
+　　(15)
+其中为输出跟踪误差及其γ-1阶导数的观测值， 设(t)∈D3. 显然，通过适当选择αi1,…,αiγi(i=1,…,m)， 可以使得A-ΓC的特征值都位于左半复平面.
+　　采用状态观测器后，整个闭环系统可以表示为
+　　　　(16)
+根据假设4及控制(5)和(13)式，可以推出u(e,Yd,t)在D3×S×R+上对e满足局部Lipschitz条件， 则
+‖F(ξ，η，θ)[u(,Yd,t)-u(e,Yd,t)]‖k1‖-e‖=k1‖es‖=k1‖N(ε)ef‖　　　
+k1‖N(ε)‖‖ef‖k1‖ef‖.　　　(17)
+其中k1为正常数， 而N(ε)=diag［Ni(ε)…Nm(ε)],Ni(ε)=diag[εγi-1，…，εγi-2，…，ε,1］. 显然，对于所有0＜ε1， ‖N(ε)‖1.
+　　因为系统是指数稳定的，根据Lyapunov逆定理［3］可知，存在一个Lyapunov函数W(.)∶D3×R+→R+，满足
+　　　　　(18)
+　　　　　　　　　　　(19)
+其中C1,C2为正常数；并且当e=0时，有E(Yd,η，θ)+F(Yd,η，θ)u(0,Yd,t)-y(γ)d=0.
+　　根据假设4及控制(5)式和(13)式可以推出E(ξ，η，θ)+F(ξ，η，θ)u(e,Yd,t)-y(γ)d,也即E(e+Yd,η，θ)+F(e+Yd,η，θ)u(e,Yd,t)-y(γ)d在D3×D2×S×Θ×R+上对e满足局部Lipschitz条件，则
+‖E(ξ，η，θ)+F(ξ，η，θ)u(e,Yd,t)-y(γ)d‖k2‖e‖.　　　　(20)
+其中k2为正常数. 
+　　由于系统(16)的边界层系统是指数稳定的，Lyapunov方程
+Pf(A-ΓC)+(A-ΓC)TPf=-Qf,Qf=QTf＞0
+有唯一解Pf=PTf＞0. 二次型函数Vf(ef)=eTfPfef是边界层系统的Lyapunov函数且满足
+　　　　　　　　(21)
+　　取准Lyapunov函数
+U(e,ef,t)=(1-R).W(e,t)+R.Vf(ef), 0＜R＜1.　　　　　　　　　(22)
+利用不等式(17)―(21)式，(22)式沿着系统(16)的轨迹的导数可以表示为
+
+其中
+　　　　　
+　　为了保证(e,ef,t)＜0， 应该满足
+
+另外， 假设5及ξ(t)的有界性， 保证了系统(1)的完全不可观的状态η(t)是有界的. 
+　　综上所述， 可得如下定理. 
+　　定理2. 满足假设1，2和4，5的非线性系统(1)采用(14)式的状态观测器，通过适当选择αi1,…,αiγi(i=1,…,m)， 在形如(5)式和(13)式的控制律的作用下， 存在着一个ε*＞0， 当0＜ε＜ε*时，能对满足假设3的期望输出yd(t)实现渐近稳定跟踪.若假设4全局成立， 则能实现全局渐近稳定跟踪. 
+1)本文所用的向量范数为欧氏范数，矩阵范数为相应的诱导算子范数。
+作者简介：马晓军　1969年生. 1990年毕业于北京航空航天大学自动控制系飞行器控制专业，1992年，1995年在该校分别获硕士和博士学位. 现在清华大学智能技术与系统实验室从事博士后研究. 主要研究兴趣为飞行器控制和制导， 神经网络控制，鲁棒控制，非线性系统的输出调节及跟踪. 
+　　　　　文传源　简介见本刊第18卷第3期.
+作者单位：北京航空航天大学自动控制系　北京　100083
+参考文献
+　　[1] Marino R, Tomei P. Global adaptive output-feedback control of nonlinear systems, part Ⅱ: nonlinear parameterization . IEEE Trans. Automat. Contr., 1993,38(1):33-48.
+　　[2] Qu Z, Dawson D M. Continuous state feedback control guaranteeing exponential stability for uncertain dynamical systems. Proc. IEEE Conf. Decision Contr., 1991, 3:2636-2638.
+　　[3] Hahn W. Stability of motion. Berlin:Springer-Verlag, 1967.
+　　[4] Corless M J, Leitmann G. Continuous state feedback guaranteeing uniform ultimate boundedness for uncertain dynamic systems. IEEE Trans. Automat. Contr., 1981, 26(5):1139-1144.
+　　[5] Khalil H K, Esfandiari F. Semiglobal stabilization of a class of nonlinear systems using output feedback. Proc. IEEE Conf. Decision Contr., 1992, 4:3423-3428. 
+　　[6] Esfandiari F, Khalil H K. Output feedback stabilization of fully linearizable systems. Int.J. Contr., 1992, 56(5):1007-1037.
+收稿日期 1994-12-16

@@ -1,0 +1,26 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第7期 Vol.35 No.7 1999
+
+
+
+自行车踏蹬圆滑度测定分析系统的研制与应用
+熊开宇　全如璐　延　锋　赵芝英
+摘要：本课题设计、研制了适合训练现场使用的自行车踏蹬圆滑度测定分析系统，微型化的设备安装在赛车上不会影响运动员的骑行，记录下的信号输入到计算机，经过自动数据分析程序处理后，可以马上对运动员的踏蹬技术水平进行诊断和评定。
+关键词：自行车∥踏蹬∥圆滑度∥测定∥计算机
+A Research on Making and Applying the Measurement and Analysis System of the Bicycle's Pedalling Smoothness
+Xiong Kaiyu, Quan Rulu, Yan Feng, Zhao Zhiying
+Abstract:This research design and make a measuring and analyzing system of the bicycle's pedalling smoothness that could be used on the training spot. The microminiaturization apparatus set up on the racing bicycle will not influence the athlete's riding. The signals recorded by the apparatus will be transmitted to the computer and after processed by auto-data analysis program, they will immediately indicate the diagnosis and evaluation result of the athlete's pedalling technique level.
+Key words:bicycles∥padalling smoothness∥computer
+前言
+　　自行车前进动力来自运动员踏蹬力的大小和频率，因此，对于运动员的踏蹬技术，国内外进行了大量研究。踏蹬技术可划分为下蹬(90°)、后趴(180°)、上提(270°)和前挑(360°)4个阶段。踏蹬力越均匀，工作效率就越高。前苏联自行车运动训练专家B.B.吉莫申科夫通过长期研究发现，自行车运动员在圆周踏蹬过程中，牙盘各点瞬间角速度越趋向恒定，越有利于运动员体能的发挥，并首先提出“圆滑度”概念，应用“圆滑度”来评定运动员踏蹬技术的优劣。另一位专家基莫塞柯夫采用踏板测力系统对圆滑度进行了研究。发现运动员在踏蹬圆周中，最大用力在90°和120°，最小用力在0°和180°。因此，将0°称为圆周踏蹬的“上死点”，将180°称为圆周踏蹬的“下死点”。尤戈克.拉吉哈斯姆.来纳克夫研究发现，自行车运动员踏蹬“死点”不是在一个固定角度，而是在一个区域。他认为，不同等级运动员的踏蹬“死点”区域原则上在1周中时间和位置均有区别。同一等级运动员有许多特点，但又表现出专项上的不同。我国许多学者也对自行车运动员踏蹬圆滑度进行过详细的研究。
+　　过去，大部分研究都是在实验室内完成，不能真实反映出比赛和训练时的实况。能现场测试自行车运动员踏蹬圆滑度的测定分析系统目前还未见报道。本研究的初衷是设计、研制一套适合训练现场使用的自行车踏蹬圆滑度测定分析系统，为改进和提高运动员踏蹬技术提供可靠的依据。
+1　自行车踏蹬圆滑度测定分析系统的组成
+　　自行车踏蹬圆滑度测定分析系统主要由传感器、接口电路、计算机及应用软件组成(图1)。
+
+图 1　自行车踏蹬圆滑度测定分析系统框图
+1.1　踏蹬速度传感器
+　　踏蹬速度传感器的作用是将自行车运动员踏蹬速度信息转换为电脉冲信号，它是本系统的关键部件，对其基本要求是结构简单，抗干扰性强，耗电少，体积小，重量轻，灵敏度高，电路简单。本系统选用了磁敏数字开关传感器，此传感器可以将磁信号直接转换为标准的电脉冲信号。其优点是“无反弹惰性”，无机械触点，开关次数可达100，000次/s。其结构为在同一硅芯片内包括稳压器、霍尔电压产生器、信号放大器、触发电路和输出晶体管，它保证开关工作稳定和没有振荡现象。
+　　磁信号来自固定在自行车牙盘上的小磁铁，小磁铁采用中科院生产的高磁性稀土磁铁，体积为5×2×1 mm。小磁铁均匀分布在牙盘圆周上(图2)。小磁铁间隔为30°，整个圆周上共固定12块小磁铁，在0°与30°之间外加一块定位用小磁铁，总共13块小磁铁。如果需要提高测试精度，可以每15°固定一块小磁铁。
+
+<img src="image7/t37-1.gif" width="178" height="

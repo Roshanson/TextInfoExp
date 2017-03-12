@@ -1,0 +1,106 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.1　P.74-78
+
+
+
+随机控制系统稳态Kalman滤波器新算法
+邓自立　刘玉梅
+摘 要 应用现代时间序列分析方法，基于受控的自回归滑动平均(CARMA)新息模型，提出了随机控制系统稳态Kalman滤波器增益的两种新算法，避免了求解Riccati方程.为保证滤波器的渐近稳定性，给出了选择滤波初值的两个公式.仿真例子说明了新算法的有效性.
+关键词 随机控制系统，稳态Kalman滤波器增益算法，渐近稳定性，现代时间序列分析.
+NEW ALGORITHMS OF STEADYSTATE KALMAN FILTER
+FOR STOCHASTIC CONTROL SYSTEMS
+DENG Zili
+(Institute of Applied Mathematics, Heilongjiang University, Harbin 150080)
+LIU Yumei
+(Department of Aviation, Civil Aviation Institute of China, Tianjin 300300)
+Abstract Using the modern time series analysis method, based on the controlledautoregressive moving average(CARMA) innovation model, two new algorithms of steadystate Kalman filter gain for stochastic control systems are presented, where the solution of the Riccati equation is avoided. In order to ensure the as
+ymptotic stability of the filter, two formulae of setting initial filtering estimate are given. A simulation example shows the effectiveness of the new algorithms.
+Key words Stochastic control systems, algorithms of steady state Kalman filter gain, asymptotic stability, modern time series analysis.
+1 引言
+　　许多不同类型随机最优控制器设计要求计算稳态Kalman滤波器［1］.但经典稳态Kalman滤波器要求解复杂的Riccati方程.对此，本文用现代时间序列分析方法［2］，以CARMA新息模型作为工具取代了Riccati方程，提出了带控制项的稳态Kalman滤波器新算法.考虑离散线性随机控制系统
+x(t+1)=Φx(t)+Bu(t)+Γw(t)，　(1)
+y(t)=Hx(t)+v(t)，(2)
+其中状态x(t)∈Rn，观测y(t)∈Rm，控制u(t)∈RP.
+　　假设1. w(t)∈Rr和v(t)是带零均值的白噪声：
+　(3)
+其中E为数学期望，′为转置号，
+　　假设2. 系统是完全可观的，即
+　(4)
+其中β是可观测性指数.(4)式等价于Ω列满秩［3］，
+(5)
+　　假设3 (u(t),u(t-1)，…)是已知的，或u(t)为反馈控制，即u(t)是(y(t),y(t-1)，…)的线性函数.
+　　问题是基于(y(t),y(t-1)，…；u(t-1),u(t-2)，…)求x(t)的稳态Kalman滤波器
+2CARMA新息模型和引理
+　　记Ii为i×i单位阵，由式(1)和式(2)有
+y(t)=［H(In-q-1Φ)-1Bq-1,H(In-q-1Φ)-1Γq-1］［u′(t),w′(t)］′+v(t)，(6)
+其中q-1为单位滞后算子.引入左素分解
+　(7)
+式中是形如的多项式矩阵，Xi为系数阵，nx为阶，且将式(7)代入式(6)有CARMA新息模型
+　(8)
+其中是稳定的［4］，D0=Im，新息ε(t)是零均值，方差阵为Qε的白噪声.D(q-1)和Qε可用Gevers和Wouters［2］算法求得.为保证D(q-1)的稳定性，由谱分解定理［5］，假设无行列式零点在单位圆上的左因式.
+　　ε(t)可由(8)式取初值(ε(t0-1),…，ε(t0-nd))递推计算为
+　(9)
+　　引理1［4］. 　(10)
+其中且有递推式
+　(11)
+　.(12)
+　　引理2［4］. 对任意整数N，有白噪声估值器
+　(13)
+　　引理3［6］. 状态x(t)有非递推表达式
+　(14)
+其中Ω由式(5)定义，且将伪逆Ω#=(Ω′Ω)-1Ω′分块表示为
+　(15)
+若Φ非异，定义Ψ=Φ-1，T=-Φ-1B,L=-Φ-1Γ，则有
+　(16)
+这里规定Ψi=0(i<0)，且j≥0Θ和Θi定义为
+　(17)
+　(18)
+3 主要结果
+　　定理1. 系统(1)～(2)在假设1～3下，稳态Kalman滤波器为
+　(19)
+　(20)
+这里，稳态Kalman滤波器增益K的两种新算法为
+　(21)
+　(22)
+证明.由式(1)和射影公式［2］有
+　(23)
+　(24)
+　(25)
+将式(24)代入式(23)得式(19).由式(13)得式(20).将式(14)和(16)代入式(25)并利用引理1得式(21)和(22).
+　　由式(19)和(9)看到，的计算与滤波初值和新息初值(ε(t0-1)，…，ε(t0-nd))两者有关.可证明：若Φ是稳定的矩阵，则关于这两种初值是渐近稳定的，即它渐近地与这两种初值选取无关，从而可任意设置这两种初值.假如Φ是不稳定矩阵，则可适当选择滤波初值关于新息初值是渐近稳定的.
+　　定理2. 在定理1的条件下，对应于增益K的算法式(21)或(22)，若取式(19)的初值
+为
+　(26)
+或
+　(27)
+则式(19)关于新息初值是渐近稳定的.
+　　证明.类似于文献［3］的证明，从略.
+　　注意式(20)，(23)，(24)和还可得到稳态Kalman预报器新算法，推导留给读者。
+4 仿真例子
+　　应用式(19)，(20)，(30)，(31)的仿真结果如图1和图2所示.
+
+图1 x1(t)和稳态Kalman滤波器
+
+图2 x2(t)和稳态Kalman滤波器
+　　考虑随机控制系统(1)～(2)，其中x(t)=［x1(t),x2(t)］′，
+　(28)
+v(t)=0.1w(t)+ξ(t), u(t)=2sin(2πt／300).(29)
+上式中w(t)和ξ(t)是零均值、方差为的独立高斯白噪声.易知S=0.1.CARMA新息模型为
+　(30)
+且新息方差由式(21)和(26)可求得
+　(31)
+国家自然科学基金资助项目(69774019).
+邓自立 1938年生，1962年毕业于黑龙江大学数学系，现为黑龙江大学应用数学研究所教授.主要研究领域为状态估计，最优滤波，信号处理，反卷积等.发表论文150余篇.
+刘玉梅 1971年生，1997年于黑龙江大学获自动控制理论及应用专业硕士学位，现为中国民航学院航行系教师，主要研究领域为状态估计，Kalman滤波等.
+邓自立(黑龙江大学应用数学研究所 哈尔滨 150080)
+刘玉梅(中国民用航空学院航行系 天津 300300)
+参考文献
+1，Vu K M. Discrete optimal stochastic controllers and its forms. Int.J. Systems Science,1990，21(3)：567～577
+2，邓自立，郭一新.现代时间序列分析及其应用.北京：知识出版社，1989，54～70
+3，邓自立，刘玉梅.一类稳态Kalman滤波器及其渐近稳定性.信息与控制，1998，27(1)：26～31
+4，Deng Z L, Zhang H S et al.Optimal and selftuning white noise estimators with applications to deconvolution and filtering problems. Automatica, 1996，32(2)：199～216
+5，Newmann M M, Roberts A P. Polynomial optimization of stochastic discrete time
+control for unstable plants.Int. J. Control,1996，51(6)：1363～1386
+6，邓自立，胡萍等.非递推最优状态估计的几种统一算法.见：1998中国控制与决策学术年会论文集.大连：大连海事大学出版社.1998，250～254
+收稿日期 1997-09-29收修稿日期 1998-07-25

@@ -1,0 +1,55 @@
+自动化学报
+AGTA AUTOMATICA SINICA
+1999年 第25卷 第2期 Vol.25 No.2 1999
+
+
+
+离散制造装配系统的活性控制1)
+邢科义　胡保生　万百五
+摘　要　首次研究离散制造装配系统的活性控制问题.建立了系统的工件加工过程Petri网模型.通过对系统Petri网模型的结构分析，提出了导致系统死锁的两类元素结构及活性特征.对一类离散制造装配系统提出了避免死锁的Petri网控制器，这类控制器容易实现，对系统的限制小,而且使得受控系统仍具Petri网模型.对一般离散制造装配系统提出了保证系统活性的控制策略.
+关键词　制造系统,　Petri网,　控制.
+LIVENESS CONTROL FOR DISCRETE MANUFACTURING
+/ASSEMBLY SYSTEMS
+XING Keyi
+(Department of Applied Mathematics, Xidian University, Xi'an　710071)
+HU Baosheng WAN Baiwu
+(Institute of Systems Engineering, Xi'an Jiaotong University, Xi’an　 710049)
+Abstract　The liveness problem for discrete manufacturing/assembly systems is studied first in this paper. We develop a Petri net model for processings of jobs in a manufacturing/assembly system. By analysis of the Petri net model, two kinds of structural objects which can lead to system deadlock and the liveness characteristics of the system are obtained. We then present our deadlock- avoidance Petri net controller for a class of manufacturing/assembly systems. This controller can be implemented easily and places less restrictive requirement on systems. And the controlled system can be modeled by a Petri net. For a general manufacturing/assembly system, we present a policy which can guarantee that the controlled system is live.
+Key words　Manufacturing system, Petri net, control.
+1　引　言
+　　利用Petri网模型建立柔性制造系统的活性行为引起了许多学者的兴趣［1―7］.文献［1―5］对系统的Petri网模型提出了避免死锁的控制策略,使受控系统中不再发生死锁现象.文献［6,7］则直接建立系统活性Petri网模型,以此作为系统运行的监控器.而这些研究都集中在“线性”制造系统方面,即要求在加工过程中工件既不允许分解，也不允许结合.但许多系统是加工组装于一体的，其中工件的结合是必不可少的.
+　　本文研究具有加工、组装功能的离散制造系统的活性控制问题.利用Petri网为系统建模，分析系统产生死锁的特征和导致系统死锁的Petri网结构元素，提出了保证系统活性的控制器的综合方法.
+2　制造装配系统及其Petri网模型
+　　Petri网是一个三元组G＝（P，T，F），其中P，T分别是位置集和变迁集，F（P×T）∪（T×P）是有向弧集.设a∈P∪T，用.a，a.分别表示a的输入和输出元素集，即.a＝｛b∈P∪T｝｜（b，a）∈F｝，a.＝｛b∈P∪T｜（a，b）∈F｝.当.a＝｛b｝或a.＝｛b｝时，简记为.a＝b或a.＝b.对集合AP∪T，记・A＝.a,A.=a..用（G，m0）表示具有初始标识m0的标记Petri网G.设m是G的标识，t∈T，当m（p）≥1，p∈.t时，称t是标识m使能的.使能变迁t的引发使系统从标识m转移到标识m′，m′（p）＝m（p）＋｜｛t｝∩.p｜-｜｛t｝∩p.｜，记作，m［t＞m′］.用Z（G，m0）表示G的能从m0到达的标识之集.对m∈Z（G，m0）及AP，记m（A）＝m(p).
+　　如果m∈Z(G,m0),存在m′∈Z(G,m)使得t在m′使能,则称t是活的.如果对标识m不存在m′∈Z(G,m)使得t在m′使能,则称t在m下是死的.若每个变迁都是活的,则称(G,m0)是活的;否则称(G,m0)具有死锁.
+　　本文考虑的制造装配系统具有资源集R,可生产的产品种类集为Q,每个产品是由一些原材料经加工、装配而成.设原材料集为I,一种原材料仅用于一种产品的生产.每种产品具有各自的生产过程，它是由一些操作组成，每次操作就是资源的一次利用.把单个工件利用某资源的操作称为加工操作.而把多个工件组装成一个新工件的过程称为装配操作.产品的生产过程就是一系列的加工与装配操作.假设每个操作仅需一个资源，而两个连续的加工操作所需的资源种类不同.
+　　在系统Petri网建模中，用一个过程位置表示一次操作，用变迁表示操作间的转换，它的引发表示先序操作结束，后序操作开始，它们的顺序关系用连接位置与变迁的弧表示.则每个操作位置仅有一个输入变迁和一个输出变迁，每个变迁也仅有一个输出操作位置.当一个变迁代表一个加工操作开始时，它仅有一个输入操作位置，而当它代表一个装配操作开始时，它具有多于1个的输入操作位置.用P，T分别记操作位置集和变迁集.对每种原材料i∈I，设置一个位置，向系统输入原材料i的过程用以为输出的变迁表示，无输入位置，中的托肯数表示可利用的i型原材料数.用TI表示所有变迁之集.对每种产品j∈Q设置一个产品位置以存放该产品.用PI，PQ分别记原材料位置集和产品位置集.则产品的生产过程Petri网模型GP定义如下：
+
+其中
+　　1) P，PI，PQ都非空；
+　　2) ∈PI，有且仅有一个位置∈PQ，使得从到有唯一的一条有向路；
+　　3) p∈P∪PI，｜.p｜＝｜p.｜＝1，　　　p∈PQ，｜.p｜＝1，｜p.｜＝0；
+　　4) ∈TI，｜.｜＝0，（tiI）.＝piI，t∈T，｜t.｜＝1，｜.t｜≥1.
+　　称具有多于1个输入操作位置的变迁为合变迁.合变迁对应着多个工件装配成一个工件的操作过程的开始.
+　　给每种资源r设置一个资源位置，仍记为r.用PR记资源位置之集.当操作位置p代表的过程利用资源r时，记作R（p）＝r，在GP中引入弧和如果有变迁t和资源r使得（r，t）,（t，r）同时存在，则删去这两条弧.用FR表示所有增加弧之集.则整个系统的Petri网模型为
+
+G的初始标识m0则为m0（p）＝0，p∈P∪PQ∪PI，m0（r）＝Cr，r∈PR，其中Cr为r类资源总数.把（G，m0）称为系统Petri网（SPN――System Petri Net）.
+　　设t∈T，用（t）t，（p）t，t（r），t（p）分别表示・t∩PR，.t∩（P∪PI），t.∩PR，t.∩（P∪PQ）.这些记号可扩展到集合上，如对BT，（r）B＝(r)t等.对r∈PR,记H(r)=｛p∈P｜R(p)=r｝.
+　　当合变迁t的输出操作位置和某个输入操作位置利用同一类资源时,(r)t=.
+　　设m∈Z(G,m0),若p∈(p)t,m(p)≥1,称t∈T在m过程使能.若(r)t=或m((r)t)≥1,则称t在m资源使能.只有过程和资源同时使能时,变迁才能引发.
+3　SPN的结构性质与活性分析
+　　分析SPN的结构性质及活性特征.
+　　定义1. 设（G，m0）是一个SPN.G的一条有向路π＝p1t1,…,pktk称为P-路，如果pi∈P，i＝1，…，k，（r）（・p1）≠.
+　　定义2. 设（G，m0）是一个SPN.G的一条扩展路，简称E-路，递归定义为：1) 一条P-路是一条E-路；2) 设π1＝p11t11,…,p1kt1k,π2＝p21t21,…p2lt2l都是E-路，当R（)＝R（p21）时，π＝π1π2也是E-路.
+　　用Pπ,Tπ分别表示E-路π的所有位置之集和所有变迁之集.记
+
+则FT（π）中变迁的引发使π上（即Pπ中）托肯增加，而LT（π）中变迁的引发减少π上的托肯.
+　　记R（π）R（Pπ）＝R(p),即π上操作位置所需的资源类之集.
+　　定义3. 称E-路π=p1t1,…,pntn为一个D型结构,如果t∈LT(π）,R(t(p))≠R((p)t∩Pπ),而且R(p1)=(r)tn.故D型结构是一个循环的E-路.
+　　引理1. 设π是一个D型结构,令
+
+其中=｛p∈Pπ｜存在以p为起点的P-路pt1p1,…,tkpk,k≥1,pi∈Pπ,R(pi)=R(p),i=1,…,k,｜(p)t∩Pπ｜ ≥2｝,则Sπ是一个siphon.称Sπ是由π生成的siphon(证明从略).
+　　定义4. 设t∈T,r∈R,BH(r),・B把从B到t的E-路集Y称为一个Y型结构,如果在Y中至少有一条从每个p∈B到t的E-路.记FR(Y)=r,LT(Y)=t.则P-路,E-路都是Y型结构.
+　　定义5. 一个W型结构定义为一个Y型结构和P-路的交错序列W=Y1π1Y2π2,…,Ynπn满足:1) Yi是Y型结构,πi是P-路.故简记W=(YW,ΠW)；2) FR(πi)=FR(Yi+1),i=1,2,…,n-1,FR(πn)=FR(Y1)；3) LT(Yi)=LT(πi),i=1,…,n；4) Yi,πj除LT(Yi),LT(πj)外没有共同元素.记
+
+　　引理2. 设W是一个W型结构,令

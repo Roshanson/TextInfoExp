@@ -1,0 +1,85 @@
+自动化学报
+AGTA AUTOMATICA SINICA
+1999年 第25卷 第2期 Vol.25 No.2 1999
+
+
+
+关键路径与随机串行生产线的灵敏度分析
+刘自宽　　涂生
+摘　要　扰动分析是研究离散事件动态系统的有效方法, 性能函数的可微性是应用该方法的前提条件之一. 利用关键路径的概念,证明了随机串行生产线稳态性能函数可微的充要条件为系统的关键路径以概率1唯一；而且，当系统的关键路径以正概率不唯一时性能函数的方向导数存在，进而给出了其方向导数的无偏估计量.最后指出应用扰动分析和非光滑分析方法研究这类性能函数不可微系统的思路.
+关键词　随机串行生产线，关键路径，不可微性.
+CRITICAL PATH AND SENSITIVITY ANALYSIS OF STOCHASTIC
+SERIAL PRODUCTION LINES
+LIU Zikuan TU Bengsheng
+(Department of Computer & System Sciences, Nankai University, Tianjin　300071)
+Abstract　Perturbation analysis is an efficient method to study DEDS, which requires the differentiability of the performance function. In this paper, by using the notion of critical path, it is first proved that the steady-state performance function of a stochastic serial production line is differentieble iff its critical path is unque w.p.1. Moreover, it is shown that in the case of the critical path being not unque with postive probability, the one-sided derivatives of the performance function exist and their unbaised estimators are given. Finally, the method of parameters optimization of DEDS via perturbation analysis and nonsmooth optimization is outlined.
+Key words　Stochastic serial production line, critical path, nondifferentiability.
+1　引言
+　　众所周知，数学期望值表示的离散事件动态系统(DEDS)的稳态性能函数通常没有明显解析式, 因而常用仿真方法来估计它. 近年来出现的基于单样本轨道的灵敏度分析方法, 如扰动分析(IPA)、似然比(LR)等都是提高仿真效率的有效方法. 其中扰动分析方法最为突出, 该方法在理论和应用方面都取得了丰硕成果［1］. 其要点是用样本性能函数梯度来估计系统性能函数的梯度, 然后用随机梯度算法优化系统参数. 
+　　在一定条件下, IPA方法是很有效的. 然而, 性能函数的梯度并不总是存在的, Y.Wardi等人在文献［2］中猜想DEDS的性能函数可能在一个稠密集上是不可微的, 文献［3］中构造了一个循环排队网的例子, 其性能函数在有理点处都不可微, 从而证实了文献［2］中的猜想. 文献［4］在样本轨道为凸函数的情况下, 证明了文献［2］中的猜想.本文利用关键路径的概念, 给出了随机串行生产线稳态性能函数可微的判别条件, 并构造出稳态性能函数方向导数的无偏估计量.
+2　主要结果
+　　考虑如下串行生产线
+
+图1
+其中机器Mi,i∈n=｛1,2,…,n｝是柔性连接的, 即机器间的存储容量无穷大. 设pi(k,θi)表示工件Jk在机器Mi上的加工时间, 其中θi表示控制参数,xi(k)为工件Jk离开机器Mi的时间;yk表示工件Jk离开系统的时间; X(K)=(x1(k),…,xn(k))T表示状态向量, 那么在极大代数意义下该制造系统有状态方程［5］
+
+(1)
+其中ε=-∞,e=0,ab=max(a,b),ab=a+b,C=(ε，…，ε,e)，A(k)=(pij(k)),i,j∈n,当j＞i时,pij(k)=ε;当j＜i时,pij(k)=pj(k)…pi(k);pii(k)=pi(k). 以下在不致引起混淆的情况下省略.
+　　记工件i的加工时间为P(i,θ)=(p1(i,θ1),…,pn(i,θn)),θ=(θ1,…,θn). 不失一般性作如下假设:P(i,θ)),i≥1独立同分布, 具有联合分布函数其中Fk(θk,tk)是pk(i,θk)的分布函数, 那么可记
+
+其中服从［0,1］上的均匀分布.考虑加工N(足够大)个工件的情况,工件Ji在n台机器上的加工时间可表为
+
+(2)
+记ξi=(ξi1,…,ξin),ξ=｛ξi,1≤i≤N｝那么每个ξ即为系统的一个样本点. 
+　　如果一族随机变量G(t,ξ),t∈R满足下列条件, 则称其满足假设1.
+　　假设1.以概率1G(t,ξ)关于t可微, 存在正值随机变量KG满足E［KG］＜∞且
+
+(3)
+　　引理1.设Li(x),x∈R,i∈m是m个可微函数, 记
+
+其中｜A｜表示A中元素的个数.那么 1) 若xE,max1≤i≤m Li(x)在x处可微;
+2)若x∈E,max1≤i≤mLi(x)在x处存在单侧导数，且
+
+　　引理2.若Li(x,ξ),i∈m满足假设1, 那么
+
+　　证明. 由引理1和文献［4］中Prop.2.1可直接得证引理2.
+　　对式(1)所表示的随机串行生产线,定义其性能函数为JN(θ)=Eξ［yN(θ,ξ)/N］.称1/JN(θ)为该生产线的生产率. 假设共加工N个工件, 那么对一个给定的样本点ξ,pi(j),i∈n,j∈N是确定的. 称工件Jj在机器Mi上加工为一个事件, 记作Oij. 设m(Oij)表示事件Oij的加工时间,xi(j)是Oij的结束时间. 显然,pi(j)=m(Oij). 事件Oij-1,Oi-1j叫做Oij的前相连接事件, 记作Oij-1＜Oij、Oi-1j＜Oij. 当i′≥i,j′≥j,l=i′+j′-(i+j)+1≥1时, 记(i′,j′)≥(i,j). 如果事件串ω=O1O2…Ol满足条件:O1=Oij,Ol=Oi′j′,Ok-1＜Ok,那么称ω为从Oij到Oi′j′的一条路径. 记m(ω)=m(Ol)…m(Ol). 如果xi′(j′)=m(ω)m(O1)-1xi(j), 则称ω为从Oij到Oi′j′一关键路径［5，6］, 记作ω*(i,j;i′,j′).令Ω(i,j;i′j′)表示从事件Oij到事件Oi′j′的全体路径. 由式(1)可得xi(k)=pi(k)(xi-1(k)xi(k-1)). 若xi-1(k)=xi(k-1), 也就是说事件Oik的两个前相连接事件同时结束, 则称在事件Oik前机器处于临界状态. 
+　　定理1.设加工时间pi(j,θi)满足假设1, 那么JN(θ)的方向导数存在, 且
+
+　　证明.对任一样本点ξ, 令Ωξ(1,1;n,N)表示从O11到OnN的路径的全体, 记r(ξ)=Ωξ(1,1;n,N),不妨设Ωξ(1,1;n,N)=｛ω1,…,ωr(ξ)｝,c(ξ)表示Ωξ(1,1;n,N)中关键路径的数目.由文献［5］命题4.1可得yN(θ,ξ)=max1≤s≤r(ξ)｛m(ωs)｝.因为m(ωi)是有限个满足假设1的可微函数之和，故也满足假设1，因此由引理2可得证定理1.
+　　定义1.如果一个离散事件动态系统的关键路径以概率1唯一, 则称该系统随机相似.
+　　推论1.若式(1)描述的随机串行生产线是随机相似的, 且加工时间满足假设1,那么JN(θ)可微,且dJN(θ)/dθi=Eξ［dyN(θ,ξ)/Ndθi］.
+　　推论2.如果加工时间pi(j)都是连续型随机变量且满足假设1, 那么该生产线是随机相似的.
+　　由定理1可以看出当系统以正概率关键路径不唯一时, JN(θ)的方向导数存在. 对一个给定的样本ξ, 可以从关键路径族中找出一条关键路径, 称之为右(左)关键路径,其中事件加工时间之和关于θi的导数是yN(θ,ξ)关于θi的右(左)导数, 进而是d+JN(θ)/dθi(d-JN(θ)/dθi)的无偏估计量. 下面对于一个给定的样本点ξ, 给出寻找右(左)关键路径的方法. 为了找出右(左)关键路径, 将式(1)改写成下列递推关系式
+
+(4)
+设分别表示从O11到Oij的右(左)关键路径, 显然假设已经仿真到第k步, 已经得到.下面进行第k+1步, 由(4)第一式可得进一步假设已经得到, 那么由(4)第二式可得
+　　a)若xj(k)=xj-1(k+1),
+
+(5)
+　　b)若xj(k)=xj-1(k+1),
+
+(6)
+归纳地进行下去, 可以得到可完全类似地得到. 由的构造过程可以得到定理2.
+　　定理2. 在定理1的条件下有
+　　1)若c(ξ)=1, 那么yN(θ,ξ)关于θi可微, 且dyN(θ,ξ)/dθi=dm(ωnN)/dθi;
+　　2)若c(ξ)=1, w.p.1, dJN(θ)/dθi=Eξ［dm(ωnN)/(Ndθi)］;
+　　3)如果P(c(ξ)＞1)＞0, 那么
+
+3　结论
+　　本文利用关键路径与系统随机相似的概念, 证明了随机串行生产线稳态性能函数可微的判别条件为关键路径以概率1唯一, 并给出了其方向导数的无偏估计量. 揭示了DEDS稳态性能函数不可微的内在原因. 从本文分析结果来看用关键路径的概念来研究DEDS性能函数的可微性以及IPA估计量的无偏性很直观、有效.
+　　当以正概率系统的关键路径不唯一时, 系统的性能函数不可微. 在此情况下可以用关键路径的梯度来估计系统性能函数最速下降方向, 进而用非光滑优化算法进行参数优化设计.
+1) 国家自然科学基金(69674013)和国家攀登计划资助项目.
+作者简介：刘自宽　男，1967年11月生.1998年7月获南开大学计算机与系统科学系博士学位.在国内外刊物上发表近20篇论文.现研究兴趣为制造系统中建模与控制.DEDS与HDS的理论及其应用.
+　　　　　涂生　男，1937年5月生.南开大学计算机与系统科学系教授，博士生导师.现从事CIMS，DEDS理论及其在制造系统、通信理论中应用.
+作者单位：南开大学计算机与系统科学系　天津　300071
+参考文献
+1　Ho Y C, Cao X R. Perturbation Analysis of DEDS, Norwell MA Kluwer 1991
+2　Wardi Y, Mckinnon M W, Shuckle R. On perturbation analysis of queueing networks with finitely supported service time distributions. IEEE Trans. Automat. Contr., 1991, 36(7):863―867
+3　Cao X R, Gong W B, Wardi Y. Ⅲ-Conditioned performance functons of queueing systems. IEEE Trans. Automat. Contr., 1995, 40(6):1074―1079
+4　Shaprio A, Wardi Y. Nondifferentiability of steady state function in discrete event dynamic systems, IEEE Trans. Automat. Contr. 1994,39(8): 1707―1711
+5　涂生，孙永华. 极大代数上随机线性系统和DEDS的扰动分析. 自动化学报, 1992, 18(6):716―719
+6　涂生. 离散事件动态系统的关键路径与扰动分析. 系统科学与数学, 1996,16(4):318―325
+
+收稿日期　1997-06-18
+收修改稿日期　1997-10-09

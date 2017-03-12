@@ -1,0 +1,104 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第9期　Vol.10　No.9　1999
+
+
+
+基于最大交叉熵估计高斯混合模型参数的方法*
+马继涌　高文
+摘要　传统的基于最大似然估计高斯混合模型参数的方法是一种无导师的学习方法.该方法的主要缺点是学习算法在估计一类模式模型中的参数时只利用了该类模式中的训练样本，而未考虑其他类训练样本分布的影响，因此，这种方法的识别效果往往不够理想.该文提出了利用最大交叉熵估计高斯混合模型参数的方法，这种方法考虑了不同类之间的样本区分性.同时,为了提高获得全局最优解的可能性，文章给出一种利用进化规划求解最优参数的算法，并将这种方法用于非限定文本的话者识别.实验表明，该方法比传统的参数估计方法识别效果要好.
+关键词　最大交叉熵，高斯混合模型，进化规划，话者识别.
+中图法分类号　TP391
+An Approach for Estimating Parameters in Gaussian Mixture Model Based on Maximum Cross Entropy
+MA Ji-yong,GAO Wen
+(Department of Computer Science and Engineering Harbin Institute of Technology Harbin 150001)
+Abstract　The traditional approach for estimating parameters in Gaussian mixture models (GMM) based on maximum likelihood is a kind of unsupervised learning method, its shortage is that the parameters in GMM are derived only by the training samples in one class without taking the effect of sample distributions of other classes into account, hence, its recognition is usually not ideal. In this paper, an approach is presented for estimating parameters in GMM based on the maximum cross entropy of different classes, this method takes the discriminations of samples in different classes into account. To increase the possibility of obtaining the global optimal solution, this paper proposes an approach for estimating the optimal parameters in GMM based on evolutionary programming. An experiment has been carried out using the method for the text-independent speaker recognition, the results have shown that the recognition accuracy is higher than that of the traditional approach. The method has also fast convergent speed.
+Key words　Maximum cross entropy, Gaussian mixture model, evolutionary programming, speaker recognition.
+　　高斯混合模型(Gaussian mixture model,简称GMM)广泛应用于模式识别和数据分析［1］等领域.例如,G.Hinton等人［2］利用这种方法研究了手写体数字识别问题.另外，GMM也广泛应用于非限定文本的话者识别［3］,并取得了良好的识别效果.传统的GMM方法是无导师的学习方法，模型中的参数只用一类训练样本通过最大似然估计方法得到，而未考虑其他类训练样本的分布影响.一般在训练样本不够充分的条件下，模型的区分性往往不够理想.从理论上讲，如果训练样本在样本空间里分布得足够稠密，用这种方法估计出的参数在最大似然意义下是最优的.然而，在实际应用中，由于实验条件的限制，往往不可能得到无限多的训练样本.另外，由于特征提取方法的缺陷使得不同类别的训练样本在样本空间中存在相互覆盖的现象，因此，有必要进行有区分性的估计模型参数，以改进模型的识别精度.理论上讲，最佳的估计参数方法应该使模型的后验误识率最小，然而，这在实际应用中很难做到.文献［4］利用贝叶斯判别分析给出了一种区分性的估计高斯混合模型参数的方法，得到了良好的结果.文献［5］讨论了一般混合模型在专家混合(mixtures of experts)模型中的应用.由于两个类别的概率密度的交叉熵是这两个类别的区分性的一种度量.交叉熵越大，两个类别的区分性越大.因此在模型训练时,可以利用以不同类别的整体交叉熵最大为优化目标，估计模型参数.基于这种思想，本文提出了基于最大交叉熵的GMM模型参数估计方法.由于这种方法考虑了不同类别样本的区分性，使得模型识别精度较好.
+1　基于最大交叉熵的参数估计方法
+　　设Ω1,Ω2,...,ΩN是N个不同的类，第i类的训练样本构成的集合记为Xi，并假定每个类别出现的先验概率相等.样本x在类别Ωi中出现的条件概率密度为
+　　　　　　　　　　　　　(1)
+式中pik(x)～Np(μik,Σik)(正态分布)，x是p维向量，μik,Σik分别是均值向量和协方差矩阵,cik≥0,, 它们是要被估计的参数.
+　　第i类别相对第j类别的交叉熵（也称为信息的散度或Kullback-Leibler距离）定义为［6］
+　　　　　　　　　　　　(2)
+　　N个不同类别的整体交叉熵定义为
+　　　　　　　　　　　　　　　　(3)
+　　 以整体交叉熵最大为优化目标，在约束条件为cik≥0,的条件下，估计模型中的参数,可以利用拉格朗日乘数法求解这个优化问题,为了得到计算cik,μik,Σik参数的迭代方法，下面给出5个引理，其中运算符(x)′表示对列向量x求转置.
+　　记d2(x,u,Σ)=(x-μ)′Σ-1(x-μ)，Σ=(σij)p×p，则有下述引理成立.
+　　引理1.
+
+式中{Σ-1(x-μ)(x-μ)′Σ-1}ij表示矩阵Σ-1(x-μ)(x-μ)′Σ-1第i行第j列的元素,即Σd2(x,μ,Σ)=-Σ-1(x-μ)(x-μ)′Σ-1.
+　　引理2.
+
+式中{Σ-1(x-μ)}i表示Σ-1(x-μ)的第i个分量,即μd2(x,μ,Σ)=-2Σ-1(x-μ).
+　　引理3. 设A=(αij)p×p是一个p阶方阵，则
+
+式中Aij是矩阵A中元素aij的代数余子式，设A*=(Aij)p×p是A的伴随矩阵，则有AA*=A*A=|A|I,A-1=A*，其中I是单位矩阵.
+　　引理4. 设pik(x)～Np(μik,Σik)，由引理2可得
+μikpik(x)=pik(x)Σ-1ik(x-μik).
+　　引理5. 设pik(x)～Np(μik,Σik)，由引理1和引理3可得
+
+　　由式(3)可以构造下述目标函数
+　　　　　　　　　　　(4)
+式中λ是拉格朗日因子,,μ是一个大于零的罚因子，一般取一个较大的值.
+　　为了极大化目标函数HTotal,应满足下述条件
+　　　　　　　　　　　　(5)
+式中，
+
+由于,对式(5)两边同乘cik后，对k求和可得
+
+式中.
+　　由式(5)和上述关系可得HTotal关于cik的偏导数
+　　　　　(6)
+　　由式(4)和引理4可得
+　　　　　　　　　　　(7)
+式中Uik(x)=Σ-1ik(x-μik).
+　　由式(4)和引理5可得
+　　　　　　　　　　(8)
+式中Vik(x)=Σ-1ik(x-μik）(x-μik)′Σ-1ik-Σ-1ik.
+　　得到关于参数cik,μik,Σik的梯度信息后，原则上可利用梯度上升法等传统优化方法求解，但由于传统的优化方法是一种贪心算法，算法一般不能得到全局最优解.为了提高获得全局最优参数cik,μik,Σik的可能性，可采用现代的遗传算法和进化规划.遗传算法是一种模仿生物进化机制的求解最优化问题的随机搜索算法，它是由美国J.H.Holland教授在70年代提出的.由于这种算法具有全局性、通用性以及并行性，从而成为解决一般优化问题的一种有效算法.由于遗传算法需要对参数编码，比较适应于函数不具有连续的微分量的函数，计算速度较慢.进化规划(evolutionary programming,简称EP)［7］是模拟进化优化算法的一个分支.本文建议采用进化规划求解这个优化问题，因为在下述的遗传规划算法里，不需要对参数编码，没有引进同辈个体的交叉算子.
+　　本文给出一种修正的算法如下：
+　　(1) 根据式(4)的目标函数构造个体的适应性函数.
+　　(2) 随机选取初始群体，共Ng组cik,μik,Σik的初值，Ng是群体规模.参数μik的初值可利用VQ或GMM方法估计,μik的初值可选为类Ωi的码本的第k个码字；Σik可利用第k个码字附近的训练样本的协方差矩阵近似逼近，可选为对角阵，cik的初值设定为1/M.
+　　(3) 父辈的个体cik,μik,Σik按如下方式产生后代
+　
+　　　　　　　　　　　　　(9)
+　　　　　　　　　　　　　(10)
+　　　　　　　　　　　　　(11)
+cik,μik,Σik的后代为,,，这个过程相当于变异.
+　　(4) 依据选择原理，从cik,μik,Σik和,,中选择Ng个适应性好的个体进行下一代.
+　　(5) 重复上述过程,直到满足终止条件为止，本文采用限制最大遗传代数.
+　　由此可见，上述算法的第3步和传统的梯度算法与随机搜索算法在形式上类似，由于父辈的个体cik,μik,Σik产生后代时，是沿着正梯度的方向产生子代的,,，因此，后代优于父辈.在进行第4步的选择过程时，一些性能优越的父辈及其后代被保留下来，继续产生新的后代.性能优越的父辈产生的后代比较多，性能差的父辈产生的后代较少.另外，在进化过程中，方差σ2ik控制变异的特性,它是随遗传代数的增加而逐渐减小的.
+　　由上述分析可见，以上算法与传统的梯度上升算法相比的优点是，采用多个路径同时搜索最优解，获得全局最优解的可能性增大.
+　　识别时，对于给定的测试样本向量x，它隶属的类别可由下述条件概率确定
+
+　　另外,模型混合项M的确定可根据实验效果确定，M太小使得模型的精度不够理想，M太大会发生过拟合(over fitting)问题,一般要折衷选取.
+2　GMM的正则化
+　　在缺少训练样本的条件下,在计算高斯概率密度中的协方差矩阵Σ-1时，可能会发生数值不稳定性的情况，为了增加数值稳定性，可以修正协方差矩阵Σ为=Σ+δI，这里，I是单位矩阵，δ是一个正的正则化参数；另一种方法是用Σ的Moore-Penrose广义逆阵Σ+代替Σ-1，
+　
+式中λ1≥λ2≥...≥λr>0，ek是矩阵Σ的对应于特征值λk的单位特征向量.行列式|Σ|的值利用λk代替，高斯概率密度函数中的(2π)p/2项由(2π)r/2代替.在正则化方法中，矩阵Σ的较小的特征值λk(k>r)被截断，以提高数值稳定性.第3种方法是,在计算中只用矩阵Σ的对角线上的元素构成的矩阵近似它，同时在对角线上的每个元素上加上一个小的正数，或者在高斯混合模型中对不同的协方差矩阵取成一个相同的协方差矩阵，这种方法同样可以提高数值稳定性.
+3　实验结果
+　　将上述方法应用于闭集的非限定文本话者辨认，其中GMM模型中的混合项数M取为32，语音的采样频率为8kHz，利用语音的短时能量和过零率提取语音的浊音音素，语音的特征是16阶LPC(linear predictive coefficients)倒谱系数，16阶LPC倒谱系数的一阶中心差分和16个通道的归一化的LPC剩余倒谱组成的48维向量，帧长为32ms，帧移为16ms.话者集由60人组成，男性30人，女性30人，每个话者的训练语音是在不同的4个时期采集的，总长度为150s左右，测试语音的长度分别取为30s，实验和测试间隔时间为3个多月.采用对角矩阵估计模型中的协方差矩阵.种群规模Ng取为9，最大遗传代数取为16.
+　　利用GMM模型进行话者识别时，从物理意义上讲，式(1)的高斯混合密度中的各个分量概率密度pik(x)对应于一个浊音音素的平稳段的语音特征的概率密度.假定每个浊音音素出现的概率是等可能的.这样假定的理由，虽然从语音学的统计意义上看每个浊音音素出现的可能性不一定是一样的，但由于训练样本的限制，我们不可能利用有限的训练样本准确地获得每个浊音音素的出现的概率.如果在模型训练时，利用式(9)对cik进行重新估计，最后得到的cik只反映了训练样本中每个浊音音素出现的可能性.这对识别是没有意义的，因为识别时所用的测试样本的浊音音素出现的可能性与训练时很少一样.因此，在模型训练时没有利用式(9)对cik进行重新估计，混合比cik始终取为1/M.实验结果也表明，不对混合项的重估，识别精度较高并且训练的计算量少.
+　　表1中ML-GMM和MCE-GMM分别对应最大似然估计方法和最大交叉熵估计的GMM方法.其中识别率是对30s的测试语音按帧统计的，可见MCE-GMM方法的识别率比ML-GMM方法的识别率高出2%.
+表1 不同学习算法的识别率
+
+识别方法ML-GMMMCE-GMM
+正确识别率(%)9799
+
+4　结 论
+　　本文给出了基于最大交叉熵估计高斯混合模型参数的方法.利用该方法进行了非限定话者识别实验，实验结果表明，这种方法的识别效果比基于最大似然估计GMM参数方法的识别效果好.同时，这种算法与传统的梯度下降算法相比的优点是，采用多个路径同时搜索最优解，具有全局性、通用性和并行性，使获得全局最优解的可能性增大.相对于最大似然估计方法，这种方法的缺点是计算量较大，对话者集以外的新增话者要进行重新训练.
+*　本文研究得到国家重点自然科学基金和国家863高科技项目基金资助.
+本文通讯联系人：马继涌，北京100080，北京海淀区中关村科学院南路8号，算通科技发展有限公司
+作者简介：马继涌，1963年生，博士生，助理研究员，主要研究领域为语音识别，话者识别.
+　　　　　高文，1956年生，教授，博士生导师，主要研究领域为多功能感知技术，图像压缩.
+作者单位：哈尔滨工业大学计算机科学与工程系　哈尔滨　150001，E-mail: mjy@cti.com.cn
+参考文献：
+［1］Nandakishore Kambhatla. Local models and Gaussian mixture models for statistical data processing ［Ph.D. Thesis］. Department of Computer Science and Engineering: Oregon Graduate Institute of Science & Technology, 1996
+［2］Hinton G, Revon M, Dayan P. Recognizing handwritten digits using mixtures of linear models. In: Tesauro, Touretzky, Leen eds. Advances in Neural Information Processing Systems. Cambridge, Massachusetts: MIT Press, 1995. 1015～1022
+［3］Reynolds D A. Speaker identification and verification using Gaussian mixture speaker models. Speech Communication, 1995,17(1):91～108
+［4］Ormpneit D, Tresp V. Improved Gaussian mixtures density estimates using Bayesian penalty terms and network averaging. Advances in Neural Information Processing Systems. Cambridge, Massachusetts: MIT Press, 1996
+［5］Moerland Perry. Mixtures of experts estimate a posteriori probability. In: Gerstner W ed. Proceedings of the International Conference on Artificial Neural Networks. Berlin: Springer-Verlag, 1997. 499～504
+［6］Cover T, Thomas J. Elements of information theory. New York: John Wiley & Sons, Inc., 1991
+［7］Fogel D B. An introduction to simulated evolutionary optimization. IEEE Transactions on Neural Networks, 1994,5(1):3～14
+收稿日期：1998-04-16，修改日期：1998-09-21

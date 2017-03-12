@@ -1,0 +1,89 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999　Vol.36　No.6　P.732-736
+
+
+
+ATM网络中关键服务生存性保证机制
+王东霞　窦文华　周兴铭
+摘　要：生存性是ATM网络中亟待解决的问题.文中在介绍了当前ATM网络中基于VP层的故障恢复机制后，引入生存重要性因子表征网络中不同服务的生存重要性，定义了加权恢复率；基于关键服务生存性保证的要求，提出了关键VC预建立保护连接和关键VC优先的实时恢复两种解决方式，并综合形成了关键服务生存性的保证机制.分析和模拟的结果表明该机制能优先保证关键服务的恢复，有效地提高了整个网络的生存能力.
+关键词：网络生存性，生存重要性因子，加权恢复率，关键服务，生存性保证机制 
+分类号：TP393
+A GUARANTEED MECHANISM OF CRITICAL SERVICE
+SURVIVABILITY IN ATM NETWORK
+WANG Dong-Xia，DOU Wen-Hua，ZHOU Xing-Ming
+(Institute of Computer Technology, National University of Defense Technology, Changsha 410073)
+Abstract：Survivability is an important issue in ATM. Following the description of the current ATM VP restoration mechanism, the survivability importance factor is introduced to describe the difference survivability requirement of various services in ATM network and the weighted restoration ratio is defined. To meet the survivability guaranteed requirement of critical services, a mechanism composed of two strategies, critical VC preassign protection connection and prior realtime restoration, is presented here. The result of analysis and simulation shows that this mechanism guarantees the survivability of the critical service and enhances the survivability of the network. 
+Key words：network survivability, survivability importance factor, weighted restoration ratio, critical service, survivability guaranteed mechanism▲
+1　引　　言
+　　宽带网络中的故障会影响到大量用户，造成巨大损失.怎样使得网络安全、可靠地运行，在故障发生时，能够尽快从故障中恢复，尽量保证现有服务、尤其是关键服务的连续性，即实现网络的生存性［1］，成为目前宽带网络研究中关键而且亟待解决的问题.ATM是B-ISDN的标准传输网络，针对ATM生存性问题的故障快速恢复技术研究已成为ATM的一个重要研究方向.本文首先介绍ATM网络故障恢复机制的基本过程，针对不同服务的生存性要求引入生存重要性因子，给出一个加权生存性测度定义，为保证网络中关键服务生存性，提出关键服务生存性保证机制，并模拟分析了该机制的性能. 
+2　ATM网络的故障恢复机制
+　　故障发生后，进行快速恢复是提高ATM生存性的主要手段.ATM网络快速故障恢复的基本原理是在故障发生后，通过重新路由，将受影响连接的流量切换到变更路径上，以保证服务连续性，实现故障恢复.故障恢复技术从实施的控制机制可分为集中控制方式和分布式实现方式.前者在网络中存在一个中心节点，由它负责故障的恢复.后者又称为自愈技术，最初由Grover［2］提出，用于STM网络恢复，后来被扩展到ATM网络中［3］.目前ATM快速故障恢复机制的研究主要集中在VP层的自愈技术上，实施过程一般包括4个阶段：① 故障检测和报告; ② 空闲容量的查找; ③ 带宽的分配及变更路径的建立; ④ 切换到变更路径.
+　　当故障发生时，如一条链路失败，通常链路下游节点将检测到故障，通知被称为发送点的节点.由发送点产生并发送空闲容量查找消息，消息中包括故障链路标识、受影响的VP标识、受影响的VP带宽大小等.收到消息的中间节点将自己的节点标识和可用空闲容量写入消息中，并继续传递该消息.这样，当消息最终到达另一端节点（称为选择点）时，该节点可根据收到的消息，确定变更路径，沿变更路径发送消息，建立路由表项，确认空闲容量为VP变更路径上分配的带宽.最后，选择点在收到发送点的应答消息后，完成受影响的VP从工作路径到变更路径的切换.恢复机制在具体实施时，根据变更路径的指定时间可以分为预先计算变更路径和实时计算变更路径两大类，预先计算中变更路径的容量可以预先分配，也可以实时查找.
+3　关键服务与生存性测度
+　　宽带网络中的服务是多种多样的，不同服务的生存重要性也各不相同［4］.某些服务，如军事通信、银行的网上巨额现金事务等，如果因故障而中断，则可能会产生严重后果，造成巨大损失，故这些服务要求很高的生存性保证；有一些服务则因用户交纳了额外的费用而需要网络提供较高的生存性保证.网络应保证类似服务的连续、可靠，在出现故障时，要给以及时的完全恢复.其它一些服务如一般的E―mail服务，则可以容忍一定的故障中断，采取重新连接或通知用户的方式来处理.为区别各类服务的生存重要性，我们引入生存重要性因子.假设网络提供按生存性要求不同划分的M类服务，相应第i类服务的生存重要性因子为Si，i=1，…，M.取生存性要求最低的第1类服务的生存重要性因子作为基数1，则其它类服务的Si可根据服务的特性、收费等取大于1的数.网络的生存性测度［5，6］采用生存重要性的加权恢复率表示如下：
+
+其中，S―RR是加权恢复率，0≤S―RR≤1；
+　　　FCi指受故障影响第i类服务的带宽大小，可用等效容量(equivalent capacity)标识；
+　　　R-FCi是第i类服务中恢复的带宽大小；
+　　　wi为加权系数，;
+　　考虑大多数情况，我们把对生存重要性要求很高的服务称为关键服务，相对而言其它服务均可称为普通服务，即网络按不同生存重要性提供两类服务.记普通服务为第1类服务，其生存性重要因子为S1，关键服务的生存重要性因子为S2，则此时的生存性测度如下：
+
+其中，w1=S1/(S1+S2),　w2=S2/(S1+S2).
+4　关键服务生存性保证机制
+　　当前的恢复机制研究集中于VP层，以尽量多、尽可能快地恢复受故障影响的服务.在实际中常常由于空闲容量等限制，并非所有的服务连接都能得以完全恢复.一般VP恢复以一组VC为单位进行，恢复粒度大，对空闲容量不易充分利用，从某种程度上影响了恢复率.最关键的是一般VP恢复没有区分不同端端服务（VC）的生存性要求，以致不能很好地支持关键服务连接的恢复.为此，考虑服务连接不同的生存重要性，我们提出了关键服务生存性保证机制.该机制中引入VC层恢复，优先保证关键服务的生存性，在此基础上再对普通服务尽量地恢复.关键服务生存性保证机制具体可包括以下两种实现方式：
+　　(1) 关键VC预建立保护连接的方式
+　　该方式（以下简记为VCP1）对关键服务在建立VC连接的同时建立相应备用VC连接.备用VC与工作VC在路径上互不相关，但分配与工作VC同样的网络资源，形成保护连接.一旦网络发生故障，恢复过程为：① 检测到链路故障的节点发送消息，通知受影响VP的端交换节点.由各VP端交换节点负责查询本VP中所包含的关键VC，产生消息通知相应VC的源节点，VC源节点收到消息后，立即切换到备用VC连接上.如图1所示.②VP端交换节点同时启动VP恢复机制，按除去所含关键VC容量后的VP带宽要求进行VP恢复.
+
+
+图1　关键VC预建立保护连接方式图例
+　　VCP1优点是对大多数故障情形，VC保护连接都可以100%地保证关键服务的恢复，缺点是保护连接占用了网络资源.因而VCP1适用于网络中空闲资源充足或关键服务连接要求带宽不多的情况.
+　　(2)关键VC优先的实时恢复方式
+　　在关键服务要求带宽较高时，对每个关键服务的VC连接都建立备用VC，会造成网络资源的过多闲置.实际中，网络常常因为资源紧张而没有足够的空闲容量建立保护连接，此时可采用实时恢复方式（以下简记为VCP2）.VCP2不要求对关键服务建立备用VC，而是在VP端点建立备用VP［3］，备用VP不分配容量.考虑到主要保证关键服务VC的恢复，并不针对每个工作VP单独建立备用VP，而是相同端节点的多个VP共享一个(或几个)备用VP，这样更利于VC的恢复.恢复过程为：① 检测到链路故障的节点发消息到受影响VP的端点.VP端点在备用VP上查询空闲容量，如果空闲容量充足，则直接对受影响的VP实施恢复.② 如果空闲容量不足，则对各VP中受影响的关键VC优先实施恢复，在剩余的空闲容量上继续对其它连接进行恢复.如图2所示.
+
+
+图2　关键VC优先的实时恢复方式图例
+　　VCP2关键是要进行VC-Packing处理，即将一组待恢复关键VC的带宽有效地“填塞”入备用VP上查到的空闲容量中.我们采用按VC带宽由大到小的顺序， 先将难以恢复的带宽大的VC予以填塞，以容纳尽量多的待恢复VC容量，提高关键服务的恢复率.
+　　通过在受影响的VP中采用VC-Packing方式优先恢复关键VC连接，VCP2最大程度地保证了关键服务的恢复，同时由于采用了资源的动态管理，对资源利用更有效，故VCP2适合在资源紧张或关键VC连接带宽较高时使用.
+　　当具体实现恢复机制时，两种方式可以结合起来，即采用VCP1对关键服务的VC连接建立备用VC(可能部分关键VC连接由于资源限制未能建立备用VC)，同时采用VCP2建立共享的备用VP.故障发生时，由VP端交换节点发送消息启动VC保护连接恢复，同时启动实时恢复，进一步完成无备用VC关键服务的优先恢复和普通服务的恢复.如图3所示.
+
+
+图3　关键服务生存性保证机制框图
+5　分析与模拟
+　　由上述恢复过程中可以看出，在我们的恢复机制中，考虑了关键服务的生存性保证要求，通过保护连接的建立或是关键VC的优先恢复，使得关键VC的恢复率尽可能达到1，并在保证关键服务生存性的同时实现了整个网络的高生存性.
+　　下面我们对关键服务生存性保证机制进行分析和模拟.由于VCP1中关键服务得到100%的保证，对VCP1主要集中于空闲容量开销等适用条件的讨论，故本文主要模拟、分析VCP2中对关键服务生存性保证的性能，并将其与一般VP恢复机制的性能进行比较.
+　　模拟条件如下：
+　　(1) 考虑单链路故障情形；
+　　(2) 网络中工作流量和空闲容量分布均匀；
+　　(3) 端端VP均为10条，带宽在［5，15］之间随机分布；
+　　(4) 给出4种模型，Model1、2、3、4，分别对应4种空闲容量占总容量的比例：15%、20%、25%、30%，在各种模型下的备用VP数均为5条.
+　　比较时采用的生存性测度为：
+
+在VCP2中由于绝对优先保证了关键服务的恢复，故有：
+
+　　图4是关键VC与普通VC各占一半时的恢复情况（1）.可以看出在4种模型下，VCP2均实现了较高的加权恢复率，关键服务明显得以优先恢复，并尽可能地实现了生存性保证，即关键服务的恢复率接近或达到了1.而在一般VP恢复机制中，关键服务、普通服务的恢复率以及总的加权恢复率3者没有区别，其中关键服务的恢复率和加权恢复率均低于VCP2中的相应恢复率.在模型1下，由于空闲容量较低，低于待恢复VP总容量的一半，这时VCP2先将关键VC由大到小按VC粒度进行恢复，在关键服务恢复率尽可能高的同时高效地利用了空闲容量，使得总的加权恢复率较高；一般VP恢复机制则直接进行VP恢复，关键VC没有得到优先保证，而且相比于VCP2有较多空闲资源的浪费.在后3种模型中，空闲容量相对较高，VCP2均先使得关键VC得到100%的恢复，实现了关键服务的生存性保证.
+
+
+图4　恢复情况（1）示例
+　　图5是关键VC占总故障流量10%的恢复情况（2），与情况（1）相比，由于这时关键VC较少，恢复相对容易，在4种模型中VCP2均使得关键VC得到100%的恢复，剩余的空闲容量使得普通VC也得到了较高的恢复，最终使得总的加权恢复率升高.
+
+
+图5　恢复情况（2）示例
+6　结束语
+　　我们针对ATM网络生存性的问题，从分析网络中各种服务生存重要性不同的角度出发，提出了关键服务生存性的保证机制，通过定性分析和初步模拟，展示了该种机制的优越性.目前，正在建立更准确的网络模型，进行深入模拟、量化和评价该机制的时间和空闲容量的开销，讨论实现优化的条件，进一步提高该恢复机制的性能.■
+作者简介：王东霞，女，1974年3月生，博士研究生，主要研究方向为高速网络、现代军用网　　　　　　络体系.
+　　　　　窦文华，男，1946年12月生，教授，博士生导师，主要研究方向为高速计算机网　　　　　　络、CIMS、并行与分布处理、自动控制等.
+　　　　　周兴铭,男，1938年12月生，教授，博士生导师，中国科学院院士，主要研究方向　　　　　　为高性能计算机体系结构、并行与分布处理、计算机网络、并行数据库等. 
+作者单位：王东霞(国防科学技术大学计算机学院　长沙　410073）
+　　　　　窦文华(国防科学技术大学计算机学院　长沙　410073）
+　　　　　周兴铭(国防科学技术大学计算机学院　长沙　410073）
+参考文献：
+［1］Wu T H,McDonald J C. Integrity of public telecommunications networks. IEEE Journal on Selected Areas in Communications, 1994, 12(1): 1～3
+［2］Grover W D. The self-healing network: A fast distributed restoration technique for networks using digital cross-connect machines.In: Proc of IEEE Global Telecommunications. Tokyo, 1987. 1090～1095
+［3］Kawamura R, Sato K, Tokizawa I. Self-healing ATM networks based on virtual path concept. IEEE Journal on Selected Areas in Communications, 1994, 12(1): 120～127
+［4］Izmailov R et al. Design and analysis of a congestion-free overlay on a high-speed network. IEEE/ACM Trans on Networking, 1997, 5(6): 970～979
+［5］Moitra S D et al. Some new survivability measures for network analysis and design. IEICE Transactions on Communications, 1997, E80-B(4): 625～631
+［6］陈山枝等.网络恢复机制可用性的定义及其应用.通信学报,1997,18(7):1～8
+(Chen Shanzhi et al. Definitions of restoration mechanism availability and their applications. Journal of China Institute of Communications(in Chinese), 1997, 18(7): 1～8)
+收稿日期：1998-08-10
+修稿日期：1998-11-19

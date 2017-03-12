@@ -1,0 +1,134 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000 Vol.17 No.3 P.106-107
+
+
+
+
+VB访问SQL Server数据库技术
+洪志全
+摘　要：介绍了VB的ADO接口访问SQL Server数据库系统的基本技术，ADO接口的构成、功能、编程方法以及Visual Basic对象概念，这对SQL Server应用系统的开发具有普遍意义。
+关键词：SQL Server ADO接口 VB对象
+　　SQL Server是微软推出的中小型网络数据库系统，是目前最常用的数据库系统之一。随着SQL Server网络数据库应用程序日益增多，这种Web数据库应用系统的正常运行一般依赖于已存在的用户数据库。创建维护数据库的工作可用SQL Server提供的SQL Enterprise Manager工具来进行，如能提供一种定制的数据库管理工具，通过管理应用程序来管理数据库及其设备，对用户来说无疑是最理想的。
+　　用VB开发基于SQL Server的数据库系统，可使用RDO (远程数据对象―Remote Data Object)和ADO (ActiveX数据对象―ActiveX Data Objects)等方法。RDO是位于ODBC API之上的一个对象模型层，它依赖ODBC API、ODBC驱动程序以及后端数据库引擎来实现，用RDO所需的程序短小(约250 KB)、快速。RDO具备基本的ODBC处理方法，可直接执行大多数ODBC API函数，RDO包含在VB 4.0/VB 5.0企业版中，由MSRDO32.DLL动态连接库来实现。RDO是综合了DAO/Jet、VBSQL/DBLib和ODBC的优点的对象模型，包含ODBC API应用层，设计为在后台(服务器端)有数据库存在的前提下运行，是针对SQL Server和Oracle而特别设计的。RDO的优势在于它完全被集成在VB之中，可直接访问SQL Server存储过程、完全支持T-SQL、T-SQL调试集成在开发环境中、Visual Database Tools的集成化等。但微软已宣布今后不再对VBSQL/DBLib进行升级，而ODBC API函数一般的编程方式也不为人们所喜爱，RDO的应用将逐渐减少。
+　　ADO是基于全新的OLE DB技术，OLE DB可对电子邮件、文本文件、复合文件、数据表等各种各样的数据通过统一的接口进行存取。随着ActiveX控件的升级(Windows 98的ActiveX 5.0)，RDO将被以ActiveX技术为基础的ADO接口所替代。目前，采用ADO接口的数据库应用程序还比较少，为此本文将主要介绍基于ActiveX技术的ADO访问SQL Server 6.5数据库的技术和方法。
+1　SQL Server安装与数据设备创建
+　　SQL Server是运行于Windows NT的Web数据库系统，安装于NT服务器上。若使用NT 4.0中文版安装SQL Server 6.5，主要安装参数为：Master盘大于120MB、语言为863简体中文、网络协议为Name Pipe (命名管道协议)、排序方式为二进制排序、启动NT时自动运行SQL Server等。
+　　当SQL Server安装完成后，首先可用SQL Server的管理工具SQL Enterprise Manager创建、设置数据库设备。对于一个应用系统必须创建主数据设备(如GX_DATA)、日志数据设备(如DATA_LOG)，其设备大小可根据存放的数据量来定，名称必须与VB访问时的数据库设备名称相同。另外，还可以创建临时数据设备(如TMPDBF)、备份数据设备(如GX_DATABF)等，这些设备大小为：临时数据设备一般为主数据设备的1/4，备份数据设备有多个(每天一个)，按每周计算一般为5～6个备份设备，其大小可根据每天的数据量来定。
+　　创建各个数据设备当然也可以在NT网的工作站中直接使用程序来创建，但由于多台工作站同时使用相同的数据设备，创建时需要判断该数据设备是否存在，创建时间较长，故一般采用服务器创建。
+　　各个数据设备创建完成后，就可以在NT网络中的各个工作站上开发基于SQL Server 6.5的网络数据库系统。由于各个工作站的所有数据均存放在NT服务器上，并以文件包方式存放在数据设备中，因此其数据的安全性非常高。
+2　VB访问SQL Server数据库接口
+　　VB访问SQL Server接口可分为两类：数据设备和数据库接口，数据设备可用SQL Server提供的SQL Enterprise Manager工具来进行，也可通过VB定制。VB开发数据库管理系统主要是实现与SQL Server数据库的连接，基于浏览器的ADO接口常用函数如下：
+　　(1)取当前的工作数据库
+　　由于管理任务一般都必须在Master库中完成，因此在执行管理任务之前，最好保存当前工作库，以便完成任务之后再切换回原来的任务。
+Public Function SQLGetCurrentDatabaseName(Cn As 
+　　　　ADODB.Connection) As String
+　Dim sSQL As String
+　Dim RS As New ADODB.Recordset
+　On Error GoTo errSQLGetCurrentDatabaseName
+　sSQL="select CurrentDB=DB_NAME ( )"
+　RS.Open sSQL, Cn
+　SQLGetCurrentDatabaseName=Trim $ (RS! CurrentDB)
+　RS.Close
+　Exit Function
+errSQLGetCurrentDatabaseName:
+　SQLGetCurrentDatabaseName=" "
+End Function
+　　(2)取SQL Server安装目录下的DATA子目录路径
+　　取SQL Server的设备文件缺省目录，返回如D:\MSSQL DATA\。
+Public Function SQLGetDataPath(Cn As ADODB.Connection)
+　　As String
+　Dim sSQL As String
+　Dim RS As New ADODB.Recordset
+　Dim sFullPath As String
+　On Error GoTo errSQLGetDataPath
+　sSQL="select phyname from master..sysdevices where
+　　　　name='master' "
+　RS.Open sSQL, Cn
+　sFullPath = RS! phyname
+　RS.Close
+　SQLGetDataPath=Left $ (sFullPath, Len(sFullPath) -10)
+　　 'MASTER.DAT的大小
+　Exit Function
+errSQLGetDataPath:
+　SQLGetDataPath=" "
+End Function
+　　(3)创建一个新数据库
+Public Function SQLCreateDatabase65 (Cn As ADODB.Connection,
+　　　sDBName As String, sDataDeviceName As String, nDataSize
+　　　As Integer, Optional sLogDeviceName, Optional nLogSize) As
+　　　Boolean
+　Dim sSQL As String
+　On Error GoTo errSQLCreateDatabase65
+　Dim sDB As String
+　sDB =SQLGetCurrentDatabaseName(Cn)
+　sSQL = "USE master" 
+　Cn.Execute sSQL
+　sSQL ="CREATE DATABASE" & sDBName
+　sSQL = sSQL &" ON " & sDataDeviceName & "=" & nDataSize
+　If Not IsMissing(sLogDeviceName) And Not IsMissing(nLogSize)
+　　　Then
+　sSQL = sSQL & "LOG ON" & sLogDeviceName & "="& nLogSize
+　End If
+　Cn.Execute sSQL
+　sSQL = "USE" & sDB
+　Cn.Execute sSQL
+　SQLCreateDatabase65 = True
+　Exit Function
+errSQLCreateDatabase65:
+　On Error Resume Next
+　sSQL = "USE " & sDB
+　Cn.Execute sSQL
+　SQLCreateDatabase65 = False
+End Function
+　　(4)判断一个数据库是否存在
+Public Function SQLExistDatabase(Cn As ADODB.Connection, 
+　　　　sDBName As String) As Boolean 
+　Dim sSQL As String
+　Dim RS As New ADODB.Recordset
+　Dim bTmp As Boolean
+　on Error GoTo errSQLExistDatabase
+　sSQL = "select CntDB = count ( * ) " 
+　sSQL = sSQL & "From master.dbo.sysdatabases" 
+　sSQL = sSQL & "Where name = ' "& sDBName & " ' " 
+　RS.Open sSQL, Cn
+　If RS! CntDB = 0 Then bTmp = False Else bTmp = True
+　RS.Close
+　SQLExistDatabase = bTmp
+　Exit Function
+errSQLExistDatabase:
+　SQLExistDatabase = False
+　Exit Function
+End Function
+　　(5)删除一个数据库
+Public Function SQLDropDatabase (Cn As ADODB.Connection, 
+　　　sDBName As String) As Boolean
+　Dim sSQL As String
+　On Error GoTo errSQLDropDatabase
+　If Not SQLExistDatabase(Cn, sDBName) Then 
+　　　SQLDropDatabase = True
+　Exit Function
+　End If
+　Dim sDB As String
+　sDB = SQLGetCurrentDatabaseName(Cn)
+　sSQL = "Use master"
+　Cn.Execute sSQL
+　sSQL = "DROP DATABASE " & sDBName
+　Cn.Execute sSQL
+　sSQL = "USE " & sDB
+　Cn.Execute sSQL
+　SQLDropDatabase = True
+　Exit Function
+errSQLDropDatabase:
+　On Error Resume Next
+　sSQL = "USE " & sDB
+　Cn.Execute sSQL
+　SQLDropDatabase = False
+End Function
+3　应用说明
+　　ADO是开发Web数据库应用程序功能强大的对象方法，上述各函数均在VB 4.0企业版，SQL Server 6.5下通过。笔者用VB 4.0的ADO接口成功地开发了基于SQL Server6.5系统的财务网络数据库，支持NT网络用户、远程拨号用户查询数据，实际应用效果较好。因篇幅有限，本文仅介绍了常用VB的ADO接口访问SQL Server的接口函数，对于VB定制SQL Server数据库设备接口方面函数，以及其它数据库访问接口函数，可与笔者联系。
+洪志全(成都理工学院 成都 610059)
+参考文献
+1 杨国才. Visual Basic 4.0实用技术与方法. 成都：电子科技大学出版社，1996
+2 电脑编程技巧与维护. 1999年第5期
+收稿日期：1999年9月9日

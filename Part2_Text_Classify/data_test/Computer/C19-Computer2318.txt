@@ -1,0 +1,131 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999　Vol.36　No.6　P.690-694
+
+
+
+视觉基础矩阵的统一表示
+吴福朝　于洪川　袁波　韦穗
+摘　要：通用的基础矩阵表示形式为F=K-T［t］×RK-1，其中：K为摄像机内参数阵，R,t分别为摄像机的旋转矩阵与平移矢量.纯旋转运动所对应的基础矩阵并不包含在此表达式之中.文中给出一种新的基础矩阵表达式：F=［e′］×KRK-1，其中e′是极点.这个表达式统一了纯旋转的情形.更重要的是在末标定的情况下，由此表达式可使求解摄像机内参数、运动参数等问题得到简化.
+关键词：主动视觉，外极几何，基础矩阵
+分类号：TP18
+AN UNIFORM EXPRESSION OF THE FUNDAMENTAL MATRIX
+WU Fu-Chao，YU Hong-Chuan，YUAN Bo，WEI Sui
+(Institute of Artificial Intelligence of Anhui University, Hefei 230039)
+Abstract：The fundamental matrix's expression is usually F=K-T［t］×RK-1, where K is the intrinsic parameters matrix of camera,and R and t is the rotation matrix and the translation vector of camera respectively. The expression is not valid when using the pure rotation. In the paper here, a new expression of the fundamental matrix ,F=［e′］×KRK-1, is presented, where e′ is epipolar point.Net only the expression is valid when using the pure rotation, but also it predigestes the following problems, such as, the intrinsic parameters matrix, the motion parameters, and structure recovery from uncalibrated stereo rig.
+Key words：active vision, epipolar geometry, fundamental matrix▲
+1　引　　言
+　　在主动视觉任务中，摄像机内参数不可能总是能离线地被标定，因此我们不能假定摄像机内参数是已知的，也就是说在主动视觉任务中所获取的图像通常是未标定的.从未标定的图像求解匹配关系、摄像机内参数、运动参数以及立体重构等问题，基础矩阵扮演着十分重要的角色［1～6］. 通常使用的基础矩阵表示形式为F=K-T［t］×RK-1，其中：K为摄像机内参数阵，R，t分别为摄像机的旋转矩阵与平移矢量.此表达式有下述缺点：① 纯旋转运动所对应的基础矩阵并不包含在此表达式之中；② 不便于上述问题的求解. 本文给出一种新的基础矩阵表达式：F=［e′］×KRK-1，其中e′是极点.这个表达式统一了纯旋转的情形.我们的研究表明：在未标定的情况下，由此表达式可使求解摄像机内参数、运动参数等问题得到简化.
+2　透视模型
+　　在本文中我们考虑的摄像机模型为小孔模型.在此模型中，摄像机将场景点X经过光心C透视到像平面上的像素点m. 光轴是自光心且垂直于像平面的一条射线，与像平面交于c点.令像平面的坐标系为c-xy，对应的摄像机坐标系为C-XYZ，其中Z轴与光轴重合，X,Y轴分别平行于x,y轴，世界坐标系与C-XYZ重合.如果摄像机内参数矩阵为
+
+则场景点X=（X，Y，Z）T投影到像平面上的像素坐标m=（x，y）T满足：
+
+　　如果采用齐次坐标 m=（u，v，w）T，其中u/w=x，v/w=y，我们有：
+m=KX　　（1）
+当摄像机作刚体运动，旋转矩阵为R，平移向量为t时，新的摄像机坐标系为C′-X′Y′Z′,它与C-XYZ之间的关系为X′=RX+t，则场景点X=（X，Y，Z）T在当前像平面上的像素坐标m′=
+(u′,v′,w′)\+T为
+m′=KRX+Kt　　(2)
+3　外极几何与基础矩阵
+　　现在考虑摄像机在两个视点下观察同一场景的情况，如图1所示.令C，C′分别为第1与第2个摄像机的光心位置，C′在第1个像平面I上的投影为e，C在第2个像平面I′上的投影为e′，它们称为外极点.像平面I(I′)上通过点 e（e′）的直线称为外极线.在立体视觉中，有著名的外极约束：像平面上I任一点m，它在像平面I′上的匹配点m′必位于外极线l′m上；类似地，I′像平面上任一点m′，它在像平面I上的匹配点m必位于外极线lm′上.l′m与lm′称为对应的外极线.
+
+
+图1　外极几何
+　　在射影空间内，像平面上的直线l可用射影坐标来表示.点m与m′的外极线l′m与lm′的射影坐标仍记为l′m与lm′，则l′m与之m间满足一个线性变换［7］：
+l′m=Fm
+F是秩2的矩阵，称为基础矩阵.
+　　因m的匹配点m′在外极线l′m上，故有
+m′TFm=0　　(3)
+将（3）式转置：
+mTFTmT=0
+它表明m′对应的外极线可由FTm′表示.
+　　基础矩阵有下述基本性质：
+　　（1） F为基础矩阵当且仅当F满足（3）式且 rank（F）=2；
+　　（2） 极点e满足Fe=0，极点e′满足FTe′＝0；
+　　（3） F 在相差一个非零常数因子下是唯一的.
+4　基础矩阵与内参数、本质矩阵之间的关系
+　　令X=（X，Y，Z）为任一场景点，m∈I,m′∈I′是一对匹配点，由（1），（2）式：
+m=KX,m′=KRX+Kt
+所以
+m′=KRK－1m+Kt
+即
+K－1m′=RK－1m+t
+令
+
+则［t］×t=0，所以
+［t］×K－1m′=［t］×RK－1m
+又因
+m′TK－T［t］×K－1m′=0
+所以
+m′TK－T［t］×RK－1m=0
+因rank（K－T［t］×RK－1）=2，故
+F＝K－T［t］×RK－1　　(4)
+是基础矩阵，其中[t]×R是本质矩阵.
+　　当t=0时，［t］×=0，这样F=0不是基础矩阵.即摄像机为旋转运动时，其基础矩阵并不统一在表达式（4）之中.
+5　基础矩阵的统一表示
+　　本节给出基础矩阵的统一表达式.我们有
+　　定理1. 
+F=［e′］×KRK-1　　(5)
+　　证明.　当t≠0时，由（4）式
+F=(K－T［t］×K－1)KRK－1
+所以只须证明：在相差一个常数因子的意义下有
+K－T［t］×K－1＝［e′］×
+　　由于摄像机的初始坐标系与刚体运动后的坐标系之间的关系为X′＝RX＋t，因此初始光心位置X=0在运动后坐标系中的坐标为X′=t，所以e′=Kt
+
+　　不难计算：
+
+所以
+
+
+因此，在相差一个非零常数因子的意义下有
+K－T［t］×K－1＝［e′］×
+所以
+F＝［e′］×KRK－1
+　　当t=0时，令X=（X，Y，Z）T为任一场景点，m=(u,v,w)T∈I,m′=(u′,v′,w′)∈I′是一对匹配点，则
+m=KX, m′=KRX
+所以
+m′=KRK－1m
+令KRK－1=(mij)3×3，并令(u,v,w)+T的欧几里得坐标为，于是
+
+从上式中的第3个分量知
+s′=s(m31x+m32y+m33)
+于是有
+(m31x+m32y+m33)(x′,y′,1)T=(mij)3×3(x,y,1)T
+所以
+　　(6)
+从（6）式中消去m31x+m32y+m33得
+x′(m21x+m22y+m23)＝y′(m11x+m12y+m13)
+即
+-m21xx′-m22yx′+m11xy′+m12yy′-m23x′+m13y′=0
+写成矩阵形式：
+
+令
+
+则
+m′TFm=0
+因rank(KRK－1)=3，所以rank（F）=2，故F是基础矩阵.
+令e′=(0，0，1)T，则
+
+根据基础矩阵的基本性质(2), 可推知e′是极点.因
+
+故定理成立.
+6　结　　语
+　　在本文中，我们给出了基础矩阵的统一表示，这种表示是非常有用的.我们的研究表明，使用本文的基础矩阵表示式，可使从未标定的图像求解摄像机内参数、运动参数等问题得到大为简化，这些结果将在另文发表.■
+基金项目：本课题得到国家自然科学基金和国家“八六三”计划资助.
+作者简介：吴福朝，男，1957年10月生，教授，目前主要从事人工智能、计算机视觉、应用数　　　　　　学等方面的科研与教学工作.
+　　　　　于洪川，男，1969年6月生，博士研究生，主要从事计算机视觉、虚拟现实技术方　　　　　　面的研究工作.韦穗，女，1946年4月生，教授，博士生导师，副校长.目前主要从　　　　　　事计算机视觉、模式识别、虚拟现实技术等方面的研究工作.
+作者单位：吴福朝（安徽大学人工智能研究所　合肥　230039）
+　　　　　于洪川（安徽大学人工智能研究所　合肥　230039）
+　　　　　袁波（安徽大学人工智能研究所　合肥　230039）
+　　　　　韦穗（安徽大学人工智能研究所　合肥　230039）
+参考文献：
+[1]Hartley R I. Estimation of relative camera position for uncalibrated cameras. In: Proc European Conf on Computer Vision. Santa-Margerita, Italy, 1992. 579～587
+[2]Deiche R, Zhang Z, Luong Q T et al. Robust recovery of the epipolar geometry for an uncalibrated stereo rig. In: Proc European Conf on Computer Vision. Stockholm, Sweden, 1992. 567～576
+[3]Maybank S J, Faugeras O D. A theory of self-calibration of a moving camera. The International Journal of Computer Vision, 1992, 8(2): 123～151
+[4]Robert L, Faugeras O D. Relative 3D positioning and 3D convex hull computation from a weak calibrated stereo pair. In: Proc Int'l Conf on Computer Vision. Berlin, Germany, 1993. 540～543
+[5]Zhang Z, Deriche R, Faugeras O D et al. A Robust technique for matching two uncalibrated images through the recovery of the unknown epipolar geometry. Artificial Intelligence. 1995, 78(1-2): 87～119
+[6]吴福朝，于洪川，袁波等. 摄像机自标定-理论与算法. 自动化学报，1999, 25(6)
+　　　(Wu Fuchao,Yu Hongchuan, Yuan Bo et al. Camera self-calibration-theory and algorithms. ACTA Automatica Sinica(in Chinese), 1999, 25(6))
+[7]Luong Q T, Faugeras O D.The fundamental matrix: Theroy, algorithms, and stability analysis. The International Journal of Computer Vision, 1996, 17(1): 43～75
+收稿日期：1998-08-10
+修稿日期：1998-11-30

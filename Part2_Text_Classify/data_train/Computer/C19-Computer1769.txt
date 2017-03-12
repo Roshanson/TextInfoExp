@@ -1,0 +1,167 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第4期 第10卷 Vol.10 No.4 1999
+
+
+
+改进的指数双向联想记忆模型及性能估计*
+陈松灿　高　航
+摘要　提出了一个新的改进型指数双向联想记忆模型(improved eBAM,简称IeBAM).通过定义有界且随状态改变而下降的能量函数,证明了IeBAM在状态的同、异步更新方式下的稳定性,一方面排除了Wang的修正指数BAM(modified eBAM,简称MeBAM)和Jeng的eBAM(exponential BAM)的稳定性证明中所作的不合理假设;另一方面,放宽了对BAM(bidirectional associative memory)的连续性假设的要求,并避免了补码问题.理论分析和计算机模拟结果表明,IeBAM具有比MeBAM和eBAM更高的存储容量和更好的纠错性能.
+关键词　神经网络,（指数）联想记忆,稳定性,双向性,性能估计.
+中图法分类号　TP18
+Improved Exponential Bidirectional Associative Memory
+and Its Performance Evaluation
+CHEN Song-can　GAO Hang
+（Department of Computer Science and Engineering Nanjing University of 
+Aeronautics and Astronautics Nanjing　210016）
+Abstract　　In this paper, a new improved exponential bidirectional associative memory (IeBAM) model is proposed. Its stability in synchronous and asynchronous updating modes of the states is proven by defining an energy function which is bounded and decreases as the states change. On one hand, IeBAM eliminates the unreasonable hypotheses in the stability proofs of both Wang's modified exponential BAM (MeBAM) and Jeng's exponential BAM (eBAM). On the other hand, it relaxes the continuity assumption of the BAM (bidirectional associative memory) and avoids the complement encoding problem. The theoretical analysis and computer simulations indicate that the IeBAM has higher storage capacity and better error-correcting capability than the MeBAM and the eBAM.
+Key words　Neural networks, (exponential) associative memories, stability, bidirectionality, performance evaluation.
+　　Kosko所提出的双向联想记忆(bidirectional associative memory,简称BAM)模型［1］的一个重要特性是,能够通过带噪或畸变输入模式完整地回忆出一个已存的模式.它不仅具有双向无条件稳定性,而且因为具备同步更新能力而较适于用并行方式实现,并可用于实时信息处理.但其不足也是明显的：一是由于采用相关编码方式,存储容量极为有限；二是存在补码问题及连续性假设的要求.为提高联想记忆、纠错性能及克服BAM的缺陷,众多研究人员先后提出了修正的和改进的模型,如Simpson的内连式BAM(intraconnected BAM,简称IBAM)［2］、Tai的高阶BAM(higher-order BAM,简称HOBAM)［3］、本文作者的一个新的内连式HOBAM(new higher-order modified IBAM,简称NHOMIBAM)［4］、Jeng和Chiuch的eBAM(exponential BAM)［5］、Wang的MeBAM(modified eBAM)［6］,等等.这些模型都不同程度地改进和提高了BAM的存储容量和纠错能力,解决了补码问题和／或放宽了对连续性假设的要求.并且指数型BAM的性能优于高阶型BAM.尽管如此,在eBAM和MeBAM的稳定性证明中存在着人为的、不合理的假设.本文的目的一是进一步改进指数型BAM的性能,二是抛弃MeBAM等模型中的人为假设,使模型更为合理、性能更为优越.为此,本文首先提出一个改进的eBAM(improved eBAM,简称IeBAM),使它不仅具有上述诸模型的优点,同时模型的存储容量和纠错能力得到更大程度的提高.通过定义简洁的能量函数,无需作任何假设,即严格证明了IeBAM在同、异步两种状态更新方式下的无条件稳定性,保证了所存模式成为该系统的稳定点.其次,在理论分析和计算机模拟两方面都证实了IeBAM的性能优越性.
+1　改进的指数双向联想记忆模型(IeBAM)
+　　为了阐明IeBAM的设计思路,首先给出eBAM和MeBAM的状态更新规则.
+1.1　Jeng的eBAM
+　　Jeng在总结了Tai的HOBAM之后,通过在HOBAM的更新规则中将其高阶项用指数项代替,获得了所谓的指数双向联想记忆(eBAM)模型.现假设有M个训练模式对(Xi,Yi),Xi∈{-1,1}n,Yi∈{-1,1}p,i=1,2,...,M.其状态更新规则为
+(1)
+(2)
+
+　　Jeng证明了eBAM的双向稳定性.首先定义如下能量函数E(X,Y).
+(3)
+
+其中和,i=1,2,...,M为两个模式集,和分别表示两者之间为k的海明距离.设(X,Y)与(X′,Y)分别是当前状态和下一个状态,并假定了〈Yi,f(X)〉仅依赖〈Xi,X〉和〈Xi,g(Y)〉仅依赖〈Yi,Y〉,即得其稳定性的证明.
+1.2　Wang的MeBAM
+　　Jeng的eBAM使用指数非线性来改善BAM及HOBAM的存储容量,然而在eBAM的回忆规则中仅包含了异相关项,如eBAM的回忆规则(1)和(2)所示,因此,仍需要连续性假定.W.J.Wang通过在eBAM中增加自相关项获得了修正的eBAM.其修正规则如下:
+(4)
+(5)
+
+由(4)、(5)两式所构成的MeBAM回忆规则获得了比eBAM更高的存储容量,并进一步放宽了eBAM对连续性假定的要求.MeBAM的稳定性证明与eBAM的稳定性证明完全类同,但假设了〈Yi,f(X,Y)〉仅依赖〈Xi,X〉和〈Xi,g(X,Y)〉仅依赖于〈Yi,Y〉.这类假设显然不符合实际.在存储容量方面,Wang没有给出严格的理论分析,仅从计算机模拟方面证实了MeBAM确实比eBAM优越.然而,在纠错能力方面,MeBAM并没有明显地提高eBAM的性能.其原因是,在回忆规则中,b〈Xi,X〉+b〈Yi,Y〉与b〈Xi,X〉或b〈Yi,Y〉相比,其值的大小至多为2b〈Xi,X〉或2b〈Xi,X〉,因此,难以改善eBAM的纠错性能.
+　　鉴于上述的一些不足,本文提出了如下的IeBAM.
+1.3　IeBAM
+1.3.1　回忆规则
+　　构造如下回忆规则:
+(6)
+(7)
+
+　　由(6)与(7)两式看出,它们与MeBAM的回忆规则(4)和(5)略有不同.Wang是将指数自相关项以和的形式（见式(4)、(5)）添加入eBAM,而我们则以乘的方式（见式(6)、(7)）添入.从实现角度来看,复杂性的增加是乘法代替了加法,因此,硬件的复杂性有所增加.下面,为了保证所有训练模式对都成为IeBAM的稳定点,只需证明IeBAM在异步与同步工作方式下是稳定的即可.
+　　定理1. IeBAM在同步与异步方式下是稳定的.
+　　证明：仅证明同步方式下的稳定性,异步证明类同.
+　　对于任意的(X,Y),定义IeBAM的能量函数为
+(8)
+
+　　设(X,Y′)与(X′, Y′)为当前和下一个状态,则这两个状态的能量差为
+(9)
+
+　　为证明ΔEX≤0,需要引入如下引理.
+　　引理1. 设b>1,则对任意实数x,y,有by-bx≥(lnb)bx(y-x).
+　　从而由引理1,有
+(10)
+
+由IeBAM的回忆规则(7)知,和x′k的符号相同,故可设该项=x′k|{.}|,而xk=rkx′k,rk∈{-1,1},将其代入(10)式可得
+
+同理可证ΔΕY≤0.又因｜E(X,Y)｜≤Mbn+p为有界,故知IeBAM是稳定的,从而保证了所有被训练模式对成为了IeBAM的稳定点.
+　　在证明过程中,我们无需作任何假设.因此,这种稳定是无条件的,从而保证了它的实际应用价值.
+1.3.2　信噪比分析
+　　现借助文献［7］的分析技巧以及对模式独立性的同样的假设进行信噪比分析.设Yh是所期望的回忆结果,yhk是其第k个分量,k=1,2,...,p.由IeBAM的回忆规则有
+(11)
+
+上式圆括号中第1项为信号项,第2项是噪声项,它是由所存模式之间相互干扰所引起,且为(M-1)个独立同分布的随机变量之和.因此,噪声方差是单个随机变量方差的M-1倍,且均值为零,设vi=yijb〈Xi,X〉+〈Yi,Y〉,i=1,2,...,M,因为所有vi具有相同的统计特性(除i=h外),且〈Xi,X〉与〈Yi,Y〉独立.下面,为了分析简单,选取v1作为单个随机变量的分析实例.由上述的独立性假设,v1的概率分布［7］为
+(12)
+
+其中k=H(Xi,X),l=H(Yi,Y)分别表示海明距离；为组合数.由E(v1)=0,得方差
+(13)
+
+从而有IeBAM的信噪比为
+(14)
+
+而eBAM的信噪比［7］为
+(15)
+
+其中r=min(n,p).
+　　MeBAM的信噪比为
+(16)
+
+因为
+(17)
+
+从而表明IeBAM优于MeBAM,同理可证,MeBAM优于eBAM.
+1.3.3　存储容量的上界估计
+　　由信噪比分析方法,我们获得了对IeBAM,eBAM和MeBAM的大致的容量估计.本小节给出存储容量的上界估计.
+　　设(Xh,Yh)是一个要被回忆的期望模式对.
+　　记EXhk为如下事件:
+(18)
+
+是其补事件.
+　　记EYhj为如下事件:
+(19)
+
+为其补事件.
+　　定理2. 对于IeBAM,若所存模式数M满足
+M≤2α(n+p-3)b8　　(0＜α＜1),
+那么当n→∞或p→∞时,每个已存模式是IeBAM稳定点的概率为1.
+　　为证明该定理,需要先证明以下几个引理.
+　　引理2. 对于h=1,2,...,M；j=1,2,...,p,的概率是
+(20)
+
+其中Q(.)定义如下:
+
+为严格单调下降函数.
+　　证明:由IeBAM的回忆规则,我们定义
+(21)
+
+显然,,而nhj作为噪声项是M-1项独立同分布的随机变量之和,且E(nhj)=0,因为E(yijb〈Xi,Xh〉+〈Yi,Yh〉)=E(b〈Xi,Xh〉)E(yijb〈Xi,Xh〉).由各向量之间的独立性假设及yij与yik (j≠k)的独立性可知,E(yijb〈Xi,Xh〉)=0.因此有
+(22)
+
+由中心极限定理可知,对于充分大的M,趋于标准正态分布.因此,当yhj=1而whj<0时,即发生事件.因此,发生该事件的概率为
+(23)
+
+　　引理3. 对于h=1,2,...,M；k=1,2,...,n,概率为
+(24)
+
+　　证明:证法同引理2.
+　　　　现在,设所有的训练模式对成为IeBAM的稳定点的概率为P*,则有
+(25)
+
+记.仍利用Q(z)的近似估计式［4］:
+
+得
+(26)
+
+取M=2n+p-3b8,其中0<α<1,则式(26)当n→∞或p→∞时,P→0,即有P*→1,从而证明了定理2.
+　　评述：由定理2说明,IeBAM的存储容量是指数级的,并且只要n,p中的一个趋于无穷大,就可保证正确回忆.而对于MeBAM和eBAM,我们亦有相应的定理.
+　　定理3. 对于MeBAM,若所存的模式数M满足
+(27)
+
+其中,α同定理2,那么当n→∞或p→∞时,每个已存模式成为MeBAM稳定点的概率为1.
+　　定理4. 对于eBAM,若所存的模式数M满足
+(28)
+
+那么当n→∞且p→∞时,每个已存模式成为eBAM稳定点的概率为1.
+　　由定理2～4可知,上述分析结果与第1.3.2节中信噪比的分析结果完全吻合,从而再一次说明IeBAM的优越性.
+　　定理5. IeBAM的存储容量上界优于MeBAM,而MeBAM的存储容量上界优于eBAM.
+　　证明:类似第1.3.2节的信噪比分析.
+2　计算机模拟
+　　现设n=p=16,X和Xi随机地产生于{-1,1}n；Y和Yi随机地产生于{-1,1}p,i=1,2,...,M.存储性能以回忆概率(Recall Probability)来衡量.现将M(20～200)个训练模式对存入各模型后,以Xi(i=1,2,...,M)作为输入以回忆出Y,我们期望该Y为Yi.若Xi能回忆出Yi,则为正确回忆,否则为不正确回忆,这相当于后者是伪稳态点.以正确回忆个数占M的比率作为回忆概率.经过20次的重复模拟,获得每一次的回忆概率后,取它们的平均值作为我们最后的回忆概率.纠错能力是通过对每个Xi随机反转r位后作为输入去回忆相应的输出.若其结果为Yi,则表示回忆成功,否则,表示失败.同样,经过20次重复测试,获得平均回忆概率.模拟结果如图1所示.
+
+　　　
+IeBAM,MeBAM和eBAM三者的比较.对于r=0,三者的回忆概率几乎为100%(已省略)　
+r=2:　　+: IeBAM;　○: MeBAM;　×: eBAM
+r=4:　　*: IeBAM;　―: MeBAM;　―: eBAM
+图1　存储容量及纠错性比较
+3　结论
+　　理论分析和模拟表明,IeBAM的存储性能和纠错能力优于现有的指数类BAM.由于它拥有同步及异步更新能力,因而适用于串行方式与并行方式的硬件实现.下一步,我们将开展IeBAM在模式识别和多证据推理方面的应用研究工作.
+致谢　对指出本文原稿中存在错误的审稿者,谨表示我们最真诚的谢意！
+*　本文研究得到国家自然科学基金资助.
+本文通讯联系人：陈松灿,南京 210016,南京航空航天大学计算机科学与工程系
+作者简介　陈松灿,1962年生,博士,教授,主要研究领域为模式识别,图像处理,神经网络.
+　　　　　高航,1964年生,副教授,主要研究领域为算法设计,模式识别,多媒体技术.
+作者单位：南京航空航天大学计算机科学与工程系　南京　210016
+E-mail: cancs@nuaa.edu.cn
+参考文献
+　1　Bosko B. Bidirectional associative memory. IEEE Transactions on System, Man and Cybernetics, 1988,18(1):49～60
+　2　Simpson P K. High-ordered and intraconnected bidirectional associative memory. IEEE Transactions on System, Man and Cybernetics, 1990,20(3):637～653
+　3　Tai H-M, Wu C-H, Jong T-L. High-order bidirectional associative memory. Electronics Letters, 1989,25(21):1424～1425
+　4　陈松灿,朱梧木　贾.一个新的高阶双向联想记忆模型及其性能估计.软件学报,1998,9(11):814～819
+(Chen Song-can, Zhu Wu-jia. A new higher-order bidirectional associative memory model and its performance estimation. Journal of Software, 1998,9(11):814～819)
+　5　Jeng Y J, Yeh C C, Chiueh T D. Exponential bidirectional associative memory. Electronics Letters, 1990,26(11):717～718
+　6　Wang W J, Lee D L. Modified exponential bidirectional associative memories. Electronics Letters, 1992,28(9):888～890
+　7　Wang C C, Don H S. An analysis of high-capacity discrete eBAM. IEEE Transactions on Neural Nets, 1995,6(2):492～496
+本文1998-01-06收到原稿,1998-05-15收到修改稿

@@ -1,0 +1,151 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.1　P.105-110
+
+
+
+
+一种多输入-多输出模糊自适应控制方法的研究
+朴营国 何希勤 张化光
+摘 要 针对多输入-多输出(MIMO)非线性系统基于模糊基函数向量提出了一种新的自适应控制方
+法.在该方法中,首先将非线性系统线性化,然后利用模糊基函数向量自适应学习系统不确定向量的
+上界,模糊基函数向量可作为补偿控制器的一个参数.在控制系统的设计过程中可充分保证非线性
+控制系统的鲁棒性和跟踪误差的渐进收敛性.
+关键词 多输入-多输出控制系统,模糊基函数向量,非线性系统,自适应.
+THE STUDY FOR A KIND OF MULTIINPUT MULTIOUTPUT
+FUZZY ADAPTIVE CONTROL APPROACH
+PIAO Yingguo HE Xiqin ZHANG Huaguang
+(Institute of Information Science and Engineering,Northeastern Univers
+ity, Shenyang 110006)
+Abstract In this paper, a novel adaptive control approach based on fuzzy basis function vector is presented for Multi input and Multioutput(MIMO) nonlinear systems. The nonlinear plant is first linearised, the fuzzy basis function vector is then introduced to adaptively learn the upper bound of the system uncertainty vector,and its output is used as the parameters of the compansator in the sense that both the robustness and the asymptotic error convergence can be obtained for the closed loop nonlinear control system.
+Key words Multiinput and m1ultioutput control system, fuzzy basis function vector, nonlinear system, adaptive.
+1 引言
+　　近几年，模糊逻辑控制技术在实际中得到了较广泛的应用［1］.然而一些重要的理论和实际问
+题还没有得到很好地解决,例如:当用Mamdany语言模型和Sugeno模糊模型处理不确定动态系统时,
+模糊逻辑控制系统的稳定性、鲁棒性和误差收敛性等至今还没有给予完整的证明.因而,这方面的
+问题已成为模糊控制的研究热点之一.文［2］利用一个模糊基函数网络逼近未知系统的参数向量,
+其权值可自适应调整,但它缺乏稳定性的证明.在文［3］中,给出了一种稳定的模糊神经网络的自适
+应控制方法,其控制由边界控制项、滑摸控制项和确定控制项组成.这种混合控制方法过于复杂难
+以应用于实际当中.上述这些方法只适用于单输入单输出(SISO)非线性系统.本文针对MIMO非线
+性不确定系统基于模糊基函数向量结合非线性系统反馈线性化方法给出了一种自适应控制策略.这
+种设计方法可充分保证闭环非线性控制系统的鲁棒性和跟踪误差的渐进收敛性.
+2 问题描述
+　　考虑如下的非线性系统
+　(1)
+这里 x∈Rn是系统的状态向量;是控制输入向量;
+是输出向量;是光滑函
+数向量;hi(.):Rn→R,i=1,2,…,m
+是光滑函数.
+　　若非线性系统（1）具有向量相对阶,［r1,…,rm］，则通过输入输出反馈线性化方法可得
+　(2)
+理想的反馈线性控制律为
+u*=J-1(-b+v).　(3)
+在(3)式中我们只要合理设计v即可.为了得到u*需要对系统作下面的假设.
+　　假设1矩阵J非奇异.
+　　假设2系统具有强向量相对阶［r1,…,rm］T,且其零动态按指数吸引.
+3 模糊系统描述
+　　定义1｜A｜指矩阵A的模,即矩阵A中各元素的绝对值.‖A‖是矩阵A的lp范数,且满
+足匹配特性.｜A｜<｜B｜意味着其中
+是一矩阵,其中的所有元素等于amax, 定义
+是一符号矩阵,且有Asign(A)=｜A｜,tr(A)是矩阵A的迹.
+　　由(2)可得
+E(x)y=h(x)+u,　(4)
+其中假设E(x)-1和h(x)有界且存在未知的
+正定的函数P1(x)和函数向量q1(x)满足
+
+　　然而,在实际当中E(x)和h(x)并非完全确知,根据实际情况我们可以将E(x)和h(x)表示成
+E(x)=E0(x)+ΔE(x),h(x)=h0(x)+Δh(x)，
+其中 E0(x)(非奇异)和h0(x)是已知部分,而ΔE(x)和Δh(x)是未知部分.
+　　由于E(x)和h(x)有界,则ΔE(x)和Δh(x)亦有界,且有
+‖ΔE(x)‖<P2(x),｜Δh(x)｜<q2(x)，
+其中 P2(x)和q2(x)是未知的正定的函数和函数向量.
+　　基于上述分析,将(4)写成如下形式
+E0(x)y=h0(x)+u+ρ(t),　(5)
+其中　　　　　　　　　　　　ρ(t)=Δh(x)-ΔE(x)y　(6)
+定义为系统的不确定向量.
+　　若系统完全由已知部分构成,即ρ(t)=0,则控制器可设计为
+u=E0(x)v-h0(x).　(7)
+上式中令
+　(8)
+其中为输出跟踪误差,ydi为期望输出,参数为Hurwitz系数,则能保证
+系统跟踪稳定,且输出跟踪误差εi将渐近收敛到零.
+　　当考虑系统(5)时(含有不确定项),闭环系统的控制输入可设计为
+u=u0+u1，　(9)
+其中 u0由(7)给出,u1则用于消除系统的不确定性.
+　　引理1考虑(6)式中的系统不确定向量ρ(t),如果控制信号的模向量有上界,即
+｜u(t)｜m<umax(x)，
+其中umax(x)为正定的函数向量,则系统不确定向量ρ(t)的模向量亦有上界,即
+　(10)
+其中为正定的函数向量.
+　　证明首先由式(4)和(6)可得
+ρ(t)=Δh(x)-ΔE(x)E(x)-1h(x)+ΔE(x)E(x)-1u(t),
+则
+　(11)
+本文将利用如下的模糊基函数网络学习,其形式为
+　(12)
+其中,是第i个模糊基拓扑网络的权向量.模糊基
+函数定义为
+　(13)
+根据模糊逻辑系统的逼近特性,给定任意小的正常数向量和在一紧集Σ上定义的连续函数
+向量存在一优化的权矩阵θ*使得最优的模糊基函数网络的输出满足
+
+其中
+　(14)
+　　假设3系统不确定项的模向量及其上界在紧集Σ上满足如下关系
+　(15)
+则由(14)和(15)可得
+　(16)
+其中 O是零向量.
+4 控制器的设计
+　　为了分析和书写方便令当它们不完全相等时,分析方法完全相同,
+只是写法略有不同.由(5)可得
+　(17)
+由(8)可得
+　(18)
+其中
+将(7)代入(17)可得
+E0(x)(y-v)=u1+ρ(t).　(19)
+　　令则具有不确定性的系统输出跟踪误差动态方程为
+　(20)
+其中
+　　定理1.考虑误差动态方程(20),如果补偿控制器u1设计为
+
+其中 向量矩阵C的选择应该使得多项式si关于e是
+Hurwitz的,参数矩阵按照下述的自适应律调整
+　(21)
+式中 η>0,则对于任意正的初始值,输出跟踪误差向量ε将渐近收敛到零向量.
+　　证明取Lyapunov函数为
+
+其中则
+　(22)
+(22)式的第一项为
+　(23)
+(22)式的第二项为
+
+　(24)
+因此, 可得
+
+5 结 论
+　　本文利用模糊基函数向量构造了一种自适应控制器,分析表明模糊基函数拓扑网络可以在
+Lyapunov意义下学习MIMO非线性系统不确定项的上界,同时基于模糊函数向量所设计的自适应
+控制器能够消除系统动态不确定性的影响以及保证系统输出跟踪误差渐近收敛到零.
+国家自然科学基金和国家教委博士点基金资助项目.
+朴营国 1967年生.目前在东北大学工业自动化专业攻读博士学位.主要研究兴趣是多变量模糊控
+制、神经网络控制、变结构控制及其应用.
+何希勤 1965年生.目前在东北大学工业自动化专业攻读博士学位.主要研究兴趣是多变量模糊解耦
+控制、非线性系统自适应控制.
+张化光 1959年生.1991年于东南大学获博士学位，1993年在东北大学自动控制流动站工作期满留
+校.现为东北大学电气自动化研究所所长、教授、博士生导师.长期以来，一直从事于多变量模糊
+控制、非线性控制、自适应控制的研究.
+朴营国(东北大学信息科学与工程学院 沈阳 110006)
+何希勤(东北大学信息科学与工程学院 沈阳 110006)
+张化光(东北大学信息科学与工程学院 沈阳 110006)
+参考文献
+1，Yager R, Filev D P. Essentials of Fuzzy Modeling and Control. New York: John Wiley & Sons, Inc, 1994
+2，Man Zhihong, Yu X H, Ha Q P. Adaptive control using fuzzy basis function expansion for SISO linearizable nonlinear systems. In: Proc. 2nd Asia Control Conference.Souel: 1997. 695～698
+3，Jeffrey T Spooner, Kevin M Passino. Stable adaptive using fuzzy systems and neural networks. IEEE Trans. Fuzzy Systems, 1996, 4(3): 339～359
+4，George A Rovitthakis, Manolis A Christodoulou. Adaptive control of unknown plants 
+using dynamical neural networks. IEEE Trans. SMC, 1994, 24(3): 400～412
+5，Chen Wen, Zhang Huaguang. Input/output linearization for nonlinear systems with uncertainties and disturbances using TDC. Int. J. Cybernetics and Systems, 1997, 28(1): 625～634
+6，戴昌国.线性代数.南京：东南大学出版社, 1993
+收稿日期 1998－04－21 收修改稿日期 1999－06－29

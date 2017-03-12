@@ -1,0 +1,102 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.1　P.94-99
+
+
+
+对带有有限缓冲区和可修机器的串行生产线的生产方差研究
+孙钰 谭民 李泉林
+摘 要 把生产与市场结合起来并考虑供需关系时，系统的生产方差研究显得非常必要.讨论的模型为两级的串行生产线，利用结构随机矩阵理论和马氏过程的协方差结构，给出了在一个给定时间区间内系统生产成品数方差的有效算法.基于正态分布，这个算法对订单满足的程度进行了概率刻划.文中的数值分析充分体现了这个算法的有效性和实用性.
+关键词 制造系统，串行生产线，机器可修，稳态可用度，生产方差.
+STUDY ON PRODUCTION VARIANCE OF FLOW LINE WITH
+REPAIRABLE MACHINES AND FINITE BUFFERS
+SUN Yu TAN Min LI Quanlin
+(Lab of Engineering Sciences for Complex Systems,Institute of Automation,Chinese Academy of Sciences,Beijing 100080)
+Abstract It is important to study production variance systematically when we combine production and market to analyze the relationship between supply and demand. The model this paper deals with is a flow line of two machines. By means of structured stochastic matrix theory and theory of Markov process, an effective algorithm obtaining the variance of end products in a given period is proposed. Based on normal distribution, the algorithm offers a description of the probability of meeting order for goods. The feasibility of the algorithm is fully shown inthe numerical example.
+Key Words Manufacturing systems, flow line, repairable machine, steady state availability, production variance.
+1 引 言
+　　近年来，制造系统的生产方差研究日益显得重要，并在国际上受到人们的极大关注.然而，相比于制造系统的生产率评估方法，生产方差的研究是相当困难的.这是国际上关于制造系统研究的热点问题之一.迄今，有关制造系统生产方差分析的文献还较少.例如Hatcher［1］首先提出了研究与生产率相关的方差问题的必要性.Hendrics［2］和Hendrics & McClain［3］讨论带有可靠机器和有限缓冲区串行生产线的输出过程，给出了评估生产方差的一种有算法.Gershwin［4］提出了单机系统方差模型，并利用分解的近似方法将单机的结果推广至多级生产线，但是仿真结果却表明随着生产线级数的增加，误差会达到30%～40%，显然这种方法的精度不足；Miltenburg［5］提出了一种计算串行生产线生产方差的算法，这种算法首先对加工、失效和修理的连续过程从指数分布进行描述.Tan［6］利用概率矩阵的块三对角结构，提出了一种在计算上比Miltenburg［4］方法更为方便的递推算法，但是这个算法仍然建立在概率矩阵的离散情形上.本文对带有有限缓冲区和机器可修的串行生产线模型进行了方差分析.不同于上述所有文献，我们利用结构随机矩阵理论和马氏过程的协方差分析，给出了计算在一个时间区间［0,T］（其中T表示cycle time数，cycle time为工件从进入生产线直到加工全部完成所用的平均时间）内系统生产成品个数方差的有效算法.从而我们可以进行生产量的区间估计以及对Due-Time给出概率刻划.本文首先给出了一种计算过程平稳概率向量的算法，这种算法对状态空间较大的模型也能保持有效性，然后给出了计算生产方差的算法.最后，数值分析体现了这种算法的有效性和实用性.
+2 模型描述
+2.1 模型假定
+　　本文考虑可修的两级生产线的生产方差问题，其模型假定如下：用Mi表示第i个机器(i=1,2)，用B表示缓冲库，它的容量为K(不包括M2上的一个工件)，其结构如图1所示.机器Mi的加工时间、修理时间、失效时间分别服从参数为μi、αi、bi的指数分布，并且它们都相互独立.为了分析问题方便，进一步假定：
+
+图1　两级串行生产线模型
+　　1)首级机器不饥饿，即有足够多的原材料；
+　　2)末级机器输出无阻塞，即有足够大的成品库；
+　　3)任一机器停车待命期间(无论阻塞还是饥饿)都不会失效；
+　　4)缓冲库传递工件过程无故障，而且工件在缓冲库中的传输时间可忽略不计.
+　　用X(t)表示在时刻t缓冲库中的工件数.由于系统中所有的随机变量都服从指数分布并且相互独立，所以{X(t),t≥0}是一个马氏过程.它的无穷小生成元为一个有限水平的拟生灭过程，简记为QBD(Quasi-Birth-Death)过程，有关QBD过程的更详细介绍可以参见文献［7］Chapter 3.系统的无穷小生成元Q为
+　(1)
+其中，各个分块阵为
+
+为方便起见，我们将无穷小生成元Q记为Q=(qij)， i，j＝1，2，3，…，4K＋4.
+2.2 平稳概率向量的递推算法
+　　为了得到系统的平稳概率向量，只需解线性方程组
+　(2)
+　　其中e为元素全为1的列向量； 其中X0和XK+1为2维行向量，
+为4维行向量.由(1)和(2)，我们可得
+　(3)
+　　由文献［8］可知，当K较大时，平稳概率向量的计算量是相当大的.因此，发展一种有效的算法是十分必要的.以下这种算法类似于Neuts［7］的矩阵几何解，部分地克服了状态爆炸造成的计算上的困难.
+　　引理1. 对有限水平的Q，平稳概率向量为
+　(4)
+这里，c>0为归一化常数，并且
+
+同时,边界向量(π0，πK＋1) 为如下生成元的平稳概率向量
+　(5)
+其中Nij由下式确定：
+　(6)
+(5)式中I为单位阵，(6)式中R与R1分别为二次矩阵方程R2A0+RA1+A2=0和R21A2+R1A1+A0=0的最小非负解.R与R1在QBD过程中都称为率阵.
+3 生产方差
+　　首先引入几个符号：vi(n)表示从某一个初始状态出发，n个cycles中系统处于状态i的次数；cov(vi(n), vj(n))表示从某一个初始状态出发，n个cycles中系统处于状态i的次数与系统处于状态j的次数这两个随机变量的协方差，记为为2.2节所求的平稳概率向量.
+　　令P为过程的概率转移矩阵，则QBD过程的基本阵(Fundamental Matrix)为F=(I-P+eX)-1,因为P=I+WQ，其中的X为QBD过程的平稳概率向量，并且
+
+所以QBD的基本阵为F=(eX-WQ)-1.
+　　引理2. 系统的协方差矩阵C＝(cij)由下式确定，
+　(7)
+　　定理1. 如果U表示系统能产生一个输出的状态的集合(即U为系统处于末级机器正常工作状态的有效状态集)，那么系统的稳态可用度(Ai.e.Availability)和生产方差V(i.e.Production Variance)分别为
+　(8)，(9)
+　　注1.根据文［10］Theorem4.6.9，可知当T→∞时，cii服从马尔可夫过程的中心极限定理；进一步，由文［12］可知，对这个状态相依的过程，cij仍服从马尔可夫过程的中心极限定理.所以，串行生产线在时间区间［0,T］内生产的成品数这个随机变量服从以AT为期望，VT为方差的正态分布，这样就可以提供系统在［0,T］内满足顾客订单的概率，并可以进行生产量的区间估计.满足订单的概率和区间估计的具体实例将在下一节中给出.
+4 数值分析
+4.1 算法实现过程
+　　此算例系统参数(如表1所示)相同于文［11］p112的参数，中间缓冲区容量K＝5；
+由引理1可以解出系统的平稳概率向量，
+X=(0.0600 0.0938 0.0003 0.0045 0.0987
+0.0008 0.0003 0.0039 0.1055 0.0015
+0.0003 0.0032 0.1146 0.0023 0.0003
+0.0024 0.1262 0.0031 0.0003 0.0013
+0.1409 0.0040 0.1594 0.0725)
+表1 系统参数表
+　αibiμi
+M10.090.011.1
+M20.080.0091.0
+根据定理1求得： A=0.7605， V= 0.7365.
+　　假设系统运行T=1000个cycles，那么AT=761为［0,T］内生产成品的平均个数.由VT=736.5可知标准差为27.14.因为这个状态相依的过程仍服从马氏过程中心极限定理，故可得
+=(708,814)为［0,T］内生产成品数的置信度为95％的区间估计.又假设在［0,T］内有顾客定购740件成品.因为［0,T］内生产的成品数服从以AT为期望、VT为方差的正态分布，所以根据正态分布可以求出系统能以78.94％的概率满足顾客的订单.这个概率值无论对生产厂家还是对顾客，都是很有意义的.
+4.2 算例分析
+　　通过算例，寻找生产方差随机器生产率和缓冲区容量变化而发生的变化规律.对4.1节中的算例，仅改变M1的加工率μ1和缓冲区容量K，而保持其它参数不变，基于仿真结果可以归纳如下：
+　　1)当(μ2－μ1)>0且较大时，V随K增加而增加，但K增到一定值时V不再变化.
+　　2)当(μ2－μ1)>0且较小时，V随K增加而一直增加.
+　　3)当(μ2－μ1)<0时，V随K增加而增加，但K增到一定值后V会随着K增加而减小.
+　　这些仿真规律对我们进一步研究制造系统生产方差的定性理论是比较有启发性的
+国家攀登计划和国家自然科学基金资助项目.
+孙钰 1974年生，1996年毕业于大连理工大学自动化系.1996年～1999年于北京中国科学院自动化研究所复杂系统工程学开放实验室获硕士学位，现在美国Minnesota大学机械工程学攻读博士。.研究兴趣为：随机网络分析和微机器人控制与应用.
+谭民 1962年生，1990年获中国科学院自动化研究所博士学位.现为研究员、博士生导师.研究兴趣为：故障诊断与可靠性、制造系统可靠性研究以及先进机器人控制等.
+孙钰(中国科学院自动化研究所复杂系统工程学开放实验室 北京 100080)
+谭民(中国科学院自动化研究所复杂系统工程学开放实验室 北京 100080)
+李泉林(中国科学院自动化研究所复杂系统工程学开放实验室 北京 100080).
+参考文献
+1，Hatcher J M.The effect of internal storage on the production rate of a series
+of stages having exponential service times. AIIE Transaction, 1969, 1(2):150～156
+2，Hendrics K B. The output process of serial production lines of exponential machines with finite buffers.Operations Research, 1992, 40(6):1139～1147
+3，Hendrics K B and McClain J O. The output process of serial production lines of general machines with finite buffers. Management Science, 1993, 39(10):1194～1201
+4，Gershwin S B. Variance of output of a tandem production system. Queuing Networks with Finite Capacity,Onvaral:Elsevier Science Publishers, 1993
+5，Miltenburg G J. Variance of the number of units produced on a transfer line with buffer inventories during a period of length. Naval Research Logistics, 1987, 34: 811～822
+6，Tan B. An efficient method for variance of the output in a production line with a finite buffer.In:Proceedings of International Workshop on Performance Evaluation and Optimization of Production Lines, 1997, 19～22: 135～155
+7，Neuts M F. MatrixGeometric Solutions in Stochastic Models.Baltimore:John Hopkins Univ. press,1981
+8，李泉林,具有非更新寿命和成批加工的CIMS可靠性研究.应用数学与计算数学学报, 1996,13: 29
+9，Hajek B. Birthanddeath processes on the integers with phases and general boundaries, Applied Probability Trust, Israel, 1982: 488～499
+10，Kemeny J G，Snell J L. Finite Markov Chains. New York:Van Nostrand,1976
+11，Gershwin S B. Manufacturing Systems Engineering.New Jersey:PTR Prentice Hall,1994
+12，Howard R A.Dynamic Probabilistic Systems. New York:Wiley, 1971,l(1) 
+　
+收稿日期 1998-06-22 收修改稿日期 1999-03-10

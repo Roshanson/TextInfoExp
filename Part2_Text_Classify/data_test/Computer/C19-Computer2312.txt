@@ -1,0 +1,202 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999　Vol.36　No.6　P.641-652
+
+
+
+MPEG-4编码的现状和研究
+高文　吴枫
+摘　要：随着计算机和通信技术的发展，多媒体编码进入了一个新的时代，即将公布的MPEG-4国际标准表明基于对象的编码、基于模型的编码等第二代编码技术趋于成熟.文中首先从MPEG-4所支持的各种视频对象及其特点、场景的描述和不同应用的框架/级别等3个方面讨论了新的编码标准的主要内容和现状.新的标准用于实际应用还需要提供大量的标准之外的配套工具和研究.在随后的内容中，文中讨论了图像和视频的分割、全景图像的生成、人脸的检测与跟踪、2D网格模型的建立与跟踪以及3D人脸的分析和合成等相关领域的研究和进展情况.
+关键词：多媒体技术，MPEG-4，基于对象的编码，基于模型的编码，图像分割，图像的分析与合成，计算机视觉
+分类号：TP391
+RESEARCHES AND DEVELOPMENTS OF MPEG-4 CODING
+GAO Wen，WU Feng
+(Department of Computer Science, Harbin Institute of Technology, Harbin 150001)
+GAO Wen
+(Institute of Computing Technology, Chinese Academy of Science, Beijing 100080)
+Abstract：With the developments of computers and communications, the multimedia coding comes into a new era. The MPEG-4 standard indicates the mature of the second generation coding technologies, such as object-based coding and model-based coding. In the paper here, all video objects and their characters, scene description, and profile/level in MPEG-4 are introduced. With the demands of the new standard, many non-normalization tools and relevant technologies are provided for the MPEG-4 implementation. In the following content, some key technologies, such as image and video segmentation, panorama generation, facial detection and tracking, 2D mesh generation and tracking, and analysis and synthesis of 3D facial model, are also discussed. 
+Key words：multimedia technology, MPEG-4, object-based coding, model-based coding, video segmentation, image analysis and synthesis, computer vision▲
+1　引　　言
+　　ISO的MPEG-4标准的第一版已于1999年1月正式公布［1］，标准的第二版也将在1999年12月公布［2］.较之MPEG前两个图像压缩标准而言，MPEG-4为多媒体数据压缩提供了一个更为广阔的平台，它更多定义的是一种格式和框架，而不是具体的算法［3，4］.MPEG-4的出发点就是希望建立起一个更自由的通信与研发环境，人们可以在系统中加入许多新的算法，为用计算机软件做编码、解码提供了更大的方便［5，6］.它可以将各种各样的多媒体技术充分用于编码中，除包括压缩本身的一些工具、算法，还包括图像分析和合成、计算机视觉、计算机图形、虚拟现实和语音合成等技术.MPEG-4设计之初是为了在电话线上传输视频和音频数据，是一个超低比特率运动图像和语音的压缩标准，但是随着研究工作的深入，它所包含的内容和将要起的作用已经远远超出了最初的设计思想.
+　　采纳了基于对象(object-based)的编码［7,9］、基于模型(model-based)［10～12］的编码等第二代编码技术是MPEG-4标准的主要特征，所谓的对象是在一个场景中能够访问和操纵的实体，对象的划分可以根据其独特的纹理、运动、形状、模型和高层语义为依据.这种编码是一种基于内容的数据压缩方式，以前的压缩算法只是去掉帧内和帧间的冗余，MPEG-4则要求对图像和视频作更多的分析，甚至是理解.如将图像分割为运动物体对象和静止不动的背景对象平面，并对这两个对象进行分别处理.背景对象采用压缩比较高、损失比较大的办法进行编码，运动物体对象采用压缩比较低、损失较小的办法，这样就在压缩效率和解码图像质量间得到较好的平衡.MPEG-4编解码的基本单元是对象，这些对象可以是单声道、立体声和多声道音频，2D和3D或者单目、立体或多目视频、计算机图形、动画、文字等.基于对象的编码除了能提高数据的压缩比，还能实现许多基于内容的交互性功能，如基于内容的多媒体数据存取、游戏或多媒体家庭编辑、网上购物和电子商店、远程监控、医疗和教学等.多媒体数据压缩技术的发展趋势将是基于内容的压缩，这实际上是信息处理的更高阶段，更加向人自身的信息处理方式靠近.人的信息处理并不是基于信号的，而是基于一个比较抽象的、能够直接进行记忆和处理的方式.如果多媒体数据也能做到基于内容的处理、压缩、存储和传输，人使用起来就更具亲和力，也更简单方便.MPEG-4就是适应这种发展趋势而制定出来的新一代多媒体压缩标准.
+　　基于对象的分级功能是MPEG-4提供的又一个新的功能，同时兼容于MEPG-2标准中的图像分级功能，分级工具主要用于互联网和无线网等窄带的视频通信、多质量视频服务和多媒体数据库预览等服务.MPEG-4提供了两种基本的分级工具：时域分级和空域分级，时域分级是降低原视频序列的帧率，空域分级是降低原视频序列的分辨率.在每类分级工具中，视频序列都可以分为两层：基层和增强层，基层提供了视频序列的基本信息，增强层提供了视频序列更高的分辨率和细节，基层可以单独传输和解码，而增强层则必须与基层一起传输和解码.MPEG-4也支持时域和空域的混合分级.
+　　由于移动通信的迅速发展，通过无线网传输音频和视频信息变得越来越重要了，这需要提供在易错的通信环境下实现安全的低码率编码和传输.MPEG-4的编码具有鲁棒性和纠错功能，3个策略来达到此目的：再同步(resynchronization）、数据恢复(data recovery)、错误隐藏( error concealment).再同步工具在检测到误码时重新在解码器和码流间建立同步点，前一个同步点和新建立的同步点间的码流就是发生误码的数据；数据恢复是通过标准中提供的一种可逆变长编码技术来恢复两个同步点之间的数据；错误隐藏通过空间的纹理相关性和视频前后帧的相关性对错误的图像区域进行隐藏.
+2　MPEG-4的主要内容
+　　图1是用MPEG-4的各种音频和视频对象组成场景的例子，它包括一个正在讲课的人以及对应的声音组成的新的组合音视频对象、2D的背景对象、Sprite对象、3D的桌子和3D的地球仪等.在MPEG-4中不仅容许作者以这些对象为素材组成新的场景，也容许使用者操作这些对象，如把各种对象按一定的顺序和位置放在一个特定的场景坐标系中，改变3D 对象的视角，交互式听或看场景中的某一对象，通过动画参数使某一虚拟对象产生动画感.下面我们就分别从MPEG-4所支持的各种对象及其编码、场景描述和应用框架/级别3个方面讨论该标准的内涵.
+
+
+图1　MPEG-4应用示意图
+2.1　MPEG-4的主要对象类型及特点
+　　MPEG-4支持各种音频和视频对象的编码［14，15］，这些对象既可以是自然的，也可以是合成的；既可以是平面的，也可以是立体的.由于MPEG-4标准结构的可扩充性，根据实际应用的需要可以很容易添加新的对象类型.
+　　（1）自然的视频对象
+　　自然的视频对象是从自然图像和视频中分割出来的某一视频区域，图2(a)是News图像序列的第一帧，假设把其中的男女播音员作为前景视频对象，此时对象不再是规则的矩形，并且也不在一个连通的区域内，它有比较复杂的形状，矩形图像只是视频对象的一个特例.为了描述视频对象的形状，MPEG-4专门定义与图像大小相同的α平面(alpha plane), 二值α平面分别用0和255表示在一个图像区域内所有像素点的归属.图2(b)是图2(a)的二值α平面，白色表示该区域内的像素属于当前对象，黑色表示该区域的像素不属于当前对象.二值α平面的编码采用基于块的运动补偿和基于块的上下文相关的二进制算术编码相结合的方法，视频对象的亮度信息和色度信息采用运动补偿和形状自适应的SADCT(shape adaptive DCT)编码.α平面的定义还可以扩展到0～255级灰度，这样既可以使前景对象叠加到背景上时不至于边界太明显、太生硬，进行一下“模糊”处理，又可以在视频对象的组合中实现半透明和底纹等特殊的视觉效果.
+
+
+图　2
+　　（2） Sprite对象
+　　Sprite对象是针对背景对象的特点提出的［15～17］.通常情况下背景对象自身没有任何运动，而图像序列中的背景变化是由于摄像机的运动和前景物体的运动所造成的，通过图像的镶嵌技术把整个序列的背景图像拼接成一个大的完全的背景图像，这个图像就叫Sprite图像.Sprite图像只需要编码传输一次并存储在解码端，在随后的图像只需要传输摄像机相对于背景的运动参数，就可以从Sprite上恢复所有的图像的背景，在视频会议和视频电话等场景固定的应用中，背景的全景图可以事先传输过去保存在解码端.图3是Sprite编码的例子，左上角是背景Sprite图像，右上角是前景视频对象，从图中我们可以看出为了实现这种编码必须要有两个前提条件：①前景对象和背景图像要能很好的分割开;②要无痕迹的从一段视频或一些图像中拼接出Sprite图像.
+
+
+图 3　Sprite 编码示意图
+　　（3） 2D网格对象
+　　2D网格将一个2D图像平面分成许多多边形的小片，片与片之间既不重叠也没有缝隙，多边形片的顶点叫网格的节点.MPEG-4目前只考虑由三角形组成的动态网格模型，所谓的动态网格模型不仅指网格的形状和拓扑结构，还包括所有网格的节点在一段时间内的运动信息.图4是两类初始的2D网格模型，图4(a)是一个规则的网格模型，图4(b)是基于内容的网格模型.随着图像序列的变化，网格的节点也发生移动，由节点组成的三角形片也会发生形变，通过仿射变换和双线性插值可以由前一帧图像映射得到当前帧的重构图像.2D网格模型的编码是指编码网格的节点位置(规则网格除外)和运动，它们的编码是采用邻近节点预测和变长编码，网格的拓扑结构不需要编码，由Delaunay算法唯一确定.
+
+
+图　4
+　　（4） 3D人脸和身体对象
+　　3D人脸对象是用3D线框模型来描述人脸的形状、表情和口形变化等各种面部特征，MPEG-4定义了两套参数来描述人脸的形状和运动，面部定义参数FDP(facial define parameter)和面部动画参数FAP(facial animation parameter).图5(a)是MPEG-4的一个默认的3D中性人脸网格模型，图5(b)对模型进行了着色，该模型在FAP参数流的驱动下就能描述人脸的各种运动，FAP参数分为10组描述人的面部68种基本运动和7个基本表情.为了用3D人脸模型在解码端得到一个具有真实感的合成人脸图像，可以下载特定人的FDP参数，FDP参数包括特征点坐标、纹理坐标、网格的标度、面部纹理和动画定义表等特定人的特征参数.FAP参数有两种编码方法：基于帧的编码和基于DCT的编码.基于帧的编码是采用量化和算术编码相结合，基于DCT的编码是采用DCT变换和变长编码相结合.基于DCT的编码方法能得到更好的压缩效率，相对来说计算量也大一些.
+
+
+图　5
+　　3D身体对象的内容将加入标准的版本2中.3D身体对象和人脸对象一样也是由身体定义参数BDP(body define parameter)和身体动画参数BAP(body animation parameter)来描述人体的形状、姿势、纹理和运动.MPEG-4同样定义了一个默认的人体模型，图6是身体模型的简化图，它包括29个主要关节，每个关节都有3个自由度DOF(degree of freedom), BAP参数分为19组共描述人体的175个基本动作.为了能合成一个具有特定人特征的虚拟人，可以下载BDP参数所定义的皮肤、形态、姿势、标度等参数.模型各个关节的运动没有任何假设和限制，通过BAP参数流能控制身体模型模拟实际人的身体运动.MPEG-4 3D身体对象的部分标准与VRML的H-Anim内容是一致的.
+
+
+图6　3D身体模型的简化图
+　　（5）静态的纹理对象
+　　在前面讨论的2D网格对象、3D人脸身体对象以及后面的3D网格对象的编码中，为了在解码端得到具有真实感的合成对象，常常需要用基于图像的着色技术，把对象的实际的纹理映射到模型上.这些纹理信息只需要在第一帧或者一些关键帧编码传输，因此把这些要编码传输的纹理信息叫做静态的纹理对象.
+　　图7所示的是人脸的全视角纹理信息,图像上已经匹配上类似图5(a)的3D网格模型，这幅平面的纹理信息图是根据人脸不同视角的图像，按公式（1）
+
+图7　人脸图像全视角纹理信息图
+　　（1）
+将3D立体空间的点P(x,y,z)映射到2D柱面上的对应点Ps(θ,h).二维θ，h参数空间被3D网格模型的节点划分为许多三角形的片，纹理映射以这些三角片为单位将每一部分纹理映射到后面的变形模型的对应三角形区域.静态纹理的编码采用零树小波变换和算术编码相结合的方法，静态纹理对象也可以是任意形状.
+　　（6） 3D网格对象
+　　3D网格模型在计算机图形、CAD、有限元分析和可视化技术等方面有着广泛应用，MPEG-4在标准的版本2中提供一个有效的编码3D网格模型的工具，编码3D网格模型的几何形状、拓扑结构和纹理等，包括规则的三维网格的编码和通用的3D网格的编码［18］，图8(a)是一个规则的3D网格，x和y坐标规则排列，z是高度信息，需要编码的只有高度信息，为了不产生溢出，用公式（2）对z进行归一后用32位的整数描述.这样的3D网格模型可以用一个二维数组存储，原有的图像编码方法就可用于规则3D 网格对象编码.
+　　(2)
+　　图8(b)是一个普通的3D网格对象，3D网格对象的编码就是要解决图中所示对象的点、线、面以及纹理等信息的编码.目前有关的编码技术正在MPEG-4 SNHC的验证模型系统中进行研究.
+
+
+图　8
+　　（7）音频对象
+　　MPEG-4音频对象可以分为两类：自然音频对象和合成音频对象.自然音频对象可以在2kbit/s到64kbit/s的码率范围内编码，为了在整个码率范围内都得到高质量的音频，MPEG-4定义了3种编码器：参数编码、码本激励线性预测编码和时频编码，自然音频对象的编码支持各种分级编码功能和错误恢复功能.合成音频对象包括结构音频(structured audio)和文语转换(text to speech)，结构音频是一种类似MIDI的音乐语言，但功能比MIDI更强大，文语转换是把文字信息合成为语音信息，这部分在应用时通常与3D人脸对象中的唇动合成结合起来使用.
+2.2　场景描述及交互
+　　MPEG-4对不同的对象采用独立的编码方法不仅可以得到较高的压缩比，而且还能提供基于内容的交互能力，为了将这些对象在解码端组成一个有意义的多媒体场景，就需要一些附加的信息来描述这些对象什么时间放在什么位置、它们之间的关系以及建立怎样的场景坐标，这些信息就叫场景描述(scene description).场景的描述是通过二进制场景格式BIFS(binary format for scenes)来完成的，场景描述信息是一个单独的码流，因此对场景码流进行编辑和组合时不需要解码各个对象的码流.为了增加场景的编辑和交互功能，场景描述采用如图9所示的树状结构，树的每个页节点都是一个基本节点，它对应一个基本流，任何一个页节点的父节点是混合节点，混合节点主要用于场景的编辑和组合.在实际的应用中这种结构并不是静态的，它能够添加、删除和改变节点.
+
+
+图9　场景描述结构图
+　　MPEG-4容许用户交互式操作各种对象，这种交互式可以分为两类：用户端交互和服务端交互.用户端交互就是改变场景描述节点的属性，如使某个对象可见或消失、通过鼠标或键盘改变对象的位置或3D对象的视点和改变文本对象的字体和尺寸等，这些操作都是在解码端完成，不需要改变码流的内容.服务端交互通过用户在解码端的操作，服务端要进行相应的反映，这种交互需要上行通道.场景描述是建立在VRML的二值场景格式BIFS基础上，更多的信息可以参考ISO/IEC14772-1.
+2.3　MPEG-4的框架(profile)和级别(level)
+　　MPEG-4提供了大量的、丰富的音频视频对象的编码工具，能够满足各种各样的应用需要.对于某一特定的应用，只有一部分系统、视频和音频的编码工具被采用，框架就是针对特定的应用确定要采用的编码工具，它是MPEG-4提供的工具集的一个子集.每一个框架又有一个或多个级别来限制计算的复杂度.如图10所示MPEG-4共有4类框架：视频框架、音频框架、图形框架和场景描述框架.
+
+
+图10　MPEG-4框架图
+3　与MPEG-4相关的研究
+　　虽然MPEG-4标准的主要内容、编码工具以及码流格式已经基本上确定，由于MPEG-4许多新的编码技术是建立在图像分析与合成、计算机图形学、虚拟现实和计算机视觉等基础上，这些新的编码技术要走向使用化还需要配合大量的工具和研究，如基于对象的编码就需要图像和视频分割工具、Sprite编码需要生成全景图像、基于模型的编码要建立模型和跟踪模型、3D人脸和身体的编码需要分析和合成工具等.这些技术和工具不包含在标准之中，而是作为标准的开放部分留待深入研究，下面将讨论这些相关领域的研究工作.　　
+3.1　图像和视频的分割
+　　图像分割是计算机视觉中最困难的问题之一，虽然提出了许多分割技术，但还没有一个很完美的方法［19～21］.图像分割的难点在于用于分割的信息，如局部的统计量、形状参数和运动参数等，需要利用分割的结果来精确获取，这样就陷入了一个循环之中.而且在自然图像和视频分割中，物体没有一个固定的形状和结构信息，计算机视觉研究结果表明，不仅灰度信息不足以对图像进行分割，高层次的形状和运动等几何信息也不足以给出正确的分割结果，需要更高层次上各种物体的物理及概念层次的知识.根据图像的分割中所使用的分割信息，我们把图像的分割技术分为基于纹理的分割、基于运动的分割和基于时空的分割3类.
+　　图像和视频分割所用的技术有　①根据亮度、色彩和运动等各种特性选择一个合适的阈值将前景对象从背景中分割出来，这是最基本的分割方法［22,23］.　②聚类算法则可以按要分割的对象特征把图像分割成K个区域［24,25］，这种分割方法事先需要知道正确的分类数，聚类所用的特征既可是一阶也可以是高阶的.③利用图像的统计特性，采用概率统计的方法进行分割，如最大后验概率MAP(maximum a posteriori probability)和具有Gibbs分布的马尔可夫随机场MRF(Markov random field)等［26～28］.④数学形态学中的水线算法是一个有效的纹理图像分割工具［29，30］，水线算法分割图像的方法是基于区域生长的方法，对图像噪声有较好的鲁棒性.
+　　尽管对图像的分割技术进行了深入的研究，对一些特定的图像的自动分割能得到较好的效果，如简单背景下人的头肩图像等，复杂环境下或任意图像的自动分割的效果都很不理想.为了实现MPEG-4的基于对象的编码分割工具是必不可少的，因此需要一个有效的分割工具，该工具能够方便的对自动分割的结果修改和给自动分割提供高层的信息，为了提高分割效率，基于对象的跟踪技术［31，32］也必须包括其中.
+3.2　全景图像的生成
+　　采用图像的镶嵌技术自动生成某一个3D场景的全景图并不是一项新的研究，它传统的应用是将许多遥感图像和卫星图像生成一个大的地形图［33］，随着该技术的发展其应用的范围也越来越广［34～36］.在新的MPEG-4标准中就有许多方面需要直接或间接用到图像的镶嵌技术，如Sprite编码、3D 人脸和身体对象的编码中基于图像的着色以及基于内容的视频检索等.全景图像可以通过许多特殊的技术来得到，如用全景相机直接把一个场景拍摄到一段长胶片上，用大视角的相机拍摄或用全方位相机拍摄，这些都需要特殊的设备，更实用的技术是将普通相机拍摄的许多图像或一段视频镶嵌成全景图［37～39］.
+　　描述多幅图像的位置关系或一段图像序列的运动变化，首先需要建立一个坐标系，它是分析图像的基础.建立的坐标系既可以是3D场景坐标又可以是2D的图像平面坐标，根据不同坐标系所采用的运动模型也不同.在2D的图像平面通常采用公式（3）的投影模型描述各个图像之间的关系，这种模型不考虑3D场景内的物体运动，把图像的变化作为是相机的运动引起的.在图像镶嵌中也经常采用公式（4）或（5）把3D场景转换到柱面或球面坐标系，假设相机的焦距已经知道，为了建立一个柱面或球面的全景图，只要估计各个图像的粘贴角度和垂直移动即可.
+
+　　3D场景物体的运动也可以直接在3D空间上描述，如果以相机的中心为坐标原点建立3D的场景坐标，空间上的点P与它在图像平面上的对应点X的关系由式（6）描述，其中T是位移变化，V是相机的焦距变化，R是3D的旋转距阵.因此用上面的模型描述相邻两帧图像之间的运动关系，通过最小均方准则计算各个运动模型的参数，用这些图像的运动参数按它们的实际位置镶嵌出全景图.
+X=TVRP　　(6)
+其中
+
+　　MPEG-4需要提供的图像镶嵌工具能准确快速的生成一段图像序列的全景图，全景图不能出现缝隙和重影，否则会造成Sprite编码的性能急剧下降.另外还需要将图像的镶嵌技术结合到编码中去，提高动态Sprite编码技术的性能.
+3.3　人脸的检测与跟踪
+　　在视频电话和视频会议等头肩序列的编码中，人脸的检测与跟踪是基于模型编码的基础，在MPEG-4的2D网格编码和3D人脸对象的编码都需要提供实时人脸检测和跟踪工具为模型的匹配提供帮助.为了能在复杂背景、无约束光照和任意姿势条件下正确地检测和跟踪人脸，许多技术被应用到这方面的研究.
+　　固定模板法是设计一个或几个参考模板，然后计算测试样本与参考模板之间的匹配测度，通过阈值来判断图像的某一区域是否存在人脸，这种方法比较简单，在实际应用中只是作为初检测或预处理的手段［40］.变形模板［41，42］与固定模板法基本相同，但模板中包含一些非固定的元素.一种方法是手工构造参数化的曲线和曲面以表征人脸中的某些非固定特征，如眼睛、鼻子和嘴唇等.另一种方法是系统自动产生自适应的曲线和曲面，以构成变形人脸模板.人脸规则法［43，44］是从图像的结构上来进行检测的，人脸作为自然界中的一类特定事物，反映在图像上，具有一定的结构分布特征，即人脸规则.可以通过检测图像是否满足这些规则或满足这些规则的程度来确定图像中是否存在人脸.样本学习［45，46］是将人脸检测视为从非人脸样本中识别人脸样本的模式识别问题，通过对人脸样本集和非人脸样本集的学习产生分类器，普遍采用的方法是人工神经网络.彩色信息是利用人脸的肤色在彩色空间中的分布相对较集中，可以用来检测和跟踪人脸.该方法设计了一个肤色模型来表征人脸颜色，并利用一个感光模型对输入图像修正和补偿，然后定位和跟踪人脸.Eigenface技术的实质是主成分分析［47］和K-L变换.文献［48］提出了特征脸(eigenface)的概念，认为所有人脸在相同分辨率图像所构成的空间中组成一个人脸子空间，目标图像与其在子空间的投影之间的距离可作为检测测度.
+　　人脸跟踪主要包括基于运动 (motion-based ) 的方法和基于模型 (model-based )的方法［49,50］.一般采用基于模型的方法或者运动与模型相结合的方法［51～53］.MIT的Pentland和Tony提出了一种基于人脸3D模型的跟踪方法.通过高斯时空滤波器提取运动目标特征，再用卡尔曼滤波器区分背景和目标，然后与人脸3D模型相匹配［49］.此外,人脸的颜色在色度空间中分布较为集中,利用人脸肤色信息建立肤色模型也是一种简单有效的方法［52］.
+　　为了能在复杂背景、无约束光照和任意姿势条件下正确地检测和跟踪人脸，通常需要建立一个具有多级结构的人脸检测模型［54］, 分别提取人脸不同性质的共性特征, 来达到检测人脸的目的.
+3.4　2D网格模型的建立与跟踪
+　　MPEG-4中2D网格对象的编码规定了编码网格节点的位置和运动矢量的方法和格式，但是非规则网格的节点的位置怎样选择能更正确地估计节点的运动，有更高地编码效率，以及如何跟踪网格的变化，作为一个开放性的问题有待进一步深入研究.
+　　规则网格［55，57，58］是最简单的选择，按一定的规则选取网格模型的节点虽然能高效地编码节点的位置，但节点的位置选取以及网格的连接并不能够反映图像的结构和边界，在一个网格片中会存在不同的运动和不同的纹理特性，影响到运动估计的准确性和纹理映射的效果.自适应网格模型［56，61］是在规则网格模型的基础上通过分裂和合并技术，把不满足要求的网格片分裂为几个小片，这种网格模型可以在一定程度上反映图像的内容和结构.基于图像内容的网格模型主要是采用图像分析技术来生成网格模型，得到的网格模型能很好的反映图像的边界和轮廓.许多不同图像分析技术被用来生成基于内容的网格模型［60～63］.另外2D的人脸图像的编码可以采用通用的人脸模型去匹配，这种模型包含更多的先验知识，能有更高的编码效率［64］.
+　　三角形片的运动变化通常采用6参数仿射模型描述，模型的运动变化过程中其拓扑结构保持不变，由于在估计网格节点的运动时其相邻节点的位置改变会影响运动估计的结果，因此网格模型的运动估计需要求全局最优解.Brusewitz［57］提出的TBM(triangle-based motion compensation)方法，先采用块匹配技术在较小的范围内估计各个顶点的大致的运动，为了精确的求解所有顶点的运动，TBM方法采用基于梯度的运动估计方法，同时计算所有顶点的运动.虽然前面的块匹配技术能给梯度搜索提供好的初始化值，但TBM方法的计算量相当大.Nakaya［58,59］提出六边形匹配的TBM方法，根据规则的三角形网格的拓扑结构的特点，每个顶点(除边界点外)是6个共点的三角形所组成的六边形的中心，该点的运动在这个六边形的区域内估计，为了求解整个网格的最优的运动估计采用了迭代算法.
+　　总之，尽管存在着不同的技术来进行网格模型的运动估计和跟踪，但是这些方法不是计算量太大无法满足实时性的要求，就是不能保证求得全局最优解，因而需要把网格的跟踪与最优化的方法相结合探求更有效的算法.
+3.5　3D人脸身体模型的分析和合成
+　　3D人脸身体模型对象的编码涉及到更多的领域，需要更多的辅助工具.具有真实感的3D人脸模拟技术和具有真实感的虚拟人技术在可视电话、电视会议、虚拟环境和电影特技等许多领域有着重要的应用.为了能得到特定人的FDP和BDP参数，就需要有合适的工具提取这些参数；为了在解码端模拟与真实人的表情、唇动等脸部运动和手势、行走等身体的运动相似的运动，也需要提取相应的FAP和BAP参数；另外真实的人的纹理是使虚拟人有真实感的重要因素，因此也需要提供基于图像的着色工具.
+　　在3D模型的编码过程中，为了准确地跟踪3D对象的运动、提高编码效率和得到高质量的解码图像，模型与真实人的图像匹配好坏至关重要.不同的人的头部大小和形状以及眼睛、嘴和鼻子的位置都存在着一定的差别，因而需要根据特定人的图像调整通用的3D人脸模型.Aizawa［65，66］等采用了3D映射变换来匹配一个特定人的正面图像，通过人机交互方式标出图像的下颚的顶点、左右太阳穴和左右眉的中心等4个特征点，然后根据这些特征点调整3D网格模型的节点位置使之匹配给定的图像.Kaneko［67］等提出了一个交互式调整3D模型的方法，只不过在这种方法中是标定7个特征点.Huang［68］等提出了先用图像的时空梯度估计脸部的长度和宽度来调整模型的尺度，然后再标定特征点细调模型.许多人对自动调整3D人脸模型的方法也进行了研究［69，70］，自动调整3D人脸模型涉及到人脸的检测与跟踪、人脸的特征识别以及弹性匹配等技术，算法相对来说比较复杂.因此有效的交互式3D模型匹配工具是比较实际的一种选择［71，72］.
+　　3D人脸模型的跟踪也是先估计模型的特征点的运动，再调整相关的各个节点的运动.特征点的运动估计是基于一定的运动模型来描述，估计这些运动参数的方法与前面全景图像的生成中所用方法相同.
+　　必须给3D的人脸和身体模型着上皮肤的颜色，这样才能看起来更接近真正的人，模型的表面纹理可以通过两个方法得到：计算机生成和真实图像.计算机生成皮肤纹理的研究最早用于生成爬行动物的皮肤［73，74］，Ishii［75］等在1993年提出了一个生成人的皮肤纹理模型，这个模型由两部分组成：皮肤的几何模型和皮肤的表面反射模型，皮肤的几何模型反映皮肤的皱纹等特征，皮肤的表面反射模型反映真实皮肤的光特性.计算机生成皮肤的纹理信息的方法虽然在编码应用中不用传输纹理信息，但生成的纹理缺乏真实感.为了得到具有真实感的合成人脸图像，通常采用人脸的真实图像对模型进行着色.真实的纹理信息既可以用人脸不同角度的多幅图像描述，也可以用图7所示人脸全景纹理图来描述，采用人脸全景纹理能更简洁地描述人脸的所有纹理信息，为了得到纹理全景图需要特殊的仪器或从多幅图像镶嵌而成.
+4　结　　语
+　　MPEG-4新的标准应用将涉及到许多相关领域的研究和发展，如计算机图形学、计算机视觉、多模式接口、VR、网络等，同时又为各种各样的多媒体信息提供了统一的压缩方法和描述格式.我们实验室承担了国家在多功能感知机方面的多项重要课题，在语音、人脸、表情、唇动和手语等多信息的分析和识别研究中做了不少工作，在语音、表情、手语和唇动的合成方面也取得了不少成果.随着MPEG-4标准的公布，语音、图像和文本等多媒体信息可以通过统一的规范来描述和交流，同时各种信息的分析和合成的研究也将促使MPEG-4标准更快走向实用化.■
+基金项目：本课题得到国家自然科学基金(项目编号69789301)、国家“八六三”高科技基金(项目编号863-306-03-01-1)的资助.
+作者简介：高文，男，1956年4月生，教授，博士生导师，现任中国科学院计算技术研究所所　　　　　　长，国家“八六三”计划智能计算机主题专家组组长(首席专家)，联想中央研究院　　　　　　院长，主要研究领域为人工智能和多媒体技术，侧重于计算机视觉、模式识别与图　　　　　　像处理、多媒体数据压缩等.
+　　　　　吴枫，男，1969年7月生，博士研究生，主要研究领域为人工智能应用和多媒体技　　　　　　术，侧重于计算机视觉、模式识别与图像处理、多媒体数据压缩、多模式接口以及　　　　　　虚拟现实等.
+作者单位：高文（哈尔滨工业大学计算机科学系　哈尔滨　150001）
+　　　　　吴枫（哈尔滨工业大学计算机科学系　哈尔滨　150001）
+　　　　　高文（中国科学院计算技术研究所　北京　100080）
+参考文献：
+［1］Overview of the MPEG-4 standard. ISO/IEC JTC1/SC29/WG11, N2323. Dublin, Ireland, 1998
+［2］Overview of MPEG-4 functionalities supported in MPEG-4 Version 2. ISO/IEC JTC1/SC29/WG11, N2197. Tokyo, Japan, 1998
+［3］PEG-4 requirements, Version 8. ISO/IEC JTC1/SC29/WG11, N2321. Dublin, Ireland, 1998
+［4］MPEG-4 applications document. ISO/IEC JTC1/SC29/WG11, N2322. Dublin, Ireland, 1998
+［5］Sikora T.The MPEG-4 video standard verification model.IEEE Trans on Circuits and Systems for Video Technology, 1997,7(1):19～31
+［6］Pereira F,Alpert T.MPEG-4 video subjective test procedures and results.IEEE Trans on Circuits and Systems for Video Technology,1997,7(1):32～51
+［7］Kunt M,Ikonomopouls A,Kocher M.Second generation image coding techniques. Proc of the IEEE, 1985,73(4): 549～575
+［8］Kunt M,Benard M,Leonardi R.Recent results in high-compression image coding. IEEE Trans on Circuits and Systems, 1987, 34(11):1306～1336
+［9］Gerken P.Object-based analysis-synthesis coding of image sequences at very low bit rates. IEEE Trans on Circuits and Systems for Video Technology, 1994, 4(3):228～235
+［10］Li H, Lundmark A,Forchheimer R.Image sequence coding at very low bitrates: A review. IEEE Trans on Image Processing,1994,3(5):589～609
+［11］Aizawa K,Huang T S.Model-based image coding: Advanced video coding techniques for very low bit-rate applications. Proc of the IEEE, 1995,83(2):259～270
+［12］Tekalp A M,Beek P V,Toklu C.Two-dimensional mesh-based visual-object representation for interactive synthetic/natural digital video. Proc of the IEEE,1998,86(6): 1029～1051
+［13］MPEG-4: Visual committee draft.ISO/IEC JTC1/SC29/WG11, N2202. Tokyo, Japan, 1998
+［14］MPEG-4:Audio committee draft.ISO/IEC JTC1/SC29/WG11, N2203. Tokyo, Japan, 1998
+［15］Irani M,Hsu S,Anadan P.Video Compression using mosaic representations. Signal Processing:Image Communication,1995, 7(4～6): 529～552　　
+［16］Lee M C,Chen W G.A layered video object coding system using sprite and affine motion model. IEEE Trans on Circuits and Systems for Video Technology, 1997, 7(1):130～145
+［17］吴枫，高文.动态Sprite编码的研究与改进. 计算机学报，1999, 22(3):262～268
+　　　(Wu Feng, Gao Wen. Research and improvement on on-line Sprite encoding. Chinese Journal of Computers (in Chinese). 1999, 22(3):262～268)
+［18］SNHC Verification Model 8.0. ISO/IEC JTC1/SC29/WG11, N2229. Tokyo, Japan, March, 1998
+［19］马颂德，张正友.计算机视觉――计算理论与算法基础.北京： 科学出版社，1998
+　　　(Ma Songde, Zhang Zhengyou. Computer Vision――Computing Theory and Algorithm Basics (in Chinese). Beijing: Science Press, 1998)
+［20］Tekalp A M.数字视频处理.北京：清华大学出版社， 1997
+　　　(Tekalp A M. Digital Video Processing (in Chinese). Beijing: Tsinghua University Press, 1997)
+［21］Dufaux F,Moscheni F.Segmentation-based motion estimation for second generation video coding techniques. In: Torrres L,Kunt M eds, Video Coding: The Second Generation Approach. Boston:Kluwer Academic Publishers, 1996.219～263
+［22］Snyder W,Bilbro G.Optimal thresholding――A new approach.Patt Recog Lett,1990,11(5):803～810
+［23］Lee S U,Chung S Y,Park R H.A comparative performance study of several global thresholding techniques for segmentation. Comp Vis Graph Image Proc,1990, 52(2):171～190
+［24］Pappas T N.An adaptive clustering algorithm for image segment. IEEE Trans on Signal Proc,1992,40(4):901～914
+［25］Coleman G B,Andrews H C.Image segmentation by clustering. Proc of the IEEE,1979,67:773～785
+［26］Derin H,Elliott H.Modeling and segmentation of noisy and textured images using Gibbs random field. IEEE Trans on Patt Anal and Mach Intel, 1987,9:39～55
+［27］Kervrann C, Heizt F.A Markov random field model-based approach to unsupervised texture segmentation using local and global spatial statistics. IEEE Trans on Image Processing, 1995,4(6):856～862
+［28］Li S Z.Markov Random Field Models in Computer Vision. New York:Springer-Verlag, 1995
+［29］Beucher S ,Meyer F.The morphological approach to segmentation: The watershed transformation. In: Dougherty E R ed. Mathematical Morphology in Image Processing.New York: Marcel Dekker, 1992
+［30］Vincent L,Soille P.Watersheds in digital spaces: An efficient algorithm based on immersion simulations. IEEE Trans on Patt Anal and Mach Intel,1991, 13(6):583～598
+［31］Meyer F,Bouthemy P.Region-based tracking in an image sequence.In: Europ Conf on Computer Vision.Italy: Santa Margherita,1992.476～484
+［32］Legters G R,Tzay Y Y.A mathematical model for computer image tracking. IEEE Trans on Patt Anal and Mach Intel,1982,4(6):583～594
+［33］Moffitt F H,Mikhail E M.Photogrammetry,New York:Harper &Row,1980
+［34］Irani M,Hsu S,Anandan P.Video compression using mosaic representations. Signal Processing:Image Communication,1995,7: 529～552
+［35］Chen S,Williams L.View interpolation for image synthesis. In: SIGGRAPH'93. New Orleans, 1993.279～288
+［36］Irani M,Anandan P.Video indexing based on mosaic representations. Proc of the IEEE,1998,86(5):905～921
+［37］Szeliski R,Shum Y Y.Creating full view panoramic image mosaics and environment maps. In:SIGGRAPH'97. Los Angeles, 1997.251～258
+［38］Kang S B,Weiss R.Characterization of errors in compositing panoramic images. Digital Equipment Corporation. Cambridge Research Lab,Tec Report: 96/2,1996
+［39］Szeliski R.Video mosaics for virtual environments. IEEE Computer Graphics and Applications, 1996, 6(2):22～30
+［40］Brunelli R,Poggio T.Face recognition: feature versus templates.IEEE Trans on Patt Anal and Mach Intel,1993,15(10): 1042～1052
+［41］Yuille A,Hallinan P,Cohen D.Feature extraction from faces using deformable templates.International Journal of Computer Vision,1992,8(2): 99～111
+［42］Chow G, Li X.Towards a system for acoustic facial feature detection. Pattern Recognition,1993, 26(12):1739～1755
+［43］Yang G.Human face detection in a complex background. Pattern Recognition, 1994, 27(1):53～63
+［44］Sinha P.Object recognition via image invariants: A case study.In: Investigative Ophthalmology and Visual Science. Florida, 1994.1735～1740
+［45］Sung K,Poggio T.Example-based learning for view-based human face detection.Tech Report of MIT, AI Memo:1521, 1994
+［46］Rowley H A,Buluja S.Human face detection in visual scenes.Technical Report of CMU: CMU-CS-95-158R,1995
+［47］Pentland A, Moghaddam B. Thad starner view-based and modular eigenspaces for recognition. In: Proc IEEE Computer Soc Cont on Computer Vision & Pattern Recognition. Colorado, USA, 1994. 84～91
+［48］Turk M A, Pentland A P. Face recognition using eigenfaces vision and modeling group. Journal of Cognitive Neuroscience, 1991, 3(1):71～86
+［49］Mckenna S, Gong S. Tracking faces. In: Proc of the Int'l Conf on Acoustic Face and Gesture Recognition. vermont: killington, 1996. 203～206
+［50］Pentland A. Modal matching for correspondence and recognition. IEEE Trans on Patt Anal and Mach Intel. 1995 17:1123～1129
+［51］Yang J, Pentland A. Real-time tracking of the human body. Tech Rep of CMU: cmu-cs-95-210, 1995
+［52］Gong S, Psarrou A. Tracking and recognition of face sequences. In: Eur Workshop on Combined and Synthetic Image Processing for Broadcast and Video Production. Hamburg, 1994
+［53］Basu S., Essa I. Motion regularizaiotn for model-based head tracking. Tech Rep of MIT: 362, 1996
+［54］刘明宝. 人脸检测与跟踪的研究［博士论文］. 哈尔滨工业大学，哈尔滨，1997
+　　　(Liu Mingbao. Researches on facical detecting ［Ph D dissertation］(in Chinese). Harbin Institute of Technology, Harbin, 1997)
+［55］Sullivan G J. Bake R L. Motion compensation for video compression using control grid interpolation In: Proc ICASSP'91. Toronto, Canada, 1991. 2713～2716
+［56］Huang Chung-Lin, Hsu Chao-Yuen. A new motion compensation method for image sequence coding using hierarchical grid interpolation. IEEE Trans on Circuits and System for Video Technology, 1994, 4(1):42～57
+［57］Brusewitz H. Motion compensation with triangles. In: Proc 3rd Int'l Conf on 64 Kbit Coding of Moving Video. Rotterdam, Netherlands, 1990
+［58］Nakaya Y, Harashima H. Motion compensation based on spatial transformations. IEEE Trans on Circuits and System for Video Technology. 1994, 4(3):339～356
+［59］Nakaya Y, Harashima H. An iterative motion estimation method using triangular patches for motion compensation. In: SPIE Visual Commun and Image Processing '91. Visual Commun, Vol 1605. Boston, MA, 1991
+［60］Altunbasak Y, Tekalp A M. Closed-form connectivity-preserving solutions for motion compensation using 2-D meshes. IEEE Trans on Image Processing, 1997, 4(3):1255～1269
+［61］Altunbasan Y. Object-scalable, content-based video representation and motion tracking for visual communications and multimedia ［Ph D dessertation］, University of Rochester, New York, 1996
+［62］Dudon M, Avaro O, Roux C. Triangular active mesh for motion estimation. Signal Processing: Image Communication, 1997, 10: 21～41　　
+［63］Wu F, Gao W, Qu L J. Mesh generation algorithm with morphological tools. In: ICMI. Hong Kong, 1999
+［64］Reinders M J T. Model adaptation for image coding ［Ph D dessertation］, Delft University, Netherlands, 1995
+［65］Aizawa K, Harashima H, Saito T. Model-based analysis-synthesis image coding system for a person's face. In: Signal Proc: Image Comm, 1989, 1(2): 139～153
+［66］Aizawa K. Model-based synthesis image coding system. In: Proc Globe Com '87. Tokyo, Japan, 1987. 45～49
+［67］Kaneko M, Koike A, Hatori Y. Coding of facial image sequence based on a 3D model of the head and motion detection. Journal of Visual Comm and Image Representation, 1991, 2:39～54
+［68］Huang T S, Reddy S C, Aizawa K. Human facial motion modeling, analysis, and synthesis for video compression. SPIE Visual Communications and Image Processing, 1991, 1605:234～241
+［69］Huang H, Ouhyong M, Wu J. Automatic feature point extraction on a human face in model based image coding. Opt Eng, 1993, 32: 1571～1580
+［70］Reinders M T, Sankur B. Transformation of a general 3D facial model to an actual scene face. In: 11th Int'l Conf Pattern Recog. Hague, Netherlands, 1992. 75～59
+［71］晏洁，高文，尹宝才等. 具有真实感的三维虚拟特定人脸生成方法. 见：第二届中国计算机图形学学术会议. 桂林，1998. 142～148
+　　　(Yan Jie, Gao Wen, Yin Baocai et al. Generation of realistic 3-d specific virtual human face. Chinagraph'98. Guilin, 1998. 142～148)
+［72］高文，陈熙林，晏洁. 虚拟人面部行为的合成. 计算机学报，1998, 21(8): 694～703
+　　　(Gao Wen, Chen Xilin, Yan Jie, Synthesis of facial behavior for virtual human. Chinese Journal of Computers, 1998, 21(8):694～703)
+［73］Miller G. The motion dynamics of snakes and worms. Computer Graphics, 1988, 22(4): 169～178
+［74］Kaufman A. Ts1――A texture synthesis language. Vusual Computer, 1988, 4(3): 148～158
+［75］Ishii T, Yasuda T, Toriwaki J. A generation model for human skin texture. In: Thalman NM, Thalmann D eds, Proc CG International'93:Communicating with Virtual Worlds. Tokyo: Springer-Verlag, 1993. 139～150
+收稿日期：1999-04-08

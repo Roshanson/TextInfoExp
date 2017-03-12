@@ -1,0 +1,92 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.397-400
+
+
+
+关于选择函数路径无关性条件的一个注记
+罗云峰岳超源　陈
+摘　要　通过对选择函数路径无关性条件LPI和LSPI的分析，重新确定了条件LPI和LSPI间的相互关系，所得结论表明：条件LSPI和LPI相互独立而非条件LSPI隐含LPI.
+关键词　选择函数，路径无关性条件，序贯路径无关性条件.
+A NOTE ON PATH INDEPENDENCE OF CHOICE FUNCTION
+LUO Yunfeng　YUE Chaoyuan　CHEN Ting
+(Institute of Systems Engineering,Huazhong University of Sci. and Tech.,Wuhan　430074)
+Abstract　　By analysing the path independence conditions of choice function, the correlation between lower path independence (LPI) and lower sequential path independence (LSPI) can be established. As shown in this paper, LPI is independent of LSPI, not implied by LSPI.
+Key words　Choice function, path independence, sequential path independence.
+　　选择函数的路径无关性问题是决策理论研究的一个基本问题［1］.选择函数的路径无关性形式化表示(即路径无关性条件)有两类――路径无关性条件PI(path independence)［2］和序贯路径无关性条件SPI(sequential path independence)［3］.本文拟对上述两类条件进行分析，确定它们间的相互关系，对文［4］中的一个结论进行更正.
+1　准备工作
+　　用X=｛x,y,z,…｝表示所有可行方案的集合，其中x,y,z,…表示可行方案；V=｛S｜SX且S≠｝表示备选方案集集合，即X的非空子集的集合.
+　　所谓选择函数是定义在V上的函数关系C(．)
+C:V→V,
+即S∈V，有C(S)∈V且C(S)S.因此，选择函数实际上是“任意给定一个备选方案集S(即一种选择情形)，从中选出一个或几个方案作为选择结果”的一种选择机制(关系)［1，5］.
+　　用W=｛v1,v2,…,vm｝表示X的子集族，
+　　定义1［2］. 路径无关性条件PI：设
+　　路径无关性条件PI是Plott将选择过程看成是一种“分而治之”(divide and conquer)的过程而提出来的［2］.所谓“分而治之”就是指在选择中，先将一个“大的被选方案集”S(S∈V)划分为许多“小的方案集”Si(∪Si=S)，并对每个“小的方案集”Si分别进行选择；再将所有“小的方案集”的选择结果C(Si)合并为一个新的被选集(∪C(Si))，并对新的被选集进行选择.Plott的这种“分而治之”的过程在实际选择中随处可见.例如，各种分预赛和复赛(或决赛)两个阶段(甚至多个阶段)进行的比赛就可以看成是一个“分而治之”的过程.
+　　“分而治之”可以简化选择过程，减少选择的次数和计算量.但是，“划分”(divide)方式的不同往往会造成最终选择结果的不同［2］，因此，“分而治之”不能保证得到的选择结果总是最优.
+　　Bandyopadhyay将选择过程看成是连续进行的“两两比较”(binary comparison)的过程而提出了序贯路径无关性条件SPI.
+　　设S∈V，用Ω(S)表示所有的由｛1,2,…,｜S｜｝(｜S｜表示S中方案个数)到S的一一对应的集合.设ωK∈Ω(S)，对于给定的选择函数C(．)，令
+
+　　ωKT1,ωKT2,…,ωKT｜S｜表示的是由选择函数C(．)按ωK给定的顺序对S中的方案进行“两两比较”而得到的S的子集族，其中ωKT｜S｜表示进行连续的“两两比较”得到的最后结果.
+　　定义2［3］. 序贯路径无关性条件SPI：设S∈V，ωK∈Ω(S),C(S)=ωKT｜S｜.
+　　定理1［4］. 当选择函数C(*)满足条件SPI时，一定满足条件PI，即条件SPI隐含PI.
+2　两类路径无关性条件间的相互关系
+　　为了讨论问题的方便，一般将路径无关性条件PI分解为UPI(upper path independence)条件和LPI(lower path independence)条件，将序贯路径无关性条件SPI分解为USPI(upper sequential path independence)条件和LSPI(lower sequential path independence)条件.
+　　定义3［5］.上路径无关性条件UPI：设
+　　定义4［5］. 下路径无关性条件LPI：设
+　　定义5［4］. 上序贯路径无关性条件USPI：设
+　　定义6［4］. 下序贯路径无关性条件LSPI：设
+　　定理2［4］. 条件USPI和UPI相互等价.
+　　关于条件LSPI和LPI间关系，文［4］给出了一个这样的结论(即文［4］中定理4，以下简称原命题)：条件LSPI隐含LPI.从直觉上看文［4］中的结论似乎正确，但从下面的分析和例子中可以看出文［4］中的结论是错误的.
+　　首先分析一下文［4］中有关证明的不妥之处.
+　　为了证明当LSPI成立时(即S∈V和ωK∈Ω(S),ωKT｜S｜C(S))，LPI也成立(即S∈V和文［4］提出了如下命题.
+　　命题1.设S∈V，当选择函数C(．)满足条件LSPI时，W∈VS，ωK∈Ω(S)，使
+　　　(1)
+　　显然，如果命题1成立的话，原命题自然成立.为了证明命题1，文［4］用反证法得到了如下“矛盾”(确切说应是推论)：
+　　假设
+　　根据上述“矛盾”文［4］认为命题1成立.
+　　仔细分析文［4］中命题1的证明就可发现其错误在于文［4］只证明了W∈VS，使(1)式成立，而并未证明命题1所要求的W∈VS，(1)式成立.所以文［4］实际上并未真正证明命题1正确与否，故由命题1直接推导出的结论是不可靠的.事实上，从下面的例子可以看出不仅命题1不正确，而且原命题也不正确.
+　　例1. 设X=｛x,y,z｝，定义在V=2X＼｛｝上的选择函数C1(．)按如下方式给出
+C1(｛x｝)=｛x｝;　C1(｛y｝)=｛y｝;　C1(｛z｝)=｛z｝;　C1(｛x,y)｝)=｛x｝;
+C1(｛y,z｝)=｛y｝;　C1(｛x,z｝)=｛z｝;　C1(｛x,y,z｝)=｛x,y,z｝.
+　　对于上述选择函数C1(．)很容易得到如下结论：
+　　 C1(．)满足条件LSPI和LPI；
+　　 对于S=X=｛x,y,z｝,令W=｛｛x｝,｛y｝,｛z｝｝(W∈VS)，则
+
+而ωK∈Ω(S),　｜ωKT｜S｜｜=1即ωKT｜S｜为单元素集.因此，当W=｛｛x｝,｛y｝,｛z｝｝时，使C1(∪C1(v))ωKT｜S｜成立.故命题1不成立.
+　　例2. 设X=｛x,y,z,w｝，定义在V=2X＼｛｝上的选择函数C2(*)按如下方式给出：
+C2(｛x｝)=｛x};　C2{y})=｛y｝;　C2(｛z｝)={z};　C2({w})={w};
+C2({x,y})={x};　C2({x,z})={x};　C2({x,w})={x};
+C2({y,z})={y};　C2({y,w})={y};　C2({z,w})={z,w};
+C2({x,y,z})={x,y,z};　C2({x,y,w})=｛x,y,w｝;
+C2({x,z,w})={x,z,w};　C2({y,z,w})={y,z,w};
+C2({x,y,z,w})={x,y,z}.
+　　对于上述选择函数C2(．)，可得如下结论：
+　　①设S∈V，当|S|=1，2，3时，容易验证C2(．)同时满足条件LPI和LSPI，即定义域为V′=V＼｛X｝时，原命题成立;
+　　②当S=X时，ωK∈Ω(S),　ωKT｜S｜={x}C2(S)={x,y,z},这说明当S=X时C2(．)也满足条件LSPI，因此，C2(．)在定义域V=2X＼｛｝上满足条件LSPI；
+　　③当S=X时，令W={{x,y},{z,w}}(W∈VS)，则
+
+所以(即{x,z,w})不是C2(S)(即｛x,y,z｝)的子集，即C2(．)不满足条件LPI，这说明在定义域V=2X＼｛｝上，C2(*)不满足条件LPI.
+　　综合结论①～③可知，对于定义在V=2X＼｛｝上的C2(．)，虽然原命题在V′=V＼{X}上成立，但在定义域V上并不成立.
+　　从下面的例子还可以看到，选择函数C(．)满足条件LPI时，并不一定满足条件LSPI.
+　　例3［4］. 设X={x,y,z}，定义在V=2X＼{}上的选择函数C3(．)按如下方式给出：
+C3({x})={x};　C3({y})={y};　C3({z})={z};　C3({x,y})={x,y};
+C3({y,z})={y,z};　C3({x,z})={x,z};　C3({x,y,z})={y,z}.
+　　对于选择函数C3(．)容易验证，C3(．)满足条件LPI而不满足条件LSPI.
+　　综合例2和例3，可得如下定理.
+　　定理3.条件LSPI和LPI相互独立(即互不隐含).
+　　注1.定理3表明，条件LSPI和LPI相互独立而非LSPI隐含LPI.
+　　注2.虽然序贯路径无关性条件SPI隐含路径无关性条件PI，而上序贯路径无关性条件USPI与上路径无关性条件UPI又相互等价，但不能因此而推导出下序贯路径无关性条件LSPI隐含下路径无关性条件LPI的结论.
+国家自然科学基金(69504005)资助项目.
+　罗云峰　1966年生，1988年毕业于西北工业大学固体火箭发动机专业，1994年获华中理工大学系统工程专业博士学位.1995～1997年在华中理工大学从事博士后研究工作，现为华中理工大学副教授.先后在国内外期刊上发表论文四十余篇，主要研究方向为决策分析、博弈论和社会选择理论.
+　　岳超源　1944年生，1968年毕业于清华大学电机系工业企业电气化及自动化专业，1975年起在华中理工大学任教.1980年开始从事系统工程专业的科研和教学工作，1981～1983年在美国哈佛大学作访问学者.现为华中理工大学教授、博士生导师.主要研究方向为决策分析和教育评估.
+罗云峰（华中理工大学系统工程研究所　武汉　430074　E-mail:Luo-gu@263.net）
+岳超源（华中理工大学系统工程研究所　武汉　430074）
+陈（华中理工大学系统工程研究所　武汉　430074）
+参考文献
+［1］　Arrow K J. Social Choice and Individual Value (2nd ed.). New Haven: Yale University Press, 1963, 73～78
+［2］　Plott C R. Path independence, rationality and social choice. Econometrica, 1973, 41(5)：1075～1091
+［3］　Bandyopadhyay T. Revealed preference theory, ordering and the axiom of sequential path independence. Rev. Econ. Studies, 1988, 55(2)： 343～351
+［4］　Bandyopadhyay T. Sequential path independence and social choice. Soc Choice Welfare, 1990, 7(3)： 209～220
+［5］　Arrow K J,Michael I.Handbook in Mathematical Economics, Vol. Ⅲ. Amsterdom: North-Holland, 1986, 1078～1181
+收稿日期　1998-03-30
+修稿日期　1999-09-20

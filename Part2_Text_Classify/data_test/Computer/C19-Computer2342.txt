@@ -1,0 +1,121 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999　Vol.36　No.7　P.853-858
+
+
+
+（t,n）阈方案的欺诈识别
+谭凯军　诸鸿文　顾尚杰
+摘　要：(t,n)阈方案中的欺诈识别是一个很重要的问题.文中提出了一种有效的基于平方剩余的欺诈识别方案，攻击时的难度相当于分解两个大素数的乘积的难度.它无须使用单向哈希函数，并且对公共参数的完整性给予保证，可以阻止阴谋者起诉陷害某个特殊的成员.它很容易扩展到分享多个秘密的情况.它所需的通信量较Chang-Hwang方案小.
+关键词：欺诈识别, 阈方案, 平方剩余, 秘密分享值
+分类号：TP309；TP918
+CHEATER IDENTIFICATION IN (t,n) THRESHOLD SCHEME
+TAN Kai-Jun
+(Department of Electronic Engineering， Shanghai Jiaotong University, Shanghai 200030)
+ZHU Hong-Wen
+(Department of Electronic Engineering， Shanghai Jiaotong University, Shanghai 200030)
+GU Shang-Jie
+(Department of Electronic Engineering， Shanghai Jiaotong University, Shanghai 200030)
+Abstract：Cheating detection is a very important issue for (t,n) threshold schemes. An efficient cheater detection scheme based on quadratic residues is proposed in this paper. The attack is as difficult as factoring the product of two large prime numbers. The scheme doesn't need any one-way hash function. The integrity guarantee is given to the public parameters, which can prevent a conspirator from falsely accusing any specific members. It can be easily expanded to the multi-secret sharing scheme. The quantity of communication is smaller than that in Chang-Hwang scheme.
+Key words：cheater identification, threshold scheme, quadratic residues, secret shares▲
+1　引言
+　　阈方案主要是用来保护某个秘密不会丢失、损坏或修改.(t,n)阈方案是将一个秘密分成n份分享值并交给相应的成员，其中的任何t个成员可以恢复该秘密，而少于t个是不行的.现实中有很多情形要用到(t,n)阈方案，例如在某个安全部门，档案都保管在一个保险柜里，而打开保险柜的口令作为一个秘密在这个安全部门的高级管理人员中分享，设有n个，在打开保险柜时，必须由这n个中的任意t个相互协作来恢复口令，这一方式即采用(t,n)阈方案.
+　　Shamir［1］和Blakley［2］在1979年提出了(t,n)阈方案问题，此后有许多研究者在这个领域进行研究.在阈方案中，有一个关键的前提条件：即假设所有的成员在恢复秘密时都呈交上他们所拥有的真正秘密分享值.但这种假设只是一种理想状态，实际情况中往往会有人因某种目的而呈交上一个假分享值，欺骗别的成员而单独获得秘密.Tompa和Woll［3］指出了这种欺骗以及方案的不安全性.因此怎样识别欺诈的成员在(t,n)阈方案的实现中是一个重要的问题.在过去的几年里，已有不少有关这方面的研究结果［3～8］.欺诈识别可以确切地指出欺诈者，而欺诈检测只能查出是否有欺诈现象，所以欺诈识别比欺诈检测更有利于系统的安全实现.文献［3］～［5］中的方案解决了欺诈检测，文献［6］～［8］中的则解决了欺诈识别.
+　　Wu-Wu方案［6］以及Hang-Chang-Yang方案［7］都依靠单向哈希函数的安全性，然而正如文献［9］中Harn的分析，大多数单向哈希函数是基于一个循环简单函数的复杂性，虽然他们在开始的时候似乎很难分析，但随着时间的推移，会发现他们很容易遭受某些特殊的攻击.例如最近的研究结果表明，MD5已接近通过密码分析而成功攻击的边缘［10］.文献［8］中Chang-Hwang方案是基于平方剩余的数学基础的，虽然在欺诈识别的验证过程中，所需的计算很简单，但初始化时所需的计算量却不小，而且需要生成很多参数，这不利于扩展到分享多个秘密的情况.而在实际中，一个秘密被揭示后就不能被再使用，相应于它所生成的公共参数和秘密分享值将全部放弃，所以不得不再分享新的秘密，以保证安全需求，这就是多个秘密分享机制的重点内容［16～18］.方案的简单(包括计算与通信量的大小)将保证系统的灵活性和实用性.另外Chang-Hwang方案中，并不能像他所宣称的可以阻止起诉某个特殊的成员.
+　　笔者受Wu-Wu方案［6］和Chang-Hwang方案［8］的启发，提出了一种新型的(t,n)阈方案的欺诈识别方案.
+2　相关的方案
+2.1　Wu-Wu方案
+　　Wu-Wu欺诈识别方案可应用在任何(t,n)阈方案中.假设分享值分配中心SDC已将秘密分享值si(i=1,2,…,n)分配给各成员ui(i=1,2,…,n).SDC将选择一个素数p和一个单向哈希函数h(.)，将其公开，并且计算一个公共值T：
+
+　　当任意t个成员想生成秘密时，通过执行以下步骤可识别出欺诈成员：
+　　步骤1: 所有的t个成员呈交上他们的秘密分享值并计算：
+　　步骤2: 对每个成员uj，检查下面的等式是否成立：
+
+假如上式成立，那么成员uj是诚实的，否则他是一个欺诈者.
+　　该方案的安全性主要依靠单向哈希函数h(.)，因为任何人可根据公开值T求得(uj是n个成员中的任意一个），所以sj的安全性完全依靠h(.).另外文献［8］中指出攻击者可改变T为T′：
+T′=T-b×p2(j-1)，其中-p<b<p,b≠0.
+基于这个T′，成员uj即使呈交上正确的sj也不能通过等式的检测，所以T没有完整性保证.
+2.2　Chang-Hwang方案
+　　Chang-Hwang方案［8］是以平方剩余定理为数学基础建立的,可应用在任何(t,n)阈方案中.假设分享值分配中心SDC已将秘密分享值si(i=1,2,…,n)分配给各成员ui(i=1,2,…,n).SDC选择两个大素数p和q，并计算N=p×q，其中(p+1)mod4=0,(q+1)mod4=0,N的比特长为512.然后产生4对参数：(α,α－1),(β,β－1),(γ,γ－1),(σ,σ－1),其中α∈QRp∩QRq,β∈QRp∩QNRq,γ∈QNRp∩QRq,σ∈QNRp∩QNRq,而ξ×ξ－1＝1（modN）,ξ∈｛α，β，γ，σ｝.QRp，QRq分别表示模p和q的平方剩余的集合，而QNRp，QNRq则分别表示模p和q的非平方剩余的集合.关于平方剩余和非平方剩余的介绍可参见文献［8］.接着SD选择n个互素的整数di(i=1,2,…,n),且di>si,然后SDC利用si,N,α，β，γ，σ来计算公共参数T和各成员的伪分享值.　　
+　　步骤1：利用si计算Bi，使得Bi∈QRp∩QRq
+　　　　If　si∈QRp∩QRq，then Bi∶=si×α mod N,index1∶=′00′；
+　　　　If　si∈QRp∩QNRq，then Bi∶=si×β mod N,index1∶=′01′；
+　　　　If　si∈QNRp∩QRq，then Bi∶=si×γ mod N,index1∶=′10′；
+　　　　If　si∈QNRp∩QNRq，then Bi∶=si×σ mod N,index1∶=′11′；
+　　步骤2：计算Bi模N的平方根xi，使得Bi∶=x2i(modN);
+　　步骤3：产生hi∶=xi‖index1,其中‖是比特串连接符；
+　　步骤4：按步骤1～3相类似的过程，用di计算Ci，使得Ci∈QRp∩QRq，计算Ci模N的平方根yi，产生ri∶=yi‖index2；
+　　步骤5：让s*i∶=siyi.利用中国剩余定理计算满足n个等式的公共值T，这n个等式为T≡s*imoddi(i=1,2,…,n).
+　　于是SDC最后将(T,N,α－1，β－1，γ－1，σ－1)公开，而(hi,di,ri)是成员ui的伪秘密分享值.
+　　当n中的t个成员要生成秘密时，他们各自呈交自己的伪秘密分享值(h′i,d′i,r′i)，其余的成员可验证比值的正确性.他们先从r′i中得到y′i及index2，求取di≡y′2i×σ2(modN)(其中σ2是根据index2的值取α－1，β－1，γ－1，σ－1中的某一个值).如果di≠d′i，那么ui为欺诈者，否则继续验证.从h′i中得到x′i及index1，并计算，如果等式s′i≡x′2i×σ1(modN)成立(其中σ1是根据index1的值取α－1，β－1，γ－1，σ－1中的某一个值)，那么ui为诚实的，否则为欺诈者.在欺诈检测的同时也恢复了秘密分享值si.
+　　Chang和Hwang指出Wu-Wu方案中T没有完整性保证，不能阻止阴谋者起诉陷害某个特殊的成员，而他们的方案却可以.但实际上，Chang-Hwang方案中T虽然不能被改变，但α－1，β－1，γ－1，σ－1仍然有完整性问题.譬如某人将α－1改为c，那么任意一个伪秘密分享值中index2=′00′的成员都无法通过验证，所以该方案并不能像他们所宣称的可以阻止阴谋者起诉陷害某个特殊的成员.
+3　本文方案
+　　因为前两种方案都存在公共参数完整性的问题，所以本文方案对此提出解决方法.在陈述方案之前，先简单介绍基于离散对数的具有消息恢复的数字签名方案.Nyberg和Rueppel提出了一个基本的基于离散对数的具有消息恢复的数字签名方案［11］，并在文献［12］中给出了通用的方法.具有消息恢复的数字签名的基本特点就是验证公式即为恢复消息.然而在消息中必须加进一些冗余的信息，在恢复了消息之后，将检查该消息是否满足冗余的特点.下面简单介绍Nyberg-Rueppel方案.
+　　选择两个素数p和q，并且有q|p-1.再选择GF(p)中的的一个q阶生成元g.签名者A选择xA和yA，分别作为他的私钥和公钥.假设签名的消息为m (m已被添加了冗余消息).A将选择一个随机数k，并计算r≡g-km(modp)，s≡k-rxA(modq)，所以(r,s)就是A对m的签名，接收者B获得签名后将计算出m≡gsyrAr(modp)，并检查m的冗余性，(p,q,g)是公开的.
+　　本文方案也可应用在任何(t,n)阈方案中.假设分享值分配中心SDC已将秘密分享值si(i=1,2,…,n)分配给各成员ui(i=,1,2,…,n).方案中也要用到平方剩余定理，有关的数学定义可参见文献［8］.另外假设系统中已存在了Nyberg-Rueppel数字签名方案的参数，且SDC的私钥和公钥分别是xSDC和ySDC.下面将分两个阶段来介绍本文方案.
+3.1　初始化阶段
+　　SDC将执行以下步骤来产生系统的参数：
+　　步骤1:选择两个大素数p1和q1，并计算，其中N=p1×q1，其中(p1+1)mod4=0，(q1+1)mod4=0,N的比特长为512.并有si∈［1,N-1］,i=1,2,…,n；
+　　步骤2:对每个成员的si(i=1,2,…,n)计算：hi≡s2i(modN)；
+　　步骤3:选择一个素数φ，且有φ>hi(i=1,2,…,n)，将其公开；
+　　步骤4:计算
+　　步骤5:将T作为要签名的消息，加入冗余信息，SDC对T产生的签名是(r,s)，并公布.
+3.2　鉴别阶段
+　　假设n个成员中的任意t个共同来恢复秘密.不失一般的，设为ui(i=1,2,…,t)，他们将完成以下步骤：
+　　步骤1:他们先验证签名(r,s)的正确性，即恢复出T≡gsyrAr(modp)，并检验是否满足冗余性；
+　　步骤2: ui(i=1,2,…,t)呈交上他们的秘密分享值si；
+　　步骤3:对每个ui(i=1,2,…,t)，先计算，再验证：hi≡?s2i(modN)，如果等式成立，表示ui呈交了正确的秘密分享值，否则他是欺诈者.
+4　分析
+4.1　正确性分析
+　　对于用Nyberg-Rueppel签名方案来对T签名以及验证时再获得T值的正确性的过程，可以参见文献［11］.我们主要给出鉴别阶段时步骤3的正确性.
+
+其中：
+P=h1φ1-i+…+hi-1φ－1,
+Q=hi+1φ+…+anφn-i.
+因为φ>hi(i=1,2,…,n)，所以有：
+
+　　所以：0≤P＜1，
+
+　　通过以上过程，我们验证了方案的正确性.
+4.2　安全性分析
+　　Wu-Wu方案的安全性是基于单向哈希函数，然而正如文献［9］中分析，单向函数是基于一个循环的简单函数的复杂性，虽然他们在开始的时候似乎很难分析，但随着时间的推移，会发现他们很容易遭受某些特殊的攻击，所以Wu-Wu方案是不安全的.而本方案却是基于平方剩余定理，即使通过式很容易获得hi，但是必须解hi模N的平方根才能求得si.然而寻找模N的平方根相当于分解大素数的乘积的难度［13］.
+　　另外文献［8］中指出Wu-Wu方案中，攻击者可改变T，也即T没有完整性保证，即使成员呈交了正确的si，但是也无法通过检验.而Chang-Hwang方案同样有公共参数完整性的问题.所以本方案对T进行签名，保证了它的完整性，也就是别人无法改变值T.
+　　任何成员呈交上不正确的si，在验证过程的步骤3都将被检测出.假设成员ui想呈交不正确的分享值s′i，他为了不在验证过程的步骤3将被检测出，必须修改T为T′，使得，但是T由SDC签名，任何人无法修改.
+4.3　计算复杂度分析 
+　　本方案中要用到两种类型的计算，一种是一般的整数计算，一种是有限域内的整数计算.让Ob表示比特运算的时间复杂度，文献［14］中，Aho等人指出一般的整数乘除的时间复杂度是Ob(b×logb×loglogb)，其中b是操作数的比特长度.计算模的幂乘所需的计算量为次模p的模乘，而求模p的乘逆需要次模p的模乘［15］，在方案中，g－1modp可事先计算好并保存起来.所以本方案在初始化阶段，需要的计算量为Ob(n×b×logb×loglogb)(用来产生T)+O(n)模N乘(用来计算hi)+次模p的乘法(用来产生T的签名).而验证时需要的计算量为Ob(2t×b×logb×loglogb)(用来产生hi)+O(t)模N乘(用来计算s2i)+)次模p的乘法(用来验证T的签名).实际上本方案主要的计算量是在对T签名和验证的过程，而签名只是为了保证T的完整性，避免Wu-Wu方案以及Chang-Hwang方案的缺点.Wu-Wu方案以及Chang-Hwang方案的计算量分析参见文献［8］.Chang-Hwang方案的主要优点是验证时所需的计算量很小，但SDC进行初始化时的计算量并不小.随着计算机软硬件的发展，成员的计算能力也是很大的，所以仅把成员计算的高效作为评判条件，而忽视SDC的计算量，这是不完善的.如果Chang-Hwang方案也对公共参数进行完整性保护，那么它的计算量将大大超过本文方案.
+4.4　通信量分析
+　　Chang-Hwang方案的初始化过程中，SDC将总共传送3nlog2Nbit的信息，验证过程中，t个成员所传送的总的信息量为3tlog2Nbit.而本文方案，初始化过程中，SDC将总共传送2log2pbit，验证过程中，t个成员所传送的总的信息量为tlog2N′bit(N′是求si时所选的有限域大小).所以本方案通信量比Chang-Hwang方案小.
+4.5　扩　　展
+　　Chang-Hwang方案虽然在欺诈识别的验证过程中，所需的计算很简单，但初始化时所需的计算量却很大，而且生成的参数也较多，这不利于扩展到分享多个秘密的情况.而在实际中，一个秘密被揭示后就不能被再使用，相应于它所生成的公共参数和秘密分享值将全部放弃，所以不得不再分享新的秘密，以保证安全需求.方案的简单(包括计算与通信量的大小)将保证系统的灵活性和实用性.而本方案的初始化过程较为简单，只是需要生成并签名，验证时涉及的参数也不多.所以本方案更容易应用到分享多个秘密的情况［16～18］.
+5　结论
+　　阈方案主要是用来保护某个秘密不会丢失、损坏或修改，它可以应用在很多场合，但是该方案要正确使用，必须要解决欺诈识别的问题.本文提出了一种有效的基于平方剩余定理的欺诈识别方案，对它进行攻击的难度相当于分解两个大素数的乘积.方案中无须使用单向哈希函数，并且对公共参数的完整性给予保证，这样的话可以阻止阴谋者起诉陷害某个特殊的成员.它较容易扩展到分享多个秘密的情况，所需的通信量也较小.■
+基金项目：谭凯军， 女，1972年6月生，博士研究生，研究方向为网络和信息安全、密码学.
+　　　　　诸鸿文， 男，1939年11月生，上海交大电子工程系首席科学家，博士生导师，研　　　　　　究方向为计算机通信网、CSCW、网络安全. 
+　　　　　顾尚杰， 男，1940年6月生，上海交大电子工程系教授，博士生导师，研究方向为　　　　　　计算机通信网、ATM技术.
+作者简介：谭凯军，女，1972年6月生，博士研究生，研究方向为网络和住处安全、密码学
+　　　　　诸鸿文，男，1939年11月生，上海交大电子工程系首席科学家，博士生导师，研究　　　　　　方向为计算机通信网，、CSSW、网络安全
+　　　　　顾尚杰，男，1940年6月生，上海交大电子工程系教授，博士生导师，研究方向为　　　　　　计算机通信网、ATM技术
+作者单位：谭凯军(上海交通大学电子工程系　上海　200030)
+　　　　　诸鸿文(上海交通大学电子工程系　上海　200030)
+　　　　　顾尚杰(上海交通大学电子工程系　上海　200030)
+参考文献：
+［1］Shamir A. How to share a secret. Comm ACM, 1979, 22(11): 612～613
+［2］Blakley G R. Safeguarding cryptographic keys. In: Proc AFIPS 1979 Natl Comput Conf, New York, 1979. 313～317
+［3］Tompa M, Woll H. How to share a secret with cheaters. J Crypt, 1988, 1: 133～138
+［4］Brickell E F, Stinton D R. The detection of cheaters in threshold schemes. In: Advances in Cryptology-Crypto '88, Berlin: Springer-Verlag, 1988. 2017～2018
+［5］Su H M, Shieh S P. Construction of dynamic threshold schemes. Electron Lett, 1994, 30(24): 2023～2024
+［6］Wu T C, Wu T S. Cheating detection and cheater identification in secret sharing schemes. IEE Peoc E Comput Digit Tech, 1995, 142(5): 367～369
+［7］Hwang S J, Chang C C, Yang W P. New cheater identification in threshold schemes. National Chung Hsing University, TaiChung, Technical Report of the Institute of Computer and Information Science, 1995
+［8］Chang C C, Hwang R J. Efficient cheater identification method for threshold schemes. IEE peoc E Comput Digit Tech, 1997, 144(1): 23～27
+［9］Harn L. Digital signature for Diffie-Hellman public keys without using a one-way function. Electron Lett, 1997, 33(2): 125～126
+［10］Dobbertin H. The status of MD5 after a recent attack. CryptoBytes, 1996, 2(2): 1～6
+［11］Nyberg K, Rueppel R A. A new signature scheme based on the DSA giving message recovery. In: 1st ACM Conference on Computer and Communications Security, Fairfax, USA, 1993
+［12］Nyberg K, Rueppel R A. Message recovery for signature schemes on the discrete logarithm. In: Pre-proceeding of Eurocrypt′94, Perugia, Italy, 1994. 175～190
+［13］Rabin M O. Digitized signatures and public-key functions as intractable as factorization. MIT Laboratory Technical Report: LCS/TR-212, 1979
+［14］Aho A V, Hopcroft J E, Ullman J D. The Design and Analysis of Computer Algorithms. Reading, MA: Addison-Wesley, 1974
+［15］Pohlig S C, Hellman M E. An improved algotithms over GF(p) and its cryptographic significance. IEEE Transactions on Information Theory, 1978, IT-24(1): 106～110
+［16］He J, Dawson E. Multisecret-sharing scheme based on one-way function. Electron Lett, 1995, 31(2): 93～94
+［17］Harn L. Comment: Multistage secret sharing based on one-way function. Electron Lett, 1995, 31(4): 262
+［18］He J, Dawson E. Multistage secret sharing based on one-way function. Electron Lett, 1995, 31(19): 1591～1592
+收稿日期：1998-10-15
+修稿日期：1999-01-18

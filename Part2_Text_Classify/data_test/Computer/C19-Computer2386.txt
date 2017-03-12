@@ -1,0 +1,137 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第9期 Vol.36 No.9 1999
+
+
+
+汉语词语边界自动划分的模型与算法
+付国宏　王晓龙
+摘　要　在引入词形和汉字结合点等概念基础上，文中分别描述了一个基于字串构词能力的词形模型和一个基于词语内部、外部汉字结合度的汉字结合点模型，并采用线性插值方法将两种模型融合于一体进行汉语词语边界划分.在分析汉语切分候选空间的基础上，文中还给出了相应的优化搜索算法.与一般的统计方法相比，文中方法的模型参数可直接从未经加工粗语料中得到，具有较强的适应能力.初步试验表明该方法是有效和可靠的.
+关键词　汉语分词，词形，字结合点
+中图法分类号　TP391；TP301.6
+MODELS AND ALGORITHM FOR ASSIGNING WORD BREAKS TO CHINESE TEXT
+FU Guo-Hong and
+(Department of Computer Science and Engineering, Harbin Institute of Technology, Harbin 150001)
+WANG Xiao-Long
+(Department of Computer Science, Hong Kong Polytechnic University， Hong Kong)
+Abstract　In this paper, the word form model (WFM) based on word formation power of Chinese character string and the character juncture model (CJM) based on the affinity of the Chinese character pairs inside or outside words are described respectively. Then a linear interpolation method is applied to combine these two models together to assign word breaks to Chinese text. The relative searching algorithm is also given after the searching space is analyzed. Compared with general statistic models, the parameters of the models proposed can be directly trained from raw corpus, which results in a strong adaptability. The approach has proven both reliable and efficient by experiments. 
+Key words　Chinese word segmentation, character juncture, word form
+1　引言
+　　词是自然语言中有意义的、可以独立运用的最小单位.大多数自然语言处理系统，如机器翻译、语音识别等都将词作为基本的处理单位.但是汉语文本是基于字的，词与词之间除了标点外没有其它界限标志.因而对于大多数汉语处理，首先要解决的问题是汉语分词.
+　　目前，汉语分词主要有三大类方法：基于词典与规则的方法［1～3］、基于统计的方法［4，5］和混合方法［6］.虽然汉语分词的研究已取得巨大成就，但由于汉语词定义的模糊以及词语链现象和汉语词典覆盖能力的限制，迄今还没有比较实用的分词系统出现.
+　　汉语的分词实际上是一个汉语词语边界划分过程.针对其中存在的切分歧义问题，本文引入汉字结合点和词形等概念，在分析了汉语字串的构词能力、词语内部汉字间结合能力和相邻词的边界字影响基础上，分别描述了词形模型和汉字结合点模型，并采用线性插值方法将两种模型融合于一体进行汉语词语边界划分.同时对汉语分词的切分候选空间进行了分析，并给出相应的优化搜索算法.与传统的统计方法相比，本文提出的方法所需参数可直接通过未经加工的粗语料训练，具有较强的适应能力.理论推导和初步的实验表明，本文提出的方法是有效和可靠的.
+2　基于统计的汉语词语边界划分模型
+2.1　汉语词语边界划分的概率框架
+　　定义1. 设有一含有n个汉字待切分的输入句子S=Cn1=c1c2…cn，其中每一相邻汉字对cici+1(1≤i≤n)称为字结合点(character juncture).结合点有两种类型：词语边界结合点和非词语边界结合点，分别记作：tb=“/”和tf=“”.
+　　定义2.设汉语分词词典为D，若存在汉字字串Cji∈D，则称该字串为词形(word form)，记作f.若存在f∈S，词形f表示的实际上是句子S中的一个切分候选词语.
+　　对于某一词语w=Cji(1≤i≤j≤n)∈S，其内部各汉字结合点标记为tf，而其边界结合点cjcj+1标记则为tb.于是，汉语分词可以描述为这样一个汉语词语边界划分过程：利用汉字结合点标记tb或tf将句子S切分成一系列字串Cji=ci…cj(1≤i≤j≤n)，使得字串所构成的词所形成的词串W=Wm1=w1w2…wm满足汉语语言学要求.设F=Fm1=f1f1…fm为W对应的词形串，T为相应的汉字结合点标记串，则切分词串W可表示为二元组〈F,T〉.设W^为句子S的最佳切分候选，则：
+=argwmaxWPr(W｜C)=argwmaxWPr(F,T｜C)
+=argwmaxWPr(F｜C)Pr(T｜F,C)
+=argwmaxWPr(F｜C)Pr(T｜F)
+(1)
+式中Pr(.)表示概率,arg max(.)表示(.)最大最优.式中第一步推导利用了概率乘法公式，第二步推导则假设结合点标记只在词形这一层面有意义.下面本文将分别从汉字串构词能力（词形模型）和汉字结合点的影响（结合点模型）给出式(1)中概率和的计算公式，最后给出两者结合的计算模型.
+2.2　汉语字串的构词能力描述――词形模型(WFM)
+　　对于给定的输入字串，有Pr(F｜C)=Pr(F)=Pr(W)，这实际上是一个基于词频的分词模型［7］.该模型的关键是词频参数估计，一般通过分词语料的有导师学习，但目前大规模的汉语分词语料还很难获得.文献［4］曾采用串频的方法近似地估计词频，虽然这种方法能实现无导师的学习，但这种方法某种程度上是一种短词优先的方法，因而易产生短词较多的分词结果.文献［7］提出了最大匹配串频的改进方法，虽然能避免分词结果中短词的大量出现，但该方法容易产生这样的数据稀疏：当词w1是词w2的一个子串，而在训练语料中w1总是作为w2的子串出现，那么w1的词频Pr(w1)=0［4］.基于上述问题，我们采用汉字字串构词能力的方法近似估计词频.
+　　从统计角度，词形f=Cji的构词能力(word formation power，WFP)大小不仅与词形的实际使用频度有关，而且与包含该词形的词形使用程度有关.设Pf(f)表示词形f的构词能力，f′表示包含词形f的词形，即f(f′∈D),N(\5)表示词形所含字串的频度，可直接从未加工的文本中学习得到，则
+
+(2)
+设F=f1f2…fm为句子S的某一词形串，假设忽略相邻词形的相互影响，则
+Pr(F｜C)=Pr(f1f2…fm｜Cn1)=Pr(fk｜Cn1)≈Pf(fk)
+(3)
+式(3)即词形模型，它从汉字字串构词能力角度描述句子S切分成词形串F所对应的词串W的可能性.
+2.3 汉字结合点模型(CJM)
+　　设t(cici+1)表示汉字结合点的类型，若某一候选词形是为词f=Cji∈S(1≤i≤j≤n)是为词，则i≤l＜j,t(clcl+1)=tf，而t(cjcj+1)=tb.设Pj(f)为词形f所对应的字结合点标记串的概率，则
+Pj(f)=Pr(t(cjcj+1))=tb｜cjcj+1)Pr(t(clcl+1)=tf｜clcl+1)
+(4)
+　　显然，Pj(f)越大，词形f越有可能被切分为词语.假设相邻词形的相互影响只作用在词形边界结合点，则
+Pr(T｜F)=Pj(fk)
+(5)
+式(5)即汉字结合点模型.它反映了相邻汉字结合程度和词边界相互影响，该模型实际上是一个无词典分词模型.式中参数必须通过已分完词的熟语料进行训练，而大规模的语料很难得到.为了避免这种情况，本文引入汉字互信息来简化汉字结合点模型.
+　　对于字结合点cici+1，设MI(cici+1)为相应的互信息，则
+
+(6)
+一般地，cici+1,Pr(t(cici+1)=tf)∝MI(cici+1).这意味着，词语内部的各字对的互信息较大，而在相邻词间字对的互信息相对较小.于是，式(4)可简化为：
+Pj(f)=MI(clcl+1)-MI(cjcj+1)
+(7)
+2.4 两种模型相融合的计算模型
+　　由以上分析可以看出：词形模型Pf只考虑字串的构词能力，而忽视了上下文的影响；而词语边界模型Pb则只强调相邻词形边界和词形内部相邻字间结合能力的相互影响，忽视词形的整体构词能力.因此，有必要将两种模型融合.但实际中两者的数量级和影响程度不同，同时为了保证它们的单调性一致，因此本文将式(3)取负对数之后，采用线性插值的方法将词形模型和词语边界模型融合在一起，近似地逼近式(1)，即
+=argwminW｛-λlogPf(fk)-(1-λ)Pj(fk)｝
+(8)
+式(8)即本文的汉语词语边界划分计算模型.其中，数λ(1≤λ≤1)为插值系数，可通过实验确定，如表2所示，本文取λ=0.9；arg min(.)表示(.)最小最优.
+　　由于式(8)中词形概率采用了对数形式的概率描述即-logPf(f)，而字结合点概率取了负数，因而对于给定的输入字串，分词的目的就是从所有可能的切分中寻找一个切分词串，使式(8)的计算值最小.
+　　式(8)所使得简化模型中各参数可直接由未经加工的汉语原始文本统计得到，而且训练空间也大大降低，提高了模型的适应能力.设Vc，Vw分别表示汉字字库和汉语词典的大小，本文模型的参数训练空间(包括词形频度、汉字共现对、字频等)总共为V2c+2Vw+Vc，低于同级别基于词的bi-gram模型的训练空间V2w，因为一般情况下VcVw.
+3　切分候选空间与搜索算法
+3.1　切分候选空间
+　　定义3.在给定的输入句子S=Cn1中，首尾相连的词形所构成的词形串F=Fm1=f1f2…fm称为该句子的切分候选词串.
+　　定义 4.对于含n个汉字的输入句子S，其切分候选词串一般有多个，我们把句子S的所有可能的切分候选词串所构成的集合｛F｝称为句子的切分候选空间，记作Γn.切分候选空间的大小以Φn表示，即Φn=｜Γn｜.
+　　设在给定的输入句子S=Cn1=c1c2…cn中，lmax表示最大词长，则以汉字ci为首字的词形集合可表示为{fk}={Cji|Cji=ci…cj∈D,1≤i≤j≤n,1≤j-i+1≤lmax｝，相应的各词形长度（字数）为lk(1≤k≤ni)，ni为该词形集的大小.设Φ(i)为字串Cni的所有候选词串数，则
+
+(9)
+由式(9)通过反向递归并遍历句子S从而求得切分候选空间Γn和相应的大小Φn=Φ(1).由此可以计算句子“中国人民生活水平进入小康”的切分候选空间大小为168，即该句子有168种切分情况，其计算过程如表1所示，其中ni通过正向词典匹配得到.
+表1　切分候选空间大小Φn的计算
+i123456789101112
+S中国人民生活水平进入小康
+ni322222222121
+Φ(i)1688452322012844221
+3.2 搜索算法
+　　输入句子S的切分过程实际上是在切分候选空间Γn中寻找一个最佳的切分候选词串W^，使其满足式(8).解决这类问题比较有效的方法是利用网格形式表示所有的候选，并给网格打分，最后采用动态规划算法或其他算法遍历网格，从中搜索一条最佳路径输出.本文在引入词形网格和全切分思想的基础上，采用反向动态规划算法同正向栈解码算法相结合的二次扫描算法，算法主要分两大步：(1)利用词典匹配和定义3，生成词形网格，并由统计数据库和公式(2)、(7)给各网格打分；(2)采用反向动态规划算法同正向栈解码算法相结合的二次扫描算法遍历整个词形网格，从中搜索一条满足式(8)的最佳路径输出.有关词形网格的定义和算法我们曾在文献［8］中作过具体描述，这里不再赘述.
+4　实验结果分析
+　　依据上面所论述的思想，我们实现了一个面向汉语真实文本的汉语词语边界划分系统.系统字库为GB2312-80字库(含6763个汉字）.系统词典包括57400词，主要由电子版的北京大学《现代汉语语法信息词典》［9］组成，在此基础上补充了空缺的GB2312-80 汉字和常用的5～7字词，以使词典更加完备.本文采用1993年电子版《人民日报》（共计1874多万字）对系统词典中各词所包含字串的构词能力和系统字库各字对的亲合度进行了训练.同时采用文献［10］中已完成分词的语料（共计346427词，585936字）作为主要测试语料，并采用常用的汉语分词评价指标分词准确率α和消歧率β作为本文系统的评价指标，即：
+
+(10)
+
+(11)
+测试内容主要包括两个方面：分词准确率的影响因素和模型的消歧能力.本节在给出系统性能评价指标的基础上，分别该出上述两方面的实验结果，并对结果进行了分析.
+4.1　切分准确率α的影响因素
+　　影响切分准确率α的因素有很多，本文的实验主要包括插值系数、模型和未登录词（新词）等方面，实验结果如表2和表3所示.
+　　表2给出了词典覆盖测试语料所有词语时切分正确率α随插值系数λ的变化趋势.从表中数据可以看出：当λ=0.9时，在不考虑未登录词的情况下切分正确率α达到最大值99.75%，分别高于汉字结合点模型（λ=0.0）的98.39%和词形模型（λ=1.0）的99.62%.
+表2　准确率α与插值系数λ的关系
+
+λ0.00.10.20.30.40.50.60.70.80.91.0
+α(%)98.3998.4498.4998.5698.6998.8098.9899.1699.4499.7599.62
+
+　　表3给出了词典未登录词和分词模型对准确率α的影响实验结果.从表中数据可以看出：(1) 词形模型和无词典的结合点模型均取得了较好的实验结果，说明两种模型是有效的；(2)词形模型与结合点模型的结合有利于提高切分性能，混合模型的切分正确率高出同条件下的最大匹配分词0.44个百分点；(3)未登录词对准确率影响较大.
+表3　未登录词、模型对准确率α(%)的影响①
+
+方法或模型最大匹配结合点模型词形模型混合模型
+词典覆盖未登录词99.3298.3999.6299.75
+词典不含未登录词97.5196.9897.8097.95
+
+4.2　汉语边界划分模型的消歧能力
+　　本文分别从训练语料和测试语料抽取两个歧义测试样本A和B对模型的消歧能力进行了测试，两个样本分别包括296和708种现象不同的歧义.测试结果如表4所示.
+表 4　各模型的消歧能力测试结果表
+
+测 试
+样 本歧义数词形模型汉字结合点模型混合模型
+消歧数β(％)消歧数β(％)消歧数β(％)
+样本A29621973.9924683.1125686.49
+样本B70848269.0858282.2859684.18
+
+　　从表中数据可看出：(1)混合模型的综合消歧能力(包括交叉歧义和组合歧义消解)最高，针对两个测试样本A和B，其消歧率分别为86.49%和84.18%；(2)样本A的实验结果优于样本B的结果，即封闭消歧性能好于开放，但由于本文模型可直接从未经加工的语料中训练，如果在每次分析前，实现对待切分语料进行学习，可弥补这个差异；(3)表中数据还显示：汉字结合点模型的消歧能力比词形模型强.据分析，其原因可能是字结合点模型不仅考虑了汉字对的结合能力，还考虑了相邻词的边界影响. 
+5　结论与展望
+　　本文提出了一个汉语词语边界自动划分的统计模型，并在分析了有关汉语分词的搜索空间基础上，给出相应的优化搜索算法.本文方法的显著特点是将汉字字串的构词能力和词语内部各字间结合能力以及词语外部相邻词边界字的影响等信息融于一体，这些统计信息可以直接从未经加工的粗语料中得到，而且参数训练空间不大，因而具有较强的适应能力和应用前景.
+　　切分歧义和词典未登录词是汉语分词的两大难题，本文主要解决的是切分歧义问题.表3的实验结果表明，未登录词的影响不可忽视.未登录词的自动识别及其边界的划分，可考虑拓展本文方法，考虑汉字的构词能力，并引入广义词形概念，即f∈S,fD.受篇幅所限，有关未登录词问题将在另文讨论.
+①文中的所有实验结果没有考虑系统词典与测试语料定义不一致的影响.
+注：本课题得到国家“八六三”项目基金资助（项目编号 863-3060-3-02-1）.
+作者简介：付国宏, 男，1968年3月生，博士研究生，主要从事计算语言学方面的研究.
+王晓龙，男，1955年3月生，教授，博士生导师，主要从事人工智能和自然语言理解的研究.
+作者单位：付国宏　哈尔滨工业大学计算机科学与工程系　哈尔滨　150001
+王晓龙　香港理工大学计算机系　香港
+参考文献
+1　　Wang Xiaolong et al. The problem of separating characters into fewest words and its algorithms. Chinese Science Bulletin, 1989, 34(22):1924～1928
+2　　粱南元, 郑延斌. 一个汉语自动分词模型CWSM及自动分词系统PC-CWSS. Communications of COLIPS, 1991, 1(1): 51～55
+(Liang Nanyuan, Zheng Yanbin. A Chinese word segmentation model CWSM and segmentation system PC-CWSS. Communications of COLIPS(in Chinese), 1991, 1(1): 51～55)
+3　　吴胜远. 一种汉语分词方法. 计算机研究与发展, 1997,33 (4):306～311
+(Wu Shengyuan. A Chinese word segmentation method. Computer Research and Development(in Chinese), 1997,33 (4):306～311)
+4　　Sproat R, Shih C, Gale W, Chang N. A stochastic finite-state word segmentation algorithm for Chinese. Computational Linguistics, 1996, 22(3): 377～404
+5　　孙茂松, 黄昌宁, 邹嘉彦等.利用汉语二元语法关系解决汉语自动分词中的交集型歧义. 计算机研究与发展, 1997,34 (5): 332～339
+(Sun Maosong, Huang Changning, Zhou Jiayan et al. Using character bi-gram for ambiguity resolution in Chinese word segmentation. Computer Research and Development(in Chinese), 1997,34 (5): 332～339)
+6　　Wong P K, Chan C K. Chinese word segmentation based on maximum matching and word binding force. In: Proc of COLING '96, 16th Int Conference on Computational Linguistics, Copenhagen, Denmark, 1996. 200～203
+7　　Nasaaki Nagata. A self-organizing Japanese word segmenter using heuristic word identification and re-estimation. In: Proc of the 5th Workshop on Very Large Corpora, Beijing, 1997. 203～215
+8　　付国红,王晓龙,龚永红. 基于词形的汉语文本切分方法. 见: 第五届全国人机语音通讯学术会议论文集(NCMMSC-98),哈尔滨,1998. 328～332
+(Fu Guohong, Wang Xiaolong, Gong Yonghong. Word-form based Chinese word segmentation(in Chinese). In: Proc of the 5th National Conference on Man-Machine Speech Communication, Harbin, 1998.328～332)
+9　　俞士汶等. 现代汉语语法信息词典详解. 北京: 清华大学出版社, 1998
+(Yu Shiwen et al. The Grammatical Knowledge-Base of Contemporary Chinese――A Complete Specification(in Chinese). Beijing: Tsinghua University Publishing House, 1998)
+10 Hasan M M. Multilayer feedforward neural networks in part-of-speech tagging and word sense disambiguation［Master D dissertation]. National University of Singapore, Singapore, 1997
+11 Taylor P, Black A W. Assigning phrase breaks from part-of-speech sequences. Computer Speech and Language, 1998,12(1): 99～117
+原稿收到日期：1999-01-05；修改稿收到日期：1999-06-03.

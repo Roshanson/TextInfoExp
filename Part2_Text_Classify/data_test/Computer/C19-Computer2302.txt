@@ -1,0 +1,171 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第5期 Vol.36 No.5 1999
+
+
+
+复杂行为的语言支持
+王勇军　王意洁　李思昆　胡守仁
+摘　要　文中面向复杂行为的虚拟环境应用需求，在分析比较当前几种有代表性的建模语言的基础上，提出一个支持复杂行为的语言模型，该模型可以灵活定义行为之间的控制关系及其时间约束，并给出了面向复杂行为的虚拟环境计算算法.在自行研制的虚拟环境软件开发平台YHVRP上的建模语言YHVML实现了该语言模型，YHVML语言的运行环境实现了面向复杂行为的虚拟环境计算算法，文中主要介绍了利用最小松弛度优先（LLF）策略对实体行为进行动态调度的思想，以保障面向复杂行为的虚拟环境应用的实时交互性和真实感.最后，文中给出了一个实例验证了相关模型和算法的有效性.
+关键词　虚拟环境，行为建模 ，最小松弛度优先，真实感
+中图法分类号　TP311
+LANGUAGE SUPPORT OF COMPLEX BEHAVIOR
+WANG Yong-Jun, WANG Yi-Jie, Li Si-Kun, and HU Shou-Ren
+(Department of Computer Science,National University of Defence Technology, Changsha　410073）
+Abstract　For the requirement of the VR application with complex behaviors and based on the analysis and comparison of some modeling languages, a language model of complex behavior is proposed, which can represent the control relations of behaviors and their time constraints. And an algorithm of virtual environment computing for complex behaviors is also proposed. YHVML, the modeling language of distributed VR software development platform YHVRP, implements the model, whose run-time environment implements the computing algorithm for complex behaviors .The least-laxity-first (LLF) strategy is adopted to schedule behaviors dynamically to ensure the real-time interactivity and fidelity of VR application. Finally, an instance shows the efficiency of the related model and algorithm.
+Key words　virtual environment, behavior modeling, least-laxity-first, fidelity
+1　引　　言
+　　行为建模是虚拟环境中的重要组成部分，随着虚拟现实技术的不断发展，为了将现实世界丰富多采的真实特性在虚拟环境中表现出来，有必要把各种复杂的行为嵌入虚拟环境，行为建模及其计算在虚拟环境计算的比例将呈上升趋势.因此，从这个角度来看，加强对虚拟环境建模语言的行为建模能力也是非常有意义的.
+　　从90年代开始，人们开始研究所谓的通用行为模型，这些行为模型不面向某些特定的应用领域，但它通过抽象行为的概念，提供对行为的基本描述，因此可以描述不同的行为模型.实际上，传统的有限状态机模型是最通用的行为模型，我们最为熟悉的事件驱动的回调例程可以看作是最简单的行为模型.但是，行为模型越通用，对虚拟环境中实体建模能力的支持就更低效.因此，人们提取更高层的行为抽象，在行为动画领域，人们研究的行为具有一定的通用性.这方面的典型代表是Sun的基于关系的行为模型［1］.
+　　行为模型只是对行为表示的抽象，人们要想研究行为模型产生的效果，通常采用系统实现的方法.专用行为模型通常由研究者采用专用的实现方法，而当前的虚拟现实软件开发平台中，往往提供建模语言来支持对虚拟实体的行为建模，这些建模语言都是某种通用行为模型的实现.
+　　虚拟现实软件开发平台对行为建模的语言支持包括两方面：一是语言的表示和描述能力，另一方面是语言实现的运行环境支持.语言的表示和描述能力包括能较灵活方便地定义复杂行为及其之间的执行关系和行为执行的时间约束；而运行环境的支持是指对程序调试和运行性能保障的支持.对于虚拟实体而言，人们通常要求能对其进行动态修改和快速原型开发；而虚拟现实系统对性能的特殊需求是实时交互性和真实感的结合.这在语言设计和实现时都需要考虑到.
+　　我们选取MR［2］，DIVE［3］，dVS［4］，AVIARY［5］和SPLINE［6］等几个较著名的面向人机交互、CSCW的分布式虚拟现实软件开发平台为例，来比较它们的行为建模语言.如表1所示.
+表　1
+
+项目MRDIVEdVSAVIARYSPLINE
+支持的行为模型基于关系行为模型有限状态机事件驱动的回调事件驱动的回调事件驱动的回调
+使用语言OMLtclCECLJava
+实现方式解释解释编译解释解释
+复杂行为描述能力较弱较弱弱弱弱
+
+
+　　从所支持的行为模型而言，有限状态机和事件驱动的回调比基于关系的行为模型要低级，因此所对应的建模语言在提供行为建模的描述能力要低，但所有的系统对复杂行为的建模都很弱.也不支持对行为执行时间约束的描述.从语言实现方式的角度，解释型语言要比编译型语言有更大的灵活性、它可以使用户对虚拟环境进行动态修改，支持快速原型开发，同时还具有较好的平台独立性.
+　　另外，所有的系统在对建模语言运行环境的支持方面都没有提供较多的功能.主要原因是建模语言只被用来建立非常简单的行为.在提高系统运行性能方面，大多数系统仅提供基本的函数（如MR提供的时间管理函数、AVIARY和DIVE提供的虚拟实体迁移机制等），其它的优化工作都交给用户去做，这造成了应用开发的低效. 
+2　复杂行为建模语言YHVML
+2.1　复杂行为的语言模型
+　　从面向对象的观点来看，虚拟环境是由若干虚拟实体组成.虚拟实体则由若干行为和局部属性组成，我们从语言模型的角度对复杂行为进行形式上的定义.
+　　定义1. 虚拟环境. 虚拟环境VE由N个虚拟实体组成，可记为：
+VE={Entityi｜i=1,…,N}.
+　　定义2. 虚拟实体. 虚拟实体Entity可以记为三元组：
+Entity∷=〈EntityName, AttribSet, BehSet〉
+其中，EntityName是Entity名；
+AttribSet是Entity的属性集合；
+BehSet是Entity的复杂行为集合.
+　　定义3. 属性. 属性Attribute是实体属性集合的成员，可以记为三元组：
+Attribute∷=〈EntityName, AttrName, AttrType〉,
+其中，EntityName是Attribute所属的实体名字；
+AttrName是Attribute名字；
+AttrType是Attribute的类型.
+　　定义4. 复杂行为. 复杂行为Beh是当某触发条件满足时所激活的处理程序，可以记为六元组：
+Beh∷=〈EntityName, BehName, BehType, TrigCond,BehBody, ConstraintTime〉,
+其中，Entity是Beh所属的实体名字；
+BehName是Beh的名字；
+BehType指明Beh是否可被其它实体调用，即BehType∈(External, Internal)；
+TrigCond是Beh的触发条件；
+BehBody是Beh的行为体；
+ConstraintTime是显式声明的时间约束.
+　　为了方便起见，在下文中，如果不是特别需要，我们仍将复杂行为称为行为.
+　　从行为的性质来看，实体的行为可以分为两类：一类是一般行为（GeneralBeh），所谓一般行为是对实体属性进行具体操作的行为.另一类行为是冲突消解行为（ResolutionBeh），行为冲突通常指因以实体属性为单位的冲突而引起的实体内多个行为不协调，或因以实体为单位的冲突而引起的实体间多个行为的不协调.而冲突消解行为相当于多个行为冲突时的仲裁处理程序，它也是描述实体间交互的基本支持.用户可显式提供消解冲突行为的方法，主要包括对行为状态进行直接设置或调整其运行次序或结构.冲突消解行为是高于一般行为之上的高级行为.这二者靠行为的触发条件来区分.
+　　定义5. 触发条件. 触发条件TrigCond包括一般事件（GeneralEvent）和行为冲突事件（BehCollEvent），可记为：
+TrigCond ∷=GeneralEvent|BehCollEvent
+　　定义6. 一般事件. 一般事件GeneralEvent是一般行为的触发条件，包括系统定义事件（SystemDefined Event）、自定义事件（UserDefiend Event）.所谓系统定义事件包括时钟事件（Clock Event）、外设产生的消息事件（I/O Event）、碰撞事件（Collision Event）和行为调用事件（BehCall Event）等.而自定义事件主要指用户定义的条件设置程序（CondSetProc）即一个条件判断语句的值为真时产生的事件.
+　　定义7. 行为冲突事件. 行为冲突事件BehCollEvent是冲突消解行为的触发条件，可用一个行为集合来表示，若集合中行为都处于活跃状态，则冲突事件发生.集合中的行为可是同一个实体的行为，也可以是不同实体的行为.
+　　定义8. 行为体. 行为体BehBody体现了图3、图4中的行为执行体层次表示结构，可以记为四元组：
+BehBody ∷=〈InputAttrSet,OutputAttrSet, ParameterSet,ProcessingProc〉
+其中，处理过程ProcessingProc是行为计算程序；
+输入属性集合InputAttrSet是行为计算所需的实体属性；
+输出属性集合InputAttrSet是行为计算进行修改的实体（包括其它实体）属性;
+参数集合ParameterSet是行为计算所需的参数.
+　　定义9. 行为计算程序. 行为计算程序是用类C语言编写的处理过程，除了通常的类C语法外，还有对行为状态的设置函数（SetBehState()），以及并行行为调用函数（PBehCall()）、设置锁函数等.
+　　定义10. 并行行为调用函数. 并行行为调用函数用于对一个或一系列行为的调用，当对一系列行为进行调用时，指同时激活这些行为.只有当这些行为都执行完后，当前行为才继续执行.该函数的调用形式为：PBehCall(BehSet)，其中，BehSet是一系列行为的集合.
+　　并行行为调用函数的引入增强了对行为之间控制关系的描述能力.
+　　从行为体的语法描述上，复杂行为可分为两类，一种是原子行为（AtomBeh），即不调用其它行为的行为，对应于层次表示结构中的简单行为执行体.一种是复合行为（CombinedBeh），即是调用了其它行为的行为，对应于层次表示结构中的复合行为执行体.我们称被调用的行为为子行为（SubBeh），调用子行为的行为称为父行为（CallerBeh）.复杂行为对行为间控制关系及时序关系的描述能力很强，对用户而言，还有利于行为代码的共享.
+　　定义11. 调用子行为集合. 复杂行为Beh调用的子行为集合记为SubBehSet(Beh)，该集合包括行为Beh自身.
+　　根据所操作属性的功能，一般行为又可划分为3种行为：①表现属性行为（PresentationBeh），即仅对实体表现属性进行操作的行为，如动画行为就是一种表现属性行为；所谓表现属性是指与视觉、听觉等感觉通道效果输出的有关物理属性，如三维几何、速度、位置等；②非表现属性行为（NonPresentationBeh），即仅对实体非表现属性进行操作的行为，如涉及到智能属性的行为；③既对实体表现属性进行操作，又对实体非表现属性进行操作，我们称之为混合属性行为（SynBeh）.
+　　定义12. 行为时间约束. 行为时间约束ConstraintTime给出了虚拟环境中实体行为执行的相关时间参数，它可以记为二元组：
+ConstraintTime∷＝〈BeginTime,DeadLine〉
+其中，起始时间点BeginTime指行为被激活的时间点；死限时间DeadLine指行为计算结束的时间点（以ms为单位）.
+2.2　YHVML
+　　我们基于OML进行改造的YHVML是一个平台独立的、灵活的建模语言，它支持面向复杂行为的语言模型.同时，它还被嵌入到虚拟环境软件开发平台YHVRP中，支持复杂虚拟环境的构造.YHVML语言采用了解释的实现方法,作为YHVRP的主要组成部分,YHVML运行环境实现了面向复杂行为的虚拟环境计算模型，并能有效支持虚拟环境的运行性能.
+2.3　基于复杂行为的虚拟环境计算模型
+　　通过建立行为的语言模型，我们可以将虚拟环境的计算看作由虚拟环境中的虚拟实体的行为计算组成.首先，虚拟环境必然存在着两种特殊的虚拟实体：用户实体（UserEntity）和图形渲染实体（RenderEntity）.它们具有特定的行为.用户实体IO行为对外部输入感兴趣，以获得用户与虚拟环境的交互信息.而图形渲染实体的绘制行为则是根据用户当前视点将虚拟环境中实体行为的表现属性和虚拟场景通过三维图形显示的方式表现出来.
+　　考虑单处理机的情况，虚拟环境的计算可以看作是由一个个仿真步组成的，每个仿真步一般又可以看作由3段操作组成：第1段，用户实体进行IO行为计算；第2段，计算当前步处于活跃状态的除特殊实体外的一般实体行为，修改相应实体属性和公共属性；第3段，图形渲染实体进行绘制行为计算.在具有复杂行为的虚拟环境中，实体的行为计算将成为重点，因此，第2段的算法将变得复杂得多.由于一般行为之间存在的相互调用关系，使得复杂行为不可能在一个仿真步内完成，而是要在一系列被调用的行为并行或串行的执行完成之后，即要在若干仿真步才能真正完成.我们将重点分析第2段的一般行为计算的执行算法.
+　　对于每个虚拟实体Ent，都维护一个活跃行为表ActiveBehTab(Ent);一般行为的执行算法如下：
+　　算法1. 当Exec(BehBody(Beh))时，每个Beh都维护一个执行结构：(CallerBeh,ProgramPointer,State);其中，CallerBeh是调用该行为的父行为，ProgramPointer是程序执行的指针，State是行为的状态.YHVML中的行为状态有活跃、挂起和中止3种.
+　　Exec(BehBody(Beh))
+　　Begin
+从ProgramPointer处开始执行，直到BehBody(Beh)结束或遇到PBehCall语句.
+IF BehBody(Beh)执行结束
+THEN 将Beh的状态置为中止，将CallerBeh的状态置为活跃，将其放入活跃行为表.
+IF 遇到PBehCall语句
+THEN 将ProgramPointer指向PBehCall语句之后的语句.
+将Beh的状态置为挂起；
+将PBehCall参数中的所有行为状态都置为活跃，将其放入活跃行为表；
+　　End
+　　由该算法可以看出，YHVML除了提供给用户灵活一致的复杂行为定义功能外，它还充分地支持实体间行为的并行和实体内的行为并行.
+3　YHVML运行环境对虚拟环境性能的支持
+　　在YHVML中，我们提供给用户描述行为执行时间的支持，它体现了虚拟环境中行为真实感的需求.在本节中，我们将阐述YHVML运行环境对虚拟环境性能的支持，尤其是对时间真实感的支持.
+3.1　虚拟环境的性能需求
+　　虚拟环境运行的主要性能需求是，实时交互性和真实感.实时交互性是指虚拟环境计算要足够的快，使得用户的输入能实时地在输出上反映出来，如视点的变化引起的场景变化.文献［7］将用户执行一个动作和在屏幕上显示出来之间的时间差称为端端延迟（EndEndLag）.
+　　我们有如下相关定义：
+　　定义13. 仿真步延迟. 虚拟环境计算在仿真步st的仿真步延迟SimuStepLag 可记为：
+SimuStepLag (st)=InputLag(st)+SimuLag(st)+RenderLag(st)
+其中，InputLag(st)是用户实体IO行为计算时间延迟；
+SimuLag(st)是一般实体的行为计算时间延迟；
+RenderLag(st)是图形渲染实体绘制行为计算时间延迟.
+　　定义14. 端端延迟. 虚拟环境计算在仿真步st的端端延迟EndEndLag可记为：
+
+其中，M是用户实体的IO行为引起相应虚拟环境状态的变化在图形渲染实体的渲染行为中表现处理的仿真步数.
+　　定义15. 虚拟环境的实时交互阈值. 对于不同的应用，满足实时交互性的需求不同，我们记虚拟环境的实时交互阈值为δ，如果虚拟环境的端端延迟EndEndLag<δ，则称虚拟环境满足实时交互性.
+3.2　复杂行为的真实感
+　　虚拟环境中实体行为的真实感体现在两方面：① 稳定帧速；② 实体的行为具有时间真实感.
+3.2.1　稳定帧速
+　　由于虚拟环境的高度动态性，在虚拟环境计算的仿真步中的一般实体的行为计算和图形渲染实体的绘制计算所花费的时间是动态变化的，它带来了帧速的不恒定.文献［8］指出，变化的帧速使人们无法预测虚拟环境的运行速度，因此无法与虚拟环境进行有效的交互，保持帧速的恒定对于人与虚拟环境交互的真实感是非常重要的.另外，保持恒定的帧速将有利于用户编程时对时间的把握.
+　　在面向复杂行为的虚拟环境中，由于引进高复杂计算量的行为和大量的实体，一般实体的行为计算负载变化较大，很难限定最坏执行情况.另外，随着图形硬件的不断发展，渲染行为的计算量将大幅度降低，而会使得一般实体的行为计算成为新的瓶颈，因此，为了恒定帧速，我们只有依靠动态的行为计算调度来限定行为计算时间，使一般行为的计算时间与渲染行为计算时间之和不会超过恒定帧速所要求的时间，并利用第二种方法，通过控制帧缓冲交换时间的方法来达到稳定帧速的目的.
+　　定义16. 图形绘制实体的绘制行为执行时间延迟上限. 我们记图形绘制实体的绘制行为执行时间上限为Tr，即对于任意仿真步st，有RenderLag(st)<Tr.
+　　定义17. 恒定帧速的仿真步时间延迟上限. 我们记使帧速恒定的仿真步时间延迟上限为γ.即对于虚拟环境计算，关于每一仿真步的时间约束如下：
+　　约束1：对于任意仿真步st，有SimuStepLag(st)<γ.
+　　约束2：端端延迟所需的仿真步数M<δ/γ.
+　　约束3：对于任意仿真步st，有SimuLag (st)<γ-Tr.我们忽略了用户实体的IO行为计算时间延迟InputLag(st).
+3.2.2　实体行为的时间真实感
+　　实体的每个行为都有自己的时间约束.通常，复杂行为连续地在多个仿真步进行计算直到完成.
+　　定义18. 行为实际执行时间. 行为Beh的实际执行时间ActualExecTime可以记为：
+ActualExecTime(Beh)＝BehCompLen(Beh)×γ
+其中，BehCompLen是Beh实际的计算仿真步.
+　　为了满足行为的时间真实感，我们有约束4：
+　　约束4：对于行为Beh，有DeadLine(Beh)>ActualExecTime(Beh).
+3.3　面向复杂行为的实体行为动态调度策略
+3.3.1　基本思想
+　　当虚拟环境中实体数量很大，且行为的计算量也很大时，维护每个行为的时间约束将可能带来无法满足每一仿真步实体行为计算的总时间约束，带来帧速的下降和实时交互性能的下降，破坏了虚拟环境的真实感.因此，就要调整某些实体行为的执行时间，即将某些行为延迟到后续的仿真步运行，从而使得当前仿真步计算满足约束3.
+　　由于虚拟环境计算高度动态性，只能通过动态调度才可能满足虚拟环境计算的需要.算法首先通过行为计算预测的方法来判断当前仿真步的一般实体的行为计算SimuLag是否超过了上限，如果是，就根据以下原则选择优先级高的行为推迟到下一仿真步执行，直到当前仿真步计算满足约束3.
+　　原则1.由于表现属性行为和混合属性行为对同步的要求较高，因此，非表现属性行为的优先级比这两类行为的优先级高；
+　　原则2.在同类行为中，遵循最小松弛度优先（least laxity first，简称LLF）[9]算法的思想，即松弛度大的行为优先级高；
+3.3.2　松弛度定义
+　　定义19. 复杂行为计算的已执行时间. 复杂行为Beh在仿真步st的已执行时间BehFinishedCompTime(Beh, st)定义为该行为已被执行的仿真步数.
+　　定义20. 复杂行为计算的已执行量. 复杂行为Beh在仿真步st的已执行量BehFinishedCompLen (Beh, st)定义为该行为已被执行的仿真步数.
+　　定义21. 复杂行为计算的松弛度. 复杂行为Beh在仿真步st的松弛度Laxity(Beh, st)是指除去行为执行所必须的仿真步数后，离行为的死限时间约束的距离，即
+　　Laxity(Beh, st)=DeadLine(Beh)-BehFinishedCompTime(Beh, st)-γ×(BehCompLen(Beh)-BehFinishedCompLen (Beh, st))
+4　应用实例
+　　我们用YHVML编写了一个虚拟环境对系统进行测试，主要描述了一个几何模型较为简单的智能体agent，具有3个行为，两个是表现属性行为run和wagtail，一个是混合属性行为think.run是在一个三维空间移动，think则是进行一个大数据集合的排序，每次排序成功，调用wagtail摇动尾巴.
+　　测试硬件环境是： PC（奔腾586，120MHz主频，32MB内存，S3 64V+的图形加速卡）.
+　　根据这种软硬件环境和应用实例，我们设定相关参数如下：
+　　虚拟环境的实时交互阈值为δ＝100ms,
+　　帧速恒定的仿真步时间延迟上限为γ＝100ms;
+　　图形绘制实体的绘制行为执行时间上限为Tr＝30ms;
+　　一般实体的行为计算执行时间上限为γ-Tr＝70ms;
+　　即一般实体的行为计算延迟上限MaxSimuLag＝70ms；
+　　经过配置，该虚拟环境存在两个agent实例：mike1和mike2，且它们都拥有一个周期行为run和一个非周期行为think.
+　　当不启动基于LLF策略的复杂行为动态调度器时， mike1和mike2运行情况如图1所示.实验结果表明，虚拟环境运行的帧速低于γ的帧数比例达到20%.
+
+
+图1　未启动复杂行为动态调度器时的运行情况
+　　当启动基于LLF策略的复杂行为动态调度器时，mike1和mike2运行情况如图2所示，从图中可以看到，当think行为被激活时，由于复杂行为动态器预测当前仿真步的SimuLag将超过MaxSimuLag，因此将一个think行为滞后一个仿真步执行，另外稳定帧速的措施使得虚拟环境仿真步延迟维持在100ms左右.实验结果表明，虚拟环境帧速低于γ的帧数比例降低到10%.
+
+
+图2　启动复杂行为动态调度器时的运行情况
+5　结　　语
+　　本文面向复杂行为模型的虚拟现实应用，提出一种支持复杂行为的语言模型，该模型具有很强的行为和时间描述能力.我们在自行研制的虚拟环境软件开发平台YHVRP的建模语言YHVML实现了该模型，而该语言的运行环境较好地支持了行为的时间约束，保障了面向复杂行为的虚拟现实应用的实时交互性和真实感.
+作者简介：王勇军，男，1971年2月生，博士，助理研究员，主要研究方向为虚拟现实和并行分布处理技术.王意洁，女，1971年9月生，博士，研究领域为数据库和并行分布处理技术.李思昆，男，1941年4月生，教授，博士生导师，研究领域为CAD技术和虚拟现实技术.胡守仁，男，1926年9月生，教授，博士生导师，主要研究方向为高性能机体系结构及并行分布处理技术.
+作者单位：国防科学技术大学计算机科学系　长沙　410073
+参考文献
+　1　Sun H. A relation model for animating adaptive behavior in dynamic environments.University of Alberta,1992
+　2　Shaw C,Green M et al. Decoupled Simulation in virtual reality with the MR toolkit. ACM Trans on Information Systems, 1993, 11(3):287～317
+　3　Hagsand O.Interactive multiuser VES in the DIVE System.IEEE Multimedia,1996,3(1):30～39
+　4　Division dVS v2.04 Technical Overview.London:Division Lt, 1992
+　5　Snowdon D N. AVIARY:Design issues for future large-scale virtual environments. 　Presence:Teleoperators and Virtual Environments,1994,3(4):220～241
+　6　Barrus J W, Waters R C, Anderson D B. Locals: Supporting large multiuser virtual environments. IEEE Computer Graphics and Applications,1996,16(6):50～5
+　7 7Wloka M M.Lag in multiprocessor virtual reality.Presence:Teleoperators and Virtual Environments,1995,4(1):50～63
+　8　Hawkes R et al. Update rates and fidelity in virtual environments. Virtual Reality,1995,1(2):99～108
+　9　Cheng S. Scheduling algorithms for hard real-time systems――A brief survey. In:Stankovic J A,Ramamrithan K eds.Hard Real-Time Systems.New York:Academic Press,1988
+原稿收到日期：1998-04-08
+修改稿收到日期：1999-01-19

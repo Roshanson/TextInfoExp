@@ -1,0 +1,97 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+二阶分布参数系统的稳定性和能控性1)
+罗跃虎　冯德兴
+摘要　讨论Hilbert空间上两个二阶线性系统的稳定性和能控性，在较一般的假设下，得到了这两个系统的指数稳定性和精确能控性，渐近稳定性和近似能控性之间的关系.最后，给出线性系统渐近稳定的一个充分必要条件.
+关键词　渐近稳定性，指数稳定性，近似能控性，精确能控性.
+STABILITY AND CONTROLLABILITY FOR SECOND
+ORDER DISTRIBUTED PARAMETER SYSTEM
+LUO YUEHU　　FENG DEXING
+(Institute of Systems Science, Chinese Academy of Sciences, Beijing 100080)
+Abstract　The stability and controllability for two second order systems are considered. Under some general assumptions, the useful relation between exponential stability and exact controllability and the relation between approximate controllability of the two second order systems are obtained. Finally, a sufficient and necessary condition for a linear system to be asymptotic stable is given. 
+Key words　Asymptotic stability, exponential stability, approximate controllability, exact controllability.
+1　引　言
+　　设H，U是Hilbert空间，用L(U,H)表示U到H的有界线性算子全体构成的Banach空间，并为简单起见，记L(H)=L(H,H).设A为H上的正定自伴算子，B是H上的线性算子，D是从U到H的线性算子.当B∈L(H)是H上非负对称算子，对任何实数α＞0，B的α次幂Bα存在且仍是非负的.用D(A)和R(A)分别表示算子A的定义域和值域，并用TA(t)表示由A生成的C0半群.
+　　考虑H上如下两个线性系统：
+　　　(1)
+　　　(2)
+　　定义能量空间按内积
+
+成为Hilbert空间.系统(1)，(2)分别对应于中如下的一阶发展方程(3)，(4)：
+　　　(3)
+　　　(4)
+其中中的线性算子
+
+分别是U到的有界线性算子和上的有界线性算子
+
+
+　　不难验证上的反自伴算.若y(t)是系统(1)的解，则为系统(1)的能量；称系统(2)是精确(或完全近似)能控的，是指相应的一阶系统(4)为精确(或完全近似)能控的.
+　　文献［1］在L2(0,l)中讨论了Bφ(x)=d(x)φ(x)时系统(1)的指数稳定性，文献［2］在时讨论了系统(2)的精确能控性，而文献［3］则在上述条件下研究了系统(1)，(2)的指数稳定性和精确能控性之间的关系.本文的主要目的是要在较一般的情形下，讨论系统(1)的稳定性与系统(2)能控性之间的关系.
+2　指数稳定性与精确能控性
+　　先给出下面几个已知命题［3-5］.
+　　命题1.设A是Hilbert空间H中反自伴算子，B∈L(U,H).则下列命题等价：1)(A，B)指数能稳；2)对任意正定算子K∈L(H),TA-BKB*(t)都指数稳定；3)存在一个对称算子K∈L(H),使TA-BKB*(t)指数稳定；4)(A，B)精确能控.
+　　命题2.设A是Hilbert空间H中反自伴算子且具有紧豫解式，B∈L(U,H).那么下列命题等价：1)(A，B)渐近能稳；2)对任意正定算子K∈L(H),TA-BKB*(t)都渐近稳定；3)存在一个对称算子K∈L(H)，使TA-BKB*(t)渐近稳定；4)(A，B)完全近似能控.
+　　命题3.设A生成Hilbert空间H中指数稳定的C0半群TA(t)，且A是耗散的，如果B∈L(H)也是耗散的，且满足如下的条件H)：
+
+那么TA+B(t)也是指数稳定的.
+　　对于H上的非负有界对称算子B，条件H)显然满足.
+　　引理1.设A是X中的反自伴算子.如果B∈L(H)是非负对称的，且存在v＞0和β＞0，使得TA-vBβ(t)是指数稳定的，则对任何μ＞0和α＞0，TA-μBα(t)都是指数稳定的.
+　　证明.首先注意，依命题1,TA-Bβ指数稳定，当且仅当(A，Bβ/2)精确可控.于是再根据命题1可不妨假设v=μ=1.取自然数k使由B的非负对称性可知，当取δ=‖B2kβ-α‖－1时，δB2kβ-Bα是耗散的对称算子.但TA-Bβ(t)指数稳定，故TA-B2β(t)指数稳定.由归纳法可知，TA-B2kβ(t)指数稳定.于是由等式
+
+和命题3可知TA-Bα(t)指数稳定.
+　　引理2.设Hilbert空间H上的算子A具有紧豫解式，并生成H中的C0压缩半群TA(t)，那么
+　　a)假设是耗散的，且A+B生成H上的C0半群.如果Re〈Bφ,φ〉=0蕴涵Bφ=0，则TA(t)的渐近稳定性蕴涵TA+B(t)的渐近稳定性.
+　　b)进一步假设A是H上的反自伴算子，B是H上的非负有界对称算子.如果存在v＞0和β＞0使得TA-vBβ(t)是渐近稳定，则对任何μ＞0和α＞0，TA-μBα(t)都是渐近稳定.
+　　证明.a)根据假设，A+B是耗散算子，有紧豫解式，且生成H上的C0压缩半群.易证
+于是由文献［6］定理3知A+B渐近稳定.
+b)由命题2和前面已证的结论a)，仿引理1的证明可知结论成立.
+　　定理1.设A是H上的正定自伴算子，B∈L(H),D∈L(U,H)，那么
+　　a)如果存在自然数n使R((BB*)n)∈R(DD)，则系统(1)指数稳定蕴涵系统(2)精确能控；
+　　b)假设B是H上耗散的对称算子.如果存在自然数n使R((DD*)n)R(B)，则系统(2)精确能控蕴涵系统(1)指数稳定.
+　　特别地，如果R(B)=R(DD*),则系统(1)的指数稳定性与系统(2)的精确能控性等价.
+　　证明.a)设且系统(1)指数稳定.首先证明系统
+
+是指数稳定的，其中K是H上的有界线性算子
+
+事实上，由于故由文献［5］知存在δ0＞0使得
+
+这样是H上的耗散算子，因而满足条件H).由于
+
+故是H上耗散的对称算子.显然上的反自伴算子.因(t)是指数稳定的，故由命题1可知是指数稳定的.于是根据引理1，是指数稳定的.由等式
+
+和命题3可知是指数稳定的.再由引理1可知是指数稳定的.
+　　容易看出是指数稳定的.由此从命题1可知是精确能控的，即系统(4)是精确能控的.
+　　b)设系统(2)是精确能控的，并且B是H上耗散的对称算子.应用类似于前面的证明方法可知，存在δ2＞0使得δ2(DD*)2n-BB*是耗散的对称算子，且
+是指数稳定的.由等式
+
+和命题3可知是指数稳定的.由于是非正的，故由引理1可知是指数稳定的.
+3　渐近稳定性与近似能控性
+　　利用命题2和引理2，并用类似于定理1的证法可得下面的定理.
+　　定理2.设A是X上正定的自伴算子且具有紧豫解式，设B∈L(H),D∈L(U,H)，那么
+　　a)如果存在自然数n使则系统(1)的渐近稳定性蕴涵系统(2)完全近似能控性；
+　　b)假设B是H上耗散的对称算子.如果存在自然数n使则系统(2)完全近似能控性蕴涵系统(1)渐近稳定性.
+　　特别地，如果R(B)=R(DD),则系统(1)的渐近稳定性与系统(2)的完全近似能控性等价.
+　　定理3.设A是H上具有紧豫解式的线性耗散算子，A生成H上的C0-半群.设B是H上的线性耗散算子，使得并且A+B生成H上的C0-半群.如果A+B是H上具有紧豫解式的算子，且Re〈Bφ,φ〉=0蕴涵Bφ=0，则TA+B(t)渐近稳定的充要条件是，对A的任何特征向量φ都有Bφ≠0.
+　　证明.必要性.如果存在A的特征向量φ0使得Bφ0=0，则有(A+B)φ0=λ0φ0，这里
+是A的某个本征值，这表明λ0是A+B的本征值.’显然TA+B(t)不可能是渐近稳定的.
+　　充分性.由假设可知A+B是H上的耗散算子，因而A+B生成H上的压缩半群.于是A+B的谱在左半平面中.下证A+B的谱在左半开平面中.设使得iω∈σ(A+B)，则依对A+B具有紧豫解式的假设，必有iω∈σp(A+B)，从而存在非零元φ∈H，使得(A+B)φ=iωφ.由引理2的a)的证明有Aφ=iωφ，且Bφ=0.这表明φ是A的本征元，但根据假设，有Bφ≠0，导致矛盾.这样，证明了从而由文献［6］得到TA+B(t)渐近稳定性.
+　　由此定理可以得到系统(1)渐近稳定性和系统(2)完全近似能控性的如下特征：
+　　推论1.设A是H上正定的具有紧豫解式的自伴算子，B∈L(H)是非正的对称算子，那么
+　　a)系统(1)渐近稳定的充要条件是：对A的任何本征元φ都有Βφ≠0；
+　　b)系统(2)完全近似能控的充要条件是，对A的任何本征元φ，都有DD*φ≠0；特别地，当U=H,D∈L(H)是非负或是非正算子时，系统(2)完全近似能控的充要条件是：对A的任何本征元φ，都有Dφ≠0.
+　　推论2.设A是H上正定的自伴算子且具有紧豫解式，B是H上耗散的闭对称算子，并且假定Re〈Bφ,φ〉=0蕴涵Bφ=0,并且A+B生成H上的C0半群.如果A+B在上具有紧豫解式，则系统(1)渐近稳定的充要条件是，对A的任何本征元φ都有Bφ≠0；特别地，如果存在α∈[0,1)使得则系统(1)渐近稳定的充要条件是，对A的任何本征元φ，都有Bφ≠0.
+1)　得到国家自然科学基金、山西省青年科学基金和山西省自然科学基金的资助.
+作者单位：罗跃虎(山西大学数学系　太原　030006)；
+　　　　　冯德兴(中国科学院系统科学所　北京　100080)
+参考文献
+　[1]　Chen G, Fulling S A, Narcowicch F J, Sun S. Exponential decay of energy of evolution equation with locally distributed damping.SIAM J. Appl.Math., 1991,51(1):266―301.
+　[2]　Lagnese J. Control of wave processes with distributed controls supported on a subregion. SIAM J. Control Optim., 1983, 21(1):68―85.
+　[3]　刘康生.分布参数系统的边界的局部控制与镇定［博士论文］.上海： 复旦大学，1991.
+　[4]　Slemrod M. A note on complete controllability and stabilizability for linear control systyms in Hibert space. SIAM J. control,1974, 12(3):500―508.
+　[5]　curtain R F, Pritchard A J. Infinite Dimensional Linear Systym Theory. New York: Springer-Verlag, 1978.
+　[6]　黄发伦.关于一般Banach空间中的线性动力系统的渐近稳定性理论.科学通报，1983，28(10)：584―586.
+收稿日期　1995-10-20

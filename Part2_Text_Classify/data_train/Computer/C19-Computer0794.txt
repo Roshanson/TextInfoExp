@@ -1,0 +1,55 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年 第25卷 第6期 Vol.25 No.6 1999
+
+
+
+一种CMAC超闭球结构及其学习算法
+段培永　邵惠鹤
+摘　要　提出了一种CMAC(Cerebellar Model Articulation Controller)输入空间超闭球量化方法.基于超闭球上模糊基函数的信息存储与恢复策略，还给出了快速收敛的学习算法.通过非线性动态系统建模仿真研究，结果表明CMAC具有很强的学习记忆和泛化能力.
+关键词　CMAC，联想记忆，学习算法.
+CMAC WITH HYPERBALL STRUCTURE AND ITS
+LEARNING ALGORITHM
+DUAN Peiyong　SHAO Huihe
+(Department of Automation,Shanghai Jiaotong University,Shanghai　200030)
+Abstract　This paper presents the CMAC(cerebellar model articulation controller),which can guarantee the input space by hyperballs.Based on the fuzzy basis functions defined on the hyperballs,information is stored and retrieved.A fast convergent learning algorithm is also given.Simulations for the CMAC used in nonlinear dynamic system modeling are performed to demonstrate its powerful associative memory and generalization performance.
+Key words　CMAC, associative memory, learning algorithms.
+1　引言
+　　CMAC模拟人类小脑的学习结构，具有输出泛化能力.传统的CMAC输出只是相关权系数的累加.文献［1］的研究结果表明，较大的泛化误差是由于传统的CMAC输出的计算方法不完全恰当、学习算法粗糙引起的，并指出必须改进学习算法与信息存储方法.Chiang和Lin提出了基于广义基函数的CMAC［2］，提高了CMAC的性能.本文利用Chiang和Lin的设计思想，提出一种新的CMAC结构及其学习算法.
+
+2　CMAC超闭球结构
+　　记m维输入空间为X=A1×A2×…×Am，输入点向量x=［x1,x2,…,xm］T∈X，且xi∈［x-i,x+i］,，R为实数集，x+i,x-i为第i维输入的上、下界；输出点向量y=［y1,y2,…,yn］T,且y∈Y,Y为有界集.把区间［x-i,x+i］均分为N等份，间隔为Δi，该区间所有分点构成集合Di.记m维点向量pj=［pj1,pj2,…,pjm］T∈X，pji∈Di(i=1,2,…,m;j=1,2,…,L)，且j≠k,pj≠pk.则pj在X空间上均匀分布，称pj为空间X上的网点.为了便于基函数参数的选取及所设计的CMAC不依赖于输入空间X，有必要对输入和网点进行标准化
+
+这样，就把输入空间X化为乘积空间.第i个神经元的地址就由ni来表示，对应的权值表示为qi.以网点ni为中心，定义超闭球.因此，上均匀分布着L个超闭球，记有Ne个超闭球包含点.定义Bi上的高斯函数为
+
+超闭球上的基函数采用模糊基函数［3］，与一般基函数不同，它隐含了模糊逻辑推理，更具合理性，模糊基函数bi(.)定义在第i个超闭球上
+　　(1)
+
+
+图1　CMAC结构示意图
+其中‖.‖为欧氏范数.观察bi(.)可以看出：1)bi(.)随着的增大而迅速减小，设时，bi(.)小到可以忽略不计的程度，此时ρ称为bi(.)的作用半径，事实上，ρ=3时，bi(.)＜e-9已足够小，因此通常取ρ≤3;2)bi(.)与超闭球的半径有关，半径越大，Ne越大，bi(.)越小.对给定的输入输出数据对｛t,yt｝，CMAC的每一维输出是这些超闭球上的基函数的线性组合.为便于说明问题，只讨论输出为一维的情况，这时联想估计值为
+　　(2)
+其中为基函数权系数向量，st为基函数选择向量，显然有Ne个元素为1，其余为0.CMAC结构示意图如图1所示，其中实线表示关联，虚线表示不关联.
+3　学习算法
+　　利用输入输出样本数据进行学习，获得权系数q的值.记第k次样本循环学习时，CMAC的输出误差为是实际样本值，时CMAC联想输出的估计值.学习算法采用改进的C-L算法
+　　(3)
+其中α，β为实数.关于学习算法的收敛性，有下面的定理.
+　　定理.当0＜α＜2，β＞0时，算法(3)收敛.
+　　对每一个样本，只需局部调整qi,i∈Ut,Ne个权系数调整量与其相对的基函数成正比，且，学习的过程包含了模糊逻辑推理.现将本文提出的CMAC学习算法的实现步骤归纳如下：
+　　步骤1.确定输入乘积空间X，标准化为乘积空间；
+　　步骤2.确定空间上的节点，选取权系数的初值；
+　　步骤3.选取基函数的参数σ及其作用半径ρ，从而确定了以网点为球心的超闭球；
+　　步骤4.给定样本点｛t,yt｝，找出包含该点的超闭球，即确定选择矩阵st;
+　　步骤5.由(2)式计算估计值t，估计误差;由(3)式修正权系数；
+　　步骤6.重复步骤4和5，直到CMAC输出误差满足要求为止.
+4　仿真研究
+　　考虑CSTR系统，该过程的模型是两个非线性微分方程［4］
+
+
+
+式中q与qc分别为反应物和冷却剂流速.模型中参数的含义及其在正常工作条件下的数值见文献［5］.CSTR为强非线性系统，控制量为qc，输出为CA.仿真的目的是用CMAC来记忆CSTR系统.CMAC的输入为
+
+选择输入空间为X=［0.04，0.14］×［0.04，0.14］×［0.04，0.14］×［94，114］×［94，114］×［94，114］，每个区间均分为4份，X标准化为S=［0，4］×［0，4］×…×［0，4］，ρ=2.5，σ=0.7，α=1.2，β=0.01，选取权系数的初值为零向量.利用微分方程可获得一批输入输出数据对｛xt,CA(t)｝(实际应用中，学习数据可来至现场采集的数据)，标准化为｛t,CA(t)｝，作为学习样本.对样本批量学习后，确定了权系数向量，用CMAC作为CSTR的模型.图2是微分方程和CMAC的输入中qc(t)的曲线，图3为CSTR的输出，图4为CMAC的输出和误差曲线.仿真结果显示CMAC的输出误差很小.
+
+
+图2　CSTR与CMAC的输入

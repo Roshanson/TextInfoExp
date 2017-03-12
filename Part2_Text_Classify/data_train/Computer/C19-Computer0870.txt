@@ -1,0 +1,76 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+不确定对象的人工神经网络
+自学习控制方法
+陈善本　吴林　张铨　张福恩
+摘　要　利用模糊控制的思想，将误差、误差变化及加速度作为输入，建立一个神经网络控制器，对具有不确定性控制对象提出了一种自学习模糊神经网络控制方法.并将此方法用于焊接熔池动态过程控制的有效性试验.
+关键词　不确定对象，人工神经网络，自学习控制
+A SELF-LEARNING ARTIFICIAL NEURAL
+NETWORK CONTROL OF UNCERTAIN OBJECTS
+CHEN SHANBEN 　WU LIN
+(School of Material Sci.& Eng.,Harbin Inst of Tech.,Harbin 150001)
+ZHANG QUAN 　ZHANG FUEN
+(School of Astronautics,Harbin Inst.of Tech.,Harbin 150001)
+Abstract　Using the ideas of fuzzy control,an artificial neural network controller with error,error change and error acceleration as inputs is established for uncertain objects.A self-learning neural network control approach to the controlled objects with uncertainties is presented in this paper.The results of experiment on control of the dynamic process of weld pool in the pulse TIG welding show that the self-learning neural network control scheme presented in this paper is effective.
+Key word　Uncertain objects,self-learning neural networks,fuzzy control.
+1　引言
+　　对于具有不确定性因素对象的控制问题多年来一直是控制理论和工程实践中最富挑战性的问题.本文研究将人工神经网络与模糊控制结合，对任意复杂的不确定对象实现自学习或自优化的控制方法.其基本思想是：利用神经网络的映射功能对复杂对象过程实时建模；将三维模糊控制器用神经网络实现以取代常规的模糊规则控制表；然后根据不确定对象的随机变化实时修正人工神经网络模型参数和控制器的网络参数，从而实现对复杂不确定对象的自学习控制，其实质目标是对人的智能调节活动进行模拟.
+2　人工神经网络自学习控制方案
+　　对一般不确定性控制对象，提出下面神经网络自学习控制方案.
+　　图1中NNC为神经网络控制器，UP为不确定性控制对象，PMN 为对象 UP 和检测环节 MS 的神经网络模型，LA为学习算法器，D 为期望值，e(t) 为控制误差，u(t)为控制输入，y(t)为实际输出量和检测量，在不计 MS 变换系数意义下，将对象输出与检测输出均用 y(t)表示，(t)为模型 PMN 的输出量，ε(t)为模型与检测量的偏差.各功能框图说明如下：
+
+
+图1　神经网络自学习控制功能框图
+　　1)NNC 为四层 BP 网控制器：节点 Nc1=3,Nc2=15,Nc3=10,Nc4=1;网络函数 xci,fcij,fc2k;权重 Wc1ij,Wc2jk,Wc3ko;由于一般模糊控制器经验规则通常是以控制误差、误差变化和误差加速度作为输入量的，因此选取控制器网络输入为 e(t)，e(t-1),e(t-2)三个量便具有等价的信息映射出相应的控制量.控制器网络的初始权重可采用三维模糊控制器的输入输出样本规则［3］离线训练得到。
+　　2)不确定性对象 UP 和测量环节 MS 的神经网络模型 PMN 模型由四层 BP 网实现，节点数 N1，N2，N3，N4，实现的映射关系为 (t+1)=fm(u(t),u(t-1)…u(t-d);(t),(t-1)…(t-n))fm(x1,.,xN1)d，n 为对象的阶次.PMN 的网络函数为 xi,f1j,f2k节点间权重 W1ij, W2jk, W3ko.
+3　神经网络控制器的自学习算法
+　　1)控制误差指标
+　　　　(3.1)
+式中 e(t+1)=D-y(t+1).α，β分别表示误差变化和误差加速度的指标加权系数，可依系统要求选定.
+　　2)PMN输出与测量量的误差指标
+　　　(3.2)
+　　3)PMN 网络参数的学习
+　　PMN 的网络参数学习可采用离线和在线学习方法.离线学习得到初始权重.在线学习则是根据指标(3.2)随网络参数变化梯度下降的原则，实时修正网络的权重得到控制周期内的网络一步反向学习算法，细节从略.
+　　4)控制器NNC 网络参数的学习
+　　在初始或前次学习的PMN 网络参数基础上，依指标(3.1)推导实时修正控制器权重的算法如下
+　　　(3.3)
+　　　(3.4)
+学习因子
+　　　　
+　　　　
+　　　　
+　　　　(第二等式忽略ε/Wc),　　　　　　　　　　　　　　　　　　　(3.5)
+　　　　　　　　　　　(3.6)
+　　　　
+　　　　　　(3.7)
+u(t)/Wc(t)及其它推导细节从略.式(3.3)-(3.7)即控制周期内的控制器网络NNC的权重系数的一步学习算法.其实质可以理解为是对模糊控制规则的实时调整.
+4　控制方案的试验结果
+　　为了考察上述设计对于不确定对象控制的有效性，我们选取一个复杂的工业控制对象――脉冲 TIG焊接熔池的动态过程控制.通过对脉冲TIG焊的实验测试分析，选取控制焊接电流――正面熔宽的单入单出系统作为试验对象.对上述过程离线学习建立的神经网络模型PMN实现的映射关系为
+
+节点 N1=5, N2=15, N3=15, N4=1.
+　　实验系统硬件及正面熔宽信息的计算机视觉检测、图象处理技术见文［2］.控制周期为1秒.堆焊试验实验条件如下：
+　　材料：A3钢；板厚：2 mm；梯形试件：70×18×255 mm；钍钨极：φ 3.0 mm；
+　　氩气流量：8 L/min；电弧电压：12-15 V；焊接速度：95-105 mm/min.
+
+
+(a)　正面熔宽
+
+
+(b)　焊接电流
+图2　TIG焊过程控制试验
+图2中曲线 ① 对应恒定焊接电流的情形，②对应自学习控制结果.图2(a)中曲线①表示不加控制时的情形随试件散热条件变坏熔池宽度递增.采用自学习控制则基本维持熔宽一致，如图2(a)中曲线②所示。试验结果分析如下：
+　　1)对变散热条件试件的实焊控制效果表明，本文提出的神经网络自学习控制方案对 TIG焊熔宽动态过程控制有效.比较图2(b)中的焊接电流①，②调节变化，说明与人的经验认识一致.
+　　2)控制算法和图象处理的周期偏长影响控制效果.这有赖于神经网络的并行处理实现以提高运算速度.
+资金项目：国家自然科学基金项目资助(No.59575057,No.59635160).
+作者单位：陈善本　吴林　哈尔滨工业大学材料学院　哈尔滨　150001；张铨　张福恩　哈尔滨工业大学航天学院　哈尔滨　150001
+参考文献
+［1］　Willis M J et al..Aritificial Neural Networks in Process Estimation and control.Automatica,1992,28:1181-1187.
+［2］　刘玉池.计算机视觉脉冲 TIG焊正面实时检测与熔宽控制的研究［研究生学位论文］.哈尔滨工业大学，1994.
+［3］　李士勇等.模糊控制和智能控制理论与应用.哈尔滨：哈尔滨工业大学出版社，1990.
+收稿日期　1994-07-08
+
+

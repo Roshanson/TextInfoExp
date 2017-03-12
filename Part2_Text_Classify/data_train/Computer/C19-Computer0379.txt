@@ -1,0 +1,96 @@
+信息与控制
+INFORMATION AND CONTROL
+1999年 第28卷 第3期 Vol.28 No.3 1999
+
+
+
+
+不确定广义系统的圆形区域极点配置*
+徐胜元　齐延信　杨成梧
+　　摘要:考虑不确定连续或离散广义系统的圆形区域极点配置问题, 目的是设计状态反馈控制律, 使得闭环系统正则, 无脉冲(连续广义系统情形)或因果(离散广义系统情形), 且闭环极点位于一给定的圆形区域内. 给出了所期望的状态反馈控制律存在的充分条件及其解析表达式.
+　　关键词：不确定广义系统, 圆形区域, 极点配置, 状态反馈
+　　中图分类号：TP13　　　　　　文献标识码：A
+POLE ASSIGNMENT IN A SPECIFIED CIRCULAR REGION
+FOR UNCERTAIN SINGULAR SYSTEMS
+XU Shengyuan　QI Yanxin　YANG Chengwu
+(School of Dynamic Engineering,Nanjing University of Science and Technology, Nanjing　210094)
+　　Abstract　In this paper, we consider the problem of pole assignment in a specified circular region for uncertain continuous-and discrete-time singular systems. The system under consideration is subjected to time-invariant norm-bounded uncertainties in both the state and input matrices. The problem addressed is the design of state feedback controllers such that the closed-loop system is regular, impulse-free (in the case of continuous singular systems) or causal (in the case of discrete singular systems), as well as satisfying that the finite closed-loop poles are located within a prespecified circular region for all admissible uncertainties. The conditions for the existence of desired state feedback controllers are given and the analytic expression of expected controllers are proposed. The results can be viewed as extensions of existing results on robust pole assignment in a specified disk for uncertain state-space systems to uncertain singular systems.
+　　Key words　uncertain singular systems, circular region, pole assignment, state feedback
+　　1　引言
+　　众所周知, 线性定常系统的动态与稳态特性直接受其极点所在位置的影响, 因此极点配置问题一直是控制理论及实践中一个重要的研究课题之一. 由于在工程实践中, 由辨识误差, 元器件的老化, 线性近似化等诸多因素导致的参数不确定性使得精确极点配置有时难以实现; 另一方面, 在实际应用中, 人们通常只需将极点配置到一定的区域就足以满足一定的设计目标; 所以, 近20多年来, 线性系统的区域极点配置问题引起了人们的关注并取得了一定的研究成果\[1~3\]. 但对广义系统来说, 其极点配置问题的研究目前大都集中于精确极点配置\[4~5\], 而对区域极点配置的研究还不多见. 另外, 考虑到实际系统的参数扰动总是不可避免的, 因此, 本文研究不确定连续或离散广义系统的区域极点配置问题, 给出了所期望的状态反馈控制律存在的条件及其解析表达式.
+　　2　问题描述
+　　考虑如下的不确定连续或离散广义系统
+　　　　　　　　　　　　　　　　　　　　　(1)
+其中E,A∈Rn×n且rankE=d≤n;B∈Rn×l;u(t)∈Rl是系统的控制输入向量;x(t)∈Rn是系统的状态向量, 且
+
+ΔA,ΔB表系统的时不变参数扰动,并假定具有以下形式
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(2)
+其中F∈Rj×k是未知的定常矩阵函数,且F满足
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(3)
+这里M，Na,Nb为适维已知矩阵; 称满足上述条件的不确定性ΔA,ΔB是容许的.
+　　现在考虑如下的状态反馈控制律
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(4)
+将(4)作用于(1)得如下的闭环系统
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(5)
+其中.Ac=A+BG+MF(Na+NbG).
+　　本文所考虑的圆形区域极点配置问题是: 寻求状态反馈控制律(4)使得对所有容许的不确定性参数ΔA,ΔB闭环系统(5)正则, 无脉冲(当(1)是连续广义系统时)或因果(当(1)是离散广义系统时)且其有限极点位于Ω(q,r)的圆形区域内, 即;其中σ(E,Ac)表集合{s|det(sE-Ac)=0,s∈C};q≠0 , 且当(1)是连续广义系统时,r-|q|＜0, Ω(q,r)表示左半平面内以(-|q|, 0)为圆心, r为半径的圆盘; 当(1)是离散广义系统时, r+|q|＜1, Ω(q,r),表示以(q, 0)为圆心, r为半径的圆盘, 且, 这里Ω(0,1)是指以原点为圆心的单位圆(下同).
+　　3　主要结论
+　　以下为了方便起见, 将连续广义系统无脉冲及离散广义系统具因果性统称为因果的. 首先考虑如下的广义系统
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(6)
+　　引理1　广义系统(6)正则, 因果且其极点位于Ω(0, 1)内, 即的充要条件是: 存在矩阵P∈Rn×n, 且P=PT使得以下两不等式同时成立.
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(7)
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(8)
+　　证明　利用(6)的受限等价形式及[6，7]中的有关结论即可得证.
+　　下面考虑如下的连续广义系统
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(9)
+其中
+
+　　引理2　广义系统(9)正则, 因果且成立的充要条件是广义系统(6)正则,因果且
+　　证明类似于[8], 略.
+　　为了方便起见, 记Acl=A+BG-qE, Ac2=Na+NbG. 于是由引理1及引理2易得如下的结论.
+　　定理1　若存在矩阵P∈Rn×n, 且P=PT使得
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(10)
+　　　　　　　　　　　　　　　　　　　(11)
+同时成立, 则广义系统(5)正则, 因果且
+　　引理3[3]　若存在β＞0, 使得MTPM＜βI, 则
+
+这里PT=P.
+　　定理2　若存在可逆阵P∈Rn×n,P=PT,ETPE≥0及常数β＞0, 使得
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(12)
+　　　　　　　　　　　　　　　　　(13)
+同时成立, 则广义系统(5)正则, 因果且
+　　证明　首先, 由MTPM＜βI知(P-1-β-1MMT)-1存在,于是利用引理3并注意到
+
+得．从而由定理1即得所证.
+　　由定理2易知, 对给定的β＞0及可逆阵P∈Rn×n,P=PT,ETPE≥0且MTPM＜βI, 若存在反馈增益阵G∈Rl×n, 使得(13)式成立, 则本文所考虑的不确定广义系统区域极点配置问题即可得到解决; 因此, 给出上述β＞0及可逆矩阵P的存在条件将是有益的. 为了方便起见, 给出以下定义.
+　　定义　对给定的β＞0及可逆阵P∈Rn×n,P=PT,ETPE≥0且MTPM＜βI, 若存在G∈Rl×n使得(13)式成立, 则称(P,β)是可实现的.
+　　于是本文所考虑的不确定广义系统的区域极点配置问题可转化为: (i)寻求(P, β)可实现的充要条件; (ii)对可实现(P, β)的给出相应的反馈增益阵G的表达式.
+　　为了方便起见, 对B作以下假设.
+　　假设1　rank(E, B)=rankE.
+　　下面给出(P,β)可实现的充要条件及反馈增益阵G的代数表达式.
+　　定理3　在假设1下, 对于满足P∈Rn×n,P可逆,P=PT,ETPE≥0且MTPM＜βI,β＞0的(P, β)可实现的充要条件是存在α＞0及正定阵Q使得
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　(14)
+且rank(WT2H-1W2-W1-Q)≤min(l,n). 其中W1=ATqSAq+βNTaNa-r2ETPE,Aq=A-qE, W2=BTSAq+βNTbNa,S=(P-1-β-1MMT)-1,H=BTSB+βNTbNb+αI.
+而且, 在此情形下, 对上述的α,Q, 使得(P, β)可实现的反馈增益阵G可表示为
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(15)
+其中V∈Rl×l是正交阵,u∈kl×n且UTU=WT2H-1W2-W1-Q.
+　　证明　由(P,β)可实现的定义并利用[3]中的有关结论, 通过计算即得所证.
+　　由定理3, 易得本文所考虑的不确定广义系统圆形区域极点配置问题的解.
+　　定理4　在假设1下, 若存在正定阵Q, 常数α＞0使得对于满足P∈Rn×n,P可逆, P=PT, ETPE≥0且MTPM＜βI,β＞0的(P, β)可实现, 即(14)成立, 则所考虑的不确定广义系统圆形区域极点配置问题可解, 此时状态反馈增益阵G可由(15)给出.
+　　4　结论
+　　本文考虑了不确定广义系统的圆形区域极点配置问题. 利用一矩阵不等式,得到了在状态反馈作用下广义系统正则, 无脉冲(连续广义系统情形)或因果(离散广义系统情形), 且闭环极点位于一给定圆形区域内的条件; 从而将期望状态反馈控制器的设计转化为一给定常数及一矩阵的可实现问题. 给出了期望状态反馈增益阵的存在条件及其解析表达式; 进一步的工作是要给出期望状态反馈控制器的具体求解方法.
+*国家教委博士点基金及南京理工大学科研发展基金资助项目。
+作者简介：徐胜元, 男, 31岁, 博士生. 研究领域为广义系统, 鲁棒控制, 自适应控制.
+　　　　　齐延信, 男, 35岁, 硕士生, 讲师. 研究领域为广义系统, 变结构控制.
+　　　　　杨成梧, 男, 61岁, 教授, 博士生导师. 研究领域为复杂系统, 高速采样控制, 信号处理等.
+作者简介：南京理工大学动力工程学院　南京　210094
+参考文献
+　1　Garcia G, Bernussou J. Pole Assignment for Uncertain Systems in a Specified Disk by State Feedback. IEEE Trans. Automat. Contr., 1995, 40(2): 184～190
+　2　Furuta K, Kim S B. Pole Assignment in a Specified Disk. IEEE Trans. Automat. Contr.,1987, 32(5): 423～427
+　3　Wang Z, Tang G, Chen X. Robust Controller Design for Uncertain Linear Systems with Circular Pole Constraints. Int. J. Contr., 1996, 65(6): 1045～1054
+　4　Cobb D. Feedback and Pole Placement in Descriptor Variable Systems. Int. J. Contr., 1981, 33(6): 1135～1146
+　5　Fletecher L R. Pole Assignment and Controllability Subspaces in Descriptor Systems. Int. J. Contr., 1997, 66(5): 677～709
+　6　Desoer C A, Vidyasagar M. Feedback Systems: Input-Output Properties. New York: Academic Press, 1975
+　7　Dai L. Singular Control Systems. Lecture Notes in Control and Information Sciences. Berlin: Springer-Verlag, 1989, 118
+　8　Fang C, Lee L, Chang F R. Robust Control Analysis and Design for Discrete-time Singular Systems. Automatica, 1994, 30(11): 1741～1750
+1998-10-30收稿

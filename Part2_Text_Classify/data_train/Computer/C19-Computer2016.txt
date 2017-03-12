@@ -1,0 +1,49 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+1999年 第18卷 第4期 Vol.18 No.4 1999
+
+
+
+ActiveX控件和Owner-draw控件的编程
+潘　众　沙征东
+　　摘　要：控件是用户界面的重要组成，ActiveX控件和Owner-draw 控件能满足用户化界面的需要，本文介绍了这两种控件的编程要点。
+　　关键词：ActiveX控件　Owner-draw控件　控件容器
+　　控件是用户界面的重要组成，它使用户很方便地与计算机进行对话 ，且使软件的操作越来越简 单，因此控件成为软件设计中不可缺少的一部分。但由于MFC提供的库存控件非常有限， 有时不能满足使用需要，所以必须自己制作一些符合要求的控件，方法是多种多样的， 可以根据需要来选择。本文主要介绍如何在Visual C++中制作ActiveX控件和拥有者画(Owne r-draw)控件，并各结合一个小例子加以说明。
+1　ActiveX控件
+　　当需要1个拥有完全不同的外形或完全不同功能的全新控件时，制作1个ActiveX控件 会是最好的选择。ActiveX控件能使界面别具一格，更有吸引力，可满足各种需要。 
+　　ActiveX控件基于普通对象模型(COM)、能在自己的窗口中绘制自己的对象。它有点类 似OLE服务器，能被OLE容器使用，这种容器称为控件容器，通常是对话框。控件容器通过1 组属性(Properties)和方法(Methods)来管理它，也能通过事件(Events)的形式发送 消息给控件容器。
+　　ActiveX控件通过COleControl类、事件激发函数(Event-firing Function)和1个调度映射表 (Dispatch Map)来有效地与控件容器和用户进行交互。所有的ActiveX控件类都是从COleCon trol类派生出来的，COleControl类除了使控件对象具有MFC窗口对象的所有特征之外，还增 加了控件激发事件的能力。控件通过激发事件通知控件容器已发生重要情况。控件容器还可 通过事件附属参数了解更详细的情况。调度映射表陈列一系列属性和方法给用户，它们提供 了一种交互式界面，具体内容在创建控件时根据需要来决定。
+　　ActiveX控件的属性和方法在用途上非常类似于类的成员变量和成员函数，可以认为属性和 方法是ActiveX控件类成员变量和成员函数的1个子集，这样在设计和编程时，把 控件容器可以修改或需要确定其值的变量用添加属性的方式添加到控件类中，把在 控件容器的编程过程中需要使用的函数用添加方法的方式添加到控件类中。Ac tiveX控件的事件通常是由用户的动作(如鼠标或键盘输入)、控件本身发生的特殊情况 引 起的。制作ActiveX控件时，最常用的事件当然是按下鼠标。Visual C++中提供了不少库存 属性(Stock Properties)、库存方法(Stock Methods)和库存事件(Stock Events)，为编程 带来了很多方便，然而控件的大部分属性、方法和事件是自定义(Custom)的，需要自己 编程。ClassWizard中支持的自定义属性有如下3种类型：
+　　1．DISPPROPERTYNOTIFY：使用成员变量和通知消息来实现。
+　　2．DISPPROPERTYEX：使用Get/Set函数来实现。
+　　3．DISPPROPERTYPARAM：使用Get/Set函数和索取参数来实现。
+　　这3种自定义属性使用起来差别较小，在使用该控件的工程中会自动加入该控件类的包装类( Wrap Class)，对控件容器来说，控件所有的属性都可通过这个包装类提供的Get/Set函数对 获取或设置该属性。只是第一种类型稍有限制，第三种类型一般不用。一般而言，把在控 件容器的程序中要用到的属性设置成第二种类型，而把那些只用于编辑资源(如对话框)的、 在程序中用不着的属性设置成第一种类型比较妥当。
+　　下面就以控制平台常用的多档选择开关(Switch Control)的制作为例，说明在Visual C++中 ActiveX控件的制作及使用要点，具体操作不多阐述。
+　　Switch控件是用来进行多档选择的，外形就象各种仪器仪表面板上 的圆形旋钮，有一指针指示用户所做的选择。当在容器中使用时，容器的设计人员应能改 变它的选择档数，在程序中可随时确定或改变指针的位置。以下几个属性是该控件所必须的 ：
+　　BackColor：背景颜色，主要用于使控件四周颜色与控件容器背景颜色一致，是库存属性。 
+　　Division：开关选择档数，说明有多少档可供选择，可设置成第一种类型自定义属性。
+　　PointerPos：指针位置，指示指针所处的位置，即指向哪一档，可设置成第二种类型自定义 属性。
+　　另外，还可添加的属性有开关颜色、指针颜色等等。
+　　Switch控件呈圆形，它的外围刻度把它分成多个扇形区域，使用该控件的控件容器 在编程时 可能要确定鼠标落在这些扇形区域中的哪一个，实际上在该控件本身的编程中也要确定这个 区域，因此把确定这个区域的函数InPie()作为一个方法来对待是有益无害的。更重要的是，当用户在该控件上按动鼠标时，控件应当响应这一动作，即必须根据鼠标位置 重画指针，并修改PointerPos属性值。为此，在ClassWizard中添加自定义事件，命名为Cli ckIn。在控件类的消息响应函数(控件也是1个窗口)OnLButtonDown()中修改PointerPos属 性值，并使控件无效，使之重画，最后调用该事件的激发函数FireClickIn()通知容器用户 已按下鼠标左键。这样在插入了Switch控件的容器中，就可以编写这个消息的响应函数OnCl ickInXXX()，通过ClassWizard是很容易做到的。
+2　Owner-draw控件
+　　在编程时，有时会对某个库存控件的外形不满，这时就可以把它设成具有拥有者画(Own er-draw)风格的控件。然后派生1个该控件类的子类，重载DrawItem()等函数，并把该控件 定义成这个子类的1个对象。下面通过1个创建颜色选择组合框的例子简要说明如何制作Owne r-draw控件。
+　　颜色选择组合框是1个常用的控件，但CComboBox类只能在其选项中输入文字，不能填充图形 。为此在编辑对话框资源时，把要制成颜色选择组合框的组合框设置成Drop List类型，并 在Owner-draw中选择Variable项。之后通过ClassWizard派生CComboBox类的子类CColorComb oBox，关键是要重载下列3个类成员。
+　　1．DrawItem(LPDRAWITEMSTRUCT lpDS)，负责绘制选项，大多数控件类都拥有这个 成员函数 。LPDRAWITEMSTRUCT是指向DRAWITEMSTRUCT结构的指针，绘制颜色条正是通过该结构的成员 hDC来获得设备对象的指针的。该结构的成员itemData对应各选项的值。成员itemActio n定义要执行的动作，可以是下列值的组合(位或)：
+　　ODADRAWENTIRE――表示整个控件需重绘。
+　　ODAFOCUS――表示控件获得或失去输入焦点，必须根据另一个成员itemSt ate判断控件是否拥有输入焦点。
+　　ODASELECT――表示选择的状态发生改变，必须检测itemState以确定选择状态。 
+　　成员itemState指示在当前绘制动作发生后该选项的存在状态，可以是下列值的组合(位或) ：
+　　ODSCHECKED――菜单条款被选中，只用于菜单。
+　　ODSDISABLED――该选项被禁止。
+　　ODSFOCUS――该选项拥有输入焦点。
+　　ODSGRAYED――条款变灰，只用于菜单。
+　　ODSSELECTED――该选项被选中。
+　　ODSCOMBOBOXEDIT――绘制动作发生在组合框中的编辑框内。
+　　ODSDEFAULT――该选项是默认选项。
+　　对于颜色组合框，当(itemAction & ODADRAWENTIRE)为真时，表示要用itemData 指定的颜 色绘制选项彩色条。单鼠标移到某个选项上时，该选项彩色条应由另一颜色矩形框围起来， 这时，((itemAction & ODAFOCUS)&&(itemState & ODSFOCUS))为真。 当单鼠标从某个选 项上移走时，应用该选项彩色条的颜色重绘矩形外围框，此时，(itemState & ODSFOCUS)为假。弄清楚这些要求后，程序就可用3个条件语句完成绘制工作。
+　　2．MeasureItem(LPMEASUREITEMSTRUCT lpMS)，负责通过MEASUREITEMSTRUCT结构的itemHei ght成员设置选项的高度，只有CComboBox、ClistBox等少数几个类拥有该成员函数。
+　　3．CompareItem(LPCOMPAREITEMSTRUCT lpCS)，负责列表框和组合框中选项的排序。按自己 规定的大小判断准则比较COMPAREITEMSTRUCT结构的itemData1和itemData2成员的大小。只 有在列表框和组合框具有排序风格时，这个函数才被调用。
+　　为了完善CColorComboBox类，还可对应CComboBox类成员AddString、DeleteString、FindSt ring加入AddColorItem、DeleteColorItem、FindColorItem 3个成员函数。必须在CDialog ∷OnInitDialog中调用AddColorItem，以便向这个颜色组合框加入选项。
+　　上面介绍了ActiveX和Owner-draw控件的一般制作要点，限于篇幅，不做更详细说 明，具体细节请参考在线帮助。
+作者单位：武汉大学电信学院(430072)
+收稿日期：1998-10-26

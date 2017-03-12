@@ -1,0 +1,57 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+一般非线性系统的相关阶与标准形1)
+佘焱　张嗣瀛
+关键词　一般非线性系统，标准形，相关阶.
+RELATIVE DEGREE AND NORMAL FORM FOR GENERAL
+NONLINEAR CONTROL SYSTEMS
+SHE YAN
+(Dept. of Inform. and Contr.Eng., Shanghai Jiaotong University, Sha nghai 200030)
+ZHANG SIYING
+(Dept. of Automatic control, Northeast University, Shenyang 110006)
+Key words　Nonlinear control systems, normal form, relative degree.
+1　引言
+　　近二十年来，由于微分几何等数学工具的引入，非线性控制系统的理论取得了长足进展，一 系列重要问题得到系统的处理［1,2］.但是，绝大部分结果都只适用于仿射非线性 系统.显然，在更一般的系统中讨论这些问题在理论和应用上都是有意义的［3-5］ .仿射非线性系统的相关阶及基于相关阶的标准形在解决一些重要问题时，都已成为一个 基本假设，得到研究者的重视［6］.本文的主要目的是对一般非线性系统导出类似 的标准形，从而仿射非线性系统的众多结果可以推广到更一般的框架中.
+
+2　主要结果
+　　考虑系统
+=f(x,u),　　　　
+y=h(x).　　　(1)
+其中x∈Rn,u∈Rm,y∈Rp,pm,f(x ,u),h(x)是光滑函数.
+　　定义1.　称系统(1)在点(x0,u0)具有相对阶｛r1,…,rp｝，如果
+(i)在点(x0,u0)的某邻域
+　　(2)
+其中　
+(ii)p×m阶矩阵
+　　(3)
+　　在(x0,u0)的秩为p.
+　　定理1.　设系统(1)在(x0,u0)具有相对阶｛r1,…,rp｝，则存在x0附近的坐标变换Φ(x),使系统(1)在新坐标下具有标准形
+　　　(4)
+其中矩阵在(x0,u0)的秩为p.
+　　推论1.　设系统(1)在(x0,u0)具有相对阶｛r1，…,rp｝，则存在光滑反馈u=k(x,v),u0=k(x0,0)及x0附近的坐标变换Φ(x)，使系统(1)在新坐标下具有形式
+
+令(第n+i行为1)，i=1,…，m，则有
+　　引入系统,记,则可简记为：
+
+　　定理2.　设系统(1)在(x0,u0)具有相关阶｛r1,…,rp｝,r=r1+…,+rpn,设i1,i2,…,ip为(x,u)中在(x0,u0)线性无关的p列，Rn+m上的分布
+
+在(x0,u0)的某邻域闭合，则存在x0附近的坐标变换Φ(x),使系统(1)在新坐标下具有标准形
+　　　　　　　　　　　　　　　　　　　　　　　
+
+其中m-p维向量是由u中除去分量ui1, …,uip组成，矩阵在(x0,u0)的秩为p.
+　　1)国家自然科学基金，中国博士后科学基金和辽宁省科学技术基金资助项目.
+作者单位：佘焱(上海交通大学信控系　上海　200030)
+　　　　　张嗣瀛(东北大学自控系　沈阳　110006)
+参考文献
+1　Isidori A. Nonlinear control systems, Berlin: Springer-Verlag, 1 989
+2 佘焱，张嗣瀛.非线性大系统的分散线性化与分散控制.自动化学报(待发表)
+3　佘焱，张嗣瀛.一般非线性系统的零动态、标准形与局部反馈渐近镇定.自动化学报(待发表)
+4　佘焱，张嗣瀛.一般非线性控制系统的局部反馈渐近镇定.控制与决策(待发表)
+5　Byrnes C I, Hu X. The zero dynamics algorithm for general nonlinear ststems and its application in exact output tracking, J. of Math. systems, Estimation and Control, 1993, 3(1):51-72
+6 Hu X. Some results in nonlinear output regulation and feedback stabilization. Automatica, 1994, 59(4):1085-1093
+收稿日期　1996-07-15

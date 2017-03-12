@@ -1,0 +1,128 @@
+计算机工程
+Computer Engineering
+1999年　第25卷　第9期　Vol.25 No.9  1999
+
+
+
+基于局域网络应用Java语言实现远程智能终端的控制
+邹华军　曾育星
+　　摘　要：在简要介绍Java语言和PCL839卡的基础上，通过编程来实现对智能节点PCL839卡的远程控制．
+　　关键词：ava；PCL839；远程控制；本地方法
+Remote Controlling the Intelligent Terminal by Java Based on LAN
+Zou Huajun, Zeng Yuxing
+(Dept. of Mechanical ＆ Electronical Engineering, Guangdong Industrial University, Guangzhou 510090)
+　　Abstract　Based on briefly introducing Java and PCL839 card, a method of remote controlling the intelligent terminal (PCL 839 card) is describe.
+　　Key word　Java; PCL839; Remote control; Mative Method
+　　当前Internet的技术发展异常迅猛，对Internet技术的利用也如火如荼。许多集科研与生产为一体的部门本身就存在着一个网络，然而对这些网络的利用还远远没有充分发挥Internet网络的潜力,尤其在控制领域。目前计算机界流行着SUN公司的一句名言"网络就是计算机"，而随着控制领域应用网络技术的进一步研究，又迎来了新的一句名言"网络就是控制"。本文正是以此为起点，在现有局域网络的基础上，应用Java编程语言，实现对智能或可编程远程终端的控制。下面以可编程的PCL839卡为例，介绍实现其远程控制的一种方案。
+1 Java语言
+　　Java语言是SUN公司于1995年5月推出的新一代面向对象的计算机通用编程语言，是继WWW之后又一引起世界轰动的产品。Java语言的特点是跨平台和强大的网络编程功能。在Java语言诞生之前，Internet已存在，所以Java语言本身就封装了大量进行网络编程的类库，使得网络编程功能强大，同时又简化了网络编程的操作。因此利用Java语言可以开发出功能强大的网络应用程序。
+2 PCL839卡
+　　研华公司的PCL839卡是一种高速步进电机驱动卡，采用光隔保护，抗干扰能力强，具有数字I/O口，可以采样其他现场数据等。它简化了步进电机的控制。PCL839卡内部有3个独立的脉冲发生器，能够同步产生脉冲控制3个电机，每个脉冲发生器每秒可以产生1至16k个脉冲。
+3 远程控制
+3.1 远程控制机和现场工控机的互连
+　　在现有局域网络基础上构成的互连系统如图1。实现远程控制，首先必须实现远程控制机对现场工控机的控制，再由工控机对PCL839卡加以控制。
+　　应用Java语言进行网络程序的开发可以采取3种方法：URL(统一资源定位器)、Socket(套接字)、Datagram(数据包)。URL一般用于Web上某一特定资源的获取，不适合于底层应用程序的开发；Datagram是以不可靠传输协议UDP为基础的，但对于现场中的数据，必须保证传输的可靠和准确，因此对于该网络通信程序一般采用基于可靠传输协议TCP基础上的Socket编程加以实现。
+
+图1 远程控制机和现场工控机互连结构图
+　　对本方案网络应用程序的开发，采用Server/Client方式，以远程控制主机为服务器，每个工控机为客户端。客户机的程序开发如下所示：
+　　public class agnetclass 
+　　{public static void main(String args[])
+　　{try {
+　　　　　　　Socket agentsocket=new Socket
+　　("remotecontrolcomputer",5555);
+　　　　　　　PrintStream os=new PrintStream(agentsocket.getOutputStream());
+　　　　　　　DataInputStream is=new DataInputStream(agentsocket.getInputStream());
+　　　　　　　StringBuffer buf=new stringBuffer(50);
+　　　　　................
+　　　　　　　}catch(IOException e){};
+　　}
+　　}
+　　在该程序段中,首先定义一个客户端socket,通过该agent socket与远程控制机remote control computer建立连接，并且指定程序使用的端口号，该端口号应大于1024，以避免与系统的端口号发生冲突；然后定义输出和输入流os和is ，输出流是从客户机向服务器发送信息的通道，输入流是服务器向客户机传递命令和参数的途径；再定义数据缓存区，用于把服务器传过来的命令和参数与其它程序段进行交互。在整个程序段中用try catch语句进行异常捕获。
+　　服务器段的程序编制应与客户端程序的编制相适应，由于一个远程控制机可以控制多台现场工控机，所以服务器程序必须采用多线程机制，这也是Java语言的一大特色。服务器端的程序编写如下：
+　　public class serverclass 
+　　{public static void main(String args[])
+　　{ boolean listen;
+　　try {
+　　　　ServerSocket serversocket =new ServerSocket(5555);
+　　　　}catch(IOException e){};
+　　　　　　　while(listen)
+　　{
+　　Socket agentsocket=serversocket.accept();
+　　}catch(IOException e){};
+　　new serverthread(agentsocket).start();
+　　..........
+　　}}
+　　class serverthread extends Thread{
+　　Socket socket=null;
+　　serverthread(Socket socket)
+　　{super("serverthread");
+　　this.socket=socket;}
+　　public void run(){
+　　　　　　try{
+　　DataInputStream　　is=new　　DataInputStream(new BufferedOutputStream (socket. getOutputStream()));
+　　PrintStream os=new PrintStream (new BufferedOutputStream (socket.getOutputStream (),5555),false);
+　　..........
+　　}catch(IOException e){}; }
+　　该程序段由两个类组成：主类和线程类。主类负责建立服务器套接字server socket，端口号必须与客户机的端口号一致，然后通过server socket的accept方法创建一个套接字接口，专门处理与客户机的通信；线程类用于创建一个新的线程，负责处理各个现场工控机的输入和输出请求。在线程类程序段中，首先创建一个构造方法，用于初始化一个新的线程，然后再定义一个输入和输出流。该服务器程序的设计是以各客户程序用同一个端口号向服务器发出服务请求，服务器程序在端口处侦听各个客户的请求，创建多个线程，依次处理。当然各个客户端也可以采用不同的端口号向服务器发出请求，服务器相应地也创建不同端口号的线程与端口号一致的客户端进行通信。
+　　远程控制主机服务器程序必须具有与数据库进行动态交互的能力。数据库中存放着大量的现场数据以及控制现场操作的参数和命令等。服务器程序中的某一线程体负责对数据库的存取、修改和维护等操作，Java语言通过JDBC实现与数据库的连接，该功能类的实现方法如下：
+　　public class database 
+　　{public void drivedata()
+　　{String url="JDBC:odbc:component";
+　　　　..........
+　　try{
+　　Class.forName("sun.jdbc.odbc.JDBCODBCDriver");
+　　Connection con=DriverManager.getConnection(url);
+　　　　..........
+　　}catch(SQLException se){};
+　　}
+　　该程序段最主要的功能是加载JDBC数据库驱动程序，使得Java语言能够通过驱动程序访问数据库。
+4 利用Java语言的本地方法技术
+　　由于Java语言的跨平台特性，所以使得Java语言无法操作硬件。对智能节点的控制只能采用第三方语言进行，例如C或汇编语言。而整个工控机的通信部分由Java语言编写，为实现远程主机对智能节点的控制，就必须实现Java语言与其它语言的结合。令人欣慰的是Java语言扩充了这方面的功能，可以与C和C++语言完美无缺地结合起来，这虽然在某种程度上牺牲了移植性，却使Java语言能够和具体的环境打交道，具备了驱动硬件的能力。在本文所讨论的例子中，PCL839卡的应用和驱动程序是用C语言开发的，Java语言把C语言编制的程序做成本地方法体，从而实现对PCL839卡的控制。
+　　对智能节点的驱动程序用C语言编写,程序中所采用的函数大部分是研华公司开发的C库函数，利用这些库函数可以开发出高效的应用程序，驱动步进电机完成各种操作。因此把这些程序集成为Java本地方法体，成为用Java语言实现远程控制的关键技术。其程序段如下：
+　　int pcl839dirve()
+　　　{ …………………………
+　　　　　int i ;
+　　　　　clrscr();
+　　　　　set_base(0x2c0); /* 设置pcl839的基地址*/
+　　set_mode(CH1,DIR); /* 设置pcl839通道1 "Direction" mode */
+　　set_mode(CH2,DIR); /* 设置pcl839通道2 "Direction" mode */
+　　set_mode(CH3,PUS); /* 设置pcl839通道3"Pulse" mode */
+　　set_speed(CH123,600,3000,600); /* 设置pcl839通道速度 */
+　　pmove(CH123 , P_DIR,FH,4000 , N_DIR,FH,2000 , P_DIR,FH,4000);
+　　waitrdy(CH123); /* 等待所有通道就绪*/
+　　cmove(CH123 , N_DIR,FH , N_DIR,FH , N_DIR,FH);
+　　………………………/*进行具体的现场操作,以下的程序语句仅作为演示*/
+　　　　printf("按任何键降速...");
+　　　　getch();
+　　　　printf("\n");
+　　　　slowdown(CH123); /* 把通道1,2,3降速到低速状态*/
+　　　　for(i=2999;i>-1;i--)
+　　　　　{ cprintf("%d \r",i);
+　　　　　　delay(1);
+　　　　　}
+　　　　stop(CH123); /* 通道停止运行*/
+　　　　return(0);
+　　}
+　　对于工控机，Java程序的编写必须集成本地方法。对于本地方法的集成采取以下步骤：首先在一个Java程序中定义一个本地的方法，编译该Java代码；然后当用JDK环境下的JavaH命令创建一个C语言的头文件时，必须注意其中的类结构和函数定义，接着创建一个Stub文件，Stub文件中包含与其C结构紧密联系在一起的C代码；Stub文件建立以后，编写相应的C代码，在原有的C代码前面必须加上《stubpreamble.h》和《drive.h》两个头文件；最后再由
+VC++等集成开发环境将C语言程序编译成DLL程序，这样就实现了本地方法的集成。对于工控机的本地程序按以上步骤完成以后，工控机的主程序编制如下：
+　　public class main 
+　　{public static void main(String args[])
+　　{ .............
+　　/*负责与远程控制主机通信部分的程序段
+　　new drive().pcl839drive();
+　　　　.............
+　　}}
+　　public class dirve
+　　{public native void pcl839drive();
+　　.........
+　　static{
+　　System.loadLibrary("drive");
+　　.........} }
+　　该段程序由主类和本地方法类组成，主类除完成通信部分的程序外，还必须实例化本地方法类，并且调用本地方法；本地方法类在定义本地方法时，必须加上关键词native，并且程序段中有一段静态代码，该静态代码通过系统函数为本地方法类加载drive库。
+　　通过采用Java语言编程技术，就可以实现本地方法的集成和网络的通信，有效地把控制主机和远程主机通过网络连接起来，以实现远程控制。该套方案是在已有本地局域网络的基础上建成的，充分利用了Java网络编程和集成本地方法的技术，具有经济实惠和高效的特点。由于Java的平台无关性，使得Java在与本地方法的集成中隐藏了大量的技术细节。因而进一步对Java的关键技术开展研究，充分和高效地利用这一富有特色的语言，实现对底层智能节点的控制，达到网络监控的目的，无疑是一个非常有意义的课题。
+作者简介：邹华军(1973～)，男，研究生，主研方向：企业信息网和控制互关联技术，远程控制，网络制造
+作者单位：广东工业大学机电系，广州 510090
+参考文献
+1 李卫华,傅晓东.Java语言基础及其应用.南宁：广西科学技术出版 社,1998-07
+2 Rodley J著,京京翻译组译.Web与Intranet数据库开发.北京：机械 工业出版社,1997-08
+收稿日期：1999-01-06

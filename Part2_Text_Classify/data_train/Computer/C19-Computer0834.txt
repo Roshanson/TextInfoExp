@@ -1,0 +1,73 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.356-364
+
+
+
+带饱和执行器的不确定时滞系统的
+鲁棒控制
+苏宏业　蒋培刚　褚健
+摘　要　研究了一类具有饱和执行器约束的不确定时滞系统时滞依赖型无记忆鲁棒控制问题.所考虑的时滞系统包括时变未知但有界的不确定参数以及状态和控制的时滞项.文中应用了Lyapunov定理以及线性矩阵不等式(LMI)方法来研究该系统的分析和综合问题，导出了一个新的鲁棒可镇定判据和相应的无记忆鲁棒镇定控制律设计方法.所得的基于一组LMIs的结果是与时滞相关的.
+关键词　不确定时滞系统，饱和执行器，无记忆状态反馈，时滞依赖，线性矩阵不等式(LMI).
+ROBUST CONTROL FOR TIME-DELAY SYSTEMS
+CONTAINING SATURATING ACTUATORS
+SU Hongye　JIANG Peigang　CHU Jian
+(National Key Lab. of Industrial Control Technology, Institute of Advanced Process Control,
+Zhejiang University, Hangzhou　310027)
+Abstract　The delay-dependent memoryless robust stabilization problem for a class of uncertain time-delay systems containing saturating actuator is considered in this paper. The uncertain time-delay systems under consideration include time-varying unknown-but-bounded uncertain parameters and time-delays in both state and control, the delays are assumed to be constant bounded but unknown. Lyapunov theorem and linear matrix inequality(LMI) approach are employed to investigate these control problems. A new sufficient condition for the existence of memoryless robust stabilizing control law is derived. The results depend on the size of delays and are given in terms of LMIs.
+Key words　Uncertain time-delay systems,saturating actuator, memoryless state feedback, delay-dependent, linear matrix inequality(LMI).
+1　引言
+　　时滞和执行器饱和都是实际控制系统中的常见现象，这两类系统的研究由于其重要的理论和实际意义历来是控制理论的研究热点，并已有了许多结果［1，2］.近来，带有饱和执行器的不确定时滞系统的鲁棒镇定问题开始受到关注［3～5］.在本文中，用LMI方法研究同时具有状态和控制滞后且带有饱和执行器的时变不确定时滞系统，其目的是得到一个时滞依赖的稳定性判据及设计一个无记忆状态反馈控制律使得闭环系统鲁棒稳定.
+2　系统描述及定义
+　　考虑如下的不确定时滞系统
+(t)=(A+ΔA(t))x(t)+(A1+ΔA1(t))x(t-d)+
+(B+ΔB(t))u′(t)+(B1+ΔB1(t))u′(t-h)，　　(1a)
+u′(t)=sat(u(t)),sat(u(t))=［sat(u1(t)),sat(u2(t)),…，sat(um(t))］.　(1b)
+
+
+图1　饱和函数
+上式中x(t)∈Rn是状态向量，u(t)∈Rm是执行器的控制输入向量，u′(t)∈Rm是对象的控制输入向量；A，A1，B，B1是具有适当维数的定常矩阵；饱和函数的定义为(如图1所示)
+
+d和h为未知但有界的标量，并假设存在正实数d,h和τ使得对所有的t满足
+0≤d≤d*≤τ，　0≤h≤h*≤τ.　　　(2)
+　　在本文中，假设不确定性具有如下形式
+ΔA(t)=H1F1(t)E1，　ΔA1(t)=H2F2(t)E2,
+ΔB(t)=H3F3(t)E3，　ΔB1(t)=H4F4(t)E4.　　(3)
+上式中Fi(t)是未知的实时变矩阵但有FTi(t)Fi(t)≤I(i=1,2,3,4)；Hi,Ei(i=1,2,3,4)是具有恰当维数的已知实定常矩阵.
+3　带饱和执行器不确定时滞系统的时滞依赖鲁棒镇定
+　　在这一节中，针对带饱和执行器的不确定时滞系统(1)～(3)，将给出一个新的鲁棒可镇定的充分条件以及相应的控制器设计方法.
+　　定理1.对不确定时滞系统(1)～(3)，给定标量d*，h*和τ满足式(2)，那么系统是鲁棒可镇定的；如果存在正定对称矩阵X，Pj，Qj，Tj,Zj，矩阵Y，Yj和标量εi>0，αi>0(i=1,2,3,4)，βij>0(i=1,2)和σi>0(i=1,2,…，10)，其中j=1,2,3,4满足以下LMIs
+
+其中
+
+那么，一个合适的鲁棒镇定控制律为u(t)=2YX-1x(t).
+4　结　论
+　　本文研究了一类带饱和执行器的不确定时滞系统的鲁棒镇定综合问题.针对该系统以LMI的形式给出了一个时滞依赖型鲁棒可镇定的新判据和相应的无记忆鲁棒镇定控制律设计方法.
+　
+附录A
+　　定理1的证明.
+　　对系统(1)～(3)，引入控制律u(t)=2Kx(t)，并取闭环系统的Lyapunov函数为
+
+其中P,Ri是正定对称矩阵.考虑到x(t-τ)=x(t)-∫0-τ(t+θ)dθ及文［2］中的引理1～3，如果下列不等式满足
+
+其中εi>0,Qi>0,i=1,2,3,4；
+
+其中βij>0,Tj>0,Zj=KQjKT,Pj>0,　i=1,2,　j=1,2,3,4.则有
+
+　　如果对标量d*>0,h*>0，存在正定对称矩阵P，Pj,Zj，Qj,Tj(j=1,2,3,4)；矩阵K及标量αi>0,εi>0(i=1,2,3,4);βij>0(i=1,2,j=1,2,3,4)及σi>0(i=1,2,…，10)满足不等式(A1)～(A8)及W<0，那么对任意的0≤d≤d和0≤h≤h，有(x(t),t)≤-α‖x(t)‖2，其中α=-λmax(W)>0.由Lyapunov定理和定义1，对任意的0≤d≤d，0≤h≤h，闭环系统是鲁棒稳定的，即原系统(1)～(3)是鲁棒可镇定的.
+　　令X=P-1，Y=KX,Yj=B1Zj,j=1,2,3,4，W1=XWX.由schur引理可知不等式(A1)～(A8)和W1<0等价于式(4)中的LMIs.
+国家自然科学基金(NSFC：69934030)、浙江省自然科学基金重点资助项目.
+　　苏宏业　1969年生.1990年毕业于南京化工大学，1995年获浙江大学工业自动化专业博士学位，现为副教授、先进控制研究所副所长.研究方向为鲁棒控制、非线性控制、时滞系统控制和PID自整定理论.
+　　蒋培刚　1976年生.1996年毕业于西安交通大学自动控制系，现为浙江大学工业控制技术研究所博士研究生.研究方向为鲁棒控制、时滞系统控制.
+　　褚　键　1963年生.1982年毕业于浙江大学化工系，1989年获日本京都大学工学博士学位.1993年被聘为浙江大学教授、博士生导师, 现为浙江大学工业自动化国家工程研究中心副主任、先进控制研究所副所长.研究方向为时滞系统控制、非线性控制、鲁棒控制.
+苏宏业（浙江大学工业控制技术国家重点实验室、先进控制研究所　杭州　310027　E-mail:hysu@mail.hz.zj.cn）
+蒋培刚（浙江大学工业控制技术国家重点实验室、先进控制研究所　杭州　310027）
+褚健（浙江大学工业控制技术国家重点实验室、先进控制研究所　杭州　310027）
+参考文献
+［1］　Kosut R L. Design of linear systems with saturating linear control bounded state. IEEE Trans. Autom. Control, 1983, AC-28(1):121～124
+［2］　Li X, C E de Souza. Criteria for robust stability of uncertain linear systems with time-varying state delays. In:Proc. of 13th World Congress of IFAC, San Francisco, USA, 1996, 137～142
+［3］　Chou J H, Horng I-R, Chen B S. Dynamic feedback compensator for uncertain time-delay systems containing saturating actuator. Int. J. Control, 1989, 49(6):961～968
+［4］　Niculescu S -I, Dion J-M, Dugard L. Robust stabilization for uncertain time-delay systems containing saturating actuators. IEEE Trans. Autom. Control, 1996, AC-41(5):742～747
+［5］　Su Hongye, Chu Jian. Robust stablizing control for uncertain time-delay systems contain saturating actuators. In:IFAC Workshop on LTDs'98, Grenoble, France, 1998，7～12
+收稿日期　1997-11-17
+修稿日期　1998-12-28

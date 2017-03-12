@@ -1,0 +1,138 @@
+软件学报
+JOURN AL OF SOFTWARE
+1999年　第10卷　第10期　Vol.10　No.10　1999
+
+
+
+基于CCS的加密协议分析 
+丁一强
+
+摘要　加密协议的分析需要形式化的方法和工具.该文定义了加密协议描述语言PEP (principals+environment=protocol),并说明对于一类加密协议,其PEP描述可以转化为有穷的基本CCS进程,由此可以在基于CCS的CWB(concurrency workbench)工具中分析加密协议的性质.此方法的优点在于隐式地刻画攻击者的行为,试图通过模型检查(model checking)发现协议潜在的安全漏洞,找到攻击协议的途径.
+关键词　加密协议,协议分析,形式化方法,CCS,模型检查.
+中图法分类号　TP309
+
+CCS-based Cryptographic Protocol Analysis
+DING Yi-qiang
+(Laboratory of Computer Science Institute of Software The Chinese Academy of Sciences Beijing 100080)
+Abstract Formal methods and tools are key aspects for the analysis of cryptographic protocols. In this paper, a formal language PEP (principals+environment=protocol) for the specification of cryptographic protocols is proposed. For some cryptographic protocols, their PEP specifications can be translated into finite basic CCS processes, so it is possible to analyze the security properties using CCS-based tools such as CWB (concurrency workbench). The advantage of the mothod proposed in this paper is that the actions of the attacker can be implicitly specified, and if the potential back door of the protocol analyzed exists, the attacking action trace can be explicitly found out by model checker.
+Key words Cryptographic protocols, protocol analysis, formal methods, CCS, model checking.
+1　加密协议及其形式化分析
+　　网络加密协议的目的在于运用加密技术保证开放网络的安全性.在加密协议中,加密技术是非常重要的因素,但另一方面,如果协议逻辑设计不当,则无异于在坚固的堡垒中留了个后门,攻击者根本不用费事去解密就可以达到其目的.为了保证加密协议设计的正确性,避免发生潜在的错误,就需要形式化的工具来精确地描述协议的行为以及协议所要达到的目标,并帮助分析此协议能否达到其预定目标.事实已经证明,形式化方法是有效的.
+　　本文定义加密协议描述语言PEP(principals+environment=protocol),说明对于一类加密协议,其PEP描述可以转化为有穷的基本CCS[1]进程,由此可以在基于CCS的CWB(concurrency workbench)工具[2]中分析加密协议的性质.本文提出的方法的优点在于隐式地刻画攻击者的行为,可以通过模型检查(model checking)[3]来发现协议潜在的安全漏洞,从而找到攻击协议的途径.
+　　本文第2节介绍加密协议的诸要素.第3节定义加密协议描述语言PEP的语法和语义.第4节举例分析Needham-Schroeder公开密钥协议.第5节是结论.
+2　加密协议的模型
+2.1 消 息
+　　主体之间发送和接收的消息有如下几种:主体标识、正文、随机量(nonce)、密钥、加密消息和复合消息.
+　　主体标识唯一标明了主体的身份,在开放网络环境中,主体标识一般是公开的.正文是一个字串.随机量是主体随机产生的,其他主体无法通过猜测得到它.在加密协议中,消息发送者在要传送的消息中加入随机量,以后,当他接收到包含此随机量的消息时,就可以断定此消息是新近生成的.因此,正确运用随机量可以防止重放(replay)攻击.
+　　当前的密钥体制分为两种.一种是秘密密钥体制,也称对称密钥体制,其加密密钥与解密密钥是同一个密钥,除非密钥体制被攻破,用一个密钥加密的消息只有用此密钥才能解密.除了用于保证信息的保密性之外,主体通过辨认加密信息,还可以判断此信息的来源,因为有能力用此密钥加密信息的主体是确定的.另一种是公开密钥体制,其密钥成对存在,一个是公开密钥,另一个是私有密钥,消息发送者可以用接收者的公开密钥加密消息,只有拥有对应私有密钥的接收者才能解密此消息.
+　　复合消息是消息的复合,主体很容易把复合消息分解为其组成部分.
+2.2 主 体
+　　加密协议的主体可以是人、机器或进程.主体行为包括发送和接收消息以及内部运算(包括加密、解密、逻辑判断等).主体之间是并发运行的.
+　　我们假设主体有区分各类消息的能力,并且对不符合协议的消息拒绝接收.例如,按照协议,主体A应该从主体B接收密钥k,那么此时主体A就拒绝接收除密钥以外的其他消息.另外,主体也能辨别同类消息的不同值.例如,主体可以辨别接收到的随机量是否是该主体刚才产生的.
+2.3　环 境
+　　在开放的网络环境中,潜在的攻击者可能控制整个环境,对网络上传送的消息侦听、篡改和重播.在本文中,我们可以把环境看作攻击者的知识库.一方面,随着协议的运行,知识库在增长;另一方面,协议主体的行为也由当前的环境所决定.
+2.4 加密协议的性质
+　　各种加密协议要达到的目的不同,要满足的性质也不同.本文讨论主体认证(authentication)协议,但本文提出的方法不仅仅局限于认证协议.
+　　认证协议是加密协议中很重要的一类.MIT的雅典娜计划提出的Kerberos协议就是使用共享密钥的认证协议.认证协议的目的是用来确认协议中主体的身份,防止攻击者假冒其他主体访问资源.
+　　Woo和Lam在文献[4]中提出了认证协议要满足的两个性质:对应性(correspondence)和保密性(secrecy).本文分析对应性.非形式地说,对应性是指认证协议中的主体的动作有着对应关系.例如,当协议应答方B结束协议时,对应的协议发起方A必须已开始进行此协议.我们用
+T authenticate R
+表示动作T之前一定有动作R,则
+end_response authenticate begin_init
+就反映了上述对应关系.
+3　加密协议描述语言PEP
+　　CCS是一种用于描述和分析并发和通信系统的形式体系[1].并发和通信系统通常可描述为CCS进程,系统的性质则可用模态逻辑来刻画.检查一个CCS进程是否满足其模态性质称为模型检查(model checking).基本CCS(basic CCS)有很成熟的理论结果以及相应的工具,如Concurrency WorkBench[2].但用它来描述协议中常见的传值进程时,数据域的无穷会导致状态迁移图的无穷分叉,工具对于这种情况就无法处理了.
+　　我们现在考察如何基于CCS来描述和分析加密协议.
+　　根据上一节的协议模型,协议主体之间可以传递各种消息,因此协议是传值进程,其值域是整个消息空间,显然是无穷的.这给加密协议的分析带来了困难.另外,对于加密协议的环境也必须给出合适的刻画.我们希望隐式地刻画环境(攻击者)的行为,分析协议时,如果协议有安全漏洞,我们的方法应该能推导出攻击的路径.
+　　考察加密协议中主体和环境的行为可以发现,协议主体对于由环境传递的由其他主体(可能是攻击者)发送的消息可看作是有选择地接受的.这样,对于许多加密协议来说(其中包括著名的Needham-Schroeder公开密钥协议),在任何状态,主体可做的动作是有限的,这一点对于用CCS来分析加密协议带来了方便.但另一方面,主体的行为也是受环境影响的.随着协议的运行,主体之间传送的消息越多,主体受攻击的可能性就越大.因此,同样的协议在第2遍运行时产生的状态分叉就比第1遍运行时要多.
+　　协议模型的上述特点,标准CCS是无法直接刻画的.因此,本文基于CCS定义PEP语言,以达到描述和分析加密协议的目的.
+3.1 消息空间
+　　由上节所述,消息包括主体标识、正文、随机量、密钥、加密消息和复合消息.在本文中,我们用uval(a)表示主体标识值,uvar(x)表示主体标识变量;用nval(n)表示随机量值,nvar(x)表示随机量变量;用kpub(a),kpvt(a),kshd(a)分别表示公开密钥、私有密钥和共享密钥;用text(t)表示正文;用enc(k,m)表示加密的消息;用(m1,m2)表示消息的复合.
+　　为了避免状态迁移图的无穷分叉,我们限制消息空间中不允许出现消息变量,只允许出现主体标识变量和随机量变量.如何放宽这个限制,使得本文提出的方法应用更广泛是我们将来的努力方向.但即使有此限制,我们仍然可以用它来刻画一大类的加密协议.
+3.2 消息推理引擎
+　　环境(攻击者)的消息推理可由如下的二元关系├来刻画.
+　　R1: 如果m∈S,则S├m.
+　　R2: 如果S├m,并且S├k,则S├enc(k,m) .
+　　R3: 如果S├enc(k,m),且S├k－,则S├m.其中,(kpub(a))－=kpvt(a),(kshd(a))－=kshd(a).
+　　R4: 如果S├m1,S├m2,则S├(m1,m2) .
+　　R5: 如果S├(m1,m2),则S├m1,且S├m2.
+3.3 加密协议描述语言PEP
+3.31 动 作
+　　协议主体能做的动作是send(m)和recv(m).在协议运行的任何状态,主体只能发送封闭的消息,即消息内部无变量出现.对于接收动作,它可接收的消息是一个消息模式,其中可以出现变量.只有满足此模式的消息主体才接收. 
+3.32 主体+环境=协议
+　　PRINCIPALS ∷= stop 　　　　　　　　　　; 终止
+　　　　　　　　　| ACTION. PRINCIPALS　　 ;　前缀
+　　　　　　　　　| PRINCIPALS + PRINCIPALS ; 选择
+　　　　　　　　　| PRINCIPALS | PRINCIPALS ; 并发
+　　ENVIRONMENT ∷= {MESSAGE,…,MESSAGE} ; 消息集合
+　　PROTOCOL ∷= PRINCIPALS in ENVIRONMENT
+　　在PEP中,主体进程的描述与CCS的进程非常类似,只是其行为与环境有着相互作用.我们定义协议的操作语义:
+
+
+　　
+　
+其中P[/]是指用替换P中的得到的结果.
+　　根据协议的操作语义,我们可以由协议的PEP描述得到其状态迁移图,然后再转化为基本CCS进程描述.并且,由于我们限制recv动作中的消息只含有主体标识变量和随机量变量,因此集合{M()|S├M()}是有穷的,对应的CCS转化是有穷分叉的.另外,我们也不允许主体进程的递归定义,这样,协议模型的CCS转化就是有穷的进程.
+3.4 对应性
+　　我们用模态逻辑公式[3]:
+T authenticate R=νX.([T]false∧[－R]X)
+来刻画协议主体动作的对应性,意即进程开始不能做T动作,并且对于做任何除R以外的其他动作之后得到的进程,也不能做T动作,而且这以后对于做任何除R以外之后得到的进程,也不能做T动作,等等.
+3.5 模型检查与协议分析
+　　在上文中,我们定义了加密协议描述语言PEP,并且说明PEP描述可以转化为基本CCS进程.另外,我们用模态逻辑中的ν公式刻画了主体动作的对应性.
+　　在CCS中,一个进程模型是否满足模态公式,可以用模型检查算法来检验.我们因此就可以验证协议是否满足对应性了.目前,有许多工具都可以作此验证,并且当验证失败时,工具往往可以给出导致性质不成立的动作序列,对于我们分析的加密协议来说,此动作序列正是对应了攻击者进攻的路径.
+4　Needham-Schroeder公开密钥协议的分析
+　　我们现在举例说明如何应用本文提出的方法来分析加密协议.我们的协议例子是简化的Needham-Schroeder公开密钥协议[5].
+　　(1)A→B:　A,B,{Na,A}kb
+　　(2)B→A:　B,A,{Na,Nb}ka
+　　(3)A→B:　A,B,{Nb}kb
+　　在此协议中,首先,协议发起方A选择一个随机量Na与其标识一起用响应方B的公开密钥kb加密后发送给B;B接收到消息并解密后,就得到了Na,随之也生成一个随机量Nb,并与Na一起用A的公开密钥ka加密后发送给A;A从解密后得到的Na试图判断与其通信的正是主体B,同样地,A把Nb加密后返回给B;B解密后试图判断与其通信的是主体A.
+　　这里,协议发起方A与协议响应方B可以与多个主体通信.为简单起见,我们考虑A与B,C通信的情况.
+　　用PEP语言,此协议可描述如下:
+　　A1= send(uval a,uval b,enc(kpub b,nval na1,uval a)).
+　　　　recv(uval a,uval b,enc(kpub a,nval na1,nvar x)).
+　　　　send(uval a,uval b,enc(kpub b,nvar x)).
+　　　　stop
+　　A2= send(uval a,uval c,enc(kpub c,nval na2,uval a)).
+　　　　recv(uval a,uval c,enc(kpub a,nval na2,nvar x)).
+　　　　send(uval a,uval c,enc(kpub c,nvar x)).
+　　　　stop
+　　B = recv(uval b,uval a,enc(kpub b,nvar y,uval a)).
+　　　　send(uval b,uval a,enc(kpub a,nvar y,nval nb)).
+　　　　ecv(uval b,uval a,enc(kpub b,nval nb)).
+　　　　stop
+这里,我们用A1,A2分别表示A与B,A与C的局部通信协议.
+　　初始环境为
+S0={uval a,uval b,uval c,kpub a,kpub b,kpub c,kpvt c}.
+我们这里假设初始环境中包含主体C的私有密钥kpvt c,这对应于主体C作为攻击者或者主体C的私有密钥泄露的情况.
+　　协议的说明可写为
+Spec=(A1+A2)|B in S0.
+　　主体B意想的通信对象是A,因此当它做最后一个动作:
+recv(uval b,uval a,enc(kpub b,nval nb))　　　　　　　 (1)
+时,他必须确信此协议正是A发起的,即A做过
+send(uval a,uval b,enc(kpub b,nval na1,uval a))　　　　　 (2)
+动作.用对应性描述表示为
+(1) authenticate (2).
+　　我们用ML语言实现了PEP到CWB的CCS语言的转换程序.然后在CWB中,模型检查协议是否满足对应性,其结果是否定的,并且很容易就得到了攻击的途径:
+　　　　　　　　　　send(uval a,uval c,enc(kpub c,nval na2,uval a))
+　　　　　　　　　　recv(uval b,uval a,enc(kpub b,nval na2,uval a))
+　　　　　　　　　　send(uval b,uval a,enc(kpub a,nval na2,nval nb))
+　　　　　　　　　　recv(uval a,uval c,enc(kpub a,nval na2,nval nb))
+　　　　　　　　　　send(uval a,uval c,enc(kpub c,nval nb))
+　　　　　　　　　　recv(uval b,uval a,enc(kpub b,nval nb))
+5　结 论
+　　我们定义了加密协议描述语言PEP用于刻画一类不含消息变量的加密协议,避免了状态迁移图的无穷分叉.这样,协议的PEP描述就可以转化为有穷的基本CCS进程,并且可以在基于CCS的CWB工具中分析加密协议的性质.本文提出的方法与同类工作相比,其优点在于隐式地刻画攻击者的行为,可以通过模型检查发现协议潜在的安全漏洞,找到攻击协议的途径.
+注释：本文研究得到国家自然科学基金和国家教育部留学回国人员启动基金资助。
+作者简介：丁一强：1970年生,博士,主要研究领域为形式化方法，网络安全协议分析
+作者单位:中国科学院软件研究所计算机科学开放研究实验室 北京 100080
+参考文献
+1　Milner R. Communication and Concurrency. New York: Prentice Hall, Inc., 1989
+2　Bruns G. Distributed Systems Analysis with CCS. London: Prentice Hall, Inc., 1997
+3　Stirling C. Modal and temporal logics for processes. Technical Report, ECS-LFCS-
+　　92-221, Department of Computer Science, University of Edinburgh, 1992
+4　Woo T Y C,Lam S S. A semantic model for authentication protocols. In: Proceedings
+　　of IEEE Symposium on Research in Security and Privacy. Oakland, CA:IEEE Computer
+　　Society Press, 1993
+5　Lowe G. Breaking and fixing the Needham-Schroeder public-key protocol using FDR. 
+　　In: Margaria T, Steffen B eds. Tools and Algorithms for the Construction and 
+　　Analysis of Systems, vol 1055. Lecture Notes in Computer Science. 
+　　Springer-Verlag, 1996. 147～166
+收稿日期；1998-04-30修稿日期：1998-10-22

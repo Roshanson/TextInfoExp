@@ -1,0 +1,180 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.3　P.101-409
+
+
+
+一种支持多重循环软件流水的寄存器结构
+容红波　汤志忠
+摘要　寄存器结构及其分配是软件流水算法的关键之一.为支持多重循环的软件流水,该文提出一种新颖的寄存器结构：半共享跳跃式流水寄存器堆.它可以有效地解决多重循环软件流水下的特殊问题,即：同层次和跨层次的寄存器重命名问题以及断流问题；有效地消除外层循环的体间读写相关,提高程序的指令级并行度.它有3种分配方式可供灵活使用：单个寄存器、流水寄存器和寄存器组方式.流水寄存器方式对生存期确定的、局限于一个循环层次的寄存器重命名问题提供简单而有效的支持.寄存器组分配方式解决了多重循环软件流水时变量生存期不确定的情况.跳跃操作为解决断流问题提供了快速数据传送.工程实践表明,这种寄存器堆结构及其分配方式是十分有效的.
+关键词　指令级并行,寄存器堆,流水寄存器,数据相关，软件流水.
+中图法分类号　TP302
+A Novel Register File Structure Supporting for Software Pipelining of Nested Loops
+RONG Hong-bo　TANG Zhi-zhong
+(Department of Computer Science and Technology Tsinghua University Beijing　100084)
+Abstract　The structure and allocation of the register file is a key factor affecting the performance of software pipelining.To support software pipelining of nested loops,a novel register file,partly-shared leaping pipeline register file,is presented and its allocation is discussed.The register file effectively addresses the special problems in software pipelining nested loops,i.e.,intra- and inter-level register renaming,and iteration discontinuity.Three allocation styles are designed for flexible application:single,pipeline and groupe register styles.Pipeline registers effectively supports intra-level register renaming with deterministic lifetime.A variable,which generally has deterministic lifetime,may have non-deterministic lifetime in software pipelining nested loops.Group registers address such a problem.To make a paused iteration continue execution again,a leaping operation provides quick data transmission between registers.The engineering practice has proved the efficiency of the structure and its allocation method.
+Key words　Instruction-Level parallelism,register file,pipeline register,data dependence,software pipelining.
+　　指令级并行ILP（instruction level parallelism）是当前国际上的研究热点.VLIW体系结构下的软件流水问题吸收了学者们的许多精力.从资源管理的角度看,一个软件流水算法要解决两个问题：（1） 在某时刻将功能部件分配给操作；（2） 在某时刻将寄存器分配给变量.通常,算法对功能部件不作特殊要求,但对寄存器结构一般要专门设计,以便互相配合,从而最有效地实现算法.寄存器结构及其分配直接影响到整个机器的性能,因此,这是软件流水算法的关键之一.
+　　目前,国际上有多种软件流水算法［1～3］,主要是针对单重循环的.对多重循环,一般只对最内层循环进行流水,对外层循环串行执行.ILSP（interlaced inner and outer loop software pipelining）算法［4,5］采用内外层循环交替执行方式,比较成功地解决了多重循环的软件流水问题.本文探讨其寄存器结构.
+　　ILSP算法提出了一种新颖的寄存器结构：半共享跳跃式流水寄存器堆.它可以高效地实现功能部件（function unit，简称FU）之间的通信.在算法消除循环程序的所有体内数据相关、所有内层循环体间数据相关的基础上,由寄存器分配消除外层循环的体间读写相关.在操作调度中,只要遵守外层的体间写读相关即可.从而大幅度提高程序的指令级并行度.
+　　由于寄存器的分配与算法密切关系,下面首先回顾一下ILSP算法,然后讨论其中的寄存器分配问题.
+1 ILSP算法的简单回顾
+　　统计数字表明,对于典型的工程和科学计算,程序大部分时间都消耗在内层循环上［6］.因此,当前的各种软件流水算法都致力于对最内层循环进行流水.但是,我们发现,这样做并非总是合理的.
+　　图1中的有向线段表示写读相关.若从最内层的J循环进行流水,则循环启动间距II（initiation interval，简称II）为2,每两个周期执行一个J循环（如图1（b）所示）.若从最外层的I循环进行流水,则II为1,每一个周期执行一个J循环.不仅II小,而且J循环执行周期也短（如图1（c）所示）.
+
+Fig.1　Comparison between algorithms
+图1　算法比较
+　　注意到ILSP是从最外层的I循环开始进行流水的,但依然找到了J循环的重复模式.因此,我们是先从外层循环进行流水,在发现内层循环的重复模式后,转入内层循环的流水；执行完内层循环后,再转回外层继续流水.反复这个外→内→外的过程,直到整个程序执行完.
+　　 因此,对一个多重循环,不一定非要从最内层循环开始流水不可,而是可以选择一个最佳层次开始流水,产生一个内外层交错流水的方案.选择标准将另文讨论.本文假定从最外层开始流水.凡是“外层”都指最外层.
+2 数据寄存器结构
+　　目前,主要的数据寄存器结构有以下几种.
+　　（1） 全局共享寄存器堆［7～9］.所有寄存器被所有功能部件及其内存共享.其硬件结构复杂,每个寄存器的输入、输出端口很多,可扩展性有限.但它对编译的支持比较好.
+　　（2） 局部寄存器堆［8］.各FU只能访问属于本FU的局部寄存器,通过互连网或共享存储器来通信.硬件结构最简单.
+　　（3） 寄存器通道［10］.在局部寄存器堆的基础上,在各FU的局部寄存器之间提供少量几条数据通道.
+　　（4） 流水寄存器堆［3,11］.每个FU的所有局部寄存器按顺序排成一个队列,称为垂直流水.各FU的垂直流水线之间建立若干通道,称为水平流水.整个寄存器堆像一个矩阵网格.水平流水主要用于FU之间的通信,垂直流水用于寄存器重命名.
+　　（5） 半共享寄存器堆［8］.又分为写共享（写全局读局部）和读共享（读全局写局部）两种.这是全局共享寄存器堆和局部寄存器堆的一个折衷.读共享对编译的支持比较好,但硬件相对复杂.
+　　我们综合了各种结构的优点,提出半共享跳跃式流水寄存器堆.它是读全局写局部的,并且各FU的局部寄存器组织成流水,但是增加了任意两个寄存器之间数据传送的功能.
+　　如图2所示,每个功能部件FU都有一条属于自己的局部寄存器流水线,所有FU的寄存器流水线形成整个寄存器堆.流水方向为Ri,0→Ri,1→...→Ri,n,i=0,1,...,m.采用流水方式组织寄存器,可以简单、自然地解决不同循环体之间的寄存器重命名问题,并有助于生成高效代码.
+
+Fig.2　Partly-Shared leaping pipeline register file
+图2　半共享跳跃式流水寄存器堆
+　　半共享的含义是各个FU可以从整个寄存器堆中的任何一个寄存器读,但只能写入属于本功能部件的局部寄存器.这样,可以在硬件复杂度较小的情况下有效地支持优化编译以及各FU间的通信.
+　　跳跃的含义是寄存器堆中的一个寄存器可以向另外任何一个寄存器直接传送数据.这就打破了流水寄存器只能在所属流水线中传送数据的惯例.这样做是为了解决内外层循环交错执行时的断流问题,并对FU间的数据传送提供快速支持.
+3 寄存器分配
+　　寄存器分配之后,根据变量（或常数）的生存期和位置的不同,整个堆的寄存器被分为3类（或者说该寄存器堆有3种分配方式）：
+　　（1） 单个寄存器.用于存放常数和生存期小于等于循环启动间距II的变量.常数在循环执行过程中不变；生存期小于等于II的变量,其相应寄存器的内容不会被下一个循环体的内容冲掉.因此,给它们分配1个寄存器即可.其分配方法有很多［1］,本文不作讨论.
+　　（2） 流水寄存器.分配给生存期大于II，并且局限于1个循环层次的变量.
+　　在属于某个FU的一条流水线中,为该变量分配两个或更多个前后相连的寄存器,称为流水寄存器.流水寄存器属于同一个逻辑变量,却包含有多个物理寄存器.物理寄存器的个数就是流水寄存器的长度.
+　　设流水寄存器为Ri,j→Ri,j+1→...→Ri,j+l-1,l是其长度.下面定义该流水寄存器的3种可用操作.① 写操作.只能向第1个寄存器Ri,j写,称Ri,j为尾部寄存器.② 读操作.可以从Ri,j,Ri,j+1,...,Ri,j+l-1中的任何一个读.③ 流水操作.令Ri,j+k=Ri,j+k-1,k=l-1,l-2,...,1,也就是这个队列向前流动一个节拍,队列头Ri,j+l-1的内容将被冲掉.
+　　（3） 寄存器组.分配给生存期超过了1个循环层次的变量.
+　　即那些在外层循环定义,在内层循环引用的变量；或者在内层循环定义,在外层循环引用的变量.这是多重循环流水引出的特殊问题.
+4 流水寄存器的分配
+　　在通常的软件流水算法下,最内层循环是并行的,因此要消除最内层循环的体间读写相关.但在ILSP下,外层循环是并行的,导致不同外层循环体的内层循环也并行,因此,需要消除外层循环的读写相关（包括不同外层循环体的内层循环之间的相关）.流水寄存器的分配方式,实际上是通过硬件进行寄存器重命名来消除这些相关.流水寄存器只分配给生存期局限于一个循环层次的变量,因此,下面只以单重循环为例，所得结果对从外到内的各重循环都适用.
+4.1　相关的消除
+　　对于软件流水,II必须大于所有变量的生存期,才能保证本循环体定义的变量值不会被下一循环体的同一变量的值所覆盖.
+　　变量的生存期是指变量的最后一次引用时刻减去它的定义时刻.在上一条指令中定义,紧接着在下一条指令中引用的变量,其生存期不足一个周期,认为是0.
+　　设图3（a）中所有操作的执行时间为1个周期.由于变量T1,T2,T3的生存期分别为1,0,0,软件流水最好的结果是以II=2启动.变量T1的生存期制约了II.
+　　为了减小II,如图3（d）所示,在源程序中插入操作s1′:T1′＝T1,则数据相关图变成图3(e).此时,所有变量T1,T1′,T2,T3的生存期为0（定义后,立刻作最后一次引用）,所以软件流水可以II=1启动,效率提高一倍.
+　　如果为T1和T1′分配的是某个FU局部流水线上的两个相邻寄存器,那么,操作s1′:T1′＝T1就是流水操作.对比图3(b)和图3(e),可以看到，从s2到s0的体间读写相关被消除了.
+4.2　流水寄存器的长度
+　　令流水寄存器的长度为l,则
+l=［变量的生存期/II］+1
+（1）
+其中II是指在只考虑体间写读相关的情况下,软件流水的启动间距.
+　　变量的生存期通过分析源程序中的写读相关而得到.假设有写读相关(OPi→OPj,d),d为体差（iteration difference or iteration distance）,表示X号体的操作OPi对某个变量A赋值,X+d号体的操作OPj对A引用，则这个写读相关所确定的A的生存期为
+tj+d*II-ti-delay(OPi)
+（2）
+其中ti和tj分别表示OPi和OPj在同一个循环体中的启动时刻,delay(OPi)是指OPi的执行时间.列出所有与变量A有关的写读相关,分别算出生存期,取最大者,即为A的生存期.
+
+Fig.3　Eliminating anti-dependency
+图3　消除读写相关
+　　以图3中的变量T1为例.在只考虑体间写读相关的情况下,软件流水的启动间距II可以为1.由源程序（如图3（a）所示）中的写读相关（s0→s1,0）,（s0→s2,0）,根据公式(2),得T1的生存期分别为0,1.取最大者,则T1的生存期为1,即T1被定义后,最多再隔1个周期,就会被消耗掉.由公式(1),应给T1分配的流水寄存器长度为［1/1］+1=2.
+　　假设T1i表示I=i时语句s0对T1的赋值,且流水寄存器为Ry,z→Ry,z+1,则当I=1时,将T11写入Ry,z（如图4（a）所示）.I=2时,先执行流水操作,将T11送往下一个寄存器Ry,z+1,再将T12写入Ry,z（如图4（b）所示）.同样地,当I=3时,先执行流水操作,将T12送往下一个寄存器Ry,z+1,再将T13写入Ry,z,注意，此时T11的生存期已经结束,所以被冲掉了（如图4（c）所示）.
+
+Fig.4　The effect of a pipeline register
+图4　　流水寄存器的作用
+　　这样,在变量的生存期未结束以前,流水寄存器一直保存它,直至其生存期结束.
+4.3　流水寄存器的寻址与代码生成
+　　一般地,在源程序中,假设关于变量A有写读相关(OPi→OPj,d),且流水寄存器的尾部寄存器为Ry,z,则OPi访问的寄存器为Ry,z，OPj访问的寄存器为Ry,z+k,其中
+
+（3）
+ti,tj是OPi,OPj在同一个循环体中的启动时刻；delay(OPi)是OPi的执行时间.
+　　在生成代码时,每个对变量进行赋值的操作之后都要附加流水操作.
+　　例如,对于图3中的变量T1,由源程序（如图3（a）所示）中的写读相关（s0→s1,0）确定s0中的T1应访问的寄存器为Ry,z，而s1中的T1应访问的寄存器也是；由（s0→s2,0）确定s2中的T1应访问的寄存器为.附加流水操作后的等价程序如图5（a）所示,生成代码如图5（b）所示.对照图3 、图4和图5,其正确性不难分析.
+
+Fig.5　Pipelined register addressing and code geneation
+图5　　流水寄存顺的寻址与代码生成
+5 寄存器组的分配
+　　ILSP是一个贪心算法.只要内层循环的重复模式还没有出现,它就会再启动一个外层循环.这样,对于跨循环变量,造成了两个特殊的现象,即变量的生存期与该变量属于第几个外层循环体有关；变量在赋值后可能长期睡眠.
+　　如图6所示,A是一个跨循环变量.当I=1,2,或3时,A的生存期为2.也就是说,A在赋值后,至多再过2个周期,就会被最后一次引用.但在I=4,5时,A的生存期变得不确定了.图中用圆圈标出了I=4,5时所进行的操作.以I=4为例,外层循环只执行了操作s0,s1之后,就被迫停止,因为此时发现了内层循环的重复模式,下面将转入内层循环的流水，专门执行I=1,2,3时的内层循环.在此过程中,I=4时所定义的那个A不被引用,处于睡眠状态.直到I=1,2,3的内层循环中任意一个不满足X＞Y而结束时,才能继续I=4时的其他操作.这时,I=4时所定义的那个A才苏醒过来,得到引用.
+
+Fig.6　Nondeterministec sleeping period of a variable
+图6　变量的不定期睡眠
+　　由于内层是一个WHILE循环,次数不定.因此,难以确定A究竟何时苏醒.这样,I=4时,A的生存期是不确定的.
+　　如果为A分配流水寄存器的话,按照式(1),要先得到A的生存期.但这是可变的,不能确定.此时,无法计算流水寄存器的长度.为解决这一问题,需要为A分配寄存器组.
+5.1　寄存器组的分配、寻址与代码生成
+　　在实践中,跨循环变量的数目很少.因此,可保守地假定其生存期是全局的,并为其分配寄存器组,以解决上述问题.
+　　设有一个跨循环变量A,为A分配一组寄存器Rf(i),z,Rf(i+1),z,...,Rf(i+e-1),z.其中e是寄存器组的深度,它也是同时打开的外层循环的个数；单射函数f(k)指出第k号循环中的A所对应的寄存器的第1个下标；z是第2个下标.函数f保存在一张硬件表中.
+　　e由下式确定：
+
+（4）
+其中外层循环长度是指组成外层循环的所有操作的个数,包括内部嵌套循环的操作个数（这是因为，ILSP算法将某一层循环内部的所有操作都看作是这一层的操作,无论是否嵌套有其他循环）.如图6所示,外层的FOR循环共有5个操作：s0,s1,s2,s3,s4（包括内部WHILE循环的3个操作s2,s3,s4）,因此,长度为5.则
+
+即寄存器组的深度为5,或者说,同时打开了5个外层循环.
+　　寄存器寻址与代码生成十分简单：将流水结果（如图6（b）所示）中的所有变量A用一个统一的“假”寄存器名,如R1,代替即可.这个寄存器名只有一个下标,所以称为“假”寄存器名.实际上,它代表Rf(k),1,其中k是循环体号,由一组控制寄存器（称为循环控制寄存器组）跟踪保持.也就是说,每个循环体的操作都隐含知道自己究竟属于哪个体.这样,虽然所有循环体的代码是相同的,但是,经过硬件映射后,当I=1,2,3,4,5时,A分别映射到了不同的寄存器Rf(1),1,Rf(2),1,Rf(3),1,Rf(4),1,Rf(5),1.如果定义函数f为：f(1)=0,f(2)=1,f(3)=2,f(4)=4,f(5)=3,则A分别映射到了R0,1,R1,1,R2,1,R4,1,R3,1.
+　　这样,对于图6（b）,不同I循环中的A映射到不同的寄存器.在一次I循环结束前,它将保持这一映射.它不需要考虑变量的生存期会发生不确定的情况,而完全按确定的情况去处理,因为不同循环体的A不会互相覆盖.实际上,寄存器组方式是用分配一组单个寄存器的方法来实现寄存器重命名的.但它为了生成统一代码,使用了假寄存器名和映射表.
+5.2　寄存器组与流水寄存器的比较
+　　寄存器组和流水寄存器在逻辑上都是一个寄存器,但在物理上却包含多个寄存器.寄存器组是通用方法,它可以代替流水寄存器的功能.但是,它需要硬件表保持单射函数f(k),以及循环控制寄存器组来保持循环体号.这张硬件表和循环控制寄存器组都需要动态更新.
+　　流水寄存器可以简单、自然地消除体间读写相关,不需要其他硬件的支持.但它仅限于变量的生存期确定的情况.
+5.3　关于硬件映射表和ILSP的控制
+　　ILSP的控制机制主要包括一个循环控制寄存器组、一个系统返回堆栈、流水控制器、外层循环的装入排空控制器和内层循环的断流控制器等.在循环运行之前,由编译向硬件提供这些控制信息,一旦循环进入运行,则硬件会利用控制信息自动控制循环的执行,并同步更新自身内容.因此,这样不会增加循环的运行时间，或者说开销.
+　　映射表如图7所示.如果VLIW处理机共有n个功能部件,那么,它能同时执行的外层循环的个数最多是n.所以,映射表的长度定为n.一般地,n取32已经足够了.从假寄存器名到真寄存器地址的映射是一个简单的查表过程,如图7所示.
+
+Fig.7　The hardware mapping table and the loop control register file
+图7　硬件映射表和控制寄存器组
+6 跳跃操作
+　　在ILSP算法下，特殊的“断流”问题要求寄存器堆中的任意两个寄存器能进行数据传送,而不能像传统的流水寄存器堆那样,仅在局部流水线中传递数据.
+　　如图6所示,3个外层循环I=1,2,3的内层while循环在同时执行.设I=1时的那个while循环因为不满足X＞Y而停止（“断流”）,那么,I=1时的循环已经完成.此时,注意到I=4的那个外层循环只执行了s0和s1,其内层的while循环尚未执行.因此,应将它的内层循环补到断流的功能部件上,继续执行.但是,由s0所定义的变量A位于另一个功能部件的局部寄存器中,这给将来重新定义A带来了困难,因为我们的寄存器堆是写局部的.所以,必须将A从那个功能部件的局部寄存器传到断流的功能部件的一个局部寄存器中,这就是跳跃操作.该操作发生在断流时.
+　　跳跃操作支持寄存器间的快速数据传送.同时,它还对循环控制寄存器组进行调整,使补到断流处的新循环体能正常运行.
+　　跳跃操作由断流控制器控制完成,过程如下：(1) 在断流发生的那个时钟周期的末尾,断流控制器发出断流信号,迫使所有FU暂时中断运行,进入等待周期；(2) 假设数据传送是从Ru,v到Rx,y,那么,断流控制器通知FUx首先将Ru,v的值读出,然后再写入Rx,y（注意到寄存器堆是读全局,写局部的）；(3) 调整循环控制寄存器组的参数,令所有FU转入正常运行状态.以上过程共占用两个周期.
+7 实验结果
+　　我们设计完成了一个指令级并行体系结构,优化编译器和体系结构的模拟系统.定义寄存器堆的大小为32×9（9个FU,每个FU有32个局部寄存器）.分别按（1） 全局共享寄存器堆（单个寄存器）分配方式运行ILSP算法；（2）同时以单个寄存器、流水寄存器和寄存器组分配方式运行ILSP算法.通过实际运行一些典型的多重循环,得到了一些重要数据,节选见表1.
+Table 1　Partial experimental results
+表1　部分实验结果
+
+Program①Total loop levels②Number of the
+operations in the
+outer loop③Number of the
+operations in the
+inner loop④Cycles′⑤Cycles″CyclesSpeedup⑥
+Inner product⑦
+(100×100)2231433 7308 0312004.20
+Fibonacci sequence⑧
+(100×100)328101 152 685338 0312003.4
+Matrix sum⑨
+(100×100)2231734 4408 2992004.15
+Matrix mulplification10
+(100×100)332142 339 478649 8552003.60
+Fandemon matrix11
+(100×100)2321616 9367 2472004.38
+Flower12
+(1～1000)336172 196835462.63
+
+说明:(1) ′ 按全局共享寄存器方式运行、无跳跃操作时的时钟周期数
+(Cycles using a global shared regiser file and without the leaping operation);
+(2) ″ 按3种寄存器分配方式运行、有跳跃操作时的时钟周期数
+(Cycles using the three register allocation styles and with the leaping operation);
+(3)  跳跃操作和动态更新所占的时钟周期数
+(Cycles used by leaping operations and dynamic refreshing).
+①程序名称,②循环层数,③外层操作个数,④内层操作个数,⑤时钟周期数,⑥加速比,
+⑦向量内积,⑧裴波那契数列,⑨矩阵加法,⑩矩阵乘法,范德蒙矩阵,找水仙花数.
+　　从表中可以看出,采用半共享跳跃式流水寄存器堆,ILSP算法的加速比约为3.29.主要原因是：（1） 用硬件方法（流水寄存器和寄存器组）消除体间读写相关,避免了软件对寄存器重命名时的显式数据传送以及代码不统一的麻烦,从而缩小了循环启动间距和代码长度；（2） 跳跃操作用硬件提供断流时的快速数据传送以及一系列循环控制寄存器的更新,使代码无需考虑断流问题.不仅代码紧凑,而且断流与补流之间的衔接速度很快.
+　　注：每执行完一次外层循环就要进行一次跳跃操作和动态更新,每次占2个周期,因此总周期数是外层循环次数的2倍.
+8 半共享跳跃式流水寄存器堆和全局共享寄存器堆的比较
+　　半共享跳跃式流水寄存器堆是对全局共享寄存器堆的简化.
+　　多个功能部件的并行运行,使寄存器堆的组织成为一个重要问题.如果采用全局共享寄存器堆,堆的可扩展性将受到极大限制.因为要满足每个周期每个功能部件对寄存器堆执行的两个读操作和一个写操作,读端口和写端口的数目很多,译码和读写速度将会受到影响.
+　　但是,如果将全局共享的寄存器堆划分为若干相对独立的部分,则可扩展性要好得多.可以有许多部分,但每部分规模都较小.进一步将每部分的寄存器串成队列,可扩展性就进一步提高了.因为队列无论有多长,相邻两个寄存器间的传送速度是不受影响的,而这是半共享跳跃式流水寄存器堆主要的数据传送方式.
+　　简言之,半共享跳跃式流水寄存器堆是对全局共享寄存器堆进行划分,并重新组织为队列.在编译的帮助下,实现数据存取局部化,尽量减少各队列之间的数据传送.
+　　跳跃操作和硬件映射表确实增加了硬件复杂度.但是,这是两种简单的机制,复杂度很低.所以,比较而言,半共享跳跃式流水寄存器堆的复杂度要比全局共享寄存器堆低得多，而且,对多重循环调度的支持也要好（见表1）.
+9 结束语
+　　内外层交错流水给寄存器分配带来了特殊的问题,主要是同层次和跨层次的寄存器重命名问题，以及断流问题.本文对这些问题进行了深入分析,提出了具有普遍意义的寄存器结构和分配方法.从工程的实际结果来看,这些方法是十分有效的.
+本文研究得到国家自然科学基金(No.69773028)资助.作者容红波,1972年生,博士生,主要研究领域为计算机并行编译,体系结构.汤志忠,1946年生 ,教授，博士生导师,主要研究领域为计算机并行算法，并行编译技术,并行体系结构.
+本文通讯联系人:容红波,北京100084,清华大学计算机科学与技术系
+作者单位：容红波(清华大学计算机科学与技术系　北京　100084)
+汤志忠(清华大学计算机科学与技术系　北京　100084)
+参考文献
+1，Yu T,Tang Z Z,Zhang C H et al.Control mechanism for software pipelining on nested loop.In:Regina S S ed.Proceedings of the Conference on Advances in Parallel and Distributed Computing.Los Alamitos:IEEE Computer Society Press,1997.345～350
+2，Luo Jun,Tang Zhi-zhong,Zhang Chi-hong et al.Algorithm to data allocation in software pipelining.Journal of Software,1998,9(1):74～79)
+(罗军,汤志忠,张赤红等.软件流水中的一种数据分配算法.软件学报,1998,9(1):74～79)
+3，Rau B R,Fisher J A.Instruction-level parallel processing:History,overview and perspctive.Journal of Supercomputing,1993,7(1/2):9～50
+4，Hwang K.Advanced Computer Architecture:Parallelism,Salability,Programmability.New York:McGraw-Hill,1993.457～496
+5，Lam M.Software pipelining:an efficient scheduling technique for VLIW architectures.SIGPLAN Notices,1988,23(7):318～328
+6，Duesterwald E,Gupta R,Soffa M L.Register pipelining:an integrated approach to register allocation for scalar and subscripted variables.In:Kastens U,Pfahler P eds.Proceedings of the Compiler Construction:4th International Conference CC'92.New York:Springer-Verlag,1992.192～206
+7，Hoogerbrugge J,Corporaal H.Register file port requirements of transport triggered architectures.Professional Engineering,1994,7(21):191～195
+8，Tang Zhi-zhong,Wang Lei,Qian Jiang.Software pipelining on program with complicated loops.Journal of Software,1996,7(7):422～427
+(汤志忠,王雷,钱江.多重循环的软件流水技术.软件学报,1996,7(7):422～427)
+9，NewBurn C J,Huang A S,Shen J P et al.Balancing fine-and medium-grained parallelism in scheduling loops for the XIMD architecture.Architectures and Compilation Techniques for Fine and Medium Grain Parallelism (A-23).North Holland:Elsevier Science Publishers,1993.39～52
+10，Su B G,Wang J,Tang Z Z et al.URPR-1:a single-chip vliw architecture.Microprocessing and Microprogramming,1993,39(1):25～41
+11，Wen Yu-hong.The research and design of VLIW optimizing compiler based on GURPR global software pipelining algorithm ［M S.Thesis］.Tsinghua University,1991
+(温钰洪.基于GURPR*全局软件流水算法的VLIW优化编译器的研究与设计［硕士学位论文］.清华大学,1991)
+本文1998-12-31收到原稿,1999-04-02收到修改稿

@@ -1,0 +1,69 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第4期　Vol.23　No.4　1997
+
+
+
+离散系统区域极点/协方差
+等价实现一种代数方法
+王子栋　郭　治
+　　摘　要　提出了离散随机系统的模型简化新方法：区域极点/协方差等价实现方法.即构造降阶模型，使其匹配给定的区域极点和稳态协方差值，在暂态性能和稳态性能这两个重要方面近似于给定的满阶模型. 文中证明了满足要求的降阶模型的存在性， 并直接给出了降阶模型的解析表达式，最后提供了说明性的数值例子. 
+　　关键词　离散时间系统，模型简化，随机系统， 近似理论. 
+AN ALGEBRAIC APPROACH TO REGIONAL POLE AND COVARIANCE 
+EQUIVALENT REALIZATIONS FOR DISCRETE-TIME SYSTEMS
+WANG ZIDONG GUO ZHI
+(Department of Automatic Control, Nanjing University of Science and Technology, Nanjing　210094)
+Abstract In this paper, a new approach for model reduction for discrete-time stochastic systems, which is called regional pole and covariance equivalent realization method, is presented. The major idea of the proposed approach is to construct the reduced-order models which match both the specified regional pole and steady-state covariance value. The resulting reduced-order models will approximate the full-order models in the two important aspects, i.e., transient and steady-state performances. The existence of desired reduced-order models is proved and the analytical expression of these models is also given. Finally, this paper provides an illustrative example.
+Key words Discrete-time systems, model reduction, stochastic systems, approximation theory.
+1　引言及问题的描述
+　　模型简化一直是系统及控制理论研究极为活跃的领域之一，各种方法层出不穷. 然而，许多工程系统的性能指标常常直接表现为系统的稳态协方差值， 但传统的模型简化方法大多均未考虑这个重要的系统性能. 文献［1―2］提出了同时匹配q个马尔柯夫参数和协方差参数的模型简化方法――q-Markov COVER等价实现方法，但该方法要求原系统矩阵须变换为汉森伯格(Hessenberg)标准形，从而使计算变得繁难并影响了降阶模型的存在性. 另一方面，系统主导极点所处区域以及系统稳态协方差值是分别表征线性定常随机系统暂态及稳态性能的两项重要指标，简化模型必须在这两个方面尽可能接近原模型，这就导致了区域极点/协方差等价实现(简称为RPCOVER's)方法的研究，以期提供更有利于工程应用的模型简化方法. 
+　　考虑如下稳定的线性定常离散随机系统
+x(k+1)=Ax(k)+Dv(k), y(k)=Cx(k).
+(1)
+其中x∈Rn为状态， y∈Rm(m＜n)为输出. A，D，C为适维常数阵，v(k)为零均值单位强度的高斯白噪声序列. 初始状态x(0)具有均值(0)和协方差P(0)， 且与v(k)不相关. (A,D)可控，(A，C)可观. 
+　　易知， 系统(1)的稳态协方差XE[[WTHX]x(k)xT(k)]为Lyapunov方程X=AXAT+DDT的唯一正定解，且其输出协方差为(Ai)T]CT. 假定系统(1)的主导极点位于单位圆内的圆心在点q+jo且半径为r＞0的小圆内，并将该小圆记为D(q,r). 则本文考虑的RPCOVER's问题可描述为构造m(m＜n)阶线性离散系统
+xm(k+1)=Amxm(k)+Dmw(k).
+(2)
+(其中xn∈Rm, w(k)为单位强度的零均值高斯白噪声序列)，亦即求取常数阵Am,Dm，使得如下简化指标同时实现：1) 系统(2)的极点位于期望区域D(q,r)内； 2) 系统(2)的稳态协方差矩阵Xm=E[[WTHX]xm(k)(k)]恰为Y=CXCT.
+2　主要结果及证明
+　　本节将给出降阶简化模型的存在性证明及其构造方法. 我们称线性离散随机系统(2)是协方差Xm的一个等价实现， 当且仅当Am,Dm满足Xm=AmXm+Dm.
+　　引理1［3］　考虑如下代数矩阵方程
+-qAmP-qP+AmP+(q2-r2)P=-Q.
+(3)
+其中Q＞0为任意正定阵，则Am的极点位于给定圆盘D(q,r)内，当且仅当(3)式存在正定解P＞0. 
+　　定理.　给定满阶模型(1)及其主导极点区域D(q,r),输出协方差CXCT. 则存在低阶模型(2)且其极点位于D(q,r)内，状态协方差矩阵Xm=CXCT，当且仅当存在正定阵P＞0, Q＞0，满足
+r2P-Q≥0,
+(4)
+Xm-(TVS-1+qI)Xm(TVS-1+qI)T≥0.
+(5)
+其中V为任意正交阵(VVT=I);S,T分别为P及r2P-Q≥0的平方根因子. 进一步，若(4)，(5)满足，则低阶模型参数Am=TVS-1+qI，Dm为(5)式左端的平方根因子，即Dm=[Xm-(TVS-1+qI)Xm(TVS-1+qI)T]1/2.
+　　必要性的证明. 若存在期望低阶模型(2)，则由引理1及状态协方差等价实现的定义可知，必存在正定阵P＞0, Q＞0满足(3)式及
+Xm-AmXm=Dm≥0.
+(6)
+　　注意到(3)式等价于(Am-qI)P(Am-qI)T=r2P-Q,因该式左端非负定，从而(4)式自然成立；进一步，令P=SST, r2P-Q=TTT,则该式成为
+[(Am-qI)S][(Am-qI)S]T=TTT.
+(7)
+上式成立当且仅当存在正交阵V［4］，使(Am-qI)S=TV， 或Am=TVS-1+qI， 将其代入(6)式即可得(5)式. 
+　　充分性的证明.　只需取Am=TVS-1+qI,Dm为(5)式左端的平方根因子，其中S=P1/2, T=(r2P-Q)1/2, 则结论易得. 
+　　注释1. 满足(4)，(5)的P＞0， Q＞0必存在. 事实上，注意到-1＜q＜1，则可适当选取P，Q使T及S-1的元素足够小，从而使得(4)，(5)成立. 在极限情形，取Q=r2P,从而T=0,则(5)式必成立. 
+　　注释2.　注意到上述简化过程中存在着相当大的自由度(主要体现在P，Q，V的选取)， 这可用来满足新的简化指标，如鲁棒性指标，H∞范数指标等，这方面的研究有待进一步深入. 
+3　数值例子
+　　考虑五阶线性定常离散随机系统(1)， 其中
+
+　　经计算该五阶系统的极点为{0.578111,　0.658489,　0.57595±0.295573i,　0.8074}， 其主导极点区域为D(0.5,0.32)，而稳态状态协方差为
+
+　　现需设计三阶简化模型(2)，使Am的极点位于D(0.5, 0.32)内，且其稳态协方差Xm即为满阶模型的输出协方差CXCT. 据上节提供的方法，我们选取
+
+经验证(4)，(5)两式成立， 则可得期望的简化模型参数分别为
+
+　　不难验证给定简化指标约束得到满足. 关于高阶及降阶系统的响应曲线比较图因篇幅限制略去， 仿真结果说明了文中方法的有效性. 
+4　结语
+　　本文提出离散随机系统模型简化的区域极点/协方差等价实现方法，旨在使简化模型在暂态及稳态性能这两个重要方面逼近给定的满阶模型，从而为随机系统模型简化提供了一条新途径. 进一步的研究将集中于多指标模型简化体系的建立与完善. 
+1)　国家自然科学基金及南京理工大学科研发展基金资助课题. 
+作者单位:南京理工大学自动控制系　南京　210094
+参考文献
+[1] Skelton R E, Collins E G Jr. Set of q-Markov covariance equivalent models of discrete systems. Int. J. Control, 1987, 46(1):1―12.
+[2] Skelton R E, Anderson B D O. Weighted q-Markov covariance equivalent realizations. Int. J. Control, 1989, 49(5):1755―1771
+[3] Furuta K, Kim S B. Pole assignment in a specified disk. IEEE Trans. Automat. Contr., 1987, 32(5):423―427.
+[4] Xu J-H, Skelton R E. An improved covariance assignment theory for discrete systems. IEEE Trans. Automat. Contr., 1992, 37(10):1588―1591
+收稿日期　1995-01-10

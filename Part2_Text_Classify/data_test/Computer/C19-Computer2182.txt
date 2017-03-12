@@ -1,0 +1,109 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000　Vol.17　No.2　P.28-30
+
+
+
+最长公共子序列问题的改进快速算法
+李欣　舒风笛
+摘 要 现在几个最常用的解决最长公共子序列(LCS)问题的算法的时间复杂度分别是O(pn)，O(n(m-p))。这里m、n为两个待比较字符串的长度，p是最长公共子串的长度。给出一种时间复杂度为O(p(m-p))，空间复杂度为O(m+n)的算法。与以前的算法相比，不管在p<<m的情况下，还是在p接近m时，这种算法都有更快的速度。
+关键词 最长公共子序列 LCS
+1 问题介绍与基本定义
+　　最长公共子序列(Longest Common Subsequence，LCS)是将两个给定字符串分别删去零个或多个字符后得到的长度最长的相同字符序列。例如，字符串abcabcabb与bcacacbb的最长公共子序列为bcacabb。LCS问题就是要求两个给定字符串的最长公共子序列。本文给出了一种比较有效的求解LCS问题的算法，它是对Nakatsu的时间复杂度为O(n(m-p))算法的改进。它的时间复杂度是O(p(m-p))，空间复杂度为O(m+n)。
+　　LCS问题的算法有着广泛的应用。最初对LCS问题的研究是将它作为一种差分压缩算法来研究的。例如，在版本管理系统中，一个文件经过不断地修改产生不同的版本，新产生的版本相对老版本变化并不大。为了节省存储空间，我们可以将老文件版本与修改后新版本进行比较，找出它们的相同部分和不同部分。这样就不必将原始文件和修改文件都独立存储，而只需存储老文件版本以及新老版本的不同部分即可。这种增量式存储方法在文件版本较多的情况下能够大大提高存储效率。两个文件版本的比较就类似于LCS问题。LCS算法的时间复杂度与其它差分压缩算法(如Vdelta算法[4])比较相对较高，它也不是压缩比例最高的差分压缩算法，所以现在它已经基本退出了这方面的应用。但在版本管理系统中，对同一文件的不同版本进行比较与合并时，LCS算法还是有重要作用的。
+　　LCS算法还可用在基因工程领域。如确定一种致病基因的基本方法就是将该疾病患者的DNA链与健康者的DNA链相比较，找出其中的相同部分与不同部分，再进行分析。这种基因链的比较也可以用LCS算法来解决。
+　　80年代初期，国外对LCS算法的研究比较多。现在，LCS算法在一些领域有新的应用，所以对它研究又有增长的趋势。
+　　下面先给出一些基本定义：
+　　定义1 子序列(Subsequence)。给定字符串A= A[1]A[2]...A[m]，(A[i]是A的第i个字母，A[i]∈字符集∑，1<=i<m=|A|，|A|表示字符串A的长度)，字符串B是A的子序列是指B=A[i1]A[i2]...A[ik]，其中i1<i2<...<ik且k<=m。
+　　也就是说任意删去给定字符串中的零个或多个字符，但不改变剩余字符的顺序就得到了该字符串的一个子序列。例如：bec是abdeace的一个子序列。子序列与子串的区别在于子序列不必是原字符串中的连续字符。
+　　定义2 公共子序列(Common Subsequence)。给定字符串A、B、C，C称为A和B的公共子序列是指C既是A的子序列，又是B的子序列。例如、abd是abcd和bacbd的公共子序列。
+　　定义3 最长公共子序列(Longest Common Subsequence，简称LCS)。给定字符串A、B、C，C称为A和B的最长公共子序列是指C是A和B的公共子序列，且对于A和B的任意公共子序列D，都有|D|<=|C|。
+　　两个字符串的LCS不是唯一的。例如A= cbacbaaba，B=abcdbb，C=bcbb和D=acbb，C和D都是A和B的最长公共子序列。
+　　给定字符串A和B，|A|=m，|B|=n，不妨设m<=n，LCS问题就是要求出A和B的LCS。
+2 几种目前常用的算法
+　　已经证明，LCS问题算法的时间复杂度不可能小于O(m log n)[1]。目前几种比较有效的算法有Hirschberg[2]提出的算法，时间复杂度分别为O(pn)，以及nakatsu[3]提出的算法，时间复杂度为O(n(m-p))。
+　　这两种算法以及我们要介绍的改进快速算法都是基于下面几个基本定理：
+　　定义4 给定字符串A=A[1]A[2]...A[m]和字符串B=B[1]B[2]...B[n]，A(1: i)表示A的连续子序列A[1]A[2]...A[i]，同样B(1: j)表示B的连续子序列B[1]B[2]...B[j]。Li(k)表示所有与字符串A(1：i)有长度为k的LCS的字符串B(1：j)中j的最小值。用公式表示就是Li(k)=Minj(LCS(A(1：i)，B(1：j))=k)。
+　　定理1 i∈[1，m]，有Li(1)<Li(2)<Li(3)<...
+　　定理2 i∈[1，m-1]，(k∈[1，m]，有Li+1(k) <=Li(k)
+　　定理3 i∈[1，m-1]，(k∈[1，m-1]，有Li(k)<Li+1(k+1)
+　　以上三个定理都不考虑Li(k)无定义的情况。
+　　定理4 Li+1(k)如果存在，那么它的取值必为：
+　　Li+1(k)=Min(j，Li(k))。
+　　这里j是满足以下条件的最小整数：A[i+l]=B[j]且j>Li(k-1)。
+　　定理1、2、3、4的证明请分别参阅文献[2]和[3]。定理4得到计算Li(k)的递推公式。将此递推关系表示为矩阵形式如图1。
+
+图1　求解LCA的矩阵L(p.m)
+　　矩阵中的元素L(k，i)=Li(k)，这里(1<i<=m，1<k<=m)，null表示L(k，i)不存在。当i<k时，显然L(k，i)不存在。
+　　设p=Maxk(L(k，m)≠null)，可以证明L矩阵中L(p，m)所在的对角线L(1，m-p+l)L(2，m-p+2)…L(p-1，m-1) L(p，m)所对应的子序列B[L(1，m-p+l)]B[L(2，m-p+2)]…B[L(p，m)]即为A和B的LCS，p为该LCS的长度。这样，LCS问题的求解就转化为对Lm(m矩阵的求解。
+　　下面给出一个例子来说明上面的性质：给定字符串A和B，A=bcdabab，B=cbacbaaba，(m=|a|=7，n=|B|=9)。按照定理4给出的递推公式，求出A和B的L矩阵如图2。
+
+图2　例子
+　　则A和B的LCS为B[1]B[3]B[5]B[6]B[8]=cabab，LCS的长度为5。
+　　将复杂度为O(pn)和O(n(m-p))算法分别称为算法1，2。算法1、2都是通过求解Lm(m矩阵来求LCS的，它们的区别只是求解Lm(m矩阵元素的顺序不同。对于矩阵第一行元素L(1，i)的计算，可以用公式L(1，i)=Minj(A[i]=B[j])，其余行元素L(k，i)用定理4给出的递推公式计算。下面简要介绍一下这两个算法：
+　　算法1 是按行顺序来计算L矩阵。先求第一行元素L(1，1)L(1，2)…L(1，m)，再求第二行，一直求到第p+1行。直到发现第p+1行都为null为止。在计算第k行元素时，根据定理2，有L(k，1)>=L(k，2)>=…>=L(k，m)，所以对B字符串从后向前扫描一遍就可求出所有L(k，1)(1<=i<=m)。扫描一遍的时间复杂度为O(n)，因此算法1整个的时间复杂度(计算p+1行)为O(pn)。在求L矩阵的过程中，不用存储整个矩阵，只需存储当前行和上一行即可，空间复杂度为O(m+n)。算法1适合于p<<m的情况。
+　　算法2 是按对角线顺序计算L矩阵。先求第一条对角线上的元素L(1，1)L(2，2)...，直到L(1，1)=null，1<=m为止；再求第二条对角线L(1，2)L(2，3)...；一直求到对角线L(1，s)L(2，s+1)...L(t，m)，且L(t，m)<>null为止。这时，可以证明t=p，s=m-p+l。总共对(m-p+1)条对角线进行了计算。在计算第i条对角线时，根据定理3，有L(k，i)<L(k+1，i+1)<...，所以对B字符串从前向后扫描一遍就可求出所有L(k，i)(1<=i<=m)。因此算法2的时间复杂度为O(n×(m-p))。只需存储当前对角线和前一条对角线上的元素即可，空间复杂度为O(m+n)。算法2适合于p与m非常接近的情况。
+3 改进的快速算法
+　　本文提出的新算法对算法2进行了改进，使计算每条对角线时不必对B字符串整个扫描一次，而是利用字符集，使对角线上每个元素的值可以直接得到。因为每条对角线最多要计算(p+1)个元素，计算(m-p+1)条对角线的时间复杂度为O(p(m-p))。下面详细介绍一下为什么可以直接得到每个元素的值。
+　　假设字符串A与B是定义在字符集∑上的字符串。∑可以是Ascii或其它标准字符集。在实际计算L矩阵之前，我们先为∑中的每个字符ai建立一个列表CharList[ai]，表中按升序记录了字符串B中ai出现的位置。这样对字符串B的扫描就转化为对字符列表的扫描。实际上计算L(k, i)时，由定理4给出的公式L(k+1，i+1)=Min(j, L(k+l, i))，这里j=Min1(A[i+1]=B[1]∧1>L(k, i))。如果在字符A[i+1]的列表CharList[A[i+1]]中用一指针记录了上次扫描到的字符A[i+1]在CharList[A[i+1]]中的位置1，则CharList[A[i+1]][l+1]就是j的值。这样L(k+1, i+1)可以立即得到，不用扫描整个字符串B。
+　　在计算一条对角线之前，先将所有字符列表的指针的初始值置为表中第一个元素。下面用C语言给出了整个算法。字符数组A，B为待比较的两个字符串，m、n分别为字符串A、B的长度，数组L为L矩阵的当前对角线的各元素的值。
+int lcs(char*A, char*B, int m, int n, int*L)
+{
+int CharList[CHAR_SET_SIZE][LIST_MAXLENGTH];//字符集列表
+int ListLength[CHAR_SET_SIZE];//每个列表的长度
+int ListIndex[CHAR_SET_SIZE];//每个列表扫描位置指针
+int nPosA, nPosB, nPosL=0;
+char ch;
+//建立字符集列表，将字符在B中出现位置按升序排列。
+for (ch=a0; ch<amax;ch++)
+ListLength[ch]=0;
+for(nPosB=1;nPosB<=n;nPosB++)
+{
+　　ch=B[nPosB];
+　　CharList[ch][ListLength[ch]+1]=nPosB;
+　　ListLength[ch]++;
+}
+//初始化L，用n+1表示null。
+L[0]=0;
+for(nPosL=1;nPosL<m+l;nPosL++)
+　　L[nPosL]=n+l;
+//循环计算每条对角线
+int nDiagonal=1;
+while(true)
+{
+　　nPosL=0;
+　　nPosA=nDiagonal;
+　　//将指针初始化
+　　for (ch=a0; ch<amax; ch++)
+　　　　ListIndex[ch]=0;
+　　//计算对角线上的每个元素
+　　while(L[nPosL]!=n+l&&nPosA<=m)
+　　{
+　　　　nPosB=L[nPosL]+1;
+　　　　ch=A[nPosA];
+　　　　i=ListIndex[ch]+l;
+　　　　if(i<=ListLength[ch]&&CharList[ch][i]<L[nPosL+1])
+　　　　{
+　　　　　　L[nPosL+1]=nPosB;
+　　　　　　ListIndex[ch]++;
+　　　　}
+　　　　nPosL++;
+　　　　nPosA++;
+}
+　　if(nPosA>m)break;
+　　nDiagonal++;
+}
+return nPosL; //返回LCS的长度
+}
+4 几种算法的比较
+　　图3给出了以上介绍的三种算法的时间复杂度的示意图。从图中可以看出，在这几种算法中，不管p<<m时还是p非常接近m时，算法3都具有最高的效率。因此如果在比较两个文件时是以字符为单位进行比较，最好选用算法3。因为算法3是针对特定字符集进行比较的，所以它扫描的单位都是单个字符，这对于二进制文件的比较是适用的。但在比较两个文本文件时，算法l和2都可以把一行文本作为一个比较单位从而大大加快计算速度，算法3却不能有这种效率提高。
+
+图3　几种算法的比较
+李欣（北京大学软件工程实验室 北京 100871）
+舒风笛（武汉大学计科系 武汉 430072）
+参考文献
+1，Aho A.V., Hirschberg D.S., Ullman J.D.: Bounds on the Complexity of the Longest Common Subsequence Problem. J.ACM 23, 1, 1～12(1976)
+2，Hirschberg, D.S.:Algorithms for the Longest Common Subsequence Problem. J.ACM, Vol. 24, No.4, October 1977, pp.664～675
+3，Nakatsu N., Kambayashi Y., Yajima S: A Longest Common Subsequence Algorithm Suitable for Similar Text Strings. Acta Informatica 18, 171～179(1982)
+4，Randal C.Burns and Darrell D.E.Long: A LINEAR TIME,CONSTANT SPACE DIFFERENCING ALGORITHM
+收稿日期：1999年7月16日

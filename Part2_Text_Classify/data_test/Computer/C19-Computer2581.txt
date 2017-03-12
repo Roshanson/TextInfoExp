@@ -1,0 +1,131 @@
+软件学报
+JOURNAL OF SOFTWARE 
+1999年 第10卷 第5期 Vol.10 No.5 1999
+
+
+
+可大规模应用的辐射度计算的自动网格化方法
+陈彦云　吴恩华　孙家广
+摘　要　合理地网格化场景是有效地进行辐射度计算的重要前提.现有的两种主要剖分方法是细分法和阴影边界计算法.前者是在必要时对大面片进行自动细分,后者是先解析地求出阴影的区域,然后根据阴影边界进行划分.前者存在的问题是无法检测出落在大面片中间的细节变化,绘制的质量得不到保证.后一种方法又局限于基本上只能处理纯多边形场景,而且计算时间长,实现复杂,难以在工程上进行应用.文章提出一种网格化方法,它面向大规模工程应用,简便易行,并能生成较高质量的图像.这种方法先将能量接受面划分成满足精度要求的细小面元,然后根据各面元对场景中各光源的可见性特征进行合并操作,以使能量变化情况不同的区域能以不同大小的尺寸进行剖分,这样,用于计算的面片大大减少,而图像质量没有明显的降低.实验结果和统计数据表明,此方法因其简单、高效,很适合大规模的工程应用.
+关键词辐射度,面片,面元,网格化.
+中图法分类号　TP391
+An Automatic Meshing Scheme for Radiosity Calculation of Large-scale Application
+CHEN Yan-yun1　WU En-hua1,2　SUN Jia-guang3
+1（Laboratory of Computer Science　Institute of Software　The Chinese Academy of Sciences　Beijing　100080）
+2（Faculty of Science and Technology　University of Macao　Macao）
+3（Department of Computer Science and Technology　Tsinghua University　Beijing　100084）
+Abstract　　Properly meshing a scene model is an important precondition to efficient radiosity calculation. There are basically two existing meshing strategies, subdivision method and shadow boundary calculation method. By the former method, large patches are automatically subdivided while necessary, and in the latter method, meshing is performed along the shadow boundary of the regions and the shadows in the scene are analytically pre-calculated. The problem in the former strategy is the detail between vertices of a big patch could be missed, so the rendering quality is unable to be assured. On the other hand, the latter approach has a limitation of being primarily applied to polyhedral scenes, and its complexity of implementation and the requirement of heavy computation also prevent itself from being applied in engineering applications. In this paper, the authors present a meshing scheme, with a primary destination towards large-scale engineering applications with a property of easy implementation and high efficiency in producing high quality images. By the scheme, they first divide the energy-receiving surfaces into small elements with a desire precision and then recombine the elements according to their visibility feature to the light source within the environment. In this method, the regions in different energy distribution could be meshed by different scale. As a result, the number of patches to be calculated is greatly reduced without degrading the image quality. The implementation and the statistics from test examples show that the scheme is particularly suitable for large-scale engineering applications due to its ease of implementation and high efficiency.
+Key words　Radiosity, patch, element, meshing.
+　　真实感图形的辐射度方法绘制是将场景中各个面网格化成面片(patch),通过计算各个面片之间的能量传递直至平衡或接近平衡来绘制场景.因此,网格化算法的好坏直接影响到辐射度方法的运算效率.
+　　最简单的网格化方法是用一个给定的尺寸对场景中所有的面进行统一的划分.这种方法虽然实现简单,但在进行划分时没有考虑各个面上的能量分布情况,因而要达到比较理想的效果,必须划分得非常细致,这样就增加了内存要求,而且计算时间也很长.
+　　关于场景的网格化问题,许多研究者提出过各种不同的算法.最初是Cohen等人在1986年提出的自适应优化算法［1］,该算法采用面片――面元(element)结构.其基本思想是,先将场景中各个面划分成面片,进行初步计算,如果计算结果表明某些面片顶点间的能量变化超过给定阈值,就对此面片作进一步细分,并由细分所得的面元替代原面片进行光照计算.这种方法的优点是实现简单,能有针对性地对能量变化明显的区域作细化.缺点是只考虑各个顶点之间的能量差别,无法检测出落在顶点之间的细小阴影,见图1(a)中A处.
+
+(a) Cohen等人提出的算法的细分结果　　　　　　　　　　(b) 本文提出的算法的合并结果
+图1　Cohen提出的算法与本文提出的算法的比较
+　　此后,Campbell［2］,Lischinski［3］,Drettakis［4］和Stewart［5］等人又利用解析法求出阴影的边界,并由此提出各自不同的平面网格化方法.因为能量接受面上的阴影边界的准确位置已求出,并且还考虑到在阴影的本影边界和半影边界处能量过渡的各种不连续性(discontinuity),这些方法都得到了很准确的计算结果.为了更快地求出阴影的本影和半影边界,这些算法都采用了比较复杂的数据结构.如,采用BSP树对空间各多边形拓扑关系进行排列,采用包含点、线、面相互关系信息的翼边结构(winged-edge)来记录网格化的中间状态和结果(翼边结构不但处理繁复,而且为了加快搜索及其他复杂操作,数据存储上有许多冗余［6］),因此,编程复杂,面片划分时间长,在目前的硬件条件下,很难在工程上得到实际应用.另外,我们知道,曲面造型在工程中的应用非常广泛,而这些方法除了Drettakis提到的可以处理二次曲面以外,都强调只处理由纯多边形构成的场景,这就更不能满足实际应用的要求了.
+　　对此,本文提出一种从面元到面片的网格化方法.它采用离散的方法,既避免了复杂的解析求取阴影边界的运算,节省了计算时间,又能处理包含曲面的场景；采用简单而有效的合并算法,即使阴影边界得到细致的反映,又使非边界部分得以按较大尺寸划分,以便以较少的时间生成高质量的图形.实验证明,这是一种适合大规模工程应用的网格化方法.
+1　算法的基本思想
+　　由于光源对场景中能量的分布起着最主要的作用,所以,像大多数网格化算法［1～5］一样,本文只考虑光源所产生的阴影.基本思想是先将光源划分成面片,然后将各能量接受面划分成面元,并确定各面元对各光源面片的可见性特性.以此为依据将面元合并成面片,同时在合并后的大小面片之间采用三角形进行过渡,以避免产生T形顶点(T-vertex,见文献［7,8］).因为采用的是从小到大进行合并的方法,避免了如图1(a)所示的误差(如图1(b)所示).下面详细介绍算法的各个步骤.
+1.1　光源的网格化
+　　因为光源的能量分布一般是均匀的,所以只进行简单的统一尺寸的划分,使其不超出误差范围即可.具体办法是先计算各个光源与接受面之间的最短距离,然后根据五倍原则(the Five-times Rule)进行划分［8］.
+1.2　建立hs-buffer
+　　为了加速下面的确定面元对各光源面片可见性的计算,我们建立hs-buffer来记录光源面片对场景中各个能量接受面的可见性信息.方法如下：光源网格化后,在每个光源面片上建立一个hemi-cube,然后将场景中所有的面向这些hemi-cube作透视投影,并用z-buffer进行深度消隐,不同的面采用不同的标号加以区分(我们称之为SurfaceID).投影结果存入一张二维表,这张二维表就是hs-buffer.有多少光源面片,就有多少个相应的hs-buffer.建立了hs-buffer后,在确定面元对于某个光源面片的可见性时,只要进行一次投影操作和一次二维坐标查找就可以完成,不需要复杂的计算.
+1.3　确定各面元对所有光源面片的可见性特性
+　　对于每个将要进行网格化的能量接受面,首先将其划分成最小的单元――面元.面元的大小根据允许的误差和用户对精度的要求确定.如果尺寸太大,就无法准确地描绘细节,图形的质量不能满足要求.如果面元尺寸太小,不但会增加存储量和运算量,降低运算速度,而且如果采用常用的hemi-cube计算形状因子(Form-Factor),还会产生与hemi-cube分辨率相关的计算误差［9］.因此,面元的划分尺寸要保证在合并成面片后,最小面片(通常是面元)在计算形状因子时,由于hemi-cube分辨率产生的误差和最大面片上能量的计算和分布的误差(如满足五倍原则)都在允许的范围之内.
+　　能量接受面划分成面元之后,为了简化运算,我们假定面元足够小,它对于某个光源面片的可见性只有完全可见或完全不可见两种不同情况.这样,可见性可用如下方法确定：然后将面元的中点向光源面片的hemi-cube作投影,根据投影所得的二维坐标查找对应的hs-buffer,若所得的SurfaceID为此面元所在平面的SurfaceID,则表明此面元对该光源面片是可见的,否则认为不可见.确定某面元对所有光源面片的可见性后,将其结果记录在一个关键字V－Key中,作为与相邻面元合并成面片的根据.因为可见性只有完全可见或者完全不可见两种情况,所以,每个光源面片的可见性在V－Key中只占一个bit.关键字的长度由光源面片的数目决定.
+1.4　面片合并
+　　为了减少存储量,加快能量分布计算,我们将面元合并成面片.这依据的是各面元可见性关键字V－Key.我们采用四叉树来描述面元到面片的层次结构,并用一个称为PchType的关键字来标识同一父节点的4个子节点合并操作的方式.先确定PchType的值,然后根据PchType的值,对同一父节点的4个面元(面片)进行合并.具体描述如下.
+1.4.1　数据结构
+　　为了简化合并操作,我们以面元为叶子建立四叉树结构.树的深度可以根据误差允许的最大面片尺寸和面元尺寸来确定,根据我们的经验,一般为3～4级.同一父节点的4个子节点分别称为TL,TR,BL,BR,如图2所示.
+
+图2 四叉树结构
+　　关键字PchType是用来标识合并操作的方式的.因为是四叉树结构,同一父节点只有4个子节点,只要用1个字节的低四位就足以标识了,因此,我们设PchType字节中bit4～bit7为空,bit0～bit3分别代表图2中的p0～p3这4个顶点.如表1所示.
+表1　关键字PchType
+
+bit7bit6bit5bit4bit3bit2bit1bit0
+　　　　p3p2p1p0
+
+　　bit0为“0”,即p0为“0”,表示该顶点可以取消,即子节点TL和TR可以合并,否则表示TL和TR不能合并.同样道理,p1,p2,p3的取值也反映相应子节点能否合并的信息.
+　　同时,考虑到面元要存储可见性关键字V－Key,面片(面元)的四叉树数据结构可定义为：
+　　struct pTree－{
+　　char　　　　　　PchType;
+　　V－Key typeV－Key;
+　　struct pTree－*TL,*TR,*BL,*BR;
+　　} 
+1.4.2　PchType关键字的确定
+　　PchType的确定从叶子节点的父节点开始,它由同一父节点的4个叶子节点的V－Key和与它们相邻的其他叶子节点的V－Key决定.先考虑同一父节点的4个叶子节点,以PchType中p0对应的位的值的确定为例(如图2所示),如果TL与TR的V－Key不同,也就是说,TL与TR两个子节点对各光源面片的可见性特性不一样,说明TL与TR之间有比较明显的能量变化,这两个子节点不能合并,即p0对应的顶点不可取消,所以,PchType中p0对应的位应为“1”.反之,如果TL与TR的V－Key相同,说明它们对所有光源面片的可见性特性都是一样的,它们之间不会出现明显的能量变化,所以这两个叶片子节点可以合并,p0对应的顶点可以取消,相应地,PchType中p0对应的位应取“0”.p1,p2,p3的值的确定与p0相类似.由此,我们得到以下4个判断语句：
+(TL->V－Key!=TR->V－Key)?　p0=1:p0=0;
+(TR->V－Key!=BR->V－Key)?p1=1:p1=0;
+(BR->V－Key!=BL->V－Key)?p2=1:p2=0;
+(BL->V－Key!=TL->V－Key)?p3=1:p3=0.
+再考虑非同一父节点的相邻叶子节点之间的相互影响,以左右相邻的非同一父节点的叶子节点间的相互影响为例(如图3所示).如果左边叶子节点TRL的V－Key与右边叶子节点TLR的V－Key不同,说明它们之间有比较明显的能量变化,所以,p0L和p0R对应的顶点都不能取消,以确保计算精度和图形质量.同样地,BRL和BLR及其对应的p2L和p2R也存在类似的情况.左右相邻的非同一父节点的叶子节点的V－Key对叶子节点的父节点的PchType的影响可由以下两个判断语句完成：
+if (TRL->V－Key!=TLR->V－Key)　　　　p0L=p0R=1;　　(1)
+if (BRL->V－Key!=BLR->V－Key)　　　　p2L=p2R=1.　　(2)
+同样地,上下相邻的非同一父节点的叶子节点的V－Key对叶子节点的父节点的PchType的影响也可以用类似的两个判断语句完成.
+
+图3 左右相邻的非同一父节点叶子节点
+　　最后还要考虑相邻节点间的相互影响.若左节点的PchType关键字中p1L为“1”,则右节点的PchType关键字中p3R也应为“1”,以免产生T形顶点.反之,若p3R为“1”,则p1L也应为“1”.上下相邻的节点也要作相应的修改.
+　　对于子节点非叶子的节点,确定其PchType关键字的值的不再是子节点的V－Key关键字,而是由子节点的PchType关键字是否为0来确定,具体做法如下：先将PchType关键字置0,然后对4个子节点逐一进行判断,如果某个子节点的PchType关键字为0,表示这个子节点的4个子节点已合并成一个面片,并可进一步合并成更大的面片,所以它对PchType关键字没有任何影响；反之,如果某个子节点的PchType关键字不为0,说明这个子节点的4个子节点不能完全合并,已生成若干个面片,它自身也不能再与其他节点作进一步的合并,所以将父节点PchType关键字中与它相关的两位赋“1”,以标识与它相关的两个顶点不可取消.这样,我们得到以下4个判断语句：
+if (TL->PchType!=0)　p0=p3=1;
+if (TR->PchType!=0)　p0=p1=1;
+if (BR->PchType!=0)　p1=p2=1;
+if (BL->PchType!=0)　p2=p3=1.
+同样地,还要考虑相邻节点的相互影响,以免产生T形顶点,具体做法与叶子节点父节点相似.
+1.4.3　合 并
+　　确定了四叉树各级节点的PchType关键字以后,就可以进行合并操作,合并从叶子开始,依据的就是PchType关键字.如前所述,PchType关键字我们只用低四位,所以,一共有16种类型的合并操作,其中低四位为0时,如果是四叉树根节点,就将其4个子节点合并成一个面片.如果是非根节点,将其4个子节点合并后,是否生成面片视其父节点的PchType关键字而定.参照文献［10］,其他15种合并操作如图4所示(图中标出的是PchType关键字低四位的二进制码,实线表示合并的结果).
+
+图4 面片（面元）的合并
+2　实验结果
+　　图5是运用本文介绍的算法和直接用面元作为面片进行辐射度运算所得的结果的比较.从图中我们可以看出,运用本文介绍的算法使面片数目大为减少,而运算结果的图形质量基本上没有降低.
+
+
+图5　本文介绍的算法与直接用面元作为面片运算结果的比较
+　　图6是运用本文介绍的算法处理比较复杂的纯多边形场景和包含Bézier曲线旋转面的场景的网格化的线框图及运算结果.在阴影边界处平面划分得比较细致,其他地方则比较稀疏.
+
+
+图6　运用本文提出的算法处理复杂的纯多边形场景和Bézier曲线旋转面的运算结果
+　　图7是将本文介绍的算法运用于复杂场景,在SGI图形工作站Indigo2上进行运算所得的结果,其统计数据如表2所示.
+
+
+
+(a) 直接用面元作为面片所得的结果　　(b) 本文介绍的算法所得的结果
+图7　将本文介绍的算法运用于复杂场景的运算结果
+表2　图7的运算统计数据
+
+　场景多边
+形个数光源
+个数光源面
+片个数面片
+数目网格化
+时间(s)光照计算
+时间(s)总运算
+时间(s)
+采用面元作为面片(图7(a))114451474481037393739
+采用本文介绍的算法(图7(b))11445142020217790807
+
+　　从上表的统计数据及运算结果(如图7所示)看,采用本文介绍的方法与直接采用面元作为面片的方法虽然在面片数目和计算时间上有很大差别,但图形质量却未见明显不同.由此可见,本文介绍的算法是简单有效的. 
+3　结 论
+　　关于场景的网格化的问题,国内外许多专家和学者在过去的10多年时间里提出过各种不同的解决方法.这些解决方法大致可以归为细分法和阴影边界计算法两种.Campbell,Lischinski和George采用的是阴影计算法［2～4］,而Cohen所采用的是细分法［1］,本文提出的是新的方法――合并法.
+　　阴影计算法的优点是,各种阴影的边界划分准确,因而能量分布的计算也比较精确,计算结果的图形质量高.其缺点是,处理复杂,计算速度慢,尤其是对于光源比较多的场景.这从各文献中给出的统计数据可以明显地看出：Campbell在文献［2］中给出的统计数据表明,文献［2］介绍的算法在平面网格化方面所花的时间是光照计算所花时间的10倍以上；Lischinski在文献［3］中介绍的算法在平面网格化方面要比文献［2］提出的算法快得多,但也接近于光照计算所花的时间.细分法虽然图形质量相对而言不如阴影计算法,但却具有计算速度快,编程简单,易于实现的优点.本文提出的合并法类似于细分法的逆处理方法,同样具有细分法的各种优点,并且比细分法更准确.实验结果表明,本文介绍的算法简单有效,适合于大规模工程应用.
+　　由于篇幅关系,本文只介绍了四边形的网格化算法,一般场景都含有三角形．三角形的网格化与四边形有许多相似之处,只要将上述算法稍作修改即可做到.三角形面片的四叉树剖分如图8所示.
+
+本文研究得到国家自然科学基金和国家“九五”重点科技攻关项目基金资助.
+作者陈彦云,1971年生,博士生,主要研究领域为计算机图形学,真实感图形生成.
+吴恩华,1947年生,博士,研究员,博士生导师,主要研究领域为计算机图形学,虚拟现实,科学计算可视化.
+孙家广,1946年生,教授,博士生导师,主要研究领域为CAD/CAM,工程数据库,计算机图形学.
+本文通讯联系人：陈彦云,北京 100080,中国科学院软件研究所计算机科学开放研究实验室
+作者单位；陈彦云　吴恩华（中国科学院软件研究所计算机科学开放研究实验室　北京　100080）
+　　　　　吴恩华（澳门大学科技学院　澳门）
+　　　　　孙家广　（清华大学计算机科学与技术系　北京　100084）
+参考文献
+　[1]　Cohen M, Greenberg D P, Immel D S et al. An efficient radiosity approach for realisity image synthesis. IEEE Computer Graphics and Application, 1986,6(3):26～35
+　[2]　Campbell III T, Fussell D S. Adaptive mesh generation for global diffuse illumination. Computer Graphics (Proceedings of the SIGGRAPH'90), 1990,24(4):155～164
+　[3]　Dani Lischinski, Filippo Tampieri, Greenberg D P. Discontinuity meshing for accurate radiosity. IEEE Computer Graphics and Application, Nov. 1992,12(6):25～39
+　[4]　Drettakis G. Eugene Fiume A fast shadow algorithm for area light sources using backprojection. Computer Graphics(Proceedings of the SIGGRAPH'94), 1994,28:223～230
+　[5]　Stewart J A, Ghail S. Fast computation of shadow boundaries using spatial coherence and backprojections. Computer Graphics (Proceedings of the SIGGRAPH'94), 1994,28:231～238
+　[6]　Glassner, Andrew S. Maintaining Winged-Edge models. In: Arvo J ed. Graphics Gems ⅠⅠ. San Diego: Academic Press, 1991
+　[7]　Cohen M F, Wallace J R. Radiosity and Realistic Image Synthesis. Boston: Academic Press, Inc., 1993
+　[8]　Ian Ashdown. Radiosity: A Programmer's Perspective. New York: John Wiley & Sons, Inc., 1994
+　[9]　Wallace J R, Elmquist K A, Haines E A. A ray traciing algorithm for progressive radiosity. Computer Graphics (Proceedings of the SIGGRAPH'89), 1989,23(3):315～324
+　[10]　Baum D R, Mann S, Smith K P et al. Making radiosity usable: automatic preprocessing and Meshing techniques for the generation of accurate radiosity solutions. Computer Graphics (Proceedings of the SIGGRAPH'91), 1991,25(4):51～60
+本文1997-10-20收到原稿,1998-05-28收到修改稿

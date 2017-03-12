@@ -1,0 +1,65 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第6期 Vol.35 No.6 1999
+
+
+
+无氧能力间接检测方法研究进展
+王　健　洪　峰
+摘要：无氧能力(Anaerobic Capacity,AC)是指运动中人体通过无氧代谢途径提供ATP的极限能力，检测人体AC对于科学地分析与评价机体无氧作功能力和效率，检测训练效果等均具有重要意义。本文着重从方法学上介绍AC的动力学和生理学检测，其中主要包括：临界功率试验(CPT)、全力运动负荷试验，最大血乳酸值法和最大累积氧亏法(MAOD)，并对上述方法在评价人体工作能力方面的应用情况进行简要回顾。
+关键词：无氧能力∥动力学检测∥生理学检测
+Indirect Measurement of Anaerobic Capacities in Humans
+Wang Jian，Hong Feng
+Abstract:Anaerobic capacity(AC) is defined as the maximal amount of ATP resynthesised via anaerobic metabolism during exercise, Measurement of AC in humans have important applications in the evaluation of human work capacity， efficiency and training effects.This review focuses on the laboratory dynamic and physiological measures including critical power test, all-out exercise test, peak post-exercise blood lactate method and maximal accumulated oxygen deficit method.A brief discussion focus on the applications of above methods in the sports science research and practice was made in this paper.
+Key words:anaerobic capacity∥dynamic measurement∥physiological measurement
+　　无氧代谢能力(Anaerobic Capacity,AC)，是指运动中人体肌肉的无氧代谢供能系统提供ATP的极限能力，检测与评价运动员的AC对于客观地分析与评价运动员的身体运动能力、检测运动训练的效果以及深入探讨AC对运动训练的适应规律和特点均具有重要意义。目前，AC的检测包括直接与间接检测两大类，前者是指通过肌肉活检法，对某些无氧代谢相关参数，如代谢底物浓度、代谢酶活性以及运动肌质量等的定量分析来计算ATP生成的极限能力，而后者则主要依据对处于最大无氧代谢状态下的身体作功能力以及运动中累积氧亏的数量、运动后偿还氧债的数量以及最大血乳酸浓度的检测来间接反映ATP生成能力。直接检测法所涉及的检测仪器和设备昂贵、操作过程繁复且具有一定程度损伤，故很少在人体研究中使用。相反，间接检测法则具有简便、实用、无损伤等特点，常被用于人体研究。迄今为止，常用的AC间接 检测方法依检测指标性质的不同分为两类，一类是通过对全力运动及一次性定量负荷和系列定量运动负荷作功能力的检测来推测AC，此乃AC的动力学检测，主要包括Wingate无氧功率试验(Wingate anaerobic power test)、无氧跑速试验(Anaerobic speed test)及临界功率试验(Critical power test)等；另一类最大无氧性运动时所产生的最大累积氧亏、运动后偿还的氧债以及最大血乳酸浓度的检测反映AC，此乃AC的生理学检测，主要包括氧债法(O2 debt)、最大累积氧亏法(Maximal accumulated oxygen deficit,MAOD)和最大血乳酸浓度法(［Bla］max)。
+1　AC的动力学检测―无氧作功能力(Anaerobic work capacity,AWC)
+1.1　恒定负荷试验(Constant-load test,CLT)
+　　CLT要求受试者在相应的运动负荷工具上维持恒定功率的运动，直至不能维持为止。常用的运动负荷工具包括跑步机和自行车功量计，使用的输出功率通常高于max，运动负荷持续时间1 min左右。最常用的CLT是“无氧跑速试验”，该试验要求受试者在20%坡度的跑步机上以约13 km/h的速度进行运动，以受试者能够维持运动的时间长短来判别AWC。研究发现，训练有素的短跑运动员的AWC明显大于耐力性项目运动员、冰球运动员和足球运动员，证明AWC的实验室检测结果与运动员的AC相一致。但也有研究观察到，许多优秀运动员在完成CLT时的持续时间可长达60～120 s，此时，由有氧代谢提供的能量已超过总能耗的50%，故此运动时间已不再能准确反映AWC。使用自行车功量计检测AWC也取得类似结果，即短跑运动员的AWC明显高于耐力运动员，且人的AWC与400 m跑成绩有较好的相关性(r=0.08)。然而，不论是使用跑步机，还是使用自行车功量计作为运动负荷工具，如何准确判断受试者的耗竭一直是难以解决，同时也是影响检测结果的一个重要问题。正因如此，CLT只适用于一般的临场研究。
+1.2　系列恒定负荷试验(Serial constant-load test,SCLT)
+　　定量运动负荷的持续时间与运动负荷强度的大小有关，以不同强度运动负荷做实验，观察到受试者在完成这些运动负荷时的持续时间(Tlim)与最大累积作功量(Wlim)之间存在明显的线性关系，即：
+　　　　　　　　　　Wlim=a+bTlim
+其中，斜率b表示受试者能够不疲劳地进行长时间运动的输出功率值，反映受试者的有氧工作能力；而截距a则表示AC的大小。此乃由Monod等于1965年建立和发展而来的临界功率试验(Critical Power Test,CPT)。
+　　CPT的负荷次数通常为4～5个，负荷强度的大小依运动负荷持续时间判定，其中，最高运动强度的负荷时间通常为1 min，最低强度的负荷时间为10 min，其余负荷强度的持续时间介于两者之间。每次运动负荷结束后，待身体功能完全恢复后再进行下一负荷强度的试验。CPT常用的运动负荷工具为自行车功量计，以60 rpm为标准负荷频率，而当受试者的踏蹬频率低于55 rpm时，即被判为耗竭。
+　　Monod等最初曾以动脉套阻断受试者的运动肌血流，发现Wlin与a值相等。此外，Moritan等也曾比较受试者分别吸入20%、12%和9%的含氧气体对a、b值的影响，发现吸入气氧含量可以影响b，但不影响a。Green等发现优秀自行车运动员的a值与通过直接测定法获得的肌肉的ATP再生(r=0.70)、无氧能力(r=0.73)和缓冲能力(r=0.71)间均存在显著相关。以上3项研究均为a值的无氧属性提供了重要的实验支持。CPT的外部效度表明，a值介于167 J.kg-1(无训练者)～267 J.kg-1(有训练者)之间，并且与运动项目的代谢特点相一致。每周3天，持续8周的短跑训练可使受试者的a值由13.4 kJ增加到20.0 kJ，增长幅度高达49%，证明CPT能够敏感地反应AC的变化。在与其它反映AC的指标的关系方面，Nebelsick等通过对25名女性受试者的研究，发现a值与Wingate无氧功率试验总功间的相关具有显著统计学意义(r=0.74)。Vandeoalle等通过对9名体育教师的研究，发现a值与Wingate无氧功率试验总功间显著相关(r=0.69，p＜0.05)。但是，Bulbulan等在最近发表的一份报告中却发现，a值与Wingate无氧功率试验总功间无明显相关(r值介于0.07～0.41间)，并指出，CPT的a值只是一项反映非乳酸能无氧贮备的指标，用其来评价AC可造成约23%的误差。然而，鉴于目前研究认为，传统的30 s全力运动的Wingate无氧功率试验不能最大限度地激发糖酵解供能的观点。分析CPT的a值与Wingate试验的相关性也难以评价a值的外部效度。为此，Hill等改以最大累积氧亏(MAOD)作评价AC的标准指标，通过非线性的功率―时间模型法探讨了a值的等效指标W′与MAOD间的关系，研究发现，无论男(13人)、女(13人)受试者，他们的W′值与MAOD的能量当量质间均无明显统计差异，并且具有较好的相关性(r:0.55～0.78)。此外，对于检测结果也不存在检测方法与性别的交互作用(F1，24＝0.26，p＝0.62)。为此，Hill等认为，W′可以对AC作出准确的估计。
+1.3　全力运动负荷试验(All-out exercise test,AOET)
+　　应用AOET检测与评价AC的基本原理是通过对最大无氧代谢状态下的机体作功能力的检测与分析间接反映AC，由于该类方法操作简单，易于控制，故在实践中较为普及。最常用的AOET是由以色列Wingate体育学院于1977年建立并发展的Wingate无氧功率试验，以及与此同属一类的、持续时间介于40～120 s间的全力运动负荷试验，常用的评价指标为平均输出功率、最大输出功率以及输出功率下降率。多年来的基础研究认为，Wingate无氧功率试验有较好的外部效度，表现在其平均输出功率值与速度性项目的运动成绩间存在着较高程度的负相关。但研究也同时指出，通过Wingate无氧功率试验检测与评估AC尚存以下不足：1) 30 s的全力运动尚不足以最大限度激活糖原的无氧酵解供能；2) 所耗能量的9～19%来自有氧代谢。60～120 s的AOET虽在激活糖酵解供能方面优于30 s运动，但因运动时间过长，运动负荷的无氧代谢性质已经发生了根本性变化。故此，目前的研究认为，传统的Wingate无氧功率试验持续时间以40 s为佳。
+2　AC的生理学检测
+2.1　氧债法(O2 debt method)
+　　应用氧债法检测与评价AC的理论支持是Hill和Margaria的“氧债乳酸学说”。剧烈运动后机体所欠“氧债”的多少能够反映剧烈运动中通过无氧代谢所获的ATP，其中，非乳酸氧债的大小反应ATP-PC系统提供ATP的能力，而乳酸氧债大小则反映糖酵解系统提供ATP的能力。50～70年代间，检测受试者耐受氧债的数量曾被视为评价AC的一种有效方法，但其后进行的一系列基础研究，无论在氧债法的内部效度，还是外部效度方面均未提供有力的支持。例如，采用同位素示踪技术对14C-乳酸的代谢研究表明，运动中由运动肌产生并释放入血液的乳酸，在运动后的主要代谢方向是被氧化，而不是被重新合成肌糖原，由此从根本上对氧债法的理论基础――“氧债乳酸学说”提出质疑。此外，精确的计量研究也发现，运动后氧债的数量远远大于运动中的氧亏，并且其变化还受儿茶酚胺类激素的代谢调控作用、体温作用、Ca++作用以及代谢底物种类作用等因素有关。在外部效度的研究方面，Bangsbo等研究发现PC的恢复仅占非乳酸氧债的约20%，故计算非乳酸氧债不能对PC的能力做出预测。Green等研究发现，跑步机运动后的非乳酸氧债与50～150 m短跑成绩间无明显统计相关，而乳酸氧债，由于有报道认为其较同一练习中的氧亏高50～100%，故无法对AC做出准确估计。
+2.2　最大血乳酸值法(Peak postexercise blood lactate method)
+　　对机体乳酸扩散空间内的乳酸代谢动力学研究发现，运动时机体的乳酸累积量与运动后血乳酸浓度的高底呈明显正相关。基于这一事实，不少学者开始探讨应用运动后的最大血乳酸值检测与评价AC。首先，不少学者研究发现，最大血乳酸值与多种无氧代谢为主的运动项目的成绩间存在着显著的负相关，短时间爆发性项目运动员的最大血乳酸值高于耐力项目运动员和非运动员。但是，也有一些研究指出，应用最大血乳酸值评价AC的不足之处。例如，长期大强度训练可以提高运动成绩，但却不能提高最大血乳酸值，反映这种方法缺乏敏感；指尖取血较前臂静脉的血乳酸值高约8%，股静脉血乳酸浓度较肘静脉血乳酸浓度高约2倍，反映乳酸浓度的测定受取血部位的影响。除此以外，Gastin等的一项研究还发现，受试者在完成1 min全力踏车试验后的最大血乳酸值明显高于需1.5～3.5 min方可达到同样输出功率的定量负荷后的最大血乳酸值，尽管他们在完成这两类运动时的氧亏值是相等的，说明最大血乳酸值也未必能够精确反应氧亏。基于上述研究，目前的观点认为，最大血乳酸值法也不是预测AC的理想方法。
+2.3　最大累积氧亏法(Maximal accumulated oxygen deficit,MAOD)
+　　MAOD法是Medbo等于80年代末期建立和发展的一种无损伤性AC间接检测方法。MAOD指人体从事2～3 min超极限强度运动时，完成该项运动的理论需氧量与实际耗氧量之差。其中，实际耗氧量可以通过对超极限强度运动耗氧量-运动持续时间关系曲线方程进行定积分获得，而超极限强度运动的理论需氧量则可通过亚极量运动负荷试验中建立的耗氧量-运动强度关系曲线外推获得。MAOD法的理论基础是：1)超极限强度运动的理论需氧量是相对恒定的；2)练习的需氧量可以通过-运动强度关系曲线获得。
+　　MAOD试验的结果通常以氧亏的绝对值(O2L)或相对值(mlO2.kg-1体重)表示，其实质是AC的氧当量。研究表明，MAOD的分布范围较大，其相对值介于33ml.kg-1(无训练者)～84ml.kg-1(有训练者)之间。其中，优秀短跑运动员的MAOD值(80～85ml.kg-1)明显高于耐力性项目运动员(50～65ml.kg-1)，而有氧、无氧代谢均有较高要求的中跑运动员的MAOD值介于以上两者之间，证明MAOD具有较好的区分度；MAOD值与2～3 min或60 s全力运动成绩的相关系数介于0.66～0.97之间，反映出MAOD同时具有较好的外部效度；有、无训练者在接受无氧训练后MAOD明显增加，与此同时，运动成绩、骨骼肌缓冲能力等同步发生相应变化，说明MAOD对无氧训练具有较大的敏感性。基于上述研究所获得的事实，Saltin曾做出评价，“MAOD法是迄今能够定量检测AC的惟一有效方法”。
+　　Medbo等曾让受试者吸入常氧气体和低氧气体(O2∶13.5%)进行MAOD试验，结果显示受试者的最大耗氧量下降了22%，而MAOD值未发生改变。Weyand等比较了男(11人)、女(9人)性受试者分别以单腿和双腿进行运动负荷试验时的MAOD，发现单腿运动的MAOD值约为双腿运动的一半(52%)，并且还发现MAOD值与运动肌质量大小明显相关，这些研究均为MAOD法的合理性、科学性提供了重要依据。最近，Weyand等还比较了应用MAOD和最大血乳酸值法对100 m、200 m、400 m、800 m、1，500 m和5，000 m跑成绩的预测效果，研究结果表明，虽然MAOD值与跑步成绩间呈中度相关(r：-0.04～-0.71)，但MAOD法对成绩变异的解释率高达44～50%，而最大血乳酸值法只有21～26%。此外，多元回归分析结果还表明，应用MAOD能够对100～400 m 成绩做出较好预测，但对400 m跑以上项目的预测较差，表明MAOD在运动实践中有较大的应用价值。
+作者简介：第1作者：王健，37岁，工学博士，浙江大学体育系生理室，副教授。
+作者单位：王　健 (浙江大学体育系，杭州　310028)
+　　　　　洪　峰 (北京体育师范学院，北京　100088)
+参考文献
+　1　Green S.A definition and systems view of anaerobic capacity.Eur J Appl Physiol,1994(69):168～173
+　2　Green S.Mesurement of anaerobic work capacity in humans.Sports Med,1995,19(1):32～42
+　3　Green S.and Dason B.Measurement of anaerobic capacities in humans.Sports Med,1993,15(5):312～327
+　4　Cunningham D A,Faulkner J A.The effect of training on aerobic and anaerobic metabolim.Med Sci Sport,1968(1):65～69
+　5　Green S.Anthropometyic and physiological characteristics of south australian soccer player.Aus J Sci Med Sports,1992,24(1):3～7
+　6　Mckenzie D C，Parkhaus W S，Hearst W E.Anaerobic performance characteristics of elite Canadian 800 meter runners.Can J Appl Sports Sci,1982,7(3):158～160
+　7　Crielaare J M，Merken P,Franchimont P,et al.Evaluation de la capacite anaerobic lactique en athletisme.Med Sports,1986,60:239～244
+　8　Monod H,Scherrer J.The work capacity of synergic muscle group.Ergonomics,1965(8):329～338
+　9　Hill D W.The critical power concept:a review.Sport Med,1993,16(4):237～254
+　10　Moritani T A，Nagata H A，Devries H A,Muro M.Critical power as a measure of physical work capacity and anaerobic threshold.Ergonomics,1981,24:339～350
+　11　Jenkins D G，Quigley B M.The influence of hith-intensity exercise training on the Wlim-Tlim relationship.Med Sci Sports Exerc,1993,25(2):275～282
+　12　Mebelsick-Gullett L J，Horsh T J，Johnson G O，Bauge S M.A comparison between methods of measuring anaerobic work capacity.Ergonomics,1988,31:1413～1419
+　13　Vandewalle H，Peres G,Monod H.Standard anaerobic exercise test.Sports Med,1987(4):268～289
+　14　Bulbulan R J，Jeong W，Murphy M.Comparison of anaerobic components of the Wingate and critical power tests in males and females.Med Sci Sports Exerc.1996,28:1336～1341
+　15　Hill D W，Smigh J.Acomparison of methods of estimating anaerobic work Capacity,Ergonomics,1993,36(12):1495～1500
+　16　Kavanagh M F，Jacobs I.Breath-by-breath oxygen consumption during performance of the Wingate test.Can J Apps Sports Sci.1988,13:91～93
+　17　Gaesser G A.Metabolic bases of excess post-exercise oxygen consumption:a review.Med Sci Sports Exerc,1984,16:29～43
+　18　Bangsbo J,Gohnick P D,et al.Anaerobic energy production and O2 deficit-debt relationship during exhaustive exercise in humans.J Physiol,1990,422:539～559
+　19　Kose R J,Hodgson D R，et al.Maximun O2 debt and deficit and muscle metabolites in thorouhgbred horse.J Appl Physiol,1988,64:781～788
+　20　Nevill M E,Boobis L H，et al.Effects of training on muscle metabolism during treadmill sprinting.J Appl Physion,1989,64:2376～2382
+　21　Foxdal P,Sjodin B，et al.Lactate concentration defferences in plasma,whole blood,capillary finger blood and erythrocytes during submaximal graded exercise in humans.Eur J Appl Physios,1990,61:218～222
+　22　Gastin P,Krzeminski K，et al.Accumulated oxygen deficit during isokinetic all-out and constant load supra maximal exercise.8th Biennial conference on cardiovascular and Kespiratiry Responses to exercise in healty and disease,University of Sydney,1991
+　23　Medbo J I，Mohn A C，et al.Anaerobic capacity determined by maximal accumulated O2 deficit.J Appl Physiol,1988,64:50～60
+　24　Weyand P G，Cureton K J，et al.Deak oxygen during one and two legged cycling in men and women.Med Sci Sports Exerc.1993,25(5):584～591
+　25　Weyand P G，Cureton K J，et al.Peak oxygen deficit predicts sprint and middle-distance track performance.Med Sci Sports Exerc,1994,26(9):1174～1180
+(收稿日期：1998-10-05)

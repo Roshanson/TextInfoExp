@@ -1,0 +1,107 @@
+计算机工程
+COMPUTER ENGINEERING
+1999年 第25卷 第10期 Vol.25 No.10 1999
+
+
+
+面向CSCW的快速应用程序开发系统的设计
+陈弘　李建华　杨宇航
+摘要：提出了一种面向会议系统的基于TCP/TK脚木语言的跨平台、可扩展、可视化的CSCW快速应用程序开发系统的模型和结构，并给出了设计的方法。
+关键词：计算机支持协同工作；TCL/TK；快速应用程序开发；可视化
+Design of CSCW-oriented Rapid Application Development System
+Chen Hong Li Jianhua Yang Yuhang
+(Dept.of Electronic Engineering,Shanghai Jiaotong University,Shanghai200030)
+【Abstract】We proposed the model and architecture of a cross-platform,extensible CSCW rapid application development system,which was conference-oriented and based on TCP/IP protocol and TCP/TK scripting language.We also describe the idea about how to design and develop this system.
+【Key words】Computer supported cooperative word(CSCW);TCL/TK;Rapid application development(RAD);Visual
+　　近年来，在各种操作系统平台上都出现了以可视化为特征的快速应用程序开发 (Rapid Application Development，以下简称RAD)的环境，如基于Windows平台的Visual Basic、Delphi, 基于Xwindow系统的Visual TCL，然而目前在CSCW开发领域还是空白。常见的CSCW开发系统有以下几种：Rendezvous、GroupKit[1]、Egret[2]、ClockWorks[3]和商用的Lotus Notes。本文主要研究一种基于TCP/IP协议和TCL/TK语言的CSCW RAD系统的模型和结构，以及设计和实现的思路。
+1 RAD功能需求分析
+　　通过对现有系统的分析比较，面向CSCW的RAD系统应满足以下要求：
+　　(1)  跨平台性
+　　目前绝大多数CSCW开发系统开发的应用程序是与平台相关的，限制了CSCW应用的推广，为此，CSCW应用的开发平台应具有跨平台特性，使开发出来的系统可以不加修改或少量修改就能运行于其它平台。
+　　(2)  友好的开发系统界面，快速应用程序开发
+　　当前软件技术竞争要求有效地降低开发成本和缩短开发周期，这使RAD成为商品化软件开发的主流。如果CSCW开发能达到RAD的标准，使开发人员能根据要求迅速调整代码，可以大大增加 CSCW应用的实用性。
+　　(3)  灵活的扩展性和伸缩性
+　　这里的扩展性是指系统能够随时由开发人员或用户进行扩展甚至现场修改；伸缩性是指系统能够根据用户需求对CSCW系统进行裁剪，使系统在满足应用要求的条件下，消耗最小的资源。
+　　(4)  与现有的软硬件技术集成
+　　CSCW应用和开发系统应能随时加入对成熟的和新兴的软硬件技术的支持，如语音识别、 DCOM/CORBA、ATM Native API等。最好是能直接利用现成的软硬件资源，以一种有效的方式集成进原有的CSCW系统，开发人员仅需增加模块间协调通信的代码，这就是所谓的"集成"的概念。
+　　为此提出了一种面向CSCW的应用和开发的系统模型。
+2  应用系统模型
+2.1 设计思路
+　　各种CSCW应用系统其核心功能基本相同，抽取其公有的一组系统调用、可重用模块和基本的 CSCW应用框架，以此为基础实现一个通用的CSCW开发平台。CSCW RAD系统分为两部分：框架性的 CSCW应用系统和CSCW RAD系统。
+2.2 CSCW应用系统模型
+　　通过对计算机会议系统的抽象，参考ITU-T制定的T.120系列标准和H.200系列标准中的多点多媒体会议、GroupKit等群件开发系统的群件模型，提出了一种CSCW应用系统模型，如图1所示。这一模型比较注重于同步和实时能力，本系统可以支持多个应用系统模型，如计算机会议系统、远程教育系统、协同写作的讨论系统。由上图可以看出，整个CSCW应用系统模型体现了一种分形迭代的结构，各层次的相似性十分有利于面向对象编程实现，从而提高系统的可靠性。
+
+图 1 CSCW 应用系统模型
+　　(1) 会话(Session)和子会话(Sub-Session)
+　　会话就是围绕某一主题的CSCW过程，子会话是以某种手段进行的会话，是会话的具体形式，如视频会议、电子白板等，一个会话至少要有一个子会话。
+　　(2) 域(Domain)
+　　由参与CSCW的一组实体和活动组成的空间的对象，主要由管理员、环境组成。
+　　・ 全局域(Global Domain)：由不同主题的各个会话域组成；
+　　・ 会话域(Session Domain)：围绕同一主题展开的CSCW的空间；
+　　・ 子会话域(Sub-Session Domain)：同一媒体手段围绕同一主题展开的CSCW空间。
+　　(3) 管理员(Manager)
+　　管理本域内CSCW活动的对象。
+　　・ 全局管理员(Global Manager)：用户的认证、根据用户请求分配会话权限和环境；
+　　・ 会话管理员(Session Manager)：协调各子会话管理员，维护成员间的会话；
+　　・ 子会话管理员(Sub-session Manager)：同一会话管理员的子会话管理员分管不同类型的媒体活动。
+　　(4) 环境(Environment)
+　　记录本域内CSCW成员和相关活动的信息的对象。
+　　・ 全局域的环境(Global Environment)：是静态的目录服务；
+　　・ 会话域的环境(Session Environment)：是动态的，包括本次会话的标志符号，成员个人信息，会话等级等；
+　　・ 子会话域的环境(Sub-session Environment)：是动态的，包括会话类型(一般数据、音频、视频)，会话域内分布的进程信息、主席令牌信息以及会话的共享数据等。
+　　(5) 代理(Agent)
+　　代理用户参加某个域的CSCW活动的进程，并通过GUI与用户交互。
+3  面向CSCW的快速应用程序开发系统结构
+3.1 RAD系统分层结构
+　　如图2所示，整个RAD系统分为平台相关和平台无关两大部分。平台相关部分包括TCL/TK库和解释器；平台无关部分包括框架性的CSCW应用系统和可视化CSCW开发环境。网络操作系统及其支持的TCP/IP Socket等系统接口是支持RAD的具体平台。
+
+图2 RAD系统分层结构
+　　(1) 平台相关部分
+　　作用是屏蔽底层操作系统的差异，向CSCW应用的开发者提供一组与平台无关的TCL/TK命令和系统调用。TCL/TK标准库和TCL/TK解释器(tclsh和wish)是TCL/TK的标准部分，用于实现基本的图形界面、基于Socket的TCP/IP网络通信等功能；TCL/TK扩展库和扩展解释程序可从第三方获得或编程实现。
+　　(2) 平台无关部分
+　　平台无关部分主要是一组用TCL/TK语言编写的程序包，包括具备基本CSCW应用功能的一组程序(电子白板、视频会议等)、可视化的CSCW开发集成环境。另外还包括用TCL/TK脚本编写的 TCL/TK的扩展。
+3.2 RAD系统设计与实现
+　　(1)  应用系统对象的编程实现
+　　由应用系统模型中的对象相似性抽取其中的公有部分封装成3个主要的基类：domain类、manager类、environment类，然后从这3个基类派生出基于会议的CSCW应用系统的9个基本对象。建立应用系统时，采用三级客户机/服务器体系，用C++编程示意如下：
+　　1) 由全局域对象生成全局管理员和全局环境对象后，打开全局域进程，监听服务请求。
+　　CGlobalDomain*pGlobalDomain;
+　　pGlobalDomain->SetXXX( … );
+　　CGlobalManager*pGlobalManager=pGlobalDomain->CreateManager( … );
+　　CGlobalEnvironment*pGlobalEnvironment=pGlobalDomain->CreateEnvironment( … );
+　　pGlobalManager->SetXXX( … );
+　　pGlobalEnvironment->SetXXX( … );
+　　pGlobalDomain->Open();
+　　2) 全局域对象收到服务请求后创建会话域对象。
+　　CSessionDomain*pSessionDomain=pGlobalDomain->Spawn( … );
+　　pSessionDomain->SetXXX( … );
+　　CSessionManager*pSessionManager=pSessionDomain->CreateManager( … );
+　　CSessionEnvironment*pGlobalEnvironment=pSessionDomain->CreateEnvironment( … );
+　　pSessionManager->SetXXX( … );
+　　pSessionEnvironment->SetXXX( … );
+　　3) 会话域对象创建基本的子会话域，然后打开。
+　　CSubSessionDomain*pSubSessionDomain=pSessionDomain->Spawn( … );
+　　…
+　　pSessionDomain->Open();
+　　(2) 基于TCL/TK进行混合编程
+　　选择TCL/TK脚本语言作为基本的开发平台，结合C/C++等编译型的系统编程语言开发其中底层的扩展库。设计思想如下。
+　　1) 跨平台
+　　TCL/TK源代码可以编译成类似Java的与平台无关的二进制代码，或直接作为系统最终的执行对象，后者执行效率依赖于解释器和库的效率，在开发调试阶段具有即改即用的优势，可实现现场编程，脚本语言易学易用，其解释器采用字符串方式处理或解释程序[4]，便于实现计算机代码辅助生成，开发效率较高，据统计[5],TCL/TK编程其开发效率是编译型的系统编程语言如C/C++的 5到10倍。
+　　2) 扩展性和伸缩性
+　　为了保持跨平台的特性，不改写TCL/TK的标准库，而是采用C/C++编写TCL/TK扩展库[6]，实现基于会议的应用系统对象库，对新的软硬件系统接口的支持，以及H系列、T系列、Remote GUI( 遵循RFB协议)、RTP/RTCP实时通信模块，并使用了一些第三方的扩展，加入对数据库处理、某些多媒体功能的支持。通过对这些库的裁剪，就实现了系统的伸缩性。
+　　3) 可视化编程
+　　由于Visual TCL完全用TCL/TK脚本写成，源代码完全公开，通过改写这些代码可以开发出 Visual CSCW的集成环境。
+　　4)  集成现有的软硬件资源
+　　通过TCK/TK进程控制和TCL/TK的Expect扩展在脚本语言的级别上实现与这些应用程序的集成，对于特殊设备的驱动程序，则要求写一些TCL/TK扩展。
+4  结语
+　　本文分析了CSCW应用和开发系统应满足的要求，提出了相应的CSCW RAD系统。在设计和实现过程中，发现如何更有效地组织应用对象库，如何制定用以在可视化环境中自动生成应用对象之间的调用关系的语法规则，都还值得进一步研究。
+基金项目：东南大学国家计算机网络及信息集成开放实验室基金
+作者简介：陈弘（1977～），男，研究生，主攻CSCW，网络安全
+作者单位：上海交通大学电子工程系，上海200030
+参考文献
+1 Roseman M,GroupKit 5.0 Documentation.1998,http://www.cpsc. ucalgary.ca/projects/grouplab/groupkit/gk5doc/
+2 Johnson P M.Egret:A Framework for Advanced CSCW Application.ACM Software Engineering Notes,1996,21(2):238
+3 Nicholas T C,Urnes T.Clock Project Thesis Ideas,1998.http:// www.qucis.queensu.ca/home/graham/ideas.html
+4 Ousterhout J K.Tcl and the Tk Toolkit.Addison-wesley Publishing Company Inc,1993
+5 Ousterhout J K.Scripting:Higher Level Programming for the 21st Century.IEEE Computer,1998-03
+6 Wippler J C.How to Use Extensions in Tcl.1998-05,http://www. equi4.com/jcw/extuse.html
+收稿日期：1999-01-18

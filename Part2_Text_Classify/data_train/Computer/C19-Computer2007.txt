@@ -1,0 +1,132 @@
+微型机与应用
+WEIXINGJI YU YINGYONG
+1999年3月 第18卷 第3期 vol.18 No.3
+
+
+
+用ASP技术将Web网页连接到数据库
+严威　温治宇 
+　　摘　要：ASP技术的特点、编程语法以及如何利用ASP编制BROWSER /SERVER方式的动态网页，并在结尾例举了作者编制的1个程序片段。
+　　关键词：ASP技术　Web服务器　浏览器　VBScript　Intranet
+1　ASP简介
+　　ASP(Active Server Pages)是Microsoft公司的IIS Web服务器的1个部件，可以产生动态的 、交互的页面。ASP属于ActiveX技术中的Server端技术，不像Java applet、VB Script、Ja vaScript那样，Client端的Script命令是由浏览器来解释执行的，而在ASP中，语句是由服 务器解释执行，动态生成Web页面送到浏览器。所以，开发者无需考虑浏览器是否支持ASP。 
+　　ASP的执行过程是：
+　　1.浏览器向服务器发送1个HTTP请求页；
+　　2.如请求页有1个.asp的后缀，则服务器认出是1个ASP页，把这个文件送给ASP.DLL处理 。如果请求页不是.asp文件，则这一步不会发生；
+　　3.服务器发送HTML结果给客户端的浏览器；
+　　4.一旦浏览器接收了，它就依照HTML的规定显示网页。但是，服务器和客户端并没有真正 的连接。
+　　目前ASP只适用于下列Web Server:IIS 3.0 on Windows NT,Microsoft Peer Web Server V3 .0 on NT Workstation,Microsoft Personal Web Server on Win95。
+　　Microsoft的另一个产品是Microsoft Visual InterDev，与ASP一起作为实现动态Web应用的 工具。
+　　.asp文件可以使用多种脚本语言。这样，你可以拥有不同的脚本语言的优点。ASP自身提供 了VBScript和JScript驱动。它缺省的Script语言是VBScript，开发者也可以改变这一设置 ， 如要改为JScript,只需在文件开头注明<%@Language=JScript %>即可。如想将某一种脚本语 言设为Web服务器上所有页的主脚本语言，则需要修改Register Editor的注册路径：
+HKEYLOCALMACHINE＼SYSTEM＼CurrentControlSet＼Services＼W3SVC＼ ASP＼Parameters
+　　DefaultScriptLanguage的缺省值是“VBScript”，将其改为欲设置的脚本语言即可。
+　　ASP的命令定界符是“<%”和“%>”。用户可以在它们中间写入VBScript等语句，嵌套在HTM L中。ASP提供了5个内建对象：
+　　Request:　从使用者获取信息；
+　　Response:　将信息送给使用者；
+　　Server:　提供Web Server工具；
+　　Session:　存储在1个Session内的使用者的信息；
+　　Application:　在1个ASP应用内让不同使用者共享的信息。
+　　前3个很常用，Request和Response是用来实现Web Server与浏览器交互。Request的1个重要 方法是Form()，其作用是提取浏览器的用户输入信息。如语句Request.Form(“name”)可以 取得 用户填在文本框里面的内容，显然，这比CGI等方法所需要的复杂编程简单多了。而输出要 用到Response的1个重要方法Write,如：Response.Write“our message”，该语句向浏览器 输出了1条消息。Server对象有2个重要方法：MapPath和CreateObject。MapPath用来将WebS erver的虚拟路径还原成实际路径。CreateObject是最重要的1个方法，它用来产生服务器组 件的对象实例。所谓服务器组件，即是对Web可共享的COM(Component Object Model)组件。 服务器组件可以连接服务器数据库、使用网络功能或访问服务器文件系统。 要调用服务器组件，必须先利用Server对象中的方法CreateObject产生服务器组件对象实例 ，即Server.CreateObject(ObjectID),其中ObjectID指定了构件标识，它可以是各种形式的 可执行程序。用VB或VC可以很方便地开发出一些构件，然后登记这些构件，就可以用Server .CreateObject来调用。构件产生后，就可以使用它的方法和属性进行工作。
+　　通常使用Server构件的程序语句是：
+　　Setobj=Server.CreateObject(client)
+　　ASP提供了5个服务器组件，其中最重要的2个是数据库访问构件ADODB和文件访问构件FileSy stemObject。
+2　ASP编程技巧
+　　笔者在实际编程中总结出一些技巧，在此说明如下。
+　　1..asp文件不能通过打开的方式来执行，而必须链接。例如：
+　　http://server/asp/client.asp
+　　2.如果某些程序只在某一页内调用，那么把它们放在这一页内即可，如果在多页中都要调 用，则可以把这些程序放在1个单独的.asp文件中，然后在每个要调用这些程序的.asp页中 将那个. asp文件嵌套进来。如要在.asp页中包含其他文件，可使用如下的语句：　　
+　应用奇葩(WWW 应用开发专题) <!--#INCLUDE VIRTUAL｜FILE=“filename”-->
+　　关键字VIRTUAL和FILE任选其一，VIRTUAL表示要包含的文件在1个虚拟目录内。
+　　3.调用程序用关键字Call加上程序名，如果要调用的程序有参数，要把参数用括号括起来 。如果省略关键字Call，括号也要省略。
+　　4.因为脚本在服务器端执行，所以在服务器使用VBScript时，有2个VBScript的特性不能使 用：InputBox和MsgBox。另外，VBScript的函数CreateObject和GetObject也不支持。 
+3　应用举例
+　　笔者参与了某化工厂的电子网络工程，程序是在InterDev1.0界面下嵌套VBScript语句实现 的，Web服务器是IIS3.0。下面是其中1个查询ASP页的片段：
+<%@LANGUAGE=“VBSCRIPT”%>
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//VBScript语言为缺省语言
+<!--#INCLUDE FILE=“…/…/medical.asp”…>
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//嵌套medical.asp
+<HTML>
+<HEAD>
+<META NAME=“GENERATOR”Content=“Microsoft Visual InterDev 1.0”> 
+<META HTTP-EQUIV=“Content-Type”content=“text/html;charset=gb2 312-80”>
+<TITLE>按原材料名称查询主要原材料供应计划</TITLE>
+
+//以上3行InterDev自动生成
+</HEAD>
+<BODY background=“…/…/images/sandl.jpg”bgproperties=fixed>　//设置背 景
+<% VarName=Convert(Request(“MatName”))
+
+//自编的显示汉字的程序
+　Dim PrintHeading
+　PrintHeading=True
+%>
+<!--METADATA TYPE=“DesignerControl”startspan>-->
+<%
+Set cims=Server.CreateObject(“ADODB.Connection”)
+cims.Open　Session(“cimsConnectionString”),　Session(“cimsRuntimeUserName”),Session(“cimsRuntimePassword”)
+Set MatQry2=Server.CreateObject(“ADODB.Recordset”)
+cmdTemp.CommandText=“SELECT ntlcims.dbo.Material.*,ntlcims. dbo.VtMateriaValue.*,AS InWare FROM ntlcims.dbo.Mater ial,ntlcims.dbo.VtMateriaValue WHERE ntlcims .dbo.Material.CodeMaterial=ntlcims.dbo.VtMateriaValue.CodeMaterial AND(ntlcims.dbo.Material.NameM aterial=“‘& VarName &'")"　//查询语句
+cmdTemp.CommandType=1
+Set cmdTemp.ActiveConnection=cims
+MatQry2.Open cmdTemp,,0,1
+%>
+<!--METADATA TYPE=“DesignerControl”endspan-->
+<br><br>
+<b><font size=4 color=blue>主要原材料供应计划</font></b>
+<br><br><a href=“Materialplan.asp”><font size=2>返回浏览窗口</ font></a>
+<br><hr>
+<form name=“MatNameForm”action=“MatPlanQry2.asp”met hod=“post”>
+　//调用MatPlanQry2.asp程序 执行方法为post
+查看主要原材料<select name=MatName size=1>的供应计划
+　　　<option value=“”>　//建立下拉列
+　　　<option value=“丙烯酸甲酯”>丙烯酸甲酯
+　　　<option value=“依康酸”>依康酸
+　　　<option value=“硫酸”>硫酸
+　　　<option value=“异丙醇”>异丙醇
+　　</select>
+<br><br><input type=“button”name=submit2 value=“查询”>
+
+//进行查询
+</form>
+<hr><br>
+<% If PrintHeading And Not MatQry2.EOF Then
+　PrintHeading=False
+%>
+<b><font color=navy><%=VarName %>(<%=MatQry2(“UnitMaterial”)%>)</font >的供应计划</b><br>
+<table border=3>　　//生成表头
+<tr>
+<th align=center bgcolor=aaaaff nowrap>日期</th>
+<th align=center bgcolor=aaaaff nowrap>月初库存</th>
+<th align=center bgcolor=aaaaff nowrap>本月订货</th>
+<th align=center bgcolor=aaaaff nowrap>计划耗用</th>
+<th align=center bgcolor=aaaaff nowrap>月末预计库存</th>
+</tr>
+<% Else %>
+<b><font color=navy><%=VarName %></font>的供应计划</b><br>
+<font size=2 color=red>没有找到相应的记录!</font>
+<%End If %>
+<%While Not MatQry2.EOF %>
+<tr>　　　//输出表项
+<td align=right bgcolor=ffffff nowrap><%=MatQry2(“YearMonthMate riavalue”)%></td>
+<td align=right bgcolor=ffffff nowrap><%=MatQry2(“StorageMonthB egin”)%></td>
+<td align=right bgcolor=ffffff nowrap><%=MatQry2(“OrderThisMonth”)%></td>
+<td align=right bgcolor=ffffff nowrap><%=MatQry2(“PlanConsume” )%></td>
+<td align=right bgcolor=ffffff nowrap><%=MatQry2(“In 　Ware”)%>< /td>
+<td align=right bgcolor=ffffff nowrap><%=MatQry2(“NoteMaterial Value”)%></td>
+</tr>
+</table>
+<script language=vbscript>
+<!--
+Sub submit2Onclick()　//执行事件
+Dim frm
+set frm=document.MatNameForm
+frm.submit
+End Sub
+-->
+</script>
+</BODY>
+</HTML>
+4　总结
+　　ASP技术是编制BROWSER/SERVER网页的一个有力工具。这种Web与数据库连接的方法再加上通 过 电话线拨号，就可以将总部与若干分公司连接起来，分公司的职员只要通过浏览器就能查看 设在总部的服务器中的信息，而这正是目前一些公司所急需的。 
+作者单位：天津大学电子信息学院97研(300072)
+(收稿日期：1998-09-17)

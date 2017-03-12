@@ -1,0 +1,128 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第4期　Vol.23　No.4　1997
+
+
+
+不确定奇异摄动系统的变结构
+控制设计与稳定性分析1)
+岳东　刘永清　许世范
+　　摘　要　对一类不确定奇异摄动系统给出一个变结构控制设计方法，并分析了滑动模的动态品质.最后给出一设计实例.
+　　关键词　奇异摄动系统，变结构控制，Lyapunov 函数，滑动模.
+DESIGN OF VARIABLE STRUCTURE CONTROL AND
+STABILITY ANALYSIS FOR SINGULARLY PERTURBED 
+UNCERTAIN SYSTEMS
+YUE DONG
+(College of Information & Electrical Engineering, China University of Mining & Technology, Xuzhou 221008)
+LIU YONGQING
+(South China Univeristy of Technology, Guangzhou 510641)
+XU SHIFAN
+(College of Information & Electrical Engineering, China Universityof Mining & Technology, Xuzhou 221008)
+Abstract　This paper discusses the design problem of robust control for uncertain singular perturbation systems.By introducing state transformation and using the variabale structure systems method,a new design method of variable structure control is proposed,which not only possesses good robustness,but also imposes less restriction on the control than references did.
+Key words　Singularly perturbed systems,variable structrue control,Lyapunov function,sliding mode.
+1　引言
+　　确定性奇异摄动系统镇定控制的研究工作已有不少［1，2］.然而，实际系统中不可避免会出现如建模误差与外来干扰等不确定因素，在此情况下，再利用以往控制，一般不能保证系统的稳定.为此，人们提出了若干鲁棒控制器的设计方法［3―5］.文［4］中研究了一类不确定奇异摄动系统，给出一复合型鲁棒控制.但文［4］中仅研究了不确定因素在慢变子系统出现的情形.文［3］在文［4］的基础上对一类更广泛的奇异摄动系统给出了鲁棒控制设计，所给控制可保证系统的最终有界.文［5］中利用奇异摄动理论给出一复合型变结构控制，并研究了滑动模的到达.然而，文［5］中并未讨论当不确定项出现时系统的变化.另外还需要假设切换频率高于快变子系统的变化频率.
+　　本文研究了一类不确定奇异摄动系统，给出一种较简单的变结构控制设计方法，并详细分析了滑动模的动态品质.最后给出一设计实例.
+2　准备工作
+　　考虑如下不确定奇异摄动系统
+=A11x+A12z+B1u+f1(t,x,z),
+
+(1)
+这里 x∈Rn,z∈Rm 是状态向量；u∈Rp 是控制向量；ε＞0 是奇异摄动参数；fi(t,x,z)表示参数摄动与外干扰；Aij(i,j=1,2),Bi(i=1,2)是具有适当维数的常数阵.
+　　假设1.A22可逆且(A22,B2)可控.
+　　假设2.　可控.
+　　假设3.存在 q(t,x,z)使 fi(t,x,z)(i=1,2)可表示为
+fi(t,x,z)=Biq(t,x,z)
+(2)
+且q (t,x,z)满足
+‖q(t,x,z)‖≤ρ1+ρ2‖x‖+ρ3‖z‖
+(3)
+3　控制的设计
+　　由假设2知，存在矩阵 K1 使(A11+A12A21)+(A12+B1)K1 是稳定的.因此取控制 u为
+u=K1x+v,
+(4)
+代入(1)得
+=(A11+B1K1)x+A12z+B1v+B1q(t,x,z),
+
+(5)
+令 η=z-(A21+B2K1)x,则有
+
+(6)1
+
+(6)2
+这里=(A11+A12A21)+(A12B2+B1)K1 是稳定阵，(ε)=-ε(A21+B2K2)［x+A12η+B1v+B1q(t,x,z)］.
+　　以下将对控制量v进行综合，这里利用(6)2给出一个变结构控制设计.
+　　由假设1知，存在非奇异变换［6］
+
+使(6)2 化为如下形式
+
+(7)1
+
+(7)2
+这里 ,且 可逆.
+　　构造切换函数 s=Cη=C1η1+C2η2,这里 C2 可逆. 不妨设 C2=I，则
+s=Cη=C1η1+η2,
+(8)
+这里 C=［C1　I］T-1.
+　　定理1.若系统的滑动模运动实现，则存在充分小的ε*(ε* 的估计在附录中给出)，当ε∈(0,ε*］时，滑动模方程解最终有界，且满足
+‖x‖≤O(ε3/2),‖z‖≤O(ε),
+这里 O(ε)表示与ε同阶.
+证明.略
+　　以上研究了滑动模的动态品质，下面进一步研究滑动模的到达问题.为此要给出控制 v的设计.本文将采用变结构控制.
+　　取 Q=εsTs，则
+
+设计控制 v 为 
+
+(9)
+则
+
+(10)
+利用(9)，(10)可得
+
+因此只要取1，4，3 满足1＞ρ1‖CB2‖+ε*θ1+θ0，4＞ρ4‖CB2‖+ε*θ2+Q0,3＞ρ3‖CB2‖+ε*θ3+θ0，则有
+＜-θ0｜s｜,　θ0＞0.
+由此可推知［6］，在控制(4)，(9)作用下，滑动模是可达的.
+4　例子
+　　考虑如下系统
+
+这里 ε=0.1，扰动量 q(t)=5cos(t).
+　　取η1=z1+x,η2=z2，且构造切换函数为 s=2η1+η2.设计控制 u 为 u=-2η1-3η2-10sgn(s)=-2x-2z1-3z2-sgn(s).仿真中取初始值为x(0)=2,z1(0)=3,z2(0)=5,横坐标表示时间 t，纵坐标表示的变化如图1所示.
+
+
+图1
+5　结论
+　　对不确定奇异摄动系统本文给出一个变结构控制设计，所给控制在ε充分小时可保证闭环系统解是最终有界的，且此界与ε同阶.这一点在文献［3］中是无法保证的，由于本文在变结构控制 v的设计时仅利用了系统(7)2，因此设计的控制较文献［5］中简单.本文详细分析了滑动模运动的动态品质，得到了比较细致的结果，从而证明了本文方法的可行性.另外，本文结果同时表明，奇异摄动参数 ε 越小(大于零)，所保证的闭环系统解收敛于零的精度越高.
+1)　国家自然科学基金与博士后基金资助.
+作者单位：岳东　中国矿业大学信电学院　徐州　221008
+　　　　　刘永清　华南理工大学自动化系　广州　510641
+　　　　　许世范　中国矿业大学信电学院　徐州　221008
+参考文献
+［1］　许可康.控制系统中的奇异摄动.北京：科学出版社，1986.
+［2］　Kokotovic PV et al..Singular perturbation methods in control:analysis and design.Academic Press,London,1986.
+［3］　Coless M et al.New results on composite control of singularly perturbed uncertain linear systems.Automatica,1993,29(2):387―400.
+［4］　Garofalo F.Composite control of singularly perturbed uncertain systems with slow nonlinearities.Int.J.Control,1988,48:1979―1991.
+［5］　Heck B S.Sliding-mode control of singularly perturbed systems.Int.J.Control,1991,53(4):985―1001.
+［6］　高为炳.变结构控制理论基础.北京：科学出版社，1990.
+收稿日期　1995-04-10
+附录 A
+　　设 Fi(i=1,2,4)已知且λ1，λ2，d 都已选定.
+　　考虑下列两方程
+ζ1ε2+ζ2ε-ζ3＜0，
+(A1)
+η1ε2+η2ε-η3＜0.
+(A2)
+这里
+
+由(A1)可解得
+
+(A3)
+由(A2)解得
+
+(A4)
+令ε*=min(),则易知，当ε∈(0,ε*］时定理1结论成立.
+　　以下是估计 ε* 的步骤：
+　　1＞.选取 β＜1，从而确定;
+　　2＞.估计 Fi(i=1,2,3,4);
+　　3＞.选取 λ1，λ2，d 使 ζ3＞0,ζ3＞0;
+　　4＞.按(A3)，(A4)计算 ;
+　　5＞.取 ε*=min().

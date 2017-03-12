@@ -1,0 +1,80 @@
+自动化学报
+AGTA AUTOMATICA SINICA
+1999年 第25卷 第2期 Vol.25 No.2 1999
+
+
+
+
+一类非线性组合大系统的分散输出反馈鲁棒镇定1)
+严星刚　张嗣瀛
+摘　要　研究了不确定非线性子系统经不确定非线性互联而成的组合大系统，给出了其可分散输出反馈鲁棒镇定的充分条件，说明了所得结论的广泛适用性以及相似结构与全息特性的密切相关性.
+关键词　非线性大系统，分散控制，输出反馈，鲁棒镇定.
+DECENTRALIZED OUTPUT FEEDBACK ROBUST STABILIZATION 
+FOR A CLASS OF NONLINEAR LARGE-SCALE COMPOSITE 
+SYSTEMS WITH UNCERTAINTIES
+YAN Xinggang　ZHANG Siying
+(Dept.of Automatic Control,Northeastern University,Shenyang　110006)
+Abstract　In this paper,a class of nonlinear large-scale composite systems is considered,and a sufficient condition of stabilizing the system using decentralized output feedback control is presented.It is shown that a similar structure is closely connected with holographic property and our conclusion is applicable to a wide class of systems.
+Key words　Nonlinear large-scale systems, decentralized control, output feedback, robust stabilization.
+1　引言
+　　镇定问题是自动控制领域的重要研究课题之一.通常的镇定手段主要有状态反馈和输出反馈.由于输出反馈一般只能利用系统的部分信息，所以，同状态反馈相比，输出反馈镇定所取得的研究成果要逊色得多.近年来，一般非线性系统的输出反馈镇定已取得了一些成果［1，2］，但对非线性组合大系统，其相应的研究成果极少.文献［3］考虑的大系统是确定的，文献［4］虽然讨论了孤立子系统是非线性的情形，且系统是不确定的，但文献［4］对孤立子系统及互联项均有较强限制.本文分析一类更广泛的组合大系统，给出其分散输出反馈鲁棒镇定的有关结论.
+2　系统描述及预备知识
+　　首先引入一些记号：Vω(Rn)表示Rn上的n维解析向量场集合；λM(A)表示矩阵A的最大奇异值；如果QTQ=P，则记;R+表示非负实数集；‖.‖系指欧氏范数.
+　　考虑由N个子系统互联组成的大系统
+
+(1)
+其中xi∈Rn,ui,yi∈Rm分别是第i个子系统的状态、输入和输出，Ai,Bi，Ci是常值阵，fi(xi,t)是连续的(可能含不确定因素)，Hij(xj)∈Vω(Rn)是确定互联项，ΔHij(xj)是不确定互联项.不失一般性，设fi(0,t)=Hij(0)=0(t∈R+,j≠i,i,j=1,2,…,N).
+　　定义1. 称系统
+
+(2)
+为系统(1)的孤立子系统.
+　　定义2. 考虑系统(1)，如果存在xi=0某邻域Ωi,Ωi×R+上的输出反馈
+
+(3)
+使之分别与系统(1)，(2)构成的闭环系统均在区域Ω=Ω1×Ω2××ΩN渐近稳定，则称系统(1)在Ω上可分散输出反馈镇定.
+　　上述定义2要求分散控制律(3)不仅能使系统(1)镇定，而且能使系统(2)镇定，这样可以保证一旦某个子系统与其它子系统失去互联作用，该子系统本身仍能正常工作.
+　　引理1［5］. 设H(x)∈Vω(Rn),且H(0)=0，则存在解析函数矩阵R(x)，使得H(x)=R(x)x.
+　　引理2. 设P是n阶对称矩阵，f(x)(x∈Rn)是n维向量函数.如果f(x)≤γ‖x‖,则对任意的n阶正定阵Q1,Q2有
+3　主要结果
+　　考虑系统(1)：假设对系统(1)的每个孤立子系统，存在m阶矩阵Ki，使Ai+BiKiCi是Hurwitz稳定阵，则对任意给定的n阶正定阵Qi,Lyapunov方程
+
+(4)
+必有唯一正定解矩阵Pi.由引理1知，Hij(xj)可表示为如下形式
+
+(5)
+其中Rij(xj)是解析的，可参考文献［5］求得.
+　　定理1. 如果系统(1)在x=0某邻域Ω满足：1) 对所有的t∈R+,fi(xi,t)=Biφi(xi,t),且φi(xi,t)≤ρi(yi,t); 2) ΔHij(xj)≤γijxj(i≠j); 3) 存在矩阵Ki,Fi使得Ai+BiKiCi是Hurwitz稳定阵，且上正定，其中W(x)=(ωij(x))N×N,ωij(x)=这里,Pi,Qi由(4)式确定，Rij(xj)由(5)式确定.则系统(1)在Ω上可分散输出反馈鲁棒镇定.
+　　证明. 设计分散输出反馈控制律
+
+(6)
+其中
+　　考虑由式(6)，(1)构成的闭环系统
+
+(7)
+对系统(7),考虑正定函数其中Pi由(4)式确定.则
+
+(8)
+由条件3)中BTiPi=FiCi及条件1)有
+
+所以
+
+(9)
+　　由条件2)， 式(5)及引理2得
+
+
+由上式结合定理条件4)及(8)，(9)两式即知，系统(7)在区域Ω上渐近稳定.关于式(6)，(2)构成的闭环系统的渐近稳定性可用同样的Lyapunov函数结合(9)式即得.所以，分散输出反馈控制律(6)能使组合大系统(1)鲁棒镇定.
+证毕.
+　　上述结论的证明是构造性的，它给出了控制器的设计方法.如果将上述结论应用于相似组合大系统［6］，容易验证，按照定理1所设计的控制器具有全息结构［6］.这进一步说明了相似结构和全息特性密切相关.还有，本文所得结论不但适合于弱互联系统，而且适合于强互联系统，特别对各子系统维数不等的情形，上述方法稍加修正，即可得到类似结论.
+1)国家自然科学基金及国家教委博士点基金资助项目.
+作者简介：严星刚　1964年生.1980年考入陕西师范大学数学系，1991系毕业于曲阜师范大学运筹与控制专业获理学硕士学位，1996年毕业于东北大学自控系获工学博士学位，1997年元月进入西北工业大学航空与宇航控制博士后流动站.现在香港大学做访问学者.主要研究方向为非线性系统及其相似组合大系统的鲁棒控制与设计.
+　　　　　张嗣瀛　中国科学院院士.见本刊第21卷5期. 
+作者单位：东北大学自动控制系　沈阳　110006
+参考文献
+1　Emelyanov S V　et al.Discontinuous output feedback stabilizing an uncertain MIMO plant.Int.J.of Contr..1992,55(2):83―107
+2　Farzad Esfandiari,Hassan K Khalil.Output feedback stabilization of fully linearizable systems.Int.J.Control,1992,56(5):1007―1037
+3　Zheng Da-zhong.Decentralized output feedback stabilization of a class of nonlinear interconnected systems.IEEE Trans.Automat.Contr.,1989,34(2):1297―2000
+4　Saberi A,Khalil H.Decentralized stabilization of interconnected systems using output feedback.Int.J.Contr.,1985,41(6):1461―1475
+5　Yan Xing-Gang et al.Robust stabilization of nonlinear composite systems with uncertain parameters.In:Proceedings of 13th IFAC world congress.San Franscico,1996,Vol.L:62―67
+6　严星刚，高立群，张嗣瀛.一类不确定非线性相似组合大系统的结构全息鲁棒控制.自动化学报，1997，23(5)：654―659
+收稿日期　1996-08-28
+收修改稿日期　1998-04-09

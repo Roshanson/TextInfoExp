@@ -1,0 +1,111 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第9期 Vol.19 No.9 1999
+
+
+
+可以动态修改的数据库系统
+王臻
+　　摘　要　本文介绍了利用PowerBuilder6.0的动态（Dynamic）数据窗口(DataWindow)技术修改数据库的列属性名称，并且保存所做修改的办法。
+　　关键词　数据窗口，对象，数据库
+　　在实际的数据库开发中，用户往往会有这样的要求，他们希望能够根据企业（公司）环境的变化实时对数据库的列属性名称进行调整。这些调整的具体内容在数据库系统的开发设计阶段是不能确定的。这就要求数据库系统有良好的灵活性和可扩充性。
+　　下面以PowerBuilder6.0为开发工具，介绍具体的实现方法。
+1　设计思想
+　　利用PowerBuilder6.0的动态数据窗口(DataWindow)技术修改数据库的列属性名称。同时，定义一个附加的保存表，将这些列属性名称的修改信息保存在该表中。这样可以使此次所做的修改可以保存到下次修改为止。
+2　数据窗口的动态修改技术
+　　在数据窗口中的列、文本、按钮、图片都称为数据窗口对象（Dwobject），它们都有自己的属性。
+　　通过动态地创建数据窗口对象中的对象、设置数据窗口对象的属性以及数据窗口对象中对象的属性、访问数据窗口控制中的数据可以达到修改数据窗口外观的目的。
+　　程序中访问数据窗口对象的方法有两个：
+　　. 使用describe( )，modify( )函数
+　　下面语句获取数据窗口中name列背景颜色（background.color）属性值：
+　　dw―1.describe("name. Background.color")
+　　下面语句设置数据窗口中name列背景颜色为白色：
+　　dw―1.modify("name. Background.color=
+string(rgb(255,255,255))" )
+　　. 使用数据窗口表达式
+　　数据窗口表达式使用点操作符（.）来指示要访问的对象、对象中的对象、以及对象的属性。其语法为：
+　　dwcontrol.object.dwobjectname.
+{ .object.dwobjectname .}{.property}=value 
+　　下面语句设置数据窗口中name列背景颜色为白色：
+　　dw―1.object.name.background.color
+=rgb(255,255,255)
+　　以下设计过程使用的是数据窗口表达式方法。
+3　设计步骤
+3.1　定义表结构
+　　在PowerBuilder6.0的数据库画笔（DataBase Painter）中定义表结构。
+　　例如，定义职员信息表（personnel）结构为 ： 
+　　personnel
+Per―id　　　　Char(30)　　NOT NULL
+Per―name Char(10)NOT NULL
+Per―departmentChar(20)NOT NULL
+　　相应的header及label名称为：
+　　　ID号
+　　　姓名
+　　　所在部门
+　　同时，定义保存表（define）结构为： 
+　　define
+Per―id―name　　　　　　Char(30)NULL
+Per―name―name Char(10)NULL
+Per―department―nameChar(20)NULL 
+　　相应的header及label名称为：
+　　　第一列名称
+　　　第二列名称
+　　　第三列名称
+3.2　定义数据窗口对象
+　　利用PowerBuilder6.0的数据窗口画笔（DataWindow Painter）定义数据窗口对象。
+　　. 为职员信息表（personnel）定义数据窗口对象d―personnel，PowerBuilder6.0自动将列的相应文本对象（用于显示列的header及label值）命名为:
+Per―id―t 
+Per―name―t 
+Per―department―t
+　　可以通过修改这些文本对象的text属性达到修改列属性名称的目的。 
+　　. 为保存表（define）定义数据窗口对象d―define。 
+3.3　设计用户操作窗口
+　　利用PowerBuilder6.0的窗口画笔（Window Painter）定义窗口对象。
+3.3.1　定义职员信息窗口
+　　. 定义职员信息窗口对象w―1；
+　　. 在窗口上放置数据窗口控件dw―1，并将之与数据窗口对象d―personnel相连接，dw―1的显示属性设置为visible；
+　　. 在窗口上放置数据窗口控件dw―2，并将之与数据窗口对象d―define相连接，在窗口画笔中将dw―2的显示属性设置为invisible。
+　　W―1的open事件的处理程序为：
+　　{ 
+dw―1.settransobject(sqlca)
+dw―2.settransobject(sqlca)
+//dw―2为隐藏的列属性名称的保存表
+dw―1.retrieve()
+dw―2.retrieve()
+dw―1.object.per―id―t.text=dw―2.getitemstring(1,1)
+dw―1.object.per―name―t.text=dw―2.getitemstring(1,2)} 
+dw―1.object.per―department―t.text=dw―2.getitemstring(1,3) 
+} 
+　　. 在窗口上放置按钮控件“修改列属性名称”（cb―1）
+　　cb―1的clicked 事件的处理程序为： 
+　　{ open(w―2) 
+// 用于弹出3.3.2中创建的列属性名称保存窗口w―2
+}
+　　w―1窗口的外观如图1。
+
+图1
+3.3.2　创建列属性名称保存窗口
+　　. 创建列属性名称保存窗口对象w―2；
+　　w―2的open事件的脚本程序为： 
+　　{ 
+dw―2.settransobject(sqlca)
+dw―1.retrieve()
+} 
+　　. 在窗口上放置数据窗口控件dw―1，并将之与数据窗口对象d―define相连接。
+　　. 在窗口上放置按钮控件“保存”（cb―1），cb―1的clicked事件的脚本程序为：
+　　{ 
+if update(dw―1)=1 then 
+commit ;
+messagebox("ok!","成功保存!")
+else 
+rollback ;
+messagebox("pity!","保存失败!")
+end if
+}
+　　w―2的外观如图2。
+
+图2
+　　本文中利用PowerBuilder6.0的动态数据窗口技术修改应用程序的外观，利用隐藏的数据窗口保存这些改动，满足了用户的需求；这种思路还可以推广到其他应用中。
+作者简介：王臻　硕士研究生。主要从事计算机软硬件环境、MIS及数据库应用系统的研究开发工作。
+作者单位：中国科学院空间中心四室　北京（100080）
+收稿日期:1999-06-18

@@ -1,0 +1,102 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+1999年 第18卷 第1期 Vol.18 No.1 1999
+
+
+
+用Email获得Archie服务及FTP服务
+刘根贤　张玉祥　张炜
+　　摘　要：介绍使用Email获得Archie查询服务及FTP服务的方法。
+　　关键词：Internet　Email　Archie服务　FTP服务
+　　现在许多网络用户上网大多是使用IE或Netscape等浏览器进行浏览，也常用Email收发电子邮件。Email虽然貌不出众，但利用它还可以获得其它网络服务，其中最常见的就是利用Email获得FTP服务来下载软件。另外，利用它还可以获得Archie、Gopher、新闻组、广域信息服务器查寻服务，几乎涵盖了整个Internet服务。而且使用email有二大好处，既节约信用点，又不会耽误工作。由于国内ISP的速度实在不快，上网时间中经常是处于等待状态，而使用Email则无此缺点，先写好信再连上网，发出去后就可以断线。本文介绍使用Email获得Archie及FTP服务的方法，这种方法在需要查询或下载文件而不急于或暂时没有时间查看结果时非常有用。
+1　利用Email获得Archie服务
+　　匿名FTP为我们提供了一个不断积蓄起来的、全世界最大的公众信息和知识的文件库，如果想要通过匿名FTP来下载某个文件，首先必须知道存放文件的匿名FTP主机的地址和包含有该文件的路径或目录名，这就需要使用文档服务器Archie。
+　　在通过Email使用Archie服务器时，需要给该Archie服务器发送1个Email，邮件目的地址的用户名要用Archie，而域名就是Archie服务器的地址。如：
+　　archie@archie.ncu.edu.tw
+　　在写邮件时，主题Subject行留空，邮件正文写入要求Archie服务器要执行的所有命令，1行1条命令，除了少数与邮件无关的命令以外，邮件中可以使用绝大多数Archie命令。Archie服务器在收到邮件后就会执行邮件正文中的命令，并将结果通过Email返回。
+　　第1条命令是set mailto，这条命令可以确保Archie服务器知道你的Email地址，以便将查询结果通过Email发送给你。最后1条是quit，它通知Archie服务器结束执行命令，忽略邮件正文中的后续内容。
+　　如果不清楚该Archie服务器所用的命令，可以给它发送1个邮件寻求帮助，邮件正文命令如下：
+　　set mailto lgx@ihw.com.cn
+　　help
+　　quit
+　　为了使查询结果便于阅读，可以进行一些格式设置及查询设置，这些设置和直接使用Archie服务一样，如：
+　　set mailto email地址　确定archie服务器发送邮件的地址
+　　set maxhits　　设置搜索的最大条目数
+　　set output-format terse　用短格式显示输出
+　　set output-format verbose　用长格式显示输出
+　　set sortby filename　按文件名字母顺序分类排序
+　　set sortby hostname　按主机名字母顺序分类排序
+　　set sortby size　按文件大小顺序，从大到小分类排序
+　　set sortby time　按文件的日期和时间顺序，从新到旧分类排序
+　　set match-domain 域名　　设置搜索FTP站点的范围
+　　set search exact　严格模板匹配搜索
+　　set search regex　常规表达方式搜索
+　　set search sub　搜索任何包含模板的条目
+　　set search subcase 搜索任何包含模板的条目，并区分大小写
+　　set search exact-regex　先按照严格模板匹配搜索，若无结果，再按照常规表达方法搜索
+　　set search exact-sub　先按照严格模板匹配搜索，若无结果，再搜索任何包含模板的条目
+　　set search exact-subcase　先按照严格模板匹配搜索，若无结果，再搜索任何包含模板的条目，并区分大小写
+　　特别是为了防止查询结果过大，必须限制搜索的最大条目数。例如，查询1个RFC文件rfcll18.txt，邮件中命令如下：
+　　set mailto lgx@ihw.com.cn
+　　set maxhits 25
+　　set output-format verbose
+　　set search exact
+　　set sortby time
+　　find rfcll18.txt
+　　quit
+　　收到Archie服务器发送的答复邮件后，就可以根据查询结果，使用匿名FTP下载所需文件。
+2　利用Email获得FTP服务
+　　FTP文件传输协议是由支持Internet文件传输的各种规程所组成的集合。基于安全考虑，大部分匿名FTP主机只能允许下载文件。
+　　FTP是网友常使用的服务，可以下载一些实用工具或游戏。现在已有许多很好的FTP软件，支持断点续传，而且速度也比较快，但仍然要求在传输时必须是联机的，而使用Email来实现FTP服务无此缺点。使用Email来实现FTP服务和直接利用FTP命令下载软件的不同之处，在于它将FTP命令组作为电子邮件内容，发给“ftpmail”服务器，而不是FTP服务器，在Internet中存在许多ftpmail服务器，如：
+　　ftpmail@sunsite.une.edu　　　美国
+　　bieftp@pucc.princeton.edu美国
+　　bieftp@vm.gmd.dce德国
+　　bitftp@plearn.edu.pl波兰
+　　ftpmail@doc.ic.ac.uk英国
+　　ftpmail@cs.uow.edu.au澳大利亚
+　　ftpmail@decwrl.dec.conm美国
+　　ftpmail@grasp.insa.lyon.fr法国
+　　ftpmail@ieunet.ie爱尔兰
+　　为了使用ftpmail，可向上面任意1个ftpmail服务器发送1个邮件，在这个邮件中需要写入你想要进行匿名ftp联机的全部命令，每行只能写1个命令。ftpmail服务器一旦收到你的邮件就会执行邮件中的那些命令，并将这个匿名ftp会晤的结果自动地以Email的形式发回给你。
+　　下面是常用的FTP命令：
+　　命　令　　　　　　功　能
+　　ascii　　　　　被传递的邮件是文本文件时的设置
+　　binary被传递的邮件是2进制文件时的设置
+　　btoa　　　　　　把2进制文件变换成文本文件
+　　chdir/cd目录名转换到指定的目录
+　　connect ftp服务器地址　与指定的匿名FTP主机进行连接
+　　dir目录名发送目录的长列表
+　　get文件名请求传输，发送指定文件
+　　help发送如何使用ftpmail的简介
+　　ls目录发送目录的短列表
+　　open主机地址与指定的匿名FTP主机进行连接
+　　quit停止会晤，忽略邮件的剩余内容
+　　reply Email地址确定你的响应邮件Email的地址
+　　uuencode把2进制文件转换成文本文件
+　　一般说来，ftpmail服务器的工作方式大多相同，但是它们所使用的命令的细节可能稍有差别。因此，为了确保无误，在使用某个ftpmail服务器之前，最好先给它发送1个邮件，请它发送给你1个如何使用ftpemail的简介。
+　　例如，给ftpmail@sunsite.une.edu发1个Email(下面的例子中，邮件均发送给ftpmail@sunsite.une.edu)，在邮件中只需要1条命令“help”。
+　　如果知道所需下载的文件所在目录位置，可以直接使用Email下载，否则还须先发送1个获取关于给主机中目录的列表清单。邮件中命令如下：
+　　reply　lgx@ihw.com.cn
+　　connect　freesoft.cei.gov.cn
+　　ascii
+　　dir
+　　quit
+　　知道文件确切位置，就可以利用它来下载文件，例如从国家信息中心的自由软件库(http://freesoft.cei.gov.cn)中下载1个文本文件readme,邮件中命令如下：
+　　reply　lgx@ihw.com.cn
+　　connect　freesoft.cei.gov.cn
+　　ascii
+　　chdir　/pub/minix
+　　get　readme
+　　quit
+　　由于一般电子邮件只能传递文本文件，要传输2进制文件如zip文件时，先要把它编成文本文件才能利用Email进行传输。在另一端被传输的文本文件还需解码成原来的2进制文件才能使用。如果需要通过ftpmail来下载一个2进制文件，那么在邮件的命令中就要加入1条binary及1条uuencode或btoa命令。这条编码命令最好放在binary命令之后，如果指定传输2进制文件时没有指定用什么办法对2进制文件进行变换，ftpmail服务器就采用它默认的办法，即使用btoa命令。例如从国家信息中心的自由软件库下载netscape 5.0,windows版源代码，全部文件压缩在windows.zip内：
+　　reply　lgx@ihw.com.cn
+　　connect　freesoft.cei.gov.cn
+　　binary
+　　uuencode
+　　cd　/pub/netscape
+　　get　windows.zip
+　　quit
+　　如果下载的文件较大，ftpmail服务器就会自动把它分割成小文件并标上序号，然后再分别利用Email发送给你，此时所做的工作就是把它们重新组合起来，恢复成原来的大文件。
+　　利用Email来获得Archie查询服务及FTP服务，可以有效地节约时间，也不必在线等待，是一种较好的方法。另外利用Email还可以获得其它Internet服务。
+作者单位：西安第二炮兵工程学院201教研室(710025)
+(收稿日期：1998-07-01)

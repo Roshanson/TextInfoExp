@@ -1,0 +1,21 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第10期 Vol.35 No.10 1999
+
+
+
+排球比赛各项技术与净胜分的逐步回归分析
+秦建明 　许红峰　王幼华 
+摘要：采用逐步回归分析等方法，对96～97、97～98年全国排球联赛福州赛区21场73局比赛统计数据进行分析，建立预测排球比赛各项技术与净胜分的回归方程，为科学指导训练和比赛提供实践和理论依据。结果表明：回归方程反映了各项技术与净胜分间的定量关系，反映了各项技术与净胜分的主次关系；回归方程可以使训练的针对性、计划性更强，及预测比赛胜负。
+关键词：排球∥比赛∥技术分析∥逐步回归
+Stepwise Regression Analysis on the Technology and the Net Win Marks in the Volleyball Match
+Qin Jianming, Xu Hongfeng, Wang Youhua
+Abstract:In this paper, the author wants to set up the regression equation to predict the technology and the net win marks by using stepwise regression analysis in the volleyball match. 21 matches (73 games) are analyzed. The result shows that the regression equation reflects the quantitative relation between the technology and the net win mark. The regression equation can also make the training more scientific than before.
+Key words:volleyball∥match∥technical analysis∥stepwise regression
+1　前言
+　　体育竞赛中产生的各种信息，都客观地从一定程度上反映出某运动项目的特征和规律。排球比赛是以每局胜负决定一场球的胜负，胜负不仅取决于各队身体和心理素质，还与基本技术战术及运用紧密相关。但是，排球比赛作为一项对抗性运动项目，攻守双方相互依存，各种因素作为这一统一体中的变量，既相互联系，又相互制约相互转化，最终决定一个队的得失分，进而左右比赛的胜负。为了探索这一规律，我们从每局比赛出发，运用逐步回归分析等方法，探讨排球比赛中各项技术与净胜分的相关关系，为科学地指导训练和比赛，预测比赛胜负提供理论和实践依据。
+2　研究对象与方法
+　　采用逐步回归分析等方法，对1996～1997、1997～1998年全国排球甲级联赛福州赛区21场73局比赛统计数据进行计算机处理，建立预测排球比赛各项技术与净胜分的回归方程。
+3　结果与分析
+3.1　逐步回归分析
+　　排球比赛中影响净胜分(因变量)的技术因素(自变量)是多方面的，为了提高预测的精确性，我们既希望在回归方程中包含尽可能多的自变量，尤其是对得分或胜负有显著影响的自变量不能遗漏；同时，为了计算和使用方便，又希望回归方程中的自变量适当，尤其是对得分或胜负影响较小的自变量尽可能不出现在方程中。

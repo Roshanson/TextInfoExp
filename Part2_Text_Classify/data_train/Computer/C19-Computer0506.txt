@@ -1,0 +1,80 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+一种多尺度分形特征目标检测方法
+汪国有　张天序　魏洛刚　桑农
+摘　要　自然背景干扰下的自动目标检测是目标检测的一个基本问题.根据尺度变化时自然场景中人造目标的分形特征变化剧烈这一特点，提出了一种分形参数极值特征的自动目标检测方法.大量的实验结果表明，分形参数极值特征的自动目标检测方法能较好地完成自然背景干扰中人造小目标的自动检测.
+关键词　多尺度，分形参数，目标检测.
+A METHOD FOR TARGET DETECTION 
+USING MULTISCALE FRACTAL
+WANG GUOYOU　ZHANG TIANXU　WEI LUOGANG　SANG NONG
+(Institute of Pattern Recognition & Artificial Intelligence
+Huazhong University of Science & Technology,Wuhan 430074)
+Abstract　Automatic object detection from natural scene clutters is fundamental to object detection.When the scale is changed,the fractal features of man-made objects in a natural scene change much more violently.In terms of the characterization,this paper presents a new method for automatic target detection using fractal maximum.Experimental results show that the method based on fractal parameter maximum map(FPMM)performs very well for small man-made object detection from a natural scene clutter.
+Key word　Multiscale,fractal feature,target detection.
+1　引言
+　　目前自动目标检测问题大致分为两类：第一类是大目标的自动检测，第二类是小目标的自动检测.在第一类自动目标检测中，由于目标本身较大，包含有灰度、纹理和结构等信息，可用自动匹配识别解决这类问题［1，2］.在第二类自动目标检测中，由于目标本身的面积小，其灰度、纹理和结构等信息可能不足以识别，这类目标的自动检测常采用连续性检测方法［3］.然而海上目标的自动识别遇到了很大的困难.主要有：第一，相邻帧图象仅有部分重叠，不能保证相邻两帧图象间的连续性；第二，视点也不确定，目标的形状也不确定，匹配识别困难；第三，实时图中岛屿和目标灰度很相似；第四，实时图中有各种杂光、阳光及其生成的亮带；第五，实时图中目标大小不确定；第六，目标的灰度还有可能出现反转.所有这些因素严重地影响了海上目标的自动可靠识别.本文在大量的实验分析基础上，提出了一种基于分形参数极值特征的人造目标自动识别算法，较好地解决了海上小目标的自动检测识别问题.
+2　自动目标识别原理
+2.1　分形概念
+　　分形作为一门新兴的科学分支，为我们研究和处理各种不规则集问题提供了有力的工具.文献［4］中Keller运用分形进行了纹理的描述与图象的分割，文献［5］中Pentland曾指出自然场景的分维在尺度上相对不变或变化缓慢，而人造目标的分维常随尺度变化而变化，分维特征可用来检测自然场景中的人造目标.然而，当我们采用盒子计数方法和地毯覆盖法［6］计算分维时，发现自然场景中人造目标的分维变化并不明显，因此，需要寻求新的分形计算模型.
+　　设 M(ε)为尺度 ε 下集合 F 的某种度量，d 为拓朴维数加1，D为分形维数，并且有：M(ε)=K.εd-D，那么，我们称集合F在M(ε)测度下具有分形特征，D 称为集合 F的分维数.
+2.2　新的分形参数定义
+　　设二维图象信号I(X)，对于任意的 X 和 ΔX，定义增量测度 GΔx(x)为
+　　　　(1)
+　　定理1　假定 GΔx(x)是独立的平稳随机过程，则
+　　(A)GΔx(x)的均值特征具有各态历经性.
+　　(B)I(X)的均值差测度具有分形特征.
+　　(C)I(X)的均值差测度分形参数在目标处存在极大值.
+　　证明　由平稳随机过程可知
+E［GΔx(x)］=m (m为常数)　　　(2)
+由独立随机过程可知　D［＜GΔx(x)＞］=0,于是有
+＜GΔx(x)＞=E(GΔx(x)).　　　　(3)
+即 GΔx(x) 的均值特征具有各态历经性.
+由(1)、(3)式可知 I(x+Δx)-I(x)的均值特征也具有各态历经性，即
+　　　(4)
+由(4)式可知
+　　　　(5)
+由(5)式可知，I(X)的均值差测度具有分形特征，即有
+　　　(6)
+　　式中，NX+ΔX和NX分别为集合X+ΔX和X中元素的个数，假定邻域自然背景均值存在着自相似性，目标能被当作相对均匀的区域，根据人识别小目标的原则，目标区域与邻域背景存在着不连续性.如图1所示，用环形区域Y和圆形区域Z分别表示集合X+ΔX和X，并用集合Y和Z内的均值差来估计集合X+ΔX和X之间的均值差，则
+
+
+图1　集合 X+ΔX和X位置关系示意图
+　　(7)
+　　分形参数 H(ΔX)定义为
+　　　(8)
+　　1) 如果对于某个尺度 ΔX，集合 Z 正好覆盖目标时，集合 Y 为背景.那末，根据前面的假设可知存在极大值，分形参数 H(ΔX)存在极大值；
+　　2) 如果集合 Y、Z都覆盖目标时，分形参数 H(ΔX)=0；
+　　3) 如果集合 Y、Z都覆盖背景时，分形参数 H(ΔX)=0；
+　　假定目标是小目标，当调整集合 Z 的大小，使得集合Z正好覆盖目标，集合Y覆盖背景时，分形参数 H(ΔX)一定存在极大值.
+2.3　分形参数的计算算法
+　　为简化起见，设 Z 为假定的目标窗内象素集，Y 为假定的环形背景窗内象素集(如图2所示)，Ii 为象素 i 的灰度，NY,NZ 分别为集合 Y，Z 的象素个数，则均值差极值测度的分形参数特征 H(ΔX)的计算方法如下：
+
+
+图2　实时计算的目标背景窗口示意图
+　　1)对于图象中任意的点(x0,y0),围绕该点设置一个 11*11 的窗口.
+　　2)在点 (x0,y0)周围的 1*1，3*3，…，9*9窗口上分别计算 Hr(ΔX).
+　　3)定义 H(ΔX)=max(H1(ΔX)，H3(ΔX)，…，H9(ΔX))并构造分形参数极值分布图(Fractal Parameter Maximum Map――简称 FPMM).
+　　4)计算 FPMM的均值 m和方差σ.
+　　5)设门限 t=0.8m+0.2σ.
+　　6)在 FPMM图象中，如果某点的 FPMM值大于t，它被初步判定为目标点.
+　　7)在初步分割结果中，对应小窗口内平均值的最大值处判定为目标位置.
+3　算法实验结果
+　　实验中取一定尺度范围内分形参数特征的最大值作为某点邻域内的分形特征极值.图3给出了一幅典型图象的运算结果.图4给出了分形参数特征极值图象的三维图.大量的实验结果表明，基于分形参数极值的海上目标自动识别算法经验统计的识别概率大于 0.9，较好地解决了海上小目标的自动检测与识别问题，为寻求海上小目标的自动检测方法提供了一种新思路.
+
+　　　　　　　　　　　　　
+(a)鳞光背景典型图象　　　(b)分形参数极值特征图象　　　(c)目标检测结果
+图3　鳞光背景典型图象及目标检测结果
+资金项目：国家自然科学基金和国防科工委基金资助项目.
+作者单位：华中理工大学图象所　武汉　430074
+参考文献
+［1］Daniel I B,Harvey F S.A class of algorithms for fast digital image registration.IEEE Trans.on computers,1972,C-21(2):179-186.
+［2］Peleg S.Multiple resolution texture analysis and classification.IEEE Trans.on Pattern. Anal.Machine Intell.,1984,PAMI-6(4):518-523.
+［3］Blostein S D,Huang T S.Detection of small moving objects in image sequences using multistage hypothesis testing.Proc.of IEEE Int.Conf.on ASSP,1988.
+［4］Keller J M,Chen S.Texture description and segmentation through fractal geometry.CVGIP,1989,45:150-166.
+［5］Pentland A P.Fractal-based description of natural scenes.IEEE Trans.on Pattern Anal.Machine Intell.,1984,PAMI-6(6):661-674.
+［6］Pell T.Multiscale fractal theory and object characterization.J.Opt.Soc.Am.A,1990,7(6):1402-1412.
+收稿日期　1994-10-13

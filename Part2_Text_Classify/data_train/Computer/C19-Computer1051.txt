@@ -1,0 +1,165 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  Vol.24  No.5 1998
+
+
+
+非线性大系统的分散线性化与分散控制1)
+佘　焱　张嗣瀛
+摘　要　将非线性控制系统的精确线性化方法应用于非线性大系统，提出了非线性大系统的分散线性化方法，并得到了非线性系统可分散线性化的充要条件.按照这个方法，可将难度较大的一类非线性大系统分散控制器的设计转化为易于处理的线性大系统分散控制器的设计.在得到该线性大系统的分散控制器后，可通过分散坐标变换的逆变换将线性大系统的控制器变换为原非线性大系统的控制器.同时，控制器的分散性保持不变.该方法明显地降低了该类非线性大系统分散控制器的设计难度.
+关键词　非线性系统，大系统，分散线性化，分散控制.
+DECENTRALIZED LINEARIZATION AND DECENTRALIZED
+CONTROL FOR NONLINEAR LARGE-SCALE SYSTEMS
+SHE YAN
+(Dept.of Infor.and Contr.Engineer,Shanghai Jiaotong University,Shanghai　200030)
+ZHANG SIYING
+(Department of Automatic Control,Northeastern University,Shenyang　110006)
+Abstract　In this paper,the decentralized linearization method is proposed for nonlinear large-scale systems,and the sufficient and necessary conditions of decentralized linearization are obtained.We can transform a class of nonlinear large-scale systems into linear large-scale systems,which can be treated relatively easily,through so-called decentralized differentiable homeomorphism.So the decentralization controller design of nonlinear large-scale systems can be transformed into the decentralized controller design of linear large-scale systems.The difficaulty of the decentralization controller design of nonlinear large-scale system can be decreased obsviously by using this method.
+Key words　Nonlinear systems,large-scale systems,decentralized linearization,decentralized control.
+1　引言
+　　近二十年来非线性控制系统的几何理论取得了重要进展，非线性系统的一些重要的综合问题，如：扰动解耦、无交互控制、输出调节、反馈镇定等都得到了处理.其中精确线性化是几何理论的主要方向之一［1―6］.本文首次将精确线性化方法应用于非线性大系统.
+　　分散控制器(如分散镇定)的设计是大系统的一个重要问题.线性大系统的分散控制问题已有满意的结果，但对于非线性大系统，则仍是一个十分困难问题.本文使用精确线性化方法，对符合一定条件的一类非线性大系统，通过某种“分散”的同胚坐标变换将其变换成易于处理的线性大系统，从而，极大的降低这类大系统分散控制器的处理难度.在求出该线性大系统的分散控制器后，可以通过该变换的逆变换将其简单地还原.与此同时，分散坐标变换能够保持控制器的分散性不变，从而达到求出原非线性大系统的分散控制器的目的.
+2　问题的陈述
+　　考虑如下形式的非线性大系统：
+　　(1)
+其中　xl∈Rnl,ul=(ul1,…,ulml)∈Rml,是Rn上的光滑向量函数.
+　　系统(1)可以写成如下紧凑形式：
+　　(2)
+其中Gli,Fl都是Rm上的光滑向量场
+Gli=col(0,…，0,(gli)τ,0,…,0),　Fl=col(0,…,0，(fli)τ,0,…,0)　　(3)
+作者的想法是寻求如下形式的同胚变换：τ:Rn→Rn,τ=(τ1,…,τN),τl:Rnl→Rnl,
+z=(z1,…,zN)=(τ1(x1),…,τN(xN)),　　(4)
+其中xl∈Rnl，系统在新坐标下具有形式：
+　　(5)
+从而将系统(1)的分散控制问题转化为系统(5)的分散控制问题.形如(4)式的“分散”微分同胚称为系统(1)的一个分散变换.所需定义如下：
+　　定义1.称分散变换(4)是系统(1)在x0处的分散线性化，如果系统在新坐标下形如系统(5)，且(All,Bl)(l=1,…,N)均为能控对.
+3　主要结果
+　　本节将给出系统(1)能分散线性化的充要条件，证明主要结果以前先证几个引理.
+　　引理1.设x0∈Rn，且
+　　(i)dim{adkFlGli(x0)｜1≤i≤ml;0≤k≤nl-1}=nl,l=1,…,N.
+　　(ii)在x0某邻域［adsFlGlj,adtFpGpi］=0
+其中　l≠p,　j=1,…,ml,　i=1,…,mp,　s=1,…,nl,　t=1,…,np.
+则对任意的1≤s≤nl,　1≤j≤ml,　1≤t≤np,　1≤i≤mp,
+　　(6)
+　　证明.注意到
+　　(7)
+　　由条件(2)有
+　　(8)
+由条件(1)可知
+　　(9)
+　　(10)
+由式(8，9，10)知在x0的邻域有
+
+　　引理2.假设x0∈Rn是系统(1)的平衡点，且
+　　(i)对l=1,…,N,有
+　　(11)
+　　(ii)在x0某邻域
+　　(12)
+其中　l≠p,　j=1,…,ml,　i=1,…,mp,　s=1,…,nl,　t=1,…,np.
+则对任意的l，存在使得向量场
+　　(13)
+在x0点线性无关，且与xq(q≠l,1≤q≤N)无关.
+　　证明.首先证明，对任意的l，任意的i，存在nli≤nl，使得
+　　(14)
+取
+
+则nli即为所求.因为，首先由nli的定义，线性相关，即因为Fl(x0)=0，所以
+
+即　也可写成的线性组合.类似归纳可知也可写成Gli(x0),adFlGli(x0),…,adnli-1FlGli(x0)的线性组合，从而nli满足(14)式.
+　　由式(11)，(14)可知，.由引理1知式(13)与xq(q≠l,1≤q≤N)无关.
+　　本文的主要结果
+　　定理1.设x0是系统(1)的平衡点，则系统(1)在x0点可分散线性化的充要条件为
+　　(i)对l=1,…,N,有
+　　(15)
+　　(ii)在x0某邻域
+　　(16)
+其中　1≤l,p≤N,j=1,…,ml,i=1,…,mp,s=1,…,nl,t=1,…,np.
+　　(iii)
+　　(17)
+j=1,…,mp,q=1,…,npj,l=1,…,N,p≠l,1≤p≤N，
+其中Xpjq由(13)式定义，为nl维常向量.
+　　注1.条件(3)可写成更紧凑的形式：［Fl,Dp］=DlAlp,
+　　其中
+　　(18)
+为nl×np阶矩阵.
+　　证明.必要性　只需直接验证系统(5)满足定理条件，并注意到这些条件在分散的坐标变换下不变.
+　　充分性　由定理条件(1)、引理2及定理条件(2)知分布
+　　(19)
+是Rn上的n维非奇异对合分布，其中Xlik由(13)式定义，
+从而可以定义映射
+　　(20)
+由文献［1］定理3.9可知，τ定义了0∈Rn到x0∈Rn的一个局部同胚坐标变换.
+由定理条件(2)及文献［1］的(3.36)，(6.4)式知，
+　　(21)
+注意到，由(13)式
+　　(22)
+即Xlik除第行到第行非零外，其余各行为零，且由引理2知，在x0的某邻域内，Xlik的所有非零元是xl的函数而与xp(p≠l)无关，从而具有形式
+　　(23)
+其中Hl是xl的nl×nl阶函数方阵，而与xp(p≠l)无关.由此知τ是Rn到Rn的分散的坐标变换.显然τ-1也是Rn到Rn的分散坐标变换.实际上，因为
+
+所以
+　(24)
+进一步
+　　(25)
+由(22)式，1≤l≤N，
+　(26)
+　　(27)
+由(25，26，27)式
+　(28)
+　　(29)
+记
+　　(30)
+由(28，29，30)式知
+　　(31)
+因此τ-1*(Fl)具有如下形式：
+　　(32)
+其中是n维函数向量，Yl的第个分量至第个分量非零.
+　　注意到，由(29)式(当k=nli-1时)，计算,可直接得
+　　(33)
+由条件(2)，(33)式与τ-1*(Xljk)可交换，再由(28，29)式知
+　(34)
+其中　l=1,…N,s=1,…,ml,t=1,…,nls,i=1,…,ml.
+所以，结合(32)，(34)式，考虑到x0是系统平衡点，有
+　　(35)
+其中　Clstk是由(34)式给出的常数，Clst是z1,…,zl-1,zl+1,…,zN的函数，Clst(0)=0.
+所以，由(30)，(35)式，有
+　　(36)
+其中　由(35)式定义.
+　　另外，(26，27)式可写为
+由条件(3)有
+　　(37)
+从而，由(36，37)式，有
+　　(38)
+其中　l,p=1,…,N,l≠p.
+结合(36)，(38)式知
+　　(39)
+其中All由(35，36)式给出，Alp(l≠p)由条件(3)给出.
+由(28，29)式，知
+Bli=τ-1*(Gli)=(0,…,0,1,0,…,0).　　(40)
+由(35，36)，(40)式知(All,Bl)是一标准能控结构.由(38，39)式，得系统(1)在新坐标下具有形式
+
+其中Alp由(18)式给出，定理得证.
+4　例子
+　　例1.考虑非线性大系统
+
+其中
+　　容易验证上述系统满足定理1的条件，分散坐标变换可取为
+
+其逆变换为
+
+系统变换成为线性系统
+
+如果该线性系统的分散控制器为u1=u1(z1),u2=u2(z2),显然，原非线性系统的分散控制器应取为u1=u1(z1(x1)),u2=u2(z2(x2)).
+　　本文提出了非线性大系统的分散线性化的充要条件，从而可将一类非线性大系统的分散控制器的设计转化为线性系统分散控制器设计.
+1)　国家自然科学基金、中国博士后科学基金和辽宁省科学技术基金资助项目.
+作者简介：佘　焱　生于1968年.1986年入武汉大学数学系本科，1990年毕业获理学学士学位并免试推荐为硕士研究生，1992年硕士研究生毕业并提前攻读博士，1995年在武汉大学数学系获理学博士学位.在读硕士和博士研究生阶段的研究方向为微分几何与微分方程.1995年入东北大学自动控制博士后流动站，进行博士后研究工作.目前感兴趣的研究领域为非线性控制系统、大系统、鲁棒控制、H∞控制理论等.
+作者单位：佘　焱　　上海交通大学信控系　上海　200030
+　　　　　张嗣瀛　　东北大学自控系　沈阳　110006
+参考文献
+　1　程代展.非线性系统几何理论.北京：科学出版社，1988
+　2　Cheng D,Tarn T J,Isidori A.Global external linearization of nonlinear systems via feedback.IEEE Trans. Autom.Control,1985,AC-30:808―811
+　3　Krener A J，Isidori A.Linearization by output injection and nonlinear observers.Syst.Control Lett.,1983,3:47―52
+　4　Isidori A.Nonlinear Control Systems,Berlin:Springer-Verlag,1989
+　5　Krener A J.Normal forms for linear and nonlinear systems.Comtempor.Math.1987,68:157―189
+　6　Xu Z, Hanser J.Higher order approximate feedback linearization about a manifold for multi-input system.IEEE Trans.Autom.Control.1995,AC-40:833―840
+收稿日期　1996-10-14

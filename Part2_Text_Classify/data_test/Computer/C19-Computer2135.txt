@@ -1,0 +1,121 @@
+计算机应用研究
+APPLICATION RESERCH OF COMPUTERS
+2000  Vol.17　No.1　P.1-5
+
+
+
+
+关联规则采掘综述
+铁治欣　陈奇　俞瑞钊
+摘要　介绍了关联规则采掘问题的研究情况，对一些典型采掘算法进行了分析和评价，指出了关联规则衡量标准的不足，展望了关联规则采掘的未来研究方向。
+关键词　数据采掘关联规则大项集知识发现
+1　引言
+　　近年来，数据采掘技术的研究引起了国际人工智能和数据库等领域专家与学者的广泛关注[1 ～3]。在事务数据库中采掘关联规则是数据采掘领域中的一个非常重要的研究课题。它是由R .Agrawal等人首先提出的[4]。有一个关联规则的例子就是“90%的客户在购买面包的同时也会购买牛奶”，其直观意义为顾客在购买某些商品的时候有多大倾向购买另外一些商品。关联规则的应用主要包括顾客购物分析、目录设计、商品广告邮寄分析、追加销售、仓储 规划、网络故障分析等。
+　　关联规则的采掘问题可形式化描述如下[4,5]：
+　　设I={i1，i2，...，im}是由m个不同的项目组成的集合。给定一个事务数据库D，其中 的每一个事务T是I中一组项目的集合，即TI，T有一个唯一的标识符TID。若项集XI且XT ，则事务T包含项集X。一条相联规则就是形如X(Y的蕴涵式，其中XI，YI，X∩Y=φ。相联 规则XY成立的条件是：①它具有支持度s。即事务数据库D中至少有s%的事务包含X∪Y。②它 具有置信度c。即在事务数据库D中包含X的事务至少有c%同时也包含Y。
+关联规则的采掘问题就是在事务数据库D中找出具有用户给定的最小支持度minsup和最小置 信度minconf的关联规则。
+　　采掘关联规则问题可以分解为以下两个子问题[4,5]：
+　　①找出存在于事务数据库中的所有大项集。项集X的支持度support(X)不小于用户给定的最 小支持度minsup，则称X为大项集(largeitemset)。
+　　②利用大项集生成关联规则。对于每个大项集A，若BA，B≠φ，且Support(A)/Support(B)m inconf，则有关联规则B(A-B)。
+　　第②个子问题比较容易，其生成算法可参见文献[5]。目前大多数研究集中在第一个子问题 上。以下我们对算法的介绍也集中在第一个子问题上。
+2　关联规则研究现状
+2.1　采掘关联规则的一般步骤
+　　R.Agrawal等人在文献[4]中首先提出了关联规则的采掘问题并给出解决此问题最原始的算 法AIS之后，该问题得到了国际人工智能和数据库等领域学者的密切关注，提出了多种的算 法。所有的采掘算法不论它是采用什么数据结构，其复杂程度、效率如何，它们都可以分为 如下几个步骤。
+　　①预处理与采掘任务有关的数据。根据具体问题的要求对数据库进行相应的操作，从而构成 规格化的数据库D。
+　　②针对D，求出所有满足最小支持度的项集，即大项集。由于一般情况下我们所面临的数据 库都比较大，所以此步是算法的核心。
+　　③生成满足最小置信度的规则，形成规则集R。
+　　④解释并输出R。
+2.2　主要研究方向和典型算法分析
+　　R.Agrawal等人提出了关联规则的采掘问题以后，该问题的研究得到了长足地发展。到目前 为止，其主要的研究方向有：
+　　(1)多循环方式的采掘算法
+　　此类算法包括Agrawal等人提出的AIS[4]，Apriori、AprioriTid和AprioriHybrid[5]、Park 等人提出的DHP[6]，Savasere等人的PARTITION[7]以及Toivonen提出的抽样算法Sampling [8]等等。其中最有效和有影响的算法为：Apriori，DHP和PARTITION。
+　　在算法AIS中，候选大项集是在扫描数据库的过程中产生的。具体地说，在对数据库进行第k 次扫描时，候选大项集(其中每一个元素的元素个数不一定是k个，可以大于k)是由第k-1次扫描所产生的边界集(Frontierset)通过增加当前事务中的项得到，同时计算候选大项集中的元素的支持数，直到某一次扫描所产生的边界集为空时停止运算。应该注意的是，第k次扫描所产生的边界集要大于本次扫描生成的大项集。本算法的缺点在于生成的候选大项集太大。
+　　算法Apriori和AprioriTid利用“在给定的事务数据库D中，任意大项集的子集都是大项集； 任意弱项集的超集都是弱项集”这一原理对事务数据库进行多遍扫描，第一次扫描得出大1项集L1，第k(k>1)次扫描前先利用第k-1次扫描的结果(即大k-1项集Lk-1)和函数Apriori_g en[5]产生候选大k项集Ck，然后在扫描过程中确定Ck中每一元素的支持数，最后在每一遍扫 描结束时计算出大k项集Lk，算法在当候选大k项集Ck为空时结束。由于充分利用的上述原理 ，这两个算法所产生的候选大项集要比算法AIS小得多，从而提高了算法的效率。算法Aprio riTid还有另外一个特点，即仅在第一次扫描时用事务数据库D计算候选大项集的支持数，其 它各次扫描用其上一次扫描生成的候选事务数据库D'来计算候选大项集的支持数。在最后的 几次扫描中，D'的大小要远远小于D，减小了I/O操作时间，提高了算法的效率。算法Aprio riHybrid是算法Apriori与算法AprioriTid的结合，当候选事务数据库D'不能完全容纳于内 存时用算法Apriori，当内存能够完全容纳候选事务数据库D'时，则用算法AprioriTid。
+　　算法DHP利用哈希(Hashing)技术有效地改进了候选大项集的生成过程，产生了比前述算法更 小的候选大项集(对大2候选集尤为明显)，同时也缩减了事务数据库的大小，减小了I/O操作 时间，其效率比算法Apriori有明显提高。
+　　算法PARTION分为两个部分。在第一部分中，算法首先将要在其中发现关联规则的事务数据 库D分为n个互不相交的事务数据库D1，D2，...，Dn，Di(i=1,2,...,n)的大小要求 能够容纳在内存之中，然后将每一个分事务数据库Di(i=1,2,...,n)读入内存并发现其 中的大项集Li，最后在第一部分结束时将所有分事务数据库的大项集合并成为一个在事务数 据库D中的潜在大项集算法第二部分计算潜在大项集PL在事务数据库D中的支持数，并得出大项集L。该算法只对事务数据库D扫描两次，大大减少了I/O操作，从而提高了算法的效率。
+　　算法Sampling设计思想为：对事务数据库D进行随机抽样得到抽样事务数据库D'，先以小于 用户给定的最小支持度的支持度发现存在于D'中大项集L'，再在剩下的数据库D-D'中继续计 算L'中各元素的支持数，最后以用户给定的最小支持度计算出大项集L。在大部分情况下， 可以用此方法发现正确的大项集，但有时可能会漏掉一些大项集，这时可以对D进行第二次 扫描以得出漏掉的大项集。此算法在大部分情况下可以只对D进行一次扫描就得出大项集， 最坏的情况对D进行两次扫描，因而算法效率较高。
+　　(2)增量式更新算法
+　　关联规则的增量式更新问题主要有两个：①在给定的最小支持度和最小置信度下，当一个新 的事物数据集db添加到旧的事物数据库DB中时，如何生成db(DB中的关联规则；②给定事物 数据库DB，在最小支持度和最小可信度发生变化时，如何生成数据库DB中的关联规则。文[9]考虑了关联规则更新的第一类问题，给出了一个基本框架与算法Apriori[5]相一致的算法FUP。文[10]针对关联规则更新的第二类问题进行了研究，设计出了相应的算法IUA和PIUA。
+　　算法FUP的基本思想为：对任意一个k(k1)项集，若其在DB和db中都是大项集，则其一定是 大项集；若其在DB和db中都是弱项集，则其一定是弱项集；若其仅在DB(db)中是大项集，则 其支持数应加上其在db(DB)中的支持数以确定它是否为大项集。算法FUP假设在DB中发现的 大项集(n为L中最大元素的元素个数)已被保存下来。它需要对DB和db进行多次扫描，在第 1次扫描中，算法先扫描db，将L1中的元素仍为db(DB中的大项集的元素记入L'1，并生成候 选大1项集C1，C1中的元素为db中的大1项集且不包含在L1中；然后扫描DB以决定C1中的元素 是否为db(DB中的大项集，并将是db(DB中的大项集的元素记入L'1中。在第k(k>1)次扫描前 ，先对L'k-1用Apriori_Gen()函数生成候选大k项集Ck，并除去Lk中的元素，即Ck=Ck-Lk， 对Lk进行剪枝，即对于X∈Lk，若存在Y∈Lk-1-L'k-1，则X肯定不会是db∪DB中的大k项集，应将其在Lk中删除；然后扫描db，将Lk中的元素仍为db∪DB中的大项集的元素记入L'k，记录候选大k项集Ck中的元素在db中的支持数；最后扫描DB，记录Ck中的元素在DB中的支持数，扫描结束时，将Ck中是db∪DB中大项集 的元素记入L'k中。算法在Lk和Ck均为空时结束。由于利用了对DB进行采掘的结果，本算法的效率比再一次利用算法Apriori或DHP对db∪DB进行采掘的效率要高得多。
+　　算法IUA采用了一个独特的候选大项集生成算法iua_gen，在每一次对数据库DB扫描之前生成 较小的候选大项集，从而提高了算法的效率。它也要求上一次对数据库DB进行采掘时发现的 大项集(n为L中最大元素的元素个数)在本次采掘时是可得到的。因为人们在发现关联规则时，常常需要不断地调整最小支持度和最小可信度来聚集到那些真正令其感兴趣关联规则上 ，因而本算法具有很重要的意义。
+　　(3)并行发现算法
+　　目前已经提出的并行采掘关联规则的算法有：Agrawal等人提出的CD(Count Distribution) 、CaD(Candidate Distribution)、DD(Data Distribution)[11]，Park等人提出的PDM[12]。Chueng等人提出的算法DMA[13]和FDM[14]虽然是基于分布式数据库的采掘算法，但也可 适用于并行采掘。
+　　算法CD具有速度较快、容易实现、要求各计算机间同步次数较少等优点，但它有通信量大和 候选大项集大等缺点。算法CaD、DD及PDM的执行效果都不如CD[13]。算法DMA虽克服了算法C D的一些弱点，但它要求各计算机间同步次数较多。算法FDM与算法DMA基本一致，区别在于F DM中增加了全局剪枝技术。
+　　这些算法都是基于无共享体系结构，即并行计算的n台计算机之间除了用网络连接起来以外 ，其它都是完全独立的。每台计算机Pi(i=1,2,...,n)上都有自己的分事务数据库DBi，总的事务数据库。
+　　算法CD是算法Apriori在并行环境下的应用，它要求计算机Pi(i=1,2,...,n)对DBi进行多遍扫描。在第k次扫描，当k>1时，计算机Pi(i=1,2,...,n)首先利用第k-1次扫描所得 的大项集Lk-1和Apriori_Gen()函数生成候选大项集Ck，当k=1时，计算机Pi先扫描DBi得出 其中的大1项集，再与其它计算机得到的大1项集进行交换并进行合并，从而生成候选大1项 集C1；然后扫描DBi计算Ck中的元素在DBi中的支持数，计算机Pi广播Ck中元素的支持数，并 接收从其它计算机传来的Ck中元素的支持数，并对这些支持数进行累加，得出Ck中 元素的全局支持数；最后计算出大k项集Lk，若Lk中元素个数为1，则算法结束。
+　　算法DMA是基于“若项集X在DB中是大项集，则其必在某一个DBi也是大项集”的原理进行设计。算法中采用局部剪枝技术(Local pruning)，使其生成的候选大项集比算法CD要小。算法各个站点进行支持数交换时采用轮询站点技术(polling site)，使每一个项集X的通讯代 价由算法CD的o(n2)降为o(n)，其中n为站点个数。它可分为如下几步：①生成候选大k项集CHiK。根据计算机Pi(i=1，2，...，n)在k-1次循环所生成的稠密集HLiK-1，生成循环k所需用的候选大k项集CHiK，即②支持数计算。扫描DBi计算候选大k项集中的每个元素X的局部支持数X.supi。③交换支持数。采用轮询站点技术与其它计算机交换候选大k项集中的 元素的支持数，并计算它的全局支持数。④生成大项集Lk和稠密集。中的元素具有下列性质：它在DBi和DB中都是大项集。
+　　(4)采掘一般或多层关联规则
+　　在研究采掘关联规则的过程中，许多学者发现在一些实际应用中，由于数据比较少，要想在 原始的概念层次上发现强的(Strong)和有趣的(Interesting)关联规则是比较困难的，因为 好多项集往往没有足够的支持数。由于概念层次在要采掘的数据库中经常是存在的，比如在 一个连锁店会存在这样概念层次：光明牌牛奶是牛奶，牛奶是食品等，我们称高层次的项是 低层次项的父亲，这种概念层次关系通常用一个有向非循环图(DAG)来表示。于是我们就可 以在较高的概念层次上发现关联规则。基于要采掘的数据库中的概念层次和发现单一概念层 次中的关联规则的算法，学者们提出了许多高效发现一般或多层关联规则的算法，主要有： Han等人的ML_T2L1及其变种ML_T1LA、ML_TML1、ML_T2LA[15]和R.Srikant等人的Cumulate、 Stratify及其变种Estimate、EstMerge[16]等。
+　　算法ML_T2L1的基本思想是首先根据要发现的任务从原事务数据库生成一个根据概念层次信 息进行编码的事务数据库，利用这个具有概念层次信息的新生成的数据库，自顶向下逐层递 进地在不同层次发现相应的关联规则。它实际上是算法Apriori在多概念层次环境中的扩展 。根据对在发现高层关联规则过程中所用的数据结构和所生成的中间结果共享方式的不同， 算法ML_T2L1有三个变种：ML_T1LA、ML_TML1、ML_T2LA。
+　　算法Cumulate的基本思想与Apriori完全一样，只是在扫描到事务数据库某一事务时，将此 事务中所有项的祖先加入到本事务中，并加入三个优化：①对加入到事务中的祖先进行过滤 。②预先计算概念关系T中的每一个项的祖先，得到项集与其祖先的对照表T*。③对既包含 项集X又包含X的祖先的项集进行剪枝。
+　　算法Stratify基于“若项集X的父亲不是大项集，则X肯定不会是大项集”的事实进行设计。其基本思想为：在概念层次有向非循环图中，定义没有父亲的项集X的深度depth(X)=0，其 它项集的深度为：算法要对事务数据库进行多遍扫描，第kk(0)次扫描计算深度为kk(0)的所有项集Ck的支持数，并得出深度为kk(0)的大项集Lk，在第kk(1)次扫描之前，对Ck进行剪枝，即删除Ck中那些祖先包含在Ck-1-Lk-1中的元素。围绕着怎样及早决定某些深度较大的项集是否是大项集问题，文献[16]用抽样技术对算 法Stratify进行扩展，形成算法Estimate和EstMerge。
+　　(5)采掘多值属性关联规则
+　　关联规则可分为布尔型关联规则和多值属性关联规则。多值属性又可分为数量属性和类别属 性。多值属性关联规则采掘问题首先在文献[17]中提出。目前提出的采掘多值属性关联规则 的算法大多是将多值属性关联规则采掘问题转化为布尔型关联规则采掘问题，即将多值属性 的值划分为多个区间，每个区间算作一个属性，将类别属性的每一个类别当作一个属性。
+　　文[17]中发现的多值属性关联规则的形式为：x=qxy=qy，其前件和后件对应的都是单一的 数值，而不是一个区间，文中提出的算法比较简单，但当我们需要发现所有属性之间的关联 规则时，我们将遇到属性组合的爆炸问题。
+　　文[18]用“偏完整性度量（partial completenessmeasure）”原则将数量属性划分为相等的几个区段，当某一区段的支持数小于用户给定的最小支持数时，我们就将其与其邻近的区段 进行合并。为了使发现的关联规则更具有趣性，文中采用了“大于期望的值（greater-than- expected-value）”准则。
+　　文[19]认为文[18]中的属性划分方法不能很好地表示数据的分布，尤其是属性值分布不均匀 的时候，于是提出了一个聚类算法，根据数据库中数据的分布情况决定属性值如何划分区段 ，并可将相关的区段进行合并。在此基础上发现的多值关联规则更具有效性和可理解性。
+　　(6)基于约束的关联规则采掘
+　　基于约束的关联规则采掘的主要目的是发现更有趣的、更实用的和更特别的关联规则，这方 面的研究主要有[20～27]。
+　　文[20]研究了在提供布尔表达式约束情况下的关联规则发现问题。这种布尔表达式约束允许 用户指定他所感兴趣的关联规则的集合，这种约束不仅可以用来对事务数据库进行预加工， 而且可以把它集成在采掘算法内部，从而提高算法的执行效率，文中根据这种集成方式的不 同给出了三种不同的算法：MultipleJoins、Reorder、Direct。
+　　文[21]提出并分析了用户所给出的约束的两个对发现算法的剪枝步骤非常重要的属性：反单 调性(anti-monotonicity)和简洁性(succinctness)，提出了一个高效的基于约束的关联规 则采掘算法CAP。
+　　另一种类型的基于约束的关联规则采掘方法是元模式制导的关联规则采掘算法[25～27]。这 种类型的发现算法首先由用户给定要发现的关联规则的元模式或模板，然后根据这些模板在 数据库中发现与模板相适应的实际存在的关联规则。例如文[26]就是基于这种模式提出了两 个相应的算法：大谓词增长算法(largepredicate-growing)和直接p-谓词测试算法(Direct p-predicatetesting)。
+　　(7)其它方向
+　　除了以上列举的比较常见的研究方向外，还有其它一些研究方向，如：发现关联规则的语言 [28,29]、采掘长模式和密集数据集[24,30]、采掘相关性和因果关系[31,32]、发现比例 规则[33]、发现周期(cyclic)和日历(calendric)关联规则[34,35]、采掘多维关联规则[25] 等等。
+2.3　关联规则衡量标准的不足
+　　目前，衡量和生成关联规则的标准主要有两个，即支持度和置信度。但仅用这两个标准来衡 量关联规则显然是不够的，因为仅仅利用用户定的最小支持度和最小置信度来生成关联规则 ，则往往会发现大量冗余的、虚假的和非采掘者关心的关联规则。
+　　让我们首先来看一下文献[1]给出的一个例子。考察某个学校5,000名学生的早晨活动情况。 调查结果表明：60%学生打篮球，75%的学生吃麦片粥，40%的学生既打篮球又吃麦片粥。若我们将最小支持度和最小置信度分别定为40%和60%，则我们可以发现关联规则：打篮球吃麦片粥，其支持度和置信度分别为40%和66.6%。该规则实际上是一个虚假的规则，因为吃麦 片粥的学生比例为75%，既高于最小支持度60%，又高于规则的支持度66.6%，因而该规则提 供的信息没有任何价值。
+　　这种不足已经引起了不少学者的注意，并提出了一些采掘有趣和实用的关联规则的算法[16, 31]，但还没有形成一个统一的标准。我们认为有必要将兴趣度这个标准加入到关联规则的 定义之中，这样才符合数据采掘的宗旨和减少关联规则采掘的盲目性。
+3　进一步研究的方向
+　　目前，数据库采掘关联规则已经取得了令人瞩目的成绩，但对下列问题进行研究也将是具有 挑战性的工作。
+　　。开发更高效的采掘算法
+　　随着数据库的尺寸的不断增大，不仅增大了采掘算法的搜索空间，而且也增加了盲目发现的 可能性。因此我们必须利用领域知识去提取与我们发现任务有关的数据，删除无用数据，有 效地降低问题的维数，设计出更加有效的采掘算法。在这方面，基于约束的关联规则采掘具 有广阔的前途。
+　　。可视化采掘
+　　设计一个灵活方便的用户界面，允许用户与采掘系统进行交互，并对所采掘的结果进行很好 的可视化表示，使非领域专家也能够进行采掘。
+　　。基于不同媒体的采掘
+　　目前大多数采掘关联规则算法都是基于关系数据库或事务数据库的算法，设计应用于其它类 型数据库(如面向对象数据库、多维数据库、数据仓库等)关联规则采掘算法也将是十分有意 义的工作。
+　　。制定更为合理的关联衡量评价标准
+　　如前所述，目前的关联规则的衡量标准可能会使我们发现一些冗余的、虚假的和非采掘者关 心的关联规则，因而很有必要制定一些新的衡量标准，但这些标准的制定可能要具体问题具 体分析。
+　　。与其它系统的集成
+　　这里的集成包括与其它采掘方法的集成和与其它系统(如专家系统、决策支持系统等)的集成 。
+4　结束语
+　　本文对近年来关联规则采掘中主要研究方向进行了回顾，并对一些典型算法进行了分析和评 价。指出了关联规则衡量标准的不足，展望了关联规则采掘的未来研究方向。
+铁治欣（浙江大学人工智能研究所杭州310027）
+陈奇（浙江大学人工智能研究所杭州310027）
+俞瑞钊（浙江大学人工智能研究所杭州310027）
+参考文献
+1，M. -S. Chen, et al. Data mining: an overview from database perspective. IEEE Transactions on knowledge and data engineering, 1996, 8(6), 866～883
+2，R. Agrawal, et al. Database Mining: A Performance Perspective. IEEE Transactions on knowledge and data engineering, 1993, 5(6), 914～925
+3，Usama M. Fayyad, et al. Advances in knowledge discovery and data mining. California: AAAI Press/The MIT Press. 1996
+4，R. Agrawal, et al. Mining association rules between sets of items in large databases. Proc. ACM SIGMOD int'l conf. management of data, Washington, DC, May 1993, 207～216
+5，R. Agrawal, R. Srikant. Fast algorithms for mining association rules. Proc. 20th int'l conf. very large databases, Santiago, Chile, Sept. 1994, 487～499
+6，J. S. Park, et al. Using a hash-based method with transaction trimming for mining association rules. IEEE Transactions on knowledge and data engineering, 1997, 9(5), 813～825
+7，A. Savasere, E. Omiecinski and S. Navathe. An efficient algorithm for mining association rules. Proceedings of the 21st international conference on very large databases, Zurich, Switzerland, Sept. 1995, 432～444
+8，Hannu Toivonen. Sampling large databases for association rules. Proceedings of the 22nd international conference on very large databases, Bombay, India, 1996, 134～145
+9，D. W. Cheung, et al. Maintenance of discovered association rules in large databases: an incremental updating technique. In: Proceedings of the 12th international conference on data engineering, New Orleans Louisiana, 1995, 106～114
+10，冯玉才, 冯剑林. 关联规则的增量式更新算法. 软件学报, 1998, 9(4),301～306
+11，R. Agrawal, et al. Parallel mining of association rules. IEEE Transactions on knowledge and data engineering, 1996, 8(6), 962～969
+12，J. S. Park, et al. Efficient parallel data mining for association rules. Proc. Fourth int'l conf. information and Knowledge management, Baltimore, Nov. 1995
+13，D. W. Cheung, et al. efficient mining of association rules in distributed databases. IEEE Transactions on knowledge and data engineering, 1996, 8(6), 910～921
+14，D. W. Cheung, et al. A fast distributed algorithm for mining association rules. Proc. of 1996 Int'l Conf. on Parallel and Distributed Information Systems (PDIS'96), Miami Beach, Florida, USA, Dec. 1996
+15，J. Han, Y. Fu. Discovery of multiple-level association rules from large databases. Proc. of the 21st international conference on very large databases, Zurich, Switzerland, Sept. 1995, 420～431
+16，R. Srikant, R. Agrawal. Mining generalized association rules. In: Proceedings of the 21st international conference on very large databases, Zurich, Switzerland, Sept. 1995, 407～419
+17，G. Piatetsky-Shapiro. Discovery, Analysis, and Presentation of strong rules. In: G. Piatetsky Shapiro and W. J. Frawley eds. Knowledge discovery in database. AAAI/MIT Press. 1991, 229～248
+18，R. Srikant, R. Agrawal. Mining quantitative association rules in large relational tables. In: Proc. 1996 ACM SIGMOD int'l Conf. Management Data, Montreal, Canada, 1996, 1～12
+19，张朝晖, 陆玉昌, 张 钹. 发掘多值属性的关联规则. 软件学报, 1998, 9(11), 801～805
+20，R. Srikant, R. Agrawal. Mining association rules with item constrains. Proc. of the 3rd Int'l Conference on Knowledge Discovery in Databases and Data Mining, Newport Beach, California, August 1997, 67～73
+21，R. Ng, L. V. S. Lakshmanan, J. Han and A. Pang, Exploratory Mining and Pruning Optimizations of Constrained Associations Rules, Proc. of 1998 ACM-SIGMOD Conf. on Management of Data, Seattle, Washington, June 1998, 13～24
+22，L. V. S. Lakshmanan, R. Ng, J. Han and A. Pang, Optimization of Constrained Frequent Set Queries with 2-Variable Constraints, Proc. 1999 ACM-SIGMOD Conf. on Management of Data, Philadelphia, PA, June 1999
+23，R. Ng, L. V. S. Lakshmanan, J. Han and T. Mah, Exploratory Mining via Constrained Frequent Set Queries, Proc. 1999 ACM-SIGMOD Conf. on Management of Data, Philadelphia, PA, June 1999
+24，R. J. Bayardo Jr., R. Agrawal, and D. Gunopulos. Constraint-Based Rule Mining in Large, Dense Databases. In Proc. of the 15th Int'l Conf. on Data Engineering, 1999, 188～197
+25，Micheline Kamber, Jiawei Han, Jenny Y. Chiang, Metarule-Guided Mining of Multi-Dimensional Association Rules Using Data Cubes, Proceeding of the 3rd International Conference on Knowledge Discovery and Data Mining, Newport Beach, California, Aug. 1997, 207～210
+26，Y. Fu and J.Han, Meta-Rule-Guided Mining of Association Rules in Relational Databases, Proc. 1995 Int'l Workshop. on Knowledge Discovery and Deductive and Object-Oriented Databases(KDOOD'95), Singapore, December 1995, pp.39～46
+27，Wei-Min Shen, et al. Metaqueries for data mining. In: U. M. Fayyad, G. Piatetsky-Shapiro, et al eds. Advances in knowledge discovery and data mining. AAAI/MIT Press. 1996, 375～398
+28，R. Meo, G. Psaila, and S. Ceri. A new SQL-like operator for mining association rules. Proc. of the 22nd int. Conf. on very large databases, Bombay, India, 1996, 122～133
+29，J. Han, Y. Fu, K. Koperski, W. Wang, and O. Zaiane, DMQL: A Data Mining Query Language for Relational Databases, 1996 SIGMOD'96 Workshop on Research Issues on Data Mining and Knowledge Discovery (DMKD'96), Montreal, Canada, June 1996
+30，R. J. Bayardo Jr., Efficiently Mining Long Patterns from Databases, Proc. of the ACM SIGMOD Conference on Management of Data, Seattle, Washington, June 1998, 85～93
+31，S. Brin, R.Motwani, and C. Silverstein. Beyond market basket: generalizing association rules to correlation. Proc. 1997 ACM-SIGMOD int. conf. management of data, Tucson, Arizona, May 1997, 265～276
+32，C. Silverstein, S. Brin, R. Motwani, and J. Ullman. Scalable techniques for mining causal structures. Proc. 1998 int. conf. Very Large Data Bases, New York, NY, August 1998, 594～605
+33，F. Korn, et al. Ratio rules: A new paradigm for fast, quantifiable data mining. Proc. 1998 int. conf. Very Large Data Bases, New York, NY, August 1998, 582～593
+34，B. Ozden, et al. Cylic association rules. Proc 1998 int. conf. Data Engineering, Orlando, FL, Feb. 1998, 412～421
+35，S. Ramaswamy, et al. On the discovery of interesting patterns in association rules, Proc. 1998 int. conf. Very Large Data Bases, New York, NY, August 1998, 368～379
+收稿日期：1999年6月23日

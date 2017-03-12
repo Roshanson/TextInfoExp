@@ -1,0 +1,107 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000　Vol.17　No.2　P.109-110
+
+
+
+利用DELPHI多线程机制实现PC机与PLC之间的串行通信
+张海燕　袁平波
+摘 要 主要介绍了在DELPHI环境下如何利用多线程机制实现可编程控制器(PLC)与上位PC机之间的串行通信，对该系统的特点、软件设计方法进行了具体论述。
+关键词 多线程机制 串行通信
+　　针对合肥国家同步辐射光源200Mev直线加速器的高精度稳流电源，我们研制了一套强干扰环境下电源的计算机控制系统。在考虑系统设计方案时，选用OMRON PLC-C200H系列产品作为下位机，放置在电源内部，并与上位机PC之间用光缆通过SYSWAY方式通讯，实现系统监测和控制功能。
+　　软件系统是对电源实现计算机控制的核心部分。本控制软件采用Delphi 3.0作为开发语言，平台为Windows 98。其中PLC与上位PC机之间的通信是整个系统的关键。由于串行通讯具有线路简单、应用灵活、可靠性高等一系列优点，并且普通PC上均带有串口，可以方便实现，所以本系统PC与PLC之间采用了串行通信。同时为了有效克服串口通信中的停滞和反应不及时现象，提高工作效率，引入DELPHI的多线程工作模型。
+1 编制串行通信程序
+　　在Delphi环境下对串口的编程是通过Windows的API函数调用来实现的。基本过程为：
+　　(1)打开串口，获取串口句柄。采用CreateFile函数，其原型为：
+　　CreateFile(szDevice, fdwAccess, fdwShareMode, Ipsa, fdwCreate, fdwAttrsAndFlags, hTemplatrFile)
+　　第一个参数给出要打开的串口逻辑名，如“COM2”
+　　第二个参数指定了端口访问方式，即标志GENERIC.READ为读方式，GENERIC.WRITE为写方式；通常在设置中两个标志均使用，即采用读写方式，fdwAccess=GENERIC.READ GENERIC.READ or GENERIC.WRITE。
+　　第三个参数指定该端口的共享属性，设置为0。
+　　第四个参数引用安全属性结构，将其设为NULL。
+　　第五个参数指定打开文件的方式，设置为OPEN-EXISTING。
+　　第六个参数描绘文件的各种属性，对串口一般设为0。
+　　最后一个参数是指向模板文件的句柄，对串口设为NULL。
+　　(2)对串口进行设置。采用以下两个函数：
+BOOL GetCommState (hComm, &dcb)
+BOOL SetCommState (hComm, &dcb)
+　　其中第一个参数为打开的串口句柄，第二个参数为指向DCB结构的指针。在打开串口后，可先用GetCommState函数读入串口状态，并得到串口的缺省设置，然后重新设置需要改变的DCB函数，并用SetCommState函数将其返回。
+　　(3)读/写串口。采用函数为：
+ReadFile (hComm, inbuff, nBytes, &nByteRead, &overlapped)
+WriteFile (hComm, outbuff, nToWrite, &nActualWrite, &overlapped)
+　　(4)通信完毕释放串口。所用函数为：CloseHandle(hComm)。
+　　同时串口通信必须遵从OMRON-HOSTLINK特定协议，通信数据格式要符合协议所规定的上位机链结命令格式。
+　　从上位机发送一个命令时，按下述的格式排列命令数据：
+
+　　整个系统采取上位机主动的通讯方式，将下位机与上位机的编程融为一体，上位机每隔三秒钟向PLC发送读取数据命令。PLC内部不需要用特定的梯形图编程语言来作下位机程序，增加了系统的通用性，减少了软件接口所带来的工作量。
+2 引入多线程机制
+　　在串行通信中，上位机所接收的通信往往是异步的、突发性的。在通讯模块程序中引入多线程，即创建专门的通信线程实现对串口的访问。这种方法可以有效地克服串口通信中的停滞和反应不及时现象。
+　　线程是进程内的一个执行单元，它是操作系统分配CPU运行时间的基本实体。一个进程可由多个线程组成。各线程共享进程的虚拟空间和操作系统为此所分配的系统资源。多任务操作系统将处理器的运行时间分成小的时间片，并分配给多个线程，每个线程在指定的时间片内运行。
+　　多线程的DELPHI应用程序在运行时，操作系统首先创建VCL主线程，由它创建应用程序主窗口，并开始应用程序消息循环。然后VCL主线程根据应用程序的要求创建多个工作线程。在视化构件库中，通过线程类(Tthread)实现工作线程的所有功能。
+　　具体实现为：软件创建一线程来不断读取PLC发送的串口数据，然后向主程序发送一数据接收完毕的消息；主程序定时向PLC发送读取数据命令，并在接收到消息后根据接收的数据刷新界面。两个线程之间的通信通过消息(Message)实现。
+　　程序流程图如图1、图2所示。
+
+图1　上位机主程序流程图
+
+图2　上位机线程流程图
+3 程序
+　　下面是利用多线程机制编制的串口接收程序部分代码，其中包括对接收和发送数据格式的处理。
+Procedure TComm.Execute; //线程执行过程
+Begin
+While True do Begin //无限循环
+　Wait := WaitCommEvent(hcom, 0, lpol); 
+　　　　　　　　　　　　　//等待串行口事件: 接收到字符;
+　if Wait Then Begin
+　waitforsingleobject(post_event,infinite); 
+　　　　　　　　　　　　　//无限等待同步事件置位;
+　resetevent(post_event); //同步事件复位;
+　　//向用户窗口发接收完毕消息;
+　　PostMessage(comctlfrm.Handle, WM_COMMNOTIFY, 0,0);
+end;
+end;
+end;
+procedure Tcomctlfrm.comminitialize; //串行口初始化过程
+Begin
+hcom:=createfile('com2', generic_read or generic_write, 0,
+　nil, open_existing, file_attribute_normal or file_flag_overlapped, 0);
+　　　　　　　　　　　　　//打开串行口
+　if hcom=invalid_handle_value then
+　　else
+　　　setupcomm(hcom, 4096, 4096); 
+　　　　　　　　　　　　　//设置输入，输出缓冲区皆为4,096字节
+　　　getcommstate(hcom, lpdcb); //获取串行口当前默认设置
+　　　lpdcb.baudrate:=9600; //波特率
+　　　lpdcb.StopBits:=2;
+　　　lpdcb.ByteSize:=7;
+　　　lpdcb.Parity:=EvenParity; //偶校验
+　　　Setcommstate(hcom, lpdcb);
+　　　setcommMask(hcom, ev_rxchar);
+　　　　　　　　　　　　　//指定串行口事件为接收到字符;
+end;
+Procedure Tcomctlfrm.MsgcommProcess(Var Message:Tmessage); 0
+//用户窗口消息处理过程
+Begin
+Clear:=Clearcommerror(hcom, lpErrors, @Coms); //清通信口状态
+if Clear Then Begin
+　cbNum:=Coms.cbInQue;
+　ReadFile(hCom, Read_Buffer, cbNum, ReadNumber, lpol); 
+　　　　　　　　　　　　　//读取接收数据
+if readnumber<>0 then
+　　　　　　......　　　　//接收成功
+　　SetEvent(Post_Event); //同步事件置位
+　　end;
+end;
+Procedure Tcomctlfrm.FormCreate(Sender: TObject);
+begin
+comminitialize; //调串口初始化过程
+post_event:=CreateEvent(nil, true, true, nil); //创建同步事件;
+Tcomm.Create (False); //创建串行口监视线程;
+end;
+4 结论
+　　控制系统经过实际运行和测试后，证明了上下位机之间的通讯是非常可靠的，并且程序运行效率有所提高。实验表明：在DELPHI环境下，引入多线程工作模型，对实现PLC与PC之间有效串口通信，具有较高的实用价值。
+张海燕（中国科学技术大学国家同步辐射实验室 电子工程与信息科学系 合肥 230029）
+袁平波（中国科学技术大学国家同步辐射实验室 电子工程与信息科学系 合肥 230029）
+参考文献
+1，刘海涛著. 学用Delphi 4. 北京：清华大学出版社, 1999年3月
+2，木林森著. Windows 95实用编程与范例. 北京：清华大学出版社, 1998年
+3，可编程序控制器编程手册 (C200HX/C200HG/C200HE), OMRON, 1997.1
+收稿日期：1999年7月31日

@@ -1,0 +1,196 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第8期 Vol.10 No.8 1999
+
+
+
+数据仓库联机维护中一致性问题的研究
+李子木　孙利民　周兴铭
+摘要　数据仓库是存储供查询和决策分析用的集成化信息仓库,它的信息来源于不同地点的数据库或其他信息源.实体化视图是数据仓库中存储的主要信息实体,当原始数据发生变化时,数据仓库中的实体化视图也必须作相应的更新维护.在数据仓库实体化视图的联机维护过程中,由于联机分析处理（On-line Analytical Process,简称OLAP）查询的介入,会产生数据不一致的问题.文章提出了一种MVCA（multiversion compensating algorithm）算法来解决这一问题.MVCA采用版本控制方法,利用补偿思想和应答机制协调数据库和数据仓库之间的更新维护操作,达到保证数据一致的目的.最后,文章通过一个典型示例说明了该算法在实际中的具体应用.
+关键词　数据仓库,实体化视图,联机维护,数据一致性,MVCA（multiversion compensating algorithm）.
+中图法分类号　TP311
+Consistency Algorithm for Data Warehouse On-line Maintenance
+LI Zi-mu　SUN Li-min　ZHOU Xing-ming
+(Department of Computer Science Changsha Institute of Technology Changsha 410073)
+Abstract　 A warehouse is a data repository containing integrated information for efficient querying and analysis, which data come from the databases or the other info-sources at different places. Materialized view is the primary information entity stored in the data warehouse. It must be refreshed when the corresponding data changed in the database. Consistency problem will be arisen during materialized views on-line maintenance because of the invention of OLAP query. In this paper, the authors introduce a new algorithm, MVCA (multiversion compensating algorithm), using multiversion and compensating techniques, along with acknowledgement mechanism to synchronize the maintenance process between the database and the data warehouse so as to ensure the data consistency. At the end of the paper, the authors illustrate the application of the algorithm by a typical example.
+Key words　Data warehouse, materialized view, on-line maintenance, data consistency, MVCA(multiversion compensating algorithm).
+　　数据仓库用来为决策提供支持,它的数据来源于数据库或其他信息源（本文只考虑数据库的情况）.类似于早期的数据库,现有的数据仓库产品采用的都是脱机维护策略：系统先搜集记录,不立刻加入数据仓库,而是使用Bulk-load技术周期地刷新数据仓库.由于Bulk-load技术在系统刷新期间,数据仓库被禁止使用,所以,许多采用数据仓库产品的公司都是利用夜晚时间对数据仓库进行刷新维护.这种维护方式面临着3个重要的问题.
+　　.随着公司业务的全球化,时区问题会变得越来越明显,专门对系统进行更新维护的“夜晚时间”将越来越难以确定；
+　　.随着应用的不断深入,当数据量非常大的时候,这种维护方式所用的时间也会越来越长.由于Bulk-load技术在刷新系统期间,对数据仓库是禁止使用的,而系统的维护工作必须在次日清晨用户开始使用数据仓库之前完成,因此,时间是一个必须认真考虑的限制因素；
+　　.Bulk-load技术容易使信息过时,在一些对实时性要求比较高的关键任务中,如战场决策,这种脱机维护方式是不能够被接受的.
+　　因此,数据仓库联机维护技术受到了越来越广泛的重视.
+1 问题的产生及研究现状
+　　在数据仓库联机维护技术中,实体化视图的联机维护是一个关键技术.它是指,在数据仓库为用户提供服务的同时,当数据库中的原始数据发生改变时,实时地将这种变化反映到数据仓库中,使相应的实体化视图得到及时的刷新.
+　　数据仓库中存储的是部分原始数据的拷贝和实体化视图集合,它并不能完全满足用户的所有查询.对于某些OLAP查询（如“下钻”）,数据仓库必须通过访问数据库才能给出最终的查询结果.由于实体化视图是建立在原始数据之上的,它的更新维护总是或多或少地落后于原始数据的更新.当一个OLAP查询既用到实体化视图,又用到原始数据,而且原始数据和实体化视图是相关的（实体化视图用到了该原始数据）,如果原始数据已被修改,而这种变化尚未反映在相应的实体化视图中时,便会产生查询上的不一致问题.
+　　斯坦福大学的D.Quass提出了一个2VNL(two-version no-locking)算法［1］,利用版本控制来解决实体化视图的联机维护和一致性问题.2VNL算法采用当前版本与影子版本分别负责实体化视图的查询与维护,当前版本只允许进行读操作,不允许更新,所有的写操作和更新操作全部在影子版本上进行.当影子版本提交后,当前版本被废除,影子版本成为当前版本,以后的维护操作将在新的影子版本上进行.2VNL算法在解决数据仓库联机维护和一致性方面作出了有益的尝试,但它却存在3个主要的缺点.
+　　.由于算法只采用了两个版本,在进行版本切换时,有些查询事务将不可避免地被中止,从而导致事务的重启.特别是对OLAP这种费时较长的查询,事务重启的可能性就更大了；
+　　.2VNL算法基于对查询情况的预测,只对某些汇总属性建立了影子版本.当这种预测不够准确、完备,或者对某些查询情况无法预测时,2VNL算法将无法工作.而且由于这种预测需人工进行,这将增加维护的成本,并带来许多其他问题；
+　　.由于算法只采用了两个版本,而且总是在每天的一个固定时间进行切换,所以这种维护方式满足不了类似于“战场决策”这样的对实时性要求较高的关键任务.
+　　本文提出的“MVCA多版本补偿算法”（multiversion compensating algorithm,简称MVCA）,除了能够保证在联机维护状态下用户查询的一致性以外,还很好地解决了上述这些问题.MVCA算法分为MVCA-dw和MVCA-db两部分,分别在DW端和DB端执行.它采用补偿思想［2］和应答机制,联合控制原始数据的多个版本,以保证在对数据仓库中实体化视图联机维护的同时,OLAP查询也能得到一致的结果. 
+2 MVCA算法
+2.1 MVCA中的消息类型
+　　db_up：　　DB端发出的数据变化通知,它包括3个参数：
+　　　　　　　　ins(r,t)：在关系r中插入元组t；
+　　　　　　　　del(r,t)：从关系r中删除元组t；
+　　　　　　　　mod(r,t1,t2)：在关系r中用元组t2更新元组t1；
+　　dw_mv：DW端视图维护进程发出的查询通知,它返回的结果用于实体化视图的维护；
+　　dw_olap：DW端发出的用户查询通知,它返回的结果将直接提交给OLAP应用；
+　　db_mv：DB端发出的完成dw_mv查询后的返回结果；
+　　db_olap：DB端发出的完成dw_olap查询后的返回结果；
+　　dw_ack：DW端发出的维护完成确认通知,DB端在收到这一消息后,将对数据库中的老版本元组和标志位作相应处理.
+2.2 MVCA-dw算法
+　　MVCA-dw算法是DW端视图维护进程执行的算法.它加强了ECA算法［3］对modify操作的支持,使实体化视图的维护更具完备性,并通过与MVCA-db建立的应答机制保证用户查询的一致性.具体算法如下.
+　　初始化：i＝0,k＝0,Collect＝,UQS＝,Top＝；
+　　对DB端发来的消息作相应处理：
+　　db_up(U)：
+　　　　　If U＝ins(r,t) then
+　　　　　　｛i＝i+1；Qi＝V(r,t)－∑Qj∈UQSPjQj(r,t)；
+　　　　　　发送dw_mv(Qi)到DB端；
+　　　　　　UQS←UQS＋Qi；Pi＝1；Top←Top＋〈ins(r,t)〉；｝
+　　　　　Else if U＝del(r,t) then
+　　　　　｛i＝i＋1；Qi＝V(r,t)－∑Qj∈UQSPjQj(r,t)；
+　　　　　　发送dw_mv(Qi)到DB端；
+　　　　　　UQS←UQS＋Qi；Pi＝－1；Top←Top＋〈del(r,t)〉；｝
+　　　　　Else if U＝mod(r,t1,t2) then
+　　　　　　｛i＝i＋1；Qi＝V(r,t1)－∑Qj∈UQSPjQj(r,t1)；
+　　　　　　发送dw_mv(Qi)到DB端；
+　　　　　　Pi＝－1；i＝i＋1；Qi＝V(r,t2)－∑Qj∈UQSPjQj(r,t2)；
+　　　　　　发送dw_mv(Qi)到DB端；
+　　　　　　Pi＝1；UQS←UQS＋Qi－1＋Qi；Top←Top＋〈mod(r,t1,t2)〉；｝
+　　db_mv(Ai)：
+　　　　　Collect←Collect＋PiAi；UQS←UQS－Qi；
+　　　　　If UQS＝ then｛MV←MV＋Collect；
+　　　　　　Repeat｛S∈Top,发送dw_ack(s)到DB端；｝
+　　　　　　Until Top中记录的操作全部被发送出去}；
+　　db_olap(A*)：
+　　　　将A*提交给OLAP应用.
+　　当某一时刻DB端数据更新的速度较快时,DW端发出的查询需要作补偿处理,UQS（unanswered query set）即是用于记录那些尚未收到结果的查询的.Collect是一个临时变量,为了防止中间状态的不一致,只有当发出的所有dw_mv查询都收到结果后,DW端的视图维护进程才用Collect更新实体化视图.V是数据仓库中实体化视图的定义,如V＝r1r2 ,则V（r1,［2,3］）＝［2,3］r2（用r1的元组［2,3］替代表达式中相应的关系）.Qi是DW端发往DB端的查询,形式上与V类似.MV是与V对应的实体化视图中元组的集合.Top用于记录DB端的数据更新操作,当这些更新已经反映到实体化视图中后,DW端的视图维护进程将利用Top,通知DB端将旧版本的数据从数据库中清除掉.
+2.3 DB端的数据表示
+　　为了使数据仓库用户的查询得到一致结果,DB端的数据在刷新时必须将刷新前的旧值保存下来,同时又不能阻碍DB端用户对数据库的正常使用,因此MVCA采用多版本方法对数据库中的刷新数据进行控制和维护.对于数据库中元组的每个“modify”操作,都相应生成一个新版本的元组,旧版本的元组只作逻辑删除,只有在收到DW端相应的应答之后才可将其作物理删除.对数据库中元组的“delete”操作亦是如此.每个元组含有hp和tp两个指针,分别指向最旧的版本和次新版本,我们用一标志位flag来区分新旧版本数据,并限制它们所能参与的运算.flag有4种可能的值.
+　　I： insert标记.表明当前元组是刚插入的,只有当收到DW端发来的ins(r,t)时,才能将此位置为“∧”（空标记,后面会讲到）.flag为“I”的元组不能参加DW端发来的dw_olap查询运算（因为它还没有反映到相应的实体化视图中）,但是可以参与dw_mv查询和正常的数据库运算.
+　　D： delete标记.表明当前元组是刚被删除的（逻辑删除）,只有当收到DW端发来的相应的del(r,t)时,才可将此元组物理删除.flag为“D”的元组只能参与dw_olap查询运算.
+　　M： modify标记.新生成的元组被置上此标记,更新前的元组作为旧版本被移入Cache或缓冲池.它的最新版本参与dw_mv运算和正常的数据库运算,最旧版本则参与dw_olap运算.只有在收到DW端发出的相应的mod(r,t1,t2)时,才可将相应的旧版本物理删除.当它只有一个版本时,即最新版本和最旧版本都是它自身时,将flag置为“∧”.
+　　∧： 空标记.空标记的元组可以参与所有运算.
+2.4 MVCA-db算法
+　　在DB端,MVCA-db算法采用多版本方法对历史数据进行控制维护,通过标志位和应答机制确保数据的一致操作.因为DB端的数据库是相对独立的,DB端并不知道自己的哪些数据参与了DW端实体化视图的计算.因此,对于数据库的每一步更新操作,DB端都需通知数据仓库,以确认是否会影响到相应的实体化视图.DB端对数据库的更新操作有3种.
+　　ins(r,t)：在关系r中插入元组t；
+　　del(r,t)：从关系r中删除元组t；
+　　mod(r,t1,t2)：用t2更新r中的元组t1.
+　　相应地,DB端发往DW端的消息是：
+　　db_up〈ins(r,t)〉；db_up〈del(r,t)〉；db_up〈mod(r,t1,t2)〉.
+　　这些消息是紧跟着相应的操作发出的.发出消息后,DB端会期待着收到来自DW端的消息,MVCA-db算法根据DW端发回的不同的消息类型作相应的操作处理.
+dw_mv(Qi)：
+　　　　　　　　　　　　　　　　　　　　　　算法1.
+　　(1) 对于r∈Qi（r是作Qi运算时涉及到的关　　Repeat｛
+系）,使用算法1读出r中所有元组；　　　　　　　　　　对于 tr,
+　　(2) 使用读出的元组作Qi运算,Ai←结果；　　　　　if t.flag=M then 读出t的最新版本
+　　(3) 发送db_mv(Ai)到DW端.　　　　　　　　　　　else if t.flag≠D then读出t｝
+dw_olap(Q*)： 　　　　　　　　　　　　　　　　　　Until r中元组已全部扫描．
+　　(1) 对于r∈Q* ,使用算法2读出r中所有元组；算法2．
+　　(2) 使用读出的元组作Q*运算；A*←结果；　　　　　Repeat｛
+　　(3) 发送db_olap(A*)到DW端；　　　　　　　　　　　　对于 tr,
+dw_ack(s)：　　　　　　　　　　　　　　　　　　　　　　if t.flag=∧或D then读出t
+if s＝ins(r,t) then t.flag=∧ /* 将t的flag置为空 */　　else if t.flag=M then读出t的
+else if s＝del(r,t) then 物理删除r中的元组t；　　　　　最旧版本｝
+else if s＝mod(r,t1,t2) then　　　　　　　　　　　　　　Until r中元组已全部扫描．
+｛物理删除r中的元组t1；
+if t2.hp=t2.tp=∧ /* 即只剩下一个版本的元组时 */
+then t2.flag=∧｝
+3 典型应用示例
+　　在第2节中,我们已经对MVCA算法进行了详细的描述.本节我们将通过一个典型示例来说明MVCA在实际应用中是怎样进行联机维护,并解决与“下钻”查询的一致性问题的.
+　　在DB端的数据库中有两个关系r1和r2.
+　　　　　　　
+
+　　数据仓库中相应的实体化视图的定义为V＝∏A,Z(r1r2),则V的元组集合为MV＝｛［1,2］,［2,2］｝.在后面的一段时间里,DB端的数据库进行了3个更新操作.
+　　del(r1,［2,4］)；
+　　mod(r2,［4,5,2］,［4,7,8］)；
+　　ins(r2,［4,9,6］).
+　　而数据仓库在实体化视图的维护期间（不妨假设为在收到DB端这3个更新操作的消息之后）启动了一个OLAP查询Q.
+　　Q： select X,Y,Z
+　　　　fromr2
+　　　　where Z in
+　　　　　　　(select Z
+　　　　　　　fromV)
+　　OLAP查询将Q分成两个按顺序执行的子查询：Q′和Q*（设Q′返回的结果为 α）.
+　　Q′： select Z　　　　　Q*： select X,Y,Z
+　　　　　from V　　　　　　　　　from　r2
+　　　　　　　　　　　　　　　　　where Z in α
+　　在不使用MVCA算法的情况下,首先执行Q′,由于此时数据仓库中V的元组集合为MV={［1,2］,［2,2］｝,所以,Q′返回的结果为α＝｛2｝；接着执行“下钻”查询Q*,此时DB端的数据库已经作了更新操作,原r2中的元组［4,5,2］已经被新元组［4,7,8］替代,r2中不再含有Z＝2的元组,所以Q*执行完成后返回的结果为.这个结果是错误的,正确的结果应该是［4,5,2］.显然,OLAP查询出现了数据的不一致性.DW端的实体化视图中含有Z＝2的元组,而DB端的数据库中却没有与之对应的原始数据.出现这种情况的原因是,Q′用的是数据仓库中尚未更新的实体化视图,而Q*则使用了数据库中更新后的数据.
+　　下面,我们将MVCA算法应用到数据仓库的联机维护中,并按照事件发生的时间顺序来说明MVCA是怎样工作并解决这种不一致问题的.
+在DB端（Ti为时标）：
+　　T1：将r1中元组［2,4］的flag置为D；发出db_up〈del(r1,［2,4］)〉； 
+　　T2：将r2中元组［4,5,2］移入Cache,将［4,7,8］存入原来［4,5,2］的位置,置［4,7,8］的flag为M；发出db_up〈mod(r2,［4,5,2］,［4,7,8］)〉；
+　　T3：在r2中插入［4,9,6］,并将其flag置为I；发出db_up〈ins(r2,［4,9,6］)〉.
+　　DB端数据库进行了上述操作之后,r1和r2就成为如下形式： 
+　　　　　
+
+　　在DW端：
+　　T4：收到db_up〈del(r1,［2,4］)〉；发送dw_mv(Q1),其中 
+Q1＝V〈( r1,［2,4］)〉＝ΠA,Z(［2,4］r2)；
+P1＝－1；
+UQS＝｛Q1｝；
+Top＝｛〈del( r1,［2,4］)〉｝；
+　　T5：收到db_up〈mod(r2,［4,5,2］,［4,7,8］)〉；发送dw_mv(Q2),其中
+Q2＝V〈( r2,［4,5,2］)〉＋Q1〈( r2,［4,5,2］)〉
+＝ΠA,Z(r1［4,5,2］)＋ΠA,Z(［2,4］［4,5,2］)；
+　　P2＝－1；
+发送dw_mv(Q3),其中
+Q3＝V〈(r2,［4,7,8］)〉＋Q1〈(r2,［4,7,8］)〉
+＝ΠA,Z(r1 ［4,7,8］)＋ΠA,Z(［2,4］［4,7,8］)；
+　　P3＝1；
+UQS＝｛Q1,Q2,Q3｝；
+Top＝｛〈del( r1,［2,4］)〉,〈mod(r2,［4,5,2］,［4,7,8］)〉｝；
+　　T6：收到db_up〈ins(r2,［4,9,6］)〉；发送dw_mv(Q4),其中
+Q4＝V〈(r2,［4,9,6］)〉＋Q1〈(r2,［4,9,6］)〉＋Q2〈(r2,［4,9,6］)〉－Q3〈(r2,［4,9,6］)〉
+＝V〈(r2,［4,9,6］)〉＋Q1〈(r2,［4,9,6］)〉＋(V〈(r2,［4,9,6］)〉＋Q1〈(r2,［4,9,6］)〉)
+－(V〈(r2,［4,9,6］)〉＋Q1〈(r2,［4,9,6］)〉)
+＝V〈(r2,［4,9,6］)〉＋Q1〈(r2,［4,9,6］)〉
+＝ΠA,Z(r1［4,9,6］)＋ΠA,Z(［2,4］［4,9,6］)；
+　　　　　　P4＝1；
+UQS＝｛ Q1,Q2,Q3,Q4｝；
+Top＝｛〈del(r1,［2,4］)〉,〈mod(r2,［4,5,2］,［4,7,8］)〉,〈ins(r2,［4,9,6］)〉｝；
+T7：用户启动OLAP查询Q,首先执行Q′,从MV中得到Z＝2后,OLAP向DB端发出“下钻”查询dw_olap(Q*),其中Q*＝ΠX,Y,Z(σZ=2(r2)).
+　　在DB端：
+　　T8：收到dw_mv(Q1),应用MVCA-db算法,计算出A1＝｛［2,8］,［2,6］｝；发送db_mv(A1)；
+　　T9：收到dw_mv(Q2),应用MVCA-db算法,计算出A2＝｛［1,2］,［2,2］｝；发送db_mv(A2)；
+　　T10：收到dw_mv(Q3),应用MVCA-db算法,计算出A3＝｛［1,8］,［2,8］｝；发送db_mv(A3)；
+　　T11：收到dw_mv(Q4),应用MVCA-db算法,计算出A4＝｛［1,6］,［2,6］｝；发送db_mv(A4)；
+　　T12：收到dw_olap(Q*),应用MVCA-db算法,计算出A*＝｛［4,5,2］｝；发送db_mv(A*).
+　　在DW端：
+　　T13：收到db_mv(A1)；
+Collect＝｛－［2,8］,－［2,6］｝；
+UQS＝｛Q2,Q3,Q4｝；
+　　T14：收到db_mv(A2)；
+Collect＝｛－［2,8］,－［2,6］,－［1,2］,－［2,2］｝；
+UQS＝｛Q3,Q4｝；
+　　T15：收到db_mv(A3)；
+Collect＝｛－［2,6］,－［1,2］,－［2,2］,［1,8］｝；
+UQS＝｛Q4｝；
+　　T16：收到db_mv(A4)；
+　　Collect＝｛－［1,2］,－［2,2］,［1,8］,［1,6］｝；
+　　UQS＝；
+　　MV←｛［1,2］,［2,2］｝＋Collect＝｛ ［1,8］,［1,6］｝（这是实体化视图维护完成后
+的正确结果）;
+　　发送dw_ack〈del(r1,［2,4］)〉;
+　　发送dw_ack〈mod(r2,［4,5,2］,［4,7,8］)〉;
+　　发送dw_ack〈ins(r2,［4,9,6］)〉;
+　　T17：收到db_mv(A*)；将［4,5,2］提交给OLAP应用（这是OLAP“下钻”查询的正确结果）.
+在DB端：
+　　T18：收到dw_ack〈del(r1,［2,4］)〉; 从r1中彻底删除［2,4］；
+　　T19：收到dw_ack〈mod(r2,［4,5,2］,［4,7,8］)〉;从r2中彻底删除［4,5,2］,并将
+［4,7,8］的flag置为∧；
+　　T20：收到dw_ack〈ins(r2,［4,9,6］)〉;将r2中［4,9,6］的flag置为∧；
+　　至此可以看到,MVCA算法不仅保证了DW端的实体化视图得到了正确的维护结果：MV＝｛［1,8］,［1,6］｝,而且保证了在对实体化视图进行联机维护的同时,用户对数据仓库的“下钻”查询Q也得到了一致的结果：［4,5,2］,而不是.
+4 结束语
+　　随着数据库应用的不断扩展和深入,人们对数据仓库的需求也与日俱增.数据仓库由脱机维护到联机维护是一个必然的过程,24(小时)×7(天)的工作模式是下一代数据仓库的重要发展方向.MVCA算法解决了数据仓库联机维护过程中所产生的一种数据一致性问题,并且由于它是在数据仓库联机状态下工作的,所以完全满足“战场决策支持”等对实时要求比较高的关键应用,它可以为指挥员提供即时的、一致的战场决策信息.
+本文通讯联系人:李子木,长沙410073,长沙工学院计算机科学系
+作者简介：李子木,1971年生,博士生,主要研究领域为数据仓库,数据库协同工作,高速计算机网络.
+孙利民,1968年生,博士,主要研究领域为分布并行计算,高速计算机网络.
+周兴铭,1938年生,教授,博士生导师,中国科学院院士,主要研究领域为数据库协同工作,分布并行计算,高性能计算机体系结构.
+作者单位：长沙工学院计算机科学系　长沙　410073
+E-mail: doctor2@nudt.edu.cn
+参考文献
+　1　Quass C. Materialized views in data warehouses ［Ph.D. Thesis］. Stanford University, 1997
+　2　Srinivasan V. On-line processing in large-scale transaction systems ［Ph.D. Thesis］. University of Wisconsin-Madison, 1992
+　3　Zhu-ge Y. View maintenance in a warehousing environment. In: Proceedings of ACM SIGMOD Conference. URL: http: //www-db.stanford.edu/warehousing/warehouse.html, 1995
+本文1998-05-05收到原稿,1998-09-01收到修改稿

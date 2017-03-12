@@ -1,0 +1,118 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.3　P.322-327
+
+
+
+用弯曲体纹理构造发型
+张晓鹏　陈彦云　吴恩华
+摘要　毛发的造型和绘制技术是当今计算机图形学中的一个突出难题.因为头发形状精细、数量庞大,传统的造型和绘制技术很难达到令人满意的效果.针对人的头发,提出并在数学上表示出了弯曲体纹理.接着参照理发师制作发型的过程,将头皮曲面予以特别处理,并以人头部的形状为依据,给出简单发型的构造方法.然后根据头皮曲面上四边形的结构关系,用插值方法将简单造型予以修正和发展,给出了几个发型构造的实例.最后绘制出具有较为真实效果的发型图.
+关键词　纹元,体纹理,Bézier曲线,Bézier体,剖分.
+中图法分类号　TP391
+Modeling Hairs with Curly Volumetric Textures
+ZHANG Xiao-peng　CHEN Yan-yun　WU En-hua
+(Laboratory of Computer Science Institute of Software The Chinese Academy of Sciences　Beijing 100080)
+ZHANG Xiao-peng
+(Laboratory of Artificial Intelligence Institute of Automation The Chinese Academy of Sciences　Beijing 100080)
+WU En-hua
+(Faculty of Science and Technology University of Macau　Macau)
+Abstract　Furry surface modeling and rendering technique is a difficult problem in computer graphics.It is very hard to obtain satisfactory results for hairstyles through traditional modeling and rendering techniques,because of the fine shapes and the huge amount of human hairs.The concept of curly volumetric textures is first presented and expressed for hairs in this paper.With reference to the process of barber's hairstyle making,scalp surface is specially processed,based on the shape of human head,a simple modeling method is given for hairstyles.Then the head surface is processed and converted to a polyhedron of quadrilaterals of neighboring relationships,and the simple modeling method is modified and developed with interpolation method.Some examples of hairstyle modeling are given.The images of hairstyles are rendered with comparatively realistic effects at last.
+Key words　Texel,volumetric texture,Bézier curve,Bézier volume,subdivision.
+　　毛发的造型与绘制一直是图形生成中的一个难点，虽然已出现一些解决方法,但结果总不理想.现有的典型方法有：几何造型法、粒子方法和纹理映射.Csuri［1］最早用成千上万个多边形处理头发.后来，Miller［2］建立了绘制丝状元素的光照模型,并把毛发按照分段丝状元素来造型,还应用改进的A-缓存方法来加速.粒子系统是生成模糊物体的常用方法,可以用来生成毛绒物体［1］.但是,粒子一般在显示时直接绘制,实际上是难以按其形状绘制高清晰度物体的.
+　　从1989年起，人们开始将高级绘制技术用于绘制头发.Kajiya和Kay［3］,Perlin和Hoffert［4］，以及Lewis［5］用体绘制和三维纹理映射的方法绘制毛绒曲面,光线跟踪体绘制技术得以应用.虽然绘制时间的开销较大,但这种方法产生了最有说服力的毛绒物体图形.纹元（texel）概念的提出和应用使时间开销问题有了一个好的解决方法.纹元是投向一个体内的三维纹理映射,该映射内曲面的标架（主法向量、切向量和副法向量）和光照模型的所有参数自由分布.一个纹元并不是约束在任何具体曲面的几何形状上,而是用于代表给定体内的所有曲面的超复杂集合,因而绘制时间与纹元内曲面的几何复杂性无关.
+　　陈宏和吴恩华［6］在1990年将辐射度技术用于毛绒曲面的绘制.按照他们的扰乱辐射度映射方法［7］,结合Kajiya的纹元思想,也达到了比较真实的效果.
+　　到了1991年，人们才开始研究生成和绘制长型头发的技术.LeBlanc［8］把每根长发定义成弯曲柱面并用多个拼接起来的直棱柱面近似表示；Magnenat-Thalmann［9］应用LeBlanc［8］的方法绘制出了“梦露”带有光照效果的头发；Watanabe和Suenaga［10,11］把头发构造成由三棱柱连续拼接的弯曲三棱柱面.为了清楚地控制头发的生成,每根头发的弧按照其长度和重力的函数来造型,因而Gouraud明暗方法中的硬件深度缓存方法可用于显示头发.Annjyo［12］,Rosenblum［13］和Shih［14］应用力学原理描述每根头发的形状.Yang［15］把头发按簇处理,有效地控制了头发的信息量.
+　　到目前为止,绘制效率和效果最好的方法还是三维纹理,Kajiya的方法在头发问题上一直没有得到很好的发展.只有陈宏和吴恩华［6］将其与辐射度技术相结合用于毛绒曲面的绘制,Neyret［16］将其应用到自然景物绘制上并取得了良好的效果.而其他文献在头发造型和绘制中都有一个缺点，即没有按照一定的组织结构精确地描述头发.它们有的只处理直发,有的把每根头发按个体处理,因而在造型控制和绘制效率上有不足之处.
+　　本文提出并描述了弯曲的体纹理,给出弯曲体纹理构造发型和绘制发型的实际方法.最后给出发型实例.
+1 弯曲体纹理
+　　人的头发,尤其是长发和卷发,具有各种弯曲的形状,直型体纹理已无法表示这些形状,因此,我们构造弯曲体纹理来表示它们.本文把三次Bézier曲线［17］、三次Bézier曲面［17］和三次Bézier曲体当成弯曲造型工具,或者说,所有需要的曲线、曲面和曲体均由三次拼接而成.
+给定4条Bézier曲线,表示一个四棱弯曲体的4条棱线.如果再给出头皮面的控制顶点和头发端面的控制顶点,然后再进行插值就可得到弯曲体纹理的方程为
+
+　　由于这个弯曲体的形状是细长的，而且头皮面块和头发端面都很小，那么我们可以认为头皮面和头发端面是双线性曲面。所以可以认为弯曲体由4条线作双线性插值得到
+
+2 头发的分批构造思想（理发师方法）及头皮数据准备
+　　自然发型丰富多彩,很具随机性,这给造型带来很大的困难.因此,我们模拟理发师构造发型的过程［18］来构造头发模型.头发的主要特性在于,每缕或每根由头皮长出,沿头皮向外的某个方向延伸,这个方向我们称为头发的始方向.理发师在理发和制作发型时,首先要把所有头发梳理整齐,使之沿头皮面和脸面落下；然后将头发分成多缕,根据各缕的位置和形状要求,分别制作发型.因此,发型的制作方法是：将头皮分成多个块,每块头皮上的所有头发具有近似的形状；对于普通长型头发来说,不同块的边沿处的头发具有近似的形状,而对于普通烫型头发来说,不同块的边沿处的头发具有差异明显的形状.
+　　人头和人体的造型可以用普通三维几何造型方法的造型工具得到,图形元素是多边形.本文所使用的人头和人体的原始模型来自3D Studio,而基本处理工具是WAVE FRONT,所以下面使用的有关造型的术语来自WAVE FRONT.由于我们构造发型所用的弯曲体纹理都是四棱的,所以,头发造型的第1项工作便是头皮的四边化.
+　　全部由矩形构成的封闭单连通多面体只有长方体,因而按照长方体细化的方法将球面四边化.由球心向内接正方体的12条棱作射线交球面于12段圆弧,并得到6块弧边四边球面曲面片,由于这些圆弧的中心都在球心,曲面四边形的对边所在平面的夹角为90°.我们只需将这两个90°二面角均匀分化,进而得到两组圆弧,它们的交就是曲面四边形的一种细化.用这种细化法所得到的子四边形的边长是相对均匀的.可以得到居于上部的弧边四边球面片多边形的各个细化子四边形的顶点,坐标为
+
+其中
+
+这样，我们就得到一个用6n2个四边形近似表示的球面.我们先按照WAVE FRONT的格式记住这6(n+1)2-6(n-1)2个顶点及6n2个四边形,再由上曲面、侧面的上层、下层,再到下底面而写出球面三维的数据文件.然后,将球心移到头心,旋转和缩放球面,使得球面的数据保持头皮的方向和对称性.最后,将球面数据由中心投影到头曲面上来,得到一个四边形组成的近似的头曲面,用以分化头皮，如图1所示.
+
+
+Fig.1 Scalp quadrilateralization
+图1 头皮四边化
+　　第2项工作是对头皮按区域分组,使得各组处于头皮的上下、左右和前后的不同位置,包括鬓角,所得到的组叫头皮组；并且各组都是由四边形组成的方形阵列,而且这些群组覆盖着所有长头发的地方.
+　　第3项工作是重新组织头皮组.不管用3D Studio，还是用WAVE FRONT,一个组的多边形按照任意顺序排列成一个序列,而各个相邻多边形之间没有位置上的几何邻接关系,这样不利于体纹理控制.我们的任务是，将每个组的四边形排列成一个矩形阵列或者一个二维数组,使得数组各元素的排列关系等同于几何邻接关系,同时也将头皮组中所有顶点按几何关系重新组织.排列方法如下：
+　　(1) 将每一个顶点中使用它的所有四边形的序号记录在这个顶点中（称这个顶点包含这些四边形）；
+　　(2) 找出一个组中所有四边形所用到的所有顶点,记录在该组中；
+　　(3) 对于任意一个给定的组而言,判断每一个顶点包含的所有四边形中有几个在该组中,因而决定出位于该组的顶点在组中处于组的角部、边部和内部,把这个位置信息记录在所有顶点中,角点共有4个；
+　　(4) 由任意一个角点所包含的那个四边形出发,不断寻找一个方向上的下一个四边形,直到遇到一个顶四边形（即包括角点的四边形）为止,这样就得到一行四边形,并且记下这行的四边形数目；
+　　(5) 重复第4部分,只要每1行的四边形数目与第1行相同,因而得到一个四边形阵列,除非这个组中的四边形在几何上并没有构成方形阵列,然后记录下四边形阵列信息；
+　　(6) 利用四边形阵列,将这个组的所有顶点也排成阵列,记录下顶点阵列信息.
+第4项工作是在重新组合的头皮组里选择不长头发的方形,只要将这种方形的一个顶点选入一个特别组――NoHair群组（该组只由顶点组成）,使得每一个长头发的方形的所有顶点都不在该组内.
+3 体纹理造型
+　　体纹理造型的目的在于根据头皮组的位置构造出以头皮四边形为底面的弯曲体纹理.我们在这部分构造了最原始的体纹理,相当于理发师把所有头发梳理整齐,使之沿头皮面和脸面落下.这里有一个要求,就是在头的上半部分空间中原始体纹理各棱线离头皮的距离基本相等,而在头的侧部基本平行于重力方向.考虑到人的头部从其截面来看近似于椭圆面,我们以椭圆为简化头部模型而构造体纹理的棱（三次Bézier）曲线,得到曲线模型.如图2所示,这里每条曲线主要依赖椭圆上的点和外法向量,而且得到的是两段 Bézier曲线的拼接曲线.然后将椭圆沿Y方向旋转360°,得到椭圆面上任意一点处的三次 Bézier棱曲线.由于从顶部观看人头部不是一个旋转体,所以这些曲线在水平方向(XZ方向)上还要进行修改,以使所有头发都在头皮面之外,但还要接近头皮.
+
+Fig.2　Basic model of edge lines
+图2　棱曲线基本模型
+　　为了对复杂的发型有效地进行控制,一个头皮方阵组对应的所有的弯曲体纹理用同一种方法进行构造,也就是说,我们通过构造方阵组每一顶点处的棱线得到弯曲体纹理的棱线,而各顶点处的棱线用来向方阵的4个角点处的四条棱（方阵组的控制线）作插值.现在使用的插值只是在方阵中各四边形顶点的头发始向间进行的（如图3所示）,而各棱线的造型利用的是如图2所示的模型,由于所有头发使用同一模型和相同的缩放变换,所以弯曲体纹理的整体分布的均匀性、连续性以及必要的分布断续性（如头发的分界线）得以保持.
+
+
+Fig.3　Interpolation for hair start directions of curly volumetric textures
+图3　体纹理头发始向的插值
+4 构造发型
+　　我们认为,所有头发或弯曲体纹理接近头皮向四周各个方向下落.在一个方阵头皮组内,相邻头皮四边形的4个弯曲体纹理侧棱公用,因而从头顶来看,侧棱处于向四周发散的状态.
+　　在构造基本发型的时候,遇到的第1个问题是旋点处头发的分布情况.在旋点附近，头发的密度与其他处相同或相近,并且要向四周分散开.弯曲体纹理上底面的线度会很大而不成为一缕头发,需要进行调整,基本方法是将处于旋点附近的方阵组的4个角点的法向量予以旋转（沿竖直方向）,使这4个角点法向量的夹角尽量小.
+　　下面构造的是整个头曲面上的头发,其中有的遮挡住了面部,对于这些头发，我们采用剪发方法和扰开方法来处理.为了保持头发的整体连续性,弯曲体纹理棱曲线的造型方法必须统一.剪发方法采用Bézier曲线的剖分方法将其在一定的高度分成两段,用前一段替代原曲线,这样，头发的均匀性就保持下来（如图4所示）.在预处理时,我们将头皮的前额分成左右两块,扰开方法使得这两块方阵组的角向量进行转角（只旋转分界线上两角点处的法向量,而非分界线处的法向量不变,为的是使这两个方向的头发与其他方阵组保持连续）,以露出面部（如图6所示）.两个鬓角处的头发一般贴在脸上,与其他头发分离,因而对鬓角处的弯曲体纹理进行特别变换,使其紧贴着脸面.
+
+Fig.4 Front face of short hairs
+图4　短发正面
+　　对于较长的头发来说,头发末端因烫发或衣服顶撞而向内或向外弯曲.我们在此弯曲体纹理的下端再续上另外一个三次的Bézier体纹理,要求前后体纹理的各棱线保持一阶连续,并且基本均匀地分布,使用的模型如图2所示.
+　　在以上造型完成以后,对体纹理的数据加以随机扰动,以使发型达到自然的效果.先将方阵组的法向量作轻微的扰动,为使各体纹理不致于相交,再对发稍端点在切方向作扰动,使得发稍参次不齐,如图4和图5所示.
+
+Fig.5 Side face of short hairs
+图5　短发侧面
+5 发型的绘制、实验结果与结论
+　　因为头发的数量非常庞大,每根头发的直径又远小于屏幕像素的宽度,发型的绘制一直是真实感图形绘制中比较困难的一个问题,我们在此利用OpenGL中多边形绘制方法,将头发处理成四棱柱,然后用16点反走样得到如图4～7所示的造型效果图.
+
+Fig.6 Front face of long hairs
+图6　长发正面
+
+Fig.7 Side face of long hairs
+图7　长发侧面 
+　　在此要说明的是,我们采用的人头曲面数据全部为三角形,图1只用于控制体纹理.
+　　下面，我们通过4个例子来实现弯曲体纹理方法.
+　　图4是一个短型头发的例子,头顶处的分界线通过两个方阵组的前中法方向向外旋转90°,而后中法方向不变而得到.图4共用了1 071个弯曲体纹理、20个方阵组、40 600根头发,离散成19 116个直型体纹理.图5是图4的侧像.图6是一个长型头发的例子,头顶处的分界线也通过两个方阵组的前中法方向向外旋转90°,而后中法方向不变；头前侧的分界线通过两个方阵组的前中法方向向外旋转一个角度,而后中法方向向外旋转90°而得到；共用了1 071个弯曲体纹理、20个方阵组、40 600根头发,离散成35 856个直型体纹理.图7是图6的侧像.
+　　通过以上实例,我们可以看出,弯曲体纹理在人的发型造型上具有容易实现、可控性强的优点,因而是一种有效的发型造型方法.
+本文研究得到国家自然科学基金资助(No.69875019,69843001,69633030).
+张晓鹏,1963年生,博士后,主要研究领域为计算机图形、图像，计算机辅助设计。
+陈彦云，1971年生，博士生，主要研究领域为真实感图形生成。
+吴恩华，1947年生，博士，研究员，博士生导师，主要研究领域为计算机图形学，CAD。
+张晓鹏(中国科学院软件研究所计算机科学开放研究实验室　北京　100080)
+陈彦云(中国科学院软件研究所计算机科学开放研究实验室　北京　100080)
+吴恩华(中国科学院软件研究所计算机科学开放研究实验室　北京　100080)
+张晓鹏(中国科学院自动化研究所人工智能实验室　北京　100080)
+吴恩华(澳门大学科学与技术系　澳门)
+参考文献
+1，Csuri C,Hakathorn R,Parent R et al.Towards an interactive high visual complexity animation system.Computer Graphics,1979,13(2):289～299
+2，Miller G.From wire-frame to furry animals.In:Sherin A G ed.ACM Proceedings of Graphics Interface.Toronto:Canadian Information Processing Society,1988.138～146
+3，Kajiya J,Kay T.Rendering fur with three dimensional textures.Computer Graphics,1989,23(3):271～280
+4，Perlin K,Hoffert E.Hypertexture.Computer Graphics,1989,23(3):253～262
+5，Lewis P.Algorithm for solid noise synthesis.Computer Graphics,1989,23(3):263～270
+6，Chen H,Wu E.An efficient radiosity solution for bump texture generation.Computer Graphics,1990,24(4):125～134
+7，Chen H,Wu E,Radiosity for furry surfaces.In:Post F H,Barth W eds.Proceedings of the Eurographics'91.Amsterdam:Elsevier Science Publishers,North-Holland,1991.447～457
+8，LeBlanc A,Turner R,Thalmann D.Rendering hair using pixel blending and shadows buffers.Journal of Visualization and Computer Animation,1991,2(3):92～97
+9，Magnenat-Thalmann N,Thalmann D.Complex models for animating synthesis actors.IEEE Computer Graphics and Applications,1991,11(5):32～44
+10，Watanabe Y,Suenaga Y.A trigonal prism-based method for hair image generation.IEEE Computer Graphics and Applications,1992,12(1):47～53
+11，Watanabe Y,Suenage Y.Drawing Human hair using wisp model.The Visual Computer,1991,7(1):97～103
+12，Anjyo K,Yoshiaki U,Tsuneya K.A simple method for extracting the natural beauty of hair.Computer Graphics,1992,26(2):111～120
+13，Rosenblum R,Canlson W,Tripp E.Simulating the structure and dynamics of human hair:modeling,rendering and animation.Journal of Visualization and Computer Animation,1991,2(4):141～148
+14，Shih Z,Guo H.The modeling and animation of Human hair.In:Chen J ed.Proceedings of Pacific Graphics.Singapore:World Scientific,1994.215～227
+15，Yang X,Xu Z.Adaptive rendering of multiresolution cluster hair model.In:Yang S,Thalmann D ed.Proceedings of the Pacific Graphics.Chiao Tung University,1996.36～49
+16，Neyret Fabrice.Modeling,animating,and rendering complex scene using volumetric textures.IEEE Transactions on Visualization and Computer Graphics,1998,4(1):55～70
+17，Farin G.Curves and surfaces for computer aided geometric design.2nd Edition.San Diego:Academic Press Inc.,1990
+18，Song Li-na.International Top Hairdressing.Shanghai:Shanghai Jiaotong University Press,1995
+(宋丽娜.国际尖端美发.上海：上海交通大学出版社,1995)
+收稿日期：1998-11-20
+修稿日期：1999-04-01

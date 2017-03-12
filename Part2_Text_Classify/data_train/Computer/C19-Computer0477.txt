@@ -1,0 +1,77 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.401-404
+
+
+
+面向非线性规划问题的混合式遗传算法
+唐加福　汪定伟　高振　王瑾
+摘　要　面向非线性规划问题,通过引入准可行方向、准可行方向的可行度等新概念，提出了描述和度量非可行点(染色体)的新方法;通过嵌入非可行染色体的信息于评价函数中,突破传统的给非可行染色体以大的惩罚的思想, 提出了三种新的评价非可行染色体的方法.基于梯度方向搜索和新的评价方法, 提出了一种新的沿权重梯度方向变异的混合式遗传算法(HGA).对测试问题的仿真结果表明了算法的有效性.
+关键词　非线性规划, 混合式遗传算法, 权重梯度方向, 准可行方向.
+HYBRID GENETIC ALGORITHM FOR SOLVING NON-LINEAR 
+PROGRAMMING PROBLEM
+TANG Jiafu　WANG Dingwei　GAO Zhen　WANG Jin
+(Institute of Information Science and Engineering,Northeastern University,Shenyang　110006)
+Abstract　　Based on the introduction of the new concepts of semi-feasible direction,feasible degree of semi-feasible direction,feasible degree of illegal points ‘belonging to' feasible domain,etc.this paper proposes a new method for formulating and evaluating illegal points and three new kinds of evaluation functions,and develops a special hybrid genetic algorithm(HGA) with penalty function and weighted gradient direction search for non-linear programming problems.Simulation shows that this method is effective.
+Key words　Non-linear programming,hybrid genetic algorithm,weighted gradient direction,semi-feasible direction.
+1　引　言
+　　传统的解决非线性规划问题的方法有多种［1］,如惩罚函数法、可行方向法等,且各有其相应的适应范围和局限性.作为一种智能化优化方法, 遗传算法(GA)［2，3］以其优越的性能广泛地应用于求解旅行商问题、分配问题和0-1规划问题等.但用GA于连续型的非线性规划问题, 还只限于传统的方法. 况且用GA于非线性规划问题时,系统约束的处理技术至关重要,因为遗传算子产生的染色体常常突破给定问题的约束, 这是常见而又关键的问题［4］. 处理这种非可行性的传统方法, 是给那些非可行的染色体以大的惩罚或者舍弃非可行染色体.其本质上是在进化过程中淘汰非可行解而缩小搜索空间. 这样，用选择机理很难找到全局好的候选解,遗传搜索将失去效率.为了克服这个问题, 本文提出了描述和度量非可行染色体的新概念,通过把非可行染色体的信息嵌入到适应性函数中, 以度量非可行染色体脱离可行域的程度, 提出了评价非可行染色体的三种新方法.基于梯度方向搜索和新的评价函数,提出了一种新的混合式遗传算法求解连续型的非线性规划问题.
+2　求解非线性规划问题的混合式遗传算法（HGA）
+　　本文考虑的非线性规划问题具有如下一般形式(NLP)
+max f(x)=f(x1,x2,…,xn),
+st.　x∈Q=｛x∈En｜gi(x)≤0,i=1,2,…,m｝.
+　　假设f(x),gi(x)在En上连续且有一阶导数.本文基于梯度方向搜索和新的评价函数提出的混合式遗传算法的基本思想是，首先随机产生初始种群(种群大小为popsize).在每次迭代中,对于每个个体xQ,将非可行染色体的信息嵌入到适应性函数中构造新的评价函数,使之具有较小的适应性值,但非零;每个个体在迭代中按滚动轮策略被选取沿权重梯度方向［5～7］,经变异产生子个体.对于x∈Q,按算术组合交叉算子产生子代.随着迭代步数的增加,具有较小适应性值的子个体逐渐被淘汰,而留下来的则是适应性值较大即目标函数值较大的子个体.遗传搜索保证从可行域和非可行域两侧趋于最优解.
+2.1　权重梯度方向
+　　对于个体x,如果x∈Q,则沿目标函数的梯度方向　Δ　f(x) 搜索,可使目标函数得到改进.如果xQ,说明x不在可行域内,令I+=｛i｜gi(x)＞0,x∈En｝.对于i∈I+,如果x沿负梯度方向-gi(x)搜索,可使子个体满足gi(x)≤0,且权重越大,满足gi(x)≤0的搜索速度越快. 构造权重梯度方向其中w0,wi(i=1,2,…,m)是梯度方向权重.令w0=1,定义
+
+其中δ是用于调整的很小正数.x(k)i沿权重梯度方向d(x(k)i)经变异产生子个体x(k+1)i可以描述为x(k+1)i=x(k)i+β(k)d(x(k)i)，β(k)是均值衰减的Erlang分布随机数步长.
+2.2　非可行点的描述与度量
+　　用GA求解带有约束的优化问题时, 约束的处理问题极为重要,即如何描述和度量非可行点, 在搜索过程中如何利用非可行点与可行域的关系信息来选择与评价.
+　　令gmax(x)=max{gi(x),i=1,2,…,m}.
+　　定义1.点x与可行域Q之间的“距离”d(x,Q)为点x突破约束的最大值，即d(x,Q)=max{0,gmax(x)}, 令k0=arg{i｜hi(x)=hmax(x),i=1,2,…,m}.
+　　定义2. 非零向量-gk0(x)为x的主导准可行方向.
+　　定义3. 非零向量z在点xQ“指向”可行域,如果满足zT(-gk0(x))＞0.
+　　定义4. 非零向量z在点xQ“远离”可行域,如果满足zT(-gk0(x))≤0.
+　　定义5. 非零向量z在点xQ是准可行方向,如果z在点xQ“指向”可行域.
+　　显然, 主导准可行方向是准可行方向.权重梯度方向满足如下定理.
+　　定理1. 对于是准可行方向.
+　　证明.如果xQ满足准可行方向的条件，则z是准可行方向;否则,通过如下方式调整系数δ→δ/2, 直到得到准可行方向.因为δ越小,可以证明沿gk0(x)方向的权重较任何其它gi(x)方向的权重越大,-z越偏向gk0(x)方向,因而能确保其得到准可行方向.
+　　定理2. 对于xQ,构造的权重梯度方向d(x)是准可行方向(同理可证).
+　　定义6.非可行点xQ的准可行方向的可行度fd1=-d(x)Tgk0(x).
+　　为描述非可行点与可行域的关系,引进非可行点“属于”可行域的可行度概念.
+　　定义7. 非可行点(染色体)xQ“属于”可行域的可行度fd2为
+
+其中γi表示x满足第i个约束条件的程度.非可行点可行度fd2的大小反映了点“属于”可行域的程度;可行度越大, 表示突破约束越少,“属于”可行域的希望越高, 如果fd2=1，完全属于可行域;反之,0≤fd2＜1，尽管从精确(清晰)数学的意义上来说,xQ,从模糊的观点来理解, 表示点x隶属于可行域的程度(隶属度).我们正是利用这一特点来描述和度量非可行点. 基于以上分析,提出度量非可行点(染色体)的三种新的评价函数方法: 
+　　1)嵌入非可行点准可行方向的可行度，构造评价函数
+
+　　2)嵌入非可行点“属于”可行域的可行度，构造评价函数
+
+　　3)嵌入非可行点“远离”可行域的距离，构造评价函数
+
+2.3　GA基本要素的选取
+　　1)基因表达式.用决策变量的n维实向量表示子个体.
+　　2)初始种群. 为了提高搜索速度,依据具体问题,选取每个基因的上限和下限;采用均匀分布随机数发生器产生染色体的初始种群.
+　　3)交叉. 交叉操作主要发生在迭代的后期.这时大部分染色体都在可行域内,况且都在最优解的邻域内.对于x∈Q的一对染色体, 以很小的概率按算术组合交叉算子进行交叉.
+　　4)变异.变异操作是HGA的主要操作,也是本混合式遗传算法的特色;沿权重梯度方向变异是HGA的新颖之处. 按式x(k+1)i=x(k)i+β(k)d(x(k)i)进行变异操作.
+　　5)染色体评价与选择策略.采用新的评价函数，用滚动轮策略选择个体.
+　　6)停止准则. 根据计算精度的要求,确定最大的迭代步数.
+3　结　论
+　　混合式遗传算法(HGA)把梯度方向搜索和新的评价函数嵌入到遗传算法中，构造一个沿权重梯度方向变异的新颖混合式遗传算法，具有如下特点:1)HGA采用一种新的权重梯度方向变异算子为主要算子,只在迭代后期以很小的交叉概率,采用算术组合算子为交叉算子；2)首次提出非可行点的主导准可行方向,准可行方向及可行度、非可行点属于可行域的可行度等新概念;提出了描述和度量非可行染色体的新方法；3)嵌入非可行染色体的信息于评价函数中,突破传统的给非可行染色体以大的惩罚的思想,提出了三种新的评价非可行染色体的方法；4)采取全方位搜索方式,避免陷入局部最优;步长的选取具有随机性,且均值衰减.
+　　对测试问题进行了实例计算和仿真分析,并同传统的GA方法和惩罚函数法进行了比较研究［6，7］,仿真与比较结果表明了HGA算法的有效性.
+国家自然科学基金(69684005)、辽宁省科学基金(26249)和东北大学中青年基金资助课题.
+　　唐加福　1965年生.博士.现为东北大学副教授、香港城市大学高级副研究员.感兴趣的研究领域是模糊优化理论与方法和智能化优化方法.在国内外重要期刊和学术会议上发表论文25篇.
+　　汪定伟　1948年生.1993年于东北大学获工学博士学位.1994年在美国北卡州立大学作博士后研究工作.现任东北大学自动控制系教授、博士生导师.感兴趣的研究领域是CIMS中生产存储管理的建模、优化与控制、模糊优化理论与方法、智能化优化方法等.在国内外重要期刊发表论文80余篇，出版专著3部，译著2部.
+唐加福（东北大学信息科学与工程学院　沈阳　110006　E-mail:jftang@mail.neu.edu.cn）
+汪定伟（东北大学信息科学与工程学院　沈阳　110006）
+高振（东北大学信息科学与工程学院　沈阳　110006）
+王瑾（东北大学信息科学与工程学院　沈阳　110006）
+参考文献
+［1］　Bazaraa M S, Shetty L M. Non-Linear Programming: Theory and Algorithms,New York:John.Wiley & Sons, 1985
+［2］　Holland J H. Adaptation in Natural and Artificial Systems.New York:The University of Michigan Press,1975
+［3］　Takao Y, Mitsuo G et al. A method for interval 0-1 number non-linear programming problems using genetic algorithm. Computers & Industrial Engineering,1995,29:531～535
+［4］　Michalewicz Z. A survey of constraint handling techniques in evolutionary computation methods. In: Evolutionary programming IV, MIT Press,1995.135～155
+［5］　唐加福,汪定伟.一种求解非线性规划问题的改进遗传算法.东北大学学报,1997,8(5):490～493
+［6］　Tang J, Wang D, Ip A, Fung R Y K. A hybrid genetic algorithm for a type of nonlinear programming problems. Computers & Mathematics with Applications,1998,36(5):11～21
+［7］　唐加福.基于遗传算法的模糊优化理论方法及应用研究.［博士学位论文］.东北大学信息科学与工程学院，1999
+收稿日期　1998-06-02
+修稿日期　1999-04-12

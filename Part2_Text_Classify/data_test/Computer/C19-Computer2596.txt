@@ -1,0 +1,122 @@
+软件学报
+JOURNAL OF SOFTWARE 
+1999年 第10卷 第5期 Vol.10 No.5 1999
+
+
+
+碰撞检测问题研究综述
+王志强　洪嘉振　杨辉
+摘要 物体之间的干涉和碰撞检测在图形学、仿真、动画和虚拟现实等技术中得到广泛的研究，具 有很重要的意义.文章从平面中的可碰撞问题、可移动性问题、最初碰撞点的检测问题、三 维空间中可碰撞问题以及碰撞规避问题等几方面对碰撞问题的研究和发展作了一个较全面的 综述，并对碰撞检测算法的效率和可靠性的提高提出3点建议.
+关键词　干涉，碰撞，路径规划，扫描体，空间分解.
+中图法分类号　TP391
+A Survey of Collision Detection Problem
+WANG Zhi-qiang HONG Jia-zhen YANG Hui
+School of Civil Engineering and Mechanics Shanghai Jiaotong Uni versity Shanghai 200030
+Abstract　 The interference and collision detection problem among objects is widely studied in graphics, simulation, animation and virtual reality technologies etc., and h as great signification. A comprehensive survey of study and development of colli sion problem is given in the field of the collision detection, the movable distr ict and the first collision part in 2D and the collision detection and collision avoidance in 3D.
+Key words　Interference, collision, path planning, swept solids, space partitioning.
+　　随着计算机图形学、仿真技术和硬件技术的发展，用高质量的计算机动画来对现实世界进行 模拟与再创造已成为可能.很多专家和学者都研究了在动画演示与模拟中的一个很重要的问 题--物体之间的干涉和碰撞，并在理论和实际方面提出了许多有重要价值的研究结果.图 形移动时的碰撞检测问题在计算机图形学、CAD/CAM、动态系统模拟、机器人学以及实时干 涉布局等问题中都有着广泛的应用.
+　　碰撞问题牵涉到碰撞检测和碰撞响应两部分内容.由于碰撞响应问题属于力学的研究领域， 故本文主要对碰撞检测问题的研究与发展过程作一个较全面的综述.碰撞问题的具体应用很 广泛，例如,虚拟环境应用中的飞行员和宇航员的培养与训练、机器人的路径规划和学习、 交互式动画系统、服装CAD中衣物与人体躯干的配合等.碰撞检测问题按运动物体所处的空间 可分为二维平面碰撞检测和三维空间碰撞检测.由于平面物体的构造都可用多边形来表示， 故其检测算法相对要简单一些；而三维物体的构造比较复杂，所以,其碰撞检测算法也比较 困难.
+　　关于平面碰撞检测问题的研究主要有3个方面,包括可碰撞、可移动区域和最初碰撞部位的检 测.关于三维空间碰撞问题的研究一般有可碰撞和碰撞规避两方面.所谓可碰撞问题就是物体 A和B在空间沿给定轨迹移动时是否发生碰撞.可移动区域就是物体A沿给定的规律运动,而 不与物体B发生碰撞的所有可能运动的区域.最初碰撞点的检测就是当物体A以给定的运动规 律运动,并将与物体B发生碰撞时，检测它们在最初发生碰撞时的接触部位.碰撞规避就是 两个或多个物体的无碰撞运动.本文就从这几方面着手,对碰撞问题的研究和发展作一个比较 全面的综述.
+1 平面碰撞问题
+　　近10几年来，许多专家学者对平面碰撞问题进行了深入的研究，并取得一些很好的结果，提 出了许多算法.
+　　Tetsuya，Toshiaki和Mario等人提出了一种称为空间占有的方法，即物体在目标空间移动, 当试图占有相同的球体时来检测它们的碰撞［1］.这种算法基于这样一条原理：没有 任何物体和其他物体占有同一个球体,也不需要特殊的计算来检测碰撞.并且，在它们的方法 中,每个物体连同它们所占有的球体在3D空间中都被赋予一个名字，因而其他物体知道它们 和哪个物体发生碰撞.
+　　Chin和Wang研究了两个多边形的相交和最小距离问题.利用可视边链和凸的顶点相对于其内 部点的单调性，提出了判别凸n-边形和一个简单非凸m-边形的相交问题的最优算 法［2］,并且研究了当两个多边形相交时一个多边形是否被另一个多边形完全包含的 问题，其时间复杂度都为O(m+n).
+　　李辉利用最大最小坐标的顶点子集的方法研究了一个凸多边形沿一给定方向移动时是否与另 一凸多边形发生碰撞,并且利用斜支撑线的方法来研究一个凸多边形相对于另一个凸多边形 的可移动区域问题［3］，提出了时间复杂度为O(log(n+m))和O(m+n)的算法 ，在常数意义下,它们都是最优的.
+　　覃中平、张焕国研究了平面内两个互不相交的凸多边形P和Q，若P沿给定方向移动 时将与Q相碰撞，采用折半搜索技术来确定P与Q相碰撞时两者的最初相碰撞的顶点和边 ［4］，提出了时间复杂度为O(logm+logn)的最优算法.
+汪嘉业利用单调折线研究了在一个多边形的凸包和另一个多边形不相交的条件下，确定两个 多边形是否碰撞，并在碰撞时确定全部碰撞部位的问题［5］，提出了时间复杂度为 O(m+n)的最优算法，并且其算法还可推广到确定包含有圆弧边的多边形之间的最初碰撞 部位.
+　　李庆华利用凸多边形顶点集上的偏序关系，采用四分搜索方法构造了判定凸多边形P沿以平移方式运动时是否与Q相撞的判定问题［6］.提出了判定可碰撞性的新的充 分必要条件，提出在最坏情况下时间复杂度为O(logn)的最优算法.
+　　David Baraff研究了平面内多个凸多边形的碰撞问题，并采用将凹多边形分解为凸多边形的 方法来求解碰撞问题，其实质还是凸多边形的碰撞问题［7］.
+　　另外，覃中平等人在文献［8～10］中研究了多边形碰撞检测问题的其他一些方面.他们所研 究的一般都是在一个凸多边形或一个简单多边形的凸包不与另一个多边形相交这种情况下的 碰撞问题，而对两个多边形的凸包有可能相交时或简单多边形的碰撞检测问题则研究得较少 .
+2 三维空间的碰撞检测问题
+　　从对平面碰撞检测问题的研究中，可得到有力和巧妙的技巧.而对于空间（≥3D）的情形， 则潜藏着难以克服的困难，这也许是平面碰撞问题已得到很深入的研究,并提出了很多种最 优算法,而对于空间问题尚少有高效算法的一个原因吧.很多学科都对研究和模拟三维物体的 干涉问题感兴趣.物体的干涉是两个或多个物体的体积占有相同的空间.通常，物体的干涉有 两大类：静态干涉和动态碰撞检测.动态碰撞检测就是沿特定轨迹移动的物体的干涉检测.动 态碰撞检测算法又可分为两大类：① 判断移动的物体之间是否发生碰撞亦即可碰撞问题;② 检测到碰撞的存在并采取措施进行规避,也就是碰撞规避问题.由于静态干涉检测算法是动 态碰撞检测算法的基础，故下面先对静态干涉检测算法作个简要的介绍，然后再对可碰撞问 题和碰撞规避问题进行讨论.
+2.1 静态干涉检测算法
+　　根据所用实体表示模型的不同，现有实体干涉检验算法大致可分成两类.一类算法主要基于 B-rep模型.提高算法效率的关键是如何减少被测元素的数量.在这方面,Ganter［11］ 利用空间分割技术作出了新的尝试.另一类算法是以层次模型为基础的，如,文献［12,13 ］提出的八叉树干涉检验算法和文献［14］提出的层次Sphere检验算法等.由于层次模型中 相邻两层节点的检测过程之间缺乏直接联系，即一个层次上的干涉检验结果并没有反映出下 一个层次节点的状态信息，因此无法对检验过程进行优化，以减少不必要的运算.
+2.2 可碰撞问题
+　　历史上主要有两类技术被用于动态碰撞检测.第1类技术是一种基于在给定轨迹上反复利用静 态干涉检测被称为“单步检测”的方法，即当物体移动过程中将轨迹划分为很多时间步，在 每一个时间步都进行静态干涉检测,来判定运动的物体之间是否发生碰撞.Maruyama介绍了多 面体之间的静态干涉检测的第1种一般方法［15］，提出了一种递归空间分割算法和 一种一般的面对面相交算法.然而，Boyse提出了第1种可用的单步检测系统［16］.计 算几何领域对许多其他相交测试技术进行了规范化和分类.其中有许多技术是二维相交技术 的延伸和扩展［17,18］.
+　　第2类技术是基于产生称之为“扫描实体”的物体.这些物体代表了物体在给定轨迹上移动过 程中所占有的体积空间.如果环境中的物体在它们各自的轨迹上行进时会发生碰撞，那么它 们各自的扫描体将会静态干涉.因而，扫描体可用简单的静态干涉检查来对动态碰撞进行测 试.这些扫描体的产生是运动学和实体模型的结合.由于实体模型具有多种表示方式，因此, 多种形式的扫描体被提出.构造实体几何模型（CSG）是由Cameron［19］和Wang ［20］独立提出来的.Cameron称动态干涉为“接触检测”,并发展了时-空扩展.然而，Wa ng专注于发展用包络曲线来产生CSG扫描体,并将扫描实体用于制造领域.边界表示模式（B- Rep）是由Korein［21］和Ganter［22］研究和发展起来的.Korein在区域问题 的几何研究中限制了可允许轨迹和物体.Ganter在他的扫描实体的构造过程中,允许一般的轨 迹,但把物体限制在凸多面体.Ganter的相关轨迹的应用仅需要构成一个扫描体来进行动态干 涉检测.近来，Cameron［23］利用一种约束的方法来形成“S-边界”,对CSG定义的 物体提出了有效的相交测试方法.这种S-边界通过CSG布氏代数的处理来检测相交的存在.
+　　虽然扫描体可用于许多有趣的工程问题，但在现在的计算机图形硬件条件下,单步检测方法 更适合于实时计算机图形显示.并且扫描体方法也没有单步检测方法所具有的决定碰撞时间 的灵活性.最后，用扫描体来进行碰撞检测需要利用一个独立的步骤来产生扫描实体.
+　　Ganter和Isarankura发展了单步检测方法［11］，提出了一种空间分割技术的方法， 这种空间分割技术将包含物体的空间划分为一个个子空间，将所有的测试限制在两个物体的 重叠局部区域来进行.并且,在重叠区域内的所有的子空间都按照它们的最小、最大值来排序 .然而在空间分割技术中,子空间的个数将影响到检测结果的正确性和算法的效率.如果利用 过多的子空间，将会耗费大量的计算时间;如果子空间的个数过少，则会发生漏判或错判现 象.
+　　Hahn采用层次包围盒技术来加速多面体场景的碰撞检测［24］.Moore则提出了两个有 效的碰撞检测算法［25］，其一是用来处理三角剖分过的物体表面.由于任一问题表 面均可表示成一系列三角面片，因而该碰撞检测算法具有普遍性.该算法的缺点是,当景物为 一复杂的雕塑曲面时，三角剖分可能产生大量的三角片，这会大大影响算法的效率.而另一 算法则用来处理多面体环境的碰撞检测.Moore和Wilhelems［25］根据Cyrus-Beck裁 剪算法［26］提出了一种凸多面体碰撞检测算法，即通过检测多面体顶点是否相互包 含来判定它们是否发生碰撞.对于具有n个凸多面体、每个多面体有m个顶点的问题,此算 法的时间复杂度为O(n2m2);对于凹多面体则分解为多个凸多面体来处理.Baraff,H erzen等人提出了基于参数曲面的几何碰撞检测算法.Baraff将两刚体的碰撞检测转化为一隐 式约束方程，由此可方便地决定两刚体是否相碰［27］.而Herzen等人用数值求解两 参数曲面在接触点处或最近点处的参数值来判定它们是否相交,并应用层次细分技术［2 8］.Dai将物体简化为凸壳、球壳和柱壳，然后计算中心点的距离与它们半径之和的关系 来判定两物体是否可能碰撞，如果可能碰撞，再求取它们的交［29］.Ganter和Isara nkura提出了一种空间分割的方法，即将给定物体所占有的空间划分成一系列子空间，将碰 撞测试限定在两物体的重叠子空间中进行，并且在重叠子空间里的元素都按最大、最小来排 序,从而进一步减少了测试时间［11］.最坏情况下的处理时间为O(*N2/2)，*N 是重叠区域的单元面的总个数.在空间分割算法中，影响算法效率的一个很重要的因素是分 区的多少.按照经验,最优分区数目应在物体总的单元面个数的1～25%之间.Alonso, Serrano 和Flaquer采用定义碰撞影响矩阵及体元的数据结构等一些优化策略来加快碰撞检测［3 0］，它们的算法分4步来检测两个物体的干涉：(1) 检测碰撞影响矩阵；(2) 计算每对容 器之间的干涉；(3) 计算体元之间的干涉；(4) 计算面与面之间的干涉.算法的基本思想是 每一步都比它的下一步快，因而,假如在某一步发现两个物体不会碰撞,就不必进行下面的测 试，从而可节省计算时间.
+以上所提到的研究主要是针对“硬体”，例如,刚体和自由形状的物体.事实上,针对“硬体 ”提出的一些方法也能应用于“柔软的”人造物品.例如，编织衣物的传统曲面设计方法能 应用于样品构造.Hinds和McCartney把雕塑曲面技术应用于3D衣物设计过程中［31］. Bez,Bricks和Ascough在布料装饰模拟系统中把碰撞问题延伸和应用于人体［32］.其 基本思想是,把潜在的复杂容积转换成对称的容积,然后在转换后的容积空间中解答有关碰撞 问题.这种方法的关键之处在于转换函数F和其逆函数F-1的构造，若转换函数简 单有效,则这种方法也是简单有效的.
+2.3 碰撞规避问题
+　　碰撞规避是两个或两个以上的物体的无碰撞运动.碰撞规避可以分为两类：连续运动或动态 路径规划技术和静态碰撞检测算法.
+碰撞规避问题的求解方法主要有两类.一类方法主要针对在静态环境中某一点的最短路径.这 类算法主要应用在2D空间中.另一类方法应用于移动物体的外形空间中.但是这类算法只适用 于仅有一个外形的情况.另一方面，所有这些方法都基于静态环境路径的预先计算.假如环境 发生改变，整个过程都必须重新运行.这是很耗费时间的.对于一个动态环境，另一类方法也 许更有效.这类方法通过两个步骤进行迭代：对一系列轮廓沿着给定的路径进行测试,然后提 出一个规避运动.由于路径的测试是在小增量的条件下进行，物体的运动能够被简单地考虑. 它也允许人们对一个随意构造的运动链进行无碰撞规划.Dai［29］提出的方法也属于 “单步检测法”.他利用对逆运动学问题和路径增量分析进行数值求解.这种方法的优点是, 它与运动物体的构型无关.所有考虑局部物体来产生运动路径的方法的缺陷是,规避一个将要 碰撞的物体可能引起和别的物体发生碰撞.
+　　在连续运动或路径规划问题中，每个物体的位置和速度必须预先知道.Erdmann和Lozano-Pe rez［33］利用选取没有碰撞发生的路径来防止碰撞，利用例如“产生-测试”的模 式来分析、计算它们.这种方法给每个物体赋予一个优先级，按照优先级一次产生一条路径. 每当产生一条路径，系统就对它和所有已经存在的路径作相交测试.假如发现相交，就改变 这个物体的路径并且重复这个过程.如果不存在相交，系统继续运行,并对下一优先级的物体 进行这个过程.
+　　“产生-测试”技术的变种--“外形空间方法”［34］是由Whitesides提出的.移 动的物体被缩减到一点,而障碍物按照移动物体缩小的比例被“生成”或增长.碰撞规避问题 保持不变,但移动物体现在能够当作一点来处理.在“外形空间”方法中,无碰撞路径是通过 在初始和目标位置与生成后的障碍物的顶点之间用直线连接而产生的.这种技术很难扩展到 三维空间,并且在产生障碍物的轮廓时也会产生不合需要的结果.
+　　Cameron提出了另一种路径规划技术，称之为“四维相交测试”［35］方法.这种方法 将时间也作为物体的一维.最初的3D物体被时间维来延伸，因而产生新的4D物体.假如没有检 测到碰撞，物体的路径是无碰撞的.这种方法的主要局限性是根据它所能考虑的物体的形状 和运动的复杂程度来决定的.简单形状和线性运动在这种场景下运行很好，但是比较复杂的 物体或路径就不能很好地处理.
+　　Cameron同样提出了“四维相交测试”方法的一种变异.取一个三维物体,产生一个包含其在 时间历程内所扫描过的体积的新的3D物体［36］.如果物体碰撞，那么它们的扫描体 一定相交.这种方法很直观,但却具有局限性.其中的一个问题是很难清楚地表示扫描体,另一 个问题是在交叉测试时缺少即时信息.
+　　路径规划技术的强劲之处在于它们的高精确度.可能的碰撞不会遗漏，选取的路径往往是最 优的.然而它也有几个缺陷.一个最重要的方面是需要预先知道一个物体的位置和速度,另一 个缺点是计算复杂度.一些路径规划技术还有一个很大的局限性,即它们仅仅处理一个移动物 体--所有其他物体必须保持静止.
+　　碰撞规避算法的第2类是静态碰撞检测方案，对于即将来临的碰撞,求解一系列静止状态,并 采取措施来规避它们.这些算法在特定的时间场合冻结物体,然后在这些时间片断内进行相交 检测.当物体被冻结时，相交测试就检测物体之间的任何重叠.假如测试发现物体重叠，它们 的位置就会被改变来模拟碰撞,然后再重复这个过程.
+　　Cameron提出了一种利用这种方法的碰撞检测技术［36］.这种方法考虑时间跨度相对 于时间增长的在一系列时间步上的物体位置，在每一时间步都检测物体是否相交.假如一次 碰撞被检测到，这个物体返回到它的前一个碰撞状态--为了这个目的特意存储的--然后 它的路径被改变,以避免碰撞.
+　　这种形式的另一种静态检测算法是由Khatib提出的，它利用一个人工势场来防止碰撞［ 37］.在这个系统中,物体被给予一个目标点,然后朝这个目标点运动.障碍物被排斥力所包 围，而目标点吸引着移动物体.当这个移动物体接近一个障碍物时，目标点的吸引力和障碍 物的排斥力的合力就施加在这个物体上.当移动物体接近障碍物时,排斥力增大,它们的合力 使得移动的物体在向目标的移动过程中不会与障碍物发生碰撞.
+　　这种方法的一个缺点是,势场函数需要从简单物体的组合来描述障碍物.对于复杂物体,这种 描述就变得大而笨拙.另外，由于作用力是由接近程度来决定的，这种算法可能导致失效.
+　　Krough利用在计算势场时不仅包含位置而且包含速度的办法来扩展Khatib的工作［38］ .这种方法和Khatib提出的方法一样，对所有的物体赋予一个已知的和规定的实际模型.这 对于我们想要知道的外部环境来说,约束太多.
+　　Borenstein和Koren［39］对于一个移动的机器人利用同样的方法,根据机器人的传感 器数据的强度来决定排斥力.当障碍物接近机器人时，Borenstein和Koren不是利用一个解析 函数来增加障碍物的排斥力，而是利用机器人的传感器来决定障碍物的存在的确定性.机器 人越靠近一堵墙，它的传感器读到的墙的数据越强烈,因而算法所施加的斥力越大.然而，这 种方法被限制在移动机器人的2D空间里.另外，斥力的大小是利用安装在机器人身上的传感 器的反馈信息来计算.这种方法不适用于计算机模拟环境.
+　　Hubbard为了保证交互性而提出了一种碰撞检测算法［40］.在这种系统中，物体用范 围树来近似.范围树基于它们之间的碰撞检测算法和实行相交测试的有效CPU时间来逐渐精化 .
+　　Egbert和Winkler为了在动画中对多移动物体之间的自动碰撞规避进行实时处理而提出了一 种改进的静态碰撞检测算法［41］.这种方法对场景中的物体自动地产生排斥力八叉 树向量场，移动的物体都受到它们邻近区域的向量场的影响.当两个移动的物体彼此接近时 ，它们的排斥力向量场将互相作用而使它们彼此分开.这种算法的难点在于向量场的精确建 立.另一个难点是在八叉树向量域中的作用力大小的确定.
+　　静态碰撞检测算法的优越性在于它们不需要预先知道物体的位置和速度，并且多个运动的物 体也能够用一种自然的方式来处理.静态检测算法的主要弱点是由于它们的不连续性，碰撞 可能被遗漏.这种情况可使当一个或两个碰撞的物体从一个时间步到下一个时间步中,从一种 不相交状态完全彼此穿透到另一种不相交状态时移动的距离足够大.
+3 结束语
+　　由于碰撞问题的重要性，因而得到很多专家学者的关注和研究，并提出了各种各样的方法来 提高检测算法的可靠性和效率.主要是从以下几个方面入手：
+　　(1) 采用矩形包围盒或球形包围空间测试来减少碰撞检测时的相交测试，在大多情况下都会 立即产生无碰撞结论.然而，利用八叉树或体元空间法可以去除许多这种包围盒测试.一般来 说，利用体元来对多边形进行空间排序的层次几何模型,在解决实时碰撞检测问题时是一个 有效的方法；
+　　(2) 在利用单步检测方法来进行碰撞检测时，当时间步较大时就会发生两个物体完全穿透而 算法却未检测出来的问题.解决这个问题的一个正确的方法是产生一个四维空间，在物体运 动的开始和结束时间步之间产生一个4D超多面体,用于穿透测试；
+　　(3) 采用空间投影的方法,将不规则物体投影成一个较规则的物体来进行碰撞检测,或采用缩 放的方法,将一个物体缩小而另一个物体相应地放大,从而加速碰撞检测.
+八叉树和其他几类几何模型在解决碰撞检测的框架之间的几何干涉问题时,不会大幅度地提 高算法效率，然而在另外一些情况,例如实体模型,将会有效地提高算法效率.其他几何模型, 例如布尔描述和参数曲面,不能用于碰撞问题的实时分析，这是因为它们需要比多边形边界 模型大得多的运算量.
+　　实时碰撞检测仍有许多方面需要进一步的探讨和研究，包括曲面模型、大量物体之间的碰撞 、框架与框架之间的空间一致性以及接触和干涉之间的区分等问题.另外,还有3D空间中碰撞 时的最初接触点的判定等.
+本文研究得到国家自然科学基金和国家博士点专项基金资助.
+作者王志强,1971年生，博士生,主要研究领域为计算机仿真及可视化技术.
+　　洪嘉振，1 944年生，教授,博士生导师，主要研究领域为复杂机械系统计算动力学及其仿真.
+　　杨 辉,1972年生，博士生,主要研究领域为复杂机械系统计算动力学及其仿真.
+本文通讯联系人:杨辉，上海200240，上海交通大学闵行97100BA
+作者单位：（上海交通大学建筑工程与力学学院　上海　200030）
+　　　　　　E-mail: yh70643@online.sh.cn
+参考文献
+　[1]　Tetsuya U, Toshiaki O, Mario T. Collision detection in motion s imulation. Computer & Graphics, 1983,7(2):285～293
+　[2]　Chin F, Wang C A. Optimal algorithms for the intersection and the min imum distance problems between planar polygons. IEEE Transactions on Computers, 1983,C-32(12):1203～1207
+　[3]　李辉.凸多边形可移动性的最优判别算法.中国科学（A辑），1987，17(12 )：1301～1308
+(Li Hui. An optimal algorithm for deciding movability of convex polygons. Chines e Science(A), 1987,17(12)：1301～1308)
+　[4]　覃中平,张焕国.确定凸多边形平移时最初碰撞部位的最优算法.计算机学 报,1992,15(3):171～177
+(Qin Zhong-ping, Zhang Huan-guo. An optimal algorithm of determining the touch parts between two colliding convex polygons. Chinese Journal of Computers, 1992 ,15(3):171～177)
+　[5]　汪嘉业.平面上简单多边形平移时确定碰撞部位的最优算法.计算机学报， 1992,15(8):582～588
+(Wang Jia-ye. An optimal algorithm of finding first contact between translating polygons. Chinese Journal of Compu-ters, 1992,15(8):582～588)
+　[6]　李庆华.判定凸多边形可碰撞的最优算法.计算机学报，1992，15(8):589～ 596
+(Li Qing-hua. Optimal algorithm deciding possible collision of convex polygons. Chinese Journal of Computers, 1992,15(8):589～596)
+　[7]　David Baraff. Interactive simulation of solid rigid bodies. IEEE Computer Graphics & Applications, 1995,15(5):63～75
+　[8]　覃中平，张焕国，高翔.多边形旋转时的可移动性.计算机学报，1994,17( 1):52～57
+(Qin Zhong-ping, Zhang Huan-guo, Gao Xiang. Rotational movability for polygons. Chinese Journal of Computers, 1994,17(1):52～57)
+　[9]　覃中平，张焕国.多边形的方向与圆弧可视性.计算机学报，1994,17(4):2 57～263
+(Qin Zhong-ping, Zhang Huan-guo. Direction and arc visibility for polygons. Ch inese Journal of Computers, 1994,17(4):257～263)
+　[10]　覃中平，张焕国.平面内多边形沿曲线定姿态刚体移动时的碰撞判定算法.计算 机学报，1997,20(6):567～572
+(Qin Zhong-ping, Zhang Huan-guo. Optimal algorithm for deciding collision of p olygons in rigid body displacement along curves. Chinese Journal of Computer s, 1997,20(6):567～572)
+　[11]　Ganter M A, Isarankura B P. Dynamic collision detection using space p artitioning. Journal of Mechanical Design, Transactions of the ASME, 1993,115(1) :150～155
+　[12]　Ahuja N, Nash C. Octree representations of moving objects. Computer V ision, Graphics and Image Processing, 1984,26(2):207～216
+　[13]　吴明华，余永翔，周济.采用空间分割技术的八叉树干涉检验算法.计算机学报 ，1997,20(9):849～854
+(Wu Ming-hua, Yu Yong-xiang, Zhou Ji. An octree algorithm for collision detect ion using space partition. Chinese Journal of Computers, 1997,20(9):849～854)
+　[14]　Pobil A P del, Serna M A. A new representation for robotics and artif icial intelligent application. International Journal of Robotics & Automation, 1 994,9(1):11～21
+　[15]　Maruyama K. A procedure to determine intersection between polyhedral objects. International Journal of Computer and Information Science, 1972,1(2):21 9～242
+　[16]　Boyse J W. Interference detection among solids and surfaces. Communic ations of the ACM, 1979,22(1):3～9
+　[17]　Preparata F P, Shamos M I. Computational Geometry--An Introduction. New York: Springer-Verlag, 1985
+　[18]　Edelsbrunner H. Algorithms in Combinatorial Geometry. Berlin: Spring er-Verlag, 1987
+　[19]　Cameron S A. A study of the clash detection problem in robotics. In: Fu K S ed. Proceedings of IEEE International Conference on Robotics and Automation. S t. Louis, Mo.: IEEE Computer Society Press, 1985. 488～493
+　[20]　Wang W P, Wang K K. Geometric modeling for swept volume of moving solids. IEEE Computer Graphics & Applications, 1986,6(12):8～17
+　[21]　Korein J U. A geometric investigation of reach ［Ph.D. Thesis］. Universit y of Pennsylvania, University of Microfilm #84-17323, 1984
+　[22]　Ganter M A, Uicker J J. Dynamic collision detection using swept solids. AS ME Journal of Mechanisms, Transmissions and Automation in Design, 1986,108(4):54 9～555
+　[23]　Cameron S A. Efficient intersection tests for objects defined constructive ly. International Journal of Robotics Research, 1989,8(1):3～25
+　[24]　Hahn J K. Realistic animation of rigid bodies. Computer Graphics, 1988,22( 4):299～308
+　[25]　Moore M, Wilhelms J. Collision detection and response for computer animati on. Computer Graphics, 1988,22(4):289～298
+　[26]　Rogers D F. Procedural Elements for Computer Graphics. New York: McGraw-H ill Book Company, 1985
+　[27]　Baraff D. Analytical methods for dynamics simulation of non-penetrating r igid bodies. Computer Graphics, 1989,23(3):223～232
+　[28]　Herzen B U, Barr A H, Zatz H R. Geometric collisions for time-dependent p arametric surfaces. Computer Graphics, 1990,24(4):39～48
+　[29]　Dai F. Collision-free motion of an articulated kinematics chain in a dyna mic environment. IEEE Computer Graphics & Applications, 1989,9(1):70～74
+　[30]　Alonso A G, Serrano N, Flaquer J. Solving the collision detection problem. IEEE Computer Graphics & Applications, 1994,14(3):36～43
+　[31]　Hinds B K, McCartney J. Interactive garment design. Visual Computer, 1990, 6(2):53～61
+　[32]　Bez H E, Bricis A M, Ascough J. A collision detection method with applicat ions in CAD systems for the apparel industry. Computer-Aided Design, 1996,28(1) :27～32
+　[33]　Erdmann M, Lozano-Perez T. On multiple moving objects. In: Wesley M A ed. Proceedings of IEEE International Conference on Robotics and Automation. Piscat away, N J: IEEE Computer Society Press, 1986. 1419～1424
+　[34]　Whitesides S H. Computational geometry and motion planning. In: Toussaint G T ed. Computational Geometry. North-Holland, Amsterdam: Elsevier Science Publ ish Company, 1985. 377～427
+　[35]　Cameron S. Collision detection by four-dimensional intersection testing. IEEE Transactions on Robotics and Automation, 1990,6(3):291～302
+　[36]　Cameron S. A study of the clash detection problem in robotics. In: Fu K S ed. Proceedings of IEEE International Conference on Robotics and Automation. Pis cataway, N J: IEEE Computer Society Press, 1985. 488～493
+　[37]　Khatib O. Real-time obstacle avoidance for manipulators and mobile robots . In: Fu K S ed. Proceedings of IEEE International Conference on Robotics and Au tomation. Piscataway, N J: IEEE Computer Society Press, 1985. 500～505
+　[38]　Krough B H. Integrated path planning and dynamic steering control from aut onomous vehicles. In: Wesley M A ed. Proceedings of IEEE International Conferenc e on Robotics and Automation. Piscataway, N J: IEEE Computer Society Press, 198 6. 1664～1669
+　[39]　Borenstein J, Koren Y. Real-time obstacle avoidance for fast mobile robot s. IEEE Transactions on Systems, Man, and Cybernetics, 1989,19(5):1179～1187
+　[40]　Hubbard P M. Collision detection for intersection graphics application. IE EE Transactions on Visualization and Compu-ter Graphics, 1995,1(3):218～230
+　[41]　Egbert P K, Winkler S H. Collision-free object movement using vector fiel ds. IEEE Computer Graphics & Applications, 1996,16(7):18～24
+本文1998-07-19收到原稿,1998-12-15收到修改稿

@@ -1,0 +1,34 @@
+信息与控制
+INFORMATION AND CONTROL
+1999年 第28卷 第6期 Vol.28 No.6 1999
+
+
+
+小型无人机飞行变结构控制
+
+袁冬莉　席庆彪　解万成
+　　摘　要：针对传统飞行控制系统的局限性，提出小型无人机飞行修正变结构控制策略．在纵向轨迹控制系统中引入一饱和型变结构控制器，实现姿态角与高度的自主复合控制，解决了小型无人机超低空飞行触地问题，同时提高了系统的可靠性．
+　　关键词：无人机，飞行控制，变结构控制
+　　中图分类号：TP29　　　　　　文献标识码：B
+FLIGHT VARIABLE STRUCTURE CONTROL OF
+UNMANNED AIR VEHICLES
+YUAN Dong-li1 XI Qing-biao2 XIE Wan-cheng2
+(1. Department of Automatic Control, Northwestern Polytechnical University, Xi'an 710072; 2. Center of research and development of UAV, Northwestern Polythchnical University, Xi'an 710072)
+Abstract:In view of limit situation of traditional flight control system, an tactics of flight correctional variable structure control is given. A saturated variable structure controller is adopted in the vertical trace control system, the UAV's hedgehopping is solved and reliability of the system is improved.
+　　Key words:unmanned air vehicle（UAV）, flight control, variable structure control
+1　引言
+　　小型无人机超低空飞行任务要求无人机在有限的靶廊长度范围内，能够由巡航高度迅速平滑俯冲、准确进入超低空高度（如掠海飞行高度H＜5m）平稳定高飞行．传统的控制策略是：地面操纵人员借助于测控信息给无人机提供指令，无人机俯冲采用给定姿态角θg控制飞行，在到达超低空高度后改为定高Hg控制飞行．但大量的实际飞行表明：采用上述控制策略，在俯冲改平时将会出现较大的超调，增大了超低空飞行超调触地的风险；另外系统的摄动――如测控信道开环将会导致飞行任务的失败．显然如何进行小型无人机纵向飞行控制――保证超低空飞行任务的可靠完成，是一个亟待解决的实际工程问题．
+2　系统设计
+　　变结构控制VSC（Variable Structure Control）是在系统相空间的不同区域，采用不同的控制规律，从而使轨迹到达滑动面．结构的改变是根据预先设定的切换逻辑，在轨线参数瞬时值的基础上实现的．针对小型无人机超低空飞行所存在的实际工程问题，在此提出了纵向飞行变结构控制方案．其基本思想是运用飞行高度稳定系统所采用的增稳控制原理，在飞行控制计算机中引入一个非线性“饱和型变结构控制器”，实现无人机俯冲、超低空飞行的轨迹自主控制．
+　　对于飞行控制系统
+　　　　　　　　(1)
+若采用传统变结构控制策略执行超低空飞行任务，则不难确定了如下切换函数
+s(x)=Δ(x)=Hg-H　　　　　　　　　　　　　(2)
+则系统变结构控制
+　　　　　　　　　　(3)
+其中，Hg为给定超低空飞行高度，H为实际飞行高度，U(x)为变结构控制器输出控制量．为增加俯仰通道阻尼，引入俯仰角速率反馈信号，则系统控制规律
+　　　　　(4)
+对于切换面s(x)=0，系统有
+　　　　　　　(5)
+　　显然，不难证明在任意s(x)=0以外的系统相轨迹将于有限时间内到达切换面，由于系统存在止点，控制规律中Bang-Bang控制项KθSgn(s(x))的存在将会引起系统的抖振，系统将很难保证在切换面处飞行控制的平滑行．因此为了克服系统采用传统变结构控制策略对飞行控制所造成的负面影响，则有必要对系统变结构控制进行修正．
+　　修正的变结构控制器工作原理如图1所示．显然，修正的变结构控制器为一典型非线性饱和型控制器．

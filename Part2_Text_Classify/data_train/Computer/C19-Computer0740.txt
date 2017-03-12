@@ -1,0 +1,84 @@
+自动化学报
+AGTA AUTOMATICA SINICA
+1999年 第25卷 第2期 Vol.25 No.2 1999
+
+
+
+有界误差模型的一种结构辨识方法1)
+孙先仿　范跃祖　宁文如
+摘　要　针对具有未知但有界(UBB)误差的线性回归模型辨识问题，提出了一种新的鲁棒结构选择方法.该方法以重复递推椭球外界算法所得椭球轴信息阵的行列式相对值最大作为模型定阶准则.不同于以往对噪声独立性、常方差或鞅差特性的假设，该方法假设噪声是渐近独立的.文中证明了该方法的强相容性.
+关键词　UBB误差，集员辨识，鲁棒辨识，模型定阶.
+A STRUCTURE IDENTIFICATION METHOD FOR
+BOUNDED-ERROR MODELS
+SUN Xianfang FAN Yuezu NING Wenru
+(Department of Automatic Control, Beijing University of Aeronautics and Astronautics, Beijing　100083)
+Abstract　A new robust structure selection method is proposed to deal with the identification problem of linear regression models with unknown but bounded (UBB) errors. The model-order determination criterion is based on maximizing the determinants' ratio of two ellipsoidal axis information matrixes obtained through repeating a recursive outer-bounding ellipsoid algorithm. Unlike the usual assumptions on noise, namely, independence, constant variance, or martingale difference properties, the assumption in this paper is of asymptotic independence. Strong consistency of the method is proved.
+Key words　UBB error, set membership identification, robust identification, model-order determination.
+1　引言
+　　模型结构选择是系统辨识工作的一个重要组成部分.对噪声统计特性已知的系统模型结构选择问题的研究已有许多成熟的结果.而对具有UBB误差系统模型结构选择问题的研究则相对较少.文献［1-3］给出了几种结构选择准则.其中文献［1］所述是当集员辨识所得参数成员集中包含某一参数分量的正、负两种值时，将该参数分量强置为0，以简化模型描述的准则.文献［2］所述是通过对残差序列的白性检验来确定模型阶次的准则.文献［3］针对参数成员集的精确多面体描述算法给出了多面体相对容积最大化准则，文中证明了在噪声渐近独立条件下该选择方法的强相容性.由于该方法运算比较复杂，鲁棒性较差［4］，因而实用比较困难.本文则以文献［3］的方法为基础，给出了基于参数集员辨识的重复递椎椭球外界算法的一种结构选择准则，即椭球轴信息阵行列式相对值最大化准则.由于椭球外界算法具有一定的鲁棒性［5］，且运算简单，因此本文算法是对文献［3］算法的改进.
+2　参数辨识
+　　考虑如下模型
+
+(1)
+其中θ是参数向量；｛yk｝是观测序列；｛φk｝是解释变量向量序列；｛ek｝是误差序列；是方程误差ek的已知限界序列；n是结构参量.当φk=［yk-1…yk-n］T时，式(1)表示自回归(AR)模型，当时，式(1)表示受控自回归(ARX)模型.
+　　设系统的真实参数值为θ*，则由式(1)可知，在任何时刻k，可由观测数据确定一个子集
+
+(2)
+使得θ*∈Sk.若已知有关θ*的先验信息为θ*∈Θ0，则利用该先验信息及k时刻以前的观测数据可以导出
+
+(3)
+　　寻求描述简单，且尽可能紧地包含的子集Θk的算法称为集员辨识算法.本文所用的集员辨识算法是重复递推椭球外界算法［6］，该算法所得结果是一个椭球Θk，其描述如下：
+
+(4)
+　　利用式(4)的符号，文献［5］给出了下述结论.
+　　引理1.采用文献［6］中求解外界椭球的重复递推算法，经过多次重复递推之后获得了一个由式(4)所描述的外界椭球.如果以Θk作为初始椭球继续重复递推时，已不能(在一定的计算精度意义下)进一步地减少外界椭球容积，则式(5)―(7)给出了的一个内界椭球
+
+(5)
+
+(6),(7)
+这里所谓内界椭球是指含于中的椭球，因此有下述关系：
+
+(8)
+3　模型结构选择准则
+　　在讨论模型的结构选择准则之前，先引入如下定义［3］：
+　　定义1.设｛ξk｝Rn是一随机向量序列，如果一致地有
+
+其中A，B取遍所有可能选择的有界Borel集，则称｛ξk｝是渐近独立的.
+　　定义2.设ek是某一概率空间(Ω,F,P)上的随机变量，Fk=σ｛ei,i≤k｝是由ek生成的σ代数，如果存在常数C2＞C1＞0和一个子序列｛ks｝｛k｝使得对任何充分小的h，都有
+
+则称噪声序列｛ek｝是一致条件重尾的.
+　　定义3.设｛φk｝是一有界向量序列，，如果对任何非奇异锥体K=｛φ∶φ=λ1ξ1+…+λnξn,λ1＞0,…,λn＞0｝，其中det(ξ1,…,ξn)≠0，当时，都有
+
+且E(φkFk-2)≥C3＞0 a.s.成立，则称｛φk｝为全方位的.
+　　定义4.设｛φk｝为一向量序列，如果存在正常数C4，使得φk≤C4 a.s.,k∈N，则称｛φk｝为一致有界的.
+　　基于上述定义，有
+　　定理1.如果真实模型阶次n*≤nmax，且对每一个候选模型阶次n≤nmax都有：1)噪声序列｛ek｝是一致条件重尾的；2)回归向量序列｛φk｝是全方位且一致有界的；3)向量序列是渐近独立的，则当k→∞时，有 
+　　在证明定理1之前，先给出一个引理.
+　　引理2［3］.在定理1的条件下，如果n＜n*，则有 a.s.收缩为空集，如果n＞n，则有
+
+(9)
+其中表示阶次为n时所得的容积.
+　　定理1的证明.由式(8)和引理2可知，当n＜n*时， a.s.收缩为空集.因此
+
+(10)
+考虑式(7)可知，当n＜n*时
+
+(11)
+又由式(8)和引理1可知
+
+(12)
+其中Kn是与n有关的正常数.
+　　上式结合引理2可知，当n＞n*时有
+
+(13)
+　　根据式(11)，(13)可得，当k→∞时，有即椭球轴信息阵行列式定阶准则是强相容的.
+　　考察式(13)，由于初始椭球的影响将渐近地消失，因此椭球轴信息阵行列式相对值定阶准则也是强相容的.定理得证.
+　　对具有多个结构参数的模型，例如ARX模型，可用文献［3］的方法作类似的处理.
+　　基于定理1，可以导出如下结果.
+　　定理2.如果式(1)是AR模型，其噪声ek均匀分布且独立，则最大化椭球Θk,Θ0的轴信息行列式之比值可导出模型阶次的强相容选择，即只要nmax≥n*，则当k→∞时，有
+4　仿真与结论
+　　仿真所用例子同文献［3］，输出序列由下式产生：
+
+其中｛ωk｝是序贯相关的具有非对称密度的序列.它具有重尾分布，其概率密度函数为
+
+表1　文献［3］准则和本文准则选中模型阶次为1，2，3的相对频率(真实阶次为2)

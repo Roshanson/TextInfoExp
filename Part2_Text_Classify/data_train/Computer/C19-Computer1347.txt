@@ -1,0 +1,78 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+一种智能控制器
+黄苏南　邵惠鹤　钱积新
+摘　要　研究了一种新的智能控制器，该智能控制器能通过不断学习进行适应控制，其主要特点是通过模糊决策确定影响控制特性的参数，进而进行神经控制.仿真结果表明了控制效果很好.
+关键词　智能控制，神经元网络，模糊决策.
+RESEARCH OF NEW INTELLIGENT CONTROLLER
+HUANG SUNAN
+(Institute of Industrial Control,Zhejiang University,Hangzhou 310027)
+SHAO HUIHE
+(Institute of Automatic Control,Shanghai Jiao Tong University,Shanghai 200030)
+QIAN JIXIN
+(Institute of Industrial Control,Zhejiang University,Hangzhou 310027)
+Abstract　In this paper,we study a new intelligent controller.The controller can work adaptively by learning.The parameter of the controller can be determined by Fuzzy decision.The results of simulation show that our controller can achieve high performance.
+Key word　Intelligent control,neural networks,Fuzzy decision.
+1　引言
+　　现代控制论是以精确的数学模型为基础的，但由于实际对象的复杂性，难以建立精确的数学模型，因而现代控制论应用于工业过程控制没有取得预想的效果.70年代兴起的专家系统，利用人的知识将直觉推理用于控制，不需要建立过程的数学模型，解决了一些复杂的工业过程控制.然而多数专家系统纯粹是规则的收集，没有学习功能，一旦遇到连规则都不认识的变化就不适应了.近年来，神经元网络由于其良好的学习功能而备受人们的青睐［1―4］.本文提出的智能控制器不是将神经元网络直接作为控制器［3，4］使用，其网络的控制器参数交由模糊决策处理，并监督整个信息控制系统.该控制器具有学习适应能力，文中用几个例子给出了仿真结果并与 PID进行了比较，效果是满意的.
+2　新型智能控制器的结构
+　　该智能控制器的详细结构见图1.
+　　这是一个两级结构，第一级是基于神经元网络的控制，神经元网络主要给出控制规则，即 u→f(e(t),e(t-2),y,ω，Ω)，它的另一作用就是不断学习信息，校正网络权值；模糊决策是根据模糊决策关系，决定参数的适当值 Ω；这里就是修改网络的隐节层到输出层的增益因子步长(我们将在后面看到这点很重要)，模糊决策能够通过模拟人的思维过程进行逻辑判断实现参数寻优.
+
+
+图1　智能控制器结构
+3　神经网络控制级
+　　本文应用的神经网络是 BP网，该网络一般由三层构成(见图2).BP网的学习算法是基于梯度下降法的误差最小.基于图2的结构，BP网络学习就是不断修正权值和阀值的过程.有关算法请看文献［4］.我们主要关心作为直接控制的神经网络算法.主要问题在于神经元网络控制器怎样以系统输出误差进行反馈校正.单变量系统
+e=yd(t)-y(t).　　　(1)
+
+
+图2　神经元网络结构
+这里 yd(t)是系统的设定值，y(t)是对象的实际输出.控制的目的当然尽可能使 e(t)最小，式(1)的计算可通过测量系统输出得到，这样可以将对象看成是神经网络的一部分，而目标函数(则是扩展的网络的目标)为
+　　　(2)
+为使 E(t)达到最小，神经网络权值的校正可用梯度法寻优，只是这里用对象的输出作为网络输出.以式(2)为目标，从隐节层到输出层的网络权值校正为
+　　　(3)
+这里.注意到控制输入 u(t)等于网络输出 x21(t)，我们有
+　　　(4)
+因为　　　　　　　　　　　　　　
+
+方程(4)化为
+　　　(5)
+将(5)代入(3)有
+
+这里,a1 是增益因子.δy11方程中唯一不知道的就是
+　　算出的值是困难的，因为对象模型我们并不知道，然而其精确值并不重要，这是由于其大小可通过调整增益因子步长 a1 来校正，即 l=a1.这样知道的符号是重要的，这一问题可通过程序设计辅助完成.当系统输出随着控制输入增加而增加时，则 sign()=1；当系统输出随着控制输入增加而减少时，则sign()=-1.确定的符号后，如何调整 l 则显得至关重要，我们让第二级模糊决策完成这个任务.
+4　模糊决策
+　　从上面的内容可以看出，决定参数 l 是至关重要的，它影响着控制响应特性，但参数问题又必须根据环境而决定，这是因为参数是变化的，它是针对不同状态而有所不同.考虑到实时要求，我们采用模糊决策的方法寻找最适当的参数 l，其结构如图3所示.
+
+
+图3　模糊决策学习步长
+　　图中 E，L 分别是系统误差和寻优因子步长.它的工作过程是，在每一个采样周期，首先测得本次系统误差 Et，上一周期的寻优因子步长 Lt-1，查模糊参数寻优表，直接获得本次寻优因子步长 Lt.进而确定控制器工作参数因子l，这里 l=ksLt,ks是比例因子.
+　　由于模糊参数寻优便于处理过程定性信息，运算是简单的查表，因而实时性很好，运用上述方法满足了过程对神经元网络增益参数的不同要求，得到了最佳的控制响应特性.注意到上述控制决策，是经过多次实验最终确定的.
+5　仿真结果
+　　按照上面介绍的算法，作者用Turbo Pascal语言在计算机上进行了实现.模糊决策表均以IF-THEN规则出现在程序中.
+　　我们利用IBM PC486对三个过程进行仿真实验：
+　　(1) 
+　　(2) 
+　　(3) 
+　　图4显示了用本文方法仿真的过程响应曲线，其中 T=0.1.为了说明方法的优越性，我们也用 PID算法进行了同样过程的仿真实验，图5显示了PID的控制结果.从仿真结果可以看出，本文的方法由于具有学习功能，适应性强，效果很好.
+
+
+图4　智能控制器的响应曲线
+
+
+图5　PID控制的响应曲线
+6　讨论
+　　从我们给出的设计方法和仿真结果可以看出，随着时间步数的增加控制效果越来越好.由于神经元网络是实时地在线学习控制，隐含层的神经元节点数不宜过多，实际上，用有限的几个神经元对绝大多数对象都能适应，我们在实验中均取5个隐节点.
+致谢　审稿者提出的意见丰富了本文的内容，在此作者表示感谢；另外本文的全部程序实现和仿真实验均是在上海交通大学与美国西雷公司高级过程控制软件联合研究中心完成的，在此作者也深表谢意!
+作者单位：黄苏南　浙江大学工业控制研究所　杭州　310027；邵惠鹤　上海交通大学自动化研究所　上海　200030；钱积新　浙江大学工业控制研究所　杭州　310027
+参考文献
+［1］　Chen F C.Back-propagation neural networks for nonlinear self-tuning adaptive control.IEEE Control Systems Magazine,,1990,(4):47―52.
+［2］　Willis M J et al.Artificial neural networks in process engineering.IEEE-Proceedings-D,1992,38(3):256―266.
+［3］　胡建元等.采用单个神经元的 PID 学习控制.控制与决策，1993，8(2)：135-138.
+［4］　Saerens M et al.Neural controller based on back-propagation algorithm.IEEE-Proceed-ings-F,1991,138:55―62.
+［5］　Huang Sunan,Shao Huihe.Analysis of neural networks self-tuning control based information theory.Proceedings of AMSE Intern.Conference on Modelling,Simulation & Control',Hefei,1992,1191―1195.
+收稿日期　1994-07-05

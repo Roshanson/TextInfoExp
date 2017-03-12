@@ -1,0 +1,142 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第11期　Vol.10　No.11　1999
+
+
+
+基于客户行为模式的Web文档预送
+朱培栋 卢锡城 周兴铭
+　　摘要　预送作为主动cache,是cache机制由时间局部性向空间局部性的拓展.文章提出服务器主动预送的两种模式.基于单个URL的模式利用客户请求的马尔可夫链特征获取文档的时序相关模型,可进行多级预送.基于会话的模式包括基于文档属性和会话整体语义的途径,重点研究基于文档属性的途径,给出基本的聚集算法,探讨了文档兴趣的定量表达,提出反映访问时序的属性向量距离算法.对于预送性能的度量,给出请求命中率、会话命中率、预送效率和预送代价等度量方法.同时,完成大量实验,对客户行为分析的这两种模式进行比较.文章提出的由服务器访问记录提取客户行为模式的方法,不但适用于文档预送,对于服务器站点设计和ISP(internet service provider)的服务规划也有重要价值.
+　　 关键词　WWW响应性能,预送,请求相关性,马尔可夫链,会话聚集,文档属性,预送性能.
+　　中图法分类号　TP393
+Web Document Presending Based on User Behavior Patterns
+ZHU Pei-dong LU Xi-Cheng ZHOU Xing-ming
+(School of Computer National University of Defense Technology Changsha 410073)
+　　Abstract　 Presending is an active service which extends caching mechanism from temporal locality to spatial locality. Two modes of extracting user behavior patterns are proposed to predict future requests from clients for efficient presending. URL-based mode exploits the Markov-chain features of request series, and can be used for hierarchical presending. Session-based mode captures more semantics, and the authors' work emphasizes the clustering algorithm, feasible document weight definition, and attribute-vector-distance computation representing order of accesses. Their performance is evaluated using appropriate metrics such as request hit rate, session hit rate, presending efficiency and presending cost. Numerous experiments are carried out to compare the two modes. These methods are used for web presending, while they are helpful to web server design and ISP (internet service provider) service planning.
+　　Key words　WWW responsiveness, presending, request dependency, Markov chain, session clustering, document attribute, presending performance.
+　　单纯的cache技术只是利用了WWW访问模式的时间局部性,对于未曾访问过的内容无法缓冲,响应性能依然得不到改善,这一点在客户发现一个新的热点服务器或服务器的页面经常更新时,感觉尤其明显.另外,如果客户机器或本地代理服务器用于WWW内容缓冲的空间不大,曾经访问过的内容被覆盖,单纯的cache机制也不会产生好的响应性能.
+　　预测客户将来可能发出的访问请求,在客户浏览当前文档时,服务器将预测的内容发送出去,当真正要访问这些文档时,只需由本地cache获取.这种预送技术(presending)利用文档的空间局部性,是主动cache,是cache机制由时间局部性向空间局部性的扩展.
+　　分析文献［1］中的服务器访问记录,文档平均发送时间为1.37s,平均请求间隔为44.59s,可见服务器有足够的时间预送,能够保证预送的时效.35 290个访问请求获取的文档平均为8 241字节,多为小文件;WWW应用交互性强,文件命中率比字节命中率重要,所以预送的带宽损失不大.平均一次会话有15个请求,最多包含224个请求,请求次数超过30个的会话占13.4%,具有良好的预测基础和预送价值.
+　　预送分为主动预送和请求预送.请求预送由浏览器预测并发出预取请求,由于浏览器对服务器内容和文档组织缺乏了解,只能根据简单的单层嵌入关系进行.而主动预送,由于服务器拥有大量的访问记录,对自己的文档熟悉,了解各类客户的访问模式,因此,可以更加有效地预测和预送.
+1 请求相关性和预送集合构造
+1.1 预送集合构造
+　　预送过程包括学习、匹配和发送这3个阶段.学习是分析历史行为或其他客户行为,提取客户一般情况下或所属类别的行为模型;匹配是确定正在进行的客户访问所属的行为模型,根据共同访问模式来推断将来的请求;发送是指,将预测内容根据预送策略传输至客户,具体预送策略包括预送的层次、数目、体积、概率阈值和发送速率的选择.
+　　学习和匹配属于预测过程,预测基于类推原则和连贯原则.类推是一种空间上的扩展,是指新的客户行为模式和现有的多数客户相似;连贯原则实现时域拓展是指客户的未来访问请求与过去的访问模式相似.本文只讨论基于服务器访问记录的学习方法.
+1.2 请求相关性
+　　HTTP是无状态应用协议,客户和服务器的一次会话在服务器看来是持续一定时间（例如3小时）的客户访问序列,一次会话内客户的访问行为相对确定.服务器的访问记录Log表示为会话序列,Log=〈S1,S2,...〉.会话S为客户访问请求序列,S=〈Client,〈Req1,Req2,...〉〉.
+　　请求的属性非常多［2］,与预送有关的属性考虑请求时刻Tr和请求的文档Doc,那么请求可以表示为Req=〈S,Tr,Doc〉,其中S为该请求所属的会话.对请求相关性的分析需要研究请求所属会话的相关性、请求时序和文档关联,用RR表示请求相关性,那么RR(Req1,Req2)=〈RS(S1,S2),RT(Tr1,Tr2),RD(Doc1,Doc2)〉.RS称为类属相关性,RT为时序相关性,RD为结构相关性.
+2 基于URL的访问模式
+2.1 基于马尔可夫链的预测
+　　{ζ(n),n=0,1,2,...}是状态空间为I、参数为非负整数的随机过程.若
+P{ζ(n+1)=j｜ζ(0)=i0,ζ(1)=i1,...,ζ(n-1)=in-1,ζ(n)=i}=P{ζ(n+1)=j｜ζ(n)=i}
+(1)
+则称ζ(n)为马尔可夫链.条件概率P{ζ(k+1)=j｜ζ(k)=i}为在时刻k时的一步转移概率,记为Pij(k).若P{ζ(k+1)=j｜ζ(k)=i}=Pij,即状态i转移到j的概率与k无关,则称该过程为齐次马尔可夫链.转移矩阵P=［pij］.
+　　将客户请求看做离散空间的一个事件,请求过程具有齐次马尔可夫链特征.客户在t时刻已经对文档Di发出访问请求,设在时间(t,t+TW］内对另一个文档Dj访问的概率为Pij,TW称为预送窗口,Pij称为预送概率,所有Pij(0≤i,j＜N)构成预测方阵P,N为服务器备有的文档数目.
+利用m步转移概率,得到文档的多级相关矩阵P(m),用于多级预送.
+
+(2)
+P(m)＝P(m-1)P(1).
+(3)
+2.2 预送性能
+　　设客户A发出的请求reqi要求访问文档doci,这次请求引发预送,实际预送的所有有效文档构成的集合为P(doci).若采用基于URL的预送模式,P(doci)在cache中的有效期至客户发出reqi+1为止,那么,请求reqi+1的命中率为
+
+(4)
+即reqi+1所请求的文档属于P(doci)的概率.预送文档数目越多,命中率越大,即若预送集合P1(doci)P2(doci),相应的命中率必定是hr1≤hr2;命中率越高,客户从发出访问请求到文档送回的这一段等待时间Taccess=hr*Tcache+(1-hr)(Tcache+Tremote)和客户上机时间Tclient=Tread+Taccess越小,工作效率可以进一步提高,其中Tcache为cache访问时间,Tremote为从服务器远程获取文档的时间,Tread为文档阅读时间.设客户A在一次会话s期间从浏览器上发出M个请求,若有hit-num个命中,那么会话s的命中率表示为hs(s)=hit-num(s)/M.
+　　客户对文档doci进行访问所引发的预送,预送效率ur(doci)=hr(reqi+1)/#［P(doci)］,预送代价qr(doci)=Sp(doci),其中Sp(doci)为预送集合P(doci)中所有文档的大小之和.如果客户对文档doc的请求没有传送到服务器,而是在本地cache得到响应,我们设服务器可以得知这一信息,那么在客户阅读doc时,服务器同样可以进行基于doc的预送.会话s的预送效率,表示在一个会话中预送一个文档命中客户请求的平均概率,可以近似看做式(4)中hit(d,reqi+1)相应的后验概率.会话s的预送代价
+2.3 实 验
+　　逐行分析服务器的访问记录(log file),登记每一个遇到的新文档,设服务器共有N个不同的文档被客户访问.对曾经访问过的每个文档Di,设该文档被所有客户访问的次数为Mi.由于相继请求之间的时间间隔相差很大,从几秒到几千秒不等［1］,所以不用时间区间作预送窗口,而是选用文档数目作为Tw,预送概率Pij定义为紧跟Di被同一客户访问的Tw个文档中出现Dj的概率.按时间顺序分析访问记录,设Tw内以Di开始的各个客户的访问序列中文档Dj出现的总次数为Qj,那么,预送概率可以通过Pij=Qj/Mi近似计算.对所有Di,i∈［1,N］进行类似分析,从而得到相关矩阵P.
+　　文献［1］中的访问记录可以区分为2 286个会话,我们使用1 000个会话的记录用于预送表的构造,余下1 286个会话的记录用于验证.文献［1］只是24小时的访问记录,实际构造预送表需要几天或数十天的会话记录,才能足够准确地把握客户行为模式.
+　　设预送窗口Tw=5,可以构造类似于表1的预送表,图1是相应的文档相关图,表1和图1中标识的小数为预送概率.在实际实验中,我们设预送阈值kp=35%,将预送概率大于kp的文档纳入预送备选集合.这样,如果客户对服务器访问记录中出现的所有文档分别发出访问请求,经统计可知,各个文档的预送备选集合平均含有3个文档,最多为12个.构造好预送表之后,当实际预送时,可以只从预送备选集合中选择预送概率最大的文档,也可选择一定数目的文档,如果在Tw内把预送概率大于kp且小于250KB的文档全部预送,则平均会话命中率hs=42.5%,hs超过85%的会话占会话总数的18.6%.各会话平均预送效率us=13.2%,平均预送代价qs=410KB.
+
+图1 文档相关图
+表1 文档预送表
++home1.htm　
+-image1.gif0.8
+-image2.gif0.6
+-home2.htm0.7
++home2.htm　
+-a.txt0.5
+　…　
+
+3 基于会话的访问模式
+　　上述对基于URL的访问模式的分析,对所有客户访问URL的情况所进行的统计,用于预测后继文档.这种方法简单、直接,但是没有表达会话特征和会话之间的关系,不利于语义信息的提取和应用.而且,对每个客户请求都预送一定数目的文档,会使服务器负载加重,带宽损失比较大.
+　　这种模式对预送表的构造和预送策略的制定是基于这样一个假设:预送内容在客户发出实际的请求之后过期.这样,一方面,由于客户实际发出请求的时刻无法预测,使成功预测的内容因不能及时到达浏览器而浪费;另一方面,还会使已经到达浏览器的未命中文档无效,如果后继文档的预送集合包括这一文档,仍然会再次预送给客户,尽管可以在服务器方增加状态信息或由浏览器告知这一信息,但这不是基于URL的模式所固有的机制.
+　　基于会话访问模式的分析和预送可以避免基于URL方式的上述不足.提取会话特征并将服务器会话集合分类,判断正在进行的客户访问所属会话类别,根据该类会话的共同特征预测该客户在会话的剩余时间将要访问的文档集合,进行一次性预送.这种方法可实现高层次的行为抽象,分析的结果易于理解,对服务器站点设计和ISP(internet service provider)的服务规划也有一定的价值.
+　　基于会话的访问模式包括基于会话整体语义和基于各个文档属性的方法.基于会话整体语义的方法需要对服务器各个文档作摘要描述,提取客户在会话中已访问文档的关键词,以此作为客户兴趣的标识,并作为关键词自动搜索相同兴趣的其他文档,将搜索概要通知客户,用于导航或将查找结果按重要程度预送给客户.文献［3］中有类似作法,用于浏览器自动对客户感兴趣站点的跟踪.由于预测的内容未蕴含在访问记录之中,此方法比较适合于客户从多个服务器搜集感兴趣的主题,所以,本文重点研究是基于各个文档属性的方法.
+3.1 基本聚集(clustering)算法
+　　聚集就是根据数据子集的相似性对数据集合分类,是一种无教练(unsupervised)的机器学习.客户和服务器的一次会话可用属性向量v=〈a1,a2,...,aN〉表示,元素ai表示客户对服务器文档i的兴趣程度,N为服务器备有的文档数目.会话p和q分别用其属性向量表示:p=〈p1,p2,...,pN 〉,q=〈q1,q2,...,qN〉.每个会话作为向量空间的一个点,p和q之间的相似性可用欧几里得距离(Euclidian distance)d来度量,
+
+(5)
+判断会话p是否属于聚集c,需要计算p与c的质心m的距离.在不引起混淆的前提下,可用d(p,c)代表d(p,m).若c={v1,v2,...,vk},则m的属性mi为
+
+(6)
+　　聚集分为层次方法和非层次方法,我们选用Leader层次算法［4］.
+　　算法1. 会话聚集的Leader算法.
+　　输入: 一组向量V
+　　输出: 一组聚集C={C1,C2,...},CiV.
+　　过程:
+　　　　(0) C初值为空.
+　　　　(1) 对V中每个向量v:
+　　　　　　寻找聚集c使v和c的质心距离最短,记为dmin;
+　　　　　　如果dmin小于距离阈值DistanceThresh,
+　　　　　　则将v加入c,
+　　　　　　否则,将{v}加入C.
+3.2 基于各个文档属性的聚集
+　　向量v的属性项为服务器上的文档,属性值为客户对该文档感兴趣的程度val.如果会话v1和v2访问的文档很少有不相同的,对相同文档的兴趣差异也小,并且访问顺序相一致,则v1和v2就应纳入同一聚集.
+3.2.1 访问兴趣
+　　.文献［5］将文档的访问次数作属性值val,但是,即使客户在一次会话中对同一文档兴趣非常浓厚,多次阅读,在服务器记录中也无法反映这一点.这是由于:在一次会话中,客户一般不会从服务器多次下载同一文档;浏览器的cache验证选项,多数情况下不是设置为每次访问都验证;即使每次验证,如果cache使用过期验证模型(expiration model)［2］,也不与源服务器通信.
+　　但是,可以由服务器统计出文档doc所引出的对其他文档的访问总次数Rnum.由超文本结构看,如果对doc的直接链接的下一层(physically linked)文档访问的次数多,表明客户对doc所含内容兴趣浓厚.
+　　.文档的大小不适于作val值,由于同一文档在不同会话中大小不变.但是,如果不考虑客户阅读速度的差异,文档的阅读时间可以度量客户的兴趣程度.同一文档的阅读时间Tread变化很大,文献［1］中不同客户在对某个4KB文档阅读时,以10s为最小区分单位,Tread就有6s～1297s之间43种可能,可用来划分客户兴趣群.请求间隔和文档传输时间分别记为Tinter-request和Ton,有Tread=Tinter-request-Ton.由于客户在阅读时,可能被其他事情中断,所以设Tread最大为1 800s,若计算出的Tread>1 800s,就记为1 800s.文献［1］中平均Tinter-request=44.59s,平均Ton=1.37s,平均Tread=43.22s.
+　　根据上述分析,客户对文档感兴趣的程度val=f(Rnum,Tread).为了权衡表征兴趣的两个参数,令f(Rnum,Tread)=例如,文档doc1的Rnum1=3,Tread1=160s,则val1=7;文档doc2的Rnum2=6,Tread2 =10s,则val2=7.这种定义符合客户的主观判断.
+3.2.2 访问顺序
+　　以式(5)计算向量距离,忽略了访问顺序.例如,客户A的访问序列为(8,19,4,...),客户B的访问序列为(4,8,19,...).在进行预送时,对于A,访问文档8时可预送19与4;而对于B,8的后继就不包括4.以式(5)计算会话相似性,这种差异无法表达,而预送必须反映访问的时序关系.
+　　统计文献［1］的服务器访问记录,客户访问过的不同文档共有5 104个,平均每个会话对13个文档访问,最多访问85个文档,所以属性向量可采用紧致形式表示为序偶〈pos,val〉的序列,其中pos为文档编号,val就是上文所述的属性值.会话v1和v2对应的属性向量都采用链表表示,链表元素为〈pos,val〉.计算向量距离用以下方法.
+　　算法2. 反映访问顺序的向量距离计算:distance(v1,v2).
+　　输入: pair*v1,*v2
+　　输出: sqrt(sum)
+　　过程:
+　　　　(0) sum=0.
+　　　　(1) 循环1: 起始:p=v1,q=v2;终止:p或q为空
+　　　　　　若p→pos＜q→pos,则sum+=(p→val)2,p++;
+　　　　　　若p→pos＞q→pos,则sum+=(q→val)2,q++;
+　　　　　　否则,sum+=(p→val-q→val)2;p++;q++.
+　　　　(2) 循环2: 对v1的其他元素,sum+=(p→val)2.
+　　　　(3) 循环3: 对v2的其他元素,sum+=(q→val)2.
+　　例如,v1=(〈8,1〉〈19,1〉〈4,2〉),v2=(〈4,2〉〈8,1〉〈19,1〉),那么,v3=(〈4,2〉〈8,1〉)和v1的距离d31=3和v2的距离d32=1,很好地反映了访问的时序特征.
+3.3 匹配与预测
+　　设服务器从收到客户A发出的L1个访问请求时开始对后继请求预测,这L1个请求构成会话s的一部分,记为v1.服务器聚集算法对已有会话分类,C={C1,C2,...},Ci={vi1,vi2,...,vik}.
+　　设第i个聚集的判断函数为fi,可以采用指标极小化判断标准.如果i≠k,
+fk(v1)＜fi(v1)
+(7)
+则v1∈Ck.这里,fi(v1)=d(v1,Ci).只预送Ck中兴趣值超过l且不在v1中的内容,具体方法如下.设Ck的质心为mk,首先滤去mk中兴趣值小于l的文档,得到v′2,v′2=hl(mk).其中hl(p)=q:若p的第i个属性值pi≥l,则q相应的属性值qi=pi;否则qi=0.然后排除已在v1中的文档,那么,预送文档集合P(v1)=sub(v′2)-sub(v1),其中sub(p)={n｜pn＞0}.
+　　在实际会话中,客户A又在浏览器上发出L2个访问请求,会话s的向量表示v=v1+v2,则会话命中率hs(s)=#［sub(P(v1))∩sub(v2)］/#［sub(v)］,会话预送效率us(s)=#［sub(P(v1))∩sub(v2)］/#［sub(P(v1)］,预送代价qs(s)=Sp(v1).
+3.4 预送实验
+　　与基于马尔可夫链的实验相似,使用文献［1］中1 000个会话的记录用于会话聚集,余下1 286个会话记录用于验证.实验分以下步骤进行:(1) 预处理:访问属性计算,会话向量表示;(2) 聚集;(3) 匹配;(4) 预送.
+　　滤掉少于4个访问请求的会话,共有760个会话参与聚集,生成68个子集,去掉只含1个会话的子集,余下37个子集用于预测.令L1=3,客户发出3个请求之后进行匹配,匹配成功后,令预送兴趣阈值为1,结果是每个会话平均预送文档14个,平均会话命中率hs=37.6%,平均预送效率us=40.3%,平均预送代价qs=130.2KB.
+　　与基于马尔可夫链的方法相比,在hs相差不大的情况下(为0.88倍),us却高出很多(为3.05倍),qs低很多(为0.32倍).可见,基于会话的方法以较小的预送代价换取了相当程度的会话命中率.
+4 相关工作
+　　预取是并行和分布式文件系统提高存取效率的通用方法,在以文件为单位的预取中,多数通过应用提示进行预取.文献［6］中的预测方法是其中较有智能的一种,使用多阶上下文模型对文件系统的事件进行跟踪,匹配的前件是事件序列,不如本文提出的基于马尔可夫链的方法简单.
+　　WWW是分布式系统的特殊应用领域,简洁的HTTP协议使客户的访问行为得到准确的记录,并易于分析.文献［7,8］对Web预取有简单的介绍,但是没有涉及预送代价等性能度量,没有考虑基于会话语义的途径.文献［5］对客户访问模式分类,用于动态链的构造,但是未把握访问的时序特征,客户对文档兴趣的度量采用访问计数是不恰当的.文献［9］通过统计文档翻页和窗口放大次数,获取客户对在线报纸某一主题的喜好程度,实现起来较为繁琐,并且不是基于服务器访问记录.
+　　数据挖掘可以从大规模数据库中发现潜在的模式或规则［10］,本文对WWW访问记录的分析运用了数据挖掘的基本原理,借鉴了基本方法.现有的服务器记录分析工具,如WWWStat,Wusage和WebLog［11］等,不支持文档相关性和会话特征分析,无法用于预送和实质的客户行为预测.
+5 结 语
+　　主动预送只要求cache有效期为相继请求之间的间隔或一次会话持续时间,对客户尚未请求的内容可以缓冲并快速响应,同时减少浏览器的缓冲空间需求.基于URL的马尔可夫链模式简单、直接.基于会话聚集的途径,以较小的预送代价换取了相当程度的会话命中率,表达更为丰富且易于理解的语义特征.作为一种无需客户干预的主动服务,文档预送对于改善响应性能和浏览质量、增强ISP竞争力具有重要的意义.
+基金项目：本文研究得到国家863高科技项目基金资助.
+作者简介：朱培栋,1971年生,博士,主要研究领域为高性能协议.
+　　　　　卢锡城,1946年生,教授，博士生导师,主要研究领域为高性能计算机,先进网络,并行与分布处理技术.
+　　　　　周兴铭,1938年生,教授,博士生导师,中国科学院院士,主要研究领域为高性能计算机,光互连技术,数据库.
+作者单位：国防科学技术大学计算机学院 长沙 410073
+　　　　　E-mail: pdzhu@nudt.edu.cn
+本文通讯联系人:朱培栋，长沙 410073,国防科学技术大学计算机学院
+参考文献
+　1 ftp: //ita.ee.lbl.gov/traces/epa-http.txt.Z. Downloaded at April, 1998
+　2 Feilding R et al. Hypertext transfer protocol――HTTP/1.1. IETF RFC 2068, Jan. 1997
+　3 Ackerman M et al. Learning probabilistic user profiles. AI Magazine, 1997,18(2):48～56
+　4 Hartigan J. Clustering Algorithms. New York: John Wiley Press, 1975
+　5 Yan T W et al. From user access pattern to dynamic hypertext linking. Computer Networks and ISDN Systems, 1996,28(1):1007～1014
+　6 Kroeger T M, Long D D. Predicting file system actions from prior events. In: Gray R ed. Proceedings of the 1996 USENIX Annual Technical Conference. Monterey, CA: Usenix Association, 1996. 319～328
+　7 Mroz M. A client based prefetching implementation for the world-wide-web. Technical Report, Computer Science Department, Boston University, Jan. 1996
+　8 Padmanabhan V P, Mogul J. Using predictive prefetching to improve world-wide-web latency. ACM Computer Communication Review, 1996,26(3):22～26
+　9 Sakagami H, Kamba T. Learning personal preference on online newspaper articles from user behaviors. Computer Networks and ISDN Systems, 1997,29(1):1447～1455
+10 Fayyad U et al. From data mining to knowledge discovery in databases. AI Magazine, 1996,17(3):37～54
+11 http: //awsd.com/scripts/weblog/. July 1998
+本文1998-07-14收到原稿,1998-12-07收到修改稿

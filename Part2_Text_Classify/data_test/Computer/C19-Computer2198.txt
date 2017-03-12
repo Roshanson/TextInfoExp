@@ -1,0 +1,153 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000　Vol.17　No.2　P.74-76
+
+
+
+Windows与DOS网络通信技术
+刘志刚　王博亮　刘希顺
+摘 要 介绍了局域网中NetBIOS基本应用原理，以及基于NetBIOS的DOS和Windows的通讯方法，并给出了NetBIOS在局域网中央监控系统中的具体应用。
+关键词 NetBIOS NetBEUI 局域网 数据报 会话
+l 前言
+　　目前Windows和DOS之间的网络通信协议应用得最多的有三种：TCP/IP、NWLink、NetBIOS。在Windows系统下，第三种方式称为NetBEUI(NetBIOS EXTENDED USER INTERFACE)，即NetBIOS扩充用户接口。其中TCP/IP是使用最广泛的通信协议，它支持Internet、路由能力是所有通信协议中最强的，可通过Windows Socket对其进行操作；NWLink是与Novell Netware IPX/SPX兼容的通信协议，路由能力比较强，最大的优点是通过该协议可访问Novell网络；NetBIOS是一种适用于小型网络，如部门网和局域网的通信协议，在小型网络上该协议速度最快，效率最高，不足之处是缺乏路由能力，在广域网上效率差。我们在所研制的局域网中央监控系统中，因为NetBIOS速度和效率高，对系统配制要求低，而且网络编程简单，故选择了它作为系统中基本的网络通信协议。
+2 NetBIOS简介
+　　1984年8月，Sytek公司推出了为IBM第一个局域网IBM-PC Network所使用的管理程序NetBIOS。1985年10月，IBM推出它的另一个局域网IBM Token-Ring时，使用了功能增强了的NetBIOS，称为NetBEUI。NetBIOS在国际标准化组织(ISO)开放系统互联(OSI)七层参考模型中处于较高的层次，如图1所示，所以编写NetBIOS接口应用程序基本上与其它层无关，这使得NetBIOS的应用在各种各样的通讯环境中基本上都可以移植。由于NetBIOS应用的广泛可移植性，且直观简单，以致NetBIOS在各种操作系统环境中迅速推广，如DOS、OS/2、UNIX等。当Microsoft推出其Windows系列时，一直把NetBIOS作为其主要的网络通信协议。以下对NetBIOS的使用作基本介绍。
+
+图1　ISO/OSI参考模型
+2.1 NetBIOS的功能简介
+　　NetBIOS提供了三种基本服务：名字服务、数据报服务、会话服务。应用程序通过调用三种服务中的相应控制命令，就能实现多机间，甚至单机内不同应用程序间的通讯。
+2.1.1 名字服务
+　　为了保证通讯时信息能从信源机到达目的机，网上各工作站必须有相应的名字来证明自己的身份以及识别对方。工作站使用的名字可以有多个的，但在使用某个名字之前，必须在局域中申请使用该名字的权利。申请的名字有两种：唯一名和组名。如果名字是唯一名，那么，局域网中其它工作站就不能使用这个名字，否则名字注册会失败；如果名字是组名，那么其它工作站就不能把这个名字注册为唯一名，并且局域网中任何工作站都可以同时注册这个组名。
+2.1.2 数据报及会话服务
+　　各工作站中的应用程序可以通过NetBIOS与驻留在相同或不同工作站中的应用程序进行通讯。通信的方式有两种：数据报方式或会话方式。
+　　数据报是一种短信息，它既可被传送给具有唯一名的工作站，也可传送给共享一个组名的一组工作站；它的大小可由NetBIOS的执行程序改变但不保证信息准确有序地送到接收方，数据报信息的准确性需要程序员在程序中进行检验。DOS下数据报的最大长度是512字节，Windows下为1,024字节。
+　　会话是两个应用程序之间一种可靠的数据传送方式，属于点对点通信。与数据报相比，会话方式的主要优点是接收方系统要把信息接收状态送交到发送方系统，发送方系统根据信息接收状态确定信息是否重发，从而可以保证数据的准确性，整个过程由NetBIOS系统完成，不需要人工干涉。然而，会话的可靠性是以建立会话、维护会话、微机之间数据包应答的开销为代价，增加了网络负担。
+2.2 NetBIOS的使用方法
+2.2.1 NetBIOS控制块(NCB)
+　　NetBIOS的所有服务调用都是通过将一个NCB(NetBIOS Control Block)传送到NetBIOS入口，由NetBIOS驱动程序执行对应的功能。NCB结构如下：
+struct NCB
+{
+unsigned char ncb_command; //服务命令码
+unsigned char ncb_retcode; //立即返回码
+unsigned char ncb_lsn; //本地会话号
+unsigned char ncb_num; //网络名字号
+unsigned char *ncb_buffer; //缓冲区地址
+WORD ncb_length; //缓冲区长度
+unsigned char ncb_callname[16]; //目的机网络名
+unsigned char ncb_name[16]; //信源机网络名
+unsigned char ncb_rto; //接收超时
+unsigned char ncb_sto; //发送超时
+void(*ncb_post)(struct_NCB*); //后置例程地址
+unsigned char ncb_lana_num; //适配器号
+unsigned char ncb_cmd_cplt; //命令完成标志
+unsigned char ncb_reserve[10]; //保留字段
+HANDLE ncb_event; //事件句柄
+};
+其中ncb_event是Windows特有，在DOS下没有此项，倒数第2项变为ncb_reserve[14]。
+2.2.2 NetBIOS服务的等待(WAIT)和非等待(NO_ WAIT)状态
+　　NetBIOS的服务一般有两种状态：等待和非等待。命令码的最高位为1时，服务处于非等待状态，最高位为0时，服务处于等待状态。当NetBIOS服务处于等待状态时，系统一直等到该服务结束后，才执行以后的程序。而处于非等待状态时，不必等到该服务执行完毕，就可以执行以后的程序。非等待服务的完成与否有两种方法进行检验：一是查询该服务的命令完成标志，即NCB中的ncb_cmd_cplt，若ncb_cmd_cplt是0XFF，说明服务还没有完成；二是使用后置例程，当服务一完成，系统立即调用该服务的后置例程。NetBIOS服务使用非等待状态有利于减少系统时间资源的消费，在对时间要求比较严格的应用中使用较多。
+3 DOS下NetBIOS的使用方法
+　　DOS操作系统并不直接拥有NetBIOS功能，可通过Windows NT Server4.0制造出DOS下的NetBIOS驱动程序，将该驱动程序拷贝到DOS工作站中，在工作站启动时调用该程序，工作站就具备了NetBIOS功能。NetBIOS在DOS环境下的入口是0x5c中断，其调用函数定义如下：
+void DOS_NetBios(struct NCB *pncb)
+{
+union REGS inregs,outregs;
+struct SREGS sregs;
+sregs.es=FP_SEG((struct NCB far*)pncb); 
+//把NCB的段地址赋予寄存器ES
+inregs.x.bx=FP_OFF((struct NCB far*)pncb); 
+//把NCB的偏移量赋予寄存器BX
+int86x(0x5c,&inregs,&outregs,&sregs); 
+//调用0x5c中断，请求NetBIOS调用
+}
+　　以下是DOS下发送和接收数据的具体方法：
+///DOS下数据接收函数的定义
+void DOS_RecvData(struct NCB*pncb, unsigned char session_lsn, 
+　　　　　unsigned char*Buffer,WORD length)
+{
+...首先把NCB中的所有值置为0
+pncb->ncb_command=0x15+0x80;
+　　//其中0xl5为接收数据命令码，0x80为非等待状态标志
+pncb->ncb_lsn=session_lsn; 
+　　//与其它工作站建立会话时，返回的会话号
+pncb->ncb_buffer=Buffer; //接收缓冲区
+pncb->ncb_length=length; //接收缓冲区长度
+pncb->ncb_lana_num=0;
+pncb->ncb_post=Post_Recv; //设置接收后置例程
+DOS_Netbios(pncb);
+}
+///DOS下数据发送函数的定义
+void DOS_SendData(struct NCB*pncb,unsigned char session_lsn, 
+　　　　　unsigned char*Buffer,WORD length)
+{
+...首先把NCB中的所有值置为0
+pncb->ncb_command=0x14+0x80; 
+　　//其中0xl4为发送数据命令码，0x80为非等待状态标志
+pncb->ncb_lsn=session_lsn; 
+　　//与其它工作站建立会话时，返回的会话号
+pncb->ncb_buffer=Buffer; //发送数据缓冲区
+pncb->ncb_length=length; //发送数据长度
+pncb->ncb_lana_num=0;
+pncb->ncb_post=Post_Send; //设置接收后置例程
+DOS_Netbios(pncb);
+}
+　　DOS下NetBIOS中的后置例程是一个软中断，其定义必须遵守以下的格式：
+void interrupt FunctionName()
+{用户自定义的处理部分}
+4 Windows下NetBIOS的使用方法
+　　在Windows下使用NetBIOS要在系统网络设置中把NetBEUI协议定义成默认的通信协议。由于Windows下不允许直接访问系统中断，故与DOS环境下调用NetBIOS服务不同。在Visual C++5.0中，有一个关于NetBIOS调用的头文件<nb30.h>，把该头文件加入到程序中，然后再调用其中的入口函数，其入口函数形式如下：
+unsigned char Netbios(struct NCB *pncb);
+　　以下是Windows监控站接收和发送数据的具体方法：
+///Windows下数据接收函数的定义
+void Win_RecvData(struct NCB*pncb,unsigned char session_lsn,
+　　　　unsigned char*Buffer,WORD length)
+{
+...首先把NCB中的所有值置为0
+pncb->ncb_command=NCBRECV+ASYNCH; 
+//其中NCBDGRECV为接收数据命令码，ASYNCH为非等待状态标志
+pncb->ncb_lsn=session_lsn; 
+　　//与其它工作站建立会话时，返回的会话号
+pncb->ncb_buffer=Buffer; //接收缓冲区
+pncb->ncb_length=length; //接收缓冲区长度
+pncb->ncb_lana_num=0;
+pncb->ncb_post=Post_Recv; //设置接收后置例程
+Netbios(pncb);
+}
+///Windows下数据发送函数的定义
+void Win_SendData(struct NCB*pncb,unsigned char session_lsn,
+　　　　　unsigned char*Buffer,WORD length)
+{
+...首先把NCB中的所有值置为0
+pncb->ncb_command=NCBSEND+ASYNCH; 
+　　//其中NCBSEND为数据发送命令，ASYNCH为非等待状态标志
+pncb->ncb_lsn=session_lsn; 
+　　//与其它工作站建立会话时，返回的会话号
+pncb->ncb_buffer=Buffer; //发送数据缓冲区
+pncb->ncb_length=length; //发送数据长度
+pncb->ncb_lana_num=0;
+pncb->ncb_post=Post_Send; //设置接收后置例程
+Netbios(pncb);
+}
+　　Windows下后置例程的定义与DOS下后置例程的定义有所不同，格式如下：
+NCB_POST FunctionName()
+{用户自定义的处理部分}
+5 局域网中央监控系统的设计
+　　在我们所研制的局域网中央监控系统中，中央监控站使用Windows 95/98/NT，以利用Windows友好的界面及其多任务特性；因为DOS的单任务特性适合于数据采集，故工作站采用DOS。整个系统要求一个Windows监控站实时监控8～16台DOS工作站。
+　　DOS工作站负责从外界采集数据，通过网络把数
+　　据信息传送到监控站，同时接收和处理Windows监控站发来的命令，其网络通信部分如图2所示。
+
+图2　DOS工作站流程图
+　　Windows监控站接收从DOS工作站发来的数据，对原始数据经过处理后进行显示、打印、存储，同时控制DOS工作站的运作，其网络通信部分如图3所示。
+
+图3　Windows监控站流程图
+6 结束语
+　　经过实践检验，我们所研制的基于NetBIOS的局域网中央监控系统，工作性能稳定，没有出现网络堵塞现象，实时性好，不必像TCP/IP那样考虑机器名，操作非常简便，充分证明了NetBIOS在局域网上优越的性能。随着Internet的流行，把NetBIOS和TCP/IP结合在一起日益受到人们的重视，当在广域上传输信息时，采用TCP/IP；在局域网上采用NetBIOS，这一应用在本文中就不详细论述了。
+刘志刚（国防科技大学电子工程学院 长沙 410073）
+王博亮（国防科技大学电子工程学院 长沙 410073）
+刘希顺（国防科技大学电子工程学院 长沙 410073）
+参考文献
+1，W. David Schwaderer著. 丛海莱, 周芳芹, 张克军译. NetBIOS C程序员指南. 上海：上海科学普及出版社
+2，杨永高, 王 宇著. 微机局部网络原理及实用指南. 成都：西南交通大学出版社
+3，朱三元, 杨 明, 薛 钫著. 网络通信软件设计指南. 北京：清华大学出版社
+4，Ben Ezzell, Jim Blaney著, 郝启堂, 曹 康译. Windows NT4/Windows95高级开发指南. 北京：电子工业出版社
+5，戴有炜著. WindowsNT SERVER3.51中文版实用指南. 北京：清华大学出版社
+收稿日期：1999年6月30日

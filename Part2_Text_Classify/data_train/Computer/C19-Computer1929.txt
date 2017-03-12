@@ -1,0 +1,105 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000　Vol.19　No.6　P.36-37
+
+
+
+
+标准数据类型的JAVA容错解析
+吕海莲
+摘要：JAVA语言环境中标准类型数据的批量输入及类型自动判定功能的设计思想和程序实现。
+关键词：数据类型 容错解析 Java语言
+1  问题的提出
+　　JAVA语言是一种跨平台的网络编程语言，它提供了极其丰富的接口、类以及相应的方法，使用户能实现友好界面和强大的程序功能。但是，它没有提供直接处理从键盘上输入的基本数据类型的方法，只是把所有的输入信息作为流来处理。所以，对于用户从键盘上提供的非字符流信息，就需要自己对输入流进行恰当的处理。而JAVA对数据类型之间的转换没有提供容错机制，即一旦数据格式不符就会产生例外而退出，因此对于批量数据的键盘输入来说，希望程序具有能够判断类型不符并提示重新输入的容错机制。针对这种要求，本文结合JAVA语言的编程环境，提供了一种实现这种功能的程序模型，采用流处理的方式加上一些处理技巧，使程序能够实现以下功能：
+　　(1)接收从键盘上输入的多个数据行，1行中可含多个基本数据类型。
+　　(2)对数据行信息进行类型解析。
+　　(3)根据解析结果，提供容错机制，多余的数据自动舍去，屏蔽运行时例外。
+　　(4)以当前输入的合法数据为新的数据源保存到一个随机文件中，以备重复运用。
+　　对于不同的应用程序，数据行中的数据个数及其类型都不相同，这里设定行数据中包含3个基本类型：int number，String name，double score。同时对数据的输入做如下的要求：用“＠”字符作为流结束标志；用空格作为数据间的分隔符；字符串必须用双引号括起来，以允许串中含有空格。
+2  关键问题的解决
+　　在进行数据的合法处理过程中，需要解决的关键问题有：行数据的正确接收；行数据中包含的数据分量及其类型的判定；解析结果与要求格式的比较；正确数据的文件写入等。
+　　(1)键盘行数据的输入和接收
+　　从键盘上输入的信息，系统都是以字符流的形式进行接收，程序通过FileDescriptor.in在标准输入流上建立文件输入流FileInputStream fin，然后读取键盘的数据并写入一个保存行数据的辅助I／O流文件temp.dat，并把它作为类StreamTokenizer解析的对象，而正确的数据行则保存到一个随机文件filerd.dat中。同时采用行序号提示的方式便于数据行的准确录入。当用户输入＠字符时系统自行退出。
+　　(2)行数据的解析
+　　类StreamTokenizer提供了强大的流解析功能，它把输入流解析为记号，并通过维护一张语法表来进行解析。结合程序的目标及约定，用QuoteChar（′＼″′）方法定义双引号为串引用字符以辨别字符串；用成员变量st.ttype的值为TT＿NUMBER或者′＼″′来确认数据是数字型或者串型；用系统的默认记号分隔符空格来区别不同的数据；在数值类型上运用强制转换的方式实现了类型的容错处理；同时，结合数据出现的序号变量值及状态标志确认数据格式的合法性。对格式不符的数据系统提示重输信息，屏蔽了错误数据格式引起的运行时例外而导致程序非正常退出的情况。
+　　(3)正确行数据的安全保存
+　　用建立随机文件的方法达到行数据的重复性利用，类RandomAccessFile直接继承Object并实现了接口DataInput和Dataoutput，所以对其对象可以直接进行基本类型的读写操作，程序中运用类RandomAccessFile提供的writeInt（）、writeDouble（）、writeUTF（）方法实现数据的保存，并在数据之间加入了必要的数据分隔符“′＼t′”及行结束符“′＼n′”。同时在程序中对所有的文件都要进行FileNotFoundException和IOException例外的捕获。
+3  程序设计主要流程
+　　根据程序的设计功能目标，图1对程序流程图进行了简单描述。
+
+图1  程序设计的主要流程
+4  程序实现
+import java.io.*；
+public class Jx{
+public static void main(String args[])
+　{int numrec＝1；  ／／行数据序号
+　　　try{ ／／定义输入流及随机文件
+　　FileInputStream fin＝new FileInputStream(FileDescrip－
+　　　tor.in）；
+　　File file＝new File（″filerd dat″）；
+　　If（file.exists（））file.delete（）；／／重建文件
+　　RandomAccessFile rfile＝new RandomAccessFile（″fil－
+　　　　　　　　　　　　　　erd.dat″，″rw″）；
+　　int data；data＝fin.read（）；
+　　System.out.print（″record″＋numrec＋″：″）；   ／／正确数据
+　　　　　　　　　　　　　　　　　　　　　　　　　　　／／的行号提示
+　　data＝fin.read（）；
+　　while（data!＝′＠′）
+　　｛try｛
+　　　／／定义存放行数据的临时文件
+　　　FileOutputStream temp＝new FileOutputStream
+　　　　　　　　　　　　　　new File(″temp.dat″))；
+　　while（data!′＼n′）
+　　｛temp.write（data）；data＝fin.read（）；｝
+　　temp.write（data）；temp.close（）；
+　　｝catch（FileNotFoundException e）｝
+　｝catch（IOException e）｛｝；
+　　try｛ ／／对行数据进行解析，刚建立的文件作为输入流
+　　FileInputStream temp＝new FileInputStream（new File
+　　　　　　　　　　　　　　　　　　　　　　（″temp.dat″））；
+　　StreamTokenizer st＝new StreamTokenizer）temp）；
+　　int ch＝′＼″′；st.quoteChar（ch）；／／定义串分隔符“″”
+　　int count＝0； ／／用于辨别数据的顺序
+　　／／存放结果的变量及正次序正确标记
+　　boolean flagn＝false，flags＝false，flagd＝false；
+　　int nn＝0；double dd＝0；String ss＝new String（″″）；
+　　while （st.nextToken（）！＝st.TT＿EOF）
+　　｛count＋＋；
+　　switch（st.ttype）
+　　　　｛case st.TT＿NUMBER：if（count＝＝1）（nn＝（int）
+　　　　　　　　　　　　　　　　st.nval；flagn＝true；｝
+　　　　　　　　　　　　　　　　else if（count＝＝3）
+　　　　　　　　　　　　　　　｛dd＝st.nval；flagd＝true；｝
+　　　　　　　　　　　　　　　　break；
+　　　　case（int）′＼″′：if（count＝＝2）｛ss＝st.sval；flags＝
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　true；｝
+　　　　　　　　　　　　　　　　break；
+　　　　defaultbreak；
+　｝
+｝
+　if（count＞＝3 ＆ flagn ＆＆flags ＆＆flagd）／／建立1个
+　　　　　　　　　　　　　　　　　　　　　　　／／数据行
+　　｛numrec＋＋；
+　　　　rfile.writeInt（nn）；   rfile.writeChar（′＼t′）；
+　　　　rfile.writeUTF（ss）；   rfile.writeChar（′＼t′）；
+　　　　rfile.writeDouble（dd）； rfile.writeChar（′＼n′）；｝
+　　else System.out.println（″error，repeat input：″）；
+　　temp.close（）；
+　　｝catch（FileNotFoundException e）｛
+　　｝catch（IOException e）｛｝；
+　　System.out.print（″record″＋numrec＋″：″）；／／接收下1个
+　　　　　　　　　　　　　　　　　　　　　　　　　　／／行数据
+　　data＝fin.read()；
+　　｝／／与第1个try配对
+　　｝catch（FileNotFoundException e）｛
+　｝catch（IOException e）｛｝；
+｝
+｝
+　　该文只是针对固定的数据格式的解析对其解决方法进行了比较详细的分析，在具体的程序设计中，会有多种基本数据类型以及复合数据类型的需要。因此，对于更复杂的数据类型组合的解析实现有待进一步的讨论。
+吕海莲（河南平顶山师专计算机系467000）
+参考文献
+1，王克宏．JAVA语言编程技术．北京：清华大学出版社，1997
+2，王克宏．JAVA2核心类库详解．北京：清华大学出版社，1999
+3，美Heller P，Roberts S著．邱仲潘译．JAVA2高级开发指南． 北京：电子工业出版社，1998
+4，美Walsh A，Fronckowiak J．JAVA宝典．北京：电子工业 出版社，1998
+收稿日期：2000－01－04

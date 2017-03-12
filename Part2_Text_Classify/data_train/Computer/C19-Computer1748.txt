@@ -1,0 +1,127 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第19卷 第3期  Vol.19 No.3 1999
+
+
+
+基于区域特征的交互式图像分割方法及其应用
+刘宁宁　田捷
+摘　要　交互式图像分割方法因其能够处理复杂的图像而得到了广泛的研究.文章提出了一种基于代理机模型的交互式图像分割方法.代理机是完成特定功能的模块,它通过控制界面和汇报界面实现与操作者的交互.该代理机以欲分割区域的特征作为其组成部分之一.该方法在医学图像分割问题中的应用取得了较好的结果.
+关键词　图像分割,代理机,区域特征,医学图像.
+中图法分类号　TP391
+Region Feature-based Interactive Segmentation Method
+and Its Application in Medical Image Analyzing
+LIU Ning-ning TIAN Jie
+(Institute of Automation The Chinese Academy of Sciences Beijing 100080)
+Abstract　 The interactive segmentation techniques attract more and more attention in that these techniques can handle complicated images. In this paper, an interactive image segmentation method is proposed based on proxy model. The proxy is a task-specific module which carries out certain function. Communications between an operator and computer is realized by means of the control interface and the report interface of proxy. The proposed proxy is constructed on the basis of region features of a to-be-segmented region in an image. This method is applied to solve the segmentation problem in medical images and the result shows that this method is effective in such complicated image as medical image.
+Key words　Image segmentation, proxy model, region feature, medical image.
+　　图像分割是计算机图像处理与分析中的一个经典问题,其本质问题尚未得到圆满解决,至今没有一个通用而且有效的分割方法能够满足不同目的的需要.这一问题在医学图像分析中显得更为突出.医学图像是反映人体生物组织的复杂图像,信息量大,而且缺少可供使用的能够刻画生物组织的数学模型［1］.对这种图像进行分割处理,欲得到满意的结果仅仅依靠常规方法是难以奏效的.目前,针对图像分割问题进行了多种方法的探究,如文献［2～4］等等.这些方法在一定程度上借鉴了交互式分割的思想.本文针对医学图像的特点和实际应用的要求［5］,提出了一种融合分割区域信息的交互式模型,在分割过程中引入控制者的作用.我们根据该模型,以MRI图像为实验对象进行了初步的实验验证,实验结果表明,这是一个值得深入探讨的方法.
+1 方法描述
+　　分析分割过程,我们可以将图像分割划分为两个子过程:目标识别定位过程和目标提取过程,这两部分缺一不可.常规方法是将整个分割任务完全模型化,由计算机自主完成,而不需要人的参与.但是,大量实践表明，计算机自主分割的结果往往准确性较差.自动分割方法一般是针对不同的问题研究不同的方法,有很大的局限性.对于医学图像来讲,由于人体内部生物组织的蠕动以及成像的特点,使得自动分割方法面对如此复杂的情况束手无策,从而造成自动分割方法的失败.另外,自动分割方法是基于模型的分割方法,而在医学图像分析中,我们无从获得可用于分割目的的模型,从而注定了自动分割在多维复杂数据的医学图像分析中的失败.
+　　从目标定位与提取的角度出发,我们可以发现一个特点:人擅长于目标的识别定位,而计算机算法则善于精确地进行目标的提取.人可以容易地发现感兴趣目标的空间位置,并且定性地给出目标的大小和几何形状.这种定性能力是计算机所不具备的,而将这种能力转换为计算机可以应用的数学模型则是不可能做到的,这正是造成图像分割问题难以圆满解决的难点.然而,计算机基于数学模型精确地提取目标的能力则又是人所望尘莫及的.这表明,如果将人的作用有机地融入到图像分割过程中,则可能得到满意的结果,即当要解决定性问题时（如目标的定位）,由人给出适当的提示,而精确的计算处理工作则由计算机执行.这样人与计算机可以达到互相取长补短的效果,就有可能得到满意的分割结果.如何在图像分割过程中使人有效地融合进去是这一思想的关键.我们认为，人参与计算机自动分割的过程需要把握一定的度,即:人怎样参与以及参与的程度.在我们初步的研究中定义了两个准则:一个是在分割过程中为用户提供有效的控制方法;另一个是尽量减少人的参与时间,以确保实时操作的实现.
+1.1 基于代理机的交互模型
+　　在本文中，我们提出并设计实现了代理机作为人机交互的具体模型,通过代理机将人的作用与计算机有机地结合起来.我们定义代理机是一种由计算机具体执行的、完成特定功能的计算模块,它负责完成精确的计算任务.代理机不仅能够独立完成计算任务,而且本身具有良好的人机通讯的接口.代理机通过控制界面和汇报界面实现与操作者的通讯.代理机结构如图1所示.在某一具体任务的完成过程中,代理机随时向控制者汇报其当前的工作状态,在完成一定阶段的任务时,将任务完成结果及时地提交给控制者.控制者可以根据代理机的状态或阶段任务结果及时调整控制策略,指引代理机进行新的工作.在代理机执行具体的计算任务时,控制者并不进行干涉,而只是根据代理机的状态或任务完成结果来确定代理机的工作状况是否正常,以及提交的任务结果是否可以接受,从而确定代理机下一步的工作目标.
+　　如图1所示,控制者通过控制界面为代理机提供指示,代理机通过汇报界面向控制者汇报处理过程中代理机的状态.在阶段任务完成后,代理机将阶段任务的完成结果通过任务评判环节提交给控制者进行评判.在本文中，我们设计了静态代理机,即控制者仅仅根据代理机的阶段任务完成结果进行控制策略的修订,以指导代理机的下一步工作.在结构图中,控制者由人担任,我们也可以看出,代理机模型具有反馈机制.这样,我们可以将图像分割过程中的目标定位这一定性任务提交给控制者完成,精确的计算任务由代理机完成,并且控制者随时调整控制代理机的策略.
+
+图1
+1.2 代理机的构成
+　　模型中的关键是代理机的建构,代理机的创建在具体任务的完成中具有重要作用.在本文中,我们设计实现了融合分割区域特征的静态代理机模型.代理机由两个子模块组成:区域增长子模块和寻优子模块.区域增长子模块完成特定区域的增长以及增长区域特征提取的任务;寻优子模块完成边缘的优化计算任务.控制者与代理机通过鼠标实现交互通讯.下面说明工作原理,操作者可以容易地判定欲分割区域的空间位置,从而将代理机的起始工作区域限制在图2内方框所示的范围中.如果操作者在方框范围中的欲分割区域内指定某一像素点作为代理机的工作起点,则代理机将以该点为起始条件,启动区域增长模块首先进行区域增长计算,当达到一定要求时,提取已增长区域的特征,然后等待指令以启动寻优模块.寻优模块的工作方式如图3所示,
+
+
+图2　　　　　　　　　　　　　　　　　图3 
+控制者通过鼠标预先粗略地指定所需计算的路径,使代理机根据该初始路径进行边界搜索,得到在给定路径条件下的较优路径,经控制者评判以确定该结果是否可以接受.寻优子模块的构造如图4所示,模块的输入为预先指定的边界点及其相邻的像素点,代理机根据欲分割区域的特征计算局部的较优边界,并且将结果报告给控制者,如果对结果不满意,则调整初始路径进行新的计算,直至得到满意的分割结果为止. 
+
+图4
+　　在本文中,我们定义物体边界元素为任意两相邻像素之间的连线,则对某一点而言,可能的边界元素有8条,方向分别为k.45°,其中k=0,1,2,3,4,5,6,7.另外,定义用来刻画边界元素是否能够成为目标边缘的属性,我们在实验中采用分割区域的统计平均灰度值、平均灰度均方差、局部区域一阶梯度变化函数作为刻画边界元素的属性特征.定义如下:
+　　(1) 平均灰度设Pi为灰度值i的概率,则特定区域的灰度平均值为μ,,则区域归一化平均灰度值为,其中M为特定区域的最大灰度值.
+　　(2) 平均灰度变化均方差σ 特定区域的灰度平均变化均方差为,则归一化为.
+　　另外,考虑到在物体边缘,往往梯度的变化幅度比较明显,因此在实现中采用了局部梯度变化率作为特征,我们定义该特征为grad=(Σ(max(gi)-gi))/max(gi),其中gi为指定路径上的一系列像素点的梯度值,i∈Ω,Ω为指定像素点集.将特征值转换为指标函数来判断局部像素边是分割边缘的可能性,由代理机根据指标函数寻找分割边缘,作为代理机的工作结果.指标函数为,式中f为特征函数,c为特征转换函数,w为权值.在本文中，选择f为平均灰度均值函数、平均灰度变化均方差函数、局部梯度变化函数.对于灰度平均值、灰度方差,选择特征转换函数为高斯函数,可以分析得到:当δ越小,G(x)值越大;对于局部梯度特征,可以选择线性函数作为转换函数,因此得到R=ω1.G(ξ,δ)+ω2L(grad),注意到梯度特征表示,梯度值越大,grad值越小,因此在处理中,需将该特征作符号处理,即ω2＜0.线性函数选择为L(x)=.grad,其中i为指定像素点集中的元素.
+1.3 具体实现
+　　整个分割过程分为两个阶段.第1阶段为分割区域增长阶段.在该阶段,首先由控制者在预分割区域内任选一点（如图2所示）,然后启动代理机根据该信息进行区域增长操作.本文设计了自适应区域增长方法.首先以操作者指定的原始点为核心点core,以core为中心点,得到其5×5邻域,计算该邻域的平均灰度μ=,其中Θ为以core为中心的5×5邻域,i为像素的灰度值.在本文中,设阈值th=｜μ-core｜,根据阈值准则判定可以成为分割区域内点的像素点.算法如下:设赋予图像{g(i,j)}的每个像素有n维属性F(i,j)=［f1(i,j),f2(i,j),...,fn(i,j)］T,中心点的属性为C(a,b)=［core1(a,b),core2(a,b),...,coren(a,b)］T, 则测度为M(i,j;a,b)=‖C(a,b)-F(i,j)‖=nk｜corek(a,b)-fk(i,j)｜,在本文中，属性为像素点的灰度值.在区域增长过程中,代理机可以根据控制者的评判，以新的区域点更新μ=,即Θ是可变的.当运算停止时,代理机等待操作者的评判,以决定是否停止区域增长.算法程序伪代码如下:首先,将核心点设定为操作者指定的像素点,以核心点为中心,建立其5×5邻域Θ,计算Θ的灰度均值μ,将阈值设为μ.
+　　BEGIN
+　　Step 1:
+　　core=Selected-key-point();
+　　Θ=Build-neighbors-of (core,5);
+　　μ=Mean-of-(Θ);
+　　th=｜μ-core｜;
+　　End of Step 1
+　　我们定义3个操作集合:(1) 分割区域集合R_Set,用于保存区域增长过程中得到的分割区域的像素点;(2) 计算集合Cal_set,其中的元素被用来检验是否符合属于分割区域,在我们的方法里,Cal_set中的元素总是等于4,即4个相邻像素;(3) 临时集合tmp_set,在该集合中保存新的候选中心点,Cal_set中的元素根据该集合的像素点生成.若Cal_set中的元素属于预分割区域,则将该点加入到R_Set中,同时生成该点的4个相邻像素点并且加入到集合tmp_set中,等待下一步的处理;若Cal_set中的点不属于预分割区域,则将该点从tmp_set中删除,加入到集合final_set中.其中集合final_set保存临时“野点”(所谓“野点”系指处理中不符合要求的像素点),这部分像素点在最后处理.当算法计算到tmp_set集合中无元素时,则停止区域增长.算法首先进行初始化如下:
+　　BEGIN
+　　Step 2:
+　　Initialize_set (R_Set);
+　　Initialize_set (tmp_set);
+　　Initialize_set (Cal_set);
+　　End Step 2
+　　END BEGIN
+　　初始化后,R_Set集合中有且仅有一个像素点core;计算集合Cal_set初始化后包括以core为中心得到的core点的4个相邻像素点,即Cal_set={core(i,j-1),core(i,j+1),core(i-1,j),core(i+1,j)}.tmp_set集合为空.根据阈值准则判断计算集合中的像素点是否属于欲分割区域,若是,则将该像素点加入到集合R_Set中,同时生成该点的4个相邻像素点,并且将4个相邻像素点加入tmp_set集合中,等待下一步处理.若该点不属于分割区域,则将该点从计算集合中删除,加入到final_set集合中,等待最后处理;依次计算，直到Cal_set集合为空为止.然后再依次以临时集合tmp_set中的各个像素点为新的中心点,建立新中心像素点的4个邻域,更新Cal_set,重复以上步骤,直到集合tmp_set不再存在任何像素点为止.计算时,必须保证tmp_set集合中无重复元素.最后再处理final_set 中的野点,以保证区域中的野点能够得到正确处理.算法如下:
+　　BEGIN
+　　While (Cal_set not empty)
+　　{poi=select_poi_from (Cal_set);
+　　if‖poi-μ‖＜th then
+　　add_poi_to (R_Set);
+　　Net［4］=Build_neighbor_of (poi);
+　　add_Net_to (tmp_set);
+　　Delete_poi_from (Cal_set);
+　　else
+　　Delete_poi_from (Cal_set);
+　　add_poi_to (final_set);
+　　}
+　　While (tmp_set NOT EMPTY)
+　　{poi=Select_poi_from (tmp_set);
+　　Nei［4］=Build_neighbor_of (poi);
+　　if pixel∈(Nei∩R_Set) then Delete_poi_from (Nei);
+　　add_Nei_to (Cal_set);
+　　While (Cal_set not empty)
+　　{poi=Select_poi_from (Cal_set);
+　　if‖poi-μ‖＜th then
+　　add_poi_to (R_Set);
+　　Nei［4］=Build_neighbor_of (poi);
+　　add_Nei_to (tmp_set);
+　　Delete_poi_from (Cal_set);
+　　else
+　　add_poi_to (final_set);
+　　Delete_poi_from (Cal_set);
+　　}
+　　}
+　　END BEGIN
+　　最后针对野点进行处理,处理准则为:若野点的4相邻像素点中有3个点属于增长区域,则将该野点融合到增长区域中,从而保证了区域增长的完整性,即不存在空洞现象.代理机根据上述算法进行区域增长,在停止工作后,提取增长区域的统计特征,计算该区域的平均灰度和灰度均方差,即所需的两个区域特征ζ,δ.试验中，根据该算法得到的增长区域如图5所示.分割的第2阶段启动代理机的寻优模块.由控制者预先画出欲分割目标的粗略边界,如图5所示.然后由代理机计算边缘点依次进行,直至得到封闭的边缘.根据前面所述,如果我们能够根据初始路径得到一系列像素点集合,使得这些像素点在初始路径条件下,所得到的指标函数值最大,则这些像素点就判定为所欲分割区域的边缘像素点.即.其中Γ为控制者指定的初始路径的像素点集合,Nei(Γ)为初始路径的各个像素点的8邻域像素点的集合.定义两个操作集合,用户指定点集O_Set,计算点集C_Set,其中C_Set中的点为根据指标函数计算得到的像素点.算法描述如下:
+　　While O_Set NOT Empty Do begin
+　　x=Select_one_point_of (O_Set);
+　　Nx=Build_neighbor_of (x);
+　　For y∈Nx Do
+　　Ty=R=iωi*ci*(fi(y));
+　　P=(Tx≥Ty)?Tx:Ty
+　　add_to_C_Set(p);
+　　Remove_P_from(O_Set);
+　　End For
+　　End While
+　　在实验中,我们选用从MRI设备上获取的关于人体脚部的MRI图像.图6为其中的一个断层数据,
+
+
+图5 代理机跟踪结果　　图6 原始MRI图像
+该组数据的成像物理数据如表1所示. 
+表1
+
+图像来源图像高度图像宽度成像位数断层厚度成像水平分辨率成像垂直分辨率成像断层数
+MRI127 pixel181 pixel16bits/pixel1.700 0mm0.546 875mm0.546 875mm27层
+
+如图6所示,分割鼠标所指向的目标区域.按照上述方法,首先在分割区域中选取初始中心点,基于该点进行区域增长计算,得到如图5所示的预分割区域.代理机计算得到的该区域的平均归一化灰度值为0.541 667,平均灰度均方差为0.164 583.最后的边缘由代理机计算得到,如图5所示.最后对分割结果进行标定,得到图7的结果.图8是各个分割得到的区域.
+
+
+图7 实际分割区域 图8 分割后的区域 
+2 结 论
+　　我们根据人机交互的思想［6］提出了基于代理机的交互式图像分割模型,并且进行了初步研究.实验结果表明,这一方法对于医学图像的分割问题能够得到较好的结果,是一种值得探索的图像分割手段.但是,还有很多问题值得进一步研究,比如:指标函数的选择、转换函数的选择、特征选取以及交互手段及交互模型的改进等等.另外,在具体实现过程中,参考了文献［7］的部分源程序,在此表示感谢.
+　　本文研究得到国家自然科学基金和国家863高科技项目基金资助.作者刘宁宁,1970年生,博士,主要研究领域为图像处理,模式识别.田捷,1960年生,博士后,研究员，博士生导师,主要研究领域为计算机视觉,计算机图形学,多媒体系统.
+　　本文通讯联系人:田捷，北京 100080,中国科学院自动化研究所
+作者单位：中国科学院自动化研究所 北京　100080
+参考文献
+［1］Udupa J K, Herman G T. 3D Imaging in Medicine. CRC Press, 1991
+［2］Mortensen E, Morse B, Barrett W et al. Adaptive boundary detection using “Live-Wire” two-dimensional dynamic programming. In: IEEE Processing of Computers in Cardiology. New York: IEEE Press, 1992. 635～638
+［3］Kass M, Witkin A, Terzopoulus D. Snakes: active contour models. Computer Vision, 1987,1(4):321～331
+［4］Geiger D, Gupta A. Dynamic programming for detecting, tracking, and matching deformable contours. IEEE Transactions on PAMI, 1995,17(3):294～302
+［5］Rhodes M L. Computer graphics and medicine: a complex partnership. IEEE Computer Graphics and Applications, 1997,(1):22～28
+［6］戴汝为,王珏,田捷.智能系统的综合集成.杭州:浙江科学技术出版社,1994
+(Dai Ru-wei, Wang Jue, Tian Jie. Metasynthesis of Intelligent System. Hangzhou: Zhejiang Science and Technology Publishing House, 1994)
+［7］田捷等.实用图像分析与处理.北京:电子工业出版社,1995
+(Tian Jie et al. Practical Image Processing and Analyzing Techniques. Beijing: Electronics Industry Publishing House, 1995)
+（1998-03-11收稿）

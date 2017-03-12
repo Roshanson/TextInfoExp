@@ -1,0 +1,95 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  Vol.24  No.5 1998
+
+
+
+CMAC最优设计及其算法――GA技术
+优化CMAC偏移矢量分布1)
+周旭东　王国栋
+摘　要　采用GA(Genetic Algorithm)技术实现CMAC(Cerebellar Model Articulation Controller)最优设计及算法.该方法解决了CMAC与其学习对象的整体优化问题，具有理论意义和实用价值.仿真结果证明该方法是成功的和有效的.对不同的客观对象(如空间曲面)，可以采用GA技术找到CMAC的最优内部表示(偏移矢量分布)，实现一般CMAC难以达到的精度.该方法比Albus的CMAC和Parks等的CMAC学习效果都有不同程度的提高，适合于要求高精度学习的情况.同时给出了任意偏移矢量分布的CMAC算法.
+关键词　CMAC最优设计，遗传算法，偏移矢量分布.
+OPTIMAL DESIGN AND ALGORITHM OF CMAC――
+OPTIMIZATION OF CMAC DISPLACEMENT VECTORS
+DISTRIBUTION BY GENETIC ALGORITHM
+ZHOU XUDONG　　WANG GUODONG
+(State Key Laboratory Rolling Technology and Automation,Northeastern University,Shenyang　110006)
+Abstract　Optimal design and algorithm of CMAC are implemented by genetic algorithm(GA) in this paper.Such a method has solved the optimization problem considering both CMAC and its learing objects.Simulations show that the proposed method is successful and effective.For different objects learned (such as space planes),different internal presentations(displacement vectors distribution)of CMAC can be found by GA,so that the optimal CMAC possesses higher learning precision than the general CMAC can reach.The proposed method has some improvements on both Albus' CMAC and Parks' CMAC.This method is suitable to the high precision learning problem.The CMAC algorithm for any displacement vectors distribution is also proposed.
+Key words　Optimal design of CMAC,genetic algorithm(GA),cerebellar model articulation controller(CMAC),displacement vectors distribution.
+1　引言
+　　在神经网络应用中，面对不同的客观对象，如何设计出“最优”的网络结构一直是研究者关注的问题之一.然而人们在这方面对CMAC所做工作确不多.从70年代J.S.Albus提出CMAC以来［1］，CMAC逐渐应用于控制.在1987年和1990年由Miller等把CMAC成功地应用于机器人控制中［2，3］，引起控制界及神经网络研究者的重视.由于其学习速度快(比BP神经网络快一个数量级以上)，适合于实时控制，使之成为目前控制上应用最多的神经网络之一，在1991年Parks和Militzer给出了改进的CMAC偏移矢量分布［4］并给出输入维数为n=2,…，15，泛化参数C=2,…，100的“最优”偏移矢量表.其“最优”是基于最邻近基函数中心距离最小值的最大化意义的，没有考虑CMAC的学习对象.Parks和Militzer采用大量搜索方法.An等人采用启发式方法获得了同样结果［5］，也没有给出N维CMAC的一般算法.为此，本论文采用GA技术［6］优化CMAC偏移矢量分布，探索其整体优化问题的有效解法.
+2　任意偏移矢量分布的CMAC及其算法
+2.1　Albus的CMAC简介
+　　Albus的CMAC结构如图1所示［1］.在图1中，Ac为概念存储单元，Ap为物理存储单元，F(Si)为CMAC的输出.输入状态空间s中的每一点都与Ac中的C个单元相对应，也与Ap中的C个存储单元相对应，而网络的输出F(Si)就是这C个单元中存储数值(网络的权重)之和.由于每一输入样本都对应于Ac和Ap上的C个存储单元，因而当各样本分散存储在Ac和Ap中时，就有在s 中比较靠近的那些样本，在Ac和Ap中会出现交叠现象，这使CMAC的输出值也比较靠近，这种现象被称为CMAC的泛化能力(Generalization).
+
+
+图 1　CMAC的拓扑结构
+2.2　任意偏移矢量分布的CMAC及其算法
+　　定义1.超立方体中心矢量：d(d0)［d1,d2,…，dn］,在该矢量均匀分布情况下有：［d1,d2,…，dn］=［(m.b1)modC,(m.b2)modC,…，(m.bn)modC］,其中，d0为d的序号(d0=1,…，C)；n为输入空间维数；C为泛化参数；dk为d的分量(k=1,…，C)；m=1,…，C;mod为模运算符号.
+
+　　定义2.偏移矢量：b=［b1,b2,…,bn］，其中b1=1.它是有效单元的感受野中心位置偏移.所谓任意偏移矢量分布是指在感受野内偏移矢量可以任意给定.
+　　1)一维CMAC概念映射算法
+　　一维CMAC矢量的拓扑结构如图2所示.并假设概念映射内存地址编码如图2所示编码.则可归纳出如下概念映射算法(Ac地址)：
+
+
+图 2　一维CMAC矢量拓扑结构
+注.a表示Ac地址，C=3，b=［1］
+　　(1)
+　　2)二维CMAC概念映射算法
+　　二维CMAC矢量的拓扑结构参见图3所示.并假设概念映射内存地址编码如图3所示.亦可归纳出如下概念映射算法(Ac地址)
+
+
+图 3　二维CMAC矢量拓扑结构
+注.a表示Ac地址，C=3，b=［1，1］
+　　(2a)
+s=［I1,I2］.　　(2b)
+　　3)N维CMAC概念映射算法
+　　将二维CMAC概念映射算法进行推广，即可得到N维CMAC概念映射算法(Ac地址)
+　　(3a)
+s=［I1,…，In］.　　(3b)
+　　上述公式中，ri为第i坐标轴内节点数，s为输入矢量，Ii为s第i坐标轴输入分量，a(s,d0)为概念映射地址.
+　　式(3)的特点是不仅适合于任意偏移矢量分布的CMAC，而且适合于任意超立方体中心分布的CMAC，为该矢量分布研究与优化提供了基本算法.
+　　4)CMAC物理映射算法ap(s,d0)=a(s,d0)mod M，M为物理内存大小(M为质数).
+　　5)CMAC输出算法　　
+　　6)CMAC学习算法　,β为学习率，ft为导师信号.
+3　用GA设计最优CMAC偏移矢量分布
+　　采用GA技术设计CMAC的最优偏移矢量分布，并考虑CMAC遍历学习空间曲面，使累积误差平方和最小.该问题属于CMAC与其学习对象整体优化问题.
+　　采用GA进行优化设计的关键是如何用二进制数［0，1］组成的染色体表达具体问题，对本文来说就是如何表达N维CMAC偏移矢量分布?为了简化问题表达并保证该矢量分布的特点，先表达基本偏移矢量b=(b1,b2,…,bn),bi∈｛1,2,…，C｝，n为输入量维数，然后按照如下转换算法将它转换成偏移矢量.至此可以利用上述任意偏移矢量CMAC算法，用GA技术对b进行优化.
+　　转换原则：取感受野内第一点坐标为(1，1，…，1)，然后在此基础上加上基本偏移矢量：b=(b1,b2,…,bn),当某坐标值超过C时，使其重新从1开始计算.
+　　转换算法：　dj=(dj-1+bi)mod C，(i=2,…，C，j=1,…,n).
+　　本文问题的遗传算法表达
+　　1)采用一组十进制数bi∈［1，2，…，C］；i=1,2,…,n；
+　　2)将十进制数bi化成二进制数Bi=［xi1,xi2，…,xim］;i=1,2,…，n;m为p≥log2(C)的最小表达.
+　　3)本问题的染色体表达
+chromosome［B1，B2，…，BC］
+［x11，x12，…，x1m］［x21，x22，…，x2m］，…，［xn1，xn2，…，xnm］
+　　采用GA方法优化的目标函数为：Objfunc=CMAC输出累积误差平方和(求目标函数最小值).令适应值为目标函数的倒数，即Fitness=1/Objfunc.
+　　采用上述方法可以达到全局最优.寻优过程需要一定的计算量，但是获得的最优CMAC确比一般CMAC具有更快的学习速度.
+　　为了验证本文方法的有效性.以CMAC学习空间曲面(平面f(I1,I2)=1和正弦曲面f(I1,I2)=sin(2πI1×10°)×sin(2πI2×10°)，其中I1=1,2,…，36.I1,I2单位为10°)，使其累积误差平方和最小.CMAC参数为：n=2,r1=35,r2=35,C=2,3,4,5.初始CMAC权重空间为零，β=0.7，遍历学习次数为3次.不进行杂散处理；GA参数为：m=2,2,3,3(分别对应于C=2,3,4,5),群体大小Popsize=10，最大代数为100.杂交概率为pc=0.6，变异概率pm=0.01.仿真结果如表1所示.
+表1　各CMAC学习空间曲面结果(遍历学习3次累积误差平方和Q)比较
+
+对象参数本文方法Albus方法Parks等方法
+　偏移矢量Q偏移矢量Q偏移矢量Q
+f=1,C=2(11)，(11)0.037 3(11)，(22)5.713 6(11)，(22)5.713 6
+f=S,C=2(11)，(12)1.358 8(11)，(22)1.358 8(11)，(22)1.358 8
+f=1,C=3(11)，(11)，(11)0.008 3(11)，(22)，(33)16.429 0(11)，(22)，(33)16.429 0
+f=S,C=3(11)，(32)，(13)2.539 3(11)，(22)，(33)4.042 0(11)，(22)，(33)4.042 0
+f=1,C=4(11)，(11)，(11)，(11)0.008 1(11)，(22)，(33)，(44)13.934 8(11)，(22)，(33)，(44)13.934 8
+f=S,C=4(11)，(42)，(13)，(44)2.879 4(11)，(22)，(33)，(44)3.280 7(11)，(22)，(33)，(44)3.280 7
+f=1,C=5(11)，(11)，(11)，(11)，(11)0.081 0(11)，(22)，(33)，(44)，(55)10.052 7(11)，(23)，(35)，(41)，(53)10.052 7
+f=S,C=5(11)，(32)，(53)，(14)，(35)2.040 2(11)，(22)，(33)，(44)，(55)2.3253(11)，(23)，(35)，(41)，(53)6.867 9
+
+　　注.f=S表示f(I1,I2)=sin(2πI1×10°)×sin(2πI2×10°).
+　　仿真结果表明本文方法是成功和有效的.对不同的客观对象，可以采用GA技术找到CMAC最优内部结构表示(偏移矢量分布)，达到一般CMAC难以达到的精度.该方法比Albus的CMAC和Parks等的CMAC学习效果都有不同程度的提高.特别适合要求高精度学习的情况.
+1)中国博士后科学基金资助课题.
+作者简介：：周旭东　男，1963年生.东北大学副教授，1995年获北京科技大学工学博士学位，1995―1997在东北大学从事博士后研究，后留校任教.已发表学术论文二十多篇.目前主要研究领域为神经网络控制、神经网络模式识别和遗传算法的理论与应用研究等.
+　　　　　王国栋　男，1942年生.东北大学教授、博士生导师，中国金属学会轧钢分会理事.有著作《板形控制与板形理论》、《现代塑性加工力学》等.译著《板带轧制理论和实践》等.目前主要研究领域为轧制理论、工艺和自动化、人工智能在轧制过程中的应用等.
+作者单位：(东北大学轧制技术及连轧自动化国家重点实验室　沈阳　110006)
+参考文献
+　1　Albus J S.Data storage in the cerebellar model articulation controller(CMAC).Transactions of the ASME.Journal of Dynamic System Measurement and Control,1975,97:228-233
+　2　Miller W T.Sensor based control of robotics manipulators using a general learning algorithm.IEEE Trans.Robotics Automat,1987,3(2):157-165
+　3　Miller W T,Glanz F H,Kraft L G.CMAC:an associative neural network alternative to back propagation.In:Proceedings of the IEEE,1990,78:1561-1567
+　4　Parks P C,Militzer J.Improved allocation of weights for associative memory storage in learning control systems.In:Proceedings of the 1st IFAC Symposium on Design Methods of Control Systems,Zurich:Pergamon Press,Ⅱ,1991,777-782
+　5　An P C E,Miller W T,Parks P C.Design improvements in associative memories for cerebellar model articulation controller(CMAC).In:Proceedings of the International Conference on Artificial Neural Networks,Helsinki,North Holland,Ⅱ,1991:1207-1210
+　6　Holland J H.Adaptive in Natural and Artificial Systems.Ann Arbor MI:University of Michigan Press,1975
+收稿日期　1996-07-29

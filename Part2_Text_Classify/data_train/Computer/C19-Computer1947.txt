@@ -1,0 +1,172 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+1999年 第18卷 第1期 Vol.18 No.1 1999
+
+
+
+如何在Visual Basic应用程序中调用动态链接库
+王向阳
+　　摘　要：Visual Basic应用程序调用动态链接库的方法、步骤及应该注意的一系列问题，同时给出了参考性示例。
+　　关键词：Windows　动态链接库　Visual Basic语言
+　　Windows动态链接库(Dynamic Link Library，简称DLL)是Microsoft Windows操作系统最显著的特点之一，也是Windows系统成为优秀软件设计平台的基础。由于动态链接库提出了一个全新的概念，使得程序设计人员可以利用动态链接库函数(或过程)实现应用程序代码和资源的共享，因此极大地提高了应用程序的编写效率，而且在多任务环境下还可以大大提高应用程序的执行效率。
+　　Visual Basic(以下简称VB)是Microsoft公司推出的一种简单、方便、高效率的全新Windows编程工具和环境，其本身就是通过动态链接库函数或过程工作的，不仅如此，VB还允许其应用程序直接调用动态链接库(包括用户自己开发的动态链接库)函数或过程，以进一步扩充VB应用程序设计能力，实现原本只有C(或C++)才能完成的功能。
+　　下面详细说明VB应用程序调用动态链接库的方法、步骤及应该注意的一系列问题。一般情况下，VB应用程序调用动态链接库需要经过2个步骤：声明和调用。
+1　动态链接库函数或过程的声明
+　　所谓调用动态链接库实际上是指用户在用VB开发的Windows应用程序内使用动态链接库中的函数或过程。而在使用之前，应该首先对动态链接库函数或过程进行声明。
+　　1.动态链接库函数或过程的声明方法
+　　动态链接库函数或过程必须在全局模块或表格级模块中声明才有效。当动态链接库函数或过程没有返回值时要声明成子程序Sub方式，若有返回值则应声明成函数Function方式，具体格式如下。
+　　子程序Sub格式：
+　　Declare Sub<动态链接库函数或过程名>Lib<动态链接库名>［Alias<别名>］(<参数>)
+　　函数Function格式：
+　　Declare Function<动态链接库函数或过程名>Lib<动态链接库名>［Alias<别名>］(<参数>)As数据类型
+　　其中：
+　　动态链接库函数或过程名为被调用动态链接库中的函数或过程的名字。
+　　动态链接库名为动态链接库函数或过程所在的动态链接库的名字。
+　　Alias<别名>为可选项，用户可为动态链接库取1个别名。
+　　<参数>为可选项，当调用动态链接库函数或过程时，由VB传送给动态链接库函数或过程的参数格式和类型。
+　　数据类型为动态链接库函数或过程返回值的类型。
+　　2.动态链接库函数或过程声明的注意事项
+　　动态链接库函数或过程的声明应该注意如下几点：
+　　(1)Lib<动态链接库名>
+　　若使用的是Windows操作系统本身的动态链接库，如USER.DLL、KERNEL.DLL等，则只要直接说明为库名即可。如果使用的是其他来源的动态链接库，则须指明动态链接库的全路径名，如“D：＼USER＼EXAMPLE.DLL”。值得指出的是Declare声明中对大小写字母不敏感。
+　　(2)参数及其传递方式
+　　在VB中，有按值传递(By Value)和按地址传递(By Reference)2种子程序或函数调用的参数传递方式。调用动态链接库函数时要注意参数的传递方式，若按值方式传递，则应在参数前面加上“Byval”关键字；按地址传递则不加此关键字。应注意的是在C语言的函数中，除数组按地址方式传递外，其余均按值方式传递参数。
+　　(3)任意类型的参数
+　　一些动态链接库函数或过程的同一参数可接收多种不同类型的参数值，这时要用As Any作为参数的类型，As Any表示参数的类型不受限制。值得注意的是：当参数以As Any方式说明时，VB是以地址方式传递参数的。
+　　(4)特殊名字的处理
+　　当要调用的动态链接库函数或过程和VB标准的系统函数重名，或者有一些动态链接库函数或过程名在VB中是不合法的符号(如含有减字符“-”，或下划线“”)时，可使用Alias为其声明1个别名。利用别名方法还可以对动态链接函数或过程进行改名，例如可以将某个名字很长的函数用一个简短的别名替代。
+　　3.声明示例
+　　设Procl是用户自定义动态链接库EXAMPLE.DLL中的1个处理函数，其中整型参数x按值传送，双精度型参数y按地址传送，函数返回值为双精度型，且动态链接库EXAMPLE.DLL存放在D盘的USER子目录(文件夹)中。则在VB应用程序中，对于函数Procl的声明就应该为：
+　　Declare Function Procl Lib “D:＼User＼Example.dll"(Byval x As Integer,y As Double)As Double
+2　动态链接库函数或过程的调用
+　　全局模块或表格级模块中声明函数或过程以后，VB应用程序就可以像调用标准函数一样随意调用动态链接库函数或过程了。
+　　1.动态链接库函数或过程的调用方法
+　　尽管动态链接库函数或过程的调用执行方式与标准函数的调用执行方式完全一样，但其自身具有的一系列特点要求计算机用户必须注意数据类型的一致性、参数的传递方式及排列方式。
+　　由于在实际工作过程中，动态链接库函数或过程主要由C(或C++)语言开发完成，其编写和设计均是按C语言规范实现的。因此要求VB应用程序中的数据类型与C语言的数据类型相对应，如表1所示。
+表1　C、Windows及Visual Basic间数据
+类型的对应关系
+
+CWindowsVisual Basic动态链接库声明
+intBOOLByval Integer%(As lnteger)
+unsigned charBYTEn/s%
+unsigned intWORDByvel lnteger%
+unsigned longDWORDByval Long&
+char far*LPSTRByval String$
+WORDATOMByval Integer%
+WORDHANDLEByval Integer%
+HANDLEHWNDByval Integer%
+HANDLEHICONByval Integer%
+HANDLEHDCByval Integer%
+HANDLEHMENUByval Integer%
+HANDLEHBITMAPByval Integer%
+DWORDCOLORREFByval Long&
+
+
+　　按照表1数据类型对应关系即可将绝大部分链接库函数或过程声明为VB函数，进而调用执行。例如，Windows操作系统本身提供的动态链接库GDI.DLL中，确定显示器分辨率的函数为Get Devicecaps，其格式为：
+　　Int GetDeviceCaps(HDC hdc,int icapabicity);
+　　按照转换规则，在VB应用程序中声明格式应该为：
+　　Declare Function GetDeviceCaps Lib“GDI.DLL"(Byval hdc As Integer,Byval icapabicity As Integer)As Integer
+　　待正确声明以后，就可以像调用标准函数一样来调用动态链接库函数或过程了。
+　　注意：上述声明中，也可以用动态链接库声明符表示，例如用“&"表示“As Integer"。
+　　2.动态链接库函数或过程调用的注意事项
+　　动态链接函数或过程的调用执行应该注意如下几点：
+　　(1)数组参数的特别处理
+　　当数组中的单个元素作为参数时，和其他类型的变量参数传递完全一样。但是，当希望传递1个数组时，情况就要复杂得多。如果是数值型数组，可以通过向动态链接库过程或函数传递数组首地址的方法以实现数组传递。这是因为Windows在给数值型数据分配空间时，是一段连续的地址空间，而传递数组的首地址实际上是将数组中首元素以地址方式(非Byval方式)传递参数。这样，动态链接库就可以通过首元素地址访问整个数组变量的元素。
+　　但若是1个字符串数组，动态链接库就无法通过首地址方式访问所有元素，其理由有2点：一是因为Windows和VB为字符串型数组分配空间时，并不是一段连续的地址空间；其次，因为每个数组元素的串长不一致。因此，动态链接库函数或过程不能接受1个字符串型的数组作为参数。
+　　如果1个动态链接库函数需要1个缓冲区指针的参数时，可以有2种办法实现：(1)通过字符串变量；(2)通过1个数值型数组。不过应保证变量足够长或数组足够大以避免缓冲区溢出而造成内存冲突。
+　　(2)字符串类型参数的处理
+　　大多数动态链接库函数或过程在以字符串作为参数时，要求用C语言的串格式，又称为ASCII串，其特点是字符串以0结束。对这种情况作Declare声明时，要以Byval方式声明，VB将自动把VB的串格式转换成C串格式。例如对于RegisterClipboardFormat()函数，声明如下：
+　　Declare Function RegisterClipboardFormat% Lib“User"(Byval FormatName$)
+　　在VB应用程序中作以下的调用：
+　　i%=RegisterClipboardFormat%(“RTF")
+　　虽然在Declare声明中也可以用Byval方式声明串变量，但是Byval仅仅起1个串格式转换的说明作用，而事实上参数传递仍按地址方式进行。但是，有些动态链接库过程会改变串变量，通过给串变量赋值的方法，给VB应用程序传递出口参数，这样当入口参数的串长小于出口参数的串长时，就有可能因此而覆盖其他内存区域，这是因为动态链接库不能也无法自动为串变量增加空间，它只能简单地将出口参数的串内容写到入口串变量中。因此在这种情况下，在调用此类动态链接库时，要保证串变量参数足够长，以确保不造成内存冲突。
+　　但需要注意的是，一些专门为VB设计的动态链接库，对字符串变量参数不需要用Byval声明。
+　　(3)用户自定义类型参数的处理
+　　一些动态链接库函数以记录或结构作为参数。VB允许将1个用户自定义类型的结构或结构中的某一单独元素作为动态链接库的传递参数，用户自定义类型参数只能按地址方式传递，而不能按值方式传递，而且这种类型只能在全局模块中使用。
+　　值得指出的是，在以自定义类型作为动态链接库函数传递时，类型中也不能有可变长的字符串类型，否则仍可能出现因串内容被修改而造成的内存冲突问题。
+　　(4)对象属性类型参数的处理
+　　当需要以对象属性作为动态链接库函数或过程参数时，必须按值方式传递。在Declare声明中，参数以Byval方式声明，则在调用时，可以直接调用对象的属性参数，否则必须先将属性参数赋给另一临时变量，再以临时变量为参数传递之。
+　　(5)表格和控制图不能作为动态链接库函数或过程的参数
+　　由于表格及控制图对象本身就是非常复杂的数据结构，Windows的动态链接库设计并没有考虑这种数据结构。此外，Windows的动态链接库也不支持系统的4个标准对象――Screen、Clipboard、Printer及Debug作为参数。 
+3　VB应用程序调用动态链接库示例
+　　为了全面说明VB应用程序调用动态链接库的方法和步骤，现给出1个VB应用程序示例。此程序的功能为：在1个窗体中显示机器及Windows的一些信息，包括CPU类型、协处理器是否安装、Windows运行模式、系统剩余内存、系统空闲资源等。
+　　该程序调用了3个动态链接库函数或过程，即GetFreeSpace、GetWinFlags和GetFreeSystemResources，其中：
+　　GetFreeSpace函数扫描全局堆，确定并返回剩余内存空间的字节数。
+　　GetWinFlags函数获取并返回系统内存配置信息(包括CPU类型、协处理器是否安装及运行模式)。
+　　GetFreeSystemResources函数获取并返回系统资源分配情况。
+　　该VB应用程序示例所涉及的窗体属性见表2。其相关源程序如下。
+　　’Visual Basic应用程序调用动态链接库示例源程序，烟台
+　　’师范学院 王向阳
+表2　VB应用程序示例窗体属性
+
+对象CaptionName
+窗体系统信息Forminfo
+标签CPULabe11
+标签协处理器Labe12
+标签Windows运行模式Labe13
+标签系统剩余空间Labe14
+标签系统空闲资源Label5
+标签――Labelcpu
+标签――Labelmaths
+标签――Labelrun
+标签――LabelFreemem
+标签――Labelresource
+按钮认可CmdOk
+
+
+　　Declare Function GetRes Lib“User"Alias“GetFreeSystemResources"(Byval FuSysResource As Integer)As Integer
+　　Declare Function GetWinFlags Lib“Kernel"()As Integer
+　　Declare Function GetFreeSpace Lib“Kernel"(Byval Wflags%)As Long
+　　Const WFP－MODE=&H1
+　　Const WF－CPU086=&H40
+　　Const WF－CPU186=&H80
+　　Const WF－CPU286=&H2
+　　Const WF－CPU386=&H4
+　　Const WF－CPU486=&H8
+　　Const WF－STANDARD=&H10
+　　Const WF－Win286=&H10
+　　Const WF－ENHANCED=&H20
+　　Const WF－Win386=&H20
+　　Const WF－LARGEFRAME=&H100
+　　Const WF－SMALLFRAME=&H200
+　　Const WF－80x87=&H400
+　　'函数
+　　Sub Form－info－load()
+　　　Winflags&=GetWinFlags()
+　　　If Winflags& And WF－CPU086 Then
+　　　　Label－cpu.caption=“8086"
+　　　ElseIf Winflags& And WF－CPU186 Then
+　　　　Label－cpu.caption=“80186"
+　　　ElseIf Winflags& And WF－286 Then
+　　　　Label－cpu.caption=“80286"
+　　　ElseIf Winflags& And WF－CPU386 Then
+　　　　Label－cpu.caption=“80386"
+　　　Else
+　　　　Label－cpu.caption=“80486或更高"
+　　　Endif
+　　　If Windflags& And WF－ENHANCED Then
+　　　Label－run.caption=“386增强模式"
+　　　Elseif Winflags& And WF－Win286 Then
+　　　　Label－run.caption=“标准模式"
+　　　Endif
+　　　If Winflags& And WF－80X87 Then
+　　　　Label－maths.caption=“有"
+　　　Elseif Label－maths.caption=“无"
+　　　Endif
+　　　Mem&=GetFreeSpace(0)
+　　　Label－freemem.caption=Format$(mem&/1024,“##.###"),+“KB"
+　　　Res%=GetRes(0)
+　　　Labelresource.caption=Format$(res%,“##")+“%"
+　　End Sub
+　　Sub CmdOk－Click()
+　　　End
+　　End Sub 
+4　结束语
+　　通过上面论述可知，VB应用程序调用动态链接库简单、方便，但一定要遵守相应的声明、调用规则，同时必须注意一些容易发生的错误。有关这一点，相信广大计算机用户在实际工作过程中会逐渐体会到。
+作者单位：烟台师范学院数学与计算机科学系(264025)
+参考文献
+　1　王向阳.Windows内存管理与应用.计算机技术，1996；(6)
+　2　王向阳.运用Object Windows编写WINDOWS程序.微计算机应用，1996，17(4)
+　3　王向阳.Windows NT和Windows 95执行文件格式剖析.微计算机应用，1996；17(5)
+　4　王向阳.Windows程序设计基础.新潮电子，1997；(5)
+(收稿日期：1998-07-04)

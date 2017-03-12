@@ -1,0 +1,158 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+非线性H∞控制的粘性解及近似逼近分析1)
+洪奕光　梅生伟　秦化淑　翁绍鹏
+摘　要　讨论非线性(在鞍点条件成立时)H∞控制的(干扰抑制问题的)粘性解法.此方法基于对策论和 Hamilton－Jacobi－Isaacs (HJI)不等式. 主要结果分三个方面. 首先, 是将所求的关于 HJI不等式的解推广到不可微的粘性解情形.随后, 讨论了此情形下的H∞状态控制器对被控系统的镇定问题.最后给出了求解该问题的近似逼近的理论依据和算法的初步讨论.
+关键词　非线性H∞，鞍点条件，粘性解，近似逼近.
+VISCOCITY SOLUTIONS AND APPROXIMATE ALGORITHM
+ANALYSIS OF NONLINEAR H∞ CONTROL
+HONG YIGUANG
+(Institute of Systems Science,The Chinese Academy of Sciences,Beijing 100080)
+MEI SHENGWEI
+(Dept.of Electrical Engineering,Tsinghua University,Beijing 100084)
+QIN HUASHU
+(Institute of Systems Science,The Chinese Academy of Sciences,Beijing 100080)
+YUNG SIUPANG
+(Dept.of Mathematics,Hong Kong University,Hong Kong)
+Abstract The H∞ problem of nonlinea r control systems is studied in the sense of viscocity solution. The motivation on the study of viscocity solution of nonlinear H∞ control with the saddle point condition is due to the difficulty in the analysis of smooth solutions in some cases. The method is based on the game theory and Hamilton－Jacobi－Issacs (HJI) inequality. The main results are composed of three parts.The solution of HJI inequality of disturbance attenuation has been extended to the case without any assumption of smoothness. A control law in the light of the viscocity optimal solution is given, with a proof of the system stabilization when external disturbance vanishes. At last, some analyses on approximate algorithms are proposed for the nonlinear H∞ problems and a draft approxiamte polynomial algorithm is described.
+Key words Nonlinear H∞, saddle point, viscocity solution,approxiamte algorithm.
+1　引言
+　　鲁棒控制越来越成为控制界日益关注的重要课题, 并已从许多不同的角度(包括H∞)得出不少有意义的结果. 其中, 非线性H∞控制是近年来一个十分热门的研究方向, 并涉及了工程控制中的干扰抑制等问题.实际上, 由于一些限制(如不确定性的种类, 控制的增益等)的影响, 使得我们在一些具体问题中对系统中的某些不确定性难以实现干扰解耦, 或用匹配及其推广条件来消除干扰以保证系统镇定. 因此一个现实的提法是通过控制使得我们所需调整的输出量尽可能对干扰信号不敏感, 这就是非线性H∞控制和干扰抑制的基本思想. 而控制理论的发展(尤其是线性H∞技术已日益完善),从理论上为非线性系统也提供了有效方法, 即非线性H∞技术.
+　　考虑系统
+　　(1.1)
+这里F,Z,Y∈C1;x∈Rn状态变量; u∈URn控制变量;w∈WRl外界干扰;z∈Rk调节输出变量;y∈Rs量测输出变量.
+　　定义1.非线性H∞问题(或非线性干扰抑制) 就是要对系统(1.1)寻找最小的正数λ*，λ＞λ*,总可设计一个控制器(如果状态可量测)
+u=u(x)　　(1.2)
+或(如果状态不能直接得到)
+u=u(y,ξ),=η(y,ξ).　　(1.3)
+使得：
+　　1) 当初值为零时,
+∫T0zTzds≤λ2∫T0 wTwds, T＞0.　　(1.4)
+　　2) 内部稳定性: 当w=0时, 该控制器能使相应的闭环系统渐近稳定.
+　　为方便起见, 本文以下只考虑状态反馈(1.2)的情形.
+　　利用二人零和微分对策理论可帮助解决上述问题［2］, 即化为: 在假定鞍点条件成立时,能否找到一个非负函数V 且满足V(0)=0,t＞t0≥0使下式成立，
+
+实际上, 在非线性H∞问题里, 通常将等式化为不等式，以便于求解.因此, 我们将从不等式
+　　(1.5)
+出发.利用Hamilton函数(x,p,u,w)=pF+zTz-λ2wTw，可得Hamilton-Jacobi-Issacs微分不等式
+　　(1.6)
+其中, D表示关于x的Dini导数.
+　　众所周知, 不等式(1.5)和(1.6)也不易求解, 而通常为了解此问题, 还不得不假定光滑函数V是存在的［1］, 这可能在某些时候会影响控制器的设计性能.
+　　在偏微分方程及不等式中早已有粘性解的研究［3，4］, 并且也已用到非线性(随机)最优控制中［5，6，7］, 说明了其具有广泛的可应用性.从已有的理论中可知, 当微分不等式(或微分等式) (1.6) 将没有光滑解时(比如, L2 增益λ小到一定时),但是其粘性解可能还是存在的［5］.同时, 粘性解的应用还可以扩大解的有效适用范围. 而若只在光滑意义下, 有时就不得不多个工作点去做局部小范围设计. 总之,粘性解的采用不仅具有理论意义, 也具有较强的实际意义.其中,文［9］ 从粘性上解角度, 非线性H∞ 可解的充分与必要条件, 并证明了在输入集是紧的情形下充分条件就是必要的.文［9］中讨论的系统 F,Z 要满足类似于Lipschitz 条件, 而且利用动态规划及值函数研究 V 解的结构和性质. 本文将分别从两个方面讨论此问题. 第一, 利用粘性解讨论V是不光滑的情况(也可包括原来光滑的情形), 从耗散不等式出发,讨论粘性解的必要条件. 还同时证明其内部稳定性;第二,给出一个用近似解，去逼近精确解的算法的理论依据.
+2　Hamilton Jacobi Isaacs不等式的粘性解
+　　考虑到非线性H∞, 包括两个方面的问题: 1. 如何选取尽可能小的，且代表干扰抑制性能的 L2 增益λ. 实际上,在一个具体的求解不等式的过程中, 同时就可考虑能否进一步使λ的数值变小而不影响不等式解的存在性. 2. 对已经给定的增益, 如何给出合适的控制器. 这需要先求解 Hamilton-Jaccobi-Isaacs 不等式.
+　　一般地, 考虑Rn中开集Q上的一阶偏微分不等式
+P(z, V(z), DV(z))≤0.　　(2.1)
+这里 z∈ Q,P:Q×R×Rn→R, V(.)∈C1(Q).
+　　很多情况下, (2.1)并不存在光滑解. 因此我们考虑V(.)是局部有界时的情形.
+　　定义 2. 局部有界函数V(.)是(2.1)的一个 粘性解, 如果对任何φ(.)∈C1(Q), 只要V*(.)-φ(.)在z0∈Q 达到局部极小, 则有
+P(z0, V(z0), Dφ(z0))≤0.　　(2.2)
+其中V*是V的下半连续包, 即
+　　(2.3)
+为了解非线性 H∞, 通常需以下基本假设［1］：
+　　A1)　(0, 0)是行满秩的. 此条件保证了上述二人零和对策问题满足鞍点条件. 即由此可知，有唯一的局部鞍点(w,u), 即存在连续函数w*(x,p) 和 u*(x,p) 使得
+(x,p,w,u*)≤(x,p,w*,u*)≤(x,p, w*,u)，　　(2.4)
+在(0,0,0,0)的一个邻域内成立. 其中u*(0,0)=0,w*(0,0)=0.
+　　A2)　系统(1.1)零状态可检测(w=0时): z=0 可推出x→0.
+　　由于V 通常只是局部有界, 故我们常用V*来分析. 另外注意到本节的结果可适用于鞍点条件不成立的情形(详见文［8］).
+　　命题 1［8］.如果一个局部有界的半正定函数V满足(1.5),那么它的下半连续包V*(x)也满足(1.5).
+　　下面我们对(1.6)给出类似的结果. 为此我们先证明:
+　　定理 1.若V满足(1.5), V就满足(1.6).
+　　证明.由于V不一定光滑, 所以不能直接求导.设 L=λ2wTw-zTz.若取φ∈C1(Q), 假定V*-φ在x(t0)=x0∈Rn达到局部极小, 我们将证
+　　(2.5)
+对t≥t0, 取常值w及最优控制u=u(x,w)∈U,记x(t)=x(x0,u,w,t).
+　　对t≥t0使t-t0充分小, 且由命题1, 我们有(因x0是极小点)
+φ(x0)-φ(x(t))≥V*(x0)-V*(x(t))≥-∫tt0L(x(r))dr
+于是两边除以t-t0再令t→t0, 就可得Dφ(x0)F(x0)-L(x0)≤0, 因此(2.5) 成立, 故得证.
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　Q. E. D
+　　由于(1.6)可能推出(1.5), 也就是说上述定理表明即使在粘性解意义下(1.5)与(1.6)也是等价的. 因此易得如下结论.
+　　定理 2. 如果一个局部有界的非负函数V满足(1.6),那么V*也满足(1.6).
+证明. 记 W是干扰集. 对R＞0, 定义UR={(u, w)｜u∈U,w∈W,‖(u, w)‖≤R｝.选择{φi}∞i=1C(Rn)使得φi≤V*(当i→∞时, V*是φi的上极限函数).
+　　令(w, u)∈UR, 取T＞0, 定义
+
+那么Zir∈C(Rn×(t0,T))且是下列方程的唯一解,
+
+现在V*是此方程的粘性上解, 由比较定理［3］
+V*≥ZiR(x,s),(x,s)∈Rn×［t0,T］.
+　　令s=t0, 就有: 当(u, w)∈UR时
+
+令i→∞, 再令R→∞, 就有V*≥infsupx w(V*(x(T))-∫T t0L(r)dr)对u∈U,w∈W成立.因此V*满足(1.5), 由定理 1, V*也就满足(1.6).
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　Q. E. D.
+由此看出, 可以把HJI不等式在光滑解意义下的结果推广到粘性解的结果.
+3　非线性H∞的粘性解及其控制器
+　　本节将说明, 粘性解意义下的控制器设计也将与光滑的情形类似.
+　　定理 3.假定系统(1.1)满足上面两个基本假设, 且 V是定义在原点邻域满足 (1.6) 的局部有界非负粘性解, 而且它在原点处连续并在某邻域内正定和V(0)=0. 那么控制律u=u*(x,DV) 就可使系统(1.1) 满足(1.4)，且无干扰时内部稳定性.
+　　证明.注意
+H(x,p)=(x,p,w*(x,p),u*(x,p)).　　(3.1)
+由(x, DV,w,u*)≤H(x,DV)≤0 和(2.4),可知 (1.4) 也成立.另外, 当w=0时, 有
+V(x(t))｜u=u*-V(x0)≤-∫t0‖Z‖2ds≤0, x(0)=x0.　　(3.2)
+由V的正定性可知存在一个严格增的连续函数b:［0,∞)→［0,∞),b(0)=0,且 V(x)≥b(｜x｜). 因此有 V*(x)≥b(｜x｜). 对任给ε＞0,由V在原点的连续性, 就存在δ＞0 ，使得｜x｜＜δ时V*(x)＜b(ε).由定理 1 和 2可知,V* 也满足(3.2). 于是有
+b(｜x(t)｜)≤V*(x(t))≤V*(x0)＜b(ε)t≥0.
+只要｜xv｜＜0. 因此｜x(t)｜＜ε. 故稳定性可证.
+　　下面证明渐近稳定性. 考虑对充分小初始值的某个ω-极限集Γ. 记
+
+当∈Γ且 V*()=c时, 因为(3.2), V*(ρ(u*,0,t))不会大于c . 另外, 既然极限集上的点,那么i就有 ti 使.其中xi= ρ(u*,0,ti)及limi→∞ti=∞，因此有limi→∞xi=.注意到V* 的定义,于是就有一序列{xji}, 使V*(xi)=limj→∞V(xji). 再由于limi→∞limj→∞xji=,可得
+　　(3.3)
+另外, 根据 (3.2) 可知z(x,u*,0)=0,x∈Γ. 再由零可检测假定, 有limi→∞ρ(u*,0,t)=0,因此 c=0. 再从limj→∞V*(x(t))=0和 V* 在原点附近的正定性,可推出limj→∞x(t)=0, 即闭环系统的渐近稳定性.　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　Q. E. D.
+　　推论 1. 条件同上, 那么控制律u=u*(x,DV*)也同样解决(1.1) 的干扰抑制问题.
+　　注.本定理中要求V在原点处连续，且某邻域内正定是强于V有界非负,但这仍比V 光滑正定条件弱很多. 其实, 它只是充分条件(因由零可检测).
+　　综上两节, 非线性H∞控制的许多结论都可从光滑解的情形推广到非光滑解的情形.
+4　近似逼近分析
+　　理论上我们知道直接求解(1.5)和(1.6)通常是很困难的, 因此就有必要讨论求解的近似方法. 也就是说, 用一簇系统Σε
+=Fε(x, u, w),　z=Zε(x, u)　　(4.1)
+来逼近系统Σ
+=F(x, u, w),　 z=Z(x, u).　　(4.2)
+即当ε→0时, 令Fε→F和Zε→Z局部一致收敛. 注意一致收敛不能保持光滑性.
+　　自然我们可以将Σε取得简单易求, 然后用它的解来逼近Σ的解.下面的定理表明, 这样做是可行的.
+　　定理 4.假定
+　　1)任意Σε满足(1.5)且其解Vε满足
+　　(4.3)
+　　2)相应的Hamilton函数有
+　　(4.4)
+那么系统Σ有粘性解满足(1.5)且
+　　(4.5)
+　　证明.因为 (4.3) 易知，由(4.5) 定义的 V 存在且局部有界非负(由(2.3) 可知V是下半连续).取φ∈C1(Rn), 不失一般性, 设V-φ在x0∈Rn达到局部严格极小. 故可选取一子列, 当i→∞时,εi→0且
+Vεi(xεi)→V(x0),xεi→x0.　　(4.6)
+同时, Vεi-φ在 xεi达到局部严格极小(因xεi是人为选取的,且V-φ在x-0达到极小).
+因为Σεi满足(1.5), 由定理2得
+Hεi(xεi,Dφ(xεi))≤0，i=1,2,….　　(4.7)
+取i→∞, 就得
+H(x0,Dφ(x0))≤0.　　(4.8)
+故得证.
+　　注. 此定理是在邻域内讨论近似逼近的, 但可推广到一个给定的合适闭集上.另外, 注意到它本身涉及的是逼近粘性解, 自然也适用于逼近某种意义下的光滑解. 因此一些经典的讨论也可包含在其中.同时要注意到此定理也未涉及鞍点条件, 但鞍点条件具有重要的实际意义: 它使得最优控制器与干扰无关而只要考虑状态变量即可.
+　　该定理为近似算法给出了理论依据. 这里再给出一个多项式的算法:假定(4.2)是使鞍点条件成立的仿射非线性系统, 即
+F(x,u,w)=f0(x)+f1(x)u+f2(x)w,Z(x,u)=h0(x)+h1(x)u.　　(4.9)
+这里Z满足基本假设 A1. 现以多项式系统族Σε
+Fε(x,u,w)=fε0(x)+fε1(x)u+fε2(x)w,Zε(x,u)=hε0(x)+hε1(x)u.　　(4 .10)
+取 Nε(limε→0Nε=∞) 与
+
+去逼近此系统(4.2)(其中［d］代表齐次多项式的阶数), 使得在给定的x=0某有界邻域上有‖Fε- F‖＜ε与‖Zε- Z‖＜ε. 定义在此邻域内的多项式正定函数族Vε:Rn→R 且 Vε(0)=0.随后取相应的多项式wε* 和 uε*使
+
+去满足此定理的条件.因此可通过对多项式系统族的解来逼近原系统关于非线性 H∞ 的解.其中可采用计算机符号演算. 至于如何求解多项式系统的非线性 H∞问题 (可参见文［1］中的例子), 这里限于篇幅,不予详细讨论.
+5　结束语
+　　本文推广了非线性H∞问题可解的涵义(不一定光滑), 具有较强的实际意义.又考虑了其粘性解和控制器的一些性质. 第四节中讨论了近似算法的理论依据.另外, 关于近似算法的构造, 还可以利用神经网络方法等.也可依据粘性消去法的思想, 在不等式(1.6)的左端加上粘性项, 其中包含一个常系数的二阶椭圆型微分算子. 如此，则可用可微的古典解去逼近(1.6)的粘性解. 还有一个有意义的推广是用粘性解理论进行输出反馈(1.3)的设计.
+　　1)本文得到国家自然科学基金资助
+作者简介：洪奕光　1966 年生, 1993 年在系统所获得博士学位. 1994-1995年期间在香港理工大学做博士后. 1995 年在中国科学院系统所为副研究员. 主要研究兴趣:非线性建模, 控制及其应用.
+　　　　　梅生伟　1964 年生, 1996 年在系统所获得博士学位. 现在在清华大学电机系做博士后. 主要研究兴趣: 非线性控制和电力系统应用.
+　　　　　秦化淑　1934 年生, 系统所研究员.主要研究兴趣: 非线性控制和机器人研究.
+　　　　　翁绍鹏　在香港大学数学系任教. 主要研究兴趣: 非线性最优控制和粘性解分析.
+作者单位：洪奕光(中国科学院系统科学研究所　北京　100080)
+　　　　　梅生伟(清华大学电机系　北京　100084)
+　　　　　秦化淑(中国科学院系统科学研究所　北京　100080)
+　　　　　翁绍鹏(香港大学数学系　香港)
+参考文献
+1　Isidori A, Kang W. H∞ control via measurement feedback for general nonlinear systems. IEEE Trans. Automatic Control, 1995, 40(3): 466-471
+2　Basar T, Berhard P. H∞－opitmal control and related minimax design problems.Boston:Birh?user,1991
+3 James M R. A partial differential inequality for dissipative nonlinear systems.Syst. Contr. Lett.,1993, 21(4): 315-320
+4　 Cranndall M, Evans L, Lions P L. Some properties of viscosity solutions of Hamilton－Jacobi equations. Trans. AMS，1984,282(2): 487-502
+5　Lions P L, Souganidis P E. Differential games, optimal control and directional derivatives of viscosity solutions of Bellman's and Issac's equations.SIAM J. Contr. Optim., 1985,23(2): 566-583
+6　Hermes H. Resonance, stabilizing feedback controls, and regularity of viscocity solutions of Hamilton－Jacobi－Bellman equations.Mathematics of Control, Signal, and Systems 1996,9(1) :59-72
+7　James M R. Asymptotic analysis of nonlinear stochastic risk－sensitive control and differential games.Math. of Control,Signal, and Systems, 1992,7(3): 401-417
+8　洪奕光, 翁绍鹏, 梅生伟, 秦化淑. 非线性H∞控制的粘性解法. 科学通报, 1996，42(7):673-676
+9　Soravia P. H∞ control of nonlinear systems: differential games and viscosity solutions,SIAM J. Contr. Optim., 1996,35(3): 1071-1097
+收稿日期1996-05-23

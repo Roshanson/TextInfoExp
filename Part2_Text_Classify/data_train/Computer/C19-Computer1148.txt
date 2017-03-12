@@ -1,0 +1,147 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年 第25卷 第6期 Vol.25 No.6 1999
+
+
+
+基于照明参数与反射系数的分层SFS算法1)
+杨敬安
+摘　要　提出一种由明暗信息复原形状的鲁棒算法.此算法能有效地估计照明方向、漫反射系数、照明天顶角以及沿图像轮廓由明暗信息复原形状，并且在考虑自阴影影响情况下，用新方法从图像的统计特征估计照明的仰角和表面反射系数，使重建强度梯度接近输入图像梯度实现平滑约束.该方法为数据驱动，稳定可靠，能同时更新表面斜率与高度图，大大减小发射项与可积分项内的剩余误差.最后给出SFS(Shape from Shading)算法的分层实现.
+关键词　照明参数估计，漫反射系数，分层SFS算法，拉普拉斯模型，剩余误差.
+A HIERARCHICAL SFS ALGORITHM BASED ON
+ILLUMINANT PARAMETERS AND SURFACE ALBEDO
+YANG Jingan
+(Institute of AI,Hefei University of Technology, Hefei　230009)
+Abstract　This paper proposes a robust algorithm to recover shape from shading information. This algorithm can estimate effectively illuminant direction, surface albedo, the azimuth of the illuminant and recover shape using shading information along image contours. The elevation of the illuminant and surface albedo are estimated from image statistics, taking into consideration the effect of self-shading. With the estimated reflectance map parameters, we compute the surface shape using a new procedure that implements the smoothness constraint by making the gradients of reconstructed intensity close to the gradients of the input image. The new algorithm is data driven, stable, and updates surface slope and height maps simultaneously, and significantly reduces the residual errors in irradiance and integral terms. Finaly a hierarchical implementation of the SFS algorithm is presented.
+Key words　Estimation of illuminant parameters, surface albedo, hierarchical SFS algorithm, Lambertian surface model, residual errors
+1　引言
+　　在计算机视觉中，从明暗求形状(SFS――Shape from Shading)通常是把图像亮度建模成表面的几何函数，再根据已知成像模型重建表面，产生几乎与输入图像相同的图像或与物体外形相同的深度图.
+　　SFS方法最早由MIT的Horn等于1975年提出［1］.该方法成功与否主要依赖两个因素：①建立能清晰地说明表面形状与图像亮度间关系的成像模型；②产生由已知图像复原形状有效的数值算法.
+　　关于成像模型，应考虑两个密切相关的问题：①怎样建立表面形状和图像亮度间的关系模型；②怎样较精确地估计成像模型的参数.在SFS研究中，成像模型用反射图I=R(p,q)表示，式中I为景物发光度，R是反射图函数，并且是高度z关于图像坐标的偏导数.本文主要研究图像生成的拉普拉斯模型［1，2］.假定关于z轴的正交投影平行于摄像机的光轴，并且z的正方向指向摄像机，这样拉普拉斯模型可写作
+　　(1)
+上式中η是合成系数，包括照明强度和表面的反射系数.对均匀照明，如果表面光特性均匀，η为常数；θi是入射角，即表面法线和朝向光源方向的夹角；是位置(x,y,z(x,y))处的表面法线［3，4］；l=(cosτsinγ，sinτsinγ，cosγ)是照明方向的单位向量，其中τ是照明的仰角，即l和x-z平面间夹角，也称照明的天顶角；γ是倾斜角，即l和z轴正方向夹角；σ0为偏移亮度，依赖于背景的照明、数字转换器的校准等.本文针对现有方法存在的较多问题，基于严格的数学分析，提出新的算法，要求重建强度的梯度接近输入图像的梯度来实现平滑约束.
+2　基本公式的导出
+　　利用估计的照明参数和表面漫反射系数能够解SFS问题.传统求解SFS问题要求利用发射等式
+R(p,q)=I(x,y)　　(2)
+重建的图像应接近于输入图像［5，6］，也就是说，式(2)使用了输入图像的所有信息.但在各种迭代的SFS算法中，表面重建应在每个像素处分别适时修正.对每个像素，式(2)的右边是驱动函数的值，左边的(p,q)常看成自由变量.利用式
+　　(3)
+中的二次平滑项施加重建表面是平滑连结的条件，式中.遗憾的是，不管强度如何变化，表面平滑项均匀地抑制表面形状变化，并且图像强度的变化与表面形状的变化有关［7，8］.在图像强度急剧变化的区域，相应的表面片可能不是平滑的［9］，这样在该区域上的平滑就减弱.克服这种二次平滑约束缺点的一种方法是令λ值适合于局部强度的平滑变化.由于SFS是强度驱动处理，所以这种自适应平滑可通过令重建强度的梯度等于输入图像的梯度实现，这可表示为
+Rx(p,q)=Ix(x,y),　　(4a)
+Ry(p,q)=Iy(x,y),　　(4b)
+由于R(p,q)是x和y的隐函数，因此定义式(4)左边的导数，并通过合并式(2)和(4)，SFS的计算可公式化为使
+　　(5)
+极小化的约束最优化问题，式中
+　　(6)
+式(6)中最后一项来自积分约束，μ是加权系数.值得注意的是，这里已忽略二次平滑项.由于利用变量的计算，式(5)的极小化等效于求解下面的Eular等式
+　　(7a)
+　　(7b)
+　　(7c).
+在式(6)中，利用泰勒级数展开式沿(p,q)周围的反射图取近似值，Fp可写成
+　　(8)
+令带有撇号(′)的变量表示修正后的值，无撇号(′)的变量代表修正前的值，那么
+　　(9)
+修正后，(p,q,Z)偏导数中相应的增量为
+p′x=px-δp，　q′x=qx-δq,　Z′x=Zx-δZ，　　(10a)
+p′y=py-δp，　q′y=qy-δq,　Z′y=Zy-δZ，　　(10b)
+p′xx=pxx-2δp，　q′xx=qxx-2δq,　Z′xx=Zxx-2δZ，　　(10c)
+p′yy=pyy-2δp，　q′yy=qyy-2δq,　Z′yy=Zyy-2δZ.　　(10d)
+把式(9)和(10)代入(8)，并扩展反射图R，可获得
+　　(11)
+这里高阶导数Rpp,Rpq,Rqq因R在(p,q)周围的线性近似而为0.类似地，式(7)中的其它各项可导出，结果如下：
+　　(12)
+　　(13)
+　　(14)
+　　(15)
+　　(16)
+Fz=0，　　(17)
+　　(18)
+　　(19)
+把式(12)～(19)代入(7)并写成矩阵形式，得到
+
+或等效地写成
+　　(20)
+上式中
+
+解式(20)，得到修改方案
+
+
+
+式中Δ是系数矩阵行列式，并且总为正，即
+
+
+由此证明，迭代法是稳定的.
+　　
+3　算法的实现
+　　本文算法用分层结构法和迭代法实现，下面分别讨论.
+3.1　分层结构法
+　　为缩减图像的复杂计算，分层实现无疑是有效的方法.在我们的分层SFS算法中，分辨率相近层间的图像分辨率压缩系数为2，最低分辨率的图像尺寸是32×64.分层实现的重要问题是把产生的结果在层间通信，并且表面形状的描述在不同分辨率层间应一致.令标有(～)的变量代表较高分辨率层的形状描述符，而没标(～)的变量表示低分辨率层的描述符，这样导出的转换规则如下.
+　　规则1.照明方向和漫反射系数相同
+
+　　实验表明，基于这一假设估计的照明方向和表面反射系数几乎不受分辨率变化的影响.
+　　规则2.较高分辨率层的表面描述由相邻低分辨率层的描述内插.令是较高分辨率的图像尺寸，对于，较高分辨率层的形状描述是
+如果i和j均为偶数，
+如果i为奇数、j为偶数，
+如果i为偶数、j为奇数，　　(21)
+
+如果i和j均为奇数.
+
+　　规则3.利用自然的边界条件插补边界像素，例如对于i=1和j=1的边界有
+　　(22)
+　　本文仅用图像取样和插补的金字塔法实现，分层实现的更复杂方法将进一步研究.
+3.2　迭代法
+　　当我们组合反射图参数估计、分层实现和新的SFS公式，便获得分层SFS鲁棒算法，其步骤如下：
+　　Step1.估计反射图参数(τ，γ，η，σ0)；
+　　Step2.输入图像的标准化，，把输入图像尺寸缩减到最低分辨率层的尺寸，并置p0,q0和z0的值为“0”；
+　　Step3.修改现行的形状重建，对每个像素，偏导数用以下导数近似
+
+式中对于图像框架外的值，利用类似规则3的自然边界条件，这样可用下式修改形状重建
+
+式中
+
+If｛(Solution is stable) OR (Iteration has reached Nmaxof current layer)｝continue to Step 4,otherwise repeat;
+　　Step 4. If｛Current image is in the highest resolution　stop;
+　　Otherwise｛
+　　●增加图像尺寸，并用式(21)和(22)扩展形状重建到相邻较高分辨率层；
+　　●把标准化的输入图像缩减到当前的分辨率；
+　　●Go to Step 3｝.
+
+4　实验结果与结论
+4.1　估计照明方向和漫反射系数
+　　本文用多种实图像测验算法，其中包括彩色图像、分辨率不同图像及立体图像对.“.r”，“.g”和“.b”分别表示红、绿和蓝，“.w”表示由三种彩色的加权和产生的黑／白图像.值得注意的是，对于实图像，图像强度出现偏移，这依赖于胶片的曝光和处理.实验获得的结果如表1.
+表1　实图像的照明方向和漫反射系数
+
+图像τγησ0
+人面图像-1.b10.7954.08127.7341.00
+人面图像-1.g7.7459.52192.013.00
+人面图像-1.r9.2942.89190.4754.00
+人面图像-1.w11.7352.46162.2737.00
+辣椒-1.b26.0952.77137.460.00
+辣椒-1.g32.7445.25221.850.00
+辣椒-1.r22.566.50201.310.00
+辣椒-1.w20.4024.06173.240.00
+
+
+4.2　利用SFS算法的实验
+　　文中利用多幅图像测验了SFS算法，在所有实验中，令μ=1,最高分辨率层的Nmax均为500，迭代从(p,q,Z)=(0,0,0)开始，对反射图的偏导数、Rp和Rq进行数值计算.实验使用所有的图像均为256×256，高度图的3-D曲线图减小为64×64.图1(a)给出人面的输入图像，估计的反射图参数为τ=7.74°，γ=59.52°，η=192.01°和σ0=3；图1(b)为用SFS算法获得的高度(Z)图；图1(c)是图1(b)的3-D曲线图；图1(d)是用SFS结果生成的p和q图；图1(e)表示照明天顶角变化到τ=73.11°由SFS处理得到的(p,q)图产生的图像.图2给出利用SFS算法测验的辣椒图像，其中(a)为输入图像，估计的反射图参数为τ=32.74°，γ=45.25°，η=221.85°和σ0=0；(b)用SFS算法获得的高度图；(c)是(b)的3-D曲线图；(d)为利用估计的反射图参数由SFS处理结果得到的(p,q)图产生的图像；(e)表示照明天顶角变化到τ=122.74°由SFS处理得到的(p,q)图产生的图像.
+
+
+图1　利用SFS算法测验人面的图像
+4.3　结　论
+　　十多年来，从明暗求形状已经进行了许多的研究，此类问题涉及许多重要理论、物理定律.实际上，我们应当求解照明方向、表面反射系数以及利用估计的反射图参数复原形状等问题.本文已示出估计拉普拉斯成像模型的反射图参数及重建形状的鲁棒算法，通过对各种不同图像进行测验，已经获得十分令人满意的结果.在本文算法中，要求重建强度的梯度接近输入图像梯度来实现平滑约束，在这种条件下，由于能从输入图像导出更多的约束，并且斜率与高度图可同时修正，使算法更加稳定.此外，从成本函数消去二次项，不仅大大减小发射项和可积分项内的剩余误差，而且又增加了重建高度图的动态范围，成功地解决了SFS算法分层实现各分辨率层间的通信效率，使处理速度大大加快，精确度也有很大提高，为解决SFS问题的实时应用奠定了基础.
+
+
+图2　利用SFS算法测验辣椒的图像
+1) 国家自然科学基金(69585002，69785003)及博士点基金(96035902)资助项目.
+作者简介：杨敬安　1969年毕业于合肥工业大学无线电系，现为该校计算机与信息学院教授，博士生导师，IEEE高级会员，纽约科学院Fellow.长期从事计算机视觉、图像理解、模式识别、人工智能与机器人的教学和研究工作.发表学术论文140多篇，出版专著2部，完成国家自然科学基金、博士点专项基金及国际合作项目10多项，获部省级科技进步二、三等奖三项，在多个国际学术组织内兼职.
+作者单位：合肥工业大学人工智能研究所　合肥　230009
+参考文献
+1　Horn B K P. Obtaining shape from shading information. The Psychology of Machine Vision(P H Winston Ed.). New York:McGram-Hill,1975，115～155.
+2　Horn B K P. Height and gradient from shading. International Journal of Computer Vision,1990,1(5)：584～595
+3　Horn B K P. Robot Vision. Cambridge,MA:MIT Press,1986
+4　杨敬安.关于融合多针图确定三维表面绝对深度的研究.自动化学报，1996，22(1)：58～67
+5　Peleg S, Ron G. Nolinear multiresolution:A shape from shading example.IEEE Trans. Pattern Anal. & Mach. Intell,1990，12(12)：1206～1210
+6　Pentland A P. Finding the illuminant direction. J. Opt. Soc. Amer.A,1983，72(4)：448～455
+7　Frankot R T, Chellappa R. Estimation of surface height in synthetic aperture images using shape from shading techniques.Arti　ficial Intelligence,1990，43
+8　杨敬安，张奠成.基于特征的立体视觉并行匹配算法的研究.电子学报，1991，19(1)：36～43
+9　杨敬安.由双目图像流无对应地估计3-D运动参数.计算机学报，1995，18(11)：849～857
+收稿日期　1997-11-07　收修改稿日期　1998-04-21

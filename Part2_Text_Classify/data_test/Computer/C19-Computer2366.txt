@@ -1,0 +1,79 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第8期 Vol.36 No.8 1999
+
+
+
+基于移动Agent的网络管理框架及实现
+张　松　阎保平
+摘　要　Internet/Intranet 的迅速发展，促使网络日趋复杂，规模不断扩大，应用服务数量剧增，网络管理的重要性日益提高.传统上作为事实工业标准的SNMP采取集中管理模式和功能固定的代理(agent)机械地收集大量原始数据，逐渐无法适应网络的发展现状，大量网管信息加重了网络负载，对管理对象的请求响应缓慢.
+　　文中提出采用移动代理(mobile agent)的网管框架，将代理支撑环境驻留在设备上，替代功能固定的代理，网管中心根据实际网络状态选择适当功能的代理程序发送到设备，在代理运行环境中生成程序实例(instance)，完成预期功能，移动代理不仅收集而且能够处理数据，从而加快响应速度，减轻网管中心负载.文中阐述了移动代理的结构，控制和安全问题，以及用于网络管理的系统框架和原型的实现.
+关键词　移动代理，网络管理，SNMP，Java
+中图法分类号　TP393.07
+NETWORK MANAGEMENT BASED ON MOBILE AGENT:ARCHITECTURE AND IMPLEMENTATION
+ZHANG Song and YAN Bao-Ping
+(National Research Center for Intelligent Computing Systems, Beijing 100080)
+(Computer Network Information Center, Chinese Academy of Sciences, Beijing 100080)
+Abstract　With the rapid development of Internet/Intranet, network is becoming larger and more complex. Traditional SNMP-based centric network management can no longer keep up with these trends. In the paper here, a new framework is put forward, which takes advantage of the mobile agent to manage network more quickly and more flexibly. In the new framework, an agent execution environment resides on the network device, substituting the old SNMP's function-static agent. Network management center selects proper agent program according to network state and distributes it to network device where instance is generated to fulfill the expected task. Mobile agent not only can collect data, but also can process these data to improve the response and relieve NMS's burden. The mobile agent structure and its control strategy are presented. A management framework with its prototype, which can integrate with SNMP, is also described.
+Key words　mobile agent, network management, SNMP, Java
+1　前　言
+　　计算机网络(尤其是Internet/Intranet)的迅速发展和广泛应用，增强了对网络管理在快速性和有效性方面的要求.作为事实工业标准SNMP采取集中控制模型，包括4个组成部分(如图1所示)：网管工作站NMS(network management station)，分布在网络管理对象(设备)上的代理(Agent)，描述被管理对象状态的管理信息基MIB(management information base)以及NMS同Agent之间通信的SNMP协议.MIB由一组变量构成，每个变量表示管理对象属性的一个方面.Agent驻留在管理对象上，收集本地有关信息，并给MIB中的相应变量赋值，在接到NMS的请求时将这些值回传给NMS.NMS是整个网络的集中控制点，不停地通过Get, GetNext原语从Agent中依次读取被管理对象MIB中每个变量的值，从而综合获得当前网络的状态，并确定需要的控制行为.SNMP结构特别适合于设备自身处理能力不足而网络流量不大的情况.面对网络的飞速发展，SNMP网管模型暴露出许多缺陷：① NMS负责所有网管信息的处理，当网络扩大时，有可能成为系统的“瓶颈”；② 没有定义MIB中数据的处理方式，为了能够适应各种处理和监控方式(有些可能是未知的)，MIB定义不得不尽量详尽，传输时占用较多带宽资源；③ NMS只是盲目地收集原始数据，实际的处理往往只用到部分数据，造成资源浪费；④ SNMP在设计时的一个重要考虑就是尽量减少网络管理给设备带来的额外负载，驻留在设备上的Agent没有任何处理功能，即使最简单的处理，也必须将数据传送到NMS，等待返回的结果；⑤ Agent的功能在安装之后是固定的，不能按照系统状态和管理策略变化进行调整.
+
+
+图1　SNMP的结构
+　　面对网络管理的应用现状，很多学者对改进SNMP、完善网管功能进行了大量工作，例如利用域/规则的集成化网管方案［1］，TMN和SNMP两种模型集成综合管理网管信息［2］等.这些方法虽然通过划分域减少了每个基本管理范围，但仍无法适应网络及其应用的多样性和易变性.
+　　动态网络［3］和智能代理［4］技术的出现和发展为我们提供了新的思路.移动代理是近年来人工智能、分布式系统的研究热点之一，它被抽象地定义为能够自动完成用户任务的程序，可以不固定于开始运行的系统，具有能将自身在网络上传输并在目的系统上继续执行的特性.目前已有一些移动代理的示范系统，如agentTel［5］, Aglets［6］, Odyssey和telescript［7］.虽然移动代理的出现不是为了网络管理，但是我们设想如果把具有一定网管功能的程序动态分布到设备，这样原始网管信息只需要传递到最近的具有网管功能的设备(往往是同一设备)，在本地加以处理，产生快速响应，并将处理后的信息传到NMS，从而减少传到NMS的网络流量，避免了NMS的“瓶颈”：基于移动代理的网管实际上是一种动态分布网管功能的机制.
+　　本文首先描述了适用于网管的移动代理模型，然后讨论了以移动代理为基础构造的网络管理框架，这种框架简单易行，并保证同SNMP的互操作性.在文章的最后，作者给出一个用Java实现的原型系统，验证了文中提出的代理结构和网管框架.
+2　移动Agent结构
+　　用于网络管理的移动代理是指根据网管需求动态发布到远程设备，并在远程设备链接执行的一段程序，其目的是优化管理，其行为(启动，挂起，终止，删除)完全受控于发送它的进程.用于网管的移动Agent虽然从个体上讲功能是固定的，但是它可以动态地发布到网络上的设备，对于设备来讲，驻留于其上的代理的功能是可变的，而且按需而变.
+　　目前存在的移动代理示范系统都是构建通用的环境，使移动代理在网络上移动时能够与周围环境及其他代理交换信息，从而自主地完成用户任务，显得庞大而复杂，根据SNMP的经验，简单易行才有生命力.从网络管理的角度出发，本文提出的适用于网管的移动Agent的模型如图2所示.
+　　发布者按照移动代理控制协议(MACP，mobile agent control protocol)同远程设备联系，发送移动代理程序，并根据网络状态信息控制其行为.远程设备对于移动代理的支撑环境包括移动代理控制接口(MACI, mobile agent control interface)、受限运行环境(LEE, limited execution environment)和安全管理器(security manager)等几部分.
+
+
+图2　移动代理的结构
+　　MACI提供设备同发布者按照MACP通信的接口，接受发布者送来的控制指令，是发布者同代理环境交互的界面.MACI检查发布者的身份，并完成对移动代理程序和例程的管理和控制.从发布者传来的Agent程序在MACI控制下在受限运行环境中生成实例(instance)并执行.
+　　受限运行环境负责在本地生成移动代理的例程，是使代理“动”起来的关键，它能够理解并执行代理程序段.LEE采用的技术同代理的代码形式密切相关：当移动代理采用某种语言的源码时，远程设备上的LEE就是该种语言的解释器(safe\|Tel)；当代理使用中间代码时，LEE就是相应的中间代码解释器(如Java)；代理也可以是二进制代码，此时LEE将提供动态链接功能.
+　　安全管理器负责验证和授权Agent对本地敏感数据资源的访问(如文件系统的读写权限).
+　　MACP帮助发布者同远程设备协商、分布移动代理并控制其行为.当MACI接收移动代理程序时，向发布者返回唯一标识agentID，从而能够对代理程序进行控制.当受限运行环境启动一个移动代理的例程时，向发布者返回另一个唯一标识agentInstanceID，以便对代理实例进行控制.MACP中的主要服务原语包括Agent程序代码的发送(send)、删除(delete)、启动例程(initiate)和例程的终止(terminate)、挂起(suspend)、恢复(resume)以及报警(trap)、状态查询(statusquery).
+3　基于移动代理的网络管理框架
+　　基于移动代理的网管框架实际上是利用移动代理运行环境替代驻留在设备上的传统的功能固定的代理，网管中心根据具体状态和网管意图，将具有一定的网管功能的Agent发送到设备上.这样代理的功能可以随着网络管理中心的策略而及时调整.
+　　本文提出的网管框架(如图3所示)由以下几部分组成：
+　　(1) 代理数据库：保存网络上所有可能使用的代理程序以及相应的MIB.(2) 移动代理服务器：即移动Agent的发布者，根据NMS的要求从代理数据库中提取适合的代理程序，通过MACP协议将其发送到远程设备，同时将代理程序对应的MIB发送到NMS.(3) 网管工作站NMS：根据SNMP协议完成网管功能；另外可以根据网络状态和管理策略，向移动代理服务提出代理发布请求，并保存远程设备代理及其MIB的对应关系.(4) 移动Agent：包含了原来SNMP协议接口功能的移动代理，能够同时接受MACP请求和SNMP请求，是移动代理同SNMP网管系统整合的关键.
+　　同SNMP网络模型相比较，上述网管构架具有如下特点：① Agent不仅能够收集数据，而且具有灵活的计算能力，对收集到的数据进行分析加工，产生管理动作；② Agent只将NMS所关心的结果用SNMP协议传回，减轻了NMS的负担和网络流量负荷；③ 由于Agent具有处理功能，当网络故障发生时，可以在距离故障点最近的地方产生反应(甚至可以是故障设备本身)，形成二级控制环(见图4)，提高反应速度，有效防止故障蔓延；④ 基于移动代理的网管可以使得管理所需计算最大程度地分布于整个网络，从而适应大范围的网络，并且管理系统的性能同网络范围滑直接约束关系.
+　　从本质上讲，基于移动代理的框架是将处理功能移向原始数据产生的地方，而传统SNMP框架是将原始数据移向处理功能.虽然增加了移动代理服务器和代理数据库等部件，使得结构稍微复杂，但带来的灵活性能可以更好地适应网络多样化的发展.能够灵活地调整Agent的功能是这种网管框架的鲜明特点，也是使这种框架在实际中成功使用的关键.这同网管策略回答有密切的关系.例如Agent的功能可以计算包丢失率，也可以计算出现拥塞的概率，并当拥塞超出一定阈值时，采取相应措施.
+
+
+图3　基于移动代理的网管框架
+
+
+图4　基于移动代理的网管同SNMP的控制环对比
+4　实　例
+　　我们利用Java实现了上述系统的一个原型系统，采用Java的原因是它具有良好的可移植性，比较容易达到同操作平台的无关性.系统的环境是：一台SGI Indy Cosmo和一台Pentium PC, Win95 Java Workshop, 通过TCP/IP相连，整个系统在Java虚拟机上实现.原型系统的结构如图5所示.
+
+
+图5　Java实现的原型系统
+　　两端利用socket实现了MACP和SNMP的通信原型，通过MACP端口传输和控制Java程序的行为，通过SNMP协议获得所需的经初步处理后的网管信息.基本的工作流程描述如下.
+　　首先，发布者通过根据管理策略和网络设备状态，确定应向设备发送的Agent的种类与功能.然后发布者的高度管理模块通过MACP向设备发送Agent类的Bytecode.接收方设备的控制接口在收到Bytecode之后，将它存储为本地的一个.class文件，并用自己定义的ClassLoader试着加载Agent.当ClassLoader的方法loadClass()返回一个Class类型的对象，否则不予接纳.然后发布者发送启动例程的MACP消息，远端设备只要调用该Class对象的方法newInstance()，就可以创建一个新的实例，并让它开始运行.我们可以为每一个这样的实例都分配一个thread来控制它的运行(suspend,resume,stop)等.一旦该网络设备不再需要这种Agent，就可以发送MACP命令让网络设备终止例程运行并删除响应的class文件.
+　　移动代理的流动性带来了系统的安全性问题：比如Agnet程序的来源和发布者身份，运行过程中对本地的系统资源的使用权限等.为了解决这些安全性问题，在实现中借助了Java中的分层对策.低层的安全性检查是Java的基本特性，借助于Java语言规范和Java虚拟机的约定，在Java run-time运行系统中实现.Java底层的安全性检查内容除语言定义检查外，最重要的是由verifier执行的Bytecode检查，目的是消除人为直接编写Bytecode的可能.
+　　移动Agent在更高级别上的安全性利用Java Lang程序包中提供的类加载器(security manager)接口实现.　　
+　　ClassLoader用于定义在将Java类加载到运行环境中时的规则.这些规则包括类文件的存储格式(如：Bytecode,压缩文件zip等)，类文件的来源(文件系统，或网络)，如何从文件来源读入类文件(如应该搜索哪些目录，与哪些机器通信)，以及加载类时适用的条件.我们在ClassLoader的抽象方法loadClass中定义自己的类加载规则.
+　　Security Manager严格规定一个程序运行时必须遵从的安全规则.这些规则包括是否允许程序检查运行堆栈，访问本地文件，访问网络信息，访问系统属性，和执行系统命令等.在缺省情况下，Java运行系统并不使用Security Manager,即对于任何的操作都不作安全检查.然而，在移动Agent环境中必须定义和安装Security Manager,Java规定一旦安装了Security Manager,就不能在程序中替换它.
+　　Security Manager根据设定的方法进行有关权限检查.如果被检查的操作违反了安全规则，除了checkTopLevelWindows()之外，所有的方法在缺省情况下都会抛出Security Exception.利用Security Manager几乎可以在任何操作时触发权限检查，例如网络socket操作，创建一个Class Loader，文件操作等.
+　　进行权限检查时，考虑的依据可以有：到当前的运行环境信息(current execution context,有时称作安全环境信息security context)和运行堆栈信息(execution stack information). CEC是系统收集的有关当前运行线程的信息(包括它所属的thread group,运行Java程序的用户身份，运行Java程序的机器等).运行堆栈信息记录了从主程序到当前方法之间所调用的方法，即所有正在运行的方法堆栈.总的来说，Security Manager可以根据比较详细的环境信息进行提高安全的准确性.
+5　结　论
+　　本文探讨利用移动Agent进行网络管理的框架结构并通过基于Java的系统加以验证.本文研究了适用于网络管理的移动Agent模型，并描述了可与SNMP共存的网管框架：将代理支撑环境分布于网络设备上，每个代理的功能可以根据具体情况改变，并具有计算能力.通过该框架可以使网管控制功能靠近故障区域，提高了响应速度，NMS摆脱了收集原始数据的束缚，更关注于某些有意义的计算结果并减少了网络通信负载.　　
+　　文中描述的原型系统基本验证了这种思路的可行性，作者认为这种方法为解决传统SNMP的缺陷提供了途径.进一步的研究将着重于增加Agent的智能性和使受限运行环境与代理控制协议通用化.
+基金项目：本课题得到“八六三”高技术计划306主题基金资助(项目编号963-306-ZD-07-7)
+作者简介:张松，男，1970年7月生，博士研究生，主要研究方向为多媒体通信、网络管理、高速网络体系结构、ATM.阎保平，女，1950年7月生，博士，研究员，中国科学院网络中心主任，主要研究方向为高速网络体系结构、大型复杂网络性能优化与管理.
+作者单位：张　松　中国科学院计算技术研究所国家智能机研究中心　北京　100080
+　　　　　阎保平　中国科学院网络中心　北京　100080
+参考文献
+1　Ravon J. Towards integration of service and network management in TINA. Journal of Network and System Management, 1996, 4(3): 299～317
+2　Michael T, Jane H et al. Information aspects and future directions in an integrated telecommunication and enterprise management environment. Journal of Network and System Management, 1995, 3(1): 111～133
+3　David T, David W. Towards an active network architecture. ACM SIGCOMM, Computer Communication Review, 1996, 26(2): 5～14
+4　Intelligent Agent White Book. IBM, 1995. http://www.software.ibm.com/sysmen
+5　Kotz D, Gray R. Agent Tcl: Targeting the needs of mobile computers. IEEE Internet Computing, 1997, 1(4): 58～67
+6　Aglets Software Development Kit (ASDK). http://aglets.trl.jbm.co.jp/
+7　Mobile Agent White Paper. http://www.genmagic.com/technology/techwhitepaper.html
+收到日期：1997-11-19
+修改日期：1998-05-19

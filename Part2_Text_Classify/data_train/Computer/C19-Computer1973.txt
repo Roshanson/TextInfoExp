@@ -1,0 +1,161 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+1999年 第18卷 第2期 Vol.18 No.2 1999
+
+
+
+在五笔输入模块中扩充专业词组的一种方法
+林传利
+　　摘　要：对五笔字型输入模块进行扩充的具体方法，扩充后的输入模块可最大限度地提高专业文献的录入速度。
+　　关键词：五笔字型输入法　词组　编码
+1　问题的提出
+　　五笔字型输入法作为一种快速高效的汉字录入方法，常被专业录入人员作为首选的输入法，其录入速度在很大程度上取决于编码词库中词组的数量和质量。现今公认的词组最丰富的五笔输入模块为UCDOS5.0及以上版本所提供的五笔输入模块，其词组数量达2万条左右，但对一些特定专业的词组处理起来很麻烦，影响了专业文献的录入速度。UCDOS虽提供了自定义词组的功能，但自定义词组的用途极其有限，并且安全性差。因此，为了提高五笔字型输入法处理专业词组的速度，利用UCDOS附带的万能汉字输入法编码管理器IMDMNG.EXE和数据库语言提供了一整套五笔字型输入模块按用户自己的需要进行词组扩充的方法。此方法特点是方便、实用、扩充词组管理方便，可最大限度地提高五笔输入模块在录入速度方面的优势。
+2　扩充词库的建立及编码
+　　扩充词库可以使用任何不带排版格式的文本编辑器编辑建立，其格式为：每条词组1行，每条词组前后不能有空格。当扩充词组数量较大时，容易出现相同的词组以及遗漏掉常用词组。为此，可用数据库FOXBASE+编程将新形成的文本文件(如WB.TXT)按词组的国标码进行排序(程序见附1 IND.PRG)，排序时要用到1个仅有1个字段ca的数据库文件MX.DBF。排序过程自动筛除重复词组，通过对排序后的文件进行观察，可增加遗漏词组，通过反复多次排序及增加词组，直到满意为止。增加词组应考虑到输入时长短皆宜，可将一些常使用的词组作为多条词组输入，如牛顿第一定律、牛顿、第一定律等等，以增加可靠键入，提高录入速度。将最新形成的文件用*.TXT保存，如WBA.TXT。
+　　扩充词库文件修改满意后，下一步工作就是按五笔编码规则给每一条词组加上五笔编码。如果扩充词组较多，手工编码显得过于麻烦，可以采用UCDOS(5.0及以上版本)附带的万能汉字输入法编码管理器IMDMNG.EXE提供的第三项功能(其使用方法可用IMDMNG/?方式查寻)，即根据指定的编码字典，给文本文件自动加上编码。对上面形成的WBA.TXT的命令格式为：
+　　IMDMNG WB.IMD WBA.TXT WBB.TXT
+新形成的WBB.TXT即是自动加上五笔编码的扩充词库。
+　　下一步，利用IMDMNG.EXE提供的第一项功能将已编译好的编码字典反编译为文本文件的编码源文件。对原五笔输入模块WB.IMD(从5.0到7.0都一样，在＼UCDOS＼DRV目录下)反编译为WBX.TXT的命令为：
+　　IMDMNG WB.IMD WBX.TXT
+以上操作均指所涉及到的文件在当前目录下，否则就应带上文件所在的盘符及路径。至此完成了第二步工作。
+3　输入模块的生成及挂接
+　　UCDOS中的输入法管理系统不仅要求词库正文的每一行前12位为编码区，12位之后放词组，而且还要求所有字、词组按编码排序。因此，前面得到的WBB.TXT还不能以块的形式插入到WBX.TXT用于操作系统输入法中，必须对原词库构成的整体按编码排序，并按要求将重码放在同一行，重码间留一空格。
+　　为此，可用附2所提供的数据库FOXBASE+排序源程序UTU.PRG来按UCDOS格式实现这一步骤，使用该程序前需要用数据库建立1个包含2个字段cb,cc的库文件MY.DBF，同时还要用到前面用过的库文件MX.DBF生成编码源文件的文件头。排序过程通过编码和词组建立索引文件的方式自动筛除扩充词库与原词库中同编码的全同词组，同时将重码放在同一行，重码间留一空格。排序所形成的扩充后的编码源文件为WBXU.TXT。运行该程序新形成的编码源文件的结构与原编码源文件WBX.TXT的结构完全相同，由文件头及正文2部分组成，正文被扩充后重新排序，并自动清除与原词库中同编码的同名词组，保留了原容错码，WBX.TXT的文件头结构只需查看该文件便可知道。
+　　最后，利用IMDMNG.EXE提供的第二项功能，将文本形式的编码源文件WBXU.TXT编译为编码字典，对新形成的WBXU.TXT，其命令格式为：IMDMNG WBXU.TXT WB.IMD并将新形成的WB.IMD拷贝到＼UCDOS＼DRV目录下，通过SETUP命令设置即可使用扩充五笔了。对使用UCDOS5.0的客户，新的编码字典必须为WB.IMD，对原字典进行覆盖即可；对使用UCDOS6.0及以上版本的客户，可使用以IMD为扩展名的其它名字，系统设置命令会自动检测到新模块的存在，并可按配置要求自动挂上。通过对功能键设置的修改，6.0及以上版本的用户还可同时挂上原五笔及扩充五笔。
+4　输入模块向WINDOWS格式转换及挂接
+　　WINDOWS是目前大家用得最多的操作系统之一，但它的中文版中没有五笔输入法，即使安装上通用五笔输入法，在专业文献处理上也显得捉襟见肘。通过对UCDOS编码及WINDOWS下通用码表输入法编码的分析得知，二者存在3点区别：(1)文件头格式不同；(2)正文部分编码与字词的排列方式不同，WINDOWS要求的格式是：字词在前，编码在后，中间不留空格；(3)对重码的处理方法不同，WINDOWS要求所有重码分行表示。对扩充后的近3万条词汇，用手工调整显然太笨拙了。既然能找出它们所区别的地方就可利用数据库管理数据的优势，编程实现从UCDOS编码向WINDOWS编码的转换，其基本步骤的方框图如图1所示。
+
+
+图1  UCDOS编码向WINDOWS编码转换的步骤
+　　在用数据库FOXBASE+编程时，可通过查找UCDOS编码格式下重码间的空格，由1段2层嵌套的循环程序段来实现重码的分解，WINDOWS的通用码表输入法的文件头可用几个输出语句实现，用对编码和词组建索引文件的方式可消除全同重码并使原容错码原样保留，其余可用数据库的简单语句。运行UTW.PRG数据库程序(见附3)，通过读取WBX.TXT及WBB.TXT 2个文件，就可用数据库MY.DBF把在UCDOS下使用的扩充五笔编码源文件自动转换到WINDOWS系统下使用的通用码表输入法格式的编码源文件WBXW.TXT上。
+　　PWIN3.X下用通用码表输入法挂接，将WBXW.TXT经“码表生成器”转换成WBXW.MB文件，再在“面版控制”中“输入法”上通过WINMB.IME即可挂接到PWIN3.X上使用。
+　　在PWIN95中，通过在附件下安装的输入法生成器，在弹出的对话框中选“创建输入法”，单击“浏览”，找到WBXW.TXT，再单击“转换”，完成之后单击“确定”。再选“创建”即可直接将扩充后的五笔输入模块挂接在PWIN95中使用。在PWIN98中安装方法与PWIN95完全类似，不再详述。
+　　PWIN3.X通用码表输入模块码表源文件的文件头格式为：
+　　［Description］
+　　Name=扩充五笔　；该等号后用户可指定1个适当的名字
+　　Maxcode=4
+　　UseCode=“abcdefghijklmnopqrstuvwxy"
+　　Wildchar=“z"
+　　Sort=0
+　　［TEXT］
+　　该文件头中Sort=0表示挂接输入法时不需要对编码文本文件排序；Sort=1表示挂接前要对编码文件排序。
+　　以上所介绍的方法，适合于任何专业的输入人员对输入模块进行专业词汇的扩充，类似的方法也可用于其它实用的输入法对专业词汇的扩充。需要注意的是：扩充词库的完整建立是一个实践中不断完善的过程，最好把扩充词库的文本文件单独存放，以备随时再进行扩充。以下所附程序在FOXBASE+上调试通过，同样能在FOXPRO2.5 FOR DOS下运行，并且在FOXPRO下，程序运行的时间大为缩短。
+附1：IND.PRG
+扩充词库按词库国标码排序源文件：
+set talk off
+set safe off
+clear
+@12,10 say“正在进行排序，请等待……"
+use mx
+if.not.eof()
+　zap
+　endif
+append from wba.txt sdf
+index on ca to cn unique
+set print to wbb.txt
+set print on
+do while.not.eof()
+　?trim(ca)
+skip
+enddo
+zap
+set print off
+use
+return
+附2：UTU.PRG
+原编码文本与扩充词库合并，按编码自动排序形成扩充后五笔输入模块编码源文件：
+set talk off
+set safe off
+clear
+@12,10 say“正在进行扩充排序，请等待……"
+use mx
+if.not.eof()
+　zap
+endif
+append from wbx.txt sdf
+set print to wbxu.txt
+set print on
+locate for upper(substr(ca,1,1))=‘A'
+　nb=recno()-1
+　delete for recno()>nb
+pack
+go top
+do while.not.eof()
+　?ca
+　skip
+enddo
+zap
+use my
+if.not.eof()
+　zap
+endif
+append from wbx.txt sdf
+append from wbb.txt sdf
+locate for upper(substr(cb,1,1,))=`A'
+nb=recno()
+delete for recno()<nb
+pack
+index on cb+cc to cu unique
+　go top
+　cb1=cb
+　cc1=trim(cc)
+do while.not.eof()
+　　skip
+　if cb=cb1
+　　cc1=cc1+‘’trim(cc)
+　　cb1=cb
+　else
+　?cb1+cc1
+　cb1=cb
+　cc1=trim(cc)
+endif
+enddo
+zap
+set print off
+use
+return
+附3：UTW.PRG
+［UCDOS扩充五笔编码向WINDOWS通用码表输入法编码格式自动转换的FOXBASE+程序］
+set talk off
+set safe off
+clear
+@12,10 say“正在进行格式转换，请等待……"
+use my
+if.not.eof()
+　zap
+endif
+append from wbx.txt sdf
+append from wbb.txt sdf
+locate for upper(substr(cb,1,1))=`A'
+nb=recno()
+delete for recno()<nb
+pack
+index on cb+cc to cw unique
+set print to wbxw.txt
+set print on
+?“［Description］"
+?“Name=扩充五笔"
+?“MaxCodes=4"
+?“UsedCodes=`abcdefghijklmnopqrstuvwxy'"
+?“WildChar=z"
+?“Sort=0"
+?“［Text］"
+go top
+do while.not.eof()
+　i=at(‘’,cc)
+?substr(cc,1,i-1)+cb
+　　do while substr(cc,i+1,1)<>‘’
+　 px=substr(cc,i+1)
+　　 k=at(‘’,px)
+　 py=substr(px,1,k-1)
+?trim(py)+cb
+　　 i=i+k
+　 enddo
+　skip
+enddo
+zap
+set print off
+use
+return 
+作者单位：重庆师范学院物理学与信息技术系(400047)
+(收稿日期：1998-11-11)

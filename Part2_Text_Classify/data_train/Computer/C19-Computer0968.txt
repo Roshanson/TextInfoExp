@@ -1,0 +1,108 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+基于磁通观测器的转差频率型
+异步电机矢量控制系统
+李汉强
+　　摘　要　从异步电机数学模型出发，提出以磁通观测器为基础的控制电流源驱动转差频率型异步电机矢量控制系统的数学模型与结构图.控制系统数学仿真与实验说明，本方案可以改善电机定、转子电阻随运行温度变化时的动、静态特性.
+　　关键词　磁通观测器，异步电机，矢量控制，数字仿真.
+A FLUX OBSERVER BASED SLIP FREQUENCY TYPE VECTOR
+CONTROL SYSTEM FOR INDUCTION MOTOR
+LI HANQIANG
+(Department of Computer & Automation,Wuhan Transportation University,Wuhan　430063)
+Abstract　In this paper,according to the mathematical model of induction motor,the author provides the mathematical model and structure diagram for a flux observer based vector control system of controlled current source-fed slip frequency type induction motor.Simulation of this control system is given.Finally the author proves that this method improves the transient and stationary characteristic of the resistance value of motor's stator and rotor when it varies with working temperature.
+Key words　Flux observer,induction motor,vector control,digital simulation.
+1　引言
+　　近年来，异步电机转差频率型矢量控制作为高性能的力矩控制已在很多产业部门得到广泛应用.但是，这种控制方法在计算机控制器中转子磁通ψ*rd与转差频率ω*s运算中含有转子项参数［1］，因此系统对参数变化敏感度强，尤其是随运行温度变化使控制系统力矩不能获得所期望的性能.在电机控制领域中，应用现代控制理论，采用磁通观测器的异步电机矢量控制系统可以改善系统在电机参数变化时的静、动态特性.
+2　控制系统的数学模型
+2.1　异步电机数学模型
+　　在旋转坐标d-q轴系下的异步电机电压方程式为
+　　　　　　(1)
+转子磁通方程式为
+　　　　　　　　(2)
+2.2　控制器数学模型
+　　控制器内电机参数用表示.定子电压仿真数学模型为
+　　　(3)
+　　按最小阶观测器构成法，采用定子电压预测误差构成磁通观测器
+　　　　　　　(4)
+　　观测器增益矩阵K采用不对称结构，对转子电阻变化为最低感度［2，3］.式中e*sd,e*sq为控制器指令值；esd,esq为电机实际值.
+3　矢量控制系统的构成
+　　令ψ*rq=0，由(4)式得
+pψ*rd=-σ*rψ*rd+M*σ*ri*sd+K1(e*sd-esd)-K2(e*sq-esq)，　　　　　　　(5)
+ω*=ωr+M*σ*ri*sq/ψ*rd+K2(e*sd-esd)/ψ*rd+K1(e*sq-esq)/ψ*rd.　　　　(6)
+　　由(3)，(5)，(6)式构成基于磁通观测器的转差频率型异步电机速度闭环矢量控制系统如图1所示.
+
+图1　磁通观测器矢量控制系统结构图
+4　数字仿真
+　　本文对电机定、转子电阻随运行温度变化时进行数字仿真，研究系统的静、动态特性.
+4.1　控制系统稳态解析式
+　　控制系统稳态时，令(1)，(2)，(5)式中微分算子p=0，则得系统稳态解析式
+　　(7)
+式中　a=M/Lr,　b=r*s-rs+(M2/Lr)(σ*r-σr).
+　　电机实际转矩计算式
+Te=PM(i*sqψrd-i*sdψrq)/(2Lr).　　　　　　　　　　　(8)
+　　计算机指令转矩计算式
+T*e=PMi*sqψ*rd/(2Lr).　　　　　　　　　　　　　　(9)
+4.2　动态数学模型
+　　本系统速度环采用PI控制，PI速度控制器数学模型为
+　　　　　　　　　　(10)
+令　　　　　　　　　　　　　　　
+则　　　　　　　　　　　　　　i*sq=Kp(ω*r-ωr)+KIe,　　　　　　　　　　　　　　　(11)
+pe=ω*r-ωr.　　　　　　　　　　　　　　　　　(12)
+在考虑电阻变化时，rs≠r*s，rr≠*r.由(3)―(1)式得
+e*sd-esd=bi*sd-a(σ*rψ*rd-σrψrd-ωrψrq),　　　　　　　　　　(13)
+e*sq-esq=bi*sq+a(ωrψ*rd-ωrψrd+σrψrq).　　　　　　　　　　(14)
+　　电力拖动系统运动方程式
+　　　　　　　　　　　(15)
+将(8)式代入(15)式，可得
+　　　　　　　(16)
+由(2)，(5)，(6)，(12)，(16)式可描述控制系统的动态数学模型
+px=f(x,u,TL),　　　　　　　　　　　　　　　　(17)
+状态变量　　　　　　　　　x=[ψ*rd,ψrd,ψrq,ωr,e]T,
+u=[i*sd,i*sq]T.
+4.3　线性模型
+　　假设负载转矩TL与励磁电流i*sd不变，选择状态变量x=[ψ*rd,ψrd,ψrq,ωr]T，在稳态工作点运用小信号扰动法，忽略Δ2项并消去稳态项，将(2)，(5)，(16)式微偏，导出小信号线性状态方程，称为线性模型［4］
+pΔx1=A1Δx1+B1Δu+B2Δu2,　　　　　　　　　　　(18)
+式中　　　　　　　　　　　Δx1=[Δψ*rd,Δψrd,Δψrq,Δωr]T,
+　　　　　　　　　　　　　Δu=Δi*sq,
+　　　　　　　　　　　　　Δu2=[Δω*,Δe*sd-Δesd,Δe*sq-Δesq]T,
+
+
+将(6)，(13)，(14)式微偏，导出
+Δu2=UxΔx1+UuΔu,　　　　　　　　　　　　　　　(19)
+式中
+
+
+　　　　　d=1+(K2aψrq+K1aψ*rd-K1aψrd)/ψ*rd.
+将(19)式代入(18)式，得到电机与观测器的线性模型
+pΔx1=(A1+B2Ux)Δx1+(B1+B2Uu)Δu.　　　　　　　　　　(20)
+由(11)，(12)式得速度控制器的线性模型
+pΔe=AxΔx1+Δr,　　　　　　　　　　　　　　(21)
+式中　　　　　　　　　　　Ax=[0　0　0　-1],　Δr=Δω*r.
+又　　　　　　　　　　　Δu=Δi*sq=CxΔx1+KIΔe+KpΔr,　　　　　　　　　　　　　　(22)
+式中
+Cx=[0　0　0　-Kp].
+将(20)―(22)式合并，得控制系统的线性模型
+pΔx=AΔx+BΔr.　　　　　　　　　　　　　　　(23)
+式中
+
+
+5　实验装置与结果
+　　PWM逆变器控制电流源驱动异步电机矢量控制系统实验结构图如图2所示.图3(a)与(b)分别为无观测器与有观测器两种情况下，控制器中定转子电阻值设定为rs/r*s=1.5，rr/r*r=1.5时，速度指令N*r发生150 rpm阶跃时的动态实验曲线.当转矩电流i*sq指令值超过15A时做截止处理.显然，采用观测器的矢量控制系统在电阻发生变化的情况下动态响应比无观测器时为快.
+
+图2　控制系统实验结构图
+　　　　　　
+(a)　无观测器时　　　　　　　　　　　　　　　　(b)　有观测器时
+图3　实验曲线(N*=100―250 rpm)
+1)　湖北省自然科学基金资助项目.
+作者简介：李汉强　1945年生，1968年上海交通大学电机系毕业，日本工学博士，现任武汉交通科技大学自动控制系副教授.主要从事观测器理论与系统辨识在异步电机矢量控制系统中应用的研究.
+作者单位：武汉交通科技大学计算机与自动化系　武汉　430063
+参考文献
+［1］李汉强.微机控制电流跟踪矢量调速系统.武汉水运工程学院学报，1992，(2)：167―170.
+[2]　堀洋一，Vincent Cotter，茅阳一，诱导电动机の磁束オブザバに关する制御理论的考察.电学论B，1986，106(11)：1001―1008.
+[3]　堀洋一，梅野孝治，铃木裕之.高速低感度磁束オブザバに基づく磁界才リエンテシヨン形ベクトル制御系の实现.电学论D，1989，109(10)：771―777.
+收稿日期　1995-03-20

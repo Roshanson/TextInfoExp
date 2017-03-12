@@ -1,0 +1,104 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第4期　Vol.23　No.4　1997
+
+
+
+动基座机器人的末端受限鲁棒跟踪控制1)
+王兴贵　谈大龙　吴镇炜　张春杰
+　　摘　要　结合具有扰动基座末端受限机器人的动力学特性，提出了虚构线性不确定系统的匹配模型概念. 通过引入线性不确定系统的鲁棒跟踪控制器设计方法，发展了一种新的受约束机器人的力鲁棒跟踪控制方法. 文中给出了动基座PUMA562机器人的实验结果. 
+　　关键词　约束机器人，鲁棒控制，不确定性系统， 非线性系统，机器人动力学.
+THE ROBUST TRACKING CONTROL OF RESTRAINED ROBOT 
+WITH RANDOM PERTURBATION ON THE BASE
+WANG XINGGUI
+(The PLA College of Ordance Engineering, Shijiazhuang 050003)
+TAN DALONG　　WU ZHENWEI　　ZHANG CHUNJIE
+(Shenyang Institute of Automation, the Chinese Academy of Sciences, Shenyang 110015)
+Abstract　According to the dynamics of the restrained robot system with random perturbation on the base, a matching model of imaginary linear uncertain system is established in this paper. The method to design a robust stabilizing controller for the linear uncertain system is introduced, and a force robust tracking control method is developed for the restrained robot. The effectiveness of this method has been verified by experiment with the PUMA562 mounted on a omnidirectional vehicle.
+Key words　Restrained robot, robust control, uncertain system, nonlinear system, robot dynamics.
+1　引言
+　　机器人操作系统的许多作业都可归结为末端受约束的控制问题，其中， 包括多机器人协调操作系统. 因此，受约束的机器人控制问题早已引起研究者们的重视［1―4］. 目前研究的热点是固定基座受约束机器人的力/位置混合控制，主要是将系统的运动和约束力解耦，然后对其分别采取不同的控制策略［1―3］. 尤其对约束力通常只采用简单的积分反馈控制，它实际上是运用静态或准静态控制本质为动态的过程. 多数文献提供的数值仿真及实验结果均表现出约束力和运动轨迹的颤动较严重. 在空间和水下环境作业的机器人及自动化工厂中装在自治小车上的机器人等，这些机器人系统在工作时基座不可能固定不动，显然，当机器人的基座有随机扰动时，必须研究新的更有效的控制方法. 
+2　动基座末端受限机器人的动力学方程
+　　设机器人基座的扰动量为，∈Rm(m≤6)，对应机器人的爪端工作轨迹扰动变量e有
+
+(1)
+式中J′(,)为对应的Jacobian变换矩阵. 
+　　在爪端工作坐标系描述的机器人动力学方程，当基座无扰动时，沿期望的指令轨迹平衡点族作线性化处理， 忽略二阶以上高次项有
+
+(2)
+式中=-d为位移偏差；
+　　为驱动力偏差；
+　　为爪端接触外力偏差；
+　　为系统标称矩阵. 式(2)是机器人基座无扰动时，在爪端坐标系描述的系统对应指令轨迹的标称偏差动态方程. 
+　　当机器人的末端受限，基座有扰动量时，若维持机器人爪端位姿不变，机器人的实际平衡点(关节空间)将偏离指令轨迹的平衡点. 方程(2)中变量所对应的标称系数矩阵将产生扰动增量， 致使实际系统变为不确定系统
+
+(3)
+式中ΔMx, ΔCx, ΔGx为系统标称矩阵的扰动量. 
+3　控制器设计
+3.1　虚构模型
+　　首先定义一个虚构的线性不确定匹配模型，也就是构造一个关于式(3)中的虚拟线性定常不确定系统模型
+
+(4)
+式中为虚构系统状态变量；
+　　――渐近跟踪引入的附加向量；
+　　r(t)――系统参考输入信号；
+　　――虚构系统标称矩阵；
+　　――系统的扰动和参考输入量，均为阶跃信号. 
+系统(4)的不确定性满足如下匹配条件：
+ΔA=BD(r), D(r)=[r1I,r2I, 0],
+ΔB=BE(S), 2I+E(S)+ET(S)＞0.
+(5)
+其中｜r1｜≤η1, ｜r2｜≤η2; I――单位矩阵. 
+3.2　鲁棒跟踪控制器设计
+　　定理1.　对于实际不确定系统(3)， 设有如下扰动界：
+‖[(t)+ΔMx(t)]-1ΔMx(t)‖≤η＜1;
+‖[(t)+ΔMx(t)]-1ΔGx(t)‖≤η1;
+‖[(t)+ΔMx(t)]-1ΔCx(t)‖≤η2;
+‖ΔCx(t)‖＜‖(t)‖;‖ΔGx‖＜‖(t)‖.
+(6)
+虚构不确定系统(3)， 若存在一个δ＞0， 满足　2(1-η)≥δ，则有反馈控制
+
+(7)
+将式(7)代入方程(2)， 有系统反馈控制
+
+(8)
+可使实际系统(3)，在参数不确定性(6)的扰动界内均能保证鲁棒跟踪控制. 稳定性证明见［4］(P65). 
+　　其中γ＞1/δ，P是Riccati方程
+ATP+PA-PBR-1BTP+Q=0
+(9)
+的正定解，式中加权矩阵选取如下
+R=I/(γδ-1),
+(10)
+
+(11)
+式中ε――任意小的正数，rm=max{r1,r2}. 
+4　具有扰动基座PUMA562末端受限控制实例
+　　车载PUMA562机器人的实验系统如图1所示. 实验时，让机器人爪端抓一个固定的铁棒，当车体有随机扰动时，保持机器人爪端位姿不变. 机器人上装有腕力/矩传感器，车体独立于机器人控制. 由定理1， 设式(6)的不确定扰动界为η=0.5,η1=1, η2=1. 匹配条件(5)有｜r1｜≤1, ｜r2｜≤1， ｜E(S)｜≤0.5. 取δ=1, γ=2, R=1， 加权矩阵Q=diag(4,4,2). 计算得反馈控制式(7)中k1=7.356, k2=6.740, k3=2.828. 则式(8)的鲁棒跟踪控制器近似转化为力/矩偏差的函数有
+
+(12)
+其中为传感器实测偏差值. 实验时，只给出基座纵向横向的扰动量u=v=0.05.sin(.t)(m),PUMA562的期望关节位置坐标为
+=〔90.0,-51.588, 179.515,0.0,-37.927, 0.0〕T(度).
+设系统的接触弹性刚度为
+ke=diag(10000.0, 10000.0, 10000.0; 10000.0, 10000.0, 10000.0)(N/m;N.m/rad).
+图2和图3为腕力/矩传感器的实测曲线，其中实测值的最大力/矩误差均小于1(kg)/(kg.m). 可见跟踪控制效果较好，系统具有很强的鲁棒性，图中曲线不平滑是传感器噪声所致. 由图2和图3可见Fy,Fz变化规律及振幅值相近，Fx0, NyNz0，是因为实验时车体只有45°方向平移.
+
+
+图1　车载PUMA562机器人实验系统图
+
+
+图2　爪端约束力实验误差曲线
+
+
+图3　爪端约束力矩实验误差曲线
+5　小结
+　　本文提出了一种新的受约束机器人的力鲁棒跟踪控制方法. 该方法的最大特点是，修正约束力偏差时考虑了系统的动态过程，即反馈控制式(8)中包含了系统动力学的全部物理特性参数， 是原系统期望轨迹的时变函数. 它避免了大惯性质量用小增益、小惯性质量用大增益控制的现象， 克服了通常只采用简单的积分反馈控制约束力时系统的动态精度差的缺点. 因此它特别适合系统在期望工作轨迹上标称矩阵时变，且大范围变动的系统. 
+1)　国家自然科学基金、中国科学院机器人学开放研究实验室基金资助项目.
+作者单位:王兴贵　中国人民解放军军械工程学院兵器工程系　石家庄　050003
+　　　　　谈大龙　吴镇炜　张春杰　中国科学院沈阳自动化所　沈阳　110015
+参考文献
+[1]　Mills J K, Goldenberg A A. Force and position control of manipulators during constrained motion tasks. IEEE Trans. on Robotics and Automation, 1989, 5(1):30―46.
+[2]　Yabuta T. Nonlinear basic stability concept of the hybrid position / force control scheme for robot manipulators. IEEE Trans. on Robotics and Automation, 1992, 8(5):633―671.
+[3]　Yoshikawa T, Zheng X Z. Coordinated dynamic hybrid position/force control for multiple robot manipulators handling one constrained object. Int. J. of Robotics Research, 1993, 12(3): 219―230.
+[4]　王兴贵.多机器人协调动力学、轨迹规划和控制研究.哈尔滨工业大学博士论文， 1994.
+[5]　倪茂林.鲁棒控制系统设计理论与应用(博士论文).北京：中国空间技术研究院北京控制工程研究所，1992.
+收稿日期　1995-11-20

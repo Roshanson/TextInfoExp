@@ -1,0 +1,114 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.2　P.251-255
+
+
+
+一种被用于网络管理的性能分析模型和实现
+李木金　王光兴
+摘　要：为了提高网络的可靠性以及当今高速通信网络的管理水平,提出了一种用于网络管理的性能及可信度分析模型.该模型能够实时地计算和预测网络的各个性能参数（例如,带宽、吞吐量和延时等）的可靠性（performance-reliability）、可用性（performance-availability）和该网络的平均无故障时间（mean time to failure,简称MTTF）等.由于此模型求真解十分复杂,对于高可靠性网络的管理,给出了该模型的近似模型及其实现.
+关键词：积极网络管理,性能可靠性,性能可用性,平均无故障时间,性能管理.
+分类号：TP393
+A Performance Analysis Model and Its Implementation for Network Management
+LI Mu-jin　WANG Guang-xing
+(Research Center for Network and Communications Northeastern University,Shenyang,110006)
+Abstract：To improve network reliability and management level in today's high-speed telecommunication networks,a performance and dependability analysis model used for network management is proposed in this paper,which computes in real-time and forecasts performance-reliability,performance-availability for the overall network performance parameter (e.g.bandwidth,throughput and latency) and the MTTF (mean time to failure).Due to the arising complexity of exact model solution,for highly reliable network's management an approximation of the model and its implementation are also presented.
+Key words：Active network management,performance-reliability,performance-availability,MTTF (mean time to failure),performance management.▲
+　　在当今社会,高速通信网络变得越来越重要,保障它的可用性和可靠性是网络管理义不容辞的责任,因此,网络管理的工具和方法必须能够适应当前和将来通信环境的需要.目前,已有的网络管理模型［1,2］是一种消极的网络管理.故障将导致网络性能的下降,因此,必须寻求一种新的方法建立模型来计算和预测整体网络的性能.本文采用随机回应模型（stochastic reward model,简称SRM）［3］,根据故障所产生的不同网络性能级及其动态性质等对网络性能参数的可靠性（performance-reliability）、可用性（performance-availability）和该网络的平均无故障时间（mean time to failure,简称MTTF）等进行分析和预测,使得网络管理员能够避免故障或有时间采取必要的措施阻止故障的发生,保证网络所提供的服务质量（QoS）,这样的一种管理称为积极网络管理.由于此方法会使计算变得复杂化,因此,对于高可靠性网络的管理,我们给出了该模型的近似模型及其实现.
+1　用于网络管理的性能及可信度分析模型
+1.1　概 念
+　　考虑一个由不同元素（例如,链路和节点）组成的可修复的网络.假设每个元素具有两种状态：工作状态和故障状态.当一个故障发生之后,修复或替换工作就开始了.假设每个网络元素在修复之后就恢复到它的最初状态.不同的故障对网络的性能行为会产生不同的影响.有些故障导致网络性能的下降,但它仍然可以继续工作,提供一个可以接受的服务;而有些被称之为“网络故障”的故障将导致网络提供一个不可接受的服务,因此,一个“网络故障”被定义为网络从提供一个可接受的服务的状态转移到提供一个不可接受的服务的状态.一个“网络故障”或者由于链路断链或者由于节点故障而发生,并且影响网络的性能行为,因而最终将导致提供一个不可接受的服务（例如延时或阻塞概率的增加）.
+　　在这些假设下,可以利用SRM来模拟通信网络［4］.考虑具有有限状态空间Ω的连续时间齐次随机过程{Z(t),t≥0},我们称该过程为结构状态过程.回应结构由fr:Ω→所定义,实参数ri是第i个状态的回应率,它描述了网络在第i个状态的性能.状态空间Ω可分成两个互不相交的子集U和,其中U表示工作状态,而表示故障状态.|U|表示集U的状态数.如果行向量P(t)表示具有初始分布P(0)在转移状态下的概率向量,则Pi(t)表示网络在t时刻第i个状态时的概率.同理,若行向量π表示平稳状态的概率向量,则πi表示网络在该平稳状态下第i个状态的概率.不失一般性,假设在t=0时刻网络为正常状态,则Ω的第1个元素是工作状态.定义P(u)(t)为描述网络工作状态的|U|维行向量.它的元素P(u)i(t)(i∈U)表示在［0,t］时间内没有网络故障发生时,网络在t时刻第i个状态时的概率.
+1.2　一般公式
+　　定义网络性能可靠性PR(t)作为在［0,t］时间内没有网络故障发生时,在t时刻的瞬时回应率数学期望,它描述了在网络无故障期间的性能,例如
+　　(1)
+　　定义网络无故障平均性能MPTF作为网络故障发生之前各累积回应率数学期望之和：
+　　(2)
+　　在t时刻的瞬时回应率数学期望,被称作网络性能可用性PA(t),即
+　　(3)
+1.3　模 型
+　　我们考虑结构状态过程{Z(t),t≥0}是半马氏（sem-Markov）过程的情况［4］,则条件概率
+Qij(x)=Pr{Z(T1)=j,T1≤x|Y0=i}
+称作半马氏转移概率,并且矩阵Q(t)=［Qij(t)］被称为半马氏过程的核.概率pij=Pr{Z(T1)=j|Y0=i}由pij=Qij(∝)给出,并且在第i个状态的无条件逗留时间的平均值为,其中Qi(x)=Pr{T1≤x|.
+　　由文献［4］进一步得到基于第i（i∈U）个初始状态的性能可靠性和平均无故障性能的公式：
+　　(4)
+　　(5)
+以及性能可用性的计算公式：
+　　(6)
+　　最后,考虑结构状态过程{Z(t),t≥0}是一个具有无穷小发生器矩阵Q=［qij］的一个连续时间齐次马氏链CTMC（continuous time homogeneous Markov chain）,其中qij（i≠j）表示从第i个状态转移到第j个状态的转移概率和是第i个对角元素.和Qi(x)=1-e-qix,代入式（4）～（6）就可得到它们的值.
+　　如果回应率只有两种情况,即当网络为工作状态时,其回应率为1；而当它为故障状态时,其回应率为0,从上述公式里就可以得到网络平均无故障时间MTTF的计算公式.
+　　当网络由n个节点和链路组成时,Ω则含有2n个网络状态.求上述方程的解,往往要转化为求2n个一阶微分和积分方程组的解.当n较大时,其计算较为复杂.
+2　高可靠性网络的性能及可信度分析模型
+　　为了简化上述方程组的求解,我们假设网络节点和链路的修复/替换的平均时间远小于它的MTTF,在本文中,我们称它为高可靠性网络,因而我们忽略了两个或两个以上的网络元素故障的状态,而且该模型与上一节讨论的精确模型之间的误差很小［5］.
+　　考虑一个可修复的网络,其不同的节点和链路或它们的组合可能发生故障.假设有i个不导致“网络故障”的故障,即网络能继续运行,但网络的性能有可能下降以及产生j个导致“网络故障”的故障.假设它们的故障率为λk(k=1,2,...,i+j),ck(k=1,2,...,i)为第k个不导致“网络故障”的故障的可恢复因子,其恢复时间忽略不计.在一个不可恢复的故障发生之后,就开始重配置过程.假设第k个不可恢复的故障的重配置时间服从任何一个概率分布,不妨设其概率分布函数为Gck(t),且Gck(0)=0,则它的第k个不可恢复的故障重配置平均时间MTTCk（mean time to reconfiguration）为MTTCk=∫∞0(1-Gck(x))dx.同样,在一个可恢复的故障发生之后,就开始修复/替换工作.假设第k(k=1,2,...,i+j)个故障的修复/替换时间服从任何一个概率分布,不妨设其分布函数为GRk(t),且GRk(0)=0,则它的第k个可恢复的故障的平均修复时间MTTRk（mean time to repair）为MTTRk=∫∞0(1-GRk(x))dx.
+　　在这些假设下,该SRM的结构状态过程服从半马氏回应过程：第0个状态表示网络所有的节点和链路无故障,它的回应率为r0.第xk(k=1,2,...,i)个状态表示网络性能为rk的可恢复的故障的发生.第k个不可恢复故障Yk导致“网络故障”,其回应率为0.在它重配置期间,网络在第xk(k=1,2,...,i)个状态.当其重配置结束时,网络又在第0个状态.第xk(k=i+1,i+2,...,i+j)个状态表示网络故障.
+　　在这种情况下,Q(t)=［Qij(t)］的非零项由下式给出（有关平稳过程的情况［4］因篇幅所限而省略）：
+　　(7)
+利用式（4）,（5）和（6）,得到计算公式（8）,（9）和（10）：
+　　（8）
+其中
+　　（9）
+　　(10)
+其中
+PASxk(t)=ri(1-GRk(t))+∫t0PAS0(t-x)dQxk0(x),　k=1,2,...,i,
+PASxk(t)=∫t0PAS0(t-x)dQxk0(x),　k=i+1,2,...,i+j,
+PASyk(t)=∫t0PASxk(t-x)dQxkyk(x),　　k=1,2,...,i.
+3　数值方法
+　　这一节我们只讨论计算公式（8）和（10）的数值解法.
+　　上一节的计算公式（8）和（10）可表示成以下一般形式的方程组：
+A(t)-∫t0W(x)A(t-x)dx=g(t),　　（11）
+其中A(t),W(t)和g(t)分别为列向量、矩阵和列向量.
+　　考虑到A(t)离散化为A(nh),所以方程式（11）可写成：
+　　（12）
+其中h为步长,en为误差,且是h2的阶.因此,当h足够小时,en可忽略不计,于是得到：
+　　(13)
+这里,A(nh)表示在nh离散点的近似解,上面方程右边的计算对大型网络来说,难以满足实时性要求,因此需要选择特殊的Qn,i.本文利用Trapezoidal法［6］,即Qn,0=Qn,n=1/2,Qn,i=1,i=1,2,...,n-1,将方程式（13）变成以下形式：
+　　（14）
+其中I表示m+1阶单位矩阵.当［I-(h/2)W(0)］≠0时,我们能够连续地计算出{A(h),A(2h),...}.用Eki表示使用Trapezoidal法经过第k步迭代后求第i个方程的近似解的误差边界,该误差是h2的阶.通过利用文献［6］的结果,得到
+
+　　例：如图1所示的信源S到信宿T之间的通信网络.假设S到T之间的通信所要求的网络带宽是2γ,因此网络故障是指不能提供从S到T之间所要求的带宽.下面计算从S到T之间在非平稳状态下各个时刻PRS0(t)和PAS0(t)的值（见表1和表2）.PAS0(t)的值实际上就是从S到T之间在t时刻网络可利用的带宽.
+
+Fig.1　
+图1　
+Table 1　Performance reliability
+表1　性能可靠性
+
+n123456789
+PRS09.99829.99659.99489.99319.99149.98979.98819.98659.9850
+
+(h=0.2,λi=8×10-5,ci=1,i=1,...,6,γ=5)
+Table 2　Performance availability
+表2　性能可用性
+
+n123456789
+PAS09.99839.99679.99529.99389.99269.99149.99059.98969.9889
+
+(h=0.2,λi=8×10-5,ck=1,k=1,...,14,i=1,...,14,γ=5)
+　　假设节点Ni（i=0,1,...,5）和链路Li（i=1,2,7,8）的带宽为2γ,而链路Li（i=3,4,5,6）的带宽为γ.设节点Ni和链路Li的故障率为λi（i=1,...,14）,且.假设网络管理系统总能成功地检测到故障,并且出现故障后就修复,网络具有重路由功能,故障相互独立.根据高可靠性网络的性能及可信度分析模型后可知：
+　　(1) L1,L2,L3,L6,L7和L8共6个部件故障影响网络性能,但不导致网络故障,它们的ri=2γ,且可以恢复,即ci=1(i=1,2,3,4,5,6）.
+　　(2) N0,N1,N2,N3,N4,N5,L4和L5共8个部件故障导致网络故障,ri=0(i=7,...,14).
+　　假设GRk(t)服从标准正态分布,则,由式（8）可得：
+　　（15）
+其中
+PRSxk(t)=ri(1-GRk(t))+∫t0f(x)PRS0(t-x)dx,k=1,2,3,4,5,6,
+同理
+财　（16）
+其中
+PASxk(t)=ri(1-GRk(t))+∫t0f(x)PAS0(t-x)dx,　k=1,2,3,4,5,6,
+PASxk(t)=∫t0f(x)PAS0(t-x)dx,　k=7,8,...,14.
+4　结　论
+　　本文所讨论的模型已经运用到由国家863高科技项目基金资助的课题“企业Intranet网络管理软件的研究及开发”项目中,能够实时地显示和预测网络（或子网）从源节点到终节点的带宽、吞吐量和延时的可靠性、可用性和该网络（或子网）的MTTF,取得了满意的效果.■
+基金项目：本文研究得到国家863稿科技项目基金(No.863-511-711-003)资助.
+作者简介：李木金,1965年生,,博士生,工程师,主要研究领域为计算机网络,ATM,多媒体体通信.
+　　　　　王光兴,1939年生,教授,博士生导师,主要研究领域为计算机网络,ATM,多媒体通信.
+作者单位：李木金(东北大学网络与通信中心　沈阳　110006)
+　　　　　王光兴(东北大学网络与通信中心　沈阳　110006)
+参考文献：
+［1］Rouvellou I.Graph identification techniques applied to network management problems ［Ph.D.Thesis］.Colombia University,1993
+［2］Wolfson O,Sengupta S,Yemini Y.Managing communication networks by monitoring databases.IEEE Transactions on Software Engineering,1991,17(9):944～953
+［3］Bobbio A.Stochastic reward models in performance reliability analysis.Journal on Communications,1992,XLIII(1):27～35
+［4］Brenner A.Stochastic reward models for performance and dependability analysis of fault tolerant systems.Technical Report,DS3,ETH Zürich:Reliability Laboratory,1995
+［5］Ciardo G,Marie R,Sericola B et al.Performance analysis using semi-Markov reward processes.IEEE Transactions on Computers,1990,C-39(10):1251～1264
+［6］Jones J G.On the numerical solution of convolution integral equations and systems of equations.Mathematics Computation,1961,15(1):131～142
+收稿日期：1998-10-09
+修稿日期：1999-03-10

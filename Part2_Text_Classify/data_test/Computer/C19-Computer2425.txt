@@ -1,0 +1,165 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH
+AND DEVELOPMENT
+1999年 第36卷 第12期 Vol.36 No.12 1999
+
+
+
+基于Agent技术的虚拟组织集成框架IFVO
+高　济　　　林东豪
+摘　要　虚拟组织正成为常规组织（或个人）间协同工作的重要形式，并要求集成化信息基础的支持.文中提出一个基于Agent技术的虚拟组织集成框架IFVO，它以面向活动分担的联合意向作为主要手段从3个方面：体系结构方式、Agent协作和语义互操作，支持集成化虚拟组织信息基础的开发和协调运作.IFVO将虚拟组织的信息基础封装和构造为可快速组合和拆卸的嵌套Agent联邦，从而能有效地支持虚拟组织的动态建立、运营过程的重组和协作过程的协调.
+关键词　虚拟组织，集成框架，体系结构方式，Agent协作，语义互操作
+中图法分类号　TP311.5
+IFVO:AN AGENT BASED INTEGRATIVE FRAMEWORK FOR
+VIRTUAL ORGANIZATIONS
+GAO Ji and LIN Dong-Hao
+(Department of Computer Science & Technology,
+Zhejiang University, Hangzhou 3100 27)
+Abstract　Virtual organizations are becoming an important form for cooperation among regul ar organizations (or persons), which needs the support of integrative informatio n infrastructure. In this paper, an agent based integrative framework for virtua l organizations, called IFVO is introduced, which, using joint intentions as the main means, supports the development and coordinated running of integrative info rmation infrastructure for virtual organizations in three aspects: architecture style, agent cooperation, and semantic interaction. IFVO allows the infrastructu re of a virtual organization to be packed and constructed into the nested agent federation which can be composed and decomposed quickly, in order to support ef fectively the dynamic creation of virtual organizations, the reengineering of bu siness processes, and the coordination of cooperation processes.
+Key words　virtual organization，integrative framework，architec ture style，agent cooperation, semantic interaction
+1　引　　言
+　　在由计算机互联网支持的分布计算环境下，虚拟组织能将时空上分布但能力和资源互补的常规组织（或个人）高效地组合起来，提高解决问题的能力和增强对挑战性机遇的快速应变能力，且不必改变它们原有的工作环境，从而引起了人们的广泛重视[1，2].尤其在制造业，虚拟事业和跨职能虚拟工作组已成为21世纪新一代制造业的核心概念.
+　　虚拟组织要求以较低代价快速建立能支持其成员协同工作的信息基础，企需集成技术提供以下支持：①在知识级[3]（便于营运管理和决策者理解的较高抽象级），通过组合成员信息基础的高层体系结构来快速建立虚拟组织的信息基础；②将成员信息基础的操作层抽象和包装为大、中粒度的主动型软构件用于构造高层体系结构；③提供有效的协调手段，使软构件的协同工作能紧凑一致地进行；④支持软构件的语义互操作，实现软构件协作时的语义适配.
+　　目前集成框架的研究主要建立在基于软构件/软总线方式的分布对象技术上，因其面向信息基础的操作层，故抽象程度较低，再加上软构件的被动型操作、不提供协作的协调手段和不支持语义互操作等问题，难以有效支持虚拟组织信息基础的快速建立和运行的协调一致[4，5].
+　　软件Agent的自治性、合作性和自适应性以及多Agent协作的自组织性，使Agent技术有潜力提供这种支持[6，7].但目前Agent技术的研究侧重于认知理论和应用功能的实现，将Agent协作的关系、需求和维持隐含于Agent心理状态（BDI）的描述中，没有清晰描述Agent在协作中的地位和作用，也没有从软件工程训练法的角度透明描述Agent协作乃至集成化应用系统的体系结构，因而尚不足以支持虚拟组织信息基础的建立.
+　　本文提出基于Agent技术的虚拟组织集成框架IFVO(integrative framework for virtual or ganization)，其以面向活动分担的联合意向作为主要手段透明描述Agent的协同工作和以Agent为大粒度软构件的包容（plug-in）体系结构，并支持Agent协作的一致性维持和语义互操作，从而满足虚拟组织对信息基础集成技术的需求.
+　　本文接下去首先阐述集成框架IFVO，然后介绍支持IFVO的元级开发环境，最后给出结论.
+2　集成框架IFVO
+　　我们把虚拟组织的信息基础视为分布计算环境下应需动态建立的集成化应用系统（以下称IAS）.作为集成框架，IFVO首先把软件Agent视为有意向执行适当计算活动的大粒度软构件，然后再利用Agent认知理论去发挥其在计算活动的集成和Agent协作中的智能作用.
+　　IFVO建立在分布对象技术基础之上，从3个方面支持计算活动的集成和Agent协作，并由此支持IAS的快速建立和协调运作.
+　　IFVO=（AS，AC，SI）
+　　(1)AS――体系结构方式（architectural style）用以指导建立以软件Agent为基本构件的包容体系结构；
+　　(2)AC――Agent协作，用以作为集成和协调分布计算环境下计算活动的基本手段；
+　　(3)SI――语义互操作，用以解决Agent协作时可能出现的通信语义和操作语义失配问题.
+　　IFVO将计算活动的集成和协调一致（而非Agent心理状态及其变化）作为设计Agent和多Agent协作的主线，并以基于活动分担的联合意向作为主要手段逐步精化对Agent协作和包容体系结构的设计.
+2.1　体系结构方式
+　　作为虚拟组织的信息基础，一个IAS构造为由协作的软件Agent组成的Agent社团.可以把Agent视为“即插即用”的软构件，而知识级通信机制则是支持Agent互操作的软总线（知识级的含义参见第3节）.每个Agent都拥有若干执行计算活动的意向和技能.意向把活动分解为子活动，并按调度策略把它们分配给有意向执行的适当Agent；而技能则执行基本（不再分解）的计算活动，并通过集成和综合常规软构件提供的计算功能来实现计算活动拟提供的计算服务.
+　　计算活动和联合意向的定义构成Agent参与和组织协同工作的依据.所谓联合意向即为需要其它Agent承担部分或全部子活动的意向，其集中管理活动的分担，从而成为组织和维持协同工作的纽带.IAS通过一组顶层计算活动提供计算服务，这些活动分布于多个Agent，可由环境事件（环境变化、用户请求等）和状态事件（计算结果发布和消息请求等）激活，且允许层次分解（通过联合意向），使得协同工作的管理可以分布于多个Agent，进而形成分布的集中管理（或多中心管理）.
+　　依据上述讨论，软件Agent可以定义为以下七元组：
+　　（intentions，activities-1，activities-2，events，assigning，activating，gener ating）
+　　assigning：intentions   activities-2
+　　activating：activities-1→intentions
+　　generating：activities-1∪activities-2   events
+　　软件Agent间的知识级通信连接Distributor则可定义为以下六元组：
+　　（intentions，activities-1，activities-2，events，binding，informing）
+　　binding：activities-2  intentions
+　　informing：events   activities-1
+　　在这两个定义中，activities-1和activities-2分别指示由联合意向intentions分派的和由事件events激活的计算活动集.Assigning，activating，generating，binding和informing则指示映射关系，符号（偏函数）、→（全函数）、（关系）和P（幂集）借用了Z语言的约定.
+　　依据协作的紧密程度，我们可以把软件Agent的协同工作分为3个范畴：
+　　(1)Agent联邦――联邦设立一个Agent作为协同工作的管理者，称为ma，其有权不经协商就分派计算活动给联邦成员（Agent）.在ma中定义的计算活动和联合意向代表联邦要从事的计算活动和联合意向.
+　　(2)Agent协作组――ma可以寻求熟人（Agent）的协助，但必须先经由协商征求熟人的同意后才能分派计算活动，ma与熟人构成协作组.
+　　(3)随偶协作――Agent和Agent联邦的计算活动可由事件激活，这时Agent将应需（依据服务请求）或主动（依据其它Agent发布的计算结果）提供计算服务.
+　　Agent联邦可定义为以下四元组：
+　　（ma，members，acquaintance，distributors）
+　　它包括一个ma，若干成员和熟人，并有相应的通信支持.ma集中管理联邦内的协同工作，成员间和熟人间互不通信.进而，Agent社团可定义为由若干Agent联邦（包括其ma管理的协作组）、单一Agent（不参与联邦和协作组、仅参与随偶协作）和支持单一Agent参与随偶协作的连接distributors构成的三元组：
+　　（agent_federations，single_agent，other_distributors）
+　　所有distributors都遵从知识级通信规范，它们联合起来构成支持Agent互操作的软总线.
+　　以上述体系结构方式，Agent联邦、Agent、计算活动和执行活动的联合意向，构成对IAS包容体系结构的透明描述.以联合意向为纽带，IAS包容体系结构的描述可按两条不同的线索逐步精化：
+　　(1)活动分解――Agent通过联合意向把一活动分解为若干子活动，而承担子活动的Agent又可通过相应的联合意向把子活动分解为子子活动，从而清晰地刻画出计算活动的逐层分解结构.
+　　(2)活动分担――Agent联邦的ma依据联合意向集中管理子活动的分派，而有意向承担子活动的Agent联邦又可依据相应的联合意向集中管理子子活动的分派，从而清晰地刻画出计算活动的逐层分担结构.
+　　IAS包容体系结构的透明描述体现在每个层次都不必涉及下层子活动的实现细节，而仅将注意力集中在计算活动的分解和分担.图1和图2分别例示了可能的嵌套Agent联邦和活动的层次结构.由于允许多个Agent（Agent联邦）有意向执行同一活动，导致活动可有多种分解方式.典型情况下，上层Agent联邦面向虚拟组织，下层Agent联邦则面向虚拟组织各成员.从而，通过将成员信息基础的上层体系结构改造为Agent联邦，可以快速建立起支持虚拟组织的IAS.
+
+UpAF表示上层联邦，AFi表示下层联邦，实方框和虚圆框分别表示联邦和协作组，
+大中圆圈表示ma，小圆圈表示普通Agent
+图1　可能的嵌套Agent联邦
+
+圆圈表示活动，方框表示由承担复合活动的mai分派的子活动
+图2　可能的活动层次结构
+　　执行基本活动的意向蜕化为技能，其通过调度领域操作来实现基本活动拟提供的计算服务.目前技能提供3种方式的调度：固定的领域操作序列，以状态-反应规则组动态规划领域操作序列，以任务归约模型动态规划领域操作序列.
+　　所谓动态规划，意指需依据当前的Agent心理状态和环境状态决定领域操作的选择和执行顺序.任务归约将领域操作配置到描述任务（计算活动）层次归约（分解）的与或图中，以求更有效地调度复杂任务的执行.
+　　在IFVO中，我们提供统一的接口，将领域操作映射到由分布对象技术支持的软构件所提供的计算函数.从而，使IAS包容体系结构能无缝地建立在分布对象技术基础上.
+2.2　Agent协作
+　　Agent协作构成IFVO支持IAS快速建立和协调运转的基础，尽管分布的人工智能和多Agent系统的研究者们已对Agent协作进行了大量的研究，但从支持软件工程的角度透明地描述协作关系和协作的维持却很少.
+　　Jennings通过称为联合处方（recipe）的预定义规划去清晰地描述Agent联合行动的结构化组织，从而向透明描述Agent协作迈进了一步[8].但这种处方不免过于简单，仅描述了计算活动的分解和子活动的分派，未对计算活动拟提供的计算服务作规格说明，使得Agent协商和协作的一致性维护缺乏依据.
+　　IFVO从支持协商和协作的一致性维护角度，允许对计算活动提供的计算服务做全面的规格说明，并通过联合意向将计算服务的提供精化为对于活动分担的规划；从而透明地描述了协作关系和协作的维持.
+　　计算活动的定义模板以BNF形式表示如下：
+　　〈Activity〉∶=〈名称〉[〈Description〉][〈Info-Model〉]〈Sc heduling〉
+　　　　〈Negotiating〉 〈Maintaining〉
+　　〈Description〉∶= 〈 text 〉
+　　〈Info-Model〉∶= 〈信息模型名〉
+　　〈Scheduling〉∶=[〈Fire-Pattern〉][〈PreCondition〉][ 〈Execute-Input〉]
+[〈Assignment-Constraint〉][〈Execute-Output〉][〈PostCondition〉]
+　　〈Negotiating〉∶=[〈Solicit-Input〉][〈Solicit-Output〉]〈BidTime〉][〈PostBidProcessing 〉]
+　　〈Maintaining〉∶=[〈ExpireTime〉][〈RealTime〉][〈Exce ption-Processing〉]
+　　　　　　　　　　　[〈End-Processing〉]
+　　该模板提供的规格说明归纳为3个方面：
+　　(1)调度――为计算活动的启动、分派、执行和结果检验提供依据，包括激活模式、先决条件（Agent心理和环境条件）、执行活动所需的输入参数、活动分派约束、期望的执行结果及其应满足的后验条件.
+　　(2)协商――为Agent联邦的ma决策与熟人的协作提供依据，包括征求熟人投标时所需的输入参数、期望的投标信息（征求输出）、投标截止时间和中标决策处理.熟人一旦中标，就被视为联邦的临时成员，与正式成员一样听从ma的调度.
+　　(3)维持――为ma维持活动执行的一致性提供依据，包括活动完成的截止时间、活动执行实际所需时间、异常处理、结束处理.前二者用于支持超时警告处理，异常处理面向活动的执行异常和调度异常，结束处理对执行结果作后续处理，包括为联合意向的后续活动准备输入参数，和在必要时把执行结果作为状态事件发布给适当的Agent.
+　　计算活动的定义为ma规划、调度和维持活动的执行提供了可靠依据.计算活动在执行中的状态转变行为可表示为以下五元组：
+　　（activity-states，conditions，a-operators，initial-state，transitions）
+　　initial-state∈activity-states
+　　transitions：（（activity-states×conditions） a-operators）→ activity-states
+　　联合意向通过参照静态制定的调度计划（我们也称之为Recipe）规划和调度活动的分担.Recipe预先设定了可能的计划、计划步和计划步中包括的子活动，以BNF形式表示如下：
+　　〈Scheduling-Plan〉∶={〈Plan-Step〉|（Loop〈Scheduling-Plan〉）}+
+　　〈Plan-Step〉∶=Return|（←〈Activity-Set〉[〈Condition〉]）|（or{（←〈Activity-Set〉[〈Condition〉]）}+）
+　　〈Activity-Set〉∶=〈Activity名〉|（And{〈Activity名〉}+）
+　　联合意向实现时的状态转变如图3所示，状态转变行为则可表示为以下五元组：
+
+图3　联合意向实现时的状态转变图
+　　（intentions-states，conditions，i-operators，initial-state，transition）
+　　initial-state∈intentions-states
+　　transitions：（（intentions-states×conditions）
+　　　　　　　　　i-operators）→intentions-states
+　　其中，联合意向的初始状态为“休止”，每个状态决定可用的操作和下一状态.联合意向激活后，ma依据Recipe所作的规划仅限于确定（通过协商）由那些熟人承担子活动，以及熟人承担同一子活动时的优先级.Recipe的执行和环境状态决定计划执行步、子活动的选用，并分配子活动给Agent联邦中适当的成员或熟人.
+　　协商和协作的一致性维持一直是Agent协作面临的难题.尽管协商协议和联合负责模型已提供了良好的原则性解决方法，但终因协商和维持与协作的细节紧密相关而难以通用.通过清晰地描述面向特别计算活动的协商和维持知识，可以提供精化通用协议和联合负责模型到具体应用领域的有效手段：
+　　(1)IFVO采用“招标-投标”协商协议，但允许每个计算活动可以使用不同的招标和投标参数、截止时间和中标决策处理；
+　　(2)IFVO采用“联合负责”模型维持协作的一致性，但允许每个计算活动清晰描述特有的知识，使得通用的面向联合意向的一致性维护方法可以与子活动一致性的特定维护无缝地联接起来；
+　　(3)清晰地描述协商和维持知识，增加了Agent联邦的ma依据联合意向去规划和调度活动的透明度，进而增加了Agent协作的可理解性和可维护（修改）性.
+　　鉴于虚拟组织的营运方式是让其成员在保持独立性的同时协作完成联合目标，在信息基础的高层通过定义联合意向来实现Agent协作十分合适.作为联邦成员或熟人的Agent只需遵循子活动的定义提供计算服务，ma则依据联合意向的定义和子活动定义对协作进行规划和调度，不必了解计算服务实现的细节.
+2.3　语义互操作
+　　分布计算环境下软构件间语义互操作的障碍是通信内容的失配问题.原因在于隐含于各软构件中的本体论――术语（对象、关系和属性）的定义和相关处理方式不一致[9，10].为此，建立共享本体论成为解决语义失配问题的关键，所需的附加处理只是依据共享本体论与软构件隐含本体论间的差别对收发的通信内容作语义适配处理.
+　　考虑到世界的复杂性，建立普适的本体论不可能；即使局限于某个应用领域也很困难.例如，工程数据规范STEP可视为一种共享本体论，尽管制定它耗费了大量时间、人力和物力，至今仍不健全.况且应用领域会进化，人们的观点也会改变.
+　　在IFVO中，活动的分担（包括协商、分派、结果返回等）构成通信需求的主要部分，基于活动分担的联合意向为实现语义互操作提供了较好的支持：
+　　①联合意向将共享本体论的定义局限于由它调度的子活动范围内（见图4）；
+
+图4　联合意向调度的子活动遵循同一本体论，
+但父活动(a1)可遵循另一个
+　　②计算活动将共享本体论的定义局限于有意向执行该活动的Agent之间（见图5）；
+
+图5　计算活动的分派和承担者共享本体论
+　　③计算活动与子活动可以遵循不同的共享本体论.
+　　由于共享本体论的定义仅局限于小范围内，且父活动和子活动定义时的术语可以遵循不同的本体论，可显著减轻设计共享本体论的工作量，并增加灵活性和可维护性.此外，收发环境和状态事件的Agent（及相应活动）应共享本体论，这成为设计共享本体论的另一依据.
+　　IFVO提供表示语言CRLE（concept representation language for exchange）去定义共享本体论.每个本体论是Agent执行计算活动时（包括收发事件）所参考术语的集合，作为参与协作的相关Agent理解通信内容的共同基准.术语可以是对象类、关系和函数，都定义为概念，以BNF形式表示如下：
+　　Concept名称〉
+　　　　[Super:{〈超类名〉}+];//超类名3种：对象类、关系、函数
+　　　　{〈槽名〉:{〈侧面值〉〈内容〉,}*;}*
+　　　　[Constraint{〈真值表达式〉}+];
+　　End[〈名称〉]
+　　通过精确地定义术语的结构化语义（多槽多侧面）、例示方式（槽值提供方式）和例示约束（槽的取值约束或限制），共享本体论的Agent可以正确理解相关计算活动的需求和招标信息以及相关事件的语义.
+　　联合意向工作时所作的预处理和后处理（参见图3），为不同本体论间的差别（参见图4）提供了作语义适配处理的场所和手段，适配处理表示为：
+　　{〈函数表达式〉|〈规则〉|〈规则组〉}*，
+它是无条件处理、有条件处理和选择性处理的序列.
+　　与目前分布对象技术和Agent技术分别将适配处理隐含于script语言和Agent心理状态的描述不同，在联合意向中显式表示适配处理可以增强可理解性和可维护性.
+　　执行基本活动的Agent技能以类似于联合意向的方式对活动遵循的本体论和隐含于领域操作（常规软构件）中的本体论差别做适配处理，任务归约模型则进一步作领域操作间的语义适配处理. 
+3　IFVO的开发环境
+　　IFVO的开发环境是一种元级开发环境，其聚焦在以Agent和Agent活动（意向和技能）作为大、中粒度软构件去设计IAS高层体系结构――这些软构件的包容体系结构.它不支持常规软构件的开发，而仅将虚拟组织各成员信息基础中的已有软构件和应需所设计的软构件集成进支持虚拟组织运营的IAS.目前该开发环境建立于DCOM/OLE平台之上，下一步我们准备将符合CORBA规范的软构件也集成进Agent技能.
+　　元级开发环境分两个部分，分别支持IAS的开发和运行（如图6所示）.在运行部分，行为控制器和联邦模型集支持Agent联邦及其成员的运行，通信机制则支持Agent联邦乃至任意Agent间的语义互操作.每个联邦的ma的行为控制器依据活动模型集、自身模型集（定义联合意向、技能和联邦成员）和熟人集，控制协作商议、意向规划、意向执行和技能执行.通信机制分3个层次：CRLE和共享本体论（用于定义通信内容），消息表示语言（按协议封装通信内容）和通信促进Agent集，支持Agent间的知识级语义互操作.知识级意指每个Agent均可经由消息传送，间接操作其它Agent拥有的信息和知识，而不管它们实际上以什么形式表示和处理.Agent各自拥有的知识联合构成共享的虚拟知识库.
+
+aa,sa和fa分别表示界面、服务和通信促进Agent
+图6　IFVO的元开发环境
+　　在开发部分，提供协调和合成语言CCL（coordination and composition language）去定义Agent协作和IAS包容体系结构；提供CRLE去定义共享本体论.一个交互式可视化工具用于辅助IAS的开发者，并支持模型库和本体论库的管理和维护.
+　　IFVO已用于开发两个实用化IAS：成套空分设备的报价系统和公路运输调度系统.限于篇幅，这里就不再阐述了.
+4　结　　论
+　　本文提出基于软件Agent技术的集成框架IFVO，从3个方面：体系结构方式、Agent协作和语义互操作，支持虚拟组织信息基础IAS的快速建立.
+　　通过清晰地定义基于活动分担的联合意向，IFVO解决了传统Agent技术不清晰描述Agent计算活动和Agent协作的问题，使透明地刻画Agent协作和以Agent为软构件的包容体系结构成为可能.计算活动在联合意向的管理下层次分解，使得IAS的高层体系结构可按活动分解和活动分担这两条线索逐步精化.通过联合意向对计算活动的分担作规划和调度，以及通过基于本体论和语义适配处理实现语义互操作，虚拟组织成员间的协同工作能以Agent为中介在知识级紧凑一致地进行.
+　　IFVO并不直接支持虚拟组织的模型建立和伙伴选择，以及运营过程的设计和优化，而是旨在为已筹建的虚拟组织快速建立支持其高效运营的IAS.通过以计算活动、联合意向和Agent技能来封装成员企业的运营处理和企业间的协作，将虚拟组织信息基础的IAS构建为可快速组合和拆卸的嵌套Agent联邦，从而可在确保成员企业不改变其运营处理功能的前提下有效地支持虚拟组织的动态建立，运营过程的重组和协作过程的协调.　　
+　　今后的研究将是完善基于Agent技术的集成理论和提高元开发环境的易用性.
+本课题得到国家自然科学基金项目（项目编号69583007和69773019）资助.
+作者简介：高济，男，1946年2月生，教授，博士生导师，主要研究方向为人工智能、软件工
+　　　　　程、系统集成和CIMS等.
+　　　　　林东豪，男，1973年7月生，博士研究生，主要研究方向为软件工程、CIMS等.
+作者单位：浙江大学人工智能研究所　杭州　310027
+参考文献
+　1　O'Leasy D E et al. Artificial intelligence and virtual org anization. Communication of the ACM, 1991, 40(1): 52～59
+　2　Goldman S et al. Agile Competitors and Virtual Organization. New Y ork: Van Nostrand Reinhold, 1995
+　3　Newell A. The knowledge level. Artificial Intelligence, 1982, 18(1): 8 2～127
+　4　Nierstrasg O et al. Directions in software composition. ACM Compu ting Surveys, 1995, 27(2): 262～264
+　5　Garlan D. Research direction in software architecture. ACM Computing Surveys, 1995, 27(2): 257～261
+　6　Wooldridge et al. Intelligent agent: Theory and practice. The Kno wledge Engineering Review, 1995, 110(2): 115～152
+　7　Gek Woo Tan et al. An intelligent-agent framework for concurrent product design and planning. IEEE Trans on Engineering Management, 1996, 43(3): 297～306
+　8　Jennings N R. Controlling cooperative problem solving in industrial mu lti-agent systems using joint intentions. Artificial Intelligence, 1995, 75(2): 195～240
+　9　高济. 基于表示本体论的智能系统开发. 计算机研究与发展, 1996, 33(11): 8 01～807
+　　　(Gao Ji. Development of intelligent systems based on representation ont ologies. Computer Research & Development(in Chinese), 1996, 33(11): 801～807)
+　10　Mike Vschold et al. Ontologies: Principles methods and application s. The Knowledge Engineering Review, 1996, 11(2): 93～136
+原稿收到日期：1998-12-09；修改稿收到日期：1999-09-21.

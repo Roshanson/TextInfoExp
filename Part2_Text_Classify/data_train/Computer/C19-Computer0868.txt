@@ -1,0 +1,126 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+多模型 DMC 及其在水力测功器系统中的应用
+肖明波　邵惠鹤
+摘　要　在介绍常规控制和一般非线性预测控制缺陷的基础上，针对 FZD-Ⅱ(P)发动机综合试验台汽油机水力测功器系统的特点和控制要求，提出了一种带改进性能指标的多模型 DMC 控制方案，应用在 BN492QA 汽油机上，满足了该系统快速度、高精度和多控制目标的要求.
+关键词　动态矩阵控制(DMC)，多模型控制，水力测功器，非线性控制系统。
+MULTIPLE MODEL DMC AND ITS APPLICATION
+IN THE HYDRAULIC DYNAMOMETER SYSTEM
+XIAO　MINGBO
+(Institute of Industrial Process Control,Zhejiang University,Hangzhou 310027)
+SHAO HUIHE
+(Institute of Automation,Shanghai Jiaotong University,Shanghai 200030)
+Abstract　In light of the features and requirements of the hydraulic dynamometer system in the FZD-II(P) type engine test cell,we analyse the drawbacks of PID and nonlinear predictive controls,and put forward a multiple model DMC control scheme with improved cost criteria.The scheme meets the demands of speed,accuracy and multiple objects for the test of BN492QA type engine.
+Key word　Dynamic matrix control(DMC),multiple model control,hydraulic dynamometer system,nonlinear control system.
+1　引言
+　　汽油机水力测功器系统是一个具有较强非线性、强耦合和快动态的系统.若用常规 PID控制，为了获得在不同工作点和控制目标下的良好控制效果，往往需要频繁整定 PID参数.P.J.King 等曾引入自整定 PID 控制扭矩环［1］，但未提及较难控制的转速问题.本文提出了一种带改进性能指标的多模型 DMC 方案.
+2　多模型 DMC 算法
+　　目前非线性预测控制算法一般要求已知对象非线性动态模型，且计算量大［2，3］，难以满足汽油机水力测功器系统的要求.为此，我们给出了一种多模型 DMC 方案，在不同且具有代表性的工作点上测取多组模型，并一次离线处理好；实施控制时，先采用最近邻聚类法判定目前位于哪个模型区，再应用对应模型及其 DMC 算式进行预测与控制.
+　　对 p×m 系统，我们将性能指标改进为
+　　　(1)
+其中
+S=block-diag(S1,…,Sm),　block-diag表示对角块阵，
+
+
+
+其它有关变量说明及定义参见文献［2］.优化性能指标(1)得
+　　　　(2)
+引入　　L=block-diag［I1,…,Im］,
+　　　　Ii=(1,0,…,0)∈RM,i=1,…,m,
+并令　　D=L(ATQA+R+TTST)-1ATQ,
+　　　　E=L(ATQA+R+TTST)-1TTS,
+则　　Δu(k)=D［w(k)-yPO(K)］+E［irv(k)-uMo(k)］.　　　　　　　　　　　(3)
+对于不同模型有不同的且已离线算好的 D、E，从而有不同的 DMC算式(3).
+　　(1)式和(3)式较一般 DMC［2］多出一项，通过不同的参数设定，可用于在多变量 DMC 框架下完成双变量控制和位置控制，以满足不同测试要求.这里所谓位置控制，是指相应的执行机构保持定值，并放松对一个被控变量的要求，即由双入双出系统降为单入单出系统的控制目标.
+3　对象描述
+　　内燃机的功率是评定一台内燃机质量的主要参数，但功率无法直接测定，而是通过分别测定转速和扭矩计算出来.用来测量扭矩的设备叫测功器，Y380-P型水力测功器是其中价格低廉、性能较好的一种，配备在 FZD-Ⅱ(P)发动机综合试验台上，适用于多种型号汽油机的常规试验［4］.总括起来，为实现各种测试试验，综合试验台需完成的控制目标如表1所示.而且控制系统还应满足快速、高精度和多工作点要求.
+表1　测试中所需控制目标
+
+　水 门油 门
+1)位 置位 置
+2)位 置恒转速
+3)恒扭矩位 置
+4)恒转速位 置
+5)恒扭矩恒转速
+
+4　多模型DMC方案的设计与实施
+　　针对系统的特点和控制要求，提出多模型DMC-PID串级控制方案，如图1所示.在该方案中，内环 PID减少了执行机构的非线性影响；而多模型的采用和控制方案、参数的在线调整，实现了全测试范围的适应性和多控制目标.经分析，我们选取并测定了七个模型，如表2所示.
+表2　模型工作点和主要参数
+
+模型号1234567
+工
+作
+点扭矩(N)50.3103.392.1104.7137.989.9157.3
+转速(r/min)1568184823752834249632643622
+模
+型
+主
+要
+参
+数水门～扭矩时滞/反相
+(0.1s)
+静态增益2
+0.4785
+5.5303
+3.8913
+4.0963
+6.4723
+6.3903
+6.799
+油门～扭矩时滞/反相
+(0.1s)
+静态增益4
+0.94247
+-0.3481
+1.3933
+0.4304
+0.30715
+-1.7611
+0.287
+水门～转速时滞/反相
+(0.1s)
+静态增益3
+-0.4233
+-11.552
+-6.9632
+-11.513
+-18.843
+-16.794
+-15.07
+油门～转速时滞/反相
+(0.1s)
+静态增益1
+10.651
+12.273
+10.401
+8.1922
+6.1442
+12.333
+39.90
+
+
+
+图1　水力测功器系统多模型 DMC-PID 串级控制
+　　控制系统投运和调试后，不仅实现了多控制目标，而且在全测试范围内恒转速控制精度达到 ±10 r/min，恒扭矩控制精度达到 ±0.5N，满足了测试精度要求，并通过厂方组织的验收.表明了方案和模型选取的有效性.限于篇幅，这里仅给出双变量转速设定变化和油门位置控制恒转速两种重要方案的实时控制效果各一例，如图2、图3所示.
+
+
+图2　双变量转速设定变化
+
+
+图3　油门位置控制恒转速
+5　结论
+　　通过在 DMC算法中，引入多模型和改进性能指标，把预测控制较成功地应用于汽油机水力测功器这一具有强非线性、强耦合和快动态的系统，满足了其高精度和多控制目标的要求.
+　　致谢　启东测功器厂吴启生副厂长、胡生工程师、赵爱国工程师以及王冲礼和李红卫等同志给予了大力支持，也得到了上海联合控制有限公司卢学东工程师在现场调试阶段的通力合作，在此一并致以深深谢意.
+作者单位：肖明波　浙江大学工控所　杭州　310027；邵惠鹤　上海交通大学自动化所　上海　200030
+参考文献
+［1］　King P J.Implementation of a selt-tuning controller to the dynamometer torque loop of an engine test cell.Int.conf.on control,London,IEE,1991,1:110-114.
+［2］　席裕庚.预测控制.北京：国防工业出版社，1993.107-147.
+［3］　Simminger J,Peterson T.Constrained multivariable nonlinear model predictive control based on iterative QDMC.IFAC advanced control of chemical processes,Toulonse,France,1991,1:149-154.
+［4］　杨连生.内燃机性能及其与传动装置的优化匹配.北京：学术期刊出版社，1988.162-180.
+收稿日期　1995-04-05
+
+

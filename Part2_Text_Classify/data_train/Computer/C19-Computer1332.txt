@@ -1,0 +1,176 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+参数不确定系统的H∞估计问题的显式解和中心解
+王正志　周宗潭　张良起
+摘　要　研究在连续时间情形下的具有部分参数不确定性的系统的H∞状态估计问题，它可以被化简为带有一个自由可调参数对象的H∞状态估计，由此可得到滤波器的简洁通解显式.并进一步研究了H∞估计的中心解，以及它与卡尔曼滤波器的关系.实例计算表明，对于参数具有不确定性的系统，H∞滤波器的性能明显地优于卡尔曼滤波器.
+关键词　鲁棒性，H∞估计，卡尔曼滤波.
+THE EXPLICIT SOLUTIONS AND CENTRAL 
+SOLUTION OF H∞ ESTIMATION PROBLEM FOR
+UNCERTAIN PARAMETER SYSTEMS
+WANG ZHENGZHI　 ZHOU ZONGTAN 　ZHANG LIANGQI
+(Dept. of Automatic Control, National Univ. of Defense science and Technology, Changsha 410073)
+Abstract　This paper is concerned with the H∞ estimation problem for linear continuous-time systems with part of parameters uncertainty. It can be simplified as a H∞ estimation problem for a plant with a free rejustable parameter. Thus the filter expressions are given in simple and explicit way. This paper is further concerned with the central filter of H∞ estimation, and its relations to Kalman filter. Simulation results show that the performance of H∞ filter is much better than Kalman filter for the systems with uncertain parameters. 
+Key words　Robustness, H∞ estimation, Kalman filter
+1　问题的提法
+　　若线性系统的全部参数能准确知道，在已知谱密度的高斯噪声作用下，要从输出测量估计线性系统的内部状态，已由卡尔曼滤波方法解决.但在许多工程实际问题中，各噪声源的统计特性难以确定，甚至不是高斯噪声，而是有界能量噪声，这时可以采用H∞方法估计其内部状态.如果进一步考虑到对象模型参数具有不确定性，而仅知道它们各自在一定的区间内变动，问题就变得更为复杂.对于部分参数不确定的对象，在有界能量噪声影响下，如何进行状态估计，是此文的研究内容.
+　　考虑连续时间域上的对象P的模型
+=(A+ΔA)x+Bw,　　(1a)
+y=(C+ΔC)x+Dw,　　(1b)
+z=Lx　　(1c)
+其中x∈Rn是状态，w∈Rm是噪声，y∈Rr是输出测量，z∈Rp是要估计的状态组合.A，B，C，D 和L 是已知的实数矩阵，各为n×n,n×m,r×n,r×m 和p×n维，它们是标称对象的全部参数.假设A是稳定矩阵，(1)式中ΔA和ΔC表示对象参数的不确定性.假设
+　　　(2)
+其中H1,H2 和E分别为n×b1,r×b1,b2×n维的已知矩阵，它们反映不确定参数所处的位置和变化幅度.而b1×b2维的未知实矩阵F在单位球FTF≤I中变动，从而引起ΔΑ和ΔC的变化.
+　　设计估计状态组合z的滤波器Q：
+e=Aexe+Key,　　(3a)
+ze=Lexe　　　(3b)
+其估计误差为e=z-ze.对象P和滤波器Q组成的系统，其状态方程可紧凑地写为
+=(Ac+HcFEc)ξ+Bcw,　　　(4a)
+e=Ccξ.　　(4b)
+其中
+
+
+　　　(5)
+于是从噪声w到估计误差e的传递函数为
+T(S)=Cc［SI-(Ac+HcFEc)］-1Bc.　　　(6)
+对于小正数γ，定义H∞估计问题
+‖T(S)‖∞＜γ,　　　(7)
+即要设计滤波器Q，使得对于各种有界噪声w，均有较小的估计误差e.
+　　由于T(S)中含有未知矩阵F，造成处理上的困难，为了克服此困难，考虑带有正参数δ的对象Pδ：
+　　　(8a)
+　　　(8b)
+　　　(8c)
+其中新的有界噪声∈Rm+b1,输出∈Rp+b2,采用(3)式的滤波器Q，并且用
+　　(9)
+来估计的输出,所产生的估计误差为
+　　　(10)
+带参数δ的对象Pδ和滤波器Q组成的系统，可紧凑地写成
+　　(11a)
+　　(11b)
+其中
+　　　(12)
+从有界能量噪声到估计误差的传递函数为
+　　　(13)
+采用类似于文献［9］定理1的证明思路，有如下定理.
+　　定理1.若存在一个正数δ，使得Pδ被滤波器Q估计的误差传递函数Tδ（S）满足
+　　　　(14)
+则对于原来的参数不确定对象P，该滤波器Q产生的估计误差传递函数T(S)满足(7)式.
+2　问题的通解
+　　定理1表明，解决了带有正参数δ的对象Pδ的H∞估计问题(14)，就可以保证原来的参数不确定对象P的H∞估计精度(7).(14)式可在H∞标准控制问题的框架中求解.H∞标准控制问题一直是H∞控制的核心问题，经过许多控制学者的努力，已有多种解法［1－4］，但多数解法步骤复杂，解式与对象的状态空间表示矩阵的关系不直观.此文采用我们近年来推导的公式写出通解，十分简洁，与对象的原始表达式的关系非常直观.由于推导过程比较复杂，本文仅在下述引理中直接给出结果，其推导过程可参阅文献［8］．
+　　引理　广义对象
+　　　(15)
+的H∞标准控制问题，在D11=0,D22=0，以及D12满列秩，D21满行秩的情形下，可按如下步骤求解.首先分别求出Riccati方程
+　(16)
+　(17)
+的镇定解X≥0，Y≥0.再设
+　　(18a)
+　　(18b)
+　　(18c)
+　　(18d)
+　　(19)
+由此可以写出H∞标准控制问题的通解
+　　　(20)
+(14)式所对应的广义对象(15)式为
+B1＝［γ-1B　δ－1H1］，B2＝0，
+　　　　　　C2＝C，
+D11＝0，　　　　　　　　　
+D21＝［γ－1D　δ－1H2］，D22＝0．
+把以上诸式代入引理的(16)―(20)式，得出下面的主要结果.
+　　定理2.对于参数不确定对象P，若在(1)和(2)式中，A是稳定矩阵，［γ－1D　δ－1H2］具有满行秩.分别求出如下两个Riccati方程：
+　　(21)
+
+
+
+
+　　(22)
+的镇定解X≥ 0,Y≥0.如果有
+　　(23)
+则带有正参数δ的对象Pδ的H∞估计问题(14)有解，从而参数不确定的对象P的H∞估计问题(7)也有解，其H∞滤波器的通解为
+　　(20)
+其中
+　　
+　　　　(24)
+而BHp×γ∞是Hp×γ∞空间中的单位球.
+3　中心滤波器及其与卡尔曼滤波器的比较
+　　(24)式中，对于所有在BHp×γ∞中的Φ，得到的滤波器Q都满足H∞估计精度要求(7).在所有这些滤波器中，中心解给出的中心滤波器Q0最值得注意.令(24)式中Φ＝0，得到中心解，由此得到H∞中心滤波器Q0为
+
+
+
+　　　　(25)
+特别对于参数确定的对象，在(2)式中有
+H1=0,　H2=0,　E=0
+于是Riccati方程(21)的解为X=0，而Riccati方程(22)为
+
+0．　　(26)
+所以参数确定的对象的H∞中心滤波器为
+
+　　　　(27)
+　　为了把H∞中心滤波器与卡尔曼滤波器进行比较，在参数确定的对象模型(1)中，ΔA=0,ΔC=0，假设w为零均值高斯白噪声，其协方差阵为
+E［w(t)wT(τ)］=Rδ(t-τ),　　　(28)
+其卡尔曼滤波器为
+
+　　　　(29)
+其中Y1满足Riccati方程
+
+　　　(30)
+把参数准确的对象的H∞中心滤波器(27)与卡尔曼滤波器(29)相比较发现：若认为
+R=γ－2I，　　　(31)
+两者就非常相似.唯一的差别是Riccati方程(26)比Riccati方程(30)多了一项YLTLY.不难看出Y≥Y1.在γ充分大时，(26)式中CT(Dγ－2DT）－1C>>LTL.这时可以略去LTL，从而(26)式变为(30)式.故在γ充分大时，H∞中心滤波器就变为卡尔曼滤波器.
+表1　H∞中心滤波器与卡尔曼滤波器的比较
+
+　卡尔曼滤波器
+(对象参数准确)H∞中心滤波器
+(对象参数准确)H∞中心滤波器
+(对象参数具有不准确性)
+外推率AA(A+(γ-2BBT+δ－2H1HT1)X)
+新息Y-CY-CY-(C+γ-2DBTX+δ－2H2HT1X)
+新息增益(BRDT+Y1CT）（DRDT）-1(Bγ－2D+YCT）(Dγ－2DT）-1(I-YX)-1(γ-2BDT+δ－2H1HT2+YCT）
+(γ-2DDT+δ－2H2HT2)－1
+
+
+4　实例与结论
+　　用一个实例，比较H∞滤波器与卡尔曼滤波器的性能.若参数不准确对象为
+
+
+
+若我们希望H∞滤波器的精度(7)达到γ=0.1，取自由参数δ=1，由Riccati方程(21)和(22)解出
+
+
+由(25)式给出H∞中心滤波器为
+
+而由(30)和(29)得到卡尔曼滤波器为
+
+　　在常值干扰下(即w为单位阶跃)，比较二者的滤波估计性能.图1表示对象参数完全准确的情形(F=0)，这时卡尔曼滤波器是最优滤波器，估出的曲线(c)几乎与真实状态(a)完全重合；而H∞中心滤波器的估计(b)与真实状态(a)略有差别，但估计误差小于γ=0.1.
+
+
+
+图1　对象参数完全准确的情形(F=0.0)
+(a) 真实状态　(b) H∞中心滤波器的估计　(c) Kalman滤波器的估计
+　　图2表示对象的部分参数不准确的情形(F=1.0)，这里a11由-1.0 变为-0.6，C1 由1.0 变为1.4.这时卡尔曼滤波器的估值曲线(c)与真实状态(a)之间发生巨大的偏差；而H∞中心滤波器的估值曲线(b)则与真实状态(a)几乎重合在一起，估计误差小于γ=0.1.
+
+
+
+图2　对象的部分参数不准确的情形(F=1.0)
+　　图3表示对象的部分参数不准确的另一种情形(F=-1.0)，这里a11由-1.0变为-1.4，c1由1.0变为0.6.这时卡尔曼滤波器的估值曲线(c)与真实状态(a)也发生很大偏差；而H∞中心滤波器的估值曲线(b)与真实状态(a)相当接近，估计误差小于γ=0.1.
+
+
+图3　对象的部分参数不准确的另一种情形(F=-1.0)
+　　总之，在对象参数具有不确实性时，本文给出的H∞滤波器的性能明显优于卡尔曼滤波器.本文推导的H∞中心滤波器，形式简洁，性能优越，可望在实际控制工程中得到广泛应用.
+作者简介：王正志　1967年毕业于哈尔滨军事工程学院自动控制专业.1981年至1984年在美国Rice大学电气工程系进修，并获得博士学位.现任国防科技大学教授和博士导师.研究领域为飞行器控制，智能控制和遥感技术.
+　　周宗潭　26岁.1994年毕业于国防科技大学自控系，获得硕士学位.现为国防科技大学自动控制系博士研究生，攻读博士学位.
+　　张良起　毕业于上海交通大学电机系，曾任国防科技大学校长，现为国防科技大学自控系教授和博士导师.研究领域为飞行器控制，武器装备自动化和智能机器人等.
+作者单位：国防科技大学自控系　长沙　410073
+参考文献
+［1］　Doyle J C, Glover K, Khargonekar P,Francis B A. State-space Solution to Standard H2 and H∞ Control Problem.IEEE Trans. Automatic Control, 1989, 34(8):831-847.
+［2］　Glover K, Doyle J C. State-space formulae for all stabilizing controllers that Satisfy an H∞ norm bound and relations to risk sensitivity. System and Control Letters, 1988, 11:167 -172.
+［3］　Kimura H, Lu Y, Kawatani R. On the Structure of H∞ control systems and related extensions. IEEE Trans. Automatic Control, 1991, 36(6):653-667.
+［4］　Francis B A. A Course in H∞ Control Theory. Springer Verlag. 1987. 
+［5］　Nagpal K, M, Khargonekar P. Filtering and smoothing in an H∞ setting . IEEE Trans. Automatic Control, 1991, 36(2):152-166.
+［6］　Shaked U. H∞ minmum error state estimation of Linear Stationary Processes. IEEE Trans. Automatic control, 1990, 35(5):554-558.
+［7］　Xie L, De Souza C E, Fu M. H∞ Estimation for discrete-time linear uncertain systems. International Journal of Roboust and Nonlinear Control, 1991,1(2):111-123.
+［8］　王正志，周宗潭.状态空间中标准 H∞问题的直接求解公式.中国控制会议论文集，1994，146-150.
+［9］　王正志，部分参数不准确的线性系统的鲁棒性控制，自动化学报，1995，21(4)：455-459.
+收稿日期：1994-10-17

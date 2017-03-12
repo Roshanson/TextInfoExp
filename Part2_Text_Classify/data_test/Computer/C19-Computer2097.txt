@@ -1,0 +1,112 @@
+计算机工程
+COMPUTER ENGINEERING
+1999年 第25卷 第10期 Vol.25 No.10 1999
+
+
+
+使用DAO访问Access数据表的Binary字段
+荣冰　徐炜民
+摘要：Access数据库具有针对数据库集成性的最优文件结构，其数据表中的Binary字段是专为存放二进制数据而设的。在此详尽探讨了VC5.0中使用DAO类访问Access数据表中Binary字段的途径及其相关的COleVariant的应用方法。最后，针对实例设计了一个CMdbAccessExample类，实现了文中所述内容。
+关键词：Access数据库；Binary字段；DAO类；COleVariant
+To Control the Binary Field of Access Database with DAO
+Rong Bign Xu Weimin
+(Dept.of Computer,Shanghai University,Shanghai 200072)
+【Abstract】Access Database(modb)processes the optimalizing file construction aimed at integration of Database.The Binary field of Access Data-Table is used for storing binary data.The artjcle elaborately gives an account of the method of accessing the mdb database using DAO class in VC5.0 and the relevant application of"Cole Variant"class.At last,the article also lay out an"CmdbAccessExample"aimed at a given example
+【Key words】Access database;Binary field;DAO class;COleVariant
+　　Access的数据表除了传统数据库的Text、Single、Long、Data/Time等字段外，另外增加了一个Binary字段，用于存放二进制数据，如图象、声音、压缩数据等[1]。
+　　VC5.0中提供DAO类对Access数据表进行直接访问，DAO在很大程度上是ODBC的超集，它包含了ODBC类的大部分功能并增加它自己的很多功能。尽管DAO是以OLE对象的形式实现的，用户并不需要直接与这些对象打交道，MFC、DAO类为用户处理所有的细节，给用户提供与OLE对象交互作用的数据和函数成员[2]。DAO类最适于编制处理Access创建的.mdb数据库。
+　　在VC中访问Access数据表时，可通过两种方法来存取数据：
+　　(1) 使用VC的应用程序向导AppWizard建立一个与数据库相关联的应用程序，但是这样做灵活程度很小，一般用于对整个数据库的浏览，而且无法直接访问Binary字段的数据。
+　　(2) 在应用程序中创建自己的类来访问数据表 , 通过编程实现对数据字段的访问。笔者在实际应用中摸索出一套运用VC的DAO类访问Binary字段的方法，基本思路如下：
+　　对Access数据库Binary字段存储时，可分为以下3个步骤操作：
+　　・ 先将要存储的数据块存放入一个CBtyeArray类中；
+　　・ 由COleVariant类的构造函数COleVariant(const CByteArray& arrSrc) 构造出一个COleVariant类；
+　　・ 使用CDaoRecordset类的成员函数SetFieldsValue()将数据存入相应的字段。
+　　从Access数据库Binary字段获得数据时，可按以下步骤操作：
+　　・ 使用CDaoRecordset类的成员函数GetFieldsValue()将数据取到一个COleVariant类中。
+　　・ 把所需数据从COleVariant类中解析出来。
+1　重点说明
+1.1 DAO类的应用
+　　DAO对象为用户编程创建和操纵数据库提供了一个框架，它的功能分散在几个对应于DAO的类上面：CDaoDatabase和CdaoRecordset。
+　　CDaoDatabase代表了与数据库的联结，通过它可以对数据进行操作。而CDaoRecordset则代表了一组从数据源选出的数据集。数据集共有3种类型：
+　　表类型数据集--代表基本的数据表，可以用来检验、增加、变更或删除单一数据表中的记录。
+　　动态数据集--这是一个对可修改记录的查询结果。动态数据集来自一组从一个或多个潜在数据表中的数据集，可用于检验、增加、变更或删除记录，可以包含多个数据表中的字段。动态数据集是应用最普遍的数据集，同时也是CdaoRecordset默认的数据集类型。
+　　快照类型数据集--一组用于查找数据或生成报表的静态数据集。快照类型数据集来自一个或多个数据，它不可以被更新。
+　　本文所述的操作，应用了动态数据集。
+1.2 Variant和COleVariant以及牵涉到的数据结构
+　　Variant类型实际上是一个较大的C语言结构，包含许多数据类型的联合（Union）。这种设计方法允许该类型在不同场合替代许多可能的数据类型。Variant数据类型在不同场合下，可以包含数据或指向其他数据的指针。由于MFC的开发人员认识到Variant数据类型的重要性，因此创建了一个COleVariant类，较简便地封装了Variant结构到OOP包中，这个类为自动化服务器和客户机之间传递数据提供了统一、安全的机制[3]。尽管创建Variant数据类型是用于OLE应用程序，但它可以用于任何可以被使用的地方，而不用考虑应用程序是否使用OLE，这在数据库存取方面显得尤其重要。
+　　以下是VC中对Variant类型的定义[4]部分：
+　　typedef struct tagVARIANT　{
+　　VARTYPE vt;
+　　unsigned short wReserved1;
+　　unsigned short wReserved2;
+　　unsigned short wReserved3;
+　　union{
+　　unsigned char　　　bVal;　　　　　　//vt标识：VT_UI1.
+　　short　　　　　　　iVal;　　　　　　//vt标识：VT_I2.
+　　long　　　　　　　 lVal;　　　　　　//vt标识：VT_I4.
+　　float　　　　　　fltVal;　　　　　　 /vt标识：VT_R4.
+　　double　　　　　 dblVal;　　　　　  //vt标识：VT_R8.
+　　VARIANT_BOOL bool;　　　　　　　　　//vt标识：VT_BOOL.
+　　RETURN VALUE return_value;　　　　　//vt标识：VT_ERROR.
+　　CY　　　　　　　　cyVal;　　　　　　//vt标识：VT_CY.
+　　DATE　　　　　　　 date;　　　　　　//vt标识：VT_DATE.
+　　BSTR　　　　　　bstrVal;　　　　　　//vt标识：VT_BSTR.
+　　IUnknown　　FAR*punkVal;　　　　　　//vt标识：VT_UNKNOWN.
+　　Idispatch　FAR*pdispVal;　　　　　　//vt标识：VT_DISPATCH.
+　　SAFEARRAY　　FAR* parray;　　　　　　//vt标识：VT_ARRAY|*.
+　　unsigned char　FAR* pbVal;　　　　　 //vt标识：VT_BYREF|VT_UI1.
+　　short　FAR*　piVal;　　　　　　　　  //vt标识： VT_BYREF|VT_I2.
+　　long　FAR*　plVal;　　　　　　　　　//vt标识：VT_BYREF|VT_I4.
+　　float　FAR*　pfltVal;　　　　　　　　//vt标识：VT_BYREF|VT_R4.
+　　double　FAR*　pdblVal;　　　　　　　//vt标识：VT_BYREF|VT_R8.
+　　VARIANT_BOOL FAR* pbool;　　　　　　//vt标识：VT_BYREF|VT_BOOL.
+　　RETURN VALUE FAR* preturn value;　　//vt标识：VT_BYREF|VT_ERROR.
+　　CY FAR* pcyVal;　　　　　　　　　　　//vt标识：VT_BYREF|VT_CY.
+　　DATE FAR* pdate;　　　　　　　　　　//vt标识：VT_BYREF|VT_DATE.
+　　BSTR FAR* pbstrVal;　　　　　　　　　//vt标识：VT_BYREF|VT_BSTR.
+　　IUnknown FAR* FAR* ppunkVal;　　　　//vt标识：VT_BYREF|VT_UNKNOWN.
+　　IDispatch FAR* FAR* ppdispVal;　　　//vt标识：VT_BYREF|VT_DISPATCH.
+　　SAFEARRAY FAR* FAR* parray;　　　　　//vt标识：VT_ARRAY|*.
+　　VARIANT FAR* pvarVal;　　　　　　　　//vt标识：VT_BYREF|VT_VARIANT.
+　　void FAR* byref;　　　　　　　　　　//一般引用.
+　　}
+　　}VARIANT;
+　　正如大家所看到的，Variant类型是一个C结构；它包含了一个类型代码vt、一些填充字节以及一个大的union类型。其中类型代码vt控制着对union部分的解释。例如：如果vt为VT_I2，可以从iVal中读出Variant的值；Variant对象可以包含实际的数据或指向数据的指针，如果设置了vt的VT_ARRAY位，则必须对parray(SAFEARRAY FAR* parray)中的指针进行访问。
+　　对于一个由CByteArray构造出来的COleVariant对象，它的vt值应设置了VT_UI1和VT_ARRAY两个位，因此实际数据存放在parry指向的SAFEARRAY数组中。SAFEARRAY结构定义如下：
+　　typedef struct FARSTRUCT tagSAFEARRAY{
+　　unsigned short cDims;　　　　　　//此数组中的维数.
+　　unsigned short fFeatures;　　　　//用于指明SAFEARRAY属性的标志
+　　#if defined(WIN32)//Win32平台
+　　　unsigned long cbElements;　　　// 数组中每个元素占用字节数.
+　　　unsigned long cLocks;　　　　　// 数组被锁定的次数
+　　#else//16位平台
+　　　unsigned short cbElements;
+　　　unsigned short cLocks;
+　　　unsigned long handle;　　　　　// 为兼容性而设置，无用
+　　#endif
+　　　void HUGEP* pvData;　　　　　　// 指向实际数据的指针
+　　　SAFEARRAYBOUND rgsabound[1];　 // 每一维的边界.
+　　}SAFEARRAY;
+　　pvData指针指向的是最终的数据（二进制数组）。那么，此时内存中的映象如图1所示：
+
+图1 内存中的映象
+1.3 解析COleVariant类中的数据起点(或称偏移位置)和数据块大小
+　　如1.2所述，SAFEARRAY结构中的rgsabound存储了数据起点和数据大小。
+　　typedef struct tagSAFEARRAYBOUND{
+　　　　　　unsigned long cElements;　　　//数据元素的数量
+　　　　　　long lLbound;　　　　　　　　 //数据的下界
+　　}SAFEARRAYBOUND;
+　　其中ILbound指定了数据块的起点，必须用pvData指针的值加上此值才是真正的数据位置。cElements确定了数据块的大小(即数组大小)。
+1.4 CByteArray的初始化
+　　由于CByteArray类没有提供相应的构造函数用于初始化，所以只能使用该类的成员函数来完成。先通过SetSize()成员函数设置数组类的大小，然后用SetAt()成员函数赋值。
+2　小结
+　　Access数据库是应用广泛的关系数据库，可以通过VC中DAO技术来对其进行数据操作，而对Binary字段的灵活运用可以更加有效地实现数据管理功能。本文对Access数据库的Binary字段存取方法作了概述，并提供一个实例，希望能起到抛砖引玉的效果，令读者在数据库操作方面有更深入的应用。
+作者简介：荣冰（1973～），男，研究生，主研方向：高性能计算机体系结构
+作者单位：上海大学计算机工程系，上海200072
+参考文献
+1 林立域.Access 97使用手册.北京：清华大学出版社，1998
+2 Gregory K著.康博创作室译.Visual C++ 开发使用手册.北京：机械工业出版社,1997
+3 Koruglinski J D著.王国印译.Visual C++ 技术内幕.北京：清华大学出版社,1994
+4 Microsoft.Visual C++ 5.0 Online Help,MS Develop Studio,1997
+收稿日期：1999-01-04

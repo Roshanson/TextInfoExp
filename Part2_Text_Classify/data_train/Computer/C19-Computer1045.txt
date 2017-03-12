@@ -1,0 +1,76 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+具有多个执行机构的Lurie控制系统的鲁棒稳定性
+年晓红
+关键词　区间矩阵，区间直接控制系统，区间间接控制系统，绝对稳定性.Lyapunov函数.
+ROBUST STABILITY FOR LURIE CONTROL SYSTEMS WITH
+SEVERAL STATIONARY COMPONENTS
+NIAN XIAOHONG
+(Dept. of Mathematics, Tianshui Teacher's College, Tianshui 741001)
+Key words　Interval matrix, interval direct control system, interval indirect control system, absolute stability, Lyapunov function.
+1　引言
+　　具有多个执行机构的Lurie型控制系统是一类非常重要的非线性控制系统，该系统的稳 定性研究在非线性系统的设计中具有十分重要的意义.近年来，国内外许多学者对具有多个 执行机构的Lurie型控制系统的稳定性进行了广泛的研究，得到了一些很好的结果 ［1-4］.八十年代以来，区间动力系统的鲁棒稳定性引起了国内外学者的广泛兴趣，但 到目前为止，对非线性区间动力系统的稳定性讨论还不多见，作者在文［5］中首次讨论了 高为炳院士等提出的Lurie型区间控制系统的鲁棒稳定性，给出了保证系统绝对稳定的 若干充分条件.本文中将讨论具有多个执行机构的Lurie型区间直接控制系统和Lurie 型区间间接控制系统的绝对稳定性.
+2　直接控制系统的绝对稳定性考虑直接控制系统
+　　(1.1)
+这里Kj［0,∞］=｛fj(.)fj(0)=0,0σjfj(σj)+∞｝；j=1, 2, …,m.G［B,C］=｛A|BAC｝为n×n阶区间矩阵，G［R,S］为n×1阶区间矩阵，A=(aij)n×n,B=(bij)n×n,C=(cij)n×n为n×n阶矩阵；Rj=(r(j)1,r(j)2,…r(j)n)T,Sj=(s(j)1,s(j)2,…s(j)n)T,b(j)=(b(j)1,b(j)2,…,b(j)n)T,cj=(c(j)1,c(j)2, …,c(j)n)T为n维向量.
+　　在本文中约定：对任意阶m×n矩阵M=(mij)m×n，矩阵(M)=(mij)m×n.对任意阶m×m矩阵M=(mij)m×m,矩阵
+　　对于任意的A∈G［B,C］,b(j)∈G［Rj,Sj］，考虑系统
+　　(1.2)
+设，则该系统可化为
+(1.3)
+　　假定A0稳定，则存在正定矩阵P满足Lyapunov方程AT0P+PA0=-2I,取 Lyapunov函数
+
+经计算
+
+
+这里　
+
+　　设,我们得到下面定理.
+　　定理1.　若矩阵正定，则系统(1.1)绝对鲁棒稳定.
+　　证.由上面讨论可知
+
+　　显然，若定理条件满足，则，定理得证.
+　　定理2.　若矩阵正定，则系统(1.1)绝对稳定.
+　　证.由上面讨论可知
+
+
+
+　　定理得证.
+2　间接控制系统的绝对稳定性
+　　考虑间接控制系统
+　　(2.1)
+　　对于任意的A∈G［B,C］,b(j)∈G［Rj,Sj］，考虑系统
+　　(2.2)
+　　类似于§1的讨论，(2.2)可化为
+(2.3)
+假定A0稳定，则存在正定矩阵P满足Lyapunov方程AT0P+PA0=-2I,取Lyapunov函数
+
+经计算
+
+这里　
+
+　　设,我们得到下面定理
+　　定理3. 若矩阵正定，则系统(2.1)绝对稳定.
+　　证.由上面讨论可知
+
+
+显然，若定理条件满足，则，定理得证.
+　　定理4.　若矩阵正定，则系统(2.1)绝对稳定.
+　　证.由上面讨论可知
+
+
+
+定理得证.
+作者单位：湘潭工学院自动化工程系　湘潭　411201
+参考文献
+1　赵素霞.多个执行部件的控制系统的绝对稳定性.中国科学，1987，A (8)：758-792
+2 赵素霞，仵永先.绝对稳定性的频率准则.数学学报，1995，38(1)： 6-12
+3　RaPopert L B. Problem of absolute stability of control systems with severaln onlinear stationary compositions. Avtomat Telemekh., 1987,(5):66-74
+4　Wu Y X,Zhao S X.Absolute stability of a control system with several nonlinear stationary elements in the case of an infinite sector. Avtomat. Telemekh,,1991, (1):34-42
+5　年晓红.Lurie型控制系统的鲁棒决定稳定性.控制理论与应用，1995，12(5)：641-645
+收稿日期　1996-04-01

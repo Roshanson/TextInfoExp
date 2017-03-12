@@ -1,0 +1,52 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+一类不确定性系统的简单调节
+张　珩
+关键词　不确定性系统，简单调节，鲁棒性.
+SIMPLE REGULATION OF A CLASS OF
+SYSTEMS WITH UNCERTAINTY
+ZHANG HENG
+(Institute of Mechanics,Chinese Academy of Sciences,Beijing 100080)
+Key words　Uncertain systems,simple regulation, robustness.
+1　算法及稳定性
+　　考虑具有单调阶跃响应函数的线性受控过程
+
+(1)
+文献［1］曾对这类系统给出了离散化积分调节器的镇定条件.文献［2］做了改进工作.文献［3］详尽地研究了智能连续PID问题.本文将就连续情形讨论积分调节器与H(t)的关系.设调节律为
+
+(2)
+式中yr(t)为过程的期望输出；u(t),y(t)分别为受控过程的输入及输出变量；β为待定的积分常数.
+　　定理1.若β≥t0H(∞)，则系统闭环渐近稳定.其中t0满足
+H(t0)≥0.65H(∞).
+(3)
+　　证明.令其Fourrier变换为W(jω)∈R+×C1.则由熟知的Nequist判据可知，当
+
+(4)
+成立时，系统闭环渐近稳定.
+　　由Fourrier变换的定义，并注意到H(t)的单调性质，有
+
+故由(3)式决定的t0必然满足1/t0＜inf｛ω∈R+｜ReW(jω)=0｝.另一方面，由受控过程的单调性(2)可推知｜W(jω)｜≤H(∞).进而对于任意选择的ω＞1/t0，有
+则由(4)式知定理成立.
+　　分析调节器(2)，因积分环节的存在，将有效地保证在闭环稳定的前提下对于恒值期望及内部不确定因素调节的无偏差性.而镇定参数β的确定则通过样本H(t)显式地进行.从(3)式可以看出，确定β是相当快捷的过程.因此，它亦可作为诸如适应式或智能控制的初值参数.一般地，较粗糙的t0对应于较大的积分常数.这蕴含着趋于保守的设计.获得更好的样本曲线H(t)意味着可以找到更快的镇定参数.但无论怎样，由定理1所决定的剪切角频率必然小于1/t0.
+2　鲁棒性
+　　考虑在过程含有不确定性时定理1的推广.对适当维数的参数集合p,受控过程的阶跃响应函数族描述为显而易见，前述中H(t)可认为是受控过程在某一参数点p0∈P时的样本.
+　　定理2.若选择t*及β满足
+
+(5a),(5b)
+则对于任意的p∈P系统闭环均渐近稳定.其中Hm(t)及HM(t)为满足下式的已知函数偶：
+
+(5c)
+　　证明.任取p∈P，则由(5a),5c)式，有
+
+另由(5b)式可知，β≥t*HM(∞)≥t*H(∞,p),从而由定理1知结论成立.
+　　定理2指出了在含不确定性因素时的调节器设计可以通过粗略估计样本轨线变动的上下界函数进行.此时调节器将更加保守.明显，这是由于对过程认识不足所付出的代价.
+作者单位：中国科学院力学研究所　北京　100080
+参考文献
+［1］　Astrom K J.A robust sampled regulator for stable systems with monotone step responses.Automatica,1980,16(3):313―315.
+［2］　Lu W S,Kumar K S P.A staircase model for unkown multiariable systems and design of regulators.Automatica,1984,20(1):109―112.
+［3］　Astrom K J,C C Hang,P Persson.Towards to intelligent PID control.In: IFAC Workshop on Applications of AI in Real-time Control,Shenyang,China,Sept.1989,53―58.
+收稿日期　1995-08-18

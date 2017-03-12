@@ -1,0 +1,92 @@
+软件学报
+Journal of Software
+2000 Vol.11 No.1 P.62-66
+
+
+
+基于扩展标记语言的Internet市场的服务描述
+周笑波　杜鹏　陈贵海　陈道蓄　谢立
+摘　要　作为一种应用系统从位于Internet上的远程服务结点获取数据和计算性服务并进行集成处理的机制,Internet市场受到了广泛重视.该文给出了一种基于扩展标记语言(extensible markup language,简称XML)的Internet市场服务描述方式.它较好地权衡了市场构架与顾客及服务提供者的观点.
+关键词　因特网市场,扩展标记语言,服务,注册,顾客/提供者.
+中图法分类号　TP393
+Describing Services on an Internet Marketplace Using Extensible Markup Language
+ZHOU Xiao-bo　DU Peng　CHEN Gui-hai　CHEN Dao-xu 　XIE Li
+(State Key Laboratory for Novel Software Technology　Nanjing University　Nanjing　210093)
+ZHOU Xiao-bo　DU Peng　CHEN Gui-hai　CHEN Dao-xu 　XIE Li
+(Department of Computer Science and Technology　Nanjing University　Nanjing　210093)
+Abstract　The Internet marketplace is getting attention widely as a new computational paradigm which enables applications to obtain and integrate remote services for data supply and for data manipulation on Internet. In this paper, a means of representing services on an Internet marketplace using extensible markup language (XML) is proposed which well balances the interests of the marketplace infrastructure with those of the customers and providers.
+Key words　Internet marketplace, extensible markup language, service, registry, customer/provider.
+　　Internet市场这一概念［1］被提出后引起了业界的广泛兴趣.Internet市场的目的是在比电子贸易更高的层次上充分挖掘Internet的技术和商业潜能.两者最主要的不同点是,在Internet市场中,商品――信息产品不但通过Internet预定,也通过它来发送和收费.
+　　Internet市场统一地看待Internet上可利用的数据源和计算源,提供数据服务和计算服务的集成服务.顾客可以在他需要的时候购买或租借这些服务.Internet市场的提出主要得益于联合数据库［2］和分布式处理上的技术进步,使得通过网络获取远程资源来建立一个应用系统成为可能.在这样的一个市场里,为解决一个复杂的应用问题,用户可能先从一个或多个数据服务的提供者之处获取其所需要的数据,然后将这些数据传给一系列的计算性服务的提供者,由它们来进行集成处理.Internet市场主要有资源公告、资源发现和选择、数据转换、任务计划编制、命令转换和任务执行等几个关键性行为.
+1 一个Internet市场模型
+　　Internet市场的思想源于一系列不同的应用领域的需求,如空间信息系统［3］、决策支持系统［4］和数学软件［5］等.
+　　图1描述了一个Internet市场模型的结构.一个Internet市场向需要服务的提供者提供一个或多个数据服务或计算性服务,服务的提供者通过给这些服务向注册器注册的方式进入该市场,顾客则可以向其选择中的服务提供者发送请求以申请该服务.
+
+
+
+Fig.1　An architecture of Internet marketplace
+图1　一个Internet市场的结构　　
+　　最基本的是,在一个Internet市场中,服务可以分为数据服务和计算服务.数据服务提供在本地数据源查询由数据提供方来维护的数据的服务.申请规格说明语言(request specification language,简称RSL)允许顾客定义其感兴趣的对象集及查询语句,以获取各种数据源上的数据.数据源可以是结构化或半结构化数据库、Web服务器和文件服务器等.计算服务则允许顾客利用它提供的各种计算软件,包括数据的转换和分析、预测、模拟、优化及推断等,结合硬件来执行各种目的的计算.
+　　Internet市场还提供计划编制服务和执行服务.计划编制服务提供资源发现、选择和计划编制等服务.执行服务作为一个代理来执行由顾客或计划编制服务制定的计划.
+2 Internet市场的服务描述与扩展标记语言(XML)
+　　提供给顾客和服务提供者简便的市场入口是一个Internet市场成功的关键.目前大多数Web上的文档是用HTML格式存放和传送的,但是在可扩展性、结构化和有效性等方面的不足限制了HTML的应用能力.扩展标注语言(extensible markup language,简称XML)［6］是专门为Web应用设计的一个简单的SGML(standard generalized makeup language)子集.它保存着可扩展性、结构化和有效性等关键优点,又去除了那些对于当前Web用户来说不必要的特性.
+　　在Internet市场中,服务提供者通过用XML文件表示的源对象来注册其提供的服务.(1) XML像HTML那样在Web上易于接受和处理；(2) XML使得与服务相关的源信息可以在Internet市场的不同组件,或不同的电子服务市场中很容易地进行交换；(3) XML的要求很低,并且传输和操作XML文件的基础设施也是无所不在的；(4) XML的简便性和普遍性保证了其随市场演变的灵活性；(5) Internet市场的目标是建成一个开放的市场,所以,源信息应该可以转换成CORBA和DCOM(distributed common object model)等对象,各种类型的Internet市场之间也应该可以通过交换源对象来使用各自的服务. 
+3 Internet市场服务库
+3.1　服务库的设计目标
+　　在Internet市场中,作为顾客和服务提供者之间的界面,存放服务信息的服务库扮演着一个极为重要而特殊的角色.服务库不但是市场的用户(包括顾客和服务提供者)与市场构架(infrastructure)之间的接口,而且也是许多不同的异构服务之间的接口.服务提供者希望注册过程简单、直观；顾客也希望简便地获取和集成市场上提供的各类服务,而无需了解复杂的技术细节.因此,建立一个Internet市场的服务库必须很好地权衡市场构架的观点与服务提供者和顾客的观点.可以说,Internet市场的成功与否在很大程度上取决于服务的描述和服务库的管理方式［7］.对于一个合适的服务库应该有以下几个要求:
+　　.服务的提供者应具有在一个Internet市场中注册、修改和撤销其提供的服务的权力；
+　　.顾客需要有查找、选择、集成和运行该市场上的服务的支持；
+　　.Internet市场必须解决服务的异构性问题,所以异构的服务必须用同一种方式来表示；
+　　.Internet市场是不断地动态变化着的,所以服务库必须是开放的、可扩展的.
+3.2　顾客方/服务方体系结构的结构组件
+　　图2表示了Internet市场顾客方/服务方体系结构的基本组件.
+
+Fig.2　Components of an Internet marketplace
+图2　Internet市场体系结构的基本组件
+　　.服务库存放着与市场提供的服务相关的信息.
+　　.权限管理库存放着与市场的用户相关的信息,并避免无授权的服务进入市场.
+　　.服务执行区由代表顾客执行服务请求的服务执行引擎组成.
+　　.Web服务器可看作是Internet市场的中间件,处理各组件与它们的客户方之间的交互.
+　　.Web客户方,如Netscape浏览器,是连接顾客和Internet市场的Web服务器.
+　　与市场中大量的顾客和服务提供者相对应,服务库、服务执行区和Web服务器可以随着市场的用户数的增加而动态地复制.Internet市场中的异构服务的具体信息被包装在源对象(metaobject)中,当一个顾客查询和执行一个服务时,这些在图2中表示为FSO(function session objects)和DSO(data set objects)的源对象以XML文件的形式被存取于服务库中.在执行一个申请时,相应的XML文件及附加信息被传送到由服务引擎组成的服务执行区中,通过这些文件,服务引擎代表顾客执行相应的申请.
+3.3　源对象
+　　在Internet市场中,顾客通过用扩展标记语言XML描述的结构化文件来注册服务.这些XML结构化文件包装了异构服务的源信息,所以又称为源对象.XML同时也用作各类服务之间的通用交换格式,从而允许从Internet市场的源对象到CORBA对象或DCOM等分布式对象的映射.
+　　Internet市场的服务提供者通过将源对象添加到服务库中的方法在服务库中注册其提供的服务,这样,市场就可以统一地表示数据服务和计算性服务.存放数据服务及其获取有关信息的源对象称为DSO.包含与计算性服务及其执行的信息的源对象称为FSO.这样,服务的提供者就可以通过DSO和FSO来注册其提供的服务.而顾客则可以通过查询DSO和FSO集合来搜索其需要的服务.最后,顾客在服务被执行前选择和集成DSO和FSO对象.
+　　每一个DSO类是从抽象的超类data set object继承而来.DSO的层次树包括下列类型.
+　　.DSO文件类.这个类帮助服务的提供者注册那些可通过Internet协议传输的文件外部位置.服务的提供者也可以将其提供的文件直接安装在Internet的数据仓库中.
+　　.DSO数据库类.这个类可用来包装不同类型的数据库.数据库的提供者不但要提供数据库的服务器的位置,而且还要提供一些源信息,如查询信息和数据库界面信息.
+　　FSO对象之间组成一棵层次树.每个FSO的子类是从包含所有共同的FSO对象的特性和方法的超类function session object中继承而来.其中的特性包括在注册时所得服务的源信息.目前,FSO层次类型树包括以下两种类型.
+　　.FSO外部服务类.在Internet市场中,那些不愿公开其服务源代码的提供者可以用此类来注册其提供的服务,并将服务包装进外部服务类的FSO对象中,该服务就可以“无缝地”在Internet市场中被使用.
+　　.FSO执行类.这个类是提供给那些愿意公开其服务的源代码而不再提供一个执行环境的服务提供者使用的.在Internet市场中,可以通过注册源代码所处的URL或通过市场提供的功能函数将源代码直接安装在市场的方法类库中.
+3.4　服务注册
+　　DTD(document type definitions)是描述文档实例和其组织方法的语法规则.在Internet市场中,为源对象定义的DTD区分域相关和域无关两种文档.在市场中,我们需要服务提供者注册相应的域无关信息,如一个服务的接口描述.预先定义一个域无关服务的属性是比较容易的,但是定义一个特定的应用域的服务属性却是比较困难的,所以,Internet的DTD是随市场的供需驱动不断演变的.比如,某个领域的服务提供者需要注册一个与已经存在的服务目录不相容的服务,它提供的服务类型就必须可以被加入已存在的服务目录.Internet市场的DTD就用来提供支持上述要求的操作.同时,熟悉XML语言的服务提供者也可以直接将所提供的服务加入已存在的服务目录当中.
+　　(1) 基于域的信息
+　　为了方便市场中各种服务的注册,一个专门用于不同领域的分类程序可以辅助服务的提供者对其要注册的服务进行分类,比如,提供者可以先决定其提供的服务是计算性服务(FSO)还是数据服务(DSO).拥有某些权限的用户还可以通过创建一个新的文件夹来延伸此层次目录.服务的提供者也可以扩展已存在目录中的属性.
+　　(2) 非基于域的信息
+　　非基于域的信息则可以分为名字和标识、普通信息、入口信息、服务界面4个部分.
+　　当以上所有需要的信息被指定后,完整的XML文档被提交到Internet市场的服务库.
+3.5　服务的查询
+　　除了允许服务的提供者存放与服务有关的信息之外,服务库还要提供对服务搜寻的支持.以简单的文件形式来存放XML源对象,无需理解其逻辑结构是很吸引人的,尽管这种方法的代价是目前只能支持简单的查询.一旦文档的结构被扩展,查询处理器也需要延伸.
+　　在Internet市场中,我们通过将DTD映射到数据库的模式中的方法来保存服务信息.每一个DTD元素与一个面向对象数据库(或关系型数据库)的一个类(或关系)相对应.
+　　基本上,我们区分查询服务有两种方法.一种方法是基于目录分类树的浏览方法.这种方法直观,对于新的顾客也很有用,但是其查找能力很有限.另一种方法是使得Internet市场的数据库界面允许用户要求复杂的查询.首先是包括连接、选言判断和属性的否定等简单查询,其次是用SQL表示的复杂查询.这就允许服务提供者进行基于源对象、目录和属性的集合的查询,如“查找满足一给定限制的所有源对象”.
+4 结　论
+　　Internet市场是一个有着极大潜力的研究新方向,在该领域,有许多问题值得我们进行更深入的探讨.本文给出了基于XML语言的Internet市场的服务描述,在此基础上,构建一个较好地权衡了市场构架的观点与服务提供者和顾客观点的服务库.并讨论了服务的注册方式和服务的查询方式.
+致谢　感谢周晓方博士、SMART项目组和Volker Gaede博士的讨论,感谢他们为本项工作提供有关的研究材料.
+本文研究得国家自然科学基金(No.69803005)和国家863高科技项目基金(No.863-306-ZT20-0301)资助.
+周笑波（南京大学计算机软件新技术国家重点实验室　南京　210093；南京大学计算机科学与技术系　南京　210093）
+杜鹏（南京大学计算机软件新技术国家重点实验室　南京　210093；南京大学计算机科学与技术系　南京　210093）
+陈贵海（南京大学计算机软件新技术国家重点实验室　南京　210093；南京大学计算机科学与技术系　南京　210093）
+陈道蓄（南京大学计算机软件新技术国家重点实验室　南京　210093；南京大学计算机科学与技术系　南京　210093）
+谢立（南京大学计算机软件新技术国家重点实验室　南京　210093；南京大学计算机科学与技术系　南京　210093）
+E-mail: gchen@nju.edu.cn
+参考文献
+1．Abel D J. Spatial Internet marketplaces: a grand challenge? In: Scholl M, Voisard A eds. Advances in Spatial Databases, Vol 1262. Berlin, Heidelberg, New York: Springer-Verlag, 1997
+2．Abel D J, Gaede V, Taylor K L et al. SMART: Towards Spatial Internet Market-places. Technical Report, ISS-40, Berlin, Germany: Humboldt University,1997
+3．Bhargava H K, Krishnan H L R, Muller R. Decision support on demand: emerging electronic markets for decision technologies. International Journal Decision Support Systems, 1997,19(3):193～214
+4．Guenther O, Mueller R, Schmidt P et al. MMM: a WWW-based method management system for sharing statistical computing modules. IEEE Internet Computing, 1997,1(3):59～68
+5．Bosak J. XML, Java, and the future of the Web. http://www.sil.org/sgml/xml/html
+6．Zhou Xiao-bo, Xie Li, Zhou Xiao-fang. A model of spatial Internet marketplace service management based on multiserver system. Chinese Journal of Computers,1999,22(4):424～430
+(周笑波,谢立,周晓方.一个基于多服务员系统的Internet市场服务管理模型.计算机学报,1999,22(4):424～430)
+7．Finin T, Fritzson R, McKay D et al. KQML as an agent communication language. In: Proceedings of the 3rd International Conference on Information and Knowledge Management. Gaithersburg, Maryland, 1994. 456～463
+1998-11-25收稿
+1999-02-01修稿

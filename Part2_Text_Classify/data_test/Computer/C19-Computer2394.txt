@@ -1,0 +1,107 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年　第36卷　第10期　Vol.36　No.10　1999
+
+
+
+适用于并行操作的C语言程序测试工具ParCT
+梁煜　李基凯张林波李玉成　卢慧琼
+　　摘　要　并行计算技术的飞速发展给软件测试带来了新的要求.并行软件测试可以分为基于进程内部的控制流测试和基于进程间相互关系的时序测试.文中所介绍的并行软件的测试工具――ParCT (parallel C-language testing tools)主要是面向控制流的.文中介绍了ParCT的运作机制及其主要功能:通过对程序的动态测试得到测试的覆盖率、列出未覆盖分支以及对各个分支的访问频度,从而帮助用户完成对测试程度的评估并为用户设计新的测试用例提供目标.在此基础上,还对并行测试工具所面临的一系列新课题,诸如进程的实时跟踪、面向控制流的测试产生(test generation)算法、面向多线程的测试工具、并行程序的时序测试(timing sequence testing)等,进行了一定程度的探讨.
+　　关键词　软件测试,测试覆盖率,并行,关键点
+　　中图法分类号　TP311.5
+ParCT：A PARALLEL C-LANGUAGE TESTING TOOL
+LIANG Yu, LI Ji-Kai*, ZHANG Lin-Bo**, LI Yu-Cheng*, and LU Hui-Qiong***
+(Research Center of High-Performance Computers, 
+Institute of Computing Technology, Chinese Academy of Sciences, Beijing 100080)
+*(Research and Development Center for Parallel Software,
+Institute of Software, Chinese Academy of Sciences, Beijing 100080)
+**(Institute of Computational Mathematics and Scientific/Engineering Computing,
+Chinese Academy of Sciences, Beijing 100080)
+***(Institute of Software, Chinese Academy of Sciences, Beijing 100080)
+　　Abstract　The rapid development of parallel computing technology has brought about new challenges to the software testing. The testing of parallel programs consists of two parts: control flow testing(in-process testing) and timing-sequence testing(interprocess testing). ParCT(parallel C-language testing tools) is control-flow oriented. First introduced are the functions of ParCT, which include demonstrating the testing coverage-ratio, listing the un-hit statements, and compiling the testing result. With its help the users can evaluate how the testing has been completed and then try to design new test case to cover the un-hit branches. Furthermore several critical technologies in realizing the above functions are also addressed. Finally discussed are a series of new functions facing a more powerful ParCT, such as thread-safety, test generation, real time debugging, timing-sequence testing, etc..
+　　Key words　software testing, coverage ratio, parallel, essential point
+1　引言
+　　软件测试(software test)是为了发现程序实现(realization)是否满足用户需求(requirement)而对其正确性进行执行验证的破坏性过程(destructive process).针对软件测试,前人已做了大量工作, 其中许多工作是针对串行程序进行的,在并行软件的测试方面, 我们还存在许多盲点. 
+　　根据并行程序的运行机制, 并行程序的测试应该包括两个部分:
+　　(1) 控制流测试, 主要面向进程的各个控制分支;
+　　(2) 时序测试, 主要面向进程间的不同的时序组合.
+　　针对并行程序的控制流测试, 目前已经有比较成熟的技术; 而对于时序测试,迄今还没有公认的通用算法. 本文所介绍的适用于并行操作的C语言程序测试工具――ParCT(parallel C-language testing tools)目前只能适用于进程内部的控制流测试.
+　　从程序逻辑结构的角度上看并行程序与串行程序相比并无特别之处,因此串行程序测试工具中的许多部件均可以照搬;然而,在并行程序的运行过程中多个相互协同的进程或线程有可能相互制约、相互冲突,给我们的测试工具搜集及记录各个进程的运行轨迹带来不便.因此并行软件测试主要研究内容之一就是如何排除并行进程或线程间的干扰,在相对独立条件下完成对执行线路的记录.本文在已有的串行程序测试工具的基础上,针对并行程序的运行特点为其提供一种可行的测试方法.
+1.1　ParCT软件测试系统中的主要概念、术语
+　　本节列出了ParCT中所用到的主要概念和术语.
+　　测试用例(test case)［1］指的是为了发现程序中的故障而专门设计的一个或一组输入数据.测试理论与技术研究的主要课题之一就是如何找到能发现最多故障的最小的测试用例(即具有较高效率的测试用例).
+　　测试覆盖率(coverage ratio)指定量地描述了一个或一组测试用例的效率(或称测试完成程度).比较常见的测试覆盖率的计量方法有语句覆盖准则、分支覆盖(又称判定覆盖)准则、条件覆盖准则、判定覆盖准则和多重条件覆盖准则等［2～5］.当前版本的ParCT采用的是分支覆盖准则,采用分支覆盖准则的优点是算法实现较为简单,缺点是在对组合条件判定语句进行测试分析时有可能丢弃一些条件输入组合.根据分支覆盖准则,本文引人了关键点(essential point)这一概念,它是模块的入口点和条件语句的扇出分支的总称.
+
+(1)
+　　探针是测试系统插入到被测系统中的能反映并记录被测系统运行状态信息的语句或函数.在ParCT中探针的主要功能是将其所对应的关键点信息填入关键点表中.
+1.2　ParCT的主要特点、功能
+　　目前的ParCT版本主要提供如下功能:
+　　(1) 通过对程序的动态测试得到测试的覆盖率(包括关键点覆盖率和模块覆盖率),从而达到定量地描述测试完成程度的目的;
+　　(2) 列出测试后未覆盖分支、未覆盖模块等;
+　　(3) 提供被测系统的其它测试信息,如执行次数、频度等. 用户可以对访问频度最高的语句进行重点优化;　　
+　　(4) 对被测系统源程序进行一定程度的语法检查.
+　　总的说来,ParCT有如下特点:
+　　(1) 适用于对并行程序的测试.这也正是ParCT最主要的特点.
+　　(2) 具有较为完善的词法和语法分析机制,它能处理C语言中的大多数语法形式,诸如 if-then-else, while, for, switch, goto, 宏处理,条件编译等.
+　　(3) 具有一定的容错性能. 如果运行过程中发生故障,ParCT能够在进程退出前保存当前执行信息;另一方面, 当对多个测试结果文件进行归并时,ParCT能够检验这些结果文件是否同构,即它们是否来自于同一个被测系统.
+　　(4) 自然地嵌入被测系统中,不对被测系统的编译、联结和执行产生影响.
+　　(5) 与其它测试系统相比,ParCT只能属于小规模系统. 测试系统不宜过于庞大.无论如何测试系统只能是被测系统的附属部分.特别是目前许多应用系统基于可移植性的考虑, 其环境参量设置越来越复杂. 如果测试系统太过庞大,则会给测试工具的使用带来不便.
+　　(6) 可以将多组测试数据进行归并并给出综合的测试覆盖率.
+　　(7) 可移植性.由于本系统建立在UNIX［6，7］上层,与机器以及UNIX版本关系不大,因此只需少许改动即可将ParCT移植到其他系统上运行.
+　　(8) 测试系统有一个原则:尽量减少对被测系统性能的影响.ParCT基本上遵从了这一原则.
+2　ParCT的工作原理
+2.1　ParCT的工作机制
+　　ParCT采用了图1所示的测试流控机制.ParCT中的所有工作均是围绕关键点表而进行的.用ParCT进行测试主要分3个阶段:预处理、测试执行和结果综合(后面将要详细说明).预处理主要是通过分析被测系统的程序结构为建立关键点表提供必要的信息,而且在此阶段还完成对被测系统的插装,即将填写关键点表的函数置入被测系统中.测试执行阶段主要是通过动态执行被测系统来激活探针,将其运行信息填入关键点表中,并在被测系统进程退出之前将关键点中信息存入文件中.在这里值得一提的是当被测系统为并行程序时,关键点表的数目与进程数完全一一对应, 这主要是因为进程被复制时,其所有在内存中的数据也一起被复制.结果综合主要是将多个测试结果文件中的关键点访问信息进行归并、综合,得到最终的未覆盖关键点和测试覆盖率.
+　　与串行程序相比,在并行程序的测试中我们所面临的新困难是进程的非正常终止.当多个进程协同完成一项任务时,由于它们的执行时间长短可能不一样,首先完成的进程可能会杀死(kill)或终止(terminate)其它进程,另外,如果进程运行中出现致命错误,也可能出现进程被终止的情况.如果不在进程资源被释放之前将有关进程数保存,最终我们将得不到测试结果数据.
+　　对于正常的进程终止,我们可采用诸如屏蔽EXIT命令,对主程序标志MAIN进行替换等方法,实际上对于正常的进程终止,一般的串行测试工具均有所考虑.
+　　而对于进程的非正常终止,ParCT增加了测试结果收集器(result-collector)的信号驱动机制(signal-driven facility),使之能够截获机器内部的中断信号.进程非正常终止前,内核(kernel)均会发出相应的中断信号(signal),因此采用图1所示的工作机制,测试结果收集器能预先截获进程终止信号，例如信号SIG_TERM.当它探测到此类信号时,测试结果收集器将被激活并在进程退出之前完成对测试数据的保存.
+
+
+图1　ParCT的工作机理
+　　在这里值得一提的是,如果被测系统是不含有主程序而完全由一些子例程构成的软件包(packages),则需要引导程序(tester)将包中各模块(一般软件包的生产商均提供这样的引导程序)串连起来并分别加以激活.对此类系统进行测试时应该将引导程序联入测试模具中.在编译器允许的条件下,引导程序为FORTRAN时测试也可正常进行.
+2.2　ParCT的操作流程
+　　ParCT的操作流程可分为：预处理、测试执行和结果分析3个主要阶段.
+　　在ParCT中,预处理部分完成的主要工作有:①对宏命令进行处理,消除注释部分,将常量部分进行替代.②分析记录程序的内部结构.将整个程序以文件为单位进行分块,建立函数表和关键点表,并将有关信息以文件形式保存.③插装(instrument). 在程序中所有关键点插入探针(probe).
+　　经过预处理后,则可启动动态的测试执行.测试执行阶段的主要工作是把被测系统联入测试系统中,启动其执行并收集其运行信息.
+　　关键技术:
+　　(1) EXIT语句的屏蔽.为使执行流程能返回测试模具中, 进入到测试结果收集器中, 需要把被测系统及其引导部件中的正常的进程终止函数进行替换或屏蔽；
+　　(2) MAIN语句的屏蔽.欲把被测系统联入测试模具中,首先得把被测系统(如果被测系统是一个独立的含有主程序的程序)或其引导程序(当被测系统不含有主程序而完全由一些子例程构成时)中的主程序标志(main,―main())或修改,或屏蔽掉；
+　　(3) 执行过程中探针所发出的信息均存入关键点表格内.关键点表不是以文件形式存放在硬盘中而是被置于内存中,这样做主要是基于两个考虑:①内存的访问速度远远大于硬盘.②对进程进行复制时,只能对指令段(code segment)、数据段(data segment)进行复制.文件描述符尽管可以被复制,但其所指文件却是唯一的,因此只能多个进程拥有一个关键点表文件.
+　　将所有关于当前被测系统的测试结果数据进行归并和综合(允许来自不同测试用例),得出总的测试覆盖率.在这一部分中,ParCT能够辨别测试结果数据是否来自同一被测系统.
+3　测试实验结果分析
+3.1　对BLACS进行测试的结果
+　　BLACS(basic linear algebra communication subprogram)［8］的主要目的是为分布式环境下的线性代数计算提供一系列高度优化的通信子例程(highly optimized routines).
+　　LAPACK(linear algebra package)是优化的线性计算软件包，其内核中收集了线性代数计算中最常用的优化子例程BLAS(basic linear algebra subprograms). ScaLAPACK(scalable linear algebra package)是分布式并行环境下的LAPACK版本，我们不仅要求它提供优化的计算子例程，而且还需向用户提供优化的(高效、易用、可移植性强)通信子例程. BLACS正是基于这种需求产生的.因此，BLAS和BLACS可以称作ScaLAPACK的两大支柱.
+　　BLACS提供了多种版本以适应不同的消息传递环境，如PVM［9］和MPI等.我们这里只对PVM版本的BLACS进行测试. PVM―BLACS由164个子例程构成，整个系统源程序有15,500多行，PVM―BLACS生产商提供的测试引导程序总行数为23000多行.如果想更深入地了解有关BLACS的内容，请参见Jack Dongarra/R. Whaley的“A User's Guide to the BLACS［8］”.
+　　我们用ParCT对BLACS的所有子例程(subroutines)进行了测试.我们得到最终的测试覆盖率和函数覆盖率如下：
+　　测试覆盖率=81.95122%;
+　　函数覆盖率=95.73141%.
+3.2　对PBLAS进行测试的结果
+　　BLAS(basic linear algebra subprograms)作为事实上的基本线性计算标准是非常成功的，但它作为一个面向串行机的软件包，并不能在并行机上很好地发挥作用，因此，发展出了PBLAS(parallel basic linear algebra subprograms). PBLAS通过采用虚拟拓扑结构，向用户透明数据分配等技术很好地实现了可移植性、可扩展性及用户操作的简易性.但同时它也是一个规模比较大的软件包，仅C语言源代码就有10万余行.完全依靠手工测试是不划算的.我们利用ParCT对PBLAS的C语言部分进行测试，效果非常好，通过了所有标准正确性测试.
+　　我们得到最终的测试覆盖率为52.98246%.
+4　结语
+　　我们利用ParCT对两个比较有代表性的并行软件包――PVM BLACS(basic linear algebra communication subprogram)和PBLAS(parallel basic linear algebra subprograms)进行了测试和覆盖率分析.其中,PVM BLACS［7，8］的主要目的是为分布式环境下的线性代数计算提供一系列高度优化的通信子例程.它由164个子例程构成,整个系统源程序有15,500多行,PVM BLACS生产商提供的针对PVM BLACS的测试引导程序(FORTRAN 77 语言实现)总行数为23000多行.PBLAS提供了并行线性代数计算中所需的基本子函数,它是一个规模比较大的软件包,仅C语言源代码就有52000余行,其测试引导程序也由FORTRAN语言完成,总行数为66000行.实验结果证明ParCT具有较强的稳定性,而且它对被测系统的功能、性能均未产生显著影响.经过一定程度的改进和完善,ParCT完全可以获得更大范围的使用.
+本课题得到国家自然科学基金项目资助(项目编号B-F020302-69883006).
+作者简介：梁煜，男，1968年3月生，博士，主要研究方向为计算机并行处理、计算机体系结构、计算机测试与容错技术等.
+　　　　　李基凯，男，1972年4月生，主要研究方向为高性能并行数值软件.
+　　　　　张林波，男，1962年9月生，研究员，主要研究方向为并行算法等.
+　　　　　李玉成，男，1961年6月生，高级工程师，主要研究方向为高性能并行数学软件等.
+　　　　　卢慧琼，女，1937年7月生，研究员，博士生导师，主要研究方向为软件测试.
+作者单位：梁煜　中国科学院计算技术研究所高性能中心　北京　100080
+　　　　　李基凯李玉成　中国科学院软件研究所并行软件研究开发中心　北京　100080
+　　　　　张林波中国科学院计算数学与科学工程计算研究所　北京　100080
+　　　　　卢慧琼中国科学院软件研究所　北京　100080
+参考文献
+　1　　Ferguson R, Korel R. Software test data generation using the chaining approach. In: Int'l Test Conf, Washington, 1995. 703～709
+　2　　Beizer B. Software Testing Techniques. New York: Van Nostrand Reinhold Company, 1983
+　3　　Tai K C, Carver R H. Testing of distributed programs. In: Parallel & Distributed Computing Handbook. New York: McGraw-Hill, 1996
+　4　　卢慧琼. 软件测试与动态测试工具. 计算机研究与发展, 1990, 27(1): 28～32
+　　　(Lu Huiqiong. Software testing and dynamic testing tools. Journal of Computer Research and Development(in Chinese), 1990, 27(1): 28～32)
+　5　　罗保国. CTT(C Testing Tools)的设计与实现［硕士论文］. 中国科学院软件研究所, 北京, 1993
+　　　(Luo Baoguo. Design and implementation of CTT［master dissertation］(in Chinese). Institute of Software, Chinese Academy of Sciences, Beijing, 1993)
+　6　　Steven Robbins K A. Practical Unix Programming: A Guide to Concurrency, Communication, and Multithreading. Englewood Cliffs, NJ: Prentice Hall, 1996
+　7　　Rochkind M J. Advanced Unix Programming. Englewood Cliffs, NJ: Prentice Hall, 1996
+　8　　Dongarra J, Whaley R. Installing and Testing the BLACS. ftp.netlib.org /blacs, 1996
+　9　　Geist A, Beguelin A, Dongarra J J et al. A PVM3 User's Guide and Reference Manual. ftp.netlib.org: /pvm3. 1996 
+原稿收到日期：1997-12-05；
+修改稿收到日期：1998-09-15.

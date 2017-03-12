@@ -1,0 +1,192 @@
+软件学报
+JOURN AL OF SOFTWARE
+1999年　第10卷　第10期　Vol.10　No.10　1999
+
+
+
+基于T3BDD的动态模型检查
+倪 彬 冯玉琳　黄 涛
+摘要 Java Beans是一种组件标准.该文定义了JBDL(Java Beans description language)语言,用于描述组件语义约束规范.为了检测Java Beans组件语义约束与其实现之间的一致性,文章给出了一种基于JBDL公式的三值语义和模型的抽象化动态模型检查方法.文章重点介绍了利用T3BDD（3-terminal binary decision diagram）的符号化动态模型检查方法.
+关键词　组件,Java Beans,形式规范,符号化,模型检查,二叉判定图.
+中图法分类号　TP311
+T3BDD Based Dynamic Model Checking
+NI Bin FENG Yu-lin HUANG Tao
+(Laboratory of Computer Science Institute of Software The Chinese Academy of Sciences Beijing 100080)
+Abstract Java Beans is a standard for software components. For checking the consistency of the Java Beans semantic constraints with its implementation, a formal Java Beans description language (JBDL) and a dynamic model checking method are proposed in this paper. The authors contribute an efficient symbolic model checking approach using T3BDD. The approach is based on three valued semantics for JBDL formulas and a kind of abstract model which is dynamically established and evolved during Bean’s execution.
+Key words Component, Java Beans, formal specification, symbolic, model checking, binary decision diagram (BDD).
+　　组合软件开发方法和对象技术正在成为支持网络计算模型的一种主流方法和技术.可复用的组件是组合软件开发方法的基本单元和核心.组件的规范通常依据一定的标准,提供支持组件构造的系统结构和API.但是,这些标准目前都采用非形式的方法来刻画组件的语义.高质量的组件是支持组件复用和分布式计算的关键.为了开发高质量的组件,我们希望对组件的语义形式化地进行描述和验证.在很多情况下,这样的描述和验证是必要的.在组件的制造过程中,往往需要进行多层次的分析、设计和实现.组件语义精确和严格的形式描述,使各层次开发人员对组件语义不会产生理解上的歧义.对组件的验证有利于保证组件的正确性.这样的描述和验证也是在开发过程中选择组件、评价组件、调整组件、组合构造以及系统进化的重要依据和正确性检验手段.
+　　我们选择Java Beans组件标准作为研究对象,设计了一个基于多类一阶时序逻辑的规范语言―JBDL(Java Beans description language)来刻画Bean的语义约束.为了检测Bean的JBDL规范与其实现之间的一致性,我们提出了一种基于抽象和符号化的动态模型检查方法.在动态检测过程中,由于模型是动态建立的,并且随着检测的进行,模型还在不断演化.针对这种情况,本文给出了时序公式在动态演变模型下的三值语义,以及利用T3BDD(3-terminal binary decision diagram)有效地进行模型检查的方法.
+　　模型检查是验证系统行为约束的一种方式.其核心问题是模型状态数目无限膨胀的问题.目前的模型检查主要是从技术上尽可能地避免状态爆炸.下面是一些代表性的技术.
+　　(1) 使用有效的搜索算法来搜索状态空间.代表性的工作有CMU的E.M.Clarke和R.E.Bryant,TEXAS的E.A.Emerson等人使用BDD、划分和对称性等方法对逻辑部件进行验证[1～3];P.Godefroid等人利用偏序特性和状态无关的搜索方法检查并发系统的性质[4].
+　　(2) 组合模型检查(compositional model checking).代表性的工作有Pnueli的假设-保证法;Winskel对命题m 演算的验证;Graf和Steffen利用约简全空间进行验证的方法等.
+　　(3) 符号模型检查(symbolic model checking).代表性的工作有UPPSALA的Wang Yi和 K.G.Larson等人对实时系统进行的正确性验证;Denmark的H.R.Anderson,Susscx的M.Henessy,IBM的D.Kozen,Edinberge的C.Stirling和中国科学院软件研究所的林惠民等人对用CCS表达的并发系统进行的正确性验证.
+　　(4) 利用抽象进行模型检查.代表性的工作有:CMU的D.E.Long等人对每个变量进行抽象划分,并对ACTL*公式表达的性质进行验证;Wolper对数据无关的系统进行模型检查;Kurshan在有限状态图方面的工作;Burch和Bensalem等人基于trace理论的工作.
+　　与上述几类方法相比,我们工作的不同点在于:(1) 我们要检查的模型是在运行时动态产生的,同时,模型在不断地演化,使得时序公式的语义是三值的;(2) 我们采用了一种特殊的抽象方法,这种方法使得抽象可以自动进行,而且不必在抽象空间上进行操作和谓词的抽象计算;(3) 我们扩充了BDD,采用T3BDD来表示模型和公式,并进行模型检查.
+　　下面我们首先简要介绍JBDL规范,然后给出检测模型和抽象模型的形式定义以及基于T3BDD的模型检查算法,最后给出实例研究的结果.
+1　JBDL规范
+　　语义约束刻画了Bean的静态结构和动态行为应该满足的条件,包括4种约束.静态约束刻画了Bean的状态空间.行为约束刻画了Bean的各个操作应该满足的前后条件.生命期约束刻画了Bean在创建之后,由事件驱动的整个生命期过程中,自身状态和行为应该满足的时序性质.协作约束刻画了由低层Bean协作完成高层Bean的操作时应该满足的时序性质.下面是JBDL的范式:
+< JBDL Specification> ∷=Spec <Bean Name> Inheritance<Bean Name>< Static Constraints>;
+　　　　　　　　　　　　<Behavior Constraints> ; <Life Cycle Constraints> ;
+　　　　　　　　　　　　<Cooperation Constraints> ;
+　　　　　　　　　　　　End Spec
+<Static Constraints〉 ∷=Static Constraints: < Static Formulas〉 
+<Behavior Constraints〉 ∷=Behavior Constraints: (<Behavior Name〉:
+　　　　　　　　　　　　Pre Conditions <Static Formulas〉 Post Conditions < Static 
+　　　　　　　　　　　　Formulas〉)*
+<Life Cycle Constraints〉 ∷=Life Cycle Constraints: < Temporal Formulas〉
+<Cooperation Constraints〉 ∷=Cooperation Constrains: (<Behavior Name>: < Temporal 
+　　　　　　　　　　　　　　　　Formulas〉)*
+　　JBDL是基于多类一阶谓词分支时序逻辑的描述语言.我们在逻辑语言中扩充对面向对象特性的支持,以便表达Java Beans的各种对象特性.我们还对逻辑语言的语义进行了扩充,以便统一地、混合地表达Bean状态和操作的时序关系.关于JBDL规范的细节可以参考文献[5～7].
+2　模 型
+　　要进行动态检测,就要求待检测Bean在运行过程中需要检测的时候激发检测点事件,并等待检测结果.正在侦听该事件的检测Bean接收到检测点事件后,根据待检测Bean的当前状态建立和演化检测模型,并根据该模型来进行一致性检测,然后把检测结果返回给待检测的Bean.如果检测未发现不一致,则待检测Bean继续运行;否则,产生不一致例外,并提示检测人员进行干预.由于篇幅的限制,我们直接给出检测模型和抽象模型的形式定义,关于支持检测点事件机制和抽象方法的细节可以参考文献[5～9].
+定义1. 检测模型是如下定义的三元组M={S,R,I}:
+　　(1) S是Bean状态的集合,状态s∈S当且仅当s是待检测Bean在检测过程中处于某个检测点事件时的状态.
+　　(2) R是S′×S上称为状态转换的一个二元关系,(s,t)∈R当且仅当确定t的检测点事件在检测过程中发生在确定s的检测点的事件之后,并且它们之间没有其他检测点事件.
+　　(3) IR,s∈ I当且仅当s是待检测Bean在检测过程中处于初始状态检测点事件时的状态.
+　　由于检测模型是不断演化扩充的,在一个检测点,某些时序公式的值按照JBDL的语义虽然为假,但随着检测的继续,在进一步演化后的检测模型上,它们的值可能为真.这样,如果我们检测到一个时序约束不满足,我们并不知道它是暂时不满足还是永久不满足.因此,我们需要区分两种情况:(1) 公式目前不满足,但随着检测模型的演化,公式可能在将来满足;(2) 公式在从现在开始的检测模型上不可能满足.我们把第1种情况下公式的值定义为不确定(unknown).在这种情况下,时序公式在检测模型下的语义就有3种取值.JBDL时序公式及其三值语义定义如下.
+　　定义2. 在检测模型M和论域空间C上,M,s0 |= f,含义为公式f在检测模型M下的状态s0满足,M,s0|≠ f,含义为公式f在检测模型M下的状态s0不满足,M,s0 |＝?f,含义为公式f在检测模型M下的状态s0不确定.关系|= , |≠和|= ?递归定义如下:
+　　(1) M,s0 |= p 当且仅当p是静态公式,p在状态s0满足,
+　　　　M,s0 |≠p 当且仅当p是静态公式,p在状态s0不满足;
+　　(2) M,s0 |= f1 ∧ f2 当且仅当M,s0 |= f1并且M,s0 |= f2,
+　　　　M,s0 |≠f1 ∧ f2 当且仅当M,s0 |≠ f1或者M,s0 |≠ f2,
+　　　　M,s0 |= ?f1 ∧ f2 否则;
+　　(3) M,s0 |= f1 ∨ f2 当且仅当M,s0 |= f1或者M,s0 |= f2,
+　　　　M,s0 |≠f1 ∨ f2 当且仅当M,s0 |≠ f1并且M,s0 |≠ f2,
+　　　　M,s0 |= ?f1 ∨ f2 否则;
+　　(4) M,s0 |= AX(f1) 当且仅当对满足(s0,t)∈R的所有状态t,有M,t |= f1,
+　　　　M,s0 |≠ AX(f1) 当且仅当对满足(s0,t)? R的某个状态t,有M,t |≠ f1,
+　　　　M,s0 |= ?AX(f1) 否则;
+　　(5) M,s0 |= EX(f1) 当且仅当对满足(s0,t)∈R的某个状态t,有M,t |= f1,
+　　　　M,s0 |= ?EX(f1) 否则;
+　　(6) M,s0 |= A[f1Uf2] 当且仅当对所有路径(s0,s1,…), i(i 0)[M,si |= f2 ∧j(i> j
+　　　　　　　　　 0)[M,sj |= f1]],
+　　　　M,s0 |≠A[f1Uf2] 当且仅当有某个路径(s0,s1,…), i(i 0)[M,si|≠(f2 ∨f1) ∧
+　　　　　　　　j(i>j0)[M,sj |≠f2]],
+　　　　M,s0 |= ?A[f1Uf2] 否则;
+　　(7) M,s0 |= E[f1Uf2] 当且仅当有某个路径(s0,s1,…),i(i0)[M,si|=f2 ∧j(i>j0)
+　　　　　　　　M,sj |= f1]],
+　　　　M,s0 |≠ E[f1Uf2] 当且仅当M,s0 |≠(f2 ∨ f1),
+　　　　M,s0 |= ?E[f1Uf2] 否则;
+　　(8) M,s0 |= AG(f) 当且仅当对所有路径(s0,s1,…),i(i0)[M,si |= f],
+　　　　M,s0 |≠ AG(f) 当且仅当有某个路径(s0,s1,…,t),M,t |≠ f,
+　　　　M,s0 |= ?AG(f) 否则;
+　　(9) M,s0 |= EG(f) 当且仅当有路径(s0,s1,…), i(i 0)[M,si |= f],
+　　　　M,s0 |≠ EG(f) 当且仅当M,s0 |≠f,
+　　　　M,s0 |= ?EG(f) 否则;
+　(10) M,s0 |= AF(f) 当且仅当对所有路径(s0,s1,…),i(i 0)[M,si |= f],
+　　　　M,s0 |= ?AF(f) 否则;
+　(11) M,s0 |= EF(f) 当且仅当有路径(s0,s1,…),i(i0)[M,si |= f],
+　　　M,s0 |= ?EF(f) 否则.
+3　模型检查方法
+　　我们通过模型检查来检测Bean的时序性质.首先,我们选择一种抽象检测模型的有效的表示方法,这种方法可以减少模型检查时要搜索的状态空间,进一步提高检查的效率和可以检查的状态空间规模.然后,我们给出在这样的抽象检测模型上进行模型检查的算法.
+3.1　符号化表示
+　　符号化表示是用符号来表示抽象状态和状态转换,这种表示方式有助于设计和实现状态空间检测的有效算法.二叉判定图BDD(binary decision diagram)[2]方法是近年来应用较为广泛的一种符号化表示方法.我们准备采用BDD来表示抽象检测模型.但是由于JBDL的时序公式在检测过程中的三值语义,而BDD只能表示真假两种结果,所以无法直接用BDD来表示JBDL的时序公式.为此,我们对BDD进行扩充,使BDD的终结顶增加一个,成为三终结顶的BDD,即T3BDD.
+　　定义3. 令f:booleanm→{true,false,unknown}是一个把m维布尔向量映射到集合{true,false,unknown}的函数.函数f把布尔向量空间划分为3个集合{Strue,Sfalse,Sunknown},使得Strue={< x1,x2,…,xn,>|f(x1,x2,…,xn)=true}, Sfalse={< x1,x2,…,xn> |f(x1,x2,…,xn)=false},Sunknown={< x1,x2,…,xn> |f(x1,x2,…,xn)=unknown}.令ftrue,ffalse,funknown分别是集合Strue,Sfalse和Sunknown的特征函数,则f的表示形式ftrue.true+ffalse.false+funknown.unknown是f的范式.这个和的形式可以用有3个终结顶true,false,unknown的BDD来表示.我们把这样的BDD称为三终结顶BDD,即T3BDD.
+　　定义4. 不含有左右子图都相同的两个顶的T3BDD称为约简的T3BDD.
+　　定理1. 任何函数f:Booleanm→{true,false,unknown}有唯一(同态意义下)的约简T3BDD与之对应,且该T3BDD是顶点最少的T3BDD.
+　　根据定理1,JBDL的时序公式都可以用T3BDD的特征函数f来表示,满足公式的状态集合是Strue,不满足公式的状态集合是Sfalse,不确定的状态集合是Sunknown.抽象检测模型也可以用T3BDD来表示.抽象状态是由一组表征Bean约束中静态子公式的布尔变量值确定的.每个抽象状态对应一组具体的布尔变量值.这样,若布尔变量的个数为n,则每个抽象状态可以看成是一个n元布尔向量.我们就可以用n元布尔关系来表示抽象状态的集合和初始状态的集合,而n元布尔关系可以用布尔公式来表示,也就可以用T3BDD来表示.同时,用表征Bean约束中静态子公式的布尔变量组V构造一个布尔变量组的偶对(Vfrom,Vto),把在抽象状态转换中表示起始状态和到达状态的布尔变量组分别对应于偶对中的Vfrom变量组和Vto变量组,用Vfrom变量组和Vto变量组作为T3BDD对应的布尔公式的变量,用抽象状态转换中起始状态和到达状态对应的布尔向量作为元素构造一个布尔关系.这个布尔公式对应的T3BDD就表示包含抽象状态转换的集合.
+3.2　模型检查算法
+　　下面我们给出在用T3BDD表示的抽象检测模型上,对用T3BDD表示的JBDL正时序公式进行模型检查的算法.
+　　进行模型检查的过程,主要是根据抽象检测模型和公式的形式递归构造T3BDD.设T3BDDS(s)表示状态集合S对应的T3BDD,s是表示抽象状态的布尔变量的向量.T3BDDR(s,t)表示状态转换集合对应的T3BDD,s为布尔变量的向量Vfrom,t为布尔变量的向量Vto.T3BDDI(s)表示初始状态集合I对应的T3BBD,s是表示抽象状态的布尔变量的向量.我们用T3BDDf(s)表示公式f对应的T3BDD,s为该T3BDD中的布尔变量向量.下面说明如何按照JBDL时序公式的形式递归地构造公式的T3BDD.为了表达方便,下面的公式中有一部分并不是要检测的JBDL的时序公式,这些公式标注为辅助公式.
+　　(1) 公式p是静态子公式
+　　根据抽象的方法,p在模型中有相应的布尔变量与之对应.设模型中p对应的布尔变量为vi,vi是s的分量,则T3BDDp(s)是仅含变量为vi的非终结顶的T3BDD.
+　　(2) 公式f(辅助公式)
+　　把T3BDDf (s)中的终结顶点true换为false,false换为true,unknown不变,得到T3BDDf(s).
+　　(3) 公式u2f(f)(辅助公式)
+　　把T3BDDf(s)中的终结顶点unknown换为false,得到T3BDDu2f (f)(s).
+　　(4) 公式f 2u(f)(辅助公式)
+　　把T3BDDf (s)中的终结顶点false换为unknown,得到T3BDDf 2u (f)(s).
+　　(5) 公式f1*f2,其中*为∨或者∧ 
+　　计算T3BDDf1 * f2(s)=T3BDDf1(s)*T3BDDf2(s)的有效算法与BDD的类似算法一致,其不同之处在于∨和∧ 对于3种值{true,false,unknown}的计算方法:
+
+∨truefalseunknown∧truefalseunknown
+truetruetruetruetruetruefalseunknown
+falsetruefalseunknownfalsefalsefalsefalse
+unknowntrueunknownunknownunknownunknownfalseunknown
+
+　 
+　　(6) 公式f(s)|vi=b,其中s=< v1,v2,…,vn>,b是true或false(辅助公式)
+　　这个公式表示将vi限制到b.计算限制的算法与BDD计算限制的算法相似,具体如下:
+　　(a) 遍历整个T3BDD的顶点,用vi顶点的对应子树(若b为true,则用vi为true对应的子树;若b为false,则用vi为false对应的子树)替代该顶点.
+　　(b) 约简T3BDD.
+　　(7) 公式tf(s,t)(辅助公式)
+　　设< v1,v2,…,vn>为t对应的布尔变量向量,tf(s,t)= v1 v2…vn f(s,t),而 vi f
+　　(s,t)=f(s,t)|vi=true∨ f(s,t)|vi=false.
+　　(8) 公式EX(f)
+　　计算公式f 2u(t(f(t)∧ R(s,t)))对应的T3BDD.
+　　(9) 公式AX(f)
+　　计算公式 (t( f(t)∧ R(s,t)))对应的T3BDD.
+　　(10) 公式m Q(g(Q)),其中g(Q)=f(s)∨ t(Q(t)∧ R(s,t))(辅助公式).
+　　令g(Q)true,g(Q)false,g(Q)unknown分别是T3BDDg(Q)(s)确定的集合Strue(g(Q)),Sfalse(g(Q))和Sunknown(g(Q))的特征函数,由于Q在g中的出现不含 ,gtrue和gfalse均是2|S|→2|S|的按照的单调函数,根据不动点理论,gtrue和gfalse均存在最大不动点和最小不动点.T3BDDm Q(g(Q))(s)确定的集合Strue表示gtrue确定的最小不动点,Sfalse表示gfalse确定的最大不动点,Sunknown表示其他状态.
+　　根据文献[1]的论述,通过计算f(s)∨ t(f(t)∧ T(s,t)))来计算m Q(g(Q))比直接计算m Q(g(Q))效率要高,其中T(s,t)=μP(R(s,t)∨ w(P(s,w)∧ P(w,t))).令h(P)=R(s,t)∨ w(P(s,w)∧ P(w,t)),计算m P(h(P))采用叠代的方法.首先令P0=false T3BDD,然后计算Pi+1=g(Pi),直到Pi+1和Pi相同.
+　　(11) 公式n Q(g(Q)),其中g(Q)=f(s)∨ t(Q(t)∧ R(s,t))(辅助公式)
+　　令g(Q)true,g(Q)false,g(Q)unknown分别是T3BDDg(Q)(s)确定的集合Strue(g(Q)),Sfalse(g(Q))和Sunknown(g(Q))的特征函数,由于Q在g中的出现不含 ,则gtrue和gfalse均是2|S|→2|S|的按照的单调函数,根据不动点理论,gtrue和gfalse均存在最大不动点和最小不动点.T3BDDn Q(g(Q))(s)确定的集合Strue表示gtrue确定的最大不动点,Sfalse表示gfalse确定的最小不动点,Sunknown表示其他状态.
+　　根据文献[1]的论述,我们计算vQ(g(Q))=μQ(g(Q))∨ ( t(T(t,t)∧ T(s,t))),其中T(s,t)=m P(R(s,t)∨ w(P(s,w)∧ P(w,t))).
+　　(12) 公式E(f1Uf2)
+　　计算公式(f1∨f2)∧ f 2u(m Q(f2(s)∨t(Q(t)∧ (f1(s)∧ R(s,t))))).
+　　(13) 公式EG(f)
+　　计算公式f∧ f 2u(vQ(( tR(s,t)∧ f (s))∨ t(Q(t)∧ (f (s)∧ R(s,t))))).
+　　(14) 公式A(f1Uf2)
+　　计算公式 (u2f (F1))∧ f 2u( F2)∧ f 2u( F3)∧ f 2u( F4).其中F1=μQ(( f1(s)∨  f2(s))∨t(Q(t)∧ ( f2(s)∧ R(s, t)))),F2=μQ(( (u2f(f1(s)))∧  (u2f(f2(s))))∨   t(Q(t)∧ ( f2(s)ù R(s,t)))),F3=μQ((   tR(s,t)∧ f2(s))∨  t(Q(t)∧ ( f2(s)∧ R(s,t))))),F4=  t(T(t,t) ù T(s,t)),T(s,t)=m P((R(s,t)ù f1(s))∨  w(P(s,w)∧ P(w,t))).
+　　(15) 公式EF(f)
+　　计算公式f 2u(m Q((f(s)∨ ( t(Q(t)∧ R(s,t)))))).
+　　(16) 公式AG(f)
+　　计算公式μ Q(( f(s)∨ (t(Q(t)∧ R(s,t))))).
+　　(17) 公式AF(f)
+　　计算公式f 2u( (μQ(( tR(s,t)∧  f (s))∨  t(Q(t)∧( f (s)ù R(s,t))))))∧ (t(T(t,t)∧ T(s,t)))),其中T(s,t)= μP((R(s,t)∧  f(s))∨  w(P(s,w)∧ P(w,t))).
+　　构造了JBDL时序公式对应的T3BDD之后,我们通过对每个公式f计算s( I(s)ú f(s))来获得检查结果,其中sf(s)=v1v2…vn(f(s)),其中< v1,v2,…,vn>为s对应的布尔向量,vi(f(s))=(f(s)|vi=true∧ f(s)|vi=false), f(s)|vi =b是把false中的变量false限制到false得到的T3BDD.T3BDD" s(I(s)∨ f(s))为true,表示f在所有初始状态满足;为false,表示f在某个初始状态不满足;为unknown,表示f在某个初始状态不确定.
+　　算法的空间复杂度与使用BDD相同,即与变量的顺序密切相关.算法的时间复杂度按公式的形式归纳如下,其中|T3BDDf|为T3BDDf的顶点数,|t|为向量t的长度,|d|为抽象检测模型状态转换图的直径,|d|最坏情况为2|t|.
+
+公式复杂度公式复杂度
+静态公式O(1)fO(1)
+u2f(f )O(1)f 2u(f )O(1)
+f(s)|vi=bO(|T3BDDf|*log(|T3BDDf|))f1*f2O(|T3BDDf1|*|T3BDDf2|)
+AF(f )O(|T3BDDf|2*|t|*log(|d|)))EX(f )O(|T3BDDf|2*|t|))
+E(f1Uf2)O(|T3BDDf|2*|t|*log(|d|)))AX(f )O(|T3BDDf|2*|t|))
+EG(f )O(|T3BDDf|2*|t|*log(|d|)))A(f1Uf2)O(|T3BDDf|2*|t|*log(|d|)))
+EF(f )O(|T3BDDf|2*|t|*log(|d|)))AG(f )O(|T3BDDf|2*|t|*log(|d|)))
+tf(s,t)O(|T3BDDf|2*|t|))
+μQ(f(s)∨ t(Q(t)∧R(s,t)))O(|T3BDDf|2*|t|*log(|d|)))
+νQ(f(s)∨ t(Q(t)∧R(s,t)))O(|T3BDDf|2*|t| *log(|d|)))
+
+　 
+　　由于Bean每个状态的占用空间较多,同时在动态检测中状态数目不断增长,直接在检测模型上进行模型检查很容易导致空间耗尽.为此,我们提出了一种抽象的模型表示方法,不仅能减少检测模型的状态数目,而且能保证总的状态数目有界.同时,我们还证明了这种抽象方法对JBDL正时序公式的保守性.事实上,检测是在抽象模型上进行的.由于篇幅的限制,本文着重论述基于T3BDD的模型检查方法.关于抽象方法的论述详见文献[5,6,8].
+4　实例研究
+　　根据JBDL规范和动态模型检查方法,我们设计和实现了检测的支撑框架和工具――MChecker.利用MChecker,我们对JavaSoft提供的分布对象计算实例――股票报价监测器和动画实例――杂耍者进行了研究.实验结果与理论结果完全一致,表明了动态检测在时间和空间上都是有效的,算法的实际时空复杂度要远小于最坏情况.关于工具系统以及实例研究的细节可参见文献[5,6,9].
+5　总 结
+　　开发高质量和高可复用性的组件要求对组件的语义进行形式化描述和验证.我们选择Java Beans组件标准作为研究对象,设计了一个基于多类一阶时序逻辑的规范语言 JBDL来刻画Bean的语义约束.为了检测规范与其实现的一致性,我们提出了一种基于抽象和符号化的动态模型检查方法.本文给出了动态模型检查方法中,根据JBDL公式的三值语义和模型的抽象化,利用T3BDD在抽象检测模型上进行符号化模型检查的方法.实验结果表明,该方法在时间和空间上都是有效的.
+注释：本文研究得到国家自然科学基金和国家863高科技术项目基金资助。
+作者简介：倪彬：1969年生，博士，主要研究领域为面向对象的理论和技术，模型检查；
+　　　　　冯玉琳，1942年生，博士，研究员，博士生导师，主要研究领域为对象技术，分布计
+　　　　　算技术，移动计算技术，软件工程。
+　　　　　黄涛：1965年生，博士，研究员，主要研究领域为软件工程，对象技术，分布计算机
+　　　　　科学开放计算技术，程序设计语言环境
+作者单位:中国科学院软件研究所计算机科学开放研究实验室 北京 100080
+E-mail: tao@ox.jos.ac.cn
+参考文献
+1.　Burch J R, Clarke E M, McMillan K L et al. Symbolic model checking: 1020 states 
+　　and beyond. Information and Computation, 1992,98(2):142～170
+2.　Bryant R E. Graph-based algorithms for Boolean function manipulation. IEEE 
+　　Transactions on Computers, 1986,C-35(8),677～691
+3.　Clarke E M, Grumberg O, Long D E. Model checking and abstraction. In: SIGACT & 
+　　SIGPALN ed. Proceedings of the 19th Annual ACM Symposium on Principles of 
+　　Programming Languages. New York: ACM Press, 1992. 343～354
+4.　Godefroid P. Model checking for programming languages using VeriSoft. In: SIGACT
+　　& SIGPALN ed. Proceedings of the 24th ACM Symposium on Principles of Programming
+　　Languages. New York: ACM Press, 1997. 174～186
+5.　倪彬.组件语义约束及动态模型检测方法和技术研究[博士学位论文].中国科学院软件研究
+　　所,1998
+　　(Ni Bin. An approach to dynamic model checking for component semantic 
+　　constraints [Ph.D. Thesis]. Institute of Software, The Chinese Academy of 
+　　Sciences, 1998)
+6.　Ni Bin, Feng Yu-lin. Specifying and checking for semantic constraints on Java 
+　　Beans. In: Keijro Araki, Feng Yu-lin eds. Proceedings of the International 
+　　Symposium on Future Software Technology’97. Tokyo: SEA, 1997. 79～84
+7.　Ni Bin, Feng Yu-lin. Exploiting abstraction to check semantic constraints for 
+　　Java Beans. In: Jose Cuena ed. IT&KNOWS Proceedings of the ⅩⅤ IFIP World 
+　　Computer Congress. Kluwer Academic Publishers Group, 1998. 187～200
+8.　Ni Bin, Zhou Ze-hua. Mchecker an automatically dynamic checking tool for Java 
+　　Beans semantic constraints. In: Chen Jian, Li Ming-shu et al eds. Proceedings of
+　　the 27th Technology of Object Oriented Languages and Systems. Beijing, 1998. 
+　　164～172
+收稿日期：1998-07-07　修稿:1998-10-19

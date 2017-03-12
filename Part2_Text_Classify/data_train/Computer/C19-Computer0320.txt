@@ -1,0 +1,124 @@
+计算机应用
+Computer Applications
+1999年 第19卷 第7期  Vol.19 No.7 1999
+
+
+
+ADO数据存取技术
+周治平
+　　摘　要　本文介绍了微软公司以ActiveX技术为基础的ADO数据存取技术，分析了ADO的工作原理，并用VB说明了ADO数据访问技术的实现方法。
+　　关键词　ADO，数据存取，数据连接，记录集，对象
+　　
+ADO DATA ACCESS TECHNOLOGY
+
+Zhou Zhiping
+Department of Information and Control Engineering, Wuxi Jiangnan Institute, Jiangsu*Wuxi 214063
+
+　　Abstract　This paper introduces the Microsoft′s newest data access technologies based on the ActiveX , discusses their principles, and illustrates how to use the ADO programming model to query and update a data source in VB .
+　　Keywords　ADO， Data access, Connection, Recordset,Objects
+
+1　引言
+　　ADO（ActiveX Data Objects）是由微软公司推出的以ActiveX技术为基础的数据存取方法。ADO的主要特点是使用更加容易，访问速度更快，而对磁盘和存储容量的要求更小；ADO支持建立各种客户/服务器模式与基于Web的应用程序，具有远程数据服务RDS（Remote Data Service）的特性, 通过RDS能够在一次往返中将服务器端的数据传送到客户端的应用程序或Web页面中，并在客户端对数据进行处理后，立即更新服务器端的数据。采用ADO所基于的OLE DB技术，可以对电子邮件、文本文件、数据表格等各类数据通过统一的接口API（Application Programming Interface）接口进行存取，是远程数据存取的一个主要发展方向。
+　　
+2　ADO工作原理
+　　对于异种数据库的访问，首先需要一个简单而统一的应用程序接口(API) ，应用程序通过它访问和修改各种各样的数据。典型的数据源是支持ODBC（Open Database Connectivity）标准的关系型数据库，通过一系列SQL命令进行数据操作。问题是数据源可能是一个简单的文本文件，也可能是来自不同种类甚至特别定义的数据库的一个集合。而且，访问和修改数据的方法不可能预先确定。解决这个问题的方法就是OLE DB，这是一个系统级的数据库编程接口，它提供了一系列有关数据库管理系统服务的统一的COM（Component Object Model）接口。通过OLE DB可以存取异构的关联和非关联信息，包括电子邮件、文件系统、文本、图形、图形化数据以及客户定制对象。ADO就是连结OLE DB与应用程序的数据操作接口。
+　　ADO定义一个设计原型，其中概括了一系列进行数据存取和更新所必须的行为说明。设计原型表示了一个对象模型，包括实现原型所对应的对象集，定义进行数据操作的对象方法，表示数据或对象方法行为控制的属性等。与对象相关的事件说明了将要发生或已经发生的数据操作过程。
+2.1　基本的ADO原型顺序
+　　* 连接数据源;
+　　* 指定对数据源的存取命令;
+　　* 激活命令;
+　　* 将返回的数据存入表的记录缓冲区中便于检查修改;
+　　* 更新数据的变化。
+　　通常上述几步都会用到，但并不是必须的，ADO可以灵活地使用原型中的一部分进行工作。例如，可以直接从一个文件中把数据存到表的记录缓冲区，利用ADO方法检查数据。
+2.2　ADO 原型结构
+　　ADO原型有下列几个主要部分：
+　　数据连接（Connection）　Connection建立一个数据交换环境，应用程序通过Connection存取数据。应用程序直接或通过诸如IIS（Internet Information Server）这样的系统间接存取数据源的数据。Connection对象用于规定特定的数据提供者和附加参数。由Connection发生的一系列数据存取操作形成一个事务处理过程，ADO确保事务过程成功操作的结果传给数据源，如果其中某个操作失败或用户取消事务过程，数据源中的数据就维持原先的状态。对象模型并不明确地具体表示一个事务过程，而通过一套Connection对象方法实现。
+　　命令（Command）　Command通过已建立的Connection发布。典型的Command有增加、删除和更新，恢复表中的记录等。
+　　参数（Parameter）　Parameter是命令的附加可变部分，可以通过改变Parameter来发布具有相同功能的命令。
+　　记录集（Recordset）　对象模型中用Recordset存贮查询命令返回的结果，是检查和修改记录的主要手段，在Recordset对象中可以检查记录、在记录中浏览、浏览记录的次序、增加修改或删除记录、更新记录已变化的数据源等。
+　　字段（Field）　Recordset的每条记录由一个或多个Field组成，每个Field包括名称、数据类型和数据值。修改数据源的数据时，通过修改Recordset中的Field 对象值，最终传递到数据源中。使用Connection对象里的事务处理方法可以确保数据变更的同步。　　
+
+
+图1　ADO原型　　图2　ADO集合
+　　错误（Error）　应用程序在任何时候都可能出现Error，如建立数据连接、激活命令等。任何错误都会产生一个或多个Error对象，新的Error将替换先前的Error对象。
+　　属性（Property）　每个ADO对象都有一套唯一的表示对象或控制对象行为的Property。有两种类型的Property：固定的和动态的。固定Property是ADO对象的一部分，并且始终有效；动态Property由数据提供者添加到ADO对象的Property集合中，仅当使用该数据提供者时才有效。
+　　集合（Collection）　ADO提供了四种类型的Collection，Connection对象有Error集合、Command对象有 Parameter集合、Recordset对象有Field集合；此外，前三类对象和Field对象都有Property集合。
+　　事件（Event ）　对象模型通过Events处理过程表示Events。有ConnectionEvents和RecordsetEvents两类Events。
+　　
+3　ADO使用方法
+　　以下用VB代码的例子说明ADO的使用过程。
+3.1　建立一个数据连接
+　　ADO采用Connection.Open或Recordset.Open方法建立连接，语法如下：
+　　connection.Open ConnectionString, UserID, Password, 
+　　OpenOptions
+　　recordset.Open Source, ActiveConnection, CursorType, 
+　　LockType, Options
+　　其中ConnectionString指定准备连接的数据源。例如，为连接MS SQL Server中附带的ODBC数据库pubs，对象方法可写成：
+　　Connection.Open "DSN=pubs;uid=sa;pwd=pa;
+　　database=pubs"
+　　uid和pwd 关键词指定了Connection对象的UserID（用户号）和Password（口令）参数。
+3.2　创建命令
+　　典型的命令用SQL语句组成，查询的结果为包含所请求内容的记录集。例如，要列出pubs数据库内表authors中的全部数据的SQL语句为“SELECT * from authors”。Command对象的CommandText属性用来设置这个命令字符串，命令如下：
+　　Command cmd = New ADODB.Command;
+　　cmd.CommandText = "SELECT * from authors"
+　　SQL字符串的内容是不变的，但可以创建一个带通配符′?′参数的命令，当命令发布时替换这个通配符′?′。同样使用带Prepared属性的参数命令，改变其中的参数即可。例如下列命令执行一个列出所有作者姓氏为“Ringer”的查询：
+　　Command cmd = New ADODB.Command
+　　cmd.CommandText = "SELECT * from authors WHERE au―lname = ?"
+　　每个通配符′?′由Command对象的Parameter集合中相应的Parameter对象的值进行替换。在上述例子中，先创建Parameter对象并赋值为Ringer，然后添加到Parameters集合。
+　　Parameter prm = New ADODB.Parameter
+　　prm.Name = "au―lname"
+　　prm.Type = adVarChar
+　　prm.Direction = adInput
+　　prm.Size = 40
+　　prm.Value = "Ringer"
+　　cmd.Parameters.Append prm
+　　也可以用CreateParameter方法设置并添加一个Parameter对象，而后加入Parameters集合。
+　　cmd.Parameters.Append cmd.CreateParameter 
+　　"au―lname", adVarChar, adInput, 40, "Ringer"
+3.3　激活命令
+　　ADO有Connection.Execute、Command.Execute和Recordset.Open三种方法激活命令，每种方法都对应于不同的数据连接过程。具体语法如下：
+connection.Execute(CommandText, RecordsAffected, Options)
+command.Execute(RecordsAffected, Parameters, Options)
+recordset.Open Source, ActiveConnection, CursorType, 
+LockType, Options
+　　本例中这样来激活命令：
+Recordset rs = New ADODB.Recordset
+rs.Open cmd, conn, adOpenDymanic, adLockBatchOptimistic
+3.4　处理数据
+　　记录集是一组记录，Move、Find方法都可以在记录间移动，设置Bookmark属性也可以改变记录的位置，Filter属性用于过滤进行存取的记录，而Sort属性决定记录移动的次序。在下例中，将区号为“415”,号码以“5”字开始的电话号码改区号为“777”：
+rs!au―lname.Optimize = TRUE
+rs.Sort = "au―lname ASCENDING"
+rs.Filter = "phone LIKE ′415 5*′"
+rs.MoveFirst
+Do While Not rs.EOF
+Debug.Print "Name: " & rs!au―fname & " " rs!au―lname 
+& "Phone: " rs!phone & vbCr
+rs!phone = "777" & Mid(rs!phone, 5, 11)
+rs.MoveNext
+Loop
+
+3.5　更新数据
+　　ADO支持两种数据更新方法。一种是间接的，数据变化贮存在一个内部数据区中，当确定更新的时候才将数据变化写入记录集；另一种是直接的，在用户确定数据处理完成时直接把单个记录或成批把一系列记录的更新传送给数据源，通过CursorLocation属性和 LockType属性进行管理。在直接更新的批处理模式中，当前记录的移动或Update方法保存数据修改到记录集，必须用UpdateBatch方法将更新传送给数据源，它与打开记录集的方式有关。同时，可以用事务处理过程来确保几个操作的结果同步。本例的代码写成：
+　　conn.BeginTrans
+　　rs.UpdateBatch
+　　...
+3.6　完成数据更新
+　　ADO能够检测并报告数据更新过程中可能出现的错误。下面是错误的处理过程：
+　　...
+　　conn.CommitTrans
+　　...
+　　On Error
+　　rs.Filter = adFilterConflictingRecords
+　　rs.MoveFirst
+　　Do While Not rs.EOF
+　　Debug.Print "Conflict: Name: " & rs!au―fname " " 
+　　& rs!au―lname rs.MoveNext
+　　Loop
+　　conn.Rollback
+　　Resume Next
+　　从以上的步骤可以大致了解ADO存取数据的使用方法。对不同的程序设计语言，有类似的过程。
+4　结束语
+　　ADO是一种最新的数据存取技术，今后将逐步替代老的DAO（Data Access Objects）特别是RDO（Remote Data Objects）数据访问接口，成为新的远程数据访问方法。而ADO更容易使用，性能更好，ADO提供了在因特网上数据存取的良好接口，对网络环境的数据库应用开发提供了极大的便利。因此，了解并掌握ADO数据存取技术有其深远的意义。从使用DAO、RDO数据访问方法过渡到ADO是一个趋势，本文暂不作深入的探讨。
+　　周治平　讲师。从事工业自动控制和计算机应用的教学与科研工作。
+　　作者单位：周治平（无锡江南学院信息与控制工程系　江苏．无锡 214063）
+收稿日期:1999-02-28

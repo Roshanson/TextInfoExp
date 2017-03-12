@@ -1,0 +1,127 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999　Vol.36　No.7　P.769-775
+
+
+
+多Agent系统的非终止主动合作计算模型
+毛新军　王怀民　陈火旺　刘风歧
+摘　要：在多Agent系统中, 由于资源、能力的有限性和分布性，因而合作是多Agent系统的一个重要特征.当前，随着Internet，Intranet技术的不断发展以及应用的不断深入，传统合作计算模型已不能满足用户需求，主动合作计算正成为一个新的应用需求点.文中提出了一个非终止的主动合作计算模型.基于言语行为理论以及多Agent系统计算的理论框架，文中讨论了该合作计算模型所涉及的Agent通信行为，分析了Agent如何响应这些通信行为来完成非终止主动合作计算，并进一步给出了非终止主动合作计算模型的定义，最后讨论了研究工作的意义.
+关键词：多Agent系统，合作，通信，全心满足语义
+分类号：TP18
+A NON-TERMINATING ACTIVE COMPUTING MODEL
+IN MULTI-AGENT SYSTEMS
+MAO Xin-Jun
+(Department of Computer Science, National University of Defense Technology, Changsha 410073)
+WANG Huai-Min
+(Department of Computer Science, National University of Defense Technology, Changsha 410073)
+CHEN Huo-Wang
+(Department of Computer Science, National University of Defense Technology, Changsha 410073)
+LIU Feng-Qi
+(Department of Computer Science, National University of Defense Technology, Changsha 410073)
+Abstract：Because of the limitation and distribution of the resources and capabilities, cooperation is one of the important characteristics in a multi-agent system. Nowadays with the further development of the technology and the deeper application of the Internet and Intranet, traditional cooperation computing model can not meet requirements and active cooperation computing has become a new and full potential application. A non-terminating active computing model is put forward in this paper. Based on the speech act theory and the theoretical framework of multi-agent computing presented in the paper, the communication acts associated are discussed and identified. How agents respond to communication acts is investigated. The rigorous whole-hearted satisfactory semantics of the communication acts and the non-terminating active computing model are defined and the senses of the research are concluded.
+Key words　multi-agent system, cooperation, communication, whole-hearted satisfactory semantics▲
+1　引言
+　　Agent是近年来计算机科学领域中的一个重要概念，它是指在某一环境下具有自主性、社会性、主动性等特征的计算实体.多Agent 系统由一组具有一定资源和能力、相对独立且相互作用的Agent组成［1］.现实系统如空中交通管制系统、异构信息处理系统等等大多属于多Agent系统.由于Agent概念自然、贴切、直观地刻画了现实系统，因而有关Agent理论、技术的发展和应用引起了人们的高度重视和关注［2,3］.
+　　在多Agent系统中，由于资源、能力的有限性和分布性，合作是多Agent系统的一个重要特征.多Agent 系统的合作方式多种多样.其中请求/服务是多Agent系统中一类典型的合作方式.一个多Agent系统被称为具有请求/服务合作方式的多Agent系统，如果Agent间的合作关系仅仅是请求和服务关系即或者是一个Agent向另一个Agent提出服务请求，或者是一个Agent向另一个Agent提供服务.其计算模型Client/Server计算已被广泛应用于分布式信息服务系统的开发，并成为当前分布计算领域的一种主要计算模型.例如在异构信息处理系统中，Agent1请求Agent2为它提供某种信息，在接到请求后，Agent2在其数据库中查询相关信息，并将结果返回给Agent1.
+　　当前，随着Internet，Intranet技术的不断发展以及应用的不断深入，传统合作计算模型已不能满足现有的用户需求并正面临着新的应用问题的挑战，主动合作计算正成为一个新的应用需求点.例如机票代理Agent请求拥有飞机航班信息的Agent：一旦飞机航班信息发生改变，就主动地为它提供新的飞机航班信息.对于某些重要电子邮件，邮件发送方Agent要求接受方Agent在确认用户已经阅读了邮件后，主动地返回一个“确认阅读”邮件等.
+　　为了促进多Agent系统的开发、推动Agent间的主动合作计算以及相关问题的解决，有必要严格、形式化地分析和讨论Agent间的主动合作关系，构造多Agent系统的主动合作计算模型，并进一步规范和描述主动合作计算模型所涉及的Agent通信行为的语义.
+2　基本通信行为
+　　Agent间进行合作的基础是交互，而通信是实现Agent交互的一种重要方式和手段.为了研究多Agent系统的非终止主动合作计算模型，有必要首先研究非终止主动合作计算模型所涉及的Agent通信行为.
+　　Agent间的通信行为是一类特殊的行为，因为它将对交互双方Agent的内部状态产生影响.言语行为理论是研究Agent交互行为的一个重要理论.言语理论认为：人类交际的语言不仅仅是为了描述某种状态，而是为了完成一定的行为.例如，“请求”，“通知”，“询问”，“允诺”等等.言语行为的特点是言者通过说一句话或若干句话来执行一个或若干个上述所列举的行为，这些言语行为的实现可能给言者或者听者带来某些后果.我们注意到，逻辑上这种言语行为不能被简单地赋予真值，它的满足涉及到言语行为主体的状态，言语行为是否正确地发出等等.为了研究言语行为，人们提出了言语行为理论三分说即任何规范的会话活动实际上产生了3个概念互有区别的活动：
+　　① 以言指事(locution)，指会话的物理动作；
+　　② 以言行事(illocution)，指言者传递给听者的意图；
+　　③ 以言成事(perlocution)，指言语行为的结果，即以言行事之后言者或听者所采取的动作.
+　　以言行事由两部分构成：以言行事强度和公式.以言行事强度用于区分一个言语行为是请求还是允诺等等.公式是以言行事的受体，用于描述系统状态.一个言语行为的满足取决于以言行事强度和公式两方面的满足.根据言语行为理论的思想以及对主动合作计算的研究和分析，我们提取出“条件非终止请求”，“条件非终止允诺”，“通知”3种言语行为作为Agent间实现非终止主动合作计算所需的基本通信行为.
+　　（1） 条件非终止请求(Requestcn)：言者要求听者当约束条件满足时主动地为它提供相应的服务.不同于文献［1］中所提出的条件请求通信行为，在条件非终止请求通信行为中服务的完成并不意味着合作的终止，一旦约束条件再次满足(如获取更新的飞机航班信息)仍需听者提供相应的服务.
+　　（2） 条件非终止允诺 (Promisecn)：Agent1向Agent2作出条件允诺Promisecn是指如果约束条件满足，Agent1将为Agent2主动地提供相应的服务，不同于文献［1］、［2］中所提出的条件允诺通信行为，在条件非终止允诺通信行为中服务的完成并不预示着Agent1实现了它所作出的允诺，一旦约束条件再次满足Agent1将继续提供相应的服务.
+　　（3） 通知(Inform).Agent通过inform通信行为把相关信息通知给其它Agent.
+　　设为基本通信行为集合即=｛Requestcn, Promisecn, Inform｝.下面我们简单、直观地描述一下多Agent系统基于上述基本通信行为的非终止主动合作计算过程.Agent1(消息发送方)通过条件非终止请求Requestcn首先向Agent2(消息接受方)提出条件非终止服务请求，要求Agent2在条件满足时主动地为它提供相应的服务.Agent2在接到条件非终止请求之后向消息发送方Agent作出条件非终止允诺Promisecn，允诺一旦条件满足它将主动地为Agent1提供相应的服务，并通过通知言语行为Inform将结果返回给Agent1(见图1).
+
+　　　　
+图1　多Agent系统的非终止主动合作计算示意图
+　　上文介绍了非终止主动合作计算模型所需的基本通信行为，那么Agent如何基于并通过对这些通信行为作出响应以实现非终止主动合作计算？在什么条件下我们可以称一个言语行为被满足？在什么情形下我们可以说一个多Agent系统内存在非终止主动合作计算关系？下面我们将基于在文献［1］、［2］中所提出的多Agent系统计算的理论框架来解决上述问题.
+3　理论框架
+　　我们注意到Agent间由于消息传递而导致的交互特性不仅需要关心消息传递行为的发生，还应关心消息发送者所传递的意图(如“通知”，“请求”，“允诺”等等)以及消息接收者和发送者可能采取的行动以及这些行动所产生的效果.Agent间的通信行为是一种有意图的行为，其效果主要作用于通信双方的内部状态上，对物理世界不产生影响.言语行为理论三分说有助于我们全面、准确地认识和分析Agent间的通信行为，而文献［1］、［2］中提出的多Agent计算的理论框架则可以帮助我们进一步理解和认识上述交互行为对Agent内部状态的影响，有助于我们定义言语行为的满足语义.　　
+　　在文献［1］中我们提出了多Agent系统中Agent计算的理论框架.理论框架认为Agent基于BICC体系结构进行计算，即Agent是由信念(belief)、意愿(intention)、能力(capability)、承诺(commitment)4个成份所构成的意向系统(intentional system).Agent的信念是Agent进行计算的基础，它刻画了Agent对自身以及外界环境的认识.Agent的意愿对应于Agent的任务和目标，它是Agent计算的起因.Agent的能力是Agent进行计算的前提，也是Agent成功地实现其意愿的一个重要条件.Agent的承诺则体现了计算本身，它刻画了Agent对其未来行为的一种决策.为了严格、形式化地介绍多Agent系统计算的理论框架、研究和描述多Agent系统主动合作计算模型，下面我们将首先提出多Agent系统计算的逻辑框架.该逻辑框架主要包括3个部分：语法、模型和语义.
+　　语法部分是一个一阶的分枝时序逻辑L.L的公式集由状态公式集Lt和路径公式集Ls二部分组成.为简化说明，文中具有下列符号约定：① 常数符号集合Const，包括Agent符号集合ConstAg；原子动作符号集合ConstAc；规划符号集合ConstP；其它常数集合ConstObj；② 变量符号集合Var，包括Agent符号集合VarAg；原子动作符号集合VarAc；规划符号集合VarP；其它变量集合VarObj；③ 可枚举的谓词符号集合Φ.对于任意q∈Φ都对应有一个常数arity(q)称为q的元.上述符号集合均非空、可枚举且互不相交.设p，q，… 表示谓词符号；φ，ψ，ν，… 表示公式符号；i，j，… 表示Agent符号；a，b，… 表示原子动作符号；α，… 表示规划符号；x，… 表示变量符号.
+　　定义1. 语言L的语法形成规则定义如下：
+　　R1：p∈Lt
+　　R2：如ψ，φ∈Lt 且α为规划表达式，则φ，ψ∧φ，λ　xφ,W(φ)，Cani(α，φ)，Committeds(α，φ)∈Lt
+　　R3：如果φ∈Ls，则Aφ, Rφ∈Lt
+　　R4：如果ψ，φ∈Ls ，则φ，ψ∧φ，ψUφ∈L-s
+　　R5：LtLs
+其中，规划表达式定义如下：
+　　R6：如果φ∈Lt ，则confirm(φ)，a是规划表达式;
+　　R7：如果α,β是规划表达式，则α；β，α|β也是规划表达式.
+　　除了通常的命题连接词，形式化语言L还引进了其它算子如：“until”时序算子U，全称路径算子A，实际路径算子R，以及其它一系列算子分别表示Agent的信念、能力、承诺等等.语言L中的一个项或者是一个常数或者是一个变量.
+　　定义2. 语言L的一个模型M是一结构<T，U,π,Act,R,C>.
+　　T是时刻集，T中的每一时刻对应于世界的一个状态.<T×T是T上的偏序关系且满足过去线性，因而整个模型呈图2所示的树形结构.U=UAg∪UAc∪Up∪UObj，其中UAg是Agent集合；UAc是原子动作集合；Up是规划集合；UObj是其它对象集合.π：Φ×T→powerset(Un)是对谓词符号的解释且满足：p∈Φ; t∈T;n∈N: (arity(p)=n)(π(p, t)∈powerset(Un) ).时刻t的一条路径是指始于该时刻，由t的将来时刻构成的一条线性分枝，在形式化模型中，不同的路径对应于不同的Agent动作执行事件与环境事件的组合，反映了世界的不同发展轨迹.
+
+　　　　　
+图2　形式化模型示意图
+　　定义3. 设t≤t′，则［t, t′］ = {t″|t≤t″≤t′}为一路径子区间.
+　　设St表示时刻t的所有路径的集合，SΣ是所有路径的集合.Act：UAg×UAc→powerset(T×T)定义了原子动作的发生，［t, t′］∈Act(i, a) 表示Agenti在［t, t′］路径子区间中执行原子动作a.C：Const→U是对常数符号的解释.R：T→SΣ，对于任一时刻t，R(t)定义了在该时刻的实际路径即世界在该时刻的实际发展轨迹(如图2粗线条所示).在形式化模型中，任一时刻世界有多种发展轨迹，在这些发展轨迹中我们可以标识出一条实际路径以描述模型在该时刻的实际发展轨迹.变量的一个指派V是映射V：Var→U.
+　　多Agent系统是个动态、不确定的系统.系统中各个Agent的动作并发、异步地发生.在任一时刻Agent可能执行各种动作并通过动作的执行来影响和控制世界的发展，然而这种影响和控制是有限的，世界发展轨迹还受其他Agent动作执行事件和环境事件的影响，所有Agent动作执行事件和环境事件共同确定世界的发展.考虑图2所示由两个Agent构成的多Agent系统计算的形式化模型.图中的结点表示时刻，边表示多个Agent的动作并发地发生.我们假定“‖”左侧符号表示Agent1的动作，右侧符号表示Agent2的动作.在t0时刻Agent1通过执行动作a使得世界沿t1或t2方向发展，但世界发展的将来时刻是t1还是t2还取决于Agent2的动作.当Agent2执行动作c时则世界沿t1方向发展，当Agent2执行动作d时则世界沿t2方向发展.因而上述形式化模型刻画了多Agent系统中多个Agent行为的并发发生，Agent行为对世界发展的影响和控制以及这种影响和控制的有限性.
+　　定义4. 一个项的解释定义如下：如果τ∈Const 则［τ］V = C(τ)否则V(τ).
+　　状态公式的可满足语义定义由模型M、指派V和时刻t给出.M, V|=tφ表示在指派V下公式φ在模型M的t时刻被满足.路径公式的可满足语义由模型M、指派V、路径S和时刻t加以定义.M, V|=s, tψ表示在指派V下公式ψ在模型M的路径S的时刻t被满足.
+　　定义5. 语言L的语义定义如下：
+　　(1) M,V|=tp(τ1,…,τn)　iff　(［τ1］V,…［τn］V)∈π(p,t);
+　　(2) M,V|=tAφ　iff　S∈St:M,V|=s,tφ；
+　　(3) M,V|=tRφ　iff　M,V|=R(t),tφ；
+　　(4) M,V|=s,tψUφ　iff　t′∈S:M,V|=s,t′φ且(t″:t≤t″≤t′M,V|=s,t″ψ)；
+　　(5) M,V|=s,tφ　iff　M,V=tφ，其中φ∈Lt.
+　　根据上述语义定义我们可以派生出其它算子.Fφ=trueUφ是“必然”时序算子.Gφ=F(φ)是“always” 时序算子.A是全称路径算子.Eφ=Aφ是存在路径算子.
+4　多Agent系统的非终止主动合作计算模型
+　　定义6. 设“Says-to(i, j, <if, cond, m>)”是一个参数化的言语行为.其中，i是消息发送方Agent，j是消息接收方Agent，if∈表示以言行事强度(如“条件非终止请求”，“通知”等等)，cond是一条件(如“飞机航班信息发生变化”)，对于通知通信行为而言，cond部分为空Null，m是消息的内容(如“提供新的飞机航班信息”).
+　　根据言语行为理论的思想，Agent间的通信行为是一动作，因而它必定在某一路径子区间上发生.［t, t′］∈Act(［i］V,［Says-to(i, j, <if, cond, m>］V)是指Agenti在路径子区间［t, t′］中执行并完成言语行为“Says-to(i, j, <if, cond, m>)”.由于“Says-to”是一动作描述符，为了在公式中描述Agent间的通信行为，我们引进了一个特定谓词comm，公式comm(i, j, <if, cond, m>)表示言语行为“Say-to(i, j, <if, cond, m>)”的发生，其语义定义如下：
+　　定义7. M, V|=s,tcomm(i,j,<if,cond,m>)　iff
+t′∈S:［t, t′］∈Act(［i］V,［Says-to(i,j,<if,cond,m>］V)
+　　为了便于定义和描述Agent所需的服务，我们引入了λ-表达式.同时我们引进一个特定的算子answer(λxφ, Ans) 以表示Agent提供服务的结果.
+　　定义8. 谓词answer(λxφ, Ans)是指Ans为λxφ的结果，其语义定义如下：
+M,V|=tanswer(λxφ,Ans)　iff　(r:(r∈Ans)M,V|=tφ|xr)
+　　基于上述多Agent系统计算的逻辑框架，我们在文献［1］中着重研究了构成Agent体系结构的4个成分之间的相互关系，分析了Agent是如何基于其内部状态进行计算的.我们得到一个重要结论：Committedi(α,φ)∧Cani(α,φ)→RFφ即如果Agent承诺执行某一规划α以实现φ并且Agent具有能力通过规划α的执行以实现φ，则φ必将在系统实际发展轨迹的某一将来时刻被满足.在这种情况下我们称Agent全身心地实现了φ.在本文中，言语行为的语义被解释为该言语行为被满足的条件.这些条件的满足并不是偶然的，而是相关Agent具有相应的认知状态、采取了某些行为而实现的，因而是全心的.下面我们将基于承诺和能力两个抽象概念来给出言语行为的全心满足语义定义.为了描述言语行为对Agent产生的影响，我们引入两个算子：① Cani(α,φ)表示Agenti具有能力通过规划α的执行以实现φ；② Committedi(α,φ)表示Agenti承诺执行某一规划α以实现φ［1，2］.
+　　根据言语行为理论三分说，我们认为通信行为的全心满足包括三方面的内容：① 通信行为的发生；② 通信行为对言者或者听者产生的影响；③ 言者或者听者所采取的动作.公式comm(i, j, <if, cond, m>)仅描述通信行为的发生，为了描述通信行为是否被满足，我们通过引入算子W来定义通信行为的全心满足语义.算子W应用于形如comm(i, j, <if, cond, m>)的公式.M, V(|tW(comm(i, j,<if, cond, m>))是指在t时刻“Says-to(i, j, <if, cond, m>)”通信行为被全心满足.
+　　在非终止主动合作计算模型中，消息发送方Agent首先向消息接收方Agent发出条件非终止服务请求.该请求要求接收方Agent一旦条件满足，即为发送方Agent提供相应的服务.接收方Agent接收到发送方Agent的条件非终止服务请求之后向消息发送方Agent作出非终止允诺，即一旦条件满足，它将给消息发送方提供相应的服务.由于多Agent系统中Agent的行为以及环境事件的发生，当约束条件被满足时，消息接收方Agent根据其作出的非终止允诺主动地为消息发送方Agent提供服务并将相应的结果返回给消息发送方Agent，服务的完成并不意味着合作的终止.如果约束条件再次满足，消息接收方Agent应再次为消息发送方Agent提供服务(见图1).
+　　在非终止主动合作计算模型中，Agent间的交互涉及三种不同性质的通信行为：条件非终止请求通信行为、条件非终止允诺通信行为和通知通信行为.下面我们给出上述3种通信行为的全心满足语义，分析Agent是如何基于上述通信行为并通过对这些通信行为的响应来实现非终止主动合作计算的，在此基础上我们给出多Agent非终止主动合作计算模型的定义.
+　　定义9. 如Requestcn通信行为的语义定义
+　　M, V|=t W(comm(i, j, <Requestcn, cond, λxφ>))　iff
+　　　　te∈R(t):［t,te］∈ActV(［i］V,［Says-to(i,j,<Requestcn,cond,λxφ>)］V)
+　　　　　　　　　∧(t′∈R(t):te≤t′且M,V|=t′W(comm(j,i,<Promisecn,cond,λxφ>)))
+　　一个条件非终止请求通信行为Requestcn被全心满足，如果：① 言者成功地完成了该通信行为；② 听者在Requestcn动作完成之后的某一将来时刻作出条件非终止允诺 Promisecn且听者全心地满足了其允诺.在此处，我们将条件非终止允诺(Promisecn)通信行为称为条件非终止请求Requestcn的伴随通信行为.
+　　定义10. Promisecn通信行为的语义定义
+　　M,V|=tW(comm(j,i,<Promisecn,cond,λxφ>))　iff
+　　te∈R(t):[t,te]∈ActV([j]V,[Says-to(Promisecn,cond,λxφ)]V)
+　　　∧(t′∈R(t)): (te≤t′且M,V|=t′cond)
+　　　　∧([α]V:M,V|=t′Committedi(α，λxφ)∧Cani(αxφ))
+　　　　∧([Ans]V,t″∈R(t):t′≤t″且M,V|=t″answer(λxφ,Ans)
+　　　　　　∧M,V|=t″W(comm(j,i,<Inform,null,answer(λxφ,Ans)>))
+　　一个条件非终止允诺通信行为Promisecn被全心满足，如果① 言者成功地执行了该通信行为；② 动作发生之后，对于任意时刻t′，如果约束条件在时刻t′被满足，则在t′时刻言者承诺执行某一规划来实现(λxφ)且言者具有能力通过该规划的执行来实现(λxφ)；③ 在t′时刻的某个将来时刻t′，言者实现(λxφ)且将结果通知给听者.在此处，我们将通知通信行为称为Promisecn通信行为的伴随通信行为.
+　　定义11. Inform通信行为的语义定义
+　　M,V|=tW(comm(i,j,<Inform,null,φ>))　iff
+　　　　te∈R(t): [t,te]∈Act([i]V,[Says-to(i,j,<Inform,nullm,φ>)]V)且M,V|=teφ
+　　通知通信行为Inform被全心满足，如果：(1) 言者成功地执行了该通信行为；(2)在该通信行为完成之时φ被满足.
+　　定义12. 一个多Agent系统具有非终止主动合作计算模型，如果：
+　　(1) M, V｜=t comm(i,j,<if, cond,m>)if∈{Requestcn,Promisecn,Inform}，即Agent间的通信行为只能为条件非终止请求、条件非终止允诺或者通知通信行为；
+　　(2) 存在某一时刻t，使得 M, V|=tW(comm(i,j,<Requestcn,cond,λxφ>))；
+　　(3) 存在某一时刻t，使得M, V|=tW(comm(j,i,<Promisecn,cond,λxφ>))，并且Agentj向Agenti发出的条件非终止允诺通信行为是Agenti的条件非终止请求通信行为的伴随通信行为；
+　　(4) 对于某一时刻t，使得M,V|=tW(comm(j,i,<Inform, null,φ>))，并且Agentj向Agenti发出的通知通信行为是Agentj的条件非终止允诺通信行为的伴随通信行为.
+5　结论
+　　在多Agent系统中, 由于资源、能力的有限性和分布性，因而合作是多Agent系统的一个重要特征.当前随着计算机技术的不断发展以及Internet，Intranet应用的不断深入，传统计算模型已不能满足现有需求，主动合作计算正成为一个新的应用需求点.本文提出了一个非终止主动合作计算模型，基于言语行为理论以及我们所提出的多Agent系统计算的理论框架，本文讨论了该合作计算模型所涉及的Agent通信行为，分析了Agent如何响应这些通信行为来完成非终止的主动合作计算，并进一步给出了该合作计算模型的定义.
+　　多Agent系统的非终止主动合作计算模型的提出，有助于我们进一步理解和认识多Agent系统的主动合作关系和主动合作计算，分析和评估多Agent系统中的不同合作计算模型；同时有关交互行为的全心满足语义的定义可以帮助我们深层次地理解和分析Agent如何参与合作、如何对各种通信行为作出响应以指导Agent 的设计，并给我们提供了一种有效的方法和手段用于规范和描述复杂、庞大的多Agent系统.■
+基金项目：本课题得到国家自然科学基金(项目编号N069503002)和国防预研基金项目的资助.
+作者简介：毛新军，男，1970年9月生，博士，主要研究方向为分布式人工智能、软件重用等.
+　　　　　王怀民，男，1962年生，博士，研究方向为分布计算、Agent理论.
+　　　　　陈火旺，男，1936年生，教授，研究领域为计算机科学理论、人工智能等.
+　　　　　刘风歧，男，1938年生，教授，研究方向为人工智能等.
+作者单位：毛新军（国防科学技术大学计算机科学系　长沙　410073）
+　　　　　王怀民（国防科学技术大学计算机科学系　长沙　410073）
+　　　　　陈火旺（国防科学技术大学计算机科学系　长沙　410073）
+　　　　　刘风歧（国防科学技术大学计算机科学系　长沙　410073）
+参考文献：
+［1］毛新军. 多Agent系统中Agent计算的理论框架［博士学位论文］.长沙工学院，长沙，1998
+　　　(Mao Xinjun. The Theoretical Framework of Agent Computing in Multi-Agent System ［Ph D dissertation］(in Chinese). Changsha Institute of Technology, Changsha, 1998.)
+［2］Haddadi A. Communication and Cooperation in Agent Systems: A Pragmatic Theory. Berlin: Springer-Verlag, 1996
+［3］Singh M P. Multi-Agent System: A Theoretical Framework for Intentions, Know-How, and Communications. Berlin: Springer-Verlag, 1994
+收稿日期：1998-11-30
+修稿日期：1999-03-22

@@ -1,0 +1,115 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年 第25卷 第6期 Vol.25 No.6 1999
+
+
+
+非线性时滞系统的稳定性分析及
+鲁棒稳定性条件1)
+陈东彦　徐世杰　邵成勋
+摘　要　研究非线性时滞系统的稳定性.应用Lyapunov函数，分别讨论确定性和不确定性非线性时滞系统.对于确定性系统，给出其零解渐近稳定的充分条件；对于不确定性系统，给出其零解鲁棒稳定的充分条件.最后通过两个实例说明所给方法的有效性.
+关键词　非线性时滞系统，不确定性，Lyapunov函数，零解渐近稳定.
+STABILITY AND ROBUST STABILITY FOR NONLINEAR
+DELAYED SYSTEMS
+CHEN Dongyan　XU Shijie　SHAO Chengxun
+(Department of Astronautics and Mechanics, Harbin Institute of Technology, Harbin　150001)
+Abstract　 The stability of nonlinear systems with delay is studied. Using Lyapunov function, certain and uncertain nonlinear systems with delay are discussed, respectively. For the certain systems, the sufficient conditions for asymptotical stability of zero solution are presented. For the uncertain systems, the sufficient conditions for robust stability of zero solution is presented. The effectiveness of our methods is showed by two examples.
+Key words　Nonlinear systems with delay, uncertainty, Lyapunov function, asymptotical stability of zero solution.
+
+1　引言
+　　不确定时滞系统的鲁棒稳定性分析已得到了广大研究者的广泛关注，并且已在线性和半线性系统上取得了许多成果［1～6］，其中主要是应用Lyapunov方法，给出相应系统渐近稳定和鲁棒稳定的充分条件.而对于非线性系统的研究则较少，且仅限于无时滞的情况，如文［7，8］等.在实际问题中，线性关系只是对某些特殊系统才存在，或者只是对问题的一个近似描述，非线性关系才是最普遍存在的，才是最符合实际的.所以研究非线性系统的稳定性及鲁棒稳定性是十分必要的.
+　　对于非线性系统
+　　(1)
+给出如下定义及引理.
+　　定义1.［7］系统(1)的零解称为大范围渐近稳定的，如果它本身是稳定的，且当t→∞时，它的每个解都趋于零.
+　　引理1.［7］系统(1)的零解大范围渐近稳定的充分条件是，存在一个定常正定对称矩阵P，使得
+xT［PJ(x)+JT(x)P］　　(2)
+对所有x为负定函数，其中
+　　由引理1知，如果存在定常对称矩阵P，使得
+Q(x)=-［PJ(x)+JT(x)P］　　(3)
+对所有x是对称正定的，则非线性系统(1)的零解大范围渐近稳定.
+　　对于不确定非线性系统
+　　(4)
+给出如下引理.
+　　引理2.［8］假设非线性系统(1)渐近稳定，并且存在两个正定矩阵P和Q(x)使得(3)式成立，则不确定系统(4)在Lyapunov意义下稳定，如果满足条件
+　　(5)
+其中和λmax(.)分别表示矩阵(.)的最小和最大特征值，‖.‖表示向量(.)的范数.
+2　确定性非线性时滞系统的稳定性
+　　考虑非线性时滞系统
+　　(6)
+上式中x(t),x(t-τ)∈Rn是状态向量；f,f1:Rn→Rn均是连续可微向量函数，且f(0)=f1(0)=0;τ>0是时滞.为方便，以下简记x(t)=x.假设‖f1(x(t-τ))‖≤β‖x(t-τ)‖，β>0.
+　　定理1.假设对于系统(6)中的f(x)存在定常正定矩阵P，满足(3)式.如果条件
+β<λmin［W(x)］/2σλmax［P］　　(7)
+成立，则系统(6)的零解渐近稳定，其中
+　　证明.由定理假设，取Lyapunov函数为V(x)=xTPx.其沿系统(6)对t的导数为
+　　(8)
+注意到,并结合(3)式及引理2，则有
+　　(9)
+由于xTW(x)x≥λmin［W(x)］‖x2‖，且由Razumikhin［11］，假设对任意q>1，有不等式V(x(t-τ))<q2V(x).从而有
+
+将上述不等式代入(9)式，得
+　　(10)
+注意当条件(7)成立时，必存在某个q>1使λmin［W(x)］-2βqσλmax［P］>0.否则，令q→1得β≥λmin［W(x)］/2σλmax［P］，这与(7)式矛盾.故由(10)式知，，定理得证.
+　　在定理1中，我们视f1(x(t-τ))为不确定部分，得到了类似于条件(5)的充分条件(7).下面我们将视f1(x(t-τ))与f(x)为同等地位来讨论.为方便，记
+
+这里.可见M，M1分别是x与x(t-τ)的函数矩阵，且f(x)=Mx,f1(x(t-τ))=M1x(t-τ).
+　　定理2.对于系统(6)，如果存在定常正定矩阵P和R，使得条件
+　　(11)
+成立，则系统(6)的零解渐近稳定.
+　　证明.假设存在P和R使条件(11)成立，令，则V(x)是正定函数，且沿系统(6)对t的导数为
+　　(12)
+这里　
+　　由于Y>0当且仅当R>0，且MTP+PM+PM1R-1MT1P+R<0［9］，所以当条件(11)成立时有Y>0，从而，定理得证.
+　　在系统(6)中，如果f(x)与f1(x(t-τ))都是线性函数，即f(x)=Ax,f1(x(t-τ))=A1x(t-τ)，则M=A,M1=A1.于是条件(11)成为ATP+PA+PA1R-1AT1P+R<0.这恰是文［10］中的结果.可见定理2是线性时滞系统渐近稳定结论在非线性系统中的推广.
+
+3　不确定非线性时滞系统的鲁棒稳定性
+　　考虑如下带有加法摄动的非线性时滞系统
+　　(13)
+其中Δf与Δf1是不确定部分，且Δf(0)=Δf1(0)=0.假设
+　　(14)
+我们将寻找界限δ与δ1满足的条件，使系统(13)保持渐近稳定性.简记x(t)=x.
+　　定理3.假设存在常值正定矩阵P和R满足(11)式，如果条件
+　　(15)
+成立，则系统(13)对满足条件(14)的所有Δf与Δf1，其零解渐近稳定，其中σ见定理1.
+　　证明.由定理假设，仍取V(x)如定理2中所示，于是沿系统(13)对t求导数，有
+　　(16)
+由于
+
+
+不难推得，当不等式δ1<λmin［Y］/λmax［P］成立时，有
+　　(17)
+注意，当条件(15)成立时，必存在某个q>1使得
+　　(18)
+成立.否则，令q→1有2δ+(1+σ)δ1≥(1+σ)λmin［Y］/λmax［P］，与(15)式矛盾.
+　　另一方面，当不等式δ1<λmin［Y］/λmax［P］成立时，由条件(15)总有(18)式成立，而此不等式已含于条件(15)之中.综上所述，，定理得证.
+　　推论1.若定理3中P可取为纯量阵αI，α>0为实数，则充分条件(15)成为
+δ+δ1<λmin［Y］/α.　　(19)
+4　算例演示
+　　例1.考虑非线性时滞系统(6).令
+
+计算得，存在P=2I,R=I，使得
+
+由定理2知该系统的零解渐近稳定.
+　　例2.考虑文［2］中所讨论的半线性系统
+
+当取P=2.1I，R=6.2I时，定理2之条件(11)成立，且由推论1算得δ+δ1<2.41，而文［2］中δ+δ1的最大界限也是2.41.这说明推论1的保守性不大于文［2］中结果的保守性.
+
+5　结论
+　　文中应用Lyapunov函数，分别给出了确定性非线性时滞系统零解渐近稳定的充分条件(7)和(11)，以及不确定性非线性时滞系统鲁棒稳定的充分条件(15)和(19)，它们是线性或半线性系统已有结论的推广.
+1)国家自然科学基金资助课题.
+作者简介：陈东彦　1964年生，1985年毕业于东北师范大学数学系，1988年在吉林工业大学应用数学系获硕士学位，现为哈尔滨工业大学航天学院在读博士.主要研究方向是不确定时滞系统的鲁棒性分析与鲁棒控制器设计.
+　　　　　徐世杰　1951年生，1983年在哈尔滨工业大学飞行力学专业获硕士学位，1995年在法国南锡第一大学自动化专业获博士学位，现为哈尔滨工业大学航天学院航天工程与力学系教授、博士生导师.主要研究方向是飞行力学与控制、机器人动力学与控制.
+作者单位：哈尔滨工业大学航天工程与力学系　哈尔滨　150001
+参考文献
+1　Cheres E, Palmor Z J, Gutman S. Quantitative measure of robustness for systems including delayed perturbation. IEEE Trans. Autom.Control., 1989, 34(11):1203～1205
+2　Hmaned A. Further results on the stability of uncertain time-delay systems. Int.J.Systems Sci., 1991, 22(3):605～614
+3　Su T J, Huang C G. Robust stability of delay dependence for linear uncertain systems. IEEE Trans. Autom. Control., 1992, 37(10):1656～1659
+4　Wu H, Mizukami K. Quantitative measure of robustness for uncertain time-delay dynamic systems. In: Proceedings of the 32nd Conference on Decision and Control, San Antonlo, 1993, 2004～2005
+5　Wu H, Mizukami K. Robust stability criteria for dynamic systems including delayed perturbations. IEEE Trans. Autom. Control, 1995, 40(3):487～490
+6　Sun Y J, Hsieh J G, Yang H C. On the stability of uncertain systems with multiple time-varying delays. IEEE Trans. Autom. Control., 1997, 42(1):101～105
+7　Willems J L. Stability theory of dynamic systems. Nelson: 1973
+8　褚健，王骥程.非线性系统的鲁棒分析.信息与控制，1990，(4)：29～32
+9　Kailath T. Linear Systems. New York: Prentice-Hall, 1980
+10　Verriest E I, Fan M K H, Kullstam J. Frequency domain robust stability criteria for linear delay systems. In: Proceeding of the 32nd Conference on Decision and Control, San Antonlo, 1993, 3473～3478
+11　Hale J. Theory of Functional Differential Equations. New York: Springer-Verlay, 1977
+收稿日期　1998-03-03　　收修改稿日期　1998-09-28

@@ -1,0 +1,120 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第8期 Vol.10 No.8 1999
+
+
+
+一种函数优化问题的混合遗传算法
+彭伟　卢锡城
+摘要　将传统的局部搜索算法和遗传算法相结合,可以较好地解决遗传算法在达到全局最优解前收敛慢的问题.文章给出一种结合可变多面体法和正交遗传算法的混合算法.实验表明,它通过对问题的解空间交替进行全局和局部搜索,能更有效地求解函数优化问题.
+关键词　遗传算法,可变多面体法,正交交叉,函数优化.
+中图法分类号　TP
+A Hybrid Genetic Algorithm for Function Optimization
+PENG Wei LU Xi-cheng
+(Department of Computer Changsha Institute of Technology Changsha 410073)
+Abstract　 To overcome the problem of slow convergence before the genetic algorithms (GAs) reach the global optima, it is an effective way to combine the conventional local search algorithms with GAs. A new hybrid algorithm that incorporates the flexible polyhedron method into the orthogonal genetic algorithm (OGA) is presented in this paper. The experiments showed that it can achieve better performance by performing global search and local search alternately. The new algorithm can be applied to solve the function optimization problems efficiently.
+Key words　Genetic algorithm, flexible polyhedron, orthogonal crossover, function optimization.
+　　遗传算法（genetic algorithms）通过模拟生物进化的途径来在问题的解域中定向搜索最优解,在组合优化、机器学习、自适应控制、多目标决策等领域中有许多应用.对于传统方法较难求解的一些NP问题,遗传算法往往能得到更好的结果.但对传统方法已能较好解决的问题（如一般的非线性优化问题）,它并不显示较强的优势.原因在于,遗传算法对问题特定的知识（如梯度、Hessian阵、某些定理等）利用较少.它主要采用群体搜索技术,通过对解的不断组合、随机改变以及对候选解的评估和选择来完成求解过程.在达到全局最优解前,它尚存在收敛慢的问题.设计遗传算法时往往需要在其通用性与有效性之间折衷.设计针对问题的特定遗传算子,可以更有效地求解问题,但缺乏通用性.另一种途径是将遗传算法与问题领域中一些传统的寻优方法（如爬山法、模拟退火法、牛顿法等）结合起来,可在保持算法一定的通用性时提高算法的效率.这类混合算法的基本框架如图1所示.
+
+图1　混合遗传算法的基本框架
+　　本文考虑一类非线性函数优化问题,即
+minf(x)　　x∈D
+其中f(.)是n元连续函数,D是Rn的有界子集.文献［2］中探讨了一种将拟牛顿法与传统GA结合起来用于求解上述问题的途径.由于拟牛顿法需求函数的一阶导数,因而该方法的通用性受到一定的限制.本文探讨将可变多面体法（flexible polyhedron）与GA相结合的算法,它只利用函数值进行搜索,因而适用范围更广.可变多面体法即Nelder-Mead单纯形法,对于一般的优化问题,能较快地逼近最优解,具有较强的局部搜索能力.但它对初始解的构成具有较强的依赖性,算法执行过程中难于发现新的可能存在最优解的区域.通过将它与GA相结合,一方面可以利用其局部搜索能力,另一方面可通过GA来不断“发现”新的更有希望的搜索区域,并动态调整可变多面体法的搜索方向,从而使算法具有更好的灵活性,也使算法更易于并行化.实验表明,对于求解上述非线性优化问题,混合法（以下称为H-GA）具有比传统GA和可变多面体法都好的性能.
+　　本文第1节给出H-GA的算法描述,第2节给出实验结果和几种算法之间的性能比较,最后是总结.
+1 H-GA算法
+1.1 编码方式
+编码的实质是在问题的解空间与算法的搜索空间之间建立一个映射.传统GA一般采用一种将实数空间离散化的二进制编码方式［1］.这种方式存在编码长度影响求解精度、操作费时、不直观等缺点,因而提出了实数的直接编码方式并表明可以获得更好的性能［3,4］.在实数编码方式下,每个个体用一个n维的实向量来表示,这种方式具有直观、易操作的优点,且可以针对它设计非传统的交叉算子.本文采用此编码方式.
+1.2 交叉和选择操作
+　　交叉操作涉及父本的选择配对机制和交叉算子.配对通常采用随机配对方式.为了维持群体的多样性,还可有选择地配对.配对方式能影响较优模式在群体中的扩散速度.为了防止算法的不成熟收敛（premature convergence）,通常不希望较优模式在群体中过快地扩散.为此,我们采用一种近邻配对原则［5］,即对群体中的第i个个体,若上一次迭代与之配对的是第(i-1)(mod N)个个体,则本次迭代用第(i+1)(mod N)个个体与之配对,N为群体的大小.这种配对方法不仅可避免较优模式过快地扩散,而且符合遗传算法细粒度并行模型的要求,易于获得较大的并行度.
+　　正交遗传算法（orthogonal genetic algorithm）在非线性优化问题及其他组合优化问题中已显示出其有效性［5,6］,我们的算法采用了正交交叉算子.由两个父本交叉操作产生一组个体,从新个体和两个父本中选择最优的进入下一代群体（Elitist策略）.由于采用局部选择而不是全局选择,既在一定程度上保持了群体的多样性,又消除了算法在并行实现时的通讯瓶颈.
+设两个父本分别为P和Q,用于实数编码的正交交叉操作［5］主要包括:
+　　(1) 混合交叉（blend crossover）:
+X1［i］=P［i］; X2［i］=Q［i］; X3［i］=r*P［i］+(1-r)*Q［i］), i=1,2,...,n
+r为一参数,0＜r＜1.这里取r=0.5;
+　　(2) 用X1,X2和X3按正交表L9(34)产生9个新个体并分别计算它们的适应度值;
+　　(3) 按照正交试验方法计算最佳水平组合并产生对应的第10个个体,计算其适应度值;
+　　(4) 从X1,X2,X3和新产生的个体中选择最好的两个个体取代P和Q.
+1.3 变异操作
+　　在实数编码方式下,变异操作对个体X的每个分量X［i］作用一个随机偏差量,即
+X′［i］=X［i］+δ, i=1,2,...,n
+在进化规划（evolutionary programming）和进化策略（evolutionary strategy）［7］中,广泛采用了高斯变异算子,用正态（高斯）分布的随机变量来作为变异操作中的偏差量,即δ=σ*N(0,1),N(0,1)为标准正态随机变量.算法中令σ随代数增加而逐渐减少,如可令σ=MUT-C/generation,其中MUT-C为一常数,generation为迭代的代数.文献［8］中亦采用了类似的将GA的混合交叉算子与高斯变异算子相结合的途径.由于在正交交叉算子中已包含了混合交叉操作,因而正交遗传算法优于该算法.
+1.4 局部搜索
+　　可变多面体法用(n+1)个n维欧氏空间中的顶点来构造搜索过程中的多面体,我们选取(n+1)个相邻的个体作为初始顶点（n＜N-1）.可变多面体法包含下列几种操作［9］:
+　　(1) 找出(n+1)个顶点中函数值最大及最小的点Xh和Xl,然后找出去掉Xh后的由n个顶点构成的多边形的形心Xc;
+　　(2) 通过反射操作得到反射点Xr:Xr［k］=Xc［k］+a*(Xc［k］-Xh［k］),其中X［k］为X的第k个分量,a为反射系数;
+　　(3) 若f(Xr)＜f(Xl),则执行扩大操作,得到Xe:Xe［k］=Xc［k］+r*( Xr［k］-Xc［k］),其中r＞1为扩大系数;
+　　(4) 若对多边形中除去Xh外的任一顶点Xi,均有f(Xr)＞f(Xi),则执行收缩操作,得到Xs:Xs［k］=Xc［k］+b*(Xh［k］-Xc［k］),其中0＜b＜1为收缩系数;
+　　(5) 若f(Xr)＞f(Xh),则使所有点向最小点靠近,即令Xi［k］=Xl［k］+0.5*(Xi［k］-Xl［k］),其中Xi［k］为第i个顶点的第k个分量;
+　　(6) 令Xr,Xe和Xs中最好的点代替Xh.
+1.5 终止准则
+　　算法运行停止的条件包括以下的一种或它们的结合形式:
+　　(1) 算法收敛到一个不动点或连续几次迭代所获得的改变量小于要求的精度值;
+　　(2) 达到算法规定的最大迭代次数、或最大执行时间、或函数的最大调用次数（对解空间的最大采样次数）.我们用最大采样次数和最大迭代次数来控制算法的终止.
+1.6 算法描述
+　　H-GA算法的主要步骤为:
+　　(1) （初始化）随机产生一个分布均匀的初始群体（包含N个初始解）;
+　　(2) （交配）按两两配对的原则将群体中的个体配对并执行第1.2节的正交交叉操作;
+　　(3) （变异）群体中每个个体以Pm的概率进行变异;
+　　(4) （局部搜索）采用可变多面体法反复进行局部寻优操作,循环次数由参数Lh控制;
+　　(5) （终止）若终止条件满足,则算法中止,否则转向步骤(2).
+2 实验结果
+2.1 性能比较参数
+　　衡量一个算法的性能的参数包括:
+　　(1) 最终解的优劣度或精确度.最终解的优劣度通过误差值来度量.误差值定义为［2］:
+
+其中Xi为算法最终解的第i个分量,X*i为实际的全局最优解的第i个分量,wi为第i个分量的权值,它反映了第i个分量的取值范围大小.
+　　(2) 获得最优解的概率.可以用算法多次运行中成功得到最优解的次数来作为其估计值.当群体中最好的解达到一定精度时,认为算法得到最优解.
+　　(3) 计算时间.在保证解的一定精确度的条件下,计算时间越少,采样点越少,算法的性能越好.我们采用函数被调用的次数（采样次数）和实际的运行时间来评价.
+2.2 性能比较
+　　我们用实验的方法来比较正交遗传算法（OGA）和H-GA算法的性能.OGA算法采用与H-GA算法相同的交叉和变异操作.在实验中,我们选择了两个不同性质的函数:
+　　(1) ,-5≤Xi≤5,i=1,2,...,n.这个函数在全局最小值周围有大量的局部极小值.全局最小值点为（0,0,...,0）,相应最小值为-4n.
+　　(2) 一般Rosenbrock函数:
+f(X)=(100*(Xi+1-X2i)2+(1-Xi)2), -5≤Xi≤5,i=1,2,...,n
+函数的全局最小值点为（1,1,...,1）,相应最小值为0.文献［10］中采用传统GA求解了n=2时的问题.在Rosenbrock函数曲面山谷中的点的最速下降方向几乎与到函数最小值的最好方向垂直,因而传统算法（如最速下降法）较难求解此问题.实验中我们发现,在高维情况下传统GA难以高效地求解该问题.可变多面体法在大部分试验中均未求得满意的解.
+　　对函数(1),我们在n=50和n=100的情况下将各个算法分别运行50次.每次运行均记录下算法在不同采样次数时的状态.群体大小分别设为100和150.在H-GA算法中,为简单起见,设每次迭代中可变多面体法的循环次数L为群体大小.应用中可根据函数特性等调整循环次数以取得更优的性能.每次运行中,两种算法均能较快地逼近最优解.表1为它们在不同采样次数时群体中最优解的平均误差和平均执行时间.由于取值范围相同,因而误差值计算中各分量的权值相同（wi＝1）.实验结果在一台586PC上得到.
+表1 两种算法求解函数(1)的性能比较
+
+函数计算（采样）次数最终解的平均误差平均执行时间（s）
+(*105次)OGAH-GAOGAH-GA
+1(n=50)0.028 1660.001 72714.263 40218.444 399
+2(n=50)0.002 3440.001 29028.357 40235.957 402
+2(n=100)0.120 1880.004 12056.658 20394.781 807
+4(n=100)0.010 8330.002 789112.587 607168.967 187 
+
+
+　　实验表明,对多峰性质的函数(1),在相同采样次数下,H-GA算法能更快地逼进最优解,但所需计算时间稍多.H-GA算法的性能稍好于OGA算法.
+　　对函数(2),n分别取10和30.将这两种情况下的群体大小分别设为30和90.实验表明,在规定的采样次数内,OGA算法几乎不能收敛到最优解（表2）.在50次运行中,H-GA算法的最终解与最优解的函数值之差小于10的次数分别达到43和44次. 
+表2 两种算法求解函数(2)的性能比较
+采样次数最终解的平均误差平均执行时间（s）最好情况的函数值最坏情况的函数值
+(*105次)OGAH-GAOGAH-GAOGAH-GAOGAH-GA
+1(n=10)2.293 560.287 491.259 401.629 800.250 710.000 009.329 173.987 23
+2(n=10)1.974 560.283 222.522 203.202 200.158 370.000 008.550 583.987 20
+3(n=30)5.125 953.738 009.847 2016.494 619.359 19.698 1228.165 717.293 5
+6(n=30)5.056 492.464 9219.686 633.307 418.788 40.941 0927.686 78.950 50
+10(n=30)4.986 160.287 3832.805 254.444 218.139 90.000 0127.102 13.988 85
+
+　　由表中的结果可得,对函数性质较为复杂的函数(2),在相同的采样次数下,OGA算法除了计算时间优于H-GA算法外,几乎难于求得最优解.H-GA算法能更有效地求解该类函数优化问题. 
+3 总结
+　　本文给出了一种求解非线性全局最优化问题的混合遗传算法,它将传统寻优方法――可变多面体法与正交交叉算子结合起来,既可利用遗传算法的全局搜索能力,又能通过局部搜索加快算法的收敛.由于采用近邻配对原则和局部选择机制,此算法具有良好的并行性.我们还成功地将进化策略中的高斯变异算子结合到算法中.实验表明,本文提出的混合遗传算法能有效地处理一些传统遗传算法和寻优方法较难处理的函数优化问题.
+对于不同性质的问题和在算法执行的不同时机,混合遗传算法中各部分操作所起的作用是不同的.恰当地控制各部分操作的执行时机是需进一步研究的工作.
+致谢 本文的研究得到了荔建琦博士不少很好的建议,在此特表谢意.
+本文通讯联系人:彭伟,长沙 410073,长沙工学院计算机系
+作者简介：彭伟,1973年,博士生,主要研究领域为智能计算,先进网络技术.
+卢锡城,1946年生,教授,博士生导师,主要研究领域为并行与分布处理,先进网络技术.
+作者单位：长沙工学院计算机系 长沙 410073
+E-mail: wpeng@csit.edu.cn
+参考文献
+　1 Goldberg D E. Genetic Algorithms in Search, Optimization and Machine Learning. Reading, MA: Addison-Wesley, 1989
+　2 Renders J-M, Flasse S P. Hybrid methods using genetic algorithms for global optimization. IEEE Transactions on Systems, Man, and Cybernetics (Part B), 1996,26(2):243～258
+　3 Wright A H. Genetic algorithm for real parameter optimization. In: Rawlins G ed. Foundations of Genetic Algorithms. San Francisco: Morgan Kaufmann, 1991. 205～218
+　4 Eshelman L J, Schaffer J D. Real-coded Genetic algorithms and interval-schemata. In: Whitley L D ed. Foundations of Genetic Algorithms 2. San Francisco: Morgan Kaufmann, 1993
+　5 张青富,彭伟,吴少岩等.遗传算法＋正交设计:一种新的全局优化算法.见:李乃奎,石纯一,王树林主编.第4届中国人工智能联合学术会议论文集.北京:清华大学出版社,1996.127～133
+(Zhang Qing-fu, Peng Wei, Wu Shao-yan et al. Genetic algorithm+orthogonal design method: a new global optimization algorithm. In: Li Nai-kui et al eds. Proceedings of the 4th Chinese Joint Conference on Artificial Intelligence. Beijing: Qinghua Press, 1996. 127～133)
+　6 Wu Shao-yan, Zhang Qing-fu, Chen Huo-wang. A new evolutionary model based on family eugenics: the first results. In: Proceedings of 1996 IEEE International Conference on Evolutionary Computation (ICEC'96). Nagoya, Japan, May 1996. 350～355
+　7 Fogel D B. An introduction to simulated evolutionary optimization. IEEE Transactions on Neural Networks, 1994,5(1):3～14
+　8 Yang J M, Kao C Y. A combined evolutionary algorithm for real parameters optimization. In: Proceedings of 1996 IEEE International Conference on Evolutionary Computation (ICEC'96). Nagoya, Japan, May 1996. 732～737
+　9 王永县（编）.运筹学――规划论及网络.北京:清华大学出版社,1993
+(Wang Yong-xian. Operational Research――Programming and Networking. Beijing: Qinghua Press, 1993)
+　　10 梁艳春,周春光,李寿范.基于遗传算法的Rosenbrock函数优化问题的研究.软件学报,1997,8(9):701～708
+(Lian Yan-chun, Zhou Chun-guang, Li Shou-fan. Genetic algorithm-based research on optimization of Rosenbrock function. Journal of Software, 1997,8(9):701～708)
+本文1997-12-08收到原稿,1998-09-10收到修改稿

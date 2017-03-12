@@ -1,0 +1,156 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年　第36卷　第11期　Vol.36　No.11　1999
+
+
+
+空间数据采掘的研究与发展
+石　云　孙玉方　左　春
+摘　要：数据采掘的研究已从关系型和事务型数据库扩展到空间数据库空间数据采掘是一个很有发展前景的领域，它是在大量空间数据中进行知识发现的技术.文中总结了空间数据采掘领域中的研究成果，概括出空间数据采掘的体系结构 、查询语言及相关方法，并探讨了目前存在的问题和发展方向.
+关键词：数据库知识发现，空间数据采掘，空间数据库
+中图法分类号：TP311.13
+THE RESEARCH AND DEVELOPMENT OF SPATIAL
+DATA MINING
+SHI Yun, SUN Yu-Fang, and ZUO Chun
+(Institute of Software, Chinese Academy of Sciences, Beijing 100080)
+Abstract　Recent studies have extended the scope of data mining from relational and transactional databases to spatial databases. Spatial data mining, that is knowledge discovery from huge amounts of spatial data, is a prom ising research filed. In this paper, current techniques used in spatial datamining, including the architecture, query language, and related methods, are summarized, and future research directions are discussed.
+Key words　KDD, spatial data mining, spatial database
+1　引　言
+　　无论是商业企业、科研机构还是政府部门，在过去若干年时间里都积累了海量数据，目前这 些数据仍然保持着猛烈的增长势头.如此大量的数据向传统的信息和知识抽取方法提出巨大挑战.数据采掘或数据库知识发现（KDD）作为一个新的研究领域和新的技术正方兴未艾，用于从大数据库中发现有趣的、隐含的、以前不知道的知识［1］.
+　　近来数据采掘的研究已从关系型和事务型数据库扩展到空间数据库.空间数采掘就是从大量空间数据中发现知识，是一个很有发展前景的领域. 因为大量空间数据从遥感、地理信息系统(GIS)、多媒体系统、医学和卫星图像等多种应用中收集出来，收集到的数据远远超过人脑分析的能力.空间数据库保存有空间对象，这些空间对象用空间数据类型和对象的空间关系表示.空间数据有许多不同于关系数据库的特性.它带有拓扑和/或距离信息，通常以复杂的多维空间索引结构组织，通过空间数据存取方法存取，常常需要空间推理、几何计算和空间知识表示技术.这些特性使得从空间数据中采掘信息具有很多挑战性的问题［2］.空间数据采掘指的是从空间数据库中抽取隐含的知识、空间关系或非显式地存储在空间数据库中的其它模式［3］，用于理解空间数据、发现空间和非空间数据间的关系、构建空间知识库、查询优化、空间数据库数据重组、以简单精确的方式描述通用特征等等.
+　　本文总结了空间数据采掘领域中的研究成果，概括出空间数据采掘的体系结构、查询语言及 相关方法，并探讨了目前存在的问题和发展方向.
+2　空间数据采掘体系结构
+　　数据采掘有各种各样的体系结构，如Han提出的通用数据采掘原型DBLEARN/DBMINER［4］、Holsheimer等人的并行体系结构［5］、Matheus等人的多组件体 系结构［6］.所有这些体系结构都可将其扩展用于空间数据采掘.相比之下，Matheus 等人提出的体系结构要更通用一些，已经被一些研究者们采纳，该体系结构如图1所示.
+
+
+图1　空间数据采掘体系结构
+　　在多组件体系结构中，用户可以控制采掘过程中的每个步骤（见图1），在知识库中存储背 景知识，如空间和非空间概念层，或有关数据库的信息.采掘处理过程主要由4个组件完成：DB接口、聚焦、模式抽取、评估.利用DB接口从数据源取出数据，该接口允许进行查询优化，利用空间数据索引结构（如R树）等方法来进行高效处理；聚焦组件进行对象和属性抽取，决定哪些数据对模式识别是有用的；模式抽取组件发现规则和模式，该组件使用统计学、机器学习和数据采掘技术结合计算几何学算法来发现规则和关系；评估组件评价所发现的模式的有趣程度和重要性，以去除明显和冗余的知识. 4个组件通过控制器进行交互，采掘的结果最终传给用户.
+3　空间数据采掘方法
+　　空间数据采掘不同于一般的数据采掘.关系型数据采掘的算法假定数据是独立的，而在空间 数据库中一个对象可能会受其邻近若干个对象的影响，数据之间也许相互依赖.因此，必须展传统的数据采掘技术至空间采掘技术，以便更好地分析复杂的空间现象和空间对象.空间数据采掘利用了诸如空间数据结构、空间推理、计算几何学等已有的技术，并提出很多新的有效的空间数据采掘方法.它对传统空间分析方法进行了扩展，将重点放在实现效率、与数据库系统的结合、与用户较好地交互、以及发现新类型的知识的问题上［7］.
+　　本节首先引入空间分析方法的背景，接着介绍基于泛化、聚类、分类、空间关联、以及聚合 邻近的空间数据采掘方法，最后概要介绍了空间数据采掘的一个特例：图像数据库的采掘. 
+3.1　背　景
+3.1.1　空间数据结构、空间操作和查询
+　　空间数据采掘的算法中包括诸如空间连接、地图覆盖、最近邻接查询等空间操作.用于此类 运算的高效的空间存取方法（SAM）和数据结构是空间数据采掘的一个关心焦点［8］ .
+　　(1) 空间数据结构
+　　空间数据结构包括点、线、矩形等.对这些数据的索引采用多维树概念.多维树包含四叉树、 k-d树、R树、R*树等.其中最著名的且在文献中讨论得最多的是R树与其变种R*树.存储在R树中的对象用最小边界矩形（MBR）近似.R树中的每个节点存储一矩形集合.在叶节点存有代表多边形的边界和多边形的MBRs的指针.在树的内部节点每个矩形与一指向子女的指针关联，代表存在子女中的所有矩形的MBRs.
+　　(2) 空间运算
+　　空间连接是时间复杂度最大的空间操作之一.Brinkhoff等人提出了一个有效的多层次处理 方法［9］，利用R*树和空间对象邻近的空间连接.首先使用MBRs，用邻近操作找到可能的相交对象对其进行过滤；然后执行详细的几何运算，检查相交以便进行细化.
+　　Koudas和Sevcik［10］提出S3J（Size Separation Spatial Join）空间连接技术，对数据空间进行层次性分解，用于当空间数据集合中不存在空间索引时计算两个或多个空间数据集合的空间连接.
+　　Theodoridis等人［11］提出空间数据库连接查询的成本模型，采用空间数据结构来支持多维数据的连接查询，用于空间查询优化.
+　　另外一种重要的空间操作是地图覆盖，它在地理信息系统中尤为重要.
+　　(3) 空间查询处理
+　　Aref和Samet［12］提出空间查询处理的优化策略，为空间数据库提出一个称为SAND（空间和非空间数据）的体系结构，这是一个使用空间操作的扩展的关系数据库模型［13］.该体系结构既提供空间数据库的空间组件，也提供非空间组件，以参与查询处理.
+3.1.2　统计学空间分析
+　　统计方法是分析空间数据的最常用的方法.统计方法有较强的理论基础，拥有大量的算法， 并包含多种优化技术.它能够有效处理数值型数据，通常会导出空间现象的现实模型.然而，该方法基于统计不相关假设，而实际上在空间数据库中许多空间数据通常是相关的，即空间对象受其邻近对象的影响，难以满足这种假设，这样就会引起问题.采用对依赖变量带有空间保护的Kriging或回归模型能在某种程度上减轻这个问题.但是，这样会使整个建模过程过于复杂，只能由具有相当领域知识的统计学专家来完成，终端用户难以采用该技术来分析空间数据.另外，统计方法对非线性规则不能很好建模，处理字符型数据的能力较差，难以处理不完全或不确定性数据，而且运算的代价较高.文献［1］中提出了一些方法用以克服 统计学空间分析方法的缺点.
+3.2　基于泛化的方法
+　　数据库中的数据和对象在原始的概念层次包含有详细的信息，经常需要将大量数据的集合进 行概括并以较高的概念层次展示.基于泛化的知识发现假定背景知识以概念层次的形式存在.概念层次可由专家提供，或借助数据分析自动生成.空间数据库中可以定义两种类型的概念层次：非空间概念层和空间概念层.Han and Fu［4］提出一个有效的数据泛化技术：面向属性的归纳.它首先执行一个数据采掘查询，采集数据库中相关数据的集合，然后，通过提升泛化层次，在较高概念层次上概括空间和非空间数据间的泛化关系以进行数据泛化.泛化的结果可用泛化关系或数据立方体的形式表达，用以执行进一步的OLAP操作，也可以映射为概括表、图表或曲线来进行可视化表示，还能从中抽取特征和判别规则.Lu等人［2］将面向属性的归纳扩展至空间数据库，提出两个算法：空间数据支配泛化和非空间 数据支配泛化.
+　　(1) 空间数据支配泛化算法
+　　算法采用高阶谓词描述空间区域.首先，根据空间层次合并空间区域，得到包含少量区域的 一张地图.然后，采用面向属性的归纳技术生成每个区域的非空间描述.查询的结果采用每泛化区域的特征谓词的析取来描述.
+　　(2) 非空间数据支配泛化算法
+　　算法首先对非空间属性作面向属性的纳，将其泛化至更高的概念层次.然后，将具有相同 的泛化属性值的相邻区域合并在一起，可用邻近方法忽略具有不同非空间描述的小区域.查询的结果生成包含少量区域的地图，这些区域共享同一层次的非空间描述.
+3.3　基于聚类的方法
+　　空间数据聚类在一个大的多维数据集合中采用距离度量以标识出聚类，由此来发现数据集合 的整个分布模式.
+　　(1) 基于随机搜索的聚类方法CLARANS
+　　CLARANS（Clustering Large Applications based upon RANdomized Search）算法由Ng和H an［14］提出，其聚类过程可以表示为查找一个图，图中的每个节点都是潜在的解决方案.在替换一个中心点后获得的聚类称为当前聚类的邻居.随意测试的邻居的数目由参数maxneighbor限制.如果找到一个更好的邻居，将中心点移至邻居节点，重新开始上述过程，否则在当前的聚类中生成一个局部最优.找到一个局部最优后，再任意选择一个新的节点重新寻找新的局部最优.局部最优的数目被参数numlocal限制.可以看到，CLARANS并不搜索遍所有的求解空间，也不限制在任何具体的采样中.CLARANS每次迭代的计算复杂度与对象的数量基本呈线性关系.CLARANS也可检测出离开本体的部分，例如不属于任何聚类的点.基于CLARANS的空间数据聚类算法也有两种：空间支配算法和非空间支配算法.
+　　CLARANS方法的缺点是要求要聚类的对象必须预先都调入内存里，这对非常大的空间数据库 是不合理的.
+　　(2) CLARANS聚焦法
+　　抽样方法可提高聚类算法的效率，但差的抽样会导致差的聚类质量.Ester等人［15］利用空间数据结构提出了提高抽样质量的算法.该算法仅仅聚类R*树叶节点最中央的对象. 因为在叶节点中仅存储了邻近的点，所以损失的聚类质量很小，在实验中约为1.5%～3.2%，而聚类的速度大约提高了50倍.另外一种技术是利用R*树结构仅在对象对上执行计算，以提高聚类的效率.
+　　聚焦方法通过引入R树方法可用于处理大型数据，缺点是R树的构建并不容易而且要耗费相当的计算量.　　
+　　(3) 平衡迭代消减聚类法BIRCH
+　　Zhang等人［16］提出平衡迭代消减聚类法BIRCH（Balanced Iterative Reducing and Clustering），以解决上述聚焦方法的难点.它是一种较为灵活的增量式聚类方法，能根据内存的配置大小而自动调整程序对内存的需要.它有两个概念：聚类特征（clustering feature）和聚类特征树（CF-tree）.
+　　聚类特征CF是一个三元组，它总结了一簇个体的有关信息，从而使得一簇点的表示可以总结为对应的一个聚类特征，而没必要再用具体的这一组点来表示.给定一组有N个点、维数为d的一簇个体{Xi}，则这簇个体的聚类特征可表示为其中，N是点的个数，是N个点的线性和，即=它代表了这簇点的重心；SS是N个点的平方和，即它代表了这簇点的直径大小，SS越小，这簇点聚得越紧.
+　　聚类特征树是一个满足两个条件的平衡树.两个条件分别是：分枝因子和簇直径的限制.分枝 因子规定了树的每个节点的子女的最多个数；而簇直径体现了对一簇点的直径大小的限制，即聚类特征的SS不能太大，否则不能聚为一类.非叶子节点上存储了它的子女的聚类特征的和，因此该节点总结了其子女的信息.
+　　聚类特征树可以动态构造，因此不要求所有数据一次读入内存，而可以从外存上逐个读入数据项.新的数据项总是插入到树中与该数据距离最近的叶子上.如果插入后使得该叶子的直径大小超过了簇直径，则需要把该叶子或其它叶子分裂，直到叶子能够插入到树中而同时满足簇直径的限制.新的数据项插入后，它的信息就可以从叶子一直传递到树根，即重新计算该叶子的各个祖先的聚类特征值.
+　　通过改变簇直径的限制大小，可以修改聚类特征树的大小.簇直径限制值越小（要求类里的 各个数据项相似度大），树会越大；反之，树越小.因此，当存储树的内存不够大时，可以把簇直径限制值设置为较大的值，然后重新构造该树，重构时可以直接从原来的树叶子计算，不需要重新读入数据.
+　　BIRCH算法具有良好的算法伸缩性、对数据输入顺序不敏感性以及较好的聚类效果.该方法是 一种通用技术，可用于各种聚类算法.
+　　(4) 对带噪声的应用的基于密度的空间聚类算法DBSCAN
+　　DBSCAN（Density Based Spatial Clustering of Applications with Noise）［17］基于聚类中密度的概念，用来发现带有噪声的空间数据库中任意形状的聚类.该算法的效率较高，但算法执行前需输入阈值参数.
+　　(5) 大型空间数据库基于距离分布的聚类算法DBCLASD
+　　Xu等人［18］提出大型空间数据库基于距离分布的聚类算法（Distribution Based Clustering of Large Spatial Databases），与CLARANS算法相比，它可以发现高质量的任意形状的聚类；而与DBSCAN相比，它不需要任何输入参数.DBCLASD的效率介于CLARANS算法与DBSCAN算法之间，接近于DBSCAN算法.
+　　(6) 采用遗传算法进行空间聚类
+　　一般的聚类算法都采用所谓的“爬山法”来寻求局部最优，而Vladimir提出利用遗传算法进 行启发式搜索来寻找聚类的中心点，得到的聚类质量证明比普通聚类要好.
+3.4　基于分类的方法
+　　目前空间数分类的研究尚处在起步阶段.Ester等人提出一种空间对象分类方法［19］，该方法采用ID3算法，并使用邻域图的概念，分类标准基于分类对象的非空间属性以及描述分类对象与其邻近位置相关对象间空间关系的属性、谓词和函数.该方法的缺点是没有分析邻近对象非空间属性的聚合值，而实际中如果一个对象在其邻近区域内某属性的聚合值与另一个对象邻近若干个区域内对应属性的聚合值相同，那么这两个对象的属性就应视为类似.另外，该算法也没有进行相关性分析，可能会生成低质量的决策树.而且，算法没有考虑非空间和空间属性值中可能存在的概念层次.
+　　Ng和Yu提出了一种方法以抽取专题地图上聚类的强的、公共的、判别性的特征［20］，提出聚类特征值的度量.在搜索聚类公共特征的过程中，算法选择那些主题值与聚类值最类似的主题；而在搜索聚类判别特征的过程中，算法选择能最好地判别两个聚类的主题.该算法仅适用于分析专题地图的属性值.
+　　Koperski和Han对Ester等人的算法［19］中相应的问题进行了改进［21］，使得计算时间复杂度降低.但是基于决策树的分类算法不适合处理带有不完整信息的问题.空间数据分类标准中 包含数据间的空间关系，从某个训练数据集来讲，空间属性极有可能缺失.如果输入数据出现了不一致、噪声等情况，决策树算法可能会造成分，就会严重影响决策树算法的预测准确度.因而采用决策树空间分类算法不能很好地体现地理空间关系于分类的影响.对空间数据分类的方法尚需进一步的研究.
+3.5　基于空间关联的方法
+　　空间关联是将一个或多个空间对象与其它空间对象相关联.Agrawal等人引入关联规则的概念 是为了采掘大型的事务型数据库.Koperski等人将这个概念扩展至空间数据库［3］.空间关联规则的形式是XY(c%)，X和Y都是空间或非空间的谓词的集合，c%是规则的可信度.空间谓词有3种形式：表示拓扑关系的谓词，如相交、覆盖等；表示空间方向的谓词，如东、西、左、右等；表示距离的谓词，如接近、远离等.
+　　在大型数据库中，可能存在大量的对象间的关联，但其中大部分只适用于少量对象，或者规 则的可信度较低.空间关联规则使用两个阈值：最小支持度和最小可信度，以过滤出描述少量对象的关联和具有低可信度的规则.在对象非空间描述的不同层次上这两个阈值均不相同，因为如果使用相同的阈值，在低的概念层次上可能找不到有趣的关联，原因是此时满足相同谓词的对象的数目可能相当少.
+3.6　聚合邻近法
+　　聚合邻近是根据聚类边界和对象边界之间的距离，对聚类中点的集合与其邻近对象的接近程 度的度量.Knorr和Ng［22］提出CRH（C为圆，R是矩形，H是凸包）算法能快速查找聚类的邻近对象.在算法中采用多层次邻近以逐渐减少候选对象.先划出包围圆，然后使用矩形来去除与聚类有较大聚合距离的对象，接着计算出聚类中的点与过滤出的每个对象的凸包边界的聚合邻近.该算法能求出具有最佳聚合邻近的对象，显示出聚类中点集与对象的最小和最大距离、平均距离、以及落在指定阈值距离范围内的点的比例.实验证明，算法CRH的效率很高.
+3.7　采掘图像数据库的方法
+　　图像数据库是一类特殊的空间数据库，其数据几乎全部是图像或图片.图像数据库用于遥感、医学图像等应用，通常以栅格形式表示，栅格代表一个或多个光谱范围的图像密度. 图像数据库的采掘可以看成是空间数据采掘的一部分，其主要问题在于如何区分图像.以下列出对这方面问题的一些研究.
+　　(1) POSS-II （Second Palomar Observatory Sky Survey）
+　　Fayyad等人使用决策树方法来对大约3TB的卫星图像中的星系对象进行分类［23］.数据图像先经低层图像处理系统FOCAS的预处理，选择欲分类对象并生成诸如图像要素、面积、密度、方向等的基本属性.由天文学家来对训练数据集中的对象进行分类.基于这种分类，建立决策树算法的训练集.利用学习算法获得的决策树，可找到一个较为强健的最小的规则集合.该方法专用于天文学应用.
+　　(2) Magellan研究
+　　Magellan研究［24］分析火星表面大约30,000个高精度的雷达图像，目标是为了识别火山，这是一项手工做约需10人年的任务.系统由3个基本部分组成：数据聚焦组件、特征抽取组件和分类学习组件.同其它数据聚焦技术一样，数据聚焦组件通过将区域中心像素点的密度与估计的其相邻像素点的密度的平均值作比较，识别出图像中可能包含火山的部分，用于提高系统整体效率.特征抽取组件从数据中抽取有趣的特征.不能使用诸如边缘检测或霍夫变换等一般的模式识别方法，因为这些方法处理自然数据中的可变性和噪声的能力较差.查找精确描述火山的属性非常困难，因此将包含火山图像的矩阵分解为特征向量，采用特征值作为描述火山的属性.分类学习方法采用决策树，用于区别火山和看起来象火山的对象.
+　　(3) 基于内容的时空查询CONQUEST
+　　Shek等人［25］提出一个分布式并行查询和分析环境CONQUEST（CONtent-based QUE rying in Space and Time），用于采掘地球科学栅格数据库.CONQUEST与其它栅格数据库采 掘工具的区别是它考虑了数据集合中的时间组件，并且允许进行并行和分布式处理.系统可 从大量的数据集合中抽取复杂的时空对象.CONQUEST定义了一系列的操作用于地球科学查询 中对象的描述和抽取.
+4　空间数据采掘查询语言
+　　到目前为止，尚没有对空间数据采掘查询语言SDMQL（Spatial Data Mining Query Languag）的定义. Han等人［26］为了采掘地理空间数据库设计了一种地理数据采掘查询语言GMQL（Geo-Mining Query Language），它是对空间SQL的扩展，并成功地应用于空间数据采掘系统原型GeoMiner中.GMQL可作为制定SDMQL的基础，以进一步界定SDMQL语言的基本原语.
+　　SDMQL的设计指导原则应为：
+　　(1) 在空间数据采掘请求中应说明用于采掘的相关数据集；
+　　(2) 在空间数据采掘请求中应说明想要采掘的知识的种类；
+　　(3) 采掘过程中应该可能运用相关的背景知识；
+　　(?) 采掘结果应该能用较概括的或多层次概念的术语来表述；
+　　(5) 应能够说明各种各样的阈值，使得可以灵活地过滤掉那些不是很令人感兴趣的知识；
+　　(6) 应采用类似SQL的语法以适应在高级语言的水平上进行数据采掘并与关系查询语言SQL保 持自然的融合.
+5　空间数据采掘系统原型GeoMiner
+　　加拿大Simon大学开发出一空间数据采掘系统原型GeoMiner［26］.该系统在空间数据库建模中使用SAND［13］体系结构，包含有三大模块：空间数据立方体构建模块、空间联机分析处理（OLAP）模块和空间数据采掘模块，采用的空间数据采掘语言是GMQL.目前已能采掘3种类型的规则：特征规则、判别规则和关联规则. GeoMiner的体系结构如图2所示，包含4个部分：①图形用户界面，用于进行交互式地采掘并显示采掘结果；②发现模块集合，含有上述3个已实现的知识发现模块以及4个计划实现的模块(分别以实线框和虚线框表示)；③空间数据库服务器，包括MapInfo，ESRI/Oracle SDE，Informix-Illustra以及其它空间数据库引擎；④存储非空间数据、空间数据和概念层次的数据库和知识库.
+
+
+图2　GeoMiner 体系结构
+6　空间数据采掘的未来方向
+　　空间数据采掘是一个非常年轻而富有前景的领域，有很多研究问题需要深入探讨，这也是该 领域的未来方向.
+　　(1) 在面向对象（Object-Oriented，简称OO）的空间数据库中进行数据采掘
+　　目前在实际中应用的空间数据采掘方法都假定空间数据库中采用的是扩展的关系模型，而关 系型数据库并不能很好地处理空间数据.许多研究者指出，OO模型比传统的关系模型或扩展关系模型更适合处理空间数据，如矩形、多边形和复杂的空间对象可在OO数据库中很自然地建模.因此，可以考虑建立面向对象的空间数据库以进行数据采掘.需要解决的问题是如何使用OO方法设计空间数据库，以及怎样从数据库中采掘知识.目前OO数据库技术正在走向成熟，在空间数据采掘中开发OO技术是一个具有极大潜力的领域.文献［27］、［28］对此问题作了初步探讨.
+　　(2) 进行不确定性采掘
+　　证据推理方法可用于图像数据库的采掘，以及其它经过不确定性建模的数据库的分析.Bell 等人［29］证明，证据理论比传统的概率模型，如贝叶斯等方法进行不确定性建模的效果要好.另外，还可考虑通过利用统计学、模糊逻辑和粗糙集方法以处理不确定性和不完整的信息，该领域尚有待拓展.
+　　(3) 多边形聚类技术
+　　目前空间聚类问题的解决方案尚局限在对点对象的聚类，该问题的未来方向是处理可能重 的对象的聚类，如多边形聚类.
+　　(4) 多维规则可视化
+　　理解所发现规则的最有效的方式是进行图形可视猖.多维数据可视化已有相应文献研究［30］，而多维规则可视化仍是一个不成熟的领域，可考虑采用计算机图形学中的一些可视化技术.
+　　(5) 基于泛化的空间数据采掘机制需要进一步的开拓，以处理多专题地图和多层次的交互 式采掘，并与空间索引、空间存取方法和数据仓库技术有效结合.
+　　(6) 空间数据分类领域尚需找到真正高效的空间分类方法，以处理带有不完整信息的问题. 
+　　(7) 基于模式或基于相似性的采掘以及元规则指导的空间数据采掘尚需探讨.
+　　(8) 空间数据采掘查询语言SDMQL需进行详细设计和标准化.
+　　(9) 大量的遥感图像要求更多的数据采掘方法，用以检测常、查找相似的图片，以及发 现不同现象间的关系. 
+7　结束语
+　　通过上文对空间数据采掘技术的讨论，可以看出空间数据采掘是一项诱人而又充满挑战性的 前沿技术，它将为空间信息系统赋予知识发现的能力，并推进智能化空间信息系统的发展.
+*本课题得到国家“ 八六三”306主题(项目编号863306-ZD-07-4)的资助.
+作者简介：石云，女， 1972年11月生，博士研究生，主要研究领域为数据库知识发现、空间数据采掘.
+　　　　　孙玉方，男，1947年生，研究员，博士生导师，主要究领域为大型数据库和网络应用系统、操作 系统、中文信息处理.
+　　　　　左春，男，1959年生，研究员，主要研究领域为大型 数据库和网络应用系统、数据库知识发现.
+作者单位：中国科学院软件研究所　北京　100080
+参考文献
+1　Fayyad U, Piatetsky-Shapiro et al. From data mining to knowledge discovery: An overview. In: Advances in Knowledge Discovery and Data Mining. Menlo Park, CA: AAAI/MIT Press, 1996
+2　Lu W, Han J et al. Discovery of general knowledge in large spatial databases. In: ProcFar East Workshop on Geographic Information Systems. Singapore, 1993. 275～289
+3　Koperski K, Han J. Discovery of spatial association rules in geographic information databases. In: Proc 4th Int'l Symp on Large Spatial Databases(SSD '95), Portland, Maine, 1995. 47～66
+4　Han J, Fu Y. Exploration of the power of attribute-oriented induction in data mining. In: Advances in Knowledge Discovery and Data Mining. Menlo Park , CA: AAAI/MIT Press, 1996
+5　Holsheimer M, Kersten M. Architectural support for data mining. CWI Tech Rep: CS-R9429, 1994
+6　Matheus C J, Chan P K et al. Systems for knowledge discovery in databases. IEEE Trans on Knowledge and Data Engineering, 1993, 5(5): 903～913
+7　Koperski K, Han J, Adhikary J. Mining knowledge in geographical data,　Communications of ACM, 1999
+8　Guting R H. An introduction to spatial database systems. VLDB Journal, 1994, 3(4): 357～400
+9　Brinkhoff T, Kriegel H P et al. Efficient processing of spatial joins using R-trees. In: Proc AC?-SIGMOD Conf Management of Data, Washington, 1993. 237～246
+10　Koudas N, Sevcik K C. Size separation spatial join. In: Proc ACM-SIGMO D Conf Management of Data, 1997. 324～335
+11　Theodoridis Y, Stefanakis E et al. Cost models for join queries in spatial databases. In: Proc of ICDE'98, Florida, USA, 1998. 476～483
+12　Aref W G, Samet H. Optimization strategies for spatial query processing. In: Proc 17th Int'l Conf VLDB, Barcelona, Spain, 1991. 81～90
+13　Aref W G, Samet H. Extending DBMS with spatial operations. In: Proc 2nd Symp SSD'91, Zurich, Switzerland, 1991. 299～318
+14　Ng R, Han J. Efficient and effective clustering method for spatial datamining. In: Proc of Int'l Conf VLDB, San Francisco, CA: Morgan Kaufmann, 1994. 144～155
+15　Ester M, Kriegel H P et al. Knowledge discovery in large spatial d atabases: Focusing techniques for efficient class identification. In: Advances i n Spatial Databases, Proc of 4th Symp SSD'95, Berlin: Springer-Verlag, 1995. 67 ～82
+16　Zhang T et al. BIRCH: An efficient data clustering method for very large databases. In: Proc of ACM-SIGMOD Int'l Conf on Man?gement of Data. ACM, New York, 1996. 103～114
+17　Ester M, Kriegel H P et al. A density-based algorithm for discover ing clusters in large spatial databases with noise. In: Proc 2nd Int'l Conf on K nowledge Discovery and Data Mining. Oregon: AAAI Press, 1996
+18　Xu X et al. A distribution-based clustering algorithm for mining in large spatial databases. In: Proc of ICDE'98, Florida, USA, 1998. 476～483
+19　Ester M, Kriegel H P et al. Spatial data mining: A database approac h. In: Proc Int'l Symp on Large Spatial Databases (SSD'97), Berlin, Germany, 199 7. 47～66
+20　Ng R T, Yu Y. Discovering strong, common and discriminating characteris tics of clusters from thematic maps. In: Proc of the 11th Annual Symp on Geograp hic Information Systems. 1997. 392～394
+21　Koperski K, Han J et al. An efficient two-step method for classifi cation of spatial data, In: Proc Int'l Symp on Spatial Data Handling SDH'98, Van couver, BC, Canada, 1998
+22　Knorr E M, Ng R T. Finding aggregate proximity relationships and common alities in spatial data mining. IEEE Trans Knowledge and Data Eng, 8(6): 884～897 
+23　Fayyad U M, Djorgovski S G et al. Automating the analysis and catal oging of sky surveys. Advances in Knowledge Discovery and Data Mining. Menlo Par k, CA: AAAI/ MIT Press, 1996
+24　Fayyad U M, Smyth P. Image database exploration: Progress and challenge s. In: Proc of Knowledge Discovery in Databases Workshop. Menlo Park, CA: AAAI P ress, 1993. 14～27
+25　Shek E C et al. Scalable exploratory data mining of distributed geo scientific data. In: Proc of the Second Int'l Conf on Knowledge Discovery and D ata Mining. Menlo Park, CA: AAAI Press, 1996. 32～37
+26　Han J et al. A system prototype for spatial data mining. In: Proc A CM-SIGMOD Conf Management of Data, AZ, USA, 1997. 324～335
+27　Mohan L, Koshyap R L. An object-oriented knowledge representation for spatial information. IEEE Trans on Software Engineering, 1988, 14(5): 675～681
+28　Han J, Nishio S, Kawano H. Knowledge discovery in object-oriented and active databases. In: Fuchi F, Yokoi T eds. Knowledge Building and Knowledge Sharing, Ohmsha/IOS Press, 1994. 221～230
+29　Bell D A, Anand S S, Shapcott C M. Database mining in spatial databases . International Workshop on Spatio-Temporal Databases, 1994
+30　Keim D, Kriegel H P, Seidl T. Supporting data mining of large databases by visual feedback queries. In: Proc 10th of Int'l Conf on Data Engineering, Ho uston, TX, 1994. 302～313 
+原稿收到日期：1999-02-12；修改稿收到日期：1999-08-20.

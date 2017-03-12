@@ -1,0 +1,106 @@
+计算机工程
+Computer Engineering
+1999年　第25卷　第4期　Vol.25　No.4　1999
+
+
+
+基于JAVA语言的多媒体制作
+赵铭伟于泽源
+摘　要　对Java语言,尤其是Java浏览器类库的简要介绍,阐述了如何使用Java语言制作在Internet上浏览播放的多媒体。
+关键词　类　方法　实例主页线程
+The Creation of Multinedia Using Java Language
+Zhao Mingwei YuZeyuan
+（Computer Sciencd Engineering Department，Dalian University of Technology Dalian 116024）
+Abstract：This paper briefly introduces the concept，on Java language，especially browser in Java，besides，it mainly elaborates how to make the multimedia in Internet with Java language.
+Key words:Class;Method;Instance;Homepage;Multimedia;Thread
+　　Java 语言的问世，给人们带来了契机---利用Java语言能够给WWW(World Wide Web)或独立应用程序加上声音或动画效果。
+1　Java语言几个相关技术的概述
+　　Java是一种跨平台，适合于分布式计算环境的面向对象的编程的语言，具有简单易学，面向对象，跨平台，垃圾回收，健壮性，安全性，动态执行，分布式等特性。
+　　既然Java语言是面向对象的语言，那么，什么是对象呢？所谓对象(Object)就是把数据及其相关的操作封装在一起所构成的程序实体。对象的数据被称为"数据成员"(member　data)或"属性"(properties)；对象操作被封装到一些函数中，这些函数称为对象的 " 成员函数"(member function)或"方法"(method)。对象方法的调用通常是通过给对象发送消息来实现的。
+　　在Java语言中，另一个较为重要的概念就是类(Class)。类是基于对象之上的一个概念，它本质上可认为是对象的描述，是创建对象的模板。每个对象均有一个相应的类，通过这个类来确定对象如何创建，对象包含哪些方法，以及对象应该对哪些消息作出怎样的响应等。为方便类的创建，新类可通过继承一原有的类而产生。这时这个新类被称作原有类的子类(subclass)，原有类称作父类(superclass)。子类继承父类的变量和方法，子类又可以有新的子类。在Java语言中，类必须以如下格式进行声明：
+class_name　[extends　class_name]　[implements　interface]
+　　{
+　　……//class description 
+　　}
+　　Java保留字extends是专门用于实现类继承的。如果要通过继承某一旧类而建立起一个新类，可以装载旧类，并且利用extends修饰符。
+　　对象通过对一个类的实例化而产生，创建对象意味着必须给它的数据分配内存空间。这样，创建之后的每个对象均占据自己的一块内存区域。创建对象时，每个对象均分配有一个"引用"(reference)。引用实际上就是指向确定内存区域的指针。对象引用通常保存于某一变量中，以便于在程序中随后引用。当程序不再需要某一对象时，Java可自动实现无用内存空间的收集。
+　　在Java语言中有一个重要的类库，那就是浏览器类库(java．applet)。该浏览器类库主要用于针对WWW浏览器，尤其是HotJava的程序设计。具体地讲，浏览器类库可提供如下几方面的方法：Applets(小应用程序)、Audio(声音)、Links(链接)、Style(样式)、Properties(属性)。通过这些方法，浏览器类库给WWW浏览器增添了活力---不再依赖公共网关接口(CGI)，就可以给浏览器带来动态和交互特性。下面就对java．applet作一介绍。
+　　浏览器类库包括3个接口和一个基础类，即接口AppletContext，用于与浏览器通信或控制应用程序，访问浏览器环境；接口AppletStub，用于访问非浏览器环境，如AppletViewer类型的应用程序；接口AudioClip，用于播放声音片段，是一个独立于平台的声音播放接口；基础类Applet是所有小应用程序对象的超类。其中，Applet类是浏览器类库中最为重要的类，提供了制作动画和播放声音等方法，同时也是所有Java小应用程序的父类，其类的层次为：
+　　　　　
+因此，Applet类具有如下定义：
+　　public class Applet extends Panel{…}。
+　　在Java语言中，Java小应用程序(applet)是需通过支持Java语言的WWW浏览器调用来执行的可执行模块，又因applet均为Applet类的子类，故应以下面的格式声明：
+import java．applet．Applet；
+class myApplet extends Applet
+{
+…//body of class
+}
+　　为了能使Java小应用程序通过WWW浏览器调用执行，必须为applet定义4个重要方法，即init()、start()、stop()、destory()，才能保证applet的正常运行。以上对Java语言及java．applet作了介绍，下面就进入本文的主题：如何使用它们进行多媒体的制作。
+2　多媒体的设计与实现
+　　所谓多媒体，就是将声音、图象、视频以及文本连接起来表示信息和传播信息的载体。下面就以myApplet类为例，对Java语言中的多媒体编程实现进行阐述。类myApplet定义如下：
+　　public class myApplet extends Applet implements runnable
+　　{Thread myAnimatorThread=null；
+　　…
+　　protected void init(){…}
+　　//初始化实例变量、applet大小、设置对象属性、装载必要的资源及其他必要的初始化。
+　　protected void start(){…}
+　　//设置背景线程，以实现动画和声音的同步播放效果。
+　　protected void stop(){…}
+　　//用于终止与applet相关的执行线程。
+　　protected void destory(){…}
+　　//释放applet所占用的所有资源。
+　　public void run(){…}
+　　public void paint(Graphics g){…}
+　　public void update(Graphics g){…}
+　　…
+　　}
+　　在Java语言中，它的图象处理机制被封装在AWT类库的Image类中，为显示动画，需要装载n幅图片(．GIF或．JPG类型)，因此必须有一个大小为n的数组，定义如下：
+protected Image frame[]＝new Image [n]；
+　　类Applet提供了一个装载图象的方法，即
+public Image getImage(URL url，String name)；
+　　或public Image getImage(URL url)；
+　　或public Image getImage(String name)；
+　　其中参数 url 代表的是所装载的文件路径， name 代表的是所装载的文件名。如类 myApplet 需要装载 10 幅图片，可通过下面这个循环来完成： 
+　　…
+　　init()
+　　{…
+　　for(int I=0；I<10；I++)
+　　{frame[I]=getImage("picturename"+I+"．GIF")；}
+　　…
+　　}
+　　而用来显示图象的方法是run()，以在屏幕上形成动画效果。在此方法中，每次均调用Update(Graphics g)方法。当浏览器需要applet描绘其自身时，它将调用方法paint()。
+　　要实现真正的多媒体，仅有动画是不够的，还要有声音。利用Java的类Applet提供的方法可实现播放声音文件(以．au文件存放，au是unix操作系统中一种标准的声音文件格式)。在这里，为装载声音文件而使用的方法有：
+　　public AudioClip getAudioClip(URL url)
+　　public AudioClip getAudioClip(URL url，String name)
+　　//根据给定的参数获取并返回一声音片段。
+　　public AudioData getAudioData(URL url)
+　　public AudioData getAudioData(URL url，String name)
+　　//根据给定的参数获取并返回一个AudioData类型的对象。
+　　一旦获取了声音文件对象，就可以在显示动画的过程中同时运行用以播放声音文件的方法：
+　　public void play(URL url)
+　　public void play(URL url，String name)
+　　也就是在myApplet类中定义声音片段的实例变量：
+　　AudioClip　sound＝null；
+　　在init()方法中获取声音片段，run()方法中调用play()方法，即
+　　…
+　　protected void init(){
+　　…
+sound＝getAudioClip(getCodeBase(),"soundname．au")；
+　　…
+　　}
+　　…
+　　public void run(){
+　　…
+　　play(sound)；
+　　…
+　　}
+　　这样，就可以在屏幕上显示动画时，听到一段相应的声音。在Java语言中，之所以能够制作多媒体，就是因为它提供了有别于其他程序设计语言的浏览器类库，给浏览器带来了动态性和交互性！
+3　结束语
+　　目前，由于Internet的风靡，制作主页也就越来越变得必不可少。通过主页上定义的HyperLink(超链)，客户可访问相关的WWW信息。本文讲述了利用Java语言制作多媒体的方法，这样，就可以借鉴该方法并利用相关的HTML标记的作用把Java Applet嵌人到WWW页面，使我们在WWW浏览器上看到更加具有吸引力和充满活力的主页！
+作者简介：赵铭伟　女，26岁，研究生，主攻计算机网络和过程控制
+作者单位：大连理工大学计算机科学与工程系大连　116024
+参考文献
+　1　Gosling J.The Java Language Specification. Sun Microsystems，Inc.1997
+　2　The AWT Tutorial.Sun Microsystems，Inc.1997
+　3　Campione and Walrathk.The Java Tutorial.Sun Microsystems，Inc.1997
+收稿日期:1998-05-04

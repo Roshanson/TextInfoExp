@@ -1,0 +1,109 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+具有超稳定结构的鲁棒自适应控制器
+马孜　范俭　柴天佑
+　　摘要　针对结构和参数未知的非线性系统，提出了一种具有神经网络的超稳定鲁棒自适应控制器. 控制器基于一阶线性模型，采用Popov超稳定理论设计，其建模误差由BP网在线辨识，辨识结果在前馈补偿器中加以补偿，有效地实现了鲁棒自适应控制. 文中还给出了仿真结果. 
+　　关键词　神经网络， 超稳定性，鲁棒性， 自适应控制. 
+A ROBUST ADAPTIVE CONTROLLER WITH
+HYPERSTABLE CONSTRUCTION
+MA ZI　　FAN JIAN　　CHAI TIANYOU
+(Research Center of Automation, Northeastern University, Shenyang 110006)
+Abstract　A robust adaptive controller with hyperstable construction is presented for nonlinear systems with unknown parameters and structure. The Popov hyperstable therom is used to design the controller. The modeling error is on-line identified by a BP network. The identified results are taken as a compensatory signal so that the uncertainties of the system are effectively overcome and the robust adaptive control results are obtained. Simulation results are also given.
+Key words　Neural network, hyperstability, robustness, adaptive control.
+1　引言
+　　近年来，采用基于Lyapunov理论和Popov超稳定理论的控制器已逐渐渗透到一些有价值的应用背景之中［1，2］. 由于在算法设计中没有考虑建模误差的存在及影响，限制了算法的广泛应用. 自从Rohrs［3］提出了自适应控制的鲁棒性问题以来，一些鲁棒自适应方案相继提出［4－6］，这些方案都需要一些不真实的假设. 另外，在算法稳定鲁棒性提高的同时其性能指标一般都有不同程度的下降. 本文将人工神经网络引入算法设计，利用它来辨识系统存在的建模误差，并将其结果引入前馈补偿器进行补偿， 以达到消除系统不稳定性对系统的不良影响和提高系统鲁棒性的目的. 
+2　控制器设计
+　　被控对象由模型
+y(t)=fs[y(t-1),…,y(t-ny);u(t-1),…,u(t-nu)]　　　　　　　　(1)
+描述，式中fs:Rny+nu→Rn为复杂的非线性映射.假设fs对时间的变化率小于参数辨识算法的收敛率，(1)式可由等价模型
+y(t)=ay(t-1)+bu(t-1)+N(t)　　　　　　　　　　　　　(2)
+来描述，其中N(t)为等价线性模型与对象模型间的建模误差函数.引入一阶差分算子Δ，将(2)式改为
+y(t)=ay(t-1)+bu(t)-bΔu(t)+N(t).　　　　　　　　　　　　(3)
+令bΔu(t)=b′Δu(t-1)［2］，于是式(3)式演化为
+y(t)=ay(t-1)+bu(t)-b′Δu(t-1)+N(t).　　　　　　　　　　　(4)
+　　设r(t)为系统的参考输入， 定义跟踪误差和控制器的输出分别为
+e(t)=r(t)-y(t)，　u(t)=Kp(t)e(t)+uf(t).　　　　　　　　(5)，(6)
+其中　　　　　　　　uf(t)=K1(t)r(t)+K2(t)r(t-1)+K3(t)Δu(t-1)+K4(t)(t).　　　　(7)
+(6)式中Kp(t)为比例控制增益；(7)式中(t)为辨识的建模误差. 将(4)，(7)和(6)式代入(5)式， 得
+(1+bKp(t))e(t)=ae(t-1)-w(t),　　　　　　　　　　　(8)
+式中　　　　　　　　　w(t)=-(1-bK1(t))r(t)+(a+bK2(t))r(t-1)
+　　　　　　　　　　-(b′-bK3(t))Δu(t-1)+(1+bK4(t))(t).　　　　　　　　　　　 (9)
+　　根据Popov超稳定判据，若使系统渐近超稳定，应同时满足以下条件：
+　　(1) 前向通道脉冲传递函数严格正实；
+　　(2) 反馈通道满足Popov积分不等式
+　　　　　　　　　　　(10)
+　　由(8)式可得前向通道的传递函数为
+　　　　　　　　　(11)
+当　　　　　　　　　　　　　　　　　Kp(t)＞(a-1)/b, 　　　　　　　　　　　　　　(12)
+则可保证前向通道脉冲传递函数严格正实. 选择前馈补偿自适应律为
+　　　　　　　　　　(13)
+式中　[1(i),2(i),3(i),4(i)]=[γ(i),γ(i-1),Δu(i-1),(i)];λ1,λ2,λ3,λ4为任意正实数，采用仿真优化方法确定，以提高动态性能. L按下式选取
+　　　　　　　　　　　　(14)
+令(t)=k(t)+θc,k(t)为前馈自适应可调参数，θc为常数，且(0)， 则有如下关系［1］
+　(15)
+将(9)式和(13)式代入(11)式，并利用上式，可得
+　　　　(16)
+式中　[θ1,θ2,θ3,θ4]=[-1/b,a/b,-b′/b,1/b]; 
+　　由此可见， 按(12)式选取比例增益Kp(t),按(13)式确定自适应律，可以保证系统渐近超稳定. 
+　　用BP网作为建模误差估计器，网络共三层：输入层一个节点；隐层包括m个Sigmoid神经元；输出层一个Sigmoid神经元. 其输入信号
+I=[y(t),y(t-1),…;u(t-1),u(t-2),…;(t),(t-1),…],　　　　　　　(17)
+其中　.　　　　　　　　　　　　　　　　　　　　　　　(18)
+　　网络教师的信号是建模误差y(t)-(t). 网络隐层的输入
+　　　　　　　　　　　(19)
+经过Sigmoui激发函数的作用，可获得隐层输出
+　　　　　(20)
+输出层的总输入和输出分别为
+　　　　　　　　　　　　(21)
+　　　　　　(22)
+其中Wjp,βj和Wij,βj分别是输入与隐层和隐层与输出层间的权值和阈值. 它们分别按下式校正
+Wjp(t+1)=Wjp(t)+ηjpδiOp(t),　　　　　　　　　　　(23)
+Wij(t+1)=Wij(t)+ηijδjIi(t), 　　　　　　　　　　(24)
+βj(t+1)=βj(t)+λjδj,　βi(t+1)=βi(t)+λiβi.　　　　(25)，(26)
+各单元的训练误差由下式获得
+　　　　(27)，(28)
+3　自适应控制算法
+　　等价系统模型(2)可以用下式表示
+y(t)=x(t-1)Tθ+N(t),　　　　　　　　　　　　　　(29)
+其中x(t-1)T=[-y(t-1)　u(t-1)], θ=[a　b]T.　　　　　　　　(30)
+　　本算法按如下步骤执行.为了保证BP网的收敛性，在运行之前进行预训练，当收敛到一定程度时投入下面的运算. 
+　　1) 检测系统的输出y(t)，并建立等价系统参数辨识方程数据向量. 
+　　2) 采用如下辨识算法辨识线性模型参数
+　　(31)
+其中　　　　　　　　　　　v(t)=y(t)-x(t-1)T(t-1).　　　　　　　　　　　　　　　 (32)
+　　如果　　　　　　　　r(t-1)λmaxP′(t-1)≤K, 0＜k＜∞,　　　　　　　　　　　　(33)
+其中　　　　　　　　r(t-1)=r(t-2)[1+x(t-1)TP(t-2)x(t-1)], r(t-1)＜0,　　　　　　 (34)
+则　　　　　　　　　　　　　　　　P(t-1)=P′(t-1).　　　　　　　　　　　　　　　 (35)
+其中　　　　
+P(t-1)＞0;　　　　　　　　　　　　　　　　　(36)
+否则　　　　　　　　　　　　　　　　(37)
+在上述方程中，λmaxP′(t-1)是P′(t-1)的特征值. 
+　　3) 计算(t+1),在每个采样周期训练s次. 
+　　4) 根据参考输入和系统输出计算跟踪误差. 
+　　5) 根据参数估计值确定Kp(t)，并确定L. 
+　　6) 由(13)式计算可调参数K1(t),K2(t),K3(t)和K4(t). 
+　　7) 由(6)式计算控制输入u(t)，施加受控对象. 
+4　仿真结果
+　　仿真实验针对如下非线性模型
+
+仿真中，L=8,m=9,η=0.025,S=2. 系统的跟踪曲线如图1所示. 由于系统有较强的鲁棒性，获得了稳定的控制结果和满意的跟踪特性. 图2给出了建模误差N(t)和辨识曲线(t). 图3和图4分别是参数a,b估计值的收敛曲线和控制输入曲线. 
+　　　　
+图1　参考输入w(t)和输出y(t)　　　　　　　图2　建模误差N(t)及辨识值(t)
+　　　　　
+图3　系统参数估计收敛曲线　　　　　　　　　　　　图4　控制输入曲线
+5　结论
+　　本文提出的算法解决了以下问题：(1) 适用于一类复杂的非线性系统；(2) 在系统存在未建模动态情况下具有较强的鲁棒性；(3) 算法不仅简单，而且克服了常规自校正算法中计算控制器参数时由病态方程引起的系统失控问题. 
+1) 中国博士后科学基金和国家自然科学基金资助课题. 
+作者单位：东北大学自动化研究中心　沈阳　110006
+参考文献
+[1]　Tomizuka M et al.Synchronization of two motion control axes under adaptive feedforward control.Trans.of the ASME,1992,114(6):196-203.
+[2]　冯国楠，于睿.一类微处理机控制最优自适应转台伺服系统. 自动化学报，1989，15(3)：193-199.
+[3]　Rohrs C E et al.Robustness of adaptive control algorithms in the presence of unmodelled dynamics.In:Proc.21st IEEE CDC, 1982,3-11.
+[4]　Preterson B B, Nanendra K S. Bounded adaptive control.IEEE Trans. Autom. Control, 1982,AC-27(6):1161-1168.
+[5]　Ioannou P A, Kokotoive P V. Adaptive system with reduced models. New York:Spring-Verlag, 1983.
+[6]　Parlag L. Robustness of model reference adaptive control. In:Proc 3rd Yale Workshop on Application Adaptive System Theory, 1983.
+收稿日期 1995-05-19

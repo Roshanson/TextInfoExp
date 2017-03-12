@@ -1,0 +1,67 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000 Vol.19 No.2 P.9-10
+
+
+
+
+AutoCAD系统的ActiveX控制技术
+刘刚　汪新庆
+摘 要： 讨论了对著名的AutoCAD R14软件系统进行ActiveX Automation控制的基本原理和方法，具体说明了其实现途径。
+关键词： ActiveX控制 AutoCAD软件 二次开发 系统集成
+　　ActiveX控制是指基于ActiveX Automation技术的一套对软件系统进行交互控制和集成的技术方法。AutoCAD R14软件系统全面支持面向对象的ActiveX Automation技术，提供了更多的系统和图形对象的交互能力，使得用户可利用支持ActiveX Automation的多种高级语言如VB 5．0，VC＋＋ 5．0和DELPHI等对AutoCAD软件系统进行二次开发和集成。本文针对如何有效地对AutoCAD软件系统实现ActiveX控制进行了探讨。
+1 ActiveX控制的基本原理和AutoCAD的二次开发
+1．1 ActiveX Automation技术
+　　ActiveX Automation技术的前身是OLE Automation技术，是一种基于组件对象模型COM的应用对象的链接与嵌入技术。OLE构件对象通过ActiveX自动化（ActiveX Automation）提供了一组可被外部访问的接口，各类不同工具可通过该接口访问构件对象。这里讨论的是程序一级的对象集成。在ActiveX Automation中服务器方对象（ActiveX Automation Server）实现客户方（ActiveX Automation Container）发出的服务请求。图1给出了ActiveX Automation技术的应用模型。本文讨论的系统中AutoCAD为服务器方，而开发的应用程序为客户方。注意此技术与DDE方式不同，ActiveX服务器方是以对象个体作为通信的主体，而不是以整个应用程序作为通信的主体。
+1．2 AutoCAD软件系统的二次开发
+　　AutoCAD的二次开发体系包括其内部三代开发环境和外部应用程序开发，如图2所示。对于各种开发环境的优劣比较在此不作详述，但需要指出的是利用基于进程通信的ActiveX Automation开发技术的好处在于：①开发语言多样化。在支持此技术的各种语言和开发环境中，可以选择自己最熟悉的语言进行开发，例如Visual Basic、Visual C＋＋以及Visual FoxPro等等。②程序编制自由。用此方法编制程序不必在给定的二次开发环境中受到语言和接口的约束，而可用自己的风格自由编写，开发效率高。③可充分利用已有资源。以AutoCAD为对象的开发程序，既可直接调用任何AutoLISP命令，又可直接调用其它方法程序开发的命令。同时原有的计算分析等模块可重复利用。④可移植性强。此方法开发的程序有较强的可移植性，当主服务软件的版本升级时，一般只需做少量改动或不作任何改动。⑤系统安全性好。与AutoLISP等程序相比，系统的安全性更易于保证，也可进行加密。⑥效率较高。与DDE方式相比，用ActiveX访问AutoCAD编程更简单，效率高而性能佳。
+
+图1 ActiveX Automation技术的应用模型
+
+图2 AutoCAD的二次开发工具与ActiveX程序接口
+2 ActiveX自动控制的实现
+2．1 AutoCAD的ActiveX对象模型
+　　此对象模型基本继承结构如图3所示。所有的对象都有相应的属性和方法。位于根部的是Application对象，从根对象出发可到达其它AutoCAD对象并利用它们的属性和方法。
+
+图3 AutoCAD的ActiveX对象模型
+　　值得注意的是在ActiveX对象模型中，AutoCAD环境中的许多部件或特定概念被确定为模型对象。例如线型、尺寸标注样式等样式设置，层、组和块等的组织结构，图形的显示视图以及图形的模型空间和纸空间等均被视为对象。
+　　关于ActiveX对象模型的使用方法在AutoCAD的在线帮助文件和参考文档中均有详细解释，本文不再赘叙。作为应用者要确定好使用何种支持ActiveX Automation的程序开发语言或环境。
+2．2 实现AutoCAD的ActiveX调用
+　　在实际应用中，要正确和流畅地实现ActiveX调用，关键在于如何有效地启动和切换AutoCAD窗口。其具体操作步骤如下（以VB为例）：
+　　1．启动AutoCAD应用程序。
+　　Public acadApp As Object
+　　On Error Resume Next ′出错处理
+　　Set acadApp＝GetObject（，″AutoCAD．Application″）
+　　　　　　　　　　　　　　　　 ′试图获得AutoCAD对象
+　　If Err Then ′如果AutoCAD未启动，进行下面的处理
+　　　 Err．Clear 
+　　　　Set acadApp＝CreateObject（″AutoCAD．Application″）
+　　　　　　　　　　　　　　 ′试图首次启动AutoCAD系统 
+　　If Err Then ′启动AutoCAD出错处理 
+　　　　　MsgBox Err．Description 
+　　　　End If
+　　　End If
+　　上述过程的最大优点是能保证AutoCAD系统仅启动1次，即内存中只有1个AutoCAD例程。
+　　2．获得AutoCAD文档、模型空间和视图的对象。注意acadDoc、moSpace和retVport需声明为Object变量。 
+　　　Set acadDoc＝acadApp．ActiveDocument 
+　　　Set moSpace＝acadDoc．ModelSpace 
+　　　Set retVport＝acadDoc．ActiveViewport 
+　　　acadApp．Visible＝True
+　　　3．获得AutoCAD窗口句柄。句柄用于对AutoCAD的准确控制，也是应用许多Windows API函数的基础条件。调用如下函数： 
+　　Call GetHwnd（Acadhwnd，″AUTOCAD″，″AUTOCAD －″）
+　　其主要思想是通过AUTOCAD窗口标题获得AUTOCAD窗口句柄Acadhwnd。
+　　4．应用Windows API函数切换AUTOCAD窗口，使其正确显示和拥有输入焦点。语句如下：　　　SetWindowPos Acadhwnd，HWND＿TOP，0，0，Screen．Width，
+　　　 Screen．Height，SWP＿NOMOVE
+　　ShowWindow Acadhwnd，SW＿SHOWMAXIMIZED
+　　SetFocus Acadhwnd
+　　通过以上处理，用户可以使用各种方法进行高效图形绘制和交互处理。若要退出AutoCAD系统，可使用语句acadApp．Quit，调用Application对象的Quit方法。
+3 结束语
+　　ActiveX Automation技术是应用程序之间进行控制和集成的一项先进技术，ActiveX自动控制在2个应用程序的内部对象中进行，并以客户／服务器的方式进行控制。AutoCAD R14系统全面支持此技术，使得应用程序模块与其有机集成和充分共享成为可能，同时使应用程序的开发更具有多样性、界面独特性、保密性和可靠性等特点，能加快开发进度。与DDE相比，外部应用程序通过DDE同AutoCAD通信过程较繁且效率低下。ActiveX自动控制在进行对象处理时比原有嵌入式AutoLISP速度要快得多。本文所讨论的思想方法也可拓展到其它支持ActiveX Automation程序系统的开发与应用上。
+刘刚（武汉中国地质大学资源学院信息所430074）
+汪新庆（武汉中国地质大学资源学院信息所430074）
+参考文献
+1，AutoDesk Inc．AutoCAD Release 14 Object Technology Inside AutoCAD．AutoDesk Inc Press，1997
+2，况正谦．Visual Basic 4．0编程技术．西安：西北工业大学出版社，1997
+3，Microsoft Corp．OLE2对象连接与嵌入技术编程指南．北京：电子工业出版社，1995
+4，吴冲龙．地质矿产点源信息系统设计原理及应用．北京：中国地质大学出版社，1996
+收稿日期：1999－08－16

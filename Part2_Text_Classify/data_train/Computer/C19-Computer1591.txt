@@ -1,0 +1,132 @@
+信息与控制
+Information and Control
+1999年　第28卷　第4期　Vol.28　No.4　1999
+
+
+
+DNA 计算研究的现状与展望
+任立红　丁永生　邵世煌
+
+　　摘　要：最近，采用DNA计算的可能性引起了人们的广 泛兴趣．本文在简要介绍DNA机理之后，探讨了DNA计算及其模型，并将其与遗传算法、模 糊控制、神经网络、混沌系统等软计算技术进行集成，指出了 DNA 计算的优点及目前存在 的问题．最后我们对它们的前景进行展望．
+　　关键词：DNA计算，软计算，遗传算法，模糊控制，神经网络，混沌系 统
+　　中图分类号：TP11　　　　　　文献标识码：A
+THE STUDY OF DNA COMPUTING: CURRENT SITUATION
+AND FUTURE DIRECTIONS
+REN Lihong　DING Yongsheng　SHAO Shihuang
+(The Department of Automation, China Textile University, Shanghai 　200051)
+Abstract:Recently, the possibility of using DNA as a computi ng tool arouses wide interests of many researchers. In this paper, after a brief introduction to the mechanism of DNA, we first explore DNA computing and its m odels. Then we integrate DNA computing with some soft computing technologies, s uch as genetic algorithms, fuzzy control, neural networks and chaotic systems. F urthermore, we pointe out the advantages and current existing problems of DNA c omputing. Finally, we for ecast the further work of DNA computing.
+Key words:DNA computing, soft computing, genetic algorithm, fuzzy control, neural networks, chaotic systems
+
+
+1　引言
+　　脱氧核糖核酸（DNA）携带生命的遗传信息．自从Watson和Crick在1953 年发现DNA 之后，人们发现和发展了许多操作DNA的方法．在生物技术中有：采用酶进行切除和粘 贴、及聚合链反应产生DNA串等．在生物工业技术中有：选择过滤、标定和DNA排序 ．总的来说，这些发展不仅使我们能使用DNA作为可修改的存贮媒体―一种内存，而 且使我们能使用这些技术在这种内存上进行操作以实现算法．
+　　DNA于1994年被L. Adleman首次用实验显示了用于计算的可能性．他在《Science 》杂志上发表的突破性的文章中[1]，介绍了用DNA计算解决图论中Hamilt onian七节点路径问题的实验．这个奇迹表明了采用DNA进行特定目的计算的可行性． 它的新颖性不在于算法，也不在于速度，而在于采用迄今为止还没有作为计算机硬件的生物 工业技术来实现，并且开发了这种媒体潜在的并行性．这篇文章不久引起了许多学者尤其是 计算机科学家的兴趣，目前研究已涉及许多方面：DNA计算的能力、模型和算法等[2~13]．最近也有学者开始将DNA计算与遗传算法、神经网络、模糊系统和混 沌系统等软计算方法相结合[14～23]. L. Adleman给我们提出了令人激动人心 的挑战，但DNA计算的许多研究等待着各个学科的合作研究，如生物学、化学、计算机 科学、数学、物理和工程等，我们称之为“DNA生物软计算”．
+　　本文首先简要介绍DNA机理，然后探讨目前DNA计算的研究进展，并将其与软计算进 行集成，指出DNA计算的优点及实际实现存在的问题．最后我们对它们的前景进行展望．
+2　DNA原理及其数学机理
+2.1　DNA编码机理
+　　DNA是重要的基因物质，它携带着生物的遗传信息．DNA的基本元素是核苷酸．由于化学结构的不同，核苷酸划分为四类碱基(bases)：腺嘌呤 (A)、鸟嘌呤 (G)、胞嘧 啶(C)和胸腺嘧啶(T)．
+　　DNA由两条极长的核苷酸键组成，这两条极长的核苷酸键利用碱基之间的氢键而结合在一起，形成一条双股的螺旋结构，且一股中的碱基序列与另一股中的碱基序列互补．A和T配对，C和G配对．每个染色体是一段双股螺旋的DNA．遗传信息以A、T、C、G 在核苷酸中的排列顺序而体现，其排列序列的多样性构成了丰富的遗传信息．
+2.2　遗传信息流程及操作方法
+　　细胞利用遗传信息主要有三种：复制、转录和翻译．通过DNA的复制而保留遗传信息．遗传信息从细胞核传到细胞质，是把DNA转录成mRNA．用mRNA编码的遗传信息翻 译成由一个特定序列氨基酸连成的蛋白质．tRNA起调节作用，将氨基酸插入到多缩氨基 酸的合适位置．
+　　重组或交叉是DNA交换遗传信息的过程，两条DNA链通过交叉互相交换链上的核苷酸．变异是DNA序列中的变化，最常见的变异是基因中代码序列的变化，如转换（trans ition）变异：嘌呤替代嘌呤、嘧啶替代嘧啶；颠换（transversion）变异：嘌呤被嘌呤或嘧啶替代；框构转移（frameshift）变异：一个或多个碱基对丢失或插入，再重新组合．
+2.3　DNA的数学机理
+　　从DNA的原理来看，它与数学操作非常类似．单股DNA可看作由四个不同符号A、 G、C和T组成的串．它在数学上就像电子计算机中编码“0”和“1”一样，可表示成四字 母的集合∑={A,G,C,T}来译码信息．DNA串可作为译码信息，酶可看作模拟在DNA序 列上简单的计算． 不同的酶用于不同的算子，如，限制内核酸酶（endonucleases）可 作为分离算子，DNA结合酶（ligase）可作为绑结算子，DNA 聚合酶（polymeras es）可作为复制算子，外核酸酶（exonuclease）可作为删除算子等[24]． 
+3　DNA计算的研究进展
+3.1　DNA计算及其模型
+　　DNA计算的研究涉及许多方面，DNA计算的通用性、时空复杂性、有效性及容错的模 型已被提出并检验．
+3.1.1　DNA通用计算机
+　　L. Adleman在他的文章中指出是否存在一个通用DNA计算框架的问题[1]， 不久一些其他的研究学者解答了这个问题．通过许多不同的方法，他们表明DNA计算至 少在理论上是通用的[3, 25, 26]．基于DNA计算的机器能像我们所用的电子计算机一样进行编程．这些证明主要是表明DNA计算框架如何能模拟一个著名的通用计算 模型，例如，它能模拟一个通用的图灵机或元胞自动机．一串DNA可看作一个图灵机磁 带中内容的解码，根据机器的有限控制规则，通过酶反应的客观框架可重写磁带．Beave 提出了如何建立和操作含单个DNA分子的图灵机[27]，Smith和Scheweitzer表明DNA分子和标准实验室技术可用于建立一个非确定性图灵机[28]，Winfre e描述了一种基于自装配单股核酸链网络的空间图灵机[12]，另外，结扎方法也 被用于模拟图灵机[29]．Baum显示了使用DNA和分子生物学工具能达到编码1020个字的联想记忆[30]．Rooβ和Wagner则表明，若没有时间限制 ，Lipton模型能处理任何计算问题[11]． 这些证明显示了存在DNA计算机 的许多可能结构，但是许多证明做了一些从实际角度来看不现实的假设，如无差操作．因此 它们不能直接用于工程中的DNA计算机，并且DNA反应中的并行性也没有很好地被开 发．
+3.1.2　DNA计算模型及其算法
+　　许多实际计算问题，包括最优购货规划、图的最长路径和布尔逻辑满意等，都可以翻译成像 有向Hamiltonian路径问题这种形式．
+　　自L. Adleman的第一个DNA计算实验之后，R. Lipton紧接着将他的结果推广到解决任意 的NP问题，并提高了计算速度．他在一些理想的假设下得到了一个确定性的并行计算模 型（无限制模型），并在试管中应用了提取、合并、删除和放大等分子操作[31]． 他还显示了DNA实验如何解决计算机科学中的满意问题（SAT）（SAT是一个著名的 NP完全问题的算法，它需要指数时间），并证明了任意NP问题可使用这个模型用多 项式时间完成．接着L. Adleman提出了构造分子计算机的实际问题，基于R. Lipton 提出的带有提取、合并、删除和放大等试管操作的无限制模型的基础上，介绍了有限制的 改进模型[32]．Rooβ和Wagner基于其它DNA操作，系统地探讨了各种 Lipton模型的变形[11]．其他一些学者调查了拼接(splicing)系统的数学 模型[25, 33～38]，它是基于拼接操作的产生机理，作为DNA重组的形式语言模 型[39, 40]．拼接系统具有图灵机同样的通用计算能力[25, 35]．另一类 结合分子操作和随机访问内存的sticker计算模型也已被研究[41, 42]．
+　　试管系统被提出了作为DNA分子的生物计算机系统[43, 44]．拼接、切除和重 组操作表明试管系统具有通用计算能力．但在试管系统的各种一般模型中，某个特定对象的 试管中应用规则的数目受到限制．
+　　许多研究学者不仅研究了基于DNA计算的各种DNA算法来提高计算能力和降低复杂性 [12, 17, 22, 30, 36, 43, 45, 46], 而且也提出了与电子计算模型对应的分子模 型的DNA算法，如DNA加[47]、分子矩阵乘[48]和因子分解法[27]等．DNA计算机的布尔电路也已被仿真研究[31, 49]，Liu等[50]还用生物化学的方法开发了有效地模拟一些电路的分子计算模型．
+3.2　DNA计算与软计算的集成
+　　生物进化中采用的许多信息处理模式已被人们用于智能系统，如神经网络、遗传算法等软计 算方法．软计算主要包括模糊逻辑推理、神经网络理论、概率推理、遗传算法、混沌系统和 一部分学习理论．本节将DNA计算与软计算中智能技术进行集成，主要是与神经网络、 遗传算法、模糊技术和混沌系统的集成．
+3.2.1　DNA计算与遗传算法的集成
+　　遗传算法（GA），用于模拟生命的自适应和进化，被用于设计好的机器和编制自进化的 计算机程序．由于常规GA用于实际问题，尤其是处理复杂的、混淆的和多任务问题时不 够灵活，且计算速度慢，一些学者提出了基于DNA机理的改进的GA．如，带有双串 DNA 的GA用于促进DNA复制的非对换变异[15]；类似DNA编码的“ 系统描述”用于各种进化系统细胞特定化的模型[18]．在细胞特定化的过程中，每 个细胞具有相同的DNA．硬件建模和计算机仿真显示了细胞特定化具有自组织特性．另 外，还提出了基于生物学DNA编码方法的GA[21, 22]．这种方法具有DNA 染色体中的重复性和基因表达的重叠性，并使交叉和变异操作变得容易，利用生物学DN A的发展机理可实现知识的灵活表达． DNA转录、病毒DNA和酶操作也可用这种 DNA编码方法来实现．还有学者将DNA编码方法与伪细菌GA(PBGA）相结合[2 3]．同时，为了避免在DNA计算中，由于核酸碱基之间化学反应带来的误差，一些作 者提出了用于搜索DNA进化计算中好的DNA译码算法[14]．
+3.2.2　DNA计算与模糊系统的集成
+　　模糊系统在许多领域中已获得成功应用，但对于复杂的多输入多输出模糊系统目前仍缺乏有 效的设计方法．虽然常规GA能用于获取模糊控制规则，但有时难以胜任复杂系统，如多输入多输出模糊系统的优化工作．故一些作者提出了基于DNA编码机理的GA并用于多变量模糊系统的优化[21, 22]．它能用于模糊系统的输入变量的选择和映射函数参数的调整，从而自动获取模糊控制规则．并且，病毒和酶操作也用于这种DNA编码 法．机器人运动控制的研究中初步显示了这种方法的可行性．
+3.2.3　DNA计算与神经网络的集成
+　　生物的神经组织的生成和功能受DNA遗传信息作用，故DNA遗传信息可用于神经网络 的建模和优化．
+　　一种采用DNA序列译码的框架被用于建立神经网络（NN）模型[19]．这种 神经网络模型与采用常用CODE-4译码框架的神经网络相比能更好地预测分开DNA序 列的topoisomerase可能性，且该网络大小是后者的1/4，因而该神经网络模型的参数数 目减少了近75％．
+　　另外，Farhat和Hernandez探讨了采用DNA译码的推理网络的复杂时空行为[16] ．该推理网络是由外部驱动的推理处理元件或带有量子化相互作用的神经元耦合组成．相互作用的神经元是由分子生物学的遗传信息译码，即根据DNA分子中的四个核苷酸碱基来 模拟．这种将分子生物学和DNA分子遗传信息译码与神经网络进行结合的研究有助于促 进分子计算和学习机的发展．
+3.2.4　DNA计算与混沌的集成
+　　一种获取对应于所需DNA算法的反馈网络的系统方法被提出，此时混沌系统可看成包含 待处理信息的一个试管．按照DNA计算框架，利用混沌动态性的丰富本质特性来有效地 产生和处理二进制编码序列，进而得到问题的解答[17]．
+　　另外，现代DNA和 古代I Ching结合被用于计算建模[20]，每个模型均显 示了模式混沌新科学的原理．
+4　DNA计算的优点及目前存在的问题
+4.1　DNA计算的优点
+　　首先，DNA具有不可估量水平的并行性．目前最快的巨型机每秒能执行1012个操 作．而DNA计算机的重要特点在于它的巨大并行处理．在L. Adleman的初始实验中 ，通过适当估计，DNA串的并行操作数目可达1014．许多研究者认为，用当前技 术，1015 到 1020个串的并行操作是可以达到的[1, 27]．虽然DN A计算每个操作本身与电子实现相比非常缓慢，但对于当前要求的巨型机或更强的计算挑 战，DNA反应的巨大并行性足以补偿．
+　　其次，DNA计算有很高的能量效率和存贮容量．电子计算机操作过程效率非常低，计算 机浪费了它们产生的许多热能量．巨型机执行109个操作需要1焦耳能量，而用于实现DN A 计算操作的酶，是在进化中产生的，具有很高的能量效率，1焦耳的能量足以执行2×10 9个操作．DNA分子允许非常高的信息存贮密度：1 位/nm3，而当前录像带的信 息存贮密度仅为1位/1212nm3[1]．
+　　此外，尝试开发实际的DNA计算能促进生物学和生物化学获得更灵活的操作和更可靠的 技术．
+4.2　目前存在的问题
+　　尽管DNA计算的研究已取得一些进展，但DNA计算还有许多实际问题和理论挑战有 待解决．在当前所有DNA计算框架中，DNA串表达的计算状态类似于并行机的芯片状态．电子并行计算机中用的算法通常依赖于并行计算元件之间的通信．目前在DNA计算 的研究中，几乎还没有对如何获得DNA串之间通信的建议．因此许多在常规并行计算中的技术目前还不能用于DNA计算．
+　　实际设计一个DNA计算机的障碍主要有两个方面：
+　　（1）物理上：处理大规模系统和复制时的误差．误差来自几个方面，DNA串在传输中会物理丢失．DNA并不总是像我们期望的那样工作，例如，它能显示U型循环，基对之间的绑结并不总是像我们期望的那样；另外，DNA计算框架用生物学和生物技术的PCR操作来实现，其可靠性只有95％．研究学者们现在已意识到这些误差问题，并正考虑许多激动人心的补偿措施[2, 10, 49, 51]，如，仔细编码能使DNA更好地工作、用其它技术进行操作、并正考虑最优的反应环境、用重复元件和实验来增加可靠性、用其它宏观分子，如RNA或DNA合成的变形作为信息载体．
+　　（2）逻辑上：适应广泛种类计算问题的多用性和有效性[1, 3, 24, 26]．虽然D NA计算机被证明是通用计算机，但DNA计算机在所有实际应用中不可能替代电子计算机．最佳方案是高度并行任务可用DNA计算机来实现，而固有的串行工作仍应由电子计算机完成[50]．
+5　结论与展望
+　　DNA计算刚处于起步阶段，但已显出非常大的潜力，在生物、化学和医学中有许多潜在 的应用．它能产生期望特性的分子，如酶、药，并在以上领域中非常重要．DNA计算机 的代价非常低，能量效率极高，它们使用与自然界中生命细胞相同的巨大并行性．DNA 计算是一个非常新颖的想法，在得到实际应用之前还有许多问题要解决．DNA计算待解 决的问题及发展方向有：
+　　（1）在DNA计算实验中，如何选择实际操作参数的数目、个体的操作速度、个体操作和序列操作的可靠性、信息载体的稳定性个体及一个实验中连续操作的数目；
+　　（2）未来的计算机应是DNA与电子相结合的计算机．在这种计算机中，每部分完成自己适合的任务，并行任务用DNA来计算，而固有的串行工作由硅芯片来完成．同时还应该 开发一种高级分子编程语言；
+　　（3）与软计算进一步的集成．在常规GA基础上进行以下改进：（a）编码改进：由0－1二进制编码改进成DNA的ATCG编码；（b）操作改进：由单点交叉发展成 多点交叉、标准交叉，增加反转技术，改进替代策略等；（c）模拟DNA修补系统功 能；（d）开发基于DNA机理的递阶GA．同时研究基于DNA机理的学习方法 ，并用于模糊系统和神经网络的生成和优化设计．
+　　总之，DNA计算的理论研究和实际实现等待着人们进一步的深入研究，与智能系统中软计算方法相结合的途径需更好地探索．我们期望这一科学技术挑战带给科学技术更大的进步．
+注释：基金项目：国家自然科学基金资助
+作者简介：任立红，女，32岁，博士生．研究领域为软计算、智能控制、非线性系统控制的 理论研究与应用工作．
+　　　　　丁永生，男，32岁，博士，讲师．研究领域为为模糊控制、智能控制、非线性系统控制的理论研究与工业及生物医学工程应用工作．
+　　　　　邵世煌，男，61岁，教授，博士生导师，现为中国纺织大学校长．长期从事模糊控制、智能控制、非线性系统控制、智能CAD、计算机控制的教学、理论研究与应用工作．
+作者单位：中国纺织大学自动化系　上海　200051
+参考文献
+1　 Adleman L M. Molecular Computation of Solutions to Combinatorial Problems, Science, 1994, 266(5187): 1021～1023
+2　 Bach E et al. DNA Models and Algorithms for NP-complete Problems, Proce edings Eleventh Annual IEEE Conference on Computational Complexity, Philadelphia , PA, USA, 24-27 May 1996: 290～300
+3　 Freund R et al. DNA Computing: the Existence of Universal Computers, To Appear in Theory of Computer Science
+4　 Gibbons A et al. Models of DNA Computation, Proceedings of 21st Internat ional Symposium on Mathematical Foundations of Computer Science 1996, MFCS '96, Cracow, Poland, 2-6 Sept. 1996:18～36
+5　 Gibbons A et al. DNA Computing, Current Opinion in Biotechnology, 1997, 8(1):103～106
+6　 Leete T H et al. Massively Parallel DNA Computation: Expansion of Symbol ic Determinants, Proceedings of the Second Annual Meeting on DNA based Computers , June 1996：49～66
+7　 MacDonaill D A. On the Scalability of Molecular Computational Solutions to N P Problems, The Journal of Universal Computer Science, 1996, 2(2): 8 7～95
+8　 Murphy R C et al. A New Algorithm for DNA Based Computation, Proceedings of 1997 IEEE International Conference on Evolutionary Computation (ICEC '97), I ndianapolis, IN, USA, 13-16 April 1997:207～212
+9　 Reif J H. Parallel Molecular Computation: Models and Simulations, In Proceed ings of the Seventh Annual ACM Symposium on Parallel Algorithms and Architecture s, Santa Barbara, June 1995, http://www.cs.duke.edu/～reif/HomePage.html
+10　Rooβ D. Recent Developments in DNA-Computing, Proceedings of 1997 27th International Symposium on Multiple-Valued Logic, Antigonish, NS, Canada, 28-30 May 1997:3～9
+11　Roo β D, Wagner K W. On the Power of DNA-Computing, Information and Comput ation, 1996, 131(2):95～109
+12　Winfree E. On the Computational Power of DNA Annealing and Ligation, In DNA based Computers (E. B. Baum and R. J. Lipton, editors), American Mathematical So ciety, 1996.
+13　Zauner K P, Conrad M. Parallel Computing with DNA: toward the Anti-Universa l Machine, Proceedings of the 4th International Conference on Parallel Problem S olving from Nature, Berlin, Germany, 22-26 Sept. 1996:696～705
+14　Deaton R et al. A DNA Based Implementation of an Evolutionary Search for Good Encodings for DNA Computation, Proceedings of 1997 IEEE International Conf erence on Evolutionary Computation, Indianapolis, IN, USA, 13-16 April 1997:267 ～271
+15　Doi H, Furusawa M. Evolution is Promoted by Asymmetrical Mutations in DNA Re plication-Genetic Algorithm with Double-Stranded DNA, Fujitsu Scientific and T echnical Journal, 1996, 32(2):248～255
+16　Farhat N H, Hernandez E D M. Logistic Networks with DNA-Like Encoding and I nteractions, Proceedings of International Workshop on Artificial Neural Networks , Malaga-Torremolinos, Spain, 7-9 June 1995:215～222
+17　Manganaro G, Gyvez J P D. DNA Computing Based on Chaos, Proceedings of 1997 IEEE International Conference on Evolutionary Computation (ICEC '97), Indianapol is, IN, USA, 13-16 April 1997:255～260
+18　Nakano K et al. A Self-Organizing System with Cell-Specialization, Pro ceedings of 1997 IEEE International Conference on Evolutionary Computation, Indi anapolis, IN, USA, 13-16 April 1997:279～284
+19　Russo M F et al. An Improved DNA Encoding Scheme for Neural Network Mode ling, World Congress on Neural Networks-San Diego. 1994 International Neural Net work Society Annual Meeting, San Diego, CA, USA, 5-9 June 1994, I/354～359
+20　Walter K. Nonlinear Computation in the I Ching, Symbiosis of Human and Artif act, Proceedings of the Sixth International Conference on Human-Computer Intera ction, Tokyo, Japan, 9-14 July 1995, B/1053～1057
+21　Yoshikawa T et al. Emergence of Effective Fuzzy Rules for Controlling Mo bile Robots Using DNA Coding Method, Proceedings of 1996 IEEE International Conf erence on Evolutionary Computation (ICEC'96), Nagoya, Japan, 20-22 May 1996:581 ～586
+22　Yoshikawa T et al. DNA Coding Method and a Mechanism of Development for Acquisition of Fuzzy Control Rules, Proceedings of the Fifth IEEE International Conference on Fuzzy Systems (FUZZ-IEEE '96), New Orleans, LA, USA, 8-11 Sept. 19 96, 3:2194～2200
+23　Yoshikawa T et al. The Effects of Combination of DNA Coding Method with Pseudo-Bacterial GA, Proceedings of 1997 IEEE International Conference on Evolu tionary Computation (ICEC '97), Indianapolis, IN, USA, 13-16 April 1997:285～290 
+24　Kari L. DNA Computing: Arrival of Biological Mathematics, The Mathematical I ntelligencer, 1997, 19(2): 9～22
+25　Csuhaj Varju E et al. DNA Computing Based on Splicing: Universality Resu lts, Proceedings of First Annual Pacific Symposium on Biocomputing, Hawaii, (L. Hunter, T. E. Klein, eds), World Sci. Publ., Singapore, 1996:179～190
+26　Rozen D E et al. Molecular Computing: Does DNA Compute? Current Biology, 1996, 6(3): 254～257
+27　Beaver D. Computing with DNA, Journal of Computational Biology, 1995, 2(1): 1～8
+28　Smith W, Schweitzer A. DNA Computers in Vitro and Vivo, DIMACS Workshop on D NA Based Computing, Princeton, April 1995
+29　Rothemund P. A DNA and Restriction Enzyme Implementation of Turing Machine, In DNA based Computers (E. B. Baum and R. J. Lipton, editors), American Mathemat ical Society, 1996:75～119
+30　Baum E B. Building an Associative Memory Vastly Larger than the Brain, Scien ce, 1995, 268: 583～585
+31　Lipton R J. DNA Solution of Hard Computational Problems, Science, 1995, 268( 5210): 542～545
+32　Adleman L. On Constructing a Molecular Computer, In DNA based computers (E. B. Baum and R. J. Lipton, editors), American Mathematical Society, 1996, 27: 1～2 1
+33　Head T. Splicing Schemes and DNA, Nanobiology, 1992, 1: 335～342
+34　Paun G. On the Power of the Splicing Operation, International Journal of Com puter Mathematics, 1995, 59: 27～35
+35　Paun G. Splicing Systems with Targets Are Computationally Universal, Informa tion Processing Letters, 1996, 59(3): 129～133
+36　Paun G et al. Computing by Splicing, Theoretical Computer Science, 1996, 168(2):321～336
+37　Paun G, Salomaa A. DNA Computing Based on the Splicing Operation, Mathematic a japonicae, 1996, 43(3): 607
+38　Paun G et al. Computing by Splicing: Programmed and Evolving Splicing Sy stems, Proceedings of 1997 IEEE International Conference on Evolutionary Computa tion, Indianapolis, IN, USA, 13-16 April 1997:273～277
+39　Head T. Formal Language Theory and DNA: an Analysis of the Generative Capaci ty of Specific Recombination Behaviors, Bulletin of Mathematical Biology, 49, 19 87:737～759
+40　Kari L et al. At the Crossroads of DNA Computing and Formal Languages: C haracterizing Recursively Enumerable Languages by Insertion-Deletion Systems, P roceedings of 3rd DIMACS Workshop on DNA-Based Computers, Philadelphia, June 1 997:318～333
+41　Kari L et al. DNA Computing by Using Sticker Systems, To appear in Acta Informatica
+42　Roweis S et al. A Sticker Based Architecture for DNA Computation, Procee dings of the Second Annual Meeting on DNA based Computers, June 1996:1～27
+43　Csuhaj-Varju E et al. Test Tube Distributed Systems Based on Splicing, Computers and AI, 1996, 15(2～3): 211～232
+44　Freund R, Freund F. Test Tube Systems with Controlled Applications of Rules, Proceedings of 1997 IEEE International Conference on Evolutionary Computation ( ICEC '97), Indianapolis, IN, USA, 13-16 April 1997:237～242
+45　Jonoska N, Karl S A. Ligation Experiments in Computing with DNA, Proceedings of 1997 IEEE International Conference on Evolutionary Computation, Indianapolis , IN, USA, 13-16 April 1997:261～266
+46　Kari L. DNA Computing Based on Insertions and Deletions, Proceedings of Conc eptual Tools for Understanding Dynamics in Biological Systems (Coenoses, N. Kenk el ed.), London, Canada, 1996, 12
+47　Guarnieri F et al. Making DNA Add, Science, 1996, 273:220～223
+48　Oliver J S. Computation with DNA-Matrix Multiplication, Proceedings of the Second Annual Meeting on DNA based Computers, June 1996:236～248
+49　Karp R M et al. Error-Resilient DNA Computation, In 7th ACM-SIAM Sympo sium on Discrete Algorithms, 1996:458～467
+50　Liu Q et al. A Surfaced-Based Approach to DNA Computation, Proceedings of the Second Annual Meeting on DNA based Computers, June 1996:206～216
+51　Amos M et al. Error-Resistant Implementation of DNA Computation, Procee dings of the Second Annual Meeting on DNA based Computers, June 1996:87～101
+
+
+收稿日期：1998-10-05

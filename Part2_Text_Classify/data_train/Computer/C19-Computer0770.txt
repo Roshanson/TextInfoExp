@@ -1,0 +1,91 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年　第25卷　第5期　Vol.25 No.5 1999
+
+
+
+基于小波网络动态补偿的广义预测控制器
+王群仙　李少远　李焕芝　陈增强　袁著祉
+摘　要　由于广义预测控制器依赖于表征过程的线性模型，没有考虑未建模误差的影响，随着预测长度的增加，其预测误差也增大.因此，提出用小波网络建立误差的预测模型，并对模型预测进行动态补偿，以抑制模型失配的影响，增强鲁棒性.仿真结果表明了算法的有效性.
+关键词　小波网络，预测控制，模型失配，鲁棒性.
+GENERALIZED PREDICTIVE CONTROL WITH DYNAMIC COMPENSATION BASED UPON WAVELET NETWORK
+WANG Qunxian　LI Shaoyuan　LI Huanzhi
+(Department of Electrical Engineering of Hebei University of Technology, Tianjin　300130)
+CHEN Zengqiang　YUAN Zhuzhi
+(Department of Computer & System Science, Nankai University, Tianjin　300071)
+Abstract　Generalized predictive control relies on the process linear model and doesn't consider the effect of unmodelled error. With a longer prediction length, the prediction error becomes greater. Therefore this paper presents an error prediction model using wavelet network and uses it to compensate the error dynamically. The adjusted GPC can reduce the influnce of unmodelling section and enhance its robustness. The simulation results have shown the method's validity.
+Key words　Wavelet network, predictive control, model mismatch, robustness.
+1　引　言
+　　广义预测控制器(GPC)［1］的在线求解基于在线辨识的过程模型，当存在建模误差时，随着预测长度的增加，预测误差也增加.因此，在预测控制中需要引入未来输出预测误差模型，以抑制模型失配的影响，提高控制器的鲁棒性.
+　　由于小波网络［2］作非线性函数逼近时，性能优于同等规模的神经网络，网络训练过程从根本上避免了局部最优，因此采用小波网络作为预测偏差模型的估计，其中的参数学习采用收敛速度较快的Davidon最小二乘法(DLS)［3］.仿真实验表明了本文算法的有效性.
+2　具有误差修正的广义预测控制器
+　　设系统由如下CARIMA模型描述
+A(z-1)y(k)=B(z-1)u(k-1)+ξ(k)/Δ,　(1)
+其中y(k),u(k)分别是过程的输出和输入；｛ξ(k)｝是互不相关的零均值噪声序列；A(z-1),B(z-1),Δ(z-1)均是z-1的多项式，A(z-1)=1+a1z-1+…+anaz-na,B(z-1)=b0+b1z-1+…+bnbz-nb,Δ=1-z-1.
+　　控制器设计所基于的目标函数为
+　(2)
+其中y(k+j)为y(k)的向前j步预报值；N为最大预测前位；Nu为控制前位；λ是控制加权因子；w(k+j)是设定值柔化序列，为
+w(k)=y(k),　w(k+j)=αw(k+j-1)+(1-α)yr(k),　j=1,…,N,　(3)
+(3)式中yr(k)是输出设定值，α∈［0,1)称为柔化因子.
+　　基于模型的预测为
+ym(k+j｜k)=Fj(z-1)Δu(k+j-1)+Gj(z-1)y(k),　(4)
+其中degEj=j-1,degGj=na，且
+Ej(z-1)A(z-1)Δ(z-1)+z-jGj(z-1)=1,Fj=EjB.　(5)
+令　则
+　(6)
+令ye(k+j｜k)表示系统模型的预测偏差
+ye(k+j｜k)=y(k+j)-ym(k+j｜k),　(7)
+则极小化目标函数(2)可得到误差修正的广义预测控制律
+　(8)
+参数定义如下
+
+其中的各元素也是系统模型的前N项阶跃响应系数｛fi｝N-1i=0.取ΔU的第一个元素Δu(k)，即为控制信号增量.
+3　预测误差的小波网络建模
+3.1　小波网络的参数学习
+　　对任一函数f(x)∈L2(Rn)，可由如图1的小波网络描述.其中n为小波网络节点个数，Ψ(.)为小波函数基，Di为膨胀向量，ti为平移向量，si为尺度向量，ωi为权值.即
+　(9)
+
+
+图1　小波网络结构
+　　设小波网络具有m个输出令θ=［ti,si,ωp,i］T，zi=Di.(x-ti)，网络输出对参数θ的偏导数为
+　(10)
+　(11)
+　(12)
+设小波网络逼近的真实输出为Y=｛yp｝p=1,…,m，定义,则为小波网络输出对各参数的偏导数.
+　　网络参数的学习采用DLS［3］算法如下：
+θk+1=θk-Hk+1Φk.Φk,　(13a)
+　(13b)
+其中Hk是Hessian阵，0<λh≤1.当网络输出只有一个时，Hessian阵计算中没有逆阵计算；当计算多个输出分量时，只需计算输出个数大小的逆阵.
+3.2　误差预测
+　　在第k时刻，为了得到训练样本，网络的输入取
+Xkx=［y(k-N),…,y(k-na-N),u(k-1-N),…,u(k-nb-1-N)］T.
+根据式(6)，(7)得到网络的输出，为
+Ye(k-N)=［ye(k-N+1)，…,ye(k)］T,
+训练的方法用DLS.依据训练后的网络进行预测误差的预测.
+　　进行误差预测时，网络的输入取
+Xk=［y(k),…,y(k-na),u(k-1),…,u(k-nb-1)］T,
+则此时网络的输出为Ye(k)，即
+Ye(k)=fWN［Xk,(k)］,　(14)
+其中为小波网络的权向量.
+4　仿真实例
+　　设受控系统为如下非线性系统仿真中，用变遗忘因子的最小二乘法在线辨识非线性系统的线性模型参数，并在线利用小波网络学习预测误差，根据(8)式计算控制律，其中小波网络基函数取墨西哥草帽函数f(x)=(1-x2)e-x2/2的直乘积.小波网络大小取6-10-4，na=3,nb=1,λh=0.95，N=4，Nu=4，λ=0.1，α=0.86，跟踪幅值为1的方波，最后400步的仿真曲线见图2，3.
+
+
+
+图2　跟踪曲线y
+
+
+图3　输入曲线u
+　　从仿真曲线看出，系统很好地跟踪了设定值的变化.
+5　结　论
+　　本文基于线性预测模型和小波网络动态补偿模型而构造的广义预测控制算法，在原有广义预测控制器的基础上，利用预测误差的历史数据建立误差预测的小波网络模型，可以作为预测误差的预测器，修正了纯基于线性模型的预测，对模型失配有很强的抑制能力.
+作者简介：王群仙　1969年生.1990年毕业于河北工业大学电气工程系，现为南开大学计算机与系统科学系博士生.目前主要从事自适应控制、神经网络及小波分析等研究工作.
+　　　　　李少远　1965年生.副教授、博士，现在上海交通大学继续博士后工作.研究方向为预测控制、神经网络、模糊控制等.
+作者单位：王群仙　李少远　李焕芝　河北工业大学电气工程系　天津　300130
+　　　　　陈增强　袁著祉　南开大学计算机与系统科学系　天津　300071
+参考文献
+1　Clarke D W. Application of generalized predictive control to industrial process. IEEE CSM, 1988, 8(2):49―55
+2　Juditsky A, Hjalmarson H, Benveniste A et al. Nonlinear black-box modeling in system identification: a unified overview. Automatica. 1995, 31(12):1691―1724
+3　Kasparian V, Batur C,Zhang H et al. Davidon least squares-based learning algorithm for feedforward neural networks. Neural Networks. 1994, 4(4),661～770
+收稿日期：1998-02-25
+修稿日期：1998-06-27

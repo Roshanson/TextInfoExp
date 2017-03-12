@@ -1,0 +1,112 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第6期 第10卷 Vol.10 No.6 1999
+
+
+
+一种基于插值曲面的图像放大方法*
+孙庆杰　张晓鹏　吴恩华
+　　摘要　文章提出了一种利用Bzier插值曲面进行图像放大的方法,该方法是为数字图像的每一个色彩分量构造一个分块双三次Bzier插值C1曲面,图像放大等价于以不同的采样速率对该曲面进行采样的过程.实验结果表明,该方法可以大大改善放大图像的效果.
+　　关键词　图像放大,Bzier曲面,插值,加速,像素子分.
+　　中图法分类号　TP391
+　
+A Method of Image Zooming-in Based on  Surface Interpolation
+SUN Qing-jie ZHANG Xiao-peng WU En-hua
+(Laboratory of Computer Science Institute of Software The 
+Chinese Academy of Sciences Beijing 100080)
+　　Abstract　A method of image zooming-in is presented in this paper. It is based on Bzier interpolation surface. First, it constructs a piecewise bicubic Bzier interpolation C1 surface for each color component of a digital image, and then, samples the surface with different sampling rate to zoom in. The experimental results show that the method can improve the quality of zoomed image greatly.
+　　Key words　Zoom in, Bzier surface, interpolation, acceleration, pixel decompose.
+　　在对图像进行处理时,常常要对图像进行放大.一般的方法是使用简单的比例变换,但这种方法时常会引起比较严重的图像走样,使图像产生大量锯齿.文献［1］提出了一种利用B-样条插值的图像放大方法,使放大后的图像质量得到极大的改善,但该方法的缺点是速度慢.如一幅大小为640×512的24bit的彩色图像,若使用文献［1］中的方法将该图像的某一部分放大为640×512大小,所需时间为30s（二阶B-样条,APOLLO DN-590）和60s（三阶B-样条,APOLLO DN-590）.
+　　近几年来,基于图像的虚拟现实［2～4］的研究与系统开发已经引起了人们越来越多的注意.我们开发了一个基于图像的虚拟环境漫游系统VEWALK.在该系统中,当用户漫游时,可以对场景渐进观察.为了实现这种渐进观察,我们需要一种既快速又能保证质量的图像放大方法.本文利用分块双三次Bzier插值C1曲面的连续性和局部性,提出了一种图像放大方法,很好地满足了VEWALK的要求.
+　　本文第1节介绍由数字图像构造Bzier插值曲面的方法.第2节介绍利用Bzier插值曲面放大图像的过程.第3节提出一种加速方法.最后给出实验结果与结论.
+1 曲面及其插值方法
+1.1 曲面
+　　Bzier曲面是由一组控制顶点生成的曲面.它可以用于在一组数据点之间进行插值,以便获得平滑过渡.本文将Bzier曲面应用于颜色分量的插值.
+　　Bzier曲面的定义如下:
+　　在空间给定(n+1)×(m+1)个点Pi,j(i=0,1,...,n;j=0,1,...,m),称下列张量积形式的参数曲面为n×m次的Bzier曲面:［5］
+(1)
+
+其中Pi,j是P(u,v)的控制顶点.由两组多边形Pi,0Pi,1...,Pi,m (i=0,1,...,n)和P0,jP1,j...,Pn,j (j=0,1,...,m)组成的网称为P(u,v)的控制网格,记为{Pi,j}.可以认为,控制网格{Pi,j}是P(u,v)的大致形状的勾画,P(u,v)是对{Pi,j}的逼近.
+1.2 曲面的拼接
+　　定义. 当两块曲面相连接时,若经过其公共边界上的任一点处在任一方向上的两张曲面的导数相等,我们称这两块曲面达到C1连续.
+　　 假设P(u,v)是由公式(1)定义的一个n×m次的Bzier曲面,Q(u,v)是一个k×m次的Bzier曲面,
+(2)
+
+P(u,v)与Q(u,v)达到C1连续的充分必要条件是［6］:
+Pn,j=Q0,j　　　　 j=0,1,2,...,m,
+Pn-1,jPn,j=Q0,jQ1,j　　j=0,1,2...,m.
+在第1.3节中,我们将根据这个条件构造一个Bzier曲面阵列,它们在整体上达到C1连续.
+1.3 由数字图像构造插值曲面
+　　假设I(x,y)是一个m×n的数字图像,它提供了图像色彩的3个离散的信息阵列,每个色彩分量对应于一个阵列.插值方法的价值在于,将有限的离散信息扩展为一个连续的信息系统,或者说,为离散信息补充了各种中间信息.
+　　设Ri,j(1≤i≤m,1≤j≤n)是I(x,y)中第i行第j列像素的红色分量,它与像素平面上的二维点(i,j)相对应.我们的任务是构造一个二元函数F(u,v)(0≤u≤m,0≤v≤n),使F(i,j)=Ri,j,并且F(u,v)在任一点处达到C1连续.
+　　我们的方法是:首先,将矩阵R1={Ri,j;1≤i≤m,1≤j≤n}扩充为R2={Ri,j;1≤i≤m+1,1≤j≤n+1},也就是说,续上Ri,j（i=m+1或j=n+1）的值,我们用向外插值法,取Rm+1,j=2Rm,j-Rm-1,j（1≤j≤n）,Ri,n+1= 2Ri,n-R i,n-1（1≤i≤m）,Rm+1,n+1=Rm+1,n+Rm,n+1-Rm,n.然后,为了下一步更加容易地构造Bzier曲面,我们再将R2扩充为R3={Ri,j;0≤i≤m+2,0≤j≤n+2},其扩充方法与R2的方法相同.最后构造m×n个3×3的Bzier曲面Si,j,
+(3)
+
+每一个Si,j的4个角控制顶点取为对应的Ri,j的值,各Si,j之间达到C1连续,或者说,
+F(u,v)=S［u］［v］(u-［u］,v-［v］),
+其中［u］表示不超过u的最大整数.
+(4)
+(5)
+(6)
+
+这样,便是16个点{Ri+x,j+y,-1≤x,y≤2}的线性组合.
+　　用同样的方法可以为I(m,n)的绿色分量G(m,n)和蓝色分量B(m,n)构造分块双三次Bzier插值C1曲面.
+　　可以验证,这种构造方法符合第1.2节中的条件.因此,F(u,v)在整体上是C1连续的.所以,F(u,v)是I(m,n)信息的一种连续表示.我们注意到,每一Si,j只依赖于像素(i,j)附近的4×4个像素的值,因而Si,j具有局部性质,这就是第3节中加速方法的理论基础.另一方面,插值曲面F(u,v)具有一次严格性,当所有Ri,j共面时,F(u,v)便是一个平面.如果I(m,n)表示一张色彩均匀变化的图像,任意放大,它仍然是均匀的.
+2 利用插值曲面放大图像
+　　我们将图像放大描述为如下问题:
+　　设I(x,y)是一个(n+1)×(m+1)的数字图像,I′(x′,y′)是I(x,y)的一部分,其大小为(n′+1)×(m′+1).现在要求将I′(x′,y′)放大为(n+1)×(m+1)大小的图像J(x,y),如图1所示.
+
+图1　图像放大
+　　可以看出,J(m,n)相对于I′(m′,n′)而言,在i和j方向上的压缩比为
+scalex=(n′+1)/(n+1),
+scaley=(m′+1)/(m+1).
+令R(i,j)是J(m,n)的第i行第j列像素P(i,j)的红色分量.由映射关系可以知道,P(i,j)对应于I′(m′,n′)中的位置(x′,y′)为
+x′=scalex×i,
+y′=scaley×j
+令
+x=［x′］,　　　　 y=［y′］,
+coordx=x′-x,　　　coordy=y′-y
+3 加速方法
+　　使用第2节中的方法,可以产生质量很好的图像,但速度比较慢.为此,我们提出如下的加速方法.
+　　在第1.3节中我们已经看到,Si,j具有局部性质,其值只依赖于像素(i,j)及其附近的4×4个像素的值.使用矩阵的形式可以更加清楚地表达这种依赖关系.
+　　公式（3）写成矩阵形式为
+Si,j(x,y)=A×B.(7)
+
+其中A=［a0,a1,...,a15］;B=［b0,b1,...,b15］T;bk(k=0,1,...,15)为Bzier曲面的控制点,为公式(3)中控制点bl的系数,它是x和y的函数.
+　　公式（4～6）写成矩阵形式为
+（8）
+
+其中P=［p0,p1,...,p15］T;bl (l=0,1,...,15)为Bzier曲面的控制点,如公式(5)所示;pk (k=0,1,...,15)为(i,j)及其相邻像素的颜色分量,p0=Pi-1,j-1,p1=Pi-1,j,...,p15=Pi+2,j+2;cl,k为bl关于pk的系数.
+　　由公式(7)和公式(8)可知:
+(9)
+
+其中M=［m0(x,y),m1(x,y),...,m15(x,y)］.
+　　公式（9）表明,(i,j)像素内(x,y)坐标处的点在Bzier插值曲面上的值是(i,j)像素及其相邻像素值的一个线性组合,其系数分别为m0(x,y),m1(x,y),...,m15(x,y).
+　　使用第2节中的方法时,大量时间均用于计算系数mi(x,y)(i=0,1,...,15).为解决这个问题,我们将(i,j)像素沿i方向和j方向均匀地划分成8个部分,这样便把(i,j)像素均匀地划分成了64个小块,分别用(0,0),(0,1),...,(7,7)标记这些小块,如图2所示.
+
+图2
+　　可以看出,块(x,y)的左下角顶点的坐标为(x/8,y/8),可以预先计算出这些顶点的系数矩阵Mx,y.当图像放大时,若需计算Sx,y在(u,v)(0≤u,v＜1)坐标处的值,则首先判断出(u,v)所属的块为(［8×u］,［8×v］),然后用该块的左下角顶点对应的系数矩阵M［8×u］,［8×v］近似(u,v)坐标所对应的系数矩阵,用该矩阵中的元素作为系数,将(i,j)及其相邻像素线性组合,其结果即为(u,v)处的色彩分量值.
+　　实验表明,该方法可以大大提高计算速度,而由系数矩阵的近似所导致的误差非常小,对图像质量的影响不大.
+4 实验结果
+　　我们在Pentium 100上用VC++实现了该算法.
+　　图3是一幅400×400的24bit的图像.图4是采用本文的方法将图3中的一部分图像(左下角顶点为(50,105),右上角顶点为(149,204))放大为400×400大小（放大比率为4.0）所得到的图像.图5是采用本文的方法将图3中的一部分图像(左下角顶点为(48,48),右上角顶点为(197,197))放大为400×400大小（放大比率为2.67）而得到的图像.
+　　　　　　　　
+图3　　　　　　　　　　图4　　　　　　　　　　　图5
+　　将一幅图像放大为400×400大小时,所需时间大约为1.2s.
+5 结 论
+　　本文提出了一种利用Bzier插值曲面进行图像放大的方法.应用该方法可以在较短时间内生成放大图像,同时可以保证放大图像的质量.
+*　本文研究得到国家自然科学基金和国家863高科技项目基金资助。
+作者简介　孙庆来，1972年生，硕士，主要研究领域为虚拟现实。
+　　　　　张晓鹏，1963年生，讲师，主要研究领域为计算机图形学，计算几何。
+　　　　　吴恩华，1947年生，博士，博士生导师，主要研究领域为计算机图形学 。
+作者单位：中国科学院软件研究所计算机科学开放研究实验室 北京 100080
+参考文献
+　1　Durand C X, Faguy D. Rational zoom of bit maps using B-spline interpolation in computerized 2-D animation. Computer Graphics Forum, 1990,9(1):27～37
+　2　Chen S E. QuickTime VR――an image-based approach to virtual environment navigation. In: Cook R ed. Proceedings of the Siggraph'95 (Computer Graphics). Los Angeles, CA: Addison-Wesley Publishing Company, 1995. 29～38
+　3　McMillan L, Bishop G. Plenoptic modeling: an image-based rendering system. In: Cook R ed. Proceedings of the Siggraph'95 (Computer Graphics). Los Angeles, CA: Addison-Wesley Publishing Company, 1995. 39～46
+　4　蔡勇,刘学慧,吴恩华.基于图像绘制的虚拟现实系统环境.软件学报,1997,8(10):721～728
+(Cai Yong, Liu Xue-hui, Wu En-hua. Image-based rendering: a technology for virtual reality system. Journal of Software, 1997,8(10):721～728)
+　5　唐荣锡,汪嘉业,彭群生.计算机图形学教程.北京:科学出版社,1994
+(Tang Rong-xi, Wang Jia-ye, Peng Qun-sheng. Computer Graphics. Beijing: Science Press, 1994)
+　6　Farin G. Curves and Surfaces for Computer Aided Geometric Design (2nd ed). New York: Academic Press, 1990
+本文1998-04-27收到原稿。1998-07-14收到修改稿

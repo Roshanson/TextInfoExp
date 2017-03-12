@@ -1,0 +1,122 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  Vol.24  No.5 1998
+
+
+
+关于模糊PID控制器推理机维数的研究
+胡包钢　G.K.I. Mann　　R.G.Gosine
+摘　要　对一维(1D)至三维(3D)模糊PID控制器进行了系统的分析研究，提出了四项系统功能特性指标来评价不同结构的控制器；这包括控制分量合成，耦合影响，增益相关和规则增长.通过对最常见的二维Mamdani模糊控制器进行分析研究，发现该控制器存在功能缺陷.为此，提出了最优结构的一维模糊PID控制器.该控制器采用了“1D-3D”映射关系的模糊推理机，从而实现了三个控制分量可以独立不相关的调整功能.通过与二维和三维控制器比较结果表明，一维控制器具有最佳系统功能特性.
+关键词　模糊控制，模糊PID控制器，模糊推理机维数.
+STUDY OF DIMENSIONALITY OF FUZZY INFERENCE 
+FOR FUZZY PID CONTROLLERS
+HU BAOGANG　(B.-G.HU)
+(National Laboratory of Pattern Recognition,Institute of Automation，Beijing　100080)
+G.K.I.Mann,　R.G.Gosine
+(C-CORE and Faculty of Engineering and Appliced Science 
+Memorial University of Newfoundland,St.John's,A1B 3X5 Canada)
+Abstract　A systematic study of one-,two- and three-input fuzzy inferences has been made for fuzzy PID controllers.We propose four criteria to evaluate the functional behaviors of the controllers,namely,control-action composition,coupling influence,gain dependency and rule growth.Based on a simple analysis,we conclude that the Mamdani's two-input fuzzy controller suffers from the difficulties according to the criteria.A novel one-input fuzzy controller is proposed which consists of a “1D-3D” fuzzy inference to generate three independent(proportional,integral and derivative)control actions.This system has shown the best inference structure with respect to the four functional criteria in comparison with two- and three-input fuzzy controllers.
+Key words　Fuzzy control,fuzzy PID controllers,dimensionality of fuzzy inference.
+1　引言
+　　模糊逻辑控制器的维数是根据其推理机输入变量个数决定的.图1显示了一至三维模糊PID控制器推理机的输入、输出关系.输入变量可以是误差、误差变化率、或误差二次变化率.输出变量表达式将根据输入变量及输出变量形式(绝对量或相对量)而决定.上标符号“^”表示各变量为归一化变量(在［-1，1］之间).
+
+
+图1　一至三维模糊PID控制器推理机的“输入-输出”关系
+　　模糊PID控制器的设计涉及到许多参量的选取，如控制器维数、模糊变量个数、隶属函数形状、增益参数、量化因子等，其中有关维数的选取是最基本的.然而，关于这一问题的系统研究则很少.到目前为止，模糊控制器的设计者们大多沿用Mamdani［1］1974年提出的二维模糊控制器结构［2―8］.近年来，三维［9］与一维［10］模糊控制器也相继显示出成功的计算结果.此外，文献［11，12］给出了n维模糊控制系统的理论推导.如何选取模糊控制器维数仍是一个亟待解决的问题.
+　　在模糊控制器维数选取研究中，首先面临的问题是如何评价控制器.作为对通用模糊PID控制器的系统性研究，这种评价应是具有广义意义的.然而，基于特定被控对象进行的常规控制品质检查(如误差、稳定性、优化等指标)是无法给出系统通用性结论的.因此，作者提出了四项系统功能特性评价指标.据此首先对常规二维模糊控制器进行分析研究，推证出这种控制器的功能缺陷：控制分量合成、耦合影响、增益相关和规则指数增长.通过对三种不同维数控制器的比较研究，使设计者了解它们的系统特性差异.最后提出了最优结构的一维模糊PID控制器.
+2　关于常规二维(2D)模糊控制器
+　　根据二维模糊控制器的数学关系式，提出了四项系统功能特征评价指标.尽管这类控制器最为常见并为设计者所熟悉，有关它的结构特性及其缺陷的研究是欠缺的.下文将根据四项系统功能特性评价指标考察该类控制器.
+2.1　控制分量合成(control-action composition)
+　　二维模糊控制器的基本规则语言表达式可有两种
+PD型：　　Else［if  is Eiand Δ is ΔEjthen PD is (UPD)m］;　　(1)
+PI型：　　Else［if  is Ei and Δ is ΔEj then PIis (ΔUPI)m］.　　(2)
+　　由Mamdani［1］第一个发展的模糊控制器是PI型控制器.它采用增量形式输出，并与传统PI控制器的增量形式
+　　(3)
+有着近似的关系.当采用绝对量输出形式式(1)时，系统将为模糊PD控制单元.这可由传统三参数PID控制器的绝对量表达式反映出
+　　(4)
+应该注意到，“增益参数与输入变量的一一对应关系”将随输出变量形式而改变.如绝对量变为相对量输出时，比例增益由对应误差变量变为对应误差变化率变量.本文将讨论到，二维和三维模糊控制器已失去这种一一对应关系.然而，传统PID控制器中的对应关系将是辨别模糊控制器PID类型的依据.
+　　这里将(4)式改写为三项控制分量之和
+uPID=uP+uI+uD,　　(5)
+其中uP,uI,uD分别表示比例，积分，微分控制分量，uPID则表示三项分量的合成控制量.与传统PID控制器不同，(1)式与(2)式分别计算了模糊PD总量和与模糊PI增量和.由于这种“2D-1D”映射过程，这里无法对二维推理机输出结果分解出各个控制分量的实际值，这一现象称为“控制分量合成”.本文用uPD,ΔuPI来分别表示模糊PD(图1(b))与模糊PI(图1(c))的合成输出.
+　　传统PID控制器具有许多优越性.其中最主要一条是各项增益控制效果明确［7］
+　　KP:加快系统响应速度，降低上升时间，但增大过调量；
+　　KI:主要用于减少稳态误差；
+　　KD:增加系统阻尼，降低波动响应影响，减少调整时间.
+　　这种简明的控制分量独立整定效果对于工程应用操作是十分方便的.然而，二维模糊PI或PD控制器中的控制分量合成输出将失去这一优良特性.
+2.2　耦合影响(coupling influence)
+　　本文采用文献［4］中的推导公式来说明二维模糊控制器的耦合问题.文献［4］对四种不同的模糊推理方法(包括Mamdani方法)进行了比较研究.然而，模糊控制的输出可以由下面相同形式的方程来表示
+　　(6a)
+　　(6b)
+这里Se,SΔe分别为误差和误差变化率信号的量化因子.本文称P,I分别为“表征(apparent)比例增益”和“表征积分增益”.这是因为(6b)式是根据传统PID控制器的一一对应关系在表征上分解(apparently decompose)了模糊PI控制器的合成输出，它的各项控制分量值只是近似结果.(6a)式中的β值对于不同的模糊推理方法有不同的计算公式(见文献［4］中的表3).但是，该值总可以由一个统一的、具有二维变量的函数形式表达
+β=f(,Δ).　　(6c)
+由上式可以看到各个表征增益已非常数，一般表现为非线性函数［4］.为了保持传统PID控制器中简明控制特性，希望各控制分量有如下函数形式
+PI: ΔuP=f1(Δe,SΔe),　ΔuI=f2(e,Se),(7a)
+PD: uP=f1(e,Se),　uD=f2(Δe,SΔe).(7b)
+然而，由于采用“2D-1D”推理机结构，那种传统PID控制器中的一一对应特性已失去.各控制分量将同时敏感于误差和误差变化率.这一现象称为“耦合影响［13，14］”.该影响对于系统调整及控制品质是不利的.首先，当调节任一量化因子时，它将同时改变各个增益值或各个控制分量，使系统变得无法进行各控制分量的单独调整；此外，各个控制分量的初始物理意义发生改变.如表征比例增益值同时是误差变化率变量的函数，这可能会使系统比例控制分量变得更为敏感于噪声信号的干扰.
+　　尽管文献［4］中的推导是对二维模糊PI控制器进行的，系统的耦合影响这一特性同样适用于二维模糊PD控制器.这一点可以由(1)，(2)式的相似形式来理解.
+2.3　增益相关(gain dependency)
+　　模糊控制器优于传统PID控制器的根本原因在于它能提供非线性增益.一般讲，这些增益将根据误差的大小而相应变化，并以此改变系统控制品质.为了使控制系统具有更大的可控范围，各个增益应该可以实现独立不相关的调整.然而，本控制器表现出增益相关的特性：其中一个增益可以由其它增益表示.由(6a)式可以得到如下关系
+　　(8)
+上式表明当表征比例增益给定后，表征积分增益将部分的确定.传统PID控制器的各个控制分量是可以任意给定的，而(8)式中的增益相关特性将会减少该类模糊控制器的可控范围.
+　　增益相关与耦合影响是两个不同的概念.从数学角度上讲这可以用模糊PI控制器中的矩阵方程式来解释
+　　(9)
+增益矩阵K中的非对角元素将产生误差向量e对控制分量向量Δ的耦合影响.二维控制器的实际输出是控制分量的合成量ΔuPI=sum｛ITΔ｝.对该量分解后的等效增益只是一种表征上的解耦(apparently decoupling).解耦合的矩阵称为等效增益矩阵，记为
+　　(10)
+该矩阵为一对角阵，增益相关表示其对角元素可以互为表示.从控制角度讲，耦合影响表明一个控制分量的输出将由两个或多于两个输入分量产生.增益相关说明一个输出控制分量(或其增益)的调整将同时改变其它输出控制分量(或其增益).这些显然对控制器的整定是不利的.
+2.4　规则增长(rule growth)
+　　假设二维控制器的每维中规则数是一样的，在此用“n”表示.则控制器的总规则数是“n2”.
+　　以上讨论证明传统的Mamdani［1］二维模糊控制器结构是存在功能缺陷的.事实上，由(2)式或(6b)式实现的模糊PI控制器可能存在另一种不足，这就是时延情况下的“增益角色置换”(gain-role change).在有时延的设定值过程控制中，控制器从初始时刻到时延长度时刻的期间中(0≤t≤td，td为时延常数)，其误差变化率总是为零(Δe=0).这意味着控制器的输出实际上是由积分控制分量提供的(6b)，或者说，该分量在此期间表现为比例分量.由PID控制器的物理特性可知，误差大时，比例控制分量应大，以尽快趋近设定值.当误差小时，积分控制分量为主，以减少稳态误差.由此分析可知，该类模糊PI控制器在表征形式上至少是不符合PID控制器的物理特性，这种“增益角色置换”缺陷不仅使系统积分增益调整变得困难，也可能会影响控制性能质量.当然，这些不足并不是由模糊推理机维数引起的，系统时延加上模糊控制器输出的增量形式是其原因.本文指出了这一缺陷并为控制器设计者提供另一设计准则：采用控制器绝对量输出形式.
+3　关于三维(3D)模糊控制器
+　　根据上节对二维(2D)模糊控制器的讨论方法，很容易推证出三维模糊控制器同样具有控制分量合成、耦合影响两项系统特性.这是由于该推理机中“3D-1D”映射关系结构所决定的.它的规则总数将按立方指数增长“n3”.该类控制器使设计及整定变得更为复杂，这也是为什么实际应用中很少采用的主要原因［15］.
+4　关于一维(1D)模糊控制器
+　　最近，作者提出了一维模糊PID控制器［10］.该推理机中“1D-1D”映射关系使输出结果是单控制分量的(individual-control action)，这里称该分量(p=F())为模糊比例控制分量(图1(a)).通过采用与传统PID控制器相似的计算方法
+　　(11)
+可以分别得到模糊积分与微分控制分量(图2).称为单位化的增益常数(在［0，1］之间).输出量比例因子(Su)将最终调整控制器输出量的水平.显然，该控制器不存在传统二维或三维模糊PID控制器中的头两项功能缺陷.首先，一维推理机输出不再是合成分量，控制器是通过内部三个分量分别计算之后进行合成输出如(11)式.因为是单变量的输入，耦合影响也随之消失.比较(11)式与(4)式，并给出了各项等效(equivalent)增益参数
+
+
+图 2　一维模糊PID控制器结构(“1D-1D”映射关系)
+　　(12)
+这里的等效增益与实际增益只相差输出量化因子的乘积.由于“P与”的非线性关系，各等效增益将呈非线性特征.传统PID控制器中原有的“增益参数与输入变量的一一对应关系”在广义上仍有保留.等效比例增益只对应误差变量，而误差变化率变量只对微分控制分量起作用.这种控制分量物理意义的保留，对于熟悉传统PID控制器的工程师来说，是十分重要的.
+然而，检查一维模糊PID控制器(11)的等效增益(12)，可以发现下面关系式
+　　(13)
+上式表明该控制器等效微分增益与等效比例增益是相关的.事实上，由于各个等效增益均是同一比例控制分量的函数，三者必然是互为相关的.为了实现各增益独立不相关的系统特性，本文提出了最佳一维模糊PID控制器结构(图3)，该结构采用了“1D-3D”映射关系.三个输出变量虽然还都称为比例控制分量，但它们可以表达为不相关的(如通过采用不同形状的隶属函数).将不同的Pj(j=1,2,3)分别代入式(11)中的三项，该控制器将产生三个独立的等效增益.该增益调整可用文献［10］中的遗传算法.本文认为选用比例控制分量作为非线性控制器的输出量设计将使模糊PID系统具有最简结构特性，有关讨论可参见文献［16］.该控制器的规则总数为“3n”，属于算术和增长.
+
+
+图 3　一维模糊PID控制器结构(“1D-3D”映射关系)
+5　关于系统特性与模糊知识规则的关系
+　　本文认为上述四项系统特性基本上是由模糊知识表达形式决定的.一个模糊系统，它的通用表达形式［14］可写为
+Else［if 1 is E1,i and … and if p is Ep,a then
+1 is U1,j and…and q is Uq,b ］,　　(14)
+这里［1,…，p］是输入变量向量，［1,…，q］是输出变量向量.Ei，j是被控状态论域Xi上的模糊子集，Um,n是控制量输出论域Ym上的模糊子集.该控制系统将产生“p维-q维”的映射关系.可以理解，控制器产生控制分量合成及耦合影响的条件是
+p＞1，　　(15)
+满足上述临界条件的模糊知识规则被简称为“耦合规则”.该简单判据对于建立模糊知识规则有着重要的参考意义.在模糊控制器设计者编写控制专家的知识时，应当尽量采用非耦合规则.
+　　为了避免耦合规则引起的系统特性缺陷，作者建议采用一维模糊PID控制器.为了进一步克服增益相关缺陷，本文又提出采取“1D-3D”映射关系的推理机(图3).该控制系统的有关模糊知识表达形式将为
+Else［if  is Ei then (P1 is UP1,j) and (P2 is UP2,k) and (P3 is UP3,l)］.　　(16)
+6　结　语
+　　本文通过简单分析的方法探讨了模糊推理机的维数与模糊PID控制器特性的关系.提出了四项系统功能特性评价指标，这对控制器设计者选取模糊推理机结构有着指导意义；同时指出了目前常用的二维模糊控制器存在控制分量合成，耦合影响及增益相关等缺点.传统PID控制器除了不能提供语言知识表达、模糊推理、及非线性特性外，它在四项系统特性方面均是优良的.作者认为一个好的模糊PID控制器应该与传统PID控制器的优良特性兼容并有所扩充.在分析和比较了一至三维模糊PID控制器的系统特性之后，作者认为带有“1D-3D”映射推理机的一维模糊PID控制器最为优越.另一方面我们应当注意到，由于该控制器具有最低的规则增长特性，这对于解决多变量模糊控制中的规则数量几何爆炸问题［17］，提供了一条积极有效的途径.然而，如何对该控制器与目前常用的二维模糊控制器进行实际控制性能的综合比较将是今后有待进一步研究的.
+
+致　谢　本文第一作者首先要感谢马颂德博士提供的中国科学院自动化研究所所长基金对本课题的资助.本课题开始于加拿大自然科学委员会(Natural Sciences and Engineering Research Council of Canada)和加拿大石油资源公司(Petro-Canada Resources)的资助，在此一并表示感谢.
+作者简介：胡包钢(B.-G.Hu)　1983年于北京科技大学机械工程系获工学硕士.1993年于加拿大McMaster大学机械工程系获哲学博士.现为中国科学院自动化研究所模式识别国家重点实验室副研究员.目前研究方向为模式识别、模糊控制及智能系统.
+　　　　G.K.I.Mann　is currently pursuing doctoral studies in the Faculty of Engineering and Applied Science at Memorial University of Newfoundland,Canada.Before he came to Canada,he has been working as a lecturer in Mechanical Engineering at University of Moratuwa,Sri Lanka.His research interests are in the areas of fuzzy and non-linear control and manufacturing.
+　　　　R.G.Gosine　received his B.Eng(Elect.)in 1986 from Memorial Unversity of Newfoundlang,and his Ph.D.in 1990 from Cambridge University,England.He is now an Associate Professor of Engineering at Memorial Unversity of Newfoundland and is the Director of Intelligent Systems at C-CORE.Dr Gosine's research interests are in the area of industrial automation.
+作者单位：胡包钢　　(中国科学院自动化研究所模式识别国家重点实验室　北京　100080)
+　　　　　G.K.I. Mann　　R.G.Gosine　　(C-CORE and Faculty of Engineering and Applied Science Memorial University of　Newfoundland,St.John's,A1B 3X5 Canada)
+参考文献
+　1　Mamdani E H.Application of fuzzy algothms for simple dynamic plant.In:Proc .IEE,1974,D-121,,1585―1588
+　2　Braae M,Rutherford D A.Theoretical and linguistic aspects of fuzzy logic controller.Automatica,1979,15(5):553―577
+　3　程一，庄成，安燮南.通用的模糊逻辑控制算法及其应用.自动化学报，1992，18(6)：647―654
+　4　Ying H.The simplest fuzzy control using different inference methods are different nonlinear proportional-integral controllers with variable gains.Automatica,1993,29(2):499-505 
+　5　Harris C J,Moore C G,Brown M.Intelligent Control,Aspects of Fuzzy Logic and Neural Nets.London：World Scientific,1993
+　6　Malki H A,Li H,Chen G.New design and stability analysis of fuzzy proportional-derivative control systems.IEEE Transactions on Fuzzy Systems,1994,2(4):245-254
+　7　de Silva C W.Intelligent Control,Fuzzy Logic Applications,New York,CRC,1995
+　8　Li W.A method for design of hybrid neuro-fuzzy control system based on behavior modeling.IEEE Transactions on Fuzzy Systems,1997,5(1):128-137
+　9　Maeda M,Murakami S.A self-tuning fuzzy controller.Fuzzy Sets and Systems,1992,51(1):29-40
+　10　Hu B G,Mann G K I,Gosine R G.Theoretic and genetic design of a three-rule fuzzy PI controller.In:Proceedings,Sixth IEEE International Conference on Fuzzy Systems,Barcelona,Spain,July,1997,489-496
+　11　Ying H.General analytical structure of typical fuzzy controllers and their limiting structure theorems.Automactica,1993,29(4):1139-1143
+　12　Lewis F L,Liu K.Towards a pardigm for fuzzy logic control.Automatica,32(2):167-181
+　13　徐承伟，吕勇哉.模糊系统的串联补偿解耦.自动化学报，1987，13(3)：177―184
+　14　de Silva C W,A criterion for knowledge base decoupling in fuzzy-logic control systems.IEEE Transactions on Systems,Man,and Cybernetics,1994,24(10):1548-1552
+　15　李士勇.模糊控制.神经控制和智能控制论.哈尔滨：哈尔滨工业大学出版社，1996
+　16　Hu B G,Mann G K I,Gosine R G.Control curve design for nonlinear (or fuzzy)proportional actions using spline-based functions.Automatica,(to appear),1998,34(9)
+　17　Kosko B.Fuzzy Engineering.New Jersey：Prentice Hal,1997
+收稿日期　1997-10-30

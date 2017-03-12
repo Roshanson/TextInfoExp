@@ -1,0 +1,140 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.1　P.79-84
+
+
+
+鲁棒自适应控制器的一种设计方法
+许向阳　祝和云 孙优贤
+摘 要 针对鲁棒自适应控制器的鲁棒性和适应性，提出建立一个完整的鲁棒自适应控制器应克服的4个方面问题，论文就这4个问题进行讨论，建立了一种鲁棒自适应算法.该算法在保证控制系统鲁棒稳定的前提下，使模型逐步精确，同时逐步提高控制器的性能.仿真结果证明了控制器的性能.另外，算法较为简单，易于在线实现
+关键词 鲁棒自适应，非参数传递函数辨识，参数辨识，模型修正.
+A DESIGN METHOD OF ROBUST ADAPTIVE CONTROLLER
+XU Xiangyang
+(THUnis Yingli Chemical Technology CO., LTD., Beijing 100084)
+ZHU Heyun SUN Youxian
+(Institute of Industrial Process Control in Zhejing University, Hangzhou 310027)
+Abstract In this paper, four problems are listed which should be solved by the design of a perfect robust adaptive controller. Then a robust adaptive control algorithm is built. It is shown that the control system is stableunder the algorithm, and the model can gradually become more accurate and the control performance will be better. Because of the simplity of the method, it canbe used on line.
+Key words Robust adaptive, nonparametric transfer function identification, parameter identification, model modification.
+1 引言
+　　由于早期的自适应理论建立在较严格的理想条件上，因此当实际过程存在建模误差或未知扰动时，自适应控制器很容易不稳定［1,2］.于是人们投入很大的精力研究自适应控制器的稳定性问题，并把鲁棒控制理论结合进来，形成了鲁棒自适应控制理论.同时，由于鲁棒控制理论建立在模型不确定性已知的前提之上，这难免造成控制器过于保守或不确定性估计过小而系统不稳定，因此提出了有关模型不确定性的辨识问题［3～6］，另外也有人建立逐步缩小模型不确定性的自适应律［7，8］，这种在鲁棒控制中加入自适应律的方法形成了所谓的自适应的鲁棒控制理论.概括起来，鲁棒自适应理论主要是在这样的情况下提出的，即模型存在未建模动态，存在未知的外界扰动时控制器要同时具有鲁棒性的自适应性.这要求鲁棒自适应控制器应克服以下4个方面的问题：
+　　1)在存在未建模动态和／或扰动的情况下参数辨识具有稳定性；
+　　2)具有对未建模动态的辨识，以确定模型误差；
+　　3)能利用1)，2)的辨识结果建立鲁棒控制器；
+　　4)利用2)的结果修正模型，以减小未建模动态.
+　　本文在前人的基础之上讨论如何同时解决以上4点问题，从而实现一种完整的鲁棒自适应控制器.
+2 参数辨识
+　　观察系统模型
+　(1)
+其中θ0为过程实际参数向量；φ(t)为系统自回归向量；w(t)为未知外界扰动或系统未建模动态带入的模型误差，满足
+sup｜w(t)｜≤Δ.　(2)
+建立递推最小二乘辨识算法如下：
+　(3)
+ (4)
+其中(t)为过程参数θ0的估计；(0)人为给定；预设P(-1)=P(0)>0；a(t)按下式取：
+　(5)
+b>0是人为给定的常数.
+　　定理1 对于系统(1)，如果w(t)满足(2)式，则辨识算法(3)～(5)有以下性质：
+　　1) 　(6)
+　　2)(7)
+其中　　　　(8)
+　　证明略.
+3 模型不确定性的辨识
+　　我们用非参数传递函数辨识方法辨识模型的不确定性，以便直接用于鲁棒稳定条件.观察SISO离散线性系统
+　(9)
+其中G0(q-1)为过程脉冲传递函数；w′(t)为输出端干扰噪声.由采样序列｛u(t),y(t):t=1,…,N｝得输入输出的离散Fourier变换
+　(10)
+则u(t)周期图和u(t)与y(t)的互相关周期图为
+　(11)
+其中为的共轭复数；估计u(t)的谱密度和u(t)与y(t)互谱密度分别如下：
+　(12)
+其中Wγ(ω)为数据窗，可以得到过程频率响应的估计为
+　(13)
+　　数据窗Wγ(ω)及估计的性质请见文献［13］.
+　　定理2 设过程频响特性二次可导；输入信号u(t)谱密度一次可导，且Φu
+有界；若取
+γ=Nα，0<α<1,　(14)
+则当N→∞时，可得(14)的频响估计的一致无偏估计.
+　　证明略.
+　　选定一种数据窗，由周期图(11)可得谱密度的计算式如下：
+　(15)
+　(16)
+则的估算式为(17)
+　　设t时刻参数辨识结果为且设模型(9)满足乘积摄动模型
+　(18)
+其中为代入参数估计(t)的标称对象.设
+　(19)
+则　　(20)
+在N时刻，辨识所得参数向量为(N)，可计算得模型的输出序列
+　(21)
+其中　(22)
+代入(10)式得ε(t)的计算序列
+　　(23)
+　　由模型(20)及采样序列利用本节非参数传递函数辨识算法即可进行Δ(q-1)频响特性的辨识.
+4 鲁棒控制器
+　　设过程SISO线性ARMAX模型可表达为
+　(24)
+其中 　(25)
+　(26)
+如果设
+　(27)
+　(28)
+则(24)与(1)对应.考虑加权最小方差控制性能指标
+J=E｛［y(t+1)-r(t+1)］2+g［u(t)-u(t-1)］2｝，　(29)
+代入(24)～(26)式，对u(t)求导，并代入参数估计，由于w(t+1)与其它信号无关，且零均，可得控制律
+　(30)
+其中分别为代入将控制律代入文［14］中鲁棒稳定判据可得
+　(31)
+定理3 设系统(18)满足以下条件：
+　　1)标称对象稳定；
+　　2) 存在下式成立：
+　(32)
+则存在Kg>0，对(31)式成立.
+　　证明略.
+5 模型结构的修正
+　　第3节我们获得了Δ(q-1)的频响特性Δ(e-jω)的估计，它反映了未建模部分的动态特性.设　(33)
+设Δ(q-1)的系数向量(34)
+另设(35)
+取性能指标(36)
+其中 ζi,i=0,…，N-1为各频点的权系数，一般可取为N-1或ζi=N-1等；由下式可求取θΔ的估计：
+　(37)
+　　设求解得Δ(q-1)的最优系数则
+　(38)
+得到修正后的模型为(39)
+6 仿真
+　　设实际过程为
+　(40)
+外界扰动w′(t)取为伪随机白噪声序列；初始辨识模型为
+　(41)
+　　以该模型为基础进行参数辨识，模型修正后得
+　(42)
+　　图1和图2分别是以(41)，(42)为模型的算法的控制效果，从图中可看出，控制性能有较大的改进.
+
+图1 用模型(41)的控制效果
+
+图2 用模型(42)的控制效果
+7 结束语
+　　针对鲁棒自适应设计的4个问题，本文都作了细致的探讨，建立了一种鲁棒自适应控制算法，具有对未建模和外界扰动的鲁棒参数辨识算法，还具有对未建模部分的辨识功能，算法在此基础上建立鲁棒控制器；另外，算法根据对未建模部分的辨识，能进一步修正模型结构.仿真结果表明，在算法作用下，模型精度能够不断提高，控制作用也逐渐加强；算法所用公式都易于编程，能够在线实现一种完整的鲁棒自适应控制器.但本算法未经实际应用考核，
+因此在工业应用上尚需进一步研究.
+许向阳 男，1970年生，分别于1993年7月、1996年3月、1998年7月在浙江大学获学士、硕士和博士学位.主要研究领域为过程控制、自适应控制、鲁棒自适应控制、智能控制.
+祝和云 男，1940年生，1963年毕业于浙江大学，现为浙江大学自动化系教授，博士生导师.长期从事过程控制，自适应控制，以及造纸过程控制等方面的理论与研究.
+许向阳(清华紫光英力化工技术有限责任公司 北京 100084)
+祝和云(浙江大学工业控制研究所 杭州 310027)
+孙优贤(浙江大学工业控制研究所 杭州 310027)
+参考文献
+1，Ioannou P A, Datta A. Robust adaptive control:A unified approach. In:Proc. IEEE, 1991,79(12)：1736～1767
+2，Ioannou P A, Tsakalis K S. A robust direct adaptive controller. IEEE Trans.Autom. Control,1986，31(11)：1033～1043
+3，Kosut R L. Adaptive calibration: an approach to uncertainty modeling and on line robust control design. In:Proc. CDC'86, Greece, Dec.1986：455～461
+4，Kosut R L. Adaptive robust control via transfer function uncertainty estimation.In:Proc. ACC'88，1988：349～354
+5，Kosut R L. Adaptive uncertainty modeling:Online robust control design.In:Proc.ACC'87，1987：245～250
+6，Kosut R L. Lau M K, Boyd S P. Setmembership identification of systems with parametric and nonparametric uncertainty.IEEE Trans. Autom. Control,1992，
+37(7)：929～941
+7，Lee W S, Anderson B D O et al. A new approach to adaptive robust control.Int.
+J. Adaptive Contr. Sig.Process,1993：183～211
+8，Lee W S, Anderson B D O et al. On adaptive robust control and controlrelevant system identification.In:Proc. ACC'92, Chicago,IL,June 1992.2834～2841
+9，Naik S M, Kumar P R, Ydstie B E. Robust continuoustime adaptive control by parameter projection.IEEE Trans. Autom. Control,1992，37(2)：182～197
+10，Goodwin G C, Sin K S. Adaptive Filtering, Prediction and Control. British:PrenticeHall Englewood Cliffs, NJ, 1984
+11，Cusumano S J, Poolla K. Adaptive robust control:a new approach.In:Proc.ACC'88 355～359
+12，Anderson B D O, Kosut R L. Adaptive robust control:On line learning. In:Proc.CDC'91,Brighton, December 1991
+13，Ljung L. On the estimation of transfer function.Automatica,1985，21(6)：677～696
+14，Morari M, Zafiriou E. Robust Process Control. British:PrenticHall, Englewood Cliffs, NJ, 1989
+收稿日期 1998-06-16 收修改稿日期 1999-06-08

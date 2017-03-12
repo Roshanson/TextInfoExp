@@ -1,0 +1,106 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+关于非线性Morgan问题的一个充分条件
+孙振东　夏小华
+摘　要　 研究一般右可逆非方非线性系统的Morgan问题.在系统结构分解的框架下，先利用一个 类Singh算法来刻画系统本性阶与无穷零点的差集，然后给出一个求取积分串的新算法.如果上 述差集与积分串的长度满足一个简单的不等式关系，则可以证明，此时Morgan问题一定有解，并给出一组解耦反馈的构造方法.
+关键词　非线性系统，Morgan问题，结构分解，积分串.
+A SUFFICIENT CONDITION FOR NONLINEAR MORGAN'S PROBLEM
+SUN ZHENDONG XIA XIAOHUA
+(7th Research Division,Beijing Univ.of Aero.and Astro.,Beijing 100 083)
+Abstract　This paper is to study the so－called Morgan's problem for general nonsquare nonlinear systems.Within the framework of structural dec omposition,a quasi－Singh's algorithm is utilized to characterize the gap betwee n the essential orders and the infinite structure,and a new algorithm is offered to calculate strings of integrators.If the gap and the lengths of the strings s atisfy a simple inequality,then the corresponding nonlinear Morgan's problem has at least one solution,and a decoupling feedback can be constructed.
+Key words　Nonlinear systems,Morgan's problem,structural decompositi on,strings of integrators.
+1　引言
+　　非线性Morgan问题即非线性系统的非正则静态行对行解耦问题.Freund［1］最早研 究了方块系统的非线性Morgan问题.文［2］研究了非方系统的Morgan问题，给出当系统输 入数比输出数大1时Morgan问题的解，但该结果最近被举例指出是错误的［3］.文［ 4］利用非线性交互圈的概念，得到关于非线性Morgan问题的一个简单的充分条件和一个基 本的必要条件.
+　　与线性情形相比，非线性Morgan问题的研究进展相当缓慢，目前已有的结果相当少.主要 原因是我们对非线性系统的结构性质知之甚少，特别是，没有找到与Morse结构分解理论平 行的结构分解算法.虽然已经对无穷结构、本性阶等结构不变量有了较系统的研究，但至今 没有一般的算法来提取可用于补偿系统无穷结构的积分串(strings of integrators).这就 使得线性系统的一些研究思路无法推广到非线性情形.
+　　本文对一般右可逆非方非线性系统给出一个求取积分串的算法，然后利用它得到一般非线 性系统可解耦的一个充分条件.该条件是可验证的，其证明是构造性的.
+2　预备知识
+　　所谓非线性Morgan问题，是指寻找形如
+u=α(x)+β(x)v,v∈Rp　　(1)
+的反馈变换，使带输出的仿射非线性系统
+　　(2)
+解耦.
+　　设在(2)式中，向量f(x),g(x),h(x)的分量是 变元x的亚纯函数.假定系统(2)右可逆，且m＞p,即(2)式为非方系统.
+　　对系统(2)，记其无穷结构(infinite structure)为｛n′1,…,n′p｝，对输出y i的本性阶(essential order)为nie.这两组自然数都是系统的结构常量(在正 则反馈变换下保持不变)，其具体定义参见文［2］.
+　　引理1［2］.系统(2)可通过正则静态解耦的充分且必要条件是
+｛n′i｝p=｛nie｝p.
+　　记li=n′1-nie,i=1,…，p.定义系统(2)的齐次阶系统为
+　　(3)
+可以验证，齐次阶系统(3)的所有本性阶相等(等于n′1).
+　　对系统(3)实施Singh算法(见文［5］)(必要时交换输出变元的顺序)，整理可得
+　　(4)
+　　定义自然数集Λ=｛nie-ri∶nie-ri＞0｝.
+3　一个提取积分串的算法
+　　这里我们给出一个算法，从系统能控且不能观部分提取可用来补偿无穷结构的积分串.
+　　记矩阵=(bT1,…,bTp)T.由于系统(2)右逆，阵行满秩.寻找阵(x)∶(m-p)×m使得记,及=(x,y(j)i,i=1,…，p, 1≤j≤n).
+　　第1步.记不妨设使1=A1(x)+B1(x)u,B1行满秩，且于是有
+
+令记将之分解为(必要时 可调换元素的顺序)使得与v2无关.
+　　不妨设,使2=A2(x )+B12(x) v1满足rankB12=rank12且阵B12行满秩.于是有令记,将之分解为(必要时可调换元素的顺序),使得3=A3(x)与u无关.于是.
+　　第k步.设已构造出z1，…，z2k-3,1，3，…，2k-1,满足
+
+　　不妨设,使(z2k- 1)(k)=A2k-1(x)+B2k-1(x)u,B2k-1行满秩，且rank 于是有
+
+令，记.将之分解为(必要时可调换元素的顺序),使得与v2无关.
+　　不妨设,使(z2k)(k)=A2k(x)+B12k(x)v1满足rankB12k=rank12k且阵B12k行满秩.于是有.令,记
+
+将之分解为(必要时可调换元素的顺序)，使得(2k+1)(k)=A2k+1(x)与u无关.于是
+
+　　若2k+1空，则算法结束，否则继续第k+1步.
+　　结论.设算法在第k*步结束.记，对矩阵自上而下选择线性无关的行向量，设得到其第1，…，p,k1,k2,…，km-p行是线性无关.令
+
+其中y*(k)是指向量y*的第k个元素.
+　　对每个1≤i≤m-p,定义自然数σi=max｛k∶ξ(i)是zk的元素｝.于是我们可以定义m-p个积分串
+
+　　定义自然数集Θ=｛σ1,…，σm-p｝.
+　　注.一般地说，上述算法提取的积分串不是最大长度的.但由该算法得到积分串的个数(m-p 个)是最大的，这一事实蕴含了文［4］的Lemma4.1.
+4　充分条件
+　　给定两个自然数集Di=｛ai1,…，aiji｝,i=1,2,称D1D2，若存在集合D1的一种剖分D1=j2i=1D1i,使得
+
+　　利用上一节提供的算法，我们可以给出非线性Morgan问题有解的一个充分条件.
+　　定理1.系统(2)的非线性Morgan问题有解的一个充分条件是
+　　(5)
+　　证.设S=｛i∶nie＞ri｝=｛τ1,…，τl｝,τ1＜…＜τl及Λ=｛q 1,…，ql｝.由(5)式，不妨设存在整数0=j0＜j1＜j2＜…＜jl=m-p,使得
+
+　　定义反馈vk=ξ(k+1),k｛ji｝l.可得到l个积分串
+
+　　由于ri=nie,i=1,…，τ1-1,(4)式的前τ1式形为
+
+令aτ1(x)+bτ1(x)u=ξ(1)(Σj1k=1σk-q1),则有
+y(j)τ1=y(j)τ1(x),　j=rτ1,…，nτ1e-1，
+及
+y(nτ1e)τ1=vj1.
+　　至此，我们有
+
+令aτ2(x)+bτ2(x)u=ξ(j1+1)(Σj2k=j1+1σk-q2),则有
+j(j)τ2=y(j)τ2(x),j=rτ2,…，nτ2e-1,
+及
+y(nτ2e)τ2=vj2.
+　　如此继续下去，令aτi(x)+bτi(x)u=ξ(ji-1+1)(Σjik=ji-1+1σk-qi),i=3,…，l，则最后可得到
+
+由引理1知系统(2)可行对行解耦.证毕.
+　　例.考察系统
+　　(6)
+　　对系统(6)施行齐次化的Singh算法，可计算出Λ=｛3，2｝.
+　　另一方面，利用我们的算法可提取出3个积分串
+
+于是Θ=｛2，2，1｝.
+　　容易验证条件(5)成立.因此系统(6)可通过非正则静态反馈实现解耦.根据定理1的证明，可求得一个解耦反馈为
+　(7)
+5　结束语
+　　对一般右可逆非方非线性系统，本文初步讨论了系统的结构分解问题.利用齐次化的Singh算法，得到系统能控且能观部分的结构分解式，由此可得到系统输入－输出的耦合信息；给出一个算法，从系统能控且不能观部分求取用于补偿系统无穷结构的积分串.由上述分解式中可提取两组自然数，定理1指出，如果这两组常数满足一简单的不等式，那么系统的非线性Morgan问题有解.定理1的条件是可以验证的，其证明是构造性的，但所给条件一般不是必要的.
+　　非线性Morgan问题是一个相当困难而复杂的问题.本文的讨论是初步的.进一步的工作应该改进本文所给的用于求积分串的算法，以获得更大长度的积分串.另一方面，我们认为，要深入地研究非线性Morgan问题，需要寻求(有别于处理线性Morgan问题的)新的思路和数学工具.
+作者简介：孙振东　男，1968年生.1990年毕业于青岛海洋大学应用数学系，1993 年在厦门大学系统科学系获硕士学位，1996年于北京航空航天大学第七研究室获博士学位. 目前在清华大学自动化系从事博士后研究.感兴趣的研究领域包括非线性控制系统，混合动 态系统及离散事件系统.
+　　　　　夏小华　北京航空航天大学第七研究室教授，博士生导 师.曾访问德国Stuttgart大学，法国Nantes大学以及新加坡国立大学.主要研究方向包括非线性反馈控制，采样系统等.
+作者单位：北京航空航天大学第七研究室　北京　100083
+参考文献
+1　Freund,E.The structure of decoupled nonlinear systems.Int.J.Contr.,1975,21:443-450
+2　Glumineau A,Moog C H.Nonlinear Morgan's problem:case of (p+1) inputs and p outputs.IEEE Trans.Automat.Contr.,1992,37:1067-1072
+3　孙振东，夏小华.关于非线性Morgan问题的一点注记.见：中国控制会议论文集，1996
+4　Di Benedetto M D,Glumineau A,Moog C H.The nonlinear interactor and its appl ication to input－output decouping.IEEE Trans.Automat.Contr.,1994,39:1246-1250
+5　Di Benedetto M D,Grizzle J W,Moog C H.Rank invariants of nonlinear systems. SIAM J.Contr.Optimiz.,1989,27:658-672
+收稿日期　1996-07-01

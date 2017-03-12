@@ -1,0 +1,188 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第9期 Vol.36 No.9 1999
+
+
+
+自由飞行空间机器人的关节驱动力矩递推算法及其仿真
+李华忠　洪炳熔　贺怀清
+摘　要　由于空间特有的微重力环境和卫星本体重心不固定，机械手和卫星本体之间存在运动学和动力学耦合作用，已有针对地面机器人提出的计算关节力矩的Newton-Euler法和地面机器人的控制策略不能直接应用于自由飞行空间机器人(FFSR)的研究报告.文中首先分析了FFSR的速度和加速度关系，在此基础上建立了计算FFSR机械手各链杆的速度和加速度的递推公式；其次基于已有的针对地面机器人提出的Newton-Euler动力学算法，开发了适用于FFSR的关节驱动力矩的递推算法；最后，用计算机仿真验证了文中提出的关节力矩算法的有效性.
+关键词　自由飞行空间机器人， 动力学， 递推算法， 关节驱动力矩， 计算机仿真
+中图法分类号　TP39；TP242.3
+RECURSIVE ALGORITHM OF JOINT DRIVING TORQUE
+AND ITS SIMULATION FOR FREE FLYING SPACE ROBOTS
+LI Hua-Zhong, HONG Bing-Rong, and He Huai-Qing
+（Department of Computer Science & Engineering, Harbin Institute of Technology, Harbin 150001）
+Abstract　Because there are special micro-gravity environments in the space and the barycenter of the satellite main body isn't fixed, the Newton-Euler method to calculate the joint torque proposed by Luh's group and the conventional control strategy for the ground-fixed robots can't be directly applied to free-flying space robots(FFSR). First, the velocity and acceleration for FFSR are analyzed, and the recursive formula for calculating the velocity and acceleration of the links of FFSR are established. Then, based on the Newton-Euler dynamics method for the ground-fixed robots proposed by Luh et al, a recursive algorithm of joint driving torque for FFSR is developed. Finally, the computer simulation verifies the effectiveness of the proposed joint torque algorithm.
+Key words　free flying space robots, dynamics, recursive algorithm, joint driving torque, computer simulation
+1　引言
+　　在未来空间资源的开发利用中，空间机器人将发挥着越来越举足轻重的作用.自由飞行空间机器人(free flying space robot, FFSR)是一种新型的智能型空间机器人，它由卫星本体和搭载在其上的机械手组成.由于它具有边自由飞行边完成作业的能力，因此它将代替宇航员从事各种舱外空间作业，成为今后空间机器人的主要研究方向之一.
+　　由于空间特有的微重力环境和卫星本体重心未固定，机械手运动与卫星本体运动之间存在相互干扰作用，因此FFSR与地面机器人相比，具有显著独特的运动学和动力学特性，成为研究空间机器人的重要问题之一.在FFSR运动学控制方面具有代表性的工作是：文献［1］提出虚拟臂(VM)的概念，简化了FFSR系统的运动学计算，文献［2］提出了基于广义雅可比矩阵(GJM)的分解运动速度控制(RMRC)方法，但这些方法都没有考虑卫星的姿态控制，难以消除机械手运动对卫星的姿态干扰.动力学建模常用Lagrange法、Newton-Euler法(简称N-E法)和Kane法，但这些研究成果因只考虑了微重力环境而没有考虑本体的浮游运动而不适用于FFSR.另外，文献［3］开发了基于动量守恒的FFSR的逆动力学有效计算方法，但用该方法计算关节力矩的缺陷在于需要依靠传感器测量飞船的速度和加速度.文献［4］、［5］也进行了相关方面的研究.
+　　机器人各关节力矩的有效计算方法，不仅在对机器人机械结构和控制器进行设计时，而且在进行基于力矩的实时控制时，都起着十分重要的作用.特别地，从力矩控制的角度来看，为确保控制的实时性、可靠性和稳定性，需要高效的力矩计算算法.Luh等人在这方面作了大量研究工作，针对地面机器人提出的递推N-E法［6］，它是以理论力学的两个基本方程――牛顿方程和欧拉方程为出发点，结合机械手的速度和加速度分析而得出的一种有效的机械手动力学算法.该法是由固定基座前推，即向末端递推，逐次求出各杆的角速度、角加速度和质心加速度，再由末杆的末关节向第一关节(与基座相联)后推，从而求出各关节的力矩，但由于FFSR的卫星本体不固定，该法不适用于空间机器人，而将Luh的递推N-E法推广到空间机器人的关键是如何有效求出卫星本体的速度和加速度.为此文中基于Luh等人针对地面机器人提出的N-E法，以FFSR两相邻链杆之间的基本运动学和动力学关系为出发点，将机械手各链杆的运动分解成两部分，一部分与卫星本体运动有关，另一部分与卫星本体运动无关，而可由递推算法决定，并考虑空间机器人系统固有的运动特性――动量守恒定律和力平衡法则，提出了一种用于计算FFSR关节驱动力矩的有效递推算法.为验证文中提出关节力矩算法的有效性，做了计算机仿真.
+2　FFSR模型
+　　FFSR几何模型如图1所示.描述卫星本体的姿态角用z-y-x坐标的欧拉角α、β和γ，记为θ0，各个链杆的坐标系采用Denavi-Hartenberg惯用约定.文中使用的符号约定如下：
+
+图1　FFSR几何模型
+　　ΣI ：固定于系统质心的惯性坐标系；Σi ：固定于关节i的链杆坐标系；jRi∈R3×3为从坐标系Σi到Σj的变换矩阵；Ri：从坐标系Σi到ΣI的变换矩阵；ki：关节轴的方向，与Σi系的z轴方向一致；n：机械手自由度；mi， li：链杆i的质量和长度； mc：FFSR总质量mc=∑ni=0mi；Ii ：链杆i相对于其质心的惯量矩阵；ri：链杆i质心的位置矢量；ai：从关节i-1指向链杆i质心的位置矢量；pi：关节i的位置矢量；bi：从关节i质心指向链杆i的位置矢量；τi：链杆关节i的驱动力矩；θi、i、i：关节i的角度、角速度和角加速度；ji，ji：坐标系Σj中链杆i的质心的速度和加速度；ji，ji：坐标系Σj中关节i的速度和加速度；jωi，jεi：坐标系Σj中链杆i的角速度和角加速度;jfi，jni：坐标系Σj中作用在链杆i的质心的力和力矩；矢量ri=rix,riz,riyT的算符i代表如下的斜对称矩阵操作：
+
+　　下面给出计算FFSR机械手各链杆速度、加速度及关节驱动力矩有关公式.
+3　FFSR的速度和加速度分析
+　　为了能求出FFSR各关节的驱动力矩，需要先进行FFSR各链杆的速度和加速度分析.
+3.1　FFSR的速度分析
+　　FFSR的速度分析指根据给定的机械手所有关节的角度和角速度来求解FFSR的各个链杆的速度和角速度.应用刚体运动学基本定理描述图1中相邻两链杆之间运动学关系，各链杆的角速度、关节速度和质心速度可表示成如下递推式：卫星角速度和速度在坐标系可表示成：
+iωi=iRi-1(iki+i-1ωi-1)
+(1)
+ii=iωi×i-1li+iRi-1i-1i-1
+(2)
+ii=iωi×ibi+ii
+(3)
+　　卫星角速度和速度在坐标系Σ0可表示成：
+0ω0=RT0ω0
+(4)
+0=RT0(υ0＋ω0×p0)
+(5)
+　　根据式(1)和式(4)，将链杆角速度iωi分解成两部分，一部分与卫星的角速度ω0有关，另一部分与卫星的角速度ω0无关而可用递推算法获得；利用归纳可以得到如下计算FFSR各链杆角速度的简单递推式：
+iωi=ii+RTiω0
+(6)
+其中ii满足下面的递推关系：
+00＝0，ii=iRi-1(iki+i-1i-1)
+(7)
+　　类似，根据式(2)，可将链杆关节速度ii分解成两部分，一部分与卫星的角速度ω0和线速度υ0有关，另一部分可用递推算法获得；ii可简化成下面的递推式：
+ii=ii+RTi(υ0＋ω0×p0)
+(8)
+其中
+00=0，ii=ii×i-1li＋iRi-1i-1i-1
+(9)
+　　同样得，根据式(3)各链杆质心速度ii可表示成如下简单递推式：
+ii=ii+RTi(υ0＋ω0×vi)
+(10)
+其中
+ii=ii×ibi+ii
+(11)
+　　从以上的速度和角速度分析可知，只要先求出卫星本体的速度和角速度，即可用递推法获得FFSR机械手各链杆的速度和角速度.
+3.2　FFSR的加速度分析
+　　FFSR的加速度分析指根据给定的机械手所有关节的角度、角速度和角加速度来求解FFSR的各个链杆的角加速度和加速度.对速度向量式(1)、(2)和(3)求导，并考虑向量在两相对转动坐标系Σi和Σi+1的导数关系式可得各链杆的角加速度、关节加速度和质心加速度的递推关系式：
+ii=iRi-1(iki+i-1ωi-1×iki+i-1ωi-1)
+(12)
+ii=ii×i-1li+iωi×（iωi×i-1li）+iRi-1i-1i-1
+(13)
+ii=ii×ibi+iωi×（iωi×ibi）+ii
+(14)
+　　设卫星本体的加速度和角加速度在惯性坐标系ΣI表示为α0和ε0，类似地，可将各链杆的角加速度分解成两部分，一部分与卫星本体的角加速度ε0有关，另一部分与卫星本体的角加速度无关而可用递推算法获得；由式(12)可得各链杆角加速度的递推式：
+iεi=ii=ii+RTiε0
+(15)
+其中
+00=0，ii=iRi-1(iki+i+1ωi-1×iki+i-1i-1)
+(16)
+　　同样地，由式(13)可得各链杆关节点的加速度的递推式：
+iαi=ii=ii+RTi(α0＋ε0×pi)
+(17)
+其中
+
+(18)
+　　应该注意的是：在坐标系Σ0观察到的卫星本体的加速度等于从惯性坐标系ΣI观察到的卫星本体加速度与哥氏加速度和离心加速度的矢量和.
+　　由式(14)可得各链杆质心的加速度递推式：
+iαci=ii=ici+RTi(α0＋ε0×ri)
+(19)
+其中
+
+(20)
+　　从以上的角加速度和加速度分析可知，只要先求出卫星本体的角加速度和加速度，即可用递推法获得FFSR机械手各链杆的角加速度、关节的加速度和质心的加速度.
+4　FFSR关节驱动力矩计算公式
+　　根据牛顿定律和欧拉角动量方程可获得作用在链杆i上的力和力矩：
+ifi=miiαci,ini=iIiiεi+iωi×iIiiωi
+(21)
+　　将式(15)、(17)和(19)代入上面式(21)可得：
+ifi=ii+miRTi(α0＋ε0×ri),ini=ii+IiRTiε0
+(22)
+其中
+ii=miici,ii=Iiii+ii×Iiii
+(23)
+　　根据N-E法，不考虑摩擦和重力影响时，作用在各链杆上的关节驱动力矩可如下求得：
+τf,i=iRi+1τf,i+1+ifi
+(24)
+τn,i=iRi+1τn,i+1+i-1li×（iRi+1τf,i+1）+(i-1li+ibi)×ifi+ini
+(25)
+τi=τn,iiRi-1ki
+(26)
+　　以上各链杆的速度、加速度和力矩计算公式表明一旦求出卫星本体的速度、角速度、加速度和角加速度，即可获得FFSR各关节的驱动力矩，因此将Luh的递推N-E法［6］推广到空间机器人的关键是如何有效求出卫星本体的速度和加速度.FFSR在不受外力和外力矩作用下，整个系统满足动量和角动量守恒定律；假定初始动量和角动量为零可得：
+mii=0,(Iiiωimiiri×Ii)=0
+(27)
+　　由力和力矩平衡原理可得：
+Ifi=0,(Ini+ri×Ifi)=0
+(28)
+　　而将上面各链杆的速度和角速度递推式代入(27)式，即可计算出卫星本体的速度υ0、角速度ω0：
+υ0=M－11Lυ，ω0＝M－12Lω
+(29)
+其中
+M1＝diag(mc,mc,mc),M2=(RiIiRTi-miTii)
+(30)
+Lυ=-Rimiii,Lω=-［RiIiii+ri×(Rimii*i)
+(31)
+　　根据以上求得的卫星本体的速度和角速度，由式(6)、(7)和(8)即可获得FFSR的各个链杆的速度和角速度.
+　　将式(22)代入上面式(28)可求得卫星本体的加速度α0和角加速度ε0：
+α0=M－11Fα，ε0＝M－12Fγ
+(32)
+　　其中矩阵M1和M2与式(30)相同，
+Fα＝－Riii，Fγ=-［Riii+ri×（Riii）］
+(33)
+　　至此类似N-E法，可将FFSR的关节力矩递推算法表示成两部分：(1) 速度、加速度和惯性力前向递推；(2) 约束力和关节力矩后向递推.其递推算法计算步骤描述如下：
+　　步骤1. 预先给定FFSR的链杆几何和物理参数,如链杆长度li、质量mi、惯量Ii和变量初值；给定FFSR机械手各关节的θi，i，i(i=1,…,n);并离线计算mc=mi等值；
+　　步骤2. 确定机械手各链杆之间的变换矩阵：R0，0R1，…，i-1Ri…，n-1Rn；用公式jRi=jRj+1j+1Rj+2…i-1Ri，来计算Ri；
+　　步骤3. 根据式(7)、(9)和(11)，计算ii，ii和ii；
+　　步骤4. 用式(30)～(31)计算矩阵M1，M2，Lυ和Lω；
+　　步骤5. 根据式(29)求解卫星本体的速度υ0和角速度ω0；
+　　步骤6. 用式(6)、(8)和(10)，计算机械手各链杆角速度iωi、速度ii和其质心速度ii；
+　　步骤7. 根据式(16)、(18)和(20)，计算各链杆中间值ii，ii和ici；
+　　步骤8. 用式(33)计算Fα，Fγ；
+　　步骤9. 根据式(32)求解卫星本体的加速度α0和角加速度ε0；
+　　步骤10. 用式(15)、(17)和(19)，计算各链杆角加速度iεi、加速度iαi和质心加速度iαci；
+　　步骤11. 用式(22)～(23)，计算作用在各链杆上的力ifi和力矩ini；
+　　步骤12. 根据式(24)～(26)，计算各关节的驱动力矩τi.
+5　计算机仿真
+　　为了验证以上FFSR力矩递推算法的有效性，不失一般性,针对六DOF的FFSR完成捕捉空间目标任务，在SGI/OS2工作站平台上进行了计算机仿真.仿真软件采用IRIS Performer可视化编程语言开发.本软件开发的基本过程为：FFSR几何建模→真实感物理建模→逆运动学建模→力矩递推算法→实时仿真.其中逆运动学采用基于逆GJM的RMRC法建模.表1、表2给出了FFSR仿真模型的D-H运动学参数和质量、惯量等动力学参数.FFSR进行目标捕捉时部分有关仿真结果如下：图2是FFSR捕捉目标的三维图形仿真.图3是卫星本体的姿态角和位置变化的时间历程；图4是各关节角的时间历程；图5是根据文中算法获得的各关节驱动力矩.该力矩算法的计算量的量级为O(n),也即与关节自由度数成正比.
+表1　FFSR模型的D-H运动学参数
+　关节i123456
+扭角αi-1(rad)0-π/20-π/2π/2-π/2
+杆长li-1(m)0.31.22.00.80.250.2
+偏距di(m)0.000.3-0.30.00.0
+关节角θi (rad)θ1θ2θ3θ4θ5θ6
+
+表2　FFSR动力学参数
+
+链杆号(i)0123456
+mi(kg)250.015.012.010.05.02.52.0
+bi(m)(x)0.00.0-0.120.00.00.00.0
+(y)0.00.070.00.00.050.00.0
+(z)-0.20.00.00.070.00.05-0.04
+　　　　　　　　　
+iIi
+(kg.m2)(1,1)12.50.1580.0250.0950.0250.010.007
+(2,1)4.00.00.00.00.00.00.0
+(3,1)8.00.00.00.00.00.00.0
+(2,2)12.50.0920.2250.0950.0160.010.007
+(3,2)5.00.00.00.00.00.00.0
+(3,3)12.50.1580.2250.0410.0250.0040.005
+
+
+图2　FFSR捕捉目标的三维图形仿真
+
+图3　卫星本体的姿态角和位置变化的时间历程
+
+图4　FFSR机械手关节角的时间历程
+
+图5　FFSR机械手关节的驱动力矩
+6　结论
+　　文中通过分析FFSR相邻两链杆间的速度和加速度关系，并考虑FFSR所特有的运动学和动力学特性，提出了一种用于计算FFSR关节驱动力矩的递推算法.计算机仿真结果验证了文中提出算法的有效性.该算法与Luh等人［6］针对地面机器人提出算法的本质区别是在递推计算链杆速度、加速度和关节驱动力矩时考虑了空间特有的微重力环境及FFSR满足的线动量和角动量约束条件.
+注:本课题得到国防科工委“九五”项目基金(项目编号863-2-4-1-4)资助.
+作者简介:李华忠，男，1963年9月生，博士研究生，主要研究领域为空间机器人、人工智能、虚拟现实技术.
+洪炳熔，男，1939年8月生，教授，博士生导师，主要研究领域为人工智能、空间机器人、虚拟现实技术.
+作者单位:哈尔滨工业大学计算机科学与工程系　哈尔滨　150001
+参考文献
+1　　Vafa Z, Dubowsky S. The kinematics and dynamics of space manipulators: The virtual manipulator approach. The International Journal of Robotics Research, 1990, 19(4): 3～21
+2　　Umetani Y, Yoshida K. Continuous path control of space manipulators mounted on OMV. Acta Astronaut ,1987, 15(12): 981～986
+3　　Yamada K, Ysuchiya K. Efficient computation algorithms for manipulator control of a space robot. Trans of the Society of Instrument and Control Engineers, Japan, 1990, 26(7): 31～38
+4　　Mukherjee R, Nakamura Y. Formulation and efficient computation of inverse dynamics of space robots. IEEE Trans on Robots and Automation, 1992, 8(3):400～406
+5　　Nagashima F, Nakamura Y. Efficient computation scheme for the kinematics and inverse dynamics of a satellite-based manipulator. In: Proc of IEEE Int Conf on Robotics and Automation, Nice, France, 1992. 905～912
+6　　Luh J Y S, Walker M W, Paul R P C. On-line computational scheme for mechanical manipulator. Trans ASME J Dynamic Systems, Measurement and Control,1980, 102(2): 69～76
+原稿收到日期：1998-12-31；修改稿收到日期：1999-03-29.

@@ -1,0 +1,81 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+单层神经网络的快速学习算法研究
+冯昭志　黄载禄　杨叔子
+摘　要　该文提出一种适用于单层神经网络(SNN)训练的新颖的广义误差函数，给出了SNN新的快速学习算法(FLA). 进一步提出了一种广义系统辨识模型，对FLA的收敛性进行了理论分析. 实验表明：文中给出的新FLA比Karayiannis的LFA具有更快的收敛速度. 
+关键词　单层神经网络，快速BP算法，统计分析.
+STUDY ON THE FAST LEARNING ALGORITHM
+OF SINGLE-LAYER NEURAL NETWORKS
+FENG ZHAOZHI HUANG ZAILU YANG SHUZI
+(Dept. of Electronic & Information Eng., Huazhong University of science and Technology, Wuhan 430074)
+Abstract　 This paper proposes a new generalized criterion for the training of single-layer neural networks, which leads to a novel fast learning algorithm for single-layer neural network. In order to analyse the convergent properties of the fast algorithm we developed, a new generalized system identificaton model is also presented. Experiment results show that the fast algorithm proposed in this paper performs the training of neural nework faster than the corresponding learning algorithm given by Karayiannis.
+Key words Single-layer NN, fast BP algorithm, statistical analysis.
+　　最近，Karayiannis［1］提出了单层神经网络(SNN)的一系列快速学习算法(FLA)，较好地改善了SNN的收敛性能. 然而，Karayiannis没有讨论神经元状态为连续的情况，也未讨论FLA的收敛性. 虽然Bershad［2］等人在SNN的BP算法分析方面取得了突破，可他们提出的系统辨识模型不适用于对FLA的理论分析. 针对这些问题，本文将试图对SNN的FLA及其收敛性分析作一新的探讨. 
+1　SNN的快速学习算法
+　　单层神经网络(SNN)的结构如图1所示. 在图中，Nin、Nout分别是输入层和输出层的神经元数；wij是输入层第j个神经元到输出层第i个神经元之间的连接权.设x*k=[x0,kx1,k…xNin,k］,yk=[y1,ky2,k…yNout,k]分别为SNN的输入向量和输出向量，k=1,2,…,Np，Np为输入模式数；x0,k=1.0，则SNN的回忆过程的系统动力学方程为
+　　　　(1)
+式中w*i=[wi0wi1…wiNin];f(x)=sigmoid(x);*为矩阵转置运算.
+　　给定网络输入模式x*k和训练目标模式tk[t-1,k t2,k…tNout,k],SNN的学习过程就是迭代地修改网络权值，从而使广义误差函数(能量函数)的值为最小. 为了加速SNN的收敛进程，我们提出了新的广义误差函数
+　　　(2)
+其中
+，μ是一给定常数，μ∈(0,1).
+　　用梯度下降法可推导出SNN新的快速学习算法的递归计算公式. 权值矩阵w(k)ij和反向误差校正信号δi,k(λ)的数学表达式为
+
+　　　(3)
+　　　(4)
+显然在公式(4)中，(ti,k-λyi,k)为输出层第i个神经元的输出误差；(1-y2i,k)则为传统的导函数因子项. 因此，可以认为新FLA是用(1-y2i,k)替代了Karayiannis的FLA中的导函数因子项(1-yi,k)yi,k(当f(x)=sigmoid(x)). 进一步考虑到不等式(1-yi,k)yi,k1-y2i,k,exp(-y2i,k)cos(yi,k)成立，我们可得到SNN的一个导函数集合g(yi,k)={(1-yi,k)yi,k,1-y2i,k,exp(-y2i,k),cos(yi,k)}. SNN新的快速学习算法的详细描述如下：
+
+
+图1　单层神经网络结构
+Algorithm Fast BP algorithm
+　Initialize Randomly W
+　Select E0,λ,μ,η,α;λ=1;num=0
+Ⅰ: num=num+1; k=0;E=0
+Ⅱ: k=k+1 
+　yi,k=
+　δi,k(λ)=g(yi,k)(ti,k-λyi,k)
+　wijwij+ηδi,k(λ)xj,k
+　yi,k=
+　
+　if k＜m; then: go to Ⅱ
+　λ=exp(-μ/E2); if E＞E0; then: go to Ⅰ End
+2　算法收敛性分析
+　　为了对新FLA进行分析，我们推广了Bershad等人的系统辨识模型，提出了广义系统辨识模型(见图2). 在图2中，X(n)是高斯型输入向量；F，W(n)分别是系统辨识模型权值和SNN的连接权值；e1(n),e(n)则分别是广义系统辨识模型的内部误差和系统误差；函数f(x),λ(x)为非线性函数. 为了讨论方便，取f(x)=(有关符号的定义均与文献［2］的定义相同，以后不再说明).
+
+
+图2　具有期望响应模型的单层神经网络
+(广义系统辨识模型)
+　　SNN的新FLA的迭代计算公式的向量方程为
+
+
+
+　　　　(5)
+类似于文献［2］，可推导出权值矩阵W(n+1)的条件数学期望
+
+
+
+设W(n)的平均权值为,则
+
+
+　　　　(6)
+其中λ=λ(E)=exp(-μ/E2). 该式较好地描述了SNN的连接权的非线性特征. 当(0)=0(零向量)时，有
+　
+即在一次迭代计算之后，(n)是沿着逼近F的方向变化，从而网络的训练是成功的.
+　　在公式(6)中，当n→N，λ是以指数曲线上升，并且逼近1. 然而在传统EBP算法中［2］，λ=是线性地逼近1. 因此，我们认为这就是新FLA比传统EBP算法收敛速度快的机理.
+3　实验
+　　利用本文提出的快速学习算法，我们成功地完成了对某油井井壁介质结构的模式分类实验. 实验中采用的神经网络参数为Nin=120,Nout=4，η=0.3,μ=0.1. 网络的初始化权值为(-0.5,0.5)之间的随机数，训练误差精度E0=0.01. 取井壁介质的超声回波信号的120个采样数据为神经网络的输入向量，将第一次对油井井壁介质的采样数据模式作为网络的训练模式，而将第二次获取的介质结构数据作为待识别的模式. 对该油井的井壁介质结构分类效果能达到100%的正确率. 对应于g(y) (g(y)={(1-y)y,1-y2,e-y2,cos(y)})的网络自适应学习过程如图3所示. 显然，本文提出的新的快速学习算法具有比Karayiannis快速BP算法更快的收敛速度，且所需的CPU计算时间也较少. 该实验说明： 文中提出的新学习算法是有效的和可行的. 
+
+
+图3　石油测井应用中的网络自适应学习过程
+*　Karayiannis FBP
+作者单位：华中理工大学电子与信息工程系　武汉　430074
+参考文献
+　[1]　Karayiannis N B, Venetsanopoulos A N. Fast learning algorithm for neural networks. IEEE Trans. Cas-Ⅱ, 1992, 39(7)∶453―474.
+　[2]　Bershad N J, Shynk J J, Feintuch P L. Statistical analysis of the single-layer backpropagation algorithm:Part Ⅰ-mean weight behavior. IEEE Trans. on Signal Processing, 1993, 41 (2)∶573―582.
+收稿日期　1996-07-22
+
+

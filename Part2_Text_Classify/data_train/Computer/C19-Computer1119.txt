@@ -1,0 +1,131 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年　第25卷　第5期　Vol.25 No.5 1999
+
+
+
+机器人多指操作的递阶控制1)
+秦志强　熊有伦　李泽湘
+摘　要　为机器人多指协调操作建立一递阶控制系统.给定一操作任务，任务规划器首先生成一系列物体的运动速度；然后，协调运动规划器根据期望的物体运动速度生成期望的手指运动速度和期望的抓取姿态变化；同时，抓取力规划器为平衡作用在物体上的外力，根据当前的抓取姿态，生成各手指所需的抓取力；最后，系统将手指的期望运动速度与为实现期望抓取力而生成的顺应速度合并，并通过手指的逆雅可比转化为手指关节运动速度后，由手指的关节级运动控制器实现手指的运动和抓取力的控制.该控制方法已成功应用于香港科技大学(HKUST)灵巧手控制系统的开发.实验证明该方法不仅能完成物体轨迹的跟踪控制任务，而且能完成物体对环境的力控制和力与速度的混合控制.
+
+关键词　机器人多指手，递阶控制，运动规划，抓取力优化.
+HIERARCHICAL CONTROL OF ROBOT MULTI
+FINGERED MANIPULATION
+QIN Zhiqiang　 XIONG Youlun
+(School of Mech. Eng., Huazhong University of Science and Technology, Wuhan　430074)
+LI Zexiang
+(Dept. of EEE, Hong Kong University of Science and Technology, Hong Kong)
+Abstract　　This paper presents a hierarchical control system for robot multifingered coordinate manipulation. Given a manipulation,the task planner generates a sequence of object's motion velocities at first,and then generates for coordinate motion the desired velocities of finger's motion and desired orientation change of the grasped object according to the desired velocities of object's motion.At the same time,the force planner generates the grasp forces on the fingers in order to resist the external forces on the object,according to the grasp posture.Finally,the system generates a result compliance velocity from both the desired finger's velocities and desired grasp forces,and transfers it into joint velocites through the finger's inverse Jacobian.Then the controller of joint motion implements the control of both forces and velocities for the fingers.The approach has been applied to the development of control system HKUST dexterous hand successfully.Experiment results show that it is not only possible to trail and control the object's track,but also possible to realize force control and the hybrid control of both forces and velocities through this method.
+Key words　Robot multifingered hand, hierarchical control, motion planning, optimization of grasping forces.
+1　引　言
+　　机器人多指手抓取和操作的研究已经成为当今科技领域中一个重要的研究主题.经过近二十年的深入研究，在多指手的设计、抓取综合、多指运动学、感知及控制等领域，已经取得了许多进展.首先，几个多指机械手已经研制出来，为研究多指抓取和操作提供了强有力的实验系统［1］；许多用于分析抓取灵巧性、力平衡、稳定性和动态特性的综合算法已经找到［2］.多指操作的运动学已在文献［3,4］中进行了详尽的研究；触觉、力觉和视觉传感器也已开发出来并用于感知接触点的位置和接触力；各种抓取力的优化算法已经找到［4,5］；无论是固定点接触还是滚动点接触，多指手和多机器人的协调控制和顺应控制算法都已得到深入的研究［6―9］.
+　　尽管对多指操作进行了大量的研究工作，但目前在多指抓取和操作的研究领域仍然缺乏可靠而又灵活的多指机械手实验系统来完成期望的操作任务.造成这一问题的主要原因如下：1)缺乏感知能力，特别是精确而可靠地感知各手指的抓取力及与物体的接触点的能力；2)现有研究都局限于静态抓取的情况，即不考虑抓取姿态随操作变化的情况；3)缺乏统一的便于实时实现的多指手控制系统结构；4)不能实现多指操作的多重目标，如多指操作不仅需跟踪物体运动轨迹，还必须保持适当抓取姿态并维持期望的抓取力；5)理论与实验相分离.
+　　本文为多指操作建立一递阶控制系统框架，并结合HKUST多指手实验平台的开发，重点研究多指操作的实时协调运动生成和抓取力优化算法，最后给出了应用和实验实例.
+2　多指操作的递阶控制系统结构
+　　通过在不同层次引入适当的传感器信息，系统能同时达到多重控制效果：1)精确跟踪被抓取物体的运动轨迹；2)在细微操作过程中提高抓取的质量；3)优化各手指的抓取力以维持接触约束并保持物体平衡.该控制框架具有开放的模块化的结构，为一典型的递阶控制系统（如图1所示），易于计算机实现并允许不同模块进行并行计算.主要模块的功能如下：
+
+
+
+图1　多指操作递阶控制系统结构
+　　1) 操作任务规划器 基于操作任务的描述及物体的位姿和力信息，计算被抓取物体的期望运动速度和平衡物体所需的广义力；
+　　2) 协调运动规划器 当物体作细微运动时,该规划器接收期望的物体运动速度和触觉传感器信息作为输入，为每个手指生成期望的指尖运动速度，并同时优化抓取质量指标；
+　　3) 抓取力规划器 接收期望的物体力为输入，为每个手指生成最优的抓取力；
+　　4) 手指顺应运动规划器 首先采用顺应运动规则，接收力传感器的信息作为反馈，将期望手指抓取力转化为手指指尖的位移，然后将其与协调运动规划器生成的期望手指运动速度结合起来，生成最终的手指运动速度，最后由逆运动学模块将该速度转化为手指关节的运动.手指关节的运动由关节级控制器最后完成.
+3　协调运动生成
+　　用P表示手掌坐标系, O表示与物体固连的物体坐标系, Fi表示与手指i 的指尖连杆固连的坐标系.为了描述手指跟物体的接触，另外在接触点处定义了两个坐标系，与手指i的指尖固连的坐标系Lfi和与物体固连的接触坐标系Loi.手指i与物体的接触坐标用η=(αf,αo,ψ)来描述.用θi表示手指i的关节位置向量，并将每个接触视为具有五个自由度的虚拟关节，定义qi=(θi,ηi)为手指i的广义关节坐标.被抓取物体相对于手掌坐标系的位姿和速度分别为
+gpo=gpfi(θi)gfio(ηi),i=1,…，N，　(1)
+(2)
+从方程(2)可以看出，物体速度、接触速度和指尖速度是互相关联的三组变量，给定任何两组，即可求得另外一组.如
+　(3)
+如果在操作过程中只考虑各接触点的物理约束，将接触约束作用到（3）,得到
+　(4)
+其中Bi∈R6×m是与接触模型对应的力旋量基，mi为手指i通过接触可作用到物体上独立的力旋量个数，对于摩擦点接触，mi=3，而软手指接触时，mi=4.
+　　将多指操作系统的每个手指作为一位置控制设备，因此，操作时指尖的运动速度就是手指运动控制系统的输入.当给定物体期望运动速度，如果只用式（4）来求解每个手指的运动，所得结果无法保证操作过程中抓取的力封闭条件.为此重新考虑式（3），在滚动接触情况下，接触速度仅由滚动速度决定，而滚动速度又可根据接触运动学方程由物体上接触点的坐标变化速度确定，即有
+　(5)
+其中
+，而(Mf,Kf,Tf),(Mo,Ko,To)分别为指尖物体表面的几何形状参数在各自接触坐标系中的描述.显然，（5）式右边第一项用于实现被操作物体的期望运动，而第二项则可用于协调各手指的运动以优化抓取.令
+f∶R2N→R∶(αo1,…，αoN)=αo(αo)
+为定义在物体接触坐标空间上的实值函数，用来衡量一个抓取的质量，即如果f(αo)取最大值（或最小值）时，抓取质量最优.那么，为了使抓取朝最优姿态变化，式（5）中物体接触点坐标的变化速度可由下列简单而直观的方法求出，
+　(6)
+其中　为函数f(αo)相对于变量αoi的梯度,λi∈(0,1).如果函数的最小值对应于多指手的最优抓取，则在式（6）前加一负号即可.
+4　抓取力的计算
+　　现在求解多指操作中抓取力优化问题，即计算最优的抓取力x=(x1,…,xN)T∈Rm，以生成期望的对象力旋量fd∈R6，也就是求解方程［10］
+Gx=fd.　（7）
+　　许多学者对于摩擦点接触和软手指接触进行了研究，并提出了许多算法.但其中大多数算法都是先将非线性的摩擦约束线性化，然后采用线性规划的方法来求近似解.最近，Buss，Hashimoto和Moore提出了一种新方法来精确的求解上述问题［5］.
+　　考虑N个手指抓取物体，所有接触点的摩擦约束等价于块对角矩阵P=Blockdiag(P1，…，PN)的半正定性，其中Pi=PTi，对摩擦点接触和软手指接触，分别为
+　(8)
+可以将描述矩阵P的特殊结构所具有的约束写成线性齐次方程
+A1vec(P)=0,　(9)
+其中为一常量矩阵，其秩为,P∈Rn×n,P＞0,l=n2,为线性等式约束的个数.
+　　为了在物体上产生期望的作用力fd， 手指的接触力x∈Rm必须满足力平衡约束(7)，该约束也可写成线性约束
+A2vec(P)=fd　(10)
+的形式，其中A2∈R6×l是物体接触坐标的函数.将式（9），（10）合到一起, 得到
+Avec(P)=q,　(11)
+其中
+　　令P(n)表示n阶对称正定矩阵的集合，定义极小化目标函数
+Φ∶P(n)→R∶P(P)=tr(WpP+WiP-1),　(12)
+其中Wp,Wi∈Rn×n为两个权因子，tr(.)表示矩阵的迹算子.将约束（11）作用到式（12）的梯度流上得到约束梯度流
+vec()=Qvec(P-1WiP-1-Wp),　(13)
+其中Q=(I-A+A)为投影算子，A+=AT(AAT)-1为矩阵A的广义逆.
+　　为便于计算机实现，将约束梯度流离散化得到
+vec(Pk+1)=vec(Pk)+αkQvec(P-1kWiP-1k-Wp),　(14)
+其中αk为可选步长，用于确保每步计算都使目标函数减小.当微分方程（16）的初始值满足约束（11）时，式（13）的解呈指数级速度收敛到其唯一的最小值.
+　　在滚动接触下多指手操作的实时抓取力计算过程中，一个主要的困难在于投影矩阵Q 的实时计算，因为其中包含有高维矩阵逆的计算.比如，对两软手指操作一物体，Q∈R64×64.如果使用一般的矩阵求逆算法和矩阵乘方法，在33MHz的MC68040单片机上计算一次Q需耗时3秒钟，显然这无法满足实时控制的需要.为了克服这一困难，从式（11）观察到A由两部分组成，其中
+为一常量矩阵，而且是一稀疏矩阵，A2∈R6×l是物体接触坐标的函数，它随抓取姿态的变化而变化，但它也是一稀疏矩阵.令
+　(15)
+计算该分块矩阵的逆得到
+　（16）
+其中Δ=A22AT12A-111A12∈R6×6,E=A-111A12,F=AT12A-111.既然A11是常系数矩阵，那么其逆A-111就可离线计算，所以在实时计算过程中，只需计算6×6矩阵Δ的逆.另外，由于在计算中所有的矩阵都是稀疏矩阵，因此矩阵的乘法可用稀疏矩阵的乘法来计算，这将节约大量的计算时间.采用这两项措施，在同样的计算资源下，实时计算一次Q的时间可减少到50ms左右，基本能满足实时计算的需要.
+5　手指顺应控制
+　　协调运动规划模块生成的各手指期望运动速度一方面用于实现期望的物体运动速度，另一方面用于使抓取的质量指标提高；而由抓取力规划模块生成的各手指的最优抓取力将在各摩擦锥的约束范围内，平衡作用在物体上的外力或物体运动所需的惯性力.本文假设每个手指都是位置控制设备，并采用顺应方法将期望的手指抓取力fdi和实际测得的手指力fmi的偏差转化为手指的微分位移，然后将顺应微分位移和协调运动模块生成的微分位移作矢量加，得到
+　(17)
+其中Kci∈R6×6是顺应系数矩阵，对于如何确定顺应系数矩阵，没有统一的理论可以参考，目前主要靠实验和经验来确定某一实际系统的顺应矩阵，但一般假设顺应矩阵是对称正定矩阵.当实际的抓取力与期望的抓取力相等时，将不产生任何手指运动，手指保持对物体的期望作用力.
+　　最后，此微分位移经手指逆运动学转化为各手指关节位移，由关节级控制器完成手指的顺应运动控制.
+6　应用与实验
+　　本文所提出的控制系统框架结构已成功用于香港科技大学（HKUST）多指灵巧机械手控制系统的开发.下面介绍HKUST多指手的硬件和实时控制软件的结构，并给出几个实验的例子.
+6.1　HKUST多指手系统
+　　图2为香港科技大学电机与电子工程系机器人实验室建立HKUST灵巧机械手，每个手指由一个六自由度Motoman K3S工业机器人组成.实际使用时，可将手指的部分关节锁定以使手指具有三、四或五个自由度.手指指尖部分可应实验的要求随意更换.每个手指安装编码盘和6维力/力矩传感器，用于感知手指每个关节的精确位置和手指尖的抓取力.
+
+
+图2　HKUST机器人多指手
+　　系统控制器的最上层由两个Motorola公司制造的MVME166单片机组成，分别用于运动规划和抓取力优化，三个基于DSP 八轴可编程控制器PMAC用于伺服级控制，两块AVME9135 A/D板用于与三个力控制器信号处理器的接口.一台SUN SPARC-10工作站通过以太网和串口与控制器连接，用于应用程序的开发和用户界面.控制软件由一系列独立而并行执行的程序所组成，VxWorks作为HKUST多指手控制系统的操作系统，其内核wind提供了基本的多进程执行环境调度算法.
+6.2　实验
+　　首先采用两个圆盘指尖操作一小篮球，初始抓取是一非最优抓取.采用梯度优化算法，选择合适抓取质量指标函数, 使球在被操作过程中, 同时达到最优的抓取姿态，物体期望运动为沿其z轴方向作平移运动，选择顺应系数Kci=0.02，其他元素为0，协调运动规划器步长选λ=0.1，实验结果如图3,4，5所示.显然，抓取姿态以指数级速度收敛到最优抓取姿态，由于抓取姿态得到了优化，各手指的抓取力也得以优化.
+
+
+图3　两指操作时物体接触坐标的变化
+
+
+图4　手指期望抓取力的变化
+
+
+图5　实时测得的手指抓取力
+　　其次采用三个圆柱手指操作一球体，初始接触坐标为（0,170,80,0,0），（0,-50,180,0,0）和（0,20,180,0,0），这也不是最优抓取.选择合适抓取质量指标函数及相应顺应系数矩阵，运动步长和期望物体运动于上面的试验相同，所得实验结果如图6，7.显然，所得的实验结果及理论与两指抓取的结果与结论一致.
+
+
+图6　三指操作物体接触坐标变化
+
+
+图7　三指操作指期望法向抓取力
+　　如果被抓取物体与其环境物接触，存在力的作用，那么需要多指手控制系统能控制作用力的大小.这种任务在装配操作中普遍存在.通过选择适当的手指顺应控制系数， HKUST多指手系统能完成此类操作任务.
+7　结　论
+　　本文为机器人多指操作建立了一递阶控制系统结构.给定被操作物体的期望运动速度，协调运动模块计算合适的手指速度，完成物体运动并同时优化抓取指标，同时，抓取力规划模块根据当前的抓取姿态计算最优的抓取力以保持接触约束并保持抓取平衡.通过HKUST多指手操作实验表明，该控制系统结构能有效的完成各类操作任务.
+1) 国家自然科学基金(69775021)、重大项目(59990470)、博士点专项基金(96048727)资助、香港科技大学685/95E资助项目.
+作者简介：秦自强　1998年在华中理工大学机械学院获得工学博士学位，现在上海交通大学作博士后研究.1996年至1997年在香港科技大学进行合作研究.主要研究领域：机器人多指抓取操作和运动规划，机器人离线编程和实时控制.
+　　　　　熊有伦　华中理工大学教授，中科院院士.主要研究领域：先进制造技术，机器人规划和离线编程.
+　　　　　李泽湘　博士，香港科技大学电机与电子工程系自动化研究中心主任，副教授.主要研究领域：机器人抓取、操作，非完整体系动力学，寻位和制造.
+作者单位：秦志强　熊有伦　华中理工大学机械学院　武汉　430074
+　　　　　李泽湘　香港科技大学电机与电子工程系　香港
+参考文献
+1　Mason M T, Salisbury J K. Robot Hands and the Mechanics of Manipulation.Cambridge Mass:MIT Press, 1985.78-87
+2　Shimoga K B. Robot grasp synthesis algorithms: a survey. Int J. on Robot. Res., 1996,15(3): 230-266.
+3　Montana D J. The kinematics of multifingered manipulation. IEEE Tran. on Robot. and Automat., 1995, 11 (4):491-503.
+4　Kerr J, Roth B. Analysis of multifingered hands.Int J. on Robot. Res.,1986,4(4):3-17
+5　Buss M, Hashimoto H, Moore J. Dexterous hand grasping force optimization. IEEE Tran. on Robot. and Automat., 1996,12(3):406-418
+6　Bonitz R, Hsia T. Internal forcebased impedance control for cooperating manipulators. IEEE Tran. on Robot. and Automat., 1996, 12(1):78-89
+7　Deo A, Walker I. Dynamics and control of multiple cooperating manipulators with rolling contacts.J. of Robotic Systems, 1996,13(10):619-648
+8　Hu Y R, Goldenberg A A, Zhou C. Motion and force control of coordinated robots during constrained motion tasks. Int J. on Robot. Res., 1995,14(4):351-365
+9　Li Z, Hsu P, Sastry S. Grasping and coordinated manipulation by a multifingered robot hand. Int J. on Robot. Res., 1989, 8(4):33-50
+10　Murray R M, Li Z, Sastry S S. A Mathematical Introduction to Robotic Manipulation.Boca Raton:CRC Press, 1994.211―256
+收稿日期：1997-10-28
+修稿日期：1999-04-02

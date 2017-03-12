@@ -1,0 +1,71 @@
+计算机工程
+Computer Engineering
+1999年　第25卷　第4期　Vol.25　No.4　1999
+
+
+
+基于Web的部件重用中的继承机制
+艾丽蓉　何华灿　彭亮
+摘　要　集中讨论了在Web环境下的部件重用模型中引入分布式继承机制的必要性，并以基于Java平台的部件重用模型JavaBeans为代表提出并论述了一个以VisualAge for Java为开发环境的分布继承模型的实现途径，最后指出进一步的研究方向。
+关键词　环球信息网WWW（Web）部件重用继承机制
+Inheritance Mechanism Based on WWW in Reusable Components
+Ai Lirong He Huacan PengLiang
+（Department of computer Science&Engineering,Northwestern Polytechnical University Xian 710072)(Software Engineering Institute,Xidian University Xian 710071)
+Abxtract:This paper discusses the necessity of ymcorporating distributed inheritance mechanism into reusable components models in WWW(Web) environment.Using JavaBeans,a reusable component model based on Java platform,as a representative,it proposes the implementation method of a distributed inheritancd inheritance model under the deveopment envionment of VisualAge for Java.Finally,it points out further research directions.
+Key words:World Wide Web(WWW);Component reuse;Inheritance mechanism
+　　本文以建立在Java平台上的部件重用模型-JavaBeans为代表，针对其现有的问题着重讨论了分布环境中的继承机制。
+1　基于Java平台的部件重用模型-JavaBeans
+1.1　基于部件重用的软件开发
+　　随着软件开发的规模日益增大，难度日益提高，基于部件的软件技术得到越来越广泛的运用。它通过将可重用的软件部件(Parts)组装到新的应用中来构造应用程序。由于基于部件的软件技术强调软件的模块性、可重用性和可靠性以及在网络环境中的功能，这种部件重用技术在基于网络的软件开发中越来越重要。随着面向网络计算的Java技术的兴起，在Java平台上也有相应的部件重用模型，即JavaBeans。
+1.2　JavaBeans
+　　JavaBeans将基于组件的软件范型扩展到平台中立的网络计算中，在JavaBeans这一部件重用模型中，重用的基本单位是Bean，即一个部件就是一个Bean,Bean在Java语言中是以类的形式存在的，也就是说，JavaBeans归根到底是Java类。由于Java语言及环境的平台中立性、可流动性、动态性等特征，使得建立在它之上的JavaBeans自然地成为一个面向Internet/Intranet的部件重用模型。
+1.3　JavaBeans面临的问题
+　　虽然JavaBeans比起其他组件模型(如基于COM的ActiveX)来最大的优点是面向多平台的网络环境，但是其自身仍存在一些问题。
+　　JavaBeans之间的关系总的来说大致可以分为两类：动态的关联和静态的关联。动态的关联指的是在开发环境中将不同的Beans通过事件响应关联起来，这样当某个Bean中有特定事件发生时会激发起另外Bean的响应。静态的关联则主要是指本开发环境中构造应用程序时，确定部件之间的组装关系(即某个部件由其他部件组装而成)或继承关系(即某个部件由其他部件派生而来)。要实现Java部件之间的继承关系必须解决这样一个问题，即当Java部件分布在万维网Web中不同的主机上时，如何实现继承。JavaBeans 本身的规格说明中并未提供这种分布继承机制，它只是把JavaBeans当成一般的Java对象(如Applet)或以JAR文件的形式在网络传输，分布环境下Beans之间的继承关系最终归结为分布环境下Java对象间的继承关系。
+2　基于Web的对象继承模型
+　　实现分布环境下的继承性必须考虑到分布系统的性能、可靠性、安全性、灵活性、透明性等因素。这些因素直接影响到分布继承模型中的各种策略。
+2.1　传统的分布继承方案
+　　一种方案是使被继承的类在每一个使用它的逻辑结点上都有一份拷贝，然后各结点可以互不干扰地在其内部生成该类的实例或派生出子类，如图1所示。
+
+图1　一种传统的分布继承方案
+　　显然这种方案存在严重问题。由于同一个类在不同结点上都有拷贝，因此保持它们之间的一致性成为首要的问题，因为每一个结点上的拷贝都可能被更改，它们之间及它们的派生类之间的兼容性无法保证，所以，在一个结点上生成的实例移动到另一结点后可能将产生冲突。因此，要使这种方案实际可行，必须能确保两个对象的兼容性并且不以高度可流动性作为系统设计的主要目标。
+　　也有的方案并不是将类拷贝到远程结点上，而是在远程结点上保存一个指向某被引用类的指针，如图2所示。
+
+图2　传统的分布继承方案的变种
+　　这种方案看起来解决了实例在结点间移动时类的冲突问题，但是又带来了新的问题。因为类和实例一样也可以在结点间移动，当类移动时所有其他结点上指向它的指针都必须更改，这样做的开销很大。系统必须不断地为那些带有这类指针的对象查看整个网络以监视被指向类是否发生变化。这样做使得系统的性能很低。
+2.2　基于Web的分布继承模型
+　　Web环境的特点是动态性强，复杂性高，开放程度高。随着Java的发展，类、对象在网络中的移动变得更加自然。在Java语言中是先查看本地是否有被继承或引用的类，若没有则通过URL查找远程结点并对其载入到本地。传统分布环境中典型的做法是在本地生成远程类的proxy，通过对proxy的操作来实现对远程类的继承。这样做的优点是对本地使用者的透明程度高，但是当使用者对远程类操作频繁时效率会明显降低。
+　　在Web环境中的分布继承机制应该是透明性、灵活性、高效性的统一。所谓透明性，就是让使用者感觉不到分布的存在，在上层开发环境中(如VAJ)，使用者可以像浏览本机的类层次结构一样浏览网络分布类层次结构，并且还应能在一定权限范围内操纵。为了实现这一点，首先必须有一套作用于整个网络的机制，使得各结点都能向外发布本地的类层次结构，然后才有可能在上层的开发环境中将各地的类层次综合起来，组织成整个网络的类层次。其中包括：
+　　(1)网络上各结点向外expose本地的类层次。在expose的过程中，可以为每一个类都生成相应的proxy若expose的是Beans，可以根据相应的BeanInfo生成相应的proxy)，再将各自的 proxy 编译成.class文件。下面是一个proxy类的模型。
+　　　class proxyA extends classB{
+　　　　private URL arl;
+　　　　private string Name;
+
+　　　　public　URL　geturl{…};
+　　　　public　String getName{…};
+　　　}
+　　此外，还应将类层次结构序列化。即拓扑排序以后expose，因为在迁移整个类层次时需按一定的先后次序迁移，确切地说应先迁移父类后迁移子类。所以，在各结点expose本地类层次时，应先从根开始。
+　　(2)将用户在IDE中对类层次的使用转换成对远程类的引用，以VA Java为例，用户应可以直接在Visual Composite Editor中操作网络类层次结构。因为VA Java 本身并未提供这种支持，故可以另设计一个bean，在该bean中能可视地操作类层次(如从现有的远程beans中派生出新的bean)，当这些操作涉及远程的类时，需在底层建立与远程proxy的联系，并将被引用远程类的proxy或它的一个拷贝装载到本地。这些底层操作均对使用者透明。在这里也可以给用户提供更多的自主权来决定一些总体策略(比如，是迁移类的proxy还是其拷贝)。
+　　(3)在移动类的过程中，先是根据远程类的URL及其类名找到相应类的proxy,再根据继承关系查找其所有直接或间接的父类及其实现的接口。由于Java语言只支持类的单重继承而不支持多重继承，其类层次拓扑结构为树型结构，故可沿该类所在结点至根的路径查找，将整个类层次结构逐一迁移，具体查找时可按以下算法：
+　　　move Hierachy(url,name){
+　　　　　通过url,name找出该类的proxy类；
+　　　　　if (该类还有父类){
+　　　　　　move Hierachy(url,父类 name);}
+　　　　　装载该类至本地；
+　　　}
+　　(4)名字与目录服务。名字与目录服务是分布式系统中对象间互操作的一个重要组成部分。JNDI(Java Naming and Directory Interface)为多重名字与目录服务提供了一个统一的接口。用户可以通过它建立名字与对象间的绑定(Binding)，根据特定名字查找对象等等。应用程序可以通过JNDI提供的为特定目录或名字服务的实现无关的目录服务API来访问特定的目录或名字服务系统，如LDAP、NDS或NIS。JNDI的体系结构如图3所示：
+
+  图3　JNDI体系结构
+综上所述，我们不难构造出整个基于Web的分布继承模型的结构(如图4).
+
+图4　基于Web的分布继承模型的体系结构
+3　进一步的工作
+　　值得指出的是，以上模型的提出虽然是以VAJava为例，但整体思路同样适合于其他支持Java Beans的集成开发环境。
+　　以上仅就Web环境下部件重用技术中的继承机制展开讨论。如前所述，JavaBeans之间的关联除了静态关联以外还有动态的关联。在Web环境下，这种动态关联可能是这样一种情形：用户在VAJ的IDE中建立两个Bean之间的事件关联，而互相关联的两个bean在Web上不同的主机中，因此需要有相应的机制来支持这种分布环境下的部件间的事件关联，这样整个分布环境下部件重用模型才趋于完备，这正是有待于下一步继续探讨的问题。
+作者简介：艾丽蓉　女，27岁，主攻软件工程、分布式计算及人工智能
+作者单位:西北工业大学计算机系　西安　710072，西安电子科技大学软件所　西安　710071
+参考文献
+　1　Taivalsaari A.On the Notion of Inheritance. ACM Computing Surveys，1996，28(3)：438-479
+　2　Object Management Group.The Common Object Request Broker：Architecture and Specification Revision 2.0 . OMG Technical Document ptc/96-08-04，1996-07.URL:ftp://ftp. omg.org/pub/docs/ptc/96-08-04.pdf.gz
+　3　JavaSoft.Javasoft JavaBeans Version 1.00-A.JavaSoft，1996
+收稿日期:1998-08-04

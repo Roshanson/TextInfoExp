@@ -1,0 +1,61 @@
+自动化学报
+AGTA AUTOMATICA SINICA
+1999年 第25卷 第2期 Vol.25 No.2 1999
+
+
+
+一种新型多变量模糊自适应控制系统的研究
+周景振　韩曾晋
+摘　要　针对多变量非线性系统，提出了一种基于动态耦合特性的两级串联结构的模糊自校正控制器，并提出了基于动态灵敏度矩阵和在线测量的自学习算法.同时利用一种智能梯度法确定自校正学习迭代步长.仿真结果表明，算法的收敛性和系统的稳定性均有所改善.利用这些控制策略，可以较好地解决化工反应器等复杂对象的过程控制问题.
+关键词　多变量非线性控制，动态耦合特性，模糊神经网络，自学习算法，智能梯度法.
+A NEW MULTIVARIABLE FUZZY SELF-TUNING CONTROL SYSTEM
+ZHOU Jingzhen　HAN Zengjin
+(Departmemt of Automation,Tsinghua University,Beijing　100084)
+Abstract　In this paper a cascade-connected self-tuning controller based on dynamic coulped characteristics for multi-variable nonlinear system is proposed.A self-Learning algorithm based on dynamic sensitivity matrix and on-line measurement is also given.An intelligent gradient approach is used to determine the step length of the iterative self-learning algorithm.By using the control strategies given in this paper the process control for complex plant such as chemical reactors can successfully be solved.
+Key words　Multi-variable nonlinear control, dynamical couple characteristic,fuzzy neural networks, self-learning algorithm, intelligent gradient approach.
+1　引言
+　　多变量非线性对象的建模与控制问题一直是控制理论所要解决的难点之一.智能控制的模糊、神经元、专家系统，本质上是非线性处理器.近年来人们用这些方法研究多变量对象的控制问题已经取得了许多理论成果，但实际应用尚存在一些问题.
+　　1) 用纯模糊逻辑［1］表达的多变量系统，获得准确的多维模糊关系仍有很多困难.
+　　2) T-S(Takagi-Sugeno)模型［2］用于控制的前提是要建立一组模糊“线性”模型，而要建立这些模型需要离线进行大量的工作，且产生的模型自适应性和鲁棒性均较差.
+　　3)神经元网络虽然具有多变量模型的自然结构［3］，但迄今为止仍然缺少一种专门适合于过程控制的动态神经元网络.
+　　本文把模糊逻辑处理连续时间动态控制的能力与神经网络的“学习”能力两者有机地结合起来，提出一种基于对象动态耦合特性的新型多变量模糊自校正控制器.
+2　多变量模型与控制系统结构设计
+　　假设多变量对象是一个“非线性黑箱结构”［4］，所能了解到的信息只有当输入控制U=｛u1(t),u2(t),,ur(t)｝发生有界变化时，可以使其输出状态Y=｛y1,y2,,yq｝发生有界改变.对任意结构(r≠q或r=q)的对象作者设计出两级串联的模糊多变量自校正控制系统，前级决定系统的动态特性；后级决定系统的多变量之间的关系.(如图1所示)
+
+图1　多变量控制系统方案
+2.1　前级动态特性寻优控制器
+　　在前级的动态特性自寻优控制器中，由对象输出偏差e=｛e1,e2,eq｝得到的形式上控制作用(不直接用于对象控制)°=｛°1(k-1),°2(k-2),,°q｝是用文献［5］提出的规则自调整方法得到.
+2.2　后级的多变量协调控制器
+　　取前级输出u°=｛u°1(k-1),u°2(k-1),,u°q(k-1)｝作为协调控制器输入；取对象输出的一阶延迟信息y(k-1)=｛y1(k-1),y2(k-1),,yq(k-1)｝作为滞后修正参数；输出u(k)=｛u1(k),u2(k),,ur(k)｝作为对象的输入，协调器的作用是实现形式上的控制作用°到真实的对象控制作用ur的转换，其结构框图如图2所示：
+
+图2　协调控制器模型
+　　根据协调器的变量结构组成T-S型模糊神经网络控制模型，表达方式为
+
+
+(1)
+则模型表达为简捷的矩阵代数形式
+
+(2)
+As为与前级相关的模糊集合矩阵，Bs为数据模糊集合矩阵，矩阵中的诸元素为自适应调节参数，s=1,2,,L.当然，可根据经验知识给出低阶初始前提条件和结论部分的参数.例如数据的滞后阶数初值可取n=3，m=3，参数均可取小于2大于0的数，然后根据输出特性再继续增加或减少，显然滞后时间常数很大时必须增加滞后阶数.
+　　第s条规则的前提条件总适合度可以表示为
+
+
+(3)
+由L条规则求出的综合控制作用表达式可获得模糊神经网络模型
+
+(4)
+为了计算上的简捷，将(4)式改写成
+
+
+(5)
+其中为训练参数，为输入输出数据.
+3　基于对象动态耦合特性的模糊神经网络学习算法
+　　设多变量对象输入分量u1(t),u2(t),,ur(t)在各论域上模糊划分是事先给定的，并取期望输出yd=｛yd1,yd2,,ydq｝与实际输出y(t)=｛y1(t),y2(t),yq(t)｝之差的平方和作为系统的性能评价函数，其中yi(t)=fi(u1(t),u2(t),ur(t))，表达为
+
+(6)
+以参数矩阵中诸元素为自变量对评价函数E求偏导数
+
+(7)
+式中e(t)=｛e1(t),e2(t),,eq(t)｝为对象误差向量，为对象的第i个输入与所有输出之间的相对变化率向量，也称为灵敏度向量.
+
+(8)

@@ -1,0 +1,129 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.347-355
+
+
+
+PID参数先进整定方法综述
+王伟　张晶涛　柴天佑
+摘　要　PID控制是过程控制中应用最广泛的控制方法.文中综述了PID参数先进整定方法及近年来在此方面得到的最新研究成果，并对将来的发展进行了展望.
+关键词　PID控制，参数整定，自适应.
+A SURVEY OF ADVANCED PID PARAMETER TUNING METHODS 
+WANG Wei　ZHANG Jingtao　CHAI Tianyou
+（Research Center of Automation, Northeastern University, Shenyang 110006）
+Abstract　PID control is the most common control method used in process control. This paper surveys the advanced PID parameter tuning methods and the newest achievements in this subject, it also points out the directions of the future development.
+Key words　PID control, parameter tuning, adaptation.
+1　引言
+　　PID控制是迄今为止最通用的控制方法.大多数反馈回路用该方法或其较小的变形来控制.PID调节器及其改进型是在工业过程控制中最常见的控制器［1］(至今在全世界过程控制中用的84%仍是纯PID调节器，若改进型包含在内则超过90%).我们今天所熟知的PID控制器产生并发展于1915～1940年期间.尽管自1940年以来，许多先进控制方法不断推出，但PID控制器以其结构简单，对模型误差具有鲁棒性及易于操作等优点，仍被广泛应用于冶金、化工、电力、轻工和机械等工业过程控制中.
+　　国内外关于PID参数整定方法已有一些综述文章［2～4］.Astrom和Hagglund于1988年还出版了专著《PID控制器自整定》［5］.但是同其它控制方法一样，几十年来，PID控制的参数整定方法和技术也处于不断发展中，特别是近年来，国际自动控制领域对PID控制的参数整定方法的研究仍在继续，许多重要国际杂志不断发表新的研究成果.如Automatica［6～14］，IEEE Trans. on Control Syst. Tech.［15,16］，Control Eng. Practice［4,17］等.值得提出的是，Astrom和Hagglund于1995年再次出版了《PID控制器：理论、设计及整定（第二版）》［18］.
+　　自Ziegler和Nichols［19］提出PID参数整定方法起，有许多技术已经被用于PID控制器的手动和自动整定.根据发展阶段的划分，可分为常规PID参数整定方法及智能PID参数整定方法；按照被控对象个数来划分，可分为单变量PID参数整定方法及多变量PID参数整定方法，前者包括现有大多数整定方法，后者是最近研究的热点及难点；按控制量的组合形式来划分，可分为线性PID参数整定方法及非线性PID参数整定方法，前者用于经典PID调节器，后者用于由非线性跟踪-微分器和非线性组合方式生成的非线性PID控制器.
+　　本文综述了PID控制参数整定的先进方法和近几年的发展情况.
+2　智能PID参数整定方法
+　　Astrom在1988年美国控制会议（ACC）上作的《面向智能控制》［20］的大会报告概述了结合于新一代工业控制器中的两种控制思想――自整定和自适应，为智能PID控制的发展奠定了基础.他认为自整定控制器和自适应控制器能视为一个有经验的仪表工程师的整定经验的自动化.在文［21］中继续阐述了这种思想，认为自整定调节器包含从实验中提取过程动态特性的方法及控制设计方法，并可能决定何时使用PI或PID控制，即自整定调节器应具有推理能力.自适应PID的应用途径的不断扩大使得对其整定方法的应用研究变得日益重要.目前，在众多的整定方法中，主要有两种方法在实际工业过程中应用较好［20］.一种是由福克斯波罗（Foxboro）公司推出的基于模式识别的参数整定方法［22,23］（基于规则），另一种是基于继电反馈的参数整定方法［5,24］（基于模型）.前者主要应用于Foxboro的单回路EXACT控制器及其分散控制系统I/A Series的PIDE功能块，其原理基于Bristol在模式识别方面的早期工作［25］，运行经验总结见文［26］.后者的应用实例较多［6,27］，这类控制器现在包括自整定、增益计划设定及反馈和前馈增益的连续自适应等功能.这些技术极大地简化了PID控制器的使用，显著改进了它的性能，它们被统称为自适应智能控制技术［18,27］.
+　　自适应技术中最主要的是自整定.按工作机理划分，自整定方法能被分为两类：基于模型的自整定方法和基于规则的自整定方法［18］.下面就分别对这两类方法加以介绍.
+2.1　基于模型的自整定方法
+　　在基于模型的自整定方法中，可以通过暂态响应实验、参数估计及频率响应实验来获得过程模型.
+　　在自整定控制器中，使用了许多不同的整定方法，许多方法都源于文［19］.文［28］给出的扩展Z-N阶跃响应方法是一种基于暂态响应技术的自整定方法.该方法直接从阶跃或脉冲响应中获得简单过程模型参数，PID控制器的参数进而在满足加权误差平方积分指标(ISE)最小的条件下，由模型参数获知.该暂态响应方法与原始的Z-N阶跃响应法相比对噪声不敏感.文［29］提出了基于互相关度（cross correlation）的自整定方法，它利用二进制伪随机序列的输入与过程输出间的互相关度来识别最大增益和相位，并应用于Z-N整定公式，其主要优点是能用于噪声很强的环境.
+　　文［7］基于对参数“黑盒”传递函数的估计，提出一种用于闭环PID的整定方法.PID控制器参数由频域中的受限优化条件决定.限制条件是典型的控制系统特性，如灵敏度及补偿灵敏度函数的最大幅值.如果给出期望值，则在PID控制器低频幅值特性最大的条件下，确定PID参数.这种方法最大的优点是鲁棒性及快速性的折衷直接通过选择期望条件决定，且整定过程对干扰和噪声灵敏度较低.缺点是不适应过程的连续变化.
+　　Astrom和Hagglund在文［24］中提出一种继电反馈方法，该方法是获得过程临界信息的最简便的方法之一.它通过在过程输出至其输入的反馈回路中连入继电器以近似确定临界点.大多数过程将在一个有限周期内振荡，其临界增益和周期由振荡的幅值和频率来决定.该方法可保障稳定过程的稳定闭环振荡响应，因此已广泛应用于工业PID控制器参数自整定中［30］.文［31］对文［24］中的方法进行了扩展.在该方法中，首先产生一个有限周期振荡，使得控制系统在对于系统稳定至关重要的频率点处振荡；然后反复调整控制参数，以使闭环传递函数满足某个振荡频率点处的幅值要求.与Astrom和Hagg-lund的开环自整定调节器相比，由于该方法选择振荡频率更合理，使得控制回路具有比后者范围更宽的增益和相角裕度；并且该方法对振荡频率附近的干扰鲁棒性更强.其主要缺点是由于激励频率较低及振荡周期数可能因控制参数反复修改而较大，造成整定周期过长.
+　　针对PID控制器对于具有大滞后时间的过程控制性能较差及需要不必要的快速采样等缺点，文［6］基于继电反馈方法，提出一种用于整定单回路数字控制器的直接算法.所选控制器的结构采用滞后时间补偿.这种方法优于连续时间PID算法之处在于：①几乎没有近似，离散时间模型直接确定；②使用多于幅值和频率的全波形信息；③容易调整系统响应速率；④算法可用于处理具有时滞的系统，同时允许自适应滤波.仿真实验表明该方法对于具有时滞的低阶系统效果较好，但不适用于具有较大极点的系统.
+　　文［8］提出一种新的继电反馈方法，该方法可辨识存在静态负载干扰下的临界数据组，并用一个自动偏置来克服在继电整定实验过程中的静态负载干扰对临界增益和临界周期的估计造成的误差.然而，这种方法需要关于过程静态增益的预先确定的信息.进而，如果没有过程静态增益的先验信息，该方法需要几个继电实验以获得精确的临界数据和过程的静态增益.文［32］提出一种具有一个偏置项，同时估计临界数据组及过程静态增益的新继电整定方法.这种方法有助于简化使用继电反馈的在线过程辨识步骤.但由于偏置项导致过程输出和继电输出的混杂，使获得的临界数据组的准确度在某种程度上下降.文［9］提出一种新的改进继电反馈法，以求在存在静态负载干扰下得到更准确的临界信息.所提出的继电反馈方法自动改变继电器输出以确保对称的过程输出.该方法不需要关于过程静态增益的任何先验知识，过程静态增益和临界信息可由一个继电实验同时获得.
+　　文［15］提出一种基于继电激励获得被控对象频域模型的PI及PID控制器自校准的方法.该方法使用带滞环的继电器，自动调节继电器输出以获得过程相位滞后为135°频率处的振荡.整定规则基于对称优化方法［33］，具有同时考虑鲁棒性（相角裕度、增益裕度、灵敏度）及期望闭环特性的优点.但该方法不能不加修改地用于工业过程控制中去，并且振荡幅度和周期的测量值在噪声环境下准确度下降.
+　　文［15］将继电反馈技术用于串级控制器的自动整定.继电器的使用允许在副回路整定时，不用将主控制器置为手动方式，并且串级回路的相对速度可由继电反馈自整定获得的有限周期振荡（等幅震荡）获知.文［34］提出一种改进的继电反馈方法以获得过程更精确的临界信息.他们使用六步信号代替文［24］中使用的两步信号以减少高次谐波项.
+　　利用幅值裕度和相角裕度整定PID参数能使系统具有良好的控制性能和鲁棒性能.文［35］提出一种基于继电反馈的利用相角裕度自整定PID参数的方法，该方法通过在控制回路中插入时滞变量，在过程的每一步由算法本身完成搜索，能在实时整定之前找到过程频率响应曲线上的不同点，直到满足某些预设定的控制性能(如闭环相角裕度)，PID参数在此时被计算.算法所需的过程先验知识较少，用户只需给定闭环系统所需的最小相角裕度即可.文［36］提出一种利用幅值裕度和相角裕度自整定PID参数的方法，但该方法不适于整定不稳定对象.文［37］给出一种新的基于给定相角裕度和幅值裕度的PID参数自整定SPAM法，该方法利用较少的对象信息，可独立整定PID调节器所有参数，仿真结果表明该方法适用范围较广.Ho等在文［11］中提出一种基于给定幅值及相角裕度的频域PID参数整定方法，它允许设计者在规定系统鲁棒性的同时，给定系统性能.最近，Ho等在文［12］中又将幅值和相角裕度(GPM)设计与时间优化设计的优点相结合，给出一组能同时满足鲁棒性和最优化性能要求的PID控制器整定公式.文中采用了使误差平方积分(ISE)为最小的优化准则，ISE-GPM公式适用于PID控制的在线实时自整定，公式形式简单，易于工程实现.
+2.2　基于规则的自整定方法
+　　在基于规则的自整定方法中，不用获得过程实验模型，整定基于类似有经验的操作者手动整定的规则.基于规则的自整定过程与基于模型的方法一样，使用暂态响应、设定值改变或负载干扰等信息，观测被控过程的特性，若被控量偏离设定值，则基于规则整定控制器参数.为获得一个基于规则的自整定过程，需要对响应特性进行量化.通常使用的量是描述控制系统稳定性的超调量和衰减比，以及用来描述控制回路响应速度的时间常数和振荡频率.获得决定不同控制器参数应该减少或增加的相应的规则比较容易，但确定相应的量较难.因此，基于规则的整定方法更适于连续自适应控制.与基于模型的整定方法相比，基于规则的整定方法对于处理负载干扰和处理设定值变化的方法相同，而前者比较适于设定值变化［18］.
+　　Bristol提出一种基于模式识别的PID参数整定方法［23］.他试图避开过程模型问题［38］，用闭环系统响应波形上一组足以表征过程特性而数目又尽可能少的特征量作为“状态变量”，以此为依据设计通用的自整定方法.在整定过程中，过程连接一个PID控制器，观察过程的阶跃响应及干扰变化，基于响应曲线调整控制器参数.该方法的优点在于应用简单，它不需要用户设定模型阶次等先验信息，甚至不需要预校正测试就能自动地整定.其主要缺点是需要大量的启发式规则，从而造成设计上的复杂性.另外，该方法对于系统存在正弦干扰、非最小相位动态特性及多变量交叉耦合的情况性能较差.
+　　文［16］提出一种基于频域辨识的基于规则的自整定方法.该方法优于其它整定方法在于：其整定过程不必中断正常的闭环控制,并可使用频域辨识技术从闭环系统获得的数据中估计出过程的开环频率响应.除了几乎没有任何动态特性先验知识的情形外，该方法不必进行继电整定或开环阶跃响应整定.该方法使用周期性激励，应用频率响应估计以获得闭环内的相对高的信噪比.辨识易于自动执行，且计算量适当.
+2.3　性能比较及应用
+　　文［39］给出三种PID自整定控制器的性能比较.这三个控制器分别是两个商用单回路PID控制器，即Satt Control的继电反馈自动校正器及Foxboro EXACT自调节控制器，以及一个改进Z-N原型PID控制器(基于互相关度实现自整定).基于过程仿真器的新型控制器用于模仿抽样试验的几个一般性过程.基于暂态响应的积分平方误差的定量分析结果用于比较在设定值变化，静态负载干扰及测量噪声等条件作用下的自整定控制器的相应性能.重新整定时间也在性能比较研究中引入.表1给出部分商用PID控制器的整定方法使用情况简介.
+表1　部分商用PID控制器的整定方法
+
+产品名称使用方法
+Foxboro EXACT(760/761)使用阶跃响应分析用于自整定，以及模式识别技术及自适应直接推断规则.
+Alfa Laval Automation ECA400使用继电自整定和基于模型的自适应.
+Honeywell UDC 6000使用阶跃响应分析用于自整定及基于规则的自适应.
+Yokogawa SLPC-181,281使用阶跃响应分析自整定及基于模型的自适应.
+
+3　多变量PID参数整定方法
+　　在多变量情形下，将自校正的灵活性和经典PID控制器结构的简化性相结合的任务由Tanttu［40］在Peltomaa和Koivo［41］的工作基础上完成.文［40］给出用确定性自回归滑动平均（DARMA）模型描述的控制器参数整定方法.在该方法中，PID参数通过递推参数估计策略得以在线整定.文［42］也陈述了一种这类算法，系统的阶跃响应矩阵通过使用递推辨识器得到计算.但是，这两种方法在每个采样间隔内都需要求矩阵的逆，这不利于在线计算.
+　　文［3］给出用于多入多出对象的PID整定技术的总结，这些技术主要用于在一定频率范围内实现对象解耦.一个包括几种整定多入多出（MIMO）对象的PI/PID控制器方法，类似于用户专家系统的软件包在文［43］中给出.然而，这些方法都是手动及耗时的.另外，它们也需要较精确的多变量过程动态模型，因此不适于在线整定.
+　　为使多变量PID易于在线整定，文［44～47］将继电自整定技术扩展用于多变量PID控制.文［44］通过独立的单回路继电反馈（IRF）实验，给出了分散PID控制器的整定方法，整个系统的稳定性通过在PI/PID参数上引入合适的非整定因子得以保障.文［45］提出一种结合顺序回路闭环及继电整定的整定方法（SRF）.文［46，47］通过由分散PID控制器输出振荡中获得的分散继电反馈（DRF），提出了针对2×2对象的设计算法.
+　　分散继电反馈（DRF）是一个完整的闭环测试，独立的单继电反馈（IRF）和顺序继电反馈（SRF）仅为部分闭环测试.闭环测试优于开环测试在于前者给过程带来较少的干扰并能使线性模型有效［5］.DRF可用于有效激励及辨识多变量过程的相互作用，使解耦设计成为可能；而IRF和SRF不能直接激励多变量过程的相互作用.在文［46,47］中使用的DRF只用于整定一个多回路PID控制器，因此，它适用于具有合适相互作用的过程.
+　　文［13］针对具有显著耦合的多变量过程，提出一种用于完全交叉耦合对象的多变量PID控制器，应用分散继电反馈（DRF）进行自整定的方法.该方法适用于通过分散控制则性能较差，或甚至不可能使过程稳定的具有显著相互作用的过程.文中研究了在DRF下的多变量振荡（例如，对于一个稳定的m×m过程，振荡频率在相对较大的继电器幅值变化下几乎保持不变）；完成了m个分散继电反馈实验，在实验中，振荡频率彼此接近，以便于在该频率处估计过程频率响应矩阵；进一步在继电器中引入偏差，以便额外获得一个过程稳态矩阵；针对多变量PID控制器的整定，在解耦前提下给出一组新的设计方程，控制器的PID参数分别通过在振荡频率及零频率处解方程来确定.
+　　文［48］提出一种用于任意维多入多出对象的基于DRF的分散PID自整定算法.该算法包括两个阶段：①辨识出包括所有回路的临界增益和一个临界频率的期望临界点；在该阶段，用继电环节代替所有的控制器，因此，在所有回路中产生具有相同周期的有限周期振荡，每个有限周期振荡对应于过程单个临界点；通过改变继电器参数，可以确定不同的点；自整定控制器包括这样一个过程，该过程快速收敛到期望的临界点，同时保持过程变量和控制变量的幅值均在预先给定的范围之内；②借助Z-N法［19］或R-ZN法［21，49］，利用期望临界点数据来整定PID控制器；该方法的优点是，对于合理选择期望临界点所需知的稳态过程增益，在闭环形式下，可通过自整定控制器在辨识临界点的同时被确定.
+　　文［14］给出了一个具有PID结构的多变量自调节控制器.控制器参数被在线自动调整，多变量PID控制器结构使其更适于工业应用.该算法用于一个多入多出锅炉的微机控制系统.对该锅炉温度控制进行了实验研究，结果表明，尽管实施多变量自调节PID的主要限制是选择用户定义的多项式矩阵，该整定过程并不比使用图形方法的固定参数多变量PID的预整定更困难.该调节器能给出较好的控制效果.
+4　非线性PID参数整定方法
+　　针对经典PID对复杂的非线性系统往往不能满足控制性能要求的情况，文［50］提出了一种利用非线性特性来改进经典PID调节器以提高其适应性和鲁棒性的方法.文中利用一种新的非线性结构“跟踪-微分器”［51］来产生控制器的新的基本要素，并应用这些新要素的“非线性组合”方式来改进经典PID调节器，设计出一种新型非线性PID控制器.控制器的基本要素并没有直接取自输入-输出误差，而是取为输入和输出信号经非线性处理所得到的新误差及其微分和积分.因此仍可借用“PID”一词，把这个新型控制器称为“非线性PID控制器”.文中还给出这种非线性PID控制器的一种具体形式.
+　　文［52］综述了利用非线性特性改进经典PID调节器方面的成果，其中有“非线性跟踪-微分器”、“非线性PID控制器”等结构和系统的“时间尺度”、控制器的“适应性”、“鲁棒性”等概念，以及这些结构和概念的应用方法.文中指出，控制不同对象所需要的控制器参数，只依赖于系统的“时间尺度”p.这就是说，为了进行控制，不一定去辨识对象模型，只要适当地估计出系统的“时间尺度”p就可以了.而从受控对象估计其“时间尺度”是比较容易的.此外，我们可以利用“时间尺度”p来设计出“学习”或“自学习”方法.初步研究表明，这种学习方法很相似于人的学习过程，简单而高效.从文中研究可以看出，“利用非线性特性”合理地提取微分信号，改造经典PID，为开发、研究高性能控制器提供了一条新的途径.
+　　文［53］首次将文［50］中提出的非线性PID控制算法成功地应用于电加热炉集散系统，以控制加热炉的功率，并对炉升温和恒温过程进行实时控制.应用结果表明非线性PID比传统PID鲁棒性更强，为进一步研究过程非线性控制提供很好的范例.
+5　结束语
+　　PID控制算法是迄今为止最通用的控制策略.有许多不同的方法以确定合适的控制器参数.这些方法区分于复杂性、灵活性及使用的过程知识量.一个好的整定方法应该基于合理地考虑以下特性的折衷：负载干扰衰减，测量噪声效果，过程变化的鲁棒性，设定值变化的响应，所需模型，计算要求等.我们需要简单、直观、易用的方法，它们需要较少的信息，并能够给出合适的性能.我们也需要那些尽管需要更多的信息及计算量，但能给出较好性能的较复杂的方法.
+　　从目前PID参数整定方法的研究和应用现状来看，以下几个方面将是今后一段时间内研究和实践的重点.
+　　①对于单入单出被控对象，需要研究针对不稳定对象或被控过程存在较大干扰情况下的PID参数整定方法，使其在初始化、抗干扰和鲁棒性能方面进一步增强，使用最少量的过程信息及较简单的操作就能较好地完成整定.
+　　②对于多入多出被控对象，需要研究针对具有显著耦合的多变量过程的多变量PID参数整定方法，进一步完善分散继电反馈方法，尽可能减少所需先验信息量，使其易于在线整定.
+　　③智能PID控制技术有待进一步研究，将自适应、自整定和增益计划设定有机结合，使其具有自动诊断功能〔17〕；结合专家经验知识、直觉推理逻辑等专家系统思想和方法对原有PID控制器设计思想及整定方法进行改进；将预测控制、模糊控制和PID控制相结合［54］，进一步提高控制系统性能，都是智能PID控制发展的极有前途的方向.
+国家杰出青年科学基金(69825106)资助课题.
+　　王　伟　1955年生，1982年毕业于东北大学自控系，1988年在东北大学工业自动化专业获工学博士学位，1990年至1992年在挪威科技大学从事博士后研究，1998年至1999年在英国牛津大学从事访问研究.现为东北大学自动化研究中心和国家冶金自动化工程中心(沈阳)副主任，博士生导师，在国内外重要期刊和国际重要学术会议上发表论文50余篇，曾获国家教委科技进步二等奖二次，1998年获国家杰出青年科学基金一次.主要研究方向为自适应控制、预测控制、智能控制等.
+　　张晶涛　1972年生，1993年毕业于沈阳化工学院自动化系，1998年1月在东北大学信息学院获工学硕士学位，现为东北大学自动化研究中心博士研究生.研究方向为PID自整定、智能控制、复杂系统建模与控制等.
+　　柴天佑　1947年生，现为东北大学自动化研究中心和国家冶金自动化工程中心(沈阳)主任、教授、博士生导师.研究方向为自适应控制、智能控制、复杂系统建模与控制等.
+王伟（东北大学自动化研究中心　沈阳　110006　E-mail:wangw@mail.neu.edu.cn）
+张晶涛（东北大学自动化研究中心　沈阳　110006）
+柴天佑（东北大学自动化研究中心　沈阳　110006）
+参考文献
+　［1］　须田信英.PID制御.システム制御情报ライブラリ―6,朝仓书店,1992
+　［2］　蒋新华.自适应PID控制.信息与控制,1988,17(5):41～50
+　［3］　Koivo H N, Tanttu J T.Tuning of PID controllers:survey of SISO and MIMO techniques.In: Preprints of IFAC International Symp.on Intelligent Tuning and Adaptive Control,Session 1,Singapore,1991
+　［4］　Astrom K J, Hagglund T,Hang C C,Ho W K.Automatic tuning and adaptation for PID controllers―A survey.Control Eng.Practice,1993,1(4):699～714
+　［5］　Astrom K J, Hagglund T.Automatic Tuning of PID Controllers.Research Triangle Park,North Carolina:Instrument Society of America,1988
+　［6］　Astrom K J,Hagglund T,Wallenborg A.Automatic tuning of digital controllers with applications to HVAC plants.Automatica,1993,29(5):1333～1343
+　［7］　Schei T S.Automatic tuning of PID controllers based on transfer function estimation.Automatica,1994,30(12):1983～1989
+　［8］　Hang C C,Astrom K J, Ho W K.Relay auto-tuning in the presence of static load disturbance.Automatica,1993,29(2):563～564
+　［9］　Park J H,Sung S W, Lee I B.Improved relay autotuning with static load disturbance.Automatica,1997,33(4):711～715
+［10］　Voda A A, Landau L D.A method for the auto-calibration of PID controllers.Automatica,1995,31(1):41～53
+［11］　Ho W K,Hang C C, Cao L S.Tuning of PID controllers based on gain and phase margin specification.Automatica,1995,31:497～502
+［12］　Ho W K,Lim K W,Xu W.Optimal gain and phase margin tuning for PID controllers.Automatica,1998,34(8):1009～1014
+［13］　Wang Q G,Zou B,Lee T H,Bi Q.Autotuning of multivariable PID controllers from decentralized relay feedback.Automatica,1997,33(3):319～330
+［14］　Yusof R,Omatu S, Khalid M.Self-tuning PID control:a multivariable derivation and application.Automatica,1994,30(12):1975～1981
+［15］　Hang C C,Loh A P, Vasnani V U.Relay feedback auto-tuning of cascade controllers.IEEE Trans.on Control Syst.Tech.,1994,2(1):42～45
+［16］　McCormack A S, Godfrey K R.Rule-based auto-tuning based on frequency domain identification.IEEE Trans. on Control Syst.Tech.,1998,6(1):43～61
+［17］　Ho W K,Hang C C,Wojsznis W, Tao Q H.Frequency domain approach to self-tuning PID control.Control Eng.Practice,1996,4(6):807～813
+［18］　Astrom K J, Hagglund T.PID Controllers:Theory,Design,and Tuning,2nd Edition.Research Triangle Park,North Carolina:Instrument Society of America,1995
+［19］　Ziegler J G, Nichols N B.Optimum settings for automatic controllers.Trans.ASME,1942,64:759～768
+［20］　Astrom K J. Toward intelligent control. IEEE Control Systems Magazine,1989(April):60～64
+［21］　Astrom K J,Hang C C,Persson P, Ho W K.Towards intelligent PID control.Automatica,1992,28(1):1～9
+［22］　Kraus T W, Myron T J.Self-tuning PID controller uses pattern recognition approach.Control Engineering,1984(June):106～111
+［23］　Bristol E H.Pattern recognition:An alternative to parameter identification in adaptive control.Automatica,1977,13:197～202
+［24］　Astrom K J, Hagglund T.Automatic tuning of simple regulators with specifications on phase and amplitude margins.Automatica,1984,20:645～651
+［25］　Bristol E H.A simple adaptive system for industrial control. Instrumentation Technology,1967(June)
+［26］　Callaghan P J,Lee P L,Newell R B.Evaluation of Foxboro controller.Process Control Engineering,1986(May):38～40
+［27］　Hagglund T, Astrom K J.Industrial adaptive controllers based on frequency response techniques.Automatica,1991,27(4):599～609
+［28］　Nishikawa Y,Sannomiya N,Ohta T, Tanaka H.A method for auto-tuning of PID control parameters.Automatica,1984,20: 321～332
+［29］　Hang C C, Sin K K.An on-line auto-tuning method based on cross-correlation.IEEE Transactions on Industrial Electronics, 1991,38(6):428～437
+［30］　Morris H M.How adaptive are adaptive process controllers?Control Engineering,1987,34(3):96～100
+［31］　Schei T S.A method for closed loop automatic tuning of PID controllers.Automatica,1992,28:587～591
+［32］　Shen S H,Wu J S, Yu C C.Use of based-relay feedback for system identification.AIChE J.,1996,42:1174～1180
+［33］　Kessler C.Das symmetrische optimum.Regelungstetechnik,1958,6(11):395～400
+［34］　Sung S W, Park J H, Lee I.Modified relay feedback method.Ind.Engng Chem.Res.,1995,34:4133～4135
+［35］　Leva A.PID autotuning algorithm based on relay feedback.In:Proc.IEE,Pt D,1993,140(5):328-338.
+［36］　Ho W K,Hang C C, Cao L S.Tuning of PID controllers based on gain and phase margin specifications.In：Proceedings 12th IFAC World Congress,Sydney,Australia,1993,5:267～270
+［37］　柴天佑，张贵军.基于给定的相角裕度和幅值裕度PID参数自整定新方法.自动化学报，1997，23(2)：167～172
+［38］　Hang C C, Chin D. Reduced order process modelling in self-tuning control.Automatica,1991,27(3):529～534
+［39］　Hang C C, Sin K K.A comparative performance study of PID auto-tuners.IEEE Control System Magazine,1991:41～47
+［40］　Tanttu J T.A comparative study of three multivariable self tuning controllers.Tampere,Finland:Tampere University of Technology Publication,1987,44
+［41］　Peltomaa A, Koivo H N.Tuning of multivariable discrete time PI controller or unknown systems.Int.J.Control,1983,38:735～745
+［42］　Jones A H, Porter B.Design of adaptive digital set-point tracking PID controllers incorporating recursive step response matrix identifiers for multivariable plant.IEEE Trans.Autom.Control,1987,AC-32:459～463
+［43］　Lieslehto J,Tanttu J T, Koivo H N.An expert system for multivariable controller design.Automatica,1993,29:953～968
+［44］　Luyben W L.A simple method for tuning SISO controllers in a multivariable system.Ind.Engng. Chem.Proc.Des.Dev.,1986,25:654～660
+［45］　Loh A P,Hang C C,Quek C K, Vasnani V U.Autotuning of multiloop proportional-integral controllers using relay feedback.Ind.Engng. Chem.Res.,1993,32:1102～1107
+［46］　Palmor Z J,Halevi Y, Krasney N.Automatic tuning of decentralized PID controllers for TITO processes.In：Proc.of 12th IFAC World Congress,Sydney,1993:311～314
+［47］　Zhuang M, Atherton D P.PID controller design for a TITO system.In:Proc.IEE,Pt D,1994,141:111～120
+［48］　Halevi Y,Palmor Z J, Efrati T.Automatic tuning of decentralized PID controllers for MIMO process.J.Proc.Cont.,1997,7(2):119～128
+［49］　Hang C C,Astrom K J, Ho W K.Refinements of the Ziegler-Nichols tuning formula.In:Proc.IEE,Pt D,1991,138(2):111～118
+［50］　韩京清.非线性PID控制器.自动化学报,1994,20(4):487～490
+［51］　韩京清,王伟.非线性跟踪-微分器.系统科学与数学,1994(3)
+［52］　韩京清.利用非线性特性改进PID控制律.信息与控制,1995,24(6):356～364
+［53］　王顺晃,李晓天,郑秋宝,郑保元,邓芮岚,FDA1一顺.非线性PID算法及其在电加热炉集散控制系统中的应用.自动化学报,1995,21(6):675～681
+［54］　张晶涛,王　伟,曹　方.一种智能控制方法在300MW机组主汽温控制系统中的应用研究.中国电机工程学报,1999,19(3):6～10
+收稿日期　1998-09-26
+修稿日期　1999-04-20

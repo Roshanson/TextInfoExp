@@ -1,0 +1,13 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000　No.19　No.1　P.54
+
+
+
+
+关于Office 2000 
+　　Office 2000 Office 2000在支持编程开发方面有哪些新特点？
+　　1．支持对病毒的防护。通过编程界面，开发人员可以轻而易举地将病毒检查工具添加到Office 2000。同时Office中也有内置的病毒检查工具。
+　　2．为宏添加数字签名以提高安全性和用户的安全感。开发人员可以为其Visual Basic for Applications （VBA）宏签名，这样用户便可以知道宏的来源以及它们是否被改动过。用户可以指定对于有特定开发人员签名的未经改动的宏不显示警告信息。
+　　3．VBA 6在Office 2000中包含有最新版本的VBA，这个版本的VBA具有与Visual Basic相同的语言功能。VBA 6为Office提供了非模态用户窗体以及对附加ActiveX控件的支持等功能。
+　　4．可编程性。（1）共享Add－In结构。在统一的插入模式下，利用Microsoft Office COM加载项，开发人员可建立Office集成的解决方案。（2）Microsoft Office反病毒API。Office 2000的“打开文件”命令中有病毒扫描API。这些新的API能让第三方供应商在加载Office文档前对其进行扫描。（3）基于应用程序的Visual Basic（VBA）宏数字签名。为了提高安全性和用户满意度，开发人员可以通过宏签名来保证他们不受病毒影响。（4）Office 2000包含最新版的VBA，保证了VBA与Visual Basic语言特性的一致性。（5）应用程序级事件。为了改进自定义解决方案，添加了新型事件。（6）Microsoft脚本编辑器。Office 2000可用于开发HTML脚本和基于HTML的客户解决方案。

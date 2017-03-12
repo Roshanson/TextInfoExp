@@ -1,0 +1,50 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第1期 Vol.23 No.1 1997
+
+
+
+具有任意非线性输入的鲁棒模型
+参考自适应控制
+余文　M.De la Sen　柴天佑
+摘　要　提出了一种分析具有任意非线性输入的模型参考自适应(MRAC)的新方法，它不要求对象是稳定的，允许系统存在未建模动态和有界扰动.同时给出了一种提高非线性输入自适应系统特性的补偿方案，它通过在控制律中引入跟踪误差，可以提高系统的暂态及稳态精度，而又不破坏MRAC系统的收敛特性.
+关键词　任意非线性输入，模型参考自适应，鲁棒控制，控制性能.
+ROBUST MODEL REFERENCE ADAPTIVE CONTROL
+WITH ARBITRARY INPUTS
+YU WEN　 CHAI TIANYOU
+(Research Center for Automation, Northeastern University, Shenyang 110006)
+M.DE　LA SEN
+(Departmento de Electricidad y Electrónica
+Universidad del pais Vasco, Aptdo. 644 de Bilbao, Spain)
+Abstract　This paper presents a new analysis method for model reference adaptive control (MRAC) with arbitrary bounded input nonlinearities, which does not require the stability of plants. The plant can have unmodeled dynamics and bounded disturbances. A new modified MRAC scheme is also proposed to improve the transient and steady state performances. The output error is used directly in the control law to generate a modified control signal to compensate possible bad performances of the robust adaptive controllers, and the ideal asymptotic properties of MRAC is not destroyed.
+Key words arbitrary input nonlinearities, model reference adaptive, robust control, control performance
+1　前言
+　　实际控制系统的输入一般均具有不同程度非线性特征，如饱和、死区、滞环等，它们会破坏自适应系统特性，甚至引起系统失稳.许多学者对于具有一些典型的非线性输入的自适应控制，如死区、滞环、饱和等，进行了深入研究.但是当输入进入象饱和这样的非线性区时，无法进一步施加控制作用，所以一般要求模型是稳定［1］、有限增益稳定［2］，或放宽到单位圆上有极点.对于不稳定系统，需要使用辅助误差等信号，而且要求系统是最小相位以及控制器参数上界已知等初始条件［3］.此外非线性输入会破坏系统的暂态及稳态精度，文［4］利用辨识误差补偿给出了提高MRAC暂态性的方法.对于未建模动态、有界扰动以及非线性输入如何影响自适应控制的暂态及稳态性，却很少有人研究.
+　　文本的目的是放宽分析非线性输入的约束.首先，允许系统具有加和乘形式的未建模动态，以及有界扰动；其次，允许系统是开环不稳定和非最小相位；最后，输入非线性可以是任意形式.为提高闭环特性，本文还提出了一种新型的鲁棒模型参考自适应修改策略，将输出误差反馈到控制律中.不仅可以克服输入非线性产生的稳态精度下降问题，而且可以防止参数不确定引起的系统暂态性恶化问题.
+2　任意非线性输入的控制器结构
+　　考虑单输入单输出对象y(t)=G(s)u(t)+Δ3(s)d(t).G(s)是严格真传递函数，G(s)=G0(s)［1+μΔ2(s)］+μΔ1（s)，G0是建模部分.μΔ1（s),μΔ2（s)是加和乘形式未建模动态.Δ3是有界扰动d(t)的传递函数；y,u是输出和输入.G0满足
+　　对系统作如下假设：(1)R0是n维首1多项式；Z0是首1 Hurwitz多项式，维数是m(≤n-1).(2)kp的符号及m,n已知，不失一般性，假设kp＞0.(3) Δi(s-p),i=1,2,3稳定，p＞0其下界p0已知.(4)Δ1,Δ3 是严格真的稳定传递函数，Δ2稳定.(5)输入具有非线性特征，即u(t)=NL［v(t)］≤M,M＞0,t≥0.
+　　参考模型采用形式.其中Dm(s)是首1 Hurwitz多项式，维数是n*=n-m，r(t)是一致有界参考输入.
+　　利用u(t),y(t)产生辅助向量1=Fω1＋qu,2=Fω2+qy.其中F是(n-1)×(n-1)维稳定矩阵，(F,q)可控，.控制输入为
+　　　(1)
+其中是控制参数向量，c0是前馈参数.若kp已知(kp未知时，采用文［2］提出的方法可以得出类似结论)，不失一般性，设kp=km=1，即c0＝1.采用自适应调节律修改控制器参数向量
+
+　　　　(2)
+
+其中ai,δi为正的常数，m为正则化信号，ε1为辨识误差.
+　　由自适应算法(1)(2)可得
+　　　　(3)
+其中是期望的控制器参数.
+
+我们称u(t)为“非线性输入误差”.
+　　系统的误差方程为
+　　　(4)
+其中
+的定义与文［5］一致.
+3　鲁棒性分析
+　　定理1　对于有界初始条件，φ，δ一致有界.
+　　证明　取正定函数，且则
+　　　(5)
+
+　　(6)
+在时间段［t,t+T］,若δ(t)=0，由(2)可知φ=0，这样

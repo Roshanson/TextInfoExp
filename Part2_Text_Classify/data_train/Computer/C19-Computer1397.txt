@@ -1,0 +1,57 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第4期　Vol.23　No.4　1997
+
+
+
+广义组合功能特征建模方法研究
+赵丽萍　何钺　要义勇
+　　摘　要　本文在功能特征建模方法的基础上，提出了组合广义功能特征的产品定义方法. 用该方法建立的组合广义功能特征信息模型，实现了产品组合结构的功能与组合几何特征之间的映射， 使得组合广义功能特征的相关设计过程可以交叉进行. 
+　　关键词　功能特征，产品建模， 功能映射. 
+RESEARCH ON PRODUCT MODELING BASED ON COMPOSITION
+FUNCTION ORIENTED FEATURE
+ZHAO LIPING HE YUE
+(CIMS Research Center, Xi'an JiaoTong University, Xi'an 710049)
+YAO YIYONG
+(Mechanical Department, Xi'an JiaoTong University, Xi'an 710049)
+Abstract A methd of modeling of composition function oriented feature is represent in this paper. By using this method, the mapping relation between product composition structure function and geometric feature can be set up, the product information model can be established and the concurrent design of parts can be realized.
+Key words Function oriented feature, product modeling, function mapping. 
+1　引　言
+　　产品模型一直是人们研究的重点［1］. 现有的产品模型没有强调零件功能与零件几何特征的关系，而注重研究纯几何分解和造型及纯几何面的相关关系， 这样，零件的几何设计与工艺设计在满足零件功能要求的前提下不能交叉进行. 在分析以往特征建模的基础上，本文提出了一种组合广义功能特征的建模方法. 
+2　组合广义功能特征
+2.1　组合几何特征的功能
+　　图1中1和2是经常使用的两个组合几何特征， 依据广义功能特征的定义方法［2，3］， 对图1的设计特征进行功能分析：
+［组合几何特征1的功能］∷={轴承的定心，定位，夹紧}；
+［组合几何特征2的功能］∷={传动轮的定心，定位，夹紧，传递扭矩}. 
+　　进一步分析后发现
+［组合几何特征2功能］∷={组合几何特征1功能}+{键联接的传动功能}. 
+　　因此，可以有推论：零件的功能可以由各个单独的功能合并组成，即
+　　　［组合特征的功能］∷={简单特征功能的组合}.
+
+
+图1　实例零件图
+2.2　广义组合功能特征的定义
+　　定义1.　广义功能特征是产品中具有功能意义及相关属性有一定的拓扑关系的几何元素的关联状态，它可用来构成一定的功能结构［1］. 
+　　定义2.　广义组合功能特征是零件中各个单独的广义功能特征按照一定的拓扑关系组合起来的关联状态. 
+3　广义功能特征的形式化描述
+　　组合功能特征实现了功能关系的组合与几何特征组合的映射， 其组合关系是建立在简单功能特征上的. 
+　　简单级功能特征是完成某项功能，并具有单一几何形状的功能特征. 
+　　简单功能特征的定义表达如式(1). 
+　　<简单功能特征>∷=＜功能属性＞＜结构特征＞ <主参数，形状公差指针，位置公差指针，邻接特征指针>. 
+(1)
+　　组合功能特征是满足若干项功能要求的简单功能特征的组合. 
+　　组合级功能特征反映了零件或产品多个功能要求的组合，如式(2)所示，
+　　＜组合功能特征的功能＞∷=<Σ简单功能特征的功能>. 
+(2)
+　　组合功能特征的定义表达为
+　　＜组合功能特征＞∷=＜组合关系，简单功能特征指针列表＞. 
+(3)
+4　结论
+　　以上组合几何特征的广义功能特征建模方法是研究产品并行设计的一个尝试. 用组合特征建立的零件信息模型强调了结构功能的组合与形状特征组合的关系，并在各种关系之间建立了映射联系. 零件几何设计与工艺设计在满足零件功能要求的前提下可以交叉进行， 充分体现了并行工程的设计思想. 
+作者单位：赵丽萍　何钺　西安交通大学CIMS中心　西安　710049
+　　　　　要义勇　西安交通大学机械电子系　西安　710049
+参考文献
+[1] Keith Case. Using a design by features CAD system for process capability modelling. Computer Integrated Manufacturing Systems, 1994 7(1):39―41. 
+[2] 赵丽萍， 何钺.基于功能特征产品模型定义方法研究.计算机辅助工程，1997， 6(1).
+[3] 赵丽萍等.装配偶件的功能特征建模方法研究.机械工业自动化，1996，18(1).
+收稿日期　1995-07-21

@@ -1,0 +1,163 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH
+AND DEVELOPMENT
+1999年 第36卷 第12期 Vol.36 No.12 1999
+
+
+
+手写体数字有效鉴别特征的抽取与识别
+金忠　胡钟山　杨静宇　刘克　孙靖夷
+摘　要　文中提出了基于后验概率估计的多特征多分类器组合识别的估计法，并提出了基于具有统计不相关性的最佳鉴别变换与KL变换抽取手写体数字的有效鉴别特征的方法.实验采用Concordia University CENPARMI手写体数字数据库.用最近邻距离分类器与最近邻相关分类器这两个分类器，对手写体数字的12个特征做多特征多分类器组合识别实验.实验结果表明：估计法优于常用的投票法与计分法，估计法的识别率高达97%.本文最后基于一个严格的结构分类器与估计法提出了一个集成分类器，该集成分类器获得了更好的实验结果：识别率、拒识率与可靠性分别可达到97.15%、2.05%、99.18%，这是目前在该手写体数字数据库上所得到的最好的实验结果.
+关键词　模式识别，特征抽取，鉴别分析，手写体数字识别，多分类器组合
+中图法分类号　TP391
+EXTRACTION AND RECOGNITION OF EFFECTIVE
+DISCRIMINANT FEATURES FOR HANDWRITTEN DIGITS
+JIN Zhong, HU Zhong-Shan, YANG Jing-Yu, LIU Ke*, and SUN C. Y.*
+(Department of Computer Science, Nanjing University of Science
+& Technology, Nanjing 210014)
+(Center of Pattern Recognition and Machine Intelligence,
+Concordia University, Montreal)
+Abstract　Presented in this paper is an estimating method of multi-feature and multi-classifier combination based on the posterior probability estimators. Also presented is a method to extract effective discriminant features of handwritten digits based on a set of uncorrelated optimal discriminant features and KL transform. Experiments have been performed with Concordia University CENPARMI's handwritten digit database based on the nearest-neighbor distance classifier and the nearest-neighbor correlation classifier, and 12 features of handwritten digits. Experimental results show that the estimating method is better than the polling method or the counting method respectively and the recognition rate of the estimating method is as high as 97%. A new combination classifier is finally brought forward, which is based on the strict structure classifier and the estimating method. Better experimental results have been obtained by means of this new combination classifier: the recognition rate, the reject rate, and the reliability are as high as 97.15%, 2.05%, and 99.18% respectively, which are the best results up to now on the handwritten digit database.
+Key words　pattern recognition, feature extraction, discriminant analysis, handwritten digit recognition, multi-classifier combination
+1　引　　言
+　　手写体数字识别是计算机模式识别领域的一个前沿课题.在手写体数字识别的研究中，对于已二值化的图像抽取特征的方法有许多种［1,2］，常用的统计特征有Gabor变换特征［3］、Legendre矩特征［4］、Pseudo-Zernike矩特征［5］与Zernike矩特征［6］.统计特征通常反映图像点阵总体分布情况，这些特征的图像预处理简单，对噪声不敏感，但对字的一些精细结构部分反应不灵敏.由数字图像的骨架和轮廓可抽取出手写体数字的结构特征，它往往对字结构精细部分反映灵敏，但图像预处理复杂，对噪声较敏感，一个完善的基于结构特征的分类器往往十分庞杂.在手写体数字识别的研究中，常用的分类器有最近邻分类器、神经网络分类器［7］以及多分类器组合方法［8,9］.一般认为，不同性质的特征往往反映物体的不同方面，在一种特征空间很难区分的两种模式可能在另一种特征空间上很容易分开；而对应于同一特征的不同分类器又从不同的角度将该特征映射到决策空间上，因此利用不同性质特征和不同分类器的组合就可能全面反映出一个物体，从而得到一个较好的分类结果.本文提出了一个基于后验概率估计的多特征多分类器组合的估计法，并提出了基于最佳鉴别变换与KL变换由常用的统计特征抽取出手写体数字的有效鉴别特征的方法，本文最后基于一个严格的结构分类器［9］与估计法提出了一个集成分类器.
+2　多特征多分类器组合决策的估计法
+2.1　Bayes判决规则
+　　设有c个模式类别：ω1，ω2，…，ωc，第i类模式的训练样本有ni个，记为Xis(s=1,2,…,ni).设X为一样本，Bayes判决规则根据后验概率P(ωi|X)最大原则将样本X分类：
+
+(1)
+2.2　后验概率的估计
+　　设有K个分类器.根据每个分类器的分类决策函数值，可给出后验概率P(ωi|X)的估计后验概率估计应满足非负性与归一性.下面给出常用的最近邻距离分类器与最近邻相关分类器的后验概率估计方法，其它分类器的后验概率估计方法可参考给出.
+　　最近邻距离分类器是按欧氏距离最小分类.计算样本X到每个训练样本的欧氏距离dis：
+
+(2)
+现引入后验概率的一个估计公式：
+
+(3)
+最近邻相关分类器是按相关系数最大分类.计算样本X到每个训练样本的相关系数ρis：
+
+(4)
+现引入后验概率的一个估计公式：
+
+(5)
+2.3　多特征多分类器组合决策的估计法
+　　设模式特征X由多个特征X1,X2,…,XQ所组成，可分别使用K个分类器作分类识别，给出后验概率的估计现在作算术平均值：
+
+(6)
+　　如果是后验概率P(ωi|X)的无偏估计，则由概率理论中的辛钦大数定律知，在模式特征数目很大或分类器数目很多时，算术平均值会依概率收敛于后验概率P(ωi|X).本文对最近邻距离分类器与最近邻相关分类器所提出的后验概率估计公式还不能被证明为后验概率P(ωi|X)的无偏估计.
+　　现提出多特征多分类器组合决策的估计法：基于后验概率估计，按(6)式算术平均值最大原则分类.
+　　常用的多分类器组合方法有投票法、计分法两种.投票法采用的是少数服从多数的原则，即支持某一决策的分类器个数为最大，则这一决策就是最终的结果.计分法是将每一种类别在各个分类结果中的排名相加，例如第1名得1分，第k名则得k分，从而得到该类别融合后的得分总和，取总分最小的类别作为计分法的选择结果.
+　　显然，投票法与计分法都可说明为将后验概率的估计取为两个特殊形式的估计法.基于后验概率估计的估计法一般能更好地利用各个分类器的决策函数值所提供的信息.
+3　具有统计不相关性的最佳鉴别变换
+　　设模式特征X为N维矢量，模式类别有c个，模式类内散布矩阵为Sw，类间散布矩阵为Sb，总体散布矩阵为St.Fisher鉴别准则函数定义如下：
+
+(7)
+其中φ为N维列向量.
+　　使Fisher鉴别准则函数(7)式取到最大值的向量φ1是Fisher最佳鉴别方向，其物理意义是模式样本集在φ1方向上的投影使得模式具有最小的类内散布和最大的类间散布.φ1是下列广义特征方程中最大的特征值对应的特征向量：
+
+(8)
+　　具有统计不相关性的最佳鉴别变换［10］就是在求出r（r≥1）个最佳鉴别方向φ1,φ2,…,φr后，第r+1个最佳鉴别方向是在满足共轭正交条件(9)式下的使Fisher鉴别准则函数(7)式取到最大值的向量φr+1：
+
+(9)
+　　定理1.具有统计不相关性的最佳鉴别变换的第r+1个最佳鉴别方向φr+1是下列广义特征方程中最大的特征值对应的特征向量：
+
+(10)
+式中：
+
+(11)
+这里：I为单位矩阵，而且
+
+(12)
+证明见文献［10］.
+4　手写体数字的特征抽取
+　　本文采用的数据库是国际上广泛使用的Concordia University CENPARMI手写体数字数据库，采用4000个训练样本与2000个测试样本.
+4.1　图像特征
+　　文献［9］通过对手写体数字图像作预处理，已提取出如下4个图像特征（这4个图像特征的数据大小为20.2MB）：
+　　XG：256维的Gabor变换特征［3］；
+　　XL：121维的Legendre矩特征［4］；
+　　XP：36维的Pseudo-Zernike矩特征［5］；
+　　XZ：30维的Zernike矩特征［6］.
+4.2　有效鉴别特征抽取
+　　Fukunaga维数定理［11］认为：对含有c个模式类别的分类问题，其有效的最佳鉴别矢量个数不超过c-1个.手写体数字的类别数为10，有效的鉴别特征数为9.对手写体数字的4个图像特征XG，XL，XP与XZ分别作具有统计不相关性的最佳鉴别变换，得到4个有效的鉴别特征，分别记为XG1，XL1，XP1与XZ1，即得到手写体数字的4个新特征：
+　　XG1：对XG作最佳鉴别变换所抽取到的9维鉴别特征；
+　　XL1：对XL作最佳鉴别变换所抽取到的9维鉴别特征；
+　　XP1：对XP作最佳鉴别变换所抽取到的9维鉴别特征；
+　　XZ1：对XZ作最佳鉴别变换所抽取到的9维鉴别特征.
+4.3　基于KL变换的有效鉴别特征抽取
+　　显然，在模式特征数目较多时，后验概率估计(6)式一般能对后验概率估计得较好，因此希望对手写体数字抽取出更多的特征.现在本文提出对手写体数字的4个图像特征XG，XL，XP与XZ先分别以各自的类间相关矩阵Rb为产生矩阵［12］作KL变换.类间相关矩阵Rb的秩为10，从而可分别得到4个10维的手写体数字图像特征的压缩特征，然后再对4个10维的压缩特征作具有统计不相关性的最佳鉴别变换，得到4个新的9维鉴别特征，分别记为XG2，XL2，XP2与XZ2，即又得到手写体数字的4个新特征：
+　　XG2：对XG先作KL变换，再作最佳鉴别变换所抽取到的9维鉴别特征；
+　　XL2：对XL先作KL变换，再作最佳鉴别变换所抽取到的9维鉴别特征；
+　　XP2：对XP先作KL变换，再作最佳鉴别变换所抽取到的9维鉴别特征；
+　　XZ2：对XZ先作KL变换，再作最佳鉴别变换所抽取到的9维鉴别特征.
+5　手写体数字识别实验与分析
+5.1　多特征多分类器组合识别
+　　用Matlab编程计算出手写体数字的8个有效的鉴别特征，用最近邻距离分类器与最近邻相关分类器分别对手写体数字的12个特征作识别实验，单特征单分类器的识别错误率的实验结果见表1的上半部分.用投票法、计分法与估计法分别对12个特征与2个最近邻分类器作多特征多分类器组合，识别错误率的实验结果见表1的下半部分.对投票法与计分法，在最高得分相同时拒识.对估计法，在后验概率的最大估计值相同时拒识.
+表1　手写体数字组合识别实验结果表
+单特征单分类器最近邻距离分类器最近邻相关分类器
+Gabor变换XG0.17850.1440
+XG10.17500.2120
+XG20.21300.2585
+Legender矩XL0.08750.0665
+XL10.10750.1405
+XL20.12900.1385
+Pseudo-Zernike矩XP0.23650.2410
+XP10.29850.3870
+XP20.35400.4360
+Zernike矩XZ0.24450.2540
+XZ10.30750.3840
+XZ20.37750.4550
+多特征多分类器组合识别错误率投票法　　　　　　　(拒识)
+记分法　　　　　　　(拒识)
+估计法　　　　　　　　　　　　
+
+　　从表1可以看出，尽管单特征单分类器的识别错误率较大，组合识别方法会降低识别错误率，而且基于后验概率估计的估计法比投票法与计分法好，在实验中，估计法未发生拒识，即使不考虑投票法与计分法的拒识率，估计法的识别错误率只有3%，也分别低于投票法的识别错误率与计分法的识别错误率.尽管这一实验结果比已有的在该手写体数字数据库上所得到最好实验结果稍微差一些，也是一个很好的实验结果.
+5.2　集成分类器的识别实验
+　　文献［9］提出了一个严格的结构分类器，它是利用由字的骨架获得的结构特征使一些非常简单的字在这一级就很可靠地被识别出来，由于分类准则较为烦琐，只将其中部分准则列出如下：当输入图像的骨架是没有端点、没有连接点的简单闭合圈时，输入图像是0；当输入图像的骨架是有两个端点的简单直线时，输入图像是1；当输入图像的骨架是有两个端点、一个在上方的折点，而且折点与端点的连线是有一定长度的直线时，输入图像是7等等.该结构分类器的识别率为54.95%，其余拒识，虽然拒识率很高，但是其可靠性也很高，达到100%.图1是识别出的例子，图2是拒识的例子. 
+
+图1　识别出的例子
+
+图2　拒识别的例子
+　　为了进一步提高手写体数字的识别实验结果，现在基于上述结构分类器与多特征多分类器组合识别的估计法，本文提出一个集成分类器：先利用结构分类器识别分类，对被结构分类器拒识的样本按估计法作12个特征与2个分类器的组合识别，而且当后验概率估计的次大值与后验概率估计的最大值之比值大于阈值θ时拒识，即当
+
+(13)
+时拒识.集成分类器的识别实验结果见表2.
+表2　集成分类器的识别实验结果表
+阈值θ0.9940.9951文献［7］文献［8］文献［9］
+拒识率0.02050.0155000.010.0205
+（拒识数）(41)(31)
+错误率0.0080.01050.01850.0290.0160.009
+（错误数）(16)(21)(37)
+识别率0.97150.9740.98150.9710.9740.9705
+可靠性0.99180.98930.98150.9710.98360.9908
+
+　　从表2可以看到，如果不考虑拒识，在θ=1时，本文所提出的集成分类器的识别实验结果好于文献［7］的识别实验结果；如果要求较高的可靠性与较高的识别率，在θ=0.995时，本文所提出的集成分类器的识别实验结果不低于文献［8］的识别实验结果；如果要求识别可靠性达到99%以上，在θ=0.994时，本文所提出的集成分类器的识别实验结果好于文献［9］的最新识别实验结果. 
+6　结　　论
+　　本文提出了基于后验概率估计的多特征多分类器组合识别的估计法，并提出了基于具有统计不相关性的最佳鉴别变换与KL变换抽取手写体数字有效鉴别特征的方法.实验结果表明：本文提出的估计法优于多分类器组合识别常用的投票法与计分法，用估计法对12个特征与2个最近邻分类器的组合识别率可达到97%.本文最后基于一个严格的结构分类器［9］与估计法提出了一个集成分类器，该集成分类器的识别率、拒识率与可靠性分别可达到97.15%、2.05%、99.18%，这一结果优于目前在该手写体数字数据库上所得到的实验结果.
+本课题得到国家自然科学基金(项目编号69672013)和国际合作研究项目经费资助.
+作者简介：金忠，男，1961年12月生，副教授，博士研究生，主要研究方向为模式识别、手写体
+　　　　　数字识别、人脸识别.
+　　　　　胡钟山，男，1973年2月生，博士研究生，主要研究方向为模式识别、手写体数字识
+　　　　　别.
+　　　　　杨静宇，男，1941年12月生，博士生导师，教授，主要研究领域为计算机视觉、信息
+　　　　　融合、模式识别、智能机器人.
+　　　　　刘克,男,1960年生,教授,现在Concordia大学从事字符分割与识别方面的研究.
+　　　　　孙靖夷,Concordia大学教授,CENPARMI研究中心主任,字符识别领域的学者.
+作者单位：金忠　胡钟山　杨静宇(南京理工大学计算机科学系　南京　210014)
+　　　　　刘克　孙靖夷(Concordia大学模式识别与机器智能中心　蒙特利尔)
+参考文献
+　1　Shunji M, Suen C Y, Kazuhiko K. Historical review of OCR research. Proc of IEEE, 1992, 80(7): 1029～1058
+　2　Oivind T, Anil J K, Torfinn T. Feature extraction methods for character recognition――A Survey. Pattern Recognition, 1996, 29(4): 641～662
+　3　Yoshihiko H et al. Recognition of handwritten numerals using Gabor features. In: Proc of the 13th ICPR, Austria, 1996. 250～253
+　4　Liao S X, Pawlak M. On image analysis by moments. IEEE Trans Pattern Anal Machine Int' l, 1996, 18(3): 254～266
+　5　Bailey R R, Mandyam S. Orthogonal moment feature for use with parametric and non-parametric classifiers. IEEE Trans Pattern Anal Machine Intell, 1996, 18(4): 389～398
+　6　Alireza K, Yawhua H, Invariant image recognition by Zernike moments. IEEE Trans Pattern Anal Machine Int' l, 1990, 12(5): 489～497
+　7　Lee S W. Off-line recognition of totally unconstrained handwritten numerals using multilayer cluster neural network. IEEE Trans Pattern Anal Machine Intell, 1996, 18(6): 648～652
+　8　Gader P D. Automatic feature generation for handwritten digit recognition. IEEE Trans Pattern Anal Machine Int' l, 1996, 18(12): 1256～1261
+　9　胡钟山,娄震,杨静宇,刘克,孙靖夷. 基于多分类器组合的手写体数字识别.计算机学报,1999, 22(4): 369～374
+　(Hu Zhongshan, Lou Zhen, Yang Jingyu, Liu Ke, Suen C Y. Handwritten digit recognition based on multi-classifier combination. Chinese Journal of Computers(in Chinese), 1999, 22(4): 369～374)
+　10　金忠,杨静宇,陆建峰. 一种具有统计不相关性的最佳鉴别矢量集. 计算机学报,1999, 22(10): 1105～1108
+　(Jin Zhong, Yang Jingyu, Lu Jianfeng. An optimal set of uncorrelated discriminant features. Chinese Journal of Computers(in Chinese), 1999, 22(10): 1105～1108)
+　11　Fukunaga K. Introduction to Statistical Pattern Recognition. New York: Academic Press, 1990
+12　金忠，胡钟山，杨静宇. 基于BP神经网络的人脸识别方法. 计算机研究与发展, 1999, 36(3): 274～277
+　　(Jin Zhong, Hu Zhongshan, Yang Jingyu. A face recognition method based on the BP neural network, Journal of Computer Research and Development(in Chinese), 1999, 36(3): 274～277)
+原稿收到日期：1999-01-22；修改稿收到日期：1999-05-10.

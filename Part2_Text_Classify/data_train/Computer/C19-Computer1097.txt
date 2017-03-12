@@ -1,0 +1,127 @@
+自动化学报
+AGTA AUTOMATICA SINICA
+1999年 第25卷 第2期 Vol.25 No.2 1999
+
+
+
+离散制造装配系统的活性控制1)
+邢科义　胡保生　万百五
+摘　要　首次研究离散制造装配系统的活性控制问题.建立了系统的工件加工过程Petri网模型.通过对系统Petri网模型的结构分析，提出了导致系统死锁的两类元素结构及活性特征.对一类离散制造装配系统提出了避免死锁的Petri网控制器，这类控制器容易实现，对系统的限制小,而且使得受控系统仍具Petri网模型.对一般离散制造装配系统提出了保证系统活性的控制策略.
+关键词　制造系统,　Petri网,　控制.
+LIVENESS CONTROL FOR DISCRETE MANUFACTURING
+/ASSEMBLY SYSTEMS
+XING Keyi
+(Department of Applied Mathematics, Xidian University, Xi'an　710071)
+HU Baosheng WAN Baiwu
+(Institute of Systems Engineering, Xi'an Jiaotong University, Xi’an　 710049)
+Abstract　The liveness problem for discrete manufacturing/assembly systems is studied first in this paper. We develop a Petri net model for processings of jobs in a manufacturing/assembly system. By analysis of the Petri net model, two kinds of structural objects which can lead to system deadlock and the liveness characteristics of the system are obtained. We then present our deadlock- avoidance Petri net controller for a class of manufacturing/assembly systems. This controller can be implemented easily and places less restrictive requirement on systems. And the controlled system can be modeled by a Petri net. For a general manufacturing/assembly system, we present a policy which can guarantee that the controlled system is live.
+Key words　Manufacturing system, Petri net, control.
+1　引　言
+　　利用Petri网模型建立柔性制造系统的活性行为引起了许多学者的兴趣［1―7］.文献［1―5］对系统的Petri网模型提出了避免死锁的控制策略,使受控系统中不再发生死锁现象.文献［6,7］则直接建立系统活性Petri网模型,以此作为系统运行的监控器.而这些研究都集中在“线性”制造系统方面,即要求在加工过程中工件既不允许分解，也不允许结合.但许多系统是加工组装于一体的，其中工件的结合是必不可少的.
+　　本文研究具有加工、组装功能的离散制造系统的活性控制问题.利用Petri网为系统建模，分析系统产生死锁的特征和导致系统死锁的Petri网结构元素，提出了保证系统活性的控制器的综合方法.
+2　制造装配系统及其Petri网模型
+　　Petri网是一个三元组G＝（P，T，F），其中P，T分别是位置集和变迁集，F（P×T）∪（T×P）是有向弧集.设a∈P∪T，用.a，a.分别表示a的输入和输出元素集，即.a＝｛b∈P∪T｝｜（b，a）∈F｝，a.＝｛b∈P∪T｜（a，b）∈F｝.当.a＝｛b｝或a.＝｛b｝时，简记为.a＝b或a.＝b.对集合AP∪T，记・A＝.a,A.=a..用（G，m0）表示具有初始标识m0的标记Petri网G.设m是G的标识，t∈T，当m（p）≥1，p∈.t时，称t是标识m使能的.使能变迁t的引发使系统从标识m转移到标识m′，m′（p）＝m（p）＋｜｛t｝∩.p｜-｜｛t｝∩p.｜，记作，m［t＞m′］.用Z（G，m0）表示G的能从m0到达的标识之集.对m∈Z（G，m0）及AP，记m（A）＝m(p).
+　　如果m∈Z(G,m0),存在m′∈Z(G,m)使得t在m′使能,则称t是活的.如果对标识m不存在m′∈Z(G,m)使得t在m′使能,则称t在m下是死的.若每个变迁都是活的,则称(G,m0)是活的;否则称(G,m0)具有死锁.
+　　本文考虑的制造装配系统具有资源集R,可生产的产品种类集为Q,每个产品是由一些原材料经加工、装配而成.设原材料集为I,一种原材料仅用于一种产品的生产.每种产品具有各自的生产过程，它是由一些操作组成，每次操作就是资源的一次利用.把单个工件利用某资源的操作称为加工操作.而把多个工件组装成一个新工件的过程称为装配操作.产品的生产过程就是一系列的加工与装配操作.假设每个操作仅需一个资源，而两个连续的加工操作所需的资源种类不同.
+　　在系统Petri网建模中，用一个过程位置表示一次操作，用变迁表示操作间的转换，它的引发表示先序操作结束，后序操作开始，它们的顺序关系用连接位置与变迁的弧表示.则每个操作位置仅有一个输入变迁和一个输出变迁，每个变迁也仅有一个输出操作位置.当一个变迁代表一个加工操作开始时，它仅有一个输入操作位置，而当它代表一个装配操作开始时，它具有多于1个的输入操作位置.用P，T分别记操作位置集和变迁集.对每种原材料i∈I，设置一个位置，向系统输入原材料i的过程用以为输出的变迁表示，无输入位置，中的托肯数表示可利用的i型原材料数.用TI表示所有变迁之集.对每种产品j∈Q设置一个产品位置以存放该产品.用PI，PQ分别记原材料位置集和产品位置集.则产品的生产过程Petri网模型GP定义如下：
+
+其中
+　　1) P，PI，PQ都非空；
+　　2) ∈PI，有且仅有一个位置∈PQ，使得从到有唯一的一条有向路；
+　　3) p∈P∪PI，｜.p｜＝｜p.｜＝1，　　　p∈PQ，｜.p｜＝1，｜p.｜＝0；
+　　4) ∈TI，｜.｜＝0，（tiI）.＝piI，t∈T，｜t.｜＝1，｜.t｜≥1.
+　　称具有多于1个输入操作位置的变迁为合变迁.合变迁对应着多个工件装配成一个工件的操作过程的开始.
+　　给每种资源r设置一个资源位置，仍记为r.用PR记资源位置之集.当操作位置p代表的过程利用资源r时，记作R（p）＝r，在GP中引入弧和如果有变迁t和资源r使得（r，t）,（t，r）同时存在，则删去这两条弧.用FR表示所有增加弧之集.则整个系统的Petri网模型为
+
+G的初始标识m0则为m0（p）＝0，p∈P∪PQ∪PI，m0（r）＝Cr，r∈PR，其中Cr为r类资源总数.把（G，m0）称为系统Petri网（SPN――System Petri Net）.
+　　设t∈T，用（t）t，（p）t，t（r），t（p）分别表示・t∩PR，.t∩（P∪PI），t.∩PR，t.∩（P∪PQ）.这些记号可扩展到集合上，如对BT，（r）B＝(r)t等.对r∈PR,记H(r)=｛p∈P｜R(p)=r｝.
+　　当合变迁t的输出操作位置和某个输入操作位置利用同一类资源时,(r)t=.
+　　设m∈Z(G,m0),若p∈(p)t,m(p)≥1,称t∈T在m过程使能.若(r)t=或m((r)t)≥1,则称t在m资源使能.只有过程和资源同时使能时,变迁才能引发.
+3　SPN的结构性质与活性分析
+　　分析SPN的结构性质及活性特征.
+　　定义1. 设（G，m0）是一个SPN.G的一条有向路π＝p1t1,…,pktk称为P-路，如果pi∈P，i＝1，…，k，（r）（・p1）≠.
+　　定义2. 设（G，m0）是一个SPN.G的一条扩展路，简称E-路，递归定义为：1) 一条P-路是一条E-路；2) 设π1＝p11t11,…,p1kt1k,π2＝p21t21,…p2lt2l都是E-路，当R（)＝R（p21）时，π＝π1π2也是E-路.
+　　用Pπ,Tπ分别表示E-路π的所有位置之集和所有变迁之集.记
+
+则FT（π）中变迁的引发使π上（即Pπ中）托肯增加，而LT（π）中变迁的引发减少π上的托肯.
+　　记R（π）R（Pπ）＝R(p),即π上操作位置所需的资源类之集.
+　　定义3. 称E-路π=p1t1,…,pntn为一个D型结构,如果t∈LT(π）,R(t(p))≠R((p)t∩Pπ),而且R(p1)=(r)tn.故D型结构是一个循环的E-路.
+　　引理1. 设π是一个D型结构,令
+
+其中=｛p∈Pπ｜存在以p为起点的P-路pt1p1,…,tkpk,k≥1,pi∈Pπ,R(pi)=R(p),i=1,…,k,｜(p)t∩Pπ｜ ≥2｝,则Sπ是一个siphon.称Sπ是由π生成的siphon(证明从略).
+　　定义4. 设t∈T,r∈R,BH(r),・B把从B到t的E-路集Y称为一个Y型结构,如果在Y中至少有一条从每个p∈B到t的E-路.记FR(Y)=r,LT(Y)=t.则P-路,E-路都是Y型结构.
+　　定义5. 一个W型结构定义为一个Y型结构和P-路的交错序列W=Y1π1Y2π2,…,Ynπn满足:1) Yi是Y型结构,πi是P-路.故简记W=(YW,ΠW)；2) FR(πi)=FR(Yi+1),i=1,2,…,n-1,FR(πn)=FR(Y1)；3) LT(Yi)=LT(πi),i=1,…,n；4) Yi,πj除LT(Yi),LT(πj)外没有共同元素.记
+
+　　引理2. 设W是一个W型结构,令
+
+其中存在以p为起点的P-路则SW是一个siphon.称SW是由W生成的siphon.(证明从略)
+　　用,分别表示D型和W型结构之集.设在标识m下的死变迁集DT(m)非空.现利用递归分析方法,导出(G,m0)产生死锁的条件.设t∈DT(m),则以下两种情形之一必成立.
+　　情形a. t非资源使能,即(r)t=r,m(r)=0;
+　　情形b. t资源使能而非过程使能,即(r)t=或(r)t=r,m(r)≥1,并且有p∈(p)t,m(p)=0.
+　　在情形a时,存在p1,p2,…,pk∈H(r)使得m(pi)＞0,m(pi)=m0(r).设=ti,记πi=piti,T1=｛t1,…,tk｝,Π1=｛πi,i=1,…,k｝.
+　　在情形b时,因每个P・I中变迁都可过程使能,故有P-路π=p1t1,…,pktkpt使得m(pi)=0,i=1,…,k,k≥0,.p1=t0是过程使能的.故t0是非资源使能的.设(r)t0=r1,则m(r1)=0.由情形a,有q1,…,qk∈H(r1)使得m(qi)＞0,m(qi)=m0(r1).设=si,记Π1=｛qisi,i=1,…,l｝,Π2=｛π｝,T1=｛si,i=1,…,l｝.
+　　再对T1中的每个变迁重复以上分析过程.为此,用表示已分析过程的变迁之集,开始=.设ti∈T1＼,πi∈Π1,ti=LT(πi),考虑以下两种情形：
+　　1) ti非资源使能,即(r)ti=ri,m(ri)=0.由情形a的分析知,有q1,…,qk∈H(ri),m(qi)＞0,m(qj)=m0(ri).设=sj,则πi可通过qjsj扩展为k条E-路πiqjsj,j=1,…,k.令Π1：=(Π1＼｛πi｝)∪｛πiqjsj,j=1,…,k｝,T1∶　=T1∪｛sj,j=1,…,k｝,∶　=｛ti｝∪.
+　　2)(r)ti=或(r)ti=ri,m(ri)＞0.则ti是一个合变迁而且非过程使能.故有P-路π=p1s1,…,pkti使得m(pj)=0,j=1,…,k,t0=.p1在m下过程使能.设R(p1)=r′,则m(r′)=0,而且存在q1,…,ql∈H(r′)使得m(qj)＞0,m(qj)=m0(r′).设=xj,令Π1∶=Π1∪｛qjxj,j=1,…,l｝,Π2∶　=Π2∪｛π｝,T1∶　=T1∪｛xj,j=1,…,l｝,∶=∪｛ti｝.
+　　重复以上分析,直到T1＼=.由于G的变迁有限,故有变迁将第二次出现在T1之中,为了简单,设t是这样的一个最早出现的变迁.则从t开始的分析过程知,当Π2=时,Π1是一些扩展路集,故必有扩展回路π,从π上任一变迁作以上分析得到的也一定是π自身.从而π是一个D型结构,而且r∈R(Pπ)都有m(r)=Cr.故由π生成的siphon Sπ非空.而当Π2≠时,Π1，Π2组成一个W型结构W,使得SW为空.
+　　以上的分析已证明了以下定理1,2.
+　　定理1. 设(G,m0)是一个SPN,m∈Z(G,m0),如果DT(m)≠,则以下两条之一成立.
+　　
+　　
+　　当G含有D型或W型结构Y时,由(G,m0)的结构知,一定有可达标识m∈Z(G,m0)使得Y生成的siphon为空.故Y上所有变迁在m下为死的.由此可以给出SPN的如下活性特征.
+　　定理2.设(G,m0)是一个SPN,则(G,m0)是活的充分必要条件是G中不含任何D型或W型结构.
+4　SPN的活性控制器
+　　在(G,m0)中,如果包含如图1所示的子结构,则其中的合变迁t永远是死的.这种死锁是系统的不合理设计或资源的不合理配制所引起的.故本文假设对任何合变迁t,如果r∈t(r),则Cr≥2或r是非共享资源,即｜H(r)｜=1.
+
+图1　SPN的子结构
+　　定义6.设W=(YW,ΠW)=Y1π1，…，Ynπn是一个W型结构,记
+　　
+　　
+　　称D∈是W∈的一个内部D型结构,如果.
+　　设W0,W∈,如果则称W0是W的一个内部W型结构.并记｜B是W的内部D型或W型结构｝.
+　　定义7. 设D1,…,Dn是(G,m0)中的一个D型结构序列,如果FT(Di+1)∪TDi≠(下标modn),,Cr=1,则称r是(G,m0)的一个关键资源.用KR记关键资源之集.
+　　定义8. 设(G,m0)=(P∪PI∪PQ∪PR,T∪TI,F∪FR,m0)是一个SPN,KR=.定义(G,m0)的一个Petri网控制器C=(PC,T,FC,m′0),其中,PC=｛pB｜B∈∪｝,FC=,其中
+
+
+(G,m0)在以上定义的控制器C的限制下的闭环系统是(G,m0),C的合成Petri网:
+
+其中,
+　　用(c)t和t(c)分别表示变迁t的输入控制位置集和输出控制位置集.当pc∈(c)t,m(pc)≥1,称t在m是控制使能的.只有过程、资源和控制同时使能的变迁才能在闭环系统中引发.
+　　定理3.设(G,m0)是一个SPN,KR=,则受控系统(CG,mc0)是活的.
+　　证明. 反设有可达标识m∈Z(CG,mc0),使得在m下的死变迁DT(m)非空.则有t∈DT(m),m((p)t)＞0.因以下证明仅与死变迁有关,在此不妨设当m((φ)t)＞0,则t∈DT(m).作者用递归分析构造导致矛盾的系统结构的方法来证明定理.
+　　用E记一个扩展路集合,用S，S0分别表示一个变迁集.开始E∶=,S∶=｛t1｝,S0∶=.设t1∈S＼S0,则需分析以下三种情形.
+　　1)(r)t1≠,m((r)t1)=0,即t1非资源使能.设(r)t1=r1,则存在操作位置p11,…,p1k使得R(p1i)=r1,m(p1i)＞0,i=1,…,k,=｛t1i｜t1i在m下非资源使能｝,XA=｛t1j｜t1j在m下资源使能｝.
+　　用X0表示已分析过的变迁之集.开始,X0=.任取t2∈X1＼X0.设(r)t2=r2,则m(r2)=0,而且存在p21,…,p2l使得R(p2i)=r2,m(p2i)＞1,i=1,…,l,令VA∶=VA∪｛p21,…,p2l｝,X0∶=X0∪｛t2｝,X1∶=X1∪｛p.2i｜p.2i在m下非资源使能｝,XA∶=XA∪｛p.2j｜p.2j在m下资源使能｝.重复分析,直到X1＼X0=.此时必有XA≠,否则分析过程给出的变迁、位置都在X1，VA中,而这些操作位置已占用了它们能利用的所有资源,故在X1∪VA中有扩展路D,使得m(PD)=mc0(R(PD)).设p∈PD,t=・pTD,如果有P-路π=p1t1,…,pktktp,使得piPD,R(pi)=R(p),i=1,…,k,则D与π之并仍是扩展路.经过所有可能的扩展后得到的扩展路D′是一个D型结构,满足m(PD′)=mc0(R(PD′)),这与PD的控制作用矛盾.
+　　用EA记分析过程给出的从p1i到t∈XA的所有E-路之集.令E∶=E∪EA,S∶=S∪XA,S0∶=S0∪｛t1｝.
+　　2)t1资源使能,而非过程使能.则有t2∈T,t2过程使能,从t(p)2到t1有一条P-路π,其上每个操作位置在m下为空,即m(Pπ)=0.令E∶=E∪｛π｝,S∶=S∪｛t2｝,S0∶=S0∪｛t1｝.
+　　3)t1资源与过程使能,但非控制使能.设(r)t1=r1,t.1=p1,则m(r1)≥1,而且有pB∈PC使得(pB,t1)∈FC,m(pB)=0,B∈∪.(C1) B∈.则m(PB)=mc0(R(PB))-1,t1∈FT(B).故必有t∈TB,使得(r)t=r1,即Xc=｛t∈TB｜t资源使能｝非空.令E∶=E∪｛B｝,S∶=S∪Xc,S0∶=S0∪｛t1｝.(C2) B∈.设B=W=Y1π1…Ynπn,t1∈FT(Yi+1),则Xc=｛t∈FT(ΠW)｜(r)t=r1｝非空.令E∶=E∪W,S∶=S∪Xc,S0∶=S0∪｛t1｝.可以证明某步后仅出现(C1)是不可能的.
+　　对S＼S0中的每个变迁重复分析,直到S＼S0=.因变迁类有限,必有某变迁重复出现在XA,XB或Xc中,不妨设为t1,则从t1开始直到S＼S0=的分析给出了一个由E中的扩展路组成的W型结构,而包含在W中的每个B∈满足m(PB)=mc0(R(PB))-1,每个B∈满足m(PBY)=mc0(R(PBY))-｜I(B)｜-1,m(PBπ)=0,而且这些B都是W的内部结构.但W满足m(PWY)=mc0(R(PWY))-｜I(W)｜,这与控制器C定义矛盾,故DT(m)=,(CG,mc0)是活的.
+　　从Petri网控制器的定义和定理证明可以看出,这类控制易实现而且对系统的限制小.
+　　定义9.设(G,mc0)是一个SPN,r∈KR,(G,mc0)的r-简化网G(r)是从(G,mc0)经以下过程得到的Petri网.
+　　1) 从(G,mc0)中删去资源位置r及其相关弧;2) 设p∈H(r),故t2是非合变迁.当(r)t2t(r)1或当(r)t2∈t(r)1,t1为合变迁时,删去p及其相关弧,把t1,t2重叠为一个新变迁,记作t1+t2.而当(r)t2∈t(r)1,t1为非合变迁时,有p1∈(p)t1,p2=使得R(p1)=R(p2),删去p,t1,t2及其相关弧,把p1，p2重叠为一个新位置,记作p1+p2.
+　　在G(r)中,R(p1+p2)=R(p1)=R(p2),故G(r）是一个SPN.
+　　设r′是另一个关键资源,则对G(r)可以通过r′再简化,设得到的Petri网为G(r,r′).对KR中的每个r逐一简化(G,m0)得到的网G(KR)是一个SPN,而且不含关键资源.
+　　用表示G(KR)和(G,m0)的共同变迁(同名变迁)之集.令T0=T＼,G(KR)的不在中的变迁都具有形式t1+…+tn,对应着(G,m0)中的一条路KR.称这种路为关键变迁路,用T1记所有关键变迁路上的变迁之集.而G(KR)的形为p1+…+pn的位置对应(G,m0)的一条从p1到pn的路π=p1t11p11t12p2t21p21t22p3…t(n-1)2pn,R(pij)∈KR,R(pi)=R(p1+…+pn),每个tij都是非合变迁.称这种路为关键位置路.称.p1=t0为π的首变迁.用T2记关键位置路上变迁之集,则T0=T1∪T2.
+　　定义10. 设(G,m0)是一个SPN,G(KR)是其简化网,C是G(KR)的由定义8给出的一个活性控制器.定义(G,m0)的一个控制策略ρ如下.
+　　1)ρ使(G,m0)与C／G(KR)的共同变迁t∈同步引发,而当t是某关键位置路π的首变迁时,t引发则π上所有变迁都应顺序引发一次;
+　　2)ρ使t∈T1在(G,m0)中引发一次包含t的变迁t1+…+tn能在C／G(KR)中引发一次.
+　　由定义知,如果σ是C/G(KR)中的可从初始标识m0引发的变迁序列,m0［σ＞m,f(σ)是与σ对应的ρ／(G,m0)中的可从m0引发的变迁列,m0［f(σ)＞m,则f(σ)可从σ得到,即在σ中把t1+…+tn用序列t1t2…tn代替,把关键位置路π=p1t11p11t12p2…t(n-1)1pn的首变迁t用变迁列t11t12…t(n-1)2代替.
+　　定理4.设(G,m0)是一个SPN,ρ是如定义10给出的控制策略,则ρ/(G,m0)是活的（证明从略).
+5　结论
+　　本文基于Petri网模型讨论制造装配系统的活性控制问题,通过对Petri网模型的结构分析,指出了这类系统的活性特征及其保证系统活性的控制器或控制策略的综合方法.这种控制对系统资源利用的限制小,有利于在此基础上的实时控制调度的实现.
+1)国家自然科学基金和西安交通大学机械制造系统工程国家重点实验室基金资助.
+作者简介：邢科义　1957年生.1994年获西安交通大学博士学位，现为西安电子科技大学教授.研究方向有离散事件动态系统，Petri网理论与应用.曾获何潘清漪论文奖.
+　　　　　胡保生　西安交通大学教授，博士生导师.机械制造系统工程国家重点实验室学术委员会主任，IEEE高级会员，《Mathematical Review》评论员.
+　　　　　万百五　西安交通大学教授，博士生导师.主要研究方向有大系统优化递阶控制，大系统智能控制等.在国内外发表论文250余篇，获国家教委科技进步奖一次，二等奖两次等奖励.
+作者单位：邢科义　西安电子科技大学应用数学系　西安　710071
+　　　　　胡保生　万百五　西安交通大学系统工程研究所　西安　710049
+参考文献
+1　Banaszak Z, Krogh B H. Deadlock avoidance flexible manufacturing system with concurrently competing process flows. IEEE Trans. on RA,1990,6(6):724―734
+2　Ezpeleta J, Conlom J M, Martinez J. A Petri net based deadlock prevention policy for flexible manufacturing systems. IEEE Trans. on RA, 1995,11(2):173―184
+3　Hsieh F S, Chang S C. Dispatching-driven deadlock avoidance controller synthesis for flexible manufacturing system. IEEE Trans. on RA, 1994,10(2):196―209
+4　Xing K Y, Hu B S, Chen H X. Deadlock avoidance policy for Petri net modeling flexible manufacturing system with shared resources. IEEE Trans. on AC, 1996,41(2):289―295.
+5　Xing K Y et al. Deadlock avoidance controller for a class of manufacturing systems. In: IEEE Int. Conf. on Robotics and Automation, USA, 1996
+6　Zhou M C, DiCesare F. Petri Net Synthesis for Discrete Event Control of Manufacturing Systems. Kluwer Academic Press, 1993
+7　Jeng M D, DiCesare F. Synthesis using resource control nets for modeling shared-resource systems. IEEE Trans. on RA, 1995,11(3):317―327.
+收稿日期　1996-10-03
+收修改稿日期　1997-12-16

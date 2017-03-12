@@ -1,0 +1,26 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年 第25卷 第1期 vol.25 No.1 1999
+
+
+
+关于矩阵指数的PADE逼近新算法1)
+顾传青
+摘　要　基于广义逆矩阵Pade逼近的特点是在保持逼近阶的前提下，在构造过程中不需要用到矩阵的乘法运算.利用该结果建立矩阵指数etA的一种新的非线性逼近算法.该方法与原Pade近似法相比具有明显的优点，即它对奇异矩阵和高阶矩阵是适用的，并且所得到的算法适合编程上机进行计算.给出的一个计算实例说明了算法的有效性.逼近公式的存在性和唯一性得到了证明.
+关键词　矩阵指数，广义逆矩阵Pade逼近.
+
+NEW ALGORITHM FOR MATRIX EXPONENTIALS
+BY PADE APPROXIMATION
+GU Chuanqing
+(Science College of Shanghai University, Shanghai　201800)
+Abstract　The matrix Pade approximants based on generalized inverse is characterized by keeping approximation order and without multiplication of matrices in the construction process. In this paper, a new nonlinear approximating method for matrix exponential functions is established by means of this result. This method is obviously superior to the original Pade method because it can be applied to singular matrices and higher-order matrices, and the obtained algorithm is suitable to compute on computers. A computational example is given to illustrate the efficiency of the algorithm. Existence and uniqueness of approximation formulas are proven.
+Key words　Matrix exponentials, generalized inverse matrix Pade approximants.
+
+1　引言
+　　矩阵指数etA在线性系统理论及线性算子半群理论中有着特殊的作用.在现代控制理论中，无论是齐次状态方程的求解，还是非齐次状态方程的求解，主要是取决于矩阵指数函数etA的计算和近似.根据定义
+(1)
+这种级数展开法的缺点是收敛比较慢，与其他方法相比它的计算时间最长.目前，etA的计算除了展开法(1)之外，还有非奇异变换法，拉普拉斯变换法，多项式表示法，西勒维斯特插值法? 
+
+
+
+Transfer interrupted!

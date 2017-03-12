@@ -1,0 +1,93 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年　第36卷　第10期　Vol.36　No.10　1999
+
+
+
+智能Agent建模的一种模板结构
+陈建中　刘大有　唐海鹰
+　　摘　要　文中讨论了设计和建造智能Agent的一些热点问题.通过对一些基本概念和定义的评述，总结了智能Agent应具有的若干主要性质和属性.文中还给出了一个用于智能Agent建模的模板结构，它是一个复合的组件式框架结构，支持建造各种智能Agent或面向Agent的应用系统.文中详细讨论了该模板结构各组成模块的功能和工作流程.
+　　关键词　智能Agent，Agent结构，多Agent系统
+　　中图法分类号　TP18
+A TEMPLATE ARCHITECTURE FOR MODELING
+INTELLIGENT AGENTS
+CHEN Jian-Zhong, LIU Da-You, and TANG Hai-Ying 
+(Department of Computer Science, Jilin University, Changchun 130023)
+(State Education Ministry Laboratory for Symbol Computation and
+Knowledge Engineering, Jilin University, Changchun 130023)
+　　Abstract　Here presented are some focus issues associated with the design and construction of intelligent agents. Some key attributes and properties of intelligent agents are first summarized through reviewing and examining some basic concepts and well-known definitions of agents. A template architecture for modeling intelligent agents is then proposed, which is a hybrid modularized framework and supports the construction of intelligent agents or agent-oriented systems for various application needs. The functions and work process of the modules in the agent architecture are discussed in detail.
+　　Key words　intelligent agents, agent architecture, multi-agent system
+1　引言
+　　近年来，智能Agent和面向Agent系统技术已成为人工智能和计算机科学领域发展最快的课题之一.一般来说，“智能Agent”是能在动态的多Agent领域采取灵活、自治活动的计算机系统.
+　　本文把分布式人工智能（DAI）研究划分为3个相关子领域：① 分布式问题求解（DPS），它是DAI研究的初级阶段，已取得诸多研究和应用成果；② 智能Agent（IA），主要研究单个Agent的建造理论；③ 多Agent系统（MAS），多个Agent构成组织或社会及其协作、协调解决问题是MAS的主要研究内容.IA和MAS无疑是当前的研究热点.智能Agent研究又可分为3个相关的子课题［1，2］：① Agent理论；② Agent结构；③ Agent语言.
+　　本文试图给出一个智能Agent的模型结构，支撑建造能力较强、能反映Agent多种性质或属性的单Agent或多Agent系统.第2节讨论智能Agent的定义和关键性质等概念；第3节给出一个用于Agent建模的智能Agent模板结构模型；最后是相关研究工作比较和结论.
+2　相关概念
+2.1　什么是Agent
+　　尽管“Agent”这一术语已被广泛使用，但人们却至今难以给出能被普遍接受的定义.著名学者Hewitt曾指出：在面向Agent计算领域回答“什么是Agent？”这一问题，就像在人工智能领域回答“什么是智能？”一样令人困惑和为难.下面对一些著名的定义进行分析和解释.
+　　(1) “一个Agent可被看做是通过传感器感知并通过感应器影响和作用其所处环境的任何事物.” 该定义源自著名教科书“人工智能：一种新方法”.据此定义，一个Agent主要有3个要素：所处的环境、用于接收输入的传感器（称为感知过程）和用于形成输出的感应器（称为动作过程）.
+　　(2) “智能Agent持续地执行3项功能：感知环境中的动态条件；执行动作影响环境条件；进行推理以解释感知信息，求解问题，产生推断和决定动作.”［3］ 著名人工智能学者、美国斯坦福大学的Hayes-Roth坚持认为，Agent应在动作选择过程中进行推理和规划.
+　　(3) “自治或自主Agent是指那些宿主于复杂动态环境中，自治地感知环境中信息，自主采取行动，并实现一系列预先设定的目标或任务的计算系统.”［3］ Agent研究的先驱之一，美国的Maes在其Agent定义中增加了一项现在被认为在Agent理论中居核心地位的关键要素：自主（治）性.
+　　(4) “智能Agent是代表用户或其它程序以一定程度的自主性完成一组操作的软件实体，同时在完成过程中，它（们）可获得关于用户的目标或愿望的知识及表示.”［3］ 这是IBM公司“智能Agent战略白皮书”中的定义，用于Internet网上信息查询和管理的信息Agent是符合该定义的典型实例.
+　　(5) “Agent是一个具有下述性质的基于硬件或（更经常）基于软件的计算机系统：自主性，社会能力，反应性，能动性等等……”［2］这是著名Agent理论研究者、英国的Wooldridge博士和Jennings教授所给的Agent定义.该定义允许在更宽范围的环境中设计Agent，而且其中增加了通信要求.
+　　上述这些典型的定义大都来源于定义者设计和开发的一些Agent实例，根据他们各自的设计需要反映出Agent的一些特征和侧面，但它们都无法全面地描述和表达智能Agent的完整特性和性质.
+2.2　智能Agent的关键属性
+　　在下面总结和列举的智能Agent应有的性质中，至少前5项是基本的或Agent必备的.
+　　(1) 自主（治）性：Agent能自行控制其状态和行为，能在没有人或其它程序介入时操作和运行.
+　　(2) 通信能力：Agent能用某种通信语言与其它实体交换信息和相互作用.
+　　(3) 感知能力或反应性：Agent能及时地感知和响应其所处环境的变化.
+　　(4) 能动性：Agent主动表现出目标驱动的行为，能自行选择合适时机采取适宜动作.
+　　(5) 持续性：Agent是持续或连续运行的过程，其状态在运行过程中应保持一致.
+　　(6) 推理和规划能力：Agent具有基于当前知识和经验，以一种理性方式进行推理和预测的能力.
+　　(7) 协作、合作、协同及协商能力：Agent应能在多Agent环境中协同工作和消解冲突，以执行和完成一些互相受益且自身无法独立求解的复杂任务.这是连接IA与DPS和MAS研究的桥梁.
+　　(8) 机动性或可移动性：Agent应具有在分布式网络中移动的能力，且在此过程中保持状态一致.
+　　(9) 适应性或进化性：Agent应能积累或学习经验和知识，并修改自己的行为以适应新形势.
+　　(10) 可靠性、诚实性和理智性：Agent采取的动作及产生的结果应是可靠和符合用户利益的.
+　　人们似乎不可能建造一个能全部体现上述性质的Agent或面向Agent系统.研究和开发人员都是从某些应用的需要出发设计包含部分属性的系统，于是产生了不同类型的智能Agent.
+3　智能Agent建模的模板结构
+　　Maes指出：“…（Agent结构）是建造Agent的一套特定方法.它说明如何把一个Agent分解为成分模块集合及模块间如何相互作用.模块集合及其相互作用必须能回答这样的问题：Agent获得的数据和它的当前内部状态如何决定其采取动作及决定和修改Agent未来的状态…”［1,2］.
+3.1　工作基础
+　　建造Agent的方法可分为3类［1，2，4］：① 反应或反射型结构，不包括任何符号世界模型表示，不使用复杂的符号推理机制；② 认知或思考型结构，包含世界和环境的显式表示和符号模型，使用逻辑或伪逻辑推理进行决策；③ 混合型结构，将上述两类结构有机结合而形成的结构.
+　　纯反应型结构的Agent系统（也称为反应型Agent［4］）只对环境的变化或来自其他Agent的消息产生反应，而不能对其内部状态进行推理，通过触发规则或执行预先定制的规划来执行动作，该类型系统能及时快速响应环境变化和外来信息，但缺乏足够的灵活性.纯认知型系统（也称为意识型Agent［1］）能基于符号表示和逻辑推理来创建、更新、评价、选择和执行适宜规划以采取动作和完成目标，具有较强的灵活性和较高的智能，但对环境的变化无法做快速响应.
+　　从当前的研究结果看，认知型方法在Agent结构研究中居主导地位.而由于缺乏相应的开发方法，反应型系统的研究和应用尚处于初级阶段，有人建议用神经网络、遗传算法和机器学习等技术解决该类型系统的若干问题.许多研究者认为混合方法集中了二者的优点，是较佳选择［1,2］.
+3.2　智能Agent建模的一种模板结构
+　　智能Agent建模的模板结构（参见图1）是一个通用意义下的智能Agent框架模型，支撑设计和建造适用于多种应用领域的智能Agent或面向Agent系统，它采用了面向对象和面向Agent程序设计机制，把一个Agent分解为既相互作用又有相对独立功能的若干模块.
+
+
+
+图1　Agent模板结构
+　　从垂直方向看，图1的模板结构分为通过数据和控制流相联系的4部分：输入部分，工作存储器（或局部信息与数据区）和静态知识库，各功能模块，输出部分.从水平方向看，它是一个层次结构系统，包括一个元级管理子系统（调度器），一个反应型子系统（反应器）和一个认知型子系统（其余部分）.从整体上看，该模型是一个网状结构.
+　　一个Agent模板被定义为一个二元组：〈Agent外壳，Agent内核〉［5］.其中，Agent外壳包括若干功能模块及其相应的黑板结构型局部信息与数据区（称为工作存储器），主要负责控制Agent的运行行为，并协调Agent与用户、其它Agent和环境的相互作用；Agent内核由Agent的问题求解器和动作处理过程及相应的知识库和知识库管理器组成，主要负责求解领域任务、处理和执行具体动作（包括反应型动作）、存储和维护系统知识库等.Agent外壳可被看做Agent与其环境之间的桥梁，显示出Agent的外部和社会能力，而Agent内核则被认为是由一组知识系统、专家系统和问题求解程序构成，反映出Agent的内部和领域问题处理能力.这两部分都被设计成组（插）件式模板结构，即它们都由一组功能上相对独立的、可拆装的组件或插件（功能模块）构成，方便用户根据需要选择、忽略和增删功能模块及知识，从而构造符合各自功能要求、反映多种性质的单/多Agent系统.
+3.3　Agent模板结构的工作流程
+　　下面通过说明图1中各功能成分的工作处理流程来讨论Agent模板结构模型的运行行为.Agent的一个工作流程是其各功能模块并发或并行地执行下述步骤的过程：
+　　(1) 通信管理器使用某种Agent通信语言接收环境或其他Agent的输入消息，并发送处理后形成的输出消息，这里，采用KQML语言［6］作为Agent通信语言.消息被收集和存储于消息池（信箱）.
+　　(2) 调度器使用消息解释与分类知识库中的相应规则对消息池中的消息进行解释和分类，分类后的信息被分配到工作存储器的相应部分；调度器维护一个调度议程表，采用机缘调度策略根据消息和当前状态激活其他功能模块运行，并负责协调他们的活动和相互作用；它同时还维护一个运行日志用于记录Agent的运行过程，运行日志最后将被保存在历史信息库中.
+　　(3) 反应器使Agent根据输入消息和当前状态以快速或实时方式处理一些简单和紧急事件或短期目标；它应用反应型行为知识库中的条件――动作型规则，直接将来源于调度器的反应型信息映射为动作或预定义规划；反应器生成的动作或目标通常以最高优先级加入到决策空间；此模块中可包含一个被称为“体系结构动态组织（或重组）”的特殊功能［5］.
+　　(4) 协同与协商模块使用协调议程表同步和协调本Agent与其他Agent或Agent组织之间的协作行为和相互作用；它负责任务队列中领域任务的分解和分布，通过管理一个合同集以某种高层协议（如合同网），采用协商和谈判方式，在用户、Agent和Agent组织之间进行任务承揽和任务分布［7］；它还负责消解Agent间的资源、任务结果等冲突；这些操作会生成决策空间中的相应目标.
+　　(5) 感知和建模模块主要用于对Agent的信念空间进行推理，信念空间的内容包括自我信念模型、其他Agent的世界模型、其他Agent的规划、其他Agent的意图（即可能达到的目标）、环境模型和资源信息等；该模块使用一个包含多种建模元规则的知识库；一些能展示Agent认知型行为的逻辑符号推理过程，比如规划识别、假设推理、真值维护等，也应包含在此模块中.
+　　(6) 决策模块根据Agent信念空间反映的状态，从中选择Agent能达到的目标，将其按不同优先级加入到活动目标议程表；该模块还负责消解这些活动目标间的可能冲突；然后，它从动作空间选择并最终采用那些能达到活动目标的相应预定义规划，使之成为活动规划，预定义规划来源于知识库中的预定义规划库；之后活动规划被加入可执行动作队列；决策模块还必须负责修改那些已过时的、错误的、冲突的及当前不再可用的旧规划，并决定在必要时重新规划.
+　　(7) 当没有可用预定义规划时，规划模块被激活，功能包括：用规划知识库和规划模板库中的知识创建新规划，消解规划间可能的冲突，根据Agent的信念空间模拟新规划的执行效果，评价规划模拟结果，对规划进行适宜优化形成优化规划集，并把最终形成的活动规划加入到可执行动作队列.
+　　(8) 学习模块使用学习知识和启发式规则库中的知识对可执行动作队列中的活动规划、活动规划的执行对Agent信念空间的改变、规划模拟和规划优化的结果等进行分析；若成功，则把新规划和新目标作为新知识分别加入到动作和决策空间；其他学习过程还包括知识库中规则的获取等.
+　　(9) 动作执行与结果综合模块负责具体执行已提交到可执行动作队列中的活动规划或动作，调用相应的问题求解器并发或并行地执行已规划好的任务或动作，综合和提交任务或动作的执行结果，与其他Agent、环境及人机交互界面进行消息交换，根据执行结果修改信念空间和知识库的有关内容.
+　　(10) 问题求解器包括一系列任务求解程序和过程，每个程序都可调用领域问题求解知识库中的具体知识,独立地执行特定动作或完成特定领域任务.
+　　(11) 用户可以通过人机交互界面控制或监测Agent的运行行为，并进行必要的信息交换.
+　　面向Agent系统开发工具不是Agent模板的一部分，在此是为了再次强调：Agent模板的每一成分都由该工具设计和开发成组（插）件式模块结构.
+4　相关工作和结论
+　　本文基于对智能Agent的定义和性质的讨论，给出了智能Agent建模的一种模板结构.文献［1］、［2］、［4］中介绍了与Agent结构相关的一些研究工作，如IRMA系统、GRATE*系统、情形自动机模型、Agent网络结构、PRS系统、Touring机系统、COSY系统、InteRRaP系统等.与之相比，本文的Agent模板结构符合Belief-Desire-Intention结构的特征，其特点可总结如下：① 它是一个通用型的组件式模板框架模型，由一组既功能独立又相互作用的模块组成，其面向对象和面向Agent的设计机制为用户实际建造Agent和面向Agent系统提供了一种方便和可行的途径；② 通过各成分间消息传递、信息交换、模块间互相激活和相互作用，Agent模板构成了一个数据或目标驱动的复合式网状结构，而不是简单的多层次结构；③ 由它支撑建造的单/多Agent系统能展示出更多的智能Agent性质和属性.
+　　本文不想也不能给出一个适用于任何需要的完美或万能的Agent结构模型，文中仅说明了我们关于智能Agent建模的思路和初步研究结果.进一步工作包括：Agent信念空间的表示和推理，Agent世界模型的感知，Agent通信语言，规划与规划识别，协同与协商，面向Agent的程序设计等.
+本课题得到国家自然科学基金项目、国家“八六三”高技术项目基金、国家教育部博士点基金和吉林大学符号计算与知识工程“教育部开放实验室基金”资助.
+作者简介：陈建中，男，1968年8月生，博士，副教授，主要研究方向为专家系统与知识工程、分布式人工智能与多Agent系统等.
+　　　　　刘大有，男，1942年6月生，教授，博士生导师，主要研究方向为专家系统与知识工程、分布式人工智能与多Agent系统等.
+　　　　　唐海鹰，男，1971年1月生，博士，讲师，主要研究方向为专家系统与知识工程、分布式人工智能与多Agent系统等.
+作者单位：吉林大学计算机科学系　长春　130023
+　　　　　吉林大学符号计算与知识工程国家教育部开放实验室　长春　130023
+参考文献
+　1　　Wooldridge M, Jennings N R. Intelligent Agents: Theories, Architectures, and Languages (LNAI Vol 890). New York: Springer-Verlag, 1995
+　2　　Wooldridge M, Jennings N R. Intelligent agents: theory and practice. The Knowledge Engineering Review, 1995, 10(2): 115～152
+　3　　Franklin S, Graesser A. Is it an agent, or just a program: A taxonomy for autonomous agents. Muller JP, Wooldridge M, Jennings N R eds. Intelligent Agents I　I　I: Agent Theories, Architectures, and Languages(LNAI Vol 1193). New York: Springer-Verlag, 1996, 21～36
+　4　　O'Hare G M P, Jennings N R. Foundations of Distributed Artificial Intelligence. San Mateo, CA: John Wiley & Sons, 1996
+　5　　Liu Dayou, Zhong Shaochun, Chen Jianzhong. Dynamic reorganization of architecture in DAI――Agent model, relations among agents and reorganization operations. In: Proc of 3rd Pacific Rim International Conference on AI. Beijing, 1994. 20～25
+　6　　Finin T, Fritzson R. KQML――A language and protocol for knowledge and information exchange. In: Proc of the 13th International Distributed Artificial Intelligence Workshop, Seattle, 1994. 127～136
+　7　　刘大有，陈建中，钟绍春. 多Agent系统中的一对一协商谈判过程. 软件学报, 1996, 10: 159～166
+　　　(Liu Dayou, Chen Jianzhong, Zhong Shaochun. One-one bargaining negotiation process in multi-agent system. Journal of Software(in Chinese), 1996, 10: 159～166) 
+原稿收到日期：1997-12-17；
+修改稿收到日期：1998-06-18.

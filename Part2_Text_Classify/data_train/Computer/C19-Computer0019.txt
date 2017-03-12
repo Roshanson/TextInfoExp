@@ -1,0 +1,106 @@
+计算机应用
+COMPUTER APPLICATIONS
+1999年 第19卷 第6期 Vol.19 No.6 1999
+
+
+
+Internet三维多媒体演示系统的开发
+俞方桦　陈剑光　陈家训
+　　摘　要　VRML(虚拟现实建模语言)是新型的Internet三维世界描述语言，它具有可交互、支持多媒体 、高性能等特点。通过对实际演示系统的分析，简要叙述了VRML的动画、Javascript接口、多媒体以及VRML的优化技术。
+　　关键词　Internet，VRML，JavaScript，关键帧动画
+1　由来
+　　随着Internet在我国的逐渐普及，各高校都相应地建立起基于TCP/IP协议的校园网，并陆续开通了World Wide Web、FTP、E-mail等应用服务。基于TCP/IP的Internet应用技术成熟、种类丰富，而且不断有新兴的技术涌现。最近，我们利用最新的Internet三维技术VRML(虚拟现实建模语言)为我校的重大科研项目“针织横机电脑控制系统”制作了一个可在Internet上浏览的、三维的实时多媒体演示系统。
+2　VRML概述
+2.1　VRML语言
+　　VRML――Virtual Reality Modeling Language“虚拟现实建模语言”是一种“用来描述可在World Wide Web上运行的、可交互的3D世界和对象的文件格式”［1］。VRML规范1.0由SGI制订，主要参考了SGI的Open Inventor文件格式。最近的正式版本为2.0，由国际标准化组织ISO和国际电气技术委员会IEC标准化，编号ISO/IEC WD 14772。
+　　VRML语言所描述的三维场景可以说是一个“节点”的集合。节点(node)是三维世界的基本元素，几何体、视点(即照相机)、灯光、接受输入的传感器(sensor)以及控制动画的插件(interpolator)都以节点的形式定义和使用。节点可以引用和嵌套。这样，所有的三维场景中的对象组成一个层次的、树型的结构。
+　　从最严格的意义上讲，VRML不算一种编程语言，至少它不是编程人员所说的编译型语言，它必需依赖解释程序来解释执行，即VRML浏览器。VRML浏览器既可以是WWW浏览器(如Netscape和Internet Explorer)的plug-in，也可以是独立的应用程序。VRML和HTML(Hyper Text Marked Language，超文本标记语言)十分类似，都是以ASCII形式编写。同样，就象浏览Web页面一样，客户机通过Internet下载VRML场景文件(以wrl为后缀名)，再由浏览器解释执行并显示。由于采用了这种“可执行代码技术”，仅需传送小型的指令代码文件，而不是数目大得惊人的多媒体数据就能在Internet上浏览三维世界了。
+2.2　VRML语言的特点
+　　VRML语言的诞生为World Wide Web世界带来了新的活力：充满幻想的三维世界和更加丰富的交互功能，使得Web站点不再是单一的二维页面。综合起来，VRML具有以下特点：
+　　. 可交互：VRML提供了丰富的接口用于接收操作输入和与浏览器通信。
+　　. 支持多媒体：包括3D声音和各种格式的音频(WAV,MIDI)、视频(MPEG-1)以及动画等。
+　　. 平台无关：VRML编写的文件可在任何平台上运行，它仅与不同的VRML浏览器相关(效果会有差异)。
+　　. 结构化：VRML的元素具有良好的界面和描述简单的语法。
+　　. 可重组：用VRML生成的图形元素可被重复使用。
+　　. 易扩展：VRML不仅可以让开发者定义自己的节点类型，还为Javascript、Java等语言提供了调用的接口。
+　　. 标准化：VRML中引入的元素都符合或支持已有标准。
+3　演示系统的设计与实现
+3.1　运行环境
+　　源文件驻留在Web服务器上，客户机端需有Netscape Communicator 4.0+ 或InternetExplorer 4.0+(运行在Windows 95上)，以及任何支持VRML规范2.0的VRML浏览器。我们所使用的VRML浏览器是SGI的Cosmo Player 2.0，它以plug-in的方式在Netscape/IE下运行。SGI是VRML的主要制订者，浏览器的兼容性好，完全支持2.0规范；另外，plug-in方式比较灵活，可以同时浏览HTML的页面和VRML的三维场景。而以stand-alone方式运行的VRML浏览器并不都能完全支持最新的HTML标准，更不用说Javascipt和Java了。
+3.2　设计与实现
+3.2.1　三维模型的制作
+　　首先，使用3DS MAX参照实际的针织横机制作了一个三维的模型，并在模型的不同位置放置了多个照相机(视点)，以便切换观察的视角。通过3DS MAX的渲染(render)功能，我们生成了横机模型在不同视点的效果图，准备放到网页上。图1是横机模型的前视图。
+
+图1　针织横机模型的前视图
+　　在完成模型制作后，我们使用3DS MAX的VRML Exporter(3DS MAX的plug-in)将MAX格式的模型转换成VRML 2.0格式。
+3.2.2　交互功能的实现
+　　为了能逼真地模拟出针织横机的工作原理，我们加入了几个交互功能。
+　　a) 操作过程演示
+　　当用鼠标在针织横机左下的控制面板上单击时，横机机头复位并开始从左向右移动编织，同时齿轮装置转动，机体下侧的样布缓缓吐出。该过程由VRML的动画技术实现。VRML中动画是一种“线性关键帧”动画，由插件(Interpolator)节点定义一线性分段函数f(t)，f(t)将时间t分成n段((-∞，k0),［k0, k1), ［k1, k2), ... , ［k(n-1), ∞ ))称“关键帧”；每段有对应的值vi(0≤i≤n-1)，称“关键帧值”。通常，关键帧非负递增。于是，f(t)如下定义：
+f(t)=v0,　　　　　　　　　t < k0,
+　　=v(n-1),　　　　　　　t > k(n-1),
+　　=vi,　　　　　　　　　t = ki (-1<i<n),
+　　=linterp(t,vj,v(j+1)),kj <t<k(j+1)且-1<j<n-1
+　　linterp()是线性的中间帧生成函数。具体的帧值可能是物体的位置坐标、面的法向量、方向角甚至于颜色值；时间传感器(TimerSensor)定义动画的执行时间。
+DEF Object01-TIMER TimeSensor { loop FALSE cycleInterval 1 },
+DEF Object01-POS-INTERP PositionInterpolator {
+key ［0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, ］
+keyValue ［-0.2245 31.12 78.51, 28.51 30.57 78.51, 54.2 30.07 78.51,… … … … ］
+},
+　　上例中，动画执行时间为1秒，分成10段，对应有10个关键帧值，分别定义在相应时间点处的物体坐标。动画的触发使用“接触传感器”(TouchSensor)，并使用ROUTE/TO语法将触发消息传给时间传感器，由其控制动画执行：
+　DEF touch―1 TouchSensor{}
+　　… … … …
+ROUTE touch―1.touchTime TO Object01-TIMER.startTime
+ROUTE Object01-TIMER.fraction―changed
+TO Object01-POS-INTERP.set―fraction
+　　时间传感器每过一个时间段就发消息fraction―changed给插件，插件根据时间段决定物体的运动状态并实现动画。同样，齿轮运动、样布滚动都采用类似的方法实现。
+　　b) 样布的更换
+　　演示模型下方有三块不同质料的样布，点击任何一块，横机里的样布会相应地改变，于是织出的布料也不一样。这里，除了运用了接触传感器以外，还加入了一段Javascript小程序。
+　　样布物体的材质如下定义：
+　　　… … … …
+texture DEF text00 ImageTexture {
+url ".../hengji/texture01.jpg"
+}
+　　供选择的布料分别定义为text01，text02，text03。同时为每个布料都定义了一个　　　　TouchSensor，例如，touch―text01。
+　　替换为text01的Javascript代码：
+DEF change―text01 Script{
+　　EventIn SFTime touch
+　　EventOut MFString text01―changed
+　　Field SFNode textnode USE text01
+　　url［"javascript:
+　　　function touch(data,time)}
+　　　　text01―changed=textnode.url;
+　　}"
+　］
+}
+　　消息传送方式：
+　　ROUTE touch―text01.touchTime TO change―text01.touch
+ROUTE change―text01.text01―changed TO text00.url
+　　点击text01时，touch―text01将点击时间传给change―text01的touch()函数(第一句ROUTE)，该函数将变量text01―changed的值设成text01的材质文件名(textnode.url)，然后将text01―changed的值传给text00(第二句ROUTE)，从而完成材质的替换。
+3.2.3　其它功能的实现
+　　除以上交互功能外，演示系统还实现了以下特性：
+　　. 三维可漫游的界面。由VRML浏览器提供的漫游功能使得只需鼠标或键盘的简单操作就可以任意移动视角，包括移动、旋转等，这使得三维的横机模型比二维的视图更真实和易于理解。
+　　. 多媒体支持。通过简单的编程，我们在演示系统中加入了背景音乐，并在虚拟场景中应用了3D声响。
+　　. 丰富的链接。在演示系统中，使用URL(Uniform Resource Location)语法加入了许多超文本的链接，例如增加用于切换视角的链接以便在不同视角间快速切换。又比如通过链接跳至不同的HTML页面。
+4　优化
+　　在Internet上开发网络应用或资源时，带宽问题不可忽视。由于现有的网络带宽往往无法满足多媒体应用的需求，那么对于三维实时场景来说是否更加不切实际？在开发这个三维演示系统时，我们充分考虑到了网络传输速度问题，并对三维场景和源代码做了一些优化。
+　　三维模型的优化　过于复杂的三维模型会使VRML文件过于庞大，延长传输时 间；并且会增加客户机端的负担，很难得到平滑的运行效果。通常，模型的复杂程度由多边形(polygon，三角形或四边形)的数量来衡量，依据我们的经验，3DS MAX中的模型复杂度与生成的VRML文件规模有如下的近似关系：1000 polygon ≈100k bytes。有效地减少多边形的数量可以大大减少源文件的规模。我们使用3DS MAX提供的优化器来优化模型。在不明显影响模型视觉效果的前提下，优化器通常可以达到90%以上的优化效果。
+　　VRML场景的优化　利用VRML本身提供的语法特性减少重复定义和描述，以减 少文件的字节数。例如，使用“原型”(primitive) 代替顶点集合来描述简单三维物体。VRML本身提供了包括六面体、球、锥、圆柱等多种原型。另外，对于VRML中重复出现的物体使用“实例”(instance)以避免重复代码。在VRML中，实例通过DEF和USE来定义和引用：
+　　　… … … …
+coord DEF zhu03-COORD Coordinate {
+point ［ … … … …
+］
+}
+　　… … … …
+USE zhu03-COORD Coordinate
+　　VRML文件的优化和压缩　VRML的源文件是ASCII类型的，其中有许多不必要的 回车符、空格符和TAB符，将这些字符去掉能使文件大小减少近1/3，而且完全不影响执行。在最终的VRML场景编辑完成后，我们还使用了GNUZIP对VRML文件进行压缩，VRML浏览器会自动识别和解压gzip格式的压缩文件。通常，gzip对VRML的压缩率在10%～35%之间。
+　　经过以上的优化和压缩，演示系统的主文件仅有不到35k字节，使用33.6k的Modem不到2秒就能下载了。另外，贴图文件都是JPEG格式，声音文件为MIDI格式或很短的WAV，这些都使得整个系统的规模减小。
+5　小结
+　　VRML――虚拟现实建模语言是最新的面向Internet的三维世界描述语言，它具有可交互性、支持多媒体、节省网络带宽等特点，非常适合开发三维网上应用。
+作者简介：俞方桦　硕士研究生。主要方向为网络与多媒体技术。
+陈剑光　硕士研究生。
+作者单位：中国纺织大学信息学院　上海(200051)
+参考文献
+［1］　The Virtual Reality Modeling Language Specification Version 2.0. ISO/IEC WD 14772,1996;(4)
+［2］　VRML Exporter v1.0 release notes Kinetic Inc., 1996
+收稿日期:1998-12-08(修改稿)

@@ -1,0 +1,11 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000 Vol.19 No.2 P.47
+
+
+
+
+Linux 希望之星
+　　在8086至80486年代，有不少在PC上运行的操作系统可供选择，较多人熟悉的有DR－DOS、PC－DOS、MS －DOS及OS／2等。不过，到了Pentium年代，就只剩下Windows，令用户无可选择。这个情况一直持续至1998年，一个新的作业平台终于流行起来，它的名字叫Linux。
+　　最近多家主要电脑生产商宣布支援Linux，例如IBM刚与Red Hat签下协议，IBM将把Rde Hat Linux用于旗下的Netfinity服务器内。另外，Compaq亦宣布新推出的AlphaServer DS20及AlphaServer 800能支持Linux，并且与Linux社群紧密合作，令Alpha能担当Linux首要的64位元系统架构。很明显Linux已渐渐露出业界巨人的影子。
+（本刊供稿）

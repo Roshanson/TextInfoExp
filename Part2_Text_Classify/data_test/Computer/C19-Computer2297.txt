@@ -1,0 +1,129 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年 第36卷 第5期 Vol.36 No.5 1999
+
+
+
+多智能体系统支撑环境MAS/TH-5
+李　毅　石纯一
+摘　要　MAS/TH-5系统是具有一定开放性的支持MAS构造与集成的支撑环境，它将开发与运行环境集为一体，形成整体解决方案.同时，文中所构造的具有实际应用价值的Agent模型，为支撑环境提供了理论和技术基础.这种模型具有理性平衡的特点.该模型还为用户提供了建立其他Agent模型的一般性框架，可以满足MAS系统中Agent交互的需求.在支撑环境上，文中所设计的Agent语言具有描述BDI等思维状态的能力，可处理较复杂的实际应用问题.
+关键词　MAS，BDI，Agent语言，KQML,运输调度
+中图法分类号　TP18
+MAS/TH-5:A MULTI-AGENT SYSTEM SUPPORTING ENVIRONMENT
+LI Yi and SHI Chun-Yi
+(Department of Computer Science,Tsinghua University,Beijing　100084)
+Abstract　MAS/TH-5 system is a partly open supporting environment for construction and integration of MAS. The system integrates environments for development and for operation and brings about a total solution. In the paper here, an applicable agent model is established. The agent model provides theoretical and technical basis for the supporting environment. The model features balance. It also provides general frame for customers for establishing other agent models and satisfies the demand of communication between agents within the MAS system. Since the agent language designed in the supporting environment is capable of describing BDI's mental state and dealing with complicated problems, the agent based on the language is valuable in solving practical problems.
+Key words　MAS,BDI,Agent language,KQML,transportation dispatch
+1　引　　言
+　　多Agent系统由多个自主或半自主的智能体(Agent)组成，在Agent之间以及Agent与环境之间都是并发的，需要进行交互.MAS研究的主要内容就是这些并发Agent的构造、协调、协作等问题.
+　　如何结合社会组织理论、建模与实现理论，来研究适应开放环境的Agent框架及以对象程序设计为基础的面向Agent的程序设计技术，支持应用系统的开发，是当前MAS研究面临的重要课题［1］.面向Agent的程序设计框架AOP是这方面研究的成功实例之一［2］.Shoham以Agent为基元，以语言活动建立Agent的交互，以Belief,Desire和Intention等概念描述Agent的思维状态，并建立了语言Agent0.但是Shoham对社会组织理论的引入是有限的，还难于实际应用.关于Agent交互语言的研究有较多的展开，如KQML,KIF以及由此建立的系统ABSE和PACT，但仍未见有完整的MAS实验与开发环境的出现.
+　　在MAS中，Agent的行为必须具有合理性，这使得我们不仅要关注推理、感知等某种特殊能力，还应研究Agent的思维状态模型.为使Agent的思维状态模型适用于系统的动态分析、设计与运行，应以可计算为原则，从系统行为（算法）角度来讨论Agent思维状态BDI间的相互作用与演化，以使Agent具有合理的可合作的行为能力.
+　　为此，我们建立了MAS/TH-5系统，它是一个具有开放性的支持MAS构造与集成的支撑环境.MAS/TH-5将开发与运行环境集为一体，形成了MAS开发的整体解决方案.我们建立了可计算的Agent模型，该模型可以实现Agent思维状态BDI间的自动演变与转化，具有理性平衡的特点.在支撑环境上，我们设计的Agent语言具有描述BDI等思维状态的能力，可处理较复杂的实际问题.同时，我们对KQML语言做了改进，使得系统可以提供灵活、有效的Agent通信机制.基于MAS-TH/5系统，我们还实现了分布卡车运输调度系统.
+2　MAS/TH-5的组成
+　　MAS/TH-5支撑环境如图1所示，由用户、系统界面、OS/NETWORK、VDCE、Agent开发平台、Agent模型、通信Agent和用户Agent等多部分构成.
+
+
+图1　MAS/TH-5系统结构图
+　　MAS/TH-5通过系统界面与用户进行交互，交互可分为3个层次：首先，用户可以与系统中的Agent进行交互，如：输入任务，观察结果；其次，用户可以根据自己的需求利用系统已有的Agent模型构造Agent加入到系统中；另外，用户可以通过与VDCE的交互，实时控制和查看系统的状态，以利于系统运行和方法实验的进行.
+　　系统界面利用友善的、可视化的用户界面，帮助用户实现与系统的各种交互，以提高系统的可用性.
+　　OS/NETWORK为系统提供底层支持.
+　　虚拟分布计算环境VDCE为MAS以Agent为单位的计算提供支持.MAS可在VDCE上以实际和模拟两种状态运行.在实际状态下，Agent在运行中直接使用OS/NETWORK资源，VDCE不进行干预.在模拟状态下，VDCE则要根据MAS的环境和资源描述，控制Agent的执行，使MAS完全处于模拟的分布环境中，保证系统运行结果在预期条件下可重现.
+　　开发平台提供了利用Agent语言建立用户Agent的机制.
+　　做为支撑环境的核心，我们向用户提供了具有理性思维的Agent模型，以供用户构造实际MAS系统.
+　　通信Agent为MAS中所有Agent提供通信支持.
+　　用户Agent是用户利用系统开发平台和Agent模型所建立的Agent，它们具有特定求解能力，可以完成用户需求.
+3　Agent的理性可计算模型
+　　理性(Rationality)涉及信知(Belief)、愿望(Desire) 、意图(Intention)和行为(Action)等概念，它们描述了Agent的思维状态的基本特征和相互关系.理性平衡指愿望信知、意图、目标和行为的相互约束和平衡，是MAS合作和求解的基础［3］.一般将Agent的思维状态分为信知、愿望和意图3部分(简记为BDI)，进而可与Agent的感知、推理以及规划、行动集成起来，使Agent的各自行为在统一的框架下展开，以愿望的满足为目标，使Agent行为具有明确的目的性，从根本上保证行为的合理性，以适应于实际的动态开放环境.
+　　目前已有的关于思维状态的理论着重讨论理性平衡的有关概念和相应约束，但这些理论是静态的，没有给出Agent的行为与思维状态之间的相互关系与演化规则，使思维状态诸因素在演化过程中相互脱节. 另外，已有理论缺乏可计算模型，没有给出思维状态的产生以及相互演化的算法，难以应用于实际的MAS的设计、实现和运行［4］.
+3.1　Agent的BDI描述
+　　依可计算性为原则，我们给出对Agent的BDI内涵和相互关系的一种描述.
+　　Belief是Agent对世界的认知，包含描述环境特性的数据.从Belief出发可以做出对环境的判断，提出达到一定目标的行为规划. Belief分为4种基本类型：SURE，ASUM，WILL，POSS，分别表示确切、假设、必然和可能.其中，SURE和WILL为确定性信知；ASUM和POSS为不确定性信知.确切、假设是对当前环境的信知，必然与可能则是对未来而言.Agent的Belief可由设计者直接加入，从观察中得到，从通信中得到，也可以从推导中得到.Belief集合中，存在一致性维护问题.
+　　Desire是系统的目标，由此目标将会激发系统的规划和行动.一般而言，目标可以表达为对环境状态的一种期待(一种判断)，系统可以测试此判断是否成立，成立则表明目标已实现，否则，系统需采取行动以实现目标.Desire在完成后，被取消.当系统时间超过Desire的目的时刻后，不管Desire是否得到满足，均应被取消.
+　　Agent可提出各种可能的行动组合来达成需求，做出实现需求的规划行为.
+　　Intention是Agent对自己在未来时间内行动的预先安排，Intention不能脱离Desire而独立存在，是可以到达Desire的规划中的一部分，要将Desire转化为现实，则Intention应触发行动(Action).Intention在有限资源的情况下，是Agent理性平衡所必须的.
+　　与上述描述相适应，我们建立的Agent模型由4元组构成：〈B,D,I,A〉
+　　B为Agent所具有的Belief，表示为〈Prop，Time，Mode，Source〉
+　　D为Agent所具有的Desire，表示为〈Prop，Time，FirstSon，NextBrother〉
+　　I为Agent所具有的Intention，表示为〈Prop，Time，A〉
+　　A为Agent所具有的行为能力.
+　　Prop为一个命题，表示某一特定状态，定义为〈Name，Value，Time〉
+　　B中，Time表示该Belief加入信知集的时间，Mode表示Belief类型，分为SURE，ASUM，WILL，POSS，Source为Belief所对应的Desire.
+　　Desire集为树型结构，子节点代表为实现父节点Desire而产生的子Desire，子Desire间为逻辑与的关系.D中，Time表示该Desire加入愿望集的时间，FirstSon表示该Desire的第一个子Deisre，NextBrother表示该Desire后继兄弟Desire.
+　　I中，Time表示该Intention加入意图集的时间，A为该Intention对应的Action.
+3.2　Agent模型的逻辑流程
+　　Init( );
+　　While(Status_Run)
+　　{　　
+B_Manage( );
+D_Manage( );
+I_Manage( );
+　　}
+　　Exit( );
+　　其中，Belief管理模块B_Manage主要实现Belief库的一致性维护功能，要求SURE类型的Belief间不能冲突；SURE与ASUM类型的Belief间不能冲突；WILL类型的Belief间不能冲突；WILL与POSS类型的Belief间不能冲突.同时，当Belief对应Desire不存在时，管理模块还应删去该Belief；为了便于实现，Belief管理模块本身不具有Belief的推导能力.
+　　Desire管理模块D_Manage是整个模型的核心部分，其主要功能为维护Desire，其逻辑流程为：Desire所对应时刻超过系统时刻或Desire与SURE类型Belief一致，则Del Desire；Desire与ASUM类型Belief一致，Desire与WILL类型Belief一致或Desire与POSS类型Belief一致，则保持该Desire；Desire为SURE类型Belief矛盾或Desire为WILL类型Belief矛盾，则Reset其父Desire； 否则，对Desire产生对应的Intention和Belief.
+　　为了加快BDI的转化效率，我们定义了Del 和Reset 两个对Desire的操作.
+　　Del Desire：删除该Desire和对应的Belief和Intention，及其所有子Desire及对应的Belief和Intention；
+　　Reset Desire：删除对应Belief和Intention，及其所有子Desire和对应的Belief和Intention；
+　　Intention的管理模块I_Manage功能是：与Desire库的一致性维护，当某Intention对应的Desire不存在时，删去该Intention，执行与Intention对应的动作；当动作是规划行为动作，产生新的子Desire.
+　　Init()函数实现Agent的初始化操作，向通信Agent注册；读入初始的信念库、愿望库和意图库.
+　　Exit()函数实现Agent的注销工作.
+　　通信模块具有接收外界消息到Agent消息队列中以及消息发送的功能.Agent在运行中与通信相关的Desire形成Intention，最终触发该模块相应函数的执行.此外，该模块还具有将信息在KQML格式和BDI格式间转化的能力.
+4　Agent语言与通信机制
+　　在Agent模型的基础上，我们设计了Agent描述语言，建立了Agent开发平台，为整体MAS支撑环境的建立奠定基础.
+　　通过平台，可以进行填充式的Agent设计：用户根据Agent 语言的语法格式描述Agent的信念库、知识库、愿望库.
+　　语言描述如下：
+　　　　信念∶　=（〈事实〉 〈类型〉）
+　　　　愿望∶　=（〈事实〉）
+　　　　意图∶　=（〈事实〉）
+　　　　事实∶　=（〈谓词〉 〈参数〉 〈时间〉）
+　　　　类型∶　=SURE|POSS|WILL|ASUM
+　　　　谓词∶　=〈alphanumeric_string〉
+　　　　参数∶　=〈alphanumeric_string〉|number|{参数}
+　　利用Agent语言及开发平台，可以迅速，有效地建立起实际Agent，并能在Agent运行中，通过语言改变Agent的BDI库，进而达到控制Agent运行的目的.
+　　通信机制是MAS支撑环境的一个重要组成部分.
+　　在MAS/TH-5中，我们将通信分为物理通信层、语法层和语义层等3个层次.
+　　在物理通信层中，即系统的OS/NETWORK部分，利用Socket编程接口实现基本通信机制.
+　　在语法层，利用KQML语言作为语法规范.KQML是一种知识查询与操作语言，KQML既是消息的格式，又是一种用于支持Agent运行期间知识共享的消息处理的协议，它可以作为应用程序与智能系统间交互的语言，以支持Agent间消息的传递.
+　　我们选用KQML作为Agent通信语言，有以下两点理由：首先，它具有灵活的结构，且具有可扩充性，能够满足Agent间信息传递的基本需求；其次KQML作为一种Agent通信语言，受到广泛的支持，正在成为一种规范，这使得MAS/TH-5系统中的Agent有可能与其他系统中的Agent进行交互.
+　　具体实现中，根据具体需求及MAS系统的特点，我们对KQML语言做了一定的完善和扩充. KQML语言目前提供的通信机制只有点到点和广播两种方式，而在实际信息交换过程中，用户往往希望某些信息能够在特定的范围内传播和共享，为此，我们提出了Agent 组的概念，使得Agent 发送消息时，可以针对某一Agent 组.这样，Agent 就同时具有了Agent 名和Agent 组名两种名称；在KQML中，Agent间的信息交换是异步的，但在很多情况下，用户也希望能够做到等待回答，根据回答信息的内容进行下一步的动作.为此，我们提供了同步与异步两种通信方式，供用户选择.KQML缺乏一种描述网络物理分布的原语，而这种功能在MAS系统的资源管理及通信效率方面十分重要，为此我们提出了一些测量网络通信距离的原语，使得用户选择通信方式和与之通信的Agent时有更多的依据.
+　　在语义层，我们将Agent的思维状态BDI模型引入通信交互过程，由此可以实现在基本交互行为之上的多种类型的协商交互，以解决Agent间的信知、行动等方面的冲突.
+　　按照Agent的思维状态划分，我们将通信内容分为信知和意图两个基本类型.
+　　信知的传递可以实现两种基本作用：在一般情况下信知的传递是一种Agent间的信息交流，因为当发送者将信知发送给另一Agent时，就实际上扩展了接收者的观察能力和范围，对它的活动会有支持与帮助作用.在某些情况下，尤其是发送出的信知与接收方的信知具有逻辑冲突时，信知的传递就成为双方辩论过程的一部分，其目的往往是为了改变另一方的信知，并进而改变其行动方案和意图.
+　　意图的传递可用来进行Agent间行为协调，对Agent行为具有直接的影响，在MAS系统中有重要作用.意图传递到某Agent后，该Agent应决定是否将其作为自己的意图并着手进行规划和行动. 从自主Agent的自利原则出发，Agent采纳其他Agent的意图应有助于提高自己的效用.在Agent以何种标准选择可接受的意图上可以有多种选择［5］.
+　　可以看出，通过信知和意图的传递，可以有效的实现语义层次上的Agent交互.
+5　分布卡车运输调度系统
+　　在卡车运输调度问题中，含有若干车场，每个车场有若干车辆，通过不同的方法，实现运输任务的合理分配，以减少空驶.在系统中，车场间、车辆间都存在着竞争和协作的关系，是一个典型的MAS问题.
+　　我们在MAS/TH-5支撑环境上，利用MAS方法引入市场、价格机制［6］和一定的协商方法进行运输规划，实现了分布卡车运输调度系统，最终达到提高里程利用率、减少空驶的目的. 运输调度是一个应用范围较广的问题，在求解之前，需要做一些限定.为此，我们以北京市运输公司为例，总结出运输调度中的基本限制条件如下：
+　　(1) 每辆车均属于某一车场.
+　　(2) 车辆每天都由所属车场出发，完成任务后回原车场；
+　　(3) 每辆车一天的工作时间为T(允许误差Δt)；
+　　(4) 某些业务要求有确定的车型和必须完成的运量；
+　　(5) 不同的业务因品名等方式的不同直接影响可组合性；
+　　(6) 运输的合理调度，依赖于所涉及的市区地图库.
+　　系统中的Agent有以下类型：
+　　(1) 车场Agent，负责车场的调度事物并实现与其它车场的协作；
+　　(2) 车辆Agent，负责车辆的自我规划；
+　　(3) 距离求解Agent，利用地图数据和启发式规则进行最短距离的计算；
+　　(4) 市场Agent，管理任务市场，监督各车场，并协调各车场间的关系；
+　　(5) 输入Agent，接收各种系统输入，如任务集，车场数据等；
+　　(6) 输出Agent，将系统结果输出，如每辆车完成的运输过程，系统里程利用率.
+　　系统有效地解决了运输调度问题，使里程利用率较手工调度有显著提高.同时，以MAS/TH-5为支撑环境建立并运行该系统，简化了Agent和Agent交互策略的设计过程，缩短了系统开发时间，且使系统具有良好的开发性，能满足运输业务不确定性较强的特点.
+6　结　　语
+　　我们所建立的MAS/TH-5系统是具有一定开放性的支持MAS构造与集成的支撑环境，与AOP，ABSE和PACT等框架或系统相比，更具开发性和实用性，并将开发与运行环境集为一体，形成整体解决方案.
+　　同时，我们克服了以往BDI理论在可计算性方面的缺陷，建立了具有实际应用价值的模型，为支撑环境提供了理论和技术基础.这种Agent模型，具有理性平衡的特点.模型还为Agent提供了建立其他Agent的模型的一般性框架，满足了MAS系统中Agent交互的需求.
+　　与已有的AGENT0等Agent语言相比，我们设计的语言具有描述BDI等思维状态的能力，可处理较复杂的问题，从而使得用这种语言建造的Agent可用于解决实际的应用问题（如运输调度问题）.
+　　当然，该系统仍有若干不足之处，如：尚不具备对Belief的推理能力，系统运行中的监控手段尚不丰富.这些问题都有待于在以后的研究工作中进行改进.
+本课题得到国家自然科学基金资助(项目编号 69773026，69733020).
+作者简介：李毅，男，1974年4月生，博士研究生，主要研究领域为分布式人工智能.石纯一，男，1935年8月生，教授，博士生导师，主要研究领域为人工智能.
+作者单位：清华大学计算机科学系　北京　100084
+参考文献
+　1　石纯一等. 分布式人工智能进展. 模式识别与人工智能, 1996，8(增刊)：72～92
+(Shi Chunyi. The advances of distributed artificial intelligence. Pattern Recognition and Artificial Intelligence(in Chinese),1996,8(Supp):72～92
+　2　Shoham. Agent-oriented programming. Artificial Intelligence, 1993,60(1):51～92
+　3　Bratman M E. Intentions，Plan，and Practical Reason. Hardvard Univ Press，1987
+　4　Konolige K, Pollack M E. A representationalist theory of intention. In:Proc IJCAI-93. California: Morgan Kaufmann Publishers,1993.390～395
+　5　Haddadi A, Sundermeyer K. Belief-Desire-Intention Agent Architectures.In: O'Hare G M P,Jennings N R eds. Foundations of Distributed Artificial Intelligence. New York:John Wiley & Sons Inc,1996.169～185
+　6　Sandholm T. Limitations of vickrey auction in computational multiagent system. In:Second Int'l Conf on Multi-Agent Systems.Tokyo,1996.299～307
+　7　Lejter M, Dean T. A framework for the development of multiagent architectures. IEEE Expert, 1996,11:47～59
+原稿收到日期：1998-07-20
+修改稿收到日期：1999-01-28

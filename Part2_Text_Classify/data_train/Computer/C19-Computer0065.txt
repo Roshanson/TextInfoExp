@@ -1,0 +1,47 @@
+计算机工程
+COMPUTER ENGINEERING
+1999年 第25卷 第8期 Vol.25 No.8 1999
+
+
+
+IPSOFACTO快速ATM信元传输上的IP交换
+许飞，许晓鸣，杨煜普，孙海荣
+摘要：介绍了一种无需信令通过ATM交换机建立路径，将IP流映射到ATM交换的技术。IPSOFACTO(IP Switching Over Fast ATM Cell Transport)负责将IP流映射到一条ATM交换路径。
+关键词：IPSOFACTO；IP交换；交换路径
+IPSOFACTO--IP Switching over Fast ATM Cell Transport
+Xu Fei,XuXiaoming,Yang Yupu,Sun Hairong
+(Dept.of Automation,Shanghai Jiaotong University,Shanghai 200030;
+State Key Lab.of Optical Communication,University of Electronic and Science technology,Chengdu 610054)
+【Abstract】In this paper a techonology of setting up path through an ATM switch without signaling system and reflection IP flows to an ATM switch is presented.The function of IPSOFACTO is to reflect IP flows to an ATM switching path.
+【Key words】IPSOFACTO;IP Switching;Switching path
+　　ATM 技术本身是一种新的网络体系，目前达到标准化并已实现的主要是低层通信支持环境：物理层、 ATM 层和 AAL 层，相当于 OSI 物理层和链路层的协议。随着 ATM 逐步走向实用化，学术界和工业界已认识到建立 ATM 网络上层协议国际标准的迫切性和重要性。如何制定 ATM 网络上层协议的标准一直存在两种观点。一种是对现有上层协议 ( 如 TCP/IP) 进行修改和移植，可最大限度地保护用户在网络上现有的投资，并可缩短标准化周期，加快 ATM 的标准化和实用化进程。但由于现有的上层协议是基于现有各种与 ATM 网络差异很大的低速网络的，将它们进行修改以使之适合 ATM 网络，并真正做到“无逢”连接 (ATM FORUM 的局域网仿真 LANE 和 IETF(Internet Engineering Task Force) 的 IPOA) ，有很多技术难题。另一种是研究全新的 ATM 上层协议，以期充分发挥 ATM 的技术优势，但意味着浪费大量已有的网络投资，并延长标准化周期。 
+1 基本原理 
+　　IPSOFACTO 工作的基本前提是交换机的输入端口的所有未用 VC 均映射到交换控制处理器。如图 1 所示。 
+
+图 1 未用 VC 映射到路由器 
+　　信元级数据传递的交换路径的建立过程如下：发送端给新数据流的首分组在进线上选择一条未用的 VC 。当该线的下游末端的交换控制器收到首分组时，就根据 IP 路由表选择它的出线，以及该出线的一条未用的 VC 。然后，交换控制器在 VC 表中添加一条记录《 { 输入端口，输入 VC} ， { 输出端口，输出 VC} 》 ( 如图 2 示 ) ，则该数据流的后续分组在信元级就如此交换了。 
+
+图 2 添加一条交换路径 
+　　相对于数据分组，交换控制器不为 IP 的“控制”信息创建交换路径，而是通过一条预定的“控制 VC ”发送和接收 IP “控制”信息。交换控制器处理这些 IP “控制”信息的结果是，建立起每串数据流的传递状态。如通过删除 VC 表中的一条记录，可终止某数据流的前向传递状态，并释放相应的交换路径，同时打上该 VC 未使用的标记，留作后用。 
+　　对于 PIM “控制”分组与数据分组的区别是 IP 信头的协议号。而对 TCP ， quot; 控制“分组是由 TCP 信头的标志 (SYN/FIN) 来决定的。 
+
+图 3 流出 VC 变成未用 VC 的过程 
+　　使上游节点的正在使用的流出 VC 变成未用 VC 的过程如图 3 所示。 
+　　(1) 给该 VC 打上“暂态”的标记，然后向下游节点发送一条 RECLAIM 信息，并等待回答。 
+　　(2) 当下游节点收到一条 RECLAIM 信息，它将相应的流入 VC 打上“未用”标记，并向下下游节点发送 RECLAIM 信息同时向上游节点返回一条 RECLAIM-ACK 信息。 
+　　(3) 一旦上游节点收到 RECLAIM-ACK 信息就将该 VC 标记为“未用”。 
+　　如果上游节点在一定的时间内未收到 RECLAIM-ACK 信息，将向下游节点重发 RECLAIM 信息。 
+　　注意，不必对每条 VC 这样做，而是一对 RECLAIM 和 RECLAIM-ACCK 信息，可包含多条 VC 的状态转换。显然这可减少交换机间的控制业务量。 
+2 优化 TCP 流 
+　　对于 TCP 流，在数据传递前要先进行 3 次握手。而在 IPSOFACTO 下，当首分组 (SYN) 被前向传递后，交换路径就建立起来了，即在数据传递前，一条端到端的交换路径就可得了。而要拆卸这条 ( 即将其标记为“未用” ) ，可通过发送 FIN 分组和 FIN 的应答分组到交换控制器 ( 而不是交换路径 ) 来实现，也就是说，这些分组被用作“控制”信息了。 
+　　这种优化仅在这些节点起作用，它们的 TCP 流的前向路径对称 ( 即该流的正向的流入端口正是它的反向流出端口 ) 。 
+3 小结 
+　　与 MPOA 不同， IPSOFACTO 不使用 ATM 信令就给 IP 流建立起交换路径。 IPSOFACTO 实质上较类似 Ipsilon 公司的 IP 交换和东芝公司的 CSR 。 Ipsilon 公司的方案是从下游节点选择 VC 对一串数据流进行交换， CSR 却是从上游节点选择 VC 。而 IPSOFACTO 是基于路由信息和 VC 的状态 ( 已用或未用 ) 来进行 IP 流到交换路径的映射的。 
+　　IPSOFACTO 与传统的 ATM 网络支持 IP 的方案 ( 如 IPOA 、 LANE 等 ) 一样，解决了 ATM 网络支持传统数据通信业务的问题，并表现出了其优越性，但它也不能为不同的用户提供特定的服务质量 (QOS) ，即不支持多媒体通信。 
+作者单位：上海交通大学电信学院自动化系，上海 200030；
+　　　　　电子科技大学光纤通信国家重点实验室，成都 610054
+参考文献 
+1 Katsube Y,Nagaml K,Esak H.Toshiba's Router Architecture Extensions for ATM:Overview,RFC 2098,1997-02 
+2 Newman P.Ipsilon Flow Management Protocol Specification of Ipv4 Version1.0,RFC 1953,1996-05 
+3 Newman P.IP Switching:ATM under IP.IEEE/ACM Transactions on Networking,1997-09 
+4 孙海荣 .ATM 技术 . 成都：电子科技大学出版社， 1998-03 

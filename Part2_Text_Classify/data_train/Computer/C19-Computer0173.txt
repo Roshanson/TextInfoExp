@@ -1,0 +1,160 @@
+软件学报
+Journal of Software
+2000 Vol.11 No.1 P.126-132
+
+
+
+消除VLIW结构上的循环体间冗余流相关
+容红波　汤志忠
+摘　要　数据相关是并行处理的基本依据.该文指出,VLIW(very long instruction word)特有的锁步性质使其数据相关性分析具有与众不同的特点.同一体差上的流相关形成一个线序集合,多体差上的特征流相关之间也存在包含关系.据此,提出一种用于VLIW的消除循环体间冗余流相关的方法.该方法是完备的,可以去除所有冗余的体间流相关,从而减轻循环调度的负担.文章给出判定单体差和多体差存在冗余的充分必要条件,以及消除冗余的线性复杂度的算法.这种方法具有普遍意义,可作为VLIW上软件流水和多指令流调度的基础.
+关键词　VLIW(very long instruction word),循环调度,数据相关,循环,冗余.
+中图法分类号　TP338
+Eliminate Redundant Loop-Carried Flow Dependences for VLIW Architectures
+RONG Hong-bo　TANG Zhi-zhong
+(Department of Computer Science and Technology　Tsinghua University　Beijing　100084)
+Abstract　Data dependence is the basic guideline and constraint for parallel processing. The structural distinctiveness of VLIW (very long instruction word), i.e., the lockstep property, leads to remarkable uniqueness in its data dependence analysis, as is shown in this paper. Flow dependences with the same iteration distance comprise a linear ordered set, while characteristic flow dependences with different iteration distances may also have inclusion relationship between each other. From such discovery, a novel method is presented to eliminate redundant loop-carried flow dependences for VLIW architectures, so as to facilitate loop scheduling. The method is complete in that it gets rid of all redundancies. The sufficient and necessary preconditions to identify redundancy for single and multiple iteration distances are given, and a linear ordered algorithm is described. The method is generic, and can serve as a foundation for research on VLIW, such as software pipelining and multi-instruction stream scheduling.
+Key words　VLIW (very long instruction word), loop scheduling, data dependence, loop, redundancy.
+　　数据相关是并行处理的基本依据.有关数据相关性分析的成果虽然很多［1,2］,但是针对VLIW(very long instruction word)这一特定结构的工作尚未见到.目前,在VLIW上进行并行循环调度,如软件流水,都是使用传统的基于向量机的数据相关性分析方法［3,4］,缺乏对VLIW的专门研究.而本文将说明,由于VLIW结构上的特殊性,它在数据相关方面具有与众不同的特点.
+　　如何开发循环体间的并行性是VLIW研究的热点.影响循环调度的关键因素是体间数据相关,尤其是流相关.本文将讨论在调度循环时如何消除冗余的体间流相关,以降低调度的复杂性.
+　　本文作以下几个假定.
+　　(1) 所有处理器/功能单元以锁步方式操作.这是VLIW的基本特征［3,4］.
+　　(2) 一个周期一条长指令.注意这个假定没有考虑多周期操作,如浮点运算,但这并不影响结果的正确性.通常,多周期操作可以用空操作弥补.例如,设OPi到OPj有体间流相关,分别需要Ti和Tj个周期,则可在OPi和OPj后分别加入Ti－1和Tj－1个空操作,并认为OPi后面的最后一个空操作与OPj相关.
+　　(3) 同一循环体中的操作具有相对固定的位置.由于这一限制,本文的结果只能直接用于相关图中的强连通块(为最小化启动间距而保证优先地、紧密地调度,次序在列表调度之前确定).这一条件将在以后的研究中有所放松.
+　　一般地,一个数据相关图DDG(data dependence graph)含有多个体差,每个体差上又有多个流相关.先分别消除每个体差上的冗余,再将所有体差结合起来考虑,进一步消除冗余,这是本文的基本思想.下面给出一些基本定义和结论,其中A,B,A1,A2,...,An表示流相关；OPi表示一个操作,i是该操作在循环体中的序号.
+1 单体差的冗余判定
+　　定义1. 设A是一个流相关,表示OPi到OPj具有写读关系,体差为d,d是非负整数,记作A：(OPi→OPj,d).
+　　当d=0时,A为体内流相关,否则为体间流相关.下面提到的任何流相关,都默认为体间流相关,即d≥1.
+　　定义2. 设有流相关A,B,如果只要满足A,B就自然得到满足,则称A包含B,记作AB.
+　　定义3. 设有流相关A,B,如果AB,并且BA,则称A,B相等,记作A＝B.
+　　定义4. 设有流相关A,B,如果AB,但A不等于B,则称A真包含B,记作AB.
+　　性质. ,＝,都具有传递性.
+　　引理1. (平移性质)设有流相关A：(OPi→OPj,d),B：(OPi′→OPj′,d),则当i－j=i′－j′时,A=B.
+　　证明:先证AB.用time(OP)表示OP的执行时刻.
+　　如图1所示,每条竖线代表一个循环体,竖线上的点代表操作,操作序号自上而下递增.下文与此相同,不再说明.
+
+Fig.1　Traslation property
+图1　平移性质
+　　设A得到满足,即OPj在OPi之后执行,则
+time(OPj)－time(OPi)＞0.　(1)
+　　 由于两个体是以锁步方式、一个周期一条指令来进行的,所以
+time(OPi)－time(OPi′)=i-i′,　(2)
+time(OPj)－time(OPj′)=j-j′.　(3)
+　　当i－j＝i′－j′时,i－i′＝j－j′,由式(2)和式(3)得time(OPi)－time(OPi′)＝time(OPj)－time(OPj′),于是time(OPj′)＝time(OPi′)＋time(OPj)－time(OPi).由式(1)得time(OPj′)＞time(OPi′).所以OPj′将在OPi′之后执行,B也得到满足.因此,AB.
+　　同理可证,BA.于是A＝B. 
+□
+　　在给定条件下,图1中代表A,B的两条有向线段是平行的,因此,称上述性质为平移性质.平移性质说明,对VLIW,任何一个流相关(OPi→OPj,d),都可以写作(OPi－j→OP0,d),去掉公共符号,可以简写为(i－j,d).所以流相关的起始操作和终止操作的绝对位置并不重要,重要的是它们的相对位置.因此有定义5.
+　　定义5. 流相关A：(OPi→OPj,d),可以写成(λ,d),其中λ=i－j,称为流相关A的特征值.
+　　下面推导一个重要定理.
+　　定理1. 设有流相关A：(λa,d),B：(λb,d),则
+　　(1)
+　　证明:根据平移性质,可以将流相关B平移,使之与流相关A的起始操作相同.如图2所示,λa与λb存在大于、等于和小于这3种关系,分别对应于AB,A＝B和BA.证明与平移性质的证明类似,不再赘述.
+
+Fig.2　Illustration of theorem 1
+图2　定理1
+　　由图2(a)和2(b)有ABλa≥λb；
+　　由图2(b)有A＝Bλa=λb；由图2(a)有ABλa＞λb；
+□
+　　推论. 如果AB不成立,则BA.
+　　证明:AB不成立λa≥λb不成立λb＞λaBA.
+□
+　　这意味着,同一体差d上的所有流相关,将按特征值的大小构成线序.如图3所示,若λAn≥λ An-1≥...≥λA1,则AnAn-1...A1.因此,只要保留An,其余的都可作为冗余删掉.我们称An为体差d上的特征流相关.
+
+Fig.3　Inclusion between flow dependences with the same iteration distance
+图3　同一体差上的流相关的包含
+　　定义6. 对某一体差d,唯一对应着一个特征值,记为λ(d),其取值如下：当体差d上无流相关时,λ(d)＝－∞,否则,λ(d)=max｛λi｜(λi,d)是d上的流相关｝.(λ(d),d)称为d上的特征流相关.
+　　上面讨论了单体差的情况,下面讨论多体差的情况.
+2 多体差的冗余判定
+　　定义7. 设有流相关A1,A2,...,An,n＞1,如果只要满足它们就可以自然满足另一个流相关B,则称A1,A2,...,An真包含B,记作A1＋A2＋...＋AnB.
+　　定义8. 设有流相关A1,A2,...,An和B,n＞1,A1＋A2＋...＋AnB,且对任一流相关X,如果A1＋A2＋...＋AnX,则必有BX,那么,称B是A1,A2,...,An的最大包含流相关,记作MaxIncluded(A1,A2,...,An)＝B.
+　　定义9. 设有流相关A1,A2,...,An,n＞1,将它们通过平移首尾相连,则它们一定包含了另一个流相关B,B的起点是A1的起点,B的终点是An的终点,称B为A1,A2,...,An的自然包含,记为NaturalIncluded(A1,A2,...,An)=B.
+　　在有多个体差时,即使每个体差只保留了其特征流相关,仍可能存在冗余.如图4所示,设A,B,C为不同体差上的特征流相关,则A+BNaturalIncluded(A,B)C,所以C可以删去.
+
+Fig.4　Redundancy in the case of multiple iteration distances
+图4　多个体差时的冗余
+　　最大包含流相关和自然包含流相关具有如下性质:
+　　性质1. MaxIncluded(A1,A2,...,An)NaturalIncluded(A1,A2,...,An).
+　　性质2. A1＋A2+...+AnBMaxIncluded(A1,A2,...,An)B.
+　　性质1和性质2可以由最大包含流相关和自然包含流相关的定义直接得出.
+　　下面给出求最大包含流相关的方法.
+　　定理2. 设有流相关A1,A2,...,An,n＞1,其中Ai：(λi,di),i=1,2,...,n,则MaxIncluded(A1,A2,...,An)
+　　证明:如图5所示.通过平移,使A1,A2,...,An首尾相接.假设A1的起点为OPk,则根据特征值的定义,其终点为OPk－λ1,A2的终点为OPk－(λ1＋λ2),...,An的终点为OPk－(λ1＋λ2+...＋λn).因为共涉及n个体间流相关,每个相关的终点至少要滞后其起点一个周期,所以,An的终点至少要滞后A1的起点n个周期.那么,由An的终点向上退n－1个周期,在该点处的操作OPk－(λ1＋λ2+...+λn)－n+1是最早的、必然在A1的起点OPk后执行的操作.由这两点所确定的相关是A1,A2,...,An所包含的最大流相关.
+
+Fig.5　Compute Max Included(A1,A2,...An)
+图5　计算机Max Included(A1,A2,...An)
+　　所以,MaxIncluded(A1,A2,...,An)的特征值＝k－［k－(λ1+λ2+...+λn)－n+1］=(λ1+λ2+...+λn)+n－1＝
+　　MaxIncluded(A1,A2,...,An)的体差显然是各Ai(i=1,2,...,n)的体差的和.
+□
+　　推论1(对称性). MaxIncluded(A1,A2,...,An)＝MaxIncluded(Ai1,Ai2,...,Ain),其中i1,i2,...,in是1,2,...,n的任一种排列.即MaxIncluded的参数顺序无所谓.
+　　推论2. 给定流相关X：(λx,d)和Y：(λy,d),以及任意一组流相关A1,A2,...,An,n＞0,则
+　　(1) λx≥λyMaxIncluded(X,A1,A2,...,An)MaxIncluded(Y,A1,A2,...,An)；
+　　(2) λx＞λyMaxIncluded(X,A1,A2,...,An)MaxIncluded(Y,A1,A2,...,An)；
+　　(3) λx＝λyMaxIncluded(X,A1,A2,...,An)＝MaxIncluded(Y,A1,A2,...,An).
+　　推论3. 给定两组流相关A1,A2,...,An和B1,B2,...,Bn,n＞1,其中Ai是体差i上的特征流相关,Bi是体差i上的任意一个流相关,i=1,2,...,n,则MaxIncluded(A1,A2,...,An)MaxIncluded(B1,B2,...,Bn).
+　　消除多个体差上冗余流相关的基本思想,就是要用若干较小体差上的流相关,包含一个较大体差上的流相关.因而只要保留那些较小体差上的流相关即可,较大体差上的那个流相关就是冗余的(如图4所示).
+　　对一个体差d,我们已经在消除单体差冗余的时候将它上面的所有流相关删减到只剩下它的特征流相关,假设为ρ.根据性质2,如果我们能找到一些流相关A1,A2,...,An,使MaxIncluded(A1,A2,...,An)ρ,那么,只要保留A1,...,An,就可以删除ρ,从而d上的所有流相关都被删除.
+　　但是,我们要寻找的A1,A2,...,An并不唯一.因为同一体差d可以分解为若干体差d1,d2,...,dn之和,这种分解是不唯一的.每一组分解d1,d2,...,dn都对应着一组特征流相关A1,A2,...,An,从而对应着一个不同的MaxIncluded(A1,A2,...,An).
+　　所以,为了判断体差d上的冗余是否已完全被消除,需要找到d的所有分解,从而找到所有的MaxIncluded(A1,A2,...,An).这些MaxIncluded具有同一体差d,因此,它们之间一定也可以排成线序,我们定义它们中的最大者(包含其他所有MaxIncluded的那个MaxIncluded)为体差d上的特征最大包含,记作Δd.
+　　下面给出多体差时的冗余判定方法.
+　　定理3. 给定体差d上的特征流相关ρ以及d上的特征最大包含Δd,则当且仅当Δdρ时,体差d上的所有流相关可以被删除.
+　　证明:所有流相关可以被删除,即是说特征流相关ρ可被删除.
+　　(1) 充分性.当Δdρ时,根据Δd的定义,一定存在某些流相关A1,A2,...,An,其中Ai：(λi,di),i=1,...,n,且di=d,使得MaxIncluded(A1,A2,...,An)ρ.因此,保留A1,A2,...,An即可,ρ可被删除.
+　　(2) 必要性.由于ρ可被删除,意味着存在某些流相关A1,A2,...,An,使得A1+A2+...+Anρ,其中Ai：(λi,di),i=1,...,n,且di=d.由性质2,有MaxIncluded(A1,A2,...,An)ρ.又由Δd的定义,ΔdMaxIncluded(A1,A2,...,An).有传递性,所以,Δdρ.
+□
+　　因此,在多体差的情况下,要简化某个体差d上的流相关,需要求出Δd.下面,我们来推导Δd的公式.
+　　定理4. 给定体差d,则Δd=(λ,d),其中λ=max｛λ1+1+λ2,λ1+1+λ(Δ(d－d1))｜(λ1,d1)是体差d1上的特征流相关,d1=1,2,...,d－1；(λ2,d2)是体差d2上的特征流相关,且d1+d2＝d｝.
+　　证明:显然,Δd的体差是d.现在要求特征值λ.
+　　由Δd的定义,λ(Δd)=max｛λ(MaxIncluded(A1,A2,...,An))｜Ai：(λi,di)是流相关,i=1,...,n,n＞1,且di=d｝.定理2的推论3说明,当A1,A2,...,An都是特征流相关时,MaxIncluded的特征值λ最大,因此我们可以进一步假定A1,A2,...,An都是特征流相关.
+　　由定理2,MaxIncluded(A1,A2,...,An)=(λi+1)-1,d.于是,λ(MaxIncluded(A1,A2,...,An))=
+　　因此,λ(Δd)=max(λ1＋1）＋(λi+1)-1.
+　　当n=2时,λ(Δd)=max｛(λ1+1)+(λ2+1)-1｝=max｛(λ1+1)+λ2｝.
+　　当n＞2时,λ(Δd)=max｛(λ1+1)+λ(MaxIncluded(A2,...,An))｝=max｛(λ1+1)+max(λ(MaxIncluded(A2,...,An)))｝=max｛(λ1+1)+λ(Δ(d-d1))｝.d1是d的分解中的一部分,所以d＞d1,于是d1的取值范围是1,2,...,d－1.注意,这是一个递归式.
+　　因此,对n的所有情况,有λ=max｛λ1+1+λ2,λ1+1+λ(Δ(d－d1))｝.
+□
+　　定理4给出了计算Δd的递归方法.为提高速度,下面的算法将递归转化为递推.
+3 算 法
+　　首先,我们对数据相关图上的每个体差单独考虑,消除单体差上的冗余流相关；然后将这些体差综合考虑,进一步消除多体差上的冗余.
+　　定义Pnm=［ρij］,其中n是最大体差,m是所有体差上的流相关个数的最大值.ρij是体差i上的一个流相关(ρij,i)的特征值.P的第i行记录体差i上的流相关.当体差i上的所有流相关都已填入Ρ,但Ρ的第i行仍未填满时,将剩余空位都填上－∞.
+　　令向量Λn=［λi］,其中λi=max｛ρij｜ρij∈Ρ,j=1,2,...,m｝.(λi,i)就是体差i上的特征流相关.只保留Λ中的流相关,删除其他的,单体差上的冗余即已消除.
+　　定义向量Δn=［Δi］.最初令Δ1=－∞,其余值待定.
+　　算法如下：
+　　
+　　
+　　
+　　
+　　这个算法的时间和空间复杂度都是O(mn).
+　　最后给出一个例子.如图6所示,循环具有6个体间流相关,经过冗余消除,只剩下1个.可将算法与图对照理解.
+
+
+Fig.6　An example of elininating redundant loop-carried flow dependences
+图6　消除冗余体间流相关的例子
+4 实　验
+　　随机选取几个程序,所得实验结果见表1.
+Table 1
+表1
+
+Program①Total (intra-block) loop-carried
+flow dependences②After redundancy
+removal③Redundancy
+rate④(％)
+Product5260
+Flower4175
+Sift5260
+Vander10280
+Merge13469
+
+①程序,②(基本块内的)体间流相关总数,③删除冗余后的体间流相关总数,④冗余度.
+其中,冗余度是指冗余流相关占所有流相关的百分比.由表中可以看出,平均冗余度约为69％.主要的原因是每个体差上有多个流相关,但最后只保留一个.这是由VLIW特有的锁步性质造成的.本文旨在提出VLIW上流相关分析的基本性质.以上实验限于基本块内,我们将另文介绍如何将本文结果推广到一般.
+5 结束语
+　　体间流相关是制约循环调度的根本因素,然而并非每个体间流相关都需要考虑.消除那些不必要的相关,有利于减轻循环调度的负担.VLIW特有的锁步性质导致了它在数据相关方面具有与众不同的特点.据此,本文提出了一种消除冗余的方法,给出了判定单体差和多体差存在冗余的充分必要条件以及消除冗余的线性复杂度的算法.
+虽然我们是以VLIW上的循环调度为出发点考虑的,但是,从文中的分析过程可以看出,这种方法实际上是一种一般化的方法,并不局限于循环,故可作为VLIW上软件流水和多指令流调度的基础.因此这一方法具有重要的理论和应用价值.我们将继续深入研究这些方面的应用.
+本文研究得到国家自然科学基金(No.69773028)资助。
+容红波（清华大学计算机科学与技术系　北京　100084）
+汤志忠（清华大学计算机科学与技术系　北京　100084）
+E-mail: ronghb@mail.cic.tsinghua.edu.cn
+参考文献
+1．Kai Hwang. Advanced Computer Architecture: Parallelism, Scalability, Programmability. New York: McGraw-Hill, Inc., 1993.457～496
+2．Psarris K, Kong X, Klappholz D. Direction vector I test. IEEE Transactions on Parallel and Distributed Systems, 1993,4(11):1280～1290
+3．Rau B R, Fisher J A. Instruction-Level parallel processing: history, over view and perspective. The Journal of Supercomputing, 1993,1(9):9～50
+4．Lam M. Software pipelining: an efficient scheduling technique for VLIW machines. SIGPLAN Notices, 1988,23(7):318～328
+1998-12-01收稿
+1999-02-01修稿

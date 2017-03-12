@@ -1,0 +1,76 @@
+　自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第3期 vol.23 No.3 1997
+
+
+
+基于IDEF0的CIMS底层控制Petri网
+模型的自动生成方法
+王君英　段广洪
+　　摘　要　IDEF0广泛用于CIMS的功能说明，Petri网适用于对离散事件动态系统建模. 在CIMS中，两者结合起来，对于CIMS底层控制、生产调度、动态仿真都具有重要意义. 文中研究了IDEF0的形式化描述方法，讨论了有关概念，给出了由IDEF0生成Petri网的形式化方法，并用一例说明其整体思想. 
+　　关键词　IDEF(Integrated computer aided manufacturing DEFinition method)0，控制，CIMS，Petri网. 
+THE AUTOMATIC GENERATION METHOD OF PETRI NET MODEL
+FOR LOW LEVEL CONTROL OF CIMS BASED ON IDEF0
+WANG JUNYING DUAN GUANGHONG 
+(CIMS\|ERC, Tsinghua University, Beijing 100084)
+　　Abstract IDEF0 is widely used in the function modeling of CIMS, and Petri nets are suitable for modeling of discrete event dynamic systems. It is of important significance for the low level control of CIMS, production schedule and dynamic simulation that boths are combined in the field of CIMS low level control. This paper describes the formal notation of IDEF0, discusses the relevant concepts, and gives the formal method of generating Petri net from IDEF0. At last, an example is given to illustrate the idea.
+　　Key words IDEF0, control, CIMS, Petri net.
+　　1　引　言
+　　IDEF0是美国空军资助由SoftTech公司开发的， 适用于复杂系统的功能说明，已在CIMS中得到了广泛应用. 对CIMS的控制功能说明，IDEF0得到的是一个静态的分布式功能模型， 其中内含了并发性. 对于控制一个系统来说，仅仅有静态的信息是远远不够的，还要了解其动态特性，如冲突、死锁、工件生产中的瓶颈等. 因此，人们希望能从IDEF0直接生成一种动态模型. Petri网在许多方面都与IDEF0有相同或相近的特性， 如结构、分布性、并发性等. 故从IDEF0生成Petri网的研究就成为国际上关注的焦点之一［1，2］.
+　　2　IDEF0对CIMS底层控制系统的建模
+　　在CIMS底层控制系统中采用IDEF0建模的主要思想是
+　　1) 系统是由活动组成， 每个活动用一个活动方框表示；
+　　2) 活动方框中的机制是完成该活动的执行者， 这些执行者可能是加工中心、AGV、机器人等，且可以共享；
+　　3) 每个活动一定要有一个控制信号作为进入该活动的主令信号；
+　　4) 每个活动一定要有一个输出信号作为该活动结束信号. 
+　　3　IDEF0的形式描述
+　　设IDEF0是一个二元组　IDEF0=<A,L>,
+　　其中A是一个类似于BNF产生式的表达式，表示IDEF0图的结构、层次和组成的活动方框， 可表示为A0∷A1｜A2｜A3…｜An;A1∷A11｜A12…;A11∷A111｜A112…;….
+　　通过回代，A0可表示为由根结点活动方框组成的结构；L表示由根结点活动方框组成的关系式Aij∶I∧C∧M→O, I为输入集合，C为控制集合，M为机制，∧为逻辑与，→表示生成；例如，i1∧i2∧c∧M→o1∧o2,读作： 输入i1和i2在c控制下，由M完成，生成o1和o2. 这里应当注意选择和冲突问题，在形式化建模时，认为选择和冲突都是一个变量，在Petri网中，由运行机制决定了其是选择和冲突功能. 
+　　形式化的具体方法是
+　　(1) 列出由根结点活动方框的关系式；
+　　(2) 以根结点活动方框为行，以所有箭头为列(选择和冲突作为一个箭头，文中暂不考虑其他种类箭头的合并)， 得到一个IDEF0性能矩阵D
+　　
+根结点活动方框关系式的输入是指I和C，相同机制合并为一个. 
+　　4　Petri网模型自动生成
+　　4.1 Petri网关联矩阵的生成
+　　4.1.1　Z阵
+　　Z阵是一个表示根结点活动方框过程的矩阵
+　　
+　　4.1.2　D1阵
+　　
+其中[Dij]是从D中分裂出不含机制的性能矩阵. 
+　　4.1.3　D2阵
+　　
+其中[Dij，]是机制关联矩阵.则Petri网的关联矩阵为
+　　C=[Z D1 D2].
+　　4.2　初始标识的构成
+　　直接从IDEF0图上并没有Petri网初始标识的信息.但是，有些东西是客观存在，例如机器人、加工中心等，它们在参与加工的过程中，始终不会消失，即守恒. 因此，有关机制的标识应在没有参与加工时为1. 设P为机制集合，如果pi∈P，则M0(pi)=1. 
+　　表示加工物流的工件，在加工中数量是守恒的，其初始标识应在料坯库中，且与数量有关 . 设S为料坯库，M0(S)=n,n为S中存的料坯数. 对于信息流，必须给出能使系统工作的第一个信号signal. 在信息流回路中，这个信号的加权托肯数是守恒的，M0(signal)=1.
+　　5　例　子
+　　某一CIMS底层车间由两台数控车床、两台数控铣床、一台机械手、输入料缓冲区、输出料缓冲区及单元控制器组成. 该系统同时加工两种工件，工件1先在车床1或2上加工，然后再在铣床1上加工；工件2先在车床1上加工，然后在铣床1或2上加工；整个过程用机械手来上下料. 
+　　其形式化表示为IDEF0=<A,L>,IDEF0的结构为
+　　A∷A11｜A12｜A13｜A14｜A151｜A152｜A153｜A154｜A211｜A212｜A213｜A22｜A23｜A24｜A25｜A26.
+工件1的关系式　　　　　　　　　　　　工件2关系式
+A11∶p1∧s1∧c7→c1∧d1　　　　　　　A211∶p2∧e7∧s2→e1∧f1
+A12∶c1∧d1∧M→c2∧d2　　　　　　　A212∶e1∧f1∧M→e2∧f2
+A13∶c2∧d2∧L1→c3∧d3　　　　　　　A213∶e2∧f2∧L1→e3∧f3
+A14∶c2∧d2∧L2→c3∧d3　　　　　　　A22∶e3∧f3∧M→e4∧f4
+A151∶c3∧d3∧M→c4∧d4　　　　　　　A23∶e4∧f4∧X1→e5∧f5
+A152∶c4∧d4∧X1→c5∧d5　　　　　　A24∶e4∧f4∧X2→e5∧f5
+A153∶c5∧d5∧M→c6∧d6　　　　　　　A25∶e5∧f5∧M→e6∧f6
+A154∶c6∧d6∧s1′→p1′∧c7　　　　　A26∶e6∧f6∧s2′→p2′∧e7
+(为了节约篇幅，此处略去各符号的意义.)
+　　所得到的Petri网如图1所示. 其中q1,q2,q3,q4,q5,q6,q7,q8为活动过程位置元素. 
+
+图1
+初始标识为
+　　物流：M0(p1)=1, M0(p2)=1;
+　　机制：M0(s1)=1, M0(s2)=1, M0(M0)=1, M0=(L1)=1, M0=(L2)=1, M0=(X1)=1, M0=(X2)=1;
+　　信息：M0(c7)=1, M0=(e7)=1, M0=(f7)=1.
+有了上述模型，就可以动态仿真、分析和控制该系统. 
+作者单位：清华大学国家CIMS工程研究中心　北京　100084
+参考文献
+　　[1] Mohsen A Jafari, Thomas O Boucher. A rule-based system for generating a ladder logic control program from a high-level system model. Journal of Intelligent Manufacturing, 1994, (5):103-120.
+　　[2] Thomas O Boucher, mohsen A Jafari. Design of a factory floor sequence controller from a high level system specification. Journal of Manufacturing system, 1992,11(6):51-58.
+收稿日期 1994-09-29

@@ -1,0 +1,139 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.4　P.447-452
+
+
+
+
+非线性系统的模糊辨识误差分析
+王士同　於东军
+摘要　该文讨论了模糊系统的数字逼近特性,同时分析了逼近误差和初始状态误差对模糊系统的影响.最后得出一个重要结论：在一定条件下，模糊系统的输出与实际系统相差不大.
+关键词　全局逼近,模糊系统,系统辨识,逼近误差.
+中图法分类号　TP18
+　Error Analysis in Nonlinear System Identification
+Using Fuzzy System 
+WANG Shi-tong 　YU Dong-jun
+　（Department of Computer Science 　East China Shipbuilding Institute　Zhenjiang 212003）
+　Abstract　　In this paper, the numerical approximation characteristics of fuzzy system are discussed, and the influence of approximation error and initial state error on fuzzy system are analyzed. Finally, an important conclusion is obtained that under some conditions, fuzzy system output differs little from that of the actual system.
+　Key words　Universal approximation, fuzzy system, system identification, approximation error. 
+　　The fuzzy sets theory was introduced by Zadeh in 1965. Since then, fuzzy sets theory has been widely used in many fields. Nonlinear system identification［1～3］ using fuzzy system is one of the most important application branches. Many researchers have studied this topic, but fewer have studied error analysis in nonlinear system identification［1,2,4,5］ using fuzzy system. This paper will discuss this question.
+　　Generally, a fuzzy system consists of a set of fuzzy rules. In this paper, we consider an MISO (multi input single output) fuzzy system as the following:
+　　Rule 1. IF x1 is A11 AND x2 is A12 AND ...xn is A1n, THEN y is B1 ELSE
+　　Rule 2. IF x1 is A21 AND x2 is A22 AND ...xn is A2n, THEN y is B2 ELSE
+　　.....
+　　Rule N. IF x1 is AN1 AND x2 is AN2 AND ...xn is ANn, THEN y is BN ELSE
+　　Fact: x1 is A′1 AND x2 is A′2 AND ...xn is A′n
+
+　　Conclusion: y is B′
+　　According to Dr.L.X.Wang, using max-produce inference and centroid defuzzification method, the final numerical output can be described as follows:
+　　　　　　　　　　　　　　　　　　(1)
+where 
+
+　　　　　　　　　　　　　　(2)
+　　In practice ,especially in controlapplications ,we consider that the output fuzzy sets Bj are singletons βj,i.e,
+then we have
+　　　　　　　　　　　(3)
+Thus the final output can be rewritten as follows:
+　　　　　　　　　　　　　　(4)
+Let Thus Eq.(4) can be rewritten as
+　　　　　　　　　　　　　　　　(5)
+　　Dr.L.X.Wang has proved Eq.(5) is a universal approximator. 
+　　In real applications, we can use a fuzzy system to identify the real system (see Fig.1, u(t) is the activation function, TDL and Θ are the time delay logic and the parameter of fuzzy system, respectively). When the fuzzy system approximates the real system well enough, it can be applied independently. This method has been widely used, but there still are several questions to be studied, for example, (a) the numerical approximation characteristics of fuzzy system; (b) the influence of approximation error and initial state error on fuzzy system.
+
+Fig.1 Structure of nonlinear system identification using fuzzy system(FS)
+　　The rest of this paper is organized as follows. Section 1 studies the numerical approximation characteristics of fuzzy system. Section 2 studies the influence of approximation error and initial state error on fuzzy system. Section 3 deals with simulation analysis. Section 4 concludes this paper.
+1　Numerical Approximation Characteristics of Fuzzy System
+　　As we all know, in the application when we use samples to train a fuzzy system, it is a procedure of ascertaining the parameters of the fuzzy system, and it is also a procedure of interpolation. During the application, first of all, one should ascertain the number of rules. Is there a theorem to direct the selection of the number of rules? Theorem 1 answers this question. 
+　　Theorem 1. Give N samples  when i≠j, then there must exist a fuzzy system (as described by Eq.(5)) which contains N rules satisfying
+　　　　　　　　　　　　　　　　　　(6)
+where  is the actual output of the fuzzy system, ydi is the desired output.
+　　Proof. We have defined  We use Guassian membership function, i.e.,
+
+　　We can easily see that the following two assertions hold:
+　　Assertion 1.  is a partition of unity and linearly independent.
+　　Assertion 2. Let  then it is linearly independent too.
+　　Given N samples we can use the following matrix equation to uniformly represent the relationship between the inputs and the outputs in the fuzzy system.
+　　　　　　　　　(7)
+where k indicates the number of rules. According to assertions 1 and 2, when k＝N, Gk is full rank, i.e. (β1,β2,...,βk)T in Eq.(7) must have unique solution, and this unique solution is a function with Gk as its parameters. As aji，bji, which make Gk be full rank, are not unique, so the solution (β1,β2,...,βk) in Eq.(7) is not unique.
+　　From above we can draw the following conclusion. When the number of rules equals is that of samples, we will be able to realize accurate interpolation. So the number of rules should not exceed that of samples, otherwise it may cause too much training, even oscillation, thus reducing the generalization ability of fuzzy system. This theorem provides the criterion for the selection of rules.
+2　Influence of Approximation Error and Initial State Error on Fuzzy System
+2.1　Fuzzy identification of deterministic nonlinear system
+　　A deterministic SISO (single input single output) discrete time system can be formalized as:
+y(t+1)=f(y(t),...,y(t-ny+1),u(t),..,u(t-nu)),　　　　　　　　　　(8)
+where u(t)∈UR, y(t) are the input and output of the system respectively. nu+1, ny are their maximum delay time, respectively. Initial state value of the system at time 0 is 
+Y0=［y(0),...,y(-ny+1),u(0),...,u(-nu)］T,　　　　　　　　　　(9)
+when t≤0, y(t)=y-t∈YRny, f(。) is continuous function. The structure of fuzzy identification of a nonlinear system can be described as Fig.1.
+Suppose we have got the fuzzy system of the actual system:
+　　　　　　　　　　(10)
+where Θ is the parameter of the fuzzy system.
+　　Dr.L.X.Wang has proved a fuzzy system can approximate any continuous function defined on compact set to any prescribed accuracy. That is to say, given we can find Θ*, which satisfies the following inequality:
+　　　　　　　　(11)
+　　Generally, after Θ is found, the fuzzy system can be independently applied instead of the actual system, that is,
+　　　　　　　　　　(12)
+and the initial state value of fuzzy system 
+Now, there are two questions to be considered. (1) Obviously, there exists approximation error between  and f(。). (2) The initial state values of  and f(。) in actual applications can not be strictly equal, which may affect the value of  at time t. As both (1) and (2) exist, then is the fuzzy system still effective? If so, what are conditions? We will discuss these questions in the following section. 
+2.2　The influence of approximation error and initial state error on fuzzy system
+　　Let state variables xi(t)=y(t-ny+i), xny＋j=u(t-nu+j-1), (i=1,2,...,ny; j=1,2,...,nu), respectively. Then the actual system (8) can be rewritten as the following state equation and output equation:
+　　　　　　　　　　　　　　　(13)
+where F(x(t),u(t))=［x2(t),...,xny(t),f(x(t),u(t)),xny＋2(t),...,u(t)］T, x(0)=Y0. Let  then we can get state equation and output equation of (12) as follows:
+　　　　　　　　　　　　　　(14)
+where 
+　　Suppose that the actual system satisfies the condition described below:
+　　Condition:
+　　The partial derivative of any variable of the continuous function 
+f(y(t),...,y(t-ny+1),u(t),...,u(t-nu)):Rny+nu+1→R
+in defined space satisfies
+　　　　　　　　　　(15)
+where i=1,...,ny; j=1,2,...,nu+1; t∈［0,M］;u(t)∈U, y-t∈Y. M is a finite positive integer. Then the influence of approximation error and initial state error on fuzzy system can be described using the following theorem.
+　　Theorem 2. Given if for the actual system (8) and fuzzy system (12),
+　　(1) the actual system satisfies the above condition;
+　　(2) the initial state error between the actual system (8) and the fuzzy system (12) satisfies max＜r (r is defined in Eq.(18)), then there must exist Θ (parameter of fuzzy system) which satisfies 
+
+where t∈[0,M]
+　　Proof. From Eqs.(13) and (14), we can get that to any given t∈［0,M］, the following inequality holds:
+　　　　　　　(16)
+　　According to the mean value theorem, there exists
+
+which makes the right-hand side of the inequality above satisfy the following equality:
+　　　　　　　　　(17)
+where
+
+　　Since f(。) satisfies the condition, so  is finite. We take matrix norm as ‖。‖F, vector norm as ‖。‖2 (these two norms are compatible), thus we have
+
+　　To  there must exist Θ* that satisfies the following inequality:
+
+　　So, holds. As ‖。‖F is compatible with ‖。‖2, combined with Eq.(17), we have
+
+　　The following inequality can be deduced by analogy:
+
+　　Given when we select the parameters of fuzzy system such that the following inequality holds 
+
+then the initial state error satisfies
+　　　　　　　　　　　　(18)
+　　We must have  This inequality along with the fact that t is an arbitrary value in ［0,M］ proves theorem 2.
+　　Theorem 2 indicates that if the fuzzy system approximates the actual system well enough, even though there exists initial state error between the fuzzy system and the actual system, this fuzzy system can also work well.
+3　Simulation and Analysis
+　　Example 1. We use fuzzy system to identify the following nonlinear system:
+
+　　Activation function 
+　　Here, we use TSK (Takagi-Sugeno) fuzzy system to identify the nonlinear system. TSK fuzzy system also consists of three parts: fuzzification, fuzzy inference, defuzzification. The obvious feature of this system is the fact that the output variable in the conclusion part of each fuzzy rule is the linear combination of input variables in the condition part of each rule. The rule in TSK fuzzy system can be expressed as:
+Ri:IF x1 IS Ai1 AND x2 IS Ai2 AND...AND xn IS Ain, THEN yi=pi0+pi1x1+...+pinxn.
+　　We divide the fuzzy subsets of u(t),y(t),y(t-1) into {NS,ZO,PB}. NS,ZO,PB represent Negative small, Zero, Positive big, respectively. Gaussian membership function is used, i.e. Learning algorithm is based on BP. After 200 iterations, the mean variance of all samples is 0.000320.
+　　After the TSK fuzzy system is built, it can be independently applied. Figure 2 shows the curves of the actual system and the fuzzy system at different initial states, respectively.
+
+Fig.2 The hollow dots――the actual system.
+Initial state values are y(-1)=1.5,y(0)=0.8
+The solid dots――the fuzzy system.
+Initial state values are (-1)=1.5,(0)=0.0
+　　From Fig.2, we can draw the following conclusion. Though there exists approximation error between the fuzzy system and the actual system, so long as the approximation error is small enough, even if the initial state values of the actual system and the fuzzy system are different (satisfying (2) in theorem 2), the fuzzy system can still approximate the actual system very well. This proves theorem 2 in practice.
+4　Conclusion
+　　In this paper, we have discussed the numerical approximation characteristics of fuzzy systems and pointed out that the number of rules of a fuzzy system should not exceed that of samples we can get. We have also investigated the influence of approximation error and initial state error on fuzzy system and get a conclusion that under some conditions, fuzzy system output differs little from the output of the actual system. In the end, through simulation, we prove the correctness of the theorems described in this paper.
+王士同（华东船舶学院计算机系　镇江　212003）　
+於东军（华东船舶学院计算机系　镇江　212003）
+References
+1，Lin C T. Neural Fuzzy Systems. New York: Prentice-Hall Press, 1997. 481～490
+2，Pao Xiaohong et al. Model error analysis in nonlinear system identification using neural networks (I). Control and Decision, 1997,12(5):20～25
+3，Wang Shi-tong et al. Fuzzy neural system and its application. Beijing: Publishing House of Beijing University of Aeronautics and Astronautics, 1996. 200～208
+(王士同等.模糊神经系统及其应用.北京：北京航空航天大学出版社,1996.200～208)
+4，Freeman J. Learning and Generalization in RBFN. Journal of Neural Computation, 1995,7(3):32～36
+5，Niyogi D, Girosi F. On the relationship between generalization error, hypothesis complexity and sample complexity for RBFN. AI Laboratory, MIT, 1994. 103～105

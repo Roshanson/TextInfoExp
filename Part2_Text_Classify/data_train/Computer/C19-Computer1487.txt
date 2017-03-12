@@ -1,0 +1,124 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+反标架规范化控制器的鲁棒性能
+陈苏平　孙优贤
+摘　要　研究反标架规范化控制器的鲁棒性能问题. 以结构奇异值SSV(Structured Singular Value)为工具，将对象、系统开环传递函数和控制器以奇异值分解形式参数化，就方向性和耦合性引起的困难分别进行了讨论，得到了使系统保持鲁棒性能所需要的关于开环传递函数和控制器参数的充分条件，为反标架规范化结构鲁棒控制器设计提供了理论依据. 
+关键词　鲁棒控制， 反标架规范化，结构奇异值. 
+ROBUST PERFORMANCE OF REVERSED-FRAME
+NORMALIZED CONTROLLER
+CHEN SUPING　　SUN YOUXIAN
+(Institute of Industrial Control, State Key Lab of Industrial Control Technology, 
+Zhejiang University, hangzhou 310027)
+Abstract　The robust performance of reversed-frame normalized controller is studied. Taking SSV(Structured Singular Value) as measure, and describing the plant, the open-loop transfer function and the controller in the form of singular value decomposition, some sufficient conditions guaranteeing robust performance are drawn about the parameters of the open-loop transfer function and the controller as the result of directionality and coupling analyses. This forms the theoretical basis for the design of robust controller with reversed-frame normalized structure.
+Key words　Robust control, reversed-frame normalization, structured singular value.
+1　引言
+　　反标架规范化控制器是Hung和MacFarlane在文献［1］中率先提出来的，并证明了采用反标架规范化控制器补偿的系统，对象输出端有鲁棒稳定性就意味着对象输入端也有鲁棒稳定性；反之亦然. 众所周知，鲁棒性是以闭环性能损失为代价的. 设计控制器使系统保证鲁棒稳定的前提下，尽可能改善性能，即所谓“鲁棒性能”(Robust Performance)问题，是当前鲁棒控制理论的研究热点［2］. 本文就研究反标架规范化控制器结构的鲁棒性能. 结构奇异值SSV(Structured Singular Value)是刻划鲁棒性能的有力工具之一［3］， 我们从该工具出发，研究了反馈系统性能对模型不确定性的敏感机理，最终得出了反标架规范化控制器不仅能满足鲁棒稳定性而且能满足鲁棒性能的要求这一结论. 该结果为鲁棒控制器的参数化和设计提供了理论依据. 
+2　反馈系统性能的敏感机理
+　　考虑图1所示具有输入不确定性的反馈控制系统. 根据SSV理论，系统具有鲁棒性能的充分必要条件为
+　　　　　　　　　　　　　　　　　(1)
+
+
+图1　具有输入不确定性的反馈控制系统
+其中
+　　　　　　　　　　　　(2)
+μ(。)为Doyle定义的SSV［4］， 它关于扰动矩阵Δ=diag{ΔI,ΔP}计算，ΔP为满阵. 将闭环系统在G输入端断开，引入输入开环传递函数、灵敏度函数和互补灵敏度函数
+　　　　　　　　　　　　　　　　　(3a)
+　　　　　　　　　　　　　　　(3b)
+　　　　　　　　　　　　　　(3c)
+再将闭环系统在G输出端断开，引入输出开环传递函数、灵敏度函数和互补灵敏度函数
+　　　　　　　　　　　　　　　　　(4a)
+　　　　　　　　　　　　　　　　(4b)
+　　　　　　　　　　　　　　(4c)
+于是， 式(2)可表示为
+　　　　　　　　　　　　　　　(5)
+或
+　　　　　　　　　　　　　　　(6)
+　　引理1［5］.假设矩阵N和Δ定义为
+　　　　　　　　　　　　(7)
+　　　　　　　　　　(8)
+那么在各频率点， μ(N)满足下述界
+　　(a) 　　　　　　　　　　　　　　　　(9)
+　　(b) 　　　　　　　　　　　　　　　　(10)
+其中表示最大奇异值. 
+　　由式(5)可得到引理1的推论.
+　　推论1.式(1)和(5)所述充分必要条件在各频率点满足下述界：
+　　(a) 　　　　　　　　　　(11)
+　　(b) 　　　　　　　　　　(12)
+分别表示鲁棒稳定性和名义性能，而反映的是输入不确定性对系统性能的影响程度. 通常， 鲁棒稳定性和名义性能较易满足，因此， 设计鲁棒控制器的关键就是使尽可能小. 
+　　不确定系统多变量反馈的复杂性在于对象的方向性和耦合性［5］. 将对象作奇异值分解
+G(s)=WG(s)TG(s)ZG(s)H, 　　　　　　　　　　　　　　　(13)
+可以清楚地看到， 方向性是TG(s)中奇异值分布造成的， 耦合是由WG(s)和ZG(s)的旋转引起的. 为了简化分析，假设在感兴趣的频率处，对象传递函数可分成高增益和低增益两个子系统， 并将对象奇异值分解记为
+G(lG,n-lG)=WG1TG1ZHG1+WG2TG2ZHG2. 　　　　　　　　　　　　　(14)
+其中　同时，不失一般性， 可以进一步假定各子系统内部的增益是均匀的，
+　　定理1.若对象G(s)具有式(14)形式分解，且子系统内增益均匀，则满足下述界：
+　　　　　　　　(15)
+　　　　　　　　(16)
+其中κ(。)表状态数(condition number). 
+　　式(15)和(16)中起着举足轻重的作用. 在任一感兴趣的频率处，我们将使最小进一步归结为使最小的问题. 
+　　引理2［6］.令矩阵A∈Cm×n具有奇异值X是Cm×n的子空间， 则奇异值具有极小极大意义，
+　　　　　　　　　　　　 (17)
+　　推论2.令矩阵A∈Cn×n具有奇异值U=(U1　U2)∈Cn×n为任意酉阵， 且U1∈Cn×l,U2∈Cn×(n-l),则
+　　　　　　　　　　　　(18)
+　　定理2.若对象G作式(14)分解，LI非奇异，则
+　　　　　　　(19a)
+　　　　　　　　(19b)
+　　式(19a)揭示了这样一个事实：
+　　　　　　　(20)
+当κ(G)1时，必须使σlG(LI)1σlG+1(LI). 也就是说，如果LI作奇异值分解
+LI(kI,n-kI)=VI1ΣI1UHI1+VI2ΣI2UHI2, 　　　　　　　　　　　　　　(21)
+其中VI1, UI1∈Cn×kI, VI2, UI2∈Cn×(n-kI), ΣI1=diag{σ1,…,σkI}， ΣI2=diag{σkI+1,…,σn}， 且则存在下述结论.
+　　结论1.若使系统输入开环传递函数保持对象的高增益和低增益子系统分布， 并且其维数与对象分解的维数相容，即kI=lG，就能保证系统的鲁棒性能. 
+　　这一结论与现代频域法经常采用的增益平衡法不同，这种差异正是考虑鲁棒性的结果. 
+　　下面我们在kI=lG条件下， 讨论怎样调整LI奇异子空间进一步降低敏感性的问题. 为简化分析，假设由式(19a)可得
+
+显然，若使UIi=ZGi(i=1,2)， 在ΣI1和ΣI2保持不变的情况下， 以上两式右端同时达到最小. 
+　　结论2.当LI的右奇异子空间与对象G的右奇异子空间平行(alignment)，即UIi=ZGi(i=1,2)时， 系统鲁棒性能得到改善. 
+　　推论3.式(1)和(6)所述充分必要条件在各频率点满足下述界：
+　　(a) 　　　　　　　　　　(22)
+　　(b) 　　　　　　　　　　(23)
+　　定理3.若对象G(s)具有式(14)形式分解，且子系统内增益均匀，满足下述界：
+　　　　　(24)
+　　　　　(25)
+其中κ(。)表示状态数. 
+　　定理4.若对象G(s)作式(14)分解，LO非奇异，则
+　　　　　　　　　　(26a)
+　　　　　　　　　　　　(26b)
+　　结论3.若使系统输出开环传递函数保持对象的高增益和低增益子系统分布， 并且其维数与对象分解的维数相容，即kO=lG, 就能保证系统的鲁棒性能. 
+　　结论4.当LO的左奇异子空间与对象G的左奇异子空间平行， 即VOi=WGi(i=1,2)时，系统的鲁棒性能得到改善. 
+　　需要说明的是， 我们得到的结论都只是对子空间的要求而言. 以结论4为例，要求VOi和WGi的列空间相同， 而不是VOi=WGi. 
+3　鲁棒控制器参数化
+　　我们已经对反馈系统性能的敏感机理作了深入的剖析，得到了若干抑制敏感性的条件，接下来分析如何设计控制器，使其满足这些条件. 假设控制器具有
+C(s)=WC(s)ΓC(s)ZHC(s)　　　　　　　　　　　　　　(27)
+形式奇异值分解，已知
+　　　　　　　　　　　　　　(28)
+　　　　　　　　　　　　　　(29)
+因此
+　　　　　　　　　　　　　　(30)
+观察式(30)，可得具有鲁棒性能的控制器的充分条件. 
+　　定理5.控制器C(s)具有式(27)形式奇异值分解，若
+ZC=WG,　WC=ZG, 　　　　　　　　　　　　　　(31)
+则必然满足结论2和结论4. 
+　　在条件(31)的约束下，再来考虑结论1和结论3对控制器的要求， 不难得到关于控制器奇异值分布的条件. 
+　　定理6.假设控制器由高增益和低增益两部分组成，即
+C(lC,n-lC)=WC1ΓC1ZHC1+WC2ΓC2ZHC2, 　　　　　　　　　(32)
+则当lC=lG， 且
+　　　　　　　　　　　　　　(33)
+时， 满足结论1和结论3.
+4　结论
+　　本文从系统的鲁棒性能出发， 深入探讨了反馈系统性能对模型不确定性的敏感机理，以及合理的控制器参数化形式，得到了以下认识：
+　　1) 反标架规范化控制器结构不仅符合鲁棒稳定而且也是鲁棒性能的要求，即在满足鲁棒稳定的前提下，性能损失会较小. 
+　　2) 作者在文［7］中提出了鲁棒解耦的问题，本文的结果为鲁棒解耦控制器的参数化奠定了理论基础，鲁棒解耦控制器设计方法将在以后介绍. 
+作者单位：浙江大学工业控制技术研究所， 工业控制技术国家重点实验室　杭州　310027
+参考文献
+[1]　Hung Y S, MacFarlane A G J. Multivariable feedback: a quasiclassical approach. Springer-Verlag, 1982.
+[2]　Report of the Workshop Held at the University of Santa Clara on September 18-19. Challenges to control: A collective view. IEEE Trans. Autom. Control, 1987, AC-32(4):275-285.
+[3]　Packard A, Doyle J. The complex structured singular value. Automatica, 1993,29(1):71-109.
+[4]　Doyle J C. Analysis of feedback systems with structured uncertainties. In:IEE Proc.Pt. D, 1982, 129(6):242-259.
+[5]　Freudenberg J S. Analysis and design for ill-conditioned plants, part 1: lower bounds on the structured singular value. Int. J. Control, 1989, 49(3):851-871.
+[6]　Stewart G W. Introduction to matrix computations. New York: Academic, 1973. 
+[7]　陈苏平， 孙优贤， 周春晖.多变量过程的鲁棒解耦.自动化学报，1995，21(2)：214-220.
+收稿日期　1994-07-13　　收到修改稿日期　1997-04-15

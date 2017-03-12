@@ -1,0 +1,102 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第6期 第10卷 Vol.10 No.6 1999
+
+
+
+一种改进的零树小波图像压缩算法*
+夏　勇 田 捷 戴汝为
+　　摘要　基于小波变换的图像压缩算法在较低码率时出现的Gibbs效应多年来一直未能得到很好的解决,其主要原因是,纯粹基于像素值的MSE(mean square error)准则对于图像边缘对应的小波系数分配了较少的比特数.文章在详细分析了Shapiro和Said & Pearlman等人提出的零树小波压缩算法的基础上,从抑制高频噪声和图像边缘对应系数的自适应量化等方面对原来的算法进行了改进,给出了相应的对比实验结果.文章的主要意义在于，提出了识别与压缩相结合的思想,由于小波变换的空间局部化特性,因此可以进行非常灵活的比特分配,从而在一定程度上减少了Gibbs效应的影响.
+　　关键词　图像压缩,小波变换,零树算法,人体视觉特性,自适应量化,识别与压缩.
+　　中图法分类号　TP391
+　
+An Improved Zero-tree Wavelet Image Compression Algorithm
+XIA Yong TIAN Jie DAI Ru-wei
+(AI Laboratory Institute of Automation The Chinese Academy of Sciences Beijing 100080)
+　　Abstract　Gibbs phenomenon, which occurs in the wavelet-based image compression algorithms under low bit rates, remains an open question for many years. The main cause is that purely-pixel-value-based MSE(mean square error) criteria can not allocate enough bits to the wavelet coefficients corresponding to edges in image. With detail analysis of zero-tree wavelet image compression algorithm originally proposed by Shapiro and then well-modified by Said and Pearlman, the algorithm is improved by suppressing high frequency noises as well as adaptively quantizing coefficients around edges. Experimental results are comparatively given. The main contribution of this paper is the idea of combination of recognition and compression. With the aid of the spatial localization property of wavelet transform, a very flexible bit allocation scheme can be realized, and therefore Gibbs phenomenon is reduced to some extent.
+　　Key words　Image compression, wavelet transform, zero-tree algorithm, human visual characteristics, adaptive quantization, recognition and compression.
+　　图像压缩在多媒体信息的传输和存储中起着至关重要的作用,基于离散余弦变换、运动补偿、霍夫曼编码和算术编码技术的JPEG(joint picture expert group),MPEG1,MPEG2,H.261和H.263等标准在实践中得到了广泛的应用,面向甚低码率多媒体通信的MPEG4标准也即将产生.
+　　小波变换由于具有良好的空间-频率局部化特性［1］,因此特别适合应用于非平稳信号的分析［2］.子带编码［3］和二进小波变换快速算法［4］的提出导致了研究基于小波变换的静止图像压缩算法的热潮，并获得了较好的压缩性能［5～8］.
+　　然而,小波压缩算法中公认的一个难题至今没有得到很好的解决,这就是当比特率较低时出现的边缘模糊现象,即所谓Gibbs效应.究其本质,主要是因为这些算法均在MSE(mean square error)准则下工作,而MSE准则不能很好地刻画图像的边缘和平坦区域的差别.例如,文献［9］的压缩算法与JPEG相比较,PSNR(peak signal-noise ratio)相差无几,而视觉效果却明显不同,这说明按MSE准则进行优化的算法有时难以达到很好的视觉效果.作者的实验也表明,在以人眼为对象的场合,仅仅根据小波系数的幅值来确定其在编码中的重要性的MSE准则是需要修正的.从人体视觉感知的角度看,图像像素矩阵中统计特性不同的各部分在人眼的视觉准则中并非处于平等的地位,因此,纯粹从像素值出发的MSE准则与人眼的视觉判断有一定的偏差［10］.
+　　图像压缩的研究虽然以变换后的频率域编码为主流,但空间域的编码算法也一直受到人们的关注［9,11］.实际上,这两类算法都是对原始图像进行某种形式的预处理使之更适合于编码:前者首先将图像进行频率域的分解,因此能够充分利用人眼对各个频带有不同的敏感性分别对不同的频带进行处理;而后者首先将图像进行空间域的分割,可以将对特性不同的图像区域区别对待.而且,这两类方法并非互斥的［12］,因此，我们可以期望,这两种思想的结合可能会进一步提高压缩算法的性能.
+　　按照上述分析,本文致力于在小波压缩算法中考虑人体视觉特性.特别地,由于众所周知的图像中边缘的重要性,我们通过检测边缘的位置,并进行相应的自适应量化,对于对应原始图像边缘的小波系数采用比较精细的量化器,以此来达到更好的主观视觉效果.这种方法实际上实现了一种根据人体视觉特性进行量化的图像编码.
+　　文章第1节首先仔细分析了零树压缩算法.在此基础上,第2节描述改进的算法,主要的改进是高频噪声的抑制和边缘系数的自适应量化.第3节是对实验结果的讨论.
+1 零树算法的分析
+　　基于小波变换的压缩算法一般着眼于利用其良好的空间-频率局部化特性和级间系数幅值分布的相似性.文献［6］提出的EZW(enboded zero-tree wavelet)算法正是定义了POS,NEG,IZ,ZTR这4个零树符号来充分利用上述性质对幅值进行预测和编码,在阈值的意义下（即隐含的量化）,用上一级的小波系数预测了下一级的小波系数.该算法通过使阈值按指数方式递减而实现了逐级量化,这样产生的比特流按照所对应的幅值大小分层次地进行排列,实现了对图像逐渐逼近的编码.
+　　文献［7］给出了一个更为精细的SPIHT(set partitioning in hierarchical trees)算法.其核心思想是,任何基于比较的算法的执行路径都被分支点的比较结果隐含地定义了.尽管这两个算法形式不同,但实际差别却很小.后者最重要的改进是,在阈值测试时没有输出零树符号,而是输出1比特的测试函数值.实际上,这相当于在此时就已将零树符号进行了霍夫曼编码.这样做的好处是,既降低了比特率,又加快了算法的执行.另外,从算法中还可以分析得知,SPIHT算法的求精扫描与EZW算法的次扫描步骤相比,在执行中相对延迟了一步,而前者通过解码时对系数的补偿达到了与后者相同的系数重建精度.换句话说,要达到同样的压缩效果,SPIHT算法只需要更少的比特数,从而又提高了算法的性能.
+　　文献［8］指出,零树结构实现了对小系数的死区效应,称为“零树量化”.除此以外,对大系数还可以进行一般的标量量化.这样,两种量化方式在率失真意义下就可以进行联合优化,这就是SFQ(spacial frequent quantization)算法.零树算法还有待进一步的发展［13］,算法性能的提高还可望通过抑制噪声来达到［14,15］.
+　　然而,文献［8］承认,虽然SFQ算法的PSNR与SPIHT和EZW算法相比均有很大的提高,但是主观视觉效果却没有明显的改进,其中最主要的问题是Gibbs效应仍然存在.因此,上述算法仍未能解决一般的基于小波变换的压缩算法存在的边缘模糊问题.
+2 改进的编码算法
+　　零树算法是目前国际上性能最好的一类压缩算法,我们的目标是在此基础上尽可能地消除Gibbs效应.对零树算法的改进主要体现在两个方面,即通过中值滤波来抑制高频噪声以及识别图像边缘对应的小波系数，并进行较为精细的量化,如图1所示.对于小波分解和零树编码，我们不作详细描述,请参见文献［1,5～7］.
+
+图1　本文编码算法框图
+2.1 噪声抑制
+　　原始图像中的噪声在变换域中表现为分布比较孤立的幅值较大的小波系数.据此,我们先对其进行定位,然后采用中值滤波来降低这些系数的幅值.如图2中的H对应于噪声点的位置,滤波以后该点的系数幅值将减小,这样，每个高频子带的方差会降低,相应地，编码效率得到提高.
+
+图2　噪声系数的中值滤波
+2.2 小波系数的量化
+　　我们采用了文献［15］中给出的基于人体视觉系统（human visual system）特性的量化值,每个子带的量化步长是根据其在HVS中的重要性,由实验得出的,见表1.
+表1 基于HVS的量化值
+
+LLLHHLHH
+114.0523.0423.0458.83
+211.1114.6914.6928.43
+311.3612.7112.7119.55
+414.5014.1614.1617.87
+522.7019.6219.6220.60
+643.3233.3133.3129.24
+
+
+　　此外,我们考虑边缘对应小波系数的自适应量化.原始图像中的边缘经过小波分解后,在高频子带中对应于具有一定结构的幅值较大的一组系数及其邻近的幅值较小的其他系数.由于小波变换具有空间局部化特性,故所有这些系数一定位于某个封闭区域之内.我们首先检测幅值较大的系数的位置,然后根据所用分解滤波器的零点位置和冲激响应长度计算出与边缘有关的系数所在的邻域.例如,考虑经过一次可分离二维B9/7小波分解［5］,即水平与竖直方向分别进行低通与高通滤波并作2-下采样后得到的LH子带,图像中某边缘上任意一点E在小波系数域中对应的大小为5×3矩形邻域,如图3(a)、图3(b)和图3(c)分别是HL子带(3×5的矩形)和HH(3×3的矩形)子带的情形.
+　　　　　
+(a)LH子　　　(b)HL子带　　　　(c)HH子带
+图3　高频子带中边缘上任一点的领域
+　　在识别出来的邻域范围内,我们选取比其他区域小的量化步长,图像边缘因此得到了比之其他部分较为精细的保持和优先的编码,从而改善了图像的主观视觉效果.特别需要指出的是,由于我们根据识别的结果进行量化,因而使得比特分配非常灵活.
+　　量化算法描述如下:记小波系数矩阵为coeff［i］［j］,定义相应的边缘矩阵edge［i］［j］和邻域矩阵nbr［i］［j］,
+　　Step 1. 根据coeff［i］［j］和预定的阈值Tband,初始化边缘矩阵edge［i］［j］;
+　　Step 2. 在edge［i］［j］中将长度小于预定值Length的边缘对应的值置0;
+　　Step 3. 根据edge［i］［j］和各子带中边缘的邻域类型,初始化邻域矩阵nbr［i］［j］;
+　　Step 4. 对每一个小波系数coeff［i］［j］
+　　　　　如果nbr［i］［j］＝1,则coeff［i］［j］/=little-quant-step-size; /* 边缘邻域内 */
+　　　　　如果nbr［i］［j］＝0,则coeff［i］［j］/=big-quant-step-size; /* 边缘邻域外 */
+3 实验结果与讨论
+　　本文提出的算法对8bpp 512×512 Lena图像进行压缩的结果与JPEG和EZW［6］算法的PNSR比较见表2,压缩64倍的图像如图4所示.从表中可以看出,本文提出的算法的PSNR比JPEG和EZW算法分别提高了约2.5dB和0.7dB.如图5所示为本文提出的算法与SPIHT［7］压缩64倍时Lena肩部图像的比较.图像边缘部分的主观视觉效果有明显的改善,这说明本文提出的算法能够较好地克服Gibbs效应.
+表2 本文提出的算法与JPEG及EZW算法压缩Lena图像的PSNR(dB)比较
+
+1.00.80.50.40.250.20.1250.1
+JPEG37.9536.7634.8433.4131.4230.3128.24-
+EZW［6］39.55-36.2835.0233.17-30.23-
+本文提出的算法40.2639.1937.0336.0633.9232.9530.8629.95
+
+注:PSNR=10.log10(2552/MSE),单位为dB,MSE为均方误差.
+　　
+(a) JPEG算法编码结果 　(b) 本文算法编码结果
+图4
+　　
+(a) SPIHT零树算法编码结果 (b) 本文算法编码结果
+图5
+4 结束语
+　　本文在回顾频率域算法与空间域算法基本思想的基础上,探讨了两种思想相结合的可能性.我们仔细研究了零树压缩算法,并从高频噪声抑制、图像边缘检测以及对相应的小波系数进行较为精细的量化等方面作了改进,取得了很好的主观视觉效果.作者认为,按照识别与压缩相结合的思路来实现基于人体视觉特性的静止图像编码是值得进一步的研究.
+*　本文研究得到国家863高科技项目基金资助.
+作者简介　夏勇,1973年生,硕士,主要研究领域为图像压缩,多媒体通信,模式识别,人工智能.
+　　　　　田捷,1960年生,博士,研究员,博士生导师，主要研究领域为医学图像处理,模式识别,计算机图形学，多媒体网络.
+　　　　　戴汝为,1932年生,研究员,博士生导师,中国科学院院士,主要研究领域为人工智能,模式识别,复杂性,系统科学.
+本文通讯联系人:田捷，北京100080,中国科学院自动化研究所
+作者单位：中国科学院自动化研究所人工智能实验室　北京　100080
+参考文献
+　1 Daubechies I. Orthonormal bases of compactly supported wavelets. Communication of Pure and Applied Mathematics, 1988,410(Ⅻ):909～996
+　2 Rioul O, Vetterli M. Wavelet and signal processing. IEEE Transactions on Signal Processing, 1991,39(1):14～38
+　3 Woods J W, O'Nell S D. Subband coding of images. IEEE Transactions on Acoustics, Speech and Signal Processing, 1986,34(5):1278～1288
+　4 Mallat S. A theory for multiresolution signal decomposition: the wavelet representation. IEEE Transactions on Pattern Analysis and Machine Intelligence, 1989,11(7):674～693
+　5 Antonini M, Barlaud M, Mathieu P et al. Image coding using wavelet transform. IEEE Transactions on Image Processing, 1992,1(2):205～220
+　6 Shapiro J M. Embedded image coding using zerotrees of wavelet coefficients. IEEE Transactions on Signal Processing, 1993,41(12):3445～3462
+　7 Said A, Pearlman W. A new, fast, and efficient image codec based on set partitioning in hierarchical trees. IEEE Transactions on Circuits and System Video Technology, 1996,6(3):243～249
+　8 Xiong Z, Ramchandran K, Orchard M T. Space-frequency quantization for wavelet image coding. IEEE Transactions on Image Processing, 1997,6(5):677～693
+　9 Radha H, Vetterli M, Leonardi R. Image compression using binary partition trees. IEEE Transactions on Image Processing, 1996,5(12):1610～1624
+　10 Ran X, Farvardin N. A perceptually motivated three-component image model (Part Ⅰ): application to image compression. IEEE Transactions on Image Processing, 1995,4(4):430～447
+　11 Kunt M, Ikonomopoulos A, Kocher M. Second-generation image coding techniques. Proceedings of IEEE, 1985,73(4):549～574
+　12 Mohsenian N, Nasrabadi N M. Edge-based subband VQ techniques for image and video. IEEE Transactions on Circuits and System Video Technology, 1994,4(1):53～67
+　13 Creusere C D. A new method of robust image compression based on the embedded zero-tree wavelet algorithm. IEEE Transactions on Image Processing, 1997,6(10):1436～1442
+　14 Luo J, Chen C W, Parker K J et al. A scene adaptive and signal adaptive quantization for subband image and video compression using wavelets. IEEE Transactions on Image Processing, 1997,7(2):343～357
+　15 Watson A B, Yang G Y, Solomon J A et al. Visibility of wavelet quantization noise. IEEE Transactions on Image Processing, 1997,6(8):1164～1175
+本文1998-04-21收到原稿,1998-06-29收到修改稿

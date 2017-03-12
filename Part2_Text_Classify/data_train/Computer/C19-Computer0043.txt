@@ -1,0 +1,84 @@
+计算机工程
+COMPUTERENGINEERING
+1999年　第25卷　第7期　Vol.25　No.5　1999
+
+
+
+Internet上的英文搜索引擎
+刁倩　张惠惠　王永成
+摘要　介绍了Internet上几个典型英文搜索引擎的设计原理,并对它们的性能做了一定的测试和比较,并提出了改进思想。
+关键词　Internet　搜索引擎　Yahoo！Inktomi　hotbot　Architext　Excite
+English Search Engine on Interet
+Diao Qian Zhang Huihui Wang Yongcheng
+Institute of Image Processing & Psttern Recognition，Shanghai Jiaotong University；Bao Zhaolong Library of Shanghai
+Abstract：In the paper，three English search engines on Internet are introduced，including the design principles.We also test and compare them and xhow the improved idea.
+Kew words：Internet；search engine；Yahoo！；Inktomi；hotbot；Architest；Excite
+　　近几年来，Internet上的信息越来越丰富，每个月的增长率约为20%，检索和查询这些信息资源已迫在眉睫。传统的DDS(Dewey Decimal System)和LCC(Library of  Congress Classification)分类索引方法已无法有效处理网上日新月异的英文信息，而中图法也无法适应逐渐丰富起来的网上中文信息。于是网上出现了众多信息搜索引擎(Search Engine)，其中英文搜索引擎居多，它们一方面使我们可以在一定程度上从网上获取有用信息，另一方面由于刚起步不久而存在较多不尽如人意之处。我们就这些英文搜索引擎中的几个典型(Yahoo!、Inktomi和Excite)在性能和工作原理上做了一定的研究与测试。之所以称Yahoo!、Inktomi和Excite为搜索引擎中的典型，是因为它们代表了搜索引擎的3个不同的技术层次。Inktomi的关键词检索技术在当前搜索引擎中可以说是最成熟的，采用其技术的Hotbot搜索引擎分别荣获PC Magazine Editor's Choice 1996、1997年度奖,PC Computer MVP 1997年度奖,CNET Editor's Choice 1998年度奖。Architext公司的Excite搜索引擎首先采用了“概念检索”技术，此技术是提高网上信息检索准确率的关键措施，采用此技术将有助于实现网上信息的自动分类；Yahoo!是当前唯一真正实现网上信息分类的搜索引擎，它提供了优秀的分类目录(主题)浏览功能，对网点信息按主题建立分类索引，按字母顺序列出14个大类，每个大类所包含的子类有精炼的描述，每个子类有数以千计的Internet网站信息。许多网上信息研究人员已视Yahoo!分类目录中的信息为网上信息研究样本，当作标准进行测试。
+1　Yahoo!
+　　Yahoo!(www.yahoo.com)于1994年由美籍华人杨致远(Jerry Yang)和David Filo设计，它收集约20万个网站，约有2万个目录。它在网上影响广泛，每天约有80万人在Internet上使用它。而且这些数字仍随着时间不断推移，到1996年至1997年，每天约有400万人次访问它。Yahoo!的工作过程是首先收集新网站的域名(URL)，其中绝大部分URL通过网站建立者以Email方式提供，其余部分由Yahoo!的网上软件机器人(Spider/Softbot)通过扫描网上的链接来搜集。然后由20名Yahoo!分类专家对这些网站进行人工分类。
+　　由于采用人工分类的方式，Yahoo!有两个难以解决的缺点：一是Yahoo!如果使用更多的分类专家来提高分类速度以跟上网上信息不断增加的步伐，则众多分类专家将导致更多的分类分歧，从而效率降低；二是若Yahoo!将分类专家的人数减至较少，则Yahoo!所能分类的知识面会收缩，信息分类的准确度与可信度将降低。
+　　Yahoo!具有关键词检索和分类目录浏览两种检索方式。我们先对分类目录浏览这种检索方式进行了测试。测试的方法是在Yahoo!的分类目录中寻找有关“Information Retrieval””英文信息，通过浏览这些信息内容来测试出在Yahoo!分类目录浏览的查准率。首先在http://www.yahoo.com网址上浏览Yahoo!的总分类目录，于是发现在yahoo:science:computer science:library and information science：上有6个子分类目录，其中包括information retrieval子目录，进入该目录后浏览其中所有html链接，共有7条，都与“Information Retrieval"”有关，也就是说其准确率为100%。由于无法得知Internet上共有多少英文信息与“Information Retrieval"”有关，所以无法得到Yahoo!分类目录浏览方式的查全率。
+　　然后我们又对Yahoo!的关键词检索方式进行测试。测试的内容仍是寻找有关“Information Retrieval"”英文信息。具体方法是选取含义与“Information Retrieval"”密切相关的检索词N = 31个，记为Wi(i=l,…,N)，分别以
+　　Wi
+　　Wi-“Information Retrieval"”
+　　为检索式，输入到Yahoo!关键词检索字符框中，从而得到两组不同检索结果，记为R(1)i，R(2)i，则有查准率P为：
+　　
+　　最终得到Yahoo!关键词检索方式的查准率为：
+　　
+2　Inktomi
+　　Inktomi(www.inktomi.com)由加州大学伯克利分校计算机系的Eric Brewer和Paul Gauthier设计。它是当前网站信息的最大索引之一，约有1.1亿个文件的索引。Inktomi应用蜂窝式计算(Hive Computing)，即用网络将大量工作站联结而构成一个超级工作站(Supercomputer)，实现并行计算，该方法可随着工作任务的繁简来增减工作站的数目。Inktomi对所有用Spider搜集到的网站进行了倒排索引。所谓倒排索引是指计算机构成一个表格，该表格的行代表文献，列代表词。如果文献X中含有词Y，则表中X行Y列的位置置      “1”。为了找到含有某个词的所有文献，计算机只计算相应列中“1”的个数。这种倒排索引表格可以加快检索速度，因为检索时计算机不再扫描文献本身，而只是扫描表格的相应列。Inktomi在主机上只存储倒排索引表，其存储长度为原文献长度的4%。
+　　Inktomi主要是关键词检索方式，所查询到的仅是那些含有关键词的网上信息，无法给用户以上下文提示信息。我们仍用上述31个与Information Retrieval有关的检索词对利用Inktomi检索技术的hotbot搜索引擎进行测试，测试方法同前，则hotbot的查准率约为0.0645。与Yahoo！相比，它各次查询结果均多于Yahoo！，即它的整体查全率比Yahoo！高。
+3　Architext
+　　Architext软件公司创立于1993年，其制作的搜索引擎Excite(www.excite.com)受到重视，因为它不再仅仅是基于关键词检索，而是趋向基于概念检索(Concept index)。Excite的倒排索引表中的行不再是文献，而是文献所代表的概念或含义。这些概念的建立主要是基于词义间的联系，如同义词、反义词等，这种联系通过统计方法得到。例如它可以把含有movie和film的文献都归在film这一概念下，因为这两者是同义词。Excite建立词义间联系上有一个基本假设：即经常在一起出现的词必定有一定联系。也就是说，在统计词频时，Excite考虑到了词同现率。Excite采用一个称为“智能概念抽取”(ICE)的专用查询软件，允许用户用自然语言提问。它可以实现两个功能，一是用ICE自动编制摘要，二是实现概念检索。
+　　Excite由于进行信息自动分类的技术过于简单而使系统的鲁棒性不好,我们在测试中发现，在使用36个检索词的检索结果中，有3个没有检索结果。而且Excite没有像Yahoo！那样能提供上下文关系的目录。我们仍用前述方法测试Excite，结果它的准确率为0。尽管准确率为0，但实际浏览它的检索结果，会发觉它的一些检索结果的相关性较Hotbot高，这是因为它采用概念检索的技术，不一定只是含有检索词的文献被检索到，与检索词相关的文献也有可能被收入检索结果中。与Yahoo！和hotbot相比，它的查询结果平均多于Yahoo！，少于hotbot,即它的整体查全率介于两者之间。
+4　结论
+　　通过对Yahoo!、Inktomi(hotbot)、Architext(Excite)这3个网上搜索引擎的关键词检索方式进行研究与测试，我们得到如表1所示的测试数据。
+表1 3种搜索引擎关键词检索方式性能测试数据表
+检索词()YAHOO!(R/R)HOTBOT(R/R)EXCITE(R/R)
+Boolean**692/01203/1036349/215
+Cluster138/83*60929/20666098720/98280
+collaborative fitering7/71538/12971230/1060
+collection fusion**27/039/1847/22
+content-based filtering**41/083/6653/35
+cosine similarity**24/029/1215/4
+recoordination of terms0/0**1/00/0
+postcordination of terms0/0**2/00/0
+probabilistic model**666/01001/858530/427
+query442581/442581*25850/514323196890/191340
+query expansion**332/0487/176307/53
+recall361442/361442*93253/372773149650/147060
+indexing231312/231312*22174/11941651770/39904
+information extraction1/11664/166463860/56978
+information filtering3/32371/165671650/63410
+information need**3538205/0*6766/68610/0
+inverse document frequency**82/0188/3579/17
+inverted file**422/0677/292275/81
+weighting10281/1028131713/3018416060/14628
+softbot3sites/163024321/237233/161
+routing（2 categories+163 sites）/95734*135999/24535495120/84976
+sigir2 sites/580201581/4611177/297
+signature file5 sites/5 sites11841/108623290/3260
+spider（11 categories+607 sites）/105618142015/13151363440/59171
+stemming3 sites/2 sites*1266/3683016010/15037
+stopword*343/104142496/450245/135
+term frequency**442/0694/446301/206
+text collection**462/0672/533488/377
+tipster3 sites/826451814/1607956/777
+tree10 sites/999421614/10951498/1001
+vector space model**277/0417/34169/23
+
+　　在表1中，带**号的数字为R(2)i是0且R(1)i不是0的检索词的个数，即检索结果完全正确的个数。加*号的数字为检索结果小于的检索词，也就是R(2)i比R(1)i检索结果多的检索词，这种检索结果是不合理的，应予以剔除。由表1得到3个搜索引擎的关键词检索方式的性能对比，如表2所示。
+表2 三个搜索引擎性能对比
+搜索引擎Yahoo!Inktomi(hotbot)Architext(Excite)
+准确率好较好不好
+查全率不好好较好
+
+　　由表2可以看出，Yahoo!由于采用分类技术而使检索准确率高于其它搜索引擎，但又因为尚处于手工分类阶段而在查全率方面差于其它搜索引擎。Inktomi的关键词检索技术支持的网上信息搜索引擎较为成熟和先进，性能也较好，但由于关键词检索技术本身的内在缺陷而使其技术支持的搜索引擎准确率仍无法达到Yahoo!的阶段，而且检索方法单一，无法满足用户的多方面要求，如无法给用户以上下文提示信息。Architext的Excite搜索引擎虽然率先引入了“Concept index”技术，但由于并没有采用较为智能的方法实现此技术而使系统的性能表现较差，因此仍有待改进。当前搜索引擎性能的提高应从两方面着手。一方面提高现有关键词搜索引擎的性能，另一方面须实现网上信息自动分类技术。“Concept index”技术是实现信息自动分类技术的有效途径，Architext的Excite搜索引擎的基于统计方法的“Concept index”构造方式有待改进。更为智能的方法，如神经网络的聚类算法等应尽量引入到信息自动分类技术中。
+作者简介：刁倩 女，26岁，博士生，主研方向：中文信息处理、模式识别与人工智能
+作者单位：上海交通大学97300BA班,上海交通大学图书馆,上海交通大学电脑技术研究所上海200030
+参考文献
+1　Steinberg S,Seek  and Ye Shall  Find (Maybe).WIRED Magazine,1996-05
+2　Chen H,Schuffels C,Orwig R.Internet Categorization and Search:A Self-Organizing Approach.http://www.bpa.arizona.edu/papers/
+3　曾民族.网络信息检索现状和性能评价.情报学报，1997,16(4)
+4　章琳,张保明.WWW检索工具比较研究.情报学报,1998,17(4)
+收稿日期：1998-11-02

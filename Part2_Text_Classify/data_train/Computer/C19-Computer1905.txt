@@ -1,0 +1,112 @@
+微型机与应用
+WEIXINGJI YU YINGYONG
+2000　Vol.19　No.5　P.31-32
+
+
+
+
+ASP的Session对象在网上购物系统中的应用
+林鹤鸣
+摘 要：ASP是近年来新兴的动态网页设计技术，Session对象在ASP编程技术中占有相当重的份量。本文通过网上购物系统的一个侧面，介绍Session 对象的应用。
+关键词：ASP Session对象 购物网页
+1 网上购物系统基本构架
+　　网上购物是当今Internet应用十分热门的话题。一个网上购物系统的基本构架包括：
+　　（1）主页。提供可选择的购物分类，让用户进入自己感兴趣的购物区，即购物网页。
+　　（2）购物网页。提供可选择的各种商品（名称、单价、简介、制造厂家、生产日期等）任用户选购。设有“放入购物袋”按钮，含有“查看购物袋”，“退回所有商品”，及各分类购物网页的连接。
+　　（3）查看购物袋网页。列出用户选择的所有商品，能更改所选某商品的数量，取消选中的某商品。
+　　（4）放入购物袋程序。把用户选择的所有商品记录在Session对象中。
+　　（5）退回所有商品程序。清除购物袋内容。
+　　由于ASP（Active Server Pages）的Session是某一连接者所有网页的共同对象，可以用它来记录用户在不同网页上选购的商品。如放入购物袋程序、购物网页、查看购物袋网页，就是Session对象的一个很好的应用。
+2 Session对象在购物网页和购物袋程序中的应用
+　　购物网页的主体是数据表单。可以在数据表单内引入表格，结合复选框形式来展示数据库内各种商品，为方便起见，只列出商品编号、名称、单价、简介。表单设有“放入购物袋”按钮，当按下此按钮时指定服务器端执行放入购物袋程序。放入购物袋程序把在本购物网页所选购的商品编号先放在1个Products数组中，使用以下命令：
+　　Products＝Split （Request （″ProductID″），″，″）
+　　式中Split函数能把所选中的商品编号分割成字符串数组。这样经Split处理后，Products就成为所选中商品编号的1个数组。如：
+　　Products（0）＝″1002″，Products（1）＝″1004″，Products（2）＝″1008″
+　　然后把这个数组成员追加到一个总购物字符串变量ProductList中，如下代码：
+　　＜％
+　　　　ProductList＝Session（″ProductList″）　　　　 ′还原Session 
+　　　　　　　　　　　　　　　　　　　　　′（″ProductList″）中内容
+　　　　For I＝0 To Ubound（Products）
+　　　　　If Len（ProductList） ＝ 0 Then
+　　　　　　　ProductList ＝″′″ ＆ ProductID ＆ ″′″ 
+　　　　　ElseIf InStr（ProductList，ProductID）＜＝ 0 Then
+　　　　　　　ProductList＝ProductList ＆ ″，′″ ＆ ProductID ＆ ″′″ 
+　　　　　End If
+　　　　Next
+　　　　Session（″ProductList″）＝ProductList 　　　′将追加好的Pro－
+　　　　　　　　ductList存储于Session（″ProductList″）对象中
+％＞
+　　总购物字符串变量ProductList存放的是用户在各购物网页所选购的商品编号，内容如：
+　　ProductList＝″′2001′，2006′，′1002′，′1004′，′1008′″
+3 Session对象在查看购物袋网页中的应用
+　　查看购物袋网页设计的主要功能是列出用户所选购的商品、能更改所选某商品的数量、取消选中的某商品、统计金额。为了列出用户所选购的商品，必须：
+　　（1）把存储于Session（″ProductList″）中内容还原回来，使用以下命令：
+　　ProductList＝Session（″ProductList″）
+　　（2）建立连接对象，打开数据库，设定SQL命令，使用Execute命令执行访问数据库的操作。如下代码：
+　　＜％
+　　　　DbPath＝SERVER．MapPath（″ShopBag．mdb″）
+　　　　Set conn＝Server．CreateObject（″ADODB．Connection″） 
+　　　　conn．open ″driver＝｛Microsoft Access Driver （＊．mdb）｝；
+　　　　　　　　　　　　　　　　dbq＝″ ＆ DbPath
+　　　　sql＝″Select＊From Products″ ′这里的Products是
+　　　　　　　　　　　　 ′ShopBag．mdb数据库的1个数据表
+　　　　sql＝sql ＆ ″Where ProductID In （″ ＆ ProductList 
+　　　　　　　　　　　　　　　　　　　　　　＆ ″）″
+　　　　sql＝sql ＆ ″Order By ProductID″
+　　　　Set rs ＝ conn．Execute（sql）
+　　％＞
+　　由于调用conn．Execute命令建立了1个Recordset对象：rs 则rs中的数据记录即是被选中的商品的记录。
+　　（3）利用数据表单引入表格来展示rs中数据记录，表头格式为：
+　　＜TR BGCOLOR＝＃00FFFF＞
+　　＜TD＞取消＜／TD＞＜TD＞商品编号＜／TD＞＜TD＞商品名称＜／TD＞＜TD＞单价＜／TD＞＜TD＞数量＜／TD＞＜TD＞总价＜／TD＞＜TD＞商品简介＜／TD＞＜／TR＞
+　　用以下代码列出rs中所有被选中的商品的记录：
+　　＜％
+　　　　While Not rs．EOF
+　　　　　Quatity＝CInt（Request（″Q＿″ ＆ rs（″ProductID″）） ）
+　　　　　If Quatity ＜＝ 0 Then
+　　　　　　Quatity＝CInt（ Session（rs（″ProductID″）） ）
+　　　　　　If Quatity ＜＝ 0 Then Quatity＝1
+　　　　End If
+　　　　Session（rs（″ProductID″））＝Quatity
+　　　　Sum＝Sum＋CDbl（rs（″Price″））＊ Quatity
+　　％＞
+　　＜TR＞
+　　＜TD Align＝Center＞
+　　＜Input Type＝CheckBox Name＝″ProductID″ Value＝
+　　　　　　　　　″＜％＝rs（″ProductID″）％＞″ Checked＞
+　　＜／TD＞
+　　＜TD＞＜％＝rs（″ProductID″）％＞＜／TD＞
+　　＜TD＞＜％＝rs（″ProductName″）％＞＜／TD＞
+　　＜TD Align＝Right＞＜％＝rs（″Price″）％＞＜／TD＞
+　　＜TD＞＜Input Type＝Text Name＝″＜％＝″Q＿″ ＆ rs（″Pro－
+　　　　ductID″）％＞″ Value＝＜％＝Quatity％＞ Size＝3＞＜／TD＞
+　　＜TD Align＝Right＞＜％＝CDbl（rs（″Price″））Quatity％＞＜／TD＞
+　　＜TD＞＜A HREF＝＜％＝rs（″Link″）％＞＞＜％＝rs（″Description″） 
+　　　　　　　％＞＜／A＞＜／TD＞
+　　＜／TR＞
+　　＜％
+　　　　　rs．MoveNext
+　　　　Wend
+　　％＞
+　　其中HTML代码部分为利用表格列出rs中所有被选中商品的记录。为了能更改某商品的数量，用文本框形式由用户输入，如上代码中文本框输入命令：
+　　＜TD＞＜Input Type＝Text Name＝″＜％＝″Q＿″ ＆ rs（″ProductID″）％＞″ Value＝＜％＝Quatity％＞ Size＝3＞＜／TD＞
+　　用Session（rs（″ProductID″）记录某商品的数量，如上代码ASP程序部分：
+　　＜％ 
+　　　　While Not rs．EOF
+　　　　Quatity＝CInt（Request（″Q＿″ ＆ rs（″ProductID″）） ）
+　　　　If Quatity ＜＝ 0 Then
+　　　　　Quatity＝CInt（Session（rs（″ProductID″）） ）
+　　　　　If Quatity ＜＝ 0 Then Quatity＝1
+　　　　End If
+　　　　　Session（rs（″ProductID″））＝Quatity
+　　　　　rs．MoveNext
+　　　Wend
+　　％＞
+　　其中Session（rs（″ProductID″））＝Quatity 是将用户确定的数量记录在Session（rs（″ProductID″）对象中。
+　　为了更详细了解程序内容，请参阅参考文献1光盘。
+林鹤鸣（广州广东省电力工业学校计算中心510520）
+参考文献
+［1］王国荣．Active Server Pages ＆ Web数据库．北京：人民 邮电出版社，1999
+［2］杨内，江南．精品动态网页制作．北京：清华大学出版社，1999
+［3］林金霖．ASP实务经典．北京：中国铁道出版社，1999
+收稿日期：2000－02－10

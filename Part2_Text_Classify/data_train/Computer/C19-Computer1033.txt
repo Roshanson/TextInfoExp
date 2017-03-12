@@ -1,0 +1,106 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第4期 Vol.24 No.4 1998
+
+
+
+
+直接辨识扰动模型的内模极点配置自适应控制
+刘贺平
+摘　要　给出了直接在辨识器中估计扰动模型和过程模型参数的算法，扰动模型用于极点配置自适应控制，根据内部模型原理消除未知确定扰动.由于使用了与常规方法不同的观测向量，因而省去了分离扰动模型的计算过程.这种方法可适用于多个扰动频率的情况，且辨识器的阶数不超过常规辨识器.分析了参数的可辨识性和系统的稳定性.
+关键词　辨识，确定扰动，极点配置，自适应控制.
+ADAPTIVE POLE PLACEMENT CONTROLLER WITH
+DIRECTLY ESTIMATING DISTURBANCE MODEL
+
+LIU HEPING
+(Beijing University of Science & Technology, Beijing 100083)
+Abstract　A new algorithm which directly identifies parameters o f disturbance model and plant model in an estimator is given. The disturbance mo del is used for adaptive pole placement controller based on the internal model principle so that the disturbances can be eliminated. Because the identifing way is different from commonly used ones, it is not needed to separate the disturbance model . The method can be used in the situation where the disturbances are of many frequencies, and the degree of the estimator is not higher than that of the common one. The persisten t spanning of observing signal and system stability analysis are also given.
+Key words　Identification,deterministic disturbances, pole placement , adaptive control.
+1　前　言
+　　在极点配置自适应控制中，消除未知确定扰动的影响一直是被关心的课题.特别是正弦波类 型周期性扰动，由于扰动模型参数和控制对象零点参数在辨识、分离上的复杂性，有一些算法往往是以扰动模型已知为前提的［1］.近些年，一些文献对模型未知的情况也进行了研究，提出了将扰动模型与过程零点进行分离的方法，并在改进求取扰动模型方面做了努力，使模型分离计算过程有所简化［2］，Palaniswami［3］利用分离出 的扰动模型估计值代替真值构成观测向量来直接辨识过程零点参数.这种方法减少了辨识参 数的个数，简化了分离模型的计算，但没有给出被控对象高于二阶、扰动频率多于一个情况 时的解决办法.
+　　上述各种方案，虽然计算方法各异，但分离模型都是必须的.随着系统阶数或扰动频率的增 加 ，将加大分离的计算量和难度.本文提出一种能够直接辨识出扰动模型及控制对象零点参数 的极点配置自适应控制算法，因此，无需对模型再行分离.从而简化了计算过程.扰动的频 率可以是多种的情况.
+2　受控系统描述
+　　设含有确定性扰动的控制对象模型可用下列差分方程描述，
+A(z－1)y(t)=z－dB(z－1)u(t)+d(t).　　　(1)
+式中分别表示t时刻系统的输入、输出信号.Z－1为一步延迟算子，d(t)为分段连续有界的确定性扰动信号，这里取
+　　(2)
+其中，degD(z－1)=2nω.
+　　根据极点配置控制器设计的需要，设(1)式所示系统中B(z－1)与A(z－1)D(z－1)互质；延迟时间d≥1，且为已知整数；n,m,nω已知.
+3　扰动模型及过程系统参数的估计方法
+　　对于(1)式描述的系统，常规的方法是将其改写成以下形式，
+A′(z－1)y(t)=z－dB′(z－1)u(t).　　(3)
+式中A′(z－1)=A(z－1)D(z－1),　B′(z－1)=B(z－1 )D(z－1).再由此模型估计出A′(t,z－1)和B′(t,z－1)，为了构成抑制扰动的极点配置控制器，还需要将B′(t,z－1)分离为B(t,z－1)和D(t,z－1).本文采取以下措施，可省去分离计算过程.首先，将扰动模型写成以下形式
+　(4)
+设m≤n，利用(4)式将B(z－1)D(z－1)重新构造，使(1)式得到如下的参数化结构
+　(5)
+定义
+　(6)
+于是由(5)和(6)式得到
+
+采用适当的辨识器即可得到模型的估计A′(t,z－1),B(t,z－1),D(t,z－1).
+　　在辨识器中Φ1(t-1)与(3)式对应的Φ(t-1)具有不同的形式，是用相同的输出信号和控制信号重新组合而成的，因此需要考察是否能够维持与Φ(t-1)相同的辨识特性.
+　　定义1.　由P维向量信号Φ (k)组成的向 量集合｛Φ(k),N｝=｛Φ(k),Φ(k+1 )，…，Φ(k+N-1)｝，如果存在有界的正整数N，对于所有的k可张成的最大空间的维数是P，则称其为具有P.S.(Persistently Spanning)性［4］.P.S.性保证了可辨识性.
+　　定理1. 辨识方程(7)式中的观测向量Φ1(t-1)与常规的观测向量Φ(t-1)具有相同P.S.性的充要条件是min｛m,n｝≤1.
+　　证明.充分性.设Φ(t-1)具有P.S.性，则有
+rank｛Φ(t-1),N｝=n+m+1+4nω=dimθ,
+而｛Φ1(t-1),N｝可表示成｛Φ(t-1)，N｝的变换形式
+｛Φ1(t-1)，N｝=Γ｛Φ(t-1)，N｝.　　(8)
+其中
+
+
+Г∈R［m+n+1+(3+m)nω］×(n+m+1+4nω)，Г矩阵的左上角为(n+2nω)阶单位矩阵，记为I，右下方为(m+1)(nω+1)×(2nω+m+1)阶矩阵，记为Г1.当m=1时，Г1是(2+2nω)×(2+2nω)阶满秩方阵.m=0时，Г1成为(nω+1)×(2nω+1)阶行满秩矩阵，综合两种情况可知，Г实现了行满秩变换，则有
+rank｛Φ1(t-1),N｝=dimθ1，　　m ≤1.　　(9)
+　　必要性.m＞1时，Г为列满秩矩阵，rank Г=n+m+1+4nω，可得
+rank｛Φ1(t-1),N｝=n+m+1+4nω＜dimθ1，　　m＞1，　　(10)
+这就证明了m≤1的必要性.对于n≤1的情况分析的结果是相同的.
+证毕.
+　　定理1不仅说明min｛m,n｝≤1时Φ1(t-1)与Φ(t -1)具有相同的P.S.性，而且由于dimθ1≤dimθ，说明需辨识的参数个数不多于Φ(t-1)的情况.
+
+4　自适应控制算法及闭环系统性质
+　　控制对象和扰动模型参数未知时，利用辨识的参数按下式确定t时刻的控制信号.
+D(t,z－1)L(t,z－1)u(t)=H(t,z－1)yr(t)-R(t,z－1)y(t),　　(11)
+A′(t,z－1)L(t,z－1)+z－dB(t,z－1)R(t,z－1)=T(z－1).　　(12)
+其中T(z－1)渐近稳定，用来指定闭环系统极点.yr(t)为参考输入信号，H(t,z－1)是前置补偿器，为消除稳态误差而设置.当参考输入渐近为常值时可设定为
+H(t,1)=T(1)/B(t,1).　　(13)
+　　定理2.　本文提出的自适应控制算法使控制系统满足： 
+　　1) ‖Φ1(t-1)‖＜∞，　　t;
+　　2) 　(ε1为估计误差)；
+　　3) 
+　　证明.由定理1的结论可知：由Φ1(t-1) 构成的辨识器由于维持了P.S.性不变，因此，与采用Φ(t-1)的算法具 有相同的参数辨识性质.由(7)式的第一式估计误差可写成
+ε1(t)=A(t,z－1)D(t,z－1)y(t)-z－dB(t,z－1)D(t,z－1)u(t),　　(14)
+引用估计值可将(1)式表示为
+A(t,z－1)y(t)-z－dB(t,z－1)u(t)=d′(t)+ε′1(t).　　(15)
+比较(14)、(15)式可知，d′(t)相当于d(t)的估计值，ε′1(t)相当于未建模动态，且满足
+D(t,z－1)d′(t)=0,　　　(16)
+ε1(t)=D(t,z－1)ε′1(t).　(17)
+由(15)式及自适应控制律(11)式可得到闭环系统，再将(16)式代入，则
+　(18)
+考虑到(17)式的关系，并且由参数辨识的有界性及yr(t),d′(t)有界，T(z－1)渐近稳定，则y(t),u(t)关于ε1(t)线性有界，根据辨识性质［5］
+
+及文献［5］的基本引理6.2.1可得出1)和2)的结论.由特征方程(18)可得
+T(z－1)［y(t)-yr(t)］=L(t,z－1)ε1(t)+［z－dB(t,z－1)H(t,z－1)-T(z－1)］yr(t).
+根据(13)式，上式右边的第二项t→∞的极限等于零.由于T(z－1)渐近稳定，及ε1(t)→0，辨识参数有界，则有，此即定理2的3).
+证毕.
+5　数值仿真结果
+　　利用本文提出的控制算法对一不稳定的非最小相位系统
+(1.0-2.1z－1+1.1z－2)y(t)=z－1(1.0+1.2z－1)u(t)+d(t)
+进行了数值仿真，系统参数和扰动模型按未知处理，d(t)为正弦扰动，采样周期取相对值T=1，仿真结果示于图1和图2.图1为扰动频率单一，d(t)=0.1sinωt的情况.在t=65时，角频率从ω=0.5突变成ω=0.3.图2是扰动中含有2种频率，d(t)=0.1sin0.5t+0.1sin0.3t的情况.参考输入采用幅值为1的周期方波.在t＜25的初期对控制信号进行了u(t)≤0.3的限幅.从两种情况的仿真结果可以看出，控制系统对扰动体现了很强的抑制能力.无论是动态特性还是静态特性都取得了满意的效果.
+
+
+　　　　　(a) 系统输出响应　　　　　　　　(b) 控制信号过程
+图1　nω=1时的仿真结果
+
+　　　　　
+　　　　(a)系统输出响应　　　　　　　　　　　　　　(b)控制信号过程
+
+图2　nω=2时的仿真结果
+6　结论
+　　在极点配置自适应控制中，直接对未知扰动模型及过程零点参数分别进行辨识的方法，可减少模型分离的计算.本文提供的算法可适用于多种未知频率确定扰动的情况，辨识器的阶数不多 于常规型辨识器.但为了保持辨识器的P.S.性而付出了一定的代价，即应用条件为min｛m,n｝≤1.
+作者单位：北京科技大学自动化系　北京 100083
+参考文献
+1　Janecki D. Direct Adaptive Pole Placement for Plants Having Purely De terministic Disturbances. IEEE,Trans.Automatic Control, 1987,AC－32(2):187-189
+2　刘贺平，孙一康.抑制未知确定扰动的极点配置自适应控制，自动化学报，1996，22(4):401-409
+3　Palaniswami M. Adaptive Internal Model for Disturbance Rejection and Control. IEE PROCEEDINGS－D,1993,140(1):51-59
+4　Shinaka S, Tanaka K, Suzuki T. A Simble Order Determination Method Based on a Generalized Adaptive Law.int, J. of control,1985，41(4)：10 37-1050
+5　Goodwin G C, Sin K S. Adaptive Filtering Prediction and Control. NJ:Prentice －hall,1984
+收稿日期　1996－07－18

@@ -1,0 +1,83 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年 第25卷 第6期 Vol.25 No.6 1999
+
+
+
+数控铣削过程有约束广义
+预测控制解析算法1)
+李为民　黄　田　D.J.Whitehouse
+摘　要　通过分析性能指标函数和约束条件的特点，提出并证明了两个关于有约束广义预测控制性质的定理，进而提出了一种解析算法，并将其成功地应用于数控铣削过程.计算机仿真和切削试验表明，算法效率高且输出性能良好.
+关键词　广义预测控制，约束条件，可行域，解析算法.
+AN ANALYTIC ALGORITHM FOR CONSTRAINED GPC IN MILLING PROCESS
+LI Weimin　HUANG Tian
+(School of Mech.Eng.,Tianjin University,Tianjin　300072)
+D.J.Whitehouse
+(Dept.of Eng.,University of Warwick,Coventry CV4　7AL,UK)
+Abstract　Two physical universal laws about the nature of constrained GPC (Ge-neralized Predictive Control) are proposed and proven through analyzing the characteristics of the cost function and constraints.Then,an analytic algorithm is sugges-ted and successfully applied to the constant force milling control.Computer simulation and cutting test show that the proposed scheme is computationally efficient with good performance.
+Key words　GPC,constraints,permission district,analytic algorithm.
+1　引言
+　　数控铣削过程恒力控制对于提高生产率、保证加工精度和可靠性至关重要，因而成为各国学者多年来潜心研究的课题［1～3］.然而，前人所用的参数整定方法仅依赖于被控系统过去和当前的动力学行为，未考虑控制输入和系统输出前景的影响，且未能对控制器施加合理约束条件.当因切深或切宽突变而诱发铣削力突变时，这类控制方法通常会导致被控系统输出超调或控制输入过大.
+　　有约束广义预测控制提供了克服上述缺点的一种途径.本文用几何分析法，通过研究广义预测控制的性能指标函数、约束条件及其关系，提出了一种解析算法，并进行了试验验证.
+
+2　问题简述
+　　广义预测控制算法可参考文献［4］.对于如下性能指标函数
+　　(1)
+未来Nu个时刻的最优控制增量为
+　　(2)
+式(1)可写成向量形式
+　　(3)
+式中.约束条件的推导方法请参考文献［5］，其一般形式为
+DΔu≤c，　　(4)
+式中 D为k×Nu矩阵，c为k维向量，k值取决于约束条件的个数.由于目标函数(3)是关于Δu的二次型，而约束条件(4)是线性的，因而属于二次规划(QP)问题.尽管有若干基于非线性搜索的方法可以求解QP问题［6，7］，但算法效率一般较低，难以满足对数控铣削过程这类小控制周期系统进行实时控制的要求(例如，当主轴转速n=1200r/min时，若每转发一次指令，则控制周期T=60/n=0.05s).因此，构造高效的QP算法则成为实现数控铣削过程有约束广义预测控制的关键.
+3　理论基础
+　　综合考虑伺服系统动特性和加工过程中刀具变形等因素，数控铣削过程可近似成一类二阶系统，因而取Nu=2可保证闭环系统的稳定性［8］.此时，约束条件(4)是平行于J轴的一组平面，性能指标函数(3)是三维空间曲面，并存在如下定理.
+　　定理1.任一平行于J轴的平面与性能指标函数曲面的交线为抛物线.
+　　证明.对任一平行于J轴的平面Γ：γ′0+γ′1Δu(t)+γ′2Δu(t+1)=0，当γ′2≠0时，有
+
+因此
+
+性能指标函数(3)与平面Γ的交线为
+
+
+显然，上式是关于Δu(t)的抛物线，且由于ΓT1HΓ1＞0，函数存在极小值，极小值点为
+　　(5)
+当γ′2=0时
+
+有与γ′2≠0类似的结果.定理得证.
+　　定理2.若性能指标函数的无约束极小点在可行域之外，则有约束极小点必在可行域边界上.
+　　证明.根据控制增量的物理意义，当y＜yr时，可行域必在Δu(t)-O-Δu(t+1)的第一象限，如图1所示.图中pi表示第i个约束条件边界.设平面Γ通过无约束极小点(线)且与可行域相交，则由于平面Γ与性能指标函数J的交线为一抛物线JΓ，在极小点任一侧JΓ是单调上升的，故约束极小点必为Γ与可行域边界的交点(线).又由Γ的任意性，定理得证.
+
+
+图1　y＜yr时的可行域
+4　解析算法
+　　首先用式(2)求出无约束极小点，然后判断是否满足约束条件.若满足，即为有约束最优解；否则，先求出可行域边界，再用式(5)分别求出各边界上的函数极小点和相应的极值，极值最小者即为有约束控制增量最优解.由于约束条件平面组都平行于J轴，在平面上退化为一组直线，因此可通过直线求交及比较交点坐标值获得可行域边界.计算机仿真表明，此算法可满足数控铣削过程的实时性要求(限于篇幅，从略).
+
+5　切削试验
+　　切削试验设备为Cincinatti H1000卧式加工中心，以具有16-bit双通道A/D,D/A的高速数字信号处理板TMS320C50-A为控制器.安装于主轴末端的光电编码器提供每转1024脉冲，作为控制器的外部时钟给定，以保持采样周期与主轴转速同步，并在每齿切削周期中采集8个数据.由KISTLER测力仪拾取的切削力信号经电荷放大、滤波后输入控制器.控制器先将铣削力按有效值合成，再按前述算法计算控制指令，后经数控系统内置PLC读入，通过改写进给倍率寄存器实时改变进给速度.
+　　切削条件为：逆铣，10mm HSS6齿棒铣刀，45号钢工件(形状如图2所示)，主轴转速900r/min，初始进给速度100mm/min，铣削力设定值500N.约束条件为：进给速度上限700mm/min，最大进给速度增量20mm/min，铣削力大于设定值时间小于2T，超调约束.控制效果如图3所示.图中u为进给速度(mm/min),y为铣削力(N).由图可见，当铣削力因轴向切深变化而大于设定值时，控制算法迅速使铣削力调整到设定值，并成功地抑制了超调.
+
+
+图2　工件形状
+
+
+图3　试验结果
+6　结束语
+　　1)提高算法效率是将有约束广义预测控制用于数控铣削过程的关键.
+　　2)本文提出的解析算法可满足数控铣削过程的实时性要求，且具有优异的输出性能.
+　　3)此算法为Nu≤2的小控制周期系统的有约束广义预测控制提供了有效手段，具有工程应用价值.
+1)天津市自然科学基金资助项目.
+作者简介：李为民　1964年生，天津大学博士研究生，现任河北工业大学讲师.主要从事数控机床、自适应控制和模糊控制应用研究.
+　　　　　黄　田　1953年生，博士，现任天津大学教授、博士生导师.主要从事机械制造、机械动力学、振动主动控制和自适应控制应用研究.
+作者单位：李为民　黄　田　天津大学机械工程学院　天津　300072
+　　　　　D.J.Whitehouse　Dept.of Eng.,University of Warwick,Coventry CV4　7AL,UK
+参考文献
+1　Lauderbaugh L K,Ulsoy A G.Model reference adaptive control in milling.ASME J.Eng.Ind.,1989,111(1):13～21
+2　Altintas Y.Direct adaptive control of end milling process.Int.J.Mach.Tools Manufact.,1994,34(4):461～474
+3　Hsu P L.Hsieh M Y.Application of self-tuning control on industrial CNC machines.Int.J.Mach.Tools Manufact.,1994,34(6):859～877
+4　Clarke D W,Mohtadi C,Tuffs P S.Generalized predictive control――Part Ⅰ and Part Ⅱ.Automatica,1987,23(2):137～160
+5　Tsang T T C,Clark D W.Generalized predictive control with input constraints.In:Proc.IEE,1988,135D,Pt.D,451～460
+6　Fletcher R.Practical Methods of Optimization.London:John Wiley & Sons,1990
+7　沈守范，张纪元.正交计算设计优化算法.华中理工学院学报，1986，23(2)：15～19
+8　Astrom K J,Wittenmark B.Adaptive Control,New York:Addison Wesley,1989
+收稿日期　1997-08-15　　收修改稿日期　1998-04-14

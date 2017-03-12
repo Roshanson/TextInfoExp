@@ -1,0 +1,97 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+用含动态隐层的前馈网辨识
+非线性系统1)
+鲍晓红　　贾英民
+摘要　用含动态隐层的前馈网对非线性系统建立全局成立的输入输出模型，证明了这种辨识结构的可行性，网络学习算法为动态BP法.
+关键词　前馈网，辨识，动态BP算法.
+NONLINEAR SYSTEM IDENTIFICATION USING FEEDFORWARD 
+NEURAL NETWORKS WITH RECURRENT HIDDEN LAYER
+BAO XIAOHONG　　JIA YINGMIN
+(The Seventh Research Division, Beijing University
+of Aeronautics and Astronautics, Beijing 100083)
+Abstract　This paper presents a feedforward neural network which contains a dynamic hidden layer (RHNN) for the modeling of a nonlinear system and the feasibility of this approach is proved. The learning algorithm is the dynamic BP. In the simulation a comparison between RHNN and RFNN for modeling a nonlinear system is made.
+Key words　Feedforward neural networks, system identification, dynamic BP algorithm.
+1　引　言
+　　人们在用神经网辨识非线性系统方面已做了大量工作，这些工作大都建立在非线性动态系统的输入输出模型上［1］，并用增加了输出时延反馈的多层前馈网(RFNN)来逼近它，效果显著.但值得注意的是这种输入输出模型是从离散非线性状态方程推出的局部成立的模型［1］，对原状态方程中的输入输出而言在全局上并不一定有此关系，针对这个问题，本文提出用含动态隐层的前馈网(RHNN)直接对用状态方程描述的非线性系统的输入输出关系建立网络模型，学习算法为动态BP法，并在仿真中对此种系统的输入输出关系分别用RFNN和RHNN进行了辨识比较，结果表明后者能更准确地辨识这种系统.
+2　用神经网对非线性系统建模
+　　一类广泛应用的非线性系统可以在大范围内(全局)用如下模型表示：
+x(k+1)=f(x(k),u(k)),y(k)=h(x(k),u(k)).
+(1),(2)
+其中为系统内部状态；为系统输入；为输出；f，h为连续函数.
+　　设系统(1)，(2)满足如下假设：
+　　H1)对于有限的M(正整数)，恒有‖x(M)‖+‖y(M)‖＜∞，即系统是稳定的；
+　　H2)f,h满足Lipschitz条件，即系统的解是唯一的.
+　　定理1.对满足H1),H2)的非线性系统(1)和(2)，可以用一个带动态隐层的四层前馈网(如图1所示)在k∈[0,M]内以任意精度逼近其输入输出特性，即对使
+
+(3)
+
+图1　RHNN示意图
+　　证明.用两个三层前馈网NNf,NNh分别逼近f(.),h(.).对NNf，其参数Wf={1Wf,2Wf,1b},其中1Wf∈Rn1×(n+r),2Wf∈Rn×n1,1b∈Rn1.对NNh，其参数Wh={1Wh,2Wh,2b},1Wh∈Rn2×(n+r),2Wh∈Rm×n2,2b∈Rn2,则有
+
+(4)
+其中若x=(x1,…,xn)T,g(x)=(g(x1),…,g(xn))T,
+
+令则有
+
+(5)
+又
+
+(6)
+再令则有
+
+(7a)
+
+(7b)
+
+(7c)
+　　又由文献［2］中定理1，存在相应维数的权值矩阵W*f,W*h使得(3)式成立，则由上述推导和定义，存在1W*,2W*,3W*,HW*,uW*,1b*,2b*，使(3)式成立.
+3　网络的学习算法
+　　设Θ表示神经网中所有待求的权及阈值，为简单计，只对MISO系统推导，MIMO系统类似.令预报误差定义目标函数
+
+(8)
+N是数据长度.则有
+
+式中η为迭代步长，取对各权值的导数.
+　　把动态神经网写为和式
+
+注意到隐层的动态性，对Θ中的不同分量，有
+
+
+其中
+
+因Ψ(k,Θ)是动态的所以又叫动态BP法.
+4　仿真与分析
+　　例.
+
+　　分别用RFNN的串并法和本文RHNN的并联法对此系统的输入输出关系辨识，若事先已知yp与u1,2无直接关系，可令uW=0.仿真参数及结果如表1、图2、图3所示.
+表1
+
+　RFNN(串并法辨识)RHNN(并联辨识)
+算法BP法，η=0.05动态BP法，η=0.25
+网络结构4-45-12-10-8-1
+训练输入
+训练步数k=20,000k=20,000
+预测输入
+预测结果图2图3
+结论1)2)
+
+
+
+图2　用RFNN的预测结果
+
+图3　用RHNN的预测结果
+　　由上例及其它大量仿真可得如下结论：
+　　1)RFNN对满足状态方程的非线性系统的输入输出关系的全局逼近能力不强.
+　　2)RHNN对这种输入输出关系的描述能力比较强.且此关系的逼近精度与训练输入的频带有关，若预测输入在训练输入频带附近则预测精度高.
+　　本文提出用含动态隐层的四层前馈网对非线性系统进行辨识，证明了此方案的可行性.网络学习算法为动态BP法.仿真表明此种结构的网络通过学习对满足状态方程的非线性系统的输入输出关系能进行较好的辨识.
+1)　国家自然科学基金资助项目.
+作者单位：北京航空航天大学第七研究室　北京　100083
+参考文献
+　[1]　Leontaritis I J, Billings S A. Input-output parametric models for nonlinear systems, part I:Deterministic non-linear systems. Int.J.Control, 1985, 41(2):303―328.
+　[2]　刘延年， 冯纯伯.用神经网络进行非线性离散动态系统辨识的可行性. 控制理论与应用，1994，11(4)：413―420.
+收稿日期　1995-08-17

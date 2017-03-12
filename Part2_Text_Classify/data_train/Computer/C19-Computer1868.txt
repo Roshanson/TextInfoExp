@@ -1,0 +1,121 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000 Vol.19 No.3 P.41-42
+
+
+
+Java MPI的实现
+张晓军　杨灿群　黄春
+　　摘　要：用Java编写MPI应用程序,则应用程序不仅更易于在各种异构网络环境下运行,而且能充分发挥现有的网络资源的能力。本文主要介绍如何实现Java语言的MPI。
+　　关键词：MPI机制 Java语言 网络并行 JNI
+　　MPI是Message-Passing Interface的缩写,它是一种在多个计算机中的进程之间进行通信的机制。通过MPI,不同子任务间可以进行通信,从而达到并行计算的目的。
+　　MPI与其它并行编程环境（如PVM,express等）相比,使用简单、编程方便。它具有以下主要特点:
+　　（1）通用性强,即适于TCP/IP网络,又适于MPP大规模并行系统;
+　　（2）系统规模小（约几兆字节）;
+　　（3）所有的现有并行机厂商都宣布支持MPI;
+　　（4）成熟度高;
+　　（5）使用简单,编程方便。
+　　由于以上原因,MPI已成为目前比较流行的网络并行编程环境。然而MPI只支持C、Fortran和C++语言的网络分布并行计算环境,这就存在MPI应用程序在不同系统之间的二进制兼容的问题。从而导致它们不能很好地适应用户的各种异构型网络,特别是Internet网络。
+　　Java是一种新的面向对象的编程语言,它只有简单、面向对象、解释执行、坚固性、安全性等特色。特别是它支持网络的极具吸引力的特征。首先Java的源代码可以被编译成与机器平台无关的字节码形式,字节码对平台的独立性可以保证运行过程与平台的独立;其次,Java广泛的应用环境。如Java Applet可以嵌在HTML主页中,由支持Java的浏览器自动下载和执行。这种特性为将可执行软件包传输给网络上的每个用户提供了一个简单、直接的方法。
+　　如果把Java语言和MPI结合起来,提供MPI对Java语言的支持。使用Java语言编写MPI应用程序将解决原有MPI应用程序的平台兼容问题。因而可充分利用Internet网络上的现有计算机资源,进行网络并行计算解决大型问题。
+　　本文将主要介绍怎样在MPI中提供对Java语言的支持,最后给出1个Java MPI应用程序的例子。
+1 实现原理
+　　MPI系统使用非常简单,它提供给用户的只是一组库程序（libmpi.a,libampi.a,libmpich.a等）。程序员通过使用这些库中的库函数来编写MPI并行程序。以下是一个简单的用C语言编写的例子:
+　　#include ″mpi.h″
+　　main（argc,argv）
+　　int argc;
+　　char ＊＊argv;
+　　｛
+　　　　　char message20;
+　　　　　int myrank;
+　　　　　MPI_Status status;
+
+　　　　　MPI_Init（&argc,&argv）;
+　　　　　MPI_Comm_rank（MPI_COMM_WORLD,&myrank）;
+　　　　　if（myrank==0）｛ /＊ code for process zero ＊/
+　　　　　　　　strcpy（message,″Hello,there″）;
+　　　　　　　　　　　MPI_Send（message,strlen（message）,
+　　　　　　　　　　　　　　　　　　　　　　MPI_CHAR,1,99,
+　　　　″MPI_COMM_WORLD）;
+　　　　｝else ｛　　　/＊code for process one＊/
+　　　　　　MPI_Recv（message,20,MPI_CHAR,0,99,
+　　　　　　　　　　　MPI_COMM_WORLD,&status）;
+　　　　　　printf（″received:%s：\n″,message）;
+　　　　｝
+　　　　MPI_Finalize（）;
+　　｝
+　　在本例中,进程0 （rank=0）向进程1（rank=1）发消息串“Hello there”,进程1从进程0收消息,消息由消息信封标识。在编写MPI程序时,首先必须要调用MPI_Init库函数初始化,然后才可以调用MPI库函数MPI_Comm_rank获得进程标识,并通过MPI库函数MPI_Send和MPI_Recv发送和接收消息,程序的结束必须调用MPI_Finalize库函数。
+　　为了使MPI能够支持Java语言,必须在MPI系统中提供这些库函数的Java语言接口类（简称jMPI）。然而,从头到尾用Java来编写1个jMPI类是没有必要的,可以利用Java的JNI技术,在编写jMPI的方法时通过调用相应的MPI C函数库来完成对应的Java MPI功能。
+　　JNI（Java Native Interface）是1个本地编程接口,它定义了一个标准的命名和调用协定,以允许运行在Java虚拟机中的Java代码与用其它语言（C,C++和汇编）写的应用程序和库进行交互。
+2 具体实现
+　　jMPI接口类中必须实现表1中所列的本地方法。
+表1 jMPI接口类中实现的接口方法
+分类本地方法名
+消息的发送和接收MPI_Send(),MPI_Recv(),MPI_sendrecv(),MPI_1send(),MPI_1recv(),
+MPI_Prob(),MPI_Wait(),MPI_Test(),MPI_Cancel
+用户自定义类型MPI_Type_contiguous(),MPI_Type_vector(),MPI_Type_hvector(),
+MPI_Type_indexed(),MPI_Type_hindexed(),MPI_Type_struct()
+使用用户自定义类型MPI_Type_commit(),MPI_Type_free(),MPI_Get_element(),
+MPI_Address(),MPI_Type_lb(),MPI_Type_ub()
+打包和解包MPI_Pack(),MPI_Unpack(),MPI_Pack_Size(),
+通信和组操作MPI_Group_size(),MPI_Group_rank(),MPI_Group_incl(),
+MPI_Group_excl(),MPI_Comm_size(),MPI_Comm_rank(),MPI_Comm_dup()
+环境管理MPI_Get_processor_name(),MPI_Wtime(),MPI_Init(),MPI_Finalize().
+MPI_Initialized(),MPI_Abort()
+错误信息处理MPI_Errhandler_create(),MPI_Errhandler_set,MPI_Errhandler_free(),
+MPI_Error_string()
+
+　　下面是用Java JNI编写jMPI类的过程。
+　　1.在C语言端,用C编写程序jMPIInterface.c,在程序中实现表1中的jMPI本地方法,该组本地方法通过调用相应的MPI C库函数来完成对应MPI系统接口的功能。下面列出在jMPIInterface.c中jMPI的spawn本地方法的实现代码。
+　　JNIEXPORT jint JNICALL Java_jMPI_Get_processor
+　　_name（JNIEnv env,jobject obj,jstring jname,jint jlen）
+　　｛
+　　　　char＊cName;
+　　　　jint＊jval;
+　　　　/＊Get string information＊/
+　　　　cName=（char＊）getJavaString（jName）;
+　　　/＊Call MPI routine＊/
+　　　jval=（jint）MPI_Get_processor_name（cName,jlen）;
+　　/＊Free memory＊/
+　　releaseJavaString（jName,cName）;
+　　return jval;
+　　2.在Java端,编写Java程序jMPI.java实现jMPI类。在该程序中用native关键字来声明在jMPIInterface.c中实现的本地方法。以下列出jMPI.java的部分代码:
+　　public abstract class jMPI
+　　｛
+　　　　　　　　　　　　　　┇
+　　　　　　　　　　　　　　┇
+　　　　public static native int MPI_Get_processor_name
+　　　　　　　　　　　　　　　（char ＊name,int ＊len）;
+　　　　public static native int MPI_Init（int ＊argc,char
+　　　　　　　　　　　　　　　　　　　　　　　　　＊＊argv）
+　　　　　　　　　　　　　　┇
+　　　　　　　　　　　　　　┇
+　　｝
+　　3.建立jMPI.h文件。在该头文件中声明了jMPI本地方法的原型,该文件不用手工编写,只需用javah工具生成。过程如下:
+　　javac jMPI.java
+　　javah-jni jMPI
+　　4.编译jMPIInterface.c文件并把它生成动态链接库libjMPI.so。
+3 编程实例
+　　以下是在2台联网的ALPHA工作站上（装有UNIX操作系统,MPI1.1,Java JDK1.1）运行通过的Java MPI应用程序实例。
+  /**********文件名:test.java**********/
+  class test 
+  static public void main（String[]args）
+　　char buf[]=new char［128］;
+　　　　int i,j,id,np;
+　　　　Status stat;
+　　　　String host;
+　　　　　MPI.Init（args）;
+　　　　　host=MPI.Get_processor_name（）;
+　　　　　np=MPI.COMM_WORLD.Size（）;
+　　　　　id=MPI.COMM_WORLD.Rank（）;
+　　　　　System.out.println（″Process″+id+″/″+np+
+　　　　　　　″on″+host）;
+　　　　　MPI.Finalize（）;
+　　　　｝
+　　｝
+4 结束语
+　　Java与MPI的结合即能发挥Java语言可移植性强的优势,又能通过MPI充分利用网上的计算机资源,实现大型问题的网络并行计算。目前,基于消息传递的网络并行编程环境除了MPI支持Java语言编程外,PVM也支持Java语言编程,不久的将来,Express、Linda、P4、Zipcode、PARMACS等网络并行编程环境也将支持Java语言编程。
+张晓军（长沙国防科技大学计算机系410073）
+杨灿群（长沙国防科技大学计算机系410073）
+黄春（长沙国防科技大学计算机系410073）
+收稿日期：1999-09-20

@@ -1,0 +1,65 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+一般客户/服务器系统的负载分析1)
+金尊和　吴　澄　王　然
+关键词　客户/服务器，系统建模，马尔科夫过程，排队网络.
+SYSTEM LOAD ANALYSIS FOR A GENERAL
+CLIENT/SERVER SYSTEM
+JIN ZUNHE　　WU CHENG　　WANG RAN
+(CIMS-ERC,Tshinghua University,Beijing 100084,PRC)
+Key words　Client/server,System modeling,Markov process,queuing network.
+1　系统描述
+　　目前，有关客户/服务器系统分析和建模方面的工作不多［1，2］.本文首次用马尔科夫排队网络分析、计算具有多类服务器的一般网络系统稳态性能的解析解，给出了服务器负载均衡的条件.
+　　考虑由K个客户机、M个服务器群组成的一般网络系统.假设：1)客户机独立、随机地提出任务请求，请求的时间间隔服从参数为λ的负指数分布；2)客户请求和服务结果均经网络传送，传送时间服从负指数分布，参数为μnet;3)服务器群相互独立，第i个服务器群由mi(mi≥1)个独立的相同服务器组成，服务时间服从负指数分布，参数为μi.第i个服务器群接收请求的比例为
+2　系统性能求解
+2.1　一般客户/服务器系统的数学模型及其求解
+　　按上述假设，这时系统实际上是一个有限源的马尔科夫排队网络(图1).图中每个圆圈代表一个服务器群节点.按文献［3］的定理1，得系统稳态时的联合分布概率为
+(1)
+
+图1　系统的马尔科夫排队网络模型
+其中　ksi为节点si的客户机数.
+2.2　系统的负载指标
+　　利用稳态时系统的联合分布概率，计算系统的性能指标.
+　　网络的队长为
+
+(2)
+网络的平均利用率为
+
+(3)
+其中是网络分量固定为i的状态子空间.
+　　第i个服务器的排队队长为
+
+(4)
+平均利用率为
+
+(5)
+其中是第i个服务器分量固定为l的状态子空间.
+3　各类服务器负载均衡的条件
+　　系统运行时，希望系统资源充分利用，各类服务器群的负载均衡，即qs1=qs2=…=qsM.为此，有如下的结论：
+　　定理1.所有服务器的负载均衡的充分条件是
+
+(6)
+　　定理2.当各类服务器数均为1时，负载均衡的充要条件是
+
+(7)
+　　也就是说，服务器负载均衡的条件是各个服务器的服务速度与接到请求的比例成正比，这与我们的直观理解是一致的.
+4　计算实例
+例1.假设有一个基于客户/服务器结构的数据库系统，其参数如下：
+N=15,M=2,λ=0.3，μnet=10,m2=1,m1=1,μs1=2,μs2=2,p1=1/3,p2=2/3.
+由式(2)―(5)计算可得
+Lnet=0.420，qnet=0.491，Ls1=2.130，Ls2=2.130，qs1=0.850，qs2=0.850.
+由结果可知，此时两个服务器的负载是均衡的，与定理1是一致的.
+　　例2.改变第二个服务器的参数，令μs2=3,得到
+Lnet=0.523，qnet=0.533，Ls1=2.862，Ls2=0.711，qs1=0.891，qs2=0.663.
+　　本文建立了一般客户/服务器系统的马尔科夫排队网络模型，得出了系统稳态性能的解析结果，并分析、论证了系统服务器负载均衡的条件.这不仅有助于认识一般客户/服务器系统的稳态特性，而且对一般客户/服务器系统的配置设计和优化具有重要作用.
+1)　国家自然科学基金资助项目.
+作者单位：清华大学自动化系国家CIMS-ERC　北京　100084
+参考文献
+［1］　Moriguchi S.Performance and Performability Evaluation of Client/Server:System by Petri Nets.Trans.A of IFIP.1992:622―628.
+［2］　Petriu D C,Woodside C M.Approximate MVA from Markov Model of Software Client/Server System.In:Proc.of 3rd IEEE Symposium on Parallel and Distributed Processing,322―329.
+［3］　Jin Zunhe,Wu C, Wang R.Analytical Results of Server Loads and Network Load in a General Client/Server System.Science and Technology of Tsinghua,1996,1(2):193―196.
+收稿日期　1995-05-02

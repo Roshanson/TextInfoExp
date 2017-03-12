@@ -1,0 +1,142 @@
+信息与控制
+INFORMATION AND CONTROL
+1999年 第28卷 第2期 Vol.28 No.2 1999
+
+
+
+化工批处理过程调度综述
+李慧芳　李人厚　陈浩勋
+　　摘要　综述了化工批处理过程调度问题的特点、难点及一般框架，总结了近年来该领域取得的进展和存在的问题，并指明了将来的发展方向．
+　　关键词　化工批处理过程，多产品过程，多目的过程，调度，集成
+THE SURVEY OF SCHEDULING OF BATCH CHEMICAL PROCESS
+LI Huifang　LI Renhou　CHEN Haoxun
+(Institute of System Engineering, Xi'an Jaotong University*Xi'an, 710049, PRC)
+　　Abstract　This paper describes the characteristics, difficulties and general framework of scheduling problem in batch chemical process, then summarizes the progress made and existing problems in this area during the last few years, and finauy points out the developmentg trends in the future.
+　　Key words　batch chemical process, multiproduct plants, multipurpose plants, scheduling, integration
+　　1　引言
+　　在化学处理工业(Chemical Processing Industry，简称CPI)中，生产调度是研究确定产品在过程中每一设备上被加工的次序，以优化某些经济的或系统的性能指标．调度问题是由于不同产品对共享和有限资源(如原材料、处理设备)的竟争产生的．调度的目标是寻找一种方法去分配这些公用资源，以使生产约束得到满足，生产代价最小．关于离散制造操作的调度理论已经很好地建立了[1]．而批化工过程的调度未能得到较好的发展，多半因为所涉及操作的额外复杂性及被处理物料的连续性质．
+　　连续过程适合于大批量的生产，而批处理适合于生产小批量、多品种且产出价值较高的产品．批化工过程同时涉及批操作及半连续操作．近来有人对批处理使用的调查表明，批处理中，仅有6%的处理可能被连续处理代替[2]，由此可见批处理的重要性及持久(permanence)性．批处理更显著的优点就是它固有的灵活性，即通过对处理设备及不同生产资源的共享，在同一过程中生产多种产品，而且更适合处理复杂的合成过程．
+　　过去，批处理过程主要是依靠操作者的技巧及经验来指导生产．结果，计划时间长，又不能得到更好的经济效益；同时考虑到批处理的特点，受CIM(计算机集成制造)思想的激发，有人倡导研究批处理过程调度，实现生产的自动化．这方面，国际上已有了一定的研究成果[2,5～34]，而国内的化工过程大多采用连续或半间歇生产模式，工艺流程基本不变，其生产调度的研究主要集中于流程工业[3,4]，而批处理过程调度的研究才刚刚开始．在市场经济的激烈竞争下，批处理生产模式为企业快速适应变化的市场提供了选择，为此开展批处理调度的研究，无疑具有相当的社会及经济意义．
+　　批化工过程可被分为两类：多产品(multiproduct)过程及多目的(multipurpose)过程．在多产品过程中，所有的产品必须遵循同样的加工路径．在多目的过程中，产品可能经过过程中的不同路径，且对不同的产品具有不同的加工路径．批处理的一个重要特点就是，它们的总体生产率及经济效益严格地依赖于过程的生产调度．由于多产品之间，存在时间及资源共享，为达到总体最优的生产目标，必须协调原材料及化学中间在制品因素的影响；资源限制，如劳动力、存储能力，及最大可用公共资源(如水、电、煤气、冷却水等)；合适的生产周期及批量大小，设备维护及故障时间，长期需求预测等问题[2]．显然，这些因素必须与调度函数协调或配合，以达到整体最优过程的生产计划．
+　　本文将首先总结化工批处理过程调度研究的主要难点，然后对当前批化工过程调度的主要方法，进行评价、分析，从此阐述化工批处理调度研究的新方向．
+　　2　化工批处理过程调度研究的主要难点
+　　化工批处理过程不同于离散制造系统的一个重要特点，就是它除了同时涉及离散与连续操作外，还有许多内在的限制和约束，如：
+　　(1) 涉及多种生产资源与辅助资源；(2) 与生产顺序有关的准备时间，包括设备的清洗与更换时间，如必须清理反应器中的残留物、清洗甚或更换过滤器等；(3) 批量产品的非零传输时间，即产品在处理中从一台设备进入另一台设备所需要的时间；(4) 不同的中间存储策略或混合的中间存储策略；(5) 中间产品的不稳定性；(6) 批量与加工路径可变．
+　　从而使化工批处理过程调度的研究存在以下几个难点.
+　　2.1　建模复杂
+　　首先，批化工过程涉及多种生产资源，如原料、公共资源、中间存储、人力及辅助设备[21]；其次，具有不同的中间存储策略；第三，依赖于产品生产次序的设备准备和更换；第四，物料从一种操作到另一种操作的转移(transfer)，必须在时间与数量上协调[22]；还应考虑批量与路径的柔性．这些应在过程模型中充分体现．
+　　2.2　计算复杂
+　　调度问题的求解受诸多因素的影响，如处理网络的结构，有无中间存储，用于评价调度的性能判据等[5]．当全面建模后，问题的规模也急剧增大．由于调度问题大都是NP-hard的组合优化问题，求解时间随问题规模呈指数增长．为此，如何在模型全面化与有效求解之间权衡，是批化工过程调度急需解决的问题．
+　　2.3　动态性
+　　在批化工过程中，许多研究是在有限的假设下进行的．如忽略批量传输与设备调整时间，假设整个过程只有一种中间存储(interstage storage)等，并且在短期调度中，总是假设所有被调度的产品在一开始是已知的．然而，从CPI的出发点应考虑：当现在的调度正在运作时，一个或更多的产品可能要加入生产，因而对调度提出了动态的要求．
+　　3　化工批处理过程调度
+　　3.1　生产计划的层次结构
+　　Reklatics[5]认为整体生产计划问题有两种研究方法，单层次和多层次方法．在单层次方法中，同时考虑总体生产计划及详细的调度．将计划时间范围分为有限数目的时间段，对每一时间段指定产品的确定性及随机需求．分析的目标是确定要生产的产品数目(批量)，资源要求，库存水平，产品到设备的分配，各时间段内产品的生产次序，以使生产、库存、资源及延误用户定单的费用最小．其研究方法一般采用混合整数线性规划(MILP)方法[2]．
+　　在多层次方法中，问题被分为高层(长期或中期)计划子问题和一低层(短期)排序/调度子问题．高层计划子问题实际上相当于单层次方法中的多时间段线性规划问题，而低层子问题则要确定产品在每台设备上处理的次序及其详细的时间表以满足产品的交货期或使某个性能指标最优．关于短期与中期调度之间的区别并不是很明显的．本文将着重讨论短期排序/调度子问题，简称调度问题．
+　　3.2　化工批处理过程调度问题的一般框架
+　　一般生产调度问题定义为：对生产过程中的每一台设备，必须确定在每一时刻应处理哪个产品，以优化某个合适的指标．对化工批处理过程，归纳起来，有以下5个方面.
+　　(1)生产需求：是指过程生产应满足的具体要求．一般有两种情况．当过程生产是为满足某种固定的需求时，应采用循环调度(即“closed shop”)，这时用户定单可以从完成产品的库存中得到满足．如果生产需求是变化的，则应采用非循环调度(即“open shop”)．此时生产是直接面对用户，要求针对用户的每项定单来生产相应批量的产品．
+　　(2)批量限制：在多产品处理过程中，产品的批量大小(batchsize)与生产产品的设备容量密切相关，产品的最大批量等于顺序处理它的设备的最小容量．在许多研究中都假定产品的批量是固定不变的，实际上，批量可变是化工批处理过程的重要特点，也是使问题变得复杂的主要原因之一．
+　　(3) 过程结构：处理网络的结构直接影响调度问题的求解，一般来说可以分为四类： ①单台设备过程， ②并行设备过程， ③串行设备过程(如flowshop)④一般的串/并系统．如下图1～4所示.
+
+
+图1　单台设备过程
+
+图2　并行设备过程
+
+图3　串行设备过程
+
+图4　一般过程　
+　　每步并行设备，又可根据设备之间的相互关系分为三类，即相同设备，相似设备(每一设备具有与产品无关的处理速率)和无关设备(每一设备对不同的产品有不同的处理速率)[35]．由于化工批处理常需要多种操作，因而串/并系统是CPI中最为常见的．
+　　(4)中间存储：在多处理级的批化工过程中，根据中间产品的化学性质稳定与否，常需一定数目的存储设备用来暂存处理级之间的批量产品．常见的有以下几种存储模式．
+　　① 无限中间存储(Unlimited Intermediate Storage,即UIS)；② 有限中间存储(Finite Intermediate Storage,即FIS)；③ 没有中间存储(No Intermediate Storage,即NIS)；④ 零等待(Zero Wait,即ZW)；⑤ 有限等待(Finite Wait,即FW)．
+　　这里的存储能力是以存储设备的数目，而不是以存储的物理尺寸来衡量的．在NIS、ZW与FW模式中，各处理级之间无存储．在UIS、FIS、NIS或FW模式中，一批产品在一台设备上处理完成后，可以暂存于该设备中，而在ZW模式中，它必须立即传送至后续处理设备中．当中间产品不稳定时，应采用ZW存储策略．因此能最好地描述批化工过程的存储策略，应该是以上几种策略的组合，即混合的中间产品存储策略(Mixed Intermediate Storage,即MIS)．
+　　(5)调度目标：一般包括两类，一类是基于经济指标，另一类是基于性能指标的．在多层调度结构中，高层的生产计划完成原料的分配，常用基于经济的目标函数；低层的调度完成任务的排序与调度，常用基于性能的调度目标[10]．
+　　基于经济的调度目标主要有：
+　　① 总体生产费用最小，包括可变生产费用，库存保持费用及产品更换费用等；② 由一种产品到另一种产品的切换引起的更换与准备费用最小；③ 生产利润最大，生产利润等于产品总价值减去总体生产费用．
+　　基于性能的调度目标主要有：
+　　① 生产所有产品所需要的总时间即makespan为最小，它可使过程的资源利用率与生产率最大；② 所有产品的平均流时间(flowtime,即产品完全通过生产过程所需要的时间)最小；③ 平均延迟时间(tardiness)最小，延迟时间等于产品的生产完成时间与交货期之差，只取正值；④ 最大延迟时间最小．
+　　总的来说，化工批处理过程调度问题大致有两类：一类是批量固定的排序/调度问题，另一类是批量可变的调度问题．
+　　3.3　当前化工批处理过程调度的主要研究方法
+　　如果产品批量固定，则调度问题可视为两个子问题组成，即排序和时间表．排序用于确定产品被加工的次序；而给定顺序的生产时间表，用于确定每个产品在所有设备上处理的开始与完成时间．如果批量可变，则不仅要确定排序与时间表，而且要确定产品的批量．
+　　调度问题是一个有约束的组合优化问题，常具有NP_完全性，且没有一个有效的调度算法用于求解一般目标函数的调度问题[20]．只在很特殊的的情况下存在求得最优解的有效方法，如：两级、串行的UIS、NIS及ZW的multiproduct问题，调度目标是使make-span最小[2,5,10]．因此在研究化工批处理过程调度时，人们除了寻求普遍适用于一般问题的算法[8,9]外，还常常通过对不同问题作适当的假设，研究适用于某种特殊情况下的算法，包括精确解算法[6,7,11,12,21]与近似解算法[13～20]．
+　　3.3.1　多产品过程调度
+　　化工批处理过程有不同于制造系统的特点，可它们仍然很相似，特别当产品的批量固定时．因此，研究一般调度问题的几类常用方法如最优化方法、近似/启发及随机优化方法都已在化工批处理过程中得到了应用．
+　　最优化方法包括混合整数线性规划(MILP)及分支定界(BAB)方法，它们常常是结合使用的．如Pekny[11]用MILP方法分析了生产费用依赖于产品生产次序情况，并给出了一个精确的并行求解算法；Pekny[12]用BAB方法描述了一类资源受限的化工批处理过程，并将问题转化为资源约束的旅行商问题；Rajagopalan[21]对具有混合中间存储策略、非零传输时间及与顺序有关的setup时间的串行多产品批/半连续过程进行了研究，给出了一系列计算完成时间的循环关系．可是，这些方法都是隐枚举法，因而只适用于较小规模的问题．
+　　近似/启发方法则以牺牲解的最优性而争取了计算时间．这类算法大多是基于启发推理且具有多项式计算时间，一般可分为两类：一种是借助启发推理产生一好的顺序集，然后再从中选出最好的顺序；另一种是以一试验顺序开始，然后循环地改善它直至不能再改善．其共性是它们均应用了两设备的UIS及NIS/ZW的flowshop问题的精确结果[2]．在应用方面，传统的CD及RAES都已在化工批处理过程中得到了应用[2,5]．Muiser[13]研究了单级并行的多产品过程，给出了一并行的启发算法，并考虑了依赖于生产次序的清洗时间及产品到设备的分配约束．近似/启发方法的缺点是算法的最优程度不易确定．
+　　随机优化方法，如模拟退火方法用于单目标多变量的优化问题，它是基于Monte-carlo方法对物理系统的模拟．模拟退火方法为NP-完全问题提供一近似解，近来已被用于化工批处理过程调度．Das[14]在假设排列调度的情况下用模拟退火方法对多产品过程进行了研究，借助模拟退火及闲置矩阵搜索(Idle Matrix Search,即IMS)启发法，考虑了UIS、NIS、ZW、FIS及MIS五种中间存储策略，调度目标是使makespan为最小．
+　　实际上，以上方法在应用时常常是结合起来的，因为许多启发式方法是基于MILP及BAB的．在基于BAB的启发方法中，对下界的计算采用启发式方法．文[12]用启发方法作为对特定问题的分支规则．
+　　3.3.2　多目的过程调度
+　　在多产品过程调度中，调度主要涉及时间的分配，而无处理设备的选择．在多目的过程中，情况却很复杂，因为产品的一项操作可以在多台设备上进行，并且常要求产品的批量可变．在确定每项操作的开始时间的同时，还要确定操作的设备及产品的批量．关于多目的过程调度的研究主要集中于短期调度，且远远不如多产品过程深入．研究方法大多采用MILP及BAB方法．
+　　Wellon[6,7]研究了单一产品生产线问题，这是多目的过程调度的重要子问题．文中通过对生产线操作特性的分析说明了设备分组排序与可变路径批量是生产线调度问题的重要方面，用MINLP求出了调度的最优解集；提出了"主导路径集合"的概念及寻找主导路径集合的方法．Kondili[8]则用状态－任务网络(state-task network,即STN)，来描述一般的化工批处理过程．用MILP方法建立了多目的过程调度问题的一般模型．STN摆脱了“recipe network”固有的不清楚性，具有更强的表达能力，可明确地表示任意复杂的处理网络．它含有两类节点：状态节点和任务节点，其中状态节点表示原料，中间产品及最终产品，而任务节点表示处理操作，该操作将一种或多种输入状态转化为一种或多种输出状态．文中以产品在设备上开始处理的时间，变化的产品批量及产品在各状态的的存储能力为决策变量，对设备处理能力，原料(或中间产品)的平衡，开始或生产期间原料的限制，设备故障，辅助资源(如蒸汽，电，冷却水等)和/或人力的限制，设备清洗时间等约束进行了建模．通过引入“存储任务”的概念，解决了存储设备的共享及产品在设备上暂存的问题；通过对处理任务的适当分解(即STN的巧妙改变)，考虑了过程结构的复杂约束；将处理时间表示为批量的分段函数，解决了处理时间依赖于产品批量的情况．Shan[9]则对文[8]提出的问题框架，给出了4种简化的计算技术．
+　　在有些调度问题中，要求两处理级之间有一定的时间间隔．Hadson[32]研究了一个食品加工过程．该过程涉及准备、烹制与冷却3个阶段，要求在烹制完成到开始冷却之间的等待时间不能超过30分钟．问题是对每天要加工的食品进行调度，要求所有食品的加工，必须在正常工作时间内完成．文中给定食品加工的优先级，采用时间倒推的方法，得到了较好的可行解．
+　　在应用程序方面，Egli[22]开发了用于多产品/多目的批过程短期调度的计算机程序SRSBP,它可确定一组批量产品的生产次序及时间表，满足某些特定的要求，并使产品库存费用、转换费用及公共资源费用最小．该程序通过对一特定生产路径上的所有可能顺序的考察来寻求最优调度，其实质是BAB方法，且能处理6种产品，20台设备及计划时间60天规模的问题．
+　　3.4　化工批处理过程设计、调度交互与监控的集成
+　　(1) 在过程设计阶段考虑调度问题
+　　在化工批处理过程中，特别是多产品过程中，设计与调度问题往往是相互关联的．在设计阶段预测调度的影响，将与调度有关的约束融入最优系统的设计可大大减少过程的投资费用，提高设备利用率．Birewar[23]将这一思想用于每一处理级仅有一台处理设备的多产品过程，在UIS与ZW策略下，为使生产周期最小研究了有效的调度模型，并将代表这些调度策略的简化的约束并入系统设计问题．
+　　(2) 交互调度
+　　在复杂调度问题的求解中，许多算法试图研究某些特殊的问题，因此仅适合于某些特定的问题结构及模型假设．由于实际生产环境是动态的、复杂的，具有变化的结构及目标，甚或还有调度的中断，很难断定实际的生产过程符合某一算法的标准形式．因此为实际应用，每一调度软件应包括下面两个附加部分.
+　　(a) 它应包括所有现存的调度算法(精确与近似算法)；
+　　(b) 它应灵活且允许人的干预，以使调度容易产生并可重复地修改．
+　　文[2]介绍了一种交互调度系统INTSPAK，特别适用于多产品过程．它允许用户调度一般处理设备网络，借助启发式或最优调度算法，交互或自动运作．Dockx[33]研制了用于CPI交互调度的SKYE系统，主要适用于短期调度．SKYE集成了随机技术与演绎技术，它与一调度工作平台TTP-S相连，作为图形交互工具，进行手工或半自动调度．
+　　(3) 调度的在线调整
+　　批化工过程具有一定程度的可变性(variability)[24]，因而在实际生产中各种过程参数可能发生变化(如设备处理时间变化，公共资源波动，设备故障，产品“配方”(recipe)不精确及原材料质量变化)，因此用离线的调度去指导过程生产，必使等待时间、在制品(work-in-process)可能增加，设备利用率、产品质量及批处理性能可能降低．为此需要根据实际情况，对调度进行在线调整与监控．Cott[24]给出了一种“预测操作修改”的算法，从当前的操作去估计批处理过程的将来期望操作，向前或向后移动被调度产品的开始时间，以优化生产过程．Djavdan[25]则用中间存储策略与动态仿真模型研究了一批/连续处理混合过程的在线调度问题．Ishii[26]提出了一在线调度与控制系统框架，依据调度条件的变化，定义调度修改时间与空间，利用足够的外部调度算法，动态地修改现有的调度．Huercio[27]将一反应调度(Reactive Schedule)算法融入集成的批生产控制中，填补了高层生产调度与低层顺序控制之间的空缺，借助启发式方法考虑了任务开始时间的变化与设备的重分配．
+　　(4) 批处理过程的集成
+　　过去，人们将批化工过程的设计与操作的处理建立在分开的基础上研究，无论在技术或软件方面，都取得了很好的成果．但由于过程设计者与指定操作步骤的调度者具有不同的知识背景，在其各自的领域内研究时，对问题所作的某些假设未必能充分理解另一方的许多实际约束[31]，因而常出现设计与操作模型有偏差，设计调度时，不仅建模费时，而且使系统在实际应用时易于出错．为此应研究一种通用工具，以支持批化工过程的整个生命周期，即从过程、设备及批控制代码的初步设计，到根据最优调度的在线操作[29]．Cott[28]研究了集成批化工过程计划与过程控制的计算机系统，借助批管理来协调计划级与控制级的生产活动，通过在线、重调度，实现了信息从控制级至计划级的反馈，考虑并克服了批处理固有的可变性．Crooks[29]将现有的3个通用软件包(批过程最优设计与调度、生产管理及操作过程合成软件包)集成在一起，形成了一个初步的CIM系统．这种方法中的CAPS(计算机辅助过程合成)系统被用于一原子能工厂[30]．Brettle[31]还开发了一集仿真、控制、调度于一体的工具，用于聚乙烯生产的操作员培训．
+　　3.5　实际应用
+　　由于批化工过程调度的研究讨论，大都是针对于特定的模型假设，因而很难应用于生产实际中．Crooks[30]将一集批处理设计、调度、监控于一体的CAPS系统用于一原子能工厂．Hodson[32]在一食品加工过程中，利用启发方法求出了较好的可行调度．Orcun[34]在一染料生产过程中，利用数学规划求出了最优调度，并考虑了设备调整与批处理时间的随机变化．
+　　4　讨论与将来的发展
+　　通过上面对化工批处理过程特点、调度问题的框架及求解方法的分析可以看出，当全面建模后，问题变得相当复杂．为此，我们认为从以下几方面开展研究将是有益处的：
+　　(1) 用STN对一般的批化工处过程进行建模后，调度问题可表示为一复杂的MILP问题，在求解方法上可从以下几方面探索：(a)针对问题的复杂性，研究基于启发式人工智能的方法，将简化问题的求解；(b)拉氏松驰方法作为一种近优方法，在制造系统[36]及电力系统[37]调度中已得到了应用，而用于求解批化工过程调度问题[38]，研究才刚刚开始，有待进一步深入；(c)遗传算法及模拟退火方法，是研究批化工过程调度的新方向，如将它们结合使用，取长补短，不仅可得到解的全局最优性，还能保证收敛速度；(d)L.A.Zadeh提出的智能计算(软计算)思想[39]，由神经元网络、模糊逻辑、遗传算法、概率推理、混沌等理论有机组成，其指导思想是在容忍不精确及不确定因素的影响下实现可行、鲁棒、低成本的求解方案．该思想的优势，可用于解决批化工过程调度的计算复杂性及动态性等难点问题．
+　　(2) 许多调度问题的研究没有考虑调度与上层(即生产计划)之间的关系．实际上，调度问题受生产计划的影响，而且，整个生产过程的特点，市场需求及资源等的随机波动均会影响调度的有效性．为此，最优的调度应综合考虑整个生产环境中的各种因素．
+　　(3) 在交互调度方面，将人工智能、调度算法与仿真技术相结合，产生交互式调度机制．通过开发尽可能多的调度算法，融合人类操作员的判断决策能力，来提高求解的效率，解决调度中的动态变化和实时监控问题．研究应侧重于：(a)提高仿真速度；(b)设计高效的人机接口．
+　　(4) 化工批处理过程中，许多调度问题是在静态、确定的假设下研究的，而在实际生产中，来自过程外部或内部的随机变化是时常发生的，如收到了新定单；特定设备故障等．这些都要求实时地对调度进行调整和监控，以使由于生产环境及外部需求的变化引起的生产损失最小．
+　　(5) 为了实现批化工过程的全自动化，需要一种集成化的方法，以指导整个批化工过程的生产，即将批处理过程的设计、调度与监控有机地结合起来，避免孤立研究的不足．为此，研究基于知识与面向对象相结合的方法将是很有意义的．
+　　(6) 任何调度问题都需要相应的软件支持，而一个有效的调度支持软件应当确切描述实际的调度环境，具有良好的人机接口，并综合过程设计、生产计划、调度交互与实时监控等许多相关的功能．研究开发有效的调度支持软件，是调度理论应用于实践的重要环节．
+作者简介：李慧芳，女，32岁，博士生．研究领域为离散事件系统理论，化工批处理过程调度与监控．
+　　　　　李人厚，男，53岁，教授，博士生导师．研究领域为智能控制理论与方法，智能制造系统调度，多媒体与CSCW理论与应用．
+　　　　　陈浩勋，男，35岁，教授．研究领域为离散事件系统理论，Petri网理论与应用，生产计划与调度等．
+作者单位：西安交通大学系统工程研究所　西安　710049
+　　5　结束语
+　　在化工批处理过程中，生产调度是非常复杂而重要的问题．在这一领域，研究一般算法和各种特殊情况下的算法，并有一定成果．进一步的研究应侧重于次优或启发式算法，以处理多产品、复杂过程及具有约束的大规模问题．为此，将传统的调度方法与智能方法相结合，充分发挥智能的优势，为解决调度的计算复杂性问题，开辟一条新的途径．对过程中的动态、随机因素的影响，即调度的在线调整、监控及交互调度的集成到算法的实际应用，研究工作尚处于起步阶段．在这一方面，开发交互图形，对提高调度理论至实际过程的应用性具有很大的潜力．
+参考文献
+　1　 Baker K R. Introduction to Sequencing & Scheduling.Wiley, New York,1974
+　2　 Ku H-M, Rajagopalan D, Karimi I. Scheduling in Batch Process.Chem.Engng.Prog, 1987, August, 35～45
+　3　 徐用懋．流程工业的CIMS．化工自动化及仪表，1997, 24(3):58～62
+　4　 扬家本．连续过程CIMS中生产计划/调度系统．化工自动化及仪表，1997, 24(6):52～56
+　5　 Reklaitics G V. Review of Scheduling of Process Operations. AICHE Symp.Ser., 1982, 78(214):119～132
+　6　 Wellons M C, Reklaitics G V. Operational Scheduling Generation for a Single-product Line-I.Problem Formulation. Computers Chem. Engng. 1987, 13(1/2):201～212
+　7　 Wellons M C, Reklaitics G V. Optimal Scheduling Generation for a Single-product Line-II. Identification of Dominant Unique Path Sequences. Computers Chem.Engng.1989, 13(1/2):213～227
+　8　 Kondili E, Pantelides C C, Sargent R W H. A General Algorithm for Short-term Scheduling of Batch Operations-I. MILP Formulation. Computers Chem. Engng, 1993, 17(2):211～227
+　9　 Shah N, Pantelides C C, Sargent R W H. A General Algorithm for Short-term Scheduling of Batch Operations-II. Computational Issues. Computers Chem. Engng, 1993, 17(2):229～244
+　10　Rechard S H M. Chemical Process Structure and Information Flows. Butterworth Publishers, Boston, U.S.A. 1990, 241～299
+　11　Pekny J F, Miller D L, Mcrae G J. An Exact Parallel Algorithm for Scheduling When Production Costs Depend on Consecutive System States. Computers Chem. Engng, 1990, 14(9):1009～1023
+　12　Pekny J F, Miller D L, Kudva G K. An Exact Algorithm for Resource Constrained Sequencing with Application to Production Scheduling under an Aggregate Deadline. Computers Chem. Engng, 1993, 17(7):671～682
+　13　Muiser R F H, Evans L B. An Approximate Method for the Production Scheduling of Industrial Batch Processes with Parallel Units. Computers Chem.Engng, 1989, 13(1/2):229～238
+　14　Das H, Cumming P T, Levan M D. Scheduling of Serial Multiproduct Batch Process Via Simulated Annealing. Computers Chem. Engng, 1990, 14(12):1351～1362
+　15　Wiede W Jr, Kuriyan K, Reklaitics G V. Determination of Completion Times for Serial Multiproduct Processes-I. A Two Unit Finite Intermediate Storage System. Computers Chem. Engng, 1987, 11(4):337～344
+　16　Wiede W Jr, Reklaitics G V. Determination of Completion Times for Serial Multiproduct Processes-II. A Multiunit Finite Intermediate Storage System. Computers Chem. Engng, 1987, 11(4):345～356
+　17　Wiede W Jr, Reklaitics G V. Determination of Completion Times for Serial Multiproduct Processes-III. Mixed Intermediate Storage System. Computers Chem. Engng, 1987, 11(4):357～368
+　18　Ku H-M, Karimi I. Completion Time Algorithm for Serial Multiproduct Batch Processes With Shared Storage. Computers Chem. Engng, 1990, 14(1):49～69
+　19　Carlson E C, Felder R M. Simulation And Queuing Network Modeling of Single-product Production Campaigns. Computers Chem. Engng, 1992, 16(7):701～718
+　20　Havla N, Strmacnik S, Cernetic J. Scheduling of Batch Digesters According to Different Control Targets and Serving Limitations. Computers Chem. Engng, 1993, 17(7):739～750
+　21　Rajagopalan D, Karimi I A. Completion Times in Serial Mixed-storage Multiproduct Processes with Transfer and Set-up Times. Computers Chem. Engng, 1989, 13(1/2):175～186
+　22　Egli U M, Rippin D W T. Short-term Scheduling for Multiproduct Batch Chemical Plants. Computers Chem. Engng, 1986, 10(4):303～325
+　23　Birewar D B, Grossmann I E. Incorporating Scheduling in the Optimal Design of Multiproduct Batch Plants. Computers Chem. Engng. 1989, 13(1/2):141～161
+　24　Cott B J, Macchietto S. Minimizing the Effects of Batch Process Variability Using On_line Schedule Modification.Computers Chem. Engng, 1989, 13(1/2):105～113
+　25　Djvadan P. Design of an On-line Scheduling Strategy for a Combined Batch/Continuous Plant Using Simulation. Computrs Chem. Engng. 1993, 17(5/6):561～567
+　26　Ishii N, Muraki M. A Generic Framework for an On-line Scheduling and Control System in Batch Process Management. Computers Chem. Engng. 1997, 21(11):1291～1310
+　27　Huercio A, Espuna A, Puigjaner L. Incorporating On_line Scheduling Strategies in Integrated Batch Production Control. Computers Chem. Engng, 1995, 19, Suppl., 609～614
+　28　Cott B J, Macchietto S. An Integrated Approach to Computer_aided Operation of Batch Chemical Plants. Computers Chem. Engng, 1989, 13(11/12):1263～1271
+　29　Crooks C A, Kuriyan K, Macchietto S. Integration of Batch Plant Design, Automation, and Operation Software Tools. Computers Chem. Engng, 1992, 16, Suppl, 289～296
+　30　Crooks C A, Evans S F, Macchietto S. An Application of Automated Operating Procedure Synthesis in the Nuclear Industry. Computers Chem. Engng, 1994, 18, Suppl,385～389
+　31　Brettelle D, Chua E S, Macchietto S. Simulation and On-line Scheduling of a PVC Process for Operator Training. Computers Chem. Engng, 1994, 18, Suppl, 547～551
+　32　Hodson A, Muhlemann A P, Price D H R. A Microcomputer Based Solution to a Practical Scheduling Problem. J.Opl. Res.Soc., 1985, 36(1):903～914
+　33　Dockx K, Boeck Y D, Meert K. Interactive Scheduling in the Chemical Process Industry. Computers Chem. Engng, 1997, 21(9):925～945
+　34　Orcun S, Discioglu A, Altinel I K, Hortacsu O. Scheduling of Batch Process: An Industrial Application in Paint Industry. Computers Chem. Engng, 1997, 21, Suppl, 673～678
+　35　Lawler E L, Lenstra J L, Rinnooy Kan A G H, Shmoys D B. The Complexity of Sequencing & Scheduling. 1985, Rep. BS-R8909, Centre for Mathematics and Computer Science. 7～8
+　36　Lun P B, Hoitomp D J, Max E, Pattipati K R. Scheduling Generation and Reconfiguration for Parallel Machines. IEEE Trans. on Robotics and Automation. 1990, 6(6):687～696
+　37　Guan Xiaohong Lun P B, Zhang Lan. Nonlinear Approximation Method in Lagrangian Relaxation-based Algorithms for Scheduling. IEEE Trans.on Power Systems. 1994, 10　(6):772～778
+　38　王朝晖等．用Lagrangian松弛法解化工批处理调度问题．自动化学报1998, 24(1), 1～8
+　39　Zadeh L A. Fuzzy Logic,Neural Network,and Soft Computing.Communications of the ACM.1994,37(3):77～83
+1998-07-15收稿

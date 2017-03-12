@@ -1,0 +1,111 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH
+AND DEVELOPMENT
+1999年 第36卷 第12期 Vol.36 No.12 1999
+
+
+
+视频会议系统中一种基于FLC的流控策略
+朱　利　周俊辉　郑守淇
+摘　要　在Internet视频会议应用中，必须对注入网络的视频流量进行控制以避免网络拥塞.文中针对H.263视频编码器，提出一种基于模糊逻辑控制(FLC)的速率控制机制，将视频的编码长度信息通过FLC映射至编码器的量化系数，调节下一帧的码流长度，在保证通信的连续性和图像质量的前提下使编码器的输出码率明显地降低，尽可能地避免网络拥塞.文中具体描述了这种拥塞避免机制，最后给出了实验结果，结合与相关拥塞避免策略的粗略比较对该机制进行了简单的性能评价.
+关键词　视频会议,模糊逻辑控制,拥塞避免,模糊集,决策规则
+中图法分类号　TP391；TP393
+A FLOW CONTROL SCHEME BASED ON FLC
+FOR VIDEOCONFERENCING SYSTEM
+ZHU Li， ZHOU Jun-Hui*，and ZHENG Shou-Qi
+(Department of Computer Science, Xi'an Jiaotong University, Xi'an 710049)
+(Department of Electronics Engineering, Xidian University, Xi'an 710071)
+Abstract　For the Internet videoconferencing applications, the rate of video flow to network must be controlled to prevent the network from congestion. A rate control scheme based on fuzzy logic control(FLC) is brought forward in this paper, in which the compressed code length is mapped into coefficients of quantizer used in the video coder to adjust the compressed code length of next video frame. By using this scheme, the code rate output of the coder can be reduced apparently on the basis of communication continuity and image quality guarantee to avoid the network congestion. The scheme of congestion avoidance is described in detail. Experimental results are shown and a simple performance evaluation is presented by comparing the scheme with relative congestion avoidance mechanism.
+Key words　videoconference, fuzzy logic control, congestion avoidance, fuzzy set, decision rule
+1　引　　言
+　　当前的计算机网络一般使用分组交换、动态分配网络资源，网络中的业务流存在着不可预测性和突发性.这种业务流的不可预测性和突发性在瓶颈(如交换处理机速度、信道、缓存、端结点处理能力等)处容易引起资源冲突，从而导致网络拥塞.与网络拥塞密切相关的因素是通信系统存在瓶颈和源端无限制的业务特别是连续媒体流的发送.拥塞控制的基本思想就是在共享资源管理的基础上按某种策略控制源端的数据发送率，合理使用瓶颈处的资源，避免网络拥塞或将网络从拥塞状态恢复至正常工作状态.因而拥塞控制包括两方面的内容：拥塞避免(congestion avoidance)和拥塞恢复(congestion recovery).根据K.Ra和R.Ja给出的定义，拥塞避免即是使网络工作在响应时间曲线的Knee点上［1］，超过该点，很小的吞吐率的增加会引起响应时间的快速增加.拥塞避免使得网络大大减少丢包概率，避免网络严重拥塞.因而，一个完善的连续媒体通信系统应具有拥塞避免能力.
+　　拥塞避免机制的实质就是源端按一定的策略减少注入网络的业务流量［1,2］.现存的拥塞避免机制可归为两类：一类是网络中介结点参与的拥塞避免机制，如“二元反馈法”［3］，路由器根据队列长度在数据包中设置的“拥塞避免指示位”经目的端反馈至源端，源端按照“加性增/乘性减”策略控制注入网络的数据流；另一类拥塞避免机制将网络看成一个黑匣子，通过延时、丢包率等信息反馈来决定源端数据流发送窗口的大小［4］.对于Internet视频通信应用(如视频会议，可视电话系统)，减少源向网络注入的业务流量主要是降低视频编码器的输出码率.上述拥塞避免机制符合网络的动态特征，公正性较好，但视频通信的连续性振荡幅度较大，图像质量不够稳定.本文针对Internet视频会议应用，在模糊逻辑控制(FLC)理论的基础上提出一种保证视频通信质量的拥塞避免方法，在图像质量损失较小的条件下，较明显地降低注入网络的视频数据流，以达到拥塞避免或降低拥塞发生的可能性的目的.
+2　基本原理
+　　对于Internet视频会议，减少源端向网络注入的业务流，主要是降低视频编码器的输出率.降低输出率有效的方法之一是调节编码器的量化系数.会议进行过程中的场景剧烈变化会引起VBR编码器输出码率的急剧增长，从而容易导致网络瓶颈结点(包括异构网络中的目的端点)处的资源冲突.可以通过对编码器的输出码流大小的实时监测提取控制信息，利用FLC控制机制动态调整编码器的量化系数，使得当场景变化时编码器输出的视频数据流不随着剧烈增加.即将视频编码器输出的码流长度(用Length表示)经过FLC处理，映射至量化系数Q，调节下一帧的编码输出：原理框图如图1所示.
+
+图1　FLC原理框图
+　　定义目标Length值为LT，编码器当前输出码流长度值为L(n)；L(n)与LT的差值――误差信号由e(n)表示；误差信号的差分用d(n)表示.则
+e(n)＝L(n)－LT
+(1)
+d(n)＝e(n)－e(n-1)＝L(n)－L(n-1)
+(2)
+对e(n)，d(n)进行加权处理得
+We＝e(n)×we
+(3)
+Wd＝d(n)×wd
+(4)
+其中，we，wd为权系数常量，由专家知识给定.
+　　e(n)，d(n)加权处理后所得到的We，Wd作为模糊化过程的输入参数，通过预定义的关系函数映射(模糊化)到对应的语义调整因子Le，Ld.根据预定义的决策规则，在决策过程中对Le，Ld进行语义调整，输出Lo为解模糊化过程的输入参数.在解模糊化过程中Lo被映射至量化系数Q(n)，控制下一帧视频的编码输出.
+　　根据TCP协议标准，平均来回历时(RTT)通过一个低通滤波器来计算：
+Rtt＝αRtt＋(1－α)M
+(5)
+其中Rtt为平均RTT估值；M为实际测量的RTT值；α为低通滤波器增益常量.FLC的执行即由计算出的Rtt值来驱动.
+3　模糊化过程
+　　(1)模糊变量定义
+　　FLC使用3个模糊逻辑变量：①编码长度量级(对应于e(n))；②差分量极(对应于d(n))；③量化系数量级(对应于Q(n)).我们将每个变量划分为7个模糊量级，根据“语言模糊集描述”［5］，定义对应的模糊集.
+　　FLC变量：e(n)，d(n)，Q(n)；
+　　e(n)的模糊量级：LG/大，CL/接近于大，HN/比一般值高，NM/一般值，LN/低于一般值，CS/接近于小，SM/小；
+　　d(n)的模糊量级：PL/较大的正值，PN/一般正值，PS/较小的正值，ZE/0，NS/较小的负值，NN/一般负值，NL/较大的负值；
+　　Q(n)的模糊量级：VB/很大，BG/大，BM/比中介值大，MD/中介值，LM/比中介值小，LS/小，TN/很小.
+其中，“/”为“表示关系”符.
+　　(2)模糊集表示
+　　根据上面的变量定义，我们得到下面的模糊集：
+Ue＝｛LG，CL，HN，NM，LN，CS，SM｝；
+Ud＝｛PL，PN，PS，ZE，NS，NN，NL｝；
+UQ＝｛VB，BG，BM，MD，LM，LS，TN｝.
+　　(3)模糊关系函数
+　　对于所有的模糊集，e(n)，d(n)引入专家知识、加权处理后的值We，Wd∈［-1，1］；对于H.263编码器，量化系数Q(n)＝0，1，2，…，31.结合拥塞避免应用的实际需求，模糊关系函数定义如下：
+
+
+　　　　　　
+4　决策规则组织
+　　决策器使用的参量是We，Wd，不同的组合最终要影响编码器的量化系数，必须将决策使用的规则进行组织.图2是一种组织方式.
+　　图2可划分成图3所示的几个区域，各个区域具有相应的物理意义.
+
+图2　模糊逻辑规则组织
+　　图3中，MD位于中间.此区域We=NM（平均长度值），Wd=0，编码长度值保持在平均状态，e(n)变化很小.在这种条件下，不必对量化系数作大的调整，采用一个合适的中间值即可；区域A，B，C，D代表只有一个输入变化的情况，即，We，Wd有一个不变.在A，B区域内，Wd=0，Q(n)模糊集根据We的模糊集分配；在C，D区域，We=NM，则Wd主要影响着决策过程.
+
+图3　规则组织的分布
+　　角部的1、2、3、4区域对应着We，Wd均参与决策的情况.位置1表示Length急剧变小，Wd为一很大的负值，此时图像趋于静止，应选用下限Q(n)值（可将无控制时系统所使用的固定Q(n)值作为下限），因此图3的左上三角区域用TN填满；相反，在位置2，Length值急剧增加，至Wd=PL,We=LG（很大），意味着此时的场景正剧烈变化，应当快速减少编码器的输出码流，使用较大的Q(n)值.因此，图4中的右下三角区域填满了VB.
+
+图4　控制前后的码流长度
+　　区域3、4所代表的情况没有实际的物理意义.区域3意味着Length正在变小，而差分值却很大，这在实际中是不可能发生的；区域4的情况类似.因此，可以从表2中去掉3、4区域所对应的内容.
+　　为了避免编码器输出码流长度的振荡，需要对上述规则加以补充：当决策器的输出为VB时，强制下一输出为BG；当决策器的输出为TN时，强制下一输出为LS.
+5　实验结果与性能评价
+　　我们用“MissAmerica”视频编码测试序列进行了实验.为了降低编码器的输出码率，当e(n)>0时，we选值为1/150；当e(n)<0时，we选值为1/400；当d(n)>0时，wd＝1/165；d(n)<0时，wd＝1/400.考虑到量化系数的中介值为9，目标编码器输出的码流长度值设定为75.引入FLC控制前后的帧编码长度、码率和峰值信噪比的测试结果分别如图4①、图5和图6所示.从不同的图中分别可以看出，平均码长特别是场景剧烈运动时的码长通过FLC控制后较明显地减少了；FLC控制后编码器输出码率的降低幅度也超过了20%，且码率的稳定性也比控制前有所增强；从峰值信噪比测试结果来看，图像质量略有下降(平均约下降0.3dB，场景剧烈运动时约下降0.5dB).
+
+图5　FLC控制前后图像质量
+
+图6　FLC控制前后编码器输出码率
+　　①　为了使图清晰化，将第一帧第133帧的码长作了压缩.原数据分别为3201和3289，为帧内编码方式下的输出码长.　　模拟实验的网络平台是LAN，一台200MHz的主机作为源端，50MHz的486主机作为接收端.这样，接收端很容易拥塞，可用来模拟广域网中的拥塞结点.“加性增/乘性降”算法设计为：当丢包率≥5％时，Ri+1=Ri+3Kbps；当丢包率为0时，其它情况下，Ri+1=Ri.则FLC算法同“加性增/乘性降”算法的对比测试结果如表1所示.
+表1　FLC同传统算法的性能测试与比较
+
+　FLC算法“加性增/乘性降”算法
+源发送帧率15帧/秒2～11帧/秒
+接收端接收到的帧率12～13帧/秒2～9帧/秒
+码率变化最大幅度5.4Kbps12.92Kbps
+控制动作延时<67毫秒>165毫秒
+平均丢包率13％7％
+
+
+　　和“加性增/乘性降”算法相比，基于FLC的拥塞避免策略的最大特点是视频通信的连续性明显地好于前者.“加性增/乘性降”算法下的视频帧率总是由低到高上下振荡，振荡的频率由通信系统的资源占用状况决定；在组播通信方式下，“加性增/乘性降”算法需要实时地对来自不同目的端的“拥塞避免信息”进行统计分析，这会带来相当大的开销，特别是当用户较多时；而对于FLC算法，由于图像质量下降不大，可以不使用拥塞避免反馈信息而直接驱动.FLC算法下的码率的稳定性也要比“加性增/乘性降”算法下的好得多，因为这种自适应调节量化系数机制本身符合CBR信道传输的基本特征［6,7］.值得注意的是，当源端的发送帧率降到12帧时，在FLC算法的控制下接收端无丢包；而在“加性增/乘性降”算法的控制下接收端仍有丢包.这和算法的本质是一致的，因为在接收端发现丢包之前，源端一直在增加发送的码率.从表2中的最后一项可明显地看出，基于FLC的拥塞避免算法的效率比“加性增/乘性降”算法的效率要低一些，要解决这一问题需要将二者融合起来.
+6　总　　结
+　　拥塞控制是窄带网络应用特别是连续媒体实时通信应用必须考虑的问题.基于FLC的拥塞避免方法在保证视频通信的连续性和图像质量的基础上比较明显地减少了注入网络的数据流量，较大程度上实现了拥塞避免的目的.我们在Internet上进行视频会议系统测试时，隐含使用了FLC码率控制，效果良好.下一步要研究的工作是将FLC机制同其它策略结合起来，以提高这种拥塞避免算法的有效性.
+本课题得到国家“八六三”计划基金项目资助.
+作者简介：朱利，男,1967年2月生，博士研究生，主要研究方向为计算机系统结构、计算机网
+　　　　　络和多媒体通信.
+　　　　　周俊辉，男，1962年10月生，教授，主要研究方向为计算机网络和多媒体通信.
+　　　　　郑守淇，男，1927年10月生，教授，博士生导师，主要研究方向为计算机系统结构、
+　　　　　计算机网络和人工智能等.
+作者单位：朱利　郑守淇(西安交通大学计算机系　西安　710049)
+　　　　　周俊辉(西安电子科技大学电子工程系　西安　710071)
+参考文献
+　1　Cuiqing Yang et al. A taxonomy for congestion control algorithm in packet switching networks. IEEE Network Magazine, 1995, 7(8): 34～45
+　2　Chiu T M et al. Analysis of the increase and decrease algorithms for congestion avoidance in computer networks. Computer Networks and ISDN Systems 1989, 17(1,6): 1～14
+　3　Ramakrishnan K K et al. A binary feedback scheme for congestion avoidance in computer networks. ACM Trans on Computer Systems, 1990, 8(2,5): 158～181
+　4　Jacobson V. Congestion avoidance and control. In: Proc of ACM Special Interest Group on Data Communication '88, Stanford, 1988. 314～329
+　5　刘增良，刘有才. 模糊逻辑与神经网络：理论研究与探索. 北京: 北京航空航天大学出版社，1996
+　　(Liu Zengliang, Liu Youcai. Fuzzy Logic and Neural Network: Theory Research and Exploration(in Chinese), Beijing: Beijing University of Aeronautics and Astronautics Publishing House, 1996)
+　6　Adas A M. Using adaptive linear Prediction to support real-time VBR video under RCBR network service model. IEEE/ACM Trans on Networking, 1998, 6(5,10): 635～644
+　7　Liew Soung C et al. A control-theoretic approach to adapting VBR compressed video for transport over a CBR communications channel. IEEE/ACM Trans on Networking, 1998, 6(1,2): 42～55
+原稿收到日期：1999-04-26；修改稿收到日期：1999-08-26.

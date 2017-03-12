@@ -1,0 +1,83 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第1期  Vol.24  No.1 1998
+
+
+
+定量限制血压下降速率的
+多模控制方法
+郑连清　刘建平　张忠惠　程敬之
+关键词　多模控制，速率，血压. 
+A MULTIPLE-MODEL CONTROLLER FOR QUANTITIVELY LIMITING
+THE BLOOD PRESSURE REDUCTION RATE
+ZHENG LIANQING
+(Department of Automation,Air Force Telecommunications Institute,Xi'an 710077)
+LIU JIANPING
+(Department of Cardiac Surgical,Xijing Hospital,Xi'an 710040)
+ZHANG ZHONGHUI
+(Shan'xi Electronics Workers' College, Xi'an 710043)
+CHENG JINGZHI
+(Biomedical Department, Xi'an Jiaotong University,Xi'an 710049)
+Key words　Multiple-model control,rate,blood pressure.
+1　引言
+　　在硝普钠(SNP)输注过程中，多模自适应控制算法(MMAC)能表现出良好的强壮性［1，2］.本文给出一种改进型多模控制算法(MMAC/ORL(Output Rate Limiter)),它能对血压下降速率进行定量限幅.
+2　系统模型(plant model)
+　　血压 P 和 SNP 输注速率 U 的关系为［1］
+　　　　　　　　(1)
+P(S)=P0+Y(S)+Pn(S)，　　　　　　　　　　　　　　　　(2)
+其中 P0 是血压初始值，Pn(S)是背景噪声.
+3　MMAC/ORL
+　　图1给出了MMAC/ORL 的结构.
+
+
+图1　MMAC/ORL 的结构
+　　辨识器(recognizer)通过权值计算确定模型组(model bank)中的“最优”模型.模型组由12个取不同增益值的模型(见(1)式)组成，这些模型的参数取值为Tmd=70s，Tmr=75s，τm=45s，αm=0.4，及
+Gmj=8.1/1.4j　　(j=0,1,…，11).　　　　　　　　　　　(3)
+　　图1中 Y′(K)=P(K)-P0，限幅器H(P)限制 Y′(K)≤-0.13.
+　　偏差计算(operation of residuals)采用的方法为
+Rj(K)=［Ymj(K)-Y′(K)］/(P0-Pc),　j=0,1,…，11.　　　　　　　　　(4)
+其中Pc 是目标值，Ymj(K)是模型组的输出.
+　　权值计算(operation of weights)采用文献［2］中的方法，选择其中的δ=0.0001.
+　　选择器(selector)根据权值大小选取“最优”模型.假设
+WJ(K)≥Wj(K)，　j=0,1,…，11，　I(K)=0, or 1,…，or 11.　　　　　　　　　(5)
+则认为模型组中第 J(K)个模型为“最优”模型.
+　　“最优”无延时模型Q(S)的定义为
+　　　　　　　　　　　　　(6)
+　　PI调节器选择为
+　　　　　　　　　(7)
+其中E(K)为血压误差，T为采样周期(取T=10s)，θ(K)=［β(K)/1.2］1/2，且限制θ(K)≤1，β(K)取值为
+　　　　　　　　　　　　　(8)
+　　基于Q(S)的ORL取U(K)=U′(K),但限制 U(K)≤UH(K).UH(K)由下式计算［3］
+UH(K)=｛0.4GmJ(K-1)-7.5Yd(K)［1-0.8GmJ(K)］｝／［0.28GmJ(K)GmJ(K-1)］.　　　　(9)
+4　计算机模拟及讨论
+　　模拟时取 P0=20kPa，Pc=13.3kPa，Pn(K)是标准方差为0.27kPa的高斯噪声序列.为确切地观察算法的性能，采用无噪声血压y(y=P0+Y)记录模拟结果［3］.表1给出了对每组模型参数模拟5次的结果，其中Ts表示最长建立时间［1］(s)，yu表示最大y超调量(kPa)，y′m表示y最大下降速率(kPa/10s).
+表1　模拟结果
+
+Plant ParametersResults
+TdTrταGTsyuy′m
+6075600.49.02400.530.40
+4.63200.750.43
+3.03200.490.55
+1.93400.210.48
+1.03800.110.52
+0.354400.360.35
+0.254700.350.36
+2003009.04100.400.51
+4.63900.530.49
+3.04100.510.48
+1.94400.170.48
+1.04900.240.49
+0.355600.270.63
+0.255800.230.51
+
+　　ORL的限幅作用在模拟过程中已经观察到.表1中y′m 最大为0.63，此值接近理论值［3］，这说明 ORL是很有效的.模拟结果表明 MMAC/ORL 的性能较好.
+1)　国家自然科学基金资助项目.
+作者单位：郑连清　空军电讯工程学院自动化室　西安　710077
+　　　　　刘建平　西京医院心外科　西安　710040
+　　　　　张忠惠　陕西电子职工大学　西安　710043
+　　　　　程敬之　西安交通大学医电系　西安　710049
+参考文献
+［1］　He W G,Kaufman H,Roy R.Multiple model adaptive control procedure for blood pressure control.IEEE Trans.Biomed.Eng.,1986,BEM-33:10-19.
+［2］　Martin J F,Schneider A M,Smith N T.Multiple-model adaptive control of blood pressure using sodium nitroprusside.IEEE Trans.Biomed.Eng.,1987,BME-34:603-611.
+［3］　郑连清.硝普钠降压自动控制系统研究［博士学位论文］.西安：西安交通大学，1993.
+收稿日期　1995-03-25

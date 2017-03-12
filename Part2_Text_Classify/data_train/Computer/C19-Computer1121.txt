@@ -1,0 +1,117 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年　第25卷　第5期　Vol.25 No.5 1999
+
+
+
+基于三角网格模型多分辨分解的图像压缩
+李文舜　李介谷
+摘　要　构造了图像的三角网格模型.基于三角网格模型的多分辨分解，提出了一个新的图像压缩方法.通过图像的三角网格模型的多分辨分解、压缩与重构，实现了图像的多分辨解、压缩与重构.构造了一个在小波图像压缩中未曾使用过的小波滤波器组，该小波滤波器组算法具有O(n)运行时间.实验表明，该方法能获得较好的图像压缩性能.
+关键词　三角网格，图像压缩，多分辨分析，小波滤波器组，尺度空间.
+IMAGE COMPRESSION USING MULTIRESOLUTION DECOMPOSITION OF TRIANGULAR MESH MODEL
+LI Wenshun　LI Jiegu
+(Institute of Image Processing & Pattern Recognition, Shanghai Jiaotong Univ., Shanghai　200030)
+Abstract　In this paper, a triangular mesh model of image is constructed. Based on multiresolution decomposition of the triangular mesh model, a new image compression method is proposed. Multiresolution decomposition, compression and reconstruction of image are implemented through multiresolution analysis of the triangular mesh model of image. A new wavelet filter bank is constructed, which has never been used in wavelet image compression before. The filter bank algorithm has O(n) running time. The exprimental resnlts show that the proposed method can achieve satisfactory image comprossion performance.
+Key words　Triangular mesh, image compression, multiresolution analysis, wavelet filter bank, scalar space.
+1　引　言
+　　小波分析在图像处理领域中(包括图像压缩领域)受到高度地重视，其原理在文献［1―4］中作过研究，就是把输入信号分层次地分解为低分辨率的平滑信号和小波细节信号.在每层当中，平滑信号和小波细节信号都包含有重构更高分辨层的信息.通常小波系数较小，可达到压缩的目的.在图像压缩中，由于所使用的尺度函数及小波函数的不同，因而有不同的小波滤波器.如9／7拍(Tap)滤波器［5］、D4滤波器［2］及Haar滤波器［6］.本文所使用的尺度函数和小波函数为分段线性函数，由此所构造的四个滤波器(两个分解滤波器和两个合成滤波器)为稀疏矩阵，该滤波器算法具有O(n)运行时间.另外，在图像压缩中所使用的二维小波通常为一维小波的张量积［7］.而本文所构造的小波可用于分解定义在细分连续性的任意拓扑域上的函数，其分解过程如一维小波的情况.三角网格分解可用于多面体压缩、动画的分层控制、曲面的多分辨率编辑等［8］.本文以图像灰度作为高度构造一个图像的三角网格模型来实现图像分解、压缩及重构，这也可看作其应用之一.
+2　图像的三角网格模型及尺度函数选取
+　　多分辨分析的研究对象实际上是函数和函数空间.因此，图像作为一个信号在分解之前，必须将其定义为某个域上的函数.图像通常为定义在矩形域上的二维函数：I=g(x,y)，其中x,y分别为水平和垂直方向的像素位置.这里将图像定义在如图1所示的细分连续性三角域上，每个像素点都对应于一个相同位置的三角顶点.若三角顶点以像素灰度值作为高度，则构成图像的三角网格模型.对于非方形或方形但不细分连续的图像，可将三角域扩张为细分连续的三角域.对于扩张区域内的三角顶点对应的高度值置为零.由于这一区域内完全是平坦的，所以三角网格多分辨分解后对应于这一区域的小波系数为零，因而对压缩没有多大影响.在三角网格重构后，只取图像所对应的区域来恢复图像.由三角网格恢复图像时，只需将像素的灰度值取为三角顶点的高度值即可.
+
+
+
+图1　细分连续的三角域
+　　针对图像的三角网格模型，也可如文献［8］一样以分段线性函数作为尺度函数.相应于每个三角域顶点有一个如图2所示的尺度函数φji(x).它在三角顶点i的值为1，而在它的所有邻点都递减为0，在其它地方全为0.显然，对于第j层三角网格Mj(x)可表示如下：
+Mj(x)=∑φji(x).Vji，　(1)
+其中x属于三角域，Vji为三角网格顶点i的高度值.可见，第j层任意三角网格都包含在φji(x)所张成的空间中，φji(x)确定为第j层任意三角网格的一组基.尺度空间的嵌套性是多分辨分析的一个重要属性.若设Vj为φji(x)张成的尺度空间，Vj+1为φj+1i(x)张成的尺度空间.显而易见，φji(x)=φj+1i(x)+1／2∑φj+1k(x)，其中k为顶点i在第j+1层的相邻顶点.因此，尺度空间具有嵌套性.
+
+
+
+图2　具有六个邻点的顶点i的尺度函数φji(x)
+　　有了嵌套的尺度空间，就可在空间中定义内积，以分辨空间及函数的正交性.对于f，g∈Vj，给出内积如下：
+<f,g>=∫f(x).g(x)dx，　(2)
+其中积分域为整个三角域.
+3　小　波
+3.1　小波构造
+　　构造了嵌套的尺度空间并在其中定义了内积，就可在Vj+1空间中构造小波Ψj=(ψj0(x)，ψj1(x)，ψj2(x)…).Ψj所构成的空间Wj为Vj在Vj+1中的正交补空间.设Φj+1为Vj+1的基，则Φj+1=(Oj+1(x)，Nj+1(x)).Oj+1(x)由所有对应于旧顶点(图1中的白点)的尺度函数构成，而Nj+1(x)由所有对应于新顶点(图1中的黑点)的尺度函数构成.这里将小波构造分两步进行.首先，以(Φj，Nj+1(x))作为Vj+1的基.由于(Φj，Nj+1(x))能与(Oj+1(x)，Nj+1(x))相互线性表示，故它也是Vj+1的基.因此对于Vj+1中的任意三角网格函数Mj+1(x)都可表示为Φj.Pj+Nj+1(x).Qj.若将Nj+1(x)的系数置为0，则Φj.Pj为Mj+1(x)在Vj空间的一个逼近，但不是最佳逼近.
+　　为了得到最佳逼近，可计算Nj+1(x)在Wj空间的投影，其投影为Ψj.用矩阵表示如下：
+Nj+1(x)=Ψj+Φj.aj.　(3)
+如果Mj+1(x)以(Φj,Ψj)为基来表示，则消除Ψj的系数即可得到它的Vj空间的最佳逼近.
+3.2　小波计算
+　　由式(3)知，求出aj即可求出小波函数.这里针对顶点i(指第j+1层的新顶点)求ψji(x).由式(3)得
+ψji(x)=Nj+1i(x)-∑φjk(x).αjk，　(4)
+式中k为第j+1层的旧顶点.
+　　为了实际应用的需要，小波的局部支撑性是小波构造时必须考虑的问题.为此，对于式(4)中远离Nj+1i(x)的φjk(x)的系数置为0，若只取与Nj+1i(x)相邻的φjk(x)的系数为非0，则称小波长度为1.表示为下式：
+ψji(x)=Nj+1i(x)-φjm(x).ajm-φjn(x).ajn，　(5)
+式中m,n为与i相邻的两个第j+1层旧顶点.
+　　根据m，n所在位置的不同，可分七种情况求出对应的七组ajm,ajn.这七种情况为
+　　1) m,n分别在相邻的两条边缘上；
+　　2) m,n在同一条边缘上；
+　　3) m为两边缘与对角线的交叉点，n在网格内；
+　　4) m为两边缘与对角线的交叉点，n在边缘上；
+　　5) m在边缘上，n在网格内；
+　　6) m,n均在网格内；
+　　7) m为两边缘的交叉点且不在对角线上，n在边缘上.
+根据以上七种情况可列出七组方程求取对应的七组ajm,ajn其中第6)种情况为在三角域内部的情况，是最一般的情况.这种情况下的方程组为
+　(6)
+由上式求得ajm=ajn=5／28，各种情况所求得的ajm，ajn见表1.
+表1　各种情况下的ajm,ajn值
+
+情况类号1234567
+ajm5／165／2825／4425／9225／685／2825／44
+ajn5／165／285／4415／925／345／285／44
+
+
+3.3　滤波器算法
+　　对于Vj+1空间中的三角网格Mj+1(x)，其分解过程实际上就是由以(Oj+1(x),Nj+1(x))为基的表示求取以(Φi,Ψj)为基的表示.分解过程如下：
+Mj+1(x)=∑φj+1i(x).Vj+1i=∑Nj+1i(x).Nj+1i+∑Oj+1k(x).Oj+1k=
+∑Nj+1i(x).Nj+1i+∑(φjk(x)-1／2∑Nj+1ki(x)).Oj+1k=
+∑Nj+1i(x).(Nj+1i-1／2Oj+1im-1／2Oj+1in)+∑φjk(x).Oj+1k;　(7)
+令Nj+1i-1／2Oj+1im-1／2Oj+1in=Wji，由式(7)得
+Mj+1(x)=∑(ψji(x)+φjim(x).ajim+φjin(x).ajin).Wji+∑φjk(x).Oj+1k=∑(ψji(x).Wji+∑φjk(x).(Oj+1k+∑ajki.Wjki)=Ψj.Wj+Φj.Vj，
+其中Wj，Vj可表示为如下形式：
+Vj=A.Vj+1，　　Wj=B.Vj+1.
+由于Wji=Nj+1i-1／2Oj+1im-1／2Oj+1in，故B为稀疏矩阵.而在Vjk=Oj+1k+∑ajki.Wjki中，点ki(即点k在第j+1层的邻点)的个数不超过6，故A也为稀疏矩阵.A，B作为分解滤波器具有O(n)运行时间.
+　　重构过程是分解过程的逆过程，即在三角网格Mj(x)=∑φji(x).Vji中加入小波细节信号∑ψji(x).Wji来获得Mj+1(x)=∑φj+1i(x).Vj+1i.重构过程如下：
+Mj+1(x)=∑ψji(x).Wji+∑φjk(x).Vjk=∑(Nj+1i(x)-φjim(x).ajim-φjin(x).ajin).Wji+∑φjk(x).Vjk=∑Nj+1i(x).Wji+∑φjk(x).(Vjk-∑ajki.Wjki)；　(8)
+令Pjk=Vjk-∑ajki.Wjki，则由式(8)得
+Mj+1(x)=∑Nj+1i(x).(Wji+1／2Pjim+1／2Pjin)+∑Oj+1k(x).Pjk=Φj+1(P.Vj+Q.Wj)=Φj+1.Vj+1,
+其中Vj+1=P.Vj+Q.Wj即为三角网格重构，P，Q称为重构滤波器矩阵，它们也为稀疏矩阵.该重构算法也为O(n)运行时间.
+4　实验结果
+　　前面已对滤波器的设计过程作了比较详细的介绍.为了考察这一滤波器组的性能，作者在SGI Indigo 2 Extreme工作站作了一些实验.图3(a)为512×512的“Lenna”灰度图像.出于细分连续性的考虑，这里所构造的三角域为512×512个顶点.图3(b)―图3(f)为原图的5层最佳平方逼近，其中图3(f)为原图的1／1024逼近.它们是经过分解滤波器后的各层的低频平滑信号，包含着信号的绝大部分能量.
+
+
+图3　Lenna图像的多分辨分解过程
+　　量化是为了减少信息熵，以提高压缩率.量化将较大的输入值集映射到较小的输出值集.由于原始数据量化后不能得到精确的恢复，因此这里只对包含少量能量的小波系数进行量化.对于低频平滑信号(数据类型为浮点型)只将其映射到最接近的整数，而不进行量化.图像的平滑区域小波系数幅值很小，即使消除这些小波系数，重构图像也不会产生很大的失真.在比较小波系数大小时，不同层次的小波系数需进行归一化处理，即W′ji=Wji.‖ψji(x)‖2.对于归一化之后的小波系数，若小于某个阈值T，则置为0；若在阈值T之上，则进行量化.
+　　对分解后的数据量化之后就是编码，这里采用的编码方法是行程编码与Huffman编码混合使用.由于很多小波系数与阈值比较后变为0，因此行程编码在此具有高效率.Huffman编码能使数据冗余最小化.
+　　解压重构图像质量这里用峰值信噪比来衡量，其定义如下式：
+
+其中fmax是图像灰度的最大值，f(x,y)是原图像灰度值，fc(x,y)是重构图像灰度值，N是图像像素总数.PSNR越大，说明解压重构图像质量越好.
+　　对于图像压缩性能，这里用压缩率来衡量.其定义如下式：
+
+　　图4(a)为解码后的低频平滑信号，相对于图3(f)，它是无失真的.图4(b)―图4(f)是由图4(a)逐层加入经解码的小波系数的过程.重构图像图4(f)相对于原始图像图3(a)，其压缩率CR为58，信噪比PNSR为31.2dB.具有较好的图像压缩性能和质量.
+
+
+图4　由(a)逐层加小波细节的图像重构过程
+　　图5(a)是细节比较丰富的512×512人民币图像，图5(b)是分5层后重构的图像.重构后的图像压缩率为27，PSNR为26.7dB.由于细节较多，大的小波系数较多，难以达到高的压缩率.
+
+
+图5　含细节较丰富的人民币图像的压缩
+5　结　论
+　　在图像压缩中已有很多种滤波器组，滤波器组的选择是影响图像压缩性能的重要问题［9］.本文基于图像的三角网格模型设计了一个在小波图像压缩中未曾使用过的滤波器组，它具有基于一维小波的分解形式.该滤波器组在分解和重构过程均为O(n)运行时间.用哪一种滤波器能获得最好的图像压缩性能和质量不能一概而论，除了与滤波器本身有关外，还与具体的量化编码方法有关.实验表明，该滤波器能结合行程编码和Huffman编码用于图像压缩能获得较好的压缩性能和质量.事实上，对于定义在具有细分连续性的任意拓扑类型域上的函数，都可用该滤波器组的设计方法构造滤波器组对其进行分解、压缩与重构.Wang J等人利用三维小波变换压缩医学图像［10］，该方法也能方便地用于医学图像压缩.另外，该方法还可用于多面体压缩、动画的分层控制、曲面的多分辨率编辑及分层显示等.
+作者简介：李文舜　1972年出生于江西波阳.1993年任华东交通大学电子与信息工程系助教，1996年获上海交通大学模式识别与智能控制专业硕士学位，现为上海交通大学图像处理与模式识别研究所博士研究生.近年来在国内外学术期刊上发表论文10多篇.主要研究兴趣为：多分辨分析、图像识别、图像及图形压缩.
+　　　　　李介谷　上海交通大学图像处理与模式识别研究所教授，博士生导师.国际电工电子协会高级会员、中国科学院国家模式识别实验室和北京大学国家信息中心学术委员会副主任委员、国家教委第二届学科评议组成员、《模式识别与人工智能》杂志编委.主要研究领域：模式识别、计算机视觉、目标检测与跟踪、人工神经网应用.
+作者单位：上海交通大学图像处理与模式识别研究所　上海　200030
+参考文献
+1　Grossmann A, Morlet J. Decomposition of Hardy function into square integral wavelets of constant shape. SIAM J. Math. Anal.,1984，15：723―736
+2　Daubechies I. Orthonormal bases of compactly supported wavelets. Commun. Pure Appl.Math.,1988，41：909―996
+3　Mallat S. A theory for multiresolution signal decomposition:The wavelet representation.IEEE Trans.. Patt Anal. Machine Intell.,1989,7:674―693
+4　Strang G T. Wavelets and dilation equations:A brief introduction,SIAM Rev，1989，31：614―627
+5　Antonini M, Barlaud M, Mathieu P, Daubechies I. Image coding using wavelet transform.IEEE Trans. Image Processing,1992,1(2):205―220.
+6　Albanesi M G, Delotto I. Image compression by the wavelet decomposition.Signal Processing,1992，3：265―274
+7　Daubechies I. Ten Lectures on Wavelets.SIAM,Philadelphia,1992
+8　Lounsbery J M. Multiresolution Analysis for Surface of Arbitrary Topological Type. ［Ph.D.thesis］, Department of Computer Science and Engineering, University of Washington, September 1994
+9　Villasenor J D, Belzer B, Liao J. Wavelet filter evaluation for image compression.IEEE Trans. Image Precessing,1995,4:1053―1060
+10　Wang J, Huang H K. Medical image compression by using three-dimensional wavelet transformation.IEEE Trans. Medical Imaging,1996,15：547―554
+收稿日期：1997-10-20
+修稿日期：1998-08-25

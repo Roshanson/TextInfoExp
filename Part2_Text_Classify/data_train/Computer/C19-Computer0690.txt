@@ -1,0 +1,99 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1998年 第24卷 第5期  Vol.24  No.5 1998
+
+
+
+Lur'e多非线性系统的镇定与L2-增益控制的MI方法1)
+郭　雷　忻　欣　冯纯伯
+摘　要　考虑Lur'e多非线性系统的镇定与L2-增益控制问题.对Lur'e多非线性系统表示控制对象,设计状态反馈和输出反馈控制器使闭环系统分别是绝对稳定和L2增益有限的. 基于矩阵不等式(MI)方法给出了镇定与L2-增益控制问题的可解条件,并讨论了控制器的设计方法.
+关键词　Lur'e多非线性系统, 绝对稳定性, L2增益有限性, 矩阵不等式. 
+AN MI APPROACH TO STABILIZATION AND L2-GAIN
+CONTROL PROBLEMS FOR LUR'E SYSTEMS
+GUO LEI　　XIN XIN　　FENG CHUNBO
+(Research Institute of Automation, Southeast University, Nanjing 210018)
+Abstract　Consider stabilization and L2-gain control problems for Lur'e systems:For generalized plants described by Lur'e systems,to design state-feedback and dynamical output-feedback controllers such that the closed-loop systems are absolutely stable and L2-gain finite, respectively. Solvable conditions are presented based on matrix inequility (MI) approach. Some feasible design algorithms are discussed.
+Key words　Lur'e system, absolutely stable, L2-gain finite, matrix inequility.
+1　引言
+　　非线性系统的镇定和L2增益控制(H∞)问题是目前控制理论研究的一个热点［1,2］. 文献［2］针对只有一个非线性环节的Lur'e系统,给出输出反馈镇定问题的可解条件, 该条件涉及依赖不定参数的两个耦合的Riccati方程; 文献［1］针对只有一个非线性环节的Lur'e系统, 提出了一个L2-增益控制问题可解的充分条件. 本文考虑Lur'e多非线性系统,基于矩阵不等式(MI)方法给出镇定与L2-增益控制问题的可解条件,并提出了控制器的设计方法. 
+　　被控的广义对象为
+　　(1)
+其中 pT=(p1(t),…, pnp(t))T, pi(t)=φi(qi(t)), i=1,2,…, np. 而φi(σ)满足扇区条件［0,1］
+0≤σφi(σ)≤σ2 ,　　(2)
+x∈Rn, w∈Rnw, u∈Rnu, y∈Rny, z∈Rnz分别表示状态, 外部输入, 控制,量测和被控向量. q∈Rnp, p∈Rnp分别表示Lur'e控制信号和控制变量.
+　　镇定问题：设计控制器ΣC使闭环Lur'e系统绝对稳定.
+　　L2增益(H∞)控制问题: 设计控制器ΣC使闭环Lur'e系统绝对稳定且满足zTz＜γ2wTw .
+　　设ΣC为nc阶动态输出反馈控制器,其动态方程为
+　　(3)
+　　闭环系统为Σcl
+　　(4)
+其中
+　　(5)
+　　(6)
+且
+　　当u=0时, 记Lur'e系统(1)为(1)′. (1)′的稳定性和L2增益有限性分别归结为下列形式的Lyapunov函数和储存(Storage)函数的存在性
+　　(7)
+其中P＞0, Λ∶　=diag(λi, …, λnp}≥0, CTq∶　=(CT1,q,…, CTnp,q). 形如(7)的V(x)的存在性等价于Popov判据［2］.
+　　文献［3］总结了线性矩阵不等式(LMI)的进展,下面的两个引理把Lur'e系统的稳定性和L2增益有限性归结为LMI的可解性. (引理1来自文献［3］)
+　　引理1(稳定条件). Lur'e系统(1)′, 若存在P＞0, Λ≥0, T∶　=diag{t1,…,tnp}≥0 满足
+　　(8)
+则(1)′绝对稳定.
+　　引理2 (L2增益有限条件). 对Lur'e系统(1)′, 若存在P＞0, Λ≥0, T∶=diag{t1,…,tnp}≥0 满足 
+　　(9)
+则(1)′L2增益有限.
+　　引理2与文献［3］第8.4.2节有所不同: 1)此时Dzw≠0; 2)考虑了稳定性约束.
+　　证明从略. 可仿照文献［3］用S-过程(S-procedure)得到.
+　　注1. 当np=1时, 上述两个引理中的条件分别等价于存在形如(7)式的Lyapunov函数和储存函数.
+2　主要结果
+2.1　状态反馈情形
+　　考虑状态反馈律u=Kx，此时闭环系统状态矩阵为Acl=A+B＼-uK, 代入对象(1), 并记Q∶　=P-1, KQ=R, 应用引理1有
+　　(10)
+因而可得
+　　定理1. 若存在Q(＞0), R满足(10), 则存在状态反馈镇定控制律u=Kx, K=RQ-1.
+　　下边考虑L2增益有限控制问题,此时(9)等价于
+ 　　　(11)
+类似地有
+　　定理2. 若存在Q(＞0), R满足式(11), 则存在状态反馈L2增益有限控制律u=Kx, K=RQ-1 .
+　　注2. (10),(11)式都是关于Q,R,Λ的双线性不等式(BLMI).对BLMI, 文献［4］给出局部算法； 文献［5］提出了一种全局优化算法.
+2.2　输出反馈情形
+　　将Σcl的系数阵代入式(8),则式(8)等价于
+Ω+BGC+CTGTBT＜0, 　　(12)
+其中
+　　(13a)，(13b)
+　　(13c)
+式(12)成立当且仅当下列两式成立(Q∶　=P-1)
+　　(14)
+　　(15)
+相应于(6)式的分块,取
+　　(16)
+这时
+　　把式(6),(16)代入式(14),(15),则有
+
+　　(17)
+　　(18)
+　　定理3. 若存在X＞0, Y＞0满足(17),(18)且 ，则对象(1)存在输出反馈镇定控制器. 这时,镇定控制器的阶次nc=rank(X-Y-1).
+　　证明. 由以上推导可知,定理3条件满足等价于对闭环系统引理1的条件满足,故闭环系统渐近稳定. 结合式(5)，(6)，(16)知控制器阶次等于P22的维数, 即rank(X-Y-1). 证毕.
+　　注3. 镇定问题即Savkin和Petersen［2］的“具Lyapunov形式的绝对镇定”问题,但文献［2］要求对象满足限制条件:(A，Bp)可控, (A, Cq)可观, 且BTuCTq CqBu＞0.
+　　同理可得
+　　定理4. 若存在X＞0, Y＞0满足
+ 　　(19)
+ 　(20)
+且 其中
+M1∶=XBp+ATCTqΛ+CTqT,
+M2∶=ΛCqBp+BTpCTqΛ-2T,
+N1∶=Bp-ATYCTqΛ+YCTqT,
+N2∶=-ΛCqYCTqΛ+Dzp, 
+则对象(1)L2增益控制问题存在输出反馈控制器. 这时,控制器的阶次nc=rank(X-Y-1).
+　　证明从略.
+　　注4. 从计算的观点来看,对于待定矩阵X,Y,Λ,T,(17),(19)式是线性矩阵不等式(LMI),而式(18)，(20)是多线性矩阵不等式(MLMI). 一种方法是先用内点法解出LMI(17)或(19),得到一组X，Λ，T，然后再与式(18)或(20)和约束不等式联立形成另一个LMI求得Y. 另一种方法是先给定参数阵T, 然后根据定理3,4求解双线性矩阵不等式(BLMI)［4，5］. 
+3　结语
+　　本文研究了Lur'e多非线性系统的镇定与L2-增益控制问题. 基于矩阵不等式(MI)方法给出了对Lur'e多非线性系统表示的控制对象. 存在状态反馈和输出反馈控制器使闭环系统分别是绝对稳定和L2增益有限的的可解条件，并讨论了控制器的设计方法，控制器的参数依赖于一类特殊的BLMI的解.
+　　1)国家自然科学基金与中国博士后科学基金资助课题.
+作者单位：(东南大学自动化所　南京　210018)
+参考文献
+　1　Zhan W, Wang L Y, Liu Y et al. H∞ control for systems with sector bound nonlinearities. In: Proc. of IFAC World Congress, 1996
+　2　Savkin A V, Petersen I R. A method for robust stabilization related to the Popov stability criterion. Int. J. Control, 1995, 62(5):1105-1115
+　3　Boyd S et al. Linear matrix inequality in system and control theory, In: SIAM Studies in Applied Mathematics, Philadelphia: 1994
+　4　Goh K C et al. Bilinear matrix inequality properties and computational methods. In: Proc. of ACC, 1994, 850-855
+　5　Goh K C et al. A global optimization approach for the BMI problem. In: Proc. of IEEE on CDC, 1994, 2009-2014
+　　收稿日期　1996-06-10

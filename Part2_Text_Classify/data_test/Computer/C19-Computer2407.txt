@@ -1,0 +1,150 @@
+计算机研究与发展
+JOURNAL OF COMPUTER RESEARCH AND DEVELOPMENT
+1999年　第36卷　第11期　Vol.36　No.11　1999
+
+
+
+椭圆曲线密码体制
+徐秋亮　李大兴
+摘　要：椭圆曲线密码体制目前已引起了信息安全及密码学各界的广泛关注,从安全性及有效性来看,这种密码体制有着广阔的应用前景,是一种可能近期在某些领域取代RSA，DSS等现存体嘶的密码(签名)体制,现已渐形成了研究与开发热点.文中首先对椭圆曲线及其相关知识作了简单介绍,而后给出了一些典型的椭圆曲线密码体制并较为详细地讨论了这种密码体制的安全性.文中还以相当的篇幅对适用于密码体制的椭圆曲线的构造方法作了重点介绍,这是实现椭圆曲线密码体制的关键性问题.作为一篇综述,文中反映了椭圆曲线密码体制的历史进展和现状以及当前所面临的理论问题,体现了该领域目前的最新成就,并对该密码体制的发展提出了看法.
+关键词：椭圆曲线,离散对数,密码体制,时间复杂度,安全性
+中图法分类号：TP309
+ELLIPTIC CURVE CRYPTOSYSTEMSXU
+Qiu-Liang
+(Department of Computer Science, Shandong University, Jinan 250100)
+LI Da-Xing
+(Institute of Network Security, Shandong University, Jinan 250100)
+Abstract　Recently, elliptic curve cryptosystems have become as a promising new area in public-key cryptography. The main advantage of elliptic curve cryptosystems over other public-key cryptosystems is the fact that they are base on adifferent intractable problemb and that their keys have smaller sizes for he same level of security. These roperties lead to some better performance in application. Because of their security and efficincy, this kind of cryptosystems can be used widely in the future. In fact, they have come into strong consideration not only by theory researchers but also by standards de velopers.The paper here covers the main various aspects of elliptic curve crypt osystems. The concepts of elliptic curves and their related knowledge are introd uce briefly, and a few typical schemes are given. The seurity of elliptic curve cryptosystems is given a properly detailed descriptin. Builing of an elipic curve suitable for cryptosystems, which is essential to the setup of an elliptic curve cryptosystem, is discussed in detail.
+　　As a summary，the advance and the status quo of the elliptic curve cryptosystems are reflected, and so do the prblems the cryptosystems face now. The newest achievements in this area are covered and views on the development of the cryptosy stems are proposed.
+Key words　elliptic curve, discrete logarithm, cryptosystem, time complexity, security
+1　引　言
+　　椭圆曲线理论是代数几何、数论等多个数学分支的一个交叉点,一直被认为是纯理学科.近年来,由于公钥密码学的产生与发展,该学科也找到了它的应用领域.在RSA密码体制的基础性问题―大整数分解和素性检测的研究方面,椭圆曲线是一个强有力的工具［1～6］.特别地,以椭圆曲线上的(有理)点构成的Abel群为背景结构,实现各种密码体制已是公钥密码学领域的一个重要课题自80年代中期被引入［7,8］以来,椭圆曲线密码体制逐步成为一个十分令人感兴趣的密码学分支,1997年以来形成了一个研究热点.这种密码体制的诱人之处在于在安全性相当的前提下,可使用较短的密钥.一般认为,q元域上的椭圆曲线密码体制,当q的长度为160bit时,其安全性相当于RSA使用1024bit模数［9］,密钥短意味着小的带宽和存储要求,这在某些应用中可能是决定性的因素.椭圆曲线密码体制的诱人之还在于它建立在一个不同于大整数分解及素域乘法群离散对数问题的数学难题之上.自公钥密码产生以来,人们基于各种数学难题提出了大量的密码方案,但能够经受住时间考验而广泛为人们所接受的只有基于大整数分解及离散对数问题的方案,且不说这两种问题受到亚指数算法的严重威胁,就如此狭窄的数学背景来说也不能不引起人们的担忧,寻找新的数学难题作为密码资源早就是人们努力的一个方向.同时,椭圆曲线资源丰富,同一个有限域上存在着大量不同的椭圆曲线,这为安全性增加了额外的保证,这也为软、硬件实现带来方便.
+　　由于椭圆曲线上的一次群运算最终化为其背景域上不超过15次乘法运算,因而便于实现,在执行速度方面,目前难以对椭圆曲线密码体制与现存密码体制,比如RSA,DSA等作出准确的定量比较,粗略地说,椭圆曲线密码体制较对应的离散对数体制要快,且在签名和解密方面较RSA快,但在签名验证和加密方面较RSA慢［9］.
+　　安全性显然是任何密码体制的必条件,椭圆曲线密码体制的安全性分析因而也引起了各国密码学家珊有关部门的关注渎重视,但成果却并不丰硕.也许这可视为椭圆曲线密码体制具有高强度的一种证据,因此,大多数密码学家对这种密码体制的前景持乐观态度.
+2　椭圆曲线的基本概念及相关问题
+　　在本文中,K总表示一个有限域.事实上,在密码学中我们只对两种情形感兴趣:K是大素域Zp或特征为2的有限域GF(2n)(为了符号上的方便,本文中q元有限域GF(q)有时也用Fq表示).我们还约定p总表示一个大于3的素数,表示K的代数闭包,K上的射影平面P2(K)是K3\{(0,0,0)}上的等价关系“～”的等价类集合,其中“～”定义为(X1,Y1,Z1)～(X2,Y2,Z2)当且仅当存在u∈K*使得(X1,Y1,Z1)=(uX2,uY2,uZ2).包含(X,Y,Z)的等价类记为(X:Y:Z).形如下式的3次齐次议程称为K上的Weierstrass方程：
+Y3Z+a1XYZ+a3YZ3=X3+a23-2Z+a4XZ2+a6Z3　　(1)
+其中,a1,a2,…,a6∈K.令F(X,Y,Z)=Y2Z+a1XYZ+a3YZ2-X3-a2X2Z-a4XZ2-a6Z3如果对所有满足F(X,Y,Z)=0的射影点P=(X∶Y∶Z)∈P2(),F在P点的3个偏导数必不全为0,则称Weierstrass方程(1)是平滑的或非奇异的.
+　　设域K上的Weierstrass方程(1)是平滑的,该方程在P2（）中的所有解组成的集合E：
+
+称为域K上的一条椭圆曲线.在任一条椭圆曲线中,存在唯一一点其Z坐标为0,该点即是O=(0∶1∶0),我们称其为“无穷远点”.椭圆曲线E的判别式Δ(E)与j-不变量j(E)是椭圆曲线理论中两个重要的量,其定义见文献［10］.
+　　为了方便,常将Weierstrass方程(1)以仿射坐标x=X/Z,y=Y/Z的形式书写为
+y2+a1xy+a3y=x3+a2x2+a4x+a6　　　(1′)
+这时,相应的椭圆曲线E即是方程(1′)在仿射平面A2()中的所有解及一个特殊点―无穷远点0组成的集合.即
+
+　　为明确,以后常用E/K表示K上的椭圆曲线E.E/K中两个仿射坐标均属于K的点及无穷远点O均称为E/K的K-有理点,E/K的所有K-有理点组成的集合记为E(K),即
+
+　　为了叙述的方便,我们将不区别椭圆曲线与其定义方程,并约定E或E/K将总表示有限域K上的椭圆曲线,不再另作说明.
+　　K上的两条椭圆曲线
+
+称作是同构的,并记为如果存在u,r,s,t∈K,u≠0使得变量替换(x,y)→(u2x+r,u3y+u2sx+t)将E1变为E2.当K的特征Char(K)≠2,3时,E/K可在同构意义下化成如下简单形状
+E′：y2=x3+ax+b　a,b∈K
+这时,Δ(E′)=-16(4a3+27b2)≠0,j(E′)=-1728(4a)3/Δ(E′).当K的特征Char(K)=2时,根据j(E)是否为0,可分别化为两种基本形状,参见文献［11］.
+　　在椭圆曲线E/K中可按“弦切法”定义加法运算“+”使〈E,+〉成为一个Abel群,〈EK),+〉构成其子群,称之为E/K的有理点子群.可以证明,当时E1(K)与E2(K)作为Abel群必是同构的［11］.所谓椭圆曲线密码体制,即是建立在Abel群E(K)上的密码体制,下面将以#E(K)表示群E(K)的阶.许多密码学论文中直接称E(K)为“椭圆曲线群”,并将#E(K)称为椭圆曲线的阶,本文有时也采用这种说法.
+3　典型的椭圆曲线密码体制
+　　现有的椭圆曲线密码体制均是从其他群中平移而来,并未针对E(K)产生新型密码体制,而这种平移主要是对基于离散对数问题的密码体制,虽然也有RSA体制的平移［12,13］,但并无实用及理论价值,本文仅就基于离散对数的体制进行讨论.
+　　设G是一个有限群,a,b∈G,若存在正整数n使得an=b,则n称为群G中b的以a为底的离散对数,记为n=logab.给定a,b∈G,求n=logab称为G中的离散对数问题,特别地,若P,Q∈E(K),求n使得nP=Q,称为椭圆曲线离散对数问题.
+　　将ElGamal加密体制直接平移到椭圆曲线群上,得到的密码体制将需要首先把待加密的明文转化为椭圆曲线上的点,而后才能进行加密,这在实用上较为麻烦,为避免这个麻烦,Meneze和Vanstone对该体制作了一点轻微的修改［11］.下面介绍的EC_ElGamal体制采用了这种改进形式.
+　　ECElGamal加密体制：
+　　(1)选取有限域K、椭圆曲线E/K及基点P∈E(K)(这些参数可由一组用户公用).
+　　(2)选取随机数a,计算Q=aP.
+　　(3)公开K,РE,P,Q作为公钥,密藏a作为私钥.
+　　假设Alice已建立了上述体制,给Alice发送秘密消息M=(M1,M2)∈K×K,需完成如下步骤:
+　　①随机选取正整数k.
+　　②计算kP,kQ=(,),若=0或=0返回第①步,直到≠0,≠0.
+　　③发送C=(kP,M1,M2)给Alice.
+　　收到密文C后,Alice计算a(kP)=(,),进而得到明文M=(M1,M2).
+　　EC_DSS签名体制：
+　　(1)选取有限域K、椭圆曲线E/K及基点P∈E(K),设〈P〉是由P生成的q阶循环子群,q是一个大素数.
+　　(2)选取随机数x,0<x<q,计算Q=xP.
+　　(3)选取单向Hash函数H:M→Z,其中,M是消息空间,Z是整数集,并选取双射g：〈P〉→0,1,…,q-1}.
+　　(4)K,E,P,Q,q,g均为公开信息,作为签名验证公开钥,x保持秘密作为签名密钥.
+　　设有消息m∈M,对的签名过程为
+　　①随机选取整数k,0<k<q；
+　　②计算R=kP；
+　　③解关于s的同余方程H(m)≡-xg(R)+ksmodq
+　　对m的签名为(R,s).签名验证方程为
+(Hm)s－1modq)P+(g(R)s－1modq)Q=R
+　　EC_Diffie-Hellman密钥交换协议：
+　　选取有限域K、椭圆曲线E/K及基点P∈E(K).K,E,P为公开信息.若Alice与Bob想进行密钥交换,执行如下步骤：
+　　①Alice随机选取正整数m,计算KA=mP,并将KA传送给Bob；
+　　②Bob随机选取正整数n,计算KB=nP,并将KB传送给Alice；
+　　③Aice计算：KC=mKB；Bob计算：KC=nKA.KC即为Alice和Bob所商定的密钥.
+4　椭圆曲线忆码体制的安全性
+　　椭圆曲线密码体制的安全性取决于椭圆曲线离散对数问题的难解性.一般而言,群G上的离散对数算法可分成两类：指数计算法与碰撞搜索法.指数计算法具有亚指数时间复杂度,但要求在G中“平滑性”概念有意义,且G中包含足够多的平滑元素.类群、GF(2n)的乘法群及Zp均满足该性质.目前最好的指数计算法是线性筛法［14］与数域筛法［15］.碰撞搜索法可用于一般群,该类算法具有纯指数时间复杂度.目前最有效的碰撞法是Pllardρ-方法［16］和Pohlig-Hellman方法［17］,这也是目前对椭圆曲线密码体制最有影响的方法.下面就一般群形式简述这两个方法.以下假设G是一个n阶Abel群,H=〈h〉是由h∈G生成的nh阶循环子群.
+4.1　Pollardρ-方法
+　　Pollardρ-方法是一个随机算法,无法给出运算时间上界,而只能给出其期望运算次数.
+　　设nh是已知的,随机将G分成大约等势的3份G1,G2,G3,使得x∈Gi(i=1,2,3)的判断是容易的(大约相当于一次或几次G的运算),对y∈H=〈h〉,随机选取a0,b0使1<a0,b0<nh,令y0＝ha0yb0，定义如下序列：
+　　　(2)
+其中,ai,bi可用模nh约化,故不会过大而不可控制.该序列的构造保证了下列等式成立:
+
+若将序列{y}视为从H到H的一个(部分)随机映射,其期望循环长度为O,因此,通过比较yi与y2i我们可期望在O时间内求到正整数k使得yk=y2k,k=O,即hakybk=ha2kyb2k或ybk-b2k=ha2k-ak,当gcd(bk-b2k,nh)=1时便求得
+
+在密码体制中,gcd(bk-b2k,nh)＝1以很高的概率成立(比如,在DSS中,nh是一个素数).该算法的期望运算次数为O.
+4.2　Pohlig-Hellman方法
+　　在Silver之后,Pohlig和Hellan发现,Abel群G的阶的平滑性对于在G中求解离散对数问题是有帮助的.现设对于y∈H,由中国剩余定理,要计算m=loghy,只须求出所有mmodpep即可.为计算mmodpe,其中,pe‖nh,e≥1，滤这里,mi∈{0,1,…,p-1}.由hm=y可知
+
+于是,问题转化为求对于的对数,因为的阶为p,当p较小时是易求的.该算法的时间复杂度为
+　　由于上两算法关于nh或其最大素因子的长度是纯指数复杂度的,当nh含较大素因子(比如,含长度≥160bit的素因子)时效,这对椭圆曲线密码体制构不成真正的威胁,针对圆曲线离散对数问题进行的密码分析才是该体制面临的真正考验.为了能方便计算椭圆曲线的阶,一类被称为“超奇异椭圆曲线”的特殊椭圆曲线E/Fq(其中,q=pm是素数幂)曾被建议用于建立密码体制,但是,Menezes等于1993年证明［18］,对于超奇异椭圆曲线E/Fq,E(Fq)上的离散对数问题可在概率多项式时间内归约为Fq的扩域Fqk上的离散对数问题,其中k≤6,当p≠3时,k≤4,这从根本上否定了超奇异椭圆曲线用于密码系统的可能性．所幸的是,这类椭圆曲线极易识别和避免.Semaev于最近也找到一类不宜用于密码体制的椭圆曲线,他在文献［19］中指出,对特征为p的域K上的椭圆曲线E/K,E(K)的p阶子群中的离散对数问题可在线性时间内归约为K的加法群上的离散对数问题,这就是说,对大素域Zp上的椭圆曲线E/Zp,若#E(Zp)=p则E(Zp)中的离散对数问题在线性时间内归约为Zp的加法群上的离散对数问题,从而可在线性时间内求解(这类椭圆曲线称为异常(anomalous)曲线).这个结果多少有些令人惊异,更令人惊异的也许是这个结果早就被几个数论学家(比如Ed SchaeferЩ假定是众所周知的事实而未发表,密码学界则对此一无所知,1997年前制定的各种密码标准从未考虑到这种情况.对椭圆曲线密码体制的攻击,还应提到文献［20］,该文献利用椭圆曲线的结构特性改进Pllardρ-方法,从而产生一加速因子.现令K=GF(2m)为2m元域,并设K上的椭圆曲线E/K的系数均在子域GF(2e)之中(这类曲线称为子域曲线)．文献［20］中给出的求解E(K)上离散对数问题的改进Pllardρ-方法较原始Pllardρ-方法期望运行时间降低倍,尽管这一结果并未改进算法时间复杂度的阶,但当e较小时,其安全性的影响也不可忽视.
+　　综上所述,椭圆曲线密码体制的安全性依赖于椭圆曲线离散对数问题的难解性,为保证体制的安全性,所使用的基点的阶应含长度不小于160bit的素因子,超奇异椭圆曲线及异常椭圆曲线是目前仅知的不宜用于密码体嘶的椭圆曲线［21］.使用子域曲线则应谨慎.
+　　从上面的讨论可以看到,椭圆曲线密码体制的分析结果并不丰硕,上面所述的结果便是到目前为止仅有的有影响的结果,这可从正反两方面来理解：这种密码体制确实是强的,或者,这种密码体制尚未被很好地认识,不管从哪个方面看,椭圆曲线密码体制还需进一步地深入研究.事实上,1997年以来,椭圆曲线密码体制及其安全性分析引起了密码学家及各界的极大关注与重视,现已形成了研究热点,有关各界,包括学校(如RoyalHollowayColleg)、商业组织(如Certicom)及政府(如美国国家安全局)已在从各个方面探索椭圆曲线密码技术,这种密码体制也引起了“密码体制标准”研制者的极大兴趣.IEEE标准P136″/D8(1998年10月版)及P1363/D9(1999年2月版)对椭圆曲线密码体制作了较以前更为详尽的讨论,成为重点内容之一.ANSI(美国国家标准局)授权的金融业标准委员会X9正在制定椭圆曲线数字签名标准X9.62和密钥协商及传递标准X9.63,RSA实验室也不甘落后,也已开始着手制定编号为PKCS#13的椭圆曲线密码标准,该标准将融合、平衡其他标准,并与其他PKCS标准有机结合,对椭圆曲线密码体制实现的细节作出更具体的规定.在学术界,1997年11月Waerloo大学组织了一个专门的彦术会议,研究椭圆曲线离散对数问题,众多著名密码学家及数学家应参加.但直到目前,在密码分析方面仍未取得实质性进展,这种情况持续时间越长,越使人们相信椭圆曲线密码体制的强度.大多数密码学家对这种密码体制的强度及应用前景越来越抱乐观态度.像RSA一样,只有经过了长时间的分析,椭圆曲线密码体制才会真正为人们所接受.
+5　椭圆曲线的选取
+　　要建立椭圆曲线密码体制,首要的问题是选取一个合适的背景有限域K及在K上选取一条合适的椭圆曲线E/K.从实用观点看,K有两种选择:大素域Zp或特征为2的有限域GF(2n).从近年来的实践结果看,大素域更为有效一些(这与人们的预想不同).椭圆曲线的选取则要考虑安全性、实用性等诸多因素,有些密码体制(如,ElGamal签名体制、DSS签名体制)需要知道E的阶#E(K)或#E(K)的一个大素因子,另一些体嘶(如,Diffie-Hellman密钥交换协议、ElGamal加密体制)虽不需要知道E(K)的阶,但为避免Pohlig-Hellman攻击,需保证#E(K)中有大素因子.椭圆曲线的选取现有两种可以考虑的方法.
+　　(1)随机选取
+　　随机选取一条椭圆曲线E/K,计算其阶#E(K)直到获得满意的曲线为止.由于这种方法的随机性,从安全性角度来看是一种理想的方法.
+　　Hasse定理告诉我们一个关于#E(Fq)估计:令#E(Fq)=q+1-t,则但要具体求出#E(Fq)却并非易事,Schoof在这方面做出了开创性的成果［22］.令φ是上的Frobenius自同态：
+
+其特征方程为φ2-tφ+q=0,其中,设l是一个小素数,E［l］为的l-扭点构成的子群,通过将φ限制在E［l］中,利用搜索可求出t′满足t′≡t modl，即于小素数l可求t工modl．Schoof算法的基本想法就是对一系列小素数l=3,5,7，…,L,其中,L满足,求出t mol,从而由中国剩余定理得到t,进而得到#E(Fq).
+　　Schoof的这个算法具有时间复杂度O（log92q）,理论上是个有效算法在实际中却不实用,但这个方法指出了求#E(Fq)的一个努力方向,引起了极大关注．自此以后,围绕计算tmodl已有大量成果发表出来［23,24］,并且在方法的实现上有了较大进展．Lercier和Morain曾在DEC Alpha3000/500上计算出GF（2300＋157)上椭圆曲线的阶,也曾在DEC Alpha Workstation250(266MHz)上计算出F2300上椭圆曲线的阶,用时都是大约40分钟．目前记录则是DEC Alpha Workstaion 250上用103天5小时计算出了F21301上一条椭圆曲线的阶.由于阶中含大素因子的椭圆曲线相对较少(在F2196上约2‰),利用该方法建立椭圆曲线密码体制仍存在困难,特别地,对求阶中含2个大素因子以上的椭圆曲线,上述方法完全不可行.
+　　(2)构造给定阶的椭圆曲线
+　　Atkin和Morain的论文“Elliptic Curves and Primality Proving”［4］使人们看到了获得密码体制所需要的椭圆曲线的另一条途径,该文提出的利用复乘构造素域Zp上具有特定阶椭圆曲线的思想及方法已引起了广泛关注,并被多篇论文讨论、改进［25～28］．密码标准IEEEP1363(   草稿,1999.2)也采用了该策略作为生成椭圆曲线的方法之一.利用这种思想,本文作者在文献［28］中提出并实现了素数阶及阶中含多个大素因子的椭圆曲线的构造方法.
+　　设-D是一个负奇基本判别式,HD(X)表示－D的Hilbert类多项式,又设p是一个素数,若整数x,y满足4p=x2+Dy2,则对HD(X)的任意关于模p的根j0,必存在j-不变量为j0的椭圆曲线E/Zp满足
+4#E(Zp)=(x-2)2+Dy2　　(3)
+　　虽然椭圆曲线不能由j-不变量唯一确定,通过j-不变量j0找出满足式(3)的椭圆曲线是容易的.事实上,j-不变量为j0的椭圆曲线恰构成2个等势的同构类.
+　　下面是文献［28］中提出的构造素域Zp(p>3)上的素数阶椭圆曲线的方法的简化描述.
+　　(1)取定负奇基本判别式-D,使其具有小的类数(比嶂,D=19)；
+　　(2)在适当范围内,随机选取整数x,y,令4q=(x2+Dy2),检测q的素性,直到q是素数为止；
+　　(3)令4p=(x+2)2+Dy2,检测p的素性,若p不是素数，返回第2步,直到p为素数；
+　　(4)计算HD(X)≡0modp的根j0(由于-D具有小的类数,该方程易解)；
+　　(5)构造j-不变量为j0的椭圆曲线E：y2=x3+ax+b,取随机数c∈Z*p,在E′：y2=x3+c2ax+c3b上任取一点P≠0,判断qP=0直到成立.
+　　可以证明,算法结束时E′即为Zp上q阶椭圆曲线［28］.
+　　该算法具有较高的效率,可轻易在大素域Zp上构造出素数阶椭圆曲线.
+　　受到MOV归约的启示,人们对利用复乘构造椭圆曲线的方法存在着某些疑虑,对p的形状的限制、对-D的限制是否影响体制的安全性国内外密码家对此有着广泛煳注,但到目前为止,没有任何线索说明这种曲线存眨弱点.
+6　结　论
+　　从上述讨论可以看出,椭圆曲线密码体制正受到学术界、开发商、政府部门、密码标准研制组织等有煳各界的重视,已罢成研究、开发热点并开始从理论走向实用．虽然对这种密码体制人们的认识尚嫌不足,但最近几年内,它极有可能在某些领域成为现存密码体制的替代者,椭圆曲线密码产品会逐渐为人们所了解,与安全性相关的椭圆曲线离散对数问题相应会受到更多的关注．可以计,在最近几年内,椭圆曲线阶的计算方法及实现技术会有较大进展,对具有小的复乘的椭圆曲线的密码分析也许会得到更为确定性的结论.
+*本课题得到国家“八六三”计划（项目编号863-306-ZT06-01-4）及山东省自然科学基金（项目编号Z94G0108）资助.
+作者简介：徐秋亮,男,1960年4月生,博士,主要研究方向为数据安全、密码学.
+　　　　　李大兴,男,1963年2月生,教授,博士生导师,主要研究方向为网络安全、密码学.
+作者单位：徐秋亮　山东大学计算机科学系　济南　250100
+　　　　　李大兴　山东大学网络信息安全研究所　济南　250100
+参考文献
+1　Lenstra H W. Factoring integers with elliptic curves. Annals o f Mathematics, 1987, 126: 649～673
+2　Montgomery P. Speeding the pollard and elliptic curve methods of facto rization. Mathematics of Computation, 1987, 48: 243～264
+3　Montgomery P. A FFT extension of the elliptic curve method of factoriz ation. ［Ph D dissertation］, UCLA,Los Angeles, 1992
+4　Atkin A, Morain F. Ellipic curvs and primality proving Mathemtics of Computtion, 1993, 61(203): 29～68
+5　Goldwasser S, Kilian J. Almost all primes can be quickly certified. In : Proc of the 18th Annual ACM Symposium on Theory of Computing, 1986. 316～329
+6　Pomerance C. Very short primality proofs. Mathematics of Computation, 1987, 48: 315～322
+7　Miller V. Uses of elliptic curves in cryptography. In: Williams H C ed s. Advances in Cry ptology―CRYPTO'85 Proceedings, LNCS 218. Berlin: Springer-Verlag, 1986. 417～ 426
+8　Koblitz N. Elliptic curve ryptosytems. Mthematics o Computatio, 1987, 48: 203～209
+9　Robshaw M, Yin Y. Elliptic Curve Cryptosystems. Mathematics of Computation, 1987, 48: 203～209
+10　Silverman J. The Arithmeic f Elipic Curvs.New York Springer-Verlag, 1986
+11　Menees A. Elipic urv Public Key Cryptosystems. Boston: Kluwr Acad emicPubishers, 1993
+12　Demytko N.A new elloptic curve based analogue of RSA. IN: Helleseth ed. Advances in Cryptology―Eurcocrpt'93 Proceedings, LNCS 765. Berlin: Springs-Verlag, 1994. 40～49
+13　Koyama K, Maurer U M Okmoto T, Vantone S A. New publi-key scheme based on ellitic curves over the rin Zn. In: Feigenbaum J eds. Advances in Cry ptology―CRYPTO'91 Proceedings, LNCS 576. Berlin: Springer-Verlag, 1992. 40～49
+14　Coppersmith D, Odlyzko A M, Schroeppel R. Disret⑥ loarithmsin GF(p). Algorithmica, 1986. 1: 1～15
+15　Lenstra A K, Lenstra H W. The Develpment of the Number Field Sieve. Be rlin: Springer-Verlag, 1993
+16　Pollard J M. Monte Carlo methods for index computation(mod p). Mathemat ics of Computation, 1978, 32 918～924
+17　Pohlig S C, Hllman M E. An imprved algorithm for computing logarithms over GF(p) and its cryptographic signifcance. IEEE Trans Inform Theory, 1978, 2 4: 106～110
+18　Menezes A, Okamoto T, Vanstone S A. Reducing elliptic curves logarithms to logarithms in a finite field. IEEETIT, 1993, 39(5): 1639～1646
+19　Semaev I A. Evaluation of discrete logarithms in a group of p-torsion points of an elliptic curve in characteristic p. Mathematics of Computation, 199 8, 67(221): 353～356
+20　Wiener M J, Zuccherato R J. Faster attacks on elliptic curve cryptosyst ems. In: Tavares S, Meijer H eds. Selected Areas in Cryptography―SAC'98. Berl in: Springer-Verlag, 1998
+21　IEEE P1363/D9 (Draft Version 9). Standard specification for public key cryptography. 1999. http://grouper.ieee.org/groups/1363
+22　Schoof R. Elliptic curves over finite field and the computation of squa re roots mod p. Mathematics of Computation, 1985, 44: 483～494
+23　Lercier R, Morain F. Counting the number of points on elliptic curves o ver finite fields: strategies and performances. In: Guillou L C, Quisquater J J eds. Advances in Cryptology―EUROCRYPT'95 Proceedings, LNCS 921, 1995. 79～94
+24　Lercier R. Finding good random elliptic curves for cryptosystems define d over. In: Fumy W ed. Advances in Cryptology―EUROCRYPT’97 Proceedings, LNCS 1233. Berlin: Springer-Verlag, 1997. 379～392
+25　Morain F. Building cyclic elliptic curves modulo large primes. In: Davi es D W ed. Advances in Cryptology―EUROCRYPT'91 Proceedings, LNCS 547. Berlin: Springer-Verlag, 1991.328～336
+26　Miyaji A. Elliptic curves over Fp suitable for cryptosystems. In: Seber ry J,Zheng Y eds. Advances in Cryptology―AUSCRYPT'92 Proceedings, LNCS 718. B erlin: Springer-Verlag, 1993.479～491
+27　Lay G J, Zimmer H G. Constructing elliptic curves with given group orde r overlarge finite fields. In: Adleman L M, Huang M D eds. Algorithmic Number T heory Proceedings, LNCS 877. Berlin: Springer-Verlag, 1994. 250～263
+28　徐秋亮,李大兴.适用于建立密码机制的椭圆曲线的建造方法及实现.计算机学报， 1998，21（12）：1059-1065
+　　（Xu Qiuliang,Li Daxing. Constructing elliptic curves suitable for cryp tosystems―Methods and implementation. Chinese Journal of Computers(in Chinese), 1998, 21(12): 1059～1065）
+原稿收到日期：1998-12-29；修改稿收到日期：1999-08-08.

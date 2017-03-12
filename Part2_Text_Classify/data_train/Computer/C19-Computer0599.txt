@@ -1,0 +1,23 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+联想记忆神经网络的一个有效学习算法
+梁学斌　吴立德　俞俊
+　　摘　要　提出一种新的联想记忆网络模型的有效学习算法，它具有下述特点：(1)可以全部存储任意给定的训练模式集，即对于训练模式的数目和它们之间相关性的强弱没有限制；(2)最小的训练模型吸引域达到最大；(3)在(2)的基础上，每个训练模式具有尽可能大的吸引域；(4)联想记忆神经网络是全局稳定的.大量的计算机仿真实验结果充分说明所提出的学习算法比已有算法具有更强的存储能力和联想容错能力.
+　　关键词　联想记忆网络，训练模式集，全部存储，最大吸引域，全局稳定性.
+AN EFFICIENT LEARNING ALGORITHM FOR ASSOCIATIVE
+MEMORY NEURAL NETWORK
+LIANG XUEBIN　　WU LIDE　　YU JUN
+(Dept.of Computer Science，Fudan University,　Shanghai　200433)
+Abstract　A new and efficient learning algorithm of asociative memory neural network is proposed,with the following characteristics:(1)it can store any given training pattern set no matter how much and what correlation among them may be;(2)the smallest domain of attraction of training patterns is maximized;(3)each domain of attraction of training patterns is guaranteed to be as large as possible;(4)the designed associative memory network is globally stable.A large number of computer experimental results confirm that our algorithm possesses more powerful storage ability and more fault-tolerance capability than existing ones.
+Key words　Associative memory,　training pattern set,　total storage ability,　maximized domain of attraction,　global stability.
+1　引言
+　　联想记忆神经网络可分为有自反馈和无自反馈两种模型，它具有信息记忆和信息联想的功能，能够从部分信息或有适当畸变的信息联想出相应的存储在联想记忆神经网络中的完整的记忆信息［1，2］.其性能主要是由具体的学习算法来决定.
+　　至今，已经提出了不少关于联想记忆神经网络的学习算法，主要有Hebbian学习算法［3］、投影学习算法［4］、Gardner学习算法［5］、最小重叠学习算法［6］、Ho-Kashyap学习算法［7］、神经元或训练模式加权学习算法［8］和优化学习算法［9］等.其中只有优化学习算法严格考虑了如何提高联想记忆神经网络的存储能力和联想容错能力.
+　　基于文献［9］的思想，本文提出了设计联想记忆网络的极大极小准则，它要求设计出的对称连接权阵应使得网络最小的记忆模式吸引域达到最大.并进一步发展了综合联想记忆网络的一个有效学习算法，它具有如下特点：(1)可以全部存储任意给定的训练模式集；(2)最小的训练模式吸引域达到最大；(3)在(2)的基础上，每个训练模式具有尽可能大的吸引域；(4)网络连接权阵是主对角元为1的对称阵，因此所设计出的联想记忆神经网络是全局稳定的［11］.
+2　无自反馈网络模型训练式集的基本约束
+　　联想记忆神经网络模型是由N个互联神经元组成的非线性动力系统.网格状态v=(v1,…,vN)t，其中vi(i=1,2,…,N)表示第i个神经元的状态，取值空间是{-1,1}；网络连接权阵W=(Wij)N×N,其中Wij表示从第j个神经元到第i个神经元的连接权.联想记忆神经网络模型可表述为［1］

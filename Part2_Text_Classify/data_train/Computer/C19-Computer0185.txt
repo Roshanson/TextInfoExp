@@ -1,0 +1,58 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.2　P.229-234
+
+
+
+一类并发实时系统的自动验证
+赵建华　郑国梁　Dan Van Hung
+摘　要：一个被广泛用于验证实时系统的方法是根据被验证的实时性质,使用适当的双向模拟等价关系使无限的状态空间转化为有限的状态等价类空间.算法只需要在这个有限的等价类空间里搜索就可以得到正确答案.但是,这个等价类空间的规模一般随着系统规模的增大而产生爆炸性的增长,以至于在很多情况下,穷尽搜索这个空间是不现实的.该文引入了一个等价关系来验证一个由多个实时自动机通过共享变量组成的并发系统是否满足一个线性时段特性.同时，还引入了格局之间的兼容关系来避免对状态等价类空间的穷尽搜索.基于这两个关系,文章提出了一个算法来验证是否一个实时自动机网满足一个线性时段特性.实例研究显示,此算法在某些情况下比其他一些工具有更好的时间和空间效率.
+关键词：模型验证,实时系统.
+分类号：TP311
+Automatic Verification of a Class of Concurrent Real-Time Systems
+ZHAO Jian-hua　ZHENG Guo-liang
+(Department of Computer Science and Technology Nanjing University,Nanjing,210093)
+Dan Van Hung
+(International Institute for Software Technology The United Nations University,Macau)
+Abstract：A widely used method for checking real-time systems is,according to the real-time property to be checked,to use a proper bi-simulation equivalence relation to convert the infinite-timed state space to a finite equivalence class space.The algorithm needs only to explore the finite space to get a correct answer.In most cases,exhaustive exploration is very difficult because the equivalence class space increases explosively when the scale of the system increases.In this paper,an equivalence relation is introduced to check whether a concurrent system,which is composed of a finite set of real-time automata,satisfies a linear duration property.To avoid exhaustive exploration,this paper also introduces a compatibility relation between timed states (configurations).Based on these two relations,an algorithm is proposed to check whether a real-time automaton network satisfies a linear duration property.The cases study shows that under some conditions this algorithm has better efficiency than the tools in the literature.
+Key words：Model-checking,real-time system.▲
+　　在过去的几年里,人们研究开发了一些用于实时系统的自动验证工具［1～3］.这些工具中使用的核心算法大多数是由Alur和Dill［4］在他们的开创性工作中提出的时间自动机的可达性分析算法.人们还提出了一系列的方法，试图解决状态空间爆炸问题,其中主要包括用来表达等价类空间的高效数据结构［5］和避免穷尽搜索状态空间的算法.
+　　在本文中,我们使用线性时段特性(一种典型的时段演算(duration calculus)公式)作为系统规范，并使用实时自动机网作为系统的模型.因为线性时段特性是通过对系统在各个状态上的时间积分来定义的,所以相对于可达性分析来说,线性时段特性更加难以验证,并且在进行可达性分析时使用的等人价关系不能直接用于验证线性时段特性.周巢尘等人使用线性规划的方法解决了验证是否为一个实时自动机满足一个线性时段特性的问题［6］.他们所提的技术被李宣东等人扩展到可以验证时间自动机的一个子集［7］.
+　　本文将解决验证一个由实时自动机通过共享变量组成的并发系统(实时自动机网)相对于一个线性时段特性的正确性问题.我们首先指出,一个实时自动机网满足一个线性时段特性当且仅当它的所有整数行为满足这个特性.随后，我们定义了在实时自动机网的格局集合上的等价关系和兼容关系,并基于这两个关系提出了一个验证算法.对于Fischer互斥协议的实例研究表明,这个方法在一些情况下可以很大程度地减低空间和时间上的开销.
+　　本文第1节正式定义了带共享变量的实时自动机网.第2节表述线性时段特性和它被实时自动机网满足的条件.第3节给出我们的基本思想和算法.第4节描述了使用我们的算法对Fischer互斥协议进行验证时得到的一些统计结果以及和其他工具的比较.最后一节是对本文的总结和讨论.
+1 带共享变量的实时自动机网
+　　在这一节中,我们将给出带共享变量的实时自动机网的正式定义.在本文中,我们使用Nat来表示非负整数集合,而用Intv表示所有在Nat上的区间的集合.首先，我们来描述实时自动机［6］的定义.
+　　定义1.一个实时自动机是一个二元组〈A,Γ〉,其中:(1) A=〈S,s0,E〉是一个有限自动机;S是状态集合,s0是初始状态,E是转换的集合.(2) Γ是从E到Intv的一个映射;Γ给E中的每个转换e赋予一个区间［ae,be］或［ae,∞),这里,ae,be是整数,并且0≤ae≤be.ae表示e的最小延时,而be或∞表示e的最大延时.
+　　对一个从s1到s2的转换e,我们用表示源状态s1,用表示目标状态s2.对于一个S中的状态s,我们使用Us表示max｛be｜＝s｝.我们用［ae,be］(当be=∞时,使用［ae,∞))来表示区间Γ（e）.
+　　 定义2.一个带共享变量的实时自动机网N(简写为实时自动机网)是一个四元组〈P,V,G,R〉,其中:(1) P=｛A1,A2,．．．,An｝是一个实时自动机的有限集合;对所有的i,令Ai=｛Ai,Γi｝并且Ai＝〈Si,qi0,Ei〉.(2) V=｛v1,v2,...,vm｝是一个共享变量的集合.(3) G是一个从(E1∪E2∪...∪En）到Varguard(正式定义见下文)的一个映射.(4) R是一个从(E1∪E2∪...∪En）到(V→Nat)的一个映射.对每一个转换e,R(e)是一个从共享变量集合V到Nat的部分映射.当e发生时,每一个在R(e)定义域中的共享变量v的值都被重置为R(e)(v),而其余的共享变量的值保持不变.
+　　Varguard中的公式是关于共享变量的布尔表达式,其语法如下：φ＝True｜v＝c|φ1∧φ2,其中v是一个共享变量,c是一个常整数.Varguard中的公式φ相对于V的一个取值组合的值为真被记作φ().在本文的其余部分,对一个向量,我们用xi来表示的第i个元素,并用［x′i／i］来表示通过将中第i个元素替换成x′i而得到的向量.
+　　定义3.设N=〈P,V,G,R〉是一个实时自动机网.N的一个无时间状态是一个n维向量,其中si是第i个实时自动机Ai的一个状态.N的一个格局是一个三元组〈,,〉,其中是N的一个无时间状态;是一个n维非负实数向量,ti表示从实时自动机Ai的上一个转换发生的时刻到当前的时间距离;是共享变量的一个取值组合.
+　　定义4.设N=〈P,V,G,R〉是一个实时自动机网.而〈,,〉和〈′,′,′〉是N的两个格局.我们定义N的转换系统如下:
+　　(1)(其中e是Ai的一个转换)当且仅当(a)(si=)∧（′=［/i］,并且ti∈［ae,be］∧′＝［0／i］,并且(b) G(e)(),且′是将中在R(e)的定义域中的每个变量的值重置为R(e)(v)后所得到的共享变量取值组合.
+　　(2)(d≥0)当且仅当=′∧=′并且对所有的j,(1≤j≤n),(t′j＝tj＋d)∧（t′j≤Usj)成立.
+　　给定两个格局C1和C2,一个转换e,一个实数d,当且仅当存在一个格局C′使得并且成立,我们记作.在这个转换系统的基础上,我们可以定义实时自动机网的执行.实时自动机网N的一个执行表示了该网从初始格局开始的演化过程.一个执行α可以表示成,其中C0是N的初始格局.我们把带时间长度的转换序列(ei,di)∧(ei+1,di+1)∧...∧(ej,dj)(1≤i＜j≤m),称为从Ci-1开始的一个N的行为.一个格局〈,,〉被称为整数格局当且仅当的所有元素都是整数.α被称为整数执行当且仅当所有的di,1≤i≤m＋1都是整数,此时,所有的Ci都是整数格局.
+2 线性时段特性
+　　从现在开始,我们使用N来表示在上面定义2中定义的实时自动机网.线性时段特性是用来表示实时系统的性质的时段演算公式.一个线性时段特性是形如Ψ≤M的关于状态时段积分的线性不等式,其中Ψ＝,对每个i(1≤i≤k),Si是一个在N的无时间状态集合上的谓词,ci和M是实常数(ci被称为对应于Si的系数).给定N的一个执行,Si在α上的时段积分∫Si定义成∫Si＝,其中βi＝｛u｜（0≤u≤m）∧(uSi）｝,u是Cu的无时间状态.这样,给定线性时段特性Ψ≤M,Ψ＝在α上的值可以计算如下,
+
+其中j是Cj的无时间状态,.
+　　定义5.一个实时自动机网N满足Ψ≤M当且仅当N的所有执行α都满足Ψ（α）≤M.
+　　例如,在如图1所示的实时自动机网就具有这样的性质:第1个自动机在状态A上的总时间总是比它在状态B上的总时间长.这个性质可以用线性时段特性表示成∫atB-∫atA≤0,其中atA和atB是两个谓词，并满足〈A,C〉atA,〈A,D〉atA,〈B,C〉atB,〈B,D〉atB.
+
+Fig.1　A real-time network with shared variables
+(v is a shard variable)
+图1　一个带共享变量的实时自动机网络（v是一个共享变量）
+3 算　法
+3.1　关于实时自动机网以及线性时段特性的一些性质
+　　在本节中,设Ψ≤M是一个线性时段特性.下面的引理使我们能够把问题局限在整数域内考虑,从而简化了问题.
+　　引理1.对于N的任何执行α,必然存在一个N的整数执行α′，使得Ψ（α）≤Ψ（α′）.
+　　由这个引理可知,实时自动机网N如果不满足Ψ≤M,则必然存在一个N的整数执行α不满足Ψ≤M.所以,我们验证N是否满足Ψ≤M,只需要验证是否N的所有整数执行都满足Ψ≤M.我们引入了如下的整数格局间的兼容关系和等价关系来将无穷的整数格局划分成有限多个等价类以及避免对等价类空间的穷尽搜索.
+　　定义6.设C1=〈,,〉和C2=〈,′,〉是N的两个整数格局.C1兼容C2,记作C1C2,当且仅当对所有的i,1≤i≤n,下面的公式成立.
+(ti＝t'i)∨(ti>RgBndsi∧t'i>RgBndsi)∨(LowBndsi<ti<t'i)∨(ti>t'i∧e.(=sibe=∞)),
+其中RgBndsi＝max({ae|=si}∪{be＋1｜(=s)}∧(be<∞)}),LowBndsi=max({ae＝=si}).
+　　兼容关系具有自反性和传递性.
+　　引理2.设C1,C2是N的两个整数格局,并且满足C1C2.那么,对任何转换e(可以是ε),任何整数d,如果存在一个格局C′2 使得成立,那么必然存在一个格局C′1使得并且C′1C′2成立.
+　　定义7.整数格局 C1和C2等价,记作C1≡C2,当且仅当(C1C2)∧(C2C1).
+　　从≡和的定义可以看出,≡是一个等价关系,并且将N的整数格局空间划分为有限多个等价类.
+　　引理3.RN={[C]｜(C是N的一个可达整数格局)}是一个有限集合,其中［C］表示包含C的≡的等价类.
+3.2　加权有向图
+　　一个实时自动机网N的对应于线性时段特性Ψ≤M的加权有向图定义如下:图的节点集合是RN.从一个节点n到另一个节点n′有一个权为Da的边a当且仅当存在一个转换e和两个格局C∈n,C′∈n′,使得对某个整数d满足,并且a的权Da等于,其中是C的无时间状态.由这个定义可以看出,如果Da＜∞,则必然存在一个d使得并且.加权有向图的初始节点就是包含自动机网的初始格局的节点.图2显示了图1中的实时自动机网对应于线性时段特性∫atB-∫atA≤0的加权有向图.对于一个格局C=〈,,〉,我们用LC表示min｛Usi-ti｜1≤i≤n｝.这个值表示了N在当前的无时间状态上所能等待的最长时间.设,我们用(p)来表示p的长度,即.从加权有向图的定义可以得出下面的引理.

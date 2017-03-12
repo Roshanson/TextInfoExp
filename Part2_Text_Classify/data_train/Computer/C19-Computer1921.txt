@@ -1,0 +1,49 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000　Vol.19　No.6　P.15,40
+
+
+
+
+基于VB与SQL Server自动构成与发送Email
+张鸿源　贾克斌
+摘 要：通过VB与SQL Server的集成，利用VB中的远程数据控制与远程数据对象控件从数据库中读取有关的产品信息，形成所需Email的方法。
+关键词：远程数据控制 远程数据对象 ODBC驱动程序 电子邮件
+　　随着数据库技术的不断发展完善以及数据仓库的出现，许多公司将大量的数据存放在数据库中，利用数据库管理系统(如：SQL Server，Oracle，Sybase等)对数据进行有效的管理。但是由此也带来了与数据库之间的通信问题。本文提出了一种与数据库进行通信的简便方法。并利用VB控件和SQL Server实现了自动发送电子邮件的功能，从而实现了办公室自动化。
+1  发送Email功能的实现
+　　本系统是通过加载VB的MAPI Session和MAPI Message控件并调用其函数来发送Email的。MAPI全称为电子邮件应用程序接口(Mail Application Programmer Interface)，它是Windows开发服务框架系统的一部分，MAPI开放服务框架系统如图1所示。MAPI是一系列的核心系统部件，它们可将任何用于电子邮件或工作组的应用程序与适应MAPI的消息服务天衣无缝地连接起来。例如，通过使用MAPI驱动程序，Microsoft Exchange消息系统可被连接到绝大多数私用或公用电子邮件系统。它采用统一的接口，即路由器选择MAPI DLL(16位)和MAPI32.DLL(32位)，用户无须考虑各种服务器之间的区别，利用它可以方便地开发邮件系统。下面介绍编制一个完整的邮件开发系统需要用到的4类MAPI函数，即：消息类函数、地址类函数、附属类函数、接收和接受器类函数。在本程序的开发中利用了下列函数：
+
+图1  MAPI开放服务框架系统
+　　(1)消息类函数中的compose函数(清空编辑缓冲，以便写新邮件)、send函数(发送写好的邮件)、signon函数(登录邮件服务器，如：Windows95的Exchange、Windows NT的Windows message)。
+　　(2)接收和接受器类函数中的RecipdisplayName函数(收件人的Email地址)、RecipType函数(表明消息来自于何方，其值为0表示为发送者；1表示来自To；2表示来自Copy)。通过调用上述函数就可以发送Email了。应注意的是，由于VB的MAPI控件要求登录到支持MAPI.DLL的邮件服务器，必须配置Microsoft Exchange或Windows Messageing等支持MAPI.DLL的邮件服务器，否则运行时将显示login failed。
+2  形成Email文本
+　　由于Email的内容主要是一些相关产品的信息，而且这些信息分布在数据库的不同表格中，因此程序就要与数据库进行连接，并以不同的条件从相关的表格中读取有用信息，形成符合要求的Email文本。在VB中有3种与数据库相连的方法：
+　　(1)基于RDO ＆ RDC开发与数据库连接的程序。
+　　(2)利用ODBC API直接与数据库连接。
+　　(3)利用VBSQL DB－Library API直接与SQL Server
+相连。
+　　上述3种方法对数据库操作的示意图如图2所示。
+
+图2  与数据库相连的方法对数据库的操作
+　　其中开放式数据库互连(ODBC)应用程序设计接口(API)定义了与数据库无关的编程模型，利用它提供的单一API接口，可以访问任何具有ODBC驱动程序的数据库或数据库服务器，而无需考虑ODBC兼容级别。因而使用ODBC API开发的应用程序具有本地代码编程模型的性能和灵活性。同时，它的编程方法是相当通用的，可以用于多种数据库格式。而Visual Basic Library for SQL Server(VBSQL)是为Visual Basic和Microsoft SQL Server特别设计、调整的DB－Library API的实现。VBSQL提供了几乎所有的数据库API，并被支持为Microsoft SQL Server本地接口。VBSQL与ODBC API相似之处在于：它们都提供最广泛的灵活性，而且在某些情况下，都提供比RDO更好的对SQL Server的访问。然而利用RDO ＆ RDC开发与数据库连接的程序简便易行，而且由于RDO ＆ RDC也是通过调用底层的ODBC API来与数据库通信，因此具有一定的灵活性。尽管使用ODBC API和VBSQL DB－Library API能最大限度地直接控制数据库，可以得到更高的性能和更大的灵活性，但却大大增加程序的复杂性。本系统在后台运行且每天只运行1次，对程序运行速度和灵活性没有很高要求。考虑到简便性和一定的灵活性，本程序采用RDO和RDC控件实现对数据库的访问。首先通过远程数据控制(RDC)的属性可以在与数据源连接的同时建立一个远程数据对象(RDO)的结果集(rdoResultset)。其中要连接的数据源应该在ODBC Administrator中事先建立好，所连接的数据库可以是Access、SQL Server、Foxpro、Excel等。当用RDC与数据源连接以后，就可以用OpenResultset(“Select *from表明Where条件”)语句建立新的RDO结果集，这样就可以访问任意的数据表从而得到有用的信息。
+图3是一封自动生成的Email。
+
+图3  自动生成的Email
+3  利用SQL Server的任务调度功能实现程序的自动触发
+　　在SQL Server中有一项SQL Executive服务，该服务具有管理事件、任务和警报的功能。其中任务管理功能可以对定义好的任务进行调度。创建一项任务的步骤如下：
+　　(1)启动SQL Executive Manager，选择相应的服务器；
+　　(2)在Server菜单上单击Scheduled Tasks，出现Manage Scheduled Tasks窗口；
+　　(3)单击New Tasks；
+　　(4)在出现的NAME对话框中，填入任务名；
+　　(5)在Type中选择CmdExec（表明此任务为COM或EXE文件）；
+　　(6)选中Enable复选框，使得此任务可以被调度；
+　　(7)在Command中输入此任务包含的可执行文件的路径；
+　　(8)若想重复执行任务，选择Recurring；
+　　(9)在Occurs下单击Daily，即每天执行1次；
+　　(10)单击OK；
+　　(11)单击Add。
+　　这样就完成了任务的定义，此任务将根据要求每天执行1次。应注意，要进行任务调度必须保证SQL Executive Manager已经启动。
+　　单独使用VB或SQL Server的邮件功能不能满足一些特殊的功能要求。本文将二种方法结合起来，利用VB实现发送邮件及与数据库通信的功能，同时利用了SQL Server的任务调度功能，实现了Email的构成和自动定时发送。
+张鸿源（北京工业大学信息与信号处理研究室100022）
+贾克斌（北京工业大学信息与信号处理研究室100022）
+收稿日期：1999－12－12

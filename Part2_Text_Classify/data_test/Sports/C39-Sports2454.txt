@@ -1,0 +1,48 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第8期 Vol.35 No.8 1999
+
+
+
+运用营养战略推迟运动性中枢神经系统疲劳的研究进展
+宋亚军
+摘要：近年来，运动性中枢神经系统(CNS)疲劳的研究取得突破性进展。大量事实证明，大脑5-羟色胺(5-HT)是构成运动性疲劳的重要介质。有些研究者设计营养方法以削减大脑5-HT的合成，推迟运动性疲劳的出现，本文拟就这一领域的研究现状做一综述。
+关键词：疲劳∥中枢神经系统∥综述
+Research on Delaying the Exercise Fatigue of CNS Using Nutritional Strategy
+Song Yajun
+Abstract:In recent years, a breakthrough has been made on the research of exercise fatigue of CNS. A number of facts have proven that serotonin in the brain is an important medium which leads to exercise fatigue. Some researchers have designed nutritional methods to reduce the composition of serotonin in the brain and delay the occurring of exercise fatigue. The article tries to give a general summary of the present status of the research in this field.
+Key words:nutrition∥fatigue∥central nervous system∥review
+1　前言
+　　运动性疲劳是一种非常复杂且涉及面极广的现象。由于传统观念和测量方法的限制，对运动性疲劳的研究多集中于外周疲劳方面；中枢神经系统(CNS)在运动性疲劳中的作用却少受重视。近年来，随着新技术的应用和神经生物学研究的发展，运动性CNS疲劳的研究也取得了突破性进展。
+　　在众多影响运动性CNS疲劳的因素中，大脑5-羟色胺(5-HT)受到越来越多的重视。大量事实证明，大脑5-HT作为一种神经递质，其功能作用不仅与睡眠、情绪等因素有关，而且是构成CNS疲劳的重要介质。超长距离运动中大脑5-HT合成增加，与运动性疲劳的产生和耐力运动成绩下降密切相关。有些研究者设计营养性方法以削减超长距离运动中大脑5-HT的合成，推迟运动性疲劳的出现，本文就这一领域的研究状况做一综述。
+2　大脑5-HT水平的变化对运动性疲劳的影响及其机制
+　　Chaouloff等就急性运动对鼠血清素激活系统的影响进行系列性研究发现，无论是超长低强度游泳后还是剧烈跑台运动后，大脑5-HT均增加。对运动中大脑不同部位5-HT水平变化的研究发现，跑台运动(20 m/min，90 min)后，中脑、海马和纹状体5-HT增加。Baileg等研究药物介导的大脑5-HT合成增加对鼠疲劳的作用发现，使用5-HT促效药可引起疲劳提早出现并降低耐力运动成绩。对人的研究也表明，与服安慰剂组相比，服5-HT促效药组运动至疲劳的时间明显缩短。这提示，运动中大脑5-HT水平的提高是影响乃至决定运动性疲劳的重要因素。
+　　大多研究者认为，5-HT脑部合成速率增加可使脑部对其它疲劳信号的敏感性加强，使机体运动能力下降。亦有研究认为，大脑5-HT水平增加可抑制另一神经递质多巴胺(DA)的激活，从而减弱对所完成任务的激发、促动及骨骼肌的协调性而导致疲劳。另外，大脑5-HT增加亦可通过影响下丘脑-垂体-肾上腺轴、体温调节、情绪等因素的变化而影响运动性疲劳的产生。
+　　研究证实，5-HT不能透过血脑屏障，只能在脑内合成，其合成的前体物质为色氨酸(TRP)，透过血脑屏障进入大脑的TRP含量的变化会影响5-HT的生成量，血循环TRP是构成大脑TRP水平变化的基础性因素。血液中绝大多数TRP松散地结合在白蛋白上，仅一小部分以游离色氨酸(f-TRP)形式存在。f-TRP可通过一种特殊机制被运送通过血脑屏障，即血脑屏障载体在转运f-TRP的过程中，也会转运其它中性氨基酸，尤其是支链氨基酸(BCAAs)，从而对f-TRP的转运产生竞争性抑制作用。这样血循环中f-TRP/BCAAs比率增加时，透过血脑屏障的f-TRP亦增加，5-HT合成增加。研究表明，长时间运动中，肌肉对BCAAs的摄取及氧化率均明显上升，使血浆f-TRP/BCAAs比率增高，大脑5-HT合成增加。对22名马拉松运动员比赛前后血浆f-TRP和BCAAs的测定发现，比赛后血浆f-TRP增高2.4倍，而血浆BCAAs却轻度降低(-19%)，在英式足球和超长越野滑雪后亦出现相似的变化，证实超长运动中血浆f-TRP/BCAAs比率显著增高。这一理论为运用营养战略推迟超长运动中CNS疲劳的研究提供了依据。
+3　营养补充对推迟运动性CNS疲劳的研究现状
+　　在运用营养战略推迟超长运动中CNS疲劳的研究中，所补充的营养物质多为BCAAs和糖类。从理论上讲，两类物质均可削减f-TRP/BCAAs的比率，并抑制大脑5-HT的合成。
+　　Blomstram等首先通过实验证实补充BCAAs对血浆f-TRP/BCAAs比率的影响。研究发现，在马拉松跑、越野滑雪或英式足球比赛前或期间补充7.5～21 g BCAAs，受试者两种物质及心理表现均有小的改善。Davis等采用双盲横向研究，观察在70%max自行车功量计运动中，补充小量适口的BCAAs(大约0.5 g/h)的作用，结果展示，当增加一种糖类电解质饮料时，低剂量的BCAAs的供应可阻止超长自行车运动中血浆BCAAs浓度的轻度下降。但这种供应不会影响运动至疲劳的时间，以及用力感及呼吸循环和代谢功能的各项指标。Varnier等研究表明，受试者运动前20 min补充大约20 g BCAAs或盐水，在逐级递增负荷至疲劳的运动中其运动成绩无任何改变。可见，适量补充BCAAs对维持超长运动中f-TRP/BCAAs比率有一定积极作用，但对推迟运动性疲劳的出现，提高耐力运动成绩似乎并无显著作用。
+　　同时，大量BCAAs的施用又会增加血浆中氨的水平，对肌肉代谢及中枢神经系统产生负面影响。事实上，血氨水平的提高可通过损伤中枢神经系统的功能，并通过减弱肌肉代谢功能而导致疲劳。Verger等报告，摄入高剂量BCAAs的鼠与摄取水和葡萄糖的鼠相比，跑台运动期间实际上会出现早期疲劳的现象。大多学者认为，运动中糖类的补充对推迟CNS疲劳更为适宜，因为，这样可使运动期间f-TRP和f-TRP/BCAAs的比率大幅度降低，而又不会出现大量补充BCAAs所引起的潜在负面影响。研究表明，糖类的补充可抑制游离脂肪酸(FFAs)的动员，而FFAs可与f-TRP共同竞争血浆白蛋白上有结合力的位点；血浆FFAs水平降低可使结合在白蛋白的TRP增加，血浆f-TRP和f-TRP/BCAAs比率下降，这又会抑制大脑5-HT产生，并将CNS疲劳降低至最低程度。
+　　实验研究中受试者分别补充安慰剂、6%和12%的糖类电解质饮料，以70%V*O2max强度进行自行车功量计运动至力竭，当补充安慰剂时，受试者血浆f-TRP增加7倍，而补充6%和12%糖类电解质饮料时(5 ml/kg，30 min-1)，血浆f-TRP的增加明显减弱，疲劳出现被推迟1 h。在此之后的研究中，受试者在功率相当于75%V*O2max的自行车功量计上进行力竭性运动，当随意地喝完6%糖类液体或是加味水的安慰剂后发现，补充两种糖类饮料与服安慰剂相比，其运动至力竭的时间延长，然而CHO组与CHO+BCAAs组相对比，其表现无显著不同。尽管这类研究并不能严格区别出糖类补充对运动性CNS疲劳的影响作用，但运动性疲劳的推迟显然不能单纯解释成是对外周疲劳作用机制的结果。
+4　运用营养战略推迟运动性CNS疲劳的研究展望
+　　近年来，CNS疲劳的研究丰富和发展了运动性疲劳的内容，尽管运用营养战略推迟运动性CNS疲劳的研究还处于起步阶段，但却极具理论和应用价值。它作为一种手段，为我们揭示出今后运动性疲劳研究的方向。根据其研究现状，我们认为，今后对这一领域的研究尚需注意：1)由于CNS疲劳最显著的特点是使皮层脊髓到达运动神经元兴奋冲动减弱，因此，在运用营养手段推迟运动性CNS疲劳的检测中，除观察运动性疲劳出现时机、力竭运动时间长短等因素外，还应充分注意由皮层脊髓到达运动神经元兴奋冲动水平的变化。2)研究表明，在影响CNS疲劳的神经生物学因素中，除大脑5-HT外，尚有多巴胺、乙酰胆碱等神经递质，氨和细胞因子等神经调节制剂。在运用营养战略的研究中，除检测大脑5-HT及其合成与更新的状况外，还应积极探索营养补充对以上几种因素的变化及其对推迟运动性CNS疲劳的作用。3)在所补充的营养物质中，除糖类和支链氨基酸外，尚需注意补充其它营养物质如其它氨基酸和微量元素，以及营养性中草药补充的研究等。
+作者简介：宋亚军，男，1966年6月出生，运动生理学硕士，讲师。
+作者单位：(山东济宁师专体育系，济宁　272125)
+参考文献
+　1　Shephard R J,et al.Endurance in Sport:Blackwell Scientific Publications.1992,Chapter 33,351～364
+　2　Davis J M,et al.Possible Mechanisms of Central Nervous System Fatigue during Exercise.Med Sci Sports Exerc.1997(1):45～57
+　3　Chaouloff F. Effects of Acute Physical Exercise on Central Serotonergic Systems.Med Sci Sports Exerc.1997(1):58～62
+　4　Chaouloff F,et al.Physical Exercise:Evidence for Differential Consequeuces of Tryptophan on 5-HT Synthesis and Metabolism in Central Serotonersis and Metabolism in Central Serotonersis and Metabolism in Central Serotonergic Cell Bodies and Terminals.J Neural Transm.1989(78):121～130
+　5　Bailey S P,et al.Neuroendocrine and Substrate Responses to Altered Brain 5-HT Activity during Prolonged Exercise to Fatigue.J Appl Physiol.1993(74):3006～3012
+　6　Bailey S P,et al.Brain Serotonegic Activity Effects Endurance Performance in the Rat.Int J Sports Med.1993(6):330～333
+　7　Blomstrand E.et al.Effect of Branched-chain Amino Acid Supplementation on Mental Performance.Acta Phys Scand.1991(136):473～481
+　8　Blomstrand E,et al.Administration of Branched-chain Amino Acids during Sustained Exercise:Effect on Performance and on Plasma Concentration of Some Amino Acids.Eur J Appl Physiol.1991(63):83～88
+　9　Davis J M,et al.Effects of Carbohydrate Feedings on Plasma Free-tryptophan and Branched-chain Amino Acids during Prolonged Cycling.Eur J Appl Physiol.1992(65):513～519
+　10　Varnier M,et al.Effect of Infusing Branched-chain Amino Acid during Incremental Exercise with Reduced Muscle Glycogen Content.Eur J Appl Physiol.1994(69):26～31
+　11　Verger P H,et al.Effects of Administration of Branched-chain Amino Acids vs.Glucose during Acute Exercise in the Rat.Physiol Behav.1994(55):523～526
+　12　Maclean D A,et al.Branched-chain Amino Acid Supplementation Augments Plasma Ammonia Responses during Exercise in Human.J Appl Physiol.1993(74):1711～1717
+　13　Benzi G.Advances in Myochemistry.Londen.John Libbey Eurotext Ltd.1987:127～133
+　14　Blomstrand E,et al.Effect of Branched-chain Amino Acid and Carbohydrate Supplementation on the Exercise-induced Change in Plasma and Muscle Concentration of Amino Acids in Human Subjects.Acta Phys Scand.1995(153):87～96
+　15　Bigland-Ritchie B.et al.Muscle Temperature,Contractile Speed,and Motoneuron Firing Rates during Human Voluntary Contractions.J Appl Physiol.1992(73):2457～2461
+　16　Garner S H, et al.Operation Everest Ⅱ:Neuromuscular Performance Under Conditions of Extreme Simulated Altitude. J Appl Physiol.1990(68):1167～1172
+(收稿日期：1998-10-21)

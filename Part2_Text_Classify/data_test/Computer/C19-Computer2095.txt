@@ -1,0 +1,117 @@
+计算机工程
+COMPUTER ENGINEERING
+1999年 第25卷 第10期 Vol.25 No.10 1999
+
+
+
+基于CORBA标准的STEP数据库的实现研究
+赵有珍　宋志杰　杨军　邓家提
+摘要：为解决虚拟企业间跨异构平台的产品数据共享问题，采用面向对象的设计方法将CORBA标准与STEP有机地结合起来，实现了基于STEP AP203全局数据模型的集成虚拟企业产品数据存储系统--STEP数据库。对STEP数据库的主要组成部分：STEP服务接口、STEP模型管理、核心数据区组织框架进行了说明。
+关键词：数据库；STEP标准；CORBA标准；SDAI；虚拟企业产品数据存储
+A COEBA Based STEP Database System
+Zhao Youzhen Song Zhijie Yang Jun Deng Jiati
+(720 Instiute,Beijing University of Seronautics and Astronautics,Beijing 100083)
+【Abstract】In order to provide one solution to the problem about sharing product data between inhomogeneous application platforms,this paper seamlessly conjoins two international standards,CORBA and STEP,to implement one integrated virual enterprise product data repository--STEP database,which is based on the STEP AP203 hlobal data model.The three main parts of the STEP database(the STEP services,the STEP model management,and the core data area organization architecture)are introduced in this paper.
+【Key words】Database;STEP standard;CORBAR standard;SDAI;Virtual enterprise product data repository
+　　随着计算机网络性能的快速扩展以及数据表示标准的出现，企业将能够电子化地连接起来更加迅速有效的共同开创新的市场和生产新的产品。这里描述的企业间的合作被称为虚拟企业。虚拟企业也可以被描述为技术数据的全球网络，这些数据利用标准来集成异构的数据源。
+　　实施虚拟企业的关键是跨网络的异构系统间信息的集成。CORBA(Common Object Request Broker Architecture)和STEP(ISO-10303)两个国际标准的建立为虚拟企业的快速实施提供了可能。
+　　STEP标准着眼于产品的整个生命周期，产品数据统一模型的建立，从而为不同系统之间信息的自动转换和共享提供了标准的手段。
+　　STEP标准将数据交换的实施大致分为四级：文件交换、标准数据存取接口、数据库共享和知识库共享。实现基于统一的STEP产品数据模型的共享数据库方式是系统集成的关键技术之一。然而，STEP在实现数据库方面存在着3个障碍：信息模型的范式化、EXPRESS语言的特定性质以及着重于固定的数据交换而不是共享。由于范式化将数据划分为更小的元素，因此在程序中更难处理；而EXPRESS很难在产品数据组织之外被理解，并且EXPRESS定义的数据不能在WWW浏览器上处理。
+　　STEP DB 的实现中，应用了EXPRESS-X语言，Step服务及在Step服务中开发Step 浏览器等方法，从而克服了各个障碍。
+　　数据库是集成的核心，这里选择的是功能强大的Oracle数据库管理系统。
+　　整个STEP DB系统由CORBA和STEP结合起来提供了互联网上的产品数据共享。在这种结构中，CORBA提供了异构平台间的互联框架，STEP提供了进行信息交流的语言。系统的结构简图如图1。
+
+图1 STEP DB系统结构简图
+1　STEP服务
+1.1 STEP服务的基本概念
+　　STEP服务是用CORBA标准定义的、IDL描述的接口集，这些接口集是在模型的水平上对STEP数据库进行操纵，使得应用向数据库寻找、删除和添加模型更加容易。客户应用程序利用STEP服务，通过组装模型来建立数据库，而这些模型描述了产品的不同侧面。
+　　被索引模型是一个数据块，代表STEP产品中的一个功能单元。IDL方面，一个模型是一个对象；STEP方面，它是一些实体实例的集合，这些实体实例描述了该模型的内容。从IDL方面来讲，被索引的模型对象拥有一些方法，这些方法总结了该模型的信息以及另外的一些方法，描述了在数据库中这一模型与其它模型之间的关系。
+　　被索引的实例提供可被用来管理代表一个产品的模型集合的服务。基本工作流程为(以内部化过程为例)：在临时(Slate)索引上激活内部化服务，从包含一个STEP文件的数据流中产生模型集合；在临时索引上激活导向服务来发现相关的模型；在持久(house)索引上激活注册服务来告诉它的某个(些)模型将在下下一个选择(election)被加入持久索引；在持久索引上激活导向服务来发现某个(些)模型；在持久索引上激活注册服务，告诉它某个(些)模型将在下下一个选择被从持久索引中删除；在持久索引上激活存储服务，来删除某个(些)模型并加入某个(些)模型。
+　　在STEP服务器中使用3个基本的被索引实例，其基本作用如下：
+　　・ 临时索引用来将数据从外部环境转移到服务器。
+　　・ 持久索引用来索引那些描述产品的模型，这些模型存放在数据库中。
+　　・ 平台(platform) 用来将一个模型集合中的信息与外部世界进行通信。
+1.2 STEP服务的IDL接口
+　　(1) 被索引实例的接口
+　　interface Indexed_instance:Schema_instance
+　　{ void internalize(inout stream s);
+　　　void internalize(in sequence<SDAImodel>);
+　　stream externalize();
+　　sequence<SDAImodel>externalize();
+　　Indexed_model findModel (in string key,in string type);
+　　sequence<Indexed_model>allModel(in string type);
+　　void addModel (in Indexed_model candidate);
+　　sequence<Indexed_model>winners();
+　　boolean start_election();
+　　boolean abort_election();
+　　boolean end_election();
+　　…;//其它细节略
+　　};
+　　Internalize(内部化) 方法从外部世界引入模型集合。这些模型是从数据流中发现的。该数据流必须是STEP Part 21 文件或者是STEP Part 21文件的等同物。Externalize(外部化)方法用来将模型集合到外部世界。这些模型被送入流对象。这个流可以是STEP part 21 文件或者是等同于Part 21文件的文件。
+　　(2) 被索引"model"的接口
+　　interface Indexed_model:Model
+　　｛string key();string user_name();
+　　　string type();boolean isA(in string s);
+　　　sequence<Indexed_instance>indexes();};
+　　user _name 方法返回一个描述该模型的字符串，它可以和键(key)值相同，也可以是键值的便于用户理解的版本，但是它不保证唯一性。
+　　(3) AP203实例
+　　interface AP203_instance:Indexed_instance{Advanced_b_representation findAdvanced_b_representation (in string s);…;
+　　Application_context findApplication_context(in string s);
+　　sequence<Advanced_b_representation>
+　　allAdvanced_b_representation();
+　　…
+　　sequence<Application_context>allApplication_context();}
+　　该接口中，定义了两种方法。第一种方法通过传递模型的键(key)值来查找该模型，如果不能发现则返回NULL。第二种方法根据给定的类型返回所有具有该类型的模型，如果服务器中没有指定类型的模型则返回列表为空。
+2　模式管理
+　　从本质要求来看，产品数据的表达与交换标准，如STEP必须是完整且无二意性的。这种标准是巨大的，包含了许多单个的应用系统不需要的细节。产品模型的简化视图省略了该模型的不需要的细节，从概念上来讲更容易理解和处理。
+　　但是一个应用系统产品模型的简化视图对另一个应用系统来说并不一定具有同样的优化效果，即便这两个系统是有着关系的。因此可容易生成产品模型的视图，且可剪裁到单个的应用系统，这将提高STEP标准的可用性。
+　　那么，如何描述局部简化视图与全局数据模型之间、以及不同简化视图之间的对应关系呢？又如何将传统的数据模型向STEP的数据模型转换呢？在STEP中，产品模型是用EXPRESS定义的。这就意味着，产品模型的视图必须基于该产品模型的EXPRESS定义。因此对STEP来说，需要一种语言来帮助EXPRESS信息模型的视图定义。这便是EXPRESS-X语言的最初目的。EXPRESS-X语言是EXPRESS的扩展，包括了定义EXPRESS信息模型视图的结构。它不仅可以用来描述不同EXPRESS模型中实体的映射，这些映射可以被用来生成一个数据集合的可供选择的其它表示；而还可以用来描述传统数据模型与STEP数据模型之间以及传统数据模型之间的映射。
+　　虚拟企业产品存储是用STEP AP203定义的。AP203为配置控制装配定义一个数据模型，该模型包括了大约500个数据定义。在定义VEPR(虚拟企业存储)的外部接口时，采用了STEPAP203 14个UoF(功能单元)的大约40个应用对象。这些对象描述了人员、组织、产品、产品版本、形状、父子装配关系等属性。这40个对象是通过EXPRESS-X的映射来与500个数据定义相关联的。其中，内部化区域的EXPRESS-X过滤器负责将符合不同应用数据模型的数据流转换为符合由40个对象实体描述的AP203应用参考模型(ARM)的数据，并将这些ARM数据转换到AIM数据模型中去在核心数据区域存放起来；外部化区域的EXPRESS-X过滤器的工作过程恰恰相反，它首先将核心数据区域符合AIM的数据转换为ARM 的数据，然后再将其转换为具体应用系统模型所需的数据。在转换过程中，所需的模式信息都被事先存放到核心数据区域中了。
+　　模式管理内嵌于VEPR。模式管理器管理着已经或正在标准化的应用协议、集成资源以及不同的局部应用模型之间、局部应用模型与全局数据模型之间的映射规则，作为定义、修改应用模型以及不同模型之间进行数据转换的基础。   模式管理器的功能包括：模式的录入，模式数据字典的生成，模式间映射的生成，映射字典的生成，模式映射的修改，模式的一致性维护；如维护某一模式是STEP AP203模式的子集。
+3　核心数据区框架结构
+　　EXPRESS信息模型描述的是产品全生命期的逻辑模型，这些逻辑模型在能使用之前必须被映射为软件实现技术。EXPRESS模型有4个实现级别，如图2所示。
+
+图2 STEP实现级别
+　　级别一是最简单的实现。在这一级别，EXPRESS定义的数据是通过STEP Part 21格式文件在不同的应用系统之间进行交换。应用系统内产品数据的表达没有任何约束。级别二的实现方式具备了级别一实现方式的所有特点，并附加了在内存工作区操纵基于EXPRESS信息模型数据的能力。级别三的实现方式具备了级别二所有的特点，并附加了处理存储在数据库管理系统中数据的能力。集成产品数据库可以存放工程生命周期中许多方面的数据。多个应用系统可以存取产品数据，且可以充分利用数据库的特点，例如：查询处理。级别四的实现方法具备了所有较低实现级别的特点以及对EXPRESS所有约束的验证，它必须能对数据库的内容进行推理。
+　　围绕EXPRESS信息模型构建工程数据库必须完成，从EXPRESS定义数据库结构及提供数据库的SDAI存取接口。
+3.1 EXPRESS到数据库模式的转换
+　　将EXPRESS信息模型转换为目标数据库的模式定义。这种转换需要EXPRESS语言到目标数据库数据定义语言(DDL)的映射。
+　　EXPRESS的特点必须被编码或需要其它的操作来保存原始信息。
+　　(1)ENTITY(实体)　每一个实体都被映射为一个表，表中的列对应着实体的本地(local)属性，系统向实体增加具有唯一标志的列来标识每一个实体实例。简单数据类型的属性被直接存放起来；复合值(如，实体实例、选择、聚集等)作为包含唯一实例标志的外部键存放起来。(2)Inheritance(继承)　继承意味着父类与子类之间属性的复制，所以系统必须进行范式化的工作。父类和子类各有一表，每个表只含有对应实体的本地属性。一个具有继承属性的实体实例，可以对通过类型层次中所有表的实例标识进行连接获得。
+　　(3)Primitive Type(简单类型)　系统必须对简单类型或由简单类型定义的类型进行编码。
+　　表1描述了EXPRESS简单数据类型到数据库相应类型的对应。由简单类型定义的类型作为基本简单类型处理。
+表1 EXPRESS简单数据类型到数据库类型的映射
+EXPRESS 类型数据库类型
+realfloat/double
+booleaninteger
+logicalinteger
+integerinteger
+stringvarchar
+binarynumber
+enumerationvarchar
+　　(4)Enumeration(枚举)　系统采取使用外键指向单独枚举表的方法模拟枚举类型在数据库中的表示。
+　　(5)Select(选择)　系统采取选择表来模拟选择数据类型在数据库中的表达。选择中的每个成员类型都对应着表中的一列。表中的每一行只有一列含有值，其它的列为空。含值的列即为要选取类型的实例。
+　　(6)Aggregate(聚集)　聚集必须采用一些技术在数据库中进行模拟。数据库中采用了一种特殊格式的表来存放聚集的值。例如： 
+表2 某列表在数据库中表达的示例 
+ListIDElementIDNextListID
+List_ID_1Point_ID_1List_ID_2
+List_ID_2Point_ID_2 NULL
+　　表2表示某一类型为ListOfPoint的属性值在数据库中的存放情况，该列表包含两个Point，ID号分别是Point_ID_1和Point_ID_2。
+　　另外，依据数据库实现还能够定位Derived属性、local和Global约束、以及unique或inverse句子。
+3.2 SDAI存取框架
+　　基于数据的特点以及传输时间要求，有3种框架结构可供选择：
+　　・ 整个模型，非在线的批量传输--文件上载/下载SDAI联编；
+　　・ 整个模型，在线的批量传输--缓存的SDAI联编；
+　　・ 单个数值，在线传输--直接的SDAI联编。
+　　另外，系统采用了早联编(early binding)与晚联编(late binding)的混合联编方式来解决数据库存取软件对不同的EXPRESS结构定义的适应性问题，并且提供了有限的约束检查功能。 
+4　结论
+　　CORBA标准提供Internet/Intranet网上异构平台间强大的对用户透明的连接、通信、互操作框架，STEP提供产品全生命期的全局数据模型。STEP DB的实现提供了跨网络的集中的数据库管理功能，严格地保证了共享的全局数据的完整性、一致性。系统的实现为成功的实施虚拟企业数据存储提供理论上的探索以及具体技术上的示范作用，最终提供了一个基于STEP AP203全局数据模型的集成的虚拟企业产品数据存储系统。
+基金项目：国家863项目
+作者简介：赵有珍（1972～），男，博士，研究方向为虚拟企业中的数据库技术
+作者单位：北京航空航天大学720研究所，北京100083
+参考文献
+1 Hardwick M.The STEP Services Reference Manual.Teck.Report96004,Laboratory for Industrial Information Infrastructure,Rensselaer Polytechnic Institute,Troy,New York,1995
+2 Shah Jami J,Jeon Dae K,Urban Susan D,et al.Database Infrastructure for Supporting Engineering Design Histories.Computer-Aided Design,1996,28,(5):347-360
+3 Martin H,Spooner D L,Rando T,Morris KC.Sharing Manufacturing Information in Virtual Enterprises.Communications of the ACM,1996,15(5)
+4 Martin H,Spooner D L,Rando T.et al.Lessons learned Developing Protocols for the Industrial Virtual Enterprise.http://www.steptools.com,1998
+收稿日期：1999-0126

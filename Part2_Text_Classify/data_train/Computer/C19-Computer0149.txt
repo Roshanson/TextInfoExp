@@ -1,0 +1,123 @@
+微型电脑应用
+MICROCOMPUTER APPLICATIONS
+2000　Vol.16　No.1　P.41-43
+
+
+
+基于Intranet/Internet的医院
+信息系统实现
+徐浩　辛海燕
+摘　要：本文以一个大型综合医院为实例，介绍了利用Intranet/Internet技术实现新一代医院信息系统的关键步骤和实施中应注意的问题。
+关键词：医院　网络　信息系统　Intranet/Internet
+Abstract：This paper describes the key processes and problems in realization of the new generation Hospital Information System (HIS)using Intranet/Internet technology.Alargepolyclinic hospital is used aas an example for illustration.
+Keywords：hospital network IS Intranet/Internet client/server browse/server accout▲
+一、概述
+　　随着计算机在医院应用的深入，医院对计算机网络系统又有了新的认识：一方面，要求系统可靠性高、带宽高、响应快、安全性好，能够满足日常业务的需要；另一方面，由于医院间竞争的日益激烈，医院需要宣传自己，同时，医生和护士也需要不断的同外界交流，来提高自身的技术水平。
+　　Intranet就是采用Internet技术建立起来的单位内部网：利用TCP/IP协议，由Web服务器和浏览器组成的网络。它功能强大，应用广泛，容易学习和使用，管理维护更新方便。既具备传统单位内部网络的安全性，又具备Internet的开放性和灵活性。在对单位内部应用提供有效管理的同时，又能与外界进行信息交流。
+　　将Intranet/Internet技术运用于医院的计算机网络建设中，可使系统技术水平先进，软件开发周期短，用户界面一致，用户培训少，特别适合于床位在一千张左右的大中型医院。可在较短的时间内实现一个较完善的医院网络系统。下面我们就以青岛大学医学院附属医院为例来说明。
+二、系统总体方案
+　　要实现一个计算机网络系统，布线是必不可少的，这是网络的基础。青岛大学医学院附属医院是由门诊大楼A座、门诊大数B座、病房大楼、放射楼、检验楼、综合楼、行政楼等七座楼宇构成。在楼内，我们采用五类双绞线按建设部结构化标准布线，楼楼之间用六芯62.5/125多模光纤连接，光纤全部汇集到计算机中心中。全院共计有1000余个信息点，有12个设备间，计算机中心在门诊大楼A座。这样按结构化标准设计的布线系统，灵活方便，适用于多种网络拓扑结构。
+　　目前，我们从经济上和实用性方面考虑，主干采用100M交换式以太网，10M交换到桌面，将来很容易升级到千兆以太网或ATM。
+　　通过64K DDN专线连接到Internet，建立自己的网站，对外发布信息，对内提供Internet访问服务。
+　　从经济上和性能上考虑，我们选用微软的BackOffice产品作为自己的后台软件平台：服务器操作系统用Windows NT 4.0，数据库用SQL Server6.5，邮件服务器用Exchange5.5，WEB服务器用IIS3.0，代理服务器用Proxy2.0。网络上运行的协议是TCP/IP。
+　　应用软件的开发主要有传统的客户机/服务器(Client/Server)方式和先进的浏览器/服务器(Browse/Server)方式，在本项目中，我们将两者结合起来，充分发挥它们的所长。
+三、系统实施
+　　网络示意图如图1所示，用3COM Switch 3300做主干交换机，直接连接三个服务器，通过光纤连接到各楼层设备间的3COM Switch 1100交换机上，各桌面工作站均独占10M带宽。网络通过路由器和Internet相连。下面我们着重介绍几个关键的实施部分。
+
+图1
+　　1.IP地址的申请及路由器的配置：
+　　我们向邮电局(或其它ISP)申请IP地址，得到的IP地址是10.82.128.33到10.82.128.62，子网掩码为255.255.255.224。我们的路由器同步串口IP地址为10.82.185.2，局端路由器串口IP地址为10.82.185.1，子网掩码均为255.255.255.252。
+　　路由器我们选用CISCO2501，下面是路由器的配置过程：
+　　(1)以太口E0的配置：
+　　Interface ethernet 0
+　　　IP address 10.82.128.34　255.255.255.224
+　　　　　　　　　　　　　　设置E0口IP地址
+　No shutdown启动E0口
+　　(2)同步串口S0的配置：
+　　　Interface serial 0
+　　　　Ip address 10.82.185.2　255.255.255.252
+　　设置S0口IP地址
+　　　　No shutdown启动S0口
+　　(3)路由协议配置：
+　　　Router igrp 1设置IGRP路由协议
+　　　　Network10.0.0.0网络10.0.0.0连到
+　　路由路上
+　　(4)路由表配置：
+　　　Ip classless　　　　允许转发路由表外
+　　子网的包
+　　　Ip router0.0.0.0　0.0.0.0　10.82.185.1
+　　建立静态路由表，
+向网络外发的包均
+转发到10.82.185.1
+　　2.服务器及其系统软件实施
+　　计算机中心有三个NT服务器：其名称分别为：AccountServer、SQLServer、ProxyServer，它们都配有磁盘阵列卡，并将个3个热插拔Ultra Wide SCSI 9G硬盘配置成RAID5方式。这样，如果有一个磁盘损坏，可以在线替换不影响使用。AccountServer上运行IIS 3.0、FrontPage98扩展、Exchange5.5，同时做Web服务器和邮件服务器，配512兆内存，4个PentiumⅡXeon处理器。SQLServer上运行SQL Server6.5，是数据库服务器，配512兆内存，4个Pentium Ⅱ Xeon处理器。ProxyServer作为代理服务器和网络的防火墙，配有两块网卡，运行IIS3.0和Proxy2.0。
+　　3.代理服务器及防火墙：
+　　单位内部网上的计算机，除了服务器ProxyServer外，都自己分配内部IP地址，和ISP分配IP地址无关。我们使用150.150.1.1到150.150.10.254，子网掩码为255.255.0.0作为自己的内部IP地址范围。
+　　服务器ProxyServer配备两块网卡，一块网卡的IP地址为内部网地址(150.150.1.3)，另一块网卡IP地址为ISP分配(10.82.128.33)。它将单位内部网和Internet隔离起来，所有内部网用户需要访问Internet都要经过ProxyServer,在ProxyServer中设置了1G的缓冲区，用来加速Internet的访问，用户访问Internet上的网站页面，首先查看ProxyServer缓冲区中是否已有，若有则直接从缓冲区中取回，若没有则再通过DDN专线到Internet上去取，同时，放到缓冲区中，大大加速了Internet的访问速度。ProxyServer同时作为网络的防火墙，可以根据需要滤除一些可疑的包，只有ProxyServer暴露在Internet上。
+　　4.Windows NT的域的设置：
+　　Windows NTServer是用域来管理计算机和帐号的，我们建立两个域：IntraDomain域和ProxyDomain域，只有代理服务器ProxyServer属于ProxyDomain域，是ProxyDomain域的主域控制器(PDC)，其它服务器和计算机都属于IntraDomain域，AccountServer是主域控制器(PDC)。两个域之间建立单向信任关系，如图2所示。
+
+图2
+　　IntraDomain域是被信任域(帐户域)，ProxyDomain域是信任域(资源域)。所有帐号都建立在IntraDomain域中，IntraDomain域的用户可以访问IntraDomain域和ProxyDomain域的资源，而ProxyDomain域的用户只能访问本域的资源，这样就进一步保障了网络的安全性，即使有入侵者闯入了ProxyServer，也不能对网络上的其它资源造成破坏。
+　　5.帐户和资源的管理
+　　网络上的用户要根据不同的职责设置相应的权限。根据NT对帐号和资源的管理原则：要将用户放入全局组中，全局组放入要访问资源的本地组中，给本地组赋予相应的权限。下面我们就以设置Internet浏览和收发邮件许可为例来说明：
+　　网上的用户，不可能都允许他们访问Internet，我们先在IntraDomain域中建立两个全局组：InternetBrowse组和InternetMail组，将允许进行浏览的用户放入InternetBrowse组中，将允许收发邮件的用户放入InternetMail组中，在代理服务器ProxyServer上建立两个本地组InternetBrowse组和InternetMail组，将全局组InternetBrowse放入本地组InternetBrowse中；将全局组InternetMail放入本地组InternetMail中。配置Web Proxy服务，设置访问控制：对WWW允许本地组InternetBrowse完全控制，对FTP允许本地组InternetBrowse读取。配置WinSock Proxy服务，设置访问控制：允许本地组InternetMail无限制的访问权力。这样只要是全局组InternetBrowse的成员就能进行Internet浏览，只要是全局组InternetMail的成员就能收发邮件。
+　　6.网页的设计与维护
+　　我们主要用FrontPage98设计了医院的网页，包括医院的特色、科室简介、专家简介、每日应诊专家、医疗服务、新技术新项目等等。我们的网页是动态的，内容大都是放在服务器SqlServer上的SQL6.5数据库中，网页通过ASP技术从数据库中取得数据。
+　　在各相关科室的计算机上我们开发了相应的更新数据库的客户端软件，负责维护与自己科室有关的网页内容，例如门诊部每周将各科室的专家排班表录入到SQL数据库中，这样就保证了网页的实时更新。
+　　内部网的Web服务器是AccoutServer,但AccountServer对Internet来说，是不可见的，怎样实现把我们的网页发布出来呢?这就要靠代理服务器的功能了，我们在代理服务器中Web Proxy出版选项中设置：允许Web出版，并将出版服务器设为AccountServer。这样，在Internet上就可以访问我们的网页了。
+　　7.Internet访问控制和记费的实现
+　　我们在SQLServer服务器中建立一个一个数据库MSP，其中建立一个表MSP-LOG-TABLE，这是对WWW，WinSock等代理活动的日志记录。建表SQL语句如下所示：
+CREATE TABLE MSP-LOG-TABLE(
+　　ClientIP　　　　　　　　　varchar(32),　　　　　用户IP地址
+　　ClientUserName　　　　　　varchar(32),　　　　　用户名
+　　ClientAgent　　　　　　　varchar(128),
+　　ClientAuthenticate　　　　varchar(5),
+　　logTime　　　　　　　　　datetime,　　　　　　　日期及时间
+　　service　　　　　　　　　varchar(12),
+　　servername　　　　　　　　varchar(32),
+　　referredserver　　　　　varchar(32),
+　　DestHost　　　　　　　　varchar(32),　　　　　　目标主机名
+　　DestHostIP　　　　　　　varchar(32),
+　　DestHostPortint,
+　　processingtime　　　　　　int,
+　　bytessent　　　　　　　　int,　　　　　　　　　发送字节数
+　　bytesrecvd　　　　　　　　int,　　　　　　　　　收到字节数
+　　protocol　　　　　　　　　varchar(8),
+　　transport　　　　　　　　varchar(8),
+　　operation　　　　　　　　varchar(8),
+　　ori　　　　　　　　　　　varchar(255),
+　　mimetype　　　　　　　　　varchar(32)
+　　objectsource　　　　　　　varchar(10),
+　　resultcode　　　　　　　　int,
+　　CacheInfo　　　　　　　　　int
+　　)
+　　配置好ProxyServer的ODBC驱动及系统DSN名，设置Web Proxy、Winsock Proxy服务，使访问日志通过ODBC记录到上述数据表中。我们用Delphi3开发了一个查询统计软件，可对用户活动随时进行监督，并可以按访问日期、用户名、访问站点、收发字节数等进行统计，依据它可对用户进行记费。
+　　8.应用软件的开发和实施
+　　对医院内部软件的开发，我们采用传统的客户机/服务器(Client/Server)方式和先进的浏览器/服务器(Browse/Server)相结合的方法进行，主要包括下面几个子系统。
+　　.门急诊管理系统：包括门诊挂号、收费、发药系统和门诊病人管理系统。
+　　.住院管理子系统：医嘱在病房录入计算机，根据医嘱自动记帐，病房药房按医嘱完成配药，各种化验、检查报告、影象资料均由计算机网络自动传递。
+　　.影象管理子系统：所有影象资料及检查报告均录入计算机。
+　　.化验、检查科室管理子系统：化验仪器、检查设备，能同网络相连的直接同网络相连，不能相连的将结果录入计算机。
+　　.药品管理子系统：包括药品的入库、出库、库存、调价、报损、查询等。
+　　.物资管理子系统：固定资产、低值易耗品、卫生用品及其它用品等的出入库、库存、各科室的拥有情况、完好情况、使用情况等。
+　　.多媒体导医子系统：包括就诊指南、医院的布局、科室的特点、专家教授的特长、药费、检查费、治疗费的价格等等。
+　　.领导查询子系统：查询各个子系统的数据，包括各个病人情况、床位占用、工作进展情况、库存等等。
+　　.相互交流及对外宣传子系统：在网上开研讨会，互发Email。将医院的情况、特色、等及时的发布出去，宣传自身。
+　　对一些录入量大、要求响应快的应用，例如门诊收款、划价、取药，病房病入出入转，医嘱录入，设备材料的出入库等应用，我们采用Client/Server的方式，用Delphi3开发前台应用程序，通过SQL link和后台SQL数据库连接。
+　　对其它一些录入量少、使用人员不固定的应用，例如多媒体查询系统、领导决策查询系统、信息检索系统等，采用Browse/Server的方式，前台统一用浏览器做客户端，用Delphi3开发应用服务器，制作一些ActiveX Form，这样浏览器界面不至于显得过于单调，操作起来很容易，大大减少了培训工作量。
+四、经验和总结
+　　1.我们的网络是通过防火墙和Internet相连的，系统安全性是最重要的，应将域上的guest帐号禁止，管理员用户名应更改。要设置好帐号规则，如口令的最小长度、有效期、帐号的锁定策略等。在服务器上要禁止IP转发，只有代理服务器上的IP地址才是外部可见的。
+　　2.系统管理员对资源的权限管理一定要设置好，不要形成安全漏洞。权限的管理一定要按照NT的原则，将用户帐号放到全局组中，将全局组放到本地组中，对本地组赋予资源使用的权限，并做好记录。
+　　3.系统负载均衡：将负载均匀分散到几个服务器上。系统响应得以加快。
+　　4.系统可伸缩性强：根据医院规模的不同，可以增加或减少服务器的数量及配置，也可以很容易的升级到千兆以太网或ATM。
+　　5.把服务器ProxyServer 放到单独的域中，进正正派增强了系统安全性。
+　　6.采用Cclient/Server 和 Browse/Server两种方法开发应用软件，充分发挥了它们的优点，避免他们的缺点，能够在较短的时间内建立较完善的医院信息系统。■
+作者单位：徐浩(青岛大学医学院附属医院计算机中心 266003)
+参考文献：
+［1］Microsoft Corporation Supporting Microsoft Windows NT Server 4.0 Enterprise Technologies
+［2］Cisco Systems Inc Cisco 2500 Series Router Installation and Caonfiguration Guide
+［3］Misrosoft Corporation ProxyServer 2.0 培训教程
+［4］D.Solomon SQL Server 6.5 开发指南
+［5］李维 Delphi 3.0 从入门到精通
+收稿日期:1999-10-19

@@ -1,0 +1,104 @@
+计算机应用
+Computer Applications
+1999年 第19卷 第7期  Vol.19 No.7 1999
+
+
+
+Solaris 系统动态链接库的建立及其程序设计接口
+曹广华　袁子龙　李鹏举
+
+　　摘　要　建立用户自己的动态链接库、使用动态链接程序设计接口是大型、高质量程序设计的一项重要技术。Solaris操作系统为其应用程序提供了很好的动态链接环境。本文对Solaris 系统动态链接库的建立方法、使用动态链接程序设计接口函数进行了讨论。
+　　关键词　动态链接，动态链接库，动态链接接口函数
+
+　　动态链接技术是计算机系统软件的一项重要技术，它采用动态代码共享技术，不但使整个系统资源得到有效使用，而且增强了应用程序的通用性、稳定性和可扩展性。在现代UNIX操作系统中，系统软件和大型应用软件都采用动态链接技术。本文以Sun工作站使用的Solaris操作系统为例分析其动态链接环境、动态链接库的建立及其使用方法。　
+1　Solaris 的动态链接环境
+　　Sun工作站使用的Solaris操作系统(UNIX)为其应用程序提供了很好的动态链接环境［1］。通过系统提供的链接程序(link editor)、共享函数库(shared library)和运行时链接器(runtime linker)，我们可以方便地建立和运行动态可执行程序。
+1.1　Solaris系统的函数库
+　　Solaris操作系统在/usr/lib目录中提供各种函数库，包括各种静态库（lib<name>.a）和各种动态链接共享库（lib<name>.so），这些函数库作为缺省值在编译程序时被系统链接程序链接，根据不同情况生成静态链接或动态链接可执行程序。动态链接可执行程序在运行时还要由系统运行时链接程序动态调用所需要的动态链接共享库［1］。
+1.2　Solaris系统的链接程序
+　　Solaris系统的链接程序ld本质上是一个动态链接程序，即系统对目标码进行链接时，优先选择动态链接库。例如，如果系统在/usr/lib目录中同时存在静态数学函数库libm.a和动态数学函数库libm.so，则命令%cc prog.c -o prog -lm自动链接libm.so，生成动态链接可执行程序。
+　　在程序编译过程中，可以采用不同的选项控制系统链接程序的执行，从而得到静态链接可执行程序、动态链接可执行程序［2］或共享函数库。
+1.3　Solaris系统的运行时链接程序
+　　Solaris系统提供的运行时链接器是ld.so，它在动态可执行程序运行时被启动，以选择合适的共享库，控制动态可执行程序的运行［1］。
+　　
+2　建立动态链接库
+　　采用动态链接技术设计程序时，除了使用系统提供的标准动态链接库之外，建立用户自己的动态链接库、使用动态链接程序设计接口设计程序是一项十分重要的技术。
+　　Solaris系统提供的编译程序、链接程序、共享函数库和运行时链接程序为用户使用其标准动态链接库提供了支持，同时也允许用户自己建立动态链接库。Solaris1.x（SunOS4.1.x）和Solaris2.x（SunOS5.x）的链接程序通过生成PIC码(position independent code)使动态链接码作到最大限度的共享。PIC码不用修改就可用于任何进程地址中，这样就减少了进程对内存空间的要求和I/O请求，在代码共享的同时提高了系统运行效率［3］。下面我们以C语言为例，说明在Solaris系统中建立动态链接库的方法。
+2.1　Solaris1.x中动态链接库的建立
+　　设需要建库的C语言子程序为f1.c、f2.c、…、fn.c（注意，这些程序中不包含main函数且各源程序文件中没有外部参考全局变量），要建立的动态链接库的名称为mylib，根据UNIX系统函数库的命名规则［1］，要建立的动态链接库的文件名为libmylib.so，建库的步骤和命令如下：
+　　* 生成PIC格式的目标码：
+　　% cc -pic -c *.c
+　　* 将PIC目标码链接成动态链接库：
+　　% ld -o libmylib.so.1.1 -assert pure-text *.o
+　　* 使用符号链接生成所需要的动态链接库文件：
+　　% ln -s libmylib.so.1.1 libmylib.so
+　　Solaris1.x生成动态链接库时，版本信息需要一个主号(major)和辅号(minor)，即文件名libmylib.so.1.1的版本号“1.1”中，前一个“1”为主号，后一个“1”为辅号，Solaris2.x中只使用主号。
+2.2　Solaris2.x中动态链接库的建立
+　　设需要建库的C语言子程序为f1.c、f2.c、…、fn.c，要建立的动态链接库的文件名为libmylib.so，在Solaris2.x系统中建库的步骤和命令如下：
+　　* 生成PIC格式的目标码：
+　　% cc -K PIC -c *.c
+　　* 将PIC目标码链接成动态链接库：
+　　% ld -o libmylib.so.1 -G -z text *.o
+　　* 使用符号链接生成所需要的动态链接库文件：
+　　% ln -s libmylib.so.1 libmylib.so
+　　Solaris2.x生成动态链接库时，可以使用-h选项记录版本信息。例如，下面的命令将版本号“libfoo.so.1”记录在了libfoo.so.1共享函数库中：
+% cc -K PIC -h libfoo.so.1 -o libfoo.so.1 f1.c f2.c f3.c
+　　这样，使用libfoo.so.1的程序在运行时首先链接该共享库。例如，下面的编译命令
+% cc -o prog prog.c -Ldir -lfoo
+　　使用了libfoo.so.1库，prog程序在运行时自动链接该共享库，即使/usr/lib中的libfoo.so符号链接指向了新版本的libfoo.so.2，这样就保证了依赖于libfoo.so.1程序的正常运行。
+2.3　新建动态链接库的使用
+　　新建的动态链接库可以放到/usr/lib目录中作为标准附加库使用［1］，也可以单独放到其它目录中使用。例如，新建的libmylib.so（可以是符号链接）放到/usr/lib目录中时，使用该库时编译命令如下：
+　　% cc prog.c -o prog -lmylib
+　　此时的动态链接库为标准附加库。
+　　如果新建的libmylib.so放到/home/lib目录中，使用该库时的编译命令如下：
+% cc prog.c -o prog -L/home/lib -lmylib
+　　此时的函数库没有在标准目录位置，编译时应使用-L选项指明其所在位置，运行时应设置LD_LIBRARY_PATH环境变量指明该共享库的位置［1］。　　
+3　动态链接程序设计接口
+　　Solaris系统提供动态链接程序设计接口函数直接使用动态链接函数库中的函数，以提高程序的运行效率［2］。接口函数包括建立动态链接dlopen()、返回共享码地址dlsym()、关闭动态链接dlclose()和动态链接错误处理dlerror()四个函数。下面举例说明他们的用法。
+　　设pnum()是当前目录中动态链接函数库libtest.so.1中的函数，其内容如下：
+/* libtest.so.1中 */
+#include <stdio.h>
+...
+void pnum(int num)
+{
+printf("num=%d\n",num);
+}
+...
+　　使用动态链接程序接口函数调用pnum()库函数的程序如下：
+#include <stdio.h>
+#include <dlfcn.h> 　　　　　　　　/* 必需包含该头文件 */
+main()
+{
+void *open_handle, 　　　　　　　　/*库句柄*/
+(*access_handle)(); 　　　　　　　　/*函数句柄*/
+/*装入共享库，获得库句柄 */
+open_handle=dlopen("./libtest.so.1",RTLD_LAZY);
+if(open_handle==NULL){
+printf("dlopen failed: %s\n",dlerror());
+exit(1);
+}
+/*获得pnum函数的句柄 */
+access_handle=(void(*)())dlsym(open_handle,"pnum");
+if(access_handle==NULL){
+printf("dlsym failed: %s\n",dlerror());
+exit(1);
+}
+/* 使用函数句柄调用pnum函数 */
+(*access_handle)(10);
+/* 关闭共享库，程序结束*/
+if(dlclose(open_handle)!=0){
+printf("dlclose failed: %s\n",dlerror());
+exit(1);
+}
+}
+　　该程序非常简单，主函数main直接调用共享库中的pnum函数打印输出一个整数10。程序中的说明行详细说明了接口函数的使用方法。
+　　 
+4　结束语
+　　建立和使用动态链接函数库是现代程序设计的重要技术，它对提高程序的灵活性和高效性都起到了非常重要的作用，特别对于大型应用程序的设计尤其重要，应引起我们足够的重视。
+　　曹广华　讲师。主要研究方向：UNIX系统、分布式数据采集系统。
+　　作者单位：曹广华　袁子龙　李鹏举（大庆石油学院勘探系　黑龙江．安达151400）
+参考文献
+［1］　曹广华. Solaris 系统的动态链接环境与使用. 中国计算机报（光盘Info CD），1998；(4)
+［2］　SunSoft, Inc.SunOS5.5 Linker and Libraries Manual,Mountain View，1996
+［3］　Sun Microsystems Inc.SunOS5.5 Online Manual, 1995
+　　收稿日期:1999-01-12

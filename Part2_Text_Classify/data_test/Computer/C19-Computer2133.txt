@@ -1,0 +1,103 @@
+计算机工程
+COMPUTER ENGINEERING
+1999年 第25卷 第12期 vol.25 No.12 1999
+
+
+
+PowerBuilder环境下通用打印设置窗口的实现
+张益平
+　　PowerBuilder是一种具有图形界面的客户机/服务器应用程序开发工具，开发人员可以利用一个可视的集成开发环境(IDE)快速地开发出面向对象的数据库应用程序。其中最受开发人员欢迎的可能就是Datawindow对象，它是PowerBuilder中交互作用的焦点，并且拥有丰富的表现风格用于各类报表和用户界面。报表风格的Datawindow打印可用函数Print()，但简单用Print()函数打印不能满足用户对打印份数和特选页面等要求，要实现这些功能必须充分利用Datawindow的Print特性，让用户来定义这些特性，用modify ()函数修改Datawindow，然后用Print()函数打印。
+1 Datawindow的Print特性
+　　Datawindow有很多Print特性，表1列出了本文实例中用到的Print特性，读者可以翻阅相关资料了解更多其它Print特性。
+表1 Datawindow的Print特性
+
+特性描述
+Collate是否校验打印内容
+Page,Range打印的页面范围
+Paper,Size页面尺寸
+Copies打印份数
+Filename输出到文件的文件名字符串
+
+
+2 应用实例
+　　该实例的主要思路是建立一个通用的打印对话框，将Datawindow的一些可重定义的Print特性以窗口控件形式放置于窗口中，实现用户自定义。在打印Datawindow时都可调用此窗口，体现其通用性，下面给出实现的具体方法。
+　　(1) 建立打印对话框 创建如图1所示的窗口w_1。
+
+图1打印参数设置窗口
+　　(2) 窗口w_1中的主要控件说明见表2
+表2窗口主要控件说明
+
+控件名称控件类型特性
+St_1Static TextText="打印机:"
+Em_1EditMaskMask="###"
+Cb_1CommandButtonText="打印"
+Cb_2CommandButtonText="退出"
+Cb_3CommandButtonText="打印机设置"
+Cbx_1checkboxText="Print To File"
+Cbx_2checkboxText="Collate Copies"
+Rb_1RadioButtonText="全部"
+Rb_2RadioButtonText="当前页"
+Rb_3RadioButtonText="页码范围"
+Sle_1SingleLineEdit　
+Ddlb_1DropDownListItem={"所选页面""奇数页""厚数页"
+
+
+　　(3) W_1的实例变量声明。 
+　　　　Datawindow I_dwname /*保存调用窗口W_1时作为参数传递的Datawindow*/ 
+　　　　String I_savename /*保存输出到文件时的文件名*/
+　　(4) W_1 Open事件的Script
+　　　　string v_copies 
+　　　　i_dwname=message.powerobjectparm
+　　　　st_1.text='打印机: '+string(i_dwname.object.Datawindow.printer) 　　
+　　　　v_copies=string(i_dwname.object.Datawindow.print.copies) 
+　　　　cbx_2.checked=(upper(string(i_dwname.object.Datawindow.print.collate))='YES') 
+　　　　i_savename=trim(string(i_dwname.object.Datawindow.print.filename)) 
+　　　　cbx_1.checked=(i_savename<>'')
+　　(5) Cb_3 Clicked事件的Script 
+　　　printsetup()
+　　　st_1='打印机:'+string(i_dwname.object.Datawindow.printer)
+　　(6) Cb_1 Clicked事件的Script 
+　　　integer nindex 
+　　　string v_modify,v_page,v_return 
+　　　v_modify=' Datawindow.Print.Copies='+em_1.text 
+　　　If cbx_2.checked then 
+　　　　v_modify=v_modify+' Datawindow.Print.Collate=Yes ' 
+　　　else
+　　　　v_modify=v_modify+' Datawindow.Print.Collate=No ' 
+　　　end if 
+　　　If cbx_1.checked then 
+　　　　v_modify=v_modify+' Datawindow.Print.FileName='+i_savename 
+　　else 
+　　　　v_modify=v_modify+" Datawindow.Print.FileName='' " 
+　　end if 
+　　If rb_1.checked then 
+　　　　v_modify=v_modify+" Datawindow.Print.Page.Range='' "elseif rb_2.checked then 
+　　　　v_page=i_dwname.describe("Evaluate('Page()',"+string(i_dwname.getrow())+')') 
+　　　　v_modify=v_modify+" Datawindow.Print.Page.Range='"+v_page+"' " 
+　　　　else 
+　　　　v_modify=v_modify+" Datawindow.Print.Page.Range='"+sle_1.text+"' " 
+　　　　end if 
+　　　　v_ddlbnum=ddlb_1.finditem(ddlb_1.text,0) 
+　　　　v_modify=v_modify+"Datawindow.Print.Page.RangeInclude="+string(v_ddlbnum -1 ) 
+　　　　i_dwname.modify(v_modify)
+　　　　parent.visible=false 
+　　　　i_dwname.print(true) 
+　　　　this.setfocus() 　
+　　　　close(parent)
+　　(7) 调用W_1的Script
+　　integer v_count,v_tcount
+　　Datawindow dwc
+　　v_tcount=upperbound(parent.control)
+　　for v_count=1 to v_tcount
+　　　choose case parent.
+　　　　control[v_count].typeof()
+　　　　　case Datawindow! 
+　　　　　　dwc=parent.control[v_count] 
+　　　　end choose
+　　next
+openwithparm(w_1,dwc)
+3 结束语
+　　PowerBuilder环境中的Datawindow具有很强的灵活性，能较快地生成不同风格的报表，如单纯用打印函数打印，实际应用效果不好，如果采用上面介绍的方法可以使打印更具灵活性，当然还可以利用其它Datawindow的Print特性，让用户具有更大的自由度。
+参考文献
+1 PowerBuilder Documentation(随机资料)
+2 何军，刘红岩. PowerBuilder5.0原理与应用开发指南.北京：电子 机械工业出版社,1997

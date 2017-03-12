@@ -1,0 +1,316 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第9期　Vol.10　No.9　1999
+
+
+
+对象演算Ⅰ*
+黄涛 钱军 周桓
+摘要　对象演算是一个面向对象的逻辑演算系统,它建立在描述具有内部状态的动态演变实体的Trace演算之上.对象比一般意义下的动态实体具有更多和更好的特性,特别是封装性.为此,文章引入有效动作的概念,通过对象的有效动作来刻画对象的封装性,即只有对象的有效动作才能访问或修改对象的属性值,从而对Trace演算的语义模型加以限制,得到对象语义解释模型.作为逻辑系统,文章还讨论了对象演算的公理化,它是Trace演算公理系统的扩充.作为应用,文章结合实例给出了对象语义的描述及特性推理.
+关键词　对象演算,有效动作,公理化,对象语义描述,特性推理.
+中图法分类号　TP311
+Object Calculus Ⅰ
+HUANG Tao,QIAN Jun,ZHOU Huan
+(Laboratory of Computer Science Institute of Software The Chinese Academy of Sciences Beijing 100080)
+(Object Technology Center Institute of Software The Chinese Academy of Sciences　Beijing 100080)
+Abstract　An object-based logic calculus is outlined in this paper, which is built on the trace calculus based on dynamic entities with local states. Compared with dynamic entities, objects have more good properties, such as encapsulation. To formalize the concept of encapsulation, a new concept of valid action is introduced. It is only through these valid actions declared by the very object that the state of the object can be accessed or modified. An axiomatization of the object calculus as an extension of the axiom system of the trace calculus is also contributed in this paper. Finally, the object semantics description and property deduction are shown.
+Key words　Object calculus, valid action, axiomatization, object semantics description, property deduction.
+　　在文献［1］中,我们讨论了Trace演算.Trace演算中的“对象”是具有内部状态的动态演变的实体,使用Trace演算既可以描述这样的动态实体的结构和行为,还可以对这些动态实体的行为特征进行推理和验证.但Trace演算没有考虑到面向对象概念中所指对象的一项重要特性――封装性,因此,Trace演算并不是一个对象演算.我们希望建立面向对象的逻辑演算系统.由于对象比一般意义下的动态实体具有更多的特性,特别是封装性,因此我们必须对Trace演算所允许的模型加以限制.为此,我们引入有效动作的概念,只有通过对象的有效动作才能访问或修改对象的属性值,而非有效动作的执行则对对象的状态无任何影响.
+　　本文第1节讨论对象的封装性,引入有效动作的概念,并定义对象语义解释结构.第2节在Trace演算的可靠性公理系统之上,增加对象封装性公理,得到对象演算的公理系统.第3节结合具体实例给出对象语义描述的概念及应用.第4、5节作为应用,给出有关对象语义的特性描述及推理.
+1　对象封装性
+　　众所周知,对象具有一种重要的特性,即封装性(encapsulation).封装性所阐述的是：只有在对象中声明的动作可以修改对象属性的值.而我们前面所讨论的语义结构和演算并没有考虑对象的封装性.为了讨论对象封装性,我们首先引入有效动作的概念.
+　　定义1(有效动作). 给定对象标记Ω=(S,F,A,E),一个Ω-语义解释结构和一个g∈E〈s1,...,sn〉,ai∈si,1≤i≤n,我们称为有效动作.
+　　我们记为有效动作的集合,即
+
+　　定义2(有效动作项). 给定对象标记Ω=(S,F,A,E),一个变量簇X和一个g∈E〈s1,...,sn〉,我们称g(t1,...,tn)为有效动作项,其中ti∈T(Ω,X)si,1≤i≤n.记有效动作项集为GT.
+　　非有效动作不改变对象属性的值.显然,对仅包含属性的合式公式,我们可以通过证明其在任意有效动作下不变而推出其不变特性.
+　　定义3(Ω-对象语义解释结构). 给定对象标记Ω=(S,F,A,E),一个Ω-语义解释结构称为Ω-对象语义解释结构当且仅当对任意属性符号f∈A〈s1×...×sn〉,s,任意动作,任意,有(f)(ω1eω2)=(f)(ω1ω2).
+　　与Trace演算类似,我们可以定义Ψ结构.
+　　定义4(Ψ结构). 给定一个对象标记Ω=(S,F,A,E),一个Ψ结构包含：
+　　.Ω-对象语义解释结构；
+　　.赋值函数簇v={vs}s∈SE,vs：Xs→s；
+　　.踪迹ω.
+　　同样地,我们可以定义项和公式在Ψ结构上的解释,这与Trace演算完全相同.为方便以后的处理,我们定义一类新的项和一类新的公式,即静态项和静态公式,作为项和公式的子集.
+　　定义5(静态项). 给定对象标记Ω和变量簇X,对s∈S,静态项集ST(Ω,X)s归纳定义如下：
+　　.x∈Xs,x∈ST(Ω,X)s；
+　　.f∈FE〈s1×...×sn〉,s∪A〈s1×...×sn〉,s,且ti∈T(Ω,X)si,0≤i≤n,则f(t1,...,tn)∈ST(Ω,X)s；
+　　.t∈T(Ω,X)s,则［Init］t∈T(Ω,X)s,
+即静态项中不含时序运算符(X,X－)和动作运算符(［a］),类似地,我们有以下静态公式.
+　　定义6(静态公式). 给定对象标记Ω和变量簇X,对s∈S,静态公式集SF(Ω,X)归纳定义如下：
+　　.t1,t2∈ST(Ω,X)s,则t1=t2∈SF(Ω,X)；
+　　.p,q∈SF(Ω,X),则p,p→q∈SF(Ω,X)；
+　　.p∈SF(Ω,X),x∈Xs,且x在p中自由出现,则x：sp∈SF(Ω,X).
+　　由有效动作的定义可知,非有效动作应保持静态项和静态公式不变,即非有效动作的执行与没执行该动作的效果一样.这一点由以下引理保证.
+　　引理1. 给定对象标记Ω,Ω-对象语义解释结构,赋值v,非有效动作和踪迹ω1,ω2,则
+　　(1) v*i(t)=v*′i(t)　　　　　　0≤i≤|ω1|
+　　　　v*i(t)=v*′i-1(t)|ω1|＜i≤|ω1|+|ω2|+1
+　　(2)i(p)=′i(p)0≤i≤|ω1|
+　　　　i(p)=′i-1(p)|ω1|＜i≤||ω1|+|ω2|+1
+其中t∈ST(Ω,X)s,p∈SF(Ω,X),ω=ω1eω2,ω′=ω1ω2,=(O,v,ω),′=(,v,w′),v*i是v在踪迹ω上的自然扩充,v′*i是v在踪迹ω′上的自然扩充.
+　　证明：1. 对t的层次进行归纳
+　　　　　(1) t≡x,x∈Xs,
+　　　　　　　　v*i(t)=v*i(x)=v(x)=v*′j(x)=v*′j(t),
+　　　　　　　　0≤i≤|ω1|+|ω2|+1,0≤j≤|ω1|+|ω2|.
+　　　　　(2) t≡f(t1,...,tn),f∈FE〈s1×...×sn〉,s,ti∈T(Ω,X)si,i,1≤i≤n,根据归纳假设,
+
+　　　　　(3) t≡f(t1,...,tn),f∈A〈s1×...×sn〉,s,ti∈T(Ω,X)si,i,1≤i≤n,根据归纳假设,
+
+　　　　　(4) t≡［Init］t′,t′∈T(Ω,X)s,根据归纳假设,
+　　　　　　　v*i(t)=v*i(［Init］t′)=v*0(t′)=v*′0(t′)=v*′j(［Init］t′)=v*′j(t)，
+　　　　　　　0≤i≤|ω1|+|ω2|+1,0≤j≤|ω1|+|ω2|．
+　　　　　2. 对p的语法结构进行归纳
+　　　　　(1) p≡t1=t2,t1,t2∈T(Ω,X)s，
+
+　　　　　(2) p≡［Init］q,t1,t2∈T(Ω,X)s,根据归纳假设,
+
+　　推论1. 给定对象标记Ω,Ω-对象语义解释结构,赋值v,非有效动作和踪迹ω1,ω2,则,其中p∈SF(Ω,X),ω=ω1eω2,ω′=ω1ω2,=(,v,ω),′=(,v,ω′).
+　　推论2. 给定对象标记Ω,Ω-对象语义解释结构,赋值v和踪迹ω,则,其中p∈SF(Ω,X),ω=ω1eω2,ω′=ω1ω2,=(,v,ω),′=(,v,ω′),ω′为相应于ω而仅含其中有效动作的踪迹.
+　　由此可见,要证明Ψ结构=(,v,ω)是一个静态公式的模型,只要证明其相应的仅含有有效动作的结构′=(,v,ω′)是该公式的模型即可.
+　　相应于有效动作,我们可以定义一个新变量xG,其值域为；并定义一个新变量簇XG,若g∈E〈s1,...,sn〉,则xg∈XG,其值域为{|ai∈si,1≤i≤n}.
+　　定理1. 若p为静态公式,即p∈SF(Ω,X),则xG［xG］p［a］p,其中,a不在p中自由出现.
+　　定理2. (1) p∨g∈EpxG(xg),(2) ∧g∈ExgpxG(xg)p.
+　　证明略.
+2　公理化
+　　我们在文献［1］中已经讨论了Trace演算的公理化.正如本文引言中所说,我们希望建立的是一个面向对象的逻辑演算系统.由于对象比一般意义下的动态实体具有更多的特性,如封装性,因此我们必须对Trace演算所允许的模型加以限制.
+　　定理3. 若p为静态公式,即p∈SF(Ω,X),则xG［xG］p→Xp.
+　　定理4. 若t为静态项,即t∈SF(Ω,X),则xGpx(［xG］t)→px(Xt).其中x∈Xs,p中x不在时序运算符和动作运算符作用域内出现.
+　　这样,我们又得到一个新的公理,它使我们可以将项中的动作运算符替换为时序运算符.
+　　定理5. (a=xG)→p,∧1≤i≤n(［a］ti=ti)→pp.其中p∈F(Ω,X),e∈T(Ω,X)E,ti∈ST(Ω,X)si,1≤i≤n,且xG不在p中自由出现.
+　　由这个定理可知,要证明一个含动作运算符的公式,我们可以通过证明动作是有效动作(且这时公式成立)或者动作保持静态项不变(且这时公式成立)来完成.限于篇幅,我们省略了以上定理的证明.详见文献［2］.
+　　我们可以将定理3、4和5作为新的公理和规则,从而扩充了Trace演算，得到包含对象封装性的对象演算.即我们有如下增加的公理和规则.
+　　(enc1)　xG［xG］p→Xp,　　　　p∈SF(Ω,X),
+　　(enc2)xGpx(［xG］t)→px(Xt),t∈ST(Ω,X)s,x∈Xs,
+　　　　　　p中x不在时序运算符和动作运算符作用域内出现,
+　　(enc)　(a=xG)→p,∧1≤i≤n(［a］ti=ti)→pp,
+　　　　　　其中ti∈SF(Ω,X)si,1≤i≤n,且xG不在p中自由出现.
+3　对象语义描述
+　　前面我们已经讨论了对象演算的语法和语义,下面我们以生产消费问题为例,应用对象演算来描述对象及其验证.
+　　定义7(对象语义描述). 一个对象语义描述是一个二元组(Ω,D),其中
+　　.Ω是一个对象标记
+　　.D={p|p∈F(Ω,X)},X是一变量簇
+　　对象语义描述的公式集F给出了一群程序公理,通常这些公理可分为：描述动作作用的公理(相应于程序的后断言post-condition)；描述初始条件的公理；描述动作执行的必要条件的公理(相应于程序的前断言pre-condition)以及一些描述动态约束的公理等部分.另外,还有一部分公理是关于数据部分的,它们是通常代数规范意义下的公理,这里我们直接加以引用.
+　　在对象语义描述中我们并没有直接给出对象行为的描述,而是给出对象行为所必须满足的特性(也称为约束),包括静态特性和动态/时序特性.
+　　我们用一个例子,即生产消费问题来加以说明.在这里,生产者和消费者共享一个缓存.我们用3个对象PRODUCER,CONSUMER和BUFFER来刻画相应的结构和行为.
+　　ObjectSingature PRODUCER=
+　　　Sorts： ITEM,BOOL
+　　　Functions：
+　　　　true,false： BOOL
+　　　　其他布尔函数
+　　　Attributes：
+　　　　item： ITEM
+　　　　waiting： BOOL
+　　　Actions：
+　　　　produce(ITEM)
+　　　　put(ITEM)
+　　End
+　　这里的item是生产者正在处理的项,waiting则指出生产者是否在等待存放已处理好的项.这些属性的值将随着生产者的动作行为而改变.
+　　下面为方便描述,我们仿照代数规范方法引入+,即如果对象标记Ω1是由对象标记Ω加上一些类型S1,函数符号F1,属性符号A1和动作符号E1组成，我们可写为
+Ω1=Ω+(S1,F1,A1,E1)，
+其中(S1,F1,A1,E1)本身不一定是个对象标记.如果Ω=(S,F,A,E),则Ω1=(S+S1,F+F1,A+A1,E+E1),其中“+”表示不相交并集.
+　　ObjectSignature CONSUMER=ITEM+BOOL+
+　　　Sorts：
+　　　Attributes：
+　　　　item： ITEM
+　　　　waiting： BOOL
+　　　Actions：
+　　　　consume(ITEM)
+　　　　get(ITEM)
+　　End
+　　值得指出的是,对象标记中的动作,属性符号等的名字的涵义是局部于对象标记的.
+　　ObjectSignature BUFFER=ITEM+INT+
+　　　Sorts：
+　　　Attributes：
+　　　　count： INT
+　　　Actions：
+　　　　put(ITEM)
+　　　　get(ITEM)
+　　End
+　　我们给出的是一个“抽象的”BUFFER,可以用数组或队列等更“具体的”对象来“精化”这一“抽象的”BUFFER.
+　　对象PRODUCER的公理集为：
+　　动作produce(i)的作用效果
+　　p1：［produce(i)］item=i
+　　p2：［produce(i)］waiting=t
+　　　　动作put(i)的作用效果
+　　p3：［put(i)］waiting=f
+　　　　初始条件
+　　p4：［Init］waiting=f
+　　　　动作produce(i)执行的必要条件
+　　p5：enabled(produce(i))→waiting=f
+　　p6：enabled(put(i))→(item=i)∧(waiting=t)
+　　p7：waiting=t→Fput(item)
+　　注意,上述公理,如p1：［produce(i)］item=i,事实上应描述为
+enabled(produce(i))→(［produce(i)］item=i),
+然而,由于通常我们只关心合法行为,因此我们可以只刻画合法行为所需满足的约束,在描述时我们假设相应的动作在相应的状态均是允许的,从而作如上缩写.至于例外情况,我们可以通过增加新公理来描述相应的例外处理,从而达到模块化的要求.
+　　另外,为描述方便起见,我们引入一类新公式：a∈T(Ω,X)E,公式a描述了动作a的执行,即a的前条件得到满足,且动作的所有后条件满足.形式化地,我们有
+aenabled(a)∧{q|q为形如［a］p或［a］t1=t2的程序公理}.
+　　对于一个Ψ结构=(I,v,ω),i(a)=t当且仅当(iω,v*i(a))∈且v*i(a)=ωi+1,即公式a为真当且仅当在当前状态执行了相应的动作.
+　　对象CONSUMER的公理集为：
+　　动作consume(i)的作用效果
+c1：［consume(i)］waiting=f
+　　 动作get(i)的作用效果
+c2：［get(i)］item=i
+c3：［get(i)］waiting=t
+　　 初始条件
+c4：［Init］waiting=f
+　　 动作consume(i)执行的必要条件
+c5： enabled(consume(i))→(item=i)∧waiting=t
+　　 动作get(i)执行的必要条件
+c6： enabled(get(i))→waiting=f
+　　 动态约束
+c7： waiting=t→Fcconsume(item)
+对象BUFFER的公理集为：
+动作put(i)的作用效果
+b1：［put(i)］count=count+1
+　　 动作put(i)的作用效果
+b2：［get(i)］count=count-1
+　　 初始条件
+b3：［Init］count=0
+　　 动作put(i)执行的必要条件
+b4： enabled(put(i))→(count＜size)
+　　 动作get(i)执行的必要条件
+b5： enabled(get(i))→(count＞0)
+　　 动态约束
+b6： put(i)→Fget(i)
+　　值得指出的是,我们仅描述了动作执行的必要条件,这是因为我们描述并发的同步通信是基于动作名的共享,也就是说,不同对象可能共享相同的动作名.如果我们描述动作的执行条件时使用很强的条件,那么当我们将多个对象放在一起来构造新对象时,就可能导致描述的不一致.所以我们在描述一个对象时,假设对象动作执行的所有外部条件均已满足,且仅描述有关该对象的必要条件,从而满足结构化描述的要求.通常,我们将动作a执行的必要条件描述为
+enabled(a)→pre(a)
+其中pre(a)∧{q|enabled(a)→q}.
+　　当我们用对象ob1,...,obn构造新对象时,我们有
+enabled(a)∧1≤i≤nprei(a)∧p(ob1,...,obn)
+其中p(ob1,...,obn)描述了各对象的动作a在相应时刻同步(一个对象的某一动作能够得以执行,当且仅当所有与之同步通信的对象已进入相应的状态,即各参与同步的动作的前条件均满足,这时，所有参与同步的对象执行各自相应的动作).
+　　此外,这些对象语义描述都隐含封装性程序公理,只有本对象定义的动作可以修改对象属性.
+4　并发特性描述
+　　我们将Ψ公式作为描述对象行为的约束(constraints)公式,用它们来刻画对象的特性.我们想要描述的并发特性有很多,这些特性可以分为安全性(safety)/不变性(invariance)特性和活动性(liveness)特性两大类.
+4.1　安全性
+　　直观上讲,安全性指的是“坏事件不会发生”.确切地说,安全性特性描述了计算(可能是无限的)的任意有限前缀满足一定要求.
+　　安全性特性可表示为p→Gq.
+　　若p=t,上述公式可表示为Gq.
+　　注意,我们所采用的是全局语义,Gqq.
+　　从所涉及的对象状态来分,安全性又可分为静态安全性和动态安全性.
+　　静态安全性约束只涉及一个对象状态,如“缓冲指针非负”即是一个静态安全性约束,表示为count≥0.通常,静态安全性约束中不包含动作运算符和时序运算符.
+　　动态安全性约束涉及多个对象状态,如对于仅含如下3个公理的对象语义描述INC：
+　　(1)［add1］i=i+1
+　　(2)［add2］i=i+2
+　　(3)［Init］i=0
+a(［a］i≥0)是一个动态安全性约束,它涉及两个对象状态,即动作a执行前属性i的值和a执行后属性i的值.
+4.1.1 部分正确性(partial correctness)
+　　部分正确性是指：若一动作a是允许的(enabled),即动作a的前断言和外部条件均满足,且动作a的执行终止,则动作a的后断言亦满足.在我们的对象语义描述中,前断言和后断言都是作为公理或公理的一部分出现的,而动作亦具有原子性.在对象实现中将给出动作的具体实现,也就是说,对象实现将保证部分正确性.
+4.1.2 互斥(mutual exclusion)
+　　互斥是固有的,即一对象的任意两个相关动作(同一动作符号名或对同一属性有修改,即它们之间有数据依赖)除非在对象语义描述中显示给出可以并发执行的有关公理,我们都认为它们是互斥的.不相关的动作我们认为是可并发执行的.如对BUFFER,若想使put(i)和get(i)以并发执行,则相应公理集需改为：
+　　b1′：［put(i)］count=count+1
+　　b2′：［get(i)］count=count-1
+　　b3′：［put(i),get(j)］count=count
+　　b4′：［Init］count=0
+　　b5′： enabled(put(i))→(count＜sizen)
+　　b6′： enabled(get(i))→(count＞0)
+　　可并发执行的两个或多个动作,我们可将它们的任意组合看成一个原子动作(相对于相应的抽象层次).原子动作或者不执行(这时相应的事件不发生),或者执行完(这时相应的事件发生).
+4.1.3 不死锁(deadlock freedom)
+　　对象死锁即是没有动作可执行,可以表示为enabled(xa1)∧...∧enabled(xan),其中a1,...,an为该对象的所有动作符号.而对象不死锁特性可表示为pre(xa1)∨...∨pre(xan).注意,这里我们使用pre(xai),而不用enabled(xai),这是出于结构化描述的需要,不管对象的外部特性如何.
+4.2　活动性
+　　活动性指的是“某个事件最终会发生”.在一定程度上,活动性可作安全性的对偶,它们要求某些前提特性在某处可以得到满足.
+　　活动性特性可表示为p→Fq.
+　　如,特性“动作a执行以后动作b将在以后某一时刻执行”可表示为a→Fb.
+4.3　公平性
+　　公平性(fairness)也是一种活动性.公平性意味着若动作a可以执行,那么它将在以后某一时刻执行.公平性又可分为弱公平性(weak fairness)和强公平性(strong fairness).
+　　弱公平性是指，若动作a在它执行前一直是可以执行的,则它将执行.表示为
+(Fa)∨(Fpre(a)).
+　　强公平性是指,若动作a在它执行前多次可以执行,则它将执行.表示为
+(Fca)∨(FGcpre(a)).
+5　特性推理
+　　使用对象演算进行推理时,通常首先使用含动作运算符的公理和规则,然后再使用一阶时序演算.这是因为通常我们所给出的对象语义描述中的公理集主要包含的是含动作运算符的公理.
+　　到目前为止,我们并没有使用原子公式enabled(a)和a进行推理.下面我们将讨论如何使用它们进行特性推理.为此,我们需增加一条新的公理和规则.
+5.1　安全性推理
+　　前面列出的公理和推导规则并没有考虑到其中的动作运算符的相应动作是否可执行(即允许的(enabled)).要满足安全性,则要求其中的每个动作都必须是允许的,即相应的踪迹是安全踪迹(safe trace).
+　　定义8(安全踪迹). 给定对象标记Ω,Ω-语义解释结构,踪迹ω称为安全踪迹当且仅当对任意i,(iω,ωi+1)∈ε.
+　　也就是说,ω中的任意动作均是允许发生的(enabled).
+　　由于以上列出的公理和推导规则所推导出的结论适用于所有踪迹,因此所推导出的结论同样适用于安全踪迹.
+　　由于对安全踪迹,对象到达某一状态只有在允许相应动作的时候才可发生,因此我们可以假定每个动作执行前都是允许的,从而弱化推理的前提而得到更多结论.即我们有如下的规则：
+　　(safe1) a(enabled(a)∧［a］p→Xp,
+　　(safe2)［Init］p,a(enabled(a)∧p→［a］p)p,
+　　(safe3) a(enabled(a)∧px［a］t))→px(Xt),　　t∈ST(Ω,X)s,x∈Xs,
+p中x不在时序运算符和动作运算符作用域内出现.
+　　如果我们再考虑到对象封装性,则有
+　　(safe4) xG(enabled(xG)∧［xG］p)→Xp,　　　　p∈SF(Ω,X),
+　　(safe5) ［Init］p,xG(enabled(xG)∧p→［xG］p)p,
+　　(safe6) xG(enabled(xG)∧px［xG］t))→px(Xt),　t∈ST(Ω,X)s,x∈Xs,
+p中x不在时序运算符和动作运算符作用域内出现,
+　　(safe7) (a=xG)→p,∧1≤i≤n(enabled(a)∧［a］ti=ti)→pp.ti∈ST(Ω,X)si,1≤i≤n,且xG不在p中自由出现.
+　　这些规则的可靠性是显然的,其中enabled(a)和enabled(xG)对允许的模型加以限制.
+　　例1：BUFFERcount≥0.
+　　证明：由(safe5),只需证：
+　　〈1〉［Init］(count≥0)
+　　〈2〉 enabled(put(i))∧count≥0→［put(i)］(count≥0)
+　　〈3〉 enabled(get(i))∧count≥0→［get(i)］(count≥0)
+　　关于〈1〉,有　(1)［Init］count≥0　　　　　　　　　　　(b3)
+　　　　　　　　　(2)［Init］(count≥0)　　　　　　　　　　(1),及“0”,“≥”是rigid
+　　关于〈2〉,有　(1)［put(i)］(count≥0)
+　　　　　　　　　　　［put(i)］(count≥0)　　　　　　　 “0”,“≥”是rigid
+　　　　　　　　　　　count+1≥0　　　　　　　　　　　　 (b1,替换)
+　　　　　　　　　(2)count≥0→count+1≥0
+　　　　　　　　　(3)count≥0→［put(i)］(count≥0)　　　　(1),(2)
+　　关于〈3〉,有(1)［get(i)］(count≥0)
+　　　　　　　　　　［get(i)］count≥0　　　　　　　　　 “0”,“≥”是rigid
+　　　　　　　　　　count-1≥0　　　　　　　　　　　　　　b2,替换
+　　　　　　　　(2)count＞0→count-1≥0
+　　　　　　　　(3)count＞0→［get(i)］(count≥0)　　　　　 (1),(2)
+　　　　　　　　(4)enabled(get(i))→count＞0(b5)
+　　　　　　　　(5)enabled(get(i))→［get(i)］(count≥0)　　(3),(4)
+5.2　活动性推理
+　　通常,我们所讨论的活动性是在满足安全性条件下的活动性.因此,我们可在安全踪迹中讨论活动性,有关安全性推理的规则仍然适用.另外,根据公式a的语度,有以下定理，这些定理可作为活动性推理的公理和规则.
+　　定理6. (live1) a→enabled(a).
+　　定理7. (live2) a→(［a］pXp).
+　　定理8. (live3) a→(px(［a］t)px(Xt)),其中t∈ST(Ω,X)s,x∈Xs,p中x不在时序运算符和动作运算符作用域内出现.
+　　定理9. (live4) p→Fa,［a］qp→Fq.
+　　例2：PRODUCERwaiting=t→F(waiting=f).
+　　证明：(1) ［put(i)］waiting=f　　　　　　　　p3
+　　　　　(2) ［put(i)］(waiting=f)　　　　　　　(1),及“=”,“f”是严格的
+　　　　　(3) ［put(item)］(waiting=f)　　　　　 (2),(prep),(a7)
+　　　　　(4) waiting=t→F put(item)　　　　　　 p7
+　　　　　(5) waiting=t→F(waiting=f)　　　　　　(3),(4),(live4)
+　　例3：PRODUCERproduce(i)→F put(i).
+　　证明：(1) produce(i)→［produce(i)］waiting=t　　　　　　　公式produce(i)的定义
+　　　　　(2)［produce(i)］waiting=t［produce(i)］(waiting=t) “=”,“t”是严格的
+　　　　　(3) produce(i)→［produce(i)］(waiting=t)　　　　　　 (1),(2),cut
+　　　　　(4) produce(i)→X(waiting=t)　　　　　　　　　　　　　(live2)
+　　　　　(5) produce(i)→X(item=i)　　　　　　　　　　　　　　　与(4)类似推导
+　　　　　(6)a(［a］item=item∧［a］waiting=waiting)∨kput(k)∨lproduce(l)封装性
+　　　　　(7) waiting=t∧item=i→
+　　 　　　　a(［a］waiting=t∧［a］item=i)∨kput(k)∨lproduce(l)(6),(eq2),(prep)
+　　　　　(8) waiting=t∧item=i→
+　　　　　　　X(waiting=t∧item=i)∨kput(k)∨lproduce(l)　　　(l)(7),(a9),(prep)
+　　　　　(9) produce(l)→waiting=f　　　　　　　　　　　　　　　(live1),p5
+　　　　　(10) waiting=t→lproduce(l)　　　　　　　　　　　　(7),(gen),(prep)
+　　　　　(11) k(put(k)→k=item)　　　　　　　　　　　　　(live2),p6,(gen),(prep)
+　　　　　(12) waiting=t→item=i→X(waiting=t∧item=i)∨put(item)(8),(10),(11),(prep)
+　　　　　(13) waiting=t→Fput(item)　　　　　　　　　　　　　　　p7
+　　　　　(14) waiting=t∧item=i→(waiting=t∧item=i)Uput(item)　(12),(13),(prep)
+　　　　　(15) waiting=t∧item=i→Fput(i)　　　　　　　　　　　　(14),(prep)
+　　　　　(16) produce(i)→Fput(i)　　　　　　　　　　　　　　　(4),(5),(15),(prep)
+　　我们发现,这个证明是冗长的.为此,我们可以增加如下规则来缩短证明长度.
+　　定理10.
+　　(live5) (p∧enabled(a)→［a］t=t∧［a］p)∧xb(x),p→Fbx(t)p∧t=u→((p∧t=u)
+　　　　　　Ubx(u)).
+　　推论3.
+　　(live6) (p∧enabled(a)→［a］t=t∧［a］p)∧xb(x),c→［c］t=u∧［c］p,p→Fbx(t)
+　　　　　　c→X((p∧t=u)Ubx(u)).
+结论是显然的.
+6　结 论
+　　本文结合代数语义［3］和时序逻辑［4］方法,围绕对象的封装性,在对象形式语义理论方面作了一些研究.主要结果如下：
+　　(1) 引入有效动作和有效动作项的概念.只有相应对象所提供的动作才是有效动作.
+　　(2) 引入对象语义解释结构.只有对象的有效动作可以修改对象的属性,从语义解释结构上反映出对象的封装特性.
+　　(3) 引入对象语义描述概念.
+　　(4) 将系统特征描述为约束公式,并讨论了系统的安全性和活动性推理及其推导规则.
+*　本文研究得到国家自然科学基金和国家863高科技项目基金资助.
+本文通讯联系人：黄涛,北京 100080,中国科学院软件研究所计算机科学开放研究实验室
+作者简介：黄涛,1965年生,博士，研究员,主要研究领域为软件工程,对象技术,分布计算,程序设计语言及环境.
+　　　　　钱军,1966年生,博士生,主要研究领域为面向对象的理论和技术,分布对象计算,形式化方法.
+　　　　　周桓,1976年生,博士生,主要研究领域为面向对象的理论和技术,分布对象计算.
+作者单位：黄涛，钱军，周桓（中国科学院软件研究所计算机科学开放研究实验室　北京　100080）
+　　　　　黄涛，钱军，周桓（中国科学院软件研究所对象技术中心 北京 100080）
+参考文献：
+［1］黄涛,钱军,倪彬.Trace演算.软件学报,1999,10(8):790～799
+(Huang Tao, Qian Jun, Ni Bin. Trace calculus. Journal of Software, 1999,10(8):790～799)
+［2］黄涛.对象形式语义理论研究［博士学位论文］.合肥:中国科技大学,1994
+(Huang Tao. Theoretical research on object formal semantics ［Ph.D. Thesis］. Hefei: University of Science and Technology of China, 1994)
+［3］Ehrig H, Mahr B. Fundamentals of Algebraic Specifications 1: Equations and Initial Semantics. Berlin: Springer-Verlag, 1985
+［4］Kroger Fred. Temporal Logic of Programs. Berlin:Springer-Verlag, 1987
+收稿日期：1997-12-12，修改日期：1998-09-04

@@ -1,0 +1,64 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.3　P.427-429
+
+
+
+保证闭环性能品质的奇异摄动类降阶方法
+张力军　程鹏
+关键词　控制器降阶，奇异摄动降阶法，广义奇异摄动降阶法，均衡截取法，双线性变换.
+A CLASS OF SINGULAR PERTURBATION APPROXIMATION
+METHODS FOR CONTROLLER ORDER REDUCTION WITH
+GUARANTEED CLOSED LOOP PERFORMANCE
+ZHANG Lijun　CHENG Peng
+(Department of Automatic Control, Beijing University of Aeronautics and Astronautics, Beijing　100083)
+Key words　Controller order reduction, singular perturbation approximation, generalized singular perturbation approximation, balanced truncation method, bilinear transform.
+1　引言
+　　目前，由于H2，H∞和μ等理论所设计的控制器阶数较高，迫切需要对其进行降阶.Zhou等人［1］针对某一类控制系统，提出了保证闭环性能品质的结构均衡截取控制器降阶方法.Do Chang Oh等人［2］将此方法推广到了奇异摄动降阶方法，它具有低频段误差较小的优点.
+　　本文在Zhou等人方法的基础上，利用奇异摄动降阶方法同截取降阶方法的双线性变换关系，用比较简洁的方法证明了Do Chang Oh等人的结果.并进一步运用这种思想，推广得到了保证闭环性能品质控制器降阶的广义奇异摄动方法.
+2　保证闭环性能品质的结构均衡截取控制器降阶方法［1］
+　　定理1［1］.设控制器K(s)使得闭环传递函数　Tzω(s)=F1(G,K)∈RH∞，并且存在P=diag(P1,P2)≥0和Q=diag(Q1,Q2)≥0满足
+　　　(1)
+　　　　(2)
+　　并进一步假设存在可逆阵T1和T2，使得
+　　　(3)
+T2P2T′2=(T-12)′Q2T-12=Σ=diag(Σ1,Σ2),　　　　　(4)
+　　其中Σ1=diag(σ1，…，σr)，Σ2=diag(σr+1,…，σm),σr>σr+1.
+　　　(5)
+这里K(s)系统矩阵分块同Σ的分块一致，则降阶的控制器
+　　稳定.并且降阶前后闭环系统的误差界为
+　　　(6)
+　　将Σ分解的维数分配主要由降阶控制器的阶数和Σ对角元数值大小的差别决定.
+3　保证闭环性能品质的奇异摄动控制器降阶方法
+　　定理2［2］.在定理1的条件下，则式(5)的奇异摄动降阶控制器
+　　　(7)
+这里K(s)系统矩阵分块同Σ的分块一致.降阶后闭环系统满足
+
+　　降阶前后闭环系统的误差界　　　(8)
+并且有
+　　　(9)
+显然，这种方法在低频段误差较小.
+　　这里，利用文献［3］中的引理9.2.2，通过两次双线性变换可比较简洁地证明了定理2.首先，通过变换得然后，用定理1对其进行降阶得最后，根据文献［3］中的引理9.2.2显然有
+
+证毕.
+4　保证闭环性能品质的广义奇异摄动降阶法
+　　设离散系统的控制器K(z)的状态方程形式与式(5)相同，很容易得到离散系统的保证闭环性能品质的均衡截取降阶方法.再利用广义奇异摄动降阶方法同它的双线性变换关系，便得出了保证闭环性能品质控制器降阶的广义奇异摄动方法.
+　　定理3.在定理1的条件下，式(5)的广义奇异摄动降阶控制器
+
+　　这里K(s)系统矩阵分块同Σ的分块一致.降阶后闭环系统满足
+
+并且有
+5　结论
+　　本文利用奇异摄动类降阶方法同截取降阶方法的双线性变换关系，得出了保证闭环性能品质的奇异摄动类控制器降阶方法.通过数值例子可以看出，奇异摄动降阶法的优点是零频率处无差，它能够较好地保证降阶后系统响应的稳态值不变.广义奇异摄动降阶法可以通过选择参数α得到比较满意的降阶控制器.
+国家自然科学基金资助项目.
+　　张力军　1971年生，1998年获北京航空航天大学自动控制系博士学位，研究领域为鲁棒控制、控制器降阶、飞行控制系统以及奇异摄动控制系统的分析与设计.
+　　程　鹏　1938年生，1962年毕业于北京大学数学力学系.现任北京航空航天大学自动控制系教授、博士生导师.研究领域为线性系统理论、多变量系统理论、鲁棒控制和飞行控制系统.
+张力军（北京航空航天大学自动控制系　北京　100083）E-mail:ljzhang@hotmail.com.
+程鹏（北京航空航天大学自动控制系　北京　100083）
+参考文献
+［1］　Zhou K, D'souza C, Cloutier J R. Structurally balanced controller order reduction with guaranteed closed loop performance. System and Control Letters, 1995, 24(2):235～242
+［2］　Oh D Ch, Bang K H, Park H B. Controller order reduction using singular perturbation approximation. Automatica, 1997,33(6):1203～1207
+［3］　Green M, Limbeer D. Linear Robust Control, Eaglewood Cliffs, NJ:Printice-Hall, 1995, 338～339
+［4］　张力军，程鹏.保证性能品质的奇异摄动降阶方法.见：中国控制会议文集，浙江宁波，1998，国防大学出版社，117～120
+收稿日期　1998-03-27
+修稿日期　1998-12-03

@@ -1,0 +1,86 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年 第25卷 第6期 Vol.25 No.6 1999
+
+
+
+线性定常系统镇定问题的输出反馈解
+钱　春
+摘　要　研究了通过Riccati方程中矩阵D的选择，以实现由输出反馈u=-Ly来镇定系统的目的.关于上述问题OFSLQ问题有解D，以使相应的Riccati方程存在正定解P，满足，且给出对某个L，有B′P=LC的充要条件.
+关键词　镇定，输出反馈.
+OUTPUT FEEDBACK SOLUTION FOR THE PROBLEM
+OF STABILIZATION OF LINEAR TIME-INVARING SYSTEM
+QIAN Chun
+(Department of Civil Engineering, Zhejiang University, Hangzhou　310027)
+Abstract　This paper is concerned with the problem of choosing matrix D in the Riccati equation so that the system can be stabilized by the output feedback u=-Ly. A necessary and sufficient condition for this question is obtained, namely, OFSLQ has a solution D such that ARE has the positive definite solution P satisfying , and for some, L, B'P=LC.
+Key words　Stabilization, output feedback.
+1　引言
+　　考虑一个线性系统
+　　(1)
+其中x∈Rn是状态，u∈Rr是控制，y∈Rm是输出，假定(A，B)能控.对式(1)研究的一个非常重要的课题就是，如何通过反馈控制律的确定，以达到镇定系统的目的.线性系统理论的一个基本定理保证了在(A，B)能控的假定下，闭环极点可任意配置，即任给一组“对称”谱Σ，存在K，使σ(A+BK)=Σ，因而上述问题是有解的.直接计算反馈矩阵K已有了许多算法.一般说来，满足上述要求的K不唯一.文献［1～4］都对本问题进行了研究，但得出的结论均有一定的局限性.
+　　本文讨论使系统(1)闭环稳定的输出反馈矩阵L的存在性问题，通过Riccati方程
+ARE:PA+A′P-PBB′P+D′D=0　　(2)
+中矩阵D的选择来实现，给出与上述问题等价的OFSLQ问题(即选择D，使对称解P=Ric(A,B,D)存在，且对某个L∈Rr×m，有B′P=LC)有解D及正定解P的一个充分必要条件.此条件不受输入、输出维数的限制，较具一般性.
+2　QFSLQ有解的充要条件
+　　本文定理证明所需的一些结果归纳为两个引理，证明见文献［5］.
+　　引理1.T(z)∈｛PR｝当且仅当对任何非奇异矩阵G，有G′T(z)G∈｛PR｝.其中｛PR｝表示所有正实矩阵的集合.
+　　引理2.设(A，B)能控，(K，A)能观，则方程组
+　　(3)
+有解P∈Rn×n,Q∈Rk×n,M∈Rk×r，且P>0的充要条件是
+T(z)=J+K(zI-A)-1B∈｛PR｝.　　(4)
+如在状态空间的某组基下，将(A，B，C)进行能观性结构分解，得到
+　　(5)
+其中H为变换矩阵，Aij∈Rni×nj,Bj∈Rnj×r(i,j=1,2;n1+n2=n),C2∈Rm×n2，且(C2，A22)是能观的.易知这类变换不影响OFSLQ问题的可解性.因此，今后把有关矩阵直接写成变换后的形式.同时，OFSLQ问题的可解性研究，可只针对(C，A)能观的情形进行而不失一般性.
+　　本文的主要目标是反馈镇定系统(1)，因此(A，B)能稳是必要的.在此假定下，有两个条件可保证A-BB′P渐近稳定，即
+　　(i)P是ARE(2)的正定解；
+　　(ii)(D，A)能检测，且P是ARE(2)的非负解.
+证明从略，而(D，A)能观同时保证了(i)和(ii)成立，这是更强的条件.
+　　下面，建立OFSLQ问题有解的一个充分必要条件.由于C行满秩，rankC=m,为方便起见，假设(A，B，C)已具有
+
+形式，其中Aij∈Rni×nj,Bj∈Rnj×r(i,j=1,2;n1=n-m;n2=m).
+　　定理1.设(A，B)能控，(C，A)能观，则OFSLQ问题有解D，且P=Ric(A,B,D)>0的充分必要条件是
+　　(i)Γ=｛K;B1+KB2=0｝≠?,　　(6)
+　　(ii)存在K∈Γ和G>0，使得
+T(z)=T(z;K,G)∈｛PR｝,　　(7)
+其中
+
+　　证明.先证必要性.设D=［D1,D2］,Dj∈Rk×nj(j=1,2)是OFSLQ的解，且P=Ric(A，B，D)>0.将P与A一样分块
+　　(8)
+则显然有P11>0,P22>0.由B′P=LC可知
+B′1P11+B′2P′12=0,　　(9)
+因此P-111P12∈Γ，这表明条件(i)是必要的.定义
+　　(10)
+式中K=P-111P12.然后令AK=S-1AS,BK=S-1B,DK=DS,CK=CS,PK=S′PS，则有DK=［D1,DK2］,PK=diag(P11,PK22)，其中DK2=D2-D1K,PK22=P22-K′P11K.由(A，B)能控，(C，A)能观，显然有(AK,BK)和(CK,AK)分别能控和能观.从P=Ric(A,B,D)又可推知PK=Ric(AK,BK,DK)，则有
+P11AK11+(AK11)′P11=-D′1D1,　　(11)
+P11AK12+(AK21)′PK22=-D′1DK2,　　(12)
+(DK2)′DK2=PK22B2B′2PK22-PK22AK22-(AK22)′PK22.　　(13)
+同时(AK,BK)能控和(CK,AK)能观分别蕴含了(AK11,AK12)能控和(AK21，AK11)能观，而PK22>0，故(PK22AK21，AK11)亦能观.于是由引理2知，当式(11)～(13)有解P11,D1,DK2，即P11>0时，，其中
+
+令G=(PK22)-1，则由引理1知
+　　(14)
+由，显然有T(z)的元素在Rez>0中解析，在虚轴上至多只有单重极点.若iω0是T(z)的某个元素的极点，则它必是(z)某个元素的极点.当ω0有限时，由(z)≥0及当ω0=∞时，由可知T(z)亦有此性质，且易知T′(-iω)+T(iω)≥0.所以T(z;K,G)∈｛PR｝，从而证明了条件(ii)是必要的.定理的必要性得证.
+　　再证充分性.设条件(i)和(ii)成立，即存在K∈Γ和G>0使T(z;K,G)∈｛PR｝.令PK22=G-1>0，并颠倒上面的推理步骤，就可证明式(11)～(13)有解P11,D1,DK2,且P11>0.将K∈Γ代入式(10)得到S，然后令，则易知P是关于(A，B，D)的Riccati方程的解，且满足式(9).由B′1P11+B′2P′12=0可知，若令L=B′1P12+B′2P22，则有B′P=LC.另一方面，P11>0和PK22>0保证了P>0，因此可知P满足，从而P=Ric(A，B，D).充分性得证.
+　　最后应指出，使T(z;K,G)∈｛PR｝的矩阵K∈Γ和G>0一般不唯一，因而OFSLQ问题的解D也不一定唯一.
+
+3　实例
+　　实例将说明本文得出的充要条件适用于m≠r，即输入、输出维数不相等的情形，较具一般性.
+　　例.
+
+此时n=3,m=2,r=1,m>r.
+　　通过计算易知(A，B)能控，(C，A)能观.若取K=(0,0)，
+
+其中0<g1≤4,g4>0，则可知T(Z；K，G)∈｛PR｝.此时方程(2)有解
+
+且显然A―BB′P稳定，(D，A)能观，取L=［2,2］，则B′P=LC.故相应的OFSLQ问题有解.
+
+4　结论
+　　本文给出了OFSLQ问题有解的一个充分必要条件，即Γ≠?以及T(z;K,G)∈｛PR｝.所给例子说明，其结果不局限于输入、输出维数相同的情形.但前已指出，OFSLQ问题的解D不一定唯一，如何利用这多余的自由度以满足其它设计要求，如鲁棒性等，还可继续研究.
+作者简介：钱　春　1967年生，1989年于浙江大学应用数学系毕业，1992年获运筹学与控制论专业硕士学位，1993年在美国DEC公司计算机培训.在各类学术刊物上发表论文10余篇.研究方向为最优控制.
+作者单位：浙江大学土木系　杭州　310027
+参考文献
+1　Levine W S, Athans M. On the determination of the optimal constant output feedback gains for linear multivariable systems. IEEE,Trans. Autom. Control, 1970, AC-15:44～48
+2　Davison E J, Wang S H. On pole assignmant in linear multivarible systems using output feedback. IEEE Trans. Autom. Control, 1975, AC-20:516～518
+3　Lin Huang, Zhong Li. Fundermented theorem for optimal output feedback problem with quadratic performance criterion, Int J. Control, 1989,50(6):2341～2347
+4　Gu Guoxiang. On the existence of linear optimal control with output feedback. SIAM J. Control Optim, 1990, 28(3):711～719
+5　Anderson B D O. A system theory criterion for positive real matrices. SIAM J. Control, 1967, 5(2):171～182
+收稿日期　1997-11-12　　收修改稿日期　1998-05-15

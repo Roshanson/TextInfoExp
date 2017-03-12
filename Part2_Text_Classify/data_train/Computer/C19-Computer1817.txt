@@ -1,0 +1,100 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000　No.19　No.1　P.53-54
+
+
+
+
+WINDOWS环境下动态设置打印机参数
+铁治欣　陈奇　俞瑞钊
+摘 要： 一种动态设置打印机参数的方法。在程序中运用此方法，用户在打印时只需在打印机中放入合适的纸张，而不用考虑打印机的设置。 
+关键词： 打印机 注册表 动态设置
+1 问题的提出
+　　在许多应用系统中，常常需要打印各式各样的票据和报表，它们经常是没有统一的格式，所需的打印纸也就大小不一，有的甚至有专用的格式。因此，如果我们不对打印机的设置进行有效的控制，就要求用户在运行这些系统时不断地更改打印机设置，以适应系统的需要。一般情况下，用户会觉得用这样的软件很麻烦，并且经常会出现错误。一种比较简单的解决办法就是对同一台物理打印机在WINDOWS中安装几台逻辑打印机，每台逻辑打印机对应一种票据或报表格式，在打印某一票据或报表时就选择与之对应的逻辑打印机。这种方法的缺点是每次打印时还要去选择1个逻辑打印机，增加了操作人员的操作步骤。基于此，本文给出了一种比较自动和通用的解决方法。运用此方法开发打印程序，打印时用户只需往打印机中加入适当的纸张即可打印出正确的报表。
+2 动态设置打印机
+　　在WINDOWS 95环境下，与计算机设置有关的信息全部记录在注册表(REGISTRY)中。WINDOWS 95在用到某一设备或程序时，它就到注册表中取出有关这一设备或程序的设置信息。当增加1台设备时，WINDOWS 95就会在注册表中增加相应的项目；当修改某一设备的设置时，WINDOWS 95也会对有关这一设备的注册项目进行修改。所以我们可以通过动态修改注册表中的有关打印机设置的信息来达到动态设置打印机的目的。
+　　经研究发现，与打印机有关的主要设置有二项，其中第1项为当前默认打印机，其注册表入口为：HKEY＿LOCAL＿MACHINE\Config\0001\System\CurrentControlSet\Control\Print\Printers，设置值存放在default项中的字符串，即我们可以通过这一注册表的这一分支的default项得到WINDOWS的当前默认打印机。第2项为打印纸设置有关的项目，其注册表入口为：HKEY＿LOCAL＿MACHINE\System\CurrentControlSet\Control\Print\Printers\SETPRINTER，其中的SETPRINTER要替换为你所安装的打印机的名字，如Epson LQ－1600K等，这一分支有许多个项，最关键的项(也是与打印纸张设置有关的项)是Default DevMode，此项的设置值为1个二进制串，其中主要的几个参数的偏移地址和意义见表1。
+表1 打印机参数表
+
+设置项目偏移量字节数说明
+纸张设置0x2F2打印机纸张类型，256为用户自定义纸张，小于256的数值为该打印机能打印的标准纸张的编号，随打印机类型改变。
+纸张长度0x312当纸张设置为256（即用户自定义纸张）时才有用，意义为要设置的打印纸的长度（以0．1毫米为单位）。
+纸张宽度0x332当纸张设置为256（即用户自定义纸张）时才有用，意义为要设置的打印纸的宽度（以0.1毫米为单位）。
+打印方向0x2D20x01-纵向打印，0x02-横向打印。
+进纸方式0x3920x04-手动送纸，0x08-传纸器。
+
+　　下面我们给出这种动态设置方法在PowerBuilder(PB)中的实现方法。在PB中我们可以定义2个全局函数：gf＿PrnSetting()，gf＿PrnSettingBack()。具体应用时，可以用第1个函数将打印设置为我们需要的状态，并将打印机的原状态保存起来，再用第2个函数将打印机状态恢复。这2个函数的具体实现如下所示。
+//函数功能：用自定义参数设置打印机
+//输入参数：al＿Lengn-打印纸长度，al＿Width-打印纸宽度
+//　　　　　ai＿PaperSource-进纸方式，ai＿PrintDirection-
+//打印方向输出参数：ablb＿setvalue-打印机的原参数
+//返回值：1-成功，0-不成功
+Gf＿PrnSetting(long al＿Lengh，long al＿Width，int ai＿PaperSource，int ai＿PrintDirection，blob ablb＿setvalue)
+constant string cls＿valuename＝″Default DevMode″
+constant uint clu＿pos＿width＝51
+constant uint clu＿pos＿length＝49
+constant uint clu＿pos＿papersize＝47
+constant uint clu＿pos＿papersource＝57
+constant uint clu＿pos＿printdirection＝45
+constant uint clu＿usersizepaper＝256
+blob lb＿value，newvalue
+string ls＿key，ls＿printer
+int li＿ret
+li ret＝RegistryGet(″HKEY＿LOCAL＿MACHINE\Config\0001\
+　　　　　　　　System\CurrentControlSet″＋＆″\Control\Print\
+　　　　　　　　Printers″，′default′，RegString!，ls＿printer)
+IF li＿ret＜＞1 THEN
+　　MESSAGEBOX(″系统提示″，″打印机未设置！″，Excla－ mation!)
+　　RETURN 0
+END IF
+ls＿key＝″HKEY＿LOCAL＿MACHINE\System\CurrentControlSet\
+　　　　　control\Print\Printers\″＋ls＿printer
+RegistryGet(is＿key，cls＿valuename，RegBinary！，lb＿value)
+ablb＿setvalue＝lb＿value
+lb＿newvalue＝blobmid(lb＿value，1，clu＿pos＿papersize－1)＋
+　　　　　　　blobmid(lb＿value，clu＿pos＿width＋2)
+blobedit(lb＿newvalue，clu＿pos＿papersize，clu＿usersizepaper)
+blobedit(lb＿newvalue，clu＿pos＿length，al＿Length)
+blobedit(lb＿newvalue，clu＿pos＿width，al＿Width)
+lb＿value＝lb＿newvalue
+lb＿newvalue＝blobmid(lb＿value，1，clu＿pos＿papersource－1)
+　　　　　　　＋blobmid(lb＿value，clu＿pos＿papersource＋1)＋
+　　　　　　　＆ blobmid(lb＿value，1，clu＿pos＿printdirec－
+　　　　　　　tion－1)＋blobmid(lb＿value，clu＿pos＿printdi－
+　　　　　　　rection＋1)
+blobedit(lb＿newvalue，clu＿pos＿papersource，ai＿papersource)
+blobedit(lb＿newvalue，clu＿pos＿printdirection，ai＿printdirection)
+ls＿key＝″HKEY＿LOCAL＿MACHINE\System\CurrentControlSet\
+　　　　　Control\Printers\″＋ls＿printer
+li＿ret＝RegistrySet(ls＿key，cls＿valuename，RegBinary!，lb＿newvalue)
+IF ii＿r＜＞1 THEN
+　　MESSAGEBOX(″系统提示″，″打印机设置失败！″，Exclamation！)
+　　RETURN 0
+END IF
+RETURN 1
+//函数功能：恢复原打印机设置
+//输入参数：ablb＿setvalue-打印机原设置串
+//输出参数：无
+//返回值：1-成功，0-不成功
+Gf＿PrnSettingBack(blob ablb＿setvalue)
+int li＿ret
+string ls＿printer，ls＿key
+constant string cls＿valuename＝″Default DevMode″
+li＿ret＝RegistryGet(″HKEY＿LOCAL＿MACHINE\Config\0001\
+　　　　 System\CurrentControlSet″＋＆″\Control\Print－
+　　　　 ers″，′default′，RegString!，ls＿printer)
+IF li＿ret＜＞1 THEN
+　　MESSAGEBOX(″系统提示″，″打印机未设置！″， Exclamation!)
+　　RETURN 0
+END IF
+ls＿key＝″HKEY＿LOCAL＿MACHINE\System\CurrentControlSet\
+　　　　　Control\Print\Printers\″＋ls＿printer
+li＿ret＝RegistrySet(ls＿key，cls＿valuename，RegBinary!，
+　　　　　lb＿newvalue)
+if li＿ret＜＞1 then return 0
+return 1 
+　　本文所提供的程序在1台内装WINDOWS 95操作系统的PentiumⅡ266计算机上用PowerBuilder 6．0和Epson LQ－1600K打印机调试通过，并在我们开发的MRP/ERP系统中得到应用，效果良好。对于其它开发工具及其它打印机型号，其实现方法和上面给出的相类似。
+铁治欣（杭州浙江大学计算机科学与工程系310027）
+陈奇（杭州浙江大学计算机科学与工程系310027）
+俞瑞钊（杭州浙江大学计算机科学与工程系310027）
+收稿日期：1999－07－21

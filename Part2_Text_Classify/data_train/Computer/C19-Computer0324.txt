@@ -1,0 +1,150 @@
+计算机应用
+Computer Applications
+1999年 第19卷 第7期  Vol.19 No.7 1999
+
+
+
+VFP5.0 与其它软件的相互调用
+赵　辉
+
+　　摘　要　本文介绍了如何利用Visual FoxPro5.0提供的OLE，自动化及ActiveX控件等技术来实现Visual FoxPro 与其它应用软件如DELPHI，EXCEL，WORD，VB等进行数据和程序间的相互联系。
+　　关键词　VFP，Delphi，Excel，Word，VB，OLE，ActiveX
+
+　　Visual FoxPro5.0(以下简称VFP)提供了OLE对象链接与嵌入，自动化，DLL动态链接库及ActiveX控件等技术，为用户直接调用其它应用程序提供了方便。VFP用户在开发自己的应用程序时，可充分利用其它基于Windows的应用软件（如VB，Delphi，Excel，Word，ActiveX控件等）所提供的强大功能。同时利用VFP提供的ODBC驱动程序和自动化技术，用户在其它应用软件中也可使用VFP中的数据，对象和命令。
+　　了解和掌握VFP与其它应用程序间的联系方法，能够充分地融和各软件的优秀功能，加快应用程序的开发速度和开发质量。　　
+1　VFP的OLE技术
+　　VFP提供的OLE技术，可将其它应用程序或数据看作一个对象，放置在表单上或表中的通用字段中。VFP可以嵌入方式或链接方式引用其它应用程序或数据。嵌入方式和链接方式的不同在于数据的存储地点。嵌入将数据直接存储到表或表单中，而链接则仅保留了对象的引用途径。
+　　VFP提供了两种形式建立OLE：绑定型和非绑定型。可以用“表单控件”工具栏中的OLE绑定型控件创建绑定型OLE对象，而用OLE容器控件创建非绑定型OLE对象。绑定型OLE对象一般与表中的通用字段相联系，如在表的通用字段中添加一个Word文档、一个声音、图像或视频文件等。非绑定型OLE对象则与表单相联系，如在表单的OLE容器中放入ActiveX控件，甚至一个基于Windows的.EXE程序。
+　　向表单添加ActiveX控件可有两种方式。一种方式是在设计表单时直接设置，具体步骤为：（1）从“表单控件”工具栏中选择“OLE”，并将其放置在表单上；（2）在“编辑”栏选择“Insert Object”,在对话框中选择“Insert Control”；（3）在“Control Type”列表中选择所要的ActiveX控件。与VFP一起发布的ActiveX控件包括 Windows 95控件和系统控件等。另一种方式是使用自动化管理对象，用程序代码来动态建立OLE对象。
+2　VFP调用.EXE文件
+　　VFP应用程序可以在自己的表单中通过OLE容器控件调用由其它软件开发的应用程序。比如把用Delphi，VB等开发的应用程序结合到VFP应用程序中。在VFP应用程序中可以通过代码方式来动态调用.EXE文件。
+　　 因VFP不支持带空格的路径，为了在VFP中能正常地调用其它的应用程序，最好事先将相关的应用程序文件移至VFP目录。下面的例子采用代码方式调用Delphi开发的应用程序Project1.exe 。
+Pro1.prg
+* VFP调用DELPHI应用程序project1.exe
+* 首先创建一个表单，在其上添加OLE控件，
+* 并链接应用程序Project1
+Set Talk Off
+Clear
+frmMyForm=CreateObject(′form′)　　　　　　&&创建一个表单
+frmMyForm.Closable=.F.
+frmMyForm.AddObject(′CmdCommand1′,′CmdMyCmdBtn′)
+　　　　　　　　　　　　　　　　　　　　　　&&添加命令按钮
+frmMyForm.AddObject(′OleObject′,′Myclass′)
+　　　　　　　　　　　　　　　　　　　　　　&&添加OLE对象frmMyForm.CmdCommand1.Visible=.T. 
+　　　　　　　　　　　　　　　　　　　　&&显示QUIT命令按钮frmMyForm.OleObject.Visible=.T. 
+　　　　　　　　　　　　　　　　　　　　　　&&显示OLE控件
+frmMyForm.OleObject.Height=150 
+　　　　　　　　　　　　　　　　　　　　&&设置OLE控件尺寸
+frmMyForm.OleObject.Width=200
+frmMyForm.Show　　　　　　　　　　　　　　　　　&&显示表单
+frmMyForm.OleObject.DoVerb(0)
+　　　　　　　　　　　　　　　　　　　　　　&&执行OLE对象
+Read Events　　　　　　　　　　　　　　　　　&&开始事件处理
+Define Class MyClass as OleControl　　　　　　　　　　　　　　　　　　
+　　　　　　　　　　　　　　　　　　　　&&定义OLE控件类型
+DocumentFile =′c:\vfp\project1.exe′
+　　　　　　　　　　　　　　　　　　　　&&指定OLE执行文件
+Enddefine
+Define Class cmdMyCmdBtn as CommandButton
+　　　　　　　　　　　　　　　　　　　　&&定义命令按钮类型
+Caption=′退 出′ 
+　　　　　　　　　　　　　　　　　　　　&&命令按钮上的标题
+Cancel=.T. 　　　　　　　　　　　　　　　&&默认QUIT命令按钮
+Left=125 
+　　　　　　　　　　　　　　　　　　　　　&&命令按钮的尺寸
+Top=210
+Height=25
+Procedure Click 
+　　　　　　　　　　　　　　　　　&&停止事件处理，清除表单
+Clear Events
+Enddefine
+Return
+
+　　利用此段程序代码可以在VFP程序中调用各种.EXE应用程序，甚至非Windows的应用程序。
+　　
+3　VFP调用DLL中的例程
+　　DLL（Dynamic-Link Library）动态链接库是一个以扩展名为.DLL的可执行模块，其中包含了可以被其它应用程序或其它DLL共享的例程和资源。DLL的主要特点是它的代码是在运行期间动态地链接到调用它的程序中。当DLL中的例程执行完后，可以随时将DLL从内存中清除。DLL技术可以实现各应用程序间的资源共享，并节省内存空间。该技术在Windows及其它软件中被广泛应用。VFP可引用Delphi，VB，C++等编写的DLL例程或Windows API及专用于VFP的FLL例程。在调用一个DLL例程之前，必须了解该例程的调用协议，包括例程的名称，参数的数目和类型以及返回值的类型。在用其它软件编写DLL例程时，应尽量采用标准调用约定。比如在用Delphi编写DLL时，DLL中供其它应用程序调用的例程（函数或过程）要用 Exports申明引出，要引出的例程最好用Stdcall调用约定，以便其它语言编写的应用程序也能调用该DLL中的例程。
+　　在 VFP程序中，引用外部的DLL及其中的例程前应首先使用DECLARE--DLL命令加载所要引用的DLL及其中的例程。DECLARE--DLL命令的基本格式为：
+Declare［cFunctionType］FunctionName IN LibraryName
+　　　［As aliasName］［cParamType1［@］ParamName1, 
+　　　　cParamType2［@］ParamName2,...］
+LibraryName：要引用的动态链接库名。
+CFunctionType：要引用的DLL中的例程的类型。
+　　　　　　　　如果例程有返回值，则包括该项，
+　　　　　　　　如果例程没有返回值，则不用该项。
+FunctionName：调用的例程名。
+cParamType1［@］ParamName1：例程中形参的类型及名称。
+cParamType2［@］ParamName2：例程中形参的类型及名称。
+　　在使用DLL例程时应注意：
+　　* 为了能正常地调用DLL，最好事先将要引用的DLL复制到VFP子目录以保证VFP能正确地搜索DLL。
+　　* DLL中的例程名需区分大小写。
+　　在VFP退出之前，所加载的DLL一直保持有效，如果不再需要调用DLL中的例程，可使用CLEAR ALL DLLS命令，卸载由DECLARE--DLL命令引入的外部32bitDLL以节省内存资源。
+　　下面是VFP程序调用DLL例程的实例。
+3.1　VFP调用Delphi编写的DLL例程
+　　要调用的DLL中的每一个例程都应先用DECLARE--DLL命令加载。下例在VFP中调用Delphi编写的MyDLL.DLL中的例程Add(x,y)。
+　　Set Talk Off
+　　Clear
+　　*用declare命令加载DLL及其中的例程Add
+　　Declare integer Add in MyDLL.DLL integer @x,integer @y
+　　a=15
+　　b=10
+　　Wait Window"正在调用例程Add" Timeout 2
+　　c=Add(a,b)
+　　?c
+　　Wait Window"释放加载的DLL" Timeout 2
+　　Clear All Dlls
+　　Return
+3.2　VFP调用Windows API
+　　Win32API提供了许多基于窗口的操作函数，在应用程序中灵活应用Win32API可提高应用程序的开发质量。可用上述同样方法调用Windows API。例如要调用Windows USER中的GetActiveWindow()函数，该函数得到当前VFP 主窗口的句柄。GetActiveWindow()函数无参数，但返回一个整数。
+　　Declare integer GetActiveWindow() in win32api
+　　x= GetActiveWindow()
+　　Messagebox(str(x))
+3.3　VFP调用FLL中的函数
+　　VFP中的FLL类似DLL，但只能在VFP中使用，FLL包含了许多专为VFP内部调用的函数，在调用这些函数时，可用SET LIBRARY TO <.FLL文件名>命令加载函数所在的FLL。FLL一经加载即可调用其中的每个函数，但不必说明各函数所需的参数和数据类型，这与调用DLL中的函数不同。
+　　例如，从VFP的FOXTOOLS.FLL中调用Foxtoolver()和Msgbox()函数。其中Foxtoolver()函数返回正在引用的FLL文件的版本号，而Msgbox()函数则弹出一个出错提示框。
+　　x=Foxtoolver()
+　　If x<>5.0
+　　　Msgbox("引用的FLL版本有误")
+　　Endif
+　　
+4　其他应用程序控制VFP
+4.1　通过VFP的ODBC 驱动程序引用数据库
+　　其它应用程序可以通过VFP提供的ODBC驱动程序引用VFP数据库中的数据，或借助VFP具有的优良的数据库管理性能，进行后台数据管理。例如在用Excel进行复杂数据分析时，如果所操作的数据使用频繁，则将其存储在数据库中比存储在工作表中更安全。这时，可使用Visual Foxpro的ODBC驱动程序将工作表和数据库连接起来，然后提取相关的数据，并将其显示在工作表中，以备进一步处理。下面的例子为Word通过VFP的ODBC 驱动程序引用数据库表中数据以形成邮件标签。
+a. 在Word主菜单中选择“工具”栏下的“邮件合并”，进入“邮件合并帮助器”；
+b. 在“邮件合并帮助器”下选“1.创建” ，在弹出菜单中选“邮件标签” ，在对话框中选“活动窗口” ；
+c. 在“邮件合并帮助器”下，选“2.获取数据” ，在弹出菜单中选“打开数据源” ；
+d. 在磁盘中选择要引用的VFP数据库表所在的子目录，并选择文件类型为：MS Foxpro文件，再选择相应的数据库表名，如Table1.dbf ；
+e. 在随后显示的“确认数据源”对话框中，选择“Foxpro Files通过ODBC（*.dbf）” 按“确定”按钮；
+f. 在随后显示的“创建标签”对话框中，选“插入合并域” ，则显示出指定VFP数据库表中的字段名，从中选择所需的字段；
+g. 当选择好所需的字段后，屏幕又返回到“邮件合并帮助器” ，这时选择“3.合并” ，在“合并”对话框中按“合并”按钮。即可通过VFP ODBC 从数据库表中取得所需数据，传送到Word文档形成相应的邮件标签。
+4.2　Word，Excel直接控制VFP
+　　VFP可以作为一个客户，也可作为一个服务器，其他支持自动化的应用程序可通过VFP的Application对象控制VFP。当VFP启动时，通过DDE或通过自动化自动地创建一个Application对象。比如在Excel 或在Word中访问VFP中的Table。如下例中代码为Word模块中用Visual Basic Application 宏代码创建VFPApplication对象，打开VFP中的数据库表Table1,将其中的记录内容粘贴到Word文档的实例。
+Sub Micro1()
+　　Dim oFox as Object
+　　Set oFox=CreateObject("VisualFoxpro.Application")
+　　oFox.DoCmd "use c:\vfp\Table1.dbf"
+　　oFox.DoCmd "Select name,address From Table1 Into temp"
+　　oFox.DataToClip "temp",,3
+　　Word.ActiveDocument.Content.Paste
+End Sub
+　　若要在Excel中读取VFP数据库表中数据，可对最后一条代码作修改：ActiveSheet.Paste 。
+4.3　创建OLE 自动化服务程序
+　　可以用VFP创建OLE自动化服务程序，供其他应用程序调用。自动化通常用类创建应用程序，以便外部应用程序创建和管理该应用程序的对象。要实现OLE自动化服务程序，应在项目中包含OLEPUBLIC的类，并编译成一个可执行文件（.EXE文件）或一个动态链接库（.DLL文件）。下例中的代码创建一个自定义的OLEPUBLIC类。
+　　Define Class Person As Custom OLEPUBLIC
+　　　FirstName=Space(20)
+　　　LastName=Space(20)
+　　　Procedure GetName
+　　　Return This.FirstName+" "+This.LastName
+　　　Endproc
+Enddefine
+　　可以在Excel,Word或VB中用如下代码调用该自动化服务程序：
+　　Set oTest=CreateObject("proj1.person")
+　　cName$ =oTest.GetName()
+　　在标准的自动化方案中，客户和服务器是在同一个计算机上运行，在VFP5.0下，也支持远程自动化。通过网络客户程序还可以调用远程服务程序。
+
+作者单位：赵　辉（浙江财经学院信息系　浙江．杭州 310012）
+参考文献
+［1］　Delphi 3编程指南. 宇航出版社, 1998
+［2］　Visual FoxPro5.0完全学习手册. 科学出版社, 1998
+［3］　Visual FoxPro5.0高级程序设计指南. 海洋出版社, 1998 
+　　收稿日期:1999-01-14

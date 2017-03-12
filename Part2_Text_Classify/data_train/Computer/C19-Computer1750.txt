@@ -1,0 +1,134 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第19卷 第3期  Vol.19 No.3 1999
+
+
+
+基于随机Petri网模型的网络协议性能测试
+徐明伟　林闯　吴建平
+摘　要　分析了协议性能测试需要解决的主要问题，并以随机Petri网为形式化工具，描述了网络协议的服务质量.提出从随机Petri网模型到TTCN(tree and tabular combined notation)测试集的转换规则，并根据随机Petri网模型生成了协议性能测试例.
+关键词　协议性能测试，随机Petri网(SPN)，服务质量(QoS)，树表结合表示法(TTCN).
+中图法分类号　TP302
+Network Protocol Performance Testing Based on Stochastic Petri Nets
+XU Ming-wei　WU Jian-ping1
+　Department of Computer Science and Technology Tsinghua University Beijing 100084
+LIN Chuang
+　Information Science Institute State Information Center Beijing 100045
+Abstract　 The main points of protocol performance testing is analyzed in this paper. The QoS(quality of service) of network protocol is described with a formal tool, stochastic Petri nets. Furthermore, the rules from the SPN(stochastic Petri nets) models to test suite of TTCN(tree and tabular combined notation) are proposed, and a performance test case is generated from the SPN models.
+Key words　Protocol performance testing, stochastic Petri nets (SPN), quality of service (QoS), tree and tabular combined notation (TTCN).
+　　目前,计算机网络中非功能方面的因素，特别是服务质量(quality of service,简称QoS)已经变得越来越重要，人们采用各种方法来保证提供给用户的服务质量.这些方法包括端用户与网络服务提供者之间的协商，传输服务的QoS保证以及QoS的监控和管理等.但是,如何能够准确地知道网络部件提供给用户的服务是否达到要求，这需要通过协议性能测试来解决.
+　　协议性能测试研究需要解决4个问题：(1) 测什么，即测试被测实现的哪些外部特征；(2) 如何测，即如何描述测试序列；(3) 测试环境的配置，这与采用的测试方法有关；(4) 测试输入的负载模型及其参数.以上4点概括了协议性能测试活动的主要方面.对测试活动的准确描述是确保测试结果可重复、可比较的先决条件［1］，因此,形式化地描述协议性能测试的各个方面是非常必要的.由于随机Petri网（stochastic Petri nets,简称SPN）［2,3］在协议描述和性能分析中取得的成功，SPN作为一种形式化工具是描述协议性能测试的一个很好的选择.
+　　目前，关于协议测试已经有一个国际标准ISO 9646［4］，它是关于协议一致性测试的标准.ISO 9646建议把树表结合表示法(tree and tabular combined notation,简称TTCN)作为协议一致性测试集的抽象描述语言.成熟的协议一致性测试研究给协议性能测试以很大的借鉴，但是一致性测试是功能测试，它与性能测试有着本质的区别.TTCN本身的局限，例如缺少并发性和实时性和对负载描述能力弱等，制约了它对协议性能测试的描述能力.针对这些局限，很多人对TTCN做了扩展［1,5,6］，用以研究协议性能测试.TTCN仅仅是一种测试集描述语言，它不能描述协议和协议的性能规定.我们需要一种形式化工具，既能描述协议行为，特别是并发性和实时性，又能描述协议的性能规定，而且用这种形式化工具建立的模型能够很方便地转换为TTCN测试集.SPN是一个很好的选择，它除了满足上述要求外，还有很多自身的特点，比如能够方便地描述复杂的网络负载模型，而且SPN在性能分析中取得的成功也非常有助于协议性能测试的研究.本文在充分发挥SPN和TTCN各自长处的基础上，把它们有机地结合起来.
+　　本文的贡献在于分析了协议性能测试需要解决的主要问题，用SPN形式化描述了QoS参数，并提出了从SPN模型到TTCN测试集的转换规则.本文第1节以SPN为形式化工具分析、描述了网络协议的服务质量;第2节提出了从SPN模型到TTCN测试集的转换规则，并给出一个协议性能测试例；最后是总结.
+1 基于随机Petri网的协议性能规定
+　　形式化描述网络协议和它所提供的服务是非常必要的，形式化模型可以保证它们定义的无二义性、操作的正确性和提供所要求的服务质量.协议服务规定的主要性能参数都是面向用户定义的，主要包括系统的延迟、吞吐量和服务失效的概率等.本文以面向连接的服务为例研究协议性能测试.
+　　面向连接服务的定义仅考虑使用这个服务的对等层实体之间的单个连接.一个连接包括3个阶段:建立、数据传输和拆除.每个服务以“服务原语”的方式来定义，它抽象定义了信息在服务用户和服务提供者之间传送的方式.传送服务如图1所示.一个服务原语可以认为是相邻层次之间接口过程元素的抽象，它独立于实现中所使用的通信机制.服务原语的发生被认为是在不同时刻的原子操作，是不可分割的.
+
+图1　服务的传送框图
+　　在网络协议服务的SPN模型中，服务原语同变迁相对应，SPN的实施所产生的形式语言(所有的变迁实施序列)描述了原语发生序列的全部组合.为了方便讨论，我们以传送层服务为例，先描述它的SPN模型，再基于SPN模型分析它的性能规定.
+　　传送服务规定按功能结构可分成5个工作模式:传送连接建立服务、正常数据传送服务、加急数据传送服务、用户拆除连接和服务提供者拆除连接.每一个工作模式可由一个SPN模型描述，如图2～图6所示.
+
+图2　连接建立服务　　　　　　　图3　正常数据传送服务
+
+图4　加急数据传送服务　　　　图5　用户拆除连接　　　图6　服务提供者拆除连接
+这5个模式的模型可由相同名字的位置相叠连接形成总的模型.位置和标志类型的含义分别在表1和表2中描述.在模型中，变迁的名字是服务原语的压缩，变迁的含义在表3中描述.
+表1 位置含义
+
+位置含义
+A状态位置，它控制用户A的原语
+B状态位置，它控制用户B的原语
+AB队列位置，模拟从用户A到B的信息流队列
+BA队列位置，模拟从用户B到A的信息流队列
+
+表2 标志类型含义
+
+标志类型含义
+i空闲状态，等待连接建立
+c连接建立阶段
+d数据传送阶段
+s连接要求
+a连接响应
+n正常数据
+e加急数据
+r拆除连接要求
+
+表3 变迁所相对的服务原语含义
+
+变迁原语含义
+CRA用户A发送连接请求
+CIB用户B接收连接指示
+CRB用户B发送连接响应
+CCA用户A接收连接确认
+NDRA(B)用户A(B)发送正常数据
+NDIA(B)用户A(B)接收正常数据
+LAB(BA)队列AB(BA)丢失正常数据
+EDRA(B)用户A(B)发送加急数据
+EDIA(B)用户A(B)接收加急数据
+DRA(B)用户A(B)发送拆除连接请求
+DIA(B)用户A(B)接收拆除连接指示
+EQAB清除队列AB
+
+　　在很多协议中都定义了一组服务质量(QoS)参数，这些参数是用户在连接请求原语中发送给服务提供者的.QoS的某些值可由服务提供者修改，在连接建立时返回给提交要求的用户.QoS的定义在各网络层次都是非常类似的.下面,从用户的观点描述其中几个主要性能参数.
+　　(1) 连接建立延时(CED)连接建立延时是在连接请求和连接确认发生之间的延时.在图2中，CED可以容易地定义为,在变迁CRA和CCA实施之间经过的时间.由于连接建立请求的提出不需要时间，即变迁CRA是瞬时变迁.CED包含3个部分:
+　　――从呼叫用户到被呼用户之间的连接建立传输延时，由变迁CIB的实施时间TCIB表示;
+　　――被呼用户的响应时间，由变迁CRB的实施时间TCRB表示;
+　　――从被呼用户到呼叫用户之间的连接建立传输延时，由变迁CCA的实施时间TCCA表示.
+　　因此，连接建立延时可以表达为 
+CED=TCIB+TCRB+TCCA.(1)
+　　(2) 传送延时
+　　传送延时是在一个数据请求和相应数据指示之间的延时.一个数据单元成功地从呼叫用户传送到被呼用户的延时定义，见图3，表现为变迁NDRA第n次(n>0)实施和NDIB第n次实施之间经过的时间.一个类似的定义表现为反方向的传送延时.在图3的模型中，队列位置AB和BA可以包含多个标志n，它们是先进先出(FIFO)队列，因此,要注意变迁NDIB和NDIA的实施语义.
+　　(3) 连接拆除延时(CRD)
+　　连接拆除延时是拆除连接请求和相应拆除连接指示之间的延时.对于被呼用户的CRD定义，在图5中表现为在变迁DRA和DIB1实施之间所经历的时间.类似的、呼叫用户的CRD定义为，在变迁DRB和DIA1实施之间所经历的时间.注意在图5的模型中，变迁DRA和DRB是瞬时变迁，而变迁DIB1和DIA1是时间变迁.
+　　(4) 吞吐量
+　　吞吐量是单位时间内传送用户数据字节数量.在图3模型中的变迁NDRA与变迁DRA，DIA1，DIA2和DIA3可能会冲突，但这些变迁的实施都比NDRA有较高的优先级，当它们实施时，NDRA不可实施.令Size表示传送数据单元的平均长度，TNDRA和TNDIB分别表示变迁NDRA和NDIB的实施时间.假定吞吐量不为发送用户所限制(总有数据等待发送)，从呼叫用户到被呼用户的正常数据流的平均吞吐量(TNF)可以表达为
+TNF=min(TNFA，TNFB),　(2)
+其中
+TNFA=Size/TNDRA,　TNFB=Size/TNDIB.
+　　(5) 剩余错误比率
+　　剩余错误比率是在给定时间间隔内，传送不正确、丢失或重复的数据单元数量与试图传送的数据单元总数量之比.剩余错误比率可由图3模型中的丢失和重复变迁的利用率来表现，在模型中我们仅描述了丢失变迁LAB和LBA，同样可以加上重复变迁.
+　　(6) 失败概率
+连接建立失败概率、传送失效概率、连接弹性和拆除连接失败概率等参数与传送服务或传送服务提供者失效有关，这些参数涉及到图5和图6模型中的所有拆除变迁的利用率，比较复杂，因篇幅有限，不做详细讨论.
+2 SPN模型到TTCN测试集的转换规则
+　　上节以传送协议为例，用SPN形式化描述了协议的性能规定，为准确地测试协议性能提供了保证.国际标准ISO 9646 建议把TTCN作为协议测试集描述语言，许多公司也提供了商品化的TTCN工具.如何从SPN描述的协议模型生成TTCN测试集呢？根据SPN和TTCN的内在关系，我们提出了从SPN模型到TTCN测试集的转换规则.
+　　(1) 变迁（Transition）
+　　〈a〉SPN模型中的一个变迁在测试例中用一个测试语句来表示，丢失变迁例外，它不能对应一个测试语句，这是因为丢失变迁不能直接被观察到.
+　　〈b〉SPN模型确定了，测试的控制观察点也就确定了，每个变迁都与一个控制观察点相对应.
+　　〈c〉在协议性能测试中，测试系统主要通过发送和接收PDU或ASP来测试性能.因此,发送和接收语句是测试例中最主要也是使用最频繁的语句.由SPN模型中变迁转换成的测试语句是属于发送还是接收语句取决于SPN模型中变迁弧的偏序关系.一个变迁对应于发送语句，那么,下一个变迁则对应于接收语句，反之亦然.
+　　〈d〉测试例中的测试序列完全符合SPN模型中变迁的点燃顺序.由〈c〉和〈d〉可知，在顺序执行的测试序列中，发送和接收语句是交叉的，即“!?!?”或“?!?!”.
+　　〈e〉由于在性能测试中，变迁的逗留时间是测试的一个重要部分，因此,由SPN模型中的变迁转换的测试语句的前一条和后一条通常是一个读时间的语句(readtimer).有些情况下读时间操作可以省略，如要测试多个连续变迁的合计时间，则只需在多个连续变迁实施之前和之后执行readtimer即可，其他的可以省略；或不关心某个变迁的逗留时间.
+　　(2) 记号（Token）
+SPN模型中的记号对应于测试例中的约束部分，即在PCO观察到的PDU或ASP.通过对它的测试，可以检查被测实现的功能是否正确.
+　　(3) 标记（Marking）
+协议测试时，需要使测试系统和被测系统进入到某个状态下才开始执行测试的主体部分.SPN模型中的标记则反映了测试系统和被测系统的当前状态.
+　　由于协议性能测试是一种黑盒测试，即它只关心被测实现的输入和输出，而不关心被测实现的内部处理过程，所以完全能够根据上述规则由图2～6生成测试各个QoS参数的动态行为描述.表4给出了测试连接建立延时的测试例，其中T是测试器方的PCO，I是被测系统方的PCO.!表示发送，?表示接收.
+表4 性能测试例（测试连接建立延时CED）的动态行为描述
+
+Test Case Dynamic Behavior
+Test Case Name: CED
+Purpose: Test the connect establishment delay
+NrLabel　Behavior DescriptionConstrains RefVerdicComments
+　　readtimer (T,t1)T_CReq　　
+T! ConReqT_CInd
+I? ConIndT_CResp
+I! ConRespT_CConf
+T? ConConf　
+readtimer (T,t2)
+(t:=t2-t1)pass
+otherwisefail
+otherwisefail
+
+　　3 总 结
+　　协议性能测试是计算机网络，特别是协议工程领域中的一个重要研究课题.本文分析了协议性能测试需要解决的主要问题，并用随机Petri网作为形式化工具，以传送协议为例，分析描述了网络协议的服务质量参数，以此产生TTCN测试例.根据SPN和TTCN的内在关系，提出了从SPN模型到TTCN测试集的转换规则.最后给出了一个协议性能测试例. 
+　　本文研究得到国家自然科学基金资助.作者徐明伟,1971年生,博士,主要研究领域为计算机网络协议测试，性能评价和高速网络体系结构.林闯,1948年生,博士,研究员，主要研究领域为系统性能评价，随机Petri网和ATM网络.吴建平,1953年生,教授，博士生导师,主要研究领域为高速网络体系结构，互连技术，协议测试技术，Internet网络管理和安全.
+　　本文通讯联系人:徐明伟，北京100084,清华大学计算机科学与技术系
+作者单位：徐明伟 吴建平：清华大学计算机科学与技术系　北京　100084
+　　　　　林闯：国家信息中心经济与技术研究所　北京　100045
+　　　　　E-mail: xmw@csnet1.cs.tsinghua.edu.cn
+参考文献
+［1］Schieferdecker I, Stepien B, Rennoch A. PefTTCN, a TTCN language extension for performance testing. In: Kim M, Kang S, Hong K eds. Proceedings of IFIP TC6 the 10th International Workshop on Testing of Communicating Systems. IFIP, September 1997. 21～36
+［2］Lin Chuang, Li Bo, Wu Jian-ping. Modeling ATM traffic using stochastic Petri nets. In: Proceedings of the 6th International Conference on Computer Communications and Networks. Los Alamitors: IEEE Computer Society, 1997. 538～541
+［3］Billington Jonathan. On specifying performance aspects of protocol services. In: Proceedings of the International Workshop on Timed Petri Nets. Torino, Italy, 1985. 288～295
+［4］ISO 9646. Conformance Testing Methodology and Framework Part 3――The Tree and Tabular Combined Notation. ISO. 1991
+［5］Walter Thomas, Grabowski Jens. Real-time TTCN for testing real-time and multimedia systems. In: Kim M, Kang S, Hong K eds. Proceedings of IFIP TC6 the 10th International Workshop on Testing of Communicating Systems. IFIP, 1997. 21～36
+［6］Xu Ming-wei, Wu Jian-ping. An extension to concurrent TTCN. In: Roch Guerin ed. Proceedings of IEEE INFOCOM'98. San Francisco, USA, 1998. 447～454
+（1998-05-04收稿）

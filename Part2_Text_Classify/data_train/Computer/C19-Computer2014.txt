@@ -1,0 +1,189 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+1999年 第18卷 第4期 Vol.18 No.4 1999
+
+
+
+开发Windows NT的后台服务
+张存东　罗　敏 　乐　祥
+　　摘　要：利用一组WIN32 API函数将自主开发的服务器程序扩展为 NT的 一项后台服务，让NT把其当作系统服务自动加载，从而扩充NT服务器的后台功能，并结合一 个实例说明开发中应做的工作。
+　　关键词：Windows NT　后台服务　服务控制管理器
+　　在WINDOWS NT服务器中，NT的一些后台系统服务随着NT的启动而自动加载， 不需用户人工 干预，这种方式不仅简化了服务器启动过程，同时也使一些重要服务的启动更加安全可靠。 而且，在服务器启动以后，用户也可以利用控制面板中服务控制面板应用程序灵活地设置这 些后台服务的启动属性，方便了用户对NT后台服务的管理。笔者在开发基于NT服务器的应用 程 序时，发现利用一组WIN32 API 函数完全可以将自己开发的服务器程序扩展为NT的一项后台 服务，让NT把其当作系统服务自动加载，从而扩充NT服务器的后台服务功能。下面结合一个 实例，概述开发NT后台服务应用程序的方法和步骤。
+1　自定义后台服务注册
+　　在NT操作系统中，所有的后台服务全都由服务控制管理器进行统一管理，这些后台服务的状 态数据都保存在服务控制管理器数据库中。所以要想创建一个新的后台服务，在应用程序的 主模块里应首先调用函数OpenSCManager打开该数据库，再调用函数CreateService在此数据 库中创建1个新的服务线程对象，并将该线程对象启动属性设置为随系统启动自动加载，这 样NT在重新启动时该线程就会由NT自动启动。完成这一步，仅仅实现了后台服务线程对象的 注册，还没有建立与服务控制管理器的联结。
+//在服务控制管理器数据库中注册后台服务线程
+void CmdRegisterService()
+{
+　　SCHANDLE　　schService;
+　　SCHANDLE　　schSCManager;
+　　TCHAR szPath［512］;
+　　//获得后台服务进程执行路径
+　　if(GetModuleFileName(NULL,szPath,512)==0)
+　　{tprintf(TEXT(“Unable to install %s - %s＼n")，
+　　TEXT(“Service Example"), GetLastErrorText(szErr, 256));
+　　　return;
+　　}
+　　//打开服务控制管理器数据库
+　　schSCManager=OpenSCManager(
+　　　　　　　　　NULL,　　　//本地机器
+　　　　　　　　　NULL,　　　//默认数据库
+　　　　　　　　　SCMANAGERALLACCESS //访问权限
+　　　　　　　　　);
+　　//在此数据库中创建后台服务线程对象
+　　if(schSCManager)
+　　{　schService=CreateService(
+　　　　schSCManager,　//服务控制管理器数据库
+　　　　TEXT(“ServiceExample"),　//后台服务名称
+　　　　TEXT(“Service Example"),//在服务控制面板中显示的//服务名称
+　　　　SERVICEALLACCESS,　//访问权限
+　　　　SERVICEWIN32OWNPROCESS,　//服务类型
+　　　　SERVICEAUTOSTART,　//启动类型，随系统自动//加载
+　　　　SERVICEERRORNORMAL,
+　　　　szPath,
+　　　　NULL,
+　　　　NULL,
+TEXT(“"),
+NULL,　　//本地系统帐号
+NULL);// 没有口令
+　　//在这里可以创建多个后台服务线程对象，完成不同的
+//后台任务
+　　if(schService)
+　　　{tprintf(TEXT(“%s installed.＼n"),TEXT(“Service Example")); 
+　　　　CloseServiceHandle(schService);
+　　　}
+　　　else
+　　　{tprintf(TEXT(“CreateService failed-%s＼n"),
+　　　GetLastErrorText(szErr, 256))；
+　　　}
+　　　CloseServiceHandle(schSCManager)；
+　　}
+　　else
+　　　tprintf(TEXT(“OpenSCManager failed - %s＼n"),
+GetLastErrorText(szErr,256))；
+}
+2　定义后台服务线程入口点ServiceMain
+　　在此之前应该首先定义服务线程入口表(SERVICETABLEENTRY)，它记录 了服务器应用程序 要执行的所有后台服务的入口点(在1个服务器应用程序中可同时加载多个后台服务线程)。 每一个后台服务线程都有自己的ServiceMain执行入口点。当服务控制管理器接收到启动后 台服务的命令后，它会首先将启动命令发送到服务控制分配器中，然后，服务控制分配器就 会按照服务线程入口表定义的对应关系启动1个新线程去执行指定的后台服务。在Servic eMain中应当调用RegisterServiceCtrlHandler先注册1个服务控制函数Handler，它负责接 收和处理服务控制管理器发出的命令，并通过调用SetServiceStatus重新设置后台服务状态 ，将被启动的后台服务状态信息回送到服务控制管理器中。这些操作主要是在后台服务线程 启动之前完成一些必要的初始化工作。ServiceMain及Handler是占位符，在程序中可以用不 同的名称定义自己的后台服务线程入口函数和服务控制处理函数。
+//定义后台服务线程入口表
+SERVICETABLEENTRY MyServiceTable［］=
+{
+　　　{
+　　　TEXT(“ServiceExample"),//后台服务线程的名称
+　　　(LPSERVICEMAINFUNCTION)MyServiceMain//后台服//务线程入口点
+　　　},
+　　　{NULL, NULL }　　　//标志表的结束
+};
+//服务线程入口函数
+void WINAPI MyServiceMain(DWORD dwArgc, LPTSTR *lpszArgv)
+{
+　　//注册服务控制处理函数
+sshStatusHandle=RegisterServiceCtrlHandler(TEXT(“ServiceExample"), Servi ceControlHandler);
+　　if(!sshStatusHandle)
+goto cleanup;
+　　//服务类型
+　　ssStatus.dwServiceType=SERVICEWIN32OWNPROCESS; 
+　　//指定的出错代码
+　　ssStatus.dwServiceSpecificExitCode=0;
+　　//启动自己定义的后台服务
+　　ServiceStart();
+cleanup:
+　　if(sshStatusHandle)
+(VOID)ReportStatusToSCMgr(
+SERVICESTOPPED,dwErr,0);
+　　return;
+}
+
+//服务控制处理函数:负责接收和处理服务控制管理器发出的
+//命令
+VOID WINAPI ServiceControlHandler(DWORD dwCtrlCode)
+{
+　　switch(dwCtrlCode)
+　　{
+　　　//停止服务之前，应首先向服务控制管理器回送状态信息
+　　　case SERVICECONTROLSTOP:
+　　　　ReportStatusToSCMgr(SERVICESTOPPENDING,NOE RROR, 0);
+　　　　ServiceStop();
+　　　　return;
+　　　//更新服务状态
+　　　case SERVICECONTROLINTERROGATE:
+　　　　break;
+　　　default:
+　　　　break;
+　　}
+　　//向服务控制面板管理器回送状态信息
+　　ReportStatusToSCMgr(ssStatus.dwCurrentState, NOERROR, 0); 
+}
+
+//设置当前服务状态并将状态信息回送到服务控制管理器
+BOOL ReportStatusToSCMgr(DWORD dwCurrentState,DWORD
+dwWin32ExitCode,WORD dwWaitHint)
+{
+　　static DWORD dwCheckPoint=1;
+　　BOOL fResult=TRUE;
+　　if(dwCurrentState==SERVICESTARTPENDING)
+　　　ssStatus.dwControlsAccepted=0;
+　　else
+　　　ssStatus.dwControlsAccepted=SERVICEACCEPTSTOP;
+　　//设置状态信息
+　　ssStatus.dwCurrentState=dwCurrentState;
+　　ssStatus.dwWin32ExitCode=dwWin32ExitCode;
+　　ssStatus.dwWaitHint=dwWaitHint;
+　　if((dwCurrentState==SERVICERUNNING )‖
+　　　(dwCurrentState==SERVICESTOPPED))
+　　　ssStatus.dwCheckPoint=0;
+　　else
+　　　ssStatus.dwCheckPoint=dwCheckPoint++;
+　　//将状态信息回送到服务控制管理器
+　　if(!(fResult=SetServiceStatus(sshStatusHandle,&ssStatus))){
+　　　AddToMessageLog(TEXT(“SetServiceStatus"));//向NT事//件管理器报告出错消息
+　　　}
+　　　return fResult;
+}
+3　建立应用程序主线程与服务控制管理器的连接
+　　在创建了服务器应用程序的所有服务线程对象后，当NT重新启动加载该服务器进程或者从服 务控制面板中手工启动该服务进程时, 服务器应用程序主线程就会调用函数StartServiceCt rlDispatcher建立服务进程主线程与服务控制管理器的连接，使得主线程扮演起服务控制分 配器的角色，只有当所有的服务线程终止后，该主线程才会完成任务并返回。利用上述过程 建立起来的连接，服务控制管理器会将服务控制面板中用户对服务进程的控制命令(Start、 Terminate等)发送到主线程中,交给服务控制分配器处理。
+//服务进程入口
+voidCRTAPI1 main(int argc, char **argv)
+{
+　　if((argc>1)&&((*argv［1］==‘-')‖(*argv［1］==‘/')) )
+　　{
+　　　if(stricmp(“register", argv［1］+1)==0)
+　　　　CmdRegisterService(); //注册后台服务线程对象
+　　　else
+　　　　goto dispatch;
+　　　exit(0);
+　　}
+　　dispatch:
+　　　//启动服务控制分配器，建立主线程与服务控制面板的
+//连接
+　　　if(StartServiceCtrlDispatcher(MyServiceTable))
+　　　　AddToMessageLog(TEXT (“StartServiceCtrlDispatcher success."));
+}
+4　定义自己的后台服务实现主模块
+　　该模块放在服务线程入口点ServiceMain中，在服务线程初始化完毕以后，就可以启动自己 定义的后台服务。　　
+
+void ServiceStart()
+{
+　　//向服务控制管理器报告服务正在启动
+　　if(!ReportStatusToSCMgr(
+SERVICESTARTPENDING,　//service state
+NOERROR,
+dwWaitHint))
+return;
+　　//下面是线程的初始化代码(注意:初始化代码执行时间
+//不应超过设定的nWaitHi nt，否则服务控制管理器会认
+//为服务线程已经没有响应
+　　//向服务控制管理器报告服务已经启动
+　　if(!ReportStatusToSCMgr(
+SERVICERUNNING,　　//service state
+NOERROR,　　　//exit code
+0))　　　　//wait hint
+　　　return;
+//开始执行服务
+}
+//停止后台服务线程
+void ServiceStop()
+{
+　　//添加结束服务线程代码
+}
+　　在该示例中，后台服务线程在服务器上创建1个网络套接字，并在6002端口监听TCP/IP客 户 的连接请求。如果与新的客户建立连接后，首先向其发送欢迎消息，接下来，只要每收到客 户发送过来的消息，就会向其回送1个确认信息，直到连接断开以后重新进入监听状态。感 兴趣的读者可以将本程序在VC5.0中编译成可执行文件(在AppWizard中选择Win32 Console A pplication,工程名为ntservice)，然后在WINDOWS NT SERVER4.0的控制台中输入“ntservi ce -register”，再重新启动服务器，打开控制面板中的服务管理器，就可以看到Service Example已启动。如果要测试服务例程的响应功能，可以自己编写1个TCP/IP客户程序，并连 接 到该服务器的端口6002。本程序在VC5.0中编译连接，在中文WINDOWS NT SERVER4.0中调试 通过。
+作者单位：北京市海淀区学院路丁11号55信箱(100083)
+收稿日期：1998-11-23

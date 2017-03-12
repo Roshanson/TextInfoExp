@@ -1,0 +1,67 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年 第23卷 第5期 Vol.23 No.5 1997
+
+
+
+一类DEDS最优调度问题的解法1）
+陈文德
+摘　要　本文提出了带存储器生产线的一类新的最优调度问题，给出了最优调度目标函数的具体形式，指出它不是凸函数；在一个变量时给出了最优调度的公式解，在多个变量时得到了一个迭代寻优的算法。
+关键词　离散事件动态系统(DEDS)，极大代数，最优调度，存储器
+SOLUTION TO A KIND OF OPTIMAL SCHEDULING PROBLEM OF
+DISCRETE EVENT DYNAMIC SYSTEMS
+CHEN WENDE
+(Institute of Systems Science,Academia Sinica,Beijing　100080)
+(Complex Systems Engineering Lab.,
+Institute of Automation,Academia Sinica,Beijing　100080)
+Abstract　In this paper we present a kind of new optimal scheduling problem for production lines with buffers.A concrete form of optimal scheduling objective function is given.We point out that it is not a convex function.Optimal formulation solution is given for one variable and an iterative algorithm is obtained for multivariables.
+Key words　DEDS,max-algebra,optimal scheduling,buffer.
+1　引言
+　　一般的调度与排序问题已有许多研究［1，2］.文献［3］解决了太原钢铁公司三台热轧机生产线提出的一类新的无阻塞最优调度问题(也称为轧制节奏控制问题).文献［4］等提出并解决了n种工件与m台机器的这类问题.但热轧线以外的许多种生产线是允许阻塞的.本文提出更困难的允许有阻塞的这类新的最优调度问题.
+　　问题.有多台机器组成带有限存贮器的串行生产线，进行批量生产，每批加工n种工件.设加工时间均已知，n种工件的加工次序已排定，当第一台机器空出时就投入下一个工件.问如何调度每种工件的数目Mi，使每批共生产个工件，而单位时间的利润指标
+
+(1)
+达到最大?这里λ是生产一批工件所需时间，Wi为第i种工件加工后所增利润.
+　　本文基本上解决了这个问题.
+2　批生产周期λ的公式与函数形式
+　　令　为极大代数，其中R为实数域，分别表示极大代数意义下的和，积.设串行生产线中第r个机器前有串行的br个存贮器组成缓冲区Br.每个存贮器看作加工时间为O的伪机器，机器与存贮器数目(br≥0)的总和为m.xr(k)表示第k批最后一个工件JN离开机器mr的时间，1≤r≤m.Pr(j)表示第j个工件Jj在mr上加工所需的时间.引用文献［5］的结果：
+　　引理1［5］.在上述假设下，令m1空出时就投入下一个工件，则上述串行线批量生产的状态方程可用D中运算列出
+
+(2)
+其中
+
+(3)
+
+(4)
+
+且存在k0>0，当k≥k0时有
+
+(5)
+其中
+
+(6)
+这里a1,…,am为的对角线上元素.
+　　对第一节提出的问题，当时，各Pr(j)相同，记为tr(i)，它表示第i种工件在mr上加工所需时间；各A(j)也相同，记为
+
+(7)
+　　定义阵的第r行第s列元素为ars(Mi).rs取定后，定义Aτi对角线元素的一串极大值
+
+(8)
+r≤s时，令j1=j′1=0，r>s时，令j1=j′1=r-s-1.
+(9)
+若则令
+
+(10)
+直到tr-j(i)=t1(i)共定义出若j′v-1<j<j′v时，而则令
+
+(11)
+直到ts+j(i)=tm(i),共定义出上述极大值串与rs有关.
+　　定理1.在上述记号与定义下，有
+
+(12)
+
+(13)
+批生产周期
+(14)
+其中αij，βj可由(6―13)式算出.
+　　证明.trs(i)等全部简记为trs以便使证明简洁.(7)式表示图G(Aτi)中有m个点，r≤s时r到s弧重为trs；r=s+1时r到s的弧重为0，r>s+1时r到s没有弧.ars(Mi)表示图G(Aτi)中r到s的长为Mi的最重路的路重.从图论知识易知：当Mi足够大时，上述最重路在它过的均重最重的回路上绕圈.当r≤s时，若2≤Mi≤j2，则从r经过<s的点到s的路中，由的定义，易知在重为的自回路上绕圈的路最重(绕0圈即仅过

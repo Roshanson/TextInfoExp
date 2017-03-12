@@ -1,0 +1,135 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.4　P.481-487
+
+
+
+
+面向对象Z的子类型继承和推理规则
+　王云峰　李必信　郑国梁
+摘要　讨论了COOZ(complete object-oriented Z)中的继承关系,将继承分为增量继承和子类型化继承,并重点讨论了子类型化继承.定义了一种行为子类型化继承,证明了该方法的合理性,并据此定义了COOZ的规约继承及规约继承的推理规则.所讨论的子类型化方法与E.Cusack等人的方法相比,具有可构造性,并且比Liskov等人的方法具有更大的灵活性.
+　关键词　形式方法,面向对象,继承,子类型,形式规约.
+　中图法分类号　TP311
+On Subtyping Inheritance and Inference Rules in Object-Oriented Z
+WANG Yun-feng
+（tate Key Laboratory for Novel Software Technology　Nanjing University　Nanjing　210093）
+（Meteorology College　PLA University of Technology　Nanjing University　Nanjing　211101）
+LI Bi-xin
+（tate Key Laboratory for Novel Software Technology　Nanjing University　Nanjing　210093）
+ZHENG Guo-liang
+（tate Key Laboratory for Novel Software Technology　Nanjing University　Nanjing　210093）
+Abstract　 The inheritance relation of COOZ is discussed. It is divided into increasing inheritance and subtyping inheritance. The latter is studied and a behavioral subtyping inheritance is defined, by which the specification inheritance and its inference rules are defined. The soundness of the method is proved. The offered method is constructive compared with that of E. Cusack and is more flexible than that of Liskov et al.
+Key words　Formal method, object oriented, inheritance, subtyping, formal specification.
+　　将形式方法与面向对象方法相结合已成为软件开发方法研究的一个重要方向.90年代初,将形式规约语言Z进行面向对象的扩充成为研究热点,先后产生了若干个Z的面向对象扩充版本［1］.COOZ(complete object-oriented Z)是在分析以往Z的面向对象扩充的基础上,采用更为先进、合理的技术对Z进行面向对象的扩充.
+对Z进行面向对象的扩充使得形式方法和面向对象方法相得益彰,如,OO方法中类及其关系的构造技术使Z适宜描述大型和复杂系统,同时Z本身的数学特性使我们可以对规约进行推理和计算,以保证规约的正确性.
+　　继承是面向对象方法的最重要的概念,继承一般用于两个方面：行为继承和实现继承.行为继承即规约继承,是一种强子类型化继承［2］.任意一处父类对象均可由子类对象代替.实现继承即增量继承,通过修改已有的类,派生出新类,体现了复用和代码共享.在实现子类型化时有多种方法,许多面向对象语言通过对实现继承增加约束条件来实现子类型化,约束条件一般通过方法的型构定义［3］.这些约束条件使得在应用子类型多态时不致出现运行错误,但不能保证语义上的一致.
+　　我们定义子类型化的目的在于：如果已知父类的属性和功能,即父类的规约,当对子类进行推理时,能直接利用已知的信息,增强对复杂系统功能进行推理的能力.其次,为了使子类型对象具有所有父类的属性和行为,保证子类型对象可以代替父类对象,使其成为一种精化手段.其三,保证COOZ规约验证的模块性［2］.例如,方法m的验证是针对父类型对象规约的,当子类型对象代替父类型对象时,对象规约发生改变,此时,本应该针对新规约重新验证m,但这意味着对继承来的原有代码（或规约）均要重新验证.这是不必要的,可以定义一种模块化的验证方法,这一方法的基础就是规约继承.
+　　我们在下面对COOZ的继承关系的讨论中,把继承分为派生和子类型化两种方式,分别给出形式定义,重点讨论具有较大灵活性的一种子类型化继承，并定义了规约继承的方法.同时,讨论了该方法的合理性.为了能利用规约中的子类型关系进行推理,给出了基于逻辑的COOZ继承的推理规则.
+1　COOZ简介
+　　COOZ［4］是一种面向对象的形式规约语言,其中的类由类模式（class schema）表示:
+
+　　类模式由类名、类参数、父类列表、对象接口、局部定义、状态模式、初始化模式、方法模式以及表示对象实时历史约束的类不变式等组成,类模式的详细语法及语义见文献［4］.
+每个类模式都有Anonymous State Schema（无名状态模式）描述类属性和类不变式,即描述该类对象的状态空间,在继承时,无名状态模式自动加以合并.
+　　类模式可以有多个方法模式,类对象可接受的消息必须通过其方法模式加以说明,无名状态模式被自动引入该类对象的方法模式.在继承时,根据同名模式进行合并的原则,同名方法模式进行合并,这里,模式合并的含义是模式的合取［5］.
+2　COOZ中的继承：派生和子类型化
+　　我们把继承分为增量继承和子类型化继承两种.增量继承为一般意义上的派生继承,即在已有类的基础上构造新类,是重用现有规约的基础.子类型化继承是一个类替代另一个类的基础,可作为类的精化机制.下面，我们将分别讨论这两种继承,并且为了与规约精化的实现语言C++*相适应,我们引入一种将类作为类型、将子类作为子类型的子类型化继承方法.
+2.1　增量继承――派生
+　　增量继承是在现有的类定义上增加“方法和变量”构成新类的过程.增量继承不能保证派生类的对象也是父类的对象,即不能保证派生类是父类的子类型.我们简化并扩展Cusack E［6］ 关于继承的定义.
+　　设类A的状态模式为SA,XA为SA的状态空间,Oj为类A的j个方法.类B的状态模式为SB,XB为SB的状态空间,Pj为类B的j个方法.若SB为SA 的实例（见文献［6］中的定义2）,则存在映射f：XB→XA,把SB的实例映射到SA的实例.根据类完整性定义,Oj可看成是XA之间的关系R（Oj）,显然,R（Oj）XA×XA .同样可得,R（Pj）XB×XB.相应地，f可得映射f×f：XB×XB→XA×XA.若相应类A的方法Oj和Pj在类中无显式定义,则有无派生类的定义如下.
+　　定义1. 若B的状态模式SB的实例为类A的状态模式SA的实例,即存在映射f：XB→XA,若类B的方法Pj由下式定义
+R(Pj)f×f=R(Oj)∩(XfB×XfB)，
+则B为A的派生类,若R(Pj)f×f为空,则Pj在B中无定义.
+　　定义1是极为严格的继承定义,其定义的子类不能修改父类的方法.事实上,增量继承相当于宏定义,通过把类模式的继承语句全部展开为实际语句,可得到没有继承关系的规约.
+2.2　子类型化继承
+　　E.Cusack定义的子类型化继承是一种非构造性方法,并且限制子类型修改父类型的方法.S.Drossoplou等人提出的“ST＆T”子类型化方法是一种极弱的子类型化方法,仅能满足子类型化的语法约束,可以保证子类型表达式代替父类型表达式时类型不出错,但不能保证子类型对象行为与父类型对象一致.事实上,类型检查只能查出程序部分错误,类型正确不能保证行为正确.
+　　为了达到前述子类型化的3个目的,需要定义一种“行为子类型化”概念,既满足子类型化的语法约束,又满足子类型化的语义约束.保证子类型对象行为与父类型对象一致,即保证子类型对象代替父类型对象时,不会出现超出父类行为规约的行为（意外行为）.
+　　为了比较子类型和父类型,我们扩展了文献［6］中的映射.对于存在子类型关系的集合X,Y:X≤Y（符号≤表示子类型关系）,存在模拟函数fX→Y:X≤Y.要判断子类型化继承,既要比较类型的状态模式,又要比较类型的方法模式.比较类型的状态模式,就是比较类型状态空间中的不变式,我们用IX（vz）表示类型X的不变式,其中vX表示X的取值.
+　　为了比较方法模式,我们用分别表示类型S,T的方法m的输入变量类型,用分别表示类型S,T的方法m的输出变量类型.
+　　用表示S的方法m的前置条件,用表示S的方法m的后置条件.其中ΔX表示X∩X′,即操作前后的变量.下面给出一种子类型化继承的定义.
+　　定义2（行为子类型化继承）. 类型S为类型T的子类型,当且仅当下列条件满足：
+　　。不变式规则：对所有S的值vS
+
+　　。方法规则
+　　对所有S的对象this:S,输入变量
+　　(1) 前置条件规则
+
+　　(2) 后置条件规则
+
+需要指出的是,式中反映了子类型关系的逆变原则（contravariance）,而则反映了子类型关系的协变原则（convariance）.
+2.3　强制规约继承
+　　在使用COOZ建立程序规约时,为了保证在使用继承时自动保证子类型关系,我们根据上述子类型关系的定义,定义一种强制规约继承的方法.虽然这样限制了继承的灵活性,但却具有在文章开始部分中谈到的3个好处,使用规约继承,强制父类型对象的方法在子类型对象中进行正确的操作.而且,如下面所要讨论的,这一方法较其他子类型化方法更为灵活.为表示方便,引入符号↑I表示继承的不变式,↑pre,↑post分别表示继承的前后置条件.这些符号的定义在第3.2节中给出.
+　　定义3（强制规约继承）. 设S为若干类型的子类型,则S的完整的规约为：
+　　。不变式 I(v):Is(v)∧↑I.
+　　。前置条件 
+　　。后置条件 
+值得注意的是,后置条件的定义比Liskov［7］等人所定义的条件范围要大,允许子类型方法在父类型方法定义域之外仍然有效.
+　　例如,左边两个操作模式分别表示父类型和子类型的方法m,根据强制规约继承的定义,完整的子类型方法m的后置条件为
+
+该后置条件并不蕴含父类型方法的后置条件,但在行为上,子类型对象可代替父类型对象.为了便于比较,下面给出Liskov等人的行为子类型化继承的定义.
+
+　　S为T的子类型,需要满足下述条件：
+　　（1） 不变式规则：
+　　（2）方法规则:
+　　　　前置条件规则: 
+　　　　后置条件规则: 
+其中s为类S的状态变量,s′表示后状态变量,f表示模拟函数(见第2.2节中的定义),Mx表示类x中的方法.
+　　由此可见，强制规约继承的方法比Liskov,E.Cusack定义的行为子类型化继承的条件要弱.如,上例并不满足Liskov的条件,但在行为上,子类型对象可代替父类型对象.因此,强制规约继承的方法可在给程序规约设计者使用继承时提供更大的灵活性.另外,在对m的调用进行推理时,当作用于父类型对象时,子类型对象的m仍然是有效的.同时，子类型方法的后置条件蕴涵了父类型方法的规约,使父类型方法的规约在子类型对象中自动满足,为模块化推理提供了基础.
+2.4　实　例
+　　为了说明规约继承,下面给出一个简单的实例.类模式(schema)BankAccount表示银行帐户,类模式TwoAccount为BankAccount的子类型,它将BankAccoount中的属性credit精化成currency和check.由于TwoAccount具有更多的信息,为了保持父类型的规约,子类型应该提供建立其抽象值与父类型相应的抽象值关系的模式.这种抽象模式最初是用模拟函数（simulation function）表示,之后扩展为关系.为简单起见,实例中采用模拟函数.R,String为已有类型,分别表示实数和字符串.
+
+　　其中Simulation代表从TwoAccount到BankAccount的模拟函数.根据规约继承,TwoAccount的操作模式Withdraw完全展开的形式为
+
+其中self表示TwoAccount对象.不难看出,Withdraw反映了前面定义的规约继承.
+3　COOZ中继承关系的推理规则
+　　在COOZ中,我们引入扩充的Z的逻辑［8］,建立相关的推理规则.这里,我们先介绍,然后重点讨论COOZ中和继承相关的的扩充.
+3.1　逻辑
+　　是一种Gentzen式的相继式演算,公理和定理由相继式表示,然后运用推理规则推导出其余定理.为了表示方便,引入元函数,这些元函数在本逻辑以外定义.
+　　。相继式
+　　相继式的形式为：d｜Ψ├Φ.
+　　其中d为声明表,Ψ为谓词集合,称为“前提”,Φ也是谓词集合,称为“结果”.在d的环境条件下,当Ψ的所有谓词均为真时,Φ中至少有一个谓词为真,此时,形式d｜Ψ├Φ有效,事实上相当于Ψ的谓词合取,而Φ的谓词析取.
+　　。推理规则
+　　相继式的推理规则采用以下形式：
+
+其中premisses为规则的前提,由个相继式组成；conclusion是单一的相继式,为规则的结论；proviso是规则应用的环境中必须为真的谓词,为规则有效的条件.如果proviso满足,且premisses有效,conclusion有效,则称推理规则是合理的.规则中的name用于标识该规则,称为规则名.
+3.2　规约继承的推理规则
+　　为讨论方便,先定义几个相关的元函数.元函数χ返回子类继承的父类名的集合,如S继承T1,...,Tn,则有χ(S)=｛T1,...,Tn｝.元函数Ω返回类中的方法名,包括继承的方法.
+　　下面以推理规则的形式给出↑I,↑pre,↑post的定义*.
+　　。继承的不变式↑I的定义
+
+其中
+
+　　。继承的操作（方法）的定义
+　　(1) 继承的前置条件
+
+其中
+
+　　(2) 继承的后置条件
+
+q1说明m是T1,…Tk共有的方法,m不属于Tk+1,…Tn.
+　　这样定义保证了S和Ti的规约继承的关系,这种定义可作为操作模式(schema)和状态模式合取(∧)的语义基础.上述揄规则为COOZ规约中的继承关系的揄奠定了理论基础.
+4　规约继承的合理性
+　　为了讨论上述规约继承的合理性,引入以最弱前置条件表示程序语义的精化演算［9］,用其中的Frame 表示类中的方法：
+
+其中x表示在操作中发生改变的变量,P表示谓词,≡表示“定义为”.
+　　COOZ中的子类型的方法定义为
+
+其中下标s,t分别表示父类型和子类型.显然,上式即为规约继承的方法模式的定义.根据上述定义,用x:［pre,post］表示子类型的完整的方法,不难证明:
+
+即由规约继承所得到的子类型的方法满足行为子类型的性质,由此可以看出，本文所定义的规约继承是合理的.
+　　值得指出的是,规约继承可作为类精化的手段.相关内容将另文讨论.规约继承作为一种行为子类型的方法,能否实现所有的行为子类型,即该方法是否完备,还需进一步研究.
+5　结论和进一步的研究
+　　本文讨论了COOZ中的继承关系,将继承分为增量继承和子类型化继承,重点讨论了子类型化继承.我们定义了一种行为子类型化继承,并据此定义了COOZ的规约继承及规约继承的推理规则.本文所讨论的子类型化方法与E.Cusack等人的方法相比,具有可构造性,并且比Liskov等人的方法具有更大的灵活性.文中讨论时省略了“约束条件”,如何在继承中考虑COOZ的“实时和历史约束”值得研究.另外,根据文中的推理规则,给出推理策略,以便在规约精化和验证中加以应用，这项工作还需要进一步研究.
+王云峰（南京大学计算机软件新技术国家重点实验室　南京　210093）
+（解放军理工大学气象学院　南京　211101）　
+李必信（南京大学计算机软件新技术国家重点实验室　南京　210093）　
+郑国梁（南京大学计算机软件新技术国家重点实验室　南京　210093）
+参考文献
+1，Stepney S, Barden R, Cooper D. Object Orientation in Z. London: Springer-Verlag, 1992
+2，Dhara K K, Leavens G T. Forcing behavioral subtyping through specification inheritance. In: Kemmerer R A ed. Proceedings of the ICSE-18. Washington, DC: IEEE Press, 1996. 258～267
+3，Drossopolou S, Karathanos S, Yang Dan. Static typing for object oriented language. In: Goldsack S J, Kent S J H eds. Formal Method and Object Technology. London: Springer-Verlag, 1996. 262～286
+4，Yuan Xiao-dong, Hu De-qiang, Xu Hao et al. COOZ: a complete object-oriented extension to Z. ACM Software Engineering Notes, 1998,23(4):78～81
+5，Spivey J M. The Z Notation: A Reference Manual. 2nd Edition, Series in Computer Science, London: Prentice-Hall, Inc., 1992
+6，Cusack E. Inheritance in object oriented Z. In: America P ed. Proceedings of the ECOOP'91. Volume 512 of Lecture Notes in Computer Science, New York: Springer-Verlag, 1991. 167～179
+7，Liskov B, Wing J M. A behavioral notation of subtyping. ACM Transactions on Programming Languages and Systems, 1994,16(6):1811～1841
+8，Smith G. Extending of object-Z. In: Bowen J P, Hinchey M G ed. ZUM'95: the Z formal specification notation. Proceedings of the 9th Annual Z User Meeting, Volume 967 of Lecture Notes in Computer Science. London: Springer-Verlag, 1995. 276～296
+9，Morgan C C, Gardiner P H B. Data refinement by calculation. Acta Information, 1990,27(6):481～403

@@ -1,0 +1,194 @@
+自动化学报
+AGTA AUTOMATICA SINICA
+1999年 第25卷 第2期 Vol.25 No.2 1999
+
+
+
+
+非线性控制系统的全局输出调节1)
+佘　焱　张嗣瀛
+摘　要　讨论了非线性控制系统的全局输出调节.首先推广精确线性化方法，通过状态反馈和微分同胚将非线性系统的全局输出调节问题，转化为线性系统对非线性系统的跟踪问题.通过提出可解性的概念，得到线性系统对非线性系统全局跟踪的条件，该结果是线性系统结果的推广.在反馈同胚变换全局成立条件下，得到非线性控制系统全局输出调节问题的充分条件，该条件对外部系统只做较弱的可解性假设，在反馈同胚变换局部成立的条件下，可得局部结果.
+关键词　非线性系统，输出调节，微分同胚.
+GLOBAL OUTPUT REGULATION FOR NONLINEAR
+CONTROL SYSTEMS
+SHE Yan
+(Dept.of Inform. and Contr.Eng.,Shanghai Jiaotong University,Shanghai　200240)
+ZHANG Siying
+(Department of Automatic Control,Northeastern University,Shenyang　110006)
+Abstract　Global output regulation problems for nonlinear control systems are discussed.First,a state feedback diffeomorphic coordination transformation is introduced to transform the nonlinear system into the system which consists of a linear system and a nonlinear exosystem.Then solvability of output regulation is defined to discuss the global output regulation problems of this special control systems.The result is an extension to that of the linear systems.Finally,it is shown that if the exosystem is the solvable and the condition of global exact feedback linearization is satisfied then the global output regulate problem for nonlinear systems is solvable.If only local feedback coordination transformation exits,we can obtain the local results.
+Key words　Nonlinear control systems,output regulation,exact feedback linearization.
+1　引言
+　　输出调节是控制系统设计的一个重要问题.线性系统的输出调节有较圆满的结果［1］，但非线性系统的相应结果则困难得多，所得结果也较弱.主要表现在：1)只讨论了初值在某点邻域的局部输出调节；2)假定了外部系统满足较强的假设［2―6］.
+　　近二十年来，非线性控制系统的几何理论［5］取得了重要进展，精确线性化是几何方法的重要内容.文献［6］首次将该方法推广到大系统，本文则通过提出另一推广形式，将非线性控制系统的全局输出调节问题，转化为一类较为特殊的系统的全局输出调节问题，使问题得到明显的简化，所得结果的优点是：结果是全局的，而且对外部系统只需很弱的假设.
+2　问题的陈述
+　　考虑系统
+
+(1)
+
+(2)
+
+(3)
+其中x∈Rn,w∈Rm,u∈Rp,e∈Rq,f,g,s,h是光滑函数，f(0,0)=0,s(0)=0.系统(1)是需要调节的系统，受到了外部系统(2)的扰动，式(3)是系统(1)与系统(2)之间的输出误差.
+　　全局输出调节问题.称系统(1)―(3)的全局输出调节问题可解，如果存在反馈
+
+(4)
+其中k(0,0)=0,k(x,w)光滑，使得
+　　1)系统
+
+(5)
+　　在x=0点全局渐近稳定.
+　　2)(x0,w0)∈Rn×Rm,系统
+
+(6)
+
+(7)
+的初值为(x0,w0)的解(x(t),w(t))满足
+
+(8)
+3　主要结果
+　　记Rn+m上的向量场
+
+(9)
+
+(10)
+　　假设1.1)是0点的非奇异对合分布.
+　　2)存在原点某邻域U及形如式(10)的向量场Xn+i(i=1,…，m)，使得Dn+m=是0点的非奇异对合分布.
+　　3)dimDn+m(0)=n+m.
+　　定理1.假设1成立当且仅当存在光滑反馈及Rn+m中0点的局部微分同胚坐标变换
+　　w，使得系统
+
+(11)
+
+　
+(12)
+
+(13)
+在新坐标下成为
+
+(14)
+
+(15)
+
+(16)
+其中
+
+(17)
+及
+
+(18)
+如果f(0,0)=0,s(0)=0,则α(0,0)=0.
+　　证明.充分性.设α(x,w),β(x,w)和坐标变换
+　　w满足定理1要求，令
+
+(19)
+则
+
+(20)
+　　取Xn+j=Φ-1*(Hn+j),其中Hi=(0,…，0,1,0,…，0)τ.则Φ(Xn+j)=Hn+j,注意到，假设中的条件是反馈不变的，同时Φ不影响李括号运算，所以针对上述向量场可直接验证假设1成立.
+　　必要性.由于Di的非奇异性，可以找出n个在0点线性无关的向量场
+
+(21)
+其中使得
+
+(22)
+同时由定理1，是在0点的非奇异对合分布.将C中的向量场依次记为X1，…，Xn，连同Xn+1,…，Xn+m，定义映射：定义了0点邻域的一个局部坐标变换，由Xn+1,…，Xn+m的定义，τ0*,均不改变Rn+m的后m个坐标，从而有
+
+(23)
+其中(F1)0,…，(FN)0分别具有n1,…，nN个分量.因为1,…，N-1,利用(Dj)的结构易知
+
+(24)
+为简单起见，以下有时以F记(F)，Di记(Di),记(FSi)0.
+　　不失一般性，可设的前ni列线性无关，即
+
+(25)
+引进局部同胚坐标变换τ1
+
+(26)
+
+(27)
+这里由式(24)，(25)，(26)，(27)知τ1的Jorcobian阵形如其中I是m×m阶单位阵，J1是n×n阶矩阵，且J1形如
+
+(28)
+由J1的结构形式可得
+
+(29)
+由J1的定义可知，在((z)1,(w)1)坐标下，τ1*(F)的第N块为
+
+(30)
+由式(29)，完全重复上述讨论，构造局部微分同胚τ2.设经过k次同胚后(F)k的第n-k+1至第N块分量分别为
+
+(31)
+构造τk+1,将式(26)左边的下标1及右边的下标0分别用k+1,k代替，再计算Jk+1,由式(42)知，Jk+1的对角块中的后k+1块均为单位阵，并且同一行没有非零元，因此，立即有
+
+(32)
+再根据τk+1的定义式(26)可知从而式(31)归纳可得.
+　　为方便，仍把τN-1所确定坐标记为(z,w),在此坐标下，F有如下形式
+
+而因此，在(z,w)坐标下,这里，Q(z,w)是光滑可逆阵.令β(z,w)=Q-1(z,w),α(z,w)=-Q-1(z,w)f1,反馈u=α(z,w)+β(z,w)ν.则所得系统由一能控标准形与联结而成.显然，如果f(0,0)=0,s(0)=0,则α(0,0)=0.
+　　定义1.设h(z,w)是Rn×Rm上的函数，称h(z,w)关于z一致连续，ε＞0，w∈Rm,δ＞0，使得，当｜z1-z2｜＜δ，有｜h(z1,w)-h(z2,w)｜＜ε.
+　　定义2.称关于h(z,w)是(n1,…，np)阶可解的，其中非负整数n1,…，np满足如果存在C2类向量值函数a0:Rm→Rp,a0(0)=0,使得
+h(a(w),w)=0,
+其中向量值函数如下定义
+
+(33)
+　　定理2.设关于h(Φ-1(z,w))为(n1,…，np)阶可解，h(Φ-1(z,w))关于z一致连续，则系统(14―16)的全局输出调节问题可解，反馈控制律为
+
+(34)
+　　证明.因为关于h(Φ-1(z,w))为(n1,…，np)阶可解，所以由定义2，存在C2类向量值函数a0:Rm→Rp,a0(0)=0,使得
+
+(35)
+定义向量值函数c:Rm→Rp,
+
+(36)
+显然a(0)=0,c(0)=0(因为s(0)=0,a0(0)=0).
+　　由式(33)，(36)，(17)，(18)，有
+
+(37)
+设v=c(w)+K(z-a(w)),其中K是使得A+BK稳定的任意矩阵，系统(14)，(15)成为
+
+(38)
+
+(39)
+设w(t),w(0)=w0∈Rm是式(39)的任意解，由式(37)得
+
+(40)
+令z1(t)=a(w(t)),则z1(t)=a(w(t)),z1(0)=a(w0)是闭环系统(38)的解.设(z2(t),w(t))是式(38)，(39)的任意解，且满足初值条件w(0)=w0,z0(0)∈Rn,则当t→∞，有z2(t)→z1(t).因为设q(t)=z2(t)-z1(t),有
+
+(41)
+
+(42)
+显然上述系统是渐近稳定的，即当t→∞时，q(t)→0.
+　　由式(35)，有所以
+
+(43)
+因为h(Φ-1(z,w))关于z一致连续，当t→∞,e(t)→0时，条件(2)成立.由c(0)=0,a(0)=0,当w=0时，式(38)渐近稳定，条件(1)成立.
+　　注1.由式(35)，(37)知，定义2是线性系统输出调节可解性条件的推广.如果h(Φ-1(a(w),w))只与a11，…，ap1有关(实际中并非少见)，则式(18)，(14)仅归结为一组隐函数方程组.
+　　定理3.设系统(1)，(3)满足
+　　1) 假设1成立，且对应的坐标变换(z,w)=Φ(x,w)在Rn+m上全局成立；
+　　2) 关于h(Φ-1(z,w))为(n1,…，np)阶可解；
+　　3) h(x(z,w),w)关于z一致连续.
+则系统(1)，(3)的全局输出调节问题可解，反馈控制律为
+
+(44)
+　　证明.式(8)的验证是简单的，只需注意(x,w)=Φ-1(z,w)和(43)式.主要是验证式(5)渐近稳定.以下提到式(11)是指将式(34)代入式(11)所得闭环系统.设x(t)是式(5)的任意解，则(x(t),0)是式(11)，(12)的解，(z(t),0)=Φ(x(t),0)是式(38)，(39)的解，从而z(t)是的解.因为(x(t),0)=Φ-1(z(t),0),所以当z(t)→0时，有(z(t),0)→0，从而有(x(t),0)→0，即x(t)→0.
+　　注2.显然，如果所得坐标变换是局部的，则系统的局部输出调节问题可解.
+4　例子
+　　例1.考虑以下非线性系统的全局输出调节问题
+
+其中是需要跟踪的外部系统.显然已有方法不能解决上述问题.容易验证上述系统满足假设1.由定理1易得，在反馈及全局坐标变换z3=x3+2x1下，系统变换成为
+
+显然w2关于z1-w是(3)阶可解的，且z1-w关于z一致连续，所以原系统的全局输出调节问题可解，且直接可得a1(w)=w,a2(w)=w2,a3(w)=2w3,c(w)=6w4,由定理3反馈控制律可取为
+1)　国家自然科学基金、中国博士后科学基金、上海交通大学青年基金和辽宁省博士启动基金资助项目.
+作者简介：佘　焱　生于1968年.1990年武汉大学数学系本科毕业，1992年硕士研究生毕业并提前攻读博士学位，1995年于武汉大学数学系获理学博士学位并入东北大学自动控制博士后流动站进行博士后研究.1997年评为上海交通大学副教授.目前感兴趣的研究领域为复杂控制系统的相似结构与全息性质、非线性控制系统等.
+　　　　　张嗣瀛　见本刊1998，24(2).
+作者单位：佘　焱　上海交通大学信控系　上海　200030
+　　　　　张嗣瀛　东北大学自控系　沈阳　110006
+参考文献
+1　Francis B A.The linear multivariable regulator problem.SIAM J.Control & Optim.,1977,15:486―505
+2　Isidori A,Byrnes C I.Output regulation for nonlinear systems.IEEE Trans.Autom.Control.,1990,35(2):131―140
+3　Huang J,Rugh W J.On a nonlinear multi-variable servomechanism problem.Automatica,1990,26(6):963―972
+4　Huang J,Rugh W J.Stabilization on zero-error manifolds and the nonlinear servomechanism problem.IEEE Trans.Autom.Control,1992,37(7):1009―1013
+5　程代展.非线性系统几何理论.北京：科学出版社，1988
+6　佘焱，张嗣瀛.非线性大系统的分散线性化与分散控制.自动化学报，1998，24(2)：18―25
+收稿日期　1996-06-10
+收修改稿日期　1998-01-10

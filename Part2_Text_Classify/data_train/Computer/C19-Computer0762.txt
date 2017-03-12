@@ -1,0 +1,90 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1999年　第25卷　第5期　Vol.25 No.5 1999
+
+
+
+非完整链式系统的路径规划
+――多项式拟合法
+马保离　宗光华　霍　伟
+摘　要　针对非完整链式系统，给出了一种路径规划新算法.该算法将较为困难的非完整系统路径规划问题转化为满足给定端点条件的多项式拟合问题，不仅使路径规划问题得到简化，而且可以很容易地应用于复杂环境下的路径规划问题.仿真结果证实了该方法的有效性.
+关键词　非完整系统，链式系统，路径规划，多项式拟合
+PATH PLANNING OF NOHOLONOMIC CHAINED SYSTEMS：A POLYNOMIAL FITTING APPROACH
+MA Baoli　ZONG Guanghua　HUO Wei
+(The Seventh Research Division, Beijing Univ. of Aero. and Astro.,Beijing　100083)
+Abstract　A new algorithm is presented to solve the path planning problem of nonholonomic chained systems. By the algorithm, the intricated nonholonomic path planning problem can be transformed into a polynomial fitting problem satisfying some given boundary conditions. The algorithm simplifies the path planning problem and can easily handle other complex geometric constraints. Simulation of a four wheel mobile cart is implemented to verify effectiveness of the proposed algorithm.
+Key words　Nonholonomic system, path planning, chained system, polynomial fitting.
+1　引　言
+　　近年来，非完整系统的路径规划和控制问题已成为控制理论界的一个研究热点.和完整系统相比，非完整系统的路径规划有其特殊的困难.除了要考虑状态约束外，还必须使得所规划的路径在每一点处都满足非完整约束.在非完整系统的研究中，链式系统具有重要的意义.这是因为一般的非完整系统在一定条件下可通过状态坐标和输入变换化为链式系统，特别是大多数实际的非完整机械系统一般都可化为链式系统［1］.文献［1］利用链式系统结构简单、容易积分的特点，分别取控制为含有未知系数的三角函数、分段常值和多项式函数，并通过积分分别得到状态的终态表达式，然后由此表达式和期望的终态来确定控制量中的未知系数.此方法的主要缺点是不容易应用于复杂环境下的路径规划问题(如避碰，穿过狭窄通道等).
+　　本文针对链式系统提出了一种新的路径规划方法，该方法将路径规划问题转化为已知端点条件的多项式拟合问题.和文献［1］的方法相比，该方法更为简单灵活，并可很容易用于复杂环境下的路径规划问题.仿真结果证实了本文方法的有效性.
+2　链式系统的路径规划
+　　考虑如下的非完整单链系统
+　(1)
+显然系统(1)受到如下(n-2)个非完整约束
+　(2)
+此系统的路径规划问题为；在状态空间Rn=｛x｜x=［x1,…，xn］T｝中设计连接初态x(t0)和终态x(tf)且满足约束条件(2)的路径.
+　　由式(1)，(2)可得到
+　(3)
+由式(3)可知，链式系统的路径规划问题可转化为满足如下端点条件的函数xn(x1)=f(x1)的拟合问题：
+
+　(4)
+式中x10=x1(t0)，x1f=x1(tf).
+　　为满足(4)式中2(n-1)个端点条件，可选用2n-3阶多项式函数［2］
+　(5)
+作为所规划的路径.式中待定的常系数ck(k=0,1,…,2n-3)可由端点条件式(4)确定.
+　　注1.原则上也可选取其它的函数(如正交三角函数等)来拟合，而且可能效果更好，此处为简单计而选用了多项式函数.
+　　对式(5)逐阶求导有
+　(6)
+将式(5)，(6)代入端点条件(4)，可得到如下线性方程
+Mc=a，　(7)
+其中
+a=［xn(t0),xn-1(t0)，…，x2(t0)；xn(tf),xn-1(tf),…，x2(tf)］T；
+
+
+
+i=1,…，n-1；j=1,…，2(n-1).
+当T阵非奇异时，由式(7)可解出系数阵
+c=M-1a.
+　　注2.　1)当x10=x1f时，T阵奇异，这时若xn0≠xnf，则可用旋转坐标变换将x10，x1f分别变换为xnew10，xnew1f并使得xnew10≠xnew1f.
+　　2)如果x10=x1f且xn0=xnf，则应选择一个不同于起点和终点的第三点作为所规划路径上的一点，然后再分别规划从起点到该点以及从该点到终点的路径.
+　　以上仅给出了满足非完整约束的状态的几何轨线，为得到状态和控制的时间轨线，必须给定x1的时间轨迹.原则上，x1(t)可以取为任一满足端点条件x1(t0)=x10，x1(tf)=x1f的连续函数.例如，可简单地取为x1(t)=x10+(x1f-x10)t.x1(t)确定后，可得到控制u1,u2为
+
+3　复杂环境下的路径规划问题
+　　在实际应用中，常要遇到复杂的环境约束.为使所规划的路径满足这些约束，可根据环境情况再适当选取更多的期望点，并使所规划的路径通过这些点，从而规划出满足复杂环境约束的路径.假定为满足复杂环境约束再选取m个期望点为(x11,xn1)，(x12,xn2)，…，(x1m,xnm)，则路径规划问题可化为满足端点约束(4)和环境约束
+xn1=f(x11),xn2=f(x12),…，xnm=f(x1m)　(8)
+的路径规划问题.由于增加了m个约束条件，因此应选用2n-3+m阶多项式
+
+作为期望的路径.对上式求导n-2+m次并代入约束条件(4)，(8)，可得到关于系数cj线性方程组，解出这些系数即可得到满足给定约束条件的路径.
+4　仿真研究
+　　以四轮小车为例说明上述方法的有效性.小车的运动方程为
+　(9)
+其中(x,y)为小车后轴中点的位置，θ为车体的姿态，φ为前轮的操纵角，v1为前进速度，v2为操纵角速度.
+　　利用如下的状态坐标变换和输入变换
+
+可将系统(9)化为如下的四阶链式系统：
+
+　　令t0=0,tf=1，系统的初态［x(t0),y(t0),θ(t0),φ(t0)］T=［10，10，0，0］T，终态［x(tf),y(tf)，θ(tf),φ(tf)］T=［0，0，0，0］T，并取x1(t)=ξ1(t)=x10+(x1f-x10)t.
+　　仿真1.无障碍物环境　仿真结果如图1和图2所示，可以看出状态［x(t),y(t),θ(t),φ(t)］均在t=1时到达零点，同时所规划的几何路径也是合理的.
+
+
+图1　仿真1状态［x(t),y(t),θ(t),φ(t)］的时间轨迹
+
+
+图2　仿真1小车的几何运动轨迹x-y
+　　仿真2.有通道环境　假定在(x,y)=(4,5)到(x,y)=(7,5)之间有一长3米，宽1米的通道，要求小车在向期望位置的运动过程中穿过此通道.显然仿真1中所规划的路径不满足此条件.为此，在通道中心线上选取四个点(x1,y1)=(4,5)，(x2,y2)=(5,5),(x3,y3)=(6，5)，(x4,y4)=(7,5)作为所规划路径上的点，并重新进行路径规划，结果如图3和图4所示，可以看出状态［x(t),y(t),θ(t),φ(t)］均在t=1时到达零点，同时所规划的几何路径也正好穿过通道.
+
+
+
+图3　仿真2状态［x(t),y(t),θ(t),φ(t)］的时间轨迹
+
+
+图4　仿真2小车的几何运动轨迹x-y
+作者简介：马保离　见本刊1998年第1期.
+　　　　　宗光华　1943年生，1966年毕业于北京工业大学.1981年毕业于北京航空航天大学，获硕士学位.现为北京航空航天大学教授，博士生导师.研究方向为机器人学.
+　　　　　霍　伟　见本刊1994年第3期.
+作者单位：北京航空航天大学第七研究室　北京　100083
+参考文献
+1　Tibury D, Murray R M, Sastry S S. Trajectory generation for the N-trailer problem using Goursat norm form.IEEE Trans. on Automatic Control,1995，AC-40(5)，802―819
+2　Faux I D, Pratt M J. Computational Geometry for Design and Manufacture. London:John Wiley and Sons Limited,1987
+收稿日期：1997-08-20
+修稿日期：1998-09-09

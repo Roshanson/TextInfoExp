@@ -1,0 +1,110 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第4期 第10卷 Vol.10 No.4 1999
+
+
+
+单继承记录类型的代数描述
+何自强
+摘要　通过在子类型和超类型之间引进类型转换函数,推广了有序类别代数的定义.按照这一定义,一个类型可以不一定是它的超类型的子集.这使得记录模型成为有序类别代数.为了描述类型之间的单继承关系,引进了森林类别型构的概念.给出了等式的新意义,并证明了等式理论有初始模型.
+关键词　有序类别代数,等式理论,单继承性,记录.
+中图法分类号　TP311
+Algebraic Description for Record Model with Single Inheritance
+HE Zi-qiang
+（Department of Computer Science and Engineering Beijing University of 
+Aeronautics and Astronautics Beijing　100083）
+Abstract　　Introducing the type transformation functions between subtypes and supertypes, the definition of order-sorted algebra is generalized. According to this definition, a type needn't be a subset of its supertype, and a record model may form an order-sorted algebra. The concept of forest-order signature is introduced for describing single inheritance relation between types. A new meaning of equation is given. It is proved that an equational theory has its initial model.
+Key words　Order-sorted algebra, equational theory, single inheritance, record.
+　　数据类型的代数方法把数据类型的规范和实现分离开.一个规范是一个代数理论,而它的实现是该理论的一个模型.为了解释和描述子类型机制和继承性,Goguen等人［1］把多类别代数推广为有序类别代数.他们认为,子类型是超类型的子集,子类型的元素即是超类型的元素.在面向对象语言中,常常将对象的状态表示为记录,而类型是记录的集合.Cardelli等人［2,3］对记录类型进行了深入的研究.在记录类型中,子类型除了具有超类型的域之外,还可能有更多的域.子类型中的记录并不简单地就是超类型中的记录.为了使记录类型中的子类型成为子集,Bruce等人［4］引进了自然数之间的部分等价关系,将记录类型中的元素定义为等价类.这样的解决办法不自然,并使问题复杂化.实际上,子类型对超类型的继承性只是要求在一个需要使用超类型元素的上下文中,可以使用子类型的元素.因此,我们需要在子类型和超类型之间引进一个类型转换函数,将子类型中的元素转换为超类型中的元素.这使得子类型不一定是超类型的子集,记录类型能够构成有序类别代数,可以使用有序类别代数理论研究记录类型,将有序类别型构的等式理论看做面向对象程序设计环境的界面,而将等式理论的模型看做该环境的实现.
+　　若子类型是超类型的子集,并且转换函数是包含映射,则我们定义的有序类别代数就成为Goguen的有序类别代数.因此,我们推广了Goguen的有序类别代数概念.
+　　本文只考虑类型之间的单继承关系.在单继承情况下,一个类型不能有两个直接超类型,类型之间继承关系的哈斯图是图论意义上的森林.因此,我们把表达单继承性的有序类别型构称为森林类别型构.为了保证等式理论有初始模型,我们引进了可觉察的森林类别型构的概念,使得对于每个类型,都存在表示其中元素的基项.
+1　森林类别型构和代数
+　　设(S,≤)是有穷偏序集,≤s表示≤的对称闭包,≤表示≤s的自反传递闭包.设s1,s2∈S.若s1≤s s2,则称s1和s2可比较.若,则称s1和s2连通.
+　　定义1. 设(S,≤)是有穷偏序集.若对于S中任意两个不可比较的元素s1和s2,都不存在S中元素s3,使得s3≤s1且s3≤s2,则称(S,≤)是森林序集.
+　　因为在类型的单继承关系中,一个类型没有多于一个直接超类型,所以森林序集表达了类型的单继承关系.
+　　可以将集合S上的二元关系≤和≤s拓广到符号串的集合S*上:
+s1...sn≤s′1...s′m iff n=m∧s1≤s′1∧...∧sn≤s′n,
+s1...sn≤s s′1...s′m iff n=m∧ s1≤s s′1∧...∧sn≤s s′n.
+　　定义2. 森林类别型构是一个三元序偶(S,≤,Σ),其中(S,≤)是一个森林序集,Σ是一簇集合{Σw,s｜w∈S*,s∈S},并且满足以下单调性条件:
+对于任意w1,w2∈S*,s1,s2∈S,若Σw1,s1∩Σw2,s2≠且w1≤w2,则s1≤s2.
+S中的元素称为类别,Σw,s中的元素称为运算符.若σ∈Σw,s,则说运算符σ有秩w和值类别s,记为σ:w→s,并将σ:ε→s简记为σ:→s,其中ε是空串.集合{w｜w∈S*,有s∈S使σ∈Σw,s}称为运算符σ的秩集合,记为ar(σ).若运算符σ的秩集合有多于一个元素,则称σ是多态的.
+　　定义3. 如果森林类别型构(S,≤,Σ)满足:
+若w1,w2∈ar(σ)且w1≤s w2,则w1≤w2或w2≤w1,
+就称(S,≤,Σ)是正则的.
+　　引理. 设(S,≤,Σ)是正则的森林类别型构,σ是运算符,w∈S*.如果集合{w′｜w′∈ar(σ),w≤w′}非空,则它有最小元,称为σ在w上的最小秩.
+　　证明:只需证明该集合是一个链.若w是空串ε,则该集合是单元素集{ε}.设w是非空串s1...sn.若s′1...s′n,s″1...s″n∈ar(σ),s1...sn≤s′1...s′n,s1...sn≤s″1...s″n,则对每个i≤n,si≤s′i,si≤s″i,由(S,≤)是森林序集知,s′i≤s s″i.因此,s′1...s′n≤s s″1...s″n.再由(S,≤,Σ)是正则的得出,s′1...s′n≤s″1...s″n或s″1...s″n≤s′1...s′n.
+　　对于集合簇{As｜s∈S},我们用As1...sn表示集合As1×...×Asn.
+　　定义4. (S,≤,Σ)代数A是满足下面3个条件的三元序偶:
+
+其中每个As是非空集合,称为类型.如果s1≤s2,则称As1为As2的子类型,也称As2是As1的超类型.子类型As1到超类型As2的类型转换函数As1≤s2:As1→As2,Σw,s中的运算符σ表示运算.
+　　(1) 对每个s∈S,As≤s是S上的恒同映射；
+　　(2) 若s1≤s2,s2≤s3,则As1≤s3是As1≤s2和As2≤s3的复合函数As2≤s3As1≤s2；
+　　(3) 若σ∈Σs1...sn,s∩Σs′1...s′n,s′且s′1...s′n≤s1...sn,则对于每个(x1,...,xn)∈As′1...s′n,
+　　　　
+　　定义5. 设A是(S,≤,Σ)代数,s,s1,s2∈S,s1≤s,s2≤s,a1∈As1,a2∈As2.如果As1≤s(a1)=As2≤s(a2),则称a1和a2在As上相等,记为a1=Asa2.
+　　定义6. 设A和B是两个(S,≤,Σ)代数.若函数簇h={hs:As→Bs｜s∈S}满足:
+　　(1) 对于任意s1,...,sn,s∈S,σ∈Σs1...sn,s,
+,对一切(x1,...,xn)∈As1...sn;
+　　(2) 若s1≤s2,则Bs1≤s2(hs1(x))=hs2(As1≤s2(x)),对一切x∈As1,
+则称h为从A到B的同态映射.若同态映射h中的每个hs都是双射,则称h为同构映射.若存在从A到B的同构映射,则称A和B同构.
+2　等式理论和它的初始模型
+　　我们约定今后涉及的森林类别型构都是正则的,每个变元有唯一的S中元素作为它的类别,(S,≤,Σ)代数A中的赋值v对类别是s的变元赋予As中的元素作为值.
+　　定义7. 森林类别型构(S,≤,Σ)的项t及其类别so(t)定义如下:
+　　(1) 若x是类别为s的变元,则x是类别为s的项;
+　　(2) 若σ∈Σs1...sn,s,t1,...,tn是项,并且s1...sn是σ的so(t1)...so(tn)上的最小秩,则σ(t1,...,tn)是类别为s的项.
+　　定义8. 项t在(S,≤,Σ)代数A和A中赋值v下所指的元素A(t)(v)定义如下:
+　　(1) 若t是变元x,则A(t)(v)=v(x);
+　　(2) 若t是σ(t1,...,tn),s1...sn是σ的so(t1)...so(tn)上的最小秩,则
+
+不出现变元的项称为基项.基项t的意义与赋值无关,因此,可将A(t)(v)简记为A(t).
+　　定义9. 若t1和t2是(S,≤,Σ)的项,s∈S,so(t1)≤s,so(t2)≤s,则称t1=s t2是(S,≤,Σ)等式.若Γ是一个由(S,≤,Σ)等式构成的集合,则称((S,≤,Σ),Γ)为等式理论.
+　　定义10. 设t1=s t2是(S,≤,Σ)等式,若对于(S,≤,Σ)代数A中每个赋值v,A(t1)(v)=AsA(t2)(v),则称t1=s t2在A中有效,记为At1=s t2.
+　　定义11. 如果Γ中的每个等式都在(S,≤,Σ)代数A中有效,则称A是等式理论((S,≤,Σ),Γ)的模型.如果从((S,≤,Σ),Γ)的模型A到它的每个模型有唯一的同态映射,则称A为((S,≤,Σ),Γ)的初始模型.
+　　定义12. 设S′是满足以下条件的S的最小子集:
+　　(1) 若Σε,s是非空集,则s∈S′;
+　　(2) 若s1∈S′且s1≤s2,则s2∈S′;
+　　(3) 若s1,...,sn∈S′且Σs1...sn,s是非空集,则s∈S′.
+如果S′=S,则称森林类别型构(S,≤,Σ)为可觉察的.
+　　若(S,≤,Σ)是可觉察的正规森林类别型构,则对每个s∈S,存在基项t使so(t)≤s.因此,对每个类型都存在指称其中元素的基项,这保证了下面定义的典范代数中的每个类型都是非空的.我们约定,今后仅讨论可觉察的正规森林类别型构.
+　　设((S,≤,Σ),Γ)是等式理论.对于每个s∈S,我们定义集合{t|t是基项,so(t)≤s}上的等价关系≡s如下:
+　　t1≡s t2　当且仅当　对于((S,≤,Σ),Γ)的每个模型A,A(t1)=AsA(t2).
+　　对于类别≤s的基项t,用［t］s表示t所在的关于≡s的等价类.
+　　定义13. 等式理论((S,≤,Σ),Γ)的典范代数C定义如下：
+　　(1) 对每个s∈S,Cs={［t］s｜t是基项,so(t)≤s};
+　　(2) 若s1≤s2,则Cs1≤s2(［t］s1)=［t］s2;
+　　(3) 若σ∈Σs1...sn,s,则.
+　　定理1. C是((S,≤,Σ),Γ)的模型,并称C为((S,≤,Σ),Γ)的典范模型.
+　　证明:任取Γ中等式t=s u和C中赋值v,Cso(t)≤s(C(t)(v))=Cso(u)≤s(C(u)(v)).
+　　定理2. 等式理论((S,≤,Σ),Γ)的典范模型C是它的初始模型.
+　　证明:从C到((S,≤,Σ),Γ)的模型A的唯一同态映射h为hs(［t］s)=Aso(t)≤s(A(t)).
+　　例1:集合、多重集、栈、非空栈、数的代数规范可表示为下面的等式理论.
+　　首先引进一个森林类别型构(S,≤,Σ).令S={j,d,z,f,s},这里j,d,z,f,s分别是集合、多重集、栈、非空栈、数的汉语拼音的第1个字母.≤是S上二元关系{〈s,f〉,〈f,z〉,〈z,d〉,〈d,j〉}的自反传递闭包.Σ中的运算符如下:
+∪:jj→j,　　　　∪:dd→d,　　0:→s,　　　　succ:s→s,
+push:sz→f,　　　pop:f→z,　　　top:f→s,　　　empty:→z.
+　　我们用加下标的x,y,z表示变元,其中下标是变元的类别.Γ中的等式如下：
+　　top(push(xs,yz))=s xs,　　　pop(push(xs,yz))=z yz,　　　push(xs,empty)=f xs,
+　　push(xs,push(ys,zz))=d push(ys,push(xs,zz)),　　多重集不考虑元素出现的次序
+　　push(xs,push(xs,yz))=j push(xs,yz),集合不考虑元素的出现次数
+　　push(xs,yz)=d xs∪yz,多重集中增加一元素使该元素的重数加1
+　　取等式理论((S,≤,Σ),Γ)的模型A如下:
+　　As=N(自然数集);　　　Af=N+;　　　Az=N*;
+　　Ad={g｜g:N→N,{n|g(n)≠0}有穷},其中g(n)是n在多重集g中的重数;
+　　Aj=N的所有有穷子集构成的集合.
+　　As≤f(n)=n(长度为1的串),对每个n∈N;
+　　Af≤z(w)=w,对每个w∈N+;
+　　对每个w∈N*,Az≤d(w)=gw,其中gw(n)=n在w中的出现次数,对每个n∈N;
+　　Ad≤j(g)={n｜n∈N,g(n)≠0},对每个g∈Ad.
+　　
+　　对每个n∈N,w∈N*,
+　　对任意g1,g2∈Ad,,其中g(n)=g1(n)+g2(n),对每个n∈N;
+　　,对N的任意有穷子集B和C.
+　　A与((S,≤,Σ),Γ)的典范模型同构,是该代数规范的一个正确实现.
+本文通讯联系人：何自强,北京 100083,北京航空航天大学计算机科学与工程系
+作者简介　何自强,1943年生,副教授,主要研究领域为数理逻辑,计算机语言的形式语义.
+作者单位：北京航空航天大学计算机科学与工程系　北京　100083
+参考文献
+　1　Goguen J A, Meseguer J. Order-sorted algebra Ⅰ: equational deduction for multiple inheritance, overloading, exceptions and partial operations. Theoretical Computer Science, 1992,105(2):217～273
+　2　Cardelli L, Mitchell J C. Operations on records. Mathematical Structures in Computer Science, 1991,1(1):3～48
+　3　Cardelli L. Extensible records in a pure calculus of subtyping. In: Gunter C A, Mitchell J C eds. Theoretical Aspects of Object-oriented Programming. Cambridge: MIT Press, 1994. 373～425
+　4　Bruce K B, Longo G. A modest model of records, inheritance, and bounded quantification. Information and Com-putation, 1990,87(1,2):196～240
+本文1997-04-10收到原稿,1998-05-12收到修改稿

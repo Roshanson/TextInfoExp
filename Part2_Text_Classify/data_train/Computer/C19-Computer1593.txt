@@ -1,0 +1,122 @@
+信息与控制
+Information and Control
+1999年　第28卷　第4期　Vol.28　No.4　1999
+
+
+
+一类大系统的直接自适应分散模糊控制
+王　涛　佟绍成
+
+　　摘　要： 本文针对一类未知非线性大系统，提出了一种直接自适应模糊分散控制策略．设计中 ，首先在假设各子系统的动态已知的条件下，设计最优分散控制，然后用模糊自适应系统逼 近最优分散控制．同时引入模糊滑模控制消除各个子系统之间的相互作用，外部干扰和模糊 系统的逼近误差．并对所设计的控制系统进行了稳定性分析． 
+　　关键词：模糊控制，自适应控制，非线性系统，稳定性
+　　中图分类号：TP13　　　　　　文献标识码：B
+ADAPTIVE DIRECT FUZZY DECENTRALIZED CONTROL FOR A
+LARGE-SCALE NONLINEAR SYSTEM
+WANG Tao TONG Shaocheng
+(Liaoning Institute of Technology， Jinzhou 121001)
+Abstract: In this paper, a direct adaptive fuzzy decentralize d control is proposed for a large-scale unknown nonlinear system. In the design , we employ adaptive fuzzy logic systems to approximate the unknown functions, a nd introduce error feedback and sliding mode control to deal with the interacti ons between subsystems, external disturbance and the errors of approximation. Fi nally, the analysis of the closed-loop ia given.
+Key words: fuzzy control, adaptive control, nonlinear system, st ability
+
+1　引言
+　　控制由多个互联关联的子系统组成的大系统，关键的问题是如何处理各子系统之间的关联项 ．最有效的方法是利用局部信息对各子系统进行分散控制．目前关于大系统的分散控制问题 已有很多结果．这些方法一般处理线性或带有非线性关联项的子系统．其主要的缺陷是要求 系统精确的模型．为解决这一困难，以变结构控制为理论的滑模控制是一种可行的综合方法 ．在理想的条件下，滑模控制具有以下特点：（1）被控对象的参数及结构变化不灵敏；（2）抗外部干扰能力较强；（3）低超调及高精度；然而，设计滑模控制系统不但需要一些先 验的信息，而且滑模控制存在着系统的状态轨迹在开关平面上出现抖动现象．
+本文把模糊控制，模糊逻辑逼近及模糊滑模控制相结合，针对一类未知的非线性大系统 设计了一种直接自适应分散模糊控制器．在设计中，首先假设各子系统的动态已知的情况下 ，给出理想条件下的分散控制器．然后利用模糊逻辑系统逼近所设计的分控制器，并基于 Lyapunov方法得到模糊系统中参数的自适应律．由于在实际中，模糊规则数是有限的，所以 模糊系统的参数的完全匹配是不可能的，考虑到各子系统子间的相互作用及外部干扰的影响，引入误差反馈及滑模控制进行补偿．从而得到一种直接自适应模糊控制器．证明了应用此控制算法使大系统稳定，即系统中所涉及的信号有界，各子系统的跟踪误差渐近收敛到零的一个邻域内．
+2　自适应分散模糊控制的设计
+　　考虑下面由m个子系统组成的大系统
+i1=xi2　　　　　　　　　　　　　　　　　　　　　　　
+┆　　　　　　　　　　　　　　　　　　　　　　　　　　
+Si: imi=fi(Xi)+gi(Xi)ui+di(X,t)　　　　　　　　　
+yi=xi1　　　　　　　　　　　　　　　　　　　　　　(1)
+其中Xi=(xi1,…,ximi)∈Rmi是子系统Si的状态向量，ui是输入，yi是输出．fi,gi∈Rni是光滑的函数, di (X,t)是子系统之间的相互作用及外部干扰的函数．i=1,2,…m， X=(X1,…,XN)T∈Rm是大系统的状态向量, ．
+假设 对于未知函数f1(Xi), gi(Xi),di(X,t)分别满足下面的条件：
+　　(i) 　 　|fi(Xi)|≤Mi0(Xi)
+　　(ii)　 　0＜bi≤Mi1(Xi)≤gi(Xi)≤Mi2(Xi)
+　　(iii)　　|-1i(Xi)|=|Δg-1i(Xi)i|≤M i3(Xi)
+　　(iv)　 　．
+其中Mij(Xi)是已知函数, bi是已知常数，aijk是未知非负常数并通 过自适应得到．
+　　对于给定的参考输出xid，假设id,x′(2)id,…,xmiid都是可测并且有界，定义子系统Si的跟踪误差为ei0=x1i -xid,其控制目标如下：
+控制目标：仅利用局部信息设计自适应分散模糊控制ui(Xi|θi),在子系统 之间的相互作用及外部干扰存在的情况下，满足：
+　　（1）分散控制系统在Lyapunov意义下稳定，即系统中所涉及的所有信号一致有界 ．
+　　（2）各子系统的跟踪误差ei0渐近收敛于零或零的一个邻域内．
+　　设ei=(ei0,i0,…,(mi-1)i0)T ，ki=(ki(mi-1)…,ki0）T,向量Ki选取使得多项式i(s)=s (mi)+ki(mi-1)s(ri-1)+…+ki0为Hurwitz多项式，即 它的特征值都在左半平面． 定义滑模平面为
+si(t)=ki1ei+ki2i+…+ki(mi-1)e(m i-2)i+e(mi-1)i　　　　　　　　　　(2)
+　　　　　　(3)
+把（3）代入 (1)得：i(t)+ηisi(t)=0, 由此可得到．
+　　但是在fi(Xi),gi(Xi)未知和di≠0的情况下，设计如同(8)式的分散控制是 不可能的, 而且现有传统的分散控制方法都难以利用，为此我们利用模糊逻辑系统来逼近分 散控制u*i[2] ，在此基础上设计分散模糊控制．
+定义有界闭集Aid,Ai如下
+Aid={Xi|‖Xi-Xi0‖p,π≤1},　Ai={Xi|‖Xi-Xi0 ‖p,π≤1+i}　　　　　　　(4)
+其中是一种p-范数，{πi}ni=1是给定的权重，ψi表示过渡区域的 宽度，Xi0是Rmi中的一定点．对于给定的εi＞0(不必充分小），那么存 在模糊逻辑系统ui(Xi|θi)=θTiPi(Xi)，使得 Xi∈Ai，有
+|u*i-ui(Xi|θi)|≤εi　　　　　　　　　　　　　　　　　　(5)
+设计分散模糊控制为
+ui=(1-mi(t))uadi-mi(t))k1i(si,t)ufsi-k2i(s i,t)ufsi　　　　　　　　(6)
+其中uadi=ui(Xi|i)-iufsi是自适应部分，ufs 是模糊滑模控制．关于模糊滑模控制的设计将在下节给出，ki1(s,t)＞0,k2i( si,t)＞0, mi(t) 是一种调制函数0≤mi(t)≤1，其定义为
+　　　　　　　　　　　(7)
+由(6)和(1)可得 
+　　　　　(8)
+其中siΔ(t)=si(t)-φisat(si(t)/i),　(i＞0), Φi=θi- i
+3　模糊滑模的设计
+　　模糊滑模控制是模糊逻辑与一般滑模控制的结合，利用模糊控制本身所具有“语言变量”的 特性，采用“不精确推理”的手段，来替代一般滑模控制中的非连续部分使得控制信号得已 平滑．文［3］对模糊滑模控制作了深入的探讨，但是他们都是以误差、误差的变化律为语 言变量进行设计模糊推理规则，并制成决策表．这种模糊滑模控制缺少精确的数学表示式， 所以很难对控制系统进行稳定性分析．为了克服这种困难，本文采用滑模平面si=0来集中 误差及误差变化律的信息．把滑模平面si=0扩张成模糊滑模平面i=并以si=0作为i=的语言变量，并推出其精确的数学表示式.
+　　首先定义si, ufsi的语言集分别为
+T(si) ={NB, NM, ZR, PM, PB} ={Ci1, Ci2, Ci3, Ci 4, Ci5}　　　　　　　　　　
+T(ufsi}={NB, NM, ZR, PM, PB} ={Fi1, Fi2, Fi3, Fi 4, Fi5}　　　　　　　　(9)
+其中“NB”,“NM”,“ZR”,“PM”,“PB”分别表示模糊集“负大“,“负中”,“零, “正中”,“正大”．它们的模糊隶属函数 如图1所示．
+
+图1　模糊隶属函数
+由直觉推理建立跟踪误差eli与模糊控制ufsi的模糊关系为：
+Rji:若e1i是Aji,则ufsi是B-ji(j=-2,-1,0,1,2)　　　　　　　　　　
+输入ei是Ai 输出ufsi是Bi　　　　　　　　　　　　　　(10)
+由第j条规则得到的模糊关系
+Rji=Aji×B-ji, 即Rji(e1i,ufsi)=Aji (e1i)∧B-ji(ufsi)　　　　　　　(11)
+总的模糊关系为
+　　　　　　(12)
+采用乘积推理规则和单点模糊化方法易得
+　　　　　　　　　　(13)
+应用重心化非模糊化方法进一步可推得到精确得控制
+　　　　　　　　　　　　　(14)
+文［4］给出了上式的数学解析表示式：
+　　　　　　　　(15)
+其中， 当|ei1|≥ψ时,
+4　稳定性分析
+　　本节将给出关于上节所设计的分散模糊控制器的稳定性分析
+　　选取模糊控制为
+ui=-(1-mi(t))uadi-mi(t)k1i(si,t)ufsi-k2i(s i,t)ufsi　　　　　　(16)
+其中
+
+
+参数的自适应律取为
+　　　(17)
+　　　　　　　　　　　　　(18)
+　　　　　　　　　　(19)
+其中P[.]文[2]中表定义的投影算子．
+　　定理 对于非系统(1)，如果采取分散模糊控制策略(16)～(19)，在假设条件(i)～(vi)成立的条件下，则有
+　　(i)xi1,ui∈L∞．　　(ii)ei(t)趋近于零．
+证明 关于|θ|≤Mi证明与［2］中的证明相类似，下面证明其它结论． 
+取Lyapunov函数为
+　　　　　　　　　　　　　　　　　(20)
+　　　　(21)
+求Vi(t)的微分得
+　　　　(22)
+如果|si|≤i，则iΔ=0,所以推出i=0.如果|si|＞i, 由于iΔ=i, 那么根据ufsi=-sgn(si(t))和(8)得
+　　　　(23)
+由假设(i)～(iv)及 (16）-（19）式，（23）式可写成
+　　　　　　　(24)
+在（24）式中，Ii的定义如下：如果（17）中的第一个条件成立，则Ii=0．如 果第二条件成立，则Ii=1.
+与文[2]相类似，可证明．从(25)便得
+　　　　　　　　　　　(25)
+由于, 根据(25)得
+　　　　　　　　　　　　　(26)
+由上式得到V∈L∞, 推出ijk，i,siΔ∈L∞,进而有ei ∈L∞．因为xi1=ei+xid，所以xi1有界．根据（25）知V单调减少 并且下方有界，所以limV(t)=V(∞)存在．对（26）积分得
+　　　　　　　　　　　　　　　　　　　t→∞
+　　　　　　　　　　(27)
+上式意味着siΔ∈L2，因为iΔ∈L∞, 根据Barbalet's引理得到limsiΔ(t)=V(∞), 因此可推出
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　t→∞
+|si|≤i即ei(t )渐近收敛于零的一个邻域内．再由（15）知ui有界．
+注释：基金项目:国家自然科学基金(69874020)项目资助
+作者简介：王　涛，34岁，讲师．研究领域为模糊逻辑和模糊控制．
+　　　　　佟绍成，39岁，教授．研究领域为模糊自适应控制; 非线性控制．
+作者单位：辽宁工学院基础部　锦州　121001
+参考文献
+1　Zong-Mu Yel. A Performance Approach to Fuzzy Control Design for N onlinear System, Fuzzy Sets and Systems, 1994, 64(4):339～352
+2　Wang Lixin. Stable Adaptive Fuzzy Control of Nonlinear Systems. IEEE Tran s.on Fuzzy Systems, 1993,1(2):146～155
+3　Palm R. Sliding Mode Fuzzy Control, Automatics, 1994, 30(9):1429～ 1437
+4　Tong Shaocheng, Chai Tianyou. Adaptive Fuzzy Sliding Mode Control for N onlinear Systems. Pro of IEEE. Int. Conf. On Fuzzy Systems, 1996:49～54
+收稿日期:1998-01-14

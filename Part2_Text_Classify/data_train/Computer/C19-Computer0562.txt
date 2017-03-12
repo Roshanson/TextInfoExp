@@ -1,0 +1,80 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第4期　Vol.23　No.4　1997
+
+
+
+组合概率信息的复杂动态
+系统层次故障检诊方法
+葛彤　邓建华
+　　摘　要　基于对系统故障的功能性特征的考虑和对子系统模态的精确定义，提出一种构造系统诊断用的层次模型的方法，并由此提出一种在此模型中层次地推进检诊过程的方法，基本诊断手段采用de kleer的GDE通用诊断推理机. 层次的诊断方式极大地提高了诊断的效率， 子系统模态的适当定义保证了层次间界限分明，消除了诊断算法在不同层次间可能的重复， 产生了简炼的层次间概率传递公式. 
+　　关键词　故障检测与诊断， 功能层次模型， 层次检诊方法.
+A HIERARCHICAL FAULT DETECTION AND DIAGNOSIS 
+METHOD WITH PROBABILITY INFORMATION FOR 
+COMPLEX DYNAMIC SYSTEMS
+GE TONG
+(Shanghai Jiao Tong University, Shanghai 200030)
+DENG JIANHUA
+(Northwestern Polytechnical University, Xi′an 710072)
+Abstract　First, a method to construct hierarchical models of a system for fault detection and diagnosis (FDD) is presented, based on consideration of the function feature of faults and accurate definition of the conception of mode. Second, a hierarchical FDD strategy is also presented, which uses the constructed models as fundamental descriptions of the system, and de kleer's general diagnosis engine (GDE) as the fundamental FDD tool. The hierarchical scheme can greatly improve diagnosis efficiency. Accurate definition of mode makes the system's hierarchies clear, prevents the algorithm from redundancy and produces compact probability transmission formulas.
+Key words　Fault detection and diagnosis, function-oriented hierarchical model, hierarchical FDD method.
+1　引言
+　　非层次诊断方法(如J. de kleer的GDE通用诊断推理机系列理论［1，2］)， 用于如飞行器一类包含大量元件的复杂动态系统时诊断效率很低. 对于此类系统， 必须采用层次诊断方法以提高效率，这就提出了如何构造系统的层次模型以及如何利用此模型推进检诊过程的问题. 只有很少的文献涉及到这些问题［3，4］， 并且它们对系统层次模型的构造都没有提出明确的准则，因而其模型层次是含糊的. 这不仅使检诊工作在各层次上可能出现重复，也使概率信息在不同层次间的简洁传递难以实现. 为此，本文从故障的功能性特征出发对子系统及其模态进行严格定义， 提出一套严格的系统层次模型构造方法和利用此模型层次推进检诊过程的方法， 用于解决这些问题.
+2　功能层次模型
+　　被检诊系统(以OBJ表示)的最小构成单元为元件，它是可替换的最小单元. 由此可定义子系统的概念. 
+　　定义1.　(1)元件是子系统；(2) 由子系统组成，具有一定内部结构并完成一定功能的OBJ的一部分是子系统； (3)只有满足以上两点才是子系统. 
+显然， 元件和OBJ都是子系统. 
+　　子系统具有三个要素：终端变量、组件和内部结构. 子系统通过终端变量和OBJ其它部分相互作用，终端变量形成了子系统的边界， 边界以外的事件(包括终端变量的取值)称为子系统的外部事件，边界以内所有元件的集合称为子系统的域. 子系统可由更低层次的子系统组成，这些更低层次的子系统称为高层次子系统的组件. 以COM(A)表示A的组件集，应有下列关系：COM(A)中各子系统的域是A的域的一个划分. 组件按一定方式相互作用形成高层次子系统，这种相互作用的方式即为高层次子系统的内部结构，以stru(.)表示. 
+　　子系统的存在总是为了完成某些功能的， 并且在不同的条件下功能不同. 由此可提出子系统模态的概念. 
+　　定义2.　子系统A的模态集Mod(A)是如下集合：
+　　(1) 对于元件A， Mod(A)是一个基本事件空间，其中每一元素对应A的一种功能. 
+　　(2) 如果A不是元件，且对于任意Ai∈COM(A)定义了Mod(Ai)，则Mod(A)={A(j)｜j=1,2,…}是笛卡尔乘积Mod(Ai)(此集合也为一基本事件空间)的一个划分，并且对于任意的C1, Cm∈A(j) (A(j)为Mod(A)中任一元素)和A的外部事件Φ，有
+P(Φ｜Cl)=P(Φ｜Cm).
+(1)
+式中P(.)为概率符号. 
+　　Mod(A)的每一元素称为A的一个模态. 设COM1为子系统的集合，那么笛卡尔乘积 Mod(Ai)称为COM1的实现集，记为INS (COM1)， 其任一元素称为COM1的一个实现. 实现中各元素的次序是不重要的，以下本文将其视为普通的集合. 
+　　根据以上定义将OBJ按组件包含关系划分为多个子系统并形成其相应模态，即形成一种层次结构， 其最低层为元件，最高层即为OBJ本身. 
+　　用来描述子系统功能的模型称为子系统的功能模型， 它是不同模态下子系统对其终端变量提供的约束的总和. 低层子系统的功能模型按某种结构组合成高层子系统的模型，此模型是和结构有关的，称为装置模型(device-oriented models)， 对其进行抽象， 可形成高层次子系统的功能模型. 以mf(A)表示A的功能模型， ms(A)表示A的装置模型，同一子系统随其低层次划分不同可有多个装置模型， 分别以stru(ms(A))和COM(ms(A))表示A的对应于特定装置模型ms(A)的内部结构和组件集， 并以“→”表示映射关系， 则以上关系可表示为
+
+(2)
+ms(A)→mf(A).
+(3)
+这样， OBJ就以一种多层次、多角度的模型描述出来， 称为功能层次模型.
+3　故障检诊策略
+　　故障诊断就是识别系统当前所处元件级实现即各元件模态的过程. 非层次的诊断方法必须同时处理数量巨大的系统可能的元件级实现，而层次诊断方法则可通过逐次确定其类别，缩小范围直至元件级的方法极大地提高诊断效率. 
+　　利用功能层次模型，在任意时刻i，检诊系统动态维护一个OBJ的装置模型mi， 其中m0对应OBJ的功能模型(功能层次模型的顶层)，它可看作具有单组件的装置模型. mi+1是将COM(mi)中某组件Aj的mf(Aj)代以ms(Aj)得到的， Aj称为由mi产生mi+1的放大组件， mf(Aj)和ms(Aj)由功能层次模型提供，则有
+
+(4)
+显然， Aj的选择标准是其处于故障模态的概率足够大，而当COM(mi)中所有元素均不满足此条件时，mi+1即为mi. 这样，故障检诊策略就由同一模型mi中的诊断机制和产生{mi｜i=0,1,…}序列的模型递进机制两部分构成. 
+　　诊断机制采用通常的GDE通用诊断推理机［2］，它以当前模型mi、当前测量di和当前候选项集CA为输入，产生新的候选项集CA. 候选项集CANi和CA是INS(COM(mi))的子集，其中任一元素称候选项，并且CANi中的候选项可解释i-1时刻以前的测量，CA中的候选项可解释i时刻以前的测量. 在时刻i，每一候选项对应一概率. 对于候选项Ci1∈CANi，对应概率记为P(Ci1)， 为Ci1的先验概率. 对于候选项Ci1∈CA，对应概率记为P’(Ci1)， 为Ci1的后验概率. 诊断机制根据当前测量di，利用贝叶斯公式计算P’(Ci1). 
+　　在i时刻，模型递进机制除了由模型mi按(4)式产生mi+1以外，还由CA产生CANi+1. 设Ci1∈CAN’i，Aj为由模型mi产生mi+1的放大组件，且Aj非元件，Ci1中包含Aj的某模态Aj(k), Aj(k)={Cp(Aj)｜p=1,2,…,n},Cp(Aj)为COM(Aj)的n个实现. 当mi扩展为mi+1后，Ci1扩展为CANi+1中的n个候选项C(i+1)lp, p=1,2,…,n,且
+C(i+1)1p=(Ci1-{Ai(k)})∪Cp(Aj).
+(5)
+根据定义2中(1)式，对任意外部事件Φ有
+P(Φ｜Cp(Aj))=P(Φ｜Cq(Aj))(Cp(Aj),Cq(Aj)∈Aj(k)),
+(6)
+由此可得
+P(C(i+1)lp｜di=vik)=P(Cil｜di=vik)P(Cp(Aj)｜Aj(k)), 
+(7)
+P(C(i+1)1p｜di=vik)即可作为i+1时刻候选项C(i+1)1p的先验概率P(C(i+1)1p).
+　　元件的初始模态概率为系统的先验知识. 本文假设各元件模态转变相互独立， 则因为同一子系统的组件集中各组件的域互不相交， 同一组件集中各子系统模态转变也相互独立. 这样，由功能层次模型的底层逐层向上，可求得所有子系统模态及组件集实现的初始概率. 
+4　举例
+　　考虑图1作动器系统OBJ， 其元件包括作动器ACT、液压系统HY、电源BAT1、BAT2以及传感器SEN1、SEN2、SEN3(分别测量液压p和电压v1、v2)， 则可形成另外两个子系统A和D如图中所示. 子系统模态划分可如下进行：所有子系统均包括两个模态，一个对应正常功能， 另一个对应故障，其功能未知，则子系统OBJ和A的正常模态对应所有组件均正常的情况，而D的正常模态对应BAT1和BAT2均正常的情况. 设各元件故障模态概率均为0.1， 诊断过程如表1所示，候选项以其所包含的正常模态集对应的子系统集简单表示，每一候选项对应一概率，表中只示出概率最大的前两个候选项. 可以看出， 诊断过程没有进入子系统D的内部，而非层次诊断方法通常将遍历所有元件. 即使对于层次方法， 当没有精确分清各层次时，各层中的诊断也可能产生相应的重复.
+
+
+图1　作动器系统
+表1　诊断过程
+
+iCANiCAN′iCOM(mi)
+0(〔〕,0.65) (〔OBJ〕,0.34)(〔OBJ〕,1)(〔〕,0)OBJ
+1(〔A〕,0.56) (〔D〕,0.27)(〔A〕,0.9)) (〔A,SEN2〕,0.05)A,D,SEN2
+2(〔ACT〕,0.42) (〔HY〕,0.42)(〔HY〕,0.74) (〔ACT,HY〕,0.09)ACT,HY,SEN1,D,SEN2
+
+作者单位:葛彤　上海交通大学水下工程研究所　上海　200030
+　　　　　邓建华　西北工业大学120信箱　西安　710072
+参考文献
+[1]　de Kleer J, Williams B C. Diagnosing multiple faults. Artificial Intelligence, 1987, 32(1):97―130.
+[2]　de Kleer J, Williams B C. Diagnosis with behavioral modes. In: Proc. IJCAI-89, 1989, 2:1324―1330.
+[3]　Ameen A H. Device understanding and modeling for diagnosis. IEEE Expert, 1991, 6(2):26―32.
+[4]　Franz L, Wolfgang N. Integrating model-based monitoring and diagnosis of complex dynamic systems. In:Proc. IJCAI-91, 1991,2:1024―1030.
+收稿日期　1995-09-29

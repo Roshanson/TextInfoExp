@@ -1,0 +1,115 @@
+微型机与应用
+MICROCOMPUTER & ITS APPLICATIONS
+2000　Vol.19　No.4　P.58-59
+
+
+
+优化Ｖｉｓｕａｌ Ｂａｓｉｃ查询的方法
+姚卫新
+摘 要： Ｖｉｓｕａｌ Ｂａｓｉｃ允许用户使用结构化语言ＳＱＬ从Ｊｅｔ ｄａｔａｂａｓｅｓＭＤＢ文件中取出数据，本文提出了一些优化查询操作的方法。
+关键词： 查询 ＳＱＬ语言 优化设计
+　　在Visual Basic程序设计中不可避免地要用到查询。本人在总结了多年的使用心得后，全面介绍了查询优化的方法。
+1　表设计
+　　在设计表中字段时，尽量选择长度较短的数据类型，这样可以增加每页中存放的记录个数。连接（JOIN）使用的字段必须有相同或兼容的字段。
+2　压缩数据库
+　　压缩数据库有二点好处：（1）随着数据库中数据量的增加，原有的优化方案可能不再有效，压缩数据库可以最大限度地克服这个缺点。（2）随着数据库中数据量的增加，它就变得比较“零碎”，压缩数据库可以把1个表的数据集中到硬盘的连续页中，提高顺序扫描的执行速度。压缩数据库的例子如下（它将保留1个备份）：
+　　DBEngine．CompactDatabase ″C＼VB＼BIBLIO．MDB″，″C＼VB＼BIBLIO2．MDB″
+　　Kill ″C＼VB＼BIBLIO．BAK″
+　　Name ″C＼VB＼BIBLIO．MDB″ As ″C＼VB＼BIBLIO．BAK″
+　　Name ″C＼VB＼BIBLIO2．MDB″ As ″C＼VB＼BIBLIO．MDB″
+　　如果数据库被频繁更新，最好考虑经常压缩数据库。
+3　查询输出中尽量避免表达式
+　　某个带有表达式的查询输出作为另一个查询的输入时，可能会产生问题。如下例，查询1（Query1）是第2个SELECT语句的输入：
+　　Dim DB As Database
+　　Dim RS As RecordSet
+　　Set DB＝DBEngine．Workspaces（0）．Opendatabase（″Biblio．MDB″）
+　　DB．CreateQueryDef（″Query1″，″SELECT IIF（Au＿ID＝1，′Hello′，′Goodbye′） AS X FROM Authors″）
+　　Set RS＝DB．OpenRecordSet（″SELECT * FROM Query1 WHERE X＝′Hello′″）
+　　查询1中的IIF（）表示式不能被优化，所以第2个SELECT语句中的WHERE条件也不能被优化，故整个查询就不能优化。可以合并为1个嵌套的SQL语句：
+　　Set RS＝DB．OpenRecordSet（″SELECT* FROM Authors WHERE Au＿ID＝1″）
+　　对于复杂的嵌套查询，把字段名直接写在表达式中：DB．CreateQueryDef（″Query1″，″SELECT IIF（Au＿ID＝1，′Hello′，′Goodbye′） AS X，Au＿ID，FROM Authors″）Set RS＝DB．OpenRecordSet（″SELECT * FROM Query1 WHERE Au＿ID＝1″）
+　　如果在查询输出中无法避免计算，可把计算放在上层查询中，不要放在下层查询中。
+4　分组、连接和累计
+　　连接二个表时，如果分组和累计字段名相同，应确保分组字段与累计（Sum，Count等）字段来自同一个表。
+　　例：下面的查询效率较低，因为SUM的字段在Ord表中，而GROUP BY的字段在Cust表中。
+　　SELECT Cust．CustID，
+　　　　　　FIRST（Cust．CustName）AS CustName，
+　　　　　　SUM（Ord．Price）AS Total
+　　FROM Cust INNER JOIN Ord ON Cust．CustID＝Ord．CustID
+　　GROUP BY Cust．CustID
+　　例：下面的查询效率较高，因为SUM和GROUP BY的字段均为Ord．CustID，它们来自同一个表。
+　　SELECT Ord．CustID，
+　　　　　　FIRST（Cust．CustName）AS CustName，
+　　　　　　SUM（Ord．Price）AS Total
+　　FROM Cust INNER JOIN Ord ON Cust．CustID＝Ord．CustID
+　　GROUP BY Ord．CustID
+5　分组字段越少越好
+　　GROUP BY中的字段越多，查询花费的时间越长。使用FIRST（）累计函数有助于减少GROUP BY语句中字段的个数。
+　　效率低的例子：
+　　SELECT Cust．CustID，
+　　　　　Cust．CustName，
+　　　　　Cust．Phone，
+　　　　　SUM（Ord．Price）AS Total
+　　FROM Cust INNER JOIN Ord ON Cust．CustID＝Ord．CustID）
+　　GROUP BY Cust．CustID，Cust．CustName，Cust．Phone
+　　效率高的例子：
+　　SELECT Ord．CustID），
+　　　　　　FIRST（Cust．CustName）AS CustName，
+　　　　　　FIRST（Cust．Phone）AS Phone，
+　　　　　　SUM（Ord．Price）AS Total
+　　FROM Cust INNER JOIN Ord ON Cust．CustID＝Ord．CustID）
+　　GROUP BY Ord．CustID
+6　在连接前嵌套GROUP BY语句
+　　如果连接二个表并且用其中1个表中的字段进行分组，把该SELECT语句分解为2个查询语句更为高效。把带有GROUP BY子句的SECECT语句作为1个嵌套查询加入到上层查询的非分组表中。
+　　低效例子：
+　　SELECT Ord．CustID，
+　　　　　　FIRST（Cust．CustName）AS CustName，
+　　　　　　FIRST（Cust．Phone）AS Phone，
+　　　　　　SUM（Ord．Price）AS Total
+　　FROM Cust INNER JOIN Ord ON Cust．CustID＝Ord．CustID
+　　GROUP BY Ord．CustID
+　　高效例子：
+　　查询1：
+　　SELECT CustID，SUM（Price）AS Total
+　　FROM Ord
+　　GROUP BY CustID
+　　查询2：
+　　SELECT Query1．CustID，Cust．CustName，Cust．Phone，查询1．Total FROM Cust INNER JOIN Ord ON Cust．CustID＝Ord．CustID
+7　索引JOIN子句中的字段
+　　用JOIN连接表时，索引JOIN子句中用到的字段后，查询优化器将使用比较高级的内部连接策略来优化查询语句。
+　　然而，如果有1个表相对比较小（占1－2页面），就不必要对该表建索引。这样读到内存中的页比较少，所以，是否对表建索引要看情况而定。
+8　使用可优化的表达式
+　　尽量建立可以使用Rushmore技术进行优化的查询，Rushmore并不会自动地加速所有的查询。
+9　用COUNT（*）代替COUN（［字段名］）
+　　微软的数据库引擎对COUNT（*）特别关照，使得COUNT（*）执行时比COUNT（［字段名］）快得多。另外，这二个操作略有不同：COUNT（*）计算返回的所有行，COUNT（［字段名］）仅计算该字段名不为NULL的行。
+10　参数中避免LIKE
+　　由于查询在编译时参数的值尚未确定，索引不起作用，最好在SQL语句中写明参数的值。
+11　避免LIKE中的通配符在开头
+　　如果使用LIKE操作符来寻找匹配的行，通配符不能在开头位置，否则索引不起作用。下面的例子索引起作用：
+　　Like ″Smith″，Like″Sm*″
+　　而下面的例子索引不起作用：
+　　Like ″*sen″
+　　Like ″*sen*″
+12　使用中间结果表（临时表）
+　　使用语句建立临时表，尤其是当查询结果要被其它的查询使用时，应尽量使用临时表，其效果非常显著。
+13　避免NOT IN与子查询一起使用
+　　NOT IN与子查询一起使用效果非常差，最好将其转化成嵌套查询或使用OUTER JOIN。
+　　下面的例子是查找没有订过货的客户：
+　　低效查询：
+　　SELECT Customers．*
+　　FROM Customers
+　　WHERE Customers．［Customer ID］
+　　　NOT IN（SELECT［Customer ID］ FROM Orders）；
+　　高效查询：
+　　SELECT Customers．*
+　　FROM Customers LEFT JOIN Orders
+　　　ON Customers．［Customer ID］＝Orders．［Customer ID］WHERE（（Orders．［Customer ID］Is Null））；
+姚卫新（中国纺织大学无锡校区210463）
+参考文献
+１，ＭｃＭａｎｕｓ Ｊ．使用Ｖｉｓｕａｌ Ｂａｓｉｃ５．０编程．北京：电子工业出版社，１９９８，１１０～１２１
+２，Ｂｒｉｅｒｌｅｙ Ｅ，Ｐｒｉｎｃｅ Ａ，Ｒｉｎａｌｄ Ｄ．Ｖｉｓｕａｌ Ｂａｓｉｃ６．０开发人员指南．北京：机械工业出版社，１９９９，４４５～４６４
+３，Ｓｉｌｅｒ Ｂ，Ｓｐｏｔｔｓ Ｊ．Ｖｉｓｕａｌ Ｂａｓｉｃ６．０开发使用手册．北京：机械工业出版社，１９９９
+４，Ｇｏｒｅｎ Ｃ．Ｖｉｓｕａｌ Ｂａｓｉｃ客户／服务器开发指南．北京：清华大学出版社，１９９７
+５，Ｇｕｒｅｗｉｃｈ Ｗ，Ｃｕｒｅｗｉｃｈ Ｏ．Ｖｉｓｕａｌ Ｂａｓｉｃ３从入门到精通．北京：学苑出版社，１９９４
+６，刘炳文，张坤．Ｖｉｓｕａｌ Ｂａｓｉｃ程序设计―数据库篇．北京：人民邮电出版社，１９９９
+收稿日期１９９９－１０－１８

@@ -1,0 +1,84 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+2000　Vol.26　No.1　P.121-125
+
+
+
+一类非线性系统的H∞鲁棒控制
+伏玉笋　田作华　施颂椒
+摘 要 考虑了在实际中具有工程应用背景的一类非线性不确定系统的H∞鲁棒控制问题.基于HamiltonJacobi不等式，给出了这类非线性系统渐近稳定且L2增益有限的充分条件.在这个条件下，得到了确保闭环系统满足H∞鲁棒扰动衰减性能准则的状态反馈控制器.
+关键词 非线性系统，H∞理论，HamiltonJacobi不等式，H∞鲁棒扰动衰减.
+H∞ ROBUST CONTROL OF A CLASS OF NONLINEAR SYSTEMS
+FU Yusun TIAN Zuohua SHI Songjiao
+(Institute of Automation,Shanghai Jiaotong University,Shanghai 200030)
+Abstract The H∞ robust control problem of a class of uncertain nonlinear systems with engineering background is researched.Based on Hamilton Jacobi inequality,a sufficient condition is presented such that the class of nonlinear systems is asymptotically stable and its L2 gain is limitable.Under the condition,a state feedback controller is given such that the close loop systems statisfy H∞ robust disturbance attenuation performance.
+Key words Nonlinear system,H∞ theory,HamiltonJacobi inequality,H∞ robust disturbance attenuation.
+1 引言
+　　自80年代起，线性系统H∞理论从各个方面得到了充分的研究.近年来，非线性系统H∞理论备受关注，对此作出重要贡献的有Van de Schaft［1］及其所附的相关文献.文［1］把问题归结为Hamilton-Jacobi方程的可解性，这类似于线性系统H∞理论中的Riccati方程.最近对非线性系统H∞理论作出贡献的有文［2～5］.文［3］给出了在输出反馈的情况下，扰动衰减问题可解的充分性条件；文［4］讨论了文［1，3］所述情况下的必要性条件.文［6］在重心移动型倒立摆的鲁棒控制这一工程背景下，研究了一类不确定系统.基于Riccati不等式，给出了系统渐近稳定且满足L2增益小于1的充分条件，及状态反馈H∞控制器的设计方法，但文［6］没能推广到更一般的非线性系统情形.
+　　本文对比文［2，6］的模型更为广泛的一类非线性系统模型进行了研究.基于Hamilton-Jacobi不等式，给出了满足H∞鲁棒扰动衰减性能准则的充分条件，及状态反馈控制器的设计算法.本文的结论推广了文献［2］的结果，而且可以用来解决文献［6］所提出的重心移动型倒立摆的鲁棒控制问题.
+2 问题的描述
+　　考虑如下非线性系统
+　(1a)
+z(t)=h(x)+k(x)u,　(1b)
+其中x(t)∈Rn是定义在原点某邻域的状态向量(x(0)=0)，z(t)∈Rm是输出向量，u是控制输入，ω是外界扰动；f(x)(f(0)=0),h(x),k(x),g1(x),g2(x)为具有合适维数的已知函数矩阵；
+表示未知函数向量.假设Δj和Δf满足如下增益有界条件［6］：
+　(2a)
+　(2b)
+式中以及Wj，Wf是已知矩阵，是满足δj(0,t)=0，δf(0,t)=0的未知向量.
+　　定义 如果系统满足如下条件，则称系统满足H∞鲁棒扰动衰减性能准则：
+　　（i）当ω=0时，系统（1）的平衡点x=0对于任意满足（2）的Δj和Δf是渐近稳定的；
+　　（ii）给定γ>0.当x(0)=0时，对于任意给定的及满足(2)的任意的Δj,Δf均成立.其中ω的L2范数定义如下：
+
+　　为便于研究，假设kT(x)［k(x) h(x)］=［I 0］.
+3 主要结果
+3.1 基本定理
+　　引理1.令ω=0，u=0.若存在适当的标量λj>0和λf>0，使得下列Hamilton-Jacobi不等式
+（3）
+有光滑正定解V(x)：Rn→R(V(x)>0,V(0)=0)，则系统（1）的平衡点x=0对于任意满足（2）式的Δj和Δf是渐近稳定的.其中
+
+设定为行向量.
+　　证明.选取李雅普诺夫函数
+
+其中Φ(τ,x)表示方程(1a)对于x(0)=x，ω=0， u=0的解.
+
+注意到
+
+可得 
+
+其中所以<0.证毕.
+　　注释1.若取f(x)=Ax,V(x)=xTPx(P为对称正定阵)，则(3)式可化简为
+
+若A是稳定阵，则可推出文献［6］的引理1.可见，本文提出的引理是文献［6］的推广.
+　　定理1.令u=0.如果存在λj>0和λf>0，使得下列Hamilton-Jacobi不等式
+　(4)
+有光滑正定解，则系统（1）满足H∞鲁棒扰动衰减性能准则.
+　　证明.由引理1知，渐近稳定性的条件满足，即准则的条件（i）满足.下面证其满足准则的条件（ii）. 
+定义
+
+则 
+
+即有 
+
+从而对于任意满足(2)的Δj和Δf，‖z‖T<γ‖ω‖T成立.证毕.
+　　注释2.若Δf，Δj=0，即不存在Bs,Cs,Ds，则(4)式可化简为
+
+这也就是文献［2］中的(7)式.
+3.2 状态反馈控制器的设计
+　　下面考虑系统（1）的H∞综合问题，即设计状态反馈控制器
+u=α(x),
+使得闭环系统满足H∞鲁棒扰衰减性能准则.
+　　显然由定理1可得如下结果.
+　　推论1.如果存在λj>0和λf>0，使得下列HamilonJacobi不等式
+　(5)
+有光滑正定解，则系统（1）满足H∞鲁棒扰动衰减性能准则.其中
+
+　　定理2.如果存在λj>0和λf>0，使得下列Hamilton-Jacobi不等式
+　(6)
+有光滑正定解，则使得闭环系统(1)满足H∞鲁棒扰动衰减性能准则的状态反馈控制器给定如下：
+
+其中
+
+
+证明.把u代入（5）式左边，化简可得
+左边=
+当

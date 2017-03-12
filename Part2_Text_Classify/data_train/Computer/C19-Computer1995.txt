@@ -1,0 +1,68 @@
+微型机与应用
+WEIXINGJI YU YINGYONG
+1999年3月 第18卷 第3期 vol.18 No.3
+
+
+
+C/S系统中数据库表间PK/FK关系和TRIGGER
+技术的一种实际应用
+魏育成　王耀南　周海燕
+　　摘　要：从矿山CIMS系统中报表子系统的开发和设计入手，介绍了SQL Server 6.5数据库中表间主键/外键(PK/FK)关系和触发器(TRIGGER)技术在处理数据表间数据关联的灵活应用。
+　　关键词：C/S系统　结构化查询语言SQL　主键/外键　触发器　数据关联
+　　MS SQL Server 6.5是一个优秀的多用户关系型数据库管理系统，它为客户端开发语言(如VB)提供了1个功能强大的平台。其表间主键/外键关系和触发器技术如能在实际开发中灵活使用，往往能收到较好的效果。本文将介绍1个实际矿山CIMS――“选矿厂生产数据采集和管理系统”中“报表子系统”的开发和设计方法，着重讨论利用PK/FK关系和TRIGGER技术实现表间数据引用一致性的问题。
+1　问题的提出
+　　选矿厂生产数据采集和管理系统由底层数据采集工作站、服务器和上层报表管理工作站组成。系统要求底层数据采集工作站采集生产设备的工作时间、用电量、生产矿量等生产数据，并且实时送到服务器上的SQL Server 6.5数据库中，上层报表管理工作站从数据库中抽取感兴趣的设备记录组成报表打印。
+　　根据要求，首先在SQL库建立1个生产数据表――Data表，包括设备编号(devmark)和每日生产量(production)2个字段，其中devmark为主关键字(PK)，这张表存放所有生产设备的每日生产量，由底层工作站每日定时刷新。在此基础上建1个生产设备表――Devices表，有3个字段：设备编号(devmark)、设备中文名称(devname)、每日生产量(production)，其中devmark为主关键字(PK)，同时也为引用Data表的devmark栏的外部关键字(FK)，这张表只存放需显示、报表的生产设备的生产量；第3张表为设备部件表――Parts表，存放在设备表中已有设备的所有部件的记录，共有7个字段：设备编号devmark、部件编号parmark、部件中文名称parname、每日生产量production、累计生产量accumulation、设计寿命destime、产量百分比percent，其中devmark、parmark为双关键字(double keys),devmark字段也为引用Devices表的devmark栏的外部关键字。其表间关系如图1所示。
+
+图1　表间关系图
+　　现在的关键问题是如何维护这3张表中生产数据引用的一致性。其一：如何在底层工作站刷新生成数据表Data的同时，将每日生产数据及时传递到生产设备表Devices和设备部件表Parts。其二：保证在向Devices表添加新设备和向Parts表添加新部件时，都可在底层Data表中找到其数据来源，即表中没有所谓的“孤单行”。其三：对devices表进行删除某设备操作时，要满足此设备在parts表中的所有部件已全部删除的前提；反之，若1个设备的所有部件在parts表中已完全被删除，在devices表中此设备的记录也应被删除。
+2　解决的方法
+2.1　几个基本概念
+　　1.主关键字/外关键字(PK/FK)。主关键字是唯一1个表行的1个或若干表栏的组合，要求非空，且总是1个唯一索引；主关键字用于与其他表的外关键字的联合；外关键字是其值匹配另一表中主关键字的1个或若干表栏的组合，其记录不必是唯一的。事实上，外关键字常与主关键字形成多对一的关系。主关键字表是“主表”，外关键字表是“仆表”，“仆表”参照“主表”的数据。
+　　2.触发器(TRIGGER)。触发器在SQL库中是一种特殊的存储过程，也是SQL Server的数据库对象之一，当所在的数据表进行更新、添加或删除记录时就会激发它进行规定的操作。触发器的优点是自动激发，不管什么引起数据修改，它们都工作，所以常常用于不同数据表中的相关数据的串接修改。采用这种方法实现数据表间接的数据关联可由数据库集中维护控制，规则变化时只需修改相应的TRIGGER即可，这样系统易于维护，提高了工作效率。
+　　触发器工作时引用2个特殊的测试表inserted表和deleted表，这2张表在对某触发器表进行insert、delete和update操作时，被用于存放受到影响的表行的副本，即当对某触发器表进行insert操作时，新表行被同时加到inserted表和该触发器表中；当对此表进行delete操作时，表行从触发器表中删除转移到deleted表中；而update操作在事务效果上是先做1个delete操作后跟1个insert操作。
+2.2　实际应用
+　　现在利用上面介绍的PK/FK关系和TRIGGER技术来实现“生产数据表(Data)―生产设备表(Devices)―设备部件表(Parts)”之间的数据关联。
+　　1.为了保证每日data表数据更新后及时向devices表和parts表传递，在data表和devices表上分别建立update触发器如下：
+tri1:create trigger updatedevices
+　　 on data for update
+　 as
+　　　　Update devices
+　　　　Set devices.production=inserted.production from inserted
+　　　　Where devices.devmark=inserted.devmark
+tri2:create trigger updateparts
+　 on devices for update
+　 as
+　　　 update parts
+　　　 set parts.production=inserted.production from inserted
+　　　 where parts.devmark=inserted.devmark
+　　以上2个触发器保证了在data表中某设备每日生产量(production)刷新后，按照设备编号(devmark)将生产量(production)传到devices表和parts表。之后再在parts表中创建1个update触发器用于累加生产量、计算百分比：
+tri3:create trigger calculate
+　 on parts for update
+　as
+　　update parts
+　　set parts.accumulation=parts.accumulation+parts.production
+　　parts.percent=(parts.accumulation+parts.production)/parts.destime from inserted
+　　where parts.devmark=inserted.devmark
+　　2.当对devices表进行添加某设备操作时，由于data表和devices表存在PK/FK参照关系，SQL Server 6.5要求必须添加data表中已有的设备记录，否则，回卷该insert操作。同理，对parts表进行添加某部件的操作时也被parts表和devices表的PK/FK参照关系强制只能添加devices表中已有的设备的部件项。这种强制性的主键/外键关系也是SQL Server 6.5较其早期版本的新增功能之一。这样，添加操作就不会产生数据引用的“孤单行”。
+　　3.当对devices表进行删除某设备操作时，若此设备在parts表中存在部件记录，由于data表和devices表存在PK/FK参照关系，SQL Server 6.5不允许删除被“仆表”参照的“主表”表行。必须先在parts表中把此设备的所有部件记录删除，才能删除devices表中的这台设备的记录。为此，在parts表中加入1个delete触发器，目的是当在parts表中某设备的所有部件均被删除之后，同步删除devices表中的该设备记录。
+tri4:Create trigger deleteparts
+　　on parts for delete
+　　as
+　　if(select count(*)from parts,deleted where parts.devmark=deleted.devmark)=0
+　　begin
+　　delete devices from deleted
+　　where devices.devmark=deleted.devmark
+　　end
+　　上述3张表间的修改、插入、删除等操作数据关联过程如图2所示。 
+
+
+图１　表间数据关系图
+3　结论
+　　通过对实际系统的开发和设计分析可以知道，如果能较好地利用大型关系型网络数据库的表间的PK/FK关系和TRIGGER技术，实现关系型数据表之间的数据关联，体现服务端强大而又灵活的功能，在实际应用中往往能取得事半功倍的效果。
+作者单位：湖南大学电气与信息工程系(410082)
+参考文献
+　1　Microsoft.Microsoft SQL Server 6.5 for Windows NT技术手册(二).北京：学苑出版社，1995
+　2　Microsoft.Microsoft SQL Server 6.5程序员指南.北京：宇航出版社，1998
+　3　Microsoft.Microsoft SQL Server 6.5 Transact-Sql语言参考手册.北京：宇航出版社，1998
+(收稿日期：1998-09-10)

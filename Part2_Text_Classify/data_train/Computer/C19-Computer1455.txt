@@ -1,0 +1,97 @@
+自动化学报
+ACTA AUTOMATICA SINICA
+1997年　第23卷　第6期　Vol.23　No.6　1997
+
+
+
+
+两步H∞辨识算法的一个近似最优的误差上界
+王书宁
+　　摘要　利用逼近理论中的n-宽度和Bernstain不等式，以一般性的窗口系数为变量，对鲁棒辨识中的两步H∞辨识算法，建立了一个近似最优的误差上界函数. 该函数是窗口系数的凸函数，它不仅可用于计算任意窗口系数对应的辨识误差上界，还为优化选择两步H∞辨识算法的窗口系数提供了可行途径. 
+　　关键词　鲁棒辨识， 最坏情况下的确定型辨识， H∞辨识， 两步H∞辨识算法.
+A QUASI-OPTIMAL UPPER ERROR BOUND FOR TWO-STAGE H∞
+IDENTIFICATION ALGORITHMS
+WANG SHUNING
+(Dept. of Automation, Tsinghua University, Beijing 100084)
+Abstract　By making use of n-width in approximation theory and Bernstain's inequality, a quasi-optimal upper error bound for two-stage H∞ identification algorithms of robust identification is established in this paper, which is an explict function of general window coefficients. The function is convex with respect to window coefficients. It not only can be used for computation of upper error bounds corresponding to any concrete window coefficients, but also supplies a feasible way for choosing window coefficients of two-stage H∞ identification algorithms with optimization techniques.
+Key words　Robust identification, worst-case/deterministic identification, H∞ identificatioin, two-stage H∞ identification algorithms.
+1　引言
+　　两步H∞辨识算法产生于文献［1］，后经文献［2,3］的发展，成为解决频域H∞鲁棒辨识问题的一类算法.迄今，对该算法的研究基本上都局限于对具体的窗口系数推导辨识误差上界，以证明相应算法的收敛性. 这些上界一般比较保守［2］，不能据其大小比较不同窗口系数的优劣.为此，本文以一般性窗口系数为变量，建立了一个近似最优的误差上界函数.它不仅为计算任意窗口系数对应的辨识误差上界提供了便利， 还可直接用于优化选择窗口系数. 
+　　本文采用以下符号约定：CN表示起始下标为0的全体N维复向量的集合；L∞表示满足‖h‖L∞:=｜h(z)｜＜∞的复变函数组成的赋范空间；QN:={h,h∈L∞｜h(z)=hkzk};H∞表示满足‖h‖H∞:=｜h(z)｜＜∞的解析函数组成的赋范空间；PN:={h,h∈H∞｜h(z)=hkzk};由于‖h‖H∞=‖h‖L∞,h∈H∞,将统一用‖h‖∞:=｜h(ejw)｜表示L∞和H∞的范数，其中j表示；对任意的x∈CN，xk总表示其分量；对任意的h∈H∞，hk总表示其Taylor系数.
+2　预备知识
+2.1　H∞辨识问题
+　　设被辨识系统为离散、稳定、因果、线性时不变的单变量系统. 假定：1)系统脉冲响应{hk}∞k=0构成的传递函数h(z):=hkzk属于先验模型集H(M,ρ):={h,h∈H∞｜h(z)｜≤M,｜z｜＜ρ}，其中M＞0和ρ＞1给定；2) 对任意的N＞0，可得到受污染的频域观测数据EN(h,η)∈CN，满足ENt(h,η)=h()+ηt,0≤t≤N-1，其中η∈BN(ε):={η,η∈CN｜｜ηt｜≤ε,0≤t≤N-1}是未知噪声，ε＞0给定. 要求：1)设计算法:CNH∞，使能用(EN(h,η))逼近h; 2) 确定在最坏情况下可能产生的辨识误差eNε():=sup{‖(EN(h,η))-h‖∞｜s.t.h∈H(M,ρ),η∈
+BN(ε)}的上界，并分析eNε()可否随着N趋于无穷和ε趋于零而趋于零，具有这种性质的算法称为收敛的算法. 
+2.2　两步H∞辨识算法
+　　用FN:CNCN 表示离散Fourier变换，即FNk(y):=，0≤k≤N-1，y∈CN. 对任意的整数m和0≤k≤N-1，规定FNk+mN(y)=FNk(y).定义映射nx1:CNL∞和*:L∞H∞如下：
+
+其中n为给定的正整数，{xk}n-1k=-(n-1)为给定的窗口系数. 所谓两步H∞辨识算法即由映射nx2(EN(h,η)):=*(nx1(EN(h,η)))生成所需模型. 容易证明［3］
+eNε(nx2)≤2eNε(nx1).　　　　　　　　　　　　　　(1)
+此外，*完全由Nehari定理所确定［4］.可见，nx2的性能实际上只取决于窗口系数x的选择. 
+2.3　几个引理
+　　引理1.［5］若M＞0,ρ＞1，则对任意正整数N和h∈H(M,ρ)，成立
+
+其中ΓNρ:H∞H∞定义为(ΓNρ(h))(z)=(1-ρ2(k-N))hkzk.
+　　引理2.对任意的a∈CN和b∈CN，成立
+
+其中HN(M,ρ):={h,h∈PN｜(αNρk)2｜hk｜2≤M2},αNρk:=ρk(1-ρ2(k-N))-1,0≤K≤N-1.
+　　证明.首先利用Cauchy不等式可得
+
+　　　　　(2)
+此外，令其中t和t分别表示at和bt的共轭复数. 取h0∈PN为容易验证
+h0∈HN(M,ρ),η0∈BN(ε),　　　　　　　　　　　　(3)
+　　　　　　(4)
+结合(2)―(4)式，知本引理成立. 
+　　引理3.对任意的h∈QN和满足n＞4π(N-1)的正整数n，成立
+
+　　证明.引理的左半不等式显然成立.只证其右半不等式.记令不难看出
+｜h(ejω)｜=｜f(ω)｜,0≤ω≤2π.　　　　　　　　　　　(5)
+对任意的0≤l≤n-1，利用f(ω)的实部和虚部在处的一阶Taylor展开及Bernstain不等式［6］，有
+
+可以推得
+
+在上式两边对于l求最大，注意到,可得
+　　　　　　 (6)
+最后，将(5)式代入(6)式可得欲证之不等式. 
+3　主要结果
+　　为论述方便，将两步H∞辨识算法中的n取为N，对n=mN, m＞1的情况可类似处理. 
+　　定理1.对任意算法，成立
+
+其中η∈BN(ε+Mρ-N)}.
+　　证明.对任意的h∈H(M,ρ)和η∈BN(ε)，令 0≤t≤N-1. 由引理1知
+‖h-ΓNρ(h)‖∞≤Mρ-N, d∈BN(ε+Mρ-N).　　　　　　　　　　(7)
+此外，利用Parseval等式可得
+
+所以，ΓNρ(h)∈HN(M,ρ).再注意到EN(h,η)=EN(ΓNρ(h),d), 结合(7)式可最终推得
+
+　　定理2.如果m＞4π，则有
+
+其中γ0(x,ω):=x0，γk(x,ω):=xk+xk-Ne-jNω, 1≤k≤N-1.
+　　证明.对任意的h∈HN(M,ρ)和η∈BN(ε+Mρ-N)，利用
+
+可以得到
+
+注意到对FNk(EN(h,η))在k＜0和k≥N时的规定，可得
+
+对上式利用引理2可直接得到
+　　　(8)
+另一方面，由于Nx1(EN(h,η))-h∈QN， 利用引理3可得
+　　　(9)
+最后，注意到及,ω，在(9)式关于h和η求上确界，并利用(8)式，可得到本定理的结论. 
+　　由以上定理和(1)式，立即可得以下推论. 
+　　推论1.对任意一组窗口系数x，成立
+ 
+其中m为满足m＞4π的任意整数. 
+4　结束语
+　　为获得推论1采取了两种保守的处理方法：第一，利用引理1将h(z)的无穷尾项转换为一个其H∞范数不大于Mρ-N的未知量；第二，用各ht的不等式约束ρ2t｜ht｜2≤M2代替不易处理的原始约束｜htρtejtω｜≤M,ω.文献中一般采用Cauchy估计ρt｜ht｜≤M,t处理以上问题.由于Cauchy估计可以从ρ2t｜ht｜2≤ρ2t｜ht｜2≤M2推出，而从Cauchy估计出发只能得到无穷尾项的如下上界｜htejtω｜≤｜ht｜≤Mρ-N(1-p-1)-1. 因此，本文建立的上界应更接近误差上确界. 
+　　此外，是x的凸函数，而凸规划问题存在一般有效的求解算法. 因此，推论1建立的上界不仅为计算任意一组与窗口系数对应的辨识误差上界提供了便利，还为优化选择窗口系数提供了可行途径. 
+1) 得到国家自然科学基金和教委博士点基金资助课题.
+作者单位：清华大学自动化系　北京　100084
+参考文献
+[1]　Helmicki A J, Jacobson C A, Nett C N. Control oriented system identification: a worst-case/deterministic approach in H∞. IEEE Trans. Automatic Control, 1991, 36(10):1163-11276.
+[2]　Partington J R. Robust identification and interpolation in H∞. Int.J. Control.1991,54(5):1281-1290.
+[3]　Gu G,Khargonekar P P. A class of algorithms for identificaiton in H∞. Automatica, 1992, 28(2):299-312.
+[4]　Young N J. An Introduction to Hilbert Space, New York: Cambridge University Press, 1988.
+[5]　 Gu G. Suboptimal algorithms for worst case identification in H∞ and model validation, IEEE Trans. Automatic Control,1994. 39(8):1657-1661.
+[6]　Beckenbach E F, Bellman R. Inequalities, Berlin: Springer-Verlag, 1983.
+收稿日期 1995-09-06

@@ -1,0 +1,99 @@
+计算机应用研究
+APPLICATION RESEARCH OF COMPUTERS
+2000 Vol.17 No.3 P.96-97
+
+
+
+
+Windows下高精度定时的实现
+洪锡军　陈彩贞　李从心
+摘　要：高精度定时是许多工业控制过程中的关键技术。在简要分析了Windows的基本运行机制之后，给出了Windows中常用的一些定时方法，并作了必要的比较。
+关键词：高精度定时 消息机制 定时器 系统中断
+1　引言
+　　在工业生产控制系统，特别是对控制性能要求较高的控制系统和数据采集系统中，需要高精度定时。开发这样的系统如果在DOS下进行，虽然定时器和中断的设定比较方便，通过对计算机硬件(系统时钟)的设置就可以完成，但其人机界面的设计则是一件很费时间和精力的事情。如果能在Windows下开发这些系统，则能充分发挥Windows的图形界面的功能，使得开发出的系统界面友好，操作方便，功能强大。其中，怎样实现Windows下的高精度定时是关键。
+　　众所周知，在Windows下编程是基于消息机制的，任何事情的执行都是通过发送和接收消息来完成的。这样就带来了一个问题：一旦计算机的CPU被某个进程占用，或系统资源紧张时，发送在消息队列中的消息就暂时被挂起，得不到实时处理。因此，不能简单地通过消息引发一个对定时要求严格的事件。另外，由于在Windows中已经封装了计算机低层硬件的访问，所以，要想通过直接利用访问硬件来完成高精度定时，一般是非常困难的(需要借助于一些工具软件包)。基于这些原因的考虑，在实际应用时，应针对具体定时精度的要求，采取相适应的定时方法。
+2　Windows中常用定时方法
+2.1　使用Windows中提供的常规定时器
+　　在一些常见的软件开发平台上都提供了这个定时器Timer控件，使用起来很方便，利用它可以实现一定精度的定时功能，但是，由于Windows定时器是建立在IBM PC机硬件和ROM BIOS中系统定时器的简单扩充基础之上的，虽然其最小分辨精度能够达到毫秒级，但其最小定时精度不可以小于55ms。另外，通过SetTimer( )函数设置的常规定时器的定时事件也是由消息引发的，而Windows是一个多任务的操作系统，在其消息队列中定时器消息WM_TIMER的优先级是很低的，所以，较难保证所发出去的定时消息能被及时响应和处理；此外，Windows的工作方式为抢占式，其内部的时间管理函数并不能实现等间隔的时间控制。因此，该种方法只能应用于定时要求不是很高的地方。
+2.2　使用多媒体定时器
+　　Microsoft公司在其多媒体Windows中提供了高精度定时器的低层API支持。利用多媒体定时器可以很精确地读出系统的当前时间，并且能在非常精确的时间间隔内完成一个事件、函数或过程的调用。
+　　利用多媒体定时器的基本功能，可以通过以下两种方法实现高精度定时：
+　　(1) timeGetTime( )函数。定时精度为ms级，该函数返回从Windows启动开始所经过的时间(单位：ms)。其函数说明为：
+Declare Function timeGetTime Lib"winmm.dll" Alias 
+　　"timeGetTime" ( ) As Long
+　　由于使用该函数是通过查询的方式进行定时控制的，所以，应该建立定时循环来进行定时事件的控制。
+　　(2) timeSetEvent( )函数。利用该函数可以实现周期性的函数调用。其函数说明为：
+Declare Function timeSetEvent Lib "winmm.dll" Alias 
+　　"timeSetEvent" 
+　　(ByVal uDelay As Long, ByVal uResolution As Long,
+　　ByVal lpFunction As Long, ByVal dwUser As Long,
+　　ByVal uFlags As Long) As Long
+　　其中的参数说明：
+　　uDelay 延迟时间；
+　　uResolution 时间精度，在Windows中缺省值为1 ms；
+　　lpFunction 回调函数，为用户自定义函数，定时调用；
+　　dwUser 用户参数；
+　　uFlags 标志参数；
+　　TIME_ONESHOT： 执行一次；
+　　TIME_PERIODIC：周期性执行。
+　　具体应用时，可以通过调用timeSetEvent( )函数，将需要周期性执行的任务定义在lpFunction回调函数中(如：定时采样、控制等)，从而完成所需处理的事件。不过要注意的是：任务处理的时间不能大于周期间隔时间。另外，在定时器使用完毕后，应及时调用timeKillEvent( )将之释放。该函数说明为：
+Declare Function timeKillEvent Lib "winmm.dll" Alias
+　　 "timeKillEvent"
+　(ByVal uID As Long) As Long
+2.3　利用系统定时中断
+　　(1)系统定时逻辑概述
+　　在Intel微型计算机系统中，有一个以Intel 8253 (AT机是8254)为核心组成的系统定时逻辑。8253是一个可编程间隔定时器/计数器，通过它可以把这种通用的、多定时的元件当作一个系统软件中的I/O端口阵列来处理，所以8253解决了微型计算机系统中最普遍的问题之一，即在软件的控制下产生高精度的定时。
+　　8253含有三个独立的计数器0、1和2，每个计数器包括三个寄存器，分别为：8位的控制寄存器，16位的计数寄存器CR和16位的输出锁存器OL，共同占用一个I/O端口地址。设置定时时，在计数器0的CLK端加上1.19318MHz的信号(每个CLK信号使计数器减1)，并将工作方式设成3，产生对称的方波，预置CR中时间常数为0(即216)，这样，OUT端输出的就是1.19318MHz/216=18.2Hz的方波，其周期约为55 ms(这也解释了为什么用SetTimer( )函数设置定时时，最小定时间隔不能小于55ms)。如果需要更精确的定时，则可以通过修改CR中的计数值来实现。
+　　(2)8253控制字的设置
+　　控制字格式
+
+　　SC―选择计数器：
+　　SC1, SC0 =00，01，10　　　　　分别选择计数器0、1、2
+　　　　　　=11　　　　　　　　　非法。
+　　RL―读出/装入：
+　　RL1, RL0 =00　计数器锁存操作，
+　　　　　　=10　仅读出/装入最高有效字节(高8位)，
+　　　　　　=01　仅读出/装入最低有效字节(低8位)，
+　　　　　　=11　先读出/装入最低有效字节，再是 最高有效字节。
+　　M―工作方式：M2，M1，M0=000，001，×l0，×11，100，101分别表示方式0～5。
+　　BCD=0 二进制计数器(16位)，BCD=1 BCD计数器(4个二进制数一组)。
+　　8253的六种工作方式的设置是在初始化时用输出指令写控制字来实现的，其中，方式0为在结束计数时中断，方式4为软件触发选通。
+2.4　利用多线程机制
+　　(1)多线程机制的概述
+　　多进程、多线程是抢占式操作系统的重要特征，所有的32位操作系统，如Windows 9x、Windows NT、Unix等都支持这种特性。在实际应用中，我们可以将不同的任务放在不同的线程中进行，通过线程间的同步机制来达到高精度定时的目的。例如，一个进程中运行了两个线程，其中，数据采集(从端口读取数据)放在第一个线程中，数据处理放在第二个线程中。这样，当数据采集完成后，第一个线程就可以发信号通知第二个线程处理数据，而第二个线程完成了数据处理后，再次发信号通知第一个线程继续下一次的数据采集。从而实现了每隔一定的时间处理一个事件。
+　　(2)多线程的创建和同步
+　　一般地，创建多线程时，先创建一个主线程，再创建一个或多个子线程，在子线程中完成需要做的事情。Windows 9x或Windows NT中创建线程的函数为CreateThread。
+　　在VC++中其调用格式为：
+BOOL CreateThread(DWORD dWCreateFlags=0,
+　　UINT nStackSize=0,
+　　LPSECURITY_ATTRIBUTES lpSecurityAttrs=NULL)；
+　　在Windows基本的SDK函数库中，其调用方式为：
+HANDLE CreateThread(
+　LPSECURITY_ATTRIBUTES lpThreadAttributes,
+　　　　　　　　　　　　　//pointer to security attributes
+　DWORD dwStackSize,　　　//initial thread stack size
+　LPTHREAD_START_ROUTINE lpStartAddress,
+　　　　　　　　　　　　　//pointer to thread function
+　LPVOID lpParameter,　　//argument for new thread
+　DWORD dwCreationFlags,　//creation flags
+　LPDWORD lpThreadId　　　//pointer to receive thread ID)；
+　　其中，lpThreadAttributes：线程的安全属性，在Windows 95中忽略；dwStackSize：线程的堆栈大小；lpStartAddress：线程函数的起始地址；lpParameter：传递给新线程的参数；dwCreationFlags：创建线程时说明线程的状态；lpThreadId：线程的标志号。
+　　为了使线程能在一起适当地、协调地工作，线程的同步是非常重要的，在Windows中，线程同步对象有：临界区(Critical section)、互斥(Mutex)、信号量(Semaphore)和事件(Event)。其中，临界区、互斥量和信号量通常用来控制对数据的访问，事件则用来发信号以表示某一动作完成。其创建用CreateEvent( )函数，格式为：
+HANDLE CreateEvent(
+　LPSECURITY_ATTRIBUTES lpEventAttributes,
+　　　　　　　　　　　　//pointer to security attributes
+　BOOL bManualReset,　　//flag for manual-reset event
+　BOOL bInitialState,　　//flag for initial state
+　LPCTSTR lpName　　　　//pointer to event-object name)；
+　　通过线程的同步对象可以在线程间合理地分配时间片，从而达到对时间的控制。
+3　结束语
+　　在Windows下，各种高精度定时方法在实现上都有其各自的优越性，具体应用时应根据实际的需要合理地进行选择。本文在实例中采用多媒体定时器的方法，实现了每隔0.005s对棉纺过程中线纱粗细的采样，获得了比较好的稳定性和精确度。
+洪锡军(上海交通大学国家模具CAD工程中心 上海 200030)
+陈彩贞(上海交通大学国家模具CAD工程中心 上海 200030)
+李从心(上海交通大学国家模具CAD工程中心 上海 200030)
+参考文献
+1 李宝琛, 吴发文等. 微型计算机常用器件手册. 福州： 福建科学技术出版社, 1985
+2 [美] Kate Gregory著, 康博创作室译. Visual C++ 5开发使用手册. 北京：机械工业出版社, 1998
+3 [美] Dan Appleman著, 京京翻译组译. Visual Basic 5.0 Win32 API开发人员指南. 北京：机械工业出版社, 1999
+4 Phadke. Synchronized sampling and phasor measurements for relaying and control. IEEE Trans PD, l994,9(1): 443～449
+收稿日期：1999年10月26日
