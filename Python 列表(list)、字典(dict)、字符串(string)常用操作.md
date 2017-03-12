@@ -1,45 +1,13 @@
-##列表（List）
-  ###创建列表
-  sample_list = ['a',1,('a','b')]
-  ###得到列表中的某一个值
-  value_start = sample_list[0]
-  end_value = sample_list[-1]
-
-  ###删除列表的第一个值
-  del sample_list[0]
-
-  ###在列表中插入一个值
-  sample_list[0:0] = ['sample value']
-
-  ###得到列表的长度
-  list_length = len(sample_list)
-
-  ###列表遍历
-  for element in sample_list:
-      print 'element' 
-    
-
-  ###产生一个数值递增列表
-  num_inc_list = range(30)
-  will return a list [0,1,2,...,29]
-
-  ###用某个固定值初始化列表
-  initial_value = 0 
-  list_length = 5
-  sample_list = [ initial_value for i in range(10)]
-  sample_list = [initial_value]*list_length
-
-
-
 ##附：python内置类型
-1、list：列表（即动态数组，C++标准库的vector，但可含不同类型的元素于一个list中）
-a = ["I","you","he","she"]      ＃元素可为任何类型。
+###1、list：列表（即动态数组，C++标准库的vector，但可含不同类型的元素于一个list中）
 
-下标：按下标读写，就当作数组处理
-以0开始，有负下标的使用
+a = ["I","you","he","she"]      元素可为任何类型。
+
+下标：按下标读写，就当作数组处理,以0开始，有负下标的使用
 0第一个元素，-1最后一个元素，
--len第一个元素，len-1最后一个元素
-取list的元素数量                
+-len第一个元素，len-1最后一个元素.
+
+取list的元素数量:                
 len(list)   #list的长度。实际该方法是调用了此对象的__len__(self)方法。 
 
 创建连续的list
@@ -69,7 +37,7 @@ L1 = L[:]   #L1为L的克隆，即另一个拷贝。
 list comprehension
    [ <expr1> for k in L if <expr2> ]
                 
-2、dictionary： 字典（即C++标准库的map）
+###2、dictionary： 字典（即C++标准库的map）
 dict = {'ob1':'computer', 'ob2':'mouse', 'ob3':'printer'}
 每一个元素是pair，包含key、value两部分。key是Integer或string类型，value 是任意类型。
 键是唯一的，字典只认最后一个赋的键值。
@@ -92,11 +60,17 @@ dictionary的复制
 dict1 = dict        #别名
 dict2=dict.copy()   #克隆，即另一个拷贝。
 
-3、tuple：元组（即常量数组）
+###3、tuple：元组（即常量数组）
+元组中的元素值是不允许修改和删除的。
 tuple = ('a', 'b', 'c', 'd', 'e')
 可以用list的 [],:操作符提取元素。就是不能直接修改元素。
 
-4、string：     字符串（即不能修改的字符list）
+list 和 tuple 的相互转化
+
+tuple(ls) 
+list(ls)
+
+###4、string：     字符串（即不能修改的字符list）
 str = "Hello My friend"
 字符串是一个整体。如果你想直接修改字符串的某一部分，是不可能的。但我们能够读出字符串的某一部分。
 子字符串的提取
@@ -139,10 +113,3 @@ long(str,base)  #变成base进制长整型，
 str_format % (参数列表) #参数列表是以tuple的形式定义的，即不可运行中改变
 >>>print ""%s's height is %dcm" % ("My brother", 180)
           #结果显示为 My brother's height is 180cm
-
-。。。。。。。。。。。。。。。。。。
-
-list 和 tuple 的相互转化
-
-tuple(ls) 
-list(ls)
