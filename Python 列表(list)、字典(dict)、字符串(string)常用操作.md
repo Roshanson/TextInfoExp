@@ -78,7 +78,7 @@
    D.cmp(dict1,dict2)  #第一个大返回1，小返回-1，一样返回0
    
 ### dict的遍历：
-   for (k,v) in D.items:
+   for (k,v) in D.items():
             
 ##3、tuple：元组（即常量数组）
    元组中的元素值是不允许修改和删除的。
