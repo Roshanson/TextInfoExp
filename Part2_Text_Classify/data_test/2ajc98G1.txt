@@ -1,0 +1,130 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.4　P.435-440
+
+
+
+
+基于模型的人体动画方法
+劳志强　潘云鹤
+摘要　 文章从点点对应，线线对应入手，首先给出了根据已知二维影像特征求得与其对应的三维模型特征参数的方法，然后给出了已知人体二维影像特征求解三维人体模型特征参数方法的详细描述.基于这一思想，实现了一个动画系统Video & Animation Studio.文章最后给出了一个由该系统实现的人体行走的例子.
+关键词　人体动画，影像特征和模型特征的对应关系.
+中图法分类号　TP391
+A Model-Based Approach to Human Animation
+　LAO Zhi-qiang　PAN Yun-he
+　（State Key Laboratory of CAD&CG　Zhejiang University　Hangzhou　310027）
+（Institute of Artificial Intelligence　Zhejiang University　Hangzhou　310027）
+　Abstract　　In this paper, starting from point-point and line-line correspondence, a detailed description of the calculation of projection parameters for 2D video features and 3D model features correspondence is presented firstly. Then a detailed description of the calculation of projection parameters for 2D human video features and 3D human model features correspondence is given. At the same time, an animation example of human walking is introduced which is produced by an animation system called Video&Animation Studio. The system is designed according to the above idea.
+　Key words　Human animation, correspondence between video features and model features.
+　　As we know, there are two categories for the current computer vision systems: Depth Reconstruction based Systems (DRS)［1～4］ and Knowledge based Systems (KS)［5～7］. DRS extract image features (such as spatial vision, motion, texture, etc.) from the image, then form a 2.5D sketch and match these features with 3D model. In DRS, all the recognition work was done in 3D space while in KS perceptional organization was employed to form 2D Perceptional Structure Groupings from image features, then knowledge match procedure is used to get mapping parameters with 3D model.
+We try to find a method for bridging the gap between 2D images and knowledge of 3D objects without any preliminary derivation of depth. A quantitative method is used to simultaneously determine the best viewpoint and object parameter values for fitting the projection of a 3D model to given 2D features. This method allows a few initial hypothesized matches to be extended by making accurate quantitative predictions for the locations of those object features in the image. This provides a highly reliable method for verifying the presence of a particular object, since it can make use of the spatial information in the image to the full degree of available resolution. The final judgment as to the presence of the object can be based on only a subset of the predicted features, since the problem is usually greatly over-constrained due to the large number of visual predictions from the model compared with the number of free parameters.
+1　Solving for Spatial Correspondence
+　　Many areas of AI are aimed at the interpretation of data by finding consistent correspondences between the data and prior knowledge of the domain. In our application, we need to define the consistency conditions for judging correspondence between image data and 3D knowledge. Unlike many other areas of AI, an important component of this knowledge is quantitative spatial information that requires specific mathematical techniques for achieving correspondence. The particular constraint that we wish to apply can be stated as follows:
+The locations of all projected model features in an image must be consistent with the projection from a single viewpoint.
+The precise problem we wish to solve is as follows: given a set of known correspondences between 3D model points and 2D image points, what are the values of the unknown projection and model parameters that will result in the projection of the given model points into the corresponding image points.
+The approach taken in this paper is to linearize the projection equations and apply Newton's method for the necessary number of iterations.
+1.1　Application of Newton's method
+　　In the field of CG we can describe the projection of a 3D model point p(x,y,z) into a 2D image point (u,v) with the following equations:
+(x,y,z)=R(p-t),　　　　　　　　　　　　　　　　(1)
+　　　　　　　　　　　　　　　　　(2)
+where t is a 3D translation vector, R is the rotation matrix which transforms point p in the original model coordinates into a point (x,y,z) in camera-centered coordinates. These are combined in the second equation with a parameter f proportional to the camera focal length to perform perspective projection into an image point (u,v).
+　　 Our task is to solve for t,R and possibly f, given a number of model points and their corresponding locations in an image. In order to apply Newton's method, we must be able to calculate the partial derivatives of u and v with respect to each of the unknown parameters. However, it is difficult to calculate these partial derivatives for this standard form of the projection equation.
+The partial derivatives with respect to the translation parameters can be most easily calculated by first reparameterizing the projection equations to express the translations in terms of the camera coordinate system rather than model coordinates. This can be described by the following equations:
+(x,y,z)=Rp,　　　　　　　　　　　　　　　　　(3)
+　　　　　　　　　　　　　　　　　(4)
+Here the variables R and f remain the same as in Eqs.(1) and (2), but the vector t has been replaced by the parameters, Dx, Dy and Dz. The two transforms are equivalent when
+　　　　　　　　　　　　　(5)
+In the new parameterization, Dx and Dy simply specify the location of the object on the image plane and Dz specifies the distance of the object from the camera. As will be shown below, this formulation makes the calculation of partial derivatives with respect to the translation parameters almost trivial.
+　　We are still left with the problem of representing the rotation R in terms of its three underlying parameters. The solution to this second problem is based on the realization that Newton's method does not in fact require an explicit representation of the individual parameters. Therefore, we have chosen to take the initial specification of R as given and add to it incremental rotations φx, φy, and φz about the x,y,z axes of the current camera coordinate system.
+　　Another advantage of using the φ　s as the convergence parameters is that the derivatives of x,y,z (and therefore of u and v) with respect to them can be expressed in a strikingly simple form. For example, the derivative of x at a point with respect to a counterclockwise rotation of φz about the z axis is simply -y. This follows from the fact that (x,y,z)=(rcosφz, rsinφz, z), where r is the distance of the point from the z axis, and therefore  Table 1 gives these derivatives for all combinations of variables.
+Table 1　The partial derivatives of x,y,z with respect to φx, φy, φz
+
+　x y z 
+φx 0 -z y 
+φy z 0 -x
+φz -y x 0 
+
+　　Using Eqs.(3) and (4), it is now straightforward to accomplish our original objective of calculating the partial derivatives of u and v with respect to each of the original camera parameters. For example, Eq.(4) tells us that (substituting c=(z+Dz)-1):  similarly,  All the other derivatives can be calculated in a similar way. Table 2 gives the derivatives of u and v with respect to each of the seven parameters of our camera model. 
+Table 2　The partial derivatives of u and v with respect to each of the camera viewpoint parameters
+
+　u v 
+Dx 1 0 
+Dy 0 1 
+Dz -fc2x -fc2y 
+φx -fc2xy -fc(z+cy2) 
+φy fc(z+cx2) fc2xy
+φz -fcy fcx 
+f cx cy
+
+　　Our task in each iteration of the multi-dimensional Newton convergence is be to solve for a vector of corrections: h=［△Dx,△Dy,△Dz,△φx,△φy,△φz］. If the focal length f is unknown, then △f would also be added to this vector. Given the partial derivatives of u and v with respect to each variable parameter, the application of Newton's method is straightforward. For each point in the model which should match some corresponding point in the image, we first project the model point onto the image using the current parameter estimates and then measure the error in its position compared with the given image point. The u and v components of the error can be used independently to create separate linearized constraints. Then we have 
+　　　　　　　　　(6)
+　　　　　　　　　(7)
+For each point correspondence we derive two equations. From three point correspondences we can derive six equations and produce a complete linear system which can be solved for all six camera-model corrections (△Dx,△Dy,△Dz,△φx,△φy,△φz).
+Dx=Dx+△Dx, Dy=Dy+△Dy, Dz=Dz+△Dz,
+φx=φx+△φx, φy=φy+△φy, φz=φz+△φz.
+(8)
+　　Then use Eq.(8) to shrink by about one step of magnitude of vector (Dx,Dy,Dz,φx,φy,φz), and no more than a few iterations would be needed even for high accuracy.
+　　In most applications of this method we will be given more than three correspondences between model and image. In this case the Gaussian least-squares method can easily be applied.
+1.2　Use of line-to-line correspondences
+　　In most applications, the feature correspondence between image and model was given in the form of feature lines instead of feature points. In this circumstance, modifications should be made on the above method. We should substitute the error on the right side of Eqs.(6) and (7) with the distance between projection line and image line instead of that between projection point and image point. As the distance between unparallel lines is not a fixed value, so we use the distance from point to line to substitute the distance between lines. We represent line equation as follows: (substituting )
+-kmu+kv=d,　　　　　　　　　　　　　　　　　(9)
+where d is the perpendicular distance from the origin point to the line, m is the slant of the line, so we have
+　　　　　　　　　　　　　　　　　(10)
+Then we have 
+　　Similarly we have
+　　　　　　(11)
+Now Eqs.(6) and (7) can be represented as follows
+　　　　　　　　　(12)
+With Eqs.(11) and (12), we can have
+　　　　　　(13)
+where Ed is the perpendicular distance from the two endpoints of corresponding image line to the projection line. As one line has two endpoints, so there are two equations similar to Eq.(13) for each line correspondence. With three lines, we can have a complete linear system, and the solution is (△Dx,△Dy,△Dz,△φx,△φy,△φz). Then we can adjust vector (Dx,Dy,Dz,φx,φy,φz). With Newton's method employed, the projection parameters in the line-line correspondence condition are reached.
+2　The Correspondence between Video Human Features and 3D Model Human Features
+2.1　Projection parameters calculation for 3D human model
+　　Firstly, we give the data structure of image point and 3D model point as follows:
+Point on image:
+typedef struct IMAGE-POINT {　　　　　　　 
+　　　　　　　　　　　　　　　　　　　　　float x; 
+　　　　　　　　　　　　　　　　　　　　　float y; 
+} IMAGE-POINT; 
+Point on model: 
+typedef struct MODEL-POINT {　　
+　　　　　　　　　　　　　　　　float x;
+　　　　　　　　　　　　　　　　float y;
+　　　　　　　　　　　　　　　　float z;
+} MODEL-POINT;
+Now we can calculate projection parameters of a certain part in 3D human model. Suppose its corresponding feature lines on the image are
+li:(StartPti,EndPti), (i=1,2,3)
+and their corresponding model lines are
+l′i:(StartPt′i,EndPt′i), (i=1,2,3).
+Performing projection transformation on line l′i (i=1,2,3), we can get l″i (i=1,2,3),
+l″i:(StartPt″i,EndPt″i), i=(1,2,3),
+where
+
+The slant for line l''i(i=1,2,3)is then the distance from point StartPti (i=1,2,3) to line l″i (i=1,2,3) is
+
+2.2　Conversion from projection parameters to human motion model
+　　When the calculation of projection parameters for every part of human model is finished, we need to convert these parameters to fit the skeleton structure of human model, then spatial parameters of the vectors that correspond to each part of the human model can be calculated. Thus the conversion from projection parameters to human motion model is completed.
+2.3　The implementation of projection parameters controlled human motion
+　　Based on the above idea, we have developed a video-based animation system called Video&Animation Studio. Figures 1(a)(b) to 2(a)(b) show a human walking example implemented by Video&Animation Studio. The figures on the left side are video data and a set of skeleton features defined by us, while the figures on the right side are the motion of the human model which is controlled by the sets of skeleton features in the video.
+
+Fig.1
+
+Fig.2
+3　Conclusions
+　　From the experimental result, we can see that the result of this method is satisfying. But there are four points that should be noted:1. The choice of initial values for projection parameters is very important. Actually we can get a set of more accurate initial values by using some interactive methods.2. The choice of feature lines in video is also very important. They should be the spline of video human.3. As for the error in Newton's method, we'd like to regard the body as a whole. The error of a specific part of the body can be somehow unsatisfying, but the error of the whole body should be the minimum.4. As for the processing of video, more detailed description can be found in Ref.[8].
+劳志强（浙江大学CAD＆CG国家重点实验室　杭州　310027）
+（浙江大学人工智能研究所　杭州　310027）　
+潘云鹤（浙江大学CAD＆CG国家重点实验室　杭州　310027）
+（浙江大学人工智能研究所　杭州　310027）
+References
+1，Gibson J J. The Ecological Approach to Visual Perception. Houghton-Mifflin. Boston, MA, 1979
+2，Marr D. Vision (Freeman, San Francisco, 1982)
+3，Barnard S T. Interpreting perspective images. Artificial Intelligence, 1983,21:435～462
+4，Barrow H G, Tenenbaum J M. Interpreting line drawings as three-dimensional surfaces. Artificial Intelligence, 1981,17:75～116
+5，Brooks R A. Symbolic reasoning among 3-D models and 2-D images. Artificial Intelligence, 1981,17:285～348
+6，Hochberg J E, Brooks V. Pictorial recognition as an unlearned ability: a study of one child's performance. American Journal of Psychology, 1962,75:624～628
+7，Lowe D G. Solving for the parameters of object models from image descriptions. In: Proceedings ARPA Image Understanding Workshop, College Park, MD, 1980.121～127
+8，Lao Zhi-qiang. Study on imaginary-based intelligent animation techniques . Zhejiang University, 1997
+(劳志强.基于形象思维的智能动画技术的研究［博士学位论文］.浙江大学,1997)
+
+

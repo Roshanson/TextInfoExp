@@ -1,0 +1,155 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第7期　No.7 Vol.10 1999
+
+
+
+多重极小一般普化
+叶　风　徐晓飞
+　　摘要　文章提出一种广义θ-包含意义下的广义最小一般普化,称为多重极小一般普化.这一操作能够有效地减少普化程度,从而使过度普化问题较好地得以解决.为了有效地计算极小一般多重普化,文章研究了示例集上的普化范式与极小一般普化的关系,提出了一种基于概念聚类的归纳学习算法(clustering-based multiple minimum general generalization,简称CMGG).该算法能够有效地产生多重极小一般普化,并准确地反映出学习示例间的内在联系.
+　　关键词　归纳学习,归纳逻辑程序设计,多重极小一般普化,最小一般普化.
+　　中图法分类号　TP181
+Multiple Minimum General Generalization
+YE Feng XU Xiao-fei
+(Department of Computer Science and Engineering Harbin Institute of Technology Harbin 150001)
+　　Abstract　In this paper, the authors present a kind of generalized least general generalization, called MGG (multiple minimum general generalization), under generalized θ-subsumption. MGG does effectively reduce the generalization of inductive hypotheses to extent, such that the problem of over-generalization is satisfactorily overcome. For computing MGG efficiently, the relation between normal generalization and MGG is studied and an algorithm CMGG (clustering-based multiple minimum general generalization) based on concept clustering is proposed, which can effectively figure out MGG and reflect accurately the internal relation of the set of learning examples.
+　　Key words　Inductive learning, inductive logic programming, multiple minimum general generalization, least general generalization.
+　　在归纳逻辑程序设计（inductive logic programming,简称ILP）这一机器学习的热点研究领域中,普化是进行归纳学习的主要操作[1],而最小一般普化(least general generalization,简称LGG)则是一种常用的普化方式,是在包含(θ-subsumption)意义下的子句最小一般化方法[2].学习算法利用LGG产生示例的普化,并将其作为归纳结论.LGG是一种有效的归纳方法.在数据挖掘与知识发现等领域中,LGG都有重要应用[1,3].
+　　LGG方法存在的主要问题是归纳结论的过度普化(over generalization),即所产生的归纳结论覆盖过多的未知事实.归纳结论的覆盖面通常应限制在一定范围内（如已知事实）,这就是归纳学习中普遍存在的最小性要求（minimality criteria）[4].归纳的最小性要求使归纳结论最接近示例所蕴涵的逻辑信息,使归纳过程不致过多地引入归纳偏向,这尤其对正例学习是必需的.然而在逻辑蕴含意义下,归纳普化是非常困难的问题,LGG方法在这一意义下是不完全的.现已证明,即使在θ-包含意义下,若不限制归纳结论的搜索空间,不存在能产生真普化、有限且完备的普化算子[5].因此,过度普化问题不存在彻底解决方案.普化必须在一定限制下进行,如,放弃能产生归纳“跳跃”的具有最小真普化性质的归纳算子等.现实可行的解决方案是获取能够有效地降低普化程度的归纳算子.Arimura等人提出的单位子句上的K-最小多重普化算子[6],在特定的范围内,以多单位子句的形式有效地产生简单示例集上的具有较低普化程度的归纳结论.
+　　本文针对上述问题提出广义θ-包含概念,并在这一基础上提出子句集上的多重极小一般普化(multiple and minimum general generalization,简称MGG)的理论与方法,有效地缓解了过度普化问题.本文的结论是对文献[6]的结果的进一步推广.为实现MGG方法,本文引入一种确定子句间相关程度的启发函数,据此给出一种基于概念聚类的算法(clustering-based multiple minimum general generalization,简称CMGG),使MGG方法得以有效实现.实验表明,MGG方法是解决LGG普化问题的有效方案.
+1 相关概念
+1.1 项、子句与语言
+　　项是构成原子的基本成分.对项的结构及其性质的研究是MGG方法的基础.令A为有穷集,｜A｜表示A的基数；有穷集Σ表示函数符号集,常数作为零元函数也于其中；X为与Σ不交的变量集.
+　　定义1. t称为项,如果：
+　　(1) t∈Σ,t为零元函数或t∈X；
+　　(2) 若t1,...,tn为项,f(n)∈Σ,则f(t1,...,tn)为项.
+　　项称为基项,若该项不含变元.T表示项集,GT表示基项集.项上的二元关系≤定义为：t,t′∈T,t≤t′当且仅当存在替换θ使得t=t′θ.t为t′的一个例子,t′为t的普化,即t′比t更为一般.由项s生成的关于项的语言记为Lt(s),Lt(s)={ω｜ω∈GT,ω≤s}.由Lt的定义知,s≤s′当且仅当Lt(s)≤Lt(s′).如果V是有穷项集,VLt(v),则称v是V的普化.如果对任意V的普化v′都有v≤v′,则称v是V的最小一般普化LGG,记为LGG(V).
+　　子句及其语言有类似项的定义.令P为谓词符号集,A(t1,...,tn)称为原子公式,如果t1,...,tn为项,A∈P为n元谓词.文字是原子公式或其否定.子句为文字的有穷集合,子句也表示其中文字的析取,其中变元为全称约束.子句集上的二元关系≥θ(θ-包含)定义如下.
+　　定义2. C,D为子句,Cθ-包含D,记为C≥θD,当且仅当存在替换θ使得CθD.
+　　C称为D的普化,相应地,D为C的特化,亦称为C的一个例子.C称为D的真普化,记为C>D,如果C≥θD且DθC.由子句E生成的语言记为Lc(E),Lc(E)={F｜E≥θF}.由子句集S生成的语言仍记为Lc(S),Lc(S)=Lc(E).如果U是有穷子句集,ULc(u),则称u是U的普化；如果对任意U的普化u′,都有u′≥θu,则称u为U的最小一般普化,记为LGG(U).本文在可区分的场合,对子句和项使用公共术语.类似地,C≥θD当且仅当LGG({C})≥θLGG({D}),常把这种情形称为C覆盖D.
+1.2 最小一般普化的计算
+　　θ-包含关系下子句的最小一般普化LGG是ILP中最常用的普化方法,算法由Plotkin给出[2],计算按下述递归方式进行.
+　　项间的LGG计算：
+　　(1) LGG({s,t})=X,如果s=f(s1,...,sn),t=g(t1,...,tm),f≠g,X是现行计算中未出现的新变量,在后续计算中,项对{s,t}的LGG均以X代之；
+　　(2) LGG({s,t})=f(LGG({s1,t1}),...,LGG({sn,tn})),如果s=f(s1,...,sn),t=f(t1,...,tn).
+　　文字间的LGG计算：
+　　(3) LGG({p(s1,...,sn),p(t1,...,tn)})=p(LGG{s1,t1}),...,LGG({sn,tn})),p为n元谓词；
+　　(4) LGG({p(s1,...,sn),q(t1,...,tm)})=无定义,如果p,q为不同符号文字.
+　　子句间的LGG计算：
+　　(5) LGG({C})=C；
+　　(6) LGG({C1,C2})={l｜l1(C1,l2∈C2,l=LGG({l1,l2},LGG({l1,l2}有定义)}；
+　　(7) LGG({C1,...,Cn})=LGG({C1,LGG(C2,...,Cn)}).
+　　例1:C1={p(a)←q(a),q(f(a))},C2={p(b)←q(f(b))}.
+　　LGG({C1,C2})={p(X)←q(Y),q(f(X))}；C1与C2另有一LGG解C′={p(X)←q(f(X))},但在θ-包含关系下,C与C′等价,因为C≥θC′且C′≥θ C.
+2　多重普化
+　　最小一般普化是在θ-包含关系下定义的,而不是在逻辑蕴含意义下定义的,这是因为，在计算上,在逻辑蕴涵意义下的最小一般普化计算存在着很大的困难,而θ-包含下的最小一般普化计算较逻辑蕴涵要容易得多.但是,LGG仍存在着过度普化问题.
+　　例2:表连接的逻辑程序表述是典型的ILP学习问题.现有示例集E={{app([],[],[])}, {app([b],[a],[b,a])},{app([a],[],[a])},{app([],[a],[a])}, {app([a,b],[c,d],[a,b,c,d])}}.按上述LGG算法,得到LGG(S)={app(X,Y,Z)}.然而,若以{app(X,Y,Z)}为归纳结论,则几乎无意义,因为app(X,Y,Z)过于一般,可以覆盖关于app的一切正反例.
+　　如果将S进行适当分组,再进行LGG普化,则得到：
+　　LGG({{app([],[],[])},{app([],[a],[a])}})={app([],X,X)};
+　　LGG({{app([b],[a],[b,a])},{app([a],[],[a])},{app([a,b],[c,d],[a,b,c,d])}})={app([A｜X],Y,[A｜X])}.
+　　将两个普化结论合起来便可覆盖S,这一归纳结论已接近正确的表连接表述,即是本文的二重极小一般普化例.
+　　上例引出进行多重普化的必要性.较之单普化(LGG),多重普化将显著地降低普化程度,有利于得到满意的归纳结论.以下内容是有关多重普化的形式讨论,首先将θ-包含概念推广到子句集.令S,S′为子句集.
+　　定义3. S Gθ-包含S′,记为S≥GθS′,当且仅当对任意D∈S′,都存在C∈S及替换θ,使得CθD,其中S和S′都是子句集.
+　　性质1. 若S,S′为单子集,则S≥GθS′当且仅当S′≥θS′.
+　　性质2. 若S≥GθS′,则SS′.
+　　因此,S为S′的普化.本文将S称为k子句集,如果S是由至多k个子句构成的集合.
+　　定义4. k子句集S称为S′的k重极小一般普化(k-minimum general generalization,简称k-MGG),记为k-MGG(S′),当且仅当下列条件成立：
+　　(1) S≥GθS′;
+　　(2) 对任意k子句集T,如果T≥GθS′且S≥GθT,则T≥GθS.
+　　性质3. 若S为k子句集,则k-MGG(S)=S.
+　　因此,在多重普化中只要不限制普化子句的基数,普化程度在≥Gθ关系下就可降到最低,即自身.多重普化的优越性在于此.当然,k-MGG(S)=S这样的解是平凡的.实用中,学习产生的归纳结论既要覆盖现有事实,又要具有一定的信息压缩能力.因而k要取在一定范围之内.
+　　性质4. k重极小一般普化不唯一.
+　　例3: S={{p(a,a)},{p(a,b)},{p(b,b)}},则S的二重极小一般普化解有3个：
+　　(1) S1={p(X,X),p(a,b)};
+　　(2) S2={p(a,a),p(Y,b)};
+　　(3) S3={p(a,Z),p(b,b)}.
+　　因此,子句集上通常没有多重最小一般普化解.
+　　CS表示子句的全集,等价关系≡定义为C≡D,当且仅当C≥GθD且D≥GθC.CS/≡为由关系≡归纳的商集,[C]∈CS/≡为子句C的等价类,则≥Gθ是CS上的偏序关系.ILP中的归纳操作即为确定子句间≥Gθ关系的存在与否.
+　　定理1. ≥Gθ为CS/≡上的偏序关系.
+　　证明:(1) 对任意[C]∈CS/≡,取替换θ={},则CθC,于是[C]≥Gθ[C]；
+　　(2) [C],[D]∈CS/≡,若[C]≥Gθ[D]且[D]≥Gθ[C],由≡的定义,[C]≡[D]；
+　　(3) [C],[D],[E]∈CS/≡,若[C]≥Gθ[D]且[D]≥Gθ[E],则对e∈E,存在d∈D及θ,使得dθe,并且对d′∈D,存在c∈C及θ′,使得cθ′d′.不妨取d=d′,则(cθ′)θe.于是,[C]≥Gθ[E].因此,(CS/≡,≥Gθ)是偏序集.　　□
+　　在偏序≥Gθ下,S,k-MGG(S)与LGG(S)呈现下述关系.
+　　定理2. LGG(S)≥Gθk-MGG(S)≥GθS.
+　　证明:只需证明前半部分,后半部分由k-MGG的定义直接得到.若不然,存在子句C∈k-MGG(S),使得对任意替换θ,LGG(S)θC.对k-MGG(S)中所有这样的C作下述替换：(k-MGG(S)-{C})∪{C′},其中C′=C∪LGG(S),替换后形成k子句集T.注意到C≥GθC′且C′GθC,C为C′的真普化.于是,LGG(S)≥Gθk-MGG(S)>GθT.此外,对C∈k-MGG(S)及替换θ,使得Cθe,相应地,C′∈T,C′=C或C′= C∪LGG(S),前者C′θe；而后者,只需注意LGG的定义,存在替换θ′使得LGG(S)θ′e,于是,C′θθ′e.因此,T为S的普化,T≥GθS.但这与k-MGG(S)的极小性矛盾.□
+　　因此,关系≥Gθ比≥θ更强,多重极小一般普化能比最小一般普化更好地降低结论的一般性程度,多重普化的合理性也在此得以体现.
+　　性质5. LGG(S)=1-MGG(S).
+　　k-MGG因此也称为广义最小一般普化.
+3 普化范式与多重极小一般普化
+　　本节首先研究子句集上的一个重要性质――紧致性,这一性质是所谓普化范式的基础,而普化范式与多重极小一般普化又有密切关系.利用这种关系可建立基于多重极小一般普化的学习算法.
+　　定义5. 称CS关于集合包含具有紧致性,当且仅当若Lc(D)(g),则存在g∈G使得Lc(D)Lc(g).其中D∈CS,GCS.
+　　CS上的紧致性是计算k-MGG的基础.
+　　定义6. 项t的层数递归定义如下：
+　　(1) t为1层的,如果t为常量或变量；
+　　(2) t为n+1层的,如果t=f(t1,...,tn),n=Max({t1的层数,...,tn的层数}).
+　　引理1. 若｜Σ｜>k>0,则CS关于集合包含具有紧致性.其中Σ是构造CS的函数符号集.
+　　证明: Lc(D)(g).令｜Σ｜=m,Σ={f1,...,fm},D是子句,G={g1,...,gk}CS.施归纳于D中项的层数.归纳基始：D中项的最大层数为1,则D中项为常量或变量.
+　　(1) 若D中项均为常量,则Lc(D)={D}(g).当然,存在g∈G,使得D∈Lc(g)；
+　　(2) 否则,D中项有一个为变量,不妨设只有一个变量且为X,则Lc(D)=Lc({{D{X/f1}},...,{D{X/fm}}),其中{X/fi}为替换.即将Σ中各函数（包括常量）以最一般的形式代入.由于各fi不同名,可将fi看成常量.类似于(1),对各D{X/fi}都存在一个gi∈G及替换θi,使得giθiD{X/fi}.因为m>k,由抽屉原理,必有一个g∈G覆盖D的两个例化,分别为D{X/fi}与D{X/fj},D{X/fi}∈Lc(g),D{X/fj}∈Lc(g).由于fi≠fj,故g中对应的能覆盖fi与fj的项必为变量.于是,通过对这个变量的各种可能替换,g能覆盖所有D的例化,即D{X/fi}∈Lc(g).因而Lc(D)={D{X/f1}),...,(D{X/fm})Lc(g).
+　　归纳假设：当D中项的层数至多为n时,结论成立.下面证明当D中项的层数至多为n+1时,结论仍成立.不妨考虑D中只出现一个层数为n+1的项,表示t由层数为n的项t′构造而得,方法是将t′中位置为i处的变量代之以项f(t1,...,tn),其中f∈Σ,t1,...,tn为变量或常量.
+　　(3) 若t1,...,tn均为常量,则将f′=f(t1,...,tn)作为一个新的常量加入Σ中（这种做法不改变Lc(D)等的内容）,同时将t改为.于是,D中项的最大层数为n且｜Σ｜=m+1>k,由归纳假设,结论成立；
+　　(4) 否则t1,...,tn之一为变量,不妨设t1为唯一变量.将t1分别替换成fi,k≥i≥1,形成相应的Di,并将k个f（fi,t2,...,tn)作为新的常量加入Σ中.因而,Di中项的最大层数为n且｜Σ｜=m+k>k.Lc(D)=Lc({D1},...,{Dm})=Lc{D1}∪...∪Lc {Dm}.i,1≤i≤m,Lc{Di}(g),由归纳假设,存在g∈G,使得Lc{Di}Lc(g).应用抽屉原理并以类似(2)的方法,得到结论.□
+　　下面我们均假定｜Σ｜>k,因为这一假定符合ILP学习的实际情况.
+　　定义7. 子句集S,T.S称为T的普化范式,当且仅当对C∈S,C=LGG(T-Lc(S-{C})).
+　　普化范式一方面说明了普化结论的极小性,另一方面指出了普化结论中的各子句对覆盖示例集的独立贡献.
+　　定理3. 设S,T是子句集,｜S｜=k,TLc(S),则S是T的k重极小一般普化当且仅当S是T的普化范式.
+　　证明:必要性.S是T的普化范式.若不然,存在C∈S,使得C≠LGG(T-Lc(S-{C})).令C0=LGG(T-Lc(S-{C})),则由C0的最小性,Lc(C0)∩TLc(C)∩T或Lc(C)∩TLc(C0)∩T.于是,前者导致TLc(S),与TLc(S)矛盾；而后者导致TLc(S),与S的极小性矛盾.
+　　充分性.S是T的k重极小一般普化.若不然,另有k子句集S′,使得TLc(S′),S≥GθS′,S′GθS,即S>S′.于是,TLc(S′)Lc (S).
+　　(1) 若｜S′｜<｜S｜,由引理1,对,存在C∈S,使得Lc(C′)Lc (C).取子句集S″={C｜C∈S,存在C′∈S′使得Lc(C′)Lc(C)},｜S″｜=｜S′｜.由此,T(S″),S″覆盖T且为S的真子集.任取C∈(S-S″),则有T-Lc(S-{C})=.于是,LGG(T-Lc(S-{C}))≠C,即S不是T的普化范式；
+　　(2) 若｜S′｜=｜S｜,由引理1,对,存在C∈S,使得Lc(C′)Lc(C).再由假设S>S′知,必存在C∈S,C′∈S′,使得Lc(C′)Lc (C).然而,Lc(S′-{C′})Lc(S-{C}).因此,T-Lc(S-{C})T-Lc(S′-{C′}),此外,因为TLc(S),T-Lc(S-{C})Lc(C).同理,T-Lc(S′-{C′})Lc(C′).于是,T-Lc(S-{C})T-Lc(S′-{C′})Lc(C′)Lc(C).由此,C≠LGG(T-Lc(S-{C})),这与S为普化范式矛盾.　　□
+　　上述定理指出,要获得k重极小一般普化,只需将示例集T作适当的k类划分,形成k个子集,再对每个子集作LGG,k个LGG形成覆盖T的普化范式,也是T的k重极小一般普化.因此,k重极小一般普化问题转化为对示例集的合理k类划分问题.
+4 多重极小一般普化算法
+　　由第3节讨论可知,产生k重极小一般普化的关键是进行合理的k类划分.然而,就归纳学习而言,我们仅知道学习示例,而对目标概念的深层知识并不知道,因而难于得到划分的标准.在这种情况下,必须给出归纳结论的适当语义.归纳结论的一个明显表现是其反映示例的聚类特征,每一聚类表示目标概念的一个子概念,相应于示例划分中的一个子集.由此,我们可以作出这样的假定：即归纳结论具有聚类意义下的语义.据此,本文基于多重极小一般普化的学习算法的基本思路是：首先对示例集E进行适当的聚类（k类）,聚类结果形成E的一个k类划分,然后对E划分中的各子集作LGG,并形成k子句集作为k重极小一般普化的近似.
+　　为进行概念聚类,必须定义一种相似性测度,这种测度应能准确反映示例间的相似性或差异性.为此,考察一下LGG计算的定义,不难发现,LGG(E)实际捕捉了示例间的公共结构与特征,反映了示例间的共性.因此,可将LGG作为元素间相似性的基准.相似性的对立面是差异性.对于给定的两个子句C与D,它们的差异主要来自以下几个方面：同名文字间对应位置上项的差异、子句中文字数量的差异、不同名文字数量的差异以及子句中变量间限制的差异等(在此,变量限制是指一个变量在子句中出现两次以上.如在子句P(X)←Q(X)中,变量X是限制的,而X在子句P(X)←Q(Y)中是不限制的.这有别于变量的全称约束).根据以上4种差异,定义子句间差异的函数Dif.
+　　首先定义变量在子句（项）中所处深度的概念,变量深度的不同决定了这一变量对子句的影响不同.一般地,变量所处位置越小,其影响越大.
+　　定义8. X为一变量名,tc为子句或项.X在tc中的深度d(X,tc)递归定义为：
+　　(1) d(X,tc)=0,如果tc是与X同名的变量；
+　　(2) d(X,tc)=∞,如果tc是与X不同名的变量；
+　　(3) d(X,tc)=1+min{d(X,ti)｜tc=f(t1,...,tn),1≤i≤n}；
+　　(4) d(X,tc)=1+min{d(X,ti)｜tc=()P(t1,...,tn),1≤i≤n,tc为文字}；
+　　(5) d(X,{})=∞；
+　　(6) d(X,tc)=1+min{d(X,li)｜tc={l1,...,ln},1≤i≤n,tc为子句}.
+　　例如,变量X在C={Even(s(X))←Odd(X)}中的深度为1,而X在C′={Even(s(s(X)))←Odd(s(X))}的深度为2.明显地,在θ-包含意义下,X在C中起的作用要大于X在C′中起的作用.
+　　定义9. C,D为子句,C与D的差别函数Dif定义为
+　　　　　　　
+　　　　　　　　　　　　+k′(｜C-LGG({C,D})θ1｜+｜D-LGG({C,D})θ2｜).
+其中θ1与θ2为替换,使得LGG({C,D})θ1C和LGG({C,D})θ2D,X/t表示替换θ中的一个代换项,｜E｜表示子句E中文字个数,k与k′是两个可调参数,用于确定两类差异的权重.
+　　在Dif定义中,第1项表达了C和D各自与公共结构LGG({C,D})间项的差异,也隐含了限制变元间的差异,这种差异主要体现在替换θ1与θ2的各个代换项上；第2项(｜C-LGG({C,D})θ1｜+｜D-LGG({C,D})θ2｜)表达了C和D各自与公共结构LGG({C,D})间文字数量的差异与不同名文字数量的差异.
+　　性质6. (1) Dif(C,C)=0；(2) Dif(C,D)=∞,如果LGG({C,D})={}.
+　　下面利用Dif给出基于概念聚类的多重极小一般普化算法CMGG.
+　　(1) 输入子句集T={C1,...,Cn},k
+　　(2) 循环直至｜T｜≤k do
+　　(3) 　　取C,D∈T,C≠D,使得Dif(C,D)=min{Dif(A,B)｜A∈T,B∈T,A≠B};
+　　(4) 　　对所有A∈T,如果LGG({C,D})≥θA,则T=T-{A};
+　　(5) 　　T=T∪LGG({C,D});
+　　(6) 输出 T.∥k重极小一般普化结论.
+　　性质7. 算法CMGG输出输入子句集上的多重极小一般普化结论.
+　　算法CMGG以最邻近规则进行聚类.下例说明算法的执行过程,取k=k′=1.
+　　例4:T={{app([],[],[])},{app([b],[a],[b,a])},{app([a],[],[a])}, {app([],[a],[a])}, {app([a,b],[c,d],[a,b,c,d])}}.考虑E的二重极小一般普化.
+　　(1) 首次循环,{app([],[],[])}与{app([],[a],[a])}为最近邻,Dif(app([],[],[]),app([],[a],[a]))=2,形成T={{app([b],[a],[b,a])},{app([a],[],[a])},{app([a,b],[c,d],[a,b,c,d])},{app([],X,X)}};
+　　(2) 二次循环,{app([b],[a],[b,a])}与{app([a,b],[c,d],[a,b,c,d])}为最近邻,Dif(app([b],[a],[b,a]),app([a,b],[c,d],[a,b,c,d]))=5,形成T={{app([A｜B],C,[A｜D])},{app([],X,X)}}.
+　　算法有效地得到T的二重极小一般普化{{app([A｜B],C,[A｜D])},{app([],X,X)}}.注意到在首次循环,{app([],[],[])}与{app([a],[],[a])}也是一对最近邻,它们的LGG是{app(X,[],X)},这样可形成另一种二重极小一般普化.
+　　算法CMGG在以最邻近规则进行聚类时,有时也难免生成过于普化的结论.如果在算法的第(3)步再考虑LGG相对于示例集的覆盖面因素,这一问题就能得到较好的处理.将算法的第(3)步改为：取C,D∈T,C≠D,使得Dif(C,D)+Cov(LGG({C,D}))=min,其中Cov(LGG({C,D}))=｜{e｜e∈T,e∈Lc(LGG({C,D}))}｜,即综合考虑子句差别与LGG结论的普化程度.
+　　例4得到的归纳结论{app([A｜B],C,[A｜D]),app([],X,X)}已经非常接近正确的表连接表述.注意到算法CMGG得到的每一部分归纳结论实质都表征了一类示例的结构特征,如app([],X,X)表示app第1元为常量[],第2元与第3元相同的示例,app([A｜B],C,[A｜D])表示app第1元与第3元的头元素相同的示例.利用这些结构特征能够有效地产生相当一些类问题的正确归纳结论,特别是单位子句程序类等.利用例4产生的结构，我们能够容易地构造出这一问题的最终表述：{app([],X,X),app([A｜B],C,[A｜D])←app(B,C,D)}.
+　　例5:关于自然数乘法的示例集E={{mul(0,1,0)},{mul(0,2,0)},{mul(1,1,1)},{mul(1,2,2)},{mul(1,4,4)},{mul(2,2,4)←dec(2,1),mul(1,2,),plus(2,2,4)},{mul(3,1,3)←dec(3,2),mul(2,1,2),plus(2,1,3)}}.取k=3.
+　　(1) 算法形成{{mul(0,1,0)},{mul(0,2,0)}}的聚类mul(0,A,0)；
+　　(2) 算法形成{{mul(1,1,1)},{mul(1,2,2)},{mul(1,4,4)}}的聚类mul(1,B,B).
+　　若不考虑LGG(C,D)结论的普化程度因素,下一次将对mul(0,A,0)与mul(0,B,B)进行聚类,产生mul(X,Y,Z),结果与LGG方式一样.而在考虑LGG(C,D)结论的普化程度因素后,有
+　　(3) 算法对{{mul(2,2,4)←dec(2,1),mul(1,2),plus(2,2,4)},{mul(3,1,3)←dec(3,2),mul(2,1,2),plus(2,1,3)}}进行聚类,形成mul(C,D,E)←dec(D,F),mul(F,D,G),plus(G,D,E).
+　　本例中E取的是自然数乘法的逻辑程序{mul(0,A,0).mul(0,B,B).mul(C,D,E)←dec(D,F),mul(F,D,G),plus(G,D,E).}的基例化子集.目的是考察算法CMGG的普化性能.E所取示例是一种“代表集”[7],示例集给出了进行归纳所必须的示例,在“代表集”上进行多重极小一般普化，可取得满意结果.本文提出的算法还对一批典型示例进行了多重普化学习,如自然数plus(+),lesseg(≤)等,均获满意结果.
+5 结 论
+　　子句集上的多重极小一般普化是对最小一般普化归纳的直接推广.本文首先证明了多重普化能够有效降低归纳结论的一般性程度,从而使多重极小一般普化成为一种适合的归纳方法.然后,证明了子句集上的k重极小一般普化等价于该集上的k普化范式.由此,通过引入关于子句间差异的启发函数Dif,提出了一种基于概念聚类方法的多重极小一般普化算法CMGG.实验表明,该算法准确地形成了令人满意的多重极小一般普化归纳结论.
+　　本文研究得到国家863高科技项目基金资助.作者叶风,1960年生,博士生,主要研究领域为机器学习,人工智能逻辑基础,专家系统.徐晓飞,1962年生,博士,教授,博士生导师,主要研究领域为计算机集成制造,分布式数据库.
+　　本文通讯联系人:叶风,哈尔滨150001,哈尔滨工业大学计算机科学与工程系专家系统研究室
+　　作者单位：哈尔滨工业大学计算机科学与工程系　哈尔滨　150001
+　　　　　　　E-mail: yf@mlg.hit.edu.cn
+参考文献
+　1　Muggleton S, Raedt L D. Inductive logic programming: theory and method. Journal of Logic Programming, 1994,19(20):629～679
+　2　Plotkin G G. A note on inductive generalization.In: Meltzer B, Michie D eds. Machine Intelligence. Edinburgh University Press, 1970,(5):153～163
+　3　Dzeroski S. Inductive logic programming and knowledge discovery in databases. In: Fayyad U M, Shapiro G, Smyth P et al eds. Advances in Knowledge Discovery and Data Mining. Cambridge, CA: AAAI Press, 1996.117～152
+　4　Wrobel S. First order theory refinement. In: DeReadt L ed. Advances in Inductive Logic Programming. Amsterdam: IOS Press, 1996.14～33
+　5　Patrick R J, Nienhuys-Cheng S. Existence and nonexistence of complete refinement operators. In: Bergadano F, Raedt L D eds. Proceedings of the 7th European Conference on Machine Learning. Lecture Notes in Artificial Intelligence. Berlin: Springer Verlag, 1994.307～322
+　6　Arimura H, Shinohara T, Otsuki S et al. A generalization of the least general generalization. In: Furukwa K, Michie D, Muggleton S eds. Machine Intelligence. Oxford: Clarendon Press, 1994,(13):59～85
+　7　Ling C X. Logic program synthesis from good examples. In: Muggleton S ed. Inductive Logic Programming. London: Academic Press, 1992.113～127
+1998-05-29收到原稿 
+1998-08-25收到修改稿

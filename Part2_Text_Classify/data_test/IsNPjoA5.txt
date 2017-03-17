@@ -1,0 +1,125 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第1期 No.1 1999
+
+
+
+Agent在多Agent系统中计算的意愿理论*
+毛新军　王怀民　陈火旺　刘凤歧 
+　　摘要　提出了Agent在多Agent系统中计算的意愿理论,以支持Agent计算的理论研究.区分了两种意愿：实现型意愿和维护型意愿.基于多Agent系统计算的逻辑框架,给出了两种意愿新的语义定义,获取和描述了它们的一些重要逻辑属性.
+　　关键词　Agent,多Agent系统,意向系统,信念,意愿.
+　　中图法分类号　TP18
+The Intention Theory of Agent Computing in Multi-agent System 
+MAO Xin-jun　WANG Huai-min　CHEN Huo-wang　LIU Feng-qi 
+　　Abstract　Intention is an important abstract concept to specify and design agent. In this paper, an intention theory of agent computing in multi-agent system is presented to support the research on the theory of agent computing. Two intentions: achievement intention and maintenance intention, respectively denoting the different aims of agent are differentiated. The formal semantics of two intentions are defined and some important properties are obtained based on the logic framework of multi-agent system computing.
+　　Key words　Agent, multi-agent system, intentional system, belief, intention.
+　　随着面向Agent程序设计范型［1］的提出,如何获取和分析多Agent系统的需求、规范和设计Agent已成为当前软件工程领域一项重要的研究课题.计算机科学研究的通常做法是寻求抽象的概念和工具来促进问题的解决,如过程抽象、进程、对象等等.在AI领域,人们通常基于意向观点(Intentional Stance)来研究Agent,即将Agent视为由一组认知部件所构成的意向系统.意向观点为我们研究Agent提供了一组高层的抽象认知概念,如信念、意愿等等.基于这些概念,我们可以独立于Agent的内部结构和具体实现细节来构造Agent体系结构,定义Agent状态,分析Agent行为的规律性特征.其中意愿是规范和设计Agent的一个重要抽象认知概念,原因是：(1) Agent的意愿将影响和约束Agent的行为,它是Agent计算的起因；(2) 意愿概念与其他概念(如信念等)是密切相关的,具有更强的约束,并体现了Agent的某些理性特征；(3) 意愿概念能被进一步用于规范Agent之间的交互和通信行为.为了使意愿概念能够有效地规范和描述Agent,指导Agent设计,推动多Agent系统的开发,必须深入地分析意愿概念与其他概念(如信念等)间的关系,形式化地给出其语义定义,获取和描述其逻辑属性.这就需要开展Agent计算的意愿理论研究.
+1　意愿概念的非形式化讨论
+　　为了指导意愿理论的研究,我们首先分析意愿与期望两个概念间的区别和联系,讨论意愿概念的性质和含义.意愿、期望这两个概念都刻画了Agent的某种选择特征.早期的一些研究工作试图把二者等同起来或者把意愿概念归结为信念和期望两个概念的组合,然而这些工作被认为是不可行的.［2,3］意愿与期望是两个不同的概念.Bartman指出,为了研究Agent的理性行为,必须在信念、期望的基础上引进一个新的概念――意愿.
+　　与意愿概念相比较,期望概念更弱.主要表现在：(1) Agent的期望可能是不一致的；(2) Agent的期望可能是相互冲突的；(3) Agent的期望可能与其信念是不一致的；(4) Agent的期望可能缺乏持续性特征,即Agent可能随意地终止或放弃其期望；(5)具有某种期望的Agent可能仅仅拥有这种期望,而不会始发某些动作或采取某些手段和策略来实现其期望.期望概念的上述性质表明,这一概念不能很好地刻画Agent的理性特征,尤其是不一致的认知状态将使得Agent不知如何进行计算.
+　　意愿概念的基本内涵是对未来动作的合理选择.选择性是意愿概念的本质属性.我们将区分两种意愿：实现型意愿和维护型意愿,分别表示Agent的不同目的.Agent的实现型意愿是指Agent意图实现某个命题;Agent的维护性意愿是指Agent意图维持某个条件.如不作特别说明,下文的意愿是指上述两种意愿.直觉地讲,意愿概念具有下列属性：(1) 意愿体现了Agent对未来动作的合理选择.Agent的意愿将影响和约束Agent的行为,其中实现型意愿是Agent动作的起因；(2) 可满足性.Agent 的意愿应是可满足的,或者说是可实现和可维护的；(3) 持续性.持续性是意愿概念的另一重要特征.意愿的持续性是指Agent将不会随意地放弃其已有意愿,它体现了Agent的某种承诺特征,即具有某种意愿的Agent将在不断变化的环境中持续性地拥有该意愿.持续性是Agent成功地实现其意愿的必要条件；(4) 内部一致性.Agent的意愿之间必须是相互一致的.不一致的意愿将使得Agent不知道如何根据其意愿行事；(5) 非冲突性.Agent的意愿之间不应是相互冲突的.Agent的两个意愿是相互冲突的,是指Agent某个意愿的实现将阻止或妨碍另一个意愿的成功实现；(6) 与信念的一致性.Agent的意愿与Agent的信念是相一致的,Agent不应既有某种意愿,同时又认为该意愿是不可满足的.
+2　逻辑框架
+2.1　形式化语言L
+　　形式化语言L的公式集由状态公式集Lt和路径公式集Ls两部分组成.设Φ是原子命题符号集合,ConstAg是Agent符号集合,ConstAc是原子动作符号集合.为了简化说明,我们具有下列符号约定：p,q,...表示原子命题符号；,,...表示公式符号；i,j,...表示Agent符号；a,b,...表示原子动作符号.
+　　定义1. (语言L的语法) 形式化语言L是由下列规则定义的最小封闭集合:
+　　.如果p∈Φ,则p∈Lt；
+　　.如果,∈Lt且i∈ConstAg,则,∧,Ki,A-Intendi,M-Intendi,Intendi(,)∈Lt；
+　　.LtLs；
+　　.如果,∈Ls,i∈ConstAg且a∈ConstAc,则,∧,U,〈doi(a)〉,［doi(a)］∈Ls；
+　　.如果∈Ls,则A∈Lt．
+其中K是信念算子,A-Intend是实现型意愿算子,M-Intend是维护型意愿算子,Intend是意愿算子,〈〉和［］是动作算子,U是“until”算子,A是全称路径算子.
+2.2　形式化模型和形式化语义
+　　语言L的一个模型M是指元偶＜T,＜,UAg,UAc,π,Act,【】,B,I＞.T是时刻集,T中的每一时刻对应于世界的一个状态(包括物理系统状态、系统中各个Agent的认知状态).物理系统状态由在该状态下为真的原子命题来表示.Agent的认知状态是指Agent的信念状态和意愿状态.＜是T上的偏序关系,它描述了时刻间的先后次序.任一时刻的过去是确定和线性的,它的将来可能是分枝的.形式化模型呈图1所示的树形结构.时刻t的一条路径是指始于该时刻,由t的将来时刻构成的一条线性分枝,它刻画了世界的某种发展轨迹.
+　　 
+图1　多Agent系统计算的形式化模型 
+　　定义2. (路径)：时刻t的一条路径是指集合ST且满足：(1) t∈S；(2)t1,t2∈S：(t1＜t2)∨(t2＜t1)∨(t1=t2)；(3)t1,t2∈S;t3∈T：(t1＜t3＜t2)(t3∈S)；(4)t1∈S;t2∈T：(t1＜t2)(t3∈S：(t1＜t3)∧(t3＜t2))；(5)t1∈S:(t=t1)∨(t＜t1).
+　　设St表示时刻t所有路径的集合.S∑是所有路径的集合,即S∑＝.
+　　定义3. (路径子区间)：设t≤t′,则［t,t′］={t″｜t≤t″≤t′}为一路径子区间.
+　　在多Agent系统中,各个Agent的动作并发、异步地发生.在任一时刻,Agent可能执行各种动作并通过动作的执行来影响和控制世界的发展,然而这种影响和控制是有限的,世界发展轨迹还受其他Agent动作执行事件的影响,所有Agent动作执行事件和环境事件共同确定世界的发展.考虑图1所示的由两个Agent构成的形式化模型.图中的结点表示时刻,边表示多个Agent的动作并发地发生.我们假定“‖”左侧符号表示Agent1的动作,右侧符号表示Agent2的动作.在t0时刻Agent1通过执行动作a使得世界沿t1或t2方向发展,但世界发展的将来时刻是t1还是t2,还取决于Agent2的动作.当Agent2执行动作c时,则世界沿t1方向发展;当Agent2执行动作d时,则世界沿t2方向发展.在形式化模型中,不同路径对应于不同的Agent动作执行事件与环境事件的组合,反映了世界的不同发展轨迹.
+　　UAg是Agent集合.UAc是原子动作集合.π：Φ→(T),是幂集符号,π(p)定义了使原子命题p成立的时刻集.Act：UAg×UAc→(T×T)定义了动作的发生.［t,t′］∈Act(i,a)表示Agenti在［t,t′］路径子区间中执行动作a,t是动作执行的起始时刻,t′是终止时刻.【】是对Agent符号和原子动作符号的解释,因而它是以下两种类型函数的联合:(ConstAg→UAg)以及(ConstAc→UAc).B：UAg→(T×T),(t,t′)∈B(i)是指Agenti在t时刻认为t′时刻是可能的.B用于定义Agent的信念.I：UAg×T→(S∑),S∈I(i,t)是指在t时刻Agenti选择路径S,因而有I(i,t)St.I用于定义Agent的意愿概念.Lt中公式的可满足语义定义由模型M和时刻t给出.Mt表示模型M在时刻t满足公式.Ls中公式的可满足语义由模型M,路径S和时刻t加以定义.Ms,t表示模型M在路径S的时刻t满足公式.
+　　定义4. (语言L的形式化语义)
+　　.Mtp iff t∈π(p),其中p为原子命题；
+　　.Mt∧ iff Mt且Mt；
+　　.Mt iff Mt；
+　　.MtA iff S:S∈StMs,t；
+　　.MtKi ifft′:(t,t′)∈B(【i】)Mt′；
+　　.Ms,t∧ iff Ms,t且Ms,t；
+　　.Ms,t iff Ms,t；
+　　.Ms,tU iff t′∈S:(t≤t′)且(Ms,t′)且(t″:t≤t″＜t′Ms,t″)；
+　　.Ms,t〈doi(a)〉 iff t′∈S:［t,t′］∈Act(【i】,【a】)且(t″:t＜t″≤t′且
+Ms,t″)；
+　　.Ms,t〈doi(a)〉 iff t′∈S:［t,t′］∈Act(【i】,【a】)(t″:t＜t″≤t′且
+Ms,t″)；
+　　.Ms,t iff Mt,其中∈Lt．
+　　根据上述语义定义,我们可以派生出其他命题连接词和算子.U是“until”时序算子,F=true U.G是F的对偶算子,即G=F().A是全称路径算子.E是A的对偶算子,即E=A().〈〉和［］是两个动作算子.直觉地讲,〈doi(a)〉表示Agenti完成动作a且具有结果.［doi(a)］表示,如果Agenti能够完成动作a,则具有结果.〈〉和［］的上述语义定义要求在动作执行过程中(而不是在动作完成之时)成立.值得注意的是,［］不是〈〉的对偶算子.Ki表示Agent具有信念.我们假定对于任意Agenti,关系B(i)满足自反性和传递性,因而算子Ki具有下列性质.
+　　定理1. 算子Ki具有以下性质:(1)Ki→;(2)Ki∧Ki(→)→Ki;(3)Ki→KiKi;(4) 如果,则Ki.
+3　实现型意愿
+　　Agent的实现型意愿是指Agent意图实现某个命题,它对应于Agent的任务和目标.形式化模型M呈一树形结构.模型中任一时刻的分枝表示Agent在该时刻所具有的各种可能的选择.直觉地讲,Agent具有实现型意愿是指Agent对世界发展轨迹(即路径)的选择,在这些被选择的世界发展轨迹中,将最终成立.
+　　定义5. MtA-Intendi iff Mt且(S:S∈I(i,t)Ms,tF).
+　　上述语义定义揭示了实现型意愿最本质的特性即选择性.不同于已有方法,我们没有基于可能世界间的可达关系来定义意愿概念,而是将Agent意愿视为Agent对世界发展轨迹的选择.在形式化模型中,世界发展轨迹与Agent的动作是密切相关的.Agent通过执行动作,在一定程度上来影响和控制世界的发展.我们将Agent的意愿解释为Agent对世界发展轨迹的选择,不仅清晰地刻画了意愿概念的选择特征,揭示了在多Agent 系统中Agent意愿与Agent的未来行为之间的关系,而且有助于我们获取意愿概念的一些重要属性,并可以帮助我们进一步定义维护型意愿的形式化语义.
+　　定理2. A-Intendi→.
+　　这一定理揭示了Agent接受和放弃实现型意愿的条件.Agent在某一时刻具有实现型意愿仅当在该时刻不成立.理性Agent不会试图去实现那些已经成立的命题或条件.
+　　定理3. (A-Intendi∧A-Intendi()).
+　　上述定理表明Agent的实现型意愿是一致的.在任意时刻,Agent不可能既有实现型意愿同时又有实现型意愿.可根据定理2的结论来证明该定理.
+　　Agent的实现型意愿应是可满足的,或者说是可实现的,因而实现型意愿具有以下公理：
+　　公理1. (实现型意愿的可满足公理)A-Intendi→EF.
+　　公理1指出,如果Agent具有实现型意愿,则存在某一世界发展轨迹,在该世界发展轨迹上,必然成立.为了使上述公理是可靠的,我们对形式化模型作以下约束：
+　　模型约束1. t∈T;i∈UAg:I(i,t)≠φ.
+　　定理4. (A-Intendi∧Ki(EF)).
+　　上述定理指出Agent的实现型意愿与Agent的信念是一致的.Agent不可能既有实现型意愿,同时又认为是不可能实现的.可根据公理1以及定理1来证明该定理.为了指导Agent计算,Agent必须知道其实现型意愿,即实现型意愿具有以下公理：
+　　公理2. (实现型意愿的自省公理)A-Intendi→Ki(A-Intendi).
+　　为了使上述公理是可靠的,我们对形式化模型作了以下约束：
+　　模型约束2.t∈T;i∈UAg：MtA-Intendi(t′:(t,t′)∈B(i)Mt′A-Intendi).
+　　定理5. A-Intendi∧A-Intendi→E(F∧F).
+　　上述定理揭示了Agent多个实现型意愿间的非冲突性.如果Agent在某一时刻具有多个实现型意愿,则存在某一世界发展轨迹,在该世界发展轨迹上,Agent以某种时序关系实现这些意愿.可根据实现型意愿的语义定义来证明该定理.在AI领域,逻辑“无所不晓”问题以及由此而带来的其他相关问题(如副作用问题、传递问题等)给认知概念的理论研究带来了困难,因为在形式化认知概念的过程中,正规模态逻辑能够产生一些人们所不期望的属性.考虑下列在正规模态逻辑系统中为真的命题.
+　　定义6. 设和为命题,X为表示Agent某种认知概念(如信念、意愿等)的模态词.
+　　(LO1) X∧X(→)→X;
+　　(LO2) 如果,则X;
+　　(LO3) 如果→,则X→X;
+　　(LO4) 如果,则XX;
+　　(LO5) (X∧X)→X(∧);
+　　(LO6) X→X(∨);
+　　(LO7) (X∧X).
+　　(LO1)和(LO3)构成了正规模态逻辑系统的副作用问题,即Agent认知状态封闭于逻辑结果.(LO2)构成了正规模态逻辑系统的传递问题.这些属性是对理想化Agent的一种刻画.实际的Agent是资源受限的计算实体.上述许多属性是反直觉的,例如,(LO2)指出,如果为一永真式,则Agent具有意愿,这与意愿的直觉性认识是不一致的.直觉地讲,Agent具有某种意愿是指Agent意图通过自身的努力来实现.如果是不可避免的,或者已成立,则Agent就不应具有该意愿.(LO5)并不是我们所需要的属性,它表示一种不受限制的组合.Agent意图实现且Agent意图实现并不意味着Agent意图同时实现和.(LO6)表示不受限制的变弱,同样亦不是我们所期望的.Agent意图实现并不意味着Agent意图实现或.属性(LO4)对于我们的研究并无任何坏处,而且(LO7)是我们所期望的,因为这一属性能确保Agent的意愿是一致的.
+　　定理6. 在定义6所列的各种属性中,(LO2),(LO3),(LO5),(LO6)对于实现型意愿算子A-Intend并不成立.
+　　上述定理的证明比较简单.属性(LO1)所以成立是由于前提不可能成立,即公式A-Intendi和A-Intendi(→)不可能同时成立.
+4　维护型意愿
+　　Agent的维护型意愿是指Agent意图维持某个条件,使之恒成立.与实现型意愿不同,我们将Agent的维护型意愿解释为在多Agent系统中Agent必须遵循的社会规则(Social Rule).在多Agent系统中,每个Agent并非是完全自主和独立的,且其资源和能力都是有限的,它们构成了一个社会.为了使多Agent系统是有序的,能够有效地促进Agent间的协同与合作、减少冲突,多Agent系统可能具有相应的社会规则.Agent处于这样的社会环境中,因而必定受社会规则的约束和限制.［4］社会规则对Agent而言是外在、具体的,为了指导Agent计算以及规范和描述Agent,必须对它们进行抽象和内部化.例如,在某一环境中存在一组机器人Agent.为了减少冲突,这些机器人的设计人员在开发它们的过程中提出了一组它们必须遵循的社会规则：每个机器人在移动过程中必须靠左行走.
+　　定义7. Mt M-Intendi() iff (S:S∈I(i,t)Ms,tG).
+　　根据维护型意愿的上述语义定义,我们可以获取维护型意愿的一系列逻辑属性.Agent的维护型意愿应是可满足的或者说是可维护的,因而维护型意愿具有下列公理：
+　　公理3. (维护型意愿的可满足公理)M-Intendi()→EG.
+　　公理3指出,如果Agent具有维护型意愿,则存在某一世界发展轨迹,在该世界发展轨迹上恒成立.基于模型约束1,上述公理是可靠的.
+　　定理7. (M-Intendi()∧M-Intendi()).
+　　上述定理刻画了Agent维护型意愿的一致性.在任意时刻,Agent不可能既有维护型意愿同时又有维护型意愿.可根据维护型意愿的语义定义来证明该定理.
+　　定理8. (M-Intendi()∧Ki(EG)).
+　　上述定理表明,Agent的维护型意愿与Agent的信念是一致的.Agent不可能具有维护型意愿,同时又认为不可能恒成立.可根据公理3和定理1来证明该定理.为了指导Agent计算,Agent必须知道其维护型意愿,即维护型意愿具有以下公理：
+　　公理4. (维护型意愿的自省公理)M-Intendi →Ki(M-IntendiEG).
+　　为了使上述公理是可靠的,我们对形式化模型作了以下约束：
+　　模型约束3.t∈T;i∈UAg：MtM-Intendi (t′:(t,t′)∈B(i)Mt′M-Intendi).
+5　Agent的意愿
+　　定义8. Intendi(,)　def　A-Intendi()∧M-Intendi().
+　　定理9. Intendi(,)∧Intendi(,).
+　　上述定理表明,Agent的实现型意愿与维护型意愿是一致的.Agent不可能既有维护型意愿,又有实现型意愿.同时,Agent也不可能既有维护型意愿,又有实现型意愿.可根据实现型意愿和维护型意愿的语义定义来证明该定理.
+　　定义9. (弱until算子的语义定义)Ms,tU iff t′∈S:(t″:t≤t″≤t′Ms, t″)Ms,t′.
+　　持续性是意愿区别于其他概念的一个重要特征,亦是Agent成功地实现其意愿的基础和前提.意愿的持续性,是指在不断变化的环境中Agent将保持其意愿.为了指导Agent计算,确保Agent成功地实现和维护其意愿,Agent的意愿具有以下持续性公理：
+　　公理5. A(Intendi(,)→Intendi(,)U(∨∨E(F∧G))).
+　　公理5指出,如果Agent具有意愿和,则Agent将持续性地拥有该意愿及至已不成立,或已成立或不存在路径使得在该路径上成立且在该路径上恒成立.为了使上述公理是可靠的,我们对形式化模型作了以下约束：
+　　模型约束4.t∈T;S∈St;i∈UAg:MtIntendi(,)(t′∈S:(t″:t≤t″≤t′Ms,t″(∨∨E(F∧G)))(S′:S′∈I(i,t′)Ms′,t′F∧G)).
+　　持续性的意愿是Agent成功地实现某个命题、维护某些条件的必要条件,但不是充分条件.Agent成功地实现其意愿还必须满足其他条件,如Agent必须具有足够的知识和能力;Agent必须根据其意愿行事等等.
+6　结　论
+　　本文提出了Agent在多Agent系统计算的意愿理论以规范和描述Agent、支持Agent计算的理论研究.我们区分两种意愿：实现型意愿和维护型意愿,分别表示Agent的不同目的.实现型意愿对应于Agent的任务和目标,维护型意愿则被解释为Agent必须遵循的社会规则.本文分析了意愿与期望两个概念的区别和联系,讨论了意愿概念的性质和含义,给出了意愿概念新的语义定义,获取和描述了它们的一些重要逻辑属性.
+　　本文研究得到国家自然科学基金和国防预研基金资助.
+作者介绍：毛新军,1970年生,博士,主要研究领域为Agent理论,分布计算技术,软件重用.
+　　　　　王怀民,1962年生,博士,副教授,主要研究领域为分布计算技术,面向Agent技术,智能软件环境.
+　　　　　陈火旺,1936年生,教授,博士生导师,中国工程院院士,主要研究领域为软件自动化,计算机科学理论,人工智能.
+　　　　　刘凤歧,1938年生,教授,主要研究领域为计算机软件,人工智能.
+作者单位：毛新军　王怀民　陈火旺　刘凤歧　长沙工学院计算机科学系　长沙　410073
+E-mail: xjmao@nudt.edu.cn
+本文通讯联系人：毛新军,长沙 410073,长沙工学院计算机科学系
+参考文献
+　［1］Shoham Y. Agent-oriented programming. Artificial Intelligence, 1993,
+60(1):51～92
+　［2］Cohen P R, Levesque H J. Intention is choice with commitment. Artificial Intelligence, 1990,42(2-3):213～261
+　［3］Singh M P. Multi-agent System: a Theoretical Framework for Intentions, Know-how, and Communications. Berlin, Heidelberg: Springer-Verlag, 1994
+　［4］Shoham Y, Tennenholtz M. On social laws for artificial agent societies: off-line design. Artificial Intelligence, 1995,73(1-2):231～252
+本文1997-09-09收到原稿,1998-02-11收到修改稿 

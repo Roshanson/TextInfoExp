@@ -1,0 +1,69 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第4期 第10卷 Vol.10 No.4 1999
+
+
+
+基于时间窗口的增量式关联规则更新技术*
+欧阳为民　蔡庆生
+摘要　文章提出了基于时间窗口的增量式关联规则更新技术.该方法不仅可以利用在先前发现过程中已经获得的结果,而且利用时间窗口,还可以在最近的数据集中进行知识发现.
+关键词　知识发现,关联规则,增量式更新,时间窗口.
+中图法分类号　TP311
+A Time-Window Based Incremental Technique for 
+Updating Association Rules
+OU-YANG Wei-min1 CAI Qing-sheng2
+1(Computer Center Anhui University Hefei 230039)
+2(Department of Computer Science　University of Science and Technology of China Hefei 230027)
+Abstract　 A time-window based incremental technique for updating association rules is presented in this paper, which can not only re-use the results acquired in the previous discovery process, but also focus the discovery on the recent data set using time window.
+Key words　Knowledge discovery, association rule, incremental update, time-window.
+　　在数据库中发现知识(knowledge discovery in databases,简称KDD),亦称数据发掘(data mining),是当今国际上人工智能和数据库研究的一个主要热点课题［1］.在KDD研究中,人们较多地侧重于知识发现技术与工具的研究,而对已发现的知识的更新、维护问题则较少注意［2］.
+　　关联规则是Rakesh Agrawal等人首先提出的一个重要的KDD研究课题［3］.在现实世界数据库中可以发现各种各样的时态数据,例如,超市的交易记录有时间标记、病员的病历数据记录、天气数据日志文件等等.时态数据的出现使得有必要在知识发现过程中考虑时间因素.为此,本文在交易数据库的背景下,研究了时态关联规则的维护问题.该问题的关键是由于数据随时间的变化而变化,当前已发现的某些关联规则可能不再有效,而可能存在的新的有效关联规则有待进一步去发现.商业机构中的交易是一个不断进行的过程,交易行为的模式很可能随时间呈现出某种发展趋势或周期性.这种发展趋势或周期性对于市场计划与分析是很有价值的.本文集中讨论时态关联规则的更新与存储.一种方法是接受所有的新数据,连同过去的旧数据一起,重新运行普通的关联规则发现算法.该方法的缺点是要重新处理已经处理过的数据,不能有效地利用已经获得的结果.另一种方法是随着新数据的产生增量式地更新关联规则集,尽可能地只处理新数据.显然,后者更可取,因而也是本文所采取的方法.
+　　目前,在增量式更新关联规则方面已有一些工作［2,4,5］,但均未考虑时间因素,因而未能明确提出过时数据的淘汰策略.这样,就不能适应时态关联规则的更新维护需要.为此,我们提出基于时间窗口的增量式关联规则更新技术.该算法不仅可以利用在先前发现过程中已经获得的结果,而且利用时间窗口,还可以在最近的数据集中进行知识发现.
+1　基于时间窗口的增量式更新技术
+　　所谓时间窗口是指这样一个时间区间,在该区间之外的交易数据均认为是过时的,不用于当前关联规则的发现过程.这样,发现算法便可集中在最近的数据上,提高了发现结果的时效性.常规关联规则发现算法将所有规则保存在一个集合中,这些规则适用于整个数据库；而带时间约束的关联规则是在当前时间窗口中有效的关联规则.
+　　令当前时间窗口为Cur―Window,其起止时间分别为Tstart和Tend,DB为在当前时间窗口Cur―Window中的交易所构成的交易数据库,D为其中的交易数,L为交易数据库DB的频繁项目序列集,s为最低支持,c为最低信任.注意,s和c均为百分数.假定对每个项目序列X∈L,其支持数X.support(即在DB中包含X的交易数)是可以利用的.
+　　设从时间Tend开始到Tnow结束,对交易数据库作了某些更新,新的交易所构成的集合为db,d为db中的交易数.新时间窗口为New―Window,其起止时间分别为Tnow－(Tend－Tstart)和Tnow.这样,在时间Tnow＋Tstart－Tend之前的交易数据不在新时间窗口New―Window中,应予淘汰.记在时间Tnow＋Tstart－Tend之前的交易所构成的集合为retire,其交易数记为r.我们记对交易数据库更新后在新时间窗口New―Window中的交易所构成的交易数据库为NewDB,那么NewDB=DB∪db/retire.对同样的最低支持s,如果某项目序列X在新时间窗口中的支持不低于s,即X.support≥s×(D＋d－r),那么,X在NewDB中就是频繁的.
+　　 基于时间窗口的关联规则更新的关键在于发现更新后在新时间窗口中的数据库NewDB中的频繁项目序列集NewL.注意,原频繁序列集L中的频繁序列X在更新后的数据库NewDB有可能不再是频繁的,即X∈L,但XNewL却是可能的；而不在L中的频繁序列X在更新后的数据库NewDB也有可能变为频繁的,即XL,但X∈NewL却是可能的.
+　　本文余下部分采用如下记号.数据库DB中长度为k的频繁项目序列(称为频繁k-项目序列)的集合记为Lk,更新后的数据库NewDB中的新的频繁k-项目序列集记为NewLk,Ck为算法IWUP第k次循环中长度为k的候选集.另外,X.supportD,X.supportr和X.supportd以及X.supportN分别为项目序列X在DB,retire,db和NewDB中的支持数.下面,我们首先讨论TWUP算法的第1次循环,接着讨论后继的各次循环.限于篇幅,这里略去完整的算法描述.
+1.1　频繁1-项目序列集的更新
+　　在推导更新后数据库存NewDB中的频繁1-项目序列时,如下性质是非常有用的.
+　　引理1. 某原频繁1-项目序列X∈L1在更新后数据库存NewDB中是非频繁的,当且仅当X.supportN<s×(D＋d－r).
+　　证明：由最低支持和频繁1-项目序列的定义可直接推知.
+　　引理2. 对某原非频繁1-项目序列XL1,该项目序列X在更新后数据库NewDB中是频繁1-项目序列的必要条件是X.supportd≥s×(d＋k－r),其中s×k为X在淘汰数据库retire中的支持数.
+　　证明：既然XL1,那么X.supportD≤s×D.假定X.supportd＜s×(d＋k－r),那么X.supportN=X.supportD＋X.supportd－s×k<s×D＋s×(d＋k－r)－s×k<s×(D＋d－r).这样,X在更新后数据库NewDB中就是非频繁的.于是,引理2得证.
+　　基于上述两引理,在NewDB中发现频繁1-项目序列集NewL1可按如下步骤进行：
+　　(1) 遍历淘汰数据库retire,计算所有项目序列X∈L1在retire中的支持数,记为X.supportr；
+　　(2) 遍历新增数据库db,计算所有项目序列X∈L1在db中的支持数,记为X.supportd,从而得到L1中所有项目序列X在更新后数据库NewDB中的支持,X.supportN=X.supportD＋X.supportd－X.supportr.检查X.supportN的大小,如果X.supportN低于s×(D＋d－r),根据引理1,X在更新后数据库NewDB中就是非频繁的,因而予以淘汰.经过这一过滤后,L1中剩下的在更新后数据库NewDB中就是频繁1-项目序列.
+　　(3) 在对db和retire作上述遍历的同时,根据db中的每一交易t构造不在L1中的候选1-项目序列集C1,分别计算各候选在db和retire中的支持.按照引理2,对C1中的任一项目序列X,如果X.supportd＜s×(d＋k－r),那么X在更新后数据库NewDB中就必是非频繁的.因此,可将X从C1中删除.这样,我们便可对C1进行修剪,删除其中所有那些在db中的支持低于s×(d＋k－r)的候选.
+　　(4) 对原部分数据库DB/retire进行遍历,计算C1中各个候选X在DB/retire中的支持数,从而得到X在更新后数据库NewDB中的支持数X.supportN.通过检查X.supportN是否不低于s×(D＋d－r),我们可以从C1中发现新的频繁1-项目序列.更新后数据库NewDB中的频繁1-项目序列集NewL1由原L1中在NewDB中仍是频繁的项目序列和在C1中发现的新频繁项目序列共同组成.
+　　与Apriori算法的第1次循环相比,TWUP算法首先从原频繁1-项目序列L1中排除在更新后数据库NewDB中不再是频繁的项目序列.经此过滤后,L1中剩下的在更新后数据库NewDB中就全是频繁1-项目序列.而达到这一目的,仅需对新增数据库db和淘汰数据库retire作1次遍历.该算法还根据引理2,对根据db构造出的候选集C1进行修剪,排除那些不可能成为新频繁项目序列的元素.这两项工作均在对新增数据库db和淘汰数据库retire作1次遍历中完成.然后,该算法对原部分数据库DB/retire作1次遍历,以从C1中发现新的频繁项目序列.与此形成对照,Apriori算法必须以所有数据项目构成长度为1的候选集,对整个更新后数据库NewDB进行遍历,以发现频繁1-项目序列集NewL1.显然,TWUP算法所涉及的候选数远远少于Apriori算法所涉及的候选数.
+1.2　频繁k-项目序列集的更新
+　　在推导更新后数据库NewDB中频繁2-项目序列集NewL2时,下列性质将是有用的.
+　　引理3. 如果某项目序列{X1,X1,...,Xk-1}∈Lk-1在第k-1次循环中发现,在更新后数据库NewDB中不再是频繁的,即{X1,X1,...,Xk-1}NewLk-1,那么,包含该项目序列的任何原频繁k-项目序列Y∈Lk(对k≥2)在更新后数据库NewDB中均不可能成为频繁项目序列,即YNewLk.
+　　证明：根据频繁项目序列的任何子项目序列均必是频繁的(参阅文献［3］)这一性质可以推知.
+　　引理4. 原频繁k-项目序列集Lk中的任何k-项目序列{X1,X1,...,Xk}在更新后数据库NewDB中是非频繁的,当且仅当{X1,X1,...,Xk}.supportN<s×(D＋d－r).
+　　证明：由最新支持和频繁k-项目序列的定义可直接推知.
+　　引理5. 对某原非频繁k-项目序列{X1,X1,...,Xk}Lk,该项目序列X在更新后数据库NewDB中是频繁k-项目序列的必要条件是{X1,X1,...,Xk}.supportd≥s×(d＋k－r),其中s×k为{X1,X1,...,Xk}在淘汰数据库retire中的支持数.
+　　证明：类似于引理2.
+　　基于上述引理,在NewDB中发现频繁2-项目序列集NewL2可按如下步骤进行：
+　　(1) 根据引理3,从L2中删除在NewDB中不再是频繁的项目序列.第1次循环所识别出的不再是频繁的项目序列的集合为L1-NewL1.对任何项目序列X∈L2,如果存在某子项目序列Y∈L1－NewL1,那么,X在更新后数据库NewDB中就不可能是频繁的,因而可将X从L2中删除.这样,我们便对L2进行了修剪.
+　　(2) 分别对新增数据库db和淘汰数据库retire作1次遍历,计算修剪后L2中每个项目序列X在db和retire中的支持数X.supportd和X.supportr,从而计算出X在更新后数据库NewDB中的支持,X.supportN=X.supportD＋X.supportd-X.supportr.根据引理4,在NewDB中淘汰所有非频繁项目序列.这样,L2中剩下的在NewDB中就全是频繁2-项目序列.
+　　(3) 本步骤是发现新的频繁2-项目序列.首先,利用候选生成算法Apriori―gen［3］根据NewL1生成候选集C2,注意,由于L2中的项目序列已经处理过了,所以应从C2中删除属于L2的项目序列.然后,分别对db和retire作1次遍历,计算每个候选X在db和retire中的支持数X.supportd和X.supportr.接着对C2作进一步修剪,即对任何X∈C2,如果X.supportd＜s×(d＋k－r),那么,根据引理5,X在NewDB中就必是非频繁的,因此可将X从C2中删除.
+　　(4) 对原部分数据库DB/retire进行遍历,计算C2中各个候选X在DB/retire中的支持数,从而得到X在NewDB中的支持X.supportN.对每个候选X∈C2,如果X.supportN≥s×(D＋d－r),那么X就是新的频繁2-项目序列.NewDB中的频繁2-项目序列集NewL2由原L2中在NewDB中仍是频繁的项目序列和在C2中发现的新频繁项目序列共同组成.
+　　对第k(k≥3)次循环,应用上述算法,直到没有新的候选产生时为止.在TWUP算法的第k次循环中,各数据库仅遍历1次.对原频繁k-项目序列,该算法只对新增数据库db和淘汰数据库retire作1次遍历,就可发现在更新后数据库NewDB中仍是频繁的k-项目序列；而对新的频繁k-项目序列,其候选集Ck根据上次循环所得到的NewDB中的频繁(k-1)-项目序列集NewLk-1生成,然后利用引理3和引理5对Ck进行修剪.经过如此修剪后的候选集Ck,要远远小于在Apriori算法中所生成的候选集.这表明,在关联规则更新方面,TWUP算法的性能要优于重新运行Apriori算法.
+2　小结
+　　本文提出了一种基于时间窗口的增量式关联规则更新维护算法.利用时间窗口技术,我们得以提高关联规则集与当前数据的相关性,同时还可利用已经获得的结果,降低规则集更新的处理代价.TWUP算法已在PC 586/166(32M内存)上用Visual FoxPro1.0实现,并用合成数据进行了测试.实验表明,该算法思想正确,具有良好的可扩放性.
+*　本文研究得到国家自然科学基金和国家教委博士点基金资助.
+本文通讯联系人:欧阳为民,合肥230039,安徽大学计算中心
+作者简介　欧阳为民,1964年生,博士,副教授,主要研究领域为KDD,机器学习,人工智能及其应用.
+　　　　　蔡庆生,1938年生,教授,博士生导师,主要研究领域为机器学习,知识发现,人工智能.
+作者单位：欧阳为民(安徽大学计算中心　合肥　230039)
+　　　　　欧阳为民　蔡庆生(中国科学技术大学计算机系　合肥　230027) 
+参考文献
+　1　欧阳为民,蔡庆生.大型数据库中多层关联规则的元模式制导发现.软件学报,1997,8(12):920～927
+　　(Ou-Yang Wei-min, Cai Qing-sheng. Meta-pattern guided discovery of multiple-level association rule in large databases. Journal of Software, 1997,8(12):920～927)
+　2　Cheung D W, Han J, Ng V et al. Maintenance of discovered association rules in large databases: an incremental updating technique. In: Proceedings of 1996 International Conference on Data Engineering. 1996. http: //www.cs.hku.hk/～dcheung
+　3　Agrwal R, Srikant R. Fast algorithm for mining association rules. In: Proceedings of the 20th Very Large DataBases Conference. 1994. 487～499. http: //www.almaden.ibm.com/cs/quest
+　4　Cheung D W, Lee S D, Kao B. A general incremental technique for updating discovered association rules. In: Proceedings of the 1997 International Conference on Databases Systems for Advanced Applications. 1997. http: //www.cs.hku.hk/～dcheung
+　5　Feldman R, Aumann Y, Amir A et al. Efficient algorithms for discovering frequent sets in incremental databases. In: Proceedings of 1997 SIGMOD Workshop on Research Issues on Data Mining and Knowledge Discovery. 1997. 59～66. http: //www.cs.biu.ac.il/～feldman
+本文1998-02-12收到原稿,1998-04-16收到修改稿

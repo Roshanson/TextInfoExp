@@ -1,0 +1,128 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第19卷 第3期  Vol.19 No.3 1999
+
+
+
+B小波和阶跃谱分析在缺损频谱成像中的应用
+骆建华　姚敏
+摘　要　提出一种用于频域的快速B小波变换方法和阶跃谱分析理论，并把它们用于磁共振缺损频谱数据中提取高频频谱、恢复完整频谱,重建图像.在此方法中，首先用快速B小波变换方法，从低频磁共振数据中提取、恢复缺少的高频分量的特征信息；然后用阶跃谱分析理论，由这些特征信息构成高频磁共振频谱、恢复完整频谱数据；最后用FFT(fast Fourier transform)重建磁共振图像.实验和模拟结果都表明,重建图像质量优于现有方法.
+关键词　阶跃谱分析,信号奇异点,信号奇异度.
+中图法分类号　TP391
+Application of B Wavelet and Step Spectrum Analysis 
+in Truncated Data Imaging
+LUO Jian-hua
+　Department of Biomedical Engineering Shanghai Jiaotong University Shanghai 200030)
+YAO Min
+　Department of Computer Science and Technology Hangzhou University Hangzhou 310028
+Abstract　 In this paper, the authors propose a fast B wavelet transform method in spectrum domain and step spectrum analysis theory for extracting completed magnetic resonance(MR) spectrum data from the MR truncated data, and the reconstruction image. In this method, the feature information is abstracted from the available low-frequency MR data using B wavelet method, and then high-frequency components are exerted from the feature information and whole spectrum data is recovered by using step spectrum analysis theory(SSAT), at last MR image is reconstructed from the recovered completed spectrum data by FFT(fast Fourier transform). Experiment and simulation results show that this method gives much better reconstructed image than the available method.
+Key words　Step spectrum analysis, signal fantastic points, signal fantastic degree.
+　　在医学成像领域里，磁共振成像（magnetic resonance image,简称MRI）技术是一种日益令人瞩目的医学图像诊断手段.但因其成像时间长、信噪比很难提高，从而导致MRI设备十分昂贵，每套在20万～200万美元之间，严重制约着它的广泛应用.信噪比是衡量图像质量最重要的指标.噪声增大使磁共振（magnetic resonance，简称MR）图像上组织交界部分变得模糊不清.提高信噪比的方法有：(1) 提高设备性能指标，这样就大大提高了设备成本；(2) 信号叠加平均，原因是在叠加过程中，有规律的信号得到加强.例如：n次叠加，按统计学观点，信噪比提高倍,但采集信号时间增加n倍.采集信号时间要受到病人的承受能力的限制和活性组织运动对信号带来的不利影响［1］.MRI时间可表示为t=n×m×t0，其中n是叠加次数，m是一幅图像的扫描行数（一般就是图像的象素行数），t0是单行扫描所需的时间.所以,减小m意义十分重大.减小m，出现了只采集MR的低频部分频谱数据，以减少扫描行数.这就是MR缺损频谱成像.
+　　MRI系统扫描仪输出的频谱数据不具有复埃尔米特性质，即它不是实数的数字图像的频谱，所以,不能用傅里叶变换的性质节省扫描行数［2］.MR缺损频谱图像重建的现状是把未采集到的频谱数据用零补充，然后用傅里叶反变换成像，这种方法叫做补零法（例如,深圳安科公司生产的MRI设备）.其缺陷是图像中有伪影.为解决这一问题，目前国际医学成像领域正展开热烈的研究.主要的方法是用采得的低频频谱数据训练Backpropagation或Multilayer神经元网络，然后用神经元网络外推这些MR高频频谱数据，从而恢复其缺损高频分量［3,4］.这种方法有一定效果，但其主要困难是MR图像频谱数据量很大，训练神经元网络时间较长，与满足医学临床应用相距较远.本文用阶跃谱分析和小波分析理论相结合，从低频频谱信号中提取隐含的高频分量，恢复MR缺损频谱的高频分量.这是当前国际MR成像领域中所没有的，是先进的.本文第1节介绍阶跃谱分析理论；第2节介绍MR缺损频谱的奇异点及奇异度析取；第3节介绍B小波和阶跃谱分析重建缺损频谱MR图像的实现及讨论;第4节是结论.
+1　阶跃谱分析理论
+　　阶跃谱分析理论认为，信号的频谱由信号的各个奇异点和奇异度完全确定.信号的奇异点是信号上的导数不为零的点，信号的奇异度也叫信号的奇异性程度，是信号上的奇异点的导数大小.下面我们证明，任何信号都可以用信号的奇异点和奇异度线性表示出，并且信号频谱也由信号的各奇异点和奇异度完全确定.
+　　任何信号都可以用信号的奇异点和奇异度线性表示出来.
+　　设x=［x1,x2,...,xN］T表示一个数字信号，它是N维线性空间EN中的一个向量，其中EN是一个N×N维的单位矩阵.那么x可以表示为
+
+其中ei=［ei1,ei2,...,eiN］T ,  j=1,2,...,N;i=1,2,...,N.
+　　定义1. i∈{1,2,...,N}和j∈{1,2,...,N}，如果向量
+ei=［ei1,ei2,...,eiN］T,
+其中,那么，向量组SB={e1,e2,...,eN}叫做N维线性空间的阶跃基.其矩阵形式是
+
+信号x=［x1,x2,...,xN］T在阶跃基SB下的坐标用y表示，即x=SB*y.因此有
+y=.x,
+其中
+
+　　由容易看出，它是一个差分变换矩阵，我们称它为阶跃变换,记作“S”.y非零分量表示信号的奇异点上的奇异度.我们把y的非零分量记为ybi，其中i∈{1,...,Q}，Q是y中非零分量的个数,即奇异点个数，是信号在阶跃基上所体现的一种复杂程度的表现.所以，我们定义信号在阶跃基上的复杂度η为
+.
+其中log2N是归范化因子，N是信号向量的维数.例如，对x=［0,0,1,1,1,1,0,0］T,
+
+　　奇异点个数是2，复杂度是2/3，奇异点分别是b1=3和b2=7,奇异点上的奇异度分别是yb1=1和yb2=-1.信号x在阶跃基上的表示为
+
+x上式就是信号用其奇异点和奇异度表示的形式.我们对两边进行傅里叶变换，得到
+　　
+其中F(ebi)是阶跃基上的第bi个向量的频谱，bi是奇异点，ybi是bi的奇异度.所以，任何信号的频谱可以由信号的奇异点及其奇异度唯一确定.
+2　MR缺损频谱的奇异点及奇异度的析取
+　　将阶跃谱分析和小波分析理论相结合，从低频频谱信号中提取隐含的高频分量，由缺少高频分量的缺损MR频谱重建出与完全频谱重建一样的MR图像.按照阶跃谱分析理论，获得信号的奇异点及其奇异度就等价于获取信号的频谱数据.如果能从MR低频频谱分量中析取MR图像的奇异点和奇异度，那么就能从MR低频频谱分量中恢复出MR高频频谱分量,从而使缺损频谱成像中的问题得到解决.我们的思路是,先选用恰当的正交小波函数，将已有MR低频频谱转换为小波变换系数；再通过调整尺度参数，测定小波系数(变换值)的极点，即数字图像信号的奇异点［5,6］；最后修正奇异性强度.
+　　设在实直线IR上的平方可测函数的空间记为L2(IR)，Ψ∈L2(IR)是二进正交小波，则f∈L2(IR)的小波系数cj,k是
+
+其中Ψj,k(x)=2j/2Ψ(2jx-k).如果f∈L2(IR)，那么f的Fourier变换定义为
+(ω):=(Ff)(ω).
+　　类似于Fourier级数的Parseval恒等式，在L2(IR)中，函数与它们的Fourier变换之间关系的Parseval恒等式为
+〈f(x),Ψ(x)〉=〈(ω),j,k(ω)〉,
+其中(ω)和j,k(x)分别是f(x)和j,k(x)的Fourier变换.则小波系数cj,k可由下式求出.
+cj,k=〈(ω),j,k(ω)〉.
+　　对于N维离散信号情况，容易证明,小波系数cj,k可以写成
+(1)
+因此，我们可以通过信号的频谱求出信号的小波系数.
+　　我们取ｖj,k(u)为正交二进B小波（简称B小波）的傅里叶变换.它是由B-样条函数经过正交化，得到正交尺度函数，再由正交尺度构成正交二进小波［7］.设m阶基数B-样条记为Nm(t)=Nm-1(t)*N1(t)，m>2,其中N1(t)是区间［0，1)的特征函数.其傅里叶变换为
+
+　　对式(1)正交化得到正交尺度函数的傅里叶变换
+(2)
+其中Fm(.)是关于Nm的广义Euler-Frobenius Laurent多项式.由正交尺度传递函数构造的正交小波Ψ(x)的傅里叶变换是
+　　(3)
+其中z=e-iω/2.任给一个j,k∈整数集，Ψ(x)线性张成的二进正交小波Ψj,k(x)=2j/2Ψ(2jx-k)的傅里叶变换是
+j,k(ω)=2-j/2e-i2-jkω(2-jω).(4)
+定义上式就是m阶B小波变换的傅里叶变换.
+　　由于信号能量大部分集结在低频部分，所以由一定量MR频谱数据的低频分量求出的小波系数可以用来确定MR图像信号的奇异点，比如，用小于二分之一截止频率的低频分量.当图像在某点出现奇异点时，则该点将是小波变换系数的模的极值，并且这个模的极值将随着尺度的增加而增加［8］.若是噪声引起的小波变换系数的模的极值，将随着尺度的增加而减小［8］.据此就可确定奇异点，且受噪声影响少.
+　　奇异度通过奇异点方程组来计算.设由信号x=［x1,x2,...,xN］T频谱的低频分量测得的奇异点为bi,i=1,2,...,Q.设奇异点强度为ybi，记(u):=(Fx)(u)和bi(u):=(Febi)(u)分别是信号x和基向量ebi的频率分量，则它们的关系可以写成
+
+　　我们设Q个奇异点的奇异度组成的向量是：y=［yb1,yb2,...,ybQ］T，选Q个低频频谱分量组成一个频谱向量：Q=［(q1),(q2),...,(qQ)］T，Q个奇异点就可以组成矩阵形式Q元奇异点方程组：
+Q.y=Q,
+其中
+
+解这个方程组得
+y=-1QQ.
+　　从确定奇异度的角度讲，对于复杂度为η的信号，只要有ηlog2N个信号的低频频谱分量就可以完全恢复信号的高频分量.但是,低频分量太少可能引起信号奇异点的漂移，所以,低频分量要足够多才能确定奇异点.
+3　实现及讨论
+　　我们把用阶跃谱分析，从MR低频频谱分量恢复到高频分量，再重建图像的缺损MR数据成像方法叫做阶跃谱分析成像方法.这种重建算法的测试是在一台586/133的微机上进行的.为了充分认识阶跃谱分析成像方法的效果，我们用3种方式把用这种方法和用补零法重建的图像进行了比较:(1)图像直接比较,(2)线图比较［9,10］,(3)进行保真计算［9,10］.
+　　算法测试所用的两种数据是实际磁共振缺损频谱数据和计算机模拟磁共振缺损频谱数据，计算机模拟数据的样本图像是人头模型，图像尺寸是128×128个像素，如图1(a)所示.实际磁共振缺损频谱数据是由深圳安科公司提供的核磁共振人头截面频谱数据，图像尺寸是256×256个像素.缺损频谱截取原频谱数据的低频部分，数据量是原总频谱数据量的一半.　　
+
+
+(a)　　　　　　　　　(b)　　　　　　　　(c)
+
+(d)　　　　　　　　　　(e)　　　　　　　　　(f)
+图1　计算机模拟频谱数据重建的图像与线图
+　　在图1中，(b)、(c)是计算机模拟缺损频谱数据分别采用直接傅里叶变换和阶跃谱分析成像出来的图像.图1(d)～(f)分别是图1(a)～(c)的第42行线图.表1是在归一均方误差、归一化绝对误差和图像重建时间3个方面，对补零法、模糊多准则优化法（缺损的频率分量用零代替，再用模糊多准则优化法［10］）和阶跃谱分析成像进行比较的结果.其中归一均方误差、归一化绝对误差计算都是以图1(a)为标准图像.
+表1 算法比较
+
+算法归一化均方误差归一化绝对误差相对成像时间
+补零法0.239 878 20.490 902 41
+模糊多准则优化法0.017 939 70.035 427 82.56
+阶跃谱分析成像法0.000 016 30.000 031 72.56
+
+　　图2(a)是完整频谱数据用直接傅里叶变换重建的图像.图2(b)、(c)是实际缺损频谱数据分别直接用傅里叶变换和阶跃谱分析成像出来的图像.图2(d)～(f)分别是图2(a)～(c)第85行线图.表2是在归一均方误差、归一化绝对误差和图像重建时间3个方面，对补零法、模糊多准则优化法和阶跃谱分析成像法进行比较的结果.其中归一均方误差、归一化绝对误差计算都是以图2(a)为标准图像. 
+表2 算法比较
+
+算法归一化均方误差归一化绝对误差相对成像时间
+补零法0.303 366 20.515 402 71
+模糊多准则优化法0.018 687 60.039 221 42.56
+阶跃谱分析成像法0.009 063 40.015 821 12.56
+
+　　从图像比较看，图1(c)比图1(b)更清晰，截断纹影较少，更接近图1(a)；图2(c)比图2(b)更清晰，伪影较少，更接近图2(a).从线图看，图1(f)比图1(e)截断纹影要少得多，图1(f)的波纹已基本消失，很接近图1(d);图2(f)比图2(e)截断纹影少，也有类似结果;从保真度指标看，表1和表2表明，阶跃谱分析成像的图像两项指标都优于补零法和模糊多准则优化法.这说明阶跃谱分析成像的图像比缺损频谱补零法重建的图像更接近完整频谱重建的图像.阶跃谱分析成像的均方误差和绝对误差比补零法的均方误差和绝对误差低两个数量级.
+
+
+(a)　　　　　　　　(b)　　　　　　　　(c)
+
+(d)　　　　　　　　　　(e)　　　　　　　　　(f)
+图2　实际频谱数据重建的图像与线图
+　　阶跃谱分析成像法之所以比常规的补零法重建的图像更好是因为补零法对未采集的频谱直接用零代替，尽管高频部分图像信息少、能量小，但毕竟还有小量图像信息隐含其中，尤其高频信息损失严重.毫无疑问，补零法完全放弃了这部分图像信息.而阶跃谱分析成像却不一样，它根据缺损频谱对应图像的边缘特性，对那些未采集的频谱数据进行恢复.这就补救了部分本属丢失的图像信息和能量，在很大程度上挽回了由于频谱不足带来的对图像质量的影响.尤其在奇异点个数较少的情况下，重建图像的误差仅由计算工具精度来决定，即从理论上讲，高频分量可以准确恢复.
+4　结 论
+　　就当前情况讲，磁共振成像经常要遇到缺损频谱数据的图像重建问题.缺损频谱数据的补零法图像重建是以图像质量（如伪影，图像变粗糙）为代价换取成像时间缩短.而传统的补零法不能解决这个问题.阶跃谱分析成像，不论对实际的NMR缺损频谱数据，还是对计算机模拟的NMR缺损频谱数据的实践结果,都表明了阶跃谱分析成像是一种高精度的图像重建方法，保证重建的图像与原始图像有很大的相似性或接近性,图像的质量大大优于用传统方法重建的图像.重建速度能够满足临床应用要求.
+　　本文研究得到国家自然科学基金、上海交通大学科技基金和浙江大学曹光彪高科技发展基金资助.作者骆建华,1958年生,博士，副教授，主要研究领域为医学图像重建.姚敏,1954年生,博士，副教授,主要研究领域为医学图像重建.
+　　本文通讯联系人:骆建华，上海200030,上海交通大学生物医学工程学系
+作者单位：骆建华：上海交通大学生物医学工程学系　上海　200030
+　　　　　姚敏：杭州大学计算机科学与技术系　杭州　310028
+　　　　　E-mail: jhluo@mail1.sjtu.edu.cn
+参考文献
+［1］Bottomley P, Pykett I L. Biological and medical imaging by NMR. Journal of Magnetic Resonance, 1978,29:335～340
+［2］Shepp L. Computerized tomograghy and nuclear magnetic resonance. Journal of Computer Assisted Tomography, 1980,4:94～101
+［3］Hui Y, Smith M R. MRI reconstruction from truncated data using a complex domain backpropagation neural network. In: IEEE Pacific RIM Conference on Communications, Computers, and Signal Processing. NewYork: IEEE Press, 1995. 513～516
+［4］Yan Hong, Mao Jin-tong. Data truncation artifact reduction in MR imaging using a multilayer neural network. IEEE Transactions on Medical Imaging, 1993,12(1):73～77
+［5］Mallat S, Hwang W L. Singularity detection and processing with wavelets. IEEE Transactions on IT, 1992,IT-38(2):617～643
+［6］Mallat S, Zhong S. Wavelet transform maxima and multiscale edges. IEEE Transactions on PAMI, 1992,PAMI-14(7):710～732
+［7］Chui Charles K. An Introduction to Wavelet. Boston: Academic Press, 1992
+［8］Mallat S G, Hwang Wen Liang. Singularity detection and processing with wavelet. IEEE Transactions on Information Theory, 1992,38(2):617～634
+［9］Luo Jian-hua, Lu Wei-xue. Fuzzy multicriterion image reconstruction technology. Chinese Journal of Computers, 1996,19(8):609～615
+［10］Luo Jian-hua, Lu Wei-xue. Fuzzy multicriterion NMR image reconstruction technology. Acta Electronica Sinica, 1996,24(7):1～6
+（1998-03-24收稿）

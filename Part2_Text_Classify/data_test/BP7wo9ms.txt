@@ -1,0 +1,120 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第6期 第10卷 Vol.10 No.6 1999
+
+
+
+一种利用确定性退火技术的聚类模型与算法研究*
+杨广文　王鼎兴　郑纬民　李晓明
+　　摘要　针对传统聚类模型的缺陷,文章利用确定性退火技术，提出一种聚类模型及聚类算法.该模型考虑了聚类的交互作用,以前提出的一些聚类模型是它的特例.引入温度参数,把聚类问题看成一个物理系统,把求解聚类问题的最优解转化为模拟随温度变化的物理系统的平衡态.通过求解一系列随温度变化的物理系统的自由能函数的局部极小来模拟物理系统的平衡态,最终达到物理系统的基态,即聚类问题的最优解.
+　　关键词　确定性退火技术,聚类,自由能,极大熵原理.
+　　中图法分类号　TP18
+　
+Research of a Clustering Model and Algorithm by Use of Deterministic Annealing
+YANG Guang-wen1　WANG Ding-xing1　ZHENG Wei-min1 LI Xiao-ming2
+1 (Department of Computer Science and Technology Tsinghua University Beijing 100084)
+2(Department of Computer Science Beijing University Beijing 100871) 
+　　Abstract 　Aiming at the defects of traditional clustering model, a kind of clustering model and algorithm are put forward and researched by use of deterministic annealing. The model takes account of the interactions of clusters, some models which were put forward previously are special cases of this one. Temperature parameter is introduced, and the clustering problem as a physical system is considered. Finding the optimal solution to clustering problem is transformed into simulating the equilibrium state of a physical system. The equilibrium state is simulated by solving a series of problems to minimize the free energy which varies with temperature, and finally, the ground state of the system is attained. That is the optimal solution of clustering problem.
+　　Key words　Deterministic annealing, clustering, free energy, the principle of maximum entropy.
+　　聚类分析是进行数据分析的重要技术,并被广泛地应用于许多工程和科学技术领域.聚类分析根据数据的内在性质将数据分成一些聚合类,每一聚合类中的元素尽可能地具有相同的特性.聚类分析是在对数据不作任何假设的条件下进行分析的工具.在人工智能和模式识别中,聚类分析亦称为“无先验学习”,是机器学习中知识获取的重要环节.
+　　划分聚类方法是通过对每个模式的标记,将模式组织成一些聚合类,它仅依赖于模式矩阵.划分聚类方法可以形式地描述为:给定n维模式空间的N个模式X={x1,x2,...,xN},将N个模式分成M个模式子集C1,C2,...,CM,使得在一个聚合类中的模式彼此十分类似,一般有,且.划分聚类方法基于一聚类准则:全局准则将每一聚合类描述为一代表元,对于每一模式,依据它与某一聚合类的代表元的相似程度决定它到底属于哪一个聚合类;而局部准则利用数据的局部结构将模式聚类,如,可通过模式空间中的高密度区域形成聚合类等,或将一个模式与它最邻近的若干个相邻模式作为一个聚合类.当给定聚类准则时,聚类算法就是确定一种方法,在所有可能的模式的聚类中,求使聚类准则最优的聚类.
+　　求解聚类问题的方法随着问题的不同而有所差异.如在信息论中,有对标量量化问题的Lloyd算法［1］，以后又对该方法推广，得到求解向量量化问题的GLA算法［2］.在模式识别中,有ISODATA算法［3］以及后来利用Fuzzy技术发展的一些算法［4,5］.
+　　传统的聚类模型,我们可归结为求解极小化问题:
+(1) 
+
+该优化问题的全局最优点y1,y2,...,yM作为类心,可将X聚类.但是,由于式(1)为一个非凸优化问题,目前还没有十分有效的办法来求全局最优解.
+　　传统聚类模型与聚类算法具有如下缺陷［6］:(1) 聚类结果对初始条件极为敏感,这为选择合适的聚类结果设置了障碍;(2) 目前的聚类算法所求得的聚类结果往往不是最优的;(3) 聚类模型往往不考虑模式间的交互作用;(4) 若数据包含交叠的类,传统的方法则无能为力;(5) 无法判断类的　真实性与合法性.
+　　聚类分析的研究吸引了众多学者,如何给出合理的聚类模型及聚类算法,是一个重要课题.
+　　目前,国际上出现了一些“模拟大自然的某种客观规律来设计求解一些复杂系统相关问题”的算法,即“按自然法则计算”(physical computation).它首先是由G.C.Fox提出的［7］.Fox的定义是，“将大量的自然科学领域的思想与方法用于其传统应用领域之外的其他领域,将原思想与方法的本质提取出来,用于解决新领域中的问题”.确定性退火技术是美国加州理工学院K.Rose博士于1990年首先提出的［8］,它是按自然法则计算的一个重要分支［7］.文献［9］详细讨论了确定性退火技术,并得到了一些比较满意的理论结果.
+1 确定性退火技术
+　　在退火过程中，系统在每一温度下达到平衡态的过程都应遵循自由能减少定律,系统状态的自发变化总是朝着自由能减少的方向进行.当自由能达到最小值时,系统达到平衡态.
+　　确定性退火技术,正是基于上述思想.对于求解极小化问题,
+min E=E(x). (2)
+
+这里,x可以是连续的、离散的或混合的,E(x)被看做是某一系统的能量.目前还没有十分有效的方法来求解式(2).将极小化问题(式(2))看做是求解一物理系统能量极小的状态,首先构造一自由能函数F(x,T).由以上分析可知,在某一温度下,系统状态的变化总是朝着自由能减少的方向进行,当系统达到平衡态时，自由能函数达到极小.文献［9］证明了当F(x,T)为连续映射时,它的全局极小点xmin(T)为T的连续映射.设T=∞时,F(x,T)的全局最优点极易求出,而F(x,0)=E(x).确定性退火技术,就是在每一温度T,以系统在T=T+ΔT时自由能函数极小的状态xmin(T+ΔT)作为初始点,通过求解minF(x,T)的极小点来模拟系统达到平衡态的过程.随着T的减小,F(x,T)的全局极小点不断变化,当T的变化ΔT很小时,可认为xmin(T)位于xmin(T+ΔT)所在的局部极小区域内,故在温度T,可以用xmin(T+ΔT)作为初始点求解F(x,T)的极小值.当T连续减小速度合理时,有理由认为limT→0xmin(T)为式（2）的问题的全局极小点.
+2 聚类模型的一般形式
+　　对于给定的y1,y2,...,yM,ji∈{1,2,...,M},［xi∈Cji］表示xi∈Cji这一事件,的概率为p(yj1,yj2,...,yjN)=p(x1∈Cj1,x2∈Cj2,...,xn∈Cjn.聚类问题可描述为求解y1,y2,...,yM及p(yj1,yj2,...,yjN)(ji=1,2,...,M,i=1,2,...,ｉ),使得
+(3)
+
+极小.其中D(yj1,yj2,...,yjN)为某一度量描述（已知）,是当xi∈Cji(i)时的损失函数.
+　　D(yj1,yj2,...,yjN)的形式可根据问题的实际背景来选取,为一个满足某些特性的一般函数.可取D(yj1,yj2,...,yjN)=d(yj1,yj2,...,yjN)TAd(yj1,yj2,...,yjN),式中A为yj1,yj2,...,yjN的一个N×N矩阵函数、d(yj1,yj2,...,yjN)为N维向量函数,取d(yj1,yj2,...,yjN)=(d(x1,yji),d(x2,yj2),...,d(xN,yjN))T.A的选取,可以包含x中点与点、点与类及类与类之间的一些交互作用.特别是，若取A=［aij］N×N,则有.d(xk,yjk),此式可理解为当［xi∈Cj］（i=1,2,...,N,j=1,2,...,M）不独立时损失函数的情形,式中包含了一些交互项.
+　　若取aij=0(i≠j),则此时所有［xi∈Cj］相互独立,aii(i=1,2,...,N)的不同,表示x中各点的重要程度不一样（一般aii＞0).此时有.由于各［xi∈Cj］相互独立,故有,因而
+
+　　若进一步有aii=1(i),则此时式(3)的聚类模型即为文献［8］中提到的情形.
+　　
+　　式(3)的模型简化为式(1)的模型,即上面讨论的一般聚类模型简化为传统的聚类模型.因此, 式(3)的聚类模型具有丰富的内涵,包含了一些交互作用,传统的一些模型可作为该模型的特例.
+　　对于模型中的p(yj1,yj2,...,yjN),由于我们没有先验知识,故不 能确定其具体形式,下面利用统计物理的极大熵原理来确定模型中的概率分布p(yj1,yj2,...,yjN).
+　　对于固定的yj1,yj2,...,yjM,定义能量函数和熵函数分别为
+
+　　利用极大熵原理,通过求解变分问题
+(4)
+
+可得到
+(5)
+
+其中β由式（4）确定,是一个与温度成正比的参数.
+3 自由能函数的确定
+　　对于任意给定的Y={y1,y2,...,yM}及J={j1,j2,...,jN},并由式(5)得到p(yj1,yj2,...,yjN),我们按照一定的策略可得到聚类问题的一个可行解.称{Y,J}为聚类问题的一个实例.引入温度T,将聚类问题看做一个物理系统,系统取实例{Y,J}的概率为P(Y,J).
+　　定义物理系统的能量函数和熵函数分别为
+(6)
+(7)
+
+　　对于每一固定温度T,利用极大熵原理,使熵H取极大的概率分布P(Y,J)称为物理系统的平衡态,而使P(Y,J)取极大的实例{Y,J}称为聚类系统的最可几实例.在式(6)的条件约束条件下,利用极大熵原理可得
+(8)
+
+其中β由式(6)确定.事实上,.由式(8)确定的P(Y,J)为温度T时系统的平衡态.
+　　对于聚类问题所对应的物理系统,其平衡态满足式（8）.考虑其边缘分布
+
+令
+
+则有
+
+令
+
+从而
+(9)
+
+　　由式(9)确定的函数称为聚类问题对应物理系统的自由能函数,进一步有
+(10)
+
+　　由式（10）可知,使P(Y)极大的y1,y2,...,yM应使F(y1,y2,...,yM,β)取极小.使概率分布极大的y1,y2,...,yM称为聚类系统在温度T时的最可几结构（其中）.因此,我们可以通过求解自由能函数F(y1,y2,...,yM,β)的极小来求得聚类系统的解.
+4 聚类算法
+　　对于由式(9)定义的聚类系统的自由能函数F(y1,y2,...,yM,β),可推得
+
+　　若进一步假定D(z1,z2,...,zN)关于z1,z2,...,zN为凸函数,则F(y1,y2,...,yM,0)为关于y1,y2,...,yM的凸函数,由传统的优化方法极易求出自由能函数的极小.进一步有,故
+(11)
+
+　　因此,自由能函数满足确定性退火技术的要求,可通过求解一系列随温度T（对应于β）变化的自由能函数的极小点来求解聚类问题.
+　　聚类问题的求解算法如下:
+　　(1) 取β0=0,k=0,求解问题min F(y1,y2,...,yM,βk),记最优解为;
+　　(2) β(k+1)=u(βk)(u为单增函数),以为初始解求解min F(y1,y2,...,yM,βk+1),记最优解为;
+　　(3) 判断收敛准则是否满足,若满足,则为最优聚类中心；转(5);否则,转(4);
+　　(4) k=k+1,转(2);
+　　(5) 依据最优中心及βk+1,按式（8）求出概率分布p(yj1,yj2,...,yjN),并据此将x聚类,输出聚类结果,结束.
+　　有几点需作说明:
+　　(1) 算法中,收敛准则依据所考虑的问题而定,一般若类心稳定时,算法终止;
+　　(2) 计算类数M的选取,一般只要使M足够大（至少大于真实类的数目）即可.M越大,计算结果越好,但计算量越大;
+　　(3) 在所得的最优中心中,不同的可能代表同一类,将根据不同的聚类问题及算法表现出来的特征来确定真实聚类数目以及同一类所对应的不同代表元;
+　　(4)算法的第5步仅给出{x1∈Cj1,x2∈Cj2,...,xn∈Cjn}的概率,若要进一步分清每一个xi究竟属于哪一类,将作进一步分析.
+5 算例分析与结论
+　　对于各［xi∈Cj］相互独立且取的情形,我们进行了大量的模拟实验.在二维空间中,随机生成不同形状、不同密度等各种各样的数据集,用本文的聚类算法进行了大量计算,得到了较好的结果.对于不相等的聚类总体、线性不可分和有桥的聚类问题,当取计算类数M足够大且同一类允许有不同的代表元时,可得到正确的结果.特别是对随机生成的多个服从正态分布的自然类的聚类问题,聚类结果令人满意,即使按传统的聚类方法以各正态分布的中心为初始点,计算结果的函数值也比利用本文提出的方法所得到的最终函数值要大.与文献［6］的工作相比,本聚类方法实用性很强,特别适用于大规模的数据处理.
+　　本文对在模式识别等智能领域中有广泛应用的聚类问题,提出了一类一般聚类模型.该模型考虑了模式与模式、模式与类、类与类之间的交互作用.一些传统的聚类模型可作为本文的特例.文中引入温度参数,将聚类问题看成一个物理系统,通过模拟物理系统的平衡态，来得到聚类问题的解.使用取大的计算类数这一策略,可处理传统聚类算法无能为力的一些聚类问题.
+作者简介　杨广文,1963年生,博士,副教授,主要研究领域为并行计算, 聚类分析.
+　　　　　王鼎兴,1937年生,教授,博士生导师,主要研究领域为并行/分 布计算.
+　　　　　郑纬民,1946年生,教授,博士生导师,主要研究领域为并行/分布 计算.
+　　　　　李晓明,1957年生,博士,教授,博士生导师,主要研究领域为并行/分 布计算.
+本文通讯联系人:杨广文,北京 100084,清华大学计算机科学与技术系
+作者单位：杨广文　王鼎兴　郑纬民(清华大学计算机科学与技术系 北京 100084)
+　　　　　李晓明(北京大学计算机科学系 北京 100871)
+参考文献
+　1　Lloyd S P. Least squares quantization in PCM. IEEE Transactions on Information Theory, 1982,28(1):129～137
+　2　Lind Y, Buzo A, Gray R M. Algorithm for vector quantization. IEEE Transactions on Communication, 1980,28(1):84～95
+3 Ball G, Hall D. A clustering technique for summarizing multivariate data. Behavioral Science, 1967,12:153～155,
+　4　Bezdek J C. Pattern Recognition with Fuzzy Objective Function Algorithms. New York: Penum, 1981
+　5　Gath I, Geva A B. Unsupervised optimal fuzzy clustering. IEEE Transactions on Pattern and Machine Intelligent, 1989,11(7):773～781
+　6　Wong Yui-fai. Clustering data by melting. Neural Computation, 1993,5(1):89～104
+　7　Fox G C. Physical computation. Concurrency: Practice and Experience, 1991,3(6):627～653
+　8　Rose K, Gurewitz E, Fox G C. Statistical mechanics and phase transition in clustering. Physical Review Letters, 1990,65:945～948
+　9　杨广文,李晓明，王义和.确定性退火技术.计算机学报,1998,21(8):765～768
+(Yang Guang-wen, Li Xiao-ming, Wang Yi-he. Deterministic annealing. Chinese Journal of Computers, 1998,21(8):765～768)
+本文1998-04-21收到原稿,1998-07-02收到修改稿

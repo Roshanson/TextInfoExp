@@ -1,0 +1,141 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第8期 Vol.10 No.8 1999
+
+
+
+一种基于信念-期望-意图和效用的社会承诺机制
+徐晋晖 石纯一
+摘要　在多智能体系统中,为完成问题求解智能体之间需建立起社会承诺.文章将信念-期望-意图和效用理论结合起来,提出了一种社会承诺机制,保证了智能体行为的逻辑理性和决策理性.该文的工作将Rao&Georgeff的信念-期望-意图理论和S.Kraus的激励承包思想有机地结合起来,改进了Haddadi的社会承诺机制,为Castelfranchi的社会承诺提供了实现支持.
+关键词　多智能体系统,信念,期望,意图,效用,社会承诺.
+中图法分类号　TP301
+One Mechanism of Social Commitment Based on Belief-Desire-Intention and Utility
+XU Jin-hui SHI Chun-yi
+(Department of Computer Science and Technology Tsinghua University Beijing 100084)
+Abstract　 The social commitment between agents needs to be built for problem solving in the multi-agent systems. A mechanism of social commitment by combining Belief-Desire-Intention and Utility theory is presented in this paper, which guarantees agent's rational action on logic and decision. The Rao & Georgeff's Belief-Desire-Intention theory and S.Kraus's idea of incentive contract are combined ,the Haddadi's mechanism of social commitment is modified, and the Castelfranchi's concept of social commitment with implementing support is provided in this paper.
+Key words　Multi-agent systems, belief, desire, intention, utility, social commitment.
+　　在MAS(multi-agent systems)中,当一个Agent/组(如果不特殊说明是一组Agent)根据目前的情景难以完成一个任务（目标）时,可以通过支付报酬委托其他的Agent来完成全部或部分任务,这是一种承包现象.
+　　可将承包中涉及的两个Agent称为委托者D和采纳者A,所委托的任务称为项目P,P可以是D的目标或规划中的一个子目标.目前的研究工作中［1～4］将A有意图完成D委托的项目P称为A对D的社会承诺,其作用是共同联合行为的胶合剂,个体承诺向集体承诺过渡的桥梁,组/队合作的基础.
+　　Castelfranchi［2］对社会承诺进行了定性的分析,指出社会承诺中存在双方的社会约束,不足之处是没有考虑社会承诺的建立、解除过程,社会承诺的定义没有能反映社会约束;Haddadi［1］讨论了组内agent之间的社会承诺建立和解除的通讯问题,但没有考虑社会约束,社会承诺局限于组内,不具有普遍性.
+　　那么如何结合社会约束给出社会承诺的概念？如何在自主自利的agent之间建立社会承诺？在环境动态变化的情况下,社会承诺如何变化？将是本文所要解决的问题.
+　　本文通过合同结构来描述社会承诺,合同结构描述了双方的责任、禁止、允许等社会约束.社会承诺与BDI(belief-desire-intention)之间有密切的关系,甚至社会承诺可以通过BDI来进行定义,这样社会承诺的建立和解除可以通过BDI的演化来进行分析.对agent的BDI可以从不同的角度来观察,我们从agent角度考虑社会承诺的建立和解除.
+　　Agent是自主自利的,这样D委托给A一个P,A可能采纳也可能不采纳,这是由A自主决定的;同样当D有多个候选委托者时,也要根据某种利益标准选择合适的A,而当不存在候选者时,需激励Agent去采纳其项目,那么如何作出选择？如何激励？这是社会承诺建立过程中,需要考虑的问题.在本文中以效用理论为基础来讨论.
+　　在MAS研究中,要求Agent的行为是理性的,从逻辑角度说,Agent的行为可以通过逻辑的方式推导出来;从决策的角度说,Agent的行为应该符合效用最大化.我们将BDI和效用理论结合,建立的社会承诺机制满足了理性的这两种解释.
+　　我们假定Agent的能力是有限的和不同的,Agent是自主自利的,Agent可以在同一个组内,通讯渠道是正常的.
+1 基本框架
+1.1 效用概念
+　　效用理论是Agent追求效用最大化的一种决策理论,有关的概念阐述如下:
+　　代价（Cost）是Agent完成一个活动所需要的资源耗费,代价函数C是ACTIVITY（活动集）→R（实数集）的映射.
+　　收益（Benifit）是Agent实现一个目标所带来的经济价值,收益函数B是GOAL（目标集）→R的映射.
+　　报酬（Reward）是D对A完成P的奖励,报酬函数R是ACTIVITY*GOAL→R的映射.报酬对D而言是代价,对A而言是收益.
+　　委托者效用（Utility）是D通过将P委托给A来完成所获得的利益,委托者效用函数UD是BENEFIT*REWARD→R的映射.
+　　采纳者效用是A通过完成D委托的P所获得的利益,采纳者效用函数UA是COST*REWARD→R的映射.
+1.2 结合效用的BDI理论
+　　Agent的BDI理论以Rao&Georgeff［5,6］的工作为基础,本文考虑到BDI与效用的结合,做如下说明.
+　　信念(Belief)是Agent对于世界或环境的知识,用（BEL X φ）表示agent X相信φ.
+　　目标（Goal）是Agent希望达到的世界状态,用（GOAL X φ）表示X期望φ成立.
+　　目标有多种来源可以是用户或其他的Agent提出的,也可以是用户自己产生的.目标的实现可以给Agent带来一定的收益b,收益函数B依赖目标的来源,可以是用户或其他Agent说明的,也可以是根据信念和动机确定的或根据总目标计算的.以（GOAL X φ b）表示X有目标φ且收益是b,有（GOAL X φ b）≡（GOAL X φ)∧(BEL X B(φ)=b).
+　　规划（Plan）是一个有目标的活动,用（Has-Plan X PL φ）表示X有完成φ的规划PL.
+　　Agent执行规划必然带来资源的耗费c,可以根据行为序列的构成由基本行为求得,就是代价函数C依赖于基本行为的耗费和规划的构成形式.以（Has-Plan X PL φ c）表示X有完成φ的规划PL且代价是c,有（Has-Plan X PL φ c）≡（Has-Plan X PL φ）∧(BEL X C(PL)=c).
+　　意图（Intention）是Agent打算按相应的规划去实现目标,用（INT X φ）表示X有意图去实现φ.
+　　Agent对于这种意图的结果用效用u来判断,u可以通过目标收益和规划代价来确定.以（INT X φ u）表示X有意图去实现φ且效用是u,有（INT X φ u）≡（INT X φ）∧(BEL X U(b,c)=u),其中U是效用函数,为了简化,令u=b-c.
+　　Rao&Georgeff公理
+　　(Has-Plan X PL φ)∧(GOAL X φ)∧(BEL X Pre(PL))∧(Choose X PL φ)(INT X Body(PL))
+这里,将PL分为前提条件和实体,公理意指X有目标φ,完成φ的规划,相信规划的前提条件存在,选择该规划作为实现φ的规划,可以推出X有意图去执行规划的实体部分.根据公理,本文引入效用得到
+　　定理. (Has-Plan X PL φ c)∧(GOAL X φ b)∧(BEL X Pre(PL))∧(BEL X U(b,c)＞0∧(Max(U(b,c))))(INT X Body(PL) u).
+　　证明提示:由于(BEL X U(b,c)＞0∧(Max(U(b,c)))可以保证(Choose X PL φ).
+　　意指X有收益是b的目标φ,完成φ的代价为c的规划PL,相信PL规划的前提条件存在,效用大于0且在所有的可选规划中效用最大,可以推出X有意图去执行带来效用u的规划的实体部分.
+　　定理说明了结合效用的BDI理论,可以保证两种理性的解释.
+1.3 合同结构和社会承诺
+　　关于社会承诺的定义［2,4］,只是从BDI的角度给出的,忽略了D和A的责任、禁止和允许,如(S-COMM X Y φ)≡(INT X φ)∧(GOAL Y (DONE X φ)).在人类承包现象中,通常用合同来描述委托者和采纳者双方的责任等约束,这样我们引入合同结构.
+令　　　　　　　　　　　　合同结构CS=(合同号,对象组,约束,期限)
+其中:对象组:=(D,A),对象:=D|A
+　　约束:=(对象,约束说明),约束说明:=责任;禁止;允许,
+　　责任:=责任描述表,责任描述:=(责任:条件,必须执行行为,报酬),
+　　禁止:=禁止描述表,禁止描述:=(禁止:条件,不能执行行为,罚金),
+　　允许:=允许描述表,允许描述:=(允许:条件,行为),
+　　期限:=(有效期:开始时间 到 结束时间).
+　　从外部观察者的角度,可以通过合同结构来建立社会承诺
+　　　　(S-COMM X Y cs)≡(MBEL X Y cs)∧(EINT X Y cs)∧(MBEL X Y (EINT X Y cs)),
+这里,cs是一个具体的合同,MBEL是相互信念,EINT是每一个Agent都有意图.EINT(X Y cs)≡INT(X cs)∧(INT Y cs)
+　　从Agent角度来定义
+　　　　　　(S-COMMd D A cs)≡(BEL D cs)∧(INT D cs uD)∧(BEL D (INT A cs)).
+　　　　　　(S-COMMA A D cs)≡(BEL A cs)∧(INT A cs uA)∧(BEL A (INT D cs)).
+其中(INT X cs)是指X有意图去履行合同cs,uD和uA分别是D和A履行合同的效用.根据定理对于D而言有
+　　(GOAL D φ b)∧(Has-Plan D cs φ c)∧(BEL D U(b,c)＞0∧(Max (U(b,c))))(INT D cs u)
+这里,D的目标是φ,cs是D实现该目标的规划,c是D付给A的报酬.
+　　对于A而言有
+　　(GOAL A cs r)∧(Has-Plan A PL cs c)∧(BEL A U(r,c)＞0∧(Max (U(r,c))))(INT A cs u)
+这里,A的目标是cs,并且有实现该目标的规划,r是执行合同的报酬.
+　　这样通过合同使得D和A之间建立起社会承诺,与现有的定义相比一是确立了双方的约束,二是强调了社会承诺的相互性.
+2 社会承诺过程
+　　社会承诺的建立过程是D和A之间,通过协商达到一个共同同意的合同,并且作出意图去履行合同的决定;社会承诺的解除过程是在合同履行中,责任、禁止和允许所描述的条件出现,导致D和A需要重新考虑合同,作出有关的决定和行为.
+2.1 D的社会承诺建立
+　　(1) 发现自己不能完成的目标,(GOAL D φ b)∧(Has-plan D PL φ);
+　　(2) 产生委托其他Agent完成φ的目标,(GOAL D (Contract φ)),由于存在实现委托目标的规划,执行下面的有关步骤;
+　　(3) 通知其他Agent信息((Contract D (φ),rD,响应时间),这里,rD是D提出的初始报酬,通知可以有针对性发送;
+　　(4) 在响应时间内无(Can-Adopt A φ rA c)消息接收,可以认为委托规划失败,结束下面的执行,rA是A要求的初始报酬,c是A实现φ的代价,如果A与D不在同一个合作组内该信息可以为0（A对D保密其实际的投入）;
+　　(5) 从多个候选者中选择一个A
+　　① 计算由每一个候选者完成φ带来的效用:IF A和D在同一组内 THEN uD＝b-c ELSE uD=b-rA,这说明A和D在一个组内追求整体效用（因为uD＝b-c＝b-rA+rA-c）,否则考虑D的自身效用;
+　　② 将uD从大到小排队;
+　　③ 从中取出第1个,就是预选的A;
+　　(6) 如果uD＜=0,需要重新设计对A的报酬,到uD＞0满意为止,这时有(Want D A φ r),将该信息通知对应的A;
+　　(7) 在规定的时间内没有收到(Willing A φ),这时可以认为A不满意,需要重新考虑报酬或其他的候选者;
+　　(8) 建立合同
+　　① 如果D收到A的合同cs信息,可以根据情况确定是否满意,如果满意则形成履行合同的意图(INT D cs uD)并通知A,否则,对合同进行修改,并将修改的cs通知A;
+　　② 如果D没收到A的合同cs信息,D可以生成cs并通知A;
+　　③ 如果D收到A的(INT A cs)认为,A同意cs;
+　　直到相互满意或达不成一致意见为止,如果是后者需考虑其他的候选者.
+　　(9) 社会承诺建立
+　　满足以下两个条件,D就建立起对应的社会承诺:
+　　① 当D发出cs信息,且收到(INT A cs),这时应有(INT D cs);
+　　② 当D收到cs信息,且作出(INT D cs),并收到(INT A cs).
+　　对于A来说,基本上是对D社会承诺建立的反过程.
+2.2 D的社会承诺解除
+　　情形1:（BEL D ((GOAL D φ b)),D原有的实现φ的目标不存在.
+　　(1) 如果A和D在一个组内,或cs不在合同期限内,那么D可以解除承诺同时告知A及原应（所有承诺解除原则上要求通知对方,并附上原应）;
+　　(2) 如果cs在期限内,且解除承诺带来的罚金≤报酬,那么D可以解除承诺同时支付相应的罚金,否则罚金＞报酬D需根据问题领域进行决定.
+　　情形2:（BEL D (GOAL D φ bn)∧(bn＜b)),D原有目标存在,但是收益要比起初相信的小.
+　　(1) 如果A和D在一个组内,且bn＜c,那么解除承诺,否则bn＞c,可以继续进行;
+　　(2) 如果A和D不在一个组内,cs不在期限内,且bn＜r,那么D有两种选择:解除承诺或减少r,这需要与A协商,否则bn＞r可以继续进行;
+　　(3) 如果A和D不在一个组内,cs在期限内,bn＜r,且bn+罚金＜r,那么D也有类似的两种选择,否则bn+罚金＞r可以继续进行.
+　　情形3:接收A发来的协商,要么是解除承诺,要么是增加报酬支付.
+　　计算解除承诺和增加支付的效用,选择效用大者,必要时修改cs.
+　　情形4:接收A发来的解除承诺信息,D相应解除.
+　　类似地,有对A的社会承诺解除.
+3 例 子
+　　我们以卡车运输调度问题为例说明社会承诺的建立和解除过程.
+　　一个车场agent D接收到用户的任务P,对应的约束包括:责任（最迟完成时间T）、禁止（打开货物）、允许（分批运输）,完成任务的报酬是1800元.根据目前的情况D难以完成P,产生(GOAL D (Contract P)),D知存在可能的车场A1（属于同一公司）和A2（不属于同一公司）,这时向他们发送((Contract D P),1500元,10分钟).
+　　10分钟内收到:（Can-Adopt A1 P 1500元 代价:1700元）和（Can-Adopt A2 P 1600元 代价:0元）,D计算得:委托A1的效用是100元,委托A2的效用是200元,这时选择A2作为委托对象.
+经过协商产生如下的合同C1:
+　　(合同号:1,(D,A2),
+　　　　(D,(责任:A2完成P,支付报酬1600元,报酬0元）
+　　　　(禁止:非特殊情况,禁止终止合同,罚金200元)
+　　　　(允许:意外情况,与A2通讯)...)
+　　　(A2,(责任:条件正常,完成P,报酬1600元)
+　　　　(禁止:运输中,禁止打开货物,罚金200元)
+　　　　(禁止:非特殊情况,禁止终止合同,罚金200元)
+　　　　(允许:意外情况,与D通讯)...)
+　　　(有效期:T1到T2)）
+这时有:（INT D C1 200元）和（INT A2 C1 300元）,并且作出对应的社会承诺.
+　　当D发现原有的报酬是1500元时,根据1500＋200＞1600保持合同的继续执行.
+　　用Haddadi的社会承诺机制难以反映该例中的社会约束和效用决策方面.
+4 结 语
+　　Castelfranchi［2］提出的社会承诺的概念,讨论了社会承诺的性质,但是没有给出社会承诺的建立和解除机制,也没有考虑效用对社会承诺的影响.虽然也意识到了社会承诺中双方的责任等约束,但是没给出合同结构的概念,利用合同结构来描述双方在社会承诺中的约束.
+　　S.Kraus［7］提出的在MAS中激励承包的思想和在不同情况下计算报酬的方法,从效用理论的观点出发,考虑如何计算合适的报酬,才能使得其他的Agent采纳其委托的目标,但是没有考虑社会承诺的概念以及与BDI理论的结合问题.
+　　A.Haddadi［1］基于Rao&Georgeff的BDI理论,研究了组内Agent之间的社会承诺建立机制,提出了合作可能、预承诺、承诺的概念以及相应的通讯策略问题.但工作局限于D和A在一个合作组内,这样Agent是非自利的,不需要效用理论来调节,可是D可以将P委托给非组内的A来完成,这样他的工作具有局限性. 另外,没有考虑双方的责任等约束,而本文通过合同的概念,将D和A连接起来,更符合人类承包现象.
+　　本文提出了合同结构的概念,用来联系社会承诺的双方,并给出了社会承诺的定义,社会承诺是双方的,并且意图去履行合同;对BDI和效用理论结合进行了尝试;从Agent的角度来分析社会承诺机制,所给的描述类似于算法形式,因而具有一定的可操作性.
+注：本文研究得到国家自然科学基金资助.
+本文通讯联系人:徐晋晖,北京 100084,清华大学计算机科学与技术系
+作者简介：徐晋晖,1966年生,博士生,主要研究领域为分布式人工智能应用基础.
+石纯一,1935年生,教授,博士生导师,主要研究领域为人工智能应用基础.
+作者单位：清华大学计算机科学与技术系 北京 100084
+参考文献
+1 Haddadi A S. Communication and Cooperation in Agent Systems. Berlin: Springer-Verlag, 1996. 1～134
+2 Castelfranchi C. Commitments: from individual intentions to groups and organizations. In: Victor Lesser ed. Proceedings of the 1st International Conference on Multi-agent Systems. Menlo Park.Cambridge.London: AAAI Press/The MIT Press, 1995. 41～48
+3 Castelfranchi C. Modeling social action for AI agents. In: Pollack M E ed. Proceedings of the 15th International Joint Conference on Artificial Intelligence. California: Morgan Kaufmann Publishers, 1997. 1567～1576
+4 Dunin-Keplicz B, Verbrugge R. Collective commitments. In: Durfee F ed. Proceedings of the 2nd International Conference on Multi-agent Systems. Menlo Park.California: AAAI Press, 1996. 56～63
+5 Rao, Georgeff. Modeling rational agents within a BDI-architecture. In: Llen J A, Fikes R, Sandewall W eds. Proceedings of the Principles of Knowledge Representation and Reasoning. California: Morgan Kaufmann Publishers, 1991. 473～484
+6 Rao, Georgeff. An abstract architecture for rational agents. In: Nebel B, Rich C, Swartout W eds. Proceedings of the Principles of Knowledge Representation and Reasoning. California: Morgan Kaufmann Publishers, 1992. 439～449
+7 Kraus S. An overview of incentive contracting. Artificial Intelligence, 1996,83:297～346
+本文1998-07-03收到原稿,1998-09-11收到修改稿

@@ -1,0 +1,97 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第7期　No.7 Vol.10 1999
+
+
+
+基于扩展的因果理论的鉴别诊断
+欧阳丹彤　姜云飞
+　　摘要　许多学者将因果关系这一概念应用于基于模型的诊断领域.然而,他们的研究只局限于简单因果理论.该文提出的扩展的因果理论则包容了更多的信息,指出了扩展的因果理论的诊断空间小于等于相应简单因果理论的诊断空间.另外,还将扩展的因果理论用于测试领域,证明了对于封闭的扩展的因果理论,溯因鉴别诊断等于基于一致性鉴别诊断.这一结果可应用于测试选择的策略.
+　　关键词　简单因果理论,扩展的因果理论,基于模型的诊断,测试,鉴别诊断.
+　　中图法分类号　TP18
+Differential Diagnosis Based on Generalized Causal Theory
+OU-YANG Dan-tong1 JIANG Yun-fei2
+1(Department of Computer Science Jilin University Changchun 130023）
+2(Institute of Computer Software Zhongshan University Guangzhou 510275）
+　　Abstract　Many researchers have applied the concept of causation to model-based diagnosis. However, their researches are limited to simple causal theory. In this paper, the concept of generalized causal theory that contains more information is proposed. It is pointed out that the diagnostic space of a generalized causal theory is smaller than or equal to that of the corresponding simple causal theory. Furthermore, generalized causal theory is applied to the area of test. It is demonstrated that for closed generalized causal theory, the abductive differential diagnosis is equivalent to the consistency-based differential diagnosis.
+　　Key words　Simple causal theory, generalized causal theory, model-based diagnosis, test, differential diagnosis.
+　　因果关系知识是常识推理的一个重要部分.我们常常使用原因和结果来理解日常发生的许多事情.比如,医学诊断将疾病作为原因,将症状作为结果；机械和电子系统将部件和输入作为原因,将输出作为结果；规划领域将规划作为原因,将动作作为结果等等.近几年,许多学者意识到了将因果关系这一概念应用于基于模型的诊断领域的重要性.比如,Console等人［1］和Konolige［2］分别在简单因果理论中研究了基于一致性的诊断和溯因诊断.McIraith和Reiter［3］证明了对于封闭的简单因果理论,溯因鉴别诊断等于基于一致性鉴别诊断.
+　　简单因果理论有一定的局限性,因为在其中只有表示因果关系的信息，而实际应用中还存在其他类型的信息,如定义信息、表示伴随关系(correlation）的信息等.本文提出的扩展的因果理论就包含了上面这些信息.适当的伴随关系信息的加入会引起诊断空间的缩小,帮助我们找出真正有用的解.
+　　诊断推理常常被看做是一个产生与测试的迭代过程.如果给出了待诊断设备的系统描述和对系统行为的观测结果,那么可以产生一个能够解释该观测行为的候选诊断集.由于在许多情况下,该集合中的诊断不只一个,因此,为了找到真正的故障,需要从该集合出发产生出一个或更多的测试,然后执行这些测试,并将新的观测行为反馈给诊断问题求解器,以决定出新的候选诊断集.重复上述过程,直至找到唯一的诊断或者再也找不出能够辨别诊断的测试为止.本文研究了单个测试结果对扩展的因果理论的基于一致性诊断空间和溯因诊断空间的影响,又进一步研究了扩展的因果理论的鉴别诊断.鉴别诊断就是想通过选择一个测试序列来反复抛弃诊断,以找出唯一的真正诊断.我们证明了对于封闭的扩展的因果理论,溯因鉴别诊断与基于一致性鉴别诊断是一样的.这一结果可应用于测试选择的策略.
+1 简单因果理论与扩展的因果理论
+　　定义1［3］. 假设L为命题语言.一简单因果理论SC为三元组〈C,E,Σ〉,其中C为原因集,是L的原子集;E为结果集,是L的原子集;Σ是包含原因和结果关系信息的领域理论,是L的语句集.Σ中的语句具有形式C′→e,其中e∈E,C′为文字的合取式,这些文字的命题符号为原因.
+　　例1:考虑如图1所示的电路图.一节电池S与3个同型号的灯泡B1,B2,B3相连(为减少部件数,设W1,...,W6直接与灯泡相连）.
+
+图1
+　　该系统的组成部件COMPS={S,Bi,Wj|i=1,2,3,j=1,...,6}.假设其简单因果理论SC为〈C,E,Σ〉,其中表示因果关系信息的理论Σ为：
+　　　　　　OK(S)∧OK(W1)∧OK(W2)∧OK(B1)→on(B1),
+　　　　　　OK(S)∧OK(W1)∧OK(W2)∧OK(W3)∧OK(W4)∧OK(B2)→on(B2),
+　　　　　　OK(S)∧OK(W1)∧OK(W2)∧OK(W3)∧OK(W4)∧OK(W5)∧OK(W6)∧OK(B3)→on(B3),
+　　原因集C={OK(Ck),AB(Ck)|Ck∈COMPS},
+　　结果集E={on(Bi),off(Bi)|i=1,2,3}.
+　　只使用SC有一定局限性,因为除了因果关系以外,还存在其他类型的信息,如定义信息：
+　　　　　　　　AB(Ck)≡OK(Ck),Ck∈COMPS,　　　　　　　　　　　　　(1)
+　　　　　　　　on(Bi)≡off(Bi),i=1,2,3.　　　　　　　　　　　　　 (2)
+　　此外,还有表示伴随关系(correlation）的信息,如：
+　　　　　　　　off(B1)∧OK(B1)→off(B2)∧off(B3),　　　　　　　　　 (3)
+　　　　　　　　off(B2)∧OK(B2)→off(B3).　　　　　　　　　　　　　　(4)
+　　伴随关系(3)是说,若B1不亮且是正常的,则只能是电源S或是电线W1或W2之中有故障.在实际中,我们知道：若上面三者有一个是反常的,则B2和B3都不会亮.同理,可以解释另一个伴随关系(4).这种伴随关系信息可用于预测,但不用于因果解释.比如,从A={OK(B1),off(B1)}出发可以推出off(B2),但是A并不是off(B2)产生的原因.
+　　为此,我们引入了扩展的因果理论的概念.
+　　定义2. 假设L为命题语言,一扩展的因果理论GC为三元组〈SC,DF,CR〉,其中SC为简单因果理论〈C,E,Σ〉,同定义1;DF为定义理论,为L的语句集;CR为伴随关系理论,为L的语句集.
+　　显然,伴随关系不应由因果模型推出,否则就不必列出,也起不到缩小诊断空间的作用.它应该是从设计角度能解释通的,并可能带有一点类似启发式型的信息.这样,使用它才有可能排除那些在逻辑上可能但违反自然法则的不可能的诊断.
+　　适当的伴随关系信息的加入会起到缩小诊断空间的作用.为了说明这一点,我们首先回顾一下文献［4］中涉及到的基于一致性最小诊断的一些定义和定理,作为准备工作.
+　　定义3［4］. 一个系统是一个三元组(SD,COMPS,OBS）,其中SD为系统描述,是一阶谓词公式的集合;COMPS为系统组成部件,是一个有限的常量集;OBS为一观测集,是一阶谓词公式的有限集.SD描述了待诊断系统的相关背景知识,可以为简单因果理论、扩展的因果理论等等.
+　　定义4［4］. 关于(SD,COMPS,OBS）的基于一致性最小诊断为最小故障部件集Δ,使得SD∪OBS∪{AB(c）｜c∈Δ}∪{AB(c）｜c∈COMPS－Δ}是一致的.
+　　定义5［4］. 关于(SD,COMPS,OBS）的冲突集为一个部件集{c1,...,cn},使得SD∪OBS∪{AB(c1),...,AB(cn)}不一致.称关于(SD,COMPS,OBS)的一个冲突集为最小的，当且仅当该集合的任一真子集都不是关于(SD,COMPS,OBS)的冲突集.
+　　定义5中的冲突集与文献［5］中定义的正的冲突一一对应.
+　　定义6［4］. 设C是集合簇(由集合组成的集合).C的一个碰集为H∪s∈C s,使得对每一s∈C都有H∩s≠.称C的一个碰集为最小的当且仅当它的任何一个真子集都不是C的碰集.
+　　定理1［4］. Δ是(SD,COMPS,OBS）的基于一致性最小诊断当且仅当Δ是(SD,COMPS,OBS）的最小冲突集簇的一个最小碰集.
+　　该定理告诉我们如何计算基于一致性最小诊断.
+　　继续例1,假设观测OBS={off(B1),off(B2),on(B3)}.如果没有定义理论,那么仅仅从上面的简单因果理论SC和观测OBS出发,计算不出任何一个基于一致性的诊断.
+　　现在加入定义理论DF如上面的(1)和(2).由于SC中只描述了部件的正常行为,因此,可以使用基于一致性的最小诊断来刻画基于一致性的诊断空间.由定理1,首先计算出(SC∪DF,COMPS,OBS）的最小冲突集簇：{{S,W1,W2,B1 },{S,W1,W2,W3,W4,B2}},则关于(SC∪DF,COMPS,OBS)的基于一致性最小反常诊断为该最小冲突集簇的最小碰集：{S},{W1},{W2},{B1,W3},{B1,W4},{B1,B2}.那么,基于一致性诊断空间中的诊断为这些最小反常诊断及其超集,显然相当多.
+　　若再加入伴随关系信息(3)和(4),即该电路的扩展的因果理论GC＝〈SC,DF,CR〉,其中SC不变,DF中包含语句(1)、(2),CR中包含语句(3)、(4),则这时的最小冲突集簇变成了：{{S,W1,W2,B1 },{S,W1,W2,W3,W4,B2},{B1 },{B2}},因此,关于(GC,COMPS,OBS）的基于一致性最小反常诊断为：{B1,B2}.正是因为伴随关系理论的加入而缩小了上面简单因果理论的诊断空间,排除了许多违反自然法则的不可能的诊断,如：{S},{W1},{W2},{B1,W3},{B1,W4}以及它们的不含{B1,B2}的超集.
+2　鉴别诊断
+　　一般地,由冲突识别、候选产生得到的诊断不只一个,而测试的目的正是要进一步区别这些诊断，以找出真正的故障所在.文献［3］介绍了如何设计测试,并指出:对于封闭的简单因果理论,溯因鉴别诊断与基于一致性鉴别诊断是一样的.
+　　定义7［3］. 一个测试(test)是一个偶对(I,O）,其中I是可获得文字的一个合取式,O是一观察.
+　　一个测试指定了由测试器建立的某一初始条件I以及观察O,这一观察的真值由测试器判定.当只简单地做一下系统观察而不必建立关于测试的初始条件时,I=true.在电路诊断中,I可为电路的输入,O可为电路输出的结果值或中间测量点值.在医学诊断中,I可能包括做一些实验,如验血,观察可能为白细胞数目.
+　　定义8［3］. 测试(I,O）的结果或为O或为O.
+　　下面，我们特别研究一下扩展的因果理论GC中的测试问题.
+　　若T为一理论,以下用表示在T中存在一个从A到B的证明.
+　　定义9. 已知GC=〈〈C,E,Σ〉,DF,CR〉,设DS为我们当前拥有的诊断集.称测试(I,O)的结果α证实(confirms)D∈DS,当且仅当I∧DΣ∪DFD→α.称α反驳(refutes)D,当且仅当I∧DGCD→α.
+　　设待诊断系统的部件集为{C1,...,Cn},令ALL为所有形如l1∧...li∧...∧ln的合取式组成的集合,其中li为AB(Ci）或OK(Ci）,i=1,...,n.
+　　定义10. 关于GC及测试(I,O)的结果α的基于一致性诊断为任一D∈ALL,使得I∧D∧αGC⊥.
+　　定义11. 关于GC及测试(I,O）的结果α的溯因诊断为任一D∈ALL,使得I∧DGC⊥且I∧DΣ∪DFα.
+　　在上面的定义中要求I∧DΣ∪DFα,而不是I∧DGCα,这既简化了计算,又使得D真正成为α的原因.
+　　上面考虑的只是单个测试对诊断空间的影响.下面介绍的鉴别诊断(differential diagnosis,简称DD）是诸多序贯(sequential）诊断策略中的一种.由于实际诊断问题在大多数情况下不是并发的,而是序贯形式的,即征兆是在诊断过程中逐步得到的.因此,诊断解的形成也是逐步完成的.文献［6］所描述的鉴别诊断的直观概念为:已知一诊断集,可执行一测试序列来不断地抛弃诊断,而不需产生新的诊断.每一测试后产生的结果诊断集恰好包括了所有在下面推理中准备考虑的诊断.
+　　定理2(基于一致性DD）. 设DS为GC的所有基于一致性诊断的集合,且设α为测试(true,O）的结果,则NEWDS={D∈DS｜α不反驳D}为关于GC∪{α}的基于一致性诊断集.
+　　证明:设D∈ALL,我们需要证明D∈NEWDS当且仅当D为关于GC∪{α}的基于一致性诊断.
+　　假设D∈NEWDS,则α不反驳D.由定义9知,α,亦即D∧αGC⊥.由定义10知,D为关于GC∪{α}的基于一致性诊断.
+　　反过来,假设D为关于GC∪{α}的基于一致性诊断.由定义10知,D∧αGC⊥,即GCD→α.又由D∧αGC⊥知,DGC⊥,因此,D∈DS.且由定义9知,α不反驳D.所以,D∈NEWDS.　　□.
+　　定理3(溯因DD）. 设DS为GC的所有溯因诊断集,且设α为测试(true,O）的结果,则NEWDS={D∈DS｜α证实D}为关于GC∪{α}的溯因诊断集.
+　　证明:设D∈ALL,我们需要证明D∈NEWDS，当且仅当D为关于GC∪{α}的溯因诊断.
+　　假设D∈NEWDS，则α证实D.由定义9知,DGC⊥且Σ∪DFD→α,即DΣ∪DFα.因此,由定义11知,D为关于GC∪{α}的溯因诊断.
+　　反过来,假设D为关于GC∪{α}的溯因诊断,由定义11知,DGC⊥,并且DΣ∪DFα,即,Σ∪DFD→α.因此,D∈DS,且由定义9知,α证实D.所以,D∈NEWDS.　　□.
+　　这两个定理是说经过测试后新的诊断集NEWDS一定为原诊断集DS的子集,而不会产生新的诊断.所不同的是:基于一致性DD将DS中与α一致的诊断保留下来,而溯因DD将是α原因(在Σ∪DF下能逻辑推出α）的诊断保留下来.理想的测试序列是使得每一NEWDS都为当前DS的非空的真子集,每一次测试后,更新当前DS为NEWDS,再执行下一个测试,最终得到的NEWDS′只包含一个诊断.这样,就将真正的诊断从众多诊断中鉴别出来.
+　　值得注意的是:(1）若DS为最小诊断集或中心诊断集(不论是基于一致性的还是溯因的）,则上面两个定理不成立.原因是，在这种情况下,测试结果不仅产生修剪的诊断空间,还可能产生新的不属于DS的诊断.(2）上面两个定理只针对形如(true,O）的简单测试,而不针对带任意初始条件I的测试.原因是初始条件I的实现可能改变以前观察的真值,很难刻画这时的鉴别诊断.
+　　定义12. 设GC=〈〈C,E,Σ〉,D,CR〉为扩展的因果理论,Σ为非原子的确定子句集,它的直接图为非循环的,则称GC*=〈〈C,E,Σ*〉,DF,CR〉为封闭的扩展的因果理论,其中Σ*为Σ的Clark完备化［7］.
+　　定理4. 设GC为扩展的因果理论,GC*为相应的封闭扩展的因果理论,DS为GC*的所有基于一致性诊断的集合,且设α为测试(true,O）的结果,其中O∈E.则NEWDS={D∈DS｜α证实D}为关于GC*∪{α}的基于一致性诊断集.
+　　证明:设D∈ALL,我们需要证明D∈NEWDS当且仅当D为关于 GC*∪{α}的基于一致性诊断.
+　　假设D∈NEWDS,则α证实D.由定义9知,DGC*⊥,且Σ*∪DFD→α,即DΣ*∪DFα.因此,DGC*α.当然就有D∧αGC⊥.由定义10知,D为关于GC*∪{α}的基于一致性诊断.
+　　反过来,假设D为关于GC*∪{α}的基于一致性诊断,由定义10知,D∧αGC*⊥,当然有D∧αΣ*∪DF⊥.即 Dα,亦即Σ*∪DFD→α.下面我们只需证明从Σ*的特点出发只能推出两种可能结果:Σ*∪DFD→α或Σ*∪DFD→α(而由上面证明知Σ*∪DFD→α是不可能的,因此只有Σ*∪DFD→α）.为证明这个结论,我们注意到:Σ*为仅包含因果关系信息的理论Σ的Clark完备化.由此可知Σ*∪DFα≡B,其中B为一语句,B中所有文字都为AB(Ci）或OK(Cj）,i,j∈{1,...,n}.又由于D∈ALL,即形如l1∧...lk∧...∧ln,其中lk为AB(Ck）或OK(Ck）,k=1,...,n.因此,或者有D→B,或者有D→B.由此及Σ*∪DFα≡B知,或者有Σ*∪DFD→α,或者有Σ*∪DFD→α.而由上面知Σ*∪DF D→α,即Σ*∪DFD→α是不可能的.因此,只有Σ*∪DF D→α.又由 D∧αGC*⊥知,DGC*⊥,因此,D∈DS,且由定义9知,α证实D(由定义11亦知,D为关于GC*∪{α}的溯因诊断）.所以,D∈NEWDS.　　□
+　　该定理是说,对于封闭的、扩展的因果理论,基于一致性鉴别诊断与溯因鉴别诊断是一样的.
+　　定理2～4的结论可应用于测试选择的策略.对于封闭的、扩展的因果理论,要从基于一致性诊断空间中挑出唯一的真正诊断,我们既可以选择一测试序列来反驳所有其他诊断(即用基于一致性鉴别诊断方法）,还可以选择出只证实一个诊断的一个测试或多个测试(即用溯因鉴别诊断方法）.
+3 结束语
+　　基于模型的诊断方法是一项新的AI技术,它可以克服传统诊断方法的缺点,其应用也越来越广泛.因果关系是一种很重要的关系,我们日常的推理常常使用它.最近几年,人们才意识到将因果关系用于基于模型的诊断领域的重要性.本文提出了比简单因果理论包含更多信息的扩展的因果理论的概念,并研究了扩展的因果理论中的测试问题.证明了单个测试结果对扩展的因果理论的诊断空间的影响,又进一步论证了对于封闭的扩展的因果理论,基于一致性鉴别诊断与溯因鉴别诊断是一样的.这些结果对于测试策略的选择很有用.
+　　本文研究得到国家自然科学基金和国家教育部博士点基金资助.作者欧阳丹彤,女,1968年生,博士生,讲师,主要研究领域为定理机器证明,基于模型的诊断.姜云飞,1945年生,教授,博士生导师,主要研究领域为基于模型的诊断及规划,自动推理.
+　　本文通讯联系人:欧阳丹彤,长春130023,吉林大学计算机科学系
+　　作者单位：欧阳丹彤(吉林大学计算机科学系　长春　130023)；姜云飞(中山大学计算机软件研究所　广州　510275）
+参考文献
+　1　Console L, Dupré D T, Torasso P. Abductive reasoning through direct deduction from completed domain models. In: Ras Z W ed. Methodologies for Intelligent Systems. New York: North-Holland Publishing Company, 1988. 175～182
+　2　Konolige K. Abduction versus closure in causal theories. Artificial Intelligence, 1992,53(2-3):255～272
+　3　McIraith S, Reiter R. On tests for hypothetical reasoning. In: Hamscher W, Console L, de Kleer J eds. Readings in Model-based Diagnosis. San Mateo, CA: Morgan Kaufmann Publishers, 1992. 89～96
+　4　Reiter R. A theory of diagnosis from first principles. Artificial Intelligence, 1987,32(1):57～96
+　5　de Kleer J, Mackworth A K, Reiter R. Characterizing diagnosis and systems. Artificial Intelligence, 1992,56(2-3):197～222
+　6　Ledley R S, Lusted L B. Reasoning foundations of medical diagnosis. Science, 1959,130(3366):9～21
+　7　Clark K. Negation as failure. In: Gallaire H, Minker J eds. Logic and Data Bases. New York: Plenum Publishing Corporation, 1978. 293～322
+1998-03-23收到原稿 
+1998-08-05收到修改稿

@@ -1,0 +1,122 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.4　P.563-568
+
+
+
+
+判断两个凸多面体是否相交的一个快速算法
+　任世军　洪炳熔　孟庆鑫
+　摘要　在机器人路径规划中,碰撞检测算法占有十分重要的地位.在智能机器人仿真系统中,碰撞检测耗用的时间在整个路径规划过程所用时间中占有相当大的比例.于是，如何进一步提高碰撞检测的速度在智能机器人路径规划系统中就起到了非常关键的作用.而碰撞检测问题最终转化为判断三维空间中两个凸多面体是否相交的问题.就这一问题,给出了一种新的算法,其思想是取一个从一个凸多面体指向另一个多面体的向量,根据两个多面体中的面与这一向量的相对位置关系来寻找相交的平面.即有两个多面体的交点位于这一平面，若能找到一个相交平面则可以断定两个多面体相交.
+　关键词　路径规划,碰撞检测,机器人,线性不等式.
+　中图法分类号　TP242
+A Fast Algorithm to Determine Whether the Intersection of Two Convex Regions Is Empty
+REN Shi-jun
+（Department of Computer Science and Engineering　Harbin Institute of Technology　Harbin　150001）
+（Department of Mechanical Engineering　Harbin Engineering University　Harbin　150001）
+HONG Bing-rong
+（Department of Computer Science and Engineering　Harbin Institute of Technology　Harbin　150001）
+MENG Qing-xin
+（Department of Mechanical Engineering　Harbin Engineering University　Harbin　150001）
+Abstract　　Collision detection algorithms play a very important role in the field of robot path planning. In a simulation system of intelligent robot, collision detection takes up a large portion of the time for the robot to plan a complete path from the initial position to the final position. So how to reduce the time the robot uses to detect collision becomes a key problem. But collision detection finally will transform to a problem to determine whether the intersection of two convex regions formed by linear inequalities is empty or not. The authors present a new algorithm in this paper. Firstly, a vector pointing from one polyhedron to the other is picked. Then the authors start to find an intersection plane of one polyhedron based on the scalar product of the norm vector of the plane and the picked vector. If such a plane is found, the intersection of the two convex polyhedra is not empty.
+Key words　Path planning, collision detection, robot, linear inequality.
+　　在机器人路径规划算法中，碰撞检测占有十分重要的地位,而在机器人的工作空间中往往用凸多面体来模拟机器臂、障碍物等等.在机器人路径规划中,往往要检测机器臂与障碍物以及机械臂与机械臂之间是否相撞,这就需要检测两个凸多面体形成的集合之间是否有交点.若有交点,说明机器臂与障碍物相撞或者机械臂与机械臂自身相撞,否则说明机器臂与障碍物并不相撞.以往的碰撞检测算法都是从空间几何学的角度［1］或从最优化的角度［2,3］出发,这样就需要大量的求交运算.在本文中，我们给出一种算法来检测空间中的两个凸多面体的碰撞问题.在机器人的仿真系统中，物体(包括机械臂和障碍物)的建模往往采用计算机图形学中的B-rep方式，即边界表示方式.一个物体由3个要素组成,即点、棱和面.在计算机中存储这样一个物体一般是存储其拓扑结构(指点、棱和面之间的关系),其各个顶点及其各个面的方程.在机械臂和障碍物的运动过程中都要实时地计算其每一个顶点及其各个面的方程，以确定该物体的位置.
+　　设有n维空间中由线性不等式围成的两个凸多面体A和B,它们分别由式(1)和式(2)给出，
+　　　　　　　　　　　　　　(1)
+　　　　　　　　　　　　　　(2)
+设pi=(pi1,pi2,...,pin)T,ri=(ri1,ri2,...,rin)T,x=(x1,x2,...,xn)T,则式(1)可表示为
+
+式(2)可表示为
+
+1　算法的理论基础
+　　定理1. 设g=(g1,g2,...,gn)T为集合A的边界点,tA,并且对于α(0＜α≤1）都有g＋α（t-g）A,那么一定存在i0使得1≤i0≤m,pTi0。（g-t）＜0并且pTi0。g=qi0.
+　　证明:由于g为集合A的边界点,且A为凸多面体,故有g∈A.
+　　首先,我们证明一定存在i0使得1≤i0≤m,并且pTi0。g=qi0.因为若不是这样,即对i（1≤i≤m），都有pTi。g＜qi.设由于对于i（1≤i≤m)和任意的单位向量e,我们有
+
+故δ＞0.对于任意的向量x,只要‖x-g‖＜δ,由于pTi。x=pTi。g+pTi。(x-g),并且pTi。(x-g)≤‖pi‖。我们取则有
+从而pTi。x＜pTi。g+(qi-pTi。g)=qi,其中1≤i≤m,即x∈A.从而g为A的内点,矛盾.
+　　其次,我们证明对于所有满足pTi。g＝qi的i中一定存在一个i0使得1≤i0≤m,并且pTi1。（g-t）＜0.设I1＝｛i｜pTi。g＝qi，1≤i≤m｝,I2={i｜iI1，1≤i≤m｝.假设对于i∈I1都有pTi。（g-t）≥0.若存在i∈I2使得pTi。（g-t）＜0,则取α1满足否则取α1=1.对于i∈I2,如果pTi。（t-g）＞0,那么如果pTi。（t－g）≤0,那么pTi。［g＋α1（t－g）］=pTi。g+α1。pTi。（t－g）≤qi.由假设知,对i∈I1,有pTi。［g＋α1（t－g）］=pTi。g＋α1。pTi。（t－g）≤pTi。g＝qi.所以g＋α1（t－g）∈A,与定理条件相矛盾.
+□
+　　定理2. 如果存在s∈A,t∈B,使得sB,tA,那么若A∩B≠Φ,则一定存在i0,使得1≤i0≤m,pTi0。（s－t）＜0,并且A∩B∩｛x｜pTi0。x＝qi0｝≠Φ.也一定存在i1,使得1≤i1≤n,rTi1。（s－t）＞0,并且A∩B∩｛x｜rTi1。x＝si1｝≠Φ.
+　　证明:设A∩B≠Φ.我们用反证法.如果对于i（1≤i≤m）,只要pTi。（s－t）＜0就有A∩B∩｛x｜pTi。x＝qi｝＝Φ,亦即对于集合Α∩Β,约束pTi。x≤qi不起作用,那么若设A1＝｛x｜pTi。x≤qi，pTi。（g－t）≥0，1≤i≤m｝,则有A∩B＝A1∩B.
+　　(1) 若存在 α0,使得0＜α0＜1,s＋α0（t－s）∈A∩B.
+　　(i) 由于t∈B并且B是凸集,所以对于α（α0≤α≤1）都有s＋α（t－s）∈B.
+　　(ii) 对于α（α0≤α≤1）i（1≤i≤m），若pTi。（s－t）≥0则由于s∈A,故有
+pTi。［s+α（t－s）］＝pTi。s＋αpTi。（t－s）≤pTi。s≤qi,
+于是对于α（α0≤α≤1）都有s＋α（t－s）∈A1.
+　　由(i)和(ii)知,对于α（α0≤α≤1）都有s＋α（t－s）∈A1∩B＝A∩BA.当α＝1时,s＋α（t－s）＝s＋（t－s）＝t,所以t∈A.矛盾.
+　　(2) 假设对于α（0≤α≤1）都有s＋α（t-s）A∩B.即从s至t的线段中没有A∩B的点.由于A∩B是凸集(两个凸集的交集仍为凸集)且非空,所以,可取一点g∈A∩B使得g到连接s至t的直线的距离最短.设α＞0,在空间中取一点g＋α（t-s）.因为连接点s至t的直线与连接点g与g＋α（t－s）的直线相互平行,所以,s，t，g和g＋α（t-s）位于同一个平面并且连接s，t，g＋α（t－s），g的线段构成一个平行四边形.我们说g＋α（t－s）A,否则，由于s∈A，故连接s和g＋α（t－s）的线段也属于A.同理，连接t与g的线段属于B.于是上述梯形的两条对角线的交点既属于A又属于B，从而属于A∩B.但这个交点到连接s至t的直线的距离比g到连接s至t的直线的距离更短,矛盾.于是，对于α＞0都有g＋α（t－s）A.故g为集合A的边界点.根据定理1可知，一定存在i0使得1≤i0≤m,pTi1。（g－t）＜0并且pTi0。g＝qi0.于是,因为s∈A,所以pTi0。（s－t）＝pTi0。［（s－g）＋（g－t）］=pTi0。（s－g）＋pTi0。（g－t）=（pTi0。s－qi0）+pTi0。（g－t）＜0.定理证毕.
+□
+2　判断空间中两个凸多面体是否相交的算法
+　　在我们提出的算法中首先要用到文献［4］中提出的向量定位算法.用以判断空间中由一组线性不等式围成的凸空间是否是空集.若不是空集则返回其中的一点.
+　　设G为一个动态点(即可以是一维、二维以及三维空间中的任意一点),A为一组线性不等式,用xiangliang(A)表示判断由A确定的集合是否是空集的向量定位算法,则算法可以表示如下.
+　　xiangliang(A)
+　　｛
+　　Step 1. 若A中含有矛盾常数不等式,则返回NULL.
+　　Step 2. 将A中的不等式按照第1个变量的系数大于、等于和小于0的原则分成3个集合A1,A2和A3.
+　　Step 3. 若A1＝Φ并且Α3＝Φ,则去掉A中的第1个变量.再次调用xiangliang(A).设G=xiangliang(A).将G与相应的第1个变量的任一实数组合在一起，令其为G.返回G.
+　　Step 4. 若A1＝Φ或者Α3＝Φ,则将A2中的第1个变量去掉,设G=xiangliang(A2)(若A2＝Φ则取G为各个分量全是0的零向量).若Α1＝Φ,则让第1个变量充分大.若Α3＝Φ,则让第1个变量充分小.这样即可求得满足所有不等式的点.将得到的第1个变量与G一起构成新的G，并返回G.
+　　Step 5. 若A1中的不等式的个数小于或者等于A3中的不等式的个数,则依次取A1中的不等式,令其为等式(设为d),化简其他不等式,得到新的不等式组,使得中的变量个数少于A中的变量的个数.设G=xiangliang().若G=NULL,则取下一个不等式.继续执行.否则，用G和d可求出另外一个变量与G一起组成新的G.返回G.若所有不等式都取完,则返回NULL.
+　　Step 6. 若A1中的不等式的个数大于A3中的不等式的个数,则依次取A3中的不等式,令其为等式(设为d),化简其他不等式,得到新的不等式组,使得中的变量个数少于A中的变量的个数.设G=xiangliang().若G=NULL,则取下一个不等式.继续执行.否则，用G和d可求出另外一个变量与G一起组成新的G.返回G.若所有不等式都取完,则返回NULL.
+　　｝
+　　设A和B分别表示约束空间中的两个凸多面体的线性不等式组,用qiujiao(A,B)表示确定A,B的交集是否是空集的求交算法,则算法可以表示如下.
+　　BOOL qiujiao(A,B)
+　　｛
+　　Step 1. 若约束A和约束B的不等式均为常数不等式且不含矛盾不等式，则return TRUE.
+　　Step 2. 若约束A和约束B的不等式含有矛盾不等式,则return FALSE.
+　　Step 3. s=xiangliang(A),t=xiangliang(B).
+　　Step 4. 若s=NULL或t=NULL,则return FALSE.
+　　Step 5. 若s∈B或t∈A,则return TRUE.
+　　Step 6. 如果约束A的不等式的个数少于约束B的不等式的个数,那么依次选择约束A的不等式，使得该不等式的法向量与向量（t－s）的数量积大于0.用该不等式化简约束A和B的不等式得到不等式组A1和B1,使得A1和B1中的变量个数少于A和B中变量的个数.重复调用这一过程,若qiujiao(A1，B1)=TRUE,则return TRUE.否则，继续执行.
+　　Step 7. 如果约束B的不等式的个数少于约束A的不等式的个数,那么依次选择约束B的不等式，使得该不等式的法向量与向量（t－s）的数量积小于0.用该不等式化简约束A和B的不等式得到不等式组A1和B1,使得A1和B1中的变量个数少于A和B中变量的个数.重复调用这一过程,若qiujiao(A1,B1)=TRUE,则return TRUE.否则，继续执行.
+　　Step 8. return FALSE.
+　　｝
+在一个实际的机器人仿真系统中可以首先判断两个物体的包围盒(bounding box)是否相交，若不相交，则这两个凸多面体也不相交；否则，进一步用上面提出的算法来判定这两个凸多面体是否相交.这样做可以提高碰撞检测的效率.
+3　实 例
+　　例1:设在三维空间中给定两个凸多面体A和B，如图1所示.
+
+Fig.1 Two intersected polyhedra
+图1　两相交的凸面体
+
+Fig.2 Two polyhedra intersected on only edges not vertex
+图2　两个只有棱而非点相交的凸多面体
+　　这两个凸多面体的平面方程分别由方程组(3)和(4)给出.
+　　　　　　　　　　　　　　　　　(3)
+　　　　　　　　　　　　　　　　　(4)
+由向量定位算法可以求出式(3)和式(4)中的两个点(0,0,0)和(-0.5,0.5,0.5).由于点(-0.5,0.5,0.5)满足式(3),所以这两个凸多面体相交.
+　　例2:设在三维空间中给定两个凸多面体A和B，如图2所示.
+　　这两个凸多面体的平面方程分别由方程组(5)和(6)给出，
+　　　　　　　　　　　　　　　　　(5)
+　　　　　　　　　　　　　　　　　(6)
+由向量定位算法可以求出式(5)和式(6)中的两个点(0,0,-2)和(-0.5,0.5,0.5).由于式(5)中的不等式的个数少于式(6)中的不等式的个数.所以取式(5)中的不等式.由于此时t-s=(-0.5,0.5,2.5),只有第4个不等式相应的平面方程的法向量与t-s的数量积大于0,令其为等式,则式(5)和式(6)化简为
+　　　　　　　　　　　　　　　　　(7)
+　　　　　　　　　　　　　　　　　(8)
+用向量定位算法分别求出式(7)和式(8)中的两个点(0,0)和(-0.5,0.5).由于(-0.5,0.5)满足式(7),所以式(7)与式(8)的交不空.从而式(5)与式(6)的交也不空.
+4　实验结果
+　　我们在IBM 486上实现了我们提出的算法,通过大量的数据对算法进行了测试,结果见表1.
+Table 1　Experimental results of the algorithm (Experimented on IBM 486)
+表1　算法的实验结果(在IBM 486上执行)
+
+Problem scale①Execution time②(s)
+No. of A's constraints③No. of B's constraintsNo. of instance④maximum⑤minimum⑥average⑦
+60 60300.030.010.01
+8060300.040.010.01
+8080200.060.020.03
+100100200.140.070.09
+250250201.931.21.52
+
+①问题规模,②执行时间(秒),③约束数目,④算例数,⑤最多执行时间,⑥最少执行时间,⑦平均执行时间.
+　　从表1的实验结果可以看出这个算法非常有效.在一个实际的机器人规划系统中执行这一算法之前，首先判断两个凸多面体的包围盒是否相交,然后再用这一算法进行判断.这样就能够进一步提高规划系统中碰撞检测的效率.
+任世军（哈尔滨工程大学机电工程学院　哈尔滨　150001）
+（哈尔滨工业大学计算机科学与工程系　哈尔滨　150001）　
+洪炳熔（哈尔滨工业大学计算机科学与工程系　哈尔滨　150001）　
+孟庆鑫（哈尔滨工程大学机电工程学院　哈尔滨　150001）
+参考文献
+1，Liu Lian-feng, Wang Yong-xi. A three dimensional algorithm on detecting collision between robot and its environment. Robot, 1996,18(1):50～54
+(刘连峰,王泳喜.空间路径规划中一种三维物体干涉检测算法.机器人,1996,18(1):50～54)
+2，Zeghloul S, Rambeaud P. A fast algorithm for distance calculation between convex objects using the optimization approach. Robotica, 1996,14:355～363
+3，Bobrow J E. A direct minimization approach for obtaining the distance convex polyhedra. International Journal of Robotics Research, 1989,8(3):65～76
+4，Ren Shi-jun, Hong Bing-rong. A fast algorithm to determine whether convex regions bounded by multiple linear constraints are empty. Chinese Journal of Computers, 1998,21(10):896～901
+(任世军,洪炳熔.判定由线性不等式围成的凸空间是否为空的一个快速算法.计算机学报,1998,21(10):896～901)
+
+

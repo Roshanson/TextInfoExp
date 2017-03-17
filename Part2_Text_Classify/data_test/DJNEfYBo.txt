@@ -1,0 +1,108 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第11期　Vol.10　No.11　1999
+
+
+
+嵌套谓词等式系与弱互模拟
+林惠民
+　　摘要　带赋值符号迁移图是一般传值进程的语义模型,其强互模拟等价可以归结为谓词等式系的最大解.该文将这一结果推广到弱互模拟等价,为此,引入嵌套谓词等式系的概念,并提出算法,将带赋值符号迁移图的弱互模拟等价归结为形如E2μE1的嵌套谓词等式系的最大解.
+　　关键词　传值进程,互模拟,谓词等式系.
+　　中图法分类号　TP301
+Nesting Predicate Equation Systems and Weak Bisimulations
+LIN Hui-min
+(Laboratory of Computer Science Institute of Software The Chinese Academy of Sciences Beijing 100080)
+　　Abstract　 Symbolic transition graphs with assignment is a general semantical model for value-passing processes. Strong bisimulation equivalences between such graphs can be reduced to the greatest solutions to simple predicate equation systems. The aim of this paper is to generalise this result to weak bisimulation equivalences. For this purpose, the notion of nesting predicate equation systems is introduced, and algorithms are presented to reduce weak bisimulation equivalences to the greatest solutions to nesting predicate equation systems of the form E2μE1.
+　　Key words　Value-passing processes, bisimulation, predicate equation systems
+　　文献［1,2］中引入了带赋值的符号迁移图（symbolic transition graphs with assignment,简称STGA）作为一般传值进程的计算模型.STGA在符号迁移图［3］的基础上扩充了赋值运算，可以表示进程内部状态的改变，因而很大一类传值进程都可以表示为有穷状态STGA.以CCS为例，任一正则（即递归定义体中不出现并行复合）CCS传值进程都对应于一有穷状态STGA.有穷状态STGA的另一个优点是,在并行复合下封闭，即两个有穷状态STGA并行复合的结果仍然是有穷状态STGA［2］，因此,STGA足以表示并发进程网络(networks of parallel processes).两个不带赋值有穷符号迁移图的强互模拟等价可以用一阶公式刻画，即两个图强互模拟当且仅当相应的公式为真［3］.对带赋值的符号迁移图,这一结论一般不再成立，因此,文献［3］中引入谓词等式系的概念，在一阶谓词演算的正子集中引入不动点，并设计了算法,将有穷STGA的强互模拟归结为谓词等式系的最大解.
+　　强互模拟等价主要具有理论上的意义，在实际上使用的等价关系是将表示内部通信的不可见动作τ抽象后得到的弱互模拟等价［4］.本文的目的是将文献［1］的结果推广到弱互模拟等价.由于简单的谓词等式系不足以刻画弱互模拟,为此,首先引入嵌套谓词等式系的概念，证明其极大、极小解的存在性，然后讨论如何将有穷STGA的弱互模拟等价归结为交错深度为2的嵌套谓词等式系的最大解.
+　　为节省篇幅,对文献［1］第2和第3节中的基本记号及定义,本文不再重复.
+1 嵌套谓词等式系
+　　假定数据变量集DV={x,y,z,...}，数据变量集上的数据表达式集DExp和布尔表达式集BExp，谓词变量集PV={X,Y,Z,...}，可如文献［1］第3节定义合式命题Φ和谓词Λ.注意在命题和谓词的构造中没有使用否定词，并且谓词变量不在蕴涵式的左部出现.给定数值集Val，并令T={true,false}.对数据变量的赋值ρ将数据变量映射为Val中的元素.ρ可延伸到DExp和BExp上:对任一e∈DExp,ρ(e)∈Val；对任一b∈BExp,ρ(b)∈T.对谓词变量的赋值将谓词变量映射为函数空间Valn→T中的元素(n为谓词变量的型).给定ρ和，可定义公式Φ和谓词Λ的语义，详见文献［1］中的第3节.令falsetrue，序可逐点扩充到函数空间Val→T上，并进一步扩充到谓词变量的赋值，详见文献［1］中的第3节.容易验证,全体谓词变元赋值在序下构成完备格.设{Xi|i∈I}是谓词变量的有限集，称E：{Xi=Λi|i∈I}为一谓词等式系，若Λi与Xi有相同的型，且对i≠j有Xi≠Xj.用向量形式{Xi=Λi|i∈I}可简写为=.对k∈{1,...,n}，设σk∈{μ,}，σk≠σk-1(k>1)，Ek:k=k是谓词等式系，且对k≠j，{k}∩{j}=，则称
+
+是交错深度为n的嵌套谓词等式系.为方便书写，我们用k表示Ekσk-1Ek-1...σ1E1.给定ρ和，n的解ζ归纳定义如下:
+
+这里,表示相对于ρ和的最大解(若σ≡)或最小解(若σ≡)，n的解也就是泛函的不动点.这个定义的合理性由下述命题保证.
+　　命题1.1. 给定ρ和，任意嵌套谓词等式系存在最大解和最小解.
+　　证明:由于全体对谓词变量的赋值在下构成完备格，完备格上的单调函数有最大和最小不动点［5］，所以只需证明泛函关于序单调，其中我们假定ζ′ζ″，往证对n施归纳.
+　　(基始步) n=1.这时等式系非嵌套，ηζ′和ηζ″都是空解，所以,{ηζ}′{ζ′}={ζ′},{ηζ″}{ζ″}={ζ″}.由ζ′ζ″知,{ζ′}{ζ″}，由于‖1‖中谓词变量不出现在蕴涵式左部，所以,.
+　　(归纳步) 设结论对嵌套深度为n-1的等式系成立，考虑n=Enσn-1n-1，不妨设σn-1≡μ，由归纳假设λζ关于单调，因此,n-1有关于ρ,{ζ′}的最小不动点和关于ρ，{ζ″}的最小不动点，从ζ′ζ″知,{ζ′}{ζ″},ηζ′ηζ″},故有{ηζ′}{ζ′}{ηζ″}{ζ″}，由于‖n‖中谓词变量不在蕴涵式左部出现，得.
+　　预备定理1.1. 设有谓词等式系，Φi不含中的谓词变元，η是E相对于ρ和的最小解.则η(Yi0)(i0)=true,i0∈I,当且仅当存在i1,...,ik,k≥0(i1,...,ik不必互不相同)，满足il∈Jil-1,
+
+其中ρ0=ρ,ρl+1=ρl{ il|→il},il=ρl(il).
+　　证明：由η(Yi0)(i0)=true知,
+
+若,则预备定理已得证(由于Φi不含中的谓词变元，.否则,有i1∈Ji0使得.即
+ρ1(bi1)∧η(Yi1)(i1)=true.
+对η(Yi1)(i1)=true可继续同样推理.由最小不动点的性质，必有某个k，使得‖Φik‖ρk,V=true，且对所有1≤l＜k，都有ρl(bil)∧η(Yil)(il)=true.
+2 STGA的弱互模拟及其逻辑刻画
+　　关于带赋值符号迁移图的详细定义请参看文献［1］第2节.
+　　定义2.1．带赋值符号迁移图（简称STGA）是一个有向图，其每个结点n标有自由变量的有穷集fv(n)，每条边标有由布尔表达式、赋值和动作组成的三元组，满足：如果nm是从n到m的一条边，则有fv(b,)fv(n),fv(α){},fv(m){}∪bv(α).
+　　这里,b是布尔表达式,e是数据表达式，α∈{τ,c?x,c!e|c是通道}，c?x称为输入动作，c!e称为输出动作，τ是表示内部通信的不可见动作.给定一个带赋值的符号迁移图,上的状态空间是的结点，ρ∈EVal}.STGA的迟操作语义是状态上的迁移关系，由下列规则给出.
+
+　　为了定义迟弱互模拟，先引入双箭头迁移.令当且仅当，对a∈{τ′,c!υ}当且仅当,对.
+　　定义2.2. 称状态上的对称二元关系R是迟弱互模拟，如果{mρ,ne}∈R蕴涵,
+　　.只要，就有，并且对任意υ∈Val，存在n″e″［υ/y］n′e′,满足(mρ［υ/x］,n′e′)∈R.
+　　.对其他动作a，只要mρm′ρ′，就有nen′e′，满足(m′ρ′,n′e)∈R.令≈=∪{R|R是一个迟弱互模拟.}
+　　刻画弱互模拟需要交错深度为2的嵌套谓词等式系E2μE1，直观地说,外层等式系E2刻画互模拟，内层等式系E1则用于吸收τ动作.
+　　设和是两个变量名字空间不相交的STGA,的结点用m,m′,mi,...表示;的结点用n,n′,nj,...表示;m,m′,mi,...的变量记为,,i,...;n,n′,nj,...的变量记为,,j, ....下面的算法1中的算法生成形如E2μE1的等式系.算法中用集合Visited,Visitedτ,m,n,Visitedθ,c!e,m,n,Visitedc?x,m,n保证对每一相应的环路只访问一次.这些集合由过程init()置为空集.另外,在匹配输入动作时使用函数newVar()生成一个新的数据变量.过程emit产生谓词等式.id表示恒等替换.
+　　由上述算法产生的谓词等式有4类，分别形如
+Xm,n(,)=VΦ　　（由close产生）
+（由closeτ产生）
+（由match′c!产生）
+（由match′c?产生）
+　　令E2为由第1类等式组成的等式系,E1为由其余3类等式组成的等式系.称E2μE1为上述算法产生的嵌套谓词等式系.不难看出,E2μE1是闭的，并且在E1的各等式中，右边的第1个析取项Φ中不含在E1左部出现的谓词变元.
+　　算法1. 迟弱互模拟算法
+　　bisim(m,θ,n,σ)=init()
+　　　　　　　　　　　close(m,θ,n,σ)
+　　close(m,θ,n,σ)=
+　　　　　if〈m,n〉Visited then{
+　　　　　　　　　Visited={〈m,n〉}∪Visited
+　　　　　　　　　emit(Xm,n=Vmatch(m,n))}
+　　　　　return Xm,n(θ,σ)
+　　match(m,n)=matchγ(m,n)∧match\-γ(n,m)
+　　matchτ(m,n)=bimatch′τ(θi,mi,n′)
+　　closeT(m,θ,n,σ)=
+　　　　B=close(m,θ,n,σ)
+　　　　for each nnl
+　　　　　　if〈m,nl〉Visitedτ,m,n then{
+　　　　　　　　Visitedτ,m,n={〈m,nl〉}∪Visitedτ,m,n
+　　　　　　　　emit(Ym,nl=μcloseτ(m,θ,nl,id))}
+　　　　return(B∨bl∧Ym,nl(id,σl))
+　　match′τ(m,n)=closeτ(m,θ,n,id)
+　　matchc!(m,n)=bimatch′c!(θi,mi,n)
+　　match′c!(θ,m,n)=
+　　　　　　for each nnj
+　　　　　　Bj=closeτ(m,θ,nj,σj)
+　　for each nn′l
+　　　　　　if 〈m,n′l〉Visitedθ,c!e,m,n then{
+　　　　　　　　　　　　　Visitedθ,c!e,m,n={〈m,n′l〉}∪Visitedθ,c!e,m,n
+　　　　　　　　　　　　　emit(Yθ,c!e,m,n′l=μmatch′c!(θ,c!e,m,n′l)}
+　　　　　　return(bj∧eθ=e′jσj∧Bj)∨(b′l∧Yθ,c!e,m,n′l(id,σ′l))
+　　matchc?(m,n)=bimatch′c?(θi,x,mi,n)
+　　match′c?(θ,x,m,n)=
+　　　　for each nnj
+　　　　　　　　　z=new Var()
+　　　　　　　　　B′j=closeτ(m,θ［x|→z］,nj,σj［y|→z］)
+　　　　　　　　　Bj=B′j
+　　　　for each nn′l
+　　　　　　　　　if 〈m,n′l〉Visitedc?x,m,n then{
+　　　　　　　　　　　　　　　　Visitedc!x,m,n={〈m,n′l〉}∪Visitedθ,c?x,m,n
+　　　　　　　　　　　　　　　　emit(Yc?x,m,nl=μmatch′c?(θ,x,m,n′l)}
+　　return((bj∧Bj)∨(b′l∧Yc?x,m,n′l(id,σ′l)))
+　　预备定理2.1. 设η是 E1相对于ζ的最小解，若‖YM,n(,)‖［/,/］,ζ{η}=true，M形如m或θ,c!e,m或c?x,m,0=［/y］，则存在n′,,和E1中等式
+YM,n′(,)=Φ′∨(bl∧YM,nl(,l)),
+使得n［0/1］n′［/］,且‖Φ‖［/,/］,ζ{η}=true.
+　　证明：以M≡m为例，其余情形类似.由题设条件和预备定理1.1，有lj,0≤j<k,k≥0,nl0=n和E1中等式
+
+满足lj∈jlj-1,j≥1,
+blj［lj/lj］=true,
+η(Ym,nlj)(,lj)=true,
+‖Φlk‖［/,lk/lk］,ζ{η}=true,
+l0=,lj=lj［lj-1/lj-1］.又由函数closeτ知,
+
+所以,nl0［/,/］nl1［/,l1/l1］...nlk［/,lk/lk］.令n′=nlk,=lk,=lk,Φ′=Φlk即得所欲证.
+　　定理2.1. 设E2μE1是由算法1产生的嵌套谓词等式系，ζ是E2μE1的解.ζ(Xm,n)(,)=true当且仅当m［/］～n［/］,其中,分别是m和n的自由变量.
+　　证明：()令S={(m［/］,n［/］)|ζ(Xm,n)(,)=true}，往证S是弱互模拟.设(m［/］,n［/］)∈S,则ζ(Xm,n)(,)=‖Φm,n‖［/,/］,η{ζ}=true,这里,η是E1相对于［/,/］和ζ的最小解.分别考虑从m［/］出发的3种迁移.
+　　(1),则有边满足bi［/］=true,(eiθi)［/］=v,mi=m.Φm,n含一合取项biΦi.由bi［/］=true得‖Φi‖［/,/］,η{ζ}=true.Φi形如(b′j∧eiθi=e′jσj∧Bj)∨(b″l∧Yθi,c!ei,mi,nl(,l)).
+　　(1.1) 若有j,‖b′j∧eiθj=e′jσj∧Bj‖［/,/］,η{ζ}=true,则有边nnj=σ[j:=j],且b′j［/］=true,(e′jσj)［/］=(eiθi)［/］=v.从而n［/］nj［j/j］,j=j［/］,同时,‖Bj‖［/,/］,η{ζ}=true.Bj形如Xmj,nj(i,j)∨(bl∧Ymi,nl(,l)).记θi=［i:=i］,i=［/

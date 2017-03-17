@@ -1,0 +1,229 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第8期 Vol.10 No.8 1999
+
+
+
+一个不受常量序限制的ILP学习算法
+张润琦　陈小平　刘贵全
+摘要　文章分析了FOIL(first-order inductive)递归谓词学习算法理论上的不足以及由此导致的应用范围的局限,并通过两个例子给予详细说明.为了克服这一缺陷,文章引入了反映递归规则集R与实例空间E本质关系的实例图H(R,E)和实例序的概念,奠定了算法的理论基础.在此基础上,给出了基于实例图的FOILPlus算法.算法通过对悬例、悬弧的操作把握住实例序,自然而然的防止了病态递归规则的产生,从而保证FOILPlus可以不受常量序限制地完成学习任务;同时,算法的时空复杂度较之FOIL算法没有增加.FOILPlus算法已经编程实现,并用它尝试了两个FOIL学习失败的递归任务,都获得了成功.
+关键词　归纳逻辑程序设计,FOIL(first-order inductive),递归,实例图,实例序,悬例,悬弧,FOILPlus.
+中图法分类号　TP
+An ILP Algorithm without the Restriction of Constant Ordering
+ZHANG Run-qi
+(Department of the Special Class for the Gifted Young University of Science and Technology of China Hefei 230026)
+CHEN Xiao-ping　LIU Gui-quan
+(Department of Computer Science University of Science and Technology of China Hefei 230027)
+Abstract　 In this paper, the shortcomings in theory and limitation in applications of FOIL are analysed. To overcome these difficulties, instance graph H(R,E) and instance order are introduced to clarify the relationship between the set R of recursive rules and the instance space E. Based on these concepts, a new ILP algorithm, FOILPlus, is put forward, which prevents the generation of harmful recursive rules by utilizing hung example and hung arc to hold Instance Graph. The algorithm can complete learning tasks without the restriction of constant ordering, and does not substantially raise the computational complexity compared with FOIL. FOILPlus has been implemented, and experiments with it show that it does complete two learning tasks which FOIL fails.
+Key words　ILP, FOIL, rescursive, instance graph, instance order, hung example, hung arc, FOILPlus.
+　　归纳逻辑程序设计(Inductive Logic Programming，简称ILP)是机器学习的一条重要途径.不仅可取得重要的理论研究成果,而且在不同领域获得一系列成功的应用［1～4］.一个ILP学习任务可描述如下［4］:
+　　　　给定　　背景理论B和靶谓词的示例集E=E+∪E-,满足BE+且B∧E+□
+　　　　求　　　靶谓词的内涵定义（逻辑程序）H使H∧B|=E+且H∧B∧E-□
+　　由上述描述可知,ILP算法的一个必要的基本功能是实例的可推出性（即覆盖关系）的检验.在一般条件下,当H包含递归子句时,这种检验过程可能不终止.为了使ILP技术能在KDD等应用中直接为终端用户服务,需要提供某种一般机制以检验上述过程的有效性,特别是有限终止性.为此,必需使H不含“病态递归”［5］.现有的各种方法都基于文字的排序.相对而言,FOIL［5］采用的“常量序”方法最为先进、完善,这使FOIL系统的实用化程度最高,而且使它成为目前唯一能够学出Ackermann函数的ILP系统［5］.
+　　然而,“常量序”方法也有不利的一面,它排斥了一大类本来可解的、常见的学习任务,使FOIL的应用范围受到很大限制.本文提出了一个新的ILP算法FOILPlus,除规则搜索（生成）的启发式机制的不完备（这是目前无法避免的）和覆盖性检验过程实现的不完备（一阶ILP学习系统都存在此问题）之外,FOILPlus本身对可学到的规则集没有任何限制.
+1 FOIL的递归谓词学习算法
+　　FOIL［5,6］在一个常量集合有限的域内学习目标关系（或称靶谓词）的内涵定义.常量可以是不同的类型,例如元素或元素的表,也可以是离散的或连续的.关系中的变量只能属于某个类型,关系本身外延定义为实例的集合.正的实例（用表示）是那些关系为真的实例,负的实例（用表示）是那些关系为假的实例.FOIL通过对目标或背景关系的外延定义（即实例）学习目标关系的没有函数的Horn子句定义.训练数据包含了一个目标关系和一组背景关系（均为外延定义）.学习目标是建立一个逻辑程序（或称规则集）,该逻辑程序给出了用目标关系和背景关系表达的目标关系的内涵定义.该定义允许递归和有限的量化,二者有利于处理难于用属性值表示法描述的结构对象.
+　　FOIL将所有训练实例放在一起考虑,每次选择一个子句,该子句覆盖一部分正例,不覆盖任何反例.反复此操作,直到任何正例都被至少一个子句所覆盖为止.FOIL是一个top-down系统,即由一般到特殊.当它产生一个子句时,总是开始时子句体为恒真,每次加入一个文字,将之特殊化,直到符合要求为止.
+　　为了保证循环递归不会出现,FOIL在递归文字(recursive literal)［1,2］的选取上借助“常量序”进行了限制.其具体过程如下.
+1.1 常量排序
+　　对于每一种类型T的常量,如果用户没有指定其顺序的话,FOIL就试图发现一个似乎合理的顺序.FOIL检查每个关系R中的每对类型为T的变元ai,aj（ai,aj分别指R中第i和第j个变元）,看是否对于所有定义R的实例,ai,aj之间都存在一致的偏序,记作aiaj（因为不可能分辨ai＜aj还是ai＞aj）.如果这种偏序存在,则R的每一个实例将给出常量序cicj（其中ci,cj分别表示实例中第i和第j个位置的常量）.如果出现某个常量ck,有ckck,则此偏序不存在.
+1.2 递归文字排序
+　　类型T的常量的排序可能暗示了在一个部分子句(patial clause)中的类型T的变量vi,vj之间可能存在偏序.如果该部分子句的每个例化赋给vi,vj的值ci,cj总有cicj成立,则vivj成立.基于此,如果对于所有头为R(v1,v2,...,vn),体文字R(w1,w2,...,wn)的子句,总有R(w1,w2,...,wn)＜R(v1,v2,...,vn),则递归终止将被确保.定义基于常量序的文字序
+R(w1,w2,...,wn)＜R(v1,v2,...,vn) 如果　　　　　　　　　　　　
+wi1＜i1 vi1 或　　　　　　　　　　　　　　　　　　　　　　　　
+wi1=vi1 且 wi2＜i2 vi2 或　　　　　　　　　　　　　　　　　　　
+　　　　　　　　　　　　　　　　　　　　　　　(1)
+wi1=vi1 且 wi2=vi2 且…win-1=vin-1 且 win＜in vin　　　　　　　　　　　　
+其中i1,i2,...,in是1,2,...,n的某个全排列,＜k (其中k∈{1,...,n})表示“＜”,如果常量真实的顺序已知的话;否则表示或二者之一.每当一个递归文字被考虑,FOIL总试图构造一个文字序,使之能够同时满足本文字和当前规则集中所有其他文字.如果这样的文字序不存在,该递归文字从规则空间中排除.
+2 FOIL递归谓词学习算法的缺陷及其分析
+　　如前所述,FOIL递归谓词学习算法的核心思想是,通过用户定义或机器搜索人为地给常量排序,在此基础上从规则空间排除那些不存在文字序的递归文字,以保证递归最终会终结于初始条件.FOIL不能对常量排序,则它将把所有递归文字从规则空间中排除;FOIL对常量错误排序,则它也会把一部分必需的递归文字从规则空间中排除.新的规则空间不再包含任何满足要求的递归规则集,导致FOIL学习失败.所以,正确的常量排序是FOIL学出正确的递归规则集的必要条件.
+　　实际的学习任务本身的特点或其个别噪声数据的影响可能会使FOIL找不到或找错常量的顺序,从而学不出或学不全正确的递归规则（注意不是因为数据过于一般化或噪声太多等缘故）.
+　　例1:设(a1,b1,...,h1)和(a2,b2,...,h2)为两个八边形,背景关系succ和next分别为其点的顺序关系,目标关系map为两者之间点的映射关系（*g1表示常量g1是理论常量――可以用于子句体的常量;map(X,Y)表示关系map有两个变量,第1个类型为X,第2个类型为Y）.
+　　常量类型:X: a1,b1,c1,d1,e1,f1,*g1,h1
+　　　　　　　Y: a2,b2,c2,d2,e2,f2,*g2,h2
+　　背景关系:succ(X,X): (a1,b1),(b1,c1),(c1,d1),(d1,e1),(e1,f1),(f1,g1),(g1,h1),(h1,a1)
+　　　　　　　next(Y,Y): (a2,b2),(b2,c2),(c2,d2),(d2,e2),(e2,f2),(f2,g2),(g2,h2),(h2,a2)
+　　目标关系:map(X,Y): (a1,a2),(b1,b2),(c1,c2),(d1,d2),(e1,e2),(f1,f2),(g1,g2),(h1,h2)
+所有关系的反例均由CWA［7］给定.
+　　显然规则空间内有满足要求的规则集合
+　　　　　　　　(2)
+但经实际测试(本文中所有对FOIL的测试都是使用目前最高版本FOIL6.4),FOIL无法学出.因为背景关系succ和next都分别赋予类型X,Y的常量以明显的环,而目标关系map更没有蕴涵任何常量有序的信息,所以,FOIL认为常量无序,虽然常量序g1h1a1b1c1d1e1f1和g2h2a2b2c2d2e2f2确实存在.常量无法排序使得FOIL将所有递归文字从侯选文字中排除,导致学习失败.事实上,若用户定义这两个常量顺序中任意一个,FOIL都能学出规则集(2).作为比较,如果将(f1,g1),(g1,h1),(f2,g2),(g2,h2)之一改为反例,则FOIL因为能将类型X或Y的常量正确排序,从而学出规则集(2).所以,实际数据中的有序性过于隐蔽或噪声数据的存在（可以认为(f1,g1),(g1,h1),(f2,g2),(g2,h2)之中有一个是噪声数据）,可能导致FOIL常量排序失误,从而产生不出正确的递归规则集.
+　　例2:考虑任何自然数的二进制表示中1的个数的递归谓词的学习.
+　　常量类型: N: *0,1,2,...,100
+　　背景关系: odd(N): (1),(3),(5),...,(99)
+　　　　　　　even(N): (0),(2),(4),...,(100)
+　　　　　　　half(N,N): (0,0),(1,0),(2,1),(3,1),(4,2),(5,2),(6,3),(7,3),...,(99,49),(100,50)
+　　　　　　　succ(N,N): (0,1),(1,2),(2,3),...,(98,99),(99,100)
+　　目标关系: binary(N,N): (0,0),(1,1),(2,1),(3,2),(4,1),(5,2),...,(99,4),(100,3)
+所有关系的反例均由CWA给定.
+　　规则空间内有满足要求的规则集合
+　　　　　　(3)
+　　根据测试结果,FOIL没能学出3个规则中任何一个.虽然FOIL将常量排序为100,99,...,1,0,但事实表明,这个常量序对学习没有任何帮助.如果勉强说本例中的常量存在顺序的话,那也不是全序.若将常量按自然数顺序由小到大排列为0,1,...,99,100,将之看做堆,则堆中每个数的双亲结点是它在该偏序中的前序元.
+　　通过上面两个例子,我们很容易看出FOIL对常量排序以帮助递归文字的选取这一方法的局限性:对于常量无序、常量序为偏序、常量序隐蔽或噪声等导致FOIL不能学出正确的常量序的递归学习任务,FOIL都是不能胜任的.而且,即使FOIL能够找到正确的常量序,如前所述,在FOIL对递归文字的排序过程中,也有可能这种递归文字的序有多个（即符合I的全排列(i1,i2,...,in)有多个）,而FOIL找到的不能够反映主要矛盾,这也可能导致FOIL学不出正确的递归规则.虽然FOIL可以依赖用户给出常量序,但这只对少数较为简单的学习任务有效,且这是以增加用户负担为代价的.最后,需要指出一点,常量序与递归规则没有本质联系,能够反映递归规则本质的,是下一节将要讨论的实例图和实例序.
+3 实例图和实例序
+3.1 规则空间与实例空间中的几个基本概念
+　　定义1. e为子句c的覆盖例是指,c无递归体文字,且存在c的某个头为e的例化c′,c′的所有体文字均为背景正例.此时也说c覆盖e（记作ce）,例化c′是覆盖的,c′是（c的）覆盖例化.
+　　定义2. e为子句c的抛弃例是指,c的任意头为e的例化c′,c′中存在体文字为背景反例.此时也说c抛弃e（记作ce）,例化c′是抛弃的,c′是（c的）抛弃例化.
+　　定义3. e为子句c的悬挂例是指,c有递归体文字,且存在c的某个头为e的例化c′,c′的所有体文字均为背景正例.此时也说c悬挂e（记作ce）,例化c′是悬挂的,c′是（c的）悬挂例　　化.
+　　定义4. e为规则集R的覆盖例是指,存在R的某个非递归子句c覆盖e,或存在R的某个递归子句c的头为e的例化c′,c′的非递归体文字均为背景正例,递归体文字全被R覆盖.也说R覆盖e（记作Re）.
+　　定义5. e为规则集R的抛弃例是指,R的任意子句c均抛弃e.也说R抛弃e（记作Re）.
+　　定义6. e为规则集R的悬例是指,R的任意非递归子句c抛弃e,且存在R的某个递归子句c的头为e的例化c′,c′的非递归体文字均为背景正例,递归体文字不全被R覆盖.也说R悬挂e（记作Re）.
+　　定义7. 子句c（或规则集R）在实例空间E中的覆盖例集、悬例集、抛弃例集分别记作Ec(c) (或Ec(R)),Eh(c) (或Eh(R)),Ea(c)(或Ea(R)),在不引起混淆的情况下简记为Ec,Eh,Ea.
+3.2 实例图和实例序
+　　若无特殊说明,以下所说的图均指超图,所说的弧均指超弧,所说的（有向）边均指两点间的（有向）线段.如果某个目标关系的实例空间为E={e1,e2,...,eq},规则空间中任意一个规则集R={c1,c2,...,cp}.则由E和R可唯一确定一个有向带权超图H(R,E)（简记为H）.E的元素ei与H的点di一一对应;R在E下的非抛弃例化的集合的元素与H的超弧一一对应,其中非递归子句cu的头为ei的例化映射为图1所示的超弧（图中true是我们定义的一个特殊点）,递归子句cw的头为ek的例化映射为图2所示的超弧（图中dj1,...,djt是该子句的所有递归体文字的例化对应的点）.我们称H(R,E)为规则集R在实例空间E下的实例图（在不引起混淆的情况下,简称实例图）.不难看出,H(R,E)的每个极大无环子超图都反映了实例间的一个序,我们称之为实例序（此处的无环是指有向边无环）.显然,实例序是偏序.
+
+图1
+
+图2
+3.3 实例图中的概念
+　　非递归规则集的实例图中只存在如图1所示类型的超弧,退化为一颗星与孤立的点的并集.以后我们只考虑递归规则集的实例图.定义H中的覆盖弧、悬弧分别为覆盖例化和悬挂例化对应的超弧.覆盖点、悬点、抛弃点分别为覆盖例、悬例、抛弃例对应的点.显然,若能从true到达一条弧,这条弧就是覆盖弧,否则就是悬弧.入度为0的点为抛弃点;入度不为0的点,若能从true到达该点,这个点就是覆盖点,否则就是悬点.
+　　H中可能有权值相同或不同的重弧或重的有向边.称存在实例ei被多个子句覆盖或悬挂的规则集为二义规则集,ei在二义规则集下的归结过程不唯一.相应地,二义图是指图中存在点di,以di为终点的弧存在多种权值.不难看出,H中任意能够从true到达（超弧意义下）覆盖点di的极小子图,都对应覆盖例ei的一个无二义归结.称这样的子图为di（在H中）的一个归结图.H的一个归结图是指,H的这样的子图,H中任意一个覆盖点在该子图中至少存在一个归结图.
+3.4 FOIL基于实例图的再分析
+　　FOIL学习过程中的递归规则集R对应的H(R,E)中肯定不存在环,但可能是二义的.由实例序定义知H(R,E)只有唯一的实例序.在常量有限的实例空间E中学出的规则集R在实际应用于常量无限的实例空间E′时可能存在无限递归（但不是循环递归）,这个缺陷对所有一阶ILP系统都存在,我们不予考虑.
+　　现在通过实例图和实例序分析FOIL递归规则学习算法在理论上的缺陷.以下均假定FOIL已通过用户定义或常量排序获得了一个常量序,且当前侯选递归规则集R的所有递归文字满足一个基于该常量序的文字序.
+　　缺陷1. 如前面两个例子所示,常量有序与递归规则没有本质联系.FOIL的文字序是基于这种可能不恰当的常量序.
+　　缺陷2. 文字序确定的实例顺序是全序,当前规则集确定的实例序是偏序.每个可能的文字序是满足该偏序的一个全序.随着递归规则的增加,偏序越来越紧致,可能文字序也越来越少,满足1.2节的递归文字也越来越少（也即侯选递归文字空间越来越小）.如果前面采纳了不恰当的递归规则,造成偏序的不恰当,使必需的递归文字过早的从侯选递归文字空间排除,则势必导致学习失败.而出现这种情况的可能性是颇大的.
+3.5 小 结
+　　通过以上分析,我们得出如下结论:任何递归学习任务的实例空间E对于规则集R都存在实例序,它（们）由前面定义的实例超图H(R,E)的每个极大无环子图反映出来.FOIL的递归学习算法的缺陷就在于企图用常量序和文字序来反映这种实例序,但事实上常量序和文字序与实例序并无本质关系.我们下面给出的改进算法就是通过把握住这种更为本质的实例序自然而然的防止了病态递归规则集的产生.
+4 FOILPlus算法
+　　以下约定正确规则集为不覆盖任何反例,且覆盖所有正例的规则集.正确规则集对应的H可以分割为两个子图Hp和Hn,Hp的所有点均为正例点,正例点都是覆盖点;Hn的所有点均为反例点,反例点都是非覆盖点.H可能有环,但H至少有一个归结图.
+4.1 基于实例图的FOILPlus算法框架
+　　算法中的R是当前规则集,P,N是目标的正、反例集,B为背景正、反例集,允许P∪N≠E.
+　　FOILPlus(B,E,P,N)
+　　　　R:=;better:=true;
+　　　　while better do
+　　　　　发现一个子句c,使H(R∪{c},E)比H(R,E)更令人满意;
+　　　　　if 这样的c找不到
+　　　　　then
+　　　　　　　better:=false;
+　　　　　else
+　　　　　　　R:=R∪{c};
+　　　　输出R.
+　　H(R,E)的满意度为综合考虑H中各项参数（如覆盖、悬挂正例点数,覆盖、悬挂反例点数等）和R的复杂程度后对H的一个评价.规则集R越简单、紧凑,覆盖正例数越多,覆盖反例数越少,H(R,E)的满意度就越高.满意度随我们对所需规则集R的要求的改变而改变,也就是说我们对规则集R的要求反映为对H(R,E)的满意度的定义.例如,我们需要一个正确规则集,则所有覆盖反例点的实例图的满意度为-∞.
+4.2 FOILPlus算法
+　　如4.1节中的FOILPlus理论算法所示,FOILPlus应用算法的核心思想是在规则集R生成的同时维护H(R,E),并通过H(R,E)指导下一个子句的生成.
+　　算法没有避免H(R,E)的环的出现,理由是:若算法禁止H(R,E)中出现环,则与3.4节中的FOIL的缺陷2所述类似,前面不恰当的递归规则的生成可能阻碍后面正确递归规则的生成;且若规则空间中不存在递归规则集R使H(R,E)无环,则所有H(R,E)有环的正确规则集R都将不可能生成,这是不应该的（例子见第5节）.而且,可以在最后对正确规则集消除冗余的同时,进行H(R,E)的去环（虽然没太大必要）.因为这两个操作都是NP-hard的,所以在实际系统中可以作为选项提供.
+　　算法确保了“算法认为某个实例被规则集R覆盖,则该点在H(R,E)中必存在归结图”.我们认为这是有重要意义的.这确保了算法产生的规则集R不是FOIL担心的那种看似覆盖了所有正例、其实其中一部分正例是被悬挂的病态规则集.
+　　为了弥补算法生成的规则中可能隐含循环递归导致归结不终止的缺陷,我们在FOILPlus算法之外又给出了与之配套的归结算法Resolve.该算法的归结速度在最坏情况下较之FOIL依赖的归结［5］也仅有对数级的提高.我们认为是可以接受的.
+　　算法中R,E,P,N,B定义如前.Ec,Eh,Ea分别为R的覆盖点集、悬点集、抛弃点集.算法在FOIL算法的基础上每个实例增加了记录Example,Example的各个域定义如下:
+　　　id　　　　实例e的编号（起唯一标识作用）
+　　　Aset　　　集合,其每个元素是以e为终点的悬弧的所有始点的编号的集合
+　　　S　　　　以e为始点的有向边的终点的编号的集合
+域Aset和S起一个相互索引的作用,使递归函数unhang高速运作.
+FOILPlus(B,E,P,N)
+R:=;Ec:=;Eh:=;Ea:=E;better:=true;
+for (e∈E)
+　　　e.Aset:=;
+　　　e.S:=;
+while e∈P但eEc and better do
+　　　c:=FindClause(Ec,Eh,Ea,P,N,B);
+　　　if c=
+　　　then
+　　　　　better:=false;
+　　　else
+　　　　　R:(R∪{c};
+　　　　　adjustEcEhEa(c,Ec,Eh,Ea,P,N,B);
+输出R
+adjustEcEhEa(c,Ec,Eh,Ea,P,N,B)
+if c为非递归子句
+then
+　　　for (c的每个覆盖例e)
+　　　　　if eEc
+　　　　　then
+　　　　　　　将e由Eh或Ea移到Ec;
+　　　　　　　unhang(e);
+else
+　　　for (c的每个悬挂例化c′,记c′头为e,体为e1,...,ej)
+　　　　　if eEc
+　　　　　then
+　　　　　　　if {e1,...,ej}Ec
+　　　　　　　then
+　　　　　　　　　将e由Eh或Ea移到Ec
+　　　　　　　　　unhang(e)
+　　　　　　　else
+　　　　　　　　　if eEh then 将e由Ea移到Eh
+　　　　　　　　　A:({ek.id｜ekEc};
+　　　　　　　　　e.Aset:(e.Aset∪{A};
+　　　　　　　　　for (每个ei.id∈A)
+　　ei.S:=ei.S∪{e.id};
+unhang(e)
+for (e′.id∈e.S)
+　　　if e′∈Eh
+　　　then
+　　　　　for (A∈e′.Aset)
+　　　　　　　if e.id∈A
+　　　　　　　then
+　　　　　　　　　A:(A-{e.id};
+　　　　　　　　　if A=
+　　　　　　　　　then
+　　将e′由Eh移到Ec
+　　unhang(e′)
+　　跳出此for循环
+　　算法中的FindClause函数继承了FOIL中FindClause函数［8］的所有启发式搜索功能,但在评价和加入一个文字时依赖了悬例的作用.FOIL算法中将文字划分为determinate和gainful两类.本算法在决定是否determinate文字时将悬例视作覆盖例.若一个部分子句有n个正例化和n个负例化,加入某gainful文字后有m个正例化和m个负例化,记m个正例化实际覆盖了k个正例,则FOIL对该文字的评价为
+k×［I(n,n)-I(m,m)］.　　　　　　　　　　　　　(4)
+其中I(n,n)=-log2［n／(n+n)］bits
+针对悬例,我们引入了n和m分别表示该部分子句加入文字前后悬例化的个数.记m个悬例化覆盖的悬例个数为h,则该文字的评价为
+(k+h/2)×［I(n,n,n)-I(m,m,m)］.　　　　　　　　　(5)
+其中I(n,n,n)=-log2［(n+n/2)／(n+n+n)］bits
+显然,当该部分子句和该文字中均无递归文字时,n=m=h=0,(5)式转化为(4)式.
+4.3 归结算法Resolve
+　　本算法只用于常量离散的情形.当常量连续时,FOILPlus和FOIL一样不会生成递归规则,所以此时的归结与一般的归结相同.算法中使用了平衡树AVL［9］存当前的归结路径.平衡树的查找和维护要求任意两个实例间能够比较大小.一般的,算法均事先指定常量序为表示常量的字符串的顺序,再用式(1)（令其中ik=k,k∈{1,...,j}）即可判断任意实例间的大小.
+　　Resolve(e,R)
+　　　　AVL:=;
+　　　　return Cover(e,R);
+　　Cover(e,R)
+　　　　if e∈AVL then return false;
+　　　　AVL:=AVL∪{e};
+　　　　for (c∈R)
+　　　　　　if c为非递归子句
+　　　　　　then
+　　　　　　　　if 存在c的覆盖例化覆盖e
+　　　　　　　　then
+　　　　　　　　　　AVL:=AVL-{e};
+　　　　　　　　　　return true;
+　　　　　　else
+　　　　　　　　for (c的每个头为e的悬挂例化c′,记c′的体为e1,...,ej)
+　　　　　　　　　　if Cover(e1,R) and ... and Cover(ej,R)
+　　　　　　　　　　then
+　　　　　　　　　　　　AVL:=AVL-{e};
+　　　　　　　　　　　　return true;
+　　　　AVL:=AVL-{e};
+　　　　return false;
+4.4 算法时空复杂度分析
+　　记n为实例数.在数据结构上,FOILPlus算法比FOIL主要增加了实例记录Example.因为所有实例的Example存的都是当前H(R,E)中所有悬弧的信息,且每条悬弧恰好被存储一次,所以算法在整个执行过程中比FOIL多使用的存储空间至多为S(n)=O(max{MR×NR｜R∈{算法执行过程中的每个当前规则集}),其中MR=H(R,E)的悬弧数,NR=H(R,E)悬弧的平均始点数=R中递归规则的平均体递归文字数.因为在实际应用中,即使象前面提到的Ackermann函数这种困难任务,每个递归规则的体递归文字数也不超过2,所以可以认为O(NR)=1;O(MR)=O(H(R,E)的悬弧数)=O(H(R,E)的悬点数)×O(以每个悬点为终点的平均悬弧数)≤O(实例点数)(O(1)=O(n).所以S(n)≤O(n).显然FOIL的空间复杂度至少为O(n),所以,FOILPlus与FOIL的空间复杂度是相等的.
+　　FOILPlus算法较之FOIL算法主要增加了unhang操作.注意递归函数unhang在整个算法执行过程中对每个覆盖例调用且仅调用一次,与FOIL时间花费的瓶颈FindClause比较,完全可以忽略不记.在FindClause中,FOILPlus比FOIL要多评价那些FOIL通过文字序排除的递归文字,且要多计算n⊙和m⊙.但粗略分析可知这至多使FOILPlus比FOIL时间花费有常数因子（绝大多数情况下＜1）的增加.所以,算法的时空复杂度都是令人满意的.
+　　对于归结算法Resolve,记算法在整个归结过程中共归结了m个实例.不难看出该归结过程对应以e为根的非超图意义下的有向树T,T上任意有向边(ei,ej)称ei为ej的孩子.记T上结点ei深度di,则算法对该点的AVL的查找和维护的时间花费为O(di),所以算法时间复杂度为
+T(m)=Σ［O(1)+O(di)］=O(m)+O(Σdi)=O(m)+O(m×d)=O(m×log2m)=O(log2m)×T′(m)
+其中d=O(log2m)为T的平均深度,T((m)=O(m)为普通归结［5,7］的时间复杂度.算法的空间复杂度S(m)=O(max(di))≤O(m).所以归结算法resolve的时空复杂度都是可以接受的.当常量有限或归结实例范围已知时,可以用一个k维数组记录归结路径,此时有T(m)=T′(m).
+4.5 小 结
+　　对于一个非递归学习任务,FOILPlus算法的运作和FOIL完全相同;对于一个递归学习任务,算法由于在文字级别引入了“悬例”而使得gain值的计算更趋合理,在子句级别引入了“悬例”而避免了病态递归规则集的产生.事实上,在一个递归学习任务中,正例加入Ec的顺序,与我们前面定义的“实例序”是一致的！所以,算法在没有对规则空间加以任何限制的情况下,通过引入“悬例”、“悬弧”把握住“实例序”,自然而然的避免了循环递归等病态递归规则的产生.
+5 实验结果
+　　我们用标准C语言实现了上述算法的全部基本功能.并将之用于学习任务map和binary.实验结果如下.
+　　(1) 当规则空间中不含FOIL的内嵌文字“≠”时,map的学习结果为规则集
+　　　　　　　　　　(6)
+该规则集对应的Hp如图3所示.
+
+图3
+　　虽然图中有环,但显然对任意点存在以true为始点,该点为终点的无环链,该链即为该点对应实例的归结图.我们认为这样的规则集是可以接受的.当我们将“≠”加入规则空间后,学习结果代之以规则集(2).
+　　(2) binary的学习结果为规则集
+　　　　　　(7)
+式(7)与规则集(3)的第1、2两个子句相同,第3个子句略有不同,但都是本质的.
+6 结论和进一步的工作
+　　实例图的引入,在原本分割的规则空间和实例空间之间搭起一座桥梁.我们在实例图理论指导下设计的FOILPlus算法,在时空复杂度没有增加的前提下,除规则搜索（生成）的启发式机制的不完备（这是目前无法避免的）和覆盖性检验过程实现的不完备（一阶ILP学习系统都存在此问题）之外,FOILPlus本身对可学到的规则集没有任何限制,这是FOIL等ILP学习系统都无法做到的.不难看出,实例图以及FOILPlus算法都能推广到多谓词学习中！我们相信这将显示出实例图更重要的作用――这也是我们下一步要进行的工作.
+注：本文研究得到国家自然科学基金资助.
+本文通讯联系人:张润琦,合肥 230026,中国科技大学少年班系
+作者简介：张润琦,1975年生,本科,主要研究领域为机器学习,ILP,多谓词学习.陈小平,1955年生,博士,副教授,主要研究领域为机器学习,MAS,AI逻辑.刘贵全,1970年生,博士生,主要研究领域为机器学习,多Agent系统,AI基础.
+作者单位：张润琦　中国科技大学少年班系 合肥 230026
+陈小平　刘贵全　中国科技大学计算机系 合肥 230027
+E-mail: zhangrq@mail.scgy.ustc.edu.cn
+参考文献
+1 King R D, Muggleton S, Lewis R A et al. Drug design by machine learning: the use of inductive logic programming to model the structure-activity relationships of trimethoprim analogues binding to dihydrofolate reductase. In: Proceedings of the National Academy of Sciences of USA. 1992,89,11322～11326
+2 Bratko I, Dzeroski S. Engineering applications of ILP. New Generation Computing, 1995,13(3～4):313～333
+3 Srinivasan A, Muggleton S H et al. Theories for mutagenicity: a study in first-order and feature-based induction. Artificial Intelligence, 1996,85(1/2):277～299
+4 Muggleton S. Inductive logic programming: derivations, successes and shortcommings. SIGART Bulletin, 1994,5(1):5～11
+5 Quinlan J R, Cameron-Jones R M. Induction of logic programs: foil and related systems. New Generation Computing, 1995,13(3～4):287～312
+6 Cameron-Jones R M, Quinlan J R. Efficient top-down inductive of logic programs. Inductive Logic Programming, SIGART Bulletin, 1994,5(1):33～42
+7 Lloyd J W. Foundations of Logic Programming. Berlin: Springer-Verlag, 1984
+8 Quinlan J R. Knowledge acquisition from structured data. IEEE Expert, 1991,6(6):32～37
+9 Knuth D E. The Art of Computer Programming (Volume 3): Sorting and Searching. Amsterdam: Addison-Wesley Publishing Company Inc., 1973
+本文1998-05-18收到原稿,1998-09-11收到修改稿

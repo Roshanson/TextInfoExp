@@ -1,0 +1,179 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第9期　Vol.10　No.9　1999
+
+
+
+一种并行数据库的动态多维数据分布方法*
+李建中
+摘要　并行数据库系统的性能与数据库在多处理机之间的分布密切相关.目前已经出现一些并行数据库的数据分布方法.但是，这些方法都不能有效地支持动态数据库.文章提出了一种并行数据库的动态多维数据分布方法.该方法不仅能够有效地支持动态数据库的分布，还具有多维数据分布的诸多优点.此方法由初始数据分布机构和启发式动态数据分布调整机构组成.初始分布机构完成给定数据库文件的初始分布.动态数据分布调整机构实现动态数据库数据分布的动态调整.理论分析和实验结果表明，这种方法十分有效，并且能够有力地支持动态数据库上的各种并行数据操作算法.
+关键词　并行数据库，数据分布，多维数据分布.
+中图法分类号　TP311
+A Dynamic and Multidimensional Declustering Method for Parallel Databases
+LI Jian-zhong
+(Department of Computer Science Harbin Institute of Technology Harbin 150080)
+Abstract　The performance of parallel database systems is closely related to the declustering methods of databases. In the recent years, many declustering methods have been proposed. But most of them cannot support dynamic databases. A new dynamic and multidimensional declustering method called DCMD(dynamic coordinates module declustering) is proposed in this paper. DCMD not only supports dynamic databases but also has the advantages of multidimensional data declustering. DCMD consists of a component for initially declustering databases and a component for dynamically adjusting data distribution. The first component, which is a random algorithm, is to declustering databases initially among multiple processing nodes. The second component, which is composed by a splitting algorithm, a merging algorithm and two heuristic scheduling algorithms, is to support the dynamic adjusting of the database distribution among multiple processing nodes during running time. Experimental and theoretic results show that DCMD can efficiently support parallel processing of dynamic databases.
+Key words　Parallel database, data declustering, multidimensional data declustering.
+　　并行数据库系统的性能与数据库的数据在多处理机之间的分布(以下简称数据分布)密切相关.最近几年，人们提出了一些数据分布方法［1］.有3种一维数据分布方法首先被提出［2,3］.这些数据分布方法仅根据数据库的一个属性(称为划分属性)的值在多个处理机之间分布数据库的数据.这些方法不能有效地支持在非划分属性上具有选择谓词的查询.为了解决这个问题，Hua和Lee提出了一种基于Grid文件的多维数据分布方法［4］.这种方法只考虑了数据量平衡的问题，没有考虑把相邻Grid块分配到不同处理机，不能充分发挥系统的并行性.Ghadeharizadeh和DeWitt提出了另一种称为Magic的多维数据分布方法［5］.这种方法仅支持静态数据库.本文作者提出了第3种多维分布方法，称为CMD(coordinates module declustering)方法［6］.但CMD方法不能有效地支持分布状态不可预知的动态数据库.针对这些问题，本文提出了一种能够有效支持动态数据库的多维数据分布方法，简称为DCMD(dynamic coordinates module declustering)方法.DCMD方法由初始数据分布机构和动态数据分布调整机构组成,初始分布机构完成给定数据库文件的初始划分和分布;动态数据分布调整机构动态地调整数据库在多处理机之间的分布.给定一个多维数据库文件F，初始数据分布机构把F均匀地分布到多个处理机.在系统运行期间，动态数据分布调整机构根据F的变化情况及时调整F的分布，保证F均匀分布在多个处理机上.理论分析和实验结果证明，DCMD方法十分有效，并且能够有力地支持动态数据库上的各种并行操作算法.该方法已经用于我们设计实现的并行关系数据库系统，取得了很好的效果.
+　　设Di是一个有序集合(1≤i≤d)，D1×D2×...×Dd的子集称为d维数据库文件或具有d个属性的数据库文件.为不失一般性，本文假定Di=［0,1).另外，还假定并行计算系统具有无共享资源(shared-nothing)结构.
+1　初始数据分布机构
+　　初始数据分布机构由数据划分算法和数据分配算法组成.给定一个d维数据库文件F，初始数据分布机构,首先使用数据划分算法把F划分成多个大小近似相等的超长方体，然后使它们在多个处理机之间均匀分布.
+1.1　数据划分算法和数据分配算法
+　　设ni是正整数，表示F的第i维定义域被划分为niN个区间.ni可由下列方法之一来确定：① 如果已知F在［0, 1)d上的分布，选择一组n1,n2,...,nd，使得n1:n2:...:nd等于或最接近于s1:s2:...:sd,其中si是F在第i维上投影的元素数(包括重复元素)；② 如果已知F上各种数据操作的频率、所需CPU时间、I/O时间和通信时间，可按照文献［3］给出的方法确定n1,n2,...,nd；③ 如果上述①和②的条件不满足，则令n1=n2=...=nd=1.
+　　F的划分由d个划分向量表示，每个划分向量表示一个维的定义域的划分.下面,令pi0=0,pi niN=1.第i维划分向量定义为Vi=(〈pi0,Si0〉,〈pi1,Si1〉,...,〈pi niN-1,Si niN-1〉)，表示第i维定义域被划分为niN个区间［pi0,pi1),［pi1,pi2),...,［pi niN-1,pi niN)，其中对于1≤j≤niN-1，Sij=|［pi j-1,pij)×［0,1)d-1∩F|，即F是在第i维第j区间上投影的元素数(包括重复元素).以下用Vi［k］.p和Vi［k］.S表示Vi的pik和Sik.各维的区间从0到niN-1编号.第i维的第k区间记为Iik=［lik,hik).于是，F被划分为niN 个d维超长方体.一个d维超长方体是d个不同维区间的笛卡尔乘积 ［l1k1,h1k1)×［l2k2,h2k2)×...×［ldkd,hdkd)，其中0≤kj≤njN-1，1≤j≤d.上述超长方体的坐标定义为(k1,k2,...,kd).以后，在不引起混淆的情况下，我们简单地使用“F的超长方体”表示“F与这个超长方体的交集”，并使用超长方体的坐标表示超长方体.
+　　 初始数据分布机构的目标是使F在N个处理机之间均匀分布.为此，我们首先给出一个并行随机划分算法Partition，使用随机抽样技术把F划分为大小近似相等的多个超长方体.为叙述方便，设d≤N.这个算法很容易推广到d>N的情况.算法Partition定义如下.
+　　算法. Partition
+　　输入：F：d维数据库文件，存储在处理机0;n1,...,nd:划分参数；s：样本因子.
+　　输出： V1,V2,...,Vd：划分向量，存储在处理机0. /* 仅计算划分向量的Vi［k］.p分量，Vi［k］.S分量由后边DA算法计算 */
+　　(1) 处理机0执行下面的(2)～(5)步.
+　　(2) 　FOR i=1 TO d DO samplei:=从F中抽取大小为sniN的随机样本；
+　　(3) 　FOR i=1 TO d DO 把samplei在第i维上的投影(包括重复元组)Proj_samplei传送到处理机i；
+　　(4) FOR i=1 TO d DO (并行地)
+　　(5) 　处理机i排序Proj_samplei；S:=|Proj_samplei|/(niN);
+　　(6) 　FOR k=1 TO niN-1 DO /* 处理机i确定划分点，处理机0建立划分向量的Vi［k］.p值 */
+　　(7) 　　Vi［k］.p:=samplei［kS］;传送Vi［k］.p到处理机0；
+　　(8) 　　处理机0接收Vi［k］.p值，为d个划分向量建立Vi［k］.p值；/* (7)与(8)并行执行 */
+　　通过详细分析(限于篇幅，本文省略了分析过程)，Partition算法的并行磁盘读写时间是O(sniN)，并行CPU计算时间是O(dsn0N+sn0Nlog2(sn0N)),并行通信时间是O(niN),其中.
+　　数据分配算法在处理机间分配由Partition算法产生的F的超长方体集合,并计算F的划分向量中的Vi［j］.S分量.我们使用坐标和求模函数CMD(X1,X2,...,Xd)=(X1+X2+...+Xd) mod N在处理机之间分配F的超长方体，即坐标为(X1,X2,...,Xd)的超长方体被分配到处理机CMD(X1,X2,...,Xd)，其中N个处理机的编号为0,1,...,N-1.数据分配算法DA(data allocation)定义如下.
+　　算法. DA
+　　输入： F：d维文件，存储在处理机0; V1,...,Vd：F的划分向量，存储在处理机0.
+　　(1) 处理机0执行(2)～(6).
+　　(2) FOR F中每个元组T DO;
+　　(3) 　由F划分向量的Vi［j］.p值(1≤i≤d,1≤j≤niN-1)计算T所属超长方体的坐标(X1，...,Xd)；
+　　(4) 　k:=CMD(X1,...,Xd);
+　　(5) 　把元组T发送到处理机k;
+　　(6) 　FOR 1≤i≤d DO Vi［Xi］.S:=Vi［Xi］.S+1；
+　　(7) FOR i=0 TO N-1 DO (并行地) 处理机i接受并存储处理机0发送来的F的元组.
+　　通过详细分析(限于篇幅，本文省略了详细分析过程)，DA算法的并行磁盘读写时间是O(B),并行CPU计算时间是O(TniN)，并行通信时间是O(T),其中B表示F的磁盘块数，T表示F的记录数.
+1.2　初始数据分布机构的性能
+　　本节讨论初始数据分布机构的性质.限于篇幅，我们省略了所有定理、引理和性质的证明.
+　　定义1. 设d维数据库文件F被Partition算法划分为k个超长方体，超长方体i的大小为ci.称为Partition算法划分F的误差.如果，我们说超长方体j关于α溢出，其中α≥1并且接近于1.
+　　引理1. 设d维数据库文件F被Partition算法划分为k个超长方体，超长方体i的大小为ci.如果对于任意i(1≤i≤k)，，则对于任意j(1≤j≤k)，.
+　　引理1说明，Partition算法划分F时出现误差,当且仅当F的超长方体中至少有一个超长方体溢出.要考察Partition算法出现误差的概率的上界，我们只需考察算法产生溢出超长方体的概率的上界(以下简称溢出概率的上界).溢出概率的上界可以用来确定Partition算法中随机样本的大小.Partition算法划分d维数据库文件的溢出概率的上界可由划分d-1维数据库文件的溢出概率的上界来确定.为不失一般性，本文仅考虑划分二维数据库文件的溢出概率的上界.设X={x1,x2,...,xm}是一个具有m个元组的一维数据库文件，BX(s,α,k,m)表示使用大小为ks的随机样本把F划分为k个一维方体时，至少一个方体的元组数超过的概率的上界.
+　　引理2. 
+　　定理1. 设XY={(x1,y1),(x2,y2),...,(xm,ym)}是二维数据库文件，BXY(s,α,v,h,m)表示用Partition算法把F划分为h行v列时至少一个二维方体中的元组数超过的概率的上界,则
+
+　　定理1给出了用BX(s,α,k,m)计算Partition算法划分二维数据库文件时溢出概率的上界.一般地，Partition算法划分d维数据库文件时溢出概率的上界可以由其划分d-1维数据库文件时溢出概率的上界来计算.显然，当α=1时，BX(s,α,k,m)=BXY(s,α,v,h,m)=1，即使用随机抽样方法划分数据库文件时，必存在溢出方体.但是，从引理2和定理1可知，Partition算法溢出概率的上界很小.
+　　定义2. d维数据库文件F的两个超长方体R1和R2称为相邻超长方体，如果存在i(1≤i≤d)，使得R1=(X1,...,Xi,...,Xd)，R2＝(X1,...,Xi+1,...,Xd).
+　　定义3. 一个数据分布算法是平衡的，如果每个处理机都被分配相同数量的超长方体,而且相邻超长方体在不同的处理机上.
+　　引理3. 如果使用DA算法在N个处理机之间分布d维数据库文件F的超长方体，则F的任意两个相邻超长方体都在不同的处理机上.
+　　定义4. d维文件F在第i维上的j+1个相邻超长方体定义为R(i,k,j+1,(x1,...,xi-1,xi+1,...,xd))＝{Rk,Rk+1,...,Rk+j}，其中Rk+m＝(x1,...,xi-1,k+m,xi+1,...,xd)是F的d维超长方体，0≤m≤j，1≤i≤d，0≤k≤niN-1-j.
+　　引理4. 设A＝R(i，k，LN，(X1,...,Xi-1,Xi+1,...,Xd))是d维数据库文件F的相邻超长方体集合，其中k和i与定义4中的k和i相同，L是正整数.如果使用DA算法在N个处理机之间分布F的超长方体，则每个处理机上有且仅有L个A中的超长方体.
+　　定理2. DA算法是平衡的.
+　　性质1. DCMD的初始分布机构是一种动态多维分布方法.
+　　性质2. DCMD文件在所有维上都是部分排序的，即对任意维i，如果Iik和Iim是第i维的两个区间,而且k<m，则Iik×［0,1)d-1中的每个元组在第i维上的值都小于Iim×［0,1)d-1中的每个元组的对应值.
+　　由于下边的动态数据分布机构可以保证数据库的数据始终均匀地分布在多个处理机之间，定理2、性质1和性质2说明，DCMD方法可以有效地支持在任意维上具有选择谓词的选择操作、区域查询操作、排序、连接、选择、投影等关系代数操作.引理4说明，对于在任一维上涉及到kN(k是整数)个区间的区域查询Q来说，DCMD方法是优化的，即在每个处理机上都存取相同个数的超长方体.　
+2　动态数据分布调整机构
+　　初始数据分布机构能够把F均匀地分布到N个处理机.但是，由于数据更新操作的执行，F在各处理机之间的分布可能出现偏斜(简称数据偏斜)，降低系统性能.在这种情况下，需要调整F在各处理机之间的分布.初始数据分布机构可以用来重新分布F.但是，如果F很大，反复调用初始数据分布机构的代价也相当大.我们使用以下两种策略最小化动态数据分布的代价：① 设计用于数据分布调整的高效并行数据分裂和数据合并算法，尽量避免使用初始数据分布机构重新分布F；② 在保证系统性能不减的前提下，最小化数据分布调整的次数.我们首先讨论并行数据分裂和合并算法，然后给出两个动态数据调整的启发式调度算法.
+2.1　并行分裂算法
+　　分裂算法的目的是加细空间［0, 1)d中数据密度大的区域的划分，把该区域中F的数据均匀地分布到N个处理机中.分裂算法由3步组成：① 选择需要增加划分点的维，简称分裂维；② 在分裂维上选择具有最大数据量的区间，简称分裂区间；③ 把选定的分裂区间划分为N+1个区间，在处理机间重新分布新得到的超长方体.把分裂区间划分为N+1个区间，可以极大地降低处理机间的信息传输量.
+　　定义5. 文件F第i维的区间级数据正偏斜度是，其中Mi是第i维的区间个数,Sik是第i维的划分向量中的Vi［k］.S=|Iik×［0, 1)d-1∩F|.
+　　分裂维的选择依据每维当前的划分区间数和每维的区间级数据正偏斜度.若i满足,则分裂维确定为第i维.在具有多个相同区间级数据正偏斜度的情况下，选择具有最小划分区间数的维作为分裂维.设第i维已被选为分裂维.在第i维上选择分裂区间的策略很简单，只需选择具有最大Sik值的区间Iik作为分裂区间即可.
+　　给定d维数据库文件F,划分向量集合{V1,...,Vd}、抽样因子s和分裂因子ξ>0，且划分向量{V1,...,Vd}存储在处理机0上，分裂算法Split定义如下.
+　　(1) FOR i=1 TO d DO　　/* 处理机0计算各维的正偏斜度 */
+　　(2) 　;/* Mi是第i维当前区间个数 */
+　　(3) IF  THEN 分裂维为i　ELSE 算法结束;/*处理机0确定分裂维*/
+　　(4) 确定满足Vi［k］.的分裂区间k;/* 处理机0确定分裂区间 */
+　　(5) N个处理机并行地从F∩Iik×［0,1)d-1中随机抽取s(N+1)个样本，送处理机0上的数组sample;
+　　(6) 处理机0按第i维值排序sample;
+　　(7) 处理机0在Vi的Vi［k］分量后插入N个分量空位; /* 把分裂维划分向量的第k分量分裂为N+1个分量，后N个分量为空 */
+　　(8) FOR j=1 TO N DO
+　　(9) 　Vi［k+j］.p:=samplei［js］; /* 分裂区间被划分为N+1个区间，分点添入划分向量 */
+　　(10) FOR j=0 TO N-1 DO /* 准备在处理机之间重新分布第i维的第k区间的数据 */
+　　(11) 　处理机0计算Rj:={(x1,...,xi-1,k,xi+1,...,xd)|(k+Xm) mod N=j,0≤xm≤Mm-1}，并传输到处理机j；/* Mm是第m维当前区间个数 */
+　　(12) FOR j=0 TO N-1 DO (并行地) /* 在处理机之间重新分布第i维的第k区间的数据 */
+　　(13) 　FOR 每个(x1,...,k,...,xd)∈Rj DO
+　　(14) 　　FOR k+1≤y≤k+N-1 DO
+　　(15) 　　　处理机j送(［Vi［y］.p,Vi［y+1］.p)×(［Vm［xm］.p,Vm［xm+1］.p∩F到处理机(y+Xj)mod N;
+　　(16) 　　　各处理机计算Vi［y］.S的部分值，传送到处理机0，处理机0综合计算Vi［y］.S的最终值.
+　　图1给出一个二维动态数据调整的例子.图1(a)给出初始分布模式，其中N=3,n1=n2=1.算法选择第1维为分裂维，第1维的第1个区间为分裂区间.图1(b)给出分裂算法的执行结果.图中长方形内的数字表示该方体所在的处理机号.
+
+图1
+　　我们来考虑Split算法的数据传输量.由于除了与分裂区间有关的超长方体以外，其他超长方体的坐标不受Split算法的影响，所以在数据分布调整期间不需要改变这些超长方体所在的处理机.这是Split算法的一个重要特点.此外，分裂区间Iik被划分为N+1个区间以后，所得到的第1个子区间在新划分中仍是第k个区间，仍记其为Iik，最后一个子区间为Iik+N.在数据分布调整中，与这个Iik和Iik+N有关的F的超长方体所在的处理机也不需要改变.于是，我们有如下的引理.
+　　引理5. 设Iik是分裂区间.Split算法仅需传输Δ个F的元组，其中Δ=|Iik×［0,1)d-1∩F|.
+　　通过详细分析(限于篇幅，本文省略了分析过程)，Split算法的并行磁盘读写时间为,并行CPU计算时间为，并行通信时间为.
+2.2　并行合并算法
+　　合并算法的目的是把F的一个适当维的数据稀疏的N+1个区间合并为1个区间.合并算法由3步组成：① 选择需要进行合并的维(简称合并维)；② 在合并维上选择具有最少数据量的连续N+1个区间(简称合并区间)；③ 合并N+1个合并区间为一个区间，在处理机间重新分布由合并得到的超长方体.一次合并N+1个区间可以极大地减少数据传输量.
+　　定义6. 第i维的区间级数据负偏斜度是，其中Mi是第i维的区间个数，Sik是F在第i维的第k个区间Iik上的投影集合(允许重复元素出现)的元素数，即|Iik×［0,1)d-1∩F|.
+　　合并维的选择依据每维当前的划分区间数和每维的区间级数据负偏斜度.如果存在一个i满足，则合并维确定为第i维.若多个区间具有相同区间级数据负偏斜度，选择具有最多划分区间的维作为合并维.
+　　设第i维被选为合并维.在第i维上选择N+1个合并区间的策略是：F在N+1个连续合并区间上投影集合(包括重复元素)的元素数总和应该最接近于.下面我们用NI(i,k)表示第i维上从k开始的N+1个连续区间.NI(i,k)的大小为|NI(i,k)|=Vi［j］.S.－|NI(i,k)|的绝对值称为NI(i,k)的特征值.我们选择特征值最小的NI(i,k)为合并区间，即如果NI(i,j)满足下列条件，则NI(i,j)确定为合并区间.
+
+　　给定d维数据库文件F、存储在处理机0上的划分向量集合{V1,...,Vd}和合并因子ξ<0，合并算法Merge定义如下.
+　　(1) 处理机0执行第(2)～(9)步.
+　　(2) FOR 1≤i≤d DO　　　　　　　/* 计算各维的负偏斜度 */
+　　(3) 　;
+　　(4) IF  THEN 合并维为i; ELSE算法结束; /* 确定合并维 */
+　　(5) FOR k=0 TO Mi-N-1 DO /* 计算候选合并区间的特征值 */
+　　(6) 　;
+　　(7) 在维i上确定满足的合并区间NI(i,j)； /* 确定合并区间 */
+　　(8) FOR k=0 TO N-1 DO　　　/* 准备在处理机之间传送合并区间的数据 */
+　　(9) 　处理机0计算Rk:={(x1,...,xi,...,xd)|(xm mod N)=k,j+1≤xi≤j+N-1,对于m≠i,0≤xm≤Mm-1}，并传送到处理机k;
+　　　　　　　　　　　　/* j为(9)中选定的合并区间集合NI(i,j)的第1个区间的编号 */
+　　(10) FOR k=0 TO N-1 DO (并行地) /* 在处理机之间传送合并区间的数据 */
+　　(11) 　FOR 每个(x1,...,xd)∈Rk DO
+　　(12) 　　处理机k送超长方体(x1,...,xd)到处理机(j+xm) mod N; /* j与(9)中的j相同 */
+　　(13) 处理机0修改划分向量的Vi［j］.S分量：Vi［j］.;
+　　(14) FOR 1≤k≤N DO 处理机0从Vi删除Vi［j+k］.
+　　以下设,NI(i,j)是合并区间.类似于引理5，我们有如下引理6.
+　　引理6. Merge算法要求在处理机间传输的F元组数是Δ.
+　　通过详细分析(限于篇幅，本文省略了分析过程)，Merge算法的并行磁盘读写时间为,并行CPU计算时间为，并行通信时间为.
+2.3　数据分布调整的调度算法
+　　本文给出两种数据分布调整的调度算法,一种是动态调度算法,另一种是周期调度算法.这两个算法都是通过比较数据偏斜引起的数据操作的额外开销和数据分布调整算法的开销来决定是否进行数据分布的调整，尽量减少数据分布调整算法的执行次数，最小化数据分布调整的代价.
+　　设op是一个数据操作，F是一个d维数据库文件，我们用RTU(op)表示当F均匀地分布在N个处理机时，在F上执行op的并行执行时间，RTS(op)是当F偏斜地分布在N个处理机时，在F上执行op的并行执行时间.
+　　定义7. F的数据偏斜引起的op的额外开销是ECOST(op)=RTS(op)－RTU(op).
+　　定义8. 设F是一个给定的数据库文件,op1,op2,...,opm是F上的所有数据操作，fi是opi被执行的频率.F的偏斜分布引起的总额外开销是.
+2.3.1 数据分布调整的动态调度算法
+　　动态调度算法根据每个数据库文件的分布状态，综合考虑数据偏斜引起的额外开销和调整数据分布的开销，确定是否需要数据分布调整，如果需要,则调用Split或Merge以及初始数据分布机构进行数据分布调整.由于Split和Merge算法要求较小的数据通信量，这两个算法的调度优先于初始数据分布机构.动态调度算法嵌入在数据库的插入和删除操作的实现算法之中.下面,我们简要地给出这两个算法的定义.在下面的定义中，Iij表示第i维上的第j个划分区间，δ是用户根据实际情况给定的正数，称为数据分布调整因子.
+　　算法. 插入算法
+　　输入: d维数据库文件F;存储在处理机0上的F的划分向量集合{V1,...,Vd}；插入元组T(t1,...,td).
+　　(1) 确定T(t1,...,td)应该插入的超长方体的坐标(x1,...,xd)；
+　　(2) 把元组T(t1,...,td)插入超长方体(x1,...,xd)；
+　　(3) FOR 1≤i≤d DO (并行地)
+　　(4) 　　Vi［xi］.S:=Vi［xi］.S+1;
+　　(5) 计算TECOSTF；OTECOSTF:=TECOSTF+1；
+　　(6) WHILE (TECOSTF>δ)∧(RTSplit<TECOSTF)∧(OTECOSTF>TECOSTF) DO
+　　　　执行Split算法; OTECOSTF:=TECOSTF;重新计算TECOSTF；/* RTSplit是Split算法的执行
+　　　　时间 */
+　　(7) IF (TECOSTF>δ)∧(RTPD<TECOSTF) THEN 执行初始数据分布机构. /* RTPD是Partition
+　　　　和DA算法的执行时间 */
+　　算法. 删除算法
+　　输入：d维数据库文件F；F的划分向量集合{V1,...,Vd},存储在处理机0；删除元组T.
+　　(1) 确定T所在超长方体的坐标(x1,...,xd);
+　　(2) 处理机CMD(x1,...,xd)删除元组T;
+　　(3) FOR 1≤i≤d DO /* 处理机0修改划分向量 */
+　　(4) 　　Vi［xi］.S:=Vi［xi］.S－1;
+　　(5) 计算TECOSTF；OTECOSTF:=TECOSTF+1;
+　　(6) WHILE (TECOSTF>δ)∧(RTmerge<TECOSTF)∧(OTECOSTF>TECOSTF) DO
+　　　　执行Merge算法; OTECOSTF:=TECOSTF; 重新计算TECOSTF； /* RTmerge是Merge算法的执
+　　　　行时间 */
+　　(7) IF (TECOSTF>δ)∧(RTPD<TECOSTF) THEN 执行初始数据分布机构. /* RTPD是Partition
+　　　　和DA算法的执行时间 */
+2.3.2　数据分布调整的周期调度算法
+　　周期调度算法需要预先确定一个分布调整最小周期L.L要根据数据更新操作的频率来确定.每隔L时间可能需要进行数据分布调整，但不一定必须进行.为此，我们只需每隔L时间运行一次周期调度算法，确定是否真的需要调整F的数据分布，并确定调用哪一个算法进行数据分布的调整.周期调度算法定义如下.
+　　输入： d维数据库文件F；存储在处理机0上的F的划分向量集合{V1,...,Vd}.
+　　(1) 计算TECOSTF；
+　　(2) IF TECOSTF<δ THEN 结束;
+　　(3) WHILE (存在可合并区间)∧(RTMerge<TECOSTF) DO
+　　　　　　执行Merge算法；计算TECOSTF；
+　　(4) WHILE (存在可分裂区间)∧(RTSplit<TECOSTF) DO
+　　　　　　执行Split算法;计算TECOSTF；
+　　(5) IF (TECOSTF>δ)∧(RTPD<TECOSTF) THEN 执行初始数据分布机构.
+3　实验结果
+　　我们在一个由以太网连接的8台586微型计算机机群并行环境下实现了DCMD方法，并设计实现了多种基于DCMD方法的并行数据操作算法.由于Join算法是最复杂、最常用、研究最多的关系代数操作算法，本文仅给出基于DCMD方法的3种并行连接算法与受到广为赞誉的并行Hybrid-Hash,Grace-Hash和Sort-Merge连接算法的性能比较.基于DCMD方法的3种并行连接算法的细节参见文献［7］.我们随机地产生了一对具有5万个元组（每个元组32个字节）的关系，然后在这对关系上执行上述6种连接算法.图2给出了这些算法的执行时间.图中Dh，Dsm和Dnl分别表示基于DCMD方法的3种并行连接算法，Hy，Gr，Sm分别表示并行Hybrid-Hash，Grace-Hash和Sort-Merge连接算法.从图2中可以看到，基于DCMD方法的并行连接算法的效率高于所有其他算法.实验表明，DCMD方法是一种十分有效的多维动态数据分布方法.
+
+图2
+*　本文研究得到国家863高科技项目基金、国家杰出青年基金和黑龙江省杰出青年基金资助.
+本文通讯联系人：李建中，哈尔滨150080,哈尔滨工业大学计算机科学系
+作者简介：李建中,1950年生,教授,博士生导师，主要研究领域为数据库系统，并行计算.
+作者单位：哈尔滨工业大学计算机科学系　哈尔滨　150080，E-mail: jzl@hlju.edu.cn
+参考文献：
+［1］李建中.并行数据库的查询并行化技术与物理设计方法.软件学报,1994,5(10):1～10
+(Li Jian-zhong. Parallelization techniques for query processing and data declustering methods. Journal of Software, 1994,5(10):1～10)
+［2］DeWitt D J et al. GAMMA: a high performance dataflow database machine. In: Wiederhold G ed. Proceedings of the 14th International Conference on Very Large Databases. San Mateo, CA: Morgan Kaufmann Publishers, Inc., 1986. 228～240
+［3］Ghandeharizadeh S, DeWitt D J. Hybrid-range partitioning: a new declustering strategy for multiprocessor database machines. In: McLeod D, Sacks-Davis R, Hans S eds. Proceedings of the 16th International Conference on Very Large Databases. San Mateo, CA: Morgan Kaufmann Publishers, Inc., 1990. 480～492
+［4］Hua K A, Lee C. An adaptive data placement scheme for parallel database computer systems. In: McLeod D, Sacks-Davis R, Hans S eds. Proceedings of the 16th International Conference on Very Large Databases. San Mateo, CA: Morgan Kaufmann Publishers, Inc., 1990. 493～506
+［5］Ghandeharizadeh S et al. A performance analysis of alternative multi-attribute declustering. In: Stonebraker M ed. Proceedings of 1992 ACM SIGMOD International Conference on Management of Data. Baltimore, MD: ACM Press, 1992. 29～38
+［6］Li J, Srivastava J, Rotem D. CMD: a multidimensional declustering method for parallel database systems. In: Yuan Li-Yan ed. Proceedings of the 18th International Conference on Very Large Databases. San Mateo, CA: Morgan Kaufmann Publishers, Inc., 1992. 3～14
+［7］李建中,都薇.并行数据库上的并行CMD-Join算法.软件学报,1998,9(4):256～261
+(Li Jian-zhong, Du Wei. Parallel CMD-Join algorithms on parallel databases. Journal of Software, 1998,9(4):256～261)
+收稿日期：1997-12-12，修改日期：1999-05-31

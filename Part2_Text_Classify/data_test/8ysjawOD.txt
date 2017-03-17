@@ -1,0 +1,110 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第9期　Vol.10　No.9　1999
+
+
+
+一种基于半自动Agent的协同设计层次操作模型
+李保建　曾广周　林宗楷
+摘要　如何反映设计过程中协同的若干需求是开发协同设计系统所面临的一个重要问题.文章提出了一种协同设计的层次操作模型，设计了agent的称作joint endeavor的心态元素以及一组agent之间的通信原语来规范模型中多agent层的行为.这种基于joint endeavor的协同模式反映和满足了协同设计的一些需求.文章还给出了这种层次操作模型的一种实现结构，简单介绍了作者所开发的一个协同对象图设计系统CODDS(collaborative object diagram design system).
+关键词　计算机辅助协同工作，计算机辅助协同设计，认知型agent，intention，joint endeavor.
+中图法分类号　TP391
+A Hierarchical Operation Model Based on Half-automated Agent for Collaborative Design
+LI Bao-jian,LIN Zong-kai
+(CAD Laboratory Institute of Computing Technology The Chinese Academy of Sciences Beijing 100080)
+ZENG Guang-zhou
+(Department of Computer Shandong University of Technology Ji'nan 250061)
+Abstract　How to embody the requirements of collaboration in designing processes is an important issue in developing collaborative design systems. In this paper, a hierarchical operation model for collaborative design is presented. A mental component called joint endeavor and a set of communication primitives are devised for the half-automated agents in the model to meet some of the requirements in collaborative design. An implementation structure for the hierarchical operation model is also given. A collaborative object diagram design system (CODDS) is introduced as an example of this collaborative design model.
+Key words　CSCW, computer supported collaborative design, cognitive agent, intention, joint endeavor.
+　　在计算机辅助协同设计（computer supported collaborative design,简称CSCD）的各种形式中，协作是特别重要的,在大型设计项目中更是如此，因为大型项目涉及不同的领域,需要不同的专门知识和技术.作为CSCW的一种特别形式，CSCD关注设计人员如何协同工作并致力于发现辅助他们工作的技术［1,2］.现存的产品与研究大多数集中于协同设计的网络多媒体技术支持，如远程指针、共享白板、共享应用工具等［3,4］.而如何利用agent技术来反映协同的约束与需求,从而更好地支持、帮助与约束协同设计过程中的人-人交互的研究则较少见诸文献.M.R.Patra等人［5］对协同设计中agent的联合态度（joint attitudes）的必要性及其建立等问题进行了理论上的初步探讨.D.J.Ram等人［6］提出了一种基于约束元对象（constraintmeta-object）的扩充对象模型，用约束元对象来体现不同设计人员的设计对象之间的参数约束，从而可以部分地反映协同设计的需求，为协同提供一定的支持.
+　　本文提出了一种协同设计的层次操作模型.这种层次操作模型通过在设计人员和领域级设计系统之间设置半自动agent层来体现协同设计的约束与需求.我们将通过分析协同设计过程中的一些基本需求，提出规范化agent行为,从而模型化这些需求的一种agent联合心态以及一组相应的agent通信原语，并给出相应的agent实现结构.作为这种层次操作协同设计模型的一个实例，本文还将介绍我们开发的一个协同对象图设计系统.
+1　协同设计的基本需求
+　　开发一个有效的CSCD系统必须考虑协同设计的约束与需求［5，6］，它们可以包括：
+　　任务分解　根据协同设计参与者的多寡，可以将设计任务分解成不同粒度的子任务.这种分解的目的在于将每个子任务分配给一个相应的领域专家.然而，也有一些子任务需要不同的技术，这就需要分配多个设计者.任务分解未必能一次性地完成，设计者们可能发现，将一个子任务分解成更小的子任务会更方便.
+　　角色分配　设计成员在设计过程中扮演不同的角色，这些角色可以是面向任务的或者是面向功能的.赋予不同子任务的设计者或设计小组自然具有不同的面向任务的角色，而赋予相同子任务的多个设计者可能具有诸如组织者、仲裁者、评注者等不同的功能角色，当然也可能具有完全对等的关系.设计人员或小组的角色不是一成不变的，随着设计过程的进展，同一设计者完全可能扮演不同的角色.一个协同设计系统应该提供包括相关设计对象存取授权的角色建模.
+　　设计活动监控　一旦设计任务被分解成不同的子任务并被赋予不同的设计者，他们的设计过程必须受到监控，直到结束.如果设计者在设计过程中具有不同的角色，他们的行为必须符合他们的角色，违反角色的行为必须得到监测并予以取消，以避免有害的影响.
+　　冲突消解　设计过程中可能会产生冲突.许多设计问题或任务具有不良结构（ill-structured）,Simon认为不存在结构良好（well-structured）的问题［7］.工作于同一任务或子任务的设计人员可能对于如何进行任务分解等问题具有不同的意见，即便是就某一特殊对象的设计，他们也会有不同的方案.系统应该提供帮助他们消解冲突的协商机制.
+　　子任务装配　一旦子任务完成，它们应该在保持一致性的基础上予以组装.在组装子任务的过程中，可能会产生问题.一旦如此，一个或几个子任务的结果必须被修改，或者必须重新设计它们，甚至也必须重新分解它们的父任务.
+　　讨论了协同设计的这些约束或需求，下面的问题就是如何将它们集成到一个设计系统中.
+2　协同设计的层次操作模型
+　　协同设计的层次操作模型分成3层.上层是多个设计人员，下层是共享设计对象，中间层则是由多个半自动agent组成的多agent系统.3个层次由它们之间的操作关系连接起来.每个设计者可以直接操纵他的agent，但是只能通过中间agent层间接地操纵共享设计对象.
+2.1　Agent层
+　　Agent的理性行为是由它们的认知元素（cognitive component）或心态元素（mental component）：beliefs,desires和goals,intentions和commitments等决定的.至于心态元素的选取，Shoham认为既没有一个唯一“正确”的选择，也没有一个关于如何选择的“正确”理论，因为不同的应用可能需要不同的心态性质［8］.Cohen 和Levesque关于intention和joint intention 的理论［9］以及Jennings建立在他们的工作基础上的joint responsibility模型［10］反映了合作的一些性质，但是他们的理论必须予以调整和求精才能适应本文设计的应用背景.因此，我们提出了joint endeavor 的概念，并设计了一组用于agent交互的通信原语来规范和协调agent的行为，使得协同的某些约束和需求得以满足.
+2.1.1　Joint endeavor
+　　Joint endeavor可以用模态、时态逻辑予以形式化地定义.但是，我们研究的目的是用其指导建立协同设计系统，所以，我们仅仅给出其非形式化定义.Joint endeavor是agent的一种复合心态元素，其定义和理解依赖于其他更简单的心态元素，如belief,mutual belief,achievement goal,joint achievement goal,persistent goal,joint persistent goal,intention以及joint intention等［9，10］.
+　　在上述概念的基础上，我们可以定义joint endeavor的概念.假设有一组agent,AG=(a1,a2,...,an),称这组agent具有joint endeavor p，记为(J-ENDEAVOR AG p)，当且仅当：
+　　(1) 它们以p作为一个joint achievement goal.
+　　(2) 作为实现这个目标的一个总策略，它们通过协作性协商将此任务或目标p分解成子任务或子目标(p1，p2,...,pm)，其中1≤m≤n,并将子任务pi(i=1,...,m)赋予一组agent AGi=(ai1,ai2,...,aiMi)，其中M1+M2+...+Mm=n.
+　　(3) 如果m=1，即没有分解，那么AG中的agent为了实现使p成真的任务而协同工作，直到：
+　　(3.1) 它们共同相信p已经为真.并且，如果p不是根任务，它们必须将此结果通知工作于p的兄弟任务的所有agent小组；如果p是根任务，则它们的joint endeavor成功.
+　　(3.2) 或者它们共同相信不可能使p为真.如果p不是根任务，它们必须将此结果通知工作于p的兄弟任务的所有agent小组；如果p是根任务，则它们的joint endeavor失败.
+　　(3.3) 或者它们被通知其兄弟任务（如果存在）失败.
+　　(4) 如果m>1(分解是非平凡的)，那么对于i从1到 m(J-ENDEAVOR AGi pi)，并且AGi 具有对子任务pi所直接覆盖的对象进行操作的排他权利.每个joint endeavor必须一直进行到获得成功或失败的结果，或者直到某个其他的joint endeavor声明失败，然后，AGi在子任务pi上的工作结束或暂停.
+　　如果任何joint endeavor已经失败，工作于任务p的agent小组AG 可能决定对任务p进行重新分解或者它们可能认为p不可能为真.在第2种情况下（它们认为p不可能为真），如果p不是根任务，它们必须将此结果通知工作于p的兄弟任务的所有agent小组；如果p是根任务，则它们的joint endeavor失败.
+　　如果所有的joint endeavor都是成功的，并且AG建立了对于这个成功的共同信念，那么它们就进入子任务装配阶段.如果装配失败，AG可能决定对任务p进行重新分解，或者它们可能认为p不可能为真，并将此结果通知工作于p的兄弟任务的所有agent小组（如果存在的话）；如果装配成功，那么目标p已经实现，AG应将此结果通知工作于p的兄弟任务的所有agent小组（如果存在的话）.如果p是根任务，那么就得到了这个joint endeavor 的最终结果.
+　　Joint persistent goal规定一组agent应该履行它们实现某个目标的承诺，直到它们认为目标已经实现或不可能实现，然而Joint persistent goal没有规定如何实现目标（譬如说，是仅仅等待别人去实现还是自己做某些事情来实现？）.Cohen和Levesque的joint intention要求这组agent 应该自己做某些事情来实现它们的目标.而joint endeavor（当然是一种joint persistent goal），不但规定这些agent必须自己做某些事情来实现目标，而且还规定了实现目标的一种层次规划和重新规划方法.
+2.1.2 Agent交互通信原语
+　　Agent之间借助通信原语实现交互作用.考虑到本文的应用背景，我们设计的通信原语包括：inform与agree/deny，permit与forbid，request与consent/refuse,proposal与 accept/decline. 
+　　设计通信原语的指导思想是言语行为理论.正如心态元素的选择不是唯一的，我们认为通信原语的选择也不是唯一的.考虑到本文的应用背景，我们提出了如上所述的agent通信原语，这些通信原语可以由它们对发生交互的agent的语用效应来定义.
+　　Inform,agree/deny
+　　我们用(INFORM x y p)表示agent x 通知y命题p.如果agent x相信（believe）p，它可以将其通知另一个agent y（这里要求agent必须讲真话），并且这将导致被通知的agent y相信“agent x相信p”.如果这也导致了agent y相信p，它必须发送消息(AGREE y x p)给x，这将导致x相信“y相信p”；如果agent y并不相信p，它必须发送消息(DENY y x p)给x，这将导致x相信“y不相信p”.
+　　这组通信原语可以帮助一组agent建立共同信念(mutual belief).
+　　Request,consent/refuse
+　　Request（请求）反映了agent的desire.一个agent可以请求其他agent做某些action.这里，action是指领域级操作，它包括我们所提出的层次操作模型中共享对象层操作集里的所有操作.我们用(REQ x y act-expr)表示agent x请求agent y做act-expr（行动表达式）中规定的action.行动表达式可以是任意的action或action序列.就领域级操作来说，action不仅包括操作，也包括操作的对象.
+　　当agent y收到消息(REQ x y act-expr)，它必须以消息(CONSENT y x act-expr)或(REFUSE y x act-expr)予以响应.前者导致y做act-expr规定的action的intention(我们在Cohen与Leveseque的INTEND1［9］的意义上使用这个词)以及agent x相信y的这个intention，后者导致y的拒绝以及x相信y的拒绝.
+　　Permit,forbid
+　　在我们的层次操作模型中，如果一个agent或一组agent被赋予一个任务，那么它们具有对此任务所直接覆盖的对象进行操作的排他权利.因此从一开始所有其他agent小组隐含地被禁止对这些对象做任何操作.然而，如果这个agent或agent小组相信其他agent或agent小组的经验和技术能对它们的任务有所帮助，前者可以允许（permit）后者对它们的对象进行某些操作.
+　　我们用(PERMIT x y act-expr)表示agent x允许agent y进行act-expr中规定的操作.然而，如果act-expr中规定操作的对象不在x的任务范围之内，这种允许无效，否则，这个消息将导致y对这个permission的信念.
+　　我们用(FORBID x y act-expr)表示agent x禁止agent y进行act-expr中规定操作.然而，如果act-expr中规定操作的对象不在x的任务范围之内，这种禁止无效，否则，这个消息将导致y对这个forbid的信念.
+　　Proposal,accept/decline
+　　当一组agent进行任务分解、子任务装配或工作于一个不能继续分解的子任务时，他们可能具有不同的意见.在具体操作之前达成一个大家共同接受的方案是一个较好的办法.
+　　一个agent可以对它所属的小组建议某个方案.我们用(PROPOSE x p)表示agent x对它所属的小组建议方案p.这个消息将被发送到本组的所有成员.如果一个成员y接收到这个提议，它必须答以消息(ACCEPT y x p)，否则它必须答以消息(DECLINE y x p).如果x从所有其他成员收到了accept消息，它必须通知所有成员对这个方案的联合承诺已经形成.
+2.1.3　对协同设计某些需求的支持
+　　中间层的多个agent通过形成一种协作性的联合心态，并借助于它们之间的通信原语，从而使得它们的联合行为得以规范化并具有合作性.中间层的多个agent与顶层的多个设计人员是一一对应的.由于设计人员对底层领域级系统的操作以及他们之间的交互行为必须通过中间层的agent来进行，并接受agent的检查和帮助，从而使得设计人员的行为同样必须具有agent的联合心态及其通信原语所规定的性质.
+　　设计人员基于joint endeavor的行为直接支持协同设计中任务分解和子任务装配的需求，而且这种联合心态自然要求依据设计人员面向任务的角色对他们的设计活动进行监控，即他们不能进行违反他们角色的操作.这种联合心态还要求对完成任务或子任务的承诺的合理性进行监控.例如，如果他们获知他们的一个兄弟任务已经失败，则至少需要暂停他们的工作，直至得到他们父任务重新分解的结果为止，然后，依据重新分解的结果判断他们的子任务是否已经改变，并决定他们已经做的工作是否需要修改甚至放弃.
+　　当一组设计人员进行任务分解、子任务装配或者对某一不能继续分解的任务进行简单设计时，他们可能因不同的方案而产生冲突.据此，有不同的冲突消解方法.合作性协商就是一种消除协同设计中冲突的适当方法，因为设计小组中不同的设计人员具有不同的专门经验和技术，强迫他们做某些事情是不合适的.
+　　中间层的agent仅仅体现了协同的某些约束和需求，而不能代替设计人员进行具体的设计决策.因此，不能依赖agent之间的自动协商过程来消除设计人员之间的冲突.但设计人员可以借助于agent之间的通信原语对proposal-accept/decline来对他们之间的协商过程进行规范化.
+　　具体来说，当一个设计者收到来自另一个设计者（通过他们的agent）发来的一个方案的proposal时，这个设计者必须决定是accept还是decline，他只有这两种选择，并且必须作出选择.这种通信过程一直进行到一个共同的方案被接受为止.因此可以说，我们提出的设计人员之间的协商过程是一种基于proposal-accept/decline的通信协议的协商方法.本质上说，这种协商过程是一种社会行为过程，方案的达成有赖于社会规则的约束.
+2.2　共享对象层和设计人员层
+　　在我们的模型中，任何领域的计算机辅助设计系统均被抽象为对象及其可以作用于这些对象的操作集合.换句话说，被设计的产品被看成对象，一般来说,它是由许多更小的组件对象构成的，并且有不同的操作，诸如创建、修改及删除等等可以施加于这些对象.因此，共享设计对象层又称为领域级系统（domain level system）.一般来说，设计活动中创建的所有对象均可被所有的设计人员浏览，但是工作于一个子任务的设计者通常情况下是不允许对其他子任务的对象施加操作的，除非他得到允许或收到来自其他子任务设计人员的请求.
+　　设计人员层由工作于一个总的设计任务的所有设计人员组成.他们有时同步工作，例如，当他们对某一任务或子任务进行分解时.他们有时也异步地工作，例如，工作于不同的子任务的设计人员一般情况下没有必要同时工作.尽管中间agent层体现了协同的某些需求，并且对设计人员形成某种约束（即中间层agent可以提醒、请求和禁止设计人员做某些事情），但这并不意味着设计人员不需要社会规则的约束.中间层agent可以禁止一个设计人员进行某种操作，但不能强制他进行某种操作，虽然它可以提醒或请求设计人员去做.这意味着设计人员的合作态度对于设计活动的成功进行是非常重要的.
+3　系统实现研究
+　　我们给层次操作模型中的半自动agent设计了如图1所示的体系结构.在图1中，为了方便起见，共享对象层（领域级系统）也和agent画在一起，然而它并不是agent的一部分.
+
+图1　半自动agent的体系结构
+　　考虑到本文涉及的应用，半自动agent必须具有用户界面.Agent的用户界面被分成两部分：领域级用户界面和元级用户界面.领域级用户界面支持设计人员和共享对象层的交互，而元级用户界面支持设计人员通过agent层的合作.
+　　监控模块的职能是根据其规则来控制设计人员通过领域级用户界面对共享对象的操作.它根据设计人员在joint endeavor中面向任务的角色、当前设计阶段以及交互的当前状态判断设计人员的可能操作是否适当.正确的操作被传递到领域级系统，违反规则的操作简单地被领域级用户界面禁止.
+　　协作与通信模块与元级用户界面有直接联系，它支持通过元级用户界面的人人交互.协作与通信模块的功能比监控模块的功能复杂得多.下面是协作与通信模块的3个主要功能.
+　　（1） 管理joint endeavor.换句话说，本功能负责joint endeavor的形成、修正以及终止.在前面关于joint endeavor的非形式化的逻辑描述中，为了突出重点，我们将agent的个数限定为常数n个（即，在设计过程中n是不变的）.在具体实现过程中，考虑到实用性，我们允许新的agent或者说设计人员加入到某个子任务小组，或者某个子任务小组的部分设计人员或者说agent退出.这对joint endeavor没有实质性影响.
+　　（2） 实现第2.1.2节所述agent之间的通信原语的通信协议.因为这些通信原语是由设计人员通过agent的元级用户界面直接使用的，这种协议可以提醒、请求甚至迫使设计者通过元级用户界面做必要的合作.例如，当一个设计者收到进行某种操作的一个请求时，他必须予以回答.如果不回答，协议将禁止他进行任何其他操作.因此，这种协议可以规范化设计人员的交互行为.
+　　（3） 根据joint endeavor的约定跟踪协同活动.在设计的不同阶段，协同活动必须与joint endeavor的规定一致.协作模块同样可以提醒甚至强迫设计人员遵循joint endeavor约定.例如，当一个非根节点子任务的设计人员结束了设计工作后，根据joint endeavor，必须将他们的工作结论通知其兄弟任务的设计人员.各个agent的协作模块通过将工作结论写入任务树数据结构并周期性地读取任务树的变化来实现这一点.若一个agent的协作模块通过读取任务树检测到一个兄弟任务已失败，则它将提醒与其相应的设计者暂停工作并返回到其父任务.
+　　Agent也维持着当前任务和所有agent的内部表示.这种表示也是非常重要的，因为一个agent必须知道当前任务的状态和其他agent当前的心态才能作出正确的选择和决定.
+　　Agent对共享对象的操作是通过领域操纵模块来实现的.共享对象可以通过集中式、复制式及混合式等多种方式来存放.领域操纵模块的功能及其实现方法因共享对象存放方式的不同而存在着差异，但其最基本的功能是要传递agent对共享对象的操作.
+4　一个协同对象图设计系统
+　　虽然我们提出的以joint endeavor为核心的协同设计层次操作模型是一种通用的模型，但到目前为止，我们仅仅开发了一个协同对象图设计系统（CODDS）来检验这种协同设计模型的有效性.
+　　面向对象的分析（OOA）是面向对象的软件开发过程中最重要的阶段.OOA的中间结果和最终结果都可以用对象图来表示（注：这里，我们在严格的面向对象的意义下使用对象这个概念，和我们在本文提出的层次操作模型中的共享对象的概念有所区别.对于后者，我们仅仅强调操作和数据的封装性）.对象图借助对象及其属性、分类结构和装配结构等来建立应用领域的模型.对象图直接反映了软件开发的需求，并且也可以在设计和实现阶段使用而不发生意义上的转变.
+　　OOA是一项复杂的工作.同样地，直观反映OOA过程的对象图的设计过程也是一项复杂的工作.这是因为它需要各方面，包括系统分析和设计人员、领域专家以及用户等的知识.对任何成功的OO分析来说，协作都是必不可少的.在设计CODDS的过程中，我们完全采用了本文提出的协同设计层次操作模型及其实现技术.
+　　CODDS领域级系统的外观看起来像一个普通的图形编辑器，但是这个编辑器的基本元素是代表对象、属性和对象间的类层次关系、装配关系的矩形、文本、连接线等.我们为对象图采用了内部文本表示作为其存储形式.其优点在于，不但减小了存储量，而且便于解决对象图在不同的设计者之间的共享及其控制问题.对象图中每一对象的附加信息诸如其所属的任务、创建者以及其他设计者对其操作权限等等，都可以方便地插入到对象图的文本表示之中.中间层agent可以直接使用这些附加信息来进行协同控制.
+5　结束语
+　　本文提出了一种基于半自动agent的协同设计层次操作模型.作为这种模型的核心，我们提出了多agent层的一种复合心态元素――joint endeavor以及一组通信原语来规范agent的行为，从而满足协同设计的某些需求.基于joint endeavor协同设计，我们规定了设计人员的一种有效协同模式，也给出了这种半自动agent及其这种层次操作模型的一种实现结构.
+　　作为这种协同设计层次操作模型的一个例子，我们开发了一个协同对象图设计系统CODDS.CODDS的初步使用经验表明，这种模型是可行的、有效的，还有待获得更多的经验来修正模型，以提高其效率.
+　　我们提出的这种协同设计层次操作模型是一种具有一定通用性的模型.将这种模型应用于其他设计领域的潜力是巨大的.我们将与其他设计领域的专家合作，设计出更多的协同设计系统，以充分发掘这种模型的潜力.
+*　本文研究得到山东省自然科学基金资助.
+本文通讯联系人：李保建，济南250061,山东工业大学计算机系
+作者简介：李保建，1964年生，博士生，主要研究领域为人工智能，协同设计.
+　　　　　曾广周，1947年生，教授，主要研究领域为人工智能和知识工程，软件方法和软件工程学.
+　　　　　林宗楷，1934年生，研究员，博士生导师，主要研究领域为工程数据库及协同设计.
+作者单位：李保建， 林宗楷（中国科学院计算技术研究所CAD开放研究实验室 北京 100080）
+　　　　　曾广周（山东工业大学计算机系 济南 250061）
+参考文献：
+［1］Ellis C, Gibbs S, Rein G. Groupware： some issues and experiences. Communications of the ACM, 1991,34(1):38～58
+［2］Grudin J. CSCW introduction. Communications of the ACM, 1991,34(12):30～34
+［3］Fluckiger F. Understanding Networked Multimedia Applications and Technology. Englewood Cliffs, NJ: Prentice Hall, Inc., 1996
+［4］Gibbs S, Verrijn-Stuart A A. Multi-User Interfaces and Applications. Amsterdam: North-Holland Publishing Company, 1990
+［5］Patra M R, Mohanty H. Building joint attitudes for collaborative design in multi-agent environments. In: Siriruchatapong P, Lin Zong-kai, Barthes J P eds. Proceedings of the 2nd International Workshop on CSCW in Design. Beijing: International Academic Publishers, 1997. 209～214
+［6］Ram D J, Vivekananda N, Rao C S et al. Constraint meta-object: a new object model for distributed collaborative designing. IEEE Transactions on System, Man and Cybernetics, 1997,27(2):208～220
+［7］Simon H A. The structure of ill-structured problems. Artificial Intelligence, 1973,(4):181～201
+［8］Shoham Y. Agent oriented programming. Artificial Intelligence, 1993,(60):51～92
+［9］Cohen P R, Levesque H J. Intention Is Choice with Commitment. Artificial Intelligence, 1990,(42):213～261
+［10］Jennings N R. Controlling cooperative problem solving in industrial multi-agent systems using joint intentions. Artificial Intelligence, 1995,(75):195～240
+收稿日期：1998-07-13，修改日期：1998-09-21

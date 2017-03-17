@@ -1,0 +1,47 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第4期 Vol.35 No.4 1999
+
+
+
+同异反态势排序表在体育科学研究中的应用
+徐金尧　张林凤
+摘要：本文站在知识创新的基点上，从我国奥运发展和学校体育教育学科理论研究的战略高度出发，根据集对分析中的同异反联系理论，将“同异反态势排序表”应用于体育科学研究之中，为广大体育工作者进行科学研究提供参考。
+关键词：集对分析∥同异反联系度∥同异反态势∥迁跃分析
+The Application of Similarity Difference and Counter Tendency
+Sequence Form in Physical Education Research
+Xu Jinyao, Zhang Linfeng
+Abstract: Trying to create new method and on the base of Chinese Olympic strategies, the scientific research work in Physical Education and similarity, difference and counter connection theory, this paper suggests that the similarity, difference and counter tendency sequence form could be applied in the Physical Education research and provide a reference for our researcher in Physical Education area.
+Key words: SPA∥the similarity, difference and counter connection degree∥the similarity, difference and counter tendency∥transferring analysis
+　　在科学技术迅猛发展、国家大力提倡知识创新的今天，如何运用相关的学科理论，对体育学科领域一些深层次的问题进行多视角的交叉研究，这既是解决我国体育科学发展现实问题的需要，也是转变人们的体育观念、实现知识创新的关键。
+　　本文从我国奥运战略和学校体育教育目标出发，根据集对分析中的同异反联系理论，将“同异反态势排序表”应用于体育科学研究之中，为我国广大体育工作者开展科学研究提供参考。
+1　集对分析与同异反联系度简介
+　　无论是在运动竞赛中，还是在学校体育教学活动中，都存在集对分析意义下的同异反联系现象。例如在体育竞赛中，设定“得胜”为参考集合A，而参加竞赛的运动队或运动员中，其结果将既有“得胜”也有“失败”，还有“和局”，把这部分人的实际竞赛结果作为另一个集合B，则A与B就是一个“集对”，B中的“得胜”就是B与A的同一，B中的“失败”就是B与A的对立(相反)，B中的“和局”就是B与A的“相异”。设所研究的那部分运动员共在某次体育竞赛中参加了N场比赛，有S场“得胜”，有P场“失败”，另有F=N-S-P场是“和局”，那么，这一同异反联系度表达式就客观全面地反映了所研究的运动员在这次比赛中的结果。如令则可得μ=a+bi+cj　　　(1)
+以及a+b+c=1，(1)式中的a、b、c分别称为同一度、差异度、对立度，j为对立度的系数：j=-1，i在［-1，1］之间不确定取值。(1)式即是集对分析中的同异反联系度，(1)式中的右边部位也称为联系数，其特点是把所研究对象的相对于某个参考集的同一性联系测度、差异必联系测度、对立性联系测度联系起来，组成了一个同异反数学系统，因而含有较为丰富的系统信息。例如，可把(1)式中的a、b、c，看成是从客观的层次来刻划不确定性的数量表述，而i则可以看作是从微观层次上来刻划不确定的本质，具有自由度，而b由1-a-c确定等等。
+2　同异反态势排序表
+　　同异反态势排序表仅仅是利用同异反联系度中a、b、c的大小信息，用排列组合原理而给出的一种排序表(表1)。
+表 1　同异反态势排序表
+
+序号a、b、c大小关系
+(a+b+c=1)同异反
+态势名称含　　　义
+1a＞b，b＜c，b≠0强同势系统以同一的趋势为主
+2a＞c，b=0准同势系统有同一的趋势是确定的
+3a＞c，b≥c，b＜a弱同势系统同一的趋势比较弱
+4a＞c，b≥a微同势系统同一的趋势很微弱
+5a=c，b=0准均势系统的同一趋势和对立趋势势均力敌
+6a=c，b＜a强均势系统的同一和对立趋势明显相等
+7a=c，b=a弱均势系统的同一趋势和对立趋势虽相等但程度较弱
+8a=c，b＞a微均势同一和对立趋势虽相等但具有明显的不确定特征
+9a＜c，b=0准反势系统对立的趋势是确定的
+10a＜c，b＜a，b≠0强反势系统以对立的趋势为主
+11a＜c，b=c弱反势系统对立的趋势比较弱
+12a＜c，b＞c微反势系统对立的趋势很微弱
+
+3　同异反态势排序表的应用 
+3.1　用于同异反聚类
+　　所谓聚类，就是参照预先给定的标准，对研究对象作类型判别与划分。这种聚类，在通常情况下可以顺利地进行。例如，规定考试得85分以上的成绩为优秀成绩，或符合某些要求的裁判员可以评为国家一级裁判员等等。但在不少情况下，对研究对象作聚类分析会显得十分复杂，甚至难以进行。例如，1996年世界女排大奖赛总决赛的扣球效果聚类如表2的所示。
+表 2　1996年世界女排大奖赛总决赛扣球效果表
+
+　扣球成功率名次扣球失误率名次一般率
+巴　西0.4449③0.1746④<td align="center" row

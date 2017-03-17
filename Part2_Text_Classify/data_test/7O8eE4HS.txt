@@ -1,0 +1,230 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第6期 第10卷 Vol.10 No.6 1999
+
+
+
+联机分析处理数据立方体代数*
+裴 健 柴 玮 赵 畅 唐世渭 杨冬青
+　　摘要　数据立方体是多维数据库和以多维分析为基础的联机分析处理技术的核心机制.文章提出了一个支持多维数据库和多维分析的关于数据立方体的代数，从而为数据仓库及联机分析处理的语义描述提供了理论基础.同时，文章还论述了数据立方体的一些应用，以证明该工具所具有的强大功能.
+　　关键词　数据立方体,代数,多维数据库,联机分析处理.
+　　中图法分类号　TP311
+　
+An Algebra for Online Analytical Processing Data Cube 
+PEI Jian CHAI Wei ZHAO Chang TANG Shi-wei YANG Dong-qing
+(National Laboratory on Machine Perception Beijing University Beijing 100871)
+(Department of Computer Science and Technology Beijing University Beijing 100871)
+　　Abstract　 Data cube is the central mechanism in multi-dimension database and online analytical processing (OLAP) based on multi-dimensional analysis. In this paper, an algebra for OLAP data cube is proposed, which supports multi-dimensional database and analysis. It can be the theoretical foundation of semantic specification of data warehousing and OLAP manipulations. Some applications of the new mathematical tool are presented as well to show the power of the contribution.
+　　Key words　Data cube, algebra, multi-dimensional database, online analytical processing.
+　　数据仓库及联机分析处理技术是近年来数据库技术领域的一个研究重点和热点.数据仓库是面向主题的、集成的、包含历史数据的、数据相对稳定的支持决策制定过程的数据集合［1］.从逻辑上讲，数据仓库是一个多维数据库.联机分析处理(online analytical processing,简称OLAP)以多维分析为基础，刻画了在管理和决策过程中对数据进行多层面、多角度的分析处理的要求［2］.数据立方体(data cube)［3，4］是数据仓库和联机分析处理的核心概念之一.
+　　然而，到目前为止，数据仓库和联机分析处理技术还缺乏充分的理论基础，多维模型缺乏相应的形式化理论.对数据仓库和联机分析处理的功能和操作通常都是以非形式化的方法来描述的，不同的厂商和人员对相同的用语往往赋予不尽相同的含义，妨碍了数据仓库及联机分析处理技术的深入应用.
+　　本文提出了一种关于数据立方体的代数，支持数据仓库中的多维数据概念模式和在此之上的联机分析处理操作，为数据仓库及联机分析处理的语义描述提供了理论基础.我们提出的模型具有以下优点：
+　　. 数据立方体是唯一的基础概念，简洁实用;
+　　. 能够描述联机分析处理的操作，功能完备;
+　　. 该代数的表达能力与关系代数相同.
+　　本文给出了数据立方体的概念、有关重要性质和运算，并讨论了有关的应用.在第1节中，非形式化地讨论了多维数据模型、联机分析处理和数据立方体的一些性质，综述了相关的工作和文献.第2节给出了数据立方体代数的基本概念，证明了数据立方体可以作为多维模式的一个计算模型，并讨论了数据立方体的一些重要性质.第3节给出了数据立方体代数的操作.第4节讨论了数据立方体代数的应用.
+1 问题背景及有关工作
+　　数据仓库的多维数据模式和联机分析处理中，要求在逻辑上采用多维的方式来组织和处理数据.根据数据分析的需求，要确定多维模式中的一些属性作为对数据对象性质的观察角度，称为维(dimension)，维往往决定着数据对象的属性.同时，反映数据对象特性的属性称为指标(measure).这样的结构称作数据立方体(data cube).实际上，并没有什么一般的判据来区分维和指标，所有划分都是根据分析的当前需要而进行的，是相对的和暂时的.维还可以有层次结构，例如，日期可以按日-月份-季度-年度组织，连续的维也可以使用基于属性的归纳(AOI)［5］等方法形成层次结构.
+　　运用多维数据模型，可以进行多种联机分析处理操作，如向上综合(roll-up)、向下考察(drill-down)、旋转(pivoting)、局部分析(slicing-dicing)等.因此，联机分析处理的过程就是根据数据分析的要求，从原始数据中构造各种数据立方体，并对立方体执行有关的操作，再把结果返回给用户的过程.
+在实现中，出于对效率的考虑，常常需要预先计算一些维上的聚集，以使在回答有关查询时，能够直接使用聚集数据，而不需要从原始数据开始计算.对于基于大规模数据集的数据立方体而言，预先计算关键聚集，对性能改善具有重要作用.显然，在具有n个维的原始数据上可能的聚集共有2n种.上一层的聚集可以从下一层的聚集中由再对其中的一个维进行聚集而得到.一个聚集也称为数据立方体的一个节点(cuboid).
+　　目前，对于多维数据模型和联机分析处理操作的描述大都是非形式化的，甚至是通过示例来进行的，因此，很容易造成误解和歧义.在系统设计和实现过程中，迫切需要有一种简便的、形式化的语义描述方法，这就是本文的研究动机.
+　　我们认为，支持多维数据模型和联机分析处理的语义描述的形式化工具应该具有以下特征：
+　　. 概念简单，易于理解和使用;
+　　. 能够简洁地描述联机分析处理的各种操作;
+　　. 支持维的层次等概念;
+　　. 既支持单步操作，也支持过程性操作;
+　　. 与实现无关.
+　　文献［3］非形式化地提出了数据立方体的概念，认为是SQL中group by子句的一般化，并引入了关键字ALL来表示聚集的属性.文献［6］给出了多维数据库的一个非形式化模型，但对维的结构和数据立方体的复杂操作却没有进行深入的讨论.值得指出的是，在文献［6］中，因为没有把数据立方体的节点和数据立方体的概念进行严格区分，所以带来了处理上的复杂性，而且在有关数据立方体间的连接等操作的讨论上也存在着不足.文献［4］使用了和文献［3］一致的数据立方体的概念，研究了在数据立方体中选择哪些节点进行实体化(materialization)的问题，并给出了一个贪心算法.
+　　然而，目前的文献均没有形式化地研究数据立方体及有关运算的理论.因此，对许多关键问题，尚无有效的形式化工具.
+2 基本概念和重要性质
+2.1 预备知识
+　　为了方便地讨论数据立方体，需要对所涉及的域进行扩充，增加两个元素：⊥和ALL.其中⊥对应于空值，ALL的直观意义对应于文献［3］中引入的关键字ALL.
+　　定义2.1(域的扩充). 域D的扩充域D+=D∪{⊥,ALL}，并且，若<是D上偏序关系，则⊥是〈D+,<〉上最小元，ALL是〈D+,<〉上最大元.即d∈D+，⊥<d iff d≠⊥，d<ALL iff d≠ALL.
+　　定义2.2(聚集函数). aggr:2D1×...×Dn→D′1×...×D′m称为D1×...×Dn上(到D′1×...×D′m)的聚集函数,当且仅当存在一个函数aggrassist:(D′1×...×D′m)×(D′1×...×D′m)→D′1×...×D′m(称为聚集辅函数)，使得T∈2D1×...×Dn，T1T，有aggr(T)=aggrassist(aggr(T1),aggr(T-T1)).
+2.2 数据立方体
+　　定义2.3(数据立方体). 数据立方体是一个六元组,cube=(Dom,D,Mdom,M,f,aggr)，其中，
+　　(1) Dom=dom1×...×domn，n>0，称为维的域，domi(1≤i≤n)都是域；
+　　(2) D={d1,...,dn}，称为维标识集，di(1≤i≤n)是domi(1≤i≤n)的标识；
+　　(3) Mdom=mdom1×...×mdomm，m>0，称为指标的域，mdomi(1≤i≤m)都是域；
+　　(4) M={m1,...,mm}，称为指标标识集，mi(1≤i≤n)是mdomi(1≤i≤m) 的标识；
+　　(5) f:Dom→Mdom是Dom到Mdom上的部分映射，称为立方体的基(cube base)；
+　　(6) aggr是Mdom上的聚集函数.
+　　记(Dom,Mdom,aggr)为数据立方体cube的特征(signature).
+　　当维和指标的值域都明确时，可以使用维的标识来代表维的名称和维的域，使用指标的标识代表指标的名称和指标的域，这时，数据立方体可以简记为四元组cube=(D,M,f,aggr).
+　　在数据立方体的定义中，涉及了标识与域的对应.因此，存在着换名和域的次序交换的问题.从本质上看，换名和交换域的次序不影响数据立方体的代数性质.容易证明，换名和交换域的次序是全体数据立方体集合上的一个等价关系.在下文中，我们将在全体数据立方体关于换名和交换域的次序这一等价关系所形成的等价类上讨论数据立方体的性质和运算.
+　　定义2.4(同基数据立方体集). f:Dom→Mdom是域集Dom到域集Mdom上的部分映射，CUBEf={(Dom,D,Mdom,M,f,aggr)|(Dom,D,Mdom,M,f,aggr)是数据立方体}称为基为f的同基数据立方体集.
+显然，以下定理成立.
+　　定理2.1. 同基数据立方体在换名和交换域的次序等价意义上唯一.
+　　由定理2.1，CUBEf可简记为〈Dom,Mdom,f,*〉.
+2.3 数据立方体与多维模式
+　　多维模式是多维数据库和数据仓库的数据逻辑模型，我们将证明数据立方体可以作为多维模式的实现抽象，它描述了在多维模式上的数据分析过程.正是由于数据立方体形式化地刻画了多维模式以及其上的多维分析，数据立方体代数才具有重要的理论意义.
+关于多维模式的形式定义，有多种基本等价的方法，文献［7～9］分别作了讨论.这些定义虽然在描述上有所差异，但其本质是类似的.因此，我们采用文献［8,9］的定义.
+　　定义2.5(多维模式). 一个n维模式是一个四元组MDS(A,K,D,F)，其中A={a1,...,am} (m≥n)，称为属性集;每个属性是一个域(domain)，KA，称为码集;D={d1,...,dn}，称为维标识集;F:D→2A，称为分维函数，且满足：
+　　(1) 对于任意的1≤i，j≤n，i≠j，F(di)∩F(dj)=，且
+　　(2) ，且
+　　(3) 对于任意的1≤i≤n，F(di)∩K≠，且
+　　(4) 
+　　把F(d)(d∈D)称为一个维表，记，称为事实表，A称为MDS所对应的关系模式.
+　　与数据立方体换名和交换域次序的情况相类似，在多维模式上也存在着维标识的换名问题.同样地，维标识换名不影响多维模式的代数特性.因此，我们在维标识换名这一等价关系所形成的等价类上讨论有关性质.
+　　以下定理表明，一个多维模式唯一对应着一个数据立方体的集合，该集合中的所有数据立方体具有相同的基.换言之，多维模式描述了一个数据结构，而对应的数据立方体集合可以视为该
+数据结构及在该数据结构上可能进行的多维分析操作的代数实现.
+　　定理2.2. 令CUBEf/和∑MDS={MDS(A,K,D,F)}/分别为全体同基数据立方体集和全体多维模式关于换名和交换次序的等价关系所形成的商集，MDS(A,K,D,F)∈∑MDS/，定义Ψ(MDS(A,K,D,F))如下:〈Dom,Mdom,f,*〉∈CUBEf/,
+　　(1) Dom=domain(F(d1))×...×domain(F(dn))，其中domain(F(di))是F(di)的域，是F(di)所包含属性的卡氏积；
+　　(2) 在MDS中，，记fact-K={t1,...,tl}，则Mdom=domain(t1)×...×domain(tl)，其中domain(ti)是属性ti的域；
+　　(3) 定义f:Dom→Mdom，r=〈keyd1,...,keydn,t1,...,tl〉是MDS中事实表中的记录，其中keydi是属于F(di)的码，则dom1,...,domn，domi∈domain(F(di))，1≤i≤n，domi|K∩F(di)=keydi，f(dom1,...,domn)=〈t1,...,tl〉.
+　　Ψ是∑MDS上的一个映射.
+2.4 数据立方体的重要性质――数据立方体实体化
+　　所谓实体化是指，预先执行某些计算，存储计算结果，以使在数据分析时，直接可以使用计算好的结果，而不需要从原始数据当中计算.在本文中，我们所讨论的实体化都是指针对维的聚集.
+　　定义2.6(维聚集). 数据立方体cube=(Dom,Mdom,f,aggr)，Dom=dom1×...×domn，aggr:2Mdom→AGG，其中AGG是聚集函数aggr的值域，f关于domi(1≤i≤n)的聚集是以下映射:
+　　f′:dom1×...×domi-1×{ALL}×domi+1×...×domn→AGG,
+　　(d1,...,di-1,di+1,...,dn)∈dom1×...×domi-1×domi+1×...×domn，
+　　f′((d1,...,di-1,ALL,di+1,...,dn))=aggr({m|di∈domi,f((d1,...,di-1,di,di+1,...,dn))=m}).
+　　定义2.7(实体化单元集). 数据立方体cube=(Dom,Mdom,f,aggr)，如下定义cube的实体化单元集M(cube)：
+　　(1) f∈M(cube)；
+　　(2) g∈M(cube)，d是g的任意一个维，g关于d的聚集g′∈M(cube).
+　　M(cube)是满足以上条件的最小集合，其中的元素称为数据立方体的实体化单元(cuboid).
+　　定理2.3. 对于任意给定数据立方体cube，其实体化单元集确定且唯一.
+　　定理2.4. 数据立方体cube=(Dom,Mdom,f,aggr)，|Dom|=n，则|M(cube)|2n.
+　　定义2.8. 在M(cube)上定义如下关系:1：f1g当且仅当g是f在一个维上的聚集.记为1的传递闭包，称为M(cube)上的聚集关系.
+　　定理2.5. 是M(cube)上的聚集关系，〈M(cube),〉是一个布尔代数.
+2.5 数据立方体的重要性质――数据立方体的同态
+　　为了研究数据立方体代数上的运算，必须引入数据立方体同态的概念.数据立方体的同态在刻画数据立方体的运算和应用中具有重要的意义.
+　　定义2.9(数据立方体同态). 设有数据立方体cube1=(Dom1,Mdom1,f1,aggr1)和cube2=(Dom2,Mdom2,f2,aggr2)，aggr1:2Mdom1→AGG1，aggr2:2Mdom2→AGG2，若映射ξ:(Dom1→Dom2)∪(Mdom1→Mdom2)∪(AGG1→AGG2)，使得
+　　(1) d∈Dom1，ξ(f1(d))=f2(ξ(d))，且
+　　(2) TDom1，ξ(aggr1({f1(t)|t∈T}))=aggr2({f2(ξ(t))|t∈T}),
+则称cube1=(Dom1,Mdom1,f1,aggr1)关于ξ同态于cube2=(Dom2,Mdom2,f2,aggr2)，或ξ是两个数据立方体的一个同态(映射)，记作cube1ξcube2，简记为cube1～cube2.若ξ是单射，则称为单同态;若ξ是满射，则称为满同态;若ξ是双射，则称为同构，记作cube1ξcube2，或简记为cube1cube2.
+3 数据立方体的操作
+　　本节给出能够支持联机分析处理的数据立方体操作的代数描述.
+3.1 指标和维转换
+　　定义3.1. aggr是D1×...×Dn上的聚集函数，若对于某个Di，1≤i≤n，有(d1,...,di-1,di+1,...,dn)∈D1×...×Di-1×Di+1×...×Dn，d′,d″∈Di，aggr((d1,...,di-1,d′,di+1,...,dn))=aggr((d1,...,di-1,d″,di+1,...,dn))，则称aggr与Di无关.
+　　定义3.2(指标-维转换). 数据立方体cube=(D1×...×Dn,M1×...×Mm,f,aggr)，若aggr与指标Mi(1≤i≤m)无关，则定义关于Mi的指标-维转换操作如下:MD(cube,Mi)=(D1×...×Dn×Mi,M1×...×Mi-1×Mi+1×...×Mm,f′,aggr′)，其中，(d,m′)∈D1×...×Dn×Mi，若f(d)=(m1,...,mi-1,m′,mi+1,...,mm)，则
+　　(1) f′((d,m′))=(m1,...,mi-1,mi+1,...,mm)，且
+　　(2) aggr′({(m1,...,mi-1,mi+1,...,mm)})=aggr({(m1,...,mi-1,m′,mi+1,...,mm)}).
+　　定义3.3(维-指标转换). 数据立方体cube=(D1×...×Dn,M1×...×Mm,f,aggr)，定义关于维Di(1≤i≤n)的维-指标转换操作如下:
+DM(cube,Di)=(D1×...×Dn,M1×...×Mm×Di,f′,aggr′)，
+其中
+d=(d1,...,di-1,di,di+1,...,dn)∈D1×...×Dn，f′(d)=(f(d),di)，
+且
+(m,d)∈M1×...×Mm×Di,d∈Di，aggr′({(m,d)})=aggr({m}).
+　　维-指标转换简称为DM转换.
+　　维-指标转换把一个维加入指标中去，但并不同时删除该维.这时，有一个维与一个指标相同，实质上是一种复制，这与指标-维操作是不一样的.维-指标操作的复制方式是由指标对维的函数依赖所决定的.
+　　容易证明，指标-维转换和维-指标转换操作满足以下性质.
+　　定理3.1. MD(cube,Mi)是一个数据立方体.
+　　定理3.2. DM(cube,Di)是一个数据立方体.
+　　定理3.3. 数据立方体cube=(D1×...×Dn,M1×...×Mm,f)，op1,op2∈{MD,DM}，d1,d2∈{D1,...,Dn,M1,...,Mm}，则当d1≠d2且op1(cube,d1)和op2(cube,d2)均有定义时，op2(op1(cube,d1),d2)=op1(op2(cube,d2),d1).
+　　定理3.3表明，当涉及不同的维时，指标和维之间的转换操作可以按任意次序执行，结果不变.这个性质为联机分析的维变换(pivot)操作的并行和并发提供了理论保证.
+3.2 指标和维的退化
+　　如果聚集函数与指标中的某个属性无关，即在分析过程中不再需要使用该属性时，显然可以直接去掉该属性，这可通过指标退化操作来实现.
+　　定义3.4(指标退化). 数据立方体cube=(D1×...×Dn,M1×...×Mm,f,aggr)，若aggr与指标Mi(1≤i≤m)无关，则如下定义关于Mi的指标退化操作Deg(cube,Mi)=(D1×...×Dn,M1×...×Mi-1×Mi+1×...×Mm,f′,aggr′)，其中d∈D1×...×Dn，若f(d)=(m1,...,mi-1,m′,mi+1,...,mm)，则
+　　(1) f′(d)=(m1,...,mi-1,mi+1,...,mm)，且
+　　(2) aggr′({(m1,...,mi-1,mi+1,...,mm)})=aggr({(m1,...,mi-1,m′,mi+1,...,mm)}).
+　　定理3.4. Deg(cube,Mi)是一个数据立方体.
+　　维的退化要比指标的退化复杂一些，因为必须保持指标对退化后维的函数依赖.
+　　定义3.5(基于聚集的维退化). 对于cube=(D1×...×Dn,M,f,aggr)，aggr:M→AGG，定义维Di(1≤i≤n)基于聚集的退化操作如下：
+Deg(cube,Di)=(D1×...×Di-1×Di+1×...×Dn,AGG,f′,aggrassist)，
+其中
+d=(d1,...,di-1,di+1,...,dn)∈D1×...×Di-1×Di+1×...×Dn，
+f′(d)=aggr({f((d1,...,di-1,di,di+1,...,dn))|di∈Di}).
+　　定理3.5. Deg(cube,Di)是一个数据立方体.
+　　定理3.6. 数据立方体cube=(D1×...×Dn,M1×...×Mm,f)，则
+Deg(DM(cube,Di),Di)=cube.
+3.3 选 择
+　　选择操作使得使用者可以根据需要从数据立方体的基当中选出一个子集，以这个子集为基，形成一个新的数据立方体.
+　　定义3.6(选择). 数据立方体cube=(D,M,f,aggr)，p是D×M上的谓词(布尔函数)，定义选择函数σp(cube)=(D,M,f′,aggr)，其中d∈D,f′(d)=f(d) iff p(d,f(d)).
+　　定理3.7. σp(cube)是一个数据立方体.
+3.4 具有相同特征的数据立方体的集合运算
+　　从直觉上看，特征是数据立方体的“模式”，因此，具有相同“模式”的数据集(基)可以进行并、交、差等传统集合操作.
+　　定义3.7(数据立方体的集合运算). 数据立方体cube1=(D,M,f1,aggr)和cube2=(D,M,f2,aggr)，d∈D，若f1(d)和f2(d)均有定义，则有f1(d)=f2(d)，那么
+　　(1) cube1∪cube2=(D,M,u,aggr)，其中d∈D，u(d)=f1(d), if f1(d)有定义f2(d), if f1(d)无定义且f2(d)有定义；
+　　(2) cube1∩cube2=(D,M,g,aggr)，其中d∈D，g(d)=f1(d), if f1(d)有定义且f2(d)有定义；
+　　(3) cube1-cube2=(D,M,h,aggr)，其中d∈D，g(d)=f1(d), if f1(d)有定义且f2(d)无定义.
+　　定理3.8. cube1∪cube2,cube1∩cube2和cube1-cube2均是数据立方体.
+3.5 数据立方体的积与连接
+　　数据立方体的积把两个数据立方体拼接起来，形成一个更大规模的数据立方体.
+　　定义3.8(数据立方体的积). cube1=(D1,M1,f1,aggr1)和cube2=(D2,M2,f2,aggr2)是数据立方体，数据立方体的积cube1×cube2=(D1×D2,M1×M2,f,aggr)，其中(d1,d2)∈D1×D2，f((d1,d2))=(f1(d1),f2(d2))当且仅当f1(d)和f2(d)均有定义；{(m1,m2)}∈2M1×M2，aggr({(m1,m2)})=(aggr1({m1}),aggr2({m2})).
+　　定理3.9. cube1×cube2是数据立方体.
+　　连接是数据立方体的一个重要操作，它使得两个数据立方体根据一定的要求连接成一个数据立方体.
+　　定义3.9(数据立方体关于谓词的连接). 数据立方体cube1=(D1×D,M1×M,f1,aggr1)和cube2=(D×D2,M×M2,f2,aggr2)，θ是D1×D×D2×M1×M×M2上的谓词，两个数据立方体关于谓词θ的连接是，其中
+　　(1) (d1,d,d2)∈D1×D×D2，f((d1,d,d2))=(f1((d1,d)),f2((d,d2))|M2)当且仅当f1((d1,d))和f2((d,d2))均有定义，且f1((d1,d))|M=f2((d,d2))|M，且θ(d1,d,d2,f1((d1,d)),f2((d,d2))|M2)；
+　　(2) {(m1,m,m2)}∈2M1×M×M2，aggr({(m1,m,m2)})=(aggr1({(m1,m)}),aggr2({(m,m2)}).
+　　定理3.10. 是数据立方体.
+　　定理3.11. .
+　　定理3.9表明，数据立方体的积是数据立方体连接的特例.
+4 数据立方体代数应用
+4.1 数据立方体代数的表达能力
+　　表1对所讨论的数据立方体运算进行了小结.显然，还可以在数据立方体代数上定义许多运算，但上节定义的数据立方体的操作已经足以描述联机分析处理的操作，包括维变换(pivot),roll-up,drill-down和slice and dice等.
+表1 数据立方体代数的运算
+
+单个数据立方体内的运算相同特征的数据立方体运算任意特征的两个数据立方体间的运算
+指标-维转换集合运算积
+维-指标转换　连接
+指标退化　　
+基于聚集的维退化　　
+选择　　
+
+
+　　表2非形式化地把数据立方体代数的运算与关系代数的运算进行了比较.显然，一个关系可以视为所有属性均是维且指标为{1}的数据立方体.于是，关系代数的运算就都可以使用数据立方体代数的运算来表示. 
+表2 数据立方体代数与关系代数的运算比较ｓ
+
+　关系代数数据立方体代数
+传统集合运算并、交、差、卡氏积等并、交、差等
+特殊关系运算选择、连接、投影等指标和维的转换、退化、选择、积、连接等
+
+
+　　另一方面，数据立方体可以使用关系表来作为数据结构.可以证明，数据立方体代数可以用关系代数来实现.我们有以下重要定理.
+　　定理4.1. 数据立方体代数与关系代数的表达能力相同.
+　　证明:首先，以一个n-元关系为基，以计数函数为聚集函数，可以构造一个数据立方体.逐个考虑关系代数上最小操作集的每个操作.可以验证，这些操作都可以用数据立方体代数运算的复合来表示.因此，数据立方体代数的表达能力不弱于关系代数.
+　　其次，把一个数据立方体cube=(D,M,f,aggr)实现为一个关系表D×M，其上有函数依赖f.可以验证，数据立方体代数的每个运算都可以实现为关系代数操作的复合.因此，数据立方体代数的表达能力不强于关系代数.
+　　由以上两点，定理得证. 
+4.2 数据立方体代数的应用
+　　数据立方体代数是支持多维分析语义描述的一个强有力的数学工具，可以应用于联机分析处理语言和系统的分析设计、数据仓库的规范说明等方面.此外，借助数据立方体代数，还可以从理论上严格地分析研究多维分析和数据挖掘中的一些问题.
+　　本节借助数据立方体代数来分析基于属性的归纳方法，以说明数据立方体代数的简单应用.
+基于属性的归纳(AOI)［5,10］是数据挖掘中的一种有效的概念描述算法.它通过对维的数据进行分析，利用概念层次或数据分布的事实进行概念归纳描述.基于属性的归纳算法可以表述为数据立方体代数中的一个递归函数AOI，只要阈值条件不满足，将不断递归执行.
+　　文献［11］给出了如下基于属性的归纳方法的算法描述.
+　　begin
+　　　While 数据集中行的数目大于阈值 do begin
+　　　　　 选定某个属性A；
+　　　　　 {对属性A执行一般化(generalization)步骤}
+　　　　　 if 在A的层次概念结构中存在一个更高(一般)的级别
+　　　　　 then 用高一级的值代替A的值；
+　　　　　 归并相同的行；
+　　　end; {while}
+　　end.
+　　显然，在选定属性A时有许多不同的方法，因此，有可能导致归纳的结果不一致.同时，归纳的过程是否一定终止，这些都是需要用形式化方法予以解决的问题.
+　　定义4.1. 满射集{Ci→Ci+1|1≤i≤l,l∈N}称为域集{C1,...,Cl}上的一个有限概念层次结构，当且仅当{Ci→Ci+1|1≤i＜l}中没有双射且|Cl|=1.其中域C1称为起始域，域Cl称为终结域.这时，显然总有|Ci+1|<|Ci|.
+　　引理4.2. 对于任意域C，若|C|有限，则必存在以C为起始域的概念层次结构.
+　　显然，在实际应用中，任意数据集的值域总是有限的.因此，一定存在或可以构造赖以进行归纳的有限概念层次.可以证明以下定理.
+　　定理4.3. AOI算法终止.
+　　定义4.2. 设需要对数据立方体cube0=(D,M,f,aggr)实施归纳，为每个维上表示有限概念层次的数据立方体指定一个唯一的聚集函数，若cube′由cube经过在一个维上的一步归纳而得到，则记为cube1cobe′，称为一步归纳关系.集合CUBE是满足以下条件的最小集合：
+　　(1) cube0∈CUBE；
+　　(2) cube∈CUBE,{cube′|cube1cube′}CUBE.
+记为CUBE上1的传递闭包，称为归纳关系.
+　　定理4.4. (CUBE,)是一个格.
+　　算法AOI可能因采用不同的属性选取策略而在满足阈值时停机在不同的结果上.因此，归纳结果可能有所不同.但是，定理4.4表明，不同的归纳结果是同一个格中的不同元素，因此，具有Church-Roser性质，可以合流.合流性保证了基于属性的归纳方法在数据语义上的一致性.
+5 结 论
+　　本文提出了一个支持多维分析语义描述的形式化工具――数据立方体代数，讨论了其基本概念、重要性质、有关运算和应用.数据立方体代数对于联机分析处理的研究具有重要的理论价值.
+目前，我们正在以数据立方体代数为理论工具，进行深入的研究工作，并取得了一些阶段性的结果.我们的主要方向包括以下几个方面：
+　　. 以该理论模型为基础，设计和实现支持联机分析处理的多维数据库语言，并考察不同的底层机制对语言实现的影响；
+　　. 以数据立方体代数为理论基础，研究联机分析处理的集成理论，扩展联机分析处理操作，支持大规模的多级分析综合和数据集成挖掘；
+　　. 研究基于数据立方体的数据仓库设计理论，探索多维模式的半自动设计方法.
+*　本文研究得到视觉与听觉信息处理国家重点实验室开放课题基金资助.
+作者简介　裴健，1969年生，博士生，主要研究领域为数据仓库,联机分析处理,数据挖掘技术,信息系统集成技术.
+　　　　　柴玮，女，1972年生，硕士生，主要研究领域为数据库，数据仓库，数据挖掘技术.
+　　　　　赵畅，女，1973年生，硕士生，主要研究领域为数据库技术.
+　　　　　唐世渭，1939年生，教授，博士生导师，主要研究领域为数据库理论与技术，空间信息处理，数字图书馆.
+　　　　　杨冬青，女，1945年生，教授，博士生导师，主要研究领域为数据库理论与技术，空间信息处理技术，数字图书馆.
+本文通讯联系人:裴健，北京100871，北京大学计算机科学与技术系数据库研究室
+作者单位：视觉与听觉信息处理国家重点实验室　北京　100871　　北京大学计算机科学与技术系　北京　100871
+参考文献
+　1 Inmon W H. Building the Data Warehouse. 2nd ed., New York: John Wiley and Sons, Inc., 1996
+　2 Codd E F, Codd S B, Salley C T. Beyond decision support. Computer World, 1993,27(30):87～89
+　3 Gray J, Chaudhuri S, Bosworth A et al. Data cube: a relational aggregation operator generalizing group-by, cross-tab, and sub-totals. Data Mining and Knowledge Discovery, 1997,1(1):29～53
+　4 Harinarayan V, Rajaraman A, Ullman J D. Implementing data cube efficiently. In: Jagadish H V, Mumick Inderpal Singh eds. Proceedings of ACM SIGMOD International Conference on Management of Data. New York: ACM Press, 1996. 205～216
+　5 Han J, Fu Y. Exploration of the power of attribute-oriented induction in data mining. In: Fayyad U M et al eds. Advances in Knowledge Discover and Data Mining. Cambridge: AAAI/MIT Press, 1996. 399～421
+　6 Agrawal R, Gupta A, Sarawagi S. Modeling multidimensional databases. In: Gray Alex, Larson Per-ke eds. Proceedings of the 13th International Conference on Data Engineering. Birmingham: IEEE Computer Society Press, 1997
+　7 Gjyssens M, Lakshmanam L V S. A foundation for multi-dimensional databases. In: Proceedings of the 23rd International Conference on Very Large Databases. San Fransisco: Morgan Kaufmann Publishers, Inc., 1997. 106～115
+　8 Pei J, Tang S, Yang D et al. Encapsulate multi-dimension objects in a data warehouse environment. In: Chen J et al eds. Proceedings of the 27th International Conference on Technology of Object Oriented Languages and Systems. IEEE Computer Science Press, 1998. 362～371
+　9 Pei J, Tang S, Yang D et al. An algorithm for star schema construction based on query example. In: Rabi et al eds. Proceedings of the International Conference on Information Technology (ICIT'98). New York: MiGrall-Hill Press, Inc., 1998
+　10 Han J, Cai Y, Cercone N. Data-driven discovery of quantitative rules in relational databases. IEEE Transactions on Knowledge and Data Engineering, 1993,(5):29～40
+　11 Heinonen O, Mannila H. Attribute-oriented induction and conceptual clustering. Series of Publications C, No.C-1996-2. Department of Computer Science, University of Helsinki, 1996
+本文1998-12-09收到原稿,1999-02-08收到修改稿

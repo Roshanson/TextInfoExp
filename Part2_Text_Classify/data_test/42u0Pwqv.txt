@@ -1,0 +1,156 @@
+软件学报
+JOURN AL OF SOFTWARE
+1999年　第10卷　第10期　Vol.10　No.10　1999
+
+
+
+延迟离散神经网络动态特征的矩阵判据 
+邱深山　徐晓飞　李春生　刘明珠
+
+摘要　该文利用延迟离散网络的状态转移方程与矩阵不等式的等价性研究网络的动力学性质.对于具有任意连接权阵的网络,文章给出了周期为1和2的极限环存在的一些条件.同时,对于周期为1,2和4的一些特殊极限环给出了存在的条件,还得到了网络不存在任何不动点的充分条件,即只有极限环的充分条件.计算机模拟实验表明其结果是正确的.
+关键词　神经网络,稳定性,延迟,极限环.
+中图法分类号　TP183
+Matrix Criterion for Dynamic Analysis in Discrete Neural Networks with Delay
+QIU Shen-shan1 XU Xiao-fei1 LI Chun-sheng2 LIU Ming-zhu3
+1(Department of Computer Science and Engineering Harbin Institute of Technology Harbin 150001)
+2(Department of Computer Science Daqing Petroleum Institute Anda 151400)
+3(Department of Mathematics Harbin Institute of Technology Harbin 150001)
+Abstract The dynamics of discrete neural network with delay are studied in this paper using a matrix inequality which is shown to be equivalent to the state transition equation of the network. For the network with arbitrary weight matrix, the conditions for the existence of cycle of length 1 and 2 are presented. Also, the conditions for the existence of special cycle of length 1, 2 and 4, for having no any stable states are achieved. Computer simulations demonstrate that the theoretical analysis is correct.
+Key words Neural network, stability, delay, cycle.
+
+　　Hopfield网络是人工神经网络模型中最有影响、应用最成功的模型之一,其稳定性理论已经得到了比较充分的研究[1～7],为实际应用奠定了理论基础.最具有吸引力的方面是它作为NP-完全问题的一种有效算法(顶点覆盖问题(vertex cover problem)[6]、独立集问题(maximal independent set problem)、最大集团问题(maximum clique problem)[6]等).从离散动力学和联想记忆的观点来看,除了网络不动点之外,其他动力学特征,如极限环,仍可作为联想设计的一种可行方案,并提出了用离散Hopfield神经网络的极限环来表达概念的思想[7].从离散动力学的观点考察离散Hopfield-型网络,文献[4]给出了仅有4周期极限环的网络构造方法,在文献[5]中给出了存在2n周期极限环的网络特征,其他动力学特征的研究比较少,其主要原因是该网络作为联想设计、优化计算在动力学上的追求目标是不动点.我们在文献[8]中讨论了离散延迟网络异步运行规则下的全局稳定性,实验计算表明,延迟神经网络具有极其丰富的动力学行为.我们认为,只有对网络演化的动力学性质深入了解,才能充分发挥网络潜在的优势,有益于网络的设计和应用.本文从延迟离散网络的状态转移方程与矩阵不等式的等价性出发来研究其动力学性质.
+1　延迟离散Hopfield-型网络
+　　一阶延迟离散Hopfield-型网络是由n个完全互联的神经元构成[8],每个神经元i在任意时刻t拥有两种存储状态:vi(t),vi(t-1)其中vi(t-1)表示对历史状态的记忆,也就是说网络具有时间结构.它可由两个n×n阶矩阵w0,w1及一个n维阈值向量θ=(θ1θ2…θn)T唯一确定,简记为N=(w0W1,θ).w0ij表示当前状态神经元j与神经元i的连接权值,w0ij表示在延迟状态神经元j与i的连接权值,t+1为第i个神经元的阈值.神经元i在t+1时刻的状态可依据如下演化规则计算.
+　　　　　　　　　 (1)
+其中,fi为阈值函数.
+　　当延迟离散Hopfield-型网络N=(w0w1,θ)的延迟权阵w1=On×n时,即为离散Hopfield-型网络N=（w，θ）.若w0ii称延迟离散Hopfield-型网络(式(1))为无自反馈的[1～6]．
+　　易证[5],对于任意满足式(1)的阈值函数fi,一定存在一个阈值函数gi,对于任意x0，x1∈Bn≡{v:v=(v1,v2…,vn)T,vi∈{-1,1}} ,x0=(x01,x02…,x0n)T,x0=(x11,x12…,x1n)T,fi=gi,其中定义gi如下:
+　　　　　　　　　　　　　　 (2)
+我们称gi为严格阈值函数.下面我们总假设fi为严格阈值函数.
+　　一阶延迟离散神经网络N=(w0w1,)可由下式演化规则来刻画:
+　　　　　　　　　　　　　 (3)
+其中.简记为
+V(t+1)=f(w0v(t)+w1v(t-1)-). v(0),v(1)∈Bn,t=1,2,…　　　　　　　　　 (4)
+　　f的第i个分量为.因为由所有向量为fi(i=1,2,…,n)组成的集合为一个有限集,故由式(4)决定的任意序列v(k)(K=0,1,…)一定为周期序列(相当于网络N=(w0w1,)并行演化),称为极限环.周期为1的极限环称为不动点,详细定义如下.
+　　定义. 一阶延迟离散Hopfield-型网络N=(w0w1,)的一个状态v*∈B称为稳定状态(或称不动点),对任意i,1in,有
+ 　　　　　　　　　　　　　　(5)
+成立,其中v*=(v*1,v*2…,v*n)T.
+　　向量v(t)为网络在t时刻的状态,式(4)为描述网络动态特性的状态转移方程.向量v(t),v(t- 1)分别代表网络在t,t- 1时刻的状态.状态空间由2n个向量组成.我们用|A|代表由A的元素的绝对值构成的矩阵而不是它的行列式,即|A|=(|αij|)n×n.
+2　不动点与极限环的存在条件
+2.1 矩阵不等式
+　　下面的引理给出了状态转移方程式(4)与矩阵不等式的等价性.
+　　引理. 考虑网络N=(w0w1,),如果v(0),v(1)∈Bn,Dk是一个n×n阶对角元素为±1的对角矩阵,亦即
+Dk∈≡{D|D=diag(d1,d2…dn),di=}±1,
+满足vk=DkJ,那么
+Dk+1w0DkJ+Dk+1w1Dk-1J-Dk+1>0,　　　k=1,2,.... 　　　　　　　(6)
+反过来,如果Dk满足式(6),那么v(k)=DkJ一定是N=(w0w1,)的状态向量,其中向量J=(1.1,...,1)T.
+　　实际上,引理将一阶延迟离散Hopfield-型网络N=(w0w1,)由状态转移方程式(4)决定的序列v(k),k=0,1,...转化为式(6),避免了对阈值函数fi的处理.
+　　证明:设V(K)=DkJ,k=0,1,...,那么Dk+1J=F(W0DkJ+w1Dk-1J-),k=1,2,...,则J=(Dk+1)-1FV(W0DkJ+) w1Dk-1J-=Dk+1f(w0DkJ+w1Dk-1J-).因为Dk的每一元素均为±1,所以若Dk+1的第i个对角元是+1(-1),那么向量w0DkJ+w1Dk-1-的第i个元素一定大于0(小于0),从而得出
+Dk+1w0DkJ+Dk+1w1Dk-1J-Dk+1>0.
+反之,如果式(6)对于Dk∈成立,那么W0DkJ+w1Dk-1J-的第i个元素一定与Dk-1的第i个对角元同号,从而Dk+1w0DkJ+w1Dk-1J->0,亦即
+Dk+1J=f(w0DkJ+w1Dk-1J-)
+　　从而,N=(w0w1,)有状态向量v(K)=DkJ,k=1,2,.... □
+2.2 周期为1的极限环(不动点)
+　　定理1. N=(w0w1,)存在周期为1的极限环(不动点v=D)的充要条件是Dw0DJ+Dw1DJ-D＞0 .这里,v=D,D是一个n×n阶对角元为±1的对角矩阵.
+　　证明:充分性.若Dw0DJ+Dw1DJ-D＞0,则由引理可知v(k-1)=Dk-1J=DJ,v(k+1)=Dk+1J=DJ,v(k-1)=v(k),v=D为不动点.
+　　必要性.如果N=(w0w1,)存在周期为1的极限环,那么一定存在一个整数k0,对所有k> k0,使v(k-1)=v(k)=v(k+1),故知,对所有k> k0,Dk+1=Dk=Dk-1,令Dk=D则由引理可知, Dw0DJ+Dw1DJ-D＞0 . □
+　　这里应注意,并不是所有的网络都有不动点,有的网络有可能只有极限环,具体情况我们将在后面讨论.
+　　下面我们将给出有关不动点的更精细的结果.
+　　定理2. 考虑网络N=(w0w1,),并且假设D∈则有如下结论.
+　　(1) 如果存在一个矩阵D,满足:
+|w0|J+|w1|J+D<0　　　(|w0|J+|w1|J-D<0)　　　　　　　　(7)
+那么网络有且仅有一个不动点v=DJ(v=- DJ).
+　　(2) 如果存在一个矩阵D,满足
+Dw0DJ+Dw1DJ-||, 　　　　　　　　　　　　　　(8)
+那么网络至少有两个不动点v1=DJ,v2=-DJ
+　　(3) 如果
+　　　　　　　　　　 (9)
+那么网络有2n个不动点,Dj=DjJ,Dj∈,j=1,2,...,2n,即2n个n维二值向量全是网络的不动点.
+　　证明:(1) 设D0D1∈,则,由假设可知
+. 　　　　　　　　(10)
+令v(0)=D0J,v(1)=D1J,V(2)=DJ,则对任意的初始向量v(0),v(1),由式(7)、(10)可知,网络都收敛到v(2),并且是唯一的,若取D0=D1=D,得出Dw0Dj+Dw1Dj-D,从而f(v(2),v(2))=v(2)即v(2)为网络N=(w0w1,)的不动点.同理可证,当满足Dw0DJ+Dw1Dj-||>0时,结论仍然成立.
+　　(2) 假设D满足条件式(8),因为||±D,可知
+Dw0DJ+Dw1DJ-DDw0DJ+Dw1DJ-||>0, 　　　　　　　　　　(11)
+Dw0DJ+Dw1DJ+DDw0DJ+Dw1DJ-||>0.　　　　　　　　　　 (12)
+从而令v1=DJ,v2=-DJ,当式(11)成立时得到v1=f(w0v1+v1v1-);当式(12)成立时得到v2=f(w0v2+v1v2-),因为式(11)、(12)同时成立,故两个不动点v1=DJ,v2=-DJ同时存在,即网络至少有两个不动点v1,v2.
+　　(3) 设di=＋1,i=1,2,...,n那么对于任意di,dj的组合,以下不等式均成立.
+ 
+从而
+
+上述不等式左端的矩阵形式为Dw0DJ+Dw1DJ-D>0,D=diag(d1d2,...dn)∈,由定理1知,网络有一个周期为1的极限环v=DJ,因为恰好有2n个不同的矩阵D∈,从而结论成立.　　　　　　　　　 □
+　　如果网络N=(w0w1,)满足定理2中的式(9),那么网络只有不动点,因为状态空间有2n个向量,而每一个均为不动点,将文献[5]的相应结论推广到延迟网络.
+　　推论1. 若网络N=(w0w1,)的权矩阵w0，w1其对应元素同号,那么网络有2n个不动点的充要条件是定理2(3)中的条件,式(9)成立.
+　　证明:充分性证明同定理2,可用反证法来证明必要性,从略. 
+2.3 周期为2的极限环
+　　下面的定理给出了周期为2的极限环存在条件.
+　　定理3. 网络N=(w0w1,)有一周期为2的极限环v1，v2当且仅当
+　　(a) D2w0D1J+D2w1D2J-D2>0;
+　　(b) 向量D1w0D1J+D1w1D2J-D1第i个分量与D2w0D2J+D2w1D2J-D2的第i个分量同号,这里vj=DjJ,Dj∈,J=1,2.
+　　证明:由引理,网络有一周期为2的极限环v1,v2当且仅当
+D2W0D1J+D2w1D2J-D2>0,D1w0D2J+D1w1D1J-D1>0
+因为D1D2=D1D2=I(单位矩阵)且D1,D2可互换,则上述不等式可写成
+D1D2（D1w0D1J+D1w1D2J-D1>0,D1D2(D2w2D2J+D2w1D2J-D1)>0
+易知定理成立. □
+2.4　特殊极限环的存在条件
+　　我们考虑如下几个条件:
+　　(1) , (2) ,
+　　(3) , (4) ,
+　　(5) , (6) ,
+其中i,j=1,2.
+　　推论2. 如果存在D同时满足条件(1),(2),则网络N=(w0w1,)有极限环.
+推论3. 如果上述条件(3),(4)同时成立,则网络有4个周期为2的极限环.如果(5),(6)同时成立,则网络有两个周期为4的极限环.
+　　由上述讨论可知,网络N=(w0w1,)有着非常丰富的动力学性质,所以网络联想记忆的设计问题并非一定要使待记忆的样本为网络的不动点,可以将其设计为极限环,将关联性较强的待记忆样本编码到一个极限环上.所以研究网络N=(w0w1,)的极限环存在及分布是非常有意义的研究课题.
+2.5 不存在不动点的条件
+　　由前面讨论可知,如果不存在D∈,满足|w0|J+|w1|J±D,则网络没有不动点.下面我们将直接从网络本身的参数出发考虑这个问题.
+　　定理4. 若i0使得,则网络N=(w0w1,)没有不
+动点.
+　　注意,定理4中的条件只是充分条件,不是必要的.同时也说明了在该条件下,网络只有周期大于1的极限环,推广了文献[5]的结论.另一个需要注意的方面是,我们讨论的网络演化规则是全并行的,其他演化规则(如串行、部分并行等)意义下的相应结论,我们将另文讨论.
+3　实验结果
+　　下面以定理4为例,随机选择满足条件的权值和阈值进行实验,结果表明结论是正确的.同时还给出了延迟项调整策略.图1圆圈中的值表示神经元的状态编码为十进制值,如(-1 -1 -1 -1)→0 (-1 -1 1 -1)→2,(-1 -1 1 1)→3,(1 1 1 1)→15,A→ 表示初态为A,箭头所指的方向为网络演化的终止状态; , , 其方向相反的两个箭头所指的状态值构成极限环.
+　　图1所表示的是延迟网络N=(w0w1,)的演化结果,其中
+.
+
+图1
+　　因为,所以N=(w0w1,)满足定理4的条件,经计算得出16种初值演化的结果,如图1所示,其中没有稳定态,仅有周期为2的极限环.实验说明定理4成立.实验中还随机产生了满足定理1～3条件的权阵,经计算得知结论成立.具体算例从略.
+4　结 论
+　　本文主要讨论了离散延迟神经网络的有关理论,得到了如下结果:
+　　(1) 本文将文献[2,5]的部分结果推广到离散延迟神经网络;
+　　(2) 对于具有任意连接权阵的网络,得到了周期为1和2的极限环的存在性的一些条件;
+　　(3) 本文给出了其周期为1,2和4的一些特殊的极限环的存在条件;
+　　(4) 本文还给出了网络不存在任何不动点,即只有极限环的充分条件;
+　　(5) 计算机模拟实验表明,本文得到的定理结论是正确的.
+注释：本文研究得到国家自然科学基金资助。
+作者简介：邱深山：1962年生,博士,讲师,主要研究领域为人工智能,小波分析,神经网络及应其
+　　　　　　　　　　应用,机器学习
+　　　　　徐晓飞：1962年生,博士,教授,博士生导师,主要研究领域为人工智能CIMS.　
+　　　　　李春生：1960年生,副教授,主要研究领域为模式识别,人工智能,神经网络及其应
+　　　　　　　　　用,POSC
+　　　　　刘明珠：1941年生,博士,教授,博士生导师,主要研究领域为延微分方程数值解,神经
+　　　　　　　　　计算,小波分析
+作者单位：邱深山、徐晓飞：哈尔滨工业大学计算机科学与工程系 哈尔滨 150001
+　　　　　李春生：大庆石油学院计算机科学系 安达 151400
+　　　　　刘明珠：哈尔滨工业大学数学系 哈尔滨 150001
+参考文献
+1　Hopfield J J. Neural networks and physical systems with emergent collective 
+　　computational abilities. Proceedings of National Academy of Science USA, 1982,
+　　(79):2554～2558
+2　Brown D P. Matrix test for period 1 and 2 limit cycles in discrete threshold 
+　　networks. IEEE Transactions on Systems Man Cybernation, 1992,22(3):552～554
+3　Bruck J. On the convergence properties of the Hopfield model. Proceedings of 
+　　IEEE, 1990,78(10):1579～1585
+4　Bruck J, Goodman J W. A generalized convergence theorem for neural networks.IEEE
+　　Transactions on Information Theory, 1988,34(5):1089～1092
+5　梁学斌,吴立德.二进Hopfield型神经网络的记忆容量.电子学报,1996,24(4):21～33
+　　(Liang Xue-bin, Wu Li-de. Memory capacity of binary Hopfield type neural network. 
+　　Acta Electronica Sinica, 1996,24(4):21～33)
+6　Arun J. Approximating maximum clique with a Hopfield network. IEEE Transactions 
+　　on Neural Networks, 1995,6(3):724～735
+7　刘晓鸿,戴汝为.建立Hopfield型神经网络的一般方法.自动化学报,1996,22(3):301～307
+　　(Liu Xiao-hong, Dai Ru-wei. General methods of construction of Hopfield neural 
+　　networks. Acta Automatica Sinica, 1996,22(3):301～307)
+8　邱深山,徐晓飞,马瑞民.延迟离散Hopfield型神经网络收敛性分析.清华大学学报,1998,28
+　　(s2):131～134
+　　(Qiu Shen-shan, Xu Xiao-fei, Ma Rui-min. Convergent analysis of discrete 
+　　Hopfield type neural networks with delay. Journal of Tsinghua University, 1998,
+　　28(s2):131～134)
+收稿日期:19998-09-03修稿日期:1998-12-03

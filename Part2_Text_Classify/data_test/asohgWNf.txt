@@ -1,0 +1,112 @@
+软件学报
+JOURNAL OF SOFTWARE 
+1999年 第10卷 第5期 Vol.10 No.5 1999
+
+
+
+数据库中混沌模式的发现和预测
+邓　超　熊范纶
+摘要　在社会和自然现象中存在着大量的混沌模式,相应地,在用来表示这些现象的数据库中同样也存在着混沌模式.一般在KDD中,混沌模式经常出现在确定模式与纯噪声关系之间,表现出很大的随机性,因此都将其作为随机噪声关系而忽略.该文通过使用J.Zytkow的基于统计分析的Forty-Niner方法说明了这一点.通过对混沌模式的分析,提出了一种混沌模式发现的网络方法.该方法不仅能判断数据库中是否存在混沌模式,而且能有效地描述和预测该混沌模式.另外,该算法非常适合处理大型数据库,在当今活跃的KDD研究 领域中具有广泛的应用前景.
+关键词　KDD,模式发现与预测,混沌模式,混沌模式发现网络.
+中图法分类号　TP311
+Discovery and Forecast of Chaotic Pattern in Databases 
+DENG Chao1,2 XIONG Fan-lun1
+1 (Institute of Intelligent Machines The Chinese Academy of S ciences Hefei 230031)
+2(Department of Computer Science University of Science and Technology of Chi na Hefei 230027)
+Abstract 　There exists a lot of chaotic patterns in the natural kingdom and social society. Databases recording this kind of data also c ontain the chaotic patterns. Generally, the chaotic patterns are characteristics of greatly random fluctuation although they often appear between deterministic and stochastic patterns in KDD. Therefore, the chaotic patterns are always treat ed as random fluctuation distributions and are ignored. Such viewpoint illustra ted by J.Zytkow's Forty-Niner is that a pattern discovery platform based on st atistics. A new network method to discover chaotic pattern in databases is propo sed in this paper. This method together with the Forty-Niner can not only disco ver the chaotic pattern, but also forecast it efficiently. In addition, this met hod is very suitable to deal with large databases and has extensive applicable p rospects in the vivid researching fields of KDD.
+Key words KDD (knowledge discovery in databases), pa ttern discovery and forecasting, chaotic pattern, chaotic pattern discovery netw orks. 
+　　近年来,从（大型）数据库中自动发现知识（KDD）已经成为人们关注的热点课题.在各种社 会现象和自然现象中经常碰到由大量数据构成的大型数据库,其中各属性数据经常表现出剧 烈起伏的特点,呈现出杂乱无章的迹象.而大量研究表明,很多社会现象和自然现象的记录数 据（如流行病的生灭、股票价格的升降、气象等）都是无序现象［1］.这些看起来杂 乱无章的数据关系很容易与随机噪声关系混淆,实际上,这里可能蕴藏着由简单非线性系统产 生的混沌关系模式.
+　　KDD所力求发现的知识无论用什么方法进行描述,它所描述的关系都是确定的模式,对于 其他关系则都视为随机噪声关系.然而,在这些被视为随机噪声关系的关系中存在很大的有别 于纯噪声关系的模糊区域,在这里是否存在未知的有用模式呢？混沌学理论表明,在介于确定 关系和纯随机关系之间还存在着大量的混沌关系［2］,即混沌模式.混沌模式是可以 重建为一种低阶非线性动力学系统的时间序列或属性关系,是一种在有序中的无序关系;是自 律地产生动力学信息的系统,是不能用决策论控制的动力学系统.混沌模式既与典型的确定模 式有所区别,又与纯随机噪声关系不同.因此,混沌模式是对现有确定模式的推广,是自然界客 观存在的一类重要的模式.
+　　混沌、分形理论的产生和发展为发现和掌握无序中的有序规律（即混沌关系）提供了有 利的理论根据和手段.通过利用混沌现象的决策论非线性技术,就能够以较高的精度把这种关 系短期预测出来.通过发现混沌模式,可以重构或找出隐藏在混沌模式中的演化规律,并且可 以根据混沌特性找到规律,使现有的数据纳入某种可描述的框架下,为KDD的研究提供了一种 崭新的方法和思路.
+　　对于处于确定模式和噪声关系这二者之间的混沌模式,由于现有方法很难把握,因此都将 其视为噪声关系来处理.众所周知,概率统计方法是目前衡量属性和属性之间关系的一种重要 手段,它发展了一系列模式评价和搜索的方法,对于分析各类关系具有十分良好的效果［ 3］.但是它很难有效地刻画属性和属性之间的这种混沌关系,而是常常把这种混沌关系归 类为随机噪声关系.Zytkow的49er（Forty-Niner)是以统计为主要工具,从DB中发现有用模 式的主要方法之一［4,5］,本文对其进行了简要说明,并用于对新型混沌模式的发现. 但是这些方法对介于确定模式和随机波动模式之间的混沌模式都不能有效发现和描述.
+　　本文提出了一种发现和预测混沌模式的网络方法（chaos pattern discovery networks ,简称CPDN）.该算法结合49er能发现统计方法所不能发现的混沌模式,并能对所发现模式作 出预测.
+1 混沌模式的发现和预测
+　　通常的统计相关分析、逻辑推理和模糊判断等方法在非混沌模式的发现中起着很重要的作用,并经常被用于在KDD中发现有用模式,其中49er,EXPLORA等就是用统计方法来发现有用 模式的方法.本文以49er为例,简要介绍其基于统计方法的主要思想.但是由于混沌模式关系 都表现出杂乱无章的状态,大量研究也表明,混沌模式在统计上类似于白噪声那样的随机模式 ,故常常将其归类于纯随机模式［1］.因此,对混沌模式的发现和预测,我们应寻求其 他方法.非线性关系是产生混沌模式的根本之所在,混沌模式虽外表呈现出一种无序状态,但 它服从一定的规律,它表现出时间序列在时延状态空间中的相关性,这种特性使得属性内或属 性间关系似乎有着某种记忆能力,同时又难以用关系逻辑、符号处理和解析方法把这种规律 表达出来.这种信息处理方式正好是神经网络所具备的优势.鉴于此,本文提出了一种发现混 沌模式的网络（CPDN）方法.该方法能区分混沌模式和完全无序的模式,从而发现混沌模式, 并在一定范围内作出有效的预测.本文主要研究从包含时间序列数据的关系数据库中发现属 性或属性之间的混沌模式.
+1.1 统计方法
+　　49er主要用于从关系数据库中的知识发现问题,并采用REGULARITIES来描述所发现的知 识.它所用的REGULARITIE为如下形式:
+模式（PATTERN） in 范围（RANGE）,
+其中RANGE为DB中所有可能事件空间的一个子集.模式既可以用谓词来描述,又可以用频率表 （contingency table）、公式和逻辑等效等来描述.
+　　49er的基本搜索策略为:首先在所有数据集合上搜索REGULARITIES,然后,将数据划分为 不同的子集,并在子集上进一步搜索REGULARITIES.在每一数据子集内,49er对用户所认可的 属性对组合进行2-D REGULARITIES的检测.49er把充分性（significance）和强度（st rength）的统计检验方法应用于所有假设.如果检验结果超过预定接收门限,则将对应假设作 为REGULARITY.充分性（significance）定义为:由独立变量随机产生的给定模式的概率Q. Q值越接近0,模式的随机性就越小;相反,Q值越接近于1,模式的随机性越大.Q值可根据χ2 统计和频率表的自由度来计算.χ2描述了频率表的实际值和期望值之间的距离:
+  (1)
+其中Aij为频率表的实际分布,Eij为频率表的均值分布,并可表示为
+　　(2)
+其中N为记录总数;nxi,nyj分别为属性X=xi和属性Y=yj的记录数.
+　　49er采用Cramer的V系数来度量频率表的预测强度.对于一个大小为Mrow ×Mcol的频率表,Cramer的V系数可定义如下:
+　　(3)
+若V值愈大,则表明预测强度愈大,相应属性之间的相关性就愈强.
+　　通过使用V和Q,49er就可对搜索过程中的每一个假设模式评价其充分性和预测能力 .一般地,Q值的默认门限设为QT=10-5,V的门限VT为0.5.Q值和V值必须同时使用才 能决定假设模式的有效性.即,如果Q＜QT,并且V＜VT,则该模式存在;否则,就将其归为虚 假模式而予以抛弃.
+　　文献［4］指出,49er具有很好的2-D模式识别能力.对100个随机关系应用49er检验其 模式的有效性,仅有1个被误测为有效模式.但在这99个随机噪声模式中有可能存在不少的混 沌模式,49er却不能将它们区分开.
+1.2 网络方法
+　　网络方法由于计算量小、计算速度快以及学习能力和模式提取能力强,而在近些年逐渐 发展起来,因其适合于表征难于显式描述的关系,并具有较强预测和推广能力而广受关注.本 文提出了一种基于RBF的混沌模式发现网络方法（RBF-CPDN）［6］,并应用该方法发 现存在于数据库中的混沌模式.这种混沌模式既可以存在于同一属性之内,又可能存在于两个 或多个属性之间.
+　　以往的RBF网络方法都是事先根据所处理问题的复杂度预先定好网络的结构（基函数的规模）.这类方法不能解决在数据库中发现有用模式的问题,而且不适合于处理大型数据库. 因为KDD要解决这样两个问题:模式是否存在？以及存在什么样的模式？
+　　本文所提出的CPDN是一个两层前馈神经网络,其输出可表示为
+　　(4)
+其中αk代表第k个隐节点与输出之间的连接权值,K为隐单元数;φk(x)为基函数,代表第k个隐节点对输入向量x的响应,通常取为如下Gau ssian函数形式:
+　　(5)
+其中Uk∈Rn,表示第k个基函数的中心;σk∈R为第k个基函数的宽度,代表网络对输入空间数据的分辨力.‖*‖为在Rn空间的Euclidean范数.
+　　CPDN算法的主要特点如下:
+　　（1） CPDN的隐层节点在学习过程中是动态分配的.网络初始的基函数置为0,在学习的过程 中根据观察样本的“新息（novel）”大小来动态分配隐层节点,然后适当地进行网络参数的 自律调整.
+　　（2） CPDN具有基函数裁减机制,这样有利于发现和判断所搜索的模式是否存在.
+　　（3） CPDN的泛化性能使其具有较强的预测能力.
+　　本文所提出的CPDN算法可具体表述如下:
+　　Initialize:ε=εmin and α0=y0
+　　for (n=1;n＜Sample Number; n++)
+　　{　　　computes f(xn),φk(xn),en
+　　　　　find the nearest stored pattern unr
+　　　　　let εn=max{εmaxγn,εmin}
+　　　　　if en＞emin & ‖xn-u nr‖＞εn & en＞eCME
+　　　　　{　　　allocate new hidden unit with
+　　　　　αk+1=en,uk+1=x n,σk+1=K‖xn-unr‖
+　　　　　}else{　 adjusting network parameters:α,u,σ}
+　　　　　pruning the hidden unit acording to the pruning strategy
+　　}
+其中(x0,y0)表示第1个观察样本,用于初始化网络.en为网络输 出误差;unr为输入空间中与xn最邻近的存 储模式（基函数）;emin和eCME为两种 误差门限;εn为隐节点最近距离阈值,介于εmax和εmin之间.
+2 实验及分析
+2.1 模式发现
+　　49er能够有效判别2-D模式.用作实验,我们产生两对属性关系A1,A2和A1,A 3.A1为随机产生的均匀分布的数据,A2为另一个独立的随机产生的均匀分布的随机数 据;A3和A1的关系为A3=a+bA21,其中a,b为实常数.一共产生2 000个记录.首先,我 们用49er计算各属性之间的统计参量（χ2,V和Q）,列于表1中.
+表1　A1,A2和A1,A3的统计参数比较
+
+attributes relationχ2VQ
+A1,A2 (noise)91.167 70.100 60.724 5
+A1,A3 (function)4761.540.727 352.3e-057
+
+　　从表1可看出,属性A1,A2 的Q值远大于门限QT=10-5,V值也远小于VT,表 现为噪声特性;而属性A1,A3的Q值远小于门限,V值也远大于VT.这表明A1,A3之间 具有确定的模式关系.以上结果与49er的模式判定准则完全相符,这再次充分说明了49er判 定的有效性.
+2.2 混沌模式发现
+　　对于混沌模式,49er却失去了其效能.为此,我们在实验中产生了一个包含Mackey-Glass混沌 模式的人工DB.该DB包括5 000个元组,5个属性,分别用attri.1,attri.2,...,attri.5表示 .以attri.1和attri.2之间的关系为例,首先用49er方法计算它们的各种统计参量值,并进 行模式判断,验证49er对混沌模式的判断能力;然后使用本文提出的CPDN进行模式判断和发现 .如前所述,χ2与记录数有关,故Q值和V值也会随记录数而变化.因此,为了正确反映这种 变化,需要对不同数据量的模式计算其Q和V值.
+　　为了比较,我们还对如下3种模式分别计算其Q值和V值随记录数的变化.
+（1） 呈噪声关系的A1,A2（产生方法与2.1节相同）;
+（2） 呈简单函数关系的A1,A3（产生方法与2.1节相同）;
+（3） 呈复杂函数关系的A1,A4,其中A4与A1的关系为:A4=a+bA31*exp(A 21).
+上述模式的Q和V值随记录数变化的曲线分别如图1和图2所示.
+
+图1 Q值随记录数变化关系曲线 
+
+图2 V值随记录数变化关系曲线
+　　在图1和图2中,带符号“×”的曲线表示的是A1,A2噪声关系产生的Q和V值;带符号 “+”的曲线是A1,A3 的简单函数关系所产生的统计值;带“*”曲线表示A1,A4的Q 和V值.带“○”的曲线为混沌关系的Q和V值.由这两个图可以看出,对于纯噪声关系,其Q值始 终远远大于门限10-5,V值也始终接近0;对于确定模式,Q值总是在门限以下变化,V值接 近于1;而对于混沌模式由于其复杂性,当记录数少时,它表现为类似确定模式的特征,当记录 数逐渐增多时,又逐渐表现出噪声关系特征.由图1和图2也可看出,混沌模式是介于确定模式 和纯噪声之间的一种模式,可是49er不能有效地发现这类模式.
+　　为了将混沌模式从噪声中分离出来,必须另寻求其他方法和途径.由于数据库中的数据量 一般不能随意增加,因此具有从给定的数据库中发现有用模式的能力的方法就显得很重要.本 文应用CPDN方法从存在混沌模式的数据库中发现混沌模式.CPDN能够有效地区分混沌模式 和纯随机模式.该算法采用一种褒优惩劣的策略进行基函数资源的合理分配,它的基函数不仅 根据输入数据的“新息”特征进行分配,而且具有基函数的删剪机制.这样既能满足系统学习 新知识的要求,又解决了因某些问题而产生的饱和过学习的现象;使得完成学习后的系统充分 表达了所学习的信息,这就使得CPDN不但具有发现确定模式的能力,而且具有从噪声中发现混 沌模式的能力.下面,我们使用CPDN对3种模式（确定模式A1,A3、混沌模式和噪声A1 ,A2）进行模式判断和学习.学习中,每对属性值分别作为网络输入和输出,样本序贯出现到 网络的输入端.其学习过程中隐节点的变化曲线如图3所示.
+
+　　在图3中,虚线表示CPDN学习确定模式A1,A3的隐节点变化曲线,细实线表示学习噪声 关系A1,A2的隐节点变化曲线,粗实线表示学习混沌模式attri.1和attri.2之间的关系的 隐节点变化曲线.从图3可以看到,对于随机噪声关系A1,A2,CPDN的隐节点数始终在 增加,并且呈无规则剧烈变化.因为具有这种随机噪声关系的任何数据与前后数据都不具有相 关性,它对系统来说都是“新”的,因此,网络必须为它分配新的隐节点.而对于具有确定关系 的A1,A3来说,隐节点的变化平稳,并且最终趋于稳定的隐节点数.由于A1,A3存在关 联关系和确定的相关模式,故其关系特征必然是有限的,因而CPDN能用有限的隐节点将其特 征有效地刻画出来.这就说明CPDN具有判别模式与纯噪声的能力.对于混沌模式,CPDN学习到 第1 300个观察样本点时,隐层节点数的变化就出现了稳定,这就说明用24个隐节点就足以表 示这里所需学习的混沌模式.
+2.3 描述和预测混沌模式
+　　CPDN不仅能发现并学习各种有用模式,而且具有较强的模式预测能力.所谓模式预测能力是 指对某模式未来数据的预见能力.预测能力的好坏会影响到对将来模式判断的可信度.在许多 实际情况下,对一种有效方法,我们不仅要求其能够有效地发现存在于大型数据库中的各种有 用模式,而且希望其对未处理数据具有很强的预见能力,即很强的模式预测能力.本文提出的C PDN就是满足这些要求的一种有效方法.
+　　具体来讲,对于上述实验,我们用CPDN对DB的前3 000个元组进行了学习实验,得到了适当 规模的网络,然后使用学习好的CPDN对其余的2 000元组进行预测实验.图4给出了attribut e 1和attribute 2之间由原数据绘出的关系（即两个属性之间的二元关系）和由CPDN预测 出来的关系.图5为attribute 1,attribute 2和attribute 3之间的3-D关系（即三 元关系）曲线.从这两个图中,我们可以清楚地看出,CPDN方法对混沌模式也具有相当好的预 测能力.
+
+
+3 结 论
+　　混沌模式是存在于数据库中而经常被当作随机噪声关系处理的、尚未被研究的一种有用 模式,它是自然界复杂性的合理表现.针对这类新的模式,本文提出了一种基于径向基函数神 经网络的CPDN方法,并将其用于发现和学习混沌模式.该算法具有处理数据量大、所需存储空 间少和计算速度快的特点.CPDN从数据库中发现和预测混沌模式在实际中具有广泛的应用前 景.目前正被应用于小麦病虫害数据库中的白粉病的病因模式的发现和预测之中,已取得了较 好的应用效果.有关成果将另文报道.
+致谢　美国Wichita州立大学计算机科学系的Jan M.Zytkow教授提供 了有关资料.感谢他对本文的研究工作所作的指导和大力帮助.
+　
+本文研究得到国家自然科学基金和国家863高科技项目基金资助.
+作者邓超,[ HT6SS〗女,1966年生,博士生,主要研究领域为人工智能,知识发现,神经网络,遗传计算,模式 识别.
+　　熊范纶,1940年生,研究员,博士生导师,主要研究领域为人工智能, 机器学习,知识发现,模试识别等.
+本文通讯联系人:邓超,合肥 230027,中国科学技术大学西区3-327
+
+作者单位：邓　超　熊范纶 （中国科学院智能机械研究所 合肥 230031)
+　　　　　　邓　超（中国科学技术大学计算机系 合肥 230027）
+参考文献
+　[1]　Froyland J. Introduction to Chaos and Coherence. London: Institute o f Physics Publishing Ltd., 1992
+　[2]　Casdagli M. Nonlinear prediction of chaotic time series. Physica D, 1989,35:335～356
+　[3]　Elder IV J F, Pregibon D. A statistical perspective on knowledge dis covery in databases. In: Fayyad U, Piatetsky-Shapiro G, Smyth P eds. Advances i n Knowledge Discovery and Data Mining. U.S.A: AAAI Press, 1996. 83～113
+　[4]　Zytkow J M. Database exploration in search of regularities. Journal of Intelligent Information Systems, 1993,(2):39～81
+　[5]　Zytkow J M. Creating a discoverer: autonomous knowledge seeking agen t. In: Zytkow J M ed. Machine Discovery. Netherlands: Kluwer Academic Publishers Group, 1997. 253～283
+　[6]　Deng Chao, Xiong Fan-lun et al. Sequential learning n eural networks and its application in agriculture. In: Proceedings of the IEEE I nternational Joint Conference on Neural Networks (IJCNN'98). Alaska: IEEE Press, 1998. 2118～2123
+本文1998-03-30收到原稿,1998-06-16收到修改稿

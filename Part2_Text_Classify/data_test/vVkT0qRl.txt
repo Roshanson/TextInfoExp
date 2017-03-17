@@ -1,0 +1,122 @@
+软件学报
+JOURNAL OF SOFTWARE 
+1999年 第10卷 第5期 Vol.10 No.5 1999
+
+
+
+基于行为的动态负载分配算法
+勇军　王意洁　李思昆　胡守仁
+摘要　 将复杂行为引入共享虚拟环境,提出了一个基于行为的动态负载分配算法.该算法综合考虑了 结点的处理能力、网络通信能力以及行为计算的特性,能有效地调节系统负载,在提高用户实 时交互能力的前提下,尽量保持行为的真实感.
+关键词　共享虚拟环境,多用户,行为建模,负载分配.
+中图法分类号　TP316
+Dynamic Load Distribution Algorithm Based on Behavior
+WANG Yong-jun　WANG Yi-jie　LI Si-kun　HU Shou-ren
+Department of Computer Science　Changsha Institute of Tech nology　Changsha　410073
+Abstract　　In this paper, the complex behaviors are introduced into shared virtual environm ent and a dynamic load distribution algorithm based on behavior is proposed. Thi s algorithm can consider the processing capability of CPU, communication capabil ity of network and characteristic of behaviors, tune the system load efficiently to keep the behaviors' fidelity while promoting the real-time interactivity of users.
+Key words　Shared virtual environment, multi-user, behavior modeling, load distributing.
+　　目前,分布式虚拟环境技术的研究多集中于虚拟现实设备、虚拟场景的图形建模及其真实感 和实时性能的改善、网络环境中多结点间的通信协议等,但分布式虚拟环境软件开发平台在 提供给用户从行为建模到系统实现的更高层支持方面的工作还不够有效.国外的一些典型系 统,如AVIARY［1］,MR(minimal reality)［2］,BrickNet［3］等虽然 带有较为通用的建模语言,但是这些建模语言仅支持较为简单的行为模型和低计算复杂度的 行为.在我国,对分布式虚拟环境软件开发平台的研究几乎还是空白.浙江大学虽然开展了对 分布式虚拟环境支持的研究,但也仅侧重于分布式图形处理技术［4］.
+　　为了将现实世界中丰富多采的真实特性在虚拟环境中表现出来,人们在计算机动画、机器人 、人工智能等领域都进行了深入的研究,出现了一些较为复杂的行为模型［5～7］.在 这类应用中,由于行为的复杂程度较高,甚至单个实体的行为计算量都会很大,需要分布并行 处理来支持实体间的并行性和实体内的并行性.为了适应这一需求,我们研制了分布式虚拟环 境软件开发平台YHVRP(YH virtual reality platform).该平台基于当前通用的硬件平台(PC ,工作站)、软件平台(NT,Unix)和高速以太网(100Mbps以上)环境,提供虚拟环境建模语言YHV ML进行复杂行为的建模,同时,该语言的解释器支持对虚拟环境状态及实体的动态修改、增加 和删除.YHVRP还允许多个用户动态地加入共享同一个虚拟环境.
+　　对于拥有复杂行为的虚拟环境而言,计算负载大大提高了,而且用户对虚拟环境的动态修改也 带来了较大的负载变化,为了保证系统的实时交互性,对计算负载的动态分配就显得尤其重要 .但是,由于当前分布式虚拟环境软件开发平台通常不支持虚拟实体数量及状态的动态改变, 仅仅考虑了简单行为的情况,因此,只支持或部分支持基于空间划分的实体间的并行,尚没有 合适的动态负载分配策略,如AVIARY,DIVE(distributed interactive virtual environment )［8］提供了基本的虚拟实体迁移机制,但控制工作需由应用开发者完成.WAVES(wate rloo virtual environment system)［9］提供负载均衡功能,但它的执行原则较为简 单.而我们从前的工作［10］也仅从空间视点的变化角度来考虑行为计算与系统的负 载相结合.
+　　基于上述考虑,本文提出了一个基于行为的动态负载分配算法,它从行为计算的特性分析出发 ,综合考虑结点的处理能力和网络通信能力,支持拥有复杂行为的虚拟环境的行为计算并行化 ,在优先保证虚拟环境的实时交互性的前提下,尽量保证行为的真实感.
+1　基于行为的虚拟环境计算
+1.1　行 为
+　　从面向对象的观点来看,虚拟环境是由若干公共属性和若干虚拟实体组成的.虚拟实体则由若 干行为和局部属性组成.所谓行为是指,实体对公共属性、局部属性或调用其他行为的操作. 在具有复杂行为的虚拟环境中,我们认为虚拟环境的计算主要由虚拟实体的行为构成.行为必 须由某些事件触发才能被激活执行.这些事件包括时钟事件、条件触发事件、行为调用事件等等.
+　　定义1. 实体集合.设有一虚拟环境VE,由N个虚拟实体组成,实体 集合可记为Entity-set={Entityi｜i=1,...,N}.
+　　定义2. 行为.行为behavior可以记为三元组：〈InputAttrSet, OutputAttrSet,ProcessingProc〉.其中,处理过程ProcessingProc是行为计算程序；输入属 性集合InputAttrSet是行为计算所需的实体属性或公共属性；输出属性集合InputAttrSet是 行为计算进行修改的实体属性或公共属性.
+　　我们将行为分为两类：
+　　(1) 表现属性行为：即对实体表现属性进行操作的行为,所谓表现属性是指,与仿真效果输出 的有关属性,如三维几何、速度、位置等；
+　　(2) 非表现属性行为：对实体非表现属性进行操作的行为,如,涉及到智能属性的行为等.
+1.2　基于行为的虚拟环境计算
+　　考虑单处理机的情况,虚拟环境的运行可以看做是由一个个仿真步组成的,每个仿真步一般又 可以看做由3段操作组成：第1段,采样用户实体的输入数据；第2段,计算当前步处于活跃状 态的所有实体行为,修改相应的实体属性和公共属性；第3段,表现感兴趣的属性(如绘制当前 步用户视野内的实体).它们的计算延迟时间分别以InputLag,SimuLag,RenderLag来表示.文 献［11］将用户执行一个动作和在屏幕上显示出来之间的时间差称为端端延迟(EndEndLag ),它是各段计算延迟时间之和.
+1.3　虚拟环境的性能需求
+　　虚拟环境运行的主要性能需求是实时交互性和真实感.实时交互性是指虚拟环境计算要足够 快,使得用户的输入能实时地在输出上反映出来,如视点的变化引起的场景变化,即要求EndEn dLag＜δ,δ为特定应用所指定的时间.而对行为而言,虚拟环境的真实感是指在δ内,实体行 为具有行为的真实感.
+　　应用编程者通常期望在逻辑上行为在哪个仿真步被执行,因此,每个行为都有一个理论修改率 ,所谓理论修改率即逻辑上行为距上次执行的仿真步间隔的倒数.例如,如果行为在每个仿真 步周期执行,则理论修改率为1.如果行为达到了理论修改率,我们就称其具有行为真实感.
+2　基于行为的共享虚拟环境动态负载分配
+　　我们知道,传统的负载分配的主要目标是均衡各个结点的负载,进而实现并行计算,以减小任 务平均响应时间,从而使系统拥有最大的吞吐率.但是,虚拟环境的负载分配有一个更高的要 求是,首先保持实时交互性,其次保证行为计算具有一定的真实感.
+2.1　基本思想
+　　在拥有复杂行为的虚拟环境中,处于活跃状态的行为计算可以在本地进行,也可以被调度到远 地进行,它们被分别称为局部行为和远程行为.局部行为可以确保理论修改率,但很可能引起 计算时间过长,破坏了实时性.远程行为的目的是通过并行的方法降低计算时间.为了保证理 论修改率,与远程行为的信息交换需要同步,我们称该远程行为为同步行为.但是,可能由于网 络拥塞的原因,同步行为的等待时间会很长,同样破坏了实时性.在这种情况下,如果结点计算 能力允许,可以将相应的远程行为调入,成为局部行为.否则,我们就要在实时性和真实感之间 进行选择.
+　　当实时性和真实感相冲突时,我们以牺牲部分真实感来获取更重要的实时性,允许某些远程行 为的信息交换可以不需同步等待,该种行为被称为异步行为.人们通常认为表现属性行为对时 间敏感程度高,而非表现属性行为则敏感程度低,因此,我们遵循的一条原则是：表现属性行 为尽量同步,而非表现属性行为异步的优先级更高.
+2.2　多用户的一致性
+　　当多个用户共享一个虚拟环境时,由于每个用户所感知的场景是相同的.因此,通常存在相同 的活跃实体行为需要计算.如果不建立共享的远程行为来获取所需的虚拟环境信息,就会出现 多个局部的行为副本.这会引起共享虚拟环境状态的一致性问题.
+　　显然,共享的同步行为可以保证相关用户所在结点每一仿真步的状态一致,但是很可能破坏实 时性；而异步行为将会带来状态的弱一致性.我们遵循的一条原则是：表现属性行为比非表 现属性行为要求的一致性程度更高；由于非表现行为的弱一致性通常为用户所容忍,因此,非 表现属性行为不建立多副本.另外,由于各个结点的硬件性能的差别,仿真推进的速度不同,多 个行为副本引起的一致性问题需要用特殊的结点间同步的方法来解决,如,保持每个用户所在 结点的EndEndLag的恒定.
+2.3　相关概念
+　　每个实体的行为分为两类：表现属性行为集合和非表现属性集合.实体Entityi的两组行为 分别记为PresentationBehSet（Entityi）和NonPresentationBehSet（Entityi）.
+　　设有一个处理机集合供虚拟环境运行,我们将集合中的处理机统一称为结点.结点集合可划分 为两类：用户结点集合UserNodeSet和非用户结点集合NonUserNodeSet.用户结点是用户参与 虚拟环境的处理机,通过它,用户可以实时地与虚拟环境交互,并且可对虚拟环境进行动态修 改.它通常带有用户输入设备（如三维鼠标、键盘等）和输出设备（如高级图形加速卡、高 质量显示器等）,虚拟环境的三段计算在用户结点表现得最为充分.非用户结点是用来支持对 虚拟环境计算的分布并行处理的,用户结点无法满足的行为计算可以迁移到非用户结点来处 理.非用户结点集合按分配到其上的行为计算也分为两类：非表现属性行为结点集合NonPres entationBehNodeSet和表现属性行为结点集合PresentationBehNodeSet.
+　　在虚拟环境运行过程中,结点P上的虚拟实体Entityi在仿真步st有一个活跃行为表ActiveB ehaviorTable(P,Entityi,st),用户结点上的活跃行为按执行计算所在的地点,可分为局部 行为集合LocalBehSet(P,Entityi,st)和远程行为集合RemoteBehSet(P,Entityi,st).非 用户结点上只有局部行为集合.用户结点上的远程行为集合按等待计算输出属性值的方式,分 为同步行为集合SyncBehSet(P,Entityi,st)和异步行为集合AsyncBehSet(P,Entityi,st ).类似地,非用户结点上的局部行为集合按等待计算输入属性值的方式,分为同步行为集合Sy ncBehSet(P,Entityi,st)和异步行为集合AsyncBehSet(P,Entityi,st).
+　　定义3. 行为开销.行为开销可以记为二元组：〈CompCost(behavior ),CommCost(behavior)〉.其中,行为计算量CompCost可以用行为计算程序中的指令数来估算；行为通信量CommCost可 以用行为的输入、输出属性值类型的大小总量来估算.
+　　定义4. 行为输出量.行为输出量是指,当该行为被作为多个其他用户 的远程行为时,每一仿真步需要输出到其他用户结点的通信量,可记为
+OutputCost(behaviorij)=UserNumber(behaviorij,st)×OutputAttrib uteCost(behaviori).
+其中behaviorij表示Entityi的第j个行为,behaviorij∈LocBehSet(P,Entit yi,st)；UserNumber(behaviorij,st)表示行为behaviorij在仿真步st时被 作为远程行为的其他用户个数；行为输出属性量OutputAttributeCost可以用行为的输出属 性值类型的大小总量来估算.
+　　定义5. 结点通信量.用户结点P在仿真步st的通信量可记为
+
+其中behaviorij∈RemoteBehSet(P,Entityi,st)；behaviormn∈LocBehSet (P,Entitym,st);用户状态通信量UserStateCost(P,st)表示结点P在仿真步st接收的感兴 趣的其他用户的状态信息量.
+　　非用户结点P在仿真步st的通信量可记为
+CommCost(P,st)=(CommCost(behaviorij)+OutputC ost(behaviorij)),
+其中behaviorij∈LocBehSet(P,Entityi,st).
+　　现在,我们来定义仿真计算延迟SimuLag.
+　　定义6. 局部行为计算时间.结点P在仿真步st的局部行为计算时间Lo cBehCompTime可记为
+LocBehCompTime(P,st)=iCompCost(behaviorij )/s(p),
+其中behaviorij∈LocBehSet(Entityi,st);结点P处理指令的平均速度为s(p)条指 令/s.
+　　定义7. 行为等待时间.对用户结点P而言,行为behaviorij的 等待时间是指,从该仿真步开始到从网络上得到相应行为计算输出属性值的时间.对非用户结 点P而言,行为behaviorij的等待时间是指,从该仿真步开始到从网络上得到下一仿真 步相应行为计算输入属性值的时间.二者都可记为WaitTime(behaviorij),其中behavi orij∈SyncBehSet(P,Entityi,st).
+　　定义8. 同步行为等待时间.结点P在仿真步st的同步行为等待时间可 记为
+SynBehWaitTime(P,st)=Max(WaitTime(behaviorij)),
+其中behaviorij∈SyncBehSet(P,Entityi,st).
+　　定义9. 仿真计算延迟.结点P在仿真步st的仿真计算延迟SimuLag为 
+SimuLag(P,st)＝Max(LocBehCompTime(P,st),SynBehWaitTime(P,st)).
+　　定义10. 结点开销.结点P在仿真步st的开销记为〈SimuLag(P,st),C ommCost(P,st)〉.
+　　根据行为真实感的讨论,每个结点都有一个仿真计算延迟上限时间MaxSimuLag,如果超过 了上限时间,就会造成实时交互性能的下降；另外,如果网络上的通信负载过大,必然会带来 大的网络延迟和主机开销（尤其在以太网络条件下）,因此,我们给每个结点界定一个通信量 上限MaxCommCost,二者构成结点的性能指标.
+　　定义11. 结点性能指标.结点P的性能指标表式为〈MaxSimuLag( P),MaxCommCost(P)〉.
+　　我们设用户结点和非用户结点中的表现属性行为结点的仿真计算延迟的上限时间为ST, 非用户结点中的非表现属性行为结点的仿真计算延迟的上限时间为ST′,则存在着ST′>ST. 
+　　定义12. 结点的性能潜力.结点P在仿真步st的性能潜力包括计算潜 力和通信潜力,计算潜力是指仿真计算延迟上限时间与局部行为计算时间的差额（即Max SimuLag(P)－LocBehCompTime(P,st)）;通信潜力是指通信量上限与结点通信量的差额（即 MaxCommCost(P)－CommCost(P,st)）.
+2.4　基于行为的动态负载分配算法
+　　在多用户虚拟环境中,基于行为的动态负载分配算法由一组算法组成,启动的时机有：用户加 入、退出虚拟环境以及用户对虚拟环境的修改引起的负载变化等.限于篇幅,下面,我们仅介 绍虚拟环境运行过程中的动态负载分配算法.
+　　在虚拟环境运行过程中,当用户向虚拟环境中增加新的实体或改变实体的行为,或由于虚拟环 境实体间的交互激活了新的行为、中止了旧的行为时,用户结点上的负载将发生变化.如果结 点的仿真计算延迟超过上限时间MaxSimuLag,就要启动基于行为的动态负载分配算法,根 据其原因进行相应的行为调度.我们调度的行为都是周期性行为或长时间的行为,因为非周期 行为的不可预测性,对其进行调度将会使系统极不稳定.而系统在运行时可以判定周期行为和 长时间行为.为了防止行为调度的抖动,我们设置了一个时间阈值,只有当结点的仿真计算延 迟SimuLag超过上限时间MaxSimuLag,所延续的时间超过了阈值,才启动基于行为的动态 负载分配算法.
+　　设用户结点P在仿真步st启动了基于行为的动态负载分配算法.算法描述如下：
+　　(1) 确定各实体在仿真步st的活跃行为表ActiveBehaviorTable(P,Entityi,st),i=1,..., N.
+　　(2) IF LocBehCompTime(P,st)<ST　/* 引起负载增大的主要原因是同步远程行 为的等待时间太长 */
+　　　THEN 对于behavior,behavior∈SyncBehSet(P,Entityi,st),且WaitTime(behavior)> ST,DO
+　　　IF 将behavior调入P,SimuLag(P,st+1)<ST
+　　　THEN 对于表现属性行为,创建behavior的局部副本；对于非表现属性行 为,则将远程行为改为异步行为；
+　　END DO
+ELSE　/* 引起负载增大的主要原因是局部行为的计算时间过长.限于篇幅,我们 不同时考虑同步远程行为等待时间太长的情况.在选择调出行为时,非表现属性行为比表现属 性行为的优先级高*/
+　〈1〉［非表现属性行为的调出］　/* 非表现属性行为不存在其他副本 */
+将所有实体的所有局部非表现属性行为behavior,按CompCost(behavior)/CommCost(behavio r)的值进行从大到小排序,DO
+　　从NonUserNodeSet选择新的非表现属性结点Q,或将NonPresentationBehNodeSet中的结 点按性能潜力从大到小的优先顺序选择结点Q,如果将behavior分配到Q上,SimuLag(Q,st′+1 )<ST′且CommCost(Q,st′+1)<MaxCommCost(Q)(其中st′是与st相对应的Q的仿真步), 则将behavior分配到Q上；
+　　IF SimuLag(P,st+1)<ST THEN 算法结束 ELSE 继续循环；
+END DO
+　〈2〉［表现属性行为的调出］　/* 表现属性行为可能存在其他副本 */
+将所有实体的所有局部表现属性行为behavior,按CompCost(behavior)/CommCost(behavior) 的值进行从大到小的排序,DO
+　　IF 存在behavior的其他副本
+　　THEN 选择通信潜力最大的结点Q作为远程行为来计算所在结点；
+　　　　　IF CommCost(Q,st′+1)<MaxCommCost(Q)(其中st′是与st相对应的Q的 仿真步)
+　　　　　THEN 共享Q上的远程behavior计算；
+　　　　　IF SimuLag(p,st+1)<ST THEN 算法结束 ELSE 继续循环;
+　　从NonUserNodeSet选择新的表现属性结点Q,或将PresentationBehNodeSet中的结点按性 能潜力从大到小的优先顺序选择结点Q,如果将behavior分配到Q上,SimuLag(Q,st′+1)<ST且 CommCost(Q,st′+1)<MaxCommCost(Q)(其中st′是与st相对应的Q的仿真步),则将behav ior分配到Q上；
+　　IF SimuLag(P,st+1)<ST THEN 算法结束 ELSE 继续循环;
+　　END DO
+　　(3) 算法结束
+3　测 试
+　　我们用YHVML编写了一个动画程序.一个几何模型较为简单的智能体具有3个周期性行为:一个 是表现属性行为MOVE和TURN,一个是智能行为THINK.MOVE在一个三维空间移动,THINK则是进 行一个大数据集合的排序,每次排序成功,调用TURN改变移动方向.MOVE估算的执行时间是5ms ,TURN估算的时间为1ms,THINK估算的时间约30ms.我们取用户结点的ST为30ms,非用户结 点的ST′为50ms,虚拟环境运行在以100Mbps高速以太网络相连的两台PC（奔腾586,120M hz主频,32MB内存,S3 64V+的图形加速卡）上.在负载预分配时,THINK被分配到非用户结点上 运行,等待方式设为异步.MOVE的实际运行时间约为8ms,THINK的运行时间为50ms,场景绘制时 间约为30ms～40ms,则端端延迟为45ms左右.我们通过一台同样配置的PC作为新的用户结点加 入,通过负载分配,在新的用户结点上产生了MOVE和TURN的行为副本,两个用户看到的智能实 体的动作几乎同步.在新的用户结点上,我们又动态地产生了一个同样的智能实体,放入虚拟 环境.结果是,该智能实体的THINK行为计算也被分配到非用户结点上运行,而MOVE和TURN在两 个用户结点上都有副本运行,两用户结点的端端延迟都约为70ms左右,视觉效果良好.
+　　测试结果证明了基于行为的动态负载分配能综合考虑结点的处理能力、网络通信能力以及行 为计算特性,有效地调节系统负载,在优先保证了虚拟环境的实时交互性的基础上,尽量维持 了行为的真实感.这也说明了YHVRP在支持分布式虚拟环境的应用开发方面具有较高的灵活性 .
+　
+作者王勇军,1971年生,博士,助理研究员,主要研究领域为虚拟现实 和并行分布处理技术.
+王意洁,女,1971年生,博士,助理研究员,主要研究 领域为数据库,并行分布处理技术.
+李思昆,1941年生,教授,博士生导师, 主要研究领域为CAD技术,虚拟现实技术.
+胡守仁,1926年生,教授,博士生 导师,主要研究领域为高性能机体系结构,并行分布处理技术.
+本文通讯联系人：王勇军,长沙 410073,长沙工学院计算机系606教研室
+作者单位：（长沙工学院计算机系　长沙　410073）
+参考文献
+　[1]　Snowdon D N. AVIARY: design issues for future large-scale virtual environments. Presence: Teleoperators and Virtual Environments, 1994,3(4 ):220～241
+　[2]　Chris S, Mark G et al. Decoupled simulation in virtua l reality with the MR toolkit. ACM Transactions on Information systems, 1993,11( 3):287～317
+　[3]　Singh G, Serra l, Pug W et al. BrickNet: a software t oolkit for network-based virtual worlds. Presence: Teleoperators and Virtual En vironments, 1994,3(1):19～34
+　[4]　Pan Zhi-geng, Shi Jiao-ying, Zhang Ming-min. Distributed graphic s support for virtual environments. Computers and Graphics, 1996,20(2):191～197
+　[5]　Bruce M B, Tinsley A G. Multi-level direction of autonomous creatu res for real-time virtual environments. In: Robert Cook ed. Computer Graphics P roceedings, Annual Conference Series. New York: ACM SIGGRAPH, 1995. 47～54
+　[6]　Tu X Y, Demetri T. Artificial fishes: physics, locomotions, percept ion, behavior. In: Andrew S G, Mike K eds. Computer Graphics Proceedings, Annual Conference Series. New York: ACM SIGGRAPH, 1994. 43～50
+　[7]　Johnson M B. WAVESworld ［Ph.D. Thesis］. Massachusetts Institute o f Technology, 1995
+　[8]　Carlsson C, Hagsand O. DIVE--a platform for multi-user virtual e nvironments. Computers and Graphics, 1993,17(6):663～669
+　[9]　Kazman R. Load balancing, latency management and separation of conc erns in a distributed virtual world. In: Zomaya A ed. Parallel Computer-Pardigm s and Applications. Van Nostrand, 1996. 443～454
+　[10]　王勇军,胡守仁.网络虚拟环境的计算分布与调度.计算机学报,1997,20(增刊) :28～33
+(Wang Yong-jun, Hu Shou-ren. Computation distribution and scheduling of networ ked virtual envrionment. Chinese Journal of Computers, 1997,20(supplement):28～33 )
+　[11]　Wloka M M. Lag in multiprocessor virtual reality. Presence: Teleope rators and Virtual Environments, 1995,4(1):50～63
+
+本文1998-03-16收到原稿,1998-05-28收到修改稿

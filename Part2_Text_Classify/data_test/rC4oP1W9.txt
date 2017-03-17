@@ -1,0 +1,133 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第1期 No.1 1999
+
+
+
+线性序约束关系的无损连接分解*
+范志新　施伯乐
+　　摘要　对线性序约束数据库中的数据依赖和无损连接分解进行了研究.介绍了线性序约束数据库的一些基本概念,提出了线性序约束关系中多区域存在依赖和分组多区域存在依赖的概念,证明了变量集满足变量独立和多区域存在依赖是进行模式无损连接分解的充要条件.探讨了变量集在坐标线性变换下保持良性分解的情形.
+　　关键词　线性序约束数据库,无损连接分解,多区域存在依赖,变量独立,分组多区域存在依赖.
+　　中图法分类号　TP311
+Lossless Join Decomposition in Dense Linear Order Constraint Databases
+FAN Zhi-xin SHI Bo-le
+　　Abstract　In this paper, the data dependencies and lossless join decomposition in dense linear order constraint databases are studied. Several concepts of the dense linear order constraint databases are introduced. The concept of the multi-region existence dependencies is defined and studied. It is proved that the lossless join decomposition of constraint relational scheme preserves if and only if they satisfies variable independence and multi-region existence dependencies. Another dependency――partitioned multi-region existence dependencies is given. The issue of variable set under linear transformation is also proposed.
+　　Key words　Dense linear order constraint database, lossless join decomposition, multi-region existence dependencies, variable independence, partitioned multi-region existence dependencies.
+　　约束数据库是Kanellakis,Kuper和Revesz于1990年提出来的.［1］它综合了关系数据库、约束逻辑程序设计、空间数据库、辅助决策系统等多个领域的研究成果.其核心思想是将约束表达式作为数据来处理,为模式与约束、数据查询相结合的一致表达提供了一种有效方法.例如,把关系数据库中的每个元组看成一个等词约束合取式,如,关系R(A,B)中的元组(a,b)看作((A=a)∧(B=b));在空间数据库中,把平面矩形内部区域描述为((a1＜x＜a2)∧(b1＜y＜b2)).约束数据库模型支持对空间、时间等密序量的表达和操作,也支持对不完全信息的处理.［2～4］
+　　目前,对约束数据库中的密序约束类研究较多［2～7］,在线性序约束类方面主要集中于查询的可表达性［6,8］,对模式设计的研究很少.文献［5］提出密序约束保持无损连接分解的充要条件是在其规范表示的各个分块里能够进行无损连接分解,这只是一个计算问题,并没有给出约束模式进行无损连接分解所应具备的性质;文献［9］给出了密序约束中的函数依赖概念,并把它和变量独立合起来作为保持无损连接的一个充分条件,但这个函数依赖与变量独立在概念上是有交叉的,对无损连接分解来说不是必要条件.
+　　本文提出了多区域存在依赖的概念,结合Chomicki等人提出的变量独立概念［2］,得到线性序约束下保持无损连接分解的充要条件,讨论了坐标线性变换下线性序约束的转换,还给出了分组多区域存在依赖等概念.第1节介绍了线性序约束数据库的一些基本概念;第2节提出了多区域存在依赖、分组多区域存在依赖等概念,得出模式无损连接分解的充要条件;第3节探讨了坐标线性变换下线性序约束的一些问题.
+1 线性序约束数据库的基本概念
+　　按照Kanellakis等人的观点［1,3,4］,约束关系可以用无量词的一阶逻辑公式表示.下面,我们先给出线性序约束的一些基本概念.
+　　定义1.1. 线性序约束CLO是指形如的约束,其中xi为实数变量,ai和c为实常数,θ∈{＜,≤,=,≠,≥,＞}.
+　　线性序约束的无量词一阶逻辑公式是一个析取范式,其中每个析取项是由线性序约束组成的合取式.令cx=,由于cx≤c等价于((cx＜c)∨(cx=c)),cx≠c等价于
+((cx＜c)∨(cx＞c）),cx≥c等价于((cx=c)∨(cx＞c)),((cx＞c1)∧(cx＜c2))等价于c1＜cx＜c2,这样可使每个合取式只包含c1＜cx＜c2和cx=c两种形式（对于cx＞c1或cx＜c2,只存在其中之一的合取式,可令c1=-∞和c2=+∞）.我们假定经过上述处理得到的范式中不含多余的析取项和合取项.
+　　定义1.2. 变量集X={x1,...,xn}上的n元线性序约束元组是一个约束合取式ψ＝,其中是线性序约束.
+　　定义1.3. 变量集X={x1,...,xn}上的n元线性序约束关系R是X上约束元组的集合,其对应的逻辑表达式为ΦR=.设D为实数域,unr(R)={(x1,...,xn)｜(x1,...,xn)∈Dn且使得ΦR(x1,...,xn)为真}.这里的unr(R)取自文献［1］中的“unrestricted relation of R”.
+　　定义1.4. 设R和S是变量集X上n元线性序约束关系,若unr(R)=unr(S),则称R与S等价.
+　　定义1.5. 设R是定义在变量集X上的线性序约束关系,则称R(X)是R的线性序约束关系模式,R是R(X)的一个实例.
+　　定义1.6. 线性序约束关系数据库是由有限个线性序约束关系组成的集合.
+一个n元线性序约束元组表示n维空间上的一个凸集.［10］如果其中所有常数都是有限的,则其所表达的凸集在Euclid空间中就是有界的.可以定义基于代数的线性序约束查询语言.［5,7］这里给出两个将要用到的操作.
+　　定义1.7. 设R是变量集X上的n元线性序约束关系,YX,｜Y｜=m.于是,R在Y上的投影proj(R,Y)是Y上的一个m元线性序约束关系,满足unr(proj(R,Y))={s［Y］｜s∈unr(R)}.
+　　定义1.8. 设R是变量集X上的n元线性序约束关系,S是变量集Y上的m元线性序约束关系,D为实数域,X∪Y=U,｜X∩Y｜=p.于是,R和S的自然连接nj(R,S)是U上的(n+m-p)元线性序约束关系,满足unr(nj(R,S))={u｜u∈Dn+m-p,u［X］∈unr(R)且u［Y］∈unr(S)}.
+2 无损连接分解和数据依赖
+　　线性序约束数据库也存在数据依赖,它们的存在导致数据冗余并造成操作异常,而设计良好的模式可以部分地避免这些异常.
+　　定义2.1. 设R(X)是线性序约束关系模式,则R(X)上的数据依赖DEP是一个映射,其定义域是R(X)的所有实例的集合,值域为真或假.
+　　定义2.2. 设X,Y,Z是变量集,R(X),R1(Y),R2(Z)是线性序约束关系模式.若Y,ZX且Y∪Z=X,则称〈R1(Y),R2(Z)〉是R(X)的一个分解.考虑到分解是有意义的,通常Y-Z≠φ,Z-Y≠φ.
+　　定义2.3. 设R(X)是线性序约束关系模式,DEP是R(X)上的数据依赖,〈R1(Y),R2(Z)〉是R(X)的一个分解,R是R(X)的任一实例,R1=proj(R,Y)且R2=proj(R,Z).若unr(nj(R1,R2))=unr(R)成立,则称R(X)的分解〈R1(Y),R2(Z)〉是无损连接的.
+　　定理2.1. 设R(X)是线性序约束关系模式,〈R1(Y),R2(Z)〉是R(X)的一个分解,R是R(X)的任一实例,则unr(R)unr(nj(proj(R,Y),proj(R,Z))).特别地,对R中任一约束元组t,也满足unr(t)unr(nj(proj(t,Y),proj(t,Z))).
+　　例2.1:R是{w,x,y,z}上的线性序约束关系,
+　　　　　t1:　　　0＜w＜6∧-1＜x＜4∧1＜y-3z＜2,
+　　　　　t2:　　　w=8∧2＜x＜6∧0＜y-3z＜5,
+　　　　　t3:　　　w=8∧7＜x＜8∧0＜y-3z＜5
+　　可分解成
+　　　　R1(w,x): 　　　　　　　　　　　　　　　　R2(w,y,z):
+　　　　　t11:　　　0＜w＜6∧-1＜x＜4, 　　　　　　　t21: 　　0＜w＜6∧1＜y-3z＜2,
+　　　　　t12:　　　w=8∧2＜x＜6, 　　　　　　　　　t22: 　　w=8∧0＜y-3z＜5.
+　　　　　t13:　　　w=8∧7＜x＜8,
+　　定义2.4. 设R是X上的线性序约束关系,Y,ZX,t是R中的约束元组.若满足
+unr(proj(t,Y∪Z))=unr(nj(proj(t,Y),proj(t,Z))), 
+则称Y和Z在t中（语义）变量独立.否则,称Y和Z在t中相关.
+　　定义2.5. 设R是线性序约束关系.若存在与R等价的一个线性序约束关系R′,Y和Z在R′的每个约束元组中都是变量独立的,则称Y和Z在R中变量独立.否则,称Y和Z在R中相关.
+　　定义2.6. 设R(X)是线性序约束关系模式,Y,ZX.若Y和Z在R(X)的任一实例R中都是变量独立的,则称Y和Z在R(X)中变量独立.
+当把约束关系R中的每个元组看作只含一个元组的关系时,变量独立可以保证对这些相应的关系模式分解都是无损的,而对一般的R来说,不能保证一定能够进行无损连接分解.
+　　例2.2:R是X={w,x,y}上的线性序约束关系,
+　　　　　　　t1:　　　0＜w＜2∧0＜x＜1∧2＜y＜3,
+　　　　　　　t2:　　　0＜w＜2∧0＜x＜1∧3＜y＜5,
+　　　　　　　t3:　　　0＜w＜2∧2＜x＜3∧2＜y＜3.
+　　显然,{w,x}和{w,y}在R中变量独立,但R在{w,x,y}上的分解〈{w,x},{w,y}〉不是无损的.R在{x,y}上的投影是一个矩形区域的内部.假定还存在元组
+　　　　　　　t4:　　　0＜w＜2∧2＜x＜3∧3＜y＜5,
+则R(X)的分解〈{w,x},{w,y}〉就是无损的.
+　　为此,我们引入多区域存在依赖的概念.
+　　定义2.7. 设R(X)是线性序约束关系模式,Y,ZX,Y∪Z=X,Y∩Z=W.若对R(X)的任一实例R,
+均满足　　　　　　unr(nj(proj(t,Y),proj(t,Z)))=unr(nj(proj(R,Y),proj(R,Z))),
+则称R(X)满足多区域存在依赖MRED(multi-region existence dependencies):WY｜Z或W(Y-W)｜(Z-W).若Z=W,则称该MRED是平凡的.
+　　注意,多区域存在依赖与关系数据库里的多值依赖概念相似:多值依赖A→→B｜C是指对相同A值来说,B上投影与C上投影的自然连接是B∪C上投影的迭加;而多区域存在依赖AB｜C是指对A的相同区域而言,B上投影与C上投影的自然连接是B∪C上投影的迭加.但二者是有差别的:在多值依赖中,由B和C的投影经自然连接可完全恢复B∪C;而在多区域存在依赖中,由B和C的投影经自然连接不一定能恢复B∪C.
+　　例2.3:R是{w,u,v}上的线性序约束关系,
+　　　　　　t1:　　　2＜w＜3∧0＜u＜1∧2＜v＜3∧1＜v-u＜2,
+　　　　　　t2:　　　2＜w＜3∧5.5＜u+v＜6.5∧4.5＜v-u＜5.5,
+　　　　　　t3:　　　2＜w＜3∧2＜u＜3∧2＜v＜3∧-1＜v-u＜0,
+　　　　　　t4:　　　2＜w＜3∧2＜u＜3∧5＜v＜6.
+　　显然,R满足多区域存在依赖wu｜v,但unr(nj(proj(t,wu),proj(t,wv)))中的点并非都在R中,比如点(2.7,0.4,2.5)就不在R中.
+　　引理2.1. 设R(X)是线性序约束关系模式,Y,ZX,Y∪Z=X,Y∩Z=W,R是R(X)的任一实例,则下式成立:
+unr(nj(proj(t,Y),proj(t,Z)))unr(nj(proj(R,Y),proj(R,Z))).
+　　引理2.2. 设R(X)是线性序约束关系模式,R是R(X)的任一实例,则下列结论成立:
+unr(R)=unr()=unr(t).
+　　证明:由unr的定义知,unr(R)=unr().于是,对任一a∈unr(R),有a∈,从而a至少属于R中某个t的unr(t),因此,unr(R)∈unr(t).由unr(R)的定义知,对于任一满足t的b∈unr(t),b都在unr(R)中,因此,unr(t)∈unr(R).所以,unr(R)=unr(t).引理结论成立.　　　　　　□
+　　定理2.2. 设R(X)是线性序约束关系模式,Y,ZX,Y∪Z=X,Y∩Z=W,Y≠W,Z≠W.R(X)的一个分解〈R1(Y),R2(Z)〉是无损的,当且仅当Y和Z在R(X)中变量独立且满足多区域存在依赖WY｜Z.
+　　证明:设R是R(X)的任一实例.
+　　先证充分性.由Y和Z在R(X)中变量独立和引理2.2,知:
+unr(R)=unr(proj(t,X))=unr(nj(proj(t,Y),proj(t,Z))), 
+再由Y和Z在R(X)中满足多区域存在依赖WY｜Z,可知:
+unr(nj(proj(t,Y),proj(t,Z)))=unr(nj(proj(R,Y),proj(R,Z))), 
+因此,unr(R)=unr(nj(proj(R,Y),proj(R,Z)))成立.从而,分解〈R1(Y),R2(Z)〉是无损的.
+　　其次证明必要性.根据定理2.1,unr(t)unr(nj(proj(t,Y),proj(R,Z)))成立,于是得unr(R)=unr(t)unr(nj(proj(t,Y),proj(t,Z))).根据引理2.1,unr(nj(proj(R,Y),proj(t,Z)))unr(nj(proj(R,Y),proj(R,Z)))成立,因为unr(nj(proj(t,Y),proj(t,Z)))=unr(nj(proj(t,Y),proj(t,Z))),所以有unr(R)unr(nj(proj(t,Y),proj(t,Z)))unr(nj(proj(R,Y),proj(R,Z))).由假设R(X)的分解〈R1(Y),R2(Z)〉是无损的,即满足unr(R)=unr(nj(proj(R,Y),proj(R,Z))).进而,
+unr(R)=unr(nj(proj(t,Y),proj(t,Z))),　　　　　　　　　　　　　(1)
+
+unr(nj(proj(t,Y),proj(t,Z)))=unr(nj(proj(R,Y),proj(R,Z)))　　　　　　　　(2) 
+均满足.由式(2)得,R(X)满足多区域存在依赖WY｜Z.将R中的每个约束元组t变为nj(proj(t,Y),proj(t,Z)),由式(1)知,unr(nj(proj(t,Y),proj(t,Z)))unr(R),从而变化后的约束关系R′与R等价,且每一个约束元组均满足unr(proj(t,Y∪Z))=unr(nj(proj(t,Y),proj(t,Z))).于是,Y和Z在R中变量独立.由R的任意性知,Y和Z在R(X)中变量独立.
+　　综上所述,定理结论成立.　　　　　　　　　　　　　　　　　　　　　　　　　　　　□
+　　变量独立和多区域存在依赖都是线性序约束关系中的数据依赖,它们保证了模式的无损连接分解.我们还可以定义其他的数据依赖,下面给出另一种重要的依赖型.
+　　定义2.8. 设R(X)是线性序约束关系模式,Y,ZX,Y∪Z=X,Y∩Z=W.若对R(X)的任一实例R,都存在一个等价约束关系R′,使得在R′上存在一个划分{G1,...,Gp},1≤i,j≤p,i≠j,满足:
+　　(1) unr(nj(proj(t,Y),proj(t,Z)))=unr(nj(proj(Gi,Y),proj(Gi,Z)));
+　　(2) unr(proj(Gi,Y))∩unr(proj(Gj,Y))=φ;
+　　(3) unr(proj(Gi,Z))∩unr(proj(Gj,Z))=φ,
+则称R(X)满足分组多区域存在依赖PMRED(partitioned multi-region existence dependencies):WY｜Z或W(Y-W)｜(Z-W).
+　　定理2.3. 线性序约束关系模式R(X)上的多区域存在依赖都是分组多区域存在依赖.
+　　可见,多区域存在依赖是分组多区域存在依赖的一种特殊形式.
+3 线性序约束的坐标线性变换
+　　先来看一个例子.
+　　例3.1:R是{x,y,z}上的线性序约束关系,
+t1:　　　1＜x＜3∧3＜y+z＜5∧1＜y-z＜3. 
+　　显然,{x,y}与{x,z}不是变量独立的.但若令y′=y+z,z′=y-z,则{x,y′}与{x,z′}却是变量独立的.
+　　定义3.1. 设变量集X={x1,...,xn},X′={x′1,...,x′n},X′中的每个变量都是X中变量的线性组合,即x′i=（其中aik为实常数,1≤i≤n）.可以用矩阵来表示.令
+ 
+则有Y′=AnnY.若｜Ann｜≠0,则称x′1,...,x′n是线性无关的;否则,称 x′1,...,x′n是线性相关的.
+　　定理3.1. 设变量集X={x1,...,xn},X′={x′1,...,x′n},线性序约束关系模式R(X),Y,Y′,Ann同定义3.1.若存在｜Ann｜≠0,使得Y′=AnnY,则R在X′与X上是一一对应的.
+　　略证:由｜Ann｜≠0知A-1nn存在,从而Y=A-1nnY′.易知,R在X上的每一点均在X′上有一点对应,且R在X′上的每一点也均在X上有一点对应.故,R在X′与X上一一对应.　　　　　　　　　□
+　　例3.2:在例3.1中,取
+ 
+　　从而得到新坐标系{x′,y′,z′}下的R′,
+t1:　　　1＜x′＜3∧3＜y′＜5∧1＜z′＜3. 
+　　它在{x′,y′,z′}上满足变量独立和多区域存在依赖x′y′｜z′,故存在无损分解〈{x′,y′},{x′,z′}〉.R在坐标系{x,y}上的投影是一个平行四边形.
+　　于是,对给定的变量集X,希望能够找到一个Ann（Ann≠0）,通过这样变换后使得R在获得的新变量集X′与X上一一对应,而且具有某些良好的性质.这样,第1、2节中给出的定义和定理在X′上依然成立.如果R在变量集X上不满足变量独立和多区域存在依赖,但若存在X的一个满秩线性变换,使得R在变换后的变量集X′上满足变量独立和多区域存在依赖,那么也可以进行无损连接的分解.
+4　结 论
+　　本文研究了线性序约束数据库中关系模式的无损连接分解.通过引入多区域存在依赖,证明了线性序约束关系进行模式无损连接分解的充要条件是变量集满足变量独立和多区域存在依赖.我们给出了分组多区域存在依赖的定义以及它与多区域存在依赖的关系,探讨了变量集在坐标线性变换下保持等价的性质,为某些类型的线性序约束关系提供了在变换后的新变量集下进行良性分解的途径.研究线性序约束关系中的其他数据依赖是未来的工作.
+致谢 感谢王宇君博士和田增平博士提供的资料,感谢汪卫博士和陈明博士参与讨论并提出了宝贵的意见.
+本文研究得到国家自然科学基金资助.
+作者介绍：范志新,1969年生,博士,主要研究领域为数据库,知识库.
+　　　　施伯乐,1935年生,教授,博士生导师,主要研究领域为数据库,知识库.
+本文通讯联系人:范志新，上海 200433,复旦大学计算机科学系
+作者单位：范志新　施伯乐　复旦大学计算机科学系 上海 200433
+E-mail: zxfan@ms.fudan.sh.cn
+参考文献
+　［1］Kanellakis P C,Kuper G, Revesz P. Constraint query languages. In: Proceedings of 9th ACM Symposium on Principles of Database Systems. 1990. 299～313
+　［2］Chomicki J, Goldin D Q, Kuper G M. Variable independence and aggregation closure. In: Proceedings of 15th ACM Symposium on Principles of Database Systems. 1996. 40～48
+　［3］Grumbach S, Su Jian-wen. Finitely representable databases. In: Proceedings of 13th ACM Symposium on Principles of Database Systems. 1994. 289～300
+　［4］Kanellakis P C. Constraint programming and database languages: a tutorial. In: Proceedings of ACM 14th Symposium on Principles of Database Systems. 1995. 46～53
+　［5］Kanellakis P C, Goldin D Q. Constraint programming and database query languages. Lecture Notes on Computer Science, Springer-Verlag, 1994,789:96～120
+　［6］Grumbach S, Su Jian-wen. Dense-order constraint databases. In: Proceedings of 14th ACM Symposium on Principles of Database Systems. 1995. 66～77
+　［7］Goldin D Q, Kanellakis P C. Constraint query algebras. Constraints Journal, 1996,1(1):24～32
+　［8］Paredaens J, den Bussche J V, Gucht D V. First-order queries on finite structures over the reals. In: Proceedings of 10th IEEE Symposium on Logic in Computer Science. 1995. 79～87
+　［9］Wang Yu-jun, Shi Bo-le, Qu Yun-yao. Decomposition and lossless Join in constraint database. Lecture Notes on Computer Science, Springer-Verlag, 1997,1191:80～91
+　［10］Preparata F P, Shamos M I. Computational Geometry――an Introduction. David Gries ed. New York: Springer-Verlag, 1985
+本文1997-11-11收到原稿,1998-02-25收到修改稿 

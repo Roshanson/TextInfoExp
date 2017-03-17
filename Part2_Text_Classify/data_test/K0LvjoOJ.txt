@@ -1,0 +1,163 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第19卷 第3期  Vol.19 No.3 1999
+
+
+
+复小波在图像编码中的应用
+许刚
+摘　要　讨论了复值小波基的解法以及相应滤波器组的构造.从得到的复值滤波器组的结果来看,其滤波器组的实部具有偶数长的对称性和线性相位.同时,将复小波对应的滤波器组和其他几种小波在图像编码上利用相同的量化器进行了对比,复小波在图像压缩性能上有较好的结果.
+关键词　复值小波,小波变换,图像编码.
+中图法分类号　TP391
+Application of Image Coding Using Complex-valued Wavelets
+XU Gang
+(Institute of Software The Chinese Academy of Sciences Beijing 100080)
+Abstract　 The solution on complex-valued wavelet basis and the corresponding construction of complex-valued filter bank are discussed in this paper, the real part of the complex-valued filter bank has linear phase, and its length is even which can be obtained from the complex-valued filter bank. Furthermore, the complex-valued filter bank is compared with other real filter using the same quantizer on coding of image, the complex-valued filter bank achieves well compressing performance.
+Key words　Complex-valued wavelet, wavelet transform, image coding.
+　　目前,有关小波应用于图像编码的文献很多.但从小波基的观点出发,在图像编码中主要有正交和双正交小波两大类.Mallat算法［1］是小波变换的核心,其算法中仅仅用到了小波所对应的滤波器组对图像进行分解和重构.实正交的滤波器组其能量是守恒的,但是缺乏线性相位,并且要求利用信号或图像作不连续的周期性边界扩展,在一定程度上使重构的图像信号引入了人为的高频.双正交滤波器组具有线性相位,并且允许利用图像边界作连续的扩展,但是在变换区域中能量是不守恒的.目前,已构造出很多正交和双正交滤波器组［2～4］,但是出于滤波器组长度及压缩性能上的考虑,使得小波对应的滤波器组的使用变得十分有限,因此,对于高性能滤波器组和新一类小波滤波器组的研究是我们在图像压缩应用中感兴趣的问题.本文从复小波及滤波器的构造、性质和在图像编码中的应用等几个方面进行论述,并和其他几种典型小波在图像压缩还原质量上进行分析和比较,结果说明，复小波在图像编码中有较好的性能.
+1 复小波和滤波器组
+　　L2(R)上的多分辨率分析是闭子空间(R)的一个序列且
+VjVj+1, Vj={0},=L2(R),
+f(x)∈V0f(x-1)∈V0, f(x)∈V0f(2x)∈Vj+1,(1)
+则存在一个平方可积尺度函数φ∈V0,使｛φ0,k(x)=φ(x-k)｜k∈Z｝是V0的一组正交基,令
+φj,k(x)=2φ(2jx-k), j,k∈Z,(2)
+{φj,k}是空间Vj的一组正交基.由于φ∈V0V1,因此,存在一个复数序列{ak}满足,且
+.(3)
+多分辨率分析的目的在于将L2(R)分解成
+,(4)
+其中,子空间Wj定义为Vj在Vj+1上正交补子空间:Vj+1=VjWj.对于一个给定的尺度j,空间Wj是由相应于多分辨率分析的正交小波基Ψj,k(x)=2φ(2jx-k)的集合来生成.由于Ψ∈W0 V1,因此,存在一个复数序列{bk},使得
+.(5)
+其中bk=(-1)k1-k,保证集合｛2Ψj(2jx-k),k∈Z｝是Wj的一组正交基.在通常情况下,若一个函数f(x)∈Vjmax,则它可用下式来表示.
+(6)
+f(x)∈L2(R)的离散多分辨率分析可表示为
+(7)
+其中j0是一个给定的低分辨率尺度,系数Cjk和djk是多分辨率分析基上的正交投影.
+C=〈φj,k,f〉, d=〈Ψj,k,f〉.(8)
+利用Daubechies小波［1］,有小波快速分解算法(FWT),它是由低通投影Vj→Vj-1和高通投影Vj→Wj-1组成.
+(9)
+同时,由Vj-1和Wj-1的元素能够组成在Vj上的一个唯一向量,这个重构将用逆FWT来实现:
+(10)
+　　对称的复小波必需满足以下条件:
+　　(1) φ有紧支撑:对整数J要求φ在区间［-J,J+1］上有紧支撑,且对k=-J,-J+1,...,J,J+1,有ak≠0.
+　　(2) {φ(x-k)}正交:由于我们是用Daubechies小波构造复小波,因此,这个条件在很大程度上取决于Daubechies小波.
+　　定义（含负幂）多项式
+, 且H(1)=1,(11)
+其中z在单位圆上｜z｜=1.集合{φ0,k(x),k∈Z}的正交性能够通过以下等式来说明.
+P(z)-P(-z)=z.(12)
+其中,多项式P(z)定义为
+P(z)=zH(z)(z).(13)
+　　(3) 式(6)逼近的精确性:由尺度函数φ决定函数的正则性,根据式(11)要求小波具有J阶消失矩,即
+H′(-1)=H″(-1)=...=H(J)(-1)=0.(14)
+　　(4) 对称性:这个条件相当于ak=a1-k,并且可以写成
+H(z)=zH(z-1).(15)
+在以上4个条件下,Lawton已证明了对J为偶数时,复值函数φ和Ψ是存在的［5］.其求解过程可利用等式(12)、(14)和(15)求解参数.由等式(12),定义一个多项式:
+.(16)
+其中
+ j=0,1,2,...,J.
+显然PJ(z)满足等式(12).
+　　qJ(z)的2J个根显示了明显的对称性:一个根的共轭和逆也是其根.如果取根xk=1,2,...,J在单位圆(｜xk｜＜1)内并且k=xJ+1-k,则
+,(17)
+且低通滤波器H(z)能够写成
+(18)
+其中R,R′是{1,2,3,...,J}的两个子集.P(z)=zH(z)(z)频谱的因式分解说明qJ=zJρ(z-1)ρ(z)导致在R和R′上的以下限制条件
+k∈RkR′.(19)
+其根的这一选择完全满足(1),(2)和(3)的条件.当R={1,2,3,...,J}和R′={/}相应于用n=2J+2的Daubechies方法来得到其解时,对称性条件(4)的补充定义为等式(19)求解的一个子集,它相应于以下限制条件
+k∈RJ-k+1∈R′ 且 kR′.(20)
+对于J的任何偶数值,这相当于在“Daubechies小波”（2J个复的和实的元素）原集上定义了2复数解的一个子集(注意一个解的复数共轭也是一个解).
+　　考虑一个解的特例,它对应以下根的选择:
+R={1,3,5,...,2k+1,...,J-1}, R′={2,4,...,2k,...,J},
+这明显满足(20)式.因此,复尺度函数和复小波能够写成
+φ(x)=h(x)+ig(x), Ψ(x)=w(x)+iv(x),
+其中h,g,w和v都是实函数.表1中(a)、(b)、(c)给出了其的滤波器组系数.
+表1 复对称滤波器组(其中ak=a1-k)
+
+kRe［ak］Im［ak］kRe［ak］Im［ak］kRe［ak］Im［ak］
+10.6629120.17116310.6430030.18285210.6788920.0181398
+20.110485-0.08558120.151379-0.09422320.134037-0.0508013
+3-0.066291-0.0855813-0.080639-0.1179473-0.119820-0.0273029
+　4-0.0171280.0087284-0.0129460.0341596
+50.0104920.02059050.0321450.0270322
+　6-0.0004170.0009268
+7-0.004785-0.0021542
+(a) J=2(b) J=4(c) J=8
+
+　　基于二维小波变换,可以用两个多尺度空间Vj的张量积来构造二维多尺度分析.详细的二维小波变换算法可以参考文献［1］. 
+2 小波和图像编码
+2.1 滤波器的设计和选择
+　　前面我们已叙述过,在小波变换中实际上只用到了小波对应的滤波器组,因此,对滤波器组的设计和选择是十分重要的.在滤波器组的设计中有一些约束条件,如完全重构、有限长度和一定的正则性等.滤波器组的正则性在小波变换和完全重构之间有重要的关系,它曾经作为评价滤波器组的一个标准而提出来,但是从我们的实验和文献［4］可以看到,在滤波器的正则性和重构图像质量之间仅仅有部分相关.在设计和选择滤波器时还有一个需要考虑的重要性质是线性相位,具有线性相位的滤波器在图像处理中是十分重要的［9］,这一点限制了很多正交滤波器的使用.但是双正交滤波器组、样条滤波器和复小波滤波器完全满足这一条件.双正交滤波器组最早是由Cohen和Daubechies设计的［6］，并由Antonini首次引入图像编码［3］.本文利用双正交滤波器组的目的在于和复小波滤波器进行图像编码的对比.
+　　我们考察了等式(1)中2J≤28的所有复解,其结果是有总数为127个正交滤波器组,从压缩性能上看,有些滤波器的性质并不好,此外,滤波器长度太长(≥30),增加了在进行小波变换时的计算量,同时也增加了应用的复杂性,因此我们给出了表1中3种复小波的滤波器的值.文献［5］只给出了表1(a)的值,并只对一维信号作了简单的解释.在第1节中,有Θ(x,y)G(x,y)和Ψ(x,y)αG(x,y),由于α值较小,因此实部值要比虚部值大得多.所以，在进行小波变换时我们只用到了滤波器的实部值,虚部值的舍去虽然使滤波器的能量有所损失,但对整幅图像而言,比图像量化所带来的损失要小得多.此外，从求解出的复滤波器值来看,其长度为偶数且具有对称性,这一点比奇数长滤波器有更好的性质.
+2.2 图像编码
+　　小波在图像编码中的应用通常由以下部分组成：
+小波变换量化和位分配熵编码.
+小波变换以Mallat算法为核心,其基本思想和金字塔方案［7］及子带编码方案［8］相近似,它将输入图像分解成按不同频带宽度、不同分辨率的子带图像,每一层有4个子带图像,每次将4个子带图像中的低频子带再次分解,第k次分解后，其总的子带数为3k+1.在一定精度下，小波逆变换能够完全重构原始图像.为了得到较高的压缩率,需要对变换系数进行量化处理.变换系数被量化以产生符号流,每一标号对应着特定的量化阶层的标记,信息的损失一般是在量化级上.位分配技术通常用到量化级上,在小波图像编码中，它是对各个子带动态地分配量化位数来实现压缩和自适应图像信号,关于位分配技术的详细内容可见文献［9］.量化后的符号流通常使用二维Huffman编码,但是,目前国际上用性能更佳的算术编码［10］来代替Huffman编码.在实验中,我们用到的是算术编码.
+2.3 实验结果和分析
+　　我们利用3幅国际标准灰度图像来进行实验,它们是Lean,GoldHill和Barbara,其图像大小为512×512,8b/pixel.利用几种典型小波对应的滤波器和复小波对应的滤波器进行图像编码的实验结果如表2和表3所示.
+表2 几种小波对应的滤波器在分层结构均匀矢量量化下的对比
+
+小波类型LEAN PSNRGOLDHILL PSNRBARBARA PSNR
+Antonini134.9131.8229.09
+Antonini235.7332.0529.70
+Antonini318.9018.9417.82
+Daub434.3631.3128.13
+Daub634.7531.5128.81
+Daub834.9531.4029.07
+Villasenor335.7732.1129.70
+Villasenor535.1731.8428.91
+Complex227.6428.6925.57
+Complex426.0727.5024.37
+Complex835.2531.9329.95
+
+表3 几种小波对应的滤波器在类似零树量化下的对比
+
+小波类型LEAN PSNRGOLDHILL PSNRBARBARA PSNR
+Antonini135.4032.1228.09
+Antonini236.0832.5629.70
+Antonini317.9519.0717.70
+Daub434.6231.9028.36
+Daub635.1931.9428.75
+Daub835.3732.1228.94
+Villasenor335.9232.6329.57
+Villasenor535.6832.7629.00
+Complex227.6328.6225.34
+Complex426.0527.4224.26
+Complex835.4332.3929.92
+
+　　在我们的实验中,离散小波变换的层数是5,其设定的压缩比为16:1.Antonini1,Antonini2和Antonini3为Antonini在文献［3］中给出的双正交滤波器组.Daub4,Daub6和Daub8为Daubechies在文献［2］中给出的实正交滤波器.Villasenor3和Villasenor5为Villasenor在文献［4］中给出的具有偶数长度双正交分析/综合滤波器组.Complex2,Complex4和Complex8为本文表1中给出的复滤波器组.此外,在实验中使用了两种量化策略,一种是分层结构均匀标量量化,另一种是类似于Shapiro零树量化［11］策略,但算法略为简单一些.由于本文的侧重点是复滤波器的设计和编码结果,因此,两种量化算法将另文叙述.对于重构图像的质量,我们采用标准的PSNR计算方法.
+　　从我们的实验结果来看,Daubechies小波对应的实正交滤波器重构图像的PSNR值对3幅图像来说,其结果差异不大.Daub8的综合性略好一点,但是Daubechies小波不具有对称性,并且其对应的实滤波器不具有线性相位.Antonini的3组滤波器处理图像的结果有较大的不同,其中Antonini3的结果是不能令人满意的,而Antonini1和Antonini2有很好的结果.Antonini3滤波器是用Burt的金字塔数据［7］计算出来的分析/综合滤波器组,但是Antonini2是典型的双正交滤波器组.目前,这种7/9带双正交滤波器组在小波图像编码中广为应用,可以说它是具有最佳性能的滤波器组.Villasenor3和Villasenor5也有较好的结果,所不同的是,Villasenor的分析/综合滤波器的长度同为偶数,而Antonini的分析/综合滤波器的长度同为奇数,相同之处是,它们都是双正交且具有线性相位.复值滤波器Complex所得到的结果差异较大,其Complex8的结果是相当不错的.根据我们对其他大量图像的测试,Complex8和Antonini2有相近的结果.但是，Complex8仅仅用到了一个偶数长系数集合且具有线性相位,这是一个十分重要的结论.
+　　表2和表3的实验结果为5层离散小波变换,共得到10个子带图像,在小波图像编码中进行多少次离散小波分解才能使重构的图像质量有较好的结果，这在很多文献中都没有具体叙述,因为这与使用滤波器的长度和图像的大小有关,但通常分解在3～5层之间.为了更进一步了解离散小波变换的分解层次和重构图像质量之间的关系,我们给出了在几个分解层上的图像重构的结果.如表4所示,这里我们只选用了Antonini2 7/9带双正交滤波器和复滤波器Complex8,后者滤波器的长度为14.
+表4 不同分解层在分层结构均匀标量量化下的结果
+
+小波类型LENA PSNRGOLDHILL PSNRBARBARA PSNR
+3层4层5层3层4层5层3层4层5层
+Antonini235.3135.7335.7331.9732.0432.0529.5229.7229.70
+Complex8
+
+　　表4设定的压缩比为16:1,两种滤波器在不同层的结果略有变化,但不十分明显.此外,由于我们使用了位分配量化技术,因此,图像的压缩比是可调的,我们给出在不同位率下Complex8小波编码3幅图像的处理结果,如表5所示.
+表5 复小波Complex8在分层结构均匀标量量化下不同位率的结果
+
+NAMEPSNRRATE(BIT/PIXEL)　
+0.100.200.300.400.500.600.700.800.901.00
+LENA28.9531.6133.1934.1035.2736.0436.6136.8137.2337.91
+GOLDHILL27.3829.1530.4531.2431.9432.8633.4934.2334.6635.16
+BARBARA23.7025.9426.9428.6129.9530.7831.7532.2533.2534.04
+
+3 结 论
+　　复小波目前在国际上的研究还处于起步阶段,特别是在图像编码应用中复小波所出现的文献还不多.本文利用复值滤波器的实部系数进行小波变换,这一点在图像编码中是很重要的.复滤波器的实部系数具有偶数长的对称性,能够较好地适应图像压缩.从我们的实验中可以看到,复滤波器重构图像的质量和最佳滤波器得到的重构图像质量基本相同.此外,复滤波器仅仅用到了一个系数集合,这和双正交滤波器用到两个系数集合是不同的,这一点减少了计算的复杂性,有利于硬件实现.
+　　本文所得到的复滤波器是从Daubechies小波中衍生出来的,这一点和Antonini构造的双正交滤波器（利用样条）有相似之处.不同之处是将实滤波器的设计方法扩展到复域.在小波图像编码中,小波变换只是编码的一个组成部分,图像重构的质量不能完全取决于滤波器的选择,特别是和小波变换后系数的量化策略有很大的关联,同一滤波器用不同的量化算法其结果会有所不同.因此，一个完备的小波图像编码系统应该是由高性能滤波器加最佳量化算法及相应的熵编码组成.
+本文研究得到中国科学院重点项目基金资助.作者许刚,1963年生,博士后,主要研究领域为信号和图像处理.
+　　本文通讯联系人:许刚，北京100080,中国科学院软件研究所
+作者单位：中国科学院软件研究所 北京 100080
+　　　　　E-mail: ljf@ox.ios.ac.cnｖ
+参考文献
+［1］Mallat S G. A theory for multiresolution signal decomposition: the wavelet representation. IEEE Transactions on Pattern Analysis and Machine Intelligence, 1989,11(7):674～693
+［2］Daubechies I. Orthonormal basis of compactly supported wavelets. Communications on Pure Applied Mathematics, 1988,41(10):909～996
+［3］Antonini M et al. Image coding using wavelet transform. IEEE Transactions on Image Processing, 1992,1(2):205～220
+［4］Villasenor J D et al. Wavelet filter evaluation for image compression. IEEE Transactions on Image Processing, 1995,4(8):1053～1060
+［5］Lawton W. Applications of complex valued wavelet transforms to subband decomposition. IEEE Transactions on Signal Processing, 1993,41(12):3566～3568
+［6］Cohen A et al. Biorthogonal bases of compactly supported wavelets. Communications on Pure and Applied Mathematics, 1992,51(9):485～560
+［7］Burt P J et al. The Laplacian pyramid as a compact image code. IEEE Transactions on Communications, 1983,31(4):532～540
+［8］Woods J W et al. Subband coding of images. IEEE Transactions on Acoustics Speech and Signal Processing, 1986,34(5):1278～1288
+［9］Shoham Y et al. Efficient bit allocation for an arbitrary set of quantizer. IEEE Transactions on Acoustics Speech and Signal Processing, 1988,36(9):1445～1453
+［10］Witten I H et al. Arithmetic coding for data compression. Communications of ACM, 1987,30(6):520～540
+［11］Shapiro J M. Embedded image coding using zerotree of wavelet coefficients. IEEE Transactions on Signal Processing, 1993,41(12):3445～3462
+（1998-03-09收稿）

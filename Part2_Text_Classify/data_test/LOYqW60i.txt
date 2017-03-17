@@ -1,0 +1,146 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.4　P.532-539
+
+
+
+
+小波空间的视图变形合成
+徐丹　鲍歌　石教英
+　摘要　该文提出一种新的基于2D离散小波变换和图像变形技术的视图合成方法.该方法完全依赖于已知的一对视图来合成期间的变换视图,无需相机标定或其他几何信息.其基本思想是：首先,采用立体视觉技术找出图像对间的基本矩阵,将两个图像变换到一个规范的模式定义下,即使得其图像平面平行,并且对应像素位于同一条扫描线上.然后,给出一种小波空间的图像变形方法,可以快速地生成期间的变换视图,而且还便于进一步对小波系数进行量化编码.绘制时,先作必要的解码,再通过小波逆变换将合成的小波系数恢复到图像空间.最后,经过一个后置变换,将期间视图从规范模式变回到原来的模式定义中.该方法的特点是，小波变换不仅可以同时保持频域和空域的良好特性,而且还提供一种多分辨率的表示模式,提高了算法的性能.另外,文章还对不同小波类型的影响进行了讨论.
+　关键词　视图合成,小波变换,图像变形,基本矩阵,IBMR(image-based modeling and rendering),极线.
+　中图法分类号　TP391
+View Synthesis via Wavelet-Based Morphing
+XU Dan
+（State Key Laboratory of CAD & CG Zhejiang University　Hangzhou　310027）
+BAO Paul
+（Department of Computing　The Polytechnic University Hong Kong）
+SHI Jiao-ying
+（State Key Laboratory of CAD & CG Zhejiang University　Hangzhou　310027）
+Abstract　　This paper presents a new view synthesis technique using image morphing and 2-D discrete wavelet transform. The paper aims at pairwise images that are known without camera calibration and any other geometric information. Firstly, estimate the fundamental matrix related with any pair of images by techniques from stereovision. Using fundamental matrix, any pair of image planes can be rectified to be parallel and their corresponding points lie on the same scanline. Secondly, the paper describes an image morphing algorithm running in the wavelet domain. The proposed algorithm can synthesize new views more quickly. Any quantization techniques can be embedded here to compress the coefficients in depth. When displaying, compressed images are decoded and an inverse wavelet transform is achieved. Finally, a postwarping procedure is used to transform the interpolated views at desired position. Nice features of using wavelet transformation are its good locality in both space and frequency and its multiresolution representation mode, which makes the generated views be refined progressively and hence is suitable for communication. Also, the paper discusses the influences of different kinds of wavelet on the results.
+Key words　View synthesis, wavelet transform, image morphing, fundamental matrix, IBMR (image-based modeling and rendering), epipolar line.
+　　IBMR(image-based modeling and rendering),即基于图像的建模和绘制,是近年来国内外计算机图形学界和计算机视觉界讨论、研究的焦点.它不依赖于几何模型,而是利用一组预先获得的图像来编码场景,并通过适当的插值来合成位于不同视点的新视图.目前已提出了很多IBMR方法［1］,如基于全视函数的方法、基于立体视觉的方法、基于视图插值和视图变形的方法、图像拼合及分层绘制等.其中基于视图变形(view morphing)的视图合成方法是由Seitz和Dyer在SIGGRAPH'96会议上提出的一种采用图像变形技术的方法［2］.众所周知,图像变形(image morphing)技术可以在两幅形状及色彩完全不同的图像之间产生一系列连续的期间过渡图像,这些期间图像的面目可能与起始和终结图像完全不同.与其相反,视图变形强调物理的合理性,即所生成的期间图像应该保持起始和终结图像的形状.理论上,视图变形的理想结果应该产生对象在不同视点的相应透视视图.
+　　Seitz等人的视图变形方法可以总结为3个步骤.首先,将起始和终结图像变换到一个规范化的结构模式定义下,使得它们的图像平面平行,并且对应像素位于同一条扫描线上,称这一特性为扫描线特性.然后,期间的图像通过一般的图像变形技术产生.扫描线特性保证了图像变形的结果是形状不变的.最后,通过一个后置变换将中间图像还原回初始的结构模式定义下.与其他IBMR方法相比,视图变形方法的优点是,简单、不需要几何信息,而且在单调性(monotonicity)的约束下可以不考虑可见性问题［3］.但它仍然存在着传统图像变形方法所面临的问题,这将下文加以讨论.
+　　图像变形技术是一种极为普遍的图形技术,它产生一系列连续变化的期间图像,使得起始图像逐渐地变化到终结图像.这其中的关键问题是如何从已知的图像对应特征(点或线)推演出一组相应的变换函数(warp functions)［4］,也称为传递函数(transition function).事实上,传递函数是一组2D几何变换,一方面，它使起始图像沿着终结图像的方向扭曲,另一方面又使终结图像沿相反方向变形,形成两个相对的时间序列.最后,在同一时刻的两幅变形图像组合成该时刻的新视图.
+　　Mesh-Base［5］和Field-Based［6］是两种最流行的图像变形方法.在前一种方法中,特征被指定为非均匀的控制网格,变换函数通过样条插值产生.其缺点是在每一时刻都要掌握网格信息,而对网格的控制操纵较为复杂.后一方法提供了良好的接口来指定起始和目标图像中的特征线段.变换图像时,每一特征线段都有一定的影响域,变形图像由所有线段影响域的加权平均来确定.这些方法的一个共同缺点就是非常耗时,计算时间取决于图像分辨率和特征数目.另外,图像质量还受特征附近的高频噪声的影响.
+　　众所周知,消除噪声的常用手段是将空间域的数据转化到频域,滤掉高频部分；而另一方面,层次方法是提高算法效率的简便途径.基于上述两点考虑,我们提出了基于小波的方法.这是因为小波分解不仅提供了一种多分辨率的层次表示结构,同时又保持了空域和频域的良好局部性.事实上,已经有作者发表了频域空间的三维变形技术.例如,文献［7］提出了一种基于小波的方法以实现两组体数据集间的变形；还有人提出了基于Fourier变换的三维体变形方法［8］.
+　　本文提出了一种面向IBMR应用的快速视图变形方法.该方法是对文献［2］中所提出的算法的一种改进,其特点在于将传统的图像变形技术移植到小波空间完成,既提高了算法效率，又消除了噪声.另外,在我们的算法体系下,还可以灵活地嵌入各种基于小波空间的图像处理方法,如滤波、量化等等.这非常有利于图像、视频数据的通信以及基于Web的IBMR应用.
+　　我们的方法由4步组成，假设I1和I2是两幅已知的图像.
+　　步骤1. 修正.利用基本矩阵(fundamental matrix)找出两个变换矩阵H1和H2,将参考图像变换到规范化的模式定义下,即使得H1I1和H2I2的图像平面平行,并且满足扫描线特性.这一特性保证了图像的插值是线性的且为形状保持的.
+　　步骤2. 小波空间的图像变形.先用2D小波变换将修正后的图像分解成金字塔结构,然后再用Field-Based图像变形技术逐层地插值产生中间视图的小波系数.
+　　步骤3. 量化.小波变换系数可以进一步地量化以利于存储和通信.例如,可以采用VQ技术.显示时,编码数据可以很快地解码.
+步骤4. 重构.用小波逆变换将插值产生的期间系数变换回图像空间生成新的视图.然后,再作一个后置变换，将期间图像由规范模式定义还原回最初的模式定义.
+1　基本矩阵和图像校正
+　　我们的前提是在更一般的情况下讨论视图合成问题,即只知道参考图像本身,而没有任何其他相机参数.这一假设更适合IBMR应用.为此，需要掌握一些计算机视觉的知识.在立体视觉中,如果从投影空间(并非从欧几里德空间)考虑两个相机之间的几何关系,被称为极几何(epipolar geometry)关系.两个相机之间的重要极几何信息隐含在一个3×3、秩为2的矩阵中,称该矩阵为基本矩阵(fundamental matrix),简记为FM［9］.
+　　如图1所示,假设两个相机的投影中心为C1和C2,两个图像所在的平面分别为I1和I2,称过两投影中心的直线为基线(baseline),记为C1C2.设C1C2在I1和I2上的投影分别为e1和e2,称为极点(epipole).I1上通过e1的直线和I2上通过e2的直线称为极线(epipolar line).如果已知I1和I2上两对应点m和m′,I1上过m的极线称为m′的极线,记为l′；反过来，称过m′的极线为m的极线,记为l.
+
+Fig.1 Epipolar geometry between two cameras
+图1　两个相机间的极几何约束
+　　FM包含了一对图像间全部的几何信息,我们的首要任务就是要估计出FM.为此,需要知道到两幅参考图间的特征对应关系.我们已经开发了一种在小波空间中自动寻找局部对应匹配的方法［10］,其缺点是非常耗时.一种简单而直接的方法就是交互地指定至少8对对应点,但不能保证精度.文献［9］分析了用不同方法计算FM的稳定性和不确定性.
+　　给定图像I1中的一点m,其相应的图像I2中的极线l′表示为
+l′=Fm　　　　　　　　　　　　　　　　　　(1)
+根据立体视觉中著名的极约束(epipolar constrain)条件,I1中任意一点m在I2中的对应点m′一定在极线l′上,并且满足
+m′Fm=0　　　　　　　　　　　　　　　　　　(2)
+如果已知至少8个对应点,F的参数可以用最小二乘法或非线性的方法估计出来.非线性方法通常比线性方法更精确、更稳定.在我们的方法中,先用线性方法拟合一个初始值F0,然后再用非线性的迭代法找到较稳定、较精确的解.详细的讨论和分析请见文献［9］.
+　　为了将两幅图像修正到一规范化的模式定义下,必须找到两个变换H1和H2,使得H1I1和H2I2满足扫描线特性.文献［2］证明了满足扫描线特性的充分必要条件是，其FM具有如下形式：
+　　　　　　　　　　　　　　　　　　(3)
+式(3)可以相差一个常数比例因子.也就是说，H1和H2满足
+　　　　　　　　　　　　　　　　　　(4)
+文献［2］同时也给出了由F矩阵计算修正变换H1和H2的方法.
+2　二维小波变换
+　　小波分析是最初用于信号处理的技术［11,12］,但目前它已广泛地用于图形学领域,例如，表面造型、辐射度、光线跟踪、纹理映射、体绘制及图像压缩等.这有两方面的原因：一方面，小波变换在空域和频域都有很好的局部性；另一方面，小波多分辨率分析又为信号表示提供了一种层次结构.小波变换将一个函数分解为不同分辨率的层次,每一层上有4个域,其中一个域是对原函数的平滑拟合,称为拟合域(approximated band)；另外3个域描述了拟合域与原函数的差别,称为细节域(detail band).这种表示为加速某些图形算法提供了可能.这里，简要介绍一下2D小波多分辨率分解的情况.
+　　形式化地,一函数f∈L2(R)在分辨率2i上的平滑拟合是一个投影,记为A2j：L2（R）→V2j,V2j∈L2（R），它在任意较高分辨率2j上的细节域是f到L2（R）的子空间O2j上的投影,记为P2j：L2（R）→O2j，j＞i.我们可以适当地选取投影函数,使得它们彼此正交,并且都与V2i正交.对于离散函数,存在两个函数集组成V2i和O2j的正交基,分别称它们为小波函数和尺度函数,记为
+ψj，n＝2－j／2ψ（2jt－n）n∈Z　　　　　　　　　　　　　　(5)
+φj，n＝2－j／2φ（2jt－n）n∈Z　　　　　　　　　　　　　　(6)
+根据这两个函数,分辨率2j上的细节域和拟合域分别定义为
+(D2jf)=2-j/2〈f（u），ψj，n〉　　　　　　　　　　　　　　(7)
+(Ad2jf)n=2-j/2〈f（u），φj，n〉　　　　　　　　　　　　　　(8)
+式(7)和式(8)的内积可以用函数的金字塔分解来代替.对于二维离散图像函数,金字塔算法连续地沿着每一维分解.具体来讲是通过一个低通滤波器和一个高通滤波器来实现,如图2所示.其中H和G分别是两个滤波器的脉冲响应,定义为
+H(n)=〈2-1φ(2-1u),φ(u-n)〉　　　　　　　　　　　　　　(9)
+G(n)=〈2-1ψ(2-1u),ψ(u-n)〉　　　　　　　　　　　　　(10)
+
+Fig.2 Wavelet decomposition for image
+图2　图像函数的二维小波分解
+　　图3是一个小波变换的例子.注意，在每一分辨率层次上的拟合域和细节域都保持了空间局部性,同时，小波变换通过高通和底通滤波把高频和低频区域分割开来.左上下角是低频区域,右上角是水平高频垂直低频区域,左下角是垂直高频水平低频区域,而右下角则是高频区.这样就为除噪和特征提取提供了方便.
+
+
+Fig.3 Two-Dimensional wavelet transform
+图3　2D小波变换
+3　小波空间的图像变形技术
+　　由于小波变换的空间局部性,因此考虑把传统的域变形算法移植到小波变换的每一个带通子图像中.唯一要解决的问题是如何在小波空间中定位相应的特征线段.
+3.1　点的能量分布
+　　决定特征线在各小波子域中的位置的一种简单方法是将其空间坐标沿每一维乘以常数因子2j-n,其中2n是原始图像分辨率,2j是当前层的分辨率.
+　　然而实验表明，并不是所有的小波都满足这一简单的空间特性,因为图像的离散小波变换是基于矢量而非基于点的.也就是说,小波空间中每一点都会受图像空间中多个像素的影响,像素个数取决于带通滤波器的长度.反过来,图像空间的每一像素都对小波空间的多个系数有贡献.总之,我们必须知道小波变换后一个点的能量分布.为此,我们将一个点图像(即只有一个像素被点亮的图像)变换到小波空间中,并观察其能量分布.图4是一个点图像在不同小波变换下的能量分布,系数的能量越高,它看起来越暗.
+
+
+Fig.4 Energy distribution of various kinds of wavelet
+图4　不同小波变换的点能量分布
+　　由于小波变换会引入负值系数,图4显示时取了绝对值.尽管如此,有些被影响系数的能量因为太小仍然看不见.从图4可以看出,滤波器越短,能量的分布越集中，且越接近理想的位置,即坐标以常数因子2-1逐层缩小.相反地,小波越平滑,其能量分布的区域越大.注意,图4中显示的能量分布区域不一定是连通的.
+3.2　特征线位置的确定
+　　我们已经讨论了不同小波基的选取会影响不同小波子域中特征线的确定.为了精确地、自适应地获得特征在各子域的坐标,我们设计了一个简单的算法来快速地决定与原线段一致的新特征位置.这里，一致性意味着新线段控制点选取的合理性.
+　　算法. for每一多分辨率层次l
+　　　　　　　for每一线段及其每一端点
+　　　　　　　(1) 将点图像变换到某个选定的小波空间,点图像的大小与起始图和终结图相同；
+　　　　　　　(2) 从拟合域和细节域中选取当前特征端点的新位置；
+　　　　　　　(3) 在每个子域中建立一个与当前处理线段对应的新的线段；
+　　　　　　　end ％for line
+　　　　　end ％for level
+　　从拟合域和细节域中选取当前特征端点的新位置可以有不同的规则,例如选择能量最小、能量最大、能量均值以及能量绝对值最大的系数.我们的实验表明，最后一个规则结果较好,即选择最暗的点作为新的特征控制点.
+3.3　小波空间中的变形
+　　一旦我们确定了某一层次上及某一子域中的特征线段集,就可以将一般图像空间中的变形算法直接应用到小波空间中.先变形起始和终结图像的小波系数,再利用它们插值生成期间图像的小波系数,最后用逆小波变换获得图像空间的新视图.图5显示了一个图像的变形系列,它拟合一个物体的旋转.其中第1幅和最后一幅取自Seitz's的网页,它们分别是起始和终结图像.
+
+
+Fig.5　Sequence of morphing image
+图5　图像变形系列
+3.4　不同小波的比较
+　　由于不同的小波基有不同的特性,因此我们用第3.2中节介绍的方法所得到的新特征线段坐标可能彼此不同.这意味着变形算法必须在每个子域中运行一遍,我们称这种方法为复杂算法.如果是这样,用小波分析的方法似乎没有达到加速变形算法的目的.通过分析不同带通子域中特征线的输出,我们发现，如果小心地选择小波基,可以使它们的输出完全相同.
+3.4.1 基于正交小波的变形
+　　Haar小波和Daubechies-4小波是最简单的正交小波.特征线的输出在每个方向域上是一样的.因此，对于Haar和Daubechies-4,可以运行一个所谓的快速变形算法,即只需计算拟合域中每个系数的变形位置,然后直接利用这一结果来获得其他3个子域的变形系数.这样只花费传统变形算法四分之一的时间.图6是用Haar和Daubechies-4小波的变形例子,结果是比较理想的；图7给出了快速算法和复杂算法的比较.两幅图中的结果都表示从起始到终止图像的变化过程中，中间的那一幅图像.小波基越平滑,即滤波器宽度越宽,则4个子域的特征线输出差别越大,这时，快速变形就会失败(如图7(a)所示,盒子表面非常模糊),因而只能依靠复杂算法逐个子域地进行计算.
+
+
+Fig.6 Fast view morphing of simple wavelet
+图6　简单小波的快速变形
+
+
+Fig.7 Comparison between the fast algorithm and the complex algorithm
+图7　快速算法和复杂算法的比较
+3.4.2 基于双正交小波的变形
+　　前面已经讨论了快速算法只能适合简单的小波,而复杂算法通常可为平滑小波提供一个较合理的结果.但计算时间却不少于传统的变形算法,而且会产生走样(比较图7中(b)的质量).为快速获得高质量的变形图像,我们考虑另一类所谓双正交对称小波.
+　　不同于前面的正交小波,双正交小波的优点在于，基本的滤波操作是从矢量两边一起进行的，并且两边的延拓无论何时都是相等的.因此，我们可以直接确定特征线在多分辨率小波域中的新位置,即将特征线控制点的坐标逐层地除以常数因子2,而无需通过算法决定.当然，此刻可以直接采用快速算法.图4(b)～(d)表明,无论滤波器有多长,能量的分布都集中,并且以理想位置为中心.不失一般性,这里只给出样条小波的实验结果,如图8所示.
+
+
+Fig.8 View morphing via biorthogonal wavelet
+图8　双正交小波的变形结果
+　　上图说明,对于这类小波,快速算法能获得合理的结果.
+4　绘制合成
+　　前面已经讨论了如何在小波空间的多分辨率表示下生成插值的小波系数.本节将讨论重构问题,还将指出我们的算法体系非常适合视频和图像的通信.
+4.1　后置变换(postwarp)
+　　为了产生图像空间的期间图像,只需将小波空间的变形结果用逆小波变换变回到图像空间中,这只需要1～2秒的时间.剩下的问题是把这些图像从标准模式定义恢复成最初的模式定义.
+　　一个简单但很有效的方法是在两源参考图像中分别选择一个四边形的4个控制点,然后依时间线性插值期间四边形.任意两四边形间都可以产生正反两个仿射变换,实现两图像间形状的变换.因此,让两个初始参考图像朝着同一个期间形状变形,然后再对它们的颜色插值产生合并的颜色.
+4.2　可见性分析
+　　由于视点的变化及场景中物体的相互遮挡,会使得有些原来可见的场景点在某些视图中不可见,而一些原来不可见的场景点在新视图中又变得可见.这将导致合成图像中出现一些空洞或重叠的现象.从图像变换的角度来讲,重叠是因为多个像素被映射到一个像素上.空洞是因为相邻像素变换后不再相邻,而是相差几个像素.这样就使得一些可见的前景点被错误地用背景颜色代替.在IBMR应用中,空洞是很难填充的,因为无法从原图中获得空洞位置的信息.这里,我们只简单地用附近的已知点插值来填充,但图像效果不佳.我们正在研究一种新的解决方法,试图能够恢复每一点的深度信息.
+4.3　便于通信的特点
+　　本文所介绍的视图变形方法的一个优点就是便于通信.首先,利用小波变换的多分辨率特性,可以在上层非常快地得到一个粗略的解,然后该结果可以逐层地逐步求精.这一特点非常适合图像及视频的传输,尤其是分布式的IBMR应用.其次,因为小波用于图像压缩已是非常成熟的技术,所以一些量化方法就可以直接嵌入到小波空间中,比如VQ.这样可以大大减少传输的数据.当然，这需要在客户端进行解码和绘制.
+5　实验结果
+　　我们已经知道，传统的变形算法执行效率完全取决于特征线的个数和图像的分辨率.基于小波的方法之所以能加速变形算法的效率,原因之一就是小波分解可以看作是对原图像的子采样.在我们的快速算法中,小波变换只分解一层,合成速度提高3倍.结果已显示在图5～8中.另外,由于小波变换把图像数据转换到频域空间,因而可以嵌入一些频域空间的分析技术,如去噪、过滤等.还有一种图像空间中的变形算法所不可能得到的效果，就是可以使不同的频域带具有不同的传递速率.例如,可以让低频部分快速过渡,而高频部分缓慢过渡,反之也可以.我们知道，高频部分对应于图像的细节,而低频部分反映图像的全局信息.因此，改变不同频域成分的传递速率可以得到一些有趣的期间图像.
+　　基于小波变形方法的缺点是结果质量比传统方法差一些,这并不是小波空间的变形算法所造成的,而是因为小波变换的子采样问题.我们比较了我们的结果与传统方法在一半图像分辨率下的结果之后发现,它们是完全一样的.为了改进结果图像的质量,可以把小波变形结果的高频部分代之以传统方法的高频部分.另一方法是，在放大的原图中选择特征线,再把这组特征线及原图返回原来的大小比例，并实施变形算法.这样做的目的主要是提高指定特征线的精度.
+6　总 结
+　　这里,我们讨论了一种用于IBMR应用中合成新视图的有效的视图变形方法.该方法将核心的图像变形部分放到小波空间中去实现,从而加速了算法执行的效率,同时消除了噪声.我们讨论了不同小波的选择对结果的影响,同时也给出了相应的解决策略.需要指出的是,该方法利用立体视觉的知识来获得有关两幅图像间的极几何约束关系,没有对相机的限制,不需要校正相机.另外,基于小波的方法能够获得逐步求精的结果,因而很适合Web上IBMR的应用.
+徐丹（浙江大学CAD＆CG国家重点实验室　杭州　310027）　
+鲍歌（香港理工大学电子计算系　香港）　
+石教英（浙江大学CAD＆CG国家重点实验室　杭州　310027）
+参考文献
+1，Xu Dan, Pan Zhi-geng, Shi Jiao-ying. Techniques of image-based rendering in virtual reality. Journal of Image and Graphics of China, 1998,3(12):1005～1010
+(徐丹,潘志庚,石教英.虚拟现实中基于图像的绘制技术.中国图像图形学报,1998,3(12):1005～1010)
+2，Seitz S M, Dyer C R. View morphing. In: Proceedings of the ACM Special Interest Group on Computer Graphics (SIGGRAPH'96). New York: ACM Press, 1996. 21～30
+3，Seitz S M, Dyer C R. Photorealistic scene reconstruction by voxel coloring. In: Proceedings of the Image Understanding Workshop. 1997. 1067～1073
+4，Wolberg G. Digital Image Warping. Los Alamitos, CA: IEEE Computer Society Press, 1990
+5，Nishita T, Fujii T, Nakamae E. Metamorphosis using Bezier clipping. In: Proceedings of the 1st Pacific Conference on Computer Graphics and Applications. Seoul: World Scientific Publishing Co., 1993. 162～173
+6，Beier T, Neely S. Feature-Based image metamorphosis. Computer Graphics, 1992,26(2):35～42
+7，He T S, Wang S, Arie K. Wavelet-Based volume morphing. In: Proceedings of the Visualization'94. Washington, DC: IEEE Computer Society Press, 1994. 85～92
+8，Hughes J F. Schedule Fourier volume morphing. In: Proceedings of the ACM Special Interest Group on Computer Graphics (SIGGRAPH'92). Computer Graphics. New York: ACM Press, 1992. 43～46
+9，Luong Q T, Deriche R, Faugeras O et al. On determining the fundamental matrix: analysis of different methods and experimental results. Technical Report, No.RR-1894, NRIA (Institut National de Recherche en Informatique et en Automatique), 1993
+10，Xu Dan, Bao Paul, Shi Jiao－ying. Image mosaics based on complex wavelet decomposition. Journal of Softwae, 1998,9(9):656～661
+(徐丹,鲍歌,石教英.基于复值小波分解的图像拼合.软件学报,1998,9(9):656～661)
+11，Stollnitz E J, Derose T D, Salesin D H. Wavelets for computer graphics: theory and applications. San Francisco, CA: Morgan Kaufmann Publishers, Inc., 1996
+12，Mallat S. Multiresolution approximation and wavelet orthonormal bases of L2(R). IEEE Transactions on Pattern Analysis and Machine Intelligence American Mathematics Society, 1989,11(7):69～8

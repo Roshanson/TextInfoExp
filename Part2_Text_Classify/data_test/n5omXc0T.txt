@@ -1,0 +1,127 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第12期  Vol.10 No.12 1999
+
+
+
+用于传感器非线性误差校正的新颖神经网络
+朱庆保
+摘要　该文阐述了用神经网络校正传感系统非线性误差的原理和方法,提出了一种新颖的简化小脑模型神经网络（SCMAC）及其模型、算法与实现技术.模型、算法采用直接权地址映射技术,以训练样本的输入为地址,建立起输入与权重的关系.任意输入作为相近的权地址,即可找到对应的权,经过联想插补后可获得高精度输出.此外,采用磁盘文件存储、寻址权重等方法,避免了微机内存溢出,使得实现容易.最后给出了一个仿真实验.实验结果表明,用SCMAC校正后,可使传感器的非线性误差减少到近似为零.
+关键词　小脑模型神经网络,传感器,非线性误差,校正,仿真.
+中图法分类号　TP18
+A Novel CMAC Neural Network for Correcting the Sensor's Nonlinear Errors
+ZHU Qing-bao
+(Developing Department of Computer Technology Nanjing Normal University Nanjing 210097)
+Abstract　 In this paper, the principles and the methods for correcting the nonlinear errors of the sensor system with a neural network are shown, and a novel simplified cerebella model articulation controller (SCMAC), which includes its model, algorithm and realized techniques, is proposed. The direct weight address mapping techniques are used in this model and algorithm, and the relation between the inputs and the weights is established by taking the inputs of training samples as their weight address, and the corresponding weights are found for any inputs by taking it as similar weight address, and the accurate outputs are obtained by the associable insertion algorithm. In addition, the weights are stored and addressed in a magnetic disk file, therefore, the overflow of internal memory of microcomputer are avoided, and the SCMAC is easily realized. Finally, a simulation experiment is given and the results show that the nonlinear errors of the sensor system are decreased to approximate zero after correcting with a SCMAC.
+Key words　Cerebella model articulation controller (CMAC), sensor, nonlinear errors, correction, simulation.
+　　在检测或测控系统中,一般采用传感器来拾取各种物理量,再经过传感器接口(俗称变送器),输出一定幅度的与输入量相对应的电信号.我们把传感器和变送器合称为传感系统.目前,大多数传感系统都是单输入、单输出的系统,可表示为
+y=f(u)，　　　　　　　　　　　　　　　　　　(1)
+其中y表示传感系统的输出,u表示传感系统的输入.
+　　y信号经过A/D转换即可被微机识别,我们的目的是根据测得的y求得未知的u,即
+u=f－1(y).　　　　　　　　　　　　　　　　　　(2)
+　　在实际应用中,f(*)分为两大类,一类为线性关系,另一类为非线性函数.所谓线性,也只是把其中的一段近似为线性关系,其近似程度决定了该类传感系统的线性精度,况且其两端一般呈非线性,因此,严格地说,f(*)都是非线性的.如果f(*)是一个简单的已知函数或线性关系,用式(2)求得u并不困难.但问题是，在很多情况下,使用者并不知道f(*)的准确形式,只是用其一段近似线性段(其精度和量程受限)或把一个非线性的f(*)用硬件补偿的方法将其中的一小段补偿成近似线性,这种方法难以做到全程补偿,并且补偿硬件的飘移会影响整机精度,因此可靠性和测量精度低,量程小,应用受到限制.
+　　为了消除或补偿传感系统的非线性,可使其输出y通过一个补偿环节,该环节的特性函数为
+p=F(y),
+其中p为补偿后的输出.若令
+F(y)=f－1(y),
+则有
+p=f－1(y)=u.　　　　　　　　　　　　　　　　(3)
+　　很显然,F(y)也是一个非线性函数.从式(3)可知,补偿后的输出p与被测量值u一致,使补偿后的传感特性具有理想特性,如图1所示.
+
+图1
+　　在实际应用中,非线性函数F(y)的表达式难以准确求出.为此,我们根据小脑模型神经网络［1］(小脑模型关节控制器cerebella model articulation controller,简称CMAC)具有逼近任意连续非线性函数的能力,让CMAC学习并逼近F(y),近而取代F(y).即:CMAC的输入即为传感系统的输出,CMAC的输出即为p=u.由于CMAC是针对复杂系统的应用而设计的,输入存在两层映射,即输入空间到概念存储器的映射,这一过程是一对一的映射关系,因此概念存储器是一个假想的、庞大的存储空间,用微机实现是困难的.为此,从概念存储器到物理存储器的映射采用了多对少的非线性映射,Albus's CMAC用hash映射来实现这一过程.正是由于hash映射才有可能使得CMAC在某些学习过程中不收敛或使收敛性态变坏,至少使收敛过程变慢［2］.
+　　此外,由于不同的输入有可能激励相同的权单元,因此Albus's CMAC存在着学了新的忘了旧的这种遗忘现象［3］.若不用hash映射,虽然保证了学习过程的收敛性,但学习过程所占用的容量与学习函数的维数成指数关系迅速膨胀,权存储空间利用率极低,为了解决这一问题,采用直接权地址映射逼近方法,可大大减少权重存储单元［4］.这一方案虽然有了较大的改进,但当所学习的函数维数较高时,学习过程所占用的权存储空间仍然是庞大的.一种最有效的方案是把一个多维问题分解成若干低维问题,分别分时地用直接权地址映射逼近技术的低维CMAC去求解或逼近,既能保证学习过程的收敛性,又能极大地降低存储空间的要求,使得用一般微机也易于实现.另一方面,许多应用问题都是求解一维函数问题,即使多维函数也可以分解成一维问题来解决.例如，目前绝大多数传感器都是一维的,而多数多维传感器都可以分解成一维问题来处理.
+　　综上所述,研究一种专用于映射一维非线性函数的CMAC是十分必要的,因此,根据CMAC是一种查表技术这一事实［5～8］,并结合本文提出的传感系统的非线性校正要求,我们提出了一种采用直接权地址映射技术的简化CMAC及算法.为了与CMAC相区别,我们称之为SCMAC(simplified cerebella model articulation controller). 
+1 SCMAC的基本原理结构及基本算法
+1.1 基本原理结构
+　　SCMAC的简单原理结构如图2所示,X为输入状态空间(即图1中的y),由输入向量X的所有可能的输入元素组成,图中的x1,x2,...,xi,xn为训练样本的输入元素.A和CMAC的A相同,是联想存储器.每一个训练样本在存储器A中有一个对应的权值.对于一个给定的输入xj,产生一个输出yj=F(xj).为了对给定的输入状态xj计算输出yj,也进行了二次映射;f:X→A,F:A→Y.
+1.2 X→A的映射
+　　设训练样本{(xi,pi),i=0,1,2,...,n}为n个离散点的集合,其中xi为给定的输入,pi为期望的输出,且有x0<x1<x2<...<xn,xi∈［0,R］的整型值.令xi为wi的逻辑地址,则有wi=f(xi),它等价于把pi赋给xi为地址的逻辑单元.
+1.3 数据的量化
+　　实际的输入X多为模拟量,X=(x1,x2,...,xn),每个输入值可以是小数、负数等在某一区间上的任意数.根据上述模型原理,我们必须进行两方面的处理.(1) 把任意输入值进行量化、坐标平移,变换成［0,R］区间的整型值.(2) 学习训练元素不可能遍布整个输入空间,那么对未经学习的输入必须进行泛化处理,使其映射到相近的训练元素联想单元.
+　　对于每一个输入元素xj, 将其量化为0～R范围内的一个整数,算法是
+
+令
+　　　　　　　　　　　　　(4)
+在式(4)中,xjmax是xj的最大值;xjmin是xj的最小值;Δxj是量化分辨率;i是输入元素量化后的整型值.
+1.4 输入映射预处理
+　　设在量化后的输入区间［0,R］上每隔H个数取一个训练元素,为使输入训练元素映射到连续的联想单元,对训练元素作如下处理:
+k=int(i/H), k∈［0,R/H］,　　　　　　　　　　　　　(5)
+其中i是处理前的训练元素值;K是处理后的元素值.
+　　例如,取H=4,{i=0,4,8,12,...},相应的k={0,1,2,3,...}.
+　　对于任意输入值j,处理公式为:
+k=int(j/H+1/2).　　　　　　　　　　　　　　　　(6)
+式(5)与式(6)的区别在于对小数的处理不同,式(5)采用全舍方式,式(6)采用4舍5入方式.这样使得学习时的输入分辨率为H,实际应用时的输入分辨率为H/2.
+　　经过泛化处理后,相近的输入映射到相近的联想单元,具有相近的输出.
+1.5 学习方法
+　　设经上述量化后的输入训练元素为{k1,k2,...,ki,...,kn},期望的输出为P={p1,p2,...,pj,...,pn}.其学习方法如下:
+　　for (k=0;k<n,k++),
+　　　　wk=pk,
+其中wk为第k个训练样本对应的权值.很显然,这一学习过程总是收敛的.
+1.6 A→Y的映射
+　　当输入与样本相同时,经式(4)量化及式(5)变换后,得到相应的ki,ki∈［0,R/H］,则有
+yi=F(ki)=wi.
+　　当输入与样本不相同时，经式(6)处理后，映射到相近样本的区域，其输出最大误差近似为H/2，输出精度太低.减小H虽然能提高精度，但使样本数太多，而且H也不能取任意小的值，因此要达到高精度是困难的.如何解决这一问题呢?考虑到人脑具有联想推测的功能,当接受未经学习过的信息时,会根据过去学习过的相近的知识或经验作出较准确的推断.根据这一特征,能否依据训练样本提供的信息,通过联想,达到可较准确地推测出非样本输入的响应呢?差分插值原理恰恰具有这样的特性.
+　　考虑一维函数y=f(x),设n个训练样本为等距取点,即(x1,y1),(x2,y2),...,(xn,yn),其中xk=x0+kH;k=1,2,...,n为节点序数,H为节点距或步长.对于任意输入xi,若有xi>xk,则有如下差分插值多项式(舍去高次项):
+　　　(7)
+式中若xi<xk,则有
+　　　　　(8)
+式中
+　　事实上,CMAC作为一种查表技术已被众多相关研究者所认可,从这一角度看,训练元素的权重可看做列表数据,只要训练元素的取值间隔相同,就可认为是等距结点,那么任意两结点间用差分多项式进行插补就是十分可行的.
+2 仿真与应用研究
+　　我们用本文提出的网络算法去校正传感系统的非线性误差,取得了十分满意的效果.下面给出一个仿真应用实例,以说明应用方法和效果.
+2.1 仿真应用题目
+　　我们用国产差动电感式传感器研制成电脑测微仪,其有效量程为±395μm,在［－100,+100］区间最大非线性误差(绝对值)为0.2μm,区间［100,200］内最大非线性误差为1μm,［200,300］内最大误差为2.8μm,［300,395］内最大误差为4.9μm(负端相同).显见,传感系统传输特性的两端非线性比较明显.故用本文提出的方法进行校正.
+2.2 仿真方法
+　　为简便说明问题并不失一般性,本文所用训练元素的取值仅限于区间［R1,R2］,其中R1=300,R2=395,即仅对这一区间所对应的传输特性进行校正.只要把取值区间改为全程,即可实现全程校正.
+　　由图1可知,校正网络的输入即是传感系统的输出.令图1中的y=x,并设给定训练样本为(X*,P*),其中X*为给定的网络输入,亦即传感系统的输出再经A/D转换和标度变换后的值(实际应用中,可直接用网络进行标度变换.在这里,为说明方便,仍取标度变换后的值）.P*为期望的输出,也就是对应的传感系统的输入.为了建立一组训练样本,设样本间隔为H,并使微机处于连续采样状态,输入端用一个标准的微动台架微动进给,以微变传感器的输入,当微机的采样值为x*i＝i*H时,记录并键入输入值,即为p*i.其中i∈［0,M－1］,M=(R2－R1)/H+1.
+　　为了能在脱离硬件的情况下,检查网络的工作情况,我们对学习和应用过程进行了仿真.在区间［R1,R2］范围内,根据一组实测值,用最小二乘方法拟合出的曲线方程
+x*=y=f(u)=bu+au2.　　　　　　　　　　　　　　　　　(9)
+令x*＝c,则有
+au2+bu-c=0,
+　　　　　　　　　　　　(10)
+在式(10)中,a=0.000 031 25,b=1.
+　　令x0=300,x*i=x0+i*H,i=0,1,2,...,M－1,由式(10)即可得到p*j,令j=(x*i-x0)/H,即得到一组权值{(j,wj),j=1,2,...,M－1},其中wj=p*j为第j个样本的权值.为避免内存溢出及不致掉电丢失,用一个磁盘文件进行保存.
+　　对于任意输入u,用式(9)对传感系统的输出进行仿真(包括A/D转换和标度变换),即得到x,令j=x－x0(坐标平移),根据式(6),K＝int(j/H+1/2),其中k＝0,1,2,...,M－1.用k作为权文件的偏移指针即可取出对应的权.
+　　当x不在学习样本点上(即在两结点间)时,可用式(7)或式(8)进行插补.
+2.3 仿真实验结果
+　　对本例的仿真结果见表1,其中的数值来源算法如下.
+表1　误差分析与比较(误差均为绝对值)
+
+样本间隔无网络时 
+最大误差无网络时
+平均误差加网络未插补
+最大误差加网络未插补
+平均误差加网络插补后
+最大误差加网络插补后
+平均误差
+24.851 13.786 30.977 90.492 80.000 10.000 0
+54.851 13.786 32.435 51.231 40.000 40.000 1
+104.851 13.786 34.862 52.493 30.001 50.000 5
+204.851 13.786 39.761 05.014 30.005 90.002 0
+
+　　令u=300,301,302,...,ui,...,395,则有
+ei=fabs(pi－ui),
+aver=Q/s=Σei/s,max=MAX{ei},min=MIN{ei},i∈［0,R2－R1］.
+在上述两式中,ui是传感系统的实际输入值,pi是经网络校正后的实际输出值;ei是误差的绝对值;s是误差的个数;aver是平均误差.由于数据处理量较大,为此,我们用C语言编写了一个检验函数来完成这一工作.表1的数据由该函数完成.
+　　表1的数据表明,样本间隔(H)加大（对应样本数减少）,当未插补时,网络输出误差加大,其最大误差约为H/2,与CMAC的理论误差相一致.本例的插补多项式取了4项,因此,经过插补后,误差趋于0.在实用中,经数字滤波算法剔除随机误差,校正后的最大非线性误差基本上等于给出的样本误差(0.05μm),非线性误差大大减小.
+　　另外,我们对多种一维非线性函数进行了仿真，结果表明,当用本网络映射一个呈单调缓慢变化的非线性函数时,仅用几个学习样本即能取得很高的逼近精度.反之,当所映射的函数是非单调变化的或变化率较大时,所需的训练样本数要多一些才能取得很高的精度.由于控制系统中的检测单元、智能仪器和各种传感系统的非线性特性一般都属于前者,因此,本网络用于非线性校正特别有效.笔者认为这是目前最佳的一种方法.
+　　值得注意的是,这种插补方法具有联想自适应插补功能,即根据已知数据点的信息联想出数据的变化趋势,从而较准确地推测出当前输入的响应.误差越大,给出的修正量也越大,反之则小.因此,它只能修正有变化趋势的误差,对随机误差则无能为力.显见,用该模型学习逼近一个非线性函数是十分理想的.在将其用于传感系统或仪器仪表的非线性校正时,只要注意给出训练样本时不要引入较大的随机误差就能取得很好的效果.
+3 结语
+　　目前,对CMAC的研究仍处于探索、改进、应用和发展阶段,有关学者提出了各种各样的改进模型,诸如HCMAC,TECMAC,CASCADE-CMAC 等等.通过微机信息查新表明,本文提出这种专用映射一维非线性函数的简化模型和算法尚属首次,用CMAC校正传感器非线性误差也属首次.尤其是引入联想插补后,可以十分精确地逼近非线性函数,能达到本算法逼近精度的CMAC也尚未见到.此外,许多高维非线性函数或多维传感器都可以分解成一维问题，进而用本文提出的简化模型去学习逼近.仿真和应用都证明了本文提出的模型及算法用于学习非线性函数或用于传感系统的非线性校正十分有效,可使检测设备的非线性误差大大减小.它具有算法简捷、精度高,所需样本数和内存容量很少、即使用单片机也极易实现等特点，具有广泛的应用前景和很高的推广价值.
+*本文研究得到江苏省科委应用基础项目基金资助.
+作者简介：朱庆保,1955年生,副研究员,主要研究领域为自动控制，智能控制.
+本文通讯联系人:朱庆保，南京210097,南京师范大学计算机技术开发部
+作者单位：南京师范大学计算机技术开发部　南京　210097
+E-mail: qb.zhu@jlonline.com
+参考文献
+　1　Albus J S. A new approach to manipulator control: the cerebella model articulation controller (CMAC). Journal of Dynsmic System, Measurement and Control, 1975,97:220～227
+　2　Lin Chun-Shin, Chiang Ching-Tsan. Learning convergence of CMAC technique. IEEE Transactions on Neural Networks, 1997,8(6):1281～1292
+　3　Ker Jar-Shone, Kuo Yau-Hwang et al. Hardware implementation of CMAC neural network with reduced storage requirement. IEEE Transactions on Neural Networks, 1997,8(6):1545～1556
+　4　刘慧,许晓鸣等.小脑模型神经网络改进算法的研究.自动化学报,1997,23(4):482～487
+(Liu Hui, Xu Xiao-ming et al. An improved CMAC neural network algorithm. Acta Automatica Sinica, 1997,23(4):482～487)
+　5　Leondes C T. CMAC-based techniques for adaptive learning control. Optimization Techniques. San Diego, CA: Academic Press, 1998. 227～304
+　6　Lin Chun-Shin, Chiang Ching-Tsan. Integration of CMAC technique and weighted regression for efficient learning and output differentiablity. IEEE Transactions on Systems, Man and Cybernetics, Part B, 1998,28(2):231～237
+　7　Hirashima Y, Iiguni Y, Adachi N. An adaptive control system design using a memory based learning system. International Journal of Control, 1997,68(5):1085～1102
+　8　Lee Chau-Jhy, Lin Wei-Song. A method of clustering quantization for better training of CMAC. Journal of Engineers,1996,19(3):309～320
+本文1998-09-25收到原稿,1998-12-23收到修改稿

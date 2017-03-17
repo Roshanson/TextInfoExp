@@ -1,0 +1,27 @@
+中国体育科技
+CHINA SPORT SCIENCE AND TECHNOLOGY
+1999年 第35卷 第7期 Vol.35 No.7 1999
+
+
+
+排球运动员弹跳力的关联度分析
+夏崇德
+摘要：弹跳力是排球运动员最重要的身体素质之一，它的发展、提高是一个十分复杂的过程。目前，人们大多采用数理统计的方法来分析这一问题，本文从运用灰色理论的关联分析方法着手，试图弥补和克服数理统计分析方法中的某些不足，找到一条解决弹跳力训练问题的新途径。本文将采集到的重庆女子排球运动员的有关数据进行了关联度的分析，运算结果同有关专家的弹跳力理论研究以及有着长期实践经验的教练员的认识趋向一致和吻合，说明灰色理论应用于运动训练实践是切实可行的。
+关键词：运动员∥排球∥灰色理论∥关联度∥弹跳力
+A Interconnection Analysis of Volleyball Player's Jump
+Xia Chongde
+Abstract:Jump is one of the most important physical abilities of volleyball player, and its development is a very complicate procedure. Currently, it was commonly analyzed with mathematical statistics. This paper tries to use interconnection analysis of Fuzzy Theory to overcome some shortcomes in traditional statistical method and find a new way to solve the problem in the jump training. Thus a interconnection analysis was conducted on the data collected from women volleyball player in Chongqing The result is consistent with previous research on jump and opinion of coaches with long practical experience. This suggested that it is feasible to apply interconnection analysis of Fuzzy theory in the jump training.
+Key words:Fuzzy theory∥relevance degree∥jump∥player∥volleyball
+　　目前，在运动训练的各种因素分析中，经常采用的大多是数理统计的方法，如回归分析法、方差分析法、主成分分析法等，这些方法在运动训练中解决了不少实际问题。大家都知道，运动员弹跳力的提高是一个动态发展过程，涉及的因素多，范围也较为广泛，其中往往只有部分参数是明确的，而另一部分参数却是未知的，若把运动员弹跳力的发展过程看作是一个系统的话，它就是一个典型的灰色问题，而灰色系统理论正是为研究这一类抽象系统所创立的理论。本文拟利用关联度分析的方法对有关弹跳力的多种因素进行关联分析，探讨弹跳力与其它各种因素间的相互关系，为更加科学地发展和提高运动员的弹跳力水平提供参考。
+1　弹跳力的关联度分析
+　　弹跳力的提高是一个十分复杂的过程。据有关专家分析，运动员的弹跳力不仅受先天遗传的影响，诸如体形特征、肌肉类型(红肌、白肌)、骨杠杆机械率，而且还与地理、环境、生活习惯等多种因素有关，而这些与弹跳力有关的各种因素中往往没有明确的先验信息。但可以肯定的是，对运动员弹跳力影响最大的、作用最直接的就是多年系统的运动训练，运动员在运动负荷的影响下，弹跳力和其相关的身体素质会得到提高。弹跳力的发展有赖于相关身体素质的提高，相关身体素质的提高会促进弹跳力的发展，它们既互为制约，又互为促进。那么，它们之间究竟存在着什么关系?哪些因素对弹跳力的影响大?哪些因素的作用又相对较小?毫无疑问，探明它们之间的这种关系，对于更快地发展和提高运动员的弹跳力水平有着十分重要的意义。
+　　关联度分析法就是对这一类灰色系统因素间的动态特征进行专门研究的方法。所谓“关联度”，在数学上可理解为函数的相似程度，关联分析就是对一类灰色系统因素间的发展动态进行定量的比较分析。直观的几何意义解释，就是系统因素间的动态发展曲线越接近，发展的趋势就越一致，关联程度也就越高。本文仅以对弹跳力影响最直接的与直接相关的身体素质因素进行关联度分析。为此，我们采集了重庆市女排运动员的弹跳力及相关身体素质的发展序列数据(表1)。
+表 1　重庆市女排运动员弹跳力及相关身体素质发展序列数据一览表
+
+时间序12345678910
+弹跳力(cm)566062656666.5687070.572
+30 m跑(s)54.84.84.74.74.654.654.534.54.4
+100 m跑(s)15.515.515.314.914.91514.814.6514.614.2
+深蹲杠铃(kg)6570748080858590100100
+半蹲杠铃(kg)90100100105110115120130135135
+抓举杠铃(kg)2527.5283032.53333354042.5

@@ -1,0 +1,163 @@
+软件学报
+JOURNAL OF SOFTWARE 
+1999年 第10卷 第5期 Vol.10 No.5 1999
+
+
+
+管状组织的中轴-元球造型方法
+郭红晖　彭群生　李　捷
+摘要　传统的医学体数据造型方法往往局限于将体数据表达为镶嵌在轮廓线族中的三角片集合,或者是简单的三维体元阵列.实际上,生物体的结构相当复杂,采用这些简单的造型方法显然不能适应绘制的要求.文章探讨了适用于气管、血管等管状、多分枝结构的造型方法,采用离散的中轴点表达分枝的拓扑结构,结合基于元球（metaball）的隐式曲面造型方法构造管状组织的模型.这种造型方法不仅可以使管状组织复杂的拓扑结构得以保留,而且保证了分枝之间连接的光滑性.
+关键词　中轴变换,距离变换,元球造型,隐式曲面.
+中图法分类号　TP391
+Modeling Technique Based on Media-axis and Metaball for Vessel Biomedical Structure
+GUO Hong-hui1　PENG Qun-sheng1　LI Jie2
+1（State Key Laboratory of CAD & CG　Zhejiang University　Hangzhou　310027）
+1（Department of Computer Science and Technology　Tsinghua University　Beijing　100084）
+Abstract　　The modeling of medical volume data has drawn public attention recently since traditional approaches, such as triangle tiling of the contour surface and 3D array of voxels, do not fit for the efficiently rendering, especially for rendering of vessel structure. In this paper, an algorithm for modeling vessel biomedical structure based on the extraction of medial-axis and the interaction of metaballs is proposed. The authors adopt distance transformation to extract the medial-axis, and use the metaball to describe the structure. The results show that this model not only remains the complicated topological structure, but also assures the smooth shape of rendering result.
+Key words　Media-axis transform, distance transform, metaball modeling, implicit surface.
+　　在医学可视化的研究中,对血管、神经等细微组织的绘制一直是个十分棘手的问题.传统的绘制方法大多采用最大灰度投影法进行绘制,但这种方法在计算机中并没有建立任何三维几何模型,严格地说这不能算是三维重建.由于血管在体内分布广,分枝众多,而且形态细小,采用传统的造型方法几乎无从下手,加上以往数据采集系统不够精确,对细小分枝常常遗漏,因此,人们常回避血管的造型问题.只在少量显微结构中,由于血管已被放大到图像的主体部分时,才可以采用类似大型实体的轮廓连接方法进行绘制［1］.随着医学可视化应用范围的不断扩大,对血管形态绘制的要求越来越精细,例如,外科手术模拟中对主要的血管、神经的形态、位置必须有准确的描述.因此,当描述精细结构时,管状组织成为必不可少的一个组成部分.近两年来,管状组织的造型方法开始受到关注,如,Mori采用树结构表达血管分布,结合抽取的等值面信息,采用Marching Cubes方法进行绘制［2］.由于这种方法只对可见分枝进行表面绘制,在SGI(Silicon Graphics Incorporation)上可达到实时,因此主要用于虚拟内窥镜系统.Kriete和Talhami采用L-系统来描述气管枝状分布［3］.Ge等人采用细化算法得到大肠的骨架结构［4］.Masutani首先用人工选取起始点,然后采用区域生长和形态学的膨胀算子来逐步找到血管的骨架点［5］.这种方法不仅可以得到血管的骨架点,而且可以得到骨架点的连接关系,但是由于没有骨架点的半径信息,绘制的血管粗细相同,不符合实际情况.
+　　本文介绍一种中轴与隐式曲面相结合的血管表达方法,可以较好地重建和绘制各类枝状、管状组织.传统的隐式曲面造型方法包括实体变形法和多个实体相互作用法.由于血管半径细小,分枝众多,采用简单实体变形显然难以逼近.而采用多个小球相互作用以得到血管表面则是可行的.这类似于动画中的metaball造型技术.但是这一技术的难点在于,确定各小球的位置非常困难,需要把握血管的大致拓扑结构.图像处理中的中轴技术正好为此提供了方法.现在,我们将之推广到三维情况,用于提取体数据中血管数据的拓扑结构.
+1　血管拓扑结构的中轴表达
+　　由于血管是宽度较窄的多分枝状组织,因此,采用中轴描述其拓扑结构较为合适.
+　　首先定义点x到集合A的距离为
+ds(x,A)=inf{d(x,z)|z∈A}.　　(1)
+　　最常用的距离度量是欧拉（Euclidean）距离,此外还有城市区块（city/block）距离、棋盘（chessboard）距离等等.设B是某区域边界上所有点的集合,对该区域中的每一个点P在边界B上采用某种距离度量找出距其最近的点,称这种点为最近边缘点,则该区域的中轴是该区域中所有具有1个以上的最近边缘点的点的集合.中轴通常表达为二元组形式(x,ds(x,B)),其中ds(x,B)是如上定义的点x到边界的距离.由于中轴定义中保留有点到边界的最小距离,因此,可以利用许多中心位于中轴线上的圆盘区域的并集覆盖与该中轴线对应的区域.这些圆盘的中心为距离边界最远的点.这些圆盘称为最大圆,推广到三维则称为最大球.中轴即为最大球的球心.
+　　传统的中轴抽取方法有两类:
+　　① 第1类采用细化方法,逐次去掉物体的边界点,同时必须保证区域的连通性不被破坏,最后保留的点组成物体的中轴.这种方法多采用模板方式来实现.抽取的中轴可以保留物体的拓扑结构,但是计算量往往很大,而且短的分枝易被抹掉.
+　　② 第2类称为中轴变换的方法,先对原图像进行距离变换,找出每个像素与最近边界点的距离,将距离相对最大的点抽取出来,作为中轴点.这种方法易于实现,效率高.但由此方法得到的中轴点离散分布可能不连通,会出现中轴线断裂的情况.
+　　由于采用隐式曲面造型,用于构造隐式曲面的球心恰好可选在这些离散的中轴点上,而无须使中轴点连续,所以,采用第2种方法抽取的中轴点可以满足要求.
+　　为了提取中轴点,通常先将物体从背景中分离出来,转换成二值图像.再采用距离变换,找出距离边界最远的点,从而确定中轴点.下面,将距离变换推广到三维.分类后的医学体数据可按本文推广的方法进行距离变换.
+　　距离变换是Rosenfeld和Pfaltz于1966年首先提出来的［6］,旨在采用滤波的方法求出每个像素离物体边界的最小距离.图像中两像素之间的距离有多种定义方法.欧拉距离为最直观的距离定义方法.但是欧拉距离的计算包含开方运算,而且运算过程中需要保存大量的点对信息,所以,通常采用运算量小、存储量也较小的切削（chamfer）距离和八角形（octagonal）距离进行逼近.具体选择哪一种算法由误差允许范围来定.
+　　对于二维情况,设以边相邻的像素距离为d1,以点相邻的像素距离为d2（如图1(a)所示）,假设P1,P2两像素在x,y两方向上相差的像素分别为m1,m2,如图1(c)所示,不妨设m1＞m2,则可取
+
+|P1P2|=m2d2+m1-m2d1.　　(2)
+
+它与欧拉距离之差为
+
+　　当d1=1,d2=2时,以上距离为切削距离,求导后可知,当m1=m2=M时,ΔD取极大值0.41M
+　　当d1=1,d2=infinity时,以上距离为街区距离(4-邻域),则式(2)无意义,但可知|P1P2|=m1+m2,因此,当m1=m2=M时,ΔD取最大值
+　　下面考虑d2取多大时,ΔD的最大值才能达到最小.
+　　设d1=1,d2=d＜2,式(2)变为
+
+
+此时,d为最优.
+　　推广到三维情况可知:d1：d2：d3=1：1.314：1.628.
+　　由此,我们得到一种比较简单的距离变换算法,采用3×3×3的模板对体数据进行二步卷积.假设血管数据标志为1,而背景为0,则
+　　(1) 前向滤波:对于体数据按从上至下、从后向前、从左至右进行滤波,算法如下:
+　　for i=top to bottom
+　　　　for j=back to front
+　　　　　for k=left to right
+　　　　　　　v［i,j,k］=minv［x,y,z］+wx,y,z
+其中(x,y,z)为(i,j,k)的前向邻域,即按前向遍历时,在(i,j,k)之前遍历到的体元.wx,y,z为(x,y,z)到(i,j,k)的距离权值,根据情况分别取1,1.314和1.628.
+　　(2) 后向波滤:过程与前一次滤波相同,只是方向相反,算法如下:
+　　for i=bottom to top
+　　　　for j=front to back
+　　　　　　for k=right to left
+　　　　　　　　v［i,j,k］=minv［i,j,k］,v［x,y,z］+wx,y,z
+其中(x,y,z)为(i,j,k)的后向邻域,即按前向遍历时,在(i,j,k)之后遍历到的体元.wx,y,z为(x,y,z)到(i,j,k)的权,根据情况分别取1,1.314和1.628.
+　　经过距离变换后的体数据,满足下列条件的点被认为是中轴点,即
+
+v［x,y,z］＜v［i,j,k］+wx,y,z.　　(7)
+其中(x,y,z)表示(i,j,k)的26邻域,wx,y,z为相应的距离权值,这一条件体现了最大圆的特征.
+　　由此抽取出离散化的中轴点,而经过距离变换后的体数据中每个体元中包含的距离大致为距边界的欧拉距离.因此中轴表示为
+〈(i,j,k),v(i,j,k)〉.(8)
+　　以往的算法在抽取中轴后,需找出中轴点的拓扑关系,然后进行重建.这一过程在图像处理中是一个难点,目前也未圆满解决.文献［5］有这方面的工作.本文的重建结果是根据位于这些中轴点的球面的相互作用来获得的.我们采用下面介绍的优化选取算法,从中轴点中按能量大小,逐个选取最大球加入到模型中,因此,中轴点之间的拓扑连接变得不再重要.
+2　血管的隐式曲面重建
+　　由简单实体,如球、椭球、超二次曲面,构造复杂形状的隐式曲面造型的方法产生于20世纪80年代后期,主要用于自由曲面的造型.它在许多方面优于其他造型方法.
+　　(1) 节省数据量,通常比多边形造型少2～3个数量级.
+　　(2) 生成的曲面永远是光滑的,放大后仍保持光滑性.
+　　(3) 易于进行变形模拟,对柔性物体的动画非常有用.
+　　(4) 适合表现人体、动物、器官和液体的造型.
+　　(5) 对于复杂拓扑结构适合采用CSG的方法造型.
+　　它采用如下的定义方法［7］:
+重构曲面S={P∈R3|f(P)=iso.}　　(9)
+其中
+  (10)
+它可以是多个势函数的叠加.势函数为定义在中轴点上的简单代数曲面,其函数值随离中轴点距离的增大而单调递减,iso为等值面的值.采用这一技术进行造型已有许多工作,大多数用于动画中的造型,它们的区别主要在于势函数的定义和生成曲面的叠代方法不同,比较典型的如,Blinn的指数函数［8］、Muraki的“blobby”［9］、Wyvill的“soft object”［10］等等.Perlin用于表示超纹理的分段二次多项式也有类似特点［11］.
+　　这几种势函数定义方法没有本质区别,都是从中心依距离单调递减的函数,对于分段函数,则在分段点上必须保持n阶连续,阶次n由平滑性要求而定.另一个需要注意的特点是,采用分段函数可以利用其局部支撑的特征,重构时对结果的局部修正将有帮助.
+　　我们希望采用最简单的分段二次函数作为势函数来进行重建,考虑如图2所示情况.要求在小于等值面值时采用线性函数,大于等值面值时采用二次函数,大于R时为0,在ei,R点均要求C1连续.则有
+
+　　式(15)、(16)、(17)对r求导,得
+
+式中ei称为可见半径,Ri称为有效半径(也称为影响半径).ei处的势函数值即为所求等值面的值,一般取为1.0.当Ri固定时,ki的变化可以控制两相交球之间过渡面的形状,如图3所示.显然,当ki为一负值时,若ki的绝对值越大,则在球的影响域内势函数变化越大,两球之间过渡面呈波动状.反之,ki的绝对值越小,则球的影响域内势函数衰减缓慢,两球之间过渡趋于平滑.
+
+　　由隐式曲面构造等值面的一个难点是,球的分布难以确定,使得造型结果难以控制,有时会产生意想不到的形状.而中轴表示正好弥补了这一不足.血管体数据的中轴信息包含了含于体数据等值面以内的最大球的球心及半径.对这些最大球的分布稍作调整,即可选作构成等值面的实体球.下面讨论从中轴点中选取实体球球心以及对其半径予以调整的优化算法.
+
+
+　　　　　　　　　　(a) |ki|=1　　　　　　　　　　(b) |ki|=10 
+图3　ki对等值面形状的控制　　　
+如图4所示，设候选球i对应的势函数为f，其影响域（与球心距离小于影响6半径的范围称为影响域）内的数据点表示为pi；iso为等值面的值，体数据中饮食在等值面以内的点的集合表示为S，在等值面以外的点的集合表示为S；设已有N个候选点被选中,i的能量函数定义为
+　　(28)
+当Ei最大时,被测球对表面重建贡献最大.
+　　算法思想为:
+　　首先进行初始化,将所有数据点标记为未被重建,所有中轴点作为可能的候选点.若未达到重建精度或还有候选点未被选中,则按照式(28)的能量函数来定义候选点的优先级,能量越大,则优先级越高.选取Ei最大的点i作为最佳候选点加入模型中,然后优化被选中的候选点的参数.
+　　算法可以表述如下:
+　　modeling ()
+　　{　　
+　　　　initialize ();　　　　　　　　　　/* 初始化,所有中轴点为候选点 */
+　　　　while (cur－count≠prep－count) {　/* 重建精度不满足 */
+　　　　　　　choose－best－primitive(&p);
+　　　　　　　if (plist==NIL) break;
+　　　　　　　add－primitive(p);　　　　/* 加入模型表中 */
+　　　　　　　prep－count=cur－count;
+　　　　　　　adjust－parameter(p);　　　/* 对参数进行优化 */
+　　}
+　}
+　　在第1节距离变换中,我们已经求得中轴点到边界的近似欧拉距离.重建时,由于实体间的相互影响,必须对实体参数进行调整,找到使重建表面最佳的参数.其中,k用来调整重建表面的光滑程度,半径控制实体球的影响域.我们采用以下算法进行参数优化.
+　　adjust－parameter()
+　　{　search－radius();　　　 /* 搜索最优化半径 */
+　　　delete－primitive();　　 /* 删去候选primitive */
+　　　modify－data－mask();　/* 修正已被重建的数据点链表 */
+　　}
+　　其中,半径调整的算法表述如下:
+　　设P为被评价的实体,半径的搜索范围选在0到中轴点最大球半径v(i,j,k)之间（见式(8)）.count1记录不应被重建却被重建的体数据点个数,count2记录新加入的重建点的个数.count1越小越好,count2越大越好.
+search－radius(P)
+　　{　
+　　Lrad=0.0;　　　　　　　　　　　　　　　　/* 最小半径为0.0 */
+　　Hrad=P→rad;　　　　　　　　　　　　　　/* 最大半径 */
+　　Last.count1=0;
+　　Last.count2=1;
+　　if (meet (Lrad,Hrad)) return;　　　　　　　 /* 精度满足 */
+　　compute－each－count (P,&Head);　　　　　　 /* 计算P的count1,count2 */
+　　while (Hrad-Lrad＞EPSILON) {
+　　　Rad=P→rad=(Lrad+Hrad)/2.0;
+　　　compute-each-count (P,&Cur);　　　　　　 /* 计算P的count1,count2 */
+　　　if (optimization-rule (Last,Cur,Head))　{　/* 判断应搜索的区间 */
+　　　　Lrad=Rad;　　　　　　　　　　　　　 /* 前半区间*/ 
+　　　　Last=Cur;
+　　} else {
+　　　Hrad=Rad;　　　　　　　　　　　　 /* 后半区间 */
+　　　Head=Cur;
+　　　}
+　　}
+　}
+　　由这种算法构造出的表面可以不断加入细节,因而它对实际表面的逼近越来越精确,且避免了采用分裂法(即首先采用一个简单实体包含所有数据点,再对其分裂以逼近细节的方法)的低效率,在有洞时,也不会像分裂法那样,因将初始骨架点设置在空洞中而引起算法失效.同时,这种算法的优化过程也更加合理.
+3　实验结果
+　　我们采用本文描述的方法对胸腔内切片数据中的气管、血管进行了造型.首先对体数据中气管、血管所占据的体元进行分类标记,然后采用两步滤波法进行距离变换,权值采用本文推导的优化切削距离变换方法.图5为所构造的气管模型,图5(a)为体数据中标记为气管的数据点,图5(b)为重建结果.图6为胸腔中部分血管的造型,其中包含上腔静脉、上腔动脉、气管以及肺动脉等等血管.从图6中可以看出,采用中轴-元球造型不仅保留了大量分枝,而且绘制结果有较强的立体感,只是对于较大的实体（如图6中的心室造型）,这种方法并不适宜.
+
+
+　　　　　　　　(a) 气管数据点　(b) 造型后重建结果　　　图6　胸腔部分血管的造型
+　　　　　　　　　　　　图5　气管的造型
+4　结　论
+　　本文讨论了利用中轴与隐式曲面对血管、气管等管状多分枝组织进行造型的方法.首先介绍了中轴的抽取方法,然后推导出最简单的势能函数,并采用它来控制重建中的优化过程.重建出的管状组织过渡平滑,且拓扑结构保存完好.该重建方法避免了基于轮廓重建中的轮廓对应问题、分枝问题等难题.采用隐式曲面表达方式简洁合理,易于绘制.
+本文研究得到国家自然科学基金资助.
+作者郭红晖,女,1969年生,博士,主要研究领域为医学信息可视化,医学图像处理,计算机图形学.
+彭群生,1947年生,博士,教授,博士生导师,主要研究领域为真实感图形,计算机动画,三维几何造型,工程图纸扫描识别.
+李捷,1973年生,博士生,主要研究领域为实时图形显示,多分辨率造型,科学计算可视化.
+本文通讯联系人：彭群生,杭州 310027,浙江大学CAD&CG国家重点实验室
+作者单位：郭红晖　彭群生　（浙江大学CAD&CG国家重点实验室　杭州　310027）
+　　　　　李　捷（清华大学计算机科学与技术系　北京　100084）
+参考文献
+　[1]　Suto Y, Kato M et al. Three dimensional display of X-Ray CT image extraction and display of cerebral ventricle. The Visual Computer, 1986,2(2):90～96
+　[2]　Mori K, Hasegawa J et al. A fast rendering method using the tree structure of objects in visualized bronchus endoscope system. In: Hohne K H ed. Proceedings of Visualization in Biomedical Computing'96. Hamburg: Springer-Verlag, 1996. 33～42
+　[3]　Kriete A. Hierarchical data representation of lung to model morphology and function. In: Hohne K H ed. Proceedings of Visualization in Biomedical Computing'96. Hamburg: Springer-Verlag, 1996. 399～404
+　[4]　Ge Y, Stelts D et al. 3D skeleton for virtual colonoscopy. In: Hohne K H ed. Proceedings of Visualization in Biomedical Computing'96. Hamburg: Springer-Verlag, 1996. 449～454
+　[5]　Masotani Y, Masamune K et al. Region-growing based reature extraction algorithm for tree-like objects. In: Hohne K H ed. Proceedings of Visualization in Biomedical Computing'96. Hamburg: Springer-Verlag, 1996. 161～171
+　[6]　Borgefors G. Distance transformations in arbitrary dimensions. Computer Vision, Graphics, and Image Processing, 1984,27(3):321～345
+　[7]　Bittar E, Tsingos N et al. Automatic reconstruction of unstructured 3D data: combining a medial axis and implicit surfaces. Computer Graphics Forum, 1995,14(3):457～468
+　[8]　Blinn J. A generalization of algebraic surface drawing. ACM Transactions on Graphics, 1982,1(3):235～256
+　[9]　Muraki S. Volumetric shape description of range data using blobby model. Computer Graphics, 1991,25(4):227～235
+　[10]　Wyvill G, McPheeters C et al. Data structure for soft objects. The Visual Computer, 1986,2(8):227～234
+　[11]　Perlin K. Hypertexture. Computer Graphics, 1989,23(3):253～262
+
+本文1997-08-22收到原稿,1998-05-19收到修改稿

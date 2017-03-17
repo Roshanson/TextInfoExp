@@ -1,0 +1,156 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第12期  Vol.10 No.12 1999
+
+
+
+一种理性Agent的BDI模型
+康小强　石纯一
+摘要　该文通过引入假设信念，解释愿望和意图在Agent思维状态的认知方面的含义，进而定义愿望和意图，并引入规划，建立理性Agent的动态BDI模型.与Cohen和Levesque，Rao和Georgeff，Konolige和Pollack等人的工作相比，克服了对信念、愿望和意图的反直观解释问题，解决了关于愿望和意图的无为而治和副作用问题，强调了愿望的激发与维护作用，表达了信念、愿望和意图三者间的动态约束与激发关系.
+关键词　理性Agent，思维状态，信念，愿望，意图.
+中图法分类号　TP18
+A BDI Model for Rational Agents
+KANG Xiao-qiang SHI Chun-yi
+(Department of Computer Science and Technology Tsinghua University Beijing 100084)
+Abstract　 In this paper, a new BDI model for rational agents is presented by introducing assumptive belief with traditional belief in order to express the intuitive meaning of desire and intention on the cognitive aspect of the metal state of rational agents. Comparing with the BDI models from Cohen & Levesque, Rao & Georgeff, and Konolige & Pollack, this model overcomes the misunderstanding of the concepts of BDI, solves the transference problem and the side-effect problem for desire and intention, and shows both of the static and the dynamic relations between BDI, especially the maintaining and triggering role of desire.
+Key words　Rational agent, mental state, belief, desire, intention.
+　　Agent模型是分布式人工智能和多Agent系统研究的重要组成部分.Hewitt曾经提出基于ACTOR模型的开放信息系统语义，希望以此为分布式人工智能建立理论基础［1］.随着研究的深入，面向细粒度并发计算的ACTOR模型难以适应对Agent的个体智能性和群体交互性的要求.特别是当自主性成为研究的基本出发点之后，Agent必须适应环境的变化和群体交互的变化.于是，将Agent视为具有意图的智能系统，建立基于思维状态（mental state）的Agent模型就成为研究的主流.
+　　借鉴心理学的研究成果，人类的思维状态属性有以下几个方面：(1) 认知，如信念、知识等；(2) 情感，如目标、愿望和偏好等；(3) 意动，如意图、承诺和规划等.相应地，当前的Agent模型研究侧重于形式描述信念（belief）、愿望（desire）和意图（intention），简称BDI，进而向多Agent扩展，研究多Agent群体的BDI模型.
+1 相关工作分析
+　　BDI模型的哲学基础是Bratman对理性和意图的分析，刻画了意图的客观性以及在理性平衡中的中心位置［2］.分布式人工智能中的BDI模型研究着重于BDI的形式描述，主要有Cohen与Levesque，Rao和Geogeff，Konolige与Pollack 以及Shoham等人的工作.这些工作一方面表达了Bratman对意图和理性的研究，另一方面，从智能系统的定义、构造和应用等角度对意图和理性的含义进行了阐述.
+　　Cohen和Levesque基于正规模态逻辑的可能世界模型，定义了Agent信念的基本性质，并将意图定义为一种持续目标，初步描述了意图在Agent行为中的作用［3］.Rao和Georgeff 采用计算树逻辑，可能世界的时间结构由线性扩充为分支，进一步阐述了BDI的概念及相互关系［4］.Konolige和Pollack提出认知结构和意图关系图的概念，由此定义的意图不仅包含对目标世界的期待，也包含对不希望的世界状态的描述，在一定程度上解决了副作用问题［5］.
+　　在这些模型的基础上，Shoham从系统实现角度讨论了Agent的结构和行为特性，提出了面向Agent的程序设计［6］.Haddadi分析了联合承诺，用以描述合作推理和协商［7］.Dunin-Keplicz和Verbrugge也就多Agent的承诺问题作了探讨，分析了3种社会承诺机制［8］.Castelfrachi则从社会行为角度研究了社会承诺［9］. 
+　　尽管在实用性和社会性方面有了这些进展，但在BDI模型中的一些原有的问题并没有得到解决.
+　　首先是逻辑全知问题：.X是一个算子，如信念算子BEL、愿望算子DES和意图算子INT.逻辑全知不仅对有限资源的Agent是不现实的，而且由此得到的性质，不能反映愿望和意图的直观含义.例如，无为而治问题.对一个必然总是为真的命题（例如，地球是圆的）或必然最终为真的命题（例如，太阳明天会升起），Agent根本无需把它作为愿望或意图.又如，副作用问题
+将φ作为愿望或意图的Agent无需将ψ作为愿望或意图.
+　　其次，信念、愿望和意图的区分.尽管定义了不同的模态算子，但都依赖于可达关系，不能反映三者间本质的不同.
+　　第3，未能表达出BDI之间的动态约束与激发关系，特别是愿望在Agent动态执行过程中的约束与激发作用.因此，无法建立Agent的动态BDI模型.
+针对这些不足，本文首先引入假设信念、表达愿望和意图在思维状态认知方面的含义，进而重新定义愿望和意图，建立反映BDI三者间约束与激发关系的理性Agent的动态BDI模型.
+2 BDI的逻辑描述
+　　使用基于计算树逻辑的语言L来描述.L包括：原子命题公式和算子；时态算子U（直到），G（总是）和F（终将），路径算子A（全路径），AS（全假设路径），E（存在路径）和ES（存在假设路径）以及BEL,ASM,DES,GOAL和INT等描述思维状态的算子.其中，φ1∪φ2表示存在未来的某一时刻，φ2成立并且在此之前φ1总是成立，设Φ为原子命题集，FORM(L)为全体公式集，(Φ)为Φ的幂集，(FORM(L))为FORM(L)的幂集.
+　　定义1. Agent模型是元组
+　　其中W是可能世界的集合，包括可能的现实世界和可能的假想世界.T是时间点集合，是时间点间的二元关系，〈T,〉构成时间树.ACT是原子动作集，动作函数act:→ACT，为时间树的每条边标记一个原子动作.真值分配函数π:W×T→(Φ)，返回某一可能世界中在某一时间点成立的原子命题的集合.确信、假设、愿望和意图函数bel,asm,des,int:W×T→(FORM(L))，分别返回某一可能世界中在某一时间点具有的确信信念、假设信念、愿望和意图的集合.
+　　在此模型下，对原子命题对于算子的定义与常规定义相同，不再赘述.具有反向线性，这样，对每个时间点来说都具有线性历史和分支未来.Agent在某一可能世界中的某一时间点所具有的信念、愿望和意图由它的执行历史来确定.
+2.1 信 念
+　　信念是Agent具有的关于环境信息、其他Agent信息和自身信息的集合.这些信息可以确切地知道，也可以假设知道，分别称为确信信念和假设信念.由于采用信念集进行语义解释，我们可以放弃Agent的全知假设.
+　　定义2. 确信信念算子BEL和假设信念算子ASM.
+
+　　确信信念相当于已有工作中定义的信念，而假设信念是对确信信念的扩充.假设信念描述假想世界，而确信信念不仅包括对现实世界的描述，还包括对假想世界的描述.算子AS和ES的引入就是为了描述假想世界中的路径，称做假设路径，并限制其只在信念公式中使用.在假设信念中，ASM(Aψ)ASM(ASψ)，ASM(Eψ)ASM(ESψ)，无需区分；在确信信念中，
+必须明确区分.由确信信念集和假设信念集，可以定义确信信念与假设信念联合可达关系Jba，进一步说明两种信念.
+　　定义3. 思维状态等价关系～.w1,w2∈W,t∈T,w1～t w2 iff bel(w1,t)=bel(w2,t)，asm(w1,t)=asm(w2,t)，des(w1,t)=des(w2,t)和int(w1,t)=int(w2,t)同时成立.
+　　定义4. 确信信念与假设信念联合可达关系
+
+　　(1)并且，
+　　(2)为原子命题公式、原子BDI公式以及加否定且并且，
+　　(3)并且，
+　　(4)并且，
+　　(5) 设(2)～(4)中的公式为基本公式，φ∈bel(w1,t)，φ为基本公式φ1,...,φn按∧和∨的组合，则φ1,...,φn应按相应的与或条件满足(2)～(4)；并且，
+　　(6) w1～t w2～t w3.
+　　对于(w1,t,w2,w3)∈ba，w2是确信信念可达的可能现实世界；w3是确信信念和假设信念联合可达的可能假想世界，并受到可能现实世界的约束，反映在AS,ES与A,E之间的推导关系.在假设路径明确以AS和ES描述的前提下，两种信念满足以下约束：
+　　约束1. φ，如果φ∈asm(w,t),则
+可得确信与假设信念约束公理1：
+　　约束2. φ，如果φ∈asm(w,t),则
+可得确信与假设信念约束公理2：
+　　定理1. 
+
+　　命题可能成立.例如，对φ=Fψ,Agent确信在现实世界里存在一条路径使在未来一直保持成立，但可以排除演化到该路径的可能性，从而在假想世界里可以有AFψ成立.对应地，命题可能成立.假设信念与确信信念的这种约束关系对解释愿望和意图是重要的.
+　　对确信信念算子BEL，仍采用KD45公理，对假设信念算子ASM，则需要相应变化.
+对以下涉及假设信念的公理，要求公式中φ和ψ必须明确用ES和AS约束假设路径.
+　　
+　　4：对
+　　5：对
+2.2 愿望
+　　定义5. 愿望算子DES.
+　　愿望是Agent希望达到的状态或者希望保持的状态，分别称做实现型愿望和维护型愿望.直观上，在谈论愿望时，就隐含地对未来路径作了限制，将未来路径划分为满足所有愿望的路径和不能满足所有愿望的路径.只有由满足所有愿望的路径构成的世界才是愿望可达的世界.为此，愿望的表示应形如DES(Aφ)，φ为路径公式.
+　　DES(AFφ)是纯实现型愿望.DES(A(φ1∪φ2))为包含维护条件的实现型愿望，即Agent不仅希望实现φ2，还希望在实现过程中保持φ1成立.DES(AGφ)是维护型愿望，希望在未来一直保持φ成立.
+　　在已有研究中所定义的愿望不能采用这样的表示，因此不能充分表达愿望的直观含义.例如在Rao和Georgeff的工作［4］中，只能表示形如GOAL(Eψ)的目标（相当于DES），以便保持信念目标的一致关系GOAL(φ)BEL(φ)，但由此不能充分反映直观上愿望对未来路径的限制.即使对目标能有不同的解释，对意图则更需要以INT(Aψ)表示，由目标意图一致公理：INT(φ)GOAL(φ)，还是使GOAL(Aψ)无法回避.解决以上问题的关键在于，用假设信念，而不是确信信念，来解释愿望在思维状态认知方面的含义，即愿望可达的世界只是假想世界.
+　　约束3. φ，如果φ∈des(w,t)，则φ∈asm(w,t).
+　可得愿望与假设信念一致公理：
+　　定理2. 
+
+　　以纯实现型愿望DES(AFφ)为例，定理说明，Agent不会愿望实现一个确信一定能达到的状态φ，也不会愿望实现一个确信一定不能达到的状态φ.
+　　约束4. A(φ1∪φ2)，如果A(φ1∪φ2)∈des(w,t)，则φ1∈bel(w,t)且如果AGφ∈des(w,t)，则φ∈bel(w,t).
+　　可得愿望与确信信念约束公理：
+　　定理3. 
+　　约束3,4给出了愿望存在的必要条件，并且由相应的公理将维护愿望所需的推理转化到信念中进行.
+　　实现型愿望持续公理：
+
+　　维护型愿望持续公理：
+　　定理4. 
+愿望具有持续性.以纯实现型愿望DES(AFφ)为例，Agent希望保持一个愿望，直到不再假设该愿望一定能实现或者确信该愿望已实现.由前面对假设信念的有关约束可知，放弃假设信念ASM(AFφ)的主要理由是确信愿望必将成立，即BEL(AFφ)，或者确信愿望一定不成立，即
+愿望之间的关系结合意图给出，经典的KD公理不再采用.可以得出的结论是，本文的模型避免了关于愿望的无为而治和副作用问题.Agent不会将确信的状态作为愿望，也不会自然地把愿望的逻辑推论作为自己的愿望.
+　　在已有工作中使用的目标算子GOAL，可依据DES和BEL定义为Agent确信可能满足的愿望.相对于信念、愿望和意图，目标只是中间概念.
+　　定义6. 目标算子GOAL.
+　　定义7. 确信信念与愿望联合可达关系bd.参照确信信念与假设信念联合可达关系ba的定义，将函数asm替换为des，即可得到bd的定义.
+　　由约束3，
+2.3 意图
+　　定义8. 意图算子INT.
+　　意图是承诺的愿望.从实现型意图中，Agent在不违反意图约束的前提下选择下一个动作，并确信由这种选择可能产生的动作序列能够保证所有意图的满足.意图可达世界中的每条路径都应满足所有意图，由此，意图应该形如INT(Aφ)，φ为路径公式.在Rao和Georgeff的工作中［4］，φ只能形如Eφ′，不能充分体现承诺的含义.
+　　约束5. φ，如果φ∈int(w,t),则φ∈des(w,t).
+　　可得意图与愿望一致公理：
+　　定理5. 
+　　定义8. 确信信念与意图联合可达关系Jbi.参照确信信念与假设信念联合可达关系Jba的定义，将函数asm替换为int，即可得到Jbi的定义.
+　　由约束5，有
+　　与愿望相比，意图与确信信念有更多的一致，通过定义意图全路径算子AI和意图存在路径算子EI进行说明.
+　　定义9. 子世界.w∈W,w中所有路径的集合Pw与w一一对应，Pw={p|p为w中的路径}.称w′为w的子世界，记做w′=subworld(w),当且仅当
+　　这里，可不考虑子世界w′是否属于W.
+　　约束6. w1,w2,w3∈W,t∈T,(w1,t,w2,w3)∈bi，存在w2′=subworld(w2)，满足所有意图，即φ∈int(w1,t),有
+　　定义10. 意图全路径算子AI和意图存在路径算子EI.基于约束6，设w*2为w2中满足所有意图的w2′中的最大子世界，即则
+　　意图与确信信念一致公理：
+　　AI和EI是对偶算子，即与AS,ES无推导关系.
+　　定理6.
+　　实现型意图持续公理：
+　　维护型意图持续公理：
+
+　　定理7. 
+　　意图同样具有持续性.Agent将保持一个意图，直到不再具有相应的愿望或者不再确信该意图一定能在承诺的前提下满足.当一个实现型意图无法实现时，还可能有其他手段实现相应的愿望.Agent会在该愿望激发下，产生新的意图.
+　　与愿望一样，不再采用KD公理对意图进行推导，而是将有关的推导转化到信念中进行.本文的模型避免了关于意图的无为而治和副作用问题.
+3 动态BDI模型
+　　定义11. Agent的执行模型为元组〈MS0,next－act,next－ms〉.其中MS0是Agent的初始思维状态，由初始确信信念、假设信念、愿望和意图的集合组成；next－act：MS×ACT→MS，是从思维状态集MS到原子动作集ACT的选择函数；next－ms：MS×ACT→MS，是在一个动作执行后，产生新的思维状态的函数.
+　　在此执行模型下，Agent的执行流程如下.Agent的退出操作可作为基本的计算动作，放入动作集.
+　　(S1) MS0=InitMentalState(),n=0; ∥初始化思维状态；
+　　(S2) a=next_act(MSn);∥选择动作；
+　　(S3) Do (a);∥执行选择的动作；
+　　(S4) MSn+1=next_ms(MSn,a),n=n+1，转(S2).∥修正思维状态.
+3.1 从愿望到动作
+　　Agent选择执行的动作必须是为了实现愿望而承诺执行的动作，是意图的一部分.对此，需要引入规划，对意图的表达进行扩展.
+　　定义12. 规划表达式.设a为原子动作个体词，p为规划表达式当且仅当p=a或p=p1;p2或p=p1|p2.p1,p2为规划表达式，p1;p2表示一个由p1和p2顺序执行构成的规划，p1|p2表示一个由p1和p2选择执行构成的规划.
+　　定义13. 动作算子ACHIEVED和DONE.设a为原子动作个体词，p为规划表达式，i(a)将a解释为ACT中的一个原子动作，
+　　M,w,tACHIEVED(ψ,a,φ) iff 对t在w中的直接前驱t′，M,w,t′ψ 且 M,w,tφ 且 act(t′,t)=i(a)；
+　　为t在w中的前驱，M,w,t′ACHIEVED(ψ,p1,φ1) 且 M,w,tACHIEVED(φ1,p2,φ)；
+　　M,w,tACHIEVED(ψ,p1|p2,φ) iff M,w,tACHIEVED(ψ,p1,φ)或M,w,tACHIEVED(ψ,p2,φ)；
+　　M,w,tDONE(ψ,a) iff 对t在w中的直接前驱t′，M,w,t′ψ 且act(t′,t)=i(a)；
+　　为t在w中的前驱，M,w,t′ACHIEVED(ψ,p1,φ1) 且 M,w,tDONE(φ1,p2)；
+　　M,w,tDONE(ψ,p1|p2) iff M,w,tDONE(ψ,p1)或M,w,tDONE(ψ,p2).
+ACHIEVED(ψ,p,φ)说明，在ψ成立的前提下，完成了规划p的执行，并且使φ成立.DONE(ψ,p)说明，在ψ成立的前提下，完成了规划p的执行.
+　　意图包含对动作或规划的承诺.对实现型意图INT(A(φ∪φ′))，φ′的完整表达应是ACHIEVED(ψ,p,ψ′).当只关心意图结果时，简写成ψ′；当只关心规划p是否完成执行时，简写成DONE(ψ,p).
+　　实现型意图分解公理:
+　　定理8. 
+　　在从愿望产生意图的过程中，Agent需要为愿望作部分规划，以明确愿望是否可能实现，即得到目标，进而判断是否存在部分规划，满足对意图的约束条件，最后选择一个部分规划进行承诺，产生意图.可以将这一过程抽象为一个Agent的计算动作，称为GetInt.愿望的激发作用就表现在促使Agent选择执行GetInt.
+　　愿望意图激发公理:
+
+　　愿望意图激发公理说明，对每个尚未形成意图的愿望，存在一个意图，承诺执行可能使该愿望成为意图的计算动作GetInt.
+　　从意图到动作执行需要在意图间进行选择.这依赖于效用分析，在意图间建立序关系，由此形成基于各个意图部分规划的Agent的全局规划.序关系的改变，导致全局规划的改变.
+3.2 子意图和子愿望
+　　对实现型意图，可以结合承诺的规划给出子意图.
+　　子意图公理:设ps为规划p的任意一个子规划,ψs和ψs′为执行ps的前提和结果，φs为φ中与ps有关的维护条件，有
+　　称INT(A(φs∪(ACHIEVED(ψs,ps,ψs′))))为INT(A(φ∪(ACHIEVED(ψ,p,ψ′))))的子意图，相应地，称DES(A(φs∪(ACHIEVED(ψs,ps,ψs′))))，DES(A(φs∪(DONE(φs,ps))))和DES(A(φs∪ψs′))为DES(A(φ∪(ACHIEVED(ψ,p,ψ′))))的子愿望.
+　　由于子愿望DES(A(φs∪ψs′))不是限定在某个子规划，当子意图INT(A(φs∪(ACHIEVED(ψs,ps,ψs′))))无法实现时，DES(A(φs∪ψs′))可能依然成立.这样，Agent会由愿望激发，产生新的子意图来实现φs∪ψs′，而不是完全放弃整个意图规划p.
+4 结语
+　　本文针对已有BDI模型中的概念不明确、逻辑全知以及缺乏BDI之间动态关系的表达等问题展开讨论，通过引入假设信念丰富了信念的表达，并以此解释愿望和意图在Agent思维状态认知方面的含义，符合直观的理解.在此基础上，重新定义了愿望和意图的概念，给出了BDI三者之间的静态约束关系，建立了静态BDI模型.随后，分析了Agent的执行过程，说明了愿望对意图的激发作用，并通过引入规划，定义子意图和子愿望，从而更充分地表达了BDI三者之间的动态约束与激发关系，改进了理性Agent的已有BDI模型.
+*本文研究得到国家自然科学基金资助.
+作者简介：康小强,1968年生,博士生,主要研究领域为分布式人工智能，智能Agent.
+　　　　　石纯一,1935年生,教授，博士生导师,主要研究领域为人工智能应用基础，知识工程.
+本文通讯联系人:康小强，北京100084,清华大学计算机科学与技术系
+作者单位：清华大学计算机科学与技术系 北京 100084
+参考文献
+　1　Hewitt C. Open information systems semantics for distributed artificial intelligence. Artificial Intelligence, 1991,47(1):79～106
+　2　Bratman M E. Intentions, Plans, and Practical Reason. Cambridge, MA: Hardvard University Press, 1987
+　3　Cohen P R, Levesque H J. Intention is choice with commitment. Artificial Intelligence, 1990,42(3):213～261
+　4　Rao A S, Georgeff M P. The semantics of intention maintenance for rational agents. In: Mellish C S ed. Proceedings of the 14th International Joint Conference on Artificial Intelligence. San Mateo, CA: Morgan Kaufmann Publishers, 1995. 704～710
+　5　Konolige K, Pollack M E. A respresentationalist theory of intention. In: Bajcsy R ed. Proceedings of the 13th International Joint Conference on Artificial Intelligence. San Mateo, CA: Morgan Kaufmann Publishers, 1993. 390～395
+　6　Shoham Y. An overview of agent-oriented programming. In: Bradshaw M ed. Software Agents. Menlo Park, CA: AAAI Press, 1997. 271～289
+　7　Haddadi A S. Communication and Cooperation in Agent Systems. Berlin: Springer-Verlag, 1996. 1～134
+　8　Dunin-Keplicz B, Verbrugge R. Collective Commitments. In: Durfee F ed. Proceedings of the 2nd International Conference on Multi-Agent Systems. Menlo Park, CA: AAAI Press, 1996. 56～63
+　9　Castelfrachi C. Commitments: from individual intentions to groups and organizations. In: Lesser V R ed. Proceedings of the 1st International Conference on Multi-Agent Systems. Menlo Park, CA: AAAI Press/The MIT Press, 1995. 41～48
+本文1998-10-14收到原稿,1998-12-28收到修改稿

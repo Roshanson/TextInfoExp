@@ -1,0 +1,127 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第9期　Vol.10　No.9　1999
+
+
+
+毛发的结构造型方法*
+张晓鹏 吴恩华
+摘要　人物的绘制是当今计算机图形学中的一项重要任务，特别吸引人的是头发的生成技术.头发生成技术的难点在于其精细的形状和庞大的数量.文章针对头发提出了弯曲纹元和三维纹理体的概念，并给出了它们的数学表达式以及对不同发型的描述方法.弯曲纹元和三维纹理体是一般三维纹理的结构.带三维纹理的景物是由弯曲纹元和三维纹理体构成的，三维纹理体可再分成多个弯曲纹元，因而指明了三维纹理空间的结构，并解决了三维纹理曲面的造型问题.文章通过不同例子表明了结构造型方法在描述头发中的应用价值.
+关键词　纹元，三维纹理，Bézier体，剖分，造型.
+中图法分类号　TP391
+Structural Modeling for Hairs
+ZHANG Xiao-peng WU En-hua
+(Computer Science Laboratory Institute of Software The Chinese Academy of Sciences Beijing 100080)
+Abstract　Synthetic image of human body is an important task in computer graphics, in which hair generation technique is especially attractive. The key point in hair generation is its fine shapes and large quantity. A method for describing 3D texture space with two concepts, curved texel and texid, i.e. 3D texture solid, is presented for hairs. The authors also give mathematical expressions of curved texels and texids for the different hair styles. Texids and curved texels are structural organizations of 3D textures. Scenes with 3D textures are made up of texids and curved texels, and a texid can be divided into curved texels, which indicates the structure of 3D texture space, and solves the modeling problem of 3D texture surfaces. The application value of structural modeling for hair description is proved through several examples. 
+Key words　Texel, 3D texture, Bézier solid, subdivision, modeling.
+　　长期以来，带有高复杂度及高精细度景物的绘制技术一直是图形生成技术中的一个重要目标，解决此问题的最基本思想是，按复杂程度和精细程度将景物分成不同的数量级，而每一级对应一种特定的复杂级别和精细级别.对于非常精细的景物，如毛发，用一般的分级方法会使景物出现严重的和令人反感的走样问题，并且因景物的信息量太大而使造型和绘制效率降低.这些问题产生的主要原因是，景物曲面是按几何描述而不是按三维纹理处理的.
+　　毛绒曲面的造型与绘制一直是图形生成中一个重要问题.现已有一些方法被用来解决此问题，但结果都不理想，其中典型的方法有几何造型法、粒子方法和纹理映射方法.Csuri［1］最早用成千上万个多边形处理毛发.后来，Miller［2］建立了绘制丝状元素的光照模型，并把毛发按照分段丝状元素来造型，他还应用改进的A-缓存方法来加速.粒子系统是模糊物体生成的常用方法，有人用它生成毛绒物体.［1］但是，粒子一般在显示时直接绘制，而在实际中却难以按其形状绘制高清晰度物体.
+　　高级绘制技术用于绘制毛发开始于1989年.Kajiya和Kay［3］,Perlin和Hoffert［4］,以及Lewis［5］用体绘制和三维纹理映射的方法绘制毛绒曲面，光线跟踪体绘制技术得以应用.虽然绘制时间的开销较大，但这种方法产生了最有印象的毛绒物体图形.纹元（texel）概念的提出和应用使时间开销问题有了一个好的解决方法.纹元是投向一个体内的三维纹理映射，该映射内曲面的标架（主法向量、切向量和副法向量）和光照模型的所有参数自由分布.一个纹元并不约束在任何具体曲面的几何形状上，而是用于代表一个给定体内的所有曲面的一个超复杂集合，因而绘制时间与纹元内曲面的几何复杂性无关.
+　　陈宏和吴恩华［6］在1990年将辐射度技术用于毛绒曲面的绘制.按照他们的扰乱辐射度映射方法［7］，结合Kajiya的纹元思想，实现了辐射度技术的毛绒曲面绘制方法.
+　　长型头发的生成与绘制开始于1991年.LeBlanc［8］把每根长发定义成弯曲柱面，并用多个拼接起来的直棱柱面近似表示；Magnenat-Thalmann［9］应用LeBlanc［8］的方法绘制出了“梦露”带有光照效果的头发；Watanabe和Suenaga［10，11］把头发造型成连续的三棱柱，为了清楚地控制头发的生成，每根头发的弧按照其长度和重力的函数来造型，因而Gouraud明暗方法中的硬件深度缓存方法可用于显示头发.Annjyo［12］，Rosenblum［13］和Shih［14］应用力学原理描述每根头发的形状.Yang［15］把头发按簇处理，有效地控制了头发的信息量.
+　　但是，有关文献［2,8～18］在有关头发造型的技术中存在一个缺点，即没有精确地描述出有结构组织的头发.它们有的只处理直发，有的把每根头发按个体处理，因而在造型控制、绘制效率和动画控制上有不足之处.
+　　本文把纹元推广到了弯曲程度,并提出了纹元的组织结构――弯曲纹元和三维纹理体（texid）.我们认为,纹理空间由若干具有特定特征的三维纹理体构成，每一个三维纹理体可按其几何复杂程度划分成一个弯曲纹元阵列，该阵列中任意两纹元所占空间不相交，而且所有纹元空间的并恰好是此三维纹理体空间.我们还给出了一个可表示各种几何复杂性的三维纹理体的数学表达式，同时给出纹元阵列的产生方法，并通过不同实例表明这些方法的应用价值.我们方法的优点在于纹理空间容易控制，而且控制信息量小.
+　　现在，简单叙述一下以后各节的内容.第1节弯曲纹元，继承和发展了三维纹理按结构描述的思想，把结构表示成弯曲形状.第2节心定弯曲纹元，是纹理结构的一种描述方式，有数学表达式.第3节三维纹理体，从宏观上刻画了三维纹理的结构，有数学表达式.第4节棱定弯曲纹元，是纹理结构的另一种描述方式，是三维纹理体的分划.第5节纹元映射，是弯曲纹元从世界坐标系向纹理坐标系的映射方法.第6节头发的造型方法，将纹理结构用于头发造型的具体实现过程.第7节结构造型在绘制和动画中的应用，将头发的造型结果用于头发的绘制和动画.第8节造型方法的实现结果，讲述了实验结果和效果说明. 
+1　弯曲纹元
+　　弯曲纹元是描述长发的最小单位，是按照一定规律分布的头发阵列的一个整体.弯曲纹元中每根头发被抽象地描述成一个弯曲的圆柱体，这个圆柱体由其中心曲线和可变化的半径唯一确定.以后我们只表示中心曲线，而弯曲体或头发被定义成具有一定半径的球体沿这个中心曲线移动而形成的立体，最后用上下底面将多余部分截断.
+　　弯曲纹元是Kajiya纹元思想的推广，它继承了纹元的3个分量：密度、标架和光照模型，但它强调的是纹元映射到现实空间之后所具有的几何复杂形状.弯曲纹元仍有6个面和12条棱，但4个侧面已成为一般的四边曲面块，因而4条棱也是一般的空间曲线.
+　　弯曲纹元主要特征是其内部元素分布的规律性，要求每个侧面和底面不能自交，3个对面也不相交.任意两个面若能相交，必须只交在侧棱上.弯曲纹元体内部各头发都是曲线，它们之间在局部或基本上是相互平行的.
+　　三次曲线曲面是几何造型中的最基本工具.它们能达到一般曲线曲面所具有的各种几何性质，包括凸性、凹性、捌点、鞍点等特性，而在计算上有独特的优势――三次多项式在求值和求导上是非常快的.Bézier曲线曲面和B-样条曲线曲面都具有以上各种特性.它们还具有良好的几何控制性质，这便使它们成为弯曲纹元的主要造型工具.除此之外，三次Bézier曲线曲面经过拼接可构成具有各种复杂形状的曲线曲面［19］，而拼接曲线曲面在形状控制上要优于单段高次Bézier曲线曲面.本文以下部分将把三次Bézier曲线、三次Bézier曲面和三次Bézier曲体作为弯曲造型工具.
+2　心定弯曲纹元
+　　心定弯曲纹元是弯曲纹元的一种描述方式.心定弯曲纹元由其中心曲线和底面四边形决定，要求弯曲纹元体内的每一根头发（弯曲细圆柱）之间相互平行或相互等距，或者是它们的简单变形，从而保证心定弯曲纹元内的头发不相交.
+2.1　心定弯曲纹元之一
+　　我们认为弯曲纹元是长方体的变形，长方体中心线按一条三次Bézier曲线扭曲，上下底面是全等的两个矩形，4条棱与中心线平行（等距），侧面为棱线拉成的直纹面，棱和侧面与底面在相交处垂直.也可认为这种弯曲纹元的体由一个底面按垂直于心线的方法移动而成，在移动时，其长、宽方向与曲线主、副法方向的各夹角可以改变.
+　　心定弯曲纹元体的方程是
+　(1)
+这里l和w分别表示底方形的长度和宽度，(t)表示心线，(t),(t)和(t)分别表示心线的主法向量、切向量和副法向量.而发心方程为
+　　　　　　　　　　　　　　　(2)
+，.容易得出，,，这说明在此弯曲纹元体内头发均匀分布.只要头发半径不超过w/m和l/n，任意两根头发都不可能相交.此弯曲纹元体最直接的应用是辫子的造型，如图1、图2所示.
+　　
+图1　圆状发辫　　　　　　　图2　拟方状发辫
+2.2　心定弯曲纹元之二
+　　将心定弯曲纹元之一推广，认为上下底是两个一般四边形，这样，底四边形在移动和转动的同时也有形状的变化.于是，心定弯曲纹元体方程为
+　　　　　　(3)
+其中
+　　　　　　(4)
+这里j分别表示顶点关于上下底Frenet标架的坐标.
+　　由式(3)看出，这个体是空间四边形按中心Bézier曲线移动所生成的，那么头发在其中分布的密度不小于在上下两底分布密度的最小值，因此，任意两根头发也不相交.这种模型主要表示定形头发的各种形状.在特定空间内，不同弯曲纹元夹有大量的无发空间，例如发结.
+3　三维纹理体
+　　对于梳理整齐的头发来说，它们总是几乎或局部基本均匀地散开，相互不交，其特点在于这批头发充满了一个特定空间，相邻的弯曲纹元在空间上连续分布，特别是离头皮面较近的头发.
+　　从这些情况看出，除了弯曲纹元能描述的头发外，另一部分头发的组织结构为：从同一曲面出发（以双三次曲面表示），向另外一曲面（双三次）沿不同曲线（三次曲线）均匀变化.这种头发所在的立体的体方程为
+　　　　　　　　(5)
+而头发的方程为
+
+　　式(5)是一个三次Bézier体［19］，描述这批头发的变化状况，由于它可以表示大量的头发，因此在头发结构中非常重要，在此特称为三维纹理体，如图3和图4所示.一个三维纹理体由56个空间点{bpα,β;p,k,l至少一个等于0或3}决定.
+　　　　　　　　　
+图3　一个三维纹理体的控制顶点　　　　　　　　图4　三维纹理体
+4　棱定弯曲纹元
+　　三维纹理体是一个较大的立体，其内部的头发应取不同的稀疏程度和长度等才显得真实，因而需要对其进行剖分.给定两组实数U={ui;0≤i≤m,ui≤ui+1,ui∈［0,1］}和V={vi;0≤j≤n,vj≤vj+1，vj∈［0,1］}，得到的两组曲面T(ui,v,t)和T(u,vj,t)可将T(u,v,t)分成m×n个子空间.
+Ti,j(u,v,t)=T［(1-u)ui+u ui+1,(1-v)vj+v vj+1］,　　　　　　　(6)
+0≤u,v≤1.随着U和V的加密，Ti,j(u,v,t)的底面很小，而其长度和弯度保持不变，这样，上下底可认为是双一次的或空间直棱四边形，因而与心定弯曲纹元体很相似.利用Bézier曲线曲面的剖分性质可得出Ti,j(u,v,t)的表达式为
+　　　　　　　　　(7)
+其中，这些值可按重复线形插值求得.
+　　Ti,j(u,v,t)在方程上与T(u,v,t)相同，因而也可看成是由一组3×3次Bézier 曲面沿4条棱移动而成，但Ti,j(u,v,t)很细，它可近似看成是空间四边形沿四条棱的移动，我们把Ti,j(u,v,t)称为棱定弯曲纹元.棱定弯曲纹元的形状是由上下两个空间四边形的8个顶点，再加4个侧棱的8个控制点而唯一确定的.
+　　一般将U和V取为非均匀的值以显示纹元体分划的自然性和随机性.具体取法为：先将它们均匀分划，然后在一定范围内作ui或vj值的随机调整.
+5　纹元映射
+　　我们知道，弯曲纹元表示了一组弯曲头发的结构，其优势在于,其中每根弯发与一个方体中的一根竖直线对应,使得绘制效率提高，这个方体称为纹元空间.纹元空间一般取正方体，其中均匀地排列着一个直线位置的阵列.纹元空间也可取为长方体，其长宽度为该方向上直线的数目.
+　　纹元空间的每个直线的位置是确定的，但该位置上是否有头发以及头发的长度取多少是未定的.为了生成的头发更真实，每个位置头发的存在性是随机的，而作为头发末端的弯曲纹元体内每根头发的长度也是随机的，因而纹元空间可取多种形式.把纹元空间的每种取法称为一个纹元样本，它们的集合称为纹元样本空间.在实际应用中，每个弯曲纹元对应一个纹元样本，这种对应法称为纹元映射.每一纹元样本向哪个弯曲纹元的映射是随机决定的，一旦决定后便记录下来，这样画出来的弯曲纹元与头发才显得自然.以上的随机性由概率分布函数来确定，例如Poisson分布函数（如图5所示）.
+
+图5　纹元中头发的随机分布
+6　头发的造型方法
+　　本节对我们所构造发型的造型方法加以说明.
+6.1　头皮预处理
+　　通过其他造型系统取得一份人头（包括五官）的三维数据，并将头皮部分划分出来.由于人的头皮近似于半椭球面，我们首先将一个半立方体分划成小四边形，再投影到头皮面上，并且使头皮面与脸面光滑连接，这样就得到头皮面的四边化.然后，根据每一个头皮四边形的4个顶点和4个法向量的信息可构造一张双三次Bézier曲面块来代表它，作为弯曲纹元或三维纹理体的底面.双三次Bézier曲面的构造方法是：给定{Vi,j,ni,j;i,j=0,1}，求得{bk,l;k,l=0,1,2,3}，通过关系式
+
+其中0≤3i±1,3i,3j±1,3j≤3.
+
+图6　头发的自然分层
+　　预处理工作用到了Alias WAVE FRONT造型工具.
+6.2 头发的自然分层
+　　对于无约束的头发来说，它开始受头皮的托起，沿头皮向四周各个方向延伸，然后自由下落.位于位置较高（y值较大）的头皮上的头发处于外层，而位于位置较低（y值较小）的头皮上的头发处于内层，如图6所示.我们把头发用三次Bézier曲线的旋转曲面来分层，该层线的4个顶点b0，b1，b2和b3按照对应头皮的外法向量与y正方向的夹角的变化作线形插值，它们分别为b0在头皮四边形的中心或某一顶点；b1来自外法向量向低（y负方向）的一个转角而形成的射线按一定长度截取，这个转角大小随头皮高度的增加而增加，而截取长度随头皮高度的增加而减少；b2与b1处于同一高度，而离b1的距离随头皮高度的增加而增加；b3与b2处于同一竖直线上，其高度可取为肩膀高度.
+6.3　发辫的造型
+　　发辫把多缕头发交织在一起，每缕的变化呈周期状.我们以3缕发辫为例来构造，每缕发辫的中心线方程分别为1(t)=(t,sint,p(t)),2(t)=1(t-2π/3)和3(t)=1(t-4π/3)，其中p(t)在一个周期内的值为
+
+　　我们用三次Bézier曲线分段逼近它们，并取弯曲纹元的底面垂直于中心线，从而保证各弯曲纹元光滑地连接成一条整缕.图1中各缕头发呈椭圆状，这里要先找出弯曲纹元底四边形的内接椭圆，椭圆内的头发认为存在，而椭圆外的头发认为不存在.图2中各缕头发呈方状，这里先将底四边形用椭圆弧割角，认为割掉部分的头发不存在，而剩余的头发是存在的.
+6.4　用弯曲纹元构造头发
+　　取头皮四边形为弯曲纹元的下底，中心三次Bézier曲线的生成方法与分层三次Bézier曲线的生成方法相同，而下底面（发缕末端面）平行于地平面，这样，弯曲纹元与头皮四边形不垂直，而且各缕在头发空间中均匀分布，从而各缕之间不会相交.头前面弯曲纹元用Bézier曲线剖分方法将其截断于眼眉之上；侧面弯曲纹元再续上一个直纹元而延伸到肩部，如图7～图9所示.
+　　
+图7　心定弯曲纹元头发(1)　　　　图8　心定弯曲纹元头发(2)
+
+图9　心定弯曲纹元头发(3)
+6.5　用三维纹理体构造头发
+　　将头皮双三次Bézier曲面取为三维纹理体的下底面，4条棱按分层方法分别构造，下底在肩高度取为平面，这样，所有相邻三维纹理体共有一个侧面，因此所有三维纹理体的并形成了头发空间，而且整个头发空间都由棱定弯曲纹元组成.
+　　图10将所有棱定弯曲纹元按0.55剖分再绘制，所有头发为短发，而且末端自然参差不齐.
+
+图10　三维纹理体头发（短发）
+7　结构造型在绘制和动画中的应用
+　　虽然有许多人用局部光照的方法绘制了头发，但效果最好的还是用光线跟踪和辐射度技术.光线跟踪和辐射度技术的核心难点在于其运算量过大.这两种技术都离不开光线与头发的求交.成人头发的数目为8～12万，如果所有头发单独处理的话，景物数量会太大.头发的直径约为像素的1/3，为了避免出现图像走样，采样点必须加密，那么运算量会再增加一个等级.
+　　把一部分头发看成一个整体会使景物数量降低一个数量级.弯曲纹元的使用急剧减少了头发景物的数量.如果一个弯曲纹元平均含50根头发，那么头发景物的数目约为2 000个.三维纹理体是弯曲纹元的一个集合，使用它又使景物数量降低一个数量级.因此，弯曲纹元和三维纹理体的使用把绘制效率按数量级提高.
+　　动画是形象描述头发的另一个重要方面.动画的任务在于按照物理原理将所有景物的一系列造型描述出来，并实现绘制.如果没有头发的结构，头发运动的信息会大得惊人，而且运动过程也不容易控制.用弯曲纹元描述长发，控制点只为7个（心定弯曲纹元）或10个（棱定弯曲纹元），一般比头发的数目要少得多.用三维纹理体描述长发，控制点的数目比头发的数目少得更多.用三维纹理体和弯曲纹元描述动画，只需用它们的棱控制点表示出头发的弯曲过程，用上底面表示头发末端的形状即可.
+8　造型方法的实现结果
+　　关于本文中提到的结构造型方法，我们用以下6个例子来实现：图1中的圆状发辫――共有拼接起来的3个弯曲纹元，每个弯曲纹元有200根头发；图2中的拟方状发辫――共有拼接起来的3个弯曲纹元，每个弯曲纹元有236根头发；图7中的用心定弯曲纹元构造的头发――头发较粗而且少，约2 052个弯曲纹元、8 208根头发；图8中的用心定弯曲纹元构造的头发――头发较细而且数量多，约2 052个弯曲纹元、51 300根头发；图9中的用心定弯曲纹元构造的头发――图8的侧像；图10中的用三维纹理体构造的头发――短发，头发分布均匀，约603个弯曲纹元、21 708根头发.
+*　本文研究得到国家自然科学基金资助.
+本文通讯联系人：张晓鹏，北京100080,中国科学院自动化研究所人工智能实验室
+作者简介：张晓鹏，1963年，博士生，主要研究领域为计算机图形学，计算机辅助几何设计.
+　　　　　吴恩华，1947年，研究员，博士生导师，主要研究领域为计算机图形学，CAD，虚拟现实.
+作者单位：中国科学院软件研究所计算机科学开放研究实验室 北京 100080，E-mail:zz@readchina.com
+参考文献：
+［1］Csuri C, Hakathorn R, Parent R et al. Towards an interactive high visual complexity animation system. Computer Graphics, 1979,13(2):289～299
+［2］Miller G. From wireframes to furry animals. In: Sherin A G ed. ACM Proceedings of Graphics Interface. Toronto: Canadian Information Processing Society, 1988. 138～146
+［3］Kajiya J, Kay T. Rendering fur with three dimensional textures. Computer Graphics, 1989,23(3):271～280
+［4］Perlin K, Hoffert E. Hypertexture. Computer Graphics, 1989,23(3):253～262
+［5］Lewis P. Algorithm for solid noise synthesis. Computer Graphics, 1989,23(3):263～270
+［6］Chen H, Wu E. Radiosity for furry surfaces. In: Post F H, Barth W eds. Proceedings of Eurographics'91. North-Holland: Elsevier Science Publishers B.V., 1991. 447～457
+［7］Chen H, Wu E. An efficient radiosity solution for bump texture generation. Computer Graphics, 1990,24(4):125～134
+［8］LeBlanc A, Turner R, Thalmann D. Rendering hair using pixel blending and shadows buffers. Journal of Visualization and Computer Animation, 1991,2(3):92～97
+［9］Magnenat-Thalmann N, Thalmann D. Complex models for animating synthesis actors. IEEE Computer Graphics and Application, 1991,11(5):32～44
+［10］Watanabe Y, Suenaga Y. A trigonal prism-based method for hair image generation. IEEE Computer Graphics and Applications, 1992,12(1):47～53
+［11］Watanabe Y, Suenage Y. Drawing human hair using wisp model. The Visual Computer, 1991,7:97～103
+［12］Anjyo K, Yoshiaki U, Tsuneya K. A simple method for extracting the natural beauty of hair. Computer Graphics, 1992,26(2):111～120
+［13］Rosenblum R, Canlson W, E Tripp. Simulating the structure and dynamics of human hair: modeling. Rendering and Animation. Journal of Visualization and Computer Animation, 1991,2(4):141～148
+［14］Shih Z, Guo H. The modeling and animation of human hair. In: Chen J ed. Proceedings of Pacific Graphics. Singapore: World Scientific Publishing Company, 1994. 215～227
+［15］Yang X, Xu Z. Adaptive rendering of multiresolution cluster hair model. In: Yang S, Thalmann D eds. Proceedings of Pacific Graphics. Hsinchu: Chiao Tung University Press, 1996. 36～49
+［16］Daldegen A, Kurihara T, Magnenat-Thalmann N et al. An integrated system for modeling, animating and rendering hair. Computer Graphics Forum, 1993,12(3):211～221
+［17］Sourin A, Pasko A, Savchenko V. Using real functions with application to hair modeling. Computer & Graphics, 1996,20(1):11～19
+［18］Yang T, Ouhyoung M. Rendering hair with back-lighting. In: Li H, Li B, Yu X eds. Proceedings of CAD & Graphics China'97. Shenzhen: International Academic Publishers, 1997. 291～296
+［19］Farin G. Curves and Surfaces for Computer Aided Geometric Design. 2nd Edition. San Diego: Academic Press Inc., 1990
+收稿日期：1998-06-30，修改日期：1998-09-25

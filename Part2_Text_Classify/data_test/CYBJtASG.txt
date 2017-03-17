@@ -1,0 +1,94 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第12期  Vol.10 No.12 1999
+
+
+
+基于遗传策略和神经网络的非监督分类方法
+黎 明 严超华 刘高航
+摘要　文章提出了一种新的基于遗传策略和模糊ART(adaptive resonance theory)神经网络的非监督分类方法.首先,利用原有的训练样本对模糊ART神经网络进行非监督训练，然后,采用遗传策略为模糊ART神经网络增加各类族边界邻域内的训练样本点，再对模糊ART神经网络进行有监督训练.这种方法解决了训练样本在较少条件下的ART系列神经网络的学习与分类问题，提高了ART系列神经网络的分类性能，并扩展了其应用范围.
+关键词　神经网络，遗传算法，ART(adaptive resonance theory)，非监督分类.
+中图法分类号　TP18
+The Unsupervised Classification Using Evolutionary Strategies and Neural Networks
+LI Ming YAN Chao-hua LIU Gao-hang
+(Department of Applied Engineering Nanchang Institute of Aeronautical Technology Nanchang 330034)
+Abstract　 A new unsupervised classification method using evolutionary strategies and fuzzy ART (adaptive resonance theory) neural networks is proposed in this paper. First, fuzzy ART neural networks is trained by original input samples under unsupervised way. Then evolutionary strategies is used to generate new training samples near the clusters boundaries of neural networks. Therefore the weights of fuzzy ART neural networks can be revised and refined by training those new generated samples under supervised way. The proposed method resolves the training problem for ART serial neural networks when there are only less training samples available. Consequently, it enhances the performance of ART serial neural networks and extends their application.
+Key words　Neural network, genetic algorithms, ART(adaptive resonance theory), unsupervised classification.
+　　在众多的非监督分类方法中，由Carpenter［1～4］等人建立和发展的基于自适应谐振理论(adaptive resonance theory，简称ART)的一系列神经网络是最有效的方法之一.在ART系列学习过程中，处于特征空间不同位置的输入样本点越多，所聚类族就越精确.但在实际应用中只能获得较少的输入样本点，例如，在模糊与残缺指纹或掌纹识别的应用中，很难获得各种各样的具有模糊与残缺特征的样本.又如,在三维CAD设计的分类应用中也存在类似的问题.较少的输入样本点所训练出的ART神经网络聚类与分类性能较差，对处于所聚类族边界邻域内的样本点，ART神经网络的分类不可靠.
+　　Hwang［5］发现，通过对多层感知器预测结果来增加训练样本可以有效地提高分类性能.在缺少多样化训练样本的情况下，Thomas［6］采用类似的方法为ART1神经网络增加训练样本，这种方法采用遗传算法分析由底向上和由顶向下子系统构成的吸引子，并探测吸引子的形状.在Thomas所提的方法中，首先随机确定一些输入样本构成遗传群体，然后通过交换、变异和选择等遗传算子的运算产生后代，后代中的输入样本比其父母中的输入样本更趋向于落在ART1已学习类族的边界位置.当遗传算法收敛时，Thomas方法得到落在ART1已学习类族的边界附近的输入样本点，然后利用这些新的输入样本点进一步训练ART1神经网络，提高了分类正确率.
+　　Thomas方法只能对二值输入样本进行遗传运算，即采用了对二值输入样本的直接编码方式以及相应的对二值编码的交换、变异和选择等遗传算子.因此只能用来改进只接受二值输入的ART1神经网络，不能应用于可接受实值输入的ART2、模糊ART等神经网络.而且，Thomas方法只是简单地利用新的输入样本点训练ART1神经网络，新的输入样本点再训练的输入秩序对ART1的类族形状的确定有直接关系，再训练后的ART1神经网络对一些落在类族的边界附近的输入样本点的分类结果不尽合理.
+　　本文提出了一种新的基于遗传策略和模糊ART神经网络的非监督分类方法，共分3步.第1步，利用原有的训练样本对模糊ART神经网络进行非监督训练，建立模糊ART神经网络各类族权重矢量.第2步，采用遗传策略(evolution strategies)为模糊ART神经网络增加新的处于已学习类族边界附近的样本点.第3步，确定新的样本点所属类族，连同原有的训练样本一起对模糊ART神经网络进行有监督训练，并自适应地调整模糊ART神经网络的警戒测试参数，使模糊ART神经网络获得最佳性能.
+　　本文提出的这种新的非监督分类方法通过遗传策略的遗传运算过程解决了训练样本在较少条件下的ART系列神经网络训练与建立问题，在两个方面发展了Thomas方法：一是提供了实值输入样本的增加方法，使本方法适合于任意类型的ART系列神经网络；二是提出了新增样本点的有监督训练方法，充分利用了新增样本点的信息，提高了ART系列神经网络的分类性能.
+1 基于模糊ART神经网络的初始分类
+　　本文提出的非监督分类方法的第1步是利用原有的训练样本对模糊ART神经网络进行非监督训练，建立模糊ART神经网络各类族权重矢量，实现非监督的初始分类.
+　　本文采用的结合有监督和非监督训练的模糊ART神经网络如图1所示，它可以同时进行有监督和非监督训练.在进行非监督训练时，预期输入不存在，该神经网络是一标准的模糊ART神经网络，即为图1中的ARTa.在进行有监督训练时，该神经网络是一个简化的模糊ARTMA［3］神经网络，预期输入直接给出输入样本所属的类族，因此略去了模糊ARTMAP神经网络中的另一标准的模糊ART神经网络ARTb［3］.
+
+图1　本文采用的模糊ART神经网络结构
+　　标准的模糊ART神经网络输出层中每一神经元代表一类族，每个类族在特征空间的形状和位置由其权重矢量所决定，每个类族在特征空间中可以由一个超方形描述［2,4］.假设输入矢量为带补码的输入：其中为M维矢量.而由顶向下权重矢量和由底向上权重矢量是完全相同的，为另设警戒参数为ρ.对应于输出层第j个神经元的类族为则它可以解释为一个超方形Rj.超方形的远离原点的顶点为，靠近原点的顶点为.当类族j被第1次选中学习时，它的权重矢量为也就是因此,它的超方形Rj是一个M维的点.超方形的尺寸定义为在快速学习规则的情况下，超方形Rj扩展为也就是，超方形R(new)j扩展到仅能包括原超方形R(old)j和M维输入点.为了简化描述，本文用二维输入矢量(={a1,a2},M=2)图示神经网络的超方形几何解释.超方形扩展如图2所示，图中二维超方形的尺寸等于超方形的长度和宽度之和.由参考文献［2,4］可得：当扩展了的超方形尺寸满足警戒测试条件时，类族j就可以满足警戒测试.在竞争选择过程中，类族的选择是由原超方形的尺寸和扩展后的超方形尺寸所决定.因此,模糊ART神经网络实现非监督的聚类和分类的几何解释为：
+
+图2　超方形的扩展示意图
+　　(1) 如果输入矢量落在唯一的一个已建立的超方形Rj中，此超方形一定能够通过警戒测试并且被选作输出类族.
+　　(2) 如果输入矢量落在多个已建立的超方形中，具有最小超方形尺寸的类族将被选作输出类族.
+　　(3) 如果输入矢量不落在任何已建立的超方形中，设满足尺寸满足警戒测试条件的超方形集合为Φ，其中满足下式条件的类族Rj被选作输出类族.
+　　　　　　　　　　　　　　　　(1)
+(4) 如果输出层没有预测类族输出，则为输入矢量建立一个新类族.
+2 遗传策略增加类族边界样本点
+　　遗传策略［7～9］首先用码串表示一种优化解，由不同码串组成遗传群体.遗传策略对码串进行遗传操作产生新的码串，并使新的码串具有更高的适应度.本文采用(μ,λ)遗传策略.
+设遗传策略码串为它是2M维矢量，其中ai为输入矢量的第i个分量，σi为其对应的步进方差.对于码串p()，将其补码()输入第1节中训练好的模糊ART神经网络，求取满足下述警戒测试准则的类族集合(也是超方形集合)Ω.
+　　　　　　　　　　　　　　　　(2)
+则码串p()的适应度为
+　　　　　　　　　　　　　(3)
+其中α是小正数.而类族的序号K与L由以下两式决定：
+　　　　　　　　　　　　　　　　(4)
+　　　　　　　　　　　　　　　　(5)
+因此,类族对应的超方形RK和超方形RL是满足超方形警戒测试准则并且最靠近输入矢量的两个超方形，码串p()的适应度fitness()度量的是这两个超方形离输入矢量的距离之差，码串p()的适应度fitness()越大，则输入矢量越处于超方形RK和超方形RL的中间位置，也就是说，输入矢量越处于类族的边界附近.
+　　当(μ,λ)遗传策略收敛到一定的精度时，可以得到处于不同类族边界附近的输入矢量集合.根据这些新的输入矢量点的产生过程，可以为每个新的输入矢量点标记上它处于那两个类族(超方形)的边界附近，使得这些新的输入矢量点可以用在下一节介绍的有监督模糊ART神经网络的训练过程.
+3 基于有监督模糊ART神经网络的准确分类
+　　Thomas方法只是简单地利用新的输入样本点训练ART1神经网络，新的输入样本点再训练的输入秩序会影响ART1神经网络的训练结果，因此造成再训练后的ART1神经网络对一些落在类族的边界附近的输入样本点的分类结果不尽合理.同样，如果简单地利用新的输入样本点训练模糊ART神经网络,也会遇到类似的问题.如图3所示，图中有4个尺寸相同的超方形：RA，RB，RC和RD，小黑点表示通过遗传策略运算得到的位于4个超方形两两中间的新增加的输入样本点.新的输入样本点再训练的输入秩序会影响模糊ART神经网络的训练结果.根据文章开始部分介绍的超方形扩展规则，如果先输入超方形RB和RD中间的新增加的输入样本点，则超方形RB先向超方形RD方向扩展.由于超方形RB的尺寸已扩展得较大，当再输入超方形RB和RB中间的新增加的输入样本点时，它们中的多数被聚类为超方形RB对应的类族，只有少数被聚类为超方形RB对应的类族，超方形RB和RB对应的学习结果如图4所示.
+
+图3　已被训练的模糊ART神经网络的超方形及新增加的输入样本点示意图
+
+图4　对新增加的输入样本点的一种学习结果
+　　如果先输入超方形RB和RD中间的新增加的输入样本点，再输入超方形RA和RB中间的新增加的输入样本点，最后输入超方形RB和RC中间的新增加的输入样本点，超方形RB和RB对应的学习结果如图5所示.根据警戒测试准则对扩展超方形尺寸的限制条件，此时被再次训练的模糊ART神经网络对超方形RB和RB中间的新增加的输入样本点的分类更为合理.
+
+图5　对新增加的输入样本点的另一种学习结果
+　　本文对第1节中得到的模糊ART神经网络采用有监督训练解决了上述问题.有监督训练的模糊ART神经网络可以充分利用由遗传策略得到的新增加的输入样本点信息，并可以自适应调整警戒测试参数，提高模糊ART神经网络的识别性能.
+　　有监督的模糊ART神经网络类似于模糊ARTMAP神经网络，其具体的工作原理参见文献［2,3］.根据遗传策略的运算过程可以判断每个新增加的输入样本点处于哪两个类族的边界点附近.设新增加的输入样本点处于类族的边界点附近，并设
+　　　　　　　　　　　　　　　(6)
+则新增加的输入样本点属于哪个类族的判断规则为
+　　　　　　　　　　　　　　　(7)
+然后,可以利用这些已标明所属类族的新增加的输入样本点对第1节中经过了初始训练的模糊ART神经网络进行再次的有监督训练.如图1所示，当输入某个新增加的输入样本点时，同时输入其所属类族序号.如果图1中子网络ART\-a的预测输出a与期望输出相同，则ARTa进行标准的训练与学习.如果预测输出a与期望输出不相同，图1中的MAP层产生非零的触发信号Xab，自适应地改变子网络ARTa的警戒测试参数ρ，使得ARTa的预测输出与期望输出相同.对所有新增加的输入样本点进行多次有监督训练，使得模糊ART神经网络收敛，则学习收敛后的模糊ART神经网络对新的输入样本点可以进行更准确的分类.
+4 试验结果与结论
+　　为了简洁地演示基于遗传策略和模糊ART神经网络的非监督分类方法的实验结果，本文将其用于只有二维特征空间的长方形类型识别.特征空间由长方形的长度和宽度两个分量组成，一类长方形的长度大于宽度，另一类长方形的宽度大于长度.
+　　为了清楚地看到遗传策略找出的新增输入样本点和模糊ART神经网络的超方形扩展，试验中只给出了较少的初始样本点,使得非监督学习的模糊ART神经网络只建立了两个超方形RA和RB.如图6所示，超方形RA描述的是宽度Width大于长度Length的长方形类族，而超方形RB描述的是长度Length大于宽度Width的长方形类族，由于特征空间是二维的，超方形RA和RB实际上就是图6所示的两个长方形.模糊ART神经网络在非监督训练初始样本点时，若警戒测试参数为ρ=0.35，则超方形RA和RB以及它们扩展后的超方形的尺寸必须小于或等于M。(1-ρ)=2。(1-0.35)=1.3.
+
+图6　原始输入样本训练得到的模糊ART神经网络的超方形
+　　遗传策略运算了1 000次，得到的26个新增样本点如图7中的五角星所示，它们处于超方形RA和RB中间的位置.利用这些新增样本点对模糊ART神经网络的有监督学习稳定后，超方形RA和RB分别扩展成为图7中的虚线方形表示的超方形，此时的警戒测试参数被调整为ρ=0.59.图6和图7演示的试验结果表明，在输入样本较少的条件下，基于遗传策略和模糊ART神经网络的非监督分类方法得到的类族形状更为合理，提高了非监督分类的可靠性.
+
+图7　新增输入样本及监督训练得到的模糊ART神经网络的超方形
+　　本文还将基于遗传策略和模糊ART神经网络的非监督分类方法用于掌纹识别.掌纹特征空间［10］由掌纹的5条主要屈肌纹(生命线、命运线、健康线、感情线和智慧线)的相对位置决定，掌纹特征空间共有25维分量.基于模糊ART神经网络的非监督分类方法的掌纹识别方法参见文献［10］.这种识别方法与本文提出的基于遗传策略和模糊ART神经网络的非监督分类方法的掌纹识别试验对比结果见表1.掌纹识别试验中共有50类，5 000个输入样本，每类有100个样本.在进行上述两种非监督分类器训练时,每类掌纹只任选了10个输入样本学习，即共有500个输入样本.表1给出了上述两种方法训练得到的模糊ART神经网络对所有5 000个输入样本的正确识别率，并给出了相应的警戒测试参数.在基于遗传策略和模糊ART神经网络的非监督分类方法中，遗传策略进行了5 000次遗传运算过程，对新增样本点进行了40次有监督训练.
+表1 输入样本较少条件下本文的分类方法与模糊ART神经网络分类方法对掌纹识别的试验结果
+
+　正确识别率(%)警戒测试参数
+基于模糊ART神经网络的非监督分类方法93.60.84
+基于遗传策略和模糊ART神经网络的非监督分类方法95.70.81
+
+　　本文提出了基于遗传策略和模糊ART神经网络的非监督分类方法，通过遗传策略的遗传运算过程和采用ART神经网络的有监督及非监督两种训练方法，解决了输入样本较少条件下的ART系列神经网络训练与建立问题.它提供了增加二值与多值输入样本的方法，提出了新增样本点的有监督训练方法，充分利用了新增样本点信息，提高了ART系列神经网络的分类性能.
+*本文研究得到江西省自然科学基金资助.
+作者简介：黎明,1965年生,博士，副研究员,主要研究领域为图像处理，模式识别，神经网络，遗传算法.
+　　　　　严超华,1956年生,副教授，主要研究领域为测试技术及仪器，数字图像处理.
+　　　　　刘高航,1946年生,教授，主要研究领域为测试技术及仪器，模式识别.
+本文通讯联系人:黎明，南昌330034，南昌航空工业学院应用工程系
+作者单位：南昌航空工业学院应用工程系 南昌 330034
+参考文献
+　1 Carpenter G A, Grossberg S. A massively parallel architecture for a self-organizing neural pattern recognition machine. Computer Vision, Graphics, and Image Processing, 1987,37(1):54～115
+　2 Carpenter G A, Grossberg S, Rosen D B. Fuzzy ART: fast stable learning and categorization of analog patterns by an adaptive resonance system. Neural Networks, 1991,4(6):759～771
+　3 Carpenter G A, Grossberg S, Markuzon N et al. Fuzzy ARTMAP: a neural network architecture for incremental supervised learning of analog multidimensional supervised maps. IEEE Transactions on Neural Networks, 1992,3(5):698～613
+　4 Huang J, Georgiopoulos M, Heileman G L. Fuzzy ART properties. Neural Networks, 1995,8(2):202～213
+　5 Hwang J N, Choi J J et al. Query leaning based on boundary search and gradient computation of trained multiplayer perceptions. In: Proceedings of the International Joint Conference on Neural Networks. San Diego: IEEE Press, 1990. 433～442
+　6 Thomas P C. Genetic Algorithms as a tool for the analysis of adaptive resonance theory network training sets. In: Proceedings of the International Workshop on Combinations of Genetic Algorithms and Neural Networks. Baltimore: IEEE Press, 1992. 184～200
+　7 David B F. An introduction to simulated evolutionary optimization. IEEE Transactions on Neural Networks, 1994,5(1):3～14
+　8 Back T, Schwefel H P. An overview of evolutionary algorithms for parameter optimization. Evolutionary Computation, 1993,1(1):1～24
+　9 Yao X. A review of evolutionary artificial neural networks. International Journal of Intelligent Systems, 1993,8(4):539～567
+10 Paul S W, Li M. Personal identification by palm prints recognition. In: Proceedings of the 10th International FLAIRS Conference. Daytona Beach: IEEE Press, 1997. 1211～1218
+本文1998-08-12收到原稿,1998-12-28收到修改稿

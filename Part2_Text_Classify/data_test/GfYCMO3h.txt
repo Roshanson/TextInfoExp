@@ -1,0 +1,85 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第1期 No.1 1999
+
+
+
+刻画基于模型的中心诊断* 
+欧阳丹彤1　姜云飞2 
+　　摘要　虽然对基于模型的诊断存在一系列不同的逻辑定义,但所幸的是存在一个统一的抽象定义,它概括了以往的不同定义.在该定义基础上提出了基于模型的中心诊断的概念.通过刻画基于模型的中心诊断过程,论证了基于模型的中心诊断与本原蕴含/蕴含式的直接关系,从而将其理论结果与ATMS(assumption-based truth maintenance system)这类算法联系起来.进一步指出,对基于一致性中心诊断的刻画仅仅是文中所给出的刻画的一个特殊情形.
+　　关键词　基于模型的诊断,基于模型的中心诊断,本原蕴含/蕴含式.
+　　中图法分类号　TP18
+Characterizing Kernel Model-based Diagnosis 
+OU-YANG Dan-tong1　JIANG Yun-fei2 
+　　Abstract　Although there is a spectrum of different logical definitions of model-based diagnosis, fortunately, there exists a unified abstract definition which generalizes the definitions proposed in the past. Based on this definition, the concept of kernel model-based diagnosis is proposed. Then by characterizing the process of kernel model-based diagnosis, the direct relationship between it and the prime implicants/implicates is also demonstrated. Therefore, the theoretical results in this paper can be linked with algorithms such as the ATMS (assumption-based truth maintenance system). Furthermore, it is pointed out that the characterization of kernel consistency-based diagnosis is only a special case of the characterization in this paper.
+　　Key words　Model-based diagnosis, kernel model-based diagnosis, prime implicant/implicate.
+　　使用传统的专家系统方法建造起来的诊断系统依赖于具体的设备,而且如何从专家那里获取必要的诊断知识是维护和发展这些系统的瓶颈.基于模型的诊断是一项新的AI技术,它可以克服传统方法的缺点.
+　　基于模型的诊断可以看成是在已知上下文中对观察集产生“解释”（Explanations)的过程.但是,在已有文献中至少存在两个不同的关于“解释”的逻辑概念.一种是解释的弱概念.在这种情形下,称一诊断解释一观察m,若它与m相一致,参见文献［1～4］.另一种是解释的强概念.在这种情形下,称一诊断解释一观察m,若它逻辑推出m,参见文献［5,6］.显然,逻辑推出比一致性要求强得多.那么给出一个观察集,应选择哪些观察必须被诊断逻辑推出呢？这是一个引起争议的地方.对需要被逻辑推出的观察子集的不同选择产生了基于模型诊断的不同逻辑定义.比如,文献［7］认为所有的观察必须被诊断逻辑推出；而文献［8,9］则认为一诊断只与所有观察相一致即可,不要求任何观察被诊断逻辑推出.
+　　Console L和Torasso P［10］分析了已有文献中出现的基于模型诊断的不同逻辑定义,提出了一个统一的定义.本文即在该定义下,进一步给出了能够刻画基于模型诊断空间的基于模型的中心诊断的概念,并对它的诊断过程进行了刻画.该刻画论证了基于模型的中心诊断与本原蕴含/蕴含式的直接关系,从而可使用ATMS［11］(assumption-based truth maintenance system)算法来计算,因而将我们的理论结果与实现联系起来.
+1　基于模型的诊断问题
+　　定义1. 基于模型的诊断问题DP是一个三元组〈〈SD,COMPS〉,CXT,OBS〉,其中SD为系统描述,是一阶语句的集合;COMPS为系统组成部件,是一个有限的常量集;CXT为表示上下文数据的基原子集合;OBS为待解释的观察集的基原子集合.
+　　CXT或OBS中每一原子f(a)的含义为：关于参数f的观察值为a.
+　　定义2. 已知一诊断问题DP＝〈〈SD,COMPS〉,CXT,OBS〉,相应于DP的溯因问题AP是一个三元组〈〈SD,COMPS〉,CXT,〈Ψ＋,Ψ－〉〉,其中Ψ＋OBS,Ψ－＝{～f(x)｜f(y)∈OBS,对于f的每一非y的允许值x}.
+　　一元谓词AB意味着“abnormal” （反常）,当部件c∈COMPS反常时,AB(c)为真.
+　　定义3. 已知两个部件集Cp,Cn,定义D(Cp,Cn)如下:［AB(c)］∧［～AB(c)］.
+　　定义4. 已知一诊断问题DP以及相应于DP的溯因问题AP如定义2,称D(Δ,COMPS－Δ)为关于DP的一个基于模型的诊断,当且仅当
+　　（1）D(Δ,COMPS－Δ)逻辑推出Ψ＋,即对每一m∈Ψ＋,都有SD∪CXT∪{D(Δ,COMPS－Δ)}m.
+　　（2）D(Δ,COMPS－Δ)与Ψ－一致,即SD∪CXT∪{D(Δ,COMPS－Δ)}∪Ψ－可满足.
+　　原则上,Ψ＋可为OBS的任一子集.若OBS形如{O1,...,On},Ψ＋OBS,且形如{O11,...,O1r}.下面用～OBS表示{～O1∨...∨～On},～Ψ＋表示{～O11∨...∨～O1r}.
+　　由定义4不难得到如下定理.
+　　定理1. 已知DP和AP如上,若存在关于DP的基于模型的诊断,则SD∪CXT∪OBS是可满足的,且SD∪CXT∪～OBS也是可满足的,特别地,SD∪CXT∪～Ψ＋也是可满足的.
+2　刻画基于模型的中心诊断
+2.1　基于模型的中心诊断
+　　定义5. 称一些文字的合取式C覆盖另一些文字的合取式D当且仅当C的每一个文字都出现在D中.
+　　定义6. 已知DP和AP如上,关于DP的基于模型的部分诊断为一可满足的D(Δ1,Δ2),使得对每一被D(Δ1,Δ2)覆盖的可满足的D(Δ1′,Δ2′),都有:（1） SD∪CXT∪Ψ－∪{D(Δ1′,Δ2′)}一致,（2） 若Ψ＋≠φ,则SD∪CXT∪{D(Δ1′,Δ2′)}Ψ+（注意,SD∪CXT∪{D(Δ1′,Δ2′）}∪Ψ－一致等价于SD∪CXT∪{D(Δ1′,Δ2′）}∪OBS可满足）.
+　　基于一致性部分诊断与部分溯因诊断是该定义的两种特殊情形.前者相当于在该框架中取Ψ＋＝φ.后者相当于在该框架中取Ψ＋＝OBS.由该定义可直接得到如下引理.
+　　引理1. 已知DP如上,关于DP的每一个基于模型的部分诊断都是关于DP的基于一致性的部分诊断.反过来不成立.
+　　定义7. 基于模型的中心诊断是具有如下性质的基于模型的部分诊断:即能覆盖它的唯一的基于模型的部分诊断就是它本身.
+　　不难得出如下结论:D(Δ,COMPS－Δ)为一基于模型的诊断,当且仅当存在一个基于模型的中心诊断来覆盖它.也就是说,使用基于模型的中心诊断可以刻画基于模型的诊断空间.那么,如何计算基于模型的中心诊断呢?在此之前,先回顾一下与本文相关的一些工作.
+　　定义8. AB文字为AB(c)或～AB(c),c∈COMPS.AB子句为AB文字的析取式.
+　　定义9. 关于〈〈SD,COMPS〉,CXT,OBS〉的一个冲突是从SD∪CXT∪OBS出发推出的一个AB子句.称一冲突为最小的,当且仅当该冲突的任一真子子句都不是一冲突.
+　　定义10. 设Σ是命题公式的集合,称一可满足的基文字合取式∏(即不含互补对的文字的合取式)是Σ的一个蕴含(Implicant)当且仅当∏能推出Σ中的每一个语句.称∏是Σ的一个本原蕴含(Prime Implicant)当且仅当能覆盖∏的唯一的Σ的蕴含是∏本身.
+　　定义11. 设Σ是命题公式的集合,称基文字的析取式C为Σ的蕴含式(Implicate)当且仅当Σ能推出C.称C为Σ的本原蕴含式(Prime Implicate)当且仅当不存在C的真子子句C′,使得C′为Σ的蕴含式.
+　　定理2［12］(刻画基于一致性的中心诊断). 关于〈〈SD,COMPS〉,CXT,OBS〉的基于一致性的中心诊断是SD∪CXT∪OBS的所有最小冲突的本原蕴含.
+2.2　刻画基于模型的中心诊断
+　　引理2.［12］　关于DP的基于一致性部分诊断是关于DP的所有最小冲突的蕴含. 
+　　下面,我们用∏表示SD∪CXT∪OBS的所有形如AB子句形式的本原蕴含式的合取式,形如～D(Δi1,Δj1)∧...∧～D(Δim,Δjm),对其中每一～D(Δip,Δjp),都有SD∪CXT∪OBS～D(Δip,Δjp);用Ω表示关于SD∪CXT∪～Ψ＋的所有形如AB子句形式的本原蕴含式的合取式,形如～D(Δl1,Δk1)∧...∧～D(Δln,Δkn),对其中每一～D(Δlq,Δkq),都有SD∪CXT∪～Ψ＋～D(Δlq,Δkq),特别地,若Ψ＋＝φ,则令Ω＝false.
+　　定理3（刻画基于模型的中心诊断）. 已知DP及AP如上,设∏为SD∪CXT∪OBS的所有AB子句形式的本原蕴含式(即关于DP的所有最小冲突)的合取式,Ω为SD∪CXT∪～Ψ＋的所有AB子句形式的本原蕴含式的合取式,则D(Δ1,Δ2)为关于DP的一个基于模型的中心诊断,当且仅当D(Δ1,Δ2)为∏∧～Ω的一个本原蕴含.
+　　证明:必要性.设D(Δ1,Δ2)是关于DP的一个基于模型的中心诊断.首先证明D(Δ1,Δ2)∏∧～Ω.由引理1知,D(Δ1,Δ2)也是关于DP的基于一致性部分诊断.因此,由引理2,D(Δ1,Δ2)∏.现在证明D(Δ1,Δ2)～Ω,用反证法.若不然,则对～Ω中的任意一个D(Δlp,Δkp),都有D(Δ1,Δ2)D(Δlp,Δkp).又由D(Δ1,Δ2)是基于模型的中心诊断知,D(Δ1,Δ2)亦为基于模型的部分诊断.故由定义6知,SD∪CXT∪{D(Δ1,Δ2)}Ψ＋,即SD∪CXT∪～Ψ＋～D(Δ1,Δ2).这就是说,～D(Δ1,Δ2)为SD∪CXT∪～Ψ＋的一个蕴含式.因此,Ω中一定存在某一本原蕴含式～Ｄ(Δlq,Δkq),使得～D(Δlq,Δkq)为～D(Δ1,Δ2)子析取式.亦即～Ω中存在某一D(Δlq,Δkq),使得D(Δlq,Δkq)为D(Δ1,Δ2)的子合取式.当然就有D(Δ1,Δ2)D(Δlq,Δkq).这样就与上面的对于～Ω中任意一个D(Δlp,Δkp),都有D(Δ1,Δ2)D(Δlp,Δkp)产生了矛盾.故原假设D(Δ1,Δ2)～Ω不对,即D(Δ1,Δ2)～Ω.综上,有D(Δ1,Δ2)∏∧～Ω.现在假设存在一个D(Δ1′,Δ2′),它覆盖D(Δ1,Δ2)且是∏∧～Ω的蕴含,则D(Δ1′,Δ2′)∏∧～Ω.由D(Δ1′,Δ2′)∏及引理2知,D(Δ1′,Δ2′)是关于DP的基于一致性部分诊断.由定义6知,SD∪CXT∪{D(Δ1′,Δ2′)}∪OBS是可满足的.因为SD∪CXT∪～Ψ＋Ω,因此,SD∪CXT∪{～Ω}Ψ＋,又由D(Δ1′,Δ2′)～Ω,故有SD∪CXT∪{D(Δ1′,Δ2′)}Ψ＋.因而,由定义6知,D(Δ1′,Δ2′)是基于模型的部分诊断.又因为它覆盖了基于模型的中心诊断D(Δ1,Δ2),所以,D(Δ1′,Δ2′)就是D(Δ1,Δ2).这就是说,D(Δ1,Δ2)是∏∧～Ω的本原蕴含.
+　　充分性.假设D(Δ1,Δ2)是∏∧～Ω的一个本原蕴含.由上面证明知,它一定是基于模型的部分诊断.设存在一个D(Δ1′,Δ2′),它覆盖了D(Δ1,Δ2)且是基于模型的部分诊断,那么由必要性部分证明知,D(Δ1′,Δ2′)一定是∏∧～Ω的蕴含.又因为它覆盖了∏∧～Ω的本原蕴含,所以,D(Δ1′,Δ2′)就是D(Δ1,Δ2).这就是说,D(Δ1,Δ2)是基于模型的中心诊断.　　　　　　　□
+　　可以看出,该定理有如下优点:（1） 将求基于模型的中心诊断的过程清晰地分为与领域有关的冲突识别及与领域无关的候选产生两大步骤.（2） 当Ψ＋取作φ时,可直接得到文献［12］中对基于一致性中心诊断的刻画,这就是说,它仅仅是该定理的一个特殊情形.直观上看,基于模型的中心诊断是在基于一致性中心诊断上附加了最小数目的AB文字,保证了它不仅与OBS一致,而且能逻辑推出Ψ＋.这样,在实际应用中,我们可以首先从∏计算出限制弱的基于一致性中心诊断空间,然后通过逐步增加需被逻辑推出的观察数目（扩大Ψ＋）,逐步在该诊断上附加最小数目的AB文字,以便找出真正有用的解.（3） 尤其重要的是,我们证明了基于模型的中心诊断与本原蕴含和本原蕴含式的直接关系,从而将我们的理论结果与ATMS类算法联系起来.
+3　实　例
+　　考虑汽车发动机的一个部件油杯的简化行为模型.设该部件有两种行为方式correct及holed（相应于～AB（oil-cup）及AB（oil-cup））,它的模型SD包括如下公式：
+　　　　　　　　　　　　　holed(oil-cup)→oil-below-car(present)
+　　　　　　　　　　　　　holed(oil-cup)→oil-level(low)
+　　　　　　　　　　　　　correct(oil-cup)→oil-level(normal)
+　　　　　　　　　　　　　oil-level(low)∧engine(on)→engine-temperature(high)
+　　　　　　　　　　　　　oil-level(normal)∧engine(on)→engine-temperature(normal)
+　　下面考察如下诊断问题.DP=〈〈SD,COMPS〉,CXT,OBS〉.其中COMPS={oil-cup},OBS={oil-below-car(present)},CXT={engine(on)}.设与DP相应的溯因问题AP=〈〈SD,COMPS〉,CXT,〈Ψ＋,Ψ－〉〉,其中Ψ－={～oil-below-car(absent)}.
+　　若该模型是完备的（完备是指每一观察的所有原因都在SD中）,则取Ψ＋={oil-below-car(present)}.应用定理3,第1步：求出∏为holed(oil-cup)∨correct(oil-cup),Ω为～holed(oil-cup).第2步：求出∏∧～Ω的本原蕴含为holed(oil-cup).因此,基于模型的中心诊断为holed(oil-cup).这一解是合理的.因为在oil-below-car(present)的原因的完备模型中,holed(oil-cup)是oil-below-car(present)的唯一原因.
+　　若该模型是不完备的,即holed(oil-cup)不是oil-below-car(present)的唯一原因,还有与部件oil-cup状态不相关的额外原因可能导致oil-below-car(present),这时,只给出唯一诊断holed(oil-cup)就不合理了.因此,这时若取Ψ＋＝φ,以削弱限制,则可从∏求出两个中心诊断correct(oil-cup)及holed(oil-cup),这显然是合理的.
+4　结　论
+　　 本文提出了一个能够刻画基于模型诊断空间的基于模型的中心诊断的概念,并对基于模型的中心诊断过程进行了刻画.我们将该诊断过程清晰地分为与领域有关的冲突识别及与领域无关的候选产生这两大步骤,并论证了基于模型的中心诊断与本原蕴含/蕴含式的直接关系,从而将我们的理论结果与实现联系起来.
+本文研究得到国家自然科学基金和国家教委博士点基金资助.
+作者介绍：欧阳丹彤,女,1968年生,博士生,讲师,主要研究领域为基于模型的诊断,定理机器证明.
+　　　　　姜云飞,1945年生,教授,博士生导师,主要研究领域为自动推理,基于模型的诊断及规划.
+本文通讯联系人：欧阳丹彤,长春 130023,吉林大学计算机科学系
+本文1997-12-01收到原稿,1998-01-23收到修改稿
+作者单位：欧阳丹彤　吉林大学计算机科学系　长春　130023
+　　　　　姜云飞　中山大学计算机软件所　广州　510275
+E-mail: jutao@mail.interflow.com.cn
+参考文献
+　［1］Davis R. Diagnostic reasoning based on structure and behavior. Artificial Intelligence, 1984,24(1-3):347～410
+　［2］Genesereth M R. The use of design descriptions in automated diagnosis. Arti］icial Intelligence, 1984,24(1-3):411～436
+　［3］Reter R. A theory of diagnosis from first principles. Artificial Intelligence, 1987,32(1):57～96
+　［4］de Kleer J, Williams B C. Diagnosing multiple faults. Artificial Intelligence, 1987,32(1):97～130
+　［5］Poole D, Goebel R, Aleliunas R. THEORIST: a logical reasoning system for defaults and diagnosis. In: Cercone M, Calla G MC eds. The Knowledge Frontier. New York: Springer Verlag, 1987. 331～352
+　［6］Console L,DuprD T, Torasso P. A theory of diagnosis for incomplete causal models. In: Sridharan N S ed. Proceed-ings of the 11th International Joint Conference on Artificial Intelligence. San Mateo, CA: Morgan-Kaufmann Publishers, 1989. 1311～1317
+　［7］Poole D. Normality and faults in logic-based diagnosis. In: Sridharan N S ed. Proceedings of the 11th International Joint Conference on Artificial Intelligence. San Mateo, CA: Morgan-Kaufmann Publishers, 1989. 1304～1310
+　［8］de Kleer J, Williams B C. Diagnosis with behavioral modes. In: Sridharan N S ed. Proceedings of the 11th International Joint Conference on Artificial Intelligence. San Mateo, CA: Morgan-Kaufmann Publishers, 1989. 1324～1330
+　［9］Struss P, Dressler O. Physical negation――integrating fault models into the generl diagnostic engine. In: Sridharan N S ed. Proceedings of the 11th International Joint Conference on Artificial Intelligence. San Mateo, CA: Morgan-Kaufmann Publishers, 1989. 1318～1323
+　［10］Console L, Torasso P. A spectrum of logical definitions of model-based diagnosis. Computational Intelligence, 1991,7(3):133～141
+　［11］de Kleer J. An assumption-based tms. Artificial Intelligence, 1986,
+28(2):127～162
+　［12］de Kleer J, Mackworth A K, Reiter R. Characterizing diagnosis and systems. Artificial Intelligence, 1992,56(2-3):197～222
+本文1997-12-01收到原稿,1998-01-23收到修改稿 

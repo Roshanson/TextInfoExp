@@ -1,0 +1,151 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第19卷 第3期  Vol.19 No.3 1999
+
+
+
+证据论与约集论
+苏运霖　管纪文　David A.Bell
+摘　要　约集论用于处理模糊性与不确定性.在某些方面,它同Dempster-Shafer的证据论相重迭,但约集论使用分划来描述约集、下界近似及上界近似,从而获取知识表示中的不确定性,而证据论使用证据函数来实现同一目的.该文针对两个理论表述上的差异,揭示出其内在的关系,以有助于人们对两者的理解,从而为开拓它们的应用铺平道路.此外,在证据论中,组合证据的基本操作是正交和,而在约集论中,基本操作是分划的交,因而存在“证据组合是否对应于分划的交”的问题.通过一个例子来说明回答是否定的.
+关键词　证据论,约集论,正交和,分划.
+中图法分类号　TP18
+Evidence Theory and Rough Set Theory
+SU Yun-lin 
+Department of Computer Science Ji'nan University Guangzhou 510632
+GUAN Ji-wen　David A. Bell
+School of Information and Software Engineering University of Ulster at Jordanstown UK
+Abstract　 The rough set theory is introduced to deal with vagueness and uncertainty. In some aspects, the rough set theory overlaps with the Dempster-Shafer theory of evidence, but the rough set theory uses partitions to specify rough sets, lower and upper approximations, and then to capture uncertainty in knowledge representation. In this paper, directing against the discrepancy in the specification between the two theories, the authors explore their relationship in order for ones to understand them and open the way of applying them. In addition, in evidence theory, the basic aperation to combine evidences is the orthogonal sum, while in the rough set theory, the basic operation is the intersection of partition. Therefore, “Does the evidence combination correspond to the partition?” is the question which may be naturally raised. An example is presented to show that the answer is “no”.
+Key words　Evidence theory, rough set theory, orthogonal sum, partition.
+　　Dempster-Shafer所建立的证据论［1］通过证据函数来获取知识表示中的不确定性［2］,而Pawlak新建立的约集论［3］通过使用分划的相交来实现同一目的.两者相比,后者由于直观和易于使用而受到普遍欢迎.但是,前者在理论上更为成熟.因此,研究后者同前者的关系,既有实际意义也有理论意义.
+　　为使本文更具可读性,我们首先简略地在第1节中介绍Dempster-Shafer的证据论,即证据函数――质量函数、信念函数以及似真函数,以及基本操作――正交和.
+　　在第2节中,我们介绍约集论,即对于一个全集的子集的下界近似和上界近似，并给出下列重要事实,即按照Dempster-Shafer函数,下界近似的质量是一个信念函数.而上界近似的质量是一个似真函数,并对它予以详细证明,此前还没有人完成这一工作［4～7］.
+　　第3节作为结束,我们讨论证据论中把证据加经组合的操作――正交和,同约集论中的基本操作――分划的交的关系,即提出证据组合是否对应于分划的交的问题.我们给出一个例子来说明回答是否定的.
+1　证据论
+　　所谓证据论是用于描述或量化证据的一组函数的理论.这些函数是质量函数、信念函数以及似真函数等等.这些函数是彼此一一对应的,而且每一个和另外任何一个一样提供同样多的信息.为了行文的需要,我们将对它们一一予以定义.
+首先定义一个全集U.我们的选择是在U中进行的、且这些选择应是互斥和穷尽的.
+　　［0,1］表示0与1之间的（含0和1）的所有实数.
+　　一个函数d:U→［0,1］是一个巴叶斯概率密度函数,如果它满足公量D:.
+　　同这一函数密切相关的是巴叶斯概率密度函数.一个函数P:2U→［0,1］是一个巴叶斯概率密度函数,如果它满足下列公理：
+　　公理P1. P()=1.
+　　公理P2. P(U)=1.
+　　公理P3. 对于U的子集的任何汇集A1,A2,...,An(n≥1),
+.
+　　一个函数M:2U→［0,1］是一个质量函数,如果它满足:
+　　公理M1. m()=0.
+　　公理M2..
+　　同这一函数密切相关的是信念函数.一个函数bel:2U→［0,1］是一个信念函数,如果它满足:
+　　公理B1. bel()=0.
+　　公理B2. bel(U)=1.
+　　公理B3. 对于U的子集的任何汇集A1,A2,...,An(n≥1),
+.
+　　我们现在概述有关这些函数的某些重要事实.
+　　(1) p-d反演.［1,8］ 如果d是一个巴叶斯概率密度函数.则
+　　　　(PD)　,对于所有,这是一个巴叶斯概率密度函数.
+　　　　(DP)　d(x)=p({x}),对于所有x∈U.
+　　反之,如果P是一个巴叶斯概率密度函数,则由上述(DP)定义的是一个巴叶斯概率密度函数且(PD)成立.
+　　(2) bel-m反演.［1,8］ 如果m是一个质量函数,则
+　　　　(BM)　,对于所有,这是一个信念函数.
+　　　　(MB)　,对所有.
+　　反之,如果bel是一个信念函数,则由(MB)所定义的函数m是一个质量函数且(BM)成立.
+　　(3) 其他的证据函数也可借助于质量函数表达出来.比如,似真函数pls可借助于质量函数表达如下:
+,对于所有.
+　　证据论所提供的表示方法的多样性为其应用提供了很好的灵活性.通过以下建立起来的证据函数之间的关系，它们彼此之间可以很容易地进行转换:
+　　,对于所有.
+　,对于所有.
+　　,对于所有.
+　bel(A)=1-pls(),对于所有.
+　　pls(A)=1-bel(),对于所有,其中=U-A.
+　　(4) 在证据论中,有bel(A)+bel()≤1.这意味着对于不同于A或非A的某种东西,允许保留我们的信念.
+　　显然,对于所有,bel(A)≤pls(A).因此,我们可以引进对于子集A信念子区间|bel(A),pls(A)|.这里,bel(A)给出当前的证据支持A的程度,而pls(A)=1-bel(A)给出A保持似真的程度.我们也把bel(A)叫做A的下界概率,把pls(A)叫做A的上界概率.它们的差pls(A)-bel(A)表示剩余的忽略性,即ignorance(A)=pls(A)-bel(A).
+　　(5) 证据论不仅提供了上面3种表示证据的证据函数,而且还提供了进行证据推导强有力的操作.
+　　头一类操作是用于实现对于不同的来源的证据的组合,如对于来自不同传感器的证据的组合,这就是著名的Dempster-Shafer的正交和,它实现数据的采掘以便在假设中进行选择.
+　　Dempster-Shafer的组合规则如下：设m1和m2是2U上的质量函数，假设
+.记,则由① m(ф)=0且② 对于U的所有子集A≠ф,
+m(A)=(1/N)∑X∩Y=Am1(X)m2(Y).
+定义的2U→［0,1］的函数m是一个质量函数.
+　　这个质量函数m称为m1和m2的正交和，记为m1m2.如果,我们就说正交和m1m2不存在,且m1和m2是完全冲突的.
+　　K=1/N一般称为m1和m2的正交和规范常数.规范常数K=1/N测量两个质量函数之间冲突的范围.
+　　正交化满足交换律及结合律，即
+m1m2=m2m1,
+m1(m2m3)=(m1m2)m3.
+　　由m1m2给出的综合函数以及似真函数导出belm1m2=bel1bel2和plsm1m2=pls1pls2.它们即称为bel1和bel2以及pls1和pls2的正交和.
+2　约集论和证据函数
+　　设U={u1,u2,...,u|u|},且设θ是U上的一个等价关系.通过这一等价关系，可把U划分成等价类，记为
+U/θ={W1,W2,...,Wj,...,Ww}.
+　　于是,2U上的下列函数是一个质量函数.
+
+我们称这一质量函数为对于等价关系θ的质量函数.
+　　令U={u1,u2,...,u|u|}，并令ε,δ分别是全集U上的恒等等价关系和全等价关系.即我们有U/ε={{u1},{u2},...,{u|u|}};U/δ={{u1,u2,...,u|u|}}.
+　　于是对应于ε,δ的2U上的质量函数mε,mδ如下：
+　　(1) mε是一个概率密度函数,d:U→［0,1］.对于2U中的每个孤点{u}，即对于每个u∈U,
+
+　　(2) mδ是一个虚质量函数,
+
+　　令θ是U上的一个等价关系，并令相应的分划是U/θ={W1,W2,...,Wj,...,Ww}.给定全集U上的一个子集，我们可引进(由等价关系θ子集V的)下界近似Vθ-和上界近似Vθ+如下：
+.
+　　对于子集,可以理解为：
+　　(1) 等价关系θ支持Vθ-,
+　　(2) 等价关系θ忽略Vθ+-Vθ-,
+　　(3) 等价关系θ拒绝U-Vθ+.
+　　给定全集U上的一个等价关系θ.我们定义由θ导出的V的下界近似的质量为一个2U→［0,1］的函数bel如下：对于,
+.
+给定全集U上的一个等价关系θ.我们定义由θ导出的V的上界近似的质量为一个2U→［0,1］的函数bel如下：对于,
+ .
+　　设U为全集，设θ是U上的一个等价关系，且设m是对应于θ的一个质量函数.于是，c对于2u上的所有下界近似的质量函数
+
+是对应的质量函数的信念函数，而且它满足
+　　公理B1. bel(ф)=0 |фθ-|=0;
+　　公理B2. bel(U)=0 |Vθ-|=|U|;
+　　公理B3. 对于U的子集的任何汇集A1,A2,...,An(n≥1),
+,
+即
+.
+　　同样,对于2U上的所有上界近似的质量函数
+
+是对应的质量函数的似真函数. 
+3　约集理论与证据
+　　设θ1，θ2是全集U上的两个等价关系.在θ1与θ2之间有一个自然的运算“与”或交（记为∩）.
+　　定义3.1. 两个等价关系θ1和θ2的交θ1∩θ2定义如下：u(θ1∩θ2)v当且仅当uθ1v且在交运算∩下全集U上的等价关系集θ是可交换的和等幂串群，且有零元∈和单位元δ，而且当且仅当|U|=|θ|=1.
+　　定义3.2. 设πθ1和πθ2是相对于U的等价关系θ1和θ2的两个划分，我们定义两个划分的交如下：
+πθ1∩πθ2=πθ1∩θ2.
+　　在证据论中,组合证据的基本操作是正交和,而在约集论中,基本操作是划分的交.于是很自然地要问:证据的组合是否对应于分划的交?以下我们给出的例子说明回答是否定的.
+　　例3.1:设U={1,2,3,4,5,6},
+　　假设我们有等价关系θ1和θ2如下：
+U/θ1: {1,6},{2,3},{4,5},
+U/θ2: {1,3,4,5,6},{2}.
+　　于是，θ1有对应的质量函数m1:
+ 
+
+
+　　　　m1(其他）=0 .　　　　　　
+　　θ2有对应的质量函数m2:
+ 
+
+m2(其他）=0.
+　　现在我们比较这两个操作.一方面，交θ1∩θ2有如下划分：
+
+它所对应的质量函数m12为
+
+另一方面，在证据论中，我们可以计算正交和m1m2如下：
+
+其中
+
+因而我们看到,m1m2≠m12.
+　　这一差异可解释如下:用于构造相交划分的相交表被用于构造分划,而用于构造正交和的相交表被用于组合证据.前者使用的是简单的分划,而后者使用乘法和规范化.比较一下在这两个不同的表格中的条款,我们发现,证据组合不对应于相交的划分,因而两者当然不相同.
+4　结束语
+　　约集论同Dempster-Shafer的证据论有密切的关系.尽管约集论是在坚实的数学基础上建立起来的,但仍有许多理论问题有待澄清.本文给出了对约集论中的近似(近似上界和近似下界)的质量是Dempster-Shafer的证据论的证据函数的详细证明.我们还说明了约集论中的分划的交不对应于Dempster-Shafer论中的组合操作,从而使这个问题也有了明确的结论.
+　　本文研究得到英国大学科学基金资助.作者苏运霖,1940年生,教授，主要研究领域为人工智能与自然智能，分布式系统，算法设计与分析.管纪文,1934年生,教授，博士生导师,主要研究领域为人工智能，算法设计与分析，线性自动机理论.David A. Bell,1938年生,博士，教授，博士生导师，主要研究领域为人工智能，证据论，软件工程.
+　　本文通讯联系人:苏运霖，广州510632,暨南大学计算机科学系
+作者单位：苏运霖：暨南大学计算机科学系　广州　510632
+　　　　　管纪文 David A.Bell：乌斯特大学约旦镇分校信息软件工程学院　英国
+　　　　　E-mail: tylsu@jnu.edu.cn
+参考文献
+［1］Shafer G. A Mathematical Theory of Evidence. New Jersey: Princeton University Press, 1976
+［2］Grjymala-Busse J W. Managing Uncertainty. North-Holland: Kluwer Academic Publisher Group, 1991
+［3］Pawland Z, Grjymala-Busse J, Slowinski R et al. Rough sets. Communications of ACM, 1995,38(11):89～95
+［4］Skowren A. The relationship between the rough set theory and evidence theory. Bulletin of the Polish Academy of Science. Technical Science, 1989,37(1):1～2,88～90
+［5］Skowton A. The rough set theory and evidence theory. Foundamenter Information Ⅹ　Ⅲ, 1990. 245～262
+［6］Skowron A, Grgymala-Busse J W. From rough set theory to evidence theory. In: Yager R R, Fedijji M, Kacprjyk J eds. Advances in the Dempster-Shafer Theory of Evidennce. New York: John Wiley and Sons, Inc., 1994. 193～236
+［7］Skowron A, Stepanish J. Intelligence systems based on rough set approach. Foundations of Computing and Decision Sciences, 1993,18(3,4):343～360
+［8］Guan J W, Bell D A. Evidence theory and its applications (volume 1.2). Studies in Computer Science and Artificial Intelligence 7.8. North-Holland: Elsevier Science Publishers, 1991～1992
+（1998-03-30收稿）

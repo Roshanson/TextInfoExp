@@ -1,0 +1,139 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第19卷 第3期  Vol.19 No.3 1999
+
+
+
+排序合并Join算法的新结果
+孙文隽　李建中
+摘　要　Join操作是数据库中最昂贵和最常用的操作.排序合并Join算法是实现Join操作的重要算法，得到了普遍接受并广为应用.在重新研究了排序合并Join算法后发现，同时对两个Join关系进行外排序是不必要的，会带来很大的额外开销.针对这个问题，提出了一种基于单关系外排序的分治Join算法，并在该算法的基础上提出了基于单关系外排序的并行分治Join算法.理论和实验结果证明，基于单关系排序的分治Join算法高于排序合并Join算法.特别是在并行计算环境下，基于单关系排序的并行分治Join算法的效率远远高于排序合并Join算法的并行版本.
+关键词　Join操作，Join算法，排序合并Join算法.
+中图法分类号　TP311
+Sort-Merge-Join Algorithm Revisited
+SUN Wen-jun LI Jian-zhong
+(Institute of Information Research Heilongjiang University Harbin 150080)
+Abstract　 The Sort-Merge-Join algorithm is an effective and widely used algorithm for implementing the important Join operation in database systems. The algorithm is revisited in this paper. It is discovered that sorting both operand relations externally is not necessary in the algorithm. The cost of the algorithm would be reduced greatly if only one operand relation is sorted externally. In order to overcome the shortcomings of the Sort-Merge-Join algorithm, a new Join algorithm called SDC-Join algorithm, is proposed in this paper. The SDC-Join algorithm is a single-relation-sorting based divide-and-conquer algorithm. A parallel version of the SDC-Join algorithm is also presented in the paper. Theoretical analysis and experiment results show that the performance of the SDC-Join algorithm is much higher than that of the Sort-Merge-Join algorithm in both uniprocessor computer systems and parallel computer systems.
+Key words　Join operation, Join algorithm, Sort-Merge-Join algorithm.
+　　Join操作是数据库系统中最昂贵最常用的操作.在数据库操作算法的研究中，人们一直十分注重Join算法的研究，提出了大量算法［1～6］.文献［2,6］对顺序和并行Join算法进行了全面系统的综述.人们一般认为，Hash-Join算法的效率最高，其次是Sort-Meger-Join算法，最后是Nested-Loop-Join算法.事实上，各类Join算法在不同情况下的优劣不同.Hash-Join算法要求选择高质量的Hash函数，实现起来较困难.Nested-Loop-Join算法和Sort-Merge-Join算法思想简单，容易实现.从效率和实现两方面考虑，Sort-Merge-Join算法在商品化数据库系统中使用最多.
+　　Sort-Merge-Join算法分为3个阶段.第1阶段对第1个Join关系进行外排序；第2阶段对第2个Join关系进行外排序；第3阶段合并两个已经排序的关系，产生Join结果.本文对Sort-Merge-Join算法进行了重新研究，发现该算法对两个Join关系都进行外排序是没有必要的，这会引起很大的额外开销.如果仅对小关系进行外排序，然后使用分治方法进行两个关系的Join操作，能节省大量时间.基于这种思想，本文提出了一种新的基于单关系排序的分治Join算法(简称SDC-Join算法).SDC-Join算法首先对小关系进行完全排序；然后把已排序关系按内存大小划分成一组子集合；其次根据小关系划分情况对大关系进行划分，同时对各页进行内排序；最后进行分组合并，产生Join结果.SDC-Join算法避免了大关系的外排序，节省了大量时间.本文还对SDC-Join算法进行了并行化，提出了并行SDC-Join算法.并行SDC-Join算法简称为PSDC-Join算法.理论和实验结果证明，SDC-Join算法的效率高于Sort-Merge-Join算法.特别是在并行计算环境下，PSDC-Join算法的效率远远高于Sort-Merge-Join算法的并行版本.
+　　下面列出本文经常使用的符号和参数：
+　　R，S：Join关系；　　　　　　　　　NR：关系R的磁盘页数；
+　　NS：关系S的磁盘页数；　　　　　　TR：关系R的元组数；
+　　TS：关系S的元组数；　　　　　　　BP：每个磁盘页的字节数；
+　　TP：每个磁盘或主存储器页的元组数；Tio：一页磁盘读写所需要的时间;
+　　M+1：可用主存储器空间页数（一个主存储器页的容量与一个磁盘页容量相等)；
+　　Tcomm：平均传输一个字节数据所需要的时间.
+1　预备知识
+　　首先我们来讨论顺序Sort-Merge-Join算法及其复杂性.顺序Sort-Merge-Join算法定义如下：
+　　算法Sort-Merge-Join.
+　　输入：关系R和S（R的Join属性为A，S的Join属性为B）.
+　　输出：R和S在连接属性A和B上的连接结果Result.
+　　方法：
+　　　(1) 按照属性A的值排序关系R;
+　　　(2) 按照属性B的值排序关系S；
+　　　(3) FOR R的每个元组r，S的每个元组s DO
+　　　　　IF (r在属性A上的值)=(s在属性B上的值) THEN Result:=Result∪{rs}.
+　　由于I/O时间是顺序Join算法的主要时间开销.本文把磁盘存取时间定义为顺序Join算法的复杂性测度.设Sort-Merge-Join算法的输入主存储器缓冲区容量为M页，输出主存储器缓冲区容量为一页.Sort-Merge-Join算法需要的磁盘存取时间为Cost(Sort-Merge-Join)=Tio［2(NRlogM(NR)+NSlogM(NS))+(NR+NS+U)］,其中2(NRlogM(NR)+NSlogM(NS))为第(1)、(2)步进行M路合并排序所需要存取的磁盘页数，(NR+NS+U)是第(3)步需要读的磁盘页数,U是需要写的Join结果的磁盘页数.
+　　现在我们来讨论并行Sort-Merge-Join算法及其复杂性.设P是并行计算机系统的处理机个数.并行Sort-Merge-Join算法简记为PSM-Join，定义如下：
+　　算法PSM-Join.
+　　输入：关系R和S(R的Join属性为A，S的Join属性为B).
+　　输出：R和S在连接属性A和B上的连接结果Result.
+　　方法：
+　　　(1) 使用定义在属性A上的Hash函数H把R划分为P个子集合R1,...,RP，Ri送处理机i(1　≤i≤P);
+　　　(2) 使用定义Hash函数H按照属性B的值把S划分为P个子集合S1,...,SP，Si送处理机i(1≤i≤P);
+　　　(3) FOR i=1 TO P DO (并行地)
+　　　　　处理机i排序Ri和Si；
+　　　(4) FOR i=1 TO P DO (并行地)
+　　　　　结点i使用合并算法完成Ri和Si的连接.
+　　由于I/O时间和通信时间是并行Join算法的主要时间开销.我们定义并行Join算法的时间复杂性为磁盘存取时间和通信时间之和.算法PSM-Join的第(1)、(2)步的数据划分如下实现：把子集合{r∈R|H(r［A］)=j}和{s∈S|H(s［A］)=j}分配并传送到处理机j.设R和S初始地存储在一个处理机上，第(1)、(2)步的并行磁盘页存取数为NR+NS+NRmax+NSmax，其中NRmax是R的k个子集合中最大子集合的磁盘页数，NSmax是S的k个子集合中最大子集合的磁盘页数.第(3)和第(4)步需要的并行磁盘页存取数与Sort-Merge-Join算法类似，不超过2(NRmaxlogM(NRmax)+NSmaxlogM(NSmax))+(NRmax+NSmax+U)，其中U是各处理机Join结果中最大者的磁盘页数.于是，PSM-Join算法需要的磁盘存取时间至多为Time(I/O,PSM-Join)=Tio［NR+NS+2NRmax+2NSmax+2(NRmaxlogM(NRmax)+NSmaxlogM(NSmax))+U］.PSM-Join算法的通信操作只发生在第(1)和第(2)步，通信时间Time(COMM,PSM-Join)不大于，不小于TcommBP(P-1)(NRmax+NSmax).综上所述，PSM-Join算法的时间复杂性为Cost(PSM-Join)=Time(I/O,PSM-Join)+Time(COMM,PSM-Join).
+2　SDC-Join算法
+　　定义1. 设R1,...,Rk是R的k个子集合，S1,...,Sk是S的k个子集合，A是关系R的Join属性，B是S的Join属性.对于任意Ri和Sj(1≤i,j≤k)，如果Ri在属性A上的投影与Sj在属性B上的投影不相交，则称(Ri,Sj)为Join无关集合对，否则,(Ri,Sj)称为Join相关集合对.
+　　SDC-Join算法是一种只需对小关系进行外排序的分治算法.在下边的讨论中，不失一般性，我们假定R小于S.SDC-Join算法分为如下3个阶段：
+　　第1阶段(排序划分R阶段)：按照Join属性值大小对关系R进行外排序，同时把关系R的每M个连续页作为一个子集合，R划分为个子集合，第i个子集合记作SETR［i］，并计算出每个子集合SETR［i］在Join属性上的投影集合中的最小值mini和最大值maxi.
+　　第2阶段(划分S阶段)：把关系S划分为k个子集合：对关系S的任一元组t，如果mini≤t的Join属性值≤maxi，则t送第i个子集合.关系S的第i个子集合记作SETS［i］.显然，(SETR［i］,SETS［i］)是Join相关集合对，(SETR［i］,SETS［j］) (j≠i)是Join无关集合对.
+　　第3阶段(Join阶段)：从1到k对关系R和S的Join相关集合对进行Join处理，并且合并成最终Join结果.
+　　SDC-Join算法的详细定义如下：
+　　算法SDC-Join.
+　　输入：R,S：Join关系；
+　　输出：R和S的Join结果Result.
+　　方法：
+　　/*第1阶段： 排序划分R阶段 */
+　　(1) 对R进行外排序，输出排序结果时把R划分为个子集合，每个子集合不超过M页，并计算每个子集合SETR［i］的maxi值和mini值(1≤i≤k);
+　　/* 第2阶段： 划分S阶段 */
+　　(2) FOR S中的每个元组t DO
+　　　　IF 存在j使得t的Join属性值在maxj和minj(1≤j≤k)之间 THEN t分配到SETS［j］；
+　　/* 第3阶段： Join阶段 */
+　　(3) FOR i=1 TO k DO
+　　　　读SETR［i］进内存；
+　　　　WHILE SETS［i］未读完 DO
+　　　　读下一页SETS［i］进内存，内排序该页，与内存中SETR［i］进行合并Join，结果并入Result.
+　　下面我们分析SDC-Join算法的复杂性，从理论上与Sort-Merge-Join算法进行复杂性比较.我们先来分析SDC-Join算法需要的磁盘存取时间.SDC-Join算法第1阶段与Sort-Merge-Join算法第(1)步基本相同，只是在最后输出排序结果时把R划分为子集合，同时计算每个子集合SETR［i］的maxi和mini值，没有增加磁盘页存取数.所以，第1阶段需要存取的磁盘页数为2(NRlogM(NR).第2阶段需要读写S一遍，存取的磁盘页数为2NS.第3阶段需要读一遍R和S，写一次Join结果，磁盘存取页数为(NR+NS+U),其中U是Join结果页数.综上所述，SDC-Join算法需要的磁盘存取时间为Cost(SDC-Join)=Tio［2(NRlogM(NR)+2NS+(NR+NS+U)］.
+　　结论1. 如果NS>M,则SDC-Join算法的复杂性小于Sort-Merge-Join算法复杂性.
+　　证明:由于Cost(Sort-Merge-Join)－Cost(SDC-Join)=Tio［2NSlogM(NS))－2NS］，所以当NS>M时，Cost(Sort-Merge-Join)>Cost(SDC-Join).　　　　　　　　　　　　　　　　　　□
+　　一般情况下都有NS>M成立，所以，可以说一般情况下SDC-Join算法的性能高于Sort-Merge-Join算法.
+3　并行SDC-Join算法
+　　以下将并行SDC-Join算法简称为PSDC-Join算法.设并行计算系统具有P个处理机，每个处理机的内存可以容纳M+1个磁盘页.PSDC-Join算法分为如下4个阶段：第1阶段，使用Hash方法把关系R划分成P个子集合，分布到P个处理机上；第2阶段，使用Hash方法把关系S划分成P个子集合，分布到P个处理机上；第3阶段，P个处理机分别使用SDC-Join算法，完成Join操作.算法PSDC-Join的详细定义如下：
+　　PSDC-Join算法.
+　　输入：R和S是Join关系，A是R的Join属性，B是S的Join属性.
+　　输出：R和S的Join结果Result.
+　　方法：
+　　/* 第1阶段：分布R */
+　　(1) 在属性A上使用Hash函数H把R划分为P个子集合R1,...,RP，Ri送处理机i(1≤i≤P);
+　　/* 第2阶段：分布S */
+　　(2) 在属性B上使用Hash函数H把S划分为P个子集合S1,...,SP，Si送处理机i(1≤i≤P);
+　　/* 第3阶段：并行Join */
+　　(3) FOR i=1 TO P DO(并行地)
+　　处理机i使用SDC-Join算法完成Ri和Si的Join.
+　　下面分析PSDC-Join算法的复杂性，并从理论上与PSM-Join算法进行复杂性比较.PSDC-Join算法第1阶段和第2阶段与算法PSM-Join第(1)和第(2)步相同.设关系R和S初始存储在一个处理机上，这两个阶段的并行磁盘页存取数为NR+NS+NRmax+NSmax，其中NRmax是R的k个子集合中最大子集合的磁盘页数，NSmax是S的k个子集合中最大子集合的磁盘页数.由SDC-Join算法的磁盘页存取数的分析可知，第3阶段的并行磁盘存取页数为2NRmaxlogM(NRmax)+2NSmax+(NRmax+NSmax+U)，其中U是各处理机Join结果中最大者的磁盘页数.于是，PSDC-Join算法需要的并行磁盘存取时间为Time(I/O,PSDC-Join)=Tio［NR+NS+2NRmax+4NSmax+2NRmaxlogM(NRmax)+U］.PSDC-Join算法的通信时间复杂性Time(COMM,PSDC-Join)与PSM-Join算法相同，即不大于，不小于TcommBP(P-1)(NRmax+NSmax).综上所述，PSDC-Join算法的时间复杂性为Cost(PSDC-Join)=Time(I/O,PSDC-Join)+Time(COMM,PSDC-Join).
+　　结论2. 如果NSmax>M,则SDC-Join算法的复杂性小于Sort-Merge-Join算法复杂性.
+　　证明: 由Cost(PSM-Join)－Cost(PSDC-Join)=Tio［2NSmaxlogM(NSmax)－2NSmax］可知，当NSmax>M时，Cost(Sort-Merge-Join)>Cost(SDC-Join).　　　　　　　　　　　　　　　　　□
+　　一般情况下都有NSmax>M成立,所以，可以说一般情况下SDC-Join算法的性能高于Sort-Merge-Join算法.
+4　实验结果
+　　为了比较SDC-Join算法和Sort-Merge-Join算法的性能，我们使用PC/586微型计算机在UNIX环境下实现了这两个算法.在实验中，我们设主存储器每页容量为1 024字节，每个磁盘页的容量为1 024字节，系统可用的主存储器为6页，其中5页作为输入（4页用于小关系，1页用于大关系)，1页用于输出Join结果.以下用R表示小关系，用S表示大关系.我们首先为R和S随机地产生了16对关系实例，然后在每对关系实例上分别执行SDC-Join算法和Sort-Merge-Join算法.表1给出了实验结果.表中第1栏和第2栏的数据量是关系中存储的整型数.表中的第3栏和第4栏给出了SDC-Join算法和Sort-Merge-Join算法的运行时间，运行时间以1/60s为度量单位.从表1可以看出，SDC-Join算法的效率高于Sort-Merge-Join算法.
+表1 SDC-Join算法和Sort-Merge-Join算法运行时间的比较
+
+关系R数据量关系S数据量SDC-Join算法SORT-MERGE-Join算法
+2 0482 0481832
+2 0484 0961942
+2 0488 1922066
+2 04816 38422113
+4 0961 0242736
+4 0962 0482841
+4 0964 0963775
+4 0968 19244103
+4 09616 38447152
+8 1921 0246785
+8 1922 0486891
+8 1924 09669106
+8 1928 19271132
+8 19216 38473171
+16 3848 19296154
+16 38416 384116320
+
+　　为了比较PSDC-Join算法和并行Sort-Merge-Join算法的性能,我们在计算机机群并行环境下实现了这两个算法.计算机机群由5台PC/586通过以太网连接而成，通信协议是TCP/IP，操作系统是UNIX.5台计算机中1台机器作为前置机，4台机器作为后端机.后端机负责并行Join.前置机协调后端机并行运行.Join关系的产生方法同上.表2给出了实验结果.表中的数据量是指关系中的整型数.运行时间以1/60s为度量单位.表2说明，PSDC-Join算法的效率高于并行Sort-Merge-Join算法.
+表2 PSDC-Join算法和PSM-Join算法的并行运行时间比较
+
+关系R数据量关系S数据量PSDC-Join算法并行Sort-Merge-Join算法
+4 0961 0242736
+4 0962 0482841
+4 0964 0961828
+4 0968 1922337
+4 09616 3843053
+8 1924 0962434
+8 1928 1923145
+8 19216 3843861
+16 3848 1924760
+16 38416 384133346
+
+　　本文研究得到国家杰出青年基金和黑龙江省杰出青年基金资助.作者孙文隽,女,1965年生,副教授,主要研究领域为数据库.李建中,1950年生,教授，博士生导师,主要研究领域为数据库.
+　　本文通讯联系人:孙文隽，哈尔滨150080,黑龙江大学信息技术研究所
+作者单位：黑龙江大学信息技术研究所　哈尔滨　150080
+参考文献
+［1］Lu H, Ooi B C, Tan K L. Query Processing in Parallel Relational Database Systems. Los Alamitos, CA: IEEE Computer Society Press. 1994. 147～157
+［2］Mishra P, Eich M H. Join processing in relational databases. ACM Computing Surveys, 1992,24(1):63～113
+［3］DeWitt D et al. Implementation techniques for main memory database systems. In: Bestrice Y ed. Proceedings of ACM_SIGMOD International Conference'84 on Management of Data. New York: Association for Computing Machinery, 1984. 1～8
+［4］Schneider D A, DeWitt D. A performance evaluation of four parallel Join algorithms in a shared-nothing multiprocessor environment. In: Proceedings of ACM_SIGMOD International Conference'89 on Management of Data. New York: Association for Computing Machinery, 1989. 110～121
+［5］Bitton D. Parallel algorithms for the execution of relational database operations. ACM Transactions on Database Systems, 1983,8(3):324～353
+［6］李建中.并行数据操作算法和查询优化技术.软件学报,1994,5(10):11～23
+(Li Jian-zhong. Parallel data operation algorithms and query optimization techniques. Journal of Software, 1994,5(10):11～23)
+（1998-03-31收稿）

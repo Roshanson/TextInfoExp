@@ -1,0 +1,370 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第9期　Vol.10　No.9　1999
+
+
+
+对象演算Ⅱ*
+黄涛　钱军　王栩
+摘要　文章应用Goguen等人的结论证明并得到了几个结构化对象演算的基本定理.一方面,这些定理保证了该文可由现有对象的描述构造新对象的描述,并且可以把建立在现有对象上的定理作为整个对象描述和验证的引理.另一方面,文章还讨论了基于封装性的对象精化.于是得到一个结构化的对象演算系统.
+关键词　结构化对象演算,institution,Ω-理论,对象系统,对象精化.
+中图法分类号　TP311
+Object Calculus Ⅱ
+HUANG Tao,QIAN Jun,WANG Xu
+(Laboratory of Computer Science Institute of Software The Chinese Academy of Sciences Beijing 100080)
+(Object Technology Center Institute of Software The Chinese Academy of Sciences Beijing 100080)
+Abstract　In this paper, some important theories of structured object calculus using the results contributed by Goguen are proved. These theories ensure to build up the description of new objects from the description of the existing objects and verify the global system with theories deduced from existing objects as lemma. In addition, the object reification on the basis of object encapsulation is studied, and a structured object calculus is achieved.
+Key words　Structured object calculus, institution,Ω-theory, object system, object reification.
+　　在文献［1,2］中,我们讨论了有关单个对象的描述和演算.然而,对于复杂对象,其描述将会很复杂.如果我们能够将“大”对象的描述分成一系列“小”对象的描述,然后再将它们组装起来,这将会给我们带来极大的方便.由已有对象构造新的复杂对象正是面向对象的重要特征之一.这就要求我们由对象描述构造新的复杂对象描述.为此,我们将复杂对象乃至系统的描述均看做对象描述.为使前面讨论的有关单个对象的演算和特性推理仍然有效,这就要求对象演算和特性推理具有模块化特性,即我们可以将复杂对象或对象系统分解为一些较小的成分对象,分别描述和推理各成分对象及其特性,而且可以由各成分对象来构造和推理复杂对象的特性.另外,还有一些特性是复杂对象所固有的,它们体现各成分对象的交互作用.这就要求我们能够将对象描述和特性推理分解.
+1　对象演算结构化
+　　因为满足关系()和推导()是非结构化的,一长串的非结构化公理很容易出错且较难理解.为此,Goguen和Burstall于1983年提出“Institution”概念［3］.
+1.1　Institution
+　　Institution的定义基于“标记范畴”(category signatures)对标记范畴中的每一标记Ω,对应有“Ω-语句/公式”集、“Ω-模型集”以及满足关系(satisfaction relation).对Institution唯一的语义要求是：当标记改变,所引入的关于语句/公式和模型的变换/翻译需保持满足关系，即有如下的定义.
+　　定义1. Institution包含：
+　　.标记范畴Sign；
+　　.函子：Sen：Sign→Set.对任意标记,Ω∈Sign,Sen(Ω)给出所有Ω-语句/公式的集合；对任意标记态射σ,Ω→Ω′,函数Sen(σ)：Sen(Ω)→Sen(Ω′)将Ω-语句/公式变换成Ω′-语句/公式；
+　　.函子Mod：Sign→Catop(Cat表示范畴的范畴,即以范畴为“对象”,范畴间的函子为“态射”；Catop表示Cat的逆范畴,即Catop和Cat含有相同的对象,且前者的态射是后者的逆).对任意标记Ω∈Sign,Mod(Ω)给出Ω-模型范畴；对任意标记态射σ：Ω→Ω′,函子Mod(σ)：Mod(Ω′)→Mod(Ω)将Ω′-模型变换成Ω-模型；
+　　.满足关系|Mod(Ω)|×Sen(Ω)(|Mod(Ω)|表示Mod(Ω)中的“对象”)对任意标记态射σ：Ω→Ω′,f∈Sen(Ω),M′∈Mod(Ω′)满足：
+M′Sen(σ)(f)Mod(σ)(M′)f.
+　　Institution保证了当标记改变时,相应的语句和模型将作一致改变.这种一致性是通过满足条件表示的.
+　　定义2(对象标记态射). 给定两个对象标记Ω=(S,F,A,E)和Ω′=(S′,F′,A′,E′),记从Ω到Ω′的对象标记态射为σ=(σS,σF,σA,σE),其中：
+　　.σS：S→S′；
+　　.σF：F→F′满足对任意函数符号f∈F〈s1×...×sn〉,s,则σF(f)∈F′〈σS(s1)×...×σS(sn)〉,σS(s)；
+　　.σA：A→A′满足对任意属性符号f∈A〈s1×...×sn〉,s,则σA(f)∈A′〈σS(s1)×...×σS(sn)〉,σS(s)；
+　　.σE：E→E′满足对任意动作符号f∈E〈s1,...,sn〉,则σE(f)∈E′〈σS(s1),...,σS(sn)〉.
+　　 如果我们将动作看成一个特定的广义数据类型,对象标记Ω和Ω′的基标记动作扩充分别为ΣE=(SE,FE)和ΣE′=(SE′,FE′)，标记态射可定义为σ=(σΣE,σA).
+　　以对象标记为“对象”,对象标记态射为“态射”,Ω=(S,F,A,E)上的恒等态射(identutymorphism)为(idS,idF,idA,idE),复合态射(composition of morphism)为相应成分态射/映射的复合,则所有对象标记的“集合”构成一个范畴OSig.对OSig范畴中的一个对象标记Ω=(S,F,A,E),我们分别以Sort(Ω)，Func(Ω)，Attr(Ω)和Act(Ω)来表示S,F,A和E.
+　　作为保结构的映射,同态描述建立了两个对象之间的关系(通常将一个对象作为另一个对象的成分).我们可以将对象标记态射扩充到项和公式.
+　　定义3. 令X是以S标识的变量簇,即X=｛Xs｜s∈S｝,对任意σ：Ω→Ω′,我们定义(X)为以S′标识的变量簇X′满足
+X′s′=∪｛Xs｜σ(s)=s′｝.
+　　定义4. 函子Sen：OSig→Set定义为：
+　　.对任意Ω∈OSig,Sen(Ω)F(Ω,X)；
+　　.对任意σ：Ω→Ω′,Sen(σ)为从F(Ω,X)到F(Ω′,(X))的映射,满足：
+　　〈1〉 对项保运算,即
+　　　(1) 对任意x∈Xs,则Sen(σ)(x)x；
+　　　(2) 对任意f∈FE〈s1×...×sn〉,s,ti∈T(Ω,X)si,i,1≤i≤n则
+Sen(σ)(f(t1,...,tn))σΣE(f)(Sen(σ)(t1),...,Sen(σ)(tn))；
+　　　(3) 对任意f∈A〈s1×...×sn〉,s,ti∈T(Ω,X)si,i,1≤i≤n,则
+Sen(σ)(f(t1,...,tn))σA(f)(Sen(σ)(t1),...,Sen(σ)(tn))；
+　　　(4) 对任意a∈T(Ω,X)E,t∈T(Ω,X)s,则Sen(σ)(［a］t)［Sen(σ)(a)］Sen(σ)(t)；
+　　　(5) 对任意t∈T(Ω,X)s,则Sen(σ)(［Init］t)［Init］Sen(σ)(t)；
+　　　(6) 对任意t∈T(Ω,X)s,则Sen(σ)(Xt)XSen(σ)(t)；
+　　　(7) 对任意t∈T(Ω,X)s,则Sen(σ)(X-t)X-Sen(σ)(t).
+　　〈2〉 对公式保结构,即
+　　　(1) t1,t2∈T(Ω,X)s,s∈SE,则Sen(σ)(t1=t2)(Sen(σ)(t1)=Sen(σ)(t2))；
+　　　(2) a∈T(Ω,X)E,则Sen(σ)(enabled(a))enabled(Sen(σ)(a))；
+　　　(3) a∈T(Ω,X)E,p∈F(Ω,X),则Sen(σ)(［a］p)［Sen(σ)(a)］Sen(σ)(p)；
+　　　(4) p∈F(Ω,X),则Sen(σ)(［Init］p)［Init］Sen(σ)(p)；
+　　　(5) p∈F(Ω,X),则Sen(σ)(Xp)XSen(σ)(p)；
+　　　(6) p,q∈F(Ω,X),则Sen(σ)(pUq)Sen(σ)(p)USen(σ)(q)；
+　　　(7) p∈F(Ω,X),则Sen(σ)(X-p)X-Sen(σ)(p)；
+　　　(8) p,q∈F(Ω,X),则Sen(σ)(pU-q)Sen(σ)(p)U-Sen(σ)(q)；
+　　　(9) p∈F(Ω,X),则Sen(σ)(p)Sen(σ)(p)∈F(Ω,X)；
+　　　(10) p,q∈F(Ω,X),则Sen(σ)(p→q)Sen(σ)(p)→Sen(σ)(q)；
+　　　(11) p∈F(Ω,X),x∈Xs,则Sen(σ)(x：sp)x：σΣE(s)Sen(σ)(p).
+　　定义5(Ω-同态). 给定一个对象标记Ω=(S,F,A,E),两个Ω-语义解释结构,,Ω-同态是一映射簇满足：
+　　.对任意f∈FE〈s1×...×sn〉,s,ai∈si,i,1≤i≤n有
+
+　　.对任意f∈A〈s1×...×sn〉,s,ai∈si,i,1≤i≤n,ω∈,有
+hs((f)(ω)(a1,...,an))=′(f)(h*E(ω))（hs1(a1),...,hsn(an))；
+　　.对任意ω∈,e∈E,有
+(ω,e)∈(h*E(ω),hE(e))∈′.
+其中h*s是hs在“串”的自然扩充.
+　　以Ω-语义解释结构为“对象”,Ω-同态为“态射”,恒等态射和复合态射同映射的恒等与复合,则所有的Ω-语义解释结构的“集合”构成一个范畴Int(Ω).
+　　进一步地,我们可以扩充Ω-同态得到Trace-结构同态.
+　　定义6(TraceΩ-同态). 给定一个对象标记Ω=(S,F,A,E),两个Ω-TraceΩ-结构=(,v,ω),′=(′,v′,ω′),则TraceΩ-同态h是Ω-同态h：→′且ω′=h*E(ω).
+　　对任一对象标记Ω,以相应TraceΩ-结构为“对象”,TraceΩ-同态为“态射”,则所有相应于Ω-的TraceΩ-结构的“集合”构成一个范畴Mod(Ω).
+　　定义7(σ-归约函子). 给定两个对象标记Ω=(S,F,A,E)和Ω′=(S′,F′,A′,E′),一个对象标记态射σ：Ω→Ω′,我们称函子｜σ：Mod(Ω′)→Mod(Ω)为σ-归约函子(σ-reduct functor),满足
+　　〈1〉 对任一TraceΩ′-结构′=(′,v′,w′)∈Mod(Ω′),′沿σ的归约′|σ=(′|σ,v′|σ,ω)是一个TraceΩ-结构,其中
+　　　(1) 对任意s∈SE,(v′|σ)sv′σ(s)；
+　　　(2) 对任意s∈SE,(′|σ)s′σ(s)；
+　　　(3) 对任意f∈FE〈s1×...×sn〉,s,|σσ；
+　　　(4) 对任意f∈A〈s1×...×sn〉,s,′|σ(f)′(σ(f))；
+　　　(5) ′|σ′.
+　　〈2〉 对任意h′：′→′,其σ归约h′|σ：′σ→′σ是TraceΩ′-同态,其中对任意s∈SE,(h′|σ)sh′σ(s).
+　　我们可以将Mod/Int扩充为对象标记范畴OSig上的函子(functor).
+　　定义8. 函子Mod：OSig→Catop定义为：
+　　.对任意Ω∈OSig,Mod(Ω)是TraceΩ-结构的范畴；
+　　.对任意σ：Ω→Ω′,Mod(σ)：Mod(Ω′）→Mod(Ω)是σ-归约函子,它将TraceΩ′-结构翻译为TraceΩ-结构.
+　　我们可以将Mod(σ),Sen(σ)缩写为σ.
+　　引理1(满足条件). 分别给定对象标记态射σ：Ω→Ω′,TraceΩ′-结构′,公式p∈F(Ω,X),有
+
+　　限于篇幅,证明从略.详细讨论可参见文献［4］.由该引理我们得到如下结论.
+　　定理1. Trace演算是一Institution.
+1.2　Ω-理论
+　　下面我们引入Ω-理论和Ω-理论范集.
+　　定义9. 给定一个对象标记Ω，
+　　(1) 一个Ω-理论范集是一个二元组(Ω,F),其中FF(Ω,X)是一个Ω-公式集；
+　　(2) Ω-公式集F的闭包为所有可以从F推导出的Ω-公式的集合,记为F・；
+　　(3) Ω-理论(Ω,F)是Ω-理论范集,满足F=F・.
+　　定义10. 给定两Ω-理论T=(Ω,F),T′=(Ω,F′),一个从T到T′的理论态射是一个对象标记态射σ：Ω→Ω′,满足对任意p∈T,σ(p)∈(T′).
+　　以理论为“对象”,理论态射为“态射”,恒等态射和复合态射同对象标记范畴,则所有理论的“集合”构成一范畴Th.对范畴Th中的元素T=(Ω,F),我们分别以OSig(T)和Axioms(T)表示T的两个部分.
+　　引理2. 给定一个对象标记态射σ：Ω→Ω′,Ω-理论范集(Ω,F)和Ω′-理论范集(Ω′,F′),则σ：(Ω,F・)→(Ω′,F′・)是一理论态射当且仅当σ(F)F′・.
+　　证明略.
+　　该引理告诉我们，要验证σ是否为一理论态射，只要证明对任意p∈F,σ(p)，可以由F′推导出即可.
+　　为使对象演算［2］具有Trace演算［1］的性质,即满足Institution的要求,我们可以类似地定义一些范畴、态射和函子,将语义解释结构替换为对象语义解释结构,将Trace结构替换为Ψ结构.但仅有这些是不够的.
+　　若我们考虑到对象封装性,以对象语义解释结构为模型,则上述满足条件不成立.这是因为对一个对象标记态射σ：Ω→Ω′,对某些E′中动作,在E中没有原象,即对Ω而言,这些动作的相应动作被看成外部非有效动作.这样，对一种Ω′-对象语义解释结构,其相应的′|σ不一定是Ω-对象语义解释结构,所以对象演算［2］并不是一个Institution.因此，我们所述及的对象规范描述“保结构”还需一个附加条件，即对任意Ω′-对象语义解释结构′,′|σ应是一种Ω-对象语义解释结构.根据Goguent和Burstall［3］的定义，我们可以将这一要求看成是一种“数据约束”(data constraints).
+　　同语句/公式一样,约束对所允许的模型加以限制.另外,一个从Ω到Ω′的对象标记态射决定了从Ω-约束到Ω′-约束的变换.
+　　从另一角度看,即证明理论方法,一种Ω-理论(Ω,T)若满足封装性,则需要有如下形式的公式作为Ω-定理：
+(∨g∈Exgg(xg))∨(∧f∈Axf［a］f(xf)=f(xf)),
+其中xg,xf表示g,f的相应变参集,我们可以用Enc(Ω)表示该公式.事实上,该公式表示在任一时刻,或者有一个在Ω中定义的动作发生,或者所有属性不改变,而这一点正是封装性的要求.然而,σ(Enc(Ω))却不一定是Ω′-定理(相应于Ω′的有效动作,对Ω而言可能是非有效动作).所以,要得到理论态射,我们还需证明.
+2　对象系统
+　　多个对象可以复合成“更大的”对象――聚合对象,我们也可视这些聚合对象为一个系统(相应于抽象层次上的).一系统的各成分对象并不是相互独立的,它们之间可能存在各种各样的相互作用.常见的相互作用是对象共享,即多个对象共享相同的成分对象.此外,相互作用还可以通过动作共享(多个对象通过同一动作同步)和属性共享.根据对象封装性要求,若两个或多个对象共享同一属性,则它们必须共享所有可能修改该属性的动作.事实上,动作共享和属性共享亦可看做对象共享.
+2.1　对象系统描述
+　　仍以文献［2］中的生产消费问题为例1,PRODUCER和BUFFER共享动作put,这个共享可通过定义如下的辅助对象INTERFACE来表示.
+　　objectSpec INTERFACE=ITEM+
+　　　Sorts：ITEM
+　　　Functions：
+　　　Attributes：
+　　　Actions：
+　　　　put(ITEM)
+　　　Axioms：
+　　End
+该对象可看成是PRODUCER和BUFFER的部分对象.也就是说,PRODUCER和BUFFER通过界面INTERFACE相互作用.PRODUCER和BUFFER组成的系统可看成是包含PRODUCER和BUFFER及其相互作用的最小对象,该对象可通过计算INTERFACE,PRODUCER和BUFFER的余极限(colimit)而得到.这里,它是一个外推(pushout).n个对象描述的余极限给出了包含这n个对象及其相互作用的最小对象,余极限在同构意义下是唯一的.忘却函子Sign：Th→OSig反映了余极限.现在我们给出由PRODUCER,CONSUMER和BUFFER构成的系统SYSTEM的描述.首先,我们给出对象标记.
+　　ObjectSignature SYSTEM=ITEM+BOOL+INT+
+　　　Sorts：
+　　　Functions：
+　　　Attributes：
+　　　　Producer.item,Consumer.item： ITEM
+　　　　Producer.waiting,Consumer.waiting： BOOL
+　　　　count：INT
+　　　Actions：
+　　　　produce(ITEM)
+　　　　consumer(ITEM)
+　　　　put(ITEM)
+　　　　get(ITEM)
+　　　End
+为方便起见,我们假设对象之间的同步是基于相同的动作名,从而使由多个对象组成的系统的描述和推理与仅有单个对象时一样,即我们前面提出的描述语言和演算仍然适用.这样,当我们由多个对象描述构造由这些对象组成的系统的描述时,需进行适当的动作名的换名.
+　　SYSTEM的公理集是由PRODUCER,CONSUMER和BUFFER的程序公理经适当换名而得.另外,如下所示的公理集还隐含了3个保封装性公理,这些保封装性公理为系统整体特性推理提供了基础.
+　　动作produce(i)的作用效果
+　　p1：［produce(i)］Producer.item=i
+　　p2：［produce(i)］Producer.waiting=t
+　　　　动作consume(i)的作用效果
+　　cl：［consume(i)］Consumer.waiting=f
+　　　　动作put(i)的作用效果
+　　p3：［put(i)］Producer.waiting=f
+　　b1：［put(i)］Buffer.count=Buffer.count+1
+　　　　动作get(i)的作用效果
+　　c2：［get(i)］Consumer.item=i
+　　c3：［get(i)］Consumer.waiting=t
+　　b2：［get(i)］Buffer.count=Buffer.count-1
+　　　　初始条件
+　　p4：［Init］waiting=f
+　　c4：［Init］Consumer.waiting=f
+　　b3：［Init］Buffer.count=0
+　　　　动作produce(i)执行的必要条件
+　　p5：enabled(produce(i))→Producer.waiting=f
+　　　　动作consume(i)执行的必要条件
+　　c5：enabled(consume(i))→(Consumer.item=i)∧Consumer.waiting=t
+　　　　动作put(i)执行的必要条件
+　　p6：enabled(put(i))→(Producer.item=i)∧(Producer.waiting=t)
+　　b4：enabled(put(i))→(Buffer.count＜size)
+　　　　动作get(i)执行的必要条件
+　　c6：enabled(get(i))→Consumer.waiting=f
+　　b5：enabled(get(i))→(Buffer.count＞0)
+　　　　动态约束
+　　p7：Producer.waiting=t→Fput(Producer.item)
+　　c7：Consumer.waiting=t→Fconsume(Consumer.item)
+　　b6：put(i)→Fget(i)
+　　然而,在构造系统时,有时我们需要使多个对象与同一对象ob相互独立地通信,并使该对象执行相同的动作.由于独立要求相应的对象使用不同的动作名,而同步通信则要求进行同步通信的各对象的应动作有相同的动作符号名.因此,我们必须扩充ob的对象标记和描述.这可由增加动作符号名和相应程序公理而得.如对BUFFER,我们可增加动作符号名get1(ITEM),get2(ITEM)和相应公理：
+　　ab1：get1(i)→get(i)
+　　ab2：get2(i)→get(i)
+　　ab3：get1(i)∧get2(i)
+　　ab4：get(i)→get1(i)∨get2(i)
+其中公理ab1和ab2表示我们给BUFFER引入新的行为,仅是对动作get换名/特化,因此,保封装性；公理ab3表示get1,get2互斥；而公理ab4则阻止对BUFFER的进一步扩充.
+　　我们也可以引入对象标识,进行“参数化”,即
+　　ab1′：pget(id,i)→get(i)
+　　ab2′：pget(id,i)∧pget(id′i)→id=id′
+2.2　对象系统推理
+　　根据Goguen和Burstall关于Institution的结论,我们可以将一复杂系统分解,分别对系统的各成分对象进行描述和推理,并将由成分对象推理所得的结论作为系统整体特性推理的引理.我们有下面的定理.
+　　定理2. 给定两个对象标记Ω=(S,F,A,E)和Ω′=(S,F′,A′,E′),一个对象标记态射σ：Ω→Ω′,
+　　(1) FΩpσ(F)Ω′σ(p)；
+　　(2) FΩspσ(F)Ω′sσ(p)；
+　　(3) FΩlpσ(F)Ω′lσ(p)；
+　　(4) FΩepσ(F),σ(Enc(Ω))Ω′eσ(p)；
+　　(5) FΩsepσ(F),σ(Enc(Ω))Ω′seσ(p)；
+　　(6) FΩlepσ(F),σ(Enc(Ω))leeΩ′σ(p).
+其中上标表示相应推导为Ω或Ω′推导；下标s,l,e,se和le分别表示相应推导为安全性推导、活动性推导、封装性推导、带封装性的安全性推导和带封装性的活动性推导等.
+　　定理3. 给定两个对象标记Ω=(S,F,A,E)和Ω′=(S′,F′,A′,E′),一个对象标记态射σ：Ω→Ω′,我们有如下规则：
+　　(struct) ∪｛［xg］f(x1,...,xn)=f(x1,...,xn)｝Ω′σ(Enc(Ω)).
+其中g∈E′-σ(E),f∈A′〈,(s1)×...×,(sn)〉,(s)xg∈XE′,xi∈Xσ(si),1≤i≤n,n≥0.
+　　结论是显然的.该定理指出,若在Ω′中新增加的动作不修改相应于Ω中属性的Ω′属性(对继承而言是继承属性,对聚合而言是成分对象的属性),则对象标记态射σ保封装性.
+　　对于生产-消费问题,令相应于PRODUCER,CONSUMER,BUFFER和SYSTEM的对象标记分别为Ωp,Ωc,Ωb和Ωs以及对象标记态射σp：Ωp→Ωs,σc：Ωb→Ωs和σb：Ωc→Ωs,不难验证：
+SYSTEMΩs σp(Enc(Ωp)),
+SYSTEMΩs σc(Enc(Ωc)),
+SYSTEMΩs σb(Enc(Ωb)).
+　　例1：SYSTEMΩsproduce(i)→Fconsume(i).
+　　证明：由文献［2］中例3,我们有
+PRODUCERΩp produce(i)→Fput(i).
+　　由b6,我们有
+BUFFERΩb put(i)→Fget(i).
+　　现在,我们来证明
+PRODUCERΩc get(i)→Fconsume(i).
+　　(1) get(i)→(［get(i)］waiting=t∧［get(i)］item=i)　　　　公式get(i)的定义
+　　(2) ［get(i)］waiting=t［get(i)］(waiting=t)　　　　　　 “=”,“t”是严格的
+　　(3) get(i)→(［get(i)］(waiting=t)∧［get(i)］item=i)　　　(1),(2),(prep)
+　　(4) (［a］item=item∧［a］waiting=waiting)∨kget(k)∨lconsume(l)　　封装性
+　　(5) enabled(get(i))→waiting=f　　　　　　　　　　　　　　 c6
+　　(6) lconsume(l)∨((waiting=t∧enabled(a))→
+　　　　　　(［a］item=item∧［a］waiting=waiting))　　　　　　(4),(5)
+　　(7) get(i)→X((waiting=t∧item=i)Uconsume(i))　　　　　　　(3),(6),(c7),(live6)
+　　(8) get(i)→Fconsume(i)　　　　　　　　　　　　　　　　　　(7),(prep)
+又因为
+　　SYSTEMΩsσp(Enc(Ωp))
+　　SYSTEMΩsσc(Enc(Ωc))
+　　SYSTEMΩsσb(Enc(Ωb))
+所以有
+　　SYSTEMΩsproduce(i)→Fput(i)
+　　SYSTEMΩsput(i)→Fget(i)
+　　SYSTEMΩsget(i)→Fconsume(i)
+由(prep)可得
+SYSTEMΩs produce(i)→Fconsume(i).
+　　通常,我们省略推导“”的上下标.
+3　对象精化
+　　前面我们讨论了对象的结构化描述和推理,下面讨论有关对象精化的问题.一般而言,有两类实现抽象描述的方法,即：(1) 用已有的具体描述实现其他的抽象描述；(2) 可执行的描述.第1类方法涉及到一系列设计决策,这些决策包括如何给出抽象对象的具体表示等.有关这类方法的讨论很多,如基于求精(refinement)的方法、基于行为抽象的方法等.第2类方法属于编译或解释方法,这样的方法将描述语言看做程序设计语言,将规范描述看做模块.基于等式逻辑的项重写就是这类方法的一个典型.
+　　面向对象的软件构造,不但要求允许使用现有具体对象构造系统,还要求提供使用低层对象来精化高层对象的机制.前者可称为水平结构化(horizontal structuring),后者可称为垂直结构化(vertical structuring).
+　　这里,我们所采用的是基于求精的实现方法.
+　　在进行抽象对象精化时,通常将具体对象组合起来构成中间对象,然后对该中间对象的行为作进一步限制(如事务约束)以满足特定的抽象对象行约束.我们把这种为满足特定的抽象对象行约束而对中间对象的行为的限制称为精化(reification).
+3.1　抽象对象的精化
+　　抽象对象的精化包括抽象属性在具体属性上的实现、抽象动作在具体动作上的实现和初始条件的实现.显然,抽象对象Abs的属性来自于那些具体对象,其动作对应于这些具体对象动作上的事务(transaction).在精化对象时,我们通常将多个具体对象复合成一个大对象Con；然后通过增加必要的导出属性和事务要求公理来扩充Con得到对象Tmp；最后必须证明存在一个从Tmp到Abs的“精化”,即用Tmp的动作“编码”Abs的动作.
+　　我们以对象BUFFER为例,说明对象精化及其正确性.我们用一个数组和两个指针来实现BUFFER.
+　　ObjectSpec POINTER=INT+
+　　　Sorts：
+　　　Functions：
+　　　Attributes：
+　　　　v：INT
+　　　Actions：
+　　　　inc
+　　　Axioms：
+　　　p1：［inc］v=v+1
+　　End
+　　ObjectSpec ARRAY=ITEM+INDEX+
+　　　Sorts：
+　　　Functions：
+　　　Attributes：
+　　　　v：INDEX→ITEM
+　　　Actions：
+　　　　put(INT,ITEM)
+　　　　get(INT,ITEM)
+　　　Axioms：
+　　　　a1：［put(k,i)］v(modsize(k))=i
+　　　　a2：［get(k,i)］v(modsize(l))=v(modsize(l)),　　　　modsize(l)≠modsize(k)
+　　　　a3：put(k,i)‖put(l,i)→modsize(k-l)=0
+　　　　a4：enabled(get(k,i))→v(modsize(k))=i
+　　End
+其中INDEX为［0...size-1］,modsize为以size取模.公理a3不允许对数组并发赋值.Con包含两个指针实例和一个数组实例.Con的标记包含它们不相交的并.
+　　ObjectSpec Con=ITEM+INDEX
+　　　Sorts：
+　　　Functions：
+　　　Attributes：
+　　　　Array.v：INDEX→ITEM
+　　　　Head.v：INDEX
+　　　　Tail.v：INDEX
+　　　Actions：
+　　　　Array.put(INDEX,ITEM)
+　　　　Array.get(INDEX,ITEM)
+　　　　Head.inc
+　　　　Tail.inc
+　　　Axioms：
+　　　　Array.a1～Array.a4
+　　　　Head.p1
+　　　　Tail.p1
+　　End
+现在我们扩充Con.首先,我们引入属性count作为Con属性的导出属性,满足count=Head.v-Tail.v,
+　　由count的实现不难得到
+Head.v-Tail.v＜size→count＜size,
+Tail.v＜Head.v→count＞0.
+　　初始条件：
+　　i1：［Init］Head.v=0
+　　i2：［Init］Tail.v=0
+　　下一步,我们考虑抽象动作的实现.对于抽象动作put,我们可将它实现为指针Head的前移和对数组的赋值,即：
+　　i3：put(i)→Head.inc
+　　i4：put(i)→Array.put(Head.v,i)
+　　i5：enabled(get(i))→(Head.v-Tail.v＜size)
+　　对于抽象动作get,我们可将它实现为指针Tail的前移和从数组中取值,即：
+　　i6：get(i)→Tail.inc
+　　i7：get(i)→Array.get(Tail.v,i)
+　　i8：enabled(get(i))→(Tail.v＜Head.v)∧(i=Array.v(Tail.v))
+　　另外,上面我们仅给出对put,get实现的一些要求,并没有完全给出它们的具体实现,其中指针前移和从数组赋值/取值可以“并发”执行,即
+Array.put(Head.v,i)‖Head.inc,
+Array.get(Tail.v,i)‖Tail.inc.
+也可以处理成一个事务,将事务看成一个原子动作,即
+Array.put(Head.v,i)；Head.inc，
+Array.get(Tail.v,i)；Tail.inc.
+在事实实现时,需满足事务的原子性.这里原子性可表示为如下约束：
+Array.put(Head.v,i)→XHead.inc,
+Array.get(Tail.v,i)→XTail.inc,
+Head.inc→X-iArray.put(Head.v,i),
+Tail.inc→X-iArray.get(Tail.v,i).
+最后,相应于动态约束,我们有
+　　i7： Head.inc→FTail.inc
+从实际实现来看,我们可以给“→”以更清楚的解释,对于两动作a和b,a→b可看成是“传播”(propagate)或过程调用.
+3.2　对象精化的正确性
+　　现在我们必须证明抽象对象BUFFER的精化的正确性,即精化满足抽象对象的描述.
+　　我们以b1为例,这里,我们仅考虑合法行为.假设我们将抽象动作put精化为一事务：Array.put(Head.v,i)；Head.inc.那么,我们证明b1即是证明其在实现中的翻译：
+［Array.put(Head.v,i)；Head.inc］(Head.v-Tail.v)=(Head.v-Tail.v)+1.
+这里,［Array.put(Head.v,i)；Head.inc］意为［Array.put(Head.v,i)］［Head.inc］.
+　　我们有：
+　　(1)［Head.inc］Head.v=Head.v+1　　　　　　　　　　　　　 Head.p1
+　　(2)［Array.put(Head.v,i)］Head.v=Head.v　　　　　　　　　Head的封装性
+　　(3)［Array.put(Head.v,i)］［Head.inc］Head.v=
+　　　　　　　［Array.put(Head.v,i)］Head.v+1　　　　　　　　(1)和“=,+,1”是严格的
+　　(4)［Array.put(Head.v,i)］［Head.inc］Head.v=Head.v+1　　(2),(3),替换
+　　(5)［Array.put(Head.v,i)］［Head.inc］Tail.v=Tail.v　　　Tail的封装性
+　　(6)［Array.put(Head.v,i)；Head.inc］(Head.v-Tail.v)=
+　　　　　　　［Array.put(Head.v,i)］［Head.inc］Head.v-
+　　　　　　　［Array.put(Head.v,i)］［Head.inc］Tail.v　　　“=,-”是严格的
+　　(7)［Array.put(Head.v,i)；Head.inc］(Head.v-Tail.v)=
+　　　　　　　　(Head.v-Tail.v)+1　　　　　　　　　　　　　　 (3),(4),(6),替换
+　　更一般地,我们可以忽略一些实现细节,不管动作的实现是“并发”还是“事务”.为此,类似于对象的数据封装性,我们可对具体对象的行为加以限制,使其只响应抽象动作,这也可以看成是一种封装性,因此我们有：
+　　i10：Head.inc→iput(i)
+　　i11：Tail.inc→iget(i)
+　　i12：Array.put(k,i)→put(i)
+　　i13：Array.get(k,i)→put(i)
+　　由此,我们可以得到一些特性,如
+　　tx1　［a］Array.v(p)=Array.v(p)∨modsize(p-Head.v)=0.
+　　证明：
+　　(1) Array.put(k,i)→Array.put(Head.v,i)　　　　　　　　　　　i4,i12
+　　(2) Array.get(k,i)→modsize(k-Head.v)=0　　　　　　　　　　　(1),Array.a3
+　　(3) ［a］Array.v(p)=Array.v(p)∨(Array.put(q,i)∧modsize(p-q)=0)　　Array的封装性
+　　(4) ［a］Array.v(p)=Array.v(p)∨modsize(p-Head.v)=0　　　　　(1),(2),(3),(prep)
+　　由(1),(2),任何时刻对数组的赋值只能是Array.put(Head.v),即仅数组的modsize(Head.v)单元可以被修改,其他的赋值动作被藏(hide)起来.另外,由i12和Array的封装性可得，
+　　tx2　［α］Array.v(p)=Array.v(p)∨put(i)．
+　　类似地,由指针描述的封装性,我们有：
+［a］Head.v=Head.v∨Head.inc，
+［a］Tail.v=Head.v∨Tail.inc.
+　　我们可以得到：
+　　tx3　［a］Head.v=Head.v∨put(i)
+　　tx4　［a］Tail.v=Head.v∨get(i)
+也就是说,除非执行了put/get,Head.v/Tail.v将保持不变.
+　　这样,我们证明b1即是证明其在实现中的翻译：
+［put(i)］(Head.v-Tail.v)=(Head.v-tail.v)+1.
+　　(1) ［put(i)］(Head.v-Tail.v)=［put(i)］Head.v-［put(i)］Tail.v　　　－是严格的
+　　(2) ［Head.inc］Head.v=Head.v+1　　　　　　　　　　　　　　　　　　　Head.p1
+　　(3) ［put(i)］Head.v=Head.v+1　　　　　　　　　　　　　　　　　　　　i10
+　　(4) ［put(i)］Tail.v=Tail.v　　　　　　　　　　　　　　　　　　　　　tx4
+　　(5) ［put(i)］(Head.v-Tail.v)=(Head.v-Tail.v)+1　　　　　　　　　(1),(2),(4),替换
+　　其他程序公理类似可证.
+4　结 论
+　　在对象语义模型下,对象被定义为封装属性和行为的实体,它是静态结构和动态行为的有机组合.对象态射刻画了对象之间的关系,包括对象静态结构之间的关系和对象动态行为之间的关系.对象精化则提供对象的垂直结构化机制.这样,在设计的每一层次,对象或对象系统都可看成是由一些对象通过继承、聚合等构造而得,而在设计的低层可以进一步精化这些对象.对象精化也是建立在对象的封装性之上的,即具体对象只响应相应抽象对象的动作,这是一种动作封装性.最后总结一下结构化对象演算系统的特点.
+　　(1) 既可以方便地描述和推理对象的静态特性,也可以方便地描述和推理对象的动态特性.
+　　(2) 需求(requirement)描述和规范(specification)描述相一致.对对象的需求规模和对象特征的规范描述同样使用约束公式/对象语义描述来完成.
+　　(3) 结构化.使用对象演算既可以描述和推理对象的构造(水平结构化),也可以描述和推理对象的精化(垂直结构化).
+　　(4) 不依赖于具体实现考虑.对象演算系统是一个抽象系统,它将对象的状态变迁抽象为具体原子性的动作,而不管它是基于过程调用方式还是基于消息传送方式,也不管消息传送是同步还是异步的.
+　　(5) 统一对象的局部演算和全局演算于同一逻辑演算系统框架中.对象演算既可以方便地分别描述和推理单个对象,也可以方便地描述和推理对象的相互作用,避免了其他面向对象方法的局部演算/局部描述系统和全局演算/全局描述系统的区分,我们认为这样的区分是不自然，且违背面向对象的原则.
+*　本文研究得到国家自然科学基金和国家863高科技项目基金资助.
+本文通讯联系人：黄涛,北京 100080,中国科学院软件研究所计算机科学开放研究实验室
+作者简介：黄涛,1965年生,博士，研究员,主要研究领域为软件工程,对象技术,分布计算,程序设计语言及环境.
+　　　　　钱军,1966年生,博士生,主要研究领域为面向对象的理论和技术,分布对象计算,形式化方法.
+　　　　　王栩,1971年生,博士生,主要研究领域为面向对象的理论和技术,分布对象计算.
+作者单位：黄涛，钱军，王栩（中国科学院软件研究所计算机科学开放研究实验室 北京 100080）
+　　　　　黄涛，钱军，王栩（中国科学院软件研究所对象技术中心　北京　100080）
+参考文献：
+［1］黄涛,钱军,倪彬.Trace演算.软件学报,1999,10(8):790～799
+(Huang Tao, Qian Jun, Ni Bin. Trace calculus. Journal of Software, 1999,10(8):790～799)
+［2］黄涛,钱军,周桓.对象演算I.软件学报,1999,10(9):931～940
+(Huang Tao, Qian Jun, Zhou Huan. Object calculus Ⅰ. Journal of Software, 1999,10(9):931～940)
+［3］Goguen J A, Burstall R M. Introducing institutions. In: Clarke E, Kozen D eds. Proceedings of the Logic of Programming. LNCS164, Berlin: Springer-Verlag, 1984
+［4］黄涛.对象形式语义理论研究［博士学位论文］.合肥:中国科技大学,1994
+(Huang Tao. Theoretical research on object formal semantics ［Ph.D. Thesis］. Hefei: University of Science and Technology of China, 1994)
+收稿日期：1997-12-12，修改日期：1998-09-04

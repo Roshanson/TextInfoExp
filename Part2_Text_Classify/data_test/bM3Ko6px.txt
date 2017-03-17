@@ -1,0 +1,202 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第8期 Vol.10 No.8 1999
+
+
+
+文法推断研究的历史和现状
+张瑞岭
+摘要　文法推断属于形式语言的归纳学习问题,它研究如何从语言的有限信息出发,通过归纳推断得到语言的语法定义.文章综述文法推断研究的历史和现状.首先阐述文法推断的理论模型,接着罗列上下文无关文法类及其非平凡子类、隐马尔可夫模型以及随机上下文无关文法的推断方法,最后简介文法推断的应用,并展望其发展趋势.
+关键词　示例学习,归纳推断,形式语言的学习,文法推断.
+中图法分类号　TP
+Grammatical Inference: Retrospect and Prospect
+ZHANG Rui-ling
+(Laboratory of Computer Science Institute of Software The Chinese Academy of Sciences Beijing 100080)
+Abstract　 Grammatical Inference (GI) is a problem of inductive learning of formal languages, which deals with how to obtain the grammatical description of a formal language from given finite data drawn from the language. In this paper, the authors provide a survey of the history and recent advances in GI field. They first present some learning models for GI. Then, they enumerate methods for GI with an emphasis on the results concerning the inference of context free grammar class and its some subclasses, hidden Markov models, and stochastic context-free grammar class. At last, they briefly give some applications of GI as well as the future directions of GI research.
+Key words　Learning from examples, inductive inference, learning of formal languages, grammatical inference.
+　　文法推断(grammatical inference)属于形式语言的归纳学习问题.语言的归纳学习致力于研究如何从语言的有限信息出发,通过归纳推断得到语言的定义.当待学习语言的最终定义以不同的形式表示时,其归纳学习过程也有所不同.严格地说,文法推断是指待学习语言的定义用文法表示时的归纳学习过程.
+　　文法推断从语言的有限信息(输入)出发,通过一个归纳推断过程,最终得到语言的文法描述(输出).其中输入信息一般包含一个正例样本集,或同时包括一个反例样本集,还可能包含其他附加信息.文法推断问题的提出,可追溯到20世纪50年代末,所以相对于计算机科学中某些研究领域而言,文法推断是一个历史悠久的研究领域;同时,由于文法推断问题本身固有的复杂性,其发展还不够成熟,还有大量的理论和技术问题需要人们去研究和探索,所以它又是一个新兴的研究领域.
+　　文法推断研究的最初20年内,特别是在1970～1980年间,取得了丰硕的研究成果.但从80年代初开始,有关文法推断问题的研究论文越来越少,原因不在于该问题的研究已很成熟;而是由于文法推断问题本身固有的困难,使得其研究处于低迷状态.近几年,许多研究者试着将其他一些技术,如遗传算法和神经网络运用到文法推断中,特别是将概率统计理论结合到文法推断中,使得文法推断进入实际应用成为可能,于是文法推断的研究又活跃起来,并从1993年起召开了4届关于文法推断专题的国际会议.其他一些专题会议中也包含了文法推断的研究成果,如类比及归纳推断、算法学习理论和计算学习理论,另外,在ACM关于计算理论的年度会议中也包含部分相关论文.
+　　　目前为止,关于或涉及文法推断问题的综述性文章主要有［1～4］.本文旨在介绍文法推断的理论模型和方法,特别介绍当前研究热点和趋势.在介绍研究成果时特别罗列出有关上下文无关文法及其非平凡子类文法（即正规文法的超类）以及随机文法的推断方法.
+1 有关定义
+　　一个上下文无关文法(context-free grammar,简称CFG)G用一个四元组表示,即
+G=(N,Σ,P,X)
+　　其中N和Σ分别为非终极符集合和终极符集合;P为产生式集合;X为开始非终极符.字母表V=N∪Σ.Σ上串集合（包括空串）记为Σ*,空串用ε表示.Σ+=Σ*-{ε}.V上的终极符和非终极符串组成的集合（包括ε）记为V*,V+=V*-{ε}.一个串α的长度记为|α|.P中每个产生式形如A→β,这里,A∈N,β∈V*.我们用αβ表示γ,δ,η,A满足α=γAδ,β=γηδ且A→η是一个产生式.αβ表示串α0,α1,...,αm(m≥0)满足
+α=α0α1...αm=β.
+这里,序列α0,...,αm称为从α到β的一个推导.文法G产生的语言记为L(G),即
+L(G)={s|s∈Σ*},Xs},
+也就是对L(G)中任一实例串s,存在从X到s的一个推导,该推导过程可以用一个树表示,该树就称为G关于s的语法树（或称派生树）,派生树的根结点为开始非终极符X,所有叶结点连接起来即为s.派生树的形状（即不考虑其内部结点的标记）称为s的轮廓(skeleton).推导过程也可以用依次使用的产生式序列表示,即一个实例s的推导过程记为D(s)=(r1,...,rm),ri为P中产生式.
+　　若一个CFG G的产生式集合P中的所有产生式形如:A→a或A→aB,A,B∈N,a∈Σ,则称G为正规文法(regular grammar).一个语言L是正规语言,当且仅当存在一个正规文法G,有L=L(G).同时,一个语言L是正规语言,当且仅当存在一个确定有限状态自动机(deterministic finite automata,简称DFA)A,其接受语言L(A)=L.在下面的描述中,正规文法、正规语言和DFA等名词可互相替换.
+　　对于一个语言L,若终极符串s∈L,则称s为L的正例;若sL,则称s为L的反例.语言L的正例样本集S+是由L的有限个正例组成的集合;语言L的反例样本集S-是由L的有限个反例组成的集合.
+　　下面是一些CF文法子类的定义.
+　　(1) G是线性文法(linear grammar)当且仅当其产生式形如:A→uBv,A→u,其中A,B∈N,u,v∈Σ.G是偶线性文法(even linear grammar,简称ELG)当且仅当G是线性文法,且形如A→uBv的产生式满足:|u|=|v|.
+　　(2) G是简单确定文法(simple deterministic grammar)当且仅当其产生式形如:A→aα,其中a∈Σ,α∈N*,且|α|≤2;同时,若A→aα和A→aβ∈P,则有α=β.
+　　(3) G是极简单文法(very simple)当且仅当G为Greibach范式文法,且对每个终极符a∈Σ,P中正好有一个形如A→aα（α∈V*）的产生式.极简单语言类是简单确定语言类的真子集.
+本文中出现的形式语言有关概念的定义和进一步解释见参考文献［5］.
+2 文法推断的理论模型
+　　文法推断的研究可以追溯到20世纪50年代末.最初由Chomsky［6］于1957年提出.但首先系统严格地陈述这一研究课题的是Gold.他于1969年在文献［7］中,给出文法推断的经典理论模型,即语言的极限识认模型.
+2.1 语言的极限识认模型
+　　Gold把文法推断问题抽象成这样一个过程:在任何时刻t,向推断设备输入信息单元it,推断设备输出一个猜测（即推断结果）H(i1,...,it).H(i1,...,it)表示从信息单元i1,i2,...,it所得到的猜测结果.若在有限时间之后,推断设备输出的猜测不因提供更多的信息单元而改变,且该猜测是关于待学习语言的正确描述,则可以说推断设备使用的是一个成功的推断算法,这个过程也称“语言的极限识认”.这里i1,i2,...称为样本序列（或训练序列）.设待学习语言为L,L的正例表示(positive presentation)序列是指其样本序列中任一信息单元ik(k=1,2,...)为L的正例串;L的完整表示(complete presentation)序列是指其样本序列中任一ik为一个二元组(w,b)∈Σ*×{0,1},若b=1,则w为L的正例,否则w为L的反例.
+　　定义. 设为一递归可枚举语言类,推断设备ID从正例表示（或完整表示）序列极限识认是指:∈L和L的任一正例表示（或完整表示）序列I=i1,i2,...,在任意时刻t,ID接受it并输出猜测Ht=H(i1,...,it),这里H是可计算的,存在一个时刻k,有hk=hk+1=...且hk是对L的正确描述.
+　　定理(Gold). 设L为任一无穷语言（即包含无穷多个句子）,CF为有限语言类,则从正例表示序列不能极限识认语言类CF∪{L};从完整表示序列可以极限识认任何可枚举语言类.
+　　Gold定理告诉我们,如果只提供正例,连正规语言也不能极限识认.这是一个令人沮丧的结论,但这一点也很好理解:因为,对于无穷语言,如果仅提供正例,一旦某个时刻t,推断设备输出的猜测ht是待学习语言L的超集,即:ht描述的语言L′L,则在随后的时间里,猜测ht会始终不变,而且不会有其他信息告诉推断设备去修正其猜测.这种情况又称为过分泛化(overgeneralization).
+2.2 交互式学习模型
+　　Gold的结论使人很自然地想到,除了提供正例样本外,还得提供别的有用信息.Gold提出的反例信息是一种方法,但很多场合反例很难提供,而且包含反例信息后,加大了问题的复杂性［8］.Angluin提出一种在多项式时间内通过提问进行语言正确识认(exact identification using queries in polynomial time)的模型［9,10］.该模型中包括教师和学习者两个角色,其中教师负责回答学习者(即推断系统)提出的关于待学习语言$L$的有关问题,典型的提问类型有两种:
+　　1.成员问题(membership).推断设备提供一个句子串w,教师回答该串是否为待学习语言L的合法句子;
+　　2.等价问题(equivalence).推断设备提供一个文法G′,教师回答该文法所产生的语言是否等价于待学习语言L.若回答“no”,则同时提供一个反例串w,即w∈L(G′)但wL,或w∈L但wL(G′).等价问题的实质是回答当前推断结果G′是否为最终结果.
+　　Angluin在文献［11］中证明如果只使用等价问题,CF语言类不可能在多项式时间内识认;更进一步,Angluin和Khariton在文献［12］中证明,如果使用成员问题和等价问题,CF文法类识认问题的难度与通常的解密问题相当,目前为止尚未找到多项式时间的算法.
+2.3 近似学习模型
+　　最近几年,真正得到广泛应用的是Valiant的近似学习模型(probably approximately correct learning,简称PAC)［13］.在该模型中,输入样本随机地从Σ*中选取,Σ*的概率分布D确定但未知.推断过程的成功与否由两个参数衡量:正确性参数ε和信心参数δ.这两个参数也同样作为输入提供给推断算法.一个成功的推断算法将以高概率(至少1-ε)寻找到具有最小错误率(小于δ)的文法.
+　　Valiant的概率模型得到广泛的应用,特别是在语音识别、信息检索和机器翻译等领域.在这些应用场合,语言由随机文法表示.对于一个通常文法,如果赋予每个产生式相应的概率,就得到一个随机文法.一个随机文法会相应地赋予其产生的每个串一个概率,从而定义了串集合的概率分布.与上下文无关文法相对应的是随机上下文无关文法(stochastic CFG,见称SCFG);与有限状态自动机相对应的则是隐马尔可夫模型(hidden Markov model,简称HMM).在后面的章节中将分别介绍相应于这些表示类的推断算法.
+3 CF文法类及其子类的推断方法
+　　抽象地说,推断设备进行推断时包含两个子过程,即猜测生成和猜测选择.所谓猜测即为可能的推断结果,比如对CF文法推断来说,一个猜测就是一个CF文法.其中猜测生成方法可以笼统地分为两类:枚举法和构造法.枚举法［14,15］是基于这样一个事实,即大部分重要的文法子类能有效地进行枚举.枚举法通过对所考虑的文法类中的文法进行枚举,由此构造猜测空间.在文献［15］中以自定义的文法复杂度的顺序进行上下文无关文法的枚举.其文法形式可以是Chomsky范式、Greibach范式或算符文法.为提高效率,它对每个文法做预处理,以避免花费过多的时间处理那些不可能被接受的文法,这类文法包括:与已处理过的某文法的结构相同(两个文法结构相同是指文法的非终结符之间可建立对应关系);无效文法(如从文法的某一非终结符出发,无法生成终结符串,或出现循环推导,如X...X,X∈N)等等.在文献［14］中以结构包含关系为偏序关系,进行文法枚举.对CFG G1和G2,文法G1结构包含于文法G2是指G1产生的语法树形状集合是G2的相应集合的子集.枚举法的优点有直观、彻底(因为其本质是穷尽所有可能解,所以从理论上可以找到最优解);其致命缺点是计算复杂性较高,很难用于解决实际问题.因此,枚举法文法推断的研究较少,本文不做进一步介绍.
+　　构造法是对样本进行系统化的分析,从样本实例中所包含的结构信息,构造出文法规则.通过枚举法或构造法生成猜测空间后,下一步就是在猜测空间中进行搜索,即推断设备从众多猜测中选出与当前样本集合协调的猜测（最优或较优猜测）.Angluin在其综述性文章［2］中列举了一些搜索方法.这些方法可能相互间有类似之处,它们的思想都是采用各种手段,尽可能快地找出最优或较优猜测.比如启发式方法是根据一系列的启发规则进行抉择,这些启发规则通常与待推断文法类的性质,或者与具体的应用领域有关.在此方法中,猜测空间中的猜测通常具有某种偏序关系,如通用性.比如文法G1比文法G2通用性弱是指L(G1)L(G2).于是,如果一个猜测H不能包含某些正例,则所有比H通用性弱的猜测就不予考虑.
+　　以上所述推断方法只是对抽象推断过程的分类,实际方法中猜测生成和猜测选择过程可能融合在一起或交替反复进行.下面我们介绍一些具体的文法推断方法,并且侧重于应用广泛且较难对付的文法类,即上下文无关文法类或其非平凡子类.
+3.1 从自然实例进行推断
+　　所谓自然实例就是指通常的句子串,它是相对于下面提到的结构化实例而言的.Solomonoff于1959年在文献［16］中提出一种文法推断方法,其思想是根据CF语言的“子字重复”性质,对每个正例样本w∈S+,首先从w中删除某个子串后得到串w′,询问w′是否为L的实例;若是,再将删除的子串重复多次后插入w′中得到串w″,再询问w″是否为L的实例,若是,则可推断出一个递归规则.比如,若多个形如anbn的串是L的实例,则L的文法中包含产生式形如:A→aAb.很显然,该方法对S+的选择要求较高:若S+太小,则会遗漏很多重要的递归规则;若S+太大,则计算复杂性令人不能忍受;同时该方法对某些CF文法是推断不出来的,如A→aAb|cAd［1］.事实上,Solomonoff并未给出严格的推断算法,更谈不上算法的实现,但他给了后来的研究者一些启发.
+　　另一个从自然实例推断的例子是B.Knobe和K.Knobe提出的方法［17］,这个方法实际上是一系列启发式方法的大杂烩,其计算复杂性较高.还有一个例子是Tanatsugu提出的构造性算法［18］,该算法从正例和反例出发,进行CF文法推断,其中包括3个过程:首先从正例样本中抽出自嵌套(self-embedding)结构;然后从给定的样本中推断出线性文法;最后用一定的方式从线性文法构造出CF文法.文献［18］中认为该算法适用于整个CF语言类,但未分析其计算复杂性.本文认为,该算法的主导方法是枚举,其实质非常类似于Solomonoff的方法.
+　　为了研究如何获取形式规约以及在构造新规约时如何复用已有规约,董韫美提出了一个基于复用的上下文无关文法推断方法［19～21］.该方法同样以自然实例作为推断出发点,其主要特点是:(1) 在进行复杂文法推断(即待推断的语言规模较大)时可复用已知语言;(2) 推断出的文法结构自然.复用的思想大大降低了文法推断的复杂度.
+3.2 从结构化实例进行推断
+　　基于CF文法推断问题的复杂性,许多作者在研究CF文法推断问题时,往往在提供样本实例的同时,附加额外的信息.
+　　Crespi-Reghizzi在文献［12］中介绍了一种方法,即从带括号的实例出发推断算符优先文法［23］.对一个CFG G,将G中每个产生式A→α代之以A→(α)得到文法G′,G′生成的实例串称为G的带括号实例串.
+　　带括号实例串中包含了实例串的轮廓信息.我们知道,对CFG来说,其文法结构决定其实例串的派生树形状,反过来说,其所有实例的派生树形状决定其文法结构.因此,对推断算法来说,最有效的信息就是实例串的轮廓(即派生树形状)信息.我们把这种将轮廓信息包含在内的实例串称为结构化实例.
+　　可以证明,一个CFG G的所有实例串对应的派生树组成的集合（记为DT(G)）是一个合理的树集合,所谓合理是指这个树集合可以由某个树自动机识别,而且即使DT(G)中各派生树的内部结点未被标志,该集合同样是合理树集合［24］.基于此,从结构化串推断CF文法的问题,可以归结为树自动机的识认问题.
+　　Angluin在文献［9］中提出一个有效的推断算法,通过等价问题和成员问题识认确定的有限自动机(DFA).Sakakibara在文献［24］中通过将Angluin对DFA的推断算法推广到树自动机,从而表明,从结构化样本实例出发,CF语言类可以通过结构化成员问题和结构化等价问题在多项式时间内识认.
+3.3 CF文法子类的推断
+　　鉴于CF文法推断问题的复杂性,许多研究者将注意力转向CF文法子类的研究,而且取得了可喜的成果.
+　　Ishizaka在文献［25］中给出关于简单确定文法的推断算法,表明:通过等价问题和成员问题,简单确定语言可以在多项式时间内识认.
+　　Yokomori在文献［26］中研究了简单确定语言的真子类――极简单语言的学习.得出结论:极简单语言类可以从正例出发,在多项式时间内识别.
+　　Takada在文献［27］中表明ELG(偶线性文法)的推断问题可以归结为DFA的推断问题,并给出了一个实现归结过程的多项式时间算法.作者认为,将一种文法类的推断问题归结为另一种相对简单的文法类的推断问题是一个自然且有效的方法.所以对Takada的方法不妨多费些笔墨.
+　　Takada的基本思想如下:设F为一个字母表,对于一个ELG G=(N,Σ,P,X),把P中每个产生式用F中字母唯一标志.设f=f1f2...fk∈F*,则XfGw表示从G的开始非终极符X开始,依次使用标志为f1,f2,...,fk的产生式,派生出串w.设C为字母表F上的一个语言,文法G在控制集C下产生的语言定义为:
+LC(G)={w∈Σ*|fGw,f∈C}.
+于是控制集C中一个句子对应着LC(G)中一个句子的派生过程.Takada证明:任何一个字母表Σ上的偶线性语言L,可以由Σ上的一个通用ELG G0在一个控制集C下产生,且C为正规语言.即对Σ上任一ELL L,有
+L=LC(G0)={w∈Σ*|X0fG0w,f∈C}.
+其中C为一正规语言,G0的定义为:
+G0=({X0},Σ,P0,X0)
+其中　　　　P0={X0→aX0b|a,b∈Σ}∪{X0→ab|a,b∈Σ}∪{X0→a|a∈Σ}∪{X0→ε}.
+3.4 遗传算法和神经网络技术用于文法推断
+　　从90年代初开始,文法推断的研究逐渐活跃起来,这一方面是受文法推断所展现的和潜在的应用前景所激励;另一方面是计算机科学中其他研究领域的进展给文法推断研究注入灵感.前文提到,文法推断问题的复杂性源于其庞大的猜测空间,计算机研究者很自然地考虑到将遗传算法搜索技术用于文法推断研究［29,30］;同样,由于某些神经网络与特定文法类在识别能力上具有某种等价关系,甚至可以设计出特定类型的神经网络,使其网络结构与文法规则具有一定对应关系,因此文法推断问题可以转化为神经网络的学习［31,32］.
+3.4.1 遗传式文法推断
+　　遗传算法是模拟生物进化过程的计算模型,其主要特点是:一是体现生物系统中生存竞争、优胜劣汰的原则;另一个是体现知识更新的随机性.遗传算法作为一种新的全局优化搜索算法, 以其简单通用、鲁棒性强、适于并行处理等特点,而被广泛采用.一个遗传算法包含如下要素:(1) 编码;(2) 初始群体的设定;(3) 适应度函数的设计;(4) 遗传操作设计;(5) 控制参数设定.CF文法推断遗传式算法(GIGA)同样包含这5个要素.
+　　所谓编码是指解空间中解（又称个体）的编码.CF文法推断问题的解就是一个完整的CF文法,因此,GIGA中的编码问题首先是文法的表示问题.我们知道,同一个CF语言可以用不同“形式”的CF文法表示.如自由形式,即每个产生形如A→α,α∈V*.若对α的格式做不同的限制,就会得到不同的范式.其中使用较多的是Chomsky范式,即每个产生式形如A→BC或A→a,其中A,B,C∈N,a∈Σ.确定文法的形式后,对文法的进一步编码大致分为两类.一类是直接编码,即每个解用其所有产生式连接在一起得到的字符串表示;另一类是间接编码,即根据一定的规则,将产生式转换为树、图、递归转移网络或0、1序列.
+　　由于遗传算法的群体型操作的需要,必须为遗传操作准备一个由若干可能解组成的初始群体.通常GIGA中初始群体是由随机产生的多个解组成,每个解又是由如下方法得到:首先分别假定终极符集合Σ′和非终极符集合N′,在Σ′和N′上随机产生k个产生式,当然每个产生式必须符合编码阶段选定的范式形式,这里k大于或等于目标文法中的产生式数,甚至要求Σ′和N′分别等价于目标文法的终极符集合和非终极符集合.
+　　适应度函数用于在进化过程中评估个体的优劣.GIGA中适应度函数一般描述个体（即一个CF文法）对样本的协调程度,也就是从对正例的接受情况和对反例的拒绝情况两方面综合评估.
+遗传操作一般包括杂交(crossover)和变异(mutation)两种.GIGA中杂交操作一般是将两产生式右部某位置的符号（即终极符或非终极符）进行交换;变异操作是将某产生式右部某位置的符号(终极符或非终极符）替换成别的符号(终极符或非终极符).
+　　控制参数设定包括设定群体大小（即每代处理的个体数量）以及从当前代生成下一代的个体时,当前代中个体分别进行杂交或变异的概率.
+　　从以上描述,我们可以看出遗传式文法推断方法有如下特点:(1) 推断的出发点包括正例和反例;(2) 最好能预先知道待获取文法的一些性质,如产生式数、终极符集合和非终极符集合;(3) 获取的文法一般是某种范式.
+3.4.2 神经网络技术用于文法推断
+　　神经网络(neural networks)是近年来人工智能的一个前沿研究领域.它具有如下特点:大规模并行结构;信息的分布存储和并行处理;良好的自适应性、自组织性和容错性;较强的学习、记忆、联想、识别能力.
+　　目前为止,将神经网络技术用于上下文无关语言学习的文献较少,相对较多的是用于正规语言的学习.由于RNN(recurrent neural network)与有限自动机（严格地说是与随机正规文法［32］）在识别能力上具有某种等价关系［33］,于是正规语言的学习转化为训练RNN［31,32］.神经网络用于文法推断的典型情形是:将通过正例和反例训练得到的神经网络作为分类器,用于判断任一串是正例还是反例.将神经网络用于文法推断的另一情形是,将神经网络的结构对应于文法结构,这种情况下,通过学习得到的神经网络可以转换成相应的文法［34］.
+4 随机文法推断
+　　最近几年文法推断研究侧重于随机文法类的推断.该趋势的根源一方面在于传统精确推断模型和方法的乏力;另一方面是在于随机模型和方法在电子工程的很多领域的有效应用.随机文法是在通常文法的基础上加入了概率模型.随机文法推断过程的实质是以概率估算为手段加速结构的推断过程,即用某种“合适”函数评估猜测的可能性,以此加速猜测空间的搜索过程,从而减低计算复杂性.这里的“合适”函数考虑的因素通常包括文法本身的复杂性(Feldman在文献［35］中给出了文法复杂性的一个形式定义)和文法与样本之间的吻合程度.
+　　Horning在其博士论文中提出一种枚举方法从概率样本(即每个样本串附带一个概率)极限识认SCFG［36］.其思想是搜索所有可能的猜测,用定义的“合适”函数进行取舍.类似的方法有文献［15］和文献［37］中所提到的方法.显然,由于枚举方法固有的特性,这些方法的效率很低.
+　　另一个较早的SCFG的推断方法是Cook等人提出的登山法［38］.他们首先定义了一种衡量串复杂度的方法,在此基础上定义文法的复杂度.其推断的大致过程是:首先从给定带概率样本构造一个初始文法(此文法的复杂度较高),然后根据一系列启发规则(如替换重复出现的串)对初始文法逐步求精,直至文法无法简化,最终获得一个复杂度最低的文法.与此方法类似,Stolcke等人［39］提出一个模型合并方法,其过程是:首先从给定样本构造初始文法;然后通过模型合并(如合并HMM中的状态或合并SCFG中的非终极符)进行文法推广.是否合并以及何时停止合并由文法与样本的吻合程度决定.
+　　以上方法的共同特点是侧重文法结构的推断.最近的研究则侧重概率参数的估计,即文法结构的推断过程代之以概率参数的估计过程.根据最大可能性原则,目前关于概率参数的估计算法主要有:HMM的前-后算法(forward-backward,简称F-B)［40］和SCFG的内-外算法(inside-outside,简称I-O)［41］.以HMM为例,从初始HMM(一个状态全联结HMM)开始,用F-B算法进行概率估算,使其达到局部最优;最后删去概率为0或概率很小的状态转换边,从而得到最终HMM的结构.下面分别介绍HMM和SCFG的参数估计过程.
+4.1 HMM
+　　一个HMM λ由一个五元组定义,即λ=(S,Σ,T,O,π),其中S为状态集合,为字母集,T为状态转换概率分布,O为字母输出概率分布,π为开始状态概率分布.即:S={s1,...,sn},si为λ中的状态;T={tij}|1≤i,j≤n},tij为从状态qi转换到qj的概率,即如果我们把时间序列t=1,2,3,...与状态转换联系起来,设t时刻所处状态为qt,则tij=Pr(qt=sj|qt-1=si);O={oj(a)|1≤j≤n,a∈Σ},oj(a)为在状态qj时输出字母a的概率;π={πi|1≤i≤n},πi为状态qi是开始状态的概率.
+　　HMM的参数估计可归结为下面3个基本问题(设当前HMM为λ):给定一个串w,
+　　1.计算w的概率Pr(w|λ);
+　　2.寻找最可能路径s=qi1,...,qil使Pr(s|w,λ)最大,Pr(s|w,λ)表示w被λ接受时其接受路径为s的概率;
+　　3.估计λ的参数(即T,O和π),使Pr(w|λ)最大.
+以上问题可用动态编程技术有效地解决.其中解决第2个问题的有效算法是Viterbi算法［42］;第3个问题的解决用F-B算法,其中用到F变量和B变量(w=a1...aT):F变量Fk(si)定义为Fk(si)=Pr(a1...ak,si|λ),即在时刻k(此时止输出字符序列为w的前缀串a1...ak)时所处状态为si的概率;B变量Bk(si)=Pr(ak+1...aT|si,λ),即λ从状态si始输出w后缀串ak+1...aT的概率.第1个问题的解决用到F变量,具体过程为:
+　　(1) 初始化:
+F1(si)=πioi(a1) 其中1≤i≤n;
+　　(2)归纳
+Fk+1(sj)=(Fk(si)tij)oj(ak+1) ,　　其中1≤j≤n;
+　　(3)终止
+Pr(w|λ)=FT(si).
+　　F-B算法是一种期望值最大化(expectation maximization,简称EM)在介绍其过程之前,先定义概率ξt(i,j),即在λ接受w的过程中,t时刻状态为si且t+1时刻状态为si的概率.
+ξt(i,j)=Pr(qt=si,qt+1=sj|w,λ).
+　　γt(i)表示在λ接受w的过程中t时刻所处状态为si的概率,即
+γt(i)=ξt(i,j).
+　　F-B算法处理第3个问题的过程为:
+　　(1) 设λold为初始模型.
+　　(2) 根据当前λold和给定串w,
+　　① 对任意状态对si,sj,计算并设置λnew中的tij的值为:
+
+　　② 对每个状态sj和输出字符a,计算并设置λnew中oj(a)的值为:
+
+　　(3) 用λnew替换λold,重复步骤(2)直至λold无大变化.
+　　Baum等人［43］证明:(1) 若初始λold正好是最可能模型(即期望值最大),则步骤(2)的结果是λold=λnew;(2)否则,λnew比λold可能性大,即Pr(w|λnew＞Pr(w|λold).
+4.2 随机上下文无关文法
+　　一个SCFG Gζ可以描述为一个CFG附带一个函数q,即Gζ=(G,q),这里,G=(N,Σ,P,X)是一个CFG,q是一个函数q:P→［0,1］且满足
+A∈N,q(A→α)=1.
+对于句子s,其相应的一个推导过程D(s)=(r1,...,rm)(ri∈P)的概率为
+Pr(s,D(s)|Gζ)=q(r1)...q(rm).
+对Σ*上的任一串w,w被G接受的概率为
+
+于是Pr(w|Gζ)(w∈Σ*)构成Σ*上的概率分布.
+　　SCFG的参数估计同样包含类似于HMM的3个基本问题:
+　　(1) 对于一个给定串w,计算由SCFG Gζ所赋予的概率Pr(w|Gζ);
+　　(2) 寻找Gζ关于w的最可能的派生树;
+　　(3) 参数估计(即估计Gζ中q),使Pr(w|Gζ)最大.
+前两个问题可以用与CKY和Earley分析方法类似的动态编程方法解决.解决第3个问题的标准方法是内-外(inside-outside,简称I-O)算法.其中I变量和O变量定义分别为(w=a1...a|w|):
+I(i,j,A)=Pr(Aai...aj|Gζ) A∈N,1≤i≤j≤|w|,
+O(i,j,A)=Pr(Sa1...ai-1Aaj+1...a|w||Gζ) ,
+5 文法推断的应用
+　　文法推断研究产生的动因之一是,构造人类学习自然语言的模型,尽管后来的研究者对能否达到这一目的表示怀疑.实际上,文法推断的主要应用是结构化模式识别(structural pattern recognition),在这些场合,某些特定的模式类用一个文法描述,而且手工构造这些文法非常困难,所以需要自动化或部分自动化构造这些文法.Crespi-Reghizzi等人提出用文法推断进行程序语言语法的设计［45］.
+　　近年来,随着越来越多的文法推断算法的出现,文法推断的应用越来越广泛.主要有信息检索、语音和自然语言处理、基因分析、数据采集和知识获取等.还有一些研究者直接用文法推断辅助文法构造［46～48］.
+6 文法推断的研究趋势
+　　本文介绍了文法推断的理论模型和推断方法,特别介绍了其表示类为上下文无关文法或其子类、随机上下文无关文法和隐马尔可夫模型的推断方法.我们可以把文法推断的研究成果归纳为两方面:理论方面侧重于文法推断抽象过程的研究,以建立合理的文法推断理论模型,并试图寻求在特定的抽象模型下,文法推断的可计算性和计算复杂性等理论问题的答案;实践方面则致力于寻找有效可行的文法推断方法,并试着将这些方法用于解决实际问题.文法推断研究的发展历程可归纳为:从文法推断理想框架(此框架下,推断算法是一个黑盒,或者说是完全自动化的,推断过程无需人的参与),到交互模型(此时加入人对推断过程的干预,以求降低计算复杂性),再到近似模型(降低对推断结果的要求,即对近似解或次优解的认可).
+　　可以说,到目前为止,虽然文法推断的研究取得了很大的进展,但它作为一个研究领域,还远不够成熟,甚至有一些基本概念还有待统一.已有研究工作或着眼于文法推断抽象过程和理论模型的研究;或着眼于某个具有特殊性质的特定文法类,虽然它能在某个已有理论模型下被有效推断（识认）,或它的推断问题能被归约为某些更简单文法类（如正规文法,可逆文法［49］)的推断问题,但实际应用环境很难限制到该文法类;还有一些研究者考虑附加更多的输入信息（如实例串的结构信息）,同样在实际应用环境中,这些信息往往很难提供.
+　　尽管如此,由于文法推断所展现的和潜在的应用,将会激发更多的研究者尝试从新的角度或用新的方法寻找实际可用的文法推断方法.特别是,随着计算机科学其他学科和领域的发展,研究者会尝试将一些新理论和新技术运用到文法推断中,如将遗传算法和神经网络用于文法推断就是典型的例子.同时我们认为,概率模型和方法将继续作为研究的主流.可以说,文法推断的研究将是一个有意义且富有挑战性的工作.
+致谢 本文工作是在董韫美院士的指导下完成的.其中多篇主要文献由肖勇先生查得,作者在此表示衷心感谢.
+注：本文研究得到国家自然科学基金、国家863高科技项目基金和国家“九五”科技攻关项目基金资助.
+本文通讯联系人:张瑞岭，北京 100080,中国科学院软件研究所计算机科学开放研究实验室
+作者简介：张瑞岭,1969年生,博士生,主要研究领域为形式规约,机器学习.
+作者单位：中国科学院软件研究所计算机科学开放研究实验室　北京 100080
+E-mail: zrl@ox.ios.ac.cn
+参考文献
+　1 Fu K S, Booth T R. Grammatical inference: introduction and servey(Part 1, Part 2). IEEE Transactions on Systems, Man and Cybernetics, 1975,SMC-5(1):95～111;1975,SMC-5(4):409～423
+　2 Angluin D, Smith C H. Inductive inference: theory and methods. Computing Surveys, 1983,15(3):237～269
+　3 Miclet L. Grammatical inference. In: Bunke H, Sanfeliu A eds. Syntactic and Structural Pattern Recognition――Theory and Applications. World Scientific, 1986. 237～290
+　4 Sakakibara Y. Grammatical inference: an old and new paradigm. Lecture Notes in Artificial Intelligence 997, 1995. 1～24
+　5 Solomaa A. Formal Languages. London: Academic Press, 1973
+　6 Chomsky N. Syntactic Structures. The Hague: Mouton and Co., 1957
+　7 Gold E M. Language identification in the limit. Information and Control, 1967,10(5):447～474
+　8 Gold E M. Complexity of automaton identification from given data. Information and Control, 1978,37(4):302～320
+　9 Angluin D. Learning regular sets from queries and counter-examples. Information and Computation, 1987,75(1):87～106
+10 Angluin D. Queries and concept learning. Machine Learning, 1988,2(3):319～342
+11 Angluin D. Negative results for equivalence queries. Machine Learning}, 1990,5:121～150
+12 Angluin D, Kharitonov M. When won't membership queries help? In: Proceedings of the 23rd Annual ACM Symposium on Theory of Computing. ACM Press, 1991. 444～454
+13 Valiant L G. A theory of learnable. Communications of the ACM, 1984,27:1134～1142
+14 Giordano J Y. Inference of context-free grammars by enumeration: structural containment as an ordering bias. LNAI 862, 1994. 212～221
+15 Wharton R M. Grammar enumeration and inference. Information and Control, 1977,33(3):253～272
+16 Solomonoff R J. A new method for discovering the grammars of phrase structure languages. Information Processing, New York: UNESCO, 1959. 285～290
+17 Knobe B, Knobe K. A method for inferring context-free grammars. Information and Control, 1976,31(2):129～146
+18 Tanatsugu K. A grammatical inference for context-free languages based on self-embedding. Bulletin of Informatics and Cybernetics, 1987,22(2):149～163
+19 董韫美.获取上下文无关文法的一种交互式算法.计算机学报,1996,19(3):168～173
+(Dong Yun-mei. An interactive algorithm for acquisition of context-free grammars. Chinese Journal of Computers, 1996,19(3):169～173)
+20 董韫美.基于复用的上下文无关文法推断.软件学报,1996,7(863专刊),178～181
+(Dong Yun-mei. Context-free grammatical inference based on reusing. Journal of Software, 1996,7(863 special issue):178～181)
+21 张瑞岭.一个上下文无关文法获取过程的设计和实现.软件学报,1998,9(8):601～605
+(Zhang Rui-ling. Design and implementation of a procedure for acquisition of context-free grammars. Journal of Software, 1998,9(8):601～605
+22 Crespi-Reghizzi S. An effective model for grammar inference. In: Gilchrist B ed. Information Processing 71, New York: Elsevier North-holland, 1972. 524～529
+23 Aho A V, Sethi R, Ullman J D. Compilers: Principles, Techniques and Tools. MA, Reading: Addison-Wesley, 1986
+24 Sakakibara Y. Learning context-free grammars from structural data in polynomial time. Theoretical Computer Science, 1990,76(2):223～242
+25 Ishizaka H. Polynomial time learnability of simple deterministic languages. Machine Learning, 1990,5(2):151～164
+26 Yokomori T. Polynomial-time learning of very simple grammars from positive data. In: Proceedings of the 4th Workshop on Computational Learning Theory(COLT'91). Morgan Kaufmann, 1991. 213～227
+27 Takada Y. Grammatical inference for even linear languages based on control sets. Information Processing Letters, 1988,28(4):193～199
+28 Sempere J M, Garcia P. A characterization of even linear languages and its application to the learning problem. LNAI 862, 1994. 38～44
+29 Dupont P. Regular grammatical inference from positive and negative samples by genetic search: the GIG method. LNAI 862, 1994. 236～245
+30 Wyard P. Representational issues for context-free grammar induction using genetic algorithms. LNAI 862, 1994. 222～235
+31 Alquezar R, Sanfeliu A. A hybrid connectionist-symbolic approach to regular grammatical inference based on neural learning and hierarchical clustering. In: Carrasco R C, Oncina J eds. LNAI 862, Berlin: Springer-Verlag, 1994. 203～211
+32 Carrasco R C, Forcada M L, Santamaria L. Inferring stochastic regular grammars with recurrent neural networks. In: Miclet L, de La Higuera C eds. LNAI 1147, Berlin: Springer-Verlag, 1997. 274～281
+33 Cleermans A, Servan-Schreiber D, McClelland J L. Finite-state automata and simple recurrent networks. Neural Computation 1, 1989. 372～381
+34 Roques M. Dynamic grammatical representations in guided propagation networks. LNAI 862, 1994. 189～202
+35 Feldman J. Grammatical inference and complexity. Information and Control, 1972,2(3):244～262
+36 Horning J J. A study of grammatical inference ［Ph.D. Thesis］. Stanford University, August 1969
+37 Van der Mude A, Walker A. On the inference of stochastic regular grammars. Information and Control, 1978,2(5):310～329
+38 Cook C M et al. Grammatical inference by hill-climbing. Information Sciences, 1976,2(1):59～80
+39 Stolcke A, Omohundro S. Inducing probabilistic grammars by Bayesian model merging. LNAI 862, 1994. 106～118
+40 Rabiner L R. A tutorial on hidden Markov models and selected applications in speech recognition. Proceedings of IEEE, 1989,77(2):257～286
+41 Lari K, Young S J. The estimation of stochastic context-free grammars using the inside-outside algorithm. Computer Speech and Language, 1990,4(1):35～56
+42 Viterbi A J. Error bounds for convolutional codes and anasymptotically optimal decoding algorithm. IEEE Transactions on Information Theory, 1967,IT-13(2):260～269
+43 Baum L E, Sell G R. Growth functions for transformations on manifolds. Pacific Journal of Mathematics, 1968,27(2):211～227
+44 Sakakibara Y et al. Stochastic context-free grammars for tRNA modeling. Nucleic Acids Research, 1994,22(1):5112～5120
+45 Crespi-Reghizzi S, Melkanoff M A, Lichten L. The use of grammatical inference for designing programming language. Journal of the ACM, 1973,16(2):83～90
+46 Young S J, Shih H H. Computer assisted grammar construction. LNAI 862, 1994. 282～290
+47 Dong Yun-mei. Collection of SAQ Report no.1～7. Technical Report no. ISCAS-LCS-95-09, Laboratory of Computer Science, Institute of Software, The Chinese Academy of Sciences, Beijing, August 1995
+48 DONG Yun-mei et al. Collection of SAQ Report no.8～16. Technical Report no. ISCAS-LCS-96-1, Laboratory of Computer Science, Institute of Software, The Chinese Academy of Sciences, Beijing, March 1996
+49 Angluin D. Inference of reversible languages. Journal of the ACM, 1982,29(3):741～765
+本文1998-09-29收到原稿,1999-03-15收到修改稿

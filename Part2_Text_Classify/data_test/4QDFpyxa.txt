@@ -1,0 +1,106 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第7期　No.7 Vol.10 1999
+
+
+
+基于边界表示的体抽壳算法
+左　征　胡事民　孙家广
+　　摘要　形体的抽壳是构造具有薄壁外壳形状物体的一种有效方法.文章基于边界表示的正则形体,给出体抽壳运算的数学定义,并提出实现体抽壳运算的算法.该算法把形体的三维运算转化到曲面的参数域上,进行二维环之间的合并运算,从而降低了问题的复杂度.
+　　关键词　CAD/CAM系统,抽壳,边界表示,实体造型.
+　　中图法分类号　TP391
+A Shell Algorithm for Solid on Boundary Representation
+ZUO Zheng HU Shi-min SUN Jia-guang
+(Department of Computer Science and Technology Tsinghua University Beijing 100084)
+　　Abstract　The shell operation of solid is an effective method to construct a solid with shape of thin shell. In this paper, the authors describe the mathematical definition of shell operation on regular solid with boundary representation, and present an algorithm for shell operation. The algorithm implements the solid's 3D operation by 2D merging operation of loops in surface's parametric region. So the complexity of problem is reduced.
+　　Key words　CAD/CAM system, shell, boundary representation, solid modeling.
+　　在CAD/CAM领域,有关实体造型技术的研究一直是非常重要的课题.实体造型的目标是将物体模型的形状在计算机中明确地表示出来.在实体造型中,两类最重要的实体表示方法是构造的实体几何(CSG)法和边界表示(B-Rep)法,许多实体造型系统都是以这两种表示方法为基础而构造的.
+　　在一个实际的造型系统中,除了系统内部应该具备实体的表示能力以外,还应该给用户提供一些直接而有效的造型方法.如,拉伸、旋转、扫描、蒙面等方法使用户可以构造出各种基本体素,体素拼合(集合运算)方法可以完成形体的拼接和分割,还有一些局部造型的功能可以完成对形体形状的局部修改.
+　　在机械产品的设计中,存在一类具有薄壁外壳形状的物体,如各种注塑件类、模具类零件,提供一种抽壳运算是构造这类形状物体的好方法.在构造这类形体时,先构造出外表面为所要求形状的形体,然后通过抽壳运算挖去形体的内部,形成中空的具有薄壁结构且外部形状符合要求的形体.
+　　本文首先给出了基于边界表示的形体抽壳运算的数学定义和与算法相关的一些术语,在此基础上描述了抽壳算法的流程,并给出了由具体实现中得到的实例.在抽壳算法中要求出曲面的offset曲面［1,2］,要进行曲面之间的求交运算［3,4］,关于这些运算有许多专门的研究成果.在计算保留面的offset面和非保留面的环的步骤中,运用了一些形体集合运算算法中的技术［5,6］.由于在曲面的参数域上定义界定曲面边界的环结构,环的生成也是在曲面的参数域上进行,算法中采用了类似Gardan-Perrin的三维集合运算的处理方法［7］,把问题的复杂度由三维降低到二维,用Atherton-Weller的二维集合运算的思想构造出面的环结构.
+1　体抽壳运算的定义
+　　这里的体抽壳运算定义在边界表示的正则形体之上.假设OR3是三维空间中的正则形体,O的边界是一个面集,记为F(O).
+　　首先定义空间中任一点P到形体O某一边界面F(F是有界的)的距离：
+　　　　　　　　　　LF(P)=min{｜PQ｜,Q∈F}.
+　　上面规定的距离为非负数,没有考虑面F的两面中哪一面指向形体外部.如果规定在面F上任取一点Q,其法向量NF(Q)为指向体外一侧,则可以规定点P到边界面F的有向距离：
+　　　　　
+　　对于进行抽壳运算的形体O,其边界面集F(O)分为两类:F(O)=FR(O)∪FD(O).FR(O)中的面称为保留面,该类面的有效区域在结果形体中保持不变；FD(O)中的面称为非保留面,该类面的有效区域在结果形体中需重新计算.对于FR(O)中的每一个保留面F,规定一个偏移厚度h(F)>0.
+　　有两种方向上的抽壳：向内延伸式和向外延伸式.向内延伸式抽壳定义为
+　　　　　　　　Shell(O)={P｜存在面F∈FR(O),使得-h(F)≤DF(P)≤0} .
+　　向外延伸式抽壳定义为
+　　　　　　　　Shell(O)={P｜存在面F∈FR(O),使得0≤DF(P)≤h(F)} .
+　　为了使问题简单化,下面的讨论和给出的算法都针对向内抽壳进行.对于向外抽壳的情况,算法是类似的,只需在某些步骤作出调整.
+　　抽壳操作是一种实用性很强的造型方法,如果严格按照上面给出的抽壳运算的数学定义,在某些情况下,当偏移厚度太大时,形体的抽壳结果不存在或很不符合实际情况.例如,边长为a的正方体,如果取其中一个面为非保留面,其余5个面为保留面,它们的偏移厚度相同,为h,当h>a/2时,按定义,抽壳结果仍是这个正方体.但在实际应用中,不应出现这种情况,所以下面的算法是假定在偏移厚度不太大的情况下给出的.
+2　算法中的术语描述
+　　形体采用边界表示法(B-Rep)表示.形体O由给出的O的边界面集F(O)确定.每一个面一般采用参数曲面定义其形状,在参数域内给定环(一个外环和任意多个内环)来确定面的有效区域.环是由有向边围成的封闭区域,规定外环为逆时针方向,内环为顺时针方向.
+　　在定义抽壳运算时,将形体边界面集F(O)划分为保留面FR(O)和非保留面FD(O)两大类.保留面的offset面将成为结果形体边界的一部分.面F的offset面记为offset(F,h)(其中h为偏移厚度),所有保留面FR(O)的offset面构成的面集记为FO(O).
+　　我们可以得出结论：在偏移厚度不太大时,边界表示的形体O的抽壳结果Shell(O)的边界面集由FR(O),FD(O),FO(O)构成,其中FR(O)中的面的环保持不变,FD(O),FO(O)中的面的环需重新计算.抽壳算法的重点在于计算FD(O)和FO(O)中的面的环结构.
+　　对形体O的任一边E,由于O为正则形体,E必有两个邻面F1和F2.如F1∈FR(O),则取F′1=offset(F1,h(F1)),否则F1∈FD(O),取F′1=F1.同样可得F′2.F′1与F′2的交线形成的边E′称为边E的offset边,记为E′＝offset(E).
+　　对形体O的任一面F上的环L(外环或内环),L的每一边E的offset边E′围成的环L′称为环L的offset环,记为L′=offset(L).
+3　体抽壳算法
+3.1 算法基本思想
+　　根据抽壳运算的定义,在偏移厚度不太大的情况下,正则形体经过抽壳之后,在保留面处要形成一个指定厚度的薄壁,薄壁的两侧为保留面和它的offset面.相应地,在结果形体中就会形成一个对应的面,该面的形状为表示保留面的曲面的offset曲面,界定该面区域的环是保留面的环的offset环.在非保留面处,抽壳运算使该面的有效部分被挖去一块,挖去的部分由该面的环的offset环确定,需要在参数域上对该面原有的环和offset环作归并之后,确定抽壳后非保留面的有效环区域.
+3.2 算法描述
+　　PROCEDURE MainProcedure(O,ShellO)
+　　BEGIN
+　　　FOR each face F in FR(O), DO calculate F′=offset(F,h(F)); ENDFOR
+　　　FOR each edge E of O, DO calculate E′=offset(E); ENDFOR
+　　　FOR each loop L of each face, DO calculate L′=offset(L); ENDFOR
+　　　RemoveFaceProcessing(FaceSet1);
+　　　ReserveFaceProcessing(FaceSet2);
+　　　ResultBodyCreation(FaceSet1, FaceSet2, ShellO);
+　　END
+　　在上述算法中,第1步求面的offset面,只是求出表示面的形状的参数曲面的offset曲面,而offset面的环将在过程ReserveFaceProcessing中求出.第2步中求每一边E的offset边,根据offset边的定义,要用E的两个邻面或它们的offset面求交,求出的交线在形成边结构之前要进行裁剪运算.如图1所示,裁剪的依据是利用E的翼边表示方法中的上邻面和下邻面,用上下两邻面或其offset面(由该面是否为非保留面决定)裁去交线的多余部分,保留两面之间的部分形成边.这样,在第3步计算环的offset环时,只要按原环各边的顺序,依次把各边的offset边取出,构成环即可.
+　　过程ResultBodyCreation由计算出的两个面集合拼合成一个体,在这个过程中利用了面集合中面之间共边的信息,从面集合中任取一面开始,把与这个面相连接的所有面取出,构成一个体.如果拼成一个体后剩余面集合非空,则说明抽壳运算使原体形成了分离的几个部分,可以用同样的方法构造出所有的结果形体.
+　　过程RemoveFaceProcessing对非保留面进行处理,ReserveFaceProcessing对保留面进行处理,这两个过程是抽壳算法的重点,可以描述如下.
+　　PROCEDURE ReserveFaceProcessing(FaceSet)
+　　BEGIN
+　　　FaceSet:=;
+　　　FOR each face F in FD(O) DO
+　　　　add all F's loop to LoopSet1;
+　　　　add all LoopSet1's loop's offset loop to LoopSet2;
+　　　　get F's offset face F′;
+　　　　FormFace(F′,LoopSet2,NewFaceSet);
+　　　　FaceSet:=FaceSet∪NewFaceSet∪{F};
+　　　ENDFOR
+　　END
+　　
+　　PROCEDURE RemoveFaceProcessing(FaceSet)
+　　BEGIN
+　　　FaceSet:=;
+　　　　FOR each face F in FD(O) DO
+　　　　　add all F's loop to LoopSet1;
+　　　　　add all LoopSet1's loop's offset loop to LoopSet2;
+　　　　　MergeRemoveFaceLoop(LoopSet1,LoopSet2,LoopSet3);
+　　　　　FormFace(F,LoopSet3,NewFaceSet);
+　　　　　FaceSet:=FaceSet∪NewFaceSet;
+　　　ENDFOR
+　　END
+　　这两个算法的实现过程都是对原体的每个面的每个环,取出计算出的offset环,经过环之间的运算形成一些环组(其中的每一个环组都是一个外环中包含任意个内环的形式)的集合,再由原面的参数曲面形式及环组集合来形成面集.形成面时要对环的方向作判断,对于外环是顺时针方向的情况,要对形成的面的法向取反,并把环方向改为逆时针.在环之间的运算中,对非保留面,要对其初始环和offset环进行归并,归并过程是一个难点.由于初始环的边保存了在曲面参数域中的表示,offset环的边由求交运算产生,同样存在曲面参数域中的表示,因而可以在曲面的参数域上进行环的归并,其中的运算都是二维运算.下面详细说明该归并过程.
+　　第1步是对offset环作预处理.使每个环与其初始环方向相反,即外环的offset环为顺时针方向,内环的offset环为逆时针方向.第2步为边边求交.初始环与offset环两两之间进行边边求交,在交点处将边分割,如有两边重合,则删除这两条边.经过这一步骤之后,形成一些在公共点处连接在一起的有向边.第3步,搜索边形成环.从某一顶点出发,顺着边行进,遇到某个顶点发出多条边时,选择离上一边方向顺时针旋转最近的一边,直至回到初始顶点处,就形成了一个环,如此可形成多个互不相交(在边端点处相交除外)的环.第4步,环排序.根据环的包含关系,如A环包含B环,则B环成为A环的子环.排序后形成一个树形结构,取树形结构中奇数层上的环作为外环,它的子环作为内环,形成一个环组,由此可得到多个环组,作为归并的结果.图2是环归并过程的实例.
+
+
+第1步：初始环及其offset环第2步：边边求交和边分割
+
+第3步：搜索边形成3个环第4步：排序形成两个环组
+图2　非保留面环的归并步骤
+
+
+4 结论和实例
+　　本文的体抽壳算法基于边界表示的正则形体,算法的目的是构造边界表示形体经抽壳运算后的边界表示,算法的重点在于构造结果形体的边界面的形状和界定面的有效范围的环.此算法所采用方法的基本思想是，逐级构造体的各几何元素的offset元素,从边的offset边、环的offset环到面的offset面,通过二维区域上环的归并来构造结果形体的环.算法已经在一个通用的实体造型系统中实现,图3是一个体经抽壳运算的实例.
+　　
+F1和F2为非保留面
+图3　体抽壳运算的实例
+　　本文研究得到国家自然科学基金资助.作者左征,1971年生,博士生,主要研究领域为计算机辅助几何设计,计算机图形学.胡事民,1968年生,博士后,讲师,主要研究领域为计算机辅助设计,计算机图形学,分形几何及应用.孙家广,1946年生,教授,博士生导师,主要研究领域为计算机图形学,CAD/CAM,PDMS,CIMS.
+　　本文通讯联系人:左征,北京100084,清华大学计算机科学与技术系
+　　作者单位：清华大学计算机科学与技术系　北京　100084
+参考文献
+　1　Farouki R T. The approximation of non-degenerate offset surfaces. Computer Aided Geometric Design, 1986,3(1):15～43
+　2　Pham B. Offset curves and surfaces: a brief survey. Computer-Aided Design, 1992,24(4):223～229
+　3　Barnhill R E, Kersey S N. A marching method for parametric surface/surface intersection. Computer Aided Geometric Design, 1990,7(1～4):257～280
+　4　Barnhill R E, Farin G, Jordan M et al. Surface/surface intersection. Computer Aided Geometric Design, 1987,4(1,2):3～16
+　5　Krishnan S, Manocha D. Efficient representations and techniques for computing B-Reps of CSG models with NURBS primitives. In: John E ed. Set-theoretic Solid Modeling Techniques and Applications (CSG'96 Conference). Winchester, UK: Information Geometers Ltd., 1996. 101～122
+　6　Chiyokura Hiroaki, Kimura Fumihiko. Design of solids with free-form surfaces. Computer Graphics, 1983,17(3):289～298
+　7　Gardan Y, Perrin E. An algorithm reducing 3D Boolean operations to a 2D problem: concepts and results. Computer-Aided Design, 1996,28(4):277～287
+1998-04-29收到原稿 
+1998-08-03收到修改稿

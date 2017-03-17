@@ -1,0 +1,173 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第7期　No.7 Vol.10 1999
+
+
+
+多agent系统的一种交互策略模型
+李　毅　罗　翊　石纯一
+　　摘要　在多agent系统(MAS)中,通信交互是agent实现协作的主要途径.文章从语义层的角度对agent间通信交互过程进行分析,将agent的思维状态BDI(belief,desire,intention)模型引入通信交互过程,提出一种交互策略模型,支持在基本交互行为之上的多种类型的协商交互,以解决agent间的信知、行动等方面的冲突.与以往的研究中的辩论协商等方法相比,该策略模型可以实现基于场景的灵活交互,更具实用性.
+　　关键词　多agent系统,交互策略,思维状态,协作,协商.
+　　中图法分类号　TP18
+An Interactive Strategy Model of Multi-agent System
+LI Yi LUO Yi SHI Chun-yi
+(Department of Computer Science and Technology Tsinghua University Beijing 100084)
+　　Abstract　 Interactive communication is the main method to realize cooperation in multi-agent systems. In this paper, from the semantic perspective, the authors investigate the interactive communication procedure of multi-agent systems and incorporate the BDI (belief, desire, intention) model, the agent's mental state mode, into the interactive communication procedure. They present a model concerning the interactive strategy, which supports a variety of arranging interaction on basic interactive action to solve the conflicts of desires or intentions among agents. Compared with former other researches, such as negotiation through argumentation method, this strategy model can realize the flexible interactive communication based on different scenarios, and it is more practical.
+　　Key words　Multi-agent system, interactive strategy, mental state, cooperation, negotiation.
+　　以往对于多agent系统(MAS)中Agent交互的研究可分为通信机制和协商方法两个主要部分,但二者间缺乏联系,缺乏通用性.在MAS系统的设计中,若要使agent能从交换数据中获取语义信息,需对通信交互的内容与方式有新的理解.首先,通信不应是由协议决定的被动的行为,而是在通信所发生的场景中,一个agent要使另一个agent接受某种信知(belief)或某种意图(intention)的行为.对每次通信具体作出什么回答,应该由交互目标、对另一个agent的信知的了解和自身所拥有的各种信知和手段等来综合决定［1］.这样的交互模型可以适用于灵活的交互场景,并为基于目标需求(desire)的通信方式提供手段.其次,交互是按一定的次序来共享双方的信知、了解双方的意图(intention)、调整各自规划,以获取各自的优化解的过程.只要表达出信知、意图和规划调整的传递与询问,就可以表达出相当多的交互过程,其适用范围只受限于agent为达到其目的而采取交互行动的规划能力.基于这些考虑,本文提出了一种多agent系统交互策略模型.
+1 通信交互作用的条件
+1.1 通信的作用
+　　一个agent对环境变化进行预测时,要考虑到其他agent的活动一般是不受自己控制,难于预测的.为了更好地预测环境变迁和增强自身的行动能力、实现自身需求,agent间必须进行通信.通信能力不是理性agent的必要特性,是agent社会性的体现.通信动作也是一种特定的规划行动,是在完成agent需求的过程中预定进行的.从语义层来看,通信交互就是agent间思维状态的传递.
+　　从agent间相互关系的角度看,通信的作用有：
+　　.　预测：当agent a由通信得知agent b的信知后可以推断agent b的行动,尤其是当agent a得知agent b的意图和需求后,可以更直接地了解agent b将进行的动作.
+　　.　控制：将agent a的规划中应由agent b完成的动作意图传给agent b,agent b若接受,则其行动将受到agent a规划的制约.agent a在特定动作上控制了agent b.
+　　从BDI看,通信的作用有：
+　　.　信知(belief)：知识共享,扩大agent的观察范围、知识库容量、弥补单个agent推理能力的不足.
+　　.　需求(desire)：了解其他agent的需求,从整体上预测某个agent的行动；采纳其他agent的需求,可以进行任务协作.
+　　.　意图(intention)：了解其他agent的意图,具体预测某个agent的行动；采纳其他agent的意图,可以进行规划协作(结果共享协作).
+1.2 通信的条件
+　　通信的产生和完成必须有一定的客观条件,如通信载体的存在等因素.同时,通信中必须有进行信息交流的显式的意图存在.不管通信媒体是语言还是行动,发送者都知道自己的意图会被对方接收到,并将会利用这一点来进行自身的规划和行动.通信的接收方也必须有接收信息的需求存在.
+　　通信也是两个agent之间发生的群体行为,不能仅由一个agent对信息发送就完全代表.通信的发生与实现,依赖于agent对世界中存在着类似于自己、遵循相同通信处理方式和思维方式的其他agent的信知.
+　　单方面的信息获取仅仅是agent的观察行为,例如规划识别［2］.若agent a进行某动作造成的局势被另一个agent观察到,并据此进行协同,虽然它们之间有信息的传递并产生了协作的结果,但这对于发起行动的a而言完全不在其预测之中,对它的规划没有产生任何影响.因而在考虑a的思维状态变迁时,不将此看作通信行为,而只是意外事件,是需要对规划进行修正的因素.有趣的是,一旦这种单方面观察被另一方发觉,而故意提供特别的信息,则成为通信行为,是接收者不知道发送者是有意发送的通信.
+　　有通信能力的agent,在规划生成和执行过程中的通信行为应是自然触发的,由自己对其他agent的意图的要求而引起,发出合作请求的通迅行动是使此意图成立的前提事件.详细地说,需由发送方发出请求,并获得肯定答复后,此事件才具有肯定性,而在获得肯定答复前,只是假设.在通信协作事件的哪种真值下可以作进一步的推导,由agent的合作特性决定,一种是只由己方的发送行动确定意图为肯定值,并从此开始进行其他动作的规划；另一种是在观察到对方的肯定答复后,确定意图为肯定值,并开始进行其他动作的规划.
+2 通信过程
+　　现实世界中两个agent间通信的过程如下：
+　　(1) 发送方sender将自己的思想翻译成通信所用语言的格式；
+　　(2) sender将语言格式加载到通信传播载体,如声音、文字和图像；
+　　(3) 传播载体到达接收方receiver；
+　　(4) receiver读取载体中的语言代码；
+　　(5) receiver在思维空间中将语言代码按其格式翻译为思想,从而熟悉sender的思维状态.
+　　在通信过程中涉及两类对象：参与通信的agent和传播载体media.传播载体的行为由自然规则约束,它一旦离开发送方,就不再完全由发送方控制.在本文的agent世界模型中,将载体作为一种外在于agent的结构,agent可以创建它、发送它,但不能完全控制它的传送,更不能控制它在到达接收方后所受到的处理.在动态开放环境中的通信,对发送方而言,其真正的通信行为仅限于对载体的处理.
+　　agent进行通信就是改变信息载体,将载体发送到接收agent的可观察环境中.采用这种通信观点可以拓展通信的形式,而不仅限于语言通信.例如,在默契式的协作中,协作双方并没有直接、明确的请求与应答,但在双方的行为中仍然有通信的动作.a的行动显露出其行为意图,而b则从a的意图中进一步推断出a对b的期待.在这种过程中,通信交换的信息附着于b可以观察到的事件中,而通信的效果更多地来自于b对此信息的解释.从这种角度看,“没有通信的协作”中也是有通信的,不过所交换的不是直接的预言信息,而是隐含在各自行动中的信息内涵.对其他agent的规划大多来自于b对此信息的解释.从这种角度看,“没有通信的协作”中也是有通信的,不过所交换的不是直接的语言信息,而是隐含在各自行动中的信息内涵.对其他agent的规划识别显然属于此类通信.
+2.1　信息发送
+　　条件：agent a知道有可以进行通信的agent b存在,知道b可以理解哪些语言或行为模式M,有需要传递的信息I*.
+　　(1) 生成通信载体C＝M(I*).C可能是一种语言实体,也可能是一组行动规划.
+　　(2) 若C是语言实体,将其发送的b的接收环境Rcv(b).
+　　(3) 若C是行动规划,则按规划行动机制执行.
+　　(4) 在a的观察信息中记录信息I*为sent状态.
+2.2 信息接收
+　　对接收者b而言,接收通信是它的观察活动的一部分.与通信发送相同,接收者先要知道有可以通信的agent a存在、知道a所使用的语言或行动模式.接收方有一个接收环境Rcv(b),具有与b的思维状态不同的特点.交流时,通信载体来往于发、收方的环境之间,接收环境是其他agent可以直接影响或控制的(通过传播载体).接收环境间可以有重叠、共享,直至所有agent的接收环境都完全重叠.如在计算机网络中的总线结构就是完全共享的接收环境.任一结点机发给另一结点机的信息在同一网段内的机器实际上都可以获取.部分共享的接收环境的例子有共享存储区的多个UNIX进程.完全隔离的接收环境的例子有UNIX中的IPC通信的信箱方式.
+　　可规定几种接收环境,以描述agent的通信接收结构.
+　　接收环境：Rcv(a)＝{env-elm｜env-elm的状态变化都可以被a观察到}；
+　　全局接收环境：GRE(a)＝{env-elm｜env-elm∈Rcv(a)∧b,env-elm∈Rcv(b)}；
+　　全局接收环境是所有agent共享的接收环境.发往全局环境中的信息将会被所有agent接收到.
+　　群组接收环境：
+　　　　TRE(a,TEAM)＝{env-elm｜env-elm∈Rcv(a)∧b∈TEAM,env-elm∈Rcv(b)}.
+　　群组接收环境在某个群组内部共享,发往群组环境中的信息将会被群组内所有agent接收到,但不一定会被群组外的agent接收到.
+　　群组独占接收环境：
+　　TPRE(a,TEAM)＝{env-elm｜env-elm∈Rcv(a)∧b∈TEAM,env-elm∈Rcv(b)∧TEAM,env-elmRcv(b)}.
+　　群组独占接收环境在某个群组内部共享,发往群组环境中的信息将会被群组内所有agent接收到,但不会被群组外的agent接收到.
+　　独占接收环境：
+　　　　　　PRE(a)＝{env-elm｜env-elm∈Rcv(a)∧b,env-elmRcv(b)}.
+　　独占接收环境是agent的私有接收区,不能被其他agent访问.
+　　在MAS中,这4类接收环境的集合决定了系统的通信拓扑中接收侧的结构.
+　　例如：
+　　Rcv(a)＝GRE(a),
+　　Rcv(b)＝GRE(b)∪TRE(b,{b,d})＝GRE(a)∪TRE(b,{b,d}),
+　　Rcv(c)＝GRE(c)∪TRE(c,{c,d})＝GRE(a)∪TRE(c,{c,d}),
+　　Rcv(d)＝GRE(d)∪TRE(d,{b,d})∪TRE(d,{c,d})∪PRE(d)＝GRE(a)∪TRE(d,{b,d})∪TRE(d,{c,d})∪PRE(d),
+则a,b,c,d的接收范围如图1所示.d有最大的接收范围.
+
+图1　agent接收环境示意图
+　　对于通信发送方而言,即使其发送环境与接收方的接收环境不重叠,通信载体也可以在环境中移动.因此可以假定在a知道b的存在和b的某部分接收环境元素时,就可以把信息发送到b的环境中.在任一时刻,系统中各agent关于其他agent的存在及接收环境元素的信息就决定了系统通信拓扑图在发送侧的结构,而接收环境的共享情况决定了接收侧的结构.它们共同决定了系统通信结构,即信息可以传递给哪些agent、发给某个agent的哪些信息可以同时被哪些agent收到.
+　　我们认为这样的通信概念作为MAS通信基础是较灵活的,而且可以支持各种组织类型.
+　　接收过程：已知a存在且a可用模式M,有环境Rcv(b).
+　　(1) 观察Rcv(b)中是否有新的传输载体C出现.
+　　(2) 若有载体C∈Rcv(b),则进行转译：选择合适的模式M；译出信息含义I*=M-1(C).
+　　(3) 在观察信知中加入Send(a,t,I*).
+　　(4) 根据对发送者的信任函数Trust(b,a)决定是否将I*加入观察信知.
+2.3 通信的代价
+　　通信的代价是指发送方使接收方接受自己的信知或意图所付出的效用.
+　　在通信过程中,存在着接收与接受两个阶段,通信的直接结果是接受者知道其他agent的信知,但这并不等于agent采纳此信知.agent如何根据其他agent的信知和意图来修改自己的信知和意图就决定了agent的社会行为方式：
+　　　　　a对b完全信任TRUST(a,b) iff BEL (a,t,BEL(b,t,prop))BEL(a,t,prop).
+　　　　　a对b完全服从OBEY(a,b) iff BEL (a,t,INT(b,t,prop))INT(a,t,prop).
+　　一般而言,agent将根据一定的标准来决定信知和意图采纳.
+　　通信代价由接收代价和接受代价构成.接收代价取决于通信载体的形式、在特定载体下的信道质量和通信量.为降低接收代价,可以进行通信数据压缩.接受代价取决于通信双方的信任程度以及接收方对通信载体所含信息的理解程度,即信息转译中的失真度.为了降低接受代价,可以采用多样化的通信载体形式,以提高接收方可能的理解程度.
+3　通信内容与合作策略
+　　按agent的思维状态划分,通信内容可以分为信知和需求两个基本类型.
+3.1　信知传递
+　　信知的传递在一般情况下是agent间的一种互助行为,因为当发送者将某条信知发送给另一个agent a时,实际上就扩展了接收者a的观察能力和范围,对a的活动会起到支持与帮助作用.在某些情况下,尤其是发送出的信知与接收方的信知具有逻辑冲突时,信知的传递就成为双方辩论过程的一部分(如due process［3］),是为了改变另一方的信知,并进而改变其行动方案和意图等.信知传递对agent行为的影响是间接的、不明显的,但在多agent群体的演化中却起着重要的作用.
+3.2　意图传递
+　　意图的传递对agent行为具有直接的影响,可用来进行agent间的行为协调.意图在agent思维状态中表达为期望中的世界状态,具有与观察信知相同的表达方式,可以与信知一样地进行传递.意图传递到某agent a后,a应决定是否将其作为自己的意图并着手进行规划和行动.
+　　从自主agent的自利原则出发,agent采纳其他agent的意图应有助于提高自己的效用.在agent以何种标准选择可接受的意图上会有多种选择.
+　　agent采纳其他agent意图的标准,最简单的是无条件接受,这是DPS(distributed problem solving)协作型agent的风格.可表达为Accept(a,desire-sent)＝TRUE.在层次型组织结构中,agent之间划分出类别,下属agent听从上级agent的任务指派.此时有accept(a,desire-sent)＝True,if Priority(sender(desire-sent))＞Priority(a).在合同式协作中,对每个任务都有相应的报酬Pay,而agent是否接受一个任务则由报酬和消耗的差别而定.accept(a,desire-sent)＝True,iff Pay(desire-sent)＞Cost(Execute(desire-sent).在有多个意图可以选择接受时,则选取Pay-Cost的最大值所对应的意图.
+3.3　合作规划
+　　在一个agent a的规划过程中,可以假定由其他agent完成部分行动.按a的推理,这些行动与a所预期的未来状态相结合,可以生成a所意图达到的状态,为完成到达目标的规划提供条件.这种行动一般是agent自身由于在时间、空间上的冲突而无法完成,或是根本缺乏此类行为能力,或是由自己完成要花费比其他agent更高的代价,或者仅仅是自己所不愿进行的行动.agent应对其他agent所能、所愿进行的活动的类别有若干信知,在此信知范围内假定其他agent的活动.
+　　根据信知假设其他agent的可能活动的策略有：
+　　(1) 只有信知中有规定,才能假定它会进行行动.这种方案减少了以后的agent交互,但要求agent对环境中其他agent的状况有较多的了解,适用于相对比较稳定的MAS；
+　　(2) 除了信知中明确规定不可进行的行动以外,其他行动都可以被假定.这种方案不要求agent对环境中其他的agent有太多的了解,较为灵活,但会造成agent之间为确定合适的行为而多次交互.
+　　这两种策略可以混合使用,如优先使用已有规定的行动,在已有规定的行动无法解决问题时再采用策略(2).
+　　若agent之间共享信息全面且及时,那么,一个agent可以了解另一个agent的可能行为和偏好,从而提出另一个agent有能力,也愿意执行的协作行动,使规划具有较高的可执行性,经过很少的交互即可转化为意图,开始执行.由于信息共享需要耗费资源,所以需要在信息共享代价和协商代价之间进行均衡,以减少总体代价和满足agent行为特性的要求.
+　　生成规划后,agent将合作规划加入意图集的条件有两种［4］：
+　　(1) 只要规划整体成立就加入意图集,这是权威式的合作；
+　　(2) 要与相关agent进行通信,在获得肯定答复后才加入意图集,这是协商式的合作.
+4 交互模型
+　　规定两个基本通信行为：
+　　(1) 信知传递COMM(t,a,b,prop)： a向b声明a相信prop成立.
+　　(2) 行动请求REQ-COMM(t,a,b,action)： a请求b执行action规定的动作.
+　　基于这两个基本通信行为,可定义agent的基本交互反应,即交互目的与行为的对应关系.在以下描述中,SURE表示肯定信知,ASUM表示假设信知,WILL表示必然信知,POSS表示可能信知.
+4.1 基本交互反应
+　　在一次基本交互过程中a向b发出信知传递消息：a→b：COMM(t,a,b,mesg),b对一次通信请求的可能回应为：
+　　(1) 当mesg＝SURE(a,t,prop),即 a相信prop已真时： b→a：COMM(t2,b,a,resp).
+　　(1.1) b接受prop： resp＝SURE(b,t2,prop).
+　　(1.2) b不接受prop：resp＝SURE((b,t2,prop)｜{optional:(给出与prop有冲突的信知)SURE(b,t2,cont-prop)∧Infer(prop,cont-prop)＝FALSE}.
+　　(2) 当mesg＝ASUM(a,t,prop),即a假设prop已真时： b→a：COMM(t2,b,a,resp).
+　　(2.1) b接受prop: resp＝ASUM(b,t2,prop).
+　　(2.2) b不接受prop: resp＝ASUM(b,t2,prop)｜{optional:(给出与prop有冲突的信知)(SURE(b,t2,cont-prop)∨ASUM(b,t2,cont-prop))∧Infer(prop,cont-prop)＝FALSE}.
+　　(3) 当mesg＝WILL(a,t,prop),即a认为prop为真时： b→a：COMM(t2,b,a,resp).
+　　(3.1) b接受prop,且t2＜Time(prop): resp＝WILL(b,t2,prop).
+　　(3.2) b接受prop,且t2≥Time(prop): resp＝SURE(b,t2,prop).
+　　(3.3) b不接受prop,且t2＜Time(prop): resp＝WILL(b,t2,prop)｜{optional:(给出与prop有冲突的信知)(WILL(b,t2,cont-prop)∧Infer(prop,cont-prop)＝FALSE}.
+　　(3.4) b不接受prop,且t2≥Time(prop):resp＝SURE(b,t2,prop)｜{optional：(给出与prop有冲突的信知) (SURE(b,t2,cont-prop)∧Infer(prop,cont-prop)＝FALSE}.
+　　(4) 当mesg=POSS(a,t,prop),即a认为prop可能为真时： b→a：COMM(t2,b,a,resp).
+　　(4.1) b接受prop,且t2＜Time(prop)： resp＝POSS(b,t2,prop).
+　　(4.2) b接受prop,且t2≥Time(prop)： resp＝SURE(b,t2,prop).
+　　(4.3) b不接受prop,且t2＜Time(prop)： resp＝WILL(b,t2,prop)｜{optional:(给出与prop有冲突的信知)(WILL(b,t2,cont-prop)∧Infer(prop,cont-prop)＝FALSE}.
+　　(4.4) b不接受prop,且t2≥Time(prop)： resp＝SURE(b,t2,prop｜{optional:(给出与prop有冲突的信知)(SURE(b,t2,cont-prop)∧Infer(prop,cont-prop)＝FALSE}.
+　　对于其他类型的消息的回应,可作类似处理.
+　　在具体的交互场景中,系统将根据当时的目标来执行相应的动作.而交互过程不仅是对接收到消息的直接反应,更主要的是实现自己的意图,改变其他agent的信知、意图等.因此,交互应在基本交互策略的引导下进行.
+4.2　基本交互策略
+　　交互过程在特定的上下文中进行,对一条信息的回应要根据交互目的、上次发出的信息、对方回应信息和关于对方的信知而作出.
+　　以下是a发起交互并收到b的应答后,对于b的信息的回应策略.
+　　(1) a的目的：使b接受信知prop.
+　　(1.1) b的回应：接受,则此次交互结束.
+　　(1.2) b的回应：拒绝,分情形：
+　　(1.2.1) 回应无原因,要求回答原因：REQ-COMM(t,a,b,COMM(t1,b,a,reason)∧Infer(reason)BEL(t,b,prop));
+　　(1.2.2) b回应有原因reason,则a判断是否有BEL(a,t,reason),
+　　(1.2.2.1) 若BEL(a,t,reason),则COMM(t,a,b,BEL(a,t,reason)｜option),
+　　(1.2.2.2) 若BEL(a,t,reason),但Infer(reason,以前回应的reason)prop,则COMM(t,a,b,BEL(a,t,antireas｜Infer(antireas, reason)＝prop)),
+　　(1.2.2.3) 若BEL(a,t,reason)且(Infer(reason,以前回应的reason)prop),则
+　　.若认为reason细节不够,则要求传送更多信息:
+　　　　　　　　REQ-COMM(t,a,b,COMM(t1,b,a,X｜Xreason)),
+　　.否则对prop和reason进行一致性检查,决定撤销其中的一个.
+　　(2) a的目的：以一定条件cond使b准备执行action.这是行为协商过程.
+　　(2.1) b的回应：接受,则根据请求条件确定是否要求b执行action.
+　　(2.2) b的回应：拒绝,分情形：
+　　(2.2.1) b回应无原因,则要求回答原因： REQ-COMM(t,a,b,COMM(t1,b,a,reason)∧Infer(reason)INT(t,b,action))；
+　　(2.2.2) b回应有原因reason,则a判断是否有BEL(a,t,reason),
+　　(2.2.2.1) 若BEL(a,t,reason),则COMM(t,a,b,BEL(a,t,reason)｜option),
+　　(2.2.2.2)若BEL(a,t,reason),但(Infer(reason,以前回应的reason)INT(b,t,action)),则COMM(t,a,b,BEL(a,t,antireason)｜(Infer(reason,以前回应的reason)INT(b,t,action))),
+　　(2.2.2.3) 若BEL(a,t,reason)且Infer(reason,以前回应的reason)INT(b,t,action),则
+　　.若认为reason细节不够,则要求传送更多信息：
+　　　　　　　　　　REQ-COMM(t,a,b,COMM(t1,b,a,X｜Xreason)),
+　　.否则判断是否放弃action：
+　　.己方放弃,COMM(t,a,b,Int(b,t1,action)).此时应分清是INT(b,t,action)还是INT(b,t,world｜Infer(action,world)＝FALSE),对于后者,要深入协商,让b放弃world的意图,或自己放弃含有action的规划；
+　　.己方修正,寻找可以替代action且不与reason冲突的其他动作,记录为action′,发REQ-COMM(t,a,b,action′)；
+　　.己方更换条件：寻找新的条件cond′,使(cond′∧reasonINT(b,t,action)),重发REQ-COMM(t,a,b,action｜cond′).
+5 结 语
+　　本文从agent思维状态模型的角度对agent间通信交互的作用、条件和过程进行了讨论,并提出了一种灵活的基于场景的交互策略.
+　　策略1的多次运用,最后总会归结到某几点基本信知,或为先验信知,或为观察结果.先验信知的差异只能依靠系统外的控制因素调整,而观察结果的差异则可根据各自的观察手段、角度等来作综合分析,以获得全面的正确结果,并根据此结果来修正各自的逻辑结论.
+　　策略2中具有补偿环节,因为行为要消耗资源,需要作出补偿.或者是因为某些因素不具备,而使对方执行某个行动有困难,而由乙方消除这些障碍则可以促使对方执行该行动.
+　　以上基本交互策略的综合运用,可以生成各种交互协议.
+　　对通用协商交互机制的研究有辩论协商［5］,着重于生成和评估提议的基本机制,而具体的知识则是可变的.辩论协商强调推理过程,但没有提出交互策略.本文的工作与其是互补的.
+　　本文研究得到国家自然科学基金资助.作者李毅,1974年生,博士生,主要研究领域为分布式人工智能.罗翊,1971年生,博士,讲师,主要研究领域为分布式人工智能.石纯一,1935年生,教授,博士生导师,主要研究领域为人工智能.
+　　本文通讯联系人:李毅,北京100084,清华大学计算机科学与技术系
+　　作者单位：清华大学计算机科学与技术系　北京　100084
+参考文献
+　1　Haddadi A, Sundermeyer K.Belief-Desire-Intention agent architectures.In:O'Hare G M P, Jennings N R eds. Foundations of distributed artificial intelligence. New York: John Wiley & Sons, Inc., 1996. 169～185
+　2　Rao A S, Murray G.Multi-agentmental-state recognition and its application to air-combat modelling. In: Lesser V R ed. Proceedings of the 13th International Workshop on Distributed Artificial Intelligence. Seatle, WA, 1994. 283～304
+　3　Hewitt C. Open infomation system semantics for distributed artificial intelligence. Artificial Intelligence, 1991,(47):79～106
+　4　Dunin-Keplicz B, Verbrugge R. Collective commitments. In: Proceedings of the 2nd International Conference on Multi-agent System. Tokyo: 1996. 56～63
+　5　Parsons S, Jennings N R. Negotiation through argumentation――a preliminary report. In: Lesser V R ed. Proceedings of the International Conference on Multi-agent System. Tokyo, 1996. 267～274
+1998-03-05收到原稿 
+1998-07-20收到修改稿

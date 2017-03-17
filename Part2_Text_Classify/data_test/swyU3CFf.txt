@@ -1,0 +1,83 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.3　P.398-400
+
+
+
+并行计算：提高SAT问题求解效率的有效方法
+金人超　黄文奇
+摘要　基于拟物拟人思想的Solar算法是一个求解SAT问题的快速算法.实验和理论分析表明,Solar算法具有易并行化的特性.将Solar算法并行化可大幅度地提高求解SAT问题的效率.
+关键词　合取范式,可满足性,拟物法,拟人法,并行计算.
+中图法分类号　TP301
+Parallel Computing:An Effective Method for Improving the Efficiency of Solving SAT Problems
+JIN Ren-chao
+(School of Computer Science and Technology Huazhong University of Science and Technology　Wuhan　430074)
+HUANG Wen-qi
+(Laboratory of Computer Science Institute of Software The Chinese Academy of Sciences Beijing　100080)
+Abstract　Based on the thought of quasiphysical and quasisociological,the Solar algorithm is an efficient algorithm for solving SAT problems.It is proved by the theoretical analysis and experimental results that the algorithm is naturally suitable for parallel computing.The efficiency of solving SAT problems can be greatly improved by taking a simple method that parallelizes the Solar algorithm.
+Key words　CNF (conjunctive normal formula),satisfiability,quasiphysical,quasisociological,parallel computing.
+　　Solar算法是一个基于拟物拟人思想的求解SAT问题的快速算法［1］.文献［1］显示，Solar算法求解随机难3-SAT问题快于美国Bell实验室的Bart Selman等人于1994年公布的GSAT+w算法［2］.本文探讨了Solar算法的易并行化特性,证明并行化确实能有效地提高Solar算法的效率.这在计算机硬件价格大幅降低的实际背景下,尤其具有现实意义.
+1　SAT问题
+　　定义1.给定命题变元集合V=｛x1,x2,...,xm｝,文字是V中任意一个命题变元或者命题变元的非,子句是若干文字的析取,合取范式（conjunctive normal formula,简称CNF）是若干子句的合取.
+　　定义2.给定命题变元集V=｛x1,x2,...,xm｝,命题变元x1,x2,...,xm的任意一组取值称为一个真值指派,记为X.若用1表示真,用0表示假,则X∈｛0,1｝m.一个真值指派满足了某个CNF（或子句）是指该CNF（或子句）在这一真值指派下为真.
+　　定义3.合取范式可满足性（SAT）问题是指，给定CNF,问是否存在一个满足该CNF的真值指派.3-SAT问题是限定CNF中每个子句恰有3个文字的SAT问题.
+　　定义4.选定命题变元集V=｛x1,x2,...,xm｝,每次随机地从V中挑选3个两两不同的命题变元,以50％的概率决定每个变元是否取非,这样得到3个文字组成一个子句.重复上述步骤l次,得到l个子句组成一个CNF.按此方法产生的CNF称为一个长度为l的m元的随机产生的3-SAT样例.当l/m≈4.3时,称为随机产生的难3-SAT样例［3］.
+　　SAT问题和3-SAT问题都是NP完全的［4］,目前不存在完整的多项式时间算法.随机产生的难3-SAT样例是目前学术界普遍采用的测试SAT问题算法的考题.
+2　Solar算法及其计算时间的分布
+　　Solar算法是一个随机型算法.在同一个计算格局下,随机地从多个可能的计算动作中选取一个执行.这样做是为了在尽量不增加算法的时间复杂度的前提下提高算法的完整性.若采用贪心方法,则有可能使计算无法远离局部最优的“陷阱”,导致计算发生一种弱的死循环；若采用穷举每条计算路径的方法,则又使计算时间呈指数上升.在目前没有更好的选择计算路径的策略的情况下,采取随机选择的方法是合理的［5］.
+　　Solar算法中的这种随机性导致其对同一个样例的每次计算具有不同的计算时间.通过实验我们发现,对绝大多数随机产生的难3-SAT样例,Solar算法对同一个样例的多次计算的计算时间之间的差别相当可观.
+　　图1显示了Solar算法对一个有1 000个命题变元随机产生的难3-SAT样例的500次计算的计算时间分布情况.图1中每个竖长方条的宽度是2s,表示一个时间段；长方条的高度表示计算时间落在该时间段内的计算的次数.从图中可以看出,500次计算的平均时间为35s,而计算时间分布的峰值在t0=6～8s这一时间段.在此时间段之后,计算时间的分布量呈递减的趋势.
+
+Fig.1
+图1
+3　并行化
+　　为简化讨论,我们用如图2所示的概率密度函数来近似图1中的概率分布.
+　　由可知,,故,一次计算的时间不超过t的概率为
+
+
+Fig.2
+图2
+k次计算的最短时间不超过t的概率为,k次计算的最短时间t的分布概率密度函数为,k次计算的最短时间t的期望值为,作变量代换y=a-t,得
+
+当k=1时,就是一次计算的时间的期望值.因此，k台计算机并行计算的加速比为
+
+并行效率为
+　　由此可见,对于我们的近似模型,采用并行计算可以达到线性加速,即计算速度的提高倍数与参加计算的计算机台数成正比,这是并行算法所能达到的理想境界.但的假定与实际情况有误差,主要表现在实际计算时间分布的峰值处在一个大于0的t0位置上,尽管t0相对a来说非常小.这样,当我们用多台计算机将计算时间加速到≤t0时,进一步加速的效率会有所下降.但在此之前,加速效果应该是好的.
+　　我们在10台微机上同时对两组随机生成的难3-SAT样例进行了试算,每组算出10个可满足的样例统计计算时间.结果见表1和表2.所用的微机为多能奔腾586（Intel MMX pentium）,主频166MHz,内存32M,操作系统为Linux,程序用C语言实现.实验结果接近于我们的理想近似模型.
+Table 1 
+表1
+No.variables:1000①; No.clauses:4250②　　　Time unit:s③
+
+Problems④12345678910Average⑤
+Average computing times ⑥2.09.727.954.730.12.914.71.412.43.3　
+Minimal computing times Tmin⑦0.71.81.75.43.30.94.50.83.20.5　
+Accelerate rates S=/Tmin⑧2.95.416.410.19.13.23.31.83.96.66.3
+Parallel efficiency E=S/10⑨0.290.541.641.010.910.320.330.180.390.660.63
+
+①命题变元个数：1000,②子句个数：4250,③计时单位：秒,④题号,⑤平均,⑥平均计算时间T,
+⑦最短计算时间Tmin,⑧加速比S=/Tmin,⑨并行效率E=S/10.
+Table 2
+表2
+No.variables:2000①; No.clauses:8500②　　　Time unit:s③
+
+Problems④12345678910Average⑤
+Average computing times ⑥294.047.9534.0226.2105.5174.0194.275.3218.3387.1　
+Minimal computing times Tmin⑦18.75.0107.521.714.264.736.015.038.6113.3　
+Accelerate rates S=/Tmin⑧15.79.65.010.47.42.75.45.05.73.47.0
+Parallel efficiency E=S/10⑨1.570.960.501.040.740.270.540.500.570.340.70
+
+①命题变元个数：2000,②子句个数：8500,③计时单位：秒,④题号,⑤平均,⑥平均计算时间T,
+⑦最短计算时间Tmin,⑧加速比S=/Tmin,⑨并行效率E=S/10.
+　　本文的结论是：(1) Solar算法的计算时间的分布规律使其天然地适合并行计算；(2) 理论分析表明,并行计算可以使Solar算法得到线性加速;（3） 实验证明,对于规模为1 000和2 000个命题变元的随机生成的难3-SAT样例,用10台计算机即可将平均计算速度提高6～7倍左右,使并行效率达到0.6～0.7左右.因此,用Solar算法进行并行计算是求解SAT问题的有效方法.
+本文研究得到国家自然科学基金(No.19331050)、国家863高科技项目基金(No.863- 306-05-03-1)、国家“九五”攀登计划基金、高等学校博士学位点专项科研基金(No.960 48703)和中国科学院软件研究所计算机科学开放研究实验 室课题基金资助.作者金人超,1965年生,博士，副教授,主要研究领域为 计算复杂性理论，近似算法.黄文奇,1938年生,教授,博士生导师,主要研 究领域为计算复杂性理论，求解NP难度问题的拟物拟人算法.
+本文通讯联系人:金人超,武汉 430074,华中理工大学计算机科学与技术学院
+作者单位:金人超(华中理工大学计算机科学与技术学院　武汉　430074)
+黄文奇(中国科学院软件研究所计算机科学开放研究实验室　北京　100080)
+参考文献
+1，Huang Wen-qi,Jin Ren-chao.The quasiphysical and quasisociological algorithm solar for solving SAT problem.Science in China (Series E),1997,27(2):179～186
+(黄文奇,金人超.求解SAT问题的拟物拟人算法――Solar.中国科学(E辑),1997,27(2):179～186)
+2，Selman B,Kautz H A,Cohen B.Noise strategies for improving local search.In:Proceedings of the 12th National Conference on Artificial Intelligence (AAAI-94).Seattle,Washington,D C:AAAI Press,1994.337～343
+3，Mitchell D,Selman B,Levesque H J.Hard and easy distributions of SAT problems.In:Proceedings of the 10th National Conference on Artificial Intelligence (AAAI-92).San Jose,CA:AAAI Press,1992.459～465
+4，Garey M R,Johnson D S.Computers and Intractability:A Guide to the Theory of NP-Completeness.New York:W.H.Freeman and Company,1979
+5，Motwani R,Raghavan P.Random Algorithms.London:Cambridge University Press,1995.127～129
+本文1998-06-22收到原稿,1999-04-13收到修改稿

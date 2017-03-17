@@ -1,0 +1,62 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第1期 No.1 1999
+
+
+
+利用确定性退火技术的旅行商问题求解算法*
+杨广文1　郑纬民1　王鼎兴1　李晓明2
+　　摘要　将确定性退火技术及聚类方法应用于旅行商问题,给出了求解旅行商问题的一种启发式算法.该方法将旅行商问题的离散模型转化为连续模型去求解,通过求解一系列随温度变化的物理系统的自由能函数的局部极小来获得旅行商问题的解,并给出了一个简单的显式迭代公式.算例表明,该算法性能良好.
+　　关键词　确定性退火技术,旅行商问题,聚类,极大熵原理.
+　　中图法分类号　TP18
+An Algorithm for Travelling Salesman Problem Using Deterministic Annealing
+YANG Guang-wen1　ZHENG Wei-min1　WANG Ding-xing1　LI Xiao-ming2
+　　Abstract　In this paper, the deterministic annealing and clustering algorithms are applied to the travelling salesman problem, and a heuristic algorithm for the travelling salesman problem is put forward. The method transforms the discrete model of the travelling salesman problem into the continuous model, and the solution of the problem is obtained by solving local optimal solution of a series of problems to minimize the free energy of a physical system which varies with temperature. A simple explicit iterative formula is given. The computation results indicate that this algorithm has good performance.
+　　Key words　Deterministic annealing, travelling salesman problem, clustering, the principle of maximum entropy.
+　　旅行商问题TSP（travelling salesman problem）是一个经典的图论问题.由于这一问题为NP难解问题,求解最优解是非常困难的,目前还没有十分有效的方法.
+　　按自然法则计算“将大量自然科学领域中的思想与方法用于其传统应用领域之外的其他领域,将原思想与方法的本质提取出来,用于解决新领域中的问题”,将为求解复杂系统提供可行的计算方法.［1］作为一个重要分支,确定性退火技术是由K.Rose博士首先提出的［2］,它依据退火过程,将求解优化问题的最优点转化为求一系列随温度变化的物理系统的自由能函数的极小.理论上讲,它能够使算法避开局部极小而得到全局极小,具有广阔的应用前景.本文将确定性退火技术应用于TSP,给出一种启发式求解算法.
+1　确定性退火技术
+　　对一固体物理系统,将其加温熔化后降温,当温度下降足够缓慢时,在每一温度下,系统将达到平衡态,最后当温度很低时,物体完全凝固,整个系统将达到最低能态.在每一固定温度下,物理系统的自由能所取的极小值对应于系统的平衡态,系统将会自发地趋向平衡态.确定性退火技术正是基于退火过程这一物理背景的.
+　　对于求解一极小化问题
+minE=E(x),　　　　　　　　　　　　　　　　　(1) 
+E(x)可看作是某一系统的能量.在某一温度下,系统状态的变化总是朝着自由能减少的方向进行,当系统达到平衡态时,自由能函数达到极小.构造物理系统(式(1))对应的自由能函数F(x,T).自由能函数F(x,T)至少满足下述条件:当T=∞时,F(x,T)关于x的全局极小极易求出；当T=0时,F(x,T)=E(x).这两个条件可以认为是确定性退火技术对自由能函数的要求.确定性退火技术,以系统在T=T+ΔT时自由能函数极小的状态xmin(T+ΔT)作为初始点,通过求解minF(x,T)的极小点来模拟系统达到平衡态的过程.满足上述两个条件的自由能函数不唯一,如何构造合适的自由能函数是要解决的关键问题.
+2　利用确定性退火技术与聚类模型的TSP描述
+　　设X={x1,x2,...,xN}为一模式集,聚类问题可描述为求Y={yT1,yT2,...,yTM}及V={vxj},使得D(Y,V)=υxjd(x,yj)极小,其中yj为第j类Cj的代表元,d(x,yj)为x与yj的距离.V称为关联集称为合法的,若对一切x,它仅属于唯一的类.
+　　在上述聚类中,若M=N,则X中的每一点均为一类.若再加上使d(yj-1,yj)最小的限制(其中y0=yN),则可通过求解下述问题来求解TSP.
+minD(Y,V)=υxjd(x,yj)+λd(yj-1,yj),(2)
+其中X代表城市集.最优解Y={yT1,yT2,...,yTN}对应TSP的一个最优解.若xi属于yj所对应的类,则xi为售货员走的第j个城市.λ可以是变化的或确定的,它用来表示上式中第2项的重要程度.
+　　下面利用确定性退火技术来求解问题(2).
+　　首先来构造对应于问题(2)的一个自由能函数.引入温度T,对于上面定义的Y与V,称｛Y,V}为一实例,用P(Y,V)表示实例｛Y,V｝出现的概率.令
+E={Y,V}P(Y,V)D(Y,V),(3)
+　　取熵函数为H=-{Y,V}P(Y,V)lnP(Y,V),利用极大熵原理可求得P(Y,V)=.其中β∝由式(3)确定.使P(Y,V)取极大的(Y,V)称为最可几实例.求P(Y,V)的边缘分布得
+
+令F(Y,β)=lne-βd(x,yj),g(Y)=d(yj-1,yj),则可得
+
+令(Y,β)=F(Y,β)+λg(Y),使P(Y)取极大的Y被称为最可几结构.极大P(Y)等价于极小(Y,β).(Y,β)可作为式(2)所对应的物理系统的自由能函数.
+3　求解TSP的一种启发式算法
+　　取,假定d(x,y)对于y为凸函数,则当β=0时,(Y,0)=(1)/(N)d(x,yj)对于Y为凸函数,由传统的优化方法,极易求出全局最优点.当β→∞时,(Y,∞)=υxjd(x,yj)+g(Y)=D(Y,V).可见,(Y,β)作为自由能函数,满足确定性退火技术要求.我们把求解TSP转化为求解随温度变化的自由能函数的极小问题：
+min(Y,β)=F(Y,β)+λg(Y).
+取d(x,y)=［x(i)-y(i)］2,利用最优解的一阶必要条件构造迭代公式
+　　　　　　（4） 
+综上,可给出TSP的一种启发式求解算法.
+　　(1) β0=0,min(Y,0)的最优点为Ymin(β0)=(y*T1,y*T2,...,y*TN)T,其中y*1=y*2=...=y*N=(1)/(N)xx,所有x均属于一类,k=0；
+　　(2) 增加β,βk+1=α(βk)(α为一函数,满足βk+1＞βk),以Ymin(βk)作为初始点求解min(Y,βk+1),可按式(4)进行迭代,设最优点为Ymin(βk+1)；
+　　(3) 终止准则若满足,停止,Ymin(βk+1)对应TSP问题的一个解;否则,k=k+1,转步骤(2).
+　　作为一种启发式算法,直观上讲算法收敛于TSP的全局最优.因为β充分大时,每一点为一类,当β→∞时,(Y,β)的第1项为0,第2项为最短路.
+　　将上述启发式算法用于一些模拟算例,对于小型问题都可方便地求出最短路,对于一些无规则的大问题,解的性质受参数选取的影响很大.与利用模拟退火技术的算法相比,若选取合适的,在同样的温度控制方式和相同的终止限描述条件下,上述算法优于模拟退火算法.
+4　结　论
+　　本文给出了求解TSP的一种启发式算法,利用确定性退火技术,将TSP的离散模型转化为连续模型去求解,并给出了一个简单的迭代公式,开辟了TSP求解的新途径.算例表明,β的变化及的选取直接影响了算法的收敛性与解的优劣.β的变化速度快,则算法收敛速度快,但解的性能可能差；反之,算法的计算量大,但解的性能比较好.这些问题有待进一步研究.不过,对于固定的一类问题,通过不断筛选,总可找到合适的参数.上面提出的算法思想具有一般意义,可用于其他领域的一些难解问题.
+本文研究得到国防科技预研基金资助.
+作者介绍：杨广文,1963年生,博士,副教授,主要研究领域为分布系统,并行处理,算法设计与分析.
+　　　　　郑纬民,1946年生,教授,博士生导师,主要研究领域为并行/分布处理.
+　　　　　王鼎兴,1937年生,教授,博士生导师,主要研究领域为并行/分布处理.
+　　　　　李晓明,1957年生,博士,教授,博士生导师,主要研究领域为并行计算.
+　　　　　本文通讯联系人：杨广文,北京 100084,清华大学计算机科学与技术系
+　　　　　本文1997-10-20收到原稿,1998-01-19收到修改稿
+作者单位：杨广文　郑纬民　王鼎兴　清华大学计算机科学与技术系　北京　100084
+　　　　　李晓明　北京大学计算机科学与技术系　北京　100871
+E-mail: ygw@est4.cs.tsinghua.edu.cn
+参考文献
+　［1］Fox G C. Physical computation. Concurrency: Practice and Experience, 1991,3(6):627～653
+　［2］Rose K, Gurewitz E, Fox G C. Statistical mechanics and phase transitions in cluster. Physical Review Letters, 1990,65:945～948
+本文1997-10-20收到原稿,1998-01-19收到修改稿 

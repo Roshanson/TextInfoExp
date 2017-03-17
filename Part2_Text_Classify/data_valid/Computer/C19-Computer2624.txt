@@ -1,0 +1,218 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年 第10卷 第7期　No.7 Vol.10 1999
+
+
+
+多媒体对象查询语言及其查询处理
+田增平　党华锐　周傲英　施伯乐
+　　摘要　文章研究了多媒体数据库的查询需求,提出结构化的多媒体对象查询语言MOQL(multi-media object query language).它能够支持基于类型、结构特征、同步关系、时态关系和内容信息的多媒体查询.以DB2数据库为存储机制,定义了一组代数算子和变换规则,利用它们可以将用户定义的MOQL查询变换为代数表达式,进行代数优化,并将代数查询表达式转换为能够在DB2数据库上运行的DB2SQL和C++查询过程.
+　　关键词　多媒体数据库,查询语言,查询优化.
+　　中图法分类号　TP311
+Multimedia Object Query Language and Its Query Processing
+TIAN Zeng-ping DANG Hua-rui ZHOU Ao-ying SHI Bai-le
+(Department of Computer Science Fudan University Shanghai 200433)
+　　Abstract　 In this paper, the authors study the query requirements of multimedia database and propose a structured multimedia object query language (MOQL). The language can support queries based on type, structure, synchronous relations, temporal relations, and contents of multimedia data. Taking the DB2 relational database system as a storage mechanism, they define a set of algebraic operators and some transformation rules, by which the MOQL queries defined by the users can be transformed into a set of algebraic formula and optimized. Finally, the algebraic formula can be transformed into execution plan in DB2SQL and C++ procedures, which can be run on DB2 system.
+　　Key words　Multimedia database, query language, query optimization.
+　　自从“多媒体”概念出现以来,多媒体信息查询技术就成为数据库等相关领域研究的重要课题,取得了很多成果.随着研究工作的进展,多媒体信息的查询需求以及查询语言的功能结构也逐渐明确起来.D.Woelk[1]和C.Goble等人[2]指出,基于结构和类型的查询是多媒体信息查询的重要特征.T.D.Little[3]和A.Karmouch 等人[4]提出多媒体数据库应当支持基于多媒体数据表现的时间同步关系的查询.基于结构和类型的多媒体查询使得多媒体数据组织的元数据可以被查询,为用户提供了更大的信息查询空间.
+　　多媒体数据库将传统数据库基于属性值的查询与信息检索系统基于内容的查询结合起来.E.Bertino等人的MULTOS[5]支持对图像、文本、声音的存在性条件查询.M.Flicker等人[6]开发的QBIC系统能根据图像的形状、纹理、颜色等内容进行查询.A.Gupta等人[7]开发的VIMSYS系统能根据给定的特征查询图像.Wu等人[8]开发的CORE系统能够按文本的相似度和模糊度等查询图像.E.Oomoto等人[9]研制的OVID系统能根据动态视频影像的描述特征进行查询.内容查询使得传统数据库的确定查询变为近似或模糊查询.
+　　在研究前人工作时我们注意到,以往提出的各种多媒体查询语言都是针对专门的应用,使用范围较窄,而且各种语言的语法形式与人们熟悉的数据库语言如SQL差别较大,不易学习和使用,另外,各种语言的描述能力也不尽相同.本文以数字图书馆应用为背景,研究了多媒体数据库查询的需求,提出结构化的多媒体对象查询语言MOQL(multi-media object query language).它能够支持基于类型、结构特征、同步关系、时态关系和内容信息的多媒体查询.我们以DB2数据库为存储机制,定义了一组代数算子和变换规则.利用它们可以将用户定义的MOQL查询变换为代数表达式,进行代数优化,最后,将代数查询表达式转换为能够在DB2数据库上运行的查询过程.本文的工作已用于我们开发的中国历史地图数字图书馆系统.
+　　本文第1节讨论多媒体查询的需求.第2节介绍MOQL语言依赖的多媒体对象数据模型.第3节给出MOQL语言的定义.第4节讨论MOQL语言的查询处理和优化技术.第5节总结全文工作,提出需要进一步研究的问题.
+1　多媒体信息的查询需求
+　　在多媒体信息查询技术的研究中,根据系统目标和应用类型的不同,提出了各种不同的需求.概括来说,多媒体数据库系统应当支持基于类型、结构、多媒体数据表现的同步关系、多媒体对象内容及时态信息的查询.
+　　(1) 基于类型和结构的查询,支持用户按照对象类型和内部结构特征查询多媒体对象.在多媒体数据库中,描述多媒体数据组织的类型和结构信息是用户所关心的,对查询多媒体对象具有重要作用.例如,“查询所有历史地图”和“查询所有含有声音的历史地图”等是基于类型和结构的多媒体查询.
+　　(2) 基于同步关系的查询是以多媒体对象表现的时间特性或不同属性表现的时序关系为条件的查询.多媒体对象表达的信息不但取决于各种属性数据的内容,还取决于这些数据表现的时序关系.因而,支持基于同步关系的查询是多媒体查询特有的要求.例如,“查询伴音解释先于动态视频影像结束的电视片断”等均属于同步关系查询.
+　　(3) 基于内容的查询根据非结构化数据,如图像、动态视频影像和文本等的语义信息查询多媒体对象.传统数据库查询基于对属性值谓词布尔组合的准确计值.在多媒体数据库中,用户希望根据图像、视频影像和文本等非结构化对象所富含的语义信息进行查询.
+　　(4) 基于时态信息的查询能够根据某些时间条件查询多媒体对象.我们研究的多媒体数据库用于存储有关历史地图的多媒体信息,因而,支持基于时态信息的查询是必不可少的功能.
+　　多媒体数据库的查询需求多种多样,而且随新型应用的出现在不断发展和变化,因此,它们是无法完全列举的.本文根据数字图书馆应用的需要,结合前人的研究成果,提出上列4种主要功能要求,并设计了能够满足这些要求的MOQL语言.
+2　多媒体对象数据模型
+　　MOQL语言基于我们设计的多媒体对象数据模型,该模型具有如下特点：
+　　(1) 多媒体信息的内容和行为建模.多媒体对象、类型、类以及类层次和方法等是多媒体对象数据模型的主要概念.一个多媒体对象由对象标识符(OID)、一个元组类型值、各同步表现属性的时间调度及一个有效历史时间区间组成.类型、类及类层次是多媒体对象的组织概念.类型定义一组具有相似结构的多媒体对象的公共结构.类是一组对象的集合.类层次是类的组织形式,系统中所有的类形成一个有向无环图.子类继承父类的结构、行为和表现特征.方法描述了多媒体对象的行为特征.系统中支持两类方法,即服务器方法和平台无关方法.服务器方法与一般对象系统的方法相似,任何用户对方法的调用都会使相应方法在服务器上执行.平台无关的方法主要是多媒体对象的表现过程.任何用户对多媒体对象的表现要求都导致相应方法在用户机器执行.
+　　(2) 多媒体信息的表现特征建模.表现特征建模主要体现在表现的空间和时间特性建模方面.为了实现表现的平台无关性,我们引入Java语言定义多媒体对象的表现过程.以Java语言定义对象方法,实现对象方法的跨平台执行,是数据库与Internet网络相结合的新的尝试.
+　　(3) 在表现的空间和时间建模方面,也做了有益的尝试.多媒体对象表现的空间特征由Java语言定义的表现方法描述,即用过程而不是用数据来表达空间特征.用户可以利用具有完全计算功能的Java语言(而不是某种Form)来安排多媒体对象的表现空间.对多媒体对象表现的时间特性采用数据描述而不是过程方式建模.多媒体对象创建者不但要定义多媒体对象的内容,还要定义内容表现的时间顺序关系.
+3　多媒体对象查询语言MOQL
+3.1 3种数据库访问形式
+　　MOQL支持3种数据库访问形式,即按OID查询、按名称查询以及SELECT查询.
+　　(1) 按OID查询
+　　在多媒体数据库系统中,每个对象、类型定义、类定义以及类的外延都被视为内部对象.每个内部对象都由一个唯一的OID标识.用户可以通过OID直接检索所要查询的对象信息,例如,#130,#208.
+　　(2) 按名称检索
+　　在多媒体数据库系统中,允许显式地给对象、类外延、类型或类的定义命名,这个名字与对象取值无关.一个对象可以有1个或多个名字,但是,一个名字只能赋予一个对象.用户可以根据对象的名称获得对象的有关信息.例如,“M-QuanTu”如果是明代全图对象的名字,则用户利用它就可获得明代全图的有关信息.
+　　(3) SELECT语句
+　　SELECT语句支持用户基于内容、时间信息、结构和同步关系的多媒体查询.例如,下列查询：“找出文字解释中含有‘历史悠久’且图像颜色与sampmap的颜色的相似度大于0.7的清代历史地图,要求它们不但含有动画(animClass为动画数据类型),而且声音解释与文字解释同时开始表现,查询结果按照与sampmap图像颜色的相似度,从大至小输出前5个对象”,可以写成如下的MOQL语句：
+　　SELECT m
+　　FROM m IN mapClass
+　　WHERE SUBSTRING (m.exptxt,“历史悠久”) 
+　　　　　and Grade(m.map.color, sampmap.color)>0.7
+　　WHEN INt(m,‘qingDynasty’) 
+　　STRUCT m CONTAINS {animClass} 
+　　SYNCH m.exptxt STARTS m.expvoc
+　　ORDER [5] ASC (Grade)
+其中SELECT,FROM,WHERE,WHEN,STRUCT,SYNCH和ORDER为保留字；SUBSTRING和Grade为用户或系统定义的谓词和函数；INt,CONTAINS和STARTS为内部谓词.
+3.2 SELECT语句
+　　SELECT语句是用户访问多媒体数据库的主要形式.它支持基于内容、时间信息、结构和同步关系的查询,其形式如下：
+　　SELECT {路径表达式}
+　　FROM 变量名称IN类名称
+　　[WHERE 内容条件]
+　　[WHEN时间条件]
+　　[STRUCT结构条件]
+　　[SYNCH同步条件]
+　　[ORDER[返回结果数目]结果排序条件]
+其中SELECT FROM子句说明查询的目标及范围,WHERE,WHEN,STRUCT和SYNCH分别说明查询结果应当满足的内容条件、时间条件、结构条件和同步条件.
+　　(1) SELECT及FROM子句
+　　SELECT及FROM子句说明查询的结果及查询范围.查询结果可以由一个或多个路径表达式描述.
+　　定义1.路径表达式定义如下：
+　　①若X为具有类T的对象变量,则X为路径表达式,T为其类型.
+　　②若A0,A1,...,Ai(i≥0)为路径表达式,Ai是取值类型为T的属性,A是类型T的属性,则A0,A1,A2,...,Ai.A亦为路径表达式,其类型为A的类型.
+　　③若A0,A1,...,Ai(i≥0)为路径表达式,Ai是值域为类C的属性,f是类C上的方法,f的参数类型为T1,...,Tn,而a1,...,an分别是具有类型T1,...,Tn的值,则A0,A1,...,Ai.f(a1,...,an)亦为路径表达式,f的返回值类型为其类型.
+　　(2) WHERE及ORDER子句
+　　WHERE及ORDER子句说明查询目标应当满足的内容条件以及返回给用户的查询结果数目及其顺序.
+　　定义2. 内容条件式定义如下：
+　　①若P1和P2为路径表达式,op∈{>,<,≠,=,≥,≤}为一算术比较符,a为常量,则P1(op)a,a(op)P1和P1(op)P2均为内容条件式(a与P1的类型兼容)；
+　　②若P1和P2为路径表达式,a为常量,Q为用户定义谓词或系统谓词,则Q(P1,a)和Q(P1,P2)为内容条件式.MOQL支持DB2SQL所支持的所有内部谓词；
+　　③若C1和C2为内容条件式,则C1 and C2 ,C1 or C2和not C1都为内容条件式.
+　　ORDER子句的结构为
+　　ORDER [k] ASC｜DESC (f1,f2,...,fn),其中：
+　　. k为返回给用户的结果对象数目；
+　　. ASC或DESC分别说明按f1,f2,...,fn函数值的增序或降序输出结果；
+　　. f1,f2,...,fn为出现在WHERE子句中的模糊度或相似度函数.
+　　在查询模型中,内容相关的模糊性及相似性度量函数作为相应类上的方法,因而,它们蕴含于路径表达式中.
+　　(3) WHEN子句
+　　WHEN子句说明用户对查询结果的时间条件要求.MOQL仅支持历史时间信息的查询.为了表达和操作时间信息,定义下列算子：
+　　BeginOf(一元),EndOf(一元),Extend(二元),SameTime(二元).
+其直观解释如下：
+　　. BeginOf(a)：给出a的开始年代,例如,BeginOf(‘qingDynasty’)=1618；
+　　. EndOf(a)：给出a的结束年代；
+　　. a Extend b：a与b的时间区间的并；
+　　. a SameTime b：a与b的时间区间的交.
+定义时间项如下：
+　　①对象变量和时间常量,如‘Now’,‘qingDynasty’等为时间项；
+　　②若t1,t2为时间项,f∈{BeginOf,EndOf},g∈{Extend,SameTime},则f(t1),g(t1,t2)为时间项.
+　　MOQL中提供4个二元时间谓词,BEFOREt,AFTERt,INt,OVERLAPt：
+　　.BEFOREt(a,b)：a的时间区间先于b的时间区间；
+　　.AFTERt(a,b)：a发生的时间区间后于b的时间区间；
+　　.OVERLAPt(a,b)：a的时间区间与b的时间区间重迭；
+　　.INt(a,b)：a的时间区间包含于b的时间区间.
+　　定义3. 时间条件式定义如下：
+　　①若a和b为时间项P∈{BEFOREt,AFTERt,INt,OVERLAPt},则P(a,b)为时间条件式；
+　　②若S和Q为时间条件式,则S and Q,S or Q及not Q为时间条件式.
+　　(4) STRUCT子句
+　　MOQL语言中引入STRUCT子句来说明查询目标的结构特征.它仅定义了一个结构谓词CONTAINS来描述结构条件.
+　　定义4. 结构条件式定义如下：
+　　①若P为路径表达式,T1,...,Tn为类或类型名称,则P CONTAINS{T1,T2,...,Tn}为结构条件式；
+　　②若S1,S2为结构条件式,则S1 and S2,S1 or S2及not S1亦为结构条件式.
+　　(5) SYNCH子句
+　　根据基于时间间隔(TIB)的同步关系表示方法,多媒体数据表现的同步关系可表示为时间间隔的时序关系.J.F.Allen指出[10],两个时间间隔之间有7种不重复关系,分别是BEFORE,MEETS,OVERLAPS,DURING,STARTS,FINISHES和EQUALS.MOQL语言支持基于这些同步关系的多媒体查询.
+　　定义5. 同步条件式定义如下：
+　　①若P1和P2为路径表达式,R∈{BEFORE,MEETS,OVERLAPS,DURING,STARTS,FINISHES和EQUALS},则P1(R)P2为同步条件式；
+　　②若P1和P2为路径表达式,N为正整数,op∈{>,<,≠,=,≤,≥},则Length(P1)(op)Length(P2), Length(P1)(op)N和N(op)Length(P1)为同步条件式；
+　　③若S1和S2为同步条件式,则S1 and S2, S1 or S2及not S1为同步条件式.
+　　上述定义中,Length为系统定义函数,它返回多媒体对象的表现时间长度(该对象在表现调度中定义的表现时间长度).
+4　查询处理
+　　MOQL查询处理系统以DB2 V2为存储机制,利用关系表格存储结构化数据,以文件机制存储非结构化的对象数据,如图像、文字和声音等,利用用户定义函数（UDF）实现相似或模糊测度函数,支持基于内容的多媒体查询.它以MOQL语言为源语言,以DB2 SQL及C++set语言为表达数据存取方案的目标语言.查询处理由以下7部分组成：语法检查、命名变换、查询改写、代数变换、优化处理、生成存取方案和执行存取方案.
+4.1 语法检查
+　　语法检查具有3种功能：(1) 对用户基于OID的查询,获取OID的类信息并生成查询结果描述结构,将OID及查询结果描述结构送给OID检索模块的结果输出过程；(2) 对用户基于对象名称的查询,查询“OID-对象名称”对照表,获取对象的OID及其类信息,生成查询结果描述结构,将其与OID送给结果输出过程；(3) 对用户的SELECT查询,检查用户查询语句是否合乎MOQL的语法.它交给命名变换的SELECT查询应当符合MOQL语法定义.
+4.2 命名变换
+　　命名变换的功能是消除变量,并使所有路径表达式都以类名称开始.
+4.3 查询改写
+　　查询改写生成查询结果的描述结构,并将SELECT查询的目标改写为路径表达式公共类的对象.
+4.4 代数变换
+　　代数变换将上述改写的查询结果变换为一个代数表达式.由于已有的对象代数不便于表达MOQL查询,不易被DB2 SQL语言实现,而传统的关系代数又不能充分体现DB2 SQL的能力,因而,我们定义下列一组代数算子,作为查询的内部表达语言.
+　　.投影PJ[A]：PJ[A](R)=ΠA(R)；
+　　.选择SL[P]：SL[P](R)=σp(R)；
+　　.自然连接NJ[A1,A2]：NJ[A1,A2](R1,R2)=R1A1=A2 R2；
+　　.并UN： UN(R1,R2)=R1∪R2；
+　　.交INT：INT(R1,R2)=R1∩R2；
+　　.差DF：DF(R1,R2)=R1－R2；
+　　.扩充EXTEND[A1,...,An;f1,...,fn](R)将R扩充列A1,...,An,其取值为函数f1,...,fn作用于R元组的结果(f1,...,fn定义在R的属性上)；
+　　.查找LOOKUP[A1,A2,...,A2k,P]： 
+　　　　　　　　　　LOOKUP[A1,A2,...,A2k,P](R1,R2,...,Rk+1)
+　　　　　　　　　　=ΠR1(R1
+　　.排序ORDER[A,K,ASC｜DESC]是一个过程.ORDER[A,K,ASC｜DESC](R)将R中元组按属性A的升序(ASC)或降序(DESC)排序,并只取其前K个元组.它将一个关系变成一个有序表.虽然这破坏了查询结果的封闭性,但是,由于用户对内容查询的结果具有一定的倾向性,因此,要求结果按某种顺序输出是必要的.
+　　对于MOQL中定义的谓词,可以由DB2 SQL语句定义如下：
+　　.BEFOREt,AFTERt,INt,OVERLAPt 定义为BtP,AtP,ItP,OtP；
+　　.CONSTAINS定义为CoP；
+　　.BEFORE,MEETS,OVELAPS,DURING,STARTS,FINISHES和EQUALS定义为BsP,MsP,OsP,DsP,SsP,FsP和EsP.
+4.5 优化处理
+　　代数优化基于下列变换规则：
+　　(1) PJ[A](OP(R1,R2))OP(PJ[A](R1),PJ[A](R2)),OP∈{INT,UN,DF}；
+　　(2) UN(SL[P1](R),SL[P2](R)SL[P1 or P2](R)；
+　　(3) INT(SL[P1](R),SL[P2](R))SL[P1 and P2](R)；
+　　(4) SL[P](OP(R1,R2))OP(SL[P](R1),SL[P](R2))；
+　　(5) PJ[S](SL[P](R))SL[P](PJ[S](R)),S含有P中所有属性；
+　　(6) PJ[S](NJ[A1,A2](R1,R2))NJ[A1,A2](PJ[S](R1),PJ[S](R2)),A1和A2同属于S；
+　　(7) EXTEND[U,f](PJ[S](R))PJ[S,U](EXTEND[U,f](R)),f函数使用的属性在S中；
+　　(8) EXTEND[U,f](SL[P](R))SL[P](EXTEND[U,f](R))；
+　　(9) EXTEND[U,f](OP(R1,R2))OP(EXTEND[U,f](R1),EXTEND[U,f](R2))；
+　　(10) EXTEND[U,f](LOOKUP[A1,A2,...,A2k,P](R1,R2,...,Rk+1))LOOKUP [A1,A2,...,A2k,P](EXTEND[U,f](R1),R2,...,Rk+1)；
+　　(11) PJ[S](LOOKUP[A1,A2,...,A2k,P](R1,...,Rk+1))LOOKUP[A1,A2,...,A2k,P] (PJ[S](R1),R2,...,Rk+1)),S包含A1；
+　(12)SL[Q](LOOKUP[A1,A2,...,A2k,P](R1,R2,...,Rk+1))LOOKUP[A1,A2,...,A2k,P] (SL[Q](R1),R2,...,Rk+1)).
+　　定理1. 根据各个算子的定义,上列规则是正确的.
+　　证明：见附录.
+4.6 生成存取方案
+　　存取方案生成过程将代数表达式中的代数算子翻译成含有动态SQL语句和C++set过程的DB2数据库访问过程.
+　　各算子对应的SQL语句过程如下：
+　　.PJ[A](R)：SELECT A FROM R；
+　　.SL[P](R)：SELECT * FROM R WHERE P；
+　　.NJ[A1,A2](R1,R2)：SELECT * FROM R1 r1, R2 r2 WHERE r1.A1=r2.A2；
+　　.UN(R1,R2)：R1 UNION R2；
+　　.INT(R1,R2)：R1 INTESECT R2；
+　　.DF(R1,R2)：R1 EXCEPT R2；
+　　.EXTEND[A1,...,An;f1,...,fn](R)：SELECT *,f1(B1) AS A1,...,fn(Bn) AS An FROM R；(B1,...,Bn为R的属性)
+　　.LOOKUP[A1,A2,...,A2k,P](R1,...,Rk+1)：
+　　　　SELECT *
+　　　　FROM R1
+　　　　WHERE A1 IN (SELECT A2
+　　　　　　　　　　FROM R2
+　　　　　　　　　　WHERE A3 IN (...(SELECT A2kFROM Rk+1WHERE P)...))
+　　ORDER[A1,K,ASC｜DESC](R)：是一个含有动态SQL语句的C语言过程.
+4.7　执行存取方案
+　　将上述生成的含有动态SQL语句的查询方案在DB2系统中运行,得到满足条件的对象OID.
+5　小结与讨论
+　　本文主要讨论多媒体数据库查询的需求、MOQL语言及其查询处理.MOQL语言能够支持类型、结构、同步关系、时间关系及内容查询的、简单的多媒体数据库查询语言.本文讨论了以DB2数据库作为存储机制的 MOQL语言查询处理技术.查询处理过程中,以用户定义的MOQL查询作为源语言,以DB2数据库上运行的含有动态SQL语句的DB2查询过程作为目标语言,定义了一组代数算子作为查询优化的内部表现机制,给出了一组变换规则以便进行代数优化.
+　　未来的工作包括：(1) 提高MOQL语言的表达能力.(2) 定义更完备的代数算子集和优化规则集.(3) 基于代价模型的优化技术.(4) 研究各种非结构化媒体的内容查询方法.
+　　本文研究得到国家自然科学基金、国家863高科技项目基金和国家教育部博士点基金资助.作者田增平,1968年生,博士,讲师,主要研究领域为面向对象数据库,多媒体数据库.党华锐,1964年生,博士,副教授,主要研究领域为数据库,网络通信.周傲英,1965年生,博士,教授,博士生导师,主要研究领域为数据库理论及应用.施伯乐,1936年生,教授,博士生导师,主要研究领域为数据库理论及应用.
+　　本文通讯联系人:田增平,上海200433,复旦大学计算机科学系
+　　作者单位：复旦大学计算机科学系　上海　200433
+参考文献
+　1　Woelk D, Kim W. An extensible framework for multimedia information management. Data Engineering, 1987,(3):115～121
+　2　Goble C, Docherty M O et al. The Manchester multimedia information system.In: Goos G, Hartmanis J eds. Proceedings of the International Conference Extending Database Technology. Berlin: Springer-Verlag, 1992. 39～55
+　3　Little T D. A frame work for synchronization delivery of time-dependent multimedia data. Multimedia Systems, 1993,1(1):87～94
+　4　Karmouch A, Emery J. A playback schedule model for multimedia documents. IEEE Multimedia, 1996,(3):50～61
+　5　Megalni C, Rabitli F et al. Conceptual modeling of multimedia documents. IEEE Computer, 1991,24(10):23～29
+　6　Flicker M, Sawhney H et al. Query by image and video content: the QBIC system. IEEE Computer, 1995,28(9):22～31
+　7　Gupta A, Weymouth T E, Jain R. Semantic queries with pictures: the VIMSYS model. In: Lohman M, Sernadas A, Camps R eds. Proceedings of the 17th International Conference Very Large Databases. Barcelona: Morgan Kaufmann Publishers, Inc., 1991. 69～79
+　8　Wu J K et al. CORE: a content-based retrieval engine for multimedia information systems. Multimedia Systems, 1995,3(1):43～52
+　9　Oomoto E, Tanaka K. OVID: design and implementation of a video-object database system. IEEE Transactions on Knowledge and Data Engineering, 1993,5(4):629～643
+　10　Allen J F. Maintaining knowledge about temporal intervals. Communications of ACM, 1983,26(11):832～843
+
+
+附录：
+　　定理1的证明:
+　　(1) 由关系代数理论知变换规则(1)～(6)是正确的.下面主要证明规则(7)～(12)的正确性.
+　　(2) 规则(7)左部：EXTEND[U,f](PJ[S](R))=EXTEND[U,f]({s｜s=ΠS(r)∧r∈R})={(s,u)｜s=ΠS(r)∧r∈R∧u=f(r)},
+　　　　规则(7)右部：PJ[S,U](EXTEND[U,f](R))=Π[S,U]({(r,u)｜r∈R∧u=f(r)})={(s,u)｜s=Πs(r)∧r∈R(u=f(r)},
+故规则(7)成立.
+　　(3) 规则(8)左部：EXTEND[U,f](SL[P](R))=EXTEND[U,f]({r｜P(r)∧r∈R})={(r,u)｜P(r)∧r∈R∧u=f(r)},
+　　　　规则(8)右部：SL[P](EXTEND[U,f](R))=σp{(r,u)｜r∈R∧u=f(r)}={(r,u)｜P(r)∧r∈R∧u=f(r)},
+故规则(8)成立.
+　　(4) 这里仅证明OP为UN时的情况,其他情况由下列证明易得.
+　　　　规则(9)左部：EXTEND[U,f](UN(R1,R2))=EXTEND[U,f]({r｜r∈R1∨r∈R2})={(r,u)｜(r∈R1∧u=f(r))∨(r∈R2∧u=f(r))},
+　　　　规则(9)右部：UN(EXTEND[U,f](R1),EXTEND[U,f](R2))=UN({(r,u)｜r∈R1∧u=f(r)},{(r,u)｜r∈R2∧u=f(r)})={(r,u)｜(r∈R1∧u=f(r))∨(r∈R2∧u=f(r))},
+故规则(9)成立.
+　　(5) 规则(10)左部：EXTEND[U,f](LOOKUP[A1,A2,...,A2k,P](R1,R2,...,Rk+1))
+　　　　
+　　　　规则(10)右部：LOOKUP[A1,A2,...,A2k,P](EXTEND[U,f](R1),R2,...,Rk+1)
+　　　　
+故规则(10)成立.
+　　(6) 规则(11)左部：PJ[S](LOOKUP[A1,A2,...,A2k,P](R1,...,Rk+1))
+　　　　
+　　　　规则(11)右部： LOOKUP[A1,A2,...,A2k,P](PJ[S](R1),R2,...,Rk+1))
+　　　　
+故规则(11)成立.
+　　(7) 规则(12)左部：SL[Q](LOOKUP[A1,A2,...,A2k,P](R1,R2,...,Rk+1))
+　　　　
+　　　　=LOOKUP[A1,A2,...,A2k,P](SL[Q](R1),R2,...,Rk+1)
+　　　　=规则(12)右部.
+　　由(1)～(7)知,定理1成立.　　□
+1998-04-16收到原稿 
+1998-08-04收到修改稿

@@ -1,0 +1,222 @@
+软件学报
+JOURN AL OF SOFTWARE
+1999年　第10卷　第10期　Vol.10　No.10　1999
+
+
+
+多媒体信息网络QoS的控制
+林 闯
+摘要 文章综述了多媒体信息网络在服务质量(QoS)研究方面的一些最近的工作,着重论述了接纳控制和信源整形、QoS选路和资源预留、基于QoS的传输调度、综合服务网的QoS控制等问题.文章还描述了多媒体信息网络QoS控制的技术以及所面临的问题和进一步的研究方向.
+关键词服务质量(QoS),接纳控制,信源整形,QoS选路,资源预留,QoS调度.
+中图法分类号TP393
+On QoS Control of Multimedia Information Networks
+LIN Chuang
+(State Information Center Beijing 100045)
+Abstract This is a review paper on recent works about quality of service (QoS) of multimedia information networks. A brief of the technologies considered in the literatures is given in this paper. These technologies include admission control, traffic shaping, QoS routing, resource reservation, QoS based scheduling, and QoS control for integrated services. A few of methodologies, research directions and open problems in this area are discussed in this paper.
+Key words Quality of service (QoS), admission control, traffic shaping, QoS routing, resource reservation, QoS scheduling.
+　　在当今的网络中,多种应用需要提供服务质量(QoS)控制,例如,视频会议、IP电话和远程教育等.多媒体信息传输的QoS控制技术也是下一代网络的核心技术之一,是当前网络研究与开发的热点问题.
+　　多媒体高速网络的研究开发近几年进展得异常迅速,QoS问题的研究已经有了一些基本成果,这些成果大量地反映在IEEE INFOCOM每年的会议论文集和Internet的IETF RFC(request for comments)标准草案中.但是,目前QoS的研究开发在很多方面仍然是开放的,其主要问题有:(1) 网络系统状态和链路带宽容量变化的不确定性,传输通路端-到-端带宽预留缺乏有效的保证;(2) QoS选路、资源预留和信息传输调度算法的复杂性,还不能适应高速信息传输处理时间的要求;(3) QoS要求所导致的资源利用的无效性,不能充分利用网络资源提高网络的吞吐量;(4) QoS控制方案基本上还是静态方案,缺乏有效的动态控制方案;(5) 一些基本研究成果主要存在于理论中,还没有形成专利或技术产品.现存的网络交换机或路由器还不能完全保证用户服务质量,缺乏简单而有效的控制方案和算法的实现,传输管理与控制亟待改进.在Internet中,为了使IP(Internet protocol)网络不仅能传输非实时的数据信息,而且还能传输实时的多媒体信息,国际上的标准化组织,如ITU,IETF等已开始起草并完成了一些用于IP实时通信的标准,如实时传输协议/实时控制协议RTP/RTCP(real-time protocol/real-time control protocol)、资源预留协议RSVP(resource reservation protocol)以及H.323标准等.这些协议和标准对用户服务质量控制的研究提供了一定的基础,但还有很远的路要走.
+　　QoS控制主要包括信息传输的实时性和信息丢失的管理与控制等问题[1].在多媒体网络中,不同用户可能有不同的传输要求.例如,视频和音频的传输有实时的要求,超时的信息不能使用,但同时可以容忍某种程度的信息丢失;而数据的传输则不容许信息的丢失,但传输的时延则不成问题.因此,要保证信息传输的实时性和丢失的综合要求是多媒体网络传输控制的一个重要问题[2].
+　　本文主要参考IEEE INFOCOM 97年、98年和99年会议论文以及Internet有关QoS的RFC标准草案,结合作者多年的研究工作,就QoS控制与管理4个方面的问题进行探讨和综述,它们包括接纳控制和信源整形、QoS选路和资源预留、基于QoS的传输调度、综合服务网的QoS控制.虽然ATM和Internet两种网络对QoS控制的协议和实现有所不同,但多数QoS控制的技术方法和思路却可以互用.本文重点介绍上述问题研究的技术和思路.这些思路和技术对多媒体网络QoS控制的理解、设计和实现具有普遍意义.
+1　接纳控制和信源整形
+　　为了保证传输的QoS,任何实际的QoS传输控制方案必须考虑对用户传输实施接纳控制(admission control),对其信源实施整形(traffic shaping)[3].
+　　QoS的传输连接要求在新用户传输前进行接纳控制[4,5].在用户入网时要求用户把自己的传输特性和参数以及他所要求的服务质量告知网络,网络再根据用户的传输性能要求和网络现存的资源情况,同用户协商决定是否接纳建立一个新的QoS传输的连接.
+　　在QoS接纳控制中,有3个主要问题需要研究:哪些传输参数可以确切地描述一个连接的传输?网络使用哪些判据来决定是否接受一个新的连接?网络性能与传输参数之间的关系如何?
+　　(1) 传输描述参数
+　　在目前的网络QoS研究中,要求用户提供的有关QoS属性的参数主要包括:
+　　峰值分组速率(peak packet rate): 是指传输中的最大瞬间速率,可用产生两个相邻分组的最短时间间隔的倒数来表示;
+　　平均分组速率(sustained packet rate): 是指一段时间内分组传输的平均速率;
+　　分组丢失率(packet loss rate): 是指由于出错或阻塞,网络上丢失的分组数与用户发出的分组总数之比;
+　　分组传输时延(packet transfer delay): 是指分组从信源发出的源节点至到达目的节点之间的时间,由传播时延、排队时延、交换时延等组成;
+　　分组时延变化量(packet delay variation): 是分组传输时延的变化度量,当该变量取值高时,意味着要给延迟敏感数据(如声音和图像)传输提供较大的缓冲.
+　　(2) 接纳判据
+　　接纳判据是指网络在判断是否接受一个新的连接时决定的依据.分组传输时延和分组丢失率[6]是两个最常用的接纳判据.
+　　在QoS控制网络中,分组传输可采用统计多路复用的方法共享带宽资源,各个连接没有固定速率的专用信道,当某一连接传输量增加时,会占用其他连接的资源,从而会影响其他连接的服务质量,特别是由于多媒体网络传输具有高突发性、高速率的特点,其传输速率变化很快,因此增加了接纳控制过程的复杂性.仅使用长时间项的平均分组传输时延和分组丢失率作为接纳判据,不能充分表示多媒体网络快速、动态变化的程度,因此必须虑能反映网络瞬间行为的判据.一些短时间项的瞬间行为的判据,例如,传输时延的变化、分组丢失变化率等应在多媒体网络中采用.
+　　(3) 网络性能与传输参数之间的关系
+　　在多媒体网络的接纳控制中,一个重要的研究问题是各种传输参数与网络性能之间的关系.一些定性的关系和影响已经给出,但是如何给出定量的数学描述来表明它们之间的关系仍然面临挑战,尤其是在多个异种传输流被多路复用的情况下更是一个难题.
+　　在多媒体网络中,传输流是高度突发的,其传输速率变化很大,QoS网络系统一般要对分组到达的流速进行整形并对用户所使用的信道带宽实行监控.信源整形和带宽监控技术就是要避免分组在网络中的突发性传输,达到改善网络QoS性能的目的.传输整形技术成功的关键在于减少传输时延和分组的丢失.
+　　可以使用传输限制函数来描述信源整形,如图1所示.b(t)表示在时间长度t内信源能够发送进入网络的分组个数,Aj[s1,s2]表示在时间间隔[s1,s2]连接(或会话,在本文中,二者一般不加区别)j到达的分组数量.传输限制函数可以表达为
+
+
+　　目前最常用的信源整形和带宽监控技术是“漏桶”(leaky bucket)算法,这个算法可将突发信源流转化为平缓传输流,并确保用户的传输流遵守用户在建立连接时的规定.
+　　漏桶算法的基本思想是,任何一个分组要进入网络,一定要从令牌池(漏桶)中取得一个令牌,如果此时令牌池为空,则该分组被丢失.令牌由网络平均接纳速率R产生,令牌池最多可存放P个令牌(P即漏桶的大小),令牌池满时,新产生的令牌被丢弃,图2是这种方法的示意图.在漏桶算法限定信源模型中,传输限制函数b(t)=P+Rt.一个信源允许在任意短的时间间隔内发送P个分组的突发信息,但在长时间间隔范围内,信源被限定以平均速率R来发送[7].
+　　一个改进方法是,在分组到达漏桶前增加一个缓冲区,这样,当令牌池为空时,只要缓冲器没有满,分组就可以缓存在缓冲器中而不被丢失,如图3所示.
+　　　　　　
+　　　　　　　图2　漏桶算清法　　　　　　　　　　图3　带缓冲器的漏桶算法
+　　这些漏桶算法还有一些缺点,例如,即使在网络负载很低时,漏桶算法对违约分组仍然采用丢弃或放入缓冲区的方法,由于算法的限制,减缓了传输流速,造成网络资源的浪费.采用标志法可以对此加以改善:当分组到达,但令牌池为空或缓冲器已满时,就将该分组打上一个标志,说明是违约分组,然后接纳它进入网络,如果在网络某处遇到拥塞,则丢弃,若一直没有遇到拥塞,则可到达目的节点.这也是目前IP网络所采用的区分服务的基本思路.
+　　信源整形仅限定在信源入网处,非QoS传输不需要整形[8].
+2　QoS选路和资源预留
+　　QoS选路所涉及的选路机制要完成两个目标[9]:选择满足QoS要求的通路;如果存在多条可行的通路,选择一条有效的通路以完成高网络吞吐量.QoS选路主要包括管理选路信息(例如,链路状态或距离向量)和选路算法.在信息传输之前,在源节点和目的节点之间建立某种连接[10],为这个连接预留有效的带宽等资源[11].带宽预留的原则是确保QoS传输的端-到-端时延和分组丢失率,但目前的研究偏重于端-到-端时延保证.这个时延基本上包括固定时延(线路传输时延等)和排队时延两部分.固定时延表现了选择通路的特性,可由通路选择算法描述;而排队时延则由QoS控制的调度策略决定.在这一节,我们将介绍和讨论时延保证的选路算法、选路的策略、不确定信息环境的选路以及选路的实现.
+2.1线路传输时延保证的选路算法
+　　在假定网络所有链路的带宽信息都确定有效的情况下,一个网络可由一个图G=(V,E)表示,V是节点集合,E是链路(或边)集合.对于i,j∈V的链路e=(i,j)∈ E,它能够传输信息的带宽为B(e)分组/秒.每个分组在链路e上传输的时延为D(e),一个分组在时间t从节点i发送,将在时间t+D(e)到达节点j.链路时延D(e)包括链路的准备时间和在链路上的传播时间.由于分组的连续发送,r个分组沿着链路e发送,时延时间为r/B(e)+D(e)[12].
+　　考虑一条从节点i0到ik的通路,它由链路(i0,i1),(i1,i2),… ,(ik- 1,ik)构成,对于j=1,0,… ,(k- 1),(ij,ij+1)∈E.如果i0,i1,…,ik是不相同的,这条通路是简单的.这条通路P的时延由D(P)表示,D(P)=ΣK-1j=0,其中ej=(ij,ij+1).这条通路的带宽由B(P)表示,B(P)=minK-1j=0B(ej).
+　　线路传输时延保证问题可以描述如下:给定计算机网络G=(V,E),所有e∈E的时延D(e)和带宽B(e),任务是计算一条从源节点s到目的节点d的通路P,在P上发送r个分组,使得从s发送第1个分组起到d接收最后一个分组止的传输时间不超过t ,亦即r/B(P)+D(P)τ.
+2.2选路策略
+　　QoS选路建立的通路既要可行(满足端-到-端时延保证),又要网络有效(符合网络资源管理要求).要达到两个重要目标:减少计算的复杂性和优化网络资源的消耗[13].
+　　具有多重目标的QoS选路问题是典型的NP完全问题.对于这样的问题,一般可以使用一些标准近似方法求解,但是不能用于大规模的、复杂的网络.目前,算法的研究集中在利用网络层次的、可压缩的拓扑结构特性方面[13].
+　　如果在源节点和目的节点存在多条不相交的通路,一个重要的选路策略是如何选择一条通路.这个选路策略的目标是保证发送速率、优化网络资源的消耗和增强网络适应进一步呼叫的能力.在这方面经常考虑的策略包括:负载平衡、最短时延、最短-最宽通路和概率选择(不确定链路状态)等.
+　　在线路交换网络中,在单一服务情况下,每一个传输流的带宽要求是常数,与同一链路的其他传输流无关,选择最小负载通路(least-loaded path)策略可平衡网络负载,减少新用户呼叫阻塞的概率.然而在多媒体服务的分组交换网络中,由于链路的统计复用和不同传输流的混合,通路选择的策略同经典的负载平衡策略相反[14],选择最坏负载通路(worst-loaded path)策略可达到较好的效果,它可以在最小负载通路上留下更多带宽容量为要求高带宽的新用户呼叫服务.另外,由于统计复用特性,将不同的传输流放在同一条连接通路上会更有效,选择当前信源速率概率分布压缩方差最大的通路可以节省带宽要求[14].
+2.3不确定信息环境中的选路
+　　随着网络规模的增长,网络元素状态的不确定性也会自然地增长.选路必须依赖部分和近似的信息,使所选择的通路仍然满足QoS.如何提供必要的信息?有效参数的语义依赖于所使用的描述方法.例如,我们可以考虑使用平均值、正态分布的一个可能范围或者最好、最坏值.通路选择过程的目标之一就是选择一条通路使其最可能满足QoS[15].同链路状态值相联系的确切概率分布取决于网络修改和网络动态行为的知识.对于广泛的概率分布,这个问题的求解是不可能的.然而,可以定义具有聚集特性的一类分布来建立确切和有效的算法.实际系统中的典型分布属于这类分布.在实施不确定信息选路时,可以考虑将端-到-端时延限制分解为局部时延限制,以便建立有效、可行的算法.然后结合链路状态值的概率分布来考虑选路的综合优化问题.
+2.4选路的实现
+　　在实际选路实现中,选路过程依赖于一些分布协议,主要包括链路状态协议、资源预留协议RSVP[9,11]和实时传输协议/实时控制协议.链路状态协议完成每个节点带宽等当前参数的修改和向网络其他节点播发本节点参数的修改[13].资源预留协议主要完成带宽等资源的预留.实时传输协议/实时控制协议完成实时分组的排队处理和控制.在IP综合服务网络中,已有一个开放的路由协议“开放最短路优先” (open shortest path first,简称OSPF)的实现.在此基础上,已加入了QoS选路扩展的实现[16].
+　　在Internet的视频会议等应用中,选路是多路连接的,它包含了很多节点,而且这些成员是动态变化的.如何在这种环境中实现动态选路和预留资源是一个难题[9].
+3　基于QoS的传输调度
+　　调度算法的基本功能是从节点的每一个输出链路中挑选在下一个有效周期发送的分组.QoS传输调度控制要基于几个原则,例如,带宽的保证、流的隔离、时延的保证和公平选择等.协议和算法的复杂性要适应网络高速传输和便于实现,使其具有可扩展性和鲁棒性.调度算法可以分为两类:基于速率的调度算法和基于时间的调度算法.
+　　目前最主要的调度策略都是近似广义处理器共享(generalized processor sharing,简称GPS)的调度策略.在Internet中,有关近似GPS调度策略的规定在文献[8]中有所描述.在处理器共享(processor sharing,简称PS)调度中,对于每个连接(会话)都有一个先进先出(FIFO)队列,它们共享着相同的链路.在任何时间间隔都正好有N个非空队列,服务器以链路速率的1/N同时传送在队列头部的N个分组.PS方案以相同速率服务所有非空队列,GPS方案则是PS方案的扩充,允许不同的会话有不同的服务速率.GPS方案有两个特性:可以保证端到端有界时延服务和确保带宽的公平分配.
+　　GSP调度器特性[17]可以描述如下.让N个连接(会话)由N个正实数φ1,φ2,… ,φN刻画,Wi(s,t)是会话i在时间间隔[s,t]接收服务的发送量.对于在[s,t]期间正在传输的会话i要满足下列不等式:
+　　　　　　　　　　　　　　　　 (1)
+　　对于在[s,t]期间正在传输的任何两个会话i和j,有
+.　　　　　　　　　　　　　　　　　 (2)
+式(2)表明,调度器按照f i的比例分布带宽给所有的在[s,t]期间正在传输的会话,因此，f i可以叫做服务共享权.让C是服务速率,所有会话的发送量有
+. 　　　　　　　　　　　　　　　(3)
+从式(1)～(3),我们能获得会话i的最小服务速率xi为
+　　　　　　　　　　　　　　　 (4)
+式(4)表明GPS调度器的隔离特性,每一个会话不受其他会话的影响,可以有其最小服务速率的下界,服务速率的下界确保了会话传输时延的上界.服务共享权既用于描述最小要求的服务速率,又表示了公平共享的比例.
+　　由服务共享权的含义和接纳控制的保证可知
+　　　　　　　　　　　　　　　　　　(5)
+　　以上描述的GSP调度器特性表明,GSP可以同时提供隔离和公平特性连同速率和时延的保证[17].
+　　GPS方案只是一个理想的流体模型,而不能完全在实际中应用.大多数感兴趣近似GSP的调度器是要考虑分组传输并按速率比例服务的调度器[18].在流体系统和分组网络之间的区别是:在任何时间,在流体系统中有多个分组同时接受服务,而在分组网络中仅能有一个分组接受服务.时延保证是所有这些近似GSP调度器的公共特性,但公平特性每个调度算法却各不相同.在近似GSP调度器的节点,服务器使用系统虚拟时间函数为系统中的分组计算时间标签,时间标签规定这个分组相对于其他分组应当被服务的时间,分组的服务按照它们时间标签值增加次序排列.在每个会话队列头部的分组时间标签值作为会话的时间标签值.系统虚拟时间函数决定这类算法的时延和公平特性.
+　　近似GPS策略调度算法实现的复杂性主要是由维持和分类所有连接时间标签的复杂性决定的,具体包括:(1) 系统虚拟时间函数所要求计算的复杂性;(2) 为了选择和发送具有最小时间标签分组而进行分类操作的复杂性;(3) 处理和存储时间标签的花费.
+　　简化近似GPS策略调度算法实现的复杂性是QoS调度策略的主要研究方向.最近提出的离散速率调度算法[18]并不要求给每一个连接计算和存储一个时间标签,仅对每一种速率维持一个时间标签.这种调度器有非常简单的两层层次结构.在这个层次结构的低层,使用先进先出(FIFO)队列,一种速率一个FIFO队列,一个队列仅有一个时间标签.具有相同速率的所有连接使用一个队列,这样就减少了时间标签的数量,因而降低了实现的复杂性.在这个层次结构的高层,使用一个最坏情况公平调度器,在不同FIFO队列中进行调度.
+　　现在已研究的近似GPS调度策略的例子有自时钟公平排队(self-clocked fair queueing,简称SCFQ)方案[19]、虚拟时钟(virtual clock,简称VC)方案、最坏状况公平加权公平排队(worst-case fair weighted fair queueing,简称WF2Q)方案[20]和最小时延自时钟公平排队(minimum-delay self-clocked fair queueing,简称MD-SCFQ)方案[18]等.公平排队方案最根本的思路就是给每一个会话以对有效带宽的公平共享,亦即相等的存取权力.在加权公平排队方案中,调度器可以分配不同的权力给不同的会话.
+　　在加权公平排队方案中,一个连接中的每个服务节点除了服务时延外都要有等待时延,这些等待时延要累加起来,将形成会话传输时延的一部分.文献[21]提出了协调最早到期优先(coordinated-earliest-deadline-first,简称CEDF)的调度算法来克服等待时延的累加.一旦一个分组通过它的第1个服务器,它就能很快地通过它所有剩下的服务器.CEDF算法没有累加分组通过每个服务器的等待时延.
+4　综合服务网的QoS控制
+　　在综合服务网络[22]中,传输流基本可以分成两大类:QoS传输流和尽量做好(best-effort)传输流.QoS传输流目前又可分为保证服务(guaranteed service)[8]、控制负载服务(controlled-load service)[23]和区分服务(differentiated services)[24]等传输流.它们需要QoS控制,必须为其选路,预留带宽、缓冲和处理能力等资源[25]并进行实时调度控制.而尽量做好的传输流没有QoS保证,其带宽分配可以动态地改变,可以根据当前时刻的传输要求和网络的有效带宽进行分配.
+　　在网络中,实时传输一般使用常数位速率(constant bit rate,简称CBR)和实时可变位速率(variable bit rate,简称VBR)服务;非实时传输一般使用非实时可变位速率、有效位速率(available bit rate,简称ABR)、无规定位速率(unspecified bit rate,简称UBR).实时传输属于QoS控制的传输,典型的应用包括音频和视频互放的应用.ABR服务属于典型的尽量做好传输,典型的应用包括文件和E-mail的传输.
+　　如果仅分别考虑不同服务级别的选路,QoS传输流选路重视减少新用户呼叫阻塞概率,而尽量做好传输流的选路,重视避免链路拥塞和改进每个会话的吞吐量.但在综合服务网络中包含着多个服务流时,如果仅为每一个流选择一个优化的通路,这样优化的通路将可能增加其他级别流的拥塞条件.因此,需要一个机制能够根据当前的负载情况在不同服务流之间动态地分配链路资源,这是综合服务网络QoS选路的性能关键[26].综合服务网络QoS选路可使用下述3种策略.
+　　(1) 静态链路共享策略.将链路的容量静态地在QoS传输流和尽量做好传输流之间分配.问题是在两种传输流比例随着时间而动态改变时,如何静态地决定资源的分配比例.另外,每种传输流在网络中不是均衡分布的,QoS传输流可能集中在网络的一部分,而尽量做好传输流集中在网络的另一部分,静态共享策略不适应这种不平衡.
+　　(2) 半动态链路共享策略.测量不同传输流的总链路利用率,周期地修改不同流的资源分配比例.这种策略不适应链路利用率的突然改变,它们的反映时间太长.
+　　(3) 动态链路共享策略.分别测量不同传输流的链路利用率,考虑到Internet主要传输流是尽量做好传输流,QoS传输流的选路应选择尽量做好传输流低拥塞的链路.为了更好地表示链路的利用率,在文献[26]中采用虚拟剩余带宽概念来表示不同传输流的状况.
+　　为了确保QoS传输流的端-到-端时延界限,就要根据QoS传输流最坏可能状况预留资源,因此,典型QoS传输流实际到达时延要远小于保证的端-到-端的时延界限,这势必限定网络资源有效的利用.据对某些状况的统计,带宽多路复用的利用率仅达30%[7].另外,在视频互放的应用中,由于分组到达经常早于它们要被传递的时刻,因此在接收系统还需要缓冲它们,直至应用处理它们[8].这一点也表明系统需要减少分组到达最小和最大时延之间的差.
+　　为了克服网络资源利用率的限制,在QoS传输流的预留资源不能充分利用时,可以考虑临时引入尽量做好传输流使用这部分空闲的资源.但当QoS传输流完全“忙”时,就让QoS传输流完全占用预留资源.这样的动态带宽调度既可满足QoS传输流的QoS要求,又可提高网络的性能[27].
+　　在动态带宽调度策略中,一个直接和简单的方法就是在每个网络节点给尽量做好传输流最低的可能优先级[28].如图4所示,假定会话从1~k有QoS要求的传输流,会话从k+1到N是尽量做好传输流.会话从1~k需要信源整形,而会话从k+1到N不需要信源整形.队列从1~k比队列从k+1到N有更高的发送优先级,仅当队列从1~k中没有分组时,队列从k+1到N中的分组才有被发送的可能.对于QoS传输流的每一个会话,在连接建立时可以根据它所要求的QoS给每一个会话一个优先级[7].
+　　
+图4 综合服务的静态优先级调度器
+　　这种静态优先级方法还不能充分地提高网络资源的利用率[29].另外一种方法是,只要满足QoS传输流按时到达目的节点的要求就给尽量做好传输流最高的可能优先级[30,31].这种方法的思路显然比前一种方法更有效,也更公平,但是它的实现也较复杂.对于这种方法的一种实现方法可以考虑在QoS传输流的边界节点计算传输时延的界限和处理时间.在这个通路的每个节点,对每一个要离开节点的QoS分组给一个时间“邮戳”,时间邮戳记录还多余到达目的节点的时间.每个节点可以根据时间邮戳和局部调度处理插入尽量做好传输流,减少邮戳多余时间,当邮戳多余时间为零时不能插入尽量做好传输流.这种方法的一个关键问题是如何将每个节点的调度算法扩充为整个网络的调度算法.如何清楚地刻画节点局部控制的性能对整个网络性能的影响是一个困难的问题[32].
+　　另外一种动态优先级方法,可以考虑计算每一个QoS分组在每一个节点的停留时间界限,给达到停留时间界限的QoS分组最大的优先发送权,在所有QoS分组都没有达到停留时间界限时,给尽量做好传输流最高的可能优先级[33].
+　　在综合服务网络中,用户可以根据服务的要求、费用和喜好选择服务的级别.当尽量做好传输流客户的传输发生拥塞且不能满足性能要求时,流控机制可以将尽量做好传输流客户的传输转到QoS服务级别[34].
+　　多媒体网络QoS控制的设计和实现面临着众多的折衷,不可能有一种设计和实现在所有环境中都是“最好的”[1].现有的QoS控制思路、方法和技术在多目标的综合方案中更是面临着挑战,它们仍然是开放问题.
+注释：本文研究得到国家自然科学基金和国家863高科技术项目基金资助。
+作者简介：林 闯：1969年生，博士，研究员，主要研究领域为系统性能评价计算机网络，随机
+　　　　　Petri网；
+作者单位：国家信息中心 北京 100045
+参考文献
+1.　Shenker S, Wroclawski J. Network element service specification template. IETF 
+　　FC 2216, September 1997
+2.　林闯.ATM网络一种实时传输调度和分组丢失控制的综合方案.计算机学报,1998,21(4):333
+　　～340(Lin Chuang. Integration of traffic scheduling and cell loss control in ATM
+　　networks. Chinese Journal of Computers, 1998,21(4):333～340)
+3.　Reisslein M, Ross K W, Rajagopal S. Guaranteeing statistical QoS to regulated 
+　　traffic: the single node case. In: Proceedings of the 18th Annual Joint 
+　　Conference of the IEEE Computer and Communications Societies (IEEE INFOCOM’99). 
+　　New York: IEEE Computer Society, 1999. 1601～1072
+4.　Lin Chuang, Chanson S T. ATM admission models of stochastic high level Petri 
+　　nets based on hierarchical modeling. In: Proceedings of 1995 International 
+　　Conference on Network Protocols. Tokyo: IEEE Computer Society, 1995. 144～151
+5.　林闯,张元生.基于随机高级Petri网的ATM网络接纳控制过程模型.通信学报,1998,19(12):1
+　　～7(Lin Chuang, Zhang Yuan-sheng. Modeling ATM admission control procedures 
+　　using stochastic high level Petri nets. Journal of China Institute of 
+　　Communications, 1998,19(12):1～7)
+6.　Kurz T, Thiran P, Boudec J L. Regulation of a connection admission control 
+　　algorithm. In: Proceedings of the 18th Annual Joint Conference of the IEEE 
+　　Computer and Communications Societies (IEEE INFOCOM’99). New York: IEEE 
+　　Computer Society, 1999. 1053～1060
+7.　Knightly E W. Enforceable quality of service guarantees for bursty traffic 
+　　streams. In: Proceedings of the 17th Annual Joint Conference of the IEEE 
+　　Computer and Communications Societies (IEEE INFOCOM’98). San Francisco,CA: IEEE
+　　Computer Society, 1998. 635～642
+8.　Shenker S, Partridge C, Guerin R.Specification of guaranteed quality of service.
+　　IETF RFC 2212, September 1997
+9.　Crawley E, Nair R, Rajagopalan B et al. A framework for QoS-based routing in the
+　　internet. IETF RFC 2386, August 1998
+10.　Cidon I, Rom R. Multi-path routing combined with resource reservation. In: 
+　　Proceedings of the 16th Annual Joint Conference of the IEEE Computer and 
+　　Communications Societies (IEEE INFOCOM’97). Kobe: IEEE Computer Society, 1997. 
+　　92～100 
+11.　Braden R, Zhang L, Berson S et al. Resource ReSerVation Protocol(RSVP)(Version 
+　　1): Function Specification. IETF RFC 2205, September 1997 
+12.　Rao N S V, Batsell S G. QoS routing via multiple paths using bandwidth 
+　　　reservation. In: Proceedings of the 17th Annual Joint Conference of the IEEE 
+　　Computer and Communications Societies (IEEE INFOCOM’98). San Francisco, CA: IEEE 
+　　Computer Society, 1998. 11～18
+13.　Orda A. Routing with end to end QoS guarantees in broadband networks. In: 
+　　Proceedings of the 17th Annual Joint Conference of the IEEE Computer and 
+　　Communications Societies (IEEE INFOCOM’98). San Francisco, CA: IEEE Computer 
+　　Society, 1998. 27～34
+14.　Su C F, Veciana G. On statistical multiplexing, traffic mixes, and VP 
+　　management. In: Proceedings of the 17th Annual Joint Conference of the IEEE 
+　　Computer and Communications Societies (IEEE INFOCOM’98). San Francisco, CA: 
+　　IEEE Computer Society, 1998. 643～650
+15.　Lorenz D H, Orda A. QoS routing in networks with uncertain parameters. In: 
+　　Proceedings of the 17th Annual Joint Conference of the IEEE Computer and 
+　　Communications Societies (IEEE INFOCOM’98). San Francisco, CA: IEEE Computer 
+　　Society, 1998. 3～10
+16.　Apostolopoulos G, Guerin R, Kamat S. Implementation and performance 
+　　measurements of QoS routing extensions to OSPF. In: Proceedings of the 18th 
+　　Annual Joint Conference of the IEEE Computer and Communications Societies (IEEE
+　　INFOCOM’99). New York: IEEE Computer Society, 1999. 680～688
+17.　Toutain F. Decoupled generalized processor sharing: a fair queuing principle 
+　　for adaptive multimedia applications. In: Proceedings of the 17th Annual Joint 
+　　Conference of the IEEE Computer and Communications Societies (IEEE 
+　　INFOCOM'98).San Francisco, CA: IEEE Computer Society, 1998. 291～298
+18.　Chiussi F M, Francini A. Implementing fair queuing in ATM switches: the 
+　　discrete-rate approach. In: Proceedings of the 17th Annual Joint Conference of 
+　　the IEEE Computer and Communications Societies (IEEE INFOCOM’98).San Francisco,
+　　CA: IEEE Computer Society, 1998. 272～281
+19.　Golestani S J. A self-clocked fair queuing scheme for broadband applications. 
+　　In: Proceedings of the 13th Annual Joint Conference of the IEEE Computer and 
+　　Communications Societies (IEEE INFOCOM’94). Toronto: IEEE Computer Society, 
+　　1994. 636～646
+20.　Bennett J C R, Zhang H. WF2Q: worst-case fair weighted fair queuing. In: 
+　　Proceedings of the 15th Annual Joint Conference of the IEEE Computer and 
+　　Communications Societies (IEEE INFOCOM’96). San Francisco, CA: IEEE Computer 
+　　Society, 1996. 120～128
+21.　Andrews M, Zhang L. Minimizing end-to-end delay in high-speed networks with a 
+　　simple coordinated schedule. In: Proceedings of the 18th Annual Joint Conference
+　　of the IEEE Computer and Communications Societies (IEEE INFOCOM’99). New York: 
+　　IEEE Computer Society, 1999. 380～388
+22.　Braden R, Clark D, Shenker S. Integrated services in the internet architecture: 
+　　an overview. IETF RFC 1633, June 1994
+23.　Wroclawski J. Specification of the controlled-load network element service. 
+　　IETF RFC 2211, September 1997
+24.　Nichols K, Jacobson V, Zhang L. A two-bit differentiated services architecture 
+　　for the internet. IETF Internet Draft ＜ draft-nichols-diff-svc-arch-00.tex＞ , 
+　　Nov. 1997
+25.　Wroclawski J. The use of RSVP with IETF integrated services. IETF RFC 2210, 
+　　September 1997
+26.　Ma Q, Steenkiste P. Supporting dynamic inter-class resource sharing: a 
+　　multi-class QoS routing algorithm. In: Proceedings of the 18th Annual Joint 
+　　Conference of the IEEE Computer and Communications Societies (IEEE INFOCOM’99).
+　　New York: IEEE Computer Society, 1999. 649～660
+27.　Elwalid A, Mitra D. Design of generalized processor sharing schedulers which 
+　　statistically multiplex heterogeneous QoS classes. In: Proceedings of the 18th 
+　　Annual Joint Conference of the IEEE Computer and Communications Societies (IEEE 
+　　INFOCOM’99). New York: IEEE Computer Society, 1999. 1220～1230
+28.　Lin D. Constant-time dynamic ATM bandwidth scheduling for guaranteed and best 
+　　effort services with overbooking. In: Proceedings of the 16th Annual Joint 
+　　Conference of the IEEE Computer and Communications Societies (IEEE INFOCOM’97). 
+　　Kobe: IEEE Computer Society, 1997. 398～405
+29.　Li B, Lin C, Chanson S T. Analysis of a hybrid cutoff priority scheme for 
+　　multiple classes of traffic in multimedia wireless networks. ACM Journal of 
+　　Wireless Networks, 1998,4(4):279～290
+30.　Cruz R L. SCED+: efficient management of quality of service guarantees. In: 
+　　Proceedings of the 17th Annual Joint Conference of the IEEE Computer and 
+　　Communications Societies (IEEE INFOCOM’98). San Francisco, CA: IEEE Computer 
+　　Society, 1998. 625～634
+31.　Chang C S, Cruz R L. A time varying filtering theory for constrained traffic 
+　　regulation and dynamic service guarantees. In: Proceedings of the 18th Annual 
+　　Joint Conference of the IEEE Computer and Communications Societies (IEEE 
+　　INFOCOM’99). New York: IEEE Computer Society, 1999. 63～70
+32.　Mithal S. Bounds on end-to-end performance via greedy, multi-path routing in 
+　　integrated services networks. In: Proceedings of the 17th Annual Joint 
+　　Conference of the IEEE Computer and Communications Societies (IEEE INFOCOM’98).
+　　San Francisco, CA: IEEE Computer Society, 1998. 19～26
+33.　林闯.ATM网络基于队列长度阈值的传输调度.软件学报,1998,9(4):316～320
+　　(Lin Chuang. Traffic scheduling based on the queue length threshold in ATM 
+　　networks. Journal of Software, 1998,9(4):316～320)
+34.　Altman E, Orda A, Shimkin N. Bandwidth allocation for guaranteed versus best 
+　　effort service categories. In: Proceedings of the 17th Annual Joint Conference  
+　　of the IEEE Computer and Communications Societies (IEEE INFOCOM’98). San 
+　　Francisco, CA: IEEE Computer Society, 1998. 617～624
+收稿日期:1999-06-07修稿日期:1999-08-09

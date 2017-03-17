@@ -1,0 +1,121 @@
+软件学报
+JOURNAL OF SOFTWARE
+1999年　第10卷　第11期　Vol.10　No.11　1999
+
+
+
+多物化视图并行增量保持三阶段模式
+王腾蛟 王海洋 洪晓光　董继润
+　　摘要　文章提出了一种基于并行流水线处理方式的多物化视图(materialized views)增量保持方法,即在先进行筛选的条件下,利用归类拓扑排序,将所有物化视图进行分类,使每一类中的视图之间没有嵌套定义关系.最后对每一类中的所有视图利用基于信号量控制机制的流水线模式并行处理,以达到对多物化视图实现增量保持的目的.
+　　关键词　物化视图,拓扑排序,流水线,数据仓库,分布式数据库.
+　　中图法分类号　TP311
+A Three-stage Model of Incremental Maintenance of Multi-materialized Views
+WANG Teng-jiao1 WANG Hai-yang2 HONG Xiao-guang2 DONG Ji-run2
+1 (Department of Computer Science and Technology Beijing University Beijing 100871)
+2(Department of Computer Science Shandong University Ji'nan 250100)
+　　Abstract　 A new method is presented in this paper, which is about incremental maintenance of multi-materialized views based on parallel pipeline process. In this process, the authors classify all the materialized views first by using choosing methods, then by classified topological sorting, so that no nested definitions of relations exist among these views. Finally, in order to maintain the incremental multi-materialized views, they process in parallel all the views by utilizing pipeline model of semaphore process mechanism.
+　　Key words　Materialized views, topological sorting, pipeline, data warehouse, distributed database.
+　　分布式数据库和数据仓库中的物化视图是将对基本数据库的某次查询结果或基本视图物理地存储在本地工作站上,因而当以后再做有关的查询时,可以不必访问基本数据库而在物化视图中直接得到结果.目前,这方面的研究［1,2］主要集中在单物化视图的增量保持讨论上,而应用中大量多物化视图的增量保持问题需要我们加以处理,尤其是当多个物化视图之间存在联系时,这类问题显得更为重要.故此,本文提出了一种新的多物化视图增量保持三阶段模式.
+1 物化视图的增量保持
+　　首先,我们利用文献［2］中的概念和术语来描述单物化视图的增量保持方法.R1,R2,...,Rn代表基本数据库中的关系;C是物化视图的选择-投影-连接(SPJ)定义;INS(Ru,T)表示将元组集合T插入到关系Ru中;DEL(Ru,Cd)表示将关系Ru中满足条件Cd的元组删除;A代表出现在视图V中的属性集;A+表示由A唯一确定的属性集;α(Cd)代表Cd中使用的变量集合;α(C)代表C中使用的变量集合.
+　　定义1(Z-延伸视图:Vz). Vz是由视图V经过如下变换得到的V的延伸:将视图V追加属性集Z=(α(Cd)∪α(C))-A+,相应地,每个元组t∈V追加｜Z｜个不同的变量zk,1≤k≤｜Z｜×｜V｜.zk称做Z-变量.
+　　定义2(关系Ri的Z-投影:). 给定由C定义的视图V,关系Ri的Z-投影:Rzi=ПGi(Vz),其中Gi=Z=(α(Cd)∪α(C)∪A+)∩α(Ri),1≤i≤n.
+　　定义3(投影-连接映射(PJM)). Z-延伸视图Vz的投影-连接映射定义为PJM（Vz）=Rz1×Rz2×...×Rzm.每一个元组μ∈PJM（Vz）,一定属于下面中的一类,C（μ）是使用μ计算的视图定义.
+　　对μ中Z-变量进行某种实例化后,C（μ）是可满足的,而且
+　　（1） 将μ投影到不同属性上得到的元组在物化视图V中;或者,
+　　（2） 将μ投影到不同属性上得到的元组不在物化视图V中.
+　　对μ中Z-变量无论进行何种实例化后,C（μ）都不会满足.这样的μ可在PJM中删除.
+　　属于上述(1)类型的所有元组称做pos(V),即正确信息;属于上述(2)类型的所有元组称做neg(V),即否定信息,且用ni来编号.
+　　定义4（结合信息:L(V)). L(V)是由Z-延伸视图Vz的元组得到的正确信息与由neg(V)中的元组得到的否定信息的结合.即由定义C和视图V得到的信息的汇总.
+　　引理1. 给定非空视图V,它的Z-延伸Vz和PJM(Vz),对R1应用删除条件CD后,元组tz∈Vz仍留在视图中当且仅当L(V)H:［R1(ПR1(tz)∧...∧Rn(ПRn(tz))∧C(tz)∧CD(ПR1(tz))］,其中H为元组tz中出现的Z-变量集合,R1是指结果出现在视图中的某个基本关系.
+　　引理2. 给定非空视图V,它的Z-延伸Vz和PJM(Vz),对R1应用删除条件CD后,元组tz∈Vz应在视图中删去当且仅当L(V)H:［R1(ПR1(tz)∧...∧Rn(ПRn(tz))∧C(tz)∧CD(ПR1(tz))］,其中H为元组tz中出现的Z-变量集合,R1是指结果出现在视图中的某个基本关系.
+　　定理1. 有条件自治可计算的必要条件是,如果一个删除操作是有条件自治可计算的［2］,则每一个元组t∈V一定满足引理1或引理2中的条件.
+插入与删除基本思路相同,还要考虑基本数据库中没有表现在物化视图中的元组.
+2 多物化视图环境中的增量保持三阶段模式
+　　三阶段模式包括筛选、分类管理和并行流水线处理.其中保持单个视图时利用了第1节中提到的处理方法,并在流水线模式中利用L(V)优化管理机制进行优化处理.假设本地工作站上有物化视图M个,记做V1,V2,...,VM.对数据库的修改U包含δ1,δ2,...,δn.
+2.1 筛选最小子集
+　　筛选最小子集,即在V1,V2,...,VM中删除本次修改U明显不会影响到的视图.
+　　min-subset={V1,V2,...,VM}
+　　unchange=
+　　updated=λ(δ1)∪λ(δ2)∪...∪λ(δn)　　　　/*λ(δi)表示被δn修改的关系*/
+　　for i=1 to M loop
+　　　if λ(C(Vi))updated then/*λ(C(Vi))表示视图Vi定义中使用的关系*/
+　　　　unchange=unchange∪{Vi}
+　　　end if
+　　end loop
+　　min-subset=min-subset-unchange
+2.2 归类拓扑排序
+　　假设由2.1节得到的最小子集中的物化视图有m个（m≤M）,我们重新将其标记为V1,V2,...,Vm.这m个物化视图中可能还存在定义嵌套关系,因此有必要对最小子集中的视图进行分类,主要算法描述如下.
+　　输入: 有向图G=〈V,E〉.
+　　输出: 若干有序分类集合class.
+　　top:=null;
+　　for i=1 to n do　　　　　　/*建立一个无先驱顶点（内次为0）的栈.*/
+　　　　　if i.count=0 then stack:=top; top:=i;
+　　endfor
+　　j:=1;
+　　do while top＜＞null /*将栈内的顶点归为一类输出,再建立新的栈,直到新栈为空*/
+　　　　　class［j］:=;
+　　　　　do while top＜＞null
+　　　　　　del-point:=top; top.count:=‘*’; top:=top.stack;
+　　　　　　class［j］:=class［j］∪{del-point};
+　　　　　　ptr:=del-point.link;
+　　　　　　do while ptr＜＞null
+　　　　　　　K:=ptr.vertex; K.count:=K.count-1; ptr:=ptr.link;
+　　　　　　enddo
+　　　　　　j=j+1;
+　　　　　enddo
+　　　　　top:=null;
+　　　　　for i=1 to n do
+　　　　　　if i.count=0 then i.stack:=top; top:=i;
+　　　　　endfor
+　　enddo
+　　对有n个顶点和e条边的有向图,搜索入度为0的时间为O(n),若有向图无环,入度减1的操作在外层do while top＜＞null语句中共执行e次,所以总的时间复杂度为O(n*e).
+2.3 并行流水线处理模式
+　　经过上面的处理后,对于某个class［i］中的顶点集（视图集）,各顶点之间已没有嵌套定义关系,于是,我们提出了一种流水线处理模式来并行保持某个class集中的视图.
+　　设某个class［i］中的顶点（物化视图）有m个.U={δ1,δ2,...,δn}是对数据库的修改.我们把根据δi保持Vj的过程定义为UPDATE(δi,Vj),在这种模式中,每个UPDATE过程处理时间并不相同.我们设计了一种基于并行算法的信号量控制机制来保证正确的运行.
+　　V1的算法.
+　　初始化: for each δi∈U do
+　　commit UPDATE(δi,V1);
+　　send DONE(δi,V1) message to V2;
+　　end for;
+　　send FINISH message to V2;
+　　para begin
+　　　　　receiving ACK message from V2 do:
+　　　　　stop itself algorithmic execution;
+　　para end.
+　　一般视图Vu(1＜u≤m)的算法.
+　　初始化: committed:=0;
+　　para begin
+　　　　　receiving DONE(δi,Vu-1) message from Vu-1 do:
+　　　　　　　L1: if committed＜i-1 then goto L1;
+　　　　　　　commit UPDATE(δi,Vu);
+　　　　　　　committed:=committed+1;
+　　　　　　　if Vu≠Vm then send DONE(δi,Vu) message to Vu+1;
+　　para end;
+　　para begin
+　　　　　receiving FINISH message from Vu-1 do:
+　　　　　　　L2: if committed＜n then goto L2;
+　　　　　　　if Vu≠Vm then send FINISH message to Vu+1;
+　　　　　　　else send ACK message to Vm-1;
+　　para end;
+　　para begin
+　　　　　receiving ACK message from Vu+1 do:
+　　　　　send ACK message to Vu-1;
+　　　　　stop itself algorithmic execution;
+　　para end.
+　　运行该算法时,若每个UPDATE过程处理时间相同,记为Δt0,流水线上完成n个任务的时间为　　　T=nΔt0+(m-1)Δt0,若不相等,则为最慢一段所需时间.
+　　注意到L(V)的计算,仅利用了当前物化视图V,因此,若UPDATE(δi,Vu)没有使Vu发生变化,那么在执行UPDATE(δi+1,Vu)时,就不必再重新计算L(Vu).我们建立L(V)优化管理机制来随时监测各个处理器上UPDATE(δi,Vu)的结果,从而避免了重复计算.
+3 结 论
+　　本文提出了一种多物化视图增量保持三阶段模式,这种模式能够根据多物化视图之间的内在联系进行分类处理,并有效利用了部分信息保持物化视图的方法,减少了分布式数据库及数据仓库中的通信费用和维护代价.
+基金项目：本文研究得到山东省自然科学基金资助.
+作者简介：作者王腾蛟,1973年生,博士生,主要研究领域为数据库管理系统.
+　　　　　王海洋,1965年生,教授,主要研究领域为数据库,管理信息系统.
+　　　　　洪晓光,1964年生,副教授,主要研究领域为并行/分布式数据库.
+　　　　　董继润,1935年生,教授,主要研究领域为数据库,管理信息系统.
+作者单位：王腾蛟　北京大学计算机科学技术系 北京 100871
+　　　　　王海洋　洪晓光　董继润　山东大学计算机科学系 济南　250100
+本文通讯联系人:王腾蛟，北京 100871,北京大学27楼326
+参考文献
+　1 Ashish Gupta, Blakley J A. Using partial information to update materialized view. Information Systems, 1995,20(8):641～662
+　2 Tompa F W, Blackley J A. Maintaining materialized view without accessing base data. Information Systems, 1988,13(4):393～406
+本文1998-10-06收到原稿,1998-12-21收到修改稿

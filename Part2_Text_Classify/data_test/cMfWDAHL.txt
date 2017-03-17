@@ -1,0 +1,123 @@
+软件学报
+JOURNAL OF SOFTWARE
+2000　Vol.11　No.3　P.293-299
+
+
+
+扩充析取逻辑程序的争论语义
+王克文　周立柱　陈火旺
+摘要　该文探讨争论推理在扩充逻辑程序中的实现及其关系问题.基于“相干原理”，建立了扩充逻辑程序的争论推理框架，多种争论推理形式都可以嵌入其中.特别是提出了一种谨慎语义Acc.同时又定义了良基语义的一种合理扩充Mod,以处理较为大胆的推理形式.另外也研究了相关的理论性质.
+关键词　析取逻辑程序，明显否定，争论推理，语义.
+中图法分类号　TP18
+An Argumentation-Based Framework for Extended Disjunctive Logic Programs
+WANG Ke-wen　ZHOU Li-zhu
+(Department of Computer Science and Technology Tsinghua University　Beijing　100084) 
+WANG Ke-wen
+(State Key Laboratory for Novel Software Technology Nanjing University　Nanjing 210093)
+CHEN Huo-wang
+(School of Computer Changsha Institute of Technology Changsha　410073)
+Abstract　An investigation into the relationship between argumentation and disjunctive logic programs with explicit negation (EDLP) is conducted.By employing the coherence principle,an argumentation-theoretic framework for EDLP is presented,in which various forms of argumentation can be performed.In particular,a skeptical semantics Acc is introduced in a natural way.To provide a more suitable form of argumentation,a less skeptical semantics Mod is also defined which naturally extends the well-founded model.
+　Key words　Disjunctive logic program,explicit negation,argumentation,semantics.
+　　Traditional logic programs are not sufficiently expressive for tasks of representing large classes of knowledge bases,and thus have been extended according to the following two considerations:
+　　1.Disjunctive information can not be fully and directly expressed in traditional logic programs,which is proven to be a major obstacle to using them in various knowledge domains.In particular,it constitutes a major obstacle to using logic programming as a declarative specification language for software engineering.As a result,the class of disjunctive logic programs is introduced by allowing disjunction to appear in the heads of clauses of logic programs.Disjunctive programs not only allow more direct representation of incomplete information,but also they are more expressive than traditional ones.
+　　However,the problem of defining a suitable semantics is proven to be a difficult one,as evidenced by a lot of studies (see Ref.［1］ for a survey).The argumentation-theoretic　frameworks defined in Refs.［2,3］ seem to be such two promising semantics.
+　　2.The negative information in the traditional logic programming is implicit and represented by the default negation.A proposition is assumed false if there is no reason to believe that it is true.However,as argued by some researchers,explicit negative information can not be expressed in logic programs without explicit negation though it is crucial in applying logic programming to diagnosis,database updates,and declarative debugging.In recent years,researchers have understood the importance of extending logic programming by introducing explicit negation.This enhancement of logic programming immediately leads to the new basic problem of how to deal with contradiction in such extended disjunctive programs.
+　　Argumentation constitutes a major part of human intelligence.The ability to be engaged in arguments is important for people to understand new problems,to perform scientific reasoning,to express and defend their opinion in their daily life.The basic idea of argumentative reasoning is that a statement is believable if it can be argued successfully against the attacking arguments.In other words,whether or not a rational agent believes in a statement depends on whether or not the argument supporting this statement can be successfully defended against the counter-arguments.
+　　But surprisingly,not much attention has been paid so far to the argumentation in extended disjunctive programming though these kinds of reasoning are prominent in legal reasoning,defeasible reasoning and nonmonotonic reasoning.Thus,the goal of this paper is to provide a semantic framework for performing argumentation in extended disjunctive programs.We do so by incorporating the coherence principle into the approach proposed in Ref.［2］.
+1　Coherence Hypotheses
+　　Without loss of generality,we will consider only propositional logic programs.There will be two kinds of negations in the logic programs considered in this paper,that is,the default negation ‘～’ and the explicit negation ‘’.For any atom a,‘a is true’ means that a is provable in the given logic program system; ‘～a is true’,however,means that the attempt to prove a fails.The disjunction ‘｜’ in logic programming is the so-called epistemic disjunction.
+　　An objective literal l is an atom a or its explicit negation a; a disjunct l1｜...｜lr of objective literals l1,...,lr is said to be a disjunctive objective literal.The default negation ～l of an objective literal is a subjective literal and a disjunctive subjective literal is a disjunct ～l1｜...｜～lr of subjective literals ～l1,...,～lr.We use OP,SP,DOP and DSP to denote the sets of all objective literals,subjective literals,disjunctive objective literals and disjunctive subjective literals,respectively.
+　　We first give the syntax of extended disjunctive logic programs.
+Definition 1.1 An extended disjunctive program P is a finite set of clauses of the form
+l1｜...｜lr←lr+1,...,ls,～ls+1,...,～lt,
+where li＇s are objective literals.
+　　If we consider OP as the Herbrand base (in particular,an objective literal is taken as a new ‘atom’) as in the traditional logic programming,then some notions introduced in Ref.［2］,such as expansion and canonical form,can be easily generalized to extended disjunctive programs.
+　　Definition 1.2.A (disjunctive) assumption α of P means a disjunctive subjective literal.A subset Δ of DSP is a (disjunctive) hypothesis of P if ‖Δ‖=Δ.
+The task of defining a semantics for logic programs is in fact to determine the sets of literals that should be inferred from the program.Since the incorporation of explicit negation makes the reasoning of programs extraordinarily complicated,the argumentation-theoretic framework defined in Ref.［2］ can not be directly generalized to extended disjunctive programs.
+　　In the rest of this section,we will formulate a useful principle (the coherence principle) introduced in Ref.［4］ in the setting of extended disjunctive programming.This principle will greatly simplify the approach of negations and allow us to define an intuitive semantic framework that can properly handle different negations and contradictions.The coherence principle guarantees that ～a is true whenever a is true.In other words,our acceptable hypothesis Δ should possess such a property: if a can be inferred from an extended disjunctive program P under the hypothesis Δ,then ～a is also inferred.We now formulate this intuitive principle in the following definition.
+　　Definition 1.3.Let Δ be a hypothesis of extended disjunctive program P.Then the coherence hypothesis CohP(Δ) of P is defined as
+
+where min is the minimal first-order inference by taking all objective and subjective literals as new atoms.
+　　The function of CohP(Δ) is to collect all the assumptions that are inferred by the original hypothesis Δ.This means that our real hypothesis will be CohP(Δ) once we take the hypothesis Δ.
+　　Corollary 1.1.For any hypothesis Δ of an extended disjunctive program P,the following two items hold: 1.ΔCohP(Δ); 2.CohP(CohP(Δ))=CohP(Δ).
+　　Example 1.1.Let the extended disjunctive program P consist of the following three clauses:
+
+Then .This example also shows that,in general,
+　　Form the example above we can see that the notion of coherence hypotheses characterizes the intended relationship between default negation and explicit nigation(that is ,the intuition of the cogerence principle).However,there is no relation between an atom a and its negative objective literal a at present.Intuitively,at least we should guarantee that,if a is provable,a must not be inferred from P (i.e.～a should be provable).Consider the following example.
+　　Example 1.2.Suppose that one has to take train or bus,instead of taking airplane,if the weather is bad.Now,today's weather is really bad.Then this knowledge base can be expressed as the extended disjunctive program P:
+
+Since bad-weather holds at present,we often implicitly assume that bad-weather does not hold.That is,bad-weather holds if and only if both bad-weather and ～bad-weather hold at the same time.Therefore,P actually expresses the following program:
+
+　　Definition 1.4.Let P be an extended disjunctive program.The intended program PI of P is the extended disjunctive program by replacing every clause of the form l1｜...｜lr←lr+1,...,ls,～ls+1,...,～lt by another l1｜...｜lr←lr+1,～lr+1,...,ls,～ls,ls+1,...,lt.P will be an extended disjunctive program if we do not state explicitly.
+　　In the rest of this paper,whenever an extended disjunctive program is mentioned we always mean its intended program.
+2　Acceptability of Hypotheses
+　　In this section,we will seek basic conditions for determining acceptable hypotheses.First,a reasonable agent should not directly derive contradictory conclusions from an acceptable hypothesis.Thus,the following definition is in order.
+　　Definition 2.1.Let Δ be a hypothesis of extended disjunctive program P.Δ is self-consistent if there are no objective literals l1,...,lm∈OP such that  for all i=1,...,m implies both ～l1｜...｜～lm∈CohP(Δ) and 
+　　The intuition of this definition is that direct contradictions can not be inferred from P under a self-consistent hypothesis Δ.In our opinion,an acceptable hypothesis should be self-consistent.It is not hard to see that there really exist hypotheses that are not self-consistent.For example,suppose that P={a←～b; b←～a} .Take Δ=‖～b‖,then CohP(Δ)=‖～a,～b‖.Thus,Δ is not self-consistent since  but ～b∈Δ.
+　　By the definition above,the following corollary is obvious.
+　　Corollary 2.1.For any disjunctive program P that contains no explicit negation,P possesses at least one self-consistent hypothesis.
+　　Proof.Take Δ=,then CohP(Δ)=.It is obvious that  is a self-consistent hypothesis of P.
+　　This conclusion will not hold for programs that contain explicit negation.Consider P={a←; a←},CohP()=‖～a‖ but .Thus, is not a self-consistent hypothesis of P.In fact,P possesses no self-consistent hypotheses.This coincides with our intuition on P.
+　　Definition 2.2.An extended disjunctive program is self-consistent if  is a self-consistent hypothesis of P.
+　　The following theorem says that the condition in Definition 2.2 is the weakest condition that guarantees the existence of self-consistent hypotheses for P.
+Theorem 2.1.An extended disjunctive program P has at least one self-consistent hypothesis if and only if P is self-consistent.
+　　Proof.The condition is obviously sufficient.For necessity,by Definition 2.1,P would have no self-consistent hypotheses if  is not a self-consistent hypothesis of P.
+　　In general,not every self-consistent hypothesis represents the intended meaning of P.For example,P={a｜b←～c}.Intuitively,the default negation ～c of c should be true,which implies that a｜b is also derivable from P.Therefore,～a and ～b can not hold at the same time.However,Δ′=‖～a,～b‖ is self-consistent.This means that the class of self-consistent hypotheses must be further constrained.To this end,based on the paradigm of argumentation,we will introduce the definition of acceptable hypotheses after some notations are defined.
+　　We say that a hypothesis Δ denies an assumption β=～l1｜...｜～ln of P if  for all i=1,...,n.
+　　Definition 2.3.Let Δ and Δ′ be two hypotheses of P.Δ is said to attack Δ′,denoted as  if one of the following conditions is satisfied: 
+　　1.there exists an assumption β∈Δ′ such that Δ denies β;
+　　2.there exist assumptions ～l1,...,～ln∈Δ′ such that 
+　　The above condition (2) means that Δ may 'deny' more than one (non-disjunctive) hypothesis of Δ′.Notice that only the condition (1) above is not enough to reflect the attack relation.For example,P={a｜
+b←},then Δ= attacks Δ′=‖～a,～b‖ though Δ denies no assumption in Δ′.
+　　Similar to the definition of acceptable hypotheses in Ref.［2］,we have the following fundamental concept.
+　　Definition 2.4.Let Δ be a hypothesis of P.An assumption β=～l1｜...｜～lm of P is acceptable with respect to Δ if  for any hypothesis Δ′ of P that denies β.
+　　AP(Δ) denotes the set of all acceptable hypotheses of P wrt Δ.
+The intuition of this definition is that: for any hypothesis Δ′ that denies β,Δ will defend β by attacking Δ′.Intuitively,if Δ is an acceptable hypothesis of P,then each assumption of CohP(Δ) should be acceptable with respect to Δ.
+　　Definition 2.5.Let Δ be a self-consistent hypothesis of P.Δ is said to be acceptable if CohP(Δ)AP(Δ).
+　　From Corollary 1.1,the following result is obvious.
+　　Corollary 2.2.If Δ is acceptable,then so is CohP(Δ).Moreover,AP(Δ)=AP(CohP(Δ)).
+　　Example 2.1.Let P consist of two clauses:
+a｜b←～c 
+c←
+Then Δ=‖～c‖ is acceptable but Δ′=‖～a,～b‖ is not.
+　　Theorem 2.2.Let P be an extended disjunctive program.If P is self-consistent,then it has at least one acceptable hypothesis.
+　　Proof.Take Δ0=CohP().We want to prove that Δ0 is acceptable.Since  is self-consistent,so is Δ0.To show that Δ0AP(Δ0),it suffices to prove that if ,then Δ′ must not be self-consistent.In fact,suppose Δ′ attacks β=～l1｜...｜～ln∈Δ0.Then CohP(Δ′)∪ for all i=1,...,n.On the other hand,by β∈CohP(),we have .Again,,thus .This implies that .Therefore,Δ0AP(Δ0).By Corollary 1.1,Δ0=CohP(Δ0),and thus the conclusion follows.
+　　Definition 2.6.The semantics Acc(P) of extended disjunctive program is defined as the set of all acceptable hypotheses of P.
+　　By the definition above,the inference defined by semantics Acc(P) corresponds to the intersection of all acceptable hypotheses of P.We know that CohP() is the least acceptable hypothesis of P.Thus,Acc(P)=CohP().This semantics is obviously too skeptical to infer anything from some programs.
+　　Example 2.2.Let P consist of two clauses: 
+
+Then CohP()=‖～a‖.However,it is obvious that the assumption ～d should also be acceptable.Thus,a little more credulous semantics is highly needed.
+3　Moderate Hypotheses
+　　Suppose that there is an agent whose reasoning will be considered reasonable by all other rational agents.Therefore,the hypotheses accepted by this agent will be consistent with other acceptable hypotheses.If Δ0 is an acceptable hypothesis of our agent,then Δ0∪Δ′ is always self-consistent for any acceptable hypothesis Δ′.
+　　Definition 3.1.A hypothesis Δ0 of P is moderate if it is a maximal member of the hypotheses that satisfy the following condition: for any acceptable hypothesis Δ of P,‖Δ∪Δ0‖ is also acceptable.
+　　We can show that each self-consistent program possesses the unique moderate hypothesis.
+　　Theorem 3.1.If an extended disjunctive program P is self-consistent,then P has the unique moderate hypothesis.
+　　Proof.First,to prove the existence of moderate hypothesis: by the proof of Theorem 2.1,CohP() is an acceptable hypothesis of P and CohP()Δ for any hypothesis Δ.Thus,CohP()∪Δ is still acceptable if Δ is acceptable.Write DP={Δ0: Δ0 is an acceptable hypothesis of P such that ‖Δ0∪Δ‖ is acceptable for any acceptable hypothesis Δ}.Then CohP()∈DP and thus DP≠.By Zorn's lemma,the partially ordered set (DP,) has a maximal element Δmod,which is exactly a moderate hypothesis of P.
+　　Next,to show the uniqueness of moderate hypothesis: suppose that P has another moderate hypothesis Δ′,then =‖Δmod∪Δ′‖ is acceptable,and ∪Δ is acceptable for any acceptable hypothesis Δ.However,Δmod and Δ′,by the maximality of Δmod and Δ′,we have Δ′==Δmod.
+　　The moderate semantics Mod(P) is defined by its unique moderate hypothesis.This semantics provides a natural argumentation-based extension of the well-founded semantics.By Theorem 3.1,Mod is complete for the class of self-consistent programs.
+　　An extended disjunctive program is said to be consistent if it has at least one answer set［5］.Notice that some self-consistent programs are not consistent,which means that our semantics Mod can handle inconsistent programs better (see the following example).
+　　Example 3.1.P consists of three clauses:
+
+　b,～c‖,which is exactly our intuition on P.
+　　Corollary 3.1.Every moderate hypothesis is an acceptable one.
+　　Proof.It follows directly from Definition 3.1.
+　　Since CohP() is the least acceptable hypothesis,the following result is obvious.
+　　Corollary 3.2.If an extended disjunctive program P is self-consistent and Δmod(P) its moderate hypothesis,then CohP()Δmod(P).
+　　This corollary says that,in general,the semantics Mod is more credulous than Acc.
+　　Consider the program in Example 2.2.It is straightforward to verify that Δmod
+4　Conclusion
+　　By exploiting the coherence principle,we have established an argumentation-theoretic framework for extended disjunctive programs.In particular,we define a well-founded semantics mod and its properties are studied including its completeness and uniqueness for the class of self-consistent logic programs.In this framework we can also introduce other forms of argumentation similar to the DAS in Ref.［3］,but they will be more complicated.There are some interesting research directions.One possibility is to compare our semantics with other ones for extended disjunctive programs,such as the answer set semantics and the abductive semantics in Ref.［6］.Our framework can also be generalized to the class of bi-disjunctive logic programs with explicit negation［7］.More importantly,a procedural interpretation for Mod is highly needed.
+This research is supported by the National Natural Science Foundation of China(国家自然科学基金,No.69883008,69773027),the National Foundation Research Programme of China(国家基础研究发展规划项目,No.G1999032704),and the IT School of Tsinghua University(清华大学信息学院基础创新研究).WANG Ke-wen was born in 1962.He is an associate professor in the Department of comprter Science and Technology,Tsinghua University.He received his Ph.D.degree in theory of logic programming from Nankai University.His current research areas include databases,logic programming and artificial intelligence.ZHOU Li-zhu was born in 1947.He is a professor and the head of the Department of Comprter Science and Technology,Tsinghua University.His research interests include database systems,data warehouse and information systems.CHEN Huo-wang was born in 1936.He is a professor of the School of Computer,Changsha Institute of Technology.His research interests include artificial intelligence and software engineering.
+Manuscript received 1998-05-21,accepted 1998-09-31
+作者单位：王克文(清华大学计算机科学与技术系　北京　100084)
+周立柱(清华大学计算机科学与技术系　北京　100084)
+王克文(南京大学计算机软件新技术国家重点实验室　南京　210093)
+陈火旺(国防科学技术大学计算机学院　长沙　410073)
+References
+1，Minker J.Overview of disjunctive logic programming.Annals of Mathematics and Artificial Intelligence,1994,12:1～24
+2，Wang K,Chen H,Wu Q.Argumentation in disjunctive logic programming.Science in China(Series E),1998,41(1):106～112
+3，Wang K,Chen H,Wu Q.Credulous argumentation with the disjunctive stable semantics.Science in China(Series E),1998,41(3):330～336
+4，Pereira L,Alferes J.Well-founded semantics for logic programs with explicit negation.In: Neumann B ed.Proceedings of the 10th ECAI.New Jersey: John Wiley & Sons,1992.102～106
+5，Gelfond M.Foundations of logic programming.In: Brewka G ed.Principles of Knowledge Representation.CSLI Publications,Cambridge University Press,1996.69～127
+6，Wang K,Chen H,Wu Q.Consistency-Based abduction with extended disjunctive logic programs.Science in China(Series E),1997,40(6):574～582
+7，Wang K,Chen H.Abduction,argumentation and bi-disjunctive logic programs.In: Jurgen D,Pereira L,Przymusinki T eds.Proceedings of the LPKR'97,Port Jefferson.New York,LNAI 1471,Springer,Berlin,1998.139～163
