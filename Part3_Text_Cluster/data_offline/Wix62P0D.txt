@@ -1,0 +1,84 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第3期　Vol.19 No.3 1999
+
+
+
+丙烯醛与DNA碱基反应机理的AM1研究
+周志刚　戴乾圜　钟儒刚
+摘要：采用AM1方法计算了在水合质子的参与下,丙烯醛与DNA鸟嘌呤碱基发生烷化加成的可能的反应过程,从得到的能量关联图可以看出,除了其中的一个分子内质子迁移过程外,其余的每一反应过程体系的能量均是降低的.计算得到的各关键步骤的反应活化能均不大,反应易于进行.根据计算的自由能可以看出,整个反应能够自发进行,说明丙烯醛可经过2次烷化加成反应与DNA碱基发生交联作用.
+关键词：丙烯醛；反应机理；交联；双区理论；AM1
+中图分类号：X132 文献标识码：A 文章编号：1000- 6923(1999)03- 0197- 04
+The study on mechanism of acrolein reaction with DNA base by AM1. 
+ZHOU Zhi-gang1,DAI Qian-huan2,ZHONG Ru-gang2
+(1.Center of Environmental Science,Peking University,Beijing 100871,China；2.The Center of Chemistry and Bioengineering of cancer, Beijing Polytechnic University, Beijing 100022,China). China Environmental Science.1999,19(3)：197～200
+Abstract：A series of proposed basic reactions of acrolein with DNA Guanine with the participation of acid have been computed. The results show that the energy of the reaction system drops in all reactions except one reaction of proton rearrangement within the molecule. The computed active energies of key reactions are mild, so these reactions take place easily. The total reaction can take place spontaneously according to the computed D G. It indicates that acrolein can cross-link with DNA through two times alkylating additive reaction with DNA base.
+Key words：acrolein；reaction mechanism；cross-linking；di-region theory；AM1
+　　自从认识到氯乙烯可诱导人的罕见肝血管瘤以后,相继发现二氯乙烯、丙烯腈、丙烯醛等烯烃衍生物在职业环境具有致癌危险性,如丁烯醛可引发小鼠肝癌[1],有机物的不完全燃烧所产生的丙烯醛(ACR),已证实具有直接致突性[2-5].丙烯醛的羰基C1和烯烃C3原子均可与碱基氮原子发生烷化加成反应[6,7].C3原子与DNA碱基发生烷化反应后,C1原子可再与另一相邻碱基发生烷化反应而表现出的符合“双区理论”[8]的双官能烷化DNA的能力,对于研究环境中广泛存在的a -b 不饱和羰基化合物与DNA碱基的作用机制,认识DNA损害具有重要的意义.
+1　模型和计算方法
+　　丙烯醛可在DNA鸟嘌呤(G)的N-1、N2和N-7、腺嘌呤的N-1、N6和N-7以及胞嘧啶的N4处烷化[7].其中环外氮原子的烷化,对形成DNA股间交联贡献较大,故本计算以鸟嘌呤环N2上的烷化反应为计算模型.计算时对反应物、生成物和中间过渡态等进行全几何构型优化,并对过渡态的几何构型进行简并振动力常数和内禀反应坐标的计算,确认结构的合理性和诸相关结构之间的联系.由于研究的是一个整体反应过程,电子相关能在结果比较中大部分互抵,故在上述计算中均未考虑电子组态的相互作用.
+　　计算使用MOPAC 6.3软件的AM1方法,在PII-200PC机上完成.分子初始结构建立和计算后分子结构、分析均采用Alchemy软件.
+　　丙烯醛和丙烯醛正离子的结构及电荷分布特性计算采用Gaussian 94 中的ab initio 方法,选用6-31G(d)基组,全优化几何构型,在SGI工作站上完成.
+2　结果与讨论
+2.1 试剂的亲电性特征
+　　首先采用ab initio方法计算丙烯醛和丙烯醛羰基质子化正离子各原子的电荷特性,结果列于表1.由表1可看出,从电性上来说,亲核试剂可进攻C1和C3原子,但均优先进攻两化合物的C1原子.质子化后,C3上正电性的增加大于C1上正电性的增加,C3的反应性得到提高.
+2.2 反应过程的能量特征
+　　在水合质子的参与下,丙烯醛(ACR)与DNA鸟嘌呤(G)N2反应的可能反应过程如图1所示.计算得到的该反应过程的能量关联图如图2所示.其中化合物(B)和化合物(C)(见图1)的能量差较小,化合物(E)和化合物(F)上鸟嘌呤N2上的质子转移到水分子的过程能量差异也较小,可以忽略,因而在讨论时可以忽略两过程的能量差异.从图2中看出,除了过程IV即质子在H2O参与作用下从氮原子转移的醛基氧上的过程体系能量升高外,其它反应过程体系的能量均降低.从反应过程I到反应过程V(或VI)的整个过程能量下降值为421kJ/mol.
+表1　计算得到的丙烯醛及正离子的原子电荷
+Table 1 The computed atomic chargers of acrolein and its cation
+分子C1C2C3O4
+丙烯醛0.466-0.0070.032-0.491
+丙烯醛正离子0.6470.0450.319-0.011
+
+
+　
+图1　丙烯醛与鸟嘌呤的可能反应过程
+Fig.1 The possible reaction path of acrolein with guanine
+
+图2　反应过程的能量关联图
+Fig.2 The relationship of energies and reaction
+　　反应过程I、III和IV均为水参与下的质子转移反应过程,选取反应过程I,即丙烯醛质子化过程和反应过程IV的羰基质子化过程为模型进行了过渡态优化和反应路径计算.反应过程I中体系能量随反应路径变化的曲线如图3所示.反应经过渡态(TS1)生成能量较反应物更低的产物.在过渡态,迁移的质子与羰基氧原子的距离为0.1427nm,与水中氧原子的距离为0.1097nm,迁移的质子更靠近水分子即过渡态结构更接近反应物的结构.该反应过程的活化能较低,只有22.2kJ/mol,反应很易进行.
+
+图3　丙烯醛质子化(过程I)能量曲线
+Fig.3 The energy curve of acrolein protonation
+坐标1.迁移质子与羰基氧核间距 坐标 2.迁移质子与水中氧核间距
+　　反应过程IV的羰基质子化过程中体系能量变化曲线如图4所示,该过程能量变化与反应过程I非常相似.在过渡态(TS2)迁移的质子与羰基氧原子的距离为0.1413nm,与水中氧原子的距离为0.1100nm,处于过渡态的迁移的质子更靠近水分子.该反应过程的活化能较低,只有19.21kJ/mol,反应同样易进行.
+
+图4　化合物(C)羰基质子化过程(IV)能量曲线
+Fig.4 The energy curve of compound C protonation
+坐标1.迁移质子与羰基氧核间距 坐标2.迁移质子与水中氧核间距
+　　对于烷化加成反应,计算了发生第1次烷化加成和第2次烷化加成反应过程即反应过程II、V和VI的过渡态和反应路径.计算得到的反应过程II体系的能量随反应路径变化的曲线如图5所示.反应体系跨越一定的能障经过渡态(TS3)生成能量较反应物更低的产物.在过渡态,鸟嘌呤环外N2距丙烯醛C3的距离为0.209nm,过渡态结构比较接近于加成反应物状态.该反应过程的活化能为52.3kJ/mol,反应较易进行.
+
+图5　化合物(A)与G烷化加成过程(II)能量曲线
+Fig.5 The energy curve of compound A react with G
+　　计算得到的反应过程V体系的能量变化曲线如图6所示.反应跨越很小的能障经过渡态(TS4)生成能量较反应物更低的产物.该反应过程的活化能很小,反应几乎没有能障,说明决定反应的是反应物浓度(碰撞机率)和空间结构(碰撞取向)等因素,而不是能量因素.在过渡态,鸟嘌呤环外N2距丙烯醛C1的距离为0.221nm,过渡态结构非常接近反应物状态.
+
+图6　化合物D烷化加成过程(V)能量曲线
+Fig.6 The energy curve of compound D react with G
+　　同样,还对反应过程VI,即化合物(C)不经羰基质子化而直接与鸟嘌呤反应的过程进行了反应过渡态优化和反应路径计算.该反应的活化能为205.2kJ/mol.对比经反应过程IV和V发生烷化加成反应的途径的最大能障为76.6kJ/mol,说明烷化反应经羰基质子化后再进行烷化反应能量上更为有利.
+2.3 反应过程的热力学特征
+　　计算了上述各反应过程热力学值,列于表2.从表2可得到,除了反应过程IV,其余均为放热过程.反应II和V为烷化加成反应过程,反应的有序程度增加,反应过程熵减少较多;而反应过程I、III和IV均为分子内质子迁移过程,熵变化不大.反应过程I、II、和V为自发反应过程,并且反应自发程度很大;反应过程III的D G为正值但较小,反应也能进行一定程度;反应过程IV的D G值为正值且较大,反应程度很低,由于下一步反应的D G的绝对值远大于该反应过程的D G值,整个反应过程的自发程度仍很高.
+表2　计算得到的反应过程的热力学值
+Table 2 The calculated thermodynamic properties of reactions
+热力学项反 应 过 程
+IIIIIIIVV
+D H (kJ/mol)-121-180-443-159
+D S (J/mol) -7.25-191.8-17.924.6-190.8
+D G (kJ/mol)-118.8-122.81.33435.7-102.1
+
+3　结　论
+　　通过计算得出,在水和质子的参与下,丙烯醛与DNA鸟嘌呤环外氮原子发生烷化加成反应的各步反应过程能量基本上是下降的.计算的几个关键反应的活化能都不大,反应易于进行.从整个反应的自由能来看,反应是能够自发进行的.说明丙烯醛可与DNA碱基经2次烷化加成反应而发生交联作用,对于进一步揭示其基因毒性机制具有一定意义.
+基金项目：国家自然科学基金资助项目(29377269)
+作者简介：周志刚(1966-),男,河北沧州人,北京大学环境科学中心博士生,主要从事有机化学化工、环境计算化学等方面的研究工作.负责承担过“二硫代膦酸盐捕收剂的研究”、“MIBC起泡剂扩大中试研究”等部级科研项目.发表论文10余篇.
+作者单位：周志刚　北京大学环境科学中心,北京 100871；
+　　　　　戴乾圜　钟儒刚　北京工业大学癌化学与生物工程中心,北京 100022
+参考文献：
+[1]Chung F L,Tanaka T,Hecht S S.Induction of liver tumors in F344 rats by crotonaldehyde [J]. Cancer Res.,1986,46:1285- 1289.
+[2]Beauchamp R O Jr,Andjelkovich D A,Kligerman A D,et al.A critical review of the literature on acrolein toxicity [J]. CRC Crit. Rev. Toxicol.,1985,14:309- 380.
+[3]Witz G.Biological interactions of a ,b -unsaturated aldehydes [J]. Free Radical Biol. Med.,1989,7:333- 349.
+[4]Eder E,Henschler D,Neudecker T.Mutagenic properties of allylic and a ,b -unsaturated carbonyl compounds: consideration of alkylating mechanisms [J]. Xenobiotica,1982,12:831- 848.
+[5]Eder E,Deininger C,Neudecker T, et al.Mutagenicity of b -alkylsubstituted acrolein congeners in the salmonella typhimurium strain TA100 and genotoxicity testing in the SOS-chromotest [J]. Environ. Mol. Mutagen,1992,19:338- 345.
+[6]Chenna A,Iden C R.Characterization of 2’-deoxycytidine and 2’-deoxyyuridine adducts formed in reactions with acrolein and 2-bromoacrolein [J]. Chem. Res. Toxicol.,1993,6:261- 268.
+[7]Chung F L,Roy K R,Hecht S S.A study of reaction of a ,b -unsaturated carbonyl compounds with deoxyguanosine [J].J.Org. Chem.,1988,53:14- 17.
+[8]戴乾圜.化学致癌及化学致癌机理的研究 [J].中国科学(B辑),1979,(10):964- 977.
+收稿日期：1998-09-07

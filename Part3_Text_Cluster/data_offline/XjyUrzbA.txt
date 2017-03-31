@@ -1,0 +1,66 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第2期 No.2 Vol.18 1998
+科技期刊
+
+聚乙烯醇(PVA)固定化反硝化菌的脱氮特性
+袁林江　（西安建筑科技大学环境工程系，西安 710055）
+文　摘　采用PVA包埋反硝化菌,研究了其脱氮特性并与未包埋菌进行了对比。结果表明，相对于未包埋反硝化菌，包埋菌进行废水脱氮时的最适宜pH值及温度未变，为pH=8和30℃，但在外界环境超出最适范围时，表现出明显的耐受性,尤其是在低温(10℃)下。另外包埋菌在低浓度DO或高浓度NH+4存在的条件下其脱氮活性均远高于未包埋菌。
+关键词　反硝化菌　废水生物脱氮　固定化细胞技术
+Denitrification characters of denitrifying bacteria immobilized by polyvinyl alcohol(PVA).Yuan Linjiang(Department of Environmental Engineering,Xi'an University of Architecture and Technology,Xi'an 710055) .China Environmental Science.1998,18(2):189～191
+Abstract― The denitrification characters of denitrifying bacteria immobilized by PVA were studied in this paper,compared with that of free bacteria. It's showed that the optimum pH value and temperature of immobilized denitrifying bacteria were 8 and 30℃ respectively.They are as same as that of free bacteria.When it was not in optimum condition, immobilized denitrifying bacteria's activity was greater than that of free bacteria.Immobilized denitrifying bacteria had more resistance to low temperature(10℃),DO low concentration and NH+４ high concentration than that of free bacteria.
+Key words: denitrifying bacteria　N-removal of wastewater　Immobilization cell technology
+　　 固定化微生物技术是目前各国污水生物处理领域竞相研究开发的内容之一，具有广阔的应用前景〔1〕。对某些特定微生物采用人工方法加以固定，可以大大提高反应器中所需微生物的浓度，防止微生物的流失以及改善微生物的状态。但是这种人工固定毕竟是一种非自然状态，其对微生物代谢活性的影响还需进一步研究。本文以反硝化菌为例，研究了经PVA包埋后其脱氮特性的变化。
+1　材料和方法
+1.1　试验材料
+　　PVA,分析纯，北京红星化工厂生产。反硝化菌，取自本实验室污水生物脱氮模拟装置中缺氧段污泥。 
+1.2　PVA固定化反硝化菌的制备
+　　称取5g PVA溶于50mL 80℃蒸馏水中并加入0.2g活性炭粉，搅匀，冷却至室温，再加入5g经4000 r/min离心20min后所得湿泥，混匀后用针管滴入经Na2CO3调节pH值为6.7的饱和硼酸液中，控制胶滴的大小在1～2mm，4℃下静置30h，所得小球即为固定化反硝化菌。　 
+1.3　试验方法
+　　分别称取适量包埋菌和相当的未包埋反硝化菌放入人工合成废水中（含NO-3=50mg/L，PO3-４=3mg/L,COD/TN=20）,磁力搅拌，液面用液体石腊密封。控制不同试验条件。紫外分光光度法测定NO-3浓度。
+2　结果与讨论
+2.1　pH值对包埋和未包埋反硝化菌活性的影响
+　　测定了30℃不同pH值下包埋菌和未包埋菌10h时 硝酸盐去除率（见图1)。包埋菌反硝化最 合适的pH值未变,仍为8,与文献〔2〕结果相近。 在pH=8时，未包埋菌活性高于包埋菌,但pH值偏 离7.5～8.5时,包埋菌活性逐渐高于未包埋菌,偏离越远，两者活性相差越明显。
+
+图1　pH值对两类菌反硝化的影响 
+Fig.1　Effect of different pH on denitrifications 
+of two kinds of bacteria 
+1.包埋菌　2.未包埋菌
+2.2　温度对包埋菌和未包埋菌反硝化作用影响
+　　结果见图2。包埋菌脱氮最适宜温度为30℃,与未包埋菌相同。在适宜温度下，未包埋菌活性高于包埋菌，但偏离适宜温度时则包埋菌活性高于未包埋菌，偏离越是远则差距越大，这一结果与PVA包埋微生物对印染废水脱色时表现相同〔3〕。作者在进行包埋条件筛选时也同样发现，包埋菌在适宜外部条件下，比活性始终未超过100%。可能是由于包埋剂的存在影响了被包埋细菌与废水间的物质传递过程所致〔4〕，所以在适宜条件下包埋菌活性低于未包埋菌，但在非适宜条件下包埋剂又有助于小球内部保持一个相对稳定的良好环境从而导致此时包埋菌活性又比未包埋菌高。这一点在低温环境下(10℃)表现尤其突出(见图3)。未包埋菌10h时硝酸盐去除率才达1.7%，而同期包埋菌为38.4%，说明未包埋菌反硝化作用在10℃时基本停止。虽然包埋菌在10℃时活性较30℃下有较大下降，但仍具有一定脱氮能力。对于高温40℃和50℃(见图2)，包埋菌活性丧失也较未包埋菌慢，表明包埋菌不仅对低温有较好的抗性而且也具有较高的热稳定性。
+2.3　低浓度溶解氧对包埋菌和未包埋菌反硝化作用的影响
+　　从图4可见在微量有氧环境下（DO为0.5～ 1.0mg/L）,未包埋的反硝化菌活性很低,10h 时硝酸盐去除率为3.4%，而同期包埋菌为 59%，远高于未包埋菌。缺氧条件下10h包 埋菌硝酸盐去除率维持在80%左右，未包埋 菌为87%左右(见图1,图2),均比微氧环境 下(图4)相应菌高，表明氧对反硝化作用具有抑制作 用，但包埋菌较未包埋菌对氧耐受性好，这 可能是与PVA维持了小球深部缺氧的环境有关。 
+
+图2　不同温度下两类菌的反硝化作用
+Fig.2　The denitrifications of two kinds of bacteria 
+at different temperature
+1.包埋菌　2.未包埋菌 
+
+图3　低温下两类菌硝酸盐去除情况 
+Fig.3　Removal of nitrate by two kinds of bacteria 
+at low temperature
+1.包埋菌　2.未包埋菌 
+
+图4　低浓度溶解氧对两类菌反硝化作用 
+Fig.4　The denitrifications of two kinds of bacteria 
+at low concentration DO
+1.包埋菌　2.未包埋菌
+2.4　高浓度铵对包埋菌和未包埋菌反硝化作用的影响
+　　当人工合成废水中含200mg/L的铵时，两类菌反硝化作用结果见图5。
+
+图5　铵对两类菌反硝化作用的影响
+Fig.5　Effect of ammonium on denitrifications 
+of two kinds of bacteria
+1.包埋菌　2.未包埋菌 
+　　在pH＝8.0、30℃缺氧环境下，随时间延长硝酸盐去除率不断上升，10h时包埋菌硝酸盐去除率比未包埋菌高出近47个百分点。与适宜条件下（图1，图2）相比，未包埋菌反硝化活性明显受到了高浓度铵的抑制，活性下降约67个百分点而包埋菌显得受毒害程度较轻微，活性只下降了约13个百分点，而且从图5中还可见未包埋菌适应期也较包埋菌长，经过2h的适应后活性才逐渐上升，而 包埋菌则几乎没有适应期。
+3　小结
+　　经PVA包埋后，反硝化菌的最适宜的pH值、温度相对未包埋菌而言未发生变化，分别为8.0和30℃，但偏离最适宜的pH值、温度时，包埋菌活性则高于未包埋菌，尤其是在低温（10℃）时，表现更为突出。
+　　固定化反硝化菌对不适宜的pH值、温度、低浓度氧以及高浓度铵较未包埋菌有明显耐受性，表现出良好的反硝化活性，具有一定的实用价值。
+参考文献
+1　郑耀通等.重庆环境科学，1993，15(3)：37～41
+2　徐亚同.中国环境科学，1994，14(4)：308～312
+3　蒋宇红.环境科学，1993，14(2)：11～15
+4　刘志培等.环境科学，1992，13(1)：2～6
+作者简介
+袁林江　男，1966年8月生。1990年毕业于陕西师范大学生物系，硕士，现为西安建筑科技大学环境工程系讲师。主要从事废水生物处理的教学与研究。发表论文4篇。
+收稿日期：1997-04-15

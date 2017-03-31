@@ -1,0 +1,69 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第3期　Vol.19 No.3 1999
+
+
+
+水环境两相分层流数值模拟
+沈永明　王亚玲　郑永红
+摘要：以研究水环境两相分层流精细预报模型为目标,广泛地涉及了两相湍流精细模拟的理论和方法.用Eulerian 坐标系中多流体模型统一描述两相各自的运动,并分别对两相本身的湍流输运规律以及相间相互作用规律进行模拟,建立了水环境两相分层流的双流体模型.对包含有浮力和密度分层的两相湍流进行了数值模拟,计算结果正确地反映了分层及紊动特征,与实测结果吻合较好.
+关键词：分层流；两相湍流；双流体模型；水环境
+中图分类号：X143 文献标识码：A 文章编号：1000- 6923(1999)03- 0215- 04
+Numerical simulation of stratified turbulent two-phase flow in aquatic environment. 
+SHEN Yong-ming,WANG Ya-ling,ZHENG Yong-hong
+(State Key Laboratory of Coastal and Offshore Engineering, Dalian University of Technology, Dalian 116023,China). China Environmental Science. 1999,19(3)：215～218
+Abstract：The two-fluid model of stratified turbulent two-phase flow in aquatic environment is developed in this paper.The motion of each phase is described by a unified multi-fluid model in an Eulerian coordinate system.The laws of turbulent transportation for each phase and the restriction of each other between the two phases are completely simulated.The complex two-phase turbulence with strong buoyancy effects is selected to examine numerically.The extensive experimental data obtained in stratified flow are used here.Comparison of the results of numerical simulation with the experimental data is conducted.It has shown that the results of numerical simulation are satisfactory.
+Key words：stratified flow；two-phase turbulence；two-fluid model；aquatic environment
+　　在河口由于海水和淡水的密度不同,一般情况下海水和淡水混合后将产生密度梯度而形成密度分层流,其特点是流场中包含有紊动和因两相间的密度差而产生的浮力.这类分层流动的紊动掺混比较复杂,势流理论、粘性层流理论以及单相流湍流理论等都存在着一定的局限性.本文基于多流体模型概念,建立了水环境两相分层流的双流体模型,它区别于单相流湍流模型的最重要的特点之一就是相间耦合观点.模型的基本思想[1]是把两相都看成是连续介质,即看成是双流体系统,认为两相湍流流动是两种流体各自的运动及其相互作用的综合;两种流体在时空上共存,这既可理解为在一个有限空间单元中,两种流体各占据一部分体积,具有各自的容积分数,
+　　也可理解为在一个空间位置上两种流体各以一定的概率出现;两种流体当作可以互相渗透的连续介质,它们的运动规律遵守各自的控制微分方程组;两种流体之间又存在着质量、动量和能量方面的相互作用.对于构成分层流的两相,无论它们怎样运动,它们的相标记不变,令k =1和k =2分别表示第一相和第二相两种流体.
+1 数学模型
+　　由描述湍流瞬时量变化规律的微分方程,通过Reynolds分解和平均,并对关联项引入梯度模拟进行封闭处理,可得两相湍流体系的状态参数平均值变化规律的控制方程.
+第k相流体的时均连续方程(容积分数方程):
+　(1)
+第k相流体的时均动量方程:
+　(2) 
+第k相流体湍流动能Kk方程:
+　(3)
+第k相流体湍流动能耗散率εk方程:
+　 (4)
+其中:
+　(5)
+　(6)
+　(7)
+　(8)
+　(9)
+　(10)
+　(11)
+　(12)
+式中:t为时间(s);下标k和l表示流体种类,可取1或2 ( k 1 l );ρk为第k相流体的物质密度(kg/m3);Fk 和F l 分别为第k相和第l相流体的时均容积分数;Uki和Uli分别为第k相和第l相流体的时均速度的i分量(m/s);μek和μel分别为第k相和第l相流体的有效动力粘性系数(Pa・s);σΦk为第k相流体的湍流Schmidt数,一般取作常数,但浮力作用对σΦk的数值有明显的影响,稳定分层和不稳定分层分别增加和减小σΦk,可用Munk-Anderson公式计算这一影响[2];P为混合物的时均压强(Pa);ρr为环境流体的物质密度(kg/m3);gi为重力加速度的i分量(m/s2);Fki为第l相对第k相流体时均摩擦阻力的i分量(N/m3);ε为混合物的密度(kg/m3);K 为混合物的湍流动能(m2/s2);e 为混合物的湍流动能耗散率(m2/s3);μk为第k相流体的动力粘性系数(Pa・s);μtk 为第k相流体的动力涡粘性系数(Pa・s);Kf、Km、σkk、σεk、σΦ0、C1、C2和Cμ为经验常数,它们的取值分别为Kf=0.05、Km=0.1、σkk=1.0、σεk=1.3、σΦ0=1.0、C1=1.44、C2=1.92和Cμ = 0.09.方程(1)～(12)构成了水环境两相分层流双流体模型.
+2　数值计算
+　　双流体模型微分方程组是多元非线性椭圆型偏微分方程组.除具有非线性、耦合性和统一性的特点之外,其区别于单流体模型微分方程组最重要的特点是:控制微分方程的数目增加了一倍;流体间的相互作用强化了方程的非线性和方程间的耦合,这种耦合有两方面,一是同一相的控制方程之间的耦合,二是不同相的控制方程组间的耦合,即相间耦合.控制微分方程组的数值解对初值、离散化方法、迭代流程和迭代方法等的依赖更为强烈,这是强耦合的直接后果.为了克服数值求解上的困难,必须降低以至消除非线性和强耦合.由于用统一的多流体模型来描述两相流体的流动,可用统一的Eulerian场中的差分方法来进行求解.因而,求解单相流问题的SIMPLE算法可推广应用于两相流问题的求解,利用两相混合物的连续性方程来建立压力校正方程.用从无滑移单流体模型过渡到双流体模型的过渡求解方法,通过欠松弛和适当的迭代流程,完成两相耦合系统的数值求解.
+3　模型的数值验证及结果讨论
+3.1 算例
+　　如图１所示,两股既有速度差又有密度差的流体通过分隔板平顺汇合[3],上部水体与下部水体相遇,发生相互卷吸、掺混.流场中不仅有重力,还有因两相之间存在的密度差而产生的浮力,形成了一个存在流速及密度都有分层的两相湍流流动.求解区域的边界由进口边界、自由面边界、下游出口边界及壁面边界组成.双流体模型的方程组属于两相椭圆型,因此在求解区域的每一边界上都应给出边界条件,才能得到问题的解.在进口边界,流速、紊动特征量及密度作为本质边界条件给出;在自由面边界,作刚盖近似,同时采用对称平面条件,考虑到自由表面对湍动的抑制作用,自由面上湍流动能耗散率由经验公式[2]来确定;在下游出口边界,湍流已达到自相平衡,可给出各物理量沿出口法向梯度为零;在壁面边界,采用粘性无滑移条件,并假定没有质量交换,此外,对近壁网格结点采用壁函数方法[2]来处理近壁粘性次层.
+
+图1　流动图案示意
+Fig.1 Flow geometry and coordinate system
+3.2 计算结果及讨论
+　　图2～图4中给出了在5、10、40m断面处的流速、湍流动能、相对密度(为无量纲数,等于ρ-ρ 1/ρ2-ρ1)的计算及验证结果(图中,―为计算值; ・ 为实测值).从总体上看,计算结果与实验资料[3]吻合很好.模型较好地模拟了存在密度梯度的两相分层流中各种物理量的变化规律,它正确反映了所期待和预料的这类流动的分层及紊动特征,因为作为分层根源的分界面处强烈的各向异性是两相相互间的物质、动量和能量相互作用引起的,湍流双流体模型很好地反映了这种相互作用.从图2,图4中可看出,由于浮力的作用,两相间的耦合呈“抑制型”,即两相间的耦合并不是使参数分布趋于均匀,而是竭力使两相参量都维持它们各自的秩序.上层水体向前流动,并有向下层扩展的趋势,下层水体又向上顶托,阻止了上层水体的下潜,形成了流动及密度分层现象.两相在交界面上发生掺混、卷吸,其强度随两相之间密度差的增大而减小.从双流体模型的归一化平均参数的剖面图中可以看出,平均参数是复杂变化的内部过程的综合外观,双流体模型从构成流体的各相出发,着眼于它们各自的运动及其相互作用.因此,不但可以模拟流体运动的“外观”,而且更可以揭示流体复杂的内部过程,使人们能更深入地认识两相掺混、卷吸的内部结构和机理,这是任何单流体模型所不及的.
+
+图2　预报和实测的两相混合物流速剖面
+Fig.2 Predicted and measured profiles of velocity of mixture
+
+图 3　预报和实测的两相混合物湍流动能剖面
+Fig. 3 Predicted and measured profiles of turbulent kinetic energy of mixture
+
+图4　预报和实测的相对密度剖面
+Fig.4 Predicted and measured profiles of relative density
+4　结　语
+4.1 建立了水环境两相分层流双流体模型.选择了一个包含有许多流动结构的两相流动体系为模拟对象,进行数值模拟,并与实验资料进行对比,结果表明效果良好,双流体模型能充分反映两相流体的分层现象.
+4.2 两相分层流双流体模型的实质是引入了反映两相流体共存事实的容积分数;考虑了两相之间的滑移对变量的输运;明确了两相之间存在的复杂相互作用.因此,双流体模型不但可以模拟流体的“外观”,而且更可以揭示其两相流动与混合的复杂内部过程.
+基金项目：国家自然科学基金资助项目(59779023)
+作者简介：沈永明(1963-),男,云南昆明人,博士,大连理工大学海岸和近海工程国家重点实验室教授、博士生导师,主要从事港湾、河口水质模拟方面的研究工作.参加完成了国家自然科学基金资助项目“浮力回流和浮力环流的工程湍流流动研究”(获1995年度电力工业部科学技术进步一等奖)的研究工作.发表论文30余篇.
+作者单位：（大连理工大学海岸和近海工程国家重点实验室,辽宁 大连 116023）
+致谢：英国CHAM公司M. R. Marlin 博士对本研究提出了宝贵建议并提供了有关实验数据,使模型验证得以顺利进行,特此致谢.
+参考文献：
+[1]Markatos N C．Computer simulation techniques for turbulent flows [J].Encyclopedia of Fluid Mechanics,1985, 6 (1): 1259- 1275.
+[2]Rodi W.Prediction methods for turbulent flows [M]. New York: McGraw-Hill International Book Company, 1980.
+[3]Uittenbogaard R E.Measurement of turbulence fluxes in a steady, stratified mixing layer [A].In:3rd Inter. Symp. on Refined Flow Modelling and Turbulence Measurements [C].Tokyo,1988. 725- 732.
+收稿日期：1998-09-09

@@ -1,0 +1,106 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年 第2期 No.2 1999
+
+
+
+巴西基酸生产废水膜生物工艺处理试验研究
+吴志超　王士芬　高廷耀
+　　摘要：采用间歇式好氧膜生物工艺(好氧曝气―超滤)对巴西基酸生产废水进行了处理实验研究,结果表明,在其它条件一定,操作周期为12、24、36、48h时,超滤液COD浓度分别为160、151、139、160mg/L,水通量逐步提高；当容积负荷为1.2、2.4、3.6、4.8kg/m3.d时,超滤液COD浓度变化不大,但水通量下降；当泥龄分别为5、10、20、50d时,超滤液COD浓度分别为303、260、171、169mg/L,水通量上升.
+　　关键词：废水处理；膜生物工艺；超滤
+　　中图分类号：X703文献标识码：A文章编号：1000-6923(1999)02-0165-04
+The laboratory test of membrane biological process of organic wastewater from brassylic acid manufacturing plant.
+WU Zhi-chao　WANG Shi-feng　GAO Ting-yao 
+(School of Environmental Science and Engineering, Tongji University, Shanghai 200092,China). China Environmental Science.1999,19(2)：165～168
+Abstract：Membrane biological process(MBP) treatment of organic wastewater was studied from brassylic acid manufacturing plant in the laboratory. The test membrane bioreactor process contained batch type aerobic biological treatment and ultrafiltration. The test result indicated that the permeate COD concentration was 160,151,139 and 160mg/L and the flux increased when the operation period was 12,24,36 and 48 hours respectively. When the volume organic loading was 1.2, 2.4, 3.6 and 4.8 kg/m3・d respectively, the permeate COD concentration was almost the same, but the flux reduced. When the activated sludge age was 5,10,20 and 50 days respectively, the permeate COD concentration was 303,260,171 and 169mg/L,while the flux increased gradually.
+Key words：wastewater treatment；membrane biological process；ultrafiltration
+　　巴西基酸生产废水是一种高浓度有机废水,该废水的处理工艺国内外尚未见报道.其COD浓度为3000～12000mg/L,BOD5/COD在0.4～0.5,硫酸盐含量达13000mg/L左右.膜生物工艺(MBP, Membrane Biological Process)[1,2]是近年来在国外得到较快发展的污水处理新工艺,通过膜分离将微生物和高分子有机物完全截留在生物反应器内,既提高了污泥浓度又促进了一些难降解物质的分解.本研究采用间歇式好氧膜生物工艺对该废水进行处理的试验研究,以了解高浓度有机废水膜生物工艺处理的特点.
+1 设备和方法
+　　生物曝气池采用1000mL和500mL的量筒,大孔曝气；膜分离设备采用静态膜评价池,超滤膜采用截留分子量50000,面积为46.5cm2的聚醚砜膜(PES500).
+　　对废水进行中和处理,pH值调至6.4左右,上清液作为膜生物工艺的进水,间歇式运行,排水均通过膜评价池超滤排掉,少量的浓缩液和超滤过程中由浓差极化形成的极化层污泥均返回相应的生物反应器中.实验分3个阶段进行,分别考察不同操作周期、平均有机负荷和不同泥龄时膜生物工艺的出水水质和膜水通量等变化.当系统在一定条件下稳定运行3倍泥龄时间后进行水质分析,以得到相对稳定可靠的试验结果.
+2 结果和分析
+2.1 操作周期对间歇式膜生物工艺的影响
+　　表1是不同操作周期时膜生物工艺的水质分析平均结果.由表1可知,滤纸过滤液COD浓 度并没有随操作周期(即微生物好氧分解时间)的延长而降低.引起该现象的原因在于,滤纸对游离细菌、胶体等是无法截留的,使滤纸过滤液的COD浓度出现不稳定现象.而超滤液的COD浓度基本可以反映生物氧化程度对污水中有机物去除的影响.随操作周期的延长,生物氧化程度的加大,超滤液COD浓度出现逐渐下降的现象.由表1还可以发现,D反应器超滤液COD浓度出现异常升高现象,这是因为D反应器的亚硝酸盐氮浓度为116mg/L,比C反应器高,影响了COD的测定.
+表1 不同操作周期膜生物工艺实验结果
+Table 1 The test result of MBP under different operation period
+
+反应器滤纸过滤液COD浓度(mg/L)超滤液COD浓度(mg/L)MLSS (mg/L)MLVSS (mg/L)MLVSS/MLSS泥龄
+(d)操作周期(h)
+A204160783325740.331012
+B222151443813330.301024
+C20413930969020.291036
+D18716022137310.331048
+
+　　由表1还可以看出,随着操作周期的延长,各生物反应器平均MLSS和MLVSS浓度有不同程度的下降,A、B、C反应器MLVSS/MLSS的平均比值也随操作周期的延长而逐渐下降,但D反应器MLVSS/MLSS的平均值却出现大幅度上升现象.D反应器MLVSS/MLSS比值的升高也与硝化细菌的大量存在有关.实验中, MLVSS/MLSS的比值与常规生物处理相比很低,该现象的产生与以下两个原因有关[3]:(1)进水本身携带一些没有完全沉淀掉的微细无机悬浮颗粒,而外排的污泥仅为沉淀污泥的1/10,这些无机固体日积月累,造成非挥发性成分的增大,MLVSS/MLSS比值的减小；(2)废水所含的高盐分一部分被滤纸吸附,在水分烘干后留在了滤纸上,影响了测定.
+　　图1是PES500膜超滤时平均水通量的变化(0.2MPa).从图1可看出,随着生物曝气时间的增加,溶解性有机物浓度的下降,膜对A、B、C和D生物反应器活性污泥(AS)混合液的超滤水通量逐渐上升,特别是D生物反应器,其水通量明显提高.在该阶段实验中,化学清洗一个月左右进行一次.而在水质分析期间,膜仅在自来水里进行简单的纱布擦洗,但膜的水通量并没有随每天重复的超滤过程而出现明显下降,这表明,简单清洗可以非常有效的恢复PES500膜的水通量.
+
+
+图1 膜对各反应器AS超滤时平均水通量的变化
+Fig.1 The water flux variation of membrane for ultrafiltrating mixed sludge liquid of different reactor 
+2.2 平均容积负荷对膜生物工艺的影响
+　　在该实验阶段,泥龄控制在10d,操作周期均为24h,A、B、C、D 4个反应器的容积负荷分别为4.8、3.6、2.4、1.2kg/m3・d.表2是运行稳定后的水质分析.由表2可以发现,随着平均容积负荷的降低,膜生物工艺生物曝气池的MLSS和MLVSS浓度逐渐减少.表2还显示,各反应器超滤液的COD浓度基本相当,说明超滤膜生物工艺的出水水质与平均容积负荷无关.同时,由各反应器滤纸过滤液COD浓度的变化可以看出,其COD值的变化无一定的规律性,与超滤液水质和常规生物处理的效果相比,其COD浓度存在明显的累积现象.
+表2 不同平均容积负荷时膜生物工艺运行效果
+Table 2 The treatment efficiency of MBP under different average volume loading 
+
+反应器平均容积负荷
+(kg/m3.d)
+900―954滤纸过滤液COD浓度(mg/L)超滤液COD浓度
+(mg/L)MLSS
+(mg/L)MLVSS
+(mg/L)
+A4.8473～530183～20131266～323928037～9028
+B3.6900～954197～20325855～304897458～8292
+C2.4530～555182～1959296～102923533～4518
+D1.2544～617191～1987268～81673216～3762
+
+　　图2,图3分别是稳定后水质分析期间第1d和最后1d PES500膜对各生物反应器混合液超滤时水通量的变化情况(0.25Mpa).A、B、C、D 4个反应器混合液超滤结束时膜的水通量分别为9.0、10.5、15.3、14.1L/m2.h和 13.7、10.8、18.3、16.1L/m2.h.由水通量随平均容积负荷变化的情况可以看出,当容积负荷相差较大时,容积负荷小的反应器混合液超滤时的水通量较大,当容积负荷相差较小时则要综合考虑其它因素.同时, 膜采用一般纱布擦洗,但水通量没有出现下降现象,说明简单清洗方法对于膜水通量的恢复在本实验阶段同样有效.
+
+
+图2 第1d膜对AS混合液超滤时水通量的变化
+Fig.2 The water flux variation of membrane for ultrafiltrating mixed sludge liquid on the first day of water analysis
+
+
+图3 最后1d膜对AS混合液超滤时水通量的变化
+Fig.3 The water flux variation of membrane for ultrafil-trating mixed sludge liquid on the last day of water analysis
+2.3 泥龄变化对间歇式膜生物工艺的影响
+　　在实验阶段,每天的换水量为200mL,操作周期均为24h,A、B、C、D反应器的泥龄分别为5、10、20和50d.表3是该实验阶段运行完全稳定后水质分析统计情况.
+　　从该阶段实验可以知道,生物反应器的MLVSS浓度随着泥龄的延长而增大.滤纸过滤液COD浓度依然很高,但随着生物反应器泥龄的延长,滤纸过滤液COD浓度和超滤液COD浓度均出现明显下降现象,这说明延长活性污泥的泥龄,可以提高MLVSS的浓度,增加生物反应器中微生物的浓度,对累积高分子有机物和残余的小分子物质进行有效的降解,使得累积的有机物浓度维持在一个低水平上,并改善了超滤液的水质.根据该阶段实验的水质分析值,可以求出膜生物反应器[4]的污泥总产率系数Y为11.41 mgVSS/mgCOD,衰减常数Kd为0.08d-1.
+表3 不同泥龄对膜生物工艺运行效果的影响
+Table 3 The treatment efficiency of MBP under differentsludge age
+
+反应
+器泥龄
+(d)滤纸过滤液COD浓度(mg/L)超滤液
+COD浓度(mg/L)MLSS (mg/L)MLVSS (mg/L)
+A5889303200664060
+B10709260165865099
+C20766171242578728
+D503761692972611498
+
+
+　　表4是同一PES500膜对各反应器AS混合液超滤时水通量变化和透过量累积情况,由表4可知,随着活性污泥泥龄的延长,滤纸过滤液的COD浓度和超滤透过液的COD浓度逐渐下降,超滤膜的水通量逐渐上升.与泥龄为5d的A反应器相比,泥龄为50d的D反应器不仅滤纸过滤液和超滤液COD浓度较低,而且超滤时的水通量大,排泥量较少,从工程应用角度考虑,泥龄的延长,MLSS的增大不致引起粘度值的突变,适当提高泥龄对膜生物工艺的运行非常有利.
+表4 膜对各反应器AS混合液超滤时水通量的变化（0.25Mpa）
+Table 4 The water flux variation of membrane for ultrafiltrating mixed sludge liquid of different reactor（0.25Mpa）
+
+时间 
+(min)A反应器B反应器C反应器D反应器
+水通量(L/m2. h)累积通量（mL）水通量(L/m2.h)累积通量（mL）水通量(L/m2.h)累积通量（mL）水通量(L/m2.h)累积通量（mL）
+046.20.052.80.057.70.084.70.0
+516.712.219.914.119.615.027.721.8
+1011.217.615.421.014.621.621.131.2
+158.521.412.926.412.426.917.338.7
+207.124.411.531.211.231.414.544.8
+256.227.010.435.410.435.612.850.1
+305.729.39.739.39.639.511.954.9
+
+
+3 结语
+　　采用间歇式好氧膜生物工艺处理巴西基酸废水的实验结果表明,当操作周期为12、24、36、48h时,超滤液COD浓度分别为160、151、139、160mg/L,水通量逐步提高；当容积负荷为1.2、2.4、3.6、4.8kg/m3.d时,超滤液COD浓度基本相当,但水通量下降；当泥龄分别为5、10、20、50d时,超滤液COD浓度分别为303、260、171、169mg/L,水通量上升.
+作者单位：吴志超　王士芬　高廷耀（同济大学环境科学与工程学院,上海 200092）
+作者简介：吴志超(1966-),男,浙江余姚人.同济大学环境科学与工程学院讲师、博士,主要从事废水物理化学处理的教学、科研、产品开发工作.1993年“焦化废水深度处理”项目获上海科技进步成果三等奖,目前正进行两项水污染控制领域膜分离应用的研究课题.发表论文10篇.
+收稿日期：1998-07-09
+参考文献：
+　[1]Boran Zhang, Kazuo Yamamoto. Seasonal change of microbial population and activities in a building wastewater reuse system using a membrane separation activated sludge process[J]. Wat.Sci.Tech., 1996,34(5-6):295-302.
+　[2]Trouve E,Urbain V,Manem J.Treatment of municipal wastewater by a membrane bioreactor: Results of a semi-industrial pilot-scale study[J]. Wat.Sci.Tech., 1994,30(4):151-157.
+　[3]北京市环境保护科学研究所.水污染防治手册[M].上海:上海科学技术出版社,1989.
+　[4]秦麟源. 废水生物处理[M]. 上海:同济大学出版社,1988.

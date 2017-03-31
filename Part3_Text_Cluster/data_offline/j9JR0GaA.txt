@@ -1,0 +1,103 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第4期　Vol.19　No.4　1999
+
+
+
+镧氧化膜硅胶吸附除氟性能研究
+马刚平　刘振儒　赵春禄
+摘要：采用多次浸渍―干燥―高温焙烧法制备了表面包裹镧氧化膜的硅胶吸附剂,对模拟含氟水样进行了静态及动态吸附实验.结果表明,镧氧化膜硅胶具有吸附容量大(2.650mg/g)、稳定性好、适用于处理偏酸性含氟水体等特点, 除氟效率可达90%以上.其除氟机理是以离子交换为主,兼有表面络合作用.对吸附达到饱和的镧氧化膜硅胶用0.01mol/L稀硝酸镧溶液再生后可重复利用.并通过扫描电镜对其表面结构和氧化镧活性组分的形态进行了观察.
+关键词：镧氧化膜硅胶；吸附；除氟
+中图分类号：X13 文献标识码：A 文章编号：1000- 6923(1999)04- 0345- 04
+Study on the removal of fluoride by using lanthanum oxide―coated silica gel.
+MA Gang-ping , LIU Zhen-ru , ZHAO Chun-lu (Department of Environmental Science,Shanxi University,Taiyuan 030006,China). China Environmental Science. 1999,19(4)：345～ 348
+Abstract：In this paper, a lanthanum oxide―coated silica gel was prepared by using impregnating―evaporating―baking method, which was used to remove fluoride through static adsorption test and column test. The result shows that this adsorbent has many characteristics such as considerable capacity (2.650mg/g), stability of oxide membrane and so on. The removal rate of fluoride was more than 90% at moderate acidic solution. The mechanism of fluoride removal was mainly ion exchange with surface complexcation, 0.01mol/L La(NO3)3 solution was used to regenerate the adsorbent as adsorption saturated. Surface structure and oxide membrane’s form of adsorbent were observed through SEM . 
+Key words：lanthanum oxide―coated silica gel；adsorption；fluoride removal 
+　　氟及氟化物在环境中分布很广,长期饮用高氟水会导致氟斑牙、氟骨症,严重者可引起氟中毒.自50年代以来,人们研究了多种除氟方法[1, 2],并取得了一定进展.目前主要的除氟方法有混凝沉淀法和吸附过滤法.混凝沉淀法主要缺点是处理后产生大量的沉淀污泥;吸附过滤法主要是以活性氧化铝的研究与应用最多,但其成本较高.
+　　本文用经过在稀硝酸镧溶液中浸渍的粗孔层析硅胶,经红外干燥、高温焙烧制成镧氧化膜硅胶,对模拟含氟水样进行除氟性能研究,并探讨了其除氟机理.
+1 材料、仪器及实验方法
+1.1 材料与仪器
+　　60～ 100目粗孔层析硅胶(青岛海洋化工厂产);La(NO3)3.6H2O和NaF均为AR级;TISAB缓冲溶液等.ORION 420A pH计;美国Leeman 10-9021型电感耦合等离子体发射光谱仪; DHZB-500型电热恒温振荡培养箱;S-570电子显微镜;内径为10 mm,长为300 mm的玻璃吸附柱等.
+1.2 实验方法
+1.2.1 吸附剂的制备 首先用1.0 mol/L的氨水调节0.05 mol/L的La(NO3)3。6H2O溶液体系的pH值为10～ 11,然后将硅胶在室温下浸渍12h以上,于红外灯下(50～ 60℃)干燥,并经400℃高温焙烧4 h后冷却备用.
+1.2.2 静态除氟性能及影响因素 以NaF和自来水配制浓度为4～ 5mg/L的含氟水样,用0.1mol/L的HCl和NaOH溶液调节溶液体系的pH值.静态吸附试验选用恒温振荡法,F-的测定用离子选择电极法.在静态吸附实验条件下,考察溶液体系pH值、浸渍次数、振荡时间及温度对除氟性能的影响.
+1.2.3 氧化膜在水溶液中的溶出率(%) 取一定量制备好的镧氧化膜硅胶,加入到一定体积的水溶液中,调节溶液体系的pH值为5～ 6,恒温振荡60min后,用等离子体发射光谱法测定水溶液中镧离子浓度,考察吸附剂表面镧氧化膜的稳定性能.
+1.2.4 动态吸附和再生试验 于吸附柱内填装吸附剂,高度为100mm,堆密度为0.52 g/cm3.将浓度为3.0 mg/L的含氟水样,调节pH值为5～ 6之间,以1.0 mL/min的流速过柱,定期测定出水中的F-浓度,并作穿透曲线.将吸附达到饱和的镧氧化膜硅胶于稀氨水溶液和稀硝酸镧溶液中浸泡并恒温振荡一定时间,然后用去离子水洗涤至出水为中性并经110℃干燥后,再进行动态吸附试验,考察再生液的再生能力及再生过程中镧氧化膜的稳定性.
+2 结果与讨论
+2.1 浸渍次数及pH值对除氟性能的影响
+　　不同浸渍次数的镧氧化膜硅胶吸附容量随pH值的变化曲线如图1所示.
+
+图1 不同浸渍次数的镧氧化膜硅胶吸附容量
+随pH值的变化
+Fig.1 Variation of lanthanum oxide-coated silica gel’s adsorption capacity with pH in different 
+impregnating times
+　　图1中1#～ 4#分别表示硅胶在La(NO3)3溶液中经过1～ 4次浸渍后制备的镧氧化膜硅胶.结果表明,随着浸渍次数的增加,其吸附容量呈现明显的上升趋势,这主要是由于硅胶在浸渍―干燥―高温焙烧过程中,溶液中的La3+以La2O3的形态沉积附着到硅胶的外表面及一定孔径微孔的内表面上,形成镧的活性氧化膜.因为镧的水合氧化物与F-可发生强烈的络合作用[3,4],所以随着浸渍次数的增加,硅胶表面上氧化镧分布更趋于均匀,吸附位点增多,络合F-的能力随之增强,吸附容量可从0.2mg/g上升到0.8mg/g以上 .对于3# 吸附剂,在保证镧氧化膜硅胶表面镧浓度相近的前提下,分别采用经1次浸渍和经3次浸渍的方式制备吸附剂,然后进行相同的静态吸附试验.结果表明,经多次浸渍后制备的吸附剂,其吸附能力略高于经1次浸渍制备的吸附剂.
+　　从图1中还可以看出,溶液体系的pH值是影响吸附剂除氟性能的重要因素.当吸附剂表面镧的沉积量较低时,除氟适宜的pH值范围相对较窄,随着表面镧沉积量的升高,适宜的pH值范围逐渐增宽.经过多次浸渍后所制备的吸附剂在pH值为3～ 6的范围内均有较好的除氟能力.由此可见,镧氧化膜硅胶吸附剂适于处理偏酸性的含氟水体.
+2.2 振荡时间对除氟性能的影响
+　　图2为吸附容量与振荡时间的关系曲线.从图2可以看出,最初3h内吸附容量随着时间的增长迅速上升,3h后吸附容量上升的趋势比较平缓.可以认为镧氧化膜硅胶吸附剂对F-的吸附主要发生在3h以内,以后的吸附逐渐趋于饱和.为了既保证吸附剂对F-的充分吸附,又考虑到时间因素,本实验的振荡时间选择为5h.
+　
+
+图2 不同浸渍次数的镧氧化膜硅胶吸附容量
+随振荡时间的变化
+Fig.2 Variation of lanthanum oxide-coated silica gel’s adsorption capacity with oscillatin time in different 
+impregnating times
+2.3 振荡温度对除氟性能的影响
+　　图3为在15、30和45℃条件下,3# 吸附剂吸附容量随pH值的变化曲线.从图3可看出,3条曲线虽略有差别,但基本吻合,可认为温度对吸附剂的除氟性能影响不大.本实验选择室温.
+
+图3 不同振荡温度下的镧氧化膜硅胶吸附容量
+随pH值的变化
+Fig.3 Variation of lanthanum oxide-coated silica gel’s adsorption capacity with pH in different temperature
+2.4 吸附过程中溶液体系pH值的变化
+　　分别测定在静态吸附试验的开始和结束时溶液体系的pH值,结果表明,在静态吸附过程中,溶液体系的pH值都发生了较大的变化,尤其在pH值为3～ 6.5上升幅度更大,这与上述中最佳除氟效果的pH值范围基本一致.当pH值大于9以后,在碱性介质中,溶液体系的pH值反而有所降低.溶液体系pH值的变化间接地反映了吸附剂表面羟基数和电荷数的改变,也反映了对F-吸附能力的改变.
+2.5 镧氧化膜在水溶液中的稳定性
+　　镧氧化膜在水溶液中镧离子的溶出率结果如表1.由表1可知,在水溶液中吸附剂表面镧的溶出率非常低,表明镧氧化膜的稳定性能很好,这可能是由于镧氧化膜经高温处理后以较强的键合作用吸附在硅胶表面上,从而可以保证在除氟过程中氧化膜不会溶解与脱落.
+2.6 静态吸附等温线的测定
+　　以2#和3# 吸附剂进行静态恒温吸附试验,当吸附达到饱和后,分别绘制logq- logC双对数曲线及1/q- 1/C曲线.结果表明,两种吸附剂的1/q- 1/C曲线的线性都比logq- logC双对数曲线要好,可见镧氧化膜硅胶吸附剂的吸附等温线更拟合Langmuir吸附模型,说明镧的氧化层与F-之间是以单分子层吸附为主.
+表1 镧氧化膜在水溶液中镧离子的溶出率
+Table1 Detachmen of lanthanum ion of lanthanum 
+oxide membrane in deionized water
+吸附剂表面La含量(mg/g)溶液中La3+浓度
+(m g/L)溶出率
+(%)
+1#17.3630.30830.0089
+2#34.7260.46290.0067
+3#52.0900.98210.0098
+4#69.4531.02130.0074
+
+2.7 动态吸附及再生试验
+　　根据动态吸附试验绘制穿透曲线,如图4所示.结果表明,出水的含氟浓度最低可达到0.28 mg/L以下,F-去除率达90%以上,穿透体积大于600柱体积;饱和体积大于1180柱体积,累计吸附容量达到2.650 mg/g,优于活性氧化铝的吸附容量[1],而测定出水中镧离子的平均浓度小于0.2748m g/L.表明该吸附剂对F-吸附选择性好,去除率高,并且镧氧化膜稳定性好.当吸附达到饱和后,用不同浓度的稀氨水溶液或稀硝酸镧溶液浸泡再生后进行动态吸附试验,结果表明,用0.01mol/L的稀硝酸镧溶液再生效果最好,再生效率可达78%以上.用很稀的硝酸镧溶液进行再生, 一方面可使NO3-与F-进行离子交换,将吸附剂表面的F-解吸下来;另一方面也可对吸附剂表面的镧氧化膜进行补充.
+
+图4 动态吸附试验穿透曲线
+Fig.4 Breakthrough curve of column test
+2.8 镧氧化膜硅胶SEM形貌观察
+　　镧氧化膜硅胶的SEM像如图5.从SEM像可看出,硅胶表面的微孔及凹陷结构,经高温焙烧后镧以氧化膜的形态紧密地包裹在硅胶特定微孔的表面,随着表面镧沉积量的增加,SEM像显示出无定形物质增多的趋势.
+
+(a) 3次浸渍 (b) 4次浸渍
+图5 镧氧化膜硅胶的SEM形貌
+Fig.5 SEM photomicrograph of the adsorbent
+3 除氟机理探讨
+　　镧氧化膜硅胶除氟机理属于典型的离子交换吸附,兼有表面络和作用.
+　　附着于硅胶表面的氧化镧活性组分在水溶液中与羟基络合,从而形成羟基化表面,可以用如下反应式来表示:
+R- (La2O3)nLa2O3 +3H2O＝R- (La2O3)n2La(OH)3 
+　　在偏酸性介质中镧的多核羟基化合物与水中的F-发生络合反应,形成稳定的氟镧络合物;并且F-与OH-的水合离子半径相近,故在硅胶晶格中可相互交换取代,从而表面络合和离子交换作用得以协同发生.系列反应式可表示如下:
+R- (La2O3)n2La(OH)3+2F-＝R- (La2O3)n2La(OH)2F+2OH-
+R- (La2O3)n2La(OH)2F + 2F-＝R- (La2O3)n2La (OH)F2+2OH-
+R- (La2O3)n 2La(OH)F2 +2F-＝R- (La2O3)n2LaF3+ 2OH-
+R- 硅胶固相载体.
+　　可见羟基化表面的形成和离子交换作用的发生均可导致溶液体系的pH值升高.在碱性介质中,由于OH-的大量增多,La2O3与OH-优势络合部分取代了与F-的络合,不但使其对F-的吸附能力下降,而且使溶液体系的pH值有所降低.吸附达到饱和的镧氧化膜硅胶需用稀硝酸镧溶液进行再生,再生过程可简单表示为:
+R- (La2O3)n2LaF3 + 6NO3-＝R- (La2O3)n2La(NO3)3 + 6F-
+4 结论
+4.1 采用多次浸渍―干燥―高温焙烧法制备镧氧化膜硅胶,可使硅胶的除氟能力大幅度提高,除氟率可达90%以上,并且镧氧化膜的稳定性良好.其适宜的处理条件为偏酸性介质,饱和吸附容量达2.650 mg/g .对吸附达到饱和的镧氧化膜硅胶,用0.01mol/L的稀硝酸镧溶液再生后,仍然具有较高的吸附能力,可重复使用.
+4.2 镧氧化膜硅胶的除氟机理主要表现为OH-与F- 的离子交换,同时兼有表面络合作用.
+4.3 镧氧化膜硅胶仍存在阻力较大、滤速较慢等缺点,除氟机理尚需作进一步研究.
+基金项目：山西省自然科学基金资助项目(96015)
+* 现在冶金部建筑研究总院环保所工作
+作者简介：马刚平(1973-),男,山西临汾人.山西大学环境科学系工学硕士,助理工程师,主要从事环境水质转化及絮凝剂絮凝机理方面的研究工作.曾参加过“山西大学中段水回用采暖系统的研究测试”,“聚合氯化铝铁絮凝剂的研究开发”等研究工作.发表论文2篇.
+作者单位：山西大学环境科学系,山西 太原 030006
+参考文献：
+[1]Wu Yeun C,Asce M. Activated alumina removes fluoride ions from water [J]. Water and Sewage Works,1978,125(6):76- 81.
+[2]王榕树,李海明,冯 为等. 活性氧化铝/硅胶吸附剂对环境水体的脱氟行为研究及应用初探 [J].环境科学学报,1992,12(3): 333- 339.
+[3]Nomura J,Imai H,Miyake T. Removal of fluoride ion from wastewater by a hydrous cerium oxide adsorbent [J].Am. Chem.Soc.Symp.Ser., 1990, 422:157- 162.
+[4]Wasay S A,Haron Md J,Tokunaga S. Adsorption of fluoride, phosphate,and arsenate ions on lanthanum―impregnated silica gel [J]. Water Environ. Res., 1996, 68(3):295- 300.
+
+收稿日期：1998-12-25

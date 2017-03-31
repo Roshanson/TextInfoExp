@@ -1,0 +1,106 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第1期 Vol.19 No.1 1999
+
+
+
+空心玻璃微球附载TiO2清除水面漂浮的油层
+陈士夫　程雪丽
+摘要：以空心玻璃微球为载体,采用浸涂法制备出TiO2/beads 光催化剂.研究了利用TiO2/beads 光催化剂降解水面漂浮的正十二烷及甲苯的可行性.结果表明,375W中压汞灯照射120min,正十二烷的光催化去除率达93.5%,光照80min时甲苯被完全光催化去除;通入空气有利于正二十烷及甲苯的光催化去除,外加微量的H2O2(5.0mmol/L)可大大提高光催化去除率,向反应液中加入少量Na+ 对正十二烷及甲苯的光催化去除率无明显的影响.
+关键词：光催化降解；油层；二氧化钛；空心玻璃微球
+中图分类号：X505 文献标识码：A 文章编号：1000- 6923(1999)01- 0047- 04
+Photocatalytic degradation of oil films floating on water by TiO2 supported hollow glass microbeads.
+CHEN Shi-fu,CHENG Xue-li (Department of Chemistry,Huaibei Coal Teachers College,Huaibei 235000,China).China Environmental Science.1999,19(1)：47～50
+Abstract：The TiO2/beads photocatalyst was prepared by dip-coating technique using the hollow glass microbeads as a supporter .The feasibility of photocatalytic degradation of dodecane and toluene floating on water using TiO2/beads was studied .The results showed that 100% of toluene was photocatalytically degraded after 80min illumination and 93.5% of dodecane degraded after 120min illumination with a 375W medium pressure mercury lamp.Bubbling air was favourable for the photocatalytic removal of dodecane and toluene.The photocatalytic removal efficiency was increased rapidly by adding a trace amount of H2O2(5.0mmol/L).Adding a small amount of Na+ ,no obviously effect for the photocatalytic removal of dodecane and toluene was observed.
+Key words：photocatalytic degradation；oil films；titanium dioxide；hollow glass microbeads
+　　目前清除水面漂浮的油污主要采用机械清除法、吸附法和油层分散蒸发法.但是机械清除法、吸附法对一些油层薄的地区不适宜且清除费用昂贵,而油层分散蒸发法又是“污染转移”,造成对大气的二次污染.
+　　近年来,利用半导体粉末的悬浮体系光催化降解水中有机污染物的研究引起国内外不同领域学者的重视[1,2].由于光催化法在常温、常压下,短时间内将水中的有机物完全降解为CO2、H2O及一些矿物酸,所以人们正试图将此项技术尽快地应用于工业废水处理,要实现上述目的需解决光催化剂的固定化问题.文献[3,4]利用超声波振荡和Sol-gel技术将TiO2粉末附载在玻璃反应器的表面进行光催化降解有机污染物,实验结果令人满意.但是由于石油类有机物不溶于水,漂浮在水体表面,因此,利用TiO2粉末的悬浮体系或采用其它载体附载光催化剂均会沉入水底,起不到光催化作用.本研究以四异丙醇钛为原料,采用浸涂法将TiO2附载在空心玻璃微球表面,制备出TiO2/beads光催化剂,成功地将正十二烷、甲苯光催化降解.还研究了通入空气,外加H2O2及Na+浓度对光催化降解的影响.
+1 实验部分
+1.1 主要药品及仪器
+　　四异丙醇钛[Ti(iso-OC3H7)4]系实验室合成,正十二烷、甲苯为分析纯,其它试剂均为A.R级.空心玻璃微球为铝硅球,平均直径为80m m,密度在0.3～0.7g/cm3,熔点高于1200℃.
+　　1102气相色谱仪,美国惠普Hewleh-Pockar- d HP5988A GC-MS联用仪,375W中压汞灯,特征波长为365nm.
+1.2 TiO2/beads 光催化剂的制备
+　　稀硝酸溶液与异丙醇组成溶液A,四异丙醇钛与异丙醇组成溶液B；将溶液A慢慢加入到溶液B中,并充分搅拌使其形成高度分散的胶体溶液,将洗净烘干后的空心玻璃微球用上述溶液进行浸涂,5min后取出在室温无尘的条件下干燥,重复上述操作3次,然后550℃焙烧5 h,即可制备出所需的TiO2/beads光催化剂[5].
+1.3 TiO2附载量的确定
+　　空心玻璃微球附载TiO2的量通过光度法确定[6].一定量的TiO2/beads加入到适量的浓H2SO4和(NH4)2SO4的混合溶液中,加热至沸溶解TiO2,经分离定容后,用H2O2显色,在波长410nm处用光度法测定TiO2的量.
+1.4 实验及分析方法
+　　光催化降解实验在一个直径为15cm的敞口玻璃器皿中进行.每次实验装入500mL蒸馏水和10mL反应物,同时加入10g TiO2/beads光催化剂使其能均匀地布满整个液面.375W中压汞灯安放在反应器皿上方,照射整个反应液面,经测定反应液面的平均照射强度为2200W/m2.实验时向反应体系中通入0.02m3/h的空气,反应液用流动冷却水冷却,可控制反应液温度在30℃左右.实验时反应液的初始pH值为7.0.光照一定时间后取出全部反应液用氯仿萃取3次,定容后待分析测定.有机物的残留量用气相色谱分析,然后计算有机物的光催化去除率η.
+
+式中：C0为有机物初始浓度;Ct为光照时间t时有机物的浓度.光催化降解未知产物由GC-MS鉴定.
+2 实验结果与讨论
+2.1 TiO2薄层的附载量及其表面形态
+　　测定结果表明,经3次浸涂,每克空心玻璃微球表面附载0.09g TiO2,经x-ray衍射,空心玻璃微球表面附载的TiO2主要是以锐钛型矿存在;用扫描电镜观察,发现空心玻璃微球表面附载的TiO2较为均匀.每次实验结束后,反应液中均未发现TiO2粉末的存在,说明TiO2与空心玻璃微球表面结合较牢固,连续照射150h后,TiO2/beads光催化活性没有减弱,可以连续使用.
+2.2 TiO2/beads 光催化去除正十二烷及甲苯光催化降解采用以下4种反应条件
+2.2.1 TiO2/beads +Air 表示仅有光催化剂存在,而无紫外光照射.
+2.2.2 UV+beads+Air表示仅有紫外光照射,而无光催化剂TiO2/beads存在,但向体系中加入10g空心玻璃微球.
+2.2.3 UV+TiO2/beads表示紫外光和光催化剂均存在,但不向反应体系中通入空气,反应所需氧气由反应液中的溶解氧提供.
+2.2.4 UV+TiO2/beads+Air 表示紫外光和光催化剂存在的同时并向反应体系中通入空气,提供反应所需的氧气.
+　　表1,表2列出了光催化去除正十二烷和甲苯的实验结果.从表1,表2可以看出,对于反应条件2.2.1,正十二烷和甲苯的去除率最低,认为在该实验条件下,正十二烷和甲苯的去除率主要是由于挥发所致;对于反应条件2.2.2,正十二烷和甲苯的去除率也相当低,认为在该条件下,正十二烷及甲苯的去除率是由于紫外光解和挥发所致;对于反应条件2.2.3,正十二烷和甲苯的光催化去除率低于反应条件2.2.4,是因为反应液中的溶解氧消耗所致;对于反应条件2.2.4,光催化去除率最高,光照120min,正十二烷的去除率高达93.5%,光照80min,甲苯被完全光催化去除.是因为反应液中的溶解氧在光催化反应过程中起着非常重要的作用,溶解氧俘获导带电子形成. O-2(O2+e-→. O-2),减少了TiO2表面电子空穴对的复合率,同时. O-2还可进一步形成H2O2,增加具有强氧化能力的.OH[3],同时通入空气可加速正十二烷和甲苯的挥发.
+　　光催化降解正十二烷的部分中间产物如C2H4O2、C6H10O2、C10H20O4、C12H24O2已被检测出,这些物质对环境的危害性较小,因为它们溶解在水中,很容易被水中的微生物所降解.实验结果还表明,对UV+beads+Air反应条件,反应液的pH值在整个反应过程中基本上保持不变,而对于UV+TiO2/beads+Air条件,光照120min反应液的pH值从7.0降到4.5.
+表1 光催化降解正十二烷的实验结果
+Table 1 The experimental results of photocatalytic degradation of dodecane
+光照时间
+(min)TiO2/beads
++Air
+η(%)UV+beads
++Air
+η(%)UV+TiO2/beads
+η(%)UV+TiO2/
+beads+Air
+η(%)
+200.84.39.610.8
+401.99.522.725.2
+603.715.736.241.3
+805.921.648.159.7
+1006.828.157.676.0
+1208.332.163.693.5
+
+表2 光催化降解甲苯的实验结果
+Table 2 The experimental results of photocatalytic degradation of toluene
+光照时间
+(min)TiO2/beads+Air
+η(%)UV+beads+Air
+η(%)UV+TiO2
+/beads
+η(%)UV+TiO2/
+beads+Air
+η(%)
+101.32.38.910.5
+203.47.021.128.3
+405.919.749.262.3
+608.232.861.488.1
+8010.740.670.1100
+
+2.3 外加H2O2及Na+对光降解的影响
+　　采用光催化反应条件2.2.4,固定光照时间t=40min,外加H2O2对正十二烷及甲苯光催化降解的影响见表3.
+表3 H2O2浓度的影响
+Table 3 Effect of H2O2 concentration
+H2O2浓度
+(mmol/L)正十二烷
+η (%)甲苯
+η (%)
+0.025.262.3
+0.136.968.1
+0.546.275.3
+1.050.789.6
+3.058.396.0
+5.062.0100
+7.062.3100
+9.059.7100
+
+　　从表3可以看出,加入微量的H2O2可大大提高正十二烷和甲苯的光催化去除率.但是当H2O2浓度超过5.0mmol/L时,正十二烷和甲苯的光催化去除率变化不大.H2O2是电子的有效接受体(H2O2+e-→OH-+.OH),减少了TiO2表面电子－空穴对的复合率,同时产生具有强氧化能力的.OH[7].所以加入微量的H2O2,可大大提高正十二烷和甲苯的去除率；但是当H2O2浓度过高时,由于反应液中产生的. OH太多,. OH在未与有机物反应之前,就相互碰撞自行毁灭(2. OH→H2O2)所以当H2O2浓度超过5.0mmol/L时,光催化去除率变化不大.
+　　固定光催化条件2.2.4,模拟海水在反应液中分别加入0.2、1.0、3.0g NaCl.实验结果表明,加入Na+对正十二烷和甲苯的光催化降解无明显影响.
+3 结语
+　　以空心玻璃微球为载体,采用浸涂法制备出TiO2/beads光催化剂,成功地将石油中的代表物正十二烷及甲苯在短时间内完全光催化去除.虽然仅把正十二烷和甲苯作为研究对象但依照本实验结果,可以推论石油中其它有机物均可被光催化去除,关于这方面的研究,目前仍在进行中.本文将TiO2附载在空心玻璃微球上,解决了光催化剂的固定化问题,制备的TiO2/beads 光催化剂密度小于1.0g/cm3,可漂浮在水面上直接利用太阳光处理工业污染废水,且不需要回收光催化剂,便于工业化连续操作,因此,利用TiO2/beads作为光催化剂在今后工业废水处理中具有良好的开发应用前景.
+基金项目：安徽省自然科学基金资助项目(97415006)
+作者简介：陈士夫(1963-),男,安徽淮北人,淮北煤炭师范学院化学系副教授, 硕士,主要从事光催化及其在生态与环境保护中的应用研究.先后主持省部级自然科学基金3项,国家“八× 五”科技攻关子课题1项,参研省部科技攻关3项.其研究成果曾获省级科技进步二等奖1项,省星火三等奖1项,省自然科学优秀论文一等奖和三等奖各1项.发表论文20余篇.
+作者单位：(淮北煤炭师范学院化学系,安徽 淮北 235000)
+参考文献：
+　[1]　Hoffmann M R,Martin S,Bahnemann D W.Environmental application of semiconductor photocatalysis [J].Chem.Rev.,1995, 95:69-96.
+　[2]　Muneer M,Philip R,Das S.Photocatalytic degradation of wastewater pollutants titanium dioxide－mediated oxidation of a textile acid blue 40# [J].Res. Chem.Intermed.,1997,23(3):233- 246.
+　[3]　Zhao M Y, Chen S F, Tao Y W.Photocatalytic degradation of or-ganophos phorouspesticides using TiO2 thin films [J]. J. Chem.Technol.Biotechnol.,1995,64:339- 344.
+　[4]　Fernandez A, Lassaletta G, Jimenez V M,et al. Preparation and characterization of TiO2 photocatalysts supported on various rigid supports [J].Applied Catalysis, 1995,7:46－63.
+　[5]　Chen S F, Zhao M Y, Tao Y W.Photocatalytic degradation of dichlorvos using TiO2 supported on hollow galss microbeads [J].J.Environ .Sci.,1997,9(3):278－282.
+　[6]　Jochson N B,Wang C M,Luo Z.Attachment of TiO2 powders to microbeads activity of the TiO2－coat beads in the photoassisted oxidation of ethanol to acetaldehyde [J].J.Electro-chem.Soc.,1991,138(12):3660－3664.
+　[7]　Akmehmet B I, Yuckstl I. Photocatalytic degradation of organic contaminants in semiconductor suspensions with added H2O2 [J].J.Environ .Sci.Health Part A,1996,31:123- 138.
+收稿日期：1998-06-19

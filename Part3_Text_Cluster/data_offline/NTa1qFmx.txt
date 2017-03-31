@@ -1,0 +1,72 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第4期 No.4 Vol.18 1998
+科技期刊
+
+固定化甲烷八叠球菌(Methanosarcina)研究
+――厌氧颗粒污泥的形成*
+杨秀山　田　沈**　郑　颖　张　伟　刘　明　汪洪杰　(首都师范大学生物系， 北京 100037)
+
+文　摘　用实验室规模的UASB反应器处理豆制品废水培养厌氧颗粒污泥。通过对颗粒污泥形成过程中的产气率、进出水COD、水滞留期（HRT）、进出水挥发酸(乙酸、丙酸和丁酸)浓度、所产气体的甲烷含量等的变化分析和对颗粒污泥中优势产甲烷菌的扫描(SEM)和透射(TEM)电镜观察，阐明颗粒污泥的形成过程及特性。实验结果表明，消化器运转50d左右形成了颗粒污泥, 厌氧颗粒污泥形成期间的平均产气率为5.3L/L*d, 最高产气率达到了8.1L/L*d, 进水和出水COD分别为3000～5500mg/L和800～3000mg/L, 平均HRT为10.4h, 平均出水乙酸、丙酸和丁酸浓度分别为264.1、519.8和104.6 mg/L , 所产气体的平均甲烷含量为60.6%, 颗粒污泥为黑色, 直径0.5～3.0mm不等,沉降速率为119.6m/h, 其中的优势产甲烷菌为鬃毛甲烷菌(Methanosaeta), 而甲烷八叠球菌（Methanosarcina）存在甚少。
+关键词　上流式厌氧污泥床（UASB）　厌氧颗粒污泥　鬃毛甲烷菌（Methanosaeta)
+Study on immobilized Methanosarcina―formation of anaerobic granular sludge.Yang Xiushan, Tian Shen,Zheng Ying，Zhang Wei, Liu Ming, Wang Hongjie( Department of Biology,Capital Normal University, Beijing 100037).China Environmental Science.1998,18(4):356～359
+Abstract―The UASB reactor of lab scale was used to treat soybean cake wastewater in order to incubate anaerobic granular sludge. Gas production rate, influent and effluent COD, HRT, VFA concentration (acetate, propionate and butyrate) and mathane content were determented , and the predominant methanogens were observed by SEM and TEM to demonstrate the process and characteristics of anaerobic granular sludge. The results indicated that anaerobic granular sludge was formed during the performance of 50 days；average gas production rate was 5.3L/L*d；the highest gas production rate reached up to 8.1L/L.d, influent and effluent COD was 3000～5500mg/L and 800～3000mg/L respectively;average HRT was 10.4h;average concentration of effluent acetate, propionate and butyrate were 264.1mg/L, 519.8mg/L, and 104.6mg/L respectively;average methane content was 60.6%, granular sludge containing mainly Methanosaeta and less Methanosarcina was dark with diameter of 0.5～3.0mm and precipitation rate of 119.6m/h. 
+Key words:Upflow Anaerobic Sludge Blanket(UASB)　anaerobic granular sludge　Methanosaeta
+　　甲烷八叠球菌(Methanosarcina)和鬃毛甲烷菌（Methanosaeta）在厌氧消化的甲烷化作用中是最重要的乙酸裂解产甲烷菌〔1〕。鬃毛甲烷菌在UASB中能自然形成颗粒污泥而固定化,使之成为消化器中的优势产甲烷菌。研究固定化甲烷八叠球菌的作用，需首先获得在厌氧消化器运转过程中自然形成主要含鬃毛甲烷菌的厌氧颗粒污泥，从而比较以厌氧颗粒污泥为接种物的厌氧消化器和以厌氧颗粒污泥加之固定化甲烷八叠球菌为接种物的厌氧消化器在相同条件下运转特性的不同。 70年代发明了上流式厌氧污泥床(Upflow Anaerobic Sludge Blanket, UASB)反应器〔2〕, 而目前UASB已成为在废水厌氧处理中最常用的反应器。 UASB在世界范围内被大量应用并且运转非常成功〔3〕。 与传统厌氧消化器比较,UASB的优点是能够保留高浓度的生物量，结果使得这种消化器可以在短的水滞留期下运转。使污泥滞留期几乎独立于水滞留期，在这种条件下成功地运转需要好沉淀性能的高活性生物量。在UASB中，这种生物量以颗粒状存在，这种颗粒污泥的形成是成功运转UASB的关键因素。 在颗粒污泥形成机制方面还不尽了解。用实验室规模的UASB反应器培养颗粒污泥,为固定化甲烷八叠球菌处理有机废水的运转特性做准备,并对颗粒污泥的形成过程进行分析。
+1　材料和方法
+1.1　消化器
+　　实验室规模的UASB消化器由直径为600mm的有机玻璃柱制成，具一外部固液分离器,消化器有效体积为1.2L。
+1.2　接种物 
+　　用中温厌氧消化处理豆制品废水的絮状污泥为接种物。接种物浓度22.5g TSS/L,14.5g VSS/L。
+1.3　废水特性
+　　豆制品废水取自北京第六豆制品厂,经稀释后的平均进水COD 3000～5500mg/L,于8～10℃下保存。平均进水pH值为5.0。用蠕动泵从消化器底部进水，运转温度为35℃。
+1.4　COD、气体成分和挥发酸含量测定
+　　按文献〔4〕所述方法进行COD、气体成分和挥发酸含量测定。
+2　结果和讨论
+2.1　UASB运转特性
+　　消化器共运转了63d，运转期间的产气率变化如图1所示。
+
+图1　运转期间产气率变化曲线
+Fig.1　Gas production rate during the performance
+　　从图1可见，运转期间的产气率从第10d即达到2.5L/L*d,随着负荷的升高产气率逐渐升高,到第37d时,产气率达到了7.8L/L*d,最高产气率达到了8.1L/L*d，从第10d至运转结束时的平均产气率为5.3L/L*d。从运转的第38d开始每天测定进水和出水中COD浓度,其浓度变化如图2所示。
+
+图2　进水和出水中COD浓度变化曲线
+Fig.2　COD Concentrations of influent and effluent
+1.进水COD浓度　2.出水COD浓度
+　　从图2的进水和出水COD浓度变化曲线说明，进水COD浓度变化于3000～5500mg/L之间，而出水COD变化于800～3000mg/L之间。COD去除率变化于51%～72%之间。运转期间HRT的变化如图3所示。
+
+图3　运转期间HRT变化曲线
+Fig.3　Hydraulic retention time during the operation
+　　UASB在运转的前9d，HRT较长，平均为160h。从第10d开始，HRT逐渐缩短，最短的HRT为6.8h。从第10d开始至运转结束时平均HRT为10.4h。运转过程中的第39d、第43d、第50d、第57d和第62d测得的甲烷含量分别为64.6%、53.1%、65.7%、68.9% 和50.1%，平均甲烷含量为60.6%。所产气体的甲烷含量表明消化器运转正常。
+　　从运转的第38d开始测定进水和出水中乙酸、丙酸和丁酸浓度共15次，进水和出水乙酸浓度的变化如图4所示。平均进水乙酸浓度为714.6mg/L,平均出水乙酸浓度为264.1mg/L；平均进水丙酸浓度为89.2mg/L,平均出水丙酸浓度为519.8mg/L；平均进水丁酸浓度为75.1mg/L,平均出水丁酸浓度为104.6mg/L。从图1的产气率及所产气体甲烷含量变化说明在此丙酸浓度下厌氧消化过程并未受到明显抑制。
+
+图4　运转期间乙酸浓度变化曲线
+Fig.4　Acetate concentration of influent and effluent
+1.进水乙酸浓度　2.出水乙酸浓度
+　　在消化器运转50d左右形成了可见的颗粒污泥。从消化器运转期间产气率、COD负荷率、COD去除率、HRT、所产气体的甲烷含量及挥发酸含量可以看出，颗粒污泥的快速形成需要高的COD负荷率、产气率和低的HRT。在高的甲烷含量情况下，出水具较高的挥发酸含量和较低的COD去除率也可以形成颗粒污泥,这与以前报道的UASB在较高的气体和液体上流速率条件下,絮状和分散存在的污泥随出水流出消化器，而比重较大的污泥则存留于消化器内进一步形成颗粒污泥的结果相一致。
+2.2　颗粒污泥的电子显微镜观察
+　　运转结束后用扫描和透射电子显微镜对颗粒污泥的电子显微镜观察表明,颗粒污泥表面存在的产甲烷菌主要为鬃毛甲烷菌（图5A)，对颗粒污泥内部用透射电子显微镜观察表明，鬃毛甲烷菌也是优势产甲烷菌（图5B和5C）。甲烷八叠球菌仅偶尔可见（图5D）。
+
+图5　颗粒污泥的扫描和透射电子显微镜照片
+Fig.5　SEM and TEM micriograph of anaerobic granular sludge
+A.扫描电子显微镜照片　B.和C.透射电子显微镜照片　D.甲烷八叠球菌扫描电子显微镜照片
+　　颗粒污泥直径为0.5～3.0mm不等,黑色。颗粒污泥中的产甲烷菌主要是鬃毛甲烷菌、甲烷八叠球菌、甲烷短杆菌、 甲烷螺菌等，其中最重要的产甲烷菌是乙酸裂解产甲烷菌，即鬃毛甲烷菌和甲烷八叠球菌。由于鬃毛甲烷菌和甲烷八叠球菌在形态学上非常容易辨认，故颗粒污泥的扫描和透射电子显微镜观察的照片只表明其优势的产甲烷菌，而甲烷八叠球菌存在甚少或很难观察到。这一观察结果与1996年报道的颗粒污泥中的优势产甲烷菌是鬃毛甲烷菌和甲烷八叠球菌不同〔3〕。
+　　据报道〔3〕，颗粒污泥的沉降速率为18～100m/h，典型值在18～50m/h。根据颗粒污泥的沉降速率可将颗粒污泥分为3种： 第1种沉降不好，沉降速率为20m/h；第2种沉降满意，沉降速率为20～50m/h；第3种很好沉降，沉降速率大于50m/h。第2种和第3种属于好的颗粒污泥。本实验测得的颗粒污泥沉降速率为79～180m/h，平均值为119.6m/h，这样高的沉降速率使颗粒污泥有相当好的沉降效果。
+
+3　结论
+3.1　用实验室规模的UASB处理豆制品废水, 消化器运转50d左右形成了颗粒污泥, 其直径为0.5～3.0 mm, 黑色, 平均沉降速率为119.6m/h。
+3.2　颗粒污泥形成过程中的平 均 产 气 率 为
+5.3L/L*d, 最高产气率达到了8.1L/L*d, 进水和出水COD分别为3000～5500mg/L和800～3000mg/L,平均HRT为10.4h, 平均出水乙酸、丙酸和丁酸浓度分别为264.1、519.8、104.6 mg/L , 所产气体的平均甲烷含量为60.6%。在高的甲烷含量情况下，出水具较高的挥发酸含量和较低的COD去除率也可以形成颗粒污泥。
+3.3　对颗粒污泥中优势产甲烷菌的扫描(SEM)和透射(TEM)电镜观察表明，优势产甲烷菌为鬃毛甲烷菌(Methanosaeta), 而甲烷八叠球菌存在甚少。
+
+参考文献
+1　Lattinga G，van Velson,AF M,et al. Use of the upflow sludge blanket(USB) reactor concept for biological wastewater treatment. Biotechnol. Bioeng., 1988, 22:699～734
+2　Lattinga G.Anaerobic digestion and wastewater treatment systems.Antonic van Leeuwenhock.1995, 67:3～28
+3　Schmidt J E,Ahring B K.Granular sludge formation in upflow anaerobic sludge blanket(UASB)reactors. Biotechnology and Bioengineering,1996, 49:229～246
+4　Yang Xiushan, Zhou Mengjin. The anaerobic digestion of soybean cheese wastewater. China Environmental Science, 1991,2(2):46～51
+
+作者简介
+杨秀山　男，1946年1月生。首都师范大学生物系教授。主要从事微生物学教学和科研工作。承担的主要科研项目有:“甲烷八叠球菌分离培养及鉴定”（获北京市科技进步三等奖）;“产甲烷菌的研究”（获农业部科技进步二等奖）; “高浓度有机废水厌氧消化研究”（获国家科委科技进步二等奖）;“高温厌氧消化装置研究”（获联合国科技新星奖）及北京市自然科学基金项目─固定化甲烷八叠球菌研究。发表论文40余篇。
+收稿日期：1997-09-09
+* 北京市自然科学基金项目
+** 首都师范大学生物系95级研究生

@@ -1,0 +1,91 @@
+土壤与环境
+SOIL AND ENVIRONMENTAL SCIENCES
+1999年 第8卷 第1期 Vol.8 No.1 1999
+
+
+
+碳酸钙和硼对棕红壤油菜锰毒缓解作用
+朱端卫 程东升 成瑞喜 耿明建 刘武定
+摘要 对已酸化的棕红壤进行的油菜锰毒缓解研究表明，施用碳酸钙在提高土壤pH和降低土壤交换性锰的基础上，改善了土壤营养状况，其中施用0.5%碳酸钙处理的效果最好，在这一碳酸钙水平下，土壤硼处于较高的活性，土壤速效磷钾被油菜幼苗充分利用，油菜幼苗对营养元素具有最大吸收量，使植株生物学产量达到最大值。酸化的棕红壤只需施用0.5%的碳酸钙，其土壤酸碱度便可恢复到正常水平，如施用更多的碳酸钙，会造成土壤营养再度失调，油菜幼苗的生物学产量下降。在施用碳酸钙基础上配施硼素，可使油菜生物学产量进一步提高，相应的土壤环境得到更好的改善，施硼可以降低锰毒植株磷的浓缩效应和提高营养元素的利用效率。因此，碳酸钙-硼配施是缓解棕红壤油菜锰毒的一项重要措施。
+关键词 土壤；锰毒；油菜；碳酸钙；硼
+The Detoxification of Calcium Carbonate and Boron to Manganese Toxicity of Rape Crop in Acid Brown Red Soil. 
+Zhu Duanwei，Cheng Dongsheng，Cheng Ruixi，Geng Mingjian and Liu Wuding (Department of Resources，Environment and Agrochemistry，Huazhong Agricultural University，Wuhan 430070). Soil & Environ Sci，1999, 8(1): 36～39
+The study on the detoxification to manganese toxicity of rape crop grown on an acid brown soil has been conducted. The application of calcium carbonate could raise pH of the tested soil and decrease its exchangeable Mn. Hence，this practice improved the nutrition condition of the soil. Among the treatments of applying CaCO3，0.5% CaCO3 had the best effect，for example，availability of soil boron was high and soil available phosphorous or potassium were used more. It made a maximum absorption of nutrients by the crop，the biological weight of rape seedling was the highest. In the application of 0.5% CaCO3　 to the brown red soil，its acidity would return to normal，but when it was added more CaCO3 than 0.5% level，its nutrition dislocated and the biological yield of rape seedling decreased again. The application of CaCO3 with boron improved the nutrient environment more effectively，and made the seedling yield of rape enhance further. Boron would decrease the enriched effect of nutrient in rape plant in the soil of excessive manganese and improve the utilization ratio of nutrient elements. Therefore, the application of CaCO3 with B is an important role in the detoxification of manganese toxicity of rape crop in the brown red soil.
+Key words soil; nanganese toxicity; rape; calcium carbonate; boron
+　　锰是植物必需的微量元素，然而在锰活性高的酸性土壤中，过量锰会对作物产生毒害，成为农业生产的障碍因子，我国对此研究还刚起步[1]。土壤中锰的活性与pH有着很紧密的关系，活性锰浓度随pH上升明显降低。因此，施用石灰是一种克服锰毒的较实用和有效途径[2]。施用铁肥也能显著降低植物对锰的吸收[3, 4]。镁对植物锰毒有缓解作用，硼亦能降低土壤中锰的有效性。施硼能使有效锰的浓度降低1/3[5]。第四纪红色粘土发育的棕红壤，易还原性锰含量较高，随着土壤酸化造成还原作用的增强，土壤中二价锰离子逐渐累积，引起作物锰中毒。本文通过在已产生锰毒的棕红壤上，对施碳酸钙以及碳酸钙-硼配施缓解油菜锰毒的作用进行研究，以探讨克服棕红壤锰毒的有效途径。
+１ 材料与方法
+1.1 供试土壤
+　　供试土壤采自湖北省咸宁市贺胜桥镇，为第四纪红色粘土发育的棕红壤，通过种植4茬作物后，其基本性状为pH(H2O) 4.6，有机质12.4 g/kg， 速效磷、速效钾、交换性钙、交换性锰、易还原性锰和热水溶性硼分别为75.7、227、2 640、152、290和0.37 mg/kg。由于供试土壤pH由原来的5.5下降到现在的4.6，作物生长发生失调，1995年施入的磷酸二氢钙未得到充分利用，故现在土壤交换性钙，速效磷明显偏高。
+1.2 油菜幼苗试验
+　　用小陶钵装土1kg，内衬塑料袋。幼苗试验设置二个处理系列，各系列在肥底相同的基础上施入不同量的物质（表1）。每种处理4次重复。碳酸钙处理于1997年1月底提前施入碳酸钙。拌匀，加水使土体全部润湿进行培养。3月21日土壤拌肥后直播油菜(中油821)。其间用蒸馏水浇灌，活动遮雨棚防雨，适时间苗，油菜幼苗生长一个月，4月28日采收。
+　　　　表1 幼苗试验各处理物质施用量及代号
+
+施硼水平
+(mg/kg)碳酸钙水平(%)
+00.51.01.5
+0S11S12S13S14
+5S21S22S23S24
+
+1.3 室内分析
+　　供试土壤风干，磨细，根据分析项目要求分别过筛备用。用常规方法[6]测定土壤pH，有机质，交换性阳离子，速效钾，热水溶性硼等。土壤有效磷用0.5 mol/L NaHCO3提取，土壤有效钙、镁、锰用1 mol/L NH4OAC一次性提取，土壤易还原性锰、盐酸羟胺硼用0.1 mol/L NH4OH・HCl-0.01 mol/L HNO3提取。油菜幼苗采整株样，杀青烘干后粉碎备用。植物磷用硫酸-过氧化氢湿灰化法消化，植物钾、钙、镁、锰用1 mol/L HCl浸提，再用常规方法测定。
+２ 结果与分析
+2.1 施碳酸钙和碳酸钙－硼配施对锰毒缓解作用的生物效应
+　　表2列出了在供试土壤上施用碳酸钙和碳酸钙－硼配施的油菜幼苗生物学产量。多重比较表明：施用碳酸钙对棕红壤上油菜锰毒的缓解作用非常显著，各施碳酸钙处理与对照相比较，其生物量差异都达到极显著水平，0.5%碳酸钙处理的生物量最高，再施用更多的碳酸钙，油菜幼苗生物量又下降，它们与最高产量之间的差异达到5%或1%水准。碳酸钙－硼配施有同样的效应。对应处理生物量差值间的t检验表明，碳酸钙－硼配施对锰毒缓解效果优于碳酸钙单施，如在0.5%CaCO3的水平下，施硼较未施硼油菜生物学产量增加19.0%。施硼还可减少过量施用碳酸钙的不利影响，例如，在施0.0%，0.5%，1.0%，1.5%碳酸钙水平上施用5 mg/kg硼，油菜生物量比单施碳酸钙分别增加36%，19%，33%和50%。在锰毒土壤上施用过量碳酸钙引起油菜幼苗生物学产量下降的结果再次表明，在酸性土壤中应避免过量施用石灰[7]。这是因为酸性土壤施用过量石灰，再度造成元素平衡失调，影响到作物的生长。
+表2 处理间生物量差异显著性比较
+
+处理
+(1)平均鲜重
+(g/株)多重比较处理
+(2)平均鲜重
+(g/株)多重比较(2)与(1)差值(g/株)
+t检验
+S110.22- 　　S210.30- 　　0.08*
+S122.662.44**- 　S223.172.87**- 　0.51*
+S131.871.66**-0.79*- S232.482.18**-0.69**- 0.61*
+S141.551.33**-1.11**-0.32S242.332.03**-0.84**-0.150.78**
+
+* 5%显著水平；* * 1%显著水平
+2.2 施碳酸钙和碳酸钙－硼配施对锰毒土壤营养元素有效性的影响
+　　耕作土壤经较长时间风干后，土壤交换性锰增加明显。供试土壤在1992～1995年间盆栽种植多茬作物后，pH由5.5下降到4.6，当时交换锰为128 g/kg，其后自然风干到1997年再进行本试验时，pH虽基本没变，但交换锰上升至152 mg/kg，增加了19%。因此，施入碳酸钙，最直接的作用就是提高土壤pH，降低锰活性。表3表明了供试土壤施用碳酸钙及碳酸钙-硼配施对土壤pH，有效性锰以及土壤主要营养元素有效浓度的影响。随着碳酸钙施用量的提高，土壤pH、有效钙随之上升。由于土壤酸度下降，交换性锰也随之降低，导致受还原性锰控制的盐酸羟胺硼随土壤pH的提高而提高。在碳酸钙施用量为0.5%时，无论是否施硼，土壤热水溶性硼提取量最高，速效磷、钾明显降低，不仅如此，此处理的土壤pH由4.6上升至6.2左右，土壤锰毒得到有效控制，土壤硼保持了较高活性，施入的磷钾得到较好的利用。这一规律性在碳酸钙-硼配施处理上反映得更加充分，在0.5%碳酸钙-5 mg/kg硼水平下，土壤速效磷钾的消耗量更大，油菜幼苗生物学产量最高（表2），这与幼苗试验的生物结果相互印证。
+表3 锰毒土壤不同处理对土壤pH和营养有效性的影响
+
+处理pH值有效性锰有效性钙有效性镁盐酸羟胺硼热水溶性硼速效磷速效钾
+mg/kg
+S114.61144.86961030.3230.268116.8347.5
+S126.20125.919121040.3330.363106.2218.9
+S137.13104.328091170.3960.238112.4229.7
+S147.3691.934851140.4690.241115.6299.7
+S214.68144.48011051.2031.693103.5322.6
+S226.25123.319761252.8353.31098.1126.3
+S237.1498.328121163.0181.178103.7213.6
+S247.3694.735121233.2201.547109.0253.1
+
+2.3 施碳酸钙和碳酸钙－硼配施对油菜幼苗营养元素含量的影响
+　　表4的数据说明，施用碳酸钙不仅能有效地降低供试土壤中Mn2+的浓度，缓解过量锰对油菜的毒害，还能降低植株硼浓度。相对而言，不施碳酸钙的土壤，植株对硼、磷等阴离子养分具有明显的浓缩效应。施用碳酸钙可促进植株对营养元素的吸收，从测定结果看，施0.5%碳酸钙-硼处理的植株硼浓度下降幅度最大，但植株累积的硼量最多，其它营养元素的累积也有类似结果。进一步提高碳酸钙施用量，营养元素的吸收量逐渐下降。可见，过量施用碳酸钙虽能缓解土壤锰毒，但也会造成作物营养环境失调，植物生物量下降。碳酸钙-硼配施比起碳酸钙单施，对缓解土壤锰毒，加强油菜的养分吸收更加有利。这说明，在用碳酸钙缓解油菜锰毒时，配合施硼具有很重要的意义。
+表4 锰毒土壤不同处理对油菜幼苗中营养元素影响
+
+处理植株干重
+(g/株)整株含量吸收量/株
+MnBCaMgKPMn
+(mg)B
+(m g)CaMgKP
+mg/kgg/kgmg
+S110.21535904.213.22.8357.719.90.770.92.80.6312.44.3
+S122.66110033.928.52.5055.010.62.6710.475.86.65146.428.2
+S131.8766242.334.82.8552.59.61.204.365.65.2698.017.8
+S141.5506221.233.22.8352.910.40.961.951.54.3982.016.1
+S210.297312310.722.63.2358.716.40.933.26.70.9617.44.9
+S223.1679805.932.52.8155.712.03.1018.7102.98.90176.438.0
+S232.4835644.933.43.0050.413.01.4012.283.97.45125.132.2
+S242.3326023.636.43.0853.612.21.408.484.87.18125.028.5
+
+作者单位：华中农业大学资源环境与农业化学系，武汉 430070
+参考文献
+1 刘铮. 土壤与植物中锰的研究进展. 土壤学进展，1991, 19(6): 1～10
+2 Davis J G. Soil pH and magnesium effects on manganese toxicity in peanuts. J Plant Nutr, 1996, 19(3&4): 535～550
+3 Roomzadeh S, Karimian N. Manganese-iron relationship in soybean grown in calcareous soils. J Plant Nutr, 1996，19(2): 297～406
+4 陆申年. 菠萝的铁锰平衡和铁肥施用. 见: 国际平衡施肥学术讨论会论文集. 北京: 农业出版社，1989. 376
+5 Lehto, Jarja. Effects of liming and boron fertilization on boron uptake of Picea abies, Plant Soil, 1994, 163(1): 55～64
+6 李酉开. 土壤农业化学常规分析方法. 北京: 科学出版社，1984
+7 Fageria N K. Lime and phosphorous interactions on growth and nutrient uptake by upland rice, wheat, common bean，and corn in an oxisal. J Plant Nutr, 1995, 18(11): 2519～2532
+收稿日期：1998-08-12

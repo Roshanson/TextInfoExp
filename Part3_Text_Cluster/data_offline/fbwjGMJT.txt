@@ -1,0 +1,99 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第2期 No.2 Vol.18 1998
+科技期刊
+
+高效聚合氯化铝的电化学合成研究*
+路光杰　曲久辉　汤鸿霄
+(中国科学院生态环境研究中心，环境水化学国家重点实验室，北京 100085)
+文　摘　研究了一种新的聚合氯化铝的制备方法―电化学合成法。该法以金属铝为阳极，AlCl3水溶液为电解液，采取低电压、大电流工作方式。确定了影响有效铝聚合形态的电化学和溶液化学因素，成功制备出碱化度B=2.4，有效絮凝成分Alb含量70%以上的优质聚合氯化铝液体产品。水处理絮凝实验结果证明，电解法制备的聚合铝的絮凝效果明显优于普通聚合铝和絮凝剂。
+关键词　 聚合氯化铝　电化学合成　絮凝
+Study on the electrochemical production of highly effective polyaluminum chloride.Lu Guangjie，Qu Jiuhui，Tang Hongxiao(State Key Laboratory of Environmental Aquatic Chemistry, Research Center for Eco-Environmental Sciences, Chinese Academy of Sciences, Beijing 100085).China Environmental Science.1998,18(2):140～143
+Abstract― A new method was studied for the electrochemical production of highly effective polyaluminum chloride (PAC).In the experiment,it used four aluminum sheets as anodes, four iron sheets as cathodes and AlCl3 solution as electrolyte. The proper electrolysis condition was found to be in low voltage and high current intensity. Some important factors of electrochemistry and solution chemistry effecting the formation of Al13 were also determined. The liquid product of PAC with basicity B(OH/Al) of 2.4 and Alb more than 70% of the total aluminum was successfully prepared. The results of the coagulation-flocculation experiments show that the PAC prepared by electrochemical process(E-PAC) is more effective than the commercial PAC and other conventional coagulants in removing the suspended particles and fulvic acid from water.
+Key words:polyaluminum chloride　electrochemical production　flocculation
+　　研究表明〔1,2〕，聚合铝的高效絮凝作用主要是由于其中的有效成分，一种被称为Al13的羟基铝聚合态Al13O4(OH)7＋24或Alb的作用，它实际上是一定控制条件下铝离子的水解-聚合-沉淀过程的动力学中间产物。因此，采取有效途径获得高含量Al13聚合形态往往是聚合氯化铝研究与制备的主要目标。
+　　目前工业化生产聚合铝的方法主要有：以铝或含铝矿物(包括铝灰、粘土矿或煤矸石提炼出的三氧化二铝等)为原料及以铝酸钠或氢氧化铝为原料的化学酸溶法，以三氯化铝为原料的中和法，电渗析法和热分解法等。这些方法的主要缺点是生产过程不易控制，因而产品质量不够稳定，碱化度一般在1.2～1.5之间，主要有效絮凝成分Alb（Al13聚合态)含量较低。同时，人们也对聚合铝的电化学合成进行了一定程度和范围的研究与实践 ,但是这些研究仍然没有突破传统的絮凝剂的概念和实质，因而不能有力地推动絮凝剂的电化学合成技术的研究和进展。
+　　本文将以新的絮凝观为基础，研究通过控制最佳的电量和化学参数,找到具有高碱化度和高Al13聚合形态含量的聚合氯化铝的电解合成方法，探讨影响有效铝聚合形态生成的电化学和溶液化学条件，并将对电解制备的聚合氯化铝产品的絮凝效能进行评价。
+1　原理与方法
+1.1　聚合氯化铝的电合成原理
+　　在含有一定量电解液(如氯化铝溶液)和至少一个金属阳极(如金属铝)的电化学反应器中通以直流电，即可能发生以下的电化学反应： 阳极：Al - 3e→Al3+　Eo=-1.706V (1)
+　　 也可能发生析出氧气或氯气的副反应：
+阴极：2H+ + 2e→H2　Eo=0V (2)
+　　在阳极，只要控制其电位在氧气的析出电位以下，就不可能析出氧气或氯气；在阴极只要使其电位保持一定便总是氢气析出。所以，在特定电化学反应器中，当控制一定条件使铝阳极逐渐溶解，氢气逐渐析出，从而创造有利于反应(3)进行的条件：
+Al + H2O＋ AlCl3→Alm(OH)nCl(3m-n) + H2 ↑(3)
+Alm(OH)nCl(3m-n)继续水解为Al(OH)3。因此，适当控制电解过程的溶液和电化学条件，即可控制铝溶出和OH-生成速度，进而控制如下铝离子的水解－聚合－沉淀过程：
+　　 Al3+→Ala→Alb→Alc→Al(OH)3↓(4)
+使其最大限度地停留在Al13(Alb)阶段，获得高质量聚合铝产品。
+1.2　高效聚合氯化铝的电解制备方法
+1.2.1　电化学反应器特性　 聚合氯化铝合成的电化学反应器箱式有机玻璃槽(6×185×150×230 mm),电源采用GCA12-16A型硅整流稳压电源。阳极为100×120×1mm含量为99%的金属铝板，阴极为100×120×1mm的铁板。以分析纯AlCl3*6H2O溶液为电解液。为增加溶液传质、减少浓差极化，电解时采用78-1A型强磁力搅拌器搅拌。此反应器电极间距小，结构简单，时空利用率高，使用方便。
+1.2.2　制备及分析方法　 在电化学反应器中，选取一定浓度、一定体积的AlCl3水溶液，取电极间距1.5cm，极板液面下面积为100×100mm2，根据该条件下的极化曲线确定合理的电流密度。欲在设计时间内制备期望碱化度的聚合铝，可计算出通过电解槽的电流强度及电解时间。在搅拌状态下按确定的电化学参数进行电解制备。以精密酸度计监测pH值变化。分别在刚刚停止电解和制备液陈化24 h后以Al-Ferron逐时络合比色法〔3〕用BECKMAN DU-650分析聚合铝形态。
+2　结果与讨论
+2.1　聚合铝电解制备液的主要形态
+　　按图1所示的电化学反应系统用2.6 L 0.05M AlCl3作电解液进行电解制备，设计碱化度B=2.2。实验中发现，电解制备过程中阴极上有大量气泡产生，阳极表面逐渐被侵蚀。随着电解时间的增加，溶液逐步浑浊，电解结束时溶液为灰色悬浊液体，底部有少量灰色沉淀。电解结束后，立即取样分析电解液的总铝含量和Alb含量。电解液静止12～24 h后，沉淀消失，溶液为稳定、透明的聚合氯化铝液体产品，此时再取样分析电解液的总铝含量和Alb含量，见表1。
+
+图1　不同加碱过程中的铝水解聚合的反应历程
+Fig.1　Simple scheme of reaction pathways in Al solution 
+by different ways of base addition
+R1：加碱速度　R2：低聚体的生成速度
+R3：Al(OH)-４的生成速度　R4：A13的生成速度
+表1　电解法制备液中聚合铝的形态分布
+Table 1　Distribution of Al species in the product prepared 
+by electrolysis method
+
+电解制备液　总铝浓度AlTB AlaAlbAlc
+放置时间(h)(mol/L)　(%)(%)(%)
+00.222.4620.3066.8812.82 
+240.222.4716.9971.7012.82
+
+　　可见，经过一定时间的电解，电解液中总铝浓度AlT增加了3～4倍，碱化度约为2.4，有效絮凝成分Alb含量达到67％左右。电解制备经24h陈化后，Alb含量上升到71%，而Ala形态有所减少，在电解液中占优势的形态是Al13聚合态。按照设计，电解液中碱化度应为2.2，但由于电流效率大于100%，最后产品比预计的碱化度要高。
+　　在实验室中和法制备PAC的过程中〔4〕，聚合铝形成的最后化学组成取决于加碱量和加碱方式。加碱方式有最快和最慢两种极端方式 ，即一次加碱法和微量加碱法。不同加碱方式制备聚合铝溶液其反应历程也不相同，见图1〔4〕。 
+　　电解制备聚合铝实际就是一个在含Al3+的溶液中逐渐加碱的过程，所不同的是OH- 通过电化学反应生成并直接进入溶液体系。因此,OH-生成量取决于电解槽的通电量，加碱方式应该属于微量加碱法,加碱速度介于一次加碱和微量加碱法之间并正比于电流强度，因此，渐生OH-与部分新生成和原液中Al3+的电化学与溶液化学的反应应视为发生在电解液中的水解-聚合-沉淀作用〔4〕，从聚合铝Al13的生成历程看，Al(OH)4-是Al13形态形成的一个前驱物〔5～7〕。在电解过程中，OH-、Al3+是从布满整个溶液中的电极板表面均匀地产生的，所以认为，由于存在着H2O + e →1/2H2 + OH- 反应，在金属铝和溶液界面附近的pH值比溶液本体高，Al(OH)4- 较容易形成。总之，电化学加碱法能形成更多的铝离子和OH－之间的接触界面并产生更多的Al(OH)4-以作为Al13 Keggin结构〔7〕的结晶核心。在低B值时，由于电化学加碱方式和强力搅拌作用，OH-在溶液中分布得非常均匀，因而溶液中产生的不均匀界面pH值差较小，生成的Al(OH)4-很少，反应取决于R2，生成物主要是低聚物态，如Al2、Al7等〔8～10〕,在高B值时，随B值增大而溶液pH值增加，不均匀界面pH值差增大，导致Al(OH)4-的生成量增加，反应取决于R3，造成有利于Al13形成的条件，从而导致Al13形态以相当快的速度迅速增加〔5〕。在碱化度过高的情况下因不均匀界面pH值差值过大，生成很多Al(OH)4-，造成Al13的Aloct形态数量严重不足〔20〕，Al13很难形成，而只能形成Al(OH)3 am溶胶。图2可以证明这个推断。
+　　图2的过程是采用2.6L 0.1M AlCl3作电解液进行电解制备，定时取样分析过程中铝形态变化。电解开始以后，随着溶液碱化度的提高，Alb含量逐渐增加，Ala含量逐渐降低。在电解7～8h(实测碱化度B=2.4左右)，Alb含量达到最大，接近80%。此后，随电解时间延长，Alb含量开始下降，Ala含量也进一步降低，而Alc的含量不断增加，在溶液中沉积物开始明显增多，这与文献〔4〕基本一致。由于电解时间正比于加碱量，所以电解时间存在一个最佳值，这个最佳值就是按照碱化度B=2.2左右设计的电解时间，实际上由于电流效率大于100%，照此时间结束电解后，其碱化度一般能够达到2.4左右。
+
+图2　聚合铝的形态与电解时间的变化关系曲线
+Fig.2　Distribution of Al species as a function 
+of the electrolytic time 
+　　按照MINEQL模式计算程序模拟计算的一次加碱法和微量加碱法制备的聚合铝溶液中的水解形态分布〔4,9〕来看，一次加碱法在B=2.2时，Alb含量达到最高，为65％～70%；微量加碱法在碱化度B=2.5时，Alb含量达到最高，超过90%。这是因为一次加碱法在B >2.2 时，固－液界面的沉淀溶解－聚合反应已经达到平衡状态，导致凝胶沉淀物含量剧增；而微量加碱法的水解沉淀反应则在B>2.5 时才明显出现。所以电解法制备的聚合铝溶液中，Alb含量最高达到近80%，对应的碱化度为2.4。在加碱量一定的条件下，聚合铝水溶液中Al13聚合形态的含量取决于加碱方式，由于电化学加碱速度介于一次加碱法和微量加碱法之间，所以其产品溶液中Al13含量应该在微量加碱法和一次加碱法之间，表2中3种方法所得产品的数据对比可证实这一点〔3,4〕。
+2.2　电解法制备聚合铝的水处理絮凝效果
+　　为检验电解法制备聚合铝的水处理性能，采用对市售PAC(唐山东昌公司出品)电解法制备的聚合铝(以下简称E-PAC)、三氯化铝(AlCl3)和硫酸铝(Al2(SO4)3*18H2O)进行絮凝性能对比试验，试验方法见文献〔11〕，结果见图3，图4。
+表2　电解法与实验室制备的聚合铝形态对比
+Table 2　Comparison of speciation in PAC solutions 
+prepared by different approaches
+
+聚合铝来源总铝浓度AlT碱化度BAla AlbAlc
+　(mol/L)　(%)(%)(%)
+一次加碱法 0.1002.5 15.3655.3829.26
+微量加碱法 0.100 2.5 12.48 82.85 4.67 
+电解法 0.225 2.47 16.99 71.7　 11.30 
+
+
+图3　不同絮凝剂对水中浊度的去除
+对比(投加量均为10-5mol/L Al)
+Fig.3　Comparison of removal efficiency for turbidity 
+　　with various coagulants at the same dose 
+of 10-5 mol/L Al
+
+图4　不同絮凝剂对水中富里酸的去除
+效果对比(投加量均为10-5mol/L Al)
+Fig.4　Comparison of removal efficiency for fulvic acid
+　with various coagulants at the same dose of 10-5 mol/L Al
+　　实验结果表明，在同样的药剂投加量下，电解法制备的E-PAC在絮凝过程中对浊度和富里酸的去除率均高于其它絮凝剂。经分析，市售聚合铝的Alb含量只有51.5%，B=1.5；硫酸铝和三氯化铝溶液Alb含量在20%以下；而E-PAC的Alb含量达到70%以上，B=2.4。有文献认为〔3〕，Alb基本上等同于Al13，即Al13O4(OH)7+24，它具有很高的电荷和较高的分子量，即使在很低的投药量下，也具有很强的电中和与吸附架桥能力。E-PAC与其它水处理药剂相比，由于含有更多的高电荷、高分子量、稳定的Al13形态，投加后可以立即发挥很强的凝聚作用〔18〕，从而表现出优异的除浊性能。
+3　结论
+3.1　在所研究的制备条件下，电解生成聚合铝产物中Alb含量可高达70%～80%，碱化度B＝2.4。与同类产品相比，电解制备的聚合铝絮凝效能优异，对水中悬浮物和腐殖质具有良好的去除效果。
+3.2　有关电解制备聚合絮凝剂的机理和作用过程正在进一步研究中。
+参考文献
+1　栾兆坤.环境科学学报，1992，12 (2)：129～137
+2　Tang Hongxiao.J.Environmental Sciences,1995,7(2):204～211
+3　冯　利. 环境化学，1993,12 (5)：373～379
+4　栾兆坤. 环境科学学报, 1995, 15(1)：39～47
+5　Bertsch P M. Soil Sci. Soc. AM，J.1987,51:825～830 
+6　Bertsch P M，et al. Soil Sci. Soc. AM，J.1986,50:1449～1456
+7　Bottero J Y， et al. J.Colloid Inter. Sci.,1987,117(1):47～55
+8　Letterman R D. Water Research, 1990, 24(8):941～948
+9　John E Van Benschoten. Water Research, 1990,24(12):1519～1526
+10　John E Van Benschoten. Water Research, 1990,24(12):1527～1535
+11　栾兆坤.聚合铝絮凝动态过程的研究.见：水体颗粒物和难降解有机物的特性及控制技术原理有机论文集.北京：国家自然科学基金委员会，1995.48～55
+作者简介
+路光杰　男，1964年12月生。硕士、讲师。现为中国科学院生态环境研究中心环境水化学国家重点实验室的博士研究生。1989年以来一直从事工业给水与废水处理方面的教学与科研工作。发表论文7篇。
+收稿日期：1997-03-13
+*国家自然科学基金资助项目(59578014)

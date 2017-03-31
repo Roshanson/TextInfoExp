@@ -1,0 +1,101 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第3期　Vol.19 No.3 1999
+
+
+
+含硫酸盐高浓度有机废水生物处理技术
+赵 毅　杨景亮　任洪强　罗人明　刘三学
+摘要：采用硫酸盐还原―硫化物生物氧化―产甲烷―接触氧化工艺处理青霉素废水,硫酸盐还原与有机物甲烷化分别在两个反应器中进行,有效地避免了硫酸盐还原菌对产甲烷菌的竞争抑制;利用无色硫细菌将硫酸盐还原产物―硫化物氧化成S,消除了硫化物对产甲烷菌的毒害作用.研究结果表明,当系统进水COD为4500～5000mg/L,浓度为1500～1600mg/L时,系统出水中COD为310～348mg/L, COD平均去除率为93.2%,平均去除率为91.2%.
+关键词：硫酸盐生物还原；硫化物生物氧化；产甲烷；接触氧化；青霉素废水
+中图分类号：X703.1 文献标识码：A 文章编号：1000- 6923(1999)03- 0281- 04
+A study on biological treatment technology for high strength sulfate―organic wastewater.
+ZHAO Yi1, YANG Jing-liang1, REN Hong-qiang1,LUO Ren-ming2, LIU San-xue2
+(1.Department of Environmental Engineering, North China Electric Power University, Baoding 071003,China；2.Department of Environmental Engineering, Hebei University of Science and Technology, Shijiazhuang 050018, China). China Environmental Science. 1999,19(3)：281～284
+Abstract：The penicillin wastewater was treated with the process of sulfate reduction―sulfide biological oxidation―methane production―contact oxidation. In this process, sulfate reduction was separated from methane production to avoid the inhibition on methane bacteria;and sulfide was oxidized by colorless sulfur bacteria to reduce poison its effect on methane bacteria. Experiment results showed:when the influent COD was 4500～5000mg/L and  was l500～1600mg/L,the effluent COD of 310～348mg/L,COD average removal rate of 93.2％ and  average removal rate of 91.2% were reached.
+Key words：sulfate biological reduction；sulfide biological oxidation；methane production；contact oxidation；penicillin wastewater
+　　在轻工、制药等行业排放的生产废水中除含有高浓度有机物外,还含有高浓度硫酸盐,此类废水属含硫酸盐高浓度有机废水.采用厌氧消化法进行处理,硫酸盐还原菌引起的硫酸盐还原作用对厌氧消化产生严重的抑制影响.其影响机制综合起来可归纳为两个方面[1]:一是硫酸盐还原菌和产甲烷菌都可以利用乙酸和H2而产生基质竞争性抑制作用;二是硫酸盐还原产物―硫化物对产甲烷菌的毒害作用.目前此类废水的处理技术不同程度地存在着运行费用高、效果不稳定等缺陷[2,3].两相[4,5]、三相[6]工艺处理人工模拟废水取得较好效果,但采用同类工艺处理生产废水的报道较少.青霉素废水属于含硫酸盐高浓度
+　　有机废水,采用硫酸盐生物还原―硫化物生物氧化―产甲烷―接触氧化的四相串联工艺处理,结果表明,该工艺可有效地消除硫酸盐对厌氧消化的抑制作用,并取得良好的净化效果.本文重点研究各处理单元的效果和效能,对整体工艺稳定运行状况及技术可行性进行考察和分析.
+1　材料与方法
+1.1　试验工艺流程
+　　试验流程如图1.在硫酸盐还原反应器中,硫酸盐还原菌利用废水中部分有机物将还原为硫化物.在硫化物生物氧化反应器中,无色硫细菌在好氧条件下将硫化物氧化成单质硫.产甲烷反应器中的产甲烷菌将脱硫废水中的有机物分解为CH4和CO2.在好氧条件下,接触氧化反应器中填料表面的微生物进一步分解废水中的有机物.硫酸盐还原反应器和产甲烷反应器均置入恒温箱内,温度控制在35±1℃.硫化物生物氧化反应器和接触氧化反应器用空压机供氧,室温条件下运行.
+
+图1　工艺流程示意
+Fig.1 Work process
+储水槽 2.计量泵 3.恒温水浴 4.硫酸盐还原反应器 5.硫化物生物氧化反应器 6.产甲烷反应器 7.接触氧化反应器 8.沉淀池 9.水封 10.气体流量计 
+1.2　主要设备
+　　硫酸盐还原反应器为上流式厌氧污泥床反应器,直径90mm,总高900mm,容积5L.
+　　硫化物生物氧化反应器为上流式填料床反应器,直径50mm,高度550mm,容积1.0L;填料装填高度450mm,填料为塑料阶梯环,直径24mm,高17mm.产甲烷反应器为上流式厌氧污泥床反应器,下部直径65mm,上部直径70mm,总高1200mm,容积3.6L.
+　　接触氧化反应器为上流式填料床反应器,内径90mm,有效容积2.4L;内装半软性填料,填料直径80mm,装填高度为500mm.
+1.3 试验用水
+　　废水取自青霉素生产提炼车间,COD 18000～26000mg/L、5000～7000mg/L、pH值3～4.调节后作为硫酸盐还原反应器进水.
+1.4 接种污泥
+　　硫酸盐还原反应器接种污泥取自废水处理站厌氧反应器,接种前用配制的含有机废水进行间歇驯化,反应器接种污泥浓度为18.2gVSS/L;硫化物生物氧化反应器接种污泥取自废水排污地沟,接种污泥浓度为4.1gMLSS/L;产甲烷反应器接种污泥取自废水处理站厌氧反应器,接种污泥浓度为20.8gVSS/L;接触氧化反应器接种污泥取自城市污水处理厂二沉池,接种污泥浓度为3.8gMLSS/L.
+1.5 分析项目
+　　COD、pH值、、VSS、硫化物采用标准方法测定[7];溶解氧:YSI-55测定仪.
+2　结果与讨论
+2.1 硫酸盐还原反应器
+　　在一定条件下,硫酸盐还原菌以有机物为碳源作为生长、繁殖所需的能源,SO42-为有机物分解过程中的最终电子受体被还原成硫离子[8].为考察反应器的效能,反应器运行过程可分为启动期、负荷运行期和稳定运行期.
+2.1.1 启动期 硫酸盐还原反应器成功启动的标志是有效地抑制产甲烷菌生长,培养驯化出活性较高的硫酸盐还原菌.间歇驯化后的接种污泥产甲烷菌活性仍较高,为使产甲烷菌活性得到抑制,加快硫酸盐还原菌生长繁殖,反应器采用高负荷启动:控制进水900～1800mg/L、COD2000～4400mg/L,启动负荷为0.9～2.0 kg/m3・d、COD为2～5kg/m3・d.经过10天的运行, COD去除率由80％降至40％左右,去除率由30％上升至66％.当SO42-去除率大于90％时,提高反应器运行负荷,提高幅度为0.5kg/m3・d.经过一个月的运行,负荷达到3kg/m3・d,去除率大于95％,水力停留时间(HRT)由21.5h降至6.6h.床层污泥的凝聚性能有了明显改善.运行结果见图2.
+2.1.2 负荷运行期 主要考察反应器还原的效能.此阶段HRT在4～5h,通过逐步增加
+　　进水浓度提高负荷.控制条件为:当SO42-去除率大于80％时,稳定运行2～3天,负荷提高幅度为1kg/m3・d.经过65天运行,负荷由4kg/m3・d上升到10kg/m3・d,进水浓度由800mg/L增加到2000mg/L,COD由3000mg/L增加到7500 mg/L,反应器仍能维持较高的去除率,污泥床实现了颗粒化.运行结果见图3.
+
+图2　启动期反应器运行结果
+Fig.2 Operation result of the reactor at starting
+1. COD/ 2. 去除率 3. 进水负荷 4. HRT
+
+图3　负荷期反应器运行结果
+Fig.3 Operation result of reactor at loading
+1. 去除率 2. 进水负荷 3. COD/ 4. HRT
+2.1.3 稳定运行期 为考察反应器在一定负荷条件下稳定运行状况和后续处理单元的运行效果,控制反应器负荷为5kg/m3・d,进水浓度为1500～1600mg/L、COD浓度为4500～5000mg/L.运行结果表明,去除率为90%～95％,平均92%;COD去除率为30％左右,出水中100～130mg/L、COD3000～3500 mg/L、硫化物300 mg/L左右.
+2.2 硫化物生物氧化反应器
+　　在好氧条件下,无色硫细菌可将废水中的硫化物氧化成S和.硫化物生物氧化反应器成功运行的关键在于控制适当的操作条件,使反应向生成S的方向进行.Buisman等人[9]的试验结果表明,影响硫化物转化成S的主要因素是溶解氧和硫化物浓度.
+　　硫酸还原反应器稳定运行,硫化物生物氧化反应器开始启动,进水负荷约5kgS2-/m3・d.启动初期严格控制反应器中的溶解氧,到第15运行日,硫化物去除率达到92％以上.在其后的运行过程中,溶解氧控制在3.2mg/L左右,硫化物去除率稳定在92%～95％,其中94%～96％氧化成S,出水中硫化物浓度为23～25.8mg/L;COD去除率约为10％,出水COD浓度为2933～3187mg/L.反应器运行结果见表1. 
+表1　硫化物生物氧化反应器运行结果
+Table 1 Operation result of sulfide biological oxidation reactor
+运行日进水硫化物硫化物去除率溶解氧
+(d)(mg/L)(%)(mg/L)
+1～8295～30349.6～800.7～2.5
+9～15289～30451～921.1～3.2
+16～50293～31092～952.7～3.5
+
+2.3 产甲烷反应器
+　　产甲烷反应器的功能是去除脱硫后废水中的有机物.硫化物生物氧化反应器运行稳定后,产甲烷反应器开始启动,启动负荷为2.0kg COD/m3・d.运行过程中,当COD去除率大于80%时,能提高运行负荷,提高幅度为1.0kgCOD/m3・ d.经过20天运行,COD负荷达到6kg/m3・d,去除率为80%,产气率为0.462m3/kg COD(去除).废水中剩余的得到进一步还原,去除率为96%～99.5%.出水中COD为527～621 mg/L、浓度为2～10mg/L、硫化物浓度为56～58.8mg/L.
+2.4 接触氧化反应器
+　　与产甲烷反应器同时启动,控制气水比为20,7天后纤维填料表面已形成丰富的生物膜.在此后的运行过程中,COD去除率(均值)为45.5%,废水中的硫化物在好氧条件下被氧化成.反应器出水COD为310～348mg/L、为120～140mg/L、硫化物为1.5～1.9mg/L.
+3　工艺可行性分析
+　　采用硫酸盐还原―硫化物生物氧化―产甲烷―接触氧化的四相串联工艺处理含硫酸盐高浓度有机废水,将硫酸盐还原与有机物甲烷化分别在两个反应器中进行,从根本上避免了生物还原对甲烷菌造成的竞争抑制;利用无色硫细菌将硫化物氧化为单质硫,消除了硫化物对产甲烷菌的毒害作用,为产甲烷反应器的有效运行创造了良好条件.
+　　试验结果表明,在硫酸盐还原反应器中,可培养出高活性硫酸盐还原菌颗粒污泥,使反应器具有较高的负荷和去除率;利用无色硫细菌去除硫化物效果好,设备简单;处理脱硫后的废水,产甲烷反应器启动负荷高,提升快,产气指标正常;接触氧化的设置保证了整个处理系统的运行效果.整体工艺稳定运行结果见表2.
+表2　整体工艺运行结果
+Table 2 Operation result of the process
+序号项 目COD浓度
+(mg/L)COD去除率
+(均值)(%)浓度
+(mg/L)去除率
+(均值)(%)硫化物浓度
+(mg/L)硫化物去除率
+(均值)(%)
+1系统进水4500～5000　1500～1600　　　
+2硫酸盐还原反应器出水3000～350030100～13092.0302～310　
+3生物脱硫反应器出水2933～318710100～140-23～25.8　
+4产甲烷反应器出水527～62180.12～1098.256～58.891.9
+5生物接触氧化出水310～34845.5120～140-1.5～1.996.1
+6系统出水310～34893.2120～14091.21.5～1.998.7
+
+4　结　论
+　　采用硫酸盐还原―硫化物生物氧化―产甲烷―接触氧化的四相串联工艺处理青霉素废水,试验结果表明,当系统进水COD为4500～5000 mg/L,浓度为1500～1600mg/L时,系统出水COD为310～348mg/L,COD平均去除率为93.2％,平均去除率为91.2％.
+基金项目：石家庄市科技攻关项目(9428102)
+作者简介：赵 毅(1955-),男,河北秦皇岛人,华北电力大学环境工程系教授、硕士研究生导师,主要从事环境工程的教学和科研工作.主持过“金属螯合物的高效液相色谱研究”和“多氯联苯的破坏与处理”等10余项课题的研究工作,研究成果获电力部科技进步二等奖2项、河北省教委科技进步二等奖2项.发表论文50余篇.
+作者单位：赵 毅　杨景亮　任洪强　华北电力大学环境工程系,河北 保定 071003；
+　　　　　罗人明　刘三学　河北科技大学环境工程系,河北 石家庄 050018
+参考文献：
+[1]Anderson G K. Indentification and control of inhibition in the anaerobic treatment of industry wastewater [J]. Process Biochemistry,1982, 17(4): 28- 32.
+[2]Dezham P. Digester gas H2S control using iron salts [J]. J.WPCF., 1988, 60: 514- 517.
+[3]Alon Lcbel. Molasses promoted biological sulfur recovery from high sulfate wastes [R]. Ind. Waste Conf. 40th, 1985, 891- 896.
+[4]Yan Gao. Anaerobic digestion of high strength wastewaters containing high levels of sulfate:[D]. England: Unit of Newcastale Upon Tvne, 1989.
+[5]杨景亮,左剑恶,胡纪萃. 两相厌氧工艺处理含硫酸盐有机废水的研究 [J]. 环境科学, 1995, 6(3): 8- 11.
+[6]左剑恶. 含硫酸盐高浓度有机废水处理新技术研究 [D]. 北京:清华大学环境工程系,1995.
+[7]国家环保局《水和废水监测分析方法》编委会. 水和废水监测分析方法 [M]. 北京:中国环境科学出版社,1989.
+[8]Postgate J R. The sulphate reducing bacteria [M]. UK: Cambridge University Press, 1984.
+[9]Cees J N Buisman, Bert G Geraats, Peter Ijspeert. Optimization of sulfur production in a biotechnological sulfide-removing reactor [J]. Biotech. Bioeng.,1990,35: 50- 56.
+收稿日期：1998-10-13

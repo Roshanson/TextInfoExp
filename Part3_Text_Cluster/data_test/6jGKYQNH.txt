@@ -1,0 +1,55 @@
+航空动力学报
+JOURNAL OF AEROSPACE POWER
+1999年 第14卷 第3期 Vol.14 No.3 1999
+
+
+
+涡扇发动机主燃油控制系统建模与仿真研究
+　　程涛　祁英　孟庆明
+　　【摘要】　以某型涡扇发动机及其主燃油系统液压机械式调节器为研究对象，在对发动机调节规律进行分析的基础上, 建立了转速控制系统、加速控制系统的模型，以及温度传感器和温度放大器、叶片控制系统的元部件的模型。根据所建立的数学模型，利用MATLAB中的仿真工具SIMULINK，对各系统进行了仿真,为发动机主燃油系统的进一步改进提供了理论基础。
+　　主题词：涡轮风扇发动机　燃油调节器　模型　仿真
+　　分类号：V233.753
+MODELLING AND SIMULATION OF MAIN FUEL CONTROL SYSTEM FOR A TURBOFAN ENGINE
+Cheng Tao，Qi Ying，Meng Qingming
+（4th Dept.Beijing University of Aeronautics and Astronautics,Beijing　100083）
+　　ABSTRACT　　A turbofan engine and its main fuel control system with hydromechanical regulator are studied.The rotational speed control system and the acceleration control system are modelled according to the analysis of the engine control program.The temperature sensor,temperature amplifier and blade control system are also modeled.According to thse mathematical models,all systems are simulated with the SIMULINK in toolbox of MATLAB.This work has important value for further research and improvement in the engine main fuel control system.
+　　Key　Words　Turbofan engine　Fuel regulator　Model　Simulation
+　　该发动机为具有共同加力燃烧室和全状态超音速可调喷管的涡扇发动机，其燃油与控制系统采用混合式控制方案，主燃油控制系统采用机械液压式调节器，该调节器性能先进、功能完备、可靠性高。加力及喷口调节采用结构简单、性能好的数字式电子控制系统，主要包括加力燃油计量装置，喷口控制装置及数字式电子控制器附件。该发动机采用了全程多元复合调节的调节计划，在不同的工作状态和不同的工作条件下有不同的调节计划。主燃油系统的功能是向主燃烧室供给燃油并自动保持发动机的给定工作状态。
+1　闭环转速控制系统
+　　发动机的闭环转速控制系统由发动机和转速控制器组成，控制器包括测量元件、放大元件和执行元件。转速控制系统的任务是当油门操纵杆位置不变而发动机的外界条件变化时，自动保持慢车到最大工作范围内转子的给定转速并按温度修正；当油门操纵杆位置改变时，自动调节燃油流量，使发动机转速随油门操纵杆的位置而变化，转速控制器按上述要求实现供油量的自动调节。
+1.1　转速测量元件
+　　在节流工作状态下，高压转子的转速调节由离心式调节器来完成，其输入为弹簧压缩量h和转速n2，输出为导杆位移y。其运动方程为：
+　(1)
+式中，T1为离心飞重对惯性力的时间常数，T2为离心飞重对阻尼力的时间常数，Kh为离心飞重对转速调整量的放大系数，Kn为离心飞重对转速的放大系数。计算得：T1=1.3×10-3(s)，T2 =4.0×10-2(s)，Kh=4.1，Kn=4。因为T1和T2都很小，所以（1）式可以简化为：
+　(2)
+1.2　液压放大机构
+　　摆锤活门位移：
+y1＝2y　(3)
+　　节流嘴的流量：
+△Q＝Kq△y1-Kp△P1　(4)
+　　匀速静态活塞的受力平衡：
+P10A1+Fk10＝P30A1+Kk30　(5)
+　　产生控制流量△Q后，由力平衡关系得：
+P1A1+Fk1＝P3A1+Kk3　(6)
+　　将式（5）代入（6）并化简得：
+△P3＝△P1+Ky△y2　(7)
+　　计量开关随动活塞的运动方程：
+　(8)
+计算得到： T4=5.62×10-2(s)，T5=12.275(s)，K5=0.41，K6=25。
+1.3　燃油流量
+　　进入发动机的燃油量GT等于燃油泵的供油量GT1减去回油量GT2。当油泵由发动机转子传动时，供油量随发动机转速n而变，回油量随计量开关的位置m而变。故进入发动机的燃油流量为：
+GT＝GT1-GT2＝GT(n，m)　(9)
+　　将上式线性化，并取相对增量得：
+　(10)
+式中，，。偏导数可利用供油特性线计算。这里计算得：K7=0.8，K8=0.9。
+　　将式（1）～（10）取拉氏变换后，得到转速控制系统的方块如图1所示。图中，参考输入量Xh是反映转速给定值大小的调准弹簧的相对压缩量，X0n表示系统输出转速的给定值。
+
+
+图1　转速控制系统的方块图
+2　系统仿真
+　　图2～5为部分仿真曲线。图2中曲线1为系统的单位阶跃响应曲线，可以看出超调量不大，调节时间很短，系统稳定；曲线2为干扰的单位阶跃响应曲线，在较短的时间内系统输出重新回到零，转速保持不变，系统具有很好的抗干扰能力。图3为自动加速器的动态响应曲线，由于没有准确的发动机非线性模型仿真结果受一定的影响。图4为n2转速传感器的过渡响应曲线，从仿真曲线可以看出，超调量和调节时间满足实际需要。图5为高压压气机导向调节器的动态响应曲线，从图中可以看出它的超调量为零，调节时间可以达到实际要求。
+
+
+图2　转速控制系统的动态响应曲线
+
+图3　自动加速器的动态响应曲线

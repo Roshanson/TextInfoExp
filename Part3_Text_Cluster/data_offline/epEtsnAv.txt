@@ -1,0 +1,132 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年 第2期 No.2 1999
+
+
+
+不同量子化学算法在多环芳烃光解行为定量结构-性质关系(QSPR)中的应用
+陈景文　王帅杰　邹善伟　全燮　薛大明　赵雅芝
+　　摘要：以采用MINDO/3、MNDO和AM1算法计算的17种多环芳烃(PAHs)的前线分子轨道能为分子结构参数,进行了这些PAHs光解速率常数的定量结构-性质相关(QSPR)的研究,并与基于PM3算法得到的QSPR模型进行了比较.研究结果表明,应用PM3算法得到的前线分子轨道能进行这些PAHs光解速率常数QSPR拟合的结果最好,其次是AM1算法,而MINDO/3和MNDO算法得到的结果较差.
+　　关键词：量子化学；多环芳烃；光解速率常数；定量结构-性质相关
+　　中图分类号：X13 文献标识码：A 文章编号：1000-6923(1999)02-0102-04
+The application of different quantum chemical hamiltonians in developing quantitative structure-property relationship (QSPR) for photolysis of polycyclic aromatic hydrocarbons.
+CHEN Jing-wen　WANG Shuai-jie　ZOU Shan-wei　QUAN Xie　XUE Da-ming　ZHAO Ya-zhi 
+(Department of Environmental Science and Technology, School of Chemical Engineering, State Key Laboratory of Dye and Surfactant Fine Chemicals, Dalian University of Technology, Dalian 116012, China). China Environmental Science.1999,19(2)：102～105
+Abstract：MINDO/3, MNDO and AM1 algorithms were used to compute frontier molecular orbital energies of 17 polycyclic aromatic hydrocarbons (PAHs), which were then used as molecular structure descriptors to obtain Quantitative Structure-Properties Relationships for photolysis of the PAHs. The comparison of the obtained models in this study with the QSPR model based on the descriptors derived from PM3 algorithm obtained in our previous study showed that the QSPR results in which the frontier molecular orbital energies derived from PM3 hamiltonian were used, was the best, and the next was the result based on AM1 hamiltonian. The results based on MINDO/3 and MNDO hamiltonians were relatively poor.
+Key words：quantum chemistry；polycyclic aromatic hydrocarbons (PAHs)；photolysis rate constants；quantitative structure-property relationships (QSPR)
+　　多环芳烃(PAHs)是一类典型的环境污染物,大多数PAHs都具有致癌性[1],它们在水环境中很难被生物降解[1].前人研究表明,光分解是PAHs在水环境中的一个重要迁移、转化途径[1,2].然而,实验测定PAHs的光解需要特殊的实验装置,既费时又需大量经费,难以适应PAHs类有机污染物危害性评价的需要,因此,发展PAHs光解行为的定量结构-性质关系(QSPR)非常重要.
+　　由于量子化学参数具有明确的物理意义、可以较容易地通过计算获得、节省大量时间和经费、便于对机理进行探讨等优点,使之成为目前QSPR研究的一个热点[3].
+　　近年来,量子力学研究者相继提出了MINDO/3、MNDO、AM1和PM3等求解HFR方程[3]的半经验分子轨道算法,其参数化的标准是使计算结果全面符合实验(包括分子的成键能).这些量子化学算法各有优缺点,它们对不同类型化合物的适合程度不同[4,5].本研究将采用MINDO/3、MNDO和AM1等算法计算17种PAHs的前线分子轨道能,以基于这些算法得出前线分子轨道能量差为分子结构参数,发展PAHs光解速率常数的QSPR模型,并将得到的QSPR模型与以往基于PM3算法得出的QSPR模型[6]相比较,从而筛选出适合进行PAHs光解速率常数QSPR研究的最佳量子化学算法.
+1 材料与方法
+　　研究的17种PAHs及其光解速率常数(kexp)的实测值[6]见表1.应用ALCHEMYⅡ软件来观察分子结构并采用内坐标编写分子结构文件.应用MOPAC(6.0版)软件中的 MINDO/3、MNDO和AM1算法[3],在Pentium 150MHz (16兆内存)微机上进行计算.控制MOPAC计算的关键词为:MINDO/3(或MNDO或AM1)、PRECISE、ESP、DIPOLE、POLAR、NOINTER、BONDS.MOPAC(6.0 版)在对分子结构进行优化后,计算得到PAHs前线分子轨道能(表2).
+表1 PAHs及其光解速率常数
+Table 1 PAHs and their photolysis rate constants
+
+化合物logkexp
+(实测值)
+(100×min)-1残差=实测值－拟合值
+PM3
+算法MINDO/3 算法MNDO 算法AM1 算法
+萘-1.2920.227-0.716-0.727-0.333
+联苯-1.222-0.0120.6100.4620.686
+蒽0.362-0.1120.2200.243-0.019
+菲-0.1850.5530.1730.2050.368
+1-甲基菲-0.785-0.199-0.514-0.441-0.365
+2-甲基菲-1.189-0.432-0.821-0.793-0.619
+3-甲基菲-0.775-0.213-0.511-0.431-0.370
+9-甲基蒽1.2120.6771.0001.0440.787
+9,10-二甲基蒽0.8010.2220.5270.5610.347
+9-苯基蒽0.5930.07950.3890.4370.167
+丁省0.7080.1580.3150.2290.339
+苯并[a]蒽0.4000.01020.2940.3270.076
+　-0.151-0.210-0.119-0.066-0.241
+芘-0.441-0.024-0.920-1.077-0.476
+苯并[a]芘0.508-0.111-0.1860.1490.049
+二萘嵌苯0.182-0.427-0.169-0.216-0.255
+苯并[a,h]蒽0.146-0.1880.0550.094-0.143
+
+表2 PAHs的前线分子轨道能
+Table 2 Frontier molecular orbital energies of PAH s
+
+化合物MINDO/3 (eV)MNDO (eV)AM1 (eV)
+Ehomo ElumoEhomo ElumoEhomo Elumo
+萘-8.8841.085-9.3320.253-8.956-0.064
+联苯-8.2130.477-8.574-0.332-8.710-0.265
+蒽-7.606-0.074-8.049-0.842-8.123-0.840
+菲-8.0500.348-8.480-0.481-8.617-0.409
+1-甲基菲-7.9970.275-8.455-0.522-8.518-0.398
+2-甲基菲-8.0670.346-8.484-0.477-8.595-0.376
+3-甲基菲-7.9960.265-8.4580.525-8.510-0.400
+9-甲基蒽-7.539-0.172-8.024-0.902-8.007-0.840
+9,10-二 甲 基 蒽-7.475-0.273-7.978-0.984-7.890-0.848
+9-苯基蒽-7.524-0.139-8.024-0.880-8.048-0.884
+丁省-7.226-0.440-7.721-1.185-7.747-1.234
+苯并[a]蒽-7.642-0.032-8.114-0.830-8.206-0.813
+　-7.7830.097-8.261-0.719-8.372-0.674
+芘-7.408-1.293-7.932-1.736-7.879-1.182
+苯并[a]芘-7.344-0.290-7.861-1.088-7.922-1.111
+二萘嵌苯-7.272-0.316-7.816-1.118-7.856-1.158
+苯并[a,h]蒽-7.647-0.006-8.149-0.829-8.255-0.805
+
+
+　　采用STATGRAPHICS(4.0版)软件进行回归分析.用复相关系数(R)、经过自由度校正的复相关系数(Radj.)、拟合值的标准误差(SE)、方差分析的方差比(F)、t检验值(t)及显著性水平(p)来表征模型的优劣.
+2 结果与讨论
+　　量子化学原理表明,前线分子轨道能,即最高占据轨道能 (Ehomo)和最低未占据轨道能(Elumo)是两个非常重要的分子性质参数[3],其中,Ehomo表示某个分子与其它分子相互作用时给出电子的能力,Elumo表示某个分子与其它分子相互作用时接受电子的能力.前线分子轨道能量差(Elumo-Ehomo)则反映一个分子的外层电子从最高占据轨道跃迁到最低空轨道时所需能量的大小.
+　　1996年,陈景文等人[6]以采用量子化学PM3算法得出PAHs的最低未占据轨道能(Elumo)和最高占据轨道能 (Ehomo)的差为分子结构参数,首次报告了一个包括17个PAHs光解速率常数的QSPR方程.该方程的形式如下,其模型拟合结果见表3.
+logkexp =-32.734+9.769(Elumo-Ehomo)-
+0.715(Elumo-Ehomo)2(1)
+n =17　R2=0.848　R2adj.=0.826
+SE =0.322　F=38.926　p =0.0000
+表3 模型拟合结果
+Table 3 Model fitting results
+
+算法(自变量)系数SEtp
+PM3算法　　　　
+常数-32.7345.728-5.7140.0001
+(Elumo-Ehomo)9.7691.5876.1570.0000
+(Elumo－Ehomo)2-0.7150.109-6.5550.0000
+MINDO/3算法　　　　
+常数-4.9077.960-0.6170.5475
+(Elumo－Ehomo)1.7891.9960.8960.3852
+(Elumo－Ehomo)2-0.1490.124-1.1950.2519
+MNDO算法　　　　
+常数0.5599.5670.0580.9542
+(Elumo－Ehomo)0.4632.4630.1880.8535
+(Elumo－Ehomo)2-0.0730.157-0.4620.6510
+AM1算法
+常数-28.3899.778-2.9030.0116
+(Elumo－Ehomo)8.3512.6223.1840.0066
+(Elumo－Ehomo)2-0.6040.175-3.4600.0038
+
+
+　　方程(1)的相关关系是显著的,该方程具有较大的相关系数和较小的拟合值标准误差,并且该方程的拟合值与实测值接近(见表1),因此方程(1)可以应用于PAHs在与实验条件相同光源的照射下的光解速率常数的预测.并且经检验在标准化之后,方程(1)的两个自变量之间的相关系数较小,该方程克服了自变量的共线性问题,因此该方程有利于对PAHs光解机理的解释,实际上,它很好地解释了PAHs的光解机制[6].
+　　以采用MINDO/3、MNDO和AM1算法计算得到的前线分子轨道能为分子结构参数,基于方程(1)的形式,分别对所研究的PAHs的光解速率常数进行回归分析,得到以下的QSPR方程,其模型拟合结果列于表3中.
+MINDO/3算法: 
+logkexp =-4.907+1.789(Elumo-Ehomo)
+　　　　-0.149(Elumo-Ehomo)2 (2)
+　　　　　　n=17　R2=0.507　R2adj.=0.436
+　　　　　　SE=0.580　F =7.195　p =0.0071
+MNDO算法: 
+logkexp=0.559+0.463(Elumo-Ehomo)
+-0.073(Elumo-Ehomo)2(3)
+　　　　　　　n=17　R2=0.491　R2adj.=0.419
+　　　　　　　SE=0.589　F=6.766　p =0.0088
+AM1算法: 
+logkexp=-28.389+8.351(Elumo-Ehomo) 
+-0.604(Elumo-Ehomo)2(4)
+　　　　　　　n =17　R2=0.724　R2adj.=0.685 
+　　　　　　SE=0.434　F=18.363　p=0.0001
+　　　由表3及方程(1)、(2)、(3)和(4),可以得出以下的结论:从显著性水平来看,方程(1)的显著性水平值最小,其次是方程(4)的显著性水平值；从方差分析的F值来看,方程(1)的F值最大,方程(4)的F值次之,这些都说明在得到的4个QSPR方程中,方程(1)最显著,其次是方程(4).从方程的复相关系数来看,方程(1)的复相关系数最高,其次是方程(4)；从方程的拟合值标准偏差SE的大小来看,方程(1)的SE最小,其次是方程(4)的SE,这些说明在得到的4个QSPR方程中,方程(1)的预测能力最大,其次是方程(4),它们的实测值与拟合值之间的残差都较小(见表1),说明可以应用这两个方程来预测其它PAHs的光解速率常数.综上所述可以看出,应用PM3算法得出的量子化学参数进行部分PAHs光解速率常数QSPR研究的结果最好,其次是AM1算法,而MINDO/3和MNDO算法得到的结果较差,说明PM3和AM1算法可以更好地表征PAHs的分子性质.这可能是因为MINDO/3、MNDO、AM1、PM3算法是以时间的先后顺序发展起来的[3],后面的算法都克服了前面算法的不足,并发扬了前面算法的优点.
+3 结语
+　　应用MINDO/3、MNDO和AM1算法计算了17个PAHs分子的前线分子轨道能,并以其为分子结构描述符,对所研究的17种PAHs的光解速率常数进行回归分析,得到一系列PAHs光解速率常数QSPR方程,并与基于PM3算法所得的QSPR方程作了比较.研究结果表明,应用PM3算法得出的前线分子轨道能参数进行这些PAHs光解速率常数QSPR研究的结果最好,其次是AM1算法,而MINDO/3和MNDO算法得到的结果较差.因而可以认为,PM3和AM1算法可以更好地表征PAHs的分子性质.
+基金项目：国家自然科学基金青年基金(29807001)；污染控制与资源化国家重点实验室开放课题资助项目(设在南京大学)
+作者单位：陈景文　王帅杰　邹善伟　全 燮　薛大明　赵雅芝（大连理工大学化工学院环境科学与工程系,染料与表面活性剂精细化工合成国家重点实验室,辽宁 大连116012）
+作者简介：陈景文(1969-),男,辽宁建昌人,大连理工大学化工学院环境科学与工程系副教授,博士,主要从事有机污染物的环境行为、生态毒理及定量结构-性质-活性关系、污染预防、污染控制、污染治理等方面的科研与教学工作.曾参加国家重大自然科学基金项目“典型化学污染物在环境中的变化及生态效应”的研究工作.现在主要承担国家自然科学基金青年基金项目“芳烃类有机污染物光解行为的定量结构-性质关系研究”的研究工作.以第一作者,已在国际SCI刊物发表论文10篇,在国内核心期刊上发表论文8篇,参加编写专著1部.
+收稿日期：1998-07-08
+参考文献:
+　[1]Grimmer G.Environmental carcinogens:polycyclic aromatic hyd-rocarbons, chemistry, occurrence, biochemistry, carcinogenicity[M].Boca Raton. Florida: CRC Press,Inc.,1983.
+　[2]Miller T, Mabey W R, Lan B Y, et al. Photolysis of polycyclic aromatic hydrocarbons in water[J].Chemosphere,1981,10:1281-1290.
+　[3]王连生,韩朔睽.分子结构、性质与活性[M].北京:化学工业出版社, 1997.
+　[4]Baj S, Dawid M. Correlation between the chemical structures of dialkyl peroxides and their retention in reversed-phase high-performance liquid chromatography[J]. Journal of Liquid Chromatography, 1994, 17(18): 3933-3949.
+　[5]Kass S R.Hydrocarbon acidities calculated with MINDO/3, MNDO and AM1[J]. J. Comp. Chem., 1990, 11(1): 94-104.
+　[6]Chen J W, Kong L R, Zhu C M, et al. Correlation between photolysis rate constants of polycyclic aromatic hydrocarbons and frontier molecular orbital energy[J]. Chemosphere, 1996, 33(6): 1143-1150.

@@ -1,0 +1,161 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第5期 No.5 Vol.18 1998
+科技期刊
+
+氟化铵和氨循环法从脱腊脱油废白土中制取白炭黑* 
+朱　宪　周忠华　杨　超　曹雪华　赵　霞　郭旭平　(上海大学化学化工学院，上海 201800)
+文　摘　利用NH4F与废白土中SiO2反应生成的(NH4)SiF6溶液和NH3，进行闭路循环反应，生成NH4F与水合SiO2(白炭黑) ，通过正交优化，得到最佳工艺为：氟化反应，NH4F∶废白土 = 1.28，NH4F∶水 = 0.9，反应温度60℃，反应时间4h；氨化反应，反应温度60℃，反应时间8h，投料比 = 2 〔 25%氨水 mL/(NH4)SiF6 g 〕。循环试验结果表明，NH4F转化率可达82%，白炭黑产率达90%以上，只需补充少量NH4F和氨水，就能在不产生环境污染的情况下从废白土中制取白炭黑。
+关键词　白炭黑　废白土　综合利用　绿色化学
+The ammonium fluoride and ammonia closed cycle method for white carbon black production from dewaxed and deoiled waste clay. Zhu Xian, Zhou Zhonghua, Yang Chao, Cao Xuehua, Zhao Xia, Guo Xuping (Shanghai University, School of Chemistry and Chemical Engineering, Shanghai 201800).China Environmental Science.1998,18(5):468～471
+Abstract―A closed cycle method for producing ammonium fluoride and hydrated silicon dioxide ( white carbon black) was practiced by using ammonium fluosilicate solution and ammonia gas,both produced from ammonium fluoride reacted with silicon dioxide of waste clay. The optimum conditions are: ammonium fluoride/waste clay = 1.28, ammonium fluoride/water = 0.9, T = 60℃ and t = 4h for ammonium fluoride reaction; T = 60℃, t = 8h and feeding ratio = 2 ( 25% ammonia liquid mL/ammonium fluosilicate g ) for ammonia reaction. The experimental results show that the conversion ratio of ammonium fluoride reaches 82% and the white carbon black production rate is over 90%. So, the white carbon black could be made from waste clay without environmental pollution so long as a little amount of ammonium fluoride and ammonia was added for each cycle.
+Key words:white carbon black　waste clay　comprehensive utilization　green chemistry
+　　炼油厂石蜡及润滑油精制工序中排放的废白土是一种深褐色固体废弃物。目前，国内外主要采取堆放和填埋的方法处理，也有先用石灰水回收废白土中残蜡和残油，后将废白土堆放和填埋，这都没有解决废白土的污染问题。本研究在大量前期工作基础上〔1～5〕， 已基本形成了一套比较成熟的废白土综合治理工艺路线：用中性表面活性剂溶液回收废白土中石蜡和润滑油〔6〕；用酸碱法从脱腊、脱油废白土中制取白炭黑〔7〕。但该工艺需耗用较多酸碱，且有废酸水排放。为使整个废白土综合治理工艺更趋合理，借鉴文献报道的氟化法生产白炭黑新工艺〔8〕，通过NH4F-NH3和氨与废白土的组合反应，形成闭路循环，同时只需在每次循环中添加必需的能量及补充少量的NH4F和NH3，就可将废白土中SiO2转变成水合SiO2及白炭黑，且整个工艺过程无三废排放，符合绿色化生产要求。
+1　基本原理
+　　废白土中含SiO2约60%，通过下述化学反应，可构成从废白土中制取白炭黑的闭路循环：
+
+2　NH4F与废白土的反应
+　　根据反应式(1)，NH4F与SiO2的摩尔比应为6，以下反应固定废白土用量为35g。
+2.1　最佳反应温度
+　　实验条件：NH4F 37g，H2O 100g，时间为3h，结果见表1。
+表1　最佳反应温度选择
+Table 1　Choice of optimum reaction temperature
+
+序号反应温度
+（℃） 剩余废白土量
+（g）
+1100　26.1
+280 26.6
+360 26.7
+44026.9
+
+　　 由表1可知，温度对反应程度的影响不太明显，但40℃时反应物抽滤困难，所以选择反应温度为60℃。
+2.2　最佳NH4F，H2O加入量及反应时间
+　　采用L9(34)正交表试验，因子水平见表2，实验结果见表3。
+表2　正交试验因子水平
+Table 2　The factor and level of perpendicular test
+
+项　目　　　因子　　因子水平
+12 3
+NH4F用量(g)　　 A　　15 30 45
+H2O 用量(g)　　 B　　60 100　 140　
+反应时间(h)　　C　　246
+
+表3　正交试验和极差分析
+Table 3　The perpendicular test results and maximum difference analysis
+
+序号ABC 剩余废白土量(g)
+1 1 1 1 27.10
+2 1 2 2 27.70
+31 3 3 29.20
+421 3 24.70
+52 2 1 26.60
+62 3 2 24.00
+73 1228.00
+83 23 19.80
+93 3 1 25.10
+K1 84.00 79.80 78.80
+K2 75.30 74.1079.90
+K3 72.90 78.30 73.70
+k1 28.00 26.60 26.26
+k2 25.1024.70 26.57
+k3 24.30 26.10 24.57
+极差 3.70 1.90 2.00
+
+　　 根据表3可知，最优组合为A3，B2，C3。各因子对反应影响顺序为：NH4F>时间>H2O。因此，补充可能的优化水平组合，见表4。
+　　从表3，表4的结果可知，进一步增加NH4F用量与反应时间，对反应程度几乎不起作用。减少H2O用量，虽然对反应程度稍有不利，但能减小设备尺寸，降低成本。反应时间可缩短为4h，效果反而更好。因此，最佳工艺条件定为：NH4F∶废白土（质量比）=1.28，NH4F∶H2O（质量比)=0.9，时间为4h，温度为60℃。按此反应条件进行实验，剩余废白土量为19.6g。
+表4　可能的优化水平组合实验结果
+Table 4　The experimental results of possible optimum condition
+
+序号NH4F(g)H2O(g) 时间 (h) 剩余废白土量(g)
+1 45 100 8 18.3
+245 100 4 19.5
+3 4550 6 20.3
+4 30100 6 24.9
+5 60 100 10　 18.8
+
+2.3　NH4F转化率
+　　空白试验显示，不用NH4F，其它条件同最佳工艺条件，剩余废白土量为29.5g。若用45g NH4F，根据反应式(1)，完全反应需12.16g SiO2，因此理论上废白土剩余量应为17.34g，实验结果为19.6g，折合反应掉SiO2 9.9g，即NH4F转化率应为9.9/12.16×100% = 81.4%，没反应掉的NH4F将在闭路循环中得到重复利用。
+3　(NH4)SiF6与NH3反应
+　　用(NH4)SiF6配制10%浓度溶液作为实验标准试样。
+3.1　最佳NH3加入量，反应温度，反应时间
+表5　正交试验因子水平
+Table 5　The factor and level of perpendicular test
+
+项　目因子　因子水平
+12 3
+NH3用量(25%) (mL)A　100 50 20
+(NH4)SiF6用量 (mL)B　100 100 100
+反应温度 (℃) C　80 60 40
+反应时间 (h) D　8 6 4
+
+表6　正交试验和极差分析
+Table 6　The perpendicular test results and maximum diffence analysis
+
+序号　 A　　B　　C　　 D　　 白炭黑产量 (g)
+1 1 1 1 1 2.9
+2 12 2 2 2.7
+3 1 3 3 3 2.4
+421 2 3 2.7 
+5 2 2 3 1 2.6
+6 231 2 2.4
+7313 2 2.6
+832 1 3 2.5
+9 332 1 3.1
+K1 8.0 8.2 7.8 8.6
+K2 7.7 7.8 8.5 7.7
+K3 8.2 7.9 7.6 7.6
+k1 2.67 2.73 2.60 2.87
+k2 2.57 2.60 2.83 2.57
+k32.73 2.63 2.53 2.53
+极差 0.16 0.13 0.30 0.34
+
+　　采用L9(34)正交表进行实验，因子水平见表5，实验结果见表6。
+　　从表6可知，最优组合为A3，B3，C2，D1。因子影响顺序为：时间>温度>NH3，最佳投料比：2〔(25%) NH3 mL/(NH4)SiF6 g〕。
+3.2　白炭黑产率
+　　根据反应式(2)，10g(NH4)SiF6完全反应，需NH3 3.82g，合25%氨水约15mL，故上述每组实验中氨水用量均足以使反应完全。按最优组合，理论上应得白炭黑3.37g，而实际得白炭黑3.1g，因此，白炭黑产率为92%。
+4　闭路循环
+　　按最佳工艺条件，将反应(1)中生成的氨气用50mL水吸收，并添加10mL25%氨水，作为反应(2)的反应物。反应(2)生成的白炭黑经过滤除去后，滤液真空浓缩至约50mL，并添加2g NH4F，再作为反应(1)原料液与废白土反应。如此循环5次的实验结果见表7，白炭黑质量检测结果见表8。
+表7　闭路循环实验结果*
+Table 7　The results of closed cycle experiment
+
+循环次数 剩余废白
+土量(g) NH4F转
+化率(%) 白炭黑产量
+(g) 白炭黑产率
+(%) 
+1 19.48 82.7 9.27 92.5
+2 19.51 82.5 9.12 91.3
+3 19.53 82.3 9.07 91.0
+4 19.55 82.2 8.98 90.2
+5 19.53 82.3 9.10 91.3
+
+　注：* 每次循环废白土投入量35g，初始NH4F加入量44.8g
+表8　白炭黑产品质量检测结果*
+Table 8　The testing quality results of white carbon black
+
+指标名称　　　质量指标　　 样品　　 指标名称 质量指标　　 样品　　
+SiO2含量 (%)≥ 90 91.3 　　 总含铜量(mg/kg)≤30 18
+外 观 白色粉末 白色粉末　　总含锰量(mg/kg)≤ 5035
+(45μm)筛余物(%)≤ 0.5 0.4　　 总含铁量(mg/kg) ≤1000850
+加热减量(%)4.0～8.0 6.2　　 DBP吸收值(cm3/g)2.0～3.5 3.1
+灼少减量(%)≤7.05.8 　　 比表面积(m2/g) 70～190 152
+pH值5.0～8.0 6.5　　
+
+　　　　注：* GB10517-89
+5　结论
+　　NH4F-NH3法从废白土中制取白炭黑的闭路循环能够实现，NH4F转化率为82%，白炭黑产率达90%以上，白炭黑质量符合国家标准。若能使闭路循环反应进一步衔接合理，有望得到实际工业应用。
+参考文献
+1　朱　宪，李立新.废白土的再生活化研究.环境科学，1985,6(3):43～45
+2　朱　宪，朱秉耕，朱志平.液膜乳化法回收废白土中石蜡.环境科学，1991,12(2):49～51
+3　朱　宪，周海明，徐　敬.WinsorⅢ石蜡中相微乳液的制备.日用化工，1993,22(66):8～11
+4　朱　宪，张　彰，周春球.界面张力扫描方程组法测定石蜡EACN值.上海科技大学学报，1993,16(2):171～176
+5　朱　宪，李立新，周海明等.用O/W型表面活性剂乳液回收废白土中蜡的液液和液固相界面张力的研究.环境科学学报，1994,14(2):75～83
+6　朱　宪，李立新，张　彰等.用表面活性剂溶液回收废白土中蜡的相界面张力行为研究.中国环境科学，1995,15(2):118～122
+7　朱　宪，周忠华，李立新等.用表面活性剂溶液回收废白土中蜡和油及废白土综合利用.中国环境科学，1995,15(3):230～234
+8　杜泽林.氟化法制取白炭黑新工艺.无机盐工业，1994,(2):
+9～12
+作者简介
+朱　宪　男，1948年4月生。博士、副教授、硕士研究生导师。主要从事绿色化学领域中的热力学、分离技术和无害化工教学及科研。发表论文30余篇。
+收稿日期：1998-01-19
+* 国家自然科学基金（29170304和29677009）、上海市教委科技发展基金共同资助项目

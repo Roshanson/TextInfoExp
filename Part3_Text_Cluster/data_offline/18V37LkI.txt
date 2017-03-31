@@ -1,0 +1,88 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年 第19卷　第5期　Vol.19 No.5 1999
+
+
+
+高压脉冲放电降解水中苯乙酮的研究
+文岳中　姜玄珍　吴墨
+摘要：进行了高压脉冲放电降解水中苯乙酮的实验,2.1×10-3M苯乙酮溶液放电处理30min,苯乙酮的最高降解率达92%,另外还探讨了苯乙酮降解途径及气体的存在对放电效果和苯乙酮降解率的影响.研究表明,用高压脉冲放电处理有机废水是可行的.
+关键词：高压脉冲放电；降解；水中苯乙酮
+中图分类号：X131.1 文献标识码：A 文章编号：1000- 6923(1999)05- 0406- 04
+Preliminary study of destruction of acetophenone in water by high voltage pulse discharges.
+WEN Yue-zhong, JIANG Xuan-zhen,Wu Mo
+(Department of Chemistry of Zhejiang University, Hangzhou, 310027, China). China Environmental Science. 1999,19(5)：406～409
+Abstract：In this paper, the experimental results with respect to the destruction of acetophenone in water using high voltage pulse discharges were presented. After 30min discharges, the destruction efficiency of 2.1′ 10-3M acetophenone reached 92%. At the same time, the destruction pathway and the effect of the addition of gas (dry air, O2 or O3) to the reactor on the acetophenone destruction were studied. These studies will be helpful to the treatment of organic wastewater using high voltage pulse discharges.
+Key words：high voltage pulse discharges；destruction；acetophenone in water
+　　一般有机废水的传统处理方法是生物降解氧化法,但是由于这种生化处理方法是处于常温下的催化氧化,反应速度慢、强度低、需要庞大的反应池.近年来,由于环境科学的发展,人们对高等氧化的技术越来越重视,如TiO2光催化[1,2]、超声氧化[3]、g 射线处理工艺[4,5],脉冲电晕降解挥发性有机物(VOCs)已进行了不少研究[6-8],然而,高压脉冲放电降解有机废水的文献报道很少[9,10].液电脉冲等离子降解法是一门涉及等离子物理、等离子化学、流体力学、热力学、生物、电工、环境保护等前沿性交叉学科.在该种降解法处理高浓度有机废水过程中,具备了高温热降解、光化学氧化、液电空化降解、超临界水氧化等传统的水处理法的综合效应[11].苯乙酮代表了水中有机污染物,本文对高压脉冲放电降解水中苯乙酮进行了初步研究.
+1 实验
+　　化学纯苯乙酮用去离子水配制成2.1×10-3M模拟有机废水.钢瓶氧气、压缩空气分别通过硅胶、活性碳、分子筛柱以除去杂质.臭氧由另一台臭氧发生器供应,其浓度为14.4mg/L.反应器为内径2.6cm圆柱形玻璃管,不锈钢板电极直径为φ2.0cm,针电极为7号注射器针头.直流高压电源为30kV,经高频高压电容储能,由与反应器相联的火花间隙开关产生宽度为8m s、上升前沿为1m s、频率为50~ 150Hz的脉冲.实验装置如图1所示. 
+
+图1 高压脉冲放电降解水中有机物装置示意
+Fig.1 Schematic diagram of destruction of organic compounds in water by high-voltage pulse discharges
+　　反应前后苯乙酮的浓度用气相色谱仪(1102G-D,FID,毛细管柱为OV-101) 分析,臭氧的浓度用标准分析方法分析[12].
+2 结果与讨论
+2.1 苯乙酮的直接降解
+　　取2.1′ 10-3M苯乙酮溶液30mL置于反应器中进行放电处理.放电开始后,有微小气泡产生,且紫外光非常强烈;放电处理后,水样经色谱分析计算其转化率.
+
+图2 苯乙酮的转化率与放电时间关系
+Fig.2 The conversion of acetophenone as function of discharge time
+　　苯乙酮溶液经过不同时间处理后,其转化率与放电处理时间关系见图2.由图2可见,苯乙酮的转化率随放电时间增加而提高,但从总体来看,转化率并不高,1h仅为45%.当脉冲电压加到放电电极的间隙时,因针尖处于高场强下,出现场致冷发射,高能电子攻击液体分子,出现解离和碰撞电离过程,促进某些气体(H2O、H2、O2)的发生.从而出现从高电压电极向外延伸的高电导率的根须状“先导”,形成等离子体通道,由于等离子体通道内的高温(104～105K量级)、高压以及充满大量离子、自由基等粒子,使得在等离子体通道内的有机物分子将会在高温下完全热解,和在自由基作用下发生化学降解.同时,由于高温、高压等离子体通道的产生,伴随着强烈的紫外光,使得在等离子体通道领域及其外部区域的溶液中引起紫外降解、热降解和碰撞解离.在上述3种效应的同时作用下,有如下反应:
+H2O→[H2O+.,H2O*,e-]
+H2O+.+ O→ H3+O +.OH
+H2O*→ H.+.OH 
+H2O*→ H2+O
+e + nH2O→ eaq- 
+.OH +.OH→ H2O2
+苯乙酮与这些自由基相互反应,生成中间产物和CO2.
+　　由于在直接放电条件下,介质水的密度大,介质水的击穿场强增大,导致电极之间距离很小,在本实验条件下,仅为1mm,因此放电区域小,由此导致的光解、热解、碰撞解离几率很小,因而苯乙酮的转化率低.
+2.2 通空气、O2和O3时苯乙酮的降解
+　　鉴于直接放电苯乙酮的降解率低及电极之间的距离小,为此研究了对反应器分别通入空气、O2、O3后,对苯乙酮降解的影响(见图3).由图3可知,在同样条件下,反应器通入空气、O2、苯乙酮的降解率几乎相同,而通入O3、苯乙酮的降解率显著提高,由75%提高到92%(反应时间为30min).
+
+图3 气体存在时苯乙酮转化率与放电时间关系
+Fig.3 The conversion of acetophenone as function of discharge time in the presence of gas
+　　向反应器通入O2放电处理后降解产物的红外光谱图展示存在吸收波数为1104.93、1021.22的吸收峰,它们暗示了溶液中可能存在苯乙醇,估计是水化电子eaq-攻击苯乙酮的羰基所致,红外光谱图还显示,溶液中存在甲基、苯环吸收带,推测为甲苯.实验产物的质谱分析证明存在苯乙醇、甲苯等(表1).甲苯的存在可能是由于苯乙酮的光降解或热解.根据本实验结果推断,在液电脉冲放电处理时,一方面苯乙酮可能受到水化电子的攻击生成苯乙醇随后苯乙醇被分解,另一方面苯乙酮也可能由于光降解或热解经甲苯而转化为CO2和水.总之,上述降解反应相当复杂,质谱分析对有些降解中间产物尚未确定,需进一步探索.
+表1 由GC-MS检测到的苯乙酮降解的中间产物
+Table 1 Intermediates of acetophenone destruction determined by GC-MS
+
+序号中间体峰面积峰面积所占百分数(%)
+1苯乙醇70210444.62
+2未鉴定22524614.31
+3未鉴定19713912.53
+4未鉴定1386148.81
+5甲 苯1380468.77
+6未鉴定870415.53
+72-乙酰苯酚853585.43
+
+　　向反应器通入气体能提高苯乙酮降解率的主要原因是气泡的局部放电增加了反应活性分子.由于气体密度很小,介电常数很小(e =1),而液体的介电常数e 为80,因而,在液体中,气泡的存在是有利的,易于引起气泡的局部放电,最终导致等离子体通道的形成,引起有机物的降解.这是由于带电粒子的直接轰击,气泡局部放电,其中包含大量的带电粒子,这些粒子轰击苯乙酮分子,使苯乙酮分解变成小分子;局部温度升高,放电区域的高温对苯乙酮可以产生化学分解; 产生紫外光,导致苯乙酮的光降解.由放电产生的化学物质(如eaq-、・OH基等)对周围苯乙酮分子进一步活化.当溶液中存在气体时,发生下列反应:
+e + O2→ e +O2(1△) 
+e + O2→ e +.O +.O 
+e + O2→ e +.O +.O(1D)
+e + N2→ e + N2(A3Σ) 
+e + N2→ e +.N +.N 
+e + H2O→ e +.OH +.H 
+e + O3→e +.O + O2 
+.O + H2O→ 2.OH 
+.OH +O3→HO2- + O2 
+其中,.OH基具有最强的活性,被・OH基活化的苯乙酮可以与其它各类氧化基反应,从而达到氧化的目的.因此,通气体与不通气体相比,溶液中的活性粒子多(特别是.OH基),因而降解率高.至于通入空气、O2时,苯乙酮的降解率相差不多,这可能是N2、O2均通过放电,形成活性.O、.N,攻击苯乙酮分子,形成不同的产物.而通入O3降解率高可能是O3在等离子体通道内因高温易于分解,与H2O结合形成高氧化性的.OH基.向反应器通入气体提高苯乙酮降解率的另一原因是气泡的存在增大了电极之间距离(本实验由1mm增加至10mm),从而引起放电区域的扩大.由于放电区域的扩大导致苯乙酮由光解、热解、碰撞解离的几率大得多,使得其降解率大幅度提高.
+3 结论
+3.1 液电脉冲放电过程中,向反应器通入气体对苯乙酮的降解非常有利,不仅放电距离由1mm增加到10mm,而且苯乙酮的降解率也大幅度提高. 
+3.2 用液电脉冲处理苯乙酮溶液能有效地降解水中的苯乙酮,在通入O3时,经30min放电处理,苯乙酮的降解率达92%.
+　　以上研究表明,用液电脉冲处理有机废水是可行的.由于条件限制,本实验还是初步的研究,但用液电脉冲与臭氧相结合治理有机废水的新技术是一个良好的开端.
+基金项目：国家自然科学基金资助项目(29576261)
+作者简介：文岳中(1969-),男,湖南长沙人,浙江大学化学系博士生,主要从事等离子体化学及其在环境保护中应用的研究.发表论文3篇. 
+作者单位：浙江大学化学系,浙江 杭州 310027
+参考文献：
+　[1]Xu Y, Langford C H. A comparison of acetophenone photooxidation in aqueous media via direct photolysis and TiO2 photocatalysis [J]. J.Adv.Oxid.Technol.,1997,2(3): 1- 7.
+　[2]Mills A, Hunte S L. An overview of semiconductor photocatalysis [J]. Journal of Photochemistry and Photobiology A: Chemistry,1997,108:1- 35.
+　[3]胡文容,钱 梦,高廷耀. 超声强化O3氧化技术在水处理中应用的研究 [J]. 环境导报,1997,5:3- 6.
+　[4]AL-Sheikhly M, Silverman J, Neta P. Mechanisms of ionizing radiation-induced destruction of 2,6-dichlorobiphenyl in aqueous solutions [J]. Environ.Sci.Technol.,1997,31:2473- 2477.
+　[5]Schmelling D C, Gray K A, Kamat P V. Radiation-induced reactions of 2,4,6-trinitrotoluene in aqueous solution [J]. Environ.Sci.Technol.,1998, 32:971- 974.
+　[6]Malik M A, Jiang Xuan-Zhen. Destruction of VOCs by combination of corona discharge and catalysis techniques [J]. Journal of Environmental Science,1998,10(3):276- 281.
+　[7]Tonkyn R G, Barlow S E, Orlando T M. Destruction of carbon tetrachloride in a dielectric barrier / packed-bed corona reactor [J]. J.Appl.Phys.,1996,80(9): 4877- 4886.
+　[8]Shimizu K, Kinoshita K, Yanagihara K. Pulsed-plasma treatment of polluted gas using wet-/low-temperature corona reactors [J]. IEEE transactions on Industry application, 1997, 33(5): 1373- 1380.
+　[9]Clements J S, Sato M, Davis R H. Preliminary investigation of prebreakdown phenomena and chemical reactions using a pulsed high-voltage discharge in water [J]. IEEE transactions on Industry application,1987,IA-23(2):224- 235.
+　[10]Willberg D W, Lang P S, Hochemer R H. Degradation of 4-chlorophenol, 3,4-dichloroaniline and 2,4,6-trinitrotoluene in an electrohydraulic discharge reactor [J]. Environ.Sci.Technol., 1996, 30:2526- 2534.
+　[11]苏建龙,黄卫东. 液电脉冲等离子体降解高浓度有机废液的机理研究 [J].环境科学动态,1997,2:13- 16.
+　[12]Snell F D, Ettre L S. Encyclopedia of industrial chemical analysis: Vol.16 [M]. USA: John Wiley & Sons Inc.1972,546- 550.
+收稿日期：1999-03-17

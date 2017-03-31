@@ -1,0 +1,159 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第4期　Vol.19　No.4　1999
+
+
+
+双阳离子有机膨润土吸附处理水中有机物的性能
+朱利中　陈宝梁　沈韩艳　陈仙花
+摘要：分别用长碳链季铵盐(如溴化十二烷基三甲铵、溴化十四烷基苄基二甲铵、溴化十六烷基三甲铵、溴化十八烷基三甲铵)和短碳链季铵盐(如溴化四甲基铵)按一定配比混合改性膨润土,制得一系列双阳离子有机膨润土.研究了双阳离子有机膨润土吸附水中对硝基苯酚、苯酚、苯胺的适宜条件、性能、作用机理.结果表明,双阳离子有机膨润土的层间距、有机碳含量和对有机物的吸附性能与改性时长、短碳链季铵盐的组成及配比有关,水中有机物的去除效果还与其本身的性质有关;所用的双阳离子有机膨润土对有机物的吸附符合Freundlich或Langmuir等温式,是表面吸附作用和分配作用共同作用的结果.
+关键词：有机膨润土；阳离子表面活性剂
+中图分类号：X131.3 文献标识码：A 文章编号：1000- 6923(1999) 04- 0325- 05
+Property of dual-cation organobentonites to remove organic compounds from water.
+ZHU Li-zhong1,CHEN Bao-liang1,SHEN Han-yan1,CHEN Xian-hua2 (1.Department of Environmental Science,Zhejiang University,Hangzhou 310028, China；2.Wenling Environmental Protection Bureau,Wenling 317500,China).China Environmental Science. 1999, 19 (4)：325～ 329
+Abstract：A series of dual-cation organobentonites are synthesized by exchanging both long-chain quaternary ammonium such as dodecyltrimethylammonium bromide (DTMAB), tetradecylbenzylbimethylammonium chloride (TPAC), cetyltrimethylammonium bromide (CTMAB), octadecyltrimethylammonium bromide (OTMAB) and short-chain quaternary ammonium such as tetramethylammonium bromide (TMAB) on bentonit. The optimal conditions, properties and mechanisms for dual-cation organobentonites to sorb p-nitrophenol, phenol, aniline from water are investigated in detail. The interlayer spacings and organic carbon contents of dual-cation organobentonite,the removal rates and sorption amounts for dual-cation organobentonites to treat organic compounds are relative to the ratio of long-chain and short-chain quaternary ammonium and the length of alkyl-chain of long-chain quaternary ammonium exchanging on bentonite. Sorption isotherms of p-nitrophenol,phenol,aniline are characterized by nonlinear, and fit to the Langmuir and Freundlich equations. Sorption of p-nitrophenol, phenol, aniline to dual-cation organobentonites are caused by both adsorption and partition. 
+Key wordsrganobentoniteation surfactantrganic pollutantdsorptionartition
+　　膨润土具有较大的比表面和阳离子交换容量,故人们常用季铵盐阳离子改性膨润土制得有机膨润土,以提高其去除水中有机物的能力[1- 5].迄今,研究最多的是将单一阳离子表面活性剂改性的有机膨润土用于吸附处理水中非极性有机物[2,4];对用两种阳离子表面活性剂改性的双阳离子有机膨润土及其应用的研究较少.
+　　本文用两种不同长、短碳链的阳离子表面活性剂混合改性膨润土,制得一系列双阳离子有机膨润土.初步探讨了双阳离子有机膨润土吸附水中对硝基苯酚、苯酚、苯胺的适宜条件和性能;研究了不同长、短碳链配比,不同碳链长度制得的双阳离子有机膨润土吸附处理水中有机物的性能及机理.
+1 实验部分
+1.1 材料与仪器
+　　所用原土为钠基膨润土,经测定其阳离子交换容量(CEC)为60meq/100g;溴化十六烷基三甲铵(CTMAB)、溴化四甲基铵(TMAB)、对硝基苯酚、苯酚、苯胺均为分析纯;溴化十二烷基三甲铵(DTMAB,95%)、溴化十四烷基苄基二甲铵(TPAC,90%)、溴化十八烷基三甲铵(OTMAB,80%)为工业纯,经提纯后使用.
+　　主要仪器有THB-82A台式恒稳振荡器;低速电动离心机;722-型分光光度仪;紫外可见分光光度仪;LECO CS-344碳硫测定仪;X’ PertMPD型X-射线衍射仪.
+1.2 测定方法
+　　水中苯酚和苯胺的含量分别用4-氨基安替比林和盐酸萘乙二胺分光光度法测定,检测限分别为0.1、0.12ugmL;对硝基苯酚用紫外分光光度法测定,测定波长为317nm,检测限为0.05ugmL.
+1.3 双阳离子有机膨润土的制备
+　　用短碳链阳离子表面活性剂TMAB分别与长碳链阳离子表面活性剂DTMAB、TPAC、CTMAB、OTMAB按一定配比混合改性膨润土.具体方法为:将干燥、过100目筛的原土40g倒入400mL一定配比的双阳离子或单一阳离子表面活性剂溶液中,在60～70℃水浴中搅拌2h,产物经真空过滤,用400mL蒸馏水洗涤2次,滤干后在80～90℃下烘干,105℃下活化1h,经研磨,过100目筛,制成一系列双阳离子有机膨润土.
+　　制得的双阳离子有机膨润土用两种相应表面活性剂的英文缩写加一个数字前缀表示,数字代表改性时加入的表面活性剂为所用膨润土的CEC的百分数.例如40TMAB/40DTMAB表示用40%CEC的TMAB和40%CEC的DTMAB共同改性制得的双阳离子有机膨润土.
+1.4 实验方法
+　　在100mL碘量瓶中分别加入0.5g单一或双阳离子有机膨润土(或原土)和25mL一定浓度的有机物溶液,盖紧,在25℃、150r/min条件下振荡1h,离心10min后,取上层清液,测定水中有机物的残留量(即平衡浓度),计算出各种有机膨润土对对硝基苯酚、苯酚、苯胺的去除率和吸附量.实验表明,水处理过程中对硝基苯酚、苯酚、苯胺的挥发率可忽略不计.
+2 结果与讨论
+2.1 双阳离子有机膨润土的结构分析
+　　在25℃和50%相对湿度条件下,分别用X-射线衍射分析法(SY/T5163-1995)和有机碳的分析方法 (SY5116-86)测得双阳离子有机膨润土的层间距和有机碳含量.由表1可见,双阳离子有机膨润土的层间距和有机碳含量都大于原土;双阳离子有机膨润土的层间距和有机碳含量随双阳离子中长碳链季铵盐阳离子表面活性剂加入量的增加而增大.例如40TMAB/60DTMAB >40TMAB/40DTMAB>40TMAB/20DTMAB ;当双阳离子的配比相同时,层间距和有机碳含量随长碳链季铵盐碳链的增长而增大,即40TMAB/20OTMAB>40TMAB/20CTMAB>40TMAB/20TPAC>40TMAB/20DTMAB.改性制得的双阳离子有机膨润土结构的变化直接影响它的吸附性能和作用机理.
+表1 双阳离子有机膨润土和原土的层间距和有机碳含量
+Table 1 The interlayer spacings and organic carbon 
+contents of dual-cation organobentonites 
+and original bentonite
+土 样层间距(nm)有机碳含量(%)
+原土1.2270.057
+40TMAB1.3762.234
+40DTMAB1.6939.605
+40TMAB/20DTMAB1.3916.408
+40TMAB/40DTMAB1.4369.685
+40TMAB/60DTMAB1.62212.335
+40TMAB/20TPAC1.4098.285
+40TMAB/20CTMAB1.4268.784
+40TMAB/20OTMAB1.4929.225
+
+2.2 双阳离子有机膨润土吸附水中有机物的适宜条件
+　　试验了pH值、振荡时间和用土量对双阳离子有机膨润土(以40TMAB/40DTMAB土样为例)吸附处理水中对硝基苯酚、苯酚、苯胺性能的影响.当实验的pH值为2～12时,双阳离子有机膨润土对苯胺的去除率基本恒定为15.9%;对硝基苯酚、苯酚的pKa分别为9.96和7.16;当pH<pKa时,去除率基本恒定,分别为92.8%和32.9%;在pH>pKa时去除率随pH值的增大而有所提高.考虑到实际应用,实验中将溶液pH值调到7.在室温、pH7、振荡速度为150r/min的条件下,振荡30min后,有机物的去除率基本恒定,实验时固定振荡时间为1h.随着用土量的增加,双阳离子有机膨润土对水中有机物的去除率也增大,考虑到处理费用和去除效果,选择用土量为0.5g/25mL.
+2.3 双阳离子有机膨润土去除水中有机物的性能
+　　比较研究了一系列不同组成和配比的双阳离子有机膨润土及原土吸附去除水中对硝基苯酚、苯酚、苯胺的效率.由表2可见,双阳离子有机膨润土对对硝基苯酚、苯酚、苯胺的去除率远大于原土;双阳离子有机膨润土对有机物的去除率,随改性时双阳离子中长碳链阳离子表面活性剂加入量的增加而增大,如40TMAB/ 60DTMAB>40TMAB/40DTMAB>40TMAB/20DTMAB>40TMAB,这些变化趋势与双阳离子有机膨润土结构的变化趋势基本一致.同一双阳离子有机膨润土对有机物的吸附效果与其本身性质有关,去除率大小为:对硝基苯酚>苯酚>苯胺.
+2.4 双阳离子有机膨润土吸附水中有机物的机理探讨
+　　绘制了8种双阳离子或单一阳离子有机膨润土对对硝基苯酚、苯酚、苯胺的等温吸附曲线.本文以8种有机膨润土和原土吸附水中苯酚为例,说明双阳离子有机膨润土的吸附特征.苯酚的等温吸附曲线(图1～图3)均呈非线性,符合Langmuir和Freundlich吸附等温式.其中, Freundlich方程为: 
+Q=KCen 或 lgQ=nlgCe+lgK 
+(1) 
+　
+
+图1 苯酚的等温吸附曲线
+Fig.1 Isothermal sorption curves for phenol
+1.原土 2.40TMAB 3.40TMAB/40DTMAB 4.40DTMAB
+
+图2 不同配比的双阳离子有机膨润土对苯酚的
+等温吸附曲线
+Fig.2 Isothermal sorption curves of phenol to different ratio dual-cation organobentonites 
+1.40TMAB 2.40TMAB/20DTMAB 3.40TMAB/40DTMAB 4.40TMAB/60DTMAB
+
+图3 不同组成的双阳离子有机膨润土对苯酚的
+等温吸附曲线
+Fig.3 Isothermal sorption curves of phenol to different composition dual-cation organobentonites
+1.40TMAB/20DTMAB 2.40TMAB/20TPAC
+3.40TMAB/20CTMAB 4.40TMAB/20OTMAB
+式中:Q为吸附量; Ce为平衡浓度; K和n为经验常数.双阳离子有机膨润土对水中对硝基苯酚、苯酚、苯胺的等温吸附曲线回归数据见表3. 
+表2 不同表面活性剂配比和组成对双阳离子有机膨润土和原土去除水中有机物效率的影响 (%)
+Table 2 Effects of amounts and kinds of dual-cation surfactants on removal rates of organic compound from 
+water by dual-cation organobentonites and original 
+bentonite (%)
+土 样对硝基苯酚苯 酚苯 胺
+原土46.792.62-
+40TMAB81.0411.6515.28
+40DTMAB87.6232.5416.84
+40TMAB/20DTMAB81.2417.327.44
+40TMAB/40DTMAB92.8432.9015.9
+40TMAB/60DTMAB98.4542.8116.40
+40TMAB/20TPAC94.2032.5411.69
+40TMAB/20CTMAB87.0428.3013.71
+40TMAB/20OTMAB96.5238.4515.50
+
+　　双阳离子有机膨润土对苯酚的等温吸附曲线表明,单一或双阳离子有机膨润土对苯酚的吸附量大于原土; 40TMAB/40DTMAB双阳离子有机膨润土对苯酚的吸附量大于短碳链40TMAB有机膨润土,而小于长碳链40DTMAB有机膨润土;当加入的短碳链阳离子表面活性剂浓度固定时,双阳离子有机膨润土对苯酚的去除率随长碳链阳离子比例的增大而增大;吸附量及去除率的大小为:40TMAB/60DTMAB> 40TMAB/40DTMAB>40TMAB/20DTMAB>40TMAB;当加入的长、短碳链阳离子表面活性剂配比相同时,双阳离子有机膨润土的吸附量随长碳链季铵盐阳离子链长的增长而增大,即为40TMAB/20OTMAB>40TMAB/20CTMAB>40TMAB/ 20TPAC>40TMAB/ 20DTMAB.
+　　研究表明,用短碳链阳离子表面活性剂改性的有机膨润土对有机物的吸附(Sorption)以表面吸附为主;而用长碳链阳离子表面活性剂改性的有机膨润土对有机物的吸附以分配作用(Partition)为主.因双阳离子有机膨润土中同时含有长、短碳链阳离子表面活性剂,故其对有机物的吸附是表面吸附和分配作用共同作用的结果.
+表3 双阳离子有机膨润土和原土对有机化合物的
+等温吸附曲线的回归数据
+Table 3 Regression data for isotherms of organic compoumds on dual-cation organobentonite and original
+bentonite
+有机化合 物土 样Kn相关
+系数
+　
+对
+硝
+基
+苯
+酚原土62480.19070.835
+40TMAB600.76340.947
+40DTMAB503.80.67640.982
+40TMAB/20DTMAB720.80.50250.986
+40TMAB/40DTMAB1664.70.50910.933
+40TMAB/60DTMAB24300.52910.993
+40TMAB/20TPAC14980.45060.959
+40TMAB/20CTMAB974.70.51440.964
+40TMAB/20OTMAB1860.20.45120.981
+　
+苯
+酚原土0.31.15430.933
+40TMAB294.50.5590.889
+40DTMAB255.80.64740.953
+40TMAB/20DTMAB58.30.73930.959
+40TMAB/40DTMAB436.60.57450.935
+40TMAB/60DTMAB388.70.59330.967
+40TMAB/20TPAC478.30.52340.963
+40TMAB/20CTMAB404.40.55740.936
+40TMAB/20OTMAB369.10.56860.969
+　
+苯
+胺原土5.80.91640.981
+40TMAB0.21.34510.858
+40DTMAB18.10.97670.974
+40TMAB/20DTMAB21.40.87910.986
+40TMAB/40DTMAB27.10.92760.977
+40TMAB/60DTMAB29.10.92940.968
+40TMAB/20TPAC4.41.08120.934
+40TMAB/20CTMAB
+40TMAB/20OTMAB28.8
+48.80.9023
+0.81030.984
+0.982
+
+　　双阳离子有机膨润土对水中有机物的吸附作用还与有机物本身的性质有关.表4列出了不同有机物的辛醇-水分配系数(Kow)和在水中的溶解度(S).
+　　有机物在水中溶解度愈大,双阳离子有机膨润土对其表面吸附作用愈强;辛醇-水分配系数愈大,则双阳离子有机膨润土对有机物的分配作用愈大.因此,双阳离子有机膨润土对有机物的吸附受有机物本身的辛醇-水分配系数和水中的溶解度等性质的共同影响.
+表4 有机物的辛醇-水分配系数(Kow)和水中
+溶解度(S)
+Table 4 Octanol-water partition coefficients and aquoues solubility of organic compounds
+有机物辛醇-水分配系数(Kow)水中溶解度(ug/mL)
+对硝基苯酚931.6×104
+苯酚309.3×104
+苯胺7.93.6×104
+
+3 结论
+3.1 双阳离子有机膨润土的层间距、有机碳含量、对有机物的去除率和吸附量与改性时所用的长、短两种阳离子表面活性剂的组成与配比有关;当加入配比相同时,随双阳离子中长碳链季铵盐链长的增长而增大;当短碳链阳离子表面活性剂加入量一定时,随长碳链阳离子表面活性剂加入量的增加而增大.
+3.2 双阳离子有机膨润土对水中有机物的吸附是表面吸附和分配作用共同作用的结果.
+基金项目：国家自然科学基金资助项目(29777005)
+作者简介：朱利中(1959-),男,浙江上虞人,浙江大学环境科学系教授,主要从事污染控制化学、环境分析化学及水处理领域的科研工作.主持完成10余项国家及浙江省自然科学基金资助的科研项目.其中获化工部自然科学三等奖,获国家教委科技进步二等奖,获国家教委科技进步三等奖,获浙江省科技进步三等奖.出版教材及专著3部,发表论文85篇.
+作者单位：朱利中　陈宝梁　沈韩艳　浙江大学环境科学系,浙江 杭州310028；2. 陈仙花温岭市环境保护局,浙江 温岭 317500)
+参考文献：
+[1]Boyd S A, Mortland M M, Chiou C T. Sorption characteristics of organic compounds on hexadecyltrimethylammonium-smectite [J] . Soil Sci. Soc. Am. J., 1988, 52: 652-657.
+[2]Smith J A, Jaffe P R, Chiou C T. Effects of ten quaternary ammonium cations on tetrachloromethane sorption to clay from water [J]. Environ. Sci. Technol., 1990, 24: 1167-1172.
+[3]朱利中,李益民,张建英等. 有机膨润土吸附水中萘胺、萘酚的性能及其应用 [J]. 环境科学学报,1997, 17(4): 445-449.
+[4]Zhu　L, Li Y, Zhang J. Sorption of organobentonites to some organic pollutants in water [J]. Environ. Sci. Technol.,1997, 31(5): 1407-1410.
+[5]Chiou C T, Mcgroddy S E, Kile D E. Partition characteristics of polycyclic aromatic hydrocarbons on soils and sediments [J]. Environ. Sci. Technol., 1998, 32:264-269.
+[6]Smith J A, Galan A. Sorption of nonionic organic contaminants to single and dual organic cation bentonites from water [J]. Environ. Sci. Technol., 1995, 29:685-692.
+
+收稿日期：1998-10-19

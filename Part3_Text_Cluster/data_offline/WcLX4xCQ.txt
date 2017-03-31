@@ -1,0 +1,75 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年 第19卷　第5期　Vol.19 No.5 1999
+
+
+
+苯并(a)芘致毒的鱼的分子生态毒理学指标研究
+陈加平　徐立红　吴振斌　张甬元　林群声
+摘要：通过测定典型的多环芳烃类物质苯并(a)芘(BaP)致毒后鱼体内几种重要分子生态毒理学指标的变化,来反映苯并(a)芘致毒对鱼体的影响.结果表明,肝脏ATPase活性降低,GST活性升高,DNA加合物相对标记水平(RAL)也增大,而EROD活性没有明显改变.这说明苯并(a)芘致毒对鱼体正常生命活动产生了重大影响,并具有潜在的致癌性.
+关键词：苯并(a)芘；分子生态毒理学指标；DNA加合物；金丝
+中图分类号：X171 文献标识码：A 文章编号：1000- 6923(1999)05- 0417- 04
+Molecular ecotoxicological indicators of fish intoxicated by benzo(a)pyrene.
+CHEN Jia-ping1,XU Li-hong1,WU Zhen-bin1,ZHANG Yong-yuan1,Paul K.S. Lam2
+(1.Institute of Hydrobiology,Chinese Academy of Sciences,Wuhan 430072, China；2.City University of Hong Kong, Hong Kong, China). China Environmental Science. 1999,19(5)：417～420
+Abstract：This study monitored some important molecular ecotoxicological indicators of fish intoxicated by benzo(a) pyrene(BaP). The decrease of ATPase activity, increase of DNA adduct level and GST activity in fish exposed to BaP compare to control fish received DMSO only were significant. There was, however, no apparent change in EROD activity. The result suggested the important effect of intoxication of BaP on fish.
+Key words：benzo(a)pyrene；molecular ecotoxicological indicators；DNA adducts；gold-lined seabream
+　　随着现代工业的不断发展,化学物对环境的污染越来越严重,而污染对生物造成的危害也愈来愈大.暴露于污染物的生物体在分子水平上的改变可反映污染物对生物最早期的作用,因而可作为灵敏的指标,即分子生态毒理学指标,用于检测污染物对生物个体、种群的早期影响,从而达到保护生物及生态系统的目的[1].单项指标可以反映化学物质毒性的一个重要方面,而多项指标的综合研究可提供更多的信息和更可靠的依据,对于全面评价化学物对生物的潜在影响则更为有价值.因此,利用多项分子生态毒理学指标进行综合研究是近年来国外在生态毒理学领域中最受重视的研究内容[2-5].
+　　在已被采用的指标中,ATPase 的抑制反映了生物体多种生命活动受到的影响,是一种可以反映多种污染物作用的分子生态毒理学指标.EROD (ethoxyresorufin O-deethylase)和GST (glutathione S-tranferase)在生物体解毒过程中起着十分重要的作用,其活性的诱导反映了亲脂性污染物的存在. DNA加合物 (DNA adducts)是反映致癌物对DNA碱基修饰的指标.在本研究中,选用典型的致癌物BaP对金丝 (Gold-lined Seabream, Rhabdosarga sarba)进行致毒,测定在较短致毒时间里上述几种重要指标的变化,探讨用多项分子生态毒理学指标来评价BaP致毒对鱼的早期影响.
+1 材料和方法
+1.1 材料
+　　市售金丝 ,体重30±10g,驯养一周后,对照组和实验组各4尾,实验组每尾按注射剂量35mg/kg注射BaP140μL,BaP用二甲基亚砜(DMSO)溶解,对照组每尾注射同样体积的DMSO.暴露3天后,取肝脏,保存在- 80℃冰柜中备用.
+　　所用试剂均为分析纯,酶试剂均为Sigma产品.
+1.2 ATPase活性测定
+　　ATPase制剂由组织匀浆(匀浆缓冲液含40mmol/L imidazole,250mmol/L sucrose,5mmol/L EDTA, pH7.0,匀浆比(W/V)为1:50)后离心(9000g,10min)取上清液得到.反应缓冲液含80mmol/L imidazole, 4mmol/L MgCl2, 40mmol/L KCl,200mmol/L NaCl,pH7.0.反应在96孔微孔板中进行,根据Paxton的方法[6],反应系统包括反应缓冲液40μL,H2O 20μL,ATPase制剂10μL, Na2ATP(16mM) 10μL,25℃保温15min后,用30%冷TCA终止反应,然后用钼蓝法(molybdenum blue method)[7]测定无机磷.
+　　酶活用nmol Pi/mg protein/min 表示.
+1.3 GST活性测定
+　　匀浆与反应均用0.05mol/L磷酸盐缓冲液,pH7.0. 15mmol/L CDNB(95%乙醇溶解)与15mmol/L GSH使用时现配.GST制剂由组织匀浆(匀浆比(W/V)为1:20)后离心(9000g,10min)取上清液得到.按反应系统(缓冲液100μL,H2O 20μL,CDNB 10μL,GSH 10μL,GST制剂10μL,对照用H2O代替GSH)加入96孔微孔板中,在340nm处连续读数120s.反应产物2,4-dinitroph- enyl glutathione的E340=9.6/mmol/L/cm.
+　　酶活用nmol 2,4-dinitrophenyl glutathione /mg protein/min表示.
+1.4 EROD活性测定
+　　匀浆与反应用缓冲液为100mmol/L Tris, 100mmol/L NaCl,pH8.0,NADPH(2.1mg/mL)与7-ethoxyresorufin(40μmol/L ,溶于甲醇)使用时现配.EROD 制剂由组织匀浆(匀浆比(W/V)为1:20)后离心(9000g,20min)取上清液得到.按反应系统(缓冲液140μL,NADPH 40μL,7-ethoxyresorufin 10μL,EROD制剂10μL,对照用H2O代替NADPH)加入96孔微孔板中,25℃保温30min,572nm处测O.D.值.反应产物resorufin的E572=73/mmol/L/cm.
+　　酶活用pmol resorufin /mg protein/min表示.
+1.5 DNA加合物测定
+1.5.1 DNA提取及定量 按文献[8]进行.
+1.5.2 DNA酶解 将DNA溶液稀释至2μg/μL,取2μL DNA溶液,3μL脾磷酸二酯酶(0.5 unit), 3μL小球菌核酸酶(0.04 unit),离心混合,37℃保温3.5h,加5μL核酸酶P1(10μg),37℃保温40min,加3μL 0.5mol/L Tris(pH9)终止反应,取出反应溶液的1/2,加入3μL T4多核苷酸激酶(15 units)和5μLγ-32P-ATP,37℃保温40min,加入1μL腺苷三磷酸双磷酸酶(1 unit),37℃保温40min.
+1.5.3 TLC薄层层析 将TLC薄层板剪为10 cm′ 10cm,在1.8cm′ 1.8cm处点上酶解后的DNA样品5μL,先用D1:1mol/L磷酸钠溶液(pH 6.0)层析,再用D2:4.5mol/L甲酸锂(含8.5mol/L尿素, pH3.5)层析,将薄层板逆时针转90度,用D3:0.5mol/L Tris(含0.8mol/L氯化锂,8.5 mol/L 尿素,pH8.0)层析,最后用D4:1.7mol/L磷酸钠(pH5.5)层析.每次层析时在薄层板上端接有约10cm长滤纸,使展层更充分.每次层析后均将薄层板用水漂洗,晾干.层析方向如图1中箭头所示.
+
+图1 DNA加合物层析示意
+Fig.1 Sketch of TLC of DNA adduct
+　　最后用Kodak X光片在- 80℃进行放射自显影.
+1.5.4 相对DNA加合物水平的计算 根据放射自显影DNA加合物的位置,将PEI纤维薄膜上有放射活性斑点的纤维素用小刀刮下,液闪计数.在放射性斑点的附近也用小刀刮取相当面积的纤维素,同样测定放射性作为本底.
+　　相对DNA加合物水平=(DNA加合物的cpm-本底cpm)/(3240×DNAμg数′ 3.75×106).
+1.6 酶蛋白浓度测定
+　　用Folin-酚法测定酶制剂的蛋白浓度.
+2 结果与讨论
+2.1 结果
+　　对照组和实验组的鱼肝脏样品ATPase, GST和EROD活力和DNA加合物水平测定结果如图2.图2中相对DNA加合物水平×10-6.
+
+图2 苯并(a)芘致毒对金丝 几种分子生态毒理学指标的影响
+Fig.2 Effects of BaP on molecular ecotoxicological indicators of Gold-lined Seabream
+　　对对照组和实验组之间ATPase、GST和EROD活力和DNA加合物水平测定结果差异的显著性进行t检验,P值分别为0.0153,0.0008, 05225,0.0013.可以看出,在P<0.05的水平上,对照组和实验组之间,ATPase、GST和DNA加合物测定结果的差异是显著的,而EROD的测定结果差异不显著.
+2.2 讨论
+2.2.1 ATPase是生物体内重要的酶,存在于所有的细胞中,包括多种由不同离子活化及存在于不同细胞结构中的ATPase,在细胞的供能活动如离子平衡等之中起着重要作用.由于多种类型的污染物对ATPase有显著的影响,因此,从分子生态毒理学的角度来看,ATPase是一项广泛用于评价污染压力的参数,是具有通用性和直接性的指标.本实验中鱼ATPase活性降低说明BaP的暴露会使鱼体多种生化过程受到干扰.
+2.2.2 生物体内解毒系统一个重要的特征是参与许多关键性的解毒反应的酶是可通过暴露而被诱导的,而许多污染物都是诱导物.EROD和GST 分别是解毒系统I和II阶段的酶,对有机物在生物体内的代谢有十分重要的作用,都可被有机物诱导.
+　　BaP诱导EROD的合成,需要经过基因活化,mRNA合成,蛋白质合成与修饰等,由于过程很复杂,因而BaP对EROD的诱导作用受多种因素的影响.BaP诱导EROD的合成,但在EROD酶反应过程中,BaP又有抑制作用,大量体内和体外的实验证实了包括BaP在内的很多化学物和金属离子对EROD的抑制.另外, 有实验指出,实验温度、生物转化方面的个体差异、性别的不同和激素的作用以及诱导时间的长短都会对EROD的活性产生影响.在本实验中,BaP暴露处理后,鱼肝EROD活性没有显著性变化,可能和上述几种因素有关,需要进一步的实验加以证实.
+　　GST活性被诱导反映了污染物的存在.当污染物存在时,GST的诱导可促进GSH与污染物结合,从而有利于生物体解毒.检测这种诱导作用并用作指标来反映化学物暴露对生物的影响是分子生态毒理学研究的一个重要方面.本实验中GST活性的升高反映了BaP的诱导作用.
+2.2.3 DNA加合物的存在,会影响到DNA链的稳定性,在DNA复制过程中影响碱基的正常配对,如果被修饰的碱基出现在原癌基因或抑癌基因的序列中,将直接引起肿瘤的发生.研究表明,许多污染物引起的致癌作用是污染物在体内代谢活化后与遗传物质 DNA共价连接,形成DNA加合物,若这些DNA加合物逃脱了生物体内的修复,则将导致遗传信息的改变而诱发变异.因此,DNA加合物在化学致癌起始过程中有重要作用,其水平与致癌能力相关,任何可与DNA形成加合物的污染物,即使在很低水平,都应该认为有致癌与致突变的可能性.所以,对DNA加合物的检测成为评价污染物致癌性的重要手段.DNA加合物相对标记水平标志着DNA碱基被修饰的程度,本实验中DNA加合物相对标记水平的增大,说明了BaP对金丝 DNA的损害,与其它关于BaP与各种生物形成加合物的研究是一致的[9-11].
+3 结论
+　　金丝 在用BaP短期暴露处理后,肝脏ATPase活性降低,GST活性升高,DNA加合物相对标记水平(RAL)也增大.说明苯并芘致毒对鱼体正常生命活动产生了重大影响,并具有潜在的致癌性.
+基金项目：国家自然科学基金资助项目(39870157)
+作者简介：陈加平(1973-),男,湖北仙桃人,中国科学院水生生物研究所硕士生,主要从事生态毒理学研究.曾参加香港研究基金会资助项目的工作.主要参加了国家自然科学基金“微囊藻毒素对水环境的影响及对鱼致毒机理的研究”,“用鱼体蛋白磷酸酶作为指标进行促肿瘤物筛选与检测的探讨”,“用分子生态毒理学指标评价化学物的潜在致癌性的研究”的工作.发表论文5篇.
+作者单位：陈加平　徐立红　吴振斌　张甬元　中国科学院水生生物研究所,湖北 武汉430072
+　　　　　林群声　香港城市大学生物及化学系, 香港
+参考文献：
+　[1]徐立红,张甬元,陈宜瑜.分子生态毒理学研究进展及其在水环境保护中的意义 [J].水生生物学报,1995,19(2):171- 185.
+　[2]McCarthy J F,Gadrdner H,Wolfe M J,et al.DNA alternation and enzyme activities in Japanese medaka(Oryzias latipes) exposed to diethylnitrosamine [J].Neurosci. Biobehav. Rev.,1991,15:99- 102.
+　[3]DiGiulio R T,Habig C,Gallagher E.Effects of black rock harbor sediments on indices of biotransformation,oxidative stress,and DNA integrity in channel catfish [J].Aquatic Toxicology, 1993, 26:1- 22.
+　[4]Vigano L, Arillo A, Melodia F, et al.Biomarker responses in cyprinids of the middle stretch of the river Po,Italy [J]. Environmental Toxicology and Chemistry,1998,17(3):404- 411.
+　[5]Pesonen M,Andersson T B,Sorri V,et al.Biochemical and ultrastructural changes in the liver of Baltic salmon sac fry suffering from high mortality(M74) [J].Environmental Toxicology and Chemistry, 1999,18(5):1007- 1013.
+　[6]Paxton R,Limmiager B L. Altered activities of branchial and renal Na/K- and Mg-ATPase in cold-acclimated goldfish (Carassius auratus)[J].Comp.Biochem.Physiol.,1983,74B(3):503- 506.
+　[7]Chen Jr P S, Toribara T Y,Warner H. Microdetermination of phosphorus [J]. Analy. Chem., 1956, 28:1756- 1758.
+　[8]姜 泊,张亚历,周殿元.分子生物学常用实验方法 [M].北京:人民军医出版社,1996.65- 70.
+　[9]Talaska G, Jaeger M, Reilman R, et al. Chronic,topical exposure to benzo[a]pyrene induces relatively high steady-state levels of DNA adducts in target tissues and alters kinetics of adduct loss [J].Proc. Natl. Acad. Sci. USA, 1996, 93:7789- 7793.
+　[10]Willett K, Steinberg M, Thomsen J, et al. Exposure of killifish to benzo[a]pyrene: comparative metabolism,DNA adduct formation and aryl hydrocarbon(Ah) receptor agonist activities [J]. Comp. Biochem. Physiol., 1995, 112B(1): 93- 103.
+　[11]Venier P,Canova S.Formation of DNA adducts in the gill tissue of Mytilus galloprovincialis treated with benzo[a]pyrene [J]. Aquat.Toxicol., 1996, 34:119- 133.
+收稿日期：1999-03-16

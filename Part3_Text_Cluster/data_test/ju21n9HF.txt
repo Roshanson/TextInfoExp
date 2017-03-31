@@ -1,0 +1,130 @@
+导弹与航天运载技术
+MISSILES AND SPACE VEHICLES
+1999年 第6期 No.6 1999
+
+
+
+美国弹道导弹地面生存能力评估模型研究(2)
+王基祥　常澜
+　　摘要　概述了美国弹道导弹武器系统地面生存能力评估方法，研究了不同基地方式(包括地下井、超加固地下井、密集加固地下井、地面机动基地、铁路基地等）弹道导弹生存能力评估模型及计算结果，论述了弹道导弹生存能力评估模型和原始参数中的众多不确定因素及其重大影响，最后从中归纳出几点结论和建议。
+　　主题词　生存能力，模型，弹道导弹，机动导弹,导弹基地。
+Research on Models for Ground Survivability Assessment of U.S. Ballistic Missiles
+Wang Jixiang　　Chang Lan
+(Beijing Institute of Astronautical System Engineering,Beijing,100076)
+　　Abstract　Assessment methods for ground survivability of U.S. ballistic missiles are summarized. Assessment models and computation results for ballistic missile survivability in various basing modes (including silo, superhard silo, dense pack harden silo, land mobile base, rail mobile base, etc.) are researched. Many uncertainties and their important effects in assessment models and original parameters of ballistic missile survivability are reviewed, and then some conclusions and recommendations are drawn from the above analyses.
+　　Key Words　Survivability, Model, Ballistic missile, Mobile missile, Missile base.
+3　常规攻击下生存能力评估模型
+　　 鉴于常规武器攻击手段的多样化，包括常规弹头弹道导弹、空-地导弹、制导炸弹、巡航导弹、特种部队等，弹道导弹在常规武器攻击下的生存能力评估，就更需针对每一种具体威胁情况和攻防交战模式来进行。美国军用标准［12］规定：生存能力评估需利用下列分析结果进行：
+　　a）任务-威胁分析结果，包括导出的对抗条件；
+　　b）易损性分析结果，包括损伤模式与后果分析，求出被探测、命中、杀伤的概率。
+　　此军用标准还规定承包商在设计、研制和生产期间所用的生存能力评估方法，必须是标准文件规定的方法或经订货方批准的推荐替代方法。
+　　弹道导弹在常规武器攻击下的生存能力，一般仍以生存概率来表示。但定义略有不同，包括了避免遭受攻击和经受住攻击两方面的内容。美国空军生存能力计划管理条例AFR80-38中把生存能力定义为：系统避免和经受人工敌对环境且不中途损失完成规定任务效能的能力［13］。
+　　美国潘兴Ⅱ导弹于1977年开始实施“潘兴生存能力计划”，在德国进行了广泛的野战试验演习，取得了近实战条件下的潘兴生存能力数据。美国陆军认为，潘兴Ⅱ射前生存概率主要取决于受攻击概率和被毁伤概率，前者又取决于被探测概率、被瞄准概率和敌方武器的抵达概率；后者则取决于潘兴Ⅱ武器系统易损性、可维修性和可再补给性（见图6）。几乎每一个影响因素都与时间有关［14］。
+
+图6　潘兴Ⅱ射前生存能力影响因素
+　　根据图6，可以列出机动弹道导弹武器系统在常规武器攻击下生存概率的简略公式：
+
+(18）
+式中　PS――生存概率；
+　　　Pd――被探测概率；
+　　　Pt――被瞄准概率；
+　　　PA――抵达概率；
+　　　PK――毁伤概率；
+　　　Pmf――机动失效概率，对于固定基地来说，Pmf=1；
+　　　Km――系统可维修性系数；
+　　　KS――系统再补给系数；
+　　　KW――气候环境系数。
+4　不确定因素的影响
+　　在弹道导弹生存能力评估模型用的绝大多数假设条件和原始参数数据中，都存在着固有的不确定因素。这些不确定因素可粗略分为三大类24项［15］：
+　　a） 受攻击方战略不确定因素：
+　　接警报疏散；
+　　接警报发射；
+　　攻击下发射；
+　　攻击后发射；
+　　事先授权发射；
+　　用对抗军事力量作出响应；
+　　用对抗面目标力量作出响应。
+　　b） 攻击方武器系统不确定因素：
+　　作战命中精度与试验命中精度之间的关系；
+　　弹头威力；
+　　弹头爆高/触发引信高度；
+　　可靠性；
+　　发射速率；
+　　兵力的可利用率；
+　　指挥、控制、通信的有效性；
+　　辅助系统有效性。
+　　c） 受攻击目标的不确定因素：
+　　抗核冲击波和核辐射的加固程度；
+　　目标位置数据的精确程度；
+　　国家指挥当局的易损性；
+　　C3I系统的易损性；
+　　当地地质条件和冲击波效应；
+　　当地气候条件；
+　　互毁效应；
+　　持续作战能力；
+　　快速反应能力。
+　　美国兰德研究生院的布鲁斯W.本耐特在1979年对ICBM生存能力评估中的不确定因素进行了系统研究。对它们分别进行了参数化处理，评估了潜在的重要影响，得出结论：ICBM生存能力方面的不确定因素，对现有的和未来的基地方式的影响都非常大。常用的评估方法都是简化的计算方法，忽略了众多不确定因素的影响。因此，美国前国防部长布朗曾说过，“考虑到这些不确定技术因素和战略因素，可得出近乎似是而非的结论：80年代初，我们对于有多少地下井基导弹能经受住苏联的先发攻击没有多少信心，但苏联人对摧毁我们的大部分导弹也没有多大把握。”［5］
+　　为确定这些不确定因素的影响，必须先把这些因素参数化。以评估ICBM生存概率Ps为例，它可分为4个分量：SSPK――单发毁伤概率；PK――多发毁伤概率；PA――弹头抵达目标概率；F――弹头经受住互毁生存下来并成功引爆的概率。在分析这4个分量时，还需计入与它们有关的许多重要因素。SSPK实际上是以下8个参数的函数：威力、爆高、武器毁伤半径、目标易损性或加固度、超压脉冲持续周期、毁伤σ、CEP和系统偏差，而绝大部分分析只考虑目标加固度、弹头威力和命中精度CEP。结果，通常的分析就遗漏了许多同ICBM真实生存能力有关的许多重要因素。其中有些不确定因素的函数关系十分复杂，难以参数化或者无法求得参数的真实不确定性分布。因此，在许多情况下，所用的评估方法和参数值都是近似的。
+　　SSPK诸参数的不确定性级别大小见表9。表中“易损性VN”是经过对数变换的目标抗超压强度，“因数K”是目标对冲击波超压持续周期的敏感度，“毁伤σ”是毁伤均方根差［5,4］。
+表9　单发毁伤概率的不确定性［5］
+
+参 数不确定性级别＊
+前苏联低值美国低值前苏联高值美国高值
+易损性VN1.00.52.01.0
+因数K0.50.251.00.5
+毁伤σ0.050.050.10.1
+当量5%10%10%20%
+爆高＊＊5%5%--
+毁伤半径5%5%10%10%
+圆公算偏差CEP50次试验25次试验20次试验10次试验
+系统偏差50次试验25次试验100.x24100.x24
+学生t自由度9944
+
+＊表中前6个参数的标准偏差是根据表中最下方的学生t自由度分布算出的；
+＊＊高不确定性迫使前苏联采用地面爆炸。
+　　从表9看出：有关易损性的参数VN和K，由于前苏联对美国地下井特性的了解更不确切，所以前苏联对此参数的不确定性约为美国相应值的两倍。关于弹头当量和毁伤半径，则恰好相反，美国对此参数的不确定性约为前苏联相应值的两倍。关于命中精度参数，由于美国不可能精确监测前苏联的每一次导弹飞行试验，所以在估计CEP和系统偏差的不确定性时，假设的试验次数为前苏联相应值的一半。
+　　多发毁伤概率PK通常只是由SSPK简单地综合而成。严格的正确计算必须计入目标加固度偏差和早先弹头在软化目标方面的影响。不幸，这些影响无法参数化，只能选用简单合成毁伤概率的方法。
+　　弹头抵达概率PA包括射前生存能力、可靠性和突防能力。根据前苏联对未设防的美国地下井实施先发打击的假设，抵达概率简化为只包括可靠性。可靠性中的不确定性是由于试射次数有限使弹头可靠性数据不足引起的。
+　　互毁生存概率F是一个议论多但参数化少的参数。对互毁效应的实际了解，目前还太少。
+　　影响生存能力的不确定因素可分为3种：随机变量、平均值的不确定性、未知参数及数理模型。随机变量围绕某一可预测的参数平均值而波动。平均值的不确定性源于试验次数少、测量不精确、缺少精确情报数据等。对未知参数和数理模型，由于无法进行试验，只能通过理论研究和仿真试验进行粗略估计。
+　　美国空军系统司令部空军武器实验室的费利克斯.S沃昂在1986年对地下结构生存能力和易损性评估中的不确定性进行建模和分析，指出有两大类不确定因素：随机的和非随机的。随机不确定因素的特点是充分确定的事件和子样区间，在同样条件下重复经历和有大量的子样统计。非随机不确定因素的子样区间不太明确，只有少量子样供评定用，子样平均值和偏差没有实际意义。大部分生存能力评估模型中的不确定因素都是非随机的。他建议在生存能力评估中，利用随机方法改进随机不确定性模型，并引入非随机不定因素来扩展现有方法；利用模糊集法作为非随机不确定因素的建模方法，并同随机不确定性模型相结合，形成更完善的评估方法［16］。
+　　90年代初模糊集理论在生存能力和易损性评估中得到进一步推广应用。1993年空军技术学院的理查德W.弗莱明把模糊逻辑方法应用到计算机保密易损性评估分析中［17］。同年，艾瓦斯.塞尔明斯把模糊集理论应用于核生存能力成本分析，用Fortran 77编制了主程序Scap，建立了数据库。用16个核环境参数作为输入，在计算机上运行处理了大量信息，对抗核加固的效费比进行了分析［18］。
+5　结论和建议
+　　a） 利用合理的假设和简化的数学模型对生存能力进行初步评估。
+　　由于影响因素众多，其中又有不少不确定因素，所以只能在合理的假设条件下，利用简化的数学模型，对弹道导弹生存能力进行初步评估。然后再利用试验和仿真结果，对模型进行验证和修正。在预计的合理参数范围内，计算出弹道导弹的生存能力区间。此区间可以部分补偿不确定因素的影响。
+　　b） 需做好建立生存能力评估模型的相关工作。
+　　建立弹道导弹生存能力评估模型的相关工作有威胁分析、明确确定系统任务、交战模式、环境及影响、关键功能/设备的易损性、建立生存能力数据库和生存能力评估模型数据库等。应尽可能收集到在接近实战条件下的数据，充分利用现有试验数据和分析资料。
+　　生存能力评估模型用的假设条件和公式应尽量编入计算机程序，从而可以方便地进行仿真分析。美国空军大学在文献［9］中介绍的模型程序和步骤值得借鉴。
+　　c） 核生存能力评估主要依据冲击波超压作为毁伤机理来进行。
+　　核生存能力评估用的几种模型绝大多数都是根据核爆炸冲击波超压为主要毁伤机理建立的，仅超加固地下井生存能力评估模型是根据弹坑半径作为主要毁伤参数建立的。美国根据试验数据确定了评估不同基地方式弹道导弹生存能力用的超压毁伤标准（见表1），把抗核加固度列为弹道导弹核生存能力计划中的主要指标，并已专门编制了美国军用标准MIL-STD-1766B“洲际弹道导弹武器系统核加固度和生存能力计划要求”［21］。
+　　d） 常规生存能力评估需针对具体威胁和作战模式进行。
+　　弹道导弹在常规武器攻击下的生存能力评估，应根据任务-威胁分析结果、攻防对抗模式、易损性分析结果等来进行。其生存概率主要取决于被探测概率、被瞄准概率、进攻武器的抵达概率和毁伤概率。系统快速机动、快速反应、可维修性和再补给能力也有显著影响。
+　　e） 深入研究不确定因素对生存能力的重要影响。
+　　不确定因素对弹道导弹生存能力评估结果的影响是非常大的，使得处于大体均势的攻防双方对毁伤概率和生存概率都没有信心。为计入不确定因素的影响，必须先将不确定因素参数化，然后用随机方法对随机不确定因素建模，用模糊集法对非随机不确定因素建模，两者再同简化评估模型相结合，才能组成更完善的评估模型。由于大部分不确定因素为非随机不确定因素，所以需要加强研究和大力推广模糊集方法在易损性/生存能力评估中的应用。
+　　f） 建造一个使敌方付出极大攻击代价的系统。
+　　由于不确定因素的影响，无法确定具体的准确的生存概率指标。美国空军对侏儒机动弹道导弹的作战要求是：具有足够的生存能力，能抗御现有威胁和计划中的威胁。此项要求对足够的生存能力并不明确定义。据美国国防部称，由于不清楚敌方可能用多少武器攻击500枚侏儒/HML，因而无法确定其生存能力等级。但肯定要建造一个使敌方付出极大攻击代价的系统，此代价使攻方感到无利可图和承受不起，从而遏制其发动进攻［22］。
+作者单位：(北京宇航系统工程设计部，北京，100076)
+参考文献
+　1　Douglas Donald M. Introduction to the operational nuclear survivability assessment process. AD A 210 072,1988-04.
+　2　Wallick Jerry. Aircraft design for S/V. In: Proceedings of a workshop in survivability and computer-aided design, sponsored by joint technical coordinating group on aircraft survivability. AD A 113 556, 1981-04-6～9:438～476
+　3　Vice J M. Survivability/vulnerability information analysis center (SURVIAC)-a tool for the aircraft survivability community. AIAA 86－2691.
+　4　秦志高等. 陆基战略弹道导弹生存能力. 宇航出版社, 1987-12.
+　5　Bennett Bruce Wm. Uncertainty in ICBM survivability. 1979-10.
+　6　Levi et al. The future of land-based strategic missiles. 1989.
+　7　Joe Romm, Kosta Tsipis. Analysis of dense pack vulnerabilities. MIT，1982-11.
+　8　Glasstone Samuel, Dolan Philip. The effects of nuclear weapons, 1977.
+　9　Gearhart David J, Merrow Scott F. Survivability of the hardened mobile launcher when attacked by a hypothetical rapidly retargetable ICBM system. ADA172 453, 1986-03.
+　10　Report of the defense science board task force on SICBM modernization. ADA 173 675, 1986-03.
+　11　MX garrison program executive summary. AD A 206 086.
+　12　Survivability, aircraft, establishment and conduct of programs for. MIL-STD-　2072 1977-08.
+　13　Air Force survivability program management. AFR 80-38.
+　14　Lund Fredrick H. 潘兴Ⅱ导弹系统的发展. AIAA 84-1966.
+　15　Schneider Barry R et al. Missiles for nineties ICBMs and strategic policy. 1984.
+　16　Wong Felix S. Modeling and analysis of uncertainties in survivability and vulnerability assessment. ADA 167 630, 1986-03.
+　17　Fleming Richard W. Vulnerability assessment using a fuzzy logic based method. ADA 274 075, 1993-12.
+　18　Celmins Aivars. Nuclear-survivability cost analysis using fuzzy-set theory. AD A 273 951, 1993-11.
+　19　陆基导弹机动发射技术及地面生存能力文集. 中国运载火箭技术研究院19所，1996-06.
+　20　王基祥，常澜. 国外机动弹道导弹地面生存能力研究. 1996-12.
+　21　Nuclear hardness and survivability program requirements for ICBM weapon systems. MIL-STD-1766B(USAF), 1994-09.
+　22　GAO Report to Congress, ICBM modernization. AD A 173 154, 1986-09.
+收稿日期：1999-01-06

@@ -1,0 +1,78 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第1期 Vol.19 No.1 1999
+
+
+
+A.eutrophus 利用有机废水生产聚羟基烷酸
+金大勇　陈 坚　伦世仪
+摘要：对真养产碱杆菌(A.eutrophus)利用有机废水生产聚羟基烷酸(PHA)的机理进行了探讨.比较了以4种有机酸为碳源生产PHA的情况,并研究了水力停留时间(HRT)和进水碱度两种操作条件对合成废水生产PHA的影响.结果表明,A.eutrophus以丁酸为最佳碳源,PHA浓度达10.2 g/L;进水碱度对合成废水生产PHA的影响比HRT更大.HRT 5 h,进水碱度 8000 mg/L时得到的PHA浓度为1.92 g/L.
+关键词：有机废水；聚羟基烷酸；水力停留时间；碱度
+中图分类号：X703 文献标识码：A 文章编号：1000- 6923(1999)01- 0038- 04
+Production of poly(hydroxyalkanoate)from organic wastewater with A.eutrophus.
+JIN Da-yong,CHEN Jian,LUN Shi-yi (School Biotechnology,Wuxi University Light industry,Wuxi 214036, China).China Environmental Science. 1999,19(1)：38～41
+Abstract：The production of poly(hydroxyalkanoate)(PHA) from organic wastewater by Alcaligenes eutrophus was theoretically analyzed, and the production of PHA from four major acids was compared. The influences of hydraulic retention time(HRT) and influent alkalinity on production of PHA from synthetic wastewater were studied. The results indicated that the optimal acid was butyric acid with the concentration of PHA 10.2 g/L;the influence of influent alkalinity was greater than HRT;and 1.92 g/L PHA was obtained at HRT of 5 h, and alkalinity of 8000 mg/L.
+Key words：organic wastewater；poly(hydroxyalkanoate)；hydraulic retention time；alkalinity
+　　聚羟基烷酸(PHA)是许多微生物在碳源充足而氮源、氧气或磷源缺乏的条件下产生的储藏于细胞内的能量物质,它不但具有与聚丙烯相似的性质,而且具有生物可降解性、光学活性和生物可相容性等特点,可作为塑料的替代物,因此引起人们越来越大的兴趣.但PHA的生产成本阻碍了它的广泛使用,降低其生产成本的一个主要方面是寻求廉价的原料.
+　　有机废水厌氧消化经历酸化(产酸)和甲烷化(产甲烷)两阶段[1].有机废水的厌氧酸化产生挥发性有机酸(VOA)、乳酸及其它可溶性有机物,而已有报道真养产碱杆菌(A.eutrophus)能利用VOA和乳酸生长并积累PHA[2,3].因此,如果在厌氧条件下,将有机废水中的可降解大分子物质转变为VOA和乳酸,A.eutrophus再进一步利用它们合成PHA,不仅可以极大地降低PHA的生产成本,开拓有机废水资源化技术,而且具有减少有机废水、塑料废物污染的双重意义.至今,关于这方面的研究国内尚无报道,国外的研究也很少.
+　　本文报道了有机废水两阶段生产PHA耦合系统的初步研究.
+1 材料与方法
+1.1 废水厌氧酸化
+　　上流式厌氧污泥床(UASB)酸化反应器合成废水浓缩液:葡萄糖500 g,NHCl 10g,CaCl2 1 g,KH2PO4 10 g,MgSO42g自来水2000 mL,用时稀释,并根据需要加NaHCO3调节碱度(以CaCO3计,mg/L).接种污泥取自无锡第二制药厂废水处理车间的大型单相UASB反应器.厌氧酸化反应器操作温度为35℃.
+1.2 发酵生产PHA
+　　菌种:真养产碱杆菌(A. eutrophus) WSH3(本研究室保藏号).种子培养基(1/L):酵母膏10g, 蛋白胨10g,牛肉膏5g,(NH4)2SO4 5g,pH 值7.0.无机元素液(1/L):Na2HPO4× 7H2O 8.9g, KH2PO4 1.5g, MgSO4× 7H2O 0.2g,柠檬酸铁铵60mg,CaCl2× 2H2O 20mg,及1mL微量元素液(内含1/L H3BO3 0.3g,CoCl2× 6H2O0.2g,ZnSO4× 7H2O0.1g,MnCl2× 4H2O30mg,NaMoO4× 2H2O30mg,NiCl2× 6H2O20mg,CuSO4× 5H2O 10mg).单一酸发酵培养基:无机元素液中添加0.2%(NH4)2SO4为氮源,单一酸为碳源.酸化废水发酵培养基:酸化废水3000 r/min离心10min,取上清液,调节pH值为7.0.培养方法: 接两环生长良好的菌体至装有80 mL种子培养基的500 mL三角瓶中,摇瓶转速200 r/min,30℃预培养24h,按10%的接种量接入发酵培养基中.单一酸发酵过程中进行碳源的补加;酸化废水分批发酵,中间不补料.
+1.3 分析方法
+　　葡萄糖测定:3,5-二硝基水杨酸法;菌体细胞浓度测定:发酵液5mL,5000 r/min离心10 min,水洗两次,80℃烘干称重;PHA测定:气相色谱法[4].
+2 结果与讨论
+2.1 有机废水生产PHA的机理分析
+2.1.1 废水中大分子物质在厌氧微生物作用下转化为小分子有机酸 酸化UASB反应器中水解和/或发酵细菌,将复杂的含碳大分子有机物首先水解为简单的小分子单糖、氨基酸、脂肪酸和甘油,然后再进一步发酵为各种有机酸.厌氧微生物己糖降解最重要的代谢途径是EMP和HMP途径,丙酮酸为其限制步骤,然后形成挥发性有机酸、乳酸[5]等.控制不同酸化条件,可以使不同的有机酸成为主要酸化产物.代谢方程分别为∶
+C6H12O6+4H2O → 2CH3COO-+2HCO3-+4H++4H2
+C6H12O6+2H2 → 2CH3CH2COO-+2H2O+2H+
+C6H12O6+2H2O → CH3CH2CH2COO-+2HCO3- +3H+ +2H2
+C6H12O6 → 2CH3CHOHCOO- +2H+
+2.1.2 合成PHA代谢途径 A.eutrophus利用小分子有机酸合成的PHA主要为聚羟基丁酸(PHB)、羟基丁酸和羟基戊酸的共聚物(PHBV)2种,A.eutrophus以丙酸[6]为碳源时合成PHBV,以乙酸[6]、乳酸[3]、丁酸[7]为碳源时,合成PHB,乳酸为碳源时的代谢途径未见报道,作者认为乳酸脱羧后经乙酰CoA合成PHB.合成途径如下∶
+
+
+
+
+　　根据代谢途径和辅酶的再生,可以计算出乙酸、乳酸和丁酸为碳源生产PHB的理论产率分别为0.48(gPHB)/(g乙酸)、0.477(gPHB)/(g乳酸),0.65(gPHB)/(g丁酸);由于PHBV中羟基戊酸的比例不同(HV组分占0%～50%),丙酸为碳源生产PHBV的理论产率在0.58～0.628(gPHBV)/(g丙酸)之间.因此,以酸化废水的几种主要产物为前体发酵生产PHA,丁酸具有最大的理论产率.
+2.2 酸化废水生产PHA
+2.2.1 不同有机酸为碳源生产PHA 由于UASB酸化反应器的操作条件不同,乙酸、丙酸、乳酸和丁酸都有可能成为主要酸化产物.因而,本研究首先对不同有机酸为碳源生产PHA的细胞干重、PHA浓度、干细胞中PHA的百分含量进行了比较(见表1).
+表 1 不同有机酸为碳源生产PHA的比较
+Table 1 Utilization of different acids by A.eutrophus
+项目细胞干重(g/L)PHA浓度(g/L)胞内PHA含量(%)
+乙酸6.52.132.3
+丙酸8.94.348.3
+乳酸9.75.253.6
+丁酸14.810.268.9
+
+注∶分批补料发酵,初始酸浓度为0.5%,分别在19,25,32,43,50h加入 0.5%的酸
+　　从表1可以看出, A.eutrophus以4种酸为碳源生长和积累PHA的情况相差很大,丁酸为碳源时, A.eutrophus积累的PHA浓度达10.2 g/L,远远超过其它3种酸.因此,应在有机废水厌氧酸化阶段控制操作条件,使丁酸为主要酸化产物.
+2.2.2 酸化废水生产PHA 产酸相的产物是生产PHA的基质,因而确定一个工艺条件,使产酸相在较佳基质转化速率下,达到稳定的较佳酸化产物分布,则对A.eutrophus的生长和PHA的积累非常有利.
+　　许多研究结果表明,在一定温度下,水力停留时间(HRT)和碱度对酸化产物分布的影响最普遍.作者在以1.5%葡萄糖合成废水进水,酸化率100%的条件下,酸化阶段采用不同的HRT和不同的进水碱度,对合成废水发酵生产PHA进行了初步的研究,结果如图1,图2所示.
+
+图1 酸化HRT对发酵阶段PHA浓度的影响
+Fig. 1 The influence of HRT on production of PHA
+
+图2 进水碱度对发酵阶段PHA浓度的影响
+Fig. 2 The influence of influent alkalinity
+on production of PHA
+　　从图1,图2中可以看出,当废水进水碱度为6500 mg/L时,有机废水厌氧酸化阶段最佳HRT为5 h,此后增加HRT,由于酸化产物中有机酸组成的变化,导致酸化废水生产PHA阶段中PHA的浓度略有下降;碱度的变化对酸化废水中有机酸组成的影响更大,而A.eutrophus利用不同有机酸生长和积累PHA的能力不同,从而以酸化废水为培养基发酵时,PHA浓度的变化较大.在HRT5h, 碱度8000mg/L时,A.eutrophus利用合成废水厌氧酸化产物发酵生产的PHA浓度最大,为1.92 g/L.S. Lee,J.Yu[8]以市政污泥生产的PHA浓度为0.61g/L.
+3 结论
+3.1 以有机废水为原料可以生产生物可降解塑料,它为降低PHA生产成本,减少有机废水和塑料废物对地球环境的污染,提供了一条新思路.
+3.2 对代谢途径的分析显示,A.eutrophus以4种有机酸组成的变化,导致酸化废水生产PHA阶段中PHA的浓度略有下降;碱度的变化对酸化废水中有机酸组成的影响更大,而利用A.eutrophus有机酸为碳源生产PHA时,丁酸具有最大的理论转化率.
+3.3 A.eutrophus以丁酸为最佳生长和积累 P-HA 的碳源,其最大PHA产量为10.2g/L.
+3.4 合成废水生产PHA时,应控制厌氧酸化条件,使酸化产物具有最佳有机酸分布,才能获得最大PHA产量.本研究控制HRT为5 h,进水碱度8000 mg/L,获得PHA 1.92g/L.
+基金项目：国家自然科学基金资助项目(29677011),国家教委优秀青年教师基金资助项目
+作者简介:金大勇(1973-),男,江苏姜堰人,无锡轻工大学生物工程学院研究生,主要从事环境生物技术的研究.参加国家自然科学基金资助项目“有机废水处理与生物可降解塑料生产耦合系统的研究”的研究,发表论文4篇.
+作者单位：(无锡轻工大学生物工程学院环境生物技术研究室,江苏 无锡 214036)
+参考文献：
+　[1]　Ghosh S.Improved sludge gasification by two-phase anaerobic digestion [J]. J.Environ. Eng., 1987, 113:1265- 1284.
+　[2]　Akiyama M,Taima Y,Doi Y.Production of poly(3-hydroxyal -kanoates) by a bacterium of the genus Alkaligenes utilizing long-chain fatty acids [J]. Appl. Microbiol. Biotechnol., 1992, 37: 698- 701.
+　[3]　Linko S, Vaheri H,Sepp? l? J. Production of poly-β-hydro xy- butyrate on lactic acid by Alkaligenes eutrophus H16 in a 3-L bioreactor [J].Enzyme microbiol.Technol., 1993, 15: 401- 406.
+　[4]　堵国成.A.eutrophus生物合成聚-β-羟基烷酸(PHAs)的研究[D].无锡:无锡轻工大学, 1997.
+　[5]　Pipyn P, Verstraete W. Lactate and ethanol as intermediates in two-phase anaerobic digestion [J]. Biotech. Bioeng. 1981, 23: 1145- 1154.
+　[6]　Doi Y, Knioka M, Nakamura Y, et al. Biosyntheis of copolyester in Alcaligenes eutrophus H16 from 13C-labled acetate and propionate [J]. Macromol. 1087, 20: 2988- 2991.
+　[7]　Yamane T.Yield of poly-D(-)-3-hydroxybutyrate from various carbon source: a theoretical study [J]. Biotech. Bioeng. 1993, 41:165- 1170.
+　[8]　Samuel L,Jian Y.Production of biodegradable thermoplastics from municipal sludge by a two-stage bioprocess [J]. Resourc-es. Conservation and Recycling 1997,19:151- 164.
+收稿日期：1998-04-03

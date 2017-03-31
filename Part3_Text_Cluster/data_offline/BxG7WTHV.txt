@@ -1,0 +1,76 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第4期 No.4 Vol.18 1998
+科技期刊
+
+二元金属体系对水中多氯有机物的催化还原脱氯特性*
+全　燮　刘会娟　杨凤林　薛大明　赵雅芝　(大连理工大学环境科学与工程系,大连 116012)
+文　摘　采用二元金属作为还原和催化剂, 对水中三氯甲烷、四氯化碳和三氯乙烯的还原特性进行了实验研究。结果表明，Fe/Pd和Fe/Ni体系对所有3种有机物具有良好的催化脱氯特性, 30min内脱氯率大于85%。对三氯甲烷, 仅用零价铁即可达到近80%的脱氯效率。水中的铁浓度和pH值在反应初期随反应时间而增高, 反应后期却降低,文中对此原因作了理论分析。
+关键词　零价金属　脱氯反应　水处理
+Dechlorination of three polychlorinated hydrocarbons in water using bimetallic systems.Quan Xie,Liu Huijuan,Yang Fenglin,Xue Daming,Zhao Yazhi(Department of Environmental Science and Technology,Dalian University of Technology,Dalian 116012).China Environmental Science.1998,18(4):333～336
+Abstract―Dechlorination of trichloromethane, phenixin, and trichloroethethylene in water was studied by using bimetallic catalytic reduction. Fe/Pd and Fe/Ni systems prove to be very effective for dechlorination of these three polycholrinated hydrocarbons with the dechlorination efficiencies above 85%. In the case of trichloromethane, zero-valent iron alone had efficient dechlorination capability. Fe2+ concentration and pH value of the solution increased with reaction time in the first stage, and then reduced. The dechlorination mechanism is also discussed in the paper.
+Key words:zero-valent metals　dechlorination reaction　water treatment
+　　三氯甲烷、四氯化碳、三氯乙烯等多氯有机物是环境水体和饮用水中常见的污染物。由于这类污染物毒性大, 化学性质稳定, 一旦进入环境水体将对人类及其生态环境造成长期威胁。因此, 有必要对这类污染物污染的环境体系进行“修复”。近年来发展起来的零价铁还原脱氯技术〔1～3〕为水中多氯有机物的处理提供了一种新的途径, 即采用化学还原法脱除多氯有机物中的氯元素, 使其变成氯离子, 多氯有机物变成母体烃类, 以达到无毒或低毒的目的。
+　　本项研究目的在于考察几种二元金属体系对水中多氯有机物的催化还原脱氯特性, 并探讨脱氯反应对水质的影响。
+1　实验材料与方法
+1.1　实验材料
+　　多氯有机物: 三氯甲烷、四氯化碳、三氯乙烯； 还原剂: 还原铁粉 、锌粉； 催化剂制备试剂: PdCl2、CuSO4*5H2O、NiSO4*7H2O。以上试剂均为分析纯。
+1.2　实验方法
+1.2.1　还原铁粉、锌粉的预处理　称取一定量铁粉或锌粉置于锥形瓶中, 用0.1mol/L的硫酸清洗, 以除去表面杂质及氧化层, 再用去离子水洗至中性。
+1.2.2　二元金属催化还原剂的制备　用所需金属的盐制成水溶液与铁粉或锌粉反应, 制成具有这些金属镀层的铁或锌的二元金属催化还原剂, 分别用稀NaOH(0.1mol/L)溶液和去离子水洗至无氯离子检出为止。
+1.2.3　脱氯反应　将催化还原剂放入锥形瓶中, 加入含三氯甲烷、四氯化碳或三氯乙烯的水溶液, 用包有聚四氟乙烯膜的橡胶塞塞紧, 把锥形瓶放在25℃恒温摇床内以定速摇动, 定期测定瓶内的氯离子和多氯有机物。
+1.2.4　分析方法　氯离子的测定采用硝酸汞滴定法; 多氯有机物的测定采用顶空气相色谱法, 用GC-ECD(日本岛津-17A)测定。脱氯率由实验测出的氯离子量与多氯有机物中氯元素的理论含量的比值计算得到。
+2　结果与讨论
+2.1　几种金属催化还原体系对多氯有机物的脱氯效率(图1)
+2.1.1　对三氯甲烷的脱氯效率　取100mg/L三氯甲烷溶液分别与Fe、Fe/Cu(含3%Cu)、Fe/Ni(含3%Ni)、Fe/Pd(含0.05%Pd)、Zn、Zn/Pd(含0.05%Pd)反应30min。从图1(a)可看出，Fe对三氯甲烷的脱氯率为88.5%, 而Zn仅50.4%, 说明铁对三氯甲烷的脱氯效率比锌高。而Cu、Ni、Pd等金属未能对三氯甲烷的还原脱氯起明显的催化作用。零价铁自身具有较好的催化和脱氯能力。
+2.1.2　对四氯化碳的脱氯效率　图1(b)显示出与图1(a)相同条件下100mg/L四氯化碳的脱氯率。铁对四氯化碳的脱氯率为90.6%, 而锌为55.6%。钯对四氯化碳的脱氯反应具有一定的促进作用, 脱氯率达97%, 而其它金属(Cu、Ni)并无明显的催化作用。
+2.1.3　对三氯乙烯的脱氯效率　图1(c)显示出与图1(a)相同条件下100mg/L三氯乙烯的脱氯率。可以看出 , 对三氯乙烯, Pd、Ni、Cu等催化剂的引入对脱氯效率有显著影响。Fe/Pd和Fe/Ni对三氯乙烯具有较好的快速脱氯性能, 使铁的脱氯效率从5.2%分别提高到98.0%(Fe/Pd)和96.1%(Fe/Ni)。对锌而言, 虽然钯催化并未达到对铁还原催化那样高的效率, 但其脱氯率比单纯用锌处理时有了明显的提高, 其脱氯率从7.3%提高到32.4%。
+
+图1　3种多氯有机物在不同催化还原剂时的脱氯效率比较
+Fig.1　Dechlorination efficiencies of three polychlorinated hydrocarbons
+using different metallic catalytic reduction
+　　综合上述3种情况可以看出, 某些多氯有机物(例如三氯甲烷)仅用零价铁即可达到较高的脱氯率, 而三氯乙烯必须使用催化剂才能达到理想的脱氯率。不同的催化剂也表现出不同的催化效率, 3种金属元素的催化能力依次为Pd>Ni>Cu。
+2.2　脱氯率随时间的变化
+　　选用脱氯效率较高的Fe/Pd和Fe/Ni体系, 考察了两者对三氯乙烯的脱氯效率随时间的变化, 其结果见图2。由图2可知, Fe/Pd和Fe/Ni对三氯乙烯的脱氯反应速率很迅速, 反应数分钟即可达到近80%的脱氯率 。由于反应迅速未能考察出反应初期的动力学过程。 
+
+图2　三氯乙烯的脱氯率随时间的变化 
+Fig.2　The relationship between dechlorination efficiency 
+of trichloromethane and reaction time 
+2.3　催化剂的量对脱氯率的影响
+　　为了选择较佳的还原剂/催化剂的配比, 采用不同的钯化比、镍化比进行了水中三氯乙烯的脱氯实验, 结果见图3(反应时间30min)。由图3可确定, 0.05%为较佳的钯化量, 3.0%为较佳的镍化量。
+
+图3　三氯乙烯的脱氯率随催化剂含量的变化
+Fig.3　The relationship between dechlorination efficiency 
+of trichloromethane and content of catalyst
+2.4　水相中铁溶量与pH值的变化
+　　零价铁与水中多氯有机物发生如下脱氯反应:
+　　Fe+RCl+H+=Fe2++RH+Cl-　　(1)
+　　据文献〔3〕报道, RCl/RH电对的氧化还原电极电势处于0.5～1.5V之间，又已知Fe2+/Fe电对的标准电极电势为-0.44V。因此, 反应(1)的发生是可能的，该反应可使水中的溶解态铁的浓度增高, pH值也升高。由于水中含有一定量的溶解氧, Fe2+逐渐被氧化成Fe(OH)3, 即发生反应(2):
+4Fe2++8OH-+O2+2H2O = 4Fe(OH)3↓　　(2)
+反应(2)会使水中可溶态铁浓度和pH值降低。因此, 可以预测, 在脱氯反应初期, 随着反应的进行, 溶解态铁浓度逐渐升高; pH值也升高; 反应进行到一定阶段, 溶解态铁浓度和pH值应达到极高值, 之后应有下降趋势，这个推测通过实验得到证实。图4表示出Fe还原三氯甲烷时, 实测的铁浓度与pH值的变化规律。
+2.5　钯和镍催化机理探讨
+　　曾尝试了多种催化剂, 其中钯和镍的催化效果最理想。钯和镍的共同特点是两者均为良好的加氢催化剂。从反应(1)可以看出, 多氯有机物的脱氯反应有氢的转移，虽然目前尚难断定氢的转移历程, 但是可以断定, 钯和镍在氢的转移过程中起了重要作用。其次, 钯和镍作为过渡金属均有空轨道, 能够与有机氯化物中氯元素的P电子对或有双键有机物的π电子形成过渡络合物(如Pd…Cl…R或Ni…Cl…R), 降低脱氯反应的活化能〔4〕。
+　　根据以上实验现象和对实验现象的理论分析推测出水中多氯有机物在二元金属表面上的催化脱氯反应的基本历程如下:
+　　(1) Fe和水反应生成H2, pH值升高。
+　Fe+2H+ = Fe2++H2　　　　(酸性溶液)
+　Fe+2H2O = H2+Fe2++2OH-　(碱性溶液)
+　　(2)产生的H2和多氯有机物在金属表面上吸附, 并形成过渡络合物。
+　　　　　M+RCl→M…Cl…R
+　　(3) H2攻击M…Cl…R, 发生加氢反应, 氯元素脱落, 形成Cl-, 该步过程可能由几个基元反应组成。
+　　(4) Cl-脱附离开催化剂表面进入溶液。
+　　(5) Fe2+被水中的溶解氧氧化 , 生成Fe(OH)3沉淀(见反应式(2)), 溶液的pH值降低。
+
+图4　溶解态铁浓度与pH值随反应时间的变化
+Fig.4　The relationship between Fe2+ concentration 
+or pH value and reaction time 
+3　结语
+　　二元金属体系对水中3种常见多氯有机物的还原脱氯具有快速、简便的特点。加氢催化剂对3种多氯有机物的还原脱氯具有良好的催化性能。多氯有机物的化学结构对脱氯效率也有显著影响，如三氯甲烷仅用零价铁即可达到较高的脱氯效果。这种处理方法适合于环境水体中多氯有机物污染修复以及饮用水中多氯有机物的去除。当用于环境水体中多氯有机物污染修复时, 产生的Fe2+可在短时间内自然净化去除; 而在饮用水处理时, 必须考虑匹配除铁措施, 使水中含铁量不超过0.3mg/L的饮用水水质标准。
+参考文献
+1　Matheson L J，Tratnyek P G. Reductive dehalogenation of chlorinated methanes by iron metal. Environ. Sci .Technol.，1994, 28: 2045～2053
+2　Grittini C, Malcomson M,Fernando Q, et al. Rapid dechlorination of polychlorinated biphenyls on the surface of a Pd/Fe bimetallic system. Environ. Sci. Technol.， 1995, 29:2898～2900
+3　Schlimm C，Heitz E. Development of a wastewater treatment process: reductive dehalogenation of chlorinated hydrocarbons by metals. Environmental Progress. 1996, 15(1):38～47
+4　全　燮, 杨凤林等. 钯-铁催化还原法对水中三氯乙烯的快速脱氯研究. 大连理工大学学报. 1997, 37(1):46～48、107
+作者简介
+全　燮　男，1960年6月生。现为大连理工大学环境科学与工程系教授、系副主任。主要从事环境化学教学和科研工作。近5年作为项目负责人主持了8项国家自然科学基金、省部委各类基金项目和市级攻关项目, 代表性研究项目有: 欧盟国际合作项目“经济发达地区水源中多氯有机物污染调查与污染修复技术”, 国家自然科学基金“逐级分离法研究近海沉积物上有机污染物吸附行为”等。获首届日本复建奖, 宝钢优秀教师奖, 曾被评为“辽宁省百名优秀青年科技工作者”。发表论文30余篇。
+收稿日期：1997-09-16
+* 辽宁省科委国际合作计划项目

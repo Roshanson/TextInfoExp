@@ -1,0 +1,90 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第5期 No.5 Vol.18 1998
+科技期刊
+
+人工复合生态系统对太湖局部水域水质的净化作用*
+王国祥　濮培民　张圣照　李万春　胡维平　胡春华
+(中国科学院南京地理与湖泊研究所，南京 210008)
+文　摘　根据不同生态类型水生高等植物的净化能力及其微生境特点，设计建造了由漂浮、浮叶、沉水植物及其根际微生物等组成的人工复合生态系统(artificial complex ecosystem；ACE)，并在太湖五里湖中桥湖湾内以动态模拟试验，从群落水平研究了多种水生植物镶嵌组合的人工复合生态系统对富营养化湖水的净化能力。结果表明，富营养化湖水经该系统净化后，藻类生物量（以Chla计）下降58%，氨氮下降66%，总氮下降60%，总磷下降72%，可溶性磷酸盐下降80%，水质得到明显改善。与以该湖湾湖水为水源的水厂出水相比，人工复合生态系统出水的氨氮比水厂出水的氨氮平均低45%，总氮低37%，可见经人工复合生态系统处理的湖水部分指标优于同源的自来水。
+关键词　水生高等植物　人工复合生态系统(ACE)　水质净化　动态试验　太湖
+The purification of artificial complex ecosystem for local water in Taihu Lake. Wang Guoxiang, Pu Peimin, Zhang Shengzhao, Li Wanchun, Hu Weiping, Hu Chunhua (Nanjing Institute of Geography and Limnology,Chinese Academy of Sciences，Nanjing 210008).China Environmental Science.1998,18(5):410～414
+Abstract―An artificial complex ecosystem (ACE) is built with aquatic macrophytes of various ecological group, rhizosphere bacteria and other organism in a bay of Taihu Lake. Its area is about 200 m2. The purification efficiency of the ACE is evaluated by dynamic simulation test. The result shows that the eutrophic water of Taihu Lake can be purified effectively as it pass through ACE. The purified water is drawn out from ACE by a pump at the pumping capacity of 42.67m3/d. The removal efficiencies of ACE for algal biomass, NH+４-N, TN, TP and PO3-4-P are 58%, 66%, 60%, 72% and 80%, respectively. Comparing with the tap water of the local water plant, the mean values of NH+４-N and TN of the ACE effluent are low by 45% and 37%, respectively. For the effluent of ACE, the water quality is significantly better than that for the raw water (inflow) and for the tap water of the local water plant.Results demonstrate that the eutrophic lake water can indeed purify by ACE.
+Key words:aquatic macrophyte　artificial complex ecosystem (ACE)　purifying water quality　dynamic test　Taihu Lake
+
+　　70年代以来，国内外对利用高等水生植物净化污水进行了广泛的研究〔1～5〕，但多数研究局限于单一物种在静态条件下对污染物浓度较高的污水的净化作用，尹澄清等〔6〕用动态方法研究了水陆交错带（芦苇）对营养物浓度较高的陆源污水的净化作用。刘文祥〔7〕在滇池附近的低洼弃耕地设计改造的人工湿地正常运行时，对农业面源污染物总氮、总磷的去除率分别为60%和50%；但由于人工湿地需占用较多的土地，因而该技术的应用受到很大限制。直接在富营养化严重的湖泊中，组建由不同生态类型水生高等植物为优势种的人工复合生态系统(artificial complex ecosystem, 以下简称ACE)，以控制藻类暴发、净化污染物及营养物浓度比污水低的湖水，并从群落水平研究了水生高等植物对太湖湖水的净化效果。本试验结果对防治湖泊富营养化及恢复其生态系统具有一定的指导意义。
+1　实验部分 
+1.1　实验系统
+　　在太湖五里湖中桥湖湾，用防水工业滤布围隔出10个5m×40m围区，围区平均水深1.5m。选取其中一个围区相间栽培漂浮、浮叶及沉水植物，待系统稳定后（约2周），将围区一端开口使围区与湖区相通，同时在另一端用水泵抽水，抽水量为42.67 m3/d，换水周期约为7d。ACE结构及采样点如图1所示。
+
+图1　人工复合生态系统中主要种群分布及采样点
+Fig.1　Spatial pattern of main populations in artificial
+complex ecosystem (ACE) and the sites of sampling points
+1.2　试验植物
+　　选取已能在太湖生长的喜旱莲子草（Alternanthera philoxeroides）、菱（Trapa natans var. bispinosa)、水鳖（Hydrocharis sp.）、凤眼莲（Eichhornis crassipes）、伊乐藻(Elodea Nuttallii)、金鱼藻(Ceratophyllum demersum)、轮叶黑藻（Hydrilla varticilata）、紫背浮萍(Spirodela polyrhiza)等高等水生植物，1997年9月下旬将喜旱莲子草、水鳖及凤眼莲移入试验区，其余为上年种植。喜旱莲子草原为水陆两栖挺水植物，经驯化已经能很好地生长在太湖的开阔湖面，故这里的喜旱莲子草实际上是漂浮植物。
+1.3　测定项目
+　　水中总氮(TN）、硝酸盐氮(NO-３-N)、亚硝酸盐氮(NO-２-N)、氨氮(NH+４-N)、总磷(TP)、溶解性磷酸盐(PO3-４-P)、溶解氧(DO)、透明度(SD)等水质理化指标，藻类、水生高等植物根际微生物。
+1.4　测定方法
+　　采用过硫酸盐氧化法同时测定水中的总氮和总磷〔8〕，其它理化指标及藻类测定采用中国环境监测标准方法〔9〕，水生高等植物根际微生物测定方法另文报道。
+2　试验结果
+2.1　试验区的基本情况
+　　太湖五里湖中桥湖湾是临近无锡市区的一个小湖湾，是无锡市中桥水厂（老厂）的取水区，水质较差，藻类数量平均达4万个/mL以上，有时还出现“藻华”，氨氮浓度平均达4mg/L以上，较多的藻类和较高的氨氮浓度一直困扰水厂的生产和出水质量。
+2.2　人工复合生态系统 (ACE) 的结构
+　　组建的ACE在稳定后，水生高等植物群落的水平分布格局如图1所示。位于进水口的喜旱莲子草群丛水上部分高约50cm，水下茎盘根错节形成约30cm厚的群丛基座，使整个群丛紧密交织在一起，构成坚强的防护带。该群丛盖度为100%，其下水中反硝化和氨化细菌的最大可能数分别为1.2×108和1.6×107MPN/L，溶解氧仅为0.19～0.90mg/L。
+　　喜旱莲子草后的菱群丛，生长旺盛，浮水叶完全覆盖水面，水下茎叶发达，并伴生少量金鱼藻和轮叶黑藻。
+　　水鳖群丛盖度为50%，处于衰亡期，伴生种有金鱼藻和紫背浮萍。
+　　凤眼莲群丛盖度约为90%，另有少量喜旱莲子草、金鱼藻及伊乐藻伴生，水中反硝化和氨化细菌分别达3.5×107和1.8×107MPN/L。
+　　ACE后部的菱群丛盖度达100%，生长旺盛，其下亦伴生有金鱼藻、水鳖及轮叶黑藻，水中硝化、亚硝化及氨化细菌分别为1.6×104、1.6×107和1.6×107MPN/L，水体溶解氧为7.50～8.69mg/L。在ACE的末段，又设一道凤眼莲植被带，凤眼莲生长较好，完全覆盖水面。
+2.3　围区动态试验结果
+　　湖水经过ACE各植被带后，由抽水泵抽出。ACE的进、出水及各植被带之间的主要水质指标及藻类生物量的变化见图2～图7。
+　　由图2可见，湖水经ACE后，其藻类生物量（以Chla计）急剧下降，第14d，出水藻类生物量比进水下降58%。特别是在试验期间，围区外曾一度（10月16～22日）出现“藻华”，加之风浪作用，“藻华”聚集到ACE的进水口，导致ACE内及出水的藻类生物量略有上升，但在“藻华”消失的次日（10月23日）出水的藻类生物量比10月22日下降51%。该系统出水藻类数量比进水平均降低了2～3个数量级，可见ACE能够有效地除去湖水中高浓度的藻类。
+
+图2　动态试验Chla浓度变化
+Fig.2　Changes in concentration of Chla 
+in ACE dynamic test
+
+图3　动态试验TN浓度变化
+Fig.3　Changes in concentration of TN
+in ACE dynamic test
+
+图4　动态试验NH+4-N浓度变化
+Fig.4　Changes in concentration of NH+４-Nin ACE dynamic test
+　　由图3～图5可见，湖水经过ACE后TN、NH+４-N、TP、PO3-４-P浓度均有不同程度的下降。试验开始后的第5d，出水的TN、NH+４-N、TP、PO3-４-P浓度分别比进水下降53%、70%、56%、70%；第14d，分别下降60%、66%、72%、80%。因此，ACE能够有效地去除湖水中的氮、磷。连续数日的同步监测结果还表明，该ACE出水的氨氮比当地水厂出水（自来水）平均低45%，TN平均低37%。
+
+图5　动态试验TP和PO3-4-P浓度变化
+Fig.5　Changes in concentration of TP and PO3-４-P in ACE dynamic test
+
+图6　动态试验NO-3-N浓度变化
+Fig.6　Changes in concentration of NO-３-N in ACE dynamic test
+　　由图6可见，湖水经过以菱为优势种群的植被带后，NO-３-N浓度大幅度上升，第11d，第1菱带比其前一植被带的NO-３-N浓度上升24%，第2菱带是其前一植被带的3.74倍；第14d，第2菱带的NO-３-N浓度是前一植被带的7.58倍，而此时的TN、NH+４-N浓度均有明显下降，这表明在以菱为优势种群的植被带硝化作用强烈。
+
+图7　动态试验NO-2-N浓度变化
+Fig.7　Changes in concentration of NO-２-N in ACE dynamic test
+　　由图7可见，湖水进入ACE，经过喜旱莲子草植被带后，NO-２-N浓度急剧下降，但在随后依次经过凤眼莲-菱-凤眼莲各植被带后，NO-２-N浓度又呈现出不同程度的上升趋势，这表明在ACE的各植被带均有不同程度的硝化-反硝化作用。
+3　讨论
+3.1　人工复合生态系统除藻机理的探讨
+　　在太湖一些湖湾经常可见“藻华”覆盖在浮叶及沉水植物上，导致水生高等植物死亡，因此，用浮叶或沉水植物净化太湖湖水，往往难以抵御来势凶猛的“藻华”。而喜旱莲子草群丛，其水上直立部分粗壮繁茂、水下部分盘根错节使整个群丛交织在一起，再辅以物理措施，在ACE的先端构筑坚强的防护带，能将“藻华”挡在ACE外，群丛自身保持旺盛生长。处于ACE前端的喜旱莲子草、菱植被带的水下交错发达的根、茎、叶象层层滤网能够滤掉湖水中的大量藻类。试验发现，在ACE前端的菱其水下茎叶上附着很多絮状物，尤其是在迎水方向；而在ACE后端的菱及其它植物的水下根茎叶上几乎没有肉眼可见的附着物，这表明菱对藻类及水中的悬浮物有良好的过滤作用。由于系统前端喜旱莲子草和菱的作用，ACE内部水体透明度得到明显改善，试验期间，ACE内部的透明度平均为110cm，约为湖水透明度的3倍。透明度的改善为ACE内部沉水及浮叶植物生长提供了保障，而沉水及浮叶植物的生长一方面能抑制藻类的生长，另一方面又不断地吸收、分解水中的营养盐和污染物，使得整个系统处于良性循环状态。此外，喜旱莲子草属于多年生植物，采取一些极简易的防寒措施，已经连续两年在试验区内安全越冬，并继续发挥其净化作用（另文报道）。
+3.2　人工复合生态系统除氮机理探讨
+　　从试验结果看，各植被带对TN和NH+４-N均有去除作用，但是，湖水经两个菱群丛后NO-３-N均有大幅度上升，而经ACE后部的凤眼莲、菱群丛后，NO-２-N亦呈上升趋势。各植被带根际氮循环细菌及水体溶解氧(DO)测定结果表明，DO及氮循环细菌分布存在明显差异，这种差异营造了利于氮素氨化、硝化-反硝化的氧化还原微环境。湖水进入ACE，首先经过溶解氧较低的、反硝化细菌和氨化细菌较多的喜旱莲子草植被带，有机氮在此条件下经反硝化和氨化作用转化为NH+４-N、NO-２-N、N2O及N2。同时，由于在水生高等植物根际存在富氧与缺氧区〔10〕，氨氮在富氧区被氧化为硝态氮，而部分硝态氮在水流作用下进入缺氧区，被反硝化细菌还原为分子态氮进入大气〔10〕。此后，湖水经浮叶、沉水植物的植被带，水体溶解氧较高，硝化细菌较多，氨氮被氧化，使得水体中硝酸盐和亚硝酸盐浓度呈现上升趋势。当被初步净化的湖水再次经过由凤眼莲构成的缺氧区时，反硝化作用使硝酸盐浓度又有所下降，而亚硝酸盐则有明显上升。湖水中的氮正是在这种硝化-反硝化交替进行的过程中不断被除去。当然，高等水生植物的吸收以及根际絮状物的吸附沉降亦是水体氮降低的重要因素。
+3.3　ACE结构模式对净化效果的影响
+　　试验设计了由6个水生植物群落镶嵌组合构成的ACE，从试验结果看，该ACE的最后两个群落带对上一级来水中的TN、NH+4-N、TP的净化作用已经很弱，相反，NO-2-N和NO-3-N却呈上升趋势，尽管其浓度值均优于地面水Ⅱ级甚至Ⅰ级标准，但这种回升在某种意义上说明最后两个群落带是多余的。戴全裕等〔5〕认为用水生植物净化污水并不是串联级数越多越好，串联级数多了，往往在后面的植物因水体营养盐不足而生长不良，甚至萎缩死亡，容易引起二次污染。因此，合理设计镶嵌组合的水生植物群落的种类组成及空间分布，对于有效净化水环境、减少投入具有重要意义。根据水生植物生长的特点，在ACE的后部宜种植沉水植物，因为沉水植物能在水体营养盐很低的情况下，利用底泥中的营养盐生长，并有效地抑制藻类生长繁殖〔11〕。
+4　结论
+4.1　在太湖局部湖面上，设计建造的由不同生态类型水生高等植物及其根际微生物等组成的人工复合生态系统，能够有效地控制局部藻类暴发，去除湖水中NH+４-N、TN、TP及PO3-４-P。动态试验结果表明，人工复合生态系统出水中的NH+４-N、TN比同源的自来水水厂出水的NH+４-N、TN平均分别低45%、37%；该系统出水的藻类生物量和数量分别比进水下降58%和2～3个数量级。
+4.2　在该人工复合生态系统最前端选择多年生喜旱莲子草群丛并辅以物理措施，能够抵御“藻华”的冲击，并有效地滤去湖水中大量的藻类，维持系统内部水体具有较高的透明度，使得系统内部沉水植物能够获得充足的光照而正常生长，从而解决了在藻型富营养化湖泊中恢复沉水植被的难题。
+参考文献
+1　吴玉树，余国莹. 根生沉水植物菹草 (Potamogeton crispus) 对滇池水体的净化作用. 环境科学学报，1991, 11(4):411～416
+2　曹萃禾. 四种生态类型的水生维管束植物净化能力的研究.水产科学，1990, 9(3):8～11
+3　高吉喜, 叶　春, 杜　娟等. 水生植物对面源污水的净化效率研究. 中国环境科学，1997,17(3):247～251
+4　Muscutt A D, Harris G L, Baily S W ，et al. Buffer zones to improve water quality: a review of their potential use in UK agriculture. Agriculture, Ecosystem and Environment, 1993，45(1):59
+～77
+5　戴全裕，蒋兴昌，汪耀斌等. 太湖入湖河道污染物控制生态工程模拟研究. 应用生态学报，1995，6（2）：201～205
+6　尹澄清，兰智文，晏维金. 白洋淀水陆交错带对陆源营养物的截留作用初步研究.应用生态学报，1995，6（1）：76～80
+7　刘文祥. 人工湿地在农业面源污染控制中的应用研究. 环境科学研究，1997，10（4）：15～19
+8　金相灿，屠清瑛主编. 湖泊富营养化调查规范.第2版. 北京:中国环境科学出版社, 1990
+9　国家环境保护局《水和废水监测分析方法》编委会. 水和废水监测分析方法.第3版. 北京: 中国环境科学出版社, 1989
+10　Reddy K R, Patrick Jr W H, Lindau C W. Nitrification-denitrification at the plant root-sediment interfaces in wetlands. Limnololgy and Oceanography, 1989, 34(6):1004～1013
+11　王国祥，张子凡. 固城湖富营养化防治和利用的生态工程模型. 见：走向二十一世纪―中国青年环境论坛首届学术年会论文集，北京：中国环境科学出版社，1993
+作者简介
+王国祥　男，1963年2月生。高级工程师、博士。主要从事湖泊生态学和水环境生态工程。参加和主持了“浅水型湖泊生产模型和资源利用模式研究”、“南京玄武湖大面积死鱼原因剖析及防治对策研究”等多项课题，获省市科技进步奖3项。发表论文20余篇。
+收稿日期：1997-12-22
+* 国家科委、欧洲联盟科技部资助项目

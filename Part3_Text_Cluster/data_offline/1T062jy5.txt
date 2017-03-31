@@ -1,0 +1,106 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第1期 Vol.19 No.1 1999
+
+
+
+单细胞凝胶电泳法测定三种化合物对石棉
+DNA链断裂效应的抑制作用
+樊晶光　王起恩　刘世杰
+摘要：为了探讨3种化合物对温石棉致人胚肺(HEL)细胞DNA链断裂的影响,用不同浓度的柠檬酸铝、混合稀土或亚硒酸钠溶液浸泡温石棉1h后,再将其与HEL细胞共同孵育,利用单细胞凝胶电泳技术,测定了HEL细胞的DNA链断裂程度.结果显示,温石棉可致HEL细胞DNA链断裂,并呈明显的剂量反应关系(r=0.992,P<0.01),其中80m g/mL石棉所致DNA链断裂为对照组的7倍.与未处理温石棉组相比,经3种化合物预处理的温石棉所致HEL细胞DNA链断裂均明显减少,其中用等量柠檬酸铝、混合稀土或亚硒酸钠处理过的石棉,其所致DNA链断裂分别降低了38.3%、61.5%、30.1%,这表明,用上述3种化合物预处理温石棉,有可能减轻温石棉对人类的致癌危害性.
+关键词：石棉；DNA链断裂；柠檬酸铝；混合稀土；亚硒酸钠
+中图分类号：X132 文献标识码：A 文章编号：1000- 6923(1999)01- 0022- 04
+Inhibitory effect of several chemicals on chrysotile-induced DNA chain breakage by single cell gel electrophoresis assay.
+FAN Jing-guang, WANG Qi-en, LIU Shi-jie (Department of Labor Health, Beijing Medical University, Beijing 100083, China). China Environmental Science.1999,19(1)：22～25
+Abstract：To explore the effects of several chemicals on the chrysotile-induced DNA chain breakage in human embryo lung(HEL) cells, after being soaked in aluminium citrate, mixed rare earth or sodium selenite solutions at different concentrations for 1 hour, chrysotile were incubated with HEL cells. Then, the extent of DNA chain breakage of HEL cells were determined by single cell gel electrophoresis(SCGE). The results showed that the native chrysotile caused dose-dependent increases of DNA chain breakage of HEL cells(r = 0.992,P<0.01) and the DNA chain breakage induced by 80m g/mL chrysotile was 7 times higer than that of control group. In contrast, the three compounds-pretreated chrysotile induced less DNA chain breakage than the native chrysotile and the percentage of inhibition of equivalent aluminium citrate, mixed rare earths and sodium selenite were 38.3%, 61.5%, 30.1%, respectively. These results indicated that the carcinogenicity of chrysotile may be reduced by pretreatment of chrysotile with three compounds.
+Key words：asbestos；DNA chain breakage；aluminium citrate；mixed rare earth；sodium selenite
+　　由于石棉具有耐酸、耐碱、耐热、耐磨、绝缘等性能,其工业用途甚广,据报道达3000余种.石棉还可随建筑废料或废弃的刹车片、离合器等污染物不断进入环境,严重污染空气、水源和土壤等自然资源[1].1987年,国际癌症研究机构(IARC)已将石棉列入人类确定致癌物之一.鉴于石棉不仅是常见职业危害因素,而且已成为重要的环境污染物,目前不少国家的政府对石棉的开采和使用已采取了多种限制性措施.但尚无更好地阻止或减少石棉致癌的措施或办法.通过近年国内外的实验研究,采用化学或物理方法对石棉表面进行改性处理,以降低其致病性问题业已证明成为可能,从而为预防和减轻石棉对人体健康的危害开辟了一条新的重要途径.本研究利用一种新的测定DNA链断裂的方法－单细胞凝胶电泳(彗星试验),观察了柠檬酸铝、混合稀土或亚硒酸钠等3种化合物预处理后对石棉致人胚肺(HEL)细胞DNA链断裂的影响.
+1 材料与方法
+1.1 实验用细胞株
+　　HEL细胞由军事医学科学院赵修南同志惠赠.用0.125%胰蛋白酶+0.01%EDTA消化传代,用含10%小牛血清和双抗MEM培养液于37℃、5%CO2的条件下培养,3d传代一次.
+1.2 石棉样品的制备
+　　选用青海茫崖产温石棉,冰冻切片机(刻度调至5m m处)切割后,置60℃烤箱中烘干备用(经电镜检测,其分散度为:<5m m占9％,5～10m m占46％,10～20m m占34％,>20m m 占11％,直径<0.2m m占95％).临用前将石棉加入双蒸水中,超声10min,并用混悬器振荡2min,配成一定浓度均匀的混悬液.
+1.3 石棉纤维的预处理
+　　将一定量的温石棉悬液与不同浓度的混合稀土、柠檬酸铝(含Al3+9.3%)或亚硒酸钠溶液相混后,分别在室温下作用1h,2000r/min离心10min,弃去上清液后,再用PBS将下部沉淀配成一定浓度均匀的混悬液.
+1.4 细胞染毒与处理
+　　取指数生长期的HEL细胞, 按一定浓度接种于100mL培养瓶中,37℃、5％CO2培养24h,加入不同浓度的温石棉悬液或经3种化合物预处理过的石棉悬液,继续培养1h,终止染毒,用胰酶消化,收集细胞,用PBS清洗两遍,将细胞制成单细胞悬液,调整浓度为2×105 cells/mL.
+1.5 DNA链断裂测定(单细胞凝胶电泳,SCGE)[2]
+　　取200m L 0.5%的正常熔点的琼脂糖铺于载玻片上,用盖玻片压平胶面,4℃凝固10min;取37℃水浴中的1％低熔点的琼脂糖50μL与等量的细胞悬液混匀,立即铺于上述载玻片胶面上,用盖玻片压平胶面后4℃凝固10min,再在上面铺75μL0.5%的低熔点琼脂糖,用盖玻片压平胶面后4℃凝固10min,去掉盖玻片,将胶板浸没于预冷的细胞裂解液(2.5mol/L NaCl,100mmol/L Na2EDTA,1%月桂酸肌氨酸钠,1%Triton X-100,10mmol/L Tris-HCl,pH10.0)中,4℃裂解1h,取出胶板放入水平电泳槽中,加入电泳缓冲液(1mmol/LNa2EDTA,300mmol/LnaOH),放置20min后,4℃电泳20min(25V,300mA)；然后,将胶板浸没于中和液(0.4mol/L Tris-HCl,pH7.5)中,中和两次,每次15min,再用5m g/mL的PI暗处染色15min,蒸馏水脱色15min,立即在荧光显微镜下观察,绿光激发,阻挡滤片为610nm,目镜10×,物镜20×,乐凯高速黑白卷拍摄(ASA400).用自动图像分析仪测定底片上彗星头部和尾部的积分光密度,每组至少分析15个细胞.以彗星尾部积分光密度与总积分光密度的比值代表DNA损伤程度.
+1.6 统计学处理
+　　采用Primer软件中的t检验和相关分析程序对数据进行统计处理.
+2 结果与讨论
+2.1 不同剂量石棉所致HEL细胞DNA链断裂
+　　彗星试验是新近发展的一种测定DNA链断裂的方法,通过凝胶电泳,每个受损细胞的DNA从核中向阳极伸展,形成一个亮的荧光头部和尾部,断裂的DNA片段则出现在彗星尾部.因此,利用图象分析仪测定尾部积分光密度与总积分光密度的比值,可知DNA链断裂的多少.本研究利用彗星试验观察了国产温石棉的致HEL细胞DNA链断裂效应.结果显示,石棉染毒1h后,随着石棉剂量的增加,尾部积分光密度与总积分光密度的比值逐渐增高,呈明显的剂量反应关系(r=0.992,P<0.01),而且各染毒组的比值与对照相组比,均有显著性差异(见表1).可见石棉染毒可致HEL细胞DNA链断裂,即石棉染毒可致HEL细胞DNA损伤.
+表1 不同剂量石棉所致HEL细胞DNA链断裂(± s)
+Table 1 Induction of DNA breakage by chrysotile 
+at different concentration in HEL cells
+石棉(m g/mL)分析细胞数(个)积分光密度比值
+0250.095± 0.025
+20220.170± 0.031* 
+40210.337± 0.045* 
+80220.660± 0.057* 
+
+注：*与对照组相比 P<0.01
+　　有学者报道,将石棉与裸露的ψX174RFI DNA在体外共同孵育可使DNA单链断裂显著增高[3].将石棉和C3H10T1/2细胞和鼠胚细胞共同孵育也可引起细胞DNA链的断裂[4,5]. Marczynski等[6]通过对职业接触石棉工人血液进行检测,发现血液白细胞DNA双链断裂明显高于对照人群,而且其血清中的抗双链DNA抗体也显著升高.唐国慧等[7]对国内职业接触石棉工人外周血白细胞进行检测,也发现其DNA链断裂明显高于对照人群.本研究的体外实验结果提示,石棉进入人体后可能通过引起人细胞DNA损伤,改变细胞的遗传特性,从而导致癌瘤的发生.
+2.2 3种化合物预处理对石棉致HEL细胞DNA链断裂的影响
+　　由表2～4可知,与未处理石棉组相比,经3种化合物预处理的石棉组的积分光密度比值均明显下降,且表现出不同程度的剂量依赖性.这表明,用3种化合物溶液浸泡处理石棉后,均可减轻石棉致HEL细胞DNA链断裂效应(图1),即用3种化合物溶液预处理石棉,均可减轻石棉对HEL细胞DNA的损伤作用.
+表2 柠檬酸铝对石棉致HEL细胞DNA链断裂的影响(± s)
+Table 2 Effect of aluminium citrate on the indution of DNA breakage by chrysotile in HEL cells
+石棉
+(m g/mL)柠檬酸铝
+(m g/mL)分析细胞数
+(个)积分光密度
+比值抑制率
+(％)
+800220.660± 0.057- 
+8020150.606± 0.042*9.75
+8040150.523± 0.030*25.37
+8080150.444± 0.030*38.30
+
+注：* 与未处理石棉组相比 P<0.01
+表3 混合稀土对石棉致HEL细胞DNA链断裂的影响(± s)
+Table 3 Effect of mixed rare earth on the induction of
+DNA breakage by chrysotile in HEL cells
+石棉
+(m g/mL)混合稀土
+(m g/mL)分析细胞数
+(个)积分光密度比值抑制率
+(％)
+800220.660± 0.057- 
+8020150.556± 0.034*18.44
+8040150.439± 0.039*39.18
+8080200.313± 0.055*61.52
+
+注：* 未处理石棉组相比 P<0.01
+表4 亚硒酸钠对石棉致HEL细胞DNA链断裂的影响 (± s)
+Table 4 Effect of sodium selenite on the induction of DNA breakage by chrysotilein HEL cells
+石棉
+(m g/mL)亚硒酸钠
+(m g/mL)分析细胞数
+(个)积分光密度比值抑制率
+(％)
+800220.660± 0.057- 
+8020150.618± 0.045*7.45
+8040150.577± 0.033*14.72
+8080190.490± 0.042*30.14
+
+注：* 与未处理石棉组相比P<0.05, P<0.01
+
+图1 温石棉处理后HEL细胞电泳彗星图(×800)
+Fig. 1 The comet images of chrysotile-treated HEL cells
+A.对照组 B.80m g/mL温石棉组 C.80m g/mL等剂量混合稀土处理的温石棉组
+　　比较3种化合物的抑制率可知,混合稀土的抑制作用相对较强,柠檬酸铝次之,亚硒酸钠较差.我国有丰富的稀土资源,多年来的应用,尚未发现对人群有任何明显的影响.而且,本研究所用稀土化合物为混合稀土硝酸盐,造价较低,易购入,因此将混合稀土化合物作为石棉表面改性剂的应用前途较广.
+3 结论
+　　用柠檬酸铝、混合稀土或亚硒酸钠溶液预处理温石棉,均可抑制温石棉对HEL细胞DNA的损伤作用,有可能减轻温石棉对人体的致癌危害性.其中,将混合稀土化合物作为石棉表面改性剂的应用前途较广.
+*现在劳动部劳动保护科学研究所工作
+作者简介：樊晶光(1965-), 男,北京医科大学医学博士,主要从事粉尘防治工作.现在劳动部劳动保护科学研究所工作.发表论文20余篇,综述5篇,编译4篇,译文文摘10余篇.
+作者单位：(北京医科大学劳动卫生教研室,北京100083)
+参考文献：
+　[1] Lange J H, Lange P R, Reinhard T K, et al. A study of personal and area airborne asbestos concentrations during asbestos abatement: a statistical evaluation of fibre concentration data [J] .Ann Occup Hyg,1996,40 (4): 449- 466.
+　[2] 罗 瑛,孙志贤,杨瑞彪等.辐射后单个细胞DNA结构变化的定量检测[J] .生物化学与生物物理进展,1994,21(2): 451- 453.
+　[3] Lund L G, Aust A E. Iron mobilization from crocidolite asbestos greatly enhance crocidolite-dependent formation of DNA single-strand breaks in ΦX174RFI DNA[J] . Carcin-ogenesis,1992,13 (4): 637- 642.
+　[4] Turver C J, Brown R C. The role of catalytic iron in asbestos induced lipid peroxidation and DNA-strand breakage in C3H10T1/2 cells [J] .Br J Cancer,1987,56:133- 136.
+　[5] Libbus B L, Illenye S A, Craighead J E. Induction of DNA strand breaks in cultured rat embryo cells by crocidolite asbestos as assessed by nick translation[J] .Cancer Res., 1989,49:5713- 5718.
+　[6] Marczynski B,Czuppon A B,Marek W,et al.Increased incidence of DNA double-strand breaks in blood of workers occupationally exposed to asbestos [J] . Human Exp. Toxico-l.,1994,13:3- 9.
+　[7] 唐国慧, 庄志雄,李劲松等.DNA链断裂作为石棉接触的生物标志物的研究[J] .中华劳动卫生职业病杂志, 1997, 15(4):218- 220.
+收稿日期：1998-02-04

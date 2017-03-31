@@ -1,0 +1,91 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第4期　Vol.19　No.4　1999
+
+
+
+藻类对偶氮染料的降解及定量结构-生物降解性研究
+孙红文　黄国兰　丛丽莉　邵 敏　石 静　赖成明 
+摘要：通过研究普通小球藻(Chlorella vulgaris)、蛋白核小球藻(Chlorella pyrenoidosa)、斜生栅藻(Scenedesmus obliquus)对偶氮染料的降解作用,筛选出优势藻种并优化降解条件;对单偶氮染料进行了定量结构―生物降解性相关关系(QSBR)研究.3种藻均能利用偶氮染料为其生长的唯一C、N源,使染料脱色,蛋白核小球藻具有更强的脱色能力;且藻在无N环境中的脱色率明显高于无C和正常环境;pH值对染料脱色影响较大,最佳pH值为中性;不同结构的单偶氮染料生物降解性相差很大,脱色率为9.1%～ 89.8%,QSBR研究表明,偶氮键的最低未占据轨道能量是控制生物降解的主要因素,而脱色率与染料的分子量无关.
+关键词：偶氮染料；绿藻；生物降解；定量结构―生物降解性相关关系
+中图分类号：X13 文献标识码：A 文章编号：1000- 6923(1999)04- 0289- 04
+Biodegradation of azo dyes by algae and QSBR study.
+SUN Hong-wen1,HUANG Guo-lan1,CONG Li-li1,SHAO Min2,SHI Jing3, LAI Cheng-ming3 (1.College of Environmental Science and Engineering, Nankai University, Tianjin, 300071, China; 2.Department of Environmental Engineering,Tianjin University,Tianjin 300071,China；3.Department of Chemistry, Nankai University,Tianjin 300071,China). China Environmental Science. 1999,19(4)：289～ 292
+Abstract：Biodegradation effects of azo dyes by three kinds of algae? Chlorella vulgaris,Chlorella pyrenoidosa and Scenedesmus obliquus were studied. The most potent algae and best degradation condition were selected. Furthermore, quantitative structureiodegradability relationship (QSBR) was studied for single azo dyes. These algae could use azo dyes as only N and C resources for their growth with decolorizing azo dyes. Chlorella pyrenoidosa was most potent in decolorization. The efficiency rate of decolorization in noitrogen nutrient solution was higher than that in noarbon or normal solution. pH value had great effect on the decolorization with most suitable pH value of neutral. Biodegradability of different structural single azo dyes varied significantly, with the decolorization rate ranging 9.1%～ 89.8%. QSBR study disclosed that the efficiency rate of decolorization was mainly controlled by the energy of the lowest unoccupied orbital of N=N, and had no relationship with molecular weight of the dyes.
+Key words：azo dyes；algae；biodegradation；quantitative structure biodegradability ralationship (QSBR)
+　　藻类用于污水处理是Oswald等[1]在1957年提出的,逐渐得到了广泛应用.藻类除了能去除金属和营养盐外,还能够降解包括农药、烷烃、淀粉、酚类、邻苯二甲酸酯等多种有机物[2- 4].刘厚田等[5,6]利用藻菌共生系统降解偶氮染料的研究表明,藻类不仅能够通过光合作用为好氧菌供氧,而且能单独降解偶氮染料.
+　　近年来,定量结构―生物降解性相关关系(Quantitative Structure-Biodegradability Relation-ship,QSBR)研究是环境科学研究的热点之一,偶氮染料结构―脱色关系的定性研究表明,染料的生物降解性与芳环上取代基的性质、数目、位置和染料的分子量相关[7,8].戴树桂等[9]进行了细菌降解染料的QSBR研究,但关于藻类降解偶氮染料的QSBR研究尚未见报道.
+本文研究了普通小球藻、蛋白核小球藻、斜生栅藻对偶氮染料的降解作用;并对不同结构单偶氮染料的生物降解进行了QSBR研究. 
+1 材料与方法
+1.1 藻种和染料
+　　普通小球藻(Chlorella vulgaris)、蛋白核小球藻(Chlorella pyrenoidosa)、斜生栅藻(Scenedesmus obliquus)均由中国科学院水生生物研究所藻种库提供.
+　　染料直接深棕NM、酸性红B、酸性橙II、酸性品红6B、酸性红3R、阳离子红GTL、直接耐晒黄5GL、酸性金黄G、酸性嫩黄2G、酸性大红BS、活性艳红X-3B均为工业品,未做进一步纯化.
+1.2 藻种的培养
+　　纯种普通小球藻、蛋白核小球藻、斜生栅藻在无菌条件下转移至水生4号(HB4)人工培养液中,培养至对数生长期进一步扩大培养.培养条件为:温度25± 1℃,光强4500Lux,12h光照,12h黑暗,光照期间每3h振荡充气一次.
+1.3 实验方法
+　　以直接深棕NM (5～ 40mg/L)为研究对象,加入藻的培养液中,藻的初始密度46′ 104个/mL,其它条件同上.记录藻的生长, 并测定染料吸光度的变化, 计算脱色率, 实验进行8天.分别以无N、无C及不同pH值培养液重复上述实验,以优化降解条件.
+　　按上述条件,测定蛋白核小球藻对10种不同结构单偶氮染料(10mg/L)的脱色率.选择染料分子量和偶氮键最低未占据轨道能量(PM3法)作为QSBR研究的结构参数.
+2 结果与讨论
+2.1 3种藻在直接深棕NM中的生长及对染料的脱色
+　　考虑到直接深棕NM对斜生栅藻生长的48h-EC50为8.37mg/L[10], 选择在5mg/L直接深棕NM中逐步驯化3种藻, 逐步成倍提高染料的浓度, 以驯化藻对染料的耐受力.图1为3种藻在20mg/L直接深棕NM中的生长曲线,从图1可看出,普通小球藻和蛋白核小球藻在染料中生长较好,而斜生栅藻的生长明显受到影响.逐步驯化提高了藻类对染料的耐受力,如不经过驯化,斜生栅藻在20mg/L直接深棕NM中几乎不能生长.进一步驯化到染料浓度为40mg/L,3种藻不能生长,在5天后陆续死亡.
+
+图1 藻在20mg/L直接深棕NM中的生长
+Fig.1 Growth of algae in 20mg/L Direct Brown NM
+　　3种藻对直接深棕NM均有脱色作用,对5mg/L直接深棕NM作用10天,斜生栅藻脱色率为12.4%,普通小球藻和蛋白核小球藻为21.6%; 而对20mg/L直接深棕NM,斜生栅藻的脱色率则大大下降,几乎无作用, 普通小球藻的脱色率下降到11.0%, 蛋白核小球藻的脱色率下降为17.2%.所以蛋白核小球藻为最佳藻种.但总的来看脱色率偏低.
+2.2 降解条件的优化
+　　为了考察藻类对染料的利用并进一步提高脱色率,特配制不含N和C的营养液.3种藻在20mg/L直接深棕NM的正常、无N、无C培养液中的生长和脱色率见表1.从表1可以看出, 3种藻在3种培养液中均能生长,表明藻类能利用偶氮染料作为其生长的唯一N、C源.正常培养液中藻类生长较好,明显优于在无N或无C环境中的生长,这是由于无N或无C培养液中养料不足,藻类摄取不到足够的营养;另外藻类对偶氮染料的降解第一产物芳香胺比偶氮染料本身毒性更大,所以脱色的同时增加了染料对藻类的毒性.在正常培养液中,藻类对染料有一定的降解,但程度较小.在无N或无C培养液中,降解率大大提高,表明藻类对染料的脱色作用与藻类的生理代谢过程有关.3种环境的脱色率大小顺序为:无N >无C>正常.由脱色率和生长速率可以确定蛋白核小球藻为优势藻种.
+表1 藻在20mg/L直接深棕NM的不同培养液中
+的生长率和脱色率
+Table 1 Growth of algae and decolorization of 20mg/L Direct Brown NM in different nutrient solution
+藻 种 藻的生长速率(d-1)脱色率(%)
+正常   无N无C 正常 无N 无C
+普通小球藻0.2460.2110.21311.040.027.4
+蛋白核小球藻0.2350.2460.16717.247.736.8
+斜生栅藻0.1560.0650.0401.0729.022.0
+
+　　藻类对偶氮染料的降解作用,还受温度、光强、pH值等其它环境条件的影响.考虑到光强对脱色率的影响不大,而实际废水的酸度变化较大,实验仅研究了pH值对藻类生长及染料脱色的影响(图2). 
+
+图2 蛋白核小球藻在不同pH值条件下的生长速率
+和对直接深棕NM的脱色率
+Fig.2 Growth of C. pyrenoidosa and decolorization of Direct Brown NM under different pH
+　　由图2可以看出, 酸性和碱性环境不利于藻类的生长,在中性环境中藻类生长旺盛.藻类对染料的脱色率在不同pH值下具有相同的变化趋势,在中性环境中脱色率高,而在酸性和碱性条件下脱色率较低.可见藻类对染料的脱色率与藻类的生长代谢密切相关.
+2.3 不同结构单偶氮染料生物降解性比较
+　　蛋白核小球藻对10种不同结构单偶氮染料的脱色率及染料的分子量和偶氮键最低未占据轨道能量(Elumo)列于表2.不同结构的染料生物降解性相差很大,脱色率为9.1%～ 89.8%.本文所用染料都是单偶氮键,但其两侧结构较复杂,有不同取代的苯环和萘环及杂环,有的还含有N正离子.本文选择了两种结构参数? 偶氮键最低未占据轨道能量Elumo和染料分子量M,对脱色率和这两种结构参数进行单因素QSBR研究,结果如下:
+Y (脱色率) = 84.9 + 32.9Elumo
+r = 0.726 n = 9 t = 2.796
+Y(脱色率) = 12.5 + 0.07M
+r = 0.220 n = 10 t = 0.638
+　　脱色率与最低未占据空轨道能量之间具有显著相关性(t > t0.05 = 2.365),且分子的最低未占据轨道能量越负,脱色率就越低.而脱色率与染料的分子量之间不存在相关性.偶氮染料的降解机理已被证明为在藻体内的偶氮还原酶作用下产生了芳香胺,芳香胺再进一步被降解.所以染料首先需从水体中富集到藻体内,然后在藻体内酶的作用下发生还原反应,所以除了反应中心的偶氮键电性起决定作用外,其它因素如染料的疏水性及藻类的代谢活性也会影响染料的脱色率,所以单因素QSBR研究不会得出非常显著(t >t0.01)的相关性.
+表2 10种单偶氮化合物的结构特征与脱色率
+Table 2 Structural descriptors and decolorization efficiency of 10 single azo dyes
+名称分子量Elumo脱色率(%)名称分子量Elumo脱色率(%)
+酸性红B502.41- 0.82489.8直接耐晒黄5GL354.19未计算13.5
+酸性橙II350.32- 1.12366.2活性艳红X-3B615.33- 1.12531.0
+酸性品红6B523.44- 0.62464.2阳离子红GTL501.99- 2.6259.1
+酸性红3R604.46- 0.36489.0酸性大红BS502.42- 1.31013.4
+酸性金黄G375.38- 0.90339.4酸性嫩黄2G523.27- 0.66246.7
+
+　
+3 结论 
+3.1 藻类能够利用偶氮染料作为自身生长的C、N源,从而使染料脱色.在无C或无N培养液中,藻类的脱色能力较强,但藻类的生长状况比在正常培养液中差.
+3.2 通过对普通小球藻、蛋白核小球藻、斜生栅藻降解能力的比较,发现蛋白核小球藻生长最好,脱色率最高,因而称为优势藻种.
+3.3 蛋白核小球藻的生长及对染料的脱色率受pH值的影响显著,在中性环境中,藻类的生长及对染料的脱色率高,在酸性和碱性条件下,藻类的生长及对染料的脱色率则降低.
+3.4 不同结构偶氮染料的生物降解性存在很大差别,脱色率为9.1%～ 89.8%,偶氮染料分子中偶氮键的最低未占据轨道能量是控制染料降解的主要因素,而染料的分子量与其脱色率无关.
+基金项目：天津市科委二十一世纪青年基金资助项目(973705511)
+作者简介：孙红文(1967-),女,天津人,南开大学环境科学与工程学院副教授,博士,主要从事污染物在土、水生态环境中的归宿,生态效应和去除方面的研究工作.参加或主持国家自然科学基金和天津市科委基金项目及国际合作项目6项.发表论文30余篇.
+作者单位：孙红文　黄国兰　丛丽莉南开大学环境科学与工程学院,天津 300071；
+　　　　　邵 敏　天津大学环境工程系,天津 300071；
+　　　　　石 静赖　成明　南开大学化学系,天津 300071
+参考文献：　
+[1]Oswald W, Gotaas H B. Photosynthesis in sewage treatment[J]. Trans. Am. Soc. Civ. Eng.,1957,122(1):73- 105.
+[2]严国安, 谭智群. 藻类净化污水的研究及其进展 [J].环境科学进展,1995,3(3):45- 55.
+[3]Klekner V,Kesaric N. Degradation of phenols by algae [J]. J. Environ. Technol.,1992,13(3):493- 498.
+[4]戴树桂,孙红文,黄国兰等. 河口水及藻类对三丁基锡的降解作用研究 [J]. 中国环境科学, 1997,17(2):146- 150. 
+[5]刘厚田,杜晓明,刘金齐等. 藻菌系统降解偶氮染料的机理研究 [J]. 环境科学学报, 1993,13(3):332- 338. 
+[6]Liu J,Liu H. Degradation of azo dyes by algae [J]. Environ. Pollut.,1992,75(2):273?78.
+[7]杨惠芳,贾省芬,刘志培. 水污染防治及城市污水资源化技术 [M]. 北京: 科学出版社,1993.42- 49.
+[8]杜晓明,刘厚田. 偶氮染料分子结构特征与其生物降解性的关系 [J]. 环境化学,1991,10(6):12- 17.
+[9]戴树桂, 宋文华, 庄源益等. 偶氮染料定量结构-生物降解性关系(QSBR)研究 [J]. 环境化学,1998,17(2):115- 119.
+[10]孙红文,黄国兰,王春节等. 偶氮染料对斜生栅藻的毒性作用及结构活性相关关系研究 [J]. 环境科学,1998,19(4):22- 26.
+
+收稿日期：1998-12-08

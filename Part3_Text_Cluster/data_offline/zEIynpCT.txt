@@ -1,0 +1,78 @@
+土壤与环境
+SOIL AND ENVIRONMENTAL SCIENCES
+1999年　第4期　第8卷　Vol.8　No.4　1999
+
+
+
+丘陵区稻田N2O排放的特点
+徐华　邢光熹　蔡祖聪　鹤田治雄
+　　摘要：1993～ 1994年在中国科学院红壤生态试验站通过田间试验研究了丘陵区稻田N2O排放的特点。结果表明,稻田N2O排放主要集中在水分落干期间，淹水状态下几乎没有N2O排放。 由于早稻稻草还田，晚稻稻田N2O排放量即使在水分落干期间也不高。稻田N2O排放量随地形降低而逐渐增加，1993～ 1994年两年中坡底、坡腰和坡顶稻田水稻生长期平均N2O－N排放通量分别为10.90、5.60和2.11 m g/(m2× h)。
+　　关键词：稻田；N2O排放；地形
+　　中图分类号：S153；X13 文献标识码：A
+Characteristics of N2O Emissions from Paddy Fields in Hilly Area
+XU Hua1，XING Guang-xi1，CAI Zu-cong1，Haruo Tsuruta2
+（1: Institute of Soil Science, Chinese Academy of Sciences, Nanjing 210008, China;2: National Institute of Agro-environmental Sciences, Japan）
+　　Abstract:　Field experiment was carried out in Red Soil Ecological Experimental Station, Chinese Academy of Sciences to study characteristics of N2O emissions from paddy fields in hilly area. The results showed that N2O emission mainly occurred during the drying period of soil, while there was almost no N2O emission during the flooding period. Due to early rice straw application, N2O emission from late rice field was low, even during the drying period of soil. Generally, N2O flux increased with the positions of paddy fields from the top to the bottom in a slope in hilly area. Mean N2O-N fluxes of 4 rice-growing seasons from paddy fields located in the bottom, middle and top of a slope land were 10.94, 5.60 and 2.11 m g/(m2× h) respectively.
+　　Key words:　paddy field; N2O emission; topography 
+　　N2O是一种受人类活动影响的重要的温室气体[1]，它还是平流层中导致臭氧层破坏的光化学反应的主要参与者[2]。土壤，特别是热带土壤和农田土壤，是大气中N2O的最主要来源，其贡献高达70%[3]。对于农田土壤N2O排放的研究多集中于旱地，因为早期的稻田N2O排放的研究都报道稻田N2O排放量很小，仅占施氮量的0.04%左右[4～5]。早期研究的皆是长期淹水稻田的N2O排放，而约57%的中国稻田水稻生长期采取间隙灌溉的水分管理措施，间隙灌溉造成稻田水分状况干湿交替，这些稻田应有不同于长期淹水稻田的N2O排放规律。因此研究间隙灌溉稻田N2O排放规律对全面正确地认识稻田对大气N2O的贡献是很有意义的。
+　　我国亚热带地区大面积的丘陵山区是我国主要的水稻产区之一。丘陵山区由于地形起伏，造成水热分布不均及坡面不同位置土壤肥力的差异，从而影响稻田N2O排放量。此外，该区常采用稻草直接还田的方法。在高复种指数下，稻草还田还有保持土壤肥力的功效；但早稻稻草还田势必影响晚稻稻田N2O排放量。我国对稻田N2O排放的研究还不多，对丘陵区稻田N2O排放更未见研究报道。本文介绍1993～ 1994年在江西省鹰潭市丘陵区坡顶、坡腰和坡底稻田N2O排放量的观察测定结果。
+1 材料与方法
+1.1 供试土壤
+　　试验地点选在位于江西省鹰潭市刘家站比较典型的丘陵区。供试土壤为中国科学院红壤生态试验站附近农民的水田，属于红壤性水稻土，发育于第四纪红土。该试区一年二熟水稻，冬季休闲或种植油菜、冬小麦或绿肥。试验共设3个处理：坡顶、坡腰和坡底（位于同一坡面上）。供试土壤的部分性质列于表1。
+表1　供试土壤的基本性质
+地形部位pH有机质全氮易分解有机质
+w/(g× kg-1)
+坡顶5.4920.91.1711.8
+坡中5.7028.31.7616.4
+坡底5.7933.02.0018.0
+
+1.2 田间管理
+　　坡顶、坡中和坡底三个观察点采用相同的施肥量，其它管理与农民的大田完全相同。试验从1993年早稻移栽开始，连续进行了四季水稻（两季早稻和两季晚稻）的观察。水稻品种均为德733。1993年早稻5月10日移栽，7月28日收获；晚稻7月30日移栽，11月6日收获。1994年早稻5月6日移栽，7月15日收获；晚稻7月28日移栽，10月25日收获。各季的施肥量相同，施用量为过磷酸钙375 kg/hm2，尿素265.5 kg/hm2和氯化钾150 kg/hm2，其中70%作基肥，30%作追肥，返青期一次追肥。当地农民通常直接把早稻稻草还田，故本项研究在早稻收获后，也将全部早稻草还田，施用量为7125 kg/hm2（湿质量）。1994年坡腰小区在早稻移栽前，农民已施入猪粪约7000 kg/hm2。
+1.3 采样和测定
+　　气体采样采用静态箱方法。箱高1 m，底面为51 cm×51 cm。间隔3～6 d采一次样。1994年在同一小区内固定两个采样点，采样时放置两个采样箱同时采样。样品N2O浓度用气相色谱测定，ECD作检测器。
+2 结果与讨论
+2.1 稻田N2O排放通量随时间的变化
+　　图1是N2O排放通量在水稻生长期随时间的变化。可以看出，每一季水稻生长期中，N2O排放通量随时间的变化均不相同，不同地形部位的稻田N2O排放通量随时间的变化规律也不尽相同。1993年早稻坡腰稻田在水稻生长的中后期共出现三次N2O排放峰，而坡底和坡顶稻田则只出现一次排放峰；1993年晚稻坡底稻田在水稻生长后期出现两个N2O排放峰，坡腰和坡顶稻田则在水稻生长的中后期出现三次排放峰；1994年早稻坡腰稻田在水稻移栽后第10至第29天有大量N2O排放，随后至水稻收获也有一定数量的N2O排放，坡底稻田仅在水稻生长后期有较大数量的N2O排放，坡顶稻田整个水稻生长期皆无N2O排放；1994年晚稻坡底和坡腰稻田在水稻生长的中后期或后期出现两次N2O排放峰，坡顶稻田只是在水稻生长后期出现一次排放峰。各处理各季N2O排放通量随时间变化的不同是由什么引起的呢？由于各处理四季水稻施肥相同，故解释N2O排放通量季节变化的差异还得从施肥外的因素着手。
+
+
+A. 1993年早稻；B. 1993年晚稻；C. 1994年早稻；D. 1994年晚稻
+图1 丘陵区稻田水稻生长期N2O排放通量随时间的变化
+　　图2表示各处理四季水稻生长期N2O排放通量与田面水层厚度的关系。从图2可看出，各处理各季较高的N2O排放通量皆出现在田面无水层，即田面落干的水分状态下，当田面有水层时，N2O排放通量则很小。水稻生长后期，尽管没有肥料施入，但由于田面无水层，N2O排放通量仍有较高的水平。这说明水稻生长期N2O排放通量主要受土壤水分状况的影响，只有在适宜N2O产生和排放的土壤水分条件下，氮肥施用及其它因素对稻田N2O排放的影响才有可能显示出来。例如1994年早稻坡腰稻田水稻移栽后第22天出现极高的N2O排放，这除了主要与田面水分落干有密切关系外，可能还与较高的土温及返青期追肥有关。
+
+
+
+图2 水稻生长期稻田田面水层厚度
+　　土壤中N2O的产生主要来源于土壤中微生物参与下的硝化及反硝化反应，硝化及反硝化细菌的活性需要适度的水、气、热条件。土壤含水量很低和土壤长期持续淹水都不利于硝化及反硝化细菌的生长。对稻田土壤来说，土壤水分含量始终处于较高或很高的状态，这时，土壤通气性就有可能成为微生物活性最重要的制约因素。在田面落干期间，土壤含水量适中，通气性良好，这时土壤硝化作用和反硝化作用都能以较快速率进行且以N2O为主要产物。而稻田淹水时，土壤处于缺氧和强还原状态，N2O的产生以反硝化作用为主，但这时反硝化作用产生的N2O可被N2O还原酶还原为N2，加上水层对N2O向大气扩散的阻隔及对N2O的少量溶解，所以稻田在淹水状态时向大气排放的N2O量很少。国内其它一些测定结果也证实了这一点[6～ 7]。
+2.2 稻田N2O排放通量的空间变化
+　　表2为坡面不同部位稻田1993～ 1994年各季水稻生长期N2O平均排放通量及两年的平均值。除1993年早稻坡底稻田及1994年早稻坡腰稻田出现很低或极高的N2O平均排放通量外，稻田N2O排放量随地形降低而逐渐增加。1993～ 1994年两年中坡底、坡腰及坡顶稻田水稻生长期平均N2O－N排放通量分别为10.94、5.60及2.11 m g/（m2× h）。1993年早稻坡底稻田及1994年早稻坡腰稻田N2O排放为何出现异常呢？我们知道水稻生长期N2O排放通量主要受土壤水分状况的影响，稻田N2O排放主要集中在水分落干期间，淹水状态下，几乎没有N2O排放。从图2可看出，1993年早稻坡底稻田整个水稻生长期皆处于淹水状态，故N2O排放很少；而1994年早稻坡腰稻田水稻生长期水分状况以落干为主，加上水稻移栽前大量猪粪的施入，引起极高的N2O排放。由于1993年早稻坡底稻田、1994年早稻坡顶稻田及1994年早稻坡腰稻田很低或极高的N2O平均排放通量是由非正常的水肥因素引起的，所以在计算两年N2O平均排放通量时未将它们包括在内。
+表2　坡面不同部位稻田1993～ 1994年N2O－N平均排放通量 m g× m-2× h-1
+地形
+部位1993
+早稻1993
+晚稻1994
+早稻A1)1994
+早稻B1)1994
+晚稻A1994
+晚稻B平均
+坡底0.497.7911.8216.627.7410.7410.94
+坡腰5.575.84154.2998.614.956.035.60
+坡顶2.743.77001.270.652.11
+
+1）A、B为同一小区的两个采样点。
+　　已有研究报道，土壤有机碳含量与N2O生成量呈正相关[8～ 9]，不同地形部位稻田N2O排放量的差异可能主要是由土壤有机碳含量的差异引起的（表1）。
+　　从图2可知，晚稻特别是1994年晚稻稻田水稻生长期相当时间土壤水分状况以落干为主，但晚稻稻田N2O平均排放通量并不高（表2）。这可能与大量早稻稻草还田有关。稻草C/N比高，分解慢，且稻草的分解会固定土壤有效氮，减少土壤硝化反应及反硝化反应的氮素供应，从而减少土壤N2O排放量。Bremner and Blackmer报道土壤硝化反应速率及N2O排放速率皆随施入有机肥的C/N比的增加而减少[9]。
+基金项目：国家自然科学基金项目（49870039）
+作者简介：徐华（1966～），男，博士，副研究员。
+作者单位：徐华　邢光熹　蔡祖聪　中国科学院南京土壤研究所，南京 210008；
+　　　　　 鹤田治雄　日本国立农业环境研究所
+参考文献
+[1] Yung Y L, Wang W C, Lass A A. Greenhouse effect due to atmospheric nitrous oxide [J]. Geophys Res Lett, 1976, 3: 619～ 621
+[2] Crutzen P J, Enhalt D H. Effects of nitrogen and combustion on the stratospheric ozone layer [J]. Ambio, 1974, 3: 201～ 210
+[3] Prather M, Dervent R, Enhalt D, et al. Other trace gases and atmospheric chemistry [A]. In: Houghton J T, et al. eds. Climate Change 1994 [C]. Cambridge: Cambridge University Press, 1995. 77～126
+[4] Denmead O T, Freney J R, Simpson J R. Nitrous oxide emission during denitrification in a flooded field [J]. Soil Sci Soc Am J, 1979, 43: 716～718
+[5] Smith C J, Brandon M, Patrick Jr W H. Nitrous oxide emission following urea nitrogen fertilization of wetland rice [J]. Soil Sci Plant Nutr, 1982, 28: 161～171
+[6] 徐华，邢光熹，蔡祖聪，等. 土壤水分状况和氮肥施用及品种对稻田N2O排放的影响 [J]. 应用生态学报，1998, 10(2): 186～188 
+[7] 陈冠雄，黄国宏，黄斌，等. 稻田N2O 和CH4的排放及养萍和施肥的影响 [J]. 应用生态学报，1995, 6(4): 378～382
+[8] Iqbal M. Potential rate of denitrification in 2 field soils in southern England [J]. J Agric Sci, 1992, 118: 223～227
+[9] Bremner J M, Blackmer A M. Terrestrial nitrification as a source of atmospheric nitrous oxide [A]. In: Delwiche C C, eds. Denitrification, Nitrification and Atmospheric N2O [C]. New York: John Wiley & Sons Ltd, 1981, 151～170
+收稿日期：1999-06-08

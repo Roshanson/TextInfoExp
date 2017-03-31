@@ -1,0 +1,102 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第3期　Vol.19 No.3 1999
+
+
+
+聚醚废水处理工艺研究
+王 慧　文湘华　刘广利　黄　霞　施汉昌
+摘要：研究了中和混凝-厌氧+好氧-生物活性炭组合工艺,在不同工况和运行参数条件下处理聚醚废水的效果.结果表明,中和混凝能有效地降低生物处理的污泥负荷,调节pH值6.7,聚合氯化铝的投加量为100mg/L时,聚醚废水COD去除率可达28%,当进水的COD为3000～ 4000mg/L时,聚醚废水经此组合工艺处理后,COD的总去除率达96%以上,出水COD值约150mg/L.
+关键词：聚醚废水；生物接触氧化；生物活性炭；处理工艺
+中图分类号：X703 文献标识码：A 文章编号：1000- 6923(1999)03- 0273- 04
+Study on treating polyaether wastewater process.
+WANG Hui, WEN Xiang-hua,LIU Guang-li,HUANG Xia,SHI Han-chang 
+(State Key Joint Laboratory of Environmental Simulation and Pollution Control,Department of Environmental Science and Engineering,Tsinghua University, Beijing 100084,China). China Environmental Science. 1999,19(3)：273～276
+Abstract：The feasibility and effect of applying cogulation-sedimention-anaerobic+aerobic biological active carbon process to treat polyaether wastewater in different operating conditions was studied. The results showed cogulation-sedimention process could efficiently reduce the sludge loading rate of biological treatment process. when PAC was used with 100mg/L at pH 6.7, COD removal rate can reach 28%. Applying the above treatment process,when COD of influent is about 3000～ 4000mg/L, COD of effluent can reach about 150mg/L and total COD removal rate is more than 96%.
+Key words：polyaether wastewater；biological contact oxidation process；biological active carbon；treatment technics 
+　　有机化工废水多为难降解废水,而聚醚废水又是其中难度较大的一类废水.目前国内外有关聚醚废水的处理尚未见报道.天津某化工厂以生产聚醚多元醇、乙二醇醚及其它合成表面活性剂为主.其生产车间排放的聚醚废水成分复杂,含油量大,且水质和水量的变化都很大.对水质的抽样测试结果表明,在一天中污水排放的COD值由600mg/L变化至7000mg/L.高浓度废水主要来源于聚醚等生产车间,尽管经过生活污水稀释,该厂污水总排放口出水COD仍在3000～ 4000mg/L之间,平均为3500 mg/L(SS 80～235mg/L,pH值为5.5,石油类含量6～12mg/L,水体呈乳浊液状).本实验研究了中和混凝-厌氧+好氧-生物活性炭组合工艺处理聚醚废水的可行性和处理效果,提出了综合物化预处理、生物处理和化学氧化的工艺流程,确定了合理经济的设备运行参数[1],使该厂聚醚废水达到污水排放COD<100mg/L的要求.
+1 方法和设备
+　　试验由物化预处理、生物处理和化学氧化深度处理三部分组成(图1).
+1.1 预处理
+　　原水pH值<6.0,上层有浮油,下层有沉淀,水质较浑浊.正常的废水生物处理系统要求pH值在6～ 9之间,考虑到微生物的正常代谢,对原水进行了中和混凝试验,先投加氢氧化钙将聚醚废水的pH值从5.5调至8.0,再以聚合氯化铝为混凝剂,以COD为监测指标,考察投药量与COD去除效率的关系.
+1.2 生物处理
+　　聚醚废水中含大量大分子聚合物,属难降解物质.故应采用厌氧和好氧生物处理结合的方法,先以厌氧生物处理切断大分子使之成为可降解或易降解的小分子化合物,再以好氧生物法处理.好氧处理工艺包括接触氧化和生物活性炭.
+
+图1　聚醚废水处理试验流程示意
+Fig.1 The flow chart of treating polyaether wastewater 
+1.预处理 2.厌氧生物反应器 3.好氧生物接触氧化
+反应器 4.生物活性炭反应器 5.化学氧化深度处理
+1.2.1 厌氧与好氧生物接触氧化处理[2] 厌氧和接触氧化均采用生物膜法,以有机软性填料挂膜.好氧活性污泥取自燕山石化公司废水处理厂二沉池,厌氧活性污泥则由好氧污泥在缺氧条件下驯化得到.在装置运行初期,接种污泥至试验装置中,根据不同的配料比投加聚醚废水和其它营养物质.
+1.2.2 生物活性炭处理[3]　采用颗粒活性炭为填料,利用其强吸附性及生物降解性在连续曝气的条件下降解废水中剩余的有机物.
+1.3 化学氧化深度处理[4]
+　　采用臭氧氧化法对上述出水进行深度处理,以达到理想的处理效果又可节省时间.
+1.4 试验设备
+　　DBJ-621型四联搅拌机;厌氧生物反应器:内径12.5cm,高1.2m,有效体积为12L,反应器内悬挂软性填料;好氧生物接触氧化反应器:内径18cm,高1.2m,有效体积为24L,反应器内悬挂软性填料;生物活性炭反应器:内径3.3cm,高42.5cm,有效体积为184mL,反应器内装颗粒状活性炭(HG3-1290-80).上述反应器均为有机玻璃园柱;臭氧氧化反应器(清华大学机械设备厂).
+2 结果与分析
+2.1 原水水质测定
+　　聚醚废水水质变化很大,其COD值最低为408mg/L,最高可达8114mg/L.图2是3次24h (每2h取1次水样)水质调查结果.从图2可看出,聚醚废水水质即使在几小时内也要发生很大的变化.为了使水处理设备能稳定地运行,需要设置调节池,调节聚醚废水水质,以减小对处理设备的冲击负荷. 
+
+图2　不同时间段原水水质中COD的变化
+Fig.2 COD changes of original water during different time periods
+2.2 中和及混凝试验
+　　原水pH=5.5,COD约3500mg/L.投加氢氧化钙调节pH值,结果表明,6.7为最适宜pH值,出水平均COD=2500mg/L,去除率最高为28%,这可能是聚醚表面活性剂类废水的一个特点.因多元醇醚极性一般较强,加入适当的碱可以降低多元醇醚的极性,使其在水中的溶解度降低,因此,对于这类废水,中和是很重要的处理步骤.混凝剂的种类和投加量的实验结果表明,加入聚合氯化铝(PAC)100mg/L,COD降至2026mg/L,去除率可达19%.
+2.3 厌氧和好氧生物接触氧化试验
+　　厌氧和好氧生物接触氧化试验结果见表1.两个工况(第一工况:实验1～6;第二工况:实验7、8)总水力停留时间分别为36h和48h,但厌氧段出水COD值与进水COD值相比变化都不大,一般认为有机物主要在好氧段被氧化分解,在厌氧段大分子有机物可能被水解成小分子有机物,促进好氧段的生物降解.考虑到水力停留时间越长,反应器的体积越大,则工程的基建投资越高,因此,选择第一工况,HRT=36h,结果表明,好氧段出水中COD值在1000mg/L左右,COD去除率仍达到了44%以上.
+表1　厌氧+好氧生物接触氧化试验结果
+Table 1 Results of anaerobic treatment and biological contact oxidation process
+序号进水COD值(mg/L)厌氧段出水COD值(mg/L)好氧生物接触氧化段出水COD值(mg/L)COD去除率(%)
+117601837130926
+21971190189854
+32245231598256
+419431749114341
+522912312120048
+619122120112441
+72010221499353
+821042310118144
+
+　　注:厌氧反应水力停留时间:1～6为12h,7～8为16h;好氧生物接触氧化
+　　反应水力停留时间:1～6为24h,7～8为32h;1～8为间歇进水序号
+2.4 生物活性炭试验
+　　水力停留时间(HRT)为8h,进水为厌氧+好氧生物接触氧化的出水.试验结果见表2.
+表2　生物活性炭试验结果
+Table 2 Result of biological active carbon treatment
+序号进水COD值(mg/L)出水COD值(mg/L)COD去除率(%)
+1144512991
+272516178
+399315984
+499317183
+599315484
+
+　　因生物接触氧化的出水COD值仍高达800～1300mg/L,还未达到排放标准,所以须对其出水作进一步处理.生物活性炭技术充分利用活性炭的吸附作用和微生物对有机物的降解作用,它延长了活性炭的工作周期并提高了有机物的去除率.试验结果表明,当水力停留时间为8h,出水中COD值可降到150mg/L左右,平均COD去除率达到84%,累计去除率为96%.
+2.5 臭氧氧化
+　　为使出水中的COD值小于100mg/L,采用臭氧氧化法对出水作进一步处理.进水中COD值为147mg/L,臭氧浓度10mg/L,气水接触时间5～15min,出水COD值为97mg/L.
+3　聚醚废水的处理工艺
+　根据实验结果及分析,采用中和混凝-生物厌氧+好氧-生物活性炭组合工艺可以有效地处理难降解的聚醚废水,使COD的去除率达96%以上,出水COD为150mg/L.根据上述实验结果设计了聚醚废水处理工艺流程(图3).主要设备的水力停留时间、相应的累计COD去除率见表3.此工艺流程及运行参数对聚醚类有机废水的处理工艺均有参考价值.
+
+图3　聚醚废水处理流程示意
+Fig.3 Flow chart of treating polyaether wastewater
+1.调节池 2.隔油池 3.中和、混凝池 4.沉淀池 5.厌氧反应池
+6.好氧生物接触氧化反应池 7.沉淀池 8.生物活性炭反应池
+9.化学氧化反应池 10.污泥处理
+表3 各设备的运行参数及COD累计去除率
+Table 3 Parameters of runingequipment and add up COD removal rate
+设备名称水力停留时间(h)COD累计去除率(%)
+调节池16　
+隔油池85
+中和、混凝池及沉淀池235
+厌氧反应池12　
+好氧生物接触氧化反应池2471
+生物活性炭反应池896
+化学氧化反应池0.597
+
+4 结　论
+4.1 当聚醚废水进水COD为3000～4000mg/L时,经过中和混凝沉淀-生物厌氧+好氧-生物活性炭组合工艺处理,聚醚废水的 COD去除率达96%,出水COD值为150mg/L.实验证明,中和混凝能有效地降低生物处理的冲击负荷,聚醚废水中COD的去除效果显著.调节pH值为6.7、聚合氯化铝的投加量为100mg/L时,COD去除率达28%.
+4.2 厌氧-好氧两个工况的研究表明,停留时间的延长对聚醚废水的处理效果影响不大,说明聚醚废水中存在生物难降解物质,因此欲达到较高的排放标准,采用生物活性炭吸附作用是必要的.而化学氧化段的采用与否可视排放要求而定．
+作者简介：王 慧(1969-),女,辽宁鞍山人,清华大学环境科学与工程系讲师,博士,主要从事难降解有机废水的降解过程和机制以及有关环境化学分析方面的教学和研究工作.承担过国家自然科学基金项目“藻类天线系统复合物能量传递机制的研究”;国家“八五”科技攻关项目“变藻蓝蛋白核心复合物结构与功能的研究”等研究工作.发表论文13篇.
+作者单位：（清华大学环境科学与工程系,环境模拟与污染控制国家联合重点实验室,北京 100084）
+参考文献：
+[1]许保玖.当代给水与废水处理原理[M]. 北京:高等教育出版社,1991,206.
+[2]Babu Z F, Timothy M V. Complete degradation of polychlorinated hydrocarbons by a two stage biofilm reactor [J]. Applied and Environmental Microbiology, 1991,12:3418- 3422.
+[3]Khodadoust A P, Wagner J A, Suidan M T,et al.Anaerobic treatment of PCP in fluidized-bed GAC bioreactors [J]. Water Research, 1997,31(7):1776- 1786.
+[4]Buxton G V, Greenstock C L, Helman W P,et al. Critiacal review of rate constants for reactions of hydrated electrons and hydrogen atoms and hydroxyl radicals (.OH/.O-) in aqueous solution [J]. J. Phys. Chem. Ref. Data, 1998,17:515- 519.
+收稿日期：1998-11-03

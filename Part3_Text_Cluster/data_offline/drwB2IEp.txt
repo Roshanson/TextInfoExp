@@ -1,0 +1,126 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第1期 No.1 Vol.18 1998
+科技期刊
+
+武汉市城区大气环境质量现状及趋势研究
+洪　松　王少平　吴胜军　郑泽厚　(湖北大学生态学研究所，武汉 430062)
+田献民　(武汉市环境保护科学研究所，武汉 430015)
+王文革　(湖北省环境保护局，武汉 430072)
+文　摘　对武汉市7城区1991～1995年间的大气环境质量进行分析评价，并通过模式计算污染物的多年平均地面浓度分布。在此基础上，运用等维灰数递补技术预测大气质量的变化趋势并进行预评价。结果表明，武汉市城区大气SO2浓度逐年下降，TSP浓度基本持平，煤烟型污染将有所改善。但石油燃料燃烧排放的NOX将有显著增加，整个大气环境质量仍呈下降趋势。
+关键词　武汉市城区　大气环境质量　模糊聚类　 大气扩散　等维灰数递补预测
+Study on the present situation and tendency of atmospheric environmental quality in Wuhan city proper.Hong Song,Wang Shaoping,Wu Shengjun,Zheng Zehou(Institute of Ecology,Hubei University,Wuhan 430062)；Tian Xianmin(Wuhan Institute of Environmental Protection Science,Wuhan 430015)；Wang Wenge(Bureau of Environmental Protection in Hubei Province,Wuhan 430072).China Environmental Science.1998,18(1)：76～82
+Abstract―We analyzed and assessed the atmospheric environmental quality in Wuhan city proper and also calculated perennial average ground level concentration during 1991～1995 by model.On the basis of aforementioned works,we used Grey System theory to forecast concentration changes in later years of 3 major pollutants:SO2,NOX and TSP.The result of our research shows that the SO2 concentration in Wuhan proper’s atmosphere tend to descend year after year,and the TSP concentration will have no changes approximately.So,the coal smoke pollution in Wuhan will improve somewhat.But NOX,which is exhausted chiefly by automobiles,will have a outstanding increase.To sum up,the whole atmospheric environmental quality still tend to decline.
+Key words：Wuhan city proper　atmospheric environmental quality　fuzzy classify　atmospheric diffusion　grey forecasting
+　　武汉市为华中第一大城市和最大工商业中心，其城区主要特点是人口密集，工、商业分布相对集中。武汉市每年排放的废气总量超过1000亿标准立方米，其中城区就占80%以上，对大气环境造成严重污染。查清武汉市城区大气环境质量现状并预测其发展趋势，是城市环境管理和规划工作的基础。
+1　武汉市7城区大气质量现状的分析与评价
+1.1　各城区大气质量模糊聚类分析
+　　表1给出武汉7大中心城区3项主要污染物年日均值的多年(1991～1995年)平均值相对于国家二级标准(GB3095-82)的超标倍数Xij=(Cij)/(Sij)，以此作为聚类参数。
+表1　SO２、NOx、TSP相对国家二级标准
+的超标倍数
+Table 1　The nonattaiment multiples of SO2,NOX and
+TSP in comparison with national second
+grade standard
+
+行政区SO2NOXTSP
+江岸0.400.501.06
+江汉1.401.121.18
+口0.670.771.04
+汉阳0.630.581.00
+武昌0.530.790.97
+青山0.730.581.18
+洪山0.180.630.92
+
+首先用夹角余弦法〔1〕计算衡量被分类对象间相
+似程度的统计量rij：
+（1）
+(i,j=1,2,3,…，7)
+式中：Xit为i城区的第t个参数的值；Xjt为j城区的第t个参数的值。将表1数据代入(1)式中得到rij,然后对rij进行两次复合运算〔2，3〕得到模糊等价关系矩阵 R*：
+R*=
+
+　　为给出λ截矩阵现取λ值为0.97，即将R*中大于0.97的数值改写为1，其它数改写为0，得R*λ=0.97。在R*λ=0.97中第1，3，4，5，6行一样，故划为一类，而第2行(江汉区)，第7行(洪山区)各为一类，共分为三类。
+1.2　各城区大气质量指数分析
+
+图1　武汉市各城区大气质量指数变化
+Fig.1　Changes of air quality index in Wuhan city proper
+　　作者用姚志麒指数I对武汉7城区的大气环境质量进行了评价(图1)，以便观察各城区大气质量近5年的变化。
+1.3　城区大气质量综合评价
+　　模糊聚类分析结果与指数分析结论一致，江汉区的三项指标均超过国家二级标准，属中度污染型。青山、口、武昌、汉阳、江岸区只是个别指标超标(武昌区的三项指标均达到国家二级标准)，属轻度污染型，但青山区的污染相对较重。洪山区虽然也属轻度污染型，但有些年份已达到清洁水平，其三项指标全部达到国家二级标准，其中SO2浓度达到国家一级标准，因此可认为其大气质量是7城区中最好的。就整个城区大气质量平均状况而言，属于轻度污染型。
+2　武汉市城区大气污染物扩散计算
+2.1　大气污染物扩散的气象条件
+2.1.1　气温　1991～1995年武汉市5年平均气温为16.6℃，即289.6K。
+2.1.2　风况和大气稳定度　现将武汉市各风向下各类稳定度出现的多年(1991～1995年)平均频率及平均风速列入表2。大气低层风速廓线采用指数公式计算，当大气稳定度为A～B时指数m取0.20，稳定度为C时m取0.25，稳定度为D时m取0.33，稳定度为E～F时m取0.43。
+2.1.3　混合层高度　根据武汉市的实测资料，大气不稳定(A～C)类混合层高度为982m，中性(D)类为814m，稳定(E～F)类为435m。
+2.2　扩散参数　高架点源参数取值如表3，面源参数取值如表4。
+2.3　污染源及源强
+2.3.1　主要污染源　青山热电厂、武钢烧结厂、武钢炼铁厂、武钢焦化厂、武汉石油化工厂等103家大中型企业(包括紧邻城区的阳逻电厂)为武汉市城区工业废气的主要污染源，其等标污染负荷比累计达86%。
+2.3.2　源强　将全城区进行2×2km网格划分，分别统计70个高架点源(源高≥50m)及所有面源1991～1995年的平均源强。交通源(主要排放NOX)源强未作统计。各城区各类污染源源强(见表5)。
+表2　武汉市各风向下各类稳定度出现的多年平均频率(%)与风速(m/s)
+Table 2　The perennial average frequency of stability degrees and average
+wind speed in every wind direction in Wuhan city 
+
+风向不稳定中性稳定∑平均
+风速风向不稳定中性稳定∑平均
+风速
+(A～C)(D)(E～F)(A～C)(D)(E～F)
+N1.84.42.38.52.3SSW1.00.91.02.92.8
+NNE1.02.31.64.92.6SW1.50.90.73.12.8
+NE4.14.92.811.82.2WSW1.00.10.31.42.2
+ENE0.61.81.74.12.2W0.40.40.51.31.7
+E1.01.51.23.71.7WNW0.40.20.10.72.1
+ESE0.20.10.50.81.7NW0.93.10.84.82.1
+SE1.60.71.03.31.8NNW0.90.80.62.32.2
+SSE0.60.30.51.41.9C5.99.126.941.9
+S1.60.80.73.12.2∑24.532.343.2100
+
+表3　武汉市高架点源大气扩散参数系数值
+Table 3　The atmospheric diffusion parameters of elevated emission in Wuhan city
+
+稳定度 σy=axbσz=cxd
+ab下风距离(m)cd下风距离(m)
+A～B0.4260.901≤10000.0091.514≤500
+　0.6020.851＞10000.0012.109＞500
+C0.2820.914≤10000.1270.964≤500
+　0.3960.865＞10000.0571.094＞500
+D0.2300.919≤10000.1150.941≤500
+　0.3140.875＞10000.0761.008＞500
+E～F0.0990.925≤10000.1120.777≤2000
+　0.1240.893＞10000.5290.572＞2000
+
+表4　武汉市面源大气扩散参数系数值
+Table 4　The atmospheric diffusion parameters of plan pollution sources in Wuhan city
+
+项目A～BCDE～F
+c0.440.360.300.24
+d0.940.890.830.78
+
+表5　武汉市各城区大气污染物排放强度(mg/s)
+Table 5　The discharge intensity of atmospheric pollutants in every urban district of Wuhan city
+
+行政区面源高架点源
+SO2TSP个数SO2TSP
+江岸649682277862(0)24731129
+江汉446601923210(0)00
+口1197662315817(0)2739714488
+汉阳677172683803(1)2698534228
+武昌1031443641544(0)646866119
+青山57333669905352(18)　1851883928494
+洪山918683668851(1)2888773155
+阳逻电厂――1(1)15166844908
+
+　　　　　　注：()内为源高≥100m的点源数目
+2.4　污染物扩散模式〔4，5〕
+2.4.1　武汉高架点源扩散模式　SO2扩散模式
+
+式中：
+
+Cj(x,y,Hi)为第i个源对接受点j的地面浓度贡献(mg/标m3)；Qi为第i个源的源强(mg/s)；σy、σz分别为y,z方向的扩散参数(m)；为排放口高度处的平均风速(m/s)；Hi为第i个源的有效排放高度(m)；L为混合层高度(m)；n为混合层顶对烟云的反射次数(本计算中取5)；β为SO2转化率。
+　　TSP扩散模式
+
+式中：
+
+Vg为粒子的沉降速度；α为地面反射系数；其它符号意义同前。
+2.4.2　面源模式
+
+式中：CA为任一网格内的污染物地面浓度(mg/标m3)；Q0为待计算网格本身的源强(mg/s)；Qi为待计算网格上风方向第i个网格面源的源强(mg/s)；K为待计算网格上风方向的面源数目。
+对于SO2：

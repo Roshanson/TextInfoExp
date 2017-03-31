@@ -1,0 +1,57 @@
+土壤与环境
+SOIL AND ENVIRONMENTAL SCIENCES
+1999年　第4期　第8卷　Vol.8　No.4　1999
+
+
+
+菌根真菌在墨兰和建兰根中的感染特征及生理特性
+潘超美　陈汝民　叶庆生
+　　摘要：从产于粤北山区的野生建兰根中分离出4株内生真菌，并对这些真菌在兰根上的感染特征及生理学特性进行了研究。结果表明，菌根真菌多数侵染植株根段离根尖3～18 cm的根毛区，而根尖和新长出的根则很少被感染；几乎所有的老根都受过真菌的感染。真菌菌丝从兰根表皮侵入，通过表皮层进入皮层薄壁细胞内部形成菌丝团，而在表皮层并不进入细胞内，也不形成菌丝团。真菌感染根状茎后第9天，皮层细胞内的菌丝团开始消解。所分离的菌株能利用大部分简单的有机碳源和氮源，能在营养成分不明确的天然介质中生长良好，但对硝酸盐的利用较差。
+　　关键词：墨兰；建兰；菌根真菌；感染特征；生理特性
+　　中图分类号：Q143+. 2 文献标识码：A
+Infection Characteristics and Physiological Features of Mycorrhizal Fungi in Roots of Cymbidium sinense and C. ensifolium 
+PAN Chao-mei1，CHEN Ru-min2，YE Qing-sheng2
+（1: Guangdong Institute of Eco-environmental and Soil Sciences, Guangzhou 510650, China;2: Department of Biology, South China Normal University, Guangzhou 510630, China）
+　　Abstract:　Four endophytic fungi (unidetified) have been isolated from the roots of Cymbidium ensifolium growing in the mountain area of northern Guangdong province. The characteristic of mycorrhizal infection, general morphology and physiology of these isolates were investigated. The results showed that fungi hyphae were frequently present in root hairs sections that were 3～18 cm from root tip. Cortical infection was rarely seen in root tip and young roots. Almost all old roots have been invaded by mycorrhizal fungi. Fungi hyphae invaded root epidermis into cortical cells and formed pelotons there, but peloton were not seen in epidermal cells. The pelotons in cortical cell of Cymbidium sinense and C．ensifolium rhizomes began to digest after 9 days of infection. These isolates could utilize most of simple carbohydrate and nitrogen source except for nitrate.
+　　Key words:　Cymbidium sinense; C. ensifolium; mycorrhizal fungi; infection characteristic; physiological feature
+　　在自然条件下兰科种子胚细胞不能形成酶系统来满足萌发过程的营养所需[1]。真菌感染后，菌根真菌的菌丝把胚和基质连接起来，形成一个共生系统使胚细胞得以生长发育。因此，菌根真菌在兰科植物种子的萌发和幼苗生长过程中起极其重要的作用。为了寻找能与兰科植物形成良好共生关系的真菌菌株，我们对产于粤北山区的野生建兰根段的菌根真菌进行分离、筛选，并观察菌根真菌在兰根上的感染特征和一般生理特性。本研究旨在为今后开展菌根真菌在国兰快速繁殖研究和工厂化栽培生产方面提供科学依据。
+1 材料与方法
+1.1 菌根真菌的分离与纯化
+　　野生建兰植株的采集和菌株分离情况见表1。
+表1　样品收集及分离情况
+分离号分离日期产地寄主
+P011997年5月新丰C. ensifolium
+P101997年10月始兴C. ensifolium
+P051998年4月新丰C. ensifolium
+P151998年11月南雄C. ensifolium
+
+1.2 真菌感染墨兰和建兰根状茎实验
+　　1）分别用无菌的墨兰和建兰种子萌发成根状茎。
+　　2）将上述分离好的菌株转到马铃薯甘露糖醇酵母浸膏葡萄糖液体培养基[2]中，自然光照，28 ℃下旋转振荡（60 r/min）培养10 d。用超声波振荡仪把菌丝团打散，或用无菌研钵将菌丝团磨碎，用四层无菌纱布过滤，收集菌丝滤液，备用。
+　　3）吸取1 ml菌丝滤液到盛有50 ml 1/2MS液体培养基的150 ml三角烧瓶中（MS 培养基中的蔗糖用10 g/kg的羧甲基纤维素代替，再加入1 g/kg的葡萄糖），并接入约2 g的根状茎，每天光照8 h，28 ℃下振荡培养。从第3天起每天取根状茎，用Trypan blue染色后于显微镜下观察真菌感染情况。
+1.3 真菌在兰根上的感染特征的观察
+　　主要是在光学显微镜下进行。
+1.4 菌根真菌对碳源和氮源的同化试验
+　　同化试验采用生长图谱法[3]，培养基为无碳源基础培养基和无氮源基础培养基[3]。
+2 结果与讨论
+2.1 菌根真菌的一般形态特征
+　　4个菌株在PDA平板培养基上一般要生长7～10 d，气生菌丝浓密，分别为无色、白色。P01和P05号菌株气生菌丝较短，紧密，菌落呈绒毛状，培养时间长了会形成同心圆；P10和P15号菌株气生菌丝较长，疏松，菌落呈棉絮状；P15号菌株为快生型种，接种后一周即长满整个斜面；而P10号菌则为慢生型，一般需要生长10 d以上才能长好。在光学显微镜下观察，P10和P15号菌株菌丝呈蜘蛛网状，菌丝粗为0.8～2 m m，无分隔，较少分枝，菌丝内原生质体较浓；P01和P05号菌株菌丝较粗，透明，分枝多，多呈直角分枝，分枝与主枝相接处稍缢缩，其上常有一横隔，菌丝粗为8～12 m m，没有锁状联合，不产生孢子。
+2.2 菌根真菌在兰根上的感染特征
+　　从收集的样品来看，感染了菌根真菌的兰苗，叶片上病斑较少，叶色浓绿，尤其是感染率较高的植株。兰科菌根真菌多数侵染在植株的根段距离根尖3～18 cm的根毛区，而根尖伸长区则很少被感染。较嫩、新出的根则很少被菌根真菌感染，被真菌的感染多在老根段，所有被检测的老根几乎100％都受过真菌的感染。通过组织解剖和显微观察，发现这些菌株具有典型的兰科菌根真菌的特征。菌丝从表皮层侵入，进入皮层薄壁组织。在寄主根系的皮层薄壁组织细胞内，真菌的菌丝呈螺旋线团状或结状；感染程度较高的根段，整个皮层薄壁细胞组织内部都布满了菌丝团或消解的菌丝结。在显微镜下观察根段横截面的切片，可以看到真菌在表皮层不形成菌丝团，也不进入细胞内部。真菌菌丝穿过表皮进入皮层细胞内，沿细胞壁缠绕数圈成菌丝团，然后再感染相邻的另一个细胞，逐步扩展为一个感染区域，时间较长的菌丝团已经开始消解。在低倍镜下，用红血球计数板对徒手切片的根段横截面的感染率进行估算，结果显示，感染率为20%～60%。用组培墨兰和建兰根状茎接种P15号真菌的感染试验中，发现皮层细胞内菌丝团一般在9～11 d开始解体。
+　　从光学显微镜下可以看到，真菌菌丝不侵染表皮细胞和中部的维管柱；在兰根表皮层上还可以观察到两种以上的真菌菌丝，这说明了一种兰科植物可以与多种寄生真菌相联系，但并不是所有的这些真菌都能刺激寄主的生长发育和形成良好的共生关系。一般认为，真菌菌丝能够侵染兰科植物的原球体，在皮层细胞内形成菌丝团，并能刺激寄主植物种子萌发菌株才能与寄主形成互为共生的关系[4]。
+2.3 菌根真菌的一般生理特性
+　　所分离到的真菌都可以在营养成分不明确的天然介质中良好地生长。在PDA培养基、麦麸糖土壤浸出液培养基和麦麸糖树叶（山毛榉科）提取液培养基上，3～7 d就可以形成直径为2～5 cm的菌落，三种培养基对菌丝的生长并无明显差异。
+　　在pH范围和温度试验中，这些真菌容易在中性偏酸的环境中生长，当pH＜5.6或pH＞7.6时，在PDA培养基上则生长缓慢。4种真菌的菌丝生长所需的温度不同，P01和P05号菌的最适生长温度为28～30 ℃，P10号菌的最适为25～28 ℃，P15号菌为25 ℃，低于或高于各自的最适生长温度，生长速度就减慢。
+　　在碳源同化范围试验中，这些真菌能够利用大部分可溶性的单糖或双糖作为碳源，如葡萄糖、蔗糖、麦芽糖、果糖、甘露醇、半乳糖、纤维二糖等；同时也能分解一些复杂的大分子碳水化合物作碳源，如淀粉、纤维素、果胶、腐殖质和阿拉伯糖等，但生长较慢；这表明这些真菌对碳源没有很特殊的要求。
+　　在淀粉、纤维素、果胶等作碳源的培养基上，这些真菌在生长过程中会使环境中的pH由6.0降至5.3左右，这表明真菌在分解利用这些较复杂碳源的代谢过程中，会产生一些有机酸而使环境中的pH稍微下降，而这个酸度范围对真菌菌丝的生长有所抑制，但对根状茎的生长则影响不大。环境中pH的下降，有利于共生体系的同步生长。
+　　这些真菌能够利用多种无机和有机的氮源，特别是对氨盐和简单的有机氮利用最好；对尿素、氨基酸、胨和蛋白质的利用也很好；但对硝酸盐的利用较差。
+基金项目：广东省“九五”科技重点攻关项目（9622033-10）
+作者简介：潘超美（1956～），女，硕士，高级实验师
+作者单位：潘超美　 广东省生态环境与土壤研究所，广州 510650；
+　　　　　 陈汝民　叶庆生　华南师范大学生物系国兰研究中心，广州 510630
+参考文献
+[1] Hadley G. Orchid Mycorrhiza [A]. In: Arditti J, ed. Orchid Biology: reviews and perspectives II [C]. Ithaca: Cornell University Press, 1982. 84～118
+[2] 俞大绂. 植物病理学和真菌学技术汇编（2）[M]. 北京: 人民教育出版社；1977. 121
+[3] 中国科学院微生物研究所. 常见与常用真菌 [M]. 北京: 科学出版社，1978. 259
+[4] Harley J L, Smith S E. Mycorrhizal Symbiosis [M]. Cambrige: Academic Press, 1983. 268～295
+1999-07-08

@@ -1,0 +1,94 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第2期 No.2 Vol.18 1998
+科技期刊
+
+利用光合细菌处理糖蜜酒精发酵废液中试研究
+樊凌雯　张肇铭　张德咏　杨素萍　(山西大学生命科学系，太原 030006）
+文　摘　利用厌氧可溶化发酵-光合细菌（UASB-PSB）四级槽法处理糖蜜废液，CODCr和BOD5去除率分别达95.33％和96.12％以上，处理后的光合细菌菌液可以综合利用，具有较大经济效益。
+关键词　光合细菌　厌氧可溶化发酵法　糖蜜酒精废液　优势度
+A pilot test on the treatment of sugar-syrup alcohol ferment wastewater with photosynthetic bacteria. Fan Lingwen,Zhang Zhaoming,Zhang Deyong,Yang Suping(Department of Life Science,Shanxi University,Taiyuan 030006).China Environmental Science.1998,18(2):173～175
+Abstract―In this paper,the UASB anaerobic ferment and PSB(photosynthetic bacteria) 4-stage system method to treat sugar-syrup alcohol wastewater are used.The removal of CODCr and BOD5can reach to the rate more than 95.33％ and 96.12％respectively.After the treatment, the solution of PSB can be used in many fields.
+Key words:PSB　UASB　sugar-syrup alcohol wastewater　dominant level
+　　糖蜜酒精废液是制糖工业中残留物废糖蜜进行酒精发酵后产生的酱酒色浓稠的废液,其CODCr高达10余万mg/L，含有大量酵母菌体，成分复杂，严重污染环境。
+　　目前还没有经济适用的废糖蜜酒精发酵废液净化处理技术。虽然已有人用沉淀回收法、厌氧消化法〔1〕和UASB反应器处理法等〔2〕对废糖蜜酒精发酵废液处理进行了大量探索，但这些方法处理效率低，只有50％左右，且存在管理复杂，运转费用高，处理后剩余污泥难以利用等问题。利用光合细菌处理高浓度废水废液，不仅工艺设备简单且处理费用低，处理后菌体还可以综合利用，不造成二次污染。作者在小试研究的基础上采用厌氧可溶化发酵-光合细菌（UASB-PSB）四级反应槽法处理大同糖厂糖蜜酒精发酵废液，CODCr去除率可达94％以上，且处理后废液中光合细菌浓度可达107～108个/mL，既可作饲料添加剂又可作为菌肥使用〔3〕。
+1　材料与方法
+1.1　菌种与工艺流程
+1.1.1　可溶化菌种　自然驯化培养的混合厌氧菌。
+1.1.2　PSB菌种　山西大学光合细菌研究室提供，从20多株PSB中选取高效10株菌株合理搭配而成，名录如下:球形红杆菌(Rhodobacter sphaeroide ATCC 17023);深红红螺菌(Rhodospirillum rubrum ATCC 11170);沼泽红假单胞菌(Rhodopseudomonas palustris ATCC 17001)；深红红螺菌(Rhodospirillum rubrum 菌株 8)；沼泽红假单胞菌(Rhodopseudomonas palustris 菌株 18,37);球形红杆菌(Rhodobacter sphaeroide菌株55);荚膜红杆菌(Rhodobacter capsulatus菌株48)；酒色着色菌(Chromatium vinosum 菌株 S)；泥生绿菌(Chlorobium limicola 菌株 N)；着色菌(Chromatium sp. 菌株 52)
+1.1.3　工艺流程见图1
+1.2　废液来源及主要指标
+　　废液来源于糖厂酒精车间蒸馏后的外排液，工业上称废醪液，主要指标见表1。
+1.3　实验设备及运行条件
+　　厌氧发酵罐有效容积12m3，上部是三相分离器，中下部有蒸汽盘管加热器，控温在35～37℃。PSB 1#、2#、3#罐有效容积2m3，内置100W潜水泵搅拌，罐敞口放置，微好氧培养，上部用碘钨灯照明，强度2000Lx，温度28～30℃。PSB4#罐有效容积1m3，其它条件同上。成品罐光照厌氧培养其它条件同上。采用连续进水方式,处理废液2t/d，PSB罐出口DO 0.1～0.4mg/L，稳定运行3个月。
+1.4　实验基本参数和分析方法
+　　CODCr、BOD5、DO、TVA、氨氮、悬浮物按标准方法〔4〕进行测定；pH值用精密试纸测定；异养细菌总数用平板菌落计数法；光合细菌用MPN法（五管法）和RCUBN〔5〕平板计数法计数。
+表1　废液各主要指标
+Table 1　Parameter of wastewater
+
+CODCr
+(mg/L)BOD5
+(mg/L)SS
+(mg/L) pH值 
+6～10×104 5～7×104 7717～8683 4.64～5.20
+
+
+图1　工艺流程示意 
+Fig.1　Work process
+1.储液池　2.高位槽(2t/d)　3.厌氧罐(容积12m3) 4.PSB1#(容积2m3)　5.PSB2#(容积2m3)　　　　6.PSB3#(容积2m3)　7.PSB4#(容积1m3） 8.成品罐(容积2m3)　9.光合细菌培养槽　　　　10.11.12.水泵　13.14.流量计
+2　结果与讨论
+2.1　处理效率
+　　UASB-PSB法处理效率见表2，图1，图2。
+表2　废醪液经UASB-PSB法处理效率
+Table.2　Treatment efficiency of wastewater by the UASB-PSB system
+
+项　目CODCr　COD去除率 BOD5BOD5去除率 CODCr/BOD5TVA TVA利用 NH3-N NH3-N 利DO 
+pH值 
+　(mg/L)(％)(mg/L) (％) 　(mg/L)率 (％)(mg/L)用率(%)(mg/L)
+废醪液　 90956 　62812　1.45 1879　129 
+厌氧罐　2126676.62 15201 75.80 1.40 7481　1885
+PSB1#罐8390 90.87 5466 91.30 1.54 4740 36.6 812 56.9 0.1 6.8～7.2
+PSB2#罐 6903 92.41 3982 93.66 1.73 3895 47.9 610 67.6 0.27.0～7.6
+PSB3#罐 5657 93.70 303295.17 1.87 2891 61.4 464 75.4 0.2 7.2～7.4
+PSB4#罐 4248 95.33 2439 96.12 1.74 2348 68.6 420 77.7 0.3 7.2～7.4
+
+　　　　　　
+图2　CODCr去除率变化曲线　　　　　　　图3　BOD5去除率变化曲线
+Fig.2　Theremoval rate of CODCr　　　　　　Fig.3　Theremoval rate of BOD5
+1.总去除率　2.进水CODCr　3.出水CODCr　　　1.总去除率　2.进水BOD5　3.出水BOD5
+　　除个别特殊情况外，废醪液经处理，CODCr和BOD5去除率高，分别可达95.33％和96.12％。
+2.2　菌数和优势度
+　　PSB在处理系统中的数量和优势度见表3。
+　　随处理罐增多，PSB数量大幅度增加，一般以PSB四级处理为宜。为提高PSB在处理系统中的优势度，采取两个措施：(1)菌种的选择。用混合菌株处理高浓度有机废液，因其具互补性，可充分分解有机物，大量繁殖；(2)在PSB 4#罐中采用浅层培养。在PSB 4#罐上增加光照面积，以诱导色素形成，使PSB 4#罐中菌液颜色呈微红色，为成品罐中PSB浓度的提高〔6,7〕奠定基础。
+表3　处理系统中PSB数量及优势度
+Table 3　The quantity of PSB and dominant level
+
+取样异养菌数
+(个/mL) 光合细菌菌数 
+(个/mL) 优势度 
+(%) 
+PSB1#罐 5.24×106 1.40×10896.4 
+PSB2#罐 2.04×107 3.74×108 94.8 
+PSB3#罐 1.78×107 1.26×109 98.6 
+PSB4#罐 0.97×107 3.45×109 99.7 
+成品罐　 1.44×107 5.60×10９ 99.7 
+
+2.3　CODCr/BOD5的变化情况
+　　从表3可以看出，厌氧罐可溶化处理后，CODCr/BOD5下降，随着PSB 1#2#3#4#罐处理，该比值逐渐升高，说明经厌氧罐可溶化处理后，废醪液被降解，生成大量小分子有机物质，为PSB提供了丰富的营养物质。随着PSB各罐一级处理，有机物质逐步被分解利用，PSB大量繁殖，菌液逐渐转变成红色。
+2.4　厌氧罐产气情况
+　　产气量平均为10.184m3/d,主要是CH4占75％ ，其次是CO2占22％，O2、H2S等占3％。
+3　结论
+3.1　UASB-PSB四级槽法流程简单，操作简便宜于推广，主要适用于处理高CODCr、BOD5粘稠的不易用普通微生物分解的废液，不仅适用于糖厂高浓度酒精发酵废液而且适用于制醋、酱油等工业的有机废液。
+3.2　废液经该法处理后逐步转变成含有大量PSB的菌液，即可以作饲料添加剂又可以作菌肥直接使用，不会造成二次污染，同时还具有很好的经济效益。
+3.3　PSB是一类能进行不放氧光合作用的特殊细菌，在UASB-PSB四级槽法中PSB的驯化培养和大量繁殖显得尤为重要，本实验筛选出了处理高浓度酒精发酵废液的高效PSB菌株，从而大幅度提高处理效率。
+参考文献
+1　黄　和等.热带作物加工,1992,(3):1～4
+2　陈玉谷等.环境科学学报,1994,14(1):13～18
+3　朱章玉等.上海交大学报,1985,19(6):22～31
+4　国家环保局《水和废水监测分析方法》编委会.水和废水分析监测分析方法(第三版).北京:中国环境科学出版社,1989
+5　Weaver DF，et al .Arch.Microbiol.,1975,105:207～216
+6　刘如林.光合细菌及其应用.北京:农业出版社,1988
+7　朱章玉,俞吉安等.光合细菌的研究及其应用.上海：上海交通大学出版社,1992
+作者简介
+樊凌雯　女，1971年10月生。硕士研究生，参加省级科研项目两项。发表论文1篇。
+收稿日期：1997-04-15

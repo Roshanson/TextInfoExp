@@ -1,0 +1,86 @@
+航空制造技术
+AERONAUTICAL 
+MANUFACTURING TECHNOLOGY
+1999年 第6期 No.6 1999
+
+
+
+Ni-Mo-金刚石复合电沉积工艺*
+黎向锋　左敦稳　王 珉
+［摘要］　利用SEM研究了复合电沉积工艺条件对Ni-Mo沉积层成分和形貌的影响。根据总的复合电镀工艺时间来相应改变N2H4.H2SO4的浓度，成功地制备了Ni-Mo-金刚石(粒径为5μm)的复合电沉积层。另外，利用EPMA对Ni-Mo-金刚石复合电沉积层进行了X射线面扫描分析。
+关键词： 工艺条件　复合电沉积　金刚石
+Electrodeposition Process of Ni-Mo-Diamond Composite Plating
+［ABSTRACT］　Effects of electrodeposition conditions of the composite plating on the content and surface morphology Ni-Mo-Diamond composite are studied by using of SEM.The Ni-Mo-diamond composite layer (the grain size is 5μm) is successfully electrodeposited according to the total time of composite plating for changing the concentration of N2H4.H2SO4. And it is also X-ray face scan analyzed by using EPMA.
+Keywords: Process condition　Composite plating　Diamond
+　　作为提高金刚石薄膜与基体材料间结合性能的重要途径，多层膜结构的研究引起了人们的关注［1～7］。刀具基材上化学气相沉积(CVD)金刚石薄膜的粘附力较低，而金属Mo与金刚石薄膜间的结合性能很好。因此，本文提出以Ni-Mo-金刚石复合电沉积层作为金刚石薄膜与刀具基材间的中间层来改善其结合性能。
+　　Ni-Mo合金具有高耐蚀性和析氢电催化活性的特点，可采用电沉积的方法来制备。设想利用Ni-Mo合金沉积层的特性，通过在镀液中添加固体微粒，可以开发出具有一定性能和用途的复合镀层，如Ni-Mo-SiC,Ni-Mo-PTFE等。金刚石具有极高的硬度和熔点，随着我国人造金刚石生产的迅速发展，开发金刚石的新应用领域具有实际意义。
+1　试验
+　　复合电沉积试验采用双电极体系。以表面面积为4cm2的纯铜片为阴极，经过金相砂纸磨光、除油及稀硫酸浸蚀并清洗后立即进行复合电沉积(包括预镀底层、上砂、卸砂和加厚镀等过程)，阳极为镍板。溶液中主要含有Na2MoO4,NiCl2,Na4P2O7,NaHCO3及N2H4.H2SO4，镀液温度为25℃，pH=8.3。溶液均由化学纯试剂用去离子水配成。金刚石颗粒(粒径约为5μm)在复合电镀之前经碱处理和酸处理，并在镀液中浸泡24h后再进行电沉积。
+　　试验中主要改变上砂电流密度、上砂时间、加厚时间及N2H4.H2SO4浓度，研究它们对沉积层成分及形貌的影响。
+　　沉积层表面形貌用X-650扫描电子显微镜(日本Hitachi公司)进行了观测，电压为20kV；同时，用其配有的能谱仪(美国EDAX公司生产的PV9100能量色散X射线分析系统)分析不同工艺条件下Ni-Mo-金刚石沉积层中的Ni和Mo的含量。
+　　沉积层成分分布用JEOL公司生产的JXA-8800M型电子探针分别对C，Ni,Mo和O等元素进行了X射线面扫描分析
+2　试验结果
+2.1　工艺条件的影响
+2.1.1　上砂电流密度
+　　随着上砂电流密度的增加，沉积层中的Mo的含量呈现出先增后减的趋势，含量变化不是很大。沉积层表面在较低电流密度(1A/dm2)时(Mo62.80%,Ni37.2%)，出现裂纹并有较大的颗粒(图1,a)；在中等电流密度(3A/dm2）时(Mo63.83%,Ni36.17%)，比较均匀(图1，b)；在高电流密度(6A/dm2)时(Mo61.75%,Ni38.25%)，由很多颗粒堆积而成(图1，c)。上砂时由于金刚石颗粒的不断冲刷，使得上砂后的沉积层中颗粒的形貌(图1,d)不同于预镀底层后的沉积层中颗粒的形貌(图1，e)，主要表现在颗粒的完整性不一样。　
+
+
+图1　上砂电流对Ni-Mo沉积层形貌的影响(SEM和TOPO)
+Fig.1　Effect of cope-with-grain current on Ni-Mo-deposited layer (SEM and TOPO)
+2.1.2　上砂时间
+　　随着上砂时间的增加，沉积层中Mo的含量增加，Ni的含量减少。另外，随着上砂时间的延长，沉积层的形貌发生很大变化。沉积层表面在上砂时间为50min时(Mo17.94%,Ni82.06%),沉积层表面未出现裂纹(图2，a)；上砂时间为330min时(Mo45.71%,Ni54.29%)，出现有规律的裂纹(图2,b)。这是因为，随着时间的增加，沉积层的厚度增加，沉积层中的应力也相应增加，从而导致裂纹出现。
+
+图2　上砂时间对Ni-Mo沉积层的影响（SEM）
+Fig.2　Effect of cope-with-grain time on Ni-Mo deposited layer (SEM)
+2.1.3　加厚时间
+　　随着加厚时间的增加，沉积层中Mo的含量呈现先减后增的趋势。加厚时间对合金沉积层形貌的影响见图3。加厚时间短(30min)时(Mo23.42%,Ni76.58%)，合金沉积层未出现裂纹(图3,a)；加厚60min时(Mo21.44%,Ni78.56%)，复合镀层中金刚石的含量增加，合金沉积层出现一些裂纹(图3，b)；加厚270min(Mo49.58%,Ni50.42%)和540min（Mo51.79%,Ni48.21%)时，合金沉积层出现很多有规律的裂纹，而且加厚540min时的裂纹(图3，d)，比加厚270min时(图3，c)的裂纹宽度增加，数目减少。即随着时间的延长，有出现裂纹和裂纹复合的倾向。
+2.1.4　N2H4.H2SO4浓度
+　　随着溶液中N2H4.H2SO4浓度的增加，沉积层中Mo的含量大大减少(N2H4.H2SO4浓度为3g/L时，Mo含量为49.58%，Ni含量为50.42%；N2H4.H2SO4浓度为12g/L时，Mo含量为11.93%,Ni含量为88.07%)，而沉积层表面裂纹变少(图4)。　　
+
+
+图3　加厚时间对Ni-Mo沉积层的影响(SEM)
+Fig.3　Effect of thickening time on Ni-Mo deposited layer (SEM)
+
+图4　N2H4.H2SO4浓度对Ni-Mo沉积层的影响(SEM)
+Fig.4　Effect of N2H4.H2SO4 concentration on Ni-Mo deposited layer (SEM)
+2.2　EPMA分析
+　　用XRD对所获得的Ni-Mo合金层进行分析，结果表明其为非晶态结构。利用XPS对Ni-Mo沉积层在Ar+离子溅射前后的组成元素进行测定，结果表明沉积层表面有Ni,Mo，O，C等元素，其中C元素来自测量仪器。用EPMA对所获得的Ni-Mo-金刚石沉积层中各元素的分布情况进行分析，结果如图5所示。由图5可知：(1)复合电镀沉积层表面上有很多凹坑(图5,a)，是由于卸砂时未固结的金刚石的掉落而留下的；(2)金刚石在Ni-Mo沉积层上分布比较均匀(图5，b)；(3)沉积层中的Ni和Mo分布均匀(图5，c,d)；(4)沉积层中含有少量O，且分布均匀(图5，e)。
+3　讨论
+　　焦磷酸盐体系中Ni-Mo非晶态的阴极反应过程一直还未被人们所了解。根据柠檬酸盐体系中Ni-Mo合金及Fe-Mo非晶态合金的阴极反应过程来推导焦磷酸盐体系中Ni-Mo非晶态的阴极反应过程，其反应过程大体如下：
+Ni2++2e→Ni
+…………(1)
+(MoO4)2-+2H2O+2e-→MoO2+4OH-
+…………(2)
+放电过程H＋+e-→Hads
+…………(3)
+解吸过程Hads+Hads→H2或Hads+H++e-→H2
+…(4)
+Hads→Hincluded
+…………(5)
+H2O+e(Ni)→H(Ni)+OH-
+…………(6)
+MoO2+4H(Ni)→Mo(Ni)+2H2O
+…………(7)
+
+
+图5　Ni-Mo-金刚石沉积层的X射线面扫描分析图像
+Fig.5　X-ray face scan analyzed image of Ni-Mo-diamond deposited layer
+　　从上述反应可以看出，Mo的沉积与析氢有着非常密切的关系。要还原一个Mo原子则需要4个氢原子。镀层中沉积的Mo越多，就必然伴随有大量的析氢，而析出的氢则会进入沉积层内，造成很大的内应力，使沉积层脆裂。由图2～4可以看到：在图2(b)，图3(c),(d)及图4(a)中，沉积层中均有裂纹，但在图2(a),图3(a),(b)，及图4(b)中，沉积层均未出现裂纹。这是由于前者相应沉积层中的Mo含量高，析氢现象严重，因此在沉积层中出现裂纹。但是在图1(d),(e)中，尽管沉积层中的Mo含量也高，沉积层也未出现裂纹，而且其形貌与其他条件下沉积层的形貌相差很多，表面是由许多颗粒堆积而成的。这是因为，当电流密度过大时，沉积层不能形成连续的膜，尽管其中的Mo含量也很高，但由于其未形成连续的膜层，由氢脆引起的内应力可得到释放，因此沉积层中没有裂纹，而其形貌则是由于沉积于阴极上的Mo(Ni)来不及长大层堆而成的。
+4　结论
+　　(1)复合电沉积工艺条件为：上砂时间10～50min，上砂电流密度0.5～1A/dm2，加厚时间20～60min；
+　　(2)随着电沉积时间的延长，沉积层有出现裂纹和裂纹复合的倾向；
+　　(3)根据总的复合电镀工艺时间来相应改变N2H4.H2SO4的浓度，成功地制备了Ni-Mo-金刚石复合沉积层；
+　　(4)Ni-Mo-金刚石沉积层中含有少量O，且C，Ni,Mo和O分布均匀。
+*江苏省教育自然科学基金资助项目、国家自然科学基金资助项目
+作者单位：南京航空航天大学机电工程学院
+参考文献
+1　Fan W D, Jaganadham K, Goral B C. Multilayer diamond coatings on silicon carbide. Surface and Coatings Technology，1996,81:172～182
+2　Fan W D, Jaganadham K, Goral B C. Wear resistant diamond coatings on alumina. Surface and Coatings Technology, 1995,72:78～87
+3　Weiser P S, Prawer S, Manory R R, Hoffman A, et al. Chemical vapour deposition of diamond onto steel: the effect of a Ti implant layer. Surface and Coatings Technology, 1995,71:167～174
+4　Glozman O, Hoffman A. Adhesion improvement of diamond films on steel substrates using chromium nitride interlayers. Diamond and Related Materials, 1997(6):796～801
+5　Albella J M, Gomez-Aleixandre C, Sanchez-Garrido O, Vazquez L, et al. Deposition of diamond and boron nitride films by plasma chemical vapour deposition. Surface and Coatings Technology, 1995,70:163～174
+6　Dumkum C, Grant D M, McColl I R. A multilayer 　approach to high adhesion diamond-like carbon coatings on titanium. Diamond and Related Materials, 1997(6):802～806
+7　Ogale S B, Karve P, Kulkarni A A, Sharma R P et al. Substrate and barrier layer considerations in the growth and properties of diamond and diamond-like carbon. Surface and Coatings Technology, 1995,76/77:803～808
+(责编 小 目)
+
+

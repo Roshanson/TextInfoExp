@@ -1,0 +1,63 @@
+航空工艺技术
+AERONAUTICAL MANUFACTURING TECHNOLOGY
+1999年 第1期 No.1 1999
+
+
+
+虚拟环境下的设计质量保证技术
+
+姬舒平　李小俚　马玉林
+　　[摘要]　论述了在虚拟环境下的设计质量保证的必要性，综述了虚拟环境下的设计质量保证的关键性技术，提出了在桌面虚拟环境下设计质量保证系统的总体框架。
+　　关键词： 虚拟制造　虚拟环境　设计质量保证
+Design Quality Assurance Technology Based on Virtual Environment
+　　[ABSTRACT]　The paper discusses the importance of design quality assurance based on the virtual environment. The key technologies of the design quality assurance based on the virtual environment are summarized, and the whole structure of the design quality assurance system based on the desk virtual envionment is presented.
+　　Keywords: Virtual manufacturing　Virtual environment　Design quality assurance
+　　随着世界经济的飞速发展和市场全球化，企业之间的竞争越来越激烈，而企业之间竞争能力的主要指标表现为新产品开发的时间周期(Time)、质量(Quality)、成本(Cost)，以及相应的服务(Service)，即TQCS［1，2］。因此降低产品成本，提高产品质量，缩短产品开发周期已成为企业生存和发展的关键。
+　　作为产品生命周期中的重要环节，设计阶段的重要性在实践中得到明显反映［3，4］，如图1所示。
+
+图1　设计占产品费用比的统计图
+Fig.1　Pictograph of design in proportion 
+to the product cost
+　　可见，设计占产品费用比一般在70%～80%间，产品的设计应受到越来越广泛的重视，设计的好坏不仅影响产品的费用成本而且决定产品的质量、性能的优劣。因此，近年来，世界发达国家的制造商已经将质量保证的重点由制造过程转移到设计过程，提出了“产品质量是设计出来的”这一新观念。
+　　此外，为了适应当今动态多变的全球化市场需求，80年代后期国外提出了虚拟制造思想，取得了明显的效益。虚拟制造就是利用计算机支持技术对所必需的生产和制造活动进行全面建模和仿真，而产品的建模与仿真技术是实现虚拟制造的核心技术［5～10］。借鉴该思想的原理，本文提出了在桌面虚拟环境下的设计质量保证技术，把产品的设计工作置于一个虚拟的设计、分析和仿真环境中，为产品的设计过程提供了一个强有力的支持环境。
+1　虚拟环境下的设计质量保证系统的总体框架
+1.1　总体框架
+　　产品最终是为用户服务的，而且一项新产品的设计也起源于用户，如用户对产品的某些性能、结构等方面的不满意或根据自己的需要又提出了一些新的要求，这些都可以归结为用户的需求。所以设计质量保证系统的输入应该是一系列用户需求，接着进行用户需求分析，把用户的需求转化为产品相应的功能。
+　　设计质量保证系统包括产品设计模块和设计分析模块。产品的设计模块主要是在设计知识库的支持下利用自顶向下的设计方法从产品概念设计到NC程序设计整个过程。产品设计分析模块利用各种设计分析评价方法对产品的设计特性、结构、工艺等方面进行评价和分析，发现问题，提出改进措施，反馈给设计过程。此外还包括装配过程仿真和NC加工过程仿真，主要是模拟工件的装配过程和在机械加工中的切削过程，检验装配顺序和路径以及NC程序的正确性。
+　　虚拟设计质量保证系统最终把合理的设计结果输出到虚拟制造环境中去。整个系统结构如图2所示。
+
+图2　虚拟环境下设计质量保证系统的总体框架图
+Fig.2　General frame chart of design quality 
+assurance system based on virtual environment
+1.2　设计过程
+　　目前的CAD系统提供了强有力的零件级的详细设计能力，设计者首先设计零件的详细结构，接着按指定零件间的装配关系来完成产品的装配设计，这种自底向上的设计过程并不符合人们的设计思维，造成设计结果不能保证达到设计者指定的功能。为此，设计质量保证系统必须支持装配级的设计，即所谓的自顶向下的设计过程［11］。我们所设计的设计质量保证系统(DQAS)就建立在此理论的基础上，如图3所示。
+
+图3　虚拟环境下设计质量保证系统的设计过程图
+Fig.3　Design process chart of design quality assurance 
+system based on virtual environment
+　　整个系统的输入是用户的需求，输出是产品的设计结果，符合人们的设计思想。整个系统建立在设计知识库(包括几何库、技术库、功能库和管理库)和设计分析知识库(包括特征工艺库、可制造性评价知识库、可装配性评价知识库和优化评价分析库)的基础上。
+2　虚拟环境下设计质量保证的关键技术
+2.1　虚拟设计质量保证环境的建立
+　　根据虚拟现实(VR)的交互性，可以把它分成不同的类型，目前常用的有3种，即桌面虚拟现实、投入虚拟现实和增强虚拟现实［12］。根据设计和制造的不同情况，设计质量保证需要采用桌面虚拟现实环境，即使用个人计算机和工作站去产生仿真，在此仿真环境中，设计者利用各种软件进行设计、评估和仿真工作［13］。仿真环境的建立是桌面虚拟环境技术中的核心内容。由于面向对象的仿真在理论上突破了传统仿真的概念，它分析、设计和实现系统的观念与人们认识客观世界的自然思维方式极为一致，因而增强了仿真研究的直观性和易理解性，且面向对象的仿真具有内在的可扩充性和可重用性，因此为仿真大规模的复杂系统提供了极为方便的手段。此外面向对象的仿真容易实现与计算机图形学、人工智能/专家系统和管理决策科学的结合。所以面向对象的仿真技术为虚拟设计质量保证环境的建立提供了有利的技术支持。
+2.2　虚拟设计质量保证环境下的数据库
+　　虚拟设计质量保证系统由许多不同的功能模块组成，由于系统的结构复杂，数据交换量及应用频率都非常高，不同功能模块，其数据的组织和管理要求也不同，为管理虚拟设计质量保证系统中的大量数据，有必要建立数据库。由面向对象技术与数据库技术结合形成的面向对象数据库不仅能提供与传统的数据库相似的功能，如数据的持久存储、并发控制，事物管理、恢复、查询等，而且能提供一些适合工程应用的的高级功能和特点，如数据抽象与封装、强大的信息建模能力、对象表识与组合层次多态性、可扩展性等。随着PDES/STEP标准的逐渐完善和颁布，支持PDES/STEP的产品/过程建模的面向对象数据库将成为虚拟设计质量保证环境中数据库管理的重要支持。虚拟设计质量保证环境下的数据库包括设计知识库和设计分析知识库两大综合库，其中，设计知识库包括几何库、技术库、功能库、管理库，设计分析知识库包括特征工艺库、可制造性评价知识库、可装配性评价知识库和优化评价分析库。
+2.3　虚拟设计质量保证环境下各种设计分析软件的编程和集成
+　　从虚拟设计质量保证系统的框架图可以看出：设计过程包括设计、分析和仿真过程，整个过程需要各种设计、分析和仿真软件的支持，各种软件模块既互相独立又相互间通过一定的接口进行通信。目前面向对象编程(OOP)方法将软件系统分解为一系列表示对象的逻辑组件，每一对象是数据和过程的集合。数据表示对象的状态，过程表示对象的行为，只有对象本身拥有的过程才能存取和改变自己的数据，这些特征有助于创建与现实世界更为接近的模型，通过消息的传递执行面向对象程序以改变对象状态。因此面向对象编程工具是进行虚拟设计质量保证环境下各种设计分析软件的编程和集成的理想工具。
+
+作者单位：姬舒平　李小俚　马玉林（哈尔滨工业大学）
+
+参考文献
+　[1] Nagel R N. 21st century manufacturing strategy. AD_A257032,1991
+　[2] Lee J. Overview of advanced manufacturing initiatives in the US and future challenges in manufacturing globalization. National Science Foundation, 1994
+　[3] Dowlatshahi S. A comparision of approaches to concurrent engineer. Int.J.Advanced Manufacturing Technology, 1994,9:106～113
+　[4] Meerkamm H, Dr_Ing P. Design system mfk-an important step towards an engineering workbench. J.of Engineering Manufacture, Part B 1993，207：105～116
+　[5] Asthetmer P, Felger W, Miller S. Virtual design: a generic VR system for industrial application. Computer & Graphics, 1993,17(6):671～677
+　[6] Hitchcock M F. Role of hybrid system theory in virtual manufacturing. Proceedings of the IEEE/IFAC, 1994
+　[7] Jean, Owen V. Making virtual manufacturing real. Manufacturing Engineering, 1994(11)
+　[8] 宋玉银，蔡复之.DFM技术综述.计算机辅助设计与制造，1996(3)：9～11
+　[9] 宋玉银，蔡复之，张伯鹏.集成化面向制造的设计技术研究.计算机辅助设计与制造，1996(9)：18～22
+　[10] 贾民平，钟秉林，黄仁.虚拟现实在旋转机械故障诊断中的应用.中国机械工程，1997，8(2)：90～92
+　[11] Sodhj R, Turner J U. Towards modelling of assemblies for product design. CAD,1994,26(2):85～97
+　[12] 周雄辉，邢渊，庄晓等.基于虚拟制造的集成快速模具制造系统.中国机械工程，1997，8(4)：18～20
+　[13] 朱恒，何汉斌，熊有伦等.虚拟制造系统建模与仿真.中国机械工程，1996，7(3)：28～32
+(责编　朝　晖)

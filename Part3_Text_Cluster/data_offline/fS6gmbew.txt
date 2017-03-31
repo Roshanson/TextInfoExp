@@ -1,0 +1,89 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第4期　Vol.19　No.4　1999
+
+
+
+镉和硒染毒对大鼠体内一些营养元素的影响
+陈高恩　王 蔚　王海婴　王 庚
+摘要：为了解染毒元素Cd和Se在生物体内对一些营养元素的影响,采用体内中子活化分析和原子吸收法分析了大鼠被高含量Cd或Se染毒后,不同组合的动物体内这些元素的平均含量的变化.结果表明,高含量Cd使大鼠体内N、Ca、Zn、Cu的含量大幅度的降低,而高含量Se使大鼠体内N、Ca、Zn、Cu的含量有一定的降低;当高含量的Cd和Se同时在大鼠体内作用时, Se和Cd对N、Ca、Zn、Cu元素,的毒性作用有相互缓解作用,而Se和Cd对P、K、Mg元素毒性却有相互加重作用.
+关键词：镉；硒；染毒；影响；营养元素
+中图分类号：X174 文献标识码：A 文章编号：1000- 6923(1999)04- 0357- 03
+The affection to some nutritional elements by Cd and Se poisoning in mice. 
+CHEN Gao-en1,WANG Wei2,WANG Hai-ying3,WANG Geng1 (1.Department of Physics,South Central College for Nationalities, Wuhan 430074,China; 2.Department of Electronic Engineering and Computer Science, Hubei Institute of Technology, Wuhan 430070,China; 3.Department of Basic Courses, Huazhong Agricultural University,Wuhan 430070,China). China Environmental Science. 1999,19(4)：357～ 359
+Abstract：In order to know the affection to some nutritional elements by Cd and Se poisoning in organism, the changes of the average content of some nutritional elements in mice were analysed with different poisoning groups using IVNAA and A.A.S.methods. The results show that poisoning from large content of Cd could be made N,Ca,Zn and Cu elements in mice seriously decreased; poisoning from large content of Se could be made these elements in mice decrease to a certain degree when large contents of Se and Cd exist in same organism,the action of Se could be relaxed the affection of Cd for decreasing of N,Ca,Zn and Cu;but for decreasing of P,K and Mg the action of Se and Cd would be added together.
+Key words：cadmium；selenium；poisoning；affection；nutritional elements
+　　我国不少地域的土壤、粮食、果菜中含有过高的镉含量和硒含量[1,2].这两种元素过高的含量被人体吸收后分别造成不同的地方病.如镉过量致使肝、肾功能损伤;骨质变异引起骨质疏松、软骨病;神经性病变造成“疼痛病”[3].硒过量可得“碱土病”、“晕倒症”,导致细胞氧化过程的障碍等[4].为了探讨过量镉和硒与某些地方病的关系,作者从镉和硒引起试验动物中毒实验中,分析实验动物吸入过量的镉和硒后,其体内氮、钙、磷、钾、镁、氯、铜、锌等主要营养元素含量的变化,考察镉和硒与其它营养元素相互作用的关系,从元素代谢的角度,研究镉和硒的过量对机体可能的毒性作用.
+1 材料与方法
+1.1 试验动物
+　　选用同一品种断乳后3周龄雄性大鼠,分为4组,每组8只,在相同环境条件下,喂以不同饲料饲养8周.
+　　第1组(对照组CK)喂以常规的粮食饲料,包括常规所需的微量元素和水份.
+　　第2组(高镉组Hi-Cd)喂以镉污染区域出产的同种粮食饲料(饲料中镉含量＞1mg/kg)以及常规所需的微量元素和水份.
+　　第3组(高硒组Hi-Se)喂以硒污染区域生产的同种粮食饲料(饲料中硒含量＞3mg/kg)以及常规所需的微量元素和水份.
+　　第4组(高镉、高硒组Hi-Cd-Se)喂以镉、硒污染区生产的混合粮食饲料,镉含量＞1mg/kg,硒含量＞3mg/kg以及常规所需的微量元素和水份.
+1.2 样品分析方法
+　　活体动物体内的氮、钙、磷、钾、镁、氯元素是利用体内中子活化分析(IVNAA)测定的[5,6];Γ射线的分析和记录是利用美国Canberra公司生产的微型计算机精密控制,多道脉冲辐度分析器完成的.试验动物体内元素含量分析相对误差＜10%.
+　　活体动物体内的铜和锌,采取动物元素无损失的测量法.其测试程序是将活体动物窒息而死,整个冷冻1～2月,机械粉碎,加热干燥,灰化匀化,多点取样,运用原子吸收谱仪,测定出样品含量,推算出整体动物体内铜和锌的平均含量.
+2 结果与分析
+　　4组试验动物体内主要营养元素的百分含量的平均值列于表1中.
+表1 不同组大鼠体内营养元素百分值
+Table 1 The percentage of elements in mice for different groups
+元素组合NCaPKMgClCuZn
+CK3.09
+±0.020.820
+±0.0080.618
+±0.0130.232
+±0.0130.0466
+±0.0190.107
+±0.00380.000150
+±0.0000250.00311
+±0.00015
+Hi-Cd2.93
+±0.050.732
+±0.0060.596
+±0.0150.232
+±.0370.0454
+±.00110.103
+±.0250.000138
+±.0000420.00283
+±.00045
+Hi-Se3.00
+±.040.757
+±.0050.594
+±.0750.228
+±.0300.0536
+±.00870.0962
+±.00740.00141
+±.0000110.00294
+±.00031
+Hi-Cd-Se3.03
+±.020.803
+±.0050.578
+±.0760.220
+±.0340.0432
+±.00580.099
+±.0130.000148
+±.0000440.00302
+±.00055
+
+2.1 以常规饲料喂养的大鼠组(CK)与高镉(Hi-Cd)、高硒(Hi-Se)、高镉加高硒(Hi-Cd-Se)饲料喂养的大鼠组相比较,多数营养元素的含量(除镁以外)都显示出最高值.这意味着镉和硒的毒性使体内营养元素正常代谢受到损害,降低了在体内的贮存.
+2.2 在高镉饲料喂养的大鼠组中(Hi-Cd),试验动物体内氮、钙、铜、锌的含量有大辐度的降低.与对照组相比氮降低5.5%、钙降低12%、铜降低8.7%、锌降低9.0%,结果表明,高镉的毒性表现在对氮、钙、铜、锌等元素的作用上,它致使有机体内氮、钙、铜、锌等重要营养元素严重丢失.
+2.3 在高硒饲料喂养的大鼠组中(Hi-Se),试验动物体内氮、钙、铜、锌的含量有一定的降低,此外氯元素的含量出现最低值.这同样说明高硒的毒性有碍于有机体内氮、钙、铜、锌、氯元素在体内的贮存.
+2.4 在高镉加高硒饲料喂养的大鼠中(Hi-Cd-Se),试验动物体内氮、钙、铜、锌元素含量的降低,比单纯高镉组(Hi-Cd)或单纯高硒组(Hi-Se)所表现出来的影响要减弱.这显示硒与镉同时在有机体内作用时,硒与镉的毒性有相互缓解的作用.　　
+2.5 在高镉加高硒饲料喂养的大鼠中(Hi-Cd-Se),试验动物体内磷、钾、镁元素的含量比单纯高镉组(Hi-Cd)或单纯的高硒组(Hi-Se)的降低要更甚.这显示对有机体内元素磷、钾、镁的作用,硒与镉的毒性有相互加重的作用.
+3 结语
+　　镉或硒对大鼠的毒性作用,可通过它们对体内重要的营养元素的影响作用表现出来.高含量镉在生物体内造成氮、钙、锌、铜元素的损失,往往可以造成机体的多种疾病.试验结果也表明,在大鼠同时遭受高镉和高硒染毒时,对于氮、钙、锌、铜元素,二者的作用有互相缓解毒性的作用,这与硒能够对镉有拮抚作用的事实是相符的;但是,对磷、钾、镁元素含量的降低,表明高硒和高镉的毒性有相互迭加的作用,其机理值得进一步探讨.
+基金项目：国家自然科学基金资助项目(3880656)
+作者简介：陈高恩(1940-),男,湖北武穴人,中南民族学院物理系副教授,主要从事近代物理实验、等离子体诊断和物理学教学及应用物理研究工作.承担过主要项目有:国家自然科学基金资助项目“体内中子活化分析在动物和人体内元素的分析”,“用超声兰姆波检验合金薄板及合金物理性能研究”(其中有2项工作所在课题组获得冶金部奖励)等.发表论文20余篇.
+作者单位：陈高恩　王 庚　中南民族学院物理系,湖北 武汉430074；
+　　　　　王蔚　湖北工学院电气工程及计算机系,湖北 武汉430070；
+　　　　　王海婴　华中农业大学基础课部,湖北 武汉430070
+参考文献：
+[1]包克光,彭良斌.炼铜排放金属污染地带环境中金属对人群健康的影响 [J] .中国环境科学,1984,4(6):27- 34.
+[2]蔡诗文,岳 麟,袁一傲等.环境镉污染所致健康危害判定标准的研究 [J]. 环境与健康杂志,1994,11(3):97- 99.
+[3]柯长茂,李先机,贺代杰等.露天铅锌矿环境中镉对人体健康影响的调查研究 [J]. 环境与健康杂志,1985,2(5):9- 13.
+[4]赖利 C. 轻工业出版社翻译组译.食品的金属污染 [M]. 北京:轻工业出版社,1986.148- 149.
+[5]Wang Haiying,Charles M Waana. Determination of whole-body protein in small live animals by IVNAA [J].Nucl.Scien. & Tech., 1991, 2 (3):172- 177.
+[6]王海婴,黄汉樵,罗贤清等.体内中子活化分析对活体小动物磷含量的研究 [J] .核技术,1993,16 (10):629- 633.
+
+收稿日期：1998-09-30

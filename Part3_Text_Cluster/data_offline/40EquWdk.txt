@@ -1,0 +1,87 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第4期　Vol.19　No.4　1999
+
+
+
+聚硅氯化铝(PASC)混凝剂的颗粒大小及分子量分布
+高宝玉　王占生　汤鸿霄
+摘要：采用共聚与复合两种制备工艺,研制出碱化度(B)为2.0的具有不同Al/Si摩尔比的聚硅氯化铝(简称PASC)混凝剂.一种方法是将NaCl加入到不同Al/Si摩尔比的AlCl3× 6H2O和聚硅酸混合液中;另一种方法是按一定的Al/Si摩尔比将聚硅酸加入到聚合氯化铝液中.应用光子相关光谱(PCS)和超滤膜过滤方法对PASC 及聚合氯化铝(PAC)的颗粒大小及分子量分布进行对比测定.结果表明,在PASC中,由于聚硅酸与铝水解聚合产物间的相互作用,生成了聚集体更大的聚合物,显著提高了聚集体的粒径,这种提高以共聚法最为明显;Al/Si摩尔比影响PASC的聚集度, Al/Si摩尔比越小,PASC的聚集度就越大.
+关键词：聚硅氯化铝(PASC)混凝剂；颗粒大小和分子量分布；光子相关光谱；超滤膜
+中图分类号：X131 文献标识码：A 文章编号：1000- 6923(1999)04- 0297- 04　
+The particle size and the molecular weight distribution of flocculant polyaluminum silicate chloride(PASC).
+GAO Bao-yu1,WANG Zhan-sheng2,TANG Hong-xiao3 (1.Department of Environmental Engineering, Shandong University, Jinan 250100,China；2.Department of Environmental Science and Engineering,Tsinghua University, Beijing 100084,China；3.State Key Laboratory of Environmental Aquatic Chemistry,Research Center for Eco-Environmental Science,Chinese Academy of Sciences,Beijing 100085,China). China Environmental Science. 1999, 19(4)：297～ 300
+Abstract：A series of polyaluminum silicate chloride (PASC) with has basicity(B) 2.0 and different Al/Si molar ratio, was prepared by means of two kinds of preparation methods: one is to add NaOH into AlCl3× 6H2O and polysilicic acid mixed solution at different Al/Si molar ratio, the other is to add polysilicic acid into polyaluminum chloride(PAC) solution with different B at different Al/Si molar ratio. The particle size and the molecular weight distribution of PASC and PAC were measured by means of physical photon correlation spectroscopy (PCS) analysis and ultrafiltration methods. The results show that the interaction between polysilicic acid and hydrolyzed aluminum species in PASC forms larger size polymer, which greatly increases the particle size of the polymer. The PASC prepared by the former method has higher molecular weight than the PASC prepared by the latter method. The Al/Si molar ratio affects the polymerization degree:the smaller the Al/Si molar ratio, the larger the polymerization degree of PASC.
+Key words：flocculant polyaluminum silicate chloride(PASC)；particle size and the molecular weight distribution；photon correlation spectroscopy (PCS)；ultrafication
+　　研究无机高分子混凝剂的颗粒大小及分子量分布,有助于正确地解释其混凝机理以及指导生产高效能的无机高分子混凝剂.迄今为止,还没有找到一种简便的测定方法能够准确地反映无机高分子溶液的颗粒大小及分子量分布状况,目前采用较多的方法是超滤法[1]、X-射线及中子小角度散射技术[2- 4].光散射技术与X-射线及中子小角度散射技术已成为现代微粒检测新技术的重要分支[4].在颗粒粒度分析的众多技术中,基于光散射测量的方法一直居重要地位[5],光子相关光谱(PCS)则是得到较好肯定的一种方法.
+　　光散射技术应用于铝、铁盐水解过程的研究是一较新的领域,Patteron等[3]较早采用静态光散射技术研究铝的水解聚合形态.随着现代激光光散射技术尤其是光子相关光谱的进展,这方面的研究逐渐有所加强[6].汤鸿霄等[7]报道了用PCS测定PAC粒度分布的结果,王东升[8]应用PCS对聚铁硅型复合无机高分子絮凝剂样品的颗粒大小及分布进行了测定.
+　　本文采用PCS和超滤膜过滤法对PASC及PAC的颗粒大小及分子量分布进行了对比测定研究,以期明确聚硅酸的存在及制备工艺对铝水解聚合形态的影响,为后续进一步探讨PASC的形态分布、结构形貌及混凝机理建立基础.
+1 材料与方法
+1.1 PASC的制备
+1.1.1 复合法(PASC(复)) 取一定量的0.25mol/L的AlCl3。 6H2O溶液和一定量的去离子水于烧杯中,采用Dosimat型精密微量自动滴定仪微量滴加0.5mol/L NaOH溶液(滴碱速度为0.05mL/min),制备铝浓度(以AlT表示)为0.10 mol/L,B=2.0的PAC,然后立即向PAC溶液中加入一定量的熟化2h的聚硅酸溶液,以制备Al/Si摩尔比分别为5.0、10和15的PASC溶液.
+1.1.2 共聚法(PASC(共)) 取一定量的0.25mol/L的AlCl3。 6H2O溶液于烧杯中,按Al/Si摩尔比分别为5.0、10和15的比例加入一定量的新鲜制备的聚硅酸,加入一定量的去离子水,然后采用Dosimat型精密微量自动滴定仪微量滴加0.5mol/L NaOH溶液(滴碱速度为0.05mL/min)至B=2.0,以制备AlT=0.10mol/L, B=2.0的PASC溶液.
+1.2 PCS测定原理及方法
+1.2.1 测定原理 在实验过程中,待测的颗粒物经一给定波长的入射光照射而诱发散射光.由于颗粒的动态性质(布朗运动)所引起的浓度瞬变而导致散射光强度随时间在平均强度附近起伏,涨落的频率同颗粒物的运动速率也即颗粒物的大小有关,涨落的信号通过函数及计算机数据处理以颗粒粒度分布的光子相关光谱形式表示.此法应用于多分散体系,测得的结果均为颗粒的平均有效直径.
+1.2.2 测定方法 仪器为美国Brookhaven公司生产的BI-200SM型激光散射仪,采用波长为632.8nm的35mW He-Ne激光.取10mL样品经0.30m m滤膜过滤4～ 6次(视实际情形而定,以激光透过光路中无明显闪烁亮点为宜)后,将样品置于散射池中进行测定.根据仪器的检测下限,PCS技术可测定样品中粒径在1nm以上的高分子或溶胶组分,且仅对光散射强度在1kCPS以上时才能得到可信结果.
+1.3 超滤法测定样品的分子量分布
+1.3.1 仪器与材料 采用中国科学院生态环境研究中心生产的B-1A型超滤器和超滤膜,超滤器有效容积为50mL,最高工作压力为0.304 MPa,内有磁力搅拌装置.超滤膜的截留分子量分别为100000、60000、10000、6000和3000道尔顿,膜直径为45mm.
+1.3.2 分子量测定方法 进行测定时应逐渐加大压力,但最大压力不能超过0.3MPa,压滤过程中应使滤液以滴状滤出,过滤程序是按从高分子量向低分子量的顺序进行.对各级滤液用1: 1的盐酸在加热下进行酸化,然后用去离子水定容到一定体积后,采用Ferron络合比色法测定其滤液中铝的含量[9],计算各级滤液中铝占样品总铝量的百分含量.
+2 结果与讨论
+2.1 PCS测定PASC及PAC的颗粒大小
+　　以B=2.0的PAC及Al/Si摩尔比分别为5.0、10、15的PASC样品熟化7～ 10天后进行对比实验.实验中发现,由微量滴碱法制得的B=2.0,AlT=0.10mol/L的PAC样品及B=2.0,AlT= 0.0980mol/L的PASC(复)样品,因颗粒太小,散射光太弱而没有得到其粒度分布的光子相关光谱图(散射光强度与颗粒粒径成正比关系,颗粒越大散射光就越强),其它样品的颗粒粒径在1nm～ 0.30m m范围内的分布情况见表1.从表1可看出,Al/Si摩尔比和制备工艺对PASC中颗粒大小及粒度分布影响较大,聚硅酸的存在可显著地提高聚集体的聚合度,Al/Si摩尔比越小(即聚硅酸的含量越高),样品的颗粒粒径就越大.共聚法制备的PASC样品较复合法制备的PASC样品的颗粒粒径大.采用共聚法,随Al/Si摩尔比从15减少到5.0时,其颗粒平均粒径则从99.9± 0.4nm增加到268.9± 1.9nm;采用复合法, Al/Si摩尔比为15时,因散射光强度太弱,无法测出其颗粒大小及粒径分布,当Al/Si摩尔比从10减少到5.0时,其颗粒平均粒径从75.5 ± 0.6nm增加到106.6± 2.1nm,这表明了不同工艺制备的PASC产品的聚集状况是不同的.共聚法可得到粒径更大的聚合物,有利于提高对水体中胶体颗粒的吸附架桥能力;聚集体粒径大小不同,其形态分布也存在着差异.
+表1 PCS法测定B=2.0的PAC与PASC样品颗粒大小
+Table 1 The results of partical size of PAC and PASC at B=2.0 by PCS measurement
+样 品峰 形粒径范围
+(nm)平均粒径(nm)
+PASC(共),Al/Si=5.0多峰分布4～ 12,50～ 120,
+230～ 470268.9± 1.9
+PASC(复),Al/Si=5.0双峰分布13～ 21,62～ 133106.6± 2.1
+PASC(共),Al/Si=10多峰分布20～ 40,120～ 300163.7± 2.0
+PASC(复),Al/Si=10双峰分布3～ 4,303～ 33075.5± 0.6
+PASC(共),Al/Si=15双峰分布25～ 50,90～ 18599.9± 0.4
+PASC(复),Al/Si=15未测出未测出未测出
+PAC未测出未测出未测出
+
+　　铝盐水解聚合形态研究的结果表明[10],单个Al13的粒径为2.5nm左右,它们时常结合成线性及枝状的聚集体,粒径分布范围为几十nm～ 几百nm.根据表1的测定结果,可以认为处于10nm以下范围内的组分为Al13单体、铝的低聚集体、聚硅酸的低聚集体以及低聚集体的聚硅酸与铝水解产物作用形成的络合物(螯合物),而处于数十甚至数百nm以上的组分可以认为是Al13的线性及枝状聚集体[9,11,12]、聚硅酸的高聚集体以及高聚合度的聚硅酸与铝水解产物作用形成的络合物(螯合物)的响应值.
+2.2 超滤法测定PASC及PAC的分子量分布
+　　超滤是一种压力驱动的膜分离过程,当溶液在压力下接触超滤膜的表面时,溶液中分子量较小的溶质可透过膜,分子量较大的溶质则被膜截留在原液中,使大分子量的溶质与小分子量的溶质相分离.
+　　分子量测定是对无机高分子混凝剂中聚集体量化的一个重要的手段,它有助于聚合形态的研究以及混凝机理的正确解释,它的测定结果结合形态分布及效果实验可指导工业生产以制备出高效能的无机高分子混凝剂.
+　　对B=2.0的PAC和PASC液体样品,超滤法测定结果示于表2中.超滤分离所测定的分子量并不能代表聚合物的真正分子量,只是反映了聚合溶液中水解聚合物的相对大小.从表2可见,PASC的表观分子量大于PAC的表观分子量,共聚法制备的PASC的表观分子量又大于复合法制备的PASC的表观分子量.在PASC中,聚硅酸的含量越高,其表观分子量也就越大.一般而言,无机高分子混凝剂的分子量越大,对水体中胶体颗粒的吸附架桥能力就越强,其净水效果就越好.由于PASC的表观分子量大于PAC的表观分子量,所以PASC应较PAC具有更好的混凝效果.
+表2 超滤法测定分子量分布 (%)
+Table 2 The results of the molecular weight distribution by ultrafiltration method (%)
+样品表 观 规 范 分 子 量
+> 3000> 6000> 10000> 60000> 100000
+PAC 62.253.737.521.511.5
+PASC Al/Si=5(共)89.285.578.572.368.2
+PASC Al/Si=10(共)79.473.365.357.650.8
+PASC Al/Si=15(共)73.568.156.441.920.1
+PASC Al/Si=5(复)80.275.864.351.240.3
+PASC Al/Si=10(复)70.663.345.238.221.4
+PASC Al/Si=15(复)67.358.239.822.513.1
+
+　　
+3 结论
+3.1 光子相关光谱可以进行nm级的粒度分布鉴定,应用于无机高分子混凝剂聚集体粒径的表征具有直接检测、快速、不干扰样品等优点,可给出聚合物粒径分布的直观信息,是研究无机高分子混凝剂聚集体大小的一个非常有用的手段.此法的缺点是仅能测定粒径大于1nm的高分子或溶胶形态,还不能对低聚合组分进行直接测定,所以该法的使用还有一定的局限性.
+3.2 PASC样品中聚集物呈双峰或三峰分布,其峰数和出峰位置受制备工艺及Al/Si摩尔比的影响. 
+3.3 超滤测定法实验结果表明,向铝盐中引入聚硅酸后,由于聚硅酸与铝水解聚合产物相互作用,生成了聚集体更大的聚合物,显著提高了聚合物的分子量,且这种提高是以共聚法最为明显,并受Al/Si摩尔比的影响,Al/Si摩尔比越小,聚合物的分子量就越高.
+3.4 在PASC中,由于聚硅酸与铝水解聚合产物间的相互作用可生成聚合度更大的聚合物,因而可提高对水体中胶体颗粒的吸附架桥能力,产生良好的混凝效果.
+基金项目：国家自然科学基金资助项目(59878036);“九五”国家科技攻关项目(96-909-03-02)
+作者简介：高宝玉(1961-),男,山东鄄城人,博士,山东大学环境工程系副教授,主要从事水处理药剂及工业废水治理研究工作.先后主持或参加了国家自然科学基金项目“新型混凝剂聚硅氯化铝的制备及性能”,“九五”国家科技攻关专题“高效絮凝一体化”,国家环境保护总局科技三项费用课题“环境样品微波溶样器的研制”,中国石化总公司科技项目“聚硅氯化铝混凝剂处理炼油厂含油废水”,山东省科技项目“高效多功能有机高分子絮凝剂的研制及中试”等10余项课题的研究工作,获省部级奖励多项.发表论文60余篇.
+作者单位：高宝玉　山东大学环境工程系,山东 济南 250100；
+　　　　　　王占生　清华大学环境科学与工程系,北京100084；
+　　　　　　汤鸿霄　中国科学院生态环境研究中心,环境水化学国家重点实验室,北京100085
+参考文献：
+[1]Hasse D,Spriatos N. Polymeric basic aluminum silicate-sulfate [P]. Europe Patent:0,372,715 Al,1990-06-13. 
+[2]Hua Pa Hu,Bates T F. Formation of X-ray amorphous and crystalline aluminum hydroxides [J].Mineralogy Mag.,1964,33: 749.
+[3]Patteron J H,Tyree J R . A light scattering study of the hydrolytic polymerization of aluminum [J]. J.Colloid and Interface Sci.,1973,43(2):389- 398.
+[4]左 榘. 激光散射原理及在高分子科学中的应用 [M].郑州:河南科学技术出版社,1994.
+[5]Barth H G. Particle size analysis [J].Annal.Chem.,1995, 67(12):257- 272.
+[6]Bottero J Y, Tchoubar D, Arnaud M, et al. Partial hydrolysis of ferric chloride salt,structural investigation by dynamic light scattering and small-angle x-ray scattering [J].Langmuir, 1991, 7(5):1365- 1369.
+[7]汤鸿霄,栾兆坤. 聚合氯化铝与传统混凝剂的凝聚－絮凝行为差异 [J].环境化学,1997,16(6):497- 505.
+[8]王东升.聚铁硅型复合无机高分子絮凝剂的形态特征与性能[D]. 北京:中国科学院生态环境研究中心,1997.
+[9]Hus P H. Mechanism of gibbsite crystallization from partially neutralized aluminum chloride solution [J]. Clays and Clay Minerals, 1988, 36(1):25- 30.
+[10]Bottero J Y,Axelos M,Tchoubar D,et al.Mechanism of formation of aluminum tribydroxide from keggin Al13 polymers [J]. J. Colloid Interface Sci., 1987,117: 47- 57.
+[11]Bertsch P M. Aqueous polynuclear aluminum species [A]. Sposite G(Eds). The environmental chemistry of aluminum [C]. Boca Raton, Fla.: CRC Press,1989.87- 115.
+[12]Wang W Z, Hus P H. The nature of polynuclear OH-Al complexes in laboratory-hydrolyzed and commercial hydroxyaluminum solutions [J]. Clays and Clay Minerals, 1994, 42(3): 356- 368.
+
+收稿日期：1998-11-19

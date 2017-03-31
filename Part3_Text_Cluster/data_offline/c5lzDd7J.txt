@@ -1,0 +1,91 @@
+土壤与环境
+SOIL AND ENVIRONMENTAL SCIENCES
+1999年 第8卷 第1期 Vol.8 No.1 1999
+
+
+
+城市固体废弃物堆肥化处理的影响因素*
+李艳霞　王敏健　王菊思　陈同斌
+摘要 城市固体废弃物的堆肥化处理已经成为各国越来越重视的方法。堆肥化处理是通过控制堆腐过程条件，使废弃物在短时间内最有效地达到稳定，杀灭病原菌，使产品可以安全地使用。本文对堆肥的原理及基本机理进行了介绍，同时对堆肥过程的重要参数(水分含量、有机质含量、C/N比、pH值、通气量等)进行了综述。
+关键词 城市固体废弃物；堆肥；影响因素
+The Affecting Parameters of the Municipal Solid Wastes Composting. 
+Li Yanxia1,2, Wang Minjian1, Wang Jusi1 and Chen Tongbin2 (1: SKLEAC, The Research Center for Eco-Environmental Chemistry; 2: The Station for Agro-Ecological and Environ-Chemistry, The Institution of Geography, CAS, Beijing 100101). Soil & Environ Sci, 1999, 8(1): 61～65
+Composting is becoming the more and more important method for disposing the solid wastes in many countries. Through controlling the composting process conditions, the organic waste can be stable in the least time and the most effective, the pathogenic organisms can be killed and the product can be used safely. The composting principal and basic mechanisms were introduced in this paper, and the composting parameters (water content, organic content, C/N, pH value and aeration etc.) were also reviewed.
+Key Words municipal solid waste; composting; affecting parameters
+　　随着人口的增长、工业及经济的发展，城市固体废弃物(污泥、垃圾)的产量急剧增加。据报道，目前中国城市垃圾产量为1亿t/a，同时还在以10%的速度递增[1]。除了要处理这些新产生的垃圾外，还有历年来累积的垃圾90亿t，许多城市已逐渐被周边所堆放的垃圾包围。中国的污水处理事业也在迅速地发展，1990年统计，40个城市建有78家污水处理厂，到1995年，全国共建有122座污水处理厂，5年增长了56.4%[2]。目前的污水处理量是污水产量的7%，根据国家计划，2000年全国的污水处理率将达到20%～30%，2010年达到40%～50%[3]。届时，将有大量的污泥产生，如不加以妥善的处理，必将引起严重的二次污染。城市固体废弃物的处理问题已成为中国各城市发展的重要问题。
+　　固体废弃物的处置方法有：投海、焚烧、填埋和土地利用[4, 5]。城市固体废弃物中含有大量的有机物质、植物生长必需的营养物质，可以进行土地利用[6, 7]。但城市固体废弃物中还含有大量的病原菌、杂草种子、重金属及其它污染物质，同时废弃物中的有机质具有不稳定和易降解的特点，必须经过妥善的处理后方可施用，否则会对环境和作物造成危害。其中有效的处理方法是堆肥化处理。
+1 堆肥化的基本技术和原理
+　　堆肥化是在合适的水、气条件下，利用微生物降解有机质而产生高温，杀死有机固体废弃物中的病原菌及杂草种子，使其达到稳定化和无害化[8]。
+　　堆肥化有好氧和厌氧之分，由于好氧堆肥的高温可以杀死废弃物中的病原菌，同时高温菌对有机质的降解速度快，因此目前大多数堆肥采用的是高温好氧堆肥[10]。好氧堆肥是在有氧的条件下，籍好氧微生物的作用来进行有机物质的降解，堆肥的温度高，一般在50～65℃，亦称为高温堆肥[10, 11]。
+2 堆肥的基本材料
+　　堆肥的基本材料是堆肥原料及填充料。适用于堆肥的原料相当广泛，污泥、城市垃圾、农业废弃物占主要部分，它们的品质特性决定着堆肥的方法[12, 13]。
+2.1 堆肥的原料
+　　堆肥原料应满足：含有足够的有机质以利于代谢热的产生；有足够量的原料来贮热，以弥补向周围环境散失热量；有足够的自由空域，以利于气体的交换，为微生物提供氧气。所以，堆肥化物料本身是一个滋生地、营养源、热源、物料代谢的发酵池以及气体和热量交换的底物。
+　　原料的种类对堆肥有影响。例如生污泥和消化污泥都可以成功地堆腐，而生污泥堆肥时会造成更大的臭味、通常需要更多的氧气、可以更快的达到高温[9]。污泥、垃圾等废弃物本身有足够的细菌，所以堆肥时不用再接种微生物[14]。
+2.2 堆肥的填充料
+　　填充料可以起到提供碳源、提高堆体的孔隙度、调节物料的湿度含量等作用[9, 15]。污泥由于在脱水过程中加入了絮凝剂，容易结块，堆肥过程中不利于通气供氧，而且污泥的C/N比低，不利于微生物的生长，堆肥时需加入碳源调节。垃圾堆肥一般需经过破碎，所以颗粒较为细密，不利于通气供氧。这些不利的状况可以通过加入填充料来改善。
+　　理想的填充料应该是干燥的、疏松的、比较轻的有机物，能够增加堆料中碳源的数量、改善堆体的结构、利于堆体通气[9]。木屑、锯末、树皮、稻壳等为常用的填充料，这种填充料又可称为调理剂；橡胶轮胎、发酵过的堆肥也可以部分的用作填充料，但是由于其只起到改善堆肥孔隙的作用，故又可称为膨胀剂[9, 16]；在美国，许多堆肥厂用废纸作为填充剂[16]。
+　　费用问题是影响填充料使用的问题之一，木屑、锯末等很贵而且需要场地贮存，还要求使用前的破碎处理。在美国，一个通气静态垛式堆肥厂，木屑的费用大约占去整个堆肥系统操作费用的40%[17,18]。如果选用回流堆肥用作填充剂，堆肥的成本将会大大降低。
+3 堆肥的过程参数
+　　堆肥化过程是复杂的。物料经混匀后，受营养平衡、水分含量和物理结构等的影响。工艺过程中要控制的各种参数，就是那些对堆肥过程有影响的物理、化学和生物因素。它们决定微生物活动的程度，从而影响堆肥的速度与质量。
+3.1 水分含量
+　　在堆肥过程中，水分是一个重要的物理因素[19]。水分含量是指整个堆体的含水量。水分的主要作用在于：（1）溶解有机物，参与微生物的新陈代谢；（2）水分蒸发时带走热量，起调节堆肥温度的作用。水分的多少，直接影响好氧堆肥反应速度的快慢，影响堆肥的质量，甚至关系到好氧堆肥工艺的成败，因此，水分的控制十分重要。在堆肥期间，如果水分含量低于10%～15%，细菌的代谢作用会普遍停止；含水量太高，会使堆体内自由空间少，通气性差，形成微生物发酵的厌氧状态，产生臭味，减慢降解速度，延长堆腐时间[19]。
+　　大量的研究结果表明，堆肥的起始含水率一般为50%～60%[14, 19]。在堆肥的后熟期阶段，堆体的湿度也应保持在一定的水平，以利于细菌和放线菌的生长而加快后熟，同时减少灰尘污染。
+3.2 通气量
+　　供气是好氧堆肥成功的重要因素之一。供气的作用主要有三个方面。(1)为堆体内的微生物提供氧气。如果堆体内的氧气含量不足，微生物处于厌氧状态，使降解速度减缓，产生H2S等臭气，同时使堆体温度下降[14, 17, 20]。(2)调节温度[17]。堆肥需要微生物反应而产生的高温，但是，对于快速堆肥来讲，必须避免长时间的高温[17]，温度控制的问题就要靠强制通风来解决。(3)散除水分[21]。污泥堆肥的一个目的是降低其水分含量。在堆肥的前期，通气主要是提供微生物O2以降解有机物，在堆肥的后期，则应加大通气量，以冷却堆肥及带走水分，达到堆肥体积、重量减少的目的[21]。
+　　通气可以采取鼓风或抽气方式，两种方式各有利弊：抽气的优势在于可将堆体中的废气在排入大气前统一进行处理，减少二次污染；鼓风的优势是利于水分及热量散失。最好的办法是在堆肥的前期采用抽气方式以处理产生的臭气，在堆肥后期采用鼓风方式以利于减少水分[14, 20]。
+3.3 有机质含量
+　　有机物是微生物赖以生存和繁殖的重要因素。堆肥反应的特性是它需要一个合适的有机物范围。大量的研究工作表明，在高温好氧堆肥中，适合堆肥的有机物含量范围为20%～80%[10]。当有机物含量低于20%时，堆肥过程产生的热量不足以提高堆层的温度而达到堆肥的无害化，也不利于堆体中高温分解微生物的繁殖，无法提高堆体中微生物的活性，最后导致堆肥工艺的失败。当堆体有机物含量高于80%时，由于高含量的有机物在堆肥过程中对氧气的需求很大，而实际供气量难以达到要求，往往使堆体中达不到好氧状态而产生恶臭，也不能使好氧堆肥顺利进行[10]。有研究者曾用城市垃圾和污泥混合堆肥，这样既可以利用垃圾提高堆体中的孔隙率，又可以利用污泥提高堆体中的有机质含量，同时为垃圾和污泥___现代城市的两大问题找到出路[22, 23]。
+3.4 C/N比
+　　C/N比是堆肥原料与填充料混合物的C/N比。微生物生长需要碳源，蛋白质合成需要氮源，微生物合成一份蛋白质大约需要30份碳，对于堆肥来讲，C/N比为30看起来是理想的[24]。
+　　C/N比低、特别是当pH值和温度高时，使废弃物中的氮以NH3的形成挥发损失，散发出臭味[17]。用C/N比低的原料(15.7∶1)进行堆肥实验，结果是微生物对有机物的生物氧化过程中显示了严重的氮素损失。但是，当C/N比高于35时，微生物必须经过多次生命循环，氧化掉过量的碳，直到达到一个合适的C/N比供其进行新陈代谢[17]，因而C/N比高会降低降解速度[17]。
+3.5 pH值
+　　在堆肥过程中，pH值是一个重要的因素。一般来讲，pH值在3～12之间都可以进行堆肥[9, 17]。但是有研究发现，在堆肥初期堆体的pH值降低，低的pH值有时会严重地抑制堆肥反应的进行[25]。在堆腐垃圾时，pH值控制在8左右可以显著提高堆肥初期的反应速度，可以极大地缩短堆肥达到高温所要求的时间，可以避免由于堆肥反应延缓所造成的臭味问题，但当pH值控制在5时，葡萄糖和蛋白质的降解停止[25]。污泥堆肥的pH值范围一般应在6～9之间最为合适[9]。
+3.6 温度
+　　温度是堆肥系统微生物活动的反映，是影响微生物活动和堆肥工艺过程的重要因素。堆肥中微生物分解有机物而释放出热量，这些热量使堆肥温度上升。堆肥初期，堆层基本呈中温，嗜温菌较为活跃，大量繁殖。它们在利用有机物的过程中，有一部分转化成热量，堆层温度不断上升，1～2天后可以达到50～60℃。在这个温度下，嗜温菌生长受到抑制，大量死亡，而嗜热菌的繁殖进入激发状态[26]（见表1）。嗜热菌的大量繁殖和温度的明显提高，使堆肥发酵直接由中温进入高温，并在高温度范围内稳定一段时间。正是在这一温度范围内，堆肥中的寄生虫和病原菌被杀死。
+　　　　　表1 堆肥温度与微生物生长关系[26]
+
+温度(℃)温度对微生物生长的影响
+嗜温菌嗜热菌
+常温～38激发态不适用
+38～45抑制状态可开始生长
+45～55毁灭态激发态
+55～60不适用(菌群萎退)抑制状态(轻微)
+60～70－抑制状态(明显)
+>70－毁灭期
+
+　　堆肥作为一种生物系统，反应进行的温度是有限定范围的，温度过高或过低都会减缓反应速度。不同种类微生物的生长对温度具有不同的要求。一般而言，嗜温菌最适合的温度为30～40℃，嗜热菌发酵最适合温度是45～60℃[17, 20, 24]。高温堆肥时，温度上升超过65℃即进入孢子形成阶段，这个阶段对堆肥是不利的，因为孢子呈不活动状态，使分解速度相应变慢。此外，在此温度范围内，形成的孢子再发芽繁殖的可能性也很小，因此，高温堆肥温度最好在45～60℃左右[17, 27]。基于上述原因，堆肥过程中温度控制是十分必要的。在好氧堆肥中，温度一般是通过控制供气量来调节。
+4 结语
+　　堆肥化是复杂的生物学过程，为实现快速、好氧堆肥，必须进行各种工艺条件的优化和控制。对于我国高速的工农业发展、快速的人口增长所产生的固体废弃物，堆肥化处理后的再利用应是今后重要的发展方向。
+*国家“九五”攻关课题资助。
+作者单位：李艳霞　王敏健　王菊思　中国科学院生态环境研究中心环境水化学国家重点实验室；
+　　　　　李艳霞　陈同斌　中国科学院地理研究所农业与环境技术试验站，北京 100101
+参考文献
+1 高吉喜, 曹洪法, 舒伶民等. 我国城市固体废弃物现状及其处理处置规划探讨. 环境污染与防治, 1994, 16(4): 30～33
+2 余国瑞. 污泥脱水及处置. 化工给排水设计, 1993, 3: 21～23
+3 Wang M J. Land application of sewage sludge in China. The Science of the Total Environment, 1997, 197: 149～160
+4 杨林章, 毛景东. 污泥在农业上的合理应用. 土壤学进展, 1995, 23(6): 43～47
+5 杨朝晖, 扬霞. 污水处理厂的污泥处置. 环境科学与技术, 1995, 4: 40～42
+6 Trout T J, Smith J L, Mcwhorter D B. Environmental effects of land application of anaerobically digested municipal sewage sludge. Trans. ASAE, 1976, 19: 266～270
+7 Robert J R. Sludge reuse strategies changing. Environmental protection, 1981, 2(1): 30～40
+8 张福锁, 薛澄泽. 土壤与植物营养新进展. 北京: 农业出版社, 1994
+9 USEPA. Composting Facility Design. In: Composting of Municipal Wastewater Sludges, 1985. 3
+10 陈世和, 张所明. 城市垃圾堆肥原理与工艺. 上海：复旦大学出版社，1990
+11 陈世和. 城市生活垃圾堆肥化处理的微生物特性研究. 上海环境科学, 1989, 8: 17～21
+12 金家志, 邵凤君, 陆华. 肉鸡舍垫料堆肥化处理研究. 农业环境保护, 1997, 16(2): 65～67
+13 薛澄泽, 马云, 张增强等. 污泥制作堆肥及复合有机肥料的研究. 农业环境保护, 1997, 16(1): 11～15, 31
+14 Haug R. T. Engineering principles of sludge composting. J Water Pollut Control Fed, 1979, 51: 2189～2206
+15 Crombie G. Evolution of A Compost Plant. Biocycle, 1982, 23(6): 17～25
+16 Smith W H, Margolis Z P, Janonis B A. High attitude sludge composting. Biocycle, 1992, August: 68～71
+17 Kasper Jr V, Derr D A. Sludge composting and utilization: an economic analysis of the camden sludge composting facility. Final Report to USEPA, NJDEP. CCMUA. Rutgers State Univ., New Brunswick, N J, 1981. 342
+18 Miller F C, Finstein M S. Materials balance in the composting of wastewater sludge as affected by process control strategy. Journal Water Pollution Control Federation, 1985, 57(2): 127
+19 Jimenez E I, Garcia V P. Composting of domestic refuse and sewage sludge. I. evalution of temperature, pH, C/N ratio and cation-exchange capacity. Resources, Conservation and Recycling, 1991, 6: 45～60
+20 Golueke C G, Diaz L F. Low tech composting for small communities. Biocycle, 1990, November: 62～64,74
+21 Hoitink H A J, Keener H M, Krause C R. Key steps to successful composting. Biocycle, 1993, August: 30～33
+22 卢杰, 李成江, 薛文源. 污泥与城市垃圾混合堆肥技术. 城市环境与城市生态, 1992, 5(2): 17～20, 26
+23 何品晶, 邵立明, 陈绍伟. 城市垃圾与排水污泥混合堆肥配比的研究, 1994, 13(6): 21～23
+24 Pioncelot R P. A Scientific Examination of the Principles and Practice of Composting. Compost Science, 1974, 15(2): 24～31
+25 Nakasaki K, Yaguchi H, Sasaki Y, et al. Effects of pH control on composting of garbage. Waste Management & Research, 1993, 11: 117～125
+26 Wat P. The principal of composition and utilization in practise. Control Tech, 1975, 47(4): 741 
+27 Mackinley V L, Vestal J R. Physical and chemical correlates of microbial activity and biomass in composting municipal sewage sludge. Applied Environmental Microbiology, 1985, 50: 1395～1403
+收稿日期：1998-11-11

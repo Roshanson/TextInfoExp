@@ -1,0 +1,101 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第2期 No.2 Vol.18 1998
+科技期刊
+
+硝基芳烃对鲤鱼鱼鳃ATPase的活性抑制和QSARs*
+徐镜波　（东北师范大学环境科学系，长春 130024）
+景体淞　（长春科技大学环境与建设工程学院，长春 130026）
+文　摘　在离体实验条件下，测定了20种硝基芳烃化合物对鲤鱼鱼鳃ATPase活性的半抑制浓度-logIC50值，以一阶价分子连接性指数1XⅤ，取代基常数总和∑σ-、指示变量I、分子分支指数1Ka、分子最低空轨道能ELUMO及辛醇─水分配系数logP为参数，进行定量结构活性相关性（QSAR）研究。结果表明，硝基芳烃的毒性和∑σ-、I、ELUMO 3个参数密切相关。在上述基础上，成功地建立了20种硝基芳烃的QSAR方程，其相关系数为0.927。
+关键词　硝基芳烃化合物　鲤鱼　ATPase　IC50　QSAR
+The inhibition of nitroaromatics to the enzymic activity of ATPase of carp gill and QSARs study. Xu Jingbo(Department of Environmental Science, Northeast Normal University Changchun 130024)；Jing Tisong(College of Environment and Construction Engineering,Changchun University of Science and Technology,Changchun 130026).China Environmental Science.1998,18(2):158～161
+Abstract―IC50 values of 20 nitroaromatic compounds to the enzymic activity of APTase of carp gill were measured In vitro. The Quantitative Structure Activity Relationship (QSAR) studies were carried out with the -logIC50 values of 20 nitroaromatic compounds to the enzymic activity of ATPase using the first-order valence molecular connective index １XⅤ, the sum of substituent constant ∑σ-, the indicator variable I, the molecular shap index　１Ka, the energy of lowest unoccupied orbital ELUMO and the octanol/water partition coefficients logP as variables. The results showed that the ∑σ-、I and ELUMO were closely correlated with toxicity of nitroaromatic compounds, Successful QSARs were developed with correlation coefficient r of 0.927,for 20 nitroaromatic compounds based on IC50 values of ATPase activities of carp gill.
+Key words:nitroaromatic compounds　carp　ATPase　IC50　QSAR
+　　苯的硝基衍生物为重要的环境污染物，在我国第二松花江中游硝基芳烃检出率较高，是美国EPA规定的优先监测污染物之一。1984年以来，国外学者系列报道了硝基芳烃化合物对黑头呆鱼、类、藻类、发光菌的急性毒性数据及构效关系研究〔1～6〕；国内学者1994年以来，也报道了这些化合物对鲤鱼的急性毒性数据及QSAR分析〔7〕。 但以ATPase作为生物指标（Biomarker）， 反映硝基芳烃亚致死剂量的生态效应及QSAR分析的研究报道国内外尚少见。作者在离体条件下，测定了硝基芳烃对鲤鱼鱼鳃ATPase活性的半抑制浓度IC50值，并应用6种物理化学参数作为描述符，进行QSAR研究，建立模式，预测毒性，探讨硝基芳烃的毒性机制。
+1　材料与方法
+1.1　试验材料
+　　试验用鲤鱼由长春市水产所养殖基地提供，平均体长为6.25±0.14cm，体重为21.28±0.12g。试验鱼经5％食盐水消毒后在实验室条件下驯养两周，此期间死亡率低于5％，水质符合渔业水质标准。
+1.2　实验方法
+　　根据被测物LC50和预实验结果，按等对数间距将被测物配制成5个以上浓度，包括 0％、100％酶活性抑制浓度，并设对照。以丙酮为助溶剂，其用量为0.05％～0.1％。
+　　鱼样品杀死后取其鳃，按文献〔8，9〕方法，进行ATPase活力测定；通过图解内插和直线回归分析，计算半数抑制浓度IC50值。
+　　统计计算使用STATGRAPHICS软件。
+2　结果与讨论
+2.1　实测IC50结果
+　　表1给出20种硝基芳烃化合物对鲤鱼鱼鳃ATPase抑制实测值和预测值（-logIC50，表中方程分别见文中 2.2 QSARs模型所列）。结果表明，各类硝基芳烃对ATPase的抑制作用有所不同，其毒性大小与取代基的种类，位置有关。含有硝基的芳烃，不同取代基对酶的抑制程度有如下趋势：二硝基苯（间－二硝基苯除外）＞二氯硝基苯＞二硝基苯胺＞二硝基甲苯≈硝基氯苯≈硝基溴苯＞硝基甲苯≈硝基苯酚（间－硝基苯酚除外）＞硝基苯胺（邻硝基苯胺除外）＞硝基苯。
+表1　鲤鱼鱼鳃ATPase的IC50值 
+Table 1　IC50　of ATPase of Carp gill
+
+序号化合物名称实测值
+-logIC50(mol／L) 预测值(方程1)
+-logIC50(mol／L) 实测值－预测值
+1硝基苯(NB) 3.14 3.54 -0.40
+2对硝基甲苯(P-NT) 3.54 3.47 0.09
+3邻-二硝基苯(o-DNB)5.175.23 -0.06
+4 间-二硝基苯(m-DNB) 4.10 4.21 -0.11
+5 对-二硝基苯(p-DNB)6.05 5.90 0.15
+62，4-二硝基甲苯(2，4-DNT) 3.86 4.17-0.31
+7 2，6-二硝基甲苯(2，6-DNT)3.90 4.13-0.23
+8邻-硝基氯苯(o-NCB)3.78 3.80 -0.02
+9 间-硝基氯苯(m-NCB)3.833.86 -0.03
+10 对-硝基氯苯(p-NCB)3.783.78 0 
+113，4-二氯硝基苯(3，4-DCNB) 4.314.060.25
+122，5-二氯硝基苯(2，5-DCNB) 4.53 4.64-0.11
+132，4-二氯硝基苯(2，4-DCNB)5.28 5.010.27
+14邻-硝基苯胺(o-NAn)3.90 3.49 0.41
+15 间-硝基苯胺(m-NAn) 3.33 3.41-0.08
+16 对-硝基苯胺(p-NAn)3.153.65-0.50
+17 2，4-二硝基苯胺(2，4-DNAn)4.23 4.29-0.06
+18邻-硝基苯酚(o-NPh) 3.573.14 0.43
+19 间-硝基苯酚(m-NPh)3.91 3.64 0.27
+20 对-硝基溴苯(p-NBrB)3.90 3.820.08
+
+2.2　QSARs模型研究
+　　在有关文献报道〔5，6〕的基础上，选用6种物理化学描述符就所实测的硝基芳烃化合物对鲤鱼ATPase 的 IC50值进行定量结构活性相关模式分析。 表2中，logP为辛醇／水分配系数，带*号者为本文应用碎片常数法计算，括号内的数字是指取自该文献，其余数值均取自文献〔10〕。1XⅤ为一阶价分子连接性指数，是表征分子整体性质的参数。 I为指示变量，是反映硝基的数目及位置关系的经验指数，取自文献〔3〕或按〔3〕规则计算。１Ka为分子形状指数，按文献〔3〕规则计算。 ∑σ-栏中，加#注的按文献〔11〕所列规则计算，其余数值均取自文献〔5〕，取代基常数总和∑σ-是除NO2外苯环上其它取代基σ-值总和，为取代基电子效应参数。 ELUMO是LUMO能，与分子对电子的亲和力成正比，为电子效应参数，其值越负，表明电子进入该轨道后体系能量降低得越多，即该分子接受电子的能力越强。
+表2　六种物理化学描述符
+Table 2　Six discriptors of the nitroaromatics 
+
+序号 化合物名称 logP　　 １XⅤ I １Ka∑σ-ELUMO
+1硝基苯(NB) 1.89 2.4990.5 6.7010.00 1.146
+2对硝基甲苯(P-NT) 2.34 2.9100.5 7.665 -0.15 　1.344
+3 邻-二硝基苯(o-DNB)1.553.005 3.0 9.210 1.24 -1.502
+4间-二硝基苯(m-DNB) 1.52 2.999 1.0 9.210 0.71 0.170
+5 对-二硝基苯(p-DNB) 1.46 2.999 3.0 9.210 1.24 -0.348
+6 2，4-二硝基甲苯(2，4-DNT)2.04 3.416 1.0 10.203 0.56 0.425
+72，6-二硝基甲苯(2，6-DNT) 2.02 3.422 1.010.203 0.56 0.359
+8 邻-硝基氯苯(o-NCB) 2.263.018 0.5 7.971 0.27 1.001
+9 间-硝基氯苯(m-NCB) 2.49 3.0120.5 7.971 0.37 0.885
+10 对-硝基氯苯(p-NCB) 2.35 3.012 0.5 7.971 0.27 0.962
+11 3，4-二氯硝基苯(3，4-DCNB) 3.29* 3.5310.5 9.245 0.60# 0.735
+12 2，5-二氯硝基苯(2，5-DCNB)2.90 3.531 0.5 9.245 1.05#0.742
+13 2，4-二硝基氯苯(2，4-DCNB)2.20〔10〕3.4821.0 10.328 1.39# 0.072
+14 邻-硝基苯胺(o-NAn)1.85 2.7050.5 7.650 -0.15 　1.390
+15 间-硝基苯胺(m-NAn) 1.37 2.699 0.5 7.650 -0.16 　 1.271
+16 对-硝基苯胺(p-NAn) 1.39 2.699 0.57.650-0.15 　 1.673
+172，4-二硝基苯胺(2，4-DNAn) 1.84〔11〕3.204 1.0 10.212 0.56#0.647
+18 邻-硝基苯酚(o-NPh) 1.89〔12〕2.640 0.5 7.702 -0.37#　 1.256
+19 间-硝基苯酚(m-NPh)2.00〔12〕2.634 0.5 7.702 0.12# 1.055
+20 对-硝基溴苯(p-NBrB)2.73* 3.408 0.5 8.167 0.23# 1.129
+
+　　由逐步回归和多元回归分析，得到如下QSAR方程：-logIC50＝1.262∑σ-＋0.660I＋0.576ELUMO＋2.553　n＝20,S＝0.273，r＝0.9269
+　　 6个参数中，∑σ-、I和ELUMO3个参数是与鲤鱼鱼鳃ATPase IC50密切相关的变量。QSAR分析过程中，先后出现的参数依次为∑σ-、I、ELUMO，其余3个参数logP、１XⅤ、１Ka均没有进入模式。∑σ-是6个物理化学描述符中对鲤鱼鱼鳃ATPase抑制的最好表征，可见电子效应对毒性的贡献最大，I和ELUMO实质上也是与化合物电子效应相关的两参数，同时受硝基芳烃化合物中硝基的位置和数目的影响。模型中依次出现的3个参数是描述硝基芳烃对鲤鱼鱼鳃ATPase抑制作用的最佳组合。受体端点ATPase是镶嵌在膜上的蛋白，酶的活性中心的天冬氨酸，其侧链对ATP进行亲核进攻，使其磷酸化。文献〔2，3〕指出硝基芳烃化合物中的硝基在体内有两种生物化学反应，可能由它的π电子云将其苯环上的电子云密度降低，也可能被其它基团激活而离去。作者认为，硝基芳烃化合物中，-NO2和-CH2、-NO2同时存在时，可能吸引了苯环上的π电子云，使苯环本身呈部分正电性，与酶活性中心的羧基吸引，发生加和反应，影响亲核作用。并随着浓度增大抑制更加明显，呈现剂量－反应关系。因此可以认为鲤鱼鱼鳃ATPase是硝基芳烃亚致死水平毒性反应的一个敏感指标。与对鲤鱼 LC50值的 QSAR分析结果相符〔7〕。硝基芳烃对鲤鱼鳃ATPase 的 IC50值与硝基芳烃对鲤鱼、黑头呆鱼的LC50值的相关分析结果，可以看出ATPase与鲤鱼的LC50值相关更好些。其关系式为： -logLC50＝0.696＋0.826(-logIC50)，r＝0.9561，n＝20
+　　　　应用QSAR方程，预测了硝基芳烃对鲤鱼鱼鳃ATPase的抑制值，结果表明，预测值与实测值十分接近，效果很好（表1）。
+　　　　酶活性抑制与QSAR研究,有助于分析毒物的作用机制,了解污染物对生物体在生化与分子水平上的作用原理,为亚致死剂量的生态风险评价提供科学依据,而且ATPase测定较为简便，有推广应用价值。
+3　小结
+3.1　离体条件下，测定了20种硝基芳烃对鲤鱼鱼鳃ATPase的IC50值。
+3.2　以logP、１XⅤ、I、１Ka、∑σ-、ELUMO为参数，建立的QSAR方程表明∑σ-、I、ELUMO3个参数与硝基芳烃的毒性密切相关。
+参考文献
+1　Hall L H，et al.Environ. Toxico. Chem., 1984,(3):335～365
+2　Hall L H，et al. Environ. Toxico. Chem., 1986,(5):333～337
+3　Hall L H，et al. Environ. Toxico. Chem., 1989,(8):431～436
+4　Hall L H，et al. Environ. Toxico. Chem., 1989,(8):783～788
+5　Deneer J W, et al. Aquatic Toxico., 1987,(10):115～129
+6　Deneer J W, et al. Aquatic Toxico., 1989,(15):83～98
+7　Peizhen Lang, et al. Chemosphere., 1996，(8)：1547～1552
+8　丁树荣.环境生物学实验技术与方法.南京：南京大学出版社，1989
+9　Paxton R,et al. Altered activities of branchial and renal Na/K-and Mg-ATPase in cold-acclimated goldfish. Comp. Biochem. Physiol 1983，74（3）:503～506
+10　Deneer J W, et al. QSAR in Drug Design and Toxicology. Elsevier Science Publishers 1987
+11　Roberts D W.QSAR in Environ. Toxico-Ⅱ. D.Reidel Publishing CO. 1987
+作者简介
+徐镜波　女，1951年1月生。副教授。主要从事化学生态、生化毒理的教学与科研工作。现正主持国家自然科学基金“鱼体酶学指标的分子生态毒理学研究”项目。“火电厂循环冷却水排放对水生态热影响研究──火电厂热排水对湖泊水库理化性质影响研究”获水电部东北电业管理局技术改进一等奖。发表论文40余篇。
+收稿日期：1997-04-09
+*国家自然科学基金资助项目

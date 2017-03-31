@@ -1,0 +1,28 @@
+上海航天
+AEROSPACE SHANGHAI
+2001 Vol.18 No.3 P.57-60
+
+
+
+
+活性银粉中微量铜铁的测定
+薛光荣　 陈磊　 
+摘　要：提出用空气-乙炔火焰原子吸收光谱法来测定银锌电池活性银粉中的微量铜铁，并对测定条件和干扰因素进行了综合考虑。该测定方法具有灵敏度、精确度高，干扰小，选择性和重现性好等优点。测定样品微量铜铁含量的相对标准偏差均小于1.5%(n=8)。标准加入回收率均在(97.00～102.00)%(n=5)范围内，完全适用于银锌电池活性银粉中微量铜铁含量的控制和样品系统分析。实际应用中取得了很好的效果。
+关键词：原子吸收光谱；银锌电池；活性银粉；微量铜铁
+分类号：TM911.14　文献标识码：A
+文章编号：1006-1630(2001)03-0057-04S
+The Measurement of Copper and Iron Trace Content in Active Silver Powder 
+XUE Guang-rong（No.811 Institute of SAST， Shanghai 200233, China）　
+CHEN Lei（No.811 Institute of SAST， Shanghai 200233, China）　
+
+Abstract：This paper studies the measurement of copper and iron trace content in active silver powder by using the air-C2H2 flame atom-obsorption spectrum and process synthetically considering measuring conditions and factors. The method possesses many advantages such as high sensitivity and accuracy, less interference and good repeatability and selectivity. The deviation RSD＜1.5%（n=8）compared with standard value. The standard adding recovery is in the range of (97.00～102.00)%(n=5). The use of the method fully suited to the control of copper and iron trace content in active silver powder and the analysis for sample system has obtained good effect in practice.
+Keywords：Atomic absorption spectroscopy； Zinc-silver battery； Active silver powder; Copper and iron trace content
+作者简介：薛光荣（1954-）男，高级工程师，研究领域：理化分析 
+作者单位：薛光荣（上海航天技术研究院811所，上海 200233）　
+　　　　　陈磊（上海航天技术研究院811所，上海 200233）　
+参考文献：
+［1］Cramer J M. Atomic absrption spectrometry [M]. Scientific Publishing Company.1982.146-172.
+［2］Earlc P. Quantitative chemical analysis [M]. Scientific Publishing Company 1969.231-273.
+
+收稿日期：2000年4月19日
+出版日期：2001年3月1日

@@ -1,0 +1,96 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第1期 Vol.19 No.1 1999
+
+
+
+厌氧颗粒污泥对五氯酚(PCP)的吸附、解吸及生物降解
+郝丽芳　周岳溪　张寒霜
+摘要：以未驯化污泥接种的升流式厌氧污泥床反应器可形成降解五氯酚(PCP)的颗粒污泥.颗粒污泥去除PCP的主要机制是生物降解作用,而不是生物吸附作用.PCP在颗粒污泥上的吸附和解吸符合Freundlich等温方程,吸附和解吸的Freundlich常数K、1/n分别为0.7857mg/gSS、0.5079和1.1095mg/gSS、0.3782,部分PCP被不可逆吸附.与其它活或死的生物材料相比,本试验形成的颗粒污泥对PCP吸附量较小.该方程较准确地表达了UASB反应器内厌氧颗粒污泥对PCP吸附量的变化规律.
+关键词：五氯酚；厌氧颗粒污泥；生物降解；生物吸附；Freundlich等温方程
+中图分类号：X703 文献标识码：A 文章编号：1000- 6923(1999)01- 0005- 04
+Biosorption, desorption and biodegradation of pentachlorophenol (PCP) by anerobic granular sludge in an upflow anerobic sludge blanket (UASB) reactor.
+HAO Li-fang,ZHOU Yue-xi,ZHANG Han-shuang(Institute of Water Environmental Sciences, Chinese Research Academy of Environmental Sciences, Beijing 100012, China). China Environmental Science.1999,19(1)：5～8
+Abstract：Granular sludge degrading PCP would be developed in an UASB reactor treating wastewater containing PCP, as the reactor is seeded with unadapted sludge. The sorption isotherm and desorption isotherm of PCP by the granular sludge were determined, and the data fitted to the Freundlich equation. The Freundlich constant K and 1/n were 0.7857mg/gSS and 0.5079(r2=0.9793) for the sorption, and 1.1095mg/gSS and 0.3782(r2=0.9736) for desorption, respectively. This indicated that a part of PCP was irreversibly sorbed to the biomass. The sorption capacity by anerobic sludge granules was much weaker than its previously reported sorption by other live or dead biological materials. With empirically determined constants from this study, the Freundlich model can describe the partitioning behavior of PCP in the UASB reactor reasonably well. PCP removal by the granules was due to biodegradation rather than sorption.
+Key words：pentachlorophenol；anerobic granular sludge；biodegradation；biosorption；Freundlich isotherm equation
+　　近10年来,利用高效厌氧生物处理工艺(如UASB等)处理含五氯酚废水,探索其工艺运行参数和机理已成为一个热点[1-3],认为微生物的还原脱卤可使五氯酚降解[1-3].但是,此项工作目前仍处于开始阶段,在国内有关方面的报道则更少.在这些研究中关于厌氧颗粒污泥对PCP的吸附作用和解吸作用考虑甚少.由于UASB反应器内生物量巨大,有机物在生物污泥上的吸附和解吸很可能对这类化合物的归趋方面有重要作用.本试验在利用UASB反应器成功地培养出降解PCP厌氧颗粒污泥的基础上,研究PCP在厌氧颗粒污泥上的吸附和解吸以确定PCP去除的主要机制,同时进一步分析UASB反应器处理含PCP废水的效能.
+1 材料与方法
+1.1 试验材料
+1.1.1 试验装置 反应器由有机玻璃制成,内径9cm,高104cm;上部沉淀区高31cm,容积2.04L;下部反应区高72cm(其中锥体部分高7cm),容积4.58L;总容积6.62L,有效容积6L.内设三相分离器,下部为污泥悬浮层和污泥床,沿反应器高度设有10个取样口.
+　　将结构完全相同的1#、2#两套装置置于35± 1℃的木制恒温箱内,其温度由温度控制仪控制;进水由蠕动泵打入反应器底部;产生的沼气由湿式气体流量计计量.其中2#反应器进水不加PCP,培养非降解PCP颗粒污泥; 1#反应器进水投加PCP,培养降解PCP的颗粒污泥.除进水PCP成份不同外,两个反应器其它工艺条件均相同.水力停留时间(HRT)为24h.进水碱度由无水Na2CO3调节,保持出水pH值在6.5～7.5之间.
+1.1.2 试验用水特性 试验用水为人工模拟配水.以葡萄糖为碳源,尿素和磷酸二氢钾分别为氮源和磷源(比例为COD:N:P=200:5:1).1#反应器进水中投加定量PCP.
+1.1.3 接种污泥性状及反应器接种 接种污泥取自北京啤酒厂生产性UASB装置中的颗粒污泥,未加任何营养物放置4个多月后不经任何处理直接接种,接种量为15gVSS/L.接种时污泥已经解体,大部分为0.3mm以下的细小颗粒.反应器接种后静置4d开始连续进水运行.
+1.2 试验方法
+1.2.1 降解PCP和非降解PCP厌氧颗粒污泥的培养 由于接种污泥活性低,故试验开始时,1#反应器进水不加PCP,待基质去除率达80%以上,产气量明显增大时,进水中开始投加PCP.根据出水中COD、PCP浓度和产气情况,及时递增COD负荷、PCP负荷和水力负荷,以加速降解PCP厌氧颗粒污泥的形成.2#反应器进水中未加PCP,是典型的有机物废水,污泥很易颗粒化,形成非降解PCP的厌氧颗粒污泥.
+1.2.2 厌氧颗粒污泥对PCP的吸附和解吸 每个试管注入10mL培养基,其中含有工业葡萄糖35mg,磷酸二氢钾0.66mg,尿素1.57mg及碳酸钠17.5mg;在厌氧状态下向各试管中投加PCP钠盐储备液,使PCP浓度分别为1.1、8.2、11.8、17.9、23.1和28.9mg/L.将上述各浓度试管分成3组:第1组先用Na2S(0.5mM)还原培养基,然后用注射器接种0.5mL非降解PCP的厌氧颗粒污泥;第2组培养基也用Na2S还原,但不接种颗粒污泥;第3组培养基不用Na2S还原,也不接种颗粒污泥;将上述3组试管置于摇床上,在35± 1℃和100次/min条件下培养14h[7],以达到吸附平衡.对第1组试管,3000r/min离心30min,使泥、水分离,再测定上清液PCP浓度.然后向试管中污泥注入1.4mL培养基,混合在35± 1℃条件下继续培养6h以释放被吸附的PCP.培养结束后,离心分离,测定上清液PCP浓度及各试管的污泥浓度.对第2、3组试管,3000r/min离心20min后,测定其中的PCP浓度.
+1.2.3 反应器内厌氧颗粒污泥对PCP吸附量的测定 取1#反应器上、中、下3层污泥,3000 r/min离心30min,弃上清液;准确称取湿污泥2.0g,加入1moL/L NaOH溶液2.0mL,乙腈1.0mL,摇床振荡10min后,离心;取上清液经0.45m m微孔滤膜过滤后,供高效液相色谱(HPLC)分析,测定PCP浓度;同时测定污泥浓度.
+1.2.4 高效液相色谱(HPLC)对水样中PCP的分析 样品的前处理:取离心后上清液1.0mL,滴加0.5mL乙腈,混合;3000r/min下离心20min,再经0.45m m的微孔滤膜过滤后上机测定;测定条件: 流动相为乙腈和5%的乙酸水溶液,两者体积比为8:2.流量1.0mL/min,波长300nm,保留时间5.45min.
+1.2.5 化学分析项目与分析方法 COD:采用标准重铬酸钾法测定[4];SS和VSS采用重量法测定[4];pH值采用HORIBA公司M-8型pH计测定[4];厌氧污泥的活性[5]采用最大比产甲烷速率法测定.
+2 结果与讨论
+2.1 厌氧颗粒污泥对PCP的吸附、解吸
+　　PCP是一种弱有机酸,它在固液二相间的分配受液相pH值、温度和离子强度等的影响[6]. 由于降解PCP颗粒污泥的脱氯代谢十分迅速,利用此类污泥不可能得出准确的PCP吸附或解吸动力学关系.因此,必须采用非降解PCP的厌氧颗粒污泥即2#反应器形成的降解葡萄糖颗粒污泥进行吸附试验,通过考察2#反应器内的颗粒污泥对PCP的吸附、解吸特性,确定厌氧反应器内因污泥的理化作用所引起的溶液中PCP浓度减少的可能性.为使结果与反应器内的情况有可比性,本试验选用与反应器模拟废水相同的溶液作为吸附、解吸介质,试验的工况与反应器的工况相似(pH=6.5～7.5,温度35± 1℃).试验结果见图1.从图1中可以看出,厌氧颗粒污泥对PCP的生物吸附和解吸符合Freundlich等温方程：
+吸附等温线：X/M=0.7857Ce0.5079(R2=0.9792) 
+解吸等温线：X/M=1.1095Ce0.3782(R2=0.9738) 
+
+图1 厌氧颗粒污泥对PCP的Freundlich 吸附和解吸等温线
+Fig.1 Freundlich sorption and desorption isotherm for PCP by anerobic granular sludge
+1.吸附等温线 2.解吸等温线
+　　吸附和解吸的Freundlich常数K、1/n分别为0.7857mg/gSS、0.5079和1.1095mg/gSS、0.3782.吸附和解吸等温线不同,因此部分PCP被颗粒污泥不可逆吸附.另外,HPLC检测PCP时未检测到其它氯酚类化合物,说明吸附和解吸之间的差异不是由于PCP的转化所造成.
+　　第2、3组试管培养14 h后,PCP浓度无变化.说明培养基内不含有降解PCP的成份.
+　　但是,如表1所示,与好氧污泥对PCP的吸附作用相比,本试验的吸附量较小.其原因可能是微生物对物质的吸附与其膜脂有关,不同的脂类具有不同的吸附性.虽然好氧与厌氧微生物的膜脂总量相差不多,但这两类微生物的膜脂成份却有着本质差别.另外,造成这种差异的原因还与试验条件及污泥的种类有关.
+表1 各种生物材料对PCP吸附作用的比较
+Table 1 The compare of sorption constants
+吸附剂(活或死)温度
+(℃)参数文献
+序号
+K1/n
+无根酒曲菌(Rhizopus arrhizus)　　　　
+(活)2032.10.56[8]
+(死)2028.80.90[7]
+好氧活性污泥
+(活)　
+20　
+85.1　
+0.60　
+[8]
+(死)2010.10.80[7]
+厌氧颗粒污泥
+(活)　
+28　
+1.15　
+0.47　
+[3]
+(活)350.78550.5018*　
+
+注：* 本试验
+2.2 UASB反应器运作效能的分析
+　　在实际反应器中,由于厌氧颗粒污泥对PCP的降解作用,不可能使反应器内固液两相之间达到真正的平衡,但利用相似条件下培养的非降解PCP的颗粒污泥所建立的Freundlich模型仍较好地预测了反应器内污泥对PCP的吸附情况.假设降解PCP的颗粒污泥和降解葡萄糖的颗粒污泥对PCP的吸附和脱附作用相同,当反应器内PCP浓度为0.5mg/L时,lg(SS)厌氧颗粒污泥靠吸附作用去除PCP的量为0.55mg,即反应器内平衡浓度为0.5mg/L时,UASB反应器内污泥(约260gSS)只能吸附143.5mgPCP;但按PCP去除量计算,到投加PCP后的第23d,投入反应器的PCP约为156mg,两者对比表明,此时厌氧颗粒污泥已开始降解PCP.进一步分析可以发现,运行到第150d时,进水PCP浓度为8mg/L,PCP的去除率大于80%.如按80%计算,则反应器的颗粒污泥去除PCP的量约40~42mg/d,远大于反应器内相应浓度时的PCP吸附量,也就是说,厌氧颗粒污泥去除PCP主要机制是生物降解而不是生物吸附作用.
+2.3 反应器内厌氧颗粒污泥对PCP吸附量的实测值与预测值的比较
+　　表2是在UASB反应器运行过程中,不同出水PCP浓度时反应器内厌氧颗粒污泥上PCP的吸附量的实测值与利用Freundlich吸附方程的预测值的比较.由表2可知,Freundlich等温方程可以较准确地预测UASB反应器内厌氧颗粒污泥对PCP吸附量的变化规律.
+表2 UASB反应器内厌氧颗粒污泥吸附PCP量的实测值和预测值
+Table 2 The calculated capacity and determined capacity of sorption of PCP by anerobic granular sludge in UASB reactor
+PCP平衡浓度
+(mg/L)实测吸附总量
+(mg)预测吸附总量
+(mg)误差
+(%)
+0.4125.7133.96.1
+1.0221.1212.14.2
+1.65317.2313.11.3
+
+3 结论
+3.1 UASB反应器内厌氧颗粒污泥去除PCP的主要机制是生物降解作用,不是生物吸附作用.
+3.2 UASB反应器内厌氧颗粒污泥对PCP的吸附符合Freundlich等温方程,吸附是部分不可逆的.该方程较准确地表达了UASB反应器内厌氧颗粒污泥对PCP吸附量的变化规律.与好氧活性污泥相比,厌氧颗粒污泥对PCP的吸附量较小.
+基金项目：国家自然科学基金资助项目(59578013)
+作者简介：郝丽芳(1965-),女,河北安国人,中国环境科学研究院工程师.主要从事污水的微生物处理等工作.曾获安徽省科技进步二等奖.参加过国家“七五”、“ 八五”科技攻关项目.发表论文及著作10余篇.
+作者单位：(中国环境科学研究院水环境科学研究所,北京 100012)
+参考文献：
+　[1]　Nicholson D K , S L Woods, J D Istok,et al.Reductive dechlorination of chlorophenols by a pentachlorophenol-acclimated meth- anogenic consortium [J]. Appl. Environ. Microbiol., 1992, 58(8):2280- 22862.
+　[2]　Frank O Bryant,Dorothy D Hale, John E Rogers.Regiospecific dechlorination of pentaclorophenol by dichlorophenol-adapted Microorganisms in freshwater,anaerobic sediment slurries [J]. Appl. Environ. Microbiol.,1991,57:2293- 2301.
+　[3]　Wei-min Wu, Larshmi Bhatnagar, J Gregory Zeikus. Performance of anaerobic granules for degradation of Pentachlorophenol [J]. Appl.Environ.Microbiol.,1993,59(2):389- 397.
+　[4]　魏复盛,寇洪茹,洪水皆等.水与废水检测分析方法 [M].北京：中国环境科学出版社,1989.
+　[5]　吴唯民,胡纪萃.厌氧污泥的最大比产甲烷速率的间歇试验测定法 [J].中国给水排水,1985.1(4):30- 36.
+　[6]　Lee L S,P C Rao,P N Kedi-Kizza,et al.Influence of solvent and sorbent characteristics on distribution of pentachloropheno in octanol-water and soil-water system [J].Environ. Sci. technol., 1990,24:655- 681.
+　[7]　Bell J P, Tsezos M.Removal of hazardous organic pollutants by adsorption on microbial biomass [J].Was. Sci. Technol., 1987, 19: 409- 416.
+　[8]　Tsezos M, Bell J P.Comparison of the biosorption and desorption of hazardous organic pollutants by live and dead biomass [J]. Wat.Res.,1989,23:561- 568.
+收稿日期：1998-06-17

@@ -1,0 +1,35 @@
+上海航天
+AEROSPACE SHANGHAI
+2001 Vol.18 No.3 P.50-52，56
+
+
+
+
+综合布线在航天靶场测发系统中的应用浅探
+柯宏发　 王光文　 陈友良　 
+摘　要：针对靶场测试电缆存在的浪费严重、管理困难等现状，提出了应用综合布线系统的设想。简要介绍了结构化布线系统的定义、组成，论述了靶场测试电缆采用结构化布线系统的优势，并给出了电缆结构化布线系统的初步组成设想。最后论述了靶场在具体实施结构化布线时应注意的几个问题。
+关键词：综合布线；航天靶场；测发系统
+分类号：V553.1　文献标识码：A
+文章编号：1006-1630(2001)03-0050-03
+Discussion on the Application of Generic Cabling in Measure and Launch System in Launch Vehicle Range 
+KE Hong-fa（Unit 63891 of PLA, Luoyang Henan 471003, China）　
+WANG Guang-wen（Jiuquan Satellite Launch Center, Lanzhou Gansu 732750, China）　
+CHEN You-liang（Hunan Light Industry College, Changsha Hunan 410003，China）　
+
+Abstract：This paper introduces the idea of using generic cabling system to solve the problem of waste and management of the cable in launch vehicle range. It introduces the definition, composition, the superiority and the idea of generic cabling system, and describes some technical means which should be paid attention to when the generic cabling system is used in launch vehicle range.
+Keywords：Generic cabling；Launch vehicle range；Measure and launch system
+
+作者简介：柯宏发（1969-），男，工程师，研究领域：运载工具测试发射 
+作者单位：柯宏发（中国人民解放军63891部队，河南洛阳 471003）　
+　　　　　王光文（酒泉卫星发射中心，甘肃兰州 732750）　
+　　　　　陈友良（湖南轻工业高等专科学校，湖南长沙 410003）　
+
+参考文献：
+［1］刘国林.综合布线系统工程设计[M].北京：电子工业出版社.1999.
+［2］张瑞武.智能建筑[M].北京：清华大学出版社.1996.
+［3］何杰.高速计算机网络FDDI技术与应用[M].北京：电子工业出版社,1996.
+［4］曾银龙.综合布线主流技术的探讨[J].建筑电气资讯,2000,（2,3）.
+
+收稿日期：2000年5月18日
+修稿日期：2000年9月5日
+出版日期：2001年3月1日

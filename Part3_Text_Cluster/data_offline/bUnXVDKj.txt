@@ -1,0 +1,82 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第4期 No.4 Vol.18 1998
+科技期刊
+
+氯化三丁基锡（TBTCL）对小鼠外周血T-淋巴细胞与脾指数的影响
+阿那尼 多西米伊马那*　陈叙龙　张毓琪　戴树桂　（南开大学环境科学系，天津 300071）
+文　摘　从免疫毒理学角度研究氯化三丁基锡（TBTCL）对小鼠免疫系统影响。进行了0.01～0.20μg/kg TBTCL 腹腔注射对小鼠外周血T-淋巴细胞与脾指数影响的实验，采用外周血液淋巴细胞酸性α-醋酸奈酯酶(ANAE)检测法,并观察小鼠体重和脾重变化情况。结果表明，0.01～0.10μg/kg TBTCL增加T-淋巴细胞数、体重和脾重；脾指数也有一定程度的提高。在0.13～0.20μg/kg TBTCL作用5d，各指标则呈现不同程度的下降趋势，说明不同剂量TBTCL对免疫系统有促进或抑制作用。实验对临床免疫病症提供了创造新的诊断方法的可能性，但是TBTCL对免疫增加或抑制作用的分子机理有待于深入研究。
+关键词　氯化三丁基锡（TBTCL)　T-淋巴细胞　脾指数　免疫　小鼠
+The effect of tributilytin chloride(TBTCL)on peripheral blood T-lymphocyte and spleen index in mice.Ananie Dushimiyimana,Chen xulong,Zhang Yuqi,Dai Shugui(Department of Environmental Science ,Nankai University,Tianjin 300071).China Environmental Science.1998,18(4):378～380
+Abstract―From immunotoxicological point of view, the effect of Tributilytin Chloride (TBTCL) on mice immune system was studied.It was conducted that different doses ranging from 0.01～0.20μg/kg TBTCL intrapertoneal on the influence of TBTCL on peripheral blood T-lymphocyte and spleen index in mice by using peripheral blood lymphocyte acid α-naphthyl acetate esterase (ANAE) detection method,and mice body and spleen weight changes were observed. It demonstrated that doses with 0.01～0.10μg/kg TBTCL for 5 days resulted in increasing T-lymphocyte in number,body and spleen weights，and also spleen index;while injecting with 0.13～0.20μg/kg TBTCL for 5 days,TBTCL decreased the above parameters.It also suggested that TBTCL enhanced or suppressed immune system functions at different dose ranges. The present study provides and creates a new possibility for clinical immunologic desease diagnostic method;but the mechanisms by which TBTCL acts on this system should be further studied.
+Key words:Tributilytin Chloride ( TBTCL)　T-lymphocyte　spleen index　immune　mice
+　　免疫毒理学主要研究环境化学物质对人和动物的免疫系统所产生的影响及其机制，用灵敏、快速、特异的免疫学实验方法，进行一系列筛选，以便对毒物做出全面评价；并寻求毒物对机体损伤的早期指标〔1〕。大量化学物质具有免疫影响，可引起免疫促进或抑制作用〔1～3〕。本文所涉及的氯化三丁基锡即属于有机金属化合物〔2〕。近10多年来，科学家发现使用有机锡涂料的船只会向水体释放一定量的有机锡，造成水体污染，引起近海养殖生物的畸形、减产，甚至死亡〔2,4〕。目前国内、外科学者报道有关三丁基锡对生物影响较多〔2，4〕，但是关于其对生物免疫系统功能影响的研究尚少见报道，Wester和Landersteiner等人发现了有机锡化合物对免疫系统有抑制作用〔2,5～7〕，但本文研究结果表明此化合物对免疫系统有促进作用和抑制作用，这将为通过毒理效应研究TBT对生物的影响提供了一个新的研究途径。
+1　实验材料
+1.1　实验动物
+　　昆明种健康小鼠,雄性,7～8周龄,体重18～20g。由天津市劳动卫生职业病研究所提供,驯3d后使用。
+1.2　实验仪器
+　　2PSN-DP-501恒温箱;XSP-18S光学显微镜。
+1.3　实验药品
+　　氯化三丁基锡(TBTCL)由本实验室提供;固定液:福尔马林―丙酮缓冲液;六偶氮副品红液;2%α-醋酸萘酯溶液;0.067M,pH7.6磷酸盐缓冲液。
+2　实验方法
+　　Mueller〔8〕首先发现酸性α-醋酸萘酯酶(Acid α-naphthyl acetate esterase ANAE)能特异地标记小鼠T-淋巴细胞,用光学显微镜即可区别T-和B-淋巴细胞。采用此方法来观察TBTCL对小鼠外周血液ANAE阳性T-淋巴细胞的影响。同时还注意到TBTCL对小鼠体重和脾脏的重量的影响。
+　　取小鼠,按体重分为8组,实验组分别给0.01、0.05、0.10、 0.13、0.15、0.18和0.20μg/kg TBTCL,腹腔注射0.2mL。以0.9%生理盐水作对照,也注射0.2mL。每天1次,共5d。未给药24h后按文献〔9〕方法,通过外周血淋巴细胞ANAE活性测定法,血涂片制片。在光学显微镜下观察和计算ANAE阳性T-淋巴细胞百分率并用生物统计学方法(t检验)进行实验数据综合与分析。同样,24h后称重,处死小鼠取脾脏,称其湿重并计算脏指数(mg/g体重)。
+3　结果与讨论
+　　由表1可看出0.01μg/kg TBTCL对小鼠体重没有影响,这是因为该剂量很低、暴露时间短;而在0.05～0.10μg/kg TBTCL作用下小鼠体重比对照的增重。这可能是TBTCL在一定剂量范围内能使呼吸链上的一些酶的合成量升高,而0.10μg/kg TBTCL以上的实验组小鼠体重下降,这说明呼吸链上的酶合成受抑制,尤其是ATP酶的合成速率下降,减少其对三羧酸循环的抑制作用,使体内三羧酸循环的速率加快;因而,大量的脂肪蛋白质等其它生物燃料易分解，由此可解释为什么在一些疾病状态下体重易减轻。
+表1　TBTCL对小白鼠体重和脾重的影响
+Table 1　The effect of TBTCL on the body and spleen weights in mice
+
+TBTCL
+(μg/Kg)鼠数
+(只)前体重
+±SE(g)后体重
+±SE(g)脾重
+±SE(g)脾指数
+对照818.6±1.118.7±1.20.14±0.010.007±0.001
+0.01519.8±1.319.8±1.60.14±0.030.007±0.002
+0.05819.0±1.220.1±2.80.14±0.030.007±0.005
+0.10819.8±1.221.4±1.40.16±0.070.007±0.005
+0.13518.9±1.418.0±1.40.14±0.070.007±0.002
+0.15820.1±1.619.6±1.30.13±0.070.006±0.001
+0.18519.9±1.318.1±1.10.11±0.060.006±0.001
+0.20519.6±1.217.9±1.30.09±0.040.005±0.003
+
+　　由表1还可看出,与对照相比0.01～0.13μg/kg TBTCL组脾重和脾指数有轻度增高,但是各剂量与对照比较差异无显著性,说明在此剂量范围内脾脏增殖不明显,由于在正常生理状态下体重和脾重保持一定的比例。高于0.13μg/kg TBTCL的实验组脾脏的各指标下降,说明该免疫器官增殖受抑制作用,器官已经开始萎缩,因此其免疫功能会降低。
+表2　TBTCL 对小鼠外周T淋巴细胞影响
+Table 2　The effect of TBTCL on peripheral T-lymphocyte 
+
+TBTCL
+(μg/kg)鼠数
+(只)ANAE阳性率
+(±SE)(%)增加率
+(%)减少率
+(%)
+对照8　63.8±1.36
+0.015　63.9±1.41
+0.058　67.3±1.60*5.4
+0.108　70.1±2.1**8.1
+0.135　66.4±1.8*7.1
+0.158　62.8±2.2*　1.6
+0.185　55.4±4.8**　12.3
+0.205　45.6±4.1**　28.5
+
+　注:*与对照相比P<0.05　**与对照相比P<0.01　t检验
+　　从表2所列出的数据可看出，对照组小鼠免疫系统T-淋巴细胞数为63.8%,该结果与文献〔8〕报道的相近。0.01μg/kg TBTCL组的T-淋巴细胞数与对照组无明显差异,这是由于此剂量很低,时间不够长,因而不显示其对免疫系统的影响；当剂量浓度为0.05～0.10μg/kg TBTCL时,T-淋巴细胞数有显著性提高(P<0.05和P<0.01)，可能是TBTCL刺激淋巴细胞生长因子和调节因子白细胞介素2(Interleukin 2,IL2)。文献〔10〕指出,这两种因子能使已经被激活的T-淋巴细胞进一步增殖,分化成不同T-淋巴细胞亚群并增加它们的活性。0.05～0.10μg/kg TBTCL组小鼠外周血T-淋巴细胞ANAE阳性率分别为67.3%和70.1%,与对照组63.8%相比有显著性差别,并呈剂量-效应响应关系,这说明T-淋巴细胞的成熟率有明显上升，即T-淋巴细胞向成熟方面分化,保证T-淋巴细胞的质量,利于T-淋巴细胞发挥其特异性细胞免疫作用。当高于0.10μg/kg TBTCL的剂量时,T-淋巴细胞数逐渐下降,甚至低于对照组水平,影响T-淋巴细胞的免疫功能,并间接影响其它参与免疫反应的各种细胞。该结果与Thayer 和Landersteiner提出的相同〔2〕。有文献〔6,7〕提出,有机锡化合物对小鼠免疫系统有抑制作用,而本研究表明0.01～0.10μg/kg TBTCL对小鼠免疫系统可产生促进作用,而高于0.10μg/kg TBTCL时则有抑制作用。实验过程中,α-醋酸萘酯浓度、反应液pH值、偶氮化程度、固定液质量等许多因素会影响ANAE染色的效果。因此,在实验过程中必须严格控制实验条件以便获得可靠的结果。
+4　结语
+　　免疫系统是机体在进化过程中所获得的识别自身,排斥异己的一种生理功能。当它受到外源性化学物质的直接或间接作用时,其免疫反应表现在两个方面:一是免疫增强,另一方面免疫抑制。在本研究中TBTCL就具有这两种不同的效应。在低剂量(0.01～0.10μg/Kg)TBTCL作用5d后,免疫系统受到了一定程度的促进作用,脾脏有一定的增生,T-淋巴细胞数增多,并向成熟方向转化。由此可见,低剂量TBTCL可显著地提高小鼠的非特异性免疫力,增强其抗病能力。而高于0.10μg/kg TBTCL时作用5d后,小鼠免疫系统受到不同程度的抑制作用。过去的研究表明有机锡化合物对免疫系统有抑制作用〔6,7〕,而在本研究中发现,TBTCL在一定程度上对小鼠有益;是否对人体也是如此，还需进一步研究。
+　　研究表明,可以根据环境中化学物质的浓度或剂量、机体接触时间长短、机体免疫系统受影响程度来判断环境被污染的情况。本试验方法可以用来进行环境生物监测及其评价。
+参考文献
+1　纪云晶，王翔朴，甘卉芳等.实用毒理学手册.北京：中国环境科学出版社，1991.137
+2　John S Thayer，Landersteiner D H.Organotin compounds and living organisms.NY:Academic Press,1984.1～60
+3　薛　彬.免疫毒性检测与安全评价.卫生毒理学杂志，1989，1(2)：53～56
+4　阿那尼，陈叙龙，张毓琪.氯化三丁基锡（TBTCL）对鲤鱼味雷的影响.南开大学自然科学学报，1996，29(2)：83～88
+5　Wester P W.Biomarkers in immunotoxicology. Toxicology, 1994, 86:213～232
+6　Parke D，Ronald Hubbard, G Gordon Gibson. Immunotoxicology. England: Academic Press, 1983. 427～435
+7　De Matteis F，Lock E A.Selectivity and molecular mechanisms of toxicity. London: MacMillan Press, 1987. 93～99
+8　Mueller J，Ranki A.Nonspecific acid esterase activity:a criterion for differentiation of T and B lymphocytes in mouse lymph nodes.Eur.J.Immunol.,1975,5(6):270～272
+9　薛　彬，雷志明，尹秀琴.几种化学物质对小鼠外周血酸性α-醋酸萘酯酶阳性淋巴细胞的影响.卫生毒理学杂志，1990，4(4)：240～241
+10　Lichard L Fenichel, Michael A Chirigos.Immune modulation agents and their mechanisms. New York: Marcel Dekker, Inc., 1984. 79～98
+作者简介
+阿那尼 多西米伊马那　男，1965年1月生。现为南开大学环境科学系博士研究生。主要研究有机锡化合物对生物的影响、有机锡化合物的生态效应。发表论文1篇。
+收稿日期：1997-11-03
+* 卢旺达在华博士研究生

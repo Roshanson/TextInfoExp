@@ -1,0 +1,114 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第4期　Vol.19　No.4　1999
+
+
+
+ZCMR法从废物中制取活性炭及在含铬废水处理中应用
+宁 平　彭金辉　高建培
+摘要：采用微波照射-氯化锌(ZCMR)法从废物中制取锯末活性炭及烤胶废料活性炭,用所得的两种活性炭处理含铬废水,结果表明,ZCMR法制取的废物活性炭对电镀废水中铬的吸附容量是市售一级粉末活性炭的1.72～1.8倍, 过滤速度是市售活性炭的1.6～1.7倍, 极限吸附量达21.5～22.5mg/g.
+关键词：微波照射；烤胶废料；锯末；活性炭；含铬废水
+中图分类号：X703 文献标识码：A 文章编号：1000- 6923(1999)04- 0306- 04
+Manufacture of activated carbon with the method of zinc chloride-microwave radiation from waste and itapplication in treatment of wastewater of containing chromium.
+NING Ping, PENG Jin-hui, GAO Jian-pei (Department of Environmental Engineering, Kunming University of Science and Technology, Kunming 650093,China). China Environmental Science. 1999,19(4)：306～ 309
+Abstract：Manufacture method of activated carbon with zinc chloride-microwave radiation (ZCMR) from wood powder and waste rubber are studied. The activated carbon produced by the method was used to adsorb Cr6+ in wastewater.The result shows that the adsorption capacity of Cr6+ on the activated carbon from wood powder and waste rubber is 1.72～1.8 times and the filtering rate is 1.6～1.7 times as high as in comparison with the powdered activated carbon of the first grade standard in market. The maximum adsorption capacity for Cr6+ is 21.5 to 22.5mg/g.
+Key words：microwave radiation；waste rubber；wood powder；activated carbon；wastewater of containing chromiun
+　　用活性炭处理含铬废水已得到广泛应用.工业规模所用的活性炭性能低于市售一级粉末活性炭,且存在生产过程中污染严重,使用过程中过滤困难、吸附容量小等缺点.目前工业用粉末活性炭多用传统氯化锌法生产,生产过程中耗用大量优质原材料,生产成本较高,价格昂贵,给实际广泛应用带来经济困难[1].另外传统的氯化锌法制取活性炭热利用率低、劳动强度大,改革传统氯化锌法制取活性炭生产工艺是必然趋势.
+　　本文提出了利用微波内部加热,在微波辐照下用氯化锌法(ZCMR)生产活性炭的新方法,并用此法生产锯末活性炭及烤胶废料活性炭,用所得的两种活性炭处理含铬废水,该法在活性炭生产过程中具有节能、快速、加热易控制等优点.用锯末活性炭及烤胶废料生产的ZCMR活性炭性能优于市售一级粉末活性炭,对含铬废水具有较好的净化效果.
+1 实验部分
+1.1 废物活性炭的制取
+　　将废物锯末及烤胶废料分别与氯化锌溶液混合浸渍12h后,装在石英坩埚中,放入多模微波腔体中进行辐照,随后对辐照产品进行漂洗、烘干、粉碎和筛分,得到粉状活性炭.
+　　氯化锌溶液浓度为50%,废物(干):氯化锌 = 1:2.5,微波频率为2.45GHz,微波最大功率为10W.　　
+　　采用林业部LY216-79标准测定产品指标[2].
+1.2 废物活性炭吸附含铬废水
+　　实验水样为昆明某厂含铬电镀废水,将市售一级活性炭及自制废物活性炭在110℃下烘干2.5h,分别称取烘干后的两种废物活性炭及市售一级活性炭不同量的5个样品于10个250 mL锥形瓶中,分别加入含铬废水150mL,于pH 6.7,25℃下在恒温振器上振荡,振荡速率为130次/min,振荡时间为1.5h.平衡样经过滤分析溶液浓度,计算活性炭吸附量.
+　　Cr6+分析采用分光光度法,光波长560nm,1cm石英比色皿.含铬废水原水浓度为162mg/L.
+2 结果与讨论
+2.1 废物活性炭特性分析
+　　微波辐照时间8min,制取的活性炭得率41%.质量指标见表1.
+表1 市售一级活性炭与ZCMR废物活性炭质量指标比较
+Table 1 Comparison of ZCMR activated carbon from waste with powdered activated carbon 
+of the first grade standard in market
+活性炭亚甲蓝脱色率(mL/g)比表面积
+(m2 /g)孔隙率(%)真密度(g/cm3)pH值灼烧残渣(%)总铁(%)氯化物(%)
+市售一级12064043.22.2061.260.030.1
+ZCMR烤胶废料120101148.41.9861.010.020.1
+ZCMR锯末18098145.42.0161.300.030.1
+
+　　由表1可见, ZCMR废物活性炭亚甲蓝脱色率120～180mL/g,比表面积981～1011m2/g.林业部LY216-79(783型)产品指标中,一级活性炭标准的亚甲蓝脱色率为120mL/g,比表面积640m2/g.两者相比较,实验中经微波辐照后的亚甲蓝脱色率为国家标准一级品的1～1.5倍,比表面积为国家标准一级品的1.53～1.6倍,其它指标均符合国家一级产品(LY216-79)标准.　　
+　　在微波辐照下,样品内部迅速被加热,由于氯化锌和水分子急剧挥发,造成物料有更显著的多孔结构,活性炭比表面积增加,从而得到较高的亚甲蓝脱色率.
+　　在传统氯化锌法制造活性炭工艺中,加热从原料外部开始,经过相当长的时间,才能由表及里进行加热形成微孔,一般需经预热、干燥、炭化和活化4个阶段,需较长的时间(至少6h)、较多的能量.而在微波辐照下,仅用8 min就可完成上述4个过程,时间仅为传统方法的1/45.
+2.2 含铬废水吸附
+2.2.1 市售一级活性炭吸附含铬废水 用市售一级活性炭吸附浓度为162 mg/L的含铬废水,实验结果见表2.由表2可知,市售一级活性炭吸附含铬废水的平均过滤速度为9.25 ml/L,吸附性能尚可.
+表2 市售一级活性炭吸附含铬废水实验结果
+Table 2 Adsorption results of Cr+6 in wastewater with powdered activated carbon of the first grade 
+standard in market
+序号吸附剂量 (g)过滤速度 (mL/min)平衡浓度Ce (mg/L)平衡吸附量qe (mg/g)
+11.010.177.612.66
+21.69.858.19.74
+32.49.148.67.10
+43.29.238.35.78
+55.19.528.23.94
+
+　　以lgqe对lgCe作图,可得Freundlich吸附等温线为一直线(图1),图1中直线斜率1/n = 1.18, 超出易吸附(1/n = 0.1～0.5)范围[3],但低于难吸附上限(1/n2).吸附平衡常数K = 0.078,市售一级活性炭Cr6+ 吸附Freundlich等温式如下:
+qe=0.078Ce1.18 
+(1)
+式中:qe为活性炭平衡吸附量(mg/g);Ce为废水中Cr6+平衡浓度(mg/L).
+2.2.2 ZCMR废物活性炭吸附含铬废水 用自产ZCMR废物活性炭吸附浓度为162mg/L的含铬废水,实验与市售一级活性炭吸附Cr6+实验平行进行,结果见表3.由表3可知,自产ZCMR废物活性炭吸附含铬废水后平均过滤速度为15.6 mL/min,吸附性能良好.
+表3 自制ZCMR废物活性炭吸附含铬废水实验结果
+Table 3 Adsorption results of Cr+6 in wastewater with ZCMR activated carbon from waste
+　
+序号ZCMR锯末活性炭ZCMR烤胶废料活性炭
+吸附剂(g)滤速
+(mL/min)平衡浓度
+(mg/L)平衡吸附量
+(mg/g)吸附剂(g)滤速
+(mL/min)平衡浓度
+(mg/L)平衡吸附量
+(mg/g)
+10.816.160.619.021.018.250.016.80
+21.415.839.013.201.517.831.313.10
+32.415.622.98.692.217.620.29.67
+43.215.513.86.953.017.411.27.54
+55.115.18.04.605.117.23.44.66
+
+
+图1 市售一级活性炭吸附Cr6+的吸附
+等温线
+Fig.1 Adsorption isotherm for Cr+6 on powdered activated carbon of the first grade standard in market
+　　以lgqe对lgCe作图,得Freundlich吸附等温线为一直线,如图2所示.
+
+图2 ZCMR废物活性炭吸附Cr6+的吸附等温线
+Fig. 2 Adsorption isotherm for Cr6+ from waste ZCMR activated carbon 
+1.ZCMR锯末活性炭 2.ZCMR烤胶废料活性炭
+
+　　锯末活性炭在图2中直线斜率1/n = 0.63,接近0.1～0.5的易吸附范围,吸附平衡常数K = 1.38,废物活性炭对含铬废水中Cr6+ 吸附Freundlich等温线可用(2)式表示:
+qe=1.38Ce0.63 
+(2)
+　　对烤胶废料活性炭在图2中直线斜率1/n = 0.39, 属于0.1～0.5的易吸附范围,吸附平衡常数K = 3.22,烤胶废料活性炭对含铬废水中Cr6+ 吸附Freundlich等温线可用(3)式表示:
+qe=3.22Ce0.39 
+(3)
+　　实验结果表明,废物活性炭比市售优质活性炭性能更好,吸附Cr6+ 能力更高.
+2.3 市售一级活性炭与ZCMR废物活性炭吸附性能比较
+　　市售一级活性炭与ZCMR废物活性炭吸附性能比较见图3.
+
+图3 市售一级活性炭与ZCMR废物活性炭吸附Cr6+能力比较
+Fig. 3 Comparison of the adsorption capacity of Cr6+ of ZCMR activated carbon from waste and powdered acti-
+vated carbon of the first grade standard in market
+1.市售一级活性炭 2.ZCMR锯末活性炭 3.ZCMR烤胶废料
+活性炭
+　　由图3可看出,市售一级活性炭达到饱和时对Cr6+ 的极限吸附量为12.5 mg/g,而废物活性炭的吸附量高达21.5～22.5mg/g,废物活性炭的吸附容量是市售一级活性炭的1.72～1.8倍;ZCMR锯末活性炭吸附废水时平均过滤速度为15.6 mL/min,ZCMR烤胶废料活性炭为17.7 mL/min,而市售一级活性炭平均过滤速度为9.52 mL/min,ZCMR废物活性炭的过滤速度是市售一级活性炭的1.6～1.7倍.因此,无论从吸附容量还是从过滤速度,ZCMR废物活性炭都明显优于市售一级活性炭.
+3 结语
+3.1 ZCMR废物活性炭对含铬废水的吸附属于易吸附过程,其吸附容量是市售一级活性炭的1.72～1.8倍,极限吸附量达21.5～22.5mg/g.
+3.2 ZCMR废物活性炭的后处理过程方便易行,其过滤速度为市售活性炭的1.6～1.7倍.
+3.3 ZCMR烤胶废料活性炭对含铬废水的吸附易于ZCMR锯末活性炭.
+3.4 ZCMR废物活性炭可用于替代目前废水处理系统中性能一般的工业级粉末活性炭,其操作性能、吸附容量超过市售一级活性炭,比工业用活性炭更加优越,该产品一旦工业化,必将以其优质、高效、使用方便、原料价兼易得等优势在废水处理中得到广泛的推广应用.
+基金项目：云南省人才基金资助项目(9850)
+作者简介：宁 平(1958-),男,云南开运人,昆明理工大学环境工程系教授、博士后,主要从事环境污染控制及数学模拟等研究工作.参加了省重点项目“黄磷尾气净化制取甲酸”等20余项的研究工作.出版专著2部,发表论文80余篇.
+作者单位：昆明理工大学环境工程系,云南 昆明 650093
+参考文献：
+[1]曹玉登. 煤制活性炭及污水治理 [M]. 北京:中国环境科学出版社,1995.4.
+[2]中华人民共和国林业部标准司. 粉状活性炭标准 [M]. 北京:中国林业出版社,1992.127.
+[3]张希衡. 水污染控制工程 [M]. 北京:冶金工业出版社,1993. 199.
+
+收稿日期：1998-11-11

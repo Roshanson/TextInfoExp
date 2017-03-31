@@ -1,0 +1,113 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第3期　Vol.19 No.3 1999
+
+
+
+长江口―杭州湾有机污染历史初步研究
+－－BHC与DDT的地层学记录
+陈建芳　叶新荣　周怀阳　夏小明　郑士龙
+摘要：近年来长江口―杭州湾表层沉积物中BHC与DDT的含量与以前表层沉积物有关资料的对比,以及经较高精度定年柱状样中BHC与DDT的垂向分布特征均显示,有机氯农药广泛使用作为一个污染事件,自开始到逐渐消退均在沉积记录中得到了较好的反映.研究结果表明,污染物的分子地层学记录对恢复有机污染史具有重要意义.尽管近年来表层沉积物中有机氯农药含量已经降至很低,但是由于细颗粒沉积物再悬浮以及海洋浮游生物对有机氯农药的高度富集,其对海洋环境的影响仍然不可忽视.
+关键词：长江口―杭州湾；有机氯农药；地层学记录；污染史
+中图分类号：X321 文献标识码：A 文章编号：1000- 6923(1999)03- 0206- 05
+Preliminary study on the marine organic pollution history in Changjiang Estuary―Hangzhou BayBHC and DDT stratigraphical records. 
+CHEN Jian-fang, YE Xin-rong, ZHOU Huai-yang, XIA Xiao-ming,ZHENG Shi-long
+(Second Institute of Oceanography,State Oceanic Administration,Hangzhou 310012,China). China Environmental Science. 1999,19(3)：206～210
+Abstract：According to the variations of BHC and DDT contents in the surface sediments of Changjiang Estuary―Hangzhou Bay since the last decade as well as the vertical changes of BHC and DDT contents in sedimentary cores dated by 210Pb, it is suggested that organochlorinated pesticides pollution history can be reconstructed by stratigraphical records. Although very low BHC and DDT contents were observed in recent surface sediments, their concentrations might have been still quite high for a long time in suspended material due to reworking of fine sediments and the enrichment of organochlorinated pesticides by plankton.
+Key words：Changjiang Estuary―Hangzhou Bay；organochlorinated pesticides；stratigraphical records；pollution history
+　　长江口―杭州湾海域不仅受经济发达的长江三角洲污染物排放的影响,而且接纳了许多来自整个长江流域的污染物质,是我国沿海海域环境污染较为严重的海域[1].河口及近海沉积物是陆源污染物迁移转化的归宿地与积蓄库.通过有机污染物在沉积柱状样的垂向变化,结合高精度的定年则可以恢复有机污染的历史[2,3].尽管至80年代初世界上大多数国家已相继停止生产与使用有机氯农药,但由于它们在自然环境中性质稳定,加上这些高残留农药通过大气与河流搬运入海的滞后效应,使其对海洋环境与海洋生物的影响可持续长达数十年.我国海域的有机氯农药污染状况,自80年代初以来曾作过一些调查与研究[4- 14],但其在海洋环境中的污染历史,国内尚未见详细报道.本文根据作者在长江口杭州湾海域表层与沉积短柱样BHC与DDT的分析结果,结合以前的资料来初步揭示有机氯农药的污染历史,评价其对海洋环境影响趋势.
+1 材料与方法
+1.1 样品采集
+　　表层沉积物取自长江口―杭州湾水域,其中取样点E1, E3, E7, E9, E11取于1988年10月(E1, E3, E7, E9加取悬浮颗粒物); 01, 02, 03, 04取于1992年1月.柱状样B2与B7于1988年10月取自杭州湾北部水下平原.短柱样B1, C1, Meso-1于1997年10月采自长江口外.各站位布局见图1.图1中所标的G8103, G8126, G8128, G8140为1981年中美长江口沉积作用联合调查期间所取柱状样[4].表层沉积物取顶部0～2cm,柱状样自顶部按2～5cm间隔分层取样.样品经自然风干、粗磨后经四分法分样,再细磨至80目待分析.
+
+图1 长江口杭州湾沉积物取样站位布设
+Fig.1 Sediments sampling locations in Changjiang Estuary and Hangzhou Bay
+1.2 BHC与DDT分析
+　　悬浮体或沉积物中的BHC、DDT用正己烷丙酮混合溶剂作为提取剂,用索氏提取器回流提取,将提取液浓缩,柱分离,然后用岛津GC-7AG气相色谱仪进行分析.检测器为63Ni电子捕获检测器,气相色谱条件见文献[13].所得结果用BHC和DDT表示,它们分别代表4种同分异构体(a -BHC、b -BHC、g -BHC、d -BHC及PP￠ -DDT、OP￠ -DDT、PP￠ -DDE、PP￠ -DDD)的总量.
+1.3 柱状样年代标定
+　　柱状样B2, B7用210Pb法标定年代* ;短柱样C1用同一位置柱状样G1的定年数据(约2cm/a,由日本地质调查所Dr.Kanai提供);短柱样Meso-1按附近站位G8140沉积速率(3.2cm/a)定年[5].
+2　结果与讨论
+2.1 表层沉积物有机氯农药近20年来的变化
+　　由表1可知,陆地有机氯农药的大量使用,严重污染了当时河口、海湾及近海的海洋环境.其中珠江口、渤海及厦门湾的BHC和DDT含量较高,而长江口、杭州湾含量相对较低.这可能与长江口―杭州湾一带来自长江的大量泥沙输运与稀释有关.从表1也可以看出,有机氯农药不仅影响到近岸海域,而且也可以被带到远离大陆的北太平洋.
+表1　80年代初我国海域表层沉积物中BHC与DDT的含量分布 (ng/g)
+Table1 Distribution of BHC and DDT contents in surface sediments 
+in the early 1980s (ng/g)
+海区BHCDDT取样时间海区BHCDDT取样时间
+长江口[4～5]0.95～5.90(3.28)6.9～16.0(10.9)1981珠江口[8]6.5～91(18.5)2.2～75(36.9)1980
+杭州湾[6]0.12～5.81(1.20)　1981～1983渤海[9]55.3～328.3(152.2)1.28～6.17(2.19)1980
+厦门湾[7]1.5～27.0(11.0)4.7～150(24.0)1982北太平洋[10]0.6～1.8(1.2)0.1～0.3(0.15)1983
+
+注: 括号内数据表示平均值
+　　有机氯农药自本世纪40年代在农业上推广,至60年代末是世界上产量最高,用量最大的农药.我国于50年代开始使用,60～ 80年代初,有机氯农药的使用量一直占我国农药使用量的一半以上,至70年代曾占到农药使用量的80%[16].自1983年我国政府禁止生产与使用有机氯农药后,有机氯农药在表层沉积物的含量开始降低,如表2所示,1988年杭州湾表层沉积物中BHC与DDT含量分别为0.52～1.10 ng/g与1.04～3.46ng/g;至1992年,在长江口泥沙往南输运的主要通道上,表层沉积物DDT含量下降至0.56～1.85ng/g; 而到1997年,在长江口泥沙主要堆积区内(Meso-1),表层沉积物中BHC含量下降至0.47ng/g,DDT含量降至0.31ng/g,比附近沉积环境相似的G8140与G8103 (1981年取样) 的结果有大辐度的减少.尽管所比较的取样站位不尽相同,但从沉积物中BHC与DDT含量的影响因素诸如沉积物粒度、沉积量及沉积物稀释等考虑,表2所列数据反映了沉积物中有机氯农药含量的下降趋势.
+表2 80年代初以来长江口―杭州湾表层沉积物中BHC与DDT的含量变化 (ng/g)
+Table 2 The variations of BHC and DDT contents in surface sediments in Changjiang Estuary―Hangzhou Bay since 1980s (ng/g)
+站号取样时间BHCDDT站号取样时间BHCDDT
+G81031981年8月0.956.93011992年1月　0.56
+G81261981年8月4.1316.0021992年1月　0.57
+G81281981年8月4.9113.9031992年1月　1.85
+G81401981年8月2.8012.6041992年1月　0.76
+E11988年10月0.812.11B11997年10月0.360.10
+E31988年10月0.862.28C11997年10月0.360.22
+E71988年10月0.521.04C31997年10月0.240.05
+E91988年10月0.632.05Meso-11997年10月0.470.31
+E111988年10月1.103.46　　　　
+
+注: G8103～G8140资料引自文献[4,5], E1～E11资料引自文献[15]
+　　杭州湾悬浮颗粒物的分析结果表明,在有机氯农药停用多年之后,水体悬浮体中的BHC仍高达51.3ng/g,DDT高达47.9 ng/g (表3),比同期沉积物中含量高一个数量级.悬浮体中具有如此高的DDT与BHC浓度,仍将对海洋生态环境产生严重的影响.这可能是因为悬浮体的粒径比沉积物细,而较细的颗粒容易吸附较高含量的BHC与DDT.厦门湾[7]、珠江口[8]、渤海[9]以及长江口早期的工作[4,5]都表明,DDT与BHC在沉积物中的分布并不随离岸的远近而变化,而主要取决于沉积物的粒度.
+表3　杭州湾1987年12月悬浮颗粒中BHC与DDT的含量 (ng/g)
+Table 3 The BHC and DDT contents in suspended material in Hangzhou Bay during December 1987 (ng/g)
+站号BHCDDT站号BHCDDT
+E1表(小潮)5.123.57E1表(大潮)2.964.87
+E3表(小潮)11.2712.20E3表(大潮)6.428.43
+E7表(小潮)17.797.09E7表(大潮)10.6913.40
+E9表(小潮)51.2547.86E9表(大潮)0.1912.50
+E3底(大潮)8.428.73E7底(大潮)8.388.80
+E9底(大潮)3.776.02E9底(大潮)7.329.11
+
+2.2 长江口―杭州湾柱状样中BHC与DDT含量的垂向分布
+　　　柱状样Meso-1与C1中的BHC与DDT的垂向分布见表4.柱状样Meso-1中的BHC与DDT含量分别为0.158～0.449ng/g与0.176～0.940 ng/g;C1中的BHC与DDT含量则分别为0.105～0.360 ng/g与0.039～0.220 ng/g.两个短柱样中有机氯含量与80年代初的表层沉积物相比都已相当低.而Meso-1中BHC和DDT的含量比C1略高,可能是由于Meso-1的含沙量低,仅为0.3%～3.3%,而C1站的含沙量达40%～50%左右.两个柱状样中较高的BHC与DDT含量并不出现在最下部,而是分别在Meso-1的5～8cm处,C1站的0～1cm处,这可能是有机氯在沉积物中的含量除了与河流以及大气从陆地搬运入海的通量有关之外,还与泥沙的输入与稀释、沉积物的再悬浮、底栖生物的扰动等因素有关.而上述因素如泥沙的输入均呈现较大的年际变动,如1998年的特大洪水,长江入海物质通量可能要比往年大得多.
+　　为了较完整地考察长江口―杭州湾的污染历史,结合柱状样210Pb定年对柱样B2, B7进行杭州湾有机氯农药污染史考察,结果如图2(a).由于Meso-1与G8140同处于长江入海物质的主要堆积区,而且沉积速率相近[15],故把两个柱状样的分析结果合并于图2(b).
+表4 长江口沉积短柱样Meso-1与C1中BHC与DDT的垂向分布 (ng/g)
+Table 4 The vertical distributions of BHC and DDT in cores Meso-1 and C1 from Changjiang Estuary (ng/g)
+Meso-1站位C1站位
+层位(cm)BHCDDT层位(cm)BHCDDT
+0～20.4730.3110～10.3550.220
+2～50.1750.1761～20.2390.046
+5～80.4990.9402～30.1720.101
+8～110.1580.3383～40.1050.048
+11～140.2200.4795～60.2400.140
+14～170.1680.5158～90.1040.043
+17～200.2170.77814～160.1360.045
+20～230.3750.30018～200.3600.100
+26～290.3920.59020～220.2000.088
+32～350.3750.71024～260.1970.039
+
+注:根据沉积速率推算,Meso-1的沉积时间跨度大致为1987～1997年,C1的沉积时间跨度大致为1984～1997年
+　　从总体上看,图2大体上反映了有机氯农药从开始使用到禁用这一事件的整个过程.B7柱样沉积速率较为稳定,平均速率为1.2cm/a.据此,DDT的峰值出现于1976年前后,与陆地DDT的使用高峰期相吻合[16].B2柱样26cm以上沉积速率较稳定,为近20年来的沉积,其BHC高峰也大致在1978年左右.而B2的下段据210Pb测定结果为较老的沉积,可能扰动比较强烈.图2(b)则更清楚、完整地反映了有机氯农药的污染历史,柱样G8140为1981前沉积物中BHC、DDT的分布状况,Meso-1则为1987年以来的沉积物堆积而成.可见至1987年后有机氯农药含量已经很低,表明这一事件从沉积记录来看已基本过去.但其在悬浮颗粒中可仍然形成高值(见表3),故对海洋环境的影响并未消除.有机氯农药之所以穿时进入30年代的地层,按林敏基等[5]的解释是由于大型底栖生物的扰动.当然,有机氯农药在全世界范围内是40年代开始推广使用的,它们有可能通过大气传输影响长江口.因为在极地、太平洋深海沉积物中能检测到相当浓度的BHC与DDT[10],表明这种可能性是存在的.另外,比较长江口―杭州湾柱状样中BHC与DDT的含量,杭州湾沉积物中它们的含量要低得多,这一点从表1的表层沉积物分布中也可看出,这是由于杭州湾沉积物粒径较粗,水动力强烈,含有较高DDT与BHC含量的细颗粒物沉降不下来,反而在离岸较远的长江口外细颗粒沉积区形成高值.
+
+图2 长江口―杭州湾柱状样中BHC与DDT含量的垂向分布
+Fig.2 The vertical distribution of BHC and DDT contents in cores from Changjiang Estuary―Hangzhou Bay
+3　结　语
+　　杭州湾―长江口的有机氯农药污染历史可以通过比较不同时期表层沉积物中的含量分布以及经过较高精度定年的柱状样来反映.说明运用分子地层学来研究河口、近海以及湖泊污染事件具有广泛的应用前景,另外,在开展这方面研究时,首先应选择沉积速率稳定,扰动较少的代表性区域,对于不同的污染物还必须明确其污染源、生产使用历史及其在环境中的迁移转化行为.如对DDT与BHC由于其性质稳定,残留期较长[4],可以直接根据其含量恢复其污染史,而对于较易降解的污染物,则还必须考虑其在环境中的自然变化因素.
+基金项目：浙江省自然科学基金资助项目(497003);国家海洋局青年科学基金资助项目(97107);中日合作项目
+作者简介：陈建芳(1968-),男,浙江余姚人,硕士,国家海洋局第二海洋研究所副研究员,主要从事海洋有机地球化学研究.目前主持、参加“季风在南海颗粒物中的记录:来自沉积物捕获器的证据”、“浙、沪近海工业化以来有机污染的高分辨率分子地层学记录研究”等国家、省部级基金项目5项;并承担中日合作“长江口环境容量研究“等多个有关有机地球化学方面的重大项目的研究工作.发表论文20余篇,有多篇论文被SCI、EI、CA等收录.
+作者单位：（国家海洋局第二海洋研究所,浙江 杭州310012）
+* 徐征宇.杭州湾柱状样210Pb测年结果.1989(国家海洋局第二海洋研究所内部资料)
+参考文献：
+[1]沈 颖. 海洋环境污染与环境保护 [J]. 环境科学进展, 1997, 5(1): 67- 75.
+[2]Latimer J S, Quinn J G. Historical trends and current inputs of hydrophobic organic compounds in an urban estuary: the sedimentary record [J]. Environ. Sci. Technol., 1996, 30:623- 633.
+[3]陈建芳,周怀阳,张海生等.工业化以来环境污染历史的分子(元素)地层学记录 [J].东海海洋,1998,16(3):64- 69.
+[4]Lin Minji, Lin Zhifeng, Zheng Wenqing, et al. Determination of recent sedimentation rate and sedimentation of the East China Sea continental shelf by BHC dating [A].State Oceanic Administration (ed).Proceedings of International Symposium on Sedimentation on the Continental Shelf, with Special Reference to the East China Sea [C].Beijing:China Ocean Press, 1983, 868- 878.
+[5]林敏基,林志峰,郑文庆等.用DDT测年法研究东海大陆架现代沉积作用 [J].台湾海峡,1986,5(2):132- 138.
+[6]中国海湾志编委会. 中国海湾志―第五分册 [M]. 北京: 海洋出版社, 1990, 67- 74.
+[7]陈淑美, 林敏基, 林志锋. 厦门港湾表层沉积物BHC和DDT含量的分布. 台湾海峡, 1984,3(1): 32- 37.
+[8]廖 强. 粤西海区水质、底质、生物中有机氯农药污染 [J].海洋环境科学,1983,2(4):37- 40.
+[9]古堂秀, 徐贤义, 张添佛. 渤海湾的有机氯农药和多氯联苯 [J]. 海洋科学集刊,1988,29:77- 85.
+[10]张守法,刘彬昌.北太平洋海水及沉积物中有机氯农药的含量分布 [J].黄渤海海洋,1986,4(1):78- 82.
+[11]叶新荣,杨和福,竺建奋.长江口及毗邻海域水体中PCBs、BHC和DDT [J]. 海洋环境科学,1991,10(4):52- 56.
+[12]蔡福龙,林志锋,陈 英等.热带海洋环境中BHC和DDT的行为特征研究 [J].海洋环境科学,1998,17(2):1- 7.
+[13]叶新荣,卢 冰. 长江口及其邻近海区的有机污染物 [J]. 东海海洋,1995,13(3- 4):72- 83.
+[14]Lu Bin, Zhu Guihai, Zheng Shilong, et al. Geochemical characteristics of hydrocarbon compounds in the Hangzhou Bay [J]. Acta Oceanologica Sinica,1993,12(1):115- 132.
+[15]DeMaster D J. Rates of sediment accumulation and particle reworking based on radiochemical measurements from continental shelf deposits in the East China Sea [J]. Continental Shelf Research,1985,4(1- 2):143- 158.
+[16]华小梅,单正军.我国农药的生产、使用状况及其污染环境因子分析 [J].环境科学进展,1996,4(2):33- 45.
+收稿日期：1998-09-28

@@ -1,0 +1,96 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第1期 No.1 Vol.18 1998
+科技期刊
+
+紫外-B辐射增强对小麦和燕麦繁殖特性影响的研究*
+岳　明　王勋陵　(兰州大学生物系，兰州 730000)
+文　摘　模拟15％臭氧层减薄水平，研究了紫外-B（UV-B）辐射增强对小麦的花粉活力及萌发特性以及籽粒产量与其萌发特性的影响。小麦和燕麦的繁殖特性对紫外辐射的敏感性差异很大。增强的紫外辐射显著抑制了燕麦的籽粒产量及萌发率，而对小麦的繁殖效率未有显著影响，小麦花粉活力及萌发率的降低可由单株有效穗数的增加予以补赏。
+关键词　紫外辐射　小麦　燕麦　花粉　种子萌发
+A preliminary study of the responses of wheat and oat reproductive characteristics to enhanced UV-B radiation.Yue Ming，Wang Xunling(Department of Biology,Lanzhou University,Lanzhou 730000).China Environmental Science.1998,18(1):68～71
+Abstract― The pollen vitality and germination and also the seed yield and germination of wheat (Triticum aestivum CV. 80101) and oat(Avena sativa VC. Bayaer-3) under supplementary UV-B radiation from approximately 15% ozone layer depletion were researched. There are sensitivity differences of reproductive characteristics to UV-B radiation between wheat and oat. The seed yield of oat and its germination rate(25℃,in dark) were inhibited significantly by UV-B radiation enhancement, while there was no effect of UV-B radiation on those of wheat. The decrease of wheat pollen vitality and its germination rate by UV-B radiation enhancement could be compensated by increase of numbers of ears per plant under supplementary UV-B radiation. The effects of UV-B radiation are related with metabolic changes of physiological active compounds in pollen and seed which are connected with their germination.
+Key words: ultraviolet radiation　wheat　oat　pollen　seed germination
+　　由于平流层臭氧层减薄导致的地表紫外辐射增强（主要是UV-B,280～315nm）已成为越来越受关注的全球变化问题之一。增强的紫外辐射对植物生长发育及生理机能的研究较多〔1〕，但对植物繁殖特性的影响则研究很少。虽然在花药未开裂前，花冠和花药壁能吸收98％以上的UV-B辐射，但花粉在传粉、萌发过程中仍不免要遭高紫外辐射的伤害〔2〕，花粉代表高等植物生活史中的单倍体阶段，而其萌发时又是对UV-B辐射最敏感的时期〔3〕，在此时期UV-B辐射对植物遗传和繁殖上的潜在影响是很值得考虑的。这不仅关系到作物产量，也关系到植物种间竞争平衡，从而可能在较短的进化时间里改变群落的组成和生产力。
+　　短波紫外辐射（UV-C,<280nm）对花粉的伤害虽早引起了注意，但现已证明UV-C无助于评价臭氧层减薄的生态影响，因为即使臭氧层减薄90％，UV-C也不会到达地表。故可不予考虑。至今有关UV-B对花粉影响的报道仅见Chang等〔4〕和Pfahler〔5〕对一种紫露草（Tradesantia)和玉米，Flint和Caldwell〔2〕对虞美人(Papaver rhoeas)等植物花粉萌发的研究。此外，Teramua 和Sulhvan〔6〕还报道了UV-B对蚕豆种子及其成分影响的研究，但是并未论及是否对子代种子萌发特性也产生影响的问题。本文主要讨论大田条件下模拟15％臭氧层减薄时，增强的紫外-B辐射对小麦和燕麦花粉活力及萌发、种子产量及发芽率等繁殖特性的影响，为评估臭氧层减薄紫外辐射增强的生态效应提供依据。
+1　材料和方法
+　　试验材料为春小麦（Triticum aestivum)80101和燕麦(Avena sativa)巴燕三号。试验在兰州大学生物园进行，小区面积1m2，。按400株/m2的密度播种，每处理设3个重复区。各小区土壤及管理水平一致。辐射处理采用秦牌（Qin Model）40W紫外B灯照射，辐射强度测定用北京师范大学生产的UV-B型紫外辐射强度仪。根据Caldwell〔3〕计算，将仪器的读数转变为生物有效辐射量，以mW/m2单位表示。处理从出苗一周后开始直至成熟（每遇下雨暂停照射），处理时间为每日9:00～16:00，处理强度为在自然太阳辐射基础上增加76.2 mW/m2,该强度相当于兰州地区（海拔1500 m，北纬36度）夏至前后晴天平均增加30％的紫外辐射量，即模拟臭氧层减薄15％，这与联合国环境规划署（UNEP）1991年预测臭氧层减薄的值一致。通过调节灯与材料的距离，基本保证整个生长季节处理强度的一致。对照仅接受自然太阳辐射。　
+　　花粉活力测定采用TTC染色法，将采来的花粉抖入盛有1％TTC溶液的试管中，25℃下处理1h，镜检，每处理样本数n=4,每样本统计200～250粒花粉。花粉萌发率测定基本参照Flint和Caldwell的方法〔2〕，不过蔗糖浓度是多次试验后确定的，当花粉抖落到培养的玻片上后，立即将玻片置于铺有湿滤纸的培养皿中，覆盖能透过紫外-B辐射的塑料薄膜以保湿。然后将培养皿分别置于自然光照和紫外灯下，处理4h，结束时滴加0.4％醋酸洋红液，以终止萌发并染色。每处理统计样本数为n＝3，每样本统计500粒左右的花粉。
+　　但按上述方法在蔗糖浓度为5%～40％的不同培养基上燕麦花粉未能得到较好的萌发，最大萌发率仅5％左右，原因待查，其结果不在本文中讨论。
+　　小麦成熟后每小区随机抽取10株进行有关指标测定。总生物量中包括0～20cm土层分布的根系。种子自然风干，其余植物材料在70℃条件下烘干。常规方法测定所收获的种子在25℃时的发芽率和发芽势。每皿100粒种子，设6次重复。
+2　结果与讨论
+　　花粉活力的测定表明，对照组小麦和燕麦具活力花粉为37.3％和32.3％，而UV-B处理分别为19.0％和27.9％（图1）。UV-B辐射引起两种植物花粉活力不同程度地降低，其中小麦花粉活力的降低达到了显著水平(P<0.05）。
+
+图1　紫外-B辐射对花粉活力的影响
+C:对照组　T:处理组
+Fig.1　Effect of UV-B radiation on pollen vitality
+　　取自对照小区与处理小区观测其花粉萌发如表1。 
+表1　紫外-B辐射对小麦花粉萌发的影响*
+Table 1　Effect of UV-B radiation on the germination
+of wheat pollen
+
+项　目自然光照UV-B辐射
+花粉统计数量萌发率(%)花粉统计数量萌发率(%)
+对照组 C1596 58.9±1.1a 1860 50.2±1.4b 
+处理组 T129343.3±2.8c154232.6±1.7d 
+
+注：*花粉统计数量为3次重复统计花粉数量之和，萌发率一栏为平均值±标准差，其后所跟字母不同表示各平均值之间差异显著(按照Duncar多范围检验。P<0.05, n=3)，检验前百分数值经过反正弦变换
+　　从表1所示，对照组的花粉萌发率明显高于处理组，表明UV-B增强导致小麦花粉萌发率的降低，双因素方差分析显示（表2），不同花粉来源及不同的萌发条件之间花粉萌发率差异显著，而且花粉来源和萌发条件之间不存在交互作用。这说明紫外-B辐射不仅对小麦花粉的萌发过程有显著抑制作用，而且对所产生的花粉特性也有显著影响。
+表2　小麦花粉萌发的双因素方差分析
+Table 2　The two-factors analysis of variance of
+　　wheat pollen germination
+
+变差来源 开方和 自由度 均方 F P 
+花粉来源A846.71 846.7225.8<0.005 
+萌发条件B 272.71272.772.7<0.005 
+交互作用AB2.012.00.53 >0.005 
+误差 30.0 8 3.75 
+总和1151.4 11 
+
+　　在已检测过的几种植物中，胚珠等雌性器官及未散出的花粉，由于能得到周围组织的很好保护而不易受到UV-B辐射的伤害〔7〕,但UV-B辐射对花粉壁有一定的透过性，使得花粉在萌发过程中易受UV-B辐射伤害〔7〕。已有文献证实花粉萌发过程受到UV-B辐射的抑制〔5〕以及花粉DNA的伤害及修复〔8〕。但都没有从长期受UV-B处理植株上取得花粉进行试验的报道。从图1，表1，表2看，花粉来源和萌发条件各自独立地影响小麦花粉的萌发，即使萌发过程中不受UV-B辐射照射，那些曾受过UV-B辐射的植株其花粉活力及萌发率已受到明显抑制。这一结论对认识UV-B辐射增强如何影响植物，特别是闭花受精植物的繁殖特性很有指导意义。
+　　植物在生长过程中，UV-B辐射抑制光系统II的功能，诱导自由基的形成和DNA伤害，以及次生代谢产物的改变〔3〕。UV-B辐射可能通过一些分子如DNA等，影响与花粉活力和萌发有关的生理活性物质的代谢，进而抑制花粉活力和萌发率。
+　　从籽粒产量看，UV-B辐射导致燕麦单株籽粒数和籽粒重的显著降低，但对小麦的籽粒产量没有影响（表3）。同时UV辐射使两种植物的总生物量降低而单株有效穗显著增加（表3）。
+表3　紫外-B辐射增强对小麦和燕麦籽粒产量性状的影响*
+Table 3　Effect of UV-B radiation on the characteristics of seed yield in wheat and oat
+
+处理总生物量籽粒数 籽粒量 有效穗数 千粒重 籽粒重/总生物量 
+　　　小麦
+C5.45±0.26a 36±4a 1.26±0.10a1.6±0.84ac 31.3 0.231 
+T4.43±0.31b38±4a 1.26±0.06a 2.3±0.48bd 32.50.284 
+　　　燕麦 
+C 4.28±0.27b75±7b 1.44±0.11a 1.2±0.42a 22.50.336 
+T3.79±0.20c62±6c 1.05±0.06b 2.0±0.67cd15.0 0.277 
+
+　　　　　　注：*除最后两列外，各数值为10株的平均值±标准差。每列中缀有相同字母者为其平均值无显著差异（按Duncan多范围检验，P<0.05)
+
+　　 UV-B辐射引起植物生物量下降已有不少报道，UV-B辐射刺激侧芽的生长，因而导致分蘖数的增加被认为是植物对UV-B辐射的普遍反应〔1〕。另外，两个光形态建成系统也影响分蘖。UV-B辐射还可以引起植物同化产物在各器官中分配的改变〔1〕。表3中籽粒重/总生物量反映出UV-B辐射有利于小麦同化产物向籽粒中运输，但对燕麦的作用正相反。表3还显示，尽管UV-B辐射使小麦和燕麦的单株有效数增加，但却没有引起籽粒产量的相应增加，说明每个有效穗的籽粒产量受到UV-B辐射的显著抑制，这显然与授粉结实率的降低有关。 
+　　取自对照组和UV-B处理组的两种植物种子在25℃时的发芽情况如图2，图3，小麦和燕麦种子发芽率在第4天以后不再增加，可以看出，从第2～4天受过UV-B处理的小麦种子发芽率没有显著差异(在0.05水平上差异。n=6，检验前百分数值经过反正弦交换)，对燕麦而言，在处理第4天的种子发芽率显著降低，在第2天
+
+图2　UV-B对小麦种子发芽率的影响
+Fig.2　Effect of UV-B on germination rate
+of wheat seed
+C:对照组　T：处理组
+
+图3　UV-B对燕麦种子发芽率的影响 
+Fig.3　Effect of UV-B on germination rate
+of oat seed
+C:对照组　T：处理组
+其发芽率显著高于对照组。据Teramura等报道〔6〕，UV-B辐射可以改变大豆种子中蛋白质与脂肪的含量。处理组燕麦种子开始时发芽比率高于对照组，这是否与处理组燕麦种子的成分有所改变而促进其吸胀有关，尚待进一步研究。
+
+3　结论
+3.1　增强3％的紫外-B辐射对小麦和燕麦的花粉活性都有一定抑制作用。特别是，经过紫外－B辐射后代的花粉，即使萌发时不再受紫外-B辐射处理，其活力仍有明显抑制的表现。
+3.2　增强30％的紫外-B辐射对燕麦籽粒产量及发芽率有明显影响，而对小麦的影响则不明显。
+3.3　小麦和燕麦的繁殖特性对紫外-B辐射反应的敏感性不一样，燕麦大于小麦。
+3.4　紫外-B辐射虽对小麦花粉活力和萌发有抑制作用，但可以通过单株有效数的增加予以补偿，故不会对其最终的繁殖效率产生明显影响。
+参考文献
+1　Barnes P W,S D Flint，M M Caldwell.Am. J. Bot.，1990，77:1354～1360
+2　Flint S D，M M Caldwell.Ecology,1984，65:792～795
+3　Caldwell M M，S D Flint.Solar ultraviolet radiation and ozone layer change:Implications for crop plants. In:Physiology and Determination of Crop Yield(American Society of Agronomy, Crop Science Society of American,Soil Society of American.eds.)，1994，487～507
+4　Chang D C N，W F Campbell.Environ. EXP. Bot.，1976，16:195～199
+5　Pfahler P L.Environ. Health. Perspect.1981，27:125～132
+6　Teramura A H，J H Sullivan.Environ. Pollut.，1988，53:466～468
+7　Flint S D，M M Caldwell.Am.J.Bot.，1983，70:1416～1419
+8　Jackson J F，H F Linskens.Molec. Gen. Genet.1979，176:11～16
+作者简介
+岳　明　男，1967年10月生。西北大学生物系讲师，兰州大学污染生态学博士。主要从事环境植物学教学和研究工作。发表论文10余篇。
+收稿日期：1997-03-04
+*国家自然科学基金及博士点基金资助项目

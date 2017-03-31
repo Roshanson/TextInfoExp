@@ -1,0 +1,117 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年 第19卷　第5期　Vol.19 No.5 1999
+
+
+
+表面活性剂在土壤颗粒物上的吸附行为
+戴树桂　董亮　王臻
+摘要：对两种阴离子表面活性剂和两种非离子表面活性剂在土壤中的吸附行为进行了初步研究.结果表明,表面活性剂在土壤/水体系中的吸附过程很快.表面活性剂浓度接近或大于临界胶团浓度后,吸附等温线为线性.温度升高会降低阴离子表面活性剂的吸附,而增加非离子表面活性剂的吸附.盐度对非离子表面活性剂吸附的影响不显著,但可略微增加阴离子表面活性剂的吸附量.实验结果对表面活性剂增效修复技术的应用有一定参考价值.
+关键词：表面活性剂；吸附；土壤
+中图分类号：X131.3 文献标识码：A 文章编号：1000- 6923(1999)05- 0392- 05
+The adsorption of surfactants on soil.
+DAI Shu-gui, DONG liang, WANG zhen
+(College of Environmental Science and Engineering, Nankai University, Tianjin 300071, China). China Environmental Science. 1999,19(5)：392～396
+Abstract：In this paper, the adsorption of anionic surfactant and non-ionic surfactant on soil has been studied. It is found that the equilibrium of surfactants between soil and water is very fast, adsorption isotherms are linear when the concentration of surfactants was close to or higher than the critical mecelle concentration, adsorption isotherms appear linear the temperature has different effect on adsorption for these two kinds of surfactant: adsorption of anionic surfactant would be decreased with increasing temperature, however,the adsorption of non-ionic surfactant will going up with the temperature is raised.As for the influences of salinity and ionic strength of solution upon the anionic surfactant adsorption were not significant. The experimental results provide reference for the application of the surfactant-enhanced remediation technology.
+Key words：surfactant；adsorption；soil
+　　由于表面活性剂(Surfactant, Surface Active Agent, 以下简称SAA)具有润湿、起泡、乳化、分散、增溶、均染、洗涤等特性而广泛用于工业、农业和日常生活中,并随着废水、废物的排放而进入水体、土壤等环境.许多SAA可与细胞膜发生作用[1],而且对鱼类和水生无脊椎动物具有一定的毒性[2-4];同时微生物降解SAA会消耗水中大量的溶解氧;又由于含氮、磷的SAA会造成水体的富营养化等原因,因此环境工作者一直认为SAA是一种有害物质.经过对SAA在环境中作用的进一步研究,发现SAA的增溶特性以及降低界面张力的作用增加了土壤中憎水性有机污染物的流动性[5-7],为从土壤中消除有机污染物提供了一条新途径,即SAA增效修复技术(Surfactant-Enhanced Remediation Technology),此外,SAA的存在有利于吸附态憎水性污染物的解吸,并进入土壤溶液相,从而提高了污染物在自然环境中的降解速率[8,9].
+　　虽然上述方面是近年研究SAA在环境中作用的热点,但SAA在土壤中的吸附行为还未见报道.本文以用量最大的阴离子SAA和非离子SAA为研究对象,研究了SAA在土壤颗粒物上的吸附行为以及作用规律.
+1　实验部分
+1.1 实验材料
+　　将采集到的土壤自然风干,除去沙砾、草杆等,研碎后过20目(0.84mm)筛.土壤为中粘土,粘粒(<0.01mm)和沙粒(>0.01mm)含量分别为60% 和40% ,pH值为7.3,有机质含量为2.45% .所选的阴离子和非离子SAA见表1.
+1.2 实验方法
+1.2.1 SAA的纯化 阴离子SAA以水为溶剂重结晶提纯;非离子SAA利用析相法提纯.
+1.2.2 SAA的测定 阴离子SAA可与阳离子染料亚甲蓝生成蓝色的离子对化合物,生成的显色物被三氯甲烷萃取后,在625nm处测量吸光度,从吸光度-浓度标准曲线上可计算出阴离子SAA的浓度.非离子SAA在紫外区有最大吸收波长,通过测定该波长下的吸光度也可计算出非离子SAA的浓度.
+表1 所选阴离子和非离子的SAA
+Table 1 Surfactants used in this research
+
+类型商品名名称分子量
+阴离子SAASDS十二烷基硫酸钠288
+SDPS十二烷基苯磺酸钠348.5
+非离子SAA乳化剂op辛基苯基聚氧乙烯醚646.9
+Tween80聚氧乙烯山梨糖醇酐单油酸酯1310
+
+1.2.3 吸附速率曲线的测定 配制一定浓度的SAA溶液,加入土壤后,开始计时并振荡(15r/min),按先密后疏的原则,分不同时段采样测定.
+1.2.4 吸附等温线的测定 在125mL磨口锥形瓶中配制一系列浓度的SAA溶液,加入一定量的土壤,土、水比1∶8,恒温25±1℃,振荡过夜.取平衡后的水相离心20min(3000r/min),取一定量上清液测定SAA的浓度.每个样品作空白对照,差减法计算土壤颗粒物上吸附SAA的量.
+1.2.5 温度、离子强度对SAA吸附的影响 改变测定吸附等温线时的温度和离子强度,重复1.2.4的步骤.
+2 结果与讨论
+2.1 土壤中可溶性有机物对非离子SAA测定的干扰
+　　从图1中可看出乳化剂op和Tween80的最大吸收波长分别为275和205nm,而土壤中可溶性有机物在小于230nm的紫外区有较强的吸收、干扰Tween80的测定.为减小其造成的误差,实验中乳化剂op和Tween80的测定波长分别定为275和250nm,同时以土壤水溶液为参比,既保证了SAA有较大的吸收,同时尽量减小了土壤中可溶性有机物带来的干扰.
+
+图1 乳化剂op,Tween80及土壤中可溶性有机物在紫外区的吸收曲线
+Fig.1 UV spectra of TritonX-100,Tween80 and soluble organic materials in soil
+2.2 SAA在土壤颗粒物上的吸附速率
+　　SAA和环境中其它有机污染物不同,虽然大多数憎水性有机污染物进入水体或土壤后,主要归趋是被吸附于土壤、底泥或悬浮颗粒物上,但达到平衡的时间相对较长,而SAA具有在界面间迅速分配的特性,因此吸附平衡时间短.从图2,图3中可明显看出SAA在土壤颗粒物上的吸附是非常迅速的.阴离子SAA的平衡时间为20～40min;非离子SAA的平衡时间为50～100min.
+
+图2 十二烷基硫酸钠和十二烷基苯磺酸钠吸附速率曲线
+Fig.2 Adsorption rate curves of SDS and SDPS
+　　SAA吸附于土壤颗粒物之后,占据了一定的吸附位点,可能会对其它污染物的吸附造成一定的空间位阻,也可能通过改变土壤颗粒物表面的机械性质、电性质以及化学性质,而增加其它污染物的吸附.可见SAA的存在会对土壤的吸附行为造成很重要的影响.
+
+图3 乳化剂op,Tween80吸附速率曲线
+Fig.3 Adsorption rate curves of TritonX-100 and Tween80 
+2.3 SAA的吸附等温线
+　　SAA在BaSO4、Al2O3等颗粒物上的吸附已有许多人做过研究[10].由于这些颗粒物的组成较简单,故吸附机理和过程不复杂,SAA的吸附等温线同Langmuir型吸附等温线吻合较好.但SAA在天然土壤颗粒物上吸附却很复杂,影响吸附的因素相互协同,导致吸附等温线不规则[11,12].
+　　Bruce J.B.[13]和Shaobai S.[14]等人发现非离子SAA在土壤颗粒物上的吸附等温线同Freundlich方程很相近.
+CS =K.CWn　　(1)
+式中:CS为SAA在土壤颗粒物上的浓度;CW为SAA在水溶液中的浓度;K、n均为常数.
+　　在研究中所用SAA吸附等温议程列于表2中.这种吸附等温方程适于描述低浓度(<CMC) SAA的吸附.当SAA浓度接近或大于CMC后,溶液中出现胶团,Freundlich方程中的常数项n逐渐增大并接近1,吸附等温线呈线性.随着SAA浓度的进一步提高,吸附等温线向下弯曲.导致SAA浓度增高而吸附量减小的原因是高浓度的SAA破坏了土壤颗粒物上的吸附位点.土壤颗粒物是矿物质谢实母春咸逑?/FONT>,有机质同离子对吸附、氢键吸附、p -电子极化吸附、色散力吸附、憎水键吸附等吸附作用[15]有密切的关系,在吸附过程中起着决定性作用.SAA的吸附会引起土壤团粒的溶胀[16],加之高浓度SAA溶液中存在大量的胶团,这些胶团对有机质的增溶作用也使土壤团粒表面和内部有机质溶出再进入溶液相,故土壤对SAA的吸附能力减弱.实验中另一现象同样证明了这一点,即SAA溶液/土壤体系离心后,上清液的颜色在SAA浓度较低时是无色的,随着SAA浓度的增加上清液由无色变为淡黄色,最后为棕黄色.尤其是阴离子SAA,这种现象更明显,这同吸附等温线的降低趋势吻合良好.
+表2 SAA吸附等温方程
+Table 2 Adsorption isotherm equation of SAA
+
+SAA温度(℃)浓度范围(g/L)线形吸附等温线方程回归系数r2
+十二烷基硫酸钠250.02～0.3CS=8.47Cw- 0.080.997
+十二烷基苯磺酸钠250.05～1.2CS=13.6Cw+0.3040.997
+乳化剂op400.2～2.0CS=8.83Cw+7.960.992
+Tween80300.8～4.0CS=2.37Cw+14.50.996
+
+注:CS为SAA在土壤颗粒物上的吸附量(mg/g) Cw为SAA在溶液中的浓度(g/L)
+2.4 温度、离子强度对SAA吸附的影响
+2.4.1 温度对SAA吸附的影响 图4~图7表明了温度对不同种类SAA吸附的影响是不同的.阴离子SAA在土壤中的吸附量随温度的升高而降低,而非离子SAA在土壤中的吸附量随温度的升高而增加.对于绝大多数物质而言,随温度的升高,在水中的溶解度增大,因而从水中逃逸的倾向性减小,所以吸附于固-液界面上的趋势减小.阴离子SAA作为一种离子型化合物其溶解度也随温度的升高而增加,而吸附量则减小.
+　　随着温度升高、分子热运动加剧,氢键被削弱,溶解度降低,若温度继续升高会造成氢键断裂,SAA从溶液中析出,溶液突然变浑浊,甚至分层.这一温度称为该非离子SAA的浊点,提纯聚氧乙烯型SAA所用的析相法便是利用这一性质.因此随温度的升高,非离子SAA从水中逃逸而吸附于土壤颗粒物表面上的倾向性增加.
+
+
+图4 25℃和35℃时十二烷基苯磺酸钠吸附等温线
+Fig.4 Adsorption isotherms of SDPS on soil at 25℃ and 35℃
+2.4.2 盐度对SAA吸附的影响 由于非离子SAA不带电荷,故离子强度对非离子SAA在土壤上的吸附影响不大.
+
+图5 25℃和35℃时十二烷基硫酸钠的吸附等温线
+Fig.5 Adsorption isotherms of SDS on soil at 25℃ and 35℃
+　　盐度对阴离子SAA的吸附有一定的影响,参见图8,图9.加入无机盐NaCl后,阴离子SAA在土壤上的吸附量略有升高.自然环境中的土壤颗粒物一般带负电,而阴离子SAA在溶液中电离后的主体也呈负电性,它们之间的排斥力不利于SAA在土壤颗粒物上的吸附,而无机盐的加入减小了相同电荷之间的排斥力,故可增加阴离子SAA的吸附量.
+
+图6 30℃和40℃时Tween80的吸附等温线
+Fig.6 Adsorption isotherms of Tween80 on soil at 30℃ and 40℃
+
+图7 30℃和40℃时乳化剂的op吸附等温线
+Fig.7 Adsorption isotherms of TritonX-100 on soil at 30℃ and 40℃
+
+图8 盐度对十二烷基苯磺酸钠吸附的影响
+Fig.8 Effect of salinity on adsorption for SDPS
+
+图9 盐度对十二烷基硫酸钠吸附的影响
+Fig.9 Effect of salinity on adsorption for SDS
+3 结论
+3.1 SAA在土壤颗粒物上的吸附速率很快,阴离子SAA与非离子SAA的平衡时间分别为20~40min、50～100min.
+3.2 SAA浓度在接近或大于临界胶团浓度时的吸附等温线呈线性CS = K・CW + B
+3.3 温度对不同种类SAA吸附的影响不一致,温度升高不利于阴离子SAA的吸附,而有利于非离子SAA的吸附.
+3.4 盐度对非离子SAA吸附影响不显著,但加盐后可略微提高阴离子SAA在土壤中的吸附量.
+基金项目：国家自然科学基金重点资助项目(29837170)
+作者简介：戴树桂(1927-),男,北京人,南开大学教授,环境化学博士生导师,主要从事污染物形态分析和表征、环境中金属有机化合物、污染物在环境中的行为和效应、空气污染化学以及难降解有机污染物处理新方法、新技术的教学与研究工作.曾参与主持国家自然科学基金重大项目“典型化学污染物在环境中的变化及生态效应”等的研究工作,发表论文150余篇.
+作者单位：南开大学环境科学与工程学院,天津 300071
+参考文献：
+　[1]Florence A T, Tucker I G, Walters K A. Structural performance relationships in surfactants [M]. Washington DC:American Chemical Society, 1984.
+　[2]Lewis M A, Suprenant D. Studies on the contents of glycosaminoglycans from lungs of silicotic rats and tetrandrine-treated silicotic rats [J]. Ecotoxicol. Environ. Safety,1983,7(3):313- 322.
+　[3]Turner A H, Abram F S, Brown V M, et al. The biodegradability of two primary alcohol ethoxylate non-ionic surfactants under practical conditions, and the toxicity of the biodegradation products to rainbow trout [J]. Water Res., 1985, 19(1): 45- 51.
+　[4]Talmage S S. Environmental and human safety of major surfactants: alcohol ethoxylates and alkylphenol ethoxylates [M]. Lewis: Boca Raton, 1994
+　[5]Dipak S, James A S. Enhanced trichloroethene deadsorption from long-term contaminated soil using tritonX-100 and pH increase [J]. Environ. Sci. Technol., 1997, 31(7): 1910- 1915.
+　[6]Anna R M, Bernard H K. Numerical simulation of surfactant-enhanced solubilization of pooled DNAPL [J]. Environ. Sci. Technol., 1996, 30(11): 3205- 3215.
+　[7]Itaru O, John F M, Simon N G, et al. Physicochemical transport processes affecting the removal of residual DNAPL by non-ionic surfactant solutions [J]. Environ. Sci. Technol.,1996,30(6): 1852 - 1860.
+　[8]Aronstain B N, Alexander M. Surfactants at low concentrations stimulate biodegradation of sorbed hydrocarbons in samples of aquifer sands and soil slurries [J]. Environ. Toxicol. Chem., 1992, 11(9): 1227- 1233.
+　[9]Laha S, Luthy R G. Inhibition of phenanthrene mineralization by non-ionic surfactants in soil-water systems [J]. Environ. Sci. Technol., 1991, 25(11): 1920- 1930.
+　[10]郑 忠,胡纪华. 表面活性剂的物理化学原理 [M]. 广州: 华南理工大学出版社, 1995.
+　[11]Urano K, Saito M, Murato C. Adsorption of surfactants on sediments [J]. Chemosphere, 1984, 13(2): 293- 300.
+　[12]Liu Z, Edwards P A, Luthy R G. Adsorption of non-ionic surfactants onto soil [J]. Water Res., 1992, 26(10): 1337- 1345.
+　[13]Bruce J B, Hua C, Wanjia Z, et al. Adsorption of non-ionic surfactants on sediment materials [J]. Environ. Sci. Technol., 1997, 31(6): 1735- 1741.
+　[14]Shaobai S, Stephen A B. Adsorption of nonionic organic compounds in soil-water systems containing petroleum sulfonate-oil surfactants [J]. Environ. Sci. Technol., 1993, 27(7): 1340- 1346.
+　[15]Rosen M J. Surfactants and interfacial phenomena [M]. New York: John-Wiley & Sons, 1978.
+　[16]Ick T Y, Mriganko M G, Chris D C. Kinetic aspects of surfactants solubilizaion of soil-bound polycyclic aromatic hydrocarbons [J]. Environ. Sci. Technol., 1996, 30(5): 1589- 1595.
+收稿日期：1999-02-13

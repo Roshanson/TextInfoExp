@@ -1,0 +1,197 @@
+土壤与环境
+SOIL AND ENVIRONMENTAL SCIENCES
+1999年 第8卷 第3期 Vol.8 No.3 1999
+
+
+
+施用石灰对酸性土壤中氧化亚氮形成的影响
+封克　汤炎　钱晓晴　王小治　张素玲
+　　摘要：对酸性红壤施用石灰和N2O生成之间的关系进行了探讨。结果表明，在好气条件下，石
+灰的施用与NH4+氧化过程中N2O的产生量之间的关系不明显。但随着石灰施用量的增加，厌气条件
+下NO3-还原过程中N2O的积累量明显增加了，这与施用石灰后土壤pH升高而提高了硝酸还原酶活性
+有关。试验还表明，尽管在厌气条件下土壤pH较高有利于NO3-还原成NO2-，但当缺乏有效碳源时，
+NO2-向N2O的进一步还原受到限制，易发生NO2-的积累。
+　　关键词：氧化亚氮；红壤；石灰施用量
+　　中图分类号：X13；S153 文献标识码：A
+Effect of Liming on N2O Formation in Acid Soils
+FENG Ke，TANG Yan，QIAN Xiao-qing，WANG Xiao-zhi，ZHANG Su-ling
+（Agricultural College, Yangzhou University, Yangzhou 225009, China）
+Abstract: This paper deals with the relationship between N2O formation and liming in acid soil. The results 
+showed that there was significant accumulation of N2O as the amount of liming increased in anaerobic NO3- 
+reduction progress, which was due to the nitrate reductase activity (NRA) affected by the increased soil pH. 
+Whereas there was no obvious relation of the amount of N2O produced with that of liming in the NH4+ oxidation 
+progress. The results also showed that NO2- could accumulated easily because of lacking of available carbon 
+source for the reduction of NO2- to N2O in the anaerobic and high pH conditions.
+Key words: nitrous oxide; red soil; liming
+　　人们已知，氧化亚氮（N2O）不仅是导致温室效应的主要气体之一，它还可以破坏臭氧层，对
+人类生存环境造成威胁。已有的研究表明，人类的农业活动是产生N2O的主要来源[1]，而且大部分
+的N2O是在土壤中产生和散发出来的[2]。
+　　我国南方地区存在大面积的矿质酸性土壤，具有较低的pH和较少的有机质。施用石灰提高土
+壤pH后对土壤中N2O的形成是否有所影响以及影响程度有多大还很少有人加以研究。国外曾有人对
+此作过报导，但有关结果却相互矛盾。其原因主要是：（1）采用不同土壤研究pH与N2O生成与散发
+的关系，忽略了土壤之间其它方面的差异；（2）在用同种土壤进行不同pH试验时，常用NaOH这种
+强碱来调节pH，短时间内可能对土壤中微生物活性影响过大；（3）多将土壤与水搅拌成悬浊液，
+不利于生成的N2O的散发，因为N2O本身也是一种易溶于水的气体。此外，所用土壤多为酸性森林土
+壤，这种土壤常含有较丰富的有机质[3]。由于土壤中有效碳源对N2O生成影响极大，故所得结果对
+我国南方酸性矿质土壤也许并不适用。
+　　本研究重点观察在不增加土壤有机碳源的情况下，施用石灰改变土壤pH后对氮肥（包括NH4
++－N和NO3-－N）在好气和厌气条件下产生N2O的情况。
+1　方法与材料
+　　所用土壤来自江西省鹰潭中科院红壤试验站，土质属壤粘土。为避免过多易矿化有机质的影
+响，只采下部15～30cm土层的土壤。部分土壤性质列于表1。实验设置4种不同石灰用量处理，即
+按每公斤土分别施用0、1.5、3.0、5.0g Ca（OH）2。Ca（OH）2在磨成细末后与所试土壤充分拌
+匀，在饱和持水量条件下，置于30℃恒温箱中培养，其间间隙搅动并测定pH值。7d后，pH已基本
+达到平衡，不再波动；10d后，将土风干。这样得到4种具有不同石灰用量处理的红壤，其pH分别
+为4.4、5.2、6.7和8.1。以下将它们用Ⅰ、Ⅱ、Ⅲ、Ⅳ符号加以区分。
+表1　供试土壤基本性状
+pH(KCl浸提)有机质全氮NH4+－NNO3-－N速效P速效K
+(g/kg)(mg/kg)
+4.43.80.4916.93.81.65.8
+
+　　试验在130ml培养瓶中进行，每瓶装风干土20g。在施入氮肥前，土壤先在50％持水量的情况
+下培养2d，以促使微生物的正常活动。随后，稍稍风干，按200mg/kg分别加入NH4+－N（硫酸铵）
+或NO3-－N（硝酸钾）。施NH4+－N的处理将水分控制在土壤持水量的50％左右，而施NO3-－N的处
+理则将水分控制在土壤持水量的120%。为达到一定厌气条件，NO3-－N处理均充以氩气。每种肥料
+处理设14个重复。培养过程中共取样7次（分别为培养1、2、4、6、9、11、13d）。
+　　测定时，每处理取2个重复，测定完N2O后，土壤用于测定NH4+、NO3-、NO2-等。为保证好气条
+件，NH4+－N处理每测定一次后，均将剩余培养瓶内空气予以排除，并重新充入空气。
+　　N2O用气相色谱（HP 5890 SeriesⅡ）加以测定。其测定条件为：柱长8m，检测器温度300℃，
+柱温60℃，填料Porapak Q（80～100目），柱流量66ml/min，检测器ECD。NH4+－N测定用2mol/L 
+KCl提取，NaOH蒸馏法。NO3--N用硫酸亚铁－锌粉还原，NaOH蒸馏法。NO2-－N测定用对氨基苯磺酸
+－a－萘胺比色法[4]。
+2　结果与讨论
+2.1 好气条件下石灰施用与N2O生成的关系
+　　表2给出了好气培养前后NH4+和NO3-的变化情况。根据表中数据可以看出，随着石灰施用量的
+升高，NH4+－N在培养后降低幅度大。如在处理Ⅰ中，培养后NH4+－N下降了6mg/kg，而在处理Ⅳ中
+下降了36mg/kg。培养后NH4+下降多的处理，NO3-增加也多，说明施石灰有助于NH4+的硝化。这个
+趋势与Goodroad和Keeney的结果[5]相一致。但在本试验里，好气培养过程中N2O的积累似乎与石灰
+施用量之间并无密切的联系（图1）。不同石灰施用量的土壤处理，N2O积累量的差异不明
+显。Sahrawat等[6]曾报导，酸性土壤施用石灰将促进N2O的散发，但对施用石灰后土壤pH的改变是
+否影响硝化过程中N2O生成并无明确报导。本试验中土层较薄（0.7cm左右），不会对N2O散发过程
+造成较大影响。如果各处理间无差异，即可视为石灰施用对好气条件下NH4+氧化过程中N2O生成的
+影响不大。
+表2　好气培养前后NH4+与NO3-的变化
+处理pHN形态N含量/(mg/kg)
+培养前培养后
+Ⅰ4.4NH4+218212
+NO3-3.87.4
+Ⅱ5.2NH4+215205
+NO3-5.114.4
+Ⅲ6.7NH4+215199
+NO3-6.218.3
+Ⅳ8.1NH4+213177
+NO3-7.127.5
+
+
+图1　施NH4+处理在不同pH条件下好气培养过程中NO2-N积累情况
+　　本试验中，施用石灰对NH4+硝化过程中N2O的产生影响不大，似乎可归结于土壤中起作用的微
+生物区系变化。人们已知，参与硝化过程中产生N2O的微生物既有自养硝化细菌，也有异养硝化微
+生物，而且后者产生的N2O是前者的10倍[7～8]。但异养硝化微生物的活性随pH上升而迅速下降，
+在pH 6.6时即可能消失[9]。因而，随石灰施用量的加大，pH提高的结果将可能使参与N2O形成的微
+生物以自养硝化细菌为主。由于产生N2O的总量较少，pH改变对N2O生成的影响也就不很明显。
+2.2 厌气条件下石灰施用与N2O生成的关系
+　　淹水培养试验中，施入了NO3-。在相对厌气条件下，NO3-的还原应是土壤中氮素转化的主要过
+程。因此，根据培养前后NO3-－N的减少量，可以估计还原过程发生的程度。表3的数据显示，培养
+后有少量NH4+增加（除Ⅱ外）。在高pH情况下，NO3-的减少量是相当明显的。也就是说，淹水条件
+下，高pH促进了NO3-的还原。这个情况与众多前人研究的结果相一致[10～12]。
+表3　淹水培养前后NH4+与NO3-动态
+处理pHN形态N含量/(mg/kg)
+　　　培养前培养后
+Ⅰ4.4NH4+16.915.2
+NO3-202206
+Ⅱ5.2NH4+15.320.0
+NO3-210212
+Ⅲ6.7NH4+14.120.3
+NO3-214205
+Ⅳ8.1NH4+10.418.4
+NO3-216187
+
+　　有人认为，施用石灰后N2O的积累量增加是由于土壤中CaCO3的增加促进了N2O的散发过程
+[13]。这在粘重土壤的较厚土层或较大土壤颗粒内部是可能的。但在本试验中，土层很薄，散发不
+应成为N2O积累的限制因素。此外，在施用最多量石灰的处理上，N2O的积累并非最多，这也说明
+CaCO3有助于N2O散发并非是施用石灰导致N2O积累增加的直接因素。我们认为，施石灰后N2O的积累
+量增加，更合理的解释应该是石灰提高了土壤的pH，进而改变了作用微生物的环境条件，最终使
+N2O生成量发生了改变。
+　　在另一个实验中，我们曾对同样处理的土壤中硝酸还原酶活性进行了测定。表4的结果显示，
+随着pH增加，硝酸还原酶活性明显增加，这证实了pH升高有助于硝态氮的还原[12]。但就本试验而
+言，N2O积累最高量发生在pH6.7的情况下，而不在pH8.1时（见图2）。对此，存在两种可能性。其
+一，在高pH条件下，反硝化程度加强，在NO3-→NO2-→NO→N2O→N2的还原过程中，生成的N2O被进
+一步还原成N2，减少了N2O的散发[14]；其二，在高pH条件下易被还原的NO3-以NO2-的形式积累[15
+～16]。从本试验看（表5），当pH从6.7增至8.1时，NO2-的积累量急剧上升。NO3-的减少量（表3）
+与NO2-的增加量相近。因而，后一种可能性更大。
+
+图2　施NO3-处理在不同pH条件下厌气培养过程中NO2积累情况
+表4　石灰对硝酸还原酶活性(NRA)的影响
+处理pHNO2-/(mg/kg)
+Ⅰ4.42.3×10-2
+Ⅱ5.221.4×10-2
+Ⅲ6.730.0×10-2
+Ⅳ8.138.7×10-2
+
+表5　NO3-处理培养过程中NO2--N含量(mg/kg)净变化
+处理培养天数/d
+0124691113
+Ⅰ00.020.020.030.020.030.040.03
+Ⅱ00.200.220.250.220.240.300.28
+Ⅲ00.250.280.801.101.161.403.50
+Ⅳ00.340.425.0215.222.227.531.5
+
+　　有些报道认为，N2O的散发常与NO2-含量有密切正相关[13, 15, 17]，但他们的实验均是在含有
+较高有机质的土壤上进行的，反硝化所需要的能源物质很少受到限制，因而生成的NO2-可进一步向
+N2O的方向还原；此外，较高的NO3-也可抑制N2O向N2的还原[18～19]，进而造成更多的N2O散发。但
+本试验所用土壤为含有机质较少的矿质酸性土壤，在培养过程中未添加能源物质。在高pH条件
+下，还原过程中的第一步进行较为顺利，有较多的NO2-生成，但NO2-的进一步还原却受到了限制。
+这一方面是由于在高pH下，NO2-的反应性下降[20]，另一方面则是因为缺乏有效碳源所致。按照
+Granli和BФckman的研究[21]，异养反硝化是产生N2O最重要的途径，但异养反硝化需要足够的碳
+源物质供应。因此，矿质土壤中缺乏可降解有机物质可能是限制反硝化的最基本原因[22]。这样，
+本试验中在高pH条件下，尽管有较多NO2-积累，却并无最大量N2O的积累就不难理解了。
+基金项目：联邦德国教育部和江苏省教委自然科学基金项目
+作者简介：封克(1955～)，男，博士，教授。
+作者单位：扬州大学农学院，扬州 225009
+参考文献：
+　1　Duxbury J M. The significance of agricultural source of greenhouse gases[J]. Fertilizer Research, 1994, 
+38: 151～163
+　2　Banin A. Global budget of N2O: The role of soils and their change[J]. Sci Total Environ, 1986, 55: 27～
+383 
+　3　Burton D L, Beauchamp E G. Denitrification rate relationships with soil parameters in the field[J]. Commun 
+Soil Sci Plant Anal, 1985, 16: 539～549
+　4　中国科学院南京土壤研究所. 土壤理化分析[M]. 上海: 上海科学技术出版社，1978
+　5　Goodroad L L，Keeney D R. Nitrous oxide production in aerobic soils under varying pH, temperature and 
+water content[J]. Soil Biol Biochem, 1984, 16: 39～43
+　6　Sahrawat K L, Keeney D R, Adams S S. Rate of aerobic nitrogen transformations in six acid climax forest 
+soils and the effect of phosphorus and CaCO3[J]. Forest Sci, 1985, 31: 680～684
+　7　Anderson I C, Poth M, Homstead J, et al. A comparison of NO and N2O production by the autotrophic 
+nitrifier Nitrosomonas europaea and the heterotrophic nitrifier Alcaligenes faecalis[J]. Applied and environmental 
+microbiology, 1993, 59(11): 3525～3533
+　8　Papen H, Hellman B, Papke H, et al. Emission of N-oxides from acid irrigated and limed soils of a 
+coniferous forest in Bavaria[A]. In: Oremland R S, ed. Biogeochmistry of Global Change-Radiatively Active 
+Trace Gases[C]. New York: Chapman and Hall, 1993. 245～60
+　9　Duggin J A. Autotrophic and heterotrophic nitrification in response to clear-cutting northern hardwood 
+forest[J]. Soil Biol Biochem, 1991, 23: 779～787
+　10　Bremner J M, Shaw K. Denitrification in soil:Ⅱ. Factors affecting denitrificator[J]. J Agric Sci, 1958, 51: 
+40～52
+　11　Bryan B A. Physiology and biochemstry of denitrification[A]. In: Delwiche C C, ed. Denitrification, 
+Nitrification and Atmospheric N2O[C]. New York: John Wiley & Sons Ltd, 1981. 67～84
+　12　Weier K L, Gilliam J W. Effect of acidity on denitrification and nitrous-oxide evolution from Atlantic 
+coastal-plain soils[J]. Soil Sci Soc Am J, 1986, 50: 1202～1205
+　13　Bandibas J, Vermoesen A, DeGroot C J, et al. The effect of different moisture regimes and soil 
+characteristics on nitrous oxide emission and consumption by different soils[J]. Soil Sci, 1994, 158(2): 106～114
+　14　Koskinen W C, Keeney D R. Effect of pH on the rate gaseous products of denitrification in a silt loam soil
+[J]. Soil Sci Soc Am J, 1982, 46: 1165～1167
+　15　Minami K , Fukushi S. Emission of nitrous oxide from a well-aerated andosol treated with nitrite and 
+hydroxylamine[J]. Soil Sci Plant Nutr (Tokyo), 1986, 32: 233～237
+　16　Ellis S, Howe M T, Goulding K W T, et al. Carbon and nitrogen dynamics in a grassland soil with varying 
+pH: Effect of pH on the denitrification potential and dynamics of the reduction enzymes[J]. Soil Biol Biochem, 
+1998, 30(3): 359～367
+　17　Stevens R J, Laughlin R J, Malone J R. Soil pH affects the process reducing nitrate to nitrous oxide and 
+dinitrogen[J]. Soil Biol Biochem, 1998, 30(819): 1119～1126
+　18　Terry R E, Tate R L, Duxbury J M. The Effect of flooding on nitrous oxide emissions from an organic soil
+[J]. Soil Sci, 1981, 132(3): 228～232
+　19　Weier K L, Doran J W, Power J F, et al. Denitrfication and the dinitrogen/nitrous oxide ratio as affected 
+by soil water, available carbon, and nitrate[J]. Soil Sci Soc Am J, 1993, 57(1): 66～72
+　20　Bremner J M, Blackmer A M, Waring S A. Formation of nitrous oxide and dinitrogen by chemical 
+decomposition of hydroxylamine on soils[J]. Soil biol Biochem, 1980, 12: 263～269
+　21　Granli T, Bфckman O C. Nitrous oxide from agriculture. Norwegian J Agric Sci, 1994, 12: 57～61
+　22　McCarty G W, Bremner J M. Availability of organic carbon for denitrification of nitrate in subsoils[J]. Biol 
+Fertil Soils, 1992, 14: 219～222
+收稿日期：1999-02-04

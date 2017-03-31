@@ -2,10 +2,19 @@
 Part1_TF-IDF_TF-IDF/.idea/
 Part1_TF-IDF/TF_IDF/
 Part1_TF-IDF/TF_IDF.py
+Part1_TF-IDF/results.txt
+Part1_TF-IDF/data/pro_res.txt
 
 Part1_TF-IDF/data/pro_keyword/
 Part2_Text_Classify/data/
 Part2_Text_Classify/src/
 Part2_Text_Classify/test/
+
+Part3_Text_Cluster/data_temp/
+Part3_Text_Cluster/data_temp2/
+Part3_Text_Cluster/res_temp/
+Part3_Text_Cluster/src/
+Part3_Text_Cluster/data.txt
+
 
 

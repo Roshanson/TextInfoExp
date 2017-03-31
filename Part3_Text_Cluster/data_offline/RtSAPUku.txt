@@ -1,0 +1,115 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第5期 No.5 Vol.18 1998
+科技期刊
+
+大气环境质量评价的标度指数法* 
+李祚泳　(成都气象学院大气电子工程系，成都 610041)
+文　摘　提出用标度表示大气污染物分指数和大气环境质量综合指数新概念。依据大气污染物浓度等比赋值，其危害程度等差分级原则，导出了标度分指数和综合指数的计算公式。标度分指数表达形式简单、规范，对任何污染程度都以统一基准衡量；标度综合指数既能反映多种污染物并存对环境的综合影响，又适当突出严重污染物对环境的危害。通过对实例的应用、分析和比较，证实了该评价方法的有效性、可比性和通用性，且这些性质不受污染物种类和数目多少的限制。
+关键词　大气环境质量　环境质量评价　标度指数　综合指数
+A scale index method for air environmental quality assessment.Li Zuoyong (Department of Atmospheric Electronics Engineering, Chengdu Institute of Meteorology, Chengdu 610041).China Environmental Science.1998,18(5):433～436
+Abstract―New concepts of the scale partial index of air pollutants and the scale integrated index of air environmental quality are suggested. The new formulae are derived for the scale partial index and the scale integrated index based on the principle that the harm extents of air pollutant are classified by equi-difference as the concentration values of air pollutant change with equi-ratio. The format of scale partial index is simple and normal. It is denoted by unity standard for multi-extent pollutions. The scale integrated index not only represents the integrated influence from multi-pollutant on the environment, but also puts stress on the damage from severe air pollutants as well. The effectiveness, comparison ability and generality which have nothing to do with the sorts and numbers of air pullutants are verified by the application, analysis and comparison of cases.
+Key words:air environmental quality　environmental quality assessment　scale index　integrated index
+　　 迄今为止，国内外已提出多种大气环境质量评价方法〔1～7〕。综合指数法因能反映多种污染物对环境的共同影响及形式简单，而常被人们使用。但综合指数法的可比性和通用性差〔2,8〕。武丽敏曾提出了一种分指数和综合指数表达式与其它指数法都有差异的指数评价方法〔8〕。但该方法中各污染物分指数表达式各异，且对综合指数中两个常数c、d的确定缺乏有说服力的依据。
+　　作者在考察和分析现有多种大气环境质量指数表达式的基础上，提出一种按大气污染物浓度等比赋值，其危害程度等差分级的新的标度指数评价法。
+1　标度指数是表示大气环境质量的依据
+　　衡量大气环境质量的主要依据应是大气污染物的危害程度，而第i种污染物的危害程度通常用分指数表示为：
+　(1)
+式中：Cix为第i种污染物实测浓度；Sij为第i种污染物第j级标准浓度限值。由式(1)可得:
+　(2)
+　　(2)式表明分指数变化△Ii与浓度变化△Cix成线性关系。而研究指出，在大气污染物背景浓度限值Ci0至明显危害浓度限值Cid范围内，当污染物浓度成等比变化时，人对污染物刺激量的主观差觉反应成等差变化，应以这种等差变化作为污染物危害程度变化的依据〔9〕。因此，污染物分指数的变化应该用等差变化表示，而这种等差变化又可用标度差△Ki表示：
+　(3)
+式中：γ为比例常数。式(3)表示了污染物浓度成等比变化时，标度差成等差变化。
+2　标度分指数和标度综合指数计算公式
+2.1　大气污染物的标度分指数计算公式
+　　根据文献〔9〕，由“等比赋值，等差分级”的指数标度原理，得到i污染物浓度值Cik与背景浓度限值Ci0之间的关系式：
+　(4)
+式中：ai为i污染物相邻两级重要性比率。
+　(5)
+式中：Cid为i污染物的明显危害浓度；Ki为i污染物的浓度Cik相对于背景浓度Ci0变化的标度表示，它可用作表示污染物危害程度，称为污染物的标度分指数。由式(4)得：
+　(6)
+　　表1列出了6种大气污染物的背景浓度限值Ci0和相邻两级客观重要性比率ai。已知i污染物浓度值Cik，由表1查出Cio和ai，就可以由公式(6)计算出i污染物的标度分指数Ki。
+表1　大气污染物背景浓度和重要性比率
+Table 1　Background concentration values of atmospheric 
+pollutants and the ratioes of importance
+
+污染物名称Cio(mg/m3)ai
+SO20.021.43
+飘尘0.021.43
+NOx0.021.35
+TSP0.051.40
+O30.051.26
+CO1.151.27
+
+2.2　大气环境质量标度综合指数计算公式
+　　若环境受n种污染物共同影响，每种污染物标度分指数Ki满足公式(4)。设n种污染物并存时的标度综合指数K与n个标度分指数Ki(i=1,2,…, n)之间有如下关系：
+　(7)
+式中：为n种污染物的相邻两级重要性比率ai的几何均值。在进行大气环境质量综合评价时，一般考虑表1中6种污染物已足够。当n=6时，=1.354,α、β为两个待定参数。对公式(7)两边取对数，可得：
+　(8)
+　　当各分指数相等时，令Ke=Ki (i=1,2，……，n)，则由(8)得：
+　(9)
+　　K/Ke代表具有多个相同污染程度的污染物并存情况下的标度综合指数比单个标度分指数增大的倍数。公式(8)中的α，β可作如下确定：设只有一个标度分指数特别大，记为Ki,m，其余标度分指数都很小。此种情况下，允许K<Ki,m，但△K=Ki,m-K不得大于相邻两个等级的分指数差的一半。因为任何相邻两个等级的分指数变化，即标度变化为△Ki,j=2,故△K=1。考虑到Ki,m最大可能等级为Ⅲ级，此时标度分指数为Ki,m=7，故允许≤0.15；又当所有6个标度分指数都近似相等时，标度综合指数K>Ki,m，但考虑到最大不得超过一个等级，故△K=△Ki,m=2。同样考虑Ki,m=7，故有≤0.3。考虑到上述两种极端情况，于是可设：
+
+将(10)代入(9)求解联立方程，可得：
+　(11)
+再将α、β值代入公式(8)，可得大气环境质量的标度综合指数计算公式：
+(12)
+可见，只要由公式(6)计算得标度分指数Ki，并从表1查出相应的ai，就可由公式(12)计算出标度综合指数K。
+2.3　标度分指数和标度综合指数的分级标准
+　　按照我国大气环境质量标准GB3095-82,将各种污染物的各级标准日平均浓度限值代入公式(6)，计算出的各级标准值作为标度分指数的分级标准，各级标准6种污染物标度分指数的算术均值作为标度综合指数分级标准。各级标准的标度分指数Ki和标度综合指数K见表2。
+表2　Ki和K分级标准
+Table 2　Classified standards on partial index Ki and integrated index K
+
+级别KiK
+SO2飘尘NOxTSPO3CO
+I2.562.563.053.303.805.20(-∞,3.5〕
+II5.645.645.355.385.055.20〔3.5, 5.5〕
+III7.067.066.706.926.006.88〔5.5, ∞)
+
+3　评价实例
+3.1　评价结果
+　　此处评价实例监测数据引自文献〔8〕。表3列出了某矿区11个监测点3项大气污染物浓度的监测值。用标度分指数公式(6)和标度综合指数公式(12)计算出的各点大气环境质量分指数Ki和标度综合指数K见表3。表3中同时列出文献〔8〕用Wu氏法对该例各点的评价结果。
+　　比较两种评价结果可以看出：标度指数法对2、5两点大气质量评价分级结果比Wu氏法评价分级结果提高1级，这是因为这两点均只有1种污染物危害程度特别突出。对这种情况，标度指数法允许标度综合指数比最大标度分指数小15%，而Wu氏法只允许5%的宽容。8号点的3种污染物危害程度接近，标度法比较强调多因子的综合影响，因此评价分级结果比Wu氏法降低1个等级。其余8个点两种指数法评价分级结果相同。作者还将标度指数法应用于武汉市8个点，本溪市8个测点和大同市5个测点的大气环境质量综合评价，评价结果均与实况相符。
+表3　各测点的大气污染物浓度监测值Cik(mg/m3)、Ki、K和评价结果
+Table 3　The monitoring values Cik of concentration， partial index Ki，integrated index K and assessment results of atmospheric pollutants in sites 
+
+测点SO2NOxTSP综合指数
+K标度法 
+分级 Wu氏法　
+分级　
+C1kK1C2kK2C3kK3
+10.0552.730.0361.950.2394.704.53IIII
+20.0220.270.013-1.430.1883.981.33III
+30.0974.420.0271.000.4176.385.76IIIIII
+40.1585.780.036 1.950.5126.997.18IIIIII
+50.0270.840.3501.860.4576.654.39IIIII
+60.0341.480.018-0.350.1092.341.75II
+70.0643.250.0583.540.1763.784.97IIII
+80.0864.080.0633.810.2124.345.80IIIII
+90.0603.070.0271.000.6577.745.71IIIIII
+100.0492.510.0472.840.1453.204.04IIII
+110.1515.650.1015.380.3025.417.78IIIIII
+
+4　结论
+　　用标度指数法表示大气环境质量具有以下7个特点。
+4.1　污染物浓度成等比变化，其标度分指数成等差变化，符合污染物的客观刺激量与主观感觉之间的韦伯―费希纳实验定律，因而用标度分指数表示大气环境质量是有科学实验依据的。
+4.2　对任何程度的污染，标度分指数都以背景浓度Ci0和明显危害浓度Cid作基准去衡量，一个浓度值只对应一个标度分指数，因而标度指数公式不受环境区域限制，通用性好。
+4.3　在相同危害程度下，不同污染物有相等或相近的标度分指数。
+4.4　由公式(6)可知，当Cik<Ci0时，有Ki<0。因此，标度分指数可以有负值。标度分指数为负值表示该污染物浓度值低于背景浓度值，因而对环境未造成任何危害。
+4.5　标度综合指数既能反映多种污染物并存时对环境的综合影响，又适当突出了严重污染物对环境的危害程度。
+4.6　标度综合指数具有横向和纵向可比性，这种可比性不受污染物种类和数目多少的限制。
+4.7　标度分指数Ki和标度综合指数K表达形式简单、规范，而且表达式中都只有一个参数ai，计算方便。
+参考文献
+1　Golden Jack. Environment impact data book. Mclean. Virginia: Environmental Assessment and Planning Department MITRE Corporation, 1980.23～71
+2　Bezuglaya E. Yu, et al. Air pollution index and interpretation of measurements of toxic pollutant concentrations. Atmos. Environ., 1993, 27A(5): 773～779
+3　Goyal P, Singh M P，Gulati A. Air quality assessment over a cement industrial complex. Atmos. Environ., 1996, 30(7):1159～1166
+4　侯克复. 环境系统工程. 北京：北京理工大学出版社，1992.363～452
+5　陈德明, 李祚泳. 大气环境质量的物元分析评价法. 环境科学研究, 1994, 7(2): 24～28
+6　李祚泳，盛祖康. 人工神经网络用于大气环境质量评价与排序. 四川环境，1994, 13 (3):45～47
+7　李祚泳. 环境质量综合指数的余分指数合成法. 中国环境科学，1997, 17(6):554～556
+8　武丽敏, 钱振华, 张长青. 大气质量评价综合指数法的研究. 环境科学，1995,16(3):58～60
+9　李祚泳. 基于指数标度法的大气污染物标准浓度限值.中国环境科学，1994,14(3):196～199
+作者简介
+李祚泳　男，1944年1月生。理学硕士，教授。中国环境科学学会大气环境分会委员会委员。主要从事模糊数学、灰色系统、层次分析、多元分析、物元分析、分形与分维、集对分析、人工神经网络及投影寻踪技术（PP）等在环境、气象、灾害学和光学中的应用基础研究。主持或作为主要研究人员完成了国家和省部级11项科研课题，有7项成果获奖。已在国内外发表论文约180篇，有9篇获省市级优秀论文奖，论著5本。论文被《SCI》、《EI》、《PA》、《CA》和《中国科学引文数据库》等收录或检索70余次。
+收稿日期：1998-01-07
+* 国家自然科学基金资助项目(49471048)

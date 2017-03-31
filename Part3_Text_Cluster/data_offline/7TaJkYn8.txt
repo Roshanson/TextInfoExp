@@ -1,0 +1,112 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第3期 No.3 Vol.18 1998
+科技期刊
+
+海河河口水和新港港湾水中α-六六六对映体选择性降解
+及α、β、γ、δ-六六六浓度
+张智超1　戴树桂1　朱昌寿2　吴胜恒1　 （1.南开大学环境科学系，天津 300071；
+2.南开大学元素有机化学国家重点实验室，天津 300071）
+文　摘　运用全甲基化β-环糊精毛细管气相色谱手性柱，首次测定了我国天然水体中手性污染物α-六六六的对映体浓度比值〔ER＝（＋）α-六六六/（－）α-六六六〕。初春和初夏季节天津新港港湾海水中α-六六六的ER值为0.91～0.80，证实了该水体微生物对α-六六六的降解存在着对映体选择性，（＋）α-六六六被优先降解。海河河口水在以上两季节中，α-六六六的ER值均近似为1，其原因有待于进一步研究，可能是附近有经常排放外消旋体α-六六六的污染源。另外还测定了以上两水体中α、β、γ、δ-六六六的浓度，两水体中的六六六含量分别符合我国I类海洋水质标准（GB3097-82）和生活饮用水水质标准（GB5749-85）。
+关键词　手性污染物　六六六　对映体浓度比值　对映体选择性降解
+Enantioselective breakdown of α-Hexachlorocyclohexane(HCH) and concentrations of α、β、γ、δ-HCH isomers in Xingang Harbour marine water and Haihe River estuary water of Tianjin. Zhang Zhichao1,Dai Shugui1, Zhu Changshou2 ，Wu Shengheng1(1.Department of Environmental Science, Nankai University, Tianjin 300071；2.National Key Laboratory of Element-Organic Chemistry, Nankai University, Tianjin 300071).China Environmental Science.1998,18(3):197～201
+Abstract―The enantiomeric ratios（ER=(+)α-HCH/(-)α-HCH）of the chiral pollutant α-Hexachlorocyclohexane（HCH）were determined in Xingang Harbour marine water and Haihe River estuary water for the first time by means of capillary gas chromatography using permethylated β-cyclodextrin as chiral stationary phase. The ERs of α-HCH in the marine water vary from 0.91to 0.80 in early spring and early summer, indicating that the marine microbial degradation of α-HCH has enantioselectivity and （+）α-HCH is degraded preferentially. However, the ERs of α-HCH in the estuary water are almost 1. The reason remains to be investigated further. It is caused propably by the constant input of racemic α-HCH from a nearby pollution source. The concentrations of α、β、γ、δ-HCH in both waters were also determined. The total HCH concentration of these two waters met the National Marine Water Quality Standard I （GB3097-82）and the National Drinking Water Quality Standard（GB5749-85) respectively.
+Key words:chiral pollutant　Hexachlorocyclohexane　 enantiomeric ratio　enantioselective breakdown
+　　在研究手性污染物的环境行为及生态效应的时候，绝大部分研究工作把它们当作纯的单一化合物来看待。但是生命过程的立体选择性是必然的规律，由此可以推知，手性化合物的各个对映体在生物体内的活性、代谢和毒性，在环境中的持久性通常存在着差异；而且不同生物可能选择性摄取、代谢同一化合物的不同对映体。因此为了弄清手性污染物在环境中的变化和效应，必须运用立体选择性分析方法来获取准确的数据。近10多年来手性化合物的色谱直接拆分技术迅速发展，为研究环境中的手性污染物奠定了技术基础。1991年Faller等人〔1,2〕运用衍生化β-环糊精手性毛细管气相色谱，测定了北海（North Sea）海水中α-六六六的对映体浓度比值（Enantiomeric Ratio，以下简称ER），从而首次证实了手性污染物在环境中的对映体选择性降解。他们还提出，测定手性污染物的ER值可以区分微生物降解过程（几乎都有对映体选择性）和非酶促过程（几乎都没有对映体选择性，如光化学降解、挥发等）。
+　　目前我国在环境手性污染物的研究方面尚属空白。国际上在这方面的研究也尚处在起步阶段，绝大部分工作是对各类环境样品中α-六六六的ER值的测定。已经证实了海洋表层水〔1～5〕，北极天然淡水〔6〕，海洋生物〔3,7,8〕、陆生哺乳动物〔9〕的组织器官中α-六六六的对映体选择性降解或吸收。
+　　α、β、γ、δ-六六六均为可疑致癌物，在环境中持久性强，并在生物组织内高度富集，被列入美国环保局确定的129种优先污染物名单。尽管许多工业发达国家从70年代起已陆续停止生产和使用，但一些发展中国家依然不得不将其作为主要的杀虫剂使用，全球累计施用量估计高达1000万t〔7〕。我国从50年代开始使用，1983年起停止生产，短短30年内累计使用了490万t〔10〕。α-六六六是工业品六六六中含量最高的成分，在生态系统食物链各个营养级中普遍存在〔11〕。它既没有对称中心也没有对称面（图1），是六六六的8个可能异构体中唯一的手性化合物。
+　　本文首次研究了我国海河河口水和天津新港港湾水中α-六六六的对映体选择性降解。天津新港位于渤海海湾西岸，海河河口处，海河是华北地区最大的入海河流，选择这一地区的水体作为研究对象有典型的环境意义。
+
+图1　α-六六六对映体分子构像
+Fig.1　The two enantiomers of α-HCH
+1　实验
+1.1　主要试剂与仪器
+　　石油醚，沸程60～90℃，分析纯，经全玻璃系统分馏，去掉前5%（V/V）和最后10%（V/V）的馏分；重蒸水；浓硫酸，优级纯；色谱标准物α、β、γ、δ-六六六，纯度均大于99.5%。
+　　Hewlett Packard 5890型气相色谱仪，63Ni电子捕获检测器，Hewlett Packard 3394型数据处理机。
+1.2　水样采集
+　　在海河河口及新港港湾布设4个采样点（图2中的A、B、C、D点），初春和初夏两个季节采样，采样深度均为3m。河口水盐度约为13‰，港湾水盐度约为31‰。
+
+图2　海河河口及新港港湾采样点布设
+Fig.2　Sampling locations in Haihe River estuary 
+and Xingang Harbour
+1.3　水样前处理
+　　采样后返回实验室，立即用快速定性滤纸过滤，并进行前处理。不能及时处理的水样，放在4℃冰箱中储存，但不超过3天。水样的萃取净化采用国家环保局的标准方法〔12〕。港湾水处理量为2L，河口水为600mL。
+1.4　色谱分析
+1.4.1　α、β、γ、δ-六六六浓度的测定　HP-1熔融硅毛细管色谱柱（柱长25m，内径0.32mm，液膜厚度0.52μm）；载气、补充气均为高纯氮气，载气流量0.37mL/min（柱头压20kPa），补充气流量47mL/min；进样量3μL，分流比50∶1；进样器温度230℃；检测器温度300℃；柱箱程序升温：初温170℃，保持32min，升温速率30℃/min，终温240℃，保持15min。
+　　根据标准谱图六六六4种异构体的保留时间进行定性。外标法峰高定量，标准使用液的峰高和样品的相差不超过20%。
+1.4.2　α-六六六的ER值的测定　美国Supelco公司的β-DEX120手性熔融硅毛细管气相色谱柱（柱长30m，内径0.25mm，液膜厚度0.25μm）；载气、补充气均为高纯氮气，载气流量0.67mL/min（柱头压90kPa），补充气流量47mL/min；进样量3μL，分流比25∶1；进样器温度230℃；检测器温度240℃；柱箱程序升温：初温160℃，保持52min，升温速率20℃/min，终温210℃，至少保持30min。
+2　结果与讨论
+2.1　质量控制
+　　以噪音的2倍作为仪器的最小检出量，对α-六六六为2.4×10-12g，β-六六六为3.2×10-12g，γ-六六六为1.7×10-12g，δ-六六六为3.4×10-12g。对200mL石油醚进行净化、洗涤、脱水和浓缩等全程操作，α、β、γ、δ-六六六的分析空白浓度（以2L水样计）分别为1.9、3.2、2.2、1.4ng/L，对实际水样测定影响不大。平行双样浓度测定值的相对偏差小于11%。河口水样在两种添加水平下的加标回收率列于表1中。
+表1　实际水样加标回收率
+Table 1　Spiking recovery of water sample
+
+项　目α-六六六β-六六六γ-六六六δ-六六六
+添加浓度（ng/L）1662199　268　153　
+回收率（%）　　　　86.285.690.280.0
+添加浓度（ng/L）2308276　372　212　
+回收率（%）　　　　96.286.793.779.3
+
+2.2　α、β、γ、δ-六六六的浓度
+　　各采样点在初春和初夏两季节六六六4种异构体浓度的测定结果示于表2。从测定结果可看出，海河河口和新港港湾水中六六六的4个异构体均不同程度地存在，浓度由高到低的顺序依次为α＞γ＞β＞δ，这与工业品六六六中4种异构体含量顺序是一致的。六六六工业品一般含67%～70%α-六六六，13%～15%γ-六六六，5%～6%β-六六六，6%δ-六六六〔13〕。另外还可以看出，无论是4种异构体浓度还是六六六总浓度，河口水均比港湾水高几倍，可见海河河口依然是新港港湾水体中六六六污染的一个重要潜在来源。此外，港湾内各点六六六的浓度也不是均匀一致的，尤其是D点六六六的总浓度比B点的低28%，这是因为D点已接近开阔海域，污染物的扩散能力较强。尽管新港港湾水中六六六的浓度比文献〔4〕中报道的欧洲北海和波罗的海高一个多数量级，但仍符合我国第一类海水水质标准（1μg/L，GB3097-82）。海河河口水的六六六总量也未超出我国饮用水水质标准（5μg/L，GB5749-85）。
+表2　海河河口和新港港湾中六六六（HCH）异构体的浓度
+Table 2　The concentrations of HCH isomers in Haihe River 
+estuary water and Xingang Harbour marine water
+
+采样点初春*六六六浓度
+(ng/L)初夏**六六六浓度
+(ng/L)
+αβγδ∑HCHαβγδ∑HCH
+河口A71615321211111926261992981461269
+港湾B90406332225129609942330
+　C　　　　　114568641297
+　D　　　　　92456634237
+
+　注： * 河口采样日期为1997年4月9日，水样温度13℃；港口点采样日期为1997年3月25日，水样温度7℃，初春季节没有在港湾C、D两点采样
+** 各点采样日期均为1997年5月30日，水温依次为22℃、21℃、21℃、20℃
+
+2.3　α-六六六的对映体选择性降解
+　　α-六六六的对映体浓度比值（ER）定义为在手性色谱柱上（＋）α-六六六与（－）α-六六六的峰面积之比。Falconer等〔6〕已经证实了在与本文完全相同的β-DEX120熔融硅毛细管柱上，（＋）α-六六六先于（－）α-六六六流出。
+　　在实验条件下，α-六六六的两个对映体拆分效果很好，α-六六六标准品和实际水样的对映体分离度均大于1.4，基本达到基线分离。α-六六六标准品溶液的5次连续进样的ER平均值为0.995，标准偏差为0.0028。实际水样2次进样的ER值相对偏差小于1%，平行双样的相对偏差小于0.4%。α-六六六对映体拆分的典型色谱图见图3。各采样点不同季节α-六六六的ER值列于表3中。将初春季节河口水两平行浓缩样合并，进一步浓缩，在本文所用的手性柱上用气相色谱－质谱－计算机联用系统（HP5890IIGC/5791A MSD/MS Chem Station美国惠谱公司）确证了α-六六六的手性拆分。色谱条件：载气为氦气，柱头压70kPa，无分流方式进样10μL，进样器温度230℃，柱箱程序升温：初温40℃，保持2min，升温速率20℃/min，终温160℃，保持42min。气－质传输线温度280℃。质谱条件：电子轰击电离源，全扫描方式（30～450amu），通过美国国家标准局标准质谱库（NBS75K）检索。
+
+图3　α-六六六对映体拆分色谱示意
+Fig.3　Enantiomeric separation of α-HCH
+(a)　α-六六六标准品　(b)　初春季节河口水样　
+(c)　初夏季节港湾水样
+　　迄今为止，还没有出现有关非生物过程具有对映体选择性的报道。水环境中六六六的去除有5种途径：挥发、沉积、光解、水解和微生物降解。工业合成的六六六农药中α体以外消旋体混合物形式存在，ER值为1；新港港湾水初春季节α-六六六的ER值为0.91，初夏季节为0.80～0.82，均明显小于1，这说明新港港湾水体中微生物对α-六六六的降解有对映体选择性，优先降解（＋）α-六六六，而且微生物降解在港湾水α-六六六的去除中起着相当的作用。港湾B点的α-六六六的ER值初春时为0.91，初夏时为0.81，两者有较大差异，这可能与水温的变化有关，初春时水样温度为7℃，初夏时为22℃。微生物的对映体选择性降解的生理学机制目前还不清楚。Falconer等〔6〕发现北极某岛上的一条溪流中α-六六六的ER值在两周内随着水温的升高（0.8～14.8℃），ER由0.95减少到0.62，他们认为是水温升高和悬浮颗粒物增加的缘故。Faller等〔1,2〕发现欧洲北海东部海域α-六六六的ER平均值为0.85（小于1），而西部海域的ER平均值为1.15（大于1），东、西两海域的α-六六六降解的对映体选择性相反，造成这种差异的原因不明。
+表3　河口水和新港港湾水中α-六六六的ER值
+Table 3　The ERs of α-HCH in Haihe River estuary water 
+and Xingang Harbour marine water
+
+采样点ER
+初春初夏
+河口A1.021.03
+港湾B0.910.81
+　C　0.82
+　D　0.80
+
+　　值得注意的是，河口水样α-六六六在两个季节中的ER值在实验误差范围内均近似为1，以外消旋体混合物形式存在，其原因可能有两种，一是河口水体中α-六六六的微生物降解与非生物去除过程相比可以忽略，或不具有对映体选择性；二是附近有经常排放α-六六六外消旋体混合物的污染源，认为后者可能性很大。因为，即使在被认为生物活性极低的北极某天然淡水湖及其流域中的α-六六六的降解也具有对映体选择性〔6〕；此外，有关资料〔14〕和调查发现，距河口几公里，位于海河边上的天津大沽化工厂（见图2中的E点），为用作化工原料和其它用途一直保留着六六六和林丹的生产。当然，河口水中α-六六六以外消旋体形式存在的原因还有待于进一步研究。
+3　结束语
+3.1　测定新港港湾水和海河河口水中α-六六六的ER值，结果表明，新港港湾水中α-六六六的微生物降解具有对映体选择性，（＋）α-六六六被优先降解；微生物降解在α-六六六的去除中起着相当的作用。海河河口水中α-六六六的ER值在实验误差范围内近似为1，以外消旋体混合物形式存在。初步认为是由于附近有经常排放外消旋体α-六六六的污染源。
+3.2　手性化合物有望成为环境示踪物〔15〕，用以研究污染物在环境中的转归途径；还可以作为弄清化学品毒理机制的工具。光学异构体的手性色谱直接拆分法，不需要事先用光学纯手性试剂将分析试样中手性物质衍生化为非对映体，适合于环境样品中痕量手性污染物和手性降解产物的分析。在对映体水平上开展手性污染物环境行为和生态效应的研究亟待扩展深入。
+3.3　新港港湾水和海河河口水中六六六的总浓度分别符合我国I类海水水质标准和生活饮用水水质标准。海河河口是新港港湾六六六污染的重要潜在来源。
+参考文献
+1　Faller J, Hhnerfuss H, Knig W A, et al. Do marine bacteria degrade α-Hexachlorocyclohexane stereoselectivity?　Environ. Sci. Technol., 1991,25:676～678
+2　Faller J, Hhnerfuss H, Knig W A, et al. Gas chromatography separation of the enantiomers of marine organic pollutants: Distribution of α-HCH enantiomers in the North Sea. Mar. Pollut. Bull., 1991,22:82～86
+3　Pfaffenberger B, Hhnerfuss H, Kallenborn R, et al. Chromatographic separation of the enantiomers of marine pollutants. Part 6: Comparison of the enantioselective degradation of α-Hexachlorocyclohexane in marine biota and water. Chemosphere, 1992, 25（5）:719～725
+4　Hhnerfuss H, Faller J, Knig W A, et al. Gas chromatographic separation of the enantimers of marine pollutants. 4.fate of hexachlorocyclohexane isomers in the baltic and North Sea. Environ. Sci. Technol., 1992, 26（11）: 2127～2133
+5　Falconer R L, Bidleman T F, Gregor D J. Air-water gas exchange and evidence for metabolism of hexachlorocyclohexanes in Resolute Bay, N. W. T. Sci. Total Environ., 1995, 160/161: 65～74
+6　Falconer R L, Bidleman T F, Gregor D J，et al. Enantioselective breakdown of α-Hexachlorocyclohexane in a small Arctic lake and its watershed. Environ.Sci. Technol.，1995, 29（5）:1297～1302
+7　Muller M D, Schlabach M,Oehme M.Fast and precise determinaton of α-Hexachlorocyclohexane enantiomers in environmental samples using chiral high-resolution gas chromatography.　Environ. Sci. Technol., 1992, 26（3）: 566～569
+8　Mssner S, Spraker T，Becker R, et al. Ratios of enantiomers of alpha-HCH and determination of alpha-, beta-, and gamma-HCH isomers in brain and other tissues of neonatal northern fur seals (callorhinus ursinus). Chemosphere, 1994, 24（9）: 1171～1180
+9　Pfaffenberger B, Hardt I, Hhnerfuss H, et al. Enantioselective degradation of α-Hexachlorocyclohexane and cyclodiene insecticides in roe-deer liver samples from different regions of Germany. Chemosphere, 1994, 295（7）: 1543～1554
+10　华小梅，单正军. 我国农药的生产，使用状况及其污染环境因子分析． 环境科学进展，1996, 4（2）: 33～45
+11　Hhnerfuss H, Faller J, Kallenborn R, et al. Enantioselective and non-enantioselective degradation of organic pollutants in the marine ecosystem. Chirality, 1993, 5: 393～399
+12　国家环保局《水和废水监测分析方法》编委会. 水和废水监测分析方法（第3版）. 北京: 中国环境科学出版社, 1989. 397～399
+13　白青云. 六六六在环境中的异构化作用. 农业环境保护, 1983, 2: 20～22
+14　农业部农药检定所主编. 新编农药手册. 北京: 农业出版社, 1989. 3～4
+15　Renner R. Chiral compounds show promise as environmental tracers. Environ. Sci. Technol. 1996, 30（1）: 16A～17A
+作者简介
+张智超　男，1969年7月生。现为南开大学环境科学系95级博士生。发表论文6篇。
+收稿日期：1997-07-21
+* 高等学校博士点科研专项基金资助项目(96005512)

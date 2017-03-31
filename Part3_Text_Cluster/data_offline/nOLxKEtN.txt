@@ -1,0 +1,122 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第1期 No.1 Vol.18 1998
+科技期刊
+
+液膜法从工业废水中提取J酸的研究
+朱亦仁　潘碌亭　(阜阳师范学院化学系,阜阳 236032)
+魏凤玉　邓传芸　(合肥工业大学化工学院，合肥 230009)
+沈章平　闻治宇　(南京化工厂，南京 210038)
+文　摘　利用以LMS-2为表面活性剂，三辛胺为载体，煤油为溶剂，NaOH溶液为膜内相所组成的乳状液膜体系，从含J酸的工业废水中提取J酸。研究了各种因素对J酸提取率的影响，提出了较适宜的工艺条件。实验结果表明，该乳状液膜体系对废水中的J酸有较高的提取率。油相经破乳后多次重复使用，其提取率基本不变，J酸的提取率可达96%。
+关键词　液膜法　J酸　废水
+Study on J-acid from industrial wastewater with liquid membrane.Zhu Yiren，Pan Luting(Department of Chemistry, FuYang Normal College, Fuyang 236032)；Wei Fengyu，Deng Chuanyun(School of Chemical Engineering, Hefei University of Technology, Hefei 230009)；Shen Zhangping，Wen Zhiyu(Nanjing Chemical Plant,Nanjing 210038).China Environmental Science.1998,18(1):91～93
+Abstract―In this paper,LMS-2 was used as the surfactant,tri-noctylamine as the mobile carrier,kerosene as the membrane solvent and NaOH solution as the internal phase of the membrane to form a system of emulsified liquid membrane.in studying the extraction of J-acid from industrial wastewater.Factors affecting the extraction efficiency of J-acid were studied,and suitable technological conditions were determined.The results show that the advantages of rapid rate of J-acid transport and high efficiency of extraction,and the extracting rate do not change with the oil phase reused for many times.The efficiency of J-acid extraction is 96%.
+Key words:liquid membrane　J-acid　wastewater
+　　在偶氮中间体J酸(2-氨基-5-萘酚-7-磺酸)的生产过程中，排出大量强酸性废水（pH＜1），其中硫酸约550g/L,废水呈褐色，直接排放会造成严重的污染。J酸废液因酸性极强，采用中和法、生化法以及蒸馏法处理均不能取得满意的效果。因此，寻求一种快速、经济的方法处理该废水已成为重要的研究课题。液膜法由于引入萃取剂与待分离物发生配合反应，而具有分离速度快、效率高的特点， 只要选择合适的膜体系就能适应不同的废水处理〔1～4〕。本实验应用液膜法处理J酸工业废水，同时回收了J酸，达到消除污染和回收资源的双重目的。
+1　实验部分
+1.1　试剂与仪器
+　　民用煤油（工业品）；表面活性剂LMS-2（华南理工大学研制）；三辛胺（TOA上海化学试剂厂）；氢氧化钠（工业品）。
+　　电破乳器（自制）；PHS-2型pH计(上海雷磁仪器厂)；DS-1型高速组织捣碎机（上海标本模型厂）。
+1.2　实验方法
+　　将LMS-2、TOA、煤油按一定比例加入组织捣碎机，先低速混合均匀，然后加入氢氧化钠溶液，高速搅拌（3000r/min）3min即可制得稳定的乳状液。将乳状液按一定乳水比Rew（乳液体积Ve和废水体积Vw之比）加入到废水中，慢速搅拌（300r/min）使其充分接触，静置分离后乳液进
+入破乳器，经破乳后静置分层即可获得J酸盐溶液（浓缩水相）和油相，油相可用于重新制乳。
+2　结果与讨论
+2.1　搅拌速度对提取率的影响〔5，6〕
+　　搅拌转速对液膜分离效率的影响如图1所示，转速越高，液滴粒径越小，传质面积越大，传质速度越快；但转速过大，液膜破损率增大，使分离效率下降；而搅拌速度太小，乳液分散性差，传质面积小，使分离效率降低。故本实验在搅拌转速为300r/min时可得到最高分离效率。
+
+图1　搅拌速度对J酸提取率的影响
+Fig.1　The effect of stirring speed on extracting
+rate of J-acid
+2.2　乳水比（Rew）对提取率的影响〔7〕
+　　对于液膜分离过程来说，乳水比Rew越大，渗透过程的传质面积越大，从而加速了料液的分离，使分离效率提高；但此时乳状液消耗多，处理成本高。因此在满足有较高分离效率的前提下，乳水比越低越好。Rew对分离效率的影响如图2所示，当Rew为 1∶5时既节省乳液，又得到较满意的分离效果。
+
+图2　乳水比对J酸提取率的影响
+Fig.2　The effect of Rew on extracting rate 
+of J-acid 
+2.3　油内比（Roi）对提取率的影响〔7〕
+　　油内比（Roi）是制备乳状液膜时油相与内水相体积比，当Roi较大时，乳状液膜厚度增大，液膜不易破裂，但传质速率下降。反之当Roi较小时，乳状液膜较薄，传质速度加快，但液膜不稳定易破裂〔2〕，Roi对分离效率的影响见图3，由图3可见，当Roi为 1∶1时J酸的提取率较高且所制得的乳化液膜也较为稳定。
+
+图3　油内比对J酸提取率的影响
+Fig.3　The effect of Roi on extracting rate
+of J-acid
+2.4　载体浓度对提取率的影响〔8〕
+　　载体浓度的影响如图4所示，随着载体TOA浓度的增加，分离效率也增加；以TOA作载体提取废水中的J酸外相萃取反应可用下式表示：
+
+
+　　由上式可知，增大TOA的浓度，反应向右进行，即迁移速率快，膜的分离效率上升；但TOA用量过多，又会使膜相粘度增大，膜增厚，使迁移速率下降；另外载体用量大，成本高，不利于工业化生产，故本实验选择载体浓度为3mL TOA/100mL煤油为宜。
+
+图4　载体浓度对J酸提取率的影响
+Fig.4　The effect of carrier contents on extracting 
+rate of J-acid
+2.5　破乳与油相的回用
+　　本实验采用低电压电破乳，即在常温、常压、电压为100V下进行破乳，破乳不产生絮状中间层，对表面活性剂和载体损害较小，回收油相的含水率小于1%。油相重复使用的结果见表1。由表1可见，油相连续使用10次时，分离效率基本不变，表明低电压电破乳是完全可行的。
+表1　油相的重复使用情况
+Table 1　The situation of oil phase being reused
+
+序号油相回用次数J酸提取率(%)
+1新制乳液　96.5
+2破乳1次　95.9
+3破乳2次　96
+4破乳3次　96.2
+5破乳4次　95.8
+6破乳5次　95.5
+7破乳6次　95
+8破乳7次　96.4
+9破乳8次　96.3
+10破乳9次　96.1
+
+2.6　废水在最佳条件下分离情况
+　　实验操作的条件及结果如表2所示
+表2　液膜法提取J酸操作数据
+Table 2　The operation date of ertracting J-acid 
+by liquid membrane 
+
+　　项　　目操作数据
+废水硫酸含量(g/L)550
+废水J酸含量(g/L)6.5
+搅拌速度(r/min)300
+乳水比(Rew)1∶5
+油内比(Roi)1∶1
+混合时间(min)15
+内相含J酸浓度(g/L)39
+处理后水相J酸浓度(g/L)≤0.2
+处理后水相硫酸含量(g/L)≥500
+J酸提取率(%)≥96
+
+　　从表2可以看出，料液经液膜分离后，J酸可以进入内水相而得到富集，处理后的水相J酸含量小于0.2 g/L，可做为稀硫酸回收使用。
+2.7　经济效率分析
+　　按每1m3乳液可重复使用10次，处理过程中煤油的损耗为0.01 kg/t废水计，在上述最佳操作条件下的经济效益分析如表3所示（按处理废水50t计算）。
+表3　液膜法分离J酸的经济效益分析
+Table 3　The economic analyse of extracting J-acid 
+by liquid membrane
+
+项　　目支　出收　入
+用量(kg)　费用(元)产量(kg)费用(元)
+表面活性剂LMS-2151500
+载体TOA　　　1215000
+煤油(含损耗)　404808
+氢氧化钠(10%)50150
+电费　　　　　50(kWh)50
+综合折旧费　　　100
+人工　　　　　　50
+稀硫酸　　　　　　7500075000
+J酸　　　　　　　32016000
+总计　　　　　　17658　23500
+盈利　　　　　　　　5842
+
+　　由此可见，如果每天处理50 t的废水则可获纯利5892元，经济效益十分可观。
+3　结论
+　　采用液膜法处理含J酸工业废水在本实验所确定的条件下，J酸提取率可达96%左右，处理后的废水J酸含量小于0.2 g/L，硫酸含量大于500 g/L，可做为稀酸回收利用。
+　　液膜法处理含J酸工业废水工艺流程简单，处理成本低廉。处理后的油相可重复使用且分离效率基本不变，不会产生二次污染，社会和经济效益明显。
+参考文献
+1　N N Li.US.Patent.3410794,1968
+2　邵　刚.膜分离科学与技术，1982，2（2）∶ 57
+3　金桃根.膜分离科学与技术，1982，2（2）∶ 20
+4　王学松.化工进展，1990，（6）∶ 1～6
+5　刘　杰等.工业水处理，1994，14（3）∶ 20～23
+6　沈力人等.膜科学与技术，1997，17（1）∶ 25
+7　万印华等.水处理技术，1991，17（4）∶ 222～224
+8　李思芽等.膜科学与技术，1995，15（2）∶ 22～24
+作者简介
+朱亦仁　男，1946年2月生。阜阳师范学院化学系副教授、副主任。近年来主要从事环境污染治理及环境教育的教学与研究工作，主持和参加过5项国家和省级科研课题，发表论文10余篇，出版专著1部（环境污染治理技术），合编教材1部。
+收稿日期：1997-01-08

@@ -1,0 +1,100 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第1期 No.1 Vol.18 1998
+科技期刊
+
+腐殖酸与稀土元素的作用及体系稳定性*
+耿安朝　（苏州城建环保学院环境保护系，苏州 215011）
+章　申　（中国科学院地理研究所，北京 100101）
+Harald Hiland(Department of Chemistry,University of Bergen,41-N-5007 Bergen,Norway)
+文　摘　用稀土元素(La3+, Ce3+, Ho3+, Yb3+)标准溶液对湖泊沉积物腐殖酸进行非连续滴定，研究二者之间的络合反应能力及其结合产物在水溶液体系的稳定性。结果表明，腐殖酸结构中的活性点位在与三价稀土离子作用时表现出两种不同类型，在机制上采取两级络合反应。体系中沉淀生成与否主要取决于腐殖酸对稀土离子的容纳能力。
+关键词　腐殖酸　稀土元素　结合能力　稳定性
+Binding capacity and stability of humic acid with rare earth elements in solution.Geng Anchao(Department of Environmental Protection, Suzhou Institute of Urban Construction and Environmental Protection,Suzhou 215011)； Zhang Shen(Institute of Geography, Chinese Academy of Sciences, Beijing 100101)；Harald Hiland(Department of Chemistry,University of Bergen,41-N-5007 Bergen,Norway).China Environmental Science.1998,18(1):52～56
+Abstract―Dissolved humic acid extracted from lake sediment was titrated discontineously with the standard solutions of rare earth elements (La3+, Ce3+, Ho3+, Yb3+) to investigate the complexation capacity and the stability of humic acid and REE-humate in solution. Apparently there are two types of binding sites in the functional groups of humic acid, which take two steps of complexation reations in mechanism. The occuring of precipitation is mainly dependent on the holding capacity to rare earth element by humic acid.
+Key words: humic acid　rare earth element　binding capacity　stability
+　　随着稀土元素及其化合物在工业部门，特别是近20年我国在农业中的广泛使用，使稀土化合物大量进入环境，由此而引起的环境问题亦日益受到人们的关注〔1〕。另外，稀土元素因其特有的地球化学示踪剂功能，又成为与此有关的地学研究领域中的活跃点〔2～3〕。稀土元素的环境地球化学行为和生物效应在很大程度上取决于其在环境中的赋存形态和状态，研究表明〔1,4～6〕，稀土元素的有机结合态是稀土总量中重要的活跃部分之一。
+　　腐殖酸是地表环境中的主要有机组成，作为具有较多羧基、酚羟基以及N-和S-结合点位的有机高分子聚合物，能够与金属离子发生很强的络合或结合作用，从而影响元素及其化合物在环境中的迁移转化和生物活性。其与重金属离子络合反应的研究报道较多〔7～9〕，但很少涉及稀土元素。本研究采用从挪威卑尔根市郊淡水湖泊沉积物中提取的腐殖酸，考察其与稀土元素(La3+, Ce3+, Ho3+, Yb3+)进行络合反应的能力、机制以及在水溶液体系中的稳定性，旨在探索稀土元素在天然水环境中发生沉积、富集和分异过程中有机质的作用机理。
+1　实验部分
+1.1　理论依据
+　　腐殖酸作为有机络合剂(L)与稀土离子RE3+的络合反应，依据各结合点位的PK值理论上可以分为两类：
+
+(I)-COOH和(II)-COOH为具有较小PK值的羧基，与稀土离子络合的表观稳定常数为K1。
+
+　　WAH为质子化的弱酸，包括PK值较大的羧基和酚羟基等，其与稀土离子的表观稳定常数为K2。
+　　当pH和离子强度等反应条件一定时，上述络合反应的机制可用(4)式表示：
+｛〔RE*bound〕1 + 〔RE*bound〕2｝/〔RE*free〕
+=K1〔Lt〕1 - K1〔RE*bound〕1+K2〔Lt〕２ 
+　- K2〔RE*bound〕2(4)
+式中：RE*bound为RE3+与腐殖酸的络合态摩尔浓度；RE*free为游离态的RE3+摩尔浓度；〔Lt〕为腐殖酸所具有的总络合点位摩尔浓度。当加入的稀土离子浓度较低时，因第一类络合点位具有较强的结合能力，从而优先与稀土离子发生络合，此时第二类点位保持空闲，即〔RE*bound〕2=0。将〔RE*free〕对〔RE*bound〕作图，所得直线的斜率为一级络合反应的条件稳定常数K1。当继续加入RE3+时，一级络合反应达到平衡，第二类络合点位开始与RE3+反应，因此通过求取第二条直线的斜率，可得到二级络合反应的条件稳定常数。同时，用在横轴上的截距可计算两级络合反应的容量。
+1.2　腐殖酸样品
+　　将取自挪威卑尔根市郊一个淡水湖的沉积物样品，按照国际腐殖质协会(IHSS)推荐的方法，用0.1M NaOH提取腐殖酸，粗腐殖酸样品用1:1的0.1M HCl / 0.3M HF洗涤以降低残余无机物的含量〔10〕。用傅立叶红外光谱和核磁共振波谱检验其结构和纯度。
+1.3　试剂和仪器
+　　稀土离子标准溶液：在浓HCl中分别加热溶解La，Ce，Ho，Yb的三价氧化物(Aldrich Chemical Co.)，蒸发至干后用蒸馏水稀释定容，然后用容量法标定。
+　　阳离子交换柱：将Dowex50×4，100～200目阳离子交换树脂分别用浓HCl、0.1M EDTA和0.1M NaOH处理后，填充在长6.0cm直径1.2cm的玻璃管中，经检验无可检测量稀土离子存在〔11〕。使用前用NaAc-HAc缓冲液淋洗，以平衡调节柱内的pH值与反应体系相同。
+　　稀土浓度测定：采用Arsonazo III (2,2'-〔1,8-dihydroxy-3,6-disulpho-2,7-naphthylenebis(azo)〕dibenzenearsonic acid) 分光光度法测定稀土离子浓度〔12〕，分析波长660nm，以试剂空白为参比。
+　　腐殖酸浓度测定：腐殖酸浓度与吸光度之间有很好的相关性，因此采用分光光度法监测腐殖酸在络合反应中的浓度变化。
+　　分析仪器：Perkin Elmer Lambda 6 UV/VIS 分光光度计。
+1.4　实验方法
+　　在控制pH值6.30和离子强度0.066M KCl条件下，往33.33mg/L腐殖酸溶液体系中加入0.3～20.0×10-5M浓度系列的稀土离子，放置反应12h。然后对未发生沉淀的体系，将其反应液全部通过离子交换柱，使游离态稀土离子从溶液体系分离，取1份流出液分析测定络合态稀土离子的浓度；如有沉淀发生，则将反应体系在4000r/min下离心分离，取上清液直接测定稀土离子及腐殖酸的剩余浓度。
+2　结果与讨论
+2.1　稀土离子与腐殖酸的络合反应
+　　La3+, Ce3+, Ho3+, Yb3+ 4种稀土离子与腐殖酸在水溶液中的络合行为，通过非连续滴定与离子交换技术联合测定。图1为pH值6.30和离子强度0.066M KCl条件下，稀土离子与腐殖酸络合量(mg/g)随稀土离子加入浓度的变化关系。
+　　由图1可以看出，随着稀土离子加入浓度的增加，4种元素被腐殖酸络合的量逐渐增加。从轻稀土到重稀土，4条曲线形状十分相似，表明稀土离子与腐殖酸发生络合时性质相近。在4条曲线的中间部位都存在一个变平阶段，这正是由一级络合反应向二级过渡的体现。另外，在所调查的浓度范围内，Ce3+与腐殖酸的络合量与其它同类相比出现异常，它的滴定曲线跳出了应该介于La3+和Ho3+之间的位置，表明Ce3+与腐殖酸具有较强的络合能力。
+
+图1　稀土离子与腐殖酸络合量随加入浓度的变化
+Fig.1　Change of complexation amount with the added REE
+2.2　络合稳定常数与络合容量
+　　为求取络合反应的条件稳定常数和络合容量，以〔RE*bound〕/〔RE*free〕对〔RE*bound〕作图，直线的斜率即为络合稳定常数K，在横坐标上的截距为理论上的络合容量。在此，选择Ce3+为代表在图2中给出其示意结果，La3+、Ho3+和Yb3+的情况与Ce3+相似。
+　　由图2可知，其络合行为与理论假设相吻合，两个斜率值K1和K2分别代表两级络合反应的条件稳定常数，直线交叉点在横轴上的对应值可用于计算其一级络合容量；二级络合的条件稳定常数较小，表明其结合力较弱，理论上直线在X轴的截距可用于计算其二级络合容量，但由于发生沉淀，使实际二级络合容量小于理论值。
+
+图2　腐殖酸与Ce的条件络合稳定常数
+Fig.2　Conditional formation constant of Ce with HA
+　　将作图法求得的稀土离子与腐殖酸的络合容量列入表1，其中Cp为在沉淀临界点实验测定的实际络合总量。除Ce3+外，其它3种稀土的Cp值均小于C1与C2之和，原因是二级络合达到平衡前体系已经脱稳了。另外，在表2中给出其条件稳定常数。结果表明，该湖泊沉积物腐殖酸的第一类络合点位具有较强的络合能力，条件稳定常数较大；而二级络合能力较弱，但却有着较大的理论络合容量，这一点与腐殖酸的原生物质及腐殖化程度有关。
+表1　腐殖酸与稀土元素的络合容量(mg/g)
+Table 1　Complexation capacities of REE with HA
+
+元素 C1C2Cp
+La21.946.9 51.2
+Ce34.5 66.4 102.2
+Ho28.280.7 89.5
+Yb27.573.878.4
+
+表2　腐殖酸与稀土元素的条件络合稳定常数
+Table 2　Conditional formation constants of REE with HA
+
+元素logK1 logK2 反应条件
+La 5.394.5pH=6.30
+Ce5.57 4.7离子强度:
+Ho 5.014.40.066M KCl
+Yb5.33 4.5温度:24℃
+
+　　在4种稀土元素中，Ce3+无论在稳定常数还是络合容量上都突出大于其它3种，这种反常现象具有特殊的地球化学意义。许多研究指出，Ce在天然环境中表现出比其它稀土易于沉积而从水体去除的特性。从本研究结果看，腐殖酸对稀土元素络合行为的差异，无疑与其在天然水体中发生分异有关，而且腐殖酸在水体中的沉积与再悬浮，也势必会对其它金属离子的迁移和归宿产生重要影响。
+2.3　稀土离子与腐殖酸的沉淀反应
+　　研究中发现，当往一定浓度腐殖酸中加入足够量的稀土离子时，整个溶液体系将失去稳定性，此时大量腐殖酸和稀土离子通过沉淀与吸附作用从溶液中去除。在天然水环境中，由于存在大量的金属离子，它们与腐殖酸结合的结果，必然造成二者的共同去除。因此，腐殖酸与金属离子的沉淀反应可能成为天然水环境发生的重要地球化学过程之一。为探讨这一现象，本文用稀土离子为滴定剂，考察了沉淀发生的机制与影响因素。图3给出以Ce为代表的实验结果，La、Ho和Yb的情况与其相似。
+
+图3　稀土离子与腐殖酸的作用及稳定性
+Fig.3　Interaction and system stability of REE with HA
+　　在pH值6.30和离子强度0.066M KCl条件下，随着稀土离子加入浓度的增加，在低浓度范围表现为腐殖酸与稀土的络合反应，同时在450 nm处监测腐殖酸的吸光度，结果未出现明显变化。但当加入浓度增加到一定值时，水中的腐殖酸开始出现大量沉淀，同时稀土离子也从溶液中大量去除。沉淀点因稀土元素不同略有差异，分别为La 1.03×10-4M，Ce 1.25×10-4M，Ho 1.06×10-4M和Yb 1.09×10-4M。Ce出现沉淀较晚，因此其与腐殖酸在溶液中有着较大的络合容量。从腐殖酸的吸光度变化看，在沉淀发生的同时，将伴随有90%以上的腐殖酸同步从溶液中析出。
+2.4　影响沉淀反应的因素
+　　在水溶液中的溶解态腐殖酸具有胶体性质，因此腐殖酸表面的电负性对体系稳定性有着重要影响；另外，作为一种弱酸，与金属阳离子形成的腐殖酸盐也可能是沉淀产物。本文系统考察了pH、离子强度、腐殖酸浓度等因素对沉淀反应的影响，结果发现：(1) pH值对腐殖酸与稀土离子共存体系的稳定性有一定影响，提高溶液酸度因降低腐殖酸的溶解度使沉淀易于发生。无稀土离子存在时，在pH值为3.5～6.5的范围内，pH值变化对腐殖酸的影响不大；(2)增加离子强度有利于沉淀生成，这是由于离子强度增加压缩了胶体的双电层所致。但对于腐殖酸单独存在情况，离子强度高达0.3M KCl时仍无沉淀发生，说明难溶性腐殖酸盐是沉淀发生的主要原因；(3) 当稀土离子浓度一定时，随着腐殖酸浓度的增加，沉淀现象开始消失，表明沉淀发生与否与腐殖酸对稀土离子的容纳能力有关，图4给出其实验结果。同样稀土离子浓度下，对于La3+、Ho3+和Yb3+，体系保持稳定所需的腐殖酸浓度应超过45mg/L，而对于Ce3+仅需30mg/L，说明在溶液中腐殖酸对Ce3+有较大的容纳能力。
+
+图4　腐殖酸浓度变化对体系稳定性的影响
+Fig.4　Effect of HA concentration on the system stability 
+3　结论
+　　腐殖酸与稀土离子的作用在机制上表现为两级络合，就该腐殖酸样品而言，一级络合反应具有较大的条件稳定常数，但络合容量较二级络合反应为小。Ce的络合行为出现异常，拥有较大的稳定常数和络合容量。腐殖酸与稀土离子共存体系的稳定性受到pH值和离子强度的影响，而腐殖酸盐是沉淀产生的主要原因。因此，腐殖酸与金属离子在天然水体的共沉淀作用成为金属离子去除的重要机制。
+参考文献
+1　章　申, 王立军等. 现代核分析技术及其在环境科学中的应用.北京: 原子能出版社, 1994.199～242
+2　Koeppenkastrop D,De Carlo E H.Geochim. Cosmochim. Acta, 1992, 95:251～263
+3　Lee J H,Byene R H.Geochim. Cosmochim. Acta, 1993, 57:159～186
+4　Wang Lijun,Zhang Shen,et al.J. of Environmental Sciences, 1995, 7(1):44～51
+5　王立军，曹小江，章　申.应用基础与工程科学学报, 1995, 3(4):366～375
+6　王立军, 王玉琦, 章　申等. 中国稀土学报, 1997, 15(1):64～70
+7　Frimmel F H，Christman R F.Humic substances and their role in the environment. New York：Interscience, 1988
+8　Kinniburg D G, Milne C J，et al.Environ. Sci. Technol., 1996, 30:1687～1698
+9　Pinheiro J P, Mota A M，et al.Analytical Chimica Acta, 1994，248:525～537
+10　Jokic A, Srejic R，et al.Water, Air and Soil Pollution, 1995, 84:159～173
+11　Clark S B，Choppin G R.ACS Symposium Series, 1990, 416:519～525
+12　Onishi H，Sekine K.Talanta, 1970, 19:473～478
+作者简介
+耿安朝　男，1962年6月生。副教授。1988年获中国科学院生态环境研究中心环境化学专业硕士学位，一直从事环境工程方面的教学与科研工作。发表论文16篇。
+收稿日期：1997-04-08

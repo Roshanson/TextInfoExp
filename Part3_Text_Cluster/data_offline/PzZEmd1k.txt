@@ -1,0 +1,124 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第2期 No.2 Vol.18 1998
+科技期刊
+
+川贵地区长江干支流河水主要离子
+含量变化趋势及分析*
+陈静生　夏星辉　(北京大学城市与环境学系，北京 100871)
+蔡绪贻　 (中国科技大学研究生院地学部，北京 100039)
+文　摘　收集整理了川贵境内长江干流及某些支流近30年来河水主要离子含量资料，发现该地区河水主要离子含量有以下变化趋势：Ca2+、SO2-４含量及总硬度与总碱度的比值均有升高趋势，某些站点的pH值和HCO-３含量还有下降趋势。通过对上述离子含量变化与当地酸沉降、氮肥施用量的关系分析，初步认为当地河水水质变化趋势是环境酸化过程在酸不敏感地区对陆地水水质影响的一种表现。
+关键词　长江　水质变化　环境酸化　酸沉降
+Evolution trend and analysis of major ion contents in the mainstream and some tributaries of Yangtse River in Sichuan and Guizhou provinces.Chen Jingsheng,Xia Xinghui(Department of Urban and Environmental Science, Peking University, Beijing 100871);Cai Xuyi(Geography Department, Graduate School of University of Science and Technology of China, Beijing 100039).China Environmental Science.1998,18(2):131～135
+Abstract― The data of major ion contents in the mainstream and some tributaries of Yangtse River in Sichuan and Guizhou provinces in recent 30 years were collected from Water Year Book. The analysis of water quality evolution trend has been carried out, and the results are summarized as follows: the contents of calcium and sulphate ions increase as well as the ratio of total hardness to alkalinity, and decrease of pH and alkalinity are found in some hydrometric stations. The correlation analyses between the evolution trend of major ion contents and acid deposition and fertilizer quantity in the area have been carried out;and it is proved that the evolution trend of water quality is a phenomenon caused by environmental acidification process in the area insensitive to acid. 
+Key words: Yangtse River　water quality evolution　environmental acidification　acid deposition
+　　环境酸化对陆地水水质的影响问题越来越受到广泛重视〔1〕。Gert Knutsson〔2〕指出，近年来，在荷兰的酸敏感地区(砂质土壤区)，地下水的酸化表现为pH值的降低，10m深处地下水约26%的样品pH＜5，某些样品pH＜4〔2〕；在瑞典西南部的酸不敏感地区(石灰岩地区)，地下水酸化表现为硬度升高和硬度与碱度的比值增大〔3〕。Gert Knutsson〔2〕和T. Paces 〔4〕　都指出，造成环境酸化的主要酸源是酸沉降和流失氮肥被氧化。Robertson 等〔5〕 用同位素方法研究加拿大Gudbery 地区砂质含水层的地下水化学，发现该地区地下水中硫含量的变化趋势与当地向大气中排放的二氧化硫的变化趋势相似〔5〕；荷兰水质酸化过程中80%的酸源来自畜牧业排放的氨氮〔6〕。
+　　与国外相比，我国对此类问题的研究相对薄弱。有关酸雨的研究已查明，川贵地区为我国的严重酸雨区，降水的pH值经常在4.0～5.0之间，SO2-４ 占阴离子总量50%以上〔7〕。该地区为重要的农业区，据《中国农村统计年鉴1993》资料，1991年四川省的氮肥施用量为623.7万t〔8〕。据魏复盛等估计，我国通过大气和地表径流的流失氮肥量占60%～80%〔9〕。由此想到，在我国的川贵地区，酸沉降和氮肥流失是否已对陆地水水质产生影响。
+　　为此，收集本区近30年的河流水化学资料，对四川和贵州境内长江干流和若干支流的水质变化趋势进行分析。发现近30年来川贵地区的河流水质变化存在着与瑞典西南部酸不敏感地区水质变化十分相似的趋势。本文试图对这一趋势和原因进行探讨。必须指出，本研究结论不适用于此地区的酸敏感区域。
+1　资料和方法
+　　研究河段包括长江重庆段(寸滩站)及主要支流：沱江(李家湾站)、嘉陵江(涪江桥站)和 乌江(武隆站)等。从我国历年水文年鉴上收集上述河流自50年代末至80年代中期主要离子含量监测资料。水样采集频度为6、8、12或24次/a，但在1966～1976年个别站点的数据有中断。
+　　将所有水质数据输入数据处理软件Excel或SPSS后，先按Grubbs检验法剔除异常值，然后进行方差齐性和正态分布检验，对具有方差齐性和正态分布特征的数据，作模型Ⅰ一元线性回归分析，以确定水质是否随时间进程存在一定的变化趋势。对具有变化趋势的站点，绘制离子组分含量的变化趋势图。
+2　结果与讨论 
+2.1　川贵地区河水主要离子含量变化趋势特征
+　　各研究站点1964～1984年河水主要离子的变化趋势具有一致性：Ca2+和SO2-４含量有所升高，总硬度与总碱度的比值有所升高，总氮含量大幅度升高。其中某些站点(如沱江李家湾站)pH值和碱度有下降趋势。图1所示为代表站点乌江武隆站的水质变化趋势。这一变化趋势和瑞典西南部石灰岩区地表水和地下水在酸沉降影响下水质变化的趋势十分相似。
+2.2　河水中SO2-４、NO-３含量变化与当地酸沉降和氮肥施用量之间的关系
+　　郑树声在研究我国广东地区酸雨时发现，降水中H+、SO2-４浓度与当地SO2排放量、燃煤量和工业总产值之间有明显的正相关关系〔10〕，由此说明酸雨的发生与燃煤及SO2排放有密切关系。为查明燃煤排放SO2和施用大量氮肥是否对川贵地区的河水水质产生影响，对长江重庆寸滩站和沱江李家湾站SO2-４浓度与四川省燃煤量进行相关分析，同时将这两个站河水NO-３浓度与四川省氮肥施用量进行相关分析。
+
+图1　乌江武隆站河水中总氮、Ca2+、SO2-4浓度
+　　和总硬度、总碱度比值的时间变化曲线
+Fig.1　Trends of total mitrogen、Ca2+ and SO2-4 contents 
+and the ratio of total hardness to alkalinity at Wulong 
+hydrometric station of Wujiang
+　　由《1991年中国能源统计年鉴》资料推出四川历年(1971～1983年)的燃煤量，对长江重庆寸滩站和沱江李家湾站1971～1983年枯水期各年SO2-４含量的均值与燃煤量进行相关分析，得到相关系数分别为0.88和0.70。如将水质数据滞后一年，二者的相关系数分别达到0.93和0.78(图2)，图3为寸滩站枯水期SO2-４浓度和四川省燃煤量随时间变化曲线。
+　　由《中国农村统计年鉴1993》资料和《中国农业年鉴1980》资料推出四川历年(1971～1983年)的氮肥用量。分别求出1971～1983年长江重庆寸滩站枯水期、丰水期总氮的年平均浓度和沱江李家湾站枯水期总氮的年平均浓度，并将水体总氮的浓度滞后一年，得其与氮肥施用量的相关系数分别为0.70，0.86和0.97，图4为李家湾站枯水期NO-３浓度和四川省氮肥施用量的相关图，图5为李家湾站枯水期NO-３浓度和四川省氮肥施用量随时间变化曲线。
+
+图2　长江重庆寸滩站枯水期SO2-４浓度和
+四川省燃煤量相关曲线
+Fig.2　Relation ship between the coal consumption of 
+Sichuan province and the content of SO2-4 
+in low water season at Cuntan hydrometric
+station of Changjiang 
+
+图3　长江重庆寸滩站枯水期SO2-４浓度和
+四川省燃煤量历年变化
+Fig.3　Trends of coal consumption of Sichuan province 
+and SO2-4 content in low water season at Cuntan
+hydrometric station of Changjing 
+
+图4　沱江李家湾站枯水期总氮浓度和四川省氮肥施用量的相关曲线
+Fig.4　Relationship between the consumption of nitrogen 
+fertilizer in Sichuan Province and the total nitrogen
+content in low water season at Lijiawan 
+hydrometrie station of Tuojiang
+
+图5　沱江李家弯站枯水期总氮浓度和四川省氮肥
+施用量历年变化
+Fig.5　Trends of the total nitrogen content in low water 
+season at Lijiawan hydrometric station of Tuojiang 
+and the consumption of nitrogen fertilizer 
+in Sichuan province
+　　 上述结果说明川贵地区河水SO2-４和NO-３含量变化分别与燃煤SO2排放和氮肥施用量之间有极为明显的相关关系。
+2.3　河水中主要离子反应过程模拟
+　　陆地水文学研究表明，大部分河流在洪水期主要靠地表径流补给，而在非洪水期主要靠地下水补给。地下水补给部分受流域岩石和土壤的影响较大。酸性降水进入土壤―岩石系统后，将与岩石、土壤发生一系列的化学反应，影响土壤水和地下水化学，从而影响河流水化学 。Larry J. Puckett〔11〕等人以Virginia和Maryland某地为例，对控制河流主要离子化学的因素进行了研究，指出人为酸的加入促进了岩石的风化作用，使水体中的离子浓度增大。另外，文中还提出用热动力学方法(即假设水体中离子和次生矿物之间处于化学平衡)来解释天然水体化学和其流经环境之间的关系〔12〕。为了从离子反应过程的角度阐明川贵地区大气酸沉降对河流主要离子浓度的影响机理，采用Larry J. Puckett等人提及的热动力学方法，进行反应途径模拟。由于川贵地区广泛分布石灰岩以及四川紫色砂页岩中有丰富的CaCO3，所以选择CaCO3-CaMg(CO3)2-H2O体系进行模拟，以长江重庆寸滩站1984年河流枯水期的数据为模拟体系各离子的初始值(表1)，假设CO2压力为一般土壤中的CO2分压，压力为1519.875Pa，分别模拟计算不同初始pH值条件下，体系达到化学平衡后各离子组分浓度。
+表1　长江寸滩站1984年枯水期主要离子含量平均值
+Table 1　The average contents of major ion in low water 
+season of 1984 at Cuntan hydrometric station of Changjiang 
+
+离子浓度(mg/L)离子浓度(mg/L)
+Ca2+44.15SO2-４34.13
+Mg2+11.13HCO-３159.25
+Na+11.53NO-３3.15
+Cl-8.08pH值8.18
+
+由于当地酸雨最低pH值为3左右，SO2-４/NO-３的比值在7～15之间〔7〕。所以在的模拟中设定体系的pH值在4.68～2.68之间，通过加入硫酸和硝酸改变模拟体系的初始pH值，并假定硫酸和硝酸的比例为10：1。模拟条件具体设计如表2。 模拟过程涉及的化学平衡反应如表3所示，平衡反应常数引自文献〔12，13〕。
+表2　反应途径模拟中的初始pH值
+Table 2　The initial pH values in reaction path simulation
+
+步骤模拟体系初始pH值步骤模拟体系初始pH值
+14.6862.98
+23.6872.90
+33.3882.83
+43.2092.77
+53.08102.68
+
+表3　化学平衡反应及平衡常数
+Table 3　The chemical reactions and their equilibrium constants
+
+平衡反应方程式平衡常数(logk)(25℃)平衡反应方程式平衡常数(logk)(25℃)
+1　Ca2+ + CO2-３= CaCO０33.3411　Na+ + HCO-３ = NaHCO0３0.16
+2　Ca2+ + OH- = CaOH+ 1.2712　Na+ + OH- = NaOH0 -0.18 
+3　Ca2+ + HCO-３ = CaHCO＋3 1.2313　Na+ + NO-３ = NaNO0３ -0.6
+4　Ca2+ + SO2-４ = CaSO０4 2.3114　K+ + SO2-４ = KSO-４ 0.96
+5　Ca2+ + NO-３ = CaNO+３ 0.2815　K+ + NO-３ = KNO０3 0.08 
+6　Mg2+ + CO2-３ = MgCO0３ 3.2616　CO2(g) + H2O = 2H+ + CO2-３ -18.15
+7　Mg2+ + OH- = MgOH+ 2.2017　HCO-３ = H+ + CO2-３-10.3
+8　Mg2+ + HCO2-３ = MgHCO+３ 1.1618　CaCO3(s) = Ca2+ + CO2-３ -8.42
+9　Mg2+ + SO2-４ = MgSO0４0.2519　CaMg(CO3)2 (s)= Ca2+ + Mg2+ -16.70
+　　　　+ 2CO2-３
+10　Na+ + CO2-３ = NaCO-３ 0.7720　H2O=H++OH- -14.0 
+
+
+图6　反应途径模拟体系初始pH值与平衡溶液中Ca2+、Mg2+浓度和pH值的
+关系(设定PCO2为1519.875Pa)
+Fig.6　Results of reaction path simulation:the relationship between the initial pH value and Ca2+、Mg2+ contents pH value in equilibrium solution 
+　　模拟结果如图6所示。Ca+2、Mg2+离子浓度随体系初始pH值的降低而增加，当体系的初始pH值由4.68降至2.68时，Ca2+、Mg2+的浓度分别由59.52mg/L和49.296mg/L上升至74.52mg/L和61.704mg/L；pH值、HCO-３浓度随体系初始pH值的降低而降低，但平衡体系的pH值远大于体系的初始值，如当体系初始pH值为 2.68时，平衡体系的pH值为7.186，且前者降低的幅度远小于后者，当体系的初始pH值降低1个单位时，平衡体系的pH值只降低0.047个单位。上述离子浓度和pH值的变化是体系对酸性物质输入缓冲能力的表现，在外界酸加入的情况下，体系通过矿物溶解平衡向右移动阻止pH值的降低，同时造成溶液中Ca〔2＋〕、Mg〔2＋〕等阳离子含量的增大，总硬度与总碱度的比值增大，pH值稍微降低。上述离子反应途径模拟结果使我们较有把握地认为，我国川贵地区河水主要离子含量近30年来的变化趋势是该流域环境酸化过程的结果。
+3　结论
+　　近30年来，川贵境内长江干流及某些支流河水主要离子含量变化趋势，与当地酸沉降和氮肥施用相关，是环境酸化过程在酸不敏感地区对陆地水水质影响的一种表现。
+参考文献
+1　陈静生．环境科学学报，1997，17(1)：1
+2　Zweegman J.Van Duijvenbooden W.Tech. Paper 5. Special Subject 1～5, conf. Acid Rain and Its Influence On Water Quality. IWSA, Roma. 1986
+3　Gert Knutsson．Groundwater Quality Management (Proceedings of the GQM 93 Conference held at Tallinn, September 1993)．IAHS Publ. 1994，(220)：107～117 
+4　Paces T．Acidification of Freshwater Ecosystem: Implication for the Future ，John Wiley Sons Ltd, 1994.5～15
+5　Robertson W D，et al.Water Resource Research, 1989, 25(6): 1111～1123
+6　Ministry of Housing.Physical Planning and Environment (1986) Acidification in the Nethlands. Effects and Policies. 2nd revised edition. VROM 60364/4～86, 92/4081
+7　李吉谋．中国酸雨发展趋势及对策，北京：中国科学技术出版社，1992.126～133
+8　国家统计局农村社会经济统计司. 中国农村统计年鉴1993.北京：中国统计出版社，1993
+9　魏复盛，吴国平，钱铁宗等．中国酸雨发展趋势及对策.北京：中国科学技术出版社，1992.73～77
+10　郑树声．中国酸雨发展趋势及对策.北京：中国科学技术出版社，1992.16～26
+11　Larry J Puckett．Hydrological Processes, 1992, (6):79～98
+12　蔡绪贻，陈静生．环境科学学报，1995，15(3)：265～272
+13　斯塔姆 W, 摩尔根 J J. 汤鸿霄等译．水化学．北京：科学出版社，1987.202～204
+作者简介
+陈静生　男，1932年8月。北京大学城市与环境学系教授、博士生导师。多年来从事水、土环境化学研究。参与主持环保科技攻关项目“中国土壤环境背景值研究”，获1996年国家科技进步二等奖。曾出版专著、教材8本。发表论文100余篇。
+收稿日期：1997-06-10
+* 国家自然科学基金资助项目(49671017)

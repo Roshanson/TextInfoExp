@@ -1,0 +1,35 @@
+航空动力学报
+JOURNAL OF AEROSPACE POWER
+1999年 第14卷 第3期 Vol.14 No.3 1999
+
+
+
+航空发动机结构参数和非结构参数不确定系统鲁棒H∞输出反馈控制*
+王曦　曾庆福
+　　【摘要】　分析了航空发动机混合不确定性系统的鲁棒稳定性和鲁棒性能；引入结构奇异值μ综合法，研究了结构参数和非结构参数混合摄动下的鲁棒H∞输出反馈控制；对航空发动机不确定性系统设计的控制器在双转子涡喷发动机气动热力学非线性模型上，进行了抗干扰和伺服跟踪目标性能的仿真验证。
+　　主题词：航空发动机　控制　不确定系统　综合法
+　　分类号：V233.751
+ROBUST H∞ OUTPUT FEEDBACK CONTROL OF STRUCTURED AND UNSTRUCTURED PARAMETER UNCERTAIN SYSTEM FOR AEROENGINE
+Wang Xi
+（14th Dept.Beijing University of Aeronautics and Astronautics,Beijing　100083）
+Zeng Qingfu
+（Northwestern Polytechnical University,Xi′an　710072）
+　　ABSTRACT　　The robust stability and robust performance of aeroengine mixed uncertain system are analyzed.By introducing structured singular value μ synthesis method,the robust H∞ output feedback control is investigated under mixed structured and unstructured parameter perturbations.Disturbance rejection and servo tracking performance with the designed controllers for aeroengine uncertainty systems are simulated on a nonlinear model of twin-spool turbojet engine.
+　　Key　Words　Uncertainty system　Synthesis method　Aeroengine　Control
+1　控制系统的性能折衷
+　　航空发动机模型中结构参数和非结构参数不确定性因素十分明显，对于混合不确定性问题，结构奇异值μ分析和综合法［1］是一种很好的对策。
+　　分析图1所示的混合不确定性反馈控制系统的鲁棒稳定性问题。图中r为参考输入，d为干扰输入，n为噪声输入，y为控制输出，e为控制误差，u为控制器输出，m为未建模动态不确定性及状态空间模型不确定性对系统的输入，设被控对象的集合为：
+
+其中，△m(s)为不确定性相对误差，表示了被控对象的未建模动态摄动和状态空间模型摄动对系统的影响，Wm(s)为稳定真有理函数，表示△m(s)的幅值界限，为了满足闭环系统鲁棒稳定的充分必要条件以及抑制△m(s)对于信号r传给信号y的影响，同时为了减少干扰和传感器噪声对系统性能的影响，设T(s)＝［I+P△(s)K(s)］-1P△(s)K(s)为闭环系统的补灵敏度函数矩阵，S(s)＝（I+P△K）-1为灵敏度函数矩阵，引入加权函数WS(s)和WT(s)进行频域整形，则设计控制器的问题可归纳为混合灵敏度的设计问题［2］：
+
+
+
+图1　频域不确定性反馈控制系统
+2　航空发动机混合不确定性系统的鲁棒H∞输出反馈控制器设计
+2.1　μ综合问题［1］
+　　设块对角摄动阵，如图2所示，可允许的△为下述不确定性的有界集合：
+
+其中：△p为虚构的性能不确定性块对角阵，△a为模型中所有的不确定性，△对于M的结构奇异值定义为：
+
+其中：M＝Fl｛P，K｝＝P11+P12K(I-P22K)-1P21，则鲁棒性能设计问题可描述为，设计一个控制器K，使得闭环系统(P，K)内稳定，且使μ△［M（jω）］＜1，ω成立，考虑到不等式μ△(M)≤的成立，可用逼近法获得近似解，其解可描述为求满足不等式‖DMD-1‖∞＜1，D∈的D和K的问题，其中：
+D∈

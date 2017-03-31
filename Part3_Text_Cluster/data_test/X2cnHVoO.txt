@@ -1,0 +1,169 @@
+航空制造技术
+AERONAUTICAL 
+MANUFACTURING TECHNOLOGY
+1999年 第6期 No.6 1999
+
+
+
+面向对象的NC程序仿真系统开
+陈蔚芳　胡晓华　楼佩煌　薛建彬
+［摘要］　在介绍NC程序仿真系统功能的基础上，着重分析了系统设计与开发过程中所采的面向对象技术、刀具半径补偿、三维仿真等关键技术。
+关键词： 仿真　面向对象　数控加工
+Development of Simulation System of Object-Oriented NC Program
+［ABSTRACT］　On the basis of introduction of NC program simulation system function, the key technologies, such as objectoriented technology, tool radius compensation and 3D simulation in system design and development are emphatically analyzed.
+Keywords: Simulation　Object-oriented　NC machining
+　　随着数控机床的广泛应用，对NC加工程序编制人员的需求也相应增加，如何快速学会编制NC程序将变得越来越重要。另外，在练习编程时，会经常出现这样或那样的错误，但由于花费太大，不可能把程序直接拿到数控机床上去实际操作以发现问题。如果能对NC程序进行仿真，在计算机屏幕上模拟实际加工以检查程序中的错误，并加以修正，可以节省大量费用和时间。基于上述两点，我们开发了一个基于Windows 95的数控加工程序编制自学习及程序仿真软件(简称NCSimu)，通过系统可以自学程序编制的技巧，也可对编制的各种NC程序进行二维和三维仿真，以检查和修改程序，直至正确为止。
+1　开发平台
+　　. 操作系统　由于NCSimu主要是在PC机上运行，我们选用Windows 95或与之兼容的Windows NT作为NCSimu软件开发和运行的操作系统。
+　　. 开发工具　目前流行的开发工具很多，如Borland C++,Delphi, Visual Basic, Visual C+　+等。NCSimu系统选用的是Microsoft公司的通用软件开发平台Visual C++。
+2　功能分析
+　　NCSimu系统可以在单机上使用，也可装在服务器上，使用者通过网上下载或者远程登录到该软件所在的服务器后，只要用鼠标双击NCSimu的图标即可运行该软件。该软件的主要功能有：
+　　(1)NC程序的编制。
+　　通过单击系统提供的准备及辅助功能等工具条上的程序段或指令按钮，可在一个视窗(编辑窗)中完成数控加工程序段的输入，以简化和加速程序编制过程。
+　　例如，如果在编辑窗某处输入“G92　X-40.00　Y180.00　Z160.00”程序段，那么只要先点一下工具条上的G92按钮，则会在指定的位置出现“G92　X　Y　Z”，把参数-40.00，180.00和160.00插入到相应位置即可。另外，如果不知道程序如何编制或不清楚程序段和代码指令的含义，可随时按F1键获得帮助。
+　　熟练的程序员也可以不利用系统提供的各类工具条而直接利用键盘人工输入。系统对输入的程序段逐条检查，如有错误，则停留在错误处，并指出是何种错误，提示用户修改。在另两个视窗中则显示相应程序段的轮廓轨迹，让用户更直观地看到所编程序段是否正确。
+　　(2)NC刀具定义与选择。
+　　在数控程序中会出现刀具号(如T01，T02)，与刀具号对应的刀具在实际加工之前要进行预调，以便测出直径、长度等参数进行补偿。在仿真系统中，与刀具号对应的刀具类型及参数要加以定义或选择，以实现补偿。系统提供了多种刀具类型，并附有刀具图，可供选择及进行参数(长度、直径等)定义。
+　　(3)工件坐标系在机床坐标系中的位置确定。
+　　一般情况下，数控机床有一个固定的机床坐标系及机床原点，它在机床出厂之前就已经规定好了。而用于编程的工件坐标系则需程编员自己定义，这两个坐标系的位置关系在数控加工以前必须加以设定，以控制数控机床的准确运动。仿真系统中提供的零点偏置设定功能可以更逼真地模拟加工轨迹。
+　　(4)毛坯定义。
+　　在NC程序模拟仿真之前，利用系统提供的毛坯定义功能，定义毛坯尺寸，使仿真过程在毛坯上进行，更贴近实际加工过程。
+　　(5)刀具中心轨迹计算。
+　　程编员可以按轮廓或中心轨迹编程，如果按中心轨迹编程，则不需进行刀具补偿轨迹计算。如果按轮廓编程，则需进行刀具补偿，计算出刀具的中心轨迹，然后再进行仿真。
+　　(6)刀具加工轨迹的二维仿真。
+　　毛坯、刀具等定义完毕，在两个视窗中对被加工零件从两个视图方向进行二维仿真，以检查NC程序。
+　　(7)刀具加工轨迹三维模拟。
+　　系统还提供了NC程序的三维仿真功能，可单步或连续仿真数控加工的过程。此外，该模块提供了移动、旋转、缩放等编辑手段，使程编员在仿真以前可把毛坯、刀具调整到最佳位置，以达到较好的视觉效果。
+3　系统采用的关键技术
+3.1　面向对象技术及类的设计
+　　面向对象的方法是90年代软件核心技术之一，它提供了一种全新的开发软件的思维方法，用“对象+消息”的程序设计模式取代了“数据+结构+算法”的程序设计模式，从而使软件开发的周期变短，使用周期变长，开发费用降低。
+　　面向对象的软件，以对象为中心设计，与面向过程的传统软件相比较，面向对象软件本身的内部结构已发生质的转变，由此带来了良好的可构造性、可扩充性和可重用性。
+　　面向对象设计具有以下特点：
+　　(1)封装性　把一个数据结构和操作数据的函数(行为和方法)组合在一起，封装性是借助一种新的结构和数据类型机制――“类”来实现的。
+　　(2)继承性　建立一个新的派生类，从一个或多个先前定义的类中继承函数和数据，而且可以重新定义或加进新的数据和行为，这样就建立了类的层次。
+　　(3)多态性　指这样一种能力：一个继承体系里的子对象在需要时，能够重新定义父成员函数的函数。
+　　为此，我们选用面向对象的程序设计方法，采用信息隐蔽的原则，尽量把NC仿真系统中涉及到的类进行完善的封装，以提高NCSimu软件的稳定性和可维护性。
+　　仿真系统中建立的类主要有：
+　　.毛坯类；
+　　.刀具类；
+　　.坐标系类；
+　　.子程序类；
+　　.新建子程序类；
+　　.三维仿真类。
+　　下面是三维仿真类的定义。
+　　class C3DSimuNC:public CDialog
+{public:
+　　BOOL DrawCount(CDC*dc);
+　　BOOL DrawOneStep(CDC*dc);
+　　void myEllipse(C3DPoint*cen,double dia,int isUP,CRgn*);
+　　BOOL Draw3DArc(CDC*dc,CStroke*
+p-stroke);
+　　BOOL Draw3DLine(CDC*dc,CStroke*
+p-stroke);
+　　BOOL DrawUpArc(CDC*dc,CStroke*
+p-stroke);
+　　BOOL DrawUpLine(CDC*dc,CStroke*
+p-stroke);
+　　C3DSimuNC(CWnd*pParent=NULL);//standard constructor
+public:
+　　CNcsimuDoc*pDoc;
+　　CNcsimuView*pView;
+　　CWinApp*pApp;
+　　CRect view;
+　　CRgn rup,rdown;
+　　CPoint uface［4］,dface［4］;
+　　struct S-ViewPoint m-vp;
+　　C3DPoint cp,tmpOrg;
+　　POSITION pos;
+　　void AttachDoc View(CNcsimuDoc*,
+CNcsimuView*);
+　　C3DPoint transfer(long&x,long&y,
+C3DPoint*ep);(三维坐标向二维坐标转换)
+　　BOOL OnCoorChange(long id);(坐标变换)
+　　BOOL DrawBlankPart(CDC*dc)；(绘制毛坯)
+　　BOOL DrawToolPath(CDC*dc)；(绘制刀具路径)
+　　BOOL DrawTool(CDC*dc)；(绘制刀具)
+　　BOOL DrawCoor(CDC*dc)；(绘制坐标系)
+enum{IDD=IDD-3DSIMULATE};
+　　CBitmapButton m-xcw;
+　　　　……
+　　CBitmapButton m-movedn;
+protected:
+　　virtual void DoDataExchange(CDataExchan_ge*pDX);
+protected:
+　　afx-msg void OnPaint();
+　　virtual BOOL OnInitDialog();
+　　afx-msg void OnMovedn();(图形下移)
+　　afx-msg void OnMovelt();(图形左移)
+　　afx-msg void OnMovert();(右移)
+　　afx-msg void OnMoveup();(上移)
+　　afx-msg void OnXccw();(绕X轴顺转)
+　　afx-msg void OnXcw();(绕X轴逆转)
+　　afx-msg void OnYccw();(绕Y轴顺转)
+　　afx-msg void OnYcw();(绕Y轴逆转)
+　　afx-msg void OnZccw();(绕Z轴顺转)
+　　afx-msg void OnZcw();(绕Z轴逆转)
+　　afx-msg void OnZoomin();(缩小)
+　　afx-msg void OnZoomout();(放大)
+　　afx-msg void OnStepBack();(后退一步)
+　　afx-msg void OnExitSimu3D();(退出三维仿真)
+　　afx-msg void OnPlayAll();(连续仿真)
+　　afx-msg void OnGoHome();(仿真取消)
+　　afx-msg void OnStepForward();(单步仿真)
+　　DECLARE-EVENTSINK-MAP();
+　　DECLARE-MESSAGE-MAP()}
+3.2　刀具半径补偿
+　　前面已经提到，程编员在编制NC程序时，如果按轮廓编程，则在仿真前要进行刀具中心轨迹的计算，以实现刀具半径的自动补偿。刀具补偿过程分为刀补建立、刀补进行、刀补撤销3个步骤，其中最重要的一步是刀补进行，此时刀具中心轨迹始终偏离轮廓轨迹一个刀具半径补偿值。由于在刀补进行过程中前后两段编程轨迹转接方式不同(直线与直线相接、圆弧与直线相接、直线与圆弧相接、圆弧与圆弧相接)，中心轨迹的计算稍有不同。下面以直线与直线相接为例说明我们在系统开发中所采用的计算方法，该方法计算简单，计算速度较快。图1为直线与直线转接的计算过程，图2为刀具半径补偿计算框图及示意图。
+　　已知P1，P2，P3点的坐标分别为(x1,y1),(x2,y2),(x3,y3),则α0=arctan((y2-y1)/(x2-x1))
+
+图1　直线与直线转接的补偿计算过程
+Fig.1　Compensation calculation procedure of line to line
+
+图2　刀具半径补偿计算框图
+Fig.2　Flow chart for calculating tool radius compensation
+　　P3′点相对P2点的坐标增量为
+x3′=(x3-x2)cos(-α0)-(y3-y2)sin(-α0)
+y3′=(x3-x2)sin(-α0)+(y3-y2)cos(-α0)
+α1=arctan(y3′/x3′)
+　　如果α1<0，且左偏(G41)，则附加圆弧段起点P2′坐标为
+x2′=x2-Rsinα0
+y2′=y2+Rcosα0
+R为刀具半径补偿值。
+附加圆弧段终点P2″坐标为
+x2″=Rcos(α1+π/2)cosα0-
+Rsin(α1+π/2)sinα0+x2
+y2″=Rcos(α1+π/2)sinα0+
+Rsin(α1+π/2)cosα0+y2
+附加圆弧段圆心坐标为P2点的坐标。
+　　如果α1>0，且左偏(G41)，则直线转接为缩短求交情况，见图2示意图，交点坐标为
+x2′=Plx.cosα0-Ply.sinα0+x2
+y2′=Plx.sinα0+Ply.cosα0+y2
+式中，Plx,Ply为一临时点的x,y坐标，当α1<10－3时，Plx=0；当α1>π-10－3时，Plx=-1050；其他，Plx=R/tan(π+α1/2),Ply=R。
+3.3　三维仿真
+　　NC程序的三维仿真可更逼真地观察加工过程，以检查程序中隐含的错误。它的实现方法不止一种，下面介绍我们在三维仿真中所采用的方法，其实现步骤如下(参见图3，以直线加工仿真为例，圆弧加工仿真与之类似）。
+
+图3　三维仿真原理示意图
+Fig.3　3D simulation principle scheme
+　　(1）创建毛坯上表面区域A；创建毛坯下表面区域B。
+　　(2)以P1为圆心创建上表面上椭圆区域C∈A；以P1′为圆心创建下表面上椭圆区域D∈B(椭圆是刀具截面在毛坯上的投影)。
+　　(3)创建正方形区域E、F，E、F为上、下表面上需填充颜色的区域，两区域是不断变化的，初始值为角点坐标(0，0)和(10，10)的正方形区域；
+　　区域拷贝E=C,F=D；
+　　区域C，D删除。
+　　(4)计算L1，L2中较大者，其中L1，L2为P1，P2点在x,y轴上的间距。
+L1=P2x-P1x；
+L2=P2y-P1y；
+如果L1<L2,则L=L2;
+如果L1>L2,则L=L1。
+　　(5)循环坐标计算、椭圆区域创建、区域合并、区域删除过程。
+　　Ptx=P1x+j.(P2x-P1x)/L；
+　　Pty=P1y+j.(P2y-P1y)/L；
+　　Ptz=P1z+j.(P2z-P1z)/L(j为1到L的正整数，每次递增1)；
+　　区域创建：分别创建以Pt和Pt′为圆心的椭圆区域C和D(C∈A，D∈B)；
+　　区域合并：E=C∪E，F=D∪F;
+　　区域删除：删除C和D。
+　　(6)选择区域A，填充A上的区域E；或选择区域B，填充B上的区域F。若E∩F非空，则以另一颜色填充E∩F相交区域。返回(5)，直至循环到P2点。
+　　该系统操作简单、方便，可广泛用于学生教学、培训等。目前已在香港理工大学工业中心用于学生培训，取得了良好的效果。
+作者单位：南京航空航天大学
+(责编 宇 迪)
+
+

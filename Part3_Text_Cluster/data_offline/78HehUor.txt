@@ -1,0 +1,112 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第4期 No.4 Vol.18 1998
+科技期刊
+
+氧化*热化学脱硫研究
+冷　宏　张芝涛　白希尧　（大连海事大学科学技术研究院，大连 116026）
+文　摘　热化学脱硫法因铵盐回收率低、产物不稳定，无法解决实用化问题。氧化热化学法应用超强脉冲电场产生高浓度、高能量的活性粒子，使SO2在氧化过程中生成H2SO4，与NH3进行热化学反应，生成稳定的固体微粒(NH4)2SO4，用电收尘器加以回收。脱除率、回收率可达90%左右，脱除1m3烟气中SO2耗能为4Wh，实现了干法高效脱硫。一次投资大幅度减少，回收铵盐基本上抵消了药品费和电费。
+关键词　热化学　氧化　活性粒子　回收率
+Study on removal of SO2 by oxidized*thermal chemical method. Leng Hong, Zhang Zhitao, Bai Xiyao. (Scientific and Technological Research Institute,Dalian Maritime University，Dalian 116026).China Environmental Science.1998,18(4):324～327
+Abstract―Removal of SO2 by thermal chemical method can not be applied due to low collection efficiency of ammonium salts and unstable products. Oxidized *thermal chemical method applies ultra-high pulse electric field to produce activated particles of high concentration、high energy , so that SO2 is oxidized to produce H2SO4 and further form stable solid particles (NH4)2SO4 after thermal chemical reaction with NH3,which is collected in electrostatic precipitator (EP).The rate of SO2 removal and collection is up to 90%,and energy consumption in 1m3 flue gas is 4Wh.Therefore,the SO2 removal of high effective dry method is realized.With this method,the once investment is diminished greatly,and the expenses for additive NH3 and electricity are offsetted by the profits of the collection ammonium salts.
+Key words:thermal chemistry　oxidization　activated particles　collection efficiency
+　　从烟气中脱除SO2的技术，已在多方面获得发展，每种方法各具优缺点。普遍认为把SO2转化成为有用物质加以回收，是一种理想方法。但到目前为止，已发展的所有回收方法总生产成本比抛弃法高。科学工作者近10余年来正着手研究一种低成本高效率的回收法。日本原子力研究所早就研究一种干法回收法〔1〕，它应用电子加速器产生高速电子(1MeV)碰撞烟气产生OH、O、HO2等氧化自由基，使烟气中SO2氧化，与H2O生成H2SO4，再用NH3气体中和生成(NH4)2SO4，进入半工业规模实验阶段。它的缺点是电子加速器庞大，存在辐射污染，还需在反应器外设置2m厚防辐射层，一次性投资偏高，耗能偏大。为此日本增田闪一教授研究成功高电压窄脉冲电晕放电等离子体化学法脱硫技术〔2〕，该法回收率低于10％，运行费用高，烟气温度高于54℃时，排放出的气态(NH4)2SO3又成为新的污染源。东京大学定方正毅教授〔3〕提出高电压窄脉冲电晕放电等离子体化学法脱硫是热化学法，反应产物是(NH4)2SO3，在烟气温度高于54℃时，(NH4)2SO3是以气体存在，极不稳定，无法回收。
+　　热化学是一项古典化学方法〔4〕，由于该法存在两种以上气体NH3与SO2在气相有效混合接触效果差；烟气中低含量O2气很难把SO2氧化成SO3；NH3和SO2是在气相分子间反应，在54℃以上时产生气态铵盐，难以收集等问题，因此无法实际应用。
+1　氧化*热化学脱硫原理
+　　对氧化器中电场供给超强脉冲电场，电子从外加脉冲电场获得几十eV能量，电子和烟气分子之间发生非弹性有效碰撞，在电场中产生高能量、高浓度非平衡等离子体，产生大量的活性粒子（氧化自由基）。
+　　在氧化器中的氧化过程发生如下化学反应：
+
+　　烟气中SO2氧化生成H2SO4后注入化学反应器，在化学反应器中注入NH3气体，将发生如下热化学反应：
+
+　　在化学反应器中生成(NH4)2SO4固体微粒，用回收器加以收集。回收器可以使微细的气溶胶状的铵盐粗化100倍以上，微粒趋进集尘极的速度大幅度提高，将有效地捕集微细铵盐。
+2　氧化*热化学脱硫实验方法
+2.1　实验装置
+
+图1　氧化*热化学脱硫工艺流程示意
+Fig.1　Schematic diaguam of experimental equipment for 
+removal of SO2 by oxidized*thermal 
+chemical method
+　　1.气体混合器 2.加热器 3.调湿器 4.冷却塔 5.氧化器6.热化学反应器 7.回收器 8.风机 9.湿度控制器10.水汽产生器 11.温度控制器 12.脉冲电源 13.NH3气供给器 14.直流电源 15.NH3浓度控制器 A、B、C、D、E、F均为测试点
+　　氧化*热化学脱硫实验装置如图1所示。把N2、O2、CO2、SO2和水汽在气体混合器(1)中混合，在加热器(2)把实验气体加温到100～150℃，出口气体送入调湿器(3),用冷却塔(4)把实验气体降温到实验要求温度，经增湿降温的烟气送入氧化器(5)氧化烟气中。应用脉冲电场强度140kV/cm，脉冲上升速率4.8kV/ns的超强脉冲在氧化器中发生激烈脉冲放电，产生大量氧化自由基，使SO2充分氧化成SO3，与H2O生成气态H2SO4。从氧化器(5)入口处(D)测得SO2的摩尔数输送到NH3浓度控制器(15)，去控制NH3的供给量。使H2SO4与NH3充分进行热化学反应，产生(NH4)2SO4微粒，把剩余NH3的浓度控制在20mg/L范围内。产生(NH4)2SO4的雾状微粒在回收器(7)中回收，经振打落到料斗内，净化后烟气用风机引风经烟筒外排出去。
+2.2　实验条件
+　　实验气体是由Air、SO2、H2O、O2、CO2等气体组成，试料气体流量200Nm3/h，采用高电压脉冲加到氧化器的电极上，在氧化器中脉冲电场强度将达到140kV/cm，上升速率4.8kV/ns。加到回收器的直流电场强度800kV/m。
+　　采用的仪器仪表：QGS-10型红外线分析仪检测SO2气体浓度；GXH-105型红外线分析仪检测NH3气体浓度；DX-100型离子色谱仪；安普300型环境污染检测仪；SWX2型温度测试仪；KTMT型湿度测试仪等。
+3　结果与讨论
+3.1　气体温度与脱除率关系
+　　气体成分为N2/O2/CO2/H2O，配比70.7/1.8/9.9/17.6vol%，NH3/ SO2摩尔比为2，SO2浓度为3.16g/m3。气体温度对SO2脱除率影响如图2所示，气体温度低于70℃或高于100℃时，脱除率几乎不受温度影响；在70℃～100℃之间影响较大，随温度增加而降低。因此，气体温度控制在70℃～80℃为适宜。
+
+图2　气体温度与SO2脱除率关系曲线
+Fig.2　Relation of gas temperature against removal
+efficiency of SO2
+3.2　湿度对脱除率的影响
+　　气体温度100℃，其成分为N2/O2/CO2，配比为83.8/3.6/12.6vol%，SO2的浓度为3.43g/m3，注入NH3/SO2摩尔比为2。氧化*热化学法的脱除率与湿度关系如表1所示，烟气湿度大脱除率高，所以脱除率受湿度影响较大。
+表1　湿度对脱除率的影响
+Table 1　Effect of humidity on removal efficiency
+
+湿度
+(%RH)原始浓度
+(g/m3)反应后浓度
+(g/m3)脱除率
+(%)
+01.0540.59843.3
+17.60.7690.07390.6
+
+3.3　O2浓度对脱除率的影响
+　　气体成分为N2/CO2/H2O，配比为70.7/11.7/17.6vol％，烟气温度23℃，NH3/SO2摩尔比为2。实验结果如图3所示，当烟气中O2含量从2％到20.3％时，随着O2浓度增加，SO2脱除率略有增加，SO2脱除率基本上在90％左右。因此，只要烟气中O2含量高于2％时，就可以满足化学反应对氧气的需求量。
+
+图3　O2浓度与SO2脱除率的关系曲线
+Fig.3　Relation of O2 concentration against removal 
+efficiency of SO2
+3.4　NH3注入量对SO2脱除率的影响
+　　气体成分为N2/O2/CO2/H2O,配比为70.7/1.8/9.9/17.6vol％，烟气温度13℃，SO2浓度为4.64g/m3。实验结果如图4所示，NH3注入量对SO2脱除率影响较大。NH3/SO2摩尔比为2时，曲线处于拐点，当NH3/SO2摩尔比高于2时，脱除率可达到90％以上，变化平稳；而低于2时，则脱除率较低，与NH3注入量呈正比关系，由化学反应过程中对NH3的需求量所决定的。因此，NH3注入量必须满足反应的最低需要量，从经济方面考虑，NH3/SO2摩尔比可选在2.2左右。
+
+图4　NH3注入量与SO2脱除率关系曲线
+Fig.4　Relation of injet quantity of NH3 against removal 
+efficiency of SO2
+3.5　生成物成分分析
+　　气体成分为N2/O2/CO2/H2O，配比为70.1/2.6/9.7/17.6vol％，浓度为3.28g/m3，NH３/SO2摩尔比为2.2，实验温度为72℃。烟气脱硫后在回收器中收集大量粉体，其中(NH4)2SO4和（NH4）2SO３含量比对实验来说是十分重要的，因此应对生成物进行成分分析。从氧化回收器内壁及电晕极上分别采取一定量的样品，用DX-100型离子色谱仪进行分析和检测。电晕极上的样品中(NH4)2SO4含量高达97％，反应器内壁上的样品(NH4)2SO4含量为88%。
+3.6　生成物(NH4)2SO4的回收实验
+　　烟气脱硫后生成物的回收实验条件同上，实验结果如表2。实验运行6min后，11.9℃时在回收器内壁及电晕极上共回收84.0g (NH4)2SO4。高温回收率低于低温，在71.8℃时，回收率可达88.5%。
+表2　烟气脱硫后生成物的回收率
+Fig.2　Collection efficiency of products after the removal
+SO2 from flue gas
+
+烟气温度硫铵理论产生量硫铵实验回收量硫铵回收率
+(℃)(g)(g)(%)
+11.988.384.095.0
+71.888.378.188.5
+
+　注：铵盐回收率：实验回收量(g)/理论回收量(g)
+
+3.7　气体流速对脱除率的影响
+　　气体成分为N2/O2/CO2/H2O，配比为70.6/1.8/10.0/13.6vol％，SO2浓度为2.99g/m3，NH3/SO2摩尔比为2，实验温度为23℃。实验结果如图5，在热化学反应器中气体的流速对SO2脱除率无显著影响，当气体流速增加时，SO2脱除率逐渐降低，气体流速在0.2～0.8m/s之间时，SO2脱除率基本上可保持在90%左右。
+3.8　氧化*热化学法的能耗
+　　实验气体成分为N2/O2/CO2/H2O，气体流量200m3/h，配比为70.6/1.8/9.9/17.7vol%，温度为54℃，实验结果如表3。由表3可知，每立方米消耗电能为4.21～4.40Wh。
+
+图5　气体流速与SO2脱除率关系曲线
+Fig.5　Relation of gas velocity against removal
+efficiency of SO2
+表3　氧化*热化学脱硫能耗
+Table 3　Energy consumption of SO2 removal by oxidized*thermal chemical method
+
+原始浓度
+(g/m3)反应后浓度
+(g/m3)一次电耗(Wh)消耗电能
+(Wh/m3)
+氧化器热化学反应器氧化回收器合计
+4.530.418100698794.40
+2.540.217900528424.21
+
+4　结论
+　　氧化*热化学法实现了把有害物质SO2转化成有用物质铵盐加以回收，解决了多年困扰热化学法、窄脉冲电晕放电等离子体化学法生成物―铵盐回收问题，解决了热化学法脱硫的实用化问题。SO2脱除率和铵盐回收率均在90％左右,每处理1m3烟气能耗4Wh左右。
+　　氧化*热化学法使运行成本降低，回收铵盐价值抵消了加入的NH3和电费外，还略有节余。实现了低成本高效率干法脱除SO2。
+
+参考文献
+1　青木慎治.电子ヒ-ム排ガス处理技术.燃料及燃烧，1990,47(3)：23～26
+2　增田闪一.パルスによゐガス脱硫*脱硝に关する化学反应－PPCPとSPCPぉよぴその应用.静电气学会志，1990,14(6)：473～476
+3　定方正毅，ヨ-ロツパにおけゐ环境保全のための放电应用研究.静电气学会志, 1995, 19(4)：281～282
+4　Slack A V.Sulfur dioxide removal from waste gases.Ridge, N. J.： Press of Noyes Develpment Corporation, 1971
+
+作者简介　　　
+冷　宏　男，1968年9月生。讲师。主要从事脱硫研究工作及臭氧发生的研究工作。参加国家“八五”攻关项目“高压静电等离子体脱硫脱硝研究”、辽宁省科学技术基金项目“常压非平衡等离子体活化水养鱼研究”等多项国家及省部级项目。发表论文5篇。
+收稿日期：1997-10-27

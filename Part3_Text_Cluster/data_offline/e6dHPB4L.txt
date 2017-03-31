@@ -1,0 +1,84 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年　第19卷　第3期　Vol.19 No.3 1999
+
+
+
+高效无机混凝剂聚硅酸铁铝的研究
+胡　翔　周　定
+摘要：高效混凝剂是目前水处理研究的热点.用水玻璃、硫酸铁和硫酸铝制取聚硅酸铁铝混凝剂(PSFA),确定了制备PSFA混凝剂的优化条件: 硅酸聚合度η为0.5,Fe3+及Al3+与SiO2的摩尔比为1: 1, Fe3+与Al3+的摩尔比为1: 1, 水解度B*为0.5, 而熟化时间对PSFA混凝剂的混凝性能影响不明显.用PSFA混凝剂处理实际水样,并与单独投加混凝剂硫酸铁及硫酸铁加助凝剂聚硅酸效果进行了比较,结果表明,PSFA混凝剂的效果最好,而且用药量少;同时还对PSFA混凝剂的混凝机理进行了讨论.
+关键词：聚硅酸；极限粘度；聚硅酸铁铝；无机高分子混凝剂
+中图分类号：X13 文献标识码：A 文章编号：1000- 6923(1999)03- 0266- 04
+Study on the high effective inorganic polymer coagulant polysilicate ferric aluminum. 
+HU Xiang, ZHOU Ding
+(Department of Applied Chemistry,Harbin Institute of Technology,Harbin 150001,China). China Environmental Science.1999,19(3)：266～269
+Abstract：High effective coagulants are the research focus of water treatment at present. A new polysilicate ferric aluminum(PSFA) was prepared by using water glass,ferric sulfate and aluminum sulfate as raw materials.The conditions of preparing PSFA were optimized: the polymerization degree of silicic acid (h ) is 0.5; the molar ratio of Fe3+ and Al3+ to SiO2 is 1: 1; the molar ratio of Fe3+ to Al3+ is 1: 1；and the degree of hydrolysis (B*) is 0.5;while the influence of the aging time on the coagulation property of PSFA is not obvious. Self-made PSFA under the optimum conditions was used in the treatment of single practical water sample. Experimental results show that PSFA has better coagulation property than that of traditional coagulants Fe2(SO4)3 and Fe2(SO4)3 together with coagulant aid polysilicic acid(PS);and the dosage of PSFA is less. The coagulation mechanism of PSFA was also discussed in this paper.
+Key words：polysilicic acid(PS)；limiting viscosity；polysilicate ferric aluminum(PSFA)；inorganic polymer coagulant
+　　聚硅酸(PS)作为一种传统的助凝剂,与铝盐、铁盐等相配合处理低温、低浊水有良好的效果,但它极易胶凝,不易贮存,需现用现配,影响它的使用与推广.据国内外有关文献报道[1,2],某些金属离子有抑制硅酸聚合延缓其胶凝的作用,同时有可能形成一类新型的聚硅酸系列混凝剂,近年来引起了国内外研究者的关注[3,4].本文重点考察了硅酸聚合度(以极限粘度表征),Fe3+、Al3+与SiO2的摩尔比,Fe3+与Al3+的摩尔比,水解度,熟化时间以及pH值等对聚硅酸铁铝(PSFA)混凝性能的影响,进而优化了制备高效PSFA的条件,并将自制的PSFA应用于处理实际水样.
+1 实验部分
+1.1 主要仪器
+　　J6-1A六联搅拌机;GDS-3B型浊度计;PHS-2型酸度计.
+1.2 药剂
+　　水玻璃(模数为3.2～3.5);其它试剂为分析纯.
+1.3 PSFA的制备
+　　取一定量自制的高分子量PS,加入一定量的硫酸铁和硫酸铝,熟化一定时间后得PSFA.用乌氏粘度计测其粘度, 然后用文献1中的公式:η=0.8′ 10-4′ M0.65计算其分子量(η为试样的极限粘度;M为试样的分子量).计算结果表明,所制备的PSFA的分子量均高于20万道尔顿.
+1.4 混凝性能评定方法
+　　评定方法采用实验室烧杯混凝沉降方法,取500mL水样,用搅拌器搅拌均匀,然后加一定量的混凝剂,在转速为150r/min下搅拌2min,再在50r/min下搅拌10min, 搅拌后静止沉降10min, 观察絮体的形状及沉降速度,在距上清液表面2～3cm处吸取上清夜,用浊度计测浊度.标准浊度采用“标准肼”浊度单位.实验水样是通过400目筛孔的硅藻土在105℃下干燥1h,置于干燥器内备用;定量称取上述硅藻土加水配成浊度为100度的浑浊液.
+　　实际水样取自哈尔滨自来水三厂原水.
+1.5 硅酸聚合度的表征
+　　根据文献报道[1]硅酸聚合度和它的极限粘度h 有密切关系,硅酸聚合度增加,其h 增大.η定义可从下列关系式看出: η＝(ηsp/C)C→0(增比粘度ηsp=(η1-η0)/η0,η1为溶液的粘度;η0为纯溶剂的粘度;C为溶液的浓度;ηsp/C为溶液的比浓粘度,比浓粘度即单位浓度时溶液的增比粘度),即在溶液浓度无限稀释时的比浓粘度(100mL/g),其数值不随浓度而变.在规定的浓度及溶剂中,此值决定于高分子的结构及分子量;因而可以表示同类高分子分子量的大小,也可认为是聚合度的大小.本实验采用η表征硅酸的聚合度.
+2　结果与讨论
+2.1 硅酸聚合度对PSFA混凝性能的影响
+　　PS制备时的pH值对PSFA混凝剂的混凝性能有很明显的影响,重复多次试验的结果表明,在酸性条件下制备的PS制取PSFA,其混凝性能比在碱性条件下制备的PS制取PSFA好,而且稳定性也较好.
+　　取相同量的硫酸铁和硫酸铝分别加入到不同聚合度的聚硅酸溶液中,配制成不同的PSFA,考察硅酸聚合度对所制备的PSFA混凝性能的影响,混凝剂投加量均以Fe2(SO4)3计(下同).
+　　实验结果表明,硅酸聚合度对PSFA的混凝性能有较大的影响.一般来说,硅酸聚合度高,则所制备出PSFA的聚合度也高,它有利于PSFA在混凝过程中吸附架桥及网捕作用的增强.因而,聚硅酸的聚合度是制备高效PSFA混凝剂的重要影响因素.但硅酸聚合度过高时, PSFA极易胶凝,因此硅酸聚合度应适当.根据实验结果,h 适宜值为0.5.经计算可知,此时PSFA的分子量大于40万道尔顿.
+2.2 Fe3+及Al3+与SiO2的摩尔比对PSFA混凝效果的影响
+　　固定Fe3+与Al3+的摩尔比为1: 1,按Fe3+和Al3+与SiO2不同的摩尔比分别制备PSFA,并考察它们对混凝性能的影响,试验结果见图1.
+
+图1　Fe3+及Al3+与SiO2的摩尔比对所制备的PSFA混凝性能的影响
+Fig.1 The effect of molar ratio of Fe3+and Al3+ to SiO2 on the coagulation property of preparing PSFA
+　　从图1可看出,随着Fe3+及Al3+与SiO2的摩尔比的增大,PSFA去浊效果逐渐变好,同时试验中絮体出现速度加快,而且有明显变大的趋势;但当Fe3+及Al3+与SiO2的摩尔比超过2:1时, PSFA除浊效果却变差.图1中还可看出Fe3+及Al3+与SiO2的摩尔比为1:1及2:1时, PSFA的除浊效果相当,但Fe3+及Al3+与SiO2的摩尔比为1:1时,絮体明显变大,在几分钟内就几乎全部沉降;而Fe3+及Al3+与SiO2的摩尔比为2:1时, PSFA的贮存时间明显变短,因此最佳的Fe3+及Al3+与SiO2的摩尔比是1:1.
+2.3 Fe3+与Al3+的摩尔比对PSFA混凝性能的影响
+　　保持Fe3+及Al3+与SiO2的摩尔比为1:1,按不同的Fe3+与Al3+摩尔比分别制备PSFA,考察它们对PSFA混凝性能的影响,试验结果如图2所示.
+　　从图2可看出,随着Fe3+与Al3+摩尔比逐渐增大,PSFA的混凝效果逐渐降低.但Fe3+与Al3+摩尔比为1: 1时,PSFA的混凝效果只是在混凝剂投加量小于10mg/L时比Fe3+与Al3+摩尔比为1: 2、1: 3时的除浊效果略差或相当;而在投加量大于10mg/L时则较好,并且其贮存时间较长,为此,较适宜Fe3+与Al3+摩尔比为1: 1.
+
+图2　Fe3+与Al3+的摩尔比对所制备的PSFA混凝性能的影响
+Fig.2 The effect of molar ratio of Fe3+ to Al3+ on the coagulation property of preparing PSFA
+2.4 水解度对PSFA混凝性能的影响
+　　水解度B*是影响无机高分子混凝剂混凝性能的重要参数,文献[5]给出了其计算式为: B*=[10-pH+CB-CA]/[AlT,FeT],式中:pH为溶液的pH值;CB为加碱后溶液中碱浓度(mol/L);CA为加酸后溶液中酸浓度(mol/L);AlT为溶液中铝的总浓度(mol/L);FeT为溶液中铁的总浓度(mol/L).文中B*值均按上式计算.不同水解度B*对PSFA的混凝效果如图3所示.
+
+图3　水解度对所制备的PSFA混凝性能的影响
+Fig.3 The effect of hydrolysis degree on the coagulation property of preparing PSFA
+　　从图3可看出,水解度B*对PSFA的混凝性能影响不大,但它对PSFA的贮存稳定性有较大的影响,B*较高或较低时,PSFA易胶凝.由实验结果可知,较适宜的水解度值为0.5.
+2.5 熟化时间对PSFA混凝性能的影响
+　　熟化时间的长短,往往会影响到无机高分子混凝剂的混凝性能.图4表明了熟化时间对PSFA混凝性能的影响.
+
+图4　熟化时间对所制备的PSFA混凝性能的影响
+Fig.4 The effect of aging time on the coagulation property of preparing PSFA
+　　由图4可看出,熟化时间对PSFA混凝性能影响不明显.但试验中发现,絮体的沉降性能随熟化时间的延长有所改善,但过长的熟化时间会出现PSFA的“挂壁”现象.熟化90天后,PSFA即开始凝胶,考察此时PSFA的混凝性能,如图4所示,此时PSFA的混凝能力虽有所下降,但仍具有较好的除浊效果.
+2.6 PSFA适用的pH值范围
+　　当PSFA混凝剂的投加量为10mg/L时,考察混凝除浊效果随水样pH值的变化关系.结果表明,PSFA适用的pH值范围较宽,在5～14之间均有很好的混凝效果.
+3　PSFA应用于饮用水的处理
+　　用PSFA处理实际水样,并与单独投加Fe2(SO4)3及Fe2(SO4)3＋助凝剂PS的混凝效果相比较,试验条件:原水水样,浊度为40NTU,水温20℃,pH值为7.1.试验结果见图5.
+　　图5表明,PSFA的混凝效果明显优于单独投加Fe2(SO4)3与Fe2(SO4)3＋助凝剂PS的效果.与单独投加Fe2(SO4)3相比,PSFA去浊效果好;与投加Fe2(SO4)3＋助凝剂PS相比,PSFA去浊效果略优,且PSFA易于操作;在处理相同浊度的情况下,PSFA用药量最少,故处理成本也较低;适宜的投药量范围宽,应用范围广.试验过程中还发现PSFA形成的絮体沉降性能好,原水处理后的剩余浊度降到3度以下时, PSFA的静止沉降时间仅为投加Fe2(SO4)3＋助凝剂PS时的1/2,为投加Fe2(SO4)3时的1/3,有利于缩短水样在处理系统内的停留时间,从而提高系统处理能力.
+
+图5　混凝剂除浊效果的比较
+Fig.5 The comparison of different coagulants in removing turbidity
+4　PSFA混凝机理的讨论
+　　PSFA混凝剂是酸性条件下制备的,其主要成分为铁离子、铝离子和聚硅酸.试验结果表明,PSFA是一种高效的无机高分子混凝剂,其所以具有混凝性能上的“高效”与它的组成、结构及混凝机理有关.
+　　从其结构、组成上看, PSFA的聚合度高,是具有大分子量的线型无机高分子混凝剂,其分子量达到105道尔顿数量级,所以PSFA能加强粒子间的吸附架桥能力及混凝过程中的网捕作用,可使水中的微小颗粒形成较大的矾花而易于沉降;此外,由于Fe3+、Al3+的引入使PSFA具有阳离子型无机高分子混凝剂的性质,在混凝过程中还具有电中和的能力.
+　　因而,PSFA混凝剂的混凝机理是铁离子、铝离子的水解产物使水中杂质脱稳并相互结合形成一定大小的粒子,这种粒子能有效地进入聚硅酸母体,而高分子聚硅酸具有吸附架桥及沉淀网捕作用,可使微小粒子形成较大的颗粒容易沉降而被除去.即PSFA混凝剂具有凝聚和絮凝两个过程,其处理水时脱稳过程和吸附架桥、沉淀网捕作用同时进行,所以PSFA混凝剂具有高效的混凝性能.
+5　结　论
+5.1 制备PSFA的优化条件为:硅酸聚合度h 为0.5, Fe3+、Al3+与SiO2的摩尔比为1: 1,Fe3+与Al3+的摩尔比为1: 1, 水解度B*的值为0.5.
+5.2 制备的大分子量的PSFA(分子量40万道尔顿左右),混凝效果好,体现了混凝过程中电中和、吸附架桥、沉淀网捕作用等的综合效应,适用pH值范围宽,贮存期长(超过1个月),是一种新型高效的无机高分子混凝剂.
+5.3 PSFA应用于处理实际水样,其除浊效果明显优于单独投加Fe2(SO4)3和Fe2(SO4)3+助凝剂PS,易于操作,而且还具有用药量少,絮体沉降性能好,用药量范围宽等优越性,是一种有前途的高效无机混凝剂.
+基金项目：黑龙江省自然科学基金资助项目(950731-028)
+作者简介：胡 翔(1966-),男,湖北麻城人,哈尔滨工业大学应用化学系环境工程专业博士研究生,工程师,主要从事水处理方面的研究工作.曾参加“新型酯化催化剂的研制”、“饲料添加剂碘酸钙的开发与应用”等研究工作.发表论文10余篇.
+作者单位：（哈尔滨工业大学应用化学系,黑龙江 哈尔滨 150001）
+参考文献：
+[1]Iler R K. The chemistry of silica [M]. New York: John Wiley and Sonc. Inc.,1979.
+[2]秦 蓁.金属离子对聚硅酸絮凝效果的影响 [J].工业水处理,1996,16(3):8- 9.
+[3]高宝玉,岳钦艳,王吉顺等.含铝离子的聚硅酸絮凝剂的性能与应用 [J].工业水处理.1993,13(1):17- 19.
+[4]Hasegawa T,Hashimoto K,Onitsuka T,et al. Characteristics of metal-polysilicate coagulants [J]. Water Science and Technology.1991,23: 1713- 1722.
+[5]Tang H X, Stumm W. The coagulation behaviors of Fe(Ⅲ) polymeric species-Ⅰ.Preformed polymers by base addition [J]. Water Research, 1987,21(1):115- 121.
+收稿日期：1998-10-12

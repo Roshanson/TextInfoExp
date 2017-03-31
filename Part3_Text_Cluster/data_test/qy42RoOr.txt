@@ -1,0 +1,52 @@
+航空工艺技术
+AERONAUTICAL MANUFACTURING TECHNOLOGY
+1999年 第1期 No.1 1999
+
+
+
+Sol_Gel TiO2薄膜的氮化研究
+
+李　亮　王　珉　刘凤英　傅桂龙
+　　[摘要]　探讨了一种制备多孔性氮化钛薄膜的新方法。以钛酸正丁酯TIR为前驱物，通过溶胶-凝胶(sol_gel)过程可在不锈钢等基体材料表面涂覆一定厚度的TiO2凝胶膜。X-射线衍射分析(XRD)表明，以NH3气作为氮化气氛，能完成在TiO2薄膜到TiN薄膜的转变。
+　　关键词： 溶胶-凝胶　氮化　氮化钛薄膜
+Study on Nitridation of TiO2 Films Prepared by Sol_Gel Process
+　　[ABSTRACT]　A new method of producing porous TiN films was studied. TiO2 sols prepared from Ti(O_i_C3H7)4 were dip_coated on the stainless steel substrates to obtain TiO2 films. The XRD confirmed that TiO2 films were converted to monstoichiometric titanium nitride films under the nitriding temperature about in NH3 atmosphere.
+　　Keywords: Sol_gel　Nitridation　TiN film
+　　氮化钛薄膜具有高硬度、高熔点、耐磨损及耐腐蚀等优良性能，其作为耐磨损，耐腐蚀涂层和扩散障碍层等，广泛用于机械、电子、航空航天等工业领域；同时因其靓丽的金黄色泽，也被广泛地用作仿金涂层材料。目前，制备TiN薄膜的方法很多，传统的PVD和CVD等气相方法均可沉积TiN薄膜。这些方法得到的TiN薄膜多为纤维晶或柱状晶，结构致密，很适合用于刀具涂层和装饰涂层。
+　　借助液相生长可制备钛的化合物，然后经过后续处理，也能得到TiN薄膜，特别是能得到气相方法难以生成的多孔性氮化钛薄膜。Seyferth［1］曾从Ti(NR2）和R′NH2的苯溶液中制备出聚氨基钛，聚氨基钛在NH3中加热至1 000 ℃时转变为TiN。这种方法由于采用了对环境有危害的苯，其应用受到限制。但在氮化钛薄膜的制备中，如果合理地选择反应过程，则能得到对环境无害的工艺，溶胶-凝胶法就能很好地解决这个问题。
+　　溶胶-凝胶法是在金属有机化合物的溶液中通过化合物的水解、聚合，把溶液制成含有金属氧化物或氢氧化物微粒子的溶胶，并进一步反应使之凝胶化。若再把凝胶加热，便可制成非晶玻璃、多晶陶瓷等。溶胶-凝胶过程在制备薄膜方面具有其独到的优势，其制膜工艺比CVD，PVD等方法简单，对设备也无特殊需求，在常温下用浸渍法或匀胶法就能制备出具有很高质量的薄膜，而且不受被涂材料表面的尺寸、形状的限制。溶胶-凝胶法与传统的气相法(CVD，PVD)不同的是，该法是使氧化物经过液相沉积出来，可在较低的温度下直接或间接制成成品，这在化学工业和电子工业中引起了广泛的重视。
+　　经过溶胶-凝胶过程制备的涂层具有多微孔结构，一般为非晶态与晶态的混合结构。由于构成涂层材料的晶粒尺寸减小，使得晶界组分占整个材料的比率上升(达50%或更高)，从而引起材料性质的突变。基于上述原因，探索对溶胶-凝胶过程获得的涂层进行氮化处理是一种有益的尝试。
+　　本文采用sol_gel过程，利用无害的反应物生成TiO2薄膜，再利用氮化处理生成多孔性TiN薄膜。
+1　试验
+　　试验采用钛酸正丁酯(TIP)为先驱物制备溶胶。先把TIP与所需无水乙醇的一半均匀混合(乙醇总量与TIP的摩尔比为4)；再把1%的盐酸与剩下的乙醇相混合，水与TIP的摩尔比为4；把乙醇溶液滴加到剧烈搅拌的TIP乙醇溶液中，在室温下搅拌此溶液30 min使TIP充分水解。
+　　采用浸渍法在不锈钢和硬质合金表面涂膜。基体经过超声波清洗，再用合成洗涤剂和丙酮去脂；然后把基体浸入充分水解的溶胶中，以0.15 mm/s的速度竖直把基体提拉出来；在室温下干燥10 min后，把涂覆后的基体在DEGUSSA A6 VSL10/18真空炉内加热至500 ℃，并通入氮气作为保护气氛，保温10 min。重复上述步骤10次，可以获得约1 μm厚的TiO2涂层。
+　　把涂覆TiO2薄膜的基体放入真空炉内进行氮化。为比较氮化效果，氮化气体分别选NH3和N2气体。保持气体流量约为300 mL/min，以100 ℃/min的升温速率加热。加热至900 ℃并保温60 min，然后冷却到室温。
+　　对氮化后的TiO2薄膜进行XRD分析，对比TiO2和TiN晶型的特征衍射峰的衍射强度，从而对薄膜的成分进行定性分析。
+2　试验结果及分析
+　　试验表明，以高纯氮为氮化气氛，当氮化温度达到1 100 ℃时，涂层的色彩没怎么改变，XRD衍射图谱上没有氮化钛特征衍射峰出现(图1)，但可看到TiO2晶型的转变。900 ℃时TiO2晶型由锐钛矿逐渐转变为金红石；1 100 ℃时，TiO2全部转变为金红石晶型。
+
+图1　TiO2在N2气氛中从锐钛矿到金红石的转变
+Fig.1　Conversion of TiO2 from anatase 
+to rutile in N2 atmosphere
+IR：锐钛矿的衍射峰强度；IA：金红石的衍射峰强度。
+　　以NH3为氮化气氛时，通过对在不同的氮化温度得到的薄膜进行XRD分析(图2)，可以看出不同的氮化温度对薄膜的成分有很大影响。
+
+图2　在不同的氮化温度下TiN的200特征衍射线的衍射强度
+Fig.2　Diffraction intensity of 200 characteristic
+diffracted ray of TiN at different
+nitriding temperatures
+氮化气氛：NH3(工业用)；流量：300 mL/min
+　　温度对氮化效果有重要影响，不同的氮化温度得到的产物有很大的差异。在氮化温度为800 ℃时，涂层的颜色开始发生转变，从凝胶膜的原始色彩转变为亮灰色；在850 ℃时呈现出暗蓝色；在900 ℃保温1h后，涂层的颜色变为金黄色。
+　　氮化TiO2凝胶膜的过程可用以下的化学反应方程式来表示：
+NH3→1/2N2+3/2H2
+TiO2+(2-x)H2→TiOx+(2-x)H2O
+aTiOx+bNH3→cTiN+dH2O
+　　这里TiOx可能为TiO,Ti2O3或其他形式的氧化钛成分。
+3　结束语
+　　借助无公害的sol_gel过程得到的TiO2薄膜，经氮化处理能转变为多孔性TiN薄膜。试验发现，NH3比N2更有利于TiO2薄膜的氮化。氮化过程中，在一定的升温速度下，氮化温度的选择至关重要，温度过低会使氮化反应进行缓慢。
+
+作者单位：李　亮　王　珉　刘凤英　傅桂龙(南京航空航天大学机电学院)
+
+参考文献
+　[1] Seyferth D, Mignami G. Preparation of titanium nitride and titnium carbonitride by procermic polymer rute. J.Mater.Sci.Lett, 1988(7):481～488
+(责编　小　目)

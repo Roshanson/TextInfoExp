@@ -1,0 +1,62 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第5期 No.5 Vol.18 1998
+科技期刊
+
+升流式厌氧污泥床处理含五氯酚废水的工艺特性* 
+周岳溪　郝丽芳　张寒霜　 (中国环境科学研究院水环境研究所，北京 100012)
+文　摘　研究了升流式厌氧污泥床反应器(UASB)在中温条件下处理含五氯酚(PCP)模拟废水时的工艺特点及PCP降解机理。结果表明，在以处理啤酒废水的厌氧颗粒污泥为接种物(接种量约15g VSS/L)，运行温度为35±1℃，水力停留时间20～24h，进水COD浓度为2500～2800 mg/L，进水PCP浓度由1.0mg/L上升至8.0mg/L条件下，120 d左右完成启动，COD和PCP去除率分别为86%及94%以上。高效液相色谱仪检测结果分析表明，PCP厌氧降解的途径是首先经间位脱氯生成四氯酚和2,4,6-三氯酚，再经邻位和对位脱氯生成2,4-二氯酚和邻氯苯酚，最后矿化为CH4和CO2。
+关键词　UASB反应器　五氯酚废水　厌氧颗粒污泥　降解机理　废水处理
+The anaerobic treatment of pentachlorophenol wastewater in an UASB reactor.Zhou Yuexi, Hao Lifang, Zhang Hanshuang (Institute of Water Environment,Chinese Research Academy of Environmental Sciences,Beijing 100012).China Environmental Science.1998,18(5):419～422
+Abstract―In this study, the characteristics of anaerobic granules degrading pentachlorophenol(PCP) were investigated in a laboratory-scale upflow anaerobic sludge blanket (UASB)reactor at 35±1℃. Experimental results demonstrate: when brewery waste-degrading granules obtained from a full-scale UASB reactor for treating brewery wastewater were used as seed, the start-up process was completed within 120d, with influent COD 2500～2800 mg/L, a hydraulic retention time 20～24h and influent PCP 1.0～8.0mg/L. The COD and PCP removals were above 86% and 94% respectively. The determination of chlorophenols in effluent and reactor suggests that the PCP degrading granules dechlorinated PCP primarily at the meta-position, then at the ortho-position and the para-position; and a part of intermediates are finally transformed to CH4 and CO2.
+Key words:upflow anaerobic sludge blanket reactor　PCP wastewater　anerobic granular sludge　degradation mechanism　wastewater treatment
+　　五氯酚被广泛用于木材防腐剂、杀虫剂、除草剂和杀菌消毒剂，有剧毒，性质稳定，能抑制生物代谢过程中的氧化磷酸化作用，造成人及动物中枢神经系统、肝和肾的损害，属于优先控制污染物。存在于木材防腐、造纸、医药、农药及电子元件制造等行业的废水中。近年来，国外对其生物降解性能进行了大量研究，发现在厌氧条件下微生物可以完全降解。因此，利用高效厌氧生物处理工艺(如UASB等)处理含五氯酚废水，探索其工艺运行参数和机理已成为废水生物处理研究的一个热点〔1～3〕。总体上看，目前还处于开始阶段，在国内有关这方面的报道则更少。
+　　作者通过试验，考察了中温条件下UASB反应器处理含五氯酚废水的工艺参数及五氯酚降解机理。
+1　材料与方法
+1.1　试验材料
+1.1.1　试验装置　实验采用的UASB反应器用有机玻璃制成，内径为9cm，上部沉淀区高度为32 cm，容积为2.04 L；下部反应区高度为72 cm(其中锥体部分高度为7 cm)，容积为4.58 L；总高度为104 cm，总容积为6.62 L，有效容积为6 L。内设三相分离器，下部为污泥悬浮层和污泥床，沿反应器高度设有10个取样口。
+　　将UASB反应器置于恒温箱内，其温度通过上海浦东三联仪表厂生产的WMZK-01型温度控制仪控制在35±1℃。
+1.1.2　试验用水　原水采用人工配水，即以葡萄糖为碳源，尿素和磷酸二氢钾分别为氮源和磷源(比例为COD∶N∶P=200∶5∶1)，投加定量PCP。
+1.1.3　接种污泥　取自北京啤酒厂生产性的UASB装置中的颗粒污泥，取回后未经任何处理直接接种，反应器接种后静置4d后开始连续进水运行。
+1.2　化学分析项目及方法
+　　COD：标准重铬酸钾测定法〔4〕；SS和VSS：重量法〔4〕；pH值：HORIBA公司生产的M-8型pH计测定〔4〕；PCP浓度：日本岛津公司生产的高效液相色谱仪 ( Waters HPLC ) 测定〔4〕；Cl-浓度：Cl-浓度测定仪测定〔4〕。
+1.3　生物学分析项目及方法
+1.3.1　成熟污泥颗粒结构及生物相组成　电子显微镜观测。
+1.3.2　厌氧污泥活性　污泥最大比产甲烷速率法测定〔5〕。
+2　结果与讨论
+2.1　工艺运行结果与讨论
+　　试验历时160d,由于接种污泥取回后停放了数月，接种(接种量为1.5gVSS/L)时其活性较低(Umax.CH4=0.121mmol/gVSS*h)，而且污泥中有机物的含量也不高(VSS/SS=0.505)，最初20d进水不投加PCP，以恢复接种污泥的活性。第一个星期，部分接种污泥被带到沉淀区，随出水流失(未加回流)，出水的SS约1010mg/L，以后逐渐降低并趋于稳定。运行到第20d时，出水SS降至120mg/L左右。经过这一阶段培养，进水COD浓度由1500mg/L增至2500mg/L，COD的去除率由34%增至80%，污泥已有较高的活性和产气量，达到稳定运行状态(图1)。
+
+图1　反应器运行的COD、PCP、HRT及GPR(产气量)变化结果
+Fig.1　The change of COD, PCP, HRT and GPR
+图中纵坐标为COD、PCP、HRT、GPR
+　　 从第21d开始在进水中投加PCP，对污泥进行同步驯化。在初期(第21～44d)PCP浓度增加比较缓慢，并适当降低COD负荷，以维持污泥的产甲烷活性。投加PCP一星期后反应器内污泥由黑褐色变为黑灰色，运行到第44d时，反应器底部已出现颗粒污泥，COD去除率达到90%以上，因而从第45d开始增大进水PCP浓度和COD负荷。随着反应器的运行，污泥量逐渐增加，到第70d反应器底部已出现较大的颗粒污泥(1.5mm左右)，PCP去除率达到90%左右，污泥已具备一定的降解PCP活性。因此，开始将COD和PCP浓度分别提高至2600mg/L和6mg/L，10d后，PCP和COD的去除率分别达到80%和88%。考虑到UASB反应器总是底层污泥先接触PCP，由于污泥的降解和吸附作用，一般到污泥床上部水中的PCP浓度很小。为了使上层污泥也能接触到较高浓度的PCP，加快整个污泥层的驯化，并淘汰原污泥中一些老化的微细颗粒，从第81d开始加大水力负荷，使水力停留时间(HRT)由24h缩短至20h，即PCP负荷由6gPCP/m3*d升高到了7.2gPCP/m3*d，结果PCP和COD的去除率较大幅度地下降，出水的SS浓度增大。经过21d运行后，PCP的去除率已基本恢复，但COD去除率的恢复却较慢，这可能是因为整个床层的污泥都暴露于PCP，产甲烷菌的活性受到较大的抑制，但此时污泥中已存在相当数量的PCP降解菌。
+　　为了使PCP和COD的去除率稳步提高，从第103d开始将HRT恢复至原来的24h，降低COD负荷(但进水浓度稍有提高)，经过前段高水力负荷运行已使污泥的PCP降解区域进一步地扩大(图2)。到第123d，PCP去除率达到90%，而COD的浓度为2800mg/L时，其去除率为83%，颗粒污泥具有良好的沉降性能，因此UASB反应器的启动过程基本完成，进入稳定运行阶段。
+
+图2　反应器内混合液的PCP浓度沿高度的分布测试结果
+Fig.2　Relationship between PCP concentration of mixed
+liquor and reactor height
+　　在稳定运行阶段(第124～160d)，保持其它参数不变，而进水PCP浓度由6mg/L提高到8mg/L，PCP负荷为8.3gPCP/m3*d。到第160d，UASB反应器内已形成2.5mm左右比较均匀的颗粒污泥，颗粒污泥呈灰黑色；其比重为1.03；VSS/SS值为0.611；SVI值为12～14mL/g。出水的PCP浓度为0.5mg/L，去除率达到94%；COD的去除率达到86%以上。
+　　上述试验结果表明，在稳定运行阶段UASB反应器处理含PCP有机废水的处理能力远大于传统厌氧试验装置(小试，PCP负荷为0.1g PCP/m3*d，去除率为99%)〔6〕，厌氧填充床反应器(PCP负荷0.51 g PCP/m3*d，去除率为35%)〔7〕，以及以葡萄糖和苯酚为底物的UASB反应器(PCP负荷为2.2 g PCP/m3*d，去除率为99%)〔8〕。另外，虽然本试验所采用的接种污泥在启动初期活性很低(0.121mmol/gVSS*h)，但反应器运行不到65d就形成了性能良好的颗粒污泥，其颗粒化时间与其它报道〔6〕大致相同，而且形成的颗粒污泥较大，COD去除率也较高。
+2.2　PCP的降解途径
+　　在稳定运行阶段还通过高效液相色谱仪测定了反应器中污泥及出水中的PCP及其降解产物。结果表明，PCP降解过程中产生四氯酚(2,4,5,6-TeCP或2,3,4,6-TeCP)，三氯酚(2,4,6-TCP)以及邻氯酚等中间产物，其中以四氯酚及邻氯酚积累较多，而二氯酚(2,4-DCP)的积累较少。这说明经PCP驯化的颗粒污泥易于间位脱氯，而且在PCP负荷较低的条件下运行，沿着反应器高度的增加，各种氯代酚浓度逐渐降低，出水中各种氯代酚的浓度已低于检测低限；在较高的PCP负荷(如驯化过程中提高进水PCP浓度)下产甲烷作用和脂肪酸的降解作用受到抑制时，出水中才能检测到低氯代酚；因此，反应器中的颗粒污泥具有矿化PCP的能力，矿化的程度取决于反应器中PCP负荷的大小。
+
+图3　经PCP驯化的颗粒污泥的PCP降解的可能途径
+Fig.3　Pathway of PCP degradation by anaerobic granules 
+　　 根据以上高效液相色谱(HPLC)检测结果，由反应器中污泥及出水中各种低氯代酚的种类及其出现的顺序，可以分析出经PCP驯化的颗粒污泥的PCP降解的可能途径为：首先PCP经间位脱氯生成四氯酚2,4,5,6-TeCP或2,3,4,6-TeCP，再进一步间位脱氯生成三氯酚2,4,6-TCP，然后经邻位脱氯生成二氯酚2,4-DCP，再经对位脱氯生成邻氯苯酚，最后彻底矿化为甲烷和二氧化碳，如图3所示。
+3　结论
+3.1　UASB反应器可以较有效地处理含PCP有机废水。在以啤酒废水处理的厌氧颗粒污泥为接种污泥(接种量约为15gVSS/L)，运行温度为35±1℃，水力停留时间为20～24h；进水COD浓度为2500～2800mg/L，进水PCP浓度由1.0mg/L上升至8.0mg/L条件下，UASB反应器运行120d左右完成启动，COD和PCP的去除率分别为86%和94%以上。
+3.2　高效液相色谱仪检测结果分析表明，PCP的厌氧降解途径是：先经过间位脱氯生成四氯酚和2,4,6-三氯酚，再经过邻位和对位脱氯生成2,4-二氯酚和邻氯苯酚，最后矿化为CH4和CO2。
+参考文献
+1　Nicholson D K, S L Woods, J D Istok,et al. Reductive dechlo-rinationofchlorophenolsbyapentachlorophenol-acclimated methanogenic consortium.Appl. Environ.Microbiol.,1992,58(8):2280～2286
+2　Frank O Bryant,Dorothy D Hale,John E Rogers. Regiospecific dechlorination of pentaclorophenol by dichlorophenol-adapted microorganisms in freshwater,anaerobic sediment slurries.Appl. Environ. Microbiol.,1991,57:2293～2301
+3　Wu Weimin, Larshmi Bhatnagar,J Gregory Zeikus. Performance of anaerobic granules for degradation of pentachlorophenol.Appl. Environ. Microbiol.,1993,59(2):389～397
+4　魏复盛,寇洪茹，洪水皆等.水与废水检测分析方法.第3版.北京：中国环境科学出版社，1989
+5　吴唯民,胡纪萃. 厌氧污泥的最大比产甲烷速率的间歇式试验测定法.中国给水排水， 1988,1:30～36
+6　Guthrie M A,E J Kirsch,R F Wukasch,et al.Jr.pentaclorophenol biodegradation.Ⅱ.anerobic.Wat.Res.,1984,18:451～461
+7　Krumme M L,S A Boyd. Reductive dechlorination of chlorinated phenols in anerobic upflow bioreactors. Wat. Res.,1988,22:171～177
+8　Hendriksen H V, S Larsen,B K Ahring. Influence of a supplemental carbon source on anerobic dechlorination of pentaphenol in granular sludge. Appl. Environ. Microbiol.,1992,58:365～370
+作者简介
+周岳溪　男，1964年9月生。博士、研究员、副所长。主要从事废水处理技术的研究开发。负责完成了国家科技攻关项目、国家环保总局科技计划课题、国家自然科学基金课题及横向科技合作等项目10多项，发表论文30多篇，出版专著3本。
+收稿日期： 1997-11-04
+* 国家自然科学基金资助项目(59578013)

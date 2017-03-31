@@ -1,0 +1,48 @@
+土壤与环境
+SOIL AND ENVIRONMENTAL SCIENCES
+1999年　第4期　第8卷　Vol.8　No.4　1999
+
+
+
+几种改性磷肥肥效研究初报
+毛小云　吴平霄　廖宗文
+　　摘要：在与过磷酸钙生产类似的工艺条件下，在磷矿粉中加入一定比例的添加剂，研制出3种改性磷肥。化学分析结果表明，在改性磷肥有效磷中，水溶性磷比例下降。盆栽试验结果显示，在等质量施肥条件下，3种改性磷肥均有较大幅度的增产，且植株吸磷量和磷含量有显著的增加。
+　　关键词：改性磷肥；肥效；吸磷量；磷含量
+　　中图分类号：S143.2+2　文献标识码：A
+Preliminary Report on Efficiency of Modified Phosphorus Fertilizers 
+MAO Xiao-yun，WU Ping-xiao，LIAO Zong-wen 
+（College of Natural Resources and Environmental Science, South China Agricultural University, Guangzhou 510642, China）
+　　Abstract:　In the process similar to the production of superphosphate, different proportional additives were added to ground phosphate rock to produce three modified phosphorus fertilizers. The chemical analysis shows that the proportion of water-soluble phosphorus in available phosphorus in the modified phosphorus fertilizers has been decreased. Meanwhile the pot experiment shows that three modified phosphorus fertilizers have more positive effect on increasing biomass than that of ordinarily superphophate under the condition of equivalent mass. Moreover, phosphorus uptake by plant and phosphorus content of plant also increases remarkably. 
+　　Key words:　modified phosphorus fertilizers; fertilizer efficiency; phosphorus uptake; phosphorus content
+　　我国土壤缺磷现象十分普遍，特别是在南方红壤地区，由于土壤Fe、Al含量高，普通磷肥施入土壤极易被固定，有效性低，缺磷现象严重。在我国磷矿资源不足，品位较低的条件下，提高低品位磷矿粉中磷的释放，使它的肥效接近或高于同等量的化学磷肥，对于充分利用我国的磷矿资源具有重要的意义[1～2]。解决这一问题的关键在于改进磷肥的性状，提高其在土壤中的抗固定能力，从而提高其有效性。我们仿照湿法过磷酸钙生产工艺，利用有机和无机（矿物）改性材料活化（促释）磷矿粉在实验室条件下，研制出3种新制备改性磷肥，其物理、化学性状均有较大的改变，在固磷性极强和有效磷含量极低的红壤上表现了较好的肥效，显示出良好的应用前景。
+1 材料与方法
+　　供试磷矿粉为云南昆阳磷矿粉，添加剂包括一种有机添加剂A，一种有机－无机复合添加剂B和一种无机添加剂C。供试玉米品种为超甜43号。供试土壤为花岗岩母质发育的旱地赤红壤，其有机质的质量分数为1.37×10-3，全磷（P2O5）为7.1×10-4，速效磷（P2O5）为3.5×10-6。
+　　改性磷肥的制作：取添加剂A 20 g与100 g磷矿粉混匀，加水100 ml，搅拌均匀，缓缓加入适量浓硫酸，边加边搅拌，风干即制得改性磷肥1。仿上法分别制得改性磷肥2和改性磷肥3，3种改性磷肥分别记为GX1、GX2、GX3，以不加添加剂的处理得酸处理磷肥，记为CKH。4种磷肥经20 d后熟期后取样分析。
+　　盆栽试验：设5个处理，3次重复，每盆装风干土1.5 kg，N、K2O施肥量均为0.225 g/盆。自处理1至处理5分别施普通过磷酸钙CK1、CKH、GX1、GX2、GX3，施用量均为0.65 g/盆。盆栽玉米于1999年3月20日播种，每盆3株，1999年4月23日齐土剪下玉米苗，称鲜重，全生长期34 d。
+2 结果与分析
+2.1 改性磷肥中有效磷，水溶性磷含量
+　　过磷酸钙一般检检标准不仅要求其有效磷达到特定的指标（质量分数为0.12以上），而且要求水溶性磷占有效磷的质量分数超过0.8以上。我们研制的3种改性磷肥及对照酸处理磷肥的有效磷和水溶性磷含量见图1（图中数据的多重比较采用SSR法，P＝0.05）。从图1可以看出，与CKH相比，3种改性磷肥水溶性磷有较大幅度的下降，质量分数分别降低0.051、0.165、0.158。而有效磷降低幅度不大（仅降低0.013、0.008和0.048）。产生这一结果可能存在三方面的原因：一是添加剂的加入使改性磷肥中磷的含量相对减少，全磷量降低；二是添加剂在反应过程中与磷结合，这种结合态水溶性弱但不失有效性；三是由于加入添加剂，使浓H2SO4与磷矿粉反应的量相对减少，以致转化的结果使游离H2PO4-等减少。
+
+图1　4种磷肥有效磷和水溶性磷含量
+2.2 盆栽试验结果
+2.2.1 各处理玉米生物量
+　　磷在土壤中极易被固定而无效，故一种磷肥的肥效并不决定于其本身的化学有效性而取决于其生物有效性。5种磷肥在赤红壤上的盆栽结果见图2（图中数据的多重比较采用SSR法，P＝0.05）。
+
+图2　5种磷肥盆栽生物量
+　　图2中，CKH较CK1生物量的质量分数增加0.0922，3种改性磷肥较CKH增加0.20以上，较CK1增加0.30以上，说明改性磷肥中的磷具有极高的生物有效性。
+2.2.2 各处理玉米地上部吸磷量
+　　图3、图4为各处理的玉米地上部植株磷含量及其吸磷量（图中数据的多重比较采用SSR法，P＝0.05）。从表中可以看出，处理GX2植株含磷量和吸磷量均为最高；其次为处理GX3和处理GX1。而施用普通过磷酸钙的处理SP（CK1），地上部植株磷含量和吸磷量均为最低。
+
+图3　各处理玉米植株含磷量
+
+图4　各处理玉米地上部吸磷量
+3 讨论
+　　图2中CKH较CK1生物量增加也许与二者有效磷含量不同有关，3种改性磷肥处理较CKH处理的生物量有较大幅度的增加，显然不能简单地用化学有效性解释。图3中，3种改性磷肥处理较CKH处理中植株磷含量及其吸磷量也有较大幅度的增加，说明在改性磷肥中，磷的生物有效性有较大的提高。不同形态的磷在土壤中被固定的速度是不同的。从化学分析和晶体结构分析可以看出[3]，酸处理磷肥的有效磷中游离H2PO4-离子含量高，施入土壤后与Fe、Al等易迅速反应产生沉淀而固定快。在三种改性磷肥中，H2PO4-、HPO42-离子可能通过Ca2+与添加剂形成多元络（螯）合物，或通过表面吸附及包被作用减少了其有效磷在土壤中的固定，从而大大增加了其生物有效性。
+基金项目：中国博士后科学基金项目（中博基[1999]10号）和广东省自然科学基金博士启动基金项目（994161）
+作者简介：毛小云（1972～），男，硕士研究生
+作者单位：华南农业大学资源环境学院，广州 510642
+参考文献
+[1] 章守陶. 我国磷肥工业的现状与前景 [J]. 化肥与催化，1991, 2: 60～61.
+[2] 王光龙. 表面吸附层对磷矿石磷素释放的影响 [J]. 土壤学报，1998, 35(1): 65～69.
+[3] 吴平霄，毛小云，廖宗文. 几种改性磷肥的X射线衍射特征初报 [J]. 土壤与环境，1999, 8(4): 316～317
+收稿日期：1999-10-11

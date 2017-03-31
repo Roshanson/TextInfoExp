@@ -1,0 +1,138 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1999年 第2期 No.2 1999
+
+
+
+紫外辐射增加对春小麦根际土壤微生物种群数量的影响
+李 元　杨济龙　王勋陵　胡之德
+　　摘要：研究了大田栽培和自然光条件下,模拟紫外辐射(UV-B,280-315nm)增加对春小麦根际土壤微生物种群数量的影响.UV-B辐射能显著降低细菌总数以及放线菌和真菌数量.UV-B辐射对好氧性自生固氮菌、亚硝酸细菌、反硝化细菌、好氧性纤维素分解菌和解磷细菌数量也有显著的影响,但这种影响具有生育期之间的差异.春小麦根际土壤微生物种群数量与土壤营养成分有关.
+　　关键词：紫外辐射；根际微生物；种群数量；春小麦
+　　中图分类号：X53　　文献标识码：A　　文章编号：1000-6923(1999)02-0157-04
+The effect of UV-B radiation on the population quantity of spring wheat rhizosphere microorganisms.
+LI YuanYANG Ji-longWANG Xun-lingHU Zhi-de
+(1.Department of Biology,Lanzhou University,Lanzhou 730000, China； 2.Department of Environmental Science,Yunnan Agricultural University,Kunming 650201,China；3.Department of Chemistry,Lanzhou University, Lanzhou 730000, China). China Environmental Science.1999,19(2)：157～160
+Abstract：Influences of enhanced ultraviolet-B radiation (UV-B,280-315nm) on the population quantity of rhizosphere microorganisms of spring wheat plants grown in field were investigated.UV-B radiation decreased significantly the quantity of bacteria,actinomyces and fungi.UV-B radiation affected significantly the quantity of azotobacter, nitrobacter, denitrifying bacteria, cellulose decomposing bacteria and phosphate decomposing bacteria,but these effects depended on developmental stages of spring wheat.The population quantity of spring wheat rhizosphere microorganisms was related with nutrient element contents in soil.
+Key words：UV-B radiation；rhizosphere microorganisms；population quantity；spring wheat
+　　臭氧层减薄引起的紫外辐射增加,不仅对植物、动物和人体健康产生危害,也对微生物的数量和生理代谢活动产生明显的影响[1,2] .国外已经研究了UV-B辐射对水体表层微生物的数量及分布[2,3],对细菌和腐生真菌在有机物分解和矿质元素转化中的效率[4,5] ,以及对稻田蓝菌固氮活性[5]的影响.
+　　小麦根际土壤微生物的种群数量直接关系到麦田土壤中有机质的分解和矿质元素的转化,影响小麦对营养元素吸收和利用[6].因此,该研究是正确评估麦田生态系统对UV-B辐射增加响应与反馈的一个重要方面.
+1 材料与方法
+1.1 麦田生态系统的建立与紫外辐射模拟
+　　试验在兰州大学生物园内进行.春小麦品种80101大田行播,黄绵土.三叶期间苗,使密度均匀,同时开始UV-B辐射,每天辐射7h(雨天除外),直至成熟收获.
+　　模拟UV-B辐射使用秦牌30WUV-B灯管(光谱为280-315nm),灯管悬于植株上方,用紫外辐射测定仪(北京师范大学仪器厂生产)测297nm处辐射强度(以植株上部计).试验设4个辐射水平,即0(自然光)、2.54、4.25和5.31kJ/m2,相当于兰州地区0、12％、20％和25％的臭氧衰减,每处理小区2m2 ,3个重复.
+1.2 测定方法
+在春小麦分蘖期(32d),拔节期(45d),扬花期(64d)和成熟期(102d)分别采取根际土壤样品,用于分析微生物数量和土壤营养成分.
+　　微生物的分离、培养和计数均按文献[7]；细菌、放线菌和真菌采用洗涤稀释平板法；细菌生理群采用洗涤稀释法.
+　　土壤营养成分的测定根据于天仁等[8]；pH值用酸度计；有机质用重铬酸钾容量法；有效氮用碱解扩散吸收法；速效磷用NaHCO3 浸提,磷钼兰比色法；速效钾用中性NH4OAC浸提,交换性镁用EDTA-铵盐快速离心提取,速效锌和速效铁用DTPA提取,均用原子吸收分光光度计测定.
+1.3 统计分析
+　　平均值之间的差异显著性用LSD检验,P<0.05水平.细菌总数与UV-B辐射、春小麦发育期(播种后天数)之间的二元回归模型运用统计分析法[9] 建立,R值和F值用于检验回归模型的显著程度,P<0.05或0.01水平.用直线相关分析检验指标间的相关程度,相关系数r,P<0.05或0.01水平.
+2 结果
+2.1 紫外辐射对春小麦根际土壤细菌、放线菌和真菌数量的影响
+　　UV-B辐射使细菌总数显著降低(表1),这种降低呈线性负相关,分蘖期达极显著水平(r=-0.9944,P<0.01)；拔节期、扬花期和成熟期均达显著水平(r分别为-0.9687、-0.9500和-0.9623, P<0.05).细菌总数(y,104/g干土)与UV-B辐射(x1,kJ/m2)和发育期(x2,DAP)之间的二元回归模型为:y=1036.78- 28.39x1- 7.57x2(复相关系数R=0.8128,P<0.01；F值=49.58,P<0.01).
+表 1 紫外辐射对春小麦根际土壤微生物种群数量的影响 (104/g干土)
+Table 1 Effects of UV-B radiation on population quantity of spring wheat rhizosphere microorganisms (104/g dry soil )
+
+种群紫外辐射
+(kJ/m2)分蘖期拔节期扬花期成熟期
+细菌0843.3a702.4a334.2a351.1a
+2.54703.7b611.1b282.1b204.5b
+4.25624.0c590.2b108.1c101.9d
+5.31567.3d519.0c84.1d122.3c
+放线菌0122.8a3.359a13.17a4.893a
+2.5484.33c3.460a9.580b4.078b
+4.2588.72bc2.241c8.791c3.407c
+5.3195.14b2.849b9.480bc3.465c
+真菌00.738a7.123a3.456a1.528a
+2.540.575b7.123a2.498b1.403b
+4.250.338c3.359b2.651b0.611c
+5.310.337c3.360b2.657b0.408d
+
+注:同一发育期,每种微生物数量平均值后面具有相同的字母,表示在P<0.05水平差异不显著,根据LSD检验(n=3).表2同
+　　放线菌和真菌数量也随UV-B辐射增加而降低(表1),但这种降低未表现出显著的线性负相关(P>0.05), 从表1还可看出,细菌、放线菌和真菌数量均具有随生育期变化的规律性,而且这种规律性未被UV-B辐射改变.
+2.2 紫外辐射对春小麦根际土壤细菌生理群数量的影响
+　　UV-B辐射对细菌生理群数量有显著的影响(表2).UV-B辐射显著降低分蘖期、拔节期和扬花期的好氧性自生固氮菌数量,而在成熟期,其数量增加. 
+表2　紫外辐射对春小麦根际土壤细菌生理群数量的影响 (102/g干土)
+Table 2 Effects of UV-B radiation on population quantity of bacteria physiological group in spring wheat rhizosphere (102/g dry soil)
+
+生理群紫外辐射
+(kJ/m2)分蘖期拔节期扬花期成熟期
+1081.85a11.12a11.14a7.13c
+2.5413.70b5.09c11.22a9.52b
+4.257.13d8.14b7.14b17.32a
+5.318.18c3.57d7.42b17.33a
+203.69c11.20c14.18b50.96a
+2.543.58c6.56d8.57c13.03c
+4.258.16b13.24b14.33b25.46b
+5.3117.39a50.88a25.49a25.48b
+30255.77d50.91d807.8a170.3a
+2.54284.32c71.23c458.8b47.33b
+4.25509.89b142.6a317.8d35.67c
+5.31613.83a142.5a356.9c45.87b
+405.12a0.204d1.42c0.205d
+2.543.69c0.509c5.10b0.501c
+4.254.10b0.815b5.30b0.917b
+5.313.58c1.93a9.69a3.56a
+5081.85c35.63c172.2c17.33c
+2.54115.9b50.91a313.6a48.33a
+4.25132.9a38.62b313.8a35.67b
+5.3186.88c17.30d264.8b45.7a
+
+注:1.好氧性自生固氮菌 2.亚硝酸细菌 3.反硝化细菌 4.好氧性纤维素分解菌 5.解磷细菌
+　　在分蘖期、拔节期和扬花期,2.54kJ/m2 UV-B辐射能显著降低亚硝酸细菌数量；而在4.25和5.31kJ/m2 UV-B辐射下,其数量显著增加.在成熟期,UV-B辐射导致亚硝酸细菌数量降低,2.54 kJ/m2 UV-B辐射时为最低值,仅为对照的25.6％.
+　　反硝化细菌数量在分蘖期和拔节期随UV-B辐射增加而显著增加；而在扬花期和成熟期随UV-B辐射增加而降低.在4.25kJ/m2UV-B辐射下,其数量最低.
+　　好氧性纤维素分解菌数量在分蘖期随UV-B辐射增加而降低；而在拔节期、扬花期和成熟期,则随UV-B辐射增加而显著增加.
+　　解磷细菌数量随UV-B辐射增加而显著增加,值得注意的是,在拔节期,5.31kJ/m2UV-B辐射下,其数量显著低于对照.
+　　从表2还可看出,不同发育期,各细菌生理群数量之间具有明显差异,而且其数量随发育期表现出一定的规律性.但仅好氧性自生固氮菌数量随生育期变化的规律性被UV-B辐射改变.
+2.3 紫外辐射下,根际土壤微生物数量与土壤养分的关系
+　　UV-B辐射对土壤营养元素有效态含量有显著的影响,表现出先降低后增加的规律(表3).UV-B辐射对土壤有机质含量也有明显的影响,但对土壤pH值无影响(表3).
+表 3 紫外辐射对4个生育期土壤养分含量平均值的影响 (mg/kg )
+Table 3 The effect of UV-B radiation on average nutrient element content in soil 
+in 4 developmental stages of spring wheat (mg/kg)
+
+紫外辐射
+(kJ/m2)有效氮速效磷速效钾速效铁交换性镁速效锌有机质酸碱度
+095.93b158.07c269.14a16.98b566.70ab6.24b3.05c7.02a
+2.5490.29bc130.91d157.65c14.73c536.47b5.96b4.18a7.10a
+4.2589.31c188.42b155.89c17.10ab556.10b7.10a3.54b7.20a
+5.31110.4a206.51a228.11b18.45a595.10a7.08a3.31bc7.05a
+
+注:每列平均值后面具有相同的字母,表示在P<0.05水平差异不显著,根据LSD检验(n=4).表4同
+　　表4表明,UV-B辐射对春小麦4个发育期根际土壤微生物数量平均值也有显著的影响.比较表3和表4可知,细菌总数和解磷细菌数量与土壤有机质含量具有一致的变化规律,在2.54kJ/m2 UV-B辐射时,均具有最大值,其中,解磷细菌数量与土壤有机质含量呈显著正相关(r=0.9798, P<0.05,n=4).好氧性自生固氮菌、亚硝酸细菌和反硝化细菌数量与土壤中6种营养元素含量表现出相似的变化趋势.好氧性自生固氮菌数量与土壤磷含量呈显著正相关(r=0.9650,P<0.05,n=4),亚硝酸细菌数量与土壤速效镁含量呈极显著正相关(r=0.9965,P<0.01,n=4).
+表 4 紫外辐射与4个生育期春小麦根际土壤微生物平均数量的关系 (103/g干土 )
+Table 4 The relation between UV-B radiation and the average quantity of spring wheat rhizospheremicroorganisms in 4 developmental stages (103/g dry soil)
+
+紫外辐射
+(kJ/m2)　 细菌放线菌真　菌好氧性自
+生固氮菌亚硝酸
+细　菌反硝化
+细　菌好氧性纤维
+素分解菌解磷
+细菌
+03956c358.5b19.3c2.781a1.998b32.09a0.173d7.675d
+2.546220a467.4a29.8a0.884c0.596d20.79d0.244c16.269a
+4.254300b258.0c20.0c0.886c1.405c25.15c0.303b12.952b
+5.313224b494.0a26.3b1.122b2.981a28.98b0.425a10.371c
+
+
+3 讨论
+　　由于UV-B辐射对土壤的穿透能力很弱,根际微生物不能直接接受UV-B辐射,因此,它对UV-B辐射的响应可能是间接的.在UV-B辐射下,春小麦生长、发育和产量的降低,导致土壤营养成分的变化(另文发表),都会间接影响根际微生物数量[10,11].另外,UV-B辐射还会诱导黄酮、丹宁等次生代谢产物通过根系排出的数量,从而影响植物与根际微生物之间的共生关系[12].根际微生物数量的变化程度还依赖于其与根际的密切程度,表现为细菌>真菌>放线菌,这与王敬国[13]和刁治民[6]报道的结果是一致的.此外,细菌个体小,生育期短,对环境变化响应快的特点,也是其数量变化较大的重要原因[2,3].根际微生物数量随生育期的变化,可能是由于不同生育期根系生理代谢、脱落物和分泌物的差异[6,11],也可能与土壤水分的季节变化有关.
+基金项目：国家自然科学基金资助项目(39670132)
+作者单位：李 元　王勋陵兰州大学生物系,甘肃 兰州 730000
+          李 元　杨济龙云南农业大学环境科学系,云南 昆明 650201
+          胡之德　兰州大学化学系,甘肃 兰州 730000)
+作者简介：李 元(1963-),男,云南大姚人,云南农业大学环境科学系副教授、博士,主要从事环境生态学和生态农业研究.参加“Pb、Cd、Zn在植物―动物系统中迁移及受害机制研究”(获国家教委科技进步三等奖)；“小甸头村农业生态系统的系统分析及其调控途径的研究”(获云南省科技进步三等奖)等研究工作.发表论文20余篇.
+收稿日期：1998-07-23
+参考文献：
+　[1]Gehrke C, Jahonson U, Callaghan T V,et al.The impact of enhanced UV-B radiation on litter quality and decomposition processes in Vaccinium leaves from the subarctic [J]. Oikos, 1995,72:213-222.
+　[2]Herndl G J,Mueller-Niklas G,Frick J.Major role of ultraviolet-B radiation in controlling bacterioplankton growth in the surfa-celayer of the ocean [J].Nature,1993,361: 717-719.
+　[3]Hader D P,Worrest R C,Kumar H D,et al.Effects of increased solar ultraviolet radiation on aquatic ecosystems [J].Ambio, 1995,24:174-180.
+　[4]Zepp R G,Callaghan T V,Erickson D J.Effects of increased solar ultraviolet radiation on biogeochemical cycles [J]. Ambio,1995,24:181-187.
+　[5]Tyagi R,Srinivas G,Vyas D,et al.Differential effect of ultraviolet-B radiation on certain metabolic processes in a chromatically adapting Nostoc [J].Photochem.Photobiol.,1992,55: 401- 407.
+　[6]刁治民.西宁地区春小麦土壤微生物根际效应的研究 [J].土壤肥料,1996,(2):27-30.
+　[7]中国科学院南京土壤研究所微生物室.土壤微生物研究法 [M].北京:科学出版社,1985.44-59.
+　[8]于天仁,王振权.土壤分析化学 [M].北京:科学出版社, 1988,62-149.
+　[9]王宏年.生物统计学 [M].兰州:兰州大学出版社,1988.226-230.
+　[10]Newman E I.The rhizosphere:carbon sources and microbial. populations [A].Fitter AF.Ecological interaction in soil [C]. UK:Spire Print Services Ltd, 1986. 107-122.
+　[11]刘芷宇.根际微域环境的研究 [J].土壤,1993,25(5): 225-230.
+　[12]Rozema J,Van de Staaij J,Bjorn L O,et al.UV-B as an environmental factor in plant life:stress and regulation [J].Tree,1997, 12:22-28.
+　[13]王敬国.微生物与根际中物质的循环 [J].北京农业大学学报,1993,19(4):98-105.

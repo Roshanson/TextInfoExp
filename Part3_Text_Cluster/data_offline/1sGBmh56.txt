@@ -1,0 +1,95 @@
+中国环境科学
+CHINA ENVIRONMENTAL SCIENCE
+1998年 第18卷 第5期 No.5 Vol.18 1998
+科技期刊
+
+负载型TiO2固定相光催化氧化法降解水中呋码唑酮
+包　南　王吉顺　（山东大学环境工程系，济南 250100）
+邓丛蕊　陈艳晶　（济南大学化学系，济南 250002）
+文　摘　以高压汞灯为光源、负载在海砂上的TiO2为催化剂,采用敞口固定床型光催化反应器对水中难降解的呋码唑酮(FTD)进行了固定相光催化氧化实验。结果表明,反应速率可用Langmuir-Hinshelwood方程描述,与光分解相比,光催化氧化的突出优点是矿化程度高,相同光辐射条件下反应100min,0.10mmol/L的FTD水溶液经光催化氧化后TOC的去除率为89.1%,而经光分解后TOC的去除率仅为28.8%;在反应体系中投加少量臭氧或过氧化氢可以显著提高FTD的氧化效率,说明光催化氧化可以兼容O3/UV、H2O2/UV等光激发氧化工艺。制得的负载型TiO2具有较高的机械强度和化学稳定性,可重复利用。探讨了充氧、FTD浓度及pH值等对光催化氧化过程的影响。
+关键词　光催化氧化　负载TiO2　呋码唑酮
+Immobilized photocatalytic oxidation of furaltadone in aqueous solution.Bao Nan,Wang Jishun(Department of Environmental Engineering, Shandong University, Jinan 250100)；Deng Congrui, Chen Yanjing(Department of Chemistry, Jinan University, Jinan 250002).China Environmental Science.1998,18(5):458～462
+Abstract―Immobilized photocatalytic oxidation of furaltadone (FTD) was investigated in an open fixed-bed photoreactor illuminated with a 125W high pressure mercury lamp and using supported TiO2-coated sand as catalyst. It was found that photocatalytic oxidation has considerably more effective on the removal of TOC in FTD solution than photolysis under the same illumination condition. After 100 min of photocatalytic oxidation, 91.7% of FTD in a 0.10mmol/L aqueous solution was degraded and 89.1% of TOC was removed. With photolysis alone, 79.4% of FTD was degraded and only 28.8% of TOC was removed in the same period. The rate of photocatalytic oxidation can be expressed by the Langmuir-Hinshelwood Equation.When small amount of either ozone or hydrogen peroxide was added to this system, the degradation was enhanced significantly.This results suggest that the method can be compatible with other Advanced Oxidation Processes(AOPs) such as O3/UV or H2O2/UV method where UV light is also applied.The effects of bubbling with pure oxygen, initial concentration and pH were also studied. Moreover, the supported TiO2 catalytic material is very stable mechanically and chemically, and can be re-used.
+Key words:photocatalytic oxidation　supported TiO2　furaltadone
+　　呋码唑酮(以下简称FTD)是一种硝基呋喃类广谱抗生素,目前主要用作饲料添加剂,对防治畜禽肠道疾病和球虫病有特效〔1,2〕,结构式为:
+
+　　FTD易溶于水,分子结构中含有对生物降解呈强抑制作用的硝基和吗啉环,并具有高共轭体系,生产所排放的酱色废母液中CODCr可高达2×105mg/L,其废水处理问题迄今未彻底解决。事实上,抗生素工业废水经现有的一些处理工艺处理后,出水往往仍难达标排放〔3〕。
+　　光催化氧化法是一种始于70年代的深度氧化过程(Advanced Oxidation Processes, AOP),如今已受到了广泛的关注,该法能有效地氧化水中许多难降解有机污染物,达到除毒、脱色、去臭、直至矿化为无机小分子的目的〔4,5〕,然而通常的悬浮相光催化氧化法存在着催化剂易失活、易凝聚和难分离等固有弊端。采用负载型半导体材料作为光催化剂的固定相光催化氧化法,能够有效地克服上述不足,从而成为这项技术新的研究热点〔4～7〕。在前人工作的基础上,本研究采用简易的方法将锐钛矿型TiO2负载在海砂上制得负载型光催化剂,进行了固定相光催化氧化法降解水中低浓度FTD的实验,旨在探索该法去除水体中低浓度硝基呋喃类抗生素及深度处理其工业废水的可行性。
+1　实验部分
+1.1　试剂及仪器
+　　TiO2纯度大于99.9%(济南裕兴化工厂产品);呋码唑酮盐酸盐纯度大于99%(济南金源药化有限公司产品)。
+　　125W高压汞灯(Emax365nm);岛津UV-3000型分光光度计;pHS-3C型酸度计;IONICS-1270M型总有机碳分析仪;B-52型超声波清洗仪(248W);XFZ-5BⅠ型臭氧发生器。
+1.2　负载型TiO2光催化剂的制备
+　　在超声波预处理的基础上,采用浸渍―烧结固定法制备。经冲洗、烘干的海砂被筛分成相对均匀的粒径后被用作TiO2的载体。首先用定量配制好的TiO2悬浊液浸渍适量海砂(二者预先分别用超声波处理),在一定时间的超声波振荡下使TiO2分布均匀,烘干,500℃灼烧1h。经以上过程制得的负载型TiO2经X射线衍射分析,证明为锐钛矿晶型。
+1.3　实验过程与分析方法
+　　将负载型TiO2均匀地置于直径145 mm、高70 mm的结晶皿底部,即构成实验使用的固定床型光催化反应器,反应器套在铝质反光筒内,光源上方加装了内衬铝箔的铝质反光罩。实验以间歇批量方式进行,250mL FTD溶液作为反应液加入反应器后,置于已开启并预热好的汞灯下照射,并以蠕动泵循环,控制流速为130mL/min。反应液有效水深15mm,光源距液面110mm,定时取样分析。
+　　FTD的最大吸收波长(λmax)位于364±2nm处。在pH值为2～12范围内,其λmax及吸光度(A)基本不变;且λmax在降解反应过程中不变,故以364nm处的C-A标准曲线测定FTD的浓度(C)。TOC的测定按国家环保总局编制的《水和废水监测分析方法》(第3版)进行。
+2　结果与讨论
+2.1　光分解与光催化氧化效果的比较
+　　光分解与固定相光催化氧化(光催化)效果的比较见图1。
+
+图1　FTD的光分解与光催化氧化
+Fig.1　FTD photolysis and photocatalytic oxidation
+○ 光分解　● 光催化
+　　由图1(a)看出,不加催化剂时FTD的单纯光分解就十分明显。这是因为光源的Emax与FTD的λmax基本吻合,光源的光引发效率和FTD的光谱响应处于最佳匹配,FTD分子极易被光分解所破坏。相比之下,光催化时,由于负载型光催化剂位于反应器底部,光的穿透深度与光分解时相差很小,所以包含了光分解作用在内的光催化氧化对FTD具有更高的降解速率。
+　　如果说光催化在降解速率方面的优势尚不明显,那么其对TOC的去除效果则远远优于光分解,比较图1中的(a)与(b)可看出,初始浓度0.10mmol/L的FTD同样历时100min的反应,经光催化和光分解后,降解率分别为91.7%和79.4%,TOC去除率分别为89.1%和28.8%。事实上,FTD的分子结构被破坏并生成对365nm紫外光吸收很少的小分子物质之后,光分解作用便随之减弱,而光催化过程中可产生大量非选择性强氧化剂OH*，其氧化能力分别是O3和H2O2的1.35和1.58倍〔7〕。因而在该处理方式下,FTD及其降解中间体都能被有效地氧化,持续反应则可实现完全矿化。
+　　需说明的是,暗室对照实验表明,非光分解因素造成的FTD损失可完全忽略。
+2.2　FTD初始浓度的影响
+　　根据实验结果,可得到不同初始浓度(C0)下FTD的初始反应速率(r0)，见图2。
+
+图2　初始反应速率与初始浓度的关系
+Fig.2　Relationship between the initial rate and the initial concentration
+● r0对C0作图　○ 1/r0对1/C0作图
+　　由图2(a)看出,FTD的浓度不大于0.15 mmol/L时,r0与C0正相关;浓度再增大,则r0随C0增加的幅度趋于平缓。研究证明,TiO2悬浮相光催化氧化的反应速率遵循Langmuir-Hinshelwood(L-H)方程〔4,8〕: r0=kKC0/(1+KC0)式中:k为表面反应速率常数;K为表观吸附平衡常数。将图2(a)的结果用L-H方程的等效式1/r0=1/kKC0+1/k进行拟合,得到一条线性关系很好的直线(r=0.996,图2(b)),并求得k=2.44×10-3mol/h, K=1471L/mol,表明实验条件下,FTD的固定相光催化氧化亦可用L-H方程来描述;分析还表明,当C0≤0.15mmol/L时,以lgr0对lgC0作图得一直线(r=0.995),其斜率为1.02,说明反应符合一级动力学规律,这与L-H方程在低浓度(KC0＜1)时的表达式:r0=kKC0=K′（K′=kK)C0是一致的。
+2.3　初始pH值的影响
+　　FTD的初始浓度为0.05mmol/L,初始反应速率随pH值的变化情况见图3。
+　　图3表明,较高的反应速率出现在高pH值和低pH值区域,且低pH值下更有利。根据光催化氧化的反应机理〔7〕,OH*可以有不同来源，高pH值条件下,OH*易通过OH-直接迁移至光活性的TiO2表面,进而俘获光生空穴而产生;低pH值条件下,OH*易通过H+与被吸附O-2系列结合,在形成H2O2的基础上进一步反应生成,多数研究认为,OH*更易通过后一种途径产生〔8,9〕。可见,光催化较高的反应速率在高pH值和低pH值条件下都可能出现,在一定的条件下,pH值低时可能更为有利。
+
+图3　初始反应速率与初始pH值的关系
+Fig.3　Relationship between the initial rate and the initial pH
+2.4　外加氧化剂的影响
+　　促进OH*的生成与抑制催化剂表面光生电子(e-)和光生空穴(h+)的简单复合是提高光催化氧化反应速率和效率的重要途径。众所周知,UV-O3、UV-H2O2法等光激发氧化工艺与光催化氧化法同属深度氧化过程,在反应过程中既能生成OH*，又能分解出O2,而O2溶于水后的溶解氧(DO)是e-的俘获剂,二者结合生成O-2后经质子化作用后作为OH*的一个来源。因此，通过下面的实验将常见的光激发氧化工艺与固定相光催化氧化法结合起来以考察其兼容性。FTD的初始浓度均为0.05mmol/L。
+2.4.1　通O2或O3的影响　 分别向反应液中通入O2和O3,流量均为0.03m3/h,实验中O3的投加率为1mg/min,同时进行固定相光催化氧化试验,结果如图4所示。
+　　 不投加氧化剂时曾对历时2h的反应进行了DO浓度的在线测定,发现反应后反应液温度由22℃升至29℃,体系DO值由8.6mg/L降至8.1mg/L,说明反应过程基本不亏氧,所以通O2对FTD降解的促进作用较小(图4),然而通O3后其降解速率却大大提高了,图4显示,通O3反应30min,FTD就降解了90.9%,而单纯光催化反应30min和100min,FTD分别降解了67.8%和90.4%。这是因为1mol O3在紫外辐射下可生成2mol OH*，同时O3本身就是强氧化剂,因此投加少量O3可显著提高反应速率,说明光催化氧化法与UV-O3法是可以相互兼容的。
+
+图4　通O2或通O3对光催化氧化过程的影响
+Fig.4　Effect of O2 or O3 on the photocatalytic oxidation of FTD
+2.4.2　加入H2O2的影响　固定光照时间30min,反应液中H2O2浓度对光降解影响见图5。
+
+图5　H2O2浓度对光催化氧化过程的影响
+Fig.5　Effect of H2O2 concentration on the photocatalytic oxidation of FTD
+　　 由图5看出,H2O2浓度在4 mmol/L以下时,FTD的降解随H2O2浓度的增大而加剧,并在1.9mmol/L时FTD就降解了94.6%,但H2O2浓度再升高则降解情况基本不变,即其利用率反而下降。究其原因,一方面H2O2是比DO更好的e-捕获剂,可有效降低e-/h+的复合率并以各种方式生成OH*；另一方面它又是OH*的清除剂，过量的H2O2会消耗OH*〔4〕。
+2.5　UV-VIS吸收光谱分析
+　　在图1的实验条件下,FTD溶液经不同时间光催化反应后的吸收光谱见图6。
+
+图6　FTD在光催化氧化过程中的吸收光谱
+Fig.6　UV-VIS adsorption spectra of FTD in
+different time interval of photocalytic oxidation
+处理时间(min):1.0 2.10 3.30 4.60 5.90 6.120 7.180
+　　由图6看出,FTD的光谱吸收随反应时间的延长而下降,反应1.5h后,其在可见区的吸收及近紫外区的两个特征吸收峰接近完全消失,且长波区吸收降低的幅度更大。但在波长200～230nm范围内,吸收值却随反应的进行而升高,说明生成了在该区域有明显特征吸收的矿化产物NO-２和NO-3〔10〕,这可能是因为OH*和FTD分子中的-NO2发生羟基取代反应所致,-NO2脱落后在水溶液中形成NO-２,而后者极易氧化为NO-3。结合前述TOC的测定结果进一步说明,在光催化氧化过程中,FTD分子破坏为无色小分子物质的分解作用及矿化作用是同步进行的,而高共轭体系和兼具生物毒性的发色基团(-NO2)更易被破坏。
+　　固定光照100min,其它条件同图4,FTD溶液经不同方式处理后的吸收光谱见图7。
+　　 针对图7,比较230nm以上的吸收强度发现,经3种方式处理后,只有通O3时的吸收降低到接近空白值,而通O2与光谱吸收的降低程度差别不大,这与图4相对应;再比较200～230nm区间内形成的吸收峰则发现,通O2或O3后,该峰吸收均明显增大,这从一个侧面反映出矿化程度的提高。可见,通O2对FTD降解的促进作用虽小,但却能强化其矿化作用,因为光催化氧化属多相催化,有机物向光催化剂表面的扩散受传质速率的制约,通O2提高了传质速率,从而提高了矿化效率;而通O3后,不仅提高了传质速率,更重要的是有两种深度氧化过程同时存在,OH*的浓度大大增加，从而使FTD的分解和矿化作用都得以显著提高。
+
+图7　FTD经不同方式处理前后的吸收光谱
+Fig.7　UV-VIS adsorption spectra of FTD under various disposal models
+处理方式：1.处理前　2.不通O2和O3　3.通O2　4.通O3
+2.6　光催化剂的使用寿命及稳定性
+　　对FTD初始浓度均为0.05mmol/L进行重复实验,每次光照100min后取样分析,结果表明,连续使用20次光催化剂的催化活性未见降低。此外,用蒸馏水代替FTD溶液进行了两组实验:在体系中通入0.08m3/h的O2;使循环液流速提高至180mL/min,每次实验100min,期间定时取样测定表面液体的浊度。结果表明,测得的水样浊度均在3.0±0.4度(NTU)范围内,说明载体海砂间碰撞等因素造成的TiO2的脱落可以忽略,制得的负载型TiO2光催化剂的机械稳定性较高。
+3　结论
+3.1　在实验条件下,固定相光催化氧化与单纯光分解都能有效地光解水中生物难降解的FTD,但前者的氧化效率高,特别是矿化程度高。
+3.2　低pH值或高pH值、在反应液中通入少量O2或O3以及投加少而适量的H2O2均有利于提高光催化氧化效率,其中又以通O3和加H2O2的效果最佳,表明光催化氧化法可以兼容UV-O3及UV-H2O2等光激发氧化工艺。
+3.3　制得的负载型TiO2光催化剂化学稳定性和机械稳定性高,可重复利用。固定相光催化氧化法不仅能够克服悬浮相光催化氧化法的缺点,而且便于改进和放大后应用于工业化水处理。
+参考文献
+1　张　乔主编.饲料添加剂大全.北京:北京工业大学出版社,1994.697
+2　西蒂 M编著(美).苏焕臣等译.药物制造百科全书.长春:长春出版社,1991.407
+3　杨　军,陆正禹,胡纪萃等.抗生素工业废水生物处理技术的现状与展望.环境科学,1997,18(3):83～85
+4　Ollis D F,E Pelizzetti，N Serpone. Destruction of water contaminants. Environ.Sci. Technol.,1991, 25(9):1523～1529
+5　Haarstrick A,O M Kut，E Heinzle. TiO2-assisted degradation of environmentally relevant organic compounds in wastewater using a novel fluidized bed photoreactor.Environ. Sci.Technol., 1996,30(3): 817～824
+6　Matthews R W.Photooxidative degradation of coloured organics in water using supported catalysts TiO2 on sand. Wat.Res.,1991,25(10): 1169～1176
+7　Zhu H,Zhang M P,Xia Z F,et al.Titanium dioxide mediated photocatalytic degradation of monocroto-phos.Wat.Res., 1995,29(12):2681～2688
+8　Jean-Christophe D′Ollveira,et al.Photodegradation of 2-and 3-chlorophenol in TiO2 aqueous suspen-sions.Environ.Sci.Technol.,1990,24(7):990～996
+9　胡　春,王怡中,汤鸿霄.多相光催化氧化的理论与实践发展.环境科学进展, 1995,3(1):55～64
+10　尹　军,王宝贞.水中硝基芳烃的臭氧化去除机理初探.水处理技术,1985,11(3):19～25
+作者简介
+包　南　男,1962年3月生。硕士、副教授,山东大学水处理教研室主任。主要从事水污染控制、环境监测及环境影响评价等方面的教学和科研工作。曾主要承担并完成了国家环保总局科技三项费用资助的“便携式富集柱型环境水质有机污染物自动取样器”等6项课题的研究,获两项国家实用新型专利。发表论文10余篇。
+收稿日期：1998-02-04
