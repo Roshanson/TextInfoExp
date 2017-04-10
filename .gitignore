@@ -13,7 +13,7 @@ Part2_Text_Classify/test/
 Part3_Text_Cluster/data_temp/
 Part3_Text_Cluster/data_temp2/
 Part3_Text_Cluster/res_temp/
-Part3_Text_Cluster/src/
+Part3_Text_Cluster/src/*.txt
 Part3_Text_Cluster/data.txt
 
 
