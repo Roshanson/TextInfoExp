@@ -10,6 +10,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')  # 设置默认编码为utf-8
 
 
+## 计算词频的例子
 def com_tf():
     f = open('data/7s.txt', 'r')
     data = f.read()
