@@ -7,6 +7,7 @@ import jieba
 import random
 import string
 import pandas as pd
+from sklearn import metrics
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -101,9 +102,29 @@ def trans_res():
     f.close()
 
 
+def get_metrics():
+    dict_lable = {'eco': 0, 'env': 1, 'sports': 2, 'other': 3}
+    data = pd.read_table('id2class.txt', header=None, delim_whitespace=True)
+    data2 = pd.read_table('result.txt', header=None, delim_whitespace=True)
+    list_true = []
+    list_pred = []
+    for i in range(len(data)):
+        data.iloc[i, 1] = dict_lable[data.iloc[i, 1]]
+        list_true.append(data.iloc[i, 1])
+        list_pred.append(data2.iloc[i, 1])
+
+    # print (list_pred, list_true)
+    # print (len(list_true), len(list_pred))
+
+    print (metrics.adjusted_rand_score(list_true, list_pred))            # RI指数，越接近1越好
+    print (metrics.adjusted_mutual_info_score(list_true, list_pred))     # NMI指数，越接近1越好
+    print (metrics.fowlkes_mallows_score(list_true,list_pred))           # FMI指数，越接近1越好
+
+
 if __name__ == '__main__':
-    list1 = ['agriculture','history','medical','politics','space','other']
-    for i in list1:
-        trans_text(i)
+    get_metrics()
+    # list1 = ['agriculture','history','medical','politics','space','other']
+    # for i in list1:
+    #     trans_text(i)
     # get_text()
     # trans_res()

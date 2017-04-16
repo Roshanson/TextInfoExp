@@ -7,15 +7,14 @@ from bs4 import BeautifulSoup
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-base_path = os.getcwd().replace('\\','/')
+base_path = os.getcwd().replace('\\', '/')
 print base_path
 
-
 # path='/home/mbtrec/mhwang/pro/computer/'
-path = base_path+'/data/computer/'  # 原始数据
-path1 = base_path+'/data/title_and_abs/'  # 处理后的标题和摘要
-newpath = base_path+'/data/pro_keyword/'
-newpath2 = base_path+'/data/keyword/'
+path = base_path + '/data/computer/'  # 原始数据
+path1 = base_path + '/data/title_and_abs/'  # 处理后的标题和摘要
+newpath = base_path + '/data/pro_keyword/'
+newpath2 = base_path + '/data/keyword/'
 
 filelist = os.listdir(path)  # 取得当前路径下的所有文件
 
@@ -75,6 +74,21 @@ def get_keyword():
         f2.close()
 
 
+def tfidf_sklearn():
+    import jieba
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    def jieba_tokenize(text):
+        return jieba.cut(text)
+
+    tfidf_vectorizer = TfidfVectorizer(tokenizer=jieba_tokenize, lowercase=False)
+    f = open("./data/7s.txt", 'r')
+    data = f.read()
+    data_list = [data]
+    tfidf_matrix = tfidf_vectorizer.fit_transform(data_list)
+    print (tfidf_matrix)
+
+
 if __name__ == '__main__':
-    get_text()
+    # get_text()
     # get_keyword()
+    tfidf_sklearn()

@@ -1,5 +1,4 @@
-# D:\Python27
-# -*- coding:utf-8 -*-
+# encoding:utf-8
 import jieba
 import logging
 import sys
@@ -12,6 +11,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.cluster import KMeans
 from collections import Counter
+from sklearn import metrics
 import matplotlib.pyplot as plt
 
 
@@ -127,6 +127,7 @@ class TextCluster(object):
             # 聚类分析
             km = KMeans(n_clusters=num_clusters)
             km.fit(tfidf_matrix)
+            print (metrics.silhouette_score(tfidf_matrix, km.labels_, metric='euclidean'))
             print (Counter(km.labels_))  # 打印每个类多少人
             # 中心点
             # print(km.cluster_centers_)
