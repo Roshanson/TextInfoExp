@@ -113,12 +113,14 @@ def get_metrics():
         list_true.append(data.iloc[i, 1])
         list_pred.append(data2.iloc[i, 1])
 
-    # print (list_pred, list_true)
-    # print (len(list_true), len(list_pred))
-
-    print (metrics.adjusted_rand_score(list_true, list_pred))            # RI指数，越接近1越好
-    print (metrics.adjusted_mutual_info_score(list_true, list_pred))     # NMI指数，越接近1越好
-    print (metrics.fowlkes_mallows_score(list_true,list_pred))           # FMI指数，越接近1越好
+    # 文档链接 http://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation
+    #  2.3.9.1 Adjusted Rand index （RI）
+    #  2.3.9.2. Mutual Information based scores（NMI）
+    #  2.3.9.4. Fowlkes-Mallows scores（FMI）
+    #  章节号为文档里面的章节号
+    print (metrics.adjusted_rand_score(list_true, list_pred))  # RI指数，越接近1越好
+    print (metrics.adjusted_mutual_info_score(list_true, list_pred))  # NMI指数，越接近1越好
+    print (metrics.fowlkes_mallows_score(list_true, list_pred))  # FMI指数，越接近1越好
 
 
 if __name__ == '__main__':
