@@ -16,5 +16,7 @@ Part3_Text_Cluster/res_temp/
 Part3_Text_Cluster/src/*.txt
 Part3_Text_Cluster/data.txt
 
+Part4_Word_Similarity/get_data.py
+
 
 
