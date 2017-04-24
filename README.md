@@ -1,6 +1,6 @@
-###1  安装python（2.7）  https://www.python.org/
+### 1  安装python（2.7）  https://www.python.org/
 
-###2  安装pip：
+### 2  安装pip：
 
 2.1 下载pip     https://pypi.python.org/pypi/pip/9.0.1 
 
@@ -11,9 +11,9 @@
 2.4 pip安装扩展包 pip install jieba （这里以jieba包为例），如果速度较慢，课改为国内的阿里源，
     即 pip install jieba -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com 
 
-###3  安装pycharm       http://www.jetbrains.com/pycharm/
+### 3  安装pycharm       http://www.jetbrains.com/pycharm/
 
-###4  使用GitHub获取代码
+### 4  使用GitHub获取代码
 
 4.1  安装git    https://git-scm.com/ 
 
@@ -24,7 +24,3 @@
     登陆自己的账号后选择相应的项目，得到代码。
     
 4.4  （更新fork的项目到最新的版本）Syncing a fork  https://help.github.com/articles/syncing-a-fork/
-         
-  
-  
- 
