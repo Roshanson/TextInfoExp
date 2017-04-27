@@ -8,7 +8,7 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 base_path = os.getcwd().replace('\\', '/')
-print base_path
+# print base_path
 
 # path='/home/mbtrec/mhwang/pro/computer/'
 path = base_path + '/data/computer/'  # 原始数据
@@ -89,6 +89,6 @@ def tfidf_sklearn():
 
 
 if __name__ == '__main__':
-    # get_text()
+    get_text()
     # get_keyword()
-    tfidf_sklearn()
+    # tfidf_sklearn()
