@@ -1,3 +1,7 @@
+##  word2vec(c语言版下载地址)
+
+  链接: https://pan.baidu.com/s/1nuOviJ3 密码: 4725)
+
 ##  参考文档
 
 ###  同义词词林相似度计算参考链接 
