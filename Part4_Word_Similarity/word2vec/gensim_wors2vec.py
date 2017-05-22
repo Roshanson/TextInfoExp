@@ -17,6 +17,7 @@ model = word2vec.Word2Vec(sentences, size=100)  # 训练skip-gram模型
 
 # 保存模型，以便重用
 model.save("corpus.model")
+
 # 对应的加载方式
 # model = word2vec.Word2Vec.load("corpus.model")
 
