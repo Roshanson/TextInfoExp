@@ -26,3 +26,11 @@
     登陆自己的账号后选择相应的项目，得到代码。
     
 4.4  （更新fork的项目到最新的版本）Syncing a fork  https://help.github.com/articles/syncing-a-fork/
+
+### 5 python交互式开发环境
+
+5.1  安装ipython  pip install ipython 
+
+5.2  安装jupyter（即notebook） pip install notebook
+
+5.3  jupyter notebook 启动，打开浏览器即可（默认1224端口）
