@@ -3,7 +3,9 @@
 
  核心代码 fork from https://github.com/chaoming0625/SentimentPolarityAnalysis.git
   
- 其中有5各数据集，3个中文2个英文。
+ 调整代码在当前环境可直接运行，直接晕车test.py即可
+  
+ f_corpus中有5各数据集，3个中文2个英文。
  
  分类器有 KNN SVM bayes 最大熵 基于字典 5种，但除了使用sklearn的SVM可以调试通过外，
  
