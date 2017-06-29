@@ -1,7 +1,5 @@
 # encoding:utf-8
 
-__author__ = 'hbj'
-
 import jieba.posseg as pseg
 import os
 import os.path

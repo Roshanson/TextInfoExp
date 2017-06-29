@@ -2,8 +2,9 @@
 Part1_TF-IDF_TF-IDF/.idea/
 Part1_TF-IDF/results.txt
 Part1_TF-IDF/data/pro_res.txt
-
+Part1_TF-IDF/src/.pyc
 Part1_TF-IDF/data/pro_keyword/
+
 Part2_Text_Classify/data/
 Part2_Text_Classify/src/id2class2.txt
 Part2_Text_Classify/src/result.txt
