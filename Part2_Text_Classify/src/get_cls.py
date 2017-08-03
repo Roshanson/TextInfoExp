@@ -130,5 +130,5 @@ def get_classify():
 
 
 if __name__ == '__main__':
-    # data_preprocess()
+    data_preprocess()
     get_classify()
