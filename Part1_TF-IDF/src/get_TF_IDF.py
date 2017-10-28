@@ -13,7 +13,7 @@ def TF_IDF_Compute(file_import_url_temp):
     word_in_afile_stat = {}
     word_in_allfiles_stat = {}
     files_num = 0
-    while (data != ""):  # 对文件pro_res.txt进行处理
+    while data != "":  # 对文件pro_res.txt进行处理
         data_temp_1 = data.strip("\n").split("\t")  # file name and key words of a file
         data_temp_2 = data_temp_1[1].split(",")  # key words of a file
         file_name = data_temp_1[0]
