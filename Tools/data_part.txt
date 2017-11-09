@@ -1,0 +1,30 @@
+entailment   Two women stand in a kitchen and wipe down trays   Two women are doing dishes.
+entailment   The man in black is flying off the full in front of a red fence.   The man is next to the fence.
+neutral   The man in black is flying off the full in front of a red fence.   The man wearing black pants and a black jacket is in front of the fence.
+contradiction   The man in black is flying off the full in front of a red fence.   A man wearing pink is next to the blue fence.
+contradiction   Swimming in the wide blue ocean.   The ocean swims in the blue wideness.
+neutral   Swimming in the wide blue ocean.   It is the backstroke.
+entailment   Swimming in the wide blue ocean.   Some is staying afloat and moving in water.
+entailment   A bird is perched on a tree branch.   A bird is perching in a tree.
+contradiction   A bird is perched on a tree branch.   A squirrel plays in a tree.
+neutral   A bird is perched on a tree branch.   An owl is perched on a tree branch.
+entailment   A young man sitting under a tree while others walk down the street.   A young man is sitting down.
+neutral   A young man sitting under a tree while others walk down the street.   A young man is resting.
+contradiction   A young man sitting under a tree while others walk down the street.   A young man is playing basketball.
+contradiction   Three children in a black dog kennel.   There are dogs in the kennel.
+neutral   Three children in a black dog kennel.   The kids are being punished.
+neutral   Three children in a black dog kennel.   Kids are in a cage.
+neutral   A girl with a blue shirt and a girl with a striped shirt stand next to a girl with a green shirt sitting in a chair.   The three best friends just got finished playing a game of musical chairs.
+entailment   A girl with a blue shirt and a girl with a striped shirt stand next to a girl with a green shirt sitting in a chair.   Two girls are standing next to a girl who is sitting.
+contradiction   A girl with a blue shirt and a girl with a striped shirt stand next to a girl with a green shirt sitting in a chair.   The three girls are arm wrestling in China town.
+contradiction   By a table with several boxes and two coffee cups on it, a woman in a green sweater is opening a small box and another person (whose head cannot be seen) is operating a small handheld electronic device.   Members of congress opening care packages.
+entailment   By a table with several boxes and two coffee cups on it, a woman in a green sweater is opening a small box and another person (whose head cannot be seen) is operating a small handheld electronic device.   A woman in green opening a box while a half concealed man manipulates a handheld device.
+neutral   By a table with several boxes and two coffee cups on it, a woman in a green sweater is opening a small box and another person (whose head cannot be seen) is operating a small handheld electronic device.   A woman opening boxes while her colleague checks a shipping manifest.
+entailment   Two people using a water buffalo to cultivate a watery field.   Two people are outside with animals.
+contradiction   Two people using a water buffalo to cultivate a watery field.   Two people are swimming at the gym.
+entailment   Two people using a water buffalo to cultivate a watery field.   A couple is farming with their pet buffalo.
+contradiction   Two women are laughing and smiling while they eat a meal together.   The boys had sandwiches.
+neutral   Two women are laughing and smiling while they eat a meal together.   Lilly and Sally were laughing while eating lunch.
+neutral   Two women are laughing and smiling while they eat a meal together.   Lilly and Sally were eating lunch.
+neutral   People stand along a train track and take pictures.   Photographers take photos of the scene after a train accident.
+neutral   People stand along a train track and take pictures.   Some people are walking to the train station.

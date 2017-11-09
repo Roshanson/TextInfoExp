@@ -25,3 +25,5 @@ Part1_TF-IDF/TF_IDF/__pycache__/
 Part4_Word_Similarity/word2vec/*.txt
 Part4_Word_Similarity/word2vec/corpus.model
 Part4_Word_Similarity/word2vec/corpus.model.bin
+
+Tools/data_part.txt
