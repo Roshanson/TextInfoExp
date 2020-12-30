@@ -79,7 +79,7 @@ def build_vocab(sentences):
 
 def build_input_data(sentences, labels, vocabulary):
   """
-  Maps sentencs and labels to vectors based on a vocabulary.
+  Maps sentences and labels to vectors based on a vocabulary.
   """
   x = np.array([[vocabulary[word] for word in sentence] for sentence in sentences])
   y = np.array(labels)
