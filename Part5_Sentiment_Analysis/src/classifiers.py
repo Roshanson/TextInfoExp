@@ -18,12 +18,24 @@ class DictClassifier:
 
         # 准备情感词典词典
         self.__phrase_dict = self.__get_phrase_dict()
-        self.__positive_dict = self.__get_dict(self.__root_filepath + "positive_dict.txt")
-        self.__negative_dict = self.__get_dict(self.__root_filepath + "negative_dict.txt")
-        self.__conjunction_dict = self.__get_dict(self.__root_filepath + "conjunction_dict.txt")
-        self.__punctuation_dict = self.__get_dict(self.__root_filepath + "punctuation_dict.txt")
-        self.__adverb_dict = self.__get_dict(self.__root_filepath + "adverb_dict.txt")
-        self.__denial_dict = self.__get_dict(self.__root_filepath + "denial_dict.txt")
+        self.__positive_dict = self.__get_dict(
+            f"{self.__root_filepath}positive_dict.txt"
+        )
+
+        self.__negative_dict = self.__get_dict(
+            f"{self.__root_filepath}negative_dict.txt"
+        )
+
+        self.__conjunction_dict = self.__get_dict(
+            f"{self.__root_filepath}conjunction_dict.txt"
+        )
+
+        self.__punctuation_dict = self.__get_dict(
+            f"{self.__root_filepath}punctuation_dict.txt"
+        )
+
+        self.__adverb_dict = self.__get_dict(f"{self.__root_filepath}adverb_dict.txt")
+        self.__denial_dict = self.__get_dict(f"{self.__root_filepath}denial_dict.txt")
 
     def classify(self, sentence):
         return self.analyse_sentence(sentence)
@@ -53,7 +65,7 @@ class DictClassifier:
         comment_analysis = {"score": 0}
 
         # 将评论分句
-        the_clauses = self.__divide_sentence_into_clauses(sentence + "%")
+        the_clauses = self.__divide_sentence_into_clauses(f"{sentence}%")
 
         # 对每分句进行情感分析
         for i in range(len(the_clauses)):
@@ -61,7 +73,7 @@ class DictClassifier:
             sub_clause = self.__analyse_clause(the_clauses[i].replace("。", "."), runout_filepath, print_show)
 
             # 将子句分析的数据结果添加到整体数据结构中
-            comment_analysis["su-clause" + str(i)] = sub_clause
+            comment_analysis[f"su-clause{str(i)}"] = sub_clause
             comment_analysis['score'] += sub_clause['score']
 
         if runout_filepath is not None:
@@ -76,10 +88,7 @@ class DictClassifier:
             self.__output_analysis(comment_analysis)
             print(comment_analysis)
 
-        if comment_analysis["score"] > 0:
-            return 1
-        else:
-            return 0
+        return 1 if comment_analysis["score"] > 0 else 0
 
     def __analyse_clause(self, the_clause, runout_filepath, print_show):
         sub_clause = {"score": 0, "positive": [], "negative": [], "conjunction": [], "punctuation": [], "pattern": []}
@@ -112,15 +121,17 @@ class DictClassifier:
             sub_clause["score"] += judgement["score"]
             if judgement["score"] >= 0:
                 sub_clause["positive"].append(judgement)
-            elif judgement["score"] < 0:
+            else:
                 sub_clause["negative"].append(judgement)
             match_result = judgement["key"].split(":")[-1]
             i = 0
             while i < len(seg_result):
-                if seg_result[i].word in match_result:
-                    if i + 1 == len(seg_result) or seg_result[i + 1].word in match_result:
-                        del (seg_result[i])
-                        continue
+                if seg_result[i].word in match_result and (
+                    i + 1 == len(seg_result)
+                    or seg_result[i + 1].word in match_result
+                ):
+                    del (seg_result[i])
+                    continue
                 i += 1
 
         # 逐个分析分词
@@ -153,10 +164,7 @@ class DictClassifier:
     def __is_clause_pattern2(the_clause):
         re_pattern = re.compile(r".*(如果|要是|希望).+就[\u4e00-\u9fa5]+(好|完美)了")
         match = re_pattern.match(the_clause)
-        if match is not None:
-            pattern = {"key": "如果…就好了", "value": 1.0}
-            return pattern
-        return ""
+        return {"key": "如果…就好了", "value": 1.0} if match is not None else ""
 
     def __is_clause_pattern3(self, the_clause, seg_result):
         for a_phrase in self.__phrase_dict:
@@ -172,9 +180,12 @@ class DictClassifier:
             if match is not None:
                 can_continue = True
                 pos = [flag for word, flag in posseg.cut(match.group())]
-                if "between_tag" in keys:
-                    if a_phrase["between_tag"] not in pos and len(pos) > 2:
-                        can_continue = False
+                if (
+                    "between_tag" in keys
+                    and a_phrase["between_tag"] not in pos
+                    and len(pos) > 2
+                ):
+                    can_continue = False
 
                 if can_continue:
                     for i in range(len(seg_result)):
@@ -208,30 +219,22 @@ class DictClassifier:
 
         # 判断是否是负向情感词
         judgement = self.__is_word_negative(the_word, seg_result, index)
-        if judgement != "":
-            return 4, judgement
-
-        return 0, ""
+        return (4, judgement) if judgement != "" else (0, "")
 
     @staticmethod
     def __is_clause_pattern1(the_clause):
         re_pattern = re.compile(r".*(要|选)的.+(送|给).*")
         match = re_pattern.match(the_clause)
-        if match is not None:
-            pattern = {"key": "要的是…给的是…", "value": 1}
-            return pattern
-        return ""
+        return {"key": "要的是…给的是…", "value": 1} if match is not None else ""
 
     def __is_word_conjunction(self, the_word):
         if the_word in self.__conjunction_dict:
-            conjunction = {"key": the_word, "value": self.__conjunction_dict[the_word]}
-            return conjunction
+            return {"key": the_word, "value": self.__conjunction_dict[the_word]}
         return ""
 
     def __is_word_punctuation(self, the_word):
         if the_word in self.__punctuation_dict:
-            punctuation = {"key": the_word, "value": self.__punctuation_dict[the_word]}
-            return punctuation
+            return {"key": the_word, "value": self.__punctuation_dict[the_word]}
         return ""
 
     def __is_word_positive(self, the_word, seg_result, index):
@@ -329,8 +332,8 @@ class DictClassifier:
         output = "Score:" + str(comment_analysis["score"]) + "\n"
 
         for i in range(len(comment_analysis) - 1):
-            output += "Sub-clause" + str(i) + ": "
-            clause = comment_analysis["su-clause" + str(i)]
+            output += f"Sub-clause{str(i)}: "
+            clause = comment_analysis[f"su-clause{str(i)}"]
             if len(clause["conjunction"]) > 0:
                 output += "conjunction:"
                 for punctuation in clause["conjunction"]:
@@ -378,29 +381,27 @@ class DictClassifier:
         pattern = re.compile(r"([，、。%！；？?,!～~.… ]*)([\u4e00-\u9fa5]*?(要|选)"
                              r"的.+(送|给)[\u4e00-\u9fa5]+?[，。！%；、？?,!～~.… ]+)")
         match = re.search(pattern, the_sentence.strip())
-        if match is not None and len(self.__split_sentence(match.group(2))) <= 2:
-            to_delete = []
-            for i in range(len(the_clauses)):
-                if the_clauses[i] in match.group(2):
-                    to_delete.append(i)
-            if len(to_delete) > 0:
-                for i in range(len(to_delete)):
+        if match is not None and len(self.__split_sentence(match[2])) <= 2:
+            if to_delete := [
+                i for i in range(len(the_clauses)) if the_clauses[i] in match[2]
+            ]:
+                for item in to_delete:
                     the_clauses.remove(the_clauses[to_delete[0]])
-                the_clauses.insert(to_delete[0], match.group(2))
+                the_clauses.insert(to_delete[0], match[2])
 
         # 识别“要是|如果……就好了”的假设句式
         pattern = re.compile(r"([，%。、！；？?,!～~.… ]*)([\u4e00-\u9fa5]*?(如果|要是|"
                              r"希望).+就[\u4e00-\u9fa5]+(好|完美)了[，。；！%、？?,!～~.… ]+)")
         match = re.search(pattern, the_sentence.strip())
-        if match is not None and len(self.__split_sentence(match.group(2))) <= 3:
+        if match is not None and len(self.__split_sentence(match[2])) <= 3:
             to_delete = []
             for i in range(len(the_clauses)):
-                if the_clauses[i] in match.group(2):
+                if the_clauses[i] in match[2]:
                     to_delete.append(i)
-            if len(to_delete) > 0:
-                for i in range(len(to_delete)):
+            if to_delete:
+                for item_ in to_delete:
                     the_clauses.remove(the_clauses[to_delete[0]])
-                the_clauses.insert(to_delete[0], match.group(2))
+                the_clauses.insert(to_delete[0], match[2])
 
         the_clauses[-1] = the_clauses[-1][:-1]
         return the_clauses
@@ -417,14 +418,12 @@ class DictClassifier:
             pass
         punctuations.append("")
 
-        clauses = [''.join(x) for x in zip(split_clauses, punctuations)]
-
-        return clauses
+        return [''.join(x) for x in zip(split_clauses, punctuations)]
 
     def __get_phrase_dict(self):
         sentiment_dict = []
         pattern = re.compile(r"\s+")
-        with open(self.__root_filepath + "phrase_dict.txt", "r", encoding="utf-8") as f:
+        with open(f"{self.__root_filepath}phrase_dict.txt", "r", encoding="utf-8") as f:
             for line in f:
                 a_phrase = {}
                 result = pattern.split(line.strip())
@@ -434,9 +433,8 @@ class DictClassifier:
                     for i, a_split in enumerate(result):
                         if i < 2:
                             continue
-                        else:
-                            a, b = a_split.split(":")
-                            a_phrase[a] = b
+                        a, b = a_split.split(":")
+                        a_phrase[a] = b
                     sentiment_dict.append(a_phrase)
 
         return sentiment_dict
@@ -456,7 +454,7 @@ class DictClassifier:
     @staticmethod
     def __write_runout_file(path, info, encoding="utf-8"):
         with open(path, "a") as f:
-            f.write("%s" % info)
+            f.write(f"{info}")
 
 
 # ################################################
@@ -535,9 +533,7 @@ class KNNClassifier:
         sq_diff_mat = diff_mat ** 2
         sq_distances = sq_diff_mat.sum(axis=1)
         distances = sq_distances ** 0.5
-        sorted_distances = distances.argsort()
-
-        return sorted_distances
+        return distances.argsort()
 
     def classify(self, input_data):
         if isinstance(self.__k, int):
@@ -573,10 +569,7 @@ class KNNClassifier:
             else:
                 final_record[1] += 1
 
-        if final_record[0] > final_record[1]:
-            return 0
-        else:
-            return 1
+        return 0 if final_record[0] > final_record[1] else 1
 
     def single_k_classify(self, input_data):
         # get the distance sorted list
@@ -593,10 +586,7 @@ class KNNClassifier:
             class_count[label] += 1
             i += 1
 
-        if class_count[0] > class_count[1]:
-            return 0
-        else:
-            return 1
+        return 0 if class_count[0] > class_count[1] else 1
 
 
 # ################################################
@@ -626,18 +616,15 @@ class BayesClassifier:
         total_pos_length, total_neg_length = 0, 0
         total_word = set()
         for i, doc in enumerate(train_data):
-            if train_data_labels[i] == 1:
-                for word in doc:
-                    if best_words is None or word in best_words:
+            for word in doc:
+                if best_words is None or word in best_words:
+                    if train_data_labels[i] == 1:
                         total_pos_data[word] = total_pos_data.get(word, 0) + 1
                         total_pos_length += 1
-                        total_word.add(word)
-            else:
-                for word in doc:
-                    if best_words is None or word in best_words:
+                    else:
                         total_neg_data[word] = total_neg_data.get(word, 0) + 1
                         total_neg_length += 1
-                        total_word.add(word)
+                    total_word.add(word)
         self._pos_p = total_pos_length / (total_pos_length + total_neg_length)
         self._neg_p = total_neg_length / (total_pos_length + total_neg_length)
 
@@ -663,10 +650,7 @@ class BayesClassifier:
             neg_score += self._neg_word_p.get(word, 0.)
         neg_score += np.log(self._neg_p)
 
-        if pos_score > neg_score:
-            return 1
-        else:
-            return 0
+        return 1 if pos_score > neg_score else 0
 
 
 # ################################################
@@ -689,17 +673,14 @@ class MaxEntClassifier:
     def calculate_probability(self, features):
         weights = [(self.prob_weight(features, label), label) for label in self.labels]
         try:
-            z = sum([weight for weight, label in weights])
+            z = sum(weight for weight, label in weights)
             prob = [(weight / z, label) for weight, label in weights]
         except ZeroDivisionError:
             return "collapse"
         return prob
 
     def convergence(self, last_weight):
-        for w1, w2 in zip(last_weight, self.weight):
-            if abs(w1 - w2) >= 0.001:
-                return False
-        return True
+        return all(abs(w1 - w2) < 0.001 for w1, w2 in zip(last_weight, self.weight))
 
     def train(self, train_data, train_data_labels, best_words=None):
         print("MaxEntClassifier is training ...... ")
@@ -716,7 +697,7 @@ class MaxEntClassifier:
                     if word in best_words:
                         self.feats[(train_data_labels[i], word)] += 1
 
-        the_max = max([len(record) - 1 for record in train_data])  # the_max param for GIS training algorithm
+        the_max = max(len(record) - 1 for record in train_data)
         self.weight = [0.0] * len(self.feats)  # init weight for each feature
         ep_empirical = [0.0] * len(self.feats)  # init the feature expectation on empirical distribution
         for i, f in enumerate(self.feats):
@@ -763,7 +744,7 @@ class MaxEntClassifier:
                     if word in best_words:
                         self.feats[(train_labels[i], word)] += 1
 
-        the_max = max([len(record) - 1 for record in train_data])  # the_max param for GIS training algorithm
+        the_max = max(len(record) - 1 for record in train_data)
         self.weight = [0.0] * len(self.feats)  # init weight for each feature
         ep_empirical = [0.0] * len(self.feats)  # init the feature expectation on empirical distribution
         for i, f in enumerate(self.feats):
@@ -791,9 +772,7 @@ class MaxEntClassifier:
                 self.weight[j] += delta  # update weight
 
             print("MaxEntClassifier is testing ...")
-            classify_labels = []
-            for data in test_data:
-                classify_labels.append(self.classify(data))
+            classify_labels = [self.classify(data) for data in test_data]
             classify_results.append(classify_labels)
 
             # test if the algorithm is convergence
@@ -808,10 +787,7 @@ class MaxEntClassifier:
     def classify(self, the_input_features):
         prob = self.calculate_probability(the_input_features)
         prob.sort(reverse=True)
-        if prob[0][0] > prob[1][0]:
-            return prob[0][1]
-        else:
-            return prob[1][1]
+        return prob[0][1] if prob[0][0] > prob[1][0] else prob[1][1]
 
 
 # ################################################
@@ -832,9 +808,7 @@ class SVMClassifier:
     def words2vector(self, all_data):
         vectors = []
         for data in all_data:
-            vector = []
-            for feature in self.best_words:
-                vector.append(data.count(feature))
+            vector = [data.count(feature) for feature in self.best_words]
             vectors.append(vector)
 
         vectors = np.array(vectors)

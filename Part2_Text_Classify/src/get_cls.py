@@ -41,10 +41,9 @@ def get_text(item):
         data3 = " ".join(data2)  # 结果转换为字符串（列表转换为字符串）
         data_dict[data3] = item
 
-    f2 = open('%s.txt' % item, 'a+')
-    for (k, v) in data_dict.items():
-        f2.write(v + ',' + k + ' ' + '\n')
-    f2.close()
+    with open(f'{item}.txt', 'a+') as f2:
+        for (k, v) in data_dict.items():
+            f2.write(v + ',' + k + ' ' + '\n')
 
 
 # 获取数据和标记
@@ -80,14 +79,16 @@ def trans_text():
     f3 = open('id2class2.txt', 'a')
     filelist = os.listdir(base_path)
     for files in filelist:
-        # print (files)
-        f = open(base_path + files, 'r')
-        text = (f.read().decode('GB2312', 'ignore').encode('utf-8'))
-        salt = ''.join(random.sample(string.ascii_letters + string.digits, 8))  # 产生随机数
-        f2 = open("C:/Users/kaifun/Desktop/ass_TIP/TextInfoExp/Part2_Text_Classify/test3/" + salt + '.txt', 'w')
-        f2.write(text)
-        f3.write(salt + ' ' + 'e' + '\n')
-        f.close()
+        with open(base_path + files, 'r') as f:
+            text = (f.read().decode('GB2312', 'ignore').encode('utf-8'))
+            salt = ''.join(random.sample(string.ascii_letters + string.digits, 8))  # 产生随机数
+            f2 = open(
+                f"C:/Users/kaifun/Desktop/ass_TIP/TextInfoExp/Part2_Text_Classify/test3/{salt}.txt",
+                'w',
+            )
+
+            f2.write(text)
+            f3.write(f'{salt} e' + '\n')
         f2.close()
 
 
@@ -121,7 +122,7 @@ def get_classify():
 
     f = open('result2.txt', 'w')
     for i in range(len(test_name)):
-        f.write(str(test_name[i]) + '   ' + str(result[i]) + '\n')
+        f.write(f'{str(test_name[i])}   {str(result[i])}' + '\n')
 
     print (result, len(result))
     num_dict = Counter(result)

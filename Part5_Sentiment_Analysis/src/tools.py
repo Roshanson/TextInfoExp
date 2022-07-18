@@ -65,18 +65,24 @@ class Write2File:
 def get_accuracy(origin_labels, classify_labels, parameters):
     assert len(origin_labels) == len(classify_labels)
 
-    print 'result'
-    print classify_labels
-    print len(classify_labels)
+    assert len(origin_labels) == len(classify_labels)
 
-    print 'ori'
-    print origin_labels
-    print len(origin_labels)
+    assert len(origin_labels) == len(classify_labels)
 
-    xls_contents = []
+    assert len(origin_labels) == len(classify_labels)
 
-    xls_contents.extend([("train num", parameters[0]), ("test num", parameters[1])])
-    xls_contents.append(("feature num", parameters[2]))
+    assert len(origin_labels) == len(classify_labels)
+
+    assert len(origin_labels) == len(classify_labels)
+
+    assert len(origin_labels) == len(classify_labels)
+
+    xls_contents = [
+        ("train num", parameters[0]),
+        ("test num", parameters[1]),
+        ("feature num", parameters[2]),
+    ]
+
 
     pos_right, pos_false = 0, 0
     neg_right, neg_false = 0, 0
@@ -86,13 +92,18 @@ def get_accuracy(origin_labels, classify_labels, parameters):
                 pos_right += 1         # 负负11
             else:
                 neg_false += 1         # 负正10
+        elif classify_labels[i] == 0:
+            neg_right += 1         # 正正00
         else:
-            if classify_labels[i] == 0:
-                neg_right += 1         # 正正00
-            else:
-                pos_false += 1         # 正负01
-    xls_contents.extend([("neg-right", neg_right), ("neg-false", neg_false)])
-    xls_contents.extend([("pos-right", pos_right), ("pos-false", pos_false)])
+            pos_false += 1         # 正负01
+    xls_contents.extend(
+        [
+            ("neg-right", neg_right),
+            ("neg-false", neg_false),
+            ("pos-right", pos_right),
+            ("pos-false", pos_false),
+        ]
+    )
 
     print (neg_right, pos_right, neg_false, pos_false)
 

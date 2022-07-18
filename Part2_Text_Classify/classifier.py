@@ -25,11 +25,11 @@ class Classifier(object):
         self.model = None
 
     def save_model(self):
-        with open('./model/' + self.model_name + '.pkl', 'wb') as fw:
+        with open(f'./model/{self.model_name}.pkl', 'wb') as fw:
             pickle.dump(self.model, fw)
 
     def load_model(self):
-        with open('./model/' + self.model_name + '.pkl', 'rb') as fr:
+        with open(f'./model/{self.model_name}.pkl', 'rb') as fr:
             self.model = pickle.load(self.model, fr)
 
     def eval_prob(self, X_test):

@@ -28,33 +28,27 @@ def process_options(argv):
 		exit_with_help(argv)
 
 	# default method is stratified selection
-	method = 0  
+	method = 0
 	subset_file = sys.stdout
-	rest_file = None
-
 	i = 1
-	while i < argc:
-		if argv[i][0] != "-":
-			break
+	while i < argc and argv[i][0] == "-":
 		if argv[i] == "-s":
-			i = i + 1
+			i += 1
 			method = int(argv[i])
 			if method not in [0,1]:
 				print("Unknown selection method {0}".format(method))
 				exit_with_help(argv)
-		i = i + 1
+		i += 1
 
 	dataset = argv[i]
 	subset_size = int(argv[i+1])
 	if i+2 < argc:
 		subset_file = open(argv[i+2],'w')
-	if i+3 < argc:
-		rest_file = open(argv[i+3],'w')
-
+	rest_file = open(argv[i+3],'w') if i+3 < argc else None
 	return dataset, subset_size, method, subset_file, rest_file
 
 def random_selection(dataset, subset_size):
-	l = sum(1 for line in open(dataset,'r'))
+	l = sum(1 for _ in open(dataset,'r'))
 	return sorted(random.sample(xrange(l), subset_size))
 
 def stratified_selection(dataset, subset_size):
@@ -97,23 +91,21 @@ def main(argv=sys.argv):
 	elif method == 1:
 		selected_lines = random_selection(dataset, subset_size)
 
-	#select instances based on selected_lines
-	dataset = open(dataset,'r')
-	prev_selected_linenum = -1
-	for i in xrange(len(selected_lines)):
-		for cnt in xrange(selected_lines[i]-prev_selected_linenum-1):
-			line = dataset.readline()
-			if rest_file: 
-				rest_file.write(line)
-		subset_file.write(dataset.readline())
-		prev_selected_linenum = selected_lines[i]
-	subset_file.close()
+	with open(dataset,'r') as dataset:
+		prev_selected_linenum = -1
+		for i in xrange(len(selected_lines)):
+			for _ in xrange(selected_lines[i]-prev_selected_linenum-1):
+				line = dataset.readline()
+				if rest_file: 
+					rest_file.write(line)
+			subset_file.write(dataset.readline())
+			prev_selected_linenum = selected_lines[i]
+		subset_file.close()
 
-	if rest_file:
-		for line in dataset: 
-			rest_file.write(line)
-		rest_file.close()
-	dataset.close()
+		if rest_file:
+			for line in dataset: 
+				rest_file.write(line)
+			rest_file.close()
 
 if __name__ == '__main__':
 	main(sys.argv)

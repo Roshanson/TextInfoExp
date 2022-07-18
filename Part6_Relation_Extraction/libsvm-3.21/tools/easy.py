@@ -34,16 +34,16 @@ assert os.path.exists(grid_py),"grid.py not found"
 train_pathname = sys.argv[1]
 assert os.path.exists(train_pathname),"training file not found"
 file_name = os.path.split(train_pathname)[1]
-scaled_file = file_name + ".scale"
-model_file = file_name + ".model"
-range_file = file_name + ".range"
+scaled_file = f"{file_name}.scale"
+model_file = f"{file_name}.model"
+range_file = f"{file_name}.range"
 
 if len(sys.argv) > 2:
 	test_pathname = sys.argv[2]
 	file_name = os.path.split(test_pathname)[1]
 	assert os.path.exists(test_pathname),"testing file not found"
-	scaled_test_file = file_name + ".scale"
-	predict_test_file = file_name + ".predict"
+	scaled_test_file = f"{file_name}.scale"
+	predict_test_file = f"{file_name}.predict"
 
 cmd = '{0} -s "{1}" "{2}" > "{3}"'.format(svmscale_exe, range_file, train_pathname, scaled_file)
 print('Scaling training data...')

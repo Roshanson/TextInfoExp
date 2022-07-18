@@ -128,11 +128,8 @@ def svm_train(arg1, arg2=None, arg3=None):
 		prob = svm_problem(y, x, isKernel=(param.kernel_type == PRECOMPUTED))
 	elif isinstance(arg1, svm_problem):
 		prob = arg1
-		if isinstance(arg2, svm_parameter):
-			param = arg2
-		else:
-			param = svm_parameter(arg2)
-	if prob == None or param == None:
+		param = arg2 if isinstance(arg2, svm_parameter) else svm_parameter(arg2)
+	if prob is None or param is None:
 		raise TypeError("Wrong types for the arguments")
 
 	if param.kernel_type == PRECOMPUTED:
@@ -146,9 +143,8 @@ def svm_train(arg1, arg2=None, arg3=None):
 	if param.gamma == 0 and prob.n > 0:
 		param.gamma = 1.0 / prob.n
 	libsvm.svm_set_print_string_function(param.print_func)
-	err_msg = libsvm.svm_check_parameter(prob, param)
-	if err_msg:
-		raise ValueError('Error: %s' % err_msg)
+	if err_msg := libsvm.svm_check_parameter(prob, param):
+		raise ValueError(f'Error: {err_msg}')
 
 	if param.cross_validation:
 		l, nr_fold = prob.l, param.nr_fold
@@ -242,10 +238,7 @@ def svm_predict(y, x, m, options=""):
 		for xi in x:
 			xi, idx = gen_svm_nodearray(xi, isKernel=(m.param.kernel_type == PRECOMPUTED))
 			label = libsvm.svm_predict_values(m, xi, dec_values)
-			if(nr_class == 1):
-				values = [1]
-			else:
-				values = dec_values[:nr_classifier]
+			values = [1] if (nr_class == 1) else dec_values[:nr_classifier]
 			pred_labels += [label]
 			pred_values += [values]
 

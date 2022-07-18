@@ -171,10 +171,8 @@ def test_corpus():
     a = WaimaiCorpus()
     a = Waimai2Corpus()
     a = HotelCorpus()
-    pass
 
 if __name__ == "__main__":
-    pass
     get_movie_corpus()
     # get_movie2_corpus()
     # get_hotel_corpus()

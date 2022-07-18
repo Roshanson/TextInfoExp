@@ -82,9 +82,7 @@ def gen_svm_nodearray(xi, feature_max=None, isKernel=None):
 	for idx, j in enumerate(index_range):
 		ret[idx].index = j
 		ret[idx].value = xi[j]
-	max_idx = 0
-	if index_range:
-		max_idx = index_range[-1]
+	max_idx = index_range[-1] if index_range else 0
 	return ret, max_idx
 
 class svm_problem(Structure):
@@ -99,7 +97,7 @@ class svm_problem(Structure):
 
 		max_idx = 0
 		x_space = self.x_space = []
-		for i, xi in enumerate(x):
+		for xi in x:
 			tmp_xi, tmp_idx = gen_svm_nodearray(xi,isKernel=isKernel)
 			x_space += [tmp_xi]
 			max_idx = max(max_idx, tmp_idx)
@@ -121,16 +119,14 @@ class svm_parameter(Structure):
 	_fields_ = genFields(_names, _types)
 
 	def __init__(self, options = None):
-		if options == None:
+		if options is None:
 			options = ''
 		self.parse_options(options)
 
 	def __str__(self):
-		s = ''
 		attrs = svm_parameter._names + list(self.__dict__.keys())
 		values = map(lambda attr: getattr(self, attr), attrs)
-		for attr, val in zip(attrs, values):
-			s += (' %s: %s\n' % (attr, val))
+		s = ''.join((' %s: %s\n' % (attr, val)) for attr, val in zip(attrs, values))
 		s = s.strip()
 
 		return s
@@ -170,51 +166,51 @@ class svm_parameter(Structure):
 		i = 0
 		while i < len(argv):
 			if argv[i] == "-s":
-				i = i + 1
+				i += 1
 				self.svm_type = int(argv[i])
 			elif argv[i] == "-t":
-				i = i + 1
+				i += 1
 				self.kernel_type = int(argv[i])
 			elif argv[i] == "-d":
-				i = i + 1
+				i += 1
 				self.degree = int(argv[i])
 			elif argv[i] == "-g":
-				i = i + 1
+				i += 1
 				self.gamma = float(argv[i])
 			elif argv[i] == "-r":
-				i = i + 1
+				i += 1
 				self.coef0 = float(argv[i])
 			elif argv[i] == "-n":
-				i = i + 1
+				i += 1
 				self.nu = float(argv[i])
 			elif argv[i] == "-m":
-				i = i + 1
+				i += 1
 				self.cache_size = float(argv[i])
 			elif argv[i] == "-c":
-				i = i + 1
+				i += 1
 				self.C = float(argv[i])
 			elif argv[i] == "-e":
-				i = i + 1
+				i += 1
 				self.eps = float(argv[i])
 			elif argv[i] == "-p":
-				i = i + 1
+				i += 1
 				self.p = float(argv[i])
 			elif argv[i] == "-h":
-				i = i + 1
+				i += 1
 				self.shrinking = int(argv[i])
 			elif argv[i] == "-b":
-				i = i + 1
+				i += 1
 				self.probability = int(argv[i])
 			elif argv[i] == "-q":
 				self.print_func = PRINT_STRING_FUN(print_null)
 			elif argv[i] == "-v":
-				i = i + 1
+				i += 1
 				self.cross_validation = 1
 				self.nr_fold = int(argv[i])
 				if self.nr_fold < 2:
 					raise ValueError("n-fold cross validation: n must >= 2")
 			elif argv[i].startswith("-w"):
-				i = i + 1
+				i += 1
 				self.nr_weight += 1
 				weight_label += [int(argv[i-1][2:])]
 				weight += [float(argv[i])]
@@ -280,7 +276,7 @@ class svm_model(Structure):
 	def get_SV(self):
 		result = []
 		for sparse_sv in self.SV[:self.l]:
-			row = dict()
+			row = {}
 
 			i = 0
 			while True:
@@ -298,7 +294,7 @@ def toPyModel(model_ptr):
 
 	Convert a ctypes POINTER(svm_model) to a Python svm_model
 	"""
-	if bool(model_ptr) == False:
+	if not bool(model_ptr):
 		raise ValueError("Null pointer")
 	m = model_ptr.contents
 	m.__createfrom__ = 'C'

@@ -29,7 +29,7 @@ def com_tf():
 
     # 统计结果写入result.txt(字典的遍历)
     for (k, v) in num_dict.items():
-        open('data/result.txt', 'a+').write(str(k) + ' ' + str(v) + '\n')   # 将k，v转换为str类型
+        open('data/result.txt', 'a+').write(f'{str(k)} {str(v)}' + '\n')
 
 
 if __name__ == '__main__':

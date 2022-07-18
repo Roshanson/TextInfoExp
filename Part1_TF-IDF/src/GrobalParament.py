@@ -17,8 +17,8 @@ ResultFileNameDir = "title_and_abs"  # 搜索结果文件目录
 ResultFileName = "result.txt"  # 搜索结果文件名
 
 path = '/home/kaifun/PycharmProjects/TextInfoExp/Part1_TF-IDF/'  # 原始数据
-path1 = path + 'data/title_and_abs/'
-newpath = path + "data/pro_keyword/"
+path1 = f'{path}data/title_and_abs/'
+newpath = f"{path}data/pro_keyword/"
 newpath2 = path
 
 # path1 = 'C:/Users/kaifun/Desktop/ass_TIP/TextInfoProcess/Test_one_TF-IDF/data_afterprocess/title_and_abs/'  # 处理后的标题和摘要

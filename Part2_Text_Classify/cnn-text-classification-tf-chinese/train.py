@@ -33,7 +33,7 @@ tf.flags.DEFINE_boolean("log_device_placement", False, "Log placement of ops on 
 FLAGS = tf.flags.FLAGS
 print("\nParameters:")
 for attr, value in sorted(FLAGS.__flags.iteritems()):
-  print("{}={}".format(attr.upper(), value))
+  print(f"{attr.upper()}={value}")
 print("")
 
 
@@ -43,7 +43,7 @@ print("")
 # Load data
 print("Loading data...")
 x, y, vocabulary, vocabulary_inv = data_helpers.load_data()
-print x,y,vocabulary,vocabulary_inv
+import tensorflow as tf
 # Randomly shuffle data
 np.random.seed(10)
 shuffle_indices = np.random.permutation(np.arange(len(y)))

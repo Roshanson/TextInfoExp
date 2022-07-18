@@ -18,8 +18,7 @@ def get_text():
             data = ''.join(re.findall(u'[\u4e00-\u9fff]+', text))  # 必须为unicode类型，取出所有中文字符 也可去除停用词
             text_tag.append([file.strip('.txt'), data, tag])
 
-    df = pd.DataFrame(text_tag, columns=['id', 'text', 'tag'])
-    return df
+    return pd.DataFrame(text_tag, columns=['id', 'text', 'tag'])
 
 
 def get_feature(row):
@@ -28,8 +27,7 @@ def get_feature(row):
     # 简单的写两个特征，实际中文本分类可用tf-df  poi  向量等方式构造特征
     text_len = len(text)
     isHasSH = 1 if '上海' in text else 0
-    features = [text_len, isHasSH]
-    return features
+    return [text_len, isHasSH]
 
 
 def load_data():
@@ -39,12 +37,11 @@ def load_data():
     X, Y = df.ix[:, 1:].values, df.ix[:, 0].values
     # print(X[0:10], Y[0:10])
     X = list(map(lambda x: list(x)[0], X))
-    print(X[0:10])
-    print(Y[0:10])
+    print(X[:10])
+    print(Y[:10])
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.25, random_state=1, shuffle=True)
     return X_train, X_test, y_train, y_test
 
 
-if __name__ == '__main__':
-    pass
+pass
 

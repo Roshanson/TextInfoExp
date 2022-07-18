@@ -38,16 +38,12 @@ class Test:
     def test_knn(self):
         from classifiers import KNNClassifier
 
-        if type(self.k) == int:
-            k = "%s" % self.k
-        else:
-            k = "-".join([str(i) for i in self.k])
-
+        k = f"{self.k}" if type(self.k) == int else "-".join([str(i) for i in self.k])
         print("KNNClassifier")
         print("---" * 45)
-        print("Train num = %s" % self.train_num)
-        print("Test num = %s" % self.test_num)
-        print("K = %s" % k)
+        print(f"Train num = {self.train_num}")
+        print(f"Test num = {self.test_num}")
+        print(f"K = {k}")
 
         # print self.train_data
         print (self.train_labels)
@@ -55,12 +51,9 @@ class Test:
         print (self.train_data[0])
 
         knn = KNNClassifier(self.train_data, self.train_labels, k=self.k, best_words=self.best_words)
-        classify_labels = []
-
         print("KNNClassifiers is testing ...")
 
-        for data in self.test_data:
-            classify_labels.append(knn.classify(data))
+        classify_labels = [knn.classify(data) for data in self.test_data]
         print("KNNClassifiers tests over.")
 
         filepath = "f_runout/KNN-%s-train-%d-test-%d-f-%d-k-%s-%s.xls" % \
@@ -75,16 +68,14 @@ class Test:
     def test_bayes(self):
         print("BayesClassifier")
         print("---" * 45)
-        print("Train num = %s" % self.train_num)
-        print("Test num = %s" % self.test_num)
+        print(f"Train num = {self.train_num}")
+        print(f"Test num = {self.test_num}")
 
         from classifiers import BayesClassifier
         bayes = BayesClassifier(self.train_data, self.train_labels, self.best_words)
 
-        classify_labels = []
         print("BayesClassifier is testing ...")
-        for data in self.test_data:
-            classify_labels.append(bayes.classify(data))
+        classify_labels = [bayes.classify(data) for data in self.test_data]
         print("BayesClassifier tests over.")
 
         filepath = "f_runout/Bayes-%s-train-%d-test-%d-f-%d-%s.xls" % \
@@ -106,9 +97,9 @@ class Test:
     def test_maxent_iteration(self):
         print("MaxEntClassifier iteration")
         print("---" * 45)
-        print("Train num = %s" % self.train_num)
-        print("Test num = %s" % self.test_num)
-        print("maxiter = %s" % self.max_iter)
+        print(f"Train num = {self.train_num}")
+        print(f"Test num = {self.test_num}")
+        print(f"maxiter = {self.max_iter}")
 
         from classifiers import MaxEntClassifier
 
@@ -136,9 +127,9 @@ class Test:
     def test_maxent(self):
         print("MaxEntClassifier")
         print("---" * 45)
-        print("Train num = %s" % self.train_num)
-        print("Test num = %s" % self.test_num)
-        print("maxiter = %s" % self.max_iter)
+        print(f"Train num = {self.train_num}")
+        print(f"Test num = {self.test_num}")
+        print(f"maxiter = {self.max_iter}")
 
         from classifiers import MaxEntClassifier
 
@@ -146,9 +137,7 @@ class Test:
         m.train(self.train_data, self.train_labels, self.best_words)
 
         print("MaxEntClassifier is testing ...")
-        classify_results = []
-        for data in self.test_data:
-            classify_results.append(m.classify(data))
+        classify_results = [m.classify(data) for data in self.test_data]
         print("MaxEntClassifier tests over.")
 
         filepath = "f_runout/MaxEnt-%s-train-%d-test-%d-f-%d-maxiter-%d-%s.xls" % \
@@ -163,17 +152,15 @@ class Test:
     def test_svm(self):
         print("SVMClassifier")
         print("---" * 45)
-        print("Train num = %s" % self.train_num)
-        print("Test num = %s" % self.test_num)
-        print("C = %s" % self.C)
+        print(f"Train num = {self.train_num}")
+        print(f"Test num = {self.test_num}")
+        print(f"C = {self.C}")
 
         from classifiers import SVMClassifier
         svm = SVMClassifier(self.train_data, self.train_labels, self.best_words, self.C)
 
-        classify_labels = []
         print("SVMClassifier is testing ...")
-        for data in self.test_data:
-            classify_labels.append(svm.classify(data))
+        classify_labels = [svm.classify(data) for data in self.test_data]
         print("SVMClassifier tests over.")
 
         filepath = "f_runout/SVM-%s-train-%d-test-%d-f-%d-C-%d-%s-lin.xls" % \
@@ -346,7 +333,6 @@ def test_dict():
 
 
 if __name__ == "__main__":
-    pass
     test_movie()
     test_movie2()
     test_waimai()
