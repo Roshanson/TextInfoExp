@@ -43,9 +43,8 @@ class TextCluster(object):
     def output_file(self, out_file, item):
 
         try:
-            fw = open(out_file, "a")
-            fw.write('%s' % (item.encode("utf-8")))
-            fw.close()
+            with open(out_file, "a") as fw:
+                fw.write(f'{item.encode("utf-8")}')
         except:
             logging.error(traceback.format_exc())
             return False, "out file fail"
@@ -56,13 +55,11 @@ class TextCluster(object):
 
     def process(self, process_file, tf_ResFileName, tfidf_ResFileName, num_clusters, cluster_ResFileName):
         try:
-            sen_seg_list = []
             flag, lines = self.load_processfile(process_file)
             if flag == False:
                 logging.error("load error")
                 return False, "load error"
-            for line in lines:
-                sen_seg_list.append(self.seg_words(line))
+            sen_seg_list = [self.seg_words(line) for line in lines]
             # 该类会将文本中的词语转换为词频矩阵，矩阵元素a[i][j] 表示j词在i类文本下的词频
             tf_vectorizer = CountVectorizer()
 
@@ -139,10 +136,10 @@ class TextCluster(object):
             while count <= len(km.labels_):
                 clusterRes.write(str(count) + '\t' + str(km.labels_[count - 1]))
                 clusterRes.write('\r\n')
-                count = count + 1
+                count += 1
             clusterRes.close()
-            # 用来评估簇的个数是否合适，距离越小说明簇分的越好，选取临界点的簇个数  958.137281791
-            # print(km.inertia_)
+                # 用来评估簇的个数是否合适，距离越小说明簇分的越好，选取临界点的簇个数  958.137281791
+                # print(km.inertia_)
         except:
             logging.error(traceback.format_exc())
             return False, "process fail"

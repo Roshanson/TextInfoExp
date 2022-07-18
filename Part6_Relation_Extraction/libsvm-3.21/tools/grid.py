@@ -42,52 +42,46 @@ class GridOption:
 			options = options.split()
 		i = 0
 		pass_through_options = []
-		
+
 		while i < len(options):
 			if options[i] == '-log2c':
-				i = i + 1
+				i += 1
 				if options[i] == 'null':
 					self.grid_with_c = False
 				else:
 					self.c_begin, self.c_end, self.c_step = map(float,options[i].split(','))
 			elif options[i] == '-log2g':
-				i = i + 1
+				i += 1
 				if options[i] == 'null':
 					self.grid_with_g = False
 				else:
 					self.g_begin, self.g_end, self.g_step = map(float,options[i].split(','))
 			elif options[i] == '-v':
-				i = i + 1
+				i += 1
 				self.fold = options[i]
 			elif options[i] in ('-c','-g'):
 				raise ValueError('Use -log2c and -log2g.')
 			elif options[i] == '-svmtrain':
-				i = i + 1
+				i += 1
 				self.svmtrain_pathname = options[i]
 			elif options[i] == '-gnuplot':
-				i = i + 1
-				if options[i] == 'null':
-					self.gnuplot_pathname = None
-				else:	
-					self.gnuplot_pathname = options[i]
+				i += 1
+				self.gnuplot_pathname = None if options[i] == 'null' else options[i]
 			elif options[i] == '-out':
-				i = i + 1
-				if options[i] == 'null':
-					self.out_pathname = None
-				else:
-					self.out_pathname = options[i]
+				i += 1
+				self.out_pathname = None if options[i] == 'null' else options[i]
 			elif options[i] == '-png':
-				i = i + 1
+				i += 1
 				self.png_pathname = options[i]
 			elif options[i] == '-resume':
 				if i == (len(options)-1) or options[i+1].startswith('-'):
-					self.resume_pathname = self.dataset_title + '.out'
+					self.resume_pathname = f'{self.dataset_title}.out'
 				else:
-					i = i + 1
+					i += 1
 					self.resume_pathname = options[i]
 			else:
 				pass_through_options.append(options[i])
-			i = i + 1
+			i += 1
 
 		self.pass_through_string = ' '.join(pass_through_options)
 		if not os.path.exists(self.svmtrain_pathname):
@@ -142,7 +136,7 @@ def redraw(db,best_param,gnuplot,options,tofile=False):
 				  " at screen 0.5,0.8 center\n".format(2**best_log2c, 2**best_log2g).encode())
 	gnuplot.write(b"set key at screen 0.9,0.9\n")
 	gnuplot.write(b"splot \"-\" with lines\n")
-	
+
 	db.sort(key = lambda x:(x[0], -x[1]))
 
 	prevc = db[0][0]
@@ -161,29 +155,31 @@ def calculate_jobs(options):
 	def range_f(begin,end,step):
 		# like range, but works on non-integer too
 		seq = []
-		while True:
-			if step > 0 and begin > end: break
-			if step < 0 and begin < end: break
+		while (
+			True
+			and not (step > 0 and begin > end)
+			and not (step < 0 and begin < end)
+		):
 			seq.append(begin)
 			begin = begin + step
 		return seq
-	
+
 	def permute_sequence(seq):
 		n = len(seq)
 		if n <= 1: return seq
-	
+
 		mid = int(n/2)
 		left = permute_sequence(seq[:mid])
 		right = permute_sequence(seq[mid+1:])
-	
+
 		ret = [seq[mid]]
 		while left or right:
 			if left: ret.append(left.pop(0))
 			if right: ret.append(right.pop(0))
-			
+
 		return ret	
 
-	
+
 	c_seq = permute_sequence(range_f(options.c_begin,options.c_end,options.c_step))
 	g_seq = permute_sequence(range_f(options.g_begin,options.g_end,options.g_step))
 
@@ -191,7 +187,7 @@ def calculate_jobs(options):
 		c_seq = [None]
 	if not options.grid_with_g:
 		g_seq = [None] 
-	
+
 	nr_c = float(len(c_seq))
 	nr_g = float(len(g_seq))
 	i, j = 0, 0
@@ -201,20 +197,20 @@ def calculate_jobs(options):
 		if i/nr_c < j/nr_g:
 			# increase C resolution
 			line = []
-			for k in range(0,j):
+			for k in range(j):
 				line.append((c_seq[i],g_seq[k]))
-			i = i + 1
+			i += 1
 			jobs.append(line)
 		else:
 			# increase g resolution
 			line = []
-			for k in range(0,i):
+			for k in range(i):
 				line.append((c_seq[k],g_seq[j]))
-			j = j + 1
+			j += 1
 			jobs.append(line)
 
 	resumed_jobs = {}
-	
+
 	if options.resume_pathname is None:
 		return jobs, resumed_jobs
 
@@ -291,8 +287,8 @@ class LocalWorker(Worker):
 		cmdline = self.get_cmd(c,g)
 		result = Popen(cmdline,shell=True,stdout=PIPE,stderr=PIPE,stdin=PIPE).stdout
 		for line in result.readlines():
-			if str(line).find('Cross') != -1:
-				return float(line.split()[-1][0:-1])
+			if 'Cross' in str(line):
+				return float(line.split()[-1][:-1])
 
 class SSHWorker(Worker):
 	def __init__(self,name,job_queue,result_queue,host,options):
@@ -304,8 +300,8 @@ class SSHWorker(Worker):
 			(self.host,self.cwd,self.get_cmd(c,g))
 		result = Popen(cmdline,shell=True,stdout=PIPE,stderr=PIPE,stdin=PIPE).stdout
 		for line in result.readlines():
-			if str(line).find('Cross') != -1:
-				return float(line.split()[-1][0:-1])
+			if 'Cross' in str(line):
+				return float(line.split()[-1][:-1])
 
 class TelnetWorker(Worker):
 	def __init__(self,name,job_queue,result_queue,host,username,password,options):
@@ -325,7 +321,7 @@ class TelnetWorker(Worker):
 		tn.read_until(self.username)
 		# 
 		print('login ok', self.host)
-		tn.write('cd '+os.getcwd()+'\n')
+		tn.write(f'cd {os.getcwd()}' + '\n')
 		Worker.run(self)
 		tn.write('exit\n')			   
 	def run_one(self,c,g):
@@ -333,11 +329,11 @@ class TelnetWorker(Worker):
 		result = self.tn.write(cmdline+'\n')
 		(idx,matchm,output) = self.tn.expect(['Cross.*\n'])
 		for line in output.split('\n'):
-			if str(line).find('Cross') != -1:
-				return float(line.split()[-1][0:-1])
+			if 'Cross' in str(line):
+				return float(line.split()[-1][:-1])
 			
 def find_parameters(dataset_pathname, options=''):
-	
+
 	def update_param(c,g,rate,best_c,best_g,best_rate,worker,resumed):
 		if (rate > best_rate) or (rate==best_rate and g==best_g and c<best_c):
 			best_rate,best_c,best_g = rate,c,g
@@ -356,16 +352,16 @@ def find_parameters(dataset_pathname, options=''):
 			output_str += 'rate={0}\n'.format(rate)
 			result_file.write(output_str)
 			result_file.flush()
-		
+
 		return best_c,best_g,best_rate
-		
+
 	options = GridOption(dataset_pathname, options);
 
 	if options.gnuplot_pathname:
 		gnuplot = Popen(options.gnuplot_pathname,stdin = PIPE,stdout=PIPE,stderr=PIPE).stdin
 	else:
 		gnuplot = None
-		
+
 	# put jobs in queue
 
 	jobs,resumed_jobs = calculate_jobs(options)
@@ -386,7 +382,7 @@ def find_parameters(dataset_pathname, options=''):
 	# use FIFO, the job will be put
 	# into the end of the queue, and the graph
 	# will only be updated in the end
- 
+
 	job_queue._put = job_queue.queue.appendleft
 
 	# fire telnet workers

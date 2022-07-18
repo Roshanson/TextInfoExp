@@ -12,11 +12,7 @@ dataDir = "data"
 
 def load_stopwords():
     with open(os.path.join(dataDir, 'stopwords.txt'), 'r') as stopwords_file:
-        stopwords = []
-        for line in stopwords_file:
-            stopwords.append(line.strip())
-
-        return stopwords
+        return [line.strip() for line in stopwords_file]
 
 
 # 构建字典:词到id、词性到id的映射
@@ -79,12 +75,9 @@ def generateDic2(sentence_filepath, save_num=15000):
 def align(sentence_filepath, train_filepath, peopleset_filepath):
     jieba.load_userdict(os.path.join(dataDir, 'people.txt'))
 
-    with open(sentence_filepath, 'r') as sentence_file, open(train_filepath, 'r') as train_r_file, \
-            open(peopleset_filepath, 'r') as peopleset_file, \
-            open(os.path.join(dataDir, 'train.txt'), 'w') as train_file, \
-            open(os.path.join(dataDir, 'test.txt'), 'w') as test_file:
+    with open(sentence_filepath, 'r') as sentence_file, open(train_filepath, 'r') as train_r_file, open(peopleset_filepath, 'r') as peopleset_file, open(os.path.join(dataDir, 'train.txt'), 'w') as train_file, open(os.path.join(dataDir, 'test.txt'), 'w') as test_file:
 
-        train_r_dict = dict()
+        train_r_dict = {}
 
         # loading train relation
         # 训练集 关系对
@@ -92,7 +85,7 @@ def align(sentence_filepath, train_filepath, peopleset_filepath):
             line = line.strip()
             entry = line.split('\t')
             p1, p2, relation = entry[0], entry[1], entry[2]
-            train_r_dict[p1 + ',' + p2] = relation
+            train_r_dict[f'{p1},{p2}'] = relation
 
         peopleset = set()
 
@@ -118,8 +111,8 @@ def align(sentence_filepath, train_filepath, peopleset_filepath):
                 for j in range(len(peoplelist_line)):
                     if i != j:
                         p2 = peoplelist_line[j]
-                        if p1 + ',' + p2 in train_r_dict:
-                            relation = train_r_dict[p1 + ',' + p2]
+                        if f'{p1},{p2}' in train_r_dict:
+                            relation = train_r_dict[f'{p1},{p2}']
                             train_file.write(p1 + '\t' + p2 + '\t' + relation + '\t' + line + '\n')
                         else:
                             test_file.write(p1 + '\t' + p2 + '\tunknown\t' + line + '\n')
@@ -275,8 +268,7 @@ def feature_extract2(filepath, win=3):
 
 # 根据libsvm的预测结果整理，得到预测结果
 def handle_libsvm_result(predict_filepath, entitypair_filepath):
-    with open(predict_filepath, 'r') as predict_file, open(entitypair_filepath, 'r') as entitypair_file, \
-            open(os.path.join(dataDir, 'rsl_' + os.path.split(predict_filepath)[-1]), 'w') as rsl_file:
+    with open(predict_filepath, 'r') as predict_file, open(entitypair_filepath, 'r') as entitypair_file, open(os.path.join(dataDir, f'rsl_{os.path.split(predict_filepath)[-1]}'), 'w') as rsl_file:
         line_idx = 0
 
         line = predict_file.readline()
@@ -300,10 +292,10 @@ def handle_libsvm_result(predict_filepath, entitypair_filepath):
 
 def read_relation(relation_filepath):
     with open(relation_filepath, 'r') as relation_file:
-        relation_dict = dict()
+        relation_dict = {}
         for line in relation_file:
             p1, p2, relation = line.strip().split('\t')
-            relation_dict[p1 + ',' + p2] = relation
+            relation_dict[f'{p1},{p2}'] = relation
 
         return relation_dict
 
